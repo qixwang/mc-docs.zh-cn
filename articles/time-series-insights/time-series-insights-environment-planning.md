@@ -1,6 +1,6 @@
 ---
-title: 计划 Azure 时序见解环境的缩放 | Microsoft Docs
-description: 本文介绍如何遵循最佳做法来规划 Azure 时序见解环境。 涉及的方面包括存储容量、数据保留、流入容量、监视及业务连续性和灾难恢复 (BCDR)。
+title: 规划 GA 环境 - Azure 时序见解 | Microsoft Docs
+description: 了解在规划 GA 环境时应遵循的最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -10,15 +10,15 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 10/10/2019
-ms.date: 12/02/2019
+origin.date: 11/22/2019
+ms.date: 12/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8e15e4e59a74e4f7bfdedfbeb8e19498d463a89
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 6ffd16dd87820258dcfda315a153f415d186711b
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389120"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334665"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解正式版环境
 
@@ -60,11 +60,11 @@ Azure 时序见解具有两种模式：
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，选择时序见解环境。
 
-1. 在“时序见解环境”窗格中的“设置”下，选择“配置”    。
+1. 在“时序见解环境”窗格中的“设置”下，选择“存储配置”    。
 
 1. 在“数据保留时间(天)”框中，输入 1 到 400 的值  。
 
-   [![配置保留期](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![配置保留期](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
 > 若要详细了解如何实施适当的数据保留策略，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
@@ -106,7 +106,7 @@ Azure 时序见解具有两种模式：
 必须确保向时序见解发送事件的方式支持预配的环境大小。 （相反，可将环境大小映射到时序见解读取的事件数和每个事件的大小。）另外，必须考虑到在查询数据时要用作切片和筛选依据的属性。
 
 > [!TIP]
-> 请查看[发送事件](/time-series-insights/time-series-insights-send-events)中的 JSON 塑形文档。
+> 请查看[发送事件](time-series-insights-send-events.md)中的 JSON 塑形文档。
 
 ## <a name="ensure-that-you-have-reference-data"></a>确保已获得参考数据
 

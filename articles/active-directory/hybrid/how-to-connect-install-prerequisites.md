@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 05/08/2019
-ms.date: 11/13/2019
+ms.date: 12/11/2019
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3a4ea61b62f50e0130e3c23275ba07f0bfb782
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 1ac0af05491f75ff10d33f98d222877ea0528509
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335070"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
@@ -61,7 +60,7 @@ ms.locfileid: "74084671"
 * 如果打算使用 **密码同步**功能，则必须在 Windows Server 2008 R2 SP1 或更高版本上安装 Azure AD Connect 服务器。
 * 如果打算使用**组托管服务帐户**，则 Azure AD Connect 服务器必须位于 Windows Server 2012 或更高版本上。
 * Azure AD Connect 服务器必须安装 [.NET Framework 4.5.1](#component-prerequisites) 或更高版本以及 [Microsoft PowerShell 3.0](#component-prerequisites) 或更高版本。
-* Azure AD Connect 服务器不得启用 PowerShell 脚本组策略。
+* 如果使用 Azure AD Connect 向导来管理 ADFS 配置，则 Azure AD Connect 服务器不得启用“PowerShell 转换”组策略。 如果使用 Azure AD Connect 向导来管理同步配置，则可以启用 PowerShell 转换。
 * 如果正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或 Web 应用程序代理的服务器必须是 Windows Server 2012 R2 或更高版本。 [Windows 远程管理](#windows-remote-management) 才能进行远程安装。
 * 若要部署 Active Directory 联合身份验证服务，需要使用 [SSL 证书](#ssl-certificate-requirements)。
 * 若要部署 Active Directory 联合身份验证服务，需要配置 [名称解析](#name-resolution-for-federation-servers)。

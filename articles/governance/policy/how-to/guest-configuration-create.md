@@ -1,25 +1,25 @@
 ---
 title: 如何创建 Guest Configuration 策略
-description: 了解如何创建适用于 Windows 或 Linux VM 的 Azure Policy Guest Configuration 策略。
+description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux VM 的 Azure Policy Guest Configuration 策略。
 author: DCtheGeek
 ms.author: v-tawe
-origin.date: 09/20/2019
-ms.date: 12/02/2019
+origin.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 9506377b848a4dbbff2dfdc601fd0eb9d6602194
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 4a9b85c3877d7b1652485e5a5321958d848480b6
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335807"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建 Guest Configuration 策略
 
 Guest Configuration 使用 [Desired State Configuration](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) (DSC) 资源模块创建用于审核 Azure 计算机的配置。 DSC 配置定义计算机的应有状态。 如果配置评估失败，则会触发 Policy 效应 **auditIfNotExists**，并将计算机视为**不合规**。
 
-[Azure Policy Guest Configuration](/governance/policy/concepts/guest-configuration) 只可用于审核计算机内部的设置。 目前尚未提供修正计算机内部设置的功能。
+[Azure Policy Guest Configuration](../concepts/guest-configuration.md) 只可用于审核计算机内部的设置。 目前尚未提供修正计算机内部设置的功能。
 
 使用以下操作创建自己的配置用于验证 Azure 计算机的状态。
 
@@ -28,7 +28,7 @@ Guest Configuration 使用 [Desired State Configuration](https://docs.microsoft.
 
 ## <a name="add-the-guestconfiguration-resource-module"></a>添加 GuestConfiguration 资源模块
 
-若要创建 Guest Configuration 策略，必须添加资源模块。 此资源模块可以与本地安装的 PowerShell 一起使用，也可以与 [Azure PowerShell Docker 映像](https://hub.docker.com/rsdk-powershell/)一起使用。
+若要创建 Guest Configuration 策略，必须添加资源模块。 此资源模块可以与本地安装的 PowerShell 一起使用，也可以与 [Azure PowerShell Core Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell-core)一起使用。
 
 ### <a name="base-requirements"></a>基本要求
 
@@ -170,7 +170,8 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **路径**：输出文件夹路径。 此参数是可选的。 如果未指定，将在当前目录中创建包。
 - **ChefProfilePath**：InSpec 配置文件的完整路径。 仅当创建用于审核 Linux 的内容时才支持此参数。
 
-完成的包必须存储在可由托管虚拟机访问的位置。 例如，存储在 GitHub 存储库、Azure 存储库或 Azure 存储中。 如果你不希望公开该包，可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 还可以针对专用网络中的计算机实施[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，不过，这种配置仅适用于访问包，而不适用于与服务之间的通信。
+完成的包必须存储在可由托管虚拟机访问的位置。 例如，存储在 GitHub 存储库、Azure 存储库或 Azure 存储中。 如果你不希望公开该包，可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+还可以针对专用网络中的计算机实施[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，不过，这种配置仅适用于访问包，而不适用于与服务之间的通信。
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>处理 Guest Configuration 包中的机密
 
@@ -273,7 +274,7 @@ Guest Configuration 支持在运行时重写配置的属性。 此功能意味�
 
 cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名为 **Parameters** 的参数。 此参数采用哈希表定义（其中包含有关每个参数的所有详细信息），并自动创建全部所需的文件节来创建每个 Azure Policy 定义。
 
-以下示例将创建一个 Azure 策略用于审核某个服务，在分配策略时，用户可从服务列表中进行选择。
+以下示例将创建一个 Azure Policy用于审核某个服务，在分配策略时，用户可从服务列表中进行选择。
 
 ```powershell
 $PolicyParameterInfo = @(
@@ -360,7 +361,7 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.c
 
 ## <a name="policy-lifecycle"></a>策略生命周期
 
-使用自定义内容包发布自定义 Azure 策略后，若要发布新版本，必须更新两个字段。
+使用自定义内容包发布自定义 Azure Policy后，若要发布新版本，必须更新两个字段。
 
 - **版本**：运行 `New-GuestConfigurationPolicy` cmdlet 时，必须指定大于当前发布版本的版本号。 该属性会更新新策略文件中的 Guest Configuration 分配版本，使扩展能够识别到包已更新。
 - **contentHash**：此属性由 `New-GuestConfigurationPolicy` cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于发布的 `.zip` 文件，该属性必须正确。 如果仅更新 **contentUri** 属性（例如，当某人在门户中手动更改策略定义时），则扩展不会接受内容包。
@@ -370,7 +371,7 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.c
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>将 Windows 组策略内容转换为 Azure Policy Guest Configuration
 
 审核 Windows 计算机时，Guest Configuration 是 PowerShell Desired State Configuration 语法的实现。 DSC 社区已发布相应的工具用于将导出的组策略模板转换为 DSC 格式。 结合上述 Guest Configuration cmdlet 使用此工具，可以转换 Windows 组策略内容和包，并将其发布以供 Azure Policy 审核。 有关使用该工具的详细信息，请参阅文章[快速入门：将组策略转换为 DSC](https://docs.microsoft.com/powershell/scripting/dsc/quickstarts/gpo-quickstart)。
-转换内容后，创建包并将其发布为 Azure 策略的步骤与处理任何 DSC 内容的相应步骤相同。
+转换内容后，创建包并将其发布为 Azure Policy的步骤与处理任何 DSC 内容的相应步骤相同。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>可选：为 Guest Configuration 包签名
 
@@ -417,4 +418,4 @@ GitHub 上的[生成新的 GPG 密钥](https://help.github.com/en/articles/gener
 
 - 了解如何使用 [Guest Configuration](../concepts/guest-configuration.md) 审核 VM。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取合规性数据](getting-compliance-data.md)。
+- 了解如何[获取合规性数据](get-compliance-data.md)。

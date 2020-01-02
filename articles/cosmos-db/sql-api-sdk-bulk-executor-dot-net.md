@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-origin.date: 10/11/2019
-ms.date: 10/28/2019
+origin.date: 10/24/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: d39f1bae1579c3299415d11e0f569973c6370760
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 083c9848be82117946d3b3fa29e9d243d112d406
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335840"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -40,6 +40,9 @@ ms.locfileid: "72913208"
 |**API 文档**|[ 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**入门**|[批量执行程序库 .NET SDK 入门](bulk-executor-dot-net.md)|
 | **当前受支持的框架**| Azure .NET Framework 4.5.2、4.6.1 和 .NET Standard 2.0 |
+
+> [!NOTE]
+> 如果使用批量执行程序，请参阅 [.NET SDK](tutorial-sql-api-dotnet-bulk-import.md) 的最新版本 3.x，其中内置了批量执行程序。 
 
 <!-- Not Available on ## Release notes-->
 

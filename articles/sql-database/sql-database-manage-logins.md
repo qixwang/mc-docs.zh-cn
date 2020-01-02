@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 登录名和用户 | Microsoft 文档
+title: 登录名和用户
 description: 了解 SQL 数据库和 SQL 数据仓库安全管理，特别是如何通过服务器级的主体帐户管理数据库的访问和登录安全。
 keywords: sql 数据库安全,数据库安全管理,登录安全,数据库安全,数据库访问权限
 services: sql-database
@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/26/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: 2759866253d6bb3d6377456425ab75c7d1ff3706
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.date: 12/16/2019
+ms.openlocfilehash: f4bb37590ae3ad858d96a47a138613116c53b402
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70372956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336059"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -55,6 +55,9 @@ ms.locfileid: "70372956"
 - 可以在 master 数据库和服务器级 IP 防火墙规则中创建、更改及删除数据库、登录名与用户。
 - 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
 - 可以查看 `sys.sql_logins` 系统表。
+- 不能重命名。
+- 若要更改 Azure AD 管理员帐户，请使用门户或 Azure CLI。
+- 以后将无法更改服务器管理员帐户。
 
 ### <a name="configuring-the-firewall"></a>配置防火墙
 

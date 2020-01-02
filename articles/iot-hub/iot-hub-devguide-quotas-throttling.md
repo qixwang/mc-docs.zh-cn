@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 08/08/2019
 ms.author: v-yiso
-ms.date: 12/02/2019
-ms.openlocfilehash: 97f6acd6f0bd9e4bbe13827e79ac96d7e19dc92f
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.date: 12/23/2019
+ms.openlocfilehash: 4b756f01c3ebf0d272754c3e3db2bc04f7690aaf
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336337"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -110,7 +110,7 @@ IoT 中心强制实施其他操作限制：
 | 直接方法<sup>1</sup> | 直接方法有效负载的最大大小为 128 KB。 |
 | 自动设备配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 20 个模块。 每个付费 SKU 中心 100 个部署。 每个免费 SKU 中心 10 个部署。 |
-| 孪生<sup>1</sup> | 每个孪生部分（标记、所需属性、报告的属性）的最大大小为 8 KB |
+| 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 

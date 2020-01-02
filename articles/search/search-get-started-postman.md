@@ -1,23 +1,23 @@
 ---
-title: 快速入门：使用 REST API 在 Postman 中创建搜索索引 - Azure 搜索
-description: 了解如何使用 Postman 调用 Azure 搜索 REST API 并了解示例数据和定义。
+title: 快速入门：使用 REST API 在 Postman 中创建搜索索引
+titleSuffix: Azure Cognitive Search
+description: 在本 REST API 快速入门中，了解如何使用 Postman 调用 Azure 认知搜索 REST API 并了解示例数据和定义。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: quickstart
-origin.date: 09/10/2019
-ms.date: 09/29/2019
 ms.author: v-tawe
-ms.openlocfilehash: 3fd1db5824590b53bc6ba86e4903b36489b8d61f
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.devlang: rest-api
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 341af9441c2dd8f593f1d9d889d334f74b21af2f
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336466"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 搜索索引
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "71674447"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-若要探索 [Azure 搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)，最轻松的方式之一是使用 Postman 或其他 Web 测试工具来构建 HTTP 请求并检查响应。 在编写任何代码之前，可以使用适当的工具按照这些说明发送请求和查看响应。
+若要探索 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)，最轻松的方式之一是使用 Postman 或其他 Web 测试工具来构建 HTTP 请求并检查响应。 在编写任何代码之前，可以使用适当的工具按照这些说明发送请求和查看响应。
 
 本文说明如何以交互方式表述请求。 或者，你可以[下载并导入 Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)以使用预定义的请求。
 
@@ -36,25 +36,25 @@ ms.locfileid: "71674447"
 
 本快速入门需要以下服务和工具。 
 
-+ 使用 [Postman 桌面应用](https://www.getpostman.com/)将请求发送到 Azure 搜索。
++ 使用 [Postman 桌面应用](https://www.getpostman.com/)将请求发送到 Azure 认知搜索。
 
-+ [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
++ [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
 1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.chinacloudapi.cn`。
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
+![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="connect-to-azure-search"></a>连接到 Azure 搜索
+## <a name="connect-to-azure-cognitive-search"></a>连接到 Azure 认知搜索
 
-在本部分，我们将使用所选的 Web 工具来与 Azure 搜索建立连接。 每个工具都会持久保留会话的请求标头信息，这意味着，只需输入 api-key 和 Content-Type 一次即可。
+在本部分中，将使用所选的 Web 工具来与 Azure 认知搜索建立连接。 每个工具都会持久保留会话的请求标头信息，这意味着，只需输入 api-key 和 Content-Type 一次即可。
 
 使用任一工具都需要选择一个命令（GET、POST、PUT 等）并提供 URL 终结点；对于某些任务，需要在请求正文中提供 JSON。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为一个有效值。 添加 `$select=name` 以便仅返回每个索引的名称。 
 
@@ -62,18 +62,18 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2019-05-06`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
-请求标头组合包括两个元素：内容类型，以及用于在 Azure 搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
+请求标头组合包括两个元素：内容类型，以及用于在 Azure 认知搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-在 Postman 中，构建如以下屏幕截图所示的请求。 选择“GET”作为谓词，提供 URL，然后单击“发送”。   此命令连接到 Azure 搜索，读取索引集合，并在成功连接后返回 HTTP 状态代码 200。 如果服务已有索引，则响应还会包含索引定义。
+在 Postman 中，构建如以下屏幕截图所示的请求。 选择“GET”作为谓词，提供 URL，然后单击“发送”。   此命令连接到 Azure 认知搜索，读取索引集合，并在成功连接后返回 HTTP 状态代码 200。 如果服务已有索引，则响应还会包含索引定义。
 
 ![Postman 请求 URL 和标头](media/search-get-started-postman/postman-url.png "Postman 请求 URL 和标头")
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-在 Azure 搜索中，通常会先创建索引，然后再连同数据一起加载索引。 本任务将使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。 
+在 Azure 认知搜索中，通常会先创建索引，然后再连同数据一起加载索引。 本任务将使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)。 
 
 需扩展 URL 以包含 `hotels` 索引名称。
 
@@ -87,7 +87,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 4. 单击“Send”  。
 
-![请求正文中的索引 JSON 文档](media/search-get-started-postman/postman-request.png "")
+![在请求正文中为 JSON 文档编制索引](media/search-get-started-postman/postman-request.png "在请求正文中为 JSON 文档编制索引")
 
 ### <a name="index-definition"></a>索引定义
 
@@ -127,7 +127,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-创建索引和填充索引是分开的步骤。 在 Azure 搜索中，索引包含所有可搜索数据，这些数据可以作为 JSON 文档提供。 本任务将使用[添加、更新或删除文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 
+创建索引和填充索引是分开的步骤。 在 Azure 认知搜索中，索引包含所有可搜索数据，这些数据可以作为 JSON 文档提供。 本任务将使用[添加、更新或删除文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 
 
 需扩展 URL 以包含 `docs` 集合与 `index` 操作。
 
@@ -256,7 +256,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
  ![使用 URL 上的搜索字符串 GET](media/search-get-started-postman/postman-query.png "使用 URL 上的搜索字符串 GET")
 
-尝试其他查询示例来了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
+请尝试其他几个查询示例，以大致了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
 
 将当前 URL 替换为以下 URL，并每次单击“发送”以查看结果  。
 
@@ -280,7 +280,7 @@ https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/
 还可以使用[获取统计信息](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)来查询文档计数和索引大小： 
 
 ```
-https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quickstart/stats?api-version=2019-05-06`
+https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quickstart/stats?api-version=2019-05-06
 ```
 
 向 URL 添加 `/stats` 会返回索引信息。 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
@@ -289,7 +289,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quicks
 
 请注意，api-version 语法有所不同。 对于此请求，请使用 `?` 来追加 api-version。 `?` 将 URL 路径与查询字符串分隔开，而 & 将查询字符串中的每个“名称=值”对分隔开。 就此查询来说，api-version 是查询字符串中的第一个项，也是唯一项。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
@@ -299,7 +299,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quicks
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何执行核心任务，你可以继续使用其他 REST API 调用来获得更高级的功能，例如索引器或[设置认知搜索管道](cognitive-search-tutorial-blob.md)。 在下一步中，我们建议你访问以下链接：
+现在你已了解如何执行核心任务，你可以继续使用其他 REST API 调用来执行更多高级功能。 在下一步中，我们建议你访问以下链接：
 
 > [!div class="nextstepaction"]
-> [REST 教程：在 Azure 搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据](search-semi-structured-data.md)
+> [REST 教程：在 Azure 认知搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据](search-semi-structured-data.md)

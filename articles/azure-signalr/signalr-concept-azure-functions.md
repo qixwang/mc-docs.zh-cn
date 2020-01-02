@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Functions 和 Azure SignalR 服务生成实时应用
-description: 在无服务器应用程序中使用 Azure SignalR 服务的概述。
+title: 生成实时应用 - Azure Functions 和 Azure SignalR 服务
+description: 通过以下示例了解如何使用 Azure SignalR 服务开发实时无服务器 Web 应用程序。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-origin.date: 03/01/2019
-ms.date: 11/25/2019
+origin.date: 11/13/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 2e1f4973407892b9d89b0dd6412908af21222731
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 8abf1424e5d50f6f6ef0bd1d176f64de8af53f3d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179131"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336051"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>使用 Azure Functions 和 Azure SignalR 服务生成实时应用
 

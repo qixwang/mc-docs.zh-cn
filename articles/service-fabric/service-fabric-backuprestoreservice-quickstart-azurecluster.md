@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Service Fabric 中定期备份和还原 | Azure
+title: Azure Service Fabric 中的定期备份和还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 services: service-fabric
 documentationcenter: .net
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 05/24/2019
-ms.date: 08/05/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: cc97772b0bd46f7c0cbe60b8958af980b0efc672
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: 94b56d1d48c95a272828e7bfa08992f709f7681e
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336374"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原 
 > [!div class="op_single_selector"]
@@ -128,7 +128,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
-- 通过备份和还原服务，使用 X.509 安全性安装群集  。
+- 群集已设置为将 X.509 安全性与备份和还原服务配合使用  。
 - 在群集上部署了可靠有状态服务。 在本快速入门指南中，应用程序 URI 为 `fabric:/SampleApp`，属于此应用程序的可靠有状态服务的 URI 为 `fabric:/SampleApp/MyStatefulService`。 使用单个分区部署此服务，分区 ID 为 `974bd92a-b395-4631-8a7f-53bd4ae9cf22`。
 - 具有管理员角色的客户端证书安装计算机上 CurrentUser 证书存储位置的“我的”（个人）存储名称中，可从其中调用以下脚本    。 本示例使用 `1b7ebe2174649c45474a4819dafae956712c31d3` 作为此证书的指纹。 有关访问客户端证书的详细信息，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
 
@@ -183,6 +183,16 @@ $url = "https://mysfcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/BackupRest
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+1. 在 Service Fabric Explorer 中，导航到“备份”选项卡，然后选择“操作”>“创建备份策略”。
+
+    ![创建备份策略][6]
+
+2. 填写信息。 对于 Azure 群集，应选择“AzureBlobStore”。
+
+    ![创建备份策略 Azure Blob 存储][7]
+
 ### <a name="enable-periodic-backup"></a>启用定期备份
 在定义备份策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
 
@@ -207,6 +217,16 @@ $url = "https://mysfcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Applicatio
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+1. 选择应用程序，然后访问操作。 单击“启用/更新应用程序备份”。
+
+    ![启用应用程序备份][3]
+
+2. 最后，选择所需的策略，然后单击“启用备份”。
+
+    ![选择策略][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>验证定期备份是否正常工作
 
@@ -279,6 +299,12 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+若要在 Service Fabric Explorer 中查看备份，请导航到一个分区，然后选择“备份”选项卡。
+
+![枚举备份][5]
+
 ## <a name="limitation-caveats"></a>限制/注意事项
 - Service Fabric PowerShell cmdlet 处于预览模式。
 - Linux 上不支持 Service Fabric 群集。
@@ -287,7 +313,12 @@ FailureError            :
 - [了解定期备份配置](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/creation-bp.png
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

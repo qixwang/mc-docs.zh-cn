@@ -1,5 +1,5 @@
 ---
-title: 使用双重验证登录 - Azure AD
+title: 使用身份验证登录到工作或学校帐户 - Azure AD
 description: 了解如何使用各种双重验证方法登录到工作或学校帐户。
 services: active-directory
 author: eross-msft
@@ -9,20 +9,19 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-origin.date: 04/02/2017
-ms.date: 11/26/2019
+ms.date: 12/11/2019
 ms.author: v-junlch
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120ec85365b50d1e6babdb18be4629dcb3739c6c
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 53363f35b21462fae72b61a2697be93cad121ed5
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336021"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>使用双重验证登录到工作或学校帐户
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用双重验证方法登录到工作或学校帐户
 
 > [!NOTE]
 > 本文旨在逐步讲解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。

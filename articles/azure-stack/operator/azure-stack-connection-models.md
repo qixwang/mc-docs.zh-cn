@@ -17,12 +17,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
-ms.openlocfilehash: d7f19391327df9286ccebe8871873b75b183d022
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: e21b8d05cca4be4bb19a4dd8c838ba21603d9089
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335778"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack 集成系统连接模型
 如果你有兴趣购买 Azure Stack 集成系统，则需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)，以便 Azure Stack 部署确定系统将如何适应数据中心。 此外，还需要确定如何将 Azure Stack 集成到混合云环境。 本文概述了这些主要决策，包括 Azure 连接模型、标识存储选项和计费模型选项。
@@ -30,7 +30,7 @@ ms.locfileid: "74020259"
 如果你决定购买一个集成系统，原始设备制造商 (OEM) 硬件供应商可帮助更详细地指导你完成规划过程。 OEM 硬件供应商还会执行实际部署。
 
 ## <a name="choose-an-azure-stack-deployment-connection-model"></a>选择 Azure Stack 部署连接模型
-可以选择在连接到 Internet（和 Azure）时还是断开连接时部署 Azure Stack。 若要从 Azure Stack（包括 Azure Stack 和 Azure 之间的混合方案）获得最大效益，请在连接到 Azure 时进行部署。 此选项定义了哪些选项可用于标识存储（Azure Active Directory 或 Active Directory 联合身份验证服务）和计费模型（基于“即用即付”计费或基于容量计费），如以下图和表中所总结：
+可以选择在连接到 Internet（和 Azure）时还是断开连接时部署 Azure Stack。 若要从 Azure Stack（包括 Azure Stack 和 Azure 之间的混合方案）获得最大效益，请在连接到 Azure 时进行部署。 此选择定义了哪些选项可用于标识存储（Azure Active Directory 或 Active Directory 联合身份验证服务）和计费模型（基于“提前支付”计费或基于容量计费），如以下图和表中所总结：
 
 ![Azure Stack 部署和计费方案](media/azure-stack-connection-models/azure-stack-scenarios.png)
   

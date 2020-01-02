@@ -1,9 +1,10 @@
 ---
-title: Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则 | Microsoft Docs
+title: IP 防火墙规则
 description: 配置 SQL 数据库或 SQL 数据仓库防火墙的服务器级 IP 防火墙规则。 管理访问权限，并配置单一数据库或共用数据库的数据库级 IP 防火墙规则。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/12/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: d99d3dc0119e53a3bbced016173919a3928d6ba2
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 12/16/2019
+ms.openlocfilehash: 0123d3c226f3319ddd267d3d1faf3832c2f9ce7b
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041201"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335740"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
 
@@ -191,8 +192,10 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
+    -FirewallRuleName "ContosoIPRange" -StartIpAddress "192.168.1.0" -EndIpAddress "192.168.1.255"
 ```
+> [!TIP]
+> 对于 $servername，请指定服务器名称而不是完全限定的 DNS 名称，例如，指定 **mysqldbserver** 而不是 **mysqldbserver.database.chinacloudapi.cn**
 
 > [!TIP]
 > 若要查看快速入门上下文中的 PowerShell 示例，请参阅[创建数据库 - PowerShell](sql-database-powershell-samples.md)，以及[使用 PowerShell 创建单一数据库并配置 SQL 数据库服务器级 IP 防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)。
@@ -211,8 +214,10 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ```azurecli
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
--n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+-n ContosoIPRange --start-ip-address 192.168.1.0 --end-ip-address 192.168.1.255
 ```
+> [!TIP]
+> 对于 $servername，请指定服务器名称而不是完全限定的 DNS 名称，例如，指定 **mysqldbserver** 而不是 **mysqldbserver.database.chinacloudapi.cn**
 
 > [!TIP]
 > 若要查看快速入门上下文中的 CLI 示例，请参阅[创建数据库 - Azure CLI](sql-database-cli-samples.md)，以及[使用 Azure CLI 创建单一数据库并配置 SQL 数据库 IP 防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)。

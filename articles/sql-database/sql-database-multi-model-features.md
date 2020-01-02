@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库多模型功能 | Microsoft Docs
+title: 多模型功能
 description: Azure SQL 数据库允许使用同一数据库中的多个数据模型。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-manager: digimobile
 origin.date: 12/17/2018
-ms.date: 08/19/2019
-ms.openlocfilehash: 4c66a262d6d7c2ab0624b41c4405c0f8bd07ec2c
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: 0d9a368f8428c7554fd71bc871e0772d08bd0ba8
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544190"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336054"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
 
@@ -40,7 +39,7 @@ Azure SQL 提供以下多模型功能：
 - [JSON 功能](#json-features)：在表中插入 JSON 文档，将关系数据转换为 JSON 文档，或反之。 可以使用通过 JSON 函数增强的标准 Transact-SQL 语言来分析文档，并使用非聚集索引、列存储索引或内存优化表来优化查询。
 - [空间功能](#spatial-features)：存储地理或几何图形数据、使用空间索引为其编制索引，并使用空间查询检索数据。
 - [XML 功能](#xml-features)：在数据库中存储 XML 数据并为其编制索引，并使用本机 XQuery/XPath 运算来处理 XML 数据。 Azure SQL 数据库提供专用的内置 XML 查询引擎用于处理 XML 数据。
-- [键值对](#key-value-pairs)：具体而言，这不是一项支持的特殊功能，因为键值对原生可建模为包含两个列的表。
+- [键值对](#key-value-pairs)未明确作为特殊功能受到支持，因为键值对本身可作为包含两个列的表建模。
 
   > [!Note]
   > 可以在同一个 Transact-SQL 查询中使用 JSON Path 表达式、XQuery/XPath 表达式、空间函数和图形查询表达式来访问数据库中存储的任何数据。 此外，可执行 Transact-SQL 查询的任何工具或编程语言也可以使用该查询接口来访问多模型数据。 这是与 [Azure Cosmos DB](/cosmos-db/) 等多模型数据库之间的主要差别，后者为不同的数据模型提供专用的 API。

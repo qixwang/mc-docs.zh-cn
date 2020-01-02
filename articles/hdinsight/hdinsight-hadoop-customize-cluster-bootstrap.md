@@ -17,12 +17,12 @@ ms.topic: conceptual
 origin.date: 04/19/2019
 ms.date: 07/22/2019
 ms.author: v-yiso
-ms.openlocfilehash: bb49145fd9d2e20ca1fec4d95817b14f1c6607c2
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: c1a941242b39452147b87e836fed71649756bafb
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336166"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -68,7 +68,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 ```powershell
 # hive-site.xml configuration
-$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
+$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90s" }
 
 $config = New-AzHDInsightClusterConfig `
     | Set-AzHDInsightDefaultStorage `
@@ -94,17 +94,10 @@ New-AzHDInsightCluster `
 
 **若要验证更改，请执行以下操作：**
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧菜单中，单击“HDInsight 群集”  。 如果看不到该群集，请先单击“所有服务”。 
-3. 单击刚刚使用 PowerShell 脚本创建的群集。
-4. 单击边栏选项卡顶部的“仪表板”  打开 Ambari UI。
-5. 在左侧菜单中，单击“Hive”  。
-6. 在“摘要”中单击“HiveServer2”   。
-7. 单击“配置”  选项卡。
-8. 在左侧菜单中，单击“Hive”  。
-9. 单击“高级”选项卡  。
-10. 向下滚动，并展开“高级 hive 站点”  。
-11. 在此部分中查找 **hive.metastore.client.socket.timeout** 。
+1. 导航至 `https://CLUSTERNAME.azurehdinsight.cn/`，其中 `CLUSTERNAME` 是群集的名称。
+1. 从左侧菜单中，导航到“Hive”   > “配置”   > “高级”  。
+1. 展开“高级 hive-site”  。
+1. 找到 **hive.metastore.client.socket.timeout** 并确认该值为 **90s**。
 
 下面是有关自定义其他配置文件的更多示例：
 
@@ -157,10 +150,6 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ## <a name="appendix-powershell-sample"></a>附录：PowerShell 示例
 
 此 PowerShell 脚本创建一个 HDInsight 群集并自定义 Hive 设置。 请确保为 `$nameToken`、`$httpPassword` 和 `$sshPassword` 输入值。
-
-> [!WARNING]  
-> 存储帐户类型 `BlobStorage` 不能用于 HDInsight 群集。
-
 
 ```powershell
 ####################################
@@ -227,6 +216,8 @@ New-AzStorageAccount `
     -Kind StorageV2 `
     -EnableHttpsTrafficOnly 1
 
+# Note: Storage account kind BlobStorage cannot be used as primary storage.
+
 $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
                                 -Name $defaultStorageAccountName)[0].Value
@@ -240,7 +231,7 @@ New-AzStorageContainer `
 ####################################
 # Create a configuration object
 ####################################
-$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
+$hiveConfigValues = @{"hive.metastore.client.socket.timeout"="90s"}
 
 $config = New-AzHDInsightClusterConfig `
     | Set-AzHDInsightDefaultStorage `

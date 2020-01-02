@@ -7,16 +7,23 @@ origin.date: 09/23/2019
 ms.date: 11/25/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: 9334bc6b8111efdbf2a68a6687c28a0251ffa064
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 36aab8286acbfed1f47742e78c2abf220f5165c4
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336351"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 
 如果意外删除了 Azure 应用服务中的应用，可以使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令还原它。
+
+## <a name="re-register-app-service-resource-provider"></a>重新注册应用服务资源提供程序
+有些客户可能会遇到这样的问题：检索已删除的应用的列表时失败。 若要解决此问题，请运行以下命令：
+
+```powershell
+ Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
+```
 
 ## <a name="list-deleted-apps"></a>列出已删除的应用
 
@@ -25,7 +32,7 @@ ms.locfileid: "74556036"
 若要获取有关特定的已删除应用的详细信息，可以使用：
 
 ```powershell
-Get-AzDeletedWebApp -Name <your_deleted_app>
+Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_location> 
 ```
 
 详细信息包括:

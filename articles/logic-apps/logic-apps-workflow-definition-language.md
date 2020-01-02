@@ -1,6 +1,6 @@
 ---
-title: 工作流定义语言的架构参考 - Azure 逻辑应用
-description: Azure 逻辑应用中工作流定义语言架构的参考指南
+title: 工作流定义语言架构 - Azure 逻辑应用
+description: Azure 逻辑应用中工作流定义语言的架构引用
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,15 +9,15 @@ manager: jeconnoc
 ms.topic: reference
 origin.date: 05/13/2019
 ms.author: v-yiso
-ms.date: 09/09/2019
-ms.openlocfilehash: df4c689c88f2179cf91c71e707f1df29d2afc7cd
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 12/23/2019
+ms.openlocfilehash: a198d1258af3ad5dd3ac2da7a0a473af411f590a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334560"
 ---
-# <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用
+# <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用指南
 
 在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中创建逻辑应用时，该逻辑应用会采用一个基础工作流定义，其中描述了在逻辑应用中运行的实际逻辑。 该工作流定义使用 [JSON](https://www.json.org/)，并遵循工作流定义语言架构验证的结构。 本参考文档将会概述此结构，并介绍该架构如何定义工作流定义中的特征。
 

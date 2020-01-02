@@ -1,25 +1,25 @@
 ---
 title: 以编程方式创建策略
-description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure Policy 的策略。
+description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 REST API 以编程方式创建和管理适用于 Azure Policy 的策略。
 author: DCtheGeek
 ms.author: v-tawe
 origin.date: 01/31/2019
-ms.date: 12/02/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 3eb26f058001690cf5eb8f3070501ad26324e320
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 6d46ce02ccb87ecf29f90386aaa0ccd95316fbce
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335806"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
 本文逐步讲解如何以编程方式创建和管理策略。 Azure Policy 定义对资源强制实施不同的规则和效果。 强制实施可确保资源始终符合企业标准和服务级别协议。
 
-有关符合性的信息，请参阅[获取符合性数据](getting-compliance-data.md)。
+有关符合性的信息，请参阅[获取符合性数据](get-compliance-data.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

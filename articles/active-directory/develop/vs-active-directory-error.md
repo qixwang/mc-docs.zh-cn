@@ -1,31 +1,29 @@
 ---
-title: 如何使用 Azure Active Directory 连接服务诊断错误
+title: 使用 Azure Active Directory 连接服务诊断错误
 description: Active Directory 连接服务可检测到不兼容的身份验证类型
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
-ms.prod: visual-studio-dev15
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-origin.date: 03/12/2018
-ms.date: 05/09/2019
+ms.date: 12/10/2019
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b663f2158b399d741869d20715fa57d26dd3ea
-ms.sourcegitcommit: 1ebc1e0b99272e62090448d1cd2af385b74ef4b3
+ms.openlocfilehash: 596d86f63272d5552acce74b72cb5845c26dad40
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335247"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
 
-检测以前的身份验证代码时，Azure Active Directory 连接服务器检测到不兼容的身份验证类型。
+检测以前的身份验证代码时，Azure Active Directory 连接服务检测到了不兼容的身份验证类型。
 
-若要正确检测某个项目中以前的身份验证代码，必须生成该项目。  如果看到此错误，并且项目中不存在以前的身份验证代码，请重新生成项目并重试。
+若要正确检测某个项目中以前的身份验证代码，必须重新生成该项目。 如果看到此错误，并且项目中不存在以前的身份验证代码，请重新生成项目并重试。
 
 ## <a name="project-types"></a>项目类型
 
@@ -98,4 +96,4 @@ ms.locfileid: "65517457"
 
 有关详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->

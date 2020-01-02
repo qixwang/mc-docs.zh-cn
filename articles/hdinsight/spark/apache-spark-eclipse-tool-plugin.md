@@ -11,14 +11,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 11/30/2017
-ms.date: 10/28/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 8f57d35b19ba8032b844536f1f5076459f1dbcbd
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 68a5485d1fc0d5510a3404bd3b8cedb1e7556987
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72584073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335881"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -86,7 +86,8 @@ ms.locfileid: "72584073"
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
    > ![Eclipse 中的存储资源管理器](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
-
+   >
+   > 对于仅使用键盘的用户，当前焦点位于“存储密钥”  时，需要使用 **Ctrl + TAB** 来聚焦于对话框中的下一个字段。
 1. 单击“确定”按钮后，如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
 
    ![链接的群集](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)

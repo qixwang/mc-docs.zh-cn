@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 origin.date: 08/16/2018
-ms.date: 09/02/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: ced2f4c09d82f9023915811a5a53a2678cd3a6dc
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: f92df53c24b36129bafc6949652dddae60c10a86
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336353"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "70174151"
 
 [Azure Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组联网的虚拟机，可在其中部署和管理微服务。  在 Azure 中运行的 Service Fabric 群集是一种 Azure 资源，通过 Azure 资源管理器进行部署。 本文介绍如何使用资源管理器在 Azure 中安全地部署 Service Fabric 群集。 可以使用默认模板或自定义模板。  如果尚无自定义模板，请[了解如何创建自定义模板](service-fabric-cluster-creation-create-template.md)。
 
-群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前，请先阅读 [Service Fabric 群集安全性方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+为保护群集而选择的安全类型（即：Windows 标识、X509 等）必须在最初创建群集时指定，并且此后不能更改。 在设置群集之前，请先阅读 [Service Fabric 群集安全性方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 若要创建生产群集以运行生产工作负载，我们建议你首先阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)。
 
@@ -47,6 +47,8 @@ ms.locfileid: "70174151"
 * [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLI 模块](https://docs.azure.cn/cli/sf?view=azure-cli-latest)
 
+    <!--Correct on URL WITHOUT az-SF-CLI-module-->
+    
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
 运行本文中任何命令之前，请先登录到 Azure。
@@ -293,7 +295,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ## <a name="next-steps"></a>后续步骤
 此时 Azure 中已正在运行一个安全的群集。 接下来，请[连接到该群集](service-fabric-connect-to-secure-cluster.md)，了解如何[管理应用程序机密](service-fabric-application-secret-management.md)。
 
-<!--Not Available on [Microsoft.ServiceFabric/clusters template reference](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.servicefabric/clusters)-->
+<!--Not Available on [Microsoft.ServiceFabric/clusters template reference](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters)-->
 <!-- Links -->
 
 [azure-powershell]: https://docs.microsoft.com/powershell/azure/install-Az-ps
@@ -301,4 +303,4 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md
 
-<!--Update_Description: update meta properties, wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

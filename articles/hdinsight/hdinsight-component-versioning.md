@@ -10,49 +10,50 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
-origin.date: 06/07/2019
-ms.date: 10/21/2019
+origin.date: 11/21/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 31b4cb0f3437f7cf234186e0b6f6cd96c2018486
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.openlocfilehash: 9f86fe20d7432bc09e459496282cc94a514cfe2d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335932"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
 了解 Microsoft Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 生态系统组件和版本，以及企业安全性套餐。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。 
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>随不同 HDInsight 版本提供的 Apache Hadoop 组件
-Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版本选项创建 HDP 分发版的一个特定版本和该分发版内包含的一组组件。 从 2017 年 4 月 4 日起，Azure HDInsight 使用的默认群集版本是 3.6 并基于 HDP 2.6。
+
+Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 年 4 月 4 日起，Azure HDInsight 使用的默认群集版本是 3.6。
 
 下表中列出了与 HDInsight 群集版本关联的组件版本： 
 
 > [!NOTE]
 > HDInsight 服务的默认版本可能会更改，不会另行通知。 如果依赖某个版本，建议在使用 .NET SDK 以及 Azure PowerShell 和 Azure 经典 CLI 创建群集时指定 HDInsight 版本。
 
-| 组件 | HDInsight 4.0 | HDInsight 3.6（默认） | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 |
-|---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Apache Hadoop 和 YARN | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
-| Apache Tez | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
-| Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
-| Apache Hive | 3.1.0 | 2.1.0、1.2.1 | - | - | - | - |
-| Apache Tez Hive2 | - | 0.8.4 | - | - | - | - |
-| Apache Ranger | 1.1.0 | 0.7.0 | 0.6.0 | - | - | - |
-| Apache HBase | 2.0.1 | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
-| Apache Sqoop | 1.4.7 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.5 |
-| Apache Oozie | 4.3.1 | 4.2.0 | 4.2.0 | 4.2.0 | 4.2.0 | 4.1.0 |
-| Apache Zookeeper | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 |
-| Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
-| Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
-| Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1、2.4 | 2.3.0、2.2.0、2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1（仅限 Windows） |
-| Apache Livy | 0.5 | 0.4、0.4、0.3 | 0.3 | 0.3 | 0.2 | - |
-| Apache Kafka | 1.1.1、2.1 | 1.1、1.0 *（请参阅下面的“注意”） | 0.10.0 | 0.9.0 | - | - |
-| Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
-| Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
-| Mono | 4.2.1 | 4.2.1 | 4.2.1 | 3.2.8 | - | - |
+| 组件              | HDInsight 4.0 | HDInsight 3.6（默认）     |
+|------------------------|---------------|-----------------------------|
+| Apache Hadoop 和 YARN | 3.1.1         | 2.7.3                       |
+| Apache Tez             | 0.9.1         | 0.7.0                       |
+| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Hive            | 3.1.0         | 2.1.0、1.2.1                |
+| Apache Tez Hive2       | -             | 0.8.4                       |
+| Apache Ranger          | 1.1.0         | 0.7.0                       |
+| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache Sqoop           | 1.4.7         | 1.4.6                       |
+| Apache Oozie           | 4.3.1         | 4.2.0                       |
+| Apache Zookeeper       | 3.4.6         | 3.4.6                       |
+| Apache Storm           | -             | 1.1.0                       |
+| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Phoenix         | 5             | 4.7.0                       |
+| Apache Spark           | 2.3.1、2.4    | 2.3.0、2.2.0、2.1.0         |
+| Apache Livy            | 0.5           | 0.4、0.4、0.3               |
+| Apache Kafka           | 1.1.1、2.1    | 1.1、1.0 *（请参阅下面的“注意”） |
+| Apache Ambari          | 2.7.0         | 2.6.0                       |
+| Apache Zeppelin        | 0.8.0         | 0.7.0                       |
+| Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
 > 出于系统性能考量，对 Kafka 版本 0.10 的支持已在 2019 年 3 月过期。
@@ -66,17 +67,19 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 请参阅 [HDInsight 发行说明](hdinsight-release-notes.md)，了解 HDInsight 最新版本的更多发行说明。
 
 ## <a name="supported-hdinsight-versions"></a>支持的 HDInsight 版本
-下表列出了 HDInsight 版本。 其中列出了与每个 HDInsight 版本对应的 HDP 版本以及产品发行日期。 还提供了支持到期日期和停用日期（如果已知这些日期）。
+
+下表列出了 HDInsight 版本。 还提供了支持到期日期和停用日期（如果已知这些日期）。
 
 ### <a name="available-versions"></a>可用版本
 
 下表列出了 Azure 门户中可用的 HDInsight 版本以及其他部署方法（比如 PowerShell 和 .NET SDK）。
 
-| HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 6 月 30 日 |2020 年 12 月 31 日 |是 |是 |
+| HDInsight 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
+| --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 12 月 31 日 |2020 年 12 月 31 日 |是 |是 |
 
+Spark 2.1、2.2 和 Kafka 1.0 支持将于 2020 年 6月 30 日到期。
 
 > [!NOTE]  
 > 在对某个版本的支持到期后，不能通过 Microsoft Azure 门户获得该版本。 但是，可继续使用 Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 命令中的 `Version` 参数和 .NET SDK 获取群集版本，直到版本停用的那天为止。

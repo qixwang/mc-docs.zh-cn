@@ -11,17 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-origin.date: 11/08/2019
-ms.date: 11/28/2019
+ms.date: 12/10/2019
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cda7db6d1fc760fa887b3b325f97129b32f09898
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 07eab0b643001fee6be3ed3752deca6e951d2259
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336090"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
@@ -58,6 +57,9 @@ ms.locfileid: "74655412"
     ![角色设置页中的角色分配表](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
 1. 使用“通知”选项卡或页面底部的  “下一步:  激活”按钮即可转到此角色的通知设置选项卡。 这些设置控制与此角色相关的所有电子邮件通知。
+
+    > [!NOTE]
+    > 此通知 UI 当前在 Azure 区域和订阅中推出。 如果无法配置这些具体的通知，请在一天或两天后再次查看。
 
     ![角色设置页中的角色“通知”选项卡](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 
@@ -131,3 +133,4 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 - [在 Privileged Identity Management 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)
 - [在 Privileged Identity Management 中为 Azure 资源角色配置安全警报](pim-resource-roles-configure-alerts.md)
 
+<!-- Update_Description: wording update -->

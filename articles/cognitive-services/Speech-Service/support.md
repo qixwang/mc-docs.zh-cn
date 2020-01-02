@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 11/25/2019
+origin.date: 11/05/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 2ea48aa7e618d115f2884f309e6e2f328126b189
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9d41b3b502f8fc28221ee0e9dac5cf4506ea0940
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336082"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
@@ -62,12 +62,7 @@ Azure 客户可在 Azure 门户中创建和管理支持请求。
 
 Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，社区成员和 Microsoft 团队成员可直接助你解决问题。
 
-如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 表述问题时，请使用以下标记之一：
-
-|组件/方面  |Tags  |
-|---------|---------|
-|语音识别 |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|常规语音 SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+如果未能通过搜索找到你的问题的答案，请通过使用 [microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech) 标记在 Stack Overflow 中提交新问题。
 
 > [!TIP]
 > Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  

@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 origin.date: 09/11/2018
-ms.date: 09/02/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 9b31eda37090bc7b3a9bedb7e5cad6f339691eea
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 8b305e7654524a6f70f15c2eb0da2bcc205fe89f
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335152"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -68,10 +68,11 @@ ms.locfileid: "70174018"
 * 至少 40 GB 可用磁盘空间
 * 一个 4 核心或更多核心的 CPU
 * 与所有计算机的安全网络建立连接
-* 已安装 Windows Server 操作系统（有效版本：2012 R2、2016、1709、1803 或 2019）
+* 已安装 Windows Server 操作系统（有效版本：2012 R2、2016、1709 或 1803）。 Service Fabric 版本 6.4.654.9590 及更高版本还支持 Server 2019 和 1809。
 * [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)的完整安装版
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
+* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * 应在所有计算机上运行 [RemoteRegistry 服务](https://technet.microsoft.com/library/cc754820)
+* Service Fabric 安装驱动器必须是 NTFS 文件系统
 
 部署和配置群集的群集管理员必须拥有每台计算机的 [管理员权限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) 。 不能在域控制器上安装 Service Fabric。
 
@@ -139,7 +140,7 @@ ms.locfileid: "70174018"
     | FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>使用 TestConfiguration 脚本验证环境
-可以在独立包中找到 TestConfiguration.ps1 脚本。 它作为最佳做法分析器，可验证上述某些条件，并应该用作健全性检查来验证是否可以在给定环境上部署群集。 如果出现任何故障，请参阅[环境设置](service-fabric-cluster-standalone-deployment-preparation.md)下的列表进行故障排除。 
+可以在独立包中找到 TestConfiguration.ps1 脚本。 它作为最佳做法分析器，可验证上述某些条件，并应该用作健全性检查来验证是否可以在给定环境上部署群集。 如果出现任何故障，请参阅[环境设置](service-fabric-cluster-standalone-deployment-preparation.md)下的列表进行故障排除。
 
 可以在对群集配置文件中列为节点的所有计算机具有管理员访问权限的任何计算机上运行此脚本。 运行此脚本的计算机不必要是群集的一部分。
 
@@ -161,10 +162,10 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-目前，此配置测试模块不会验证安全配置，因此必须单独执行验证。  
+目前，此配置测试模块不会验证安全配置，因此必须单独执行验证。
 
 > [!NOTE]
-> 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](/service-fabric/service-fabric-support)告知我们。   
+> 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](/service-fabric/service-fabric-support)告知我们。
 > 
 > 
 

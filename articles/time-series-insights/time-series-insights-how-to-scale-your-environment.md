@@ -10,15 +10,15 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 10/10/2019
-ms.date: 12/02/2019
+origin.date: 11/22/2019
+ms.date: 12/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e03f08b833ae3b1d8c57f4885c0bd0258cf8e7dc
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: a41f20b7f87a0c76a86fa7bb7669aef587fb18e7
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389099"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335692"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
@@ -36,13 +36,13 @@ ms.locfileid: "74389099"
 
 1. 在 Azure 门户中，找到并选择自己的时序见解环境。
 
-1. 在时序见解环境的菜单中，选择“配置”  。
+1. 在时序见解环境的菜单中，选择“存储配置”  。
 
-   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![配置时序见解容量](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. 调整“容量”  滑块来选择满足入口速率和存储容量需求的容量。 请注意，**入口速率**、**存储容量**和**估计成本**会动态更新，以显示更改产生的影响。
 
-   [![滑块](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![使用容量滑块配置环境](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    或者，可以在滑块右侧的文本框中键入容量乘数的数字。
 

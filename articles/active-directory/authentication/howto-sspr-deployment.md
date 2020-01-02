@@ -1,23 +1,22 @@
 ---
-title: 自助式密码重置部署计划 - Azure Active Directory
+title: 自助式密码重置部署 - Azure Active Directory
 description: 有关成功实现 Azure AD 自助式密码重置的策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 06/24/2019
-ms.date: 11/28/2019
+ms.date: 12/11/2019
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300cc1a8469edb1002cc9d477dcfcc96b1f81c0c
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 67f17eb0a140236feb98b08d7960eb5375cfea21
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334930"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>部署 Azure AD 自助式密码重置
 
@@ -127,7 +126,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户必须为其
 | 强制实施密码重置注册时用户登录 | 提示用户注册安全信息 |
 | 完成密码重置注册时用户登录 | 不提示用户注册安全信息 |
 | 当用户没有许可证时可以访问 SSPR 门户 | 可访问 |
-| 用户注册后从 Windows 10 AADJ 或 H+AADJ 设备锁屏界面重置用户密码 | 用户可以重置密码 |
+| 用户注册后，从已加入 Windows 10 Azure AD 或已加入混合 Azure AD 的设备锁定屏幕重置用户密码 | 用户可以重置密码 |
 | 管理员可以近实时地使用 SSPR 注册和使用情况数据 | 可通过审核日志使用 |
 
 ### <a name="support-plan"></a>支持计划

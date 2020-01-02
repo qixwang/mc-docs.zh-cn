@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure SQL 数据库单一数据库 | Microsoft Docs
+title: 什么是单一数据库
 description: 了解 Azure SQL 数据库中的单一数据库
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 04/08/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: b11436db1a2667b656c4936a63416055cb26d09a
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 12/16/2019
+ms.openlocfilehash: 6658829a48a1dc3783421caae0607967984bc92c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334946"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -30,7 +30,7 @@ ms.locfileid: "73041186"
 
 ## <a name="dynamic-scalability"></a>动态可伸缩性
 
-可以在无服务器（预览版）计算层级中以低成本构建第一个基于小型单一数据库的应用，或者在预配的计算层级中构建小型计算大小。 可以根据解决方案的需要，随时以手动或编程方式更改[计算或服务层级](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+可以在无服务器计算层级中，或者在预配的计算层级中采用小型计算大小，以低成本构建第一个基于小型单一数据库的应用。 可以根据解决方案的需要，随时以手动或编程方式更改[计算或服务层级](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 ## <a name="single-databases-and-elastic-pools"></a>单一数据库和弹性池
 

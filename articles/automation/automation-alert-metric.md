@@ -9,12 +9,12 @@ origin.date: 11/01/2018
 ms.date: 08/26/2019
 ms.topic: article
 manager: digimobile
-ms.openlocfilehash: 1feef39c3a0b025a1b6677af63d878bab09c2556
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 68efee372190c31427502b1a7f3cc807cb937af2
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335852"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
 
@@ -61,11 +61,11 @@ ms.locfileid: "69993821"
 
 1. 在“操作”部分的“操作类型”下，选择“电子邮件/短信”。   
 
-1. 在“电子邮件/短信/推送/语音”  页面上，为其提供一个名称。 选中“电子邮件”  复选框，然后输入要使用的有效电子邮件地址。
+1. 在“电子邮件/短信”  页面上，为其提供一个名称。 选中“电子邮件”  复选框，然后输入要使用的有效电子邮件地址。
 
    ![配置电子邮件操作组](./media/automation-alert-activity-log/add-action-group.png)
 
-1. 单击“电子邮件/短信/推送/语音”页面上的“确定”以将其关闭，然后单击“确定”以关闭“添加操作组”页面。     在此页中指定的名称将保存为“操作名称”。 
+1. 单击“电子邮件/短信”页面上的“确定”以将其关闭，然后单击“确定”以关闭“添加操作组”页面。     在此页中指定的名称将保存为“操作名称”。 
 
 1. 完成后，单击“保存”  。 此操作会创建当 Runbook 以特定状态完成时将发出警报的规则。
 

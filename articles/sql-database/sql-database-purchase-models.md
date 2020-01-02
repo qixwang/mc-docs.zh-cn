@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库购买模型 | Microsoft Docs
+title: 购买模型
 description: 了解适用于 Azure SQL 数据库的购买模型。
 services: sql-database
 ms.service: sql-database
@@ -9,22 +9,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: ''
-manager: digimobile
+ms.reviewer: carlrab
 origin.date: 04/26/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: ac1e4a5e101348ae7fbf4a7a30951175ec58deaa
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: 48992b900346ad24a457c0fb8cbc36a08deb9e4c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336127"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 购买模型之间进行选择
 
 使用 Azure SQL 数据库，可以轻松购买适合你的性能和成本要求的完全托管的平台即服务 (PaaS) 数据库引擎。 可以根据选择用于 Azure SQL 数据库的部署模型选择适合需求的购买模型：
 
-- [基于虚拟核心 (vCore) 的购买模型](sql-database-service-tiers-vcore.md)（推荐）。 此购买模型允许在预配的计算层级和无服务器（预览）计算层级之间进行选择。 使用预配的计算层级时，可以选择始终为工作负荷预配的确切计算资源。 使用无服务器计算层级时，可以指定对计算资源进行的自动缩放（在可配置的计算范围内）。 使用此计算层级时，还可以根据工作负荷活动自动暂停和恢复数据库。 预配计算层级中单位时间的 vCore 单位价格低于无服务器计算层级中的相应价格。
+- [基于虚拟核心 (vCore) 的购买模型](sql-database-service-tiers-vcore.md)（推荐）。 此购买模型允许在预配的计算层级和无服务器计算层级之间进行选择。 使用预配的计算层级时，可以选择始终为工作负荷预配的确切计算资源。 使用无服务器计算层级时，可以指定对计算资源进行的自动缩放（在可配置的计算范围内）。 使用此计算层级时，还可以根据工作负荷活动自动暂停和恢复数据库。 预配计算层级中单位时间的 vCore 单位价格低于无服务器计算层级中的相应价格。
 - [基于数据库事务单位 (DTU) 的购买模型](sql-database-service-tiers-dtu.md)。 此购买模型针对常见工作负荷提供均衡的捆绑计算和存储包。
 
 不同的购买模型适用于不同的 Azure SQL 数据库部署模型：
@@ -55,7 +54,7 @@ ms.locfileid: "69544177"
 
 ### <a name="serverless-compute-costs"></a>无服务器计算成本
 
-对于无服务器计算层级，请参阅 [SQL 数据库无服务器（预览版）](sql-database-serverless.md)，了解如何定义计算容量以及如何计算成本。
+对于无服务器计算层级，请参阅 [SQL 数据库无服务器](sql-database-serverless.md)，其中介绍了如何定义计算容量以及如何计算成本。
 
 ## <a name="storage-costs"></a>存储费用
 

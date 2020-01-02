@@ -1,19 +1,19 @@
 ---
 title: Azure 防火墙日志分析示例
-description: Azure 防火墙日志分析示例
+description: Azure Monitor 日志可用于分析 Azure 防火墙。 示例文件是在 Azure Monitor 的视图设计器中构建的。
 services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: article
-origin.date: 09/17/2019
-ms.date: 09/23/2019
+origin.date: 11/19/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 653e98d88d0a2da451f5f3731d100f965aea2dd5
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: f50a2734df35b5c6490f343cb82c1a8f00ccff24
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334991"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
 

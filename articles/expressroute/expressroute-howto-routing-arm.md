@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 02/26/2019
+origin.date: 04/24/2019
 ms.author: v-yiso
-ms.date: 10/01/2019
-ms.openlocfilehash: 27347ba80bd81cc00e26fe8a91afd6c470482976
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.date: 12/23/2019
+ms.openlocfilehash: afc774d4553ea9f88987bc1257a896cf8086ae77
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336119"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
@@ -51,7 +51,7 @@ ms.locfileid: "71330381"
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 
 ## <a name="msft"></a>Microsoft 对等互连
@@ -124,6 +124,13 @@ ms.locfileid: "71330381"
    * 可选：
      * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
      * MD5 哈希（如果选择使用）。
+
+> [!IMPORTANT]
+> Microsoft 会验证是否在 Internet 路由注册表中为你分配了指定的“播发公共前缀”和“对等 ASN”（或“客户 ASN”）。 如果要从另一个实体获取公共前缀，并且该分配没有记录在路由注册表中，则自动验证将不会完成，并且将需要手动验证。 如果自动验证失败，则会在“Get-AzExpressRouteCircuitPeeringConfig”（请参阅下面的“获取 Microsoft 对等互连详细信息”）命令的输出中看到作为”需要验证”的“AdvertisedPublicPrefixesState”。 
+> 
+> 如果看到消息“需要验证”，请收集显示公共前缀将由路由注册表中作为前缀所有者列出的实体分配给你组织的文档，并通过开具支持票证提交这些文档进行手动验证，如下所示。 
+> 
+>
 
    使用以下示例为线路配置 Microsoft 对等互连：
 

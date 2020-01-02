@@ -1,18 +1,18 @@
 ---
 title: Azure CLI 示例 - Azure SignalR 服务
-description: Azure CLI 示例 - Azure SignalR 服务
+description: 通过真实示例了解用于 Azure SignalR 服务的 Azure CLI。 你将了解如何创建 SignalR 服务以及更多 Azure 服务。
 author: sffamily
 ms.service: signalr
 ms.topic: reference
-origin.date: 03/01/2019
-ms.date: 11/25/2019
+origin.date: 11/13/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: dda9c4145c6db07ba8a3bb7447e1f2be8358865f
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: f45cdeb4b056e112fd13637ffcecd770ecbe92f2
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179059"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334851"
 ---
 # <a name="azure-cli-reference"></a>Azure CLI 参考
 

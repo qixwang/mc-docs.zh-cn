@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/28/2019
-ms.date: 10/28/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: 53c6a5258cd2ffc1eef37f6f3de604057b319773
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 8bf041d58ac3e4298575f069eebdadd2084cd90d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336003"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet) 访问
 
@@ -70,7 +70,7 @@ ms.locfileid: "72913294"
 
     ![为新虚拟网络选择虚拟网络和子网](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-如果 Azure Cosmos DB 帐户由其他 Azure 服务（例如 Azure 搜索）使用，或者从流分析或 Power BI 进行访问，请选择“接受来自多区域 Azure 数据中心内部的连接”来允许这种访问。 
+如果 Azure Cosmos DB 帐户由其他 Azure 服务（例如 Azure 认知搜索）使用，或者从流分析或 Power BI 进行访问，请选择“接受来自多区域 Azure 数据中心内部的连接”来允许这种访问。 
 
 为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。  有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。 
 
@@ -386,4 +386,4 @@ az network vnet subnet update \
 
 * 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](firewall-support.md)一文。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

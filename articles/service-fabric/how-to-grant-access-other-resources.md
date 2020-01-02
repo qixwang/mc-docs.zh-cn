@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 08/08/2019
-ms.date: 09/30/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 26cd46ed2f8452348b3173c54c3834fb8a95990f
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 45906fcbf5bb7e6e814327e06d36fa3d202f9bbb
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336185"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限（预览）
 
@@ -44,9 +44,14 @@ ms.locfileid: "71340751"
 
 ![Key Vault 访问策略](../key-vault/media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-以下示例演示如何通过模板部署授予对保管库的访问权限；请将以下代码片段添加为模板的 `resources` 元素下的另一个条目。
+以下示例演示如何通过模板部署授予对保管库的访问权限；请将以下代码片段添加为模板的 `resources` 元素下的另一个条目。 此示例演示如何为用户分配的标识类型和系统分配的标识类型分别授予访问权限 - 请选择适用的一个。
 
 ```json
+    # under 'variables':
+    "variables": {
+        "userAssignedIdentityResourceId" : "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]",
+    }
+    # under 'resources':
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
@@ -68,6 +73,42 @@ ms.locfileid: "71340751"
             ]
         }
     },
+```
+对于系统分配的托管标识：
+```json
+    # under 'variables':
+    "variables": {
+        "sfAppSystemAssignedIdentityResourceId": "[concat(resourceId('Microsoft.ServiceFabric/clusters/applications/', parameters('clusterName'), parameters('applicationName')), '/providers/Microsoft.ManagedIdentity/Identities/default')]"
+    }
+    # under 'resources':
+    {
+        "type": "Microsoft.KeyVault/vaults/accessPolicies",
+        "name": "[concat(parameters('keyVaultName'), '/add')]",
+        "apiVersion": "2018-02-14",
+        "properties": {
+            "accessPolicies": [
+            {
+                    "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+                    "tenantId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').tenantId]",
+                    "objectId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').principalId]",
+                    "dependsOn": [
+                        "[variables('sfAppSystemAssignedIdentityResourceId')]"
+                    ],
+                    "permissions": {
+                        "secrets": [
+                            "get",
+                            "list"
+                        ],
+                        "certificates": 
+                        [
+                            "get", 
+                            "list"
+                        ]
+                    }
+            },
+        ]
+        }
+    }
 ```
 
 有关更多详细信息，请参阅[保管库 - 更新访问策略](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。

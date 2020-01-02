@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库单一/共用数据库文件空间管理 | Microsoft Docs
+title: 单一/共用数据库文件空间管理
 description: 本页介绍了如何管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一数据库或共用数据库，以及如何执行数据库收缩操作。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnick, carlrab
-manager: digimobile
 origin.date: 03/12/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 03f6b42e8821db0700af7d6ee7a020d4f46db338
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: 06d768108ca04330d411cfe439125ba9f7d5c2ca
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335423"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间
 
@@ -28,10 +27,6 @@ ms.locfileid: "69544205"
 > 本文不适用于 Azure SQL 数据库中的托管实例部署选项。
 
 ## <a name="overview"></a>概述
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 使用 Azure SQL 数据库中的单一数据库和共用数据库时，可能存在如下所述的工作负荷模式：其中数据库基础数据文件的分配可能会大于已使用数据页的数量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
 
@@ -58,7 +53,7 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 SQL 数据库服务不会自动收缩数据文件来回收未使用的分配空间，因为这可能会影响数据库的性能。  但是，客户可遵循[回收未使用的分配空间](#reclaim-unused-allocated-space)中所述的步骤，在其选定的时间通过自助式操作收缩数据文件。
 
 > [!NOTE]
-> 与数据文件不同，SQL 数据库服务会自动收缩日志文件，因为该操作不会影响数据库的性能。 
+> 与数据文件不同，SQL 数据库服务会自动收缩日志文件，因为该操作不会影响数据库的性能。
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>了解数据库存储空间的类型
 
@@ -70,7 +65,6 @@ SQL 数据库服务不会自动收缩数据文件来回收未使用的分配空�
 |**已分配的数据空间**|可用于存储数据库数据的格式化文件空间量。|已分配的空间量会自动增长，但执行删除操作后永远不会减小。 此行为可确保将来的插入操作速度更快，因为不需要重新设置空间的格式。|
 |**已分配但未使用的数据空间**|已分配的数据空间量与已使用的数据空间量之间的差值。|此数量表示通过收缩数据库数据文件可回收的最大可用空间量。|
 |**数据最大大小**|可用于存储数据库数据的最大空间量。|已分配的数据空间量在增长后不能超过数据最大大小。|
-||||
 
 下图演示了数据库的不同存储空间类型之间的关系。
 
@@ -100,13 +94,13 @@ ORDER BY end_time DESC
 ```sql
 -- Connect to database
 -- Database data space allocated in MB and database data space allocated unused in MB
-SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB, 
-SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB 
+SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
+SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
 HAVING type_desc = 'ROWS'
 ```
- 
+
 ### <a name="database-data-max-size"></a>数据库数据最大大小
 
 修改以下查询，返回数据库数据最大大小。  查询结果以字节为单位。
@@ -127,7 +121,6 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**已分配的数据空间**|弹性池中所有数据库已分配的数据空间总和。||
 |**已分配但未使用的数据空间**|弹性池中所有数据库已分配的数据空间量与已使用的数据空间量之间的差值。|此数量表示弹性池通过收缩数据库数据文件可回收的最大空间量。|
 |**数据最大大小**|可由弹性池用于其所有数据库的最大数据空间量。|为弹性池分配的空间不应超过弹性池最大大小。  如果发生这种情况，可通过收缩数据库数据文件来回收未使用的空间。|
-||||
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>查询弹性池的存储空间信息
 
@@ -148,36 +141,29 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的弹性池数据空间
 
-修改以下 PowerShell 脚本来返回一个表，其中列出了为弹性池中每个数据库分配的空间，以及已分配但未使用的空间。 该表中数据库的排序顺序为：已分配但未使用空间量最大的数据库排在最前，已分配但未使用空间量最小的数据库排在最后。  查询结果以 MB 为单位。  
+修改以下示例来返回一个表，该表列出为弹性池中每个数据库分配的空间，以及已分配但未使用的空间。 该表中数据库的排序顺序为：已分配但未使用空间量最大的数据库排在最前，已分配但未使用空间量最小的数据库排在最后。  查询结果以 MB 为单位。  
 
 将查询结果（确定分配给池中每个数据库的空间）相加，可以确定为弹性池分配的总空间。 分配的弹性池空间不应超过弹性池最大大小。  
+
+> [!IMPORTANT]
+> PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 PowerShell 脚本需要 SQL Server PowerShell 模块 - 请参阅[下载 PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)进行安装。
 
 ```powershell
-# Resource group name
-$resourceGroupName = "rg1" 
-# Server name
-$serverName = "ls2" 
-# Elastic pool name
-$poolName = "ep1"
-# User name for server
-$userName = "name"
-# Password for server
-$password = "password"
+$resourceGroupName = "<resourceGroupName>"
+$serverName = "<serverName>"
+$poolName = "<poolName>"
+$userName = "<userName>"
+$password = "<password>"
 
-# Get list of databases in elastic pool
-$databasesInPool = Get-AzSqlElasticPoolDatabase `
-    -ResourceGroupName $resourceGroupName `
-    -ServerName $serverName `
-    -ElasticPoolName $poolName
+# get list of databases in elastic pool
+$databasesInPool = Get-AzSqlElasticPoolDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName -ElasticPoolName $poolName
 $databaseStorageMetrics = @()
 
-# For each database in the elastic pool,
-# get its space allocated in MB and space allocated unused in MB.
-  
-foreach ($database in $databasesInPool)
-{
+# for each database in the elastic pool, get space allocated in MB and space allocated unused in MB
+foreach ($database in $databasesInPool) {
     $sqlCommand = "SELECT DB_NAME() as DatabaseName, `
     SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB, `
     SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB `
@@ -186,17 +172,13 @@ foreach ($database in $databasesInPool)
     HAVING type_desc = 'ROWS'"
     $serverFqdn = "tcp:" + $serverName + ".database.chinacloudapi.cn,1433"
     $databaseStorageMetrics = $databaseStorageMetrics + 
-        (Invoke-Sqlcmd -ServerInstance $serverFqdn `
-        -Database $database.DatabaseName `
-        -Username $userName `
-        -Password $password `
-        -Query $sqlCommand)
+        (Invoke-Sqlcmd -ServerInstance $serverFqdn -Database $database.DatabaseName `
+            -Username $userName -Password $password -Query $sqlCommand)
 }
-# Display databases in descending order of space allocated unused
+
+# display databases in descending order of space allocated unused
 Write-Output "`n" "ElasticPoolName: $poolName"
-Write-Output $databaseStorageMetrics | Sort `
-    -Property DatabaseDataSpaceAllocatedUnusedInMB `
-    -Descending | Format-Table
+Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocatedUnusedInMB -Descending | Format-Table
 ```
 
 以下屏幕截图显示了脚本输出的示例：
@@ -232,20 +214,19 @@ DBCC SHRINKDATABASE (N'db1')
 
 此命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。  
 
-有关此命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。 
+有关此命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 
 ### <a name="auto-shrink"></a>自动收缩
 
 或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。  在管理包含多个数据库的弹性池时，自动收缩可能特别有用。  但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
 若要启用自动收缩，请修改以下命令中的数据库名称。
 
-
 ```sql
 -- Enable auto-shrink for the database.
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-有关此命令的详细信息，请参阅 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 选项。 
+有关此命令的详细信息，请参阅 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 选项。
 
 ### <a name="rebuild-indexes"></a>重建索引
 
@@ -258,5 +239,5 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
   - [使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
   - [适用于弹性池的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-elastic-pools.md)
   - [使用基于 DTU 的购买模型的弹性池的资源限制](sql-database-dtu-resource-limits-elastic-pools.md)
-- 有关 `SHRINKDATABASE` 命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。 
+- 有关 `SHRINKDATABASE` 命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 - 有关碎片和重新生成索引的详细信息，请参阅[重新组织和重新生成索引](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
