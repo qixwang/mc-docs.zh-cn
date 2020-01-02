@@ -1,5 +1,6 @@
 ---
-title: 使用网络观察程序和 Grafana 管理网络安全组流日志 | Azure
+title: 使用 Grafana 管理 NSG 流日志
+titleSuffix: Azure Network Watcher
 description: 在 Azure 中使用网络观察程序和 Grafana 管理和分析网络安全组流日志。
 services: network-watcher
 documentationcenter: na
@@ -16,19 +17,19 @@ ms.workload: infrastructure-services
 origin.date: 09/15/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: f88bf23c0bfb934fb25b6a20bd9334f0fbd59c7a
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.openlocfilehash: b5e64aecab56627a5858723ded2332315a992469
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52674387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336386"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志
 
 可以通过[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)提供的信息了解网络接口上的入口和出口 IP 流量。 这些流日志针对每个 NSG 规则显示出站和入站流、流所适用的 NIC、有关流的 5 -元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 > [!Warning]  
-> 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组进行流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
+> 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
 网络中可能有许多启用了流日志记录的 NSG。 这么大量的日志记录数据导致难以对日志进行分析以及从中获得见解。 本文提供了一个解决方案来使用 Grafana（一个开源绘图工具）、ElasticSearch（一个分布式搜索和分析引擎）和 Logstash（一个开源服务器端数据处理管道）来集中管理这些 NSG 流日志。  
 
@@ -46,7 +47,7 @@ NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob �
 
 ### <a name="setup-considerations"></a>安装注意事项
 
-在此示例中，Azure 中部署的 Ubuntu 16.04 LTS 服务器上配置了 Grafana、ElasticSearch 和 Logstash。 此最小安装用于运行所有三个组件 - 均在同一 VM 上运行。 此安装应当仅用于测试和非关键工作负荷。 Logstash、Elasticsearch 和 Grafana 都可以构建为跨许多实例独立进行扩展。 有关详细信息，请参阅这些组件中每一个的文档。
+在此示例中，Azure 中部署的 Ubuntu 16.04 LTS 服务器上配置了 Grafana、ElasticSearch 和 Logstash。 此最小安装用于运行所有三个组件 - 它们均在同一 VM 上运行。 此安装应当仅用于测试和非关键工作负荷。 Logstash、Elasticsearch 和 Grafana 都可以构建为跨许多实例独立进行扩展。 有关详细信息，请参阅这些组件中每一个的文档。
 
 ### <a name="install-logstash"></a>安装 Logstash
 
@@ -125,7 +126,7 @@ NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob �
         convert => {"destPort" => "integer"}
         add_field => { "message" => "%{Message}" }        
       }
-
+ 
       date {
         match => ["unixtimestamp" , "UNIX"]
       }
@@ -137,7 +138,7 @@ NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob �
         index => "nsg-flow-logs"
       }
     }
-    ```
+   ```
 
 提供的 Logstash 配置文件由三个部分组成：input、filter 和 output。
 input 部分指定 Logstash 要处理的日志的输入源 – 在本例中，我们将使用“azureblob”输入插件（在后续步骤中安装），以便可以访问 Blob 存储中存储的 NSG 流日志 JSON 文件。 
@@ -187,13 +188,13 @@ sudo service grafana-server start
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>将 ElasticSearch 服务器添加为数据源
 
-接下来，需要将包含流日志的 ElasticSearch 索引添加为数据源。 可以通过选择“添加数据源”并使用相关信息完成表单来添加数据源。 可以在下面的屏幕截图中找到此配置的示例：
+接下来，需要将包含流日志的 ElasticSearch 索引添加为数据源。 可以通过选择“添加数据源”并使用相关信息完成表单来添加数据源。  可以在下面的屏幕截图中找到此配置的示例：
 
 ![添加数据源](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>创建仪表板
 
-现在，你已成功配置了 Grafana 来从包含 NSG 流日志的 ElasticSearch 索引读取数据，可以创建并个性化仪表板了。 若要创建新仪表板，请选择“创建第一个仪表板”。 以下示例图形配置显示了按 NSG 规则分段的流：
+现在，你已成功配置了 Grafana 来从包含 NSG 流日志的 ElasticSearch 索引读取数据，可以创建并个性化仪表板了。 若要创建新仪表板，请选择“创建第一个仪表板”。  以下示例图形配置显示了按 NSG 规则分段的流：
 
 ![仪表板图形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 
