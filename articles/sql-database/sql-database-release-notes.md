@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库发行说明 | Microsoft Docs
+title: 发行说明
 description: 了解 Azure SQL 数据库服务和 Azure SQL 数据库文档中的新功能和改进
 services: sql-database
 author: WenJason
@@ -7,15 +7,15 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-origin.date: 05/15/2019
-ms.date: 11/04/2019
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 ms.author: v-jay
-ms.openlocfilehash: 1ad20505a8cfd739cc87d7c1ba648ab4e06c9fc1
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: d05201ff5042461b90d7e02f9f1a3880e6b1e6be
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336289"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -27,6 +27,7 @@ ms.locfileid: "73041210"
 
 | 功能 | 详细信息 |
 | ---| --- |
+| 通过单一数据库和弹性池加速的数据库恢复 | 有关信息，请参阅[加速的数据库恢复](sql-database-accelerated-database-recovery.md)。|
 |估计非重复计数|有关信息，请参阅[估计非重复计数](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)。|
 |行存储上的批处理模式（在兼容性级别 150 下）|有关信息，请参阅[行存储上的批处理模式](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)。|
 | 数据发现和分类  |有关信息，请参阅 [Azure SQL 数据库和 SQL 数据仓库数据发现和分类](sql-database-data-discovery-and-classification.md)。|
@@ -35,7 +36,6 @@ ms.locfileid: "73041210"
 | 弹性事务 | [跨云数据库的分布式事务](sql-database-elastic-transactions-overview.md)。 |
 |内存授予反馈（行模式）（在兼容性级别 150 下）|有关信息，请参阅[内存授予反馈（行模式）](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)。|
 | Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](sql-database-connect-query-portal.md)。|
-| 无服务器计算层 | 有关信息，请参阅 [SQL 数据库无服务器（预览版）](sql-database-serverless.md)。|
 |表变量延迟编译（在兼容性级别 150 下）|有关信息，请参阅[表变量延迟的编译](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)。|
 | &nbsp; |
 
@@ -73,7 +73,8 @@ ms.locfileid: "73041210"
 ## <a name="fixed-known-issues"></a>修复了已知问题
 
 - **2019 年 8 月** - 托管实例完全支持包含的数据库。
-
+- **2019 年 10月** - 如果源数据库包含内存中 OLTP 对象，则从“业务关键”层级到“常规用途”层级的内置时间点数据库还原将不会成功。
+- **2019 年 11月** - 从 Azure Blob 存储还原数据库后会使用 `DBCC CHECKDB` 验证数据库一致性。
 ## <a name="contribute-to-content"></a>参与内容制作
 
 若要参与 Azure SQL 数据库文档制作，请参阅[文档参与者指南](https://docs.microsoft.com/contribute/)。

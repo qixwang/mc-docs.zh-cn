@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库审核入门 | Microsoft 文档
+title: 审核入门
 description: 使用 Azure SQL 数据库审核跟踪写入审核日志的数据库事件。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 08/22/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 8576ed5006c29913b55c5e8285ac0c2eda5c3505
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.date: 12/16/2019
+ms.openlocfilehash: 113e4a699d16e0a0cdf0addf52fe82ff3e72004f
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336445"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -49,7 +49,8 @@ ms.locfileid: "71262957"
 > - 支持所有存储复制配置。
 > - 目前不支持高级存储   。
 > - 目前不支持 VNet 中的存储   。
-> - 目前不支持“应用有防火墙的存储”   。
+> - 目前不支持有防火墙的存储。  
+> - **Azure Data Lake Storage Gen2 存储帐户**的**分层命名空间**目前**不受支持**。
 
 ## <a id="subheading-8"></a>定义服务器级和数据库级审核策略
 
@@ -88,6 +89,10 @@ ms.locfileid: "71262957"
     ![导航窗格][3]
 
 5. 若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。   依次选择要用于保存日志的 Azure 存储帐户以及保持期。 将删除旧日志。  。
+
+   > [!IMPORTANT]
+   > - 保留期的默认值为 0（无限制保留）。 可以更改此值，只需在配置用于审核的存储帐户时在“存储设置”中移动“保留期(天)”滑块即可。  
+   > - 请注意，如果将保留期从 0（无限制保留）更改为任何其他值，则保留期只会在保留期值更改后应用到写入的日志（在将保留期设置为无限制期间写入的日志会保留，即使在启用保留期后也是如此）
 
     ![存储帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
@@ -189,6 +194,9 @@ ms.locfileid: "71262957"
     FAILED_DATABASE_AUTHENTICATION_GROUP
 
     可以按照[使用 Azure PowerShell 管理 SQL 数据库审核](#subheading-7)部分中所述，使用 PowerShell 配置不同类型的操作和操作组的审核。
+
+- 使用 AAD 身份验证时，失败的登录记录将不会  出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
+
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 SQL 数据库审核
 

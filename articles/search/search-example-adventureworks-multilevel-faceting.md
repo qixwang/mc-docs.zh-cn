@@ -1,28 +1,28 @@
 ---
-title: 示例：多层分面 - Azure 搜索
+title: 示例：多层 facet
+titleSuffix: Azure Cognitive Search
 description: 了解如何为多层分类生成分面结构，创建可以包含在应用程序页面中的嵌套式导航结构。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 05/02/2019
-ms.date: 09/26/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: e93e39c70ba0c3117d7b73c055fa1ef16ac4beec
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: e9652972d2cd7342269326897d91cadb3eddcade
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335436"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>示例：Azure 搜索中的多层分面
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>示例：Azure 认知搜索中的多层分面
 
-Azure 搜索架构不显式支持多层分类类别，但你可以对其进行近似处理，方法是：在进行索引编制之前先处理内容，然后对结果应用某些特殊的处理。 
+Azure 认知搜索架构不显式支持多层分类类别，但你可以对其进行近似处理，方法是：在进行索引编制之前先处理内容，然后对结果应用某些特殊的处理。 
 
 ## <a name="start-with-the-data"></a>从数据开始
 
-本文中的示例基于先前的示例 - [为 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)，目的是演示 Azure 搜索中的多层分面。
+本文中的示例基于先前的示例 - [为 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)，目的是演示 Azure 认知搜索中的多层分面。
 
 AdventureWorks 有一个简单的双级分类，其中的关系为父子关系。 若要获取此结构的固定长度分类深度，可以使用简单的 SQL 联接查询将分类分组：
 
@@ -40,7 +40,7 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>为 Collection 字段编制索引
 
-在包含此结构的索引中，在 Azure 搜索架构中创建 **Collection(Edm.String)** 字段来存储此数据，确保字段属性包含 searchable、filterable、facetable 和 retrievable。
+在包含此结构的索引中，在 Azure 认知搜索架构中创建 **Collection(Edm.String)** 字段来存储此数据，确保字段属性包含 searchable、filterable、facetable 和 retrievable。
 
 现在，在为引用特定分类类别的内容编制索引时，请将分类作为数组提交，该数组包含来自各级别分类的文本。 例如，对于 `ProductCategoryId = 5 (Mountain Bikes)` 的实体，请将字段以 `[ "Bikes", "Bikes|Mountain Bikes"]` 形式提交
 
@@ -100,4 +100,4 @@ categories.count = sum;
 
 ## <a name="see-also"></a>另请参阅
 
-[示例：为 Azure 搜索的 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)
+[示例：为 Azure 认知搜索的 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)

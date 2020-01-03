@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 origin.date: 04/03/2018
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: b877854f216e84e1ad9b49596f462c4422e10f00
-ms.sourcegitcommit: d75eeed435fda6e7a2ec956d7c7a41aae079b37c
+ms.openlocfilehash: 126a34213b49a0cfc2f0bdc621631a0f34996db9
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335896"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Windows Azure 诊断聚合和集合事件
 > [!div class="op_single_selector"]
@@ -31,10 +31,10 @@ ms.locfileid: "66195426"
 
 当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
 
-上传和收集日志的方式之一是使用 Windows Azure 诊断 (LAD) 扩展，它可将日志上传到 Azure 存储，并且还提供了将日志发送到 Azure 事件中心的选项。
+上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到 Azure Application Insights 或 Azure 事件中心的 Windows Azure 诊断 (WAD) 扩展。
 
-<!-- Not Available on Application Insight -->
 <!--Not Available on [Log Analytics](../log-analytics/log-analytics-service-fabric.md)-->
+<!--Redirect to URL of service-fabric/service-fabric-diagnostics-oms-setup-->
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,7 +55,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集中的每个虚拟机规模集节点上。 诊断扩展将收集每个 VM 上的日志，并将它们上传到指定的存储帐户。 以下步骤概述了如何通过 Azure 门户和 Azure 资源管理器模板为新的和现有的群集完成此操作。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>在通过 Azure 门户创建群集过程中部署诊断扩展
-创建群集时，在群集配置步骤中，展开可选设置并确保将“诊断”设置为“打开”（默认设置）。
+创建群集时，在群集配置步骤中，展开可选设置并确保将“诊断”设置为“打开”  （默认设置）。
 
 ![门户中有关创建群集的 Azure 诊断设置](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
@@ -166,6 +166,15 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
                     "DefaultEvents": {
                     "eventDestination": "ServiceFabricSystemEventTable"
                     }
+                },
+                {
+                    "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                    "scheduledTransferLogLevelFilter": "Information",
+                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricSystemEventTable"
+                    }
                 }
                 ]
             }
@@ -181,7 +190,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 如上所述修改 template.json 文件后，请重新发布 Resource Manager 模板。 如果已导出模板，则运行 deploy.ps1 文件会重新发布模板。 部署后，请确保 **ProvisioningState** 为 **Succeeded**。
 
 > [!TIP]
-> 如果要将容器部署到群集，可通过将此代码添加到“WadCfg > DiagnosticMonitorConfiguration”节，启用 WAD 来选取 docker 统计信息。
+> 如果要将容器部署到群集，可通过将此代码添加到“WadCfg > DiagnosticMonitorConfiguration”  节，启用 WAD 来选取 docker 统计信息。
 >
 >```json
 >"DockerSources": {
@@ -229,7 +238,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 >[!NOTE]
 >此通道包含非常大量的事件，从详细通道启用事件收集会导致快速生成大量跟踪并可能会消耗存储容量。 请只有在绝对必要的情况下才启用此项。
 
-若要启用“基本操作通道”（建议启用以获得干扰最少的全面日志记录），模板的 `WadCfg` 中的 `EtwManifestProviderConfiguration` 将如下所示：
+若要启用“基本操作通道”（建议启用以获得干扰最少的全面日志记录），模板的 `WadCfg` 中的 `EtwManifestProviderConfiguration` 将如下所示  ：
 
 ```json
   "WadCfg": {
@@ -262,6 +271,15 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"
                 }
+              },
+              {
+                "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                "eventDestination": "ServiceFabricSystemEventTable"
+                }
               }
             ]
           }
@@ -293,9 +311,53 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 若要从群集中收集性能指标，请将性能计数器添加到群集的资源管理器模板中的“WadCfg > DiagnosticMonitorConfiguration”。 有关修改 `WadCfg` 以收集特定性能计数器的步骤，请参阅[通过 WAD 监控性能](service-fabric-diagnostics-perf-wad.md)。 对于我们建议收集的性能计数器列表，请参阅 [Service Fabric 性能计数器](service-fabric-diagnostics-event-generation-perf.md)。
 
-<!-- Not Available on If you are using an Application Insights sink, as described in the section below, and want these metrics to show up in Application Insights, then make sure to add the sink name in the "sinks" section as shown above. This will automatically send the performance counters that are individually configured to your Application Insights resource. -->
-<!-- Not Available on ## Send logs to Application Insights -->
+如果使用 Application Insights 接收器（如下面部分所述）并想要这些指标显示在 Application Insights 中，则确保将接收器名称添加到“sinks”部分中，如上所示。 这将自动向你的 Application Insights 资源发送单独配置的性能计数器。
 
+## <a name="send-logs-to-application-insights"></a>将日志发送到 Application Insights
+
+### <a name="configuring-application-insights-with-wad"></a>使用 WAD 配置 Application Insights
+
+>[!NOTE]
+>目前仅适用于 Windows 群集。
+
+可通过两种方式将数据从 WAD 发送到 Azure Application Insights，这一过程是通过向 WAD 配置添加 Application Insights 接收器实现的，不管是通过 Azure 门户还是通过 Azure 资源管理器模板。
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 门户中创建群集时添加 Application Insights 检测密钥
+
+![添加 AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+创建群集时，如果“已启用”诊断，则会显示一个可选字段，可在其中输入 Application Insights 检测密钥。 如果在此处粘贴 Application Insights 密钥，则系统会在用于部署群集的资源管理器模板中自动配置 Application Insights 接收器。
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>将 Application Insights 接收器添加到资源管理器模板
+
+在 Resource Manager 模板的“WadCfg”中，通过包含以下两项更改来添加“接收器”：
+
+1. 在声明完 `DiagnosticMonitorConfiguration` 后，直接添加接收器配置：
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+在上面的两个代码片段中，名称“applicationInsights”用于描述接收器。 不一定非要使用此名称；只要将接收器包含在“sinks”中，就可以将名称设置为任何字符串。
+
+目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“警告”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
+
+>[!NOTE]
+>如果在门户或资源管理器模板中使用错误的 Application Insights 密钥，则必须手动更改密钥并更新/重新部署群集。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -315,4 +377,4 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 <!-- Not Available on * [Event Analysis and Visualization with Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)-->
 <!-- Not Available on * [Event Analysis and Visualization with Azure Monitor logs](service-fabric-diagnostics-event-analysis-oms.md)-->
 
-<!--Update_Description: update meta propreties, update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

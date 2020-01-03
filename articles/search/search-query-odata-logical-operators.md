@@ -1,14 +1,14 @@
 ---
-title: OData 逻辑运算符参考 - Azure 搜索
-description: Azure 搜索查询中的 OData 逻辑运算符 and、or 和 not。
-origin.date: 06/13/2019
-ms.date: 09/29/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 逻辑运算符参考
+titleSuffix: Azure Cognitive Search
+description: 用于在 Azure 认知搜索查询中使用 OData 逻辑运算符（and、or 和 not）的语法和参考文档。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f88ecae491d0122d0d83ca3c089f240a7cb32bdd
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 7dce460e53c3abf5ac3b066dde10ad600fd281e8
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336500"
 ---
-# <a name="odata-logical-operators-in-azure-search---and-or-not"></a>Azure 搜索中的 OData 逻辑运算符 - `and`、`or`、`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure 认知搜索中的 OData 逻辑运算符 - `and`、`or`、`not`
 
-Azure 搜索中的 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)是求值结果为 `true` 或 `false` 的布尔表达式。 你可以编写复杂的筛选器，只需先编写一系列[较简单的筛选器](search-query-odata-comparison-operators.md)，然后使用[布尔代数](https://en.wikipedia.org/wiki/Boolean_algebra)中的逻辑运算符将其组合在一起即可：
+Azure 认知搜索中的 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)是求值结果为 `true` 或 `false` 的布尔表达式。 你可以编写复杂的筛选器，只需先编写一系列[较简单的筛选器](search-query-odata-comparison-operators.md)，然后使用[布尔代数](https://en.wikipedia.org/wiki/Boolean_algebra)中的逻辑运算符将其组合在一起即可：
 
 - `and`：一个二元运算符，在左侧和右侧的子表达式的求值结果均为 `true` 的情况下，其求值结果为 `true`。
 - `or`：一个二元运算符，在左侧或右侧的子表达式的求值结果为 `true` 的情况下，其求值结果为 `true`。
@@ -52,10 +52,10 @@ logical_expression ::=
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 有两种形式的逻辑表达式：二元表达式 (`and`/`or`) 和一元表达式 (`not`)，前者有两个子表达式，后者只有一个子表达式。 子表达式可以是任何类型的布尔表达式：
 
@@ -67,7 +67,7 @@ logical_expression ::=
 - 使用 `and`、`or` 和 `not` 构造的其他逻辑表达式。
 
 > [!IMPORTANT]
-> 某些情况下，并非所有类型的子表达式都可以与 `and`/`or` 配合使用，尤其是在 lambda 表达式中。 有关详细信息，请参阅 [Azure 搜索中的 OData 集合运算符](search-query-odata-collection-operators.md#limitations)。
+> 某些情况下，并非所有类型的子表达式都可以与 `and`/`or` 配合使用，尤其是在 lambda 表达式中。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 集合运算符](search-query-odata-collection-operators.md#limitations)。
 
 ### <a name="logical-operators-and-null"></a>逻辑运算符和 `null`
 
@@ -110,7 +110,7 @@ logical_expression ::=
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

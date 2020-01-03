@@ -5,15 +5,15 @@ services: service-fabric
 author: rockboyfor
 ms.service: service-fabric
 ms.topic: conceptual
-origin.date: 08/07/2019
-ms.date: 09/30/2019
+origin.date: 10/21/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 6611f89011d1c00354b24b4e94fbb8a2e70853d3
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 38b4334ee81a7ee88cbe5d623d86e0b1eb9a6d3d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335898"
 ---
 <!--Verfiy sucessfully-->
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric 应用程序资源模型是什么？
@@ -43,20 +43,28 @@ ms.locfileid: "71340996"
 ![创建存储帐户][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>配置存储帐户 
-创建存储帐户后，需要创建一个可在其中暂存应用程序的 Blob 容器。 在 Azure 门户中，导航到用于存储应用程序的存储帐户。 选择“Blob”边栏选项卡，单击“添加容器”按钮。   添加使用 Blob 公共访问级别的新容器。
+创建存储帐户后，需要创建一个可在其中暂存应用程序的 Blob 容器。 在 Azure 门户中，导航到用于存储应用程序的存储帐户。 选择“Blob”边栏选项卡，单击“添加容器”按钮。   可以通过将公共访问级别设置为“专用”来保护群集中的资源。 可以通过多种方式授予访问权限：
+* [使用 Azure Active Directory 授予对 Blob 和队列的访问权限](../storage/common/storage-auth-aad-app.md)
+* [在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../storage/common/storage-auth-aad-rbac-portal.md)
+* [使用共享访问签名 (SAS) 委派访问权限](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)
+
+在此示例中，我们将继续对 Blob 使用匿名读取访问。
 
 ![创建 Blob][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>在存储帐户中暂存应用程序
 在部署应用程序之前，必须先将其暂存在 Blob 存储中。 在本教程中，我们将手动创建应用程序包，不过也可以将此步骤自动化。  有关详细信息，请查看[将应用程序打包](/service-fabric/service-fabric-package-apps#create-an-sfpkg)。 下面的步骤将使用 [Voting 示例应用程序](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)。
 
-1. 在 Visual Studio 中右键单击 Voting 项目并选择“打包”。   
-![将应用程序打包][PackageApplication]  
+1. 在 Visual Studio 中右键单击 Voting 项目并选择“打包”。  
+ 
+    ![将应用程序打包][PackageApplication]  
 2. 打开刚刚创建的 **.\service-fabric-dotnet-quickstart\Voting\pkg\Debug** 目录，将内容压缩成名为 **Voting.zip** 的文件，并将 ApplicationManifest.xml 置于该 zip 文件的根目录。  
-![压缩应用程序][ZipApplication]  
+    
+    ![Zip 应用程序][ZipApplication]  
 3. 将该文件的扩展名从 .zip 重命名为 **.sfpkg**。
 4. 在 Azure 门户上你的存储帐户的 **apps** 容器中，单击“上传”并上传 **Voting.sfpkg**。   
-![上传应用包][UploadAppPkg]
+    
+    ![上传应用包][UploadAppPkg]
 
 该应用程序随即已暂存。 现在，我们可以开始创建 Azure 资源管理器模板来部署该应用程序。      
 
@@ -169,5 +177,4 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 [ZipApplication]: ./media/service-fabric-application-model/zip-application.png
 [UploadAppPkg]: ./media/service-fabric-application-model/upload-app-pkg.png
 
-<!--Update_Description: new articles on service fabric concept resource model -->
-<!--new.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

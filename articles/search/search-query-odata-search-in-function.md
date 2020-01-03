@@ -1,14 +1,14 @@
 ---
-title: OData search.in 函数参考 - Azure 搜索
-description: Azure 搜索查询中的 OData search.in 函数。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData search.in 函数参考
+titleSuffix: Azure Cognitive Search
+description: 语法和参考文档，用于在 Azure 认知搜索查询中使用 search.in 函数。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,14 +20,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b058292aaf41d25b04967fa1bf24a4027e00b121
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: c87e40b49e8ce29f4533c067ac2e266305c0e0aa
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336498"
 ---
-# <a name="odata-searchin-function-in-azure-search"></a>Azure 搜索中的 OData `search.in` 函数
+# <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.in` 函数
 
 在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)中，一种常见情景是检查每个文档中的单个字段是否等于许多可能值中的一个。 例如，某些应用程序会这样进行[安全修整](search-security-trimming-for-azure-search.md)：根据一个包含主 ID（代表发出查询的用户）的列表，检查字段是否包含一个或多个主 ID。 若要编写这样的查询，一种方法是使用 [`eq`](search-query-odata-comparison-operators.md) 和 [`or`](search-query-odata-logical-operators.md) 运算符：
 
@@ -41,7 +41,7 @@ ms.locfileid: "71674503"
 > 除了更简便且更易读，使用 `search.in` 还具有[性能优势](#bkmk_performance)，并且在需要在筛选器中包含数百甚至数千个值的情况下，可以避免某些[筛选器大小限制](search-query-odata-filter.md#bkmk_limits)。 因此，我们强烈建议使用 `search.in`，而不要使用更复杂的相等表达式析取。
 
 > [!NOTE]
-> 4\.01 版 OData Standard 最近引入了 [`in` 运算符](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)，该运算符的行为类似于 Azure 搜索中的 `search.in` 函数。 但是，Azure 搜索不支持该运算符，因此你必须改用 `search.in` 函数。
+> 4\.01 版 OData Standard 最近引入了 [`in` 运算符](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)，该运算符的行为类似于 Azure 认知搜索中的 `search.in` 函数。 但是，Azure 认知搜索不支持该运算符，因此你必须改用 `search.in` 函数。
 
 ## <a name="syntax"></a>语法
 
@@ -57,10 +57,10 @@ search_in_call ::=
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅 [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以了解完整的 EBNF。
 
 `search.in` 函数测试给定字符串字段或范围变量是否等于给定的值列表之一。 变量与列表中每个值之间的相等性以区分大小写的方式进行确定，这与 `eq` 运算符的方式相同。 因此，`search.in(myfield, 'a, b, c')` 等表达式相当于 `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`，但 `search.in` 的表现会好得多。
 
@@ -107,7 +107,7 @@ search_in_call ::=
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

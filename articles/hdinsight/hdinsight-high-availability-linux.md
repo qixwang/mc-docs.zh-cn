@@ -8,15 +8,15 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-origin.date: 04/24/2019
-ms.date: 11/11/2019
+origin.date: 10/28/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: b5cabb81098f000f22010436e21b8192b1618e3c
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: c7f2a63b95c85e7ebf5b307d44987073e1028d98
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425664"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335211"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -66,11 +66,11 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 通过公共网关进行访问仅限端口 443 (HTTPS)、22 和 23。
 
-* 端口 __443__ 用于访问托管在头节点上的 Ambari 和其他 Web UI 或 REST API。
-
-* 端口 __22__ 用于通过 SSH 访问主头节点或边缘节点。
-
-* 端口 __23__ 用于通过 SSH 访问辅助头节点。 例如，`ssh username@mycluster-ssh.azurehdinsight.cn` 连接到群集名为 **mycluster** 的主头节点。
+|端口 |说明 |
+|---|---|
+|443|用于访问托管在头节点上的 Ambari 和其他 Web UI 或 REST API。|
+|22|用于通过 SSH 访问主头节点或边缘节点。|
+|23|用于通过 SSH 访问辅助头节点。 例如，`ssh username@mycluster-ssh.azurehdinsight.cn` 连接到群集名为 **mycluster** 的主头节点。|
 
 有关如何使用 SSH 的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。
 
@@ -80,11 +80,18 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 例如，Apache Oozie 服务只能在一个头节点上运行，而且从 SSH 会话使用 `oozie` 命令需要有该服务的 URL。 可以通过 Ambari 使用以下命令来检索该 URL：
 
-    curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
+```bash
+export password='PASSWORD'
+export clusterName="CLUSTERNAME"
 
-该命令返回类似以下命令的值，其中包含要在 `oozie` 命令中使用的内部 URL：
+curl -u admin:$password "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
+```
 
-    "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.chinacloudapp.cn:11000/oozie"
+该命令返回如下所示的值，其中包含要在 `oozie` 命令中使用的内部 URL：
+
+```output
+"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.chinacloudapp.cn:11000/oozie"
+```
 
 若要详细了解如何使用 Ambari REST API，请参阅[使用 Apache Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
@@ -92,11 +99,11 @@ HDInsight 群集中的节点具有内部 IP 地址和 FQDN，这些只能从群�
 
 可以使用以下方法连接到无法直接通过 Internet 访问的节点：
 
-* **SSH**：使用 SSH 连接到头节点后，可以从头节点使用 SSH 连接到群集中的其他节点。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。
-
-* **SSH 隧道**：如果需要访问托管在某个节点上的 Web 服务，并且该服务不在 Internet 上公开，则必须使用 SSH 隧道。 有关详细信息，请参阅 [将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。
-
-* **Azure 虚拟网络**：如果 HDInsight 群集是 Azure 虚拟网络的一部分，则同一虚拟网络中的任何资源都可以直接访问该群集中的所有节点。 有关详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)文档。
+|方法 |说明 |
+|---|---|
+|SSH|使用 SSH 连接到头节点后，可以从头节点使用 SSH 连接到群集中的其他节点。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。|
+|SSH 隧道|如果需要访问托管在某个节点上的 Web 服务，并且该服务不在 Internet 上公开，则必须使用 SSH 隧道。 有关详细信息，请参阅 [将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。|
+|Azure 虚拟网络|如果 HDInsight 群集是 Azure 虚拟网络的一部分，则同一虚拟网络中的任何资源都可以直接访问该群集中的所有节点。 有关详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)文档。|
 
 ## <a name="how-to-check-on-a-service-status"></a>如何检查服务状态
 
@@ -171,7 +178,9 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 可以通过 Ambari REST API 使用以下命令来检查服务的状态：
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
+```bash
+curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
+```
 
 * 将 **PASSWORD** 替换为 HTTP 用户 (admin) 帐户密码。
 * 将  CLUSTERNAME 替换为群集的名称。
@@ -179,18 +188,22 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 例如，若要检查名为 **mycluster** 的群集上的、密码为 **password** 的 **HDFS** 服务的状态，可使用以下命令：
 
-    curl -u admin:password https://mycluster.azurehdinsight.cn/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
+```bash
+curl -u admin:password https://mycluster.azurehdinsight.cn/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
+```
 
 响应类似于以下 JSON：
 
-    {
-      "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
-      "ServiceInfo" : {
-        "cluster_name" : "mycluster",
-        "service_name" : "HDFS",
-        "state" : "STARTED"
-      }
+```json
+{
+    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "ServiceInfo" : {
+    "cluster_name" : "mycluster",
+    "service_name" : "HDFS",
+    "state" : "STARTED"
     }
+}
+```
 
 该 URL 表示，服务当前在名为 **hn0-CLUSTERNAME** 的头节点上运行。
 
@@ -261,7 +274,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 
 ## <a name="next-steps"></a>后续步骤
 
-请使用以下链接深入了解本文档中所述的内容。
+若要详细了解本文中所述的项，请参阅：
 
 * [Apache Ambari REST 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [安装和配置 Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)

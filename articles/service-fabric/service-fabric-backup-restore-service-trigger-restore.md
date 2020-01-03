@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/30/2018
-ms.date: 07/08/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: e60390ac1447f5ab812c5d10129eea57e9c79fdf
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 4339d547ee22a3eb9241f8cbb3ae28863a5dde81
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336367"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
 
@@ -197,7 +197,18 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 可以使用 TrackRestoreProgress 跟踪还原进度。
 
-### <a name="data-restore-for-data-corruptiondata-loss"></a>在数据损坏/数据丢失时进行数据还原  
+### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+可以从 Service Fabric Explorer 触发还原。 请确保已在 Service Fabric Explorer 设置中启用了“高级模式”。
+1. 选择所需分区，并单击“操作”。 
+2. 选择“触发分区还原”，并填写用于 Azure 的信息：
+
+    ![触发分区还原][2]
+
+    或 FileShare：
+
+    ![触发分区还原 Fileshare][3]
+
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>在数据损坏/数据丢失时进行数据还原  
 
 对于数据丢失或数据损坏的情况，可靠有状态服务和 Reliable Actors 的已备份分区可以还原到任何所选备份。  
 
@@ -322,4 +333,7 @@ $restoreResponse | Format-List
 - [了解定期备份配置](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-<!-- Update_Description: wording update -->
+[2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
+[3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png
+
+<!-- Update_Description: update meta properties, wording update, update link -->

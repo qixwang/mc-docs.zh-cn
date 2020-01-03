@@ -1,14 +1,14 @@
 ---
-title: OData 地理空间函数参考 - Azure 搜索
-description: Azure 搜索查询中的 OData 地理空间函数、geo.distance 和 geo.intersects。
-origin.date: 09/13/2019
-ms.date: 09/29/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 地理空间函数参考
+titleSuffix: Azure Cognitive Search
+description: 有关如何在 Azure 认知搜索查询中使用 OData 地理空间函数、geo.distance 和 geo.intersects 的语法和参考文档。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,21 +20,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c4e4a120b8a0df17183a6085aacbb4d3c10d4518
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: d584c3ed380a696b35216529ec68f33e5c5a1aed
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336501"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Azure 搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 认知搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
 
-Azure 搜索支持使用 `geo.distance` 和 `geo.intersects` 函数通过 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)进行地理空间查询。 `geo.distance` 函数以公里为单位返回两点之间的距离，一个点是字段或范围变量，另一个点是作为筛选器一部分传递的常量。 如果给定的点位于给定的多边形范围内（其中该点是字段或范围变量，多边形指定为作为筛选器一部分传递的常量），`geo.intersects` 函数会返回 `true`。
+Azure 认知搜索支持使用 `geo.distance` 和 `geo.intersects` 函数通过 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)进行地理空间查询。 `geo.distance` 函数以公里为单位返回两点之间的距离，一个点是字段或范围变量，另一个点是作为筛选器一部分传递的常量。 如果给定的点位于给定的多边形范围内（其中该点是字段或范围变量，多边形指定为作为筛选器一部分传递的常量），`geo.intersects` 函数会返回 `true`。
 
 `geo.distance` 函数也可用在 [ **$orderby** 参数](search-query-odata-orderby.md)中，以便按照与给定点的距离对搜索结果排序。 **$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，则它应用到的字段必须为 `Edm.GeographyPoint` 类型，而且它还必须是**可排序的**。
 
 > [!NOTE]
-> 在 **$orderby** 参数中使用 `geo.distance` 时，传递给函数的字段只能包含单个地理点。 换言之，它必须是类型 `Edm.GeographyPoint` 而非 `Collection(Edm.GeographyPoint)`。 不可能在 Azure 搜索中对集合字段排序。
+> 在 **$orderby** 参数中使用 `geo.distance` 时，传递给函数的字段只能包含单个地理点。 换言之，它必须是类型 `Edm.GeographyPoint` 而非 `Collection(Edm.GeographyPoint)`。 不可能在 Azure 认知搜索中对集合字段排序。
 
 ## <a name="syntax"></a>语法
 
@@ -65,10 +65,10 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 ### <a name="geodistance"></a>geo.distance
 
@@ -91,11 +91,11 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 
 对于许多地理空间查询库，构建包含 180 度经线（国际日期变更线附近）的查询要么被禁止，要么需要变通方法，例如将多边形拆分为两个，子午线两侧各一个。
 
-在 Azure 搜索中，如果查询形状为矩形并且坐标沿经度和纬度方向与网格布局对齐（例如，`geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`），则包含 180 度经度的地理空间查询将按预期工作。 否则，对于非矩形的形状或未对齐的形状，请考虑使用拆分多边形方法。  
+在 Azure 认知搜索中，如果查询形状为矩形并且坐标沿经度和纬度方向与网格布局对齐（例如，`geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`），则包含 180 度经度的地理空间查询将按预期工作。 否则，对于非矩形的形状或未对齐的形状，请考虑使用拆分多边形方法。  
 
 ### <a name="geo-spatial-functions-and-null"></a>地理空间函数和 `null`
 
-与 Azure 搜索中的所有其他非集合字段一样，类型为 `Edm.GeographyPoint` 的字段可以包含 `null` 值。 当 Azure 搜索对 `null` 字段的 `geo.intersects` 求值时，结果始终为 `false`。 在这种情况下，`geo.distance` 的行为取决于上下文：
+与 Azure 认知搜索中的所有其他非集合字段一样，类型为 `Edm.GeographyPoint` 的字段可以包含 `null` 值。 当 Azure 认知搜索对 `null` 字段的 `geo.intersects` 求值时，结果始终为 `false`。 在这种情况下，`geo.distance` 的行为取决于上下文：
 
 - 在筛选器中，`null` 字段的 `geo.distance` 会生成 `null`。 这意味着文档不会匹配，因为与任何非 null 值一比较，`null` 的求值结果均为 `false`。
 - 使用 **$orderby** 对结果排序时，`null` 字段的 `geo.distance` 会生成最大的可能距离。 包含此类字段的文档在使用排序方向 `asc`（默认）排序时其位置会低于所有其他文档，在方向为 `desc` 时会高于所有其他文档。
@@ -124,7 +124,7 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

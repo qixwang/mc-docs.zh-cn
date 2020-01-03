@@ -4,18 +4,20 @@ description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB �
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 08/05/2019
-ms.date: 09/09/2019
+origin.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: 9318247fb1c423bd7f5d9f9acb9f76f821921435
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: d4cd5a84dc21a2ee5adecd471b257cabe0db86b0
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335744"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB 表 API 资源
+
+本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文的示例仅适用于表 API 帐户。若要查找其他 API 类型帐户的示例，请参阅将 Azure 资源管理器模板与 Azure Cosmos DB 的适用于 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md) 的 API 配合使用的相关文章。
 
 <a name="create-resource"></a>
 ## <a name="create-azure-cosmos-account-and-table"></a>创建 Azure Cosmos 帐户和表 
@@ -23,7 +25,8 @@ ms.locfileid: "70254421"
 使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建一个适用于表 API 的 Azure Cosmos 帐户，所使用的一个表的吞吐量为 400 RU/秒。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-table/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 > [!NOTE]
-> 帐户名称必须为小写且 < 31 个字符。
+> 帐户名称必须为小写且不超过 44 个字符。
+> 若要更新 RU/秒，请使用更新的吞吐量属性值重新提交模板。
 
 ```json
 {
@@ -152,7 +155,7 @@ ms.locfileid: "70254421"
         {
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "name": "[variables('accountName')]",
-            "apiVersion": "2016-03-31",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "kind": "GlobalDocumentDB",
             "properties": {
@@ -165,9 +168,9 @@ ms.locfileid: "70254421"
             }
         },
         {
-            "type": "Microsoft.DocumentDB/databaseAccounts/apis/tables",
-            "name": "[concat(variables('accountName'), '/table/', parameters('tableName'))]",
-            "apiVersion": "2016-03-31",
+            "type": "Microsoft.DocumentDB/databaseAccounts/tables",
+            "name": "[concat(variables('accountName'), '/', parameters('tableName'))]",
+            "apiVersion": "2019-08-01",
             "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
             "properties":{
                 "resource":{
@@ -178,11 +181,12 @@ ms.locfileid: "70254421"
         }
     ]
 }
+
 ```
 
-## <a name="deploy-via-powershell"></a>通过 PowerShell 部署
+### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
 
-若要部署资源管理器模板，请使用 PowerShell。
+使用以下脚本通过 PowerShell 部署资源管理器模板。
 
 <!--Not Available on  **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
 
@@ -204,7 +208,7 @@ New-AzResourceGroupDeployment `
     -secondaryRegion $secondaryRegion `
     -tableName $tableName
 
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
+(Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName).name
 ```
 
 <!--MOONCAKE: parameter correct on -ResourceType-->
@@ -213,9 +217,9 @@ New-AzResourceGroupDeployment `
 
 <!--MOONCAKE: Not available on instead of using CloudShell-->
 
-### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
+### <a name="deploy-via-the-azure-cli"></a>通过 Azure CLI 部署
 
-使用 Azure CLI 部署资源管理器模板。
+使用以下脚本通过 Azure CLI 部署资源管理器模板。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -240,96 +244,9 @@ az cosmosdb show --resource-group $resourceGroupName --name $accountName --outpu
 ```
 <!--MOONCAKE: parameter correct on --name $accountName-->
 
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用本地安装的 Azure CLI 版本，请参阅 [Azure 命令行界面 (CLI)](https://docs.azure.cn/cli/?view=azure-cli-latest) 一文。
+`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用本地安装的 Azure CLI 版本，请参阅 [Azure CLI](https://docs.azure.cn/cli/?view=azure-cli-latest) 一文。
 
 <!--Not Available on instead of using CloudShell -->
-
-<a name="table-ru-update"></a>
-## <a name="update-throughput-rus-on-a-table"></a>更新表的吞吐量（RU/秒）
-
-以下模板将更新表的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-table-ru-update/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "accountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Cosmos account name"
-            }
-        },
-        "tableName": {
-            "type": "string",
-            "metadata": {
-                "description": "Table name"
-            }
-        },
-        "throughput": {
-            "type": "int",
-            "minValue": 400,
-            "maxValue": 1000000,
-            "metadata": {
-                "description": "Updated throughput"
-            }           
-        }
-    },
-    "variables": {
-        "accountName": "[toLower(parameters('accountName'))]"
-    },
-    "resources": 
-    [
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/apis/tables/settings",
-            "name": "[concat(variables('accountName'), '/table/', parameters('tableName'), '/throughput')]",
-            "apiVersion": "2016-03-31",
-            "properties": {
-                "resource": {
-                  "throughput": "[parameters('throughput')]"
-                }
-            }
-        }
-    ]
-}
-```
-
-### <a name="deploy-table-throughput-via-powershell"></a>通过 PowerShell 部署表吞吐量
-
-若要部署资源管理器模板，请使用 PowerShell。
-
-<!--Not Available on  **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
-
-```powershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$tableName = Read-Host -Prompt "Enter the table name"
-$throughput = Read-Host -Prompt "Enter new throughput for table"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-table-ru-update/azuredeploy.json" `
-    -accountName $accountName `
-    -tableName $tableName `
-    -throughput $throughput
-```
-
-### <a name="deploy-table-template-via-azure-cli"></a>通过 Azure CLI 部署表模板
-
-使用 Azure CLI 部署资源管理器模板。
-
-<!--Not Available on select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
-
-```azurecli
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the table name: ' tableName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-table-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName tableName=$tableName throughput=$throughput
-```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -337,9 +254,9 @@ az group deployment create --resource-group $resourceGroupName \
 
 - [Azure 资源管理器文档](/azure-resource-manager/)
     
-    <!--Not Available on  - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.documentdb/allversions)-->
+    <!--Not Available on  - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
 - [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 - [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

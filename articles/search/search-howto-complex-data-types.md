@@ -1,30 +1,29 @@
 ---
-title: 如何为复杂数据类型建模 - Azure 搜索
-description: 可以在 Azure 搜索索引中使用 ComplexType 和 Collections 数据类型为嵌套或分层数据结构建模。
-author: brjohnstmsft
+title: 如何为复杂数据类型建模
+titleSuffix: Azure Cognitive Search
+description: 可以在 Azure 认知搜索索引中使用 ComplexType 和 Collections 数据类型为嵌套或分层数据结构建模。
 manager: nitinme
+author: brjohnstmsft
 ms.author: v-tawe
 tags: complex data types; compound data types; aggregate data types
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 05/13/2019
-ms.date: 09/26/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 30c446581a8ffe77a2d7d755868212baa0125662
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 040f6856974b384c7c64d356142b8e71825e4460
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334971"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
+# <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
 
-用于填充 Azure 搜索索引的外部数据集可以采用多种形状。 有时它们包含分层或嵌套的子结构。 示例包括单个客户的多个地址、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，这些结构可能称作复杂、组合、复合或聚合数据类型。     Azure 搜索对此概念使用的术语是“复杂类型”。  在 Azure 搜索中，复杂类型是使用**复杂字段**建模的。 复杂字段是包含子级（子字段）的字段，这些子级可以是任何数据类型（包括其他复杂类型）。 其工作原理类似于编程语言中的结构化数据类型。
+用于填充 Azure 认知搜索索引的外部数据集可以采用多种形状。 有时它们包含分层或嵌套的子结构。 示例包括单个客户的多个地址、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，这些结构可能称作复杂、组合、复合或聚合数据类型。     Azure 认知搜索对此概念使用的术语是“复杂类型”。  在 Azure 认知搜索中，复杂类型是使用**复杂字段**建模的。 复杂字段是包含子级（子字段）的字段，这些子级可以是任何数据类型（包括其他复杂类型）。 其工作原理类似于编程语言中的结构化数据类型。
 
 复杂字段表示文档中的单个对象，或对象的数组，具体取决于数据类型。 `Edm.ComplexType` 类型的字段表示单个对象，而 `Collection(Edm.ComplexType)` 类型的字段表示对象的数组。
 
-Azure 搜索原生支持复杂类型和集合。 使用这些类型几乎可为 Azure 搜索索引中的任何 JSON 结构建模。 在旧版的 Azure 搜索 API 中，只能导入平展的行集。 在最新版本中，索引可以更密切地对应于源数据。 换言之，如果源数据使用复杂类型，则索引也可以使用复杂类型。
+Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎可为 Azure 认知搜索索引中的任何 JSON 结构建模。 在旧版的 Azure 认知搜索 API 中，只能导入平展的行集。 在最新版本中，索引可以更密切地对应于源数据。 换言之，如果源数据使用复杂类型，则索引也可以使用复杂类型。
 
 若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，可以在 Azure 门户上“导入数据”向导中加载该数据集。  该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
 
@@ -69,7 +68,7 @@ Azure 搜索原生支持复杂类型和集合。 使用这些类型几乎可为 
 以下示例演示了包含简单字段、集合与复杂类型的 JSON 索引架构。 请注意，在复杂类型中，与顶级字段一样，每个子字段包含一个类型，有时还包含属性。 架构对应于以上示例数据。 `Address` 是一个非集合的复杂字段（一家酒店只有一个地址）。 `Rooms` 是复杂集合字段（一家酒店有多间客房）。
 
 <!---
-For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
+For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Cognitive Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
 
 Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with knowledge store](knowledge-store-howto.md).
 -->
@@ -119,25 +118,21 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 如果使用多个字词或运算符，并且某些字词指定了字段名（可以使用 [Lucene 语法](query-lucene-syntax.md)来指定），则查询会变得更微妙。 例如，此查询尝试将两个字词“Portland”和“OR”与 Address 字段的两个子字段相匹配：
 
-```json
-search=Address/City:Portland AND Address/State:OR
-```
+    search=Address/City:Portland AND Address/State:OR
 
-此类查询对于全文搜索是不相关联的，这与筛选器不同。  在筛选器中，基于复杂集合子字段的查询将通过 [`any` 或 `all`](search-query-odata-collection-operators.md) 中的范围变量相关联。 上述 Lucene 查询返回包含“Portland, Maine”和“Portland, Oregon”以及 Oregon 中其他城市的文档。 之所以返回此结果，是因为每个子句将应用到其在整个文档中的字段的所有值，因此没有“当前子文档”的概念。 有关详细信息，请参阅[了解 Azure 搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
+此类查询对于全文搜索是不相关联的，这与筛选器不同。  在筛选器中，基于复杂集合子字段的查询将通过 [`any` 或 `all`](search-query-odata-collection-operators.md) 中的范围变量相关联。 上述 Lucene 查询返回包含“Portland, Maine”和“Portland, Oregon”以及 Oregon 中其他城市的文档。 之所以返回此结果，是因为每个子句将应用到其在整个文档中的字段的所有值，因此没有“当前子文档”的概念。 有关此方面内容的详细信息，请参阅[了解 Azure 认知搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
 ## <a name="selecting-complex-fields"></a>选择复杂字段
 
 `$select` 参数用于选择要在搜索结果中返回哪些字段。 若要使用此参数来选择复杂字段的特定子字段，请包含斜杠 (`/`) 分隔的父字段和子字段。
 
-```json
-$select=HotelName, Address/City, Rooms/BaseRate
-```
+    $select=HotelName, Address/City, Rooms/BaseRate
 
 如果希望这些字段在搜索结果中出现，必须在索引中将其标记为可检索。 只有标记为可检索的字段才能在 `$select` 语句中使用。
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>筛选、分面和排序复杂字段
 
-用作筛选和带字段搜索的 [OData 路径语法](query-odata-filter-orderby-syntax.md)同样也可用于分面、排序和选择搜索请求中的字段。 对于复杂类型，可以应用规则来控制可将哪些子字段标记为可排序或可分面。 
+用作筛选和带字段搜索的 [OData 路径语法](query-odata-filter-orderby-syntax.md)同样也可用于分面、排序和选择搜索请求中的字段。 对于复杂类型，可以应用规则来控制可将哪些子字段标记为可排序或可分面。 有关这些规则的详细信息，请参阅[创建索引 API 参考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
 
 ### <a name="faceting-sub-fields"></a>分面子字段
 

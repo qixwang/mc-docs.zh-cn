@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-origin.date: 11/12/2019
-ms.date: 11/26/2019
+ms.date: 12/11/2019
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509d4e02f18e922cb6b538355f6f86e2d2af2794
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 663899b7a7cb7f127efc001fd378ac574ff12d43
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336409"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -52,9 +51,14 @@ ms.locfileid: "74655433"
 
 充当此角色的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 请注意，在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
-> [!IMPORTANT]
-> 此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予 Azure Active Directory 访问权限，如创建或更新用户或其他对象，那么分配到此角色的用户在模拟应用程序时可以执行这些操作。 这种模拟应用程序标识的能力可能是用户在 Azure AD 中角色分配的基础上的权限提升。 请务必了解，向用户分配应用程序管理员角色，会赋予其模拟应用程序标识的能力。
+应用程序管理员可以管理用于模拟应用程序的应用程序凭据。 因此，分配了此角色的用户只能管理那些尚未分配给任何 Azure AD 角色或仅分配给以下管理员角色的应用程序的应用程序凭据：
+* 应用程序管理员
+* 应用程序开发人员
+* 云应用管理员
+* 目录读者
 
+如果应用程序分配给上面未提到的任何其他角色，则应用程序管理员不能管理该应用程序的凭据。 
+ 
 此角色还可以许可委托的权限和应用程序权限，但对 Microsoft Graph 和 Azure AD Graph 的权限除外。 
 
 > [!IMPORTANT]
@@ -123,8 +127,12 @@ ms.locfileid: "74655433"
 
 充当此角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
-> [!IMPORTANT]
-> 此角色授予管理应用程序凭据这一功能。 分配有此角色的用户可以将凭据添加到应用程序，并使用这些凭据模拟应用程序的标识。 如果已向应用程序的标识授予 Azure Active Directory 访问权限，如创建或更新用户或其他对象，那么分配到此角色的用户在模拟应用程序时可以执行这些操作。 这种模拟应用程序标识的能力可能是用户在 Azure AD 中角色分配的基础上的权限提升。 请务必了解，向用户分配云应用程序管理员角色，会赋予其模拟应用程序标识的能力。
+云应用程序管理员可以管理用于模拟应用程序的应用程序凭据。 因此，分配了此角色的用户只能管理那些尚未分配给任何 Azure AD 角色或仅分配给以下管理员角色的应用程序的应用程序凭据：
+* 应用程序开发人员
+* 云应用管理员
+* 目录读者
+
+如果应用程序分配给上面未提到的任何其他角色，则云应用程序管理员不能管理该应用程序的凭据。
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[云设备管理员](#cloud-device-administrator-permissions)
 
@@ -219,6 +227,7 @@ In | 有权执行的操作
 >- [Azure AD 门户](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - 全局读取者无法读取企业应用的预配模式。
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全局读取者无法读取客户密码箱请求。 在 M365 管理中心左窗格中的“支持”下，看不到“客户密码箱请求”选项卡。  
 >- [M365 安全中心](https://security.microsoft.com/homepage) - 全球读取者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中看不到“敏感度标签”、“保留标签”和“标签分析”选项卡。   
+>- [Office 安全与合规中心](https://sip.protection.office.com/homepage) - 全局读取者不能读取 SCC 审核日志或进行内容搜索。
 >- [Teams 管理中心](https://admin.teams.microsoft.com) - 全球读取者无法读取“Teams 生命周期”、“分析和报告”、“IP 电话设备管理”和“应用目录”。    
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) 不支持全局读取者角色。
 >- [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - 仅支持全球读取者执行[中心报告](https://docs.microsoft.com/azure/information-protection/reports-aip)，并且仅当 Azure AD 组织不在[统一标记平台](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时才支持此角色。
@@ -290,6 +299,10 @@ In | 有权执行的操作
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Power BI 管理员”。
+
+### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Power Platform 管理员](#power-platform-administrator-permissions)
+
+充当此角色的用户可以创建和管理环境、PowerApps、Flows、数据丢失防护策略的所有方面。 另外，具有此角色的用户可以管理支持票证并监视服务运行状况。
 
 ### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[特权身份验证管理员](#privileged-authentication-administrator-permissions)
 
@@ -1154,12 +1167,31 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
 >
 >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.powerApps.powerBI/allEntities/allTasks | 管理 Power BI 的各个方面。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+
+### <a name="power-platform-administrator-permissions"></a>Power Platform 管理员权限
+
+可以创建和管理 Microsoft Dynamics 365、PowerApps 和 Microsoft Flow 的所有方面。 
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
+>
+>
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的各个方面。 |
+| microsoft.flow/allEntities/allTasks | 管理 Microsoft Flow 的所有方面。 |
+| microsoft.powerApps/allEntities/allTasks | 管理 PowerApps 的各个方面。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
@@ -1511,6 +1543,7 @@ Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-69
 消息中心读取者 | 消息中心读取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
+Power Platform 管理员 | Power Platform 管理员 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 特权身份验证管理员 | 特权身份验证管理员 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特权角色管理员 | 特权角色管理员 | e8611ab8-c189-46e8-94e1-60213ab1f814
 报告读者 | 报告读者 | 4a5d8f65-41da-4de4-8968-e035b65339cf

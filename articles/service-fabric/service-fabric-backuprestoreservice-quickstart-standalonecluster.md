@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Service Fabric 中定期备份和还原 | Azure
+title: 在单独的 Azure Service Fabric 中进行定期备份/还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 services: service-fabric
 documentationcenter: .net
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 05/24/2019
-ms.date: 08/05/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 384376b5e4d7743a017415a1e71bc33e563ef743
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: 1f4c363a157090544e7469e5a8353948f3d9554a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335024"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原
 > [!div class="op_single_selector"]
@@ -67,9 +67,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 * 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
 
     ```powershell
-
     Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.chinaeast.cloudapp.chinacloudapi.cn:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
-
     ```
 
 ## <a name="enabling-backup-and-restore-service"></a>启用备份和还原服务
@@ -95,7 +93,6 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
         "fabricSettings": [ ... ]
         ...
     }
-
     ```
 
 3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据（如果有）进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示： 
@@ -169,6 +166,16 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+1. 在 Service Fabric Explorer 中，导航到“备份”选项卡，然后选择“操作”>“创建备份策略”。
+
+    ![创建备份策略][6]
+
+2. 填写信息。 对于独立群集，应选择 FileShare。
+
+    ![创建备份策略 FileShare][7]
+
 ### <a name="enable-periodic-backup"></a>启用定期备份
 在定义策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
 
@@ -191,6 +198,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+1. 选择应用程序，然后访问操作。 单击“启用/更新应用程序备份”。
+
+    ![启用应用程序备份][3] 
+
+2. 最后，选择所需的策略，然后单击“启用备份”。
+
+    ![选择策略][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>验证定期备份是否正常工作
 
@@ -261,6 +278,12 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+
+若要在 Service Fabric Explorer 中查看备份，请导航到一个分区，然后选择“备份”选项卡。
+
+![枚举备份][5]
+
 ## <a name="limitation-caveats"></a>限制/注意事项
 - Service Fabric PowerShell cmdlet 处于预览模式。
 - Linux 上不支持 Service Fabric 群集。
@@ -269,6 +292,11 @@ FailureError            :
 - [了解定期备份配置](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [备份还原 REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent.png
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/create-bp-fileshare.png
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

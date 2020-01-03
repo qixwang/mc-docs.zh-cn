@@ -1,14 +1,14 @@
 ---
-title: OData 比较运算符参考 - Azure 搜索
-description: Azure 搜索查询中的 OData 比较运算符 eq、ne、gt、lt、ge 和 le。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 比较运算符参考
+titleSuffix: Azure Cognitive Search
+description: 用于在 Azure 认知搜索查询中使用 OData 比较运算符（eq、ne、gt、lt、ge 和 le）的语法和参考文档。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 47be1261351d7aa0aa71defa7e23cb43beb12d7b
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: e962d571515a192e23b7feca22849ae209355d3c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336504"
 ---
-# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>Azure 搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`
 
-在 Azure 搜索的 [OData 筛选表达式](query-odata-filter-orderby-syntax.md)中的最基本运算是将某个字段与给定的值进行比较。 可进行两种类型的比较 -- 相等性比较和范围比较。 可以使用以下运算符将字段与常量值进行比较：
+在 Azure 认知搜索的 [OData 筛选表达式](query-odata-filter-orderby-syntax.md)中的最基本运算是将某个字段与给定的值进行比较。 可进行两种类型的比较 -- 相等性比较和范围比较。 可以使用以下运算符将字段与常量值进行比较：
 
 相等性运算符：
 
@@ -67,10 +67,10 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 比较表达式有两种形式。 它们之间的唯一差别在于，常量是显示在运算符的左侧还是右侧。 运算符另一侧的表达式必须是**变量**或函数调用。 变量可以是字段名称，或者 [Lambda 表达式](search-query-odata-collection-operators.md)中的范围变量。
 
@@ -90,7 +90,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `Edm.Int32` | `Edm.Int64` | 不适用 |
 | `Edm.Int32` | `Edm.Int32` | 不适用 |
 
-对于不允许的比较（例如，将 `Edm.Int64` 类型的字段与 `NaN` 进行比较），Azure 搜索 REST API 将返回“HTTP 400:错误的请求”错误。
+对于不允许的比较（例如，将 `Edm.Int64` 类型的字段与 `NaN` 进行比较），Azure 认知搜索 REST API 将返回“HTTP 400:错误的请求”错误。
 
 > [!IMPORTANT]
 > 尽管数字类型比较非常灵活，但我们强烈建议在筛选器中编写比较表达式，使常量值的数据类型与要比较的变量或函数的数据类型相同。 混合使用浮点值和整数值时（在这种情况下，隐式转换可能会损失精度），这一点尤其重要。
@@ -99,7 +99,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 ### <a name="special-cases-for-null-and-nan"></a>`null` 和 `NaN` 的特殊情况
 
-使用比较运算符时，请务必记住，Azure 搜索中的所有非集合字段都有可能为 `null`。 下表显示了任何一侧可为 `null` 的比较表达式的所有可能结果：
+使用比较运算符时，请务必记住，Azure 认知搜索中的所有非集合字段都有可能为 `null`。 下表显示了任何一侧可为 `null` 的比较表达式的所有可能结果：
 
 | 运算符 | 只有字段或变量为 `null` 时的结果 | 只有常量为 `null` 时的结果 | 字段或变量和常量都为 `null` 时的结果 |
 | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 总而言之，`null` 仅等于自身，而不小于或大于任何其他值。
 
-如果索引包含 `Edm.Double` 类型的字段，而你将 `NaN` 值上传到这些字段，则在编写筛选器时需要考虑到这种情况。 Azure 搜索实现 IEEE 754 标准来处理 `NaN` 值，使用此类值的比较将生成不明确的结果，如下表所示。
+如果索引包含 `Edm.Double` 类型的字段，而你将 `NaN` 值上传到这些字段，则在编写筛选器时需要考虑到这种情况。 Azure 认知搜索实现 IEEE 754 标准来处理 `NaN` 值，使用此类值的比较将生成不明确的结果，如下表所示。
 
 | 运算符 | 至少有一个操作数为 `NaN` 时的结果 |
 | --- | --- |
@@ -157,7 +157,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

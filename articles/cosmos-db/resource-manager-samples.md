@@ -4,15 +4,15 @@ description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/20/2019
-ms.date: 06/17/2019
+origin.date: 11/08/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: 4ed3633691c629e86037672fd97bd1b5be7c2d97
-ms.sourcegitcommit: 153236e4ad63e57ab2ae6ff1d4ca8b83221e3a1c
+ms.openlocfilehash: 6528ab642de68a0c643a8dcfb39e2e11c52a84fa
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67171272"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335841"
 ---
 <!--Verify successfully-->
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 资源管理器模板
@@ -22,44 +22,36 @@ ms.locfileid: "67171272"
 ## <a name="sql-core-api"></a>SQL（核心）API
 
 |**模板**|**说明**|
-|---| ---|
-|[创建 Azure Cosmos 帐户、数据库、容器](manage-sql-with-resource-manager.md#create-resource) | 此模板在两个区域中创建一个启用了多主数据库的 SQL (Core) API 帐户。 Azure Cosmos 帐户会有两个共享数据库级吞吐量的容器。 |
-|[更新数据库的吞吐量（RU/秒）](manage-sql-with-resource-manager.md#database-ru-update) | 此模板更新 SQL (Core) API 帐户中数据库的吞吐量。 |
-|[更新容器的吞吐量（RU/秒）](manage-sql-with-resource-manager.md#container-ru-update) | 此模板更新 SQL (Core) API 帐户中容器的吞吐量。 |
+|---|---|
+|[创建 Azure Cosmos 帐户、数据库、容器](manage-sql-with-resource-manager.md#create-resource) | 此模板在两个区域创建一个 SQL (Core) API 帐户，区域中的两个容器具有共享数据库吞吐量，一个容器具有专用吞吐量。 吞吐量可以更新，只需重新提交包含已更新吞吐量属性值的模板即可。 |
+|[通过存储过程、触发器和 UDF 创建 Azure Cosmos 帐户、数据库和容器](manage-sql-with-resource-manager.md#create-sproc) | 此模板通过存储过程、触发器和用于容器的 UDF 在两个区域中创建一个 SQL (Core) API 帐户。 |
 
 ## <a name="mongodb-api"></a>MongoDB API
 
 |**模板**|**说明**|
 |---| ---|
 |[创建 Azure Cosmos 帐户、数据库、集合](manage-mongodb-with-resource-manager.md#create-resource) | 此模板使用 Azure Cosmos DB API for MongoDB 在两个区域创建一个启用了多主数据库的帐户。 Azure Cosmos 帐户会有两个共享数据库级吞吐量的容器。 |
-|[更新数据库的吞吐量（RU/秒）](manage-mongodb-with-resource-manager.md#database-ru-update) | 此模板更新 MongoDB API 帐户中数据库的吞吐量。 |
-|[更新集合的吞吐量（RU/秒）](manage-mongodb-with-resource-manager.md#collection-ru-update) | 此模板更新 MongoDB API 帐户中容器的吞吐量。 |
 
 ## <a name="cassandra-api"></a>Cassandra API
 
 |**模板**|**说明**|
 |---| ---|
 |[创建 Azure Cosmos 帐户、密钥空间、表](manage-cassandra-with-resource-manager.md#create-resource) | 此模板在两个区域创建一个启用了多主数据库的 Cassandra API 帐户。 Azure Cosmos 帐户会有两个共享密钥空间级吞吐量的表。 |
-|[更新密钥空间的吞吐量（RU/秒）](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | 此模板更新 Cassandra API 帐户中密钥空间的吞吐量。 |
-|[更新表的吞吐量（RU/秒）](manage-cassandra-with-resource-manager.md#table-ru-update) | 此模板更新 Cassandra API 帐户中表的吞吐量。 |
 
 ## <a name="gremlin-api"></a>Gremlin API
 
 |**模板**|**说明**|
 |---| ---|
 |[创建 Azure Cosmos 帐户、数据库、图形](manage-gremlin-with-resource-manager.md#create-resource) | 此模板在两个区域创建一个启用了多主数据库的 Gremlin API 帐户。 Azure Cosmos 帐户会有两个共享数据库级吞吐量的图形。 |
-|[更新数据库的吞吐量（RU/秒）](manage-gremlin-with-resource-manager.md#database-ru-update) | 此模板更新 Gremlin API 帐户中数据库的吞吐量。 |
-|[更新图形的吞吐量（RU/秒）](manage-gremlin-with-resource-manager.md#graph-ru-update) | 此模板更新 Gremlin API 帐户中图形的吞吐量。 |
 
 ## <a name="table-api"></a>表 API
 
 |**模板**|**说明**|
 |---| ---|
 |[创建 Azure Cosmos 帐户、表](manage-table-with-resource-manager.md#create-resource) | 此模板在两个区域创建一个启用了多主数据库的表 API 帐户。 Azure Cosmos 帐户会有一个表。 |
-|[更新表的吞吐量（RU/秒）](manage-table-with-resource-manager.md#table-ru-update) | 此模板更新表 API 帐户中表的吞吐量。 |
 
 > [!TIP]
 > 若要在使用表 API 时启用共享吞吐量，请在 Azure 门户中启用帐户级吞吐量。
 
-<!--Not Available on [ARM reference for Azure Cosmos DB](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.documentdb/allversions)-->
-<!--Update_Description: wording update -->
+<!--Not Available on [ARM reference for Azure Cosmos DB](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
+<!--Update_Description: wording update, update link -->

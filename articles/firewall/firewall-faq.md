@@ -1,19 +1,19 @@
 ---
 title: Azure 防火墙常见问题解答
-description: Azure 防火墙常见问题解答
+description: Azure 防火墙常见问题解答。 是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。
 services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: conceptual
-origin.date: 09/17/2019
-ms.date: 09/23/2019
+origin.date: 11/19/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 0702bf8a9b745286e7ce0e86c83f8e42b8de0341
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 36c306746a796897856ac7440fa477312c018d44
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335014"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -166,4 +166,16 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 否。 Azure 防火墙不需要大于 /26 的子网。
 
-<!-- Update_Description: wording update -->
+## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
+
+Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps。 目前，横向扩展仅基于 CPU 使用情况。 在某些情况下，使用网络规则的防火墙无法纵向扩展来提高吞吐量只是因为网络规则无法显著影响 CPU 使用情况。 如需提高防火墙的吞吐量，请联系支持人员，要求其提高防火墙的初始吞吐容量。
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙横向扩展需要多长时间？
+
+目前，Azure 防火墙横向扩展需要五到七分钟。如果存在突发，需要加快自动缩放的速度，请联系支持人员，要求其提高防火墙的初始吞吐容量。
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
+
+否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

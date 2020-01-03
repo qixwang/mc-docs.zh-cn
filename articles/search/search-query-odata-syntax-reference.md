@@ -1,14 +1,14 @@
 ---
-title: OData 表达式语法参考 - Azure 搜索
-description: Azure 搜索查询中 OData 表达式的正式语法和语法规范。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 表达式语法参考
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索查询中 OData 表达式的正式语法和语法规范。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,22 +20,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cbe318ef5cdc8501775ff6334000c2801e911dd9
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: aca38230275cf1df271c5638bae0136f407cd1e1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336494"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>适用于 Azure 搜索的 OData 表达式语法参考
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 认知搜索的 OData 表达式语法参考
 
-Azure 搜索在整个 API 中使用 [OData 表达式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作为参数。 最常见的是，OData 表达式用于 `$orderby` 和 `$filter` 参数。 这些表达式可能很复杂，包含多个子句、函数和运算符。 但是，甚至简单的 OData 表达式（如属性路径）都在 Azure 搜索 REST API 的许多部分中使用。 例如，路径表达式用于引用 API 中各处的复杂字段的子字段，例如在[建议器](index-add-suggesters.md)、[评分函数](index-add-scoring-profiles.md)、`$select` 参数，甚至在 [Lucene 查询中的字段搜索](query-lucene-syntax.md)中列出子字段。
+Azure 认知搜索在整个 API 中使用 [OData 表达式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作为参数。 最常见的是，OData 表达式用于 `$orderby` 和 `$filter` 参数。 这些表达式可能很复杂，包含多个子句、函数和运算符。 但是，甚至简单的 OData 表达式（如属性路径）都在 Azure 认知搜索 REST API 的许多部分中使用。 例如，路径表达式用于引用 API 中各处的复杂字段的子字段，例如在[建议器](index-add-suggesters.md)、[评分函数](index-add-scoring-profiles.md)、`$select` 参数，甚至在 [Lucene 查询中的字段搜索](query-lucene-syntax.md)中列出子字段。
 
 本文使用正式语法描述所有这些形式的 OData 表达式。 还有一个[交互式图表](#syntax-diagram)，以帮助直观地探索语法。
 
 ## <a name="formal-grammar"></a>正式语法
 
-我们可以使用 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）语法描述 Azure 搜索支持的 OData 语言的子集。 规则以“自上而下”的方式列出，从最复杂的表达式开始，并将其分解为更原始的表达式。 顶部是与 Azure 搜索 REST API 的特定参数相对应的语法规则：
+我们可以使用 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）语法描述 Azure 认知搜索支持的 OData 语言的子集。 规则以“自上而下”的方式列出，从最复杂的表达式开始，并将其分解为更原始的表达式。 顶部是与 Azure 认知搜索 REST API 的特定参数相对应的语法规则：
 
 - [`$filter`](search-query-odata-filter.md)，由 `filter_expression` 规则定义。
 - [`$orderby`](search-query-odata-orderby.md)，由 `order_by_expression` 规则定义。
@@ -210,14 +210,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>语法图
 
-若要直观地探索 Azure 搜索支持的 OData 语言语法，请尝试交互式语法图：
+若要直观地探索 Azure 认知搜索支持的 OData 语言语法，请尝试交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>另请参阅  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene 查询语法](query-lucene-syntax.md)
-- [Azure 搜索中的简单查询语法](query-simple-syntax.md)
+- [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)

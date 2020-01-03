@@ -5,14 +5,14 @@ author: rockboyfor
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 7e1ce636c5eefe436fb9ec6547ac87de3072d94c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 20919810473ce14929ef609d410ae5c5e3f5d4e9
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336008"
 ---
-<!--Pending for verify-->
+<!--Verified successfully on 12/16/2019-->
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
 了解如何使用 Azure Pipelines 持续构建和部署 Azure 资源管理器模板项目。
@@ -42,7 +42,10 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 
 若要完成本文，需要做好以下准备：
 
-* **GitHub 帐户**，用于为模板创建存储库。 如果没有 GitHub 帐户，可以[免费创建一个](https://github.com)。 有关使用 GitHub 存储库的详细信息，请参阅[构建 GitHub 存储库](https://docs.microsoft.com/azure/devops/pipelines/repos/github)。
+* **GitHub 帐户**，用于为模板创建存储库。 如果没有 GitHub 帐户，可以[免费创建一个](https://github.com)。
+    
+    <!--Not Available on [Build GitHub repositories](https://docs.microsoft.com/azure/devops/pipelines/repos/github)-->
+    
 * **安装 Git**。 本教程说明使用 Git Bash 或 Git Shell   。 如需说明，请参阅[安装 Git]( https://www.atlassian.com/git/tutorials/install-git)。
 * **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
@@ -148,13 +151,39 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 1. 从左侧菜单的底部选择“项目设置”  。
 1. 在“管道”下，选择“服务连接”   。
 1. 选择“新建服务连接”，然后选择“AzureResourceManager”   。
-1. 输入以下值：
 
+    <!--MOONCAKE CUSTOMIZATION ON 12/16/2019-->
+    
+    > [!NOTE]
+    > * 创建服务主体并提前配置其对 Azure 中国云上的 Azure 资源的访问，保存输出供下一步使用。
+    > 
+    > ```Azure CLI
+    > az cloud set -n AzureChinaCloud
+    > az login
+    > az ad sp create-for-rbac
+    > ```
+    > 
+    > ![Azure 资源管理器 Azure DevOps 创建服务主体](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-sp-chenye.png)
+    
+    <!--MOONCAKE CUSTOMIZATION ON 12/16/2019-->
+
+1. 选择“使用完整版本的服务连接对话框”并输入以下值： 
+    
     * **连接名称**：输入连接名称。 例如，“AzureRmPipeline-conn”  。 请记下此名称，创建管道时需要使用它。
+    * **环境**：选择 **AzureChinaCloud**。
     * **作用域级别**：选择“订阅”  。
-    * **订阅**：选择自己的订阅。
-    * **资源组**：将此字段留空。
+    * **订阅**：输入你的订阅。
+    * **订阅名称**：输入你的订阅名称。
+    * **服务主体客户端 ID**：输入 `az ad sp create-for-rbac` 步骤中的 **appId** 输出。
+    * **服务主体客户端 ID**：输入 `az ad sp create-for-rbac` 步骤中的 **password** 输出。 
+    * **租户 ID**：输入 `az ad sp create-for-rbac` 步骤中的 **tenant** 输出。 
     * 允许所有管道使用此连接。  （选定）
+    * 选择“验证连接”。 
+    
+    ![Azure 资源管理器 Azure DevOps 创建 Azure 连接](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-connection-chenye.png)
+    
+    <!--MOONCAKE CUSTOMIZATION ON 12/16/2019-->
+    
 1. 选择“确定”  。
 
 ## <a name="create-a-pipeline"></a>创建管道
@@ -261,4 +290,5 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 <!--Not Avaiable on ## Next steps-->
 <!--Not Avaiable on > [Use safe deployment practices](./deployment-manager-tutorial.md)-->
 
-<!--Pending for Verify-->
+<!--Verified successfully on 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

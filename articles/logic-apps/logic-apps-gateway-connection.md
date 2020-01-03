@@ -8,14 +8,14 @@ author: ecfan
 ms.author: v-yiso
 ms.reviewer: arthii, LADocs
 ms.topic: article
-origin.date: 10/18/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: db9c83f348656fe412b91b1b9d6e907bc3ed945c
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+origin.date: 11/06/2019
+ms.date: 12/23/2019
+ms.openlocfilehash: 4f29ab1c9d7583c6cc1c6f7cfa7d7fc699b11ca7
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336197"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -55,7 +55,7 @@ ms.locfileid: "73425968"
 
 * 已经[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-* 你的 [Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)与安装该数据网关时使用的帐户和订阅相同。
+* 你使用的 [Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)与安装该数据网关时使用的帐户和订阅相同。 此 Azure 帐户必须属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。
 
 * 网关安装尚未由另一 Azure 网关资源注册并声明。
 
@@ -75,7 +75,7 @@ ms.locfileid: "73425968"
 
 1. 在“本地数据网关”下，选择“添加”。  
 
-   ![添加数据网关](./media/logic-apps-gateway-connection/add-gateway.png)
+   ![为数据网关添加新的 Azure 资源](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
 1. 在“创建连接网关”下，提供网关资源的以下信息。  完成操作后，选择“创建”  。
 
@@ -84,13 +84,13 @@ ms.locfileid: "73425968"
    | 资源名称  | 为网关资源提供一个名称，其中只包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）或句点 (`.`)。 |
    | **订阅** | 选择曾用于网关安装的 Azure 帐户的 Azure 订阅。 默认订阅取决于用来登录的 Azure 帐户。 |
    | **资源组** | 要使用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md) |
-   | **Location** | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)期间为网关云服务选择的区域或位置。 否则，网关安装不会显示在“安装名称”列表中。  逻辑应用位置可能不同于网关资源位置。 |
-   | **安装名称** | 选择一个网关安装，该安装仅在以下条件满足的情况下显示在列表中： <p><p>- 存在于要创建的网关资源所在的区域 <br>- 未关联到另一 Azure 网关资源 <br>- 关联到要用来创建网关资源的 Azure 帐户 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
+   | **位置** | 在[网关安装](../logic-apps/logic-apps-gateway-install.md)期间为网关云服务选择的区域或位置。 否则，网关安装不会显示在“安装名称”列表中。  逻辑应用位置可能不同于网关资源位置。 |
+   | **安装名称** | 选择一个网关安装，该安装仅在以下条件满足的情况下显示在列表中： <p><p>- 网关安装使用的区域与要创建的网关资源所在的区域相同。 <br>- 网关安装未关联到另一 Azure 网关资源。 <br>- 网关安装关联到要用来创建网关资源的 Azure 帐户。 <br>- 你的 Azure 帐户属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，是用于网关安装的帐户。 <p><p>有关详细信息，请参阅[常见问题解答](#faq)部分。 |
    |||
 
    以下示例演示的网关安装位于你的网关资源所在的区域，并关联到同一 Azure 帐户：
 
-   ![提供创建数据网关资源所需的详细信息](./media/logic-apps-gateway-connection/gateway-details.png)
+   ![提供创建数据网关资源所需的详细信息](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -153,7 +153,7 @@ ms.locfileid: "73425968"
 
    例如：
 
-   ![删除网关](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![删除 Azure 中的网关资源](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
 <a name="faq"></a>
 
@@ -162,7 +162,7 @@ ms.locfileid: "73425968"
 **问**：在 Azure 中创建我的网关资源时，为何不显示我的网关安装？ <br/>
 **答**：此问题的可能原因如下：
 
-* Azure 帐户必须是关联到本地计算机上的网关安装的帐户。 请检查你是否使用了关联到网关安装的标识登录到 Azure 门户。
+* Azure 帐户必须是关联到本地计算机上的网关安装的帐户。 请检查你是否使用了关联到网关安装的标识登录到 Azure 门户。 另请确保你的 Azure 帐户属于单个 [Azure AD 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)，并已设置为在网关安装过程中使用过的 Azure AD 租户或目录。
 
 * 网关资源和网关安装必须使用同一区域。 但是，逻辑应用位置可以不同于网关资源位置。
 

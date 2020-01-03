@@ -6,20 +6,20 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/26/2019
-ms.date: 10/28/2019
+ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: eed7a167e565797635fee8708e7085bb8a647965
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 7de1381a9c95fda9d9484d0ff42f2c981df3596c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336091"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的生存时间 (TTL) 
 
 利用**生存时间**（简称 TTL），Azure Cosmos DB 能够在特定一段时间后自动将项从容器中删除。 默认情况下，可以在容器级别设置生存时间，并基于每个项替代该值。 在容器或项级别设置 TTL 后，Azure Cosmos DB 会在一段时间（自上次修改项的时间开始算起）后自动删除这些项。 配置的生存时间值以秒为单位。 配置 TTL 后，系统会基于 TTL 值自动删除已过期的项，不需要客户端应用程序显式发出的 delete 操作。
 
-删除过期项是一个后台任务，它使用剩余的[请求单元](request-units.md)，即用户请求没有使用的请求单元。 如果容器负载过大，并且没有请求单元留给维护任务，则可能会延迟到期。
+删除过期项是一个后台任务，它使用剩余的[请求单元](request-units.md)，即用户请求没有使用的请求单元。 即使在 TTL 过期后，如果容器出现请求过载的情况，并且没有足够的 RU 使用，也会延迟数据删除操作。 如果提供了足够的 RU 来执行删除操作，则会删除数据。 虽然数据删除延迟，但任何查询都不会（通过任何 API）在 TTL 已过期后返回数据。
 
 ## <a name="time-to-live-for-containers-and-items"></a>容器和项的生存时间
 

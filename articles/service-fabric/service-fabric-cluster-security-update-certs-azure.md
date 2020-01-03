@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 11/13/2018
-ms.date: 09/02/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 4130655780e2d7eba3ed2d4575338270dbb83f9c
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: aa2736e41254ae8c451bd26b944677ed2dd7e345
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335160"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
 
-Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到经典行为是非推荐的高级操作，需要在 Fabric.Code 配置内将“UseSecondaryIfNewer”设置参数的值设置为 false。
+Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到经典行为是非推荐的高级操作，需要在 `Fabric.Code` 配置内将“UseSecondaryIfNewer”设置参数的值设置为 false。
 
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure Resource Manager 创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果在创建时只指定了一个群集证书，该证书会用作主证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
@@ -53,13 +53,16 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 执行这些步骤的前提是，熟悉资源管理器的工作原理，并已使用资源管理器模板至少部署了一个 Service Fabric 群集，同时已准备好在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
 > [!NOTE]
-> 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 下载。 
+> 如需可参考或入手的示例模板和参数，请从此 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) 下载。 
 > 
 > 
+
+> [!NOTE]
+> 必须修改从 GitHub 存储库“Azure-Samples”下载或引用的模板，使之适应 Azure 中国云环境。 例如，替换某些终结点（将“blob.core.windows.net”替换为“blob.core.chinacloudapi.cn”，将“cloudapp.azure.com”替换为“chinacloudapp.cn”）；必要时更改某些不受支持的位置、VM 映像、VM 大小、SKU 以及资源提供程序的 API 版本。
 
 ### <a name="edit-your-resource-manager-template"></a>编辑 Resource Manager 模板
 
-为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们要进行的所有编辑。 该示例位于 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)。
+为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们要进行的所有编辑。 该示例位于 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)。
 
 **请确保执行所有步骤**
 
@@ -68,29 +71,28 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 2. 向模板的参数部分添加**两个新参数**“secCertificateThumbprint”和“secCertificateUrlValue”，类型为“string”。 可复制以下代码片段，并将其添加到该模板。 根据具体的模板源，可能已经存在这些定义，如果是这样，请转至下一步。 
 
     ```json
-       "secCertificateThumbprint": {
-          "type": "string",
-          "metadata": {
-            "description": "Certificate Thumbprint"
-          }
-        },
-        "secCertificateUrlValue": {
-          "type": "string",
-          "metadata": {
-            "description": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.cn:443/secrets/<exact location>"
-          }
-        },
-
+    "secCertificateThumbprint": {
+      "type": "string",
+      "metadata": {
+        "description": "Certificate Thumbprint"
+      }
+    },
+    "secCertificateUrlValue": {
+      "type": "string",
+      "metadata": {
+        "description": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.cn:443/secrets/<exact location>"
+      }
+    },
     ```
 
 3. 对 **Microsoft.ServiceFabric/clusters** 资源进行更改 - 在模板中找到“Microsoft.ServiceFabric/clusters”资源定义。 在该定义的属性下，找到“Certificate”JSON 标记，如以下 JSON 代码片段所示：
 
     ```JSON
-          "properties": {
-            "certificate": {
-              "thumbprint": "[parameters('certificateThumbprint')]",
-              "x509StoreName": "[parameters('certificateStoreValue')]"
-         }
+    "properties": {
+    "certificate": {
+      "thumbprint": "[parameters('certificateThumbprint')]",
+      "x509StoreName": "[parameters('certificateStoreValue')]"
+    }
     ``` 
 
     添加新标记“thumbprintSecondary”并为其指定值“[parameters('secCertificateThumbprint')]”。  
@@ -98,23 +100,23 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
     资源定义现在应如下所示（根据具体的模板源，有时与下面的代码片段不完全相同）。 
 
     ```JSON
-          "properties": {
-            "certificate": {
-              "thumbprint": "[parameters('certificateThumbprint')]",
-              "thumbprintSecondary": "[parameters('secCertificateThumbprint')]",
-              "x509StoreName": "[parameters('certificateStoreValue')]"
-         }
+    "properties": {
+    "certificate": {
+      "thumbprint": "[parameters('certificateThumbprint')]",
+      "thumbprintSecondary": "[parameters('secCertificateThumbprint')]",
+      "x509StoreName": "[parameters('certificateStoreValue')]"
+    }
     ``` 
 
     如果要**滚动更新证书**，请将新证书指定为主要证书，并将当前的主要证书移为辅助证书。 这样就可以通过一个部署步骤，将当前主要证书滚动更新为新证书。
 
     ```JSON
-          "properties": {
-            "certificate": {
-              "thumbprint": "[parameters('secCertificateThumbprint')]",
-              "thumbprintSecondary": "[parameters('certificateThumbprint')]",
-              "x509StoreName": "[parameters('certificateStoreValue')]"
-         }
+    "properties": {
+    "certificate": {
+      "thumbprint": "[parameters('secCertificateThumbprint')]",
+      "thumbprintSecondary": "[parameters('certificateThumbprint')]",
+      "x509StoreName": "[parameters('certificateStoreValue')]"
+    }
     ``` 
 
 4. 对**所有** **Microsoft.Compute/virtualMachineScaleSets** 资源定义进行更改 - 查找 Microsoft.Compute/virtualMachineScaleSets 资源定义。 在“virtualMachineProfile”下，滚动到“publisher”：“Microsoft.Azure.ServiceFabric”。
@@ -177,18 +179,17 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>编辑模板文件，反映前面添加的新参数
-如果参考了 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) 中的示例，便可开始更改示例 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
+如果参考了 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) 中的示例，便可开始更改示例 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
 
 编辑 Resource Manager 模板参数文件，添加 secCertificateThumbprint 和 secCertificateUrlValue 的两个新参数。 
 
 ```JSON
-    "secCertificateThumbprint": {
-      "value": "thumbprint value"
-    },
-    "secCertificateUrlValue": {
-      "value": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.cn:443/secrets/<exact location>"
-     },
-
+"secCertificateThumbprint": {
+  "value": "thumbprint value"
+},
+"secCertificateUrlValue": {
+  "value": "Refers to the location URL in your key vault where the certificate was uploaded, it is should be in the format of https://<name of the vault>.vault.azure.cn:443/secrets/<exact location>"
+},
 ```
 
 ### <a name="deploy-the-template-to-azure"></a>将模板部署到 Azure
@@ -284,6 +285,10 @@ Get-ServiceFabricClusterHealth
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>使用门户删除管理或只读客户端证书
 
 若要删除辅助证书，以防将其用于群集安全，请导航到“安全性”部分，并从特定证书的上下文菜单中选择“删除”选项。
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>将应用程序证书添加到虚拟机规模集
+
+若要将用于应用程序的证书部署到群集，请参阅[此示例 Powershell 脚本](scripts/service-fabric-powershell-add-application-certificate.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：

@@ -1,23 +1,23 @@
 ---
-title: 教程：将 Azure SQL 数据库弹性池添加到故障转移组 | Microsoft Docs
+title: 教程：将弹性池添加到故障转移组
 description: 使用 Azure 门户、PowerShell 或 Azure CLI 将 Azure SQL 数据库弹性池添加到故障转移组。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
-origin.date: 06/19/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: f13c93521300cf45c9f237b455f9762c4cc28c77
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+origin.date: 08/27/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 8736fef930ba23cd9fcda4fc6ba58ba52b52c3e8
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336285"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 
@@ -26,7 +26,7 @@ ms.locfileid: "71262937"
 > [!div class="checklist"]
 > - 创建 Azure SQL 数据库单一数据库。
 > - 将单一数据库添加到弹性池中。 
-> - 在两个逻辑 SQL 服务器之间创建弹性池的[故障转移组](sql-database-auto-failover-group.md)。
+> - 在两个逻辑 SQL 服务器之间创建两个弹性池的[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
 ## <a name="prerequisites"></a>先决条件
@@ -41,8 +41,13 @@ ms.locfileid: "71262937"
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="2---add-single-database-to-elastic-pool"></a>2 - 将单一数据库添加到弹性池中
+在此步骤中，我们将创建一个弹性池并向其添加单一数据库。 
 
-1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“创建资源”  。
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+使用 Azure 门户创建弹性池。 
+
 1. 在搜索框中键入 `elastic pool`，按 Enter，选择“SQL 弹性数据库池”图标，然后选择“创建”。   
 
     ![选择弹性池](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
@@ -64,10 +69,69 @@ ms.locfileid: "71262937"
 1. 选择“查看 + 创建”以检查弹性池设置，然后选择“创建”以创建弹性池。   
 
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+使用 PowerShell 创建弹性池和辅助服务器。 
+
+   ```powershell
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "China East 2"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   $poolName = "myElasticPool"
+   $databaseName = "mySampleDatabase"
+   $drLocation = "China North 2"
+   $drServerName = "mysqlsecondary-$(Get-Random)"
+   $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # The ip address range that you want to allow to access your server 
+   # Leaving at 0.0.0.0 will prevent outside-of-azure connections
+   # $startIp = "0.0.0.0"
+   # $endIp = "0.0.0.0"
+   
+   # Show randomized variables
+   Write-host "DR Server name is" $drServerName 
+   Write-host "Failover group name is" $failoverGroupName
+   
+   # Create primary Gen5 elastic 2 vCore pool
+   Write-host "Creating elastic pool..."
+   $elasticPool = New-AzSqlElasticPool -ResourceGroupName $resourceGroupName `
+       -ServerName $serverName `
+       -ElasticPoolName $poolName `
+       -Edition "GeneralPurpose" `
+       -vCore 2 `
+       -ComputeGeneration Gen5
+   $elasticPool
+   
+   # Add single db into elastic pool
+   Write-host "Creating elastic pool..."
+   $addDatabase = Set-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+       -ServerName $serverName `
+       -DatabaseName $databaseName `
+       -ElasticPoolName $poolName
+   $addDatabase
+   ```
+
+本教程的此部分使用以下 PowerShell cmdlet：
+
+| 命令 | 注释 |
+|---|---|
+| [New-AzSqlElasticPool](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlelasticpool) | 为 Azure SQL 数据库创建弹性数据库池。| 
+| [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) | 设置数据库的属性，或将现有数据库移到弹性池中。 | 
+
+---
+
 ## <a name="3---create-the-failover-group"></a>3 - 创建故障转移组 
 此步骤在现有的 Azure SQL 服务器与另一区域中的新 Azure SQL 服务器之间创建一个[故障转移组](sql-database-auto-failover-group.md)。 然后，将弹性池添加到该故障转移组。 
 
-1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“所有服务”  。 
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+使用 Azure 门户创建故障转移组。 
+
+1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“所有服务”  ，然后选择“SQL 弹性池”。 
 1. 选择在上一部分中创建的弹性池，例如 `myElasticPool`。 
 1. 在“概述”  窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
   
@@ -94,13 +158,102 @@ ms.locfileid: "71262937"
         
     ![将弹性池添加到故障转移组中](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. 选择“选择”以将弹性池设置应用到故障转移组，然后选择“创建”以创建故障转移组。   将弹性池添加到故障转移组的操作会自动启动异地复制过程。 
+1. 选择“选择”以将弹性池设置应用到故障转移组，然后选择“创建”以创建故障转移组。   将弹性池添加到故障转移组的操作会自动启动异地复制过程。
+
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 PowerShell 创建故障转移组。 
+
+   ```powershell 
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "China East 2"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $poolName = "myElasticPool"
+   # $databaseName = "mySampleDatabase"
+   # $drLocation = "China North 2"
+   # $drServerName = "mysqlsecondary-$(Get-Random)"
+   $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+
+   # Create a secondary server in the failover region
+   Write-host "Creating a secondary logical server in the failover region..."
+   New-AzSqlServer -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -Location $drLocation `
+      -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+         -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+   Write-host "Secondary logical server =" $drServerName
+   
+   # Create a server firewall rule that allows access from the specified IP range
+   Write-host "Configuring firewall for secondary logical server..."
+   New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+   Write-host "Firewall configured" 
+   
+   # Create secondary Gen5 elastic 2 vCore pool
+   Write-host "Creating secondary elastic pool..."
+   $elasticPool = New-AzSqlElasticPool -ResourceGroupName $resourceGroupName `
+       -ServerName $drServerName `
+       -ElasticPoolName $poolName `
+       -Edition "GeneralPurpose" `
+       -vCore 2 `
+       -ComputeGeneration Gen5
+   $elasticPool
+   
+   # Create a failover group between the servers
+   Write-host "Creating failover group..." 
+   New-AzSqlDatabaseFailoverGroup `
+     -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -PartnerServerName $drServerName  `
+      -FailoverGroupName $failoverGroupName `
+      -FailoverPolicy Automatic `
+      -GracePeriodWithDataLossHours 2
+   Write-host "Failover group created successfully." 
+   
+   # Add elastic pool to the failover group
+   Write-host "Enumerating databases in elastic pool...." 
+   $FailoverGroup = Get-AzSqlDatabaseFailoverGroup `
+                    -ResourceGroupName $resourceGroupName `
+                    -ServerName $serverName `
+                    -FailoverGroupName $failoverGroupName
+   $databases = Get-AzSqlElasticPoolDatabase `
+                  -ResourceGroupName $resourceGroupName `
+                  -ServerName $serverName `
+                  -ElasticPoolName $poolName
+   Write-host "Adding databases to failover group..." 
+   $failoverGroup = $failoverGroup | Add-AzSqlDatabaseToFailoverGroup `
+                                     -Database $databases 
+   $failoverGroup
+   ```
+
+本教程的此部分使用以下 PowerShell cmdlet：
+
+| 命令 | 注释 |
+|---|---|
+| [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
+| [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为逻辑服务器创建防火墙规则。 | 
+| [New-AzSqlElasticPool](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlelasticpool) | 为 Azure SQL 数据库创建弹性数据库池。| 
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 新建故障转移组。 |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或更多个 Azure SQL 数据库添加到故障转移组。 |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
+
+---
 
 
 ## <a name="4---test-failover"></a>4 - 测试故障转移 
 此步骤将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
 1. 在 [Azure 门户中](https://portal.azure.cn)导航到你的“SQL 服务器”服务器。  
+
 1. 在“设置”窗格下选择“故障转移组”，然后选择在第 2 部分创建的故障转移组。   
   
    ![在门户中选择故障转移组](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
@@ -114,22 +267,326 @@ ms.locfileid: "71262937"
 1. 查看哪个服务器是主服务器，哪个服务器是辅助服务器。 如果故障转移成功，这两个服务器的角色应会交换。 
 1. 再次选择“故障转移”，将故障转移组故障回复到原始设置。  
 
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 PowerShell 测试故障转移组的故障转移。 
+
+   ```powershell 
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "China East 2"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $poolName = "myElasticPool"
+   # $databaseName = "mySampleDatabase"
+   # $drLocation = "China North 2"
+   # $drServerName = "mysqlsecondary-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # Check role of secondary replica
+   Write-host "Confirming the secondary server is secondary...." 
+   (Get-AzSqlDatabaseFailoverGroup `
+      -FailoverGroupName $failoverGroupName `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName).ReplicationRole
+   
+   # Failover to secondary server
+   Write-host "Failing over failover group to the secondary..." 
+   Switch-AzSqlDatabaseFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Failover group failed over to" $drServerName 
+   ```
+
+将故障转移组故障转移到辅助服务器，然后使用 PowerShell 故障回复。 
+
+   ```powershell 
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "China East 2"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $poolName = "myElasticPool"
+   # $databaseName = "mySampleDatabase"
+   # $drLocation = "China North 2"
+   # $drServerName = "mysqlsecondary-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+
+   # Check role of secondary replica
+   Write-host "Confirming the secondary server is now primary" 
+   (Get-AzSqlDatabaseFailoverGroup `
+      -FailoverGroupName $failoverGroupName `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName).ReplicationRole
+   
+   # Revert failover to primary server
+   Write-host "Failing over failover group to the primary...." 
+   Switch-AzSqlDatabaseFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Failover group failed over to" $serverName 
+   ```
+
+本教程的此部分使用以下 PowerShell cmdlet：
+
+| 命令 | 注释 |
+|---|---|
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
+
+
+---
+
 ## <a name="clean-up-resources"></a>清理资源 
+
 通过删除资源组来清理资源。 
+
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
 
 1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的资源组。
 1. 选择“删除资源组”即可删除该资源组中的所有资源以及该组本身。  
-1. 在文本框中键入资源组的名称 `myResourceGroup`，然后选择“删除”以删除该资源组。   
+1. 在文本框中键入资源组的名称 `myResourceGroup`，然后选择“删除”以删除该资源组。  
 
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 PowerShell 清理资源。 
+
+   ```powershell 
+   # Set variables for your server and database
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   
+   # Clean up resources by removing the resource group
+   Write-host "Removing resource group..."
+   Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
+   Write-host "Resource group removed =" $resourceGroupName
+   ```
+---
+
+本教程的此部分使用以下 PowerShell cmdlet：
+
+| 命令 | 注释 |
+|---|---|
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
+
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+
+## <a name="full-script"></a>完整脚本
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+# Set variables for your server and database
+$subscriptionId = '<Subscription-ID>'
+$randomIdentifier = $(Get-Random)
+$resourceGroupName = "myResourceGroup-$randomIdentifier"
+$location = "China East 2"
+$adminLogin = "azureuser"
+$password = "PWD27!"+(New-Guid).Guid
+$serverName = "mysqlserver-$randomIdentifier"
+$poolName = "myElasticPool"
+$databaseName = "mySampleDatabase"
+$drLocation = "China North 2"
+$drServerName = "mysqlsecondary-$randomIdentifier"
+$failoverGroupName = "failovergrouptutorial-$randomIdentifier"
+
+
+# The ip address range that you want to allow to access your server 
+# Leaving at 0.0.0.0 will prevent outside-of-azure connections
+$startIp = "0.0.0.0"
+$endIp = "0.0.0.0"
+
+# Show randomized variables
+Write-host "Resource group name is" $resourceGroupName 
+Write-host "Password is" $password  
+Write-host "Server name is" $serverName 
+Write-host "DR Server name is" $drServerName 
+Write-host "Failover group name is" $failoverGroupName
+
+
+# Set subscription ID
+Set-AzContext -SubscriptionId $subscriptionId 
+
+# Create a resource group
+Write-host "Creating resource group..."
+$resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Tag @{Owner="SQLDB-Samples"}
+$resourceGroup
+
+# Create a server with a system-wide unique server name
+Write-host "Creating primary logical server..."
+New-AzSqlServer -ResourceGroupName $resourceGroupName `
+   -ServerName $serverName `
+   -Location $location `
+   -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+   -ArgumentList $adminLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+Write-host "Primary logical server = " $serverName
+
+# Create a server firewall rule that allows access from the specified IP range
+Write-host "Configuring firewall for primary logical server..."
+New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+   -ServerName $serverName `
+   -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+Write-host "Firewall configured" 
+
+# Create General Purpose Gen5 database with 2 vCore
+Write-host "Creating a gen5 2 vCore database..."
+$database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
+   -ServerName $serverName `
+   -DatabaseName $databaseName `
+   -Edition "GeneralPurpose" `
+   -VCore 2 `
+   -ComputeGeneration Gen5 `
+   -MinimumCapacity 1 `
+   -SampleName "AdventureWorksLT"
+$database
+
+# Create primary Gen5 elastic 2 vCore pool
+Write-host "Creating elastic pool..."
+$elasticPool = New-AzSqlElasticPool -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -ElasticPoolName $poolName `
+    -Edition "GeneralPurpose" `
+    -vCore 2 `
+    -ComputeGeneration Gen5
+$elasticPool
+
+# Add single db into elastic pool
+Write-host "Creating elastic pool..."
+$addDatabase = Set-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -ElasticPoolName $poolName
+$addDatabase
+
+# Create a secondary server in the failover region
+Write-host "Creating a secondary logical server in the failover region..."
+New-AzSqlServer -ResourceGroupName $resourceGroupName `
+   -ServerName $drServerName `
+   -Location $drLocation `
+   -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+      -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+Write-host "Secondary logical server =" $drServerName
+
+# Create a server firewall rule that allows access from the specified IP range
+Write-host "Configuring firewall for secondary logical server..."
+New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+   -ServerName $drServerName `
+   -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+Write-host "Firewall configured" 
+
+# Create secondary Gen5 elastic 2 vCore pool
+Write-host "Creating secondary elastic pool..."
+$elasticPool = New-AzSqlElasticPool -ResourceGroupName $resourceGroupName `
+    -ServerName $drServerName `
+    -ElasticPoolName $poolName `
+    -Edition "GeneralPurpose" `
+    -vCore 2 `
+    -ComputeGeneration Gen5
+$elasticPool
+
+
+# Create a failover group between the servers
+Write-host "Creating failover group..." 
+New-AzSqlDatabaseFailoverGroup `
+  -ResourceGroupName $resourceGroupName `
+   -ServerName $serverName `
+   -PartnerServerName $drServerName  `
+   -FailoverGroupName $failoverGroupName `
+   -FailoverPolicy Automatic `
+   -GracePeriodWithDataLossHours 2
+Write-host "Failover group created successfully." 
+
+# Add elastic pool to the failover group
+Write-host "Enumerating databases in elastic pool...." 
+$FailoverGroup = Get-AzSqlDatabaseFailoverGroup `
+                 -ResourceGroupName $resourceGroupName `
+                 -ServerName $serverName `
+                 -FailoverGroupName $failoverGroupName
+$databases = Get-AzSqlElasticPoolDatabase `
+               -ResourceGroupName $resourceGroupName `
+               -ServerName $serverName `
+               -ElasticPoolName $poolName
+Write-host "Adding databases to failover group..." 
+$failoverGroup = $failoverGroup | Add-AzSqlDatabaseToFailoverGroup `
+                                  -Database $databases 
+$failoverGroup
+
+# Check role of secondary replica
+Write-host "Confirming the secondary server is secondary...." 
+(Get-AzSqlDatabaseFailoverGroup `
+   -FailoverGroupName $failoverGroupName `
+   -ResourceGroupName $resourceGroupName `
+   -ServerName $drServerName).ReplicationRole
+
+# Failover to secondary server
+Write-host "Failing over failover group to the secondary..." 
+Switch-AzSqlDatabaseFailoverGroup `
+   -ResourceGroupName $resourceGroupName `
+   -ServerName $drServerName `
+   -FailoverGroupName $failoverGroupName
+Write-host "Failover group failed over to" $drServerName 
+
+# Check role of secondary replica
+Write-host "Confirming the secondary server is now primary" 
+(Get-AzSqlDatabaseFailoverGroup `
+   -FailoverGroupName $failoverGroupName `
+   -ResourceGroupName $resourceGroupName `
+   -ServerName $drServerName).ReplicationRole
+
+# Revert failover to primary server
+Write-host "Failing over failover group to the primary...." 
+Switch-AzSqlDatabaseFailoverGroup `
+   -ResourceGroupName $resourceGroupName `
+   -ServerName $serverName `
+   -FailoverGroupName $failoverGroupName
+Write-host "Failover group failed over to" $serverName 
+
+# Clean up resources by removing the resource group
+# Write-host "Removing resource group..."
+# Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
+# Write-host "Resource group removed =" $resourceGroupName
+```
+
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+
+| 命令 | 注释 |
+|---|---|
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
+| [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
+| [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为逻辑服务器创建防火墙规则。 | 
+| [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) | 新建 Azure SQL 数据库单一数据库。 | 
+| [New-AzSqlElasticPool](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlelasticpool) | 为 Azure SQL 数据库创建弹性数据库池。| 
+| [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) | 设置数据库的属性，或将现有数据库移到弹性池中。 | 
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 新建故障转移组。 |
+| [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) | 获取一个或更多个 SQL 数据库。 |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或更多个 Azure SQL 数据库添加到故障转移组。 |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
+| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
+
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+没有适用于 Azure 门户的脚本。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已将一个 Azure SQL 数据库单一数据库添加到故障转移组，并测试了故障转移。 你已了解如何：
+在本教程中，你已将一个 Azure SQL 数据库弹性池添加到故障转移组，并测试了故障转移。 你已了解如何：
 
 > [!div class="checklist"]
 > - 创建 Azure SQL 数据库单一数据库。
 > - 将单一数据库添加到弹性池中。 
-> - 在两个逻辑 SQL 服务器之间创建弹性池的[故障转移组](sql-database-auto-failover-group.md)。
+> - 在两个逻辑 SQL 服务器之间创建两个弹性池的[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
 转到下一教程，其中介绍了如何使用 DMS 进行迁移。

@@ -1,19 +1,19 @@
 ---
 title: Azure Site Recovery 中的新增功能
-description: 提供 Azure Site Recovery 中引入的新功能的摘要
+description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 services: site-recovery
 author: rockboyfor
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 09/12/2019
-ms.date: 10/17/2019
+origin.date: 11/14/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: e7f3da0bb00da1367b533901e64828c563bad438
-ms.sourcegitcommit: 8f810b0a4edb3343a694c72a221867763f20472d
+ms.openlocfilehash: 3d6165dbfe071588374bfb8e3912b177f7ea73e7
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72524838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336475"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -29,13 +29,85 @@ ms.locfileid: "72524838"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
-[汇总 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
+[汇总 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
+[汇总 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
+[汇总 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [汇总 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [汇总 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
-[汇总 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
-[汇总 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
+
+## <a name="updates-november-2019"></a>更新（2019 年 11 月）
+
+### <a name="update-rollup-42"></a>更新汇总 42
+
+[更新汇总 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 提供以下更新。
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
+**问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
+
+## <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
+
+表中汇总了 Azure VM 灾难恢复的新功能。
+
+**功能** | **详细信息**
+--- | ---
+**UEFI** | Site Recovery 现在支持对采用基于 UEFI 的启动体系结构的 Azure VM 进行灾难恢复。
+**Linux** | Site Recovery 现在支持运行 Linux 的已启用 Azure 磁盘加密 (ADE) 的 Azure VM。
+**第 2 代** | 所有第 2 代 Azure VM 现在都支持灾难恢复。
+**区域** | 现在，可以在挪威地区为 Azure VM 启用灾难恢复。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware 到 Azure 的灾难恢复
+
+表中汇总了 VMware 到 Azure 的灾难恢复新功能。
+
+**功能** | **详细信息**
+--- | ---
+**UEFI** | Site Recovery 现在支持对采用基于 UEFI 的启动体系结构的 VMware VM 进行灾难恢复。<br/><br/> 支持的操作系统包括 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、SLES 12 SP4 和 RHEL 8。
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>更新到服务堆栈更新/SHA-2
+
+若要将 Azure VM 灾难恢复到次要区域，或者将本地 VMware VM 或物理服务器灾难恢复到 Azure，请注意以下事项：
+
+- 从移动服务扩展（适用于 Azure VM）和移动服务代理（适用于 VMware/物理计算机）版本 9.30.5407.1 开始，某些计算机操作系统必须运行服务堆栈更新和 SHA-2。 下表显示了详细信息。
+- 请根据链接的知识库安装该更新和 SHA-2。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。
+- 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+
+**操作系统** | Azure VM  | **VMware VM/物理计算机**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [服务堆栈更新](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+
+## <a name="updates-october-2019"></a>更新（2019 年 10 月）
+
+### <a name="update-rollup-41"></a>更新汇总 41
+
+[更新汇总 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) 提供以下更新。
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
+**问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM 灾难恢复
+
+表中汇总了 Azure VM 灾难恢复的新功能。
+
+**功能** | **详细信息**
+--- | ---
+**测试故障转移设置** | 设置测试故障转移时，现在可以配置测试故障转移 VM 和网络的设置，包括 IP 地址、NSG、内部负载均衡，以及每个计算机 NIC 的公共 IP 地址。 这些设置是可选的，不会更改当前行为。 如果未配置这些设置，可以在测试故障转移时选择 Azure VNet。 [了解详细信息](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/)。
+**恢复计划** | 恢复计划现在限制为 100 个 VM，以确保故障转移的可靠性。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware 到 Azure 的灾难恢复
+
+表中汇总了 VMware 到 Azure 的灾难恢复新功能。
+
+**功能** | **详细信息**
+--- | ---
+**恢复计划** | 恢复计划现在限制为 100 个 VM，以确保故障转移的可靠性。
 
 ## <a name="updates-september-2019"></a>更新（2019 年 9 月）
 
@@ -56,7 +128,7 @@ ms.locfileid: "72524838"
 
 **功能** | **详细信息**
 --- | ---
-**故障回复后清理** | 故障转移到辅助 Azure 之后，再故障回复到主要区域，Site Recovery 会自动清理辅助区域中的计算机。 无需手动删除 VMS 和 NIC。
+**故障回复后清理** | 故障转移到辅助 Azure 之后，再故障回复到主要区域，Site Recovery 会自动清理辅助区域中的计算机。 无需手动删除 VM 和 NIC。
 **测试故障转移保留 IP 地址** | 现在，可以在灾难恢复演练期间保留源 VM 的 IP 地址，并为测试故障转移选取一个静态 IP 地址。
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
@@ -73,7 +145,7 @@ ms.locfileid: "72524838"
 
 **功能** | **详细信息**
 --- | ---
-存储帐户 | Site Recovery 现在支持使用为 Hyper-V 到 Azure 灾难恢复启用了防火墙的存储帐户。  可以选择已启用防火墙的存储帐户作为目标帐户，或用于缓存存储。 如果使用已启用防火墙的帐户，请确保启用允许受信任 Azure 服务的选项。
+存储帐户 | Site Recovery 现在支持使用为 Hyper-V 到 Azure 灾难恢复启用了防火墙的存储帐户。  可以选择已启用防火墙的存储帐户作为目标帐户，或用于缓存存储。 如果使用已启用防火墙的帐户，请确保启用允许受信任 Azure 服务的选项。<br/><br/> 包含或不包含 System Center VMM 的 Hyper-V VM 支持此选项。
 
 ## <a name="updates-august-2019"></a>更新（2019 年 8 月）
 
@@ -302,7 +374,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 ### <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>针对 Azure VM 灾难恢复的价格计算器
 
-进行 Azure VM 的灾难恢复需支付 VM 许可费用以及网络和存储费用。 Azure 提供[定价计算器](https://www.azure.cn/zh-cn/pricing/calculator/)，用于计算这些费用。 Site Recovery 现在提供[定价估算](https://www.azure.cn/zh-cn/pricing/calculator/)功能，可以根据三层应用的情况对示例部署定价。该应用使用 6 个 VM，其中包含 12 个标准 HDD 磁盘和 6 个高级 SSD 磁盘。
+进行 Azure VM 的灾难恢复需支付 VM 许可费用以及网络和存储费用。 Azure 提供[定价计算器](https://www.azure.cn/pricing/calculator/)，用于计算这些费用。 Site Recovery 现在提供[定价估算](https://www.azure.cn/pricing/calculator/)功能，可以根据三层应用的情况对示例部署定价。该应用使用 6 个 VM，其中包含 12 个标准 HDD 磁盘和 6 个高级 SSD 磁盘。
 
 - 此示例假设标准磁盘的数据更改率为每天 10 GB，高级磁盘的数据更改率为每天 20 GB。
 - 对于特定的部署，可以更改变量来估算费用。
@@ -408,4 +480,4 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 在 [Azure 更新](https://azure.microsoft.com/updates/?product=site-recovery)页上时刻了解更新。
 
 <!--MOONCAKE: CORRECT ON https://azure.microsoft.com/updates/?product=site-recovery-->
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

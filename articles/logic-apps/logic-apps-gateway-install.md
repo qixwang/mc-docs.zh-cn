@@ -8,14 +8,14 @@ author: ecfan
 ms.author: v-yiso
 ms.reviewer: arthii, LADocs
 ms.topic: article
-origin.date: 10/18/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: a6ca60a1797b63db2f435fe76d1e6706081d53c6
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+origin.date: 11/06/2019
+ms.date: 12/23/2019
+ms.openlocfilehash: 032f5327f46df0afc356b6454cced159e0bf0b1d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425971"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335912"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -34,9 +34,9 @@ ms.locfileid: "73425971"
 
 * Azure 帐户和订阅。 如果你没有一个带有订阅的 Azure 帐户，请[注册试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-  * 需要使用同一 Azure 帐户在本地计算机上安装和管理网关。
+  * Azure 帐户必须属于单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 必须使用同一 Azure 帐户在本地计算机上安装和管理网关。
 
-    在网关安装期间，请使用 Azure 帐户登录，这会将网关安装链接到 Azure 帐户，并且仅链接到该帐户。 稍后，在 Azure 门户中，需要使用相同的 Azure 帐户来创建用于注册并声明网关安装的 Azure 网关资源。 然后，在 Azure 逻辑应用中，本地触发器和操作将使用网关资源连接到本地数据源。
+  * 在网关安装期间，请使用 Azure 帐户登录，这会将网关安装链接到 Azure 帐户，并且仅链接到该帐户。 稍后，在 Azure 门户中，必须在创建用于注册并声明网关安装的 Azure 网关资源时使用相同的 Azure 帐户和 Azure AD 租户。 然后，在 Azure 逻辑应用中，本地触发器和操作将使用网关资源连接到本地数据源。
 
     > [!NOTE]
     > 只能将一个网关安装和一个 Azure 网关资源相互链接。 不能将相同的网关安装链接到多个 Azure 帐户或 Azure 网关资源。 但是，Azure 帐户可以链接到多个网关安装和 Azure 网关资源。 在本地触发器或操作中，可以从各种 Azure 订阅中进行选择，然后选择关联的网关资源。
@@ -67,7 +67,7 @@ ms.locfileid: "73425971"
 
 * **相关注意事项**
 
-  * 只能在本地计算机上安装本地数据网关，而不能在域控制器上安装。 但是，不一定要在数据源所在的同一台计算机上安装网关。 所有数据源只需一个网关，因此，无需为每个数据源安装网关。
+  * 只在本地计算机上安装本地数据网关，而不在域控制器上安装。 不一定要在数据源所在的同一台计算机上安装网关。 所有数据源只需一个网关，因此，无需为每个数据源安装网关。
 
     > [!TIP]
     > 为了尽量降低延迟，可将网关安装在尽可能靠近数据源的位置或同一台计算机上（假设你有相应的权限）。
@@ -77,6 +77,8 @@ ms.locfileid: "73425971"
   * 如果你打算使用 Windows 身份验证，请确保在与数据源属于同一 Active Directory 环境的计算机上安装网关。
 
   * 选择用于安装网关的区域是稍后为逻辑应用创建 Azure 网关资源时必须选择的同一位置。 默认情况下，此区域是管理 Azure 帐户的 Azure AD 租户所在的同一位置。 但是，可以在安装网关期间更改位置。
+
+  * 若要将网关安装更新为最新版本，请先卸载当前网关以获取更干净的体验。
 
   * 网关有两种模式：标准模式，以及仅适用于 Power BI 的个人模式。 在同一台计算机上，不能有多个网关以同一模式运行。
 
@@ -92,11 +94,11 @@ ms.locfileid: "73425971"
 
 1. 选择标准模式“本地数据网关(推荐)”，然后选择“下一步”。  
 
-   ![选择网关模式](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![选择数据网关的运行模式](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. 查看最低要求，保留默认安装路径，接受使用条款，然后选择“安装”。 
 
-   ![查看要求并接受使用条款](./media/logic-apps-gateway-install/accept-terms.png)
+   ![查看要求并接受使用条款](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. 成功安装网关后，提供 Azure 帐户的电子邮件地址，然后选择“登录”，例如： 
 
@@ -106,7 +108,7 @@ ms.locfileid: "73425971"
 
 1. 选择“在此计算机上注册新网关” > “下一步”。   此步骤会将网关安装注册到[网关云服务](#gateway-cloud-service)。
 
-   ![注册网关](./media/logic-apps-gateway-install/register-gateway.png)
+   ![在本地计算机上注册网关](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. 提供网关安装的以下信息：
 
@@ -114,7 +116,7 @@ ms.locfileid: "73425971"
    * 要使用的恢复密钥，必须至少包含八个字符
    * 确认恢复密钥
 
-   ![安装网关](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![提供网关安装的信息](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > 请将恢复密钥保存在安全位置。 更改位置以及移动、恢复或接管网关安装时，都需要用到此密钥。
@@ -123,7 +125,7 @@ ms.locfileid: "73425971"
 
 1. 检查网关安装使用的网关云服务和 [Azure 服务总线](/service-bus-messaging/)的区域。 默认情况下，此区域是 Azure 帐户的 Azure AD 租户所在的同一位置。
 
-   ![检查区域](./media/logic-apps-gateway-install/check-region.png)
+   ![确认网关服务和服务总线的区域](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. 若要接受默认区域，请选择“配置”。  但是，如果默认区域不是最靠近你的区域，你可以更改区域。
 
@@ -133,13 +135,13 @@ ms.locfileid: "73425971"
 
    1. 在当前区域的旁边，选择“更改区域”。  
 
-      ![更改区域](./media/logic-apps-gateway-install/change-region.png)
+      ![更改当前网关区域](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. 在下一页上打开“选择区域”列表，选择所需的区域，然后选择“完成”。  
 
       ![选择其他区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. 查看最终确认窗口中的信息。 此示例对逻辑应用、Power BI、PowerApps 和 Microsoft Flow 使用同一帐户，因此该网关适用于所有这些服务。 准备就绪后，选择“关闭”。 
+1. 查看最终确认窗口中的信息。 此示例对逻辑应用、Power BI、PowerApps 和 Power Automate 使用同一帐户，因此该网关适用于所有这些服务。 准备就绪后，选择“关闭”。 
 
    ![已完成网关安装](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 

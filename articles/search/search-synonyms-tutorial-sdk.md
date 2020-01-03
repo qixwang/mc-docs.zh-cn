@@ -1,27 +1,26 @@
 ---
-title: 同义词 C# 示例 - Azure 搜索
-description: 本 C# 示例介绍如何向 Azure 搜索中的索引添加同义词功能。 同义词映射是等效术语的列表。 具有同义词支持的字段可扩展查询以包括用户提供的术语和所有相关的同义词。
+title: 同义词 C# 示例
+titleSuffix: Azure Cognitive Search
+description: 本 C# 示例介绍如何向 Azure 认知搜索中的索引添加同义词功能。 同义词映射是等效术语的列表。 具有同义词支持的字段可扩展查询以包括用户提供的术语和所有相关的同义词。
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: ca0bdee40507f2238160d9c45c773721ee854655
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: dcc63de3a5dcfb55315cbbcb2c5ed956fb801bf6
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336478"
 ---
-# <a name="example-add-synonyms-for-azure-search-in-c"></a>示例：使用 C# 为 Azure 搜索添加同义词
+# <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词
 
 使用同义词进行搜索时，在语义上被视为与输入字词等效的字词也属于匹配项，从而扩展了查询的范围。 例如，使用“car”进行搜索时，也可将包含“automobile”或“vehicle”字词的文档视为匹配项。 
 
-在 Azure 搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。   本示例介绍了用于添加同义词并将其与现有索引一起使用的基本步骤。 你将学习如何执行以下操作：
+在 Azure 认知搜索中，同义词在“同义词映射”中通过可将等效字词关联在一起的“映射规则”进行定义。   本示例介绍了用于添加同义词并将其与现有索引一起使用的基本步骤。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 类创建同义词映射。 
@@ -29,17 +28,19 @@ ms.locfileid: "71674394"
 
 可以照常查询启用了同义词的字段。 访问同义词不需其他的查询语法。
 
-可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
+可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 认知搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
 
+> [!NOTE]
+> 可以通过编程方式创建同义词，但不能在门户中进行。
 
 ## <a name="prerequisites"></a>先决条件
 
 教程要求如下：
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure 搜索服务](search-create-service-portal.md)
+* [Azure 认知搜索服务](search-create-service-portal.md)
 * [Microsoft.Azure.Search .NET 库](https://aka.ms/search-sdk)
-* [如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)
+* [如何通过 .NET 应用程序使用 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概述
 
@@ -77,7 +78,7 @@ ms.locfileid: "71674394"
       Console.ReadKey();
   }
 ```
-有关如何创建和填充示例索引的步骤，请参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)。
+有关如何创建和填充示例索引的步骤，请参阅[如何使用 .NET 应用程序中的 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)。
 
 ## <a name="before-queries"></a>“启用前”查询
 
@@ -128,7 +129,7 @@ no document matched
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
    ```
-   同义词映射必须符合开源标准 `solr` 格式。 该格式在 [Azure 搜索中的同义词](search-synonyms.md)的`Apache Solr synonym format`部分进行了说明。
+   同义词映射必须符合开源标准 `solr` 格式。 该格式在 [Azure 认知搜索中的同义词](search-synonyms.md)的`Apache Solr synonym format`部分进行了说明。
 
 2. 将可搜索字段配置为允许在索引定义中使用同义词映射。 在 `EnableSynonymsInHotelsIndex` 中，我们对`category`和`tags`这两个字段启用了同义词功能，方法是将 `synonymMaps` 属性设置为新上传的同义词映射的名称。
    ```csharp
@@ -169,11 +170,11 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本示例后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+完成本示例后，最快的清理方式是删除包含 Azure 认知搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 认知搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 
 本示例使用 C# 代码演示了同义词功能，创建并发布了映射规则，然后在查询中调用同义词映射。 可以在 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) 和 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 参考文档中找到更多信息。
 
 > [!div class="nextstepaction"]
-> [如何在 Azure 搜索中使用同义词](search-synonyms.md)
+> [如何在 Azure 认知搜索中使用同义词](search-synonyms.md)

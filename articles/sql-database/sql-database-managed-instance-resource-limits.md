@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库资源限制 - 托管实例 | Microsoft Docs
+title: 资源限制 - 托管实例
 description: 本文概述托管实例的 Azure SQL 数据库资源限制。
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-origin.date: 10/02/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 496ce201b9337335d3c5eea9da1902e1eccfb3a2
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+origin.date: 11/27/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: c9d210a058ac8cc46026b7bdc82717f1a0cadf0e
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041233"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336139"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "73041233"
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
+| 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器和 Intel SP-8160 (Skylake) 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
 | vCore 数目 | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | 最大内存（内存/核心比） | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | 最大内存中 OLTP 内存 | 实例限制：每个 vCore 1 - 1.5 GB| 实例限制：每个 vCore 0.8 - 1.65 GB |
@@ -114,7 +114,7 @@ ms.locfileid: "73041233"
 
 ## <a name="regional-resource-limitations"></a>区域资源限制
 
-支持的订阅类型可以包含每个区域的有限数量的资源。 托管实例根据订阅类型对每个 Azure 区域实施两种默认限制：
+支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，托管实例有两个默认限制（可以通过[在 Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)来按需提高），具体取决于订阅类型是哪一类型：
 
 - **子网限制**：在单一区域中部署托管实例的子网数上限。
 - **vCore 限制**：可跨单一区域的所有实例部署的 vCore 数上限。 实例总数不受限制，只要在 vCore 限制内即可。

@@ -1,57 +1,79 @@
 ---
-title: 将全文搜索添加到 Azure Blob 存储 - Azure 搜索
-description: 在代码中使用 HTTP REST API 抓取 Azure Blob 存储中用于 Azure 搜索索引的文本内容。
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 03/01/2019
-ms.date: 09/26/2019
-author: mgottein
+title: 将全文搜索添加到 Azure Blob 存储
+titleSuffix: Azure Cognitive Search
+description: 在 Azure 认知搜索中生成全文搜索索引时，提取内容并将结构添加到 Azure Blob。
 manager: nitinme
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 67e30f19f9531870d9c1f7e5479ff5992d8002f6
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: cfb99c42ddeac63b3cec6c0a22ae1bb9c4e5054e
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335497"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>使用 Azure 搜索来搜索 Blob 存储
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>使用 Azure 认知搜索将全文搜索添加到 Azure Blob 数据
 
-在 Azure Blob 存储中存储的各种内容类型之间进行搜索可能是一个很难解决的问题。 但是，使用 Azure 搜索，只需单击几下，便可以为 Blob 中的内容编制索引以及对其进行搜索。 在 Blob 存储中进行搜索需要预配 Azure 搜索服务。 可以在[定价页](https://aka.ms/azspricing)上找到 Azure 搜索的各种服务限制和定价层。
+在 Azure Blob 存储中存储的各种内容类型之间进行搜索可能是一个很难解决的问题。 但是，使用 [Azure 认知搜索](search-what-is-azure-search.md)，只需单击几下，便可以为 Blob 中的内容编制索引以及对其进行搜索。 Azure 认知搜索提供内置的集成，用于通过 [*Blob 索引器*](search-howto-indexing-azure-blob-storage.md)（添加数据源感知的索引编制功能）为 Blob 存储编制索引。
 
-## <a name="what-is-azure-search"></a>什么是 Azure 搜索？
-[Azure 搜索](https://aka.ms/whatisazsearch)是一种搜索服务，通过它开发人员可以轻松地在 Web 和移动应用程序中添加可靠的全文搜索体验。 作为一项服务，Azure 搜索不需要管理任何搜索基础结构，同时提供了 [99.9% 运行时间 SLA](https://aka.ms/azuresearchsla)。
+## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>将全文搜索添加到 Blob 数据意味着什么
 
-## <a name="index-and-search-enterprise-document-formats"></a>索引和搜索企业文档格式
-通过对 Azure Blob 存储中的[文档提取](https://www.azure.cn/support/sla/search/)的支持，可以索引以下内容：
+Azure 认知搜索是一个提供索引和查询引擎的云搜索服务，这些引擎针对搜索服务中托管的用户定义的索引运行。 为了提高性能，需将可搜索的内容与云中的查询引擎共置在一起，使返回结果的速度与用户预期的搜索查询速度相当。
+
+Azure 认知搜索在索引层与 Azure Blob 存储集成，可将 Blob 内容作为已编制成倒排索引的搜索文档导入，并可导入其他支持自由格式文本查询和筛选器表达式的查询结构。  由于 Blob 内容已编制成搜索索引，因此，对 Blob 内容的访问可以利用 Azure 认知搜索中的各项查询功能。
+
+创建并填充索引后，该索引将独立于 Blob 容器，但你可以重新运行索引操作，以使用底层容器的更改来刷新索引。 各个 Blob 中的时间戳信息用于执行更改检测。 可以选择按计划执行或按需索引作为刷新机制。
+
+输入是 Azure Blob 存储中单个容器内的 Blob。 Blob 几乎可以是任何类型的文本数据。 
+
+<!-- If your blobs contain images, you can add [AI enrichment to blob indexing ](search-blob-ai-integration.md) to create and extract text from images. -->
+
+输出始终是 Azure 认知搜索索引，用于在客户端应用程序中快速执行搜索、检索和浏览。 输入与输出之间是索引管道体系结构本身。 该管道基于本文将会详细介绍的索引器功能。 
+
+## <a name="start-with-services"></a>从服务开始
+
+需要 Azure 认知搜索和 Azure Blob 存储。 在 Blob 存储中，需要一个提供源内容的容器。
+
+可以直接在存储帐户门户页中开始。 在左侧导航页中的“Blob 服务”下，单击“添加 Azure 认知搜索”创建新服务或选择现有服务。   
+
+将 Azure 认知搜索添加到存储帐户后，可以遵循标准过程为 Blob 数据编制索引。 我们建议使用 Azure 认知搜索中的“导入数据”向导以轻松完成初始引入，或使用 Postman 等工具调用 REST API。  本教程将引导你完成在 Postman 中调用 REST API 的步骤：[在 Azure 认知搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据](search-semi-structured-data.md) 
+
+## <a name="use-a-blob-indexer"></a>使用 Blob 索引器
+
+索引器是数据源感知的子服务，其中配备了内部逻辑用于对数据采样、读取元数据、检索数据，以及将数据从本机格式序列化为 JSON 文档供以后导入。  
+
+Azure 存储中的 Blob 使用 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)编制索引。 可以使用“导入数据”向导、REST API 或 .NET SDK 调用此索引器。  在代码中，使用此索引器的方式是设置类型，并提供包括 Azure 存储帐户和 Blob 容器的连接信息。 可以通过创建虚拟目录（随后可将其作为参数传递），或者筛选文件类型扩展名，来指定 Blob 的子集。
+
+索引器执行“文档破解”，会打开一个 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档和其他内容类型。 文档破解和文本提取是免费的。 标准索引仅适用于文本内容，因此，如果 Blob 包含图像内容，将会忽略图像。
+
+<!-- If your blobs contain image content, images are ignored unless you [add AI enrichment](search-blob-ai-integration.md).  -->
+
+Blob 索引器附带配置参数，如果基础数据提供足够的信息，则索引器支持更改跟踪。 可以在 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)中详细了解核心功能。
+
+### <a name="supported-content-types"></a>支持的内容类型
+
+通过对容器运行 Blob 索引器，只需运行单个查询就能从以下内容类型中提取文本和元数据：
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-通过从这些文件类型中提取文本和元数据，可以使用单个查询跨多个文件格式进行搜索。 
+### <a name="indexing-blob-metadata"></a>为 Blob 元数据编制索引
 
-## <a name="search-through-your-blob-metadata"></a>在 blob 元数据中进行搜索
-用于实现在任何内容类型的 blob 中轻松进行排序的一个常用方案是为自定义元数据和每个 blob 的系统属性编制索引。 通过这种方式，系统会对所有 blob 的信息编制索引，无论文档类型是什么，都是如此。 然后可以在所有 Blob 存储内容中继续执行排序、筛选和 facet 操作。
+用于实现在任何内容类型的 Blob 中轻松进行排序的一个常用方案是为自定义元数据和每个 Blob 的系统属性编制索引。 通过这种方式，系统会对所有 Blob 的信息编制索引（无论文档类型是什么），并将信息存储在搜索服务中的索引内。 然后，可以使用新索引对所有 Blob 存储内容继续执行排序、筛选和分面操作。
 
-[了解有关为 blob 元数据编制索引的详细信息。](https://aka.ms/azsblobmetadataindexing)
+### <a name="indexing-json-blobs"></a>为 JSON Blob 编制索引
+可将索引器配置为提取包含 JSON 的 Blob 中的结构化内容。 索引器可以读取 JSON Blob 并将结构化内容分析成搜索文档的相应字段。 索引器还可以获取包含 JSON 对象数组的 Blob 并将每个元素映射到单独的搜索文档。 可以设置分析模式，以影响索引器创建的 JSON 对象类型。
 
-## <a name="image-search"></a>图像搜索
-Azure 搜索的全文搜索、分面导航和排序功能现在可以应用于 blob 中存储的图像的元数据了。
+## <a name="search-blob-content-in-a-search-index"></a>在搜索索引中搜索 Blob 内容 
 
-认知搜索包括图像处理技能，例如[光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[可视特征](cognitive-search-skill-image-analysis.md)的标识，这些技能可以用于为每个图像中发现的可视内容编制索引。
+索引的输出是一个搜索索引，用于在客户端应用中通过自由文本和筛选的查询进行交互式浏览。 若要对内容进行初始浏览和验证，我们建议从门户中的[搜索资源管理器](search-explorer.md)开始，以检查文档结构。 可以在搜索资源管理器中使用[简单查询语法](query-simple-syntax.md)、[完整查询语法](query-lucene-syntax.md)和[筛选表达式语法](query-odata-filter-orderby-syntax.md)。
 
-## <a name="index-and-search-through-json-blobs"></a>在 JSON blob 中编制索引和执行搜索
-可以将 Azure 搜索配置为提取在包含 JSON 的 blob 中找到的结构化内容。 Azure 搜索可以读取 JSON blob 并将结构化内容解析为 Azure 搜索文档的合适字段。 Azure 搜索还可以获取包含 JSON 对象数组的 blob 并将每个元素映射到单独的 Azure 搜索文档。
-
-JSON 解析当前不可通过门户进行配置。 [了解有关 Azure 搜索中的 JSON 解析的详细信息。](https://aka.ms/azsjsonblobindexing)
-
-## <a name="quick-start"></a>快速启动
-可以直接从 Blob 存储门户页将 Azure 搜索添加到 blob。
-
-![](./media/search-blob-storage-integration/blob-blade.png)
-
-单击“添加 Azure 搜索”将启动一个工作流，可以在其中选择现有 Azure 搜索服务或创建一个新服务  。 如果创建新服务，则会离开存储帐户的门户。 可以导航回存储门户页并重新选择“添加 Azure 搜索”选项，然后可以选择现有服务  。
+更持久的解决方案是收集查询输入，并在客户端应用程序中以搜索结果的形式提供响应。 以下 C# 教程介绍了如何生成搜索应用程序：[在 Azure 认知搜索中创建第一个应用程序](tutorial-csharp-create-first-app.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在完整[文档](https://www.azure.cn/support/sla/search/)中详细了解 Azure 搜索 Blob 索引器。
+
++ [使用 Azure 门户上传、下载和列出 Blob（Azure Blob 存储）](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
++ [设置 Blob 索引器（Azure 认知搜索）](search-howto-indexing-azure-blob-storage.md) 

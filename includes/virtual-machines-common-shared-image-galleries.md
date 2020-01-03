@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 05/06/2019
-ms.date: 11/11/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 057ded0a2567d21e4772e8e25ee60daad3aadccd
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 0cd62798010935620d611ba06a13e832e433d494
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467314"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
@@ -35,11 +35,12 @@ ms.locfileid: "74655489"
 
 共享映像库功能具有多种资源类型：
 
-| Resource | 说明|
+| 资源 | 说明|
 |----------|------------|
-| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用化](#generalized-and-specialized-images) VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
+| **快照** | 可用于创建**映像版本**的 VHD 副本。 可以从[专用化](#generalized-and-specialized-images) VM（一个尚未通用化的 VM）创建快照，然后单独使用该快照，或者将其与数据磁盘的快照配合使用，以创建专用化的映像版本。
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是 Windows 还是 Linux、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
+| **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是通用化还是专用化映像、操作系统、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
 <br />
@@ -62,7 +63,7 @@ ms.locfileid: "74655489"
 
 下面是可以在映像定义中设置的其他参数，它们可让你更轻松地跟踪自己的资源：
 
-* 操作系统状态 - 可将 OS 状态设置为通用化或专用化，但目前仅支持通用化。 必须从已使用适用于 Windows 的 Sysprep 或适用于 Linux 的 `waagent -deprovision` 通用化的 VM 创建映像。
+* 操作系统状态 - 可将 OS 状态设置为[通用化或专用化](#generalized-and-specialized-images)。
 * 操作系统 - 可以是 Windows 或 Linux。
 * 说明 - 使用说明可以更详细地解释该映像定义为何存在。 例如，可为预装了应用程序的前端服务器创建一个映像定义。
 * Eula - 可用于指向特定于映像定义的最终用户许可协议。
@@ -72,7 +73,31 @@ ms.locfileid: "74655489"
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合用于标准 HDD 磁盘，请将此类磁盘添加到禁止列表。
 
-<!--Pending on ## Regional Support-->
+## <a name="generalized-and-specialized-images"></a>通用化和专用映像
+
+共享映像库支持两种操作系统状态。 通常，映像要求在创建映像之前，用于创建映像的 VM 已通用化。 通用化是从 VM 中删除计算机和用户特定信息的过程。 对于 Windows，也可以使用 Sysprep。 对于 Linux，可以使用 [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` 参数。
+
+专用化 VM 尚未经历删除计算机特定信息和帐户的过程。 此外，从专用化映像创建的 VM 没有关联的 `osProfile`。 这意味着，专用化映像存在一些限制。
+
+- 也可以在使用专用化映像创建的任何 VM 上（该映像是从该 VM 创建的），使用可用于登录到 VM 的帐户。
+- VM 具有用于创建映像的 VM 的**计算机名**。 应更改计算机名以避免冲突。
+- `osProfile` 是使用 `secrets` 将某些敏感信息传递给 VM 的方式。 在使用 KeyVault、WinRM，以及在 `osProfile` 中使用 `secrets` 的其他功能时，这可能会导致出现问题。 在某些情况下，可以使用托管服务标识 (MSI) 来解决这些限制。
+
+> [!IMPORTANT]
+> 专用化映像目前以公共预览版提供。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/subscription-agreement/)。
+>
+> **预览版的已知限制**：只能使用门户或 API 从专用化映像创建 VM。 预览版不提供 CLI 或 PowerShell 支持。
+
+## <a name="regional-support"></a>区域支持
+
+下表列出了 Azure 中国云中的源区域。
+
+<!--Not Available on  All public regions can be target regions, but to replicate to Australia Central and Australia Central 2 you need to have your subscription whitelisted. To request whitelisting, go to: https://www.azure.cn/global-infrastructure/australia/contact/-->
+
+| 源区域        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| 中国东部            | 中国东部 2      | 中国北部        | 中国北部 2      |
 
 ## <a name="limits"></a>限制 
 
@@ -148,7 +173,7 @@ ms.locfileid: "74655489"
 
 - [.NET](https://docs.azure.cn/dotnet/api/overview/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.azure.cn/java/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 
@@ -204,28 +229,29 @@ ms.locfileid: "74655489"
 
  方案 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
 
- 方案 2：如果你有非托管的通用化映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
+ 方案 2：如果你有非托管的映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
 
- 方案 3：如果本地文件系统中包含 VHD，则需要上传 VHD、创建托管映像，然后可以从该映像创建映像定义和映像版本。
-- 如果 VHD 适用于 Windows VM，请参阅[上传通用化 VHD](/virtual-machines/windows/upload-generalized-managed)。
+ 方案 3：如果本地文件系统中包含 VHD，则需要将 VHD 上传到托管映像，然后可以从该映像创建映像定义和映像版本。
+
+- 如果 VHD 适用于 Windows VM，请参阅[上传 VHD](/virtual-machines/windows/upload-generalized-managed)。
 - 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-不可以，目前不支持将专用化磁盘用作映像。 如果你有专用化磁盘，需要通过将专用化磁盘附加到新 VM，[从 VHD 创建 VM](/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)。 运行 VM 后，需要遵照有关从 [Windows VM](/virtual-machines/windows/tutorial-custom-images) 或 [Linux VM](/virtual-machines/linux/tutorial-custom-images) 创建托管映像的说明操作。 创建通用化托管映像后，可以启动创建共享映像说明和映像版本的过程。
+是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户（[Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用化映像创建 VM。 预览版不提供 PowerShell 支持。
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可将它移到其他订阅？
 
 不可以，无法将共享映像库资源移到其他订阅。 但是，可根据需要将库中的映像版本复制到其他区域。
 
 <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>
-### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-public-cloud-or-azure-germany-or-azure-china-cloud-cloud"></a>是否可以跨云（例如，Azure 公有云、Azure 德国和 Azure 中国云）复制映像版本？
+### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>是否可以跨云（例如，Azure 中国世纪互联、Azure 德国云或 Azure 政府云）复制映像版本？
 
 <!--MOONCAKE: CORRECT ON Azure Public Cloud-->
 
 无法跨云复制映像版本。
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>是否可以跨订阅复制映像版本？ 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>是否可以跨订阅复制映像版本？
 
 不可以。但可以跨订阅中的区域复制映像版本，并通过 RBAC 在其他订阅中使用该版本。
 

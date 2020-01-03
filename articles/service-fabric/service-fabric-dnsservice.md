@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 07/20/2018
-ms.date: 09/30/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: e599288a317b60831ca7b8efd7fb5b7155db249e
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 1881ab4fe8b174c40998347f1a541009f2a1f120
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336333"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -112,7 +112,13 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
               ]
             }
         ```
-1. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它  。 
+3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它  。 
+
+> [!NOTE]
+> 将 DNS 从禁用升级到启用时，Service Fabric Explorer 可能未反映新状态。 若要解决问题，请重启节点，方法是：在 Azure 资源管理器模板中修改 UpgradePolicy。 有关详细信息，请参阅 [Service Fabric 模板参考](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
+
+> [!NOTE]
+> 在本地计算机上进行开发时，如果启用 DNS 服务，则会替代某些 DNS 设置。 如果在连接到 Internet 时遇到问题，请检查 DNS 设置。
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
 可以在 ApplicationManifest.xml 文件中或者通过 PowerShell 命令，以声明方式为默认服务设置 DNS 名称。
@@ -125,11 +131,11 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
 在 Visual Studio 中或所选的编辑器中打开项目，并打开 ApplicationManifest.xml 文件。 转到默认服务部分，为每个服务添加 `ServiceDnsName` 属性。 以下示例说明如何将服务的 DNS 名称设置为 `service1.application1`
 
 ```xml
-    <Service Name="Stateless1" ServiceDnsName="service1.application1">
-      <StatelessService ServiceTypeName="Stateless1Type" InstanceCount="[Stateless1_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
+<Service Name="Stateless1" ServiceDnsName="service1.application1">
+  <StatelessService ServiceTypeName="Stateless1Type" InstanceCount="[Stateless1_InstanceCount]">
+    <SingletonPartition />
+  </StatelessService>
+</Service>
 ```
 部署应用程序后，Service Fabric Explorer 中的服务实例会显示此实例的 DNS 名称，如下图所示： 
 
@@ -138,21 +144,21 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
 以下示例将有状态服务的 DNS 名称设置为 `statefulsvc.app`。 该服务使用命名分区方案。 请注意分区名称均为小写。 这是在 DNS 查询中用作目标的分区的一项要求；有关详细信息，请参阅[针对有状态服务分区发出 DNS 查询](/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)。
 
 ```xml
-    <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
-      <StatefulService ServiceTypeName="ProcessingType" TargetReplicaSetSize="2" MinReplicaSetSize="2">
-        <NamedPartition>
-         <Partition Name="partition1" />
-         <Partition Name="partition2" />
-        </NamedPartition>
-      </StatefulService>
-    </Service>
+<Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
+  <StatefulService ServiceTypeName="ProcessingType" TargetReplicaSetSize="2" MinReplicaSetSize="2">
+    <NamedPartition>
+     <Partition Name="partition1" />
+     <Partition Name="partition2" />
+    </NamedPartition>
+  </StatefulService>
+</Service>
 ```
 
 ### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>使用 Powershell 设置服务的 DNS 名称
 创建服务时，可以使用 `New-ServiceFabricService` Powershell 命令设置服务的 DNS 名称。 以下示例创建一个 DNS 名称为 `service1.application1` 的新的无状态服务
 
 ```powershell
-    New-ServiceFabricService `
+New-ServiceFabricService `
     -Stateless `
     -PartitionSchemeSingleton `
     -ApplicationName `fabric:/application1 `

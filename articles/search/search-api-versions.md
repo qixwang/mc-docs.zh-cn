@@ -1,34 +1,34 @@
 ---
-title: .NET SDK 和 REST API 的 API 版本管理 - Azure 搜索
-description: 适用于 .NET SDK 中的 Azure 搜索 REST API 和客户端库的版本策略。
+title: .NET 和 REST 的 API 版本管理
+titleSuffix: Azure Cognitive Search
+description: 适用于 .NET SDK 中的 Azure 认知搜索 REST API 和客户端库的版本策略。
+manager: nitinme
 author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
-ms.devlang: dotnet
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
 ms.author: v-tawe
-ms.openlocfilehash: 904053ac4280cef83e77c33f7649a96b871221d8
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: e481a187146353ef86668c9e8c220bc20fc5c472
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335510"
 ---
-# <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
-Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是）需要发布 API 的新版本，以保持后向兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
+# <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
-通常，Azure 搜索团队仅在必要时发布新版本，因为它可能会促使你必须升级代码才能使用新版本 API。 仅在 API 的某些方面以破坏后向兼容性的方式发生更改时，才需要新版本。 此类更改可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
+Azure 认知搜索会定期发布功能更新。 这些更新有时（但并非总是）需要发布 API 的新版本，以保持后向兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。
 
-相同规则适用于 SDK 更新。 Azure 搜索 SDK 遵循[语义版本控制](https://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 仅在更改破坏了后向兼容性时，才会发布新的 SDK 主版本。 非破坏功能更新会增大次要版本号，Bug 修复仅增大内部版本号。
+通常，Azure 认知搜索团队仅在必要时发布新版本，因为它可能会促使你必须升级代码才能使用新版本 API。 仅在 API 的某些方面以破坏后向兼容性的方式发生更改时，才需要新版本。 此类更改可能会因以下情况而发生：现有功能修复，或更改现有 API 外围功能的新功能。
+
+相同规则适用于 SDK 更新。 Azure 认知搜索 SDK 遵循[语义版本控制](https://semver.org/)规则，这意味着其版本分为三个部分：主要版本号、次要版本号和内部版本号（例如，1.1.0）。 仅在更改破坏了后向兼容性时，才会发布新的 SDK 主版本。 非破坏功能更新会增大次要版本号，Bug 修复仅增大内部版本号。
 
 > [!NOTE]
-> Azure 搜索服务实例支持多个 REST API 版本，包括最新的版本。 可以不使用最新版本，但是我们建议迁移代码，以便使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
+> Azure 认知搜索服务实例支持多个 REST API 版本，包括最新的版本。 可以不使用最新版本，但是我们建议迁移代码，以便使用最新版本。 使用 REST API 时，必须在每个请求中通过 api-version 参数指定 API 版本。 使用 .NET SDK 时，使用的 SDK 版本确定对应的 REST API 版本。 如果使用较旧的 SDK，即使已升级服务以支持较新的 API 版本，也可以继续运行代码，而不进行任何更改。
 
 ## <a name="snapshot-of-current-versions"></a>当前版本的快照
-以下是 Azure 搜索的所有编程接口的当前版本的快照。
+以下是 Azure 认知搜索的所有编程接口的当前版本的快照。
 
 
 | 接口 | 最新的主要版本 | 状态 |
@@ -52,7 +52,7 @@ Azure 搜索会定期发布功能更新。 这些更新有时（但并非总是�
 正式版（或 GA）API 可以在生产中使用，并遵循 Azure 服务级别协议。 预览版中的实验功能并不总是会迁移到 GA 版本。 强烈建议不要在生产应用程序中使用预览版 API。 
 
 ## <a name="about-preview-and-generally-available-versions"></a>关于预览版和正式版
-Azure 搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 的预发布版本进行发布。
+Azure 认知搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 的预发布版本进行发布。
 
 预览功能可用于目的为针对功能设计和实现收集反馈的测试和试验。 为此，预览功能可能会随着时间的推移以破坏后向兼容性的方式进行更改。 这与 GA 版本中的功能形成鲜明对比，除了小型的后向兼容性修补程序和增强功能外，这些功能很稳定，不太可能发生变化。 此外，预览功能并不总是纳入 GA 版本。
 
@@ -60,4 +60,4 @@ Azure 搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 
 
 对于 .NET SDK：代码迁移指南可在[升级 .NET SDK](search-dotnet-sdk-migration-version-9.md) 中找到。
 
-正式版的推出意味着 Azure 搜索现在遵循服务级别协议 (SLA)。 可以在 [Azure 搜索服务级别协议](https://www.azure.cn/support/legal/sla/)中找到 SLA。
+正式版的推出意味着 Azure 认知搜索现在遵循服务级别协议 (SLA)。 可以在 [Azure 认知搜索服务级别协议](https://www.azure.cn/support/legal/sla/)中找到 SLA。

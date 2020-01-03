@@ -1,23 +1,23 @@
 ---
-title: 为查询和索引缩放分区与副本 - Azure 搜索
-description: 在 Azure 搜索中调整分区和副本计算机资源，其中每个资源按照可计费搜索单位定价。
-author: HeidiSteen
+title: 查询和索引工作负荷的缩放容量
+titleSuffix: Azure Cognitive Search
+description: 在 Azure 认知搜索中调整分区和副本计算机资源，其中每个资源按照可计费搜索单位定价。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 03/22/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 399dc968e8f7360a1b506cfa9af7b39ad132ac01
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: af572098811899517cd281ed0c5f387fb9646f38
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335490"
 ---
-# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>为 Azure 搜索中的查询和索引工作负荷缩放分区与副本
+# <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>纵向扩展分区和副本，为 Azure 认知搜索中的查询和索引工作负荷添加容量
+
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。
 
 在[“基本”层](https://aka.ms/azuresearchbasic)或者某个[“标准”层或“内存优化”层](search-limits-quotas-capacity.md)中设置服务时，可以使用资源配置。 对于这些层中的服务，购买的容量以*搜索单位* (SU) 为增量，其中每个分区和副本被视为一个 SU。 
@@ -25,12 +25,12 @@ ms.locfileid: "71674247"
 使用的 SU 越少，帐单费用也就相应地越少。 只要设置服务，就会产生费用。 如果暂时不使用某个服务，避免计费的唯一方法就是删除该服务，需要该服务时再重新创建。
 
 > [!Note]
-> 删除某个服务会删除该服务上的所有内容。 Azure 搜索中没有用于备份和还原持久化搜索数据的设施。 若要在新服务上重新部署现有索引，应当运行最初用来创建和加载该索引的程序。 
+> 删除某个服务会删除该服务上的所有内容。 Azure 认知搜索中没有用于备份和还原持久化搜索数据的设施。 若要在新服务上重新部署现有索引，应当运行最初用来创建和加载该索引的程序。 
 
 ## <a name="terminology-replicas-and-partitions"></a>术语：副本和分区
 副本和分区是支持搜索服务的主要资源。
 
-| Resource | 定义 |
+| 资源 | 定义 |
 |----------|------------|
 |*分区* | 为读/写操作（例如在重建或刷新索引时）提供索引存储和 I/O。|
 |*副本* | 是搜索服务的实例，主要用于对查询操作进行负载均衡。 每个副本始终托管索引的一个副本。 如果有 12 个副本，服务中会加载每个索引的 12 个副本。|
@@ -41,13 +41,14 @@ ms.locfileid: "71674247"
 
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
-在 Azure 搜索中，最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 如果层支持这样做，可以递增方式调整计算资源：需要更多的存储和 I/O 时增加分区，或者增加副本来应对较大的查询卷或提供较好的性能。 单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 无法在多个服务之间细分工作负荷。
+在 Azure 认知搜索中，最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 如果层支持这样做，可以递增方式调整计算资源：需要更多的存储和 I/O 时增加分区，或者增加副本来应对较大的查询卷或提供较好的性能。 单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 无法在多个服务之间细分工作负荷。
 
 若要增加或更改副本和分区的分配，建议使用 Azure 门户。 该门户针对允许的组合强制实施限制，使其低于上限。 如果需要使用基于脚本或基于代码的预配方法，[Azure PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) 是替代的解决方案。
 
 一般而言，搜索应用程序所需的副本数多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)，并选择搜索服务。
+
 2. 在“设置”中，打开“规模”页以修改副本和分区。   
 
    以下屏幕截图显示了预配有一个副本和分区的标准服务。 底部的公式指示正在使用多少个搜索单位 (1)。 如果单位价格为 $100（非实际价格），则运行此服务的每月成本平均为 $100。
@@ -72,7 +73,7 @@ ms.locfileid: "71674247"
 
 
 > [!NOTE]
-> 预配服务后，无法升级到更高的 SKU。 必须在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅 [Create an Azure Search service in the portal](search-create-service-portal.md)（在门户中创建 Azure 搜索服务）。
+> 预配服务后，无法升级到更高的 SKU。 必须在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅[在门户中创建 Azure 认知搜索服务](search-create-service-portal.md)。
 >
 >
 
@@ -97,7 +98,7 @@ ms.locfileid: "71674247"
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://www.azure.cn/pricing/details/search/)（定价详细信息）。
 
 > [!NOTE]
-> 副本数和分区数必须能被 12 整除（具体而言，为 1、2、3、4、6、12）。 这是因为，Azure 搜索将每个索引预先分割为 12 个分片，以便将其平均分散到所有分区。 例如，如果服务有三个分区，而你创建了新索引，则每个分区将包含该索引的四个分片。 Azure 搜索为索引分片的方法属于实现细节，在将来的版本中可能发生变化。 尽管目前的分区数为 12，但请不要料想将来该数字永远都是 12。
+> 副本数和分区数必须能被 12 整除（具体而言，为 1、2、3、4、6、12）。 这是因为，Azure 认知搜索将每个索引预先分割为 12 个分片，以便将其平均分散到所有分区。 例如，如果服务有三个分区，而你创建了新索引，则每个分区将包含该索引的四个分片。 Azure 认知搜索为索引分片的方法属于实现细节，在将来的版本中可能发生变化。 尽管目前的分区数为 12，但请不要料想将来该数字永远都是 12。
 >
 
 
@@ -112,16 +113,16 @@ Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请�
 
 * 对于读/写工作负荷（查询以及添加、更新或删除单个文档时的索引编制），需有三个或更多个副本才能实现高可用性
 
-Azure 搜索的服务级别协议 (SLA) 针对查询操作，以及由文档添加、更新或删除操作构成的索引更新。
+Azure 认知搜索的服务级别协议 (SLA) 针对查询操作，以及由文档添加、更新或删除操作构成的索引更新。
 
 基本层最多能有一个分区和三个副本。 如果希望灵活地立即响应对索引编制和查询吞吐量的需求波动，请考虑使用标准层中的一个。  如果你发现存储要求的增长速度大大超过了可用的吞吐量，请考虑使用某个“存储优化”层。
 
 ### <a name="index-availability-during-a-rebuild"></a>重建期间的索引可用性
 
-Azure 搜索的高可用性与查询以及不涉及重建索引的索引更新相关。 如果删除字段、更改数据类型或重命名字段，则需要重建索引。 要重建索引，必须删除该索引，重新创建该索引，并重新加载数据。
+Azure 认知搜索的高可用性与查询以及不涉及重建索引的索引更新相关。 如果删除字段、更改数据类型或重命名字段，则需要重建索引。 要重建索引，必须删除该索引，重新创建该索引，并重新加载数据。
 
 > [!NOTE]
-> 可将新字段添加到 Azure 搜索索引，而无需重建索引。 对于索引中已存在的所有文档，新字段的值将为 null。
+> 可将新字段添加到 Azure 认知搜索索引，而无需重建索引。 对于索引中已存在的所有文档，新字段的值将为 null。
 
 要让索引在重建期间保持可用，相同的服务中必须存在不同名的索引副本，或者不同的服务中存在同名的索引，并在代码中提供重定向或故障转移逻辑。
 
@@ -133,7 +134,7 @@ Azure 搜索的高可用性与查询以及不涉及重建索引的索引更新�
 
 我们无法提供可靠的每秒查询数 (QPS) 预测：查询性能取决于查询和竞争工作负荷的复杂性。 尽管添加副本会明显提高性能，但结果不一定有线性改善：添加三个副本并不保证带来三倍的吞吐量。
 
-有关估计工作负荷的 QPS 的指南，请参阅 [Azure 搜索的性能和优化注意事项](search-performance-optimization.md)。
+有关估计工作负荷的 QPS 的指南，请参阅 [Azure 认知搜索的性能和优化注意事项](search-performance-optimization.md)。
 
 ## <a name="increase-indexing-performance-with-partitions"></a>使用分区提高索引性能
 需要以近乎实时的速度刷新数据的搜索应用程序，需要的分区数在比例上要多于副本。 添加分区可将读/写操作分配到更多的计算资源。 此外，还能提供更多磁盘空间来存储更多的索引和文档。
@@ -143,4 +144,4 @@ Azure 搜索的高可用性与查询以及不涉及重建索引的索引更新�
 
 ## <a name="next-steps"></a>后续步骤
 
-[选择 Azure 搜索的定价层](search-sku-tier.md)
+[选择 Azure 认知搜索的定价层](search-sku-tier.md)

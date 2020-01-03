@@ -1,14 +1,14 @@
 ---
-title: Lucene 查询语法 - Azure 搜索
-description: 完整 Lucene 语法的引用，与 Azure 搜索一起使用。
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
-origin.date: 05/13/2019
+title: Lucene 查询语法
+titleSuffix: Azure Cognitive Search
+description: 在适用于通配符、模糊搜索、正则表达式和其他高级查询构造的 Azure 认知搜索中使用的完整 Lucene 查询语法的参考。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-ms.manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,15 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 6ae54dfd655ad584ce17d90f952abf14de203f8a
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: a96f925d240f87bd765a0beff0178d23a0b17641
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336103"
 ---
-# <a name="lucene-query-syntax-in-azure-search"></a>Azure 搜索中的 Lucene 查询语法
-可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 搜索中完整实现](search-lucene-query-architecture.md)  。 
+# <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
+
+可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 认知搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 认知搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 认知搜索中完整实现](search-lucene-query-architecture.md)  。 
 
 ## <a name="how-to-invoke-full-parsing"></a>如何调用完整分析
 
@@ -57,10 +58,10 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 }
 ```
 
-有关其他示例，请参阅[在 Azure 搜索中生成查询的 Lucene 查询语法示例](search-query-lucene-examples.md)。 有关指定查询参数的完整条件的详细信息，请参阅[搜索文档 &#40;Azure 搜索服务 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+有关其他示例，请参阅[在 Azure 认知搜索中生成查询的 Lucene 查询语法示例](search-query-lucene-examples.md)。 有关指定查询参数的完整条件的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
 > [!NOTE]  
->  Azure 搜索还支持[简单查询语法](query-simple-syntax.md)，即可用于简单关键字搜索的简易可靠的查询语言。  
+>  Azure 认知搜索还支持[简单查询语法](query-simple-syntax.md)，即可用于简单关键字搜索的简易可靠的查询语言。  
 
 ##  <a name="bkmk_syntax"></a> 语法基础  
  下面的语法基础适用于所有使用 Lucene 语法的查询。  
@@ -84,7 +85,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>对 URL 中的不安全及保留字符进行编码
 
- 请确保对 URL 中的所有不安全和保留字符进行编码。 例如，“#”是不安全字符，因为它是 URL 中的片段/定位标识符。 如果用于 URL，则该字符必须编码为 `%23`。 由于“&”和“=”在 Azure 搜索中分隔参数并指定值，因而是保留字符的示例。 请参阅 [RFC1738：统一资源定位器 (URL)](https://www.ietf.org/rfc/rfc1738.txt) 获取更多详细信息。
+ 请确保对 URL 中的所有不安全和保留字符进行编码。 例如，“#”是不安全字符，因为它是 URL 中的片段/定位标识符。 如果用于 URL，则该字符必须编码为 `%23`。 由于“&”和“=”在 Azure 认知搜索中分隔参数并指定值，因而是保留字符的示例。 请参阅 [RFC1738：统一资源定位器 (URL)](https://www.ietf.org/rfc/rfc1738.txt) 获取更多详细信息。
 
  不安全字符为 ``" ` < > # % { } | \ ^ ~ [ ]``。 保留字符为 `; / ? : @ = + &`。
 
@@ -94,7 +95,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 字段分组与之类似，但将分组范围限定为单个字段。 例如，`hotelAmenities:(gym+(wifi||pool))` 在“hotelAmenities”字段中搜索“gym”和“wifi”，或者“gym”和“pool”。  
 
 ### <a name="searchmode-parameter-considerations"></a>SearchMode 参数注意事项  
- 如 [Azure 搜索中的简单查询语法](query-simple-syntax.md)中所述，`searchMode` 对查询的影响同样适用于 Lucene 查询语法。 也就是说，如果不清楚设置参数的方法的含义，那么 `searchMode` 与 NOT 运算符结合使用可能会导致查询结果异常。 如果保留默认值 `searchMode=any`，并使用 NOT 运算符，则该操作会作为 OR 操作进行计算，这样“New York”NOT“Seattle”会返回所有不是西雅图的城市。  
+ 如 [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)中所述，`searchMode` 对查询的影响同样适用于 Lucene 查询语法。 也就是说，如果不清楚设置参数的方法的含义，那么 `searchMode` 与 NOT 运算符结合使用可能会导致查询结果异常。 如果保留默认值 `searchMode=any`，并使用 NOT 运算符，则该操作会作为 OR 操作进行计算，这样“New York”NOT“Seattle”会返回所有不是西雅图的城市。  
 
 ##  <a name="bkmk_boolean"></a> 布尔运算符（AND、OR、NOT） 
  始终全部以大写字母指定文本布尔运算符 (AND、OR、NOT)。  
@@ -117,10 +118,10 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 使用 `searchMode=all` 可以以包含更少结果的方式提高查询的精确度，且默认情况下将解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含术语 `wifi` 或不包含术语 `luxury` 的文档。 这对于 - 运算符来说可能是更直观的行为。 因此，如果希望优化搜索的精确度（而非查全率），且用户在搜索中频繁使用 `-` 运算符，那么应考虑选择 `searchMode=all` 而不是 `searchMode=any`  。
 
 ##  <a name="bkmk_querysizelimits"></a> 查询大小限制  
- 存在对可以发送到 Azure 搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  
+ 存在对可以发送到 Azure 认知搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  
 
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
- Azure 搜索使用基于频率评分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
+ Azure 认知搜索使用基于频率评分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
 ##  <a name="bkmk_fields"></a> 字段化搜索  
 可以使用 `fieldName:searchExpression` 语法定义字段化搜索操作，其中的搜索表达式可以是单个词，也可以是一个短语，或者是括号中的更复杂的表达式，可以选择使用布尔运算符。 一些示例包括以下内容：  
@@ -173,4 +174,4 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 
 + [搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [用于筛选器和排序的 OData 表达式语法](query-odata-filter-orderby-syntax.md)   
-+ [Azure 搜索中的简单查询语法](query-simple-syntax.md)   
++ [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)   

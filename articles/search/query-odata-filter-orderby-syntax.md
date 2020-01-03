@@ -1,14 +1,14 @@
 ---
-title: OData 语言概述 - Azure 搜索
-description: Azure 搜索查询的筛选器、select 和 order-by 的 OData 语言概述。
-ms.date: 09/26/2019
-origin.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
+title: OData 语言概述
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索查询的筛选器、select 和 order-by 的 OData 语言概述。
+manager: nitinme
+author: brjohnstmsft
 ms.author: v-tawe
-ms.manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0d6c5bf888f6a112febe492f98d178d90cfa3c5c
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 327c5888b28402a15a140ab8f0df0db1822250f0
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336100"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>Azure 搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 
-Azure 搜索支持一组适用于 **$filter**、 **$orderby** 和 **$select** 表达式的 OData 表达式语法。 筛选表达式在查询分析期间进行求值，将搜索范围限制为特定字段或添加索引扫描期间使用的匹配条件。 Order-by 表达式作为后处理步骤应用于结果集，对返回的文档进行排序。 Select 表达式确定要包含在结果集中的文档字段。 这些表达式的语法不同于**搜索**参数中使用的[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md)查询语法，但引用字段的语法中存在一定的重叠。
+Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$select** 表达式的 OData 表达式语法。 筛选表达式在查询分析期间进行求值，将搜索范围限制为特定字段或添加索引扫描期间使用的匹配条件。 Order-by 表达式作为后处理步骤应用于结果集，对返回的文档进行排序。 Select 表达式确定要包含在结果集中的文档字段。 这些表达式的语法不同于**搜索**参数中使用的[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md)查询语法，但引用字段的语法中存在一定的重叠。
 
 本文概述筛选器、order-by 和 select 表达式中使用的 OData 表达式语言。 该语言按“自下而上”的顺序演示，从最基本的元素及其上的构建基块开始。 有单独的文章会介绍每个参数的顶级语法：
 
@@ -37,13 +37,13 @@ Azure 搜索支持一组适用于 **$filter**、 **$orderby** 和 **$select** �
 - [$orderby 语法](search-query-odata-orderby.md)
 - [$select 语法](search-query-odata-select.md)
 
-有些 OData 表达式非常简单，而有些 OData 表达式则非常复杂，但它们全部共享通用的元素。 Azure 搜索中的 OData 表达式的最基本组成部分包括：
+有些 OData 表达式非常简单，而有些 OData 表达式则非常复杂，但它们全部共享通用的元素。 Azure 认知搜索中的 OData 表达式的最基本组成部分包括：
 
 - **字段路径**：引用索引的特定字段。
 - **常量**：特定数据类型的文本值。
 
 > [!NOTE]
-> Azure 搜索中的术语在某些方面不同于 [OData 标准](https://www.odata.org/documentation/)。 Azure 搜索中所谓的**字段**在 OData 中称为**属性**，类似地，**字段路径**在 OData 中称为**属性路径**。 Azure 搜索中包含**文档**的**索引**在 OData 中更普遍地称为包含**实体**的**实体集**。 本参考文档使用 Azure 搜索的术语。
+> Azure 认知搜索中的术语在某些方面不同于 [OData 标准](https://www.odata.org/documentation/)。 Azure 认知搜索中所谓的**字段**在 OData 中称为**属性**，类似地，**字段路径**在 OData 中称为**属性路径**。 Azure 认知搜索中包含**文档**的**索引**在 OData 中更普遍地称为包含**实体**的**实体集**。 本参考文档使用 Azure 认知搜索的术语。
 
 ## <a name="field-paths"></a>字段路径
 
@@ -60,10 +60,10 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 字段路径由斜杠分隔的一个或多个**标识符**组成。 每个标识符是必须以 ASCII 字母或下划线开头的一系列字符，只能包含 ASCII 字母、数字或下划线。 字母可以采用大写或小写。
 
@@ -90,7 +90,7 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ### <a name="using-field-paths"></a>使用字段路径
 
-[Azure 搜索 API](https://docs.microsoft.com/rest/api/searchservice/) 的许多参数中使用字段路径。 下表列出了可以使用字段路径的所有位置，以及字段路径用法的任何限制：
+[Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 的许多参数中使用字段路径。 下表列出了可以使用字段路径的所有位置，以及字段路径用法的任何限制：
 
 | API | 参数名称 | 限制 |
 | --- | --- | --- |
@@ -108,9 +108,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 ## <a name="constants"></a>常量
 
-OData 中的常量是给定[实体数据模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 类型的文本值。 有关 Azure 搜索中受支持类型的列表，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 不支持集合类型的常量。
+OData 中的常量是给定[实体数据模型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 类型的文本值。 有关 Azure 认知搜索中受支持类型的列表，请参阅[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 不支持集合类型的常量。
 
-下表显示了 Azure 搜索支持的每个数据类型的常量示例：
+下表显示了 Azure 认知搜索支持的每个数据类型的常量示例：
 
 | 数据类型 | 示例常量 |
 | --- | --- |
@@ -123,7 +123,7 @@ OData 中的常量是给定[实体数据模型](https://docs.microsoft.com/dotne
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
 
-以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义上表中所示的大多数常量的语法。 可在 [Azure 搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
+以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义上表中所示的大多数常量的语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -188,14 +188,14 @@ boolean_literal ::= 'true' | 'false'
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>基于字段路径和常量生成表达式
 
-字段路径和常量是 OData 表达式的最基本组成部分，但它们已经是完整的表达式。 事实上，Azure 搜索中的 **$select** 参数无非就是逗号分隔的字段路径列表，而 **$orderby** 也不是比 **$select** 要复杂得多。 如果你正好在索引中使用了 `Edm.Boolean` 类型的字段，则你甚至可以编写一个只包含该字段的路径的筛选器。 常量 `true` 和 `false` 同样是有效的筛选器。
+字段路径和常量是 OData 表达式的最基本组成部分，但它们已经是完整的表达式。 事实上，Azure 认知搜索中的 **$select** 参数无非就是逗号分隔的字段路径列表，而 **$orderby** 也不是比 **$select** 要复杂得多。 如果你正好在索引中使用了 `Edm.Boolean` 类型的字段，则你甚至可以编写一个只包含该字段的路径的筛选器。 常量 `true` 和 `false` 同样是有效的筛选器。
 
 但是，大多数情况下，需要使用更复杂的表达式来引用多个字段和常量。 这些表达式的生成方式根据参数而异。
 
@@ -214,23 +214,23 @@ select_expression ::= '*' | field_path(',' field_path)*
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 **$orderby** 和 **$select** 参数都是较简单表达式的逗号分隔列表。 **$filter** 参数是由较简单的子表达式构成的布尔表达式。 这些子表达式是使用逻辑运算符（例如 [`and`、`or` 和 `not`](search-query-odata-logical-operators.md)）、比较运算符（例如 [`eq`、`lt`、`gt` 等](search-query-odata-comparison-operators.md)）和集合运算符（例如 [`any` 和 `all`](search-query-odata-collection-operators.md)）合并的。
 
 以下文章更详细地探讨了 **$filter**、 **$orderby** 和 **$select** 参数：
 
-- [Azure 搜索中的 OData $filter 语法](search-query-odata-filter.md)
-- [Azure 搜索中的 OData $orderby 语法](search-query-odata-orderby.md)
-- [Azure 搜索中的 OData $select 语法](search-query-odata-select.md)
+- [Azure 认知搜索中的 OData $filter 语法](search-query-odata-filter.md)
+- [Azure 认知搜索中的 OData $orderby 语法](search-query-odata-orderby.md)
+- [Azure 认知搜索中的 OData $select 语法](search-query-odata-select.md)
 
 ## <a name="see-also"></a>另请参阅  
 
-- [Azure 搜索中的分面导航](search-faceted-navigation.md)
-- [Azure 搜索中的筛选器](search-filters.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的分面导航](search-faceted-navigation.md)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene 查询语法](query-lucene-syntax.md)
-- [Azure 搜索中的简单查询语法](query-simple-syntax.md)
+- [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)

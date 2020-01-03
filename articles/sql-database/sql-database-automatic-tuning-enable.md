@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 数据库启动自动优化 | Microsoft Docs
+title: 启用自动优化
 description: 可以轻松地在 Azure SQL 数据库中启用自动优化。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 01/25/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 210607dcd6e892d8f1094ba2491cca9c8892fca1
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 12/16/2019
+ms.openlocfilehash: c1aca251aaaae167f3547dfb31da831c0fdfeff2
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336441"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
@@ -105,9 +105,14 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 自动优化监视着自身在数据库上进行的一切操作，在某些情况下，它可以判断自身在数据库中无法正常运行。 在此情况下，系统将禁用自动优化。 造成此情况的主要原因是未启用查询数据存储，或在指定数据库中查询数据存储处于只读状态。
 
+## <a name="permissions"></a>权限
+
+由于自动优化是 Azure 功能，因此若要使用它，需使用 Azure 的内置 RBAC 角色。 若要使用 Azure 门户中的功能，仅使用 SQL 身份验证还不够。
+
+若要使用自动优化，必须为用户授予权限，最低必需权限是 Azure 的内置 [SQL DB 参与者](../role-based-access-control/built-in-roles.md#sql-db-contributor)角色。 也可考虑使用特权较高的角色，例如 SQL Server 参与者、参与者和所有者。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化以及如何借助它来提高性能。
 * 请参阅[性能建议](sql-database-advisor.md)，了解 Azure SQL 数据库性能建议的概述。
 * 请参阅[查询性能见解](sql-database-query-performance.md)，了解排名靠前的查询的性能影响。
-<!--Update_Description:wording update-->

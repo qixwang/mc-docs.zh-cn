@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 04/29/2018
-ms.date: 05/27/2019
+origin.date: 11/13/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 0e9b12432df891efc6606cdb4e4a7ed1dd9394f7
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: 94d5df1edd090e80081c1ae09732680e722c7d00
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878734"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335924"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -365,29 +365,29 @@ Remove-AzResourceGroup `
 
 1. 打开群集的 Ambari Web UI。 此页面的地址为 `https://YOURCLUSTERNAME.azurehdinsight.cn`。 出现提示时，使用创建群集时所用的管理员名称 (admin) 和密码向群集进行身份验证。
 
-2. 从 Ambari Web UI 的左侧，选择“HDFS”  ，并在页面的中间选择“配置”  选项卡。
+1. 导航到“HDFS”   >   “配置” >   “高级” >   “自定义 core-site”。
 
-3. 选择“高级”  选项卡，并向下滚动，找到“自定义 core-site”  部分。
-
-4. 展开“自定义 core-site”  部分，并滚动到底部，选择“添加属性...”  链接。 在“密钥”  和“值”  字段中使用以下值：
+1. 展开“自定义 core-site”  部分，并滚动到底部，然后选择“添加属性...”  。将以下值用于“键”和“值”：  
 
    * **键**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.chinacloudapi.cn`
    * **值**：前面执行的某个方法返回的 SAS。
 
      将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 
-5. 单击“添加”  按钮以保存此密钥和值，并单击“保存”  按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”  。
+    选择“添加”以保存此键和值 
 
-    完成更改后，单击“确定”  。
+1. 选择“保存”按钮以保存配置更改。  出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并选择“保存”  。
+
+    完成更改后，选择“确定”  。
 
    > [!IMPORTANT]  
    > 必须重启几个服务才能使更改生效。
 
-6. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”  ，并从右侧的“服务操作”  下拉列表中选择“重启所有受影响项”  。 出现提示时，选择“确认全部重启”  。
+1. 会显示一个“重启”下拉列表。  从下拉列表中选择“重启所有受影响的项”，然后选择“确认全部重启”。  
 
-    对 MapReduce2 和 YARN 重复此过程。
+    对 **MapReduce2** 和 **YARN** 重复此过程。
 
-7. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
+1. 重新启动这些服务后，选择每个服务并从“服务操作”  下拉列表中选择“禁用维护模式”。
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 

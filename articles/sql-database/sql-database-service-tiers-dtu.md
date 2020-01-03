@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库服务层级 - 基于 DTU 的购买模型 | Microsoft Docs
+title: 服务层级 - 基于 DTU 的购买模型
 description: 了解单一数据库和共用数据库的基于 DTU 的购买模型中的服务层级，以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 09/06/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 2dd16ad7c865beafbb72554f9a3734db11ee718a
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+origin.date: 11/26/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: f7fc8e30fae38d35e7b1c3c5cdd55b700c637f29
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336222"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
@@ -43,6 +43,12 @@ ms.locfileid: "73041188"
 |列存储索引 |不适用|S3 及更高版本|支持|
 |内存中 OLTP|不适用|不适用|支持|
 |||||
+
+> [!IMPORTANT]
+> 基本、标准 S0、S1 和 S2 服务层级提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负荷，建议使用 S3 或更高的服务层级。 
+>
+>有关数据存储的基本、标准 S0 和 S1 服务层级放置在标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器 (HDD) 的存储介质，最适合用于对性能变化不太敏感的开发、测试和其他不频繁访问的工作负荷。
+>
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 

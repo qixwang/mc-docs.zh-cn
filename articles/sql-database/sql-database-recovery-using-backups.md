@@ -1,5 +1,5 @@
 ---
-title: 从备份还原 Azure SQL 数据库 | Microsoft Docs
+title: 从备份还原数据库
 description: 了解时间点还原，该功能可让你将 Azure SQL 数据库回滚到过去最多 35 天的时间点。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab, danil
 origin.date: 09/26/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 86b0cc4fa33e7626e6e8597430f034d8ef0a9900
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 12/16/2019
+ms.openlocfilehash: fdaf9b1e07c77a40b7b292af6e9ce5ce44cb4d1d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334958"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 
@@ -107,13 +107,15 @@ ms.locfileid: "73041214"
 
 #### <a name="single-azure-sql-database"></a>单个 Azure SQL 数据库
 
-若要使用 Azure 门户恢复已删除的单一数据库或共用数据库，请打开服务器概述页，然后选择“删除的数据库”。  选择要还原的已删除数据库，然后键入要使用从备份还原的数据创建的新数据库的名称。
+若要使用 Azure 门户将已删除的单一数据库或共用数据库恢复到删除时间，请打开服务器概览页，然后选择“删除的数据库”。  选择要还原的已删除数据库，然后键入要使用从备份还原的数据创建的新数据库的名称。
 
-  ![“删除的数据库”选项的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![还原已删除的 Azure SQL 数据库的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>托管实例数据库
 
-不能使用 Azure 门户来还原托管实例上的已删除数据库。 可以使用 PowerShell 进行还原。 
+若要使用 Azure 门户恢复托管数据库，请打开托管实例概览页，然后选择“删除的数据库”。  选择要还原的已删除数据库，然后键入要使用从备份还原的数据创建的新数据库的名称。
+
+  ![还原已删除的 Azure SQL 实例数据库的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>使用 PowerShell 还原已删除的数据库
 

@@ -1,23 +1,24 @@
 ---
 title: 使用 Azure 时序见解资源管理器浏览数据 | Microsoft Docs
-description: 本文介绍如何使用 Web 浏览器中的 Azure 时序见解资源管理器快速查看大数据的全局视图并验证 IoT 环境。
+description: 了解如何使用 Azure 时序见解资源管理器查看 IoT 数据。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: dpalled
+ms.author: v-yiso
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/07/2019
+origin.date: 11/20/2019
+ms.date: 12/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b01fa352311fcf283718c0079e9487b8a1c6cc49
-ms.sourcegitcommit: c0f7c439184efa26597e97e5431500a2a43c81a5
+ms.openlocfilehash: dc51e491c7411bc2ed041070dbcb0ac54c45c56a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67456468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335712"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
@@ -48,7 +49,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 单击 Azure 云图标会转到 Azure 门户中的环境。
 
-   [![时序见解环境](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
+   [![时序见解环境选择](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
 1. 接下来，将看到一个图表，该图表显示的是所选时间范围内所有事件的计数。 在此有许多控件：
 
@@ -56,36 +57,36 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
       - **度量值**：此下拉列表显示所有数值列（**双精度**）。
       - **拆分依据**：此下拉列表显示类别列（**字符串**）。
       - 可以启用梯级内插、显示最小值和最大值，以及在“度量值”旁边的控制面板中调整 Y 轴  。 还可以调整显示的是数据的计数、平均值还是总和。
-      - 最多可以添加要在同一个 X 轴上查看的五个搜索词。 使用“复制”  按钮可添加更多搜索词，选择“添加”  按钮可添加新的搜索词。
+      - 最多可以添加要在同一个 X 轴上查看的五个搜索词。 选择“添加”  添加新的搜索词，或者使用“克隆此搜索词”  按钮添加现有搜索词的副本。
 
-        [![搜索词编辑器面板](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [![搜索词选择、筛选和查询面板](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
 
       - **谓词**：使用谓词可以使用下表中列出的操作数集快速筛选事件。 如果通过选择或单击执行搜索，谓词将基于该搜索自动更新。 支持的操作数类型包括：
 
          |操作  |支持的类型  |注释  |
          |---------|---------|---------|
-         |`<`、`>`、`<=`、`>=`     |  双精度、DateTime、TimeSpan       |         |
-         |`=`、`!=`、`<>`     | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL        |         |
-         |IN     | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL        |  所有操作数应为同一类型或者是 NULL 常数。        |
-         |HAS     | String        |  右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。       |
+         |**<** 、 **>** 、 **<=** 、 **>=**    |  **双精度**、**DateTime**、**TimeSpan**       |         |
+         |**=** 、 **!=** 、 **<>**     | **字符串**、**布尔**、**双精度**、**DateTime**、**TimeSpan**、**NULL**        |         |
+         |**IN**     | **字符串**、**布尔**、**双精度**、**DateTime**、**TimeSpan**、**NULL**        |  所有操作数应为同一类型或者是 **NULL** 常数。        |
+         |**HAS**     | **字符串**        |  右侧只允许使用常量字符串文本。 不允许空字符串和 **NULL**。       |
 
-      - 查询示例 
+      - **示例查询**
 
-         [![示例查询](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
+         [![示例 GA 查询](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
 1. 可以使用“间隔大小”  滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以查看数据更精细、分辨率更高的剪切片段。 滑块的默认起点设置为所选的数据的最佳视图，可以平衡分辨率、查询速度和粒度。
 
 1. 使用“时间画笔”工具可以轻松从一个时间跨度导航到另一个时间跨度。 
 
-1. 使用“保存”  命令可以保存当前查询，并与环境的其他用户共享该查询。 使用“打开”  可以看到所有已保存的查询和有权访问的环境中的其他用户的任何共享查询。
+1. 选择“保存”  图标可以保存当前查询，并与环境的其他用户共享该查询。 选择“打开”  图标时，可以看到所有已保存的查询和有权访问的环境中的其他用户的任何共享查询。
 
-   [![查询](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
+   [![查询](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>可视化数据
 
 1. 使用“透视视图”  工具可以查看最多四个唯一查询的同步视图。 “透视视图”按钮位于图表右上角  。
 
-   [![透视视图](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
+   [![选择要添加到透视窗格中的查询](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png)](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png#lightbox)
 
 1. 查看图表可以直观浏览数据；使用“图表”工具  ：
 
@@ -95,22 +96,22 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
     - 在图表左侧的筛选器区域中，可以查看显示的所有数据系列并按值或名称重新排序。 还可以查看所有数据系列或者任意已固定或取消固定的系列。 可以选择一个数据系列并按另一列拆分该系列、将系列作为新搜索词添加、只显示已选系列、排除已选系列、固定该系列或从已选系列中浏览事件。
     - 同时查看多个术语时，可以堆叠、取消堆叠、查看有关数据系列的其他数据，以及对所有搜索词使用同一个 Y 轴。 请使用图表右上角的按钮。
 
-    [![图表工具](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
+    [![图表工具右上角选项设置](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
 
 1. 使用**热度地图**可以快速发现给定查询中的唯一或异常数据系列。 仅有一个搜索术语能可视化为热度地图。
 
-    [![热度地图](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
+    [![GA 资源管理器热度地图图表](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. 通过选择或右键单击浏览事件时，会显示“事件”面板  。 在这里，可以看到所有原始事件并可将事件导出为 JSON 或 CSV 文件。 时序见解存储所有原始数据。
 
-    [![事件](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
+    [![事件](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. 浏览事件以公开模式和列统计信息之后，选择“统计信息”  选项卡。
 
     - **模式**：此功能主动显示所选数据区域中最具统计意义的模式。 无需查看数千个事件来了解最需要花费时间和精力的模式。 使用时序见解可以直接跳到这些具有重大统计意义的模式继续进行分析。 此功能也有助于对历史数据进行事后调查。
     - **列统计信息**：列统计信息提供图表和表格，细分选定时间范围内所选数据系列的每列中的数据。
 
-      [![统计信息](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+      [![“统计信息”列图表和选项](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
 现在，你已了解时序见解资源管理器 Web 应用中可用的各种功能和选项。
 

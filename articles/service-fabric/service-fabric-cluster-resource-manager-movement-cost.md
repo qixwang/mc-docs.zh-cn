@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 04/29/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: e2c0944e72342a80bf5d17507c976404ecb3cf06
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: f8bd191981779fb17c5b0a2f9588798269341a72
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335176"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
 尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。 
@@ -77,7 +77,12 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移动成本的影响
-MoveCost 有四个级别：零、低、中和高。 MoveCost 是相互的，但零除外。 “零”移动成本表示移动不会产生成本，不应计入解决方案的分数。 将移动成本设置为“高”并不能确保副本始终呆在一个位置。 
+MoveCost 有五个级别：Zero、Low、Medium、High 和 VeryHigh。 以下规则适用：
+
+* MoveCost 是相互的，但 Zero 和 VeryHigh 除外。 
+* “零”移动成本表示移动不会产生成本，不应计入解决方案的分数。
+* 将移动成本设置为 High 或 VeryHigh 并不能确保副本不会被移动。  
+* 移动成本为 VeryHigh 的副本进行移动的前提是在群集中存在约束冲突，该冲突无法通过任何其他方式解决（即使需要移动许多其他的副本来解决冲突）
 
 <center>
 
@@ -90,6 +95,9 @@ MoveCost 可帮助我们在达成对等的均衡时，查找整体导致最少�
 - 服务必须移动的状态或数据量。
 - 客户端断开连接的成本。 移动主要副本的成本通常比移动次要副本的成本更高。
 - 中断某些进行中操作的成本。 某些数据存储级别的操作，或者为了响应客户端调用而执行的操作，成本都很高。 在特定的时间点后，除非有必要，否则我们不会停止这些操作。 因此，当操作正在进行时，提高该服务对象的移动成本可以降低其移动的可能性。 当操作完成之后，可以将成本重新设置为正常。
+
+> [!IMPORTANT]
+> 应慎重考虑使用 VeryHigh 移动成本，因为它会极大地限制群集资源管理器在群集中查找全局最佳放置解决方案的功能。 移动成本为 VeryHigh 的副本进行移动的前提是在群集中存在约束冲突，该冲突无法通过任何其他方式解决（即使需要移动许多其他的副本来解决冲突）
 
 ## <a name="enabling-move-cost-in-your-cluster"></a>在群集中启用移动成本
 为了考虑到更为精细的 MoveCost，必须在群集中启用 MoveCost。 如不进行此设置，则会使用计数移动的默认模式来计算 MoveCost，并忽略 MoveCost 报告。
@@ -124,4 +132,4 @@ ClusterManifest.xml：
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

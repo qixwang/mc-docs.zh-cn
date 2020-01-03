@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 07/23/2019
-ms.date: 10/21/2019
-ms.openlocfilehash: 1aef5cd2caa9f1cec43069fc0665cd1baa95fb9c
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.date: 12/23/2019
+ms.openlocfilehash: 54ced8f285990c03375d87578408a0415128621d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334837"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -233,7 +233,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 有关控制 HDInsight 群集的出站流量的详细信息，请参阅[配置 Azure HDInsight 群集的出站网络流量限制](hdinsight-restrict-outbound-traffic.md)。
 
-#### <a name="forced-tunneling-to-on-premise"></a>到本地的强制隧道
+#### <a name="forced-tunneling-to-on-premises"></a>到本地的强制隧道
 
 强制隧道是用户定义的路由配置，用于将子网中的所有流量强制流向特定的网络或位置，例如本地网络。 HDInsight 不  支持将流量通过强制隧道传输到本地网络。 
 
@@ -248,6 +248,10 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 
 有关虚拟设备防火墙规则的详细信息，请参阅[虚拟设备方案](../virtual-network/virtual-network-scenario-udr-gw-nva.md)文档。
+
+## <a name="load-balancing"></a>负载均衡
+
+创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型在[基本 SKU 级别](../load-balancer/load-balancer-overview.md#skus)，该级别有某些约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>后续步骤
 

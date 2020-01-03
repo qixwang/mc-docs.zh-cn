@@ -1,14 +1,14 @@
 ---
-title: OData 全文搜索函数参考 - Azure 搜索
-description: Azure 搜索查询中的 OData 全文搜索函数 search.ismatch 和 search.ismatchscoring。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData 全文搜索函数参考
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索查询中的 OData 全文搜索函数 search.ismatch 和 search.ismatchscoring。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 3855beacf760d683a0be1379772068e546a40c5c
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: ceae1ccc4b385fb90ecff9c49bcb4d4c489ccc5a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674466"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336502"
 ---
-# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>Azure 搜索中的 OData 全文搜索函数 - `search.ismatch` 和 `search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure 认知搜索中的 OData 全文搜索函数 - `search.ismatch` 和 `search.ismatchscoring`
 
-Azure 搜索支持使用 `search.ismatch` 和 `search.ismatchscoring` 函数在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)上下文中进行全文搜索。 可以通过这些函数将全文搜索与严格的布尔筛选配合使用，所用方式在仅仅使用 [搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的顶级 `search` 参数的情况下无法实现。
+Azure 认知搜索支持使用 `search.ismatch` 和 `search.ismatchscoring` 函数在 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)上下文中进行全文搜索。 可以通过这些函数将全文搜索与严格的布尔筛选配合使用，所用方式在仅仅使用 [搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的顶级 `search` 参数的情况下无法实现。
 
 > [!NOTE]
 > `search.ismatch` 和 `search.ismatchscoring` 函数只在[搜索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 的筛选器中受支持。 它们在[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) API 或[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API 中不受支持。
@@ -55,10 +55,10 @@ search_mode ::= "'any'" | "'all'"
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 ### <a name="searchismatch"></a>search.ismatch
 
@@ -82,7 +82,7 @@ search_mode ::= "'any'" | "'all'"
 `search.ismatch` 函数返回类型为 `Edm.Boolean` 的值，这样你就可以使用布尔[逻辑运算符](search-query-odata-logical-operators.md)通过其他筛选器子表达式对其进行编辑。
 
 > [!NOTE]
-> Azure 搜索不支持在 lambda 表达式中使用 `search.ismatch` 或 `search.ismatchscoring`。 这意味着，如果对象集合可以将全文搜索匹配项与同一对象上严格的筛选器匹配项相关联，则不能基于该对象集合编写筛选器。 若要更详细地了解此限制和相关示例，请参阅[排查 Azure 搜索中的集合筛选器问题](search-query-troubleshoot-collection-filters.md)。 若要更深入地了解为何存在此限制，请参阅[了解 Azure 搜索中的集合筛选器](search-query-understand-collection-filters.md)。
+> Azure 认知搜索不支持在 lambda 表达式中使用 `search.ismatch` 或 `search.ismatchscoring`。 这意味着，如果对象集合可以将全文搜索匹配项与同一对象上严格的筛选器匹配项相关联，则不能基于该对象集合编写筛选器。 若要更详细地了解此限制和相关示例，请参阅[排查 Azure 认知搜索中的集合筛选器问题](search-query-troubleshoot-collection-filters.md)。 若要更深入地了解为何存在此限制，请参阅[了解 Azure 认知搜索中的集合筛选器](search-query-understand-collection-filters.md)。
 
 
 ### <a name="searchismatchscoring"></a>search.ismatchscoring
@@ -121,7 +121,7 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

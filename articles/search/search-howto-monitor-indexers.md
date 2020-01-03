@@ -1,26 +1,25 @@
 ---
-title: 如何监视索引器的状态和结果 - Azure 搜索
-description: 使用 Azure 门户、REST API 或 .NET SDK 监视 Azure 搜索索引器的状态、进度和结果。
-origin.date: 09/26/2019
-ms.date: 09/26/2019
-author: RobDixon22
+title: 监视索引器的状态和结果
+titleSuffix: Azure Cognitive Search
+description: 使用 Azure 门户、REST API 或 .NET SDK 监视 Azure 认知搜索索引器的状态、进度和结果。
 manager: nitinme
+author: HeidiSteen
 ms.author: v-tawe
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 27063b26a82934a4d4bdbbc9bf22a76382762386
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 6178c8b510240b7146b706f95d16e049c7548e96
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336526"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>如何监视 Azure 搜索索引器的状态和结果
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何监视 Azure 认知搜索索引器的状态和结果
 
-Azure 搜索提供有关每个索引器的当前和历史运行的状态与监视信息。
+Azure 认知搜索提供有关每个索引器的当前和历史运行的状态与监视信息。
 
 想要执行以下操作时，索引器监视非常有用：
 
@@ -28,7 +27,7 @@ Azure 搜索提供有关每个索引器的当前和历史运行的状态与监�
 * 查看正在运行的或上一个索引器运行的结果。
 * 找出顶级索引器错误，以及有关要编制索引的单个文档的错误或警告。
 
-## <a name="find-indexer-status-and-history-details"></a>查找索引器状态和历史记录详细信息
+## <a name="get-status-and-history"></a>获取状态和历史记录
 
 可通过多种方式访问索引器监视信息，包括：
 
@@ -46,7 +45,7 @@ Azure 搜索提供有关每个索引器的当前和历史运行的状态与监�
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>在门户中监视索引器
+## <a name="monitor-using-the-portal"></a>使用门户进行监视
 
 可以在搜索服务“概述”页上的“索引器”列表中查看所有索引器的当前状态。 
 
@@ -74,13 +73,13 @@ Azure 搜索提供有关每个索引器的当前和历史运行的状态与监�
 
    ![索引器详细信息和错误](media/search-monitor-indexers/indexer-execution-error.png "索引器详细信息和错误")
 
-警告经常会出现在某些类型的索引器上，不一定表示出现了问题。 例如，当图像或 PDF 文件不包含任何有待处理的文本时，使用认知服务的索引器可能会报告警告。
+警告经常会出现在某些类型的索引器上，不一定表示出现了问题。
 
-有关调查索引器错误和警告的详细信息，请参阅[排查 Azure 搜索中的常见索引器问题](search-indexer-troubleshooting.md)。
+有关调查索引器错误和警告的详细信息，请参阅[排查 Azure 认知搜索中的常见索引器问题](search-indexer-troubleshooting.md)。
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>使用 REST API 监视索引器
+## <a name="monitor-using-rest-apis"></a>使用 REST API 进行监视
 
 可以使用[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
@@ -127,9 +126,9 @@ Azure 搜索提供有关每个索引器的当前和历史运行的状态与监�
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>使用 NET SDK 监视索引器
+## <a name="monitor-using-the-net-sdk"></a>使用 .NET SDK 进行监视
 
-可以使用 Azure 搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。
+可以使用 Azure 认知搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。
 
 以下 C# 示例将有关索引器状态及其最近（或正在运行）运行的结果的信息写入控制台。
 

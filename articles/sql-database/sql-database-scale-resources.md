@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库缩放资源 | Microsoft Docs
+title: 缩放资源
 description: 本文介绍如何通过添加或删除已分配的资源来缩放数据库。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
-manager: digimobile
 origin.date: 06/25/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: fe534084a72b6b2863a06c2bb2bda2688113a221
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: 344d34d9758c76eacea591035754b081a086dad3
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335960"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
@@ -56,6 +55,8 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 - 在[单一数据库](sql-database-single-database-scale.md)中，可以使用 [DTU](sql-database-dtu-resource-limits-single-databases.md) 或 [vCore](sql-database-vcore-resource-limits-single-databases.md) 模型来定义将分配给每个数据库的最大资源量。
 - [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
 - [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
+
+以任何风格启动纵向扩展或缩减操作将会重启数据库引擎进程，并根据需要将其移到另一虚拟机。 将数据库引擎进程移到新虚拟机是一个**在线过程**，在该过程进行时，你可以继续使用现有的 Azure SQL 数据库服务。 目标数据库引擎完全启动并做好处理查询的准备以后，连接会[从源数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)。
 
 > [!NOTE]
 > 当放大/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。

@@ -1,5 +1,5 @@
 ---
-title: 使用智能见解监视数据库性能 - Azure SQL 数据库 | Microsoft Docs
+title: 使用智能见解监视数据库性能
 description: Azure SQL 数据库 Intelligent Insights 使用内置智能，以通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
-manager: digimobile
 origin.date: 12/19/2018
-ms.date: 08/19/2019
-ms.openlocfilehash: ec73365a5994e9f547e9676bfe47d93010c99647
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: ff14c653ebbefa098fdc64530188675d45b4288a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336062"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除
 
@@ -63,6 +62,16 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 
 Intelligent Insights 在发现和排查 SQL 数据库性能问题方面出类拔萃。 若要使用智能见解排查 SQL 数据库和托管实例数据库的性能问题，请参阅[使用智能见解解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 
+## <a name="intelligent-insights-options"></a>智能见解选项
+
+Azure SQL 数据库中可用的智能见解选项包括：
+
+| 智能见解选项 | 单一数据库和共用数据库支持 | 实例数据库支持 |
+| :----------------------------- | ----- | ----- |
+| **配置智能见解** - 配置针对数据库的智能见解分析。 | 是 | 是 | 
+| **将见解流式传输到事件中心** - 将见解流式传输到事件中心，以便进一步进行自定义集成。 | 是 | 是 | 
+| **将见解流式传输到 Azure 存储** - 将见解流式传输到 Azure 存储，以便进一步进行分析和长期存档。 | 是 | 是 |
+
 ## <a name="configure-intelligent-insights"></a>配置智能见解
 
 智能见解的输出是一种智能性能诊断日志。 此日志可以通过多种方式使用 - 可以流式传输到 Azure 事件中心和 Azure 存储或者第三方产品。
@@ -76,7 +85,7 @@ Intelligent Insights 与其他产品（Azure 事件中心、Azure 存储或第�
 
 ### <a name="set-up-with-event-hubs"></a>通过事件中心进行设置
 
-若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)。
+若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)。
 
 若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。
 
@@ -158,4 +167,4 @@ Intelligent Insights 日志输出出错请求计数。 它会指示性能降低�
 
 - 了解如何[使用 Intelligent Insights 排查 SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 - 使用 [Intelligent Insights SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
-- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)。

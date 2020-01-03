@@ -1,14 +1,14 @@
 ---
-title: 添加语言分析器 - Azure 搜索
-description: Azure 搜索中适用于非英语查询和索引的多语言词法文本分析。
-origin.date: 02/14/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: 向字符串字段添加语言分析器
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索中适用于非英语查询和索引的多语言词法文本分析。
+manager: nitinme
 author: Yahnoosh
 ms.author: v-tawe
-ms.manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,18 +20,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 84f49847f1cbe94b5eac8b58aa3f964a6acf3f8c
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 6fa04b84e4f78c9cda7c319ad264801705000f78
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336151"
 ---
-# <a name="add-language-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加语言分析器
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
 语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析  。 每个可搜索字段都有一个“分析器”属性  。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
 
-Azure 搜索支持 35 个受 Lucene 支持的分析器，以及 Office 和必应中使用的专有 Microsoft 自然语言处理技术支持的 50 个分析器。
+Azure 认知搜索支持 35 个受 Lucene 支持的分析器，以及 Office 和必应中使用的专有 Microsoft 自然语言处理技术支持的 50 个分析器。
 
 ## <a name="comparing-analyzers"></a>比较分析器
 
@@ -53,7 +53,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 使用 **searchFields** 查询参数指定在查询中针对哪个特定于语言的字段进行搜索。 可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)中查看包含分析器属性的查询示例。 
 
-有关索引属性的详细信息，请参阅[创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。 若要详细了解 Azure 搜索中的分析，请参阅 [Azure 搜索中的分析器](search-analyzers.md)。
+有关索引属性的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。 若要详细了解 Azure 认知搜索中的分析，请参阅 [Azure 认知搜索中的分析器](https://docs.azure.cn/search/search-analyzers)。
 
 <a name="language-analyzer-list"></a>
 
@@ -91,7 +91,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |意大利语|it.microsoft|it.lucene|  
 |日语|ja.microsoft|ja.lucene|  
 |卡纳达语|kn.microsoft||  
-|韩语|ko.microsoft|ko.lucene|  
+|朝鲜语|ko.microsoft|ko.lucene|  
 |拉脱维亚语|lv.microsoft|lv.lucene|  
 |立陶宛语|lt.microsoft||  
 |马拉雅拉姆语|ml.microsoft||  
@@ -122,6 +122,8 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
  名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )提供支持。
 
 ## <a name="see-also"></a>另请参阅  
- [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
- [AnalyzerName Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)（AnalyzerName 类）  
+
++ [创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+
++ [AnalyzerName Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)（AnalyzerName 类）  
 

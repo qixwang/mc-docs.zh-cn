@@ -1,38 +1,36 @@
 ---
-title: 搜索索引上查询扩展的同义词 - Azure 搜索
-description: 创建一个同义词映射，用于扩展 Azure 搜索索引上搜索查询的范围。 扩宽了范围，使其包括你在列表中提供的同义术语。
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
+title: 搜索索引上查询扩展的同义词
+titleSuffix: Azure Cognitive Search
+description: 创建一个同义词映射，用于扩展 Azure 认知搜索索引上搜索查询的范围。 扩宽了范围，使其包括你在列表中提供的同义术语。
 manager: nitinme
+author: brjohnstmsft
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 41def69a57e59d213b8ab8285f9e5a5c15c44d4c
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 8986f5a09140fc3f202c10f692e9300e7d63077c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336477"
 ---
-# <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
+# <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
 
 搜索引擎中的同义词功能无需用户实际提供术语，便可关联隐式扩展查询作用域的等效术语。 例如，若给定术语“dog”以及“canine”和“puppy”同义词关联，则包含“dog”、“canine”或“puppy”的所有文档都属于查询作用域。
 
-在 Azure 搜索中，查询时会完成同义词功能扩展。 可将同义词映射添加到服务，而不会中断现有操作。 可将  **synonymMaps** 属性添加到字段定义，而无需重新生成索引。
+在 Azure 认知搜索中，查询时会完成同义词功能扩展。 可将同义词映射添加到服务，而不会中断现有操作。 可将  **synonymMaps** 属性添加到字段定义，而无需重新生成索引。
 
 ## <a name="create-synonyms"></a>创建同义词
 
-我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-fiddler.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
+我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-get-started-postman.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 认知搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
 
 另外，如果使用[客户托管密钥](search-security-manage-encryption-keys.md)进行服务端静态加密，则可对同义词映射的内容应用该保护。
 
 ## <a name="use-synonyms"></a>使用同义词
 
-在 Azure 搜索中，同义词支持基于定义和上传到服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
+在 Azure 认知搜索中，同义词支持基于定义和上传到服务的同义词映射。 这些映射构成独立的资源（如索引或数据源），在搜索服务中可用于任何索引的任何可搜索字段。
 
 同义词映射和索引独立维护。 定义同义词映射并将其上传到服务后，可通过在字段定义中添加名为 **synonymMaps** 的新属性在字段上启用同义词功能。 创建、更新和删除同义词映射始终是一项全文档操作。也就是说，无法逐个创建、更新或删除同义词映射的各个部分。 甚至更新单个条目也需要重新加载。
 
@@ -41,6 +39,8 @@ ms.locfileid: "71674392"
 1.  通过以下 API 将同义词映射添加到搜索服务。  
 
 2.  配置可搜索字段以在索引定义中使用同义词映射。
+
+可为搜索应用程序创建多个同义词映射（例如，如果应用程序支持多语言客户群，则可按语言创建同义词映射）。 目前，一个字段仅可使用其中一种。 可随时更新字段的 synonymMaps 属性。
 
 ### <a name="synonymmaps-resource-apis"></a>SynonymMaps 资源 API
 
@@ -142,6 +142,8 @@ Washington, Wash., WA => WA
 
 可为类型“Edm.String”或“Collection(Edm.String)”的可搜索字段指定 **synonymMaps**。
 
+> [!NOTE]
+> 每个字段仅可包含一个同义词映射。
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>同义词功能对其他搜索功能的影响
 
@@ -153,16 +155,9 @@ Washington, Wash., WA => WA
 
 如果需要执行应用同义词扩展和通配符、正则表达式或模糊搜索的单个查询，则可以使用 OR 语法组合查询。 例如，若要将同义词与通配符组合用于简单查询语法，则术语将为 `<query> | <query>*`。
 
-## <a name="tips-for-building-a-synonym-map"></a>构建同义词映射的提示
-
-- 相比穷举可能的匹配，简明清晰、精心设计的同义词映射更高效。 如果查询扩展到多个同义词，由于字典过大或太复杂，分析时间将延长，导致查询延迟。 可通过[搜索流量分析报告](search-traffic-analytics.md)获取实际术语，而无需猜测可能使用的术语。
-
-- 作为一个初步和验证练习，请启用并使用该报告精确确定哪些术语将受益于同义词匹配，然后继续使用它验证同义词映射是否产生更好的结果。 在预定义的报告中，磁贴“最常用的搜索查询”和“零结果的搜索查询”将提供必要信息。
-
-- 可为搜索应用程序创建多个同义词映射（例如，如果应用程序支持多语言客户群，则可按语言创建同义词映射）。 目前，一个字段仅可使用其中一种。 可随时更新字段的 synonymMaps 属性。
+如果开发（非生产）环境中具有现有索引，请使用一个小字典进行试验，了解添加同义词如何更改搜索体验，包括对计分配置文件、突出显示和建议造成的影响。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果开发（非生产）环境中具有现有索引，请使用一个小字典进行试验，了解添加同义词如何更改搜索体验，包括对计分配置文件、突出显示和建议造成的影响。
-
-- [启用搜索流量分析](search-traffic-analytics.md)并使用预定义的 Power BI 报告可了解最常使用的术语及将返回零个文档的术语。 使用这些见解，修改字典以包括应解析至索引中的文档的非生产性查询的同义词。
+> [!div class="nextstepaction"]
+> [创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

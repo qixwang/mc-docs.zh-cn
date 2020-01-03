@@ -10,21 +10,20 @@ ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/21/2019
-ms.date: 06/24/2019
+ms.date: 12/09/2019
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c82febe2c2de70bcdbd4bf3228aa063e00adb86
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: 3f56e9028ee6c0b39d36bb9d80d406826145d467
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334889"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -47,7 +46,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="application-manifest"></a>应用程序清单
 
-一项由 [Azure 门户][AZURE-portal]提供的功能，该功能可, which produces a JSON representation of the application's identity configuration, used as a mechanism for updating its associated [Application][AAD-Graph-App-Entity] 和 [ServicePrincipal][AAD-Graph-Sp-Entity] 实体。 有关更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
+[Azure 门户][AZURE-portal]提供的一项功能，可生成以 JSON 表示的应用程序标识配置，作为其关联 [Application][AAD-Graph-App-Entity] 实体和 [ServicePrincipal][AAD-Graph-Sp-Entity] 实体的更新机制。 有关更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
 
 ## <a name="application-object"></a>应用程序对象
 
@@ -84,7 +83,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 [授权服务器](#authorization-server)实现的终结点之一，用来与[资源所有者](#resource-owner)进行交互，以便在 OAuth2 授权流程期间提供[授权](#authorization-grant)。 根据使用的授权流程，实际提供的授权可能不同，这包括[授权代码](#authorization-code)或[安全令牌](#security-token)。
 
-有关更多详细信息，请参阅 OAuth2 规范的[授权类型][OAuth2-AuthZ-Grant-Types]and [authorization endpoint][OAuth2-AuthZ-Endpoint]部分以及 [OpenIDConnect 规范][OpenIDConnect-AuthZ-Endpoint]。
+如需更多详细信息，请参阅 OAuth2 规范的[授权类型][OAuth2-AuthZ-Grant-Types]和[授权终结点][OAuth2-AuthZ-Endpoint]部分以及 [OpenIDConnect 规范][OpenIDConnect-AuthZ-Endpoint]。
 
 ## <a name="authorization-grant"></a>授权
 
@@ -163,7 +162,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 角色是资源定义的字符串（例如“开支审批人”、“只读”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [appRoles 属性][AAD-Graph-Sp-Entity]中。 也可通过 Azure 门户为用户分配“用户”角色，并配置用于访问“应用程序”角色的客户端[应用程序权限](#permissions)。
 
-有关 Azure AD 的 Graph API 公开的应用程序角色的详细讨论，请参阅 [Graph API 权限范围][AAD-Graph-Perm-Scopes]. For a step-by-step implementation example, see [Manage access using RBAC and the Azure portal][AAD-RBAC]。
+有关 Azure AD 的 Graph API 公开的应用程序角色的详细讨论，请参阅 [Graph API 权限范围][AAD-Graph-Perm-Scopes]。 有关分步实现示例，请参阅[使用 RBAC 和 Azure 门户管理访问权限][AAD-RBAC]。
 
 ## <a name="scopes"></a>范围
 
@@ -171,7 +170,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 范围是资源定义的字符串（例如“Mail.Read”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [oauth2Permissions 属性][AAD-Graph-Sp-Entity]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
 
-命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Azure AD 的 Graph API 公开的范围的详细介绍，请参阅 [Graph API 权限范围][AAD-Graph-Perm-Scopes]. For scopes exposed by Office 365 services, see [Office 365 API permissions reference][O365-Perm-Ref]。
+命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Azure AD 的 Graph API 公开的范围的详细介绍，请参阅 [Graph API 权限范围][AAD-Graph-Perm-Scopes]。 有关 Office 365 服务公开的范围，请参阅 [Office 365 API permissions reference][O365-Perm-Ref]（Office 365 API 权限参考）。
 
 ## <a name="security-token"></a>安全令牌
 
@@ -201,7 +200,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 * 对用户帐户和已注册应用程序进行身份验证
 * 为各种协议（包括 OAuth2 和 SAML）提供支持所需的 REST 终结点，包括[授权终结点](#authorization-endpoint)、[令牌终结点](#token-endpoint)以及[多租户应用程序](#multi-tenant-application)使用的“通用”终结点。
 
-在注册期间创建 Azure AD 租户/将 Azure AD 租户与 Azure 和 Office 365 订阅相关联，以便为该订阅提供标识和访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 
+在注册期间创建 Azure AD 租户/将 Azure AD 租户与 Azure 和 Office 365 订阅相关联，以便为该订阅提供标识和访问管理功能。 Azure 订阅管理员还可通过 Azure 门户创建其他 Azure AD 租户。 有关可访问租户的各种方式的详细信息，请参阅[如何获取 Azure Active Directory 租户][AAD-How-To-Tenant]。 若要了解订阅和 Azure AD 租户之间的详细关系，请参阅 [How Azure subscriptions are associated with Azure Active Directory][AAD-How-Subscriptions-Assoc] （Azure 订阅与 Azure Active Directory 的关联方式）。
 
 ## <a name="token-endpoint"></a>令牌终结点
 
@@ -221,7 +220,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 
 ## <a name="next-steps"></a>后续步骤
 
-[Microsoft 标识平台开发人员指南][AAD-Dev-Guide]is the landing page to use for all Microsoft identity platform development-related topics, including an overview of [application integration][AAD-How-To-Integrate]和 [Microsoft 标识平台身份验证和支持的身份验证方案][AAD-Auth-Scenarios]的基本知识。 另外，还可在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
+[Microsoft 标识平台开发人员指南][AAD-Dev-Guide]是用于所有 Microsoft 标识平台开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Microsoft 标识平台身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基础知识。 另外，还可在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
 
 请使用以下评论部分提供反馈，帮助我们改进和编写此内容，包括有关新建定义或更新现有定义的请求！
 
@@ -232,10 +231,11 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
+[AAD-Graph-Perm-Scopes]: https://docs.microsoft.com/graph/permissions-reference
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
+[AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md

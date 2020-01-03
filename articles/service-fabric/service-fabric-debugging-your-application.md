@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.custom: vs-azure
 ms.workload: azure-vs
 origin.date: 11/02/2017
-ms.date: 07/08/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: eda02aaed1a7d845e59d6b8fb43a6382a5e6d6ce
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 26b6767490a276738934c414b682e12f7ff3d38a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334824"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -62,6 +62,11 @@ ms.locfileid: "67844756"
 
     ![开始调试应用程序][breakpoint]
 
+### <a name="running-a-script-as-part-of-debugging"></a>在调试过程中运行脚本
+某些情况下，可能需要在启动调试会话的过程中运行脚本（例如，在不使用默认服务时）。
+
+在 Visual Studio 中，可以将名为 **Start-Service.ps1** 的文件添加到 Service Fabric 应用程序项目 (.sfproj) 的 **Scripts** 文件夹中。 在本地群集中创建完应用程序以后，就会调用该脚本。
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="debug-a-remote-service-fabric-application"></a>调试远程 Service Fabric 应用程序
@@ -69,14 +74,10 @@ ms.locfileid: "67844756"
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for .NET 2.9](https://www.azure.cn/downloads/)。    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > 远程调试适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
-> 
-> 
 
 1. 在“云资源管理器”中导航到群集  。 右键单击并选择“启用调试” 
 
@@ -118,11 +119,10 @@ ms.locfileid: "67844756"
 > 
 
 <!-- -->
+
 > [!WARNING]
 > 流跟踪适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
 > 在生产方案中，应依赖于使用 Azure 诊断转发事件。
-> 
-> 
 
 1. 在“云资源管理器”中导航到群集  。 右键单击并选择“启用流式跟踪” 
 
@@ -147,6 +147,7 @@ ms.locfileid: "67844756"
 * [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)
 
 <!--Image references-->
+
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png
 [diagnosticevents]: ./media/service-fabric-debugging-your-application/diagnosticevents.png
 [viewdiagnosticevents]: ./media/service-fabric-debugging-your-application/viewdiagnosticevents.png

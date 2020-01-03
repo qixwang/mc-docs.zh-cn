@@ -16,12 +16,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 8c043b24a5260ffedbe18e19d01189d869652f7f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 4f1c8da145cba91e78d11698f10b96d4c57a8450
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335372"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-marketplace-item"></a>创建并发布自定义 Azure Stack 市场项
 
@@ -118,16 +118,16 @@ ms.locfileid: "74020262"
 
     以下列表解释了示例模板中的上述带有编号的值：
 
-    - (1) � 套餐的名称。
-    - (2) � 发布者的名称，不带空格。
-    - (3) � 模板的版本，不带空格。
-    - (4) � 客户看到的名称。
-    - (5) � 客户看到的发布者名称。
-    - (6) � 发布者的法定名称。
-    - (7) � **UIDefinition.json** 文件的存储路径。  
-    - (8) � JSON 主模板文件的路径和名称。
-    - (9) � 显示此模板的类别的名称。
-    - (10) � 每个图标的路径和名称。
+    - (1) - 套餐的名称。
+    - (2) - 发布者的名称，不带空格。
+    - (3) - 模板的版本，不带空格。
+    - (4) - 客户看到的名称。
+    - (5) - 客户看到的发布者名称。
+    - (6) - 发布者的法定名称。
+    - (7) - **UIDefinition.json** 文件的存储路径。  
+    - (8) - JSON 主模板文件的路径和名称。
+    - (9) - 显示此模板的类别的名称。
+    - (10) - 每个图标的路径和名称。
 
 5. 对于引用 **ms-resource** 的所有字段，必须在 **strings/resources.json** 文件中更改相应的值：
 
@@ -160,7 +160,7 @@ ms.locfileid: "74020262"
 11. 修改完文件后，请将其转换为 .azpkg 文件。 可以使用 **AzureGallery.exe** 工具以及前面下载的示例库包来执行转换。 运行以下命令：
 
     ```shell
-    .\AzureGallery.exe package �m c:\<path>\<gallery package name>\manifest.json �o c:\Temp
+    .\AzureGallery.exe package -m c:\<path>\<gallery package name>\manifest.json -o c:\Temp
     ```
 
     > [!NOTE]
@@ -186,7 +186,7 @@ ms.locfileid: "74020262"
 
     ```powershell
     Add-AzsGalleryItem -GalleryItemUri `
-    https://sample.blob.core.chinacloudapi.cn/<temporary blob name>/<offerName.publisherName.version>.azpkg �Verbose
+    https://sample.blob.core.chinacloudapi.cn/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
 
 5. 确认是否可以提供一个有效的存储帐户来存储项。 可以从 Azure Stack 管理员门户获取 `GalleryItemURI` 值。 选择“存储帐户”>“Blob 属性”->“URL”，扩展名为 .azpkg。  存储帐户仅供暂时使用，以便能够发布到市场。
@@ -217,15 +217,15 @@ ms.locfileid: "74020262"
 
 ### <a name="identity-information"></a>标识信息
 
-| Name | 必须 | 类型 | 约束 | 说明 |
+| 名称 | 必须 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
-| Name |X |String |[A-Za-z0-9]+ | |
+| 名称 |X |String |[A-Za-z0-9]+ | |
 | 发布者 |X |String |[A-Za-z0-9]+ | |
 | 版本 |X |String |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 
-| Name | 必须 | 类型 | 约束 | 说明 |
+| 名称 | 必须 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |建议不要超过 80 个字符 |如果长度超过 80 个字符，门户可能无法正确地显示项名称。 |
 | PublisherDisplayName |X |String |建议不要超过 30 个字符 |如果长度超过 30 个字符，门户可能无法正确地显示发布者名称。 |
@@ -238,7 +238,7 @@ ms.locfileid: "74020262"
 
 市场使用以下图标：
 
-| Name | 宽度 | 高度 | 注释 |
+| 名称 | 宽度 | 高度 | 注释 |
 | --- | --- | --- | --- |
 | Wide |255 px |115 px |始终必需 |
 | 大型 |115 px |115 px |始终必需 |
@@ -254,7 +254,7 @@ ms.locfileid: "74020262"
 
 每个市场项可以包括指向其他内容的各种链接。 链接以名称和 URI 的列表形式进行指定：
 
-| Name | 必须 | 类型 | 约束 | 说明 |
+| 名称 | 必须 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多 64 个字符。 | |
 | Uri |X |URI | | |
@@ -263,7 +263,7 @@ ms.locfileid: "74020262"
 
 除了前面的元数据之外，市场作者可以采用以下形式提供自定义键/值对数据：
 
-| Name | 必须 | 类型 | 约束 | 说明 |
+| 名称 | 必须 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多 25 个字符。 | |
 | Value |X |String |最多 30 个字符。 | |
@@ -280,7 +280,7 @@ ms.locfileid: "74020262"
 
 ### <a name="create-blade"></a>“创建”边栏选项卡
 
-![“创建”边栏选项卡 � Azure Stack 市场项](media/azure-stack-create-and-publish-marketplace-item/image1.png)
+![“创建”边栏选项卡 - Azure Stack 市场项](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>市场项详细信息边栏选项卡
 

@@ -4,15 +4,15 @@ description: 了解如何在 Azure Cosmos DB 中定义存储过程、触发器�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/21/2019
-ms.date: 09/30/2019
+origin.date: 10/31/2019
 ms.author: v-yeche
-ms.openlocfilehash: e90dbb521ac97570fdcb7c84a22933733674fbf1
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.date: 12/16/2019
+ms.openlocfilehash: 3ef3da6c4fae4074f7383e3f19fedd7a2c6e5baa
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336395"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -22,6 +22,9 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**�
 
 > [!NOTE]
 > 对于已分区的容器，在执行存储过程时，必须在请求选项中提供分区键值。 存储过程的范围始终限定为分区键。 存储过程看不到具有不同分区键值的项。 这一点也适用于触发器。
+
+> [!Tip]
+> Cosmos 支持使用存储过程、触发器和用户定义的函数部署容器。 有关详细信息，请参阅[使用服务器端功能创建 Azure Cosmos DB 容器](manage-sql-with-resource-manager.md#create-sproc)。
 
 <a name="stored-procedures"></a>
 ## <a name="how-to-write-stored-procedures"></a>如何编写存储过程
@@ -322,6 +325,17 @@ function tax(income) {
 
 有关如何注册和使用用户定义的函数的示例，请参阅[如何在 Azure Cosmos DB 中使用用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md#udfs)一文。
 
+## <a name="logging"></a>日志记录 
+
+使用存储过程、触发器或用户定义的函数时，可以使用 `console.log()` 命令来记录步骤。 当 `EnableScriptLogging` 设置为 true 时，该命令会专注于一个字符串进行调试，如以下示例所示：
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解概念以及如何在 Azure Cosmos DB 中编写或使用存储过程、触发器和用户定义的函数：
@@ -334,4 +348,4 @@ function tax(income) {
 
 * [在 Azure Cosmos DB 中使用 JavaScript 语言集成式查询 API](javascript-query-api.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

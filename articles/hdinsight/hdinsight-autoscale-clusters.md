@@ -6,20 +6,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 10/21/2019
+origin.date: 10/22/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: e959c136bd5f2dd238dc0e6ef049cc629c43f2e4
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: c04f9bb06f69e95921b9e68fc8491aeaf96db2b4
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292428"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335125"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集（预览）
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
 > [!Important]
-> 自动缩放功能仅适用于 2019 年 5 月 8 日以后创建的 Spark、Hive 和 MapReduce 群集。 
+> 自动缩放功能仅适用于 2019 年 5 月 8 日以后创建的 Spark、Hive、LLAP 和 HBase 群集。 
 
 Azure HDInsight 的群集自动缩放功能可以自动增加和减少群集中的工作器节点数。 目前无法缩放群集中其他类型的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 自动缩放功能随后监视分析负载的资源需求，并增加或减少工作器节点数。 此功能不会产生额外的费用。
 
@@ -29,9 +29,9 @@ Azure HDInsight 的群集自动缩放功能可以自动增加和减少群集中�
 
 | 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| 不包含 ESP 的 HDInsight 3.6 | 是，仅 2.3| 是 | 否 | 否 | 否 | 否 | 否 |
 | 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
-| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 3.6 | 是，仅 2.3 | 是 | 否 | 否 | 否 | 否 | 否 |
 | 包含 ESP 的 HDInsight 4.0 | 是 | 是 | 否 | 否 | 否 | 否 | 否 |
 
 ## <a name="how-it-works"></a>工作原理
@@ -75,28 +75,28 @@ HDInsight 服务将计算需要多少个新的工作器节点才能满足当前�
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>使用基于负载的自动缩放创建群集
 
+若要在群集上使用自动缩放，必须在创建群集时启用“启用自动缩放”选项。  
+
 若要结合基于负载的缩放启用自动缩放功能，请在创建普通群集的过程中完成以下步骤：
 
-1. 选择“自定义(大小、设置、应用)”  而非“快速创建”  。
-1. 在“自定义”安装的步骤 5（指定“群集大小”）中，选中“工作器节点自动缩放”复选框。   
-1. 在“自动缩放类型”下选择“基于负载”选项。  
+1. 在“配置 + 定价”选项卡上，勾选“启用自动缩放”复选框。  
+1. 在“自动缩放类型”下选择“基于负载”。  
 1. 为以下属性输入所需的值：  
 
-    * 初始工作节点数  。  
-    * 最小  工作节点数。  
-    * 最大  工作节点数。  
+    * 适用于工作器节点的初始工作节点数  。 
+    * 工作器节点**最小**数目。
+    * 工作器节点**最大**数目。
 
-    ![启用工作器节点的基于负载的自动缩放](./media/hdinsight-autoscale-clusters/hdinsight-using-autoscale.png)
+    ![启用工作器节点的基于负载的自动缩放](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义创建群集时的群集初始大小。 最小工作节点数必须大于零。
+工作节点的初始数量必须介于最小值和最大值之间（含最大值和最小值）。 此值定义创建群集时的群集初始大小。 工作器节点最小数目至少应设置为 3。 上获取。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。 有关详细信息，请参阅[停滞在安全模式下](/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)。
 
 ### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>使用基于计划的自动缩放创建群集
 
 若要结合基于计划的缩放启用自动缩放功能，请在创建普通群集的过程中完成以下步骤：
 
-1. 选择“自定义(大小、设置、应用)”  而非“快速创建”  。
-1. 在“自定义”安装的步骤 5（指定“群集大小”）中，选中“工作器节点自动缩放”复选框。   
-1. 输入**工作器节点的数目**，以控制纵向扩展群集的限制。
+1. 在“配置 + 定价”选项卡上，勾选“启用自动缩放”复选框。  
+1. 输入**工作器节点**的**节点数**，以控制纵向扩展群集的限制。
 1. 在“自动缩放类型”下选择“基于计划”选项。  
 1. 单击“配置”打开“自动缩放配置”窗口。  
 1. 选择时区，然后单击“+ 添加条件” 
@@ -106,13 +106,13 @@ HDInsight 服务将计算需要多少个新的工作器节点才能满足当前�
 
     ![启用工作器节点的基于计划的创建](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
-节点数最小为 1，最大为添加条件之前输入的工作器节点数。
+节点数最小为 3，最大为添加条件之前输入的最大工作器节点数。
 
 ### <a name="final-creation-steps"></a>最终创建步骤
 
-对于基于负载和基于计划的缩放，请单击“工作器节点大小”和“头节点大小”选择工作器节点的 VM 类型。   为每个节点类型选择 VM 类型后，可以看到整个群集的估算成本范围。 请根据预算调整 VM 类型。
+对于基于负载和基于计划的缩放，请在“节点大小”下的下拉列表中选择一个 VM，通过这种方式选择工作器节点的 VM 类型。  为每个节点类型选择 VM 类型后，可以看到整个群集的估算成本范围。 请根据预算调整 VM 类型。
 
-![启用工作器节点的基于计划的自动缩放节点大小](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![启用工作器节点的基于计划的自动缩放节点大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
 你的订阅具有针对每个区域的容量配额。 头节点核心总数加最大工作节点数不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
 
@@ -133,7 +133,7 @@ HDInsight 服务将计算需要多少个新的工作器节点才能满足当前�
   "targetInstanceCount": 4,
   "autoscale": {
       "capacity": {
-          "minInstanceCount": 2,
+          "minInstanceCount": 3,
           "maxInstanceCount": 10
       }
   },
@@ -202,7 +202,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 请在请求有效负载中使用适当的参数。 下面的 json 有效负载可以用来启用自动缩放。 使用有效负载 `{autoscale: null}` 禁用自动缩放。
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 1, maxInstanceCount: 2 } } }
+{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
 ```
 
 请参阅介绍如何[启用基于负载的自动缩放](#load-based-autoscaling)的上一部分，详尽了解所有的有效负载参数。
@@ -213,6 +213,8 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 在决定选择哪个模式之前，请考虑以下因素：
 
+* 在群集创建期间启用“自动缩放”。
+* 节点最小数目至少应为 3。
 * 负载差异：群集的负载是否在特定日期的特定时间遵循一致的模式。 如果不是，则最好使用基于负载的计划。
 * SLA 要求：自动缩放型缩放是响应性的，而不是预测性的。 在负载开始增加以后，是否有足够的延迟来确保将群集设置为目标大小？ 如果有严格的 SLA 要求，且负载是固定的已知模式，则“基于计划”是更好的选项。
 
@@ -225,6 +227,10 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 在群集纵向缩减过程中，自动缩放会根据目标大小解除节点的授权。 如果这些节点上有正在运行的任务，自动缩放会等待这些任务完成。 由于每个工作器节点也充当 HDFS 中的某个角色，因此会将临时数据转移到剩余节点中。 因此，应确保剩余节点上有足够的空间来托管所有临时数据。 
 
 正在运行的作业会继续运行，直至完成。 在可用的工作器节点变少的情况下，挂起的作业会等待系统按正常情况进行安排。
+
+### <a name="minimum-cluster-size"></a>最小的群集大小
+
+请勿将群集缩小到不到三个节点。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。 有关详细信息，请参阅[停滞在安全模式下](/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode)。
 
 ## <a name="monitoring"></a>监视
 

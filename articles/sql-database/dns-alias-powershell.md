@@ -1,7 +1,8 @@
 ---
-title: 用于管理 Azure SQL DNS 别名的 PowerShell | Microsoft Docs
+title: 用于管理 DNS 别名的 PowerShell
 description: PowerShell cmdlet，例如 New-AzSqlServerDNSAlias，可以将新客户端连接重定向到不同的 Azure SQL 数据库服务器，而无需触摸任何客户端配置。
 keywords: dns sql database
+ms.custom: seo-lt-2019
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -9,158 +10,137 @@ ms.devlang: PowerShell
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: genemi,amagarwa,maboja, jrasnick
-manager: digimobile
+ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 origin.date: 05/14/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 1f5e4c766347e1e20c0014b831cdd186ef9acf01
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: fb750078e943c21e27b4d7969a9237a125105f01
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335800"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>用于管理 Azure SQL 数据库 DNS 别名的 PowerShell
 
-本文提供如何为 Azure SQL 数据库管理 DNS 别名的 PowerShell 脚本。 该脚本运行以下 cmdlet 采用以下操作：
+本文提供如何为 Azure SQL 数据库管理 DNS 别名的 PowerShell 脚本。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-代码示例中使用的 cmdlet 如下：
-
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias)：在 Azure SQL 数据库服务系统中创建新的 DNS 别名。 该别名指向 Azure SQL 数据库服务器 1。
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias)：获取并列出分配给 SQL 数据库服务器 1 的所有 DNS 别名。
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias)：从服务器1 到 SQL 数据库服务器 2 修改别名配置为引用的服务器名称。
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias)：使用别名从 SQL 数据库服务器 2 删除 DNS 别名。
+> [!NOTE]
+> 本文进行了更新，以便使用 Azure PowerShell Az 模块或 Azure CLI。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。
+>
+> 若要详细了解 Az 模块和 AzureRM 兼容性，请参阅 [Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。 有关安装说明，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 或[安装 Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="dns-alias-in-connection-string"></a>连接字符串中的 DNS 别名
 
 若要连接特定的 Azure SQL 数据库服务器，如 SQL Server Management Studio (SSMS) 客户端可以提供的 DNS 别名名称而不是真正的服务器名称。 在下面的示例服务器字符串中，别名 *any 的唯一别名的名称-* 替换四个节点服务器字符串中的第一个圆点分隔节点：
 
-- 服务器字符串示例：`any-unique-alias-name.database.chinacloudapi.cn`。
+   `<yourServer>.database.chinacloudapi.cn`
 
 ## <a name="prerequisites"></a>先决条件
 
 如果想要运行演示这篇文章中提供的 PowerShell 脚本，适用以下先决条件：
 
-- Azure 订阅和帐户。 对于 1 元人民币的试用订阅，请单击 [https://www.azure.cn/pricing/1rmb-trial/][https://www.azure.cn/pricing/1rmb-trial/]。
-- Azure PowerShell 模块，使用 cmdlet **New-AzSqlServerDNSAlias**。
-  - 若要进行安装或升级，请参阅[安装 Azure PowerShell 模块][install-Az-ps-84p]。
-  - 运行 `Get-Module -ListAvailable Az;`powershell\_ise.exe，若要查找版本。
-- 两个 Azure SQL 数据库服务器。
+- Azure 订阅和帐户。如需 1 元试用版，请单击 [https://www.azure.cn/pricing/1rmb-trial/ ][https://www.azure.cn/pricing/1rmb-trial/ ]。
+- 两个 Azure SQL 数据库服务器
 
-## <a name="code-example"></a>代码示例
+## <a name="example"></a>示例
 
-以下代码示例通过启动的 PowerShell 将文字值分配给多个变量。 若要运行此代码，必须首先编辑所有占位符值以匹配你的系统中的实际值。 或者，还可以只是学习代码。 操作，还提供代码的控制台输出。
+以下代码示例一开始就将文字值分配给多个变量。
 
-```powershell
-################################################################
-###    Assign prerequisites.                                 ###
-################################################################
-cls;
+若要运行此代码，请编辑占位符值，使之与系统中的实际值匹配。
 
-$SubscriptionName             = '<EDIT-your-subscription-name>';
-[string]$SubscriptionGuid_Get = '?'; # The script assigns this value, not you.
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-$SqlServerDnsAliasName = '<EDIT-any-unique-alias-name>';
+使用的 cmdlet 如下：
 
-$1ResourceGroupName = '<EDIT-rg-1>';  # Can be same or different than $2ResourceGroupName.
-$1SqlServerName     = '<EDIT-sql-1>'; # Must differ from $2SqlServerName.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias)：在 Azure SQL 数据库服务系统中创建 DNS 别名。 该别名指向数据库服务器 1。
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias)：获取并列出分配给 SQL 数据库服务器 1 的所有别名。
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias)：将别名根据配置引用的服务器名称从“服务器 1”修改为“服务器 2”。
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias)：使用别名从数据库服务器 2 删除别名。
 
-$2ResourceGroupName = '<EDIT-rg-2>';
-$2SqlServerName     = '<EDIT-sql-2>';
+若要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-# Login to your Azure subscription, first time per session.
-Write-Host "You must log into Azure once per powershell_ise.exe session,";
-Write-Host "  thus type 'yes' only the first time.";
-Write-Host " ";
-$yesno = Read-Host '[yes/no]  Do you need to log into Azure now?';
-if ('yes' -eq $yesno)
-{
-    Connect-AzAccount -EnvironmentName AzureChinaCloud -SubscriptionName $SubscriptionName;
-}
-
-$SubscriptionGuid_Get = Get-AzSubscription `
-    -SubscriptionName $SubscriptionName;
-
-################################################################
-###    Working with DNS aliasing for Azure SQL DB server.    ###
-################################################################
-
-Write-Host '[1] Assign a DNS alias to SQL DB server 1.';
-New-AzSqlServerDNSAlias `
-    -ResourceGroupName  $1ResourceGroupName `
-    -ServerName         $1SqlServerName `
-    -ServerDNSAliasName $SqlServerDnsAliasName;
-
-Write-Host '[2] Get and list all the DNS aliases that are assigned to SQL DB server 1.';
-Get-AzSqlServerDNSAlias `
-    -ResourceGroupName $1ResourceGroupName `
-    -ServerName        $1SqlServerName;
-
-Write-Host '[3] Move the DNS alias from 1 to SQL DB server 2.';
-Set-AzSqlServerDNSAlias `
-    -ResourceGroupName  $2ResourceGroupName `
-    -NewServerName      $2SqlServerName `
-    -ServerDNSAliasName $SqlServerDnsAliasName `
-    -OldServerResourceGroup  $1ResourceGroupName `
-    -OldServerName           $1SqlServerName `
-    -OldServerSubscriptionId $SubscriptionGuid_Get;
-
-# Here your client, such as SSMS, can connect to your "$2SqlServerName"
-# by using "$SqlServerDnsAliasName" in the server name.
-# For example, server:  "any-unique-alias-name.database.chinacloudapi.cn".
-
-# Remove-AzSqlServerDNSAlias  - would fail here for SQL DB server 1.
-
-Write-Host '[4] Remove the DNS alias from SQL DB server 2.';
-Remove-AzSqlServerDNSAlias `
-    -ResourceGroupName  $2ResourceGroupName `
-    -ServerName         $2SqlServerName `
-    -ServerDNSAliasName $SqlServerDnsAliasName;
-```
-
-### <a name="actual-console-output-from-the-powershell-example"></a>PowerShell 示例实际控制台输出
-
-下面的控制台输出已复制并粘贴从实际运行。
+在 *powershell\_ise.exe* 中使用 `Get-Module -ListAvailable Az` 来查找版本。
 
 ```powershell
-You must log into Azure once per powershell_ise.exe session,
-  thus type 'yes' only the first time.
+$subscriptionName = '<subscriptionName>';
+$sqlServerDnsAliasName = '<aliasName>';
+$resourceGroupName = '<resourceGroupName>';  
+$sqlServerName = '<sqlServerName>';
+$resourceGroupName2 = '<resourceGroupNameTwo>'; # can be same or different than $resourceGroupName
+$sqlServerName2 = '<sqlServerNameTwo>'; # must be different from $sqlServerName.
 
-[yes/no]  Do you need to log into Azure now?: yes
+# login to Azure
+Connect-AzAccount -SubscriptionName $subscriptionName -Environment AzureChinaCloud;
+$subscriptionId = Get-AzSubscription -SubscriptionName $subscriptionName;
 
+Write-Host 'Assign an alias to server 1...';
+New-AzSqlServerDnsAlias -ResourceGroupName $resourceGroupName -ServerName $sqlServerName `
+    -Name $sqlServerDnsAliasName;
 
-Environment           : AzureChinaCloud
-Account               : gm@acorporation.com
-TenantId              : 72f988bf-1111-1111-1111-111111111111
-SubscriptionId        : 45651c69-2222-2222-2222-222222222222
-SubscriptionName      : mysubscriptionname
-CurrentStorageAccount :
+Write-Host 'Get the aliases assigned to server 1...';
+Get-AzSqlServerDnsAlias -ResourceGroupName $resourceGroupName -ServerName $sqlServerName;
 
-[1] Assign a DNS alias to SQL DB server 1.
-[2] Get the DNS alias that is assigned to SQL DB server 1.
-[3] Move the DNS alias from 1 to SQL DB server 2.
-[4] Remove the DNS alias from SQL DB server 2.
-ResourceGroupName ServerName         ServerDNSAliasName
------------------ ----------         ------------------
-gm-rg-dns-1       gm-sqldb-dns-1     unique-alias-name-food
-gm-rg-dns-1       gm-sqldb-dns-1     unique-alias-name-food
-gm-rg-dns-2       gm-sqldb-dns-2     unique-alias-name-food
+Write-Host 'Move the alias from server 1 to server 2...';
+Set-AzSqlServerDnsAlias -ResourceGroupName $resourceGroupName2 -TargetServerName $sqlServerName2 `
+    -Name $sqlServerDnsAliasName `
+    -SourceServerResourceGroup $resourceGroupName -SourceServerName $sqlServerName `
+    -SourceServerSubscriptionId $subscriptionId.Id;
 
+Write-Host 'Get the aliases assigned to server 2...';
+Get-AzSqlServerDnsAlias -ResourceGroupName $resourceGroupName2 -ServerName $sqlServerName2;
 
-[C:\windows\system32\]
->>
+Write-Host 'Remove the alias from server 2...';
+Remove-AzSqlServerDnsAlias -ResourceGroupName $resourceGroupName2 -ServerName $sqlServerName2 `
+    -Name $sqlServerDnsAliasName;
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用的命令如下：
+
+- [az sql server dns-alias create](https://docs.azure.cn/zh-cn/cli/sql/server/dns-alias?view=azure-cli-latest#az-sql-server-dns-alias-create)：在 Azure SQL 数据库服务系统中创建 DNS 别名。 该别名指向数据库服务器 1。
+- [az sql server dns-alias show](https://docs.azure.cn/zh-cn/cli/sql/server/dns-alias?view=azure-cli-latest#az-sql-server-dns-alias-show)：获取并列出分配给 SQL 数据库服务器 1 的所有别名。
+- [az sql server dns-alias set](https://docs.azure.cn/zh-cn/cli/sql/server/dns-alias?view=azure-cli-latest#az-sql-server-dns-alias-set)：将别名根据配置引用的服务器名称从“服务器 1”修改为“服务器 2”。
+- [az sql server dns-alias delete](https://docs.azure.cn/zh-cn/cli/sql/server/dns-alias?view=azure-cli-latest#az-sql-server-dns-alias-delete)：使用别名从数据库服务器 2 删除别名。
+
+若要安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+
+```azurecli
+$subscriptionName = '<subscriptionName>';
+$sqlServerDnsAliasName = '<aliasName>';
+$resourceGroupName = '<resourceGroupName>';  
+$sqlServerName = '<sqlServerName>';
+$resourceGroupName2 = '<resourceGroupNameTwo>'; # can be same or different than $resourceGroupName
+$sqlServerName2 = '<sqlServerNameTwo>'; # must be different from $sqlServerName.
+
+# login to Azure
+az cloud set --name AzureChinaCloud
+az login -SubscriptionName $subscriptionName;
+$subscriptionId = az account list[0].i -SubscriptionName $subscriptionName;
+
+Write-Host 'Assign an alias to server 1...';
+az sql server dns-alias create --resource-group $resourceGroupName --server $sqlServerName `
+    --name $sqlServerDnsAliasName;
+
+Write-Host 'Get the aliases assigned to server 1...';
+az sql server dns-alias show --resource-group $resourceGroupName --server $sqlServerName;
+
+Write-Host 'Move the alias from server 1 to server 2...';
+az sql server dns-alias set --resource-group $resourceGroupName2 --server $sqlServerName2 `
+    --name $sqlServerDnsAliasName `
+    --original-resource-group $resourceGroupName --original-server $sqlServerName `
+    --original-subscription-id $subscriptionId.Id;
+
+Write-Host 'Get the aliases assigned to server 2...';
+az sql server dns-alias show --resource-group $resourceGroupName2 --server $sqlServerName2;
+
+Write-Host 'Remove the alias from server 2...';
+az sql server dns-alias delete --resource-group $resourceGroupName2 --server $sqlServerName2 `
+    --name $sqlServerDnsAliasName;
+```
+
+* * *
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据库的 DNS 别名功能的完整说明，请参阅 [Azure SQL 数据库的 DNS 别名][dns-alias-overview-37v]。
-
-<!-- Article links. -->
-
-[https://www.azure.cn/pricing/1rmb-trial/]: https://www.azure.cn/pricing/1rmb-trial/
-
-[install-Az-ps-84p]: https://docs.microsoft.com/powershell/azure/install-az-ps
-
-[dns-alias-overview-37v]: dns-alias-overview.md
+有关 SQL 数据库的 DNS 别名功能的完整说明，请参阅 [Azure SQL 数据库的 DNS 别名](dns-alias-overview.md)。

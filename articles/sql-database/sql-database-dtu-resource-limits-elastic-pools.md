@@ -1,30 +1,29 @@
 ---
-title: Azure SQL 数据库中弹性池的基于 DTU 的资源限制 | Microsoft Docs
-description: 本页介绍了 Azure SQL 数据库中弹性池的一些常见资源限制（基于 DTU）。
+title: DTU 资源限制弹性池
+description: 本页介绍了 Azure SQL 数据库中弹性池的一些常见的 DTU 资源限制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-manager: digimobile
 origin.date: 03/14/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: ec8857f14e20e3e46056d7f449731b20cec5c956
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 12/16/2019
+ms.openlocfilehash: da7bbac22622cfa89b257f64cd56f51abec08bc1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335768"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的弹性池的资源限制
 
-本文详细介绍了 Azure SQL 数据库中使用基于 DTU 的购买模型的弹性池和共用数据库的资源限制。
+本文详细介绍了 Azure SQL 数据库中使用 DTU 购买模型的弹性池和共用数据库的资源限制。
 
-若要了解使用基于 DTU 的购买模型的单一数据库的资源限制，请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-elastic-pools.md)。 有关基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
+若要了解使用 DTU 购买模型的单一数据库的资源限制，请参阅 [DTU 资源限制 - 单一数据库](sql-database-vcore-resource-limits-elastic-pools.md)。 有关 vCore 资源限制，请参阅 [vCore 资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和 [vCore 资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>弹性池：存储大小和计算大小
 
@@ -128,9 +127,9 @@ ms.locfileid: "69544337"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关单一数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单一数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
-- 有关单一数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
-- 有关弹性池的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)
+- 有关单一数据库的 vCore 资源限制，请参阅[使用 vCore 购买模型的单一数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
+- 有关单一数据库的 DTU 资源限制，请参阅[使用 DTU 购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
+- 有关弹性池的 vCore 资源限制，请参阅[使用 vCore 购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)
 - 有关托管实例的资源限制，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 - 有关数据库服务器上的资源限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)了解有关服务器级别和订阅级别限制的信息。

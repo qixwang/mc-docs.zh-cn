@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 07/29/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: 777150fb656ff7f232e65d38ce986f37098c468d
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.openlocfilehash: a1dfec8c5f508ba2ec3ee9b503f6149f50806871
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68672224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335816"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
@@ -215,7 +215,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 一个可用的选项是使用 [Azure 认知服务](https://www.microsoft.com/cognitive-services)分析用户内容：不仅可以更好地理解它们（通过使用 [文本分析 API](https://www.microsoft.com/cognitive-services/text-analytics-api) 分析编写的内容），而且还可以使用[计算机视觉 API](https://www.microsoft.com/cognitive-services/computer-vision-api) 检测不需要的内容或成人内容，并采取相应的措施。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
 
-## <a name="a-multiple-region-scalesocial-experience"></a>多区域缩放社交体验
+## <a name="a-multiple-region-scale-social-experience"></a>多区域缩放社交体验
 
 最后，还必须说明一个非常重要的项目：可伸缩性  。 设计体系结构时，每个组件都应该自行缩放。 你最终将需要处理更多数据，或者希望拥有更大的地理覆盖范围。 幸运的是，使用 Cosmos DB 完成这两项任务是一种统包体验  。
 
@@ -224,6 +224,8 @@ Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创
 对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，推荐在同一分区内进行读取，并通过在多个分区上分散写入来避免“热点”。）某些选项为：基于临时键的分区（日/月/周）、按内容类别、按地理区域，或按用户。 这一切都取决于查询数据并在社交体验中显示数据的方式。
 
 Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），因此无需在数据增长过程中添加任何逻辑。
+
+<!--CORRECT ON URL [aggregates](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)-->
 
 一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要  。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)来实现。
 
@@ -245,7 +247,7 @@ Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https:/
 
 ![社交网络中各 Azure 服务之间的交互关系图](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-事实上，对于此类方案并没有万能方法。 需结合各种卓越的服务共同创建，才能提供绝佳的体验：Azure Cosmos DB 的速度和自由性，可用于提供绝佳的社交应用程序；Azure 搜索等一流搜索解决方案，可用于提供幕后的智能操作；Azure 应用服务的灵活性，不仅可以托管与语言无关的应用程序，甚至还可以托管功能强大的后台处理程序；Azure 存储和 Azure SQL 数据库的可扩展性，可用于存储大量数据；Azure 机器学习的分析功能，可创建能够为进程提供反馈，并且有助于我们向合适的用户提供合适的内容的知识和智能。
+事实上，对于此类方案并没有万能方法。 需结合各种卓越的服务共同创建，才能提供绝佳的体验：Azure Cosmos DB 的速度和自由性，可用于提供绝佳的社交应用程序；Azure 认知搜索等一流搜索解决方案，可用于提供幕后的智能操作；Azure 应用服务的灵活性，不仅可以托管与语言无关的应用程序，甚至还可以托管功能强大的后台处理程序；Azure 存储和 Azure SQL 数据库的可扩展性，可用于存储大量数据；Azure 机器学习的分析功能，可创建能够为进程提供反馈，并且有助于我们向合适的用户提供合适的内容的知识和智能。
 
 ## <a name="next-steps"></a>后续步骤
 

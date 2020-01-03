@@ -13,14 +13,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 08/18/2017
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: cc033b14ce8c107cb253dfd0e037bf34eff1ce7b
-ms.sourcegitcommit: d75eeed435fda6e7a2ec956d7c7a41aae079b37c
+ms.openlocfilehash: ba8a0393f403bd9f03515d52701c412c953dac16
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336102"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 常见问题
 
@@ -49,7 +49,7 @@ ms.locfileid: "66195485"
 应考虑的一些事项： 
 
 1. 如同构建群集的虚拟机规模集一样，Azure 中的 Service Fabric 群集资源如今也是区域性的。 这意味着如果出现区域性故障，将可能无法通过 Azure 资源管理器或 Azure 门户管理群集。 即使群集仍在运行，且你能够直接与其交互，也可能发生此情况。 此外，Azure 目前不提供创建跨区域可用的单个虚拟网络的功能。 这意味着 Azure 中的多区域群集需要[适用于 VM 规模集中的每个 VM 的公共 IP 地址](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)或 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 这些网络选择对成本、性能以及某种程度上的应用程序设计都有不同的影响，因此需要在选择此类环境前仔细分析和规划。
-2. 维护、管理和监视这些计算机可能会变得很复杂，尤其是在跨多种类型环境时，比如不同云提供程序之间或本地资源和 Azure 之间。 必须格外小心，确保在此类环境中运行生产工作负荷前，已了解群集和应用程序的升级、监视、管理和诊断。 如果你已有在 Azure 或自己的数据中心解决这些问题的经验，则很可能这些相同的解决方案在生成或运行 Service Fabric 群集时均适用。 
+2. 维护、管理和监视这些计算机可能会变得很复杂，尤其是在跨多种类型环境时，比如不同云提供程序之间或本地资源和 Azure 之间  。 必须格外小心，确保在此类环境中运行生产工作负荷前，已了解群集和应用程序的升级、监视、管理和诊断。 如果你已有在 Azure 或自己的数据中心解决这些问题的经验，则很可能这些相同的解决方案在生成或运行 Service Fabric 群集时均适用。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric 节点是否会自动接收操作系统更新？
 
@@ -63,7 +63,8 @@ ms.locfileid: "66195485"
 
 **详细解答** - 尽管通过大型虚拟机规模集可将虚拟机规模集缩放至多达 1000 个 VM 实例，但这是通过使用放置组 (PG) 实现的。 容错域 (FD) 和升级域 (UD) 仅在使用 FD 和 UD 来为服务副本/服务实例做出放置决策的放置组 Service Fabric 中保持一致。 因为 FD 和 UD 仅在放置组中可比较，因此 SF 无法使用它。 例如，如果 PG1 中的 VM1 具有一个 FD=0 的拓扑，并且 PG2 中的 VM9 具有一个 FD=4 的拓扑，这并不意味着 VM1 和 VM2 在两个不同的硬件机架上，因此在这种情况下 SF 无法使用 FD 值做出放置决策。
 
-当前，大型虚拟机规模集还存在其他问题，例如缺少 level-4 负载均衡支持。 
+当前，大型虚拟机规模集还存在其他问题，例如缺少 level-4 负载均衡支持。
+
 <!--Not Available on [details on Large scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)-->
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric 群集的最小大小如何？ 为什么不能更小？
 
@@ -72,7 +73,7 @@ ms.locfileid: "66195485"
 由于以下三个原因，我们要求生产群集至少包含 5 个节点：
 1. 即使未运行任何用户服务，Service Fabric 群集也会运行一组有状态系统服务，包括命名服务和故障转移管理器服务。 这些系统服务对于群集的正常运行至关重要。
 2. 我们始终为每个节点保留一个服务副本，因此，群集大小是某个服务（实际上是分区）可以包含的副本数上限。
-3. 由于群集升级至少会关闭一个节点，我们希望至少有一个节点可以提供缓冲，因此，生产群集最好是除了裸机以外，至少包含两个节点。 裸机是下面所述的系统服务仲裁大小。  
+3. 由于群集升级至少会关闭一个节点，我们希望至少有一个节点可以提供缓冲，因此，生产群集最好是除了裸机以外，至少包含两个节点。  裸机是下面所述的系统服务仲裁大小。  
 
 我们希望该群集在两个节点同时发生故障时保持可用。 要使 Service Fabric 群集可用，系统服务必须可用。 跟踪哪些服务已部署到群集及其当前托管位置的有状态系统服务（例如命名服务和故障转移管理器服务）取决于非常一致性。 而这种非常一致性又取决于能否获取*仲裁*来更新这些服务的状态，其中，仲裁表示给定服务在严格意义上的大多数副本 (N/2 + 1)。 因此，如果我们希望能够弹性应对两个节点同时丢失（因而系统服务的两个副本也会同时丢失）的情况，必须保证 ClusterSize - QuorumSize >= 2，这会将最小大小强制为 5。 为了演示这一点，我们假设群集包含 N 个节点，并且系统服务有 N 个副本 - 每个节点上各有一个副本。 系统服务的仲裁大小为 (N/2 + 1)。 上述不等式类似于 N - (N/2 + 1) >= 2。 要考虑两种情况：N 为偶数，以及 N 为奇数。 如果 N 为偶数，例如 N = 2\*m，其中 m >= 1，则不等式类似于 2\*m - (2\*m/2 + 1) >= 2 或 m >= 3。 N 的最小值为 6，这是 m = 3 时实现的。 另一方面，如果 N 为奇数，例如 N = 2\*m+1，其中 m >= 1，则不等式类似于 2\*m+1 - ( (2\*m+1)/2 + 1 ) >= 2 或 2\*m+1 - (m+1) >= 2 或 m >= 2。 N 的最小值为 5，这是 m = 2 时实现的。 因此，在满足不等式 ClusterSize - QuorumSize >= 2 的所有 N 值中，最小值为 5。
 
@@ -103,9 +104,7 @@ ms.locfileid: "66195485"
 我们致力于改善体验，但现在升级由你负责。 必须升级群集虚拟机上的 OS 映像，一次升级一个 VM。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以对群集节点类型（虚拟机规模集）中的附加数据磁盘进行加密？
-是的。  有关详细信息，请参阅[创建具有附加数据磁盘的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)。
-<!--Not Available on [Encrypt disks (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) -->
-<!--Not Available on [Encrypt disks (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md)-->
+是的。  有关详细信息，请参阅[创建具有附加数据磁盘的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[用于虚拟机规模集的 Azure 磁盘加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以在群集节点类型（虚拟机规模集）中使用低优先级 VM？
 否。 不支持低优先级 VM。 
@@ -137,6 +136,7 @@ ms.locfileid: "66195485"
 下面为应用程序为实现对 KeyVault 的身份验证而获取凭据的方式：
 
 A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
+
 <!--Not Available on MSI -->
 
 ## <a name="application-design"></a>应用程序设计
@@ -147,7 +147,8 @@ Reliable Collections 通常已[分区](service-fabric-concepts-partitioning.md)�
 
 - 创建查询其他服务的所有分区的服务，拉入所需的数据。
 - 创建可从其他服务的所有分区接收数据的服务。
-- 定期将每个服务中的数据推送到外部存储。 此方法仅适用于要执行的查询不属于核心业务逻辑的情况。
+- 定期从每个服务将数据推送到外部存储。 此方法仅适用于要执行的查询不属于核心业务逻辑的情况，因为外部存储的数据会过时。
+- 也可要求存储的数据支持跨所有记录直接在数据存储中进行查询，而不是在可靠集合中查询。 这消除了过时数据带来的问题，但无法利用可靠集合的优势。
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>跨执行组件查询数据的最佳方法是什么？
 
@@ -194,4 +195,5 @@ Reliable Services 通常已分区，因此，存储量仅受限于群集中的�
 
 了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)
 
+<!--Repeate with URL and contents on global site-->
 <!--Update_Description: update meta properties, wording update, update link -->

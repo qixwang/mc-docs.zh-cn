@@ -1,23 +1,24 @@
 ---
-title: 用于搜索索引的 Azure SQL 托管实例连接 - Azure 搜索
-description: 启用公共终结点以允许从 Azure 搜索上的索引器连接到 SQL 托管实例。
-author: vl8163264128
+title: 用于搜索索引的 Azure SQL 托管实例连接
+titleSuffix: Azure Cognitive Search
+description: 启用公共终结点以允许从 Azure 认知搜索上的索引器连接到 SQL 托管实例。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 07/01/2019
-ms.date: 09/26/2019
+author: vl8163264128
 ms.author: v-tawe
-ms.openlocfilehash: 9535973acf2b4faf07c101a0b7103afa62390e5c
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 99d275c9ef1863fdde51809303d9df75a1d80634
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336030"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>配置从 Azure 搜索索引器到 SQL 托管实例的连接
-如[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，Azure 搜索通过公共终结点支持针对 **SQL 托管实例**创建索引器。
+# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
+
+如[使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，Azure 认知搜索通过公共终结点支持针对 **SQL 托管实例**创建索引器。
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>通过公共终结点创建 Azure SQL 托管实例
 在选中“启用公共终结点”  选项的情况下创建 SQL 托管实例。
@@ -40,4 +41,4 @@ ms.locfileid: "71674450"
    ![公共终结点连接字符串](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "公共终结点连接字符串")
 
 ## <a name="next-steps"></a>后续步骤
-无需进行配置，现在可以使用门户或 REST API 将 SQL 托管实例指定为 Azure 搜索索引器的数据源。 有关详细信息，请参阅[使用索引器将 Azure SQL 数据库连接到 Azure 搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。
+无需进行配置，现在可以使用门户或 REST API 将 SQL 托管实例指定为 Azure 认知搜索索引器的数据源。 有关详细信息，请参阅[使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。

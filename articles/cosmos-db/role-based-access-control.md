@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 如何使用 Active Directory 集成 (RBAC) 
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/23/2019
-ms.date: 06/17/2019
+origin.date: 10/31/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: 9ad3caa0f251e29649cb58857fb7c3c8fc32740b
-ms.sourcegitcommit: 48a45ba95a6d1c15110191409deb0e7aac4bd88b
+ms.openlocfilehash: ca4ec9ce30e821809918b2048315422feae074d3
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68293435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335842"
 ---
 <!--Verify Successfully-->
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中基于角色的访问控制
@@ -23,14 +23,12 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基�
 
 下面是 Azure Cosmos DB 支持的内置角色：
 
-|**内置角色**  |**说明**  |
+|**内置角色** |**说明**  |
 |---------|---------|
-|[DocumentDB 帐户参与者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)   | 可管理 Azure Cosmos DB 帐户。  |
-|[Cosmos DB 帐户读取者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)  | 可以读取 Azure Cosmos DB 帐户数据。        |
-|[Cosmos 备份操作员](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)     |  可以提交对 Azure Cosmos 数据库或容器的还原请求       |
-|[Cosmos DB 操作员](../role-based-access-control/built-in-roles.md)  | 可以预配 Azure Cosmos 帐户、数据库和容器，但无法访问用于访问数据的密钥。         |
-
-<!--Pending for #cosmos-db-operator-->
+|[DocumentDB 帐户参与者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|可管理 Azure Cosmos DB 帐户。|
+|[Cosmos DB 帐户读取者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以读取 Azure Cosmos DB 帐户数据。|
+|[Cosmos 备份操作员](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|可以提交对 Azure Cosmos 数据库或容器的还原请求|
+|[Cosmos DB 操作员](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|可以预配 Azure Cosmos 帐户、数据库和容器，但无法访问用于访问数据的密钥。|
 
 > [!IMPORTANT]
 > Azure Cosmos DB 中的 RBAC 仅支持适用于控制平面操作。 使用主密钥或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)
@@ -45,11 +43,32 @@ Azure 门户中的“访问控制(IAM)”窗格用于针对 Azure Cosmos 资源�
 
 除内置角色以外，用户还可以在 Azure 中创建[自定义角色](../role-based-access-control/custom-roles.md)，并将这些角色应用到其 Active Directory 租户内的所有订阅中的服务主体。 自定义角色可让用户使用一组自定义的资源提供程序操作来创建 RBAC 角色定义。 若要了解可以使用哪些操作来为 Azure Cosmos DB 生成自定义角色，请参阅 [Azure Cosmos DB 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
+## <a name="preventing-changes-from-cosmos-sdk"></a>阻止来自 Cosmos SDK 的更改
+
+可以锁定 Cosmos 资源提供程序，防止通过帐户密钥进行连接的任何客户端（即通过 Cosmos SDK 连接的应用程序）对资源（包括 Cosmos 帐户、数据库、容器和吞吐量）进行任何更改。 设置以后，对任何资源进行的更改必须由具有适当 RBAC 角色和凭据的用户进行。 此功能在 Cosmos 资源提供程序中使用 `disableKeyBasedMetadataWriteAccess` 属性值进行设置。 下面是包含此属性设置的 Azure 资源管理模板的示例。
+
+```json
+{
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('accountName')]",
+      "apiVersion": "2019-08-01",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+        "locations": "[variables('locations')]",
+        "databaseAccountOfferType": "Standard",
+        "disableKeyBasedMetadataWriteAccess": true
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure 资源的基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)
 - [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)
 - [Azure Cosmos DB 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
-<!--Update_Description: update meta properties, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

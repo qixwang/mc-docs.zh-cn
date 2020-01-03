@@ -1,14 +1,14 @@
 ---
-title: OData order-by 参考 - Azure搜索
-description: Azure 搜索查询中 order-by 语法的 OData 语言参考。
-origin.date: 06/13/2019
-ms.date: 09/29/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: v-tawe
+title: OData order-by 参考
+titleSuffix: Azure Cognitive Search
+description: 语法和语言参考文档，用于在 Azure 认知搜索查询中使用 order-by。
 manager: nitinme
+author: brjohnstmsft
+ms.author: v-tawe
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0059dffc85993c50ab5b0ca50dd9be087f443f77
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 1dbda93fbe82290d876e785f873e25bcaae26f9a
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336499"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>Azure 搜索中的 OData $orderby 语法
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $orderby 语法
 
- 可以使用 [OData **$orderby** 参数](query-odata-filter-orderby-syntax.md)对 Azure 搜索中的搜索结果应用自定义排序顺序。 本文详细介绍 **$orderby** 的语法。 有关如何在呈现搜索结果时使用 **$orderby** 的更多常规信息，请参阅[如何在 Azure 搜索中使用搜索结果](search-pagination-page-layout.md)。
+ 可以使用 [OData **$orderby** 参数](query-odata-filter-orderby-syntax.md)对 Azure 认知搜索中的搜索结果应用自定义排序顺序。 本文详细介绍 **$orderby** 的语法。 有关如何在呈现搜索结果时使用 **$orderby** 的更多常规信息，请参阅[如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -43,13 +43,13 @@ order_by_clause ::= (field_path | sortable_function) ('asc' | 'desc')?
 sortable_function ::= geo_distance_call | 'search.score()'
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅 [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以了解完整的 EBNF。
 
 每个子句都有排序条件，可以选择后跟排序方向（`asc` 表示升序，或 `desc` 表示降序）。 如果不指定方向，则默认为升序。 排序条件可以是 `sortable` 字段的路径，也可以是对 [`geo.distance`](search-query-odata-geo-spatial-functions.md) 或 [`search.score`](search-query-odata-search-score-function.md) 函数的调用。
 
@@ -81,7 +81,7 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [如何在 Azure 搜索中使用搜索结果](search-pagination-page-layout.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

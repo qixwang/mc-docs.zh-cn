@@ -1,25 +1,24 @@
 ---
-title: 用于在索引中限定搜索结果范围的筛选器 - Azure 搜索
-description: 按用户安全标识、语言、地理位置或数字值进行筛选可以减少 Azure 搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。
-author: HeidiSteen
+title: 筛选搜索结果
+titleSuffix: Azure Cognitive Search
+description: 按用户安全标识、语言、地理位置或数字值进行筛选可以减少 Azure 认知搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 06/13/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 879b787f2648591e4a930626e9f87da0225c5e96
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 8e280baf81a4f196c52ef320068475d52ce70638
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335855"
 ---
-# <a name="filters-in-azure-search"></a>Azure 搜索中的筛选器 
+# <a name="filters-in-azure-cognitive-search"></a>Azure 认知搜索中的筛选器 
 
-筛选器提供相关的条件来指定如何选择 Azure 搜索查询中使用的文档。  未经筛选的搜索包含索引中的所有文档。 筛选器将搜索查询的范围限定为一部分文档。 例如，筛选器可将全文搜索限制为具有特定品牌或颜色，并且价位超过特定阈值的产品。
+筛选器提供相关的条件来指定如何选择 Azure 认知搜索查询中使用的文档。  未经筛选的搜索包含索引中的所有文档。 筛选器将搜索查询的范围限定为一部分文档。 例如，筛选器可将全文搜索限制为具有特定品牌或颜色，并且价位超过特定阈值的产品。
 
 某些搜索体验在实施过程中会施加筛选要求，但你随时可以使用基于值的条件（将搜索范围限定为产品类型“书籍”、类别“纪实”、发布者“Simon 和 Schuster”）。 
 
@@ -63,8 +62,7 @@ ms.locfileid: "71674358"
 筛选是配合搜索发生的，限定要将哪些文档包含在下游处理流程中进行文档检索和相关性评分。 与搜索字符串搭配使用时，筛选器能够有效减小后续搜索操作的重调集。 如果单独使用（例如，在 `search=*` 中查询字符串为空时），筛选条件是唯一的输入。 
 
 ## <a name="defining-filters"></a>定义筛选器
-
-筛选器是使用 [Azure 搜索中支持的 OData V4 语法子集](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)构建的 OData 表达式。 
+筛选器是使用 [Azure 认知搜索中支持的 OData V4 语法子集](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)构建的 OData 表达式。 
 
 可为每个**搜索**操作指定一个筛选器，但筛选器本身可以包含多个字段和多个条件，如果使用 **ismatch** 函数，则还可以包含多个全文搜索表达式。 在多部分筛选表达式中，可按任意顺序指定谓词（受运算符优先顺序规则的约束）。 如果尝试按特定的顺序重新排列谓词，性能不会有明显的提升。
 
@@ -74,14 +72,14 @@ ms.locfileid: "71674358"
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.chinacloudapi.cn/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.chinacloudapi.cn/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.chinacloudapi.cn/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -89,8 +87,8 @@ POST https://[service name].search.chinacloudapi.cn/indexes/hotels/docs/search?a
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
     var results = searchIndexClient.Documents.Search("*", parameters);
@@ -98,36 +96,36 @@ POST https://[service name].search.chinacloudapi.cn/indexes/hotels/docs/search?a
 
 ## <a name="filter-usage-patterns"></a>筛选器使用模式
 
-以下示例演示了筛选器方案的多种使用模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](search-query-odata-filter.md#examples)。
+以下示例演示了筛选器方案的多种使用模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](https://docs.azure.cn/search/search-query-odata-filter#examples)。
 
 + 单独使用 **$filter** 而不使用查询字符串：如果筛选表达式能够完全限定所需的文档，则此模式很有效。 不使用查询字符串也就不会执行词法或语言分析、评分和排名。 请注意，搜索字符串只是一个星号，表示“匹配所有文档”。
 
    ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ 将查询字符串与 **$filter** 结合使用：让筛选器创建子集，让查询字符串提供字词输入，用于对筛选的子集进行全文搜索。 将筛选器与查询字符串结合使用是最常见的使用模式。
++ 将查询字符串与 **$filter** 结合使用：让筛选器创建子集，让查询字符串提供字词输入，用于对筛选的子集进行全文搜索。 添加搜索词（“步行距离内的影院”）可以在结果中引入搜索分数，与搜索词最匹配的文档的排名较高。 将筛选器与查询字符串结合使用是最常见的使用模式。
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
 + 复合查询：使用“or”分隔查询，每个查询有自身的筛选条件（例如，'beagles' in 'dog' or 'siamese' in 'cat'）。 以 `or` 合并的表达式将单独求值，响应中会发回与每个表达式匹配的文档的联合。 此使用模式是通过 `search.ismatchscoring` 函数实现的。 也可以使用无评分版本 `search.ismatch`。
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
   还可以使用 `and`（而不是 `or`）通过包含筛选器的 `search.ismatchscoring` 来合并全文搜索，但此功能相当于在搜索请求中使用 `search` 和 `$filter` 参数。 例如，以下两个查询生成相同的结果：
 
   ```
-  $filter=search.ismatchscoring('pool') and rating ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search=pool&$filter=rating ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
 请参阅以下文章获取有关特定用例的综合性指导：
@@ -149,7 +147,7 @@ POST https://[service name].search.chinacloudapi.cn/indexes/hotels/docs/search?a
 
 ### <a name="making-an-existing-field-filterable"></a>使现有字段可筛选
 
-无法通过修改现有字段来使其可筛选。 为此需要添加新字段或重建索引。 有关重建索引或重新填充字段的详细信息，请参阅[如何重建 Azure 搜索索引](search-howto-reindex.md)。
+无法通过修改现有字段来使其可筛选。 为此需要添加新字段或重建索引。 有关重建索引或重新填充字段的详细信息，请参阅[如何重建 Azure 认知搜索索引](search-howto-reindex.md)。
 
 ## <a name="text-filter-fundamentals"></a>文本筛选器基础知识
 
@@ -196,11 +194,11 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-若要学习更多示例，请参阅 [OData 筛选表达式语法 > 示例](search-query-odata-filter.md#examples)。
+若要学习更多示例，请参阅 [OData 筛选表达式语法 > 示例](https://docs.azure.cn/search/search-query-odata-filter#examples)。
 
 ## <a name="see-also"></a>另请参阅
 
-+ [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
 + [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

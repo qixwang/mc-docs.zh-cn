@@ -4,16 +4,16 @@ description: 使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的
 author: rockboyfor
 ms.service: cosmos-db
 origin.date: 07/17/2019
-ms.date: 09/09/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 98c0063fff4b965a6814e48beade50ce8cd84271
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 46b3b5a697ff69d5efa37fea4a6c06b13e5c3881
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335996"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断和排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
 
@@ -61,7 +61,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 如果使用 Azure 门户，并在检查使用触发器的 Azure 函数时选择屏幕上的“运行”按钮，则会出现此问题。  触发器不需要选择“运行”即可启动，部署 Azure 函数时它会自动启动。 若要在 Azure 门户上检查 Azure 函数的日志流，只需转到受监视的容器并插入一些新项，然后自然就会看到触发器正在执行。
 
-### <a name="my-changes-take-too-long-be-received"></a>接收更改花费了过长的时间
+### <a name="my-changes-take-too-long-to-be-received"></a>接收更改花费了太长的时间
 
 这种情形可能是多种原因造成的，应检查所有这些原因：
 
@@ -79,7 +79,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 如果目标中缺少某些更改，可能意味着在收到更改后执行 Azure 函数期间发生了某种错误。
 
-在这种情况下，最佳措施是在代码中以及在可能正在处理更改的循环中添加 `try/catch blocks`，以检测特定的项子集中出现的任何失败，并相应地对其进行处理（将这些项发送到另一个存储以做进一步的分析或重试）。 
+在这种情况下，最佳措施是在代码中以及在可能正在处理更改的循环中添加 `try/catch` 块，以检测特定的项子集中出现的任何失败，并相应地对其进行处理（将这些项发送到另一个存储以做进一步的分析或重试）。 
 
 > [!NOTE]
 > 默认情况下，如果在代码执行期间发生未经处理的异常，则适用于 Cosmos DB 的 Azure Functions 触发器不会重试一批更改。 这意味着，更改未抵达目标的原因是无法处理它们。
@@ -105,11 +105,14 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 若要解决此问题，请删除已添加的手动 NuGet 引用，并让 Azure Cosmos DB SDK 引用通过 Azure Functions Cosmos DB 扩展包进行解析。
 
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>更改 Azure 函数在检测更改时的轮询间隔
+
+如此前针对[接收更改花费了太长的时间](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)解释的那样，Azure 函数会休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
+
 ## <a name="next-steps"></a>后续步骤
 
 <!--Not Available on * [Enable monitoring for your Azure Functions](../azure-functions/functions-monitoring.md)-->
 
 * [Azure Cosmos DB .NET SDK 故障排除](./troubleshoot-dot-net-sdk.md)
 
-<!--Update_Description: wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 origin.date: 10/16/2018
-ms.date: 01/21/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 94cab120b57c98b8e3a5811848c8a3a5400b2842
-ms.sourcegitcommit: 35a09a86cbb3d896fa9784471ece41df7728bd71
+ms.openlocfilehash: d3fdd6d43bbdec2cdd9686b56e7d193050eefb03
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336446"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 
@@ -45,9 +45,14 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 <!-- Pending on ## ELK -->
 <!-- Not Available on [here](service-fabric-tutorial-java-elk.md)-->
 
+## <a name="humio"></a>Humio
+
+Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观测性，Humio 还提供现代的分析和可视化功能，用于查看和收集诊断中的见解。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 在 Service Fabric <!--Not Available on [diagnose common scenarios](service-fabric-diagnostics-common-scenarios.md)--> 中获取[监视和诊断的概述](service-fabric-diagnostics-overview.md)
+* 参阅 Service Fabric 中[监视和诊断的概述](service-fabric-diagnostics-overview.md)
 
+<!--Not Available on [diagnose common scenarios](service-fabric-diagnostics-common-scenarios.md)-->
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

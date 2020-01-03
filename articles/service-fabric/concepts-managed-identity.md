@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: service-fabric
 ms.topic: conceptual
 origin.date: 07/25/2019
-ms.date: 09/30/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: b4d611360c0f0b734fb7a99a6b1cbcc718658cb3
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 02d2a755152dd3734b26f1d776881998c0835cde
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336186"
 ---
 <!--Verify successfully-->
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric 应用程序的托管标识（预览版）
@@ -55,13 +55,15 @@ Service Fabric 的托管标识仅在 Azure 部署的 Service Fabric 群集中受
 
 预览版支持的方案列表如下：
 
-   - 部署包含一个或多个服务以及一个或多个已分配标识的新应用程序
+  - 部署包含一个或多个服务以及一个或多个已分配标识的新应用程序
 
-   - 将一个或多个托管标识分配到现有应用程序以访问 Azure 资源；应用程序本身必须部署为 Azure 资源
+  - 将一个或多个托管标识分配到现有应用程序以访问 Azure 资源；应用程序本身必须部署为 Azure 资源
 
 不支持，也不建议使用以下方案；请注意，这些操作不一定会遭到阻止，但可能会导致应用程序中断：
 
-   - 删除或更改分配给应用程序的标识；如果必须进行更改，请提交单独的部署，以先添加新的标识分配，然后删除以前分配的标识。 从现有应用程序中删除标识可能会产生不良影响，包括使应用程序处于一种不可升级的状态。 如果有必要删除标识，安全的做法是连同应用程序一起删除；请注意，这会删除与该应用程序关联的系统分配的标识（如果已定义），并会删除与分配给该应用程序的用户分配的标识之间的所有关联。
+  - 删除或更改分配给应用程序的标识；如果必须进行更改，请提交单独的部署，以先添加新的标识分配，然后删除以前分配的标识。 从现有应用程序中删除标识可能会产生不良影响，包括使应用程序处于一种不可升级的状态。 如果有必要删除标识，安全的做法是连同应用程序一起删除；请注意，这会删除与该应用程序关联的系统分配的标识（如果已定义），并会删除与分配给该应用程序的用户分配的标识之间的所有关联。
+
+  - SF 对托管标识的支持目前尚未集成到 [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md) 中；集成的实现需要等到托管标识功能的预览期结束。
 
 >
 > [!NOTE]
@@ -74,7 +76,7 @@ Service Fabric 的托管标识仅在 Azure 部署的 Service Fabric 群集中受
 * [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [从服务代码中利用 Service Fabric 应用程序的托管标识](./how-to-managed-identity-service-fabric-app-code.md)
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [向 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [声明应用程序机密并将其用作 KeyVaultReferences](./service-fabric-keyvault-references.md)
 
-<!--Update_Description: new articles on concepts managed identity -->
-<!--new.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

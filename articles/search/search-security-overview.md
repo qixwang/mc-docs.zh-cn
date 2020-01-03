@@ -1,31 +1,30 @@
 ---
-title: 安全性和数据隐私 - Azure 搜索
-description: Azure 搜索符合 SOC 2、HIPAA 和其他认证。 在 Azure 搜索筛选器中通过用户和组安全标识符进行连接和数据加密、身份验证和标识访问。
-author: HeidiSteen
+title: 安全性和数据隐私
+titleSuffix: Azure Cognitive Search
+description: Azure 认知搜索符合 SOC 2、HIPAA 和其他认证的要求。 在筛选器表达式中通过用户和组安全标识符进行连接和数据加密、身份验证和标识访问。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 034fae93130beb9ba289b2f64c56746126d6cd61
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 67fdf94e1c25e1c856e86de14198101e1e01a6b1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674397"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336487"
 ---
-# <a name="security-and-data-privacy-in-azure-search"></a>Azure 搜索中的安全性和数据隐私
+# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
-Azure 搜索中内置了全面的安全功能和访问控制，以确保私有内容保持原有状态。 本文列举了 Azure 搜索中内置的安全功能和标准符合性。
+Azure 认知搜索中内置了全面的安全功能和访问控制，以确保私有内容保持原有状态。 本文枚举了 Azure 认知搜索中内置的安全功能和标准符合性。
 
-Azure 搜索安全体系结构跨越物理安全性、加密传输、加密存储和全平台标准符合性。 在操作上，Azure 搜索仅接受经过身份验证的请求。 可以选择通过安全筛选器针对内容添加基于用户的访问控制。 本文会涉及每个层的安全性，但侧重于有关如何在 Azure 搜索中保护数据和操作。
+Azure 认知搜索安全体系结构涵盖物理安全性、加密传输、加密存储和平台范围标准符合性。 在操作上，Azure 认知搜索仅接受经过身份验证的请求。 可以选择通过安全筛选器针对内容添加基于用户的访问控制。 本文涉及每个层的安全性，但侧重于介绍如何在 Azure 认知搜索中保护数据和操作。
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>标准符合性：ISO 27001、SOC 2、HIPAA
 
-Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公告](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)所述。
+Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公告](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)所述：
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [SOC 2 类型 2 符合性](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) 有关完整报告，请转到 [Azure - Azure 政府版 SOC 2 类型 II 报告](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)。 
@@ -35,21 +34,21 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 + [PCI DSS 1 级](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [澳大利亚 IRAP 未分类 DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
-标准符合性应用于正式版功能。 预览版功能在转变为正式版时进行认证，不能用于具有严格标准要求的解决方案中。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.microsoft.com/en-us/trustcenter)中。 
+标准符合性应用于正式版功能。 预览版功能在转变为正式版时进行认证，不能用于具有严格标准要求的解决方案中。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.microsoft.com/trustcenter)中。 
 
 ## <a name="encrypted-transmission-and-storage"></a>加密的传输和存储
 
-加密扩展到整个索引管道：从连接通过传输向下到存储在 Azure 搜索中的索引数据。
+加密扩展到整个索引管道：从连接到传输到存储在 Azure 认知搜索中的索引数据，都进行了加密。
 
 | 安全层 | 说明 |
 |----------------|-------------|
-| 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
-| 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.azure.cn/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 搜索内部进行，证书和加密密钥由 Microsoft 内部管理，并广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括共享（免费）服务。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 使用客户管理的密钥进行加密是一项**预览版**功能，不适用于免费服务。 对于付费服务，该功能仅适用于在 2019 年 1 月或之后使用最新预览版 api-version (api-version=2019-05-06-Preview) 创建的搜索服务。<br><br>现在可以使用 Azure Key Vault 中客户管理的密钥来静态加密 Azure 搜索索引和同义词映射。 有关详细信息，请参阅[在 Azure 搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
+| 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 认知搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
+| 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.azure.cn/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 认知搜索内部进行，证书和加密密钥由 Microsoft 进行内部管理，并得到了广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括免费层。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
+| 静态加密 <br>客户管理的密钥 | 使用客户管理的密钥进行加密是一项**预览版**功能，不适用于免费服务。 对于付费服务，该功能仅适用于在 2019 年 1 月或之后使用最新预览版 api-version (api-version=2019-05-06-Preview) 创建的搜索服务。<br><br>现在可以使用 Azure Key Vault 中的客户密钥托管密钥来静态加密 Azure 认知搜索索引和同义词映射。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 
-整个 Azure 提供多种安全机制，因此，创建的 Azure 搜索资源也会自动获得这些安全机制。
+我们在 Azure 范围内提供多种安全机制，因此，你创建的 Azure 认知搜索资源会自动获得这些安全机制。
 
 + [订阅或资源级别的锁可防止删除](../azure-resource-manager/resource-group-lock-resources.md)
 + [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../role-based-access-control/overview.md)
@@ -60,7 +59,7 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 ## <a name="service-access-and-authentication"></a>服务访问和身份验证
 
-虽然 Azure 搜索继承了 Azure 平台的安全保护，但它还提供其自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
+虽然 Azure 认知搜索继承了 Azure 平台的安全保护措施，但它也提供其自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
 
 有两个搜索服务访问级别，可通过两种类型的密钥启用它们：
 
@@ -75,17 +74,17 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 ## <a name="index-access"></a>索引访问
 
-在 Azure 搜索中，单个索引不是安全对象。 对索引的访问权限是根据服务层（读取或写入访问）以及操作上下文确定的。
+在 Azure 认知搜索中，单个索引不是安全对象。 对索引的访问权限是根据服务层（读取或写入访问）以及操作上下文确定的。
 
 对于最终用户访问，可以使用查询密钥构建要连接的查询请求，这会将任何请求设置为只读，并包含应用使用的特定索引。 在查询请求中，没有联接索引或同时访问多个索引的概念，所有请求都会根据定义以单个索引为目标。 因此，查询请求本身的结构（密钥加上单个目标索引）定义了安全边界。
 
-管理员和开发人员对索引的访问权限没有区别：两者都需要写访问权限才能创建、删除和更新服务管理的对象。 拥有服务管理密钥的任何人都可以读取、修改或删除同一服务中的任何索引。 为了防止意外删除或恶意删除索引，代码资产的内部源代码管理作为一种补救机制，可以还原意外的索引删除或修改。 Azure 搜索在群集中提供故障转移功能来确保可用性，但它不会存储或执行用于创建或加载索引的专属代码。
+管理员和开发人员对索引的访问权限没有区别：两者都需要写访问权限才能创建、删除和更新服务管理的对象。 拥有服务管理密钥的任何人都可以读取、修改或删除同一服务中的任何索引。 为了防止意外删除或恶意删除索引，代码资产的内部源代码管理作为一种补救机制，可以还原意外的索引删除或修改。 Azure 认知搜索在群集中提供故障转移功能来确保可用性，但它不会存储或执行用于创建或加载索引的专属代码。
 
-需要索引级安全边界的多租户解决方案通常包含一个中间层，客户可以使用它来处理索引隔离。 有关多租户用例的详细信息，请参阅[多租户 SaaS 应用程序与 Azure 搜索的设计模式](search-modeling-multitenant-saas-applications.md)。
+需要索引级安全边界的多租户解决方案通常包含一个中间层，客户可以使用它来处理索引隔离。 有关多租户用例的详细信息，请参阅[多租户 SaaS 应用程序与 Azure 认知搜索的设计模式](search-modeling-multitenant-saas-applications.md)。
 
 ## <a name="admin-access"></a>管理访问权限
 
-[基于角色的访问 (RBAC)](https://docs.azure.cn/role-based-access-control/overview) 确定你是否对服务及其内容拥有控制访问权限。 Azure 搜索服务中的“所有者”或“参与者”可以使用门户或 PowerShell **Az.Search** 模块在服务中创建、更新或删除对象。 也可以使用 [Azure 搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+[基于角色的访问 (RBAC)](https://docs.azure.cn/role-based-access-control/overview) 确定你是否对服务及其内容拥有控制访问权限。 Azure 认知搜索服务中的“所有者”或“参与者”可以使用门户或 PowerShell **Az.Search** 模块在服务中创建、更新或删除对象。 也可以使用 [Azure 认知搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 ## <a name="user-access"></a>用户访问权限
 
@@ -96,11 +95,11 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 | 方法 | 说明 |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
-|[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 本文延续上一篇文章，提供有关从 Azure Active Directory (AAD) 检索标识的步骤。 |
+|[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://www.azure.cn/pricing/1rmb-trial/)）检索标识的步骤。 |
 
 ## <a name="table-permissioned-operations"></a>表：权限操作
 
-下表汇总了 Azure 搜索中允许的操作，以及哪个密钥可以解锁特定操作的访问。
+下表概述了 Azure 认知搜索中允许的操作，以及哪个密钥可以解锁特定操作的访问。
 
 | 操作 | 权限 |
 |-----------|-------------------------|
@@ -113,12 +112,14 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 | 管理管理密钥 | 管理密钥，资源中的 RBAC 所有者或参与者。 |
 | 管理查询密钥 |  管理密钥，资源中的 RBAC 所有者或参与者。  |
 
+## <a name="physical-security"></a>物理安全性
 
+Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标准和法规要求。
 
 ## <a name="see-also"></a>另请参阅
 
 + [.NET 入门（演示如何使用管理密钥创建索引）](search-create-index-dotnet.md)
 + [REST 入门（演示如何使用管理密钥创建索引）](search-create-index-rest-api.md)
-+ [使用 Azure 搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
-+ [使用 Azure 搜索筛选器进行 Active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure 搜索中的筛选器](search-filters.md)
++ [使用 Azure 认知搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
++ [使用 Azure 认知搜索筛选器进行基于 Active Directory 标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure 认知搜索中的筛选器](search-filters.md)

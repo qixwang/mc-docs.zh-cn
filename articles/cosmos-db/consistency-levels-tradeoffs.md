@@ -6,14 +6,14 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/23/2019
-ms.date: 10/28/2019
+ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5861b18cc9d7b2acadccef9165b9e7167f296a2f
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: acb97c972deea5aa6136da171f0eae25da0c27f1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336230"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
@@ -65,6 +65,10 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 
 *T* = 自上次更新以来的时间间隔“T”。 
 
+## <a name="strong-consistency-and-multi-master"></a>强一致性和多主数据库
+
+针对多主数据库配置的 Cosmos 帐户不能配置为实施强一致性，因为分布式系统不可能在提供为零的 RPO 的同时提供为零的 RTO。 另外，将强一致性与多主数据库配合使用时，没有写入延迟优势，因为对任何区域的任何写入必须在复制后提交到帐户中的所有已配置区域。 这导致写入延迟与单主数据库帐户相同。
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解多区域分布，以及分布式系统中的常规一致性利弊。 请参阅以下文章：
@@ -73,4 +77,4 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 - [高可用性](high-availability.md)
 - [Azure Cosmos DB SLA](https://www.azure.cn/support/sla/cosmos-db/)
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
+title: 托管实例 T-SQL 差异
 description: 本文介绍了 Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 services: sql-database
 ms.service: sql-database
@@ -8,16 +8,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: carlrab, bonova
-origin.date: 11/20/2019
-ms.date: 11/04/2019
+ms.reviewer: sstein, carlrab, bonova
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 70720a4d154b6af13ca0935f37b60b9e3d8bb1f0
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+ms.openlocfilehash: 6e46b68f256d48de70e70a6e018cfbd2aeb7b393
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74202770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336138"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -49,7 +49,7 @@ ms.locfileid: "74202770"
 - [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) 语句的 [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) 子句
 
-### <a name="backup"></a>备份
+### <a name="backup"></a>Backup
 
 托管实例包含自动备份，因此用户可以创建完整数据库 `COPY_ONLY` 备份。 不支持差异、日志和文件快照备份。
 
@@ -62,7 +62,7 @@ ms.locfileid: "74202770"
   - 不支持磁带选项 `REWIND`、`NOREWIND`、`UNLOAD` 和 `NOUNLOAD`。
   - 不支持日志特定的选项 `NORECOVERY`、`STANDBY` 和 `NO_TRUNCATE`。
 
-限制： 
+的限制： 
 
 - 使用托管实例可将数据库备份到最多包含 32 个条带的备份，如果使用备份压缩，则这种方法对于不超过 4 TB 的数据库而言已足够。
 - 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
@@ -79,7 +79,7 @@ ms.locfileid: "74202770"
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="auditing"></a>审核
 
@@ -135,7 +135,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="logins-and-users"></a>登录名和用户
 
 - 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)。
-- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）（公共预览版）。 这些登录名是在服务器级别创建的。
+- 支持使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）。 这些登录名是在服务器级别创建的。
 
     托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 此功能也称为 Azure AD 包含的数据库用户。
 
@@ -156,17 +156,13 @@ WITH PRIVATE KEY (<private_key_options>)
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
 
-- Azure AD 服务器主体（登录名）的公共预览版限制：
-
-  - 托管实例的 Active Directory 管理员限制：
-
-    - 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 角色的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-      - 目前，在 master 数据库中创建的第一个 Azure AD 登录名必须由充当 `sysadmin` 角色的标准 SQL Server 帐户（非 Azure AD）使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER 创建。 正式版推出后，将去除此限制。 然后，可以使用托管实例的 Active Directory 管理员身份创建初始的 Azure AD 登录名。
-    - 与 SQL Server Management Studio 或 SqlPackage 配合使用的 DacFx（导出/导入）不支持 Azure AD 登录名。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种限制。
-    - 将 Azure AD 服务器主体（登录名）与 SQL Server Management Studio 配合使用：
-
-      - 不支持为使用任何经过身份验证的登录名的 Azure AD 登录名编写脚本。
-      - IntelliSense 无法识别 CREATE LOGIN FROM EXTERNAL PROVIDER 语句，将显示红色下划线。
+- 托管实例中的 Azure AD 用户在使用 [SSMS V18.4 或更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage-download) 时，可以使用 bacpac 文件进行数据库导出/导入。
+  - 使用数据库 bacpac 文件时，可以使用以下配置： 
+    - 在同一 Azure AD 域的不同托管实例之间导出/导入数据库。
+    - 在同一 Azure AD 域中将数据库从托管实例导出以及将其导入 SQL 数据库。 
+    - 在同一 Azure AD 域中从 SQL 数据库导出数据库以及将其导入托管实例。
+    - 将数据库从托管实例导出以及将其导入 SQL Server（2012 或更高版本）。
+      - 在此配置中，所有 Azure AD 用户都创建为没有登录名的 SQL 数据库主体（用户）。 用户类型列为 SQL（在 sys.database_principals 中以 SQL_USER 的形式呈现）。 其权限和角色保留在 SQL Server 数据库元数据中，可以用于模拟。 但是，它们不能用来通过其凭据访问和登录 SQL Server。
 
 - 只有服务器级主体登录名（由托管实例预配进程创建）、服务器角色的成员（例如 `securityadmin` 或 `sysadmin`）或者在服务器级别拥有 ALTER ANY LOGIN 权限的其他登录名可以在托管实例的 master 数据库中创建 Azure AD 服务器主体（登录名）。
 - 如果登录名是 SQL 主体，则只有属于 `sysadmin` 角色的登录名才能使用 create 命令来为 Azure AD 帐户创建登录名。
@@ -475,7 +471,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 任何现有的内存优化文件组将重命名为 XTP。 
 - `SINGLE_USER` 和 `RESTRICTED_USER` 选项将转换为 `MULTI_USER`。
 
-限制： 
+的限制： 
 
 - 根据损坏类型，有时可以还原已损坏的数据库的备份，但在修复损坏之前，不会创建自动备份。 确保在源实例上运行 `DBCC CHECKDB`，并使用备份 `WITH CHECKSUM` 来避免此问题。
 - 无法在托管实例上还原包含本文档所述的任何限制的数据库的 `.BAK` 文件（例如 `FILESTREAM` 或 `FILETABLE` 对象）。
@@ -542,7 +538,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="error-logs"></a>错误日志
 
-托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或用于 Azure Data Studio 的[托管实例扩展（预览版）](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
+托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或用于 Azure Data Studio 的[托管实例扩展（预览版）](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
 
 ## <a name="Issues"></a> 已知问题
 
@@ -558,7 +554,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **日期：** 2019 年 10 月
 
-SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空数据文件，系统会立即返回 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` 错误。 托管实例会继续尝试删除该文件，操作会在 30 分钟后失败并显示`Internal server error`。
+SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空数据文件，系统会立即返回 `Msg 5042 - The file '<file_name>' cannot be removed because it is not empty` 错误。 托管实例会继续尝试删除该文件，操作会在 30 分钟后失败并显示`Internal server error`。
 
 **解决方法**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件的内容。 如果这是文件组中的唯一文件，则需从与此文件组关联的表或分区中删除数据，然后才能收缩文件并选择将该数据加载到另一表/分区中。
 
@@ -570,16 +566,6 @@ SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.mi
 
 **解决方法**：请等待还原过程完成，或者，如果创建或更新服务层级的操作的优先级更高，可取消还原过程。
 
-### <a name="missing-validations-in-restore-process"></a>还原过程中缺少验证
-
-**日期：** 2019 年 9 月
-
-`RESTORE` 语句和内置时间点还原不会对已还原的数据库执行某些必要的检查：
-- **DBCC CHECKDB** - `RESTORE` 语句不会对已还原的数据库执行 `DBCC CHECKDB`。 如果原始数据库已损坏，或者备份文件在复制到 Azure Blob 存储时已损坏，则不会执行自动备份，并且 Azure 支持人员将会联系客户。 
-- 内置的时间点还原过程不会检查“业务关键”实例中的自动备份是否包含[内存中 OLTP 对象](sql-database-in-memory.md#in-memory-oltp)。 
-
-**解决方法**：确保在创建备份之前对源数据库执行 `DBCC CHECKDB`，并在备份中使用 `WITH CHECKSUM` 选项来避免可能会在托管实例上还原的潜在损坏。 如果要在“常规用途”层上还原源数据库，请确保源数据库不包含[内存中 OLTP 对象](sql-database-in-memory.md#in-memory-oltp)。
-
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>故障转移后，可能需要重新配置“业务关键”服务层级上的 Resource Governor
 
 **日期：** 2019 年 9 月
@@ -587,14 +573,6 @@ SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.mi
 [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) 功能可让你限制分配给用户工作负荷的资源。在故障转移或者完成用户发起的服务层级更改（例如，更改最大 vCore 数或最大实例存储大小）后，Resource Governor 可能会错误地分类某些用户工作负荷。
 
 **解决方法**：如果使用 [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)，请定期运行 `ALTER RESOURCE GOVERNOR RECONFIGURE`，或者在完成 SQL 代理作业（该作业在实例启动时执行 SQL 任务）的过程中运行此命令。
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>无法使用安全连接 (SSL) 对外部邮件服务器进行身份验证
-
-**日期：** 2019 年 8 月
-
-[使用安全连接 (SSL) 配置](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail)的数据库邮件无法对 Azure 外部的某些电子邮件服务器进行身份验证。 此安全配置问题即将得到解决。
-
-**解决方法：** 在该问题得到解决之前，请暂时从数据库邮件配置中删除安全连接 (SSL)。 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>升级服务层级后必须重新初始化跨数据库 Service Broker 对话
 
@@ -604,7 +582,7 @@ SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.mi
 
 **解决方法：** 先停止使用跨数据库 Service Broker 对话的任何活动，再更新服务层级，然后重新初始化这些活动。 如果在更改服务层级后存在任何未传递的剩余消息，请从源队列中读取消息，然后将其重新发送到目标队列。
 
-### <a name="impersonification-of-aad-login-types-is-not-supported"></a>不支持模拟 AAD 登录类型
+### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>不支持模拟 Azure AD 登录类型
 
 **日期：** 2019 年 7 月
 
@@ -624,13 +602,11 @@ SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.mi
 
 如果对自动故障转移组中的数据库启用了事务复制，则托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移到另一个区域后，在新的主节点上重新配置这些发布内容。 有关更多详细信息，请参阅[复制](#replication)。
 
-### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Tools 中不支持 AAD 登录名和用户
+### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>SSDT 不支持 AAD 登录名和用户
 
-**日期：** 2019 年 1 月
+**日期：** 2019 年 11 月
 
-SQL Server Management Studio 与 SQL Server Data Tools 不完全支持 Azure Active Directory 登录名和用户。
-- 目前不支持将 Azure AD 服务器主体（登录名）和用户（公共预览版）与 SQL Server Data Tools 配合使用。
-- Azure AD 服务器主体（登录名）和用户（公共预览版）的脚本在 SQL Server Management Studio 中不受支持。
+SQL Server Data Tools 不完全支持 Azure Active Directory 登录名和用户。
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>在还原操作过程中使用临时数据库
 

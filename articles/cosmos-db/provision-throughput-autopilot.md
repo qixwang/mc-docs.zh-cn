@@ -1,31 +1,35 @@
 ---
-title: 在 autopilot 模式下创建具有吞吐量的 Azure Cosmos 容器和数据库。
+title: 在 autopilot 模式下创建 Azure Cosmos 容器和数据库。
 description: 了解在 autopilot 模式下预配 Azure Cosmos 数据库和容器的优势、用例和方法。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 9185b20306f48fed520a1b284f56c6affcce8326
-ms.sourcegitcommit: 46caadc68fbb847e0db0c8e79615ba527f5c6108
+ms.date: 12/16/2019
+ms.openlocfilehash: 493421c1a02232f0f60c9c27c442232e816f0926
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335845"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-with-provisioned-throughput-in-autopilot-mode-preview"></a>在 autopilot 模式下创建具有预配吞吐量的 Azure Cosmos 容器和数据库（预览）
+<!--Not Available on AZURE CHINA CLOUD currently-->
+<!--CONFIRM BEFORE RELEASEMENT-->
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>在 autopilot 模式下创建 Azure Cosmos 容器和数据库（预览版）
 
 Azure Cosmos DB 允许在手动或 autopilot 模式下对容器预配吞吐量。 本文介绍 autopilot 模式的优势和用例。
 
 > [!NOTE]
-> Autopilot 模式目前以公共预览版提供。
+> Autopilot 模式目前以公共预览版提供。 若要为 Azure Cosmos 帐户启用 autopilot 功能，请参阅本文的[启用 autopilot](#enable-autopilot) 部分。 只能为新数据库和容器启用 autopilot，此功能不适用于现有的容器和数据库。
 
 除了手动预配吞吐量以外，现在还可以在 autopilot 模式下配置 Azure Cosmos 容器。 在 autopilot 模式下配置的 Azure Cosmos 容器和数据库将会**根据应用程序的需求自动即时缩放预配的吞吐量，且不影响 SLA**。
 
-不再需要手动管理预配的吞吐量或处理速率限制问题。 在 autopilot 模式下配置的 Azure Cosmos 容器可以即时缩放以响应工作负荷，而不会全局性地影响工作负荷的可用性、延迟、吞吐量或性能。 在利用率较高的情况下，在 autopilot 模式下配置的 Azure Cosmos 容器可以纵向扩展或缩减，且不影响正在进行的操作。
+不再需要手动管理预配的吞吐量或处理速率限制问题。 在 autopilot 模式下配置的 Azure Cosmos 容器可以即时缩放以响应工作负荷，而不会在多个区域影响工作负荷的可用性、延迟、吞吐量或性能。 在利用率较高的情况下，在 autopilot 模式下配置的 Azure Cosmos 容器可以纵向扩展或缩减，且不影响正在进行的操作。
 
-在 autopilot 模式下配置容器和数据库时，需要指定不可超过的最大吞吐量 `Tmax`。 然后，容器可在 `0.1*Tmax < T < Tmax` 范围内根据工作负荷需求即时缩放。 换而言之，容器和数据库可根据工作负荷的需求，在从配置的吞吐量值的 10% 到指定的最大配置值的范围内即时缩放。 随时可以更改 autopilot 数据库或容器上的最大吞吐量 (Tmax) 设置。
+在 autopilot 模式下配置容器和数据库时，需要指定不可超过的最大吞吐量 `Tmax`。 然后，容器可在 `0.1*Tmax < T < Tmax` 范围内根据工作负荷需求即时缩放。 换而言之，容器和数据库可根据工作负荷的需求，在从配置的最大吞吐量值的 10% 到配置的最大吞吐量值范围内即时缩放。 随时可以更改 autopilot 数据库或容器上的最大吞吐量 (Tmax) 设置。 使用 autopilot 选项时，每个容器或数据库 400 RU/秒最小吞吐量的限制将不再适用。
+
+在 autopilot 预览版中，在容器或数据库的指定最大吞吐量方面，系统允许在计算的存储限制范围内操作。 如果超过存储限制，则最大吞吐量会自动调整为更大的值。 在 autopilot 模式下使用数据库级吞吐量时，数据库中允许的容器数的计算方式如下：(0.001 * 最大吞吐量)。 例如，如果预配 20,000 autopilot RU/秒，则数据库可以包含 20 个容器。
 
 ## <a name="benefits-of-autopilot-mode"></a>Autopilot 模式的优势
 
@@ -57,15 +61,26 @@ Azure Cosmos DB 允许在手动或 autopilot 模式下对容器预配吞吐量�
 
 以往在解决问题时不仅需要投入大量的时间来进行实施，而且还会在配置或代码方面带来复杂性，此外往往需要人工干预才能解决问题。 Autopilot 模式现成地启用上述方案，使你不再需要担心这些问题。
 
-## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>比较 - 在手动模式与 autopilot 模式下配置的容器
+## <a name="comparison---containers-configured-in-manual-mode-vs-autopilot-mode"></a>比较 - 在手动模式与 autopilot 模式下配置的容器
 
 |  | 在手动模式下配置的容器  | 在 autopilot 模式下配置的容器 |
 |---------|---------|---------|
-| **预配的吞吐量** | 手动预配 | 根据工作负荷使用模式主动和被动缩放。 |
-| **请求/操作的速率限制 (429)**  | 如果消耗量超过预配的容量，则可能会发生。 | 不会发生。  |
+| **预配的吞吐量** | 手动预配 | 根据工作负荷使用模式自动即时缩放。 |
+| **请求/操作的速率限制 (429)** | 如果消耗量超过预配的容量，则可能会发生。 | 如果消耗的吞吐量处于在 autopilot 模式下选择的最大吞吐量范围内，则不会发生这种情况。   |
 | **容量规划** |  必须对所需的吞吐量进行初始容量规划和预配。 |    无需考虑容量规划。 系统会自动处理容量规划和容量管理。 |
 | **价格** | 根据手动预配的 RU/秒吞吐量按小时计费。 | 对于单写入区域帐户，需按小时费率为每小时使用的 autopilot RU/秒吞吐量付费。 <br/><br/>对于包含多个写入区域的帐户，autopilot 不收取额外的费用。 需按小时费率为每小时使用的相同多主机 RU/秒吞吐量付费。 |
 | **最适合工作负荷类型** |  可预测的稳定工作负荷|   不可预测的可变工作负荷  |
+
+<a name="enable-autopilot"></a>
+## <a name="enable-autopilot-from-azure-portal"></a>从 Azure 门户启用 autopilot
+
+从 Azure 门户中启用 Autopilot 后，即可在 Azure Cosmos 帐户中试用此模型。 使用以下步骤启用 autopilot 选项：
+
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+
+2. 导航到你的 Azure Cosmos 帐户，并打开“新功能”选项卡。  选择“Auto Pilot”和“注册”，如以下屏幕截图所示：  
+
+    ![在 autopilot 模式下创建容器](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>使用 autopilot 模式创建数据库或容器
 
@@ -77,13 +92,25 @@ Azure Cosmos DB 允许在手动或 autopilot 模式下对容器预配吞吐量�
 
 1. 导航到你的 Azure Cosmos 帐户，打开“数据资源管理器”选项卡。 
 
-1. 选择“新建数据库”并输入数据库的名称。  对于“Autopilot”选项，请选择“已启用”，并指定使用 autopilot 选项时数据库不能超过的最大吞吐量。  
+1. 选择“新建容器”，输入容器名称和分区键。  选择“Autopilot”选项，然后选择在使用 autopilot 选项时容器不能超过的最大吞吐量。 
 
-    ![在 autopilot 模式下创建数据库](./media/provision-throughput-autopilot/create-database-autopilot-mode.png)
+   ![在 autopilot 模式下创建容器](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. 选择“确定” 
 
-使用类似的步骤，还可以在 autopilot 模式下创建具有预配吞吐量的容器。
+使用类似的步骤，还可以在 autopilot 模式下创建具有预配吞吐量的数据库。
+
+<a name="autopilot-limits"></a>
+## <a name="throughput-and-storage-limits-for-autopilot"></a>autopilot 的吞吐量和存储限制
+
+下表显示了 autopilot 模式下不同选项的最大吞吐量和存储限制：
+
+|最大吞吐量限制  |最大存储限制  |
+|---------|---------|
+|4000 RU/秒  |   50 GB    |
+|20,000 RU/秒  |  200 GB  |
+|100,000 RU/秒    |  1 TB   |
+|500,000 RU/秒    |  5 TB  |
 
 ## <a name="next-steps"></a>后续步骤
 

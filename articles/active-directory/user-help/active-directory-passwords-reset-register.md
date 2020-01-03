@@ -1,6 +1,6 @@
 ---
-title: 注册以重置自己的密码 - Azure AD
-description: 注册 Azure AD 自助式密码重置的身份验证数据，以便在没有管理员帮助的情况下重置自己的密码。
+title: 注册身份验证信息以重置自己的密码 - Azure AD
+description: 注册 Azure AD 自助式密码重置的验证方法信息，以便在没有管理员帮助的情况下重置自己的密码。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -10,40 +10,39 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 01/11/2018
-ms.date: 11/26/2019
+ms.date: 12/11/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15435ce055ad8b2fb764a354a3ac1dd3be0a56f
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 6c773fc95689f7cacc27d9a837bac5ed3305f7ed
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334545"
 ---
-# <a name="register-to-reset-your-own-password"></a>注册以重置自己的密码
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>注册验证方法信息以重置自己的密码
 
 > [!IMPORTANT]
 > 你是因为无法登录而来到这里吗？ 如果是，请参阅[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)。
 
-最终用户可以使用 Azure Active Directory (Azure AD) 自助密码重置 (SSPR) 自行重置密码或解锁帐户。 在使用此功能之前，必须注册身份验证方法或确认管理员填充的预定义身份验证方法。
+最终用户可以使用 Azure Active Directory (Azure AD) 自助密码重置 (SSPR) 自行重置密码或解锁帐户。 在使用此功能之前，必须注册验证方法或确认管理员填充的预定义验证方法。
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>通过 SSPR 注册或确认身份验证数据
 
 1. 在设备上打开 Web 浏览器，并转到[密码重置注册页](https://account.activedirectory.windowsazure.cn/PasswordReset/Register.aspx?regref=ssprsetup)。
 2. 输入管理员提供的用户名和密码。
 3. 可以使用以下一个或多个选项进行配置和验证，具体取决于 IT 人员的配置。 如果管理员有权使用你的信息，则可以为你填充其中的某些信息。
-    - **身份验证电话**：将此选项设置为你可以访问的其他电话号码。 例如，可以接收短信或呼叫的手机号码。
-    - **身份验证电子邮件**：将此选项设置为在不使用所要重置的密码的情况下可以访问的备用电子邮件地址。
+    * **身份验证电话**：将此选项设置为你可以访问的其他电话号码。 例如，可以接收短信或呼叫的手机号码。
+    * **身份验证电子邮件**：将此选项设置为在不使用所要重置的密码的情况下可以访问的备用电子邮件地址。
 4. 提供并验证管理员所需的信息。 如果有多个选项可用，我们建议注册多个方法。 这样，在某个方法不可用时，可以灵活使用其他方法。 例如，在旅行时无法使用办公电话的情况下。
 
-    ![注册身份验证方法并选择“完成”][Register]
+    ![注册验证方法并选择“完成”][Register]
 
 5. 选择“完成”。  将来可根据需要使用 SSPR。
 
-输入“身份验证电话”或“身份验证电子邮件”的数据时，这些数据在全局目录中不可见。   只有你和管理员能够看到该数据。 
+输入“身份验证电话”或“身份验证电子邮件”的数据时，这些数据在全局目录中不可见。   只有你和管理员能够看到该数据。 只有你能够查看安全性问题的答案。
 
-管理员可能会要求在一段时间过后确认身份验证方法，确保注册的方法仍然适用。
+管理员可能会要求在一段时间过后确认验证方法，确保注册的方法仍然适用。
 
 ## <a name="common-problems-and-their-solutions"></a>常见问题及其解决方法
 

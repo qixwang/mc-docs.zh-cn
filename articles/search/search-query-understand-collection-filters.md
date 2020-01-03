@@ -1,14 +1,14 @@
 ---
-title: 了解 OData 集合筛选器 - Azure 搜索
-description: 了解 Azure 搜索查询中的 OData 集合筛选器的工作原理。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: 了解 OData 集合筛选器
+titleSuffix: Azure Cognitive Search
+description: 了解 Azure 认知搜索查询中的 OData 集合筛选器的工作机制，包括集合特有的限制和行为。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,30 +20,30 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 6faec769882cd6338bed4f76908642c3ef42c1ed
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: ee67d1865f7306616b763fdb98ea627d14271851
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336490"
 ---
-# <a name="understanding-odata-collection-filters-in-azure-search"></a>了解 Azure 搜索中的 OData 集合筛选器
+# <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>了解 Azure 认知搜索中的 OData 集合筛选器
 
-若要根据 Azure 搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 **Lambda 表达式**使用 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)。 Lambda 表达式是引用**范围变量**的布尔表达式。 `any` 和 `all` 运算符类似于大多数编程语言中的 `for` 循环，范围变量充当循环变量的角色，而 Lambda 表达式充当循环的主体。 范围变量在循环迭代期间采用集合的“当前”值。
+若要根据 Azure 认知搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 **Lambda 表达式**使用 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)。 Lambda 表达式是引用**范围变量**的布尔表达式。 `any` 和 `all` 运算符类似于大多数编程语言中的 `for` 循环，范围变量充当循环变量的角色，而 Lambda 表达式充当循环的主体。 范围变量在循环迭代期间采用集合的“当前”值。
 
-最起码，这在概念上解释了此类筛选器的工作原理。 在事实上，Azure 搜索实现筛选器的方式与 `for` 循环的工作原理有很大的不同。 理想情况下，你察觉不到这种差异，但在某些情况下你会感受到这种差异。 最终结果是，在编写 Lambda 表达式时必须遵循某些规则。
+最起码，这在概念上解释了此类筛选器的工作原理。 在事实上，Azure 认知搜索实现筛选器的方式与 `for` 循环的工作原理有很大的不同。 理想情况下，你察觉不到这种差异，但在某些情况下你会感受到这种差异。 最终结果是，在编写 Lambda 表达式时必须遵循某些规则。
 
-本文将会探讨 Azure 搜索如何执行这些筛选器，并以此解释为何需要为集合筛选器创建规则。 如果你正在使用复杂的 Lambda 表达式编写高级筛选器，本文可以帮助你了解筛选器中支持哪些元素，以及使用这些元素的原因。
+本文将会探讨 Azure 认知搜索如何执行这些筛选器，并以此解释为何需要为集合筛选器创建规则。 如果你正在使用复杂的 Lambda 表达式编写高级筛选器，本文可以帮助你了解筛选器中支持哪些元素，以及使用这些元素的原因。
 
-有关集合筛选器有哪些可用的规则（包括示例）的信息，请参阅[排查 Azure 搜索中的 OData 集合筛选器问题](search-query-troubleshoot-collection-filters.md)。
+有关集合筛选器有哪些可用的规则（包括示例）的信息，请参阅[排查 Azure 认知搜索中的 OData 集合筛选器问题](search-query-troubleshoot-collection-filters.md)。
 
 ## <a name="why-collection-filters-are-limited"></a>集合筛选器为何受到限制
 
 出于以下三个根本原因，并非所有筛选器功能都受所有集合类型的支持：
 
 1. 特定的数据类型仅支持特定的运算符。 例如，使用 `lt`、`gt` 等运算符比较布尔值 `true` 和 `false` 是没有意义的。
-1. Azure 搜索不支持对 `Collection(Edm.ComplexType)` 类型的字段进行**关联搜索**。
-1. Azure 搜索使用倒排索引对所有类型的数据（包括集合）执行筛选器。
+1. Azure 认知搜索不支持对 `Collection(Edm.ComplexType)` 类型的字段进行**关联搜索**。
+1. Azure 认知搜索使用倒排索引对所有类型的数据（包括集合）执行筛选器。
 
 第一个原因只是 OData 语言和 EDM 类型系统的定义方式造成的。 本文的余下部分将更详细地解释后两个原因。
 
@@ -106,9 +106,12 @@ ms.locfileid: "71674506"
 
 简单而言，上述筛选器指出“匹配其中某间客房的 `Type` 等于‘豪华客房’，且**同一间客房** 的 `BaseRate` 小于 100 的文档”，而该搜索查询则与此不同，它指出“匹配其中的 `Rooms/Type` 包含字词‘豪华’且 `Rooms/Description` 包含短语‘市景’的文档”。 对于后面的查询，可关联哪些客房的字段没有概念。
 
+<!-- > [!NOTE] -->
+<!-- > If you would like to see support for correlated search added to Azure Cognitive Search, please vote for [this User Voice item](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections). -->
+
 ## <a name="inverted-indexes-and-collections"></a>倒排索引和集合
 
-你可能已注意到，基于复杂集合的 Lambda 表达式的限制，要比基于简单集合（例如 `Collection(Edm.Int32)`、`Collection(Edm.GeographyPoint)` 等）的表达式的限制要少得多。 这是因为，Azure 搜索会将复杂集合存储为子文档的实际集合，而简单集合根本不会存储为集合。
+你可能已注意到，基于复杂集合的 Lambda 表达式的限制，要比基于简单集合（例如 `Collection(Edm.Int32)`、`Collection(Edm.GeographyPoint)` 等）的表达式的限制要少得多。 这是因为，Azure 认知搜索会将复杂集合存储为子文档的实际集合，而简单集合根本不会存储为集合。
 
 例如，假设某个在线零售商的索引中包含类似于 `seasons` 的可筛选字符串集合字段。 上传到此索引的某些文档可能如下所示：
 
@@ -143,7 +146,7 @@ ms.locfileid: "71674506"
 | 秋 | 1, 2 |
 | 冬 | 2, 3 |
 
-此数据结构旨在快速解答一个问题：给定的字词出现在哪些文档中？ 解答此问题的过程更像是一个普通的相等性检查，而不是基于集合的循环。 事实上，正因如此，对于字符串集合，Azure 搜索仅允许使用 `eq` 作为 `any` 的 Lambda 表达式中的比较运算符。
+此数据结构旨在快速解答一个问题：给定的字词出现在哪些文档中？ 解答此问题的过程更像是一个普通的相等性检查，而不是基于集合的循环。 事实上，正因如此，对于字符串集合，Azure 认知搜索仅允许使用 `eq` 作为 `any` 的 Lambda 表达式中的比较运算符。
 
 基于相等性，接下来我们将探讨如何使用 `or` 来合并多个针对同一范围变量执行的相等性检查。 此方法得益于代数原理以及[限定符的分布属性](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此表达式：
 
@@ -172,7 +175,7 @@ ms.locfileid: "71674506"
 >
 > 相反的规则适用于 `all`。
 
-在对支持 `lt`、`gt`、`le` 和 `ge` 运算符的数据类型集合进行筛选时，可以使用更多种表达式，例如 `Collection(Edm.Int32)`。 具体而言，可以在 `any` 中使用 `and` 以及 `or`，前提是使用 `and` 将基础比较表达式合并到**范围比较**，然后使用 `or` 进一步合并。 这种布尔表达式结构称为[析取范式 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也称为“AND 的 OR”。 相反，这些数据类型的 `all` Lambda 表达式必须采用[合取范式 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，也称为“OR 的 AND”。 Azure 搜索之所以允许此类范围比较，是因为它可以有效地使用倒排索引执行这些比较，就像它可以针对字符串执行快速字词查找一样。
+在对支持 `lt`、`gt`、`le` 和 `ge` 运算符的数据类型集合进行筛选时，可以使用更多种表达式，例如 `Collection(Edm.Int32)`。 具体而言，可以在 `any` 中使用 `and` 以及 `or`，前提是使用 `and` 将基础比较表达式合并到**范围比较**，然后使用 `or` 进一步合并。 这种布尔表达式结构称为[析取范式 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也称为“AND 的 OR”。 相反，这些数据类型的 `all` Lambda 表达式必须采用[合取范式 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，也称为“OR 的 AND”。 Azure 认知搜索之所以允许此类范围比较，是因为它可以有效地使用倒排索引执行这些比较，就像它可以针对字符串执行快速字词查找一样。
 
 下面汇总了有关 Lambda 表达式中允许的元素的经验法则：
 
@@ -186,8 +189,8 @@ ms.locfileid: "71674506"
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [排查 Azure 搜索中的 OData 集合筛选器问题](search-query-troubleshoot-collection-filters.md)
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [排查 Azure 认知搜索中的 OData 集合筛选器问题](search-query-troubleshoot-collection-filters.md)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

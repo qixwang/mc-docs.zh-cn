@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/11/2019
-ms.date: 09/30/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 195073f39b0de028ce79751591623384f17dd9c4
-ms.sourcegitcommit: 9324f87df6b9b7ea31596b423d33b6cb5fd41aad
+ms.openlocfilehash: f05f5088012c72cdc7e8cac4ee2f0b4d3511926c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72749597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334775"
 ---
 <!--Verify successfully-->
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>为基于证书的身份验证配置 Azure AD 标识以从 Azure Cosmos DB 帐户访问密钥
@@ -32,7 +32,7 @@ ms.locfileid: "72749597"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后选择“新建注册”。   
+1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后选择“新建注册”。    
 
     ![在 Active Directory 中新建应用程序注册](./media/certificate-based-authentication/new-app-registration.png)
 
@@ -77,6 +77,8 @@ ms.locfileid: "72749597"
 
 登录到注册了该应用程序的 Azure AD。 使用 Connect-AzureAD 登录到你的帐户，在弹出窗口中输入你的 Azure 帐户凭据。 
 
+<!--MOONCAKE: CORRECT ON ADD -AzureEnvironmentName AzureChinaCloud-->
+
 ```powershell
 Connect-AzureAD -AzureEnvironmentName AzureChinaCloud
 ```
@@ -118,6 +120,20 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 1. 填写表单后，选择“保存” 
 
+## <a name="register-your-certificate-with-azure-ad"></a>向 Azure AD 注册证书
+
+可以通过 Azure 门户将基于证书的凭据与 Azure AD 中的客户端应用程序相关联。 若要关联该凭据，必须通过以下步骤上传证书文件：
+
+在客户端应用程序的 Azure 应用注册中：
+
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+
+1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后打开在上一步创建的示例应用。   
+
+1. 选择“证书和机密”，然后选择“上传证书”。   浏览在上一步创建的需上传的证书文件。
+
+1. 选择“添加”   。 上传证书后，将显示指纹、开始日期和到期日期值。
+
 ## <a name="access-the-keys-from-powershell"></a>从 PowerShell 访问密钥
 
 在此步骤中，你将使用上述应用程序以及创建的证书登录到 Azure，然后访问 Azure Cosmos 帐户的密钥。 
@@ -131,7 +147,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 1. 接下来，验证是否可以使用应用程序的凭据登录到 Azure 门户并访问 Azure Cosmos DB 密钥：
 
     ```powershell
-    Login-AzAccount -Environment AzureChinaCloud -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
+    Connect-AzAccount -Environment AzureChinaCloud -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
 
     Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
     ```
@@ -241,4 +257,4 @@ namespace TodoListDaemonWithCert
 
 * [Azure Cosmos DB 的安全控制](cosmos-db-security-controls.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,14 +1,14 @@
 ---
-title: 添加自定义分析器 - Azure 搜索
-description: 修改 Azure 搜索全文搜索查询中所用的文本 tokenizer 和字符筛选器。
-origin.date: 08/08/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: 向字符串字段添加自定义分析器
+titleSuffix: Azure Cognitive Search
+description: 配置 Azure 认知搜索全文搜索查询中所用的文本 tokenizer 和字符筛选器。
+manager: nitinme
 author: Yahnoosh
 ms.author: v-tawe
-ms.manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,14 +20,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b0f350be1006263e854449986396a4c856f9235d
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 089b48d568a5704bf3d57832ccbf0c1855c17e55
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336153"
 ---
-# <a name="add-custom-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加自定义分析器
+# <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加自定义分析器
 
 自定义分析器是[文本分析器](search-analyzers.md)的一种特定类型，包含现有 tokenizer 和可选筛选器的用户定义组合  。 通过以新方式组合 tokenizer 和筛选器，可以在搜索引擎中自定义文本处理以得到特定结果。 例如，可以使用*字符筛选器*创建自定义分析器，以在标记文本输入之前删除 HTML 标记。
 
@@ -37,7 +37,7 @@ ms.locfileid: "71674371"
 
  简单来说，[全文搜索引擎](search-lucene-query-architecture.md)的作用是以能够进行有效查询和检索的方式处理和存储文档。 从较高层面来说，就是从文档中提取重要字词，将它们放入索引，然后使用索引查找与给定查询的字词匹配的文档。 从文档和搜索查询中提取字词的过程称为“词法分析”  。 执行词法分析的组件称为“分析器”  。
 
- 在 Azure 搜索中，可以从[分析器](#AnalyzerTable)表中的一组预定义语言不可知分析器或[语言分析器（Azure 搜索服务 REST API）](index-add-language-analyzers.md)中列出的语言特定分析器中进行选择。 也可以选择定义自己的自定义分析器。  
+ 在 Azure 认知搜索中，可以从[分析器](#AnalyzerTable)表中的一组预定义语言不可知分析器或[语言分析器（Azure 认知搜索服务 REST API）](index-add-language-analyzers.md)中列出的语言特定分析器中进行选择。 也可以选择定义自己的自定义分析器。  
 
  自定义分析器允许控制将文本转换为可索引且可搜索标记的过程。 它是一种用户定义的配置，由一个预定义的 tokenizer、一个或多个标记筛选器以及一个或多个字符筛选器组成。 Tokenizer 负责将文本分解成多个标记，标记筛选器负责修改 tokenizer 发出的标记。 在由 tokenizer 处理输入文本之前，可应用字符筛选器来准备输入文本。 例如，字符筛选器可以替换某些字符或符号。
 
@@ -53,13 +53,13 @@ ms.locfileid: "71674371"
 
 - ASCII 折叠。 添加标准 ASCII 折叠筛选器以规范化搜索词中的音调符号，如 ö 或 ê。  
 
-  本页面提供了受支持的分析器、tokenizer、标记筛选器和字符筛选器的列表。 你还可以找到索引定义更改的说明以及用法示例。 有关 Azure 搜索实现中使用的基础技术的更多背景信息，请参阅[分析包摘要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html)。 有关分析器配置的示例，请参阅[在 Azure 搜索中添加分析器](search-analyzers.md#examples)。
+  本页面提供了受支持的分析器、tokenizer、标记筛选器和字符筛选器的列表。 你还可以找到索引定义更改的说明以及用法示例。 有关 Azure 认知搜索实现中使用的基础技术的更多背景信息，请参阅[分析包摘要 (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html)。 有关分析器配置的示例，请参阅[在 Azure 认知搜索中添加分析器](search-analyzers.md#examples)。
 
 ## <a name="validation-rules"></a>验证规则  
  分析器、tokenizer、标记筛选器和字符筛选器的名称必须是唯一的，不能与任何预定义的分析器、tokenizer、标记筛选器或字符筛选器相​​同。 有关已使用的名称，请参阅[属性参考](#PropertyReference)。
 
 ## <a name="create-custom-analyzers"></a>创建自定义分析器
- 可以在创建索引时定义自定义分析器。 本部分介绍用于指定自定义分析器的语法。 也可以通过查看[在 Azure 搜索中添加分析器](search-analyzers.md#examples)中的示例定义来熟悉该语法。  
+ 可以在创建索引时定义自定义分析器。 本部分介绍用于指定自定义分析器的语法。 也可以通过查看[在 Azure 认知搜索中添加分析器](search-analyzers.md#examples)中的示例定义来熟悉该语法。  
 
  分析器定义包括名称、类型、一个或多个字符筛选器、最多一个 tokenizer，以及一个或多个用于后期词汇切分处理的标记筛选器。 字符筛选器在词汇切分前应用。 标记筛选器和字符筛选器按从左到右的顺序应用。
 
@@ -214,7 +214,7 @@ PUT https://[search service name].search.chinacloudapi.cn/indexes/[index name]?a
 
 |||  
 |-|-|  
-|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|分析器类型来自受支持分析器列表。 请参阅下面[分析器](#AnalyzerTable)表中的 **analyzer_type** 列。|  
 |选项|必须是下面[分析器](#AnalyzerTable)表中列出的预定义分析器的有效选项。|  
 
@@ -222,7 +222,7 @@ PUT https://[search service name].search.chinacloudapi.cn/indexes/[index name]?a
 
 |||  
 |-|-|  
-|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|必须是“#Microsoft.Azure.Search.CustomAnalyzer”。|  
 |CharFilters|设置为[字符筛选器](#char-filters-reference)表中列出的预定义字符筛选器之一或索引定义中指定的自定义字符筛选器。|  
 |分词器|必需。 设置为下面 [Tokenizer](#Tokenizers) 表中列出的预定义 tokenizer 之一或索引定义中指定的自定义 tokenizer。|  
@@ -239,7 +239,7 @@ PUT https://[search service name].search.chinacloudapi.cn/indexes/[index name]?a
 
 |||  
 |-|-|  
-|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|字符筛选器类型来自受支持字符筛选器列表。 请参阅下面[字符筛选器](#char-filters-reference)表中的 **char_filter_type** 列。|  
 |选项|必须是给定[字符筛选器](#char-filters-reference)类型的有效选项。|  
 
@@ -252,7 +252,7 @@ PUT https://[search service name].search.chinacloudapi.cn/indexes/[index name]?a
 
 |||  
 |-|-|  
-|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|Tokenizer 名称来自受支持 tokenizer 列表。 请参阅下面 [Tokenizer](#Tokenizers) 表中的 **tokenizer_type** 列。|  
 |选项|必须是下面 [Tokenizer](#Tokenizers) 表中列出的给定 tokenizer 类型的有效选项。|  
 
@@ -263,7 +263,7 @@ PUT https://[search service name].search.chinacloudapi.cn/indexes/[index name]?a
 
 |||  
 |-|-|  
-|Name|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
+|名称|它必须仅包含字母、数字、空格、短划线或下划线，只能以字母数字字符开头和结尾，且最多包含 128 个字符。|  
 |类型|标记筛选器名称来自受支持标记筛选器列表。 请参阅下面[标记筛选器](#TokenFilters)表中的 **token_filter_type** 列。|  
 |选项|必须是给定标记筛选器类型的[标记筛选器](#TokenFilters)。|  
 
@@ -384,6 +384,6 @@ analyzer_type 仅适用于可自定义的分析器。 如果没有选项（比�
 
 
 ## <a name="see-also"></a>另请参阅  
- [Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure 搜索中的分析器 > 示例](search-analyzers.md#examples)    
- [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure 认知搜索中的分析器 > 示例](search-analyzers.md#examples)    
+ [创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  

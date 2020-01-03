@@ -3,17 +3,17 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 author: DCtheGeek
 ms.author: v-tawe
-origin.date: 11/04/2019
-ms.date: 12/02/2019
+origin.date: 11/26/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 965fa8e3df9cb7f38ce0f55227ebe1db1d8bda77
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 09fa04382c00c3ccc02dffedaea41990c2eb2a3d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335814"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -119,7 +119,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "chinaeast2",
+        "defaultValue": [ "chinaeast2" ],
         "allowedValues": [
             "chinanorth2",
             "chinaeast",
@@ -389,6 +389,146 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 `if()` 使用修改后的策略规则检查 **name** 的长度，然后尝试在短于三个字符的值中获取 `substring()`。 如果 **name** 过短，则会返回“not starting with abc”，而不是与 **abc** 进行比较。 短名称不是以 **abc** 开头的资源仍不符合策略规则，但不再在评估期间导致出错。
 
+### <a name="count"></a>计数
+
+可以使用 **计数** 表达式来构成条件，用于统计资源有效负载中有多少个数组成员满足条件表达式。 常见方案是检查是“至少有一个”、“正好有一个”、“所有”还是“没有”数组成员满足条件。 **count** 将根据条件表达式评估每个数组成员，并将 _true_ 结果求和，然后将其与表达式运算符进行比较。
+
+**count** 表达式的结构为：
+
+```json
+{
+    "count": {
+        "field": "<[*] alias>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+以下属性与 **count** 结合使用：
+
+- **count.field**（必需）：包含数组的路径，必须是数组别名。 如果缺少数组，表达式将评估为 _false_，而不考虑条件表达式。
+- **count.where**（可选）：用于单独评估 **count.field** 的每个 [\[\*\] 别名](#understanding-the--alias)数组成员的条件表达式。 如果未提供此属性，具有“field”路径的所有数组成员将评估为 _true_。 可在此属性中使用任何[条件](../concepts/definition-structure.md#conditions)。
+  可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。
+- **\<condition\>** （必需）：该值将与满足 **count.where** 条件表达式的项数进行比较。 应使用数字[条件](../concepts/definition-structure.md#conditions)。
+
+#### <a name="count-examples"></a>Count 示例
+
+示例 1：检查数组是否为空
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]"
+    },
+    "equals": 0
+}
+```
+
+示例 2：检查是否只有一个数组成员满足条件表达式
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My unique description"
+        }
+    },
+    "equals": 1
+}
+```
+
+示例 3：检查是否至少有一个数组成员满足条件表达式
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My common description"
+        }
+    },
+    "greaterOrEquals": 1
+}
+```
+
+示例 4：检查是否所有对象数组成员满足条件表达式
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "description"
+        }
+    },
+    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+}
+```
+
+示例 5：检查是否所有字符串数组成员满足条件表达式
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+            "like": "*@contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+示例 6：在 **value** 中使用 **field** 来检查是否所有数组成员满足条件表达式
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
+            "equals": "contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+示例 7：检查是否至少有一个数组成员与条件表达式中的多个属性匹配
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "allOf": [
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                    "equals": "Inbound"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                    "equals": "Allow"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                    "equals": "3389"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>效果
 
 Azure Policy 支持以下类型的效果：
@@ -485,14 +625,15 @@ Azure Policy 支持以下类型的效果：
 
 ### <a name="understanding-the--alias"></a>了解 [*] 别名
 
-可用的几个别名的版本显示为“普通”名称，另一个版本的名称则附加了 **[\*]** 。 例如：
+可用的几个别名的版本显示为“普通”名称，另一个版本的名称则附加了 **\[\*\]** 。 例如：
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 “normal”别名表示单一值字段。 如果整个值集必须确切定义（不能多定义，也不能少定义），则此字段将用于完全匹配比较方案。
 
-使用 **[\*]** 别名可以比较数组中的每个元素值以及每个元素的特定属性。 使用这种方法可以比较“if none of”、“if any of”或“if all of”方案的元素属性。 使用 **ipRules [\*]** 时，某个示例将会验证每个 _action_ 是否为 _Deny_，但不考虑存在多少个规则，或 IP 的 _value_ 是什么。 此示例规则检查 **10.0.4.1** 的所有 **ipRules [\*].value** 匹配项，仅当至少未找到一个匹配项时，才应用 **effectType**：
+使用 **\[\*\]** 别名可以比较数组中的每个元素值以及每个元素的特定属性。 使用这种方法可以比较“if none of”、“if any of”或“if all of”方案的元素属性。 对于更复杂的方案，请使用 [count](#count) 条件表达式。 使用 **ipRules\[\*\]** 时，某个示例将会验证每个 _action_ 是否为 _Deny_，但不考虑存在多少个规则，或 IP 的 _value_ 是什么。
+此示例规则检查 **10.0.4.1** 的所有 **ipRules\[\*\].value** 匹配项，仅当至少未找到一个匹配项时，才应用 **effectType**：
 
 ```json
 "policyRule": {
@@ -513,6 +654,8 @@ Azure Policy 支持以下类型的效果：
     }
 }
 ```
+
+
 
 有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
@@ -599,6 +742,6 @@ Azure Policy 支持以下类型的效果：
 - 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

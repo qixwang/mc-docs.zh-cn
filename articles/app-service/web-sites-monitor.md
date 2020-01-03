@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 01/11/2019
-ms.date: 11/25/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: a779415ee9d406a1a1f9ca45a07b2854ab268cbd
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: bace7d347c25ec9999ca9650a075375f0557a1ad
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336098"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](overview.md)针对 [Azure 门户](https://portal.azure.cn)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
 
-在 Azure 门户中，可以查看应用的配额和指标，查看应用服务计划，以及自动设置基于指标的警报和缩放。    
+在 Azure 门户中，可以查看应用和应用服务计划的配额和指标，还可以设置基于指标的警报和自动缩放。    
 
 ## <a name="understand-quotas"></a>了解配额
 
@@ -47,7 +47,7 @@ ms.locfileid: "74555932"
 | **带宽** | 一天内允许此应用使用的传出带宽总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
 | **Filesystem** | 允许的存储空间总量。 |
 
-适用于托管在“基本”、“标准”和“高级”计划中的应用的唯一配额是“文件系统”。   
+适用于托管在“基本”、“标准”和“高级”层级中的应用的唯一配额是“文件系统”。   
 
 有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-subscription-service-limits.md#app-service-limits)。
 
@@ -65,6 +65,10 @@ ms.locfileid: "74555932"
 
 ## <a name="understand-metrics"></a>了解指标
 
+> [!NOTE]
+> **文件系统使用情况**是一个向全球推出的新指标，除非我们已将你加入专用预览版的允许列表，否则你不会获得数据。
+> 
+
 指标提供有关应用或应用服务计划行为的信息。
 
 应用的可用指标包括：
@@ -78,6 +82,7 @@ ms.locfileid: "74555932"
 | **当前程序集** | 此应用程序中的所有 AppDomain 中加载的程序集的当前数量。 |
 | **数据输入** | 应用消耗的传入带宽量，以 MiB 为单位。 |
 | **数据输出** | 应用消耗的传出带宽量，以 MiB 为单位。 |
+| **文件系统使用情况** | 应用消耗的文件系统配额的百分比。 |
 | **第 0 代垃圾回收** | 自应用进程启动以来对第 0 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 1 代垃圾回收** | 自应用进程启动以来对第 1 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 2 代垃圾回收** | 自应用进程启动以来对第 2 代对象进行垃圾回收的次数。|
@@ -91,7 +96,7 @@ ms.locfileid: "74555932"
 | **Http 4xx** | 导致 HTTP 状态代码大于等于 400 但小于 500 的请求计数。 |
 | **Http 服务器错误** | 导致 HTTP 状态代码大于等于 500 但小于 600 的请求计数。 |
 | **IO 每秒其他字节数** | 应用进程向不涉及数据的 I/O 操作（例如控制操作）发出字节的速率。|
-| **IO 每秒其他操作数** | 应用进程发出非读写 I/O 操作的速率。|
+| **IO 每秒其他操作数** | 应用进程发出非读或非写 I/O 操作的速率。|
 | **IO 每秒读取字节数** | 应用进程通过 I/O 操作读取字节的速率。|
 | **IO 每秒读取操作数** | 应用进程发出读取 I/O 操作的速率。|
 | **IO 每秒写入字节数** | 应用进程向 I/O 操作写入字节的速率。|

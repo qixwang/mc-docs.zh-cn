@@ -1,27 +1,26 @@
 ---
-title: 在 Azure 门户中创建 Azure 搜索索引 - Azure 搜索
-description: 了解如何使用内置门户索引设计器为 Azure 搜索创建索引。
+title: 使用 Azure 门户创建搜索索引
+titleSuffix: Azure Cognitive Search
+description: 了解如何使用内置门户索引设计器为 Azure 认知搜索创建索引。
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 02/16/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: e54d1367d9897f77945ab4ac0bb083ed2828029f
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 92832f06e34d52c2fa86119640a2c0ef4c39eac8
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335486"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>在门户中创建 Azure 搜索索引
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>在门户中创建 Azure 认知搜索索引
 
-Azure 搜索在门户中包含一个内置索引设计器，可用于原型或创建在 Azure 搜索服务上托管的[搜索索引](search-what-is-an-index.md)。 该工具用于架构构造。 保存定义时，Azure 搜索中将完全表示空索引。 如何使用可搜索的数据加载它取决于你。
+Azure 认知搜索在门户中包含一个内置索引设计器，可用于原型或创建在 Azure 认知搜索服务上托管的[搜索索引](search-what-is-an-index.md)。 该工具用于架构构造。 保存定义时，Azure 认知搜索中将完全表示空索引。 如何使用可搜索的内容加载它取决于你。
 
-索引设计器只是创建索引的一种方法。 以编程方式，你可以使用 [.NET](search-create-index-dotnet.md) 或 [REST](search-create-index-rest-api.md) API 创建索引。
+索引设计器只是创建索引的一种方法。 另外，也可使用[导入数据向导](search-get-started-portal.md)创建和加载索引。 此向导只兼容其自行创建的索引。 以编程方式，你可以使用 [.NET](search-create-index-dotnet.md) 或 [REST](search-create-index-rest-api.md) API 创建索引。
 
 ## <a name="start-index-designer"></a>启动索引设计器
 
@@ -29,9 +28,9 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 2. 单击页面顶部的命令栏中的“添加索引”链接  。
 
-   ![在命令栏中添加索引链接](media/search-create-index-portal/add-index.png "Add index link in the command bar")
+   ![命令栏中的“添加索引”链接](media/search-create-index-portal/add-index.png "命令栏中的“添加索引”链接")
 
-3. 命名 Azure 搜索索引。 索引名称在索引操作和查询操作中进行引用。 索引名称将成为在到索引的连接上使用的且用于在 Azure 搜索 REST API 中发送 HTTP 请求的终结点 URL 的一部分。
+3. 命名 Azure 认知搜索索引。 索引名称在索引操作和查询操作中进行引用。 索引名称将成为在到索引的连接上使用的且用于在 Azure 认知搜索 REST API 中发送 HTTP 请求的终结点 URL 的一部分。
 
    * 以字母开头。
    * 仅使用小写字母、数字或短划线（“-”）。
@@ -43,15 +42,17 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 1. 添加字段来完整指定将要上传的文档，为每个文档设置[数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。 例如，如果文档包含 hotel-id、hotel-name、address、city 和 region，请在索引中为每个字段创建对应的字段      。 有关设置属性方面的帮助信息，请查看[下一部分中的设计指南](#design)。
 
-2. 指定 Edm.String 类型的 key 字段  。 此字段的值必须唯一标识每个文档。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 例如，如果字段集合包含 hotel-id，则可以为密钥选择该字段  。 对于每个 Azure 搜索索引来说，键字段都是必需的，并且它必须是一个字符串。
+1. 如果传入数据在本质上是分层的，则架构应包括用于表示嵌套结构的[复杂类型](search-howto-complex-data-types.md)。 内置的示例数据集 Hotels 演示的复杂类型使用一个 Address（包含多个子字段），其中有与每个酒店的一对一关系，并且有一个 Rooms 复杂集合，其中有多个房间与每个酒店相关联。 
 
-3. 在每个字段上设置属性。 索引设计器会排除对数据类型无效的任何属性，但不会建议要包含的内容。 查看下一部分中的指导，以了解属性的用途。
+1. 指定 Edm.String 类型的 key 字段  。 对于每个 Azure 认知搜索索引来说，键字段都是必需的，并且它必须是一个字符串。 此字段的值必须唯一标识每个文档。 默认情况下，该字段名为 *id*，但可以将其重命名，只要该字符串符合[命名规则](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)即可。 例如，如果字段集合包含 hotel-id，则可以为密钥选择该字段  。 
 
-    Azure 搜索 API 文档包括了代码示例，其中采用了简单的 *hotels* 索引。 在下面的屏幕截图中，可以看到索引定义，包括在定义索引期间指定的法语语言分析器，可以在门户中练习重新创建该索引定义。
+1. 在每个字段上设置属性。 索引设计器会排除对数据类型无效的任何属性，但不会建议要包含的内容。 查看下一部分中的指导，以了解属性的用途。
 
-    ![酒店演示索引](media/search-create-index-portal/field-definitions.png "Hotels demo index")
+    Azure 认知搜索 API 文档包括了代码示例，其中采用了简单的 *hotels* 索引。 在下面的屏幕截图中，可以看到索引定义，包括在定义索引期间指定的法语语言分析器，可以在门户中练习重新创建该索引定义。
 
-4. 完成时，单击“创建”以保存并创建索引  。
+    ![酒店演示索引](media/search-create-index-portal/field-definitions.png "酒店演示索引")
+
+1. 完成时，单击“创建”以保存并创建索引  。
 
 <a name="design"></a>
 
@@ -76,7 +77,7 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 ## <a name="next-steps"></a>后续步骤
 
-在创建 Azure 搜索索引后，可以前进到下一步骤：[将可搜索数据上传到索引中](search-what-is-data-import.md)。
+在创建 Azure 认知搜索索引后，可以前进到下一步骤：[将可搜索数据上传到索引中](search-what-is-data-import.md)。
 
 另外，也可以[更深入地了解索引](search-what-is-an-index.md)。 除了字段集合之外，索引还指定分析器、建议器、评分配置文件和 CORS 设置。 门户提供了用于定义以下最常用元素的选项卡式页面：字段、分析器和建议器。 若要创建或修改其他元素，可以使用 REST API 或 .NET SDK。
 
