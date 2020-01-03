@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 08/14/2018
-ms.date: 09/02/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 8b19ccba37f2e797fe6dbd985c7e7979861de6ea
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 9429e5b0f540bec6abcffc9748030025c761f012
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335151"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
-Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经授权的用户连接到它们是你的职责。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 尽管可以创建不安全的群集，但当该群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 不支持将不安全群集用于生产工作负荷。 
+Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经授权的用户连接到它们是你的职责。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 可以创建不受保护的群集，但当该群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 不支持将不安全群集用于生产工作负荷。 
 
 本文概述了适用于 Azure 群集和独立群集的安全性方案，以及用于实现它们的各种技术：
 
@@ -58,7 +58,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 在 Azure 上运行的群集和在 Windows 上运行的独立群集可以使用[证书安全性](https://msdn.microsoft.com/library/ff649801.aspx)或 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
 
 ### <a name="client-to-node-certificate-security"></a>客户端到节点的证书安全性
-客户端到节点证书安全性是在通过 Azure 门户、资源管理器模板或独立的 JSON 模板创建群集时设置的。 要创建证书，请指定管理员客户端证书或用户客户端证书。 作为最佳做法，指定的管理员客户端证书和用户客户端证书应该不同于为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。 默认情况下，用于实现节点到节点安全性的群集证书会添加到允许的客户端管理员证书列表中。
+客户端到节点证书安全性是在通过 Azure 门户、资源管理器模板或独立的 JSON 模板创建群集时设置的。 要创建证书，请指定管理员客户端证书或用户客户端证书。 作为最佳做法，指定的管理员客户端证书和用户客户端证书应该不同于为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。 群集证书与客户端管理员证书具有相同的权限。 但是，它们只应由群集使用，而不应作为安全最佳做法由管理用户使用。
 
 客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。 客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 这些证书用于本文中后面介绍的 RBAC。
 

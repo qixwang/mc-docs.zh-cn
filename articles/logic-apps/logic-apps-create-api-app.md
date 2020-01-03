@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 05/26/2017
-ms.date: 09/09/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 6cb193c76099a293a00e74b1bdf3e5e121df8066
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 4983f98115506650d4ecb4d2d3800c320d378c18
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336203"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -57,7 +57,7 @@ ms.locfileid: "70174166"
 * 在逻辑应用设计器中，显示在 Microsoft 托管连接器旁边（含图标）。
 * 仅适用于满足以下条件的连接器创建者和逻辑应用用户：在部署逻辑应用的区域中具有相同的 Azure Active Directory 租户和 Azure 订阅。
 
-还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Microsoft Flow 和 Microsoft PowerApps 中的用户使用。
+还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Power Automate 和 Microsoft Power Apps 中的用户使用。
 
 有关自定义连接器的详细信息，请参阅 
 
@@ -224,7 +224,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 要使自定义 API 可供 Azure 中其他逻辑应用用户使用，必须添加安全性并将这些 API 注册为逻辑应用连接器。 有关详细信息，请参阅[自定义连接器概述](../logic-apps/custom-connector-overview.md)。 
 
-要使自定义 API 可供逻辑应用、Microsoft Flow 和 Microsoft PowerApps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名连接器。 
+要使自定义 API 可供逻辑应用、Power Automate 和 Microsoft Power Apps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名你的连接器。 
 
 ## <a name="get-support"></a>获取支持
 

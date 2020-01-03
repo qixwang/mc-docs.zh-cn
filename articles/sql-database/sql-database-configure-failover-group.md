@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 数据库配置故障转移组
+title: 配置故障转移组
 description: 了解如何使用 Azure 门户、Az CLI 和 PowerShell 为 Azure SQL 数据库单一数据库、弹性池和托管实例配置自动故障转移组。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 08/14/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 907acf73abdcdcc1797cc9b0ed9c2f3c75dbb9db
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 12/16/2019
+ms.openlocfilehash: e810fcb998f4bc58d2395fab94d3a6c748cd4bf5
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336440"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 
@@ -80,11 +80,11 @@ ms.locfileid: "73041370"
    # Create a failover group between the servers
    $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
    New-AzSqlDatabaseFailoverGroup `
-      –ResourceGroupName $resourceGroupName `
+      -ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -PartnerServerName $drServerName  `
-      –FailoverGroupName $failoverGroupName `
-      –FailoverPolicy Automatic `
+      -FailoverGroupName $failoverGroupName `
+      -FailoverPolicy Automatic `
       -GracePeriodWithDataLossHours 2
    $failovergroup
    
@@ -238,11 +238,11 @@ ms.locfileid: "73041370"
    # Create a failover group between the servers
    Write-host "Creating failover group..." 
    New-AzSqlDatabaseFailoverGroup `
-       –ResourceGroupName $resourceGroupName `
+       -ResourceGroupName $resourceGroupName `
        -ServerName $serverName `
        -PartnerServerName $drServerName  `
-       –FailoverGroupName $failoverGroupName `
-       –FailoverPolicy Automatic `
+       -FailoverGroupName $failoverGroupName `
+       -FailoverPolicy Automatic `
        -GracePeriodWithDataLossHours 2
    Write-host "Failover group created successfully." 
 
@@ -372,7 +372,7 @@ ms.locfileid: "73041370"
     | **网关类型** | 选择“VPN”。  |
     | **VPN 类型** | 选择“基于路由”  |
     | **SKU**| 保留默认值 `VpnGw1`。 |
-    | **Location**| 辅助托管实例和辅助虚拟网络所在的位置。   |
+    | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
     | **虚拟网络**| 为辅助托管实例选择虚拟网络。 |
     | **公共 IP 地址**| 选择“新建”。  |
     | **公共 IP 地址名称**| 输入 IP 地址的名称。 |
@@ -433,7 +433,7 @@ ms.locfileid: "73041370"
    | **网关类型** | 选择“VPN”。  |
    | **VPN 类型** | 选择“基于路由”  |
    | **SKU**| 保留默认值 `VpnGw1`。 |
-   | **Location**| 辅助托管实例和辅助虚拟网络所在的位置。   |
+   | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
    | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-secondary`。 |
    | **公共 IP 地址**| 选择“新建”。  |
    | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `secondary-gateway-IP`。 |
@@ -485,20 +485,24 @@ ms.locfileid: "73041370"
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户在两个网关之间创建连接。 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的资源组，并选择在步骤 4 中创建的主网关。 
-1. 在“设置”下选择“连接”，然后选择“添加”以创建新连接。    
+1. 在 [Azure 门户](https://portal.azure.cn)中选择“创建资源”。 
+1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。 
+1. 选择“创建”以创建连接。  
+1. 在“基本信息”选项卡上选择以下值，然后选择“确定”。   
+    1. 为“连接类型”选择 `VNet-to-VNet`。  
+    1. 从下拉列表中选择订阅。 
+    1. 在下拉列表中选择托管实例的资源组。 
+    1. 在下拉列表中选择主托管实例的位置。 
+1. 在“设置”选项卡上选择或输入以下值，然后选择“确定”：  
+    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `Primary-Gateway`。   
+    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `Secondary-Gateway`。  
+    1. 选中“建立双向连接”旁边的复选框。  
+    1. 保留默认的主连接名称，或将其重命名为所选的值。 
+    1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。  
 
-   ![将连接添加到主网关](media/sql-database-managed-instance-failover-group-tutorial/add-primary-gateway-connection.png)
+   ![创建网关连接](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. 输入连接的名称，并键入“共享密钥”的值。  
-1. 选择“第二个虚拟网络网关”，然后选择辅助托管实例的网关。  
-
-   ![创建从主网关到辅助网关的连接](media/sql-database-managed-instance-failover-group-tutorial/create-primary-to-secondary-connection.png)
-
-1. 选择“确定”以添加新的从主网关到辅助网关的连接。 
-1. 重复上述步骤，创建从辅助托管实例网关到主托管实例网关的连接。 
-
-   ![创建从辅助网关到主网关的连接](media/sql-database-managed-instance-failover-group-tutorial/create-secondary-to-primary-connection.png)
+1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。   
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

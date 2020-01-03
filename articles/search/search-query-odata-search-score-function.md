@@ -1,13 +1,14 @@
 ---
-title: OData search.score 函数参考 - Azure 搜索
-description: Azure 搜索查询中的 OData search.score 函数。
-ms.date: 09/29/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData search.score 函数参考
+titleSuffix: Azure Cognitive Search
+description: 语法和参考文档，用于在 Azure 认知搜索查询中使用 search.score 函数。
+manager: nitinme
 author: brjohnstmsft
 ms.author: v-tawe
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e2afbe1bf450b8477ee7ee4fa5d8d97a91ca75bc
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 6aeac796c978fd41f73ef58870c4cf8932ef506f
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336497"
 ---
-# <a name="odata-searchscore-function-in-azure-search"></a>Azure 搜索中的 OData `search.score` 函数
+# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.score` 函数
 
-在不使用 [ **$orderby** 参数](search-query-odata-orderby.md)的情况下向 Azure 搜索发送查询时，返回的结果将按相关性评分降序排序。 即使你确实使用 **$orderby**，默认情况下，相关性评分也将用于打破平分的局面。 但是，有时使用相关性评分作为初始排序条件，并使用其他一些条件作为决定因素是有用的。 `search.score` 函数允许你执行此操作。
+在不使用 [ **$orderby** 参数](search-query-odata-orderby.md)的情况下向 Azure 认知搜索发送查询时，返回的结果将按相关性评分降序排序。 即使你确实使用 **$orderby**，默认情况下，相关性评分也将用于打破平分的局面。 但是，有时使用相关性评分作为初始排序条件，并使用其他一些条件作为决定因素是有用的。 `search.score` 函数允许你执行此操作。
 
 ## <a name="syntax"></a>语法
 
@@ -42,6 +43,6 @@ ms.locfileid: "71674480"
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

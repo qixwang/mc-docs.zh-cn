@@ -14,14 +14,14 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/11/2018
-ms.date: 03/04/2019
+ms.date: 12/16/2019
 ms.author: v-jay
-ms.openlocfilehash: cd122587d375791967093914c28ad3d7327c2af5
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.openlocfilehash: f4d18438ed9752ace1586339a10973025680104c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67236493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336442"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -90,7 +90,7 @@ ms.locfileid: "67236493"
 
 如果还没有虚拟网络 (VNet)，请创建一个。 这些屏幕截图仅供参考。 请务必替换成自己的值。 若要使用 Azure 门户创建 VNet，请执行以下步骤：
 
-1. 登录到 [Azure 门户](http://portal.azure.cn)，然后选择“创建资源”  。 此时会打开一个“新建”页面  。 
+1. 在 [Azure 门户](https://portal.azure.cn)菜单或“主页”页上，选择“创建资源”   。 此时会打开一个“新建”页面  。
 
 2. 在“搜索市场”字段中，输入“虚拟网络”，然后从返回的列表中选择“虚拟网络”    。 此时会打开“虚拟网络”页  。
 
@@ -118,7 +118,7 @@ ms.locfileid: "67236493"
 
 本步骤创建网关子网和动态路由网关。 在经典部署模型的 Azure 门户中，通过相同的配置页创建网关子网和网关。 网关子网仅用于网关服务。 切勿将任何资源（例如 VM 或任何其他服务）直接部署到网关子网。
 
-1. 在 Azure 门户中，导航到要为其创建网关的虚拟网络。
+1. 在 Azure 门户中，转到要为其创建网关的虚拟网络。
 
 2. 在虚拟网络页上，选择“概览”，在“VPN 连接”部分，选择“网关”    。
 
@@ -211,7 +211,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 将
 >
 >
 
-1. 要连接到 VNet，请在客户端计算机上导航到 Azure 门户中的“VPN 连接”，并找到创建的 VPN 连接  。 该 VPN 连接名称与虚拟网络的名称相同。 选择“连接”  。 如果显示关于证书的弹出消息，请选择“继续”以使用提升的权限  。
+1. 要连接到 VNet，请在客户端计算机上转到 Azure 门户中的“VPN 连接”，并找到创建的 VPN 连接  。 该 VPN 连接名称与虚拟网络的名称相同。 选择“连接”  。 如果显示关于证书的弹出消息，请选择“继续”以使用提升的权限  。
 
 2. 在“连接”状态页上，选择“连接”以启动连接   。 如果看到“选择证书”屏幕，请验证显示的客户端证书是否正确  。 如果错误，请从下拉列表中选择正确的证书，然后选择“确定”  。
 
@@ -278,7 +278,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 将
 
 1. 检索客户端证书指纹。 有关更多信息，请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)。
 2. 将信息复制到文本编辑器，删除其中的空格，使之成为连续的字符串。
-3. 导航到经典虚拟网络。 选择“点到站点 VPN 连接”，然后选择“管理证书”，打开“证书”页    。
+3. 转到经典虚拟网络。 选择“点到站点 VPN 连接”，然后选择“管理证书”，打开“证书”页    。
 4. 选择“吊销列表”，打开“吊销列表”页   。 
 5. 选择“添加证书”，打开“将证书添加到吊销列表”页   。
 6. 在“指纹”页中，将证书指纹以连续文本行的形式进行粘贴，不留空格  。 选择“确定”完成操作  。

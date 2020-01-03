@@ -5,19 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 05/06/2019
-ms.date: 08/29/2019
+ms.date: 12/11/2019
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5dd21e9d25ad779c0b994c700140ff0584bab5
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: e0815a09ab162627b281478b80d48b11825fbb2c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134160"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334931"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -164,7 +163,7 @@ ms.locfileid: "70134160"
    * 任何管理员发起的最终用户密码重置操作（使用 `Microsoft 365 admin center`）
 
 > [!WARNING]
-> 不支持在本地 Active Directory 管理工具（如 Active Directory 用户和计算机或 Active Directory 管理中心）中使用“用户下次登录时必须更改密码”复选框。 更改本地密码时，请不要选中此选项。
+> 在本地 Active Directory 管理工具（如 Active Directory 用户和计算机或 Active Directory 管理中心）中使用“用户下次登录时必须更改密码”复选框已作为 Azure AD Connect 的预览功能受到支持。 有关详细信息，请参阅文章[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)。
 
 ## <a name="next-steps"></a>后续步骤
 

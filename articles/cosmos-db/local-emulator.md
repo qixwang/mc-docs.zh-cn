@@ -6,13 +6,13 @@ ms.topic: tutorial
 author: rockboyfor
 ms.author: v-yeche
 origin.date: 07/26/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 6a95ac50f0db9a53409c3a0ff971017999d8346c
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.date: 12/16/2019
+ms.openlocfilehash: 99f2c6bdfc1208bfcb8e0e25a9ba883043de6e61
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334556"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -28,7 +28,7 @@ Azure Cosmos 模拟器提供对 Azure Cosmos DB 服务的高保真模拟。 它�
 
 可通过 [Azure Cosmos DB 数据迁移工具](https://github.com/azure/azure-documentdb-datamigrationtool)在 Azure Cosmos 模拟器与 Azure Cosmos DB 服务之间迁移数据。
 
-可在 Windows Docker 容器上运行 Azure Cosmos 模拟器；详见 [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) 获取 Docker 拉取命令，详见 [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) 获取模拟器源代码。
+可在 Windows Docker 容器上运行 Azure Cosmos 模拟器；详见 [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) 获取 Docker 拉取命令，详见 [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) 获取`Dockerfile` 以及更多信息。
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>模拟器和服务之间的差异
 
@@ -422,6 +422,24 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+如果在 Linux docker 容器上运行 .NET 客户端应用程序，并且在主机上运行 Azure Cosmos 模拟器，那么在这种情况下无法从模拟器连接到 Azure Cosmos 帐户。 由于应用未在主机上运行，因此无法添加在 Linux 容器上注册的与模拟器终结点匹配的证书。 
+
+解决方法是，通过传递 `HttpClientHandler` 实例，从客户端应用程序禁用服务器的 SSL 证书验证，如下面的 .NET 代码示例所示。 仅当在使用 `Microsoft.Azure.DocumentDB` Nuget 包时，此解决方案才适用，`Microsoft.Azure.Cosmos` Nuget 包不支持此解决方案：
+
+ ```csharp
+var httpHandler = new HttpClientHandler()
+{
+    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+};
+
+using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+{
+    RunDatabaseDemo(client).GetAwaiter().GetResult();
+}
+```
+
+除了禁用 SSL 证书验证之外，还需确保使用 `/allownetworkaccess` 选项启动模拟器，并且模拟器的终结点可以从主机 IP 地址而非 `host.docker.internal` DNS 进行访问。
+
 ## 在 Mac 或 Linux 上运行<a name="mac"></a>
 
 目前 Cosmos 模拟器只能在 Windows 上运行。 运行 Mac 或 Linux 的用户可以在托管虚拟机监控程序（如 Parallels 或 VirtualBox）的 Windows 虚拟机中运行模拟器。 以下是启用此功能的步骤。
@@ -523,4 +541,4 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 > [!div class="nextstepaction"]
 > [导出 Azure Cosmos 模拟器证书](local-emulator-export-ssl-certificates.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

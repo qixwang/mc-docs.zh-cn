@@ -12,18 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 11/07/2019
+ms.date: 12/10/2019
 ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78cb4eb04f44b9f1e3e25cb364e9189f85e0de8c
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 2d1bcaef6d95b857eda32e6e1991ce1d91063eaf
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335668"
 ---
 # <a name="service-to-service-apps"></a>服务到服务应用
 
@@ -41,7 +40,7 @@ ms.locfileid: "73830906"
 
 ![后台或服务器应用程序到 Web API 图示](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>DProtocol 流
+## <a name="protocol-flow"></a>协议流
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>带有 OAuth 2.0 客户端凭据授权的应用程序标识
 
@@ -60,11 +59,11 @@ ms.locfileid: "73830906"
 
 ## <a name="code-samples"></a>代码示例
 
-请参阅后台或服务器应用程序到 Web API 方案的代码示例。 另外，请经常回来查看，因为我们会经常添加新示例。 [服务器或后台应用程序到 Web API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+请参阅后台或服务器应用程序到 Web API 方案的代码示例：[服务器或后台应用程序到 Web API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>应用注册
 
-* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托用户标识类型，则服务器应用程序需要从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
+* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托的用户标识类型，则服务器应用程序需要选择所需的权限。 在用于应用程序注册的“API 权限”页中，  在选择“添加权限”并选择  API 系列后，请选择“委托的权限”，然后选择你的权限  。 如果使用的是应用程序标识类型，则不需要此步骤。
 * 多租户 - 首先，守护程序或服务器应用程序在配置后会指示它在正常运行时所需的权限。 目标目录中的用户或管理员许可应用程序的要求，使应用程序可供其组织使用时，此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，将在其目录中注册这两个 Web API。
 
 ## <a name="token-expiration"></a>令牌过期
@@ -76,4 +75,4 @@ ms.locfileid: "73830906"
 - 详细了解其他[应用程序类型和方案](app-types.md)
 - 了解 Azure AD [身份验证基础知识](v1-authentication-scenarios.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

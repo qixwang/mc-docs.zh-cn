@@ -1,23 +1,22 @@
 ---
-title: 在门户中针对 Azure 管理访问权限设置 RBAC 角色 - Azure 搜索
-description: Azure 门户中基于角色的管理控制 (RBAC)，用于控制和委派 Azure 搜索管理的管理任务。
-author: HeidiSteen
+title: 为 Azure 管理访问权限设置 RBAC 角色
+titleSuffix: Azure Cognitive Search
+description: Azure 门户中基于角色的管理控制 (RBAC)，用于控制和委派 Azure 认知搜索管理的管理任务。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 04/05/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 33baecc1be6fa4ab011314251be487ee5d71f66f
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: b90664eded1782704adaf4113896f0e7ce3a536b
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674422"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336486"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>针对管理访问权限设置 RBAC 角色
+# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>为针对 Azure 认知搜索的管理访问权限设置 RBAC 角色
 
 对于通过门户或 Resource Manager API 管理的所有服务，Azure 提供了[基于全局角色的授权模型](../role-based-access-control/role-assignments-portal.md)。 所有者、参与者和读者角色根据分配给每个角色的 Active Directory 用户、组和安全主体的服务管理，确定服务管理的级别  。 
 
@@ -26,7 +25,7 @@ ms.locfileid: "71674422"
 
 ## <a name="management-tasks-by-role"></a>按角色划分的管理任务
 
-对于 Azure 搜索，角色与支持以下管理任务的权限级别相关联：
+对于 Azure 认知搜索，角色与支持以下管理任务的权限级别相关联：
 
 | 角色 | 任务 |
 | --- | --- |
@@ -40,5 +39,5 @@ ms.locfileid: "71674422"
 ## <a name="see-also"></a>另请参阅
 
 + [使用 PowerShell 管理](search-manage-powershell.md) 
-+ [Azure 搜索中的性能和优化](search-performance-optimization.md)
++ [Azure 认知搜索中的性能和优化](search-performance-optimization.md)
 + [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。

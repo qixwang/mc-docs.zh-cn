@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 4837ac2431f958ae565ace52189645b7840a71f1
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 12/16/2019
+ms.openlocfilehash: be0024ce68ed048a3e3bc566e35f8c0d4caf6a89
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336346"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览版）
 
@@ -74,8 +74,7 @@ ms.locfileid: "74021008"
 
 ## <a name="limitations"></a>限制
 
-* 增大 VM 和群集大小可以提高流式引入的性能和容量。 对于单个 D14 节点，建议的负载为每秒最多 150 个请求。
-* 目前，仅为 8 核心和 16 核心 SKU（D13、D14、L8 和 L16）提供支持。
+* 增大 VM 和群集大小可以提高流式引入的性能和容量。 并发引入限制为每个内核 6 个引入。 例如，对于 16 核 SKU（如 D14 和 L16），支持的最大负载为 96 个并发引入。 对于 2 核 SKU（如 D11），支持的最大负载为 12 个并发引入。
 * 每个引入请求的数据大小限制为 4 MB。
 * 对流式引入服务进行架构更新（例如创建和修改表与引入映射）最长可能需要花费 5 分钟时间。
 * 即使数据不是流式引入的，在群集上启用流式引入也会占用群集计算机的一部分本地 SSD 磁盘用于存储流式引入数据，因此会减少热缓存的可用存储。

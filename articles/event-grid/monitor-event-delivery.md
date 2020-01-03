@@ -8,13 +8,13 @@ ms.service: event-grid
 ms.topic: conceptual
 origin.date: 01/22/2019
 ms.author: v-yiso
-ms.date: 06/03/2019
-ms.openlocfilehash: 2a9cec280c3ca3daafad4369939106c77f62a04f
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.date: 12/23/2019
+ms.openlocfilehash: f332681c478ea1c25f9cb0a06743599273370a00
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335781"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 
@@ -45,15 +45,15 @@ ms.locfileid: "66195162"
 
 若要查看事件订阅的指标，可以按订阅类型搜索或按特定资源的订阅搜索。
 
-若要按事件订阅类型搜索，请选择“所有服务”。
+若要按事件订阅类型搜索，请选择“所有服务”  。
 
 ![选择所有服务](./media/monitor-event-delivery/all-services.png)
 
-搜索事件网格，并从可用选项中选择“事件网格订阅”。
+搜索事件网格  ，并从可用选项中选择“事件网格订阅”  。
 
 ![搜索事件订阅](./media/monitor-event-delivery/search-and-select.png)
 
-按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”。
+按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”  。
 
 ![筛选事件订阅](./media/monitor-event-delivery/filter-events.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "66195162"
 
 ![查看事件指标](./media/monitor-event-delivery/subscription-metrics.png)
 
-若要查找特定资源的指标，请选择该资源。 然后，选择“事件”。
+若要查找特定资源的指标，请选择该资源。 然后，选择“事件”  。
 
 ![选择资源的事件](./media/monitor-event-delivery/select-events.png)
 
@@ -76,6 +76,12 @@ ms.locfileid: "66195162"
 查看自定义事件主题的指标。
 
 ![查看事件指标](./media/monitor-event-delivery/custom-topic-metrics.png)
+
+## <a name="set-alerts"></a>设置警报
+
+可以为自定义主题和事件域设置针对主题和域级别指标的警报。 在“概览”边栏选项卡中，从左侧的资源菜单选择“警报”  ，以便查看、管理和创建警报规则。 [了解有关 Azure Monitor 警报的详细信息](../azure-monitor/platform/alerts-overview.md)
+
+![查看事件指标](./media/monitor-event-delivery/select-alerts.png)
 
 ## <a name="next-steps"></a>后续步骤
 

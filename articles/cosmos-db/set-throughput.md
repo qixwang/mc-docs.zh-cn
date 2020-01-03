@@ -6,13 +6,13 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/12/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 05573ba25c502ef6c1f4f74b1de33da7379aa302
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 12/16/2019
+ms.openlocfilehash: 13f39424b1f5e7fdb975d067dc6c38acdeed43cc
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336081"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -29,7 +29,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 在容器上设置预配吞吐量是最频繁使用的选项。 可以通过使用[请求单位 (RU)](request-units.md) 预配任意数量的吞吐量来弹性缩放容器的吞吐量。 
 
-对 Azure Cosmos 容器预配的吞吐量均匀分布于该容器的所有逻辑分区之间。 无法选择性地指定逻辑分区的吞吐量。 由于某个容器的一个或多个逻辑分区由物理分区托管，因此，物理分区专属于该容器，并支持对该容器预配的吞吐量。 
+为容器预配的吞吐量在其物理分区之间均匀分布。假设有一个适当的分区键，它在物理分区之间均匀分配逻辑分区，那么吞吐量也均匀分布在容器的所有逻辑分区上。 无法选择性地指定逻辑分区的吞吐量。 由于某个容器的一个或多个逻辑分区由物理分区托管，因此，物理分区专属于该容器，并支持对该容器预配的吞吐量。 
 
 如果逻辑分区上运行的工作负荷消耗的吞吐量超过了分配给该逻辑分区的吞吐量，操作将受到速率限制。 出现速率限制时，可以增大整个容器的预配吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
@@ -114,7 +114,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 ## <a name="comparison-of-models"></a>模型比较
 
-|**参数**  |**对数据库的预配吞吐量**  |**对容器预配的吞吐量**|
+|**参数** |**对数据库的预配吞吐量** |**对容器预配的吞吐量**|
 |---------|---------|---------|
 |最小 RU 数 |400（前四个容器之后的每个容器均需要至少每秒 100 RU 的吞吐量。） |400|
 |每个容器的最小 RU 数|100|400|

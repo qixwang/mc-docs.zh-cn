@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 09/19/2019
-ms.date: 11/25/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 5a17163b22a666afbc4aa9c5e6568462060b154b
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 66a199f1a2c2345887e4c95363a4912246691791
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335729"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -40,7 +40,7 @@ ms.locfileid: "74657997"
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>添加槽
-必须在“标准”或“高级”层下运行应用，才能启用多个部署槽   。
+应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位    。
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "74657997"
     ![添加新部署槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > 如果应用尚未处于“标准”或“高级”层，则你会收到消息，指示启用暂存发布支持的层   。 此时，可选择“升级”  ，转到应用的“缩放”  选项卡，然后继续。
+   > 如果应用尚未处于“标准”、“高级”或“独立”层级，则你会收到一条消息，其中指示了支持启用过渡发布的层级    。 此时，可选择“升级”  ，转到应用的“缩放”  选项卡，然后继续。
    > 
 
 3. 在“添加槽”对话框中，为槽提供一个名称，并选择是否要从其他部署槽中克隆应用配置  。 选择“添加”以继续  。
@@ -250,6 +250,10 @@ ms.locfileid: "74657997"
 保存设置后，指定百分比的客户端将随机路由到非生产槽。 
 
 客户端自动路由到特定槽后，在该客户端会话生存期内都将“固定”到该槽。 在客户端浏览器上，可以通过查看 HTTP 标头中的 `x-ms-routing-name` cookie 来查看会话固定到哪个槽。 路由到“暂存”槽的请求具有 cookie `x-ms-routing-name=staging`。 路由到生产槽的请求具有 cookie `x-ms-routing-name=self`。
+
+   > [!NOTE]
+   > 除了 Azure 门户之外，还可以使用 Azure CLI 中的 [`az webapp traffic-routing set`](/cli/webapp/traffic-routing#az-webapp-traffic-routing-set) 命令设置 DevOps 管道或其他自动化系统等 CI/CD 工具的路由百分比。
+   > 
 
 ### <a name="route-production-traffic-manually"></a>手动路由生产流量
 

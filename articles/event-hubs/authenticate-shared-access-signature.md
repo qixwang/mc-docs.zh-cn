@@ -6,15 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-origin.date: 08/22/2019
-ms.date: 10/23/2019
+origin.date: 11/26/2019
+ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: c788a00ff35128223ea9548a644d629b827fd891
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: 48384f71e6b2d438db49489beabe51d0032369b1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336179"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -186,22 +186,33 @@ private static string createToken(string resourceUri, string keyName, string key
 
 通常，事件中心为每个客户端使用一个发布者。 发送到事件中心的任何发布者的所有消息都会在该事件中心内排队。 发布者可以实现精细访问控制。
 
-为每个事件中心客户端分配一个唯一令牌，该令牌将上传到客户端。 生成令牌后，每个唯一令牌授予对不同唯一发布者的访问权限。 持有令牌的客户端只能向一个发布者发送消息，但不能向其他发布者发送消息。 如果多个客户端共享同一令牌，则其中每个客户端都会共享一个发布者。
+为每个事件中心客户端分配一个唯一令牌，该令牌将上传到客户端。 生成令牌后，每个唯一令牌授予对不同唯一发布者的访问权限。 持有令牌的客户端只能向一个发布者发送消息，但不能向其他发布者发送消息。 如果多个客户端共享同一令牌，则其中每个客户端都会共享该发布者。
 
-为所有令牌分配 SAS 密钥。 通常，所有令牌使用同一密钥进行签名。 客户端不知道密钥，这可以防止其他客户端制造令牌。 客户端以相同的令牌运行，直到令牌过期。
+为所有令牌分配 SAS 密钥。 通常，所有令牌使用同一密钥进行签名。 客户端不知道密钥，这可以防止客户端制造令牌。 客户端以相同的令牌运行，直到令牌过期。
 
 例如，若要定义范围限定为向事件中心发送/发布消息的授权规则，需要定义发送授权规则。 可以在命名空间级别执行此操作，或者为特定的实体（事件中心实例或主题）分配更精细的范围。 具有此类粒度访问范围的客户端或应用程序称为“事件中心发布者”。 为此，请执行以下步骤：
 
 1. 在要发布的实体中创建一个 SAS 密钥，以在其上分配**发送**范围。 有关详细信息，请参阅[共享访问授权策略](authorize-access-shared-access-signature.md#shared-access-authorization-policies)。
 2. 使用在步骤 1 中生成的密钥为特定的发布者生成具有过期时间的 SAS 令牌。
-3. 向发布者客户端提供令牌，该客户端只能向令牌授予了访问权限的实体发送消息。
-4. 令牌过期后，客户端将失去向该实体发送/发布消息的访问权限。 
+
+    ```csharp
+    var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
+                new Uri("Service-Bus-URI"),
+                "eventub-name",
+                "publisher-name",
+                "sas-key-name",
+                "sas-key",
+                TimeSpan.FromMinutes(30));
+    ```
+3. 向发布者客户端提供令牌，该客户端只能将消息发送到令牌授予了访问权限的实体和发布者。
+
+    令牌过期后，客户端将失去向该实体发送/发布消息的访问权限。 
 
 
 > [!NOTE]
-> 可为设备配置令牌，用于授予对事件中心的访问权限，但不建议这样做。 持有此令牌的任何设备都可以直接将消息发送到该事件中心。 此外，无法将设备列入阻止列表，使其无法向该事件中心发送消息。
+> 可为设备配置令牌，用于授予对事件中心或命名空间的访问权限，但不建议这样做。 持有此令牌的任何设备都可以直接将消息发送到该事件中心。 此外，无法将设备列入阻止列表，使其无法向该事件中心发送消息。
 > 
-> 向多个设备分发在命名空间级别授予访问权限的同一令牌时，可以观察到上述行为。 在这种情况下，无法隔离和撤销恶意的设备/发布者。 我们始终建议指定具体的精细范围。
+> 我们始终建议指定具体的精细范围。
 
 > [!IMPORTANT]
 > 创建令牌后，会为每个客户端设置其自身唯一的令牌。

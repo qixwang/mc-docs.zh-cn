@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
-description: 本文介绍如何监视、诊断并减少导致 Azure 时序见解延迟和限制的性能问题。
+title: 如何监视和降低限制 - Azure 时序见解 | Microsoft Docs
+description: 了解如何监视、诊断并减少在 Azure 时序见解中导致延迟和限制的性能问题。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,15 +10,15 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-origin.date: 10/10/2019
-ms.date: 11/04/2019
+origin.date: 11/21/2019
+ms.date: 12/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9216686409722aa06546dab155954e0a6ee093e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: d99db0ded62903982c124b2db0d9eb140bbdd4a1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335701"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -38,13 +38,13 @@ ms.locfileid: "72914354"
 
 警报有助于诊断并缓解环境导致的延迟问题。
 
-1. 在 Azure 门户中，选择“警报”  。
+1. 在 Azure 门户中，选择时序见解环境。 然后选择“警报”  。
 
-   [![警报](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![向时序见解环境添加警报](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. 然后将显示“创建规则”  面板。 在“条件”  下选择“添加”  。
 
-   [![添加警报](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![添加警报窗格](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. 接下来，配置信号逻辑的确切条件。
 
@@ -66,7 +66,7 @@ ms.locfileid: "72914354"
 
 1. 配置所需的信号逻辑后，直观地查看所选的警报规则。
 
-   [![入口](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![延迟视图和图表](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 
