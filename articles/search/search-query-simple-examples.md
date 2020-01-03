@@ -1,34 +1,34 @@
 ---
-title: 使用“简单”搜索语法的查询示例 - Azure 搜索
-description: 用于查询 Azure 搜索索引的全文搜索、筛选搜索、地理搜索、分面搜索和其他搜索字符串的简单查询示例。
-author: HeidiSteen
+title: 创建简单查询
+titleSuffix: Azure Cognitive Search
+description: 通过示例了解如何运行基于简单语法的查询，以便对 Azure 认知搜索索引进行全文搜索、筛选搜索、地理搜索、分面搜索。
 manager: nitinme
-tags: Simple query analyzer syntax
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 3438b87cf06c69344d3f104c2ba2a43b9591ae3b
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: d9a28a2bd18df3d22e7201e190d50d210beac409
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336495"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure 搜索中使用“简单”搜索语法的查询示例
+# <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
 
-[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对 Azure 搜索索引执行全文搜索查询。 简单查询分析器速度很快，处理对象是 Azure 搜索中的全文搜索、筛选及分面搜索和地理搜索等常见方案。 本文逐步展示了一些示例，它们显示在使用简单语法时可用的查询操作。
+在 Azure 认知搜索中，[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对索引执行全文搜索查询。 此分析程序速度快，处理对象是全文搜索、筛选及分面搜索和地理搜索等常见方案。 
 
-备选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅 [Lucene 语法查询示例](search-query-lucene-examples.md)。
+在本文中，我们使用示例来演示简单语法。
+
+备选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 
-下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
+下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 认知搜索即可试用这些查询。
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-get-started-postman.md)。
+要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[快速入门：使用 Postman 探索 Azure 认知搜索 REST API](search-get-started-postman.md)。
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
@@ -42,13 +42,13 @@ ms.locfileid: "71674399"
 
 ### <a name="set-the-request-url"></a>设置请求 URL
 
-请求是一个与包含 Azure 搜索终结点和搜索字符串的 URL 配对的 GET 命令。
+请求是一个与包含 Azure 认知搜索终结点和搜索字符串的 URL 配对的 GET 命令。
 
   ![Postman 请求标头](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL 组合具备以下元素：
 
-+ `https://azs-playground.search.chinacloudapi.cn/` 是由 Azure 搜索开发团队维护的沙盒搜索服务  。 
++ `https://azs-playground.search.chinacloudapi.cn/` 是由 Azure 认知搜索开发团队维护的沙盒搜索服务  。 
 + `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引  。 请求中需同时具备服务名称和索引。
 + `docs` 是包含所有可搜索内容的文档集合  。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
 + `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）  。
@@ -120,14 +120,14 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs/9E1E3AF9-066
 
 ## <a name="example-3-filter-queries"></a>示例 3：筛选器查询
 
-[筛选器语法](search-query-odata-filter.md)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
+[筛选器语法](https://docs.azure.cn/search/search-query-odata-filter)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "select=job_id, business_title, agency, salary_range_from",
+      "select": "job_id, business_title, agency, salary_range_from",
       "count": "true"
     }
 ```
@@ -148,13 +148,13 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](search-query-odata-full-text-search-functions.md#examples)。
+有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](https://docs.azure.cn/search/search-query-odata-full-text-search-functions#examples)。
 
 ## <a name="example-4-range-filters"></a>示例 4：范围筛选器
 
 通过任何数据类型的 **`$filter`** 表达式支持范围筛选。 以下示例搜索数字和字符串字段。 
 
-数据类型在范围筛选器中很重要，当数字数据位于数字字段且字符串数据位于字符串字段中时效果最佳。 由于 Azure 搜索中的数字字符串不可比较，因此字符串字段中的数字数据不适用于范围。 
+数据类型在范围筛选器中很重要，当数字数据位于数字字段且字符串数据位于字符串字段中时效果最佳。 由于 Azure 认知搜索中的数字字符串不可比较，因此字符串字段中的数字数据不适用于范围。 
 
 为方便阅读，以下示例采用 POST 格式（数字范围后接文本范围）：
 
@@ -199,7 +199,7 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 
 ## <a name="example-5-geo-search"></a>示例 5：地理搜索
 
-示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](search-query-odata-geo-spatial-functions.md#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
+示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](https://docs.azure.cn/search/search-query-odata-geo-spatial-functions#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
 
 为方便阅读，以下示例采用 POST 格式：
 
@@ -289,13 +289,13 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 ## <a name="next-steps"></a>后续步骤
 尝试在代码中指定查询。 以下链接介绍如何使用默认的简单语法为 .NET 和 REST API 设置搜索查询。
 
-* [使用 .NET SDK 查询 Azure 搜索索引](search-query-dotnet.md)
-* [使用 REST API 查询 Azure 搜索索引](search-create-index-rest-api.md)
+* [使用 .NET SDK 查询索引](search-query-dotnet.md)
+* [使用 REST API 查询索引](search-create-index-rest-api.md)
 
 可在以下链接找到其他语法参考、查询体系结构和示例：
 
 + [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
-+ [Azure 搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
 + [简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [完整 Lucene 查询](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [筛选器和 Orderby 语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

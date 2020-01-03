@@ -1,5 +1,5 @@
 ---
-title: 缩放单一数据库资源 - Azure SQL 数据库 | Microsoft Docs
+title: 缩放单一数据库资源
 description: 本文介绍如何在 Azure SQL 数据库中缩放适用于单一数据库的计算和存储资源。
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 04/26/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: d3aec8bae6940d8465ec2fdd6ca7d4d33c1ecafa
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.date: 12/16/2019
+ms.openlocfilehash: bf16a44c2325ffa9cf57d8a401312e294b1a437f
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70373017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334947"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
-本文介绍如何在预配的计算层级中缩放适用于单一数据库的计算和存储资源。 另外，[无服务器（预览版）计算层级](sql-database-serverless.md)提供自动缩放计算功能，并且按秒对使用的计算计费。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+本文介绍如何在预配的计算层级中缩放适用于 Azure SQL 数据库的计算和存储资源。 另外，[无服务器计算层级](sql-database-serverless.md)提供自动缩放计算功能，并且按秒对使用的计算计费。
 
 ## <a name="change-compute-size-vcores-or-dtus"></a>更改计算大小（vCore 或 DTU）
 
@@ -36,18 +32,18 @@ ms.locfileid: "70373017"
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小的影响
 
-更改单一数据库的服务层级或计算大小主要涉及到由服务执行的以下步骤：
+更改服务层级或计算大小主要涉及到由服务执行的以下步骤：
 
 1. 为数据库创建新的计算实例  
 
-    使用请求的服务层级和计算大小为数据库创建新的计算实例。 更改后，对于服务层级和计算大小的某些组合，必须在新的计算实例中创建数据库的副本，此过程涉及到数据复制，可能会对总体延迟造成很大的影响。 无论如何，在执行此步骤期间，数据库会保持联机，并且连接会继续定向到原始计算实例中的数据库。
+    使用请求的服务层级和计算大小创建新的计算实例。 更改后，对于服务层级和计算大小的某些组合，必须在新的计算实例中创建数据库的副本，此过程涉及到数据复制，可能会对总体延迟造成很大的影响。 无论如何，在执行此步骤期间，数据库会保持联机，并且连接会继续定向到原始计算实例中的数据库。
 
 2. 将连接路由切换到新的计算实例
 
-    将删除与原始计算实例中的数据库建立的现有连接。 将与新计算实例中的数据库建立任何新的连接。 更改后，对于服务层级和计算大小的某些组合，在切换期间会分离再重新附加数据库文件。  无论如何，切换操作都可能会导致服务出现短暂的中断，此时，数据库一般会出现 30 秒以下的不可用情况（通常只有几秒钟）。 如果连接断开时有长时间运行的事务正在运行，则此步骤的持续时间可能会变长，以便恢复中止的事务。
+    将删除与原始计算实例中的数据库建立的现有连接。 将与新计算实例中的数据库建立任何新的连接。 更改后，对于服务层级和计算大小的某些组合，在切换期间会分离再重新附加数据库文件。  无论如何，切换操作都可能会导致服务出现短暂的中断，此时，数据库一般会出现 30 秒以下的不可用情况（通常只有几秒钟）。 如果连接断开时有长时间运行的事务正在运行，则此步骤的持续时间可能会变长，以便恢复中止的事务。 [加速的数据库恢复](sql-database-accelerated-database-recovery.md)可以降低中止长期运行的事务的影响。
 
 > [!IMPORTANT]
-> 执行工作流中的任何步骤期间都不会丢失数据。
+> 执行工作流中的任何步骤期间都不会丢失数据。 确保已在特定的应用程序和组件中实现某些[重试逻辑](sql-database-connectivity-issues.md)，这些应用程序和组件在服务层级更改时使用 Azure SQL 数据库。
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小所造成的延迟
 
@@ -78,19 +74,17 @@ ms.locfileid: "70373017"
 
 #### <a name="powershell"></a>PowerShell
 
-从 PowerShell 命令提示符下，设置 `$ResourceGroupName`、`$ServerName` 和 `$DatabaseName`，然后运行以下命令：
+从 PowerShell 命令提示符下，设置 `$resourceGroupName`、`$serverName` 和 `$databaseName`，然后运行以下命令：
 
-```PowerShell
-$OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
-if(-not [string]::IsNullOrEmpty($OperationName))
-    {
-        (az sql db op cancel --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --name $OperationName)
-        "Operation " + $OperationName + " has been canceled"
-    }
-    else
-    {
-        "No service tier change or compute rescaling operation found"
-    }
+```powershell
+$operationName = (az sql db op list --resource-group $resourceGroupName --server $serverName --database $databaseName --query "[?state=='InProgress'].name" --out tsv)
+if (-not [string]::IsNullOrEmpty($operationName)) {
+    (az sql db op cancel --resource-group $resourceGroupName --server $serverName --database $databaseName --name $operationName)
+        "Operation " + $operationName + " has been canceled"
+}
+else {
+    "No service tier change or compute rescaling operation found"
+}
 ```
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小时的其他注意事项

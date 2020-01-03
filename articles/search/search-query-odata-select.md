@@ -1,14 +1,14 @@
 ---
-title: OData select 参考 - Azure搜索
-description: Azure 搜索查询中 select 语法的 OData 语言参考。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: v-tawe
+title: OData select 参考
+titleSuffix: Azure Cognitive Search
+description: 要在 Azure 认知搜索查询的搜索结果中返回的显式选择字段的语法和语言参考。
 manager: nitinme
+author: brjohnstmsft
+ms.author: v-tawe
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 43ba8e25ab8d2e34e17f02576b53e9fc9bf26115
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: 5dae620c13e295997328f499f06f0439de15f3af
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336496"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>Azure 搜索中的 OData $select 语法
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $select 语法
 
- 可以使用 [OData **$select** 参数](query-odata-filter-orderby-syntax.md)选择要包含在 Azure 搜索的搜索结果中的字段。 本文详细介绍 **$select** 的语法。 有关如何在呈现搜索结果时使用 **$select** 的更多常规信息，请参阅[如何在 Azure 搜索中使用搜索结果](search-pagination-page-layout.md)。
+ 可以使用 [OData **$select** 参数](query-odata-filter-orderby-syntax.md)选择要包含在 Azure 认知搜索的搜索结果中的字段。 本文详细介绍 **$select** 的语法。 有关如何在呈现搜索结果时使用 **$select** 的更多常规信息，请参阅[如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -43,13 +43,13 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 **$select** 参数有两种形式：
 
@@ -111,7 +111,7 @@ field_path ::= identifier('/'identifier)*
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [如何在 Azure 搜索中使用搜索结果](search-pagination-page-layout.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

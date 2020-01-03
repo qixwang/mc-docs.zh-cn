@@ -7,15 +7,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-origin.date: 08/25/2018
-ms.date: 10/15/2018
+origin.date: 11/08/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: d74ec708a80c90552ee3a8693e5a49e3445ec566
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.openlocfilehash: dee345843e674034caf0fab8812f5bec971ca355
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69538753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336104"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
 
@@ -39,7 +39,7 @@ ms.locfileid: "69538753"
 
    如果不熟悉逻辑应用，请查看[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“http 请求”。 从触发器列表中选择此触发器：**收到 HTTP 请求时**
+1. 在搜索框中输入 `http request`。 从触发器列表中选择“当收到 HTTP 请求时”触发器。 
 
    ![选择触发器](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "69538753"
 
 1. 在你的函数应用名称下，展开“函数”。  在“函数”窗格中，选择“新建函数”。  
 
-   ![展开“函数”，选择“新建函数”](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![展开“函数”，选择“新建函数”](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. 根据你是创建新的函数应用（在其中选择 .NET 作为运行时堆栈）还是使用现有的函数应用来选择此模板。
 
@@ -119,7 +119,15 @@ ms.locfileid: "69538753"
 
 1. 在“Azure 服务总线队列触发器”窗格中，为你的触发器提供一个名称，然后为队列设置使用 Azure 服务总线 SDK `OnMessageReceive()` 侦听器的“服务总线连接”，然后选择“创建”。   
 
-1. 编写一个基本函数，用以通过将队列消息用作触发器来调用之前创建的逻辑应用终结点。 此示例使用 `application/json` 消息内容类型，不过可以根据需要更改此类型。 可能情况下，重复使用 HTTP 客户端的实例。 有关详细信息，请参阅[在 Azure Functions 中管理连接](../azure-functions/manage-connections.md)。
+1. 编写一个基本函数，用以通过将队列消息用作触发器来调用之前创建的逻辑应用终结点。 在编写函数之前，请查看以下注意事项：
+
+   * 此示例使用 `application/json` 消息内容类型，不过可以根据需要更改此类型。
+   
+   * 考虑到函数可能并发运行、量大或负载大，请避免使用 `using` 语句实例化 [HTTPClient 类](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)，并避免直接按请求创建 HTTPClient 实例。 有关详细信息，请参阅[使用 HttpClientFactory 实现可复原的 HTTP 请求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
+   
+   * 可能情况下，重复使用 HTTP 客户端的实例。 有关详细信息，请参阅[在 Azure Functions 中管理连接](../azure-functions/manage-connections.md)。
+
+   此示例以[异步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式使用 [`Task.Run` 方法](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)。 有关详细信息，请参阅[使用 async 和 await 进行异步编程](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
 
    ```CSharp
    using System;
@@ -127,18 +135,16 @@ ms.locfileid: "69538753"
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.chinaeast.logic.azure.cn:443/workflows/<remaining-callback-URL>";
 
    // Reuse the instance of HTTP clients if possible
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-   
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 

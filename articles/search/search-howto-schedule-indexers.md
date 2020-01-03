@@ -1,31 +1,32 @@
 ---
-title: 如何计划索引器 - Azure 搜索
-description: 计划 Azure 搜索索引器，以定期或在特定时间为内容编制索引。
-ms.date: 09/26/2019
+title: 计划索引器执行
+titleSuffix: Azure Cognitive Search
+description: 计划 Azure 认知搜索索引器，以定期或在特定时间为内容编制索引。
 author: HeidiSteen
 manager: nitinme
 ms.author: v-tawe
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: f0d1c883f06ce4c21cfd5334152d953ec3f4fafb
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 8c8b4acb0dffb0b8c13522dce7c99b1a224c44e9
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336524"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>如何计划 Azure 搜索的索引器
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何计划 Azure 认知搜索中的索引器
+
 通常，在创建索引器后，该索引器会紧接着运行一次。 可以使用门户、REST API 或 .NET SDK 按需再次运行该索引器。 还可以将索引器配置为按计划定期运行。
 
 在某些情况下，计划索引器会很有作用：
 
-* 源数据随时更改，你希望 Azure 搜索索引器自动处理更改的数据。
+* 源数据随时更改，你希望 Azure 认知搜索索引器自动处理更改的数据。
 * 索引从多个数据源填充，你想要确保索引器在不同的时间运行，以减少冲突。
-* 源数据极大，你想要将索引器的处理负载分散到不同的时间。 有关对大量数据编制索引的详细信息，请参阅[如何在 Azure 搜索中为大型数据集编制索引](search-howto-large-index.md)。
+* 源数据极大，你想要将索引器的处理负载分散到不同的时间。 有关对大量数据编制索引的详细信息，请参阅[如何在 Azure 认知搜索中为大型数据集编制索引](search-howto-large-index.md)。
 
-计划程序是 Azure 搜索的内置功能。 无法使用外部计划程序来控制搜索索引器。
+计划程序是 Azure 认知搜索的内置功能。 无法使用外部计划程序来控制搜索索引器。
 
 ## <a name="define-schedule-properties"></a>定义计划属性
 
@@ -48,7 +49,7 @@ ms.locfileid: "71674472"
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>在门户中定义计划
+## <a name="schedule-in-the-portal"></a>在门户中计划
 
 在创建时，可以使用门户中的“导入数据”向导来定义索引器的计划。 默认的“计划”设置为“小时”，即，索引器在创建后将运行一次，然后每隔一小时再次运行。 
 
@@ -64,7 +65,7 @@ ms.locfileid: "71674472"
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>使用 REST API 定义计划
+## <a name="schedule-using-rest-apis"></a>使用 REST API 进行计划
 
 可以使用 REST API 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。 以下示例演示了用于更新现有索引器的 PUT 请求：
 
@@ -86,9 +87,9 @@ ms.locfileid: "71674472"
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>使用 .NET SDK 定义计划
+## <a name="schedule-using-the-net-sdk"></a>使用 .NET SDK 进行计划
 
-可以使用 Azure 搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。
+可以使用 Azure 认知搜索 .NET SDK 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。
 
 以下 C# 示例使用预定义的数据源和索引创建一个索引器，并将其计划设置为从现在起的 30 分钟开始每天运行一次：
 

@@ -1,24 +1,24 @@
 ---
-title: 为要导入和编制索引的 SQL 关系数据建模 - Azure 搜索
-description: 了解如何为关系数据建模，将其反规范化为平展数据集，以便在 Azure 搜索中编制索引和执行全文本搜索。
+title: 为要导入和编制索引的 SQL 关系数据建模
+titleSuffix: Azure Cognitive Search
+description: 了解如何为关系数据建模，将其反规范化为平展数据集，以便在 Azure 认知搜索中编制索引和执行全文本搜索。
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 09/12/2019
-ms.date: 09/12/2019
 ms.author: v-tawe
-ms.openlocfilehash: f3b43ed9babea0759c3576f866934d66110c9573
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: f398e99d2ea9c6d33976989e2b02fe9d3a152b2d
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336150"
 ---
-# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>如何为 Azure 搜索中要导入和编制索引的 SQL 关系数据建模
+# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>如何为 Azure 认知搜索中要导入和编制索引的 SQL 关系数据建模
 
-Azure 搜索接受使用平展行集作为[索引编制管道](search-what-is-an-index.md)的输入。 如果源数据源自 SQL Server 关系数据库中的联接表，你可以参考本文来构造结果集，以及在 Azure 搜索索引中为父子关系建模。
+Azure 认知搜索接受使用平展行集作为[索引编制管道](search-what-is-an-index.md)的输入。 如果源数据源自 SQL Server 关系数据库中的联接表，你可以参考本文来构造结果集，以及在 Azure 认知搜索索引中为父子关系建模。
 
 为便于演示，我们将基于[演示数据](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels)引用一个虚构的酒店数据库。 假设该数据库包括一个 Hotels$ 表（其中包含 50 家酒店），以及一个 Rooms$ 表（其中包含各种类型的提供不同价格和设施的总共 750 间客房）。 表之间存在一对多关系。 在我们的方法中，某个视图将提供返回 50 行（每家酒店各对应一行）以及嵌入到每行中的关联客房详细信息的查询。
 
@@ -27,7 +27,7 @@ Azure 搜索接受使用平展行集作为[索引编制管道](search-what-is-an
 
 ## <a name="the-problem-of-denormalized-data"></a>反规范化数据的问题
 
-使用一对多关系的一个难题在于，基于联接表生成的标准查询将返回反规范化的数据，这在 Azure 搜索方案中无法顺利运行。 考虑以下联接酒店和客房的示例。
+使用一对多关系的一个难题在于，基于联接表生成的标准查询将返回反规范化的数据，这在 Azure 认知搜索方案中无法顺利运行。 考虑以下联接酒店和客房的示例。
 
 ```sql
 SELECT * FROM Hotels$
@@ -39,13 +39,13 @@ ON Rooms$.HotelID = Hotels$.HotelID
    ![反规范化数据，添加客房字段后多余的酒店数据](media/index-sql-relational-data/denormalize-data-query.png "反规范化数据，添加客房字段后多余的酒店数据")
 
 
-尽管此查询表面上可以成功（提供平整行集中的所有数据），但它无法为预期的搜索体验提供正确的文档结构。 在编制索引期间，Azure 搜索将为引入的每个行创建一个搜索文档。 如果搜索文档类似于上述结果，则你会看到重复项 - 单单是 Twin Dome 酒店就有七个不同的文档。 根据“佛罗里达州的酒店”进行查询只会返回 Twin Dome 酒店的七条结果，而其他相关酒店则深藏在搜索结果中。
+尽管此查询表面上可以成功（提供平整行集中的所有数据），但它无法为预期的搜索体验提供正确的文档结构。 在编制索引期间，Azure 认知搜索将为引入的每个行创建一个搜索文档。 如果搜索文档类似于上述结果，则你会看到重复项 - 单单是 Twin Dome 酒店就有七个不同的文档。 根据“佛罗里达州的酒店”进行查询只会返回 Twin Dome 酒店的七条结果，而其他相关酒店则深藏在搜索结果中。
 
 若要获得每家酒店只有一个文档的预期体验，应以适当的粒度提供一个行集，但同时需要提供完整的信息。 幸运的是，采用本文中所述的方法可以轻松实现此目的。
 
 ## <a name="define-a-query-that-returns-embedded-json"></a>定义返回嵌入式 JSON 的查询
 
-若要提供预期的搜索体验，数据集应为 Azure 搜索中的每个搜索文档包括一行。 在本示例中，我们希望每家酒店只有一行，但同时希望用户能够搜索他们所关心的其他客房相关字段，例如，每晚的价格、床位的尺寸和数量，或者沙滩景观，所有这些信息都是客房详细信息的一部分。
+若要提供预期的搜索体验，数据集应为 Azure 认知搜索中的每个搜索文档包括一行。 在本示例中，我们希望每家酒店只有一行，但同时希望用户能够搜索他们所关心的其他客房相关字段，例如，每晚的价格、床位的尺寸和数量，或者沙滩景观，所有这些信息都是客房详细信息的一部分。
 
 解决方法是捕获嵌套 JSON 格式的客房详细信息，然后将 JSON 结构插入到视图中的字段，如第二步中所述。 
 
@@ -105,14 +105,14 @@ ON Rooms$.HotelID = Hotels$.HotelID
 
    ![HotelRooms 视图中的行集](media/index-sql-relational-data/hotelrooms-rowset.png "HotelRooms 视图中的行集")
 
-此行集现已准备好导入 Azure 搜索。
+此行集现已准备好导入 Azure 认知搜索。
 
 > [!NOTE]
-> 此方法假设嵌入的 JSON 低于 [SQL Server 的最大列大小限制](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)。 如果数据不合适，可以尝试编程方法，如[示例：为 Azure 搜索的 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)中所述。
+> 此方法假设嵌入的 JSON 低于 [SQL Server 的最大列大小限制](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)。 如果数据不合适，可以尝试编程方法，如[示例：为 Azure 认知搜索的 AdventureWorks Inventory 数据库建模](search-example-adventureworks-modeling.md)中所述。
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>为一对多关系的“多”端使用复杂集合
 
-在 Azure 搜索端，创建一个使用嵌套式 JSON 为一对多关系建模的索引架构。 在上一部分创建的结果集通常对应于下面提供的索引架构（为简洁起见，我们截掉了一些字段）。
+在 Azure 认知搜索端，创建一个使用嵌套式 JSON 为一对多关系建模的索引架构。 在上一部分创建的结果集通常对应于下面提供的索引架构（为简洁起见，我们截掉了一些字段）。
 
 以下示例类似于[如何为复杂数据类型建模](search-howto-complex-data-types.md#creating-complex-fields)中的示例。 *Rooms* 结构（本文的重点所在）位于索引的名为 *hotels* 的字段集合中。 此示例还显示了 *Address* 的复杂类型，该类型与 *Rooms* 的不同之处在于，它包含一组固定的项，而不是集合中允许的多个任意数量的项。
 
@@ -149,7 +149,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
 }
 ```
 
-在给定上述结果集和上述索引架构后，你便获得了成功完成索引编制操作所需的全部组件。 平展数据集符合索引编制要求，同时可以保留详细信息。 在 Azure 搜索索引中，搜索结果很容易变成基于酒店的实体，同时可以保留各个客房及其属性的上下文。
+在给定上述结果集和上述索引架构后，你便获得了成功完成索引编制操作所需的全部组件。 平展数据集符合索引编制要求，同时可以保留详细信息。 在 Azure 认知搜索索引中，搜索结果很容易变成基于酒店的实体，同时可以保留各个客房及其属性的上下文。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,14 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/29/2019
+origin.date: 05/22/2019
+ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 3ea093c3ed4d5c5eb136b6efa5e5ff05c68b4d2d
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: d1b2ecdadf13472cef03deab67813d0d97219258
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336180"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -31,6 +32,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 * 使用[事件网格连接器](https://docs.microsoft.com/connectors/azureeventgrid/)的 Azure 逻辑应用
 * 通过 [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) 实现 Azure 自动化
+* 使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)的 Azure Functions
 
 如果使用其他任何类型的终结点（例如基于 HTTP 触发器的 Azure 函数），终结点代码需要参与事件网格的验证握手。 事件网格支持通过两种方式来验证订阅。
 
@@ -84,9 +86,9 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
-你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。
+你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。Http 请求必须在 30 秒内完成。 如果操作没有在 30 秒内完成，系统会将该操作取消，并可能在 5 秒后重新尝试它。 如果所有尝试均失败，系统会将它视为验证握手错误。
 
-另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。
+另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。验证 Url 使用端口 553。 如果防火墙规则阻止端口 553，则可能需更新规则才能成功进行手动握手。
 
 有关处理订阅验证握手的示例，请参阅 [C# 示例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)。
 
@@ -101,9 +103,14 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 ### <a name="event-delivery-security"></a>事件传递安全性
 
+#### <a name="azure-ad"></a>Azure AD
+
+可以对 Webhook 终结点进行保护，方法是：使用 Azure Active Directory 对事件网格进行身份验证和授权，以便将事件发布到终结点。 需创建 Azure Active Directory 应用程序、在对事件网格授权的应用程序中创建角色和服务主体，以及将事件订阅配置为使用 Azure AD 应用程序。 [了解如何为 AAD 配置事件网格](secure-webhook-delivery.md)。
+
+#### <a name="query-parameters"></a>查询参数
 在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为某个机密，例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用该机密来识别事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
 
-编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](/cli/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
+编辑事件订阅时，除非在 Azure [CLI](/cli?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](/cli/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
 
 最后，请务必注意 Azure 事件网格仅支持 HTTPS Webhook 终结点。
 
@@ -203,7 +210,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 你可以[将这些角色分配给用户或组](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-**EventGrid EventSubscription 参与者（预览）** ：管理事件网格订阅操作
+**EventGrid EventSubscription 参与者**：管理事件网格订阅操作
 
 ```json
 [
@@ -211,7 +218,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
     "Description": "Lets you manage EventGrid event subscription operations.",
     "IsBuiltIn": true,
     "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor (Preview)",
+    "Name": "EventGrid EventSubscription Contributor",
     "IsServiceRole": false,
     "Permissions": [
       {
@@ -247,7 +254,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
     "Description": "Lets you read EventGrid event subscriptions.",
     "IsBuiltIn": true,
     "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader (Preview)",
+    "Name": "EventGrid EventSubscription Reader",
     "IsServiceRole": false,
     "Permissions": [
       {

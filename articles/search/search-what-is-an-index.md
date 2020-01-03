@@ -1,27 +1,26 @@
 ---
-title: 创建索引定义和概念 - Azure 搜索
-description: 介绍 Azure 搜索中的索引术语和概念，包括组成部分和物理结构。
-author: HeidiSteen
+title: 创建索引定义和概念
+titleSuffix: Azure Cognitive Search
+description: 介绍 Azure 认知搜索中的索引术语和概念，包括组成部分和物理结构。
 manager: nitinme
+author: HeidiSteen
 ms.author: v-tawe
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 5d05f8ea6f85092b752ea1ab6d8f38688c404213
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: a6ae76da677bf1e62c89b29c61c205b39cee23a1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674391"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336479"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>在 Azure 搜索中创建基本索引
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建基本索引
 
-在 Azure 搜索中，*索引*是用于在 Azure 搜索服务上进行筛选和全文搜索的*文档*和其他构造的持久存储。 从概念上讲，文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
+在 Azure 认知搜索中，*索引*是用于在 Azure 认知搜索服务上进行筛选和全文搜索的*文档*和其他构造的持久存储。 从概念上讲，文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
 
-添加或上传索引时，Azure 搜索将根据提供的架构创建物理基础结构。 例如，如果将索引中的某个字段标记为可搜索，则为该字段创建倒排索引。 以后在 Azure 搜索中添加或上传文档或者提交搜索查询时，将向搜索服务中的特定索引发送请求。 加载包含文档值的字段称为索引编制或数据引入。 
+添加或上传索引时，Azure 认知搜索将根据提供的架构创建物理基础结构。 例如，如果将索引中的某个字段标记为可搜索，则为该字段创建倒排索引。 以后在 Azure 认知搜索中添加或上传文档或者提交搜索查询时，将向搜索服务中的特定索引发送请求。 加载包含文档值的字段称为索引编制或数据引入。 
 
 可以在门户、[REST API](search-create-index-rest-api.md) 或 [.NET SDK](search-create-index-dotnet.md) 中创建索引。
 
@@ -41,7 +40,7 @@ ms.locfileid: "71674391"
 
    接下来，你将切换到基于代码的方法。 门户并不十分适合用于迭代，因为在其中无法编辑已创建的索引。 但是，可以使用 Postman 和 REST 完成剩余的任务。
 
-4. [加载索引和数据](search-what-is-data-import.md)。 Azure 搜索接受 JSON 文档。 若要以编程方式加载数据，可以在请求有效负载中使用包含 JSON 文档的 Postman。 如果无法轻松将数据表示为 JSON，此步骤耗费的精力是最大的。
+4. [加载索引和数据](search-what-is-data-import.md)。 Azure 认知搜索接受 JSON 文档。 若要以编程方式加载数据，可以在请求有效负载中使用包含 JSON 文档的 Postman。 如果无法轻松将数据表示为 JSON，此步骤耗费的精力是最大的。
 
 5. 查询索引，检查结果，并进一步迭代索引架构，直到开始看到预期的结果。 可以使用[**搜索资源管理器**](search-explorer.md)或 Postman 来查询索引。
 
@@ -53,7 +52,7 @@ ms.locfileid: "71674391"
 
 ## <a name="components-of-an-index"></a>索引的组成部分
 
-从架构上讲，Azure 搜索索引由以下元素组成。 
+从架构上讲，Azure 认知搜索索引由以下元素组成。 
 
 [*字段集合*](#fields-collection)通常是索引的最大组成部分，其中每个字段都已命名、类型化，并具有允许行为的属性（确定该字段的用法）。 其他元素包括[建议器](#suggesters)、[评分配置文件](#scoring-profiles)、[分析器](#analyzers)（其组成部分用于支持自定义项）、[CORS](#cors) 和[加密密钥](#encryption-key)选项。
 
@@ -158,7 +157,7 @@ ms.locfileid: "71674391"
 | *Edm.DateTimeOffset* |以 OData V4 格式表示的日期时间值（例如 `yyyy-MM-ddTHH:mm:ss.fffZ` 或 `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`）。 |
 | *Edm.GeographyPoint* |表示地球上的地理位置的点。 |
 
-若要深入了解 Azure 搜索支持的数据类型，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
+若要深入了解 Azure 认知搜索支持的数据类型，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
 
 ### <a name="index-attributes"></a>索引属性
 
@@ -191,7 +190,7 @@ ms.locfileid: "71674391"
 支持筛选和排序的索引在比例上大于仅支持全文搜索的索引。 原因在于，筛选和排序操作基于精确匹配执行查询，因此文档将按原样存储。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。
 
 > [!Note]
-> 存储体系结构被视为 Azure 搜索的实现细节，随时可能在不另行通知的情况下进行更改。 不保证将来仍会保持当前的行为。
+> 存储体系结构被视为 Azure 认知搜索的实现细节，随时可能在不另行通知的情况下进行更改。 不保证将来仍会保持当前的行为。
 
 ## <a name="suggesters"></a>建议器
 建议器是定义要使用索引中的哪些字段来支持搜索中的自动填写或提前键入查询的架构部分。 当用户尝试键入搜索查询时，通常将部分搜索字符串发送到[建议 (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions)，该 API 返回一组建议的短语。 
@@ -206,7 +205,7 @@ ms.locfileid: "71674391"
 
 ## <a name="analyzers"></a>分析器
 
-分析器元素设置用于字段的语言分析器的名称。 有关可用的分析器范围的详细信息，请参阅[将分析器添加到 Azure 搜索索引](search-analyzers.md)。 分析器仅适用于可搜索字段。 将分析器分配到字段后，除非重新生成索引，否则无法更改分析器。
+分析器元素设置用于字段的语言分析器的名称。 有关可用的分析器范围的详细信息，请参阅[将分析器添加到 Azure 认知搜索索引](search-analyzers.md)。 分析器仅适用于可搜索字段。 将分析器分配到字段后，除非重新生成索引，否则无法更改分析器。
 
 ## <a name="cors"></a>CORS
 
@@ -222,7 +221,7 @@ ms.locfileid: "71674391"
 
 ## <a name="encryption-key"></a>加密密钥
 
-虽然默认情况下会使用 Microsoft 管理的密钥加密所有 Azure 搜索索引，但索引可以配置为使用密钥保管库中**客户管理的密钥**进行加密。 若要了解详细信息，请参阅[在 Azure 搜索中管理加密密钥](search-security-manage-encryption-keys.md)。
+虽然默认情况下会使用 Microsoft 管理的密钥加密所有 Azure 认知搜索索引，但索引可以配置为使用密钥保管库中**客户管理的密钥**进行加密。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

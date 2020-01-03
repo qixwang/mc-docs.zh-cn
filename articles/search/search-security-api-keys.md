@@ -1,24 +1,22 @@
 ---
-title: 创建、管理和保护管理员和查询 API 密钥 - Azure 搜索
+title: 创建、管理和保护管理员和查询 API 密钥
+titleSuffix: Azure Cognitive Search
 description: API 密钥控制服务终结点的访问权限。 管理员密钥授予写入权限。 可为只读访问权限创建查询密钥。
-author: HeidiSteen
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.openlocfilehash: 7cac8d2a3f7595a695dbbea056f367da71e3328d
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 6a96574dce53ce7c22e0550895e4db30014d3078
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336489"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>创建和管理 Azure 搜索服务的 API 密钥
+# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>创建和管理 Azure 认知搜索服务的 API 密钥
 
 对搜索服务的所有请求都需要专为服务生成的只读 API 密钥。 API 密钥是用于验证搜索服务终结点的访问的唯一机制，必须包含在每个请求中。 在 [REST 解决方案](search-get-started-postman.md)中，API 密钥通常在请求标头中指定。 在 [.NET 解决方案](search-howto-dotnet-sdk.md#core-scenarios)中，密钥通常以配置设置的形式指定，然后在 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) 上作为[凭据](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials)（管理密钥）或 [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials)（查询密钥）传递。
 
@@ -40,7 +38,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
  在表面上，管理密钥与查询密钥之间没有区别。 这两个密钥都是由 32 个随机生成的字母数字字符组成的字符串。 如果无法跟踪应用程序中指定了哪种类型的密钥，可以[在门户中检查密钥值](https://portal.azure.cn)，或使用 [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 返回值和密钥类型。  
 
 > [!NOTE]  
->  在请求 URI 中传递敏感数据（例如 `api-key`）被认为是不良的安全做法。 为此，Azure 搜索只接受查询字符串中 `api-key` 形式的查询密钥。除非必须公开索引的内容，否则应避免这样做。 作为经验法则，我们建议以请求标头的形式传递 `api-key`。  
+>  在请求 URI 中传递敏感数据（例如 `api-key`）被认为是不良的安全做法。 为此，Azure 认知搜索只接受查询字符串中 `api-key` 形式的查询密钥。除非必须公开索引的内容，否则应避免这样做。 作为经验法则，我们建议以请求标头的形式传递 `api-key`。  
 
 ## <a name="find-existing-keys"></a>查找现有密钥
 
@@ -67,7 +65,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
    ![创建或使用查询密钥](media/search-security-overview/create-query-key.png) 
 
 > [!Note]
-> 在[查询以 C# 编写的 Azure 搜索索引](search-query-dotnet.md)中可以找到一个演示查询密钥用法的代码示例。
+> 在[查询以 C# 编写的 Azure 认知搜索索引](search-query-dotnet.md)中可以找到一个演示查询密钥用法的代码示例。
 
 <a name="regenerate-admin-keys"></a>
 
@@ -82,7 +80,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 如果无意中同时重新生成了这两个密钥，则使用这些密钥的所有客户端请求将会失败并出现“HTTP 403 禁止访问”。 但是，内容不会删除，并且不会将你永久性地锁定在系统之外。 
 
-仍可以通过门户或管理层（[REST API](https://docs.microsoft.com/rest/api/searchmanagement/)、[PowerShell](search-manage-powershell.md) 或 Azure 资源管理器）访问服务。 管理功能是通过订阅 ID 而不是服务 API 密钥运行的，因此，即使 API 密钥不可用，这些功能也仍可用。 
+仍可以通过门户或管理层（[REST API](https://docs.microsoft.com/rest/api/searchmanagement/)、[PowerShell](https://docs.azure.cn/search/search-manage-powershell) 或 Azure 资源管理器）访问服务。 管理功能是通过订阅 ID 而不是服务 API 密钥运行的，因此，即使 API 密钥不可用，这些功能也仍可用。 
 
 通过门户或管理层创建新的密钥后，只要在请求中提供这些新密钥，就会恢复对内容（索引、索引器、数据源、同义词映射）的访问权限。
 
@@ -98,6 +96,6 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 ## <a name="see-also"></a>另请参阅
 
-+ [Azure 搜索中基于角色的访问控制](search-security-rbac.md)
++ [Azure 认知搜索中基于角色的访问控制](search-security-rbac.md)
 + [使用 PowerShell 管理](search-manage-powershell.md) 
 + [性能和优化文章](search-performance-optimization.md)

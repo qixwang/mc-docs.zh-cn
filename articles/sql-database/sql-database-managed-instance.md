@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例概述 | Microsoft Docs
+title: SQL 托管实例概述
 description: 本文介绍 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab, vanto
-origin.date: 08/05/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 5b8fbf656dd1f25ce67428b1bf3aa074f56c109e
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+origin.date: 11/27/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: c5d24a0b877a2715c606e7cfece63d413f8628c1
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336137"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -47,7 +47,7 @@ ms.locfileid: "73041226"
 | --- | --- |
 |无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](sql-database-high-availability.md) <br>使用[自动备份](sql-database-automated-backups.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[数据库时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能 |
 |**安全性和符合性** | **Management**|
-|隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>（公开预览版）  <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[高级威胁防护](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
+|隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a> <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[高级威胁防护](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
 > [!IMPORTANT]
 > Azure SQL 数据库（所有部署选项）已通过了许多符合性标准的认证。 有关详细信息，请参阅 [Azure 信任中心](https://www.trustcenter.cn/zh-cn/compliance/default.html)，可以从中找到 SQL 数据库符合性认证的最新列表。
@@ -78,7 +78,7 @@ ms.locfileid: "73041226"
 在 vCore 模型中，可在以下两代硬件中进行选择。
 
 - **第 4 代**逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器，采用附加 SSD，物理核心（每个核心 7 GB RAM），计算大小为 8 到 24 个 vCore。
-- **第 5 代**逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器，采用快速 NVMe SSD，超线程逻辑核心，计算大小为 4 到 80 个核心。
+- **第 5 代**逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake) 处理器，采用快速 NVMe SSD，超线程逻辑核心，计算大小为 4 到 80 个核心。
 
 若要详细了解两代硬件之间的区别，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
 
@@ -129,7 +129,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作来自动部�
 所有管理操作可分类为：
 
 - 实例部署（新实例的创建）。 
-- 实例更新（更改实例属性，例如 vCore 数、预留存储，等等）。
+- 实例更新（更改实例属性，例如 vCore 数或预留存储）。
 - 实例删除。
 
 通常，在虚拟群集上执行的操作花费的时间最长。 在虚拟群集上执行的操作的持续时间各不相同 - 下面是根据现有的服务遥测数据通常预期到的值：
@@ -175,7 +175,11 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作来自动部�
 在执行更新操作期间，托管实例可用，但更新结束时发生的故障转移会造成短时间的停机（通常，停机持续时间最长为 10 秒）。
 
 > [!IMPORTANT]
-> 如果长时间的恢复导致数据库上发生长时间运行的事务，故障转移持续时间可能会有很大的差异。 因此，不建议使用长时间运行的事务（数据导入、数据处理作业、索引重新生成等）来同时缩放 Azure SQL 数据库托管实例的计算或存储，或更改服务层级。 在操作结束时执行的数据库故障转移将取消正在进行的事务，并导致恢复时间变长。
+> 如果[长时间的恢复](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)导致数据库上发生长时间运行的事务，故障转移持续时间可能会有很大的差异。 因此，不建议使用长时间运行的事务（数据导入、数据处理作业、索引重新生成等）来同时缩放 Azure SQL 数据库托管实例的计算或存储，或更改服务层级。 在操作结束时执行的数据库故障转移将取消正在进行的事务，并导致恢复时间变长。
+
+[加速数据库恢复](sql-database-accelerated-database-recovery.md)目前不适用于 Azure SQL 数据库托管实例。 启用后，此功能会显著降低故障转移时间的差异，即使在事务长时间运行的情况下也是如此。
+
+
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
@@ -215,7 +219,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 托管实例部署选项支持传统的 SQL Server 数据库引擎登录名，以及与 Azure Active Directory (AAD) 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本  。 使用 Azure AD 服务器主体（登录名）可将 Azure Active Directory 租户中的用户和组指定为真正的实例范围的主体，能够执行任何实体级操作，包括在同一托管实例内执行跨数据库查询。
 
-引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：FROM EXTERNAL PROVIDER   。 有关该语法的详细信息，请参阅 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为托管实例预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)一文。
+引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：**FROM EXTERNAL PROVIDER**。 有关该语法的详细信息，请参阅 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为托管实例预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)一文。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 

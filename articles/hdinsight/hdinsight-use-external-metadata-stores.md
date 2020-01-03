@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/27/2019
+origin.date: 10/29/2019
 ms.author: v-yiso
-ms.date: 10/21/2019
-ms.openlocfilehash: 8bfd5134dff5c8e6572939af9f53fd9d679fdebf
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.date: 12/23/2019
+ms.openlocfilehash: abbb0863552d10fd6f76fb87cbb1b3f30716b03e
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292491"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335928"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
+
+可以通过 HDInsight 来控制数据和元数据，方法是：将关键元数据解决方案和管理数据库部署到外部数据存储。 此功能目前适用于 [Apache Hive 元存储](#custom-metastore)、[Apache Oozie 元存储](#apache-oozie-metastore)和 [Apache Ambari 数据库](#custom-ambari-db)。
 
 HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部分。 元存储是可供其他大数据访问工具（例如 Apache Spark、交互式查询 (LLAP)、Presto 或 Apache Pig）使用的中央架构存储库。 HDInsight 使用 Azure SQL 数据库作为 Hive 元存储。
 
@@ -56,16 +58,23 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 ![HDInsight Hive 元数据存储使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>针对自定义元存储创建并配置 Azure SQL 数据库
+
+在为 HDInsight 群集设置自定义 Hive 元存储之前，需创建 Azure SQL 数据库或有一个现有的 Azure SQL 数据库。  有关详细信息，请参阅[快速入门：在 Azure SQL DB 中创建单一数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
+
+若要确保 HDInsight 群集能够访问连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，允许 Azure 服务和资源访问服务器。
+
+可以在 Azure 门户中启用此选项，方法是：单击“设置服务器防火墙”，  然后在“允许 Azure 服务和资源访问此服务器”下单击“启用”（针对 Azure SQL 数据库服务器或数据库）。   有关详细信息，请参阅[创建和管理 IP 防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+
+![“设置服务器防火墙”按钮](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+
+![允许 Azure 服务访问](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在群集创建期间选择自定义元存储
 
 可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 通过 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，依次访问“存储”和“元存储”  设置来指定此选项。
 
-![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
-
-还可通过 Azure 门户或 Ambari 配置（“Hive”>“高级”）向自定义云存储添加其他群集
-
-![HDInsight Hive 元数据存储 Ambari](./media/hdinsight-use-external-metadata-stores/metadata-store-ambari.png)
+![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
 ## <a name="hive-metastore-best-practices"></a>Hive 元存储最佳做法
 
@@ -86,6 +95,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。  Oozie 支持对 Apache MapReduce、Pig 和 Hive 等模型执行 Hadoop 作业。  Oozie 使用元存储来存储当前工作流及历史工作流的相关详细信息。 可使用 Azure SQL 数据库作为自定义元存储，提高使用 Oozie 时的性能。 删除群集后，还可通过云存储访问 Oozie 作业数据。
 
 若要了解如何使用 Azure SQL 数据库创建 Oozie 元存储，请参阅[使用 Apache Oozie 处理工作流](hdinsight-use-oozie-linux-mac.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

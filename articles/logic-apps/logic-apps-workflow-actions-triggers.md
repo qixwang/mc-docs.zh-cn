@@ -9,13 +9,13 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 origin.date: 06/19/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 58601d9722addfba549ddbeeaf02d925e0ac5fc5
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 12/23/2019
+ms.openlocfilehash: 65471a5669a6f1566bab56e8f162f9d0e3f7c95b
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425964"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334566"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -281,12 +281,14 @@ ms.locfileid: "73425964"
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -304,27 +306,27 @@ ms.locfileid: "73425964"
 
 *必需*
 
-| Value | 类型 | 说明 | 
-|-------|------|-------------| 
-| <method-type  > | String | 用于轮询指定终结点的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
-| <endpoint-URL  > | String | 要轮询的终结点的 HTTP 或 HTTPS URL <p>最大字符串大小：2 KB | 
-| <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
-|||| 
+| 属性 | Value | 类型 | 说明 |
+|----------|-------|------|-------------|
+| `method` | <method-type  > | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
+| `uri` | <HTTP-or-HTTPS-endpoint-URL>  | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
+| `frequency` | <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” |
+| `interval` | <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
+|||||
 
 *可选*
 
-| Value | 类型 | 说明 | 
-|-------|------|-------------| 
-| <header-content  > | JSON 对象 | 与请求一同发送的标头 <p>例如，设置请求的语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <body-content  > | String | 要作为有效负载与请求一同发送的消息内容 | 
-| <authentication-method  > | JSON 对象 | 请求用于身份验证的方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://login.windows.net`，但也可使用其他值，例如 `https://login.windows\-ppe.net`。 |
-| <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |  
- <query-parameters  > | JSON 对象 | 要包括在请求中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到请求。 | 
-| <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
-| <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
-|||| 
+| 属性 | Value | 类型 | 说明 |
+|----------|-------|------|-------------|
+| `headers` | <header-content  > | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <query-parameters  > | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到请求。 |
+| `body` | <body-content  > | JSON 对象 | 要作为有效负载与请求一同发送的消息内容 |
+| `authentication` | <*authentication-type-and-property-values*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
+| `retryPolicy` > `type` | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
+| `runs` | <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 |
+| `maximumWaitingRuns` | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 |
+| `operationOptions` | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 |
+|||||
 
 *输出*
 
@@ -375,7 +377,7 @@ ms.locfileid: "73425964"
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -384,7 +386,7 @@ ms.locfileid: "73425964"
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -414,7 +416,7 @@ ms.locfileid: "73425964"
 | <method-type  > | String | 用于取消请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
 | <endpoint-unsubscribe-URL  > | String | 要将取消请求发送到的终结点 URL | 
 | <body-content  > | String | 要在订阅请求或取消订阅请求中发送的任何消息内容 | 
-| <authentication-method  > | JSON 对象 | 请求用于身份验证的方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 |
+| <*authentication-type*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
 | <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
@@ -689,7 +691,9 @@ ms.locfileid: "73425964"
 
 > [!NOTE]
 > 无法对同步响应模式使用 SplitOn  。 任何使用 **SplitOn** 并包括一个响应操作的工作流都会异步运行并即时发送 `202 ACCEPTED` 响应。
-
+>
+> 启用触发器并发后，会显著降低 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
+ 
 如果触发器的 Swagger 文件描述的有效负载是一个数组，则会自动向触发器添加 **SplitOn** 属性。 否则，请将此属性添加到其数组需要解除批处理的响应有效负载中。 
 
 *示例*
@@ -951,7 +955,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -961,7 +965,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -987,7 +991,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | <api-unsubscribe-URL>  | String | 用于取消订阅 API 的 URI | 
 | <header-content  > | JSON 对象 | 请求中发送的任何标头 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <body-content  > | JSON 对象 | 请求中发送的任何消息内容 | 
-| <authentication-method  > | JSON 对象 | 请求用于身份验证的方法。 有关详细信息，请参阅[计划程序出站身份验证](../scheduler/scheduler-outbound-authentication.md)。 |
+| <*authentication-type*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
 | <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
 | <other-action-specific-input-properties>  | JSON 对象 | 应用于此指定操作的任何其他输入属性 | 
@@ -1106,7 +1110,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 此操作将运行当新电子邮件抵达 Office 365 Outlook 帐户时触发的逻辑应用中的代码。 该逻辑应用还使用发送审批电子邮件操作，连同审批请求一起转发已收到的电子邮件中的内容。 
 
-该代码从触发器的 `Body` 属性提取电子邮件地址，并连同审批操作中的 `SelectedOption` 属性值一起返回这些电子邮件地址。 该操作在 `explicitDependencies` > `actions` 特性中显式包含发送审批电子邮件操作作为依赖项。
+该代码从触发器的 `Body` 属性提取电子邮件地址，并连同审批操作中的 `SelectedOption` 属性值一起返回这些地址。 该操作在 `explicitDependencies` > `actions` 特性中显式包含发送审批电子邮件操作作为依赖项。
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1205,14 +1209,21 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 ### <a name="http-action"></a>HTTP 操作
 
-此操作向指定终结点发送请求并检查响应，确定是否应运行工作流。 
+此操作向指定终结点发送请求并检查响应，确定工作流是否运行。 
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1220,23 +1231,24 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| Value | 类型 | 说明 | 
-|-------|------|-------------| 
-| <method-type  > | String | 用于发送请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
-| <HTTP-or-HTTPS-endpoint-URL>  | String | 要调用的 HTTP 或 HTTPS 终结点。 最大字符串大小：2 KB | 
-|||| 
+| 属性 | Value | 类型 | 说明 |
+|----------|-------|------|-------------|
+| `method` | <method-type  > | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
+| `uri` | <HTTP-or-HTTPS-endpoint-URL>  | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
+|||||
 
 *可选*
 
-| Value | 类型 | 说明 | 
-|-------|------|-------------| 
-| <header-content  > | JSON 对象 | 与请求一同发送的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <body-content  > | JSON 对象 | 请求中发送的任何消息内容 | 
-| <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
-| <query-parameters  > | JSON 对象 | 要包括在请求中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
-| <other-action-specific-input-properties>  | JSON 对象 | 应用于此指定操作的任何其他输入属性 | 
-| <other-action-specific-properties>  | JSON 对象 | 应用于此指定操作的任何其他属性 | 
-|||| 
+| 属性 | Value | 类型 | 说明 |
+|----------|-------|------|-------------|
+| `headers` | <header-content  > | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <query-parameters  > | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 |
+| `body` | <body-content  > | JSON 对象 | 要作为有效负载与请求一同发送的消息内容 |
+| `authentication` | <*authentication-type-and-property-values*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
+| `retryPolicy` > `type` | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
+| <other-action-specific-input-properties>  | <*input-property*> | JSON 对象 | 应用于此指定操作的任何其他输入属性 |
+| <other-action-specific-properties>  | <*property-value*> | JSON 对象 | 应用于此指定操作的任何其他属性 |
+|||||
 
 *示例*
 
@@ -2403,7 +2415,9 @@ ID,Product_Name
 
 默认情况下，逻辑应用实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 因此，每个触发器实例会在上一个工作流实例完成运行前触发。 此限制可控制后端系统接收的请求数。 
 
-若要更改此默认限制，可使用代码视图编辑器或逻辑应用设计器，因为通过设计器更改并发设置会添加或更新基础触发器定义中的 `runtimeConfiguration.concurrency.runs` 属性，反之亦然。 此属性控制可并行运行的最大工作流实例数。 下面是使用并发控制时的一些注意事项：
+若要更改此默认限制，可使用代码视图编辑器或逻辑应用设计器，因为通过设计器更改并发设置会添加或更新基础触发器定义中的 `runtimeConfiguration.concurrency.runs` 属性，反之亦然。 此属性控制可并行运行的最大工作流实例数。 下面是对于何时需启用并发控制的一些考量：
+
+* 启用并发后，会显著降低[解除数组批处理](#split-on-debatch)时的 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
 
 * 启用并发后，长时间运行的逻辑应用实例可能会导致新的逻辑应用实例进入等待状态。 此状态会阻止 Azure 逻辑应用创建新实例，即使并发运行次数小于指定的最大并发运行次数，也会发生这种情况。
 
@@ -2664,134 +2678,11 @@ ID,Product_Name
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>对 HTTP 触发器和操作进行身份验证
+## <a name="authenticate-triggers-and-actions"></a>对触发器和操作进行身份验证
 
-HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器和操作设置身份验证：
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Webhook](../connectors/connectors-native-webhook.md)
-
-下面是可以设置的身份验证类型：
-
-* [基本身份验证](#basic-authentication)
-* [客户端证书身份验证](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth 身份验证](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> 确保保护逻辑应用工作流定义所处理的任何敏感信息。 使用安全的参数，并根据需要对数据进行编码。 有关使用和保护参数的详细信息，请[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>基本身份验证
-
-对于使用 Azure Active Directory 的基本身份验证，触发器或操作定义可以包括 `authentication` JSON 对象，它具有下表指定的属性。 要在运行时访问参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。 
-
-| 属性 | 必须 | Value | 说明 | 
-|----------|----------|-------|-------------| 
-| **type** | 是 | "Basic" | 要使用的身份验证类型，此处为“Basic” | 
-| **username** | 是 | "@parameters('userNameParam')" | 用于对目标服务终结点访问进行身份验证的用户名 |
-| **password** | 是 | "@parameters('passwordParam')" | 用于对目标服务终结点访问进行身份验证的密码 |
-||||| 
-
-在此示例 HTTP 操作定义中，`authentication` 节指定 `Basic` 身份验证。 有关使用和保护参数的详细信息，请[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> 确保保护逻辑应用工作流定义所处理的任何敏感信息。 使用安全的参数，并根据需要对数据进行编码。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>客户端证书身份验证
-
-对于使用 Azure Active Directory 的[基于证书的身份验证](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)，触发器或操作定义可以包括 `authentication` JSON 对象，它具有下表指定的属性。 要在运行时访问参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。 有关可以使用的客户端证书数的限制，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
-
-| 属性 | 必须 | Value | 说明 |
-|----------|----------|-------|-------------|
-| **type** | 是 | "ClientCertificate" | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
-| **pfx** | 是 | "@parameters('pfxParam') | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
-| **password** | 是 | "@parameters('passwordParam')" | 用于访问 PFX 文件的密码 |
-||||| 
-
-在此示例 HTTP 操作定义中，`authentication` 节指定 `ClientCertificate` 身份验证。 有关使用和保护参数的详细信息，请[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> 确保保护逻辑应用工作流定义所处理的任何敏感信息。 使用安全的参数，并根据需要对数据进行编码。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth 身份验证
-
-对于 [Azure AD OAuth 身份验证](../active-directory/develop/authentication-scenarios.md)，触发器或操作定义可以包括 `authentication` JSON 对象，它具有下表指定的属性。 要在运行时访问参数值，可以使用[工作流定义语言](https://aka.ms/logicappsdocs)提供的 `@parameters('parameterName')` 表达式。
-
-| 属性 | 必须 | Value | 说明 |
-|----------|----------|-------|-------------|
-| **type** | 是 | `ActiveDirectoryOAuth` | 要使用的身份验证类型，即“ActiveDirectoryOAuth”（代表 Azure AD OAuth） |
-| **authority** | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL |
-| **tenant** | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
-| **audience** | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
-| **clientId** | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
-| **credentialType** | 是 | “Certificate”或“Secret” | 客户端用来请求授权的凭据类型。 此属性和值不会显示在基础定义中，但确定了凭据类型的所需参数。 |
-| **pfx** | 是（仅适用于 "Certificate" 凭据类型） | "@parameters('pfxParam') | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
-| **password** | 是（仅适用于 "Certificate" 凭据类型） | "@parameters('passwordParam')" | 用于访问 PFX 文件的密码 |
-| **secret** | 是（仅适用于 "Secret" 凭据类型） | “@parameters('secretParam')” | 用于请求授权的客户端密码 |
-|||||
-
-在此示例 HTTP 操作定义中，`authentication` 节指定 `ActiveDirectoryOAuth` 身份验证和“Secret”凭据类型。 有关使用和保护参数的详细信息，请[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> 确保保护逻辑应用工作流定义所处理的任何敏感信息。 使用安全的参数，并根据需要对数据进行编码。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。
+HTTP 和 HTTPS 终结点支持不同类型的身份验证。 根据用于发出访问这些终结点的出站调用或请求的触发器或操作，可以从各种不同的身份验证类型中进行选择。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 ## <a name="next-steps"></a>后续步骤
 

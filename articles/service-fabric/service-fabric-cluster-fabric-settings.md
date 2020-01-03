@@ -13,20 +13,20 @@ ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
 origin.date: 08/30/2019
-ms.date: 09/30/2019
+ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: e8fa85a8bd4f254443049ef40d284e04e2d883e1
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 5cfe634256867b79a8f2942aa3c595728c72f44c
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335202"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板自定义设置。 对于独立群集，可通过更新 ClusterConfig.json  文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 <!--Not Available on [Upgrade the configuration of an Azure cluster](service-fabric-cluster-config-upgrade-azure.md)-->
-<!--Reason: Not Available on http://resource.azure.com/-->
+<!--Reason: Not Available on (https://resource.azure.com/)-->
 
 有三种不同的升级策略：
 
@@ -135,14 +135,14 @@ ms.locfileid: "71340691"
 |AppEtwTraceDeletionAgeInDays |Int，默认值为 3 | 动态 |在多少天后删除包含应用程序 ETW 跟踪的旧 ETL 文件。 |
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值为 0 和 1。 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 |AuditHttpRequests |Bool，默认值为 false | 动态 | 启用或禁用 HTTP 审核。 审核的目的是查看针对群集执行的活动，包含请求发起者。 请注意，这是尽最大努力记录的日志信息；可能会发生跟踪丢失。 不会记录使用“用户”身份验证的 HTTP 请求。 |
-|CaptureHttpTelemetry|Bool，默认值为 false | 动态 | 启用或禁用 HTTP 遥测。 遥测的目的是使 Service Fabric 能够捕获遥测数据，以帮助规划将来的工作和识别问题区域。 遥测不会记录任何个人数据或请求正文。 除非另有配置，否则遥测将捕获所有 HTTP 请求。 |
+|CaptureHttpTelemetry|Bool，默认值为 true | 动态 | 启用或禁用 HTTP 遥测。 遥测的目的是使 Service Fabric 能够捕获遥测数据，以帮助规划将来的工作和识别问题区域。 遥测不会记录任何个人数据或请求正文。 除非另有配置，否则遥测将捕获所有 HTTP 请求。 |
 |ClusterId |String | 动态 |群集的唯一 ID。 在创建群集时生成。 |
 |ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | 静态 |标志指示是否应使用循环跟踪会话。 |
 |EnablePlatformEventsFileSink |Bool，默认值为 false | 静态 |启用/禁用向磁盘写入平台事件 |
 |EnableTelemetry |Bool，默认值为 true | 动态 |启用或禁用遥测。 |
-|FailuresOnlyHttpTelemetry | Bool，默认值为 true | 动态 | 是否启用 HTTP 遥测捕获；仅捕获失败的请求。 这有助于减少针对遥测生成的事件数。 |
+|FailuresOnlyHttpTelemetry | Bool，默认值为 false | 动态 | 是否启用 HTTP 遥测捕获；仅捕获失败的请求。 这有助于减少针对遥测生成的事件数。 |
 |HttpTelemetryCapturePercentage | int，默认值为 50 | 动态 | 是否启用 HTTP 遥测捕获；仅捕获随机百分比数目的请求。 这有助于减少针对遥测生成的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
 |ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
@@ -189,6 +189,9 @@ ms.locfileid: "71340691"
 |EnableRestartManagement |Bool，默认值为 false |动态|用于启用服务器重启。 |
 |EnableServiceFabricAutomaticUpdates |Bool，默认值为 false |动态|这会通过 Windows 更新启用结构自动更新。 |
 |EnableServiceFabricBaseUpgrade |Bool，默认值为 false |动态|用于启用服务器的基本更新。 |
+|FailureReportingExpeditedReportingIntervalEnabled | Bool，默认值为 true | 静态 | 允许在 FabricHost 处于“故障报告”模式时加快上传速率。 |
+|FailureReportingTimeout | 时间跨度，默认值是 Common::TimeSpan::FromSeconds(60) | 静态 |指定以秒为单位的时间跨度。 当 FabricHost 遇到早期启动故障时针对 DCA 故障报告启用超时。 | 
+|RunDCAOnStartupFailure | Bool，默认值为 true | 静态 |确定在 FabricHost 中遇到启动问题时，是否启动 DCA 来上传日志。 | 
 |StartTimeout |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间跨度。 fabricactivationmanager 启动的超时时间。 |
 |StopTimeout |以秒为单位的时间，默认值为 300 |动态|指定以秒为单位的时间跨度。 托管服务激活、停用和升级的超时时间。 |
 
@@ -235,13 +238,12 @@ ms.locfileid: "71340691"
 |QuorumLossWaitDuration |以秒为单位的时间，默认值为 MaxValue |动态|指定以秒为单位的时间跨度。 这是允许分区处于仲裁丢失状态的最长持续时间。 如果分区在此持续时间后仍然处于仲裁丢失状态，则通过将不可用副本视为已丢失，使分区从仲裁丢失状态中恢复。 请注意，这可能会导致数据丢失。 |
 |ReconfigurationTimeLimit|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(300)|动态|指定以秒为单位的时间跨度。 重新配置的时间限制。超出该时间范围后会启动警告运行状况报告 |
 |ReplicaRestartWaitDuration|时间跨度，默认值为 Common::TimeSpan::FromSeconds(60.0 \* 30)|不允许|指定以秒为单位的时间跨度。 这是 FMService 的 ReplicaRestartWaitDuration |
+| SeedNodeQuorumAdditionalBufferNodes | int，默认值为 0 | 动态 | 需处于启动状态的种子节点的缓冲区（以及种子节点的仲裁）FM 应允许最大数量的种子节点 (totalNumSeedNodes - (seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) 处于关闭状态。 |
 |StandByReplicaKeepDuration|时间跨度，默认值为 Common::TimeSpan::FromSeconds(3600.0 \* 24 \* 7)|不允许|指定以秒为单位的时间跨度。 这是 FMService 的 StandByReplicaKeepDuration |
 |TargetReplicaSetSize|int，默认值为 7|不允许|这是 Windows Fabric 将维护的 FM 副本目标数量。 数字越大，FM 数据的可靠性越高；但会稍微降低其性能。 |
 |UserMaxStandByReplicaCount |Int，默认值为 1 |动态|系统为用户服务保留的默认最大备用副本数。 |
 |UserReplicaRestartWaitDuration |以秒为单位的时间，默认值为 60.0 \* 30 |动态|指定以秒为单位的时间跨度。 当持久化副本不可用时，Windows Fabric 在创建新的替换副本（需要状态的副本）前，会等待该副本恢复正常，等待时间即为此持续时间。 |
 |UserStandByReplicaKeepDuration |以秒为单位的时间，默认值为 3600.0 \* 24 \* 7 |动态|指定以秒为单位的时间跨度。 持久化副本从不可用状态恢复时，可能已被替换为另一副本。 此计时器确定 FM 在放弃备用副本之前保留其多长时间。 |
-|WaitForInBuildReplicaSafetyCheckTimeout|时间跨度，默认值为 Common::TimeSpan::FromSeconds(60 * 10)|动态|指定以秒为单位的时间跨度。 可选 WaitForInBuildReplica 安全检查超时的配置条目。 此配置定义用于节点停用和升级的 WaitForInBuildReplica 安全检查的超时。 如果满足以下任一条件，则此安全检查将失败：- 正在创建主数据库，并且 ft 目标副本集大小 > 1 - 如果当前副本在构建中并且已持久保存 - 如果这是当前主数据库并且正在构建新副本。如果超时到期，即使上述条件之一仍然成立，也会跳过此安全检查。 |
-|WaitForReconfigurationSafetyCheckTimeout|时间跨度，默认值为 Common::TimeSpan::FromSeconds(60.0 * 10)|动态|指定以秒为单位的时间跨度。 可选 WaitForReconfiguration 安全检查超时的配置条目。 此配置定义用于节点停用和升级的 WaitForReconfiguration 安全检查的超时。 如果要检查的副本是正在重新配置的分区的一部分，则此安全检查将失败。 即使分区仍在重新配置中，也将在此超时到期后跳过安全检查。|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -282,7 +284,7 @@ ms.locfileid: "71340691"
 |CommonNameNtlmPasswordSecret|SecureString，默认值为 Common::SecureString("")| 静态|密码，用于在使用 NTLM 身份验证时用作种子以生成相同密码 |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(5)|动态|指定以秒为单位的时间跨度。 在磁盘空间即将耗尽时检查磁盘空间以报告运行状况事件的时间间隔。 |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(15)|动态|指定以秒为单位的时间跨度。 在磁盘空间足够时检查磁盘空间以报告运行状况事件的时间间隔。 |
-|EnableImageStoreHealthReporting |bool，默认值为 TRUE    |静态|用于确定文件存储服务是否应报告其运行状况的配置。 |
+|EnableImageStoreHealthReporting |bool，默认值为 TRUE |静态|用于确定文件存储服务是否应报告其运行状况的配置。 |
 |FreeDiskSpaceNotificationSizeInKB|int64，默认值为 25\*1024 |动态|可用磁盘空间的大小，低于此大小可能会出现运行状况警告。 此配置的最小值和 FreeDiskSpaceNotificationThresholdPercentage 配置用于确定是否发送运行状况警告。 |
 |FreeDiskSpaceNotificationThresholdPercentage|double，默认值为 0.02 |动态|可用磁盘空间的百分比，低于此值可能会发生运行状况警告。 此配置的最小值和 FreeDiskSpaceNotificationInMB 配置用于确定是否发送运行状况警告。 |
 |GenerateV1CommonNameAccount| bool，默认值为 TRUE|静态|指定是否要使用用户名 V1 生成算法生成帐户。 从 Service Fabric 6.1 版开始，始终创建具有 v2 生成的帐户。 从/到不支持 V2 生成的版本升级需要 V1 帐户（6.1 版以前）。|
@@ -341,6 +343,8 @@ ms.locfileid: "71340691"
 |ActivationRetryBackoffInterval |以秒为单位的时间，默认值为 5 |动态|每次激活失败的退让间隔；在每次连续激活失败后，系统会重试激活最多 MaxActivationFailureCount 次。 每次尝试的重试间隔是连续激活失败与激活退让间隔的积。 |
 |ActivationTimeout| TimeSpan，默认值为 Common::TimeSpan::FromSeconds(180)|动态| 指定以秒为单位的时间跨度。 应用程序激活、停用和升级的超时时间。 |
 |ApplicationHostCloseTimeout| TimeSpan，默认值为 Common::TimeSpan::FromSeconds(120)|动态| 指定以秒为单位的时间跨度。 在自助激活进程中检测到 Fabric 退出时；FabricRuntime 会关闭用户主机 (applicationhost) 进程中的所有副本。 这是关闭操作的超时时间。 |
+| CnsNetworkPluginCnmUrlPort | wstring，默认值为 L"48080" | 静态 | Azure cnm api url 端口 |
+| CnsNetworkPluginCnsUrlPort | wstring，默认值为 L"10090" | 静态 | Azure cns url 端口 |
 |ContainerServiceArguments|string，默认为“-H localhost:2375 -H npipe://”|静态|Service Fabric (SF) 管理 docker 守护程序（在 Win10 等 windows 客户端计算机上除外）。 此配置允许用户指定启动时应传递到 Docker 守护程序的自定义参数。 指定自定义参数时，Service Fabric 不会将“--pidfile”参数以外的任何其他参数传递给 Docker 引擎。 因此，用户不应指定“--pidfile”参数作为其自定义参数的一部分。 此外，自定义参数应确保 Docker 守护程序侦听 Windows 上的默认名称管道（或 Linux 上的 Unix 域套接字），以便 Service Fabric 可以与其通信。|
 |ContainerServiceLogFileMaxSizeInKb|int，默认值为 32768|静态|docker 容器生成的日志文件的最大文件大小。  仅限 Windows。|
 |ContainerImageDownloadTimeout|int，秒数，默认为 1200（20 分钟）|动态|下载映像操作超时需要经历的秒数。|
@@ -351,11 +355,14 @@ ms.locfileid: "71340691"
 |DefaultContainerRepositoryAccountName|string，默认值为“”|静态|使用默认凭据，而不是 ApplicationManifest.xml 中指定的凭据 |
 |DefaultContainerRepositoryPassword|string，默认值为“”|静态|使用默认密码凭据，而不是 ApplicationManifest.xml 中指定的凭据|
 |DefaultContainerRepositoryPasswordType|string，默认值为“”|静态|不是空字符串时，此值可以是“Encrypted”或“SecretsStoreRef”。|
+|DefaultDnsSearchSuffixEmpty|bool，默认值为 FALSE|静态|默认情况下，此服务名称追加到容器服务的 SF DNS 名称。 此功能停止了该行为，因此默认情况下不会将任何内容追加到解析路径中的 SF DNS 名称。|
 |DeploymentMaxFailureCount|int，默认值为 20| 动态|重试 DeploymentMaxFailureCount 次应用程序部署后，节点上该应用程序的部署才会失败。| 
 |DeploymentMaxRetryInterval| TimeSpan，默认值为 Common::TimeSpan::FromSeconds(3600)|动态| 指定以秒为单位的时间跨度。 部署的最大重试时间间隔。 每次连续失败后，重试时间间隔的计算结果为 Min（DeploymentMaxRetryInterval；连续失败计数 * DeploymentRetryBackoffInterval）（即取括号中的最小值） |
 |DeploymentRetryBackoffInterval| TimeSpan，默认值为 Common::TimeSpan::FromSeconds(10)|动态|指定以秒为单位的时间跨度。 部署失败的回退时间间隔。 每次连续部署失败时，系统重试部署的次数会多达 MaxDeploymentFailureCount 次。 重试时间间隔是连续部署失败的产物，为部署回退时间间隔。 |
 |DisableContainers|bool，默认值为 FALSE|静态|用于禁用容器的配置 - 使用此项而不是 DisableContainerServiceStartOnContainerActivatorOpen，后者是已弃用的配置 |
 |DisableDockerRequestRetry|bool，默认值为 FALSE |动态| 默认情况下，SF 与 DD（docker 守护程序）进行通信，对于发送到它的每个 http 请求，超时都是“DockerRequestTimeout”。 如果 DD 在此时间段内没有响应，并且顶级操作仍然有剩余时间，则 SF 会重新发送请求。  对于 hyperv 容器，DD 有时候需要花费更多时间才能激活容器或停用容器。 在这种情况下，从 SF 的角度来看，DD 请求超时并且 SF 将重试操作。 有时，这好像给 DD 增加了更多压力。 此配置允许禁用此重试并等待 DD 做出响应。 |
+|DnsServerListTwoIps | 布尔值，默认为 FALSE | 静态 | 此标记添加本地 dns 服务器两次，这样有助于缓解间歇性解析问题。 |
+| DoNotInjectLocalDnsServer | bool，默认值为 FALSE | 静态 | 防止运行时将本地 IP 作为容器的 DNS 服务器注入。 |
 |EnableActivateNoWindow| bool，默认值为 FALSE|动态| 激活进程是在不使用任何控制台的情况下在后台中创建的。 |
 |EnableContainerServiceDebugMode|bool，默认值为 TRUE|静态|为 docker 容器启用/禁用日志记录。  仅限 Windows。|
 |EnableDockerHealthCheckIntegration|bool，默认值为 TRUE|静态|实现 docker HEALTHCHECK 事件与 Service Fabric 系统运行状况报告的集成 |
@@ -536,7 +543,7 @@ ms.locfileid: "71340691"
 |DetailedNodeListLimit | Int，默认值为 15 |动态| 定义在未放置副本报告中每个约束在截断前要包含的节点数。 |
 |DetailedPartitionListLimit | Int，默认值为 15 |动态| 定义诊断中一个约束在截断前要包含的分区数（按诊断条目）。 |
 |DetailedVerboseHealthReportLimit | Int，默认值为 200 | 动态|定义在发出详细运行状况报告之前，未放置的副本必须持续处于未放置状态的次数。 |
-|EnforceUserServiceMetricCapacities|bool，默认值为 FALSE | 静态 |启用结构服务保护。所有用户服务位于一个作业对象/cgroup 下，并受限于指定的资源量。此参数需是静态的（需要重启 FabricHost），因为用户作业对象和设置限制是在打开结构主机的情况下执行的 |
+|EnforceUserServiceMetricCapacities|bool，默认值为 FALSE | 静态 |启用 Fabric 服务保护。 所有用户服务位于一个作业对象/cgroup 下，并受限于指定的资源量。 此参数需是静态的（需要重启 FabricHost），因为用户作业对象和设置限制是在打开结构主机的情况下执行的。 |
 |FaultDomainConstraintPriority | Int，默认值为 0 |动态| 确定容错域约束的优先级：0：硬；1：软；负值：忽略。 |
 |GlobalMovementThrottleCountingInterval | 以秒为单位的时间，默认值为 600 |静态| 指定以秒为单位的时间跨度。 指示刚过去的用于跟踪每个域副本移动的时间间隔的长度（与 GlobalMovementThrottleThreshold 配合使用）。 要完全忽略全局限制，可以将其设置为 0。 |
 |GlobalMovementThrottleThreshold | Uint，默认值为 1000 |动态| GlobalMovementThrottleCountingInterval 所指示的刚过去的时间间隔中的均衡阶段中所允许的最大移动数。 |
@@ -676,6 +683,7 @@ ms.locfileid: "71340691"
 |DisableFirewallRuleForDomainProfile| bool，默认值为 TRUE |静态| 指示是否不应对域配置文件启用防火墙规则 |
 |DisableFirewallRuleForPrivateProfile| bool，默认值为 TRUE |静态| 指示是否不应对专用配置文件启用防火墙规则 | 
 |DisableFirewallRuleForPublicProfile| bool，默认值为 TRUE | 静态|指示是否不应对公共配置文件启用防火墙规则 |
+| EnforceLinuxMinTlsVersion | bool，默认值为 FALSE | 动态 | 前提是设置为 true；仅支持 TLS 版本 1.2+。  前提是设置为 false；支持更早期的 TLS 版本。 近适用于 Linux |
 |FabricHostSpn| string，默认值为“” |静态| FabricHost 的服务主体名称；结构作为单个域用户（gMSA/域用户帐户）运行并且 FabricHost 在计算机帐户下运行时。 该参数是 FabricHost 的 IPC 侦听器的 SPN；由于 FabricHost 在计算机帐户下运行，所以该参数默认留空 |
 |IgnoreCrlOfflineError|bool，默认值为 FALSE|动态|服务器端验证传入客户端证书时，是否忽略 CRL 脱机错误 |
 |IgnoreSvrCrlOfflineError|bool，默认值为 TRUE|动态|客户端验证传入服务器证书时，是否忽略 CRL 脱机错误；默认值为 true。 具有吊销的服务器证书的攻击需要破坏 DNS；比具有吊销的客户端证书的攻击更难。 |

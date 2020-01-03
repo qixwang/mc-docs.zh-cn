@@ -1,14 +1,14 @@
 ---
-title: OData 筛选器参考 - Azure 搜索
-description: Azure 搜索查询中筛选器语法的 OData 语言参考。
-origin.date: 06/13/2019
-ms.date: 09/26/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: v-tawe
+title: OData 筛选器参考
+titleSuffix: Azure Cognitive Search
+description: 在 Azure 认知搜索查询中用于创建筛选器表达式的 OData 语言参考和完整语法。
 manager: nitinme
+author: brjohnstmsft
+ms.author: v-tawe
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: aee79da3757e8387e8560a3846c573bd9fa91c83
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.openlocfilehash: aa9b4a9b6e7d7f86dc9e579cd66178826de0df7b
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336503"
 ---
-# <a name="odata-filter-syntax-in-azure-search"></a>Azure 搜索中的 OData $filter 语法
+# <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
 
-除了全文搜索字词以外，Azure 搜索还可使用 [OData 筛选表达式](query-odata-filter-orderby-syntax.md)将其他条件应用到搜索查询。 本文详细介绍筛选器的语法。 有关筛选器的定义以及如何使用筛选器来实现特定查询方案的其他一般信息，请参阅 [Azure 搜索中的筛选器](search-filters.md)。
+除了全文搜索字词以外，Azure 认知搜索还可使用 [OData 筛选表达式](query-odata-filter-orderby-syntax.md)将其他条件应用到搜索查询。 本文详细介绍筛选器的语法。 有关筛选器的定义以及如何使用筛选器来实现特定查询方案的其他一般信息，请参阅 [Azure 认知搜索中的筛选器](search-filters.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -54,27 +54,27 @@ variable ::= identifier | field_path
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [Azure 搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 布尔表达式的类型包括：
 
-- 使用 `any` 或 `all` 的集合筛选表达式。 这些表达式将筛选条件应用到集合字段。 有关详细信息，请参阅 [Azure 搜索中的 OData 集合运算符](search-query-odata-collection-operators.md)。
-- 使用 `and`、`or` 和 `not` 运算符合并其他布尔表达式的逻辑表达式。 有关详细信息，请参阅 [Azure 搜索中的 OData 逻辑运算符](search-query-odata-logical-operators.md)。
-- 使用 `eq`、`ne`、`gt`、`lt`、`ge` 和 `le` 运算符将字段或范围变量与常量值进行比较的比较表达式。 有关详细信息，请参阅 [Azure 搜索中的 OData 比较运算符](search-query-odata-comparison-operators.md)。 比较表达式还可用于通过 `geo.distance` 函数比较地理空间坐标之间的距离。 有关详细信息，请参阅 [Azure 搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)。
+- 使用 `any` 或 `all` 的集合筛选表达式。 这些表达式将筛选条件应用到集合字段。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 集合运算符](search-query-odata-collection-operators.md)。
+- 使用 `and`、`or` 和 `not` 运算符合并其他布尔表达式的逻辑表达式。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 逻辑运算符](search-query-odata-logical-operators.md)。
+- 使用 `eq`、`ne`、`gt`、`lt`、`ge` 和 `le` 运算符将字段或范围变量与常量值进行比较的比较表达式。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 比较运算符](search-query-odata-comparison-operators.md)。 比较表达式还可用于通过 `geo.distance` 函数比较地理空间坐标之间的距离。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)。
 - 布尔文本值 `true` 和 `false`。 在以编程方式生成筛选器时，这些常量可能很有用，否则在实践中很少用到它们。
 - 布尔函数的调用，包括：
-  - `geo.intersects`，用于测试给定的点是否在给定的多边形范围内。 有关详细信息，请参阅 [Azure 搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)。
-  - `search.in`，用于将字段或范围变量与值列表中的每个值进行比较。 有关详细信息，请参阅 [Azure 搜索中的 OData `search.in` 函数](search-query-odata-search-in-function.md)。
-  - `search.ismatch` 和 `search.ismatchscoring`，用于在筛选器上下文中执行全文搜索操作。 有关详细信息，请参阅 [Azure 搜索中的 OData 全文搜索函数](search-query-odata-full-text-search-functions.md)。
+  - `geo.intersects`，用于测试给定的点是否在给定的多边形范围内。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)。
+  - `search.in`，用于将字段或范围变量与值列表中的每个值进行比较。 有关详细信息，请参阅 [Azure 认知搜索中的 OData `search.in` 函数](search-query-odata-search-in-function.md)。
+  - `search.ismatch` 和 `search.ismatchscoring`，用于在筛选器上下文中执行全文搜索操作。 有关详细信息，请参阅 [Azure 认知搜索中的 OData 全文搜索函数](search-query-odata-full-text-search-functions.md)。
 - 类型为 `Edm.Boolean` 的字段路径或范围变量。 例如，如果索引中包含名为 `IsEnabled` 的布尔字段，而你希望返回此字段为 `true` 的所有文档，则筛选表达式只需使用名称 `IsEnabled` 即可。
 - 括号中的布尔表达式。 使用括号可以帮助显式确定筛选器中的操作顺序。 有关 OData 运算符的默认优先顺序的详细信息，请参阅下一部分。
 
 ### <a name="operator-precedence-in-filters"></a>筛选器中的运算符优先顺序
 
-如果编写的筛选表达式未将其子表达式括在括号中，Azure 搜索将会根据一组运算符优先顺序规则评估该表达式。 这些规则基于用于合并子表达式的运算符。 下表按从高到低的优先顺序列出了运算符组：
+如果编写的筛选表达式未将其子表达式括在括号中，Azure 认知搜索将会根据一组运算符优先顺序规则评估该表达式。 这些规则基于用于合并子表达式的运算符。 下表按从高到低的优先顺序列出了运算符组：
 
 | 组 | 运算符 |
 | --- | --- |
@@ -104,7 +104,7 @@ variable ::= identifier | field_path
 
 ### <a name="filter-size-limitations"></a>筛选器大小限制
 
-可以发送到 Azure 搜索的筛选表达式的大小和复杂性存在限制。 限制大致基于筛选器表达式中的子句数。 一条合理的指导原则是，如果存在数百个子句，则存在超限的风险。 我们建议正确设计应用程序，使之不会生成大小不受限制的筛选器。
+可以发送到 Azure 认知搜索的筛选表达式的大小和复杂性存在限制。 限制大致基于筛选器表达式中的子句数。 一条合理的指导原则是，如果存在数百个子句，则存在超限的风险。 我们建议正确设计应用程序，使之不会生成大小不受限制的筛选器。
 
 > [!TIP]
 > 使用 [ `search.in` 函数](search-query-odata-search-in-function.md)而不是相等性比较的较长析取可帮助避免超出筛选子句限制，因为一个函数调用算作一个子句。
@@ -197,7 +197,7 @@ variable ::= identifier | field_path
 
 ## <a name="next-steps"></a>后续步骤  
 
-- [Azure 搜索中的筛选器](search-filters.md)
-- [Azure 搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [Azure 搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索中的筛选器](search-filters.md)
+- [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

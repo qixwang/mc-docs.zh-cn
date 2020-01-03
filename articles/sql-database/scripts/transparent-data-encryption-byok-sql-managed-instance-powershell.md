@@ -1,5 +1,5 @@
 ---
-title: PowerShell：启用 BYOK TDE - Azure SQL 数据库托管实例 | Microsoft Docs
+title: 'PowerShell：启用 BYOK TDE - Azure SQL 数据库托管实例 '
 description: 了解如何配置 Azure SQL 托管实例，以开始使用 BYOK 透明数据加密 (TDE) 通过 PowerShell 进行静态加密。
 services: sql-database
 ms.service: sql-database
@@ -10,19 +10,18 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
-manager: digimobile
-origin.date: 04/19/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 75663b83dbfeed1bbc8432b90e0871c56747573c
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+origin.date: 11/05/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 9ef0909e5f6dae35b6ca3c9297cddfbe40aead92
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334605"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>使用 Azure Key Vault（预览版）中自己的密钥管理托管实例中的透明数据加密
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密
 
-此 PowerShell 脚本示例使用 Azure Key Vault 中的密钥在自带密钥（预览版）方案中为 Azure SQL 托管实例配置透明数据加密 (TDE)。 若要详细了解支持“创建自己的密钥”(BYOK) 的 TDE，请参阅[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](../transparent-data-encryption-byok-azure-sql.md)。
+此 PowerShell 脚本实例使用 Azure Key Vault 中的密钥为 Azure SQL 托管实例配置使用客户托管密钥的透明数据加密 (TDE)。 这通常称为 TDE 的自带密钥方案。 若要详细了解使用客户托管密钥的 TDE，请参阅[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](../transparent-data-encryption-byok-azure-sql.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +30,9 @@ ms.locfileid: "69544861"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-使用 PowerShell 需要 AZ PowerShell 1.1.1-preview 或更高版本的预览版。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)，或运行以下示例脚本来安装该模块。
+使用 PowerShell 需要 AZ PowerShell 2.3.2 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)，或运行以下示例脚本，以便为当前用户安装该模块：
 
-`Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
+`Install-Module -Name Az -AllowClobber -Scope CurrentUser`
 
 此外，还需要运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 

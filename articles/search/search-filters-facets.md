@@ -1,25 +1,24 @@
 ---
-title: 用于应用中搜索导航的分面筛选器 - Azure 搜索
-description: 按用户安全标识、地理位置或数字值进行条件筛选可以减少 Azure 搜索（Microsoft Azure 上托管的云搜索服务）中的查询返回的搜索结果。
-author: HeidiSteen
+title: 用于应用中搜索导航的分面筛选器
+titleSuffix: Azure Cognitive Search
+description: 按用户安全标识、地理位置或数字值进行条件筛选可以减少 Azure 认知搜索（Microsoft Azure 上托管的云搜索服务）中的查询返回的搜索结果。
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-origin.date: 05/13/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 9e7bdd3501bd6b7c98f32b1722b7dffea13bc04e
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 6cc25bde113a24de51c8a0cf966cafabf37006ad
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335856"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>如何在 Azure 搜索中生成分面筛选器 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中生成分面筛选器 
 
-分面导航用于在搜索应用中自定向筛选查询结果，其中应用程序提供 UI 控件以将搜索范围限定到文档组（例如，类别或品牌），Azure 搜索提供数据结构以支持体验。 在本文中，可快速了解创建分面导航的基本步骤，支持想要提供的搜索体验。 
+分面导航用于在搜索应用中自定向筛选查询结果，其中应用程序提供 UI 控件以将搜索范围限定到文档组（例如，类别或品牌），Azure 认知搜索提供数据结构以支持体验。 在本文中，可快速了解创建分面导航的基本步骤，支持想要提供的搜索体验。 
 
 > [!div class="checklist"]
 > * 选择用于筛选和分面的字段
@@ -32,7 +31,7 @@ ms.locfileid: "71674362"
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-不熟悉分面导航并希望了解更多详情？ 请参阅[如何在 Azure 搜索中实现分面导航](search-faceted-navigation.md)。
+不熟悉分面导航并希望了解更多详情？ 请参阅[如何在 Azure 认知搜索中实现分面导航](search-faceted-navigation.md)。
 
 ## <a name="choose-fields"></a>选择字段
 
@@ -79,11 +78,11 @@ ms.locfileid: "71674362"
 ```
 
 > [!Note]
-> 此索引定义复制自[使用 REST API 创建 Azure 搜索索引](search-create-index-rest-api.md)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
+> 此索引定义复制自[使用 REST API 创建 Azure 认知搜索索引](https://docs.azure.cn/search/search-create-index-rest-api)。 除了字段定义的表面差异外，二者完全相同。 已在 `category`、`tags`、`parkingIncluded`、`smokingAllowed` 和 `rating` 字段中显式添加 `filterable` 和 `facetable` 属性。 在实践中，使用 REST API 时，默认会在这些字段中启用 `filterable` 和 `facetable`。 使用 .NET SDK 时，必须显式启用这些属性。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 
-编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](search-get-started-dotnet.md#1---create-index)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.cn)中查看索引列表。
+编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](https://docs.azure.cn/search/search-get-started-dotnet#1---create-index)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.cn)中查看索引列表。
 
 ## <a name="add-facet-filters-to-a-query"></a>将分面筛选器添加到查询
 
@@ -119,12 +118,12 @@ if (!String.IsNullOrEmpty(categoryFacet))
 
 ### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>以异步方式保留筛选结果的分面导航结构
 
-在 Azure 搜索中使用分面导航所面临的一个难题是，分面仅针对当前结果存在。 在实践中，通常会保留一组静态分面，便于用户按相反顺序进行导航，回顾步骤以通过搜索内容了解可选路径。 
+在 Azure 认知搜索中使用分面导航所面临的一个难题是，分面仅针对当前结果存在。 在实践中，通常会保留一组静态分面，便于用户按相反顺序进行导航，回顾步骤以通过搜索内容了解可选路径。 
 
 虽然这是常见的用例，但并不是分面导航结构当前提供的现成内容。 通过发布 2 个筛选查询（一个将范围限定到结果，另一个用于创建针对导航的静态分面列表），需要静态分面的开发人员通常便可解决限制问题。
 
 ## <a name="see-also"></a>另请参阅
 
-+ [Azure 搜索中的筛选器](search-filters.md)
++ [Azure 认知搜索中的筛选器](search-filters.md)
 + [创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
