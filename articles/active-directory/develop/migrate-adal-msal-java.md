@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: Java
 ms.workload: identity
-origin.date: 11/04/2019
-ms.date: 11/25/2019
+ms.date: 12/09/2019
 ms.author: v-junlch
 ms.reviewer: navyari.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 151b78e7664ec2d775fe99d79d5fde30ffa63039
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 4b5268e08a571d3522fbf8e7780cba4659278b15
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655477"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335320"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -37,7 +36,7 @@ MSAL 提供以下优势：
 - 用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可。
 
-适用于 Java 的 MSAL (MSAL4J) 是我们建议用于 Microsoft 标识平台的身份验证库。 我们不会对 ADAL4J 实现任何新的功能。 今后我们的所有努力都重在改进 MSAL。
+MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 我们不会对 ADAL4J 实现任何新的功能。 今后我们的所有努力都重在改进 MSAL。
 
 ## <a name="differences"></a>差异
 
@@ -45,13 +44,13 @@ MSAL 提供以下优势：
 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
-ADAL4J 获取资源的令牌，而 MSAL4J 则是获取范围的令牌。 许多 MSAL4J 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](https://docs.microsoft.com/graph/permissions-reference)查看示例范围。
+ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](https://docs.microsoft.com/graph/permissions-reference)查看示例范围。
 
 ## <a name="core-classes"></a>核心类
 
-在 ADAL4J 中，`AuthenticationContext` 类代表通过颁发机构与安全令牌服务 (STS) 或授权服务器建立的连接。 但是，MSAL4J 是围绕客户端应用程序设计的。 它提供两个不同的类（`PublicClientApplication` 和 `ConfidentialClientApplication`）来代表客户端应用程序。  后者 (`ConfidentialClientApplication`) 代表的应用程序旨在安全维护机密，例如守护程序应用的应用程序标识符。
+在 ADAL4J 中，`AuthenticationContext` 类代表通过颁发机构与安全令牌服务 (STS) 或授权服务器建立的连接。 但是，MSAL for Java 是围绕客户端应用程序设计的。 它提供两个不同的类（`PublicClientApplication` 和 `ConfidentialClientApplication`）来代表客户端应用程序。  后者 (`ConfidentialClientApplication`) 代表的应用程序旨在安全维护机密，例如守护程序应用的应用程序标识符。
 
-下表显示了 ADAL4J 函数到新 MSAL4J 函数的映射：
+下表显示了 ADAL4J 函数到新 MSAL for Java 函数的映射：
 
 | ADAL4J 方法| MSAL4J 方法|
 |------|-------|
@@ -69,18 +68,18 @@ ADAL4J 获取资源的令牌，而 MSAL4J 则是获取范围的令牌。 许多 
 
 ADAL4J 操控用户。 尽管用户代表单个个人或软件代理，但用户可以在 Microsoft 标识系统中有一个或多个帐户。 例如，一个用户可以有若干个 Azure AD 或 Azure AD B2C 帐户。
 
-MSAL4J 通过 `IAccount` 接口定义帐户的概念。 这是 ADAL4J 中的一项中断性变更，但这项变更是积极性的，因为它捕获到这样一个事实：同一用户可以有多个帐户，甚至是不同 Azure AD 目录中的帐户。 由于系统会提供主帐户信息，MSAL4J 可以在来宾方案中提供更有用的信息。
+MSAL for Java 通过 `IAccount` 接口定义帐户的概念。 这是 ADAL4J 中的一项中断性变更，但这项变更是积极性的，因为它捕获到这样一个事实：同一用户可以有多个帐户，甚至是不同 Azure AD 目录中的帐户。 由于系统会提供主帐户信息，MSAL for Java 可以在来宾方案中提供更有用的信息。
 
 ## <a name="cache-persistence"></a>缓存持久性
 
 ADAL4J 不支持令牌缓存。
-MSAL4J 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能的情况下，它会自动刷新已过期的令牌，并防止不必要地提示用户提供凭据，以此简化令牌生存期的管理。
+MSAL for Java 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能的情况下，它会自动刷新已过期的令牌，并防止不必要地提示用户提供凭据，以此简化令牌生存期的管理。
 
 ## <a name="common-authority"></a>通用颁发机构
 
 在 v1.0 中，如果你使用 `https://login.partner.microsoftonline.cn/common` 颁发机构，则用户可以使用任何 Azure Active Directory (AAD) 帐户（适用于任何组织）登录。
 
-如果你使用 v2.0 中的 `https://login.partner.microsoftonline.cn/common` 颁发机构，则用户可以使用任何 AAD 组织登录。 在 MSAL4J 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.partner.microsoftonline.cn/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
+如果你使用 v2.0 中的 `https://login.partner.microsoftonline.cn/common` 颁发机构，则用户可以使用任何 AAD 组织登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.partner.microsoftonline.cn/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 
@@ -94,9 +93,9 @@ v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 开发�
 
 在 ADAL4J 中会公开刷新令牌 -- 允许开发人员缓存这些令牌。 然后，开发人员可使用 `AcquireTokenByRefreshToken()` 来实现各种解决方案，例如，实现长时间运行的服务，以便在用户不再保持连接时，代表用户刷新仪表板。
 
-出于安全原因，MSAL4J 不公开刷新令牌， 而是由 MSAL 代你处理令牌刷新。
+出于安全原因，MSAL for Java 不公开刷新令牌。 而是由 MSAL 代你处理令牌刷新。
 
-使用 MSAL4J 提供的 [acquireToken(RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-) API，可将通过 ADAL4j 获取的刷新令牌迁移到 ClientApplication 中。 使用此方法可以结合所需的任何范围（资源）提供以前用过的刷新令牌。 该刷新令牌将交换一个新令牌，并缓存供应用程序使用。
+使用 MSAL for Java 提供的 [acquireToken(RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-) API，可将通过 ADAL4j 获取的刷新令牌迁移到 ClientApplication 中。 使用此方法可以结合所需的任何范围（资源）提供以前用过的刷新令牌。 该刷新令牌将交换一个新令牌，并缓存供应用程序使用。
 
 以下代码片段演示了机密客户端应用程序中的一些迁移代码：
 
@@ -126,3 +125,4 @@ SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator(
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
+<!-- Update_Description: wording update -->

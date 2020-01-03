@@ -1,32 +1,30 @@
 ---
-title: 如何使用搜索结果 - Azure 搜索
-description: 对搜索结果进行组织和排序、获取记录计数并将内容导航添加到 Azure 搜索中的搜索结果。
-author: HeidiSteen
+title: 如何使用搜索结果
+titleSuffix: Azure Cognitive Search
+description: 对搜索结果进行组织和排序、获取记录计数并将内容导航添加到 Azure 认知搜索中的搜索结果。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: ''
-ms.topic: conceptual
-origin.date: 06/13/2019
-ms.date: 09/26/2019
+author: HeidiSteen
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: eae01873c9fdf82e2dd93c784bef7633ced503ef
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 19a363c5c775109ea733f76a8d8592dc80013918
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336508"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>如何在 Azure 搜索中使用搜索结果
-本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
+本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 认知搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
 
 在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
-多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.chinacloudapi.cn/)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.azurewebsites.net/)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
-> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice)。
+> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)。
 >
 
 ## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数
@@ -35,7 +33,7 @@ ms.locfileid: "71674420"
 
 ![][1]
 
-在 Azure 搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 以下示例显示了对名为“online-catalog”的索引的总命中数的示例请求，以 `@odata.count` 的形式返回：
+在 Azure 认知搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 以下示例显示了对名为“online-catalog”的索引的总命中数的示例请求，以 `@odata.count` 的形式返回：
 
     GET /indexes/online-catalog/docs?$count=true
 
@@ -57,7 +55,7 @@ ms.locfileid: "71674420"
 
  ![][2]
 
-在 Azure 搜索中，将使用 `$select` 和[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现此体验。
+在 Azure 认知搜索中，将使用 `$select` 和[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现此体验。
 
 若要返回平铺布局的字段的子集：
 
@@ -75,7 +73,7 @@ ms.locfileid: "71674420"
 
  ![][3]
 
-在 Azure 搜索中，对于所有编制索引为 `"Sortable": true.` 的字段，根据 `$orderby` 表达式进行排序。`$orderby` 子句是 OData 表达式。 有关语法的信息，请参阅[筛选器和 order-by 子句的 OData 表达式语法](query-odata-filter-orderby-syntax.md)。
+在 Azure 认知搜索中，对于所有编制索引为 `"Sortable": true.` 的字段，根据 `$orderby` 表达式进行排序。`$orderby` 子句是 OData 表达式。 有关语法的信息，请参阅[筛选器和 order-by 子句的 OData 表达式语法](query-odata-filter-orderby-syntax.md)。
 
 相关性与计分配置文件密切关联。 可以使用依赖于文本分析和统计信息对所有结果排序顺序的默认计分，针对某个搜索词，分数越高，相应记录的匹配项就越多且越相关。
 
@@ -93,7 +91,7 @@ ms.locfileid: "71674420"
 
 ## <a name="faceted-navigation"></a>多面导航
 
-搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 搜索中的分面导航](search-faceted-navigation.md)。
+搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 认知搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 认知搜索中的分面导航](search-faceted-navigation.md)。
 
 ## <a name="filters-at-the-page-level"></a>页面级别的筛选器
 
@@ -103,14 +101,14 @@ ms.locfileid: "71674420"
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-有关 `$filter` 表达式的详细信息，请参阅[搜索记录（Azure 搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
+有关 `$filter` 表达式的详细信息，请参阅[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice)
+- [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)
 - [索引操作](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 - [文档操作](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Azure 搜索中的分面导航](search-faceted-navigation.md)
+- [Azure 认知搜索中的分面导航](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

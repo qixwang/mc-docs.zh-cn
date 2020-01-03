@@ -1,5 +1,5 @@
 ---
-title: 高可用性 - Azure SQL 数据库服务 | Microsoft Docs
+title: 高可用性
 description: 了解 Azure SQL 数据库服务的高可用性功能和特性
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, sashan
 origin.date: 10/14/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 10eb2cdf3de0fae10d5f47e3f5dd01b6aa91ad50
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 12/16/2019
+ms.openlocfilehash: 3b52b44197afaa064b1ec86e062aecb882b48a34
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336237"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
@@ -72,12 +72,18 @@ Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 若要详细了解超大规模中的高可用性，请参阅[超大规模中的数据库高可用性](/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)。
 
-## <a name="testing-database-fault-resiliency"></a>测试数据库的故障复原能力
+## <a name="accelerated-database-recovery-adr"></a>加速的数据库恢复 (ADR)
 
-高可用性是 Azure SQL 数据库平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会对其进行生产性部署。 可以调用一个特殊的 API 来重启数据库或弹性池，从而触发故障转移。 由于重启操作会干扰系统，其数量过多可能会对平台造成太大压力，因此每个数据库或弹性池每 30 分钟只能进行一次故障转移调用。 有关详细信息，请参阅[数据库故障转移](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)和[弹性池故障转移](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)。       
+[加速的数据库恢复 (ADR)](sql-database-accelerated-database-recovery.md) 是一项新的 SQL 数据库引擎功能，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。
+
+## <a name="testing-application-fault-resiliency"></a>测试应用程序的故障复原能力
+
+高可用性是 Azure SQL 数据库平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会将其部署到生产环境。 可以调用一个特殊的 API 来重启数据库或弹性池，从而触发故障转移。 由于重启操作会干扰系统，其数量过多可能会对平台造成压力，因此每个数据库或弹性池每 30 分钟只能进行一次故障转移调用。 
+
+可以使用 REST API 或 PowerShell 启动故障转移。 有关 REST API 的信息，请参阅[数据库故障转移](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)和[弹性池故障转移](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)。 有关 PowerShell 的信息，请参阅 [Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) 和 [Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)。 也可使用 [az rest](/cli/reference-index?view=azure-cli-latest#az-rest) 命令从 Azure CLI 进行 REST API 调用。
 
 > [!IMPORTANT]
-> 目前未为超大规模数据库和托管实例提供故障转移命令。  
+> 目前未为“超大规模”服务层级和托管实例提供故障转移命令。
 
 ## <a name="conclusion"></a>结论
 
