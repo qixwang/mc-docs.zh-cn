@@ -13,18 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 11/11/2019
-ms.date: 11/26/2019
+ms.date: 12/09/2019
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dcb1c175cb2c34b77b9d8ca81e1c35b4a75b68
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: e9038ff1d74312fc20407c503598b735ae725e26
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335286"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
 
@@ -321,7 +320,7 @@ MSAL 日志消息的消息部分采用 `TID = <thread_id> MSAL <sdk_ver> <OS> <O
 
 ## <a name="msal-for-java-logging"></a>适用于 Java 的 MSAL 日志记录
 
-适用于 Java 的 MSAL (MSAL4J) 允许使用已在应用中使用的日志记录库，只要该库与 SLF4J 兼容即可。 MSAL4j 使用[适用于 Java 的简单日志记录结构](http://www.slf4j.org/) (SLF4J) 作为各种日志记录框架（例如 [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、[Logback](http://logback.qos.ch/) 和 [Log4j](https://logging.apache.org/log4j/2.x/)）的简单结构或抽象层。 SLF4J 允许用户在部署时插入所需的日志记录框架。
+适用于 Java 的 MSAL 允许使用已在应用中使用的日志记录库，只要该库与 SLF4J 兼容即可。 适用于 Java 的 MSAL 使用[适用于 Java 的简单日志记录结构](http://www.slf4j.org/) (SLF4J) 作为各种日志记录框架（例如 [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、[Logback](http://logback.qos.ch/) 和 [Log4j](https://logging.apache.org/log4j/2.x/)）的简单结构或抽象层。 SLF4J 允许用户在部署时插入所需的日志记录框架。
 
 例如，若要使用 Logback 作为应用程序中的日志记录框架，请将 Logback 依赖项添加到应用程序的 Maven pom 文件中：
 

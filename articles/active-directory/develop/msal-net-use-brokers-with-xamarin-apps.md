@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/08/2019
-ms.date: 11/05/2019
+ms.date: 12/10/2019
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e033008b72841f9da5e54bfb39299b85fb0fb207
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: a3396902650e9d77202b574af2b20f27dc48889b
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334812"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Microsoft Intune 公司门户
 
@@ -181,7 +180,9 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ## <a name="brokered-authentication-for-android"></a>适用于 Android 的中介身份验证
 
-中介支持不适用于 Android。
+目前 MSAL.NET 仅支持 Xamarin.iOS 平台。 它尚不支持适用于 Xamarin.Android 平台的代理。
+
+MSAL Android 本机库已支持它。 有关详细信息，请参阅 [Android 中的代理身份验证](brokered-auth.md)
 
 ## <a name="next-steps"></a>后续步骤
 

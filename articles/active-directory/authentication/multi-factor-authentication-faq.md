@@ -4,20 +4,19 @@ description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-origin.date: 07/11/2018
-ms.date: 11/12/2019
+ms.topic: troubleshooting
+ms.date: 12/11/2019
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff48a33e0bf1168f19f6049d6801004f5fe4dc11
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 6b8fce6bd9f2b370e82be04ea1af1349d0fc4816
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334920"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 
@@ -49,13 +48,12 @@ ms.locfileid: "74084475"
 
 可以要求用户再次完成注册过程来重置其帐户。 详细了解[管理云中 Azure 多重身份验证的用户和设备设置](howto-mfa-userdevicesettings.md)。
 
-**问：我的用户指出，有时他们收不到短信，或者回复了双向短信但验证超时。**
+**问：我的用户说，有时他们收不到短信，或者验证超时。**
 
-发送短信和接收双向短信回复无法得到保障，因为它们属于可能影响服务可靠性的不可控因素。 这些因素包括目标国家/地区、移动电话运营商和信号强度。
+发送短信无法得到保障，因为存在可能影响服务可靠性的不可控因素。 这些因素包括目标国家/地区、移动电话运营商和信号强度。
 
 如果用户经常无法可靠地接收短信，请告诉他们改用移动应用或电话验证方法。 移动应用可以同时通过手机网络和 Wi-Fi 连接接收通知。 此外，即使设备根本没有信号，也可以生成验证码。 Microsoft 验证器应用适用于 [Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[iOS](https://go.microsoft.com/fwlink/?Linkid=825073) 和 [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
-如果必须使用短信，建议尽可能使用单向短信，而不要使用双向短信。 单向短信更加可靠，并可以防止用户由于回复从其他国家/地区发来的短信而产生的全球短信费用。
 
 **问：为何系统提示用户注册其安全信息？**
 有多种原因会导致系统提示用户注册其安全信息：
@@ -89,7 +87,7 @@ ms.locfileid: "74084475"
 
 如果此处未解答问题，请将其留在页面底部的评论中。 或者，以下是一些用于获取帮助的其他选项：
 
-* 在 [Microsoft 支持知识库](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) 中搜索常见技术问题的解决方法。
+* 在 [Microsoft 支持知识库](https://support.microsoft.com) 中搜索常见技术问题的解决方法。
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。
 * 通过 [Azure 多重身份验证服务器 (PhoneFactor) 支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系支持专业人员。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可以提供的信息包括出现错误的页面、特定错误代码、特定会话 ID 以及看到错误的用户的 ID。
 

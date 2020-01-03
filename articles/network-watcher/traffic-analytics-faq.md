@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 origin.date: 03/08/2018
 ms.date: 9/29/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6daf9799b03eb02782ccc9254ccf64790eb8b53c
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 743db98f5cc5063310fe5aa2a75498db7860aaa7
+ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982185"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500352"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -54,7 +54,7 @@ ms.locfileid: "74982185"
         
 检查针对订阅分配给用户的角色：
 
-1. 使用 Login-AzAccount 登录 Azure  。 
+1. 使用 **Login-AzAccount -Environment AzureChinaCloud** 登录到 Azure。 
 
 2. 使用 Select-AzSubscription 选择所需订阅  。 
 
@@ -73,7 +73,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
-是，这些 NSG 可与 Log Analytics 工作区位于不同区域。
+否。 现在，你只能在一个区域“中国东部 2”中为你的工作区启用 NSG。
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 
@@ -201,7 +201,7 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
 
 流量分析是计量式的。 该计量的基础是由服务处理流日志数据，并将生成的增强日志存储在 Log Analytics 工作区中。 
 
-例如，根据[定价计划](https://www.azure.cn/pricing/details/network-watcher/)，就“中国东部 2”区域而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB，则相应的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
+例如，根据[定价计划](https://www.azure.cn/pricing/details/network-watcher/)，就“中国东部 2”区域而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB，则相应的费用是：10 x 23.405￥ + 1 x 23.4￥ = 257.45￥
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析多久处理一次数据？
 

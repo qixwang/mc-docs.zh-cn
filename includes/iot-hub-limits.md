@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 866991961078585b1009de062f770fc3cb27f711
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 4e3bdd3a243316d321e125d7290b1d8e1eed1381
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467401"
 ---
 下表列出了与不同服务层级（S1、S2、S3、F1）关联的限制。 有关每个层中每个*单位*的成本信息，请参阅 [IoT 中心定价](https://www.azure.cn/pricing/details/iot-hub/)。
 
-| Resource | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
+| 资源 | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
 | --- | --- | --- | --- | --- |
 | 消息/天 |400,000 |6,000,000 |300,000,000 |8,000 |
 | 最大单位数 |200 |200 |10 个 |1 |
@@ -20,9 +20,9 @@ ms.locfileid: "73426406"
 
 下表列出了适用于 IoT 中心资源的限制：
 
-| Resource | 限制 |
+| 资源 | 限制 |
 | --- | --- |
-| 每个 Azure 订阅的付费 IoT 中心数上限 |50 |
+| 每个 Azure 订阅的付费 IoT 中心数上限 |100 |
 | 每个 Azure 订阅的免费 IoT 中心数上限 |1 |
 | 设备 ID 的最大字符数 | 128 |
 | 单个调用中返回的<br/> 设备标识数上限 |1,000 |
@@ -36,9 +36,10 @@ ms.locfileid: "73426406"
 | 每台设备的最大云到设备队列深度 |50 |
 | 响应云到设备消息时发出的 <br/> 反馈消息的最大传送计数 |100 |
 | 响应云到设备消息时发出的 <br/> 反馈消息的最大 TTL |2 天 |
-| [设备孪生的最大大小](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> （标记、报告的属性和所需属性） | 8 KB |
+| [设备孪生的最大大小](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) | 有 8 KB 用于标记部分，并且各有 32 KB 分别用于所需的属性部分和报告的属性部分 |
+| 设备孪生字符串键的最大大小 | 1 KB |
 | 设备孪生字符串值的最大大小 | 4 KB |
-| [设备孪生中对象的最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
+| [设备孪生中对象的最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 10 个 |
 | 直接方法有效负载的最大大小 | 128 KB |
 | 作业历史记录最长保留期 | 30 天 |
 | 最大并发作业数 | 10（适用于 S3），5（适用于 S2），1（适用于 S1） |
@@ -48,7 +49,7 @@ ms.locfileid: "73426406"
 | 最大设备流数据传输 | 300 MB/天（仅适用于 S1、S2、S3 和 F1） |
 
 > [!NOTE]
-> 如果需要在 Azure 订阅中有 50 个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
+> 如果需要 Azure 订阅中有 100 个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
 
 > [!NOTE]
 > 目前，可注册到单个 IoT 中心的设备和模块的总数上限为 1,000,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

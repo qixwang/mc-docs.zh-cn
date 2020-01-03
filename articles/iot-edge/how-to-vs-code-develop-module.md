@@ -7,15 +7,15 @@ author: shizn
 manager: philmea
 ms.author: v-yiso
 origin.date: 08/07/2019
-ms.date: 10/08/2019
+ms.date: 12/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 496a544d5536585d10f12b7883f97413bd2d22bf
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 8b1b5b0e08687ff8029d7203fdf36f6e27d003a5
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389534"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336420"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -60,12 +60,14 @@ ms.locfileid: "74389534"
     > [!TIP]
     > 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。
 
-除非使用 C 开发模块，否则还需要基于 Python 的 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，以便设置本地开发环境以调试、运行和测试 IoT Edge 解决方案。 如果尚未这样做，请安装 [Python (2.7/3.6+) 和 Pip](https://www.python.org/)，然后在终端中运行此命令安装“iotedgehubdev”  。
+除非使用 C 开发模块，否则还需要基于 Python 的 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，以便设置本地开发环境以调试、运行和测试 IoT Edge 解决方案。 如果尚未这样做，请安装 [Python (2.7/3.6/3.7) 和 Pip](https://www.python.org/)，然后在终端中运行此命令安装“iotedgehubdev”  。
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 > [!NOTE]
+> 目前，iotedgehubdev 使用与 Python 3.8 不兼容的 docker-py 库。
+>
 > 如果有多个 Python，包括预安装的 python 2.7（例如，在 Ubuntu 或 macOS 上），请确保使用正确的 `pip` 或 `pip3` 来安装 **iotedgehubdev**
 
 > [!NOTE]
@@ -107,6 +109,8 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
   > 仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。
 
 - 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 SimulatedTemperatureSensor 模块   。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
+
+若要了解模拟温度模块的工作原理，请查看 [SimulatedTemperatureSensor.csproj 源代码](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)。
 
 ## <a name="add-additional-modules"></a>添加其他模块
 

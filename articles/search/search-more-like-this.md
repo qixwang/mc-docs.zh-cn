@@ -1,27 +1,27 @@
 ---
-title: Azure 搜索中的 moreLikeThis（预览版）- Azure 搜索
-description: Azure 搜索 REST API 中公开了有关 moreLikeThis 功能（预览）功能的初步文档。
-author: brjohnstmsft
+title: moreLikeThis（预览版）查询功能
+titleSuffix: Azure Cognitive Search
+description: 介绍了 moreLikeThis（预览版）功能，该功能可在 Azure 认知搜索 REST API 的预览版中找到。
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 09/26/2019
+author: brjohnstmsft
 ms.author: v-tawe
-ms.custom: seodec2018
-ms.openlocfilehash: 8e61515c24d223097fe85d9697fcb0bd42f26137
-ms.sourcegitcommit: a5a43ed8b9ab870f30b94ab613663af5f24ae6e1
+ms.devlang: rest-api
+ms.service: cognitive-search
+ms.topic: conceptual
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: 3d2e4a5ff0980627d429f786c89d2e2fe64961d7
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336509"
 ---
-# <a name="morelikethis-in-azure-search"></a>Azure 搜索中的 moreLikeThis
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>Azure 认知搜索中的 moreLikeThis（预览版）
 
-> [!Note]
-> moreLikeThis 为预览版，不适合在生产环境中使用。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持 .NET SDK。
+> [!IMPORTANT] 
+> 此功能目前处于公开预览状态。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
+> [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
 
 `moreLikeThis=[key]` 是[搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 中的查询参数，用于查找与文档键所指定文档类似的文档。 当使用 `moreLikeThis` 生成搜索请求时，使用从最匹配的给定文档中提取的搜索项来生成查询。 然后使用生成的查询来生成搜索请求。 默认情况下，会考虑所有可搜索字段的内容，使用 `searchFields` 参数指定的限制字段除外。 `moreLikeThis` 参数不能与搜索参数 `search=[string]` 一起使用。
 
@@ -51,4 +51,4 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 可以使用任何 Web 测试工具来试验此功能。  建议使用 Postman 完成此练习。
 
 > [!div class="nextstepaction"]
-> [使用 Postman 探索 Azure 搜索 REST API](search-get-started-postman.md)
+> [使用 Postman 探索 Azure 认知搜索 REST API](search-get-started-postman.md)

@@ -5,22 +5,22 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/11/2019
-ms.date: 10/28/2019
+ms.date: 12/16/2019
 ms.author: v-yeche
-ms.openlocfilehash: adce2e1f665887c112f93237c09941290a34da0c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 0908752d911d6235a9829b4766a97fb47362308e
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75335733"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 
 GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果。
 
 > [!NOTE]
-> Azure Cosmos DB 目前在 [.NET SDK 3.3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.3.0) 或更高版本中支持 GROUP BY。
-> 对其他语言 SDK 的以及 Azure 门户的支持目前尚未发布，但已在计划内。
+> Azure Cosmos DB 当前在 .NET SDK 3.3 及更高版本和 JavaScript SDK 3.4 及更高版本中支持 GROUP BY。
+> 对其他语言 SDK 的支持目前尚未提供，但已计划提供。
 
 ## <a name="syntax"></a>语法
 
@@ -178,5 +178,4 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 - [SELECT 子句](sql-query-select.md)
 - [聚合函数](sql-query-aggregates.md)
 
-<!--Update_Description: new articles on sql query group by  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

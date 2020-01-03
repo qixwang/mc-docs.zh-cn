@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库无服务器（预览版）| Microsoft Docs
+title: 无服务器
 description: 本文介绍新的无服务器计算层，并将它与现有的预配计算层进行比较
 services: sql-database
 ms.service: sql-database
@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
-origin.date: 09/06/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d441b257bb20ef192492242078ed62eed28c57b
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+origin.date: 11/04/2019
+ms.date: 12/16/2019
+ms.openlocfilehash: db3fcc4425f647184f0a19187197c673e822a8ef
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75336169"
 ---
-# <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
+# <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
-Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据库的计算层，可根据工作负荷需求自动缩放，并根据每秒使用的计算资源量计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
+Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层，可根据工作负荷需求自动缩放，并根据每秒使用的计算资源量计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
 
 ## <a name="serverless-compute-tier"></a>无服务器计算层
 
@@ -172,11 +172,9 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
    |参数|可选的值|默认值|
    |---|---|---|---|
-   |最小 vCore 数|取决于配置的最大 vCore 数 - 请参阅[资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。|0.5 个 vCore|
+   |最小 vCore 数|取决于配置的最大 vCore 数 - 请参阅[资源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。|0.5 个 vCore|
    |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
 
-> [!NOTE]
-> 目前不支持使用 T-SQL 将现有数据库移动到无服务器或更改其计算大小，但可以通过 Azure 门户或 PowerShell 完成这些操作。
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>在无服务器计算层中创建新数据库 
 
@@ -201,6 +199,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
+
+以下示例在无服务器计算层中创建新数据库。
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+有关详细信息，请参阅 [CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)。  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
 #### <a name="use-powershell"></a>使用 PowerShell
@@ -219,6 +228,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
+
+以下示例将某个数据库从预配的计算层中移入无服务器计算层。 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+有关详细信息，请参阅 [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)。
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>将数据库从无服务器计算层移到预配的计算层
 
@@ -289,7 +309,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>资源限制
 
-有关资源限制的信息，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
+有关资源限制的信息，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。
 
 ## <a name="billing"></a>计费
 
@@ -332,4 +352,4 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用，请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
-- 有关资源限制的信息，请参阅[无服务器计算层资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
+- 有关资源限制的信息，请参阅[无服务器计算层资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。
