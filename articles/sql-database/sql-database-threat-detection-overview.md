@@ -1,5 +1,5 @@
 ---
-title: 高级威胁防护 - Azure SQL 数据库 | Microsoft Docs
+title: 高级威胁防护
 description: 高级威胁防护会检测异常的数据库活动，指出 Azure SQL 数据库中的潜在安全威胁。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
-manager: digimobile
 origin.date: 03/31/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 1a12f5fa5b423f003e80dbab94445259b45ed0e7
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 01/06/2020
+ms.openlocfilehash: cabbbbd3633320a6b4d4f9401bbed3de6af85056
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544359"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624293"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
 
@@ -82,5 +81,5 @@ ms.locfileid: "69544359"
 - 详细了解[托管实例中的高级威胁防护](sql-database-managed-instance-threat-detection.md)。
 - 详细了解[高级数据安全性](sql-database-advanced-data-security.md)。
 - 详细了解 [Azure SQL 数据库审核](sql-database-auditing.md)
-- 详细了解 [Azure 安全中心](/security-center/security-center-intro)
+- 详细了解 [Azure 安全中心](/security-center/)
 - 有关定价的详细信息，请参阅 [SQL 数据库定价页](https://azure.cn/pricing/details/sql-database/)  
