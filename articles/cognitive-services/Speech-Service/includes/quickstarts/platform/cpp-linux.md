@@ -1,22 +1,22 @@
 ---
 title: 快速入门：用于 C++ (Linux) 的语音 SDK 平台设置 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 使用本指南，通过语音服务 SDK 设置用于 C++ on Linux 的平台。
+description: 根据本指南可设置配合使用 Linux 上的 C++ 和语音服务 SDK 的平台。
 services: cognitive-services
 author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 origin.date: 10/14/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4025185271860409afe6cf1c3a33fa2346e0ede9
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: ed5e7476a72933bda3e1cc4d2b586b33f7295db7
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389967"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631050"
 ---
 本指南介绍如何安装用于 Linux 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)
 

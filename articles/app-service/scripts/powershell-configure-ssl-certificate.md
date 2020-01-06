@@ -1,27 +1,20 @@
 ---
-title: Azure PowerShell 脚本示例 - 将自定义 SSL 证书绑定到 Web 应用 | Azure
-description: Azure PowerShell 脚本示例 - 将自定义 SSL 证书绑定到 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：上传并绑定 SSL
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例介绍如何将自定义 SSL 证书绑定到应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 origin.date: 03/20/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 316e7849a186edaffa719585355a03e837406ce7
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: f3cf15946a18033b0df416bc45fe43c45e74553a
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555949"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600300"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 将自定义 SSL 证书绑定到 Web 应用
 

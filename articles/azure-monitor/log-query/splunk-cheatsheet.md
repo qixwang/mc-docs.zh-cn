@@ -1,7 +1,6 @@
 ---
 title: 从 Splunk 到 Azure Monitor 日志查询 | Azure Docs
 description: 帮助熟悉 Splunk 的用户学习 Azure Monitor 日志查询。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/21/2018
 ms.date: 10/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 77828181ad95a26ceef9ac8092242e1b22d9a88f
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 0efd1349e8e4507ea0055b704151b30bbf383b6d
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730323"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599892"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
 

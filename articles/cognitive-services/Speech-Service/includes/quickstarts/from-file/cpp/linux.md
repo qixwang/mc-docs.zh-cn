@@ -1,22 +1,21 @@
 ---
 title: 快速入门：从音频文件中识别语音，C++ (Linux) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 Linux 上使用语音 SDK 通过 C++ 识别语音
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 07/05/2019
-ms.date: 11/25/2019
+ms.topic: include
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: cf70e96f9b087eec4164263d7e1173ae8786e69d
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: d952030b64034f19c65ecf014fb5b70a26789033
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390074"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631054"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,6 +25,8 @@ ms.locfileid: "74390074"
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=linux)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -80,6 +81,9 @@ ms.locfileid: "74390074"
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，对于 1 元人民币的试用订阅，为 `chinaeast2`）。
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
+
+> [!NOTE]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-the-app"></a>生成应用
 

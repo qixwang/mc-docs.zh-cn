@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志查询中的有用运算符 | Microsoft Docs
 description: Azure Monitor 日志查询中用于各种方案的常见函数。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/21/2018
 ms.date: 08/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 73fc1434eba8af91631b75ff70d5c2f6d3061727
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 9891a7efe9be4c8a314fd27fb3e46bdca6b07070
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730321"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599867"
 ---
 # <a name="useful-operators-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的有用运算符
 

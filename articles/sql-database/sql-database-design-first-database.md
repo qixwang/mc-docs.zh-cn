@@ -9,13 +9,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: v-masebo
 origin.date: 07/29/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f226f9ea4daba8074fdda5caa633985cec1cc5d3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: ec35842ae6f31fa2f606d3649bf6093875b8fa4a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336068"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624302"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库的单一数据库中设计关系数据库
 
@@ -123,7 +123,7 @@ SQL 数据库服务在服务器级别创建 IP 防火墙。 此防火墙阻止�
 
 ## <a name="connect-to-the-database"></a>连接到数据库
 
-使用 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 来与单一数据库建立连接。
+使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) 来与单一数据库建立连接。
 
 1. 打开 SQL Server Management Studio。
 2. 在“连接到服务器”对话框中，输入以下信息： 

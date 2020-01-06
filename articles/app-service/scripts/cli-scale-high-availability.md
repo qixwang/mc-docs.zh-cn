@@ -1,28 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 使用流量管理器在全球范围内缩放应用 | Azure
-description: Azure CLI 脚本示例 - 缩放具有高可用性体系结构的全球应用服务应用
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：使用流量管理器缩放应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 本示例演示如何使用流量管理器在全球范围内进行缩放。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 4d7c6f3d8dcd0731d45f3c7abf8cd6773eb55188
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: a334b5f65acfe71319482653a5cfbd744db94835
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806788"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600326"
 ---
 # <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>使用 Azure CLI 缩放具有高可用性体系结构的全球应用服务应用
 

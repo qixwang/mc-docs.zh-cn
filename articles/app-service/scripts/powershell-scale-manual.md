@@ -1,28 +1,20 @@
 ---
-title: Azure PowerShell 脚本示例 - 手动缩放 Web 应用 | Azure
-description: Azure PowerShell 脚本示例 - 手动缩放 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：手动缩放 Web 应用
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何手动缩放应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 origin.date: 03/20/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 9cf09ea3ad77a23ab889492bc46924ba556ec650
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: baa19bde98a7c5e6c236afddd3440c30d0576bcc
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806691"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600258"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>使用 PowerShell 手动缩放 Web 应用
 

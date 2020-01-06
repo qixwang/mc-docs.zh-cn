@@ -1,22 +1,20 @@
 ---
 title: 如何使用队列存储 (C++) - Azure 存储
 description: 了解如何在 Azure 中使用队列存储服务。 示例用 C++ 编写。
-services: storage
 author: WenJason
-ms.service: storage
-ms.devlang: cpp
-ms.topic: article
-origin.date: 05/11/2017
-ms.date: 05/27/2019
 ms.author: v-jay
-ms.reviewer: cbrooks
+origin.date: 05/11/2017
+ms.date: 01/06/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: e5764a882aa5757e6b5ddd5d0b7142e68b467cc5
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: c83bc26c8254b903d832c09f1ab66a74d535e35e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004008"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624098"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何通过 C++ 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -42,12 +40,14 @@ ms.locfileid: "66004008"
 
 若要安装适用于 C++ 的 Azure 存储客户端库，可使用以下方法：
 
-* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。
-* **Windows:** 在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。  在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。
+* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件：在 Linux 上开始使用](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)页中提供的说明操作。
+* **Windows:** 在 Windows 中，使用 [vcpkg](https://github.com/microsoft/vcpkg) 作为依赖项管理员。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
 
 ```powershell
-Install-Package wastorage
+.\vcpkg.exe install azure-storage-cpp
 ```
+
+可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何生成源代码和导出到 Nuget 的指南。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>配置应用程序以访问队列存储
 将以下 include 语句添加到要在其中使用 Azure 存储 API 来访问队列 C++ 文件的顶部：  

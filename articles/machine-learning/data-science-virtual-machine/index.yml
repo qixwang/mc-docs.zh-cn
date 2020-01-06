@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Azure Data Science Virtual Machine 文档
+summary: Azure Data Science Virtual Machine (DSVM) 是一种预加载了数据科学和机器学习工具的虚拟机映像。 使用此 VM 可构建智能应用程序以进行高级分析。
+metadata:
+  title: Data Science Virtual Machine 文档 - Azure
+  description: Azure Data Science Virtual Machine (DSVM) 是一种预加载了数据科学和机器学习工具的虚拟机映像。
+  ms.service: machine-learning
+  ms.subservice: data-science-vm
+  ms.topic: landing-page
+  ms.collection: collection
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: eb74f77bd60f2f61a66cec9ce3a2ed32518855c7
+  ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/02/2020
+  ms.locfileid: "75598999"
+landingContent:
+- title: 开始使用 DSVM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 DSVM？
+      url: overview.md
+    - text: 什么是 Geo AI DSVM？
+      url: geo-ai-dsvm-overview.md
+    - text: DSVM 中包含的工具
+      url: tools-included.md
+    - text: 发行说明
+      url: release-notes.md
+  - linkListType: get-started
+    links:
+    - text: 创建 Windows DSVM
+      url: provision-vm.md
+    - text: 创建 Ubuntu DSVM
+      url: dsvm-ubuntu-intro.md
+    - text: 创建 CentOS DSVM
+      url: linux-dsvm-intro.md
+    - text: 创建地理 AI DSVM
+      url: provision-geo-ai-dsvm.md
+- title: 管理 DSVM
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 企业安全与指南
+      url: dsvm-enterprise-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建自动缩放的 DSVM 池
+      url: dsvm-pools.md
+    - text: 与 Azure Active Directory 集成
+      url: dsvm-common-identity.md
+    - text: 保护资源访问凭据
+      url: dsvm-secure-access-keys.md
+- title: 更多 Azure 机器学习技术
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure 机器学习
+      url: /machine-learning/
+    - text: 比较我们的 ML 产品
+      url: /architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

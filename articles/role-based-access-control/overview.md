@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/11/2019
-ms.date: 09/24/2019
+ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 862b64d2db73d3f0386a4f0c4c5a57cd3edca50d
-ms.sourcegitcommit: c74ea6bb80aec1a6c200f19832393adf806921fd
+ms.openlocfilehash: a6787e84030b177264d140b4d1502d5ae7e70a50
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717504"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624297"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
@@ -62,7 +61,7 @@ RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-ove
 
 ### <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。  它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
+角色定义是权限的集合。  它通常直接称为“角色”。  角色定义列出可以执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
 
 ![角色分配的角色定义](./media/overview/rbac-role-definition.png)
 
@@ -81,7 +80,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 范围是访问权限适用于的资源集。  分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
 
-在 Azure 中，可在多个级别指定范围：[管理组](/governance/management-groups/overview)、订阅、资源组或资源。 范围采用父子关系结构。
+在 Azure 中，可在多个级别指定范围：[管理组](../governance/management-groups/overview.md)、订阅、资源组或资源。 范围采用父子关系结构。
 
 ![角色分配的范围](./media/overview/rbac-scope.png)
 
@@ -107,6 +106,9 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ![多角色分配](./media/overview/rbac-multiple-roles.png)
 
+## <a name="deny-assignments"></a>拒绝分配
+
+以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组、服务主体或托管标识，以便拒绝访问。 角色分配定义了一组允许  的操作，而拒绝分配定义了一组不允许  的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。 有关详细信息，请参阅[了解 Azure 资源的拒绝分配](deny-assignments.md)。
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>RBAC 如何确定用户是否有权访问资源
 
@@ -118,7 +120,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 1. 用户使用附加的令牌对 Azure 资源管理器发出 REST API 调用。
 
-1. Azure 资源管理器检索适用于对其执行操作的资源的所有角色分配。
+1. Azure 资源管理器检索适用于对其执行操作的资源的所有角色分配和拒绝分配。
 
 1. Azure 资源管理器缩小适用于此用户或其组的角色分配范围，并确定用户针对此资源拥有的角色。
 

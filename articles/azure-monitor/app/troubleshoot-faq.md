@@ -9,12 +9,12 @@ manager: digimobile
 origin.date: 09/16/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 95dcd7724ab3489beac5a3271d378ff69e321dc0
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 365f4d9f76eeb6719a1754d73b80249321e0533a
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657953"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600110"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题解答
 
@@ -315,7 +315,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 大多数 Application Insights 数据的延迟小于 5 分钟。 有些数据可能需要更长的时间，通常是较大的日志文件。 
 
 ## <a name="more-answers"></a>更多答案
-* [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+* [Application Insights 论坛](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 <!--Link references-->
 

@@ -2,19 +2,17 @@
 title: 使用 Azure 虚拟机进行高级自动缩放
 description: 使用包含多个规则和配置文件的 Resource Manager 与 VM 规模集，通过缩放操作发送电子邮件和调用 Webhook URL。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 02/22/2016
-ms.date: 01/21/2019
+ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: autoscale
-ms.openlocfilehash: cb31062693caa1069c18cb7f62a695fd146b8870
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 701bcadedb69b34adf32e5c6bd62da94e0b7e1f6
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970719"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599900"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。

@@ -6,15 +6,15 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 origin.date: 03/11/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: fryu
-ms.openlocfilehash: acc14f757e79f6295c8e24bb13fa562dca01e580
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: e40c81b49846af6d66e93b412397d53deb632138
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328719"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624142"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -193,7 +193,7 @@ queueClient.SetServiceProperties(serviceProperties);
 以下示例演示如何下载队列服务的日志数据，这些数据的起始时间为 2014 年 5 月 20 日上午 9 点、10 点和 11 点。
 
 ```
-azcopy copy 'https://mystorageaccount.blob.core.chinacloudapi.cn/$logs/queue?<SAS token>' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
+azcopy copy 'https://mystorageaccount.blob.core.chinacloudapi.cn/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
 若要详细了解如何下载特定文件，请参阅[下载特定文件](/storage/common/storage-use-azcopy-blobs?toc=%2fstorage%2fblobs%2ftoc.json#download-specific-files)。

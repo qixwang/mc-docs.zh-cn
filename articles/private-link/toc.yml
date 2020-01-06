@@ -1,0 +1,68 @@
+- name: Azure 专用链接文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure 专用链接？
+      href: private-link-overview.md
+- name: 快速入门
+  items:
+    - name: 创建专用终结点
+      items:
+        - name: Azure 门户
+          href: create-private-endpoint-portal.md
+        - name: Azure CLI
+          href: create-private-endpoint-cli.md
+        - name: Azure PowerShell
+          href: create-private-endpoint-powershell.md
+    - name: 创建专用链接服务
+      items:
+        - name: Azure PowerShell
+          href: create-private-link-service-powershell.md
+        - name: Azure CLI
+          href: create-private-link-service-cli.md
+- name: 概念
+  items:
+    - name: 专用终结点
+      href: private-endpoint-overview.md
+    - name: 专用链接服务
+      href: private-link-service-overview.md
+- name: 如何
+  items:
+    - name: 专门连接到存储帐户
+      href: create-private-endpoint-storage-portal.md
+    - name: 专门连接到 Cosmos DB 帐户
+      href: create-private-endpoint-cosmosdb-portal.md
+    - name: 对专用终结点禁用网络策略
+      href: disable-private-endpoint-network-policy.md
+    - name: 对专用链接服务禁用网络策略
+      href: disable-private-link-service-network-policy.md
+    - name: 管理专用终结点
+      href: manage-private-endpoint.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: 'https://docs.azure.cn/cli/network?view=azure-cli-latest'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network'
+    - name: .NET
+      href: 'https://docs.microsoft.com/api/overview/azure/virtual-network'
+    - name: Java
+      href: 'https://docs.azure.cn/java/api/'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints'
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: 资源
+  items:
+    - name: 网络反馈
+      href: 'https://support.azure.cn/support/contact/'
+    - name: 定价
+      href: 'https://www.azure.cn/pricing/details/private-link/'
+    - name: 定价计算器
+      href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 常见问题
+      href: private-link-faq.md

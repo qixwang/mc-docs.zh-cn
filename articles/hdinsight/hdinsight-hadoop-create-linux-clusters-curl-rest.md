@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/02/2018
-ms.date: 07/22/2019
+origin.date: 12/10/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: b514f796c7f8dcc2a94e3085acef57a5b23c918e
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: 4863b5c4b8dcb490538b4381823a77257aed4266
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845447"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630796"
 ---
-# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Hadoop 群集
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -154,7 +154,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
                             "name": "headnode",
                             "targetInstanceCount": "2",
                             "hardwareProfile": {
-                                "vmSize": "Standard_D3"
+                                "vmSize": "{}"
                             },
                             "osProfile": {
                                 "linuxOperatingSystemProfile": {
@@ -167,7 +167,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
                             "name": "workernode",
                             "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                             "hardwareProfile": {
-                                "vmSize": "Standard_D3"
+                                "vmSize": "{}"
                             },
                             "osProfile": {
                                 "linuxOperatingSystemProfile": {
@@ -354,7 +354,7 @@ curl -X "GET" "https://management.chinacloudapi.cn/subscriptions/$SUBSCRIPTIONID
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -363,7 +363,6 @@ curl -X "GET" "https://management.chinacloudapi.cn/subscriptions/$SUBSCRIPTIONID
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集

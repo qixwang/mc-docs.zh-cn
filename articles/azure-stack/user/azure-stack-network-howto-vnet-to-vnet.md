@@ -10,12 +10,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: 256b27d179bae8fb1ca3cf51020e443cff7d40d2
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: f39fb2b34a137bdbbf46b5ad2a01dce933b4e727
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020618"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624255"
 ---
 # <a name="how-to-connect-two-vnets-through-peering"></a>如何通过对等互连连接两个 VNET
 
@@ -29,7 +29,7 @@ ms.locfileid: "74020618"
 
 -  至少有两个可用于激活 FortiGate NVA 的 FortiGate 许可证文件。 有关如何获取这些许可证的信息，请参阅 Fortinet 文档库文章[注册和下载许可证](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license)。
 
-    此过程使用[单一 FortiGate-VM 部署](ttps://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment)。 其中提供了在本地网络中将 FortiGate NVA 连接到 Azure Stack VNET 的步骤。
+    此过程使用[单一 FortiGate-VM 部署](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment)。 其中提供了在本地网络中将 FortiGate NVA 连接到 Azure Stack VNET 的步骤。
 
     有关如何在主动-被动 (HA) 设置中部署 FortiGate 解决方案的详细信息，请参阅 Fortinet 文档库文章 [Azure 上的 FortiGate-VM 的 HA](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure) 中的详细信息。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74020618"
 | 虚拟网络名称 | forti1vnet1 |
 | VNET 地址空间 | 172.16.0.0/16* |
 | 公共 VNET 子网名称 | forti1-PublicFacingSubnet |
-| 公共 VNet 地址前缀 | 172.16.0.0/24* |
+| 公共 VNET 地址前缀 | 172.16.0.0/24* |
 | 内部 VNET 子网名称 | forti1-InsideSubnet |
 | 内部 VNET 子网前缀 | 172.16.1.0/24* |
 | FortiGate NVA 的 VM 大小 | 标准 F2s_v2 |
@@ -64,7 +64,7 @@ ms.locfileid: "74020618"
 | 虚拟网络名称 | forti2vnet1 |
 | VNET 地址空间 | 172.17.0.0/16* |
 | 公共 VNET 子网名称 | forti2-PublicFacingSubnet |
-| 公共 VNet 地址前缀 | 172.17.0.0/24* |
+| 公共 VNET 地址前缀 | 172.17.0.0/24* |
 | 内部 VNET 子网名称 | Forti2-InsideSubnet |
 | 内部 VNET 子网前缀 | 172.17.1.0/24* |
 | FortiGate NVA 的 VM 大小 | 标准 F2s_v2 |

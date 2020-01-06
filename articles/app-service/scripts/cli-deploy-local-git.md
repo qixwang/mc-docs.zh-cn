@@ -1,28 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 从本地 Git 存储库创建应用并部署代码 | Azure
-description: Azure CLI 脚本示例 - 从本地 Git 存储库创建应用服务应用并部署代码
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从本地 Git 存储库进行部署
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从本地 Git 存储库部署代码。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 048f98aa-f708-44cb-9b9e-953f67dc6da8
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 591d130a312b011076aabd447c525c5aa1795ad9
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: b912766032f6c56e3ab2a8813d427988a2335bb3
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806795"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600339"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>使用 Azure CLI 从本地 Git 存储库创建应用服务应用并部署代码
 

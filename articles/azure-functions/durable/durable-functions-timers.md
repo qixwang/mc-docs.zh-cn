@@ -1,21 +1,15 @@
 ---
 title: Durable Functions 中的计时器 - Azure
 description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中的持久计时器。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/03/2019
-ms.date: 11/19/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: d5ce9b5a428b42b4522d5e3c4483631aedf78116
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 6ace848614bc8e3d10a2ce9cf60633aa3b999e03
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178980"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623662"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions 中的计时器 (Azure Functions)
 
@@ -62,7 +56,6 @@ const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
-        const dayOfMonth = context.df.currentUtcDateTime.getDate();
         const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
         yield context.df.createTimer(deadline.toDate());
         yield context.df.callActivity("SendBillingEvent");

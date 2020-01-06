@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/06/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc4e965d3212ba80b2ae274580b6d12e2e232fd1
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 2c68ca0dbae97a4475a437e69d95cf50d4706040
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658132"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600142"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -110,5 +110,5 @@ ms.locfileid: "74658132"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[在 Azure 中管理子网](virtual-network-manage-subnet.md)。
 
-<!-- Update_Description: new article about manage subnet delegation -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NEW.date: 01/06/2020-->

@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 创建 Azure 数据工厂 | Microsoft Docs
+title: 使用 REST API 创建 Azure 数据工厂
 description: 创建一个 Azure 数据工厂，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
 origin.date: 06/10/2019
-ms.date: 10/14/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: d3eafca00e99c4844bcdaf34acbe2d4ebc134ab7
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 384450ad7e9830868c42802c0a537807523c274a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275270"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623966"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -301,7 +301,7 @@ $response | ConvertTo-Json
 在此示例中，此管道包含一个活动并采用两个参数 - 输入 blob 路径和输出 blob 路径。 这些参数的值是在触发/运行管道时设置的。 复制活动引用在上一步中创建的同一 blob 数据集作为输入和输出。 当该数据集用作输入数据集时，即指定了输入路径。 并且，当该数据集用作输出数据集时，即指定了输出路径。
 
 ```powershell
-$request = "https://management.chinacloudapi.cn/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$request = "https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",

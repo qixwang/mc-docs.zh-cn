@@ -7,25 +7,26 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 52d881b70bb6e1598c7d8347b614b246671f7ea2
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 35eaf2a4275ac5dcdba9917ec4f0484dba6aa1a4
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390089"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631013"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请务必：
+准备工作：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 如果尚未执行此操作，很好！ 让我们继续。
 
@@ -543,7 +544,7 @@ ms.locfileid: "74390089"
 
    ![麦克风访问权限请求](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. 选择“启动语音识别”，然后对着设备的麦克风讲出英文短语或句子。  你的语音会传输到语音服务并转录为文本，该文本会显示在窗口中。
+1. 选择“启动语音识别”，然后对着设备的麦克风讲出英文短语或句子。  你的语音将传输到语音服务并转录为文本，该文本将显示在窗口中。
 
    ![语音识别用户界面](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

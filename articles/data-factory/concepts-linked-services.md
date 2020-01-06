@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的链接服务 | Microsoft Docs
+title: Azure 数据工厂中的链接服务
 description: 了解数据工厂中的链接服务。 链接服务将计算/数据存储链接到数据工厂。
 services: data-factory
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 10/14/2019
-ms.openlocfilehash: 8586217aab7c2ca502b679ff20a751839aa85a3e
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.date: 01/06/2020
+ms.openlocfilehash: 058bb7fb50b96d36c126199fc86207d72244008d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275531"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623637"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 
@@ -75,10 +75,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>;EndpointSuffix=core.chinacloudapi.cn"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>;EndpointSuffix=core.chinacloudapi.cn"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

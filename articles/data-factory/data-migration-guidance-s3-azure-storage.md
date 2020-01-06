@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 | Microsoft Docs
+title: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储
 description: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储。
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 8/04/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: f1859c5ffeb611838aced706f7fe57ea2a1351c4
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.date: 01/06/2020
+ms.openlocfilehash: 00cd8f4cf0034560c02a25e691546cc6eb1517c0
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648766"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624071"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -84,7 +84,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 - 若要对 Amazon S3 帐户进行身份验证，必须使用 [IAM 帐户的访问密钥](/data-factory/connector-amazon-simple-storage-service#linked-service-properties)。 
 - 支持使用多种身份验证类型连接到 Azure Blob 存储。  强烈建议使用 [Azure 资源的托管标识](/data-factory/connector-azure-blob-storage#managed-identity)：托管标识构建在 Azure AD 中自动管理的 ADF 标识基础之上，使你无需在链接服务定义中提供凭据，即可配置管道。  或者，可以使用[服务主体](/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共享访问签名](/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)或[存储帐户密钥](/data-factory/connector-azure-blob-storage#account-key-authentication)对 Azure Blob 存储进行身份验证。 
 - 也支持使用多种身份验证类型连接到 Azure Data Lake Storage Gen2。  强烈建议使用 [Azure 资源的托管标识](/data-factory/connector-azure-data-lake-storage#managed-identity)，不过，也可以使用[服务主体](/data-factory/connector-azure-data-lake-storage#service-principal-authentication)或[存储帐户密钥](/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
-- 如果不使用 Azure 资源的托管标识，我们强烈建议[在 Azure Key Vault 中存储凭据](/data-factory/store-credentials-in-key-vault)，以便更轻松地集中管理和轮换密钥，而无需修改 ADF 链接服务。  这也是一项 [CI/CD 最佳做法](/data-factory/continuous-integration-deployment#best-practices-for-cicd)。 
+- 如果不使用 Azure 资源的托管标识，我们强烈建议[在 Azure Key Vault 中存储凭据](/data-factory/store-credentials-in-key-vault)，以便更轻松地集中管理和轮换密钥，而无需修改 ADF 链接服务。
 
 ### <a name="initial-snapshot-data-migration"></a>初始快照数据迁移 
 

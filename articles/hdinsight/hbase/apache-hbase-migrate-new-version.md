@@ -12,15 +12,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-origin.date: 05/06/2019
+origin.date: 12/05/2019
 ms.author: ashishth
-ms.date: 10/28/2019
-ms.openlocfilehash: 1e5147329d7092a589efa672c0eaccacb00c00a3
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.date: 01/13/2020
+ms.openlocfilehash: f08ab226d0bd20058eeca01cb56371ebc0d7b345
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583853"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631107"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
@@ -105,7 +105,7 @@ ms.locfileid: "72583853"
     
             Provide Script URL.
     
-            Provide hostname as a parameter (i.e. hn0, hn1 or wn2 etc.).
+            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
     ...
             exit
         fi

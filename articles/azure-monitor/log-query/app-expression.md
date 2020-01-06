@@ -6,15 +6,15 @@ ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
-ms.author: v-lingwu
 origin.date: 01/25/2019
 ms.date: 11/04/2019
-ms.openlocfilehash: 10c3a2f155bf2c88e19839f724fd1f5f81024402
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.author: v-lingwu
+ms.openlocfilehash: 6a5b2749d2476bda7d8b96ab539bc987f98cdf51
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730464"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599753"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 

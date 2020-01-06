@@ -1,25 +1,19 @@
 ---
-title: 使用 SSL 绑定保护自定义 DNS 名称 - Azure 应用服务 | Microsoft Docs
-description: 了解如何购买应用服务证书并将其绑定到应用服务应用
-services: app-service
-author: cephalin
-manager: gwallace
+title: 使用 SSL 绑定保护自定义 DNS
+description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进行的 HTTPS 访问。 通过强制实施 HTTPS 或 TLS 1.2 提高网站的安全性。
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 origin.date: 10/25/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 521581ae0d689dd09ccea876d8fbf450182f9b76
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6e474dc9735912cee754e5ea987b251e8e6e86a7
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335731"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600501"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 
@@ -116,6 +110,8 @@ ms.locfileid: "75335731"
 
 ![在门户中导航到 Azure 应用](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
+应用程序代码可以通过“x-appservice-proto”标头检查协议。 该标头的值将为 `http` 或 `https`。 
+
 > [!NOTE]
 > 如果应用显示证书验证错误，可能是因为使用自签名证书。
 >
@@ -167,7 +163,7 @@ resourceGroup=myResourceGroup
 webappname=mywebapp$RANDOM
 
 # Create a resource group.
-az group create --location westeurope --name $resourceGroup
+az group create --location chinaeast --name $resourceGroup
 
 # Create an App Service plan in Basic tier (minimum required by custom domains).
 az appservice plan create --name $webappname --resource-group $resourceGroup --sku B1

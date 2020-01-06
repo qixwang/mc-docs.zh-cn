@@ -1,28 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Azure CLI 手动缩放应用 | Azure
-description: Azure CLI 脚本示例 - 使用 Azure CLI 手动缩放应用服务
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：手动缩放应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何手动缩放应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 6ca39b08a34e788ef6d893db26827c1ec9393ae2
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: d68128789d659b27b24c96b6af24a9508f0b2831
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806785"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600325"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>使用 Azure CLI 手动缩放应用服务应用
 

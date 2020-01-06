@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 06/21/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 706c3bb126f35bf81d70938cf4b7a134bfd45e56
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 8916698fc44e2fa546401e80b846c7cef850dc0b
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730573"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545363"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -105,7 +105,7 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 以下 PowerShell 脚本提供如何为应用程序网关启用诊断日志记录的示例。
 
 ```powershell
-$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-CNE2/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $gateway = Get-AzApplicationGateway -Name 'ContosoGateway'
 
@@ -173,7 +173,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 以下 PowerShell 脚本提供如何为网络安全组启用诊断日志记录的示例
 ```powershell
-$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
+$workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-CNE2/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $nsg = Get-AzNetworkSecurityGroup -Name 'ContosoNSG'
 

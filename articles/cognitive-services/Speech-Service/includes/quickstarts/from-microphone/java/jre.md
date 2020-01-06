@@ -3,21 +3,24 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 08/06/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6c215125b895b71a6a919862f2f60f4910ac872e
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: eb4a25741750cce6fc85d70f6edf5ce4201c423c
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74663587"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631021"
 ---
 ## <a name="prerequisites"></a>先决条件
 
+准备工作：
+
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -101,6 +104,9 @@ ms.locfileid: "74663587"
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，对于试用订阅，为 `chinaeast2`）。
 
 1. 保存对项目的更改。
+
+> [!NOTE]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 

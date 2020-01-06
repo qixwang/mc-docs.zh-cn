@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 02/20/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1f9200169a39edbb2d5ac8c258efb9c11119dc5c
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 491d66935be2d28bb6742809ab93a2a3545015b9
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730343"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600131"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -252,8 +252,8 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](/platform/action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
 4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
-每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://www.azure.cn/en-us/pricing/details/monitor/)计费。
-通知将按照 [Azure Monitor 定价页中的通知定价](https://www.azure.cn/en-us/pricing/details/monitor/)单独收费。
+每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://www.azure.cn/pricing/details/monitor/)计费。
+通知将按照 [Azure Monitor 定价页中的通知定价](https://www.azure.cn/pricing/details/monitor/)单独收费。
 
 
 ## <a name="pricing"></a>定价

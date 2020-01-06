@@ -1,31 +1,23 @@
 ---
-title: 使用 SQL 数据库构建 ASP.NET 应用 - Azure 应用服务 | Azure
+title: 教程：将 ASP.NET 应用与 SQL 数据库配合使用
 description: 了解如何将采用 SQL Server 数据库的 C# ASP.NET 应用部署到 Azure。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
 origin.date: 06/25/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 7b2c002db4077b903af8354b958144379d275746
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc, devcenter
+ms.openlocfilehash: 5cec1e89a6c1ad177f8c6342babeea7e0bd97b06
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555839"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600509"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何在应用服务中部署数据驱动的 ASP.NET 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本教程演示如何在应用服务中部署数据驱动的 ASP.NET 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。
 
 ![已在 Azure 应用服务中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -120,7 +112,7 @@ ms.locfileid: "74555839"
 | 设置  | 建议的值 | 更多信息 |
 | ----------------- | ------------ | ----|
 |**应用服务计划**| myAppServicePlan | [应用服务计划](../app-service/overview-hosting-plans.md) |
-|**Location**| 中国北部 | - |
+|**位置**| 中国北部 | - |
 |**大小**| 免费 | [定价层](https://www.azure.cn/pricing/details/app-service/)|
 
 ### <a name="create-a-sql-server-instance"></a>创建 SQL Server 实例

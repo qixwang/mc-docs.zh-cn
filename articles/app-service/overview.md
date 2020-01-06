@@ -1,27 +1,18 @@
 ---
-title: 应用服务概述 - Azure | Azure
+title: 概述
 description: 了解 Azure 应用服务如何帮助用户开发和托管 Web 应用程序
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 origin.date: 01/04/2017
-ms.date: 01/21/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 7a7db81243cc0ff11862b3319382a7f0353f71e6
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: a88844a2ceb5e656bcdc18b4385359674c7d44d6
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555940"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600408"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 

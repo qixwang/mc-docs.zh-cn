@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 03/21/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 741d06b1de9d04c77fef5a9548f6b4c23bec9d98
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 42278b5e98b1be67a3e9c8aacc5992f553720129
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328700"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624288"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -379,12 +379,12 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。  在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
 
-| 服务                        | 资源提供程序名称          | 目的                            |
-| :----------------------------- | :------------------------------ | :--------------------------------- |
-| Azure 数据工厂             | Microsoft.DataFactory/factories | 用于通过 ADF 运行时访问存储帐户。 |
+| 服务                        | 资源提供程序名称          | 目的            |
+| :----------------------------- | :------------------------------------- | :---------- |
+| Azure 数据工厂             | Microsoft.DataFactory/factories        | 用于通过 ADF 运行时访问存储帐户。 |
 | Azure 逻辑应用         | Microsoft.Logic/workflows       | 使逻辑应用能够访问存储帐户。 |
 | Azure SQL 数据仓库 | Microsoft.Sql                   | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure 流分析   | Microsoft.StreamAnalytics       | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/stream-analytics/blob-output-managed-identity)。 |
+| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/stream-analytics/blob-output-managed-identity)。 |
 
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问

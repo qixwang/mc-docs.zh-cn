@@ -1,8 +1,7 @@
 ---
-title: Azure 数据工厂管道中的分支 | Microsoft Docs
+title: Azure 数据工厂管道中的分支
 description: 了解如何通过分支和链接活动控制 Azure 数据工厂中的数据流。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 manager: digimobile
@@ -10,14 +9,15 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 9/27/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 23748aea236c13b9f404541bca229183f0e19bd9
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.date: 01/06/2020
+ms.openlocfilehash: 4884e9d3c34bbc8bbbed4a8efdd920c7ecebc118
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648810"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623881"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -609,10 +609,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***;EndpointSuffix=core.chinacloudapi.cn"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***;EndpointSuffix=core.chinacloudapi.cn"
   }
 }
 Creating dataset SourceStorageDataset...

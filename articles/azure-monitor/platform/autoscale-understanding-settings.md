@@ -2,19 +2,17 @@
 title: 了解 Azure Monitor 中的自动缩放设置
 description: 自动缩放设置的详细步骤及其工作原理。 适用于虚拟机、云服务、Web 应用
 author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-origin.date: 09/24/2018
+origin.date: 12/18/2017
 ms.date: 12/18/2018
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 03ee4a87de9e14f9214dbe3e504c07e363f3d6e7
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 1590249e2f4c8795fd28fa52a7371153184def4d
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982053"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599901"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
 使用自动缩放设置有助于确保运行适当数量的资源来处理应用程序负载的波动。 可将自动缩放设置配置为基于指标（指示负载或性能）触发，或者在计划好的日期和时间触发。 本文将会深度剖析自动缩放设置。 本文首先介绍设置的架构和属性，然后逐步讲解可配置的不同配置文件类型。 最后讨论 Azure 中的自动缩放功能如何评估要在任意给定时间执行哪个配置文件。

@@ -7,15 +7,15 @@ ms.subservice: shared-capabilities
 author: WenJason
 ms.author: v-jay
 origin.date: 05/24/2019
-ms.date: 12/02/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 6e5e0b98abf83855f272e24f952e05d78cce7823
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 55308e316caf926e80ce248d2521eb180c1ecd44
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655378"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624120"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -78,7 +78,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 以下列表提供了在 PowerShell 中创建运行方式帐户所要满足的要求：
 
 * 装有 Azure 资源管理器模块 3.4.1 和更高版本的 Windows 10 或 Windows Server 2016。 PowerShell 脚本不支持早期版本的 Windows。
-* Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/powershell/azureps-cmdlets-docs)。
+* Azure PowerShell 1.0 和更高版本。 有关 PowerShell 1.0 版本的信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
 * 作为  –AutomationAccountName 和  -ApplicationDisplayName 参数的值引用的自动化帐户。
 * 与[配置运行方式帐户时所需的权限](#permissions)中所列权限相当的权限
 

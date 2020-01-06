@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 10/11/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 34b1edc77111f42157bbbf451854c0c212f21e5a
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 4bf7b0a689d419786243ab6382f8d4e9f75c9d19
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390015"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630996"
 ---
 # <a name="quickstart-speech-sdk-for-java-android-platform-setup"></a>快速入门：用于 Java (Android) 的语音 SDK 平台设置
 

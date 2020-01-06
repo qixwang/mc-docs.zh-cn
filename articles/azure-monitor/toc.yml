@@ -930,7 +930,7 @@
         - name: SDK 发行说明
           href: app/release-notes.md
     - name: Windows 分析
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
+      href: 'https://www.microsoft.com/WindowsForBusiness/windows-analytics'
     - name: 区域可用性
       href: 'https://www.azure.cn/zh-cn/home/features/products-by-region'
     - name: 快速入门模板

@@ -1,21 +1,19 @@
 ---
 title: 如何通过 C++ 使用对象 (Blob) 存储 - Azure | Microsoft Docs
 description: 使用 Azure Blob（对象）存储将非结构化数据存储在云中。
-services: storage
 author: WenJason
-ms.service: storage
-ms.topic: conceptual
-origin.date: 03/21/2018
-ms.date: 08/05/2019
 ms.author: v-jay
-ms.reviewer: seguler
+origin.date: 03/21/2018
+ms.date: 01/06/2020
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: c64cdca757b8aa624bbd59b25380e4751c187449
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.topic: conceptual
+ms.openlocfilehash: 19a3e388a8eec089bdb2f26e48a48e7a5d608c24
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732359"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624267"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
 
@@ -35,10 +33,14 @@ ms.locfileid: "68732359"
 
 若要安装适用于 C++ 的 Azure 存储客户端库，可使用以下方法：
 
-* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明操作。  
-* **Windows:** 在 Visual Studio 中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”。  在 [NuGet 包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)中，键入以下命令，并按 **ENTER**。  
-  
-     Install-Package wastorage
+* **Linux：** 按照[适用于 C++ 的 Azure 存储客户端库自述文件：在 Linux 上开始使用](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)页中提供的说明操作。
+* **Windows:** 在 Windows 中，使用 [vcpkg](https://github.com/microsoft/vcpkg) 作为依赖项管理员。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
+
+```powershell
+.\vcpkg.exe install azure-storage-cpp
+```
+
+可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何生成源代码和导出到 Nuget 的指南。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>配置应用程序以访问 Blob 存储
 将以下 include 语句添加到 C++ 文件的顶部，要在此使用 Azure 存储 API 来访问 blob：  
@@ -264,4 +266,3 @@ blockBlob.delete_blob();
 * [Azure 存储文档](/storage/)
 * [使用 AzCopy 命令行实用工具传输数据](../storage-use-azcopy.md)
 
-<!--Update_Description: wording update -->

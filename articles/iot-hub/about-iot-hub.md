@@ -4,19 +4,19 @@ description: 了解 Azure IoT 中心。 此 IoT 服务针对可缩放数据引�
 author: nberdy
 ms.author: v-yiso
 origin.date: 08/08/2019
-ms.date: 09/02/2018
+ms.date: 01/13/2020
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
-ms.openlocfilehash: d825a15cb50bd1a59557be44e80bd075d0f2fad2
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 5115a72e2c2ca20a40230ed4fcc82904e75a3c4f
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389537"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630758"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -28,7 +28,7 @@ IoT 中心的功能有助于生成可缩放且功能完整的 IoT 解决方案�
 
 ## <a name="scale-your-solution"></a>缩放解决方案
 
-IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 IoT 中心提供多种服务级别，最大限度地满足你的缩放需求。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/iot-hub/)。
+IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 有关缩放 IoT 中心的详细信息，请参阅 [IoT 中心缩放](iot-hub-scaling.md?branch=release-iotbasic)。 若要详细了解 IoT 中心提供的多层服务以及如何最好地满足可伸缩性需求，请查看[定价页](https://www.azure.cn/pricing/details/iot-hub/)。
 
 ## <a name="secure-your-communications"></a>保护通信
 
@@ -59,7 +59,9 @@ IoT 中心为发送数据的设备提供保护信道。
 * [Azure 事件网格](/event-grid/)，可以采用可靠、可缩放且安全的方式快速地让你的业务响应关键事件。
 * [Azure 逻辑应用](/logic-apps/)，可以自动执行业务流程。
 
-* [Azure 流分析](/stream-analytics/)，可从设备对数据流执行实时分析计算。
+* [Azure 机器学习](/machine-learning/)，可为解决方案添加机器学习和 AI 模型。
+
+* [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)，可从设备对数据流执行实时分析计算。
 
 ## <a name="configure-and-control-your-devices"></a>配置和控制设备
 

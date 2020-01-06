@@ -1,29 +1,22 @@
 ---
-title: 创建 C# ASP.NET Framework Web 应用 - Azure 应用服务 | Azure
-description: 了解如何通过部署默认的 C# ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 快速入门：创建 C# ASP.NET 应用
+description: 了解如何通过部署 Visual Studio 提供的默认 C# ASP.NET Web 应用模板，在 Azure 应用服务中运行 Web 应用。
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 origin.date: 10/21/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: f36d6abff3c0a9190c374ee92eb1ce1a1205ed83
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc, devcenter
+ms.openlocfilehash: ebfc780a1a14ef694b7cb5ec024c6f96a022cb68
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556012"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600519"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。
 
 本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure 应用服务中。 完成后，你将拥有一个应用服务计划。 还将获得一个应用服务应用，其中包含已部署的 Web 应用程序。
 
@@ -92,7 +85,7 @@ ms.locfileid: "74556012"
    | 设置 | 建议的值 | 描述 |
    |-|-|-|
    |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
-   | 位置 | 西欧 | 托管 Web 应用的数据中心。 |
+   | 位置 | 中国东部 | 托管 Web 应用的数据中心。 |
    | 大小 | 免费 | [定价层](https://www.azure.cn/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
    ![创建应用服务计划](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)

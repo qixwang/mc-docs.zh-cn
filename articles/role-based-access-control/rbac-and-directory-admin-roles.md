@@ -11,17 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-origin.date: 10/01/2019
-ms.date: 10/30/2019
+ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: c5730347533e0c26d191ac0022bd4dd8c37ba69e
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 98f32b78e7a6975cbf014ecbb1a2d45bd9ab243d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068939"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624354"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -51,7 +50,7 @@ ms.locfileid: "73068939"
 
 在 Azure 门户中，可以使用“经典管理员”  选项卡管理共同管理员或查看服务管理员。
 
-![Azure 门户中的 Azure 经典订阅管理员](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![Azure 门户中的 Azure 经典订阅管理员](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
 在 Azure 门户中，可以在订阅的属性边栏选项卡上，查看或更改服务管理员，或是查看帐户管理员。
 
@@ -133,4 +132,3 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 - [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Azure 经典订阅管理员](classic-administrators.md)
 
-<!-- Update_Description: wording update -->

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 Impala 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Impala 复制数据
 description: 了解如何使用数据工厂管道中的复制活动，将数据从 Impala 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -11,21 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 11/11/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: e8d5adfb77286a9259bb64f4f9f00f9b45e316ba
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: e9ccee80150d64f21fe4a8e6329f7772509cd2d9
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648825"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623782"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Impala 复制数据
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Impala 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Impala 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://www.azure.cn/zh-cn/support/contact/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -56,7 +53,7 @@ Impala 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Impala**。 | 是 |
 | host | Impala 服务器的 IP 地址或主机名（即，192.168.222.160）。  | 是 |
-| 端口 | Impala 服务器用来侦听客户端连接的 TCP 端口。 默认值为 21050。  | 否 |
+| port | Impala 服务器用来侦听客户端连接的 TCP 端口。 默认值为 21050。  | 否 |
 | authenticationType | 可使用的身份验证类型。 <br/>允许的值为：**Anonymous**、**SASLUsername** 和 **UsernameAndPassword**。 | 是 |
 | username | 用于访问 Impala 服务器的用户名。 使用 SASLUsername 时，默认值是匿名的。  | 否 |
 | password | 使用 UsernameAndPassword 时用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |

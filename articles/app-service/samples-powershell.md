@@ -1,28 +1,19 @@
 ---
-title: Azure PowerShell 示例 - 应用服务 | Azure
-description: Azure PowerShell 示例 - 应用服务
-services: app-service
-documentationcenter: app-service
-author: syntaxc4
-manager: erikre
-editor: ggailey777
+title: PowerShell 示例
+description: 查找某些常用应用服务方案的 Azure PowerShell 示例。 了解如何自动完成应用服务部署或管理任务。
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: app-service
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: app-service
 origin.date: 03/08/2017
-ms.date: 01/21/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: b692b467f5eedcec475c0497f825312d94fe7746
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: f6af4fdbe54c799fc4259cc25f73b0b9bb5a092b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555939"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600397"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure 应用服务的 PowerShell 示例
 
@@ -31,6 +22,8 @@ ms.locfileid: "74555939"
 | | |
 |-|-|
 |**创建应用**||
+| [从 GitHub 使用部署创建应用](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建从 GitHub 提取代码的应用服务应用。 |
+| [从 GitHub 使用连续部署创建应用](./scripts/powershell-continuous-deployment-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建从 GitHub 持续部署代码的应用服务应用。 |
 | [使用 FTP 创建应用并部署代码](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 使用 FTP 从本地目录创建应用服务应用并上传文件。 |
 | [从本地 Git 存储库创建应用并部署代码](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用并配置从本地 Git 存储库进行的代码推送。 |
 | [创建应用并将代码部署到过渡环境](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用并为其配置用于暂存代码更改的部署槽位。 |

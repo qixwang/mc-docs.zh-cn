@@ -9,12 +9,12 @@ ms.reviewer: mbullwin
 origin.date: 11/27/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5a6df885d3d66f791077ff29ffe013f11082304f
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: bbabc178845773d25390e49e9c73165f90bdd7f1
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838724"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600119"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -23,7 +23,7 @@ ms.locfileid: "74838724"
 
 无论 Web 应用程序托管在 Azure 中还是本地，Application Insights 都会提供所需的功能让你监视其可用性、性能和使用情况。 Application Insights 支持 .NET、Java 和 Node.js 等流行语言和框架，并与 Azure DevOps、Jira 和 PagerDuty 等 DevOps 流程和工具相集成。 必须了解哪些因素决定了应用程序的监视成本。 本文介绍应用程序监视成本的造成因素，以及如何主动监控这些成本。
 
-如果对 Application Insights 定价工作原理存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)提出问题。
+如果对 Application Insights 定价工作原理存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)提出问题。
 
 ## <a name="pricing-model"></a>定价模型
 
@@ -207,7 +207,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 时的数据传输费
 
-向 Application Insights 发送数据可能会产生数据带宽费。 如 [Azure 带宽定价页](https://www.azure.cn/en-us/pricing/details/bandwidth/)中所述，在两个区域中的 Azure 服务之间传输数据将按正常费率收取出站数据传输费。 入站数据传输是免费的。 但是，相比 Application Insights 日志数据引入费，此传输费很低（只占几个百分比）。 因此，控制 Log Analytics 的成本需要注重引入的数据量，[此处](/azure-monitor/app/pricing#managing-your-data-volume)提供了相关的指导。   
+向 Application Insights 发送数据可能会产生数据带宽费。 如 [Azure 带宽定价页](https://www.azure.cn/pricing/details/bandwidth/)中所述，在两个区域中的 Azure 服务之间传输数据将按正常费率收取出站数据传输费。 入站数据传输是免费的。 但是，相比 Application Insights 日志数据引入费，此传输费很低（只占几个百分比）。 因此，控制 Log Analytics 的成本需要注重引入的数据量，[此处](/azure-monitor/app/pricing#managing-your-data-volume)提供了相关的指导。   
 
 ## <a name="limits-summary"></a>限制摘要
 

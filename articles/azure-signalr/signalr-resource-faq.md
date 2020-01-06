@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.topic: overview
 origin.date: 11/13/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2ee3b7a7ebde08f99becd52d849ecb92ffbec80e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 15664bb5dc44b154d47cc2c5107ce4087c9be60c
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334850"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600580"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -68,4 +68,4 @@ SignalR 服务将监视应用程序服务器的检测信号。
 
 默认情况下，Azure SignalR 服务提供 ASP.NET Core SignalR 所支持的所有三种传输。 这些传输不可配置。 SignalR 服务将处理连接以及所有客户端连接的传输。
 
-可根据[此文](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports)中所述配置客户端传输。
+可根据[此文](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)中所述配置客户端传输。

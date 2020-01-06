@@ -1,28 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用连接到 SQL 数据库 | Azure
-description: Azure PowerShell 脚本示例 - 将应用服务应用连接到 SQL 数据库
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：连接到 SQL 数据库
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何将应用连接到 SQL 数据库。
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 origin.date: 03/20/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: c63a6347d0acc027f57c5bf7b0aff7954eedf9d4
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: d60d196b600108dc3de3b70a0ee535606a9f8ab2
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555935"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600290"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>将应用服务应用连接到 SQL 数据库
 

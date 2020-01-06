@@ -6,15 +6,15 @@ author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 06/27/2019
-ms.date: 10/14/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 85129d7ce9a5a616a2ce335b0e5a98997c7faf10
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 9663b3dfe83caf4fe2a38c7201b6743c51270a7e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275273"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624193"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,8 +43,10 @@ ms.locfileid: "72275273"
 在本快速入门中，将需要 Azure 存储帐户的名称。 以下过程提供的步骤用于获取存储帐户的名称： 
 
 1. 在 Web 浏览器中，转到 [Azure 门户](https://portal.azure.cn)并使用你的 Azure 用户名和密码登录。
-2. 选择“所有服务” > “存储” > “存储帐户”    。
+2. 从 Azure 门户菜单中，选择“所有服务”，然后选择“存储” > “存储帐户”    。 此外，也可以在任何页面中搜索和选择“存储帐户”  。
 3. 在“存储帐户”页中，筛选你的存储帐户（如果需要），然后选择它  。 
+
+此外，也可以在任何页面中搜索和选择“存储帐户”  。
 
 #### <a name="create-a-blob-container"></a>创建 Blob 容器
 本部分介绍如何在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。
@@ -65,7 +67,12 @@ Jane, Doe
 
 将此文件保存在 C:\ADFv2QuickStartPSH 文件夹中  。 （如果此文件夹不存在，则创建它。）然后返回到 Azure 门户并执行以下步骤：
 
-1. 在上次离开的 \<Account name> - “Blob”页中，选择容器更新列表中的“adftutorial”    。 （如果关闭了窗口或转到了其他页面，请再次登录到 [Azure 门户](https://portal.azure.cn)选择“所有服务” > “存储” > “存储帐户”，选择你的存储帐户，然后选择“Blob” > “adftutorial”      。）
+1. 在上次离开的 \<Account name> - “Blob”页中，选择容器更新列表中的“adftutorial”    。
+
+   1. 如果关闭了窗口或转到其他页，请再次登录到 [Azure 门户](https://portal.azure.cn)。
+   1. 从 Azure 门户菜单中，选择“所有服务”，然后选择“存储” > “存储帐户”    。 此外，也可以在任何页面中搜索和选择“存储帐户”  。
+   1. 选择存储帐户，然后选择“Blobs” > “adftutorial”   。
+
 2. 在“adftutorial”容器页面的工具栏上，选择“上传”   。
 3. 在“上传 Blob”页中，选择“文件”框，然后浏览到 emp.txt 文件并进行选择    。
 4. 展开“高级”标题  。 此页现在显示如下内容：

@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 98ed127620ff6c374706fecaded22121d0755e17
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: e901c8b610165d1ddfcbdc2d59e20a438b0f28b4
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020439"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624218"
 ---
 # <a name="create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 创建异地分布式应用解决方案用于定向流量
 
@@ -66,7 +66,7 @@ ms.locfileid: "74020439"
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Azure Stack Hub 是 Azure 的扩展。 Azure Stack Hub 将云计算的灵活性和创新性带入本地环境，并支持唯一的混合云，支持在任何地方生成和部署混合应用。  
+> Azure Stack Hub 是 Azure 的扩展。 Azure Stack Hub 将云计算的灵活性和创新性带入你的本地环境，并支持唯一的混合云，以允许你在任何地方构建和部署混合应用。  
 > 
 > [混合应用程序的设计注意事项](overview-app-design-considerations.md)一文回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用设计，从而最大限度地减少生产环境中的难题。
 
@@ -237,7 +237,7 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 
 ## <a name="part-2-update-web-app-options"></a>第 2 部分：更新 Web 应用选项
 
-[Azure 应用服务](/app-service/overview)提供高度可缩放、自修补的 Web 托管服务。 
+[Azure 应用服务](/app-service/overview)提供高度可缩放、自修复的 Web 托管服务。 
 
 ![Azure 应用服务](media/solution-deployment-guide-geo-distributed/image27.png)
 
@@ -271,7 +271,7 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 例如，若要添加 northwindcloud.com 和 www\.northwindcloud.com 的 DNS 条目，请配置 northwindcloud.com 根域的 DNS 设置。
 
 > [!Note]  
->  可以使用 [Azure 门户](/app-service/manage-custom-dns-buy-domain)购买域名。 若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.cn/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。    
+>  若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.cn/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。    
 
 
 
@@ -326,7 +326,7 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 
 9. 在域注册机构选项卡中完成此任务并重新验证，直到“添加主机名”按钮激活为止。 
 
-10. 确保“主机名记录类型”设置为“CNAME”（www.example.com 或任何子域）。  
+10. 确保“主机名记录类型”设置为“CNAME”（ www.example.com 或任何子域）。  
 
 11. 选择“添加主机名”  。
 
@@ -359,9 +359,6 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 > - 将自定义 SSL 证书绑定到应用服务。
 > - 为应用实施 HTTPS。
 > - 使用脚本自动执行 SSL 证书绑定。
-
-> [!Note]  
-> 如果需要，请在 Azure 门户中获取客户 SSL 证书并将其绑定到 Web 应用。 有关详细信息，请参阅[应用服务证书教程](/app-service/web-sites-purchase-ssl-web-site)。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -583,7 +580,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 2. 在“流量管理器配置文件”  的“设置”  部分，选择“终结点”  。
 
-3. 选择“设置”  （应用程序对象和服务主体对象）。
+3. 选择“添加”   。
 
 4. 添加 Azure Stack Hub 终结点。
 

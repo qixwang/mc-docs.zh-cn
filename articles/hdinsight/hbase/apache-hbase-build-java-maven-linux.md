@@ -11,15 +11,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/16/2019
-ms.date: 11/11/2019
+origin.date: 12/24/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6c7f5cd0f87b8a7b10232e3aa7e278ffe8fb580b
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: a74523b6f6211aeb17458faaebbc2db5cb9455c9
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426071"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631106"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -90,7 +90,7 @@ notepad pom.xml
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -134,7 +134,7 @@ Maven 插件可用于自定义项目的生成阶段。 此节用于添加插件�
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>

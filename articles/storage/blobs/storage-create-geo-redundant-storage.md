@@ -1,22 +1,23 @@
 ---
-title: 教程：使用 Blob 存储构建高度可用的应用程序 - Azure 存储
-description: 使用读取访问异地冗余存储实现应用程序数据的高可用性
+title: 教程 - 生成使用 Blob 存储的高可用性应用程序
+titleSuffix: Azure Storage
+description: 使用读取访问异地冗余存储实现应用程序数据的高可用性。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 01/03/2019
-ms.date: 11/25/2019
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 8a8a45abdc84050f53d8e4da78b6b65d039d35b7
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 2b3e0b2c406f13bddcdb36d6ab3a576a70e1058d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328655"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624216"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -41,8 +42,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
-  - **Azure 开发**
+* 安装包含 **Azure 开发**工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
   ![Azure 开发（位于“Web 和云”下）](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -81,7 +81,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
    | **复制**| 读取访问异地冗余存储 (RA-GRS) | 这是运行示例所必需的。 |
    |**订阅** | 你的订阅 |有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.cn/Subscriptions)。 |
    |**ResourceGroup** | MyResourceGroup |如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-   |**Location** | 中国东部 | 选择一个位置。 |
+   |**位置** | 中国东部 | 选择一个位置。 |
 
 ![创建存储帐户](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -192,7 +192,6 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 在下载之前，定义了服务对象的 [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 和 [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
 
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 若要运行示例，请打开命令提示符，导航到示例文件夹，然后输入 `node index.js`。
@@ -224,7 +223,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
@@ -275,7 +274,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
@@ -318,7 +317,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 使用 Node.js V10 SDK 时，不需回调处理程序。 示例会创建一个配置了重试选项和辅助终结点的管道。 这样，如果应用程序无法通过主管道访问数据，则会自动切换到辅助管道。
 
@@ -350,4 +349,4 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 若要了解如何模拟故障并强制应用程序使用辅助 RA-GRS 终结点，请转到此系列的第二部分。
 
 > [!div class="nextstepaction"]
-> [模拟连接到主存储终结点时出现的故障](storage-simulate-failure-ragrs-account-app.md)
+> [模拟从主要区域读取数据时出现的故障](storage-simulate-failure-ragrs-account-app.md)

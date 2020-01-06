@@ -17,12 +17,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/17/2019
-ms.openlocfilehash: 1541bbf52732a977edab24c25131ca6908ed8bfa
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: c86a37975b46690f11ca51595326574f9f996f7f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020202"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624115"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 
@@ -50,7 +50,7 @@ Azure Stack 支持下述 Azure 市场 VM 和解决方案模板。 请根据说�
 |  | 项名称 | 说明 | 发布者 |
 | --- | --- | --- | --- |
 | ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.WindowsServer?tab=Overview) | 企业级解决方案，部署简单，经济高效，以应用和用户为中心。 这些映像会定期更新，发布最新修补程序。 **重要信息：必须删除 2018 年 1 月 18 日之前下载的映像并将其替换为最新版本。** | Microsoft |
-| ![Windows Server 2012 R2 上的 SQL Server 2014 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 上的 SQL Server 2014 SP2](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2014sp2-ws2012r2?tab=Overview) | SQL Server 2014 Service Pack 2。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
+| ![Windows Server 2012 R2 上的 SQL Server 2014 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 上的 SQL Server 2014 SP2](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2?tab=Overview) | SQL Server 2014 Service Pack 2。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Developer](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2016sp1-ws2016?tab=Overview) | SQL Server 2016 SP1 的免费开发人员版，适用于事务处理、数据仓库、商业智能和分析型工作负荷。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Express](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Express](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2016sp1-ws2016?tab=PlansAndPrice) | SQL Server 2016 SP1 的免费 Express 版本。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![Windows Server 2016 上的 SQL Server 2016 SP1 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2016 SP1 Standard](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2016sp1-ws2016?tab=PlansAndPrice) | 适用于关键智能应用的数据库平台。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
@@ -64,13 +64,8 @@ Azure Stack 支持下述 Azure 市场 VM 和解决方案模板。 请根据说�
 | ![Windows Server 2016 上的 SQL Server 2017 Standard](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2017 Standard](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2017-ws2016?tab=PlansAndPrice) | 适用于关键智能应用的数据库平台。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![Windows Server 2016 上的 SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 上的 SQL Server 2017 Enterprise](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2017-ws2016?tab=PlansAndPrice) | 适用于关键智能应用的数据库平台。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![Ubuntu Server 16.04 LTS 上的 SQL Server 2017](media/azure-stack-marketplace-azure-items/sql.png) | [Ubuntu Server 16.04 LTS 上的 SQL Server 2017 Enterprise](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2017-ubuntu1604?tab=Overview) | 适用于关键智能应用的数据库平台。 | Microsoft + Canonical |
-| ![免费许可证：SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证：SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Developer](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.SQLServer2017Ubuntu?tab=Overview) | SQL Server 2017 的免费开发人员版，适用于事务处理、数据仓库、商业智能和分析型工作负荷。 | Microsoft + SUSE |
-| ![免费许可证：SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Express](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证：SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Express](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.SQLServer2017Ubuntu?tab=Overview) | SQL Server 2017 的免费 Express 版本。 | Microsoft + SUSE |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Enterprise](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Enterprise](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.SQLServer2017Ubuntu?tab=Overview) | 适用于关键智能应用的数据库平台。 | Microsoft + SUSE |
-| ![SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Web](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 上的 SQL Server 2017 Web](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.SQLServer2017Ubuntu?tab=Overview) | 适用于关键智能应用的数据库平台。 | Microsoft + SUSE |
 | ![Windows Server 2016 上的 Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server 2016 上的 Microsoft Machine Learning Server 9.3.0](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onWindowsServer2016?tab=Overview) | Windows Server 2016 上的 Microsoft Machine Learning Server 9.3.0。 | Microsoft |
 | ![Ubuntu 16.04 上的 Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [Ubuntu 16.04 上的 Microsoft Machine Learning Server 9.3.0](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604?tab=Overview) | Ubuntu 16.04 上的 Microsoft Machine Learning Server 9.3.0。 | Microsoft + Canonical |
-| ![CentOS Linux 7.2 上的 Microsoft Machine Learning Server 9.3.0](media/azure-stack-marketplace-azure-items/microsoft.png) | [CentOS Linux 7.2 上的 Microsoft Machine Learning Server 9.3.0](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72?tab=Overview) | CentOS Linux 7.2 上的 Microsoft Machine Learning Server 9.3.0。 | Microsoft + Rogue Wave |
 
 ## <a name="linux-distributions"></a>Linux 发行版
 

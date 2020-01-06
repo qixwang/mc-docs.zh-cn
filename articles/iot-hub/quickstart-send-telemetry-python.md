@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: ns
 origin.date: 10/17/2019
-ms.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: f1855a8d791a4bd95d5a0b6c89d8628a5f14f5cd
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: e0174984670e8aa17b15c121c1fe6cfe524f2d70
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426082"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630922"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
@@ -41,7 +41,7 @@ az extension add --name azure-cli-iot-ext
 
 从 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip 下载示例 Python 项目并提取 ZIP 存档。
 
-已在开发计算机上安装 Python 版本 3.5.3+。 
+已在开发计算机上安装 [Python 版本 3.7 或更高版本](https://www.python.org/downloads/)。 有关支持的其他 Python 版本，请参阅 SDK 文档中的 [Azure IoT 设备功能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

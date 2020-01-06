@@ -1,28 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 从 Azure 存储库创建应用并持续部署 | Azure
-description: Azure CLI 脚本示例 - 从 Azure 存储库使用持续部署创建应用
-services: app-service\web
-documentationcenter: ''
+title: 从 Azure Repos 进行的持续部署
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从 Azure Repos 设置 CI/CD。
 author: msangapu-msft
-manager: jeconnoc
-editor: ''
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: a9a5e8060d3f98fdc7ed68d19a9bd097dad3bcb8
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: d5673176ed67966bd680c5b6514f5cb095a05496
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555937"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600355"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>使用 Azure CLI 通过持续部署创建应用服务应用
 

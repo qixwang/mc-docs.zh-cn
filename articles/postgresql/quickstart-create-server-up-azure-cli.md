@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 05/06/2019
-ms.date: 05/20/2019
-ms.openlocfilehash: c3b47ee4b4458bc91917302ffe5c1f53d715cc7e
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.date: 01/06/2020
+ms.openlocfilehash: 15de27d8cd9365e536394d7dd3f562d0225a9e41
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65731985"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624168"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 Azure CLI 命令、az postgres up（预览版）创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -28,14 +28,14 @@ ms.locfileid: "65731985"
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
-需要使用 [az login](/cli/authenticate-azure-cli?view=interactive-log-in) 命令登录账户。 记下命令行输出中相应订阅名称的 ID 属性。
+需要使用 [az login](/cli/authenticate-azure-cli?view=interactive-log-in) 命令登录账户。 记下命令行输出中相应订阅名称的 ID 属性  。
 
 ```azurecli
 az cloud set --name AzureChinaCloud
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中   。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -97,7 +97,7 @@ admin-password | 系统生成的 | 管理员用户的密码。
 az postgres down --delete-group
 ```
 
-若要删除新创建的服务器，可运行 [az postgres down](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-down) 命令。
+若要删除新创建的服务器，可运行 [az postgres down](https://docs.microsoft.com/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-down) 命令。
 
 ```azurecli
 az postgres down

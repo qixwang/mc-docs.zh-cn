@@ -1,28 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 将自定义域映射到应用 | Azure
-description: Azure CLI 脚本示例 - 将自定义域映射到应用
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: CLI：将自定义域映射到应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何将自定义域映射到应用。
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: ac10fca45e202b412e98086bcd1cba0b9eb68698
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 7c0f15f7fdc8583650003a5d5e5dadaf54d8de4c
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806904"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600386"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>使用 CLI 将自定义域映射到应用服务应用
 

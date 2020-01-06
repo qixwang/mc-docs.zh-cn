@@ -1,28 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 使用流量管理器在全球范围内缩放应用 | Azure
-description: Azure PowerShell 脚本示例 - 缩放具有高可用性体系结构的全球 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：使用流量管理器进行缩放
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 本示例演示如何使用流量管理器在全球范围内缩放应用。
 tags: azure-service-management
 ms.assetid: 470f0129-1efe-462c-a029-5c66e04158a8
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 origin.date: 03/20/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: c407d964ef4be95a720404534485d9a73aaf8a66
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: fce1627b8c654ce2b066d99ffbef789536a1689f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806694"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600272"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>缩放具有高可用性体系结构的全球 Web 应用
 

@@ -1,27 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 备份应用 | Azure
-description: Azure CLI 脚本示例 - 备份应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：备份应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何备份应用。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/07/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 0bfe618e0f30bd56a3f9b5b198fbcb6712a0330e
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 1807eee411798fc3434d4333b3e27f0706f179c8
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806865"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600398"
 ---
 # <a name="back-up-an-app-using-cli"></a>使用 CLI 备份应用
 

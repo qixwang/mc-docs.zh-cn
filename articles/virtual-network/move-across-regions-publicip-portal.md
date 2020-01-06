@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/29/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: d3486c261209fe060939ee9f0694df835e6a5dd0
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 380b1e16dd59478d3f3d499d76c9067ec505f17c
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658154"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599859"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 移到另一个区域
 
@@ -166,5 +166,5 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 - [将资源移到新资源组或订阅中](/azure-resource-manager/resource-group-move-resources)
 - [将 Azure VM 移到另一区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
-<!-- Update_Description: new article about move across regions publicip portal -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NEW.date: 01/06/2020-->

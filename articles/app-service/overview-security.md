@@ -1,26 +1,18 @@
 ---
-title: 安全概述 - Azure 应用服务 | Azure
+title: 安全性
 description: 了解应用服务如何帮助保护应用，以及如何进一步锁定应用使其免受威胁。
 keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用, 安全性, 保护, 受保护, 符合性, 符合, 证书, 证书, https, ftps, tls, 信任, 加密, 加密, 已加密, ip 限制, 身份验证, 授权, 身份验证, 授权, msi, 托管服务标识, 托管标识, 机密, 机密, 修补, 修补程序, 修补程序, 版本, 隔离, 网络隔离, ddos, mitm
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/24/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: f3b7a5799e4fd2ceb8b8c026b9dbf2c63cf09bbd
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: f49ef24c1147c3cb1d765969ab40411f0d7f5045
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555952"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600410"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 

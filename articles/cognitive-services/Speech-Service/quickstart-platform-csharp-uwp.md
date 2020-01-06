@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 10/10/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: cf52b0e3fe1a7a6456076c744d2c097cfae0b40c
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 4d7daecabdbb0075342f15383f1577d5e4978970
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389956"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631029"
 ---
 # <a name="quickstart-speech-sdk-for-c-universal-windows-platform-uwp-platform-setup"></a>快速入门：用于 C# 通用 Windows 平台 (UWP) 平台设置的语音 SDK
 

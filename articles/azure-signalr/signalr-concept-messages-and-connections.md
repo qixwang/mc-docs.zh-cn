@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 264723625664decd0282ba9d8eef2d075b9fef10
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 6bf89d2cd42980930b527e05a8d463a091c9ded5
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179119"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600576"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR 服务中的消息和连接
 
@@ -39,8 +39,6 @@ Azure SignalR 服务对消息大小不施加限制。
 
 例如，假设你有 3 个客户端和 1 个应用程序服务器。 1 个客户端发送 1 条 4 KB 消息，让服务器广播到所有客户端。 消息计数是 8：服务向应用程序服务器发送 1 条消息，服务向客户端发送 3 条消息。 每条消息算作 2 条 2-KB 大小的消息。
 
-在消息数累积超过 100 之前，Azure 门户中显示的消息计数会一直保持为 0。
-
 ## <a name="how-connections-are-counted"></a>如何统计连接数
 
 Azure SignalR 服务有服务器连接和客户端连接。 默认情况下，每个应用程序服务器启动时每个中心有五个初始连接，每个客户端有一个客户端连接。
@@ -55,7 +53,7 @@ ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>如何统计入站/出站流量
 
-入站流量与出站流量之间的差别是从 Azure SignalR 服务的角度考虑的。 流量以字节为单位计算。 与消息计数一样，流量也有其采样率。 每当每个中心出现 100 KB 流量时，Azure 门户中的入站/出站图表就会更新。
+入站流量与出站流量之间的差别是从 Azure SignalR 服务的角度考虑的。 流量以字节为单位计算。
 
 ## <a name="related-resources"></a>相关资源
 

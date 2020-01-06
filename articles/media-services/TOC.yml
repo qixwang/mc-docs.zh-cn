@@ -1,6 +1,6 @@
 - name: Azure 媒体服务 v3
   displayName: 'encode, stream, package, content protection, video analytics'
-  href: latest/
+  href: /latest/
 - name: Azure 媒体服务 v2（旧版）
   href: previous/media-services-overview.md
 - name: 规范

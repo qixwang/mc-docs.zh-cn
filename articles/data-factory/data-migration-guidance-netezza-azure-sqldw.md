@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure | Microsoft Docs
+title: 使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure
 description: 使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure。
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 9/03/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 00064c77ff97cc02b5b67ab02ff094f588711bb4
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.date: 01/06/2020
+ms.openlocfilehash: 63d381e2f7256e233febb7ca6dd6768b0a9efa01
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648767"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624073"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
 
@@ -191,7 +191,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 有关详细信息，请参阅以下文章和指南：
 
-- [使用 Azure 数据工厂将数据从本地关系数据仓库数据库迁移到 Azure](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [使用 Azure 数据工厂将数据从本地关系数据仓库数据库迁移到 Azure](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza 连接器](/data-factory/connector-netezza)
 - [ODBC 连接器](/data-factory/connector-odbc)
 - [Azure Blob 存储连接器](/data-factory/connector-azure-blob-storage)

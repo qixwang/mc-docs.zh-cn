@@ -1,21 +1,20 @@
 ---
 title: 快速入门：识别音频文件中的语音 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.topic: include
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: d6f1bcbffbee3040f72487677e77bbbbf994c783
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 2aaf11ebb6fe4afa8239ea3e2b3c1aa350a4e0ae
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389995"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631052"
 ---
 查看或下载 GitHub 上所有的<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">语音 SDK 示例</a>。

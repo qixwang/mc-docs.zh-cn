@@ -1,5 +1,5 @@
 - name: “用于 Redis 的 Azure 缓存”文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 关于用于 Redis 的 Azure 缓存

@@ -6,16 +6,15 @@ author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 origin.date: 05/04/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2bfca3a0a5eec36b97d93729a94734bb067b446c
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: ef36e7778a7b72c3dd6d46411a190137b3618310
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730536"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600140"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

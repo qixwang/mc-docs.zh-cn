@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 02/15/2019
-ms.date: 09/02/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: b99c44c6ba006a37143914d57b00c0121a92f653
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: dc1e710b25fce8a6413c8a3f64952fead7778f0a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131697"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624261"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -71,7 +71,7 @@ ms.locfileid: "70131697"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
 ### <a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 

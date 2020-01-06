@@ -15,12 +15,12 @@ origin.date: 08/27/2019
 ms.date: 11/18/2019
 ms.author: v-jay
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 23d9388d38f0082176bdc5a3a21c10ef3935075f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 0b7923e36600dcccb664fbde7c62dcb0255b170b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020306"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623607"
 ---
 # <a name="use-azure-monitor-on-azure-stack"></a>使用 Azure Stack 上的 Azure Monitor
 
@@ -28,7 +28,7 @@ ms.locfileid: "74020306"
 
 本文概述了 Azure Stack 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 的运行以及有关如何使用 Azure Stack 中的 Azure Monitor 的其他信息。 
 
-有关 Azure Monitor 的概述，请参阅 Azure 文章：[Azure Stack 上的 Azure Monitor 入门](https://docs.azure.cn/monitoring-and-diagnostics/monitoring-get-started)。
+有关 Azure Monitor 的概述，请参阅 Azure 文章：[Azure Stack 上的 Azure Monitor 入门](/azure-monitor/overview)。
 
 ![Azure Stack Monitor 边栏选项卡](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 

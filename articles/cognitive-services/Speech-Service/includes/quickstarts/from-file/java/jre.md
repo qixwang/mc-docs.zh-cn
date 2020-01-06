@@ -2,14 +2,15 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: cb47db4c78620396108726b1e471e1f2de322e3e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 8086e98759055247745dea1fffe30918cb742833
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390083"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631070"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -17,6 +18,8 @@ ms.locfileid: "74390083"
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -108,6 +111,9 @@ ms.locfileid: "74390083"
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 
 1. 保存对项目的更改。
+
+> [!NOTE]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 

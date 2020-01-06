@@ -1,27 +1,21 @@
 ---
-title: 部署常见问题解答 - Azure 应用服务 | Azure
+title: 部署常见问题解答 - Azure 应用服务 | Microsoft Docs
 description: 获取 Azure 应用服务 Web 应用功能的部署相关常见问题解答。
-services: app-service\web
-documentationcenter: ''
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 origin.date: 11/01/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 93353b5eee1361f296d424954146591f13a64e75
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 51c82058fed8e7e3bf90eee9ab2b5e081f30a811
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555960"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600468"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的部署常见问题解答
 

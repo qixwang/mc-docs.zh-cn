@@ -1,22 +1,23 @@
 ---
-title: 快速入门：使用 Azure 存储资源管理器在对象存储中创建 blob
-description: 本快速入门介绍如何使用 Azure 存储资源管理器创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何查看容器中的所有 blob。 还介绍如何创建 blob 的快照、管理容器访问策略以及创建共享访问签名。
+title: 快速入门 - 使用 Azure 存储资源管理器创建 blob
+titleSuffix: Azure Storage
+description: 本快速入门介绍如何使用 Azure 存储资源管理器创建容器和 blob、将 blob 下载到本地计算机，以及查看容器中的所有 blob。
 services: storage
 author: WenJason
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-origin.date: 11/15/2018
-ms.date: 09/30/2019
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: fc9ca9bfcfb845b3a009d03e3f4c8401efeaf47c
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 112f657e25680efedf616461807fd7768c936b46
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306822"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624277"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>快速入门：使用 Azure 存储资源管理器在对象存储中创建 blob
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>快速入门：使用 Azure 存储资源管理器创建 blob
 
 本快速入门介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何查看容器中的所有 blob。 还介绍如何创建 blob 的快照、管理容器访问策略以及创建共享访问签名。
 

@@ -16,12 +16,12 @@ ms.date: 09/16/2019
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 07/09/2019
-ms.openlocfilehash: 6499f853f25f6d98fdc51258dc4bb9bc2785f124
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: a5dd9a759b1804e41f018a574995491241565a02
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70856964"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623762"
 ---
 # <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure Stack 的 PowerShell
 
@@ -40,7 +40,7 @@ API 配置文件提供一种管理 Azure 与 Azure Stack 之间版本差异的�
 开始使用 Azure Stack 和 PowerShell 之前，必须具备以下先决条件：
 
 - **PowerShell 版本 5.0** <br>
-若要检查版本，请运行 **$PSVersionTable.PSVersion** 并比较**主**版本。 如果没有 PowerShell 5.0，请按照[安装 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) 中所述进行操作。
+若要检查版本，请运行 **$PSVersionTable.PSVersion** 并比较**主**版本。 如果没有 PowerShell 5.0，请按照[安装 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) 中所述进行操作。
 
   > [!Note]
   > PowerShell 5.0 需要 Windows 计算机。
@@ -185,7 +185,7 @@ Get-Module -Name "Azs*" -ListAvailable
 
 2. 登录到已断开连接的工作站，将包从 USB 设备复制到工作站中的某个位置。
 
-3. 在断开连接的工作站上手动启动 NuGet 提供程序。 有关说明，请参阅[在未连接到 Internet 的计算机上手动启动 NuGet 提供程序](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet)。
+3. 在断开连接的工作站上手动启动 NuGet 提供程序。 有关说明，请参阅[在未连接到 Internet 的计算机上手动启动 NuGet 提供程序](https://docs.microsoft.com/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet)。
 
 4. 将此位置注册为默认存储库，并从此存储库安装 AzureRM 和 AzureStack 模块：
 

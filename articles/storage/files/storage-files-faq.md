@@ -4,16 +4,16 @@ description: 查看有关 Azure 文件的常见问题解答。
 author: WenJason
 ms.service: storage
 origin.date: 07/30/2019
-ms.date: 12/02/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 547ddd8925f3c629506f65a7ac447e16070ad9fb
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: b65957316161419d1b02bdd011f31f2eb660f28b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655223"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624104"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -121,7 +121,7 @@ ms.locfileid: "74655223"
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **如何备份我的 Azure 文件共享？**  
-    可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 Azure 备份提供 Azure 文件的备份。 深入了解[通过 Azure 备份服务备份 Azure 文件共享](/backup/backup-azure-files)。
+    可以使用定期[共享快照](storage-snapshots-files.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。
 
 ## <a name="share-snapshots"></a>共享快照
 

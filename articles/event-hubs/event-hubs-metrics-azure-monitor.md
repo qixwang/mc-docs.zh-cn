@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 origin.date: 09/18/2019
-ms.date: 10/23/2019
+ms.date: 12/23/2019
 ms.author: v-tawe
-ms.openlocfilehash: a5a294b6231dc8feb30de1ee95e6c08be0962b2b
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 99e32625b738a5abe4a77b9d17f38197909947a7
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658091"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600574"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标
 
@@ -33,7 +33,7 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](https://portal.azure.cn)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Log Analytics 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 收集的监视数据](../azure-monitor/platform/data-platform.md)。
 
-默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) 中完成这种配置。
+默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../azure-monitor/platform/diagnostic-settings.md) 中完成这种配置。
 
 
 ## <a name="access-metrics-in-the-portal"></a>在门户中访问指标
@@ -116,6 +116,8 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor 与 SIEM 工具集成
 使用 Azure Monitor 将监视数据（活动日志、诊断日志等）路由到事件中心，可以轻松地与安全信息和事件管理 (SIEM) 工具集成。 有关详细信息，请参阅以下文章/博客文章：
 
+<!-- - [Introduction to Azure Log Integration](../security/fundamentals/azure-log-integration-overview.md) -->
+
 - [将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
 - [使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -123,6 +125,7 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 - 如果**没有传入消息**，则表示 Azure Monitor 服务没有将审核/诊断日志移到事件中心。 在此方案中，通过 Azure Monitor 团队建立支持票证。 
 - 如果有传入消息，但**没有传出消息**，则意味着 SIEM 应用程序未读取消息。 请与 SIEM 提供者联系，以确定这些应用程序的事件中心配置是否正确。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,13 +4,13 @@ description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任�
 ms.topic: article
 origin.date: 10/23/2019
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: 9a6e64b2a5ba5da40060565d6be4f47be6d7ea7c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.date: 01/13/2020
+ms.openlocfilehash: 3dbe5bad4188741cf99de6a252c89568ab844e16
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884862"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599758"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -664,18 +664,12 @@ steps:
 | 别名 | 映像 |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
-| `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
-| `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
-| `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |
+| `bash` | `mcr.microsoft.com/acr/bash:a80af84` |
+| `curl` | `mcr.microsoft.com/acr/curl:a80af84` |
 
-以下示例任务使用多个别名，来[清除](container-registry-auto-purge.md)运行注册表中 `samples/hello-world` 存储库内超过 7 天的映像标记：
-
-```yaml
-version: v1.1.0
-steps:
-  - cmd: acr tag list --registry $RegistryName --repository samples/hello-world
-  - cmd: acr purge --registry $RegistryName --filter samples/hello-world:.* --ago 7d
-```
+<!--Not Available on [purge](container-registry-auto-purge.md)-->
+<!--Not Available on purge code-->
 
 ### <a name="custom-alias"></a>自定义别名
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 05/23/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 764ebd5dec741d032771f94e62ed368c5634f301
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: c4dc88eb49aad74d853305ce1ee6a430ea697854
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657961"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599897"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
@@ -51,10 +51,6 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 与你的 Azure 租户相关的遥测数据是从租户级服务（例如 Azure Active Directory）中收集的。
 
 ![Azure 租户集合](media/data-sources/tenant.png)
-
-### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory 审核日志
-[Azure Active Directory 报告](../../active-directory/reports-monitoring/overview-reports.md)包含特定租户中的登录活动历史记录和更改审核日志。 
-
 
 
 ## <a name="azure-subscription"></a>Azure 订阅

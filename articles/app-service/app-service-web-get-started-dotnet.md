@@ -1,33 +1,25 @@
 ---
-title: 创建 C# ASP.NET Core Web 应用 - Azure 应用服务 | Azure
-description: 了解如何通过部署默认的 C# ASP.NET Core Web 应用，在 Azure 应用服务中运行 Web 应用。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 快速入门：创建 C# ASP.NET Core 应用
+description: 了解如何通过部署 Visual Studio 提供的默认 C# ASP.NET Core Web 应用模板，在 Azure 应用服务中运行 Web 应用。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 origin.date: 08/30/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 2dabec55a787955ed91ed3a0ee642808a5ddcbd4
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc, devcenter, vs-azure
+ms.openlocfilehash: 3b2496278ec11466926447afefeccfcc6f3ba832
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555887"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600517"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Core Web 应用
 
 <!-- > [!NOTE] -->
 <!-- > This article deploys an app to App Service on Windows. To deploy to App Service on _Linux_, see [Create a .NET Core web app in App Service on Linux](./containers/quickstart-dotnetcore.md). -->
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。
 
 本快速入门演示如何将第一个 ASP.NET Core Web 应用部署到 Azure 应用服务中。 完成后，将拥有一个资源组，该资源组包含一个应用服务计划和一个部署了 Web 应用程序的应用服务应用。
 
@@ -95,7 +87,7 @@ ms.locfileid: "74555887"
    | 设置 | 建议的值 | 描述 |
    |-|-|-|
    |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
-   | 位置 | 西欧 | 托管 Web 应用的数据中心。 |
+   | 位置 | 中国东部 | 托管 Web 应用的数据中心。 |
    | 大小 | 免费 | [定价层](https://www.azure.cn/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)确定托管功能。 |
 
    ![创建应用服务计划](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)

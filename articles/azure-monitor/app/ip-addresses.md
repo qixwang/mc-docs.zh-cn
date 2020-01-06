@@ -6,15 +6,15 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
-origin.date: 10/09/2019
-ms.date: 10/25/2019
+origin.date: 12/19/2019
+ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 46664243cea2d651edcfa26a465f2db2fd4e2dee
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: fd9a4650091cc601ee9e461537dc38fe7437362e
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528287"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600144"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -54,16 +54,8 @@ ms.locfileid: "74528287"
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。
 
-为来自这些地址的传入流量打开端口 80 (http) 和 443 (https)（IP 地址按位置进行分组）：
-
-```
-China East
-20.40.124.176/28
-20.40.124.240/28
-20.40.125.80/28
 
 
-```  
 
 ## <a name="application-insights-api"></a>Application Insights API
 | 目的 | URI | IP | 端口 |

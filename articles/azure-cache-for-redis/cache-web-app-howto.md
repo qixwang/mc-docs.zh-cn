@@ -1,27 +1,18 @@
 ---
-title: 使用 Azure Redis 缓存创建 ASP.NET Web 应用 | Microsoft Docs
+title: 使用 Azure Cache for Redis 创建 ASP.NET Web 应用
 description: 本快速入门介绍如何使用 Azure Redis 缓存创建 ASP.NET Web 应用
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
-origin.date: 03/26/2018
-ms.date: 09/03/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: c77cb283c2b2f655870b9e2c2716035d32e08cf3
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.openlocfilehash: 4092e73e8fffa15e35e0317c845e49b2868f62e6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310869"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624128"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
 
@@ -152,7 +143,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            IDatabase cache = lazyConnection.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -175,7 +166,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
             ViewBag.command5 = "CLIENT LIST";
             ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
 
-            lazyConnection.Value.Dispose();
+            lazyConnection.Dispose();
 
             return View();
         }
@@ -333,4 +324,4 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 > [!div class="nextstepaction"]
 > [在 ASP.NET 中创建缓存端排行榜](cache-web-app-cache-aside-leaderboard.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: code update -->

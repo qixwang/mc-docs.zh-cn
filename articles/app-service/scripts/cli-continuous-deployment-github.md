@@ -1,34 +1,27 @@
 ---
-title: Azure CLI 脚本示例 - 从 GitHub 通过持续部署创建应用 | Azure
-description: Azure CLI 脚本示例 - 从 GitHub 创建应用并持续部署
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从 GitHub 进行的持续部署
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何使用 CI/CD 从 GitHub 创建应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
-origin.date: 12/11/2017
-ms.date: 11/25/2019
+origin.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 325525d7f68d10bf91ff65efe79887691f00152a
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: 42161163028fab5189fb230d91ce26615c1b1f88
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555938"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600361"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>使用 CLI 从 GitHub 通过持续部署创建应用服务应用
 
 此示例脚本使用其相关资源在应用服务中创建应用，并从 GitHub 存储库设置持续部署。 有关不进行持续部署的 GitHub 部署，请参阅[从 GitHub 创建应用并部署代码](cli-deploy-github.md)。 在此示例中，需要以下项：
 
-* 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。
+* 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。 若要获得自动生成，请根据[准备存储库](../deploy-continuous-deployment.md#prepare-your-repository)表构建存储库。
 * GitHub 帐户的[个人访问令牌(PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

@@ -1,26 +1,19 @@
 ---
-title: 为应用服务环境配置 Web 应用程序防火墙 (WAF) - Azure
-description: 了解如何在应用服务环境的前面配置 Web 应用程序防火墙。
-services: app-service\web
-documentationcenter: ''
-author: naziml
-manager: erikre
-editor: jimbe
+title: 配置 WAF
+description: 了解如何使用 Azure 应用程序网关或第三方 WAF 在应用服务环境的前面配置 Web 应用程序防火墙 (WAF)。
+author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 origin.date: 03/03/2018
-ms.date: 09/20/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 286d26591aae510a6b7768c95945f2c5bac30a73
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: b9f89a6bdefe2d9e55f9a44fed8f7e06abf1a6a7
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555967"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600485"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -97,8 +90,6 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 ![网站转换][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>使用网络安全组 (NSG) 保护发往应用服务环境的流量
-
-<!-- Follow the [Control Inbound Traffic documentation](app-service-app-service-environment-control-inbound-traffic.md) for details on restricting traffic to your App Service Environment from the WAF only by using the VIP address of your Cloud Service. -->
 
 以下是针对 TCP 端口 80 运行此任务的示例 Powershell 命令。
 

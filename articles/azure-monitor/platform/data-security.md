@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 03/04/2019
 ms.date: 05/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e81389f44c9f5c3cd4d47c667aa35b63ba2841f1
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 603eef538dec30934b2bae97a86a55d2ae2dc00b
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730217"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600136"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/security-microsoft-trust-center.md)的信息。  
@@ -128,7 +128,7 @@ Azure Log Analytics 满足以下要求：
 * [HIPAA 和 HITECH](https://www.trustcenter.cn/zh-cn/Compliance/hipaa)（对于具有 HIPAA 业务合作协议的公司）
 * Windows 通用工程标准
 * Azure 可信计算
-* 作为一项 Azure 服务，Log Analytics 使用的组件满足 Azure 符合性要求。 可以通过阅读 [Microsoft 信任中心合规性](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)了解详细信息。
+* 作为一项 Azure 服务，Log Analytics 使用的组件满足 Azure 符合性要求。 可以通过阅读 [Microsoft 信任中心合规性](https://www.microsoft.com/trustcenter/compliance/default.aspx)了解详细信息。
 
 > [!NOTE]
 > 在某些认证/证明中，Log Analytics 使用其以前的名称 *Operational Insights* 列出。

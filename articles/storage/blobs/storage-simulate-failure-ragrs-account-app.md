@@ -1,22 +1,23 @@
 ---
-title: 教程：模拟在 Azure 中访问读取访问冗余存储时出现的故障 | Microsoft Docs
-description: 模拟在访问读取访问异地冗余存储时出现的错误
+title: 教程 - 模拟从主要区域读取数据时出现的故障
+titleSuffix: Azure Storage
+description: 如果为存储帐户启用了读取访问权限异地冗余存储 (RA-GRS)，则模拟从主要区域读取数据时出现的错误。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 01/03/2019
-ms.date: 07/15/2019
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: artek
-ms.openlocfilehash: 41ba3c9eb2870fad74e7eae0a0406ae736954f1f
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.openlocfilehash: 521161b4e0919d280708ea0908bff1e123023fc7
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844516"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623997"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>教程：模拟在访问读取访问冗余存储时出现的故障
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
 本教程是一个系列中的第二部分。 本教程通过模拟一个故障，介绍[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 的优点。
 

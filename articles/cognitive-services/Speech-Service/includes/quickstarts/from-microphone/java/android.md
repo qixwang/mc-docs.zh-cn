@@ -7,24 +7,25 @@ author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 origin.date: 11/05/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1f30f415d63143b7369febf81f4fd4abfaf58bb9
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: ad2e9dbc9bcd52e88833632f7f6ea8dc4a7e9c73
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390062"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631017"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请务必：
+准备工作：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=android)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="create-a-user-interface"></a>创建用户界面
 

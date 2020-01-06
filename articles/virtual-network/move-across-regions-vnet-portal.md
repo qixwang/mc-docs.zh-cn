@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/26/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0b5fb74d9575accd87fb74022cd3be0b1431f039
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 231b074f113a9ccba60a364971b286bcb8d514ae
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658153"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599857"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
@@ -212,5 +212,5 @@ ms.locfileid: "74658153"
 - [将资源移到新资源组或订阅中](/azure-resource-manager/resource-group-move-resources)
 - [将 Azure 虚拟机移到另一个区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
-<!-- Update_Description: new article about move across regions vnet portal -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NEW.date: 01/06/2020-->

@@ -16,12 +16,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: shnatara
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: fc05a07baf2267d1152f21fecaaaa8649807780b
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 55d6e5adf051dbed60f68770e155c55faa7d3066
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020118"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623545"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -29,7 +29,7 @@ ms.locfileid: "74020118"
 
 有关使用 Service Fabric 的详细信息，请参阅 Azure 文档中的 [Azure Service Fabric 概述](/service-fabric/service-fabric-overview)和 [Service Fabric 群集安全方案](/service-fabric/service-fabric-cluster-security)。
 
-Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是一个虚拟机规模集，具有使用 [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/dsc/overview/overview) 的预安装软件。
+Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是一个虚拟机规模集，具有使用 [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) 的预安装软件。
 
 ## <a name="prerequisites"></a>先决条件
 

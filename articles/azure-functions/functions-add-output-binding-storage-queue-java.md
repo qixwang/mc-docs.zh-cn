@@ -1,19 +1,14 @@
 ---
 title: 将 Java 函数连接到 Azure 存储
 description: 了解如何使用队列存储输出绑定将 HTTP 触发的 Java 函数连接到 Azure 存储。
-author: ggailey777
-ms.author: v-junlch
-origin.date: 10/14/2019
-ms.date: 10/28/2019
+ms.date: 12/30/2019
 ms.topic: quickstart
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: ac0673861818da25f1aa9c45ff920eab4ed1cd0f
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: ba61a5a81cec8befc74700b8b7ebf05c006102b7
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034503"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624111"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>将 Java 函数连接到 Azure 存储
 
@@ -123,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> 由于已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x)以及其他 Microsoft 绑定扩展。
+> 由于已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x-and-higher)以及其他 Microsoft 绑定扩展。
 
 如前所述，使用 cURL 在新的终端窗口中从命令行触发函数：
 
@@ -163,3 +158,4 @@ curl -w "\n" https://fabrikam-functions-20190929094703749.chinacloudsites.cn/api
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 
+<!-- Update_Description: link update -->

@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/21/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 561ca7d91920929ca3ddf15f1045893fab7c61a4
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.openlocfilehash: 998631d7e2ee62b912a59ef626a4a3c4fdea7eb7
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68818185"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600138"
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 
@@ -52,7 +52,7 @@ Azure 中其他用于确保数据安全的功能包括：
 
 - 针对 Microsoft Blob 存储进行客户端加密可以让你完全控制密钥。  存储服务永远看不到这些密钥，因此无法解密数据。
 
--   Azure 支持在 SQL Server 虚拟机中进行[表级和列级加密 (TDE/CLE)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database.aspx)，并支持在客户的数据中心部署第三方本地密钥管理服务器。
+-   Azure 支持在 SQL Server 虚拟机中进行[表级和列级加密 (TDE/CLE)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database.aspx)，并支持在客户的数据中心部署第三方本地密钥管理服务器。
 
 -   存储帐户密钥、共享访问签名、管理证书以及其他密钥对每个 Azure 租户来说都是唯一的。
 
@@ -86,7 +86,7 @@ Azure 通过 VLAN 隔离、ACL、负载均衡器和 IP 筛选器来实施 [网�
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-getting-started/sec-azgsfig3.PNG)
 
-网络地址转换 (NAT) 用于将内部网络流量与外部流量分开。 内部流量不可通过外部进行路由。 [虚拟 IP 地址](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 通过外部路由转换成 [内部动态 IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 地址，后者只能在 Azure 内部进行路由。
+网络地址转换 (NAT) 用于将内部网络流量与外部流量分开。 内部流量不可通过外部进行路由。 [虚拟 IP 地址](https://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 通过外部路由转换成 [内部动态 IP](https://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) 地址，后者只能在 Azure 内部进行路由。
 
 流向 Azure 虚拟机的外部流量会通过访问控制列表 (ACL) 在路由器、负载均衡以及第 3 层交换机上进行防火墙处理。 仅允许特定的已知协议。 使用 ACL 是为了限制从来宾 VM 流向其他管理用 VLAN 的流量。 此外还会通过 IP 筛选器在主机 OS 上对流量进行筛选，进一步限制数据链接和网络层的流量。
 
@@ -102,7 +102,7 @@ Azure 结构控制器负责将基础结构资源分配到租户工作负荷，�
 
 ## <a name="virtual-network-and-firewall"></a>虚拟网络和防火墙
 
-Azure 中的[分布式网络和虚拟网络](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)有助于确保将专用网络流量与其他 Azure 虚拟网络上的流量进行逻辑隔离。
+Azure 中的[分布式网络和虚拟网络](https://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)有助于确保将专用网络流量与其他 Azure 虚拟网络上的流量进行逻辑隔离。
 
 ![Azure 中的 Microsoft 虚拟网络和防火墙](./media/azure-security-getting-started/sec-azgsfig4.PNG)
 
@@ -158,7 +158,7 @@ IP 筛选器可以防止来宾 VM 执行以下操作：
 
 存储在云中的数据必须具有足够的安全措施来防止遭到攻击，并且需要在传输过程中保持机密性和完整性。 这其中包括网络控制，同时结合使用组织的基于策略的、可审核的身份和访问管理机制。
 
-内置加密技术使你能够在部署内部和部署之间、Azure 区域之间以及从 Azure 到本地数据中心之间对通信进行加密。 管理员通过[远程登录会话](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)、[远程 Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 管理门户对虚拟机进行的访问始终加密。
+内置加密技术使你能够在部署内部和部署之间、Azure 区域之间以及从 Azure 到本地数据中心之间对通信进行加密。 管理员通过[远程登录会话](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)、[远程 Windows PowerShell](https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx) 和 Azure 管理门户对虚拟机进行的访问始终加密。
 
 为了安全地将本地数据中心扩展到云，Azure 提供了[站点到站点 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) 和[点到站点 VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) 以及通过 [ExpressRoute](../expressroute/expressroute-introduction.md) 实现的专用链接（通过 VPN 连接到 Azure 虚拟网络时，将对连接加密）。
 
@@ -202,7 +202,7 @@ Azure 建立安全控制的目的是实施威胁缓解措施，同时协助客�
 
 -   可以选择在订阅中部署第三方安全解决方案，例如 [Azure 映像市场](https://market.azure.cn/List/Index?sort=Featured&filters=tag:security)提供的 Web 应用程序防火墙。
 
--   Microsoft 采取的渗透测试方法包括“[红队测试](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)”，其中涉及 Azure 中的 Microsoft 安全专家（非客户）攻击实时生产系统，用于测试系统对现实世界的高级持久性威胁的防御能力。
+-   Microsoft 采取的渗透测试方法包括“[红队测试](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)”，其中涉及 Azure 中的 Microsoft 安全专家（非客户）攻击实时生产系统，用于测试系统对现实世界的高级持久性威胁的防御能力。
 
 -   使用集成的部署系统来管理安全修补程序在 Azure 平台的分发和安装。
 
@@ -210,6 +210,6 @@ Azure 建立安全控制的目的是实施威胁缓解措施，同时协助客�
 
 [Azure 信任中心](https://www.trustcenter.cn)
 
-[Azure 安全团队博客](http://blogs.msdn.com/b/azuresecurity/)
+[Azure 安全团队博客](https://blogs.msdn.com/b/azuresecurity/)
 
-[Active Directory 博客](http://blogs.technet.com/b/ad/)
+[Active Directory 博客](https://blogs.technet.com/b/ad/)

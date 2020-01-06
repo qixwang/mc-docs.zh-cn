@@ -1,27 +1,19 @@
 ---
-title: 使用 Visual Studio 对应用进行故障排除 - Azure 应用服务
+title: 使用 Visual Studio 排除故障
 description: 了解如何通过内置于 Visual Studio 2013 的远程调试、跟踪和日志记录工具排除应用服务应用的故障。
-services: app-service
-documentationcenter: .net
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 08/29/2016
-ms.date: 09/05/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 0dccb860ee864b2ca8d2f64c927bfa5698712a95
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: 856b29c5e97292440c3764a79abf8f167adc729d
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806716"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600227"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述

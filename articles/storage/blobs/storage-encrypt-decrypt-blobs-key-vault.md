@@ -1,25 +1,25 @@
 ---
-title: 教程：在 Azure 存储中使用 Azure Key Vault 加密和解密 blob | Microsoft Docs
-description: 如何将 Microsoft Azure 存储的客户端加密与 Azure Key Vault 配合使用，以便加密和解密 Blob。
+title: 教程 - 使用 Azure 密钥保管库加密和解密 blob
+titleSuffix: Azure Storage
+description: 了解如何通过客户端加密使用 Azure 密钥保管库来加密和解密 blob。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 05/14/2019
-ms.date: 09/30/2019
+ms.topic: tutorial
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 76dbb8c2b0d98fe8d3c802b948110712bd5e0062
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: c718e61dde358dcc3a87f91173d481c2acd99386
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306786"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624348"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-azure-storage-using-azure-key-vault"></a>教程：在 Azure 存储中使用 Azure 密钥保管库加密和解密 Blob
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
-## <a name="introduction"></a>简介
 本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。 它会逐步演示如何使用这些技术在控制台应用程序中加密和解密 Blob。
 
 **估计完成时间：** 20 分钟
@@ -122,7 +122,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>在程序中访问存储和密钥保管库
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>在程序中访问 Azure 存储和密钥保管库
 
 在 Main() 方法中，添加以下代码。
 
@@ -230,6 +230,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.cn/secrets/TestSecret2/", 
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 就这么简单。 请尽情享受其中的乐趣！
 
 ## <a name="next-steps"></a>后续步骤

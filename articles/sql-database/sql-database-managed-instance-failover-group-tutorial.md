@@ -12,13 +12,13 @@ ms.author: v-jay
 ms.reviewer: sashan, carlrab
 manager: digimobile
 origin.date: 08/27/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: d5ec19c091b7386982781218dc0fe4b92cdff568
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 05c3438b454cc1ad044566c18e622e23348e1e26
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336191"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624127"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -46,7 +46,7 @@ ms.locfileid: "75336191"
 若要完成本教程，请确保准备好以下各项：
 
 - Azure 订阅。 如果你没有帐户，请[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)
 
 ---
 

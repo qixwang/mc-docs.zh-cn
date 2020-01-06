@@ -1,20 +1,21 @@
 ---
-title: 使用 .NET 获取存储帐户类型和 SKU 名称 - Azure 存储
+title: 使用 .NET 获取存储帐户类型和 SKU 名称
+titleSuffix: Azure Storage
 description: 了解如何使用 .NET 客户端库获取 Azure 存储帐户类型和 SKU 名称。
 services: storage
 author: WenJason
 ms.author: v-jay
 origin.date: 08/06/2019
-ms.date: 09/09/2019
+ms.date: 01/06/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9ce8eb3ed3a12ab157b4e7e6a333fa920ae315dc
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.openlocfilehash: becbeeeba9fdea5b7b7d2b8df44ec0e9ad64dcf8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209395"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623698"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 获取存储帐户类型和 SKU 名称
 
@@ -64,6 +65,4 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 了解可以通过 [Azure 门户](https://portal.azure.cn)和 Azure REST API 在存储帐户上执行的其他操作。
 
-- [管理存储帐户](storage-account-manage.md)
-- [升级存储帐户](storage-account-upgrade.md)
 - [“获取帐户信息”操作 (REST)](https://docs.microsoft.com/rest/api/storageservices/get-account-information)

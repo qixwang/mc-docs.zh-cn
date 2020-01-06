@@ -9,12 +9,12 @@ ms.localizationpriority: medium
 ms.prod: windows-server-threshold
 origin.date: 11/04/2019
 ms.date: 11/18/2019
-ms.openlocfilehash: 52e3f52d41a8df2807559f0ba98e38826a127dcd
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 193401e5a914076a276e7346538e1bf47820af31
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020238"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624210"
 ---
 # <a name="azure-stack-hci-overview"></a>Azure Stack HCI 概述
 
@@ -55,7 +55,6 @@ Azure Stack HCI 属于 Azure 和 Azure Stack 系列，与 Azure Stack 使用相�
 若要了解详细信息，请访问以下链接：
 
 - 请访问我们的 [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) 解决方案网站了解更多信息。
-- 观看 Microsoft 专家 Jeff Woolsey 和 Vijay Tewari [介绍新的 Azure Stack HCI 解决方案](https://aka.ms/AzureStackOverviewVideo)。
 
 ## <a name="hyperconverged-efficiencies"></a>超融合效率
 

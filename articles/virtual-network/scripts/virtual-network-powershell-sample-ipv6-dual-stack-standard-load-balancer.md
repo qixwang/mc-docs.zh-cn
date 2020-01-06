@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 07/15/2019
 ms.date: 12/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 496107b3aabd6d714a81029d46d081dca2efd96d
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: a121ad0d1f6533a781f2a6c3d5bbd7c76de66ce4
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658175"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599792"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-with-standard-load-balancer"></a>使用标准负载均衡器在虚拟网络中配置 IPv6 终结点的脚本示例
 
@@ -40,7 +40,7 @@ ms.locfileid: "74658175"
 # Create resource group to contain the deployment
   $rg = New-AzResourceGroup `
   -ResourceGroupName "dsRG1"  `
-  -Location "east us"
+  -Location "chinaeast"
 
 # Create the public IPs needed for the deployment
   $PublicIP_v4 = New-AzPublicIpAddress `

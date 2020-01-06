@@ -1,0 +1,77 @@
+- name: 数据科学虚拟机文档
+  href: index.yml
+  items: null
+- name: 概述
+  expanded: true
+  items:
+    - name: Data Science Virtual Machine (DSVM) 是什么？
+      href: overview.md
+    - name: 什么是 Geo AI DSVM？
+      href: geo-ai-dsvm-overview.md
+    - name: DSVM 上包含的工具
+      href: tools-included.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建 Windows DSVM
+      href: provision-vm.md
+    - name: 创建 Ubuntu DSVM
+      href: dsvm-ubuntu-intro.md
+    - name: 创建 CentOS DSVM
+      href: linux-dsvm-intro.md
+    - name: 创建地理 AI DSVM
+      href: provision-geo-ai-dsvm.md
+- name: 概念
+  items:
+    - name: 深度学习和人工智能框架
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: 编程语言
+      href: dsvm-languages.md
+    - name: 开发工具
+      href: dsvm-tools-development.md
+    - name: 机器学习和数据科学工具
+      href: dsvm-ml-data-science-tools.md
+    - name: 数据平台
+      href: dsvm-data-platforms.md
+    - name: 数据引入工具
+      href: dsvm-tools-ingestion.md
+    - name: 数据探索和可视化工具
+      href: dsvm-tools-explore-and-visualize.md
+    - name: 企业安全与指南
+      href: dsvm-enterprise-overview.md
+- name: 示例
+  href: dsvm-samples-and-walkthroughs.md
+- name: 操作指南
+  items:
+    - name: 使用 Windows DSVM
+      href: vm-do-ten-things.md
+    - name: 使用 Linux DSVM
+      href: linux-dsvm-walkthrough.md
+    - name: 使用地理 AI DSVM
+      href: use-geo-ai-dsvm.md
+    - name: 创建自动缩放的 DSVM 池
+      href: dsvm-pools.md
+    - name: 与 Azure Active Directory 集成
+      href: dsvm-common-identity.md
+    - name: 保护资源访问凭据
+      href: dsvm-secure-access-keys.md
+- name: 资源
+  items:
+    - name: MSDN 论坛
+      href: 'https://social.microsoft.com/Forums/home?forum=dsvm'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=dsvm'
+    - name: R 开发人员指南
+      href: 'https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context'
+- name: 参考
+  items:
+    - name: Ubuntu DSVM
+      href: reference-ubuntu-vm.md
+    - name: CentOS DSVM
+      href: reference-centos-vm.md
+    - name: 发行说明
+      href: release-notes.md
+    - name: 已知问题
+      href: reference-known-issues.md
+    - name: 弃用公告
+      href: reference-deprecation.md

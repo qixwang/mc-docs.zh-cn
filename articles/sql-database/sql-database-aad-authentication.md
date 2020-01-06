@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
 origin.date: 02/20/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 6a97add29f4a043155780d5d8b53457227747ea1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 178c6e2e45cd0ca109cf2259a0a26c29f2b30fbf
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336144"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624126"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用 Azure Active Directory 身份验证进行 SQL 身份验证
 
@@ -85,7 +85,7 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
   - 作为本机或联合域成员从其他 Azure AD 导入的成员。
   - 以安全组形式创建的 Active Directory 组。
 
-- 属于具有 `db_owner` 服务器角色的组的 Azure AD 用户无法对 Azure SQL 数据库和 Azure SQL 数据仓库使用 **[CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** 语法。 将出现以下错误：
+- 属于具有 `db_owner` 服务器角色的组的 Azure AD 用户无法对 Azure SQL 数据库和 Azure SQL 数据仓库使用 **[CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** 语法。 将出现以下错误：
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 

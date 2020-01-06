@@ -3,18 +3,18 @@ title: Azure Monitor 服务限制 | Microsoft Docs
 description: 列出了 Azure Monitor 在不同区域中的限制。
 author: lingliw
 manager: digimobile
-origin.date: 08/22/2019
+origin.date: 06/10/2019
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/10/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a5df6bbf663f94de779811c71498bc769568d197
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: bd16f17b619dbe8c389823c0355ded83d43e2669
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838622"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600134"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor 服务限制
 

@@ -1,27 +1,19 @@
 ---
-title: 将 PHP (Laravel) 与 MySQL 配合使用 - Azure 应用服务 | Azure
+title: 教程：将 PHP 应用与 MySQL 配合使用
 description: 了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。 本教程中使用 Laravel。
-services: app-service\web
-documentationcenter: php
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: tutorial
 origin.date: 11/25/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 85b65a29188da8aec01dd30d08b115e15ed4c443
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.custom: mvc
+ms.openlocfilehash: e9df6331f16d8052fa5388b22eaff0741acd06ca
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334900"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600504"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -177,7 +169,7 @@ az mysql server create --resource-group myResourceGroup --name <mysql_server_nam
 
 ```json
 {
-  "location": "westeurope",
+  "location": "chinaeast",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
   "sku": {

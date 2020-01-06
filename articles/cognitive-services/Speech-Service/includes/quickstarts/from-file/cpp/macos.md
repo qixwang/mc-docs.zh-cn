@@ -1,22 +1,21 @@
 ---
 title: 快速入门：从音频文件中识别语音，C++ (macOS) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 macOS 上使用语音 SDK 通过 C++ 识别语音
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 07/05/2019
-ms.date: 11/25/2019
+ms.topic: include
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9fbc25744e9574d1e85ee092029d2180d0da4c74
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: bd1c58d80ad9f10f3ae547c17a49534135977360
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390073"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631060"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,6 +25,8 @@ ms.locfileid: "74390073"
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=macos)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -81,6 +82,8 @@ ms.locfileid: "74390073"
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 
+> [!NOTE]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-the-app"></a>生成应用
 

@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   origin.date: 11/04/2019
   ms.date: 12/16/2019
-  ms.openlocfilehash: 9d1fa1668a2e870dc1485977213c7b08407f1484
-  ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+  ms.openlocfilehash: 759a27bb8b6af8ec3f15df1199226be946430e3b
+  ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75335064"
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75631083"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -61,7 +61,7 @@ conceptualContent:
     - url: ./speech-service/index.md
       itemType: overview
       text: 语音服务
-  - title: 决策服务
+  - title: 决策
     summary: 构建应用，用于呈现有助于做出明智和高效决策的建议。
     links:
     - url: ./content-moderator/index.yml
@@ -72,12 +72,10 @@ additionalContent:
   - items:
     - title: 其他资源
       links:
-      - text: 支持和帮助选项
-        url: cognitive-services-support-options.md
       - text: Azure CLI
         url: https://docs.azure.cn/cli/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: REST API
       links:
       - text: 认知服务管理

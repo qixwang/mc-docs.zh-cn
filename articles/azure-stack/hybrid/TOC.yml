@@ -74,5 +74,3 @@
   items:
     - name: Azure Stack Hub MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
-    - name: Azure Stack Hub 培训和认证
-      href: /azure-stack/operator/azure-stack-train-and-cert

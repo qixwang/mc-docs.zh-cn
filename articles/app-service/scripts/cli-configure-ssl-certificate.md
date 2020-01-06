@@ -1,28 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 将自定义 SSL 证书绑定到应用 | Azure
-description: Azure CLI 脚本示例 - 将自定义 SSL 证书绑定到应用
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: CLI：将 SSL 证书上传并绑定到应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例介绍如何将自定义 SSL 证书绑定到应用。
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 8ac1d587183c42b53aed1e1c687169cd970b8588
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: ab4fadf8c693e6df7ee3caffe41f0ccf00fb2685
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806861"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600380"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>使用 CLI 将自定义 SSL 证书绑定到应用服务应用
 

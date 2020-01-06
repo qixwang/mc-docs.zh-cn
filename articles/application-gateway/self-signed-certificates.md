@@ -6,15 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 07/23/2019
-ms.date: 11/21/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: 9a67c0683921712c51c5bfce3709d9a9d0b89de3
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: d1427f1e7c3679b535bb5802fd2bae11278fa1a6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327301"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624134"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
@@ -107,7 +106,7 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 1. 使用以下命令以创建证书：
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>验证新建的证书
 

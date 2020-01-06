@@ -8,15 +8,15 @@ ms.subservice: dsc
 author: WenJason
 ms.author: v-jay
 origin.date: 08/08/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 5f3233922b858d6b229c0e1f2261d1b81c05882b
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: c9cd02d784d6188dc1c407b0a5c7113b26dd0e0a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884001"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624265"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>将配置转换为复合资源
 
@@ -32,7 +32,7 @@ ms.locfileid: "74884001"
 - 管理防火墙设置
 - 管理密码设置
 
-若要将此工作与他人共享，最佳选项是将配置打包为[复合资源](https://docs.microsoft.com/powershell/dsc/resources/authoringresourcecomposite)。
+若要将此工作与他人共享，最佳选项是将配置打包为[复合资源](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringresourcecomposite)。
 首次创建复合资源可能很困难。
 
 > [!NOTE]

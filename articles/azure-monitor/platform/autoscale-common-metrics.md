@@ -2,19 +2,17 @@
 title: 自动缩放的常用指标
 description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的指标。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 12/6/2016
 ms.date: 12/6/2018
 ms.author: v-lingwu
 ms.subservice: autoscale
-ms.openlocfilehash: 327c5bf4184c5a2d443eb05ad5da28936235080b
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 2ecc06e5c5e5e1ef957eb146bfbbd84e4f06b0e7
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982138"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599904"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
 

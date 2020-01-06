@@ -1,27 +1,20 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用备份还原到其他订阅 | Azure
-description: Azure PowerShell 脚本示例 - 从另一订阅的备份中还原 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jpconnoc
-editor: ''
+title: PowerShell：将备份还原到另一个订阅
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何在另一订阅中还原备份。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 origin.date: 11/21/2018
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: d21b71c5c93cf2b5f4935306942c6ae3c37ddd2d
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 684f40a5d14b0fe96afc39e23b8c65189e437ef3
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806853"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600311"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>使用 PowerShell 从另一订阅中的备份还原 Web 应用
 

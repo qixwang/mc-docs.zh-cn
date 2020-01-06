@@ -1,29 +1,23 @@
 ---
-title: Azure PowerShell 脚本示例 - 轮换存储帐户访问密钥 | Microsoft Docs
+title: 使用 PowerShell 轮换存储帐户访问密钥
+titleSuffix: Azure Storage
 description: 创建 Azure 存储帐户，然后检索并轮换其中的一个帐户访问密钥。
 services: storage
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: sample
-origin.date: 06/13/2017
-ms.date: 03/04/2019
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 1e4cb13bb1de763c0105e977652c706fd6a014aa
-ms.sourcegitcommit: 77475d11bc3b6a1fa7ab8aa1421fcdf39c0cd370
+ms.openlocfilehash: a407e090e8dc08ed40ed6d1fb5aec39216d6554a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72323820"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624118"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>创建存储帐户并轮换其帐户访问密钥
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>使用 PowerShell 轮换存储帐户访问密钥
 
 此脚本会创建一个 Azure 存储帐户，显示新存储帐户的主访问密钥，然后续订（轮换）密钥。
 
@@ -68,7 +62,7 @@ $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroup 
 Write-Host "storage account key 1 = " $storageAccountKey
 ```
 
-## <a name="clean-up-deployment"></a>清理部署 
+## <a name="clean-up-deployment"></a>清理部署
 
 运行以下命令来删除资源组、存储帐户和所有相关资源。
 

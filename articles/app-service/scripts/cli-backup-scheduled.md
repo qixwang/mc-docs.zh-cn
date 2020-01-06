@@ -1,26 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 为应用创建计划备份 | Azure
-description: Azure CLI 脚本示例 - 为应用创建计划备份
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：创建计划的备份
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何为应用创建计划的备份。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: db62f7d7e514447e41ca597ba044db678bc29124
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: f08ab323b5d211f2ca9fd127d4dfa9f413f848c3
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806907"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600391"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>使用 CLI 为应用服务应用创建计划备份
 

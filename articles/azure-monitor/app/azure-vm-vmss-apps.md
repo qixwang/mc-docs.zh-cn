@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 08/26/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b62df8a43a88d42a4d4f1835396d2b4f6b143b98
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 756962a3519fb51d327920d2765cc25a4ec58a35
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528291"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545359"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -99,7 +99,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Name              : ApplicationMonitoring
 # ResourceGroupName : <myVmResourceGroup>
 # ResourceType      : Microsoft.Compute/virtualMachines/extensions
-# Location          : southcentralus
+# Location          : China East
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
 

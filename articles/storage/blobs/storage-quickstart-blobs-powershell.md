@@ -1,5 +1,6 @@
 ---
-title: Azure 快速入门 - 使用 Azure PowerShell 在对象存储中创建 blob | Microsoft Docs
+title: 快速入门 - 使用 PowerShell 创建 blob
+titleSuffix: Azure Storage
 description: 本快速入门将在对象 (Blob) 存储中使用 Azure PowerShell。 然后，使用该 PowerShell 将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: WenJason
@@ -7,18 +8,20 @@ ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 origin.date: 02/14/2019
-ms.date: 04/22/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 89fed06055a70232fe3bc2067939fda3fa59b249
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 50334ff6797db45f9aec74ec64d225dbf23b8868
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174078"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624188"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 上传、下载和列出 Blob
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入门：使用 PowerShell 上传、下载和列出 blob
 
 使用 Azure PowerShell 模块创建和管理 Azure 资源。 可以通过 PowerShell 命令行或脚本创建或管理 Azure 资源。 本指南介绍如何使用 PowerShell 在本地磁盘和 Azure Blob 存储之间传输文件。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

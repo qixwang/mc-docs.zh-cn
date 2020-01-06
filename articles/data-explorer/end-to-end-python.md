@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/23/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: a4efb645a9adf64bc31cae8f14b7d71fdc8cbc36
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 01/13/2020
+ms.openlocfilehash: 3589c0032c4016895e8e698e2fb7aef589cc4c6f
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020896"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630906"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>通过 Python 以端到端方式将 blob 引入到 Azure 数据资源管理器中
 
@@ -39,6 +39,7 @@ pip install azure-common
 pip install azure-mgmt-resource
 pip install azure-mgmt-kusto
 pip install azure-mgmt-eventgrid
+pip install azure-kusto-data
 pip install azure-storage-blob
 ```
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
@@ -69,8 +70,8 @@ client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
 #Client secret
 client_secret = "xxxxxxxxxxxxxx"
 subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-location = "West Europe"
-location_small_case = "westeurope"
+location = "China East"
+location_small_case = "chinaeast"
 #Path to the Azure Resource Manager template JSON from the previous section
 azure_resource_template_path = "xxxxxxxxx/template.json";
 

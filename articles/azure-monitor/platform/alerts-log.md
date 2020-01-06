@@ -9,12 +9,12 @@ origin.date: 4/27/2018
 ms.date: 07/29/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 232de465e337c4dc7e3877cb00cf260548d18b1c
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: 70e16d2a9b1cda2a77320c6119f3ed4f80a052aa
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737355"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545370"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -140,7 +140,7 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
     "parameters": {
     },
     "variables": {
-        "alertLocation": "southcentralus",
+        "alertLocation": "China East",
         "alertName": "samplelogalert",
         "alertDescription": "Sample log search alert",
         "alertStatus": "true",

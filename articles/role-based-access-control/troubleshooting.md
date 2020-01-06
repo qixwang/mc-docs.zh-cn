@@ -1,5 +1,5 @@
 ---
-title: 对 Azure 资源的 RBAC 问题进行故障排除？| Microsoft Docs
+title: 对 Azure 资源的 RBAC 问题进行故障排除 | Microsoft Docs
 description: 对 Azure 资源基于角色的访问控制 (RBAC) 问题进行故障排除。
 services: azure-portal
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8d1cd82dfa80cccbb567926d2cd5a2f61f16a8e8
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 7023b909c48a43815ba43ac4cfe26d52c8b3e0dc
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884873"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623793"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
@@ -90,7 +90,7 @@ CanDelegate        : False
 }
 ```
 
-保留这些角色分配不是问题，但你可以使用与其他角色分配相似的步骤将其删除。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-role-assignments)、[Azure PowerShell](role-assignments-powershell.md#remove-access) 或 [Azure CLI](role-assignments-cli.md#remove-access)
+保留这些角色分配不是问题，但你可以使用与其他角色分配相似的步骤将其删除。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) 或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
 在 PowerShell 中，如果尝试通过对象 ID 和角色定义名称来删除角色分配，而多个角色分配与参数相匹配，则会出现错误消息：“提供的信息未映射到角色分配”。 下面显示了错误消息示例：
 
@@ -188,4 +188,4 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 - [查看 Azure 资源的 RBAC 更改的活动日志](change-history-report.md)
 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

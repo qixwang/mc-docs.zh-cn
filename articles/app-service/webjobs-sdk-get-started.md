@@ -1,25 +1,18 @@
 ---
-title: WebJobs SDK 入门 - Azure
+title: WebJobs SDK 入门
 description: 用于事件驱动的后台处理的 WebJobs SDK 简介。 了解如何访问 Azure 服务和第三方服务中的数据。
-services: app-service\web, storage
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5648006699ad1e6b7a49005edd74daeed0d42eab
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 4b63898c6acf57b8e58e2854b6383cbd5770280b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555946"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600221"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -328,13 +321,13 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在“连接字符串”框中添加以下条目。 
 
-   |Name  |连接字符串  |数据库类型|
+   |名称  |连接字符串  |数据库类型|
    |---------|---------|------|
    |AzureWebJobsStorage | {前面复制的存储连接字符串}|“自定义”|
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。  （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
-   |Name  |Value  |
+   |名称  |Value  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentation key} |
 

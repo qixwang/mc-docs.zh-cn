@@ -1,29 +1,23 @@
 ---
-title: Azure PowerShell 脚本示例 - 计算 blob 容器大小 | Microsoft Docs
+title: 使用 PowerShell 计算 blob 容器的大小
+titleSuffix: Azure Storage
 description: 通过计算容器各 blob 的总大小来计算 Azure Blob 存储中容器的大小。
 services: storage
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: powershell
 ms.topic: sample
-origin.date: 11/07/2017
-ms.date: 03/04/2019
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: ab74ad550731978943e586aff7f949a930a66ded
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: fd8af0b57b3ba149a1bd5a101724ef31d9ad6c5e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625102"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624315"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>使用 PowerShell 计算 blob 容器的大小
 
 此脚本通过计算容器中 blob 的总大小来计算 Azure Blob 存储中容器的大小。
 
@@ -40,10 +34,10 @@ ms.locfileid: "58625102"
 # this script will show how to get the total size of the blobs in a container
 # before running this, you need to create a storage account, create a container,
 #    and upload some blobs into the container 
-# note: this retrieves all of the blobs in the container in one command 
+# note: this retrieves all of the blobs in the container in one command. 
 #       if you are going to run this against a container with a lot of blobs
 #       (more than a couple hundred), use continuation tokens to retrieve
-#       the list of blobs. We will be adding a sample showing that scenario in the future.
+#       the list of blobs.
 
 # these are for the storage account to be used
 $resourceGroup = "bloblisttestrg"
@@ -86,11 +80,10 @@ Remove-AzResourceGroup -Name bloblisttestrg
 
 此脚本使用以下命令来计算 Blob 存储容器的大小。 表中的每一项均链接到命令特定的文档。
 
-
-|                                               命令                                                |                                                  注释                                                   |
-|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| 命令 | 注释 |
+|---|---|
 | [Get-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
-|    [Get-AzStorageBlob](https://docs.microsoft.com/powershell/module/az.storage/Get-AzStorageBlob)    |                                       列出容器中的 Blob。                                        |
+| [Get-AzStorageBlob](https://docs.microsoft.com/powershell/module/az.storage/Get-AzStorageBlob) | 列出容器中的 Blob。 |
 
 ## <a name="next-steps"></a>后续步骤
 

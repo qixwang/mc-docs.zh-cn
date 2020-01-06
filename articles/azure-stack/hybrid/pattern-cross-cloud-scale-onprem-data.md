@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: cb37e4bfe05bef533cb94a03721ac9534666d7d0
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: e34cfc01adbc6f32c011fe6ed3f77af73125469c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020560"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623764"
 ---
 # <a name="cross-cloud-scaling-on-premises-data-pattern"></a>跨云缩放（本地数据）模式
 
@@ -117,7 +117,7 @@ Azure Stack Hub 可让你在多个国家/地区运行相同的服务，就像使
 - 为应用标识分配不同于你自己的权限的权限，并将这些权限限制为用于解决该应用的确切需求。
 - 执行无人参与的脚本时，使用证书进行身份验证。 
 
-有关创建服务主体以及将证书用作凭据的详细信息，请参阅[使用应用标识访问资源](/operator/azure-stack-create-service-principals)。
+有关创建服务主体以及将证书用作凭据的详细信息，请参阅[使用应用标识访问资源](/azure-stack/operator/azure-stack-create-service-principals)。
 
 ## <a name="when-to-use-this-pattern"></a>何时使用此模式 
 

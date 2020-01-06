@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 06741066ab3b9d47ea10ee824f63ef350eb48da8
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9b80124a70349e69fb38acad5e01fa4a1e233210
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389987"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631700"
 ---
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Java 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)

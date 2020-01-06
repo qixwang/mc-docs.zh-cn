@@ -1,28 +1,28 @@
 ---
-title: Azure PowerShell 脚本示例 - 创建 Azure 防火墙测试环境
-description: Azure PowerShell 脚本示例 - 创建 Azure 防火墙测试环境。
+title: 创建 Azure 防火墙测试环境
+description: 此脚本示例创建防火墙和测试网络环境。 网络具有一个包含三个子网的 VNet。
 services: virtual-network
 author: rockboyfor
 ms.service: firewall
 ms.devlang: powershell
 ms.topic: sample
-origin.date: 08/13/2018
-ms.date: 07/22/2019
+origin.date: 11/19/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7bbdd2df84dc5fc05181ccf2d74772eb3dbf0220
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.openlocfilehash: e84b5c540ac28f013322dc73bb95e8a34d6fc2a6
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68337576"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600121"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>创建 Azure 防火墙测试环境
 
-此脚本示例创建防火墙和测试网络环境。 网络有一个 VNet，其中包含三个子网：*AzureFirewallSubnet*、*ServersSubnet* 和 *JumpboxSubnet*。 ServersSubnet 和 JumpboxSubnet 每个中都有一台 2 核 Windows Server。
+此脚本示例创建防火墙和测试网络环境。 网络有一个 VNet，其中包含三个子网：*AzureFirewallSubnet*、*ServersSubnet* 和 *JumpboxSubnet*。 ServersSubnet 和 JumpboxSubnet 每个中都有一个 2 核 Windows Server。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-防火墙在 AzureFirewallSubnet 中并配置有一个应用程序规则集合，其中包含允许访问 www.microsoft.com 的单个规则。
+防火墙在 AzureFirewallSubnet 中并配置有一个应用程序规则集合，其中包含允许访问 `www.microsoft.com` 的单个规则。
 
 创建了用户定义的一个路由，它引导来自 ServersSubnet 的网络流量穿过应用了防火墙规则的防火墙。
 
@@ -153,5 +153,6 @@ Remove-AzResourceGroup -Name AzfwSampleScriptChinaEast -Force
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
-<!-- Update_Description: new articles on sample create firewall test -->
+
+<!-- Update_Description: update meta properties, wording update, update link -->
 <!--ms.date: 07/22/2019-->

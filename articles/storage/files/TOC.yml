@@ -41,8 +41,6 @@
       items:
         - name: 授权
           href: ../common/storage-auth.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: Azure 存储安全
-          href: ../common/storage-security-guide.md?toc=%2fstorage%2ffiles%2ftoc.json
         - name: Azure 存储加密
           href: ../common/storage-service-encryption.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 开发
@@ -105,6 +103,8 @@
               href: ../common/storage-use-azcopy-files.md?toc=%2fstorage%2ffiles%2ftoc.json
             - name: 配置、优化、故障排除
               href: ../common/storage-use-azcopy-configure.md?toc=%2fstorage%2ffiles%2ftoc.json
+            - name: 通过数据移动库传输数据
+              href: ../common/storage-use-data-movement-library.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 开发
       items:
         - name: 配置连接字符串
@@ -133,6 +133,8 @@
           href: storage-troubleshoot-linux-file-connection-problems.md
         - name: 关于删除 Azure 文件存储的疑难解答
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: 恢复删除的存储帐户
+          href: storage-how-to-recover-deleted-account.md
 - name: 参考
   items:
     - name: Azure PowerShell

@@ -6,15 +6,15 @@ manager: digimobile
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-origin.date: 08/13/2019
-ms.date: 07/12/2019
+origin.date: 12/27/2019
+ms.date: 11/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 576f8f7e9de1ea10181db4348b359018832a00e9
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 85bc607c98f1051aaf6615a4ae223536fe6c2269
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982133"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600129"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 

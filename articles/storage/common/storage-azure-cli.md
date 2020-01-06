@@ -7,15 +7,16 @@ ms.service: storage
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 06/02/2017
-ms.date: 02/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 6e55d40558ab8deba8f5d9193e7a2f8b727b8199
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.openlocfilehash: 1ebb54b0ed62baadcabc1435814b9b08cc98dd03
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209387"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624160"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -24,6 +25,8 @@ ms.locfileid: "70209387"
 本指南介绍如何使用 [Azure CLI](/cli/get-started-with-az-cli2) 执行多个使用 Azure 存储帐户中的资源的任务。 在使用本指南之前，我们建议下载并安装或者升级到最新版 CLI。
 
 指南中的示例假设在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。 
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 

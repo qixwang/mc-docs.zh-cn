@@ -4,17 +4,17 @@ description: 管理解决方案通常会包括 Log Analytics 中保存的搜索�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: v-lingwu
+author: lingliw
 origin.date: 07/22/2019
 ms.date: 07/29/2019
+ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d86ff78b3afdca70cc560e1f387cee28c33b0ec7
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: e2a106fc560275d0a0e99d5f9a20f27e267c0ee9
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528418"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600125"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -384,7 +384,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
             "value": "myAccount"
         },
         "workspaceregionId": {
-            "value": "China East"
+            "value": "China East 2"
         },
         "regionId": {
             "value": "China East 2"

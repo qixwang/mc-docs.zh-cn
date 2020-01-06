@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/31/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b5cc83780a45e124ee16e5d2d8912724c0ccd4d0
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 27cf5c0385c5bf844d1f1a5d858bc0a2a29f0ee9
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658171"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599830"
 ---
 # <a name="subnet-extension"></a>子网扩展
 将工作负荷迁移到公有云需要经过认真的规划和协调。 其中一个重要考虑因素是能够保留 IP 地址。 如果应用程序具有 IP 地址依赖性，或者法规要求使用特定的 IP 地址，则这项能力就非常重要。 Azure 虚拟网络允许使用所选的 IP 地址范围创建 VNet 和子网，从而解决了此问题。
@@ -55,5 +55,5 @@ ms.locfileid: "74658171"
 ## <a name="next-steps"></a>后续步骤 
 [使用供应商解决方案将子网扩展到 Azure](https://github.com/microsoft/Azure-LISP)。
 
-<!-- Update_Description: new article about subnet extension -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NEW.date: 01/06/2020-->

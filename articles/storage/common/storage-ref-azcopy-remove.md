@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 66af5f042d955b8b0c3bd63e6c1c2503bd82b635
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 90970973cde441d7fe7453479d8dc112bdf5a868
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328794"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624122"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -50,7 +50,7 @@ azcopy rm "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/dir
 仅删除虚拟目录中的顶级 blob，而不删除其子目录中的：
 
 ```azcopy
-azcopy rm "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" --recursive=false
+azcopy rm "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
 删除虚拟目录中的一部分 blob（例如：仅删除 jpg 和 pdf 文件，或者删除 blob 名为“exactName”的 blob）：
@@ -68,7 +68,7 @@ azcopy rm "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/dir
 删除特定 blob 和虚拟目录，方法是将其相对路径（非 URL 编码）置于文件中：
 
 ```azcopy
-azcopy rm "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/parent/dir]?[SAS]" --recursive=true --list-of-files=/usr/bar/list.txt
+azcopy rm "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
 file content:
   dir1/dir2
   blob1

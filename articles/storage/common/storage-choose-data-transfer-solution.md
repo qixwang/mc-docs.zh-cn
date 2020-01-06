@@ -7,14 +7,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 12/02/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 63170d1b8ead3b312f1e5fa502febd87e5d9c299
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: cea1da8e57c2f7c77ff3b25a0d842ef1661b5ea1
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655439"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624158"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
 
@@ -52,4 +52,4 @@ ms.locfileid: "74655439"
 - 使用 REST API 传输数据
 
     - [在 .NET 中](/dotnet/api/overview/storage)
-    - [在 Java 中](https://docs.azure.cn/zh-cn/java/api/storage/clientlibrary)
+    - [在 Java 中](https://docs.microsoft.com/java/api/overview/azure/storage)

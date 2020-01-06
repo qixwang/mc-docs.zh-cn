@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/12/2019
-ms.date: 10/28/2019
+origin.date: 12/06/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: f50a16027041c690458b315edbc12a6fb20aa666
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 7f9958728d985f737aa790d0aa7209471451a304
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583861"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630945"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -84,7 +84,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     |---|---|
     |订阅 |从下拉列表中选择你的 Azure 订阅。|
     |资源组 |从下拉列表中选择你的资源组，或新建一个资源组|
-    |Location |从下拉列表中选择区域。|
+    |位置 |从下拉列表中选择区域。|
     |群集名称 |输入 Hadoop 群集的名称。 请仅使用小写字母。|
     |群集登录用户名 |保留预先填充的值 `admin`。|
     |群集登录密码 |输入密码。|
@@ -95,7 +95,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     |_artifacts 位置 | 使用默认值（除非想要在其他位置使用自己的 bacpac 文件）。|
     |_artifacts 位置 SAS 令牌 |留空。|
     |Bacpac 文件名 |使用默认值（除非想要使用自己的 bacpac 文件）。|
-    |Location |使用默认值。|
+    |位置 |使用默认值。|
 
     Azure SQL 服务器名称将是 `<ClusterName>dbserver`。 数据库名称将是 `<ClusterName>db`。 默认的存储帐户名将是 `e6qhezrh2pdqu`。
 
@@ -120,5 +120,5 @@ HDInsight 可以使用各种方法运行 Sqoop 作业。 使用下表来确定�
 现在你已了解如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Apache Hive 和 HDInsight 配合使用](../hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](../hdinsight-use-pig.md)
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight/Azure Blob 存储的其他方法。
+* [使用 Apache Sqoop 在 Apache Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据](./apache-hadoop-use-sqoop-mac-linux.md)

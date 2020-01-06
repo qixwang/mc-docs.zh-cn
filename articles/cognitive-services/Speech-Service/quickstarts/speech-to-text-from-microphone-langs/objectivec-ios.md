@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 07/05/2019
-ms.date: 11/25/2019
+origin.date: 12/23/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6cd2e2c05b464ede74d2c0d3eb2145c7e03e8dde
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 729f8363278ea4b0b79d119a6de76b2ac90cce0f
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390047"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630788"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 

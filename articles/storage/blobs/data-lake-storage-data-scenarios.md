@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/11/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: d6c525acb172fea8c2ca22d607a2bd7d17c6c263
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 368fb963a6adc8a1650f9093a92830b54393bf15
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328724"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624137"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -104,12 +104,6 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 ### <a name="streamed-data"></a>流数据
 
 这表示可由应用程序、设备、传感器等多种源生成的数据。此数据可通过各种工具引入 Data Lake Storage Gen2。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen2，以便这些事件可以得到进一步处理。
-
-下面是一个列表，其中包含可以用来引入流式处理的数据的工具。
-
-|工具 | 指南 |
-|---|--|
-|Azure HDInsight Storm | [从 Apache Storm on HDInsight 写入到 Apache Hadoop HDFS](/hdinsight/storm/apache-storm-write-data-lake-store) |
 
 ### <a name="relational-data"></a>关系数据
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 03/20/2019
-ms.date: 10/28/2019
+origin.date: 12/06/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 189214b953875e36e4575a719a21be135a1d7243
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: a0b9ab9774e43f5b97211abbc0f103c194a2b514
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583859"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630848"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
 
@@ -118,11 +118,11 @@ public class WordCount {
 
 HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合用户，并访问此链接进行演练。
 
-| **使用此方法**... | **...实现此目的** | ...使用此 **群集操作系统** | ...从此 **客户端操作系统** |
+| **使用此方法**... | **...实现此目的** |  ...从此 **客户端操作系统** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |通过 **SSH** |Linux |Linux、Unix、Mac OS X 或 Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux 或 Windows |Linux、Unix、Mac OS X 或 Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell** |Linux 或 Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |通过 **SSH** |Linux、Unix、Mac OS X 或 Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell**  |Windows |
 
 ## <a id="nextsteps"></a>后续步骤
 
@@ -132,7 +132,7 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定�
 
 * [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
 
-* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
+
 
 
 [hdinsight-upload-data]: hdinsight-upload-data.md

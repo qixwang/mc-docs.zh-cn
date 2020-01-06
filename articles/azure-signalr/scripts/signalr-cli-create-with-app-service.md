@@ -9,12 +9,12 @@ origin.date: 04/20/2018
 ms.date: 11/25/2019
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 27e19f744cf16ee7dabd4f404421d90e980f38e4
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: a5798a5a1bab596c2acd807f7968d0807192be6f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179139"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600586"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>使用应用服务创建 SignalR 服务
 
@@ -44,7 +44,7 @@ myWebAppName=SignalRTestWebApp$randomNum
 myAppSvcPlanName=$myAppSvcName"Plan"
 
 # Create resource group 
-az group create --name $myResourceGroupName --location chinaeast
+az group create --name $myResourceGroupName --location chinaeast2
 
 # Create the Azure SignalR Service resource
 az signalr create \
@@ -77,7 +77,7 @@ az webapp config appsettings set --name $myWebAppName --resource-group $myResour
 
 表中的每条命令均链接到特定于命令的文档。 此脚本使用以下命令：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az signalr create](/cli/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |

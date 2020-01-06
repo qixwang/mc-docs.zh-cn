@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2018
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 9f035e38f3b59701f60bdb0cc7465159dbb1091c
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 5cce624fde791b740d80fa3b582c6badb06f4eac
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658128"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599748"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
 
@@ -103,5 +103,4 @@ ACS-Engine 是一项工具，可以生成 Azure 资源管理器模板，以便�
 - 了解[容器网络](container-networking-overview.md)。
 - 为 Kubernetes 群集或 Docker 容器[部署插件](deploy-container-networking.md)。
 
-<!-- Update_Description: new article about kubernetes network policies -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

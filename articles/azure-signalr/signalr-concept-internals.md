@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: c268c6a77e9869e66d905c58959b62faf9b99f66
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: a5a9c25f7c3990272772b2030685f31814a84af1
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336050"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600583"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR 服务内部
 
@@ -62,7 +62,7 @@ Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它�
 - 对于 ASP.NET Core SignalR，典型的重定向响应如下所示：
     ```
     {
-        "url":"https://test.service.signalr.cn/client/?hub=chat&...",
+        "url":"https://test.service.signalr.azure.cn/client/?hub=chat&...",
         "accessToken":"<a typical JWT token>"
     }
     ```
@@ -70,7 +70,7 @@ Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它�
     ```
     {
         "ProtocolVersion":"2.0",
-        "RedirectUrl":"https://test.service.signalr.cn/aspnetclient",
+        "RedirectUrl":"https://test.service.signalr.azure.cn/aspnetclient",
         "AccessToken":"<a typical JWT token>"
     }
     ```

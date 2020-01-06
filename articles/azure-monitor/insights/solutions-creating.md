@@ -4,16 +4,16 @@ description: 管理解决方案包括 Azure 中打包的管理方案，客户可
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: v-lingwu
+author: lingliw
 origin.date: 03/20/2017
 ms.date: 07/12/2019
-ms.openlocfilehash: 32fbf6ff6c80caa7e697dcbb92170fd80aa7ef75
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.author: v-lingwu
+ms.openlocfilehash: 3d7aa1469fcfd6c3a387426e08c290149b621be0
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970898"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600127"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]

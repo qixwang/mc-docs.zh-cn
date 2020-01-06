@@ -1,25 +1,19 @@
 ---
-title: 添加和管理 SSL 证书 - Azure 应用服务 | Microsoft Docs
-description: 了解如何购买应用服务证书并将其绑定到应用服务应用
-services: app-service
-author: cephalin
-manager: gwallace
+title: 添加和管理 SSL 证书
+description: 在 Azure 应用服务中创建免费的证书、导入应用服务证书、导入 Key Vault 证书或购买应用服务证书。
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 origin.date: 10/25/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 15408ba470c71451c0861a0e27800a295d0bc4ce
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 32451522041bc8c6ed9679dfb1a441c2df9c3f03
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556042"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600495"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -140,7 +134,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 在“名称”  中，键入证书的名称。 在“CER 证书文件”中  ，选择你的 CER 文件。
 
-单击“上传”。 
+单击“上载” 。 
 
 ![将公用证书上传到应用服务中](./media/configure-ssl-certificate/upload-public-cert.png)
 

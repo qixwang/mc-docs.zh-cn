@@ -2,25 +2,17 @@
 title: 预配包含 Azure Redis 缓存的 Web 应用
 description: 使用 Azure 资源管理器模板部署包含 Azure Redis 缓存的 Web 应用。
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 01/06/2017
-ms.date: 03/27/2019
+ms.topic: conceptual
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: 0bf8d0605c0f14dd0867b53794f768059b45640a
-ms.sourcegitcommit: c5599eb7dfe9fd5fe725b82a861c97605635a73f
+ms.openlocfilehash: 1aceb37758710df1988c75eb69694f080ef0d338
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505427"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624323"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用模板创建 Web 应用和 Azure Redis 缓存
 

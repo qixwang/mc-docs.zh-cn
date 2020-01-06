@@ -17,7 +17,7 @@ metadata:
   ms.date: 11/18/2019
   ms.author: v-jay
 abstract:
-  description: Azure Stack Hub 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack Hub 上生成应用。 然后，可将这些应用部署到 Azure Stack Hub 或 Azure，也可生成利用 Azure Stack Hub 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你是 Azure Stack Hub 操作员并想要管理基础结构和提供服务，请参阅<a href="../operator/">操作员文档</a>。<br/><br/>如果你是对 Azure Stack Hub 开发工具包 (ASDK)、Azure Stack Hub（可以免费下载和使用）的单节点部署感兴趣的 Azure Stack Hub 用户，请参阅我们的 <a href="../asdk">ASDK 文档</a>。
+  description: Azure Stack Hub 是一个混合云平台，可用于通过公司或服务提供商的数据中心使用 Azure 服务。 开发人员可以在 Azure Stack Hub 上生成应用。 然后，可将这些应用部署到 Azure Stack Hub 或 Azure，也可生成利用 Azure Stack Hub 云与 Azure 之间的连接的真正混合式应用。 使用快速入门和教程了解如何创建资源和部署应用。<br/><br/>如果你是 Azure Stack Hub 操作员并想要管理基础结构和提供服务，请参阅<a href="/operator/">操作员文档</a>。<br/><br/>如果你是对 Azure Stack Hub 开发工具包 (ASDK)、Azure Stack Hub（可以免费下载和使用）的单节点部署感兴趣的 Azure Stack Hub 用户，请参阅我们的 <a href="/asdk">ASDK 文档</a>。
 sections:
   - title: Azure Stack Hub 入门
     items:
@@ -43,4 +43,3 @@ sections:
         className: cardsA
         items:
           - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster"> <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt=""> <br><b>部署 Service Fabric 群集</b></a> <p>在 Azure Stack Hub 中部署受保护的 Service Fabric 群集。</p>
-          - html: <a href="/azure-stack/user/azure-stack-solution-template-cognitive-services"> <img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt=""> <br><b>部署 Azure 认知服务</b></a> <p>Azure 认知服务中的容器支持可让你使用 Azure 中可用的相同 API。</p>

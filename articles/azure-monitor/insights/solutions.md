@@ -6,15 +6,15 @@ ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
-ms.author: v-lingwu
 origin.date: 08/13/2019
 ms.date: 08/23/2019
-ms.openlocfilehash: 368c1784c576b00375e05b7350f7f143f6cd92a5
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.author: v-lingwu
+ms.openlocfilehash: 857832dbb64063c95b09d65ec728f4a455a1ca38
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528420"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599927"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。

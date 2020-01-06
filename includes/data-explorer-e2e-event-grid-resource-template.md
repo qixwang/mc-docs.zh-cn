@@ -2,15 +2,15 @@
 author: lugoldbemicrosoft
 ms.service: data-explorer
 ms.topic: include
-origin.date: 10/07/2019
-ms.date: 12/16/2019
+origin.date: 10/23/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8919f814446f000a71c1bae918b67925897771af
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 42d748565fb49d1fb1581ad938bc378e81e3422a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466948"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630819"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
@@ -142,7 +142,7 @@ ms.locfileid: "75466948"
                 "tier": "Standard",
                 "capacity": 2
             },
-            "apiVersion": "2019-05-15",
+            "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
             "tags": {
                 "Created By": "GitHub quickstart template"
@@ -150,7 +150,7 @@ ms.locfileid: "75466948"
         }, {
             "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'))]",
             "type": "Microsoft.Kusto/clusters/databases",
-            "apiVersion": "2019-05-15",
+            "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
             "dependsOn": ["[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"],
             "properties": {

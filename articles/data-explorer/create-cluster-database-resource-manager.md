@@ -7,13 +7,13 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f91edc2b73b0ab1345268e35bb6c7948b443f88e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: 2a0a65d41a7578aea927cbb98cc8ee34f070aea5
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335951"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631111"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
@@ -23,7 +23,7 @@ ms.locfileid: "75335951"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [ARM 模板](create-cluster-database-resource-manager.md)
+> * [Azure Resource Manager 模板](create-cluster-database-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 
 
@@ -72,7 +72,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -81,7 +81,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"

@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 创建应用并使用 FTP 部署文件 | Azure
-description: Azure CLI 脚本示例 - 创建应用服务应用并使用 FTP 部署文件
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：使用 FTP 部署应用文件
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何使用 FTP 创建应用和部署文件。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: sample
 ms.topic: sample
 origin.date: 12/12/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 0a609b5d4124c917ffc0a2f38bfd2bbc17a7774d
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 06a1856b771b1d8527ef9254474b74b967c6e340
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806801"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600352"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并通过 FTP 部署文件
 

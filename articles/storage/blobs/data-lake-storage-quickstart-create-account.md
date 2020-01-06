@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/23/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 1eab2aeff3ee621dff4c6274ab407029899fd014
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 188d7c2e36259d1fb40bd9bcfef0ecd8da5f0f1e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655459"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624280"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -84,7 +84,7 @@ Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队
 
 ## <a name="create-an-account-using-powershell"></a>使用 PowerShell 创建帐户
 
-首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) 模块。
+首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/scripting/gallery/installing-psget) 模块。
 
 然后，升级 powershell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
 
@@ -186,7 +186,7 @@ az storage account create `
     --location chinaeast `
     --sku Standard_LRS `
     --kind StorageV2 `
-    --hierarchical-namespace true
+    --enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>清理资源

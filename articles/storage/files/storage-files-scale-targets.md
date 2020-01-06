@@ -1,19 +1,19 @@
 ---
-title: Azure 文件可伸缩性和性能目标 | Microsoft Docs
+title: Azure 文件可伸缩性和性能目标
 description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容量、请求速率以及入站和出站带宽限制。
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 5/5/2019
-ms.date: 10/14/2019
+ms.topic: conceptual
+origin.date: 10/16/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 4d761b52ab77aa93095c056e073064b19be7d9f6
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: e6980b141fff6a616d3f608b3308144795455e59
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275567"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624318"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -25,7 +25,7 @@ ms.locfileid: "72275567"
 
 Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure 中的一个存储池，该存储池可供包括 Azure 文件在内多个存储服务用来存储数据。 在存储帐户中存储数据的其他服务有 Azure Blob 存储、Azure 队列存储和 Azure 表存储。 以下目标适用于在存储帐户中存储数据的所有存储服务：
 
-[!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

@@ -1,20 +1,14 @@
 ---
 title: 如何面向 Azure Functions 运行时版本
 description: Azure Functions 支持多个版本的运行时。 了解如何在 Azure 中指定函数应用的运行时版本。
-services: functions
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 10/28/2019
-ms.author: v-junlch
-ms.openlocfilehash: 8718f71c26419978d11f39c7f433e97aac17b683
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.date: 12/31/2019
+ms.openlocfilehash: 9e045d316d42e63f7fe29b41687d424497736505
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034437"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624304"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
@@ -35,9 +29,9 @@ Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VER
 
 | 主版本 | `FUNCTIONS_EXTENSION_VERSION` 值 |
 | ------------- | ----------------------------------- |
-| 3.x（预览版） | `~3` |
+| 3.x  | `~3` |
 | 2.x  | `~2` |
-| 1.x | `~1` |
+| 1.x  | `~1` |
 
 更改运行时版本会导致函数应用重启。
 

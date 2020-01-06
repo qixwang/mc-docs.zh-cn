@@ -1,0 +1,183 @@
+---
+title: 教程 - 添加模板函数
+description: 将模板函数添加到 Azure 资源管理器模板以构造值。
+author: rockboyfor
+origin.date: 10/04/2019
+ms.author: v-yeche
+ms.date: 01/06/2020
+ms.topic: tutorial
+ms.openlocfilehash: ac3cb2f57d203567c7e0b777ad51c028a015a93e
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631622"
+---
+# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教程：将模板函数添加到资源管理器模板
+
+本教程介绍如何将[模板函数](template-functions.md)添加到模板。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
+
+## <a name="prerequisites"></a>先决条件
+
+建议完成[有关参数的教程](template-tutorial-add-parameters.md)，但这不是必需的。
+
+必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
+
+## <a name="review-template"></a>审阅模板
+
+在上一篇教程的结束时，模板包含以下 JSON：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageName": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24
+        },
+        "storageSKU": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS",
+                "Premium_LRS",
+                "Standard_GZRS",
+                "Standard_RAGZRS"
+            ]
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[parameters('storageName')]",
+            "location": "chinaeast",
+            "sku": {
+                "name": "[parameters('storageSKU')]"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "supportsHttpsTrafficOnly": true
+            }
+        }
+    ]
+}
+```
+
+存储帐户的位置硬编码为“中国东部”。  但是，可能需要将存储帐户部署到其他区域。 你会再次面对一个问题：模板缺乏灵活性。 可以添加一个位置参数，但理想的情况是默认值更理性，而不仅仅是一个硬编码值。
+
+## <a name="use-function"></a>使用函数
+
+如果已完成本系列的上一教程，则你已使用了函数。 在添加 **"[parameters('storageName')]"** 时，你使用了 [parameters](template-functions-deployment.md#parameters) 函数。 括号表示其中的语法是一个[模板表达式](template-expressions.md)。 资源管理器会对语法进行解析，而不是将其视为文本值。
+
+函数可以在部署过程中动态获取值，为模板增加了灵活性。 在本教程中，我们使用函数来获取用于部署的资源组的位置。
+
+以下示例重点介绍添加名为 **location** 的参数需要做的更改。  参数默认值调用 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 此函数返回的对象描述用于部署的资源组。 对象上的一个属性是位置属性。 使用默认值时，存储帐户位置与资源组位置相同。 资源组中的资源不需共享同一位置。 也可根据需要提供不同的位置。
+
+复制整个文件，将模板替换为该文件的内容。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageName": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24
+        },
+        "storageSKU": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS",
+                "Premium_LRS",
+                "Standard_GZRS",
+                "Standard_RAGZRS"
+            ]
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[parameters('storageName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('storageSKU')]"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "supportsHttpsTrafficOnly": true
+            }
+        }
+    ]
+}
+```
+
+## <a name="deploy-template"></a>部署模板
+
+在前面的教程中，你创建的存储帐户位于“中国东部”，但资源组创建于“中国北部”。 在本教程中，存储帐户与资源组在同一区域创建。 请使用位置的默认值，这样就不需提供该参数值。 必须为存储帐户提供新名称，因为是在另一位置创建存储帐户。 例如，使用 **store2** 而不是 **store1** 作为前缀。
+
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name addlocationparameter `
+  -ResourceGroupName myResourceGroup `
+  -TemplateFile $templateFile `
+  -storageName "{new-unique-name}"
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group deployment create \
+  --name addlocationparameter \
+  --resource-group myResourceGroup \
+  --template-file $templateFile \
+  --parameters storageName={new-unique-name}
+```
+
+---
+
+## <a name="verify-deployment"></a>验证部署
+
+可以通过在 Azure 门户中浏览资源组来验证部署。
+
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 在左侧菜单中选择“资源组”。 
+1. 选择已将内容部署到其中的资源组。
+1. 可以看到一项存储帐户资源已部署，且其位置与资源组一样。
+
+## <a name="clean-up-resources"></a>清理资源
+
+若要继续学习下一篇教程，则不需删除该资源组。
+
+如果你不打算继续学习，请删除该资源组以清理部署的资源。
+
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+2. 在“按名称筛选”字段中输入资源组名称。 
+3. 选择资源组名称。
+4. 在顶部菜单中选择“删除资源组”。 
+
+## <a name="next-steps"></a>后续步骤
+
+在本教程中，我们在为参数定义默认值时使用了一个函数。 在本系列教程中，我们将继续使用函数。 到本系列完成时，我们会将函数添加到模板的每个部分。
+
+> [!div class="nextstepaction"]
+> [添加变量](template-tutorial-add-variables.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

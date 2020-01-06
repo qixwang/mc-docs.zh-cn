@@ -1,28 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 从 GitHub 通过部署来创建应用 | Azure
-description: Azure CLI 脚本示例 - 从 GitHub 使用部署创建应用服务应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从 GitHub 部署应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从 GitHub 部署应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: sample
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 11ee05f5237e0284936e73ebfb85328cb024dffa
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: e133f32254bfe3056d92d5b9d2ed3579e43f66e0
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555951"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600346"
 ---
 # <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>使用 Azure CLI 从 GitHub 通过部署创建应用服务应用
 

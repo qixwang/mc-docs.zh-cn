@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据同步 | Microsoft Docs
+title: 数据同步
 description: 此概述介绍 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 08/20/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 5141052a7ac60a09186d50422a00d3582048f28a
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.date: 12/16/2019
+ms.openlocfilehash: 9b5c65257ef6af16b53ca8c65c8f2a1f8c7e5e6f
+ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75334944"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨多个 SQL 数据库和 SQL Server 实例双向同步选定数据。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="when-to-use-data-sync"></a>何时使用 SQL 数据同步
 
@@ -80,7 +80,6 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
 | 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或共用数据库发布<br/>- 维护成本高 |
-| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL 数据同步入门
 
@@ -104,24 +103,24 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 ## <a name="consistency-and-performance"></a>一致性和性能
 
-#### <a name="eventual-consistency"></a>最终一致性
+### <a name="eventual-consistency"></a>最终一致性
 
 由于 SQL 数据同步是基于触发器的服务，因此无法保证事务一致性。 Azure 保证最终执行所有更改，且数据同步不会导致数据丢失。
 
-#### <a name="performance-impact"></a>性能影响
+### <a name="performance-impact"></a>性能影响
 
 SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层级并根据需要升级。
 
-在同步组创建、更新和删除期间预配和取消预配也可能会影响数据库性能。 
+在同步组创建、更新和删除期间预配和取消预配也可能会影响数据库性能。
 
 ## <a name="sync-req-lim"></a> 要求和限制
 
 ### <a name="general-requirements"></a>一般要求
 
-- 每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
+- 每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。
 
 > [!IMPORTANT]
-> 更改现有主键的值会导致以下错误行为：   
+> 更改现有主键的值会导致以下错误行为：
 > - 即使同步未报告任何问题，中心和成员之间的数据也会丢失。
 > - 由于主键更改，跟踪表的源行不存在，同步可能会失败。
 
@@ -130,7 +129,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="general-limitations"></a>一般限制
 
 - 表不能包含非主键标识列。
-- 主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。 
+- 主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。
 - 使用以下数据类型作为主键时请小心谨慎，因为支持的精度仅到秒：time、datetime、datetime2、datetimeoffset。
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
 - 不支持 Azure Active Directory 身份验证。
@@ -153,7 +152,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>服务和数据库维度方面的限制
 
-| **维度**                                                      | **限制**              | **解决方法**              |
+| **维度**                                                  | **限制**              | **解决方法**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | 任何数据库可属于的同步组的数量上限。       | 5                      |                             |
 | 一个同步组中包含的终结点的数量上限              | 30                     |                             |
@@ -163,7 +162,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | 同步组中的表列                              | 1000                   |                             |
 | 表中的数据行大小                                        | 24MB                  |                             |
 | 最小同步间隔                                           | 5 分钟              |                             |
-|||
+
 > [!NOTE]
 > 如果只有一个同步组，则单个同步组中最多可能有 30 个终结点。 如果有多个同步组，则所有同步组中的终结点总数不能超过 30。 如果数据库属于多个同步组，则该数据库计算为多个终结点，而不是一个。
 
@@ -171,7 +170,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL 数据同步服务的价格是多少
 
-对 SQL 数据同步服务本身不收取任何费用。  但是，对于传入和传出 SQL 数据库实例的数据移动，仍然会产生数据传输费用。 有关价格，请参阅 [SQL 数据库定价](https://azure.cn/pricing/details/sql-database/)。
+对 SQL 数据同步服务本身不收取任何费用。 但是，对于传入和传出 SQL 数据库实例的数据移动，你仍然收取数据传输费用。 有关价格，请参阅 [SQL 数据库定价](https://azure.cn/pricing/details/sql-database/)。
 
 ### <a name="what-regions-support-data-sync"></a>哪些区域支持数据同步
 
@@ -192,7 +191,7 @@ SQL 数据同步在所有区域中都可用。
 - 如果订阅属于同一租户，并且你对所有订阅都有权限，则可以在 Azure 门户中配置同步组。
 - 否则，必须使用 PowerShell 来添加属于不同订阅的同步成员。
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china"></a>是否可以使用数据同步在属于不同云（例如 Azure 公有云和 Azure 中国）的 SQL 数据库之间进行同步
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>是否可以使用数据同步在属于不同云（例如 Azure 公有云和 Azure 中国世纪互联）的 SQL 数据库之间进行同步
 
 是的。 可以在属于不同云的 SQL 数据库之间进行同步，但必须使用 PowerShell 添加属于不同订阅的同步成员。
 
