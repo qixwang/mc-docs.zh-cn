@@ -1,26 +1,17 @@
 ---
-title: 使用 Azure PowerShell 管理 Azure Redis 缓存 | Microsoft Docs
+title: 使用 Azure PowerShell 管理 Azure Redis 缓存
 description: 了解如何使用 Azure PowerShell 对 Azure Redis 缓存执行管理任务。
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 07/13/2017
-ms.date: 11/11/2019
+ms.topic: conceptual
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: f73ddf483d9168ac45c4193ad78cb341e91d47b6
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: c6022ac89fec06fc58df4dc9077ca67e33ff0940
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934411"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623655"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -77,15 +68,15 @@ ms.locfileid: "73934411"
 - 中国东部 2
 - 中国北部 2
 
-有关 Azure 中国云的详细信息，请参阅 [由中国 21Vianet 运营的 AzureChinaCloud for Azure](http://www.azure.cn/)。
+有关 Azure 中国云的详细信息，请参阅 [由中国 21Vianet 运营的 AzureChinaCloud for Azure](https://www.azure.cn/)。
 
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
 
 | 参数 | 说明 | 默认 |
 | --- | --- | --- |
-| Name |缓存的名称 | |
-| Location |缓存的位置 | |
+| 名称 |缓存的名称 | |
+| 位置 |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
@@ -747,3 +738,4 @@ ms.locfileid: "73934411"
 * [“你好，脚本编写专家！”博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
 
 
+<!-- Update_Description: link update -->

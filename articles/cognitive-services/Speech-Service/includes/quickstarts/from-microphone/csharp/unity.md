@@ -1,34 +1,36 @@
 ---
 title: 快速入门：从麦克风中识别语音，C# (Unity) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.topic: include
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 30f0488c8c272b1cbb8aacb32b09bb60deb11d60
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 155fb7bc92e8df7f69bf364a69ec3a4fe232f66d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390044"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631014"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请务必：
+准备工作：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=unity)。如果已完成此操作，那就太好了。 让我们继续。
+> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=unity)
+> * 请确保你有权访问麦克风，以便进行音频捕获
+
+如果尚未执行此操作，很好！ 让我们继续。
 
 ## <a name="create-a-unity-project"></a>创建 Unity 项目
 

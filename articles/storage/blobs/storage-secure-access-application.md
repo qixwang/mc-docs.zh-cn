@@ -1,23 +1,24 @@
 ---
-title: 使用 Azure 存储安全访问云中的应用程序数据 |Microsoft Docs
+title: 安全访问应用程序数据
+titleSuffix: Azure Storage
 description: 使用 SAS 令牌、加密和 HTTPS 保护云中的应用程序数据。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 05/30/2018
-ms.date: 09/09/2019
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: d24ae8b8da220935e5acf1753570f230f93ac01f
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.openlocfilehash: 2c422a82e1a139d69e6f2caee2c37386702d9e3f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209450"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623996"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>安全访问云中的应用程序数据
+# <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
 本教程是一个系列中的第三部分。 你将了解如何安全访问存储帐户。 
 
@@ -32,7 +33,7 @@ ms.locfileid: "70209450"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须先完成上一存储教程：[使用事件网格自动调整上传图像的大小][previous-tutorial]。 
+若要完成本教程，必须先完成上一存储教程：[使用事件网格自动调整上传图像的大小][previous-tutorial]。
 
 ## <a name="set-container-public-access"></a>设置容器公共访问权限
 
@@ -52,7 +53,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 在本系列教程的第一部分中，Web 应用程序显示公共容器中的图像。 在此系列教程的这个部分中，请使用共享访问签名 (SAS) 令牌检索缩略图图像。 通过 SAS 令牌，可以实现基于 IP、协议、时间间隔或允许的权限提供对容器或 blob 的受限访问权限。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 
-此示例中，源代码存储库使用 `sasTokens` 分支，该分支有更新的代码示例。 使用 [az webapp deployment source delete](/cli/azure/webapp/deployment/source) 删除现有的 GitHub 部署。 然后，使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。  
+此示例中，源代码存储库使用 `sasTokens` 分支，该分支有更新的代码示例。 使用 [az webapp deployment source delete](/cli/webapp/deployment/source) 删除现有的 GitHub 部署。 然后，使用 [az webapp deployment source config](/cli/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。  
 
 在下面的命令中，`<web-app>` 是 Web 应用的名称。  
 

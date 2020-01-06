@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 10/10/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4d5de22ff4728f78afaf5743d95a61f842acb4e7
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: a15f85bf1ebf372b54e4bb51cd99e28fc6644bc6
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390017"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631027"
 ---
 # <a name="quickstart-speech-sdk-for-unity-platform-setup---speech-service"></a>快速入门：用于 Unity 的语音 SDK 平台设置 - 语音服务
 

@@ -1,24 +1,23 @@
 ---
-title: Azure 数据工厂中的 Until 活动 | Microsoft 文档
+title: Azure 数据工厂中的 Until 活动
 description: Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。
 services: data-factory
 documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
-ms.reviewer: douglasl
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 01/10/2018
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: 44ad590004f48aff3434586e0fc34470a4784054
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: df2b67c2067308b2908f0a7419a4a7d3b2b0361e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570549"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624219"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
 Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
@@ -201,10 +200,7 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>;EndpointSuffix=core.chinacloudapi.cn",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>;EndpointSuffix=core.chinacloudapi.cn"
         }
     }
 }

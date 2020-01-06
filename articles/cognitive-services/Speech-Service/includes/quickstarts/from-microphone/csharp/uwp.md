@@ -1,31 +1,31 @@
 ---
 title: 快速入门：从麦克风中识别语音，C# (UWP) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.topic: include
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 43a6bcb5c7446b701592872ad74a92858552bfb8
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: a72bf72186d67831415728c1f10039d117ebed15
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390046"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631016"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请务必：
+准备工作：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=uwp)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 如果尚未执行此操作，很好！ 让我们继续。
 

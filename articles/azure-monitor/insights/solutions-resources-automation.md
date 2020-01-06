@@ -4,17 +4,17 @@ description: 管理解决方案通常在 Azure 自动化中包含 Runbook 以自
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: v-lingwu
+author: lingliw
 origin.date: 05/24/2017
 ms.date: 01/21/2019
+ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ce7db30d9675688d72ca4772a47dd704db0fc31
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: fef77ab2dda145bba5e1671a9d43f3e94a781954
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970897"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600126"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
@@ -75,7 +75,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 | runbookType |指定 Runbook 的类型。 <br><br> 脚本 - PowerShell 脚本 <br>PowerShell - PowerShell 工作流 <br> GraphPowerShell - 图形 PowerShell 脚本 Runbook <br> GraphPowerShellWorkflow - 图形 PowerShell 工作流 Runbook |
 | logProgress |指定是否应为 Runbook 生成[进度记录](../../automation/automation-runbook-output-and-messages.md)。 |
 | logVerbose |指定是否应为 Runbook 生成[详细记录](../../automation/automation-runbook-output-and-messages.md)。 |
-| 说明 |Runbook 的可选说明。 |
+| description |Runbook 的可选说明。 |
 | publishContentLink |指定 Runbook 的内容。 <br><br>uri - Runbook 内容的 URI。  这会是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 自己跟踪的 Runbook 版本。 |
 
 
@@ -194,7 +194,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 说明 |计划的可选说明。 |
+| description |计划的可选说明。 |
 | startTime |指定计划的开始时间作为 DateTime 对象。 如果它可以转换为有效的 DateTime，则可以提供一个字符串。 |
 | isEnabled |指定是否启用计划。 |
 | interval |计划的间隔类型。<br><br>day<br>hour |
@@ -264,7 +264,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 说明 | 变量的可选说明。 |
+| description | 变量的可选说明。 |
 | isEncrypted | 指定是否应加密变量。 |
 | type | 当前此属性无效。  初始值决定该变量的数据类型。 |
 | value | 变量的值。 |
@@ -278,7 +278,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 |:--|:--|:--|:--|
 | string   | 将值括在双引号中。  | "\"Hello world\"" | "Hello world" |
 | numeric  | 用单引号将数字值括起来。| "64" | 64 |
-| 布尔值  | 引号中的“true”  或“false”  。  请注意，此值必须为小写。 | "true" | 是 |
+| boolean  | 引号中的“true”  或“false”  。  请注意，此值必须为小写。 | "true" | 是 |
 | datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>模块

@@ -1,11 +1,8 @@
 ---
 title: 统一多个 Azure Monitor Application Insights 资源 | Azure Docs
 description: 本文详细介绍了如何在 Azure Monitor 日志中使用函数来查询多个 Application Insights 资源并直观呈现这些数据。
-services: azure-monitor
-documentationcenter: ''
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,12 +10,12 @@ ms.topic: conceptual
 origin.date: 02/19/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fd189cedb8412c39b03b8a14eadc4c41f0ef774b
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: d80a1dcc0f2b2cbd641915970b3934a702bd29a9
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330382"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599885"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
 本文介绍如何在一个位置查询和查看所有 Application Insights 日志数据（即使这些数据位于不同 Azure 订阅），可作为弃用 Application Insights 连接器的替换方式。 可以在单个查询中包含的 Application Insights 资源的数量限制为 100。

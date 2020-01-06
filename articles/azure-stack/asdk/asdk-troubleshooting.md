@@ -17,17 +17,17 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 02c03bd085098d3e22c3ee9b67010aad4fc719a2
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 4f963c07ba7754922d7f7cc36b49ba54a738290f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020132"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624296"
 ---
 # <a name="troubleshoot-the-asdk"></a>排查 ASDK 问题
 本文提供了 Azure Stack 开发工具包 (ASDK) 的常见故障排除信息。 有关 Azure Stack 集成系统的帮助，请参阅 [Azure Stack 故障排除](../operator/azure-stack-troubleshooting.md)。 
 
-由于 ASDK 是一个评估环境，因此 Azure 客户支持服务 (CSS) 不提供支持。 如果遇到了文档未记录的问题，可以在 [Azure Stack MSDN 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/azure/home)上获得专家的帮助。 
+由于 ASDK 是一个评估环境，因此 Azure 客户支持服务 (CSS) 不提供支持。 如果遇到了文档未记录的问题，可以在 [Azure Stack MSDN 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home)上获得专家的帮助。 
 
 
 ## <a name="deployment"></a>部署

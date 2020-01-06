@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 2/14/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8f13abbaf0f9e3ca29afb7079ce399aeea2d0e5f
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: bc8094fb4663773cb0a71f988fcbfe3b7a1743be
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982127"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545365"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell 快速启动示例
 本文说明可帮助访问 Azure Monitor 功能的示例 PowerShell 命令。
@@ -153,7 +153,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 | 参数 | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| 名称 |simpletestdiskwrite |
 | 此警报规则的位置 | 中国东部 |
 | resourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -180,7 +180,7 @@ $actionWebhook = New-AzAlertRuleWebhook -ServiceUri https://example.com?token=my
 在经典虚拟机上创建关于 CPU %指标的警报规则
 
 ```powershell
-Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 -TargetResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.ClassicCompute/virtualMachines/my_vm1 -MetricName "Percentage CPU" -Operator GreaterThan -Threshold 1 -WindowSize 00:05:00 -TimeAggregationOperator Average -Action $actionEmail, $actionWebhook -Description "alert on CPU > 1%"
+Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "China East" -ResourceGroup myrg1 -TargetResourceId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.ClassicCompute/virtualMachines/my_vm1 -MetricName "Percentage CPU" -Operator GreaterThan -Threshold 1 -WindowSize 00:05:00 -TimeAggregationOperator Average -Action $actionEmail, $actionWebhook -Description "alert on CPU > 1%"
 ```
 
 检索警报规则
@@ -268,7 +268,7 @@ $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com 
 最后，创建自动缩放设置以添加之前创建的配置文件。 
 
 ```powershell
-Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
+Add-AzAutoscaleSetting -Location "China East" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
 有关管理自动缩放设置的详细信息，请参阅 [Get AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)。
@@ -337,7 +337,7 @@ Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/res
 除了将数据路由到存储帐户，还可以流式传输到事件中心。 在此预览版本中，存储帐户配置是必需的，但事件中心配置是可选的。
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location 'China East' -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-ChinaEast/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location 'China East' -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>配置诊断日志
@@ -380,7 +380,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 启用事件中心的诊断设置
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
+Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-ChinaEast/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
 启用 Log Analytics 的诊断设置

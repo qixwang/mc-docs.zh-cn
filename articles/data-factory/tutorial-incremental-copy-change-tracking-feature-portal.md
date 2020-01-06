@@ -13,12 +13,12 @@ ms.topic: tutorial
 origin.date: 01/12/2018
 ms.date: 07/08/2019
 ms.author: v-jay
-ms.openlocfilehash: 96f9155f3d9d04198dce57241a53d45b96127088
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 3d8356b29b1229caf8f76b83909f3cdb7654eb6e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570556"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623920"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -415,7 +415,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. 选择“导入参数”  。 
     3. 在“存储过程参数”部分，  指定以下参数值： 
 
-        | Name | 类型 | 值 | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
@@ -457,7 +457,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 1,update,10,2,U
 6,new,50,1,I
 ```
-前三个列是 data_source_table 中的更改数据。 最后两个列是更改跟踪系统表中的元数据。 第四列是每个更改行的 SYS_CHANGE_VERSION。 第五列是操作：U = update（更新），I = insert（插入）。  如需详细了解更改跟踪信息，请参阅 [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql)。 
+前三个列是 data_source_table 中的更改数据。 最后两个列是更改跟踪系统表中的元数据。 第四列是每个更改行的 SYS_CHANGE_VERSION。 第五列是操作：U = update（更新），I = insert（插入）。  如需详细了解更改跟踪信息，请参阅 [CHANGETABLE](https://docs.microsoft.com/sql/relational-databases/system-functions/changetable-transact-sql)。 
 
 ```
 ==================================================================

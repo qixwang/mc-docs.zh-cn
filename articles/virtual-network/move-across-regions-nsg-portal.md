@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: article
 origin.date: 08/31/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 07da9de6caa2d0c5437a2cacdfa2999efa814038
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 1382a0d5dbdfbca5b3a0319f7da1134718a3db89
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658142"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599820"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 网络安全组 (NSG) 移到另一个区域
 
@@ -179,4 +179,4 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 - [将 Azure VM 移到另一区域](/site-recovery/azure-to-azure-tutorial-migrate)
 
 <!-- Update_Description: new article about move across regions nsg portal -->
-<!--NEW.date: 11/25/2019-->
+<!--NEW.date: 01/06/2020-->

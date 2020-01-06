@@ -4,17 +4,17 @@ description: 管理解决方案提供打包的管理方案，客户可将其添�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: v-lingwu
+author: lingliw
 origin.date: 01/09/2018
 ms.date: 01/21/2019
+ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73fda5ef0bd3ea83e7133cc9fd875f4e6c150e5d
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 3533b06fdced2189e72e603f6a0722f2bacb7249
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970969"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599924"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -68,7 +68,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
 | control |字符串参数的其他功能。<br><br>datetime - 显示 Datetime 控件。<br>guid - 自动生成的 Guid 值，不显示参数。 |
-| 说明 |参数的可选说明。  显示在参数旁边信息气球。 |
+| description |参数的可选说明。  显示在参数旁边信息气球。 |
 
 ### <a name="standard-parameters"></a>标准参数
 下表列出了所有管理解决方案的标准参数。  从 Azure 市场或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。

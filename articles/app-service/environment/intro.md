@@ -1,25 +1,19 @@
 ---
-title: 应用服务环境简介 - Azure
-description: 有关 Azure 应用服务环境的简要概述
-services: app-service
-documentationcenter: na
+title: 简介
+description: 了解如何通过 Azure 应用服务环境在一个完全隔离的专用环境中缩放、保护和优化应用。
 author: ccompy
-manager: stefsch
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 origin.date: 04/19/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: c2d4147ad1bf21223783efcf39eedf633bc4d7f1
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: a7d2479ee0fc1831f6101282c951ae2adaac3107
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555962"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600474"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  

@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/27/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 74efe13005017d3644a7fbb741b15a108aa3e6bf
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: e1fa97e5192413bb02cc68dcdf79229cdf57d2d4
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336331"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630951"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>将数据从 IoT 中心引入到 Azure 数据资源管理器（预览）
 
@@ -21,17 +21,15 @@ ms.locfileid: "75336331"
 > * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager 模板](data-connection-iot-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从 IoT 中心引入（加载数据），是一个大数据流式处理平台和 IoT 引入服务。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-
 * 创建[一个测试群集和数据库](create-cluster-database-portal.md)，所用数据库名称为 *testdb*。
-
 * 介绍如何模拟设备的[示例应用](https://github.com/Azure-Samples/azure-iot-samples-csharp)和文档。
-
 * 用于运行示例应用的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心

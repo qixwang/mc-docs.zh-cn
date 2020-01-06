@@ -1,22 +1,21 @@
 ---
 title: 快速入门：识别音频文件中的语音 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.topic: include
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3de93bd87d7c5d4366d4ef93e8a3628afc0d0a95
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: aca9d175a6ca70acb5c38b02b8b27800a21139fb
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390090"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631069"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/30/2018
-ms.date: 10/28/2019
+origin.date: 12/27/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 10716f5b39bd37d6befa199de148d8d93b0e2eb1
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 217c675018f074e6f689bf9abe6c53450b19dfd9
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583601"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631084"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm on HDInsight 的示例 Apache Storm 拓扑和组件
 
@@ -34,7 +34,7 @@ ms.locfileid: "72583601"
 | [为 Apache Storm on HDInsight 开发基于 Java 的拓扑][5797064f] |Maven |Java |
 | [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑][16fce2d1] |用于 Visual Studio 的 HDInsight 工具 |C#、Java |
 | [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)][844d1d81] |事件中心 |C# 和 Java |
-| [使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) |事件中心 |Java |
+| [使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) |事件中心 |Java |
 | [使用 Apache Storm on HDInsight 处理事件中心的车辆传感器数据][246ee964] |事件中心、Cosmos DB、Azure 存储 Blob (WASB) |C#、Java |
 | [使用 Apache Storm on HDInsight 从 Azure 事件中心提取、转换及加载 (ETL) 数据到 Apache HBase][b4b68194] |事件中心、HBase |C# |
 | [通过 Apache Storm on HDInsight 使用 Azure 服务的模板 C# Storm 拓扑项目][ce0c02a2] |事件中心、Cosmos DB、SQL 数据库、HBase、SignalR |C#、Java |

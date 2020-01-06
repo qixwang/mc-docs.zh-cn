@@ -3,23 +3,23 @@ title: include 文件
 description: include 文件
 services: billing
 author: rockboyfor
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 origin.date: 07/22/2019
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: cddbf290c06f308e300d9ec09580e7d16b007426
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 492974fee354dfd2feffa57e598d9794108c7c2a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014714"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631723"
 ---
 <!--MOONCAKE: CORRECT ON https://www.azure.cn/pricing-->
 <!--MOONCAKE: CORRECT ON /billing/billing-add-change-azure-subscription-administrator/-->
 
-| Resource | 默认限制 | 最大限制 |
+| 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 每个[订阅](https://www.azure.cn/pricing)的 VM 数 |每个区域 25,000 个<sup>1</sup>。 |每个区域 25,000 个。 |
 | 每个[订阅](https://www.azure.cn/pricing)的 VM 核心总数 |每个区域 20 个<sup>1</sup> | 请联系支持人员。 |
@@ -49,3 +49,5 @@ ms.locfileid: "70014714"
 > 虚拟机核心数存在区域总数限制。 区域大小系列（例如 Dv2 和 F）也存在限制。这些限制是单独实施的。 例如，假设某个订阅在中国东部的 VM 核心数限制为 30 个，即 A 系列的核心数限制为 30，D 系列的核心数限制也为 30。 此订阅可以部署 30 个 A1 VM、30 个 D1 VM，或两者的组合，但总共不能超过 30 个核心。 例如，10 个 A1 VM 和 20 个 D1 VM 就是一种组合。  
 > 
 >
+
+<!-- Update_Description: update meta properties, wording update, update link -->

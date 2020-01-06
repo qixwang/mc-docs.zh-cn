@@ -9,12 +9,12 @@ origin.date: 06/20/2019
 ms.date: 11/25/2019
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: aea1c1a37b1133ab9a31b43a6190754bdfddbd19
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 5f5c6065b03c75c327a1b830b489b7a75716b2e3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328712"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624149"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -49,7 +49,7 @@ Blob 存储最适合用于：
 - 存储用于备份和还原、灾难恢复及存档的数据。
 - 存储数据以供本地或 Azure 托管服务执行分析。
 
-可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Blob 存储中的对象。 用户或客户端应用程序可以通过 URL、[Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](/cli/storage) 或 Azure 存储客户端库访问 Blob。 存储客户端库以多种语言提供，包括 [.NET](https://docs.azure.cn/dotnet/api/overview/storage/client)、[Java](/java/api/storage/clientlibrary)、[Node.js](https://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](https://azure.github.io/azure-storage-php/) 和 [Ruby](https://azure.github.io/azure-storage-ruby)。
+可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Blob 存储中的对象。 用户或客户端应用程序可以通过 URL、[Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](/cli/storage) 或 Azure 存储客户端库访问 Blob。 存储客户端库以多种语言提供，包括 [.NET](https://docs.azure.cn/dotnet/api/overview/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage)、[Node.js](https://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](https://azure.github.io/azure-storage-php/) 和 [Ruby](https://azure.github.io/azure-storage-ruby)。
 
 有关 Blob 存储的详细信息，请参阅 [Blob 存储简介](../blobs/storage-blobs-introduction.md)。
 
@@ -142,7 +142,7 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 
 - [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/storage)
-- [适用于 Java/Android 的 Azure 存储客户端库](/java/api/overview/storage)
+- [适用于 Java/Android 的 Azure 存储客户端库](https://docs.microsoft.com/java/api/overview/azure/storage)
 - [适用于 Node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage)
 - [适用于 Python 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-python)
 - [适用于 PHP 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-php)

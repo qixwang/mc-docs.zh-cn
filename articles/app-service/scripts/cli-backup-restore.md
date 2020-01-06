@@ -1,26 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 从备份中还原 Web 应用 | Azure
-description: Azure CLI 脚本示例 - 从备份中还原 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从备份中还原应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何从备份还原应用。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/07/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: edfd4ee02f5a0074c8d6fb68e2f1618d81b692a9
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 47abb28ff4e8b5854ada8f9189cc956bfec7ad12
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806906"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600390"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>使用 CLI 从备份中还原 Web 应用
 

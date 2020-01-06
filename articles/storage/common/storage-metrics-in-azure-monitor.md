@@ -1,21 +1,20 @@
 ---
 title: Azure Monitor 中的 Azure 存储指标 | Microsoft Docs
 description: 了解 Azure Monitor 提供的新指标。
-services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 origin.date: 09/05/2017
-ms.date: 05/27/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 67d28850710acad930d8ab8515602456b028ca42
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.openlocfilehash: ddcf25ccaffd51385a2f9b457cff5b72494df117
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004032"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624146"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -35,7 +34,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ![在 Azure 门户中访问指标的屏幕截图](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-对于支持维度的指标，可使用所需的维度值筛选指标。 下面的示例演示了如何通过选择“API 名称”维度的值，在特定操作上查看帐户级别的“事务”。
+对于支持维度的指标，可使用所需的维度值筛选指标。 下面的示例演示了如何通过选择“API 名称”维度的值，在特定操作上查看帐户级别的“事务”   。
 
 ![在 Azure 门户中访问包含维度的指标的屏幕截图](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -398,7 +397,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 | **BlobTier** | Azure 存储提供了不同的访问层，允许以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**Hot**：热层</li> <li>**Cool**：冷层</li> <li>**存档**：存档层</li> <li>**Premium**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页 Blob 的层类型</li> <li>**标准**：标准页 Blob 的层类型</li> <li>**Untiered**：常规用途 v1 存储帐户的层类型</li> |
 | **GeoType** | 来自主要或辅助群集的事务。 可用值包括 **Primary** 和 **Secondary**。 从辅助租户读取对象时，该维度会应用到读取访问异地冗余存储 (RA-GRS)。 |
 | **ResponseType** | 事务响应类型。 可用的值包括： <br/> <li>**ClientOtherError**：除描述的错误以外的其他所有客户端错误。 </li> <li>**成功**：请求成功</li> |
-| **ApiName** | 操作的名称。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 有关所有操作名称，请参阅[文档](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
+| **ApiName** | 操作的名称。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 有关所有操作名称，请参阅[文档](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
 | **身份验证** | 事务中所用的身份验证类型。 可用的值包括： <br/> <li>**AccountKey**：事务通过存储帐户密钥进行身份验证。</li> <li>**SAS**：事务通过共享访问签名进行身份验证。</li> <li>**OAuth**：事务通过 OAuth 访问令牌进行身份验证。</li> <li>**Anonymous**：事务以匿名方式请求。 不包括预检请求。</li> <li>**AnonymousPreflight**：事务为预检请求。</li> |
 
 对于支持维度的指标，需要指定维度值才能查看相应的指标值。 例如，如果查看成功响应的 **Transactions** 值，需要使用 **Success** 筛选 **ResponseType** 维度。 或者，如果查看块 Blob 的 **BlobCount** 值，需要使用 **BlockBlob** 筛选 **BlobType** 维度。

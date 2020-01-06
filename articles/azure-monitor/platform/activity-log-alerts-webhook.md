@@ -8,12 +8,12 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 03/31/2017
 ms.date: 6/4/2019
-ms.openlocfilehash: bd54252f7e52e62c77ab460c98f8ca35258523c4
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 9ac23f1dc988b559eeae1af7c44d1a53aae36a16
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970963"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545358"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -117,7 +117,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
                     "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://docs.azure.cn/zh-cn/virtual-network/virtual-network-vnet-plan-design-arm)]",
                     "attackedResourceType":"Virtual Machine"
                 },
-                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
+                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/chinaeast/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
                 "resourceGroupName":"contoso",
                 "resourceProviderName":"Microsoft.Security",
                 "status":"Active",
@@ -264,7 +264,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | conditionType |始终为“事件”。 |
 | name |警报规则的名称。 |
 | id |警报的资源 ID。 |
-| 说明 |创建警报时设置警报说明。 |
+| description |创建警报时设置警报说明。 |
 | subscriptionId |Azure 订阅 ID。 |
 | timestamp |处理请求的 Azure 服务生成事件的时间。 |
 | ResourceId |受影响资源的资源 ID。 |

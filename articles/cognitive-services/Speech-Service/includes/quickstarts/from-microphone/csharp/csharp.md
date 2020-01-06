@@ -1,22 +1,21 @@
 ---
 title: 快速入门：从麦克风中识别语音，C# - 语音服务
 titleSuffix: Azure Cognitive Services
-description: TBD
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 origin.date: 11/07/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: d9726c05d113d48a8cb4b758d47754c12d01b1a1
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 1a44537d4b6360741bf2e5799a08ac4e9e92698e
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390037"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631004"
 ---
 **选择目标环境**
 

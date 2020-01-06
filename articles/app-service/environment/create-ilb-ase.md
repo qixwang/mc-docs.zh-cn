@@ -1,25 +1,19 @@
 ---
-title: 在应用服务环境中创建内部负载均衡器 - Azure
-description: 有关如何创建和使用与 Internet 隔离的 Azure 应用服务环境的详细信息
-services: app-service
-documentationcenter: na
+title: 使用 ARM 创建 ILB ASE
+description: 了解如何使用 Azure 资源管理器模板创建带内部负载均衡器 (ILB ASE) 的应用服务环境。 将应用与 Internet 完全隔离。
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 origin.date: 08/05/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: d09f2b42360ee8bb5803e784a8e8d3dbf7ae1f27
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: mvc
+ms.openlocfilehash: 9ac2571cf8f50bfa970b1541b548f53164c14721
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555964"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600479"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 

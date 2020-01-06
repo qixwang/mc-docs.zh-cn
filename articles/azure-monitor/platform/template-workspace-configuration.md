@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 10/22/2019
 ms.date: 11/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9d5a96c82d20cc37ede53a373b043ed47f2612a8
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 037d6f93f79ec8f85623489ae73d36e98cdbe3ac
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730594"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545362"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -40,7 +40,7 @@ ms.locfileid: "73730594"
 
 下表列出了此示例中使用的资源的 API 版本。
 
-| Resource | 资源类型 | API 版本 |
+| 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
 | 工作区   | workspaces    | 2017-03-15-preview |
 | 搜索      | savedSearches | 2015-03-20 |
@@ -172,7 +172,7 @@ ms.locfileid: "73730594"
     "location": {
       "type": "string",
       "allowedValues": [
-        "China east2",
+        "China East 2",
 
       ]
     },

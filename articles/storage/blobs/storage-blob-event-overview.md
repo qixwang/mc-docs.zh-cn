@@ -4,17 +4,17 @@ description: 使用 Azure 事件网格订阅 Blob 存储事件。
 author: WenJason
 ms.author: v-jay
 origin.date: 01/30/2018
-ms.date: 09/09/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: a51fd7119d64319c9a40cf072fc7f337a8718351
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.openlocfilehash: dbcbbdc8b2016c993c8c21681546ed3a2dc34f2c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209436"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624273"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -51,7 +51,7 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 
 ## <a name="filtering-events"></a>筛选事件
 
-可按事件类型以及已创建或已删除对象的容器名称和 blob 名称来筛选 blob 事件订阅。  可在[创建](/cli/eventgrid/event-subscription?view=azure-cli-latest)事件订阅期间或[以后](/cli/eventgrid/event-subscription?view=azure-cli-latest)将筛选器应用于事件订阅。 事件网格中的使用者筛选器基于“开始时间”和“结束时间”的匹配进行筛选，将含有匹配使用者的事件传送给订阅方。
+可按事件类型以及已创建或已删除对象的容器名称和 blob 名称来筛选 blob 事件订阅。  可在[创建](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)事件订阅期间或[以后](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)将筛选器应用于事件订阅。 事件网格中的使用者筛选器基于“开始时间”和“结束时间”的匹配进行筛选，将含有匹配使用者的事件传送给订阅方。
 
 若要详细了解如何应用筛选器，请参阅[筛选事件网格的事件](/event-grid/how-to-filter-events)。
 

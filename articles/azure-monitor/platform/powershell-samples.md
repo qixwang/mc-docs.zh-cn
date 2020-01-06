@@ -6,18 +6,16 @@ author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 09/14/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 3de63b7ad80e4551e3499744f3a64f204d78a80a
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 0f5e97b824ff297688c373c0a9e1806f9cd2ea63
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730338"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599916"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
 

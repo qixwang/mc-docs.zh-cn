@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 数据工厂批量复制数据 | Microsoft Docs
+title: 批量复制数据
 description: 了解如何使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
 services: data-factory
-documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 origin.date: 01/22/2018
-ms.date: 12/02/2019
-ms.author: v-jay
-ms.openlocfilehash: 58d423cd9f2d4fb086ba5df8591bd9fde5397252
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.date: 01/06/2020
+ms.openlocfilehash: 878eef8c24fb47fedf678f861c6b705e2e94c3fd
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655443"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623885"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
+
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 从较高层面讲，本教程涉及以下步骤：
@@ -64,7 +64,7 @@ ms.locfileid: "74655443"
 
 1. 如果没有 Azure SQL 数据仓库，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)一文了解创建数据仓库的步骤。
 
-2. 在 SQL 数据仓库中创建相应的表架构。 可以使用[迁移实用工具](https://www.microsoft.com/download/details.aspx?id=49100)将架构从 Azure SQL 数据库**迁移**到 Azure SQL 数据仓库。 后面的步骤使用 Azure 数据工厂迁移/复制数据。
+2. 在 SQL 数据仓库中创建相应的表架构。 后面的步骤使用 Azure 数据工厂迁移/复制数据。
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服务访问 SQL 服务器
 
@@ -129,10 +129,7 @@ ms.locfileid: "74655443"
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -168,10 +165,7 @@ ms.locfileid: "74655443"
         "properties": {
             "type": "AzureSqlDW",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
+                "connectionString": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -207,10 +201,7 @@ ms.locfileid: "74655443"
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.chinacloudapi.cn"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.chinacloudapi.cn"
             }
         }
     }

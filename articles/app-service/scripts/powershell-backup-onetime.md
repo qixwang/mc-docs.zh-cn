@@ -1,27 +1,20 @@
 ---
-title: Azure PowerShell 脚本示例 - 备份 Web 应用 | Azure
-description: Azure PowerShell 脚本示例 - 备份 Web 应用
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：备份应用
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何备份应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 origin.date: 10/30/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 8e00fb12acbfe9e5f28a1f51cef5472caed49c89
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 34a72a3e7b76cf3f1d7be9b6a63fda08b7e08b01
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806761"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600314"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>使用 PowerShell 备份 Web 应用
 

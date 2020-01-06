@@ -1,24 +1,23 @@
 ---
-title: Azure 数据工厂中的查找活动 | Microsoft Docs
+title: Azure 数据工厂中的查找活动
 description: 了解如何使用查找活动从外部源查找值。 此输出可进一步由后续活动引用。
 services: data-factory
 documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
-editor: ''
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 06/15/2018
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: d6698817adc7f3a65011cc190c5765c7affa2eeb
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: facdbb06287b408f6bdca29ee46144b15efb41f1
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570368"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624221"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
@@ -55,7 +54,7 @@ ms.locfileid: "67570368"
 
 ## <a name="type-properties"></a>Type 属性
 
-Name | 说明 | 类型 | 必需？
+名称 | 说明 | 类型 | 必需？
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”  部分中获取详细信息。 | 键/值对 | 是
 source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”  部分中获取详细信息。 | 键/值对 | 是
@@ -240,10 +239,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 否�
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>;EndpointSuffix=core.chinacloudapi.cn",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>;EndpointSuffix=core.chinacloudapi.cn"
         }
     },
         "name": "AzureStorageLinkedService"
@@ -260,10 +256,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 否�
         "type": "AzureSqlDatabase",
         "description": "",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;",
-                "type": "SecureString"
-            }
+                        "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
         }
     }
 }

@@ -7,13 +7,13 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 origin.date: 11/17/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 1d9ec66370bde11b7ec2d73f5e7b0dd370bbf2af
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: fe78ab40353c26495149453f260184e198b4fef1
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336349"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630950"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 
@@ -316,10 +316,10 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
         | mv-expand events = Records
         | where isnotempty(events.metricName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             MetricName = tostring(events.metricName),
-            Count = toint(events.count),
+            Count = toint(events['count']),
             Total = todouble(events.total),
             Minimum = todouble(events.minimum),
             Maximum = todouble(events.maximum),

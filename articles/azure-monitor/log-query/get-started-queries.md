@@ -10,22 +10,19 @@ ms.topic: conceptual
 origin.date: 10/24/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 3c412b8470b13e072e47ac798c3bf583c7200417
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 577e5a4977a9e65fb3e8177d35254f822cf11169
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730458"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599760"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
-
 > [!NOTE]
-> 在完成本教程之前，应当先完成 [Azure Monitor Log Analytics 入门](get-started-portal.md)。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
-本教程介绍如何在 Azure Monitor 中编写日志查询。 具体内容包括：
+在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
 - 了解查询结构
 - 将查询结果排序

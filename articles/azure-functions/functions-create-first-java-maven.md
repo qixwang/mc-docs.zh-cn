@@ -2,19 +2,15 @@
 title: 使用 Java 和 Maven 将函数发布到 Azure
 description: 通过 Java 和 Maven 创建一个 HTTP 触发的函数，并将其发布到 Azure。
 author: rloutlaw
-manager: gwallace
-ms.service: azure-functions
 ms.topic: quickstart
-origin.date: 08/10/2018
-ms.date: 10/28/2019
-ms.author: v-junlch
+ms.date: 12/31/2019
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: efc07fa8d3495762dd5a59450815140d9c659b16
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: da8db2395978306a9699ba79b7c14e7de4f80acf
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034449"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624211"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven 创建函数并将其发布到 Azure
 

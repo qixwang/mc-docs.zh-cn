@@ -9,12 +9,12 @@ origin.date: 04/03/2017
 ms.date: 02/16/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 1a0d4e0aaa329b00747ebcba8e7ef574914c79a2
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: c6dcdbe798f9ece993b067f6fda98039c660b497
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982055"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545364"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中对经典指标警报调用 Webhook
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
@@ -59,7 +59,7 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
         "resourceName": "mysite1",
         "resourceType": "microsoft.foo/sites",
         "resourceId": "/subscriptions/s1/resourceGroups/chinaeast/providers/microsoft.foo/sites/mysite1",
-        "resourceRegion": "centralus",
+        "resourceRegion": "China East 2",
         "portalLink": "https://portal.azure.cn/#resource/subscriptions/s1/resourceGroups/chinaeast/providers/microsoft.foo/sites/mysite1"
     },
     "properties": {
@@ -77,9 +77,9 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
 | name |Y | |警报名称。 |
-| 说明 |Y | |警报的说明。 |
+| description |Y | |警报的说明。 |
 | conditionType |Y |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
-| 条件 |Y | |要基于 **conditionType** 值检查的特定字段。 |
+| condition |Y | |要基于 **conditionType** 值检查的特定字段。 |
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
 | metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
 | metricValue |用于指标警报 | |导致警报的实际度量值。 |

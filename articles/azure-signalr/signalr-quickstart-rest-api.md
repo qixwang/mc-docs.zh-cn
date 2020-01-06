@@ -7,12 +7,12 @@ ms.topic: quickstart
 origin.date: 03/01/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 57663779c7bd15aa9fdbfb545c38ac2284d59342
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0e2151f0513193f704fb5d6af94b190919544dc9
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334860"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600581"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入门：从控制台应用广播实时消息
 
@@ -142,38 +142,38 @@ API | `1.0-preview` | `1.0`
 
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
-`1.0-preview` | `POST` | `https://<instance-name>.service.signalr.cn:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
-`1.0` | `POST` | `https://<instance-name>.service.signalr.cn/api/v1/hubs/<hub-name>` | 同上
+`1.0-preview` | `POST` | `https://<instance-name>.service.signalr.azure.cn:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
+`1.0` | `POST` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>` | 同上
 
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>广播到组
 
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
-`1.0-preview` | `POST` | `https://<instance-name>.service.signalr.cn:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
-`1.0` | `POST` | `https://<instance-name>.service.signalr.cn/api/v1/hubs/<hub-name>/groups/<group-name>` | 同上
+`1.0-preview` | `POST` | `https://<instance-name>.service.signalr.azure.cn:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
+`1.0` | `POST` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>` | 同上
 
 <a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>发送到特定用户
 
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
-`1.0-preview` | `POST` | `https://<instance-name>.service.signalr.cn:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
-`1.0` | `POST` | `https://<instance-name>.service.signalr.cn/api/v1/hubs/<hub-name>/users/<user-id>` | 同上
+`1.0-preview` | `POST` | `https://<instance-name>.service.signalr.azure.cn:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
+`1.0` | `POST` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/users/<user-id>` | 同上
 
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>将用户添加到组
 
 版本 | API HTTP 方法 | 请求 URL
 --- | --- | ---
-`1.0` | `PUT` | `https://<instance-name>.service.signalr.cn/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>从组中删除用户
 
 版本 | API HTTP 方法 | 请求 URL
 --- | --- | ---
-`1.0` | `DELETE` | `https://<instance-name>.service.signalr.cn/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.azure.cn/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

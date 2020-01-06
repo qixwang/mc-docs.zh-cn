@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 9d9f129d0027760fe5ea1d1c09f63c7ce54a11ad
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.date: 01/06/2020
+ms.openlocfilehash: 8b715fc8e15da9b1503ee5c50cea5201ea5256fa
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142096"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624300"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -41,7 +41,7 @@ ms.locfileid: "73142096"
 - 主服务器应使用 MySQL InnoDB 引擎。
 - 用户必须具有权限才能在主服务器上配置二进制日志记录和创建新用户。
 - 如果主服务器启用了 SSL，请确保为域提供的 SSL CA 证书已包含在 `mysql.az_replication_change_master` 存储过程中。 请参阅以下[示例](/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
-- 确保主服务器的 IP 地址已添加到 Azure Database for MySQL 副本服务器的防火墙规则中。 使用 [Azure 门户](/howto-manage-firewall-using-portal)或 [Azure CLI](/mysql/howto-manage-firewall-using-cli) 更新防火墙规则。
+- 确保主服务器的 IP 地址已添加到 Azure Database for MySQL 副本服务器的防火墙规则中。 使用 [Azure 门户](/mysql/howto-manage-firewall-using-portal)或 [Azure CLI](/mysql/howto-manage-firewall-using-cli) 更新防火墙规则。
 - 确保托管主服务器的计算机在端口 3306 上允许入站和出站流量。
 - 请确保主服务器具有**公共 IP 地址**，DNS 可公开访问，或具有完全限定的域名 (FQDN)。
 

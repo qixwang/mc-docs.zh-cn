@@ -1,43 +1,31 @@
 ---
-title: 创建 Node.js Web 应用 - Azure 应用服务 | Azure
-description: 数分钟内在 Azure 应用服务 Web 应用中部署第一个 Node.js Hello World。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 快速入门：创建 Node.js Web 应用
+description: 在数分钟内将第一个 Node.js Hello World 部署到 Azure 应用服务。 我们使用 ZIP 包进行部署，这是部署到应用服务时使用的多种方法中的一种。
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-origin.date: 02/21/2019
-ms.date: 09/03/2019
+origin.date: 08/23/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
+ms.custom: mvc, devcenter
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 5e710c8d9f6b83a3af3b3a98188bc854ffa804e8
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 23f09646017f12e2f6ee6187cf4da7bbbc3308e6
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555999"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600515"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
 
-
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure 应用服务中。 可以使用 [Azure CLI](/cli/install-azure-cli) 在本地运行这些命令。 使用 [az webapp deployment source config-zip](/cli/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) 命令将示例 Node.js 代码部署到 Web 应用。  
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure 应用服务中。 可以使用 [Azure CLI](/cli/install-azure-cli) 在本地运行这些命令。 使用 [az webapp deployment source config-zip](/cli/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) 命令将示例 Node.js 代码部署到 Web 应用。  
 
 ![在 Azure 中运行的示例应用](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
 可以在 Mac、Windows 或 Linux 计算机上执行此处的步骤。 完成这些步骤需要大约三分钟。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-
 
 ## <a name="download-the-sample"></a>下载示例
 

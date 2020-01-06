@@ -10,12 +10,12 @@ origin.date: 04/04/2019
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: c424c469ccba1fc8bd72cfe170d5de6d326f8a53
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.openlocfilehash: a11a6ea375adf8a9b5c52bc2d98ad8eaffc3612d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65668830"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624279"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
 
@@ -34,7 +34,7 @@ ms.locfileid: "65668830"
 | [New-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationschedule) |创建新计划。 |
 | [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule) |删除计划。 |
 | [Set-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationschedule) |设置现有计划的属性。 |
-| [Get-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |检索计划 Runbook。 |
+| [Get-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |检索计划 Runbook。 |
 | [Register-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |将 Runbook 与计划相关联。 |
 | [Unregister-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |将 Runbook 与计划取消关联。 |
 
@@ -47,19 +47,19 @@ ms.locfileid: "65668830"
 
 ### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>在 Azure 门户中创建新计划
 
-1. 在 Azure 门户中，从你的自动化帐户中，从左侧的“共享资源”部分下选择“计划”。
-2. 单击页面顶部的“添加计划”。
-3. 在“新建计划”窗格中，键入新计划的“名称”和（可选）“说明”。
-4. 通过选择“一次”或“定期”来选择该计划是运行一次，还是按计划重复运行。 如果选择“一次”，请指定“开始时间”，并单击“创建”。 如果选择“定期”，请指定“开始时间”，并且在“重复间隔”中选择想要 runbook 重复运行的频率（按“小时”、按“天”、按“周”或按“月”）。
-    1. 如果选择“周”，则会显示一周中可供选择的日期列表。 根据需要选择天数。 计划的第一次运行将在开始时间之后选择的第一天进行。 例如，若要选择周末计划，请选择“星期六”和“星期日”。
+1. 在 Azure 门户中，从你的自动化帐户中，从左侧的“共享资源”部分下选择“计划”。  
+2. 单击页面顶部的“添加计划”  。
+3. 在“新建计划”  窗格中，键入新计划的“名称”  和（可选）“说明”  。
+4. 通过选择“一次”  或“定期”  来选择该计划是运行一次，还是按计划重复运行。 如果选择“一次”  ，请指定“开始时间”  ，并单击“创建”  。 如果选择“定期”，请指定“开始时间”，并且在“重复间隔”中选择想要 runbook 重复运行的频率（按“小时”、按“天”、按“周”或按“月”）        。
+    1. 如果选择“周”，则会显示一周中可供选择的日期列表  。 根据需要选择天数。 计划的第一次运行将在开始时间之后选择的第一天进行。 例如，若要选择周末计划，请选择“星期六”和“星期日”   。
 
        ![设置周末重复计划](../media/schedules/week-end-weekly-recurrence.png)
 
-    2. 如果选择“月”，则会看到不同的选项。 对于“每月进行次数”选项，请选择“每月天数”或“每周天数”。 如果选择“月份日期”，则会显示一个可根据需要选择天数的日历。 如果选择当月不存在的日期（例如 31 日），则计划将不会运行。 如果希望计划在最后一天运行，请在“在月份的最后一天运行”下选择“是”。 如果选择“每周天数”，则会显示“重复间隔”选项。 选择“第一”、“第二”、“第三”、“第四”或“最后”。 最后选择一天进行重复。
+    2. 如果选择“月”，则会看到不同的选项  。 对于“每月进行次数”选项，请选择“每月天数”或“每周天数”    。 如果选择“月份日期”，则会显示一个可根据需要选择天数的日历  。 如果选择当月不存在的日期（例如 31 日），则计划将不会运行。 如果希望计划在最后一天运行，请在“在月份的最后一天运行”下选择“是”   。 如果选择“每周天数”，则会显示“重复间隔”选项   。 选择“第一”、“第二”、“第三”、“第四”或“最后”      。 最后选择一天进行重复。
 
        ![在每月 1 号、15 号和最后一天运行的计划](../media/schedules/monthly-first-fifteenth-last.png)
 
-5. 完成后，单击“创建”。
+5. 完成后，单击“创建”  。
 
 ### <a name="to-create-a-new-schedule-with-powershell"></a>使用 PowerShell 创建新计划
 
@@ -119,10 +119,10 @@ New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st,
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>使用 Azure 门户将计划链接到 Runbook
 
-1. 在 Azure 门户中，从你的自动化帐户中，在左侧的“流程自动化”部分下选择“Runbook”。
+1. 在 Azure 门户中，从你的自动化帐户中，在左侧的“流程自动化”部分下选择“Runbook”   。
 2. 单击要计划的 Runbook 的名称。
 3. 如果 Runbook 当前未链接到计划，则系统会提供“创建新计划”或“链接到现有计划”选项。
-4. 如果 Runbook 有参数，可以选择选项“修改运行设置(默认值:Azure)”，此时会显示“参数”窗格，可在其中输入信息。
+4. 如果 Runbook 有参数，可以选择选项“修改运行设置(默认值:Azure)”  ，此时会显示“参数”  窗格，可在其中输入信息。
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>使用 PowerShell 将计划链接到 Runbook
 
@@ -153,16 +153,16 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 ### <a name="to-disable-a-schedule-from-the-azure-portal"></a>从 Azure 门户禁用计划
 
-1. 在 Azure 门户中，从你的自动化帐户中，从左侧的“共享资源”部分下选择“计划”。
+1. 在 Azure 门户中，从你的自动化帐户中，从左侧的“共享资源”部分下选择“计划”。  
 2. 单击某个计划的名称以打开详细信息窗格。
-3. 将“已启用”更改为“否”。
+3. 将“已启用”更改为“否”   。
 
 > [!NOTE]
 > 若要禁用开始时间已过去的计划，必须将开始日期更改为将来的某个时间，然后保存计划。
 
 ### <a name="to-disable-a-schedule-with-powershell"></a>使用 PowerShell 禁用计划
 
-可使用 [Set-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet 更改现有计划的属性。 若要禁用计划，请将“IsEnabled”参数指定为“false”。
+可使用 [Set-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet 更改现有计划的属性。 若要禁用计划，请将“IsEnabled”参数指定为“false”   。
 
 以下示例命令演示了如何使用 Azure Resource Manager cmdlet 禁用 Runbook 的计划。
 

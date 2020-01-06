@@ -1,28 +1,20 @@
 ---
-title: 创建 Node.js Web 应用 - Azure 应用服务 | Azure
-description: 数分钟内在 Azure 应用服务 Web 应用中部署第一个 Node.js Hello World。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 快速入门：创建 Node.js Web 应用
+description: 在数分钟内将第一个 Node.js Hello World 部署到 Azure 应用服务。 我们使用 Visual Studio Code 进行部署，这是部署到应用服务时使用的多种方法中的一种。
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 origin.date: 09/30/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
+ms.custom: mvc, devcenter
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: a44ba85067bdebe6be02ac17d76636ca3d777f4f
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 038f534aede40323565809acd4d7993d8b64a4f3
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555865"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600512"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用 
 

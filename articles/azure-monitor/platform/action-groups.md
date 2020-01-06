@@ -2,19 +2,17 @@
 title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 8/19/2019
 ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 9b073a8a2ed4f69a5fa146ed52a1215ae5ea91e9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 85bd792fa5b2c4bf872ffe5d51b4be13c89cd92d
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839014"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599865"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。

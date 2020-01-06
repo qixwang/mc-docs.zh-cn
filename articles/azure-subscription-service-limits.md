@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 05/30/2019
 ms.date: 09/18/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6081d0ee776e2c59011306e5d83f9f61d116446f
-ms.sourcegitcommit: ea355470e1b119b4fd6a08195bad37f46bb00061
+ms.openlocfilehash: ebc049202e420d80e4b42db3ec1b993b6d6dfa27
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71151852"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624097"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将进行扩展和更新，以涵盖更多服务。
@@ -165,7 +165,7 @@ ms.locfileid: "71151852"
 
 ### <a name="storage-limits"></a>存储限制
 <!--like # storage accts -->
-[!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../includes/azure-storage-account-limits-standard.md)]
 
 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
 

@@ -1,20 +1,19 @@
 ---
 title: 从 SQL 到 Azure Monitor 日志查询备忘单 | Microsoft Docs
 description: 帮助熟悉 SQL 的用户在 Azure Monitor 中编写日志查询。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
-ms.author: lingliwu
 manager: digimobile
 origin.date: 08/21/2018
 ms.date: 02/20/2019
-ms.openlocfilehash: b15e627bed29a175ec88bf07c00956983888a584
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.author: lingliwu
+ms.openlocfilehash: 7c9495ef176025a4f1deec02d0d04e5ccc283509
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730322"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599891"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>从 SQL 到 Azure Monitor 日志查询备忘单 
 
