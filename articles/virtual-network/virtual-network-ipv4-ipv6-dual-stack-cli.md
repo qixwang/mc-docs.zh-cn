@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 07/08/2019
-ms.date: 11/25/2019
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ef5ec5c0fe0372ef066610f61867b93a78b9bd1a
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: 44e26ac544281c1d90add12a914f204e0aa50d24
+ms.sourcegitcommit: 9a75e933d5a76164bc4d903439d083c9ee7a23a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203732"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737378"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>部署使用基本负载均衡器的 IPv6 双堆栈应用程序 - CLI
 
@@ -37,7 +37,7 @@ ms.locfileid: "74203732"
 
 如果你决定在本地安装并使用 Azure CLI，本快速入门要求使用 Azure CLI 2.0.49 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要使用 Azure 虚拟网络 IPv6 功能，必须使用 Azure CLI 按如下所示配置订阅：
 
 <!--MOONCAKE: REMOVE REGISTER-->
@@ -143,7 +143,12 @@ az network lb address-pool create \
 --name dsLbBackEndPool_v6  \
 --resource-group DsResourceGroup01
 ```
+### <a name="create-a-health-probe"></a>创建运行状况探测器
+使用 [az network lb probe create](https://docs.azure.cn/cli/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 创建运行状况探测，以监视虚拟机的运行状况。 
 
+```azurecli
+az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
+```
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需的源端口和目标端口。 
@@ -159,6 +164,7 @@ az network lb rule create \
 --protocol Tcp  \
 --frontend-port 80  \
 --backend-port 80  \
+--probe-name dsProbe \
 --backend-pool-name dsLbBackEndPool_v4
 
 az network lb rule create \
@@ -169,6 +175,7 @@ az network lb rule create \
 --protocol Tcp  \
 --frontend-port 80 \
 --backend-port 80  \
+--probe-name dsProbe \
 --backend-pool-name dsLbBackEndPool_v6
 
 ```
@@ -364,10 +371,10 @@ az vm create \
 
     ![Azure 中的 IPv6 双堆栈虚拟网络](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> 当前版本的 Azure 虚拟网络 IPv6 在 Azure 门户中以只读的形式提供。
+    > [!NOTE]
+    > 当前版本的 Azure 虚拟网络 IPv6 在 Azure 门户中以只读的形式提供。
 
-<!--MOONCAKE: REMOVE preview -->
+    <!--MOONCAKE: REMOVE preview -->
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -381,5 +388,4 @@ az vm create \
 
 在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个基本负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 若要详细了解 Azure 虚拟网络中的 IPv6 支持，请参阅 [Azure 虚拟网络 IPv6 是什么？](ipv6-overview.md)
 
-<!-- Update_Description: new article about virtual network ipv4 ipv6 dual stack cli -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->
