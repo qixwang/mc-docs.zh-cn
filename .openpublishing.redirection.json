@@ -21430,7 +21430,13 @@
       "source_path": "articles/azure-stack/operator/azure-stack-update-plan.md",
       "redirect_url": "/azure-stack/operator/release-notes-checklist",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/dns/private-dns-portal.md",
+      "redirect_url": "/dns/private-dns-getstarted-portal",
+      "redirect_document_id": false
     }
+
 
 
   ]
