@@ -8,26 +8,26 @@ manager: digimobile
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-origin.date: 09/29/2019
-ms.date: 10/31/2019
+origin.date: 11/11/2019
+ms.date: 1/2/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e1660cd088338da1d1e2de32dc3357d921411ff3
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 533792c2c76293e3d5e214dcf08fa16736f93c93
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884714"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854215"
 ---
-# <a name="list-entity"></a>列表实体 
+# <a name="list-entity"></a>列表实体
 
-列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 
+列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议  。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
 
-列表实体不进行机器学习。 它是确切的文本匹配。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。 
+列表实体不进行机器学习。 它是确切的文本匹配。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。
 
 **如果文本数据具有以下特征，则非常适合使用此实体：**
 
 * 是已知的集。
-* 不经常更改。 如果需要经常更改列表或希望列表自行扩展，则使用短语列表提升的简单实体是更好的选择。 
+* 不经常更改。 如果需要经常更改列表或希望列表自行扩展，则使用短语列表提升的简单实体是更好的选择。
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
 * 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 使用列表实体无法解析模糊匹配、不区分大小写、词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "74884714"
               "avacado"
           ]
       }
-  ]  
+  ]
   ```
 
 ## <a name="example-json-response"></a>示例 JSON 响应
@@ -131,13 +131,9 @@ ms.locfileid: "74884714"
 }
 ```
 
-* * * 
+* * *
 
 |数据对象|实体名称|Value|
 |--|--|--|
 |列表实体|`Cities`|`paris`|
 
-
-## <a name="next-steps"></a>后续步骤
-
-在本[教程](luis-quickstart-intent-and-list-entity.md)中，了解如何使用**列表实体**从已知项的列表中提取完全匹配的文本。 

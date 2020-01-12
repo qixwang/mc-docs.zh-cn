@@ -12,16 +12,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/04/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: bca79d73a31554c7adfbb1f81b6d0d7fffed06e0
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: ada75aff63a600c15fee4f9ab104abcc2945c818
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020095"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737737"
 ---
 # <a name="usage-connectivity-errors"></a>使用情况连接错误
 
@@ -56,7 +56,7 @@ Azure Stack 使用情况数据通过 Azure Stack 中的 [*Azure Bridge* 组件](
 | 未授权               | Azure Bridge 无法将数据推送到 Azure 中的使用情况服务，因为 Azure 服务无法对 Azure Stack 网桥进行身份验证。 | 检查注册资源是否已修改，如果是，请重新注册 Azure Stack。 <br><br> 有时，Azure Stack 与 Azure AD 之间的时间同步问题会导致此错误。 在此情况下，请确保 Azure Stack 中 XRP VM 的时间与 Azure AD 同步。 |
 |                            |                                                                                                                                                   |                                                                                                                                                                                                                                                                                                    |
 
-此外，可能需要遵循[这些步骤](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)来提供 Azure Bridge、WAS 和 WASPublic 组件的日志文件。
+此外，可能需要遵循[这些步骤](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)来提供 Azure Bridge、WAS 和 WASPublic 组件的日志文件。
 
 ## <a name="next-steps"></a>后续步骤
 

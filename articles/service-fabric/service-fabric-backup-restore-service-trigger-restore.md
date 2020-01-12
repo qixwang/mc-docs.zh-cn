@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中还原备份 | Azure
+title: 在 Azure Service Fabric 中还原备份
 description: 使用 Service Fabric 中的定期备份和还原功能从应用程序数据的备份还原数据。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 10/30/2018
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4339d547ee22a3eb9241f8cbb3ae28863a5dde81
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9b7bfee1f365f6aa6244fe4237e36fe4145abd6f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336367"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742445"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
 
@@ -33,7 +24,7 @@ ms.locfileid: "75336367"
 - **数据丢失案例**：服务被意外删除或损坏。 例如，管理员错误地删除了服务。
 - **数据损坏案例**：服务中的 Bug 导致数据损坏。 例如，当某个服务代码升级程序将错误数据写入到可靠集合时，可能会发生数据损坏。 在此情况下，可能需要将代码和数据都还原到先前的状态。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 若要触发还原，必须为群集启用故障分析服务 (FAS) 
 - 备份还原服务 (BRS) 已创建备份。 

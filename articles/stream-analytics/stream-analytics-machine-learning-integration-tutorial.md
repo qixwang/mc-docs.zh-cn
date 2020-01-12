@@ -1,20 +1,19 @@
 ---
 title: Azure 流分析与 Azure 机器学习的集成
 description: 本文介绍如何使用用户定义的函数快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 08/09/2019
+origin.date: 06/11/2019
 ms.date: 11/19/2019
-ms.openlocfilehash: b73893ea2c79a6226a73e5c692adf09a3f3922a4
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 694d6521e4c3bae63cbaff312a9349e6ebaa4224
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528091"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856901"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>使用 Azure 流分析和 Azure 机器学习工作室（经典）执行情绪分析（预览）
 本文介绍如何快速设置集成了 Azure 机器学习工作室（经典）的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
@@ -36,7 +35,7 @@ ms.locfileid: "74528091"
 
 ![流分析机器学习集成概述](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始之前，请确保具有以下各项：
 
 * 一个有效的 Azure 订阅。
@@ -70,7 +69,7 @@ ms.locfileid: "74528091"
 
 6. 在“容器”边栏选项卡中，选择新容器，这将打开该容器的边栏选项卡。 
 
-7. 单击“上传” 。 
+7. 单击“上传”。 
 
     ![容器的“上传”按钮](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
@@ -88,7 +87,7 @@ ms.locfileid: "74528091"
    
    ![流分析机器学习, 打开机器学习工作室](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
-3. 登录并转到工作区。 选择一个位置。
+3. 登录以转到工作区。 选择一个位置。
 
 4. 单击页面底部的“运行”  。 进程将运行，这将花费大约一分钟。
 
@@ -212,7 +211,7 @@ ms.locfileid: "74528091"
 
     该查询调用前面创建的函数 (`sentiment`) 来对输入中的每条推文执行情绪分析。 
 
-4. 单击“保存”  ，保存查询。
+4. 单击“保存”  以保存查询。
 
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>启动流分析作业并检查输出

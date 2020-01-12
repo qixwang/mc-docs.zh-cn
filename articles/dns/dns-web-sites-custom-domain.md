@@ -5,15 +5,15 @@ services: dns
 author: WenJason
 ms.service: dns
 ms.topic: tutorial
-origin.date: 2/19/2019
-ms.date: 03/18/2019
+origin.date: 3/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.openlocfilehash: 56b119c0c1b558f529035e816d38072fcfc6f9ca
-ms.sourcegitcommit: cf8ad305433d47f9a6760f7a91ee361dc01573db
+ms.openlocfilehash: 5447bfe41ebd34a7608369c013be0cbadffffc0d
+ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502592"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777445"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -42,7 +42,7 @@ ms.locfileid: "59502592"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -183,3 +183,9 @@ set-AzWebApp `
 
 当不再需要本教程中创建的资源时，可以删除 **myresourcegroup** 资源组。
 
+## <a name="next-steps"></a>后续步骤
+
+了解如何创建 Azure DNS 专用区域。
+
+> [!div class="nextstepaction"]
+> [Azure DNS 专用区域入门（使用 PowerShell）](private-dns-getstarted-powershell.md)

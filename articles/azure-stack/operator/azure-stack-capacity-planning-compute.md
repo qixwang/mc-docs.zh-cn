@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/16/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
-ms.openlocfilehash: df206c4f14086ddecd772754fdb893abe043e30f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 18abe3e0e9db2fef426fad6152c3993a6efdcdfa
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020313"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737811"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack 计算
 
@@ -112,7 +112,7 @@ Azure Stack 旨在让已成功预配的 VM 持续运行。 例如，如果某台
 
 **问**：租户 VM 必须处于何种状态才会消耗内存？
 
-v：除了运行 VM 以外，任何在结构上登陆的 VM 也消耗内存。 这意味着处于“正在创建”、“失败”状态的 VM 或从来宾内部关闭的 VM（而不是从门户/powershell/cli 停止（解除分配）的 VM）将消耗内存。
+**答**：除了运行 VM 以外，任何在结构上登陆的 VM 也消耗内存。 这意味着处于“正在创建”、“失败”状态的 VM 或从来宾内部关闭的 VM（而不是从门户/powershell/cli 停止（解除分配）的 VM）将消耗内存。
 
 **问**：我有一个四主机 Azure Stack。 我的租户中有 3 个 VM，它们各自消耗 56 GB RAM (D5_v2)。 其中一个 VM 的大小调整为 112 GB RAM (D14_v2)，仪表板上的可用内存报告导致容量边栏选项卡上出现 168 GB 的用量高峰。 后续将另外两个 D5_v2 VM 的大小调整为 D14_v2 时，各自只导致增加 56 GB 的 RAM。 为什么会这样？
 

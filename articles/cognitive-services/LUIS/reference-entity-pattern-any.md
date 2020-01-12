@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ad2df11ddbf68f7f28910dbc4c0549c51d844a36
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 00f374b9394bcc6a6a4beedfe4f5e23bb77fc124
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884706"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857315"
 ---
 # <a name="patternany-entity"></a>Pattern.any 实体 
 
@@ -106,7 +106,3 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ```
 
 * * * 
-
-## <a name="next-steps"></a>后续步骤
-
-在本[教程](luis-tutorial-pattern-any.md)中，对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，我们使用 **Pattern.any** 实体从这些话语中提取数据。

@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MariaDB 关系数据库服务概述
+title: 概述 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 服务，这是 Microsoft 云中基于 MySQL 社区版的关系数据库服务。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-origin.date: 11/25/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: 21b068b01bdeaa70d2e0bc9254d10f952599e93c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+origin.date: 12/02/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 026a6b038e6177eabff59a1bad7fed370e2907d5
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838612"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776733"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
 
@@ -54,7 +54,7 @@ Azure 行业领先的 99.99% 可用性 SLA 由 Azure 管理的数据中心的全
 
 ## <a name="secure-your-data"></a>保护数据
 
-Azure 数据库服务沿袭了 Azure Database for MariaDB 的若干数据安全性功能。 Azure Database for MariaDB 提供的功能可以限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.trustcenter.cn/zh-cn/security/default.html)。 有关 Azure Database for MySQL 安全功能的详细信息，请参阅[安全概述](concepts-security.md)。
+Azure 数据库服务沿袭了 Azure Database for MariaDB 的若干数据安全性功能。 Azure Database for MariaDB 提供的功能可以限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.trustcenter.cn/zh-cn/security/default.html)。 有关 Azure Database for MariaDB 安全功能的详细信息，请参阅[安全概述](concepts-security.md)。
 
 ## <a name="contacts"></a>联系人
 

@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析地理空间函数的简介
 description: 本文介绍了 Azure 流分析作业中使用的地理空间函数。
-services: stream-analytics
 author: rockboyfor
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/06/2018
 ms.date: 08/06/2019
-ms.openlocfilehash: 5fe24ab843bf7f97830084a6f780ca7f06067f1b
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 1199adb85e0041e4440a03508500717636aebff2
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674819"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856960"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>流分析地理空间函数的简介
 

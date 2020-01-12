@@ -1,26 +1,16 @@
 ---
 title: 升级群集的 Azure Service Fabric 版本
 description: 升级运行 Service Fabric 群集的 Service Fabric 代码和/或配置，包括设置群集更新模式、升级证书、添加应用程序端口、执行操作系统修补，等等。 执行升级时可以预期什么？
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/12/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 51645dbc9955aa0eaeb938f6038343abd080e3a2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: c0540cd0cc70678d41c137d7f7253bb19909af70
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335142"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742320"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升级群集的 Service Fabric 版本
 
@@ -45,7 +35,7 @@ ms.locfileid: "75335142"
 在实时群集上可以利用管理经验将群集设置为自动或手动模式。 
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>在设置为手动模式的群集上，通过门户升级到新版本。
-若要升级到新版本，只需从下拉列表中选择可用的版本并保存即可。 结构升级会被自动启动。 升级过程中遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
+若要升级到新版本，只需从下拉列表中选择可用的版本并保存即可。 结构升级自动开始。 升级过程中遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
 
 如果不符合现行的群集运行状况策略，则回滚升级。 请在本文档中向下滚动，详细了解如何设置这些自定义运行状况策略。 
 
@@ -59,7 +49,7 @@ ms.locfileid: "75335142"
 ![ARMUpgradeMode][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>在设置为手动模式的群集上，通过 Resource Manager 模板升级到新版本。
-当群集处于手动模式时，要升级到新版本，请将“clusterCodeVersion”更改为支持的版本，然后部署该版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
+当群集处于手动模式时，要升级到新版本，请将“clusterCodeVersion”更改为支持的版本，然后部署该版本。 部署模板时，自动开始结构升级。 升级过程中遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
 
 如果不符合现行的群集运行状况策略，则回滚升级。  
 
@@ -121,9 +111,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
+* 了解如何自定义某些 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)
 * 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
-* 了解[应用程序升级](service-fabric-application-upgrade.md)
+* 了解 [应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 

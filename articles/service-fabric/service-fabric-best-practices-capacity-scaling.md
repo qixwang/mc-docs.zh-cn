@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 的容量规划和缩放 | Azure
+title: Azure Service Fabric 的容量规划和缩放
 description: 有关规划和缩放 Service Fabric 群集与应用程序的最佳做法。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 04/25/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a3dfbf85bd3439c9464512f898d204e36497955b
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 27f0dc7907b8275359b538436975b353610b9f17
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174139"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742442"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
@@ -231,7 +222,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 另一个资源位于 Microsoft.ServiceFabric/clusters 资源中的 `nodeTypes` 下： 
 
-<!--Not Available on [Microsoft.ServiceFabric/clusters resource](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.servicefabric/2018-02-01/clusters)-->
+<!--Not Available on [Microsoft.ServiceFabric/clusters resource](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters)-->
 
 ```json
 "nodeTypes": [
@@ -250,4 +241,4 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png
 
-<!--Update_Description: wording update, wording update -->
+<!-- Update_Description: update meta properties, wording update -->

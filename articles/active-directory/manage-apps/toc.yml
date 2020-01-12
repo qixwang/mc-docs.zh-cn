@@ -1,60 +1,55 @@
-items:
 - name: 应用程序管理文档
   href: index.yml
 - name: 快速入门
-  items:
-  - name: 查看租户应用 - 门户
-    href: view-applications-portal.md
   expanded: true
+  items:
+    - name: 查看租户应用 - 门户
+      href: view-applications-portal.md
 - name: 操作指南
   items:
-  - name: 云应用集成
-    items:
-    - name: 更改名称或徽标
-      href: change-name-or-logo-portal.md
-  - name: 应用程序访问
-    items:
-    - name: 应用程序类型
-      href: application-types.md
-    - name: 用于将用户和组分配到应用的方法
-      href: methods-for-assigning-users-and-groups.md
-    - name: 将用户分配到应用
-      href: assign-user-or-group-access-portal.md
-    - name: 分配了意外的用户
-      href: ways-users-get-assigned-to-applications.md
-    - name: 删除用户或组访问权限
-      href: remove-user-or-group-access-portal.md
-    - name: 禁用用户登录
-      href: disable-user-sign-in-portal.md
-  - name: 排查用户登录问题
-    items:
-    - name: 意外的许可提示
-      href: application-sign-in-unexpected-user-consent-prompt.md
-    - name: “用户同意”错误
-      href: application-sign-in-unexpected-user-consent-error.md
-    - name: 登录到 Microsoft 应用时出现问题
-      href: application-sign-in-problem-first-party-microsoft.md
-    - name: 登录自定义开发的应用时出现的问题
-      href: application-sign-in-problem-custom-dev.md
+    - name: 云应用集成
+      items:
+        - name: 更改名称或徽标
+          href: change-name-or-logo-portal.md
+    - name: 分配用户和管理对应用的访问权限
+      items:
+        - name: 授予租户范围的管理员许可
+          href: grant-admin-consent.md
+        - name: 应用程序类型
+          href: application-types.md
+        - name: 用于将用户和组分配到应用的方法
+          href: methods-for-assigning-users-and-groups.md
+        - name: 将用户分配到应用
+          href: assign-user-or-group-access-portal.md
+        - name: 分配了意外的用户
+          href: ways-users-get-assigned-to-applications.md
+        - name: 删除用户或组访问权限
+          href: remove-user-or-group-access-portal.md
+        - name: 禁用用户登录
+          href: disable-user-sign-in-portal.md
+    - name: 排查用户登录问题
+      items:
+        - name: 意外的许可提示
+          href: application-sign-in-unexpected-user-consent-prompt.md
+        - name: “用户同意”错误
+          href: application-sign-in-unexpected-user-consent-error.md
+        - name: 登录到 Microsoft 应用时出现问题
+          href: application-sign-in-problem-first-party-microsoft.md
+        - name: 登录自定义开发的应用时出现的问题
+          href: application-sign-in-problem-custom-dev.md
 - name: 资源
   items:
-  - name: Azure 反馈论坛
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-  - name: 定价
-    href: https://www.azure.cn/pricing/details/active-directory
-  - name: 定价计算器
-    href: https://www.azure.cn/pricing/calculator
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=active-directory
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-ms.openlocfilehash: 78c753669b8cfceec9b3aaecabd4fed867b18036
-ms.sourcegitcommit: 1456ace86f950acc6908f4f5a9c773b93a4d6acc
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54029105"
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://www.azure.cn/pricing/details/active-directory'
+    - name: 定价计算器
+      href: 'https://www.azure.cn/pricing/calculator'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'

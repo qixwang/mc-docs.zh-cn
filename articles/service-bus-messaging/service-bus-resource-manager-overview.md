@@ -15,18 +15,18 @@ ms.workload: na
 origin.date: 09/11/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 92dc75b10b751162ebb5a1d752185e6f252c13b6
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 04891a602b76c80b73427c4606573de4d2f15fc1
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330008"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853822"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建服务总线资源
 
 本文介绍如何使用 Azure Resource Manager 模板、PowerShell 和服务总线资源提供程序创建和部署服务总线资源。
 
-Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 此模板以 JSON 编写并包含可用于为部署构造值的表达式。 有关编写 Azure Resource Manager 模板的详细信息以及关于模板格式的讨论，请参阅 [Azure Resource Manager 模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 此模板以 JSON 编写并包含可用于为部署构造值的表达式。 
 
 > [!NOTE]
 > 本文中的示例演示如何使用 Azure Resource Manager 来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速启动模板库][Azure Quickstart Templates gallery]并搜索“服务总线”  。
@@ -55,7 +55,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 6. 如果需要，设置部署模式。
 7. 部署模板。
 
-有关部署 Azure 资源管理器模板的完整信息，请参阅[使用 Azure 资源管理器模板部署资源][Deploy resources with Azure Resource Manager templates]。
+有关部署 Azure Resource Manager 模板的完整信息，请参阅 [使用 Azure Resource Manager 模板部署资源][Deploy resources with Azure Resource Manager templates]。
 
 ### <a name="install-powershell"></a>安装 PowerShell
 
@@ -138,7 +138,7 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
 
 ### <a name="create-a-parameters-file-optional"></a>创建参数文件（可选）
 
-若要使用可选参数文件，请复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) 文件。 将 `serviceBusNamespaceName` 的值替换为要在此部署中创建的服务总线命名空间的名称，并将 `serviceBusQueueName` 的值替换为要创建的队列的名称。 
+若要使用可选参数文件，请复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) 文件。 将 `serviceBusNamespaceName` 的值替换为要在此部署中创建的服务总线命名空间的名称，并将 `serviceBusQueueName` 的值替换为要创建的队列的名称。
 
 ```json
 {
@@ -157,8 +157,6 @@ Azure Resource Manager 模板可帮助你定义要为解决方案部署的资源
     }
 }
 ```
-
-有关详细信息，请参阅[参数](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)一文。
 
 ### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>登录到 Azure 并设置 Azure 订阅
 
@@ -235,7 +233,6 @@ New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGro
 ```
 
 ### <a name="verify-the-deployment"></a>验证部署
-
 如果资源已成功部署，会在 PowerShell 窗口中显示部署的摘要：
 
 ```powershell
@@ -251,6 +248,7 @@ Parameters        :
                     serviceBusNamespaceName  String             <namespaceName>
                     serviceBusQueueName  String                 <queueName>
                     serviceBusApiVersion  String                2017-04-01
+
 ```
 
 ## <a name="next-steps"></a>后续步骤

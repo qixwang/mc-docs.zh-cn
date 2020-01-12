@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 08/14/2019
+origin.date: 12/13/2019
 ms.author: v-yiso
-ms.date: 09/09/2019
-ms.openlocfilehash: 80eef982289361673bcd4cf73402738fdb9ad917
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/20/2020
+ms.openlocfilehash: 8b3f5ecbdb64ab0bc03a23952d6d062444a937ef
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174169"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859748"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -70,7 +70,7 @@ ms.locfileid: "70174169"
 
 ### <a name="production-azure"></a>生产 Azure
 
-| **Location** | **服务提供商** |
+| **位置** | **服务提供商** |
 | --- | --- |
 | **阿姆斯特丹** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Orange、Tata Communications、TeleCity Group、Telenor、Verizon |
 | **亚特兰大** |Equinix |
@@ -104,7 +104,7 @@ ms.locfileid: "70174169"
 
 ### <a name="us-government-cloud"></a>美国政府云
 
-| **Location** | **服务提供商** |
+| **位置** | **服务提供商** |
 | --- | --- |
 | **芝加哥** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 | **达拉斯** |Equinix、Megaport、Verizon |
@@ -114,7 +114,7 @@ ms.locfileid: "70174169"
 
 ### <a name="china"></a>中国
 
-| **Location** | **服务提供商** |
+| **位置** | **服务提供商** |
 |--------------|-----------------------|
 | **北京**  |     中国电信     |
 | **上海** |     中国电信     |
@@ -144,7 +144,7 @@ ms.locfileid: "70174169"
 * 从 Exchange 连接服务提供商处订购 ExpressRoute 线路以连接到 Microsoft。
   * 根据 [创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md) 中的步骤来设置连接。
 
-| **Location** | **Exchange** | **连接提供商** |
+| **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
 | **阿姆斯特丹** | Equinix | Eurofiber |
 | **伦敦** | Equinix | Exponential E、HSO |

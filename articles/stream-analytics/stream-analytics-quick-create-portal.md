@@ -1,7 +1,6 @@
 ---
-title: 使用 Azure 门户创建流分析作业 | Azure
+title: 快速入门 - 使用 Azure 门户创建流分析作业
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 origin.date: 06/21/2019
 ms.date: 08/29/2019
-ms.openlocfilehash: c66e2cbd4aead6a533bad62879b14fda15d9f333
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 369c08fff06c9c88cfdae26e7024476e4d787ff8
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674767"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855632"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -92,9 +91,9 @@ ms.locfileid: "71674767"
    |作业名称   |  MyASAJob   |   输入用于标识流分析作业的名称。 流分析作业名称只能包含字母数字字符、连字符和下划线，其长度必须介于 3 到 63 个字符之间。 |
    |订阅  | \<订阅\> |  选择要用于此作业的 Azure 订阅。 |
    |资源组   |   asaquickstart-resourcegroup  |   选择与 IoT 中心相同的资源组。 |
-   |Location  |  \<选择离用户最近的区域\> | 选择可以在其中托管流分析作业的地理位置。 使用最靠近用户的位置，以便改进性能并减少数据传输成本。 |
+   |位置  |  \<选择离用户最近的区域\> | 选择可以在其中托管流分析作业的地理位置。 使用最靠近用户的位置，以便改进性能并减少数据传输成本。 |
    |流式处理单位  | 1  |   流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。   |
-   |宿主环境  |  云  |   流分析作业可以部署到云或边缘设备。 可以通过“Cloud”部署到 Azure Cloud，通过“Edge”部署到 IoT Edge 设备。 |
+   |宿主环境  |  云  |   流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。 |
 
    ![创建作业](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
@@ -164,7 +163,7 @@ ms.locfileid: "71674767"
 
 2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
    ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 

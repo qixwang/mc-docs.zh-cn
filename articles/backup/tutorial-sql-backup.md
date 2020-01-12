@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/18/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f62aff95e2b2cfb2cf4b820e11b380d1ba7fb458
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: bbeaf20c9491c02b46133958e1e2ca41140ca0b8
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839052"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857756"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
 
@@ -24,8 +24,7 @@ ms.locfileid: "74839052"
 > * 为数据库设置自动保护。
 > * 运行按需备份。
 
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
@@ -69,7 +68,6 @@ ms.locfileid: "74839052"
 * 数据库名称以“F:\”开头
 
 对于 Azure 表不支持的字符，可以使用别名，但我们建议避免使用别名。 [了解详细信息](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

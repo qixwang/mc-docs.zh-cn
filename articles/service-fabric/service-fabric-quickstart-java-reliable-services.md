@@ -1,27 +1,18 @@
 ---
 title: 快速入门：在 Azure Service Fabric 上创建 Java 应用
 description: 在本快速入门中，请使用 Service Fabric Reliable Services 示例应用程序创建用于 Azure 的 Java 应用程序。
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/29/2019
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0160ba18c871e60fbb917b472bb62b689f8236bd
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: f7495c2d07eb04069cc70dbd61a61c24c2caa32e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340832"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742471"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>快速入门：将 Java 应用部署到 Linux 上的 Azure Service Fabric
 
@@ -29,7 +20,7 @@ ms.locfileid: "71340832"
 
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。
 
-![应用程序屏幕截图](./media/service-fabric-quickstart-java/votingapp.png)
+![Azure Service Fabric 投票示例](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
 
 此快速入门介绍如何：
 
@@ -37,9 +28,9 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 * 将应用程序部署到本地群集
 * 跨多个节点横向扩展应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-完成本快速入门教程：
+若要完成本快速入门教程，需先执行以下操作：
 
 1. [安装 Service Fabric SDK 和 Service Fabric 命令行接口 (CLI)](/service-fabric/service-fabric-get-started-linux#installation-methods)
 2. [安装 Git](https://git-scm.com/)
@@ -48,7 +39,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ## <a name="download-the-sample"></a>下载示例
 
-在命令窗口中，运行以下命令，将示例应用程序存储库克隆到本地计算机。
+在命令窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
@@ -63,24 +54,24 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```
     启动本地群集需要一些时间。 若要确认群集是否完全正常，请访问 Service Fabric Explorer（网址： **http://localhost:19080** ）。 5 个节点均正常即表示本地群集运行正常。
 
-    ![本地群集正常运行](./media/service-fabric-quickstart-java/localclusterup.png)
+    ![Azure Service Fabric Explorer 显示运行正常的节点](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. 打开 Eclipse。
 3. 选择“文件”   > “导入”   > “Gradle”   > “现有 Gradle 项目”  ，并按照向导进行操作。
 4. 选择“目录”  ，然后在从 GitHub 克隆的 `service-fabric-java-quickstart` 文件夹中选择 `Voting` 目录。 选择“完成”。 
 
-    ![Eclipse 的“导入”对话框](./media/service-fabric-quickstart-java/eclipseimport.png)
+    ![将 Gradle 项目导入 Eclipse](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. Eclipse 的包资源管理器中现拥有 `Voting` 项目。
 6. 右键单击该项目并选择“Service Fabric”下拉列表中的“发布应用程序”   。 选择“PublishProfiles/Local.json”作为目标配置文件，然后选择“发布”   。
 
-    ![本地“发布”对话框](./media/service-fabric-quickstart-java/localjson.png)
+    ![Azure Service Fabric 发布本地 JSON](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
 7. 打开喜欢的 Web 浏览器并访问应用程序（网址：`http://localhost:8080`）。
 
-    ![本地应用程序前端](./media/service-fabric-quickstart-java/runninglocally.png)
+    ![Azure Service Fabric 本地主机](./media/service-fabric-quickstart-java/service-fabric-local-host.png)
 
-现在可以添加一组投票选项，并开始进行投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
+现在可以添加一组投票选项，并开始投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
 
@@ -93,14 +84,14 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 1. 在群集中打开 Service Fabric Explorer - 例如 `https://localhost:19080`。
 2. 在树视图中选择“fabric:/Voting/VotingWeb”节点旁边的省略号 ( **...** )，再选择“缩放服务”   。
 
-    ![Service Fabric Explorer 缩放服务](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
+    ![在 Azure Service Fabric 中缩放服务](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     现在可以缩放 Web 前端服务的实例数量。
 
 3. 将数字更改为 **2**，选择“缩放服务”  。
 4. 在树视图中选择“fabric:/Voting/VotingWeb”  节点，再展开分区节点（由 GUID 表示）。
 
-    ![Service Fabric Explorer 缩放服务完成](./media/service-fabric-quickstart-java/servicescaled.png)
+    ![在 Azure Service Fabric 中缩放服务](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
 
     现在可以看到，服务有两个实例。在树视图中可以查看实例的运行节点。
 
@@ -119,4 +110,4 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 > [!div class="nextstepaction"]
 > [部署 Java 应用](./service-fabric-tutorial-create-java-app.md)
 
-<!-- Update_Description: update meta properties, wording udpate -->
+<!-- Update_Description: update meta properties, wording update -->

@@ -7,12 +7,12 @@ origin.date: 08/25/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: b4b934669bb186dc9318efeb37079a3323cf6317
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 2d27587fd00be39aa8c38a215a06d91e2888259f
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838805"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858538"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "74838805"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.cn 登录到 Azure 门户。
+通过 https://portal.azure.cn 登录到 Azure 门户。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 

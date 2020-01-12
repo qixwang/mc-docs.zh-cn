@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 创建流分析作业
+title: 快速入门 - 使用 Azure PowerShell 创建流分析作业
 description: 本快速入门演示如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
 services: stream-analytics
 author: lingliw
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 origin.date: 12/20/2018
 ms.date: 06/21/2019
-ms.openlocfilehash: 0083c1bc8e06b036f5a438218979a90928805a4d
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 9979a9ff4d28addf24098716cb747a6059d7b71e
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674792"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855625"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -121,33 +121,33 @@ New-AzResourceGroup `
 
 4. 复制代码所输出的存储密钥，然后保存该密钥，以便稍后创建流式处理作业的输出。
 
-   ```powershell
-   $storageAccountName = "myasaquickstartstorage"
-   $storageAccount = New-AzStorageAccount `
-     -ResourceGroupName $resourceGroup `
-     -Name $storageAccountName `
-     -Location $location `
-     -SkuName Standard_LRS `
-     -Kind Storage
+    ```powershell
+    $storageAccountName = "myasaquickstartstorage"
+    $storageAccount = New-AzStorageAccount `
+      -ResourceGroupName $resourceGroup `
+      -Name $storageAccountName `
+      -Location $location `
+      -SkuName Standard_LRS `
+      -Kind Storage
 
-   $ctx = $storageAccount.Context
-   $containerName = "container1"
-   
-   New-AzStorageContainer `
-     -Name $containerName `
-     -Context $ctx
-   
-   $storageAccountKey = (Get-AzStorageAccountKey `
-     -ResourceGroupName $resourceGroup `
-     -Name $storageAccountName).Value[0]
-   
-   Write-Host "The <storage account key> placeholder needs to be replaced in your output json files with this key value:" 
-   Write-Host $storageAccountKey -ForegroundColor Cyan
-   ```
+    $ctx = $storageAccount.Context
+    $containerName = "container1"
+
+    New-AzStorageContainer `
+      -Name $containerName `
+      -Context $ctx
+
+    $storageAccountKey = (Get-AzStorageAccountKey `
+      -ResourceGroupName $resourceGroup `
+      -Name $storageAccountName).Value[0]
+
+    Write-Host "The <storage account key> placeholder needs to be replaced in your output json files with this key value:"
+    Write-Host $storageAccountKey -ForegroundColor Cyan
+    ```
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-请使用 [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0) cmdlet 创建流分析作业。 此 cmdlet 使用作业名称、资源组名称和作业定义作为参数。 作业名称可以是用于标识作业的任何友好名称， 但只能包含字母数字字符、连字符和下划线，且其长度必须介于 3 到 63 个字符之间。 作业定义是一个 JSON 文件，其中包含创建作业所需的属性。 在本地计算机上创建名为 `JobDefinition.json` 的文件，并向其添加以下 JSON 数据：
+请使用 [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) cmdlet 创建流分析作业。 此 cmdlet 使用作业名称、资源组名称和作业定义作为参数。 作业名称可以是用于标识作业的任何友好名称， 但只能包含字母数字字符、连字符和下划线，且其长度必须介于 3 到 63 个字符之间。 作业定义是一个 JSON 文件，其中包含创建作业所需的属性。 在本地计算机上创建名为 `JobDefinition.json` 的文件，并向其添加以下 JSON 数据：
 
 ```json
 {    
@@ -177,7 +177,7 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>配置作业输入
 
-使用 [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet 将输入添加到作业。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 Blob 存储创建为输入。 
+使用 [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) cmdlet 将输入添加到作业。 此 cmdlet 使用作业名称、作业输入名称、资源组名称和作业输入定义作为参数。 作业输入定义是一个 JSON 文件，其中包含配置作业的输入所需的属性。 在此示例中，需将 Blob 存储创建为输入。
 
 在本地计算机上创建名为 `JobInputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accesspolicykey` 的值替换为在上一部分保存的 IoT 中心设备连接字符串的 `SharedAccessKey` 部分。
 
@@ -226,7 +226,7 @@ New-AzStreamAnalyticsInput `
 
 使用 [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) cmdlet 将输出添加到作业。 此 cmdlet 使用作业名称、作业输出名称、资源组名称和作业输出定义作为参数。 作业输出定义是一个 JSON 文件，其中包含配置作业的输出所需的属性。 此示例使用 Blob 存储作为输出。
 
-在本地计算机上创建名为 `JobOutputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accountKey` 的值替换为存储帐户的访问密钥，该密钥是存储在 $storageAccountKey 值中的值。 
+在本地计算机上创建名为 `JobOutputDefinition.json` 的文件，并向其添加以下 JSON 数据。 确保将 `accountKey` 的值替换为存储帐户的访问密钥，该密钥是存储在 $storageAccountKey 值中的值。
 
 ```json
 {
@@ -259,7 +259,7 @@ New-AzStreamAnalyticsInput `
 }
 ```
 
-接下来运行 `New-AzStreamAnalyticsOutput` cmdlet。 确保将 `jobOutputDefinitionFile` 变量的值替换为在其中存储了作业输出定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsOutput` cmdlet。 确保将 `jobOutputDefinitionFile` 变量的值替换为在其中存储了作业输出定义 JSON 文件的路径。
 
 ```powershell
 $jobOutputName = "BlobOutput"
@@ -287,7 +287,7 @@ New-AzStreamAnalyticsOutput `
 }
 ```
 
-接下来运行 `New-AzStreamAnalyticsTransformation` cmdlet。 确保将 `jobTransformationDefinitionFile` 变量的值替换为在其中存储了作业转换定义 JSON 文件的路径。 
+接下来运行 `New-AzStreamAnalyticsTransformation` cmdlet。 确保将 `jobTransformationDefinitionFile` 变量的值替换为在其中存储了作业转换定义 JSON 文件的路径。
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
@@ -304,7 +304,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. 将第 15 行的占位符替换为在上一部分保存的整个 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击 **“运行”** 。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
     ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

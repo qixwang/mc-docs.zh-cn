@@ -1,7 +1,6 @@
 ---
 title: 理解 Azure 流分析的输入
 description: 本文介绍了有关 Azure 流分析作业中的输入的概念，将流式处理输入与引用数据输入进行了比较。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/11/2019
 ms.date: 08/11/2019
-ms.openlocfilehash: b37b4b086a92df1c046792d2cab33d5d0930e71d
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 0391576910140c95d45e8a3204932bb84e9b7f5e
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674782"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857139"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入
 

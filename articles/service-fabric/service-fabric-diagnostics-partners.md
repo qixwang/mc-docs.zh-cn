@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 监视合作伙伴 | Azure
+title: Azure Service Fabric 监视合作伙伴
 description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/16/2018
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d3fdd6d43bbdec2cdd9686b56e7d193050eefb03
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 18085d30563a9868a1f5c9540f035633a17453fc
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336446"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742397"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 

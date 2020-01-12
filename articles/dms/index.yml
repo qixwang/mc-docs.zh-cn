@@ -2,19 +2,19 @@
 title: Azure 数据库迁移服务文档
 summary: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 当你准备好开始该迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
 metadata:
-  description: " 了解如何使用 Azure 数据库迁移服务以停机时间最短的方式从多个数据库源无缝迁移到 Azure 数据平台。"
+  description: 了解如何使用 Azure 数据库迁移服务以停机时间最短的方式从多个数据库源无缝迁移到 Azure 数据平台。
   author: WenJason
   ms.author: v-jay
-  origin.date: 10/12/2019
-  ms.date: 11/04/2019
+  origin.date: 12/19/2019
+  ms.date: 01/13/2020
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 57f93b12e3be84ae18eda6aa29cbcfb2368fae97
-  ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+  ms.openlocfilehash: fb88c2edc10a78e7464ad920b930342ec66cafe1
+  ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/22/2019
-  ms.locfileid: "74328733"
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75776632"
 landingContent:
 - title: 关于 Azure 数据库迁移服务
   linkLists:
@@ -50,8 +50,12 @@ landingContent:
     links:
     - text: 已知问题 - 联机迁移到 SQL 数据库单一数据库
       url: known-issues-azure-sql-online.md
+    - text: 已知问题 - 联机迁移到 SQL 数据库托管实例
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: 用于 SQL 数据库托管实例迁移的网络拓扑
       url: resource-network-topologies.md
+    - text: 用于从 SQL Server 联机迁移到 SQL 数据库托管实例的自定义角色
+      url: resource-custom-roles-sql-db-managed-instance.md
 - title: 将开源数据库迁移到 Azure
   linkLists:
   - linkListType: tutorial
@@ -82,7 +86,7 @@ landingContent:
       url: dms-tools-matrix.md
     - text: 数据迁移助手
       url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
-    - text: SQL Server 迁移助手
+    - text: SQL Server Migration Assistant
       url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
     - text: 数据库实验助手
       url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017

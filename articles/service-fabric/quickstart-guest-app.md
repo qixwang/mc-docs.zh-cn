@@ -1,32 +1,22 @@
 ---
 title: 将现有应用快速部署到 Azure Service Fabric 群集
 description: 通过 Visual Studio 使用 Azure Service Fabric 群集来托管现有的 Node.js 应用程序。
-services: service-fabric
-documentationcenter: nodejs
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 12/06/2017
-ms.date: 08/26/2019
 ms.author: v-yeche
-ms.openlocfilehash: c20911a173c131b8cd5542b3d3fb6f945ef0ec69
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 16b07f83a3965578fa76afcd78bfeef78307fae0
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174259"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741886"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
 本快速入门教程帮助将现有的应用程序（本示例中为 Node.js）部署到在 Azure 上运行的 Service Fabric 群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前，请确保已 [设置开发环境](service-fabric-get-started.md)。 其中包括安装 Service Fabric SDK 和 Visual Studio 2019 或 2015。
 
@@ -75,7 +65,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 * **脚本**  
 用于部署/升级应用程序的 PowerShell 脚本。
 
-* 应用程序定义   
+* **应用程序定义**  
 包括 *ApplicationPackageRoot* 下的应用程序清单。 关联应用程序参数文件位于 *ApplicationParameters* 下，它们定义应用程序并使你可以专门为给定环境对其进行配置。
 
 有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
@@ -146,7 +136,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 [new-project]: ./media/quickstart-guest-app/new-project.png
 [new-service]: ./media/quickstart-guest-app/template.png
 
-<!-- Not Available [solution-exp]: ./media/quickstart-guest-app/solution-explorer.png -->
+<!-- Not Exist [solution-exp]: ./media/quickstart-guest-app/solution-explorer.png -->
 
 [publish]: ./media/quickstart-guest-app/publish.png
 [overview]: ./media/quickstart-guest-app/overview.png

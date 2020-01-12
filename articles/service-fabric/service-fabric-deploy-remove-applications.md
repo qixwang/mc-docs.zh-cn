@@ -1,26 +1,16 @@
 ---
 title: 使用 PowerShell 进行 Azure Service Fabric 部署
 description: 如何在 Service Fabric 中使用 PowerShell 部署和删除应用程序。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/19/2018
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7e9ea63e132d1b146cfd25c6d6206a7b32728d63
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 12ee0051f97e98a5ba1230580ae797e0c41bb7b7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336174"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742291"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>使用 PowerShell 部署和删除应用程序
 
@@ -243,7 +233,7 @@ ApplicationTypeVersion : 1.0.0
 ApplicationParameters  : {}
 ```
 
-可以为已注册应用程序类型的任何给定版本创建多个应用程序实例。 每个应用程序实例都将隔离运行，具有其自己的工作目录和进程。
+可以为已注册应用程序类型的任何给定版本创建多个应用程序实例。 每个应用程序实例都会隔离运行，具有其自己的工作目录和进程。
 
 若要查看有哪些已命名应用和服务正在群集中运行，请运行 [Get-ServiceFabricApplication](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricapplication) 和 [Get-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) cmdlet：
 
@@ -414,4 +404,4 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 [10]: service-fabric-package-apps.md
 [11]: service-fabric-application-upgrade.md
 
-<!--Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties -->

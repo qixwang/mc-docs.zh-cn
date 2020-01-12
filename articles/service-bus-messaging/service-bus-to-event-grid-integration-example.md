@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线到事件网格集成示例 | Microsoft Docs
-description: 本文提供的示例涉及服务总线消息传送和事件网格集成。
+title: 教程：Azure 服务总线到事件网格的集成示例
+description: 教程：本文提供的示例涉及服务总线消息传送和事件网格集成。
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-origin.date: 05/14/2019
-ms.date: 08/29/2019
+origin.date: 11/05/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: cd7496b487c5b7b0ea0581bd8400711c44405dd2
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: c43c2d155eb0b78aec100059381343fd6ca9b69a
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330009"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853716"
 ---
-# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教程：使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应
 本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 你将执行以下操作：
  
 - 创建一个测试 Azure 函数，用于调试和查看从事件网格发出的初始事件流。

@@ -1,26 +1,16 @@
 ---
 title: 升级 Azure Service Fabric 群集
 description: 了解有关升级 Azure Service Fabric 群集的版本或配置的信息。  本文介绍如何设置群集更新模式、升级证书、添加应用程序端口、执行 OS 修补程序以及执行升级时可预期的内容
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/12/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 59d67ed0c3947851a5e4beb7afa31164bc330091
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: e7d8bd5a2c2ecaa8ceb546856f23f7437cbf53e0
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335140"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742317"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升级和更新 Azure Service Fabric 群集
 
@@ -46,7 +36,7 @@ Azure 将维护 Azure 群集中运行的结构代码和配置。 我们根据需
 * 建议的补救措施（如果有）。
 * 距离执行阶段 2 的天数 (n)。
 
-如果有任何升级因为基础结构方面的原因而失败，我们将尝试多次执行同一升级。 自电子邮件发送日期的 n 天之后，我们继续执行阶段 2。
+如果有任何升级因为基础结构方面的原因而失败，我们应尝试多次执行同一升级。 自电子邮件发送日期的 n 天之后，我们继续执行阶段 2。
 
 如果符合群集运行状况策略，则升级被视为成功并标记为完成。 在此阶段进行初始升级或重新运行任何升级期间，可能发生这种情形。 如果运行成功，不会发送任何电子邮件确认。 这是为了避免发送过多的电子邮件。收到电子邮件则表示出现异常。 大多数群集升级预期都会成功，且不影响应用程序可用性。
 
@@ -59,7 +49,7 @@ Azure 将维护 Azure 群集中运行的结构代码和配置。 我们根据需
 * 建议的补救措施（如果有）。
 * 距离执行阶段 3 的天数 (n)。
 
-如果有任何升级因为基础结构方面的原因而失败，我们应尝试多次执行同一升级。 将在 n 天结束前的几天发送提醒电子邮件。 自电子邮件发送日期的 n 天之后，我们将继续执行阶段 3。 必须认真看待阶段 2 发送的电子邮件并采取补救措施。
+如果有任何升级因为基础结构方面的原因而失败，我们应尝试多次执行同一升级。 会在 n 天结束前的几天发送提醒电子邮件。 自电子邮件发送日期的 n 天之后，我们将继续执行阶段 3。 必须认真看待阶段 2 发送的电子邮件并采取补救措施。
 
 如果符合群集运行状况策略，则升级被视为成功并标记为完成。 在此阶段进行初始升级或重新运行任何升级期间，可能发生这种情形。 如果运行成功，不会发送任何电子邮件确认。
 
@@ -103,9 +93,9 @@ Service Fabric 使用创建群集时指定的 [X.509 服务器证书](service-fa
 修补业务流程应用程序 (POA) 是一个 Service Fabric 应用程序，可在 Service Fabric 群集中自动修补操作系统，而无需停机。 [适用于 Windows 的修补业务流程应用程序](service-fabric-patch-orchestration-application.md)可部署在群集上，以便以协调一致的方式安装修补程序，同时使服务始终可用。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
+* 了解如何自定义某些 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)
 * 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
-* 了解[应用程序升级](service-fabric-application-upgrade.md)
+* 了解 [应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 

@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中将 API 管理与 Service Fabric 集成 | Azure
+title: 在 Azure 中将 API 管理与 Service Fabric 集成
 description: 了解如何快速开始使用 Azure API 管理以及在 Service Fabric 中将流量路由到后端服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/10/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 958953806723eec1d630a5398a741a392c7d6e78
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 15b5e355d11ed5afa9e5329c4621dd9b0dc9fa60
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254752"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742042"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 
@@ -36,7 +26,7 @@ ms.locfileid: "70254752"
 > [!IMPORTANT]
 > 由于所需的虚拟网络支持，此功能在 API 管理的**高级**和**开发人员**层中可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
@@ -95,7 +85,7 @@ az account set --subscription <guid>
 
 6. 可在本地于 Visual Studio 中按下 F5 来验证 Web API。
 
-    打开 Service Fabric Explorer 并深入了解 ASP.NET Core 服务的特定实例，以查看服务正在侦听的基址。 将 `/api/values` 添加到基址，然后在浏览器中打开，这在 Web API 模板的 ValuesController 上调用 Get 方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
+    打开 Service Fabric 资源管理器并深入了解 ASP.NET Core 服务的特定实例，以查看服务正在侦听的基址。 将 `/api/values` 添加到基址，然后在浏览器中打开，这在 Web API 模板的 ValuesController 上调用 Get 方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
 
     ```json
     ["value1", "value2"]`
@@ -134,22 +124,22 @@ az account set --subscription <guid>
 
 [Microsoft.ApiManagement/service/backends](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/backends) 描述了流量转发到的后端服务。
 
-对于 Service Fabric 后端，后端是 Service Fabric 群集，而不是特定的 Service Fabric 服务。 这允许单个策略路由到群集中的多个服务。 如果后端策略中未指定任何服务名称，那么此处的 url 字段是群集中一个服务的完全限定的服务名称，默认情况下所有请求都路由到该服务  。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 resourceId 指定群集管理终结点  。  clientCertificateThumbprint 和 serverCertificateThumbprints 标识用于对群集进行身份验证的证书   。
+对于 Service Fabric 后端，后端是 Service Fabric 群集，而不是特定的 Service Fabric 服务。 这允许单个策略路由到群集中的多个服务。 如果后端策略中未指定任何服务名称，那么此处的 url 字段是群集中一个服务的完全限定的服务名称，默认情况下所有请求都路由到该服务  。 如果不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 resourceId 指定群集管理终结点  。  clientCertificateThumbprint 和 serverCertificateThumbprints 标识用于对群集进行身份验证的证书   。
 
 ### <a name="microsoftapimanagementserviceproducts"></a>Microsoft.ApiManagement/service/products
 
-[Microsoft.ApiManagement/service/products](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products) 用于创建产品。 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。
+[Microsoft.ApiManagement/service/products](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products) 用于创建产品。 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员便可以订阅该产品，并可开始使用该产品的 API。
 
 为产品输入描述性“displayName”和“description”   。 对于本文，订阅是必需的，但不需要管理员批准订阅。  产品“state”为“已发布”，并对订阅者可见  。
 
 ### <a name="microsoftapimanagementserviceapis"></a>Microsoft.ApiManagement/service/apis
 
-[Microsoft.ApiManagement/service/apis](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis) 用于创建 API。 API 管理中的 API 表示一组可由客户端应用程序调用的操作。 一旦添加操作，该 API 添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
+[Microsoft.ApiManagement/service/apis](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis) 用于创建 API。 API 管理中的 API 表示一组可由客户端应用程序调用的操作。 添加操作后，该 API 便添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
 
 * “displayName”可以是 API 的任意名称  。 对于本文，请使用“Service Fabric App”。
 * “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”  。 它显示在开发人员和发布者门户中。
 * “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
-* “path”附加到 API 管理服务的基础 URL  。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
+* “path”附加到 API 管理服务的基础 URL  。 基 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对于给定发布者的每个 API 必须唯一。
 * “protocols”确定可用于访问 API 的协议  。 对于本文，列出 **http** 和 **https**。
 * “path”是 API 的后缀  。 对于本文，请使用“myapp”。
 
@@ -165,7 +155,7 @@ az account set --subscription <guid>
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/policies) 创建将所有内容联系在一起的后端策略。 你可以在其中配置将请求路由到的后端 Service Fabric 服务。 可以将此策略应用到任何 API 操作。  有关详细信息，请参阅[策略概述](/api-management/api-management-howto-policies)。
+[Microsoft.ApiManagement/service/apis/policies](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/policies) 创建将所有内容联系在一起的后端策略。 可以在其中配置将请求路由到的后端 Service Fabric 服务。 可以将此策略应用到任何 API 操作。  有关详细信息，请参阅[策略概述](/api-management/api-management-howto-policies)。
 
 [Service Fabric 的后端配置](/api-management/api-management-transformation-policies#SetBackendService)提供以下请求路由控件：
 
@@ -200,7 +190,7 @@ az account set --subscription <guid>
 
 在部署的 apim.parameters.json 中填写以下空参数  。
 
-|参数|值|
+|参数|Value|
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
@@ -318,6 +308,7 @@ az group delete --name $ResourceGroupName
 
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
 
+<!--DUPLICATED URL ON [network-parameters-arm]-->
 <!-- pics -->
 
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

@@ -11,23 +11,23 @@ ms.topic: reference
 origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fb37474ce2261d168b6411cee2a31ff4a3815ccf
-ms.sourcegitcommit: 8d3a0d134a7f6529145422670af9621f13d7e82d
+ms.openlocfilehash: 5961e128d14dc68aad67b281ddae78dbbfb0f950
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416341"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858053"
 ---
-# <a name="regular-expression-entity"></a>正则表达式实体 
+# <a name="regular-expression-entity"></a>正则表达式实体
 
 正则表达式实体基于所提供的正则表达式模式提取实体。
 
-正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但并非全部 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。 
+正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 使用部分但并非全部 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。
 
 **在以下情况下，非常适合使用此实体：**
 
 * 数据的格式一致，并且其任何变体也是一致的。
-* 正则表达式不需要 2 个级别以上的嵌套。 
+* 正则表达式不需要 2 个级别以上的嵌套。
 
 ![正则表达式实体](./media/luis-concept-entities/regex-entity.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "73416341"
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
 此正则表达式还匹配以这些数字结尾的任何单词，如 `phone`。 为了解决这样的问题，请确保正则表达式匹配考虑到单词边界。 此示例中使用单词边界的正则表达式用于以下正则表达式：
 
@@ -104,7 +104,3 @@ ms.locfileid: "73416341"
 ```
 
 * * * 
-
-## <a name="next-steps"></a>后续步骤
-
-在本[教程](luis-quickstart-intents-regex-entity.md)中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用  。

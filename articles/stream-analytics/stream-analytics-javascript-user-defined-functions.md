@@ -1,5 +1,5 @@
 ---
-title: '教程：Azure 流分析 JavaScript 用户定义的函数 | Azure '
+title: Azure 流分析 JavaScript 用户定义的函数
 description: 在本教程中，将使用 JavaScript 用户定义的函数执行高级查询机制
 services: stream-analytics
 author: lingliw
@@ -10,12 +10,12 @@ ms.reviewer: mamccrea
 ms.custom: mvc
 origin.date: 04/01/2018
 ms.date: 11/06/2018
-ms.openlocfilehash: 7558d05e4cad0871f5b9b576ac7b4a0559ce1850
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 05ed7e12785659a8514abc1482a384adc15f8116
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674810"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856847"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>教程：Azure 流分析 JavaScript 用户定义的函数
  
@@ -72,6 +72,9 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 6.  选择“保存”  。 该函数随即显示在函数列表中。
 7.  选择新的 **hex2Int** 函数并检查函数定义。 所有函数的函数别名带有 **UDF** 前缀。 在流分析查询中调用该函数时，需要 *包含该前缀* 。 在本例中，调用的是 **UDF.hex2Int**。
 
+## <a name="testing-javascript-udfs"></a>测试 JavaScript UDF 
+可在任何浏览器中测试和调试 JavaScript UDF 逻辑。 流分析门户目前不支持调试和测试这些用户定义函数的逻辑。 函数按预期方式运行后，可以将其添加到流分析作业（如上所述），然后直接从查询调用它。
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
 1. 在查询编辑器中的“作业拓扑”  标题下，选择“查询”  。
@@ -122,6 +125,8 @@ Array | Array
 Null、Undefined | Null
 其他任何类型（例如函数或错误） | 不支持（导致运行时错误）
 
+JavaScript 语言区分大小写，JavaScript 代码中对象字段的大小写必须与传入数据中字段的大小写匹配。 请注意，兼容性级别为 1.0 的作业会将 SQL SELECT 语句中的字段转换为小写。 在兼容性级别 1.1 及更高级别下，SELECT 语句中的字段将具有与 SQL 查询中指定的相同的大小写。
+
 ## <a name="troubleshooting"></a>故障排除
 JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 如果要检索日志，请在 Azure 门户中转到用户的作业，并选择“活动日志”。 
 
@@ -153,7 +158,7 @@ FROM
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止该作业，以后在需要时再重启该作业。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
+若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止它，等到以后需要时再重启它。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。   
 2. 在资源组页上单击“删除”  ，在文本框中键入要删除的资源的名称，并单击“删除”  。

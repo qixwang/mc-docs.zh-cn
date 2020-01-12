@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中缩放 Service Fabric 群集 | Azure
+title: 在 Azure 中缩放 Service Fabric 群集
 description: 本教程介绍如何在 Azure 中缩放 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 06abd4d4ac7e60bccfe22148ebccf2832686ac2d
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: d7b74b69f53f14cfcca4eb5ca91f2e8e58570508
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254765"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741991"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
 
@@ -44,7 +34,7 @@ ms.locfileid: "70254765"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -79,7 +69,7 @@ ms.locfileid: "70254765"
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，转到包含群集的资源组（如果按本教程操作，即为 **sfclustertutorialgroup**）。 
 
-2. 在左窗格中，选择“部署”  或选择“部署”  下的链接。 
+2. 在左窗格中选择“部署”，或者选择“部署”下的链接。   
 
 3. 从列表中选择最近的成功部署。
 

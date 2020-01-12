@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析查询的故障排除
 description: 本文介绍对 Azure 流分析作业中的查询进行故障排除的技巧。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: 2ebdc9b9b5ab9c5315d68264ca571e74f559b8c0
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 03ae919943f1257c90e93d18e0cc43523df517bf
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674743"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857295"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 

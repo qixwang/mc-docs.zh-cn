@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 10/21/2019
+origin.date: 11/06/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 55403bb9c7c749c717aad49c647cbaf0a6daa166
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.lastreviewed: 11/06/2019
+ms.openlocfilehash: b2beb4330c544a7a84db40b1ddcbca316342e612
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623536"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737896"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-storage"></a>在 Azure Stack 存储中使用数据传输工具
 
@@ -159,9 +159,6 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 # Register an AzureRM environment that targets your Azure Stack instance
 Add-AzureRmEnvironment -Name $ARMEvnName -ARMEndpoint $ARMEndPoint 
 
-# Set the GraphEndpointResourceId value
-Set-AzureRmEnvironment -Name $ARMEvnName -GraphEndpoint $GraphAudience
-
 # Login
 $TenantID = Get-AzsDirectoryTenantId -AADTenantName $AADTenantName -EnvironmentName $ARMEvnName
 Add-AzureRmAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
@@ -242,7 +239,7 @@ Azure Stack 需要 Azure CLI 2.0 版或更高版本。 若要详细了解如何�
 1. 打开偏好的文本编辑器，将前面的脚本复制并粘贴到编辑器中。
 2. 更新脚本的变量，使之反映配置设置。
 3. 更新所需的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 my_storage_sample.sh  。
-4. 如有必要，将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
+4. 如果需要，请将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
 5. 执行该脚本。 例如，在 Bash 中： `./my_storage_sample.sh`
 
 ```azurecli

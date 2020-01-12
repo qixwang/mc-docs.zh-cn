@@ -1,11 +1,10 @@
 ---
-title: Azure 安全中心快速入门 - 将 Windows 计算机登记到安全中心 | Microsoft Docs
+title: 将 Windows 计算机加入安全中心
 description: 本快速入门演示如何在 Windows 计算机上预配 Microsoft Monitoring Agent。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -16,19 +15,19 @@ ms.workload: na
 origin.date: 12/3/2018
 ms.date: 05/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f8a89962c0c209b5d8cfb5bfc49645b8bb676bee
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: ddfb96d0884e58cb268d1d7d489e3f4f30094ce0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528312"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858013"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机加入安全中心
 加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
 
 本快速入门演示如何在 Windows 计算机上安装 Microsoft Monitoring Agent。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果你尚无订阅，则可以注册[试用帐户](https://www.azure.cn/pricing/free-trial/)。
 
 在开始学习本快速入门之前，你必须位于安全中心的“标准”定价层。 有关升级说明，请参阅[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。
@@ -78,7 +77,7 @@ ms.locfileid: "74528312"
 
 有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
 
-现在可以在一个位置监视 Azure VM 和非 Azure 计算机。 在“计算”  下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
+现在，可以从单个位置监视 Azure VM 和非 Azure 计算机了。 在“计算”  下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
 
   ![“计算”边栏选项卡][6]
 

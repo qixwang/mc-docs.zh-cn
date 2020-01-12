@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心教程 - 使用 Azure 安全中心来保护资源 | Azure Docs
-description: 本教程介绍如何配置恰时 VM 访问策略和应用程序控制策略。
+title: 访问及应用程序控制教程 - Azure 安全中心
+description: 本教程介绍如何配置实时 VM 访问策略和应用程序控制策略。
 services: security-center
 documentationcenter: na
 author: lingliw
@@ -16,15 +16,15 @@ ms.workload: na
 origin.date: 12/3/2018
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ec41ccaaa0ed197cacddce99d56cda707488c3a9
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: aac06fc850cd0b2c6408d27d0b76c8e3634ef803
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528306"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857314"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安全中心来保护资源
-安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过恰时 (JIT) 虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
+安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过实时 (JIT) 虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
 
 本教程介绍如何执行下列操作：
 
@@ -32,7 +32,7 @@ ms.locfileid: "74528306"
 > * 配置实时 VM 访问策略
 > * 配置应用程序控制策略
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="manage-vm-access"></a>管理 VM 访问权限
@@ -102,7 +102,7 @@ JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻
 2. 选择要返回到“免费”层的订阅或策略。 此时会打开“安全策略”。 
 3. 在“策略组件”  下选择“定价层”  。
 4. 选择“免费”，将订阅从“标准”层更改为“免费”层。 
-5. 选择“保存”。 
+5. 选择“保存”  。
 
 如果希望禁用自动预配，请执行以下操作：
 
@@ -112,7 +112,7 @@ JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻
 4. 选择“保存”  。
 
 >[!NOTE]
-> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Azure Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤

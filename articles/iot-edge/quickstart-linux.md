@@ -4,18 +4,18 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 07/09/2019
-ms.date: 10/09/2019
+origin.date: 11/06/2019
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0fa9aec4ef770ce4f238971ef467c6175d7a544
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: a71993977bd61ebcc39f3e0acae79084a31dcb5a
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340812"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859613"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -44,7 +44,7 @@ ms.locfileid: "71340812"
    az extension add --name azure-cli-iot-ext
    ```
    
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 云资源： 
 
@@ -65,7 +65,7 @@ IoT Edge 设备：
 
    可能需要几分钟才能创建并启动新的虚拟机。
 
-   创建新的虚拟机时，请记下在 create 命令的输出中提供的 **publicIpAddress**。 在本快速入门中，稍后将使用此公用 IP 地址连接到虚拟机。
+   创建新的虚拟机时，请记下在 create 命令的输出中提供的 **publicIpAddress**。 在本快速入门中，稍后将使用此公共 IP 地址连接到虚拟机。
 
 * 如果希望在自己的设备上运行 Azure IoT Edge 运行时，请遵循[在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明。
 
@@ -80,7 +80,7 @@ IoT Edge 设备：
 以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心   。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
 
    ```azurecli-interactive
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 如果出现一条错误，指示 IoT 中心名称不可用，则表明他人已使用具有该名称的中心。 请尝试一个新名称。 

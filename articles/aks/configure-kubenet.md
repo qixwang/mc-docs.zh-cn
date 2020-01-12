@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 06/26/2019
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b09a34b30736da244db7a321e5df189e88ae9701
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: a6a18764a3318b6ed3ee86b3ad01244bd64c57d8
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068896"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859861"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -24,7 +24,17 @@ ms.locfileid: "73068896"
 
 本文介绍如何使用 *kubenet* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
+## <a name="prerequisites"></a>必备条件
+
+* AKS 群集的虚拟网络必须允许出站 Internet 连接。
+* 不要在同一子网中创建多个 AKS 群集。
+* AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24`。
+* AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
+    * `Microsoft.Network/virtualNetworks/subnets/join/action`
+    * `Microsoft.Network/virtualNetworks/subnets/read`
+     
 <!--Not Available on Windows Server node pools (currently in preview in AKS)-->
+
 ## <a name="before-you-begin"></a>准备阶段
 
 需要安装并配置 Azure CLI 2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
@@ -169,10 +179,10 @@ az aks create \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \
-    --client-secret <password> \
-    --vm-set-type AvailabilitySet
+    --client-secret <password>
 ```
 
+<!--Not Available on --vm-set-type AvailabilitySet-->
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 > [!Note]
@@ -190,10 +200,10 @@ az aks create \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \
-    --client-secret <password> \
-    --vm-set-type AvailabilitySet
+    --client-secret <password>
 ```
 
+<!--Not Available on --vm-set-type AvailabilitySet-->
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 创建 AKS 群集时，将创建网络安全组和路由表。 这些网络资源可以通过 AKS 控制平面进行管理。 网络安全组自动与节点上的虚拟 NIC 相关联。 路由表自动与虚拟网络子网相关联。 在你创建和公开服务时，系统会自动更新网络安全组规则和路由表。

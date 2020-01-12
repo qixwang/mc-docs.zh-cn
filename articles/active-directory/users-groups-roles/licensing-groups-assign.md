@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-origin.date: 03/18/2019
-ms.date: 11/14/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea862f329775c5caa77c9f655eb1c5ab90ae9739
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 48f75b4fd22fda0aa136f5642f725aa5619bb851
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084791"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777065"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 
@@ -42,7 +41,7 @@ ms.locfileid: "74084791"
 
 1. 在“所有产品”下，通过选择产品名称选中 Office 365 企业版 E5 和企业移动性 + 安全性 E3。  若要开始分配，请选择页面顶部的“分配”  。
 
-   ![选择要分配许可证的产品](./media/licensing-groups-assign/all-products-assign.png)
+   ![选择要分配许可证的产品](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
 1. 在“分配许可证”页上，选择“用户和组”以打开用户和组的列表。  
 
@@ -89,7 +88,7 @@ ms.locfileid: "74084791"
 
 1. 选择用户以打开该用户的“许可证”  页。 此页显示当前已分配给该用户的所有许可证。 在此示例中，该用户具有从“网亭用户  ”组继承的 Office 365 企业版 E1 许可证。 这与系统尝试从 **HR Department** 组应用的 E3 许可证冲突。 因此，该组中的许可证均未分配给该用户。
 
-   ![查看用户的所有许可证冲突](./media/licensing-groups-assign/user-license-view.png)
+   ![查看用户的所有许可证冲突](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
 1. 若要解决此问题，请从“网亭用户”  组中删除了该用户。 Azure AD 处理更改后，将正常分配“人力资源部”许可证。 
 

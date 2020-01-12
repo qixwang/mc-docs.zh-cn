@@ -7,12 +7,12 @@ origin.date: 03/05/2019
 ms.date: 09/05/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 9567f752de5d92f75c18ad11024ca0ff6c0e7516
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 906aac566c9084323eb30afaaf78b334ea272efc
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838938"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857333"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>使用 PowerShell 备份 Azure VM
 
@@ -63,7 +63,7 @@ ms.locfileid: "74838938"
 2. 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
 
     ```powershell
-    $vault1 = Get-AzRecoveryServicesVault �Name myRSVault
+    $vault1 = Get-AzRecoveryServicesVault –Name myRSVault
     ```
     
 3. 使用 [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext) 设置保管库上下文。

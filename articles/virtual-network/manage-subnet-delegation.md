@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/06/2019
-ms.date: 01/06/2020
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2c68ca0dbae97a4475a437e69d95cf50d4706040
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 2f78b47c0d653fe4d55a7523f85af4815e96d61e
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600142"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859214"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -40,6 +40,8 @@ ms.locfileid: "75600142"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzResourceGroup) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+
+<!--CORRECT ON [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzResourceGroup)-->
 
 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
 
@@ -111,4 +113,3 @@ ms.locfileid: "75600142"
 - 了解如何[在 Azure 中管理子网](virtual-network-manage-subnet.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->
-<!--NEW.date: 01/06/2020-->

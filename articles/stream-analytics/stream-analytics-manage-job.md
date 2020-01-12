@@ -1,22 +1,20 @@
 ---
-title: 教程：使用 Azure 门户创建和管理流分析作业
+title: 教程 - 使用 Azure 门户创建和管理流分析作业
 description: 本教程以端到端方式演示了如何使用 Azure 流分析来分析电话呼叫流中的欺诈性呼叫。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.service: stream-analytics
-ms.workload: data-services
 ms.topic: tutorial
 origin.date: 06/03/2019
 ms.date: 08/03/2019
-ms.openlocfilehash: e96b570c25c806da31a09506060c465543f39c4f
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 8dc30a2aca766040c1eaf1b936ee1431acb09c52
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982182"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856589"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
 本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些欺诈性呼叫，这些呼叫将由流分析作业进行筛选。
 
@@ -30,7 +28,7 @@ ms.locfileid: "74982182"
 > * 测试和启动作业
 > * 在 Power BI 中可视化结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前，请执行以下操作：
 
@@ -53,7 +51,7 @@ ms.locfileid: "74982182"
 
    |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
+   |名称     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
    |订阅     |   \<订阅\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
    |资源组     |   MyASADemoRG      |  选择“新建”  ，然后输入帐户的新资源组名称。       |
    |位置     |   中国东部 2      |    一个位置，可在其中部署事件中心命名空间。     |
@@ -85,7 +83,7 @@ ms.locfileid: "74982182"
 
    连接字符串如下所示：
 
-   `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>`
+   `Endpoint=sb://<Your event hub namespace>.servicebus.chinacloudapi.cn/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>`
 
    请注意，连接字符串包含多个以分号分隔的键值对：**Endpoint**、**SharedAccessKeyName**、**SharedAccessKey** 和 **EntityPath**。
 
@@ -266,7 +264,7 @@ ms.locfileid: "74982182"
 
 在本教程的此部分中，请使用 Power BI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
-若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 **integrate-dashboard-web-app** 示例代码。
+若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-web-app** 子部分下的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-web-app)中的 **integrate-web-app** 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：
 
 1. 选择“登录到 Power BI”  ，以便授予应用程序访问 Power BI 帐户中的仪表板的权限。

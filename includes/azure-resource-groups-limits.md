@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 08/19/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: c73ec67c9185120f776fd70eb3ecaa2f854625d2
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 4ecd38518cf8102b0bf86dcbe96b1fdd55b73231
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631711"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75865141"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -40,4 +40,4 @@ ms.locfileid: "75631711"
 通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[部署 Azure 资源时使用链接的模板](../articles/azure-resource-manager/templates/linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。
 
 <!-- Not Available on Microsoft Azure content  [Objects as parameters](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md)-->
-<!-- URL DIRECT TO https://docs.microsoft.com/en-us/azure/architecture/building-blocks/extending-templates/objects-as-parameters-->
+<!-- URL DIRECT TO https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters-->

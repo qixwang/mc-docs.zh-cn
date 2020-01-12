@@ -3,8 +3,8 @@ title: Azure 安全中心数据安全性 | Azure Docs
 description: 本文档介绍如何在 Azure 安全中心管理数据和确保数据安全性。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 11/28/2018
 ms.date: 06/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 4736783469a6c7c8c6ed7567b41b00ec3409cc9d
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 385a54c556dc55061011a9db0726f266f0a31907
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528307"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857865"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Azure 都严格遵守相关法规与安全准则。

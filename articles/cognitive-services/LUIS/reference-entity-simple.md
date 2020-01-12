@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ef82854a3c669349613d427c32d2efe42e1eed99
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 2560cc76bc263b1b7f92b87bc5ac108c3205b711
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884704"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855192"
 ---
 # <a name="simple-entity"></a>简单实体 
 
@@ -24,7 +24,7 @@ ms.locfileid: "74884704"
 
 **在以下情况下，非常适合使用此实体：**
 
-* 数据格式不一致，但指示相同的事物。 
+* 数据格式不一致，但指示相同的事物。
 
 ![简单实体](./media/luis-concept-entities/simple-entity.png)
 
@@ -87,12 +87,8 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
 |数据对象|实体名称|Value|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|
-
-## <a name="next-steps"></a>后续步骤
-
-在本[教程](luis-quickstart-primary-and-secondary-data.md)中，请使用**简单实体**从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个短语列表，其中包含特定于简单实体的术语。

@@ -8,12 +8,12 @@ origin.date: 04/16/2019
 ms.date: 09/16/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 0d023f6fc6c4cbc2e7cd50c0d7daf5b2d926f862
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 87b5702522f3ab01bdac1b0ab118c0c624d9f57a
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982054"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858500"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 
@@ -83,7 +83,7 @@ ms.locfileid: "74982054"
 为 Azure VM 启用备份，并指定备份策略。
 
 - 策略定义备份运行的时间，以及备份创建恢复点应保留多长时间。
-- 默认保护策略为 VM 一天运行一次备份，并将创建的恢复点保留 30 天。 可以使用此默认策略快速保护 VM。 
+- 默认保护策略为 VM 一天运行一次备份，并将创建的恢复点保留 30 天。 可以使用此默认策略快速保护 VM。
 
 按如下所述启用备份：
 
@@ -132,7 +132,6 @@ ms.locfileid: "74982054"
 
 2. 由于第一个备份作业会创建完整恢复点，因此可能需要等待多达 20 分钟。 如下一个过程所述来监视作业。
 
-
 ## <a name="monitor-the-backup-job"></a>监视备份作业
 
 1. 运行 [Get-AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) 以监视作业状态。
@@ -165,7 +164,6 @@ $vault = Get-AzRecoveryServicesVault -Name "myRecoveryServicesVault"
 Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

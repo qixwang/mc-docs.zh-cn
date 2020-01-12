@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 origin.date: 10/02/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: shnatara
-ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 55d6e5adf051dbed60f68770e155c55faa7d3066
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.lastreviewed: 09/25/2019
+ms.openlocfilehash: 5b6ee799d74e4b068c6627ddaf421d40fc8c286a
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623545"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737909"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -31,12 +31,12 @@ ms.locfileid: "75623545"
 
 Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是一个虚拟机规模集，具有使用 [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) 的预安装软件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要部署 Service Fabric 群集，必须做好以下准备：
 1. **群集证书**  
    这是在部署 Service Fabric 时添加到 Key Vault 的 X.509 服务器证书。 
-   - 此证书中的 **CN** 必须与创建的 Service Fabric 群集的完全限定域名 (FQDN) 匹配。 有关 FQDN 的更多指南，请参阅 [Azure 应用服务的 Azure Stack 生产部署所需的证书](../operator/azure-stack-app-service-before-you-get-started.md#certificates-required-for-azure-stack-production-deployment-of-azure-app-service)。
+   - 此证书中的 **CN** 必须与创建的 Service Fabric 群集的完全限定域名 (FQDN) 匹配。 
    - 证书格式必须是 PFX，因为需要公钥和私钥。 
      请参阅创建此服务器端证书所要满足的[要求](/service-fabric/service-fabric-cluster-security)。
 
@@ -202,7 +202,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 
 1. 若要在站点中进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。   
 
-   ![身份验证](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
+   ![Authenticate](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 08/09/2019
 ms.date: 07/12/2019
 ms.custom: mvc
-ms.openlocfilehash: 01c63ece4585d1e2564a073e7e2752f784c4ebbb
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 202e9547cc3c4ccae1430a92dd3aacac8b46bea5
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674786"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857159"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>通过重新分区优化使用 Azure 流分析进行的处理
 
@@ -23,11 +23,11 @@ ms.locfileid: "71674786"
 如果出现以下情况，则可能无法使用[并行化](stream-analytics-parallelization.md)：
 
 * 你无法控制输入流的分区键。
-* 你的源“散布”的输入跨多个以后需要合并的分区。 
-
-## <a name="how-to-repartition"></a>如何重新分区
+* 你的源“散布”的输入跨多个以后需要合并的分区。
 
 当你处理的数据所在的流不是按照自然的输入方案（例如事件中心的 **PartitionId**）分片时，需要重新分区或重新组织。 如果重新分区，则每个分片都可以独立处理，这样就可以通过线性方式横向扩展流式处理管道。
+
+## <a name="how-to-repartition"></a>如何重新分区
 
 若要重新分区，请在查询中的 **PARTITION BY** 语句后使用关键字 **INTO**。 以下示例按 **DeviceID** 将数据分区，分区数目为 10。 使用 **DeviceID** 的哈希来确定哪个分区应该接受哪个子流。 将针对每个分区的流独立刷新数据，假定输出支持分区的写入并有 10 个分区。
 
@@ -58,7 +58,7 @@ SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY D
 
 当作业使用 SQL 数据库进行输出时，请使用显式重新分区来匹配优化的分区计数，以便将吞吐量最大化。 由于 SQL 在使用八个写入器时效果最好，因此在刷新之前将流重新分区为八个（或在上游的某个位置进一步进行分区）可能会有益于作业性能。 
 
-如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 请考虑在查询中使用 [INTO](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) 来显式指定输出写入器的数量。 
+如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 请考虑在查询中使用 [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 来显式指定输出写入器的数量。 
 
 以下示例从输入中读取数据（而不考虑其自然分区情况如何），然后根据 DeviceID 维度将流重新划分为十份，并将数据刷新到输出。 
 

@@ -43,7 +43,7 @@
       href: concepts-clusters-workloads.md
     - name: 访问和标识
       href: concepts-identity.md
-    - name: 安全
+    - name: 安全性
       href: concepts-security.md
       items: null
     - name: 网络
@@ -52,7 +52,7 @@
       href: concepts-storage.md
     - name: 缩放
       href: concepts-scale.md
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -162,6 +162,8 @@
           href: control-kubeconfig-access.md
         - name: 使用网络策略保护 Pod 流量
           href: use-network-policies.md
+        - name: 定义 API 服务器授权 IP 范围
+          href: api-server-authorized-ip-ranges.md
         - name: 更新群集服务主体凭据
           href: update-credentials.md
         - name: 实现 Azure Active Directory 集成
@@ -173,6 +175,8 @@
         - name: 将 Kubernetes RBAC 用于 Azure AD 集成
           href: azure-ad-rbac.md
           maintainContext: true
+        - name: 轮换证书
+          href: certificate-rotation.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor
@@ -182,9 +186,6 @@
           href: view-master-logs.md
         - name: 查看 kubelet 日志
           href: kubelet-logs.md
-        - name: 查看实时容器日志（预览版）
-          href: ../azure-monitor/insights/container-insights-live-logs.md
-          maintainContext: true
     - name: 开发和运行应用程序
       items:
         - name: 使用 Helm 运行应用程序
@@ -231,7 +232,7 @@
           href: kube-advisor-tool.md
         - name: SSH 节点访问权限
           href: ssh.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest'
@@ -257,5 +258,5 @@
       href: 'https://support.azure.cn/support/contact/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

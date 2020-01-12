@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 04/10/2019
 ms.date: 09/15/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 3ec21840624c07cf8e7c1fd15c5d3979b5042677
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 72b2112ecccfffb25667b7f564aee0cf09b27de9
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330126"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853943"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>快速入门：使用 Azure PowerShell 创建服务总线队列
 本快速入门介绍如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
@@ -26,12 +26,12 @@ ms.locfileid: "71330126"
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保已安装：
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始前创建一个[试用帐户][]。 
-- [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。 请使用 Visual Studio 生成一个示例，以便向队列发送消息以及从队列接收消息。 示例用于测试在门户中创建的队列。 
+- [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。 请使用 Visual Studio 生成一个向队列发送消息以及从队列接收消息的示例。 示例用于测试在门户中创建的队列。 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 
 本快速入门要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell][]。
@@ -47,7 +47,7 @@ ms.locfileid: "71330126"
 2. 运行以下命令来登录到 Azure：
 
    ```PowerShell
-   Connect-AzAccount -Environment AzureChinaCloud
+   Login-AzAccount -Environment AzureChinaCloud
    ```
 
 3. 发出以下命令来设置当前的订阅上下文，或者查看当前活动的订阅：
@@ -79,7 +79,7 @@ Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-nam
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以观察[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中的代码。
+创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中检查代码。
 
 若要运行此代码，请执行以下操作：
 

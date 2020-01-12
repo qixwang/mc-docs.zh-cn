@@ -1,7 +1,6 @@
 ---
 title: 通过 CI/CD 和 Azure DevOps 部署 Azure 流分析作业
 description: 本文介绍了如何使用 Azure DevOps Services 通过 CI/CD 部署流分析作业。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 origin.date: 12/07/2018
 ms.date: 08/09/2019
-ms.openlocfilehash: 9bb9308370978ec141544693d1b7a94d7327ea06
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 6f1d9599b75c143aeb9c14e5251cf4a17c3f7db5
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528230"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857776"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教程：使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业
 本教程介绍了如何使用 Azure 管道为 Azure 流分析作业设置持续集成和部署。 
@@ -27,7 +26,7 @@ ms.locfileid: "74528230"
 > * 在 Azure 管道中创建发布管道
 > * 自动部署和升级应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始之前，请确保具有以下各项：
 
 * 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/free-trial/)。

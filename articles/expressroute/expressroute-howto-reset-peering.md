@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 origin.date: 10/25/2019
 ms.author: v-yiso
-ms.date: 12/23/2019
-ms.openlocfilehash: 468bfe9bd38d11536e5d9ef27bedd4294011fb47
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/20/2020
+ms.openlocfilehash: defb38f4fb2781e623e1778724ec4b5d76a609e2
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334742"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859591"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连
 
@@ -21,7 +21,7 @@ ms.locfileid: "75334742"
 
 存在几个有助于重置 ExpressRoute 对等互连的方案。
 * 测试灾难恢复设计和实现。 例如，你有两条 ExpressRoute 线路。 可以禁用一条线路的对等互连，并强制网络流量故障转移到另一条线路。
-* 对 ExpressRoute 线路的 Azure 专用对等互连或 Microsoft 对等互连启用双向转发检测 (BFD)。 如果 ExpressRoute 线路是在 2018 年 8 月 1 日之后创建的，则默认情况下会对 Azure 专用对等互连启用 BFD；如果 ExpressRoute 线路是在 2019 年 10 月 1 日之后创建的，则默认情况下会对 Microsoft 对等互连启用 BFD。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 
+* 对 ExpressRoute 线路的 Azure 专用对等互连启用双向转发检测 (BFD)。 如果 ExpressRoute 线路在 2018 年 8 月 1 日之后创建，将默认启用 BFD。 如果线路在此之前创建，则未启用 BFD。 可以通过禁用对等互连并重新启用它来启用 BFD。 应注意，BFD 仅在 Azure 专用对等互连上受支持。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -30,27 +30,27 @@ ms.locfileid: "75334742"
 
 1. 如果在本地运行 PowerShell，请使用提升的权限打开 PowerShell 控制台，然后连接到帐户。 使用下面的示例来帮助连接：
 
-   ```powershell
+   ```azurepowershell
    Connect-AzAccount -Environment AzureChinaCloud
    ```
 2. 如果有多个 Azure 订阅，请查看该帐户的订阅。
 
-   ```powershell
+   ```azurepowershell
    Get-AzSubscription
    ```
 3. 指定要使用的订阅。
 
-   ```powershell
+   ```azurepowershell
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 4. 运行以下命令，检索 ExpressRoute 线路。
 
-   ```powershell
+   ```azurepowershell
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
 5. 标识要禁用或启用的对等互连。 对等互连是一个数组  。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
 
-   ```powershell
+   ```azurepowershell
    Name                             : ExpressRouteARMCircuit
    ResourceGroupName                : ExpressRouteResourceGroup
    Location                         : chinanorth
@@ -133,7 +133,7 @@ ms.locfileid: "75334742"
    ```
 6. 运行以下命令以更改对等互连状态。
 
-   ```powershell
+   ```azurepowershell
    $ckt.Peerings[0].State = "Disabled"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```

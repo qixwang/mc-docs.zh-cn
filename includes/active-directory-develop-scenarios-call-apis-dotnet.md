@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 06/21/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: a4f5469576485ba74ea1b006cd1d2719c48a34db
-ms.sourcegitcommit: a0f90b99b9081d25ced6fa3c4eb7903fb0904d61
+ms.openlocfilehash: 16741dae9a0bacafb6e2e1971dd8f79d770e2701
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67307608"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777044"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>MSAL.NET 中的 AuthenticationResult 属性
 
@@ -63,7 +62,7 @@ MSAL.NET 定义了帐户的概念（通过 `IAccount` 接口）。 这项中断�
 
 MSAL 返回 `AuthenticationResult` 后（在 `result` 中），需将其添加到 HTTP 授权标头，然后通过调用来访问受保护的 Web API。
 
-```CSharp
+```csharp
 httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 

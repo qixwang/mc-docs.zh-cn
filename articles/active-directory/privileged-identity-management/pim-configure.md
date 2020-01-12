@@ -1,5 +1,5 @@
 ---
-title: 什么是 Privileged Identity Management？ - Azure Active Directory | Microsoft Docs
+title: 什么是 Privileged Identity Management？ - Azure AD | Microsoft Docs
 description: 概述 Azure AD Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-origin.date: 04/09/2019
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a873dd064c29e672b81438e10d79d884de07337
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: e43e98d8c1760fbb1fa2fae4fe1fdd96906db43f
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830837"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777087"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -46,7 +45,7 @@ Privileged Identity Management 提供基于时间和基于审批的角色激活�
 
 设置 Privileged Identity Management 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。    管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
 
-![Azure 门户中 Privileged Identity Management 的屏幕截图](./media/pim-configure/pim-overview.png)
+![Azure 门户中 Privileged Identity Management 的屏幕截图](./media/pim-configure/pim-quickstart.png)
 
 ## <a name="who-can-do-what"></a>用户及其权限
 
@@ -93,7 +92,7 @@ Privileged Identity Management 支持以下方案：
 | 永久活动 | 持续时间 | 使用户无需执行任何操作，始终可以使用该角色的角色分配。 |
 | 在过期之前符合条件 | 持续时间 | 使用户在指定的开始和结束日期范围内有资格激活该角色的角色分配。 |
 | 在过期之前处于活动状态 | 持续时间 | 使用户无需执行任何操作，可在指定的开始和结束日期范围内使用该角色的角色分配。 |
-| 恰时 (JIT) 访问 |  | 一种访问模式。在此模式下，用户会收到执行特权任务的临时权限，防止恶意用户或未授权用户在权限过期后获得访问权限。 只有在用户需要的情况下，才会授予访问权限。 |
+| 实时 (JIT) 访问 |  | 一种访问模式。在此模式下，用户会收到执行特权任务的临时权限，防止恶意用户或未授权用户在权限过期后获得访问权限。 只有在用户需要的情况下，才会授予访问权限。 |
 | 最低访问权限原则 |  | 一种建议的安全做法，仅为每个用户提供所需的最低权限，以便完成有权执行的任务。 此做法会尽量减少全局管理员的数目，并使用适合特定方案的特定管理员角色。 |
 
 ## <a name="license-requirements"></a>许可要求

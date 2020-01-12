@@ -1,7 +1,6 @@
 ---
 title: 安装适用于 Visual Studio 的 Azure 流分析工具
 description: 本文介绍安装要求以及如何安装适用于 Visual Studio 的 Azure 流分析工具。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/22/2018
 ms.date: 11/26/2018
-ms.openlocfilehash: 6ba3a0e18c084e7fef75c84e6a78b2101ae500d5
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 8348f1805fe64d8a4507ad1deb99c10a07f83fb1
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528231"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857758"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>安装适用于 Visual Studio 的 Azure 流分析工具
 

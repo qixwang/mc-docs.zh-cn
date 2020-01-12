@@ -1,27 +1,18 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 .NET 应用 | Azure
+title: 在 Azure 中的 Service Fabric 上快速创建 .NET 应用
 description: 在本快速入门中，请使用 Service Fabric Reliable Services 示例应用程序创建用于 Azure 的 .NET 应用程序。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 origin.date: 06/26/2019
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 5b8d4d930abdea4b1ba963df443139c5927e9a7e
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: cdb0652cdcad6cd217a6158c48307e9ac238c733
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819623"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742478"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -40,7 +31,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 * 跨多个节点横向扩展应用程序
 * 执行应用程序滚动升级
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门教程，需先执行以下操作：
 
@@ -80,7 +71,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ## <a name="download-the-sample"></a>下载示例
 
-在命令窗口中，运行以下命令，将示例应用程序存储库克隆到本地计算机。
+在命令窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -103,7 +94,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ![应用程序前端](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
-现在可以添加一组投票选项，并开始进行投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
+现在可以添加一组投票选项，并开始投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
 
 ## <a name="walk-through-the-voting-sample-application"></a>大致了解投票示例应用程序
 
@@ -124,7 +115,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
-此应用程序应该正常运行，不过，你可以使用调试程序来了解应用程序关键部分的运行情况。 在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以将“应用程序调试模式”  作为 Visual Studio 中“投票”  项目的属性进行更改。
+此应用程序应该正常运行，不过，你可以使用调试程序来了解应用程序关键部分的运行情况。 在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以在 Visual Studio 中更改“应用程序调试模式” （“Voting” 项目属性）。  
 
 若要查看代码，请完成以下步骤：
 
@@ -141,7 +132,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     * 然后，向 ReverseProxy 发送 HTTP PUT 请求  (2)。
     * 最后，将后端服务的响应返回到客户端  (3)。
 
-4. 按 F5  以继续操作
+4. 按 F5  继续操作
     - 在浏览器提示时，授予 ServiceFabricAllowedUsers 组读取和执行权限（适用于调试模式）。
     - 此时，到达后端服务中的断点。
 

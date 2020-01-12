@@ -1,19 +1,16 @@
 ---
-title: Service Fabric 机密存储 | Azure
+title: Service Fabric 机密存储
 description: 本文介绍如何使用 Service Fabric 机密存储。
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
 ms.topic: conceptual
 origin.date: 07/25/2019
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: fdc61b8056795db8b3bec008801722034374c196
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: af3b296d4947e10e2bbb6ebfc066f6b1a4b3abcc
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348562"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742279"
 ---
 # <a name="service-fabric-secrets-store"></a>Service Fabric 机密存储
 本文介绍如何使用 Service Fabric 机密存储 (CSS) 在 Service Fabric 应用程序中创建和使用机密。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。
@@ -45,6 +42,7 @@ ms.locfileid: "75348562"
             }
          ]
     }
+    ...
 ]
 ```
 ## <a name="declare-secret-resource"></a>声明机密资源

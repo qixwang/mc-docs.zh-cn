@@ -8,16 +8,16 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-origin.date: 03/19/2018
-ms.date: 03/19/2019
+origin.date: 12/05/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: da71dc51e514d39cd6c88ca4820a80f349b51efe
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: ded417d28f6140c5b41c7e8cd85c45c25c2d54ab
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583780"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857721"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -164,7 +164,7 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 -   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”  和“正在启动”  状态，然后可供任务计划使用。
 -   Azure 门户将以指标形式提供取代计数。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 [Azure 门户](https://portal.azure.cn)提供了低优先级节点的新指标。 这些指标是：
 

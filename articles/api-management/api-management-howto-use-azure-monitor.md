@@ -13,14 +13,14 @@ ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 06/15/2018
-ms.date: 07/15/2019
+ms.date: 01/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 80bdb8b26283e40991cf783eddcb247da83b420f
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: ec25daeae753585beaefd53cea07e80207cf8138
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736716"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859498"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -33,7 +33,7 @@ ms.locfileid: "70736716"
 > * 查看诊断日志
 > * 查看 API 的指标 
 > * 针对 API 收到的未经授权的调用设置警报规则
->   ## <a name="prerequisites"></a>先决条件
+>   ## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
@@ -178,13 +178,13 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 ```
 
 
-|        properties        |   类型    |                                                                       说明                                                                        |
+|        属性        |   类型    |                                                                       说明                                                                        |
 | ------------- | ------------- | ------------- |
-|    isRequestSuccess    |  布尔值  |                                   如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true                                   |
-|          time          | 日期时间 |                                                  网关接收 HTTP 请求的时间戳                                                  |
+|    isRequestSuccess    |  boolean  |                                   如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true                                   |
+| time | 日期时间 | 网关开始处理请求的时间戳 |
 |     operationName      |  string   |                                                   常量值“'Microsoft.ApiManagement/GatewayLogs”                                                   |
 |        category        |  string   |                                                               常量值“GatewayLogs”                                                               |
-|       durationMs       |  integer  |                          从网关收到请求到响应全部发送出去经过的时间（毫秒）                          |
+| durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒）。 它包括 clienTime、cacheTime 和 backendTime。 |
 |    callerIpAddress     |  string   |                                             直接网关调用方（可以是中介）的 IP 地址                                              |
 |     correlationId      |  string   |                                                由 API 管理分配的唯一 http 请求标识符                                                 |
 |        location        |  string   |                                    处理请求的网关所在 Azure 区域的名称                                     |
@@ -211,8 +211,8 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 |         userId         |  string   |                                                        当前请求的用户实体标识符                                                        |
 |   apimSubscriptionId   |  string   |                                                    当前请求的订阅实体标识符                                                    |
 |       backendId        |  string   |                                                      当前请求的后端实体标识符                                                       |
-|       lastError        |  object   |                                                              上一个请求处理错误                                                               |
-|        elapsed         |  integer  |                               从网关收到请求到发生错误经过的时间（毫秒）                               |
+|       LastError        |  object   |                                                              上一个请求处理错误                                                               |
+| elapsed | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
 |         source         |  string   |                                            导致错误的策略或内部处理程序的名称                                            |
 |         scope          |  string   |                                         导致错误的策略所在策略文档的范围                                         |
 |        section         |  string   |                                        导致错误的策略所在策略文档的节                                        |
@@ -229,7 +229,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 > * 查看 API 的指标 
 > * 针对 API 收到的未经授权的调用设置警报规则
 
-转到下一教程：
+进入下一教程：
 
 > [!div class="nextstepaction"]
 > [跟踪调用](api-management-howto-api-inspector.md)

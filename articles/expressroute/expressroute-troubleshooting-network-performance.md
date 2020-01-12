@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/20/2017
 ms.author: v-yiso
-ms.date: 04/08/2019
-ms.openlocfilehash: 8f1ec724558e2bd190fe0ffe3e48caec28834df9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.date: 01/20/2020
+ms.openlocfilehash: 636b264a63d84d7a5f9aa34398c6319c27a828dc
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839033"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859745"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
 ## <a name="overview"></a>概述

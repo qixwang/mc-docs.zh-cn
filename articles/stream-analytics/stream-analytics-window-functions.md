@@ -1,20 +1,19 @@
 ---
 title: Azure 流分析开窗函数简介
 description: 本文介绍在 Azure 流分析作业中使用的四个开窗函数（翻转、跳跃、滑动、会话）。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 08/09/2019
-ms.date: 06/11/2019
-ms.openlocfilehash: 9e09480a24a009d6a0ec3026723c3eb2e924dc4b
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+origin.date: 06/11/2019
+ms.date: 1/6/2020
+ms.openlocfilehash: eee266f064c4d6e15f45ed87e711833b3106f8c3
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169593"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857179"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>流分析开窗函数简介
 在实时流方案中，对临时窗口中包含的数据执行操作是一种常见模式。 流分析提供对开窗函数的本机支持，使开发人员能够最小的工作量创建复杂的流进程作业。

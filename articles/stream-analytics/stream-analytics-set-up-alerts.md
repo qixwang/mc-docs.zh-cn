@@ -1,7 +1,6 @@
 ---
 title: 为 Azure 流分析作业设置监视警报
 description: 本文介绍如何使用 Azure 门户为 Azure 流分析作业设置监视和警报。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: 14926839f282082b9b6b51c0418427336e006d53
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: bb7e5ff32ab658f064a7b23ad4579e4ada242a1d
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674759"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855524"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 origin.date: 11/04/2019
 ms.author: v-yiso
-ms.date: 11/18/2019
-ms.openlocfilehash: 6ffbc223a2d10d5750dbe6887a1c3034d72f69f5
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.date: 01/20/2020
+ms.openlocfilehash: 752e02f09854898d9f096615f37be771510de7ac
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831400"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859502"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
 
@@ -136,7 +136,7 @@ ms.locfileid: "73831400"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何使用 OAuth 2.0 和 API 管理的详细信息，请参阅此[文章](api-management-howto-protect-backend-with-aad.md)。
+有关如何使用 OAuth 2.0 和 API 管理的详细信息，请观看以下视频并查看随附的[文章](api-management-howto-protect-backend-with-aad.md)。
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png

@@ -3,9 +3,8 @@ title: Azure 安全中心中的安全评分 | Microsoft Docs
 description: " 使用 Azure 安全中心中的安全评分确定安全建议的优先级。 "
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: na
 origin.date: 1/15/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 684e7fa61e84ba4b7f9ccdbdfa0be005e657e094
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 21d49687b91586aa1c466d93b1bbe2a6de420413
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674611"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857902"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>提高 Azure 安全中心的安全评分
 

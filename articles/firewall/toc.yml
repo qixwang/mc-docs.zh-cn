@@ -25,7 +25,7 @@
   items:
     - name: FQDN 标记
       href: fqdn-tags.md
-    - name: 基础设施 FQDN
+    - name: 基础结构 FQDN
       href: infrastructure-fqdns.md
     - name: 日志和指标
       href: logs-and-metrics.md
@@ -65,14 +65,14 @@
       href: 'https://docs.azure.cn/develop/python/'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/firewall'
-    - name: Azure 资源管理器
-      href: ../azure-resource-manager/resource-group-overview.md
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
     - name: 常见问题
       href: firewall-faq.md
     - name: 创作模板
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/azure-firewall/'
     - name: 区域可用性

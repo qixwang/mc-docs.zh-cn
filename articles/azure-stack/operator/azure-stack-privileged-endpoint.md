@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 09/18/2019
-ms.date: 11/18/2019
+origin.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
-ms.lastreviewed: 09/18/2019
-ms.openlocfilehash: 643c3efa29a1b26d7c13ab02dd5cb4512bbe4c1c
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: cb640c78e4df8185af7806440a4f965add289a31
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020286"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737893"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
@@ -31,7 +31,7 @@ Azure Stack 操作员应使用管理员门户、PowerShell 或 Azure 资源管�
 
 可以使用 PEP 执行以下任务：
 
-- 低级任务，例如[收集诊断日志](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)。
+- 低级任务，例如[收集诊断日志](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
 - 针对集成系统的许多部署后数据中心集成任务，例如在部署后添加域名系统 (DNS) 转发器、设置 Microsoft Graph 集成、Active Directory 联合身份验证服务 (AD FS) 集成、证书轮换，等等。
 - 与支持人员合作，获取临时性的高级访问权限，以便对集成系统进行深入的故障排除。
 
@@ -192,4 +192,4 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 诊断工具](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)
+[Azure Stack 诊断工具](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)

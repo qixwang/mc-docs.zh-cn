@@ -32,16 +32,6 @@
       items:
         - name: 保护计算机和应用
           href: security-center-virtual-machine-protection.md
-    - name: Archive
-      items:
-        - name: 添加 Web 应用程序防火墙
-          href: security-center-add-web-application-firewall.md
-        - name: 完成应用程序保护
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-        - name: 添加下一代防火墙
-          href: security-center-add-next-generation-firewall.md
-        - name: 仅通过 NGFW 路由流量
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
 - name: 参考
   items:
     - name: REST API

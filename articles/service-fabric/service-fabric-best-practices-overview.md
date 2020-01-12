@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 应用程序和群集最佳做法 | Azure
+title: Azure Service Fabric 应用程序和群集最佳做法
 description: 用于管理 Service Fabric 群集和应用程序的最佳做法。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/18/2019
-ms.date: 08/05/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6f9bfb691934542682e0ed0ad91eec12b4b8d865
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: a8bb333c4d5116d6f11e25c4faaef92177efe9b3
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753172"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742450"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric 应用程序和群集最佳做法
 
@@ -61,4 +52,4 @@ ms.locfileid: "68753172"
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)
 * Service Fabric 故障排除：[故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties -->

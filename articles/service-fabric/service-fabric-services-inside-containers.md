@@ -1,26 +1,16 @@
 ---
 title: 在 Windows 上容器化 Azure Service Fabric 服务
 description: 了解如何在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors 服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 05/23/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: b0d1a302707716097d7bea7f2557f86508759875
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 06b487d4e530ff981a5cdf69d836baf0348b53b2
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254576"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742268"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 
@@ -61,20 +51,24 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 5. 对于每个需要容器化的代码包，运行 PowerShell 脚本 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 用法如下：
 
     完整的 .NET
-      ```powershell
-        $codePackagePath = 'Path to the code package to containerize.'
-        $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
-        $applicationExeName = 'Name of the Code package executable.'
-        CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -ApplicationExeName $applicationExeName
-      ```
+    
+    ```powershell
+    $codePackagePath = 'Path to the code package to containerize.'
+    $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
+    $applicationExeName = 'Name of the Code package executable.'
+    CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -ApplicationExeName $applicationExeName
+    ```
+    
     .NET Core
-      ```powershell
-        $codePackagePath = 'Path to the code package to containerize.'
-        $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
-        $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
-        CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
-      ```
-      该脚本在 $dockerPackageOutputDirectoryPath 处生成包含 Docker 项目的文件夹。 可以根据需要修改生成的 Dockerfile 来 `expose` 任何端口，以及运行设置脚本等 。
+    
+    ```powershell
+    $codePackagePath = 'Path to the code package to containerize.'
+    $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
+    $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
+    CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
+    ```
+    
+    该脚本在 $dockerPackageOutputDirectoryPath 处生成包含 Docker 项目的文件夹。 可以根据需要修改生成的 Dockerfile 来 `expose` 任何端口，以及运行设置脚本等 。
 
 6. 接下来需要[生成](service-fabric-get-started-containers.md#Build-Containers) Docker 容器包并将其[推送](service-fabric-get-started-containers.md#Push-Containers)到存储库。
 
@@ -134,7 +128,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 10. 若要测试此应用程序，需要将其部署到正在运行版本 5.7 或更高版本的群集。 对于运行时版本 6.1 或更低版本，需要编辑和更新群集设置，启用此预览功能。 请按照[本文](service-fabric-cluster-fabric-settings.md)中的步骤操作，添加下一步所示的设置。
     
     ```
-      {
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -142,7 +136,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
             "value": "true"
           }
         ]
-      }
+    }
     ```
 
 11. 接下来，将已编辑的应用程序包[部署](service-fabric-deploy-remove-applications.md)到此群集。

@@ -1,11 +1,10 @@
 ---
-title: Azure 安全中心的容器建议 | Azure Docs
+title: Azure 安全中心的容器建议 | Microsoft Docs
 description: 本文档介绍了 Azure 安全中心有关如何帮助保护容器的建议。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2e76c7f7-a3dd-4d9f-add9-7e0e10e9324d
 ms.service: security-center
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: na
 origin.date: 09/20/2018
 ms.date: 06/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a119cd3ad5df1f5cb9d0946585542b15fecc0505
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 85a121998b71f3cf008d47a09bdc34624a1bb7c0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674618"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858015"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 安全中心容器建议
 

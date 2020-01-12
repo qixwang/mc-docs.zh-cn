@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/07/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 17684d846cbaacc132cec44dfd5382778db80be1
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 98016691927d850532b5c828026b9460b5e9a078
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839028"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857720"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
@@ -88,9 +88,9 @@ ms.locfileid: "74839028"
 
 这些步骤使用了以下术语：
 
-* *源计算机* � 从其中创建备份并且当前不可用的原始计算机。
-* *目标计算机* � 要将数据恢复到的计算机。
-* *示例保管库* � 源计算机和目标计算机将注册到的恢复服务保管库。
+* *源计算机* – 从中创建备份并且当前不可用的原始计算机。
+* *目标计算机* – 要将数据恢复到的计算机。
+* *示例保管库* – 源计算机和目标计算机注册到的恢复服务保管库。
 
 > [!NOTE]
 > 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如，在 Windows 7 计算机中创建的备份可以还原到 Windows 7（或更高版本）的计算机上。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
@@ -147,6 +147,6 @@ ms.locfileid: "74839028"
 
 ## <a name="next-steps"></a>后续步骤
 
-恢复文件和文件夹后，可以[管理备份](backup-azure-manage-windows-server.md)。
+恢复文件和文件夹后，可 [管理备份](backup-azure-manage-windows-server.md)。
 
 <!-- Update_Description: wording update -->

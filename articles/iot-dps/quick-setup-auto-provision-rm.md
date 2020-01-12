@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure 资源管理器模板设置设备预配 | Microsoft Docs
-description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务
+title: 使用 Azure 资源管理器模板设置 Azure IoT 中心设备预配
+description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4ad05d02d5992a8038832fc928e0135da32e98e3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 64bbd9714be109a344dcb2bb67994e93a3dcd5ea
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334732"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859706"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
 可以使用 [Azure 资源管理器](/azure-resource-manager/resource-group-overview)以编程方式设置预配设备所需的 Azure 云资源。 这些步骤演示了如何创建 IoT 中心和新的 IoT 中心设备预配服务，然后使用 Azure 资源管理器模板将这两项服务链接到一起。 本快速入门使用 [Azure CLI](/azure-resource-manager/resource-group-template-deploy-cli) 执行创建资源组和部署模板所需的编程步骤，但你也可以使用 [Azure 门户](/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](/azure-resource-manager/resource-group-template-deploy)、.NET、Ruby 或其他编程语言，轻松执行这些步骤和部署模板。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - 本快速入门要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
@@ -274,7 +274,7 @@ ms.locfileid: "75334732"
 
    ```
 
-4. 将 **hubLocation** 值添加到 parameter 节。 此值指定 IoT 中心和预配服务的位置。 该值必须与在模板文件的参数定义的 **allowedValues** 集合中指定的某个位置相符。 此集合将这些值限制为支持 IoT 中心和预配服务的 Azure 位置。 如需设备预配服务支持的位置的列表，可以运行以下命令：`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`，或者转到 [Azure 状态](https://azure.microsoft.com/status/)页，然后搜索“设备预配服务”。
+4. 将 **hubLocation** 值添加到 parameter 节。 此值指定 IoT 中心和预配服务的位置。 该值必须与在模板文件的参数定义的 **allowedValues** 集合中指定的某个位置相符。 此集合将这些值限制为支持 IoT 中心和预配服务的 Azure 位置。 如需设备预配服务支持的位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，或者转到 [Azure 状态](https://azure.microsoft.com/status/)页，然后搜索“设备预配服务”。
 
    ```json
     "parameters": {

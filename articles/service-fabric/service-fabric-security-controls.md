@@ -1,21 +1,17 @@
 ---
 title: Azure Service Fabric 的安全控制
 description: 用于评估 Azure Service Fabric 的安全控制的清单
-services: service-fabric
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-ms.service: service-fabric
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ccc4de6acbb120519ca5b76cb6dfe866fbfb2563
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: e47806bbbd8bb8f5cad06d694ccd2cad2351516e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306842"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742421"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Azure Service Fabric 的安全控制
 
@@ -36,11 +32,9 @@ ms.locfileid: "71306842"
 
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
-| Azure 监视支持（Log Analytics 等）| 是 | 使用 Azure 监视支持和第三方支持。 |
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 使用 Azure 监视支持和第三方支持。 |
 | 控制和管理平面日志记录和审核| 是 | 所有控制平面操作都需经过审核和审批流程。 |
 | 数据平面日志记录和审核| 不适用 | 客户拥有群集。  |
-
-<!--Not Available on App insights-->
 
 ## <a name="identity"></a>标识
 
@@ -68,4 +62,4 @@ ms.locfileid: "71306842"
 <!--Not Available on ## Next steps-->
 <!--Not Avaialable on [built-in security controls across Azure services](../security/fundamentals/security-controls.md)-->
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update -->

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 08/14/2019
+origin.date: 12/13/2019
 ms.author: v-yiso
-ms.date: 09/09/2019
-ms.openlocfilehash: e01db74b66ed63f9a2d6c31c06c8078f1aa92e2d
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/20/2020
+ms.openlocfilehash: d060d06c6991ad9df4aee7707eaf84b946b53c25
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174168"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859747"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -97,7 +97,7 @@ ms.locfileid: "70174168"
 | **PCCW Global Limited** | 支持 | 支持 | 香港特别行政区 |
 | **[SingTel]( http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |  支持 | 支持 | 新加坡 |
 | **Softbank** | 支持 | 支持 | 大坂、东京 | 
-| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | 支持 | 支持 | 阿姆斯特丹、金奈、香港特别行政区、伦敦、孟买、硅谷、新加坡、华盛顿特区 |
+| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | 支持 | 支持 | 阿姆斯特丹、金奈、中国香港特别行政区、伦敦、孟买、硅谷、新加坡、华盛顿特区 |
 | **[TeleCity Group]( http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | 支持 | 支持 | 阿姆斯特丹、伦敦 |
 | **Telefonica** | 即将支持 | 即将支持 | 圣保罗+ |
 | **Telenor** | 支持 | 支持 | 阿姆斯特丹、伦敦 |
@@ -168,10 +168,10 @@ ms.locfileid: "70174168"
 |---|---|
 |**[Avanade Inc.](http://www.avanade.com/)**| 亚洲、欧洲、美国 |
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| 欧洲 |
-|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|美国|
+|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|US|
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | 亚洲 |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 美国 |
-|**[Project Leadership](http://www.projectleadership.net/azure)** | 美国 |
+|**[Project Leadership](http://www.projectleadership.net/azure)** | US |
 
 ## <a name="next-steps"></a>后续步骤
 

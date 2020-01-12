@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/06/2018
-ms.date: 12/02/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: 2eec68537b814eb35af2c3895d62de35ac11fbe7
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 64c44d2049441f1d266e88b50574d4a4c0323671
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389453"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859554"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
@@ -88,6 +88,10 @@ ms.locfileid: "74389453"
     可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 本文的 [为现有的 VNet 配置并存连接](#add) 部分指导删除网关，并创建新的 ExpressRoute 连接和站点到站点 VPN 连接。 请注意，在创建新连接时，必须按照非常特定的顺序完成步骤。 不要按照其他文章中的说明来创建网关和连接。
 
     在此过程中，创建可以共存的连接将需要用户删除网关，并配置新网关。 这意味着，在删除并重新创建网关和连接时，跨界连接会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。 在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
+
+## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
+
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="new"></a>创建新的虚拟网络和并存连接
 

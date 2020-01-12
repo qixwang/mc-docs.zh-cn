@@ -6,16 +6,16 @@ author: WenJason
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 11/01/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: 367acbd6d66a5e282884b12fe491e8dbde5cc3b6
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 151947aedd34329e4ccae97746b2d53942d2a09d
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020540"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737898"
 ---
 # <a name="run-a-linux-virtual-machine-on-azure-stack"></a>在 Azure Stack 上运行 Linux 虚拟机
 
@@ -85,7 +85,7 @@ sudo mount /dev/sdc1 /data1
 
 **诊断**。 启用监视和诊断，包括基本运行状况指标、诊断基础结构日志和[启动诊断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)。 如果 VM 陷入不可启动状态，启动诊断有助于诊断启动故障。 创建用于存储日志的 Azure 存储帐户。 标准的本地冗余存储 (LRS) 帐户足以存储诊断日志。 有关详细信息，请参阅[启用监视和诊断](/azure-stack/user/azure-stack-metrics-azure-data)。
 
-**可用性**。 由于 Azure Stack 操作员计划的计划内维护，你的 VM 可能需要重新启动。 为了提高可用性，请在[可用性集](/azure-stack/operator/azure-stack-overview#providing-high-availability)中部署多个 VM。
+**可用性**。 由于 Azure Stack 操作员计划的计划内维护，你的 VM 可能需要重新启动。 为了提高可用性，请在[可用性集](/azure-stack/operator/app-service-deploy-ha)中部署多个 VM。
 
 **备份** 有关保护 Azure Stack IaaS VM 的建议，请参阅[此文](/azure-stack/user/azure-stack-manage-vm-protect)。
 

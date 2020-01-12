@@ -1,7 +1,6 @@
 ---
 title: 在 Azure 流分析中缩放机器学习函数
 description: 本文介绍如何通过配置分区和流单元缩放使用机器学习函数，的流分析作业。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: dee09021076ff46ff82e4e29b7ab6dc890b60e0b
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 84e3e3c5ac5ebf09991318a830af7deaf868d4c8
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528042"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855520"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 

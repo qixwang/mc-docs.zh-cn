@@ -5,14 +5,14 @@ author: WenJason
 ms.service: dns
 ms.topic: overview
 origin.date: 3/21/2019
-ms.date: 07/22/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.openlocfilehash: f87b6154ebc55b77ec2d0d2330d28d39aa83b5b2
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.openlocfilehash: bfe1d556407e8710278c9dcc5a1e0fee957fed7c
+ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298091"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777444"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -49,6 +49,12 @@ Azure DNS 当前不支持 DNSSEC。 在大多数情况下，可以通过在应�
 DNS 基于在 Azure 中托管的 DNS 区域数和接收的 DNS 查询数进行计费。 若要深入了解定价，请参阅 [Azure DNS 定价](https://azure.cn/pricing/details/dns/)。
 
 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务进行集成。
+
+## <a name="customizable-virtual-networks-with-private-domains"></a>可自定义的包含专用域的虚拟网络
+
+Azure DNS 还支持 DNS 专用域。 此功能允许在专用虚拟网络中使用自定义域名而不使用当前可用的由 Azure 提供的名称。
+
+有关详细信息，请参阅[在专用域中使用 Azure DNS](private-dns-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

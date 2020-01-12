@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 01/07/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742784ce16cb9315ff3d5caa341bb79971b8e86d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9c4cb830f385ce8a206ff8f72b6a01f67d8e70b8
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335543"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777055"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>使用模板在 Azure 虚拟机规模集上为 Azure 资源配置托管标识
 
@@ -32,7 +32,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 在 Azure 虚拟机规模集上启用和禁用系统分配托管标识
 - 在 Azure 虚拟机规模集上添加和删除用户分配托管标识
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
 - 如果还没有 Azure 帐户，请先[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。
@@ -71,9 +71,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    }
    ```
 
-    > [!NOTE]
-    > 可以选择通过在模板的 `extensionProfile` 元素中指定 Azure 资源虚拟机规模集扩展来为其预配托管标识。 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。  有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 以进行身份验证](howto-migrate-vm-extension.md)。
-    
+> [!NOTE]
+> 可以选择通过在模板的 `extensionProfile` 元素中指定 Azure 资源虚拟机规模集扩展来为其预配托管标识。 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。  有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 以进行身份验证](howto-migrate-vm-extension.md)。
+
 
 4. 完成后，以下各节应当会添加到模板的 resource 节并应当呈现如下：
 
@@ -195,9 +195,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    }
    ``` 
-    > [!NOTE]
-    > 可以选择通过在模板的 `extensionProfile` 元素中指定 Azure 资源虚拟机规模集扩展来为其预配托管标识。 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。  有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 以进行身份验证](howto-migrate-vm-extension.md)。
-    
+> [!NOTE]
+> 可以选择通过在模板的 `extensionProfile` 元素中指定 Azure 资源虚拟机规模集扩展来为其预配托管标识。 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。  有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 以进行身份验证](howto-migrate-vm-extension.md)。
+
 3. 完成后，模板应当类似于以下示例：
    
    **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**   
@@ -323,4 +323,4 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 资源概述的托管标识](overview.md)。
 
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

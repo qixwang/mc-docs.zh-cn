@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure 流分析 CI/CD NuGet 包
 description: 本文介绍如何使用 Azure 流分析 CI/CD NuGet 包设置持续集成和部署过程。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/15/2019
 ms.date: 08/15/2019
-ms.openlocfilehash: 48096aaef1ee630e86ab18c0ebdeb1127c06bf6d
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: cb7e728473e2e32d580dcee2b2b74c45a1cba897
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528405"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854537"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包进行集成和开发 
 本文介绍如何使用 Azure 流分析 CI/CD NuGet 包设置持续集成和部署过程。

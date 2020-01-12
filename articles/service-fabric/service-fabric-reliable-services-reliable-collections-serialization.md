@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 中的 Reliable Collection 对象序列化 | Azure
+title: Azure Service Fabric 中的 Reliable Collection 对象序列化
 description: Azure Service Fabric Reliable Collections 对象序列化
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 05/08/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7fca1702469ca8769e6259ed3d6dd99ab9b38bab
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 54fdf3f02c5fd36ca17384ea7887162ee060bbaa
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173953"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742385"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
 Reliable Collections 通过复制和保留项目，确保这些项目在机器故障和电力中断时能够持久。
@@ -156,6 +146,6 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
   * [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
   * 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
   * 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
-  * 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
+  * 参考 [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md)（对应用程序升级进行故障排除）中的步骤来解决应用程序升级时的常见问题。
 
 <!-- Update_Description: update meta properties, wording update -->

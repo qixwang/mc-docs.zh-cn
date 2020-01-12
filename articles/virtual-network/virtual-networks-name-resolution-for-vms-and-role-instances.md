@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/25/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8cdbe13101a15c87a94e6b2be0af5039b6bbeab7
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 31767c97547e858cf5dd1e0004dfefaee70d636c
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658022"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859222"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -30,10 +30,6 @@ ms.locfileid: "74658022"
 * [使用自己的 DNS 服务器的名称解析](#name-resolution-that-uses-your-own-dns-server)（可能会将查询转发到 Azure 提供的 DNS 服务器）
 
 使用的名称解析类型取决于资源需要以怎样的方式进行相互通信。 下表说明了方案和相应的名称解析解决方案：
-
-> [!NOTE]
-> 根据具体的场景，可能需要使用目前以公共预览版提供的 Azure DNS 专用区域功能。 
->
 
 <!-- Not Available on [Using Azure DNS for private domains](../dns/private-dns-overview.md)-->
 
@@ -64,7 +60,7 @@ ms.locfileid: "74658022"
 ### <a name="features"></a>功能
 
 Azure 提供的名称解析包括以下功能：
-* 易于使用。 不需要配置。
+* 易于使用。 不需要任何配置。
 * 高可用性。 无需创建和管理你自己的 DNS 服务器的群集。
 * 可以结合自己的 DNS 服务器使用该服务，来解析本地主机名和 Azure 主机名。
 * 可以在同一云服务中的 VM 和角色实例之间使用名称解析，无需 FQDN。
@@ -78,7 +74,7 @@ Azure 提供的名称解析包括以下功能：
 * 不能手动注册自己的记录。
 * 不支持 WINS 和 NetBIOS。 在 Windows 资源管理器中看不到 VM。
 * 主机名必须符合 DNS。 名称只能使用 0-9、a-z 和“-”，并且不能以“-”开头或结尾。
-* DNS 查询流量按照 VM 进行限制。 限制不会影响大部分应用程序。 如果遵循请求限制，请确保启用客户端缓存。 有关详细信息，请参阅 [DNS 客户端配置](#dns-client-configuration)。
+* DNS 查询流量按照 VM 进行限制。 限制不应影响大部分应用程序。 如果遵循请求限制，请确保启用客户端缓存。 有关详细信息，请参阅 [DNS 客户端配置](#dns-client-configuration)。
 * 在经典部署模型中，每个虚拟网络仅注册前 180 个云服务中的 VM。 此限制不适用于 Azure 资源管理器中的虚拟网络。
 * Azure DNS IP 地址为 168.63.129.16。 这是静态 IP 地址，不会更改。
 

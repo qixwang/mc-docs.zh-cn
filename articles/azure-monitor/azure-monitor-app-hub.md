@@ -1,6 +1,4 @@
 ---
-layout: HubPage
-hide_bc: false
 title: Azure Monitor Application Insights 文档 - 教程和 API 参考 | Azure Docs
 description: Azure Monitor Application Insights 提供深度代码级的应用程序性能监视。
 services: application-insights
@@ -11,16 +9,16 @@ ms.topic: landing-page
 origin.date: 01/15/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d18595069227bf17d1db653c4dde3b563324c70b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6e27e6e579ed473794dea476da11c1a60b7edd71
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335848"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857995"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Azure Monitor Application Insights 文档</h1>
+        <h1> Azure Monitor Application Insights 文档</h1>
         <p>Azure Monitor Application Insights 提供深度代码级的应用程序性能监视。</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
@@ -65,7 +63,7 @@ ms.locfileid: "75335848"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>新增功能</h3>
+                                                        <h3>新增功能？</h3>
                                                         <p>
                                                             <a href="./app/kubernetes.md">监视 Kubernetes 应用程序</a><br>
                                                             <a href="./app/status-monitor-v2-overview.md">用于 IIS 应用的状态监视器 v2</a><br>
@@ -218,7 +216,7 @@ ms.locfileid: "75335848"
                                                             <a href="./app/data-model-request-telemetry.md">请求</a><br>
                                                             <a href="./app/data-model-dependency-telemetry.md">依赖项</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">异常</a><br>
-                                                            <a href="./app/data-model-trace-telemetry.md">跟踪</a><br>
+                                                            <a href="./app/data-model-trace-telemetry.md">Trace</a><br>
                                                             <a href="./app/data-model-event-telemetry.md">事件</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">指标</a><br>
                                                             <a href="./app/data-model-context.md">上下文</a>
@@ -238,7 +236,3 @@ ms.locfileid: "75335848"
         </ul>
     </div>
 </div>
-
-
-
-

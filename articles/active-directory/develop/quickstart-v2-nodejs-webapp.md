@@ -1,37 +1,31 @@
 ---
-title: Microsoft 标识平台 OIDC Node.js Web 应用快速入门 | Azure
+title: 向 Node.js Web 应用添加 OIDC 登录功能 - Microsoft 标识平台 | Azure
 description: 了解如何使用 OpenID Connect 在 Node.js Web 应用程序中实现身份验证。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/28/2019
-ms.date: 11/04/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b736a83d4f289fff2a68df4c0fb255dd62e3d32b
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 7e43f2dd8c091bbd0ba125c52237def7d87a3f4e
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831027"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776963"
 ---
-# <a name="quickstart-add-sign-in-using-oidc-to-a-nodejs-web-app"></a>快速入门：使用 OIDC 将登录添加到 Node.js Web 应用
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 本快速入门介绍如何在使用 Node.js 和 Express 构建的 Web 应用程序中设置 OpenID Connect 身份验证。 示例设计为在任何平台上运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要运行此示例，需要：
 
@@ -138,3 +132,4 @@ $ node app.js | bunyan
 > [!div class="nextstepaction"]
 > [可将用户登录的 Web 应用方案](scenario-web-app-sign-user-overview.md)
 
+<!-- Update_Description: wording update -->

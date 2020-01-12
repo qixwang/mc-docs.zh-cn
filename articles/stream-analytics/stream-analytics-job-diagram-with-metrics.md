@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析中的数据驱动调试
 description: 本文介绍如何使用 Azure 门户中的作业关系图和指标对 Azure 流分析作业进行故障排除。
-services: stream-analytics
 author: rockboyfor
 ms.author: v-lingwu
 manager: digimobile
@@ -10,20 +9,20 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/01/2017
 ms.date: 06/18/2018
-ms.openlocfilehash: a7c209dc23f4ad0e00e0c2dba7db237d86566971
-ms.sourcegitcommit: cca72cbb9e0536d9aaddba4b7ce2771679c08824
+ms.openlocfilehash: 8cf1e1b2a969e7e6e113434e1101f5330c1a8769
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58544819"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856883"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
 
-Azure 门户的“监视”边栏选项卡中的作业关系图可帮助你将作业管道可视化。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题来源。
+Azure 门户的“监视”  边栏选项卡中的作业关系图可帮助你将作业管道可视化。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题来源。
 
 ## <a name="using-the-job-diagram"></a>使用作业关系图
 
-在 Azure 门户的流分析作业中，在“支持和故障排除”下，选择“作业关系图”：
+在 Azure 门户的流分析作业中，在“支持和故障排除”  下，选择“作业关系图”  ：
 
 ![包含指标的作业关系图 - 位置](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -31,7 +30,7 @@ Azure 门户的“监视”边栏选项卡中的作业关系图可帮助你将�
 
 ![包含指标的作业关系图 - 基本作业](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-要查看 Azure 事件中心输入对应的分区，请选择“. . .” 上下文菜单随即打开。 还可查看输入合并。
+要查看 Azure 事件中心输入对应的分区，请选择“. . .”  上下文菜单随即打开。 还可查看输入合并。
 
 ![包含指标的作业关系图 - 展开分区](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
@@ -49,7 +48,7 @@ Azure 门户的“监视”边栏选项卡中的作业关系图可帮助你将�
 
 ## <a name="troubleshoot-by-using-metrics"></a>使用指标进行故障排除
 
-QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
+QueryLastProcessedTime 指标指示特定步骤收到数据的时间  。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
 
 如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可帮助你判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
 

@@ -1,7 +1,6 @@
 ---
-title: 创建和修改 ExpressRoute 线路：Azure 门户 | Azure
-description: 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
-documentationcenter: na
+title: 教程 - 使用 ExpressRoute 创建和修改线路
+description: 在此教程中了解如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
 manager: timlt
@@ -14,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/20/2018
-ms.date: 08/12/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: cbd2c10db00a5252c888a059a80e566c9b0a7eb9
-ms.sourcegitcommit: fcc768b955bab5c6cb7f898c913bc7ede6815743
+ms.openlocfilehash: 6ac6104762b3bd1a844901639c6aef48bd846d12
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68733541"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859559"
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
+# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>教程：创建和修改 ExpressRoute 线路
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
@@ -51,13 +50,13 @@ ms.locfileid: "68733541"
 
 >[!IMPORTANT]
 > 从发布服务密钥的那一刻起，会对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
-> 
-> 
 
-1. 可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 单击“创建资源” > “网络” > “ExpressRoute”，如下图所示    ：
+可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 
 
-   ![创建 ExpressRoute 线路](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-  
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 选择“网络”   > “ExpressRoute”  ，如下图所示：
+
+   ![创建 ExpressRoute 线路](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+
 2. 单击“ExpressRoute”  即可看到“创建 ExpressRoute 线路”  页。 在此页上填写相应值时，请务必指定正确的 SKU 层（“标准”或“高级”）和数据计量计费模型（“不限流量”或“按流量计费”）。
 
    ![配置 SKU 层和数据计量](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
@@ -110,7 +109,7 @@ ExpressRoute 线路必须处于以下状态时才能使用：
 线路状态：Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.定期检查线路密钥的状态
-选择感兴趣的线路即可查看其属性。 选中“提供商状态”  ，确保在继续之前其已转为“已预配”  。
+选中你感兴趣的线路即可查看其属性。 选中“提供商状态”  ，确保在继续之前其已转为“已预配”  。
 
 ![线路和提供商状态](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
@@ -155,7 +154,7 @@ ExpressRoute 线路必须处于以下状态时才能使用：
 
 若要修改 ExpressRoute 线路，请单击“配置”  。
 
-![修改线路](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![修改线路](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
 
 

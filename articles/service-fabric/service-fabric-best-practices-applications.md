@@ -1,26 +1,17 @@
 ---
-title: 有关 Azure Service Fabric 应用程序设计的最佳做法 | Azure
+title: 有关 Azure Service Fabric 应用程序设计的最佳做法
 description: 有关开发 Service Fabric 应用程序的最佳做法。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/18/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: dbf22234fa7b0cb05d5b5e38a1eaccea0827d95a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8f96e5a607e2550fbe1a99e6d004522f3a9eca02
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336195"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742444"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>有关 Azure Service Fabric 应用程序设计的最佳做法
 
@@ -92,4 +83,4 @@ ms.locfileid: "75336195"
 <!--Not Available on [Get Started with Azure for Gaming](https://docs.microsoft.com/gaming/azure/)-->
 <!--Not Available on [using Service Fabric in gaming services](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)-->
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update -->

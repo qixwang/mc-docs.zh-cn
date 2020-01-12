@@ -11,18 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-origin.date: 04/09/2019
-ms.date: 07/29/2019
+origin.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.custom: mvc
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 1cb14ccf41252b9608acfbd3cdc6bef488b5c94a
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 30bb304b790918d4d7b37f101edd098ec21c8a52
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513240"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737897"
 ---
 # <a name="quickstart-create-a-windows-server-vm-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Windows Server VM
 
@@ -184,7 +184,7 @@ $VirtualMachine = Set-AzureRmVMOperatingSystem `
   -VM $VirtualMachine `
   -Windows `
   -ComputerName "MainComputer" `
-  -Credential $Credential
+  -Credential $Credential -ProvisionVMAgent
 
 $VirtualMachine = Set-AzureRmVMSourceImage `
   -VM $VirtualMachine `

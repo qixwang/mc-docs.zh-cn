@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 02/24/2017
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d6a2380414f62accece8510cd4eb554af8c06989
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 8f3a495553906deff40b51ecad07e3ae026226a4
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674606"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858018"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://www.azure.cn/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -38,7 +38,7 @@ ms.locfileid: "71674606"
 * 威胁检测
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 要开始使用 Azure 安全中心，需了解并考虑以下问题：
 
 * 必须订阅世纪互联 Azure。 请参阅[安全中心定价](https://www.azure.cn/pricing/details/security-center/)，了解有关安全中心免费层和标准层的详细信息。
@@ -53,8 +53,6 @@ ms.locfileid: "71674606"
 
 > [!NOTE]
 > 若要详细了解可用的每个“防护策略”  ，请参阅[设置安全策略](tutorial-security-policy.md)一文。
-> 
-> 
 
 ## <a name="manage-security-recommendations"></a>管理安全建议
 安全中心将分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。

@@ -1,5 +1,5 @@
 ---
-title: 用于 Azure 流分析云作业的自定义 .NET 反序列化程序
+title: 教程 - 用于 Azure 流分析云作业的自定义 .NET 反序列化程序
 description: 本教程演示如何使用 Visual Studio 为 Azure 流分析云作业创建自定义 .NET 反序列化程序。
 services: stream-analytics
 author: lingliw
@@ -8,12 +8,12 @@ ms.topic: tutorial
 origin.date: 09/11/2019
 ms.date: 11/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1b7cca7c9412e9ac932f7e4d3a8dbfc21f09f2be
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f8d772482cffe34b509961c8dc4fb3c9a13c0401
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334557"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858409"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>教程：为 Azure 流分析自定义 .NET 反序列化程序
 
@@ -29,7 +29,7 @@ Azure 流分析[内置了对三种数据格式的支持](stream-analytics-parsin
 > * 将流分析作业配置为使用自定义反序列化程序。
 > * 在本地运行流分析作业以测试自定义反序列化程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 

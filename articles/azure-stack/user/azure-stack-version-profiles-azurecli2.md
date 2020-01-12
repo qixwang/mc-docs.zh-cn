@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 12/10/2019
+ms.date: 01/13/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 3593c2ebf1e60886961af31a60d3516bbcfc02c8
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 12/10/2019
+ms.openlocfilehash: b89db77d0784a37f564ce6e120647d47a2b19d60
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020084"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737895"
 ---
 # <a name="manage-and-deploy-resources-to-azure-stack-with-azure-cli"></a>使用 Azure CLI 管理资源以及将资源部署到 Azure Stack
 
@@ -164,13 +164,6 @@ ms.locfileid: "74020084"
 
 1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
 
-    在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，请设置以下环境变量：
-
-    ```shell  
-    set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
-    set ADAL_PYTHON_SSL_NO_VERIFY=1
-    ```
-
 2. 注册环境。 在运行 `az cloud register` 时使用以下参数：
 
     | Value | 示例 | 说明 |
@@ -284,13 +277,6 @@ az group create -n MyResourceGroup -l local
 
 1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
 
-    在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，请设置以下环境变量：
-
-    ```shell  
-    set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
-    set ADAL_PYTHON_SSL_NO_VERIFY=1
-    ```
-
 2. 注册环境。 在运行 `az cloud register` 时使用以下参数：
 
     | Value | 示例 | 说明 |
@@ -377,7 +363,7 @@ az group create -n MyResourceGroup -l local
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 pip 和 certifi 模块。 在 bash 提示符下使用以下 Python 命令：
 
     ```bash  
-    python3 -c "import certifi; print(certifi.where())"
+    az --version
     ```
 
     记下证书位置。 例如，`~/lib/python3.5/site-packages/certifi/cacert.pem`。 具体的路径取决于操作系统以及安装的 Python 版本。
@@ -400,12 +386,7 @@ az group create -n MyResourceGroup -l local
 
 使用以下步骤连接到 Azure Stack：
 
-1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，请设置以下环境变量：
-
-   ```shell
-   export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
-   export ADAL_PYTHON_SSL_NO_VERIFY=1
-   ```
+1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
 
 2. 注册环境。 在运行 `az cloud register` 时使用以下参数：
 
@@ -488,7 +469,7 @@ az group create -n MyResourceGroup -l local
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 pip 和 certifi 模块。 在 bash 提示符下使用以下 Python 命令：
 
     ```bash  
-    python3 -c "import certifi; print(certifi.where())"
+    az --version 
     ```
 
     记下证书位置。 例如，`~/lib/python3.5/site-packages/certifi/cacert.pem`。 具体的路径取决于操作系统以及安装的 Python 版本。
@@ -511,12 +492,7 @@ az group create -n MyResourceGroup -l local
 
 使用以下步骤连接到 Azure Stack：
 
-1. 运行 `az cloud register` 命令注册 Azure Stack 环境。 在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并显示错误，如“无法从云中获取终结点”。 若要解决此错误，请设置以下环境变量：
-
-   ```shell
-   export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
-   export ADAL_PYTHON_SSL_NO_VERIFY=1
-   ```
+1. 运行 `az cloud register` 命令注册 Azure Stack 环境。
 
 2. 注册环境。 在运行 `az cloud register` 时使用以下参数。
 

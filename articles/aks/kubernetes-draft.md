@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 06/20/2019
-ms.date: 07/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9048afcf5410f8fc7259effbbaaec743ca85db2a
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 68f5e88ec281adeb4f67a8818b1c97a6c1f539f8
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068890"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859852"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入门：使用 Draft 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -21,12 +21,12 @@ Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行�
 
 本文介绍如何使用 Draft 在 AKS 上打包和运行应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果你没有 Azure 订阅，可以创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
-* [已安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。
+* [已安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 * 已安装并配置 Docker。 Docker 提供的包可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker。
-* [已安装 Helm](https://github.com/helm/helm/blob/master/docs/install.md)。
+* [已安装 Helm](https://github.com/helm/helm#install)。
 * [已安装 Draft][draft-documentation]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
@@ -35,9 +35,10 @@ Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行�
 
 ```azurecli
 az group create --name MyResourceGroup --location chinaeast2
-az aks create -g MyResourceGroup -n MyAKS --location chinaeast2 --node-vm-size Standard_DS2_v2 --node-count 1 --generate-ssh-keys --vm-set-type AvailabilitySet
+az aks create -g MyResourceGroup -n MyAKS --location chinaeast2 --node-vm-size Standard_DS2_v2 --node-count 1 --generate-ssh-keys
 ```
 
+<!--Not Available on --vm-set-type AvailabilitySet-->
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
@@ -326,9 +327,9 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [Draft 文档][draft-documentation]
 
-[az-acr-login]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-login
-[az-acr-create]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-login
-[az-group-delete]: https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-delete
+[az-acr-login]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-login
+[az-acr-create]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-login
+[az-group-delete]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete
 [az aks get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az aks install-cli]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
 [kubernetes-ingress]: ./ingress-basic.md
@@ -345,4 +346,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

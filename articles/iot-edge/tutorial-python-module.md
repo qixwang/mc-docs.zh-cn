@@ -6,16 +6,16 @@ author: shizn
 manager: philmea
 ms.author: v-yiso
 origin.date: 10/14/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88f76e61bbc4923ab25e2dd5930b8c4775658a17
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3b8e22a3d427778bcb697b29ccbaeb6b82a575a4
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335036"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859497"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发并部署 Python IoT Edge 模块
 
@@ -34,9 +34,6 @@ ms.locfileid: "75335036"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> 以下指南适用于 V1 Python SDK，该版本已弃用。 我们目前正在努力使本指南与 V2 兼容。 请关注此空间的更新。
-
 ## <a name="solution-scope"></a>解决方案范围
 
 本教程演示如何使用 **Visual Studio Code** 以 **Python** 开发模块，以及如何将其部署到 **Linux 设备**。 IoT Edge 不支持 Windows 设备的 Python 模块。 
@@ -48,7 +45,7 @@ ms.locfileid: "75335036"
 | **Linux AMD64** | ![将 VS Code 用于 Linux AMD64 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![将 VS Code 用于 Linux ARM32 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成这两个教程中的一个以后，你应该已经准备好以下必备组件： 
 
@@ -78,11 +75,11 @@ ms.locfileid: "75335036"
 
 3. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
 
-4. 在命令面板中，输入并运行命令“Azure:  Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+4. 在命令面板中，输入并运行命令“Azure: **Sign in** 命令并按照说明登录到 Azure 帐户。 如果已登录，则可跳过此步骤。
 
-5. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge solution** 命令。 按提示操作，提供以下信息，以便创建解决方案：
+5. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 按提示操作，提供以下信息，以便创建解决方案：
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |

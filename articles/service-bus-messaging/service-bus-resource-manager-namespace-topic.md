@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 模板创建 Azure 服务总线命名空间主题订阅 | Azure Docs
-description: 使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间
+title: 快速入门：使用 Azure 资源管理器模板创建 Azure 服务总线命名空间主题订阅
+description: 快速入门：使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: d3d55200-5c60-4b5f-822d-59974cafff0e
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 11/05/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: bb93a8aa7008bdb4ac8900946636d1dcec4796d0
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: e50f3c768f0f6de1aa8f6c48afeeda48982433db
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330099"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854048"
 ---
-# <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间
+# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间
 
 本文介绍如何使用 Azure Resource Manager 模板创建服务总线命名空间，并且该命名空间内包含主题和订阅。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求
 
@@ -54,7 +54,7 @@ ms.locfileid: "71330099"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数：
 
@@ -148,8 +148,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-
-现在，已使用 Azure 资源管理器创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
+现在，已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
 * [使用 PowerShell 管理服务总线](./service-bus-manage-with-ps.md)
 * [使用服务总线资源管理器管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

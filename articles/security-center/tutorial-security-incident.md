@@ -1,6 +1,6 @@
 ---
 title: 事件响应教程 - Azure 安全中心
-description: Azure 安全中心教程 - 响应安全事件
+description: 在本教程中，你将了解如何会审安全警报、确定事件的根本原因和范围，以及搜索安全数据。
 services: security-center
 documentationcenter: na
 author: lingliw
@@ -15,15 +15,15 @@ ms.workload: na
 origin.date: 08/30/2018
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6ea44005c28653e1a1abbd12e96bfd58d678d00b
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 7b9eb37a2415de54beb2c752999d7e7c152095cc
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528299"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857313"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
-安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，将了解如何：
+安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 会审安全警报
@@ -32,7 +32,7 @@ ms.locfileid: "74528299"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="triage-security-alerts"></a>会审安全警报
@@ -45,7 +45,7 @@ ms.locfileid: "74528299"
 
 1. 在安全中心主菜单的“检测”下，选择“安全警报”   ：
 
-   ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![安全警报](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. 在警报列表中单击某个安全事件（警报的集合），详细了解该事件。 此时会打开“检测到的安全事件”  。
 
@@ -83,7 +83,7 @@ ms.locfileid: "74528299"
 2. 选择要返回到“免费”层的订阅或策略。 此时会打开“安全策略”。 
 3. 在“策略组件”  下选择“定价层”  。
 4. 选择“免费”，将订阅从“标准”层更改为“免费”层。 
-5. 选择“保存”。 
+5. 选择“保存”  。
 
 如果希望禁用自动预配，请执行以下操作：
 
@@ -93,7 +93,7 @@ ms.locfileid: "74528299"
 4. 选择“保存”  。
 
 >[!NOTE]
-> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Azure Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
+> 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。
 >
 
 ## <a name="next-steps"></a>后续步骤

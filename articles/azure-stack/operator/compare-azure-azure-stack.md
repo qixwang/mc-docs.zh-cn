@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 origin.date: 05/03/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.custom: ''
 ms.lastreviewed: 03/29/2019
-ms.openlocfilehash: e0ac96331cc61873735d8d8823b12edd0c629d5c
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 9db9d9badd77c74002aa6599b4857d2e3178d0d5
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020377"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737736"
 ---
 # <a name="differences-between-azure-azure-stack-and-azure-stack-hci"></a>Azure、Azure Stack 与 Azure Stack HCI 之间的差异
 
@@ -51,7 +51,6 @@ Azure Stack 是 Azure 的扩展，它将云计算的敏捷性和创新引入到�
 - Azure Resource Manager
 - Azure 市场
 - 容器
-- Azure IoT 中心和事件中心
 - 管理工具（计划、套餐、RBAC 等）
 
 Azure Stack 的 PaaS 功能是可选的，因为 Azure Stack 不是由 Microsoft 操作，而是由客户操作。 这意味着，如果你已准备好从最终用户抽离底层基础结构和流程，则可以向最终用户提供任何 PaaS 服务。 但是，Azure Stack 包含多个可选的 PaaS 服务提供程序，包括应用服务、SQL 数据库和 MySQL 数据库。 这些产品以资源提供程序的形式交付，因此已经是多租户性质、会通过标准 Azure Stack 更新不断更新、显示在 Azure Stack 门户中，并与 Azure Stack 妥善集成。

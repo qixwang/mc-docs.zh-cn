@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/21/2019
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.openlocfilehash: 16bf52ec7fe8d7b1ed6621abcde70ac2ec5b9531
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: 33e0b34c2822cd2a2c43f3f8b3d82bc22291c7b6
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884075"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859521"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
@@ -39,9 +39,6 @@ ms.locfileid: "74884075"
 资源的虚拟网络范围是一个重要方面。  尽管基本负载均衡器存在于可用性集范围内部，但标准负载均衡器与虚拟网络范围完全集成，且所有虚拟网络概念均适用。
 
 负载均衡器资源是一些对象，可在其中表述 Azure 应如何设定其多租户基础结构，以实现想要创建的场景。  负载均衡器资源与实际基础结构之间不存在直接的关系，创建负载均衡器不会创建实例，可始终使用容量，且无需考虑启动或缩放延迟。 
-
->[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。 如果正在查找寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[什么是 Azure 应用程序网关？](../application-gateway/overview.md) 如果正在查找全局 DNS 负载均衡，请查看[什么是流量管理器？](../traffic-manager/traffic-manager-overview.md) 端到端场景可从结合这些解决方案中受益。
 
 ## <a name="why-use-standard-load-balancer"></a>为何使用标准负载均衡器？
 

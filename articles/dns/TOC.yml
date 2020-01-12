@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Azure DNS？
       href: dns-overview.md
+    - name: 什么是 Azure 专用 DNS？
+      href: private-dns-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -15,6 +17,14 @@
           href: dns-getstarted-powershell.md
         - name: 创建公用区域 - CLI
           href: dns-getstarted-cli.md
+    - name: 专用 DNS
+      items:
+        - name: 创建专用区域 - 门户
+          href: private-dns-getstarted-portal.md
+        - name: 创建专用区域 - CLI
+          href: private-dns-getstarted-cli.md
+        - name: 创建专用区域 - PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: 教程
   items:
     - name: 公共 DNS
@@ -39,6 +49,20 @@
           href: dns-reverse-dns-overview.md
         - name: 使用 Azure DNS 和流量管理器进行灾难恢复
           href: ../networking/disaster-recovery-dns-traffic-manager.md
+    - name: 专用 DNS
+      items:
+        - name: 专用 DNS 区域
+          href: private-dns-privatednszone.md
+        - name: 虚拟网络链接
+          href: private-dns-virtual-network-links.md
+        - name: 自动注册
+          href: private-dns-autoregistration.md
+        - name: 专用 DNS 方案
+          href: private-dns-scenarios.md
+        - name: 在虚拟网络中进行 DNS 解析
+          href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: 常见问题
+          href: dns-faq-private.md
 - name: 如何
   items:
     - name: 公共 DNS
@@ -105,6 +129,16 @@
           href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
         - name: REST
           href: 'https://docs.microsoft.com/rest/api/dns/'
+    - name: 专用 DNS
+      items:
+        - name: Azure CLI
+          href: 'https://docs.microsoft.com/cli/azure/network/private-dns'
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.PrivateDns'
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management'
+        - name: REST
+          href: 'https://docs.microsoft.com/rest/api/dns/privatedns/privatezones'
 - name: 相关内容
   items:
     - name: 应用程序网关

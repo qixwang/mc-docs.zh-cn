@@ -10,13 +10,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 09/20/2019
-  ms.date: 11/04/2019
-  ms.openlocfilehash: ee04f1cfcfdac7f1be12c24ee1288166a40e739e
-  ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+  ms.date: 01/13/2020
+  ms.openlocfilehash: 7e3006ce89735356962df094dd1f65d69ce4c531
+  ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/01/2019
-  ms.locfileid: "73416209"
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75777442"
 landingContent:
 - title: 了解 Azure DNS
   linkLists:
@@ -34,3 +34,19 @@ landingContent:
     links:
     - text: 在 Azure DNS 中托管域
       url: dns-delegate-domain-azure-dns.md
+- title: 部署专用 DNS 区域
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 专用 DNS？
+      url: private-dns-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure DNS 专用区域方案
+      url: private-dns-scenarios.md
+    - text: Azure 专用 DNS 常见问题解答
+      url: dns-faq-private.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 门户创建 Azure DNS 专用区域
+      url: private-dns-portal.md

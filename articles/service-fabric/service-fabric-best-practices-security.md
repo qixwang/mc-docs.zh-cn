@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 安全性最佳做法 | Azure
+title: Azure Service Fabric 安全性最佳做法
 description: Azure Service Fabric 安全性最佳做法。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/23/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1917b3cf4aea34cdd4d3c8144103d6701cf5d9b7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1ed5043b63bafa1cd22ecc16dff21963efc88d1c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336361"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742275"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -170,7 +161,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用托管服务标识 (MSI) 向 Azure 资源验证 Service Fabric 应用程序
 
-若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](/active-directory/managed-identities-azure-resources/overview#how-does-it-work)。
+若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 Azure Service Fabric 群集托管在虚拟机规模集上，后者支持[托管服务标识](/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)。
 若要获取可以使用 MSI 向其进行身份验证的服务的列表，请参阅[支持 Azure Active Directory 身份验证的 Azure 服务](/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)。
 
@@ -286,4 +277,4 @@ cosmos_db_password=$(curl 'https://management.chinacloudapi.cn/subscriptions/<YO
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!-- Update_Description: update meta properties -->

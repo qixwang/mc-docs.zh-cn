@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio 创建 Azure 流分析作业
+title: 快速入门 - 使用 Visual Studio 创建 Azure 流分析作业
 description: 本快速入门展示了如何开始使用 Visual Studio 创建流分析作业、配置输入和输出，以及定义查询。
 services: stream-analytics
 author: lingliw
@@ -8,12 +8,12 @@ origin.date: 12/20/2018
 ms.date: 8/28/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: b1efb390b07e8d0034d10e2b822ab6650c54cc1d
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: db306610e021b495845af9789f752b418dd3ce71
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674769"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855626"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
 
@@ -114,7 +114,7 @@ ms.locfileid: "71674769"
    |输入别名  |  输入   |  输入一个名称，用于标识作业的输入。   |
    |源类型   |  数据流 |  选择合适的输入源：数据流或参考数据。   |
    |Source  |  IoT 中心 |  选择合适的输入源。   |
-   |Resource  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
+   |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
    |订阅  |  \<订阅\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
    |IoT 中心  |  MyASAIoTHub   |  选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。   |
    
@@ -132,7 +132,7 @@ ms.locfileid: "71674769"
    |---------|---------|---------|
    |输出别名  |  输出   |  输入一个名称，用于标识作业的输出。   |
    |接收器   |  Blob 存储 |  选择合适的接收器。    |
-   |Resource  |  手动提供数据源设置 |  选择手动输入数据或选择现有帐户。   |
+   |资源  |  手动提供数据源设置 |  选择手动输入数据或选择现有帐户。   |
    |订阅  |  \<订阅\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
    |存储帐户  |  asaquickstartstorage   |  选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。   |
    |容器  |  container1   |  选择你在存储帐户中创建的现有容器。   |

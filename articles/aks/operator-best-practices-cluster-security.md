@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 08/26/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: dbba871694c2d701839a3c760a680a4053a10a29
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 0056e03f79045bb661998343da69e0c449e153da
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993486"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859866"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -28,6 +28,8 @@ ms.locfileid: "69993486"
 > * 使节点保持最新状态并自动应用安全修补程序
 
 还可以阅读有关[容器映像管理][best-practices-container-image-management]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
+
+<!--Not Available on [Azure Kubernetes Services integration with Security Center][security-center-aks]-->
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>保护对 API 服务器和群集节点的访问
 
@@ -241,4 +243,5 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
 
+<!--Not Available on [security-center-aks]: /security-center/azure-kubernetes-service-integration-->
 <!-- Update_Description: wording update, update link -->

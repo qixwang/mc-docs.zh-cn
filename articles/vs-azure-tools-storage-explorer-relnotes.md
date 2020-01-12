@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 06/12/2018
-ms.date: 01/21/19
+ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0faca20be685bf877041c1e95efff61c4a749ad7
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: ced2812386103d7b610791ead8ae2ddd13a84847
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674791"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853940"
 ---
 # <a name="21vianet-azure-storage-explorer-release-notes"></a>世纪互联 Azure 存储资源管理器发行说明
 
@@ -443,7 +443,7 @@ ms.locfileid: "71674791"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/zh-cn/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -603,7 +603,7 @@ ms.locfileid: "71674791"
 * 目前，每次只能对一个 Blob 执行中断性租约。 此外，必须输入要中断其租约的 Blob 的名称。 做出此项更改的目的是为了减少意外中断租用的可能性，尤其是对于 VM。 #394
 * 如果你曾经遇到过登录问题，现在可以尝试重置身份验证。 转到“帮助”菜单并单击“重置”即可访问此功能。 #419
 
-### <a name="fix"></a>解决方法
+### <a name="fix"></a>Fix
 
 * 根据强烈的用户要求，我们已重新启用默认的仿真器节点。 仍可以通过“连接”对话框添加其他仿真器连接，但如果仿真器配置为使用默认端口，则你也可以使用“本地和附加/存储帐户”下的“仿真器 * 默认端口”节点。 #669
 * 存储资源管理器不再允许设置包含前导或尾随空白字符的 Blob 元数据值。 #760
@@ -799,7 +799,7 @@ ms.locfileid: "71674791"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/zh-cn/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -859,7 +859,7 @@ ms.locfileid: "71674791"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/zh-cn/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -1093,7 +1093,7 @@ ms.locfileid: "71674791"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/zh-cn/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?view=azure-dotnet?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -1449,7 +1449,7 @@ ms.locfileid: "71674791"
 
 * 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器，使其忘记该选择
 * 放大或缩小时，缩放级别可能暂时重置为默认级别
-* 同时上传 3 组以上的 blob 或文件可能导致错误
+* 同时上传 3 组以上的 Blob 或文件可能导致错误
 * 帐户设置面板可能显示需重新输入凭据才能筛选订阅
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
@@ -1492,7 +1492,7 @@ ms.locfileid: "71674791"
 
 * 升级到 0.8.10 后，需要刷新所有凭据。
 * 放大或缩小时，缩放级别可能暂时重置为默认级别。
-* 同时上传 3 组以上的 blob 或文件可能导致错误。
+* 同时上传 3 组以上的 Blob 或文件可能导致错误。
 * 帐户设置面板可能显示需重新输入凭据才能筛选订阅。
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
@@ -1530,7 +1530,7 @@ ms.locfileid: "71674791"
 
 * 放大或缩小时，缩放级别可能暂时重置为默认级别。
 * 快速访问仅适用于基于订阅的项。 此版本不支持本地资源或通过密钥或 SAS 令牌附加的资源。
-* 快速访问可能需要几秒钟时间导航至目标资源，具体取决于所拥有的资源数。
+* 快速访问可能需要几秒钟时间导航至目标资源，具体取决于拥有的资源数。
 * 同时上传 3 组以上的 Blob 或文件可能导致错误。
 
 2016/12/16
@@ -1624,11 +1624,11 @@ ms.locfileid: "71674791"
 
 #### <a name="new"></a>新建
 
-* 生成指向存储帐户、容器、队列、表或文件共享的直接链接，以便共享和轻松访问资源 - Windows 和 Mac 操作系统支持
+* 生成指向存储帐户、容器、队列、表或文件共享的直接链接，以便共享和轻松访问资源 - Windows 和 Mac OS 支持
 * 从搜索框搜索 blob 容器、表、队列、文件共享或存储帐户
 * 现可在表查询生成器中对子句进行分组
 * 从 SAS 附加帐户和容器中重命名并复制/粘贴 Blob 容器、文件共享、表、Blob、Blob 文件夹、文件和目录
-* 重命名和复制 blob 容器和文件共享现可保留属性和元数据
+* 重命名和复制 Blob 容器和文件共享现可保留属性和元数据
 
 #### <a name="fixes"></a>修复项
 
@@ -1646,7 +1646,7 @@ ms.locfileid: "71674791"
 * 重命名容器、表和文件共享
 * 提升了查询生成器体验
 * 能够保存和加载查询
-* 存储帐户或容器、队列、表或文件共享的直接链接，以便共享和轻松访问资源（即将推出仅 Windows 和 macOS 支持！）
+* 存储帐户或容器、队列、表或文件共享的直接链接，以便共享和轻松访问资源（仅限 Windows - macOS 支持即将推出！）
 * 能够管理和配置 CORS 规则
 
 #### <a name="fixes"></a>修复项
@@ -1658,7 +1658,7 @@ ms.locfileid: "71674791"
 * 有时 UI 可能出现冻结 - 窗口最大化可帮助解决此问题
 * macOS 安装可能需要提升的权限
 * 帐户设置面板可能显示需重新输入凭据才能筛选订阅
-* 重命名文件共享、blob 容器和表不会保留容器中的元数据或其他属性，例如文件共享配额、公共访问级别或访问策略
+* 重命名文件共享、Blob 容器和表不会保留容器中的元数据或其他属性，例如文件共享配额、公共访问级别或访问策略
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间会保留 blob、文件和实体的所有其他属性及元数据
 * 在 SAS 附加帐户中，复制或重命名资源无法正常工作
 
@@ -1671,7 +1671,7 @@ ms.locfileid: "71674791"
 * 从“Azure 帐户设置”面板注销帐户
 * 配置代理设置以启用和管理登录
 * 创建和中断 Blob 租用
-* 通过单击打开 blob 容器、队列、表和文件
+* 通过单击打开 Blob 容器、队列、表和文件
 
 #### <a name="fixes"></a>修复项
 
@@ -1697,7 +1697,7 @@ ms.locfileid: "71674791"
 
 #### <a name="fixes"></a>修复项
 
-* 已修复：上传或下载大型 blob 可能导致上传/下载不完整
+* 已修复：上传或下载大型 Blob 可能导致上传/下载不完整
 * 已修复：编辑、添加或导入具有数值字符串值（“1”）的实体会将其转换为双精度
 * 已修复：无法在本地开发环境中展开表节点
 
@@ -1715,7 +1715,7 @@ ms.locfileid: "71674791"
 
 #### <a name="fixes"></a>修复项
 
-* 修复了需要登录凭据时信息栏消息有时不显示的 bug
+* 修复了需要登录凭据时信息栏消息有时不显示的 Bug
 
 #### <a name="known-issues"></a>已知问题
 
@@ -1751,7 +1751,7 @@ ms.locfileid: "71674791"
 
 #### <a name="fixes"></a>修复项
 
-* 上传、下载和复制 blob 时整体性能提升
+* 上传、下载和复制 Blob 时整体性能提升
 
 2016/01/14
 
@@ -1768,13 +1768,13 @@ ms.locfileid: "71674791"
 
 #### <a name="fixes"></a>修复项
 
-* 已修复：上传或下载大量 blob (500+) 有时可能导致应用白屏
+* 已修复：上传或下载大量 Blob (500+) 有时可能导致应用白屏
 * 已修复：设置 Blob 容器公共访问级别时，新值在重置容器焦点前不会更新。 此外，对话框始终默认为“无公共访问”，而不是实际的当前值。
 * 总体更佳的键盘/辅助功能和 UI 支持
 * 痕迹导航历史记录文本在出现较长空格时换行
 * SAS 对话框支持输入验证
 * 即使用户凭据已过期，本地存储仍然可用
-* 删除打开的 blob 容器后，右侧的 blob 资源管理器关闭
+* 删除打开的 Blob 容器后，右侧的 Blob 资源管理器关闭
 
 #### <a name="known-issues"></a>已知问题
 
@@ -1797,7 +1797,7 @@ ms.locfileid: "71674791"
 * 搜索特定 Blob、队列或表
 * 浏览 Blob 容器的内容
 * 查看和浏览目录
-* 上传、下载和删除 blob 和文件夹
+* 上传、下载和删除 Blob 和文件夹
 * 查看和编辑 blob 属性及元数据
 * 生成 SAS 密钥
 * 管理和创建存储访问策略 (SAP)
@@ -1806,7 +1806,7 @@ ms.locfileid: "71674791"
 
 #### <a name="known-issues"></a>已知问题
 
-* 设置 blob 容器公共访问级别时，新值在重置容器焦点前不会更新
+* 设置 Blob 容器公共访问级别时，新值在重置容器焦点前不会更新
 * 打开设置公共访问级别的对话框时，始终显示“无公共访问”作为默认值，而不是实际的当前值
 * 无法重命名已下载 Blob
 * 出现错误且不显示该错误时，活动日志条目有时会“停滞”在正在进行状态

@@ -1,29 +1,25 @@
 ---
-title: 配置密钥链 | Microsoft 标识平台
+title: 配置密钥链
+titleSuffix: Microsoft identity platform
 description: 了解如何配置密钥链，使应用能够在密钥链中缓存令牌。
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/28/2019
-ms.date: 11/01/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bf1ee7a2d66eb9dd1efed843e06c263deedcc0a
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: a79e989da82d1cefd81ef3ddc519f477f697e110
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831044"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776836"
 ---
 # <a name="configure-keychain"></a>配置密钥链
 
@@ -51,7 +47,7 @@ macOS 上的 MSAL 默认使用 `com.microsoft.identity.universalstorage` 访问�
 
 若要使用不同的密钥链访问组，可以在创建 `MSALPublicClientApplicationConfig` 时传递自定义组，然后再创建 `MSALPublicClientApplication`，如下所示：
 
-Objective-C：
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-Swift：
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>禁用密钥链共享
 
 如果你不想要在多个应用之间共享 SSO 状态，或不想使用任何密钥链访问组，请通过传递应用程序捆绑 ID 作为 keychainGroup，来禁用密钥链共享：
 
-Objective-C：
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-Swift：
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>处理 -34018 错误（无法将项设置为密钥链）
 
@@ -117,3 +113,4 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 在 Apple 的 [Sharing Access to Keychain Items Among a Collection of Apps](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)（在一系列应用之间共享对密钥链项的访问权限）一文中详细了解密钥链访问组。
 
+<!-- Update_Description: wording update -->

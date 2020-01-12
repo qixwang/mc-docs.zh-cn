@@ -1,21 +1,21 @@
 ---
-title: 自定义 Java 模块教程 - Azure IoT Edge | Microsoft Docs
+title: 教程 - 使用 Azure IoT Edge 的自定义 Java 模块教程
 description: 本教程介绍如何使用 Java 代码创建 IoT Edge 模块并将其部署到边缘设备。
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: v-yiso
 origin.date: 04/04/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d9d7fbc7118a58ce832caebc18ced2bdfab88771
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c7c44e8df3c453dabc181564ab08c006789790a9
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335044"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859586"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 Java IoT Edge 模块
 
@@ -43,7 +43,7 @@ ms.locfileid: "75335044"
 | **Linux AMD64** | ![将 VS Code 用于 Linux AMD64 上的 Java 模块](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![将 VS Code 用于 Linux ARM32 上的 Java 模块](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成这两个教程中的一个以后，你应该已经准备好以下必备组件： 
 
@@ -70,7 +70,7 @@ ms.locfileid: "75335044"
 
 2. 在命令面板中，输入并运行命令 **`Azure IoT Edge: New IoT Edge Solution`** 。 按命令面板中的提示创建解决方案。
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |

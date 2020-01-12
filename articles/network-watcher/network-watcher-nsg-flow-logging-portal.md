@@ -1,6 +1,7 @@
 ---
-title: 记录出入 VM 的网络流量 - 教程 - Azure 门户 | Azure
-description: 了解如何使用网络观察程序的 NSG 流日志功能记录出入 VM 的网络流量。
+title: 教程 - 使用 Azure 门户记录出入 VM 的网络流量流
+titleSuffix: Azure Network Watcher
+description: 本教程介绍如何使用网络观察程序的 NSG 流日志功能记录出入 VM 的网络流量流。
 services: network-watcher
 documentationcenter: na
 author: lingliw
@@ -18,12 +19,12 @@ origin.date: 04/30/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 469608d846b68ddd037a2dd36faa643fe8754a34
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 5c74820d98d171022a9ef8ab42243e432c3bbcf6
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982141"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858592"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -44,9 +45,9 @@ ms.locfileid: "74982141"
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或某一版本的“Ubuntu Server”。   
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myVm|
+    |名称|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
@@ -87,9 +88,9 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 2. 选择“存储”，然后选择“存储帐户 - Blob、文件、表、队列”   。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  。
 
-    | 设置        | 值                                                        |
+    | 设置        | Value                                                        |
     | ---            | ---   |
-    | Name           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
+    | 名称           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
     | 位置       | 选择“中国北部”                                            |
     | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup”   |
 

@@ -1,26 +1,17 @@
 ---
-title: 使用 Service Fabric 诊断常见代码包错误 | Azure
+title: 使用 Service Fabric 诊断常见代码包错误
 description: 了解如何使用 Azure Service Fabric 排查常见的代码包错误
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 05/09/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6357119b3a5dc9560fca97191255f3502e00caff
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 97e02fe6c912fca68c02ea77c87988512e759914
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174533"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742399"
 ---
 <!--Verify sucessfully-->
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 诊断常见代码包错误
@@ -72,5 +63,4 @@ Service Fabric 可能会出于各种原因而终止代码包。 例如，它可�
 * 详细了解可帮助进行检测和诊断的 Azure Monitor 日志[警报](../azure-monitor/platform/alerts-overview.md)。
 * 熟悉 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/log-query/log-query-overview.md)功能。
 
-<!--Update_Description: new articles on service fabric dignostics code package errors-->
-<!--ms.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

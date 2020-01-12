@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure 流分析实时检测欺诈行为
 description: 了解如何通过流分析创建实时欺诈行为检测解决方案。 使用事件中心进行实时事件处理。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 12/26/2018
-ms.openlocfilehash: b7a10a1e6c5392b21aa7ffce7ca44bee0cd1af93
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: a9d18531a32e511c8ec9e9097ac7c61d9948da94
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674770"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855627"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
@@ -32,7 +31,7 @@ ms.locfileid: "71674770"
 
 电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或针对特定号码关闭服务。 有一种 SIM 欺诈涉及在同一时间以同一身份发起但位于不同地理位置的多个呼叫。 若要检测此类欺诈，公司需要检查来电记录，并查找特定模式 - 在本例中，将查找在不同国家/地区同时发起的呼叫。 任何属于此类别的电话记录都将写入到存储中，以供后续分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程将通过使用生成示例电话呼叫元数据的客户端应用来模拟电话呼叫数据。 应用生成的某些记录看起来类似欺诈呼叫。 
 
@@ -329,7 +328,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 2. 再次单击“测试”  。 
 
-    ![用于自联接的流分析作业输出，其中显示生成的 6 条记录](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
+   ![用于自联接的流分析作业输出，其中显示生成的 6 条记录](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
 3. 单击“保存”  以将自联接查询保存为流分析作业的一部分。 （它不会保存示例数据。）
 
@@ -339,8 +338,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 现已定义事件流、用于引入事件的事件中心输入，以及用于通过流执行转换的查询。 最后一步是定义作业的输出接收器，即转换后的流要写入到的位置。 
 
-可以使用许多资源作为输出接收器：SQL Server 数据库、表存储，甚至是另一个事件中心。 本教程将流写入到 Azure Blob 存储，该存储是收集事件信息供后续分析的典型选择，因为它可以包括非结构化数据。
-<!-- Not Available Data Lake Storage, Power BI-->
+可以使用许多资源作为输出接收器：SQL Server 数据库、表存储、Data Lake 存储、Power BI，甚至另一个事件中心。 本教程将流写入 Azure Blob 存储，该存储是收集事件信息供后续分析的典型选择，因为它可以包括非结构化数据。
 
 如果已有 Blob 存储帐户，则可以使用该帐户。 在本教程中，你将了解如何创建新的存储帐户。
 
@@ -348,7 +346,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 1. 从 Azure 门户的左上角选择“创建资源”   > “存储”   >   “存储帐户”。 填充“存储帐户作业”页，将“名称”  设置为“asaehstorage”，将“位置”  设置为“中国东部”，将“资源组”  设置为“asa-eh-ns-rg”（请将相同资源组中的存储帐户托管为流式处理作业，以便提高性能）。 余下设置可以保留默认值。  
 
-    ![创建存储帐户](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
+   ![在 Azure 门户中创建存储帐户](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
 2. 在 Azure 门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”  窗格中搜索 `asa_frauddetection_job_demo`。）
 

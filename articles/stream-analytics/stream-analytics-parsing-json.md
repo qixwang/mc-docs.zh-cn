@@ -1,21 +1,19 @@
 ---
 title: 在 Azure 流分析中分析 JSON 和 AVRO
 description: 本文介绍如何针对复杂数据类型（如数组、JSON、CSV 格式数据）进行操作。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
-ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: 6dd2c286ca0a43370f9b2e57a3296ac85d902acf
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 208b3062954030b244f5e04c497470b806bffce0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674828"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856191"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
@@ -64,7 +62,7 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>选择所有属性
-可以使用“*”通配符选择嵌套记录的所有属性。 下面是一个示例：
+可以使用“*”通配符选择嵌套记录的所有属性。 请考虑以下示例：
 
 ```SQL
 SELECT input.Location.*

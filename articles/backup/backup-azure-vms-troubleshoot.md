@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 08/30/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 66d39490e4173b9d003fff37d60aa499cc0f0be1
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b71298540ff538b380fd211fc42898234f8c3e2b
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838902"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858202"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上出现的备份失败问题
 
@@ -26,6 +26,8 @@ ms.locfileid: "74838902"
 
 * 确保 VM 代理（WA 代理）为[最新版本](/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)。
 * 确保 Windows 或 Linux VM OS 版本受支持，详见 [IaaS VM 备份支持矩阵](/backup/backup-support-matrix-iaas)。
+* 验证另一备份服务是否在运行。
+  * 若要确保没有快照扩展问题，请[卸载扩展，然后强制重新加载并重试备份](/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)。
 * 验证 VM 是否已建立 Internet 连接。
   * 确保另一备份服务未运行。
 * 在 `Services.msc` 中确保 **Windows Azure 来宾代理**服务处于“正在运行”状态。  如果 **Windows Azure 来宾代理**服务缺失，请按照[在恢复服务保管库中备份 Azure VM](/backup/backup-azure-arm-vms-prepare#install-the-vm-agent) 中的说明来安装它。
@@ -62,7 +64,6 @@ ms.locfileid: "74838902"
 错误代码：UserErrorFsFreezeFailed <br/>
 错误消息：未能冻结一个或多个 VM 装入点来获取文件系统一致快照。
 
-* 使用 **tune2fs** 命令（例如 **tune2fs -l /dev/sdb1 \\** .\| grep **Filesystem state**）检查所有已装载设备的文件系统状态。
 * 使用 **umount** 命令卸载未清除文件系统状态的设备。
 * 使用 **fsck** 命令在这些设备上运行文件系统一致性检查。
 * 再次装载设备，并重试备份操作。</ol>
@@ -185,7 +186,6 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 错误详细信息 | 解决方法 |
 | ------ | --- |
 | **错误代码**：320001，ResourceNotFound <br/> **错误消息**：无法执行该操作，因为 VM 已不存在。 <br/> <br/> **错误代码**：400094，BCMV2VMNotFound <br/> **错误消息**：虚拟机不存在 <br/> <br/>  找不到 Azure 虚拟机。  |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称” <br>**or**</li><li> 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>|
-| **错误代码**：UserErrorVmProvisioningStateFailed<br/> **错误消息**：VM 处于失败的预配状态： <br>请重启 VM，并确保 VM 正在运行或已关闭。 | 当其中某个扩展失败将 VM 状态置于失败的预配状态时，会发生此错误。 请转到扩展列表，查看是否有失败的扩展，将其删除并尝试重启虚拟机。 如果所有扩展都处于运行状态，请检查 VM 代理服务是否正在运行。 如果未运行，请重启 VM 代理服务。 |
 |**错误代码**：UserErrorBCMPremiumStorageQuotaError<br/> **错误消息**：由于存储帐户中的可用空间不足，无法复制虚拟机的快照 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
 | **错误代码**：380008，AzureVmOffline <br/> **错误消息**：无法安装 Microsoft 恢复服务扩展，因为虚拟机未运行 | VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 <br> <ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。 |
 | **错误代码**：ExtensionSnapshotBitlockerError <br/> **错误消息**：快照操作失败，出现卷影复制服务 (VSS) 操作错误“此驱动器已通过 BitLocker 驱动器加密锁定。  必须通过控制面板解锁此驱动器”。 |关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。 |

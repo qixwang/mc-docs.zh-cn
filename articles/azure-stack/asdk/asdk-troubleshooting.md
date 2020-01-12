@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/12/2019
-ms.date: 11/18/2019
+origin.date: 11/05/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 4f963c07ba7754922d7f7cc36b49ba54a738290f
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: ce9b11bb4741b55ffd9c8166024d80da437f62c2
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624296"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737882"
 ---
 # <a name="troubleshoot-the-asdk"></a>排查 ASDK 问题
 本文提供了 Azure Stack 开发工具包 (ASDK) 的常见故障排除信息。 有关 Azure Stack 集成系统的帮助，请参阅 [Azure Stack 故障排除](../operator/azure-stack-troubleshooting.md)。 
@@ -41,6 +41,39 @@ ms.locfileid: "75624296"
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>部署结束时，PowerShell 会话仍保持打开状态，但不显示任何输出
 此行为可能是选择 PowerShell 命令窗口后的默认行为。 ASDK 部署成功，但选择窗口时，脚本已暂停。 可以通过在命令窗口的标题栏中查找“select”一词，来验证安装是否已完成。 按 ESC 键取消选择窗口，然后即会显示完成消息。
+
+### <a name="template-validation-error-parameter-osprofile-is-not-allowed"></a>不允许模板验证错误参数 osProfile
+
+如果在模板验证期间遇到错误消息，该消息指出系统不允许参数 'osProfile'，请确保对以下组件使用正确的 API 版本：
+
+- [计算](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
+- [网络](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+
+若要将 VHD 从 Azure 复制到 Azure Stack，请使用 [AzCopy 7.3.0](/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)。 请联系供应商以解决映像本身的问题。 若要详细了解 Azure Stack 的 WALinuxAgent 要求，请参阅 [Azure LinuX 代理](../operator/azure-stack-linux.md#azure-linux-agent)。
+
+### <a name="deployment-fails-due-to-lack-of-external-access"></a>部署因缺少外部访问而失败
+如果部署在需要外部访问的阶段失败，则会返回一个异常，如以下示例所示：
+
+```
+An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
+```
+如果发生此错误，请查看[部署网络流量文档](../operator/deployment-networking.md)，确保满足所有最低的网络要求。 合作伙伴也可使用网络检查器工具（在合作伙伴工具包中提供）。
+
+其他部署失败通常是由于在连接到 Internet 上的资源时出现问题。
+
+若要验证能否连接到 Internet 上的资源，可以执行以下步骤：
+
+1. 打开 PowerShell。
+2. 通过 Enter-PSSession 连接到 WAS01 或任何 ERCs VM。
+3. 运行以下 cmdlet： 
+   ```powershell
+   Test-NetConnection login.chinacloudapi.cn -port 443
+   ```
+
+如果此命令失败，请验证TOR 交换机以及任何其他的网络设备是否已配置为[允许网络流量](../operator/azure-stack-network.md)。
+
 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="default-image-and-gallery-item"></a>默认映像和库项

@@ -1,11 +1,10 @@
 ---
-title: Azure 安全中心快速入门 - 将 Azure Stack 虚拟机载入安全中心 | Azure Docs
+title: 将 Azure Stack 虚拟机载入 Azure 安全中心
 description: 本快速入门介绍如何在 Azure Stack 虚拟机上预配“Azure 监视、更新和配置管理”虚拟机扩展。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: pipposera
+manager: dsavage
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
 ms.service: security-center
 ms.devlang: na
@@ -16,19 +15,19 @@ ms.workload: na
 origin.date: 04/02/2019
 ms.date: 5/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5f2de1036c8ddeb5acc45ad46c2b4762da49b485
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 6f230cde5abcb308c7201ed754018450262c60cc
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528313"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854211"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入门：将 Azure Stack 虚拟机载入安全中心
 载入 Azure 订阅后，可以通过从 Azure Stack 市场添加“Azure 监视、更新和配置管理”虚拟机扩展，启用安全中心来保护 Azure Stack 上运行的虚拟机。 
 
 本快速入门介绍如何在 Azure Stack中运行的 虚拟机（支持 Linux 和 Windows）上添加“Azure 监视、更新和配置管理”虚拟机扩展。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要开始使用安全中心，必须订阅世纪互联 Azure。 如果你尚无订阅，则可以注册[试用帐户](https://www.azure.cn/pricing/free-trial/)。
 
 在开始学习本快速入门之前，必须在安全中心的标准层上拥有一个 Azure 订阅。 有关升级说明，请参阅[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)。 可以免费试用安全中心标准层 30 天。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。

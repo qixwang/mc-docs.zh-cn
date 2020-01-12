@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
 origin.date: 06/05/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 87109be68c1bcd888d40d3dc1faa970c8222c3e3
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 8d6cfec918207a5512e949a9734df75c30b17c8c
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020228"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737956"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
@@ -82,7 +82,7 @@ Nagios 监视插件是与合作伙伴 Cloudbase 解决方案一起开发的，�
 
 ### <a name="requirements-for-nagios"></a>Nagios 的要求
 
-1.  Nagios 的最低版本是 4.x
+1. Nagios 的最低版本是 4.x
 
 2.  Azure Active Directory Python 库。 可以使用 Python PIP 安装该库。
 
@@ -106,11 +106,11 @@ samples/etc/azurestack_hosts.cfg
 samples/etc/azurestack_services.cfg
 ```
 
-1.  将插件 `azurestack_plugin.py` 复制到以下目录：`/usr/local/nagios/libexec`。
+1. 将插件 `azurestack_plugin.py` 复制到以下目录：`/usr/local/nagios/libexec`。
 
-2.  将处理程序 `azurestack_handler.sh` 复制到以下目录：`/usr/local/nagios/libexec/eventhandlers`。
+2. 将处理程序 `azurestack_handler.sh` 复制到以下目录：`/usr/local/nagios/libexec/eventhandlers`。
 
-3.  确保将插件文件设置为可执行文件：
+3. 确保将插件文件设置为可执行文件：
 
     ```bash
     sudo cp azurestack_plugin.py <PLUGINS_DIR>
@@ -121,7 +121,7 @@ samples/etc/azurestack_services.cfg
 
 可在 azurestack.cfg 文件中配置以下参数。 无论选择哪种身份验证模型，都需要配置以粗体显示的参数。
 
-有关如何创建 SPN 的详细信息，请参阅[使用应用标识来访问资源](/azure-stack/azure-stack-create-service-principals)。
+有关如何创建 SPN 的详细信息，请参阅[使用应用标识来访问资源](azure-stack-create-service-principals.md)。
 
 | 参数 | 说明 | 身份验证 |
 | --- | --- | --- |
@@ -151,35 +151,35 @@ samples/etc/azurestack_services.cfg
 
 ### <a name="setup-steps"></a>设置步骤
 
-1.  修改配置文件。
+1. 修改配置文件。
 
-2.  将修改后的配置文件复制到以下文件夹：`/usr/local/nagios/etc/objects`。
+2. 将修改后的配置文件复制到以下文件夹：`/usr/local/nagios/etc/objects`。
 
 ### <a name="update-nagios-configuration"></a>更新 Nagios 配置
 
 需要更新 Nagios 配置才能确保加载 Azure Stack – Nagios 插件。
 
-1.  打开以下文件：
+1. 打开以下文件：
 
-```bash  
-/usr/local/nagios/etc/nagios.cfg
-```
+   ```bash  
+   /usr/local/nagios/etc/nagios.cfg
+   ```
 
-2.  添加以下条目：
+2. 添加以下条目：
 
-```bash  
-# Load the Azure Stack Plugin Configuration
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_contacts.cfg
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_commands.cfg
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_hosts.cfg
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_services.cfg
-```
+   ```bash  
+   # Load the Azure Stack Plugin Configuration
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_contacts.cfg
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_commands.cfg
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_hosts.cfg
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_services.cfg
+   ```
 
-3.  重新加载 Nagios。
+3. 重新加载 Nagios。
 
-```bash  
-sudo service nagios reload
-```
+   ```bash  
+   sudo service nagios reload
+   ```
 
 ### <a name="manually-close-active-alerts"></a>手动关闭活动的警报
 

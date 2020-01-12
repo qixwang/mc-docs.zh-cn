@@ -1,7 +1,6 @@
 ---
 title: 使用适用于 Visual Studio 的 Azure 流分析工具测试实时数据
 description: 了解如何使用实时流数据在本地测试 Azure 流分析作业。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: e5147ffec60d5b365bbf5f45977eb7d473861610
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: d465a1fc8a32957a30b65dc40df4c0e33dd4e825
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674688"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856846"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览版）
 

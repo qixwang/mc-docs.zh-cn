@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/31/2019
-ms.date: 10/21/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 7130ebd3abeaff62df31f02c517e06a83688527a
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: e64bd658c4ae6335d01126b8b1b05a149f369449
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578513"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737919"
 ---
 # <a name="post-deployment-configurations-for-asdk"></a>ASDK 的部署后配置
 
@@ -57,7 +57,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
   # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
   Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-  Install-Module -Name AzureStack -RequiredVersion 1.7.2
+  Install-Module -Name AzureStack -RequiredVersion 1.8.0
   ```
 
   如果安装成功，输出中会显示 AzureRM 和 AzureStack 模块。

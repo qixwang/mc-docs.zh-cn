@@ -1,26 +1,17 @@
 ---
 title: 从 Azure 或独立群集中的 .NET Service Fabric 应用生成日志事件
 description: 了解如何向 Azure 群集或独立群集中托管的 .NET Service Fabric 应用程序添加日志记录。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/27/2018
-ms.date: 08/20/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1e4d159d932a8ebe22852ade4c19eccbd42aa21e
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: c440bd9a3ed18f9eca51db109c1dc2c034c3657e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52651496"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742509"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
 
@@ -110,50 +101,50 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 2. 在服务文件中添加一条针对 **Microsoft.Extensions.Logging** 的 **using** 指令。
 3. 在服务类中定义一个专用变量。
 
-   ```csharp
-   private ILogger _logger = null;
-   ```
+    ```csharp
+    private ILogger _logger = null;
+    ```
 
 4. 在服务类的构造函数中添加此代码：
 
-   ```csharp
-   _logger = new LoggerFactory().CreateLogger<Stateless>();
-   ```
+    ```csharp
+    _logger = new LoggerFactory().CreateLogger<Stateless>();
+    ```
 
 5. 开始检测方法中的代码。 下面提供了几个示例：
 
-   ```csharp
-   _logger.LogDebug("Debug-level event from Microsoft.Logging");
-   _logger.LogInformation("Informational-level event from Microsoft.Logging");
+    ```csharp
+    _logger.LogDebug("Debug-level event from Microsoft.Logging");
+    _logger.LogInformation("Informational-level event from Microsoft.Logging");
 
-   // In this variant, we're adding structured properties RequestName and Duration, which have values MyRequest and the duration of the request.
-   // Later in the article, we discuss why this step is useful.
-   _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
-   ```
+    // In this variant, we're adding structured properties RequestName and Duration, which have values MyRequest and the duration of the request.
+    // Later in the article, we discuss why this step is useful.
+    _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
+    ```
 
 ### <a name="using-other-logging-providers"></a>使用其他日志记录提供程序
 
-某些第三方提供程序（包括 [Serilog](https://serilog.net/)、[NLog](http://nlog-project.org/) 和 [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)）可以使用上一部分所述的方法。 可将其中的每个提供程序插入 ASP.NET Core 日志记录，也可以单独使用。 Serilog 中的某个功能可以扩充记录器发出的所有消息。 此功能对服务名称、类型和分区信息的输出可能很有作用。 若要在 ASP.NET Core 基础结构中使用此功能，请执行以下步骤：
+某些第三方提供程序（包括 [Serilog](https://serilog.net/)、[NLog](https://nlog-project.org/) 和 [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging)）可以使用上一部分所述的方法。 可将其中的每个提供程序插入 ASP.NET Core 日志记录，也可以单独使用。 Serilog 中的某个功能可以扩充记录器发出的所有消息。 此功能对服务名称、类型和分区信息的输出可能很有作用。 若要在 ASP.NET Core 基础结构中使用此功能，请执行以下步骤：
 
 1. 将 **Serilog**、**Serilog.Extensions.Logging**、**Serilog.Sinks.Literate** 和 **Serilog.Sinks.Observable** NuGet 包添加到项目。 
 2. 创建 `LoggerConfiguration` 和记录器实例。
 
-   ```csharp
-   Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
-   ```
+    ```csharp
+    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
+    ```
 
 3. 将 `Serilog.ILogger` 参数添加到服务构造函数并传递新建的记录器。
 
-   ```csharp
-   ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
-   ```
+    ```csharp
+    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
+    ```
 
 4. 在服务构造函数中，为 **ServiceTypeName**、**ServiceName**、**PartitionId** 和 **InstanceId** 创建属性扩充器。
 
-   ```csharp
-   public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
+    ```csharp
+    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
        : base(context)
-   {
+    {
        PropertyEnricher[] properties = new PropertyEnricher[]
        {
            new PropertyEnricher("ServiceTypeName", context.ServiceTypeName),
@@ -165,16 +156,17 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
        serilog.ForContext(properties);
 
        _logger = new LoggerFactory().AddSerilog(serilog.ForContext(properties)).CreateLogger<Stateless>();
-   }
-   ```
+    }
+    ```
 
 5. 可以像在不使用 Serilog 的情况下运行 ASP.NET Core 一样检测代码。
 
-   >[!NOTE]
-   >建议不要在前面的示例中使用静态 `Log.Logger`。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
+    >[!NOTE]
+    >建议不要在前面的示例中使用静态 `Log.Logger`  。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读有关 [Service Fabric 中的应用程序监视](service-fabric-diagnostics-event-generation-app.md)的详细信息。
 - 阅读使用 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 和 [Windows Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)进行日志记录的相关信息。
-<!-- Update_Description: update meta properties -->
+
+<!-- Update_Description: update meta properties, wording update -->
