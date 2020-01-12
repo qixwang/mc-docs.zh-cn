@@ -3,8 +3,8 @@ title: 教程：合规性检查 - Azure 安全中心
 description: 教程：了解如何使用 Azure 安全中心提高合规性。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
@@ -14,19 +14,19 @@ ms.workload: na
 origin.date: 11/12/2019
 ms.date: 11/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8733c0df1cfdf2909e36c305db3f4681bbed1daf
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: e3962263e11529eded6b3858cb741a94e07585b1
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528311"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857294"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 ---
 
 Azure 安全中心使用合规性仪表板，可以根据合规性要求简化相关过程  。 在仪表板中，安全中心会对你的 Azure 环境进行持续的评估，以便了解你的符合性情况。 安全中心根据安全最佳做法分析混合云环境中的风险因素。 这些评估会从支持的一组标准映射到符合性控件。 在合规性仪表板中，可以查看在特定的法规标准下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
 
-在本教程中，将了解如何：
+在本教程中，您将学习如何执行以下操作：
 
 -   使用合规性仪表板评估合规性
 
@@ -34,7 +34,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要逐步执行本教程中介绍的功能，必须有安全中心的“标准”定价层。 可以免费试用安全中心标准版。
 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](/security-center/security-center-get-started)”详细介绍了如何升级到标准版。
@@ -46,7 +46,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 可以通过合规性仪表板视图重点了解你在符合某个重要的标准或规范方面存在哪些差距。 有了这个专注的视图，你还可以持续监视动态云环境和混合环境中一段时间内的符合性分数。
 
 >[!NOTE]
-> 目前支持的法规标准如下：Azure CIS、PCI DSS 3.2、ISO 27001 和 SOC TSP。 其他标准会根据情况反映在仪表板中。
+> 默认情况下，安全中心支持以下法规标准：Azure CIS、PCI DSS 3.2、ISO 27001 和 SOC TSP。 
 1.  在“安全中心”主菜单的“策略和符合性”下，选择“法规符合应”。   <br>
 在屏幕顶部会显示一个仪表板，其中概述了你的符合性状态以及一组支持的符合性法规。 可以查看总体符合性分数，以及与每个标准相关联的已通过评估和失败的评估的数目。
 
