@@ -1,25 +1,19 @@
 ---
-title: 使用应用服务环境 - Azure
-description: 如何在 Azure 应用服务环境中创建、发布和缩放应用
-services: app-service
-documentationcenter: na
+title: 使用和管理 ASE
+description: 如何在 Azure 应用服务环境中创建、发布和缩放应用。 在一个文档中查找常见任务。
 author: ccompy
-manager: stefsch
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 05/28/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c23d437a1a18b8238c19e863accdc1a33645fd47
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: a4120e75980c5ac2867c55ea9b33e8dfbf797ba9
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555983"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600472"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -165,4 +159,4 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 <!--Links-->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!-- [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/ -->
-[Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md [ConfigureSSL]: ../configure-ssl-certificate.md [AppDeploy]: ../deploy-local-git.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[Intro]\: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md [ConfigureSSL]: ../configure-ssl-certificate.md [AppDeploy]: ../deploy-local-git.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

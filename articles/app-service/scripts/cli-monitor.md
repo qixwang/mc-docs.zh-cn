@@ -1,28 +1,21 @@
 ---
-title: Azure CLI 脚本示例 - 使用 Web 服务器日志监视应用 | Azure
-description: Azure CLI 脚本示例 - 使用 Web 服务器日志监视应用服务中的应用
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：使用 Web 服务器日志监视应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示如何使用 Web 服务器日志监视应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0887656f-611c-4627-8247-b5cded7cef60
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 origin.date: 12/11/2017
-ms.date: 09/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: bda08a78933ddf8502371c129e8a53df12ad33f7
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.custom: mvc
+ms.openlocfilehash: 932719712557973bb6451690fad0f996a9eddd8c
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806789"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600331"
 ---
 # <a name="monitor-an-app-service-app-with-web-server-logs-using-azure-cli"></a>使用 Azure CLI 通过 Web 服务器日志监视应用服务应用
 

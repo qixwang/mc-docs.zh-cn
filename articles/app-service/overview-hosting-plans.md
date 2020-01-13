@@ -1,28 +1,19 @@
 ---
-title: 应用服务计划概述 - Azure
-description: 了解针对 Azure 应用服务的应用服务计划的工作原理，以及如何利用它们进行管理。
+title: 应用服务计划
+description: 了解应用服务计划在 Azure 应用服务中的工作方式，如何向客户收取其费用，以及如何根据需要对其进行缩放。
 keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应用服务计划, 应用服务成本
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 11/09/2017
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: db26ff48909acb58ff4b6957176f4c4cb37b4487
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: b7b213c7c7ff34cebf21705651250327c3cad9b4
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555943"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600428"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 

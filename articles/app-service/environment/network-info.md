@@ -1,25 +1,19 @@
 ---
-title: 应用服务环境的网络注意事项 - Azure
-description: 介绍 ASE 网络流量，以及如何在 ASE 中设置 NSG 和 UDR
-services: app-service
-documentationcenter: na
+title: 网络注意事项
+description: 了解 ASE 网络流量以及如何通过 ASE 设置网络安全组和用户定义的路由。
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6066d656a22b472b906b3fd5cc0e918683765cbf
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 019f5df2a9277635a94e56740a60046a8b4c9f14
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555984"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600475"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -219,7 +213,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ## <a name="service-endpoints"></a>服务终结点 ##
 
-可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅 [虚拟网络服务终结点][serviceendpoints] 文档。 
+可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅 [虚拟网络服务终结点]\[serviceendpoints] 文档。 
 
 在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果在包含强制隧道 ASE 的任意 Azure 服务中使用服务终结点，则不会对发往这些服务的流量应用强制隧道。 
 

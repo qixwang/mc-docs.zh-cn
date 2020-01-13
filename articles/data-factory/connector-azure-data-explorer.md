@@ -1,29 +1,31 @@
 ---
-title: 使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
+title: 向/从 Azure 数据资源管理器复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动来向/从 Azure 数据资源管理器复制数据。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: f2c3ca0cad4d6bb1c0bfd5921a9d10cc512920bf
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.custom: seo-lt-2019
+origin.date: 11/26/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: 5129c30a65f1c8bc4a46b42b10ebedb4b1fc1db3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648674"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624243"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
 本文介绍如何在 Azure 数据工厂中使用复制活动向/从 [Azure 数据资源管理器](../data-explorer/data-explorer-overview.md)复制数据。 本文是在总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文的基础之上编写的。
+
+>[!TIP]
+>通常，对于 Azure 数据工厂和 Azure 数据资源管理器的集成，请从[将 Azure 数据资源管理器与 Azure 数据工厂集成](../data-explorer/data-factory-integration.md)了解更多信息。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -46,7 +48,7 @@ ms.locfileid: "73648674"
 ## <a name="getting-started"></a>入门
 
 >[!TIP]
->有关 Azure 数据资源管理器连接器的演练，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](../data-explorer/data-factory-load-data.md)。
+>有关 Azure 数据资源管理器连接器的演练，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](../data-explorer/data-factory-load-data.md)和[从数据库大容量复制到 Azure 数据资源管理器](../data-explorer/data-factory-template.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

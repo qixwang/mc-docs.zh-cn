@@ -12,24 +12,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/17/2019
-ms.date: 10/21/2019
+origin.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: e1ffe296536a0a6019eecf4adb967043509e567f
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 5f59679e394aa8d52ed260ee8474ef0fed5809a4
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292431"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631087"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell Az 模块管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请查看 [Az.HDInsight 参考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
 
+如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -64,55 +66,14 @@ Remove-AzResourceGroup -Name <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>缩放群集
-使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。
 
-更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
-
-* Apache Hadoop
-
-    可顺利增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 也可在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
-
-    减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 重启服务将导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可在操作完成后重新提交这些作业。
-* Apache HBase
-
-    可在 HBase 群集运行时顺利添加或删除节点。 完成缩放操作后的几分钟内，区域服务器自动平衡。 不过，也可手动均衡区域服务器，方法是登录到群集的头节点，然后在命令提示符窗口中运行以下命令：
-
-    ```bash
-    pushd %HBASE_HOME%\bin
-    hbase shell
-    balancer
-    ```
-
-* Apache Storm
-
-    可在 Storm 群集运行时顺利添加或删除数据节点。 但是，缩放操作成功完成后，需要重新平衡拓扑。
-
-    可以使用两种方法来完成重新平衡操作：
-
-  * Storm Web UI
-  * 命令行界面 (CLI) 工具
-
-    有关详细信息，请参阅 [Apache Storm 文档](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
-
-    HDInsight 群集上提供了 Storm Web UI：
-
-    ![HDInsight storm 缩放重新平衡](./media/hdinsight-administer-use-powershell/portal-scale-cluster.png)
-
-    以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
-
-    ```cli
-    ## Reconfigure the topology "mytopology" to use 5 worker processes,
-    ## the spout "blue-spout" to use 3 executors, and
-    ## the bolt "yellow-bolt" to use 10 executors
-    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
-    ```
-
-若要使用 Azure PowerShell 更改 Hadoop 群集大小，请从客户端计算机运行以下命令：
+使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。 若要使用 Azure PowerShell 更改 Hadoop 群集大小，请从客户端计算机运行以下命令：
 
 ```powershell
 Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 ```
 
+ 有关缩放群集的详细信息，请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)。
 
 ## <a name="grantrevoke-access"></a>授予/撤消访问权限
 HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
@@ -215,7 +176,7 @@ $resourceGroupName = $cluster.ResourceGroup
 请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
 
 ## <a name="see-also"></a>另请参阅
-* [HDInsight cmdlet 参考文档](https://msdn.microsoft.com/library/azure/dn479228.aspx)
+* [Az.HDInsight cmdlet](https://docs.microsoft.com/powershell/module/az.hdinsight/?view=azps-3.1.0#hdinsight)
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
 * [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
