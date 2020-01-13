@@ -1,26 +1,19 @@
 ---
-title: 使用移动应用为通用 Windows 平台 (UWP) 应用启用脱机同步 | Azure
+title: 为 UWP 应用启用脱机同步
 description: 了解如何在通用 Windows 平台 (UWP) 应用中使用 Azure 移动应用缓存和同步脱机数据。
-documentationcenter: windows
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: c3b28137f4ec08719f2e3eb07d71e5db4ec53db3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1bfb2699f9514838623a11eaaf233b32cf07c5de
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335761"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600543"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

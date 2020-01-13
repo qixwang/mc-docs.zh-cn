@@ -1,5 +1,5 @@
 ---
-title: 将本地 SSIS 工作负荷迁移到 Azure 数据工厂中的 SSIS | Microsoft Docs
+title: 将本地 SSIS 工作负荷迁移到 Azure 数据工厂中的 SSIS
 description: 将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS。
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 9/3/2019
-ms.date: 10/14/2019
-ms.openlocfilehash: 458bf0802548ce231ccf788c0ad4e004f5e7bcad
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.date: 01/06/2020
+ms.openlocfilehash: 754e899e34dfc6ac56f6e27df55d4a9e312bc088
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275884"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623942"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS
 
@@ -49,7 +49,7 @@ Azure 数据工厂 (ADF) 中 Azure-SSIS Integration Runtime (IR) 支持运行 SS
   - MSDB：SQL Server 中用于存储 SSIS 包的系统数据库。
   - 托管文件系统：SQL Server 安装路径中用于存储 SSIS 包的特定文件夹。
 
-自 **DMA 版本 v4.5** 开始，DMA 支持对“文件系统”存储类型中存储的包进行批量评估。 
+DMA 当前支持对自 **DMA 版本 5.0** 以来存储在**文件系统**、**包存储**和 **SSIS 目录**中的包进行批量评估。
 
 获取 [DMA](https://docs.microsoft.com/sql/dma/dma-overview)，并[使用它来执行包评估](https://docs.microsoft.com/sql/dma/dma-assess-ssis)。
 

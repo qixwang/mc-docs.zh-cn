@@ -2,19 +2,15 @@
 title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 10/28/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 69b6e4b13d694086992452c65f428338a0ecab80
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 2e3b21350b5dd468812b53b37c8fafe5bbae037b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034465"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623664"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -36,7 +32,8 @@ Durable Functions 扩展自动将一组 HTTP API 添加到 Azure Functions 宿�
 * [将外部事件发送到业务流程](durable-functions-http-api.md#raise-event)
 * [清除业务流程历史记录](durable-functions-http-api.md#purge-single-instance-history)
 * [将操作事件发送到实体](durable-functions-http-api.md#signal-entity)
-* [查询实体的状态](durable-functions-http-api.md#query-entity)
+* [获取实体的状态](durable-functions-http-api.md#get-entity)
+* [查询实体的列表](durable-functions-http-api.md#list-entities)
 
 有关 Durable Functions 扩展公开的所有内置 HTTP API 的完整说明，请参阅 [HTTP API 文章](durable-functions-http-api.md)。
 
@@ -279,7 +276,6 @@ public static async Task RunOrchestrator(
 * 永远不会以持久性业务流程状态存储令牌。
 * 无需编写任何代码即可管理令牌获取。
 
-可以在[预编译的 C# RestartVMs 示例](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)中找到更完整的示例。
 
 托管标识并不局限于 Azure 资源管理。 可以使用托管标识来访问接受 Azure AD 持有者令牌的任何 API，包括 Microsoft 提供的 Azure 服务，以及合作伙伴提供的 Web 应用。 合作伙伴的 Web 应用甚至可以是其他函数应用。 有关支持使用 Azure AD 进行身份验证的 Microsoft Azure 服务的列表，请参阅[支持 Azure AD 身份验证的 Azure 服务](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 

@@ -1,19 +1,14 @@
 ---
 title: Azure Functions 中支持的语言
 description: 了解支持哪些语言 (GA) 以及哪些语言是实验性的或处于预览状态。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 08/02/2018
-ms.date: 11/11/2019
-ms.author: v-junlch
-ms.openlocfilehash: a31c3c10881cc5908f3e695509d3efa31e694ca0
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.date: 12/31/2019
+ms.openlocfilehash: b782b416714533a69613032e083883285e206518
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934260"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624303"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
@@ -29,7 +24,7 @@ ms.locfileid: "73934260"
 
 ## <a name="languages-by-runtime-version"></a>按运行时版本列出的语言 
 
-[这两个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
+[三个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -39,7 +34,7 @@ ms.locfileid: "73934260"
 
 不要对所依赖的任何内容使用实验性功能，因为对其没有官方支持。 不应针对实验性语言的问题开启支持案例。 
 
-2\.x 版运行时不支持实验性语言。 只有在生产环境中支持该语言时，才会添加对新语言的支持。 
+更高的运行时版本不支持实验性语言。 只有在生产环境中支持该语言时，才会添加对新语言的支持。 
 
 ### <a name="language-extensibility"></a>语言扩展性
 

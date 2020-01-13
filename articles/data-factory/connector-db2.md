@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 DB2 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 DB2 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 DB2 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 11/11/2019
+origin.date: 11/20/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 1689bf90d1b43f5df04ad35f4f5523ccd0fc8e22
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: 4102a855a5f3196e83fb1f0e8a49506f11f8cef2
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648606"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624232"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 
@@ -74,6 +74,8 @@ DB2 链接服务支持以下属性：
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：**基本**。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置 | 否 |
+| certificateCommonName | 使用安全套接字层 (SSL) 或传输层安全性 (TLS) 加密时，必须为“证书公用名称”输入值。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**

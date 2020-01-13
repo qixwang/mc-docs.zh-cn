@@ -1,21 +1,20 @@
 ---
-title: 使用用于容器的 Azure Monitor 创建性能警报 | Azure Docs
+title: 为用于容器的 Azure Monitor 创建性能警报 | Microsoft Docs
 description: 本文介绍如何使用用于容器的 Azure Monitor 基于内存和 CPU 利用率的日志查询创建自定义警报。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
-ms.author: v-lingwu
 origin.date: 04/26/2019
 ms.date: 08/22/2019
-ms.openlocfilehash: e43bae3960a08ce0780582e1d910649a643032a6
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.author: v-lingwu
+ms.openlocfilehash: f071d408716e96a0e3c6fd7ceeb34e0b879b5d16
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970983"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599935"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何在用于容器的 Azure Monitor 中针对性能问题设置警报
+
 用于容器的 Azure Monitor 可以监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。
 
 本文介绍如何针对以下情况启用警报：
@@ -31,6 +30,7 @@ ms.locfileid: "72970983"
 如果你不熟悉 Azure Monitor 警报，请在开始之前参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要详细了解使用日志查询的警报，请参阅 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)。 有关指标警报的详细信息，请参阅 [Azure Monitor 中的指标警报](../platform/alerts-metric-overview.md)。
 
 ## <a name="resource-utilization-log-search-queries"></a>资源利用率日志搜索查询
+
 本部分所述的查询支持每种警报方案。 本文[创建警报](#create-an-alert-rule)部分的步骤 7 中使用了这些查询。
 
 以下查询每隔一分钟计算平均 CPU 利用率作为成员节点的平均 CPU 利用率。  

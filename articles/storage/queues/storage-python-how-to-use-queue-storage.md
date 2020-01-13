@@ -1,23 +1,23 @@
 ---
-title: 如何通过 Python 使用 Azure 队列存储 - Azure 存储
-description: 了解如何通过 Python 使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。
+title: 如何通过 Python 使用 Azure 队列存储 v2.1 - Azure 存储
+description: 了解如何通过 Python 使用 Azure 队列服务 v2.1 创建和删除队列，以及插入、获取和删除消息。
 author: WenJason
 ms.service: storage
 ms.author: v-jay
 origin.date: 09/17/2019
-ms.date: 10/29/2019
+ms.date: 01/06/2020
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 11ef4d3cdc93d85f9e473a6dfece6d76dc3d9c9d
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 4d9347d9a57ac3dce5abe69da74d7f3218abd5d2
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914497"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624094"
 ---
-# <a name="how-to-use-azure-queue-storage-from-python"></a>如何通过 Python 使用 Azure 队列存储
+# <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何通过 Python 使用 Azure 队列存储 v2.1
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "72914497"
 要通过 Python 包索引 (PyPI) 安装，请键入：
 
 ```bash
-pip install azure-storage-queue
+pip install azure-storage-blob==2.1.0
 ```
 
 > [!NOTE]

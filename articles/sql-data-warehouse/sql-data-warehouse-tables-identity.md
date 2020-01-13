@@ -1,22 +1,23 @@
 ---
-title: 使用 IDENTITY 创建代理键 - Azure SQL 数据仓库 | Microsoft Docs
+title: 使用 IDENTITY 创建代理键
 description: 关于如何使用 IDENTITY 属性在 Azure SQL 数据仓库中创建基于表的代理键的建议和示例。
 services: sql-data-warehouse
 author: WenJason
 manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 origin.date: 04/30/2019
-ms.date: 05/20/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: b81439622844acd21696d1f098a950f9ec0196da
-ms.sourcegitcommit: 2f487fba38fd225111e07411cd9eb85e2e8e3153
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 4fc75822bb1c49b74581114cc22ddecc28fc2346
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65828819"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623689"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>使用 IDENTITY 在 Azure SQL 数据仓库中创建代理键
 
@@ -165,7 +166,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 
 ## <a name="system-views"></a>系统视图
 
-可以使用 [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) 目录视图来标识具有 IDENTITY 属性的列。
+可以使用 [sys.identity_columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) 目录视图来标识具有 IDENTITY 属性的列。
 
 为了更好地了解数据库架构，本示例演示如何将 sys.identity_column 与其他系统目录视图集成：
 

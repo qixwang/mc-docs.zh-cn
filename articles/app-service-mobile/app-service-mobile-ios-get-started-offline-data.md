@@ -1,26 +1,19 @@
 ---
-title: 启用 iOS 移动应用的脱机同步功能 | Azure
+title: 启用脱机同步 (iOS)
 description: 了解如何使用 Azure 应用服务移动应用来缓存和同步 iOS 应用程序中的脱机数据。
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: d3c3177603a7acbd0054c5e47680334fe5695da9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2d3cc241a3ce67c7f99abd3a1aa52c482388c2ed
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334625"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600552"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用 iOS 移动应用的脱机同步功能
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

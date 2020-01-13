@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 04/15/2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 131eca17d1f4106c6cae1a08869a20fd0dbd861b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/17/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: b3c4c1de5dc979c9cdb4a35bde477caf76dbab14
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335934"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630727"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -25,6 +25,72 @@ ms.locfileid: "75335934"
 ## <a name="summary"></a>摘要
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
+
+## <a name="release-date-11072019"></a>发行日期：11/07/2019
+
+此发行版适用于 HDInsight 3.6 和 4.0。
+
+### <a name="new-features"></a>新增功能
+
+#### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight 标识中介 (HIB)（预览版）
+
+HDInsight 标识中介 (HIB) 可让用户使用多重身份验证 (MFA) 登录到 Apache Ambari，并获取所需的 Kerberos 票证，而无需在 Azure Active Directory 域服务 (AAD-DS) 中提供密码哈希。 目前，HIB 仅适用于通过 Azure 资源管理 (ARM) 模板部署的群集。
+
+#### <a name="kafka-rest-api-proxy-preview"></a>Kafka Rest API 代理（预览版）
+
+Kafka Rest API 代理通过受保护的 AAD 授权和 OAuth 协议，为 Kafka 群集提供一键式的高可用性 REST 代理部署。 
+
+#### <a name="auto-scale"></a>自动缩放
+
+适用于 Azure HDInsight 的自动缩放功能现已在所有区域中针对 Apache Spark 和 Hadoop 群集类型推出正式版。 使用此功能能够以更具成本效益且高效的方式管理大数据分析工作负荷。 现在，你可以优化 HDInsight 群集的使用，并且只需为所用的资源付费。
+
+可以根据要求，在基于负载和基于计划的自动缩放之间进行选择。 基于负载的自动缩放可根据当前资源需求增大和缩小群集大小，而基于计划的自动缩放可根据预定义的计划更改群集大小。 
+
+适用于 HBase 和 LLAP 工作负荷的自动缩放支持也推出了公共预览版。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)。
+
+#### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>适用于 Apache HBase 的 HDInsight 加速写入 
+
+加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[面向 Apache HBase 的 Azure HDInsight 加速写入](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)。
+
+#### <a name="custom-ambari-db"></a>自定义 Ambari DB
+
+HDInsight 现在提供新的容量，使客户能够使用自己的适用于 Ambari 的 SQL 数据库。 现在，客户可以选择适当的用于 Ambari 的 SQL 数据库，并根据自己的业务增长需求轻松对其进行升级。 部署是使用 Azure 资源管理器模板完成的。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)。
+
+#### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>现已推出适用于 HDInsight 的 F 系列虚拟机
+
+F 系列虚拟机 (VM) 非常适合用于体验处理要求很低的 HDInsight。 根据每个 vCPU 的 Azure 计算单位 (ACU)，F 系列以较低的小时定价，在 Azure 产品组合中具有最高性价比。 有关详细信息，请参阅[为 Azure HDInsight 群集选择适当的 VM 大小](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size)。
+
+### <a name="deprecation"></a>弃用
+
+#### <a name="g-series-virtual-machine-deprecation"></a>G 系列虚拟机已弃用
+从此发行版开始，HDInsight 中不再提供 G 系列 VM。
+
+#### <a name="dv1-virtual-machine-deprecation"></a>Dv1 虚拟机已弃用
+从此发行版开始，已弃用包含 HDInsight 的 Dv1 VM。 客户提出的 Dv1 请求将自动以 Dv2 来满足。 Dv1 与 Dv2 VM 的价格没有差别。
+
+### <a name="behavior-changes"></a>行为更改
+
+#### <a name="cluster-managed-disk-size-change"></a>群集托管磁盘大小更改
+HDInsight 在群集中提供托管磁盘空间。 从此发行版开始，新建的群集中每个节点的托管磁盘大小将更改为 128 GB。
+
+### <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将发生以下更改。 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从 12 月开始，HDInsight 将改用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+
+#### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
+在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
+
+#### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>ESP 群集的 A 系列虚拟机已弃用
+由于 CPU 和内存容量相对较低，A 系列 VM 可能会导致 ESP 群集出现问题。 在即将发布的版本中，A 系列 VM 将会弃用，不再可用于创建新的 ESP 群集。
+
+### <a name="bug-fixes"></a>Bug 修复
+HDInsight 会持续改善群集的可靠性和性能。 
+
+### <a name="component-version-change"></a>组件版本更改
+此版本未发生组件版本更改。 可在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+
 
 ## <a name="release-date-08072019"></a>发布日期：2019/08/07
 
@@ -1416,7 +1482,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 |**Apache 组件**|**Apache JIRA**|**摘要**|**详细信息**|
 |--|--|--|--|
 |**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |- 提供了“弃用”文档和“行为变更”指南： https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />- 对于 SQL 部分，提供了另一篇详细“迁移”指南（从 2.3 到 2.2）： https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景：** 当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
+|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景**：当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
 |**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景**：**INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错:失败:HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入特权\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
 |**HDFS**|**不适用** |HDFS 应受多个 KMS RUI 的支持 |**以前的行为：** dfs.encryption.key.provider.uri 属性用于配置 KMS 提供程序路径。<br /><br />**新行为：** 现已弃用 dfs.encryption.key.provider.uri，改用 hadoop.security.key.provider.path 来配置 KMS 提供程序路径。|

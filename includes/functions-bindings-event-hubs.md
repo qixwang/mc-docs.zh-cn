@@ -2,15 +2,14 @@
 author: craigshoemaker
 ms.service: azure-functions
 ms.topic: include
-origin.date: 03/05/2019
-ms.date: 11/19/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: b2be59093ea2c762a341323313603a799c40ee1f
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: fe8556a22dfe5ad6e65d1dcb6377885470c8bc80
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179225"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623643"
 ---
 ## <a name="trigger"></a>触发器
 
@@ -105,7 +104,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
-#### <a name="version-2x"></a>版本 2.x
+#### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -186,7 +185,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。 
 
-#### <a name="version-2x"></a>版本 2.x
+#### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -223,7 +222,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
-#### <a name="version-2x"></a>版本 2.x
+#### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -262,7 +261,7 @@ module.exports = function (context, myEventHubMessage) {
 
 若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`  ，如以下示例所示。
 
-#### <a name="version-2x"></a>版本 2.x
+#### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -356,10 +355,10 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |类型  | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction  | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name  | 不适用 | 在函数代码中表示事件项的变量的名称。 |
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
 |**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。 |
 |**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
@@ -393,7 +392,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
-请确保所需的包引用已准备好：Functions 1.x 或 Functions 2.x
+在尝试实现输出绑定之前，请确保所需的包引用已准备就绪。
 
 ## <a name="output---example"></a>输出 - 示例
 
@@ -443,7 +442,7 @@ public static async Task Run(
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x 及更高版本，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
@@ -495,7 +494,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [F# 函数](../articles/azure-functions/functions-reference-fsharp.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x 及更高版本，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
@@ -529,7 +528,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) 
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x，第二个示例适用于 Functions 1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x 及更高版本，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
@@ -616,10 +615,10 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |类型  | 不适用 | 必须设置为“eventHub”。 |
-|direction  | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|name  | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|**eventHubName** |**EventHubName** | 仅适用于 Functions 2.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）  的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -640,7 +639,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](../articles/azure-functions/functions-host-json.md)。
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](../articles/azure-functions/functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](../articles/azure-functions/functions-host-json-v1.md)。
@@ -666,3 +665,4 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |prefetchCount|不适用|基础 EventProcessorHost 将要使用的默认 PrefetchCount。|
 |batchCheckpointFrequency|1|创建 EventHub 游标检查点之前要处理的事件批数。|
 
+<!-- Update_Description: wording update -->

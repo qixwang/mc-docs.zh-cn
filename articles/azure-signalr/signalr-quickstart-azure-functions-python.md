@@ -5,15 +5,15 @@ author: anthonychu
 ms.service: signalr
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 08/08/2019
-ms.date: 11/25/2019
+origin.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: b85f67a210af0c973b3dbdbf0d1c648f749b521d
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: a6ab329cad7adf751d81bd5e75991e0ae59dc147
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179078"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600587"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>快速入门：使用 Python 通过 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -25,11 +25,9 @@ ms.locfileid: "74179078"
 
 确保已安装了代码编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
 
-安装 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)（版本 2.7.1505 或更高版本），以便在本地运行 Python Azure Functions 应用。
+安装 [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)（版本 2.7.1505 或更高版本），以便在本地运行 Python Azure Functions 应用。
 
-Azure Functions 需要 [Python 3.6](https://www.python.org/downloads/)。
-
-为了安装扩展，Azure Functions Core Tools 目前需要安装 [.NET Core SDK](https://www.microsoft.com/net/download)。 但是，构建 Python Azure Function 应用不需要了解 .NET。
+Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -55,19 +53,19 @@ Azure Functions 需要 [Python 3.6](https://www.python.org/downloads/)。
 
 1. 在代码编辑器中，打开克隆存储库中的 src/chat/python  文件夹。
 
-1. 要本地开发和测试 Python 函数，必须在 Python 3.6 环境中工作。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
+1. 要本地开发和测试 Python 函数，必须在 Python 3.6 或 Python 3.7 环境中工作。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
 
     **Linux 或 macOS：**
 
     ```bash
-    python3.6 -m venv .venv
+    python3.7 -m venv .venv
     source .venv/bin/activate
     ```
 
-    **Windows**：
+    **Windows:**
 
     ```powershell
-    py -3.6 -m venv .venv
+    py -3.7 -m venv .venv
     .venv\scripts\activate
     ```
 
@@ -80,10 +78,10 @@ Azure Functions 需要 [Python 3.6](https://www.python.org/downloads/)。
     - **negotiate** - 使用 *SignalRConnectionInfo* 输入绑定生成并返回有效的连接信息。
     - **messages** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
 
-1. 在终端中，确保你位于 src/chat/python  文件夹中。 使用 Azure Functions Core Tools 安装运行应用所需的扩展。
+1. 在激活虚拟环境的终端中，确保你位于“src/chat/python”  文件夹中。 使用 PIP 安装必要的 Python 包。
 
     ```bash
-    func extensions install
+    python -m pip install -r requirements.txt
     ```
 
 1. 运行函数应用。

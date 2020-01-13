@@ -1,21 +1,21 @@
 ---
-title: 使用 Azurite 开源模拟器进行 Azure 存储开发和测试（预览）
+title: 使用 Azurite 模拟器进行本地 Azure 存储开发
 description: Azurite 开源模拟器（预览版）提供一个免费的本地环境用于测试 Azure 存储应用程序。
 author: WenJason
 ms.author: v-jay
 origin.date: 08/31/2019
-ms.date: 09/30/2019
+ms.date: 01/06/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: fb763df646f4885cfdbdb1112dfd490b15637893
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 75319e48db21e3e2f6c7333d1c8e06c1ffc50fb9
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306741"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623681"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>使用 Azurite 开源模拟器进行 Azure 存储开发和测试（预览）
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模拟器进行本地 Azure 存储开发和测试（预览）
 
 Azurite 版本 3.2 开源模拟器（预览版）提供一个免费的本地环境用于测试 Azure blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 MacOS 上提供跨平台支持。 Azurite v3 支持 Azure Blob 服务实现的 API。
 

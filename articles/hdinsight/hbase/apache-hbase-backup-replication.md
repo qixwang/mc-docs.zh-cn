@@ -1,9 +1,6 @@
 ---
-title: 设置 HBase 和 Phoenix 的备份与复制 - Azure HDInsight
-description: 为 HBase 和 Phoenix 设置备份与复制。
-services: hdinsight
-documentationcenter: ''
-tags: azure-portal
+title: Apache HBase、Phoenix 的备份和复制 - Azure HDInsight
+description: 在 Azure HDInsight 中为 Apache HBase 和 Apache Phoenix 设置备份与复制
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
@@ -14,15 +11,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/22/2018
+origin.date: 12/19/2019
 ms.author: v-yiso
-ms.date: 04/01/2019
-ms.openlocfilehash: c86190ec6747013ef74121beff7a248cd536015d
-ms.sourcegitcommit: 41a1c699c77a9643db56c5acd84d0758143c8c2f
+ms.date: 01/13/2020
+ms.openlocfilehash: 188768448de7bd6a95d90a51288f89b97e090b33
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58348587"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631108"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
 
@@ -71,13 +68,17 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
 在源 HDInsight 群集上，使用“导出”实用工具（HBase 已随附）将数据从源表导出到默认的附加存储。 然后，可将导出的文件夹复制到目标存储位置，并在目标 HDInsight 群集上运行“导入”实用工具。
 
-若要导出表，请先通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
+若要导出表数据，请先通过 SSH 连接到源 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-若要导入表，请通过 SSH 连接到目标 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
+导出目录不能已存在。 表名称区分大小写。
+
+若要导入表数据，请通过 SSH 连接到目标 HDInsight 群集的头节点，然后运行以下 `hbase` 命令：
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+
+该表必须已存在。
 
 指定默认存储或任何附加存储选项的完整导出路径。 例如，在 Azure 存储中：
 
@@ -161,7 +162,7 @@ CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在
 
 ## <a name="snapshots"></a>快照
 
-使用快照可为 HBase 数据存储中的数据创建时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。
+使用快照可为 HBase 数据存储中的数据创建时间点备份。 快照的开销极小，并且在数秒内即可完成，因为快照操作实际上是一种元数据操作，只捕获该时刻存储中所有文件的名称。 创建快照时，不会复制实际数据。 快照依赖于 HDFS 中存储的数据不可变性质，其中的更新、删除和插入都以新数据表示。 可以在同一群集上还原（克隆）快照，或者将快照导出到另一个群集。 
 
 若要创建快照，请通过 SSH 连接到 HDInsight HBase 群集的头节点，然后启动 `hbase` shell：
 

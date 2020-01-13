@@ -1,26 +1,17 @@
 ---
-title: OS 和运行时修补频率 - Azure 应用服务 | Azure
-description: 介绍 Azure 应用服务如何更新 OS 和运行时，以及如何获取更新公告。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: OS 和运行时修补频率
+description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应用具有哪些运行时和修补程序级别，以及如何获取更新公告。
 ms.topic: article
 origin.date: 02/02/2018
-ms.date: 09/05/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7e9cd7096f84430a5f05e71e6a31ba979f14ea75
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: 1e2f3d2d62a20ac1b9326f2617dcf809f5c52e4d
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806812"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600417"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 

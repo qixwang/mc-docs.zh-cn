@@ -12,23 +12,23 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 04/08/2019
-ms.date: 04/29/2019
+origin.date: 10/31/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 95a9d8d925e9cb1b37bf1f1930f47e065e738a51
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: 7d71a0825ddb0c115d64dbf5f7db976e08650c0c
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878686"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630800"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
 了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。  本文档中的步骤会将存储帐户添加到基于 Linux 的现有 HDInsight 群集。  本文适用于存储帐户  （而不是默认的群集存储帐户），并且不适用于额外的存储，例如 [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 > [!IMPORTANT]  
-> 本文档中的信息是关于在创建群集后将其他存储添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
+> 本文档中的信息是关于在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -129,49 +129,43 @@ az hdinsight script-action execute ^
 
 ### <a name="powershell"></a>PowerShell
 
-将 `CLUSTERNAME` 替换为大小写正确的群集名称。 首先输入以下命令，确定正在使用的服务配置版本：
-
-```powershell
-# getting service_config_version
-$clusterName = "CLUSTERNAME"
-
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
-    -Credential $creds -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
-```
-
-将 `ACCOUNTNAME` 替换为实际名称。 然后将 `4` 替换为实际的服务配置版本并输入以下命令。 出现提示时，输入群集登录名和密码。
+将 `CLUSTERNAME` 替换为大小写正确的群集名称。 将 `ACCOUNTNAME` 替换为实际名称。 出现提示时，输入群集登录名和密码。
 
 ```powershell
 # Update values
+$clusterName = "CLUSTERNAME"
 $accountName = "ACCOUNTNAME"
-$version = 4
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$version" `
+
+# getting service_config_version
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+
+$configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
+
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.chinacloudapi.cn"
 ```
 
 ### <a name="bash"></a>bash
-将 `myCluster` 替换为大小写正确的群集名称。
+
+将 `CLUSTERNAME` 替换为大小写正确的群集名称。 将 `PASSWORD` 替换为群集管理员密码。 将 `STORAGEACCOUNT` 替换为实际的存储帐户名称。
 
 ```bash
-export CLUSTERNAME='myCluster'
+export clusterName="CLUSTERNAME"
+export password='PASSWORD'
+export storageAccount="STORAGEACCOUNT"
 
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
-```
+export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.chinacloudapi.cn'"'
 
-将 `myAccount` 替换为实际的存储帐户名称。 然后将 `4` 替换为实际的服务配置版本并输入以下命令：
+export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
+| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
 
-```bash
-export ACCOUNTNAME='"fs.azure.account.key.myAccount.blob.core.chinacloudapi.cn"'
-export VERSION='4'
-
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=$VERSION" \
+curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
 | jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
 ```
 

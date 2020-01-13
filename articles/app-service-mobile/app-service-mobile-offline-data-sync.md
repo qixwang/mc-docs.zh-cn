@@ -1,26 +1,19 @@
 ---
-title: Azure 移动应用中的脱机数据同步 | Azure
+title: 脱机数据同步
 description: Azure 移动应用脱机数据同步功能的概念参考和概述
-documentationcenter: windows
 author: conceptdev
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 origin.date: 10/30/2016
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 7190c84435975f7fa7e5752fd8ea1045b9f1762e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6f05aa3c3972448f6276ccde9bc0f0057d1fb5c3
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335760"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600546"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
 

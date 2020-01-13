@@ -1,25 +1,25 @@
 ---
 title: Azure 仪表板结构 | Azure
-description: 本文介绍 Azure 仪表板的 JSON 结构
+description: 使用示例仪表板演练 Azure 仪表板的 JSON 结构。 包括对资源属性的引用。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-origin.date: 09/01/2017
+origin.date: 12/20/2019
 ms.author: v-tawe
-ms.date: 11/04/2019
-ms.openlocfilehash: 7cc4faf389744dde86fa2ebd0403890c97ac98bb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: 7fac53cd9f478aed39b3c743523211922e4e2c83
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335799"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600569"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
@@ -294,12 +294,12 @@ ms.locfileid: "75335799"
 
 现在分别介绍 JSON 的各个相关部分。  顶级属性，即 id、名称、类型、位置和标记属性是所有 Azure 资源类型所共有的属性      。 也就是说，它们与仪表板内容没有太大关系。
 
-### <a name="the-id-property"></a>Id 属性
+### <a name="the-id-property"></a>ID 属性
 
-门户创建仪表板时通常选择 GUID 形式的 id，如果以编程方式创建 id，可随意使用任何有效的名称。 
+当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
 
 ### <a name="the-name-property"></a>“名称”属性
-名称是资源 Id 中不包含订阅、资源类型或资源组信息的那部分。 本质上，它是资源 id 的最后一段。
+名称是资源 ID 中不包含订阅、资源类型或资源组信息的那部分。 实质上，它是资源 ID 的最后一段。
 
 ### <a name="the-type-property"></a>“类型”属性
 所有仪表板均属于 Microsoft.Portal/dashboards 类型  。
@@ -313,13 +313,13 @@ ms.locfileid: "75335799"
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>属性对象
-属性对象包含两个属性：可重用功能区和元数据   。 “可重用功能区”属性包含有关仪表板上磁贴（也称为  部件）的信息。  “元数据”属性用于将来可能会出现的功能  。
+属性对象包含两个属性：可重用功能区和元数据   。 “可重用功能区”属性包含有关仪表板上的磁贴的信息  。  “元数据”属性用于将来可能会出现的功能  。
 
 ### <a name="the-lenses-property"></a>“可重用功能区”属性
 “可重用功能区”属性包含仪表板  。 请注意，此示例中的可重用功能区对象包含名为“0”的单个属性。 可重用功能区是一个分组概念，当前未在仪表板中实现。 现在，所有仪表板在可重用功能区对象上具有此单个属性，即“0”。
 
 ### <a name="the-lens-object"></a>可重用功能区对象
-“0”下面的对象包含两个属性：顺序和部件   。  在当前版本的仪表板中，顺序始终为 0  。 “部件”属性包含定义仪表板上各个部件（也称为  磁贴）的对象。
+“0”下面的对象包含两个属性：顺序和部件   。  在当前版本的仪表板中，顺序始终为 0  。 __parts__ 属性包含一个对象，该对象定义仪表板上的各个部件（也称为“磁贴”）。
 
 部件对象包含每个部件的一个属性，其中属性名称为一个数字  。 此数字并不重要。 
 
@@ -345,7 +345,7 @@ ms.locfileid: "75335799"
 所有部件类型都有其自己的配置。 可能的配置属性有“输入”、“设置”和“资产”    。 
 
 ### <a name="the-inputs-object"></a>“输入”对象
-输入对象通常包含将磁贴绑定到资源实例的信息。  示例仪表板中的虚拟机部件包含使用 Azure 资源 id 来表达绑定的单个输入。  在所有 Azure 资源中，此资源 id 格式是统一的。
+输入对象通常包含将磁贴绑定到资源实例的信息。  示例仪表板中的虚拟机部件包含使用 Azure 资源 ID 表达绑定的单个输入。  在所有 Azure 资源中，此资源 ID 格式是统一的。
 
 ```json
 "inputs":
@@ -430,6 +430,6 @@ ms.locfileid: "75335799"
 ```
 
 ### <a name="the-asset-object"></a>资产对象
-绑定到第一类可管理门户对象（称为“资产”）的磁贴通过资产对象表示此关系。  在示例仪表板中，虚拟机磁贴包含此资产说明。  IdInputName 属性告知门户 id 输入包含资产的唯一标识符（示例中为资源 id）  。大多数 Azure 资源类型在门户中定义资产。
+绑定到第一类可管理门户对象（称为“资产”）的磁贴通过资产对象表示此关系。  在示例仪表板中，虚拟机磁贴包含此资产说明。  idInputName 属性告知门户：ID 输入包含资产的唯一标识符（在此示例中为资源 ID）  。 大多数 Azure 资源类型在门户中定义资产。
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

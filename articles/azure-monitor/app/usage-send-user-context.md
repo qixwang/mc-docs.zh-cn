@@ -1,5 +1,5 @@
 ---
-title: 发送用户上下文 ID 以在 Azure Application Insights 中启用使用体验 | Azure Docs
+title: 用于跟踪活动的用户上下文 ID - Azure Application Insights
 description: 在 Application Insights 中通过向每位用户分配一个唯一的永久性 ID（字符串），跟踪其如何使用服务。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -10,12 +10,12 @@ origin.date: 01/03/2019
 ms.date: 6/4/2019
 ms.reviewer: abgreg;mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: aff792b7cbd4a38df4965af93f77b23a6177dcec
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 4ddbc2a4b3be475b98d460e2c35859f9e871f70b
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730449"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600109"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 

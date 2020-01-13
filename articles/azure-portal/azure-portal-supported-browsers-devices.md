@@ -1,6 +1,6 @@
 ---
 title: Azure 门户支持的浏览器和设备 | Azure
-description: 介绍适合运行 Azure 门户的浏览器和设备。
+description: 可以在所有新式设备上通过最新的浏览器版本使用 Azure 门户。 请参阅本文以确保你的浏览器受支持。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,16 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 03/27/2019
-ms.date: 11/04/2019
+origin.date: 12/20/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: accessibility
-ms.openlocfilehash: e900763604a1df03b5071aca7bdd635110eff68b
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.openlocfilehash: 88d6baadd53521247d2fbe422aceeb107322ee37
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020716"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600567"
 ---
 # <a name="supported-devices"></a>支持的设备
 

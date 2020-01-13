@@ -11,15 +11,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/15/2019
-ms.date: 07/22/2019
+origin.date: 11/28/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4cd527c55f5f9e4b2404c9aaa8b68ab7a800f033
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: 71a2cca3e5dcd8bc29c0227566c76673bc88b77c
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845257"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630852"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Apache Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
 
@@ -31,54 +31,116 @@ ms.locfileid: "67845257"
 
 * 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
-* 用于查询 Azure SQL 数据库的客户端。 考虑使用 [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) 或 [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)。
-
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-## <a name="sqoop-export"></a>Sqoop 导出
+* 熟悉 Sqoop。 有关详细信息，请参阅 [Sqoop 用户指南](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)。
 
-从 Hive 到 SQL Server。
+## <a name="set-up"></a>设置
 
-1. 使用 SSH 连接到 HDInsight 群集。 将 `CLUSTERNAME` 替换为群集的名称，然后输入以下命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
-2. 将 `MYSQLSERVER` 替换为 SQL Server 的名称。 若要验证 Sqoop 是否可以查看 SQL 数据库，请在打开的 SSH 连接中输入以下命令。 出现提示时，请输入与 SQL Server 登录名对应的密码。 此命令会返回数据库列表。
+1. 为了便于使用，请设置变量。 将 `PASSWORD`、`MYSQLSERVER` 和 `MYDATABASE` 替换为相关值，然后输入以下命令：
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://MYSQLSERVER.database.chinacloudapi.cn:1433:1433 --username sqluser -P
+    export password='PASSWORD'
+    export sqlserver="MYSQLSERVER"
+    export database="MYDATABASE"
+
+
+    export serverConnect="jdbc:sqlserver://$sqlserver.database.chinacloudapi.cn:1433;user=sqluser;password=$password"
+    export serverDbConnect="jdbc:sqlserver://$sqlserver.database.chinacloudapi.cn:1433;user=sqluser;password=$password;database=$database"
     ```
 
-3. 将 `MYSQLSERVER` 替换为 SQL Server 的名称，并将 `MYDATABASE` 替换为 SQL 数据库的名称。 若要将数据从 Hive `hivesampletable` 表导出到 SQL 数据库中的 `mobiledata` 表，请在打开的 SSH 连接中输入以下命令。 出现提示时，输入与 SQL Server 登录名对应的密码
+## <a name="sqoop-export"></a>Sqoop 导出
+
+从 Hive 到 SQL Server。
+
+1. 若要验证 Sqoop 是否可以查看 SQL 数据库，请在打开的 SSH 连接中输入以下命令。 此命令会返回数据库列表。
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://MYSQLSERVER.database.chinacloudapi.cn:1433;database=MYDATABASE' --username sqluser -P -table 'mobiledata' --hcatalog-table hivesampletable
+    sqoop list-databases --connect $serverConnect
     ```
 
-4. 若要验证数据是否已导出，请从 SQL 客户端使用以下查询，以查看导出的数据：
+1. 输入以下命令以查看指定数据库的表列表：
 
-    ```sql
-    SELECT COUNT(*) FROM [dbo].[mobiledata] WITH (NOLOCK);
-    SELECT TOP(25) * FROM [dbo].[mobiledata] WITH (NOLOCK);
+    ```bash
+    sqoop list-tables --connect $serverDbConnect
+    ```
+
+1. 若要将数据从 Hive `hivesampletable` 表导出到 SQL 数据库中的 `mobiledata` 表，请在打开的 SSH 连接中输入以下命令：
+
+    ```bash
+    sqoop export --connect $serverDbConnect \
+    -table mobiledata \
+    --hcatalog-table hivesampletable
+    ```
+
+1. 若要验证数据是否已导出，请通过 SSH 连接使用以下查询来查看导出的数据：
+
+    ```bash
+    sqoop eval --connect $serverDbConnect \
+    --query "SELECT COUNT(*) from dbo.mobiledata WITH (NOLOCK)"
+
+
+    sqoop eval --connect $serverDbConnect \
+    --query "SELECT TOP(10) * from dbo.mobiledata WITH (NOLOCK)"
     ```
 
 ## <a name="sqoop-import"></a>Sqoop 导入
 
 从 SQL Server 到 Azure 存储。
 
-1. 将 `MYSQLSERVER` 替换为 SQL Server 的名称，并将 `MYDATABASE` 替换为 SQL 数据库的名称。 在打开的 SSH 连接中输入以下命令，以将数据从 SQL 数据库中的 `mobiledata` 表导入到 HDInsight 上的 `wasb:///tutorials/usesqoop/importeddata` 目录。 出现提示时，请输入与 SQL Server 登录名对应的密码。 数据中的字段将通过制表符分隔，并且相关行由换行符终止。
+1. 在打开的 SSH 连接中输入以下命令，以将数据从 SQL 数据库中的 `mobiledata` 表导入到 HDInsight 上的 `wasbs:///tutorials/usesqoop/importeddata` 目录。 数据中的字段将通过制表符分隔，并且相关行由换行符终止。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://MYSQLSERVER.database.chinacloudapi.cn;database=MYDATABASE' --username sqluser -P --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect $serverDbConnect \
+    --table mobiledata \
+    --target-dir 'wasb:///tutorials/usesqoop/importeddata' \
+    --fields-terminated-by '\t' \
+    --lines-terminated-by '\n' -m 1
     ```
 
-2. 在导入完成后，请在打开的 SSH 连接中输入以下命令，以列出新目录中的数据：
+1. 此外，还可以指定 Hive 表：
 
     ```bash
-    hdfs dfs -text /tutorials/usesqoop/importeddata/part-m-00000
+    sqoop import --connect $serverDbConnect \
+    --table mobiledata \
+    --target-dir 'wasb:///tutorials/usesqoop/importeddata2' \
+    --fields-terminated-by '\t' \
+    --lines-terminated-by '\n' \
+    --create-hive-table \
+    --hive-table mobiledata_imported2 \
+    --hive-import -m 1
     ```
+
+1. 在导入完成后，请在打开的 SSH 连接中输入以下命令，以列出新目录中的数据：
+
+    ```bash
+    hadoop fs -tail /tutorials/usesqoop/importeddata/part-m-00000
+    ```
+
+1. 使用 [beeline](./apache-hadoop-use-hive-beeline.md) 验证该表是否已在 Hive 中创建。
+
+    1. 连接
+
+        ```bash
+        beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
+        ```
+
+    1. 每次执行下面的一个查询并查看输出：
+
+        ```hql
+        show tables;
+        describe mobiledata_imported2;
+        SELECT COUNT(*) FROM mobiledata_imported2;
+        SELECT * FROM mobiledata_imported2 LIMIT 10;
+        ```
+
+    1. 使用 `!exit` 退出 beeline。
 
 ## <a name="limitations"></a>限制
 
@@ -92,7 +154,7 @@ ms.locfileid: "67845257"
 
     有关示例，请参阅[将 HDInsight 连接到本地网络](./../connect-on-premises-network.md)文档。
 
-    有关通过 Azure 虚拟网络使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](../hdinsight-extend-hadoop-virtual-network.md) 文档。 有关 Azure 虚拟网络的详细信息，请参阅[虚拟网络概述](../../virtual-network/virtual-networks-overview.md)文档。
+    有关通过 Azure 虚拟网络使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](../hdinsight-plan-virtual-network-deployment.md) 文档。 有关 Azure 虚拟网络的详细信息，请参阅[虚拟网络概述](../../virtual-network/virtual-networks-overview.md)文档。
 
 * 必须将 SQL Server 配置为允许 SQL 身份验证。 有关详细信息，请参阅[选择身份验证模式](https://msdn.microsoft.com/ms144284.aspx)文档。
 
@@ -103,6 +165,7 @@ ms.locfileid: "67845257"
 现在你已了解如何使用 Sqoop。 若要了解更多信息，请参阅以下文章：
 
 * [将 Apache Oozie 和 HDInsight 配合使用](../hdinsight-use-oozie-linux-mac.md)：在 Oozie 工作流中使用 Sqoop 操作。
+* [使用 HDInsight 分析航班延误数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)：使用 Interactive Query 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
 * [将数据上传到 HDInsight](../hdinsight-upload-data.md)：了解将数据上传到 HDInsight/Azure Blob 存储的其他方法。
 
 [hdinsight-versions]:  ../hdinsight-component-versioning.md

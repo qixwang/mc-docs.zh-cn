@@ -1,26 +1,18 @@
 ---
-title: 使用 ZIP 或 WAR 文件部署代码 - Azure 应用服务 | Azure
+title: 使用 ZIP 或 WAR 文件部署代码
 description: 了解如何使用 ZIP 文件（或者对于 Java 开发人员而言使用 WAR 文件）将应用部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/12/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 60c6fe1ed7b08210510c0be0084a95cc5c15d232
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 3bb1a4fa0a8ce36c877b1019a2908dc2915ee4ea
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555804"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600484"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -67,7 +59,7 @@ Compress-Archive -Path * -DestinationPath <file-name>.zip
 ``` 
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-<!-- The above endpoint does not work for Linux App Services at this time. Consider using FTP or the [ZIP deploy API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) instead. -->
+<!-- The above endpoint does not work for Linux App Services at this time. Consider using FTP or the [ZIP deploy API](https://docs.azure.cn/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) instead. -->
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 文件
 

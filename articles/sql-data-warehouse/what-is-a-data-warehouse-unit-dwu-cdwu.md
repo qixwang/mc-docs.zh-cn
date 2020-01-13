@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2391935a45cabdf4ffd6b9d642897ce9c5ba7c26
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 62aefaccb547a05c07dcc2cf585a4c90c553ac31
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807634"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624264"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -32,7 +32,7 @@ ms.locfileid: "74807634"
 数据仓库单位性能基于这些工作负荷指标：
 
 - 标准数据仓库查询扫描大量行并执行复杂聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
-- 数据仓库从 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
+- 数据仓库从 Azure 存储 Blob 引入数据的速度。 这是一种网络和 CPU 密集型操作。
 - [`CREATE TABLE AS SELECT`](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令复制表的速度。 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
 
 增加 DWU：

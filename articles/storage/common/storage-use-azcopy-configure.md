@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 4adb81e6778d7a715b5aca0110bde05b80c32f92
-ms.sourcegitcommit: 99c408fd0f1fc264acaed41f1a77fea4ebbc0e0f
+ms.openlocfilehash: 083b26ee7b8632956fae0d499b302ae5e5c318b3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74354347"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624361"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -55,18 +55,23 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy bench 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>'` |
-| **示例** | `azcopy bench 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory/'` |
+| **示例** | `azcopy bench 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+
+> [!TIP]
+> 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 此命令通过将测试数据上传到指定的目标来运行性能基准测试。 测试数据将在内存中生成、上传到目标，并在完成测试后从目标中删除。 可以使用可选的命令参数来指定要生成的文件数以及文件的大小。
+
+有关详细参考文档，请参阅 [azcopy bench](storage-ref-azcopy-bench.md)。
 
 若要查看此命令的详细帮助指导，请键入 `azcopy bench -h` 并按 ENTER 键。
 
 ### <a name="optimize-throughput"></a>优化吞吐量
 
-可以使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令将吞吐量上限设置为每秒 `10` MB。
+可以在命令中使用 `cap-mbps` 标志来设置吞吐量数据速率的上限。 例如，以下命令恢复作业并将吞吐量上限设置为每秒 `10` 兆位 (MB)。 
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
 传输小型文件时，吞吐量可能会下降。 可以设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量来提高吞吐量。 此变量指定可发生的并发请求数。  
@@ -100,7 +105,7 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 
 日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED` 和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
-默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE$\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可根据需要更改此位置。
+默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可根据需要更改此位置。
 
 > [!IMPORTANT]
 > 向 Azure 支持部门提交请求时（或者排查涉及第三方的问题时），请共享想要执行的命令的编校版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
@@ -148,11 +153,14 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
+> [!TIP]
+> 用单引号 ('') 将路径参数（如 SAS 令牌）括起来。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+
 恢复某个作业时，AzCopy 会查看作业计划文件。 该计划文件列出了首次创建该作业时标识为待处理的所有文件。 恢复某个作业时，AzCopy 会尝试传输计划文件中列出的且尚未传输的所有文件。
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>更改计划和日志文件的位置
 
-默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE$\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 可以更改此位置。
+默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 可以更改此位置。
 
 ### <a name="change-the-location-of-plan-files"></a>更改计划文件的位置
 

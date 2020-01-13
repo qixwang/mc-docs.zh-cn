@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/24/2019
-ms.date: 06/24/2019
+origin.date: 12/18/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 09f4f34587f12aa62ecf7a1a8f62cc735424d895
-ms.sourcegitcommit: e77582e79df32272e64c6765fdb3613241671c20
+ms.openlocfilehash: c52733a402822e66c7cc40cf74ca4a35b086edf0
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67135869"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630798"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集
 
@@ -34,15 +34,7 @@ Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-开始执行此过程之前请做好以下准备：
-
-* Azure 订阅。 请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
-
-    > [!IMPORTANT]
-    > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure Resource Manager 兼容的新 HDInsight cmdlet。
-    >
-    > 请按照[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure 资源管理器兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
+[Azure PowerShell](/powershell/azure/install-Az-ps) Az 模块。
 
 ## <a name="create-cluster"></a>创建群集
 
@@ -199,7 +191,6 @@ New-AzureRmHDInsightCluster `
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集

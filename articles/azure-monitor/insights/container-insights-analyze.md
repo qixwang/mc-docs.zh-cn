@@ -1,19 +1,17 @@
 ---
-title: 使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能 | Microsoft Docs
-description: 本文介绍如何使用适用于容器的 Azure Monitor 查看和分析性能和日志数据。
-ms.service: azure-monitor
-ms.subservice: ''
+title: 使用用于容器的 Azure Monitor 监视 Kubernetes | Microsoft Docs
+description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 author: lingliw
-ms.author: v-lingwu
 origin.date: 10/15/2019
-ms.date: 11/19/2019
-ms.openlocfilehash: 459be7f4c2421c1cf07d2f24378d8a756a2d87a5
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.date: 12/30/2019
+ms.author: v-lingwu
+ms.openlocfilehash: 2f17229ac7c5ff834347d1fe036b506d7bcf8783
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528364"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600103"
 ---
 # <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 Kubernetes 群集性能
 

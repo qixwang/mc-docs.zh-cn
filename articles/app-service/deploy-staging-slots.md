@@ -1,26 +1,17 @@
 ---
-title: 为 Azure 应用服务中的 Web 应用设置过渡环境 | Azure
-description: 了解如何对 Azure 应用服务中的 Web 应用使用分阶段发布。
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: 设置过渡环境
+description: 了解如何将应用部署到非生产槽并自动交换到生产环境中。 提高可靠性并消除部署中的应用停机时间。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 09/19/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 66a199f1a2c2345887e4c95363a4912246691791
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9a8126a72db0e6fa65e9e9131db2304535c5c602
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335729"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600487"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>

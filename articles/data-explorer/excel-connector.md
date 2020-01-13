@@ -7,13 +7,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: c769bc52b7b3b6738c4728b5997b031d03954c29
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 01/13/2020
+ms.openlocfilehash: 28b60f6f10a6be418da1f4c84e67d4c9a6b85b78
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020913"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630907"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>使用 Excel 的 Azure 数据资源管理器连接器进行数据可视化
 
@@ -76,3 +76,6 @@ Azure 数据资源管理器 Excel 本机连接器提供将查询结果导出到 
 
 1. 创建用于监视数据的完整仪表板。
 
+## <a name="next-steps"></a>后续步骤
+
+[使用导入到 Microsoft Excel 中的 Azure 数据资源管理器 Kusto 查询进行数据可视化](excel-blank-query.md)

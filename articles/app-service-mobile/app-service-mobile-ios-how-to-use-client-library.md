@@ -1,25 +1,19 @@
 ---
-title: 如何使用适用于 Azure 移动应用的 iOS SDK
+title: 使用 iOS SDK
 description: 如何使用适用于 Azure 移动应用的 iOS SDK
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 892b5d0fff7dc4a0b9bff253b1e1f72415c9d61d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c1dc5e23efb9effde21f53c1fc7007b76d378b20
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335763"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600547"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 

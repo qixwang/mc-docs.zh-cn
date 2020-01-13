@@ -1,24 +1,23 @@
 ---
-title: 排查 SSIS Integration Runtime 中的包执行问题 | Microsoft Docs
+title: 排查 SSIS Integration Runtime 中的包执行问题
 description: 本文提供有关排查 SSIS Integration Runtime 中的 SSIS 包执行问题的指导
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 04/15/2019
-ms.date: 11/11/2019
-author: WenJason
 ms.author: v-jay
+author: WenJason
 ms.reviewer: sawinark
 manager: digimobile
-ms.openlocfilehash: 3ecaf6bca1106815d5549da9a6e1a9d0dee1eb42
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.custom: seo-lt-2019
+origin.date: 04/15/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: 2da1b40aa628c4739c566c1b56068549ff387552
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648623"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623892"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
 
@@ -78,7 +77,7 @@ ms.locfileid: "73648623"
       * 域应是“Azure”
       * 用户名应是 \<存储帐户名称\>
       * 密码应是 \<存储访问密钥\>
-    * 如果使用本地文件，请检查是否正确配置了 VNet、包访问凭据和权限，使 Azure SSIS Integration Runtime 能够访问你的本地文件共享
+    * 如果使用本地文件，请检查是否正确配置了 VNet、包访问凭据和权限，以便 Azure-SSIS 集成运行时可以访问你的本地文件共享
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>错误消息：“连接中指定的文件名 '...' 无效”
 

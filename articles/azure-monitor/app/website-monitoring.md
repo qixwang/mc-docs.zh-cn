@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure Monitor Application Insights 监视网站 | Azure Docs
+title: 使用 Azure Monitor Application Insights 监视网站
 description: 提供使用 Azure Monitor Application Insights 快速设置客户端/浏览器端网站监视的说明
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ ms.author: v-lingwu
 origin.date: 07/15/2019
 ms.date: 8/4/2019
 ms.custom: mvc
-ms.openlocfilehash: 0cb1b8874c8845429649aec8791463bddf1ac092
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: febbdeeae823edaee7c906b43c7d08a0ae138ab1
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528361"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600107"
 ---
 # <a name="start-monitoring-your-website"></a>开始监视网站
 
@@ -48,8 +48,8 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     | 设置        | Value           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | **Location** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
+   | **位置** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 单击**创建**。
 
@@ -133,6 +133,9 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 ## <a name="clean-up-resources"></a>清理资源
 
 如果打算继续学习后续的快速入门或相关教程，请不要清除在本快速入门中创建的资源。 否则，如果不打算继续，请在 Azure 门户中执行以下步骤，删除本快速入门创建的所有资源。
+
+> [!NOTE]
+> 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，都将删除作为该组成员的所有底层资源。
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
 2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。

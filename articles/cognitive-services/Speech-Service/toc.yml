@@ -1,13 +1,13 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
 - name: 语音服务文档
   href: index.md
 - name: 概述
-  expanded: false
+  expanded: true
   items:
     - name: 什么是语音服务？
       href: overview.md
     - name: 语言和区域支持
       href: language-support.md
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
 - name: 语音转文本
   expanded: false
   items:
@@ -46,19 +46,26 @@
         - name: 语音 SDK API
           items:
             - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
+              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/index'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
             - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
             - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
+              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
             - name: Javascript
-              href: 'https://aka.ms/csspeech/javascriptref'
+              href: 'https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/?view=azure-node-latest'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
+              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
             - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
+              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
             - name: 发行说明
               href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: REST API
           items:
             - name: 语音转文本 REST API
@@ -69,8 +76,9 @@
       items:
         - name: 语音转文本常见问题解答
           href: faq-stt.md
+          displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
 - name: 自定义
-  exanded: false
+  expanded: false
   items:
     - name: 语音转文本
       items:
@@ -140,8 +148,11 @@
           href: quickstarts/setup-platform.md?pivots=programming-language-more
     - name: 操作指南
       items:
-        - name: 启用日志记录
+        - name: 如何启用日志记录
           href: how-to-use-logging.md
+        - name: 如何跟踪内存使用情况
+          href: how-to-track-speech-sdk-memory-usage.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
     - name: 示例
       items:
         - name: 语音 SDK 示例 (GitHub)
@@ -165,7 +176,7 @@
         - name: 语音 SDK 发行说明
           href: releasenotes.md
 - name: 设备
-  exanded: false
+  expanded: false
   items:
     - name: 概述
       items:
@@ -183,16 +194,21 @@
       items:
         - name: 排查语音设备 SDK 问题
           href: speech-devices-sdk-troubleshooting.md
+    - name: 参考
+      items:
+        - name: 语音设备 SDK 发行说明
+          href: devices-sdk-release-notes.md
 - name: 迁移
-  exanded: false
+  expanded: false
   items:
     - name: 从自定义语音服务
       href: how-to-migrate-from-custom-speech-service.md
 - name: 资源
-  exanded: false
+  expanded: false
   items:
     - name: 支持
       href: support.md
+      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: 区域
       href: regions.md
     - name: 定价和限制

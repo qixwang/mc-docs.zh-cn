@@ -1,27 +1,21 @@
 ---
-title: 如何使用适用于移动应用的 .NET 后端服务器 SDK | Azure
+title: 使用 .NET 后端服务器 SDK
 description: 了解如何使用适用于 Azure 应用服务移动应用的 .NET 后端服务器 SDK。
 keywords: 应用服务, azure 应用服务, 移动应用, 移动服务, 缩放, 可缩放, 应用部署, azure 应用部署
-services: app-service\mobile
-documentationcenter: ''
 author: conceptdev
-manager: crdun
-editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 10/01/2016
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 154aab13262d5b11799e2e4705142fbbc6bc1b29
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 31a8c1365229751175af5b47625ecd14096ebc26
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334647"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600556"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]

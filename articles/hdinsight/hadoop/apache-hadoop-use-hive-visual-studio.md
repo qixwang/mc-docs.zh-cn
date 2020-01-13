@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 11/06/2019
-ms.date: 12/23/2019
+origin.date: 11/27/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: bf9285c48947979b419a99b66e0727e58fd58e40
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9a337c4e5571499397c6c2d33f865cd05876f679
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336254"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630854"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -45,11 +45,11 @@ ms.locfileid: "75336254"
 
 ### <a name="create-an-ad-hoc-hive-query"></a>创建临时 Hive 查询。
 
-临时查询可以“批处理”或“交互式”模式执行。  
+即席查询可以**批处理**或**交互式**模式执行。
 
-1. 打开 **Visual Studio**。
+1. 启动 **Visual Studio** 并选择“继续但无需代码”  。
 
-2. 在“服务器资源管理器”中，导航到“Azure” > “HDInsight”。   
+2. 在服务器资源管理器中右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。   
 
 3. 展开“HDInsight”，右键单击要运行查询的群集，然后选择“编写 Hive 查询”   。
 

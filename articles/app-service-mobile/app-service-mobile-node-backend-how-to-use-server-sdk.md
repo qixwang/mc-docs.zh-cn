@@ -1,26 +1,19 @@
 ---
-title: 如何使用用于移动应用的 Node.js 后端服务器 SDK | Azure
+title: 使用 Node.js 后端服务器 SDK
 description: 了解如何使用适用于 Azure 应用服务移动应用的 Node.js 后端服务器 SDK。
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: elamalani
-editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 origin.date: 10/01/2016
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 2de76be1a27e25d907b9247a97ecd1c4229af133
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 683fb06b79c7d53a80e2d329ce4b1b82920a7b15
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335764"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600548"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 

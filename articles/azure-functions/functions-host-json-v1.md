@@ -1,19 +1,14 @@
 ---
 title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 10/19/2018
-ms.date: 11/18/2019
-ms.author: v-junlch
-ms.openlocfilehash: 7250b1f9d43b96f26869cc53b75e7dbc48a50b21
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.date: 12/31/2019
+ms.openlocfilehash: 0a0b4b1c4fd32093da9fa8dfcda8e518fab4574c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178959"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624116"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -24,7 +19,7 @@ ms.locfileid: "74178959"
 *host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host 。
 
 > [!NOTE]
-> 本文适用于 Azure Functions 1.x。  有关 Functions 2.x 中 host.json 的参考，请参阅 [Azure Functions 2.x 的 host.json 参考](functions-host-json.md)。
+> 本文适用于 Azure Functions 1.x。  有关 Functions 2.x 及更高版本中的 host.json 参考，请参阅 [Azure Functions 2.x 的 host.json 参考](functions-host-json.md)。
 
 其他函数应用配置选项在[应用设置](functions-app-settings.md)中进行管理。
 

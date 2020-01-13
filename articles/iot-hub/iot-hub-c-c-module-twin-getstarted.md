@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模块标识和模块孪生 (C) 入门 | Microsoft Docs
+title: Azure IoT 中心模块标识和模块孪生 (C) 入门
 description: 了解如何使用用于 C 的 IoT SDK 创建模块标识和更新模块孪生。
 author: chrissie926
 ms.service: iot-hub
@@ -7,14 +7,14 @@ services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 orgin.date: 06/25/2018
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 60942ceb7d2eeff7eb3200b4931178f4d891ce3d
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 1bb913d97741c1f53aa65f05496d863529b00959
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389171"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630750"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT 中心模块标识和模块孪生 (C) 入门
 
@@ -189,7 +189,9 @@ int main(void)
 
     ![Azure 门户模块详细信息](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **创建 UpdateModuleTwinReportedProperties 应用** 在“Program.cs”文件顶部添加以下 `using` 语句  ：
+2. **创建 UpdateModuleTwinReportedProperties 应用**
+   
+   将以下内容添加到 C 文件：
 
     ```C
     #include <stdio.h>

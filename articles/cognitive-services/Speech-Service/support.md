@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9d41b3b502f8fc28221ee0e9dac5cf4506ea0940
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d1c391f8ce4c3af7380a7f8a416efc1f8e7e1a0d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336082"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630762"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
@@ -45,7 +45,7 @@ ms.locfileid: "75336082"
 为了更快地找到结果，请在[偏好的搜索引擎](https://bing.com)中使用以下查询，将搜索范围限定为 Stack Overflow、文档和代码示例：
 
 ```
-{Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples)
+{Your Search Terms} (site:stackoverflow.com OR site:docs.azure.cn OR site:github.com/azure-samples)
 ```
 
 其中， *{Your Search Terms}* 是搜索关键字。
@@ -62,7 +62,7 @@ Azure 客户可在 Azure 门户中创建和管理支持请求。
 
 Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，社区成员和 Microsoft 团队成员可直接助你解决问题。
 
-如果未能通过搜索找到你的问题的答案，请通过使用 [microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech) 标记在 Stack Overflow 中提交新问题。
+如果未能通过搜索找到问题的答案，请使用标记 [\[microsoft-cognitive\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech) 将新问题提交到 Stack Overflow。
 
 > [!TIP]
 > Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  

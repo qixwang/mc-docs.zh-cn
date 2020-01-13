@@ -1,5 +1,5 @@
 ---
-title: Web 应用程序性能监视 - Azure Application Insights | Azure Docs
+title: Web 应用性能监视 - Azure Application Insights
 description: Application Insights 如何适应 devOps 周期
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ manager: digimobile
 origin.date: 12/21/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 52a35718c69f45bed25c98ecec1cbeab7f457db2
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: d7a5c4bd94508952725226a0399717bcf25d273b
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730476"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599762"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？

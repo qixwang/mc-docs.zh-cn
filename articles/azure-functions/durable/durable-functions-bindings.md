@@ -1,21 +1,15 @@
 ---
 title: Durable Functions 的绑定 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: c42c2f30395f44945a502b01304a218065ea6eef
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 879cc551871dc02187cee46d268f1368bb7209ef
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178998"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624337"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -154,7 +148,7 @@ module.exports = df.orchestrator(function*(context) {
 以下是有关活动触发器的一些注意事项：
 
 * 线程处理 - 与业务流程触发器不同，活动触发器没有关于线程处理或 I/O 的任何限制  。 可以将它们视为常规功能。
-* **有害消息处理** - 活动触发器不支持有害消息。
+* 有害消息处理 - 活动触发器中不支持有害消息  。
 * 消息可见性 - 活动触发器消息会取消排队并在可配置的持续时间内保持可见  。 只要函数应用正常运行，这些消息的可见性就会自动更新。
 * 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表  。
 
@@ -404,7 +398,7 @@ module.exports = async function (context) {
 * **DeleteState()** ：删除实体的状态。 
 * **GetInput\<TInput>()** ：获取当前操作的输入。 `TInput` 类型参数必须是基元或 JSON 可序列化类型。
 * **Return(arg)** ：将值返回到调用该操作的业务流程。 `arg` 参数必须是基元或 JSON 可序列化对象。
-* **SignalEntity(EntityId, operation, input)** ：向实体发送单向消息。 `operation` 参数必须是非 null 字符串，`input` 参数必须是基元或 JSON 可序列化对象。
+* **SignalEntity(EntityId, scheduledTimeUtc, operation, input)** ：向实体发送单向消息。 `operation` 参数必须是非 NULL 字符串，可选 `scheduledTimeUtc` 必须是调用操作的 UTC 日期时间，`input` 参数必须是基元或 JSON 可序列化对象。
 * **CreateNewOrchestration(orchestratorFunctionName, input)** ：启动新的业务流程。 `input` 参数必须是基元或 JSON 可序列化对象。
 
 传递给实体函数的 `IDurableEntityContext` 对象可以使用 `Entity.Current` 异步本地属性进行访问。 在使用基于类的编程模型时，此方法很方便。
@@ -525,7 +519,7 @@ module.exports = df.entity(function(context) {
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -541,6 +535,7 @@ module.exports = df.entity(function(context) {
 
 * **ReadEntityStateAsync\<T>** ：读取实体的状态。 它会返回响应，指出目标实体是否存在，以及在存在的情况下，其状态是什么。
 * **SignalEntityAsync**：将单向消息发送到实体，并等待消息排队。
+* **ListEntitiesAsync**：查询多个实体的状态。 可以按“名称”  和“上次操作时间”  来查询实体。
 
 不需在发送信号之前创建目标实体 - 实体状态可以在处理信号的实体函数内部创建。
 
@@ -651,3 +646,4 @@ module.exports = async function (context) {
 > [!div class="nextstepaction"]
 > [用于实例管理的内置 HTTP API 参考](durable-functions-http-api.md)
 
+<!-- Update_Description: wording update -->

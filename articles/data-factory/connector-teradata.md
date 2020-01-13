@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Teradata Vantage 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Teradata Vantage 复制数据
 description: 使用数据工厂服务的 Teradata 连接器可将数据从 Teradata Vantage 复制到数据工厂支持作为接收器的数据存储中。
 services: data-factory
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 11/11/2019
+origin.date: 10/24/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 577bbac9599b750e5d939c9a079b35f066e46792
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: 8e2d782112734bbb8ca2603d01e0633ee2c58e38
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648683"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623727"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
 
@@ -68,6 +68,13 @@ Teradata 链接服务支持以下属性：
 | username | 指定用于连接到 Teradata 的用户名。 使用 Windows 身份验证时适用。 | 否 |
 | password | 指定为用户名指定的用户帐户的密码。 此外，还可以选择[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 <br>使用 Windows 身份验证时，或引用 Key Vault 中用于基本身份验证的密码时适用。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
+
+可以根据自己的情况在连接字符串中设置更多连接属性：
+
+| 属性 | 说明 | 默认值 |
+|:--- |:--- |:--- |
+| CharacterSet | 要用于会话的字符集。 例如，`CharacterSet=UTF16`。<br><br/>此值可以是用户定义的字符集，也可以是以下预定义的字符集之一： <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS（Windows、兼容 DOS、KANJISJIS_0S）<br/>- EUC（兼容 Unix、KANJIEC_0U）<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 默认值为 `ASCII`。 |
+| MaxRespSize |SQL 请求的响应缓冲区的最大大小，以千字节 (KB) 为单位。 例如，`MaxRespSize=‭10485760‬`。<br/><br/>对于 Teradata 数据库版本 16.00 或更高版本，最大值为 7361536。 对于使用较早版本的连接，最大值为 1048576。 | 默认值为 `65536`。 |
 
 **示例：使用基本身份验证**
 

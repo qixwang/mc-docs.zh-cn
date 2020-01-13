@@ -2,14 +2,13 @@
 title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: reference
-ms.date: 12/04/2019
-ms.author: v-junlch
-ms.openlocfilehash: ef8ba1987ef1d0dfe944c60eb574773b08f4f857
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.date: 12/31/2019
+ms.openlocfilehash: 2636cd01f139111bdf079578a1b1ab311bde81d1
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884768"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624119"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -26,7 +25,15 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 
 ## <a name="supported-versions"></a>支持的版本
 
-Azure Functions 2.x 运行时使用 .NET Core 2.2。 通过更新 Visual Studio 项目设置，函数代码可以使用 .NET Core 2.2 API。 函数模板不默认为使用 .NET Core 2.2，以避免对未安装 .NET Core 2.2 的客户产生不利影响。
+Functions 运行时版本使用特定版本的 .NET。 下表显示了可与项目中特定版本的 Functions 一起使用的 .NET Core、.NET Framework 和 .NET Core 的最高级别。 
+
+| Functions 运行时版本 | 最大 .NET 版本 |
+| ---- | ---- |
+| Functions 3.x | .NET Core 3.1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.6 |
+
+若要了解详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
@@ -50,7 +57,7 @@ Azure Functions 2.x 运行时使用 .NET Core 2.2。 通过更新 Visual Studio 
 部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#vs)。
 
 > [!IMPORTANT]
-> 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md#functions-2x---c-class-libraries)。
+> 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md)。
 
 
 ## <a name="methods-recognized-as-functions"></a>识别为函数的方法

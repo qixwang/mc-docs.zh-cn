@@ -10,12 +10,12 @@ ms.reviewer: mbullwin
 origin.date: 03/07/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cec6e3aa4fb54214d94594f58e623db015ee4de1
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 8443587eab36f57a874b3e9354376cdab0e19352
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730375"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600113"
 ---
 # <a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights 快照调试器，但未看到出现异常的快照，则可以使用以下说明进行故障排除。 可能有许多不同的原因导致未生成快照。 可以运行快照运行状况检查以确定一些可能的常见原因。
@@ -221,8 +221,4 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
 
-如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Snapshot Debugger 服务进行通信。 下面是 [Snapshot Debugger 所使用的 IP 地址和端口列表](../../azure-monitor/app/ip-addresses.md#snapshot-debugger)。
-
-
-
-
+如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Snapshot Debugger 服务进行通信。 Snapshot Debugger 使用的 IP 包含在 Azure Monitor 服务标记中。

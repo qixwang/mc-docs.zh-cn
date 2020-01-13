@@ -1,27 +1,18 @@
 ---
-title: 应用服务中的操作系统功能 - Azure
-description: 了解 Azure Web 应用上可供应用服务、移动应用后端和 API 应用使用的 OS 功能
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: 操作系统功能
+description: 了解 Windows 上 Azure 应用服务中的 OS 功能。 了解你的应用可以访问哪些类型的文件、网络和注册表。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 10/30/2018
-ms.date: 08/12/2019
-ms.author: v-johch
+ms.date: 01/13/2020
+ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 55bb3e4ac20b0d9905b2300e1b7a47b931b84c1b
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: 545743d1248a0350a87b65f90fbb1993cd52ff3e
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878605"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600439"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](overview.md)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 

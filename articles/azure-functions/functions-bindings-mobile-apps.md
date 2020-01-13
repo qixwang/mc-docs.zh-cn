@@ -1,28 +1,21 @@
 ---
 title: Azure Functions 的移动应用绑定
 description: 了解如何在 Azure Functions 中使用 Azure 移动应用绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
-origin.date: 11/21/2017
-ms.date: 02/21/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: fb08727f8c21ca16505d431061e89aecdef4f898
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.openlocfilehash: 2daf81cde3d929a3aec03e2e8528deaad77567c3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665538"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624286"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
 
 > [!NOTE]
-> Azure 移动应用绑定仅适用于 Azure Functions 1.x。 Azure Functions 2.x 不支持这些绑定。
+> Azure 移动应用绑定仅适用于 Azure Functions 1.x。 Azure Functions 2.x 及更高版本不支持这些绑定。
 
 本文介绍如何在 Azure Functions 中使用 [Azure 移动应用](../app-service-mobile/app-service-mobile-value-prop.md)绑定。 Azure Functions 支持移动应用的输入和输出绑定。
 
@@ -44,14 +37,14 @@ ms.locfileid: "56665538"
 
 参阅语言特定的示例：
 
-- [C# 脚本 (.csx)](#input---c-script-example)
-- Javascript
+* [C# 脚本 (.csx)](#input---c-script-example)
+* Javascript
 
 ### <a name="input---c-script-example"></a>输入 - C# 脚本示例
 
 以下示例演示 *function.json* 文件中的一个移动应用输入绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数由具有记录标识符的队列消息触发。 该函数读取指定的记录并修改其 `Text` 属性。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -96,7 +89,7 @@ public static void Run(string myQueueItem, JObject record)
 
 以下示例演示 *function.json* 文件中的一个移动应用输入绑定以及使用该绑定的 [JavaScript 脚本函数](functions-reference-node.md)。 该函数由具有记录标识符的队列消息触发。 该函数读取指定的记录并修改其 `Text` 属性。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -143,11 +136,11 @@ module.exports = function (context, myQueueItem) {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **类型**|| 必须设置为“mobileTable”|
-| direction||必须设置为“in”|
+| **type**|| 必须设置为“mobileTable”|
+| **direction**||必须设置为“in”|
 | **name**|| 函数签名中的输入参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|
-| **id**| Id | 要检索的记录的标识符。 可以是静态的，也可以基于调用函数的触发器。 例如，如果对函数使用队列触发器，则 `"id": "{queueTrigger}"` 会使用队列消息的字符串值作为记录 ID 进行检索。|
+| **id**| Id  | 要检索的记录的标识符。 可以是静态的，也可以基于调用函数的触发器。 例如，如果对函数使用队列触发器，则 `"id": "{queueTrigger}"` 会使用队列消息的字符串值作为记录 ID 进行检索。|
 |**连接**|**Connection**|包含移动应用 URL 的应用设置的名称。 该函数使用此 URL 为移动应用构造所需的 REST 操作。 首先在函数应用中创建应用设置，它包含移动应用的 URL，并在输入绑定的 `connection` 属性中指定应用设置的名称。 URL 类似于 `http://<appname>.chinacloudsites.cn`。
 |**apiKey**|**ApiKey**|包含移动应用 API 密钥的应用设置的名称。 若要[在 Node.js 移动应用中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在 .NET 移动应用中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，请提供该 API 密钥。 为此，请提供该密钥，在函数应用中创建应用设置（包含 API 密钥），然后在输入绑定中添加具有应用设置名称的 `apiKey` 属性。 |
 
@@ -172,9 +165,9 @@ module.exports = function (context, myQueueItem) {
 
 参阅语言特定的示例：
 
-- [C#](#output---c-example)
-- [C# 脚本 (.csx)](#output---c-script-example)
-- [JavaScript](#output---javascript-example)
+* [C#](#output---c-example)
+* [C# 脚本 (.csx)](#output---c-script-example)
+* [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
@@ -195,7 +188,7 @@ public static object Run(
 
 以下示例演示 *function.json* 文件中的一个移动应用输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数由队列消息触发，可为 `Text` 属性创建一个具有硬编码值的新记录。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -236,7 +229,7 @@ public static void Run(string myQueueItem, out object record)
 
 以下示例演示 *function.json* 文件中的一个移动应用输出绑定以及使用该绑定的 [JavaScript 脚本函数](functions-reference-node.md)。 该函数由队列消息触发，可为 `Text` 属性创建一个具有硬编码值的新记录。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -297,12 +290,12 @@ public static object Run(
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件和 `MobileTable` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `MobileTable` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **类型**|| 必须设置为“mobileTable”|
-| direction||必须设置为“out”|
+| **type**|| 必须设置为“mobileTable”|
+| **direction**||必须设置为“out”|
 | **name**|| 函数签名中的输出参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|
 |**连接**|**MobileAppUriSetting**|包含移动应用 URL 的应用设置的名称。 该函数使用此 URL 为移动应用构造所需的 REST 操作。 首先在函数应用中创建应用设置，它包含移动应用的 URL，并在输入绑定的 `connection` 属性中指定应用设置的名称。 URL 类似于 `http://<appname>.chinacloudsites.cn`。
@@ -317,9 +310,9 @@ public static object Run(
 
 在 C# 脚本函数中，使用类型为 `out object` 的命名输出参数来访问输出记录。 在 C# 类库中，`MobileTable` 属性可与以下任何类型结合使用：
 
-- `ICollector<T>` 或 `IAsyncCollector<T>`，其中，`T` 为 `JObject`，或包含 `public string Id` 属性的任何类型。
-- `out JObject`
-- `out T` 或 `out T[]`，其中，`T` 为包含 `public string Id` 属性的任何类型。
+* `ICollector<T>` 或 `IAsyncCollector<T>`，其中，`T` 为 `JObject`，或包含 `public string Id` 属性的任何类型。
+* `out JObject`
+* `out T` 或 `out T[]`，其中，`T` 为包含 `public string Id` 属性的任何类型。
 
 在 Node.js 函数中，使用 `context.bindings.<name>` 来访问输出记录。
 
@@ -328,4 +321,4 @@ public static object Run(
 > [!div class="nextstepaction"]
 > [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

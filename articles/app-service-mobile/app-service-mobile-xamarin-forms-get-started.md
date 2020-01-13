@@ -1,25 +1,19 @@
 ---
-title: 移动应用入门（使用 Xamarin.Forms）
+title: Xamarin.Forms 入门
 description: 按本教程操作，开始使用移动应用进行 Xamarin.Forms 开发
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 8bab6b33740cf7c29e38cd6bb69d739534b4d455
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2e98edf5258e27a25991d35fe74ddb59c0eb6e6b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336017"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600534"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>使用 Azure 创建 Xamarin.Forms 应用
 

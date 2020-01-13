@@ -1,22 +1,20 @@
 ---
 title: 通过 .NET 开始使用 Azure 队列存储 - Azure 存储
 description: Azure 队列用于在应用程序组件之间进行可靠的异步消息传送。 应用程序组件可以利用云消息传送进行独立缩放。
-services: storage
 author: WenJason
-ms.service: storage
-ms.devlang: dotnet
-ms.topic: conceptual
-origin.date: 05/21/2019
-ms.date: 08/05/2019
 ms.author: v-jay
-ms.reviewer: cbrooks
+origin.date: 05/21/2019
+ms.date: 01/06/2020
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 9f5e4840784a168d9cd77fad3738a201740212f0
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: ccd9a03ad359e51f83447b5e01694f21ceb0fd4c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732321"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624100"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -92,7 +90,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 * 可针对云中的 Azure 存储帐户运行代码。
 * 可针对 Azure 存储模拟器运行代码。 存储模拟器是模拟云中 Azure 存储帐户的本地环境。 应用程序处于开发阶段时，可以选择使用模拟器免费测试和调试代码。 模拟器使用已知帐户和密钥。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../common/storage-use-emulator.md)。
 
-如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅[访问密钥](../common/storage-account-manage.md#access-keys)。
+如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅[管理存储帐户访问密钥](../common/storage-account-keys-manage.md)。
 
 > [!NOTE]
 > 可以指向存储模拟器以避免引发与 Azure 存储有关的任何费用。 但是，如果您确实选择指向云中的 Azure 存储帐户，则执行此教程的费用会忽略不计。

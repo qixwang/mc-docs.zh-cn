@@ -1,27 +1,19 @@
 ---
-title: 从本地 Git 存储库进行部署 - Azure 应用服务
-description: 了解如何实现从本地 Git 部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
+title: 从本地 Git 存储库进行部署
+description: 了解如何实现从本地 Git 部署到 Azure 应用服务。 从本地计算机部署代码的最简单方法之一。
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 06/18/2019
-ms.date: 08/12/2019
-ms.author: v-johch
+ms.date: 01/13/2020
+ms.author: v-tawe
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: d380d044d534ee1ded5553c3d34dfbacb9a6a451
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 19bd1e25547ff644c1ce32e23646a2d52bae991b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555966"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600493"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 177479cabf1e846d358ffdc5434c473b529b9b37
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ce2c726295992b6f9030e37bdbdd8cc57b795987
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334875"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600575"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何将事件从 Azure SignalR 服务发送到事件网格
 
@@ -26,12 +26,12 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下 [az group create][az-group-create] 命令在 *chinaeast* 区域创建名为 *myResourceGroup* 的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下 [az group create][az-group-create] 命令在 chinaeast2  区域中创建一个名为 myResourceGroup  的资源组。 若要对资源组使用不同的名称，请将 `RESOURCE_GROUP_NAME` 设置为不同的值。
 
 ```azurecli
 RESOURCE_GROUP_NAME=myResourceGroup
 
-az group create --name $RESOURCE_GROUP_NAME --location chinaeast
+az group create --name $RESOURCE_GROUP_NAME --location chinaeast2
 ```
 
 ## <a name="create-a-signalr-service"></a>创建 SignalR 服务
@@ -48,10 +48,10 @@ az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --s
 ```json
 {
   "externalIp": "13.76.156.152",
-  "hostName": "clitest.servicedev.signalr.cn",
+  "hostName": "clitest.servicedev.signalr.azure.cn",
   "hostNamePrefix": "clitest",
   "id": "/subscriptions/28cf13e2-c598-4aa9-b8c8-098441f0827a/resourceGroups/clitest1/providers/Microsoft.SignalRService/SignalR/clitest",
-  "location": "chinaeast",
+  "location": "chinaeast2",
   "name": "clitest",
   "provisioningState": "Succeeded",
   "publicPort": 443,

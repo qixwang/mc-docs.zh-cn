@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 76cbb05b8df4e47d3b86e44c99967947663800f2
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 4c20f7f6ff08c4bb59e73dc126e0bb74f206bccc
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389386"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630877"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
@@ -25,8 +25,8 @@ ms.locfileid: "74389386"
 ## <a name="speech-devices-sdk-170"></a>语音设备 SDK 1.7.0：
 
 - 现在支持 Linux ARM。
-- 提供了 Roobov2 的初始二进制文件 (Linux ARM64)。
-- Windows 用户可以使用 AudioConfig.fromDefaultMicrophoneInput() 或 AudioConfig.fromMicrophoneInput(deviceName) 指定要使用的麦克风。
+- 提供了 Roobo v2 的初始二进制文件 (Linux ARM64)。
+- Windows 用户可以使用 `AudioConfig.fromDefaultMicrophoneInput()` 或 `AudioConfig.fromMicrophoneInput(deviceName)` 指定要使用的麦克风。
 - 库大小已经过优化。
 - 支持使用相同的语音/意向识别器对象进行多轮次识别。
 - 修复停止识别时可能发生的偶尔挂起。
@@ -63,7 +63,10 @@ ms.locfileid: "74389386"
 
 - 已将[语音 SDK](speech-sdk.md) 组件更新到 1.3.1 版。 有关详细信息，请参阅其[发行说明](releasenotes.md)。
 - 更新了关键字处理，请参阅“中断性变更”。
-- 示例应用程序添加了选择语言的功能，适用于这两种语音识别。
+- 示例应用程序添加了选择语言的功能，适用于语音识别和翻译。
+
+<!-- **Breaking changes** -->
+<!-- create kws not available -->
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>语音设备 SDK 1.1.0：2018 年 11 月版本
 
@@ -80,6 +83,8 @@ ms.locfileid: "74389386"
 **重大更改**
 
 - 该版本中推出了大量重大更改。 有关 API 的详细信息，请查看[此页](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/docs/breaking_changes_1_0_0.md)。
+
+<!-- - The KWS model files are not compatible with Speech Devices SDK 1.0.1. The existing keyword files will be deleted after the new keyword files are written to the device. -->
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>语音设备 SDK 0.5.0：2018 年 8 月版本
 

@@ -11,12 +11,12 @@ origin.date: 04/17/2018
 ms.date: 01/21/2019
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: c2f7e3ec8ad88c6180e9188a306ba9abbda15527
-ms.sourcegitcommit: 04392fdd74bcbc4f784bd9ad1e328e925ceb0e0e
+ms.openlocfilehash: 219bf646bcfd49622e71338048b82404629456f8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54333869"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624341"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "54333869"
 > 
 > 
 
-使用 [sqlcmd][sqlcmd] 命令行实用程序来连接到并查询 Azure SQL 数据仓库。  
+使用 [sqlcmd][sqlcmd] 命令行实用程序来连接到 Azure SQL 数据仓库并进行查询。  
 
 ## <a name="1-connect"></a>1.连接
 若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
@@ -48,7 +48,7 @@ C:\>sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -U myuser -P 
 
 若要使用 Azure Active Directory 集成身份验证，需添加 Azure Active Directory 参数：
 
-* Azure Active Directory 身份验证 (-G)：使用 Azure Active Directory 进行身份验证
+* Azure Active Directory 身份验证 (-G)：使用 Azure Active Directory 进行身份验证 
 
 例如，连接字符串可能如下所示：
 
@@ -82,14 +82,14 @@ sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -U myuser -P myP@
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 [sqlcmd 文档][sqlcmd] ，详细了解 sqlcmd 中的可用选项。
+请参阅 [sqlcmd 文档][sqlcmd]，详细了解 sqlcmd 中提供的选项。
 
 <!--Image references-->
 
 <!--Article references-->
 
 <!--MSDN references--> 
-[sqlcmd]: https://msdn.microsoft.com/zh-cn/library/ms162773.aspx
+[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
 [Azure portal]: https://portal.azure.cn
 
 <!--Other Web references-->

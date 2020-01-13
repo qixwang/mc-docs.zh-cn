@@ -6,15 +6,15 @@ ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 10/28/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: dd14cc5a9f1afbb6940d5b14398553fd42f2fa0e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 56ccfa31afbbaa5679fe8b375b1afd55bb7b24af
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914476"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624105"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -24,7 +24,7 @@ ms.locfileid: "72914476"
 
 * 获取文件内容。
 * 设置文件共享的最大大小或配额。 
-* 若一个文件使用在共享中定义的共享访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
+* 若一个文件使用在共享中定义的存储访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
 * 将文件复制到同一存储帐户中的另一个文件。
 * 将文件复制到同一存储帐户中的一个 Blob。
 * 使用 Azure 存储度量值进行故障排除。
@@ -193,9 +193,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>为文件或文件共享生成共享访问签名
 
-从 Azure 存储客户端库的 5.x 版开始，可以为文件共享或单个文件生成共享访问签名 (SAS)。 还可以在文件共享上创建一个共享访问策略以管理共享访问签名。 建议创建共享访问策略，因为它可以在 SAS 泄密时让你撤销 SAS。
+从 Azure 存储客户端库的 5.x 版开始，可以为文件共享或单个文件生成共享访问签名 (SAS)。 还可以在文件共享上创建一个存储访问策略以管理共享访问签名。 我们建议创建一个存储访问策略，因为它可以在 SAS 泄密时让你撤销 SAS。
 
-以下示例在共享上创建一个共享访问策略。 该示例使用该策略为共享中的文件提供 SAS 约束。
+以下示例在共享上创建一个存储访问策略。 该示例使用该策略为共享中的文件提供 SAS 约束。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -213,7 +213,7 @@ if (share.Exists())
 {
     string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-    // Create a new shared access policy and define its constraints.
+    // Create a new stored access policy and define its constraints.
     SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
         {
             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
@@ -223,7 +223,7 @@ if (share.Exists())
     // Get existing permissions for the share.
     FileSharePermissions permissions = share.GetPermissions();
 
-    // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+    // Add the stored access policy to the share's policies. Note that each policy must have a unique name.
     permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
     share.SetPermissions(permissions);
 

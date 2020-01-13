@@ -1,22 +1,22 @@
 ---
-title: 使用 AzCopy v10 将数据从 Amazon S3 桶传输到 Azure 存储 | Microsoft Docs
+title: 使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储 | Microsoft Docs
 description: 使用 AzCopy 和 Amazon S3 桶传输数据
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 04/23/2019
-ms.date: 11/18/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 4527651f8c5e935488ae96b7957aa23b83a57fb1
-ms.sourcegitcommit: 99c408fd0f1fc264acaed41f1a77fea4ebbc0e0f
+ms.openlocfilehash: 7423925ed20961e7c177e2fe5ad29ed1f43e94a3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74354353"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624212"
 ---
-# <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>使用 AzCopy 从 Amazon S3 桶复制数据
+# <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
 AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文介绍如何使用 AzCopy 将对象、目录和桶从 Amazon Web Services (AWS) S3 复制到 Azure Blob 存储。
 

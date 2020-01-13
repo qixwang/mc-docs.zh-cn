@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9c9d5e3332de34ba51a2eec4d69950862c4c689f
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9683350ee4051f2a63c0da5d446f7c53805b28b5
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389295"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630771"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 

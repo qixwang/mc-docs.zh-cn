@@ -1,27 +1,21 @@
 ---
-title: 开放源代码技术常见问题解答 - Azure 应用服务 | Azure
-description: 获取有关 Azure App Service Web 应用功能中开源技术常见问题的解答。
-services: app-service\web
-documentationcenter: ''
+title: 开放源代码技术常见问题解答
+description: 获取有关 Azure 应用服务中开放源代码技术的常见问题解答。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 90b4239b25c9ab3623f8e58b632e62b26ebb7405
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 084676d88c2dc895d4df97325d927e358e117617
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555980"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600467"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>针对 Azure 中 Web 应用的开源技术常见问题的解答
 

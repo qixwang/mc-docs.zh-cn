@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/28/2019
-ms.date: 10/28/2019
+origin.date: 12/11/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: d344dc4c59269060f7b32ceab69413a5719b2a85
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: bccbc54058c18a42759d7487fcbf249d9886f0fd
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583897"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630872"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Apache Hadoop
 
@@ -60,7 +60,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
    | 属性 | 说明 |
    | --- | --- |
    |  数据源名称 |为数据源提供名称 |
-   |  主机 |输入 `HDInsightClusterName.azurehdinsight.cn`。 例如： `myHDICluster.azurehdinsight.cn` |
+   |  主机 |输入 `HDInsightClusterName.azurehdinsight.net`。 例如，`myHDICluster.azurehdinsight.cn`。 注意：只要客户端 VM 对等互连到同一虚拟网络，就支持 `HDInsightClusterName-int.azurehdinsight.cn`。 |
    |  端口 |使用 **443**。 （此端口已从 563 更改为 443。） |
    |  数据库 |使用“默认”  。 |
    |  机制 |选择“Windows Azure HDInsight 服务”  |

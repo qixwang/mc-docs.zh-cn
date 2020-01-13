@@ -1,24 +1,23 @@
 ---
-title: 使用 Azure 数据工厂复制多个容器中的文件 | Microsoft Docs
+title: 从多个容器复制文件
 description: 了解如何使用解决方案模板通过 Azure 数据工厂复制多个容器中的文件。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 11/1/2018
-ms.date: 07/08/2019
-ms.openlocfilehash: ed828505bbc4987a651215107862300849f56c22
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: c8ae7ab7761917a40775f3ea320ee15ffaef307a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570068"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623943"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
 
@@ -36,9 +35,11 @@ ms.locfileid: "67570068"
 - **ForEach** 获取 **GetMetadata** 活动提供的容器列表，然后循环访问该列表并将每个容器传递到 Copy 活动。
 - **Copy** 将源存储中的每个容器复制到目标存储。
 
-该模板定义两个参数：
-- *SourceFilePath* 是数据源存储的路径，在其中可以获取容器的列表。 在大多数情况下，该路径是包含多个容器文件夹的根目录。 此参数的默认值为 `/`。
-- *DestinationFilePath* 是文件将复制到目标存储中的路径。 此参数的默认值为 `/`。
+模板定义以下参数：
+-  SourceFileFolder 是数据源存储的文件夹路径，在其中可以获取容器的列表。 该路径是包含多个容器文件夹的根目录。 此参数的默认值为 `sourcefolder`。
+-  SourceFileDirectory 是数据源存储的根目录下的子文件夹路径。 此参数的默认值为 `subfolder`。
+-  DestinationFileFolder 是文件将复制到目标存储中的文件夹路径。 此参数的默认值为 `destinationfolder`。
+-  DestinationFileDirectory 是文件将复制到目标存储中的子文件夹路径。 此参数的默认值为 `subfolder`。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
@@ -68,6 +69,6 @@ ms.locfileid: "67570068"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 数据工厂通过控制表从数据库进行大容量复制](solution-template-bulk-copy-with-control-table.md)
+- [在 Azure 数据工厂中使用控制表从数据库执行批量复制](solution-template-bulk-copy-with-control-table.md)
 
 - [使用 Azure 数据工厂复制多个容器中的文件](solution-template-copy-files-multiple-containers.md)

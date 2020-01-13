@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 11/06/2019
-ms.date: 12/23/2019
+origin.date: 12/06/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 35f9b28c20953393216624ace545027fae3a4523
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0381e7ee2e3be258d126624dfc563ee4b3a93672
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335342"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630868"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用
 
@@ -61,11 +61,11 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 若要为 Apache Hive UDF 创建 C# 项目：
 
-1. 打开 Visual Studio。
+1. 启动 Visual Studio。
 
-2. 在“开始”窗口中，选择“创建新项目”。  
+2. 选择“创建新项目”。 
 
-3. 在“创建新项目”窗口中，滚动到并选择“控制台应用(.NET Framework)”模板（C# 版本）。   然后，选择“下一步”  。
+3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。   然后，选择“下一步”  。
 
 4. 在“配置新项目”窗口输入 *HiveCSharp* 作为**项目名称**，然后导航到或创建一个**位置**用于保存新项目。  然后选择“创建”  。
 
@@ -120,7 +120,9 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     }
     ```
 
-6. 在菜单栏中，选择“生成” > “生成解决方案”以生成项目。  
+6. 从菜单栏中，选择“生成” > “生成解决方案”以生成项目。  
+
+7. 关闭解决方案。
 
 ### <a name="apache-pig-udf"></a>Apache Pig UDF
 
@@ -130,7 +132,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 2. 在“开始”窗口中，选择“创建新项目”。  
 
-3. 在“创建新项目”窗口中，滚动到并选择“控制台应用(.NET Framework)”模板（C# 版本）。   然后，选择“下一步”  。
+3. 在“创建新项目”窗口中，选择“控制台应用(.NET Framework)”模板（C# 版本）。   然后，选择“下一步”  。
 
 4. 在“配置新项目”窗口输入 *PigUDF* 作为**项目名称**，然后转到或创建一个**位置**用于保存新项目。  然后选择“创建”  。
 
@@ -169,17 +171,17 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 6. 在菜单栏中，选择“生成” > “生成解决方案”以生成项目。  
 
+7. 使解决方案保持打开状态。
+
 ## <a name="upload-to-storage"></a>上传到存储
 
 接下来，将 Hive 和 Pig UDF 应用程序上传到 HDInsight 群集中的存储。
 
-1. 在 Visual Studio 中，选择“视图” > “服务器资源管理器”。  
+1. 在 Visual Studio 中，导航到“视图” > “服务器资源管理器”。  
 
-2. 依次展开“Azure”  和“HDInsight”  。
+1. 在服务器资源管理器中右键单击“Azure”并选择“连接到 Microsoft Azure 订阅”，然后完成登录过程。   
 
-3. 如果出现提示，请输入 Azure 订阅凭据，然后选择“登录”。 
-
-4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
+1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
 
     ![默认存储帐户，HDInsight 群集，服务器资源管理器](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
@@ -203,7 +205,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 现在可以运行使用 Hive UDF 应用程序的 Hive 查询。
 
-1. 在 Visual Studio 中，选择“视图” > “服务器资源管理器”。  
+1. 在 Visual Studio 中，导航到“视图” > “服务器资源管理器”。  
 
 2. 依次展开“Azure”  和“HDInsight”  。
 
@@ -229,7 +231,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     此查询将从 `hivesampletable` 中选择 `clientid`、`devicemake` 和 `devicemodel` 字段，然后将这些字段传递到 *HiveCSharp.exe* 应用程序。 该查询预期应用程序返回三个字段，它们存储为 `clientid`、`phoneLabel` 和 `phoneHash`。 该查询还预期在默认存储容器的根目录中找到 *HiveCSharp.exe*。
 
-5. 选择“提交”将作业提交到 HDInsight 群集。  此时会打开“Hive 作业摘要”窗口  。
+5. 将默认的“交互式”  切换为“批处理”  ，然后选择“提交”  以将作业提交到 HDInsight 群集。 此时会打开“Hive 作业摘要”窗口  。
 
 6. 选择“刷新”以刷新摘要，直到“作业状态”更改为“已完成”。    若要查看作业输出，请选择“作业输出”。 
 
@@ -272,6 +274,8 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
     (2019-07-15 16:43:25 SampleClass7 [DEBUG] detail for id 1475865947)
     ```
 
+5. 使用 `exit` 退出 pig。
+
 ## <a name="next-steps"></a>后续步骤
 
 在本文档中，你已了解如何从 HDInsight 上的 Hive 和 Pig 使用 .NET Framework 应用程序。 如果希望了解如何将 Python 与 Hive 和 Pig 配合使用，请参阅[在 HDInsight 中将 Python 与 Apache Hive 和 Apache Pig 配合使用](python-udf-hdinsight.md)。
@@ -280,5 +284,4 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
-
-<!--Update_Description: change 'wasbs' into 'wasb'-->
+* [Pig Latin 基础知识](https://pig.apache.org/docs/latest/basic.html)

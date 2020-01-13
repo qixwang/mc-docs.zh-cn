@@ -1,23 +1,22 @@
 ---
-title: 在 Azure 数据工厂中创建 Azure 集成运行时 | Microsoft Docs
+title: 在 Azure 数据工厂中创建 Azure Integration Runtime
 description: 了解如何在 Azure 数据工厂中创建 Azure 集成运行时，用于复制数据并调度转换活动。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 01/15/2018
-ms.date: 07/08/2019
+ms.date: 01/06/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 859eebfc7fe71f59a613c33048ac0cf7a313f04c
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: c307013f5961c58b6d566af070ad46f62eb0db57
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570481"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624082"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的更多信息，请参阅[集成运行时](concepts-integration-runtime.md)。
@@ -51,10 +50,7 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=...;EndpointSuffix=core.chinacloudapi.cn",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=...;EndpointSuffix=core.chinacloudapi.cn"
       },
       "connectVia": {
         "referenceName": "MySampleAzureIR",

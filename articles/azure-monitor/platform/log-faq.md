@@ -1,6 +1,6 @@
 ---
-title: Log Analytics 常见问题解答 | Azure Docs
-description: 有关 Azure Log Analytics 服务的常见问题解答。
+title: Log Analytics 常见问题解答 | Microsoft Docs
+description: 有关 Azure Monitor Log Analytics 服务的常见问题解答。
 ms.service: azure-monitor
 author: lingliw
 manager: digimobile
@@ -9,18 +9,18 @@ ms.topic: conceptual
 origin.date: 11/01/2019
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6c8e71cc2c868006b26e27054366b88a3347b8d0
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 07726c70048c7e9bb9e353d0f4ba8238f26d578b
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838921"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600139"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-此 Azure 常见问题解答是有关世纪互联 Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+此 Microsoft 常见问题解答是有关 Azure Monitor Log Analytics 工作区的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 
 ## <a name="new-logs-experience"></a>新的日志体验
@@ -64,10 +64,12 @@ Azure 门户中的新的日志体验基于高级分析门户，但是仍然可�
 
 答：若要访问 Azure 中的工作区，必须获得 Azure 权限。 在某些情况下，你可能没有相应的访问权限。 
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？ 
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？
+
 答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>问： 我仍可以在 Azure 之外使用分析门户吗？
+
 A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 你仍然可以使用以下 URL 访问 Analytics 门户：https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
 
 
@@ -77,11 +79,6 @@ A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代�
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>问： 如何在 Azure 门户中查看视图和解决方案？ 
 
 答：可以在 Azure 门户中查看视图和已安装解决方案的列表。 单击“所有服务”。  在资源列表中，选择“监视”，然后单击“...更多”。   选择的是上次使用的工作区，但可以选择任何其他的工作区。 
-
-### <a name="q-why-i-cant-create-workspaces-in-china-region"></a>问： 为何无法在中国区域创建工作区？ 
-
-答：此区域暂时有容量限制。 此限制计划将于 2019 年 9 月底予以解除。
-
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>问： Log Analytics 是否与 Azure 安全中心使用同一代理？
 
@@ -192,7 +189,7 @@ A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动�
 
 ## <a name="agent-data"></a>代理数据
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>问： 可以通过代理向 Log Analytics 发送多少数据？ 每个客户的数据量是否有最大限制？
-A. 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级套餐对上传的数据量没有限制。 作为云服务，Log Analytics 设计为自动纵向扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。
+A. 上传的数据量没有限制，它基于所选的定价选项 -“产能预留”或“即用即付”。 Log Analytics 工作区设计为自动纵向扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。 有关更多信息，请参阅[定价详细信息](https://www.azure.cn/pricing/details/monitor/)。
 
 Log Analytics 代理设计为确保占用较小的数据空间。 数据量因启用的解决方案而异。 在“使用情况”页面中可以找到有关数据量的详细信息以及按解决方案列出的故障。
 

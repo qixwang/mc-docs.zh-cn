@@ -1,19 +1,17 @@
 ---
 title: 配置用于容器的 Azure Monitor 的代理数据收集 | Microsoft Docs
 description: 本主题介绍如何配置用于容器的 Azure Monitor 代理，以控制 stdout/stderr 和环境变量日志收集。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
-ms.author: v-lingwu
 origin.date: 10/15/2019
 ms.date: 11/19/2019
-ms.openlocfilehash: ebba78e6ce6da90941069a267ddfb6f4e134cb8e
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.author: v-lingwu
+ms.openlocfilehash: c9620455e14d47b4dab663b27a9dc991a0f85145
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528358"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600046"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>配置用于容器的 Azure Monitor 的代理数据收集
 
@@ -41,6 +39,7 @@ ms.locfileid: "74528358"
 |`[log_collection_settings.stderr] enabled =` |布尔 | true 或 false |此设置控制是否启用 stderr 容器日志收集。 如果设置为 `true` 且未在 stdout 日志收集中排除任何命名空间（`log_collection_settings.stderr.exclude_namespaces` 设置），则会从所有群集 pod/节点中的所有容器收集 stderr 日志。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
 |`[log_collection_settings.stderr] exclude_namespaces =` |String |逗号分隔的数组 |不收集其 stderr 日志的 Kubernetes 命名空间数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true` 时，此设置才会生效。 如果未在 ConfigMap 中指定，默认值为 `exclude_namespaces = ["kube-system"]`。 |
 | `[log_collection_settings.env_var] enabled =` |布尔 | true 或 false | 此设置控制群集中所有 Pod/节点的环境变量集合，默认设置为 `enabled = true`（如果未在 ConfigMaps 中指定）。 如果环境变量集合已全局启用，则可对特定容器禁用它，方法是将环境变量 `AZMON_COLLECT_ENV` 设置为 **False**，可以在 Dockerfile 设置中这样做，也可以在 [Pod 的配置文件](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)（位于 **env:** 部分下）中这样做。 如果环境变量集合已全局禁用，则不能对特定容器启用集合（也就是说，可以在容器级别应用的唯一重写是在集合已全局启用的情况下禁用该集合）。 |
+| `[log_collection_settings.enrich_container_logs] enabled =` |布尔 | true 或 false | 此设置控制容器日志扩充，以填充写入群集中所有容器日志的 ContainerLog 表的每条日志记录的 Name 和 Image 属性值。 此设置在 ConfigMap 中未指定时，默认为 `enabled = false`。 |
 
 ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 不能使用推翻收集规则的其他 ConfigMap。
 
@@ -59,12 +58,6 @@ ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 �
     - 若要在群集范围禁用 stderr 日志收集，请参考以下示例配置键/值：`[log_collection_settings.stderr] enabled = false`。
 
 3. 运行以下 kubectl 命令创建 ConfigMap：`kubectl apply -f <configmap_yaml_file.yaml>`。
-    
-    示例：`kubectl apply -f container-azm-ms-agentconfig.yaml`。 
-    
-    配置更改可能需要几分钟时间才能完成并生效，群集中的所有 omsagent pod 将会重启。 所有 omsagent pod 的重启是轮流式的重启，而不是一次性全部重启。 重启完成后，系统会显示包含结果的消息，如下所示：`configmap "container-azm-ms-agentconfig" created`。
-
-4. 运行以下 kubectl 命令创建 ConfigMap：`kubectl apply -f <configmap_yaml_file.yaml>`。
     
     示例：`kubectl apply -f container-azm-ms-agentconfig.yaml`。 
     

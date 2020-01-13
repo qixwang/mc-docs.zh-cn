@@ -1,21 +1,21 @@
 ---
 title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量导入和更新操作
-description: 使用 Bulk Executor Java 库批量导入和更新 Azure Cosmos DB 文档。
+description: 使用 Bulk Executor Java 库批量导入和更新 Azure Cosmos DB 文档
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 09/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: f479e0dce0266f55405afa9e27238012313fc108
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 41665d8d59354719f87a043c99a4f7bf8a9f71e2
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254628"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599855"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -168,7 +168,7 @@ ms.locfileid: "70254628"
     BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
     ```
 
-    批量更新 API 接受一系列可更新的项。 每个更新项指定要针对 ID 和分区键值标识的文档执行的字段更新操作列表。 有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
+    批量更新 API 接受一系列可更新的项。 每个更新项指定要针对 ID 和分区键值标识的文档执行的字段更新操作列表。 有关更多详细信息，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)：
 
     ```java
     public BulkUpdateResponse updateAll(

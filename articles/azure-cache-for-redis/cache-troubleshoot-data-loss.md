@@ -1,18 +1,17 @@
 ---
 title: 排查 Azure Cache for Redis 中的数据丢失问题
-description: 了解如何解决 Azure Cache for Redis 的数据丢失问题
+description: 了解如何使用 Azure Cache for Redis 解决数据丢失问题，例如密钥部分丢失、密钥过期或密钥完全丢失。
 author: yegu-ms
+ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-origin.date: 10/17/2019
-ms.date: 11/22/2019
-ms.author: v-junlch
-ms.openlocfilehash: bcac65383655f80588929dfb6550f1ea7367c109
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.date: 12/30/2019
+ms.openlocfilehash: ab755b92c17927e1f06c7adf905111bead86ba82
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461627"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624321"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>排查 Azure Cache for Redis 中的数据丢失问题
 
@@ -37,9 +36,9 @@ ms.locfileid: "74461627"
 
 ### <a name="key-expiration"></a>密钥过期
 
-如果为密钥分配了超时，而该期限已过，则 Azure Cache for Redis 会自动删除该密钥。 有关 Redis 密钥过期的详细信息，请参阅 [EXPIRE](http://redis.io/commands/expire) 命令文档。 还可以使用 [SET](http://redis.io/commands/set)、[SETEX](https://redis.io/commands/setex)、[GETSET](https://redis.io/commands/getset) 和其他 **\*STORE** 命令来设置超时值。
+如果为密钥分配了超时，而该期限已过，则 Azure Cache for Redis 会自动删除该密钥。 有关 Redis 密钥过期的详细信息，请参阅 [EXPIRE](https://redis.io/commands/expire) 命令文档。 还可以使用 [SET](https://redis.io/commands/set)、[SETEX](https://redis.io/commands/setex)、[GETSET](https://redis.io/commands/getset) 和其他 **\*STORE** 命令来设置超时值。
 
-若要获取有关已过期密钥数的统计信息，请使用 [INFO](http://redis.io/commands/info) 命令。 `Stats` 部分显示已过期密钥的总数。 `Keyspace` 部分提供有关设置了超时的密钥数以及平均超时值的详细信息。
+若要获取有关已过期密钥数的统计信息，请使用 [INFO](https://redis.io/commands/info) 命令。 `Stats` 部分显示已过期密钥的总数。 `Keyspace` 部分提供有关设置了超时的密钥数以及平均超时值的详细信息。
 
 ```
 # Stats
@@ -55,9 +54,9 @@ db0:keys=3450,expires=2,avg_ttl=91861015336
 
 ### <a name="key-eviction"></a>密钥逐出
 
-Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，它将清除密钥以释放可用内存。 如果 [INFO](http://redis.io/commands/info) 命令中的 **used_memory** 或 **used_memory_rss** 值即将达到配置的 **maxmemory** 设置，Azure Cache for Redis 将会根据[缓存策略](http://redis.io/topics/lru-cache)从内存中开始逐出密钥。
+Azure Cache for Redis 需要使用内存空间来存储数据。 在必要时，它将清除密钥以释放可用内存。 如果 [INFO](https://redis.io/commands/info) 命令中的 **used_memory** 或 **used_memory_rss** 值即将达到配置的 **maxmemory** 设置，Azure Cache for Redis 将会根据[缓存策略](https://redis.io/topics/lru-cache)从内存中开始逐出密钥。
 
-可以使用 [INFO](http://redis.io/commands/info) 命令来监视逐出的密钥数。
+可以使用 [INFO](https://redis.io/commands/info) 命令来监视逐出的密钥数。
 
 ```
 # Stats
@@ -69,7 +68,7 @@ evicted_keys:13224
 
 ### <a name="key-deletion"></a>密钥删除
 
-Redis 客户端可以发出 [DEL](http://redis.io/commands/del) 或 [HDEL](http://redis.io/commands/hdel) 命令来显式删除 Azure Cache for Redis 中的密钥。 可以使用 [INFO](http://redis.io/commands/info) 命令来跟踪删除操作数目。 如果已调用 **DEL** 或 **HDEL** 命令，它们将列在 `Commandstats` 部分。
+Redis 客户端可以发出 [DEL](https://redis.io/commands/del) 或 [HDEL](https://redis.io/commands/hdel) 命令来显式删除 Azure Cache for Redis 中的密钥。 可以使用 [INFO](https://redis.io/commands/info) 命令来跟踪删除操作数目。 如果已调用 **DEL** 或 **HDEL** 命令，它们将列在 `Commandstats` 部分。
 
 ```
 # Commandstats
@@ -81,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>异步复制
 
-标准或高级层中的任何 Azure Cache for Redis 实例都配置有一个主节点和至少一个副本。 数据将通过一个后台进程以异步方式从主节点复制到副本。 [redis.io](http://redis.io/topics/replication) 网站概括性地介绍了 Redis 数据复制的工作原理。 如果客户端频繁写入 Redis，可能会发生部分数据丢失，因为需要保证这种复制在瞬间完成。 例如，如果在客户端向主节点写入密钥之后、后台进程有机会将此密钥发送到副本之前主节点关闭，那么，在副本接管为新的主节点时，密钥就会丢失。  
+标准或高级层中的任何 Azure Cache for Redis 实例都配置有一个主节点和至少一个副本。 数据将通过一个后台进程以异步方式从主节点复制到副本。 [redis.io](https://redis.io/topics/replication) 网站概括性地介绍了 Redis 数据复制的工作原理。 如果客户端频繁写入 Redis，可能会发生部分数据丢失，因为需要保证这种复制在瞬间完成。 例如，如果在客户端向主节点写入密钥之后、后台进程有机会将此密钥发送到副本之前主节点关闭，那么，在副本接管为新的主节点时，密钥就会丢失。  
 
 ## <a name="major-or-complete-loss-of-keys"></a>密钥严重丢失或完全丢失
 
@@ -95,7 +94,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="key-flushing"></a>密钥刷新
 
-客户端可以调用 [FLUSHDB](http://redis.io/commands/flushdb) 命令来删除*单个*数据库中的所有密钥，或调用 [FLUSHALL](http://redis.io/commands/flushall) 来删除 Redis 缓存中*所有*数据库中的所有密钥。 若要确定密钥是否已刷新，请使用 [INFO](http://redis.io/commands/info) 命令。 `Commandstats` 部分显示是否调用了 **FLUSH** 命令：
+客户端可以调用 [FLUSHDB](https://redis.io/commands/flushdb) 命令来删除*单个*数据库中的所有密钥，或调用 [FLUSHALL](https://redis.io/commands/flushall) 来删除 Redis 缓存中*所有*数据库中的所有密钥。 若要确定密钥是否已刷新，请使用 [INFO](https://redis.io/commands/info) 命令。 `Commandstats` 部分显示是否调用了 **FLUSH** 命令：
 
 ```
 # Commandstats
@@ -107,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>选择了错误的数据库
 
-Azure Cache for Redis 默认使用 **db0** 数据库。 如果切换到其他数据库（例如 **db1**），并尝试从该数据库读取密钥，则 Azure Cache for Redis 在其中将找不到这些密钥。 每个数据库都是一个逻辑上独立的单元，其中保存了不同的数据集。 使用 [SELECT](http://redis.io/commands/select) 命令来选择其他可用数据库，并在其中每个数据库中查找密钥。
+Azure Cache for Redis 默认使用 **db0** 数据库。 如果切换到其他数据库（例如 **db1**），并尝试从该数据库读取密钥，则 Azure Cache for Redis 在其中将找不到这些密钥。 每个数据库都是一个逻辑上独立的单元，其中保存了不同的数据集。 使用 [SELECT](https://redis.io/commands/select) 命令来选择其他可用数据库，并在其中每个数据库中查找密钥。
 
 ### <a name="redis-instance-failure"></a>Redis 实例故障
 
@@ -115,7 +114,7 @@ Redis 是内存中数据存储。 数据保存在托管 Redis 缓存的物理机
 
 标准层和高级层中的缓存在复制的配置中使用两个 VM，能够以更高的弹性防范数据丢失。 当此类缓存中的主节点发生故障时，副本节点将会接管工作并自动提供数据。 这些 VM 位于独立的容错域和更新域中，以最大程度地减少主节点和副本同时发生故障的几率。 但是，如果发生严重的数据中心服务中断，这些 VM 仍可能会同时发生故障。 此时，数据将会丢失，但这种情况非常罕见。
 
-考虑使用 [Redis 数据持久性](http://redis.io/topics/persistence)和[异地复制](/azure-cache-for-redis/cache-how-to-geo-replication)来改善数据保护，防范此类基础结构故障。
+考虑使用 [Redis 数据持久性](https://redis.io/topics/persistence)和[异地复制](/azure-cache-for-redis/cache-how-to-geo-replication)来改善数据保护，防范此类基础结构故障。
 
 ## <a name="additional-information"></a>其他信息
 
@@ -124,4 +123,4 @@ Redis 是内存中数据存储。 数据保存在托管 Redis 缓存的物理机
 - [如何监视 Azure Redis 缓存](cache-how-to-monitor.md)
 - [如何运行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

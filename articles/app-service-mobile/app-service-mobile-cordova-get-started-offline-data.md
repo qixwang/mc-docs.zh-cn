@@ -1,26 +1,19 @@
 ---
-title: 为 Azure 移动应用启用脱机同步 (Cordova) | Azure
-description: 了解如何在 Cordova 应用程序中使用应用服务移动应用来缓存和同步脱机数据
-documentationcenter: cordova
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
+title: 启用脱机同步 (Cordova)
+description: 了解如何在 Cordova 应用程序中使用应用服务移动应用来缓存和同步脱机数据。
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 3f08a955814b4259a9d784c6cca27f1c19774c7a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 76efed463f3f00b4f6ed20a7907727bea1592987
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336543"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600559"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

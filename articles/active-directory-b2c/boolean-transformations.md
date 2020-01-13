@@ -1,28 +1,28 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的布尔型声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的布尔型声明转换示例。
+title: 自定义策略的布尔型声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的布尔型声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: d4cb920c4633fd89b236b3d2e421ad542196530d
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: cfba5a7641c01a9664e64aaee9c6d7b50a3ccbc1
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847124"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623609"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用标识体验框架架构的布尔型声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架构的布尔型声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="andclaims"></a>AndClaims
 
@@ -30,9 +30,9 @@ ms.locfileid: "72847124"
 
 | 项目  | TransformationClaimType  | 数据类型  | 注释 |
 |-------| ------------------------ | ---------- | ----- |
-| InputClaim | inputClaim1 | 布尔值 | 第一个要评估的 ClaimType。 |
-| InputClaim | inputClaim2  | 布尔值 | 第二个要评估的 ClaimType。 |
-|OutputClaim | outputClaim | 布尔值 | 调用此声明转换后将生成的 ClaimTypes（true 或 false）。 |
+| InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
+| InputClaim | inputClaim2  | boolean | 第二个要评估的 ClaimType。 |
+|OutputClaim | outputClaim | boolean | 调用此声明转换后将生成的 ClaimTypes（true 或 false）。 |
 
 以下声明转换演示如何执行两个布尔型 ClaimTypes 的 And 运算：`isEmailNotExist` 和 `isSocialAccount`。 如果这两个输入声明的值为 `true`，则输出声明 `presentEmailSelfAsserted` 设置为 `true`。 在业务流程步骤中，只有在社交帐户电子邮件为空的情况下，才可以使用前置条件来预设自断言页。
 
@@ -63,8 +63,8 @@ ms.locfileid: "72847124"
 
 | 项目 | TransformationClaimType  | 数据类型  | 注释 |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | 布尔值 | 要断言的 ClaimType。 |
-| InputParameter |valueToCompareTo | 布尔值 | 要比较的值（true 或 false）。 |
+| inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
+| InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 
 AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual  自断言技术配置文件元数据控制向用户显示的技术配置文件。
 
@@ -120,8 +120,8 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | 布尔值 | 要运算的声明。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此 ClaimsTransformation 后生成的 ClaimType（true 或 false）。 |
+| InputClaim | inputClaim | boolean | 要运算的声明。 |
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType（true 或 false）。 |
 
 使用此声明转换对声明执行逻辑非运算。
 
@@ -148,9 +148,9 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | 布尔值 | 第一个要评估的 ClaimType。 |
-| InputClaim | inputClaim2 | 布尔值 | 第二个要评估的 ClaimType。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此 ClaimsTransformation 后将生成的 ClaimTypes（true 或 false）。 |
+| InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
+| InputClaim | inputClaim2 | boolean | 第二个要评估的 ClaimType。 |
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后将生成的 ClaimTypes（true 或 false）。 |
 
 以下声明转换演示如何执行两个布尔型 ClaimTypes 的 `Or` 运算。 在业务流程步骤中，如果其中一个声明的值为 `true`，则可以使用前置条件来预设自断言页。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights 快速入门 | Azure docs
-description: 提供有关快速安装移动应用以使用 Application Insights 和 App Center 进行监控的说明
+title: 使用 Azure Monitor Application Insights 监视移动应用
+description: 提供有关快速安装移动应用以使用 Azure Monitor Application Insights 和 App Center 进行监视的说明
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -10,12 +10,12 @@ origin.date: 10/03/2018
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: d1edab97567b8a632579c41b6fa18c8cdda2dd6d
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: cb3826e707bdffb01121d0ac88a23fb36d97afc4
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730314"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599922"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
@@ -78,7 +78,7 @@ Analytics.trackEvent("Video clicked")
    | ------------- |:-------------|:-----|
    | **名称**      | 某些全局唯一值，如“myApp-iOS” | 标识所监视的应用的名称 |
      | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |
-   | **Location** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **位置** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 3. 单击**创建**。
 

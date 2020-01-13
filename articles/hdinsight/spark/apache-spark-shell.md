@@ -14,49 +14,52 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/09/2018
-ms.date: 01/14/2019
+origin.date: 12/12/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: b47fb1ef640242aae0cc2bdf290e61d401d2b9b1
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: bc394808dfdb0040819edf491d04390e068baab5
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878642"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631090"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Apache Spark
 
 交互式 [Apache Spark](https://spark.apache.org/) Shell 提供了一个 REPL（读取执行打印循环）环境，用于一次运行一个 Spark 命令并查看结果。 此进程可用于开发和调试。 Spark 为其每个支持的语言（Scala、Python 和 R）提供了一个 shell。
 
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>通过 SSH 访问 Apache Spark Shell
-
-通过使用 SSH 连接到群集的主头节点访问 HDInsight 上的 Apache Spark Shell：
-
-     ssh <sshusername>@<clustername>-ssh.azurehdinsight.cn
-
-可以从 Azure 门户获取群集的完整 SSH 命令：
-
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 导航到 HDInsight Spark 群集的窗格。
-3. 选择“安全外壳 (SSH)”。
-
-    ![Azure 门户中的 HDInsight 窗格](./media/apache-spark-shell/hdinsight-spark-blade.png)
-
-4. 复制显示的 SSH 命令并在终端中运行。
-
-    ![Azure 门户中的 HDInsight SSH 窗格](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
-
-有关使用 SSH 连接到 HDInsight 的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
 ## <a name="run-an-apache-spark-shell"></a>运行 Apache Spark Shell
 
-Spark 为 Scala (spark-shell)、Python (pyspark) 和 R (sparkR) 提供 shell。 在 HDInsight 群集头节点的 SSH 会话中，输入以下命令之一：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
-    ./bin/spark-shell
-    ./bin/pyspark
-    ./bin/sparkR
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```
+
+1. Spark 为 Scala (spark-shell) 和 Python (pyspark) 提供 shell。 在 SSH 会话中，输入以下命令之一：
+
+    ```bash
+    spark-shell
+    pyspark
+    ```
 
 现在可以用适当的语言输入 Spark 命令。
+
+1. 一些基本的示例命令：
+
+    ```scala
+    // Load data
+    var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+
+    // Show data
+    data.show()
+
+    // Select certain columns
+    data.select($"BuildingID", $"Country").show(10)
+
+    // exit shell
+    :q
+    ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession 和 SparkContext 实例
 
@@ -66,9 +69,9 @@ Spark 为 Scala (spark-shell)、Python (pyspark) 和 R (sparkR) 提供 shell。 
 
 ## <a name="important-shell-parameters"></a>重要 shell 参数
 
-Spark Shell 命令（`spark-shell`、`pyspark` 或 `sparkR`）支持多个命令行参数。 若要查看参数的完整列表，请使用开关 `--help` 启动 Spark Shell。 请注意，上述某些参数可能仅适用于 Spark Shell 包装的 `spark-submit`。
+Spark Shell 命令（`spark-shell` 或 `pyspark`）支持多个命令行参数。 若要查看参数的完整列表，请使用开关 `--help` 启动 Spark Shell。 上述某些参数可能仅适用于 Spark Shell 包装的 `spark-submit`。
 
-| 开关 | 说明 | 示例 |
+| 开关 | description | 示例 |
 | --- | --- | --- |
 | --master MASTER_URL | 指定主 URL。 在 HDInsight 中，此值始终为 `yarn`。 | `--master yarn`|
 | --jars JAR_LIST | 要包括在驱动程序和执行程序类路径中的本地 jar 的逗号分隔列表。 在 HDInsight 中，此列表包含 Azure 存储或 Data Lake Storage 的默认文件系统路径。 | `--jars /path/to/examples.jar` |

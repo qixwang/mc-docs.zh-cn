@@ -1,26 +1,17 @@
 ---
-title: 如何配置 Azure Redis 缓存 | Microsoft Docs
+title: 如何配置 Azure Redis 缓存
 description: 了解 Azure Redis 缓存的默认 Redis 配置，并了解如何配置 Azure Redis 缓存实例
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-origin.date: 08/22/2017
-ms.date: 11/12/2019
+ms.topic: conceptual
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: e88dc7cc502c065e46a42a13363b87cecb0c2707
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: bf4ee025c0d65e5b1e18f40614a6b7019120fd59
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934242"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624065"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -129,7 +120,7 @@ ms.locfileid: "73934242"
 默认情况下，为新缓存禁用非 SSL 访问。 要启用非 SSL 端口，请对“高级设置”  边栏选项卡中的“仅允许通过 SSL 访问”  单击“否”  ，并单击“保存”  。
 
 > [!NOTE]
-> 通过 SSL 访问 Azure Redis 缓存时，默认支持 TLS 1.0。 可以根据需要将最低支持的 TLS 版本提高到 TLS 1.2，方法是在“高级设置”边栏选项卡上使用“最低 TLS 版本”下拉列表进行选择，然后单击“保存”。   
+> 对 Azure Cache for Redis 的 SSL 访问目前支持 TLS 1.0、1.1 和 1.2，但 1.0 和 1.1 版本即将停用。  有关更多详细信息，请阅读我们的[“删除 TLS 1.0 和 1.1”页](cache-remove-tls-10-11.md)。
 
 ![Azure Redis 缓存访问端口](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -520,4 +511,4 @@ shard1>get myKey
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

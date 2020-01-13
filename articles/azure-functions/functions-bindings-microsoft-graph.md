@@ -1,20 +1,16 @@
 ---
 title: Azure Functions 的 Microsoft Graph 绑定
 description: 了解如何在 Azure Functions 中使用 Microsoft Graph 触发器和绑定。
-services: functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 12/20/2017
-ms.date: 10/28/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: ae1beb01336d9ef42d8518ab0d588fc690d6066d
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: d7c1defa803ee284adb6b4dd578a9fe3ac2d44ea
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034452"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624132"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -32,7 +28,7 @@ Microsoft Graph 扩展提供了以下绑定：
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> Azure Functions 2.x 版的 Microsoft Graph 绑定目前处于预览状态。 Functions 1.x 版不支持这些绑定。
+> Azure Functions 2.x 版及更高版本的 Microsoft Graph 绑定目前处于预览状态。 Functions 1.x 版不支持这些绑定。
 
 ## <a name="packages"></a>包
 

@@ -1,5 +1,5 @@
 ---
-title: 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 C 快速入门（预览）| Microsoft Docs
+title: 适用于 SSH 和 RDP 的 Azure IoT 中心设备流 C 快速入门
 description: 在本快速入门中，我们将运行一个示例 C 应用程序，该应用程序充当代理，可以通过 IoT 中心设备流实现 SSH 和 RDP 方案。
 author: robinsh
 ms.service: iot-hub
@@ -8,14 +8,14 @@ ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 03/14/2019
-ms.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 289e3744ba3903db7c10ad6a0b7e0d80b13a054e
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: b2b5a4b38ff687d52fd9b0944adf093d280a19ec
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426090"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630925"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -29,7 +29,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ## <a name="how-it-works"></a>工作原理
 
-下图演示了设备本地和服务本地代理程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 在公共预览期，C SDK 仅支持设备端的设备流。 因此，本快速入门只会提供有关运行设备本地代理应用程序的说明。 应该运行下述服务端快速入门之一：
+下图演示了设备本地和服务本地代理程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 在公共预览期，C SDK 仅支持设备端的设备流。 因此，本快速入门只会提供有关运行设备本地代理应用程序的说明。 若要生成和运行随附的服务端应用程序，请按照以下快速入门之一中的说明进行操作：
 
 * [使用 C# 代理通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-csharp.md)
 * [使用 NodeJS 代理通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-nodejs.md)。
@@ -74,18 +74,19 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
     在开始安装 CMake 之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。   安装必备组件并验证下载内容后，安装 CMake 生成系统。
 
-1. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
+1. 打开命令提示符或 Git Bash shell。 运行以下命令，以克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
 
-    ```
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
-
-    完成此操作预计需要几分钟的时间。
-
-1. 按以下命令中所示在 Git 存储库的根目录中创建 *cmake* 子目录，并导航到该文件夹。
-
-    ```
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
     cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    此操作需要花费几分钟时间。
+
+1. 在 git 存储库的根目录中创建 cmake 子目录，并导航到该文件夹  。 从 azure-iot-sdk-c  目录运行以下命令：
+
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```
@@ -107,6 +108,9 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
+
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
 
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release

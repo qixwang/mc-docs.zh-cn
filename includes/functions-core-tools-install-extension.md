@@ -5,20 +5,19 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 05/25/2019
-ms.date: 07/17/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 6d3dd8168e26b37f9429154632bd447457f32fb2
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.openlocfilehash: a1a383b12536d2df552bf1c868b2a402ff88713b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68331916"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624112"
 ---
 ## <a name="register-extensions"></a>注册扩展
 
-除了 HTTP 和计时器触发器外，运行时 2.x 版中的 Functions 绑定是以扩展包的形式实现的。 在 2.x 版 Azure Functions 运行时中，必须显式注册在函数中使用的绑定类型的扩展。 这种情况的例外是 HTTP 绑定和计时器触发器，它们不需要扩展。
+除了 HTTP 和计时器触发器外，运行时 2.x 版及更高版本中的 Functions 绑定是以扩展包的形式实现的。 在 2.x 版及更高版本的 Azure Functions 运行时中，必须显式注册在函数中使用的绑定类型的扩展。 这种情况的例外是 HTTP 绑定和计时器触发器，它们不需要扩展。
 
 可以选择单独安装绑定扩展，也可以将扩展捆绑包引用添加到 host.json 项目文件。 扩展捆绑包可避免在使用多种绑定类型时出现包兼容性问题。 建议使用此方法来注册绑定扩展。 扩展捆绑包还无需安装 .NET Core 2.x SDK。 
 

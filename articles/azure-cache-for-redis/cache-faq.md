@@ -1,26 +1,17 @@
 ---
-title: Azure Redis 缓存常见问题解答 | Microsoft Docs
+title: 用于 Redis 的 Azure 缓存常见问题解答
 description: 了解 Azure Redis 缓存的常见问题、模式和最佳做法
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 04/29/2019
-ms.date: 11/12/2019
 ms.author: v-junlch
-ms.openlocfilehash: 3ee1d6797ac732c6d3aba85628763dd98b4073dc
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.service: cache
+ms.topic: conceptual
+ms.date: 12/30/2019
+ms.openlocfilehash: 5f8bcc48f4b1f9d0fed942a7603041446be7f60e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934237"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624359"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -177,6 +168,7 @@ StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有�
   * 对于 ConnectRetry 和 ConnectTimeout，一般指导原则是快速失败并重试。 该指导原则取决于工作负荷，以及客户端发出 Redis 命令和接收响应平均花费的时间。
   * 让 StackExchange.Redis 自动重新连接，而不是检查连接状态，并由用户自己重新连接。 **避免使用 ConnectionMultiplexer.IsConnected 属性**。
   * 雪球效应 - 有时可能会遇到这样的问题：不断地重试，但问题不断累积，导致永远无法恢复。 
+  
 * **超时值**
   * 根据工作负荷相应地设置值。 如果要存储较大值，应将超时设置为较大值。
   * 将 `AbortOnConnectFail` 设置为 false，让 StackExchange.Redis 重新连接。
@@ -288,7 +280,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange.Redis 最佳做法
 * 将 `AbortConnect` 设置为 false，并使 ConnectionMultiplexer 自动重新连接。 [请参阅此处了解详细信息](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
 * 重复使用 ConnectionMultiplexer - 不要为每个请求创建一个新的 ConnectionMultiplexe。 建议使用[此处所示](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)的 `Lazy<ConnectionMultiplexer>` 模式。
-* 具有较小值的 Redis 工作性能最佳，因此请考虑将较大数据分成多个密钥。 在 Redis 讨论中，100 kb 即可视为大型数据。 阅读[本文](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size)了解较大值可能引起的问题示例。
+* 具有较小值的 Redis 工作性能最佳，因此请考虑将较大数据分成多个密钥。 在此 Redis 讨论中，100 kb 即可视为大型数据。 阅读[本文](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size)了解较大值可能引起的问题示例。
 * 配置 [ThreadPool 设置](#important-details-about-threadpool-growth) ，以免超时。
 * 将默认 connectTimeout 至少设置为 5 秒。 出现网络故障时，此时间间隔会给 StackExchange.Redis 足够的时间来重新建立连接。
 * 注意与正在运行的不同操作相关的性能成本。 例如，`KEYS` 命令是 O(n) 操作，应当避免。 [redis.io](https://redis.io/commands/) 站点具有关于其支持的每个操作的时间复杂性的详细信息。 单击每个命令以查看每个操作的复杂程度。
@@ -458,7 +450,7 @@ Azure Redis 缓存使客户能够使用由 Microsoft 管理的安全、专用的
 
 Redis 取得成功的另一个重要方面是围绕它构建了健康而充满活力的开源生态系统。 这反映在可通过多种语言使用各种不同的 Redis 客户端。 此生态系统和广泛的客户端使得 Azure Redis 缓存几乎可供在 Azure 内生成的任何工作负荷使用。
 
-有关如何开始使用 Azure Redis 缓存的详细信息，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)和 [Azure Redis 缓存文档](index.md)。
+有关如何开始使用 Azure Redis 缓存的详细信息，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)和 [Azure Redis 缓存文档](index.yml)。
 
 ### <a name="managed-cache-service"></a>托管缓存服务
 [托管缓存服务已于 2016 年 11 月 30 日停用。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

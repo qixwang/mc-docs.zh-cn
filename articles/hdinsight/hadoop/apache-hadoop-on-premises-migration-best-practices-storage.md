@@ -7,15 +7,15 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 10/28/2019
+origin.date: 12/10/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3d7ce82256d9d8f5429b418cb12de80c5fcd2fb6
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 505042241160ac6873e3d5006153b3c6e6b70f72
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583872"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630862"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -41,8 +41,7 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 |`wasbs:///`|使用加密通信访问默认存储。|
 |`wasb://<container-name>@<account-name>.blob.core.chinacloudapi.cn/`|与非默认存储帐户通信时使用。 |
 
-
-[Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)列出了 Azure 存储帐户的当前限制。 如果应用程序的需求超过单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据对象分布到这些存储帐户中。
+[标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)列出了 Azure 存储帐户的当前限制。 如果应用程序的需求超过单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据对象分布到这些存储帐户中。
 
 [Azure 存储分析](../../storage/storage-analytics.md)  提供了所有存储服务的指标，可配置 Azure 门户来收集这些指标，以便通过图表直观显示。 可以创建警报，以便在达到存储资源指标的阈值时收到通知。
 

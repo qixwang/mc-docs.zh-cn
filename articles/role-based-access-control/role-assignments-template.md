@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure 资源管理器模板来管理用户、组和应用程序对 Azure 资源的访问权限。
+title: 使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
+description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure 资源管理器模板为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 1298b859dcc85c86dc25d6ea22240209adbf3c13
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: f0d8dfed2475628de0653d6a2b863c70f4aeef7d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884918"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623814"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 除了使用 Azure PowerShell 或 Azure CLI 之外，还可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)管理对 Azure 资源的访问权限。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用 RBAC 和模板管理访问权限。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 之外，还可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
 
 ## <a name="get-object-ids"></a>获取对象 ID
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>创建资源组范围的角色分配（不使用参数）
+## <a name="add-a-role-assignment"></a>添加角色分配
 
-在 RBAC 中，若要授予访问权限，请创建角色分配。 以下模板显示了创建角色分配的基本方式。 某些值在模板中指定。 以下模板演示：
+在 RBAC 中，若要授予访问权限，请添加角色分配。
+
+### <a name="resource-group-without-parameters"></a>资源组（不带参数）
+
+以下模板显示了添加角色分配的基本方式。 某些值在模板中指定。 以下模板演示：
 
 -  如何将[读取者](built-in-roles.md#reader)角色分配给资源组范围内的用户、组或应用程序
 
@@ -107,7 +111,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![资源组范围的角色分配](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>创建资源组或订阅范围的角色分配
+### <a name="resource-group-or-subscription"></a>资源组或订阅
 
 上一模板不是很灵活。 以下模板使用参数，可以在不同的范围使用。 以下模板演示：
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>创建资源范围的角色分配
+### <a name="resource"></a>资源
 
-如果需要在资源级别创建角色分配，角色分配的格式将会不同。 需提供要将角色分配到的资源的资源提供程序命名空间和资源类型。 还需在角色分配名称中包含该资源的名称。
+如果需要在资源级别添加角色分配，角色分配的格式将会不同。 需提供要将角色分配到的资源的资源提供程序命名空间和资源类型。 还需在角色分配名称中包含该资源的名称。
 
 对于角色分配的类型和名称，请使用以下格式：
 
@@ -287,7 +291,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![资源范围的角色分配](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>为新服务主体创建角色分配
+### <a name="new-service-principal"></a>新服务主体
 
 如果创建新的服务主体并立即尝试将角色分配给该服务主体，则在某些情况下该角色分配可能会失败。 例如，如果创建新的托管标识，然后尝试在同一 Azure 资源管理器模板中将角色分配给该服务主体，则角色分配可能会失败。 此失败的原因可能是复制延迟。 服务主体是在一个区域中创建的；但是，角色分配可能发生在尚未复制服务主体的另一个区域中。 若要解决这种情况，应该在创建角色分配时将 `principalType` 属性设置为 `ServicePrincipal`。
 

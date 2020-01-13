@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 11/07/2019
-ms.date: 12/23/2019
+origin.date: 12/18/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 672e00f9e4eef1f93a9ce4c2695cd3a1a50481d3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3b565cb415833c66f3eadd56f2e77c02cf5d6cc3
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336109"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631086"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
@@ -34,43 +34,41 @@ ms.locfileid: "75336109"
 
 1. 如果尚未安装最新版本的适用于 Visual Studio 的 Data Lake 工具，请参阅[使用适用于 Visual Studio 的 Data Lake 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-    > [!NOTE]
-    > 针对 Visual Studio 的 Data Lake 工具以前称为 Visual Studio 的 HDInsight 工具。
+    > [!NOTE]  
+    > Azure Data Lake 和流分析工具以前称为 HDInsight Tools for Visual Studio。
     >
-    > 适用于 Visual Studio 的 Data Lake 工具已包含在 Visual Studio 2019 的“Azure 工作负荷”中。 
+    > Azure Data Lake 和适用于 Visual Studio 的流分析工具包含在 Visual Studio 2019 的 **Azure 开发**工作负荷中。
 
-2. 打开 Visual Studio。
+1. 启动 Visual Studio。
 
-3. 在“开始”窗口中，选择“创建新项目”。  
+1. 在“开始”窗口中，选择“创建新项目”。  
 
-4. 在“创建新项目”窗口中，选择搜索框并输入 *Storm*。  从结果列表中选择“Storm 示例”，然后选择“下一步”。  
+1. 在“创建新项目”窗口中，选择搜索框并输入 `Storm`。  从结果列表中选择“Storm 示例”，然后选择“下一步”。  
 
-5. 在“配置新项目”窗口输入一个**项目名称**，然后转到或创建一个**位置**用于保存新项目。  然后选择“创建”  。
+1. 在“配置新项目”窗口输入一个**项目名称**，然后转到或创建一个**位置**用于保存新项目。  然后选择“创建”  。
 
     ![“配置新项目”窗口，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. 在“解决方案资源管理器”中右键单击项目，然后选择“提交到 Storm on HDInsight”。  
+1. 在服务器资源管理器中，右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。   
+
+1. 在“解决方案资源管理器”中右键单击项目，然后选择“提交到 Storm on HDInsight”。  
 
     > [!NOTE]  
     > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录到包含 Storm on HDInsight 群集的订阅。
 
-7. 从“提交拓扑”对话框中的“Storm 群集”下拉列表内，选择你的 Storm on HDInsight 群集，然后选择“提交”。    可以查看“输出”窗格来监视提交是否成功。 
+1. 从“提交拓扑”对话框中的“Storm 群集”下拉列表内，选择你的 Storm on HDInsight 群集，然后选择“提交”。    可以查看“输出”窗格来监视提交是否成功。 
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>使用 SSH 和 Storm 命令提交拓扑
 
-使用 SSH 将拓扑提交到 Storm：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
-1. 使用 SSH 连接到 HDInsight 群集。 请将 `USERNAME` 替换为你的 SSH 用户名（例如 *sshuser*）。 将 `CLUSTERNAME` 替换为你的 HDInsight 群集名。
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
-    有关使用 SSH 连接到 HDInsight 群集的详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 在 SSH 会话中，使用以下命令启动 **WordCount** 示例拓扑：
 
-2. 使用以下命令启动 *WordCount* 示例拓扑：
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 

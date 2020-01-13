@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 REST 源复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 REST 源复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 10/14/2019
+origin.date: 11/20/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: cad236e6129a32f97a22fa633f7aeaf50c817418
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: ca6cc0dc26b053e719f8d29693b1ad79d636b985
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275467"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624309"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
 
@@ -175,7 +175,7 @@ REST 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
-| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
+| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
 
 如果在数据集中设置了 `requestMethod`、`additionalHeaders`、`requestBody` 和 `paginationRules`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
 
@@ -217,6 +217,9 @@ REST 链接服务支持以下属性：
 | paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。  | 否 |
 | requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  否 |
+
+>[!NOTE]
+>REST 连接器会忽略 `additionalHeaders` 中指定的任何“Accept”标头。 由于 REST 连接器仅支持 JSON 中的响应，它会自动生成 `Accept: application/json` 标头。
 
 **示例 1：对分页使用 Get 方法**
 

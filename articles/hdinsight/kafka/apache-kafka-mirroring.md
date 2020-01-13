@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/24/2019
-ms.date: 10/28/2019
+origin.date: 11/29/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3d1f470b7fcfde605a1749441ddcc1fb11251d65
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: add2164365b678d34f0bc90ba82b22c32bbe7465
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583828"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631046"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -71,7 +71,7 @@ ms.locfileid: "72583828"
 
 1. 创建两个新的资源组：
 
-    |资源组 | Location |
+    |资源组 | 位置 |
     |---|---|
     | kafka-primary-rg | 中国东部 |
     | kafka-secondary-rg | 中国北部 |
@@ -88,17 +88,17 @@ ms.locfileid: "72583828"
 
 1. 创建虚拟网络对等互连。 此步骤创建两个对等互连：一个从 **kafka-primary-vnet** 连接到 **kafka-secondary-vnet**，一个从 **kafka-secondary-vnet** 连接回到 **kafka-primary-vnet**。
     1. 选择“kafka-primary-vnet”虚拟网络。 
-    1. 在“设置”下，单击“对等互连”。  
-    1. 单击“添加”  。
+    1. 在“设置”  下，选择“对等互连”  。
+    1. 选择“添加”   。
     1. 在“添加对等互连”屏幕上输入详细信息，如以下屏幕截图所示。 
 
         ![添加 VNet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. 配置 IP 播发：
     1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
-    1. 单击“服务” > “Kafka”。   单击“配置”选项卡  。
-    1. 将以下配置行添加到底部的 **kafka-env template** 节。 单击“保存”  。
-    
+    1. 选择“服务” > “Kafka”。   单击“配置”选项卡  。
+    1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”  。
+
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
         IP_ADDRESS=$(hostname -i)
@@ -109,18 +109,18 @@ ms.locfileid: "72583828"
 
     1. 在“保存配置”屏幕上输入备注，然后单击“保存”。  
     1. 如果出现配置警告提示，请单击“仍然继续”。 
-    1. 在“保存配置更改”屏幕上单击“确定”。  
-    1. 在“需要重启”通知中，单击“重启” > “重启所有受影响的组件”。    单击“确认全部重启”  。
+    1. 在“保存配置更改”屏幕上选择“确定”。  
+    1. 在“需要重启”通知中，选择“重启” > “重启所有受影响的服务”。    选择“确认全部重启”  。
 
         ![重启 Kafka 节点](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. 将 Kafka 配置为侦听所有网络接口。
     1. 不要关闭“服务” > “Kafka”下的“配置”选项卡。    在“Kafka 代理”部分，将“侦听器”属性设置为 `PLAINTEXT://0.0.0.0:9092`。  
-    1. 单击“保存”  。
-    1. 依次单击“重启”、“确认全部重启”。  
+    1. 选择“保存”  。
+    1. 依次选择“重启”、“确认全部重启”。  
 
 1. 记下主要群集的代理 IP 地址和 Zookeeper 地址。
-    1. 在 Ambari 仪表板上单击“主机”。 
+    1. 在 Ambari 仪表板上选择“主机”。 
     1. 记下代理和 Zookeeper 的 IP 地址。 代理节点主机名的前两个字母为 **wn**，Zookeeper 节点主机名的前两个字母为 **zk**。
 
         ![查看 IP 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
@@ -135,7 +135,7 @@ ms.locfileid: "72583828"
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.cn
     ```
 
-    将 **sshuser** 替换为创建群集时使用的 SSH 用户名。 将 **BASENAME** 替换为创建群集时使用的基名称。
+    将 **sshuser** 替换为创建群集时使用的 SSH 用户名。 将 **PRIMARYCLUSTER** 替换为创建群集时使用的基名称。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -271,13 +271,12 @@ ms.locfileid: "72583828"
 
     本示例中使用的参数为：
 
-    * **--consumer.config**：指定包含使用者属性的文件。 这些属性用于创建可从*主要* Kafka 群集读取记录的使用者。
-
-    * **--producer.config**：指定包含生成者属性的文件。 这些属性用于创建可向*辅助* Kafka 群集写入记录的生成者。
-
-    * **--whitelist**：MirrorMaker 从主要群集复制到辅助群集的主题列表。
-
-    * **--num.streams**：要创建的使用者线程数。
+    |参数 |说明 |
+    |---|---|
+    |--consumer.config|指定包含使用者属性的文件。 这些属性用于创建可从*主要* Kafka 群集读取记录的使用者。|
+    |--producer.config|指定包含生成者属性的文件。 这些属性用于创建可向*辅助* Kafka 群集写入记录的生成者。|
+    |--whitelist|MirrorMaker 从主要群集复制到辅助群集的主题列表。|
+    |--num.streams|要创建的使用者线程数。|
 
     现在，辅助节点上的使用者正在等待接收消息。
 

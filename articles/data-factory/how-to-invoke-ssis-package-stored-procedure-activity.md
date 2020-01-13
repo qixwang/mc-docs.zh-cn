@@ -1,5 +1,5 @@
 ---
-title: 使用存储过程活动运行 SSIS 包 - Azure | Microsoft Docs
+title: 使用存储过程活动运行 SSIS 包 - Azure
 description: 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 origin.date: 04/17/2018
-ms.date: 07/08/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: dc6d8f3975e2c79a45db709c73e3aec173905ae8
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 77f3bc8aa3ed9453be55c8ea6a075cdfb2af687d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570602"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624294"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
@@ -207,10 +207,7 @@ ms.locfileid: "67570602"
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }

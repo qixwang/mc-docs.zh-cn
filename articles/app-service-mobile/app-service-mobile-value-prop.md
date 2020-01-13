@@ -1,26 +1,18 @@
 ---
-title: 关于 Azure 应用服务中的移动应用
+title: 关于移动应用
 description: 了解应用服务为企业移动应用带来的优势。
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: yochayk
-editor: ''
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-multiple
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 37e5a94522cfdbe8c5f4dcd6a8280efa81c2c935
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 683e6b7be38bd8e7e2a648200803df8cb9f0301b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335724"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600545"
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 

@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/15/2019
-ms.date: 11/21/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: 63d619e453f685ab35c7409610a4ea9ea2b974cf
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 6ed951a363703ca9064c4c16f09a7268c1ad4fc7
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326806"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624327"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -257,7 +256,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="connection-draining"></a>连接清空
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 此设置可确保后端池的所有已取消注册实例不再收到任何新请求。 同时，允许现有请求在所配置的时间限制内完成。 连接清空将应用到已从后端池中显式删除的后端实例。
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例继续维护现有连接，并在可配置的超时时间内处理正在进行的请求，并且不会接收任何新请求或连接。 此情况的唯一例外是由于网关托管会话相关性而绑定到注销实例的请求，这些请求将继续被代理到注销实例。 连接清空将应用到已从后端池中显式删除的后端实例。
 
 ### <a name="protocol"></a>协议
 

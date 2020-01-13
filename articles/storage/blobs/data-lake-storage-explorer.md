@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理数据
-description: 本快速入门介绍如何使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户中创建容器，以及目录和文件。 接下来，介绍如何将文件下载到本地计算机，以及如何查看目录中的所有文件。
+title: 将 Azure 存储资源管理器与 Azure Data Lake Storage Gen2 配合使用
+description: 了解如何使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户中创建文件系统，以及目录和文件。 接下来，介绍如何将文件下载到本地计算机，以及如何查看目录中的所有文件。
 author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 07/19/2019
-ms.date: 09/30/2019
+origin.date: 11/19/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 745285d59b1e54d6563d646afb7dfef30dd8dfd8
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: ae79e568548ef0262fcbd86d66807517588b1bf8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306755"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624353"
 ---
-# <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 帐户中管理数据
+# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>将 Azure 存储资源管理器与 Azure Data Lake Storage Gen2 配合使用
 
-本快速入门介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)创建目录和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何在目录中查看所有 blob。 此外，还将了解如何创建 blob 快照、管理目录访问策略以及创建共享访问签名。
+本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)创建目录和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何在目录中查看所有 blob。 此外，还将了解如何创建 blob 快照、管理目录访问策略以及创建共享访问签名。
 
 ## <a name="prerequisites"></a>先决条件
 

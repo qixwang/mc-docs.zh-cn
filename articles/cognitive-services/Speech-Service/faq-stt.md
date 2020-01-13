@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 10/17/2019
-ms.date: 11/25/2019
+origin.date: 12/04/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 118052b7c9d5c0a628db3ae2812ea0883b129346
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 6f0a8613879a4ab50b257aecb7bbe9a371c852df
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389974"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630875"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -66,39 +66,6 @@ ms.locfileid: "74389974"
 
 如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可以解除已部署的模型，使用较新版本的基线重新调整并重新部署。
 
-**问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？**
-
-**答**：以 20 个并发请求为增量纵向扩展模型。
-
-如果需要更大的规模，请与[语音支持部门](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)联系。
-
-为了增加自定义模型的并发性，我们需要以下信息：
-
-- 部署模型的区域；
-- 已部署模型的终结点 ID：
-  - 转到[自定义语音门户](https://chinaeast2.cris.azure.cn/Home/CustomSpeech)；
-  - 视需要登录；
-  - 选择项目和部署；
-  - 选择需要增加其并发性的终结点；
-  - 复制 `Endpoint ID`。
-
-为了增加基础模型的并发性，我们需要以下信息：
-
-- 服务的区域；
-
-以及
-
-- 订阅的访问令牌（查看[此文](rest-speech-to-text.md#how-to-get-an-access-token)）；
-
-或
-
-- 订阅的资源 ID：
-  - 转到 [Azure 门户](https://portal.azure.cn)；
-  - 在搜索框中选择 `Cognitive Services`；
-  - 从显示的服务中，选取需要增加其并发性的语音服务；
-  - 显示此服务的 `Properties`；
-  - 复制完整的 `Resource ID`。
-
 **问：能否下载模型并在本地运行？**
 
 **答**：无法下载模型并在本地执行。
@@ -117,6 +84,41 @@ ms.locfileid: "74389974"
 
 > [!IMPORTANT]
 > 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
+
+## <a name="increasing-concurrency"></a>提高并发性
+
+**问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？**
+
+**答**：以 20 个并发请求为增量纵向扩展模型。
+
+使用所需信息，在 [Azure 支持门户](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中创建支持请求。 请勿在[支持页面](support.md)上提到的任何公共渠道（GitHub、Stackoverflow 等）上发布信息。
+
+为了增加自定义模型的并发性，我们需要以下信息：
+
+- 部署模型的区域；
+- 已部署模型的终结点 ID：
+  - 转到[自定义语音门户](https://chinaeast2.cris.azure.cn/Home/CustomSpeech)；
+  - 视需要登录；
+  - 选择项目和部署；
+  - 选择需要增加其并发性的终结点；
+  - 复制 `Endpoint ID`。
+
+为了增加基础模型的并发性，我们需要以下信息：
+
+- 服务的区域；
+
+以及
+
+- 订阅的访问令牌（查看[此文](https://docs.azure.cn/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)）；
+
+或
+
+- 订阅的资源 ID：
+  - 转到 [Azure 门户](https://portal.azure.cn)；
+  - 在搜索框中选择 `Cognitive Services`；
+  - 从显示的服务中，选取需要增加其并发性的语音服务；
+  - 显示此服务的 `Properties`；
+  - 复制完整的 `Resource ID`。
 
 ## <a name="importing-data"></a>导入数据
 

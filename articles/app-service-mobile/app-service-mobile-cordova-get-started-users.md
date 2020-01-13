@@ -1,26 +1,19 @@
 ---
-title: 使用移动应用在 Apache Cordova 中添加身份验证 | Azure
-description: 了解如何使用 Azure 应用服务中的移动应用，通过各种标识提供者对 Apache Cordova 应用的用户进行身份验证。 包括 Microsoft 和 Azure Active Directory。
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
+title: 在 Apache Cordova 中添加身份验证
+description: 了解如何使用 Azure 应用服务中的移动应用通过标识提供者（如 Google、Facebook、Twitter 和 Microsoft）对 Apache Cordova 应用的用户进行身份验证。
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 7cf0046589518f44bf909228fa33017cbb204f01
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4a5b95c21a636033493ec5fd2c53c7e1c101171a
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334650"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600558"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

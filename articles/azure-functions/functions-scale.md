@@ -3,15 +3,14 @@ title: Azure Functions 的缩放和托管
 description: 了解如何在 Azure Functions 消耗计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/31/2019
 ms.custom: H1Hack27Feb2017
-ms.author: v-junlch
-ms.openlocfilehash: 07ba666d21e448b27008ffd3c64884622e0781cb
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 2ba20b47d506f59321c8ca57b035304b9bd11922
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885040"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624092"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -26,7 +25,6 @@ ms.locfileid: "74885040"
 消耗计划在代码运行时自动添加计算能力。 应用在需要处理负载时会扩展，在代码停止运行时会缩减。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
 
 选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着，它永远不会缩减为零。 （要求启用 [Always On](#always-on)。）
-
 
 ## <a name="hosting-plan-support"></a>托管计划支持
 
@@ -101,7 +99,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉  。
 
-触发器和绑定也可以使用函数应用使用的相同存储帐户来存储应用程序数据。 但是，对于存储密集型操作，应使用单独的存储帐户。   
+触发器和绑定也可以使用函数应用使用的相同存储帐户来存储应用程序数据。 但是，对于存储密集型操作，应使用单独的存储帐户。  
+
+当然，多个函数应用也可以共享同一存储帐户，没有任何问题。 （一个很好的例子是，当你使用 Azure 存储模拟器在本地环境中开发多个应用时，它的作用类似于一个存储帐户。） 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -117,7 +117,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要扩大或缩小。  缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
 
-Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，将分配额外的资源来运行 Azure Functions 主机的多个实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 实例数最终会缩减为零，此时 Function App 中没有任何函数运行。
+Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，将分配额外的资源来运行 Azure Functions 主机的多个实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 当函数应用中没有运行函数时，实例数最终会*缩减*为零。
 
 ![用于监视事件和创建实例的扩展控制器](./media/functions-scale/central-listener.png)
 
@@ -154,4 +154,4 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]
 
-<!-- Update_Description: update metedata properties -->
+<!-- Update_Description: wording update -->

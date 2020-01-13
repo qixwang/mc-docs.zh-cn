@@ -9,17 +9,17 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/21/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7885e5b3fa6332571916bd83a614d0cd6ea4fc12
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4e88efd613fb24370d7821e650ce3806c0cbe131
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336234"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630879"
 ---
-# <a name="language-and-region-support-for-the-speech-services"></a>语音服务的语言和区域支持
+# <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
 语言支持因语音服务功能而异。 下表汇总了对[语音转文本](#speech-to-text)服务产品的语言支持。
 

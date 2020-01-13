@@ -1,7 +1,7 @@
 ---
 title: 使用语音 SDK 流式传输编解码器压缩的音频 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音 SDK 将压缩音频流式传输到 Azure 语音服务。 适用于用于 Linux 的 C++、C# 和 Java，Android 中的 Java 和 iOS 中的 Objective-C。
+description: 了解如何使用语音 SDK 将压缩音频流式传输到语音服务。 适用于用于 Linux 的 C++、C# 和 Java，Android 中的 Java 和 iOS 中的 Objective-C。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/20/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 29d7a69e011e24b676c82cd8bec7ddd7bbceab0f
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 915d59816e1af5c716e83469b5d2f2574e0e92ca
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389507"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630929"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 

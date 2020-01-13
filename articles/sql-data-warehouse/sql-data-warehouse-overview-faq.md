@@ -11,12 +11,12 @@ origin.date: 11/04/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 7789673f0883956d063a651a0d56d841af65f770
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: b884f793ea2cbc18a665b7e5d2331c5e6081f53c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807625"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624339"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -44,7 +44,7 @@ A. Azure Synapse 提供多种解决方案来保护数据，例如 TDE 和审核�
 
 问： 从何处可以查明 Azure Synapse 符合哪些法律或企业标准？
 
-A. 请访问 [Microsoft 符合性]页面，查明产品（如 SOC 和 ISO）的各种符合性规定。 首先选择“合规性”标题，然后在页面右侧的“Microsoft 范围内云服务”部分展开“Azure”，查看哪些服务符合 Azure Synapse 的要求。
+A. 请访问 [Azure 合规性]页，按产品（如 SOC 和 ISO）了解各种合规性产品。 
 
 问： 是否可以连接 Power BI？
 
@@ -117,7 +117,7 @@ A. 可在[连接字符串]页找到 DW 驱动程序支持
 [连接字符串]: ./sql-data-warehouse-connection-strings.md
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [安全性]: ./sql-data-warehouse-overview-manage-security.md
-[Microsoft 符合性]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
+[Azure 合规性]: https://www.trustcenter.cn/zh-cn/cloudservices/azure.html
 [容量限制]: ./sql-data-warehouse-service-capacity-limits.md
 [数据类型]: ./sql-data-warehouse-tables-data-types.md
 [不支持的表功能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features

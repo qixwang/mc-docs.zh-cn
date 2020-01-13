@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 监视数据工厂 | Microsoft Docs
+title: 使用 Azure Monitor 监视数据工厂
 description: 了解如何在 Azure Monitor 中，使用数据工厂中的信息通过启用诊断日志来监视 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/11/2018
-ms.date: 11/11/2019
-ms.openlocfilehash: d39bd528822c6ff3923bb950f81d603fea243b26
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.date: 01/06/2020
+ms.openlocfilehash: 0a335c91095a21daad3cdff477b1c1b7825078d6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648628"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624202"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 发出警报和监视数据工厂
 
@@ -473,7 +473,7 @@ Azure 数据工厂版本 2 发出以下指标。
 * 在“Azure 诊断”模式下，  诊断日志流入 _AzureDiagnostics_ 表
 
 > [!NOTE]
-> 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。
+> 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Log Analytics 已知限制](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)。
 
 ## <a name="alerts"></a>警报
 

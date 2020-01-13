@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5d7e9431f010dd54c4968b272ef2c84c14dbd929
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: e93c59d736969503a3ecf4194862bf4792ada24d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390008"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631092"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>语音转文本的短语列表
 
@@ -24,7 +25,7 @@ ms.locfileid: "74390008"
 
 例如，如果命令为“Move to”，可能的目标为可以说出来的“Ward”，则可添加条目“Move to Ward”。 添加短语以后，在识别该音频时，将其识别成“Move to Ward”而不是“Move toward”的可能性就会增加。
 
-可以向短语列表添加单个单词或完整短语。 在识别过程中，如果音频中包含某个完全匹配项，则会使用短语列表中的条目。 以上面的示例为基础，假设短语列表包含“Move to Ward”，而音频捕获的声音既类似于“Move to Ward”，又类似于“Move to Ward”，则识别结果更可能为“Move to Ward slowly”。
+可以向短语列表添加单个单词或完整短语。 在识别过程中，如果音频中包含与整个短语完全匹配的单独短语，则使用短语列表中的一个条目。 如果找不到与该短语的完全匹配项，则不会帮助识别。
 
 >[!Note]
 > 目前，短语列表仅支持英语版语音转文本。
@@ -33,12 +34,7 @@ ms.locfileid: "74390008"
 
 以下示例演示了如何使用 `PhraseListGrammar` 对象构建短语列表。
 
-```C++
-auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
-phraselist->AddPhrase("Move to Ward");
-phraselist->AddPhrase("Move to Bill");
-phraselist->AddPhrase("Move to Ted");
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 PhraseListGrammar phraseList = PhraseListGrammar.FromRecognizer(recognizer);
@@ -47,19 +43,20 @@ phraseList.AddPhrase("Move to Bill");
 phraseList.AddPhrase("Move to Ted");
 ```
 
-```Python
-phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
-phrase_list_grammar.addPhrase("Move to Ward")
-phrase_list_grammar.addPhrase("Move to Bill")
-phrase_list_grammar.addPhrase("Move to Ted")
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
+phraselist->AddPhrase("Move to Ward");
+phraselist->AddPhrase("Move to Bill");
+phraselist->AddPhrase("Move to Ted");
 ```
 
-```JavaScript
-var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
-phraseListGrammar.addPhrase("Move to Ward");
-phraseListGrammar.addPhrase("Move to Bill");
-phraseListGrammar.addPhrase("Move to Ted");
-```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 PhraseListGrammar phraseListGrammar = PhraseListGrammar.fromRecognizer(recognizer);
@@ -68,30 +65,74 @@ phraseListGrammar.addPhrase("Move to Bill");
 phraseListGrammar.addPhrase("Move to Ted");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
+phrase_list_grammar.addPhrase("Move to Ward")
+phrase_list_grammar.addPhrase("Move to Bill")
+phrase_list_grammar.addPhrase("Move to Ted")
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```JavaScript
+var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
+phraseListGrammar.addPhrase("Move to Ward");
+phraseListGrammar.addPhrase("Move to Bill");
+phraseListGrammar.addPhrase("Move to Ted");
+```
+
+::: zone-end
+
 >[!Note]
 > 语音服务用于匹配语音的短语列表的最大数目为 1024 个短语。
 
 也可通过调用 clear() 来清理与 `PhraseListGrammar` 关联的短语。
 
-```C++
-phraselist->Clear();
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 phraseList.Clear();
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+phraselist->Clear();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```Java
+phraseListGrammar.clear();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
 ```Python
 phrase_list_grammar.clear()
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
 
 ```JavaScript
 phraseListGrammar.clear();
 ```
 
-```Java
-phraseListGrammar.clear();
-```
+::: zone-end
 
 > [!NOTE]
 > 对 `PhraseListGrammar` 对象的更改会在下次识别时生效，或者会在重新连接到语音服务后生效。

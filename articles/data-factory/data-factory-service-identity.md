@@ -1,5 +1,5 @@
 ---
-title: 数据工厂的托管标识 | Microsoft Docs
+title: 数据工厂的托管标识
 description: 了解 Azure 数据工厂的托管标识。
 services: data-factory
 author: WenJason
@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 04/08/2019
-ms.date: 10/14/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 2e25930d52a0a29657e3fedeb29dff4b47f5107f
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: d28106ce264fe44c4e4668ccced19e8512fa48db
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275406"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624074"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -27,7 +27,7 @@ ms.locfileid: "72275406"
 
 ## <a name="overview"></a>概述
 
-创建数据工厂时，可在创建工厂的同时创建托管标识。 托管标识是注册到 Azure Activity Directory 的托管应用程序，表示此特定数据工厂。
+创建数据工厂时，可在创建工厂的同时创建托管标识。 托管标识是注册到 Azure Active Directory 的托管应用程序，表示此特定数据工厂。
 
 数据工厂的托管标识对以下功能有益：
 

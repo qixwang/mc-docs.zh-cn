@@ -1,21 +1,16 @@
 ---
-title: 在 Azure Functions 中使用代理 | Microsoft Docs
+title: 在 Azure Functions 中使用代理
 description: 有关如何使用 Azure Functions 代理的概述
-services: functions
 author: alexkarcher-msft
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 01/22/2018
-ms.date: 09/29/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 58b65e563316adc6d2c1865bcdb4904b84c43295
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.openlocfilehash: 09188cfb343db107ff86d53866a89d83fef34604
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673573"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624266"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -189,7 +184,7 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 requestOverrides 对象定义调用后端资源时对请求所做的更改。 该对象由以下属性定义：
 
 * **backend.request.method**：用于调用后端的 HTTP 方法。
-* **backend.request.querystring.\<ParameterName\>** ：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 如果提供空字符串，该参数不会包含在后端请求中。
+* **backend.request.querystring.\<ParameterName\>** ：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 请注意，如果提供了空字符串，参数仍然包含在后端请求中。
 * **backend.request.headers.\<HeaderName\>** ：可为后端调用设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在后端请求中。
 
 值可以引用应用程序设置和原始客户端请求中的参数。

@@ -1,25 +1,18 @@
 ---
-title: 纵向扩展功能和容量 - Azure 应用服务 | Microsoft Docs
-description: 了解如何增加 Azure 应用服务中的应用以增加容量和功能。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 纵向扩展功能和容量
+description: 了解如何在 Azure 应用服务中纵向扩展应用。 获取更多 CPU、内存、磁盘空间和额外功能。
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/19/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 8c008a456c790f1c46756da10c9b09f3e7c5196f
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 501f6a4e54882ec27659f00fdf0eaa43567cc726
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555957"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600445"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用
 

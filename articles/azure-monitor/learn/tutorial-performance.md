@@ -10,12 +10,12 @@ origin.date: 08/13/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 7285d91ac5ee9b5a173fa947a4eb5d5ae8b928fd
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: b56671c7b09fdd992519f1001586df7221e3743d
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657791"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599766"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -73,7 +73,7 @@ Application Insights 收集应用程序中不同操作的性能详细信息。 �
 
     ![性能提示](media/tutorial-performance/6-perf-tip.png)
 
-8.  如需进一步分析，可单击“下载跟踪”，将跟踪信息下载到 Visual Studio  。
+8.   如需进一步分析，可单击“下载跟踪”下载跟踪  。 可以使用 [PerfView](https://github.com/Microsoft/perfview#perfview-overview) 查看此数据。
 
 ## <a name="use-logs-data-for-server"></a>使用服务器的日志数据
  日志提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 可以用它对请求和性能数据进行深度分析。

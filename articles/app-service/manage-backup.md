@@ -1,25 +1,18 @@
 ---
-title: 备份应用 - Azure 应用服务
-description: 了解如何在 Azure 应用服务中创建应用备份。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 备份应用
+description: 了解如何在 Azure 应用服务中创建应用备份。 运行手动或计划备份。 通过包括附加的数据库来自定义备份。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 51431f68d2cb4144557b52a81cc61a02c92cbcac
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 1f2ed06993bec26ed33b9360fbaf1bc35729c5ad
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555977"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600461"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 可以将备份配置为无限期保留。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。

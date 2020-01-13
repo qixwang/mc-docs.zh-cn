@@ -1,23 +1,24 @@
 ---
-title: 使用共享密钥授权调用 Azure 存储 REST API 操作 | Microsoft Docs
+title: 通过共享密钥授权调用 REST API 操作
+titleSuffix: Azure Storage
 description: 通过 Azure 存储 REST API 来使用共享密钥授权向 Blob 存储发出请求。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/01/2019
-ms.date: 10/28/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aea887599fa471cf6a976da63d1023d474de382a
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: ee71ce2b898e3557f91edb478b7966e19a2d0eef
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914371"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624332"
 ---
-# <a name="using-the-azure-storage-rest-api"></a>使用 Azure 存储 REST API
+# <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
 本文介绍如何调用 Azure 存储 REST API，包括如何构建授权标头。 本文内容是从对 REST 无甚了解、而且也不知道如何进行 REST 调用的开发人员角度编写的。 了解如何调用 REST 操作后，即可利用这一知识使用任何其他的 Azure 存储 REST 操作。
 
@@ -59,9 +60,9 @@ REST 是一种体系结构，用于通过 Internet 协议（例如 HTTP/HTTPS）
 
 若参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)，你将会了解到所有可以在 blob 存储中执行的操作。 存储客户端库是 REST API 的包装器 – 它们可使你轻松访问存储而无需直接使用 REST API。 但如上所述，有时你会想要使用 REST API 而不是存储客户端库。
 
-## <a name="rest-api-reference-list-containers-api"></a>REST API 参考：列出容器 API
+## <a name="list-containers-operation"></a>“列出容器”操作
 
-查看 REST API 参考中的 [ListContainers](https://docs.microsoft.com/rest/api/storageservices/List-Containers2) 操作页面。 该信息可以让你了解请求中某些字段的出处并进行响应。
+查看 [ListContainers](https://docs.microsoft.com/rest/api/storageservices/List-Containers2) 操作的参考。 该信息可以让你了解请求中某些字段的出处并进行响应。
 
 **请求方法**：GET。 此谓词是你指定为请求对象属性的 HTTP 方法。 此谓词的其他值包括 HEAD、PUT 和 DELETE，具体将取决于正在调用的 API。
 
@@ -133,29 +134,29 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 添加 `x-ms-date` 和 `x-ms-version` 的请求标头。 此代码中的这个位置也是你在其中添加调用所需的任何其他请求标头的位置。 在此示例中，没有其他标头。 例如，“设置容器 ACL”操作是一个 API，它传入额外的标头。 此 API 调用会添加名为“x-ms-blob-public-acces”的标头和访问级别的值。
 
 ```csharp
-    // Add the request headers for x-ms-date and x-ms-version.
-    DateTime now = DateTime.UtcNow;
-    httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
-    // If you need any additional headers, add them here before creating
-    //   the authorization header.
+// Add the request headers for x-ms-date and x-ms-version.
+DateTime now = DateTime.UtcNow;
+httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
+httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
+// If you need any additional headers, add them here before creating
+//   the authorization header.
 ```
 
 调用创建授权标头的方法，并将其添加到请求标头。 你将在本文的后面部分了解如何创建授权标头。 方法名称为 GetAuthorizationHeader，你可以在此代码段中看到：
 
 ```csharp
-    // Get the authorization header and add it.
-    httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
-        storageAccountName, storageAccountKey, now, httpRequestMessage);
+// Get the authorization header and add it.
+httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
+    storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
 此时，`httpRequestMessage` 包含 REST 请求，并带有授权标头。
 
-## <a name="call-the-rest-api-with-the-request"></a>使用请求调用 REST API
+## <a name="send-the-request"></a>发送请求
 
-至此，你已经有了请求，接下来即可调用 SendAsync 来发送 REST 请求。 SendAsync 调用 API，并获取响应。 检查响应状态代码（可以是 200），然后分析响应。 在这种情况下，你将获取到一个容器的 XML 列表。 让我们看一下调用 GetRESTRequest 方法以创建请求、执行请求的代码，然后检查对容器列表的响应。
+构造请求后，可以调用 SendAsync 方法将其发送到 Azure 存储。 检查响应状态代码的值是否为 200，该代码意味着操作已成功。 接下来，分析响应。 在这种情况下，你将获取到一个容器的 XML 列表。 让我们看一下调用 GetRESTRequest 方法以创建请求、执行请求的代码，然后检查对容器列表的响应。
 
-```csharp 
+```csharp
     // Send the request.
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))

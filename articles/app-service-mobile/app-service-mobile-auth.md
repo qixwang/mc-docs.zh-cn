@@ -1,25 +1,16 @@
 ---
-title: Azure 应用服务中针对移动应用的身份验证和授权 | Azure
-description: Azure 应用服务的身份验证/授权功能的概念性参考和概述，尤其是针对移动应用
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: erikre
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+title: 身份验证和授权
+description: Azure 应用服务的身份验证/授权功能的概念性参考和概述，尤其是针对移动应用。
 ms.topic: article
 origin.date: 10/01/2016
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 4ed7b2396f3f45ed678f85c70a6ee4f0c5c0cd9b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0e5d8e7439e7df162af0fe155a07d5e9bb743788
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336545"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600561"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure 应用服务中针对移动应用的身份验证和授权
 

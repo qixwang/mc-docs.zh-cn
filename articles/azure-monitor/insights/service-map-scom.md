@@ -1,23 +1,23 @@
 ---
-title: 用于 VM 的 Azure Monitor 与 System Center Operations Manager 的集成 | Microsoft Docs
+title: 将用于 VM 的 Azure Monitor 的映射功能与 Operations Manager 集成 | Microsoft Docs
 description: 用于 VM 的 Azure Monitor 可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文介绍如何使用映射功能在 Operations Manager 中自动创建分布式应用程序关系图。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
+author: lingliw
+origin.date: 07/12/2019
+ms.date: 11/30/2019
 ms.author: v-lingwu
-origin.date: 07/02/2019
-ms.date: 07/12/2019
-ms.openlocfilehash: 6db5274bb3783af4bde97af8edf9a4eadf1a82cf
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 9e5a6bcaa1ac6389fc6b44d467cf150eae7c61d7
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838980"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600128"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能的集成
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
 
-在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或你的环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 通过映射功能与 System Center Operations Manager 的此集成，可以根据用于 VM 的 Azure Monitor 中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。 
+在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或你的环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 通过映射功能与 System Center Operations Manager 的此集成，可以根据用于 VM 的 Azure Monitor 中的动态依赖关系映射，在 Operations Manager 中自动创建分布式应用程序关系图。 本文介绍如何配置 System Center Operations Manager 管理组以支持此功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,7 +60,7 @@ ms.locfileid: "74838980"
 
     ![Operations Manager 配置计算机组](media/service-map-scom/scom-config-machine-groups.png)
 
-5. 在“服务器选择”窗口中，配置包含要在 Operations Manager 与服务映射之间同步的服务器的服务映射服务器组。  单击“添加/删除服务器”。    
+5. 在“服务器选择”窗口中，配置包含要在 Operations Manager 与映射功能之间同步的服务器的服务映射服务器组。  单击“添加/删除服务器”。 
 
     若要在集成中为某个服务器构建分布式应用程序关系图，该服务器必须：
 

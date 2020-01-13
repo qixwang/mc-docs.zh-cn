@@ -1,7 +1,7 @@
 ---
 title: 在 Android 上使用语音 SDK 流式传输编解码器压缩的音频
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 Android 上使用语音 SDK 将压缩音频流式传输到 Azure 语音服务。
+description: 了解如何在 Android 上使用语音 SDK 将压缩音频流式传输到语音服务。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/20/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 805d2774e887bbd837ac58ce5cadcf7a279216a4
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 8d3cf689a87780e8f8fc8499f20996aa997abede
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390006"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630902"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>如何：在 Android 上的语音 SDK 中使用编解码器压缩的音频输入
 

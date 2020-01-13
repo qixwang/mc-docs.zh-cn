@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的“获取元数据”活动 | Microsoft Docs
+title: Azure 数据工厂中的“获取元数据”活动
 description: 了解如何在数据工厂管道中使用“获取元数据”活动。
 services: data-factory
 documentationcenter: ''
@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 08/12/2019
-ms.date: 10/14/2019
+origin.date: 11/26/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: b71a9aec2d4e682ab2da0c9871ef9c0e956195f9
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 2446d0e948e42762a5eb99bf0e7b2d9965b7062d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275430"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624308"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -53,10 +53,12 @@ ms.locfileid: "72275430"
 | [Azure 文件](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [文件系统](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
+- `lastModified` 筛选器当前适用于筛选子项，但不适用于筛选指定的文件夹/文件本身。
+- “获取元数据”活动不支持文件夹/文件的通配符筛选器。
 
 **关系数据库**
 

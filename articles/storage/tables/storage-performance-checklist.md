@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 10/10/2019
-ms.date: 10/28/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: tables
-ms.openlocfilehash: 63953473bd6b38f22f8e4e76126c741766b17303
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 719a1637131946ce5d942eeb276d382e924ff23b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914860"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624251"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表
 
@@ -30,6 +30,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 | --- | --- | --- |
 | &nbsp; |可伸缩性目标 |[是否可将应用程序设计为避免使用的存储帐户数超过最大数目？](#maximum-number-of-storage-accounts) |
 | &nbsp; |可伸缩性目标 |[是否要避免接近容量和事务限制？](#capacity-and-transaction-targets) |
+| &nbsp; |可伸缩性目标 |[是否在接近实体数/秒的可伸缩性目标？](#targets-for-data-operations) |
 | &nbsp; |网络 |[客户端设备是否具有足够高的带宽和足够低的延迟，以实现所需的性能？](#throughput) |
 | &nbsp; |网络 |[客户端设备是否具有优质网络链接？](#link-quality) |
 | &nbsp; |网络 |[客户端应用程序是否位于存储帐户所在的同一区域？](#location) |
@@ -42,7 +43,6 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 | &nbsp; |工具 |[是否使用 Microsoft 提供的最新版客户端库和工具？](#client-libraries-and-tools) |
 | &nbsp; |重试 |[是否对限制错误和超时使用重试策略和指数退避？](#timeout-and-server-busy-errors) |
 | &nbsp; |重试 |[对于不可重试的错误，应用程序是否会避免重试？](#non-retryable-errors) |
-| &nbsp; |可伸缩性目标 |[是否在接近实体数/秒的可伸缩性目标？](#table-specific-scalability-targets) |
 | &nbsp; |配置 |[是否使用 JSON 进行表请求？](#use-json) |
 | &nbsp; |配置 |[是否已关闭 Nagle 算法以改进小型请求的性能？](#disable-nagle) |
 | &nbsp; |表和分区 |[是否已对数据进行了适当的分区？](#schema) |
@@ -62,7 +62,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 如果应用程序接近或超过任何可伸缩性目标，则可能会出现事务处理延迟或限制越来越严重的现象。 当 Azure 存储对应用程序进行限制时，该服务将开始返回 503（服务器繁忙）或 500（操作超时）错误代码。 保持在可伸缩性目标限制范围内，以避免这些错误，是增强应用程序性能的重要组成部分。
 
-有关表服务的可伸缩性目标的详细信息，请参阅 [Azure 存储的存储帐户可伸缩性和性能目标](/storage/common/storage-scalability-targets?toc=%2fstorage%2ftables%2ftoc.json#azure-table-storage-scale-targets)。
+有关表服务的可伸缩性目标的详细信息，请参阅[表存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ### <a name="maximum-number-of-storage-accounts"></a>最大存储帐户数
 
@@ -78,9 +78,17 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
     压缩数据虽然可以节省带宽并提高网络性能，但也可能会对性能带来负面影响。 评估客户端数据压缩和解压缩的额外处理要求对性能造成的影响。 请记住，存储压缩数据可能会使故障排除变得更复杂，因为使用标准工具查看这些数据可能会更困难。
 - 如果应用程序接近可伸缩性目标，请确保对重试使用指数退避。 最好是尝试通过实施本文中所述的建议来避免达到可伸缩性目标。 但是，对重试使用指数退避会导致应用程序无法快速重试，从而导致限制问题恶化。 有关详细信息，请参阅标题为[超时和服务器繁忙错误](#timeout-and-server-busy-errors)的部分。
 
-## <a name="table-specific-scalability-targets"></a>特定于表的可伸缩性目标
+### <a name="targets-for-data-operations"></a>数据操作的目标
 
-除了针对整个存储帐户的带宽限制，表还有以下特定的可伸缩性限制。 系统会在流量增加时进行负载均衡，但如果流量激增，吞吐量可能不会相应地突增。 如果使用的模式包含流量激增情况，则会在激增期间出现限制和/或超时现象，因为存储服务会自动将表负载均衡掉。 让流量缓慢增加通常会有更好的效果，因为这给系统提供了进行适当负载均衡的时间。
+Azure 存储会在存储帐户的流量增加时进行负载均衡，但如果流量突然突发，你可能无法立即获得此吞吐量。 应在突发期间看到限制和/或超时，因为 Azure 存储会自动对表进行负载均衡。 缓慢地增加流量通常会提供更好的结果，因为系统有时间进行适当的负载均衡。
+
+#### <a name="entities-per-second-storage-account"></a>实体数/秒（存储帐户）
+
+对于单个帐户来说，访问表时的可伸缩性限制高达每秒 20,000 个实体（每个实体 1 KB）。 一般情况下，每个被插入、更新、删除或扫描的实体都会计入此目标的计数。 因此，包含 100 个实体的批量插入计为 100 个实体。 一个查询扫描了 1000 个实体但只返回 5 个，则会将其计为 1000 个实体。
+
+#### <a name="entities-per-second-partition"></a>实体数/秒（分区）
+
+在单个分区中，访问表时的可伸缩性目标为每秒 2,000 个实体（每个实体 1 KB），使用前面部分所述的相同计数方法。
 
 ## <a name="networking"></a>网络
 
@@ -98,7 +106,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，使用任何网络都是这样。  WireShark 或 NetMon 可用于诊断此问题。  
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 在任何分布式环境中，将客户端放置在服务器附近可提供最佳性能。 要以最低的延迟访问 Azure 存储，则最好是将客户端放置在同一 Azure 区域内。 例如，如果 Azure Web 应用使用 Azure 存储，请将二者放在同一个区域（例如中国东部或中国北部）。 将资源放到一起可降低延迟和成本，因为在同一个区域使用带宽是免费的。  
 

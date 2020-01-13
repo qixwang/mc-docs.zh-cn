@@ -7,15 +7,15 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 10/28/2019
+origin.date: 12/06/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 71e0d7acc38d38efd95c14c7b657cf3cb4933cbd
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 6fb9ea95be8616e11df89f40c27b06dd4baa8863
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583873"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630864"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -25,10 +25,17 @@ ms.locfileid: "72583873"
 
 在 HDInsight 群集容量规划方面要做出的重要选择如下：
 
-- **选择区域** - Azure 区域确定了群集的物理预配位置。 为了将读写延迟最小化，群集应与数据位于同一区域。
-- **选择存储位置和大小** - 默认存储必须与群集位于同一区域。 对于 48 节点群集，建议创建 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
-- **选择 VM 大小和类型（现在支持 G 系列）** - 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
-- **选择工作节点数** - 可以使用模拟工作负荷来确定初始的工作节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 以后不再需要额外的工作节点时，可以缩减群集。
+**区域**  
+Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化，群集应与数据位于同一区域。
+
+**存储位置和大小**  
+默认存储必须位于群集所在区域中。 对于 48 节点群集，建议创建 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
+
+**VM 大小和类型（现在支持 G 系列）**  
+每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
+
+**工作器节点数**  
+可以使用模拟工作负荷来确定初始的工作器节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 以后不需要额外的工作器节点时，可以重新缩放群集。
 
 有关详细信息，请参阅 [HDInsight 群集的容量规划](../hdinsight-capacity-planning.md)一文
 

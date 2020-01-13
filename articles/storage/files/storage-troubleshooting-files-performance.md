@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 10/14/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: ef10ecdb1bd82ce2fdbb9a3dcdce9e2f130911b9
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 8607f64fb41a07ba6a545238ca7885e075fe535c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275947"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624103"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件存储性能问题
 
@@ -58,6 +58,7 @@ ms.locfileid: "72275947"
 ### <a name="workaround"></a>解决方法
 
 - 检查是否可以修改应用程序来减少元数据操作的数量。
+- 在文件共享上添加 VHD，并从客户端通过 SMB 装载 VHD，以便对数据执行文件操作。 此方法适用于单个写入器和多个读取器方案，并允许元数据操作在本地进行，提供与本地直连存储类似的性能。
 
 ### <a name="cause-3-single-threaded-application"></a>原因 3：单线程应用程序
 

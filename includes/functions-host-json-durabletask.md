@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
-origin.date: 03/14/2019
-ms.date: 11/19/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 7d98f1ed6c559136a8bc359ddeaa341e1edc1027
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 05da00596e26d89fc17bc0a8cd6849d855b90c88
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178960"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624117"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的配置设置。
 
@@ -53,14 +52,15 @@ ms.locfileid: "74178960"
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
-      "controlQueueBatchSize": 32,
-      "partitionCount": 4,
-      "controlQueueVisibilityTimeout": "00:05:00",
-      "workItemQueueVisibilityTimeout": "00:05:00",
-      "maxQueuePollingInterval": "00:00:30",
       "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
-      "trackingStoreNamePrefix": "DurableTask"
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
       "traceInputsAndOutputs": false,
@@ -83,7 +83,8 @@ ms.locfileid: "74178960"
     "maxConcurrentActivityFunctions": 10,
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
   }
 }
 ```
@@ -94,6 +95,7 @@ ms.locfileid: "74178960"
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|可以使用备用[任务中心](../articles/azure-functions/durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
 |controlQueueBatchSize|32|要从控制队列中一次性拉取的消息数。|
+|controlQueueBufferThreshold|256|一次可以在内存中缓冲的控制队列消息数，此时调度程序将等待，然后再将任何其他消息出队。|
 |partitionCount |4|控制队列的分区计数。 可以是 1 到 16 之间的正整数。|
 |controlQueueVisibilityTimeout |5 分钟|已取消排队的控制队列消息的可见性超时。|
 |workItemQueueVisibilityTimeout |5 分钟|已取消排队的工作项队列消息的可见性超时。|
@@ -110,6 +112,8 @@ ms.locfileid: "74178960"
 |eventGridPublishRetryCount|0|发布到事件网格主题失败时要重试的次数。|
 |eventGridPublishRetryInterval|5 分钟|事件网格发布重试间隔（采用 *hh:mm:ss* 格式）。|
 |eventGridPublishEventTypes||要发布到事件网格的事件类型列表。 如果未指定，则将发布所有事件类型。 允许的值包括 `Started`、`Completed`、`Failed`、`Terminated`。|
+|useGracefulShutdown|false|（预览）启用正常关闭以减少主机关闭导致进程内函数执行失败的机会。|
 
 许多此类设置用于优化性能。 有关详细信息，请参阅[性能和缩放](../articles/azure-functions/durable-functions-perf-and-scale.md)。
 
+<!-- Update_Description: wording update -->

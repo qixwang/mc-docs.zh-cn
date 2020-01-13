@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 11/05/2019
-ms.date: 12/02/2019
+origin.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: c5394c551ecec59834783e01368085cda5ab755b
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: b7ed820c4a6765f2c81cebaa99cbbb368b4f7a5d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390002"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630916"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
@@ -31,7 +31,7 @@ ms.locfileid: "74390002"
 若要克隆中心，需要一个对原始中心拥有管理访问权限的订阅。 可将新的中心放到新的资源组和区域、原始中心所在的同一订阅甚至新的订阅中。 不能使用相同的名称，因为中心名称必须全局唯一。
 
 > [!NOTE]
-> 目前，没有任何第一类功能可用于克隆 IoT 中心。 克隆主要是一个手动过程，因此非常容易出错。 克隆中心的复杂性与中心的复杂性直接相关。 例如，克隆不带消息路由的 IoT 中心就非常简单。 如果添加消息路由，这看上去只是在一个方面提高了复杂性，但克隆中心的复杂性至少会提高一个数量级。 如果同时还要移动用于路由终结点的资源，则复杂性又会提高一个数量级。 
+> 目前，没有可用于自动克隆 IoT 中心的功能。 克隆主要是一个手动过程，因此非常容易出错。 克隆中心的复杂性与中心的复杂性直接相关。 例如，克隆不带消息路由的 IoT 中心就非常简单。 如果添加消息路由，这看上去只是在一个方面提高了复杂性，但克隆中心的复杂性至少会提高一个数量级。 如果同时还要移动用于路由终结点的资源，则复杂性又会提高一个数量级。 
 
 ## <a name="things-to-consider"></a>注意事项
 
@@ -74,9 +74,7 @@ ms.locfileid: "74390002"
    1. 添加未导出到模板中的任何内容。 
    
        例如，使用者组就不会导出到模板中。 需要手动将使用者组添加到模板中，或者在创建中心后使用 [Azure 门户](https://portal.azure.cn)来添加。 [使用 Azure 资源管理器模板配置 IoT 中心消息路由](tutorial-routing-config-message-routing-rm-template.md)一文提供了将一个使用者组添加到模板的示例。
-
-       [消息扩充](iot-hub-message-enrichments-overview.md)也不会导出到模板中。 它们与路由消息结合使用，在更新消息路由配置后，必须在新的中心手动更新消息扩充。
-
+       
    1. 将原始中心内的设备复制到克隆中。 [管理已注册到 IoT 中心的设备](#managing-the-devices-registered-to-the-iot-hub)部分介绍了此操作。
 
 ## <a name="how-to-handle-message-routing"></a>如何处理消息路由
@@ -104,9 +102,6 @@ ms.locfileid: "74390002"
    * 中心仍引用原始路由资源，并按配置将消息路由到这些资源。
 
    * 由于中心和路由终结点资源不在同一位置，因此性能会略微下降。
-
-> [!NOTE]
-> 如果中心使用[消息增强内容](iot-hub-message-enrichments-overview.md)，则必须在新的 IoT 中心手动设置这些内容，因为它们不会导出到资源管理器模板。
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>准备将中心迁移到另一个区域
 

@@ -1,26 +1,19 @@
 ---
-title: Xamarin Android 中的移动应用身份验证入门
-description: 了解如何使用移动应用通过各种标识提供者（包括 Microsoft 帐户和 Azure Active Directory）对 Xamarin Android 应用的用户进行身份验证。
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: panarasi
-editor: ''
+title: Xamarin Android 中的身份验证入门
+description: 了解如何使用移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Android 应用的用户进行身份验证。
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 2b3b847a0e2719828794e04d8b9c75d09ccb4c0d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ba30855e7ecb6c767685ac60f5ec26cb677a5fc9
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335757"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600538"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

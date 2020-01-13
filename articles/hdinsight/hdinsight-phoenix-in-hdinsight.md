@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 09/05/2019
-ms.date: 11/11/2019
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4175750c52333e1e7a0eda821edc57f2eb0151fd
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 0eacb796f468e90ec340c550e455a5a757fdecf5
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426055"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631100"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
@@ -140,3 +140,5 @@ HDInsight HBase 群集提供 [Ambari UI](hdinsight-hadoop-manage-ambari.md) 用�
 ## <a name="see-also"></a>另请参阅
 
 * [将 Apache Phoenix 与 HDInsight 中基于 Linux 的 HBase 群集配合使用](hbase/apache-hbase-query-with-phoenix.md)
+
+* [使用 Apache Zepperin 在 Azure HDInsight 中的 Apache HBase 上运行 Apache Phoenix 查询](./hbase/apache-hbase-phoenix-zeppelin.md)

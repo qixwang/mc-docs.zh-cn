@@ -1,25 +1,19 @@
 ---
-title: 如何使用用于 Android 的 Azure 移动应用 SDK
+title: 如何使用 Android 版 SDK
 description: 如何使用用于 Android 的 Azure 移动应用 SDK
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 1c4d54f5eb4f384fa195dd0e97112983f1c6ae66
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: bf0f72544c95a47ff997aad2f922f35685cce232
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336248"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600562"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
 

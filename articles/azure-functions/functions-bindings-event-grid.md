@@ -1,22 +1,16 @@
 ---
 title: Azure Functions 的事件网格触发器
 description: 了解如何处理 Azure Functions 中的事件网格事件。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: reference
-origin.date: 09/04/2018
-ms.date: 11/11/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: b2d9073e279425dc3614693753b897a2d56da9d2
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: 0816bc5c1bdd794ea33dfe546f5499ae27aa4158
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934265"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624289"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -30,7 +24,7 @@ ms.locfileid: "73934265"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 2.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub 存储库中提供了此包的源代码。
 
@@ -53,9 +47,9 @@ ms.locfileid: "73934265"
 
 有关 HTTP 触发器示例，请参阅本文稍后介绍的[如何使用 HTTP 触发器](#use-an-http-trigger-as-an-event-grid-trigger)。
 
-### <a name="c-2x"></a>C# (2.x)
+### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
-以下示例演示绑定到 `EventGridEvent` 的 Functions 2.x [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 `EventGridEvent` 的 [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -123,9 +117,9 @@ namespace Company.Function
 }
 ```
 
-#### <a name="c-script-version-2x"></a>C# 脚本（版本 2.x）
+#### <a name="c-script-version-2x-and-higher"></a>C# 脚本（版本 2.x 及更高版本）
 
-下面是绑定到 `EventGridEvent` 的 Functions 2.x C# 脚本代码：
+下面是绑定到 `EventGridEvent` 的示例：
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -297,7 +291,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 * `JObject`
 * `string`
 
-在 Azure Functions 2.x 的 C# 和 F# 函数中，还可以选择为事件网格触发器使用以下参数类型：
+对于 Azure Functions 2.x 及更高版本中的 C# 和 F# 函数，还可以选择对事件网格触发器使用以下参数类型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
@@ -366,7 +360,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
-#### <a name="version-2x-runtime"></a>2\.x 版运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
     https://{functionappname}.chinacloudsites.cn/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
@@ -378,7 +372,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 下面是一个订阅 Blob 存储帐户的示例（包含系统密钥的占位符）：
 
-#### <a name="version-2x-runtime"></a>2\.x 版运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -406,7 +400,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 
 可以使用以下 API (HTTP GET) 获取系统密钥：
 
-#### <a name="version-2x-runtime"></a>2\.x 版运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
 ```
 http://{functionappname}.chinacloudsites.cn/admin/host/systemkeys/eventgrid_extension?code={masterkey}
@@ -493,7 +487,7 @@ http://{functionappname}.chinacloudsites.cn/admin/host/systemkeys/eventgridexten
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
 * 发布到事件网格触发器函数的 URL。
-  * 对于 2.x，请使用以下模式：
+  * 对于 2.x 及更高版本，请使用以下模式：
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
@@ -562,7 +556,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 
 创建想要测试的类型的事件网格订阅，并在其中指定你的 ngrok 终结点。
 
-对于 Functions 2.x，请使用以下终结点模式：
+对于 Functions 2.x 及更高版本，请使用以下终结点模式：
 
 ```
 https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}

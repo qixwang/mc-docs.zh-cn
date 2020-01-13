@@ -1,26 +1,19 @@
 ---
-title: 适用于 Xamarin.Android 应用的 Azure 移动应用入门
-description: 按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Xamarin.Android 应用入门
+description: 按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发。
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 59e878176d598c49dedde1fc1d4c9724b7360383
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 762d2cbdbe8aa9423469123765ac18b5902fd986
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335756"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600539"
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

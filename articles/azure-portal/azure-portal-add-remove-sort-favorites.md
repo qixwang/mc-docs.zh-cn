@@ -1,26 +1,26 @@
 ---
-title: 在 Azure 门户中对收藏夹执行添加、删除和排序操作 | Azure
-description: 了解如何在收藏夹列表中添加或删除项目并对项目排序
+title: 在 Azure 门户中添加、删除和排列收藏夹 | Azure
+description: 了解如何在收藏夹列表中添加或删除项以及如何重新排列项的顺序
 services: azure-portal
-keywords: 收藏夹
+keywords: 收藏夹,门户
 author: kfollis
 ms.author: v-tawe
-origin.date: 11/01/2019
-ms.date: 12/02/2019
+origin.date: 12/20/2019
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 936c3d06501a6e527644bf4ec92e3cb5d361153f
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 34c3c45b3f4e4f056495a1a50d6d6c7398dd7306
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658079"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600573"
 ---
-# <a name="add-remove-and-sort-favorites"></a>对收藏夹执行添加、删除和排序操作
+# <a name="add-remove-and-rearrange-favorites"></a>添加、删除和重新排列收藏夹
 
-在**收藏夹**列表中添加或删除项目，以便快速转到最常使用的服务。 我们已经向**收藏夹**列表添加了一些常用服务，但你可能需要自定义它。 只有你才能看到对**收藏夹**所做的更改。
+在**收藏夹**列表中添加或删除项，以便快速转到最常使用的服务。 我们已经向**收藏夹**列表添加了一些常用服务，但你可能需要自定义它。 只有你才能看到对**收藏夹**所做的更改。
 
 ## <a name="add-a-favorite"></a>添加收藏夹
 
@@ -52,7 +52,7 @@ ms.locfileid: "74658079"
 
 2. 在信息卡上选择星形，使之从填充变为未填充。 服务会从“收藏夹”列表中删除。 
 
-## <a name="sort-favorites"></a>将收藏夹排序
+## <a name="rearrange-favorites"></a>重新排列收藏夹
 
 可以更改收藏夹服务的排列顺序。 直接将菜单项拖放到**收藏夹**中的另一位置。
 

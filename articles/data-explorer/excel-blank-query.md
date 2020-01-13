@@ -7,13 +7,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 72f20054511c58a0be2490b1db6c4ecf4811bfb2
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 01/13/2020
+ms.openlocfilehash: 030adf9a5f213545b121d855c7d989c40341e3a4
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020892"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630908"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>使用导入到 Microsoft Excel 中的 Azure 数据资源管理器 Kusto 查询进行数据可视化
 
@@ -22,7 +22,7 @@ Azure 数据资源管理器提供两个可以在 Excel 中连接到数据的选�
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-* 一个属于 Azure Active Directory 成员的组织电子邮件帐户，以便连接到 [Azure 数据资源管理器群集](https://dataexplorer.azure.cn/clusters/help/databases/Samples) 
+* 一个属于 Azure Active Directory 的组织电子邮件帐户，以便连接到 [Azure 数据资源管理器帮助群集](https://dataexplorer.azure.cn/clusters/help/databases/Samples) 
 <br>或</br>
 * 创建[测试群集和数据库](create-cluster-database-portal.md)并登录到 [Azure 数据资源管理器 Web UI 应用程序](https://dataexplorer.azure.cn/)。
 
@@ -69,3 +69,7 @@ Azure 数据资源管理器提供两个可以在 Excel 中连接到数据的选�
 1. 现在，数据位于 Excel 中。 使用“刷新”按钮，刷新查询。 
 
     ![查看 Excel 中的数据](media/excel-blank-query/data-in-excel.png)
+
+## <a name="next-steps"></a>后续步骤
+
+[使用 Excel 的 Azure 数据资源管理器连接器进行数据可视化](excel-connector.md)

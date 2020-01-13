@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 03/28/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ead632bfc35cfecbad6acea136eb1d4e2df56e15
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 440cc25bd3ee57869b1f418fd351e070d71ba749
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730398"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599923"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
@@ -36,7 +36,7 @@ ms.locfileid: "73730398"
 
 ## <a name="prerequisites"></a>先决条件
 
-* SQL 运行状况检查解决方案要求在每台装有 Azure Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。  
+* SQL 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4.6.2。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。  
 * 该解决方案支持 SQL Server 版本 2012、2014 和 2016。
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 SQL 运行状况检查解决方案。  只有 Azure 订阅中的管理员或参与者才能安装该解决方案。
 

@@ -1,24 +1,23 @@
 ---
-title: Azure 数据工厂中的管道执行和触发器 | Microsoft Docs
+title: Azure 数据工厂中的管道执行和触发器
 description: 本文介绍了如何在 Azure 数据工厂中按需执行管道，或者通过创建触发器来执行管道。
 services: data-factory
 documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
-ms.reviewer: douglasl
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 07/05/2018
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: d96bea07f5c87d130b2004b98aba3f096ce05085
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: ed0f767db5f8d63aa54365feb307868c323d5854
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569879"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624262"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
@@ -139,7 +138,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 - 翻转窗口触发器：一种触发器，可以定期运行，同时还能保留状态。
 
-管道和触发器具有“多对多”关系。 多个触发器可以启动单个管道，单个触发器也可以启动多个管道。 在以下触发器定义中，pipelines  属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
+管道和触发器具有多对多关系（翻转窗口触发器除外）。多个触发器可以启动单个管道，或者单个触发器可以启动多个管道。 在以下触发器定义中，pipelines  属性是指一系列由特定的触发器触发的管道。 属性定义包括管道参数的值。
 
 ### <a name="basic-trigger-definition"></a>基本的触发器定义
 

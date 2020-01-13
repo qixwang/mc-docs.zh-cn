@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Android 上运行语音设备 SDK
+title: 快速入门：在 Android 上运行语音设备 SDK - 语音服务
 titleSuffix: Azure Cognitive Services
 description: Android 语音设备 SDK 入门的先决条件和说明。
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 07/05/2019
-ms.date: 11/25/2019
+origin.date: 12/17/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: f720e36eac2b1efc5164723320b53afbba0f700d
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 8752299185013ef54e061ae580f64ce219d0dd8d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389326"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630785"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品。
 
-本指南需要一个包含语音服务资源的 [Azure 认知服务](get-started.md)帐户。 如果没有帐户，可以创建[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)获取订阅密钥。
+本指南需要一个包含语音服务资源的 [Azure 认知服务](get-started.md)帐户。 如果没有帐户，可以使用[试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)获取订阅密钥。
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 

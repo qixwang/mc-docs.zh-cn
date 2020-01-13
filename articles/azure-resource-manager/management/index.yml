@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: 管理资源文档
+summary: 了解如何管理和使用资源。
+metadata:
+  title: Azure 资源管理器文档
+  description: 了解如何开发 Azure 资源管理器模板并将其用于部署 Azure 资源
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  ms.collection: na
+  author: rockboyfor
+  ms.author: v-yeche
+  origin.date: 12/19/2019
+  ms.date: 01/06/2020
+  ms.openlocfilehash: 3f8bbbf786ccfe40f4298a7623423803928dcd49
+  ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75631167"
+landingContent:
+- title: 关于 Azure 资源管理器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是资源管理器？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 资源管理器部署和经典部署
+      url: deployment-models.md
+- title: 关于 Azure 资源
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 资源提供程序和类型
+      url: resource-providers-and-types.md
+  - linkListType: reference
+    links:
+    - text: 移动支持
+      url: move-support-resources.md
+    - text: 标记支持
+      url: tag-support.md
+    - text: 资源实例限制
+      url: resources-without-resource-group-limit.md
+- title: 管理资源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 跨资源组和订阅移动
+      url: move-resource-group-and-subscription.md
+    - text: 跨区域移动
+      url: move-region.md
+    - text: 标记资源
+      url: tag-resources.md
+    - text: 锁定资源
+      url: lock-resources.md
+    - text: 删除资源组
+      url: delete-resource-group.md
+- title: SDK 和工具
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.resources
+    - text: Azure CLI
+      url: https://docs.azure.cn/cli/resource?view=azure-cli-latest
+    - text: .NET
+      url: https://docs.azure.cn/dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: https://docs.azure.cn/java/api/com.microsoft.azure.management.resources?view=azure-java-stable
+    - text: Python
+      url: https://docs.microsoft.com/python/api/overview/azure/resources?view=azure-python
+- title: 跟踪操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看活动日志
+      url: view-activity-logs.md
+    - text: 请求限制
+      url: request-limits-and-throttling.md
+    - text: 异步操作
+      url: async-operations.md

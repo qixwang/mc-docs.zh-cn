@@ -1,24 +1,24 @@
 ---
-title: Azure 数据工厂的复制活动性能和可伸缩性指南 | Microsoft Docs
+title: 复制活动性能和可伸缩性指南
 description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
 services: data-factory
 documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 09/02/2019
-ms.date: 10/14/2019
-ms.author: v-jay
-ms.openlocfilehash: 3f39d118911ad2c10927201de3e8f668069d3746
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.custom: seo-lt-2019
+origin.date: 10/24/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: e7695bb0893dfac463b036a21e287fdabfb9f5da
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275412"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624083"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
@@ -146,7 +146,7 @@ Azure 数据工厂提供以下性能优化功能：
 监视活动运行时，可以在复制活动输出中查看用于每个复制运行的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-overview.md#monitoring)。
 
 > [!NOTE]
-> 当前仅当将多个文件从 Azure 存储、Amazon S3、Google Cloud Storage、云 FTP、云 SFTP 复制到任何其他云数据存储时，大于 4 的 DIU 设置才适用。
+> 目前，仅当将多个文件从 Azure Blob/ADLS Gen2/Amazon S3/Google 云存储/云 FTP/云 SFTP 或从启用分区选项的云关系数据存储（包括 [Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)）复制到任何其他云数据存储时，大于 4 的 DIU 设置才适用。
 
 **示例：**
 
@@ -290,7 +290,8 @@ Azure 数据工厂提供以下性能优化功能：
 
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
-* Azure 存储，包括 Blob 存储和表存储：[Azure 存储可伸缩性目标](../storage/common/storage-scalability-targets.md)和 [Azure存储性能和可伸缩性清单](../storage/common/storage-performance-checklist.md)。
+* Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比。
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。

@@ -1,28 +1,31 @@
 ---
-title: 为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证 | Microsoft Docs
+title: 为 Azure-SSIS Integration Runtime 启用 Azure Active Directory
 description: 本文介绍如何使用 Azure 数据工厂的托管标识启用 Azure Active Directory 身份验证，以创建 Azure-SSIS 集成运行时。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-origin.date: 5/14/2019
-ms.date: 10/14/2019
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 6c5bc79170f08eeae6506704f57a7b4edc34d6f3
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+origin.date: 5/14/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: ea73d34aacab331145b947a35e54cced1c0ef9f6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275386"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624070"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
-本文介绍如何使用 Azure 数据工厂 (ADF) 的托管标识启用 Azure Active Directory (Azure AD) 身份验证，并使用它而不是 SQL 身份验证来创建 Azure-SSIS Integration Runtime (IR)，而后者又将代表你在 Azure SQL 数据库服务器/托管实例中预配 SSIS 目录数据库 (SSISDB)。
+本文介绍如何使用 Azure 数据工厂 (ADF) 的托管标识启用 Azure Active Directory (Azure AD) 身份验证，并使用它代替常规身份验证方法（如 SQL 身份验证）执行以下操作：
+
+- 创建 Azure-SSIS Integration Runtime (IR)，而该运行时则会代表你在 Azure SQL 数据库服务器/托管实例中预配 SSIS 目录数据库 (SSISDB)。
+
+- 在 Azure-SSIS IR 上运行 SSIS 包时连接到各种 Azure 资源。
 
 有关 ADF 的托管标识的详细信息，请参阅[数据工厂的托管标识](/data-factory/data-factory-service-identity)。
 

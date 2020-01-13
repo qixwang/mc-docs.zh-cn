@@ -6,16 +6,15 @@ manager: digimobile
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: article
-ms.tgt_pltfrm: na
 origin.date: 09/20/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 26f528d1518f78824006fa069abe89fcff89f956
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 8e905f8ff958bab9bfe60b09466130b007133526
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730555"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599755"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -128,7 +127,9 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 ## <a name="ingestion-volume-rate-limit"></a>引入量速率限制
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 每个工作区的默认引入速率阈值设置为 **500 MB/分钟**。 如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”  表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过建立支持请求来请求增加工作区。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 每个工作区的默认引入速率阈值设置为 **6 GB/分钟**。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或[数据收集器 API](data-collector-api.md) 发送的数据。
+
+如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”  表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过建立支持请求来请求增加工作区。
  
 若要在工作区中收到此类事件的通知，请根据大于零的结果数，使用以下具有警报逻辑的查询创建[日志警报规则](alerts-log.md)。
 
@@ -147,7 +148,7 @@ Operation
 
 支持由不同团队维护的基础结构和应用程序的所有资源、监视解决方案和见解（例如 Application Insights 和用于 VM 的 Azure Monitor）将配置为向 IT 组织集中式共享工作区转发收集的日志数据。 为每个团队的用户授予其已有权访问的资源的日志访问权限。
 
-部署工作区体系结构后，可以使用 [Azure Policy](../../governance/policy/overview.md) 对 Azure 资源强制实施此方案。 此方案可让你定义策略并确保 Azure 资源合规，使它们将所有诊断日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集时，可以使用现有的策略来评估工作区合规性和报告结果，或者自定义策略，以便在不合规的情况下予以补救。  
+部署工作区体系结构后，可以使用 [Azure Policy](../../governance/policy/overview.md) 对 Azure 资源强制实施此方案。 此方案可让你定义策略并确保 Azure 资源合规，因此它们将其所有资源日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集时，可以使用现有的策略来评估工作区合规性和报告结果，或者自定义策略，以便在不合规的情况下予以补救。  
 
 ## <a name="workspace-consolidation-migration-strategy"></a>工作区整合迁移策略
 

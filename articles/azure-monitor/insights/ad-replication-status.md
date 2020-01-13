@@ -7,14 +7,14 @@ manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
 origin.date: 01/24/2018
-ms.date: 04/12/2019
+ms.date: 11/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0bc53eb1c8754af31a2ced9cf7948ba905c747e1
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 88d3a2b2b57ab833bd8f7983fbbf794e767ea338
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730579"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600104"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -22,12 +22,19 @@ ms.locfileid: "73730579"
 
 Active Directory 是企业 IT 环境的关键组件。 若要确保高可用性和高性能，每个域控制器都有其自己的 Active Directory 数据库副本。 域控制器会彼此相互复制，以便在整个企业内传播更改。 这一复制过程中的失败可能导致整个企业内出现各种问题。
 
-AD 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
+AD 复制状态解决方案定期监视 Active Directory 环境中是否有任何复制失败。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
+
+### <a name="prerequisites"></a>先决条件
+
+* “AD 复制状态”解决方案要求在每台安装了适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  该代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
+* 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
+* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 无需其他配置。
+
 
 ### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md)。 

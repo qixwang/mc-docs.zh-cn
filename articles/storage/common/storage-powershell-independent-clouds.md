@@ -1,20 +1,21 @@
 ---
-title: 使用 Azure PowerShell 管理 Azure 独立云中的存储 | Microsoft Docs
-description: 使用 Azure PowerShell 管理中国云、政府云和德国云中的存储
+title: 使用 PowerShell 管理 Azure 独立云中的数据
+titleSuffix: Azure Storage
+description: 使用 Azure PowerShell 管理中国云、政府云和德国云中的存储。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 10/24/2017
-ms.date: 05/27/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 07270e8dc4af04703a802fa6fbac5a6bd1053ea5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: da0f5a6cba5f2351374a3d3c410ae1ec8025a5a0
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335958"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624121"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -22,11 +23,11 @@ ms.locfileid: "75335958"
 
 * [Azure 政府云](https://azure.microsoft.com/features/gov/)
 * [由中国世纪互联运营的 Azure 中国云](http://www.windowsazure.cn/)
-* Azure 德国云
+* [Azure 德国云](https://docs.microsoft.com/azure/germany/germany-welcome)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="using-an-independent-cloud"></a>使用独立云 
+## <a name="using-an-independent-cloud"></a>使用独立云
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
@@ -39,7 +40,7 @@ ms.locfileid: "75335958"
 ## <a name="log-in-to-azure"></a>登录 Azure
 
 运行 [Get-AzEnvironment](https://docs.microsoft.com/powershell/module/az.accounts/get-azenvironment) cmdlet 以查看可用的 Azure 环境：
-   
+
 ```powershell
 Get-AzEnvironment
 ```
@@ -59,7 +60,7 @@ Get-AzLocation | select Location, DisplayName
 
 下表显示了针对中国云返回的位置。
 
-|位置 | DisplayName |
+|位置 | 显示名称 |
 |----|----|
 | chinaeast |  中国东部 |
 | chinaeast 2 | 中国东部 2 |
@@ -71,9 +72,11 @@ Get-AzLocation | select Location, DisplayName
 
 其中每个环境的终结点后缀不同于 Azure 公有云终结点。 例如，Azure 公有云的 Blob 终结点后缀为 **blob.core.windows.net**。 对于中国云，Blob 终结点后缀为 **blob.core.chinacloudapi.cn**。 
 
-### <a name="get-endpoint-using-get-azenvironment"></a>使用 Get-AzEnvironment 获取终结点 
+### <a name="get-endpoint-using-get-azenvironment"></a>使用 Get-AzEnvironment 获取终结点
 
-使用 [Get-AzEnvironment](https://docs.microsoft.com/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。 以下代码片段演示了如何执行此操作。 所有这些命令返回类似于“core.chinacloudapi.cn”的内容。 将此内容追加到存储服务即可访问该服务。 例如，追加“queue.core.chinacloudapi.cn”可访问中国云中的队列服务。
+使用 [Get-AzEnvironment](https://docs.microsoft.com/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。
+
+下面的代码片段演示如何检索终结点后缀。 所有这些命令返回类似于“core.chinacloudapi.cn”的内容。 将此后缀追加到存储服务即可访问该服务。 例如，追加“queue.core.chinacloudapi.cn”可访问中国云中的队列服务。
 
 此代码片段检索所有环境，以及每个环境的终结点后缀。
 
@@ -96,38 +99,35 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 Get-AzEnvironment -Name AzureChinaCloud 
 ```
 
-结果如下所示：
+结果类似于以下值：
 
 |属性名称|Value|
 |----|----|
-| 名称 | AzureChinaCloud |
-| EnableAdfsAuthentication | False |
-| ActiveDirectoryServiceEndpointResourceI | https://management.core.chinacloudapi.cn/ |
-| GalleryURL | https://gallery.azure.com/ |
-| ManagementPortalUrl | https://go.microsoft.com/fwlink/?LinkId=301902 | 
-| ServiceManagementUrl | https://management.core.chinacloudapi.cn/ |
-| PublishSettingsFileUrl| https://go.microsoft.com/fwlink/?LinkID=301776 |
-| ResourceManagerUrl | https://management.chinacloudapi.cn/ |
-| SqlDatabaseDnsSuffix | .database.chinacloudapi.cn |
-| **StorageEndpointSuffix** | core.chinacloudapi.cn |
-| ... | ... | 
-
+| 名称 | `AzureChinaCloud` |
+| EnableAdfsAuthentication | `False` |
+| ActiveDirectoryServiceEndpointResourceI | `https://management.core.chinacloudapi.cn/` |
+| GalleryURL | `https://gallery.cloudapi.de/` |
+| ManagementPortalUrl | `https://portal.azure.cn` | 
+| ServiceManagementUrl | `https://management.core.chinacloudapi.cn/` |
+| PublishSettingsFileUrl| `https://go.microsoft.com/fwlink/?LinkID=301776` |
+| ResourceManagerUrl | `https://management.chinacloudapi.cn/` |
+| SqlDatabaseDnsSuffix | `.database.chinacloudapi.cn` |
+| **StorageEndpointSuffix** | `core.chinacloudapi.cn` |
+| ... | ... |
 若只要检索存储终结点后缀属性，请检索特定的云，并仅请求该属性。
 
 ```powershell
 $environment = Get-AzEnvironment -Name AzureChinaCloud
-Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix 
+Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix
 ```
 
-此命令返回以下信息。
+此命令返回以下信息：
 
-```
-Storage Endpoint Suffix = core.chinacloudapi.cn
-```
+`Storage Endpoint Suffix = core.chinacloudapi.cn`
 
 ### <a name="get-endpoint-from-a-storage-account"></a>从存储帐户获取终结点
 
-还可以通过检查存储帐户的属性来检索终结点。 如果已在 PowerShell 脚本中使用存储帐户，则这种方法很有帮助；可以做到只检索所需的终结点。 
+还可以通过检查存储帐户的属性来检索终结点：
 
 ```powershell
 # Get a reference to the storage account.
@@ -158,7 +158,7 @@ table endpoint = http://myexistingstorageaccount.table.core.chinacloudapi.cn/
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果在本练习中创建了新的资源组和存储帐户，可以通过删除资源组来删除所有资产。 这会一并删除组中包含的所有资源。 在这种情况下，它会删除创建的存储帐户以及资源组本身。
+如果为本练习创建了新的资源组和存储帐户，可以通过删除资源组来删除这两个资产。 删除资源组会删除其包含的所有资源。
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup

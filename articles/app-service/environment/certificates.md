@@ -1,25 +1,19 @@
 ---
-title: 证书和应用服务环境 – Azure
-description: 解释与 ASE 上的证书相关的多个主题
-services: app-service
-documentationcenter: na
+title: 证书绑定
+description: 介绍与应用服务环境中的证书相关的多个主题。 了解证书绑定在 ASE 中的单租户应用上的工作方式。
 author: ccompy
-manager: stefsch
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/29/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 29d070aed34f69b70c8c995963c29d15004692d6
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 731d1a6ae94a86bf06009db47ea0bb2d8da7633f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555798"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600481"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 

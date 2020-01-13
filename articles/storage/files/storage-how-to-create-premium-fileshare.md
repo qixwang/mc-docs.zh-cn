@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 05/05/2019
-ms.date: 10/14/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 0e299d9df9366618bafc0854131760e297249507
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 6661a93fdba8b126c51aa7877d2eca48608e0b1a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275948"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624316"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
 高级文件共享在固态磁盘 (SSD) 存储介质上提供，可用于 IO 密集型工作负荷，包括宿主数据库和高性能计算 (HPC)。 高级文件共享托管在特殊用途的存储帐户类型（称为 FileStorage 帐户）中。 高级文件共享旨在用于高性能和企业级应用程序，可稳定提供低延迟、高 IOPS 和高吞吐量的共享。
@@ -60,7 +60,7 @@ ms.locfileid: "72275948"
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
 1. 在存储帐户的左侧菜单中滚动到“文件服务”部分，然后选择“文件”。  
-1. 选择“+ 文件共享”以创建高级文件共享。 
+1. 选择“文件共享”以创建高级文件共享。 
 1. 输入文件共享的名称和所需配额，然后选择“创建”。 
 
 > [!NOTE]
@@ -76,7 +76,7 @@ ms.locfileid: "72275948"
 
 ### <a name="create-an-account-using-powershell"></a>使用 PowerShell 创建帐户
 
-首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) 模块。
+首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/scripting/gallery/installing-psget) 模块。
 
 然后，升级 powershell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
 

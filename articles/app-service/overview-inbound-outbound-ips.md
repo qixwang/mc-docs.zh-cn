@@ -1,25 +1,17 @@
 ---
-title: 入站/出站 IP 地址 - Azure 应用服务 | Azure
-description: 介绍如何在应用服务中使用入站和出站 IP 地址，以及如何查找应用的此类信息。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 入站/出站 IP 地址
+description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地址、这些地址何时更改以及如何查找应用的地址。
 ms.topic: article
 origin.date: 06/06/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 17652619fe319c13c271651e9deab4c3d48ce552
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 2743ae4ad1ee073fe5fda6784c37b13bac3e9823
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555941"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600422"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -65,7 +57,7 @@ nslookup <app-name>.chinacloudsites.cn
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 ```
 
-```azurepowershell
+```powershell
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
@@ -77,7 +69,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
 
-```azurepowershell
+```powershell
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
 

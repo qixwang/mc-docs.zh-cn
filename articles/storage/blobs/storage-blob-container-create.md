@@ -4,17 +4,17 @@ description: 了解如何使用 .NET 客户端库在 Azure 存储帐户中创建
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 07/10/2019
-ms.date: 09/09/2019
+ms.topic: conceptual
+origin.date: 12/17/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: d5f94361949a515b2c1c0fd8951c81bf210a2575
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.openlocfilehash: 55693218e6547adae4ec71e20e609108c5f10be8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209446"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624141"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器
 
@@ -127,7 +127,7 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 
 如果该容器不存在，**Delete** 和 **DeleteAsync** 方法将引发异常。
 
-**DeleteIfNotExists** 和 **DeleteIfNotExistsAsync** 方法返回一个指示是否已删除容器的布尔值。 如果指定的容器不存在，则这些方法将返回 **False**，指示未删除该容器。
+**DeleteIfExists** 和 **DeleteIfExistsAsync** 方法返回一个指示是否已删除容器的布尔值。 如果指定的容器不存在，则这些方法将返回 **False**，指示未删除该容器。
 
 删除容器后，至少在 30 秒（时间可能更长）内无法使用相同的名称创建容器。 正在删除容器时，尝试使用相同的名称创建容器将会失败，并出现 HTTP 错误代码 409（冲突）。 正在删除容器时，针对容器或其包含的 Blob 执行任何其他操作将会失败，并出现 HTTP 错误代码 404（未找到）。
 

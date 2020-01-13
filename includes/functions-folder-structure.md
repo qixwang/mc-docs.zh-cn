@@ -6,15 +6,15 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/05/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 9fa95f6ee5018ec519f552ffc2b2558b5ac41ac1
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 33283f3515f03b66ac722bcea8b2cd79ae89a0bd
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885182"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624109"
 ---
 特定函数应用中所有函数的代码均位于根项目文件夹中，其中包含主机配置文件和一个或多个子文件夹。 每个子文件夹包含单独函数的代码。 文件夹结构如下图所示：
 
@@ -31,7 +31,7 @@ FunctionApp
  | - bin
 ```
 
-在 2.x 版 Functions 运行时中，函数应用中的所有函数必须共享同一语言堆栈。  
+在 2.x 版及更高版本的 Functions 运行时中，函数应用中的所有函数必须共享同一语言堆栈。  
 
 [host.json](../articles/azure-functions/functions-host-json.md) 文件包含特定于运行时的配置，并位于函数应用的根文件夹中。 *bin* 文件夹包含函数应用所需的包和其他库文件。 查看函数应用项目的语言特定要求：
 

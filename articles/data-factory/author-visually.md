@@ -1,28 +1,28 @@
 ---
-title: 在 Azure 数据工厂中创作视觉对象 | Microsoft Docs
+title: 视觉对象创作
 description: 了解如何在 Azure 数据工厂中使用视觉对象创作
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 01/09/2019
-ms.date: 10/14/2019
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
-ms.openlocfilehash: 3d8cce4287d7fb6eaeacbb4010dbec9d58b85de5
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+origin.date: 12/19/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: 29cdc2d4f81e26999b0ab9d5eae5891cf2d66675
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275932"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624314"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。
+
+目前，仅在 Microsoft Edge 和 Google Chrome 中支持 Azure 数据工厂 UX。
 
 ## <a name="authoring-canvas"></a>创作画布
 

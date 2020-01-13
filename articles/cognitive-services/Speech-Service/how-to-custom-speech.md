@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3c61160f667464badd4e6421e8bceb67ca15b98a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6ddb247d0a3f93aa79130ca878fa6efbd16e1478
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336047"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631117"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 

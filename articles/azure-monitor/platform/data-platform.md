@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 origin.date: 03/26/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 872131494a6e7aa496d227645962e5b98cfb8630
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: edc253a1032ba4a69eeb64ac13cde6d9df166af1
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838904"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600137"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
@@ -75,7 +75,7 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 | 结构 | 标准属性集，包括采样时间、受监视的资源、数字值。 某些指标包含多个维度用于进一步的定义。 | 取决于日志类型的唯一属性集。 |
 | 集合 | 定期收集。 | 可以在事件触发要创建的记录时偶发性地收集。 |
 | 在 Azure 门户中查看 | 指标资源管理器 | Log Analytics |
-| 数据源包括 | 从 Azure 资源收集的平台指标。<br>Application Insights 监视的应用程序。<br>应用程序或 API 定义的自定义指标。 | 应用程序和诊断日志。<br>监视解决方案。<br>代理和 VM 扩展。<br>应用程序请求和异常。<br>Azure 安全中心。<br>数据收集器 API。 |
+| 数据源包括 | 从 Azure 资源收集的平台指标。<br>Application Insights 监视的应用程序。<br>应用程序或 API 定义的自定义指标。 | 应用程序和资源日志。<br>监视解决方案。<br>代理和 VM 扩展。<br>应用程序请求和异常。<br>Azure 安全中心。<br>数据收集器 API。 |
 
 ## <a name="collect-monitoring-data"></a>收集监视数据
 不同的 [Azure Monitor 数据源](data-sources.md)会将数据写入 Log Analytics 工作区（日志）和/或 Azure Monitor 指标数据库（指标）。 某些源直接将数据写入这些数据存储，而某些源则会将数据写入 Azure 存储等其他位置，这需要指定某种配置来填充日志或指标。 

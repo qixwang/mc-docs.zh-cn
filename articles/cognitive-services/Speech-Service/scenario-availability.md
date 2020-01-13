@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 27519080cc62c626656cc94d3715bc0187b03a07
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: b25d4a3cada9c00d4ab41d6a844f6c40267afb5a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389337"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630990"
 ---
 # <a name="scenario-availability"></a>方案可用性
 
@@ -24,10 +24,7 @@ ms.locfileid: "74389337"
 
 - **语音识别 (SR)、短语列表**
   - 快速入门表中有箭头链接的所有编程语言/环境 <img src="media/index/link.jpg" height="15" width="15"></img> 请参见[此处](https://docs.azure.cn/cognitive-services/speech-service/)。
-- **对话听录**
-  - C++/Windows 和 Linux
-  - C#（Framework 和 .NET Core）/Windows 和 UWP 和 Linux
-  - Java/Windows 和 Linux 和 Android（语音设备 SDK）
+
 - **编解码器压缩的音频输入**
   - C++/Linux
   - C#/Linux

@@ -1,26 +1,18 @@
 ---
-title: 在代码中使用 SSL 证书 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使用客户端证书连接到需要它们的远程资源。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 在代码中使用 SSL 证书
+description: 了解如何在代码中使用客户端证书。 使用客户端证书向远程资源进行身份验证，或使用这些证书运行加密任务。
 ms.topic: article
 origin.date: 11/04/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: bcee857175e6ec6e7489f1464ffb54d5957b86d7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d79090d9845d7f2ea2545a7546ad7d87c72a6804
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335728"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600496"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务的代码中使用 SSL 证书
 

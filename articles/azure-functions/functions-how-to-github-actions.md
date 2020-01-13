@@ -2,18 +2,15 @@
 title: 使用 GitHub Actions 在 Azure Functions 中进行代码更新
 description: 了解如何使用 GitHub Actions 来定义一个在 GitHub 中生成和部署 Azure Functions 项目的工作流。
 author: ahmedelnably
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/16/2019
-ms.date: 11/18/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 21313a1929bbbf00c92324a061bd11ea198a3923
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: b29e2dc827a7b2f80033778d064b592d63ff0fc1
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178953"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624136"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
@@ -67,17 +64,11 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 ## <a name="set-up-the-environment"></a>设置环境 
 
-可以使用发布设置操作之一来设置环境。
+设置环境是使用特定于语言的发布设置操作完成的。
 
-|语言 | 设置操作 |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-以下示例显示用于为各种受支持的语言设置环境的部分工作流：
-
-**JavaScript**
+以下示例显示了使用 `actions/setup-node` 操作设置环境的工作流部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -90,7 +81,10 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         node-version: '10.x'
 ```
 
-**.NET**
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+以下示例显示了使用 `actions/setup-dotnet` 操作设置环境的工作流部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -103,7 +97,9 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+以下示例显示了使用 `actions/setup-java` 操作设置环境的工作流部分：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -117,14 +113,15 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>生成函数应用
 
 这取决于语言。对于 Azure Functions 支持的语言，应该可以将此部分视为每种语言的标准生成步骤。
 
-以下示例显示的部分工作流用于在各种受支持的语言中生成函数应用：
+以下示例显示了生成函数应用的工作流部分，该部分是特定于语言的：
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -139,7 +136,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -152,7 +149,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -165,6 +162,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>部署函数应用
 

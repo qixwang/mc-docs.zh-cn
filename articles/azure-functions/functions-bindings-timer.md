@@ -4,15 +4,15 @@ description: 了解如何在 Azure Functions 中使用计时器触发器。
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
 ms.custom: ''
-ms.openlocfilehash: 0b3f85ada82cdd7fe63b94c6bc13a6131c323b36
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: b9178abeb45d51cbde7eb538115ac1ef8f70d3e4
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884739"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624253"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -26,7 +26,7 @@ ms.locfileid: "74884739"
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet 包 3.x 版中提供了计时器触发器。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub 存储库中提供了此包的源代码。
 
@@ -286,7 +286,7 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 | Functions 版本 | 设置                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2.x               | `AzureFunctionsWebHost__hostid` 环境变量 |
+| 2.x（及更高版本）  | `AzureFunctionsWebHost__hostid` 环境变量 |
 | 1.x               | *host.json* 中的 `id`                                  |
 
 可以省略标识值，也可以手动将每个函数应用的标识配置设置为不同的值。

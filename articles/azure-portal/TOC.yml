@@ -14,6 +14,10 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: 操作指南
   items:
+    - name: 设置 Azure 门户首选项
+      href: set-preferences.md
+    - name: 为所有用户设置非活动超时设置
+      href: admin-timeout.md
     - name: 启用高对比度或更改主题
       href: azure-portal-change-theme-high-contrast.md
     - name: 对收藏夹执行添加、删除和排序操作
@@ -36,5 +40,7 @@
   items:
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 区域可用性
+      href: 'https://www.azure.cn/home/features/products-by-region'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'

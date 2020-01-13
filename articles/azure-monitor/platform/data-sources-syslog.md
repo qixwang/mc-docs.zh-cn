@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 origin.date: 03/22/2019
 ms.date: 04/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 91ce1b6696cc40cd21835eb65d81b79bacb66204
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: e183aa1b1369618fe0b2a804d3265613248cf6d1
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730534"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600148"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
@@ -51,7 +51,7 @@ Syslog 收集器支持以下功能：
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 门户中配置 Syslog
 从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Syslog。 此配置将传递到每个 Linux 代理上的配置文件。
 
-通过键入设施名称并单击 **+** 可添加新设施。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
+可以通过以下方法添加新设施：首先选择选项“将下列配置应用到我的计算机”  ，然后输入其名称并单击“+”  。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
 
 ![配置 Syslog](media/data-sources-syslog/configure.png)
 

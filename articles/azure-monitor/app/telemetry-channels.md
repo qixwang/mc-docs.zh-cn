@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 05/14/2019
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d73f47869aa49bcd94473997c4a8df71d0385efa
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: d2c5c63002548c2097537d5278a8b152e6d61142
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528362"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600111"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -147,7 +147,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 1. 当应用程序崩溃时，内存中的项就会丢失。
 
-1. 如果网络问题的持续时间很长，遥测数据将会丢失。 出现网络中断或者 Application Insights 后端问题时，遥测数据将存储到本地磁盘。 但是，超过 24 小时的项将被丢弃。
+1. 如果网络问题的持续时间很长，遥测数据将会丢失。 出现网络中断或者 Application Insights 后端问题时，遥测数据将存储到本地磁盘。 但是，超过 48 小时的项将被丢弃。
 
 1. 在 Windows 中，用于存储遥测数据的默认磁盘位置是 %LOCALAPPDATA% 或 %TEMP%。 这些位置通常位于计算机本地。 如果以物理方式将应用程序从一个位置迁移到另一个位置，在原始位置存储的所有遥测数据将会丢失。
 

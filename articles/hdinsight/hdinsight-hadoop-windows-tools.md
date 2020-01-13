@@ -6,17 +6,17 @@ keywords: windows 上的 hadoop,适用于 windows 的 hadoop
 author: cjgronlund
 manager: jhubbard
 ms.author: v-yiso
-origin.date: 04/24/2019
-ms.date: 11/11/2019
+origin.date: 12/20/2019
+ms.date: 01/13/2020
 ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: adaa6869c4172e69631ad8a9265bb187d84da995
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 892857bb3e961eea8221222a8c95e4b49e9992ce
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425663"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630789"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 生态系统中工作
 
@@ -79,7 +79,7 @@ HDInsight 中的 Apache Spark 群集包含可与 Jupyter Notebook 配合使用�
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>在 Windows 上运行基于 Linux 的工具和技术
 
-如果在某种情况下，必须使用的某种工具或技术只能在 Linux 上使用，请考虑以下选项：
+如果遇到必须使用仅在 Linux 上可用的工具或技术的情况，请考虑以下选项：
 
 * **Windows 10 版 Bash on Ubuntu** 在 Windows 上提供一个 Linux 子系统。 Bash 允许直接运行 Linux 实用工具，而无需维护专用的 Linux 安装。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。
 * 使用**适用于 Windows 的 Docker** 可以访问许多基于 Linux 的工具，可以直接从 Windows 运行。 例如，可以直接在 Windows 中使用 Docker 来运行适用于 Hive 的 Beeline 客户端。 还可以使用 Docker 运行本地 Jupyter Notebook，以及远程连接到 Spark on HDInsight。 [适用于 Windows 的 Docker 入门](https://docs.docker.com/docker-for-windows/)

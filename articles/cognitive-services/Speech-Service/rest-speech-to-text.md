@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/05/2019
-ms.date: 11/25/2019
+origin.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3ac49d81a22c5bed9abcdcb9d5395498a450bc4a
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 5e224860153a76e750d59f10f87deb7c692384b1
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389356"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630989"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 

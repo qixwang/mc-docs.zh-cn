@@ -8,17 +8,17 @@ services: iot-hub
 ms.topic: conceptual
 origin.date: 10/02/2019
 ms.author: v-yiso
-ms.date: 12/02/2019
-ms.openlocfilehash: 5906b6b33ada95463c8353d9d104e7ac2cbb78d4
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.date: 01/13/2020
+ms.openlocfilehash: dcbf8bcb96a6dd75a85183e43341404fa15a4363
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389179"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630752"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
-每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何从标识注册表批量导入和导出设备标识。
+每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何从标识注册表批量导入和导出设备标识。 若要查看 C# 的工作示例并了解在将中心克隆到其他区域时如何使用此功能，请参阅[如何克隆 IoT 中心](iot-hub-how-to-clone.md)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -86,7 +86,7 @@ while(true)
 
 ## <a name="export-devices"></a>导出设备
 
-使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/common/storage-security-guide.md#data-plane-security)的 [Azure 存储](../storage/index.yml) Blob 容器。
+使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用共享访问签名 (SAS) 的 Azure 存储 Blob 容器。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
 
 使用此方法可在所控制的 Blob 容器中创建可靠的设备信息备份。
 

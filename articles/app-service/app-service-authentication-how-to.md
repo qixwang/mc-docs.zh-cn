@@ -1,25 +1,17 @@
 ---
-title: 身份验证和授权的高级用法 - Azure 应用服务 | Azure
-description: 介绍如何在应用服务中自定义身份验证和授权，以及获取用户声明和不同的令牌。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: AuthN/AuthO 的高级用法
+description: 了解如何针对不同情况自定义应用服务中的身份验证和授权功能，并获取用户声明和不同令牌。
 ms.topic: article
 origin.date: 10/24/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 89cf2392b44655c6eca6b72e795e319692655a0e
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: d43146f2b6594babd141df91566e914d8c1d7d24
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555912"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600528"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 

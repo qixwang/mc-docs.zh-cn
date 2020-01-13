@@ -1,5 +1,5 @@
 ---
-title: 连接到云的 Raspberry Pi (Node.js) - 将 Raspberry Pi 连接到 Azure IoT 中心 | Microsoft Docs
+title: 将 Raspberry Pi 连接到云中的 Azure IoT 中心 (Node.js)
 description: 在本教程中了解如何设置 Raspberry Pi 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 author: wesmc7777
 manager: philmea
@@ -11,13 +11,13 @@ ms.topic: conceptual
 origin.date: 07/17/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.date: 11/11/2019
-ms.openlocfilehash: ccb7e442a3c95f6691e0cacd3b413e0748bd485f
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 01/13/2020
+ms.openlocfilehash: 80fe44947196afa59fbf058b2c53c4df57a490e1
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426102"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631115"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -136,7 +136,7 @@ BME280 传感器可以收集温度和湿度数据。 当设备向云发送消息
 | LED VDD（引脚 18F）        | GPIO 24（引脚 18）       | 白线   |
 | LED GND（引脚 17F）        | GND（引脚 20）           | 黑线   |
 
-单击以查看 [Raspberry Pi 2 和 3 引脚映射](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi)以供参考。
+单击以查看 [Raspberry Pi 2 和 3 引脚映射](https://docs.microsoft.com/en-us/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi)以供参考。
 
 成功将 BME280 连接到 Raspberry Pi 后，它应如下图所示。
 

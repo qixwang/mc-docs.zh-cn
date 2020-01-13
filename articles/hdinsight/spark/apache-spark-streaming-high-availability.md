@@ -1,6 +1,6 @@
 ---
 title: 在 YARN 中创建高可用性 Spark 流作业 - Azure HDInsight
-description: 如何为高可用性方案设置 Spark 流。
+description: 如何在 Azure HDInsight 中设置 Apache Spark 流式处理以实现高可用性方案
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/26/2018
+origin.date: 11/29/2019
 ms.author: v-yiso
-ms.date: 10/28/2019
-ms.openlocfilehash: c2ba574b6feed6338db12bb478770cbca0dfbd15
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.date: 01/13/2020
+ms.openlocfilehash: 4302a4403f1dd155415bc17623e74fde0d0fb3f2
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583688"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631099"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Apache Spark 流式处理作业
 
@@ -55,7 +55,7 @@ Spark 结构化流在 Spark 2.0 中引入，在流式处理结构化数据时用
 RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业：
 
 * 在 RDD 中作为 DStream 存储的输入数据批将自动复制到内存中以实现容错。
-* 工作节点故障导致数据丢失后，可以基于其他工作节点中复制的输入数据重新计算这些数据（前提是这些工作节点可用）。
+* 工作节点故障导致数据丢失后，可以基于其他工作节点中复制的输入数据重新计算这些数据（前提是这些工作器节点可用）。
 * 在一秒钟即可实现快速故障恢复，因为故障/延迟后的恢复是通过内存中计算发生的。
 
 ### <a name="exactly-once-semantics-with-spark-streaming"></a>Spark 流的“恰好一次”语义

@@ -1,27 +1,33 @@
 ---
-title: Azure 数据工厂连接器概述 | Microsoft Docs
+title: Azure 数据工厂连接器概述
 description: 了解数据工厂中支持的连接器。
 services: data-factory
 author: WenJason
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 8/26/2019
-ms.date: 10/14/2019
+origin.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: craigg
-ms.openlocfilehash: b0e6f074da72284cb874a598a7b3c68f68294b44
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: e49a20af4ccf879972a553ac3949907efab24805
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275921"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624311"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure 数据工厂连接器概述
 
-Azure 数据工厂通过 Copy 活动、Lookup 活动、Get Metadata 活动和 Delete 活动，支持以下数据存储。 单击每个数据存储以了解详细信息中支持的功能和相应的配置。
+Azure 数据工厂通过 Copy、Look-up、Get Metadata 和 Delete 活动支持以下数据存储和格式。 单击每个数据存储以了解详细信息中支持的功能和相应的配置。
+
+## <a name="supported-data-stores"></a>支持的数据存储
 
 [!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+
+## <a name="supported-file-formats"></a>支持的文件格式
+
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

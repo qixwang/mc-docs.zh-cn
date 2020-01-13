@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a147cc1fdd1047f422b836c2c7db911e12dab496
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 600732ded24ea675b56fb499d3b2ab56c2d1e4be
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807627"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624340"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>将 Contoso 零售数据加载到 SQL Analytics 数据仓库
 
@@ -30,7 +30,7 @@ ms.locfileid: "74807627"
 3. 完成加载后执行优化。
 
 ## <a name="before-you-begin"></a>准备阶段
-若要运行本教程，需要一个已包含 SQL Analytics 数据仓库的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建 SQL 数据仓库并设置服务器级防火墙规则][创建 SQL 数据仓库]。
+若要运行本教程，需要一个已包含 SQL Analytics 数据仓库的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建 SQL 数据仓库并设置服务器级防火墙规则][Create a SQL Analytics data warehouse]。
 
 ## <a name="1-configure-the-data-source"></a>1.配置数据源
 PolyBase 使用 T-SQL 外部对象，定义外部数据的位置和属性。 外部对象定义存储在 SQL Analytics 数据仓库中。 数据存储在外部。
@@ -81,7 +81,7 @@ CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
 WITH 
 (  
     TYPE = Hadoop 
-,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.chinacloudapi.cn/'
+,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'
 ); 
 ```
 

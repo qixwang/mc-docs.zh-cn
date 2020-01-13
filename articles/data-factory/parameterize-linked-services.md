@@ -1,23 +1,22 @@
 ---
-title: 参数化 Azure 数据工厂中的链接服务 | Microsoft Docs
+title: 参数化 Azure 数据工厂中的链接服务
 description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 12/18/2018
-ms.date: 07/08/2019
+ms.date: 01/06/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: b232e3c49d7ae1d779a2442310272e6c02de6d37
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 64e6f0c94f0f2ee8be943c0fde1f5fabfa9cd34c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570488"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624197"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -58,10 +57,7 @@ ms.locfileid: "67570488"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=tcp:myserver.database.chinacloudapi.cn,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=tcp:myserver.database.chinacloudapi.cn,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": null,
         "parameters": {

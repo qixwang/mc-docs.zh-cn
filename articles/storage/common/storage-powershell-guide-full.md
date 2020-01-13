@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 08/16/2018
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 9a499ce4ec9446f634fe6466a51313ba7678dceb
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: a2c6764d80cea708739c84ea98e21136b093d9cf
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328699"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624123"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
@@ -162,7 +162,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
 再生成其中一个密钥，然后再次对其进行检索以查看新值。
 
 > [!NOTE]
-> 为生产存储帐户再生成密钥之前，应进行仔细的规划。 再生成一个或两个密钥将无法再访问使用已再生成密钥的任何应用程序。 有关详细信息，请参阅[访问密钥](storage-account-manage.md#access-keys)。
+> 为生产存储帐户再生成密钥之前，应进行仔细的规划。 再生成一个或两个密钥将无法再访问使用已再生成密钥的任何应用程序。 有关详细信息，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
 
 
 ### <a name="delete-a-storage-account"></a>删除存储帐户

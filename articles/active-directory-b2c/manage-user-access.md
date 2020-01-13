@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 07/24/2018
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: dc7229292b569d1c893da071f5acfb2eb1816ef7
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 3d2af3cd808046399e117339c3468cce6cfd5b19
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847102"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623839"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -177,5 +176,6 @@ ms.locfileid: "72847102"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何删除和导出用户数据，请参阅[管理用户数据](manage-user-data.md)。
+- 有关实现使用条款提示的示例自定义策略，请参阅 [B2C IEF 自定义策略 - 使用“使用条款”提示注册并登录](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou)。
 
 <!-- Update_Description: wording update -->

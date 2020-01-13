@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 06/27/2017
-ms.date: 09/30/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 32e89ced9aaa79852ca5f39275cdca79f9379fca
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 426555042a1c44bc752f0f003c5780f7034e0829
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306693"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624192"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -71,12 +71,12 @@ Azure VM 支持附加多个高级存储磁盘，使应用程序可以具有每�
 |:--- |:--- |
 | 磁盘容量：35 TB<br />快照容量：10 TB |入站 + 出站最高每秒 50 Gbps |
 
-有关高级存储规范的详细信息，请查看 [Azure 存储的可伸缩性和性能目标](storage-scalability-targets.md#premium-performance-storage-account-scale-limits)。
+有关高级存储规范的详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
 
 #### <a name="disk-caching-policy"></a>磁盘缓存策略
 默认情况下，所有高级数据磁盘的磁盘缓存策略都是“只读”  ，所有附加到 VM 的高级操作系统都是“读写”  。 为使应用程序的 IO 达到最佳性能，建议使用此配置设置。 对于频繁写入或只写的磁盘（例如 SQL Server 日志文件），禁用磁盘缓存可获得更佳的应用程序性能。 可以使用 [Azure 门户](https://portal.azure.cn)或 *Set-AzureDataDisk* cmdlet 的 *-HostCaching* 参数更新现有数据磁盘的缓存设置。
 
-#### <a name="location"></a>Location
+#### <a name="location"></a>位置
 选择 Azure 高级存储可用的位置。 如果 VM 与存储 VM 磁盘的存储帐户位于同一区域，则该 VM 比位于单独区域时的性能更优异。
 
 #### <a name="other-azure-vm-configuration-settings"></a>其他 Azure VM 配置设置

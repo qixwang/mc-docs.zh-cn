@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/07/2019
-origin.date: 12/16/2019
-ms.openlocfilehash: e7f2563382de2212c85d181c3e7c47dd6e869f7c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 10/07/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 486f720e437372be88796cd51ca076d6b780dc9f
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335936"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631091"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>使用 Python 为 Azure 数据资源管理器创建 IoT 中心数据连接（预览版）
 
@@ -21,19 +21,16 @@ ms.locfileid: "75335936"
 > * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager 模板](data-connection-iot-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供了从事件中心、IoT 中心和写入 blob 容器的 blob 引入数据（数据加载）的功能。 在本文中，你将使用 Python 为 Azure 数据资源管理器创建 IoT 中心数据连接。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-
 * 创建[群集和数据库](create-cluster-database-csharp.md)
-
 * 创建[表和列映射](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
-
 * 创建[配置了共享访问策略的 IoT 中心](ingest-data-iot-hub.md#create-an-iot-hub)。
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]

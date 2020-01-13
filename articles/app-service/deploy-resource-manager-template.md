@@ -1,23 +1,18 @@
 ---
-title: 有关使用模板部署应用的指南 - Azure 应用服务 | Azure
-description: 关于创建 Azure 资源管理器模板来部署 Web 应用的建议。
-services: app-service
-documentationcenter: app-service
+title: 使用模板部署应用
+description: 查找有关创建 Azure 资源管理器模板以预配和部署应用服务应用的指南。
 author: tfitzmac
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 01/03/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: b8e7f17da98725af822c45bfe7c09e943e06be1c
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 915e6a4fc9717b1a5f2aaf09498cb3d2492a985f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555800"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600488"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -119,7 +114,7 @@ Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名
 
 在 Azure 中，应用服务服务主体的 ID 为 **abfa0a7c-a6b6-4736-8310-5855508787cd**。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
 
-```azurepowershell
+```powershell
 Set-AzKeyVaultAccessPolicy `
   -VaultName KEY_VAULT_NAME `
   -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `

@@ -1,22 +1,16 @@
 ---
 title: Azure Functions 的 Azure Blob 存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure Blob 存储触发器和绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
-origin.date: 11/15/2018
-ms.date: 10/28/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: b5b6a8659ae425993d732a48d6e662b51e9273b1
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 94c023fde49f2f7e631e33d93624c1e957c5a87b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034458"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624256"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -33,15 +27,15 @@ ms.locfileid: "73034458"
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) Nuget 包 2.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包 3.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) Nuget 包 3.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -309,7 +303,7 @@ JavaScript 不支持特性。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name from function.json>` 访问 blob 数据。
+使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json  中定义的值匹配。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
@@ -420,7 +414,7 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 
 ## <a name="trigger---polling"></a>触发器 - 轮询
 
-如果受监视的 blob 容器包含 10,000 多个 blob（跨所有容器），则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。
+轮询在检查日志和运行定期容器扫描之间起到混合作用。 每次以 10,000 个为一组扫描 Blob，并在间隔之间使用继续标记。
 
 > [!WARNING]
 > 此外，[将“尽力”创建存储日志](https://docs.microsoft.com/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。
@@ -681,7 +675,7 @@ JavaScript 不支持特性。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name from function.json>` 访问 blob 数据。
+使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json  中定义的值匹配。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 

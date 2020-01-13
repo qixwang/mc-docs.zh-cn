@@ -4,14 +4,14 @@ description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器
 author: craigshoemaker
 ms.author: v-junlch
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 12/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 559c90a74a793cfce03a45d719e5482c27129f79
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 68a5104a3b25e685205c1592cf947f18dad46a6f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885002"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624252"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 
@@ -22,7 +22,7 @@ ms.locfileid: "74885002"
 本文介绍如何在 Azure Functions 中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
 
 > [!NOTE]
-> 本文适用于 Azure Functions 1.x。 若要了解如何在 Functions 2.x 中使用这些绑定，请参阅[适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb-v2.md)。
+> 本文适用于 Azure Functions 1.x。 若要了解如何在 Functions 2.x 及更高版本中使用这些绑定，请参阅[适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb-v2.md)。
 >
 >此绑定最初名为 DocumentDB。 在 Functions 版本 1.x 中，仅触发器已重命名为 Cosmos DB；输入绑定、输出绑定和 NuGet 包保留 DocumentDB 名称。
 

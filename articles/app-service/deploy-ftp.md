@@ -1,26 +1,18 @@
 ---
-title: 使用 FTP/S 部署内容 - Azure 应用服务 | Azure
-description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 使用 FTP/S 部署内容
+description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。 通过禁用未加密的 FTP 来提高网站安全性。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 09/18/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6025667f5b3a9c771bb5cf9f83f4eb95985a8c38
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: b8dce6b0d87f23c2dbd1635a67fba4052aa4f41a
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555802"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600490"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 

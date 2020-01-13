@@ -1,26 +1,19 @@
 ---
-title: 使用 Azure 应用服务向 Xamarin.iOS 应用添加推送通知
-description: 了解如何使用 Azure 应用服务将推送通知发送到 Xamarin iOS 应用
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: 向 Xamarin.iOS 应用添加推送通知
+description: 了解如何使用 Azure 应用服务将推送通知发送到 Xamarin iOS 应用。
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 47105c7d3fd93792d53066504cad932def268681
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 87d91d4bd4117bc1758724027af164f2ee4b854d
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336015"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600532"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
 

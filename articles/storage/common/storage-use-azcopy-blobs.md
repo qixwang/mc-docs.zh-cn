@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/22/2019
-ms.date: 12/02/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d3e6d65d7c1be139674a3adb9a8f4fe34b25fc21
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 53e3cb9809830dbf86fb03a7d39d4f007e045039
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655375"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623685"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -234,7 +234,6 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > [!NOTE]
 > 此方案在当前版本中存在以下限制。
 >
-> - 仅支持不使用分层命名空间的帐户。
 > - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。
 >-  高级块 Blob 存储帐户不支持访问层。 请通过将 `s2s-preserve-access-tier` 设置为 `false`（例如：`--s2s-preserve-access-tier=false`），在复制操作中省略 Blob 的访问层。
 
@@ -245,6 +244,8 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > * 将目录复制到另一个存储帐户
 > * 将容器复制到另一个存储帐户
 > * 将所有容器、目录和文件复制到另一个存储帐户
+
+这些示例也适用于具有分层命名空间的帐户。
 
 有关详细参考文档，请参阅 [azcopy copy](storage-ref-azcopy-copy.md)。
 
@@ -281,10 +282,10 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ## <a name="synchronize-files"></a>同步文件
 
-可将本地文件系统的内容与 Blob 容器同步。 还可以将容器和虚拟目录相互同步。 同步是单向的。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。
+可将本地文件系统的内容与 Blob 容器同步。 还可以将容器和虚拟目录相互同步。 同步是单向的。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。 本部分中提供的示例也适用于具有分层命名空间的帐户。 
 
 > [!NOTE]
-> 目前，只有不使用分层命名空间的帐户才支持此方案。 当前版本的 AzCopy 不会在其他源和目标之间同步（例如：文件存储或 Amazon Web Services (AWS) S3 桶）。
+> 当前版本的 AzCopy 不会在其他源和目标之间同步（例如：文件存储或 Amazon Web Services (AWS) S3 桶）。
 
 [sync](storage-ref-azcopy-sync.md) 命令比较文件名和上次修改时间戳。 如果将 `--delete-destination` 可选标志设置为 `true` 或 `prompt` 值，当目标目录中的文件不在源目录中存在时，会删除这些文件。
 
@@ -300,7 +301,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>使用对本地文件系统所做的更改来更新容器
 
-在这种情况下，容器是目标，本地文件系统是源。
+在这种情况下，容器是目标，本地文件系统是源。 
 
 |    |     |
 |--------|-----------|
@@ -315,7 +316,6 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 |--------|-----------|
 | **语法** | `azcopy sync 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>' 'C:\myDirectory' --recursive` |
 | **示例** | `azcopy sync 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer' 'C:\myDirectory' --recursive` |
-|
 
 ### <a name="update-a-container-with-changes-in-another-container"></a>使用一个容器的更改来更新另一个容器
 

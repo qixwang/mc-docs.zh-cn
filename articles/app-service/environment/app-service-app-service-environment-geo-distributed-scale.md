@@ -1,26 +1,19 @@
 ---
-title: 应用服务环境的异地分布式缩放 - Azure
+title: 异地分布式缩放
 description: 了解如何在流量管理器和应用服务环境中使用异地分布来水平缩放应用。
-services: app-service
-documentationcenter: ''
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 09/07/2016
-ms.date: 09/20/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 869ef9589913bb5b315c9b5cde6bb93b6299e4fd
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 8773e3f8bbaca22afadb092ca4a131a1e6925d4b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156424"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600486"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述

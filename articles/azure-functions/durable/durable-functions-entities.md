@@ -1,25 +1,20 @@
 ---
 title: 持久实体 - Azure Functions
 description: 了解持久实体的概念，以及如何在 Azure Functions 的 Durable Functions 扩展中使用持久实体。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: overview
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 5f0ae7327421fb92233a0e67bb88a7228e23278e
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 2ed5743c4e981ef4a0b8c1da805418ee93980a6a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178991"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624263"
 ---
 # <a name="entity-functions"></a>实体函数
 
-实体函数定义读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数会显式管理实体状态，而不是通过控制流隐式表示状态。
+实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数会显式管理实体状态，而不是通过控制流隐式表示状态。
 实体提供了一种横向扩展应用程序的方式，即，将工作分散到多个实体，而每个实体具有适度大小的状态。
 
 > [!NOTE]
@@ -32,7 +27,7 @@ ms.locfileid: "74178991"
 为了防止冲突，系统会保证针对单个实体的所有操作按顺序执行，即，一个接一个地执行。 
 
 ### <a name="entity-id"></a>实体 ID
-可通过唯一标识符（实体 ID）访问实体。  实体 ID 只是用于唯一标识实体实例的一对字符串。 它包括：
+可通过唯一标识符（实体 ID）访问实体。  实体 ID 只是用于唯一标识实体实例的字符串对。 它包括：
 
 * 实体名称，用于标识实体类型的名称  。 例如“Counter”。 此名称必须与实现该实体的实体函数的名称相匹配。 此名称不区分大小写。
 * 实体键，用于在所有其他同名实体中唯一标识该实体的字符串  。 例如一个 GUID。
@@ -46,6 +41,7 @@ ms.locfileid: "74178991"
 * 目标实体的实体 ID  。
 * 操作名称，用于指定要执行的操作的字符串。  例如，`Counter` 实体可以支持 `add`、`get` 或 `reset` 操作。
 * 操作输入，操作的可选输入参数。  例如，add 操作可以采用整数数量作为输入。
+* **计划时间*，这是用于指定操作交付时间的可选参数。 例如，可以可靠地将一项操作计划为在未来几天运行。
 
 操作可以返回结果值或错误结果，例如 JavaScript 错误或 .NET 异常。 调用操作的业务流程可以观察到此结果或错误。
 
@@ -170,7 +166,7 @@ module.exports = df.entity(function(context) {
 
 ### <a name="example-client-signals-an-entity"></a>示例：客户端向实体发出信号
 
-若要从普通的 Azure 函数（也称为客户端函数）访问实体，请使用[实体客户端输出绑定](durable-functions-bindings.md#entity-client)。 以下示例演示一个队列触发的函数使用此绑定来发送实体信号。
+若要从普通的 Azure 函数（也称为客户端函数）访问实体，请使用[实体客户端绑定](durable-functions-bindings.md#entity-client)。 以下示例演示一个队列触发的函数使用此绑定来发送实体信号。
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -191,7 +187,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    await context.df.signalEntity(entityId, "add", 1);
+    await client.signalEntity(entityId, "add", 1);
 };
 ```
 
@@ -208,8 +204,8 @@ public static async Task<HttpResponseMessage> Run(
     [DurableClient] IDurableEntityClient client)
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
-    JObject state = await client.ReadEntityStateAsync<JObject>(entityId);
-    return req.CreateResponse(HttpStatusCode.OK, state);
+    EntityStateResponse<JObject> stateResponse = await client.ReadEntityStateAsync<JObject>(entityId);
+    return req.CreateResponse(HttpStatusCode.OK, stateResponse.EntityState);
 }
 ```
 
@@ -219,7 +215,8 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    return context.df.readEntityState(entityId);
+    const stateResponse = await context.df.readEntityState(entityId);
+    return stateResponse.entityState;
 };
 ```
 
@@ -254,12 +251,11 @@ module.exports = df.orchestrator(function*(context){
 
     // Two-way call to the entity which returns a value - awaits the response
     currentValue = yield context.df.callEntity(entityId, "get");
-    if (currentValue < 10) {
-        // One-way signal to the entity which updates the value - does not await a response
-        yield context.df.signalEntity(entityId, "add", 1);
-    }
 });
 ```
+
+> [!NOTE]
+> JavaScript 目前不支持从业务流程协调程序向实体发送信号。 请改用 `callEntity`。
 
 只有业务流程能够调用实体和获取响应，该响应可能是返回值或异常。 使用[客户端绑定](durable-functions-bindings.md#entity-client)的客户端函数只能发送实体的信号。
 
@@ -383,9 +379,9 @@ public static async Task<bool> TransferFundsAsync(
 许多持久实体功能来源于[执行组件模型](https://en.wikipedia.org/wiki/Actor_model)的灵感。 如果你熟悉执行组件，则你可能会理解本文中所述的许多概念。 持久实体非常类似于[虚拟执行组件](https://research.microsoft.com/projects/orleans/)，或 [Orleans 项目](http://dotnet.github.io/orleans/)中普遍存在的“粒度”。 例如：
 
 * 可通过实体 ID 对持久实体寻址。
-* 持久实体操作按顺序逐个执行，以防止出现争用情况。
+* 持久实体操作按顺序执行，每次只执行一个，以防止出现争用状态。
 * 持久实体是在被调用或发送信号时隐式创建的。
-* 不执行操作时，将以静默方式从内存中卸载持久实体。
+* 未执行操作时，持久实体将以静默方式从内存中卸载。
 
 有一些重要的差别值得注意：
 

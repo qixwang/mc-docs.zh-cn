@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: include
-origin.date: 06/20/2019
-ms.date: 08/05/2019
+origin.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1cbf3b3fedd27f57c01e08ac45da3fe3afab10dc
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.openlocfilehash: 13f1ab2340c82d794ae2c1195ab47cadeb33c4ea
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732386"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623700"
 ---
 若要从 Azure 门户查看和复制存储帐户访问密钥或连接字符串，请执行以下操作：
 
@@ -25,3 +25,5 @@ ms.locfileid: "68732386"
 5. 或者，可以复制整个连接字符串。 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。   
 
     ![显示如何在 Azure 门户中查看访问密钥的屏幕截图](media/storage-view-keys-include/portal-connection-string.png)
+
+可以使用任一密钥来访问 Azure 存储，但通常情况下，使用第一个密钥是很好的做法，并将第二个密钥保留到轮换密钥时使用。

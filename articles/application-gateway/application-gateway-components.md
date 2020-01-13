@@ -5,15 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-origin.date: 02/20/2019
-ms.date: 10/23/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: 3603f7dc6fac97e98a2d2687f07f2a28d6aa7db0
-ms.sourcegitcommit: 24b69c0a22092c64c6c3db183bb0655a23340420
+ms.openlocfilehash: fc97c07c05bd11a3780c4c4b94a2954c90c0ffa3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72798514"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624329"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -54,7 +53,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 >仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信始终通过 HTTP/1.1 进行。 默认情况下，HTTP/2 支持处于禁用状态。 可以选择启用该协议。
 
 - 在侦听器配置中指定 HTTP 或 HTTPS 协议。
-- 原生支持 [WebSocket 和 HTTP/2 协议](/application-gateway/overview#websocket-and-http2-traffic)，默认已启用 [WebSocket 支持](/application-gateway/application-gateway-websocket)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 对 HTTP 和 HTTPS 侦听器使用 WebSocket。
+- 原生支持 [WebSocket 和 HTTP/2 协议](overview.md#websocket-and-http2-traffic)，默认已启用 [WebSocket 支持](application-gateway-websocket.md)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 对 HTTP 和 HTTPS 侦听器使用 WebSocket。
 
 使用 HTTPS 侦听器进行 SSL 终止。 HTTPS 侦听器可将加密和解密工作卸载到应用程序网关，以避免加密和解密开销给 Web 服务器造成负担。
 
@@ -62,7 +61,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 应用程序网关可让你创建自定义错误页而非显示默认错误页。 你可以在自定义错误页上使用自己的品牌和布局。 当请求无法到达后端时，应用程序网关会显示自定义错误页。
 
-有关详细信息，请参阅[应用程序网关的自定义错误页](/application-gateway/custom-error)。
+有关详细信息，请参阅[应用程序网关的自定义错误页](custom-error.md)。
 
 ### <a name="types-of-listeners"></a>侦听器类型
 
@@ -72,11 +71,11 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 - **多站点**。 在同一个应用程序网关实例上配置多个 Web 应用程序时，需要使用此侦听器配置。 这样可以将最多 100 个网站添加到一个应用程序网关，为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，有三个子域（abc.alpha.com、xyz.alpha.com 和 pqr.alpha.com）指向应用程序网关 IP 地址。 可以创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。
 
-    有关详细信息，请参阅[多站点托管](/application-gateway/application-gateway-web-app-overview)。
+    有关详细信息，请参阅[多站点托管](application-gateway-web-app-overview.md)。
 
 创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。
 
-应用程序网关按显示顺序处理侦听器。 如果基本侦听器与传入的请求相匹配，则会先处理该侦听器。 若要将流量路由到正确的后端，请将多站点侦听器配置在基本侦听器之前。
+应用程序网关按[显示顺序](configuration-overview.md#order-of-processing-listeners)处理侦听器。
 
 ## <a name="request-routing-rules"></a>请求路由规则
 
@@ -90,7 +89,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 - **基于路径**。 此路由规则可让你根据请求中的 URL，将关联的侦听器上的请求路由到特定的后端池。 如果请求中的 URL 路径与基于路径的规则中的路径模式相匹配，规则将路由该请求。 路径模式仅应用到 URL 路径，而不应用到其查询参数。 如果侦听器请求中的 URL 路径与任何基于路径的规则都不匹配，则将请求路由到默认的后端池和 HTTP 设置。
 
-有关详细信息，请参阅[基于 URL 的路由](/application-gateway/url-route-overview)。
+有关详细信息，请参阅[基于 URL 的路由](url-route-overview.md)。
 
 ### <a name="redirection-support"></a>重定向支持
 
@@ -98,7 +97,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 可以选择另一个侦听器（有助于实现 HTTP 到 HTTPS 的自动重定向）或外部站点作为重定向目标。 也可以选择临时性或永久性重定向，或者将 URI 路径和查询字符串追加到重定向的 URL。
 
-有关详细信息，请参阅[重定向应用程序网关上的流量](/application-gateway/redirect-overview)。
+有关详细信息，请参阅[重定向应用程序网关上的流量](redirect-overview.md)。
 
 ### <a name="rewrite-http-headers"></a>重写 HTTP 标头
 
@@ -106,7 +105,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 这些标头可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 
-有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头](/application-gateway/rewrite-http-headers)。
+有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头](rewrite-http-headers.md)。
 
 ## <a name="http-settings"></a>HTTP 设置
 
@@ -116,9 +115,9 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 此组件还用于：
 
-- 使用[基于 Cookie 的会话相关性](/application-gateway/overview#session-affinity)确定是否要在同一台服务器上保留用户会话。
+- 使用[基于 Cookie 的会话相关性](overview.md#session-affinity)确定是否要在同一台服务器上保留用户会话。
 
-- 使用[连接清空](/application-gateway/overview#connection-draining)正常删除后端池成员。
+- 使用[连接清空](overview.md#connection-draining)正常删除后端池成员。
 
 - 关联自定义探测以监视后端运行状况、设置请求超时间隔、替代请求中的主机名和路径，以及一键式指定应用服务后端的设置。
 
@@ -135,7 +134,7 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 应用程序网关后端池成员不会绑定到可用性集。 应用程序网关能够与其所在的虚拟网络外部的实例通信。 因此，后端池的成员可以跨群集、跨数据中心，或者位于 Azure 外部，前提是建立了 IP 连接。
 
-如果你打算使用内部 IP 作为后端池成员，必须使用[虚拟网络对等互连](/virtual-network/virtual-network-peering-overview)或 [VPN 网关](/vpn-gateway/vpn-gateway-about-vpngateways)。 支持虚拟网络对等互连，这有助于对其他虚拟网络中的流量进行负载均衡。
+如果你打算使用内部 IP 作为后端池成员，必须使用[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 支持虚拟网络对等互连，这有助于对其他虚拟网络中的流量进行负载均衡。
 
 此外，应用程序网关可与通过 Azure ExpressRoute 或 VPN 隧道连接的本地服务器通信（如果允许这种流量）。
 
@@ -147,7 +146,7 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 除了使用默认的运行状况探测监视以外，还可以根据应用程序的要求自定义运行状况探测。 使用自定义探测可以更精细地控制运行状况监视。 使用自定义探测时，可以配置探测间隔、要测试的 URL 和路径，以及在将后端池实例标记为不正常之前可接受的失败响应次数。 我们建议配置自定义探测来监视每个后端池的运行状况。
 
-有关详细信息，请参阅[监视应用程序网关的运行状况](/application-gateway/application-gateway-probe-overview)。
+有关详细信息，请参阅[监视应用程序网关的运行状况](../application-gateway/application-gateway-probe-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -157,4 +156,4 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 * [使用 Azure PowerShell](quick-create-powershell.md)
 * [使用 Azure CLI](quick-create-cli.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

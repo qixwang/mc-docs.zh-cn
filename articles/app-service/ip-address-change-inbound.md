@@ -1,23 +1,17 @@
 ---
-title: 为入站 IP 地址更改做准备 - Azure 应用服务
+title: 为入站 IP 地址更改做准备
 description: 如果入站 IP 地址将要更改，请了解如何在更改后继续运行应用。
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
 ms.topic: article
 origin.date: 06/28/2018
-ms.date: 01/21/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: ecfb42811534a173a558783db8e4b63ad6f3c960
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: e208625254fa110e2fcf45ce35aab34c1800e6ef
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806727"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600462"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>如何为入站 IP 地址更改做准备
 

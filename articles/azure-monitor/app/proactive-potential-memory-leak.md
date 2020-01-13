@@ -1,5 +1,5 @@
 ---
-title: 智能检测 - Azure Application Insights 检测到的可能内存泄漏 | Azure Docs
+title: 检测内存泄漏 - Azure Application Insights 智能检测
 description: 使用 Azure Application Insights 监视应用程序是否存在可能的内存泄漏。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 12/12/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9c71edabc039486aacc137df629a1d1603485470
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: e47a207a56be7b00095d6153cbcd86d84bcec474
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730523"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600116"
 ---
 # <a name="memory-leak-detection-preview"></a>内存泄漏检测（预览）
 

@@ -1,25 +1,19 @@
 ---
-title: 创建外部应用服务环境 - Azure
-description: 阐释如何在创建应用或独立项时，创建应用服务环境
-services: app-service
-documentationcenter: na
+title: 创建外部 ASE
+description: 了解如何创建其中包含应用的应用服务环境，或如何创建独立的（空）ASE。
 author: ccompy
-manager: stefsch
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 06/13/2017
-ms.date: 09/20/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 2ba4a8640c8cf0eba547310f324883bfa1890de2
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: 06b3297dda28d1651c381c4ee7a84fb92ea09afd
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041144"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600482"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境
 
@@ -39,7 +33,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 创建 ASE 后，不能更改以下项：
 
-- Location
+- 位置
 - 订阅
 - 资源组
 - 使用的 VNet

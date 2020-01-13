@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/31/2019
-ms.date: 11/21/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: e15f979f1ff739e60eebfb58c221972df8a1dfe9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ca16962d882f57b8ac6d13c13d739f10358b9f28
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336476"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624328"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -129,7 +128,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
-是的。 可设置连接排出以更改后端池内的成员，而无需中断操作。 使用此设置可以持续将现有连接发送到其以前的目标，直到该连接被关闭或可配置的超时已过。 连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
+是的。 可设置连接排出以更改后端池内的成员，而无需中断操作。 有关详细信息，请参阅[应用程序网关的“连接排出”部分](overview.md#connection-draining)。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 

@@ -1,7 +1,7 @@
 ---
 title: 在 iOS 上使用语音 SDK 流式传输编解码器压缩的音频
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 iOS 上使用语音 SDK 将压缩音频流式传输到 Azure 语音服务。
+description: 了解如何在 iOS 上使用语音 SDK 将压缩音频流式传输到语音服务。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/20/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 184ea30de365a7d750af5c46a0af286537835e9f
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: d67a8eff1420a71dae4a2473defc6d1022277cb3
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390007"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630900"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>如何：在 iOS 上的语音 SDK 中使用编解码器压缩的音频输入
 
-语音 SDK 的**压缩音频输入流** API 提供了一种使用拉取或推送流将压缩音频流式传输到语音服务的方法。
+语音 SDK 的**压缩音频输入流** API 提供了一种通过拉取或推送流将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
 > 若要在 iOS 上流式传输压缩的音频，需要语音 SDK 1.7.0 或更高版本。 它还支持用于 [Linux 上的 C++、C# 和 Java（Ubuntu 16.04、Ubuntu 18.04、Debian 9）](how-to-use-codec-compressed-audio-input-streams.md)和 [Android 中的 Java。](how-to-use-codec-compressed-audio-input-streams-android.md)
@@ -43,7 +43,7 @@ ms.locfileid: "74390007"
 
 构建步骤会生成一个动态框架捆绑包（其中的动态库适用于所有必需的体系结构），其名称为 `GStreamerWrapper.framework`。
 
-此框架必须包含在所有将压缩音频流与语音服务 SDK 配合使用的应用中。
+此框架必须包含在所有通过语音服务 SDK 使用压缩音频流的应用中。
 
 为此，请在 Xcode 项目中应用以下设置：
 
@@ -128,5 +128,5 @@ while (1)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取试用订阅](https://www.azure.cn/pricing/1rmb-trial/)
+- [获取语音试用订阅](https://www.azure.cn/pricing/1rmb-trial/)
 - [查看如何在 Java 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 499430d923ce02abc0e8e79bff89fb3308206696
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 73b71a1a41ff4a1c8d6846447350f899ec634760
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328793"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624333"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -23,6 +23,12 @@ ms.locfileid: "74328793"
 ## <a name="synopsis"></a>摘要
 
 上次修改时间用于比较。 如果目标中的上次修改时间与当前时间更近，则会跳过文件。
+
+支持的配对包括：
+
+- 本地 <-> Azure Blob（可以使用 SAS 或 OAuth 身份验证）
+- Azure Blob <-> Azure Blob（源必须包含 SAS 或可公开访问；可将 SAS 或 OAuth 身份验证用于目标）
+- Azure 文件 <-> Azure 文件（源必须包含 SAS 或可公开访问；应将 SAS 身份验证用于目标）
 
 sync 命令与 copy 命令的不同之处体现在以下几个方面：
 
@@ -58,66 +64,66 @@ azcopy sync <source> <destination> [flags]
 同步单个文件：
 
 ```azcopy
-azcopy sync "/path/to/file.txt" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]?[SAS]"
+azcopy sync "/path/to/file.txt" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]"
 ```
 
 与前面的示例相同，但这一次此命令还会计算文件内容的 MD5 哈希，并将其另存为 Blob 的 Content-MD5 属性：
 
 ```azcopy
-azcopy sync "/path/to/file.txt" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]?[SAS]" --put-md5
+azcopy sync "/path/to/file.txt" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]" --put-md5
 ```
 
 同步整个目录，包括其子目录（请注意，默认已启用递归）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]"
+azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]"
 ```
 
 或
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" --put-md5
+azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
 仅同步目录中的顶级文件，而不同步其子目录：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" --recursive=false
+azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
 同步目录中的一部分文件（例如：仅同步 jpg 和 pdf 文件，或者同步文件名为“exactName”的文件）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" --include="*.jpg;*.pdf;exactName"
+azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
 ```
 
 同步整个目录，但从同步范围中排除某些文件（例如：以 foo 开头或以 bar 结尾的每个文件）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" --exclude="foo*;*bar"
+azcopy sync "/path/to/dir" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
 同步单个 Blob：
 
 ```azcopy
-azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]?[SAS]"
+azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/blob]"
 
 Sync a virtual directory:
 
 ```azcopy
-azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" --recursive=true
+azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]" --recursive=true
 ```
 
 同步与 Blob 同名的虚拟目录（在路径中添加尾随斜杠以消除歧义）：
 
 ```azcopy
-azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]/?[SAS]" --recursive=true
+azcopy sync "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.chinacloudapi.cn/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
 同步 Azure 文件目录（语法与 Blob 相同）：
 
 ```azcopy
-azcopy sync "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]?[SAS]" --recursive=true
+azcopy sync "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]" --recursive=true
 ```
 
 > [!NOTE]
@@ -132,6 +138,8 @@ azcopy sync "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]?
 **--delete-destination** 字符串   定义是否从目标中删除不在源中的多余文件。 可设置为 true、false 或 prompt。 如果设置为 prompt，则在计划要删除的文件和 Blob 之前，系统会向用户提问。 （默认值为“false”）。 （默认值为“false”）
 
 **--exclude-attributes** 字符串   （仅限 Windows）排除其属性与属性列表相匹配的文件。 例如：A;S;R
+
+**--exclude-path** 字符串复制时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：myFolder;myFolder/subDirName/file.pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
 
 **--exclude-pattern** 字符串      排除名称与模式列表相匹配的文件。 例如： *.jpg;* .pdf;exactName
 
@@ -152,7 +160,7 @@ azcopy sync "https://[account].file.core.chinacloudapi.cn/[share]/[path/to/dir]?
 |选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
-|--output-type 字符串|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
+|--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
 ## <a name="see-also"></a>另请参阅
 

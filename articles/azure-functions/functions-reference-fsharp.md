@@ -1,31 +1,24 @@
 ---
-title: 'Azure Functions F # 开发人员参考 | Microsoft Docs'
+title: Azure Functions F# 开发人员参考
 description: 了解如何使用 F# 脚本开发 Azure Functions。
-services: functions
-documentationcenter: fsharp
 author: sylvanc
-manager: jbronsk
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
 ms.topic: reference
-origin.date: 10/09/2018
-ms.date: 07/18/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 8caaaa610d8e2fb66bd99e85a5a67ff9af8fd85c
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.openlocfilehash: 7ec92a62674689830c406e3c24576566ea9c9a2b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68331936"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624089"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
 Azure Functions F# 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 数据通过函数参数流入 F # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。 
 
 >[!IMPORTANT]
->仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 如果要将 F# 与版本 2.x 运行时结合使用，必须使用预编译的 F# 类库项目 (.fs)。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
+>仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 若要将 F# 与版本 2.x 及更高版本运行时结合使用，必须使用预编译的 F# 类库项目 (.fs)。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
 
 本文假定已阅读 [Azure Functions 开发人员参考](functions-reference.md)。
 
@@ -55,7 +48,7 @@ FunctionsProject
 
 有一个共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件 (.fsx) 和绑定配置文件 (function.json)。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 版及更高版本](functions-versions.md)的 Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 对于每个绑定支持某些参数，请参阅 [Azure 函数触发器和绑定开发人员参考](functions-triggers-bindings.md)。 例如，blob 触发器支持的其中一个参数绑定是 POCO，可以使用 F # 记录来表示。 例如：
@@ -116,7 +109,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>取消令牌
-如果函数需要正常地处理关闭，可指定 [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 参数。 联合 `async` 可实现此目的，例如：
+如果函数需要正常地处理关闭，可指定 [`CancellationToken`](https://docs.microsoft.com/dotnet/api/system.threading.cancellationtoken) 参数。 联合 `async` 可实现此目的，例如：
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -302,4 +295,4 @@ let mylog(log: ILogger, text: string) =
 * [Azure Functions 缩放](functions-scale.md)
 
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

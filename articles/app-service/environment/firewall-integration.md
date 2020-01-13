@@ -1,25 +1,19 @@
 ---
-title: 锁定应用服务环境出站流量 - Azure
-description: 介绍如何集成 Azure 防火墙以保护出站流量
-services: app-service
-documentationcenter: na
+title: 锁定出站流量
+description: 了解如何与 Azure 防火墙集成，以保护应用服务环境中的出站流量。
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/31/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 8935430e20b8aea82f4c2a664413fe3dc7319604
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d02ce996767bec0af3a4d07e9953e9afc57d09d5
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336404"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600478"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 

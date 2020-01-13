@@ -1,23 +1,18 @@
 ---
-title: 托管标识概述 - Azure 应用服务 | Azure
-description: Azure 应用服务和 Azure Functions 中的托管标识的概念性参考和安装指南
-services: app-service
+title: 托管标识
+description: 了解托管标识在 Azure 应用服务和 Azure Functions 中的工作方式，以及如何配置托管标识并为后端资源生成令牌。
 author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 10/30/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: yevbronsh
-ms.openlocfilehash: ca7738feadce9bb3cc483f9de63e3ae96954e2a3
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 50d51a2a176a450faabc3b117b14a275269f64f6
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657995"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600424"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -46,7 +41,7 @@ ms.locfileid: "74657995"
 
 4. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存”  。
 
-    ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![应用服务中的托管标识](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -86,7 +81,7 @@ ms.locfileid: "74657995"
 
 2. 使用 Azure PowerShell 创建 Web 应用程序。 有关如何将 Azure PowerShell 用于应用服务的更多示例，请参阅[应用服务 PowerShell 示例](../app-service/samples-powershell.md)：
 
-    ```azurepowershell
+    ```powershell
     # Create a resource group.
     New-AzResourceGroup -Name myResourceGroup -Location $location
     
@@ -99,7 +94,7 @@ ms.locfileid: "74657995"
 
 3. 运行 `Set-AzWebApp -AssignIdentity` 命令为此应用程序创建标识：
 
-    ```azurepowershell
+    ```powershell
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
     ```
 
@@ -174,7 +169,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 6. 搜索之前创建的标识并选择它。 单击“添加”  。
 
-    ![应用服务中的托管标识](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![应用服务中的托管标识](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 

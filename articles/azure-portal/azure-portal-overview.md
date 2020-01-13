@@ -1,21 +1,21 @@
 ---
 title: Azure 门户概述 | Azure
-description: 了解如何在 Azure 门户中导航以及使用它来管理服务
+description: Azure 门户是一个图形用户界面，可用于管理 Azure 服务。 了解如何在 Azure 门户中导航和查找资源。
 services: azure-portal
 keywords: 门户
 author: kfollis
-ms.author: v-tawe
-origin.date: 11/01/2019
-ms.date: 12/02/2019
+ms.author: kfollis
+origin.date: 12/20/2019
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 6a724b3db0593d888edeef602fd9e717b473e3cd
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 2f8f2a0fb2892ed408548ecd21dd32a16d01482f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657802"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600570"
 ---
 # <a name="azure-portal-overview"></a>Azure 门户概述
 

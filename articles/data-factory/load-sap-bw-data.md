@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 数据工厂从 SAP Business Warehouse 加载数据 | Microsoft Docs
+title: 从 SAP Business Warehouse 加载数据
 description: 使用 Azure 数据工厂从 SAP Business Warehouse (BW) 复制数据
 services: data-factory
-documentationcenter: ''
 author: WenJason
+ms.author: v-jay
 manager: digimobile
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 05/22/2019
-ms.date: 08/12/2019
-ms.author: v-jay
-ms.openlocfilehash: 976bd40b6de2ac464cba99a9b5d52b4ee229b7bc
-ms.sourcegitcommit: 871688d27d7b1a7905af019e14e904fabef8b03d
+ms.date: 01/06/2020
+ms.openlocfilehash: baeafb3879fbbb698508c9aa22b5f71afd486661
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68908735"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624184"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
 
@@ -157,11 +157,15 @@ ms.locfileid: "68908735"
 
    - **SAPOpenHubDestinationName**：指定要从中复制数据的 Open Hub 表名称。
 
-   - **ADLSGen2SinkPath**：指定要将数据复制到的目标 Azure Data Lake Storage Gen2 路径。 如果该路径不存在，则数据工厂的复制活动将在执行期间创建一个路径。
+   - **Data_Destination_Container**：指定要将数据复制到的目标 Azure Data Lake Storage Gen2 容器。 如果该容器不存在，则数据工厂的复制活动将在执行期间创建一个容器。
+  
+   - **Data_Destination_Directory**：指定要将数据复制到的 Azure Data Lake Storage Gen2 容器下的文件夹路径。 如果该路径不存在，则数据工厂的复制活动将在执行期间创建一个路径。
+  
+   - **HighWatermarkBlobContainer**：指定用于存储高水印值的容器。
 
-   - **HighWatermarkBlobPath**：指定高水印值的存储路径，例如 `container/path`。
+   - **HighWatermarkBlobDirectory**：指定用于存储高水印值的容器下的文件夹路径。
 
-   - **HighWatermarkBlobName**：指定用于存储高水印值的 Blob 名称，例如 `requestIdCache.txt`。 在 Blob 存储中，转到 HighWatermarkBlobPath+HighWatermarkBlobName 的相应路径，例如 *container/path/requestIdCache.txt*。 创建包含内容 0 的 Blob。
+   - **HighWatermarkBlobName**：指定用于存储高水印值的 Blob 名称，例如 `requestIdCache.txt`。 在 Blob 存储中，转到 HighWatermarkBlobContainer+HighWatermarkBlobDirectory+HighWatermarkBlobName 的相应路径，例如“container/path/requestIdCache.txt”  。 创建包含内容 0 的 Blob。
 
       ![Blob 内容](media/load-sap-bw-data/blob.png)
 
@@ -186,11 +190,11 @@ ms.locfileid: "68908735"
          }
          ```
 
-      3. 添加“创建 Blob”操作。  对于“文件夹路径”和“Blob 名称”，请使用前面在 **HighWatermarkBlobPath** 和 **HighWatermarkBlobName** 中配置的相同值。  
+      3. 添加“创建 Blob”操作。  对于“文件夹路径”和“Blob 名称”，请使用前面在 HighWatermarkBlobContainer+HighWatermarkBlobDirectory  和 HighWatermarkBlobName  中配置的相同值。  
 
       4. 选择“保存”  。 然后，复制“HTTP POST URL”的值以便在数据工厂管道中使用。 
 
-4. 提供数据工厂的管道参数后，选择“调试” > “完成”以调用一个运行来验证配置。   或者，选择“全部发布”以发布更改，然后选择“触发器”以执行运行。  
+4. 提供数据工厂的管道参数后，选择“调试” > “完成”以调用一个运行来验证配置。   或者，选择“发布”以发布所有更改，然后选择“添加触发器”以执行运行。  
 
 ## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW Open Hub 目标配置
 

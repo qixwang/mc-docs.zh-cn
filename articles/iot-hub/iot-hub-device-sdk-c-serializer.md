@@ -1,7 +1,7 @@
 ---
 title: 适用于 C 语言的 Azure IoT 设备 SDK - 序列化程序 | Azure
 description: 如何使用 Azure IoT 设备 SDK 中面向 C 语言的序列化程序库创建与 IoT 中心通信的设备应用。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 09/06/2016
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: d9b7ea69a617ea03754a2762f0f65d72edbba55a
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 50e33bc7aede4806bb864ba3a89755ea8f38a79a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993049"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630928"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
 
@@ -544,7 +544,8 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 ## <a name="macro-configuration"></a>宏配置
 如果使用的是 **序列化程序** 库，那么可在 azure-c-shared-utility 库中找到要注意的 SDK 的重要组成部分。
-如果使用 --recursive 选项从 GitHub 中克隆了 Azure-iot-sdk-c 存储库，那么可在此处找到此共享的实用程序库：
+
+如果已从 GitHub 克隆了 Azure-iot-sdk-c 存储库并发出了 `git submodule update --init` 命令，则将在以下位置找到此共享实用程序库：
 
 ```C
 .\\c-utility

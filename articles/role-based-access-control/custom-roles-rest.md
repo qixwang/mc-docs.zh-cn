@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 为 Azure 资源创建自定义角色 - Azure | Microsoft Docs
-description: 了解如何使用 REST API 为 Azure 资源使用基于角色的访问控制 (RBAC) 创建自定义角色。 这包括如何列出、创建、更新和删除自定义角色。
+title: 使用 REST API 为 Azure 资源创建或更新自定义角色 - Azure | Microsoft Docs
+description: 了解如何通过 REST API 使用基于角色的访问控制 (RBAC) 为 Azure 资源列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,20 +12,19 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/18/2019
-ms.date: 05/21/2019
+ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 7c607aac5fb5f5ea4cae387243135f2c93eb7c83
-ms.sourcegitcommit: 932a335a0e5526ea70be496c393484702722f900
+ms.openlocfilehash: 6b54c624bcd1329201dc0c0bc4946d5b6a6094e8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "65997328"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624344"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建自定义角色
+# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建或更新自定义角色
 
-如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建你自己的自定义角色。 本文介绍如何使用 REST API 创建和管理自定义角色。
+如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 REST API 列出、创建、更新或删除自定义角色。
 
 ## <a name="list-custom-roles"></a>列出自定义角色
 
@@ -59,7 +58,7 @@ ms.locfileid: "65997328"
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 *{filter}* 替换为角色类型。
 
@@ -83,7 +82,7 @@ ms.locfileid: "65997328"
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 *{filter}* 替换为角色的显示名称。
 
@@ -109,7 +108,7 @@ ms.locfileid: "65997328"
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 *{roleDefinitionId}* 替换为角色定义的 GUID 标识符。
 
@@ -157,7 +156,7 @@ ms.locfileid: "65997328"
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 
@@ -222,7 +221,7 @@ ms.locfileid: "65997328"
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 
@@ -306,7 +305,7 @@ ms.locfileid: "65997328"
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 

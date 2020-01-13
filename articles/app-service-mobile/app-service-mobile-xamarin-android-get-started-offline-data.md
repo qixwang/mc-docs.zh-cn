@@ -1,26 +1,19 @@
 ---
-title: 为 Azure 移动应用启用脱机同步 (Xamarin Android)
-description: 了解如何在 Xamarin Android 应用程序中使用应用服务移动应用缓存和同步脱机数据
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
+title: 启用脱机同步 (Xamarin Android)
+description: 了解如何在 Xamarin Android 应用程序中使用应用服务移动应用缓存和同步脱机数据。
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: b9dedc29a985a99e1c85cb86da3f501f675418da
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 561e2ea2703023b76776dc191c379ac7955f6973
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335758"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600537"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>为 Xamarin.Android 移动应用启用脱机同步
 

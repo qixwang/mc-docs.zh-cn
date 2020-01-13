@@ -1,23 +1,22 @@
 ---
-title: Azure Data Lake Storage Gen2 Storm 性能优化指南 | Microsoft Docs
+title: 优化性能：Storm、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 Storm 性能优化指南
-services: storage
 author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 05/27/2019
+origin.date: 11/18/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 5be035438c781985e49bf941ccf382d1d9d63472
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 693677d5ae60ce7634af6c2de61ff08c929d3920
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328762"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624349"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>优化性能：Storm、HDInsight 和 Azure Data Lake Storage Gen2
 
 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素。 例如，必须了解 Spout 和 Bolt 的工作特征（这种工作是 I/O 密集型还是内存密集型的）。 本文介绍一系列性能优化指南，包括如何排查常见问题。
 

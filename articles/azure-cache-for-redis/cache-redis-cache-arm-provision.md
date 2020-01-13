@@ -1,26 +1,17 @@
 ---
-title: 使用 Azure 资源管理器预配 Azure Redis 缓存 | Microsoft Docs
-description: 使用 Azure 资源管理器模板部署 Azure Redis 缓存。
-services: app-service
-documentationcenter: ''
+title: 使用 Azure 资源管理器部署 Azure Cache for Redis
+description: 了解如何使用 Azure 资源管理器模板部署 Azure Cache for Redis 资源。 为常见方案提供模板。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
-ms.service: cache
-ms.workload: web
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 01/23/2017
-ms.date: 03/21/2019
 ms.author: v-junlch
-ms.openlocfilehash: 1a9e6e82f3d0f8a8d6898a037fd99af4c3414489
-ms.sourcegitcommit: 02c8419aea45ad075325f67ccc1ad0698a4878f4
+ms.service: cache
+ms.topic: conceptual
+ms.date: 12/30/2019
+ms.openlocfilehash: f01ab161d3d904c6f5fbf5536f1de54395c7a2b6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318969"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624326"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用模板创建 Azure Redis 缓存
 
@@ -125,8 +116,6 @@ Azure Redis 缓存的位置。 为获得最佳性能，请使用要与缓存配�
       ]
     }
 
-
-
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -137,6 +126,4 @@ Azure Redis 缓存的位置。 为获得最佳性能，请使用要与缓存配�
 ### <a name="azure-cli"></a>Azure CLI
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-
-<!-- Update_Description: link update -->
-
+<!-- Update_Description: wording update -->

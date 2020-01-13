@@ -11,14 +11,14 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 origin.date: 11/21/2019
-ms.date: 12/23/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9f86fe20d7432bc09e459496282cc94a514cfe2d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 99a80320482798b221a74d4a8c1e241f328bed81
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335932"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630803"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -52,7 +52,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 | Apache Livy            | 0.5           | 0.4、0.4、0.3               |
 | Apache Kafka           | 1.1.1、2.1    | 1.1、1.0 *（请参阅下面的“注意”） |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
-| Apache Zeppelin        | 0.8.0         | 0.7.0                       |
+| Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
@@ -154,6 +154,9 @@ _停用日期_是指在此后不能在 HDInsight 上创建此群集版本的日�
 * HDInsight 群集版本 2.1 使用基于 [Hortonworks 数据平台 1.3][hdp-1-3-0] 的 Hadoop 分发版。
 * HDInsight 群集版本 1.6 使用基于 [Hortonworks 数据平台 1.1][hdp-1-1-0] 的 Hadoop 分发版。
 
+## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
+
+有关要为群集选择哪些虚拟机 SKU 的详细信息，请参阅 [Azure HDInsight 群集配置详细信息](hdinsight-supported-node-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)

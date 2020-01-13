@@ -1,19 +1,19 @@
 ---
 title: Azure 资源日志支持的服务和架构
-description: 了解 Azure 诊断日志支持的服务和事件架构。
+description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 author: lingliw
 ms.author: v-lingwu
 origin.date: 10/22/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: e3f7f2de61a8edb944f653046fabfd044a635b8b
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.date: 12/31/2019
+ms.openlocfilehash: 5935e9bce666a904c08e66bb1d5d0e3fd7001953
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982135"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599925"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -26,7 +26,7 @@ ms.locfileid: "74982135"
 
 ## <a name="top-level-resource-logs-schema"></a>顶级资源日志架构
 
-| Name | 必需/可选 | 说明 |
+| 名称 | 必需/可选 | 说明 |
 |---|---|---|
 | time | 必须 | 事件时间戳 (UTC)。 |
 | ResourceId | 必须 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
@@ -100,8 +100,8 @@ ms.locfileid: "74982135"
 |Microsoft.ClassicNetwork/networksecuritygroups|网络安全组规则流事件|网络安全组规则流事件|
 |Microsoft.CognitiveServices/accounts|审核|审核日志|
 |Microsoft.CognitiveServices/accounts|RequestResponse|请求和响应日志|
-|Microsoft.ContainerRegistry/registries|ContainerRegistryRepositoryEvents|RepositoryEvent 日志|
-|Microsoft.ContainerRegistry/registries|ContainerRegistryLoginEvents|登录事件|
+|Microsoft.ContainerRegistry/registries|ContainerRegistryRepositoryEvents|RepositoryEvent 日志（预览）|
+|Microsoft.ContainerRegistry/registries|ContainerRegistryLoginEvents|登录事件（预览）|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API 服务器|
 |Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes 控制器管理器|
 |Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes 计划程序|

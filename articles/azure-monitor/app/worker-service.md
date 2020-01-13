@@ -1,20 +1,20 @@
 ---
-title: 适用于辅助角色服务应用（非 HTTP 应用）的 Application Insights | Microsoft Docs
-description: 使用 Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
+title: 适用于辅助角色服务应用（非 HTTP 应用）的 Application Insights
+description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
 ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: application-insights
 ms.topic: conceptual
-origin.date: 09/15/2019
-ms.date: 11/04/2019
+origin.date: 12/16/2019
+ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: edef90608406ca7a7abf1414bdeaa2714d97033c
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 19abd23d3eae3f9fc5cad6da4abd55359c429f67
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528360"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600106"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
@@ -37,7 +37,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.12.0" />
     </ItemGroup>
 ```
 
@@ -138,6 +138,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 > 在代码中指定的检测密钥优先于环境变量 `APPINSIGHTS_INSTRUMENTATIONKEY`，而后者又优先于其他选项。
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>使用托管服务的 ASP.NET Core 后台任务
+
 [此文档](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio)介绍了如何在 ASP.NET Core 2.1/2.2 应用程序中创建后台任务。
 
 [此处](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)分享了完整示例
@@ -252,7 +253,8 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
                 IServiceCollection services = new ServiceCollection();
 
                 // Being a regular console app, there is no appsettings.json or configuration providers enabled by default.
-                // Hence instrumentation key must be specified here.
+                // Hence instrumentation key and any changes to default logging level must be specified here.
+                services.AddLogging(loggingBuilder => loggingBuilder.AddFilter<Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider>("Category", LogLevel.Information));
                 services.AddApplicationInsightsTelemetryWorkerService("instrumentationkeyhere");
 
                 // Build ServiceProvider.

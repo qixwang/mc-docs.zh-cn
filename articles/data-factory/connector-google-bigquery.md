@@ -13,12 +13,12 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 11/11/2019
 ms.author: v-jay
-ms.openlocfilehash: e9d947f161c7696f9ea00b0f49d76178e2b3c698
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: 502e49151e41a703a9e8bffe989b37d5b60f83dc
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648804"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623633"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "73648804"
 数据工厂提供内置驱动程序以启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
 
 >[!NOTE]
->此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额，请参阅[配额和限制 - API 请求](https://cloud.google.com/bigquery/quotas#api_requests)。 请确保不会触发过多的帐户并发请求。
+>此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额。 请确保不会触发过多的帐户并发请求。
 
 ## <a name="get-started"></a>入门
 

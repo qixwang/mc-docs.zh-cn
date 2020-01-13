@@ -1,19 +1,19 @@
 ---
-title: 通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
+title: 使用 Key Vault 证书配置 SSL 终止 - PowerShell
+titleSuffix: Azure Application Gateway
 description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以便存储附加到支持 HTTPS 的侦听器的服务器证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 04/22/2019
-ms.date: 09/18/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: 6df0b357262f3be9cee0dfddd68211dc6b4ec1e4
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.openlocfilehash: 715f4323f4e46971351d5b5bdf3a4a789635b47b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083263"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624325"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
 
@@ -65,6 +65,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $kv -PermissionsToSecrets get -ObjectId $i
 $policy = New-AzKeyVaultCertificatePolicy -ValidityInMonths 12 `
   -SubjectName "CN=www.contoso11.com" -IssuerName self `
   -RenewAtNumberOfDaysBeforeExpiry 30
+Set-AzKeyVaultAccessPolicy -VaultName $kv -EmailAddress <your email address> -PermissionsToCertificates create,get,list
 $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -CertificatePolicy $policy
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
@@ -143,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 [详细了解 SSL 终止](ssl-overview.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: code update -->

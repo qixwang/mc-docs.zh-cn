@@ -1,22 +1,15 @@
 ---
-title: 使用 Azure Functions 执行数据库清理任务 | Microsoft Docs
+title: 使用 Azure Functions 执行数据库清理任务
 description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务，以定期清理行。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 10/02/2019
-ms.date: 10/28/2019
-ms.author: v-junlch
-ms.openlocfilehash: 4ba88db0d5607d2eb809c328119bd1481888b7dd
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.date: 12/31/2019
+ms.openlocfilehash: c6e06a23756058264eed763c510fdea91320ca5f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034371"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624290"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
@@ -26,7 +19,7 @@ ms.locfileid: "73034371"
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
++ 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 或更高版本运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
 
 + 本文演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作  。 若要创建 AdventureWorksLT 示例数据库，请按[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文中的步骤进行操作。
 

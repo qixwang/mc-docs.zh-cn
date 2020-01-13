@@ -6,15 +6,15 @@ author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 11/04/2019
+origin.date: 12/24/2019
+ms.date: 12/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 99e21a650ed77e5b338e1607178e1bda55129d50
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 7edbb6a455eacea546dfb1b4853d0ae2f2607ed6
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838922"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600123"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
@@ -133,6 +133,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
    ![本地服务的屏幕截图，其中显示 OMS 网关正在运行](./media/gateway/gateway-service.png)
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>使用命令行安装 Log Analytics 网关
+
 网关的下载文件是一个 Windows Installer 包，它支持通过命令行或其他自动化方法以无提示方式完成安装。 如果你不熟悉 Windows Installer 的标准命令行选项，请参阅[命令行选项](https://docs.microsoft.com/windows/desktop/Msi/command-line-options)。
  
 下表突出显示了安装程序支持的参数。
@@ -142,8 +143,8 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 |PORTNUMBER | 网关侦听的 TCP 端口号 |
 |PROXY | 代理服务器的 IP 地址 |
 |INSTALLDIR | 完全限定的路径，用于指定网关软件文件的安装目录 |
-|USERNAME | 用于在代理服务器中进行身份验证的用户 ID |
-|PASSWORD | 用于在代理中进行身份验证的用户 ID 的密码 |
+|USERNAME | 用于使用代理服务器进行身份验证的用户 ID |
+|PASSWORD | 用于使用代理进行身份验证的用户 ID 的密码 |
 |LicenseAccepted | 指定值 **1** 表示确认接受许可协议 |
 |HASAUTH | 指定 USERNAME/PASSWORD 参数时请指定值 **1** |
 |HASPROXY | 指定 **PROXY** 参数的 IP 地址时请指定值 **1** |
@@ -203,12 +204,12 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 配置 Log Analytics 代理时，请将代理服务器值替换为 Log Analytics 网关服务器的 IP 地址及其端口号。 如果在负载均衡器后面部署了多个网关服务器，Log Analytics 代理的代理配置为该负载均衡器的虚拟 IP 地址。  
 
 >[!NOTE]
->若要在网关和直接连接到 Log Analytics 的 Windows 计算机上安装 Log Analytics 代理，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](agent-windows.md)。 若要连接 Linux 计算机，请参阅[在混合环境中为 Linux 计算机配置 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)。 
+>若要在网关和直接连接到 Log Analytics 的 Windows 计算机上安装 Log Analytics 代理，请参阅[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](agent-windows.md)。 
 >
 
 在网关服务器上安装代理后，请将其配置为向与网关通信的工作区或工作区代理报告。 如果未在网关上安装 Log Analytics Windows 代理，则会将事件 300 写入 OMS 网关事件日志，指示需要安装代理。 如果代理已安装，但未配置为在代理通过它通信时向同一工作区报告，则会将事件 105 写入相同的日志，指出需要将网关上的代理配置为在代理与网关通信时，向同一工作区报告。
 
-完成配置后，重启 OMS 网关服务以应用所做的更改。 否则，网关将拒绝代理尝试与 Log Analytics 通信，并在 OMS 网关事件日志中报告事件 105。 在网关服务器上的代理配置中添加或删除工作区时，同样会发生这种情况。   
+完成配置后，重启 **OMS 网关**服务以应用所做的更改。 否则，网关将拒绝代理尝试与 Log Analytics 通信，并在 OMS 网关事件日志中报告事件 105。 在网关服务器上的代理配置中添加或删除工作区时，同样会发生这种情况。
 
 有关自动化混合 Runbook 辅助角色的信息，请参阅“部署混合 Runbook 辅助角色”。
 

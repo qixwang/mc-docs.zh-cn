@@ -5,15 +5,15 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
-origin.date: 08/16/2019
-ms.date: 08/30/2019
+origin.date: 12/02/2019
+ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: da84c3d8d4b3d3e6d8e9e9e3cfe12977575ee327
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 8de8ed728e177fe8202955759df697e94e58852d
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982137"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600149"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -31,9 +31,9 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
    | 设置        |  Value           | 说明  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 标识所监视的应用的名称。 |
+   | **名称**      | 唯一值 | 标识所监视的应用的名称。 |
    | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
-   | **Location** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置。 |
+   | **位置** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置。 |
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”  。
 

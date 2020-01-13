@@ -25,6 +25,10 @@
   items:
     - name: 生成带身份验证的无服务器实时应用
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: 监视
+      items:
+        - name: 使用诊断日志监视 SignalR 服务
+          href: signalr-tutorial-diagnostic-logs.md
 - name: 示例
   items:
     - name: 代码示例

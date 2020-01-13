@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/19/2019
 ms.date: 06/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7181b45313780f92c1ef6d15170f7c373161f5be
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 1791ee55a17f1e6b17bb27b967cec361f24cba4a
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982124"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599917"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
 
@@ -220,7 +220,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 
 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../../azure-monitor/platform/metrics-supported.md)。
 
-有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../../azure-monitor/platform/diagnostic-logs-schema.md)。
+有关可用日志的详细信息，请参阅[资源日志支持的服务和架构](../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 ```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-china/providers/microsoft.operationalinsights/workspaces/rollingbaskets"

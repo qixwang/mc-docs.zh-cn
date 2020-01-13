@@ -5,15 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-origin.date: 03/04/2019
-ms.date: 12/16/2019
+origin.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 32a7bf14958d9f15dd264c85d5979003e2f58106
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: e80dc77ff5934a6ddf0b714ebec54a2074aad52b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334874"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600585"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>快速入门：使用 Azure Functions 和 SignalR 服务通过 JavaScript 创建聊天室
 
@@ -25,11 +25,9 @@ ms.locfileid: "75334874"
 
 确保已安装了代码编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
 
-安装 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)，以便在本地运行 Azure Functions 应用。
+安装 [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)（版本 2 或更高版本），以便在本地运行 Azure Functions 应用。
 
-Azure Functions 需要 [Node.js](https://nodejs.org/en/download/) 版本 8 或 10。
-
-为了安装扩展，Azure Functions Core Tools 目前需要安装 [.NET Core SDK](https://www.microsoft.com/net/download)。 但是，构建 JavaScript Azure Function 应用不需要了解 .NET。
+此快速入门使用 [Node.js](https://nodejs.org/en/download/) 10.x，但应使用其他版本。 有关支持的 Node.js 版本的详细信息，请参阅 [Azure Functions 运行时版本文档](../azure-functions/functions-versions.md#languages)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,13 +62,7 @@ Azure Functions 需要 [Node.js](https://nodejs.org/en/download/) 版本 8 或 1
     - **negotiate** - 使用 *SignalRConnectionInfo* 输入绑定生成并返回有效的连接信息。
     - **messages** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
 
-1. 在终端中，确保你位于 *src/chat/javascript* 文件夹中。 使用 Azure Functions Core Tools 安装运行应用所需的扩展。
-
-    ```bash
-    func extensions install
-    ```
-
-1. 运行函数应用。
+1. 在终端中，确保你位于 *src/chat/javascript* 文件夹中。 运行函数应用。
 
     ```bash
     func start

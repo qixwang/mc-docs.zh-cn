@@ -1,27 +1,25 @@
 ---
-title: 如何为容器启用 Azure Monitor | Docs
+title: 如何为容器启用 Azure Monitor | Microsoft Docs
 description: 本文介绍如何为容器启用和配置 Azure Monitor，以便了解容器的性能以及已识别的性能相关问题。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
 ms.author: v-lingwu
 origin.date: 11/18/2019
-ms.date: 12/04/2019
-ms.openlocfilehash: 0d6a75dbf259af366b3a4fdd0ac5545ddb6504c9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.date: 12/30/2019
+ms.openlocfilehash: 077b39bae7e2992dfe30ac59407fcc918116135c
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838967"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599929"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>如何为容器启用 Azure Monitor  
 
-本文概述了可用于为容器设置 Azure Monitor 的选项，这些选项用于监视部署到 Kubernetes 环境并托管在 [Azure Kubernetes 服务](/aks/)上的工作负荷的性能。
+本文概述了可用于为容器设置 Azure Monitor 的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置上的工作负荷的性能：
 
-可使用以下支持的方法为 AKS 的新部署，或是一个或多个现有部署启用适用于容器的 Azure Monitor：
+- [Azure Kubernetes 服务](/aks/) (AKS) 可以使用以下支持的方法为新的或一个或多个现有的 Kubernetes 部署启用用于容器的 Azure Monitor：
 
-* 借助 Azure 门户、Azure PowerShell 或 Azure CLI
+- 借助 Azure 门户、Azure PowerShell 或 Azure CLI
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -29,15 +27,15 @@ ms.locfileid: "74838967"
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请确保做好以下准备：
 
-* **Log Analytics 工作区。**
+- **Log Analytics 工作区。**
 
     用于容器的 Azure Monitor 支持在 Azure [产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) 中列出的区域中的 Log Analytics 工作区。
 
     可以在对新 AKS 群集启用监视时创建工作区，或者让加入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../learn/quick-create-workspace.md)来创建。 
 
-* 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../platform/manage-access.md)。
+- 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../platform/manage-access.md)。
 
-* 在 AKS 群集资源上，你是 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员。
+- 在 AKS 群集资源上，你是 **[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

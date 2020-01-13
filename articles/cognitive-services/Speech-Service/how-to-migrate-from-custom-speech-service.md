@@ -9,19 +9,19 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 10/01/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7e0abb23e7987141b1ab2d598b63e3bca91598c9
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 8539a7b7a581244feb99e71a83f0e77bd5ad640d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389510"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631116"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>从自定义语音服务迁移到语音服务
 
-本文介绍如何将应用程序从自定义语音服务迁移到语音服务。
+按照本文将应用程序从自定义语音服务迁移到语音服务。
 
 自定义语音服务现在是语音服务的一部分。 切换到语音服务可受益于最新的质量和功能更新。
 

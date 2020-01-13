@@ -1,22 +1,20 @@
 ---
-title: 如何通过 Ruby 使用队列存储 | Microsoft Docs
+title: 如何通过 Ruby 使用队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 用 Ruby 编写的相关示例。
-services: storage
 author: WenJason
-ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: ruby
-ms.topic: article
-origin.date: 12/08/2016
-ms.date: 12/02/2019
 ms.author: v-jay
-ms.component: queues
-ms.openlocfilehash: 632d4cf2d7b17dbbd6cb384ad59d8a472794bc29
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+origin.date: 12/08/2016
+ms.date: 01/06/2020
+ms.service: storage
+ms.subservice: queues
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: c1cd9353982a03980a0ddf0c30e036844fa844ee
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655417"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624140"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,7 +30,7 @@ ms.locfileid: "74655417"
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
-创建 Ruby 应用程序。 有关说明，请参阅[使用 Linux 应用服务创建 Ruby 应用](/app-service/containers/quickstart-ruby)。
+创建 Ruby 应用程序。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 要使用 Azure 存储，需下载和使用 Ruby Azure 包，其中包括与存储 REST 服务进行通信的一组方便的库。

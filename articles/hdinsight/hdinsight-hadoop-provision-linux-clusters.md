@@ -14,14 +14,14 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 09/27/2019
-ms.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 05142ebb383c4809375af081257dd556af1c2788
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 1481fea12827a19383c9d8d7eb27f40080ba7f6a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389528"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631101"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -59,7 +59,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 * [群集类型和配置](#cluster-types) 
 * [群集名称](#cluster-name)
 * [群集登录名和 SSH 用户名](#cluster-login-and-ssh-username)
-* [Location](#location)
+* [位置](#location)
 
 ## <a name="resource-group-name"></a>资源组名称
 
@@ -127,6 +127,7 @@ HDInsight 群集可以使用以下存储选项：
 * Azure Data Lake Storage Gen2
 * Azure 存储常规用途 v2
 * Azure 存储常规用途 v1
+* Azure 存储块 Blob（**仅支持作为辅助存储器**）
 > [!WARNING]
 > 不支持在 HDInsight 群集之外的其他位置使用其他存储帐户。
 

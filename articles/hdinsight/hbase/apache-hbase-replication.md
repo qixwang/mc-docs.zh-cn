@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 09/15/2018
-ms.date: 10/28/2019
+origin.date: 12/06/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 27a3d934c41223686ebe3497e8397f6660f20329
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 6e5b7eed0894fb73277b655c6ecd10371ae41ddd
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426069"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631105"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -73,7 +73,7 @@ ms.locfileid: "73426069"
 
 | 属性 | Value |
 |----------|-------|
-| Location | 美国西部 |
+| 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -90,7 +90,7 @@ ms.locfileid: "73426069"
 
 | 属性 | Value |
 |----------|-------|
-| Location | 美国东部 |
+| 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -279,6 +279,10 @@ sudo service bind9 status
 
 若要创建一个“联系人”表并在其中插入一些数据，请按照 [Apache HBase 教程  ：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明进行操作。
 
+> [!NOTE]
+> 如果要从自定义命名空间复制表，则需要确保也在目标群集上定义相应的自定义命名空间。
+>
+
 ## <a name="enable-replication"></a>启用复制
 
 以下步骤说明如何从 Azure 门户调用脚本操作脚本。 有关使用 Azure PowerShell 和 Azure 经典 CLI 运行脚本操作的信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
@@ -300,12 +304,14 @@ sudo service bind9 status
     
       > [!NOTE]
       > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
+      >
+      > 本演练假设 hn1 为活动头节点。 请检查群集以确定活动头节点。
 
 6. 选择“创建”  。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
-|Name|说明|
+|名称|说明|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -314,12 +320,12 @@ sudo service bind9 status
 
 可选参数：
 
-|Name|说明|
+|名称|说明|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-t、--table-list | 指定要复制的表。 例如：--table-list="table1;table2;table3"。 如果不指定表，将复制所有现有的 HBase 表。|
-|-m、--machine | 指定要在其中运行脚本操作的头节点。 值为 **hn0** 或 **hn1**，并且应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
+|-m、--machine | 指定要在其中运行脚本操作的头节点。 此值应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请慎用此选项。* 我们建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
 |-h、--help | 显示用法信息。 |
@@ -397,9 +403,13 @@ sudo service bind9 status
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
+> [!NOTE]
+> 如果要删除目标群集，请确保将其从源群集的对等列表中删除。 可以通过在源群集上的 hbase shell 中运行命令 remove_peer '1' 来完成此操作。 如果不这样做，源群集可能无法正常运行。
+>
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何在一个虚拟网络内部或者在两个虚拟网络之间设置 Apache HBase 复制。 若要了解有关 HDInsight 和 Apache HBase 的详细信息，请参阅以下文章：
+本文介绍了如何设置一个虚拟网络内部或者两个虚拟网络之间的 Apache HBase 复制。 若要了解有关 HDInsight 和 Apache HBase 的详细信息，请参阅以下文章：
 
 * [HDInsight 中的 Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase 概述](./apache-hbase-overview.md)
