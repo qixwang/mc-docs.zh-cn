@@ -1,21 +1,20 @@
 ---
 title: 用于 Azure 流分析的管理 .NET SDK
 description: 流分析管理 .NET SDK 入门。 了解如何设置和运行分析作业。 创建项目、输入、输出和转换。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 08/09/2019
+origin.date: 12/06/2018
 ms.date: 07/12/2019
-ms.openlocfilehash: e69772365995b0ef84207d386943d2ec64588606
-ms.sourcegitcommit: 3702f1f85e102c56f43d80049205b2943895c8ce
+ms.openlocfilehash: 3083ef5841f5e8be667bd78e56ef7c4882e321aa
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68969590"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857014"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过管理 .NET SDK 设置和运行使用 .NET 版流分析 API 的分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
@@ -27,7 +26,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 > [!NOTE]
 > 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始阅读本文前，必须完成以下要求：
 
 * 安装 Visual Studio 2019 或 2015。
@@ -54,7 +53,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 若要创建分析作业，请使用适用于 .NET 的流分析 API，首先设置项目。
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
-2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个用于 Azure 客户端身份验证。
+2. 在程序包管理器控制台中运行以下命令来安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个用于 Azure 客户端身份验证。
 
    ```powershell   
    Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 2.0.0

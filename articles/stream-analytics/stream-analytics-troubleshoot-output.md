@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析输出的故障排除
 description: 本文介绍了对 Azure 流分析作业中的输出连接进行故障排除的技巧。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: 0467cf3322357448bd9a5bcfa5946ec3f1e3c3fd
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 07470da7301f99d967f5991a5506ded2c4e31f28
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674739"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857992"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 

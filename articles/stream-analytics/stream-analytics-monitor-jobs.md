@@ -1,7 +1,6 @@
 ---
 title: 以编程方式监视和管理 Azure 流分析作业
 description: 本文说明如何以编程方式监视通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业。
-services: stream-analytics
 author: rockboyfor
 ms.author: v-yeche
 manager: digimobile
@@ -10,18 +9,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/20/2017
 ms.date: 05/07/2018
-ms.openlocfilehash: b4335b98f6e7c92fe8e2738644b1bdb887405ba3
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: c34e9bf49c1e24e707e78c74e9edef20ab22ca52
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169632"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856262"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
 本文说明如何对流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动执行此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始执行此过程之前，必须具备以下先决条件：
 
@@ -32,7 +31,7 @@ ms.locfileid: "70169632"
 ## <a name="create-a-project"></a>创建一个项目
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
-2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，将用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
+2. 在程序包管理器控制台中运行以下命令来安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是 Azure Monitor SDK，将用于启用监视功能。 最后一个是用于进行身份验证的 Azure Active Directory 客户端。
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics

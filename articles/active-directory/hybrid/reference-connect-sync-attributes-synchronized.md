@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步的属性 | Microsoft 文档
+title: Azure AD Connect 同步的属性 | Microsoft Docs
 description: 列出与 Azure Active Directory 同步的属性。
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-origin.date: 04/24/2019
-ms.date: 11/26/2019
+ms.date: 01/07/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba5644569e3f4c5a998954d536418289d7535e4e
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: f28bf3b4a820ed545b9d835e1247cd31b520f229
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655405"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777062"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -65,7 +64,7 @@ ms.locfileid: "74655405"
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| 说明 | | |X | |
+| description | | |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -186,7 +185,7 @@ ms.locfileid: "74655405"
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| 说明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -266,7 +265,7 @@ ms.locfileid: "74655405"
 | co |X |X | | |
 | company |X |X | | |
 | department |X |X | | |
-| 说明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -326,7 +325,7 @@ ms.locfileid: "74655405"
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | c |X |X | | |
 | cn |X | |X | |
-| 说明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
@@ -347,7 +346,7 @@ ms.locfileid: "74655405"
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
-| 说明 |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -430,12 +429,12 @@ ms.locfileid: "74655405"
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |筛选：从客户端回写本地筛选及在线安全和已阻止的发件人数据。 |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |筛选：从客户端回写本地筛选及在线安全和已阻止的发件人数据。 |
 | msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |启用统一消息 (UM) - 在线语音邮件：供 Microsoft Lync Server 集成用于向 Lync Server 本地指示用户在联机服务中有语音邮件。 |
-| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |诉讼数据保留：启用云服务来确定哪些用户正处于诉讼数据保留状态。 |
+| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |诉讼数据保留：启用云服务来确定哪些用户正处于诉讼数据保留状态。 |
 | ProxyAddresses| ProxyAddresses |X |X |X |只插入 Exchange Online 中的 x500 地址。 |
-| publicDelegates| ms-Exch-Public-Delegates  |X | | |允许向拥有本地 Exchange 邮箱的用户授予 Exchange Online 邮箱的 SendOnBehalfTo 权限。 需要 Azure AD Connect 内部版本 1.1.552.0 或更高版本。 |
+| publicDelegates| ms-Exch-Public-Delegates  |X | | |允许向拥有本地 Exchange 邮箱的用户授予 Exchange Online 邮箱的 SendOnBehalfTo 权限。 需要 Azure AD Connect 版本 1.1.552.0 或更高版本。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange 邮件公共文件夹
-如果选择启用 Exchange 邮件公用文件夹  ，这些属性将从本地 Active Directory 同步到 Azure AD。
+如果选择启用“Exchange 邮件公用文件夹”  ，这些属性将从本地 Active Directory 同步到 Azure AD。
 
 | 属性名称 | PublicFolder | 注释 |
 | --- | :---:| --- |
@@ -447,7 +446,7 @@ ms.locfileid: "74655405"
 | targetAddress | X |  |
 
 ## <a name="notes"></a>注释
-* 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 替代 ID 属性（例如 mail）将与 Azure AD 属性 userPrincipalName 同步。
+* 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 替代 ID 属性（例如 mail）会与 Azure AD 属性 userPrincipalName 同步。
 * 在上述列表中，对象类型 User 也适用于对象类型 iNetOrgPerson。  
 
 ## <a name="next-steps"></a>后续步骤

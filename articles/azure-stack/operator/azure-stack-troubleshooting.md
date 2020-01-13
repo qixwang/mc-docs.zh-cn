@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/16/2019
-ms.date: 11/18/2019
+origin.date: 11/05/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: prchint
-ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: d072230012008e7c1da7f3aa6f974fd4e60ce475
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: 9bd7dbcc1dad08a0c2912b0920131d3d1ee381a8
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020032"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737732"
 ---
 # <a name="azure-stack-troubleshooting"></a>Azure Stack 故障排除
 
@@ -55,7 +55,7 @@ ms.locfileid: "74020032"
 
 #### <a name="memory"></a>内存
 
-若要增加 Azure Stack 的总可用内存容量，可以添加内存。 在 Azure Stack 中，物理服务器也称为缩放单元节点。 属于单个缩放单元的所有缩放单元节点必须具有[相同的内存量](azure-stack-manage-storage-physical-memory-capacity.md)。
+若要增加 Azure Stack 的总可用内存容量，可以添加更多内存。 在 Azure Stack 中，物理服务器也称为缩放单元节点。 属于单个缩放单元的所有缩放单元节点必须具有[相同的内存量](azure-stack-manage-storage-physical-memory-capacity.md)。
 
 #### <a name="retention-period"></a>保留期
 
@@ -67,7 +67,7 @@ ms.locfileid: "74020032"
 
 #### <a name="manage-rbac"></a>管理 RBAC
 
-Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的读取者、所有者或参与者。
+Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的读者、所有者或参与者。
 
 * [Azure Stack 管理 RBAC](azure-stack-manage-permissions.md)
 
@@ -95,43 +95,7 @@ Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的�
 4. 使用 invoke-command 调用运行 get-azurestacklog -filterbyrole seedring
 5. 提取 seedring .zip，可以从运行 test-azurestack 的 ERCS 文件夹中获得验证报表
 
-有关详细信息，请参阅 [Azure Stack 诊断](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems)。
-
-## <a name="troubleshoot-deployment"></a>排查部署问题 
-### <a name="general-deployment-failure"></a>常见的部署失败
-如果安装期间发生失败，可以使用部署脚本的 -rerun 选项从失败的步骤重新开始部署。  
-
-### <a name="template-validation-error-parameter-osprofile-is-not-allowed"></a>不允许模板验证错误参数 osProfile
-
-如果在模板验证期间遇到错误消息，该消息指出系统不允许参数 'osProfile'，请确保对以下组件使用正确的 API 版本：
-
-- [计算](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
-- [网络](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
-
-若要将 VHD 从 Azure 复制到 Azure Stack，请使用 [AzCopy 7.3.0](/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)。 请联系供应商以解决映像本身的问题。 若要详细了解 Azure Stack 的 WALinuxAgent 要求，请参阅 [Azure LinuX 代理](azure-stack-linux.md#azure-linux-agent)。
-
-### <a name="deployment-fails-due-to-lack-of-external-access"></a>部署因缺少外部访问而失败
-如果部署在需要外部访问的阶段失败，则会返回一个异常，如以下示例所示：
-
-```
-An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
-   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
-   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
-```
-如果发生此错误，请查看[部署网络流量文档](deployment-networking.md)，确保满足所有最低的网络要求。 合作伙伴也可使用网络检查器工具（在合作伙伴工具包中提供）。
-
-其他部署失败通常是由于在连接到 Internet 上的资源时出现问题。
-
-若要验证能否连接到 Internet 上的资源，可以执行以下步骤：
-
-1. 打开 PowerShell。
-2. 通过 Enter-PSSession 连接到 WAS01 或任何 ERCs VM。
-3. 运行以下 cmdlet： 
-   ```powershell
-   Test-NetConnection login.chinacloudapi.cn -port 443
-   ```
-
-如果此命令失败，请验证TOR 交换机以及任何其他的网络设备是否已配置为[允许网络流量](azure-stack-network.md)。
+有关详细信息，请参阅 [Azure Stack 诊断](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
 
 ## <a name="troubleshoot-virtual-machines"></a>对虚拟机进行故障排除
 ### <a name="default-image-and-gallery-item"></a>默认映像和库项

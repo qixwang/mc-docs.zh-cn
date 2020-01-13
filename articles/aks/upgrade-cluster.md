@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3fe018c957f311e1bcb56607a922deadc32b7dfd
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 271a23a1937a341496cab5809acfc3e74bd6e185
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068851"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859842"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 

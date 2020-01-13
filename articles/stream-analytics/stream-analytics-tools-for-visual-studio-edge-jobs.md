@@ -1,7 +1,6 @@
 ---
 title: Visual Studio 中的 Azure 流分析 Edge 作业
 description: 本文介绍如何使用适用于 Visual Studio 的流分析工具在 IoT Edge 作业上创作、调试和创建流分析。
-services: stream-analytics
 author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: jasonh
@@ -9,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 11/19/2019
-ms.openlocfilehash: d6c7909ae7496b9fef28d0d5716e28da04243dcf
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 1ccd423b527feafcda12f09ca526ef6704fbbd83
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528215"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854662"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
 本教程介绍如何使用适用于 Visual Studio 的流分析工具。 了解如何创作、调试和创建流分析 Edge 作业。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -67,7 +66,7 @@ ms.locfileid: "74528215"
 
 |**类别**  | **命令**  |
 |---------|---------|
-|其他运算符 | <ul><li>分区依据</li><li>TIMESTAMP BY OVER</li><li>JavaScript UDF</li><li>用户定义的聚合 (UDA)</li><li>GetMetadataPropertyValue</li><li>在单个步骤中使用超过 14 个聚合</li></ul>   |
+|其他运算符 | <ul><li>PARTITION BY</li><li>TIMESTAMP BY OVER</li><li>JavaScript UDF</li><li>用户定义的聚合 (UDA)</li><li>GetMetadataPropertyValue</li><li>在单个步骤中使用超过 14 个聚合</li></ul>   |
 
 在门户中创建流分析 Edge 作业时，如果未使用支持的运算符，编译器会自动发出警告。
 

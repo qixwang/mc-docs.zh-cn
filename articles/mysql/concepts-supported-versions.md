@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 09/12/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: c1f9ee8e5775e1de4e15ee47ba7dcbf59837ce38
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 12/12/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: cba28a16c1ff17f8b80b12efd3e1c3196d8cb34d
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142130"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776737"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
 
@@ -30,20 +30,17 @@ Azure Database for MySQL 目前支持以下版本：
 
 ## <a name="mysql-version-56"></a>MySQL 版本 5.6
 
-Bug 修复版本：5.6.44
+Bug 修复版本：5.6.45
 
-要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-44.html)。
+要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-45.html)。
 
 ## <a name="mysql-version-57"></a>MySQL 版本 5.7
 
-Bug 修复版本：5.7.26
+Bug 修复版本：5.7.27
 
-要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-26.html)。
+要详细了解此版本中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html)。
 
 ## <a name="mysql-version-80"></a>MySQL 版本 8.0
-
-> [!IMPORTANT]
-> MySQL 8.0 目前以预览版提供。
 
 Bug 修复版本：8.0.15
 
