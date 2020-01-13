@@ -1,26 +1,19 @@
 ---
-title: 使用 Azure 移动应用在 iOS 中添加身份验证
-description: 了解如何使用 Azure 移动应用通过各种标识提供者（包括 Microsoft 帐户和 Azure Active Directory）对 iOS 应用的用户进行身份验证。
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
+title: 在 iOS 上添加身份验证
+description: 了解如何使用 Azure 移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 iOS 应用的用户进行身份验证。
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: cb56f148ae1b3ec499f7dfc71e013142419c56a2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0ab6436c60e844c6407fb19cabd2daab31cd0099
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334623"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600550"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Add authentication to your iOS app（将身份验证添加到 iOS 应用）
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -220,7 +213,7 @@ ms.locfileid: "75334623"
 
 应用服务身份验证使用 Apple 应用间通信。  有关此主题的更多详细信息，请参阅 [Apple 文档][2]
 <!-- URLs. -->
-[2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html [Azure 门户]: https://portal.azure.cn
+[2]\: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html [Azure 门户]: https://portal.azure.cn
 
 [iOS 快速入门]: app-service-mobile-ios-get-started.md
 
