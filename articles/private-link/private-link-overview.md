@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: overview
 origin.date: 11/04/2019
-ms.date: 01/06/2020
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc4c5050253fce5290d67717f77123ea0e8c346e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 674866c0665b5a3048f70c29d577126f67ac4f4d
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631649"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859187"
 ---
 # <a name="what-is-azure-private-link-preview"></a>什么是 Azure 专用链接？ （预览版）
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储、Azure Cosmos DB 和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Azure 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络 (VNet) 中创建自己的[专用链接服务](private-link-service-overview.md)，并将其专门提供给自己的客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
@@ -74,7 +74,9 @@ Azure 专用链接与 Azure Monitor 集成，使你能够在存储帐户中存�
 - [使用 PowerShell 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-powershell.md)
 - [使用 CLI 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-cli.md)
 - [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
-- [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
+    
+    <!--Not Available on - [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)-->
+    
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
 
 <!-- Update_Description: new article about private link overview -->
