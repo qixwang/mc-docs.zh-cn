@@ -21437,6 +21437,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/container-instances/container-instances-mounting-azure-files-volume.md",
+      "redirect_url": "/container-instances/container-instances-volume-azure-files",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/media-services/latest/cae-experimental.md",
       "redirect_url": "/media-services/latest/content-aware-encoding",
       "redirect_document_id": true
