@@ -17296,6 +17296,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/cognitive-services/Speech-Service/how-to-customize-voice-font.md",
+      "redirect_url": "/cognitive-services/speech-service/how-to-custom-voice-create-voice",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/cognitive-services/Speech-Service/how-to-create-custom-endpoint.md",
       "redirect_url": "/cognitive-services/speech-service/how-to-custom-speech-deploy-model",
       "redirect_document_id": false
