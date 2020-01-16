@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/29/2019
-ms.date: 01/06/2020
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: fcded57739ff237ff0280958ebf56d308d675a20
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: e942193855588f58285dfedb074fd9544c2a3af8
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599810"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859211"
 ---
 # <a name="test-vm-network-latency"></a>测试 VM 网络延迟
 
