@@ -1,27 +1,18 @@
 ---
-title: 还原应用 - Azure 应用服务
-description: 了解如何从备份还原应用。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: 从备份中还原应用
+description: 了解如何从备份还原应用。 某些链接的数据库可通过一个操作与应用一起还原。
 ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 07/06/2016
-ms.date: 01/21/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: e3e09f5da34ae08f4eb54088e8aa4e49def9929d
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: 62a466174a12b24c4a1b1c63f5b91dbbe0f91a22
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806679"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600213"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文演示如何在 [Azure 应用服务](../app-service/overview.md)中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：

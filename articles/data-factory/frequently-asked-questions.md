@@ -1,37 +1,34 @@
 ---
-title: Azure 数据工厂：常见问题解答 | Microsoft Docs
+title: 'Azure 数据工厂：常见问题 '
 description: 获取有关 Azure 数据工厂的常见问题的解答。
 services: data-factory
 documentationcenter: ''
 author: WenJason
-manager: digimonbile
-ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
+ms.author: v-jay
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 06/27/2018
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: 996d762c360a01a2b9f6cfc124aea9d9b2f4002f
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: 5b0b4adf090e8bb300838aac8e0160236a9eda1d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569832"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624061"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
 
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
-数据工厂是一项完全托管的基于云的数据集成服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
+数据工厂是一项完全托管的、基于云的数据集成 ETL 服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
 
-使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 可以使用 Azure HDInsight 和 SQL Server Integration Services (SSIS) Integration Runtime 等计算服务来处理和转换数据。 
+使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 ADF 还使用 Azure HDInsight 和 SQL Server Integration Services (SSIS) 集成运行时等计算服务来支持用于手动编码转换的外部计算引擎。 
 
 使用数据工厂，可在基于 Azure 的云服务或自己的自承载计算环境（例如 SSIS、SQL Server 或 Oracle）中执行数据处理。 创建用于执行所需操作的管道后，可将它计划为定期运行（例如每小时、每天或每周）、按时间范围运行或者在发生某个事件时触发。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
 
 ### <a name="control-flows-and-scale"></a>控制流和缩放 
-为了支持现代数据仓库中的各种集成流和模式，数据工厂启用了新的灵活的数据管道模型。 这样，就可以在数据管道的控制流中对条件语句进行建模，设置分支，以及在这些流中或跨这些流显式传递参数。 控制流还包含通过活动调度将数据转换到外部执行引擎以及数据流功能，包括通过复制活动大规模移动数据。
+为了支持现代数据仓库中的各种集成流和模式，数据工厂启用了新的灵活的数据管道模型。 这样，就可以在数据管道的控制流中对条件语句进行建模，设置分支，以及在这些流中或跨这些流显式传递参数。 控制流还包含通过活动调度将数据转换到外部执行引擎，包括通过复制活动大规模移动数据。
 
 使用数据工厂可自由地对数据集成所需的任何流样式进行建模，可按需调度或按计划重复调度这些样式。 此模型支持的几个常见流有：   
 

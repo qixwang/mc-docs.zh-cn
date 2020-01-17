@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义 RESTful 技术配置文件 | Microsoft Docs
+title: 在自定义策略中定义 RESTful 技术配置文件
+titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义 RESTful 技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 11/28/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: a400ba29c3f7e9fbbd816d2dc79bbbe6dd5786ad
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: cbbc2f6d5c7ca35b9fcdf5537c415647613d4194
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655298"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624011"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -61,6 +61,43 @@ Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供�
 
 **InputClaimsTransformations** 元素可以包含用于修改输入声明，或者先生成新输入声明，再将其发送到 REST API 的 **InputClaimsTransformation** 元素集合。
 
+## <a name="send-a-json-payload"></a>发送 JSON 有效负载
+
+使用 REST API 技术配置文件可以将复杂的 JSON 有效负载发送到终结点。
+
+发送复杂的 JSON 有效负载：
+
+1. 生成具备 [GenerateJson](json-transformations.md) 声明转换的 JSON 有效负载。
+1. 在 REST API 技术配置文件中执行以下操作：
+    1. 添加具有对 `GenerateJson` 声明转换的引用的输入声明转换。
+    1. 将 `SendClaimsIn` 元数据选项设置为 `body`
+    1. 将 `ClaimUsedForRequestPayload` 元数据选项设置为包含 JSON 有效负载的声明名称。
+    1. 在输入声明中，添加对包含 JSON 有效负载的输入声明的引用。
+
+以下示例 `TechnicalProfile` 使用第三方电子邮件服务（在本例中为 SendGrid）发送验证电子邮件。
+
+```XML
+<TechnicalProfile Id="SendGrid">
+  <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://api.sendgrid.com/v3/mail/send</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
+  </CryptographicKeys>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="GenerateSendGridRequestBody" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="sendGridReqBody" />
+  </InputClaims>
+</TechnicalProfile>
+```
+
 ## <a name="output-claims"></a>输出声明
 
 **OutputClaims** 元素包含 REST API 返回的声明列表。 可能需要将策略中定义的声明名称映射到 REST API 中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含 REST API 标识提供者不会返回的声明。
@@ -87,9 +124,10 @@ Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供�
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
-| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）能够访问你的服务。 |
+| AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `ClientCertificate`（建议）值表示 REST API 使用客户端证书身份验证来限制访问。 只有包含相应证书的服务（例如 Azure AD B2C）才能访问你的 API。 `Bearer` 值表示 REST API 使用客户端 OAuth2 持有者令牌来限制访问。 |
 | SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 |
 | ClaimsFormat | 否 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 |
+| ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明名称。 |
 | DebugMode | 否 | 在调试模式下运行技术配置文件。 在调试模式下，REST API 可以返回更多信息。 请参阅“返回错误消息”部分。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
@@ -125,6 +163,27 @@ Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供�
   </Metadata>
   <CryptographicKeys>
     <Key Id="ClientCertificate" StorageReferenceId="B2C_1A_B2cRestClientCertificate" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
+如果身份验证类型设置为 `Bearer`，则 **CryptographicKeys** 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| BearerAuthenticationToken | 否 | OAuth 2.0 持有者令牌。 |
+
+```XML
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.chinacloudsites.cn/api/identity/signup</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
   </CryptographicKeys>
 </TechnicalProfile>
 ```
@@ -173,19 +232,4 @@ public class ResponseContent
 ```
 
 <!-- Update_Description: wording update -->
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

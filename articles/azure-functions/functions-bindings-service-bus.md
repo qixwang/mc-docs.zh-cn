@@ -1,23 +1,17 @@
 ---
 title: Azure Functions 的 Azure 服务总线绑定
 description: 了解如何在 Azure Functions 中使用 Azure 服务总线触发器和绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
-ms.service: azure-functions
 ms.topic: reference
-origin.date: 04/01/2017
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: aab0d12a02d8fa17864cb32a265eaf95c4f01f43
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 843ea4be401a77df10b44cc16cac626b6d777b09
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178966"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624283"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -31,12 +25,12 @@ ms.locfileid: "74178966"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet 包 3.x 版中提供了服务总线绑定。 [azure-functions-servicebus-extension](https://github.com/Azure/azure-functions-servicebus-extension) GitHub 存储库中提供了此包的源代码。
 
 > [!NOTE]
-> 版本 2.x 不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 版本 2.x 基于 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)，但不处理队列管理。
+> 版本 2.x 及更高版本不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 这些版本基于不处理队列管理的 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -275,13 +269,13 @@ module.exports = function(context, myQueueItem) {
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |类型  | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction  | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name  | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 中，此属性不可用，因为存储 SDK 不支持管理操作。|
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为存储 SDK 的最新版本不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -294,7 +288,7 @@ module.exports = function(context, myQueueItem) {
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
 * `BrokeredMessage` - 使用 [BrokeredMessage.GetBody\<T>()](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供反序列化消息。
 
-这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
+这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
 在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题消息。 服务总线消息作为字符串或 JSON 对象传递到函数中。
 
@@ -571,18 +565,18 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |类型  | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction  | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name  | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
+|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
-|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 中，此属性不可用，因为存储 SDK 不支持管理操作。|
+|**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为存储 SDK 的最新版本不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 Azure Functions 1.x 中，如果队列尚不存在并且 `accessRights` 设置为 `manage`，则运行时会创建队列。 在 Functions 版本 2.x 中，队列或主题必须已存在，如果指定了不存在的队列或主题，则函数将失败。 
+在 Azure Functions 1.x 中，如果队列尚不存在并且 `accessRights` 设置为 `manage`，则运行时会创建队列。 在 Functions 版本 2.x 及更高版本中，队列或主题必须已存在；如果指定了不存在的队列或主题，则函数将失败。 
 
 在 C# 和 C# 脚本中，可以为输出绑定使用以下参数类型：
 
@@ -590,7 +584,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `out byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `out BrokeredMessage` - 如果函数退出时参数值为 null，Functions 不创建消息（适用于 Functions 1.x）
-* `out Message` - 如果函数退出时参数值为 null，Functions 不创建消息（适用于 Functions 2.x）
+* `out Message` - 如果函数退出时参数值为 null，Functions 不创建消息（适用于 Functions 2.x 及更高版本）
 * `ICollector<T>` 或 `IAsyncCollector<T>` - 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
 
 使用 C# 函数时：
@@ -614,7 +608,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的设置。 有关全局配置设置的详细信息，请参阅 [Azure Functions 版本的 host.json 参考](functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
@@ -638,7 +632,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |属性  |默认 | 说明 |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|true|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。|
+|autoComplete|是|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。|
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。|
 

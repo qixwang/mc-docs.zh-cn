@@ -6,15 +6,15 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
 origin.date: 07/18/2019
-ms.date: 09/30/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: bensack
-ms.openlocfilehash: 82370aa69729b4730523d4ccaeec4f8297f4c4a2
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 4d487cfacfa26288bcd920c14227c9d9c6f81f1e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306678"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624037"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen2 中的数据
 
@@ -28,6 +28,7 @@ ms.locfileid: "71306678"
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 > * 一个采用分层命名空间的存储帐户。 按[这些](data-lake-storage-quickstart-create-account.md)说明创建一个。
 > 阅读本文的前提是已创建名为 `myadlsg2` 的帐户。
+> * 系统会授予你以下存储帐户角色之一：Blob 数据读取器  、Blob 数据参与者  或 Blob 数据所有者  。
 > * 名为 `Drivers.txt` 的示例数据文件位于存储帐户中。
 > 可以从 [Azure Data Lake Git 存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)下载此示例，然后将该文件上传到存储帐户。
 > * **Power BI Desktop**。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45331) 进行下载。 

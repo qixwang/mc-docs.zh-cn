@@ -1,23 +1,21 @@
 ---
-title: Azure 数据工厂中的管道和活动 | Microsoft Docs
+title: Azure 数据工厂中的管道和活动
 description: 了解有关 Azure 数据工厂中的管道和活动的信息。
 services: data-factory
 documentationcenter: ''
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 06/12/2018
-ms.date: 10/14/2019
-ms.openlocfilehash: 7a499cc5ff72d6f2bdf24a79200c1364673b599f
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+origin.date: 11/19/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: c7d6422e3d4f8bcfbbd3d85ba618487ce2a0470d
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275532"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623537"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 
@@ -28,13 +26,14 @@ ms.locfileid: "72275532"
 
 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建紧商业智能 (BI) 报告解决方案。
 
-数据工厂支持三种类型的活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](control-flow-web-activity.md)。 每个活动可获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
+数据工厂包含三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](control-flow-web-activity.md)。 每个活动可获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
 
 ![数据集、活动和管道之间的关系](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 创建数据集后，可将其与管道中的活动一起使用。 例如，数据集可以是复制活动或 HDInsightHive 活动的输入/输出数据集。 有关数据集的详细信息，请参阅 [Azure 数据工厂中的数据集](concepts-datasets-linked-services.md)一文。
 
 ## <a name="data-movement-activities"></a>数据移动活动
+
 数据工厂中的复制活动可以将数据从源数据存储复制到接收器数据存储。 数据工厂支持本部分中的表中列出的数据存储。 来自任何源的数据都可以写入到任何接收器。 单击某个数据存储即可了解如何将数据复制到该存储，以及如何从该存储复制数据。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
@@ -52,23 +51,28 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [Hadoop 流式处理](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 数据仓库或 SQL Server
-[自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 
 有关详细信息，请参阅[数据转换活动](transform-data.md)一文。
 
-## <a name="control-activities"></a>控制活动
+## <a name="control-flow-activities"></a>控制流活动
 支持以下控制流活动：
 
 控制活动 | 说明
 ---------------- | -----------
-[Execute Pipeline 活动](control-flow-execute-pipeline-activity.md) | Execute Pipeline 活动允许数据工厂管道调用另一个管道。
-[ForEach 活动](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
-[Web 活动](control-flow-web-activity.md) | Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
-[Lookup 活动](control-flow-lookup-activity.md) | Lookup 活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步被后续活动所引用。
-[Get Metadata 活动](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
-[Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
+[追加变量](control-flow-append-variable-activity.md) | 向现有数组变量中添加值。
+[执行管道](control-flow-execute-pipeline-activity.md) | Execute Pipeline 活动允许数据工厂管道调用另一个管道。
+[Filter](control-flow-filter-activity.md) | 将筛选器表达式应用于输入数组
+[对每一个](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
+[获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
 [If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。
+[Lookup 活动](control-flow-lookup-activity.md) | Lookup 活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
+[设置变量](control-flow-set-variable-activity.md) | 设置现有变量的值。
+[Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
+[验证活动](control-flow-validation-activity.md) | 确保管道仅在存在引用数据集、满足指定条件或已超时时才继续执行。
 [Wait 活动](control-flow-wait-activity.md) | 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。
+[Web 活动](control-flow-web-activity.md) | Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
+[Webhook 活动](control-flow-webhook-activity.md) | 使用 Webhook 活动，调用终结点并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
 
 ## <a name="pipeline-json"></a>管道 JSON
 下面介绍如何以 JSON 格式定义管道：
@@ -83,7 +87,10 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
         [
         ],
         "parameters": {
-         }
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
     }
 }
 ```
@@ -91,9 +98,11 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 标记 | 说明 | 类型 | 必须
 --- | ----------- | ---- | --------
 name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
-说明 | 指定描述管道用途的文本。 | String | 否
+description | 指定描述管道用途的文本。 | String | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 参数 | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
+concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
+annotations | 与管道关联的标记的列表 | Array | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -124,8 +133,8 @@ name | 管道的名称。 指定一个名称，它表示管道要执行的操作
 标记 | 说明 | 必须
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
-说明 | 描述活动用途的文本 | 是
-type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
+description | 描述活动用途的文本 | 是
+type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对于 HDInsight 活动、存储过程活动为“是”。 <br/><br/>对其他活动均非必需
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
 policy | 影响活动运行时行为的策略。 该属性包括超时和重试行为。 如果未指定，将使用默认值。 有关详细信息，请参阅[活动策略](#activity-policy)部分。 | 否
@@ -189,8 +198,8 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 标记 | 说明 | 必须
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
-说明 | 描述活动用途的文本 | 是
-type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
+description | 描述活动用途的文本 | 是
+type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency)。 | 否
 

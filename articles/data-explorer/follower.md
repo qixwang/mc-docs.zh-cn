@@ -7,13 +7,13 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 7251c2b912f4ea415eba966debc752c72d808a40
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: 2541c843a67a99dae87bcb3ca71e518c2e48f6ae
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335989"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630958"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -39,11 +39,12 @@ ms.locfileid: "75335989"
 
 ### <a name="attach-a-database-using-c"></a>使用 C# 附加数据库
 
-**所需的 NuGet**
+#### <a name="needed-nugets"></a>所需的 NuGet
 
 * 安装 [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
 * 安装[用于身份验证的 Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)。
 
+#### <a name="code-example"></a>代码示例
 
 ```Csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -75,6 +76,54 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 };
 
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
+```
+
+### <a name="attach-a-database-using-python"></a>使用 Python 附加数据库
+
+#### <a name="needed-modules"></a>所需的模块
+
+```
+pip install azure-common
+pip install azure-mgmt-kusto
+```
+
+#### <a name="code-example"></a>代码示例
+
+```python
+from azure.mgmt.kusto import KustoManagementClient
+from azure.mgmt.kusto.models import AttachedDatabaseConfiguration
+from azure.common.credentials import ServicePrincipalCredentials
+import datetime
+
+#Directory (tenant) ID
+tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+#Application ID
+client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+#Client Secret
+client_secret = "xxxxxxxxxxxxxx"
+follower_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+leader_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
+kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
+
+follower_resource_group_name = "followerResouceGroup"
+leader_resouce_group_name = "leaderResouceGroup"
+follower_cluster_name = "follower"
+leader_cluster_name = "leader"
+attached_database_Configuration_name = "adc"
+database_name  = "db" # Can be specific database name or * for all databases
+default_principals_modification_kind  = "Union"
+location = "China East"
+cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resouce_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
+
+attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location)
+
+#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板附加数据库
@@ -196,7 +245,7 @@ var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseCo
 
 ### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>从后继群集中分离已附加的后继数据库
 
-后继群集可按如下所示分离任何附加的数据库：
+后继群集可按如下所示拆离任何附加的数据库：
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -248,11 +297,83 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
+## <a name="detach-the-follower-database-using-python"></a>使用 Python 拆离后继数据库
+
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>从后继群集中分离已附加的后继数据库
+
+后继群集可按如下所示拆离任何附加的数据库：
+
+```python
+from azure.mgmt.kusto import KustoManagementClient
+from azure.common.credentials import ServicePrincipalCredentials
+import datetime
+
+#Directory (tenant) ID
+tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+#Application ID
+client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+#Client Secret
+client_secret = "xxxxxxxxxxxxxx"
+follower_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
+kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
+
+follower_resource_group_name = "followerResouceGroup"
+follower_cluster_name = "follower"
+attached_database_configurationName = "adc"
+
+#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
+```
+
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>从先导群集中分离已附加的后继数据库
+
+先导群集可按如下所示分离任何附加的数据库：
+
+```python
+
+from azure.mgmt.kusto import KustoManagementClient
+from azure.mgmt.kusto.models import FollowerDatabaseDefinition
+from azure.common.credentials import ServicePrincipalCredentials
+import datetime
+
+#Directory (tenant) ID
+tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+#Application ID
+client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+#Client Secret
+client_secret = "xxxxxxxxxxxxxx"
+follower_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+leader_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
+kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
+
+follower_resource_group_name = "followerResourceGroup"
+leader_resource_group_name = "leaderResourceGroup"
+follower_cluster_name = "follower"
+leader_cluster_name = "leader"
+attached_database_configuration_name = "adc"
+location = "China East"
+cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
+
+
+#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
+```
+
 ## <a name="manage-principals-permissions-and-caching-policy"></a>管理主体、权限和缓存策略
 
 ### <a name="manage-principals"></a>管理主体
 
-附加数据库时，请指定**默认的主体修改类型**。 默认设置会保留[已授权主体](https://docs.microsoft.com/azure/kusto/management/access-control/index#authorization)的先导数据库集合
+附加数据库时，请指定“默认主体修改类型”  。 默认设置会保留[已授权主体](https://docs.microsoft.com/azure/kusto/management/access-control/index#authorization)的先导数据库集合
 
 |**种类** |**说明**  |
 |---------|---------|

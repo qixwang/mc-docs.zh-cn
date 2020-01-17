@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 09/28/2019
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 05f9a95b81b1043bba9a35f4a02acd334dab5273
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: f70de3bedbd0ecbe7c11f6feadd5d36bd14ce1ab
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847136"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623745"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -36,15 +35,16 @@ ms.locfileid: "72847136"
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>创建 Azure AD B2C 租户
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-1. 请确保使用的是包含订阅的目录。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。 使用 Azure 帐户登录，该帐户至少分配有[参与者](../role-based-access-control/built-in-roles.md)角色（位于订阅中或订阅的资源组中）。
 
-    在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含你的订阅的目录。  此目录不同于将包含 Azure AD B2C 租户的其他目录。
+1. 选择包含订阅的目录。
 
-    ![“目录 + 订阅”筛选器，其中已选择订阅租户](./media/tutorial-create-tenant/portal-01-select-directory.png)
+    在 Azure 门户工具栏中选择“目录 + 订阅”图标，然后选择包含订阅的目录  。 此目录不同于将包含 Azure AD B2C 租户的其他目录。
 
-1. 在 Azure 门户的左上角，选择“创建资源”  。
-1. 搜索并选择“Active Directory B2C”  ，然后选择“创建”  。
+    ![订阅租户，“目录 + 订阅”筛选器，其中已选择订阅租户](./media/tutorial-create-tenant/portal-01-pick-directory.png)
+
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
+1. 搜索“Azure Active Directory B2C”  ，然后选择“创建”  。
 1. 选择“创建新的 Azure AD B2C 租户”。 
 
     ![已在 Azure 门户中选择“创建新的 Azure AD B2C 租户”](./media/tutorial-create-tenant/portal-02-create-tenant.png)
@@ -83,16 +83,16 @@ ms.locfileid: "72847136"
 
 使用此可选步骤可以更轻松地在所有后续教程中选择 Azure AD B2C 租户。
 
-如果你不希望每次使用租户时都要在“所有服务”中搜索“Azure AD B2C”，可将该资源加入收藏夹。  以后，可以从左侧的“收藏夹”菜单中选择该资源，以快速浏览到你的 Azure AD B2C 租户。 
+如果不希望每次使用租户时都要在“所有服务”中搜索“Azure AD B2C”，可将该资源加入收藏夹。   以后，可以从门户菜单的“收藏夹”部分选择该资源，以快速浏览到你的 Azure AD B2C 租户。 
 
 只需执行此操作一次。 在执行这些步骤之前，请确保已根据上一部分[选择 B2C 租户目录](#select-your-b2c-tenant-directory)中所述切换到包含你的 Azure AD B2C 租户的目录。
 
-1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“所有服务”。 
-1. 在搜索文本框中输入 *Azure AD B2C*
-1. 选择**星形**图标将 Azure AD B2C 添加到收藏夹
-1. “Azure AD B2C”现在会显示在左侧的“收藏夹”菜单中。   如果需要，可以在列表中选择该资源并将其拖到更靠上的位置，如下图所示：
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 在 Azure 门户菜单中，选择“所有服务”  。
+1. 在“所有服务”  搜索框中，搜索“Azure AD B2C”  ，将鼠标悬停在搜索结果上，然后在工具提示中选择星形图标。 “Azure AD B2C”现在会显示在 Azure 门户中的“收藏夹”下。  
+1. 如果要更改新收藏的位置，请转到 Azure 门户菜单，选择“Azure AD B2C”  ，然后将其上移或下移到所需的位置。
 
-![在 Azure 门户中将 Azure AD B2C 添加到收藏夹的步骤](./media/tutorial-create-tenant/portal-08-favorite-b2c.png)
+    ![Azure AD B2C、“收藏夹”菜单、Azure 门户](./media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
 ## <a name="next-steps"></a>后续步骤
 

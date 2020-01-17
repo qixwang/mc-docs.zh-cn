@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 09/06/2019
-ms.date: 11/25/2019
+origin.date: 12/02/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9814aa27234521d40a72aedd66979b840b3cf391
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 6b6895520a7dd3d49abb8d617fd7723276b1ca98
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179039"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630939"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音数据
 
@@ -38,9 +38,11 @@ ms.locfileid: "74179039"
 3. 单击“添加测试”。 
 4. 选择“检查质量(仅音频数据)”。  为测试提供名称和说明，然后选择你的音频数据集。
 5. 选择最多两个要测试的模型。
-6. 单击“创建”。 
+6. 单击**创建**。
 
 成功创建测试后，可以并排比较模型。
+
+[!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>并排进行模型比较
 

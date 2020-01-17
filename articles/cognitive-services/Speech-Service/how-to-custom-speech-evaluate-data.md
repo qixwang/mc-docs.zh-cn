@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 11/06/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 026ec9e9d62a06811ca6e9a49bee5ca486761fad
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: f404337e2e11f4d8730a3ceab37dd7ad00460b42
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179089"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630943"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音准确度
 
@@ -57,7 +57,7 @@ ms.locfileid: "74179089"
 3. 单击“添加测试”。 
 4. 选择“评估准确度”。  为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
 5. 选择最多两个要测试的模型。
-6. 单击“创建”。 
+6. 单击**创建**。
 
 成功创建测试后，可以并排比较结果。
 

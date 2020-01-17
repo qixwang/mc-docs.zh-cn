@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 11/06/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0088ee70d9835f9e36b3052adaba35c23d05c823
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 15a335137e70b6db2c6c5356d9974643c612c0bc
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179049"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630944"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
 

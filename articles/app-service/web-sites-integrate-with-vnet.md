@@ -1,40 +1,49 @@
 ---
-title: 将应用与 Azure 虚拟网络集成 - Azure 应用服务
-description: 演示如何将 Azure 应用服务中的应用连接到新的或现有的 Azure 虚拟网络
-services: app-service
-documentationcenter: ''
+title: 将应用与 Azure 虚拟网络进行集成
+description: 了解如何将 Azure 应用服务与 Azure 虚拟网络进行集成，以及如何将应用连接到虚拟网络。
 author: ccompy
-manager: stefsch
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 07/25/2019
-ms.date: 08/12/2019
+origin.date: 08/21/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: ad71c76c93806595fc6e9d667939b2d95b7c589d
-ms.sourcegitcommit: 855ac08e4d9518ea5fd3277b07a1bcdb0b3e46cc
+ms.openlocfilehash: 90fb5459874062e93ad60777f8a2d3b57e72cd13
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230977"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600218"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](overview.md)中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。
 
-<!-- not support VNet Integration feature-->
-<!-- no add VNet (preview) in portal-->
+Azure 应用服务有两种变体。 
 
-本文档介绍 VNet 集成功能，该功能用于多租户应用服务。
+1. 支持除独立定价计划以外的全部定价计划的多租户系统
+2. 部署到 VNet 中且支持独立定价计划应用的应用服务环境 (ASE)
 
-有一种形式的 VNet 集成功能：
+本文档介绍用于多租户应用服务的两种 VNet 集成功能。 如果应用在[应用服务环境][ASEintro]中，则该应用已处于 VNet 中且不需要使用 VNet 集成功能来获取同一 VNet 中的资源。 有关所有应用服务网络功能的详细信息，请参阅[应用服务网络功能](networking-features.md)
 
-* 允许与其他区域的 VNet 集成或与经典 VNet 集成。 此功能需要将虚拟网关部署到 VNet 中。 这是基于点到站点 VPN 的功能。
+VNet 集成功能有两种形式
 
-VNet 集成功能允许 Web 应用访问虚拟网络中的资源，但不允许通过虚拟网络对 Web 应用进行入站专用访问。 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 VNet 集成只是为了从应用对 VNet 进行出站调用。 
+1. 其中一个版本可实现与同一区域中 VNet 的集成。 这种形式的功能需要在同一区域的 VNet 中有一个子网。 此功能仍为预览版，但支持用于 Windows 应用生产工作负荷，下面是一些注意事项。
+2. 另一个版本可实现与其他区域中的 VNet 或经典 VNet 的集成。 这种版本的功能需要将虚拟网关部署到 VNet 中。 这是基于点到站点 VPN 的功能，仅受 Windows 应用的支持。
+
+一个应用一次只能使用一种形式的 VNet 集成功能。 那么，问题来了，你应该使用哪种功能？ 在许多情况下，可以使用任意一种。 但是，主要区别是：
+
+| 问题  | 解决方案 | 
+|----------|----------|
+| 想要访问同一区域中的某个 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 区域 VNet 集成 |
+| 想要访问经典 VNet 或另一区域的 VNet 中的资源 | 需要网关的 VNet 集成 |
+| 想要跨 ExpressRoute 访问 RFC 1918 终结点 | 区域 VNet 集成 |
+| 想要跨服务终结点访问资源 | 区域 VNet 集成 |
+
+两种功能都不允许跨 ExpressRoute 访问非 RFC 1918 地址。 目前，需使用 ASE 才能那样做。
+
+使用区域 VNet 集成不能将 VNet 连接到本地，也不能配置服务终结点。 这是单独的网络配置。 区域 VNet 集成只是允许应用跨这些连接类型进行调用。
+
+无论使用何种版本，VNet 集成功能都允许 Web 应用访问虚拟网络中的资源，但不允许通过虚拟网络对 Web 应用进行入站专用访问。 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 VNet 集成只是为了从应用对 VNet 进行出站调用。 
 
 VNet 集成功能：
 
@@ -47,6 +56,9 @@ VNet 集成不支持某些功能，其中包括：
 * 装载驱动器
 * AD 集成 
 * NetBios
+
+<!-- ## Regional VNet Integration  -->
+<!-- Add VNet (preview) not available in mc portal-->
 
 ## <a name="gateway-required-vnet-integration"></a>需要网关的 VNet 集成 
 
@@ -141,12 +153,15 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 ## <a name="accessing-on-premises-resources"></a>访问本地资源
 应用可以通过与具备站点到站点连接的 VNet 集成来访问本地资源。 如果使用网关所需的 VNet 集成，需要使用点到站点地址块更新本地 VPN 网关路由。 先设置站点到站点 VPN，接着应通过用于配置该 VPN 的脚本来正确地设置路由。 如果在创建站点到站点地址后才添加点到站点 VPN，则需手动更新路由。 具体操作信息取决于每个网关，在此不作说明。 不能使用站点到站点 VPN 连接配置 BGP。
 
+区域 VNet 集成功能无需经过其他配置即可访问 VNet 和本地。 只需使用 ExpressRoute 或站点到站点 VPN 将 VNet 连接到本地。 
+
 > [!NOTE]
-> 需要网关的 VNet 集成功能不会将应用与包含 ExpressRoute 网关的 VNet 集成。 即使以[共存模式][VPNERCoex]配置 ExpressRoute 网关，VNet 集成也不会生效。
+> 需要网关的 VNet 集成功能不会将应用与包含 ExpressRoute 网关的 VNet 集成。 即使以[共存模式][VPNERCoex]配置 ExpressRoute 网关，VNet 集成也不会生效。 如果需要通过 ExpressRoute 连接访问资源，则可以使用区域 VNet 集成功能或 VNet 中运行的[应用服务环境][ASE]。 
 > 
 > 
 
 ## <a name="peering"></a>对等互连
+如果对区域 VNet 集成使用对等互连，则不需要进行任何附加的配置。 
 
 如果结合对等互连使用网关所需的 VNet 集成，则需要配置几个附加的项。 若要配置对等互连以使用应用，请执行以下操作：
 
@@ -156,6 +171,7 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 
 
 ## <a name="pricing-details"></a>定价详细信息
+除 ASP 定价层的费用外，区域 VNet 集成功能不会产生额外的使用费。
 
 使用网关所需的 VNet 集成功能涉及到三种相关费用：
 
@@ -165,7 +181,7 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 
 
 ## <a name="troubleshooting"></a>故障排除
-虽然此功能容易设置，但这并不意味着你就不会遇到问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”->“Kudu”。 这相当于访问 [sitename].scm.chinacloudsites.cn。 打开后，转到“调试控制台”选项卡。若要访问 Azure 门户托管的控制台，请在应用中转到“工具”->“控制台”。 
+虽然此功能容易设置，但这并不意味着你就不会遇到问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”->“Kudu”。 此外，还可以通过 [sitename].scm.chinacloudsites.cn 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡。若要访问 Azure 门户托管的控制台，请在应用中转到“工具”->“控制台”。 
 
 #### <a name="tools"></a>工具
 由于存在安全约束，**ping**、**nslookup** 和 **tracert** 工具无法通过控制台来使用。 为了填补这方面的空白，我们添加了两种单独的工具。 为了测试 DNS 功能，我们添加了名为 nameresolver.exe 的工具。 语法为：
@@ -188,11 +204,16 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 
 如果这些方法未解决问题，请首先检查以下因素： 
 
+**区域 VNet 集成**
+* 目标是否为 RFC 1918 地址
+* 是否有 NSG 阻止了集成子网传出数据
+* 如果通过 ExpressRoute 或 VPN 传输，本地网关是否配置为将流量路由回 Azure？ 如果你可以访问 VNet 中的终结点但不能访问本地的终结点，则最好是检查这一点。
+
 **网关所需的 VNet 集成**
 * 点到站点地址范围是否在 RFC 1918 范围内 (10.0.0.0-10.255.255.255 / 172.16.0.0-172.31.255.255 / 192.168.0.0-192.168.255.255)？
 * 网关在门户中是否显示为已启动？ 如果网关处于关闭状态，则将其重新启动。
 * 证书是否显示正在同步，或者，你是否怀疑网络配置已更改？  如果证书未同步，或者你怀疑 VNet 配置存在与 ASP 不同步的更改，请单击“同步网络”。
-* 如果通过 ExpressRoute 或 VPN 传输，本地网关是否配置为将流量路由回到 Azure？ 如果你可以访问 VNet 中的终结点但不能访问本地的终结点，则最好是检查这一点。
+* 如果通过 ExpressRoute 或 VPN 传输，本地网关是否配置为将流量路由回 Azure？ 如果你可以访问 VNet 中的终结点但不能访问本地的终结点，则最好是检查这一点。
 
 调试网络问题很有难度，因为你看不到哪些因素正在阻止访问特定的“主机:端口”组合。 部分原因包括：
 
@@ -222,11 +243,12 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 * 在本地网关中未使用子网或点到站点地址范围配置路由
 * 网络安全组阻止点到站点 IP 范围中的 IP 进行访问
 * 本地防火墙阻止来自点到站点 IP 范围的流量
+* 正在尝试使用区域 VNet 集成功能访问非 RFC 1918 地址
 
 
 ## <a name="powershell-automation"></a>PowerShell 自动化
 
-可以使用 PowerShell 将应用服务与 Azure 虚拟网络集成。 对于准备好运行的脚本，请参阅[将 Azure 应用服务中的应用连接到 Azure 虚拟网络](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
+可以使用 PowerShell 将应用服务与 Azure 虚拟网络进行集成。 有关就绪可运行的脚本，请参阅 [Connect an app in Azure App Service to an Azure Virtual Network](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)（将 Azure 应用服务中的应用连接到 Azure 虚拟网络）。
 
 
 <!--Image references-->
@@ -246,9 +268,11 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 [VNETPricing]: https://www.azure.cn/pricing/details/vpn-gateway/
 [DataPricing]: https://www.azure.cn/pricing/details/data-transfer/
 [V2VNETP2S]: https://www.azure.cn/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
+[ASEintro]: environment/intro.md
+[ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
-
+[ASE]: environment/intro.md
 [creategatewaysubnet]: http://docs.azure.cn/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
 [creategateway]: http://docs.azure.cn/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: http://docs.azure.cn/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

@@ -1,36 +1,25 @@
 ---
-title: 管理应用服务计划 - Azure | Azure
-description: 了解如何执行不同的任务来管理应用服务计划。
+title: 管理应用服务计划
+description: 了解如何执行不同的任务来管理应用服务计划，如创建、移动、缩放和删除。
 keywords: 应用服务, azure 应用服务, 缩放, 应用服务计划, 更改, 创建, 管理
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 10/24/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 0d5badf5e2269e91638ddd185f88681b32abbd21
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 266ef45da00fcee1b7b840b2930e31d352cb3fdb
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555899"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600523"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
 [Azure 应用服务计划](overview-hosting-plans.md)提供应用服务应用需要运行的资源。 本指南介绍如何管理应用服务计划。
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
-
-<!-- > [!TIP] -->
-<!-- > If you have an App Service Environment, see [Create an App Service plan in an App Service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan). -->
 
 在创建应用时可以创建一个空的应用服务计划，也可以创建一个计划。
 

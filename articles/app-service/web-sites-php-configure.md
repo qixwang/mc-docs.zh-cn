@@ -1,26 +1,20 @@
 ---
-title: 配置 PHP 运行时 - Azure 应用服务
+title: 配置 PHP 运行时
 description: 了解如何为 Azure 应用服务配置默认 PHP 安装或添加自定义 PHP 安装。
-services: app-service
-documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: PHP
+ms.devlang: php
 ms.topic: article
 origin.date: 04/11/2018
-ms.date: 05/20/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 55b3bf5b522b704b2174ea34de943fa1a5584d45
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: edfddc4fe92cb5fe12f9928a14382a01efe8b64f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806717"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600215"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure 应用服务中配置 PHP
 

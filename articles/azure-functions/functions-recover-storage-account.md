@@ -1,24 +1,16 @@
 ---
 title: 如何排查 Azure Functions 运行时无法访问的问题。
 description: 了解如何排查存储帐户无效的问题。
-services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
-ms.service: azure-functions
-ms.workload: na
-ms.devlang: na
 ms.topic: article
-origin.date: 09/05/2018
-ms.date: 04/26/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 0206edcdca84e3b572d42363c2984a60d6b1225a
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.openlocfilehash: 81ea6b23b46d482783e280a597568fed1aa069f5
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64855172"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624274"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
@@ -39,6 +31,8 @@ ms.locfileid: "64855172"
 1. 存储帐户凭据无效
 1. 无法访问存储帐户
 1. 每日执行配额已满
+1. 应用受防火墙保护
+
 
 ## <a name="storage-account-deleted"></a>存储帐户已删除
 
@@ -78,6 +72,7 @@ ms.locfileid: "64855172"
 
 Function App 必须能够访问存储帐户。 阻止 Functions 访问存储帐户的常见问题是：
 
+* Function App 在部署到应用服务环境时，没有正确的网络规则来允许在存储帐户中传入和传出流量
 * 存储帐户防火墙已启用，但未配置为允许在 Functions 中传入和传出流量。 [在此处阅读有关存储帐户防火墙配置的详细信息](/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
 ## <a name="daily-execution-quota-full"></a>每日执行配额已满
@@ -87,6 +82,12 @@ Function App 必须能够访问存储帐户。 阻止 Functions 访问存储帐�
 * 若要进行验证，请在门户中检查“平台功能”>“Function App 设置”。 如果超过配额，则将看到以下消息
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * 删除配额并重启应用可解决此问题。
+
+## <a name="app-is-behind-a-firewall"></a>应用受防火墙保护
+
+如果函数应用托管在[内部负载均衡的应用服务环境](../app-service/environment/create-ilb-ase.md)中，并配置为阻止入站 Internet 流量，或者将[入站 IP 限制](/azure-functions/functions-networking-options#inbound-ip-restrictions)配置为阻止 Internet 访问，则无法访问函数运行时。 Azure 门户直接调用正在运行的应用以提取函数列表，同时对 KUDU 终结点发起 http 调用。 `Platform Features` 选项卡下的平台级别设置依然可用。
+
+* 若要验证 ASE 配置，请导航到 ASE 所在子网的 NSG，并验证入站规则是否允许来自要访问应用程序的计算机的公共 IP 的流量。 还可以通过连接到运行应用的虚拟网络的计算机或虚拟网络中运行的虚拟机使用门户。 [在此处阅读有关入站规则配置的详细信息](/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -100,7 +101,7 @@ Function App 必须能够访问存储帐户。 阻止 Functions 访问存储帐�
   介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
-* [详细了解 Azure 应用服务](../app-service/app-service-web-overview.md)  
+* [详细了解 Azure 应用服务](../app-service/overview.md)  
   Azure Functions 利用 Azure 应用服务执行核心功能，例如部署、环境变量和诊断。 
 
-<!-- Update_Description: update metedata properties -->
+<!-- Update_Description: wording update -->

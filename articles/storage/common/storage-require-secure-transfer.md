@@ -1,64 +1,68 @@
 ---
-title: 需要在 Azure 存储中安全传输 | Microsoft Docs
-description: 了解 Azure 存储的“需要安全传输”功能，以及如何启用它。
+title: 需要安全传输以确保安全连接
+titleSuffix: Azure Storage
+description: 了解如何对针对 Azure 存储的请求要求安全传输。 对存储帐户要求安全传输时，来自不安全连接的任何请求都会被拒绝。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 06/20/2017
-ms.date: 01/14/2019
+ms.topic: how-to
+origin.date: 12/12/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.component: common
-ms.openlocfilehash: d30fc0eb22bf2c027da49e9524b53bf9e62a7c82
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.reviewer: fryu
+ms.subservice: common
+ms.openlocfilehash: 3a3c6078c3db86b0e2ca202db43de76833c8cbfc
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626147"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624334"
 ---
-# <a name="require-secure-transfer-in-azure-storage"></a>在 Azure 存储中需要安全传输
+# <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
-“需要安全传输”选项通过仅允许来自安全连接的帐户请求，增强存储帐户安全性。 例如，在调用 REST API 访问存储帐户时，必须使用 HTTPS 进行连接。 “需要安全传输”拒绝使用 HTTP 的请求。
+可以通过为存储帐户设置“需要安全传输”属性，将存储帐户配置为仅接受来自安全连接的请求。  要求安全传输时，来自不安全连接的任何请求都会被拒绝。 Azure 建议你始终对所有存储帐户要求安全传输。
 
-使用 Azure 文件服务时，如果启用了“需要安全传输”，任何未加密的连接都会失败。 这包括使用 SMB 2.1、未加密的 SMB 3.0 以及某些版本的 Linux SMB 客户端的方案。 
+要求安全传输时，必须通过 HTTPS 调用 Azure 存储 REST API 操作。 通过 HTTP 发出的任何请求都会被拒绝。
 
-默认情况下，在使用 SDK 创建存储帐户时，将禁用“需要安全传输”选项。 在 Azure 门户中创建存储帐户时默认情况下会启用此选项。
+如果存储帐户需要安全传输，则在不加密的情况下通过 SMB 连接到 Azure 文件共享会失败。 不安全连接的示例包括通过 SMB 2.1、不加密的 SMB 3.0 或某些版本的 Linux SMB 客户端进行的连接。
+
+默认情况下，在 Azure 门户中创建存储帐户时，会启用“需要安全传输”  属性。 但是，在使用 SDK 创建存储帐户时，它是禁用的。
 
 > [!NOTE]
 > 由于 Azure 存储对自定义域名不支持 HTTPS，因此使用自定义域名时不应用此选项。 不支持经典存储帐户。
 
-## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>在 Azure 门户中启用“需要安全传输”
+## <a name="require-secure-transfer-in-the-azure-portal"></a>需要在 Azure 门户中进行安全传输
 
-在 [Azure 门户](https://portal.azure.cn)中创建存储帐户时，可启用“需要安全传输”设置。 也可以为现有存储帐户启用该设置。
+在 [Azure 门户](https://portal.azure.cn)中创建存储帐户时，可启用“需要安全传输”属性。  也可以为现有存储帐户启用该设置。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新的存储帐户需要安全传输
 
-1. 在 Azure 门户中打开“创建存储帐户”窗格。
-2. 在“需要安全传输”下，选择“启用”。
+1. 在 Azure 门户中打开“创建存储帐户”  窗格。
+1. 在“需要安全传输”  下，选择“启用”  。
 
    ![“创建存储帐户”边栏选项卡](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>对现有存储帐户需要安全传输
 
 1. 在 Azure 门户中选择现有存储帐户。
-2. 在存储帐户菜单窗格的“设置”下，选择“配置”。
-3. 在“需要安全传输”下，选择“启用”。
+1. 在存储帐户菜单窗格的“设置”  下，选择“配置”  。
+1. 在“需要安全传输”  下，选择“启用”  。
 
    ![“存储帐户”菜单窗格](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
-## <a name="enable-secure-transfer-required-programmatically"></a>以编程方式启用“需要安全传输”
+## <a name="require-secure-transfer-from-code"></a>在代码中要求安全传输
 
-若要以编程方式启用“需要安全传输”，请通过 REST API、工具或库使用存储帐户属性中的 supportsHttpsTrafficOnly 设置：
+若要以编程方式要求安全传输，请在存储帐户上设置 _supportsHttpsTrafficOnly_ 属性。 可以使用存储资源提供程序 REST API、客户端库或工具来设置此属性：
 
-* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts)（版本：2016-12-01）
-* [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)（版本：0.7）
-* [CLI](https://pypi.python.org/pypi/azure-cli-storage/2.0.11)版本：2.0.11）
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)（版本：1.1.0）
-* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview)（版本：6.3.0）
-* [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0)（版本：1.1.0）
-* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)（版本：0.11.0）
+* [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)
+* [CLI](/cli/storage/account)
+* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
+* [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
+* [Python SDK](https://pypi.org/project/azure-mgmt-storage)
+* [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)
 
-### <a name="enable-secure-transfer-required-setting-with-powershell"></a>使用 PowerShell 启用“需要安全传输”设置
+## <a name="require-secure-transfer-with-powershell"></a>要求通过 PowerShell 进行安全传输
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -69,53 +73,57 @@ ms.locfileid: "58626147"
  使用以下命令行检查该设置：
 
 ```powershell
-> Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
+Get-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : False
 ...
+
 ```
 
 使用以下命令行启用该设置：
 
 ```powershell
-> Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
 StorageAccountName     : {StorageAccountName}
 Kind                   : Storage
 EnableHttpsTrafficOnly : True
 ...
+
 ```
 
-### <a name="enable-secure-transfer-required-setting-with-cli"></a>使用 CLI 启用“需要安全传输”设置
+## <a name="require-secure-transfer-with-azure-cli"></a>要求通过 Azure CLI 进行安全传输
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
- 使用以下命令行检查该设置：
+ 使用以下命令检查该设置：
 
 ```azurecli
-> az storage account show -g {ResourceGroupName} -n {StorageAccountName}
+az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 {
   "name": "{StorageAccountName}",
   "enableHttpsTrafficOnly": false,
   "type": "Microsoft.Storage/storageAccounts"
   ...
 }
+
 ```
 
-使用以下命令行启用该设置：
+使用以下命令启用该设置：
 
 ```azurecli
-> az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
 {
   "name": "{StorageAccountName}",
   "enableHttpsTrafficOnly": true,
   "type": "Microsoft.Storage/storageAccounts"
   ...
 }
+
 ```
 
 ## <a name="next-steps"></a>后续步骤
-Azure 存储提供一整套安全功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。 有关详细信息，请转到[存储安全指南](storage-security-guide.md)。
-<!--Update_Desription: update PowerShell and CLI sample for enable "Secure transfer required" setting-->
+
+[适用于 Blob 存储的安全建议](../blobs/security-recommendations.md)

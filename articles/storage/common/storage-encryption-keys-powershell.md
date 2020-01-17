@@ -1,27 +1,28 @@
 ---
-title: 通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密
+title: 使用 PowerShell 配置客户管理的密钥
+titleSuffix: Azure Storage
 description: 了解如何使用 PowerShell 来配置客户管理的密钥用于 Azure 存储加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
-origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3fda92b8236b19938334b048ce07174cc2dd36d4
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: fcc730015566af2d2d4ceddda8b3b3a993fd4a3f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914435"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624151"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>通过 PowerShell 使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Key Vault。
+本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Azure Key Vault。 要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-powershell.md)。
 
 > [!IMPORTANT]
 > 使用带有 Azure 存储加密的客户管理密钥需要在密钥保管库上设置两个属性：“软删除”  和“不要清除”  。 默认情况下未启用这些属性。 若要启用这些属性，请使用 PowerShell 或 Azure CLI。
@@ -97,5 +98,5 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="next-steps"></a>后续步骤
 
-- [静态数据的 Azure 存储加密](storage-service-encryption.md) 
+- [静态数据的 Azure 存储加密](storage-service-encryption.md)
 - [什么是 Azure Key Vault？](/key-vault/key-vault-overview)

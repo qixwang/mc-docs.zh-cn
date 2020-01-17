@@ -4,17 +4,17 @@ description: 了解如何创建生命周期策略规则，以将陈旧数据从�
 author: WenJason
 ms.author: v-jay
 origin.date: 05/21/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: c52b5b887d97e4d2e8dbe3a08e7e7b2348ac9d77
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 5198158220cf28a65812097c624888fa1c4f7270
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328652"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623621"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -52,10 +52,12 @@ ms.locfileid: "74328652"
 * [Azure CLI](/cli/install-azure-cli)
 * [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
-本文介绍如何使用门户和 PowerShell 方法管理策略。  
+可以完整读取或写入策略。 不支持部分更新。 
 
 > [!NOTE]
 > 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过为受信任的 Azure 服务提供例外来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](/storage/common/storage-network-security#exceptions)中的“例外”部分。
+
+本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -68,7 +70,7 @@ ms.locfileid: "74328652"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-2. 选择“所有资源”，然后选择你的存储帐户  。
+2. 在 Azure 门户中，搜索并选择你的存储帐户。 
 
 3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改规则   。
 
@@ -89,7 +91,7 @@ ms.locfileid: "74328652"
 #### <a name="azure-portal-code-view"></a>Azure 门户代码视图
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-2. 选择“所有资源”，然后选择你的存储帐户  。
+2. 在 Azure 门户中，搜索并选择你的存储帐户。
 
 3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改策略   。
 

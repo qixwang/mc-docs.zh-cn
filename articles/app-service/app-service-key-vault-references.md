@@ -1,23 +1,18 @@
 ---
-title: Key Vault 引用 - Azure 应用服务 | Azure
-description: Azure 应用服务和 Azure Functions 中的 Azure Key Vault 引用的概念性引用和安装指南
-services: app-service
+title: 使用 Key Vault 引用
+description: 了解如何使用 Key Vault 引用设置 Azure 应用服务和 Azure Functions。 向应用程序代码提供 Key Vault 机密。
 author: mattchenderson
-manager: jeconnoc
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 59591cb5c843d089d8aba130d4ebeb3940124182
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: d3a95da9ea312442278b97378f8cc79c8e51e006
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556016"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600524"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 

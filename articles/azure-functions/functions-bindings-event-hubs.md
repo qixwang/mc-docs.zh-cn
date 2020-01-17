@@ -1,24 +1,17 @@
 ---
 title: Azure Functions 的 Azure 事件中心绑定
 description: 了解如何在 Azure Functions 中使用 Azure 事件中心绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
-origin.date: 11/08/2017
-ms.date: 03/20/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: fac59905a49ce78fe45faff81c005bda6540063c
-ms.sourcegitcommit: 5c73061b924d06efa98d562b5296c862ce737cc7
+ms.openlocfilehash: 7f9f46b5f395f4e57a9d6fb4010caf592ac51260
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58256365"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624007"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -34,9 +27,9 @@ ms.locfileid: "58256365"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-对于 Functions 2.x，请使用 [Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) 包 3.x 版。
+对于 Functions 2.x 及更高版本，请使用版本 3.x 的 [Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) 包。
 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]

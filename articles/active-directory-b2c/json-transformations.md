@@ -1,28 +1,94 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的 JSON 声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的 JSON 声明转换示例。
+title: 自定义策略的 JSON 声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的 JSON 声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 04b4ea837fe36cb0a295acf2a653a96e6d7b8b76
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 471359ef3c2ba6a289374286176eb04e41df0cfb
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847103"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623773"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用标识体验框架架构的 JSON 声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+
+## <a name="generatejson"></a>GenerateJson
+
+使用声明值或常量生成 JSON 字符串。 点表示法后面的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数都解释为 JSON 数组的索引，而非整数则解释为 JSON 对象的索引。
+
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，声明值将插入到其中。 |
+| InputParameter | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，常量字符串值将插入到其中。 |
+| OutputClaim | outputClaim | string | 生成的 JSON 字符串。 |
+
+以下示例基于“email”和“otp”的声明值以及常量字符串生成 JSON 字符串。
+
+```XML
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-4c56ffb40fa648b1aa6822283df94f60"/>
+    <InputParameter Id="from.email" DataType="string" Value="service@contoso.com"/>
+    <InputParameter Id="personalizations.0.subject" DataType="string" Value="Contoso account email verification code"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+以下声明转换输出一个 JSON 字符串声明，该声明将作为发送到 SendGrid （第三方电子邮件提供程序）的请求正文。 JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 点表示法中的数字表示数组。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。
+
+- 输入声明：
+  - **email**,  转换声明类型  **personalizations.0.to.0.email**: "someone@example.com"
+  - **otp**, 转换声明类型 **personalizations.0.dynamic_template_data.otp** "346349"
+- 输入参数：
+  - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
+  - **from.email**: "service@contoso.com"
+  - **personalizations.0.subject** "Contoso 帐户电子邮件验证码"
+- 输出声明：
+  - **requestBody**:JSON 值
+
+```JSON
+{
+  "personalizations": [
+    {
+      "to": [
+        {
+          "email": "someone@example.com"
+        }
+      ],
+      "dynamic_template_data": {
+        "otp": "346349",
+        "verify-email" : "someone@example.com"
+      },
+      "subject": "Contoso account email verification code"
+    }
+  ],
+  "template_id": "d-989077fbba9746e89f3f6411f596fb96",
+  "from": {
+    "email": "service@contoso.com"
+  }
+}
+```
 
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
@@ -67,7 +133,7 @@ ms.locfileid: "72847103"
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | jsonSourceClaim | string | 由声明转换用于获取声明的 ClaimTypes。 |
-| InputParameter | errorOnMissingClaims | 布尔值 | 指定如果缺少一个声明是否引发错误。 |
+| InputParameter | errorOnMissingClaims | boolean | 指定如果缺少一个声明是否引发错误。 |
 | InputParameter | includeEmptyClaims | string | 指定是否包含空声明。 |
 | InputParameter | jsonSourceKeyName | string | 元素键名称 |
 | InputParameter | jsonSourceValueName | string | 元素值名称 |

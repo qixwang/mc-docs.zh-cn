@@ -1,26 +1,21 @@
 ---
-title: 配置 Windows Java 应用 - Azure 应用服务 | Azure
-description: 了解如何将 Java 应用配置为在 Azure 应用服务中的默认 Windows 实例上运行。
+title: 配置 Windows Java 应用
+description: 了解如何将 Java 应用配置为在 Azure 应用服务中的 Windows VM 实例上运行。 本文介绍最常见的配置任务。
 keywords: azure 应用服务, web 应用, windows, oss, java
-services: app-service
 author: jasonfreeberg
-manager: jeconnock
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 origin.date: 04/12/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: afe876e6ca187acf687072f44a369ae1acaf5bd8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: cbb516611f2995000980d3a361dc1a297ffdcd45
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335730"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600497"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 

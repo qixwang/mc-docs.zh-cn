@@ -1,29 +1,32 @@
 ---
-title: 使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限 | Microsoft Docs
+title: 使用 Active Directory 授予对 Blob 和队列的访问权限
+titleSuffix: Azure Storage
 description: 使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 08/02/2019
-ms.date: 10/28/2019
+origin.date: 12/12/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a34fe46931cd9f83715f8cdffb75c68adc66f858
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 6e3e3552e2f07d908d2232b745fd0c8c90b08fce
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914404"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624161"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Blob 和队列的访问权限
 
-Azure 存储支持使用 Azure Active Directory (AD) 授予对 Blob 和队列存储的请求权限。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 可以使用令牌对用户要求访问 Blob 或队列存储中资源的请求进行授权。
+Azure 存储支持使用 Azure Active Directory (Azure AD) 授予对 Blob 和队列存储的请求权限。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 然后，令牌可用于对针对 Blob 或队列存储的请求进行授权。
 
-与共享密钥授权和共享访问签名 (SAS) 相比，使用 Azure AD 返回的 OAuth 2.0 令牌对用户或应用程序授权具有更高的安全性和易用性。 使用 Azure AD 时，不需将帐户访问密钥与代码存储在一起，因此没有潜在的安全漏洞风险。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 Azure 建议尽量对 Azure 存储应用程序使用 Azure AD 授权。
+与共享密钥授权相比，使用 Azure AD 对针对 Azure 存储的请求进行授权提供了更高的安全性和易用性。 Microsoft 建议尽可能将 Azure AD 授权与 Blob 和队列应用程序一起使用，以最大程度地减少共享密钥中固有的潜在安全漏洞。
 
-可以针对所有公共区域和国家/地区云的所有常规用途帐户和 Blob 存储帐户使用 Azure AD 进行授权。 仅通过 Azure 资源管理器部署模型创建的存储帐户支持 Azure AD 授权。 Azure 表存储不支持通过 Azure AD 进行授权。
+可以针对所有公共区域和国家/地区云的所有常规用途帐户和 Blob 存储帐户使用 Azure AD 进行授权。 仅通过 Azure 资源管理器部署模型创建的存储帐户支持 Azure AD 授权。
+
+Blob 存储还支持创建通过 Azure AD 凭据签名的共享访问签名 (SAS)。 有关详细信息，请参阅[向具有共享访问签名的数据授予有限的访问权限](storage-sas-overview.md)。
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>适用于 Blob 和队列的 Azure AD 概述
 

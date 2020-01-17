@@ -1,31 +1,37 @@
 ---
-title: 静态数据的 Azure 存储加密 | Microsoft Docs
+title: 静态数据的 Azure 存储加密
 description: Azure 存储在将数据保存到云之前会自动对其进行加密，以此保护数据。 可以依赖于使用 Azure 托管的密钥来加密存储帐户，或者，可以使用自己的密钥来管理加密。
 services: storage
 author: WenJason
 ms.service: storage
-origin.date: 10/02/2019
-ms.date: 11/25/2019
+origin.date: 11/26/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 70b56bf4f10ed522515f073ef9e77d134f400382
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 9609c7ca30f0bee6275bec803a7219fb7ebdccc1
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328746"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624048"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
-Azure 存储在将数据保存到云时会自动加密数据。 加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大块加密法之一）以透明方式进行加密和解密，并符合 FIPS 140-2 规范。 Azure 存储加密法类似于 Windows 上的 BitLocker 加密法。
+Azure 存储在将数据保存到云时会自动加密数据。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
 
-将针对所有新的存储帐户启用 Azure 存储加密，但不能禁用加密。 由于数据默认受到保护，因此无需修改代码或应用程序，即可利用 Azure 存储加密。
+## <a name="about-azure-storage-encryption"></a>关于 Azure 存储加密
+
+Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大块加密法之一）以透明方式进行加密和解密，并符合 FIPS 140-2 规范。 Azure 存储加密法类似于 Windows 上的 BitLocker 加密法。
+
+已为所有新存储帐户（包括资源管理器和经典存储帐户）启用 Azure 存储加密。 无法禁用 Azure 存储加密。 由于数据默认受到保护，因此无需修改代码或应用程序，即可利用 Azure 存储加密。
 
 不管存储帐户的性能层（标准或高级）或部署模型（Azure 资源管理器或经典）是什么，都会将其加密。 所有 Azure 存储冗余选项都支持加密，存储帐户的所有副本都会加密。 所有 Azure 存储资源（包括 Blob、磁盘、文件、队列和表）都会加密。 所有对象元数据也会加密。
 
 加密不影响 Azure 存储的性能。 Azure 存储加密不会产生额外的费用。
+
+2017 年 10 月 20 日后写入 Azure 存储的每个块 Blob、追加 Blob 或页 Blob 均已加密。 在此日期之前创建的 Blob 继续由后台进程加密。 若要强制对 2017 年 10 月 20 日之前创建的 Blob 进行加密，可以重写 Blob。 若要了解如何检查 Blob 的加密状态，请参阅 [检查 Blob 的加密状态](../blobs/storage-blob-encryption-status.md)。
 
 有关 Azure 存储加密的底层加密模块的详细信息，请参见[加密 API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
 
@@ -33,7 +39,7 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 可以依赖于使用 Azure 托管的密钥来加密存储帐户，或者，可以使用自己的密钥来管理加密。 如果你选择使用自己的密钥来管理加密，则可以采用两种做法：
 
-- 可以指定客户管理的密钥用于加密和解密存储帐户中的所有数据。  客户管理的密钥用于加密存储帐户中所有服务内的所有数据。
+- 可以使用 Azure 密钥保管库指定客户管理的密钥，用于对 Blob 存储和 Azure 文件中的数据进行加密和解密  。
 - 可以在 Blob 存储操作中指定客户提供的密钥。  对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。
 
 下表比较了 Azure 存储加密的密钥管理选项。
@@ -49,15 +55,15 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 以下部分更详细地介绍了每个密钥管理选项。
 
-### <a name="azure-managed-keys"></a>Azure 托管的密钥
+## <a name="azure-managed-keys"></a>Azure 托管的密钥
 
 存储帐户默认使用 Azure 托管的加密密钥。 可以在 [Azure 门户](https://portal.azure.cn)的“加密”部分查看存储帐户的加密设置，如下图所示。 
 
 ![查看使用 Microsoft 托管密钥加密的帐户](media/storage-service-encryption/encryption-microsoft-managed-keys.png)
 
-## <a name="customer-managed-keys"></a>客户管理的密钥
+## <a name="customer-managed-keys-with-azure-key-vault"></a>客户管理的密钥与 Azure Key Vault
 
-可以选择使用自己的密钥在存储帐户级别管理 Azure 存储加密。 在存储帐户级别指定客户管理的密钥时，该密钥将用于加密和解密存储帐户中的所有数据，包括 Blob、队列、文件和表数据。  使用客户管理的密钥可以更灵活地创建、轮换、禁用和撤销访问控制。 还可以审核用于保护数据的加密密钥。
+可以使用自己的密钥在存储帐户级别管理 Azure 存储加密。 当在存储帐户级别指定客户管理的密钥时，该密钥用于保护和控制对存储帐户的根加密密钥的访问，而根加密密钥又用于加密和解密所有 Blob 和文件数据。 使用客户管理的密钥可以更灵活地创建、轮换、禁用和撤销访问控制。 还可以审核用于保护数据的加密密钥。
 
 必须使用 Azure Key Vault 来存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
@@ -73,26 +79,52 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 4. Azure 存储使用 Azure Key Vault 中的客户密钥包装帐户加密密钥。
 5. 对于读/写操作，Azure 存储将向 Azure Key Vault 发送包装和解包帐户加密密钥的请求，以执行加密和解密操作。
 
-若要撤销对存储帐户中客户管理的密钥的访问权限，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](/cli/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问，因为 Azure 存储帐户无法访问加密密钥。
+### <a name="enable-customer-managed-keys-for-a-storage-account"></a>为存储帐户启用客户管理的密钥
 
-[Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)不支持客户管理的密钥。
+当为存储帐户启用客户管理的密钥加密时，Azure 存储会使用关联的密钥保管库中的客户密钥包装帐户加密密钥。 启用客户管理的密钥不会影响性能，并且会立即用新密钥对帐户加密，而不会有任何时间延迟。
 
-若要了解如何将客户管理的密钥与 Azure 存储配合使用，请参阅以下文章之一：
+新的存储帐户始终使用 Microsoft 管理的密钥进行加密。 当创建帐户时，无法启用客户管理的密钥。 客户管理的密钥存储在 Azure Key Vault 中，并且必须使用访问策略对密钥保管库进行预配，这些策略将密钥权限授予与存储帐户关联的托管标识。 托管标识仅在存储帐户创建后可用。
 
-- [通过 Azure 门户配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-portal.md)
-- [通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-powershell.md)
-- [在 Azure CLI 中将客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-cli.md)
+要了解如何将客户管理的密钥与 Azure 密钥保管库配合使用来对 Azure 存储进行加密，请参阅以下文章之一：
+
+- [通过 Azure 门户使用密钥保管库配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-portal.md)
+- [通过 PowerShell 使用密钥保管库配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-powershell.md)
+- [通过 Azure CLI 使用密钥保管库配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识，后者是 Azure Active Directory (Azure AD) 的一项功能。 在 Azure 门户中配置客户管理的密钥时，系统会在幕后自动将一个托管标识分配到你的存储帐户。 如果随后将订阅、资源组或存储帐户从一个 Azure AD 目录移到另一个目录，与存储帐户关联的托管标识不会传输到新租户，因此客户管理的密钥可能不再起作用。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”  。  
+
+### <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户管理的密钥存储在 Azure 密钥保管库
+
+若要在存储帐户上启用客户管理的密钥，必须使用 Azure 密钥保管库来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性   。
+
+密钥保管库必须与存储帐户位于同一订阅中。 Azure 存储使用 Azure 资源的托管标识向密钥保管库进行身份验证，以便执行加密和解密操作。 托管标识当前不支持跨目录方案。
+
+### <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
+
+可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 轮换密钥后，需要更新存储帐户以使用新的密钥 URI。 若要了解如何更新存储帐户以在 Azure 门户中使用新版本的密钥，请参阅[使用 Azure 门户配置 Azure 存储的客户管理的密钥](storage-encryption-keys-portal.md)中标题为“更新密钥版本”的部分  。
+
+轮换密钥不会触发存储帐户中数据的重新加密。 用户无需执行任何其他操作。
+
+### <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
+
+若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) 或 [Azure 密钥保管库 CLI](/cli/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问，因为 Azure 存储帐户无法访问加密密钥。
+
+### <a name="customer-managed-keys-for-azure-managed-disks-preview"></a>Azure 托管磁盘的客户管理的密钥（预览版）
+
+客户管理的密钥也可用于管理 Azure 托管磁盘（预览版）的加密。 客户管理的密钥对托管磁盘的行为不同于对 Azure 存储资源的行为。 有关详细信息，请参阅适用于 Windows 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
 
 ## <a name="customer-provided-keys-preview"></a>客户提供的密钥（预览版）
 
 对 Azure Blob 存储发出请求的客户端可以选择在单个请求中提供加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥（预览版）可以存储在 Azure Key Vault 或另一密钥存储中。
 
+有关如何为对 Blob 存储的请求指定客户提供的密钥的示例，请参阅[使用 .NET 为对 Blob 存储的请求指定客户提供的密钥](../blobs/storage-blob-customer-provided-key.md)。 
+
 ### <a name="encrypting-read-and-write-operations"></a>加密读取和写入操作
 
-当客户端应用程序在请求中提供加密密钥时，Azure 存储将在读取和写入 Blob 数据时以透明方式执行加密和解密。 加密密钥的 SHA-256 哈希将连同 Blob 内容一起写入，用于验证针对该 Blob 的所有后续操作是否使用相同的加密密钥。 Azure 存储不会存储或管理客户端连同请求一起发送的加密密钥。 加密或解密过程完成后，会立即以安全方式丢弃该密钥。
+当客户端应用程序在请求中提供加密密钥时，Azure 存储将在读取和写入 Blob 数据时以透明方式执行加密和解密。 Azure 存储会将加密密钥的 SHA-256 哈希与 Blob 的内容一起写入。 哈希用于验证对 Blob 的所有后续操作是否都使用相同的加密密钥。 
+
+Azure 存储不会存储或管理客户端连同请求一起发送的加密密钥。 加密或解密过程完成后，会立即以安全方式丢弃该密钥。
 
 当客户端使用客户提供的密钥创建或更新 Blob 时，针对该 Blob 的后续读取和写入请求也必须提供该密钥。 如果在针对已使用客户提供的密钥加密的 Blob 的请求中未提供该密钥，则请求将会失败并返回错误代码 409（冲突）。
 
@@ -141,61 +173,9 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 >
 > 请务必在 Azure Key Vault 等安全密钥存储中，保护在对 Blob 存储发出的请求中提供的加密密钥。 如果你尝试在不使用加密密钥的情况下对容器或 Blob 执行写入操作，该操作将会失败，并且你会失去对象访问权限。
 
-### <a name="example-use-a-customer-provided-key-to-upload-a-blob-in-net"></a>示例：在 .NET 中使用客户提供的密钥上传 Blob
-
-以下示例创建客户提供的密钥，并使用该密钥上传 Blob。 该代码将上传一个块，然后提交块列表以将 Blob 写入 Azure 存储。 该密钥是通过设置 [CustomerProvidedKey](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.customerprovidedkey) 属性在 [BlobRequestOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 对象中提供的。
-
-该密钥是使用 [AesCryptoServiceProvider](https://docs.microsoft.com/dotnet/api/system.security.cryptography.aescryptoserviceprovider) 类创建的。 若要在代码中创建此类的实例，请添加引用 `System.Security.Cryptography` 命名空间的 `using` 语句：
-
-```csharp
-public static void UploadBlobWithClientKey(CloudBlobContainer container)
-{
-    // Create a new key using the Advanced Encryption Standard (AES) algorithm.
-    AesCryptoServiceProvider keyAes = new AesCryptoServiceProvider();
-
-    // Specify the key as an option on the request.
-    BlobCustomerProvidedKey customerProvidedKey = new BlobCustomerProvidedKey(keyAes.Key);
-    var options = new BlobRequestOptions
-    {
-        CustomerProvidedKey = customerProvidedKey
-    };
-
-    string blobName = "sample-blob-" + Guid.NewGuid();
-    CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
-
-    try
-    {
-        // Create an array of random bytes.
-        byte[] buffer = new byte[1024];
-        Random rnd = new Random();
-        rnd.NextBytes(buffer);
-
-        using (MemoryStream sourceStream = new MemoryStream(buffer))
-        {
-            // Write the array of random bytes to a block.
-            int blockNumber = 1;
-            string blockId = Convert.ToBase64String(Encoding.ASCII.GetBytes(string.Format("BlockId{0}",
-                blockNumber.ToString("0000000"))));
-
-            // Write the block to Azure Storage.
-            blockBlob.PutBlock(blockId, sourceStream, null, null, options, null);
-
-            // Commit the block list to write the blob.
-            blockBlob.PutBlockList(new List<string>() { blockId }, null, options, null);
-        }
-    }
-    catch (StorageException e)
-    {
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-        throw;
-    }
-}
-```
-
 ## <a name="azure-storage-encryption-versus-disk-encryption"></a>Azure 存储加密与磁盘加密
 
-使用 Azure 存储加密时，所有 Azure 存储帐户及其包含的资源（包括用于支持 Azure 虚拟机磁盘的页 Blob）都会经过加密。 此外，可以使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)来加密 Azure 虚拟机磁盘。 Azure 磁盘加密使用 Windows 上的行业标准 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 或者 Linux 上的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 来提供与 Azure Key Vault 集成的基于操作系统的加密解决方案。
+Azure 存储加密对支持 Azure 虚拟机磁盘的页 Blob 进行加密。 此外，还可以选择使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)来对所有 Azure 虚拟机磁盘（包括本地临时磁盘）进行加密。 Azure 磁盘加密使用 Windows 上的行业标准 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 或者 Linux 上的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 来提供与 Azure Key Vault 集成的基于操作系统的加密解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 

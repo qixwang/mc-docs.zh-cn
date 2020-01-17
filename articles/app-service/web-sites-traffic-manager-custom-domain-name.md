@@ -1,27 +1,18 @@
 ---
-title: 为使用流量管理器的应用配置 DNS 名称 - Azure 应用服务
-description: 为 Azure 应用服务中包含流量管理器（用于负载均衡）的 Web 应用使用自定义域名。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 使用流量管理器配置 DNS 名称
+description: 了解如何为与流量管理器集成以实现负载均衡的 Azure 应用服务应用配置自定义域。
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 08/17/2016
-ms.date: 12/31/2018
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c12b60b0ae61e100faf75ab26293c2634a60b38e
-ms.sourcegitcommit: bc34f62e6eef906fb59734dcc780e662a4d2b0a2
+ms.openlocfilehash: d33216e011a79bad26edf9de5c8c35ff0055d41c
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806859"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600220"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]

@@ -1,29 +1,20 @@
 ---
-title: 排查性能降低问题 - Azure 应用服务 | Azure
-description: 本文帮助排查 Azure 应用服务中应用性能缓慢的问题。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 对性能降低进行故障排除
+description: 了解如何解决 Azure 应用服务中的应用性能缓慢问题，包括监视应用行为、收集数据和缓解问题。
 tags: top-support-issue
 keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 08/03/2016
-ms.date: 09/05/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: f4442d0cb7c961ed7577754a7e94a3b1da82bcb2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8bc42d8b2fb981b43c623bc9ae65b530e32ed2b3
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336099"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600223"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](./overview.md)中应用性能缓慢的问题。

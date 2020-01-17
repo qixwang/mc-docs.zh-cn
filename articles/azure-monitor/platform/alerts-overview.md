@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 01/28/2018
 ms.date: 9/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e9d1199747710de112a604f114b2491fcfe990c0
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: eec717778137692d651612923159f4d3627de517
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838603"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599908"
 ---
 # <a name="overview-of-alerts-in-21vianet-azure"></a>世纪互联 Azure 中的警报概述 
 
@@ -154,7 +154,7 @@ ms.locfileid: "74838603"
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 资源类型 | 选择一个或多个资源类型。 只有包含选定类型中的目标的警报才会包含在视图中。 仅在指定资源组后，才显示此列。 |
-| Resource | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
+| 资源 | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
 | severity | 选择警报严重性，或选择“所有”以包含所有严重性的警报  。 |
 | 监视条件 | 选择一个监视条件，或选择“所有”以包括所有条件的警报  。 |
 | 警报状态 | 选择一个警报状态，或选择“所有”以包括所有状态的警报  。 |
@@ -186,19 +186,16 @@ ms.locfileid: "74838603"
 
 可以使用[警报管理 REST API](https://aka.ms/alert-management-api) 或[用于警报的 Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 查询针对订阅生成的警报。
 
-[用于警报的 Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 允许你大规模地查询警报实例。 如果必须管理跨多个订阅生成的警报，建议使用此 API。 
+用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理跨多个订阅生成的警报，建议使用此 API。 
 
-以下对 API 的示例请求返回一个订阅中的警报计数：
+以下对 Resource Graph REST API 的示例请求返回一个订阅中的警报计数：
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
 可以查询警报的[基本](alerts-common-schema-definitions.md#essentials)字段。

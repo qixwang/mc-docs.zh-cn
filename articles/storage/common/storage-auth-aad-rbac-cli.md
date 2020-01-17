@@ -1,23 +1,24 @@
 ---
-title: 在 Azure CLI 中使用 RBAC 管理 Azure AD 对 Blob 和队列数据的访问权限 - Azure 存储
-description: 通过 Azure CLI 使用基于角色的访问控制 (RBAC) 分配容器和队列的访问权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
+title: 使用 Azure CLI 为数据访问分配 RBAC 角色
+titleSuffix: Azure Storage
+description: 了解如何使用 Azure CLI 通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 07/25/2019
-ms.date: 09/09/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9db3f40f6c1e13a318c9190c726a175fc1dc39bf
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.openlocfilehash: 13d6c04c7a8581834e4319cbc644225e1e4283e6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209363"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624163"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>在 Azure CLI 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
+# <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 为 blob 和队列数据分配 RBAC 角色
 
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。
 
@@ -29,7 +30,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>确定资源范围 
+## <a name="determine-resource-scope"></a>确定资源范围
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 

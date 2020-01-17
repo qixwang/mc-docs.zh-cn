@@ -1,27 +1,18 @@
 ---
-title: 使用流量管理器控制流量 - Azure 应用服务
-description: 本文提供了有关 Azure 流量管理器的摘要信息，因为它与 Azure 应用服务相关。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: erikre
-editor: mollybos
+title: 使用流量管理器控制流量
+description: 查找配置 Azure 流量管理器以便将其与 Azure 应用服务集成的最佳做法。
 ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 02/25/2016
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 1f9f88dc8f08f3b2f2615ee933d14e2dcfb06e78
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3c22ac2fa75967d97009bfbb0f4e1980339b17b6
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336097"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600210"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]

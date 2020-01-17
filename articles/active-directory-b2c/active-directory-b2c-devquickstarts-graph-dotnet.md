@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 09/24/2019
-ms.date: 11/22/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 01898dec32226a3793dee0828de19ff5cf2c083a
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: d58ded2df1d32b1af8fc217d3fe5ed9f4ac8eb7a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461605"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623595"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
@@ -30,9 +29,6 @@ Azure Active Directory B2C (Azure AD B2C) 租户可能包含数千甚至数百�
 * 对于**自动化**的连续任务，应该使用提供有所需特权的某些类型的服务帐户来执行管理任务。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/service-to-service.md)的*应用程序 ID* 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
 
 本文介绍如何执行自动使用案例。 构建一个执行用户创建、读取、更新和删除 (CRUD) 操作的 .NET 4.5 `B2CGraphClient`。 客户端将拥有一个 Windows 命令行接口 (CLI)，允许用户调用各种方法。 然而，代码被编写为以非交互式自动化的方式表现。
-
->[!IMPORTANT]
-> **必须**使用 [Azure AD Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) 管理 Azure AD B2C 目录中的用户。 Azure AD Graph API 不同于 Microsoft Graph API。 在此 MSDN 博客文章中了解详细信息：[Microsoft Graph 或 Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,8 +60,9 @@ Azure Active Directory B2C (Azure AD B2C) 租户可能包含数千甚至数百�
 
 若要使应用程序能够删除用户或更新密码，需要向其授予“用户管理员”角色。 
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)，并切换到包含你的 Azure AD B2C 租户的目录。
-1. 在左侧菜单中选择“Azure AD B2C”  。 或者，选择“所有服务”  ，然后搜索并选择“Azure AD B2C”  。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 在“管理”下，选择“角色和管理员”。  
 1. 选择“用户管理员”角色。 
 1. 选择“添加分配”。 
@@ -364,7 +361,6 @@ B2C Update-User <object-id-of-user> <path-to-json-file>
 将此功能整合到自己的应用程序时，请记住有关 B2C 应用程序的几个要点：
 
 * 为应用程序授予租户中所需的权限。
-* 现在，需要使用 ADAL（而非 MSAL）获取访问令牌。 （也可以直接发送协议消息，而不使用库。）
 * 调用图形 API 时，请使用 `api-version=1.6`。
 * 创建和更新使用者用户时，需要几个属性，如上所述。
 

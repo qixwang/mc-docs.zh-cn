@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 04/23/2018
-ms.date: 12/10/2018
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.component: tables
-ms.openlocfilehash: 32d80c4fd8e7c8f9c30ce8b01e6cc372cbb0582f
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.subservice: tables
+ms.openlocfilehash: 838b34f917f42d6ab2e3b99e932c1c4792a839a3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67236577"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624057"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -129,7 +129,7 @@ ms.locfileid: "67236577"
 一个表包含一个或多个分区，为优化解决方案，所做的很多设计决策都将围绕选取合适的 **PartitionKey** 和 **RowKey** 而展开。 一个解决方案可以仅包含单个表，该表包含组织为分区的所有实体，但通常一个解决方案具有多个表。 表可帮助你在逻辑上组织实体，帮助你使用访问控制列表管理对数据的访问，并且可以使用单个存储操作删除整个表。  
 
 ## <a name="table-partitions"></a>表分区
-帐户名称、表名称和 **PartitionKey** 共同标识存储服务中表服务用于存储实体的分区。 作为实体寻址方案的一部分，分区定义事务的作用域（详见下方的[实体组事务](#entity-group-transactions)），并构成表服务缩放方式的基础。 有关分区的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。  
+帐户名称、表名称和 **PartitionKey** 共同标识存储服务中表服务用于存储实体的分区。 作为实体寻址方案的一部分，分区定义事务的作用域（详见下方的[实体组事务](#entity-group-transactions)），并构成表服务缩放方式的基础。 有关分区的详细信息，请参阅[表存储的性能与可伸缩性查检表](storage-performance-checklist.md)。  
 
 在表服务中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点负载过轻，表服务将该节点针对的分区范围*拆分*为不同节点；流量下降时，该服务可将无操作的节点的分区范围*合并*为单个节点。  
 
@@ -138,7 +138,7 @@ ms.locfileid: "67236577"
 ## <a name="entity-group-transactions"></a>实体组事务
 在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”  。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
 
-EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 存储帐户和表服务的可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。   
+EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../common/scalability-targets-standard-account.md)。 有关表服务的可伸缩性目标的详细信息，请参阅 [表存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 下表介绍了设计表服务解决方案时需要注意的一些关键值：  

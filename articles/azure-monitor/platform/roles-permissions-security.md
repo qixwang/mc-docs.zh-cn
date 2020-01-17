@@ -9,12 +9,12 @@ origin.date: 11/27/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: db7ba5bc8f8f3f54a9f7891c2e0ed75c50d28343
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: ed372a1414625019a512983abe6c195964da9674
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838573"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599911"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
@@ -117,7 +117,7 @@ New-AzRoleDefinition -Role $role
 监视数据（尤其是日志文件）可能包含敏感信息，例如 IP 地址或用户名。 Azure 中的监视数据采用三种基本形式：
 
 1. 活动日志，描述 Azure 订阅中的所有控制面操作。
-2. 诊断日志，由资源发出的日志文件。
+2. 资源日志，由资源发出的日志文件。
 3. 资源发出的指标。
 
 这三种类型的数据都可以存储在存储帐户中或流式传输到事件中心，存储帐户和事件中心属于通用 Azure 资源。 由于这些是通用的资源，因此创建、删除和访问它们是一项预留给管理员的权限操作。 我们建议对监视相关的资源采取以下做法，防止不当使用：
@@ -182,8 +182,8 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 
 ### <a name="secured-storage-accounts"></a>安全存储帐户 
 
-监视数据通常会写入到存储帐户。 你可能希望确保未经授权的用户无法访问复制到存储帐户的数据。 为了提高安全性，你可以通过限制存储帐户使用“所选网络”来锁定网络访问权限，以仅允许授权资源和受信任的 Azure 服务访问存储帐户。
-![“Azure 存储设置”对话框](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Azure 服务”之一。如果你允许受信任的 Azure 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 诊断日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从受保护的存储中读取日志。   
+监视数据通常会写入到存储帐户。 你可能希望确保未经授权的用户无法访问复制到存储帐户的数据。 为了提高安全性，你可以通过限制存储帐户使用“所选网络”来锁定网络访问权限，以仅允许授权资源和受信任的 Microsoft 服务访问存储帐户。
+![“Azure 存储设置”对话框](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Microsoft 服务”之一。如果你允许受信任的 Microsoft 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 资源日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从受保护的存储中读取日志。   
 
 
 有关详细信息，请参阅[网络安全性和 Azure 存储](../../storage/common/storage-network-security.md)

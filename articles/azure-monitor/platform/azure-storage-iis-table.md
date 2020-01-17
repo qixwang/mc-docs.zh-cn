@@ -7,16 +7,16 @@ manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
 origin.date: 04/12/2017
-ms.date: 04/12/2019
+ms.date: 12/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 20ef1e73dd073a2275f33aac8236a4b6c29d8e40
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 8bf4de7eaaae4d1bb82691a30951edc9b898ebcd
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730385"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599899"
 ---
-# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>从 Azure 存储收集 Azure 诊断日志
+# <a name="collect-azure-resource-logs-from-azure-storage"></a>从 Azure 存储收集 Azure 资源日志
 
 Azure Monitor 可以读取将诊断写入到表存储的以下服务的日志或写入到 Blob 存储的 IIS 日志：
 
@@ -32,7 +32,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 
 为了使 Azure Monitor 能够收集这些 Azure 诊断日志，这些日志必须位于以下位置：
 
-| 日志类型 | 资源类型 | Location |
+| 日志类型 | 资源类型 | 位置 |
 | --- | --- | --- |
 | IIS 日志 |虚拟机 <br> Web 角色 <br> 辅助角色 |wad-iis-logfiles（Blob 存储） |
 | Syslog |虚拟机 |LinuxsyslogVer2v0（表存储） |

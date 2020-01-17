@@ -1,18 +1,18 @@
 ---
-title: 还原已删除的应用服务应用 - Azure 应用服务
-description: 了解如何使用 PowerShell 还原已删除的应用服务应用。
+title: 还原已删除的应用
+description: 了解如何在 Azure 应用服务中还原已删除的应用。 避免意外删除应用带来的麻烦。
 author: btardif
 ms.author: v-tawe
 origin.date: 09/23/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: 36aab8286acbfed1f47742e78c2abf220f5165c4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 80803175c2e467f03c07511c480455f52aa153da
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336351"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600521"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 

@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 06/10/2019
-ms.date: 12/23/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 52d49750273d074ff4dbad7e2f130e305be82cc4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: bd2fb83f172e6cac8fea700a36c3d6cfced8c015
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335964"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631075"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -113,29 +113,26 @@ ms.locfileid: "75335964"
 
 1. 解决方案后端使用所需配置值设置所需属性。 下面是包含所需属性集的文档的一部分：
 
-    ```json
-    ...
-    "desired": {
-        "telemetryConfig": {
-            "sendFrequency": "5m"
-        },
-        ...
-    },
-    ...
-    ```
+   ```json
+   "desired": {
+       "telemetryConfig": {
+           "sendFrequency": "5m"
+       },
+       ...
+   },
+   ```
+
 2. 连接后或者首次重新连接时，设备应用会立即收到更改通知。 然后，设备应用报告更新的配置（或使用 `status` 属性报告错误状态）。 下面是报告属性的一部分：
 
-    ```json
-    ...
-    "reported": {
-        "telemetryConfig": {
-            "sendFrequency": "5m",
-            "status": "success"
-        }
-        ...
-    }
-    ...
-    ```
+   ```json
+   "reported": {
+       "telemetryConfig": {
+           "sendFrequency": "5m",
+           "status": "success"
+       }
+       ...
+   }
+   ```
 3. 解决方案后端可以通过[查询][lnk-query]设备孪生，跟踪多个设备上的配置操作结果。
 
 > [!NOTE]
@@ -181,7 +178,7 @@ ms.locfileid: "75335964"
     deviceId | 设备 ID |
     hubName | IoT 中心的名称 |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | “replaceTwin”或“updateTwin” |
 
     消息系统属性以 `$` 符号作为前缀。
@@ -270,7 +267,9 @@ ms.locfileid: "75335964"
 * 所有字符串的值的长度最多为 4 KB。
 
 ## <a name="device-twin-size"></a>设备孪生的大小
-IoT 中心对 `tags`、`properties/desired` 和 `properties/reported`（不包括只读元素）的各个总值强制实施 8KB 大小限制。
+
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包含只读元素。
+
 该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 

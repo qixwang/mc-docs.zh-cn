@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7531cda433de83547b98a8c80967b8f208cb854e
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: a729e9810783bfc69775a1b915f6b1c8d70f50df
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179044"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630940"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 
@@ -30,9 +30,9 @@ ms.locfileid: "74179044"
 
 以下是一些示例：
 
-| 要避免的字符 | 替换字符 | 说明 |
+| 要避免的字符 | 替换字符 | 注释 |
 | ------------------- | ------------ | ----- |
-| “Hello world” | “Hello world” | 左引号和右引号都已替换为相应的 ASCII 字符。 |
+| “Hello world” | "Hello world" | 左引号和右引号都已替换为相应的 ASCII 字符。 |
 | John’s day | John's day | 撇号已替换为相应的 ASCII 字符。 |
 | it was good—no, it was great! | it was good--no, it was great! | 长划线已替换为两个连字符。 |
 
@@ -85,7 +85,7 @@ ms.locfileid: "74179044"
 
 以下是一些示例：
 
-| 要避免的字符 | 替换字符   | 说明 |
+| 要避免的字符 | 替换字符   | 注释 |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | 左引号和右引号都已替换为相应的字符。 |
 | 需要什么帮助? | 需要什么帮助？| 问号已替换为相应的字符。 |

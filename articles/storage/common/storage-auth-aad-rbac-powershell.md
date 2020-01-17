@@ -1,25 +1,26 @@
 ---
-title: 在 Azure PowerShell 中使用 RBAC 管理 Azure AD 对 Blob 和队列数据的访问权限 - Azure 存储
-description: 通过 Azure PowerShell 使用基于角色的访问控制 (RBAC) 分配容器和队列的访问权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
+title: 使用 PowerShell 为数据访问分配 RBAC 角色
+titleSuffix: Azure Storage
+description: 了解如何使用 PowerShell 通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 07/25/2019
-ms.date: 09/02/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d99bb8ef099e5d4ce1bd4bad63f8be84ec5049bd
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.openlocfilehash: f4c51d222bf712a878db741cf532673f3256ad77
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307883"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624162"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>在 PowerShell 中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
+# <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 为 blob 和队列数据分配 RBAC 角色
 
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问容器或队列的通用权限集。 
+Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问容器或队列的通用权限集。
 
 将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -57,7 +58,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-rbac-role-to-a-security-principal"></a>向安全主体分配 RBAC 角色
 
-若要将 RBAC 角色分配给安全主体，请使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
+若要将 RBAC 角色分配给安全主体，请使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 命令。 命令的格式因分配范围而异。 为了运行此命令，需要在相应的范围内分配“所有者”和“参与者”角色。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
 ### <a name="container-scope"></a>容器范围
 

@@ -2,18 +2,15 @@
 title: Azure Functions 网络选项
 description: 在 Azure Functions 中可用的所有网络选项的概述。
 author: alexkarcher-msft
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 04/11/2019
-ms.date: 11/18/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: a2256b1c3ebf942eabd62fec707875b64f796541
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: f3dc71e4d3bbed1b6eab888bf676442de3b4e563
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178952"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624049"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -35,7 +32,7 @@ ms.locfileid: "74178952"
 |[入站 IP 限制和专用站点访问](#inbound-ip-restrictions)|✅是 |✅是|
 |[虚拟网络集成](#virtual-network-integration)|❌否 |✅是（区域和网关）| 
 |[虚拟网络触发器（非 HTTP）](#virtual-network-triggers-non-http)|❌否 |✅是| 
-|[混合连接](#hybrid-connections)|❌否 |✅是| 
+|[混合连接](#hybrid-connections)（仅限 Windows）|❌否 |✅是| 
 |[出站 IP 限制](#outbound-ip-restrictions)|❌否 |❌否| 
 
 ## <a name="inbound-ip-restrictions"></a>入站 IP 限制
@@ -125,13 +122,15 @@ Azure Functions 中的虚拟网络集成使用与应用服务 Web 应用共享�
 
 目前，若要在虚拟网络中使用不同于 HTTP 的函数触发器，必须在应用服务计划或应用服务环境中运行函数应用。
 
-例如，假设要将 Azure Cosmos DB 配置为仅接受来自虚拟网络的流量。 你需要在提供与该虚拟网络的虚拟网络集成的应用服务计划中部署函数应用，以便从该资源配置 Azure Cosmos DB 触发器。
+### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>应用服务计划和带有虚拟网络触发器的应用服务环境
 
-请参阅[此列表中的所有非 HTTP 触发器](./functions-triggers-bindings.md#supported-bindings)，以便再次确认支持的内容。
+当函数应用在应用服务计划或应用服务环境中运行时，可以使用非 HTTP 触发器函数。 为了正确触发函数，必须连接到可访问在触发器连接中定义的资源的虚拟网络。 
+
+例如，假设要将 Azure Cosmos DB 配置为仅接受来自虚拟网络的流量。 在这种情况下，必须在应用服务计划中部署函数应用，该计划提供与该虚拟网络的虚拟网络集成。 这使得函数可由该 Azure Cosmos DB 资源触发。 
 
 ## <a name="hybrid-connections"></a>混合连接
 
-[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的一项 Azure 中继功能。 使用混合连接可以从应用访问应用程序终结点。 不能使用混合连接来访问应用程序。 在除消耗计划以外的所有计划中运行的函数都可以使用混合连接。
+[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的一项 Azure 中继功能。 使用混合连接可以从应用访问应用程序终结点。 不能使用混合连接来访问应用程序。 在除消耗计划以外的所有计划中，Windows 上运行的函数可以使用混合连接。
 
 在 Azure Functions 中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这意味着，混合连接终结点可以位于任何操作系统和任何应用程序上，前提是你能够访问 TCP 侦听端口。 混合连接功能不知道也不关心应用程序协议或者要访问的内容是什么。 它只提供网络访问。
 

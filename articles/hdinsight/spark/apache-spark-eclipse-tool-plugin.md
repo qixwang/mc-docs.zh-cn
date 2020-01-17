@@ -10,15 +10,15 @@ ms.assetid: f6c79550-5803-4e13-b541-e86c4abb420b
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 11/30/2017
-ms.date: 12/23/2019
+origin.date: 12/13/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 68a5485d1fc0d5510a3404bd3b8cedb1e7556987
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: a0f740b6a35f335654c2767b75d4a1e7b8361bd5
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335881"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631079"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -28,43 +28,57 @@ ms.locfileid: "75335881"
 * 访问 Azure HDInsight Spark 群集资源
 * 本地开发和运行 Scala Spark 应用程序
 
-> [!IMPORTANT]
-> 此工具可用于在 Linux 上的 HDInsight Spark 群集中创建和提交应用程序。
-> 
-> 
-
 ## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* Oracle Java 开发工具包版本 8，用于 Eclipse IDE 运行时。 可以从 [Oracle 网站](https://aka.ms/azure-jdks)下载它。
-* Eclipse IDE。 本文使用 Eclipse Neon。 可以从 [Eclipse 网站](https://www.eclipse.org/downloads/)安装它。
 
+* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
 
+* [Eclipse IDE](https://www.eclipse.org/downloads/)。 本文使用适用于 Java 开发人员的 Eclipse IDE。
 
-## <a name="install-hdinsight-tools-in-azure-toolkit-for-eclipse-and-the-scala-plug-in"></a>安装 Azure Toolkit for Eclipse 中的 HDInsight 工具和 Scala 插件
+## <a name="install-required-plug-ins"></a>安装所需插件
+
 ### <a name="install-azure-toolkit-for-eclipse"></a>安装用于 Eclipse 的 Azure 工具包
-用于 Eclipse 的 HDInsight 工具作为用于 Eclipse 的 Azure 工具包的一部分提供。 有关安装说明，请参阅[安装用于 Eclipse 的 Azure 工具包](../../azure-toolkit-for-eclipse-installation.md)。
+
+有关安装说明，请参阅[安装用于 Eclipse 的 Azure 工具包](https://docs.microsoft.com/azure/java/eclipse/azure-toolkit-for-eclipse-installation)。
+
 ### <a name="install-the-scala-plug-in"></a>安装 Scala 插件
-打开 Eclipse 时，HDInsight 工具会自动检测是否安装了 Scala 插件。 选择“确定”继续，然后按照说明从 Eclipse Marketplace 安装插件。 
+
+打开 Eclipse 时，HDInsight 工具会自动检测是否安装了 Scala 插件。 选择“确定”继续，然后按照说明从 Eclipse Marketplace 安装插件。  安装完成后重启 IDE。
 
 ![自动安装 Scala 插件](./media/apache-spark-eclipse-tool-plugin/auto-installation-scala1.png)
 
-用户可以[登录到 Azure 订阅](#sign-in-to-your-azure-subscription)，或者使用 Ambari 用户名/密码或已加入域的凭据[链接 HDInsight 群集](#link-a-cluster)来启动。 
+### <a name="confirm-plug-ins"></a>确认插件
+
+1. 导航到“帮助” > “Eclipse Marketplace...”   。
+
+1. 选择“已安装”选项卡  。
+
+1. 至少应该看到：
+    * Azure Toolkit for Eclipse \<版本>。
+    * Scala IDE \<版本>。
 
 ## <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
-1. 启动 Eclipse IDE 并打开 Azure 资源管理器。 在“窗口”菜单中选择“显示视图”，并选择“其他”。    在打开的对话框中展开“Azure”  ，选择“Azure 资源管理器”  ，再选择“确定”  。
 
-   ![“显示视图”对话框](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
-1. 右键单击“Azure”节点，再选择“登录”。  
-1. 在“Azure 登录”对话框框中，选择“身份验证方法”，选择“登录”并输入 Azure 凭据。  
+1. 启动 Eclipse IDE。
 
-   ![Azure 登录对话框](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+1. 导航到“窗口” >  “显示视图” > 其他…” > “登录…”     。
 
-1. 登录之后，“选择订阅”  对话框会列出与凭据关联的所有 Azure 订阅。 单击“选择”  关闭对话框。
+1. 从“显示视图”对话框中导航到“Azure” > “Azure 资源管理器”，然后选择“打开”     。
+
+   ![Apache Spark Eclipse 显示视图](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+
+1. 在 Azure 资源管理器中右键单击“Azure”节点，然后选择“登录”    。
+
+1. 在“Azure 登录”对话框框中，选择“身份验证方法”，选择“登录”并完成登录过程   。
+
+   ![Apache Spark Eclipse Azure 登录](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+
+1. 登录之后，“你的订阅”  对话框会列出与凭据关联的所有 Azure 订阅。 按“选择”  关闭对话框。
 
    ![“选择订阅”对话框](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. 在“Azure 资源管理器”选项卡中展开“HDInsight”  ，查看订阅下的 HDInsight Spark 群集。 
+1. 从“Azure 资源管理器”选项卡导航到“Azure” >  “HDInsight”，查看订阅下的 HDInsight Spark 群集    。
 
    ![Azure 资源管理器 3 中的 HDInsight Spark 群集](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -73,76 +87,79 @@ ms.locfileid: "75335881"
    ![展开群集名称可查看资源](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer4.png)
 
 ## <a name="link-a-cluster"></a>链接群集
-可以使用 Ambari 管理的用户名链接标准群集。 同样，对于已加入域的 HDInsight 群集，也可使用这种域和用户名（例如 user1@contoso.com）进行链接。
 
-1. 从“Azure 资源管理器”  选择“链接群集”  。
+可以使用 Ambari 管理的用户名链接标准群集。 同样，对于已加入域的 HDInsight 群集，也可使用这种域和用户名（例如 `user1@contoso.com`）进行链接。
 
-   ![链接群集上下文菜单](./media/apache-spark-eclipse-tool-plugin/link-a-cluster-context-menu.png)
+1. 在“Azure 资源管理器”中右键单击“HDInsight”，然后选择“链接群集”    。
 
-1. 输入“群集名称”、“用户名”和“密码”，然后单击“确定”按钮以链接群集    。 （可选）输入“存储帐户”、“存储密钥”，然后选择“存储资源管理器”，以便存储资源管理器在左侧树状视图中工作
+   ![Azure 资源管理器链接群集菜单](./media/apache-spark-eclipse-tool-plugin/link-a-cluster-context-menu.png)
 
-   ![“链接群集”对话框](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog1.png)
+1. 输入“群集名称”、“用户名”和“密码”，然后选择“确定”     。 （可选）输入“存储帐户”、“存储密钥”，然后选择“存储资源管理器”，以便存储资源管理器在左侧树状视图中工作
+
+   ![链接新的 HDInsight 群集对话框](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog1.png)
 
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
-   > ![Eclipse 中的存储资源管理器](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
+   > ![Azure 资源管理器存储帐户](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
    >
    > 对于仅使用键盘的用户，当前焦点位于“存储密钥”  时，需要使用 **Ctrl + TAB** 来聚焦于对话框中的下一个字段。
-1. 单击“确定”按钮后，如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
 
-   ![链接的群集](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
+1. 可在 HDInsight 下看到链接的群集  。 现在可以将应用程序提交到此链接群集。
+
+   ![Azure 资源管理器 hdi 链接群集](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
 
 1. 还可以从 **Azure 资源管理器**取消链接群集。
 
-   ![取消链接的群集](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
-
+   ![Azure 资源管理器取消链接群集](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>为 HDInsight Spark 群集设置 Spark Scala 项目
 
-1. 在 Eclipse IDE 工作区中，依次选择“文件”、“新建”，然后选择“项目”。    
-2. 在“新建项目”向导中，展开“HDInsight”，选择“Spark on HDInsight (Scala)”，并选择“下一步”。   
+1. 在 Eclipse IDE 工作区中选择“文件” > “新建” > “项目…”    。
+
+1. 在“新建项目”向导中选择“HDInsight 项目” > “Spark on HDInsight (Scala)”    。 然后，选择“下一步”  。
 
    ![选择 Spark on HDInsight (Scala) 项目](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
-3. Scala 项目创建向导会自动检测是否安装了 Scala 插件。 选择“确定”继续下载 Scala 插件，然后按照说明重启 Eclipse。 
 
-   ![Scala 检查](./media/apache-spark-eclipse-tool-plugin/auto-installation-scala2.png)
-4. 在“新建 HDInsight Scala 项目”对话框中提供以下值，然后选择“下一步”：  
+1. 在“新建 HDInsight Scala 项目”对话框中提供以下值，然后选择“下一步”：  
    * 输入项目的名称。
    * 在“JRE”  区域中，确保“使用执行环境 JRE”  设置为“JavaSE-1.7”  或更高版本。
    * 在“Spark 库”  区域中，可以选择“使用 Maven 配置 Spark SDK”  选项。  我们的工具集成了适当版本的 Spark SDK 和 Scala SDK。 也可以选择“手动添加 Spark SDK”  选项，手动下载并添加 Spark SDK。
 
    ![“新建 HDInsight Scala 项目”对话框](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
-5. 在下一个对话框中，选择“完成”  。 
-   
-  
+
+1. 在下一个对话框中查看详细信息，然后选择“完成”  。
+
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>为 HDInsight Spark 群集创建 Scala 应用程序
 
-1. 在 Eclipse IDE 中，从“包资源管理器”展开之前创建的项目，右键单击“src”，指向“新建”，再选择“其他”。   
-2. 在“选择向导”对话框中，展开“Scala 向导”，选择“Scala 对象”，再选择“下一步”。    
-   
-   ![选择向导对话框](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
-1. 在“创建新文件”对话框中，输入对象的名称，然后选择“完成”。  
+1. 在“包资源管理器”中展开之前创建的项目  。 右键单击“src”，选择“新建” > “其他…”    。
 
-   ![“创建新文件”对话框](./media/apache-spark-eclipse-tool-plugin/create-scala-project2.png)
-4. 在文本编辑器中粘贴以下代码：
+1. 在“选择一个向导”对话框中选择“Scala 向导” > “Scala 对象”    。 然后，选择“下一步”  。
+
+   ![选择向导“创建 Scala 对象”](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
+
+1. 在“创建新文件”对话框中，输入对象的名称，然后选择“完成”。   将打开一个文本编辑器。
+
+   ![新建文件向导“新建文件”](./media/apache-spark-eclipse-tool-plugin/create-scala-project2.png)
+
+1. 在文本编辑器中，将当前内容替换为以下代码：
 
     ```scala
     import org.apache.spark.SparkConf
     import org.apache.spark.SparkContext
 
-        object MyClusterApp{
-          def main (arg: Array[String]): Unit = {
-            val conf = new SparkConf().setAppName("MyClusterApp")
-            val sc = new SparkContext(conf)
+    object MyClusterApp{
+        def main (arg: Array[String]): Unit = {
+        val conf = new SparkConf().setAppName("MyClusterApp")
+        val sc = new SparkContext(conf)
 
-            val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+        val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-            //find the rows that have only one digit in the seventh column in the CSV
-            val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
+        //find the rows that have only one digit in the seventh column in the CSV
+        val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
 
-            rdd1.saveAsTextFile("wasb:///HVACOut")
-          }        
+        rdd1.saveAsTextFile("wasbs:///HVACOut")
         }
+    }
     ```
     
 5. 在 HDInsight Spark 群集中运行该应用程序：
@@ -165,7 +182,8 @@ ms.locfileid: "75335881"
 可以使用 HDInsight 工具执行各种操作，包括访问作业输出。
 
 ### <a name="access-the-job-view"></a>访问作业视图
-1. 在“Azure 资源管理器”中依次展开“HDInsight”和 Spark 群集名称，并选择“作业”。   
+
+1. 在“Azure 资源管理器”中依次展开“HDInsight”和 Spark 群集名称，然后选择“作业”    。
 
    ![“作业视图”节点](./media/apache-spark-eclipse-tool-plugin/eclipse-job-view-node.png)
 
@@ -216,24 +234,23 @@ ms.locfileid: "75335881"
 ### <a name="prerequisite"></a>先决条件
 在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生这些异常的原因是 Windows 中缺少 **WinUtils.exe**。 
 
-若要解决此错误，需要[下载可执行文件](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到所需位置（例如 **C:\WinUtils\bin**），然后添加环境变量 **HADOOP_HOME**，并将该变量的值设为 **C\WinUtils**。
+若要解决此错误，需要[下载可执行文件](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到所需位置（例如 **C:\WinUtils\bin**），然后添加环境变量 **HADOOP_HOME**，并将该变量的值设为 **C\WinUtils**。
 
 ### <a name="run-a-local-spark-scala-application"></a>运行本地的 Spark Scala 应用程序
 1. 启动 Eclipse 并创建项目。 在“新建项目”对话框中做出以下选择，然后选择“下一步”。  
    
-   * 在左窗格中，选择“HDInsight”  。
-   * 在右窗格中，选择“Spark on HDInsight 本地运行示例(Scala)”  。
+1. 在“新建项目”向导中选择“HDInsight 项目” > “Spark on HDInsight 本地运行示例 (Scala)”    。 然后，选择“下一步”  。
 
-   ![“新建项目”对话框](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
-   
-2. 若要提供项目详细信息，请执行前面部分[为 HDInsight Spark 群集设置 Spark Scala 项目](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)中的步骤 3 到步骤 6。
+   ![新建项目选择向导对话框](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
-3. 模板将在 **src** 文件夹下面添加可在计算机上本地运行的示例代码 (**LogQuery**)。
-   
-   ![LogQuery 的位置](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
-   
-4. 右键单击“LogQuery”应用程序，指向“运行方式”，然后选择“1 Scala 应用程序”。    “控制台”选项卡上将出现如下所示的输出： 
-   
+1. 若要提供项目详细信息，请执行前面部分[为 HDInsight Spark 群集设置 Spark Scala 项目](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster)中的步骤 3 到步骤 6。
+
+1. 模板将在 **src** 文件夹下面添加可在计算机上本地运行的示例代码 (**LogQuery**)。
+
+   ![LogQuery 本地 scala 应用程序的位置](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
+
+1. 右键单击“LogQuery.scala”，并选择“运行方式” > “1 Scala 应用程序”    。 “控制台”选项卡上将出现如下所示的输出： 
+
    ![Spark 应用程序本地运行结果](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="reader-only-role"></a>仅限读取者角色
@@ -291,7 +308,8 @@ ms.locfileid: "75335881"
    ![Azure 资源管理器中的 HDInsight Spark 群集（已拒绝 2）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer14.png)
 
 ## <a name="known-problems"></a>已知问题
-链接群集时，建议提供存储的凭据。
+
+使用“链接群集”时，建议提供存储的凭据  。
 
 ![交互式登录](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 

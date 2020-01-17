@@ -1,23 +1,23 @@
 ---
-title: Azure Data Lake Storage Gen2 Spark 性能优化指南 | Microsoft Docs
+title: 调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 Spark 性能优化指南
 services: storage
 author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 07/15/2019
+origin.date: 11/18/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 10eba621bb9258c868a060a6bd8d4ade9032174d
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.openlocfilehash: f8902345af7410edfb6ab61f313aabe3a6ff5d0c
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844532"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623597"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2
 
 在优化 Spark 的性能时，需要考虑到群集中将要运行的应用数目。  默认情况下，在 HDI 群集中可以同时运行 4 个应用（注意：默认设置可更改）。  可以使用更少的应用，这样便可以覆盖默认设置，将群集中的更多资源用于这些应用。  
 

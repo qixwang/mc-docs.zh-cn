@@ -1,30 +1,31 @@
 ---
-title: 将 Azure 资源日志流式传输到事件中心
-description: 了解如何将 Azure 资源日志流式传输到事件中心。
+title: 将 Azure 平台日志流式传输到事件中心
+description: 了解如何将 Azure 资源日志流式传输到事件中心，以便将数据发送到外部系统，例如第三方 SIEM 和其他日志分析解决方案。
 author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-origin.date: 09/20/2019
-ms.date: 10/20/2019
+origin.date: 12/15/2019
+ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: 693870df566f6fc32a17959c6ee63569861320eb
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 01bedab24214ae56bc2f4b473c3879afa9f7a412
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982143"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599912"
 ---
-# <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>将 Azure 资源日志流式传输到 Azure 事件中心
-Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源内部操作的丰富、频繁的数据。 本文介绍如何将资源日志流式传输到事件中心，以便将数据发送到外部系统，例如第三方 SIEM 和其他日志分析解决方案。
+# <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>将 Azure 平台日志流式传输到 Azure 事件中心
+Azure 中的[平台日志](resource-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志流式传输到事件中心，以便将数据发送到外部系统，例如第三方 SIEM 和其他日志分析解决方案。
 
 
-## <a name="what-you-can-do-with-resource-logs-sent-to-an-event-hub"></a>如何处理发送到事件中心的资源日志
-将 Azure 中的资源日志流式传输到事件中心可提供以下功能：
+## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>如何处理发送到事件中心的平台日志
+将 Azure 中的平台日志流式传输到事件中心可提供以下功能：
 
-* **将日志流式传输到第三方日志记录和遥测系统** - 将所有资源日志流式传输到单个事件中心，以便将日志数据通过管道传送到第三方 SIEM 或日志分析工具。
-* **生成自定义遥测和日志记录平台** - 可利用事件中心高度可缩放的发布-订阅功能，灵活地将资源日志引入自定义 teletry 平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
+* **将日志流式传输到第三方日志记录和遥测系统** - 将所有平台日志流式传输到单个事件中心，以便将日志数据通过管道传送到第三方 SIEM 或日志分析工具。
+  
+* **生成自定义遥测和日志记录平台** - 可利用事件中心高度可缩放的发布-订阅功能，灵活地将平台日志引入自定义 teletry 平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
 
 * **通过将数据流式传输到 Power BI 查看服务运行状况** - 通过事件中心、流分析和 Power BI 在 Azure 服务中将诊断数据转化成准实时见解。
 
@@ -48,15 +49,14 @@ Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源�
 若要更新诊断设置，使之包括流式传输，则必须在事件中心授权规则中拥有 ListKey 权限。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限并且这两个订阅都在同一个 AAD 租户中，事件中心命名空间就不必与发出日志的订阅位于同一订阅中。
 
 ## <a name="create-a-diagnostic-setting"></a>创建诊断设置
-默认不会收集资源日志。 需要通过创建 Azure 资源的诊断设置，将它们发送到事件中心和其他目标。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
+通过创建 Azure 资源的诊断设置，将平台日志发送到事件中心和其他目标。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
 
-## <a name="stream-data-from-compute-resources"></a>对来自计算资源的数据进行流式处理
-本文中的过程适用于非计算资源，详见 [Azure 资源日志概述](diagnostic-settings.md)。
-使用 Windows Azure 诊断代理对来自 Azure 计算资源的资源日志进行流式处理。 有关详细信息，请参阅[使用事件中心流式处理热路径中的 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md)。
+## <a name="collect-data-from-compute-resources"></a>对来自计算资源的数据进行收集
+诊断设置将如同收集任何其他资源一样收集 Azure 计算资源的资源日志，但不是其来宾操作系统或工作负荷。 若要收集此数据，请安装 [Log Analytics 代理](log-analytics-agent.md)。 
 
 
 ## <a name="consuming-log-data-from-event-hubs"></a>使用事件中心的日志数据
-使用事件中心的资源日志时，这些日志为 JSON 格式，其中包含下表中的元素。
+事件中心的平台日志以 JSON 格式使用，其中包含下表中的元素。
 
 | 元素名称 | 说明 |
 | --- | --- |
@@ -69,7 +69,7 @@ Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源�
 | properties |事件的属性。 这些属性因 Azure 服务而异，详见 []()。 |
 
 
-下面是事件中心的输出数据示例：
+下面是事件中心的资源日志输出数据示例：
 
 ```json
 {

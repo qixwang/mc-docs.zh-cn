@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 Google AdWords 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Google AdWords 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Google AdWords 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -10,22 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 11/11/2019
+origin.date: 10/25/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: bf78ebe6e9acfabdc7d6a61af2b5f6ea4335322a
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: 8afc539cd32d18d027d500eb5eae0faf8218c94f
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648720"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623599"
 ---
-# <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Google AdWords 复制数据
+# <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google AdWords 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Google AdWords 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
-
-> [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://www.azure.cn/zh-cn/support/contact/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 

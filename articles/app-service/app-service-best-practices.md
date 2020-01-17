@@ -1,27 +1,19 @@
 ---
-title: 最佳做法 - Azure 应用服务
-description: 了解有关 Azure 应用服务的最佳实践和故障排除步骤。
-services: app-service
-documentationcenter: ''
+title: 最佳实践
+description: 了解 Azure App Service 中运行的应用程序的最佳做法和常见故障排除方案。
 author: dariagrigoriu
-manager: erikre
-editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 07/01/2016
-ms.date: 09/03/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 07d56d018d580df43ea54190f46aaf34b67d51ed
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 01acb0b0bc8a4b5cc4f71691c92d53f0c6397932
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556017"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600526"
 ---
 # <a name="best-practices-for-azure-app-service"></a>有关 Azure 应用服务的最佳实践
 本文汇总了有关使用 [Azure App Service](overview.md) 的最佳实践。 

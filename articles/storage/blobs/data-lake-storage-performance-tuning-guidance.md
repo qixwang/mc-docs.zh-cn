@@ -1,23 +1,22 @@
 ---
-title: Azure Data Lake Storage Gen2 性能优化指南 | Microsoft Docs
+title: 优化 Azure Data Lake Storage Gen2 性能 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 性能优化指南
-services: storage
 author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 07/15/2019
+origin.date: 11/18/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: c8a75c9ccb53a8c5bdfceb3fd2f1616154dabd2e
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.openlocfilehash: f98916b1d568e3efbc051fad0a49c928bc6190ff
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844387"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623606"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
 
 Azure Data Lake Storage Gen2 支持使用高吞吐量进行 I/O 密集型分析和数据移动。  在 Data Lake Storage Gen2 中，使用所有可用的吞吐量（每秒可读取或写入的数据量）对于获取最佳性能非常重要。  可通过尽可能多地执行并行读取和写入来实现这一点。
 

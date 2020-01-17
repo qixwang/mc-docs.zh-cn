@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 08/08/2019
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 9ed491555720270789510d585b0cddc292b27938
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 05facb664cb12852bd276ecf47cd7fb1fdc80f14
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72846976"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623578"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 QQ 帐户注册与登录
 
@@ -48,9 +47,9 @@ ms.locfileid: "72846976"
 
 ## <a name="configure-qq-as-an-identity-provider"></a>将 QQ 配置为标识提供者
 
-1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.cn/)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-1. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 选择“标识提供者”  ，然后选择“QQ (预览)”  。
 1. 输入“名称”  。 例如，QQ  。
 1. 对于**客户端 ID**，输入你之前创建的 QQ 应用程序的应用 ID。

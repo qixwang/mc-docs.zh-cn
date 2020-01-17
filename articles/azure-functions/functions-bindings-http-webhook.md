@@ -3,14 +3,14 @@ title: Azure Functions HTTP 触发器和绑定
 description: 了解如何在 Azure Functions 中使用 HTTP 触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: 51084f8ec0dcea747547ed0f25112eed97917628
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 3e989797a61ec69bd87f0de3424916232f4be37b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884937"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624287"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -22,7 +22,7 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-本文中的代码默认使用 Functions 2.x 语法，该语法使用 .NET Core。 有关 1.x 语法的信息，请参阅 [1.x functions 模板](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)。
+本文中的代码默认使用 Functions 2.x 及更高版本中使用的语法，该语法使用 .NET Core。 有关 1.x 语法的信息，请参阅 [1.x functions 模板](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)。
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
@@ -30,7 +30,7 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 3.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。
 
@@ -40,7 +40,7 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 借助 HTTP 触发器，可以使用 HTTP 请求调用函数。 可以使用 HTTP 触发器生成无服务器 API 和响应 Webhook。
 
-默认情况下，在 Functions 1.x 中，HTTP 触发器返回“HTTP 200 正常”和空的正文；在 Functions 2.x 中返回“HTTP 204 无内容”和空的正文。 若要修改该响应，请配置 [HTTP 输出绑定](#output)。
+默认情况下，在 Functions 1.x 中，HTTP 触发器返回“HTTP 200 正常”和空的正文；在 Functions 2.x 及更高版本中返回“HTTP 204 无内容”和空的正文。 若要修改该响应，请配置 [HTTP 输出绑定](#output)。
 
 ## <a name="trigger---example"></a>触发器 - 示例
 
@@ -600,11 +600,29 @@ public class HttpTriggerJava {
 }
 ```
 
+### <a name="using-route-parameters"></a>使用路由参数
+
+路由参数定义的函数的 `route` 模式适用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
+
+下面的配置演示如何将 `{id}` 参数传递到绑定的 `rowKey`。
+
+```json
+{
+    "type": "table",
+    "direction": "in",
+    "name": "product",
+    "partitionKey": "products",
+    "tableName": "products",
+    "rowKey": "{id}"
+}
+```
+
+
 ### <a name="working-with-client-identities"></a>使用客户端标识
 
 如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
 
-还可从绑定数据中读取此信息。 此功能仅可用于 Functions 2.x 运行时， 而且它目前仅可用于 .NET 语言。
+还可从绑定数据中读取此信息。 此功能仅适用于 2.x 及更高版本的 Functions 运行时。 而且它目前仅可用于 .NET 语言。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -690,7 +708,7 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 > 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
 
 > [!NOTE]
-> 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2\.x 版运行时不包括对 Webhook 提供程序的内置支持。
+> 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2\.x 及更高版本的 Functions 运行时不包括对 Webhook 提供程序的内置支持。
 
 有两种类型的密钥：
 
@@ -741,9 +759,9 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 ### <a name="webhooks"></a>Webhook
 
 > [!NOTE]
-> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 版中 HTTP 触发器的性能。
+> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 及更高版本中 HTTP 触发器的性能。
 
-在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 版中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。 
+在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 及更高版本中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。 
 
 #### <a name="github-webhooks"></a>GitHub Webhook
 
@@ -770,7 +788,7 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 
 ## <a name="output"></a>输出
 
-通过 HTTP 输出绑定响应 HTTP 请求发送者。 此绑定需要使用 HTTP 触发器，利用此绑定，可以自定义与触发器请求相关联的响应。 如果未提供 HTTP 输出绑定，在 Functions 1.x 中，HTTP 触发器返回“HTTP 200 正常”和空的正文；在 Functions 2.x 中返回“HTTP 204 无内容”和空的正文。
+通过 HTTP 输出绑定响应 HTTP 请求发送者。 此绑定需要使用 HTTP 触发器，利用此绑定，可以自定义与触发器请求相关联的响应。 如果未提供 HTTP 输出绑定，在 Functions 1.x 中，HTTP 触发器返回“HTTP 200 正常”和空的正文；在 Functions 2.x 及更高版本中返回“HTTP 204 无内容”和空的正文。
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -790,7 +808,7 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md#http)。

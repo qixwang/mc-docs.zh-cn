@@ -1,22 +1,20 @@
 ---
-title: 使用 Visual Studio 开发和部署 WebJobs - Azure
-description: 了解如何使用 Visual Studio 开发 Azure WebJobs 并将其部署到 Azure 应用服务。
+title: 使用 VS 开发和部署 WebJobs
+description: 了解如何在 Visual Studio 中开发 Azure WebJobs，以及如何将其部署到 Azure 应用服务，包括创建计划任务。
 author: ggailey777
-manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
-ms.service: app-service
 ms.topic: conceptual
 ms.custom: vs-azure
 origin.date: 02/18/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 6bf337a12857e447b3dd5ab829430f65c52f14e8
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 96c8a72fc8946478d6e072afb987758715b91c5f
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555929"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600219"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 

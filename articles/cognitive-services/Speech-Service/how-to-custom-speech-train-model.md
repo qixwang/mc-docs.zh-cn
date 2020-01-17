@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: a9ee4d148636f1313baf5cd25a10adbacbc9abe0
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: b991fd142fda5c66c74f4000b5798ef0c8528c78
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179036"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630930"
 ---
 # <a name="train-a-model-for-custom-speech"></a>训练自定义语音模型
 

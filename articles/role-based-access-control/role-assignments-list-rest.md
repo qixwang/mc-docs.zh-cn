@@ -1,0 +1,62 @@
+---
+title: 使用 Azure RBAC 和 REST API 列出角色分配
+description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 REST API 来确定用户、组、服务主体和托管标识有权访问的资源内容。
+services: active-directory
+documentationcenter: na
+author: rolyon
+manager: mtillman
+editor: ''
+ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
+ms.service: role-based-access-control
+ms.workload: multiple
+ms.tgt_pltfrm: rest-api
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 01/02/2020
+ms.author: v-junlch
+ms.reviewer: bagovind
+ms.openlocfilehash: 6a5488f0751be0ff5b5b5550ef0d7db77a175eda
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624402"
+---
+# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 列出角色分配
+
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 REST API 列出角色分配。
+
+## <a name="list-role-assignments"></a>列出角色分配
+
+在 RBAC 中，若要列出访问权限，请列出角色分配。 若要列出角色分配，可以使用其中一个[角色分配 - List](https://docs.microsoft.com/rest/api/authorization/roleassignments/list) REST API。 若要优化结果，请指定一个范围和可选的筛选器。
+
+1. 从下面的请求开始：
+
+    ```http
+    GET https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. 在 URI 中，将“{scope}”  替换为要列出角色分配的范围。
+
+    | 作用域 | 类型 |
+    | --- | --- |
+    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    | `subscriptions/{subscriptionId1}` | 订阅 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
+     
+1. 将“{filter}”  替换为筛选角色分配列表时要应用的条件。
+
+    | 筛选器 | 说明 |
+    | --- | --- |
+    | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
+    | `$filter=principalId%20eq%20'{objectId}'` | 列出指定用户、组或服务主体的角色分配。 |
+    | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的角色分配。 如果用户是具有角色分配的组的成员，则该角色分配也会列出。 此筛选器对于组是可传递的，这意味着如果用户是组的成员，并且该组是具有角色分配的另一个组的成员，则该角色分配也会列出。 此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |
+
+## <a name="next-steps"></a>后续步骤
+
+- [使用 Azure RBAC 和 REST API 添加或删除角色分配](role-assignments-rest.md)
+- [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)
+

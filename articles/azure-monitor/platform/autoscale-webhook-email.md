@@ -1,20 +1,18 @@
 ---
 title: 使用自动缩放发送电子邮件和 Webhook 警报通知
-description: '了解如何在 Azure 监视器中使用自动缩放操作来调用 Web URL 或发送电子邮件通知。 '
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: 了解如何在 Azure Monitor 中使用自动缩放操作来调用 Web URL 或发送电子邮件通知。
+author: lingliw
 ms.topic: conceptual
 origin.date: 04/03/2017
 ms.date: 04/03/2018
-ms.author: ancav
+ms.author: v-lingwu
 ms.subservice: autoscale
-ms.openlocfilehash: f8d1c7ca8f5ecba7b9420c74be30fa5fa4446a71
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 50a17c1d46f4396b07119929d680a8c3b2edbe2f
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330344"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599898"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  

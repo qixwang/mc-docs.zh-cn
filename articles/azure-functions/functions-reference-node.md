@@ -1,24 +1,15 @@
 ---
-title: Azure Functions JavaScript 开发人员参考 | Microsoft 文档
+title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.service: azure-functions
-ms.devlang: nodejs
 ms.topic: reference
-origin.date: 02/24/2019
-ms.date: 11/11/2019
-ms.author: v-junlch
-ms.openlocfilehash: 5b0fc77f70e59de6a2463d4851443bd10055bcef
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.date: 12/31/2019
+ms.openlocfilehash: f443aee874e7bdc90081c402f12ff18e0048e7ab
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934254"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623629"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -414,6 +405,16 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     context.done(null, res);   
     ```  
 
+## <a name="scaling-and-concurrency"></a>缩放和并发
+
+默认情况下，Azure Functions 会自动监视应用程序上的负载，并按需为 Node.js 创建更多主机实例。 针对不同触发器类型，Functions 会使用内置阈值（而非用户可配置的阈值）来决定何时添加实例，如消息时间和 QueueTrigger 的队列大小。 有关详细信息，请参阅[消耗计划的工作原理](functions-scale.md#how-the-consumption-plans-work)。
+
+此缩放行为足以满足多个 Node.js 应用程序的需求。 对于占用大量 CPU 的应用程序，可使用多个语言工作进程进一步提高性能。
+
+默认情况下，每个 Functions 主机实例都有一个语言工作进程。 使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 应用程序设置可增加每个主机的工作进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。 
+
 ## <a name="node-version"></a>Node 版本
 
 下表显示了 Functions 运行时的每个主要版本使用的 Node.js 版本：
@@ -699,5 +700,4 @@ module.exports = async function (context) {
 
 [`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
 
-
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->

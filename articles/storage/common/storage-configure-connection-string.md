@@ -1,21 +1,22 @@
 ---
-title: 为 Azure 存储配置连接字符串
+title: 配置连接字符串
+titleSuffix: Azure Storage
 description: 为 Azure 存储帐户配置连接字符串。 连接字符串包含在运行时使用共享密钥授权从应用程序访问存储帐户所需的信息。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: article
-origin.date: 06/20/2019
-ms.date: 09/30/2019
+origin.date: 12/20/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9253d720915962c4cd06f3aa9df913be71ce82c
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: e02639c948001b4d39db0a0c7e950430add59b46
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306735"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624155"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
@@ -24,8 +25,6 @@ ms.locfileid: "71306735"
 * 连接到 Azure 存储模拟器。
 * 在 Azure 中访问存储帐户。
 * 通过共享访问签名 (SAS) 访问 Azure 中的指定资源。
-
-[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 

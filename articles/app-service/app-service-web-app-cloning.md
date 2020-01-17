@@ -1,27 +1,19 @@
 ---
-title: 使用 PowerShell 克隆应用 - Azure 应用服务
-description: 了解如何使用 PowerShell 将“应用服务”应用克隆到新的应用。
-services: app-service\web
-documentationcenter: ''
+title: 使用 PowerShell 克隆应用
+description: 了解如何使用 PowerShell 将“应用服务”应用克隆到新的应用。 涵盖了各种克隆方案，包括流量管理器集成。
 author: ahmedelnably
-manager: stefsch
-editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 01/14/2018
-ms.date: 08/12/2019
-ms.author: v-johch
+ms.date: 01/13/2020
+ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 91bb3ed27dead409d05d03ebcecc4bcef106a79e
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 20005ebb0d6a78434036726f2020a74840829d09
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556002"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600520"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure App Service 应用
 

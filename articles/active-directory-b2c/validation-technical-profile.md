@@ -1,21 +1,22 @@
 ---
-title: 定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件 | Microsoft Docs
-description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
+title: 在自定义策略中定义验证技术配置文件
+titleSuffix: Azure AD B2C
+description: 在 Azure Active Directory B2C 中使用自定义策略中的验证技术配置文件来验证声明。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 919f679c585c778e0fe4ec7e8a8b87b5a22c5a75
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 37fabccf1dbae96c164757cf68175d95584b10ba
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884507"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624034"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -40,7 +41,7 @@ ms.locfileid: "74884507"
 自断言技术配置文件可以定义要用于验证其部分或所有输出声明的验证技术配置文件。 被引用技术配置文件的所有输入声明都必须出现在引用验证技术配置文件的输出声明中。
 
 > [!NOTE]
-> 只有自断言技术配置文件可以使用验证技术配置文件。 如果需要验证非自断言技术配置文件的输出声明，请考虑在用户旅程中使用额外的业务流程步骤，以适应负责验证的技术配置文件。    
+> 只有自断言技术配置文件可以使用验证技术配置文件。 如果需要验证非自断言技术配置文件的输出声明，请考虑在用户旅程中使用额外的业务流程步骤，以适应负责验证的技术配置文件。
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 

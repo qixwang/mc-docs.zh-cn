@@ -1,27 +1,28 @@
 ---
-title: 通过 Azure CLI 配置客户管理的密钥用于 Azure 存储加密
-description: 了解如何使用 Azure CLI 来配置客户管理的密钥用于 Azure 存储加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
+title: 使用 Azure CLI 配置客户管理的密钥
+titleSuffix: Azure Storage
+description: 了解如何使用 Azure CLI 通过 Azure Key Vault 来配置客户管理的密钥用于 Azure 存储加密。 使用客户管理的密钥可以创建、轮换、禁用和撤销访问控制。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
-origin.date: 10/15/2019
-ms.date: 10/28/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 5f66e77f7665bc4bdff9f77e274fc8c95299bd77
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 15486bdf348c1d0982367a25c9f277d65f65ad50
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914434"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624153"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>通过 Azure CLI 配置客户管理的密钥用于 Azure 存储加密
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Key Vault。
+本文介绍如何使用 Azure CLI 配置包含客户管理的密钥的 Azure Key Vault。 要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-cli.md)。
 
 > [!IMPORTANT]
 > 使用带有 Azure 存储加密的客户管理密钥需要在密钥保管库上设置两个属性：“软删除”  和“不要清除”  。 默认情况下未启用这些属性。 若要启用这些属性，请使用 PowerShell 或 Azure CLI。
@@ -92,7 +93,7 @@ az keyvault key create
 
 Azure 存储加密默认使用 Microsoft 托管的密钥。 配置客户管理的密钥的 Azure 存储帐户，并指定要与存储帐户关联的密钥。
 
-若要更新存储帐户的加密设置，请调用 [az storage account update](/cli/storage/account#az-storage-account-update)。 此示例还会查询 Key Vault URI 和密钥版本，需要使用这两个值才能将密钥与存储帐户相关联。 请记得将括号中的占位符值替换为你自己的值。
+若要更新存储帐户的加密设置，请调用 [az storage account update](/cli/storage/account#az-storage-account-update)。 此示例还会查询密钥保管库 URI 和最新密钥版本，需要使用这两个值才能将密钥与存储帐户关联。 请记得将括号中的占位符值替换为你自己的值。
 
 ```azurecli
 key_vault_uri=$(az keyvault show \
@@ -103,7 +104,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

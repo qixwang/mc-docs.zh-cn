@@ -1,0 +1,141 @@
+---
+title: 使用 Azure RBAC 和 Azure CLI 列出角色分配
+description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure CLI 来确定用户、组、服务主体和托管标识有权访问的资源内容。
+services: active-directory
+documentationcenter: ''
+author: rolyon
+manager: mtillman
+ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
+ms.service: role-based-access-control
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 01/02/2020
+ms.author: v-junlch
+ms.reviewer: bagovind
+ms.openlocfilehash: ff40809c5fe47eae05e82a31e1bc30e6262feea6
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624409"
+---
+# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
+
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
+
+## <a name="prerequisites"></a>先决条件
+
+- [Azure CLI](/cli)
+
+## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
+
+若要列出特定用户的角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)：
+
+```azurecli
+az role assignment list --assignee <assignee>
+```
+
+默认情况下，将仅显示当前订阅的角色分配。 若要查看当前订阅和以下订阅的角色分配，请添加 `--all` 参数。 若要查看继承的角色分配，请添加 `--include-inherited` 参数。
+
+以下示例列出的角色分配直接分配给 *patlong\@contoso.com* 用户：
+
+```azurecli
+az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+```Output
+{
+  "principalName": "patlong@contoso.com",
+  "roleDefinitionName": "Backup Operator",
+  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+}
+{
+  "principalName": "patlong@contoso.com",
+  "roleDefinitionName": "Virtual Machine Contributor",
+  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+}
+```
+
+## <a name="list-role-assignments-for-a-resource-group"></a>列出资源组的角色分配
+
+若要列出存在于资源组范围的角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)：
+
+```azurecli
+az role assignment list --resource-group <resource_group>
+```
+
+以下示例列出 *pharma-sales* 资源组的角色分配：
+
+```azurecli
+az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+```Output
+{
+  "principalName": "patlong@contoso.com",
+  "roleDefinitionName": "Backup Operator",
+  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+}
+{
+  "principalName": "patlong@contoso.com",
+  "roleDefinitionName": "Virtual Machine Contributor",
+  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+}
+
+...
+```
+
+## <a name="list-role-assignments-for-a-subscription"></a>列出订阅的角色分配
+
+若要列出订阅范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”  边栏选项卡上找到它，也可以使用 [az account list](/cli/account#az-account-list)。
+
+```azurecli
+az role assignment list --subscription <subscription_name_or_id>
+```
+
+```Example
+az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+## <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
+
+若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [az account management-group list](https://docs.microsoft.com/en-us/cli/azure/ext/managementgroups/account/management-group?view=azure-cli-latest#ext-managementgroups-az-account-management-group-list)。
+
+```azurecli
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+```
+
+```Example
+az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
+
+1. 获取系统分配的或用户分配的托管标识的对象 ID。 
+
+    若要获取用户分配的托管标识的对象 ID，可以使用 [az ad sp list](/cli/ad/sp#az-ad-sp-list) 或 [az identity list](https://docs.microsoft.com/en-us/cli/azure/identity#az-identity-list)。
+
+    ```azurecli
+    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```
+
+    若要获取系统分配的托管标识的对象 ID，可以使用 [az ad sp list](/cli/ad/sp#az-ad-sp-list)。
+
+    ```azurecli
+    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```
+
+1. 若要列出角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。
+
+    默认情况下，将仅显示当前订阅的角色分配。 若要查看当前订阅和以下订阅的角色分配，请添加 `--all` 参数。 若要查看继承的角色分配，请添加 `--include-inherited` 参数。
+
+    ```azurecli
+    az role assignment list --assignee <objectid>
+    ```
+
+## <a name="next-steps"></a>后续步骤
+
+- [使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](role-assignments-cli.md)
+

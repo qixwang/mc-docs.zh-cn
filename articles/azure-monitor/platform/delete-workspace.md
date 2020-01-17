@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 10/28/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 08f8f851429ee225324f69ef891ce236f4322a0b
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: a18e64fbb7adf1f7996fd7980e6ec53347d3c57f
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528393"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599895"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
 
@@ -22,7 +22,10 @@ ms.locfileid: "74528393"
 
 ## <a name="considerations-when-deleting-a-workspace"></a>删除工作区时的注意事项
 
-当你删除 Log Analytics 工作区时，系统会执行软删除操作，目的是让你能够在 14 天内恢复工作区（包括其数据和连接的代理），不管该删除是意外删除还是有意删除。 软删除期过后，工作区及其数据将不可恢复，并会进入排队状态，在 30 天内永久删除。
+当你删除 Log Analytics 工作区时，系统会执行软删除操作，目的是让你能够在 14 天内恢复工作区（包括其数据和连接的代理），不管该删除是意外删除还是有意删除。 软删除期过后，工作区资源及其数据将不可恢复 - 其数据会排队等待永久删除，并在 30 天内完全清除。 工作区名称“已发布”，可供用于创建新的工作区。
+
+> [!NOTE]
+> 无法关闭软删除行为。 稍后，我们将添加一个选项，以在删除操作中使用“force”标记时替代软删除。
 
 删除工作区时需谨慎，因为其中的重要数据和配置在删除后可能会对服务操作产生不利影响。 请了解那些将数据存储在 Log Analytics 中的代理、解决方案以及其他 Azure 服务和源，例如：
 
@@ -43,7 +46,7 @@ ms.locfileid: "74528393"
 
 可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) 或 [Azure 门户](https://portal.azure.cn)删除工作区。
 
-### <a name="delete-workspace-in-azure-portal"></a>在 Azure 门户中删除工作区
+### <a name="azure-portal"></a>Azure 门户
 
 1. 若要登录，请转到 [Azure 门户](https://portal.azure.cn)。 
 2. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
@@ -51,6 +54,11 @@ ms.locfileid: "74528393"
    ![从工作区属性窗格中删除选项](media/delete-workspace/log-analytics-delete-workspace.png)
 4. 显示询问是否确实要删除工作区的确认消息窗口时，单击“是”。 
    ![确认删除工作区](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+```
 
 ## <a name="recover-workspace"></a>恢复工作区
 

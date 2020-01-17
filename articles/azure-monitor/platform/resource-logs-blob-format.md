@@ -1,6 +1,6 @@
 ---
-title: 为 Azure Monitor 诊断日志的格式更改做准备
-description: 将于 2018 年 11 月 1 日移动 Azure 诊断日志以使用追加 blob。
+title: 为 Azure Monitor 资源日志的格式更改做准备
+description: Azure 资源日志已于 2018 年 11 月 1 日改为使用追加 blob。
 author: lingliw
 services: monitoring
 ms.service: azure-monitor
@@ -9,23 +9,22 @@ origin.date: 07/06/2018
 ms.date: 07/06/2019
 ms.author: johnkem
 ms.subservice: v-lingwu
-ms.openlocfilehash: d29b034780ffbef7e49af9cfa9a671c8b003dc5b
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: c3d28df259036c53506ac2f5d0e9b3b6d89008ec
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72971131"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599915"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 平台日志的格式更改做准备
 
 > [!WARNING]
-> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](resource-logs-collect-storage.md)或[使用日志配置文件将活动日志发送到存储帐户](activity-log-export.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。 
+> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](resource-logs-collect-storage.md)或[使用日志配置文件将活动日志发送到存储帐户](activity-log-export.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。
 >
-> 
 
-## <a name="what-is-changing"></a>有什么变化
+## <a name="what-changed"></a>更改内容
 
-Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式将于 2018 年 11 月 1 日凌晨 12 点 (UTC) 发生更改  。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
+Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式已于 2018 年 11 月 1 日凌晨 12 点 (UTC) 更改  。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
 
 * 在 2018 年 11 月 1 日星期四凌晨 12 点 (UTC)，blob 格式已更改为 [JSON Lines](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
 * 已同时更改所有订阅中所有诊断设置的 blob 格式。 11 月 1 日发出的第一个 PT1H.json 文件已使用此新格式。 Blob 和容器名称保持不变。
@@ -37,8 +36,8 @@ Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发
   * [由日志配置文件导出的 Azure 活动日志数据](activity-log-collect.md)
 * 此更改不会影响：
   * 网络流日志
-  * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务诊断日志、存储分析日志）
-  * 将 Azure 诊断日志和活动日志路由到其他目标（事件中心、Log Analytics）
+  * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务资源日志、存储分析日志）
+  * 将 Azure 资源日志和活动日志路由到其他目标（事件中心、Log Analytics）
 
 ### <a name="how-to-see-if-you-are-impacted"></a>如何查看是否受到影响
 
