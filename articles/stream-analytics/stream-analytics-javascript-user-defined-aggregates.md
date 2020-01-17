@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析中 JavaScript 用户定义的聚合
 description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/28/2017
 ms.date: 07/12/2019
-ms.openlocfilehash: 5cf90b815fcb38006be9f0b67a2b45172366a835
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 38521b7c6fefce97fc31268b98ab79df8984af0b
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674812"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856848"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  
@@ -99,19 +98,19 @@ function main() {
 
 Init() 方法初始化聚合的状态。 窗口启动时会调用此方法。
 
-### <a name="method---accumulate"></a>方法 - accumulate()
+### <a name="method--accumulate"></a>方法 � accumulate()
 
-Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当某个事件进入时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW 或 SLIDINGWINDOW）时，会调用此方法。
+Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当某个事件进入时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）时，会调用此方法。
 
-### <a name="method---deaccumulate"></a>方法 - deaccumulate()
+### <a name="method--deaccumulate"></a>方法 � deaccumulate()
 
-deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件退出 SLIDINGWINDOW 时，会调用此方法。
+deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件退出 SLIDINGWINDOW 或 SESSIONWINDOW 时，会调用此方法。
 
-### <a name="method---deaccumulatestate"></a>方法 - deaccumulateState()
+### <a name="method--deaccumulatestate"></a>方法 � deaccumulateState()
 
 deaccumulateState() 方法基于前一状态和跃点状态重新计算状态。 当一组事件退出 HOPPINGWINDOW 时，会调用此方法。
 
-### <a name="method---computeresult"></a>方法 - computeResult()
+### <a name="method--computeresult"></a>方法 � computeResult()
 
 computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用此方法。
 

@@ -1,28 +1,27 @@
 ---
 title: 使用诊断日志对 Azure 流分析进行故障排除
 description: 本文介绍如何在 Azure 流分析中分析诊断日志。
-services: stream-analytics
 author: rockboyfor
 ms.author: jeanb
 manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 06/21/2019
-ms.date: 07/19/2019
+origin.date: 12/19/2019
+ms.date: 1/6/2020
 ms.custom: v-lingwu
-ms.openlocfilehash: a0177b9726cf18021ffc85914440b2c5c91e6750
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 483239f8f8169c7da08883a5020b43ac6e0cca38
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674809"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856902"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
 有时，Azure 流分析作业会意外地停止处理。 因此，能够解决此类事件是很重要的。 故障可能由意外的查询结果、与设备的连接问题或意外的服务中断导致。 流分析中的诊断日志可以帮助用户在问题发生时确定原因并缩短恢复时间。
 
-强烈建议为所有生产作业启用诊断日志。
+强烈建议为所有作业启用诊断日志，因为这对调试和监视会有很大帮助。
 
 ## <a name="log-types"></a>日志类型
 
@@ -69,19 +68,15 @@ ms.locfileid: "71674809"
 
     ![诊断日志设置](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. 流分析作业开始时，诊断日志会被路由到 Log Analytics 工作区。 导航到 Log Analytics 工作区，并选择“常规”部分下的“日志”   。
+3. 流分析作业开始时，诊断日志会被路由到 Log Analytics 工作区。 若要查看作业的诊断日志，请在“监视”部分下选择“日志”   。
 
-   ![“常规”部分下的 Azure Monitor 日志](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![“监视”下的“诊断日志”](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. 可以[编写自己的查询](../azure-monitor/log-query/get-started-portal.md)，以搜索字词、识别趋势、分析模式，以及基于数据提供见解。 例如，可以编写查询，仅筛选出具有“The streaming job failed”（流式传输作业已失败）消息的诊断日志。来自 Azure 流分析的诊断日志存储在“AzureDiagnostics”表中  。
+4. 流分析提供预定义的查询，使你可以轻松搜索感兴趣的日志。 这 3 个类别是**常规**、**输入数据错误**和**输出数据错误**。 例如，若要查看过去 7 天内所有作业错误的摘要，可以选择适当预定义查询的“运行”  。 
 
-   ![诊断查询和结果](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
+   ![“监视”下的“诊断日志”](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
 
-5. 如果具有搜索正确日志的查询，可通过选择“保存”并提供“名称”和“类别”来保存它  。 随后可通过选择“新建预警规则”来创建警报  。 接下来，指定警报条件。 选择“条件”并输入阈值的值和评估此自定义日志搜索的频率  。  
-
-   ![诊断日志搜索查询](./media/stream-analytics-job-diagnostic-logs/search-query.png)
-
-6. 选择操作组并指定警报详细信息（如名称和描述），然后才能创建预警规则。 可以将各种作业的诊断日志路由到同一 Log Analytics 工作区。 这让你能够一次性设置适合所有作业的警报。  
+   ![日志结果](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
 
 ## <a name="diagnostics-log-categories"></a>诊断日志类别
 
@@ -100,7 +95,7 @@ Azure 流分析捕获两种类别的诊断日志：
 
 所有日志均以 JSON 格式存储。 每个项目均具有以下常见字符串字段：
 
-Name | 说明
+名称 | 说明
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 ResourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如， **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
@@ -118,7 +113,7 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 
 作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。
 
-Name | 说明
+名称 | 说明
 ------- | -------
 Source | 发生错误的作业输入或输出的名称。
 Message | 与错误关联的消息。
@@ -139,7 +134,7 @@ Message | 与错误关联的消息。
 
 泛型事件包含其他所有情况。
 
-Name | 说明
+名称 | 说明
 -------- | --------
 错误 | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
 Message| 日志消息。
