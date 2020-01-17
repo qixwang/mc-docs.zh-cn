@@ -2,21 +2,21 @@
 title: 有关选择时序 ID 的最佳做法 - Azure 时序见解 | Microsoft Docs
 description: 了解在 Azure 时序见解预览版中选择时序 ID 时的最佳做法。
 author: deepakpalled
-ms.author: dpalled
+ms.author: v-yiso
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 10/22/2019
-ms.date: 12/02/2019
+origin.date: 12/19/2019
+ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e50cc28b80af750ce42ab6f0cb2ee34c0bacce3
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9adb9fb101c2ddc6c9d10fe712ca9b80e35422b1
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389368"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859661"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -24,16 +24,20 @@ ms.locfileid: "74389368"
 
 ## <a name="choose-a-time-series-id"></a>选择时间序列 ID
 
-选择时序 ID 与为数据库选择分区键相同。 需要在创建时序见解预览版环境时选择时序 ID。 时序 ID 是一个不可变的属性。  也就是说，在使用时序 ID 创建时序见解预览版环境后，无法更改该环境的时序 ID。 
+选择适当的时序 ID 至关重要。 选择时序 ID 与为数据库选择分区键相同。 创建时序见解预览环境时，这是必需的。 
 
 > [!IMPORTANT]
-> 时序 ID 区分大小写。
+> 时序 ID 如下：
+> * 区分大小写的属性  ：搜索、比较和更新以及分区都会用到字母和字符的大小写。
+> * 不可变属性  ：一旦创建，无法更改。
 
-选择适当的时序 ID 至关重要。 下面是一些可遵循的最佳做法：
+> [!TIP]
+> 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id。
+
+要遵守的主要最佳做法包括：
 
 * 选择具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
 * 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
-* 如果事件源是 IoT 中心，则时序 ID 很可能是 *iothub-connection-device-id*。
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
 * 此外，最多可以选择三个键属性作为时序 ID。  这些属性的组合将是表示时序 ID 的组合键。  
@@ -41,6 +45,8 @@ ms.locfileid: "74389368"
   > [!NOTE]
   > 三个键属性必须是字符串。
   > 必须针对此组合键运行查询，而不能每次查询一个属性。
+
+## <a name="select-more-than-one-key-property"></a>选择多个键属性
 
 以下方案描述如何选择多个键属性作为时序 ID。  
 
@@ -68,9 +74,11 @@ ms.locfileid: "74389368"
 }
 ```
 
-在 Azure 门户中，可按如下所示输入此组合键： 
+然后，可在 Azure 门户中输入组合键，如下所示： 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
 ## <a name="next-steps"></a>后续步骤
 

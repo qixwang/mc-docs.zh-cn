@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板创建服务总线授权规则 | Azure Docs
+title: 使用 Azure 模板创建服务总线授权规则
 description: 使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 12/20/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c36832f57d0fec661549e92e7d2ac320cad94e4b
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 3b6c8146b86ff42d419a47438c7740bde17cdaf1
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330102"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853836"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板为命名空间和队列创建服务总线授权规则
 
@@ -54,7 +54,7 @@ ms.locfileid: "71330102"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
@@ -166,7 +166,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已使用 Azure 资源管理器创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
+现在，已使用 Azure Resource Manager 创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
 
 - [使用 PowerShell 管理服务总线](/service-bus-messaging/service-bus-manage-with-ps)
 - [使用服务总线资源管理器管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

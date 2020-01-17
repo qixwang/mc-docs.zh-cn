@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 07/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c34c35d6a4bf572b3b5fdc996a68f56543f22e00
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: 58d42f05409076af8bdc8abdfc9bc8d9f40d1a81
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731242"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859862"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 
@@ -26,6 +26,9 @@ ms.locfileid: "68731242"
 > * 在更新基础映像时自动触发并重新部署容器映像
 
 还可以阅读[群集安全性][best-practices-cluster-security]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
+
+<!--Not Available on [Container security in Security Center][security-center-containers]-->
+<!--Not Available on [Azure Container Registry integration][security-center-acr]-->
 
 ## <a name="secure-the-images-and-run-time"></a>保护映像和运行时
 
@@ -45,11 +48,13 @@ ms.locfileid: "68731242"
 
 Azure 容器注册表任务也可以在更新基础映像时自动更新容器映像。 通过此功能，你可以生成少量基础映像，并通过 bug 修复和安全修复定期更新它们。
 
-<!--Not Available on [Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]-->
+有关基础映像更新的详细信息，请参阅[使用 Azure 容器注册表任务在基础映像更新时自动化映像生成][acr-base-image-update]。
 
-<!--Not Available on## Next steps-->
-<!--Not Available on* [Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update]-->
-<!--Not Available on* [Content trust in Azure Container Registry][acr-content-trust]-->
+## <a name="next-steps"></a>后续步骤
+
+本文重点介绍了如何保护容器。 若要实施其中某些做法，请参阅以下文章：
+
+* [使用 Azure 容器注册表任务在基础映像更新时自动化映像生成][acr-base-image-update]
 
 <!-- EXTERNAL LINKS -->
 <!--Not Available on [azure-pipelines]: /devops/pipelines/?view=vsts-->
@@ -61,6 +66,8 @@ Azure 容器注册表任务也可以在更新基础映像时自动更新容器�
 
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
+[acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
 
+<!--Not Available on [security-center-containers]: /security-center/container-security-->
 <!--Not Available on [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md-->
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

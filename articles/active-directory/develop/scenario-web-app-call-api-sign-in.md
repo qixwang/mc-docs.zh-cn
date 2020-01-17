@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的 Web 应用（登录）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的 Web 应用（登录）
+title: 注销时从令牌缓存中删除帐户 - Microsoft 标识平台 | Azure
+description: 了解如何在注销时从令牌缓存中删除帐户
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,19 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/30/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2af84870aa0a5174e4614c5c87944c749d2cddab
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 162a9f2fb6d02efec2368f9e9f2c86a4eaaaa923
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830912"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776921"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>用于调用 Web API 的 Web 应用 - 登录
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>在全局注销时从缓存中删除帐户
 
 你已经知道如何向 Web 应用添加登录。 你在[用于登录用户的 Web 应用 - 添加登录](scenario-web-app-sign-user-sign-in.md)中学习它。
 
@@ -39,7 +38,7 @@ ms.locfileid: "73830912"
 
 使用为应用程序注册的**注销 URL** 可以实现单一注销。Microsoft 标识平台 `logout` 终结点会调用注册到应用程序的**注销 URL**。 如果注销是从你的 Web 应用或者另一 Web 应用或浏览器启动的，则会发生此调用。 有关详细信息，请参阅[单一注销](v2-protocols-oidc.md#single-sign-out)。
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

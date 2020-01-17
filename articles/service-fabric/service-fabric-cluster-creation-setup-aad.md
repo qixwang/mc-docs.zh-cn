@@ -1,26 +1,16 @@
 ---
-title: 为 Service Fabric 客户端身份验证设置 Azure Active Directory | Azure
+title: 为 Service Fabric 客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/28/2019
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 328eefacef59095d3849b27189f65adac8a4b217
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: bf3f117813ac7d66617212048bd21fae528573dc
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336352"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742363"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -33,7 +23,10 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 > [!NOTE]
 > 在 Linux 上，请在创建群集之前完成以下步骤。 在 Windows 上，也可选择[为现有群集配置 Azure AD 身份验证](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)。
 
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> [已知问题](https://github.com/microsoft/service-fabric/issues/399)是在 Azure 门户中无法查看已启用 Linux AAD 的群集上的应用程序和节点。
+
+## <a name="prerequisites"></a>必备条件
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
 
 为了简化涉及到配置 Azure AD 与 Service Fabric 群集的一些步骤，我们创建了一组 Windows PowerShell 脚本。
@@ -93,7 +86,7 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 ![SFX 证书对话框][sfx-select-certificate-dialog]
 
 #### <a name="reason"></a>Reason
-未在 Azure AD 群集应用程序中为用户分配角色。 因此，Service Fabric 群集的 Azure AD 身份验证失败。 Service Fabric Explorer 将故障回复到证书身份验证。
+未在 Azure AD 群集应用程序中为用户分配角色。 因此，Service Fabric 群集的 Azure AD 身份验证失败。 Service Fabric Explorer 会故障回复到证书身份验证。
 
 #### <a name="solution"></a>解决方案
 遵循有关设置 Azure AD 的说明操作，并为用户分配角色。 此外，我们建议打开“访问应用需要的用户分配”，如 `SetupApplications.ps1` 所示。
@@ -146,7 +139,7 @@ FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身�
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 
-<!--Not Available on [sf-aad-ps-script-download]: https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip-->
+<!--Not Exists on [sf-aad-ps-script-download]: https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip-->
 
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
 

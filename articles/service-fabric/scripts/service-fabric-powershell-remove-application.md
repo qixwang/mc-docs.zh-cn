@@ -12,17 +12,17 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 01/18/2018
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: e9a3cc2c03f60c2ec6491f020724d041d9a1e006
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: aa6f4bd5ee32670fe903647c7bdde57023f402a3
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174112"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742361"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>从 Service Fabric 群集中删除应用程序
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>使用 Powershell 从 Service Fabric 群集中删除应用程序
 
 此示例脚本删除了正在运行的 Service Fabric 应用程序实例，并从群集中取消注册了应用程序类型和版本。  删除应用程序实例时也会删除与该应用程序关联的所有正在运行的服务实例。 根据需要自定义参数。 
 
@@ -66,4 +66,4 @@ Unregister-ServiceFabricApplicationType -ApplicationTypeName MyApplicationType -
 
 可以在 [Azure PowerShell 示例](../service-fabric-powershell-samples.md)中找到 Azure Service Fabric 的其他 Powershell 示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

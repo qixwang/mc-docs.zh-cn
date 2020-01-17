@@ -1,26 +1,17 @@
 ---
-title: Reliable Actors 计时程序和提醒程序 | Azure
+title: Reliable Actors 计时器和提醒
 description: Service Fabric Reliable Actors 的计时器和提醒简介。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: amanbha
-ms.assetid: 00c48716-569e-4a64-bd6c-25234c85ff4f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 05/28/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 50de7db19b3542bb802db357372632d50bea72fa
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: e5d6446378f746e7f581c7f6ca9097d4b7811000
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646604"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742438"
 ---
 # <a name="actor-timers-and-reminders"></a>执行组件计时器和提醒
 执行组件可通过注册计时器或提醒来计划自身的定期工作。 本文演示如何使用计时器和提醒，并说明它们之间的差异。
@@ -168,7 +159,7 @@ protected CompletableFuture onActivateAsync()
 }
 ```
 
-在本示例中， `"Pay cell phone bill"` 是提醒名称。 这是执行组件用于唯一标识提醒的字符串。 `BitConverter.GetBytes(amountInDollars)`(C#) 是与提醒相关联的上下文。 它会作为提醒回调的参数传递回执行组件，即`IRemindable.ReceiveReminderAsync`(C#) 或 `Remindable.receiveReminderAsync`(Java)。
+在本示例中， `"Pay cell phone bill"` 是提醒名称。 这是执行组件用来唯一标识提醒的字符串。 `BitConverter.GetBytes(amountInDollars)`(C#) 是与提醒相关联的上下文。 它会作为提醒回调的参数传递回执行组件，即`IRemindable.ReceiveReminderAsync`(C#) 或 `Remindable.receiveReminderAsync`(Java)。
 
 使用提醒的执行组件必须实现 `IRemindable` 接口，如以下示例中所示。
 

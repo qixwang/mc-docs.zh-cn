@@ -1,26 +1,16 @@
 ---
-title: 有关 Azure Service Fabric 的常见问题 | Azure
+title: 有关 Azure Service Fabric 的常见问题
 description: 有关 Service Fabric 的常见问题及其回答
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 08/18/2017
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: ba8a0393f403bd9f03515d52701c412c953dac16
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 19b5e27ef3a2ed36ccc367723e24181c9903788f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336102"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742353"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 常见问题
 
@@ -66,6 +56,7 @@ ms.locfileid: "75336102"
 当前，大型虚拟机规模集还存在其他问题，例如缺少 level-4 负载均衡支持。
 
 <!--Not Available on [details on Large scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)-->
+
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric 群集的最小大小如何？ 为什么不能更小？
 
 运行生产工作负荷的 Service Fabric 群集支持的最小大小是五个节点。 对于开发方案，我们支持单节点群集（已针对 Visual Studio 中的快速开发体验进行优化）和五节点群集。
@@ -136,8 +127,9 @@ ms.locfileid: "75336102"
 下面为应用程序为实现对 KeyVault 的身份验证而获取凭据的方式：
 
 A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
+B. 对于支持虚拟机规模集 MSI 的主机，可为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以便[从 MSI 终结点获取访问令牌](/active-directory/managed-identities-azure-resources/how-to-use-vm-token)，然后[从 KeyVault 检索机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
-<!--Not Available on MSI -->
+<!--URL Redirect from /active-directory/managed-service-identity/ to /managed-identities-azure-resources/-->
 
 ## <a name="application-design"></a>应用程序设计
 
@@ -163,7 +155,7 @@ Reliable Services 通常已分区，因此，存储量仅受限于群集中的�
 
 例如，某个服务中的 Reliable Collection 包含 100 个分区和 3 个副本，存储平均大小为 1 KB 的对象。 现在假设群集中有 10 台计算机，每台计算机的内存为 16 GB。 我们做一个简单且保守的假设：操作系统和系统服务、Service Fabric 运行时以及服务消耗了 6GB 内存，也就是说，每个计算机还剩余 10GB 内存，整个群集还有 100GB 内存。
 
-请记住，每个对象必须存储三次（一个主要副本和两个次要副本），满负荷运行时，集合可提供足够的内存来存储约 3.5 亿个对象。 但是，我们建议能够弹性应对故障域和升级域的同时丢失（它们会占用大约 1/3 的容量），并将对象数目减少到大约 2300 万个。
+请记住，每个对象必须存储三次（一个主要副本和两个次要副本），满负荷运行时，集合可提供足够的内存来存储约 3.5 亿个对象。 但是，我们建议弹性应对故障域和升级域同时丢失的情况，这需要约 1/3 的容量，因此，上述数字减至约 2.3 亿个。
 
 请注意，此计算还假设：
 
@@ -195,5 +187,5 @@ Reliable Services 通常已分区，因此，存储量仅受限于群集中的�
 
 了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)
 
-<!--Repeate with URL and contents on global site-->
+<!--REPEAT THE DUPILICATED CONTENT OF  URL and contents on global site-->
 <!--Update_Description: update meta properties, wording update, update link -->

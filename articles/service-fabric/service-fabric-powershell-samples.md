@@ -1,40 +1,30 @@
 ---
-title: Azure PowerShell 示例 - Service Fabric | Azure
+title: Azure PowerShell 示例 - Service Fabric
 description: Azure PowerShell 示例 - Service Fabric
-services: service-fabric
-documentationcenter: service-fabric
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 origin.date: 11/29/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3094d2aa2613353ef325605257ff05ee4ed1c4e8
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: fa1957c74827052a38fdfcedca43751ab12aa052
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174226"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742484"
 ---
-# <a name="azure-powershell-samples"></a>Azure PowerShell 示例
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell 示例
 
 下表包含用于创建和管理 Service Fabric 群集、应用程序和服务的 PowerShell 脚本示例的链接。
 
-[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+[!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
 | | |
 |-|-|
 | 创建群集  ||
 | [创建群集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 创建 Azure Service Fabric 群集。 |
 | **管理群集、节点和基础结构** ||
-| [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 将应用程序 X.509 证书添加到群集中的所有节点。 |
+| [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 创建密钥保管库的 X509 证书，并将其部署到群集中的虚拟机规模集。 |
 | [更新群集 VM 上的 RDP 端口范围](./scripts/service-fabric-powershell-change-rdp-port-range.md)|更改已部署群集中群集节点 VM 上的 RDP 端口范围。|
 | [更新群集节点 VM 的管理员用户和密码](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | 更新群集节点 VM 的管理员用户名和密码。 |
 | [打开负载均衡器的端口](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | 在 Azure 负载均衡器中打开应用程序端口，以允许特定端口上的入站流量。 |
@@ -44,4 +34,4 @@ ms.locfileid: "70174226"
 | [升级应用程序](./scripts/service-fabric-powershell-upgrade-application.md)| 升级应用程序。|
 | [删除应用程序](./scripts/service-fabric-powershell-remove-application.md)| 从群集中删除应用程序。|
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

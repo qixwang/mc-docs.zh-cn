@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure CLI 访问 Azure Database for MariaDB 中的服务器日志
-description: 本文介绍如何使用 Azure CLI 命令行实用工具访问 Azure Database for MariaDB 中的服务器日志。
+title: 访问慢查询日志 - Azure CLI - Azure Database for MariaDB
+description: 本文介绍如何使用 Azure CLI 命令行实用工具访问 Azure Database for MariaDB 中的慢查询日志。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 origin.date: 06/12/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: 0cc5a8fa3c624dd71f83af8afea9125c811af5c2
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+ms.date: 01/13/2020
+ms.openlocfilehash: ba053ba38a3ea887a8d5249a19281f3072c8b854
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308889"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776755"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
-可以使用 Azure CLI（Azure 的命令行实用工具）下载 Azure Database for MariaDB 服务器日志。
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问慢查询日志
+可以使用 Azure CLI（Azure 命令行实用工具）下载 Azure Database for MariaDB 慢查询日志。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/install-azure-cli)
@@ -26,7 +26,7 @@ ms.locfileid: "68308889"
 ## <a name="configure-logging-for-azure-database-for-mariadb"></a>为 Azure Database for MariaDB 配置日志记录
 通过执行下列步骤，可以对服务器进行配置以访问 MariaDB 慢查询日志：
 1. 通过将 slow\_query\_log  参数设置为 ON 启用日志记录。
-2. 调整其他参数，例如 **long\_query\_time**  和  **log\_slow\_admin\_statements**。
+2. 调整其他参数，例如 long\_query\_time  和 log\_slow\_admin\_statements  。
 
 若要了解如何通过 Azure CLI 设置这些参数的值，请参阅[如何配置服务器参数](howto-configure-server-parameters-cli.md)。
 

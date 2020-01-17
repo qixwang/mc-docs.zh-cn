@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的 Web 应用（概述）- Microsoft 标识平台
+title: 构建调用 Web API 的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的 Web 应用（概述）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,23 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 06/20/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4191c802604bd6812adf8111aa68464a1fe5dad5
-ms.sourcegitcommit: 9d5fd3184b6a47bf3b60ffdeeee22a08354ca6b1
+ms.openlocfilehash: f8b8bfb8295d82991962755cf915272262085d7b
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67305961"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776925"
 ---
 # <a name="scenario-web-app-that-calls-web-apis"></a>方案：用于调用 Web API 的 Web 应用
 
-了解如何构建一个 Web 应用，该应用在 Microsoft 标识平台上登录用户并代表已登录用户调用 Web API。
+了解如何构建 Web 应用，使其可让用户在 Microsoft 标识平台上登录，然后代表已登录用户调用 Web API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -64,3 +63,4 @@ ms.locfileid: "67305961"
 > [!div class="nextstepaction"]
 > [应用注册](scenario-web-app-call-api-app-registration.md)
 
+<!-- Update_Description: wording update -->

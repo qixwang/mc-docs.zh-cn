@@ -1,22 +1,22 @@
 ---
-title: 规划 Azure 时序见解预览版环境 | Microsoft Docs
-description: 计划 Azure 时序见解预览版环境。
-author: ashannon7
-ms.author: anshan
+title: 规划预览版环境 - Azure 时序见解 | Microsoft Docs
+description: 配置、管理、规划和部署 Azure 时序见解预览版环境的最佳做法。
+author: deepakpalled
+ms.author: v-yiso
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 09/24/2019
-ms.date: 12/02/2019
+origin.date: 11/22/2019
+ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc78ef341e61838c11a997456e2f951a6229d711
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9d1ce4274bfeaa6c86723b7afdc6ae5f768a5000
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389601"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859652"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -49,7 +49,7 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 在暖存储上进行的查询免费，而在冷存储上进行的查询则收费。 必须了解查询模式并对暖存储配置进行相应的计划。 建议将对最新数据进行的交互式分析驻留在暖存储中，将模式分析和长期趋势驻留在冷存储中。
 
 > [!NOTE]
-> 对于暖存储，我们目前支持最多 1,000 个属性。
+> 有关如何查询暖数据的详细信息，[请参阅此处](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)。
 
 若要开始，需要三个附加项：
  

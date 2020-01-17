@@ -1,19 +1,16 @@
 ---
-title: Service Fabric 托管标识概述 | Azure
-description: 本文提供托管标识的概述。
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
+title: Service Fabric 托管标识概述
+description: 本文概述了 Azure Service Fabric 的托管标识及其应用程序。
 ms.topic: conceptual
-origin.date: 07/25/2019
-ms.date: 12/09/2019
+origin.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 02d2a755152dd3734b26f1d776881998c0835cde
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 501512e89cb0d4b9dfb53673549ba58214443cd6
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336186"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742457"
 ---
 <!--Verify successfully-->
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric 应用程序的托管标识（预览版）

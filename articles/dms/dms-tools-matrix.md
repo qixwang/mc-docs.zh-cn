@@ -1,5 +1,5 @@
 ---
-title: 数据迁移服务和工具矩阵 - Azure | Microsoft Docs
+title: Azure 数据库迁移服务工具矩阵
 description: 了解可用来迁移数据库以及为迁移流程的各个阶段提供支持的服务和工具。
 services: database-migration
 author: WenJason
@@ -10,14 +10,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-origin.date: 03/12/2019
-ms.date: 08/12/2019
-ms.openlocfilehash: a03b8032db510e8489dd521669e3adbab22935b9
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+origin.date: 12/13/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 7d5904e80a66239632fea76473f5bd716125719b
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952152"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776764"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>可用于数据迁移方案的服务和工具
 
@@ -30,9 +30,9 @@ ms.locfileid: "68952152"
 
 ## <a name="business-justification-phase"></a>业务论证阶段
 
-| **Source** | **目标** | **发现 /**<br/>**清单** | **目标和 SKU**<br/>**建议** |
+| **Source** | **Target** | **发现 /**<br/>**清单** | **目标和 SKU**<br/>**建议** |
 | --- | --- | --- | --- |
-| SQL Server | Azure SQL 数据库 | [MAP 工具包](https://msdn.microsoft.com/library/bb977556.aspx)<br/>Azure Migrate<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
+| SQL Server | Azure SQL DB | [MAP 工具包](https://msdn.microsoft.com/library/bb977556.aspx)<br/>Azure Migrate<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [MAP 工具包](https://msdn.microsoft.com/library/bb977556.aspx)<br/>Azure Migrate<br/>[Cloudamize*](https://www.cloudamize.com/) | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL VM | [MAP 工具包](https://msdn.microsoft.com/library/bb977556.aspx)<br/>Azure Migrate<br/>[Cloudamize*](https://www.cloudamize.com/) | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | SQL DW |  |  |
@@ -54,15 +54,15 @@ ms.locfileid: "68952152"
 
 ## <a name="pre-migration-phase"></a>迁移前阶段
 
-| **Source** | **目标** | **应用数据访问**<br/>**层评估** | **数据库**<br/>**评估** | **性能**<br/>**评估** |
+| **Source** | **Target** | **应用数据访问**<br/>**层评估** | **Database**<br/>**评估** | **“性能”**<br/>**评估** |
 | --- | --- | --- | --- | --- |
-| SQL Server | Azure SQL 数据库 |  | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
+| SQL Server | Azure SQL DB |  | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI |  | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL VM |  | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | SQL DW |  |  |  |
 | RDS SQL | Azure SQL DB、MI、VM |  | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090) |
-| Oracle | Azure SQL DB、MI、VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [Simora*](http://www.simora.co.uk/) |
-| Oracle | SQL DW |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [Simora*](http://www.simora.co.uk/) |
+| Oracle | Azure SQL DB、MI、VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
+| Oracle | SQL DW |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Oracle | 用于 PostgreSQL 的 Azure DB |  |  |  |
 | MongoDB | Cosmos DB |  | [Cloudamize*](https://www.cloudamize.com/) | [Cloudamize*](https://www.cloudamize.com/) |
 | Cassandra | Cosmos DB |  |  |  |
@@ -78,9 +78,9 @@ ms.locfileid: "68952152"
 
 ## <a name="migration-phase"></a>迁移阶段
 
-| **Source** | **目标** | **架构** | **数据**<br/>**（脱机）** | **数据**<br/>**（联机）** |
+| **Source** | **Target** | **架构** | **数据**<br/>**（脱机）** | **数据**<br/>**（联机）** |
 | --- | --- | --- | --- | --- |
-| SQL Server | Azure SQL 数据库 | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| SQL Server | Azure SQL DB | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL DB MI | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL VM | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | SQL DW |  |  |  |
@@ -102,9 +102,9 @@ ms.locfileid: "68952152"
 
 ## <a name="post-migration-phase"></a>迁移后阶段
 
-| **Source** | **目标** | **优化** |
+| **Source** | **Target** | **优化** |
 | --- | --- | --- |
-| SQL Server | Azure SQL 数据库 | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
+| SQL Server | Azure SQL DB | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL VM | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | SQL DW |  |

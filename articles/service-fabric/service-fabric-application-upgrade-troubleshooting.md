@@ -1,26 +1,16 @@
 ---
-title: 应用程序升级故障排除 | Azure
+title: 对应用程序升级进行故障排除
 description: 本文介绍一些围绕升级 Service Fabric 应用程序的常见问题以及这些问题的解决方法。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ad152e-ec50-4327-9f19-065c875c003c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: c90f3192a8e4f0671b3063af7e0556bcd3d22dea
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 9882b389718ea072ea0faab07b3818da8883c75d
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336376"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742467"
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
 
@@ -232,7 +222,7 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) （使用 Visual Studio 升级应用程序）逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
 [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 

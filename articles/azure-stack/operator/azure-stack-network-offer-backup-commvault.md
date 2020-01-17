@@ -12,16 +12,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/28/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
-ms.openlocfilehash: 71426435bbe4bc4dc87693872013a6c7fda8357f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: d666f77d9ca7768c4845ac4ae104bd16d556c0b5
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020425"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737911"
 ---
 # <a name="add-commvault-to-the-azure-stack-marketplace"></a>将 Commvault 添加到 Azure Stack 市场
 
@@ -48,7 +48,7 @@ ms.locfileid: "74020425"
     ![用于 Azure Stack 的 Commvault](./media/azure-stack-network-offer-backup-commvault/get-commvault-for-marketplace.png)
 
 3. 输入 `commvault`。
-4. 选择“Commvault 跟踪”。  然后选择“下载”。 
+4. 选择“Commvault 试用版”  。 然后选择“下载”。 
 
 
 ## <a name="next-steps"></a>后续步骤

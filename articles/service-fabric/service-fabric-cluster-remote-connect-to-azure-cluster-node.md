@@ -1,26 +1,16 @@
 ---
-title: 远程连接 Azure Service Fabric 群集节点 | Azure
+title: 远程连接 Azure Service Fabric 群集节点
 description: 了解如何远程连接到规模集实例（Service Fabric 群集节点）。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/23/2018
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 3376ab885dd02f837d62f5e6f320cc2f0fce5c45
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 189dd8fccff93525a1a744dfff0e45011034c440
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174127"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742344"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>远程连接到虚拟机规模集实例或群集节点
 在 Azure 中运行的 Service Fabric 群集中，定义的每个群集节点类型都会[设置虚拟机单独规模](service-fabric-cluster-nodetypes.md)。  可以远程连接到特定规模集实例（群集节点）。  不同于单实例 VM，规模集实例本身没有虚拟 IP 地址。 可能很难找到可用来远程连接到特定实例的 IP 地址和端口。

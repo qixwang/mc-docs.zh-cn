@@ -1,21 +1,21 @@
 ---
-title: 从命令行部署模块 - Azure IoT Edge | Microsoft Docs
-description: 通过适用于 Azure CLI 的 IoT 扩展将模块部署到 IoT Edge 设备
+title: 从 Azure CLI 命令行部署模块 - Azure IoT Edge
+description: 将 Azure CLI 与 Azure IoT 扩展结合使用，根据部署清单的配置将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备。
 author: kgremban
 manager: philmea
 ms.author: v-yiso
 origin.date: 08/16/2019
-ms.date: 09/09/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ecb2fa48a984c5733c1974adcc55951007429ae4
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 8290bb0df886cfa8edd8a5307de085e39ff5ee58
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174000"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859717"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -25,11 +25,11 @@ ms.locfileid: "70174000"
 
 本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor-cli.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。 
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-cli.md)。
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
+* Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
+* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-the-azure-cli)。
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
@@ -40,69 +40,74 @@ ms.locfileid: "70174000"
 
 下面是一个基本的部署清单示例，其中有一个模块：
 
-   ```json
-   {
-     "modulesContent": {
-       "$edgeAgent": {
-         "properties.desired": {
-           "schemaVersion": "1.0",
-           "runtime": {
-             "type": "docker",
-             "settings": {
-               "minDockerVersion": "v1.25",
-               "loggingOptions": "",
-               "registryCredentials": {}
-             }
-           },
-           "systemModules": {
-             "edgeAgent": {
-               "type": "docker",
-               "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-                 "createOptions": "{}"
-               }
-             },
-             "edgeHub": {
-               "type": "docker",
-               "status": "running",
-               "restartPolicy": "always",
-               "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                 "createOptions": "{}"
-               }
-             }
-           },
-           "modules": {
-             "SimulatedTemperatureSensor": {
-               "version": "1.0",
-               "type": "docker",
-               "status": "running",
-               "restartPolicy": "always",
-               "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-                 "createOptions": "{}"
-               }
-             }
-           }
-         }
-       },
-       "$edgeHub": {
-         "properties.desired": {
-           "schemaVersion": "1.0",
-           "routes": {
-               "route": "FROM /* INTO $upstream"
-           },
-           "storeAndForwardConfiguration": {
-             "timeToLiveSecs": 7200
-           }
-         }
-       },
-       "SimulatedTemperatureSensor": {
-         "properties.desired": {}
-       }
-     }
-   }
-   ```
+```json
+{
+  "content": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired": {
+          "schemaVersion": "1.0",
+          "runtime": {
+            "type": "docker",
+            "settings": {
+              "minDockerVersion": "v1.25",
+              "loggingOptions": "",
+              "registryCredentials": {}
+            }
+          },
+          "systemModules": {
+            "edgeAgent": {
+              "type": "docker",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "createOptions": "{}"
+              }
+            },
+            "edgeHub": {
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+              }
+            }
+          },
+          "modules": {
+            "SimulatedTemperatureSensor": {
+              "version": "1.0",
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+                "createOptions": "{}"
+              }
+            }
+          }
+        }
+      },
+      "$edgeHub": {
+        "properties.desired": {
+          "schemaVersion": "1.0",
+          "routes": {
+            "upstream": "FROM /messages/* INTO $upstream"
+          },
+          "storeAndForwardConfiguration": {
+            "timeToLiveSecs": 7200
+          }
+        }
+      },
+      "SimulatedTemperatureSensor": {
+        "properties.desired": {
+          "SendData": true,
+          "SendInterval": 5
+        }
+      }
+    }
+  }
+}
+```
 
 ## <a name="deploy-to-your-device"></a>部署到设备
 

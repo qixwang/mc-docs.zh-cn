@@ -1,5 +1,5 @@
 ---
-title: 受保护的 Web API - 应用代码配置
+title: 配置受保护的 Web API 应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成受保护的 Web API 和配置应用程序的代码。
 services: active-directory
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 11/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ca3a3ae40d77771a55809dfdb67b69b1b04dc8
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: e847db1a4b77f88c6fed49e708a74373d4fc800e
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655303"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776945"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
@@ -44,7 +43,7 @@ ms.locfileid: "74655303"
 
 以下 C# 代码示例演示了某个客户端在使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 获取令牌后调用 API：
 
-```CSharp
+```csharp
 var scopes = new[] {$"api://.../access_as_user}";
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
@@ -96,19 +95,19 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 在 ASP.NET Core 中，该中间件在 Startup.cs 文件中初始化。
 
-```CSharp
+```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
 该中间件由以下指令添加到 Web API：
 
-```CSharp
+```csharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 但是，你可以通过在 Startup.cs 文件中添加以下代码，轻松将这些模板更改为使用 Microsoft 标识平台终结点：
 
-```CSharp
+```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
     // This is a Microsoft identity platform web API.

@@ -1,19 +1,19 @@
 ---
-title: Azure DNS 常见问题解答
-description: 有关 Azure DNS 的常见问题
+title: 常见问题解答 - Azure DNS
+description: 本文介绍有关 Azure DNS 的常见问题
 services: dns
 author: WenJason
 ms.service: dns
 ms.topic: article
-origin.date: 01/16/2019
-ms.date: 02/25/2019
+origin.date: 06/15/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.openlocfilehash: 1545bc47aee68c3bddbecb29e703184cd75aaa38
-ms.sourcegitcommit: cf8ad305433d47f9a6760f7a91ee361dc01573db
+ms.openlocfilehash: 52f57d4d6fbc3925ce43f69b2cf954882288b66a
+ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502600"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777457"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -45,7 +45,7 @@ Azure 保证在任何情况下，有效的 DNS 请求将从至少一个 Azure DN
 
 DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 这些记录可能包含 mail.contoso.com（用于邮件服务器）和 www\.contoso.com（用于网站）。 这些记录托管在 DNS 区域 contoso.com 中。
 
-域名仅是一个名称。 DNS 区域是包含域名的 DNS 记录的数据资源。 可以使用 Azure DNS 托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 它还提供 DNS 名称服务器，用于回答来自 Internet 的 DNS 查询。
+域名仅是一个名称。  DNS 区域是包含域名的 DNS 记录的数据资源。 可以使用 Azure DNS 托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 它还提供 DNS 名称服务器，用于回答来自 Internet 的 DNS 查询。
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>是否需要购买 DNS 域名才能使用 Azure DNS？ 
 
@@ -158,6 +158,8 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 ## <a name="next-steps"></a>后续步骤
 
 - [详细了解 Azure DNS](dns-overview.md)。
+
+- [详细了解如何将 Azure DNS 用于专用域](private-dns-overview.md)。
 
 - [详细了解 DNS 区域和记录](dns-zones-records.md)。
 

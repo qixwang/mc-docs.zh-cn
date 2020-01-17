@@ -1,26 +1,17 @@
 ---
-title: 对本地 Azure Service Fabric 群集设置进行故障排除 | Azure
+title: 对本地 Azure Service Fabric 群集设置进行故障排除
 description: 本文就本地开发群集的故障介绍一些建议
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 05/28/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 91be54739614eae87aa4748667d9147eeb410bfa
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: c90ceb3ea5b368a9009a48d9f6a17289f682bf4c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52656275"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742111"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>排除本地开发群集安装的故障
 如果在与本地 Azure Service Fabric 开发群集交互时遇到问题，请查看以下建议以获得可能的解决方案。

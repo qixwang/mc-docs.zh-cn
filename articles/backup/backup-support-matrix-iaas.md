@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 09/13/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2d1e83e4ad3da5cdff449c8f8a1fb6b9d1d954f9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 9fa575906fb0704313915836374bbaded410ddc5
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838882"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858336"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用 [Azure 备份服务](backup-overview.md)备份本地计算机和工作负荷以及 Azure 虚拟机 (VM)。 本文汇总了使用 Azure 备份服务备份 Azure VM 时的支持设置和限制。
@@ -26,7 +26,7 @@ ms.locfileid: "74838882"
 
 下面描述了使用 Azure 备份服务备份和还原 Azure VM 的方式。
 
-**方案** | **备份** | **代理** |**Restore**
+**方案** | **备份** | **代理** |**还原**
 --- | --- | --- | ---
 直接备份 Azure VM  | 备份整个 VM。  | 无需在 Azure VM 上安装代理。 Azure 备份将为 VM 上运行的 [Azure VM 代理](/virtual-machines/extensions/agent-windows)安装一个扩展并使用该扩展。 | 按如下所述进行还原：<br/><br/> - **创建基本的 VM**。 如果 VM 不使用特殊配置（例如多个 IP 地址），则此操作非常有用。<br/><br/> - **还原 VM 磁盘**。 还原磁盘。 然后将磁盘附加到现有 VM，或使用 PowerShell 从磁盘创建新的 VM。<br/><br/> - **替换 VM 磁盘**。 如果 VM 存在并使用托管磁盘（未加密），则你可以还原磁盘并使用它来替换 VM 上的现有磁盘。<br/><br/> - **还原特定的文件/文件夹**。 可以从 VM 还原文件/文件夹，而不是从整个 VM 还原。
 直接备份 Azure VM（仅适用于 Windows）  | 备份特定的文件/文件夹/卷。 | 安装 Azure 恢复服务代理<br/><br/> 可将 MARS 代理与适用于 Azure VM 代理的备份扩展一同运行，以便在文件/文件夹级别备份 VM。 | 还原特定的文件夹/文件。
@@ -46,7 +46,7 @@ ms.locfileid: "74838882"
 修改 VM 的备份策略 | 。<br/><br/> 将使用新策略中的计划和保留期设置备份 VM。 如果保留期设置已延长，则会标记并保留现有的恢复点。 如果保留期设置已缩短，则会在下一个清理作业中清理现有的恢复点，并最终将其删除。
 取消备份作业| 在快照过程中受支持。<br/><br/> 快照正在传输到保管库时不受支持。
 将 VM 备份到其他区域或订阅 |不支持。
-每日备份（通过 Azure VM 扩展） | 每日进行一次计划的备份。<br/><br/> 该服务每天最多允许九个按需备份，但 Microsoft 仅建议并支持每天最多四个按需备份。
+每日备份（通过 Azure VM 扩展） | 每日进行一次计划的备份。<br/><br/>Azure 备份服务每天最多支持 9 个按需备份，但 Microsoft 建议每天不超过四个按需备份，以确保获得最佳性能。
 每日备份（通过 MARS 代理） | 每日进行三次计划的备份。
 每日备份（通过 DPM/MABS） | 每日进行两次计划的备份。
 每月/每年备份| 使用 Azure VM 扩展备份时不受支持。 仅支持每日和每周备份。<br/><br/> 可将策略设置为按每月/每年保留期保留每日/每周备份。
@@ -109,7 +109,7 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 
 ## <a name="support-for-file-level-restore"></a>文件级还原支持
 
-**Restore** | **支持**
+**还原** | **支持**
 --- | ---
 跨操作系统还原文件 | 可以在与备份的 VM 使用相同（或兼容）OS 的任何计算机上还原文件。 请参阅[兼容的 OS 表格](backup-azure-restore-files-from-vm.md#system-requirements)。
 还原经典 VM 上的文件 | 不支持。
@@ -123,7 +123,7 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 
 下表汇总了在执行 VM 管理任务（例如添加或替换 VM 磁盘）期间的备份支持。
 
-**Restore** | **支持**
+**还原** | **支持**
 --- | ---
 跨订阅/区域/局部区域还原。 | 不支持。
 还原到现有 VM | 使用“替换磁盘”选项。

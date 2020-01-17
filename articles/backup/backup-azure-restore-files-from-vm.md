@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 03/01/2019
 ms.date: 9/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 3bc96893b79860a84b9e25ba1dd808c7a716ba82
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: af82a04e14f1ee19f6866c9fde7771a5d2026b10
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838932"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853488"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -64,7 +64,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
    - download.microsoft.com
    - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn（适用于 Azure 中国世纪互联）
+        - https://pod01-rec2.geo-name.backup.windowsazure.cn （适用于 Azure 中国世纪互联）
    - 出站端口 3260
 
      在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
@@ -86,7 +86,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 在 Linux 中，恢复点的卷会装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。
 
   ![Linux 文件恢复菜单](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
-  
+
 ## <a name="closing-the-connection"></a>关闭连接
 
 识别文件并将其复制到本地存储位置后，请删除（或卸载）其他驱动器。 若要卸载驱动器，请在 Azure 门户中的“文件恢复”菜单上，单击“卸载磁盘”。  
@@ -103,8 +103,8 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 如果受保护的 Azure VM 包含带有以下一个或两个特征的卷，则无法在同一 VM 上运行该可执行脚本。
 
-    - 跨多个磁盘的卷（跨区卷和带区卷）
-    - 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）
+- 跨多个磁盘的卷（跨区卷和带区卷）
+- 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）
 
 而应在具有兼容操作系统的任何其他计算机上运行该可执行脚本。
 

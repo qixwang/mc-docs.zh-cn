@@ -1,26 +1,16 @@
 ---
-title: Service Fabric 项目创建后续步骤 | Azure
+title: 创建 Service Fabric 项目的后续步骤
 description: 了解刚刚在 Visual Studio 中创建的应用程序项目。  了解如何使用教程生成服务，并详细了解如何开发适用于 Service Fabric 的服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 12/07/2017
-ms.date: 12/10/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: f27f40fff3cf95e04fd169c26fc31178f659e911
-ms.sourcegitcommit: 38f95433f2877cd649587fd3b68112fb6909e0cf
+ms.openlocfilehash: dfcc5e59c9b04d2ed85dda110c09ec79997e3d20
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901138"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742482"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
 已创建 Azure Service Fabric 应用程序。 本指南介绍一些可以尝试阅读的教程、项目构成、你可能感兴趣的其他信息，以及可能的后续步骤。
@@ -30,13 +20,15 @@ ms.locfileid: "52901138"
 
 演练 .NET 应用程序教程。 了解如何使用 ASP.NET Core 前端和有状态后端[生成应用程序](service-fabric-tutorial-create-dotnet-app.md)、[将应用程序部署](service-fabric-tutorial-deploy-app-to-party-cluster.md)到群集以及[配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。
 
-<!-- Not Available on [set up monitoring and diagnostics](service-fabric-tutorial-monitoring-aspnet.md) --> 或者，尝试阅读以下演练之一来了解如何：
+<!-- Not Available on [set up monitoring and diagnostics](service-fabric-tutorial-monitoring-aspnet.md) -->
+
+或者，尝试阅读以下演练之一来了解：
 - [在 Windows 上创建第一个 C# Reliable Services 服务](service-fabric-reliable-services-quick-start.md) 
 - [在 Windows 上创建第一个 C# Reliable Actors 服务](service-fabric-reliable-actors-get-started.md) 
-- [基于 Windows 的来宾可执行服务](quickstart-guest-app.md) 
+- [在 Windows 上创建第一个来宾可执行文件服务](quickstart-guest-app.md) 
 - [Windows 容器应用程序](service-fabric-get-started-containers.md) 
 
-还可以尝试[示例应用程序](https://aka.ms/servicefabricsamples)。
+我们还建议尝试演练[示例应用程序](https://aka.ms/servicefabricsamples)。
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>有问题或反馈？  需要报告问题？
 请阅读[常见问题](service-fabric-common-questions.md)，找到有关 Service Fabric 的功能及其用法的答案。

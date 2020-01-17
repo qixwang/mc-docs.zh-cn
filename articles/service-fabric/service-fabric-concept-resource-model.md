@@ -1,19 +1,16 @@
 ---
-title: Azure Service Fabric 应用程序资源模型 | Azure
+title: Azure Service Fabric 应用程序资源模型
 description: 本文概述如何使用 Azure 资源管理器管理 Azure Service Fabric 应用程序
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
 ms.topic: conceptual
 origin.date: 10/21/2019
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 38b4334ee81a7ee88cbe5d623d86e0b1eb9a6d3d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 6a7fd2fb0f88b980a803e629df8c7925a4c56a8f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335898"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742350"
 ---
 <!--Verfiy sucessfully-->
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric 应用程序资源模型是什么？
@@ -58,9 +55,11 @@ ms.locfileid: "75335898"
 1. 在 Visual Studio 中右键单击 Voting 项目并选择“打包”。  
  
     ![将应用程序打包][PackageApplication]  
+    
 2. 打开刚刚创建的 **.\service-fabric-dotnet-quickstart\Voting\pkg\Debug** 目录，将内容压缩成名为 **Voting.zip** 的文件，并将 ApplicationManifest.xml 置于该 zip 文件的根目录。  
     
     ![Zip 应用程序][ZipApplication]  
+    
 3. 将该文件的扩展名从 .zip 重命名为 **.sfpkg**。
 4. 在 Azure 门户上你的存储帐户的 **apps** 容器中，单击“上传”并上传 **Voting.sfpkg**。   
     

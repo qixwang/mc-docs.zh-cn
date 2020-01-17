@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: article
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.openlocfilehash: 58234e24f222f62fb3ca18c0a139a481c83b22dd
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: 8967fa888d71cd24ab122e191e12945464e651d7
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884058"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776698"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -142,7 +142,7 @@ A. 可转到 Azure 门户中的 Data Box 订单，然后转到“概况”  。 
 A.  Data Box 的可用存储容量为 80 TB。 对于大小介于 40 TB - 80 TB 之间的数据，使用一台 Data Box 设备即可。 对于高达 500 TB 的大型数据大小，可以订购多台 Data Box 设备。 对于大小超过 500 TB 的数据，请注册 Data Box Heavy。  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>问： Data Box 支持的最大块 Blob 和页 Blob 大小是什么？ 
-A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请转到 [Azure 存储可伸缩性和性能目标](../storage/common/storage-scalability-targets.md)。 
+A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>问： 如何知道我的数据在传输过程中是否安全？ 
 A. 已实现多个安全功能，可在数据传输期间保护 Data Box。 其中包括防篡改封条、硬件和软件篡改检测和设备解锁密码。 有关详细信息，请参阅 [Azure Data Box 安全性和数据保护](data-box-security.md)。
@@ -160,7 +160,7 @@ A.  若要加快复制过程：
 - 使用多个数据复制流。 例如，在 Robocopy 中使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box 并进行验证](data-box-deploy-copy-data.md)。
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保在 Data Box 连接到的计算机本地驻留数据。
-- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://bluestop.org/fio/)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”  选项卡，然后下载 MSI。
+- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”  选项卡，然后下载 MSI。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -226,7 +226,7 @@ A.  数据复制完成后，运行“准备交付”即可验证数据  。 验�
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>问： 退回 Data Box 后，我的数据会发生什么情况？
 A.  完成将数据复制到 Azure 的过程后，会根据 NIST SP 800-88 修订版 1 中的指导原则，安全擦除 Data Box 磁盘中的数据。 有关详细信息，请转到[从 Data Box 中擦除数据](data-box-deploy-picked-up.md#erasure-of-data-from-data-box)。
 
-## <a name="audit-report"></a>审核报表
+## <a name="audit-report"></a>审核报告
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>Azure Data Box 服务如何帮助支持客户的监管过程链？
 A.  Azure Data Box 服务以本机方式提供可用于监管文件链的报表。 Azure 存储帐户中提供审核和复制日志。订单完成后，可以在 Azure 门户中[下载订单历史记录](data-box-portal-admin.md#download-order-history)。

@@ -3,28 +3,23 @@ title: 迁移到 MSAL.NET
 titleSuffix: Microsoft identity platform
 description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 之间的差异，以及如何迁移到 MSAL.NET。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/10/2019
-ms.date: 11/05/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af4927ca3b3fb28d8c85c9c29f3b30dfb51637d
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 76220aaf46b9dde5d0b6a3f1342b785f63eb68c8
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830965"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776987"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -32,6 +27,7 @@ ms.locfileid: "73830965"
 
 - 你可以对更广泛的一组 Microsoft 标识进行身份验证（通过 Azure AD B2C 验证 Azure AD 标识以及社交和本地帐户），因为它使用 Microsoft 标识平台终结点，
 - 你的用户将获得最佳单一登录体验。
+- 应用程序可以启用增量许可
 - 你将从创新中受益。
 
 **MSAL.NET 现在是建议用于 Microsoft 标识平台的身份验证库**。 不会使用 ADAL.NET 实现任何新功能。 工作的重点是改进 MSAL。
@@ -123,7 +119,7 @@ catch(MsalUiRequiredException exception)
 
 下面是适用于桌面和移动应用程序的 ADAL.NET 与 MSAL.NET 支持的授权
 
-授权 | ADAL.NET | MSAL.NET
+授予 | ADAL.NET | MSAL.NET
 ----- |----- | -----
 交互 | [交互式身份验证](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [在 MSAL.NET 中以交互方式获取令牌](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication)
@@ -134,7 +130,7 @@ Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https
 
 下面是适用于 Web 应用程序、Web API 和守护程序应用程序的 ADAL.NET 与 MSAL.NET 支持的授权：
 
-应用类型 | 授权 | ADAL.NET | MSAL.NET
+应用类型 | 授予 | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web 应用、Web API、守护程序 | 客户端凭据 | [ADAL.NET 中的客户端凭据流](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET 中的客户端凭据流](msal-authentication-flows.md#client-credentials)
 Web API | 代表 | [代表用户使用 ADAL.NET 进行服务到服务的调用](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [在 MSAL.NET 中代表](msal-authentication-flows.md#on-behalf-of)
@@ -227,7 +223,7 @@ ADAL.NET v2.X 中公开了刷新令牌，使你能够通过缓存这些令牌并
 
 幸运的是，MSAL.NET 现在会提供一个 API 用于将以前的刷新令牌（通过 ADAL 获取）迁移到 `IConfidentialClientApplication` 中：
 
-```CSharp
+```csharp
 /// <summary>
 /// Acquires an access token from an existing refresh token and stores it and the refresh token into 
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.

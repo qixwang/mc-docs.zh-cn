@@ -4,17 +4,17 @@ description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT 
 author: kgremban
 manager: ''
 ms.author: v-yiso
-origin.date: 06/05/2019
-ms.date: 09/09/2019
+origin.date: 11/19/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60d5e12372e69aabdde41e524173da9a068e79d3
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 75f0bcb59c4f9f577b2dd6e23820ad6a487a3120
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173969"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859583"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -62,11 +62,11 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 无论 IoT Edge 设备是在 Windows 还是 Linux 上运行，都需要通过代理服务器访问安装包。 请据所用的操作系统，遵循相应的步骤通过代理服务器安装 IoT Edge 运行时。 
 
-### <a name="linux"></a>Linux
+### <a name="linux-devices"></a>Linux 设备
 
 若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明照常进行操作。
 
-### <a name="windows"></a>Windows
+### <a name="windows-devices"></a>Windows 设备
 
 若要在 Windows 设备上安装 IoT Edge 运行时，需要两次通过代理服务器执行操作。 第一个连接用于下载安装程序脚本文件，第二个连接用于在安装过程中下载必需的组件。 可以在 Windows 设置中配置代理信息，或直接在 PowerShell 命令中包含代理信息。 
 
@@ -216,7 +216,7 @@ UpstreamProtocol: "AmqpWs"
 
 使用“设置模块”  向导为 IoT Edge 设备创建部署时，每个模块都有可用于配置代理服务器连接的“环境变量”  部分。 
 
-若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“配置 Edge 运行时高级设置”  。 
+若要配置 IoT Edge 代理和 IoT Edge 中心模块，请在向导的第一步中选择“运行时设置”  。
 
 ![配置 Edge 运行时高级设置](./media/how-to-configure-proxy-support/configure-runtime.png)
 

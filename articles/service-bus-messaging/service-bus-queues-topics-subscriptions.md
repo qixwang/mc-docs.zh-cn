@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线消息队列、主题和订阅概述 | Azure Docs
+title: Azure 服务总线消息传送队列、主题和订阅
 description: 服务总线消息传送实体概述。
 services: service-bus-messaging
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 09/18/2018
 ms.date: 09/15/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6aa4a4040ebb018ebc424428d6aef7bdd327b345
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: f6109e8c5c34a209baea0ccdbcc68f8bb26b9473
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330117"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853565"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
@@ -51,7 +51,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ## <a name="topics-and-subscriptions"></a>主题和订阅
 
-与每条消息都由单个使用方处理的队列相比，主题  和订阅  通过发布/订阅  模式提供“一对多”通信方式。 这对于扩展到大量接收方而言十分有用，每个发布的消息对向该主题注册的每个订阅均可用。 系统会将消息发送到主题并传递到一个或多个相关联的订阅，具体取决于每个订阅上可以设置的筛选规则。 此订阅可以使用其他筛选器来限制其想要接收的消息。 消息发送到主题的方式和发送到队列的方式相同，但不会直接从主题被接收。 而是从订阅接收消息。 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 从订阅接收消息的方式与从队列接收相同。
+与每条消息都由单个使用方处理的队列相比，主题  和订阅  通过发布/订阅  模式提供“一对多”通信方式。 这对于扩展到大量接收方而言十分有用，每个发布的消息对向该主题注册的每个订阅均可用。 系统会将消息发送到主题并传递到一个或多个相关联的订阅，具体取决于每个订阅上可以设置的筛选规则。 此订阅可以使用其他筛选器来限制其想要接收的消息。 可以采用与发送至队列的相同方式将消息发送至主题，但不可直接从主题接收消息。 而是从订阅接收消息。 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 从订阅接收消息的方式与从队列接收相同。
 
 通过比较，队列的消息发送功能直接映射到主题，而其消息接收功能映射到订阅。 此外，此功能意味着订阅支持本部分中前面有关队列所述的相同模式：竞争使用者、临时分离、负荷量和负载均衡。
 

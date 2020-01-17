@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 网络最佳做法 | Azure
+title: Azure Service Fabric 网络最佳做法
 description: 用于管理 Service Fabric 网络的最佳做法。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/23/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f96ca7e222220ebecf6a4ab55ebc8da620ea04ab
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 92e3b0042eff25244c8e5209d7a31a8e6e71c7b7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336362"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742440"
 ---
 # <a name="networking"></a>网络
 
@@ -85,4 +76,4 @@ ms.locfileid: "75336362"
 
 [NSGSetup]: ./media/service-fabric-best-practices/service-fabric-nsg-rules.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!-- Update_Description: update meta properties, wording update -->

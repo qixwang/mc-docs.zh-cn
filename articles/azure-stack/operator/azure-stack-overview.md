@@ -12,24 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-origin.date: 09/16/2019
-ms.date: 12/02/2019
+origin.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.custom: ''
-ms.lastreviewed: 05/14/2019
-ms.openlocfilehash: 69821da58bf2cd346fddb9361fe5d8bd49baddd9
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.lastreviewed: 11/08/2019
+ms.openlocfilehash: 4afdd8be6a47c7a275c5846b870f1514cafe3e64
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655401"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737905"
 ---
 # <a name="azure-stack-hub-overview"></a>Azure Stack Hub 概述
 
 Azure Stack Hub 是 Azure 的一个扩展，可用于在本地环境中运行应用，以及在数据中心内交付 Azure 服务。 借助一致性的云平台，组织可以根据业务要求而不是技术局限性自信地做出技术决策。
 
-## <a name="why-use-azure-stack-hub-"></a>为何要使用 Azure Stack Hub？
+## <a name="why-use-azure-stack-hub"></a>为何要使用 Azure Stack Hub？
 
 Azure 为开发人员提供多功能的平台用于生成新型应用。 但是，某些基于云的应用面临着延迟、间歇性连接和法规监管等方面的阻碍。 Azure 和 Azure Stack Hub 为面向客户的应用和内部业务线应用程序开启了新的混合云用例：
 
@@ -39,19 +39,9 @@ Azure 为开发人员提供多功能的平台用于生成新型应用。 但是�
 
 - **本地云应用模型**。 使用 Azure 服务、容器、无服务器体系结构和微服务体系结构来更新和扩展现有应用或生成新的应用。 在云中 Azure 和本地 Azure Stack Hub 之间使用一致的 DevOps 流程，以加速任务关键型核心应用的现代化。
 
-Azure Stack Hub 通过以下功能来实现这些使用方案：
-
-- 集成式交付体验，通过受信任硬件合作伙伴提供的定制 Azure Stack Hub 集成式系统快速开始正常运营。 交付后，Azure Stack Hub 可轻松集成到数据中心，并通过 System Center Operations Manager 管理包或 Nagios 扩展提供监视功能。
-
-- 使用适用于 Azure 和 Azure Stack Hub 混合环境的 Azure Active Directory (Azure AD) 和适用于离线部署的 Active Directory 联合身份验证服务 (AD FS) 进行灵活的标识管理。
-
-- Azure 一致性应用开发环境，可以最大程度地提高开发人员的工作效率，并支持在整个混合环境中使用通用的 DevOps 方法。
-
-- 使用混合云计算能力从本地交付 Azure 服务。 在整个 Azure 和 Azure Stack Hub 中采用通用的操作实践，使用与 Azure 相同的管理体验和工具来部署和操作 Azure IaaS（基础结构即服务）与 PaaS（平台即服务）服务。 Azure 持续为 Azure Stack Hub 提供 Azure 创新，包括新的 Azure 服务、对现有服务的更新，以及补充的 Azure 市场应用和映像。
-
 ## <a name="azure-stack-hub-architecture"></a>Azure Stack Hub 体系结构
 
-Azure Stack Hub 集成式系统包括受信任的硬件合作伙伴制造的、由 4-16 台服务器构成的机架，将直接交付到你的数据中心。 交付后，解决方案提供商将与你合作部署该集成式系统，并确保 Azure Stack Hub 解决方案符合你的业务要求。 准备数据中心：确保已准备好所有必要的电源和散热设备、边界连接，并满足其他必要的数据中心集成要求。
+Azure Stack Hub 集成式系统包括受信任的硬件合作伙伴制造的、由 4-16 台服务器构成的机架，将直接交付到你的数据中心。 交付后，解决方案提供商将与你合作部署该集成式系统，并确保 Azure Stack Hub 解决方案符合你的业务要求。 可以准备数据中心：确保已准备好所有必要的电源和散热设备、边界连接，并满足其他必要的数据中心集成要求。
 
 > 有关 Azure Stack Hub 数据中心集成体验的详细信息，请参阅 [Azure Stack Hub 数据中心集成](azure-stack-customer-journey.md)。
 
@@ -61,44 +51,44 @@ Azure Stack Hub 体系结构允许在远程位置的边缘，或者在间歇性�
 
 ## <a name="deployment-options"></a>部署选项
 
-### <a name="production-or-evaluation-environments"></a>生产或评估环境
+<!---At deployment, move out asdk, break into connected/disc�then explain  roles operator vs user < replace how is azure stack managed with role description, rbac, reporting, high availability take out.--->
 
-Azure Stack Hub 提供两个部署选项来满足需求 - 用于生产的 Azure Stack Hub 集成系统，以及用于评估 Azure Stack Hub 的 Azure Stack Hub 开发工具包 (ASDK)：
+Azure Stack Hub 集成系统通过 Azure 与硬件合作伙伴的合作关系提供，它创建的解决方案兼顾云时代的创新与计算管理的简化。 由于 Azure Stack Hub 以集成式硬件和软件系统的形式提供，因此你可以获得所需的灵活性和控制度，以及云中的创新能力。 
 
-- **Azure Stack Hub 集成系统**：Azure Stack Hub 集成系统通过 Azure 与硬件合作伙伴的合作关系提供，它创建的解决方案兼顾云时代的创新与计算管理的简化。 由于 Azure Stack Hub 以集成式硬件和软件系统的形式提供，因此你可以获得所需的灵活性和控制度，以及云中的创新能力。 Azure Stack Hub 集成系统的大小范围从 4 个节点到 16 个节点，由硬件合作伙伴和 Azure 共同提供支持。 使用 Azure Stack Hub 集成系统可以创建新的方案，以及为生产工作负荷部署新解决方案。
+Azure Stack Hub 集成系统的大小范围为 4-16 台服务器（称为“缩放单元”）  。 集成系统由硬件合作伙伴和 Azure 共同提供支持。 下图显示了缩放单元示例。 
 
-- **Azure Stack Hub 开发工具包 (ASDK)** ：[ASDK](../asdk/asdk-what-is.md) 是 Azure Stack Hub 的免费单节点部署，可用于评估和了解 Azure Stack Hub。 还可将 ASDK 用作开发人员环境，以使用与 Azure 一致的 API 和工具来构建应用。 但是，ASDK 不可用作生产环境，与完全集成式系统生产部署相比，它存在以下限制：
+![显示 Azure Stack 集成系统的关系图](./media/azure-stack-overview/azure-stack-integrated-system.png)上获取。 
 
-    - ASDK 只能与单个 Azure AD 或 AD FS 标识提供者关联。
-    - 由于 Azure Stack Hub 组件部署在一台主机上，可用作租户资源的物理资源有限。 此配置不适用于缩放或性能评估。
-    - 由于只有一台主机和 NIC 部署要求方面的原因，网络方案会受到限制。
+<!---add info and image on regions, etc--->
 
 ### <a name="connection-models"></a>连接模型
 
-可以选择在**已连接**到 Internet（和 Azure）时或者与之**断开连接**时部署 Azure Stack Hub。 此选项定义了标识存储（Azure AD 或 AD FS）和计费模型（提前付费）可用的选项。
+可以选择在**已连接**到 Internet（和 Azure）时或者与之**断开连接**时部署 Azure Stack Hub。 
 
 > 有关详细信息，请参阅有关[联网](azure-stack-connected-deployment.md)和[离线](azure-stack-disconnected-deployment.md)部署模型的注意事项。
 
 ### <a name="identity-provider"></a>标识提供者 
 
-Azure Stack Hub 使用 Azure AD 或 Active AD FS 来提供标识。 Azure AD 是 Microsoft 的基于云的多租户标识提供者。 使用 Internet 联网部署的大多数混合方案都使用 Azure AD 作为标识存储。
+Azure Stack Hub 使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS)。 Azure AD 是 Microsoft 的基于云的多租户标识提供者。 使用 Internet 联网部署的大多数混合方案都使用 Azure AD 作为标识存储。
 
 对于 Azure Stack Hub 的离线部署，需要使用 AD FS。 Azure Stack Hub 资源提供程序和其他应用以类似方式使用 AD FS 或 Azure AD。 Azure Stack Hub 包含自身的 Active Directory 实例，另外还包含 Active Directory Graph API。
 
-> [!IMPORTANT]
-> 部署后将无法更改标识提供者。 若要使用其他标识提供者，需要重新部署 Azure Stack Hub。 可以在 [Azure Stack Hub 的标识概述](azure-stack-identity-overview.md)中详细了解 Azure Stack Hub 标识注意事项。
 
 ## <a name="how-is-azure-stack-hub-managed"></a>如何管理 Azure Stack Hub？
+
+Azure Stack 使用与 Azure 相同的操作模型。 Azure Stack Hub 操作员可以向租户用户提供各种服务和应用，类似于 Microsoft 向租户用户提供 Azure 服务。 
+
+![显示 Azure Stack 作业角色的关系图](./media/azure-stack-overview/azure-stack-job-roles.png)
 
 可以通过管理员门户、用户门户或 [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) 来管理 Azure Stack Hub。 每个 Azure Stack Hub 门户由 Azure 资源管理器的单独实例提供支持。 **Azure Stack Hub 操作员**可以使用管理员门户来管理 Azure Stack Hub，以及执行如下所述的操作：创建租户套餐，保持集成式系统的运行状况及监视其状态。 用户门户提供自助服务体验让用户使用云资源，例如虚拟机 (VM)、存储帐户和 Web 应用。
 
 > 有关使用管理门户管理 Azure Stack Hub 的详细信息，请参阅 [Azure Stack Hub 管理员门户快速入门](azure-stack-manage-portals.md)。
 
-Azure Stack Hub 操作员可以交付各种服务和应用，例如 [VM](azure-stack-tutorial-tenant-vm.md) 和 [Web 应用](azure-stack-app-service-overview.md)。 他们还可以使用 [Azure Stack Hub 快速入门 Azure 资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates)来部署 SharePoint、Exchange 等。 
+Azure Stack Hub 操作员可以提供 [VM](azure-stack-tutorial-tenant-vm.md)、[Web 应用](azure-stack-app-service-overview.md)。 他们还可以使用 [Azure Stack Hub 快速入门 Azure 资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates)来部署 SharePoint、Exchange 等。 
 
-在管理员门户中，可以使用计划、配额、套餐和订阅来[配置 Azure Stack Hub，以将服务交付给租户](service-plan-offer-subscription-overview.md)。 租户用户可以订阅多个套餐。 套餐可以包含一个或多个计划，计划可以包含一个或多个服务。 操作员还可以管理容量以及对警报做出响应。
+操作员可以通过[管理员门户](azure-stack-manage-portals.md)或 [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1) 来管理 Azure Stack Hub。 可以使用计划、配额、套餐和订阅来配置 Azure Stack Hub，以向租户[提供服务](service-plan-offer-subscription-overview.md)。 租户用户可以订阅多个套餐。 套餐可以包含一个或多个计划，计划可以包含一个或多个服务。 操作员还可以管理容量以及对警报做出响应。
 
-配置 Azure Stack Hub 后，**Azure Stack Hub 用户**可以消费操作员交付的服务。 用户可以预配、监视和管理他们订阅的服务，例如 Web 应用、存储和 VM。
+用户使用操作员提供的服务。 用户可以预配、监视和管理他们订阅的服务，例如 Web 应用、存储和 VM。 用户可以通过用户门户或 PowerShell 来管理 Azure Stack Hub。
 
 > 若要详细了解如何管理 Azure Stack Hub，包括在何处使用哪些帐户、典型的操作员职责、要向用户告知哪些信息，以及如何取得帮助，请查看 [Azure Stack Hub 管理基础知识](azure-stack-manage-basics.md)。
 
@@ -120,36 +110,14 @@ Azure Stack Hub 操作员可以交付各种服务和应用，例如 [VM](azure-s
 
 - **应用服务**：[Azure Stack Hub 上的 Azure 应用服务](azure-stack-app-service-overview.md)是 Azure 的一种可用于 Azure Stack PaaS 套餐。 该服务可让你的内部或外部客户为任何平台或设备创建 Web 应用、API 应用和 Azure Functions 应用。
 - **SQL Server**：使用 [SQL Server 资源提供程序](azure-stack-sql-resource-provider.md)将 SQL 数据库作为 Azure Stack Hub 的一项服务提供。 安装资源提供程序并将其连接到一个或多个 SQL Server 实例后，你和你的用户可以创建云原生应用的数据库、使用 SQL 的网站，以及使用 SQL 的其他工作负荷。
-- **MySQL Server**：可以使用 [MySQL Server 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)将 MySQL 数据库公开为 Azure Stack Hub 服务。 MySQL 资源提供程序以服务的形式在 Windows Server 2016 Server Core VM 上运行。
-
-## <a name="providing-high-availability"></a>提供高可用性
-
-为了在 Azure 中实现多 VM 生产系统的高可用性，可以将 VM 置于横跨多个容错域和更新域的[可用性集](/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)中。 在较小规模的 Azure Stack Hub 中，可用性集中的容错域定义为缩放单元中的单个节点。  
-
-在发生硬件故障时，虽然 Azure Stack Hub 的基础结构已具备故障还原能力，但基础技术（故障转移群集功能）的局限仍会导致受影响物理服务器上的 VM 出现停机。 为了与 Azure 保持一致，Azure Stack Hub 支持的可用性集最多有三个容错域。
-
-- **容错域**：置于可用性集中的 VM 在物理上是彼此隔离的，换句话说，会尽可能均衡地让其分散到多个容错域（Azure Stack Hub 节点）中。 如果发生硬件故障，出现故障的容错域中的 VM 将在其他容错域中重启。 它们保留在与其他 VM 不同的容错域中，但如果可能，则保留在相同的可用性集中。 当硬件重新联机时，会对 VM 重新进行均衡操作，以维持高可用性。
-
-- **更新域**：更新域是另一可以在可用性集中提供高可用性的 Azure 概念。 更新域是可以同时维护的基础硬件逻辑组。 同一个更新域中的 VM 会在计划内维护期间一起重启。 当租户在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 在 Azure Stack Hub 中，VM 会先跨群集中的其他联机主机进行实时迁移，然后其基础主机才会进行更新。 由于在主机更新期间不会造成租户停机，因此 Azure Stack Hub 上存在更新域功能只是为了确保与 Azure 实现模板兼容。 可用性集中的 VM 将显示 **0** 作为其在门户上的更新域编号。
-
-## <a name="role-based-access-control"></a>基于角色的访问控制
-
-可以使用基于角色的访问控制 (RBAC) 向已获授权的用户、组和服务授予系统访问权限：在订阅、资源组或单个资源级别为其分配角色即可。 每个角色定义了用户、组或服务对 Azure Stack Hub 资源拥有的访问级别。
-
-Azure Stack Hub RBAC 有三种适用于所有资源类型的基本角色：所有者、参与者和读者。 “所有者”拥有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 参与者可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。 “读取者”只能查看现有资源。 其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，“虚拟机参与者”角色允许创建和管理 VM，但不允许管理 VM 连接到的虚拟网络或子网。
-
-> 有关详细信息，请参阅[管理基于角色的访问控制](azure-stack-manage-permissions.md)。
-
-## <a name="reporting-usage-data"></a>报告使用情况数据
-
-Azure Stack Hub 从所有资源提供程序收集聚合用量数据，并将其传输到 Azure 供 Azure 商业组件进行处理。 可以通过 REST API 查看 Azure Stack Hub 中收集的用量数据。 可以使用 Azure 一致的租户 API 以及提供程序和委派提供程序 API 从所有租户订阅获取使用情况数据。 可以使用这些数据来集成外部工具或服务，以实现计费或费用分摊。 用量经 Azure 商业组件处理后，可以在 Azure 计费门户中查看。
-
-> 详细了解如何[向 Azure 报告 Azure Stack Hub 使用情况数据](azure-stack-usage-reporting.md)。
+- **MySQL Server**：可以使用 [MySQL Server 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)将 MySQL 数据库公开为 Azure Stack Hub 服务。 MySQL 资源提供程序以服务的形式在 Windows Server 2019 Server Core VM 上运行。
 
 ## <a name="next-steps"></a>后续步骤
 
-[比较 Azure Stack Hub 和全局 Azure](compare-azure-azure-stack.md)。
+[比较 Azure Stack 项目组合](compare-azure-azure-stack.md)
 
-[管理基础知识](azure-stack-manage-basics.md)。
+[管理基础知识](azure-stack-manage-basics.md)
 
-[快速入门：使用 Azure Stack Hub 管理门户](azure-stack-manage-portals.md)。
+[快速入门：使用 Azure Stack Hub 管理门户](azure-stack-manage-portals.md)
+
+[了解使用情况和计费](azure-stack-usage-reporting.md)。

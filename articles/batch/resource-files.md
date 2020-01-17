@@ -1,6 +1,6 @@
 ---
-title: 创建和使用资源文件 - Azure Batch | Microsoft Docs
-description: 了解如何基于各种输入源创建 Azure Batch 资源文件。
+title: 创建和使用资源文件 - Azure Batch
+description: 了解如何基于各种输入源创建 Batch 资源文件。 本文将会介绍用于创建资源文件并将其放在 VM 上的几个常用方法。
 services: batch
 author: lingliw
 manager: digimobile
@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 03/14/2019
 ms.date: 09/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 301ab1f7b4343cafc60222e4b410a3a2a0cd3ee5
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: cec418e9b6acb111c29326c092c9d18de4d956dd
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330396"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857177"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 

@@ -4,17 +4,17 @@ description: 使用环境变量和创建选项来启用对 IoT Edge 设备本地
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 10/15/2019
-ms.date: 11/04/2019
+origin.date: 11/18/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a89e86196b6a5b960acf010e07e7812d37579813
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 338260cc8324651f4fa75d44ee8f1403700f5385
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914836"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859724"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>向模块授予对设备本地存储的访问权限
 
@@ -24,7 +24,7 @@ ms.locfileid: "72914836"
 
 若要启用从模块存储到主机系统上的存储的链接，请为模块创建指向容器中存储文件夹的环境变量。 然后，使用创建选项将存储文件夹绑定到主机上的文件夹。
 
-例如，如果要启用 IoT Edge 中心以将消息存储在设备的本地存储中并在以后检索它们，可以在 Azure 门户的“配置高级 Edge 运行时设置”  部分中配置环境变量和创建选项。
+例如，如果要启用 IoT Edge 中心以将消息存储在设备的本地存储中并在以后检索它们，可以在 Azure 门户的“运行时设置”部分中配置环境变量和创建选项  。
 
 1. 为 IoT Edge 中心和 IoT Edge 代理添加名为 **storageFolder** 的环境变量，使之指向模块中的目录。
 1. 为 IoT Edge 中心和 IoT Edge 代理添加绑定，以便将主机上的本地目录连接到模块中的目录。 例如：

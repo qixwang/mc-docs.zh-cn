@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 管理存储过程
+title: 管理存储过程 - Azure Database for MySQL
 description: 了解 Azure Database for MySQL 中的哪些存储过程可用于帮助你配置数据传入复制、设置时区和终止查询。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 09/19/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 3d2c1a0021a7f0830e04376a30929791c811bb32
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+origin.date: 12/02/2019
+ms.date: 01/03/2020
+ms.openlocfilehash: f9d89ff68e98e4f6d8bab958faf0bf0f119ac5d0
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328765"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776763"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL 管理存储过程
 
@@ -49,3 +49,4 @@ Azure Database for MySQL 中提供了以下用于管理服务器的存储过程�
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何设置[数据传入复制](howto-data-in-replication.md)
+- 了解如何使用[时区表](howto-server-parameters.md#working-with-the-time-zone-parameter)

@@ -1,7 +1,6 @@
 ---
 title: 在 Visual Studio 中查看 Azure 流分析作业
-description: 本文介绍如何在 Visual Studio 中查看和管理 Azure 流分析作业。
-services: stream-analytics
+description: 了解如何使用 Visual Studio 查看、启动和停止、测试连接、检查结果以及导出 Azure 流分析作业。
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 07/10/2018
 ms.date: 08/09/2019
-ms.openlocfilehash: ee884519418a49ac01c3ed6aeafc041cc8562a14
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 94f943e976407c6cbd1de32d3f0c27d9c6ccd1a2
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674744"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857240"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
 

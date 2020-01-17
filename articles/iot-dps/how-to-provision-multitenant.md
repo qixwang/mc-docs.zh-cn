@@ -4,17 +4,17 @@ description: 如何使用你的设备预配服务实例来预配多租户的设�
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: f829b2e31e52cef79919ddd0e0d9705fb8d899fe
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 3280308cd8054665dac236165b1a821c28057328
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389526"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859727"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -38,7 +38,7 @@ ms.locfileid: "74389526"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 
@@ -199,12 +199,14 @@ ms.locfileid: "74389526"
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
-1. 在这两个 VM 上克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
+1. 在这两个 VM 上克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。  使用在上一步中找到的标记作为 `-b` 参数的值：
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     应该预料到此操作需要几分钟才能完成。

@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: conceptual
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: fbab4f3b4dce0793aa3b1e854977afbfc09b81c9
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 450adedff74a0e3f4aa48d8938154b601d98287d
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631653"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859188"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -130,7 +130,9 @@ Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析�
 - [使用 PowerShell 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-powershell.md)
 - [使用 CLI 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-cli.md)
 - [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
-- [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
+    
+    <!--Not Available on - [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)-->
+    
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
 
 <!-- Update_Description: new article about private endpoint overview -->

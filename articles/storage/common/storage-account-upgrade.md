@@ -1,23 +1,24 @@
 ---
-title: 升级到常规用途 v2 存储帐户- Azure 存储 | Microsoft Docs
+title: 升级到常规用途 v2 存储帐户
+titleSuffix: Azure Storage
 description: 升级到常规用途 v2 存储帐户。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
-origin.date: 03/26/2019
-ms.date: 11/25/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 86ff49dae66e4c4acf0fde5dea282e13963abfed
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: abc9216936b04924b513254333a2c1fa1698c9cf
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328721"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624144"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
-常规用途 v2 存储帐户支持最新的 Azure 存储功能，并纳入了常规用途 v1 存储帐户和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户提供适用于 Azure 存储的最低每 GB 容量价格，以及具有行业竞争力的事务价格。
+常规用途 v2 存储帐户支持最新的 Azure 存储功能，并纳入了常规用途 v1 存储帐户和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户提供适用于 Azure 存储的最低每 GB 容量价格，以及具有行业竞争力的事务价格。 在“热”、“冷”或“存档”分层中，常规用途 v2 帐户支持热/冷和 blob 级别的默认帐户访问层级。
 
 从常规用途 v1 帐户或 Blob 存储帐户升级到常规用途 v2 存储帐户的过程很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 升级。
 
@@ -41,30 +42,30 @@ ms.locfileid: "74328721"
 
 若要使用 PowerShell 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先更新 PowerShell，以便使用最新版本的 **Az.Storage** 模块。 请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)，了解如何安装 PowerShell。
 
-接下来，调用以下命令来升级帐户（请使用自己的资源组和存储帐户的名称来代替相应项）：
+接下来，调用以下命令来升级帐户（请使用自己的资源组名称、存储帐户名称和所需帐户访问层级来代替相应项）。
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先安装最新版的 Azure CLI。 请参阅 [Install the Azure CLI 2.0](/cli/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。 
 
-接下来，调用以下命令来升级帐户（请使用自己的资源组和存储帐户的名称来代替相应项）：
+接下来，调用以下命令来升级帐户（请使用自己的资源组名称、存储帐户名称和所需帐户访问层级来代替相应项）。
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>指定 Blob 数据的访问层
 
-常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以指定 Blob 数据的访问层。
+常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以指定“热”或“冷”默认帐户访问层，这表示将上传 blob 数据的默认层，就像未指定各个 blob 访问层参数一样。
 
-使用访问层可以根据预期使用模式选择最具经济效益的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/storage-blob-storage-tiers.md)。
+Blob 访问层允许根据预期使用模式选择最具经济效益的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷、存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
-默认情况下，新存储帐户在热访问层中创建，常规用途 v1 存储帐户将升级到热访问层。 如果你正在探讨要将哪个访问层用于升级后的数据，请考虑具体的场景。 有两种典型的用户场景适合迁移到常规用途 v2 帐户：
+默认情况下，新存储帐户在热访问层中创建，常规用途 v1 存储帐户可以升级到“热”或“冷”帐户层。 如果升级时未指定帐户访问层，则默认情况下，它将升级到“热”层。 如果正探讨要将哪个访问层用于升级，请考虑当前的数据使用场景。 有两种典型的用户场景适合迁移到常规用途 v2 帐户：
 
 * 已经有了一个常规用途 v1 存储帐户，想要使用适合 Blob 数据的存储访问层来评估对常规用途 v2 存储帐户所做的升级。
 * 已经决定使用常规用途 v2 存储帐户，或者已经有了一个这种帐户，想要评估一下是应使用热存储访问层还是冷存储访问层来存储 Blob 数据。
@@ -73,7 +74,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-将 v1 存储帐户升级到常规用途 v2 帐户是免费的。 但是，更改存储访问层可能会导致帐单更改。 
+将 v1 存储帐户升级到常规用途 v2 帐户是免费的。 在升级过程中，可以指定所需的帐户层。 如果在升级时未指定帐户层，则已升级帐户的默认帐户层将为 `Hot`。 但是，在升级后更改存储访问层可能会导致帐单更改，因此建议在升级过程中指定新的帐户层。
 
 所有存储帐户使用的定价模型都适用于 Blob 存储，具体取决于每个 Blob 的层。 使用存储帐户时，需要考虑到以下计费因素：
 
@@ -97,11 +98,12 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 若要估算在特定层的常规用途 v2 存储帐户中存储和访问 Blob 数据所需的成本，请评估现有的使用模式，或对预期的使用模式进行大致的估计。 一般情况下，需了解：
 
 * Blob 存储消耗量（以 GB 为单位），包括：
-    - 有多少数据存储在存储帐户中？
-    - 数据量每月如何变化；新数据是否不断替换旧数据？
+  * 有多少数据存储在存储帐户中？
+  * 数据量每月如何变化；新数据是否不断替换旧数据？
+
 * Blob 存储数据的主要访问模式，包括：
-    - 要从存储帐户读取多少数据，向其写入了多少数据？
-    - 针对存储帐户中的数据执行多少次读取和写入操作？
+  * 要从存储帐户读取多少数据，向其写入了多少数据？
+  * 针对存储帐户中的数据执行多少次读取和写入操作？
 
 若要确定最适合需求的访问层，确定 blob 数据容量以及如何使用这些数据会很有帮助。 最好通过查看帐户的监视指标来完成此操作。
 
@@ -166,5 +168,4 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建存储帐户](storage-quickstart-create-account.md)
-- [管理 Azure 存储帐户](storage-account-manage.md)
+* [创建存储帐户](storage-quickstart-create-account.md)

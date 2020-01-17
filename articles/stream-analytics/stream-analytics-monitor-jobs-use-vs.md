@@ -1,7 +1,6 @@
 ---
-title: 使用 Visual Studio 监视和管理 Azure 流分析作业
+title: 使用 Visual Studio 监视和管理 Azure 流分析
 description: 本文介绍如何使用 Visual Studio 监视和管理 Azure 流分析作业。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: mamccrea
@@ -10,12 +9,12 @@ ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f5f7535f4dcc17ff4631045a9e2aa78143e4669
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 91c3e02ce4f070662221121666ce4f5133eb180f
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674835"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856384"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>使用 Visual Studio 监视和管理流分析作业
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 13cdbb59d21a5a8bae6fec027d22a13537b25ab3
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: f323d3d3b294cb84d4dc033771da12d2c958d95b
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020211"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737955"
 ---
 # <a name="add-linux-images-to-azure-stack-marketplace"></a>将 Linux 映像添加到 Azure Stack 市场
 
@@ -41,7 +41,7 @@ ms.locfileid: "74020211"
 
 ### <a name="azure-linux-agent"></a>Azure Linux 代理
 
-Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必需的，并非所有代理版本都可以在 Azure Stack 上正常工作。 Azure Stack 不支持 2.2.20 和 2.2.35 之间的版本。 若要使用 2.2.35 以上的最新代理版本，请应用 1901 修补程序/1902 修补程序，或者将 Azure Stack 更新到 1903 版（或更高版本）。 请注意，目前 Azure Stack 不支持 [cloud-init](https://cloud-init.io/)。
+Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必需的，并非所有代理版本都可以在 Azure Stack 上正常工作。 Azure Stack 不支持 2.2.21 和 2.2.34（含）之间的版本。 若要使用 2.2.35 以上的最新代理版本，请应用 1901 修补程序/1902 修补程序，或者将 Azure Stack 更新到 1903 版（或更高版本）。 请注意，超过 1910 的 Azure Stack 版本支持 [cloud-init](https://cloud-init.io/)。
 
 | Azure Stack 内部版本 | Azure Linux 代理内部版本 |
 | ------------- | ------------- |
@@ -52,6 +52,7 @@ Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必
 | 1.1903.0.35  | 2.2.35 或更高版本 |
 | 1903 之后的版本 | 2.2.35 或更高版本 |
 | 不支持 | 2.2.21-2.2.34 |
+| 1910 之后的版本 | 所有 Azure WALA 代理版本|
 
 可以按照以下说明准备自己的 Linux 映像：
 
@@ -60,6 +61,70 @@ Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必
 * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
 * [SLES 和 openSUSE](/virtual-machines/linux/suse-create-upload-vhd?toc=%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu Server](/virtual-machines/linux/create-upload-ubuntu?toc=%2fvirtual-machines%2flinux%2ftoc.json)
+
+## <a name="cloud-init"></a>Cloud-init
+
+超过 1910 的 Azure Stack 版本支持 [cloud-init](https://cloud-init.io/)。 若要使用 cloud init 自定义 Linux VM，可以使用以下 PowerShell 说明： 
+
+### <a name="step-1-create-a-cloud-inittxt-file-with-your-cloud-config"></a>步骤 1：使用你的 cloud-config 创建 cloud-init.txt 文件
+
+创建名为“cloud-init.txt”的文件并粘贴以下云配置：
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+    path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+    path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+  ```
+  
+### <a name="step-2-reference-the-cloud-inittxt-during-the-linux-vm-deployment"></a>步骤 2：在 Linux VM 部署期间引用 cloud-init.txt
+
+将该文件上传到 Azure 存储帐户、Azure Stack 存储帐户，或者 Azure Stack Linux VM 可访问的 GitHub 存储库。
+目前，仅在 REST、Powershell 和 CLI 上支持使用 cloud-init 进行 VM 部署，并且在 Azure Stack 上没有关联的门户 UI。
+
+可以按照[这些](../user/azure-stack-quick-create-vm-linux-powershell.md)说明使用 powershell 创建 Linux VM，但请确保引用 cloud-init.txt 作为 `-CustomData` 标记的一部分：
+
+```powershell
+$VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
+  -Linux `
+  -ComputerName "MainComputer" `
+  -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
+```
 
 ## <a name="add-your-image-to-marketplace"></a>将映像添加到市场
 

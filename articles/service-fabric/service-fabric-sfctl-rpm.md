@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI- sfctl rpm| Azure
+title: Azure Service Fabric CLI- sfctl rpm
 description: 介绍 Service Fabric CLI sfctl rpm 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5c60efb4a22d1c87ff811db5a36965a6d75193a0
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: e57ed2be30918feffd5f517e060a6aa3e067e97b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254716"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742200"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 查询并向修复管理器服务发送命令。
@@ -48,11 +40,11 @@ ms.locfileid: "70254716"
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-rpm-delete"></a>sfctl rpm delete
 删除已完成的修复任务。
@@ -70,11 +62,11 @@ ms.locfileid: "70254716"
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-rpm-list"></a>sfctl rpm list
 获取与给定筛选器匹配的修复任务列表。
@@ -93,14 +85,14 @@ ms.locfileid: "70254716"
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

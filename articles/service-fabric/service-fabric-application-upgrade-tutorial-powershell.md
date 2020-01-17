@@ -1,26 +1,16 @@
 ---
-title: 使用 PowerShell 升级 Service Fabric 应用 | Azure
+title: 使用 PowerShell 升级 Service Fabric 应用
 description: 本文逐步指导使用 PowerShell 部署 Service Fabric 应用程序、更改代码以及推出升级版本。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 8159846672e400cb06d965a3a40873ebca91fe7a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: fc9a76b7c758b0c0f5e2f3718ca418e7ba363dc1
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336375"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742463"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]

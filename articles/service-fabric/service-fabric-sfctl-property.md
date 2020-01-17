@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI - sfctl property | Azure
+title: Azure Service Fabric CLI- sfctl property
 description: 介绍 Service Fabric CLI sfctl property 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 90b1729bcd648cf85c0b0b8762a04f419db800a3
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 495460b49c69c87a77a797246bee61cebd0e3d6e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254719"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742219"
 ---
 # <a name="sfctl-property"></a>sfctl property
 在 Service Fabric 名称下存储和查询属性。
@@ -44,17 +36,17 @@ ms.locfileid: "70254719"
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | 指定要获取的属性的名称。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-property-get"></a>sfctl property get
 获取指定的 Service Fabric 属性。
@@ -67,17 +59,17 @@ ms.locfileid: "70254719"
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | 指定要获取的属性的名称。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-property-list"></a>sfctl property list
 获取给定名称下的所有 Service Fabric 属性的信息。
@@ -91,17 +83,17 @@ ms.locfileid: "70254719"
 | --name-id [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --include-values | 允许指定是否包括返回的属性的值。 如果值应随元数据一起返回，则为 true；如果为 false，则仅返回属性元数据。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-property-put"></a>sfctl property put
 创建或更新 Service Fabric 属性。
@@ -115,21 +107,21 @@ ms.locfileid: "70254719"
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | Service Fabric 属性的名称。 |
 | --value         [必需] | 介绍 Service Fabric 属性值。 这是一个 JSON 字符串。 <br /><br /> Json 字符串有两个字段：数据的“Kind”和数据的“Value”。 “Kind”的值必须是要出现在 JSON 字符串中的第一个项，并且可以是以下值：“Binary”、“Int64”、“Double”、“String”或“Guid”。 该值应当对给定的类型可序列化。 “Kind”和“Data”的值应以字符串形式提供。 |
-| --custom-id-type | 属性的自定义类型 ID。使用此属性，用户就能够标记属性值的类型。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --custom-id-type | 属性的自定义类型 ID。 使用此属性，用户就能够标记属性值的类型。 |
+| --timeout -t | 默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
 
-<!-- Update_Description: update meta propeties -->
+<!-- Update_Description: update meta properties, wording update -->

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：运行 Azure Batch 作业 - Python API
-description: 使用 Batch Python 客户端库快速运行 Batch 作业和任务。
+description: 使用 Batch Python 客户端库快速运行 Azure Batch 示例作业和任务。 了解 Batch 服务的关键概念。
 services: batch
 author: lingliw
 manager: digimobile
@@ -13,12 +13,12 @@ ms.author: v-lingwu
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 86ae7f51d104919b8f191972a36dddd62767a55e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 5e5118f3100605e65fb052ef1e76fc3a959e42f0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838806"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857778"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行你的第一个 Batch 作业
 
@@ -30,7 +30,7 @@ ms.locfileid: "74838806"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Python 2.7、3.3 或更高版本](https://www.python.org/downloads/)
 
@@ -60,7 +60,7 @@ git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 pip install -r requirements.txt
 ```
 
-打开 `config.py` 文件。 使用为帐户获取的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
+打开 `config.py`文件。 使用为帐户获取的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -70,7 +70,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 若要查看操作中的 Batch 工作流，请运行脚本：
 
@@ -154,11 +154,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
 
-为了创建 Batch 池，此应用使用 [PoolAddParameter](https://docs.microsoft.com/python/api/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](https://docs.microsoft.com/python/api/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 18.04 LTS 映像的 [ImageReference](https://docs.microsoft.com/python/api/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
+为了创建 Batch 池，此应用使用 [PoolAddParameter](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 18.04 LTS 映像的 [ImageReference](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
 
 节点数 (`_POOL_NODE_COUNT`) 和 VM 大小 (`_POOL_VM_SIZE`) 是定义的常数。 此示例默认创建的池包含 2 个大小为 *Standard_A1_v2* 的节点。 就此快速示例来说，建议的大小在性能和成本之间达成了很好的平衡。
 
-[pool.add](https://docs.microsoft.com/python/api/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
+[pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
 
 ```python
 new_pool = batch.models.PoolAddParameter(

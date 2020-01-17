@@ -1,26 +1,16 @@
 ---
-title: 设置 gMSA 用于 Azure Service Fabric 容器服务 | Azure
+title: 设置 gMSA 用于 Azure Service Fabric 容器服务
 description: 了解如何设置 gMSA 用于在 Azure Service Fabric 中运行的容器。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/20/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cce68bc4427492d1332b19aa06169684e7af2344
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 231645015598f3d7c4d1cd0daee72b2a11d6a9b3
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254572"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742265"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>设置 gMSA 用于在 Service Fabric 上运行的 Windows 容器
 

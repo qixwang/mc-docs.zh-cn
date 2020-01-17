@@ -1,27 +1,18 @@
 ---
-title: 将 Service Fabric 应用部署到 Azure 中的群集 | Azure
+title: 将 Service Fabric 应用部署到 Azure 中的群集
 description: 了解如何将应用程序从 Visual Studio 部署到群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 70484f0acedc8ca486342e339297d363d97ae0bb
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 3035899d7b400aa785ee5d2eeec1bd12c9740303
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254624"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742039"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -41,13 +32,16 @@ ms.locfileid: "70254624"
 
 <!-- Not Available on > * [Set up monitoring and diagnostics for the application](service-fabric-tutorial-monitoring-aspnet.md)-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)。
+
+> [!NOTE]
+> 试用帐户可能不满足创建虚拟机的要求。 这会阻止完成本教程。 此外，在与群集关联的密钥保管库上创建证书时，非工作或非学校帐户可能会遇到权限问题。 如果遇到与证书创建相关的错误，请改用门户来创建群集。 
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
@@ -105,12 +99,12 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 在“解决方案资源管理器”中，右键单击“Voting”并选择“发布”   。 此时会显示“发布”对话框。 
 
-在“连接终结点”中，选择在上一步创建的群集的终结点  。  例如，“mytestcluster.chinanorth.cloudapp.chinacloudapi.cn:19000”。 如果选择“高级连接参数”，则会自动填充证书信息。   
+在“连接终结点”中，选择在上一步创建的群集的终结点  。  例如 "mytestcluster.chinaeast.cloudapp.chinacloudapi.cn:19000"。 如果选择“高级连接参数”，则会自动填充证书信息。   
 ![发布 Service Fabric 应用程序](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
 选择“发布”  。
 
-应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 例如 `http://mytestcluster.chinanorth.cloudapp.chinacloudapi.cn:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
+应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 例如 `http://mytestcluster.chinaeast.cloudapp.chinacloudapi.cn:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
 
 ![Service Fabric 投票示例](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
@@ -121,8 +115,8 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 > * 创建群集。
 > * 使用 Visual Studio 将应用程序部署到远程群集。
 
-转到下一教程：
+进入下一教程：
 > [!div class="nextstepaction"]
 > [启用 HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 
-<!--Update_Description: update meta propeties -->
+<!-- Update_Description: update meta properties, wording update -->

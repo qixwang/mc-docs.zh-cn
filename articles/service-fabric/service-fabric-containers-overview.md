@@ -1,26 +1,16 @@
 ---
-title: Service Fabric 和容器概述 | Azure
+title: Service Fabric 和容器概述
 description: 概述 Service Fabric，以及如何使用容器部署微服务应用程序。 本文概述容器的用法以及 Service Fabric 提供的功能。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/08/2018
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: b0ffa2985d0e03114834553550a76a8516e30a0a
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: ad823fc1b44a339cb6063ff92e8b6f228ac60796
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174056"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742459"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 

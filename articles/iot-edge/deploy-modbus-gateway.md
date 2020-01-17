@@ -6,19 +6,19 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-origin.date: 06/28/2019
-ms.date: 07/22/2019
+origin.date: 11/19/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8ccabc916e0fdf163d2e85612c6a60657afb82ac
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: 6a6a23306f48a0e6d00f467beaecdf1ce094e972
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845142"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859751"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
 
-若要将使用 Modbus TCP 或 RTU 协议的 IoT 设备连接到 Azure IoT 中心，请使用 IoT Edge 设备作为网关。 此网关设备从 Modbus 设备读取数据，然后使用支持的协议将该数据传送到云。 
+若要将使用 Modbus TCP 或 RTU 协议的 IoT 设备连接到 Azure IoT 中心，可以使用 IoT Edge 设备作为网关。 此网关设备从 Modbus 设备读取数据，然后使用支持的协议将该数据传送到云。
 
 ![Modbus 设备通过 IoT Edge 网关连接到 IoT 中心](./media/deploy-modbus-gateway/diagram.png)
 
@@ -26,10 +26,10 @@ ms.locfileid: "67845142"
 
 本文假定你使用的是 Modbus TCP 协议。 若要详细了解如何配置支持 Modbus RTU 的模块，请参阅 Github 上的 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure IoT Edge 设备。 若要详细了解如何设置一个，请参阅[在 Windows 中部署 Azure IoT Edge](quickstart.md) 或[在 Linux 中部署 Azure IoT Edge](quickstart-linux.md)。
 * IoT Edge 设备的主键连接字符串。
-* 支持 Modbus TCP 的物理或模拟 Modbus 设备。
+* 支持 Modbus TCP 的物理或模拟 Modbus 设备。 需要知道其 IPv4 地址。
 
 ## <a name="prepare-a-modbus-container"></a>准备 Modbus 容器
 
@@ -44,51 +44,23 @@ ms.locfileid: "67845142"
 1. 在 [Azure 门户](https://portal.azure.cn/)中转到 IoT 中心。
 2. 转到“IoT Edge”  ，然后单击 IoT Edge 设备。
 3. 选择“设置模块”  。
-4. 添加 Modbus 模块：
-   1. 单击“添加”，然后选择“IoT Edge 模块”。  
-   2. 在“名称”  字段中，输入“modbus”。
-   3. 在“映像”字段中，输入示例容器的映像  URI：`mcr.microsoft.com/azureiotedge/modbus:1.0`。
-   4. 勾选“启用”框，更新  模块孪生的所需属性。
-   5. 将以下 JSON 复制到文本框中。 将 **SlaveConnection** 的值更改为 Modbus 设备的 IPv4 地址。
 
-      ```JSON
-      {  
-        "properties.desired":{
-          "PublishInterval":"2000",
-          "SlaveConfigs":{
-            "Slave01":{
-              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{
-                "Op01":{  
-                  "PollingInterval": "1000",
-                  "UnitId":"1",
-                  "StartAddress":"40001",
-                  "Count":"2",
-                  "DisplayName":"Voltage"
-                }
-              }
-            }
-          }
-        }
-      }
-      ```
+4. 在“IoT Edge 模块”部分中，添加 Modbus 模块  ：
 
-   6. 选择“保存”  。
-5. 返回到“添加模块”  步骤，选择“下一步”  。
+   1. 单击“添加”下拉列表，然后选择“市场模块”   。
+   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”  。
+   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”  。
+   4. 查看部署清单并选择“创建”  。
 
-7. 在“指定路由”步骤中，将以下 JSON 复制到文本框中  。 此路由将 Modbus 模块收集的所有消息发送到 IoT 中心。 在此路由中，**modbusOutput** 是 Modbus 模块用于输出数据的终结点， **$upstream** 则是一个特殊目标，用于指示 IoT Edge 中心将消息发送到 IoT 中心。
+5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡  。自动填充模块孪生所需属性的必需 JSON。
 
-   ```JSON
-   {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
-   }
-   ```
+6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址  。
 
-8. 选择“**下一步**”。 
-9. 在“复查部署”步骤中，选择“提交”   。 
-10. 返回到“设备详细信息”页，并选择“刷新”  。 此时会看到新的 **modbus** 模块与 IoT Edge 运行时一起运行。
+7. 选择“更新”  。
+
+8. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
+
+9. 返回到“设备详细信息”页，并选择“刷新”  。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
 
 ## <a name="view-data"></a>查看数据
 查看通过 modbus 模块发送过来的数据：

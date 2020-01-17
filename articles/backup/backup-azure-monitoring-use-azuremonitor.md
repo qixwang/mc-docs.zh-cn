@@ -7,12 +7,12 @@ origin.date: 06/04/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 3a9d06802b5f07f42079e14b73a6786acafa882b
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 47f10bf0074e28da8718b7690f963720aef30c1d
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838934"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853522"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -38,9 +38,9 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 在“监视”部分，选择“诊断设置”并指定恢复服务保管库的诊断数据的目标。 
 
-![面向 Log Analytics 的恢复服务保管库诊断设置](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
+![面向 Log Analytics 的恢复服务保管库诊断设置](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-可将另一订阅中的 Log Analytics 工作区设定为目标。 若要在单个位置监视不同订阅中的保管库，请为多个恢复服务保管库选择相同的 Log Analytics 工作区。 要将与 Azure 备份相关的所有信息导入 Log Analytics 工作区，请在显示的切换中选择“特定于资源”  ，并选择以下事件 - **CoreAzureBackup**、**AddonAzureBackupJobs**、**AddonAzureBackupAlerts**、**AddonAzureBackupPolicy**、**AddonAzureBackupStorage**、**AddonAzureBackupProtectedInstance**。 有关配置 LA 诊断设置的更多详细信息，请参阅[此文](backup-azure-diagnostic-events.md)。
+可将另一订阅中的 Log Analytics 工作区设定为目标。 若要在单个位置监视不同订阅中的保管库，请为多个恢复服务保管库选择相同的 Log Analytics 工作区。 若要将与 Azure 备份相关的所有信息传送到 Log Analytics 工作区，请在显示的切换中选择“AzureDiagnostics”，然后选择“AzureBackupReport”事件   。
 
 > [!IMPORTANT]
 > 完成配置后，应等待24小时，让初始数据推送完成。 完成初始数据推送后，将按本文稍后的[频率部分](#diagnostic-data-update-frequency)中所述推送所有事件。
@@ -53,8 +53,6 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 数据进入 Log Analytics 工作区后，[将一个 GitHub 模板部署](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/)到 Log Analytics 以可视化数据。 为了正确识别工作区，请确保为其提供相同的资源组、工作区名称和工作区位置。 然后在工作区中安装此模板。
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>使用 Log Analytics 查看 Azure 备份数据
-
-部署模板后，用于在 Azure 备份中进行监视和报告的解决方案将显示在工作区摘要区域中。 若要访问摘要，请遵循以下路径之一：
 
 - **Azure Monitor**：在“见解”部分选择“更多”，然后选择相关的工作区。  
 - **Log Analytics 工作区**：选择相关的工作区，然后在“常规”下选择“工作区摘要”。  

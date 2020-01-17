@@ -4,19 +4,19 @@ description: 本快速入门使用组注册。 在本快速入门中，将使用
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: bc87feaffbb61f59b7b7825e1612323991b129a5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: dcfb23e24c31244be69d01c197e157360f913301
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334740"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859593"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入门：使用 Python 将 X.509 设备注册到设备预配服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "75334740"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 安装 [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。
 - [安装或升级 Python 程序包管理系统 *pip*](https://pip.pypa.io/en/stable/installing/)。
@@ -49,13 +49,17 @@ ms.locfileid: "75334740"
 
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的测试工具可以帮助你创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。 根据设计，使用 SDK 工具创建的证书只能用于**开发测试**。 这些证书**不得在生产环境中使用**。 它们包含硬编码的密码（“1234”），在 30 天后过期。 若要了解如何获取适用于生产用途的证书，请参阅 Azure IoT 中心文档中的[如何获取 X.509 CA 证书](/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
 
-若要使用此测试工具来生成证书，请执行以下步骤： 
- 
-1. 打开命令提示符或 Git Bash shell，并切换到计算机上的某个工作文件夹。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
-    
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+若要使用此测试工具来生成证书，请执行以下步骤：
+
+1. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的标记名称。
+
+2. 打开命令提示符或 Git Bash shell，并切换到计算机上的某个工作文件夹。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
 
    应该预料到此操作需要几分钟才能完成。
 

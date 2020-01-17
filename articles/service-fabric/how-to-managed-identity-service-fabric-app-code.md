@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric - 将托管标识用于 Service Fabric 应用程序 | Azure
-description: 如何通过 Service Fabric 应用程序代码使用托管标识
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 将托管标识用于 Service Fabric 应用程序
+description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。 此功能目前以公共预览版提供。
 ms.topic: article
 origin.date: 07/25/2019
-ms.date: 09/30/2019
 ms.author: v-yeche
-ms.openlocfilehash: dd9037fca83be5ab1dc81c5fdce90a39ee406536
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.date: 01/06/2020
+ms.openlocfilehash: d963ddcea3a09b782defff2cd354032197e47892
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340878"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742352"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务（预览版）
 
@@ -24,7 +20,7 @@ Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure A
 > 托管标识表示 Azure 资源与相应 Azure AD 租户（该租户与包含该资源的订阅相关联）中的服务主体之间的关联。 因此，在 Service Fabric 的上下文中，只有部署为 Azure 资源的应用程序才支持托管标识。 
 
 > [!IMPORTANT]
-> 在使用 Service Fabric 应用程序的托管标识之前，必须为客户端应用程序授予对受保护资源的访问权限。 请参阅[支持 Azure AD 身份验证的 Azure 服务](https://docs.microsoft.com/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources)列表来了解支持情况，然后参阅相关服务的文档，以获取为标识授予对相关资源的访问权限的具体步骤。 
+> 在使用 Service Fabric 应用程序的托管标识之前，必须为客户端应用程序授予对受保护资源的访问权限。 请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)列表来了解支持情况，然后参阅相关服务的文档，以获取为标识授予对相关资源的访问权限的具体步骤。 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>使用 REST API 获取访问令牌
 在支持托管标识的群集中，Service Fabric 运行时将公开一个 localhost 终结点，应用程序可使用该终结点获取访问令牌。 该终结点将在群集的每个节点上提供，可供该节点上的所有实体访问。 已获授权的调用方可以通过调用此终结点并提供身份验证代码来获取访问令牌；每次激活不同的服务代码包时，此代码将由 Service Fabric 运行时生成，并且此代码与托管该服务代码包的进程的生存期紧密相关。
@@ -60,7 +56,7 @@ GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点，通过 MSI_ENDPOINT 环境变量提供。 |
 | `api-version` | 一个查询字符串参数，指定托管标识令牌服务的 API 版本；目前唯一接受的值为 `2019-07-01-preview`，将来可能会有更改。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个用于访问 Azure Key Vault（其应用 ID URI 为 https://keyvault.azure.com/ ）的令牌。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个用于访问 Azure Key Vault（其应用 ID URI 为 https://keyvault.azure.cn/ ）的令牌。 |
 | `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过 MSI_SECRET 环境变量提供。 |
 
 示例响应：
@@ -342,7 +338,7 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 | ManagedIdentityNotFound | 找不到指定应用程序主机的托管标识。 | 应用程序没有标识，或者身份验证代码未知。 |
 | ArgumentNullOrEmpty | 参数“resource”不应是 null 或空字符串。 | 未在请求中提供资源（受众）。 |
 | InvalidApiVersion | API 版本 '' 不受支持。 支持的版本为“2019-07-01-preview”。 | 请求 URI 中指定的 API 版本缺失或不受支持。 |
-| InternalServerError | 发生错误。 | 托管标识子系统中出现错误，可能超出了 Service Fabric 堆栈的范围。 最有可能的原因是为资源指定的值不正确（请检查尾部的“/”） | 
+| InternalServerError | 出现了错误。 | 托管标识子系统中出现错误，可能超出了 Service Fabric 堆栈的范围。 最有可能的原因是为资源指定的值不正确（请检查尾部的“/”） | 
 
 ## <a name="retry-guidance"></a>重试指南 
 

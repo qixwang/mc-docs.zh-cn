@@ -1,18 +1,18 @@
 ---
-title: 管理 Azure Database for MySQL - Azure 门户
+title: 管理服务器 - Azure 门户 - Azure Database for MySQL
 description: 了解如何在 Azure 门户中管理 Azure Database for MySQL 服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/25/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: 682b99d51e7d1112d86d854a00f42ef83d73ee83
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+origin.date: 12/02/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 9b783820a1c06da10611695ec8ad1f3618590397
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839017"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776739"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MySQL 服务器
 本文介绍如何管理 Azure Database for MySQL 服务器。 管理任务包括计算和存储缩放、管理员密码重置，以及查看服务器详细信息。
@@ -25,7 +25,7 @@ ms.locfileid: "74839017"
 
 ## <a name="scale-compute-and-storage"></a>缩放计算和存储
 
-创建服务器以后，可以根据需要在“常规用途”层和“内存优化”层之间缩放。 也可通过增减 vCore 数来缩放计算和内存。 存储可以纵向扩展（但不能纵向缩减）。
+创建服务器后，可以根据需要在“常规用途”层和“内存优化”层之间缩放。 也可通过增减 vCore 数来缩放计算和内存。 存储可以纵向扩展（但不能纵向缩减）。
 
 ### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>在“常规用途”和“内存优化”层之间缩放
 
@@ -40,7 +40,7 @@ ms.locfileid: "74839017"
     > [!NOTE]
     > 更改层级导致服务器重启。
 
-4. 选择“确定”，保存所做的更改。 
+4. 选择“确定”以保存更改。 
 
 
 ### <a name="scale-vcores-up-or-down"></a>纵向扩展或缩减 vCore
@@ -52,9 +52,9 @@ ms.locfileid: "74839017"
     ![scale-compute](./media/howto-create-manage-server-portal/scaling-compute.png)
 
     > [!NOTE]
-    > 缩放 vCore 导致服务器重启。
+    > 缩放 vCore 会导致服务器重启。
 
-3. 选择“确定”，保存所做的更改。 
+3. 选择“确定”以保存更改。 
 
 
 ### <a name="scale-storage-up"></a>纵向扩展存储
@@ -68,7 +68,7 @@ ms.locfileid: "74839017"
     > [!NOTE]
     > 存储无法纵向缩减。
 
-3. 选择“确定”，保存所做的更改。 
+3. 选择“确定”以保存更改。 
 
 
 ## <a name="update-admin-password"></a>更新管理员密码

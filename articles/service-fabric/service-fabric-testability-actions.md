@@ -1,33 +1,24 @@
 ---
-title: Azure 微服务中的模拟故障 | Azure
+title: 在 Azure 微服务中模拟故障
 description: 本文介绍了 Azure Service Fabric 中的可测试性操作。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: heeldin
-ms.assetid: ed53ca5c-4d5e-4b48-93c9-e386f32d8b7a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/07/2017
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4654d6ea3c3fbe0c87a9b780b997dc7bd860f67a
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: f45144696dd93d3b817e02aa1228e8f0bb2f051f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463501"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742124"
 ---
 # <a name="testability-actions"></a>可测试性操作
 为了模拟一个不可靠的基础结构，Azure Service Fabric 向开发人员提供了众多方式来模拟各种现实世界故障和状态转换。 这些方式被称为可测试性操作。 这些操作属于低级别 API，会导致具体的故障注入、状态转换或验证。 结合使用这些操作，可为服务编写全面的测试方案。
 
 Service Fabric 提供某些由这些操作组成的常见测试方案。 强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。 但是，希望添加尚未包含在内置方案中的方案时，或者需要为应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
 
-System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.ServiceFabric.Powershell.dll 程序集中包含了 System Fabric PowerShell 模块。 作为运行时安装的一部分，安装了 ServiceFabric PowerShell 模块以便易于使用。
+System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.ServiceFabric.Powershell.dll 程序集中包含了 System Fabric PowerShell 模块。 运行时安装过程中，将安装 ServiceFabric PowerShell 模块以便易于使用。
 
 ## <a name="graceful-vs-ungraceful-fault-actions"></a>常规故障与非常规故障操作
 可测试性操作分为两个主要的类型：
@@ -39,10 +30,10 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 
 ## <a name="testability-actions-list"></a>可测试性操作列表
 | 操作 | 说明 | 托管 API | PowerShell cmdlet | 常规/非常规故障 |
-|---------|-------------|-------------|-------------------|------------------------------|
+| --- | --- | --- | --- | --- |
 | CleanTestState |在测试驱动器非正常关闭时从群集删除所有测试状态。 |CleanTestStateAsync |Remove-ServiceFabricTestState |不适用 |
 | InvokeDataLoss |将数据丢失引入到服务分区。 |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |常规 |
-| InvokeQuorumLoss |在一个给定有状态服务分区放入仲裁丢失。 |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |常规 |
+| InvokeQuorumLoss |将给定有状态服务分区放入仲裁丢失中。 |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |常规 |
 | MovePrimary |将有状态服务的指定主副本移动到指定群集节点。 |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |常规 |
 | MoveSecondary |将有状态服务的当前辅助副本移动到另一个群集节点。 |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |常规 |
 | RemoveReplica |通过从群集删除副本来模拟副本故障。 这将关闭该副本，将其转换为角色“None”，并从群集中删除其所有状态。 |RemoveReplicaAsync |Remove-ServiceFabricReplica |常规 |
@@ -51,9 +42,9 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 | RestartPartition |通过重新启动分区的某些或全部副本来模拟数据中心中断或群集中断方案。 |RestartPartitionAsync |Restart-ServiceFabricPartition |常规 |
 | RestartReplica |通过重新启动群集中的某个持久化副本、关闭副本并重新打开该副本来模拟副本故障。 |RestartReplicaAsync |Restart-ServiceFabricReplica |常规 |
 | StartNode |启动群集中已经停止的节点。 |StartNodeAsync |Start-ServiceFabricNode |不适用 |
-| StopNode |通过停止群集中的某个节点来模拟节点故障。 该节点将一直处于关闭状态，直到调用了 StartNode 为止。 |StopNodeAsync |Stop-ServiceFabricNode |非常规 |
+| StopNode |通过停止群集中的某个节点来模拟节点故障。 调用 StartNode 之前，该节点将一直处于关闭状态。 |StopNodeAsync |Stop-ServiceFabricNode |非常规 |
 | ValidateApplication |验证某个应用程序内所有 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 |ValidateApplicationAsync |Test-ServiceFabricApplication |不适用 |
-| ValidateService |验证一个 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 |ValidateServiceAsync |Test-ServiceFabricService |不适用 |
+| ValidateService |验证某个 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 |ValidateServiceAsync |Test-ServiceFabricService |不适用 |
 
 ## <a name="running-a-testability-action-using-powershell"></a>使用 PowerShell 运行可测试性操作
 本教程说明如何使用 PowerShell 运行可测试性操作。 将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。 安装 Azure Service Fabric MSI 时，会自动安装 Microsoft.Fabric.Powershell.dll（Service Fabric PowerShell 模块）。 该模块在打开 PowerShell 提示符时自动加载。
@@ -61,7 +52,7 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 教程章节：
 
 * [针对单机群集运行操作](#run-an-action-against-a-one-box-cluster)
-* [针对 Azure 群集运行一个操作](#run-an-action-against-an-azure-cluster)
+* [针对 Azure 群集运行操作](#run-an-action-against-an-azure-cluster)
 
 <a name="run-an-action-against-a-one-box-cluster"></a>
 ### <a name="run-an-action-against-a-one-box-cluster"></a>针对单机群集运行一个操作
@@ -91,13 +82,12 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-第一个 **Get-ServiceFabricNode**（来自 Service Fabric PowerShell 模块的一个 cmdlet）的输出显示本地群集有五个节点：Node.1 至 Node.5。 在名为 Node.4 的节点上执行可测试性操作 (cmdlet) Restart-ServiceFabricNode 之后，可看到节点的正常运行时间已被重置。
+第一个 **Get-ServiceFabricNode**（来自 Service Fabric PowerShell 模块的一个 cmdlet）的输出显示本地群集有五个节点：Node.1 至 Node.5。 在名为 Node.4 的节点上执行可测试性操作 (cmdlet) Restart-ServiceFabricNode  之后，可看到节点的正常运行时间已被重置。
 
 ### <a name="run-an-action-against-an-azure-cluster"></a>针对 Azure 群集运行操作
-针对 Azure 群集运行一个可测试性操作（使用 PowerShell）与针对本地群集运行一个操作类似。 唯一的区别在于：在能够运行操作之前，不是连接到本地群集，而是需要首先连接到 Azure 群集。
+针对 Azure 群集运行一个可测试性操作（使用 PowerShell）与针对本地群集运行一个操作类似。 唯一的区别在于：能够运行操作之前，不是连接到本地群集，而是需要首先连接到 Azure 群集。
 
 ## <a name="running-a-testability-action-using-c35"></a>使用 C&#35; 运行可测试性操作
-
 若要使用 C# 运行可测试性操作，首先需要使用 FabricClient 连接到群集。 然后获取运行该操作所需的参数。 可用不同的参数来运行相同的操作。
 请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
 
@@ -107,7 +97,7 @@ RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, Cance
 
 参数说明：
 
-* **CompleteMode** 指定该模式不应该验证重启操作是否实际成功。 将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。  
+* **CompleteMode** 指定该模式不应该验证重启操作是否实际成功。 将完成模式指定为“Verify”会让其验证重启操作是否实际成功。  
 * **OperationTimeout** 设置在引发 TimeoutException 异常之前等待操作完成的时间量。
 * **CancellationToken** 允许取消挂起调用。
 
@@ -232,7 +222,7 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
 ## <a name="next-steps"></a>后续步骤
 * [可测试性方案](service-fabric-testability-scenarios.md)
 * 如何测试服务
-  * [在服务工作负荷期间模拟故障](service-fabric-testability-workload-tests.md)
-  * [服务到服务通信故障](service-fabric-testability-scenarios-service-communication.md)
+    * [在服务工作负荷期间模拟故障](service-fabric-testability-workload-tests.md)
+    * [服务到服务通信故障](service-fabric-testability-scenarios-service-communication.md)
 
 <!-- Update_Description: update meta properties, wording update -->

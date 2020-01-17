@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 Windows 容器应用 | Azure
+title: 在 Azure 中的 Service Fabric 上创建 Windows 容器应用
 description: 在本快速入门中，请在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/10/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: f28651ae392d0d28576176c3c1b703b5e8c457a0
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 0922bf567583294aa143f8190108a8531120afa4
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174229"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742480"
 ---
 <!--Verify Successfully-->
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
@@ -41,7 +31,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 Azure 订阅（可以创建[试用帐户](https://www.azure.cn/pricing/1rmb-trial)）。
 * 一台运行以下软件的开发计算机：

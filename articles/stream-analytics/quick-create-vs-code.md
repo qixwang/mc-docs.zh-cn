@@ -1,19 +1,19 @@
 ---
-title: 在 Visual Studio Code 中创建 Azure 流分析云作业（预览）
+title: 快速入门 - 在 Visual Studio Code 中创建 Azure 流分析云作业
 description: 本快速入门介绍如何开始使用 Visual Studio Code 创建流分析作业、配置输入和输出，以及定义查询。
 ms.service: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
 ms.topic: quickstart
-origin.date: 05/06/2019
-ms.date: 07/12/2019
-ms.openlocfilehash: bc4db7f935ffea8c48c4b0d716afe0c7cebc977e
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+origin.date: 09/16/2019
+ms.date: 1/8/2020
+ms.openlocfilehash: 6272b59e3a2e761140ec37c322381c2d91686c93
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982176"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857232"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析云作业（预览）
 
@@ -39,7 +39,7 @@ ms.locfileid: "74982176"
 
 ## <a name="activate-the-azure-stream-analytics-extension"></a>激活 Azure 流分析扩展
 
-1. 在 VS Code 活动栏上选择“Azure”图标。  “流分析”将显示在侧栏中。  在“流分析”下，选择“登录到 Azure”。   
+1. 在 VS Code 活动栏上选择“Azure”图标。  “流分析”将显示在侧栏中。  在“流分析”下，选择“登录到 Azure”。  
 
    ![在 Visual Studio Code 中登录到 Azure](./media/quick-create-vs-code/azure-sign-in.png)
 
@@ -114,58 +114,8 @@ ms.locfileid: "74982176"
 
    ![VS Code 中的流分析项目文件](./media/quick-create-vs-code/asa-project-files.png)
 
-4. **asaproj.json** 配置文件包含将流分析作业提交到 Azure 所需的输入、输出和作业配置文件信息。
-
-   ![VS Code 中的流分析作业配置文件](./media/quick-create-vs-code/job-configuration.png)
-
 > [!Note]
 > 从命令面板添加输入和输出时，相应路径将自动添加到 **asaproj.json** 中。 如果直接在磁盘上添加或者删除输入或输出，则需要在 **asaproj.json** 中手动添加或删除。 可以选择将输入和输出放在一个放置，然后通过在每个 **asaproj.json** 中指定路径，在不同的作业中引用这些输入和输出。
-
-## <a name="define-an-input"></a>定义输入
-
-1. 按 **Ctrl+Shift+P** 打开命令面板，然后输入 **ASA:Add Input**。
-
-   ![在 VS Code 中添加流分析输入](./media/quick-create-vs-code/add-input.png)
-
-2. 选择“IoT 中心”作为输入类型。 
-
-   ![选择“IoT 中心”作为输入选项](./media/quick-create-vs-code/iot-hub.png)
-
-3. 选择使用该输入的 ASA 查询脚本。 该脚本中应会自动填充 **myASAproj.asaql** 的文件路径。
-
-   ![在 Visual Studio Code 中选择 ASA 脚本](./media/quick-create-vs-code/asa-script.png)
-
-4. 输入 **IotHub.json** 作为输入文件名。
-
-5. 使用以下值编辑 **IoTHub.json**。 对于下面未提到的字段，请保留默认值。 可以借助 CodeLens 来输入字符串，从下拉列表中选择值，或者直接在文件中更改文本。
-
-   |设置|建议的值|说明|
-   |-------|---------------|-----------|
-   |Name|输入|输入一个名称，用于标识作业的输入。|
-   |IotHubNamespace|MyASAIoTHub|选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。|
-   |EndPoint|消息传送| |
-   |SharedAccessPolicyName|iothubowner| |
-
-## <a name="define-an-output"></a>定义输出
-
-1. 按 **Ctrl+Shift+P** 打开命令面板。 然后输入 **ASA:Add Output**。
-
-   ![在 VS Code 中添加流分析输出](./media/quick-create-vs-code/add-output.png)
-
-2. 选择“Blob 存储”作为接收器类型。 
-
-3. 选择使用此输入的 ASA 查询脚本。
-
-4. 输入 **BlobStorage.json** 作为输出文件名。
-
-5. 使用以下值编辑 **BlobStorage.json**。 对于下面未提到的字段，请保留默认值。 借助 CodeLens 输入字符串，或者从下拉列表中选择值。
-
-   |设置|建议的值|说明|
-   |-------|---------------|-----------|
-   |Name|输出| 输入一个名称用于标识作业的输出。|
-   |存储帐户|asaquickstartstorage|选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。|
-   |容器|container1|选择你在存储帐户中创建的现有容器。|
-   |路径模式|output|输入要在容器内创建的文件路径的名称。|
 
 ## <a name="define-the-transformation-query"></a>定义转换查询
 
@@ -179,6 +129,77 @@ ms.locfileid: "74982176"
    FROM Input
    HAVING Temperature > 27
    ```
+
+## <a name="test-the-query-locally-with-sample-data"></a>使用示例数据在本地测试查询
+
+在云中运行查询之前，你可使用现有的本地示例数据文件或从实时输入捕获的数据在本地测试查询，验证查询逻辑。
+
+有关更多详细信息，请按照“使用示例数据在本地测试查询”中的说明进行操作。
+
+ ![在 VS Code 中使用示例数据进行测试](./media/vscode-local-run/localrun-localinput.gif)
+
+## <a name="define-a-live-input"></a>定义实时输入
+
+1. 右键单击流分析项目中的“输入”  文件夹。 然后从上下文菜单中选择“ASA:  添加输入”。
+
+    ![从输入文件夹添加输入](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+
+    或者，按 Ctrl+Shift+P  打开命令面板，然后输入 ASA:  Add Input。
+
+   ![在 VS Code 中添加流分析输入](./media/quick-create-vs-code/add-input.png)
+
+2. 选择“IoT 中心”作为输入类型。 
+
+   ![选择“IoT 中心”作为输入选项](./media/quick-create-vs-code/iot-hub.png)
+
+3. 如果已从命令面板添加输入，选择要使用该输入的 ASA 查询脚本。 该脚本中应会自动填充 **myASAproj.asaql** 的文件路径。
+
+   ![在 Visual Studio Code 中选择 ASA 脚本](./media/quick-create-vs-code/asa-script.png)
+
+4. 从下拉菜单中选择“从 Azure 订阅中选择”  。
+
+    ![从订阅中选择](./media/quick-create-vs-code/add-input-select-subscription.png)
+
+5. 使用以下值编辑新生成的 IoTHub1.json  。 对于下面未提到的字段，请保留默认值。
+
+   |设置|建议的值|说明|
+   |-------|---------------|-----------|
+   |名称|输入|输入一个名称，用于标识作业的输入。|
+   |IotHubNamespace|MyASAIoTHub|选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。|
+   |SharedAccessPolicyName|iothubowner| |
+
+   可借助 CodeLens（例如，以下屏幕截图中的“从订阅中选择”  ）来输入字符串，从下拉列表中选择值，或者直接在文件中更改文本。
+
+   ![在 Visual Studio Code 中配置输入](./media/quick-create-vs-code/configure-input.png)
+
+## <a name="preview-input"></a>预览输入
+
+在 IoTHub1.json  中，单击顶行的“预览数据”  。 随即将从 IoTHub 中提取一些输入数据，并将其显示在预览窗口中。 注意，这可能需要一些时间。
+
+ ![预览实时输入](./media/quick-create-vs-code/preview-live-input.png)
+
+## <a name="define-an-output"></a>定义输出
+
+1. 按 **Ctrl+Shift+P** 打开命令面板。 然后输入 **ASA:Add Output**。
+
+   ![在 VS Code 中添加流分析输出](./media/quick-create-vs-code/add-output.png)
+
+2. 选择“Blob 存储”作为接收器类型。 
+
+3. 选择使用此输入的 ASA 查询脚本。
+
+4. 输入输出文件名为 **BlobStorage**。
+
+5. 使用以下值编辑 **BlobStorage**。 对于下面未提到的字段，请保留默认值。 使用 CodeLens 可帮助你从下拉列表中选择或输入字符串。
+
+   |设置|建议的值|说明|
+   |-------|---------------|-----------|
+   |名称|输出| 输入一个名称，用于标识作业的输出。|
+   |存储帐户|asaquickstartstorage|选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。|
+   |容器|container1|选择你在存储帐户中创建的现有容器。|
+   |路径模式|output|输入要在容器内创建的文件路径的名称。|
+
+   ![在 Visual Studio Code 中配置输出](./media/quick-create-vs-code/configure-output.png)
 
 ## <a name="compile-the-script"></a>编译脚本
 
@@ -200,29 +221,21 @@ ms.locfileid: "74982176"
 
 ## <a name="submit-a-stream-analytics-job-to-azure"></a>将流分析作业提交到 Azure
 
-1. 在 Visual Studio Code 的脚本编辑器窗口中，选择“从订阅中选择”。 
+1. 在查询脚本的脚本编辑器窗口中，单击“提交到 Azure”  。
 
-   ![在脚本编辑器中从订阅文本进行选择](./media/quick-create-vs-code/select-subscription.png)
+   ![在脚本编辑器中从订阅文本进行选择](./media/quick-create-vs-code/submit-job.png)
 
 2. 从弹出列表中选择你的订阅。
 
-3. 选择一个作业**。 然后选择“创建新作业”。
+3. 选择“选择作业”  。 然后选择“创建新作业”  。
 
 4. 输入作业名称 **myASAjob**，然后遵照说明选择资源组和位置。
 
 5. 选择“提交到 Azure”。  在输出窗口中可以找到日志。 
 
-6. 创建作业后，可以在流分析资源管理器中看到它。
+6. 创建作业后，可以在**流分析资源管理器**中看到它。
 
-## <a name="run-the-iot-simulator"></a>运行 IoT 模拟器
-
-1. 在新的浏览器标签页或窗口中打开 [Raspberry Pi Azure IoT 联机模拟器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
-
-2. 将第 15 行的占位符替换为在上一部分保存的 Azure IoT 中心设备连接字符串。
-
-3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
-
-   ![Raspberry Pi Azure IoT 联机模拟器](./media/quick-create-vs-code/ras-pi-connection-string.png)
+    ![在流分析资源管理器中列出作业](./media/quick-create-vs-code/list-job.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>启动流分析作业并检查输出
 
@@ -248,9 +261,12 @@ ms.locfileid: "74982176"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Visual Studio Code 部署了一个简单的流分析作业。 也可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)、[PowerShell](stream-analytics-quick-create-powershell.md) 和 Visual Studio 部署流分析作业 (stream-analytics-quick-create-vs.md)。 
+在本快速入门中，你已使用 Visual Studio Code 部署了一个简单的流分析作业。 也可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)、[PowerShell](stream-analytics-quick-create-powershell.md) 和 Visual Studio 部署流分析作业 (stream-analytics-quick-create-vs.md)。
 
-若要了解适用于 Visual Studio 的 Azure 流分析工具，请继续阅读以下文章：
+若要了解适用于 Visual Studio Code 的 Azure 流分析工具，请继续阅读以下文章：
 
-> [!div class="nextstepaction"]
-> [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)
+* 通过 Visual Studio Code，使用实时输入在本地测试 Azure 流分析作业
+
+* 使用 Visual Studio Code 查看 Azure 流分析作业
+
+* [使用 npm 包设置 CI/CD 管道](setup-cicd-vs-code.md)

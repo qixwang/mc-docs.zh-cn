@@ -4,18 +4,18 @@ description: 在本快速入门中，你将使用 C 设备 SDK 创建一个将�
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 59b918c6da2bb3aa422af05b4baee3f1d9d49962
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: bdaf2413a38f6bf5e07ca1ed47650ea76da2f9bc
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334726"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859725"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
@@ -33,9 +33,12 @@ ms.locfileid: "75334726"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
+以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 
@@ -51,18 +54,20 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-2. 打开命令提示符或 Git Bash shell。 执行以下命令来克隆 Azure IoT C SDK GitHub 存储库：
-    
+2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
+
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
     应该预料到此操作需要几分钟才能完成。
 
-
-3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
+4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
@@ -152,7 +157,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 在“prov\_dev\_client\_sample.c”中，查找对 `prov_dev_set_symmetric_key_info()` 的调用  并添加注释。
+6. 在 **prov\_dev\_client\_sample.c** 中，找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -170,7 +175,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
-8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
 

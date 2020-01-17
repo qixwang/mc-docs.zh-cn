@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 11/15/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 929aa022049b3fd8e90cb5c27cc6d58ee9af264c
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.reviewer: thoroet
+ms.lastreviewed: 11/15/2019
+ms.openlocfilehash: ce5181c9d2432e4c3fd955143ea6cf3714f1afed
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020235"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737957"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack 防火墙集成
 建议使用防火墙设备来帮助保护 Azure Stack。 防火墙有助于防止分布式拒绝服务 (DDOS) 攻击之类的攻击，以及执行入侵检测和内容检查。 但是，它们也可能成为 Azure 存储服务（例如 Blob、表和队列）的吞吐量瓶颈。
@@ -43,8 +43,8 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 - 虽然使用 NAT 会限制用户体验，但它使得操作员能够完全控制发布请求。
 - 对于采用 Azure 的混合云方案，请注意 Azure 不支持使用 NAT 设置到终结点的 VPN 隧道。
 
-### <a name="ssl-decryption"></a>SSL 解密
-当前建议禁用对所有 Azure Stack 流量的 SSL 解密。 如果将来的更新支持此功能，那时将会提供有关如何为 Azure Stack 启用 SSL 解密的指南。
+### <a name="ssl-interception"></a>SSL 拦截
+目前建议在所有 Azure Stack 流量上禁用任何 SSL 拦截（例如解密卸载）。 如果将来的更新支持此功能，那时将会提供有关如何为 Azure Stack 启用 SSL 拦截的指南。
 
 ## <a name="edge-firewall-scenario"></a>边缘防火墙方案
 在边缘部署中，Azure Stack 直接部署在边缘路由器或防火墙后面。 在这些方案中，支持将防火墙放置在边界上方（例如方案 1，在这种情况下它支持主动-主动和主动-被动防火墙配置）或让防火墙充当边界设备（例如方案 2，在这种情况下它仅支持依赖于等成本多路径 (ECMP) 的主动-主动防火墙配置，并使用 BGP 或静态路由进行故障转移）。

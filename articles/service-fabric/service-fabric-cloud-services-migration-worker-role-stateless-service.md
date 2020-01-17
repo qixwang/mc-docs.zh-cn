@@ -1,26 +1,17 @@
 ---
-title: 将 Azure 云服务应用转换为 Service Fabric | Azure
+title: 将 Azure 云服务应用转换为 Service Fabric
 description: 本指南将云服务 Web 角色和辅助角色与 Service Fabric 无状态服务进行比较，以帮助你从云服务迁移到 Service Fabric。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 08/05/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 46de4ce108f80e983f08214476adde7230374d47
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: e36e899354964f2231d9dc6cae444ce73b35f199
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753135"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742370"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换为 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是从云服务迁移到 Service Fabric 的最简单路径。
@@ -138,7 +129,7 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
 
 ### <a name="accessing-configuration"></a>访问配置
 #### <a name="cloud-services"></a>云服务
-可通过 `RoleEnvironment` 访问 ServiceConfiguration.*.cscfg 中的配置设置。 这些设置可全局提供给同一云服务部署中的所有角色实例使用。
+可通过 `RoleEnvironment` 访问 ServiceConfiguration.*.cscfg 中的配置设置。 这些设置可全局提供给同一云服务部署中的所有角色实例。
 
 ```csharp
 
@@ -260,6 +251,7 @@ Service Fabric 中的启动入口点是在 ServiceManifest.xml 中针对每个�
 * [云服务与 Service Fabric 之间差异的概念指南](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
+
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 

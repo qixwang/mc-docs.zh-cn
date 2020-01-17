@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 01/06/2020
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43e0ad412d2588e01793dca13043b337ed453c90
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 3d4a5b32e823306ad277f39f37371bccd47bd1f4
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631130"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859234"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure Cosmos 帐户
 
@@ -34,7 +34,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟网络”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16  。 |
@@ -53,7 +53,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -80,7 +80,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。 |
@@ -100,7 +100,9 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>为 Azure Cosmos 帐户创建专用终结点
 
-如链接文章的[使用 Azure 门户创建专用链接](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal)部分中所述，为 Azure Cosmos 帐户创建专用链接。
+如链接文章的“使用 Azure 门户创建专用链接”部分中所述，为 Azure Cosmos 帐户创建专用链接。
+
+<!--Not Available on [Create a Private Link using the Azure portal](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal)-->
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -110,7 +112,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 选择“连接”按钮。  选择“连接”按钮后，“连接到虚拟机”随即打开   。
 
-1. 选择“下载 RDP 文件”  。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机  。
+1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
 1. 打开下载的 *.rdp* 文件。
 
@@ -177,7 +179,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 * 若要详细了解专用终结点，请参阅 [什么是 Azure 专用终结点？](private-endpoint-overview.md)。
 
-* 若要详细了解与 Azure Cosmos DB 一起使用时专用终结点的限制，请参阅[与 Azure Cosmos DB 之间的 Azure 专用链接](../cosmos-db/how-to-configure-private-endpoints.md)一文。
+    <!--Not Available on [Azure Private Link with Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md)-->
 
 <!-- Update_Description: new article about create private endpoint cosmosdb portal -->
 <!--NEW.date: 01/06/2020-->

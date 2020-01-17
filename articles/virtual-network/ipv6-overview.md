@@ -10,15 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-origin.date: 07/15/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7e928d61a5a3f585e3fc35150f25f5998000ff06
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: c4da34b1bdd339b5584eae6b34f53b34b5a638b1
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203700"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859218"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -38,7 +37,7 @@ Azure 虚拟网络 IPv6 的功能要全面得多，它可以实现在 Azure 中�
 
 ![IPv6 网络部署示意图](./media/ipv6-support-overview/ipv6-sample-diagram.png)
 
-## <a name="benefits"></a>优势
+## <a name="benefits"></a>优点
 
 Azure VNET IPv6 的优势：
 
@@ -77,7 +76,7 @@ Azure VNet IPv6 提供以下功能：
 - [虚拟网络 (VNET) 对等互连](virtual-network-peering-overview.md) - 区域内部和全球对等互连 - 可以无缝连接双堆栈 VNET - 对等互连网络中的 VM 上的 IPv4 和 IPv6 终结点能够相互通信。 将部署过渡到双堆栈时，甚至可以将双堆栈对等互连到仅使用 IPv4 的 VNET。 
 - 可以使用负载均衡器指标/警报与网络观察程序功能（例如数据包捕获、NSG 流日志、连接故障排除和连接监视）实现 IPv6 故障排除与诊断。   
 
-## <a name="scope"></a>范围
+## <a name="scope"></a>作用域
 Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆栈 (IPv4 + IPv6) 应用程序。  我们有意不断地将 IPv6 支持添加到更多的 Azure 网络功能，最终提供 Azure PaaS 服务的双堆栈版本，但在此过程中，仍可以通过双堆栈虚拟机上的 IPv4 终结点访问所有 Azure PaaS 服务。   
 
 ## <a name="limitations"></a>限制
@@ -85,7 +84,7 @@ Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆
 
 <!--Not Available on - IPv6 for Azure virtual network (Preview) is available in all global Azure regions, but only in Global Azure- not yet in government clouds.-->
 
-- Express Route 和 VPN 网关无法在启用了 IPv6 的 VNET 中直接使用，或通过“UseRemoteGateway”对等互连使用。 
+- Express Route 和 VPN 网关无法在启用了 IPv6 的 VNET 中直接使用，或通过 UseRemoteGateway 对等互连使用。 
 - Azure 平台（AKS 等）不支持容器的 IPv6 通信。  
 
 ## <a name="pricing"></a>定价
@@ -98,5 +97,4 @@ IPv6 Azure 资源和带宽按照与 IPv4 相同的费率收费。 IPv6 不收取
 - 了解如何[使用 Azure CLI 部署 IPv6 双堆栈应用程序](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)。
 - 了解如何[使用资源管理器模板 (JSON) 部署 IPv6 双堆栈应用程序](ipv6-configure-standard-load-balancer-template-json.md)
 
-<!-- Update_Description: new article about ipv6 overview -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

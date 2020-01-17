@@ -1,28 +1,28 @@
 ---
-title: 配置服务参数 - Azure Database for MySQL
+title: 配置服务器参数 - Azure CLI - Azure Database for MySQL
 description: 本文介绍如何使用 Azure CLI 命令行实用工具在 Azure Database for MySQL 中配置服务参数。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 07/18/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: 6149f0e4d8acf1430f8f87164ea1c909e662a19f
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 12/05/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: f7c723416edd5536b6836654ddd460381d0af453
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142154"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776736"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
+# <a name="customize-server-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器参数
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/install-azure-cli) 命令行实用工具。
@@ -68,6 +68,9 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 应重启服务器，确保正确填充时区表。 要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

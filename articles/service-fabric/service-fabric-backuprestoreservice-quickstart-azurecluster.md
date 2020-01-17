@@ -1,28 +1,19 @@
 ---
 title: Azure Service Fabric 中的定期备份和还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: hrushib
-ms.assetid: FAA58600-897E-4CEE-9D1C-93FACF98AD1C
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 05/24/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 94b56d1d48c95a272828e7bfa08992f709f7681e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 7892a842cadade2458d00111636467550ae0ca35
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336374"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742447"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric 中的定期备份和还原 
+# <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>在 Azure Service Fabric 群集中定期备份和还原
 > [!div class="op_single_selector"]
 > * [Azure 上的群集](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [独立群集](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -54,7 +45,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 具有 Fabric 6.4 或更高版本的 Service Fabric 群集。 有关使用 Azure 资源模板创建 Service Fabric 群集的步骤，请参阅此[文章](service-fabric-cluster-creation-via-arm.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-cluster-creation-via-arm.md)，了解如何获取或创建 X.509 证书。
 * 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .NET Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。

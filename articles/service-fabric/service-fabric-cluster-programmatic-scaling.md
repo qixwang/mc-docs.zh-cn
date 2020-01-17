@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 编程缩放 | Azure
+title: Azure Service Fabric 编程缩放
 description: 根据自定义触发器以编程方式缩减或扩展 Azure Service Fabric 群集
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 01/23/2018
-ms.date: 07/08/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0411be20261f544f166054da48255b0243f7cb6c
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: ef2b98fb832926921dde542816010f91f3472ca2
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844749"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742345"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 
@@ -130,6 +120,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 - [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-up-down.md)
 - [用于 .NET 的 Fluent Azure 管理库](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)（与 Service Fabric 群集的底层虚拟机规模集交互时非常有用）
-- [System.Fabric.FabricClient](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient?view=azure-dotnet)（与 Service Fabric 群集及其节点交互时非常有用）
+- [System.Fabric.FabricClient](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient?view=azure-dotnet)（与 Service Fabric 群集及其节点交互时非常有用）
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update  -->

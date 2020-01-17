@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的移动应用 - 获取应用的令牌
+title: 获取用于调用 Web API 的令牌（移动应用）| Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成调用 Web API 的移动应用（获取应用的令牌）
 services: active-directory
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778fab144bce62473eebbf68c59ba4efc0cdeb0e
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 8deca9027257a536f8939322a63d6ead0deb774d
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830920"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776952"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>用于调用 Web API 的移动应用 - 获取令牌
 
@@ -46,7 +45,7 @@ let scopes = ["https://microsoftgraph.chinacloudapi.cn/.default"]
 ```
 
 #### <a name="xamarin"></a>Xamarin
-```CSharp 
+```csharp 
 var scopes = new [] {"https://microsoftgraph.chinacloudapi.cn/.default"};
 ```
 
@@ -201,7 +200,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 以下示例演示了如何以少量的代码来以交互方式获取令牌，用于在 Microsoft Graph 中读取用户的个人资料。
 
-```CSharp
+```csharp
 string[] scopes = new string["https://microsoftgraph.chinacloudapi.cn/.default"];
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -244,7 +243,7 @@ catch(MsalUiRequiredException)
 
 此修饰符在高级方案中使用，其中，你希望用户提前许可多个资源（不想要使用增量许可，这种许可通常与 MSAL.NET/Microsoft 标识平台 v2.0 配合使用）。 有关详细信息，请参阅[如何：让用户提前许可多个资源](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();

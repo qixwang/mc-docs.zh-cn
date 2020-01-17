@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 00997a87621c31c0663da311196e6a7d77c9217b
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: dbb596d2e4678d6b1d580af55e4287ebb299666a
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020002"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737915"
 ---
 # <a name="mysql-resource-provider-maintenance-operations-in-azure-stack"></a>Azure Stack 中的 MySQL 资源提供程序维护操作
 
@@ -226,6 +226,32 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 $session | Remove-PSSession
 
 ```
+
+## <a name="configure-azure-diagnostics-extension-for-mysql-resource-provider"></a>为 MySQL 资源提供程序配置 Azure 诊断扩展
+
+默认情况下，在 MySQL 资源提供程序适配器 VM 上安装 Azure 诊断扩展。 以下步骤介绍如何为收集 MySQL 资源提供程序操作事件日志和 IIS 日志自定义扩展，以便用于故障排除和审核。
+
+1. 登录到 Azure Stack Hub 管理员门户。
+
+2. 从左侧窗格中选择“虚拟机”，搜索 MySQL 资源提供程序适配器 VM，然后选择该 VM  。
+
+3. 在 VM 的“诊断设置”中，转到“日志”选项卡，然后选择“自定义”，以自定义要收集的事件日志    。
+   
+   ![转到诊断设置](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
+
+4. 添加 **Microsoft-AzureStack-DatabaseAdapter/Operational!\*** 用于收集 MySQL 资源提供程序操作事件日志。
+
+   ![添加事件日志](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
+
+5. 若要启用 IIS 日志收集，请选中“IIS 日志”和“失败请求日志”   。
+
+   ![添加 IIS 日志](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
+
+6. 最后，选择“保存”以保存所有诊断设置  。
+
+为 MySQL 资源提供程序配置事件日志和 IIS 日志收集后，即可在名为 **mysqladapterdiagaccount** 的系统存储帐户中找到日志。
+
+若要详细了解 Azure 诊断扩展，请参阅[什么是 Azure 诊断扩展](/azure-monitor/platform/diagnostics-extension-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

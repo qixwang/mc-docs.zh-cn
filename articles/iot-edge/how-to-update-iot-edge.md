@@ -5,18 +5,18 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 06/27/2019
-ms.date: 09/09/2019
+origin.date: 11/19/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 90d9aa65410808ae0dea13bd5a729ea3a3d1f285
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: e16fc9180623a1323ce43eaf53cc7bd3a9d8f8f9
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174034"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859734"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -51,7 +51,7 @@ apt-get install libiothsm iotedge
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-运行 Update-IoTEdge 命令会从设备中删除安全守护程序以及两个运行时容器映像。 config.yaml 文件以及 Moby 容器引擎中的数据会保留在设备上（如果使用 Windows 容器）。 保留配置信息意味着，在更新过程中，不需再次为设备提供连接字符串或设备预配服务信息。 
+运行 Update-IoTEdge 命令会从设备中删除并更新安全守护程序以及两个运行时容器映像。 config.yaml 文件以及 Moby 容器引擎中的数据会保留在设备上（如果使用 Windows 容器）。 保留配置信息意味着，在更新过程中，不需再次为设备提供连接字符串或设备预配服务信息。
 
 若要安装特定版本的安全守护程序，请从 [IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)下载相应的 Microsoft-Azure-IoTEdge.cab 文件。 然后，使用 `-OfflineInstallationPath` 参数指向文件位置。 有关详细信息，请参阅[脱机安装](how-to-install-iot-edge-windows.md#offline-installation)。
 
@@ -87,34 +87,25 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 ### <a name="update-a-specific-tag-image"></a>更新特定标记映像
 
-如果在部署中使用特定标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0.7**），则只需更新部署清单中的标记，并将更改应用到设备即可。 
+如果在部署中使用特定标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0.8**），则只需更新部署清单中的标记，并将更改应用到设备即可。
 
-在 Azure 门户中，运行时部署映像在“配置高级 Edge 运行时设置”部分中声明。  
+1. 在 Azure 门户的 IoT 中心，选择 IoT Edge 设备，然后选择“设置模块”  。
 
-![配置高级 Edge 运行时设置](./media/how-to-update-iot-edge/configure-runtime.png)
+1. 在“IoT Edge 模块”部分中，选择“运行时设置”   。
 
-在 JSON 部署清单中，更新 **systemModules** 节中的模块映像。 
+   ![配置运行时设置](./media/how-to-update-iot-edge/configure-runtime.png)
 
-```json
-"systemModules": {
-  "edgeAgent": {
-    "type": "docker",
-    "settings": {
-      "image": "mcr.microsoft.com/azureiotedge-agent:1.0.7",
-      "createOptions": ""
-    }
-  },
-  "edgeHub": {
-    "type": "docker",
-    "status": "running",
-    "restartPolicy": "always",
-    "settings": {
-      "image": "mcr.microsoft.com/azureiotedge-hub:1.0.7",
-      "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}], \"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
-    }
-  }
-},
-```
+1. 在”运行时设置”中，将“Edge 中心”的“映像”值更新为所需的版本    。 暂时不要选择“保存”  。
+
+   ![更新 Edge 中心的映像版本](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
+
+1. 折叠“Edge 中心”设置，或向下滚动，将“Edge 代理”的“映像”值更新为所需的相同版本    。
+
+   ![更新 Edge 中心的代理版本](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
+
+1. 选择“保存”  。
+
+1. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
 
 ## <a name="update-to-a-release-candidate-version"></a>更新到候选发布版本
 

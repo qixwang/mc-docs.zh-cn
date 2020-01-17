@@ -1,26 +1,16 @@
 ---
-title: 将现有可执行文件部署到 Azure Service Fabric | Azure
+title: 将现有可执行文件部署到 Azure Service Fabric
 description: 了解如何将现有应用程序打包为来宾可执行文件，以便部署到 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 origin.date: 07/02/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 26a7c4d4495b60d247698153f751fea9fcc65995
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 7616651b39323073e0e1112111aa92cb51cf56da
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174050"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742355"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
 将现有可执行文件打包为[来宾可执行文件](service-fabric-guest-executables-introduction.md)时，可以选择是使用 Visual Studio 项目模板，还是[手动创建应用程序包](#manually)。 使用 Visual Studio 时，新的项目模板为用户创建应用程序包结构和清单文件。
@@ -84,7 +74,7 @@ Yeoman 创建应用程序包，其中包含相应的应用程序和清单文件�
 Service Fabric 对应用程序根目录下的内容执行了 `xcopy`，因此除创建 code 和 settings 这两个顶级目录以外没有其他任何预定义结构可以使用。 （如有需要可以选取其他名称。 有关详细信息，请参阅下一节内容。）
 
 > [!NOTE]
-> 请务必添加应用程序需要的所有文件和依赖项。 Service Fabric 将复制群集中所有节点上的应用程序包的内容，会在群集中部署应用程序的服务。 包中应该包含应用程序需要运行的所有代码。 不要假定已安装依赖项。
+> 确保包含应用程序需要的所有文件和依赖项。 Service Fabric 将复制群集中所有节点上的应用程序包的内容，会在群集中部署应用程序的服务。 包中应该包含应用程序需要运行的所有代码。 不要假定已安装依赖项。
 >
 >
 
@@ -284,7 +274,7 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 * `InstanceCount = "1"`。 在此情况下，只会在群集中部署一个服务实例。 Service Fabric 的计划程序确定在哪一个节点上部署服务。
 * `InstanceCount ="-1"`。 在此情况下，会在 Service Fabric 群集中的每个节点上部署一个服务实例。 结果是群集中的每个节点上都有一个（且只有一个）服务实例。
 
-这是前端应用程序（不包括 REST 终结点）的有用配置，因为客户端应用程序需要“连接到”群集中的任何节点才能使用该终结点。 此配置也适用于其他应用场景，例如，当 Service Fabric 群集的所有节点都连接负载均衡器时。 然后，客户端流量可以分布于在集群中所有节点上运行的服务。
+这是前端应用程序（不包括 REST 终结点）的有用配置，因为客户端应用程序需要“连接到”群集中的任何节点才能使用该终结点。 例如，当 Service Fabric 群集的所有节点都连接到负载均衡器时，也可以使用此配置。 然后，客户端流量可以分布于在集群中所有节点上运行的服务。
 
 ## <a name="check-your-running-application"></a>检查正在运行的应用程序
 在 Service Fabric Explorer 中，确定服务在其中运行的节点。 在此示例中，它在节点 1 上运行：

@@ -1,32 +1,31 @@
 ---
-title: Azure 安全中心的自适应应用程序控制 | Docs
-description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。
+title: Azure 安全中心的自适应应用程序控制
+description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure 计算机中运行的应用程序加入允许列表。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 05/02/2019
-ms.date: 05/22/2019
+origin.date: 12/23/2019
+ms.date: 1/9/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 1ee9ccde1bed22a36a22050f5818d07391a8382a
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 04c2d75865150f47f9b58629e8cf212b6137ac93
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674834"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858428"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
+# <a name="adaptive-application-controls"></a>自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
-自适应应用程序控制是 Azure 安全中心提供的智能的自动化端到端应用程序允许列表解决方案。 可以通过它来控制哪些应用程序能够在 Azure 和非 Azure VM（Windows 和 Linux）上运行，这样有很多好处，能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习分析在 VM 上运行的应用程序，有助于运用此智能服务应用特定的允许列表规则。 此功能大大简化配置和维护应用程序允许列表策略的过程，让你可以：
+自适应应用程序控制是 Azure 安全中心提供的智能、自动化、端到端的解决方案，有助于控制可在 Azure 和非 Azure 计算机（Windows 和 Linux）上运行的应用程序。 除其他优势外，这种控制还有助于强化计算机抵御恶意软件的侵害。 安全中心使用机器学习来分析计算机上运行的应用程序，并根据此智能创建允许列表。 此功能大大简化了配置和维护应用程序允许列表策略的过程，让你可以：
 
 - 阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
 - 遵循组织要求只能使用许可软件的安全策略。
@@ -36,13 +35,15 @@ ms.locfileid: "71674834"
 - 允许 IT 部门控制用户使用应用来访问敏感数据。
 
 > [!NOTE]
-> 对于非 Azure VM 和 Linux VM，自适应应用程序控制仅在审核模式下受支持。
+> 对于非 Azure 和 Linux 计算机，自适应应用程序控制仅在审核模式下受支持。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>如何启用自适应应用程序控制？
-可以使用自适应应用程序控制来定义一组应用程序，允许这些应用程序在所配置 VM 组上运行。 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux VM 以及服务器。 以下步骤可以用来在安全中心配置应用程序允许列表功能：
+
+可以使用自适应应用程序控制来定义一组应用程序，允许这些应用程序在所配置计算机组上运行。 此功能适用于 Azure 和非 Azure Windows（所有版本，不管是经典部署模型还是 Azure 资源管理器部署模型）和 Linux 计算机。 使用以下步骤配置应用程序允许列表：
 
 1. 打开“安全中心”  仪表板。
-2. 在左窗格的“高级云防御”下选择“自适应应用程序控制”。  
+
+1. 在左窗格的“高级云防御”下选择“自适应应用程序控制”。  
 
     ![防御](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
@@ -62,7 +63,8 @@ ms.locfileid: "71674834"
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>配置新的应用程序控制策略
-1. 单击“已建议”  选项卡会出现一个列表，其中列出了具有应用程序控制建议的组：
+
+1. 选择“已建议”选项卡会出现一个列表，其中列出了具有应用程序控制建议的组  ：
 
    ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
@@ -108,7 +110,7 @@ ms.locfileid: "71674834"
 
    - **组名称**：订阅和组的名称
    - **VM 和计算机数**：组中虚拟机的数目
-   - **模式**：“审核”模式将记录运行未加入允许列表的应用程序的尝试；“强制”模式将阻止未加入允许列表的应用程序运行
+   - **模式**：“审核”模式将记录要运行不在允许列表中的应用程序的尝试；“强制”模式将禁止运行应用程序，除非它们在允许列表中
    - **警报**：任何当前的冲突
 
 2. 单击一个组，可在“编辑应用程序控制策略”页中进行更改  。
@@ -125,7 +127,7 @@ ms.locfileid: "71674834"
    > - 如前所述，默认情况下，新的应用程序控制策略始终在“审核”模式下配置。  
    >
 
-4. 可以在“策略扩展”下添加需要允许的任何应用程序路径  。 添加这些路径后，除了已有的规则之外，安全中心还会更新所选 VMS 组中 VM 上的应用程序允许列表策略，并为这些应用程序创建适当的规则。
+4. 可以在“策略扩展”下添加需要允许的任何应用程序路径  。 添加这些路径后，除了已有的规则，安全中心还会更新所选 VMS 组中 VM 上的应用程序允许列表策略，并为这些应用程序创建适当的规则。
 
 5. 查看“最近警报”部分中列出的当前冲突  。 单击要重定向到 Azure 安全中心内“警报”页面的每一行，并查看 Azure 安全中心在关联的 VM 上检测到的所有警报  。
    - **警报**：已记录的任何冲突。

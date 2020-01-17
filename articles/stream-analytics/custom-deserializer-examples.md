@@ -1,25 +1,24 @@
 ---
-title: 对 Azure 流分析作业使用 .NET 反序列化程序
+title: 在 Azure 流分析中使用 .NET 自定义反序列化程序读取任何格式的输入
 description: 本文解释序列化格式，以及用来为 Azure 流分析云和边缘作业定义自定义 .NET 反序列化程序的接口。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 2614b292a237bd6df418e1672d1c47b9279e6492
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: cbf8ebb1554344aeb1a01760b22398b7919be36c
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982173"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858429"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>对 Azure 流分析作业使用 .NET 反序列化程序
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
 
 Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取不是采用三种[内置数据格式](stream-analytics-parsing-json.md)的数据。 本文解释序列化格式，以及用来为 Azure 流分析云和边缘作业定义自定义 .NET 反序列化程序的接口。 此外，还提供了协议缓冲区和 CSV 格式的示例反序列化程序。
 
-## <a name="custom-net-deserializer"></a>自定义 .NET 反序列化程序
+## <a name="net-custom-deserializer"></a>自定义的 .NET 反序列化程序
 
 以下代码示例是用于定义自定义反序列化程序并实现 `StreamDeserializer<T>` 的接口。
 

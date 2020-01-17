@@ -1,5 +1,5 @@
 ---
-title: 应用中支持的帐户（受众） - Microsoft 标识平台
+title: 支持的帐户类型 - Microsoft 标识平台 | Azure
 description: 有关受众的概念文档以及应用程序中受支持的帐户类型
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 11/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b88222176ddb0a14252356e5cb87ede790948e
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: e5679de016735854cefd8fdfce3ca5b43761b24d
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655394"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777024"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
-本文介绍了应用程序支持的帐户类型（有时称为受众）
+本文介绍了应用程序支持的帐户类型（有时称为受众）。
 
 <!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
 
@@ -49,6 +48,7 @@ ms.locfileid: "74655394"
 
 - 守护程序应用程序只能与 Azure Active Directory 组织配合使用。 
 - 只能将集成身份验证流与工作或学校帐户配合使用（在你的组织或任何组织中均可）。 实际上，集成 Windows 身份验证适用于域帐户，并且需要将计算机加入域或加入 Azure AD。 
+- [资源所有者密码授予](./v2-oauth-ropc.md)（用户名/密码）
 
 ## <a name="supported-account-types-in-national-clouds"></a>国家/地区云支持的帐户类型
 

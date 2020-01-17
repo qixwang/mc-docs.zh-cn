@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 02/02/2016
-ms.date: 11/25/2019
+origin.date: 02/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 50af35d2f4135c73c084f054089e9eb673092746
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 37964c52e977f7e0db4a29dd4309037b79196101
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658035"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859213"
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>使用 PowerShell 创建网络安全组（经典）
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
@@ -66,7 +66,13 @@ ms.locfileid: "74658035"
       -SourceAddressPrefix Internet  -SourcePortRange '*' `
       -DestinationAddressPrefix '*' -DestinationPortRange '80'
     ```
+5. 将网络安全组与子网相关联：
 
+    ```powershell   
+    Get-AzureNetworkSecurityGroup -Name "NSG-Frontend" `
+    | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName "TestVNet" `
+    -Subnet "FrontEnd"
+    ```
 ## <a name="create-an-nsg-for-the-back-end-subnet"></a>为后端子网创建 NSG
 
 1. 创建一个名为 *NSG-BackEnd* 的网络安全组：
@@ -95,5 +101,11 @@ ms.locfileid: "74658035"
       -SourceAddressPrefix '*'  -SourcePortRange '*' `
       -DestinationAddressPrefix Internet -DestinationPortRange '*'
    ```
+4. 将网络安全组与子网相关联：
+    ```powershell   
+    Get-AzureNetworkSecurityGroup -Name "NSG-Backend" `
+    | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName "TestVNet" `
+    -Subnet "BackEnd"
+    ```
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

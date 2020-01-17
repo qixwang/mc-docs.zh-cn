@@ -1,26 +1,17 @@
 ---
-title: 均衡 Azure Service Fabric 群集 | Azure
+title: 均衡 Azure Service Fabric 群集
 description: 介绍如何使用 Azure Service Fabric 群集 Resource Manager 平衡群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 08/05/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 14c525759810655517fcd8b0097ea987dbd2f28c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 5aa172c852d79dd875e57dd32ffe2ba0057e26a5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914386"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742337"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
 Service Fabric 群集资源管理器支持动态负载更改、对添加或删除节点或服务做出反应。 还会自动更正约束冲突和主动重新均衡群集。 但这些操作的执行频率是多少，又是什么触发了这些操作？
@@ -89,7 +80,7 @@ ClusterManifest.xml：
 群集 Resource Manager 还需要一些其他信息来确定群集是否不均衡。 为此，我们还提供了另外两个配置：*BalancingThresholds* 和 *ActivityThresholds*。
 
 ## <a name="balancing-thresholds"></a>均衡阈值
-均衡阈值是触发重新均衡的主要控件。 指标的均衡阈值是一个比率  。 如果负载最重的节点上某个指标的负载除以负载最轻的节点的负载量超过指标的 *BalancingThreshold*，群集是不均衡的。 因此群集 Resource Manager 进行下一次检查时将触发均衡。 *MinLoadBalancingInterval* 计时器定义群集资源管理器应检查是否需要重新均衡的频率。 检查并不代表发生任何事件。 
+均衡阈值是触发重新均衡的主要控件。 指标的均衡阈值是一个_比率_。 如果负载最重的节点上某个指标的负载除以负载最轻的节点的负载量超过指标的 *BalancingThreshold*，群集是不均衡的。 因此群集 Resource Manager 进行下一次检查时将触发均衡。 *MinLoadBalancingInterval* 计时器定义群集资源管理器应检查是否需要重新均衡的频率。 检查并不代表发生任何事件。 
 
 均衡阈值根据每个指标定义为群集定义的一部分。 有关指标的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-metrics.md)。
 

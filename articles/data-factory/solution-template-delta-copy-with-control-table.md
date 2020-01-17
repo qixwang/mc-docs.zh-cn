@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中使用控制表从数据库执行增量复制 | Microsoft Docs
+title: 使用控制表从数据库执行增量复制
 description: 了解如何使用解决方案模板通过 Azure 数据工厂仅从数据库中逐步复制新行或更新后的行。
 services: data-factory
 documentationcenter: ''
@@ -9,17 +9,16 @@ ms.reviewer: douglasl
 manager: digimobile
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 12/24/2018
-ms.date: 07/08/2019
-ms.openlocfilehash: 9ac69c51c491e234816d18d7bc8fcdc030cb1343
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: 80052b04542a56b370dbf6726a8e4623aeb8005e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570232"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623912"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
 
@@ -40,10 +39,13 @@ ms.locfileid: "67570232"
 - **Copy** 仅将源数据库中的更改复制到目标存储。 用于在源数据库中识别更改的查询类似于 'SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > “last high-watermark” 和 TIMESTAMP_Column <= “current high-watermark”'。
 - **SqlServerStoredProcedure** 活动将当前高水印值写入外部控制表，以便下次进行增量复制。
 
-模板定义了五个参数：
+模板定义以下参数：
 - *Data_Source_Table_Name* 是源数据库中的要从中加载数据的表。
 - *Data_Source_WaterMarkColumn* 是源表中的用于识别新行或已更新行的列名。 此列的类型通常为 *datetime*、*INT* 等。
-- *Data_Destination_Folder_Path* 或 *Data_Destination_Table_Name* 是目标存储中要将数据复制到的位置。
+- *Data_Destination_Container* 是在目标存储中将数据复制到的位置的根路径。
+- *Data_Destination_Directory* 是在目标存储中将数据复制到的位置的根下的目录路径。
+- *Data_Destination_Table_Name* 是目标存储中要将数据复制到的位置（在选择“Azure Synapse Analytics (以前称为 SQL DW)”作为“数据目标”时适用）。
+- *Data_Destination_Folder_Path* 是目标存储中要将数据复制到的位置（在选择“文件系统”作为“数据目标”时适用）。
 - *Control_Table_Table_Name* 是用于存储高水印值的外部控制表。
 - *Control_Table_Table_Name* 是外部控制表中要将高水印值存储到的列。
 
@@ -102,20 +104,18 @@ ms.locfileid: "67570232"
     ![创建与控件表数据存储的新连接](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
 7. 选择“使用此模板”  。
-
-     ![使用此模板](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. 你将看到可用的管道，如以下示例所示：
+  
+    ![查看管道](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-     ![查看管道](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+9. 选择“存储过程”。  对于“存储过程名称”，请选择“[dbo].[update_watermark]”。   依次选择“导入参数”、“添加动态内容”。    
 
-9. 选择“存储过程”。  对于“存储过程名称”，请选择“[update_watermark]”。   依次选择“导入参数”、“添加动态内容”。    
-
-     ![设置存储过程活动](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
+    ![设置存储过程活动](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
 10. 写入内容 **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** ，然后选择“完成”。   
 
-     ![写入存储过程参数的内容](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+    ![写入存储过程参数的内容](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
 11. 选择“调试”，输入**参数**，然后选择“完成”。  
 
@@ -134,13 +134,12 @@ ms.locfileid: "67570232"
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
+
 14. 若要再次运行管道，请选择“调试”，输入**参数**，然后选择“完成”。  
 
-    ![选择“调试”](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    你会看到，只有新行已复制到目标。
 
-    你将看到，只有新行已复制到目标。
-
-15. （可选：）如果选择 SQL 数据仓库作为数据目标，则还必须提供用作暂存位置的 Azure Blob 存储的连接，SQL 数据仓库 Polybase 要求这样做。 确保已在 Blob 存储中创建容器。
+15. （可选：）如果选择“Azure Synapse Analytics（以前为 SQL DW）”作为数据目标，则还需按 SQL 数据仓库 Polybase 的要求，提供用于暂存的 Azure Blob 存储的连接。 模板会为你生成容器路径。 管道运行后，检查是否已在 Blob 存储中创建容器。
     
     ![配置 PolyBase](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

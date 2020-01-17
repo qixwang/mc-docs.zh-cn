@@ -1,18 +1,19 @@
 ---
 title: 用于渲染的存储和数据移动选项 - Azure Batch
-description: 用于渲染工作负荷的存储和数据移动选项
+description: 了解用于渲染资产和输出文件工作负载的多种存储与数据移动选项。
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: v-lingwu
 origin.date: 08/02/2019
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5b61ea2aa4ab96a78db4417559618590f5f03005
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b503ac4efe4e87755f420690659584b631a9fa13
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838992"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857994"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
 
@@ -130,6 +131,6 @@ Blobfuse 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用�
 
 有关存储选项的详细信息，请参阅深度文档：
 
-- [Azure Blob 存储](/storage/blobs/storage-blobs-introduction)
+- [Azure blob 存储](/storage/blobs/storage-blobs-introduction)
 - [Azure 文件](/storage/files/storage-files-introduction)
 

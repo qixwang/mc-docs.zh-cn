@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI- sfctl is | Azure
+title: Azure Service Fabric CLI- sfctl is
 description: 介绍 Service Fabric CLI sfctl is 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: de7d920f5b5d7b2ba6df2ecd404ec54b656db4eb
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 7c72e68f9bff7dd97c00ed04bd4f18cbcc4262e8
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254724"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742223"
 ---
 # <a name="sfctl-is"></a>sfctl is
 查询并向基础结构服务发送命令。
@@ -42,17 +34,17 @@ ms.locfileid: "70254724"
 | --- | --- |
 | --command [必需] | 将调用的命令文本。 命令内容特定于基础结构。 |
 | --service-id | 基础结构服务标识。 <br /><br /> 这是不包含“fabric\:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-is-query"></a>sfctl is query
 针对给定基础结构服务实例调用只读查询。
@@ -65,17 +57,17 @@ ms.locfileid: "70254724"
 | --- | --- |
 | --command [必需] | 将调用的命令文本。 命令内容特定于基础结构。 |
 | --service-id | 基础结构服务标识。 <br /><br /> 这是不包含“fabric\:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

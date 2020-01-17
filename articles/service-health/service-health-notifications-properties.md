@@ -5,16 +5,16 @@ author: dkamstra
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-origin.date: 4/12/2018
-ms.date: 08/05/2019
+origin.date: 04/12/2018
+ms.date: 01/20/2020
 ms.author: v-yiso
 ms.subservice: logs
-ms.openlocfilehash: 9a57860654d6f718998f9081aca236a52140b4eb
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: ff9ba4444367ef5877adca12b8dec1445782c419
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514532"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859708"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -23,7 +23,6 @@ ms.locfileid: "68514532"
 服务运行状况通知有多类：  
 
 - **所需操作：** 当你的帐户发生异常情况时，Azure 可能会发出通知，并配合你解决相关问题。 Azure 会向用户发送通知，其中或详细列出需要执行的操作，或详细说明如何联系 Azure 工程或支持人员。  
-- **辅助恢复：** 事件已发生，且工程师确认用户仍受事件影响。 Azure 工程人员需与用户协同解决问题，让服务完全恢复正常。  
 - **事件：** 某个影响服务的事件当前正在影响订阅中的一个或多个资源。  
 - **维护：** 某个可能会影响订阅中的一个或多个资源的计划内维护活动。  
 - **信息：** 可能实现的优化，可帮助改善资源使用情况。 
@@ -37,14 +36,14 @@ channels | 以下值之一：**Admin** 或 **Operation**。
 correlationId | 通常为字符串格式的 GUID。 属于同一操作的事件通常共享相同的 correlationId。
 eventDataId | 事件的唯一标识符。
 eventName | 事件的标题。
-级别 | 事件的级别
+level | 事件的级别
 resourceProviderName | 受影响资源的资源提供程序的名称。
 resourceType| 受影响资源的资源类型。
-subStatus | 通常为响应 REST 调用的 HTTP 状态码，但还可以包含其他用于描述子状态的字符串。 例如：正常(HTTP 状态代码:200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)。
+subStatus | 通常为响应 REST 调用的 HTTP 状态码，但还可以包含其他用于描述子状态的字符串。 例如：OK（HTTP 状态代码：200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503)”和“网关超时(HTTP 状态代码: 504）。
 eventTimestamp | 处理与事件对应的请求的 Azure 服务生成事件时的时间戳。
 submissionTimestamp | 事件可供查询的时间戳。
 subscriptionId | 记录此事件的 Azure 订阅。
-状态 | 描述操作状态的字符串。 一些常见值如下：**Started**、**In Progress**、**Succeeded**、**Failed**、**Active** 和 **Resolved**。
+状态 | 描述操作状态的字符串。 部分常用值包括：**Started**、**In Progress**、**Succeeded**、**Failed**、**Active** 和 **Resolved**。
 operationName | 操作的名称。
 category | 此属性始终为 ServiceHealth  。
 ResourceId | 受影响的资源的资源 ID。
@@ -55,13 +54,13 @@ Properties.trackingId | 与此事件关联的事件。 使用此属性将与某�
 Properties.impactedServices | 转义 JSON blob，描述受事件影响的服务和区域。 属性包括服务列表，每个服务具有一个 ServiceName，以及一个 受影响区域的列表，其中每个区域具有一个 RegionName   。
 Properties.defaultLanguageTitle | 英语通信。
 Properties.defaultLanguageContent | HTML 标记或纯文本格式的英语通信。
-Properties.stage | **Incident** 和 **Security** 的可能值为 **Active**、**Resolved** 或 **RCA**。 对于 ActionRequired 或 Informational，唯一的值为 Active    。 对于 **Maintenance**，可能的值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
+Properties.stage | Incident 和 Security 的可能值为 Active、Resolved 或 RCA      。 对于 ActionRequired 或 Informational，唯一的值为 Active    。 对于 **Maintenance**，可能的值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
 Properties.communicationId | 与此事件关联的通信。
 
 ### <a name="details-on-service-health-level-information"></a>服务运行状况级别信息的详细信息
 
 **需要采取操作** (properties.incidentType == ActionRequired)
-- 信息 - 需要管理员采取操作来防止影响现有服务
+- 信息 - 需要管理员采取操作来防止影响现有服务。
     
 **维护** (properties.incidentType == Maintenance)
 - 警告 - 紧急维护
@@ -71,9 +70,8 @@ Properties.communicationId | 与此事件关联的通信。
 - 信息 - 可能需要管理员采取操作来防止影响现有服务
 
 **安全性** (properties.incidentType == Security)
-- 错误 - 访问多个区域中多项服务时普遍出现的问题影响大批客户。
-- 警告 - 访问特定服务和/或特定区域时出现的问题影响一部分客户。
-- 信息 - 出现了影响管理操作和/或延迟，但不影响服务可用性的问题。
+- 警告 - 影响现有服务并可能需要管理员采取行动的安全警告。
+- 信息 - 影响现有服务的安全公告。
 
 **服务问题** (properties.incidentType == Incident)
 - 错误 - 访问多个区域中多项服务时普遍出现的问题影响大批客户。

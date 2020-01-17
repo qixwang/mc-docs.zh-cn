@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ef23a7263d4592ee75fd8a5dfdd1f5f593f335c
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 27b0e07f6e43e37144996202fd5aabf2814b0f10
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389020"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859878"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -23,10 +23,9 @@ ms.locfileid: "74389020"
 
 本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
-* 不要在同一子网中创建多个 AKS 群集。
 * AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24`。
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
     * `Microsoft.Network/virtualNetworks/subnets/join/action`
@@ -142,10 +141,10 @@ az aks create \
     --docker-bridge-address 172.17.0.1/16 \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 \
-    --generate-ssh-keys \
-    --vm-set-type AvailabilitySet
+    --generate-ssh-keys
 ```
 
+<!--MOONCAKE: --vm-set-type AvailabilitySet -->
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 ## <a name="configure-networking---portal"></a>配置网络 - 门户

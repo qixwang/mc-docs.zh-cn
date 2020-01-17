@@ -1,5 +1,6 @@
 ---
-title: Azure AD v2.0 ASP.NET Web 服务器入门 | Microsoft Docs
+title: 向 Microsoft 标识平台 ASP.NET Web 应用添加登录功能
+titleSuffix: Microsoft identity platform
 description: 使用基于传统 Web 浏览器的应用程序和 OpenID Connect 标准，在 ASP.NET 解决方案中实现 Microsoft 登录
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,21 +13,22 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 08/28/2019
-ms.date: 10/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ed39dbf16c69381c5ad99deee99138eec750d8
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: 3783a0bd6ea600610dad6a0509f428ebc7f3a7cb
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292051"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777034"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
 本指南演示如何使用基于传统 Web 浏览器的应用程序和 OpenID Connect，通过 ASP.NET MVC 解决方案实现 Microsoft 登录。
+
+完成本指南的操作后，应用程序能够接受通过任何公司或组织的工作和学校帐户登录。
 
 > 本指南需要 Microsoft Visual Studio 2019。  尚未安装？  [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 
@@ -104,7 +106,7 @@ ms.locfileid: "72292051"
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -113,7 +115,7 @@ ms.locfileid: "72292051"
         // Tenant is the tenant ID (e.g. contoso.partner.onmschina.cn, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -173,7 +175,7 @@ ms.locfileid: "72292051"
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>详细信息
-> 在 *OpenIDConnectAuthenticationOptions* 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。 OpenID Connect 中间件会在后台使用 Cookie，因此，还必须设置 Cookie 身份验证，如以上代码所示。 *ValidateIssuer* 值告知 OpenIdConnect 不要限制某个特定组织的访问权限。
+> OpenIDConnectAuthenticationOptions  中提供的参数充当应用程序与 Microsoft 标识平台通信的坐标。 OpenID Connect 中间件会在后台使用 Cookie，因此，还必须设置 Cookie 身份验证，如以上代码所示。 *ValidateIssuer* 值告知 OpenIdConnect 不要限制某个特定组织的访问权限。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加控制器来处理登录和注销请求
@@ -182,7 +184,7 @@ ms.locfileid: "72292051"
 
 1.  右键单击“控制器”文件夹，并选择“添加” > “控制器”。   
 2.  选择“MVC (.NET 版本)控制器 - 空”  。
-3.  选择“设置”  （应用程序对象和服务主体对象）。
+3.  选择“添加”   。
 4.  将其命名为 **HomeController**，然后选择“添加”。 
 5.  向该类添加 OWIN 引用：
 
@@ -268,7 +270,7 @@ ms.locfileid: "72292051"
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>详细信息
-> 此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](./media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](/active-directory/develop/active-directory-branding-guidelines "B品牌准则)。
+> 此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](./media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](/active-directory/develop/active-directory-branding-guidelines "品牌准则")。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
@@ -276,7 +278,7 @@ ms.locfileid: "72292051"
 
 1. 右键单击“控制器”文件夹，并选择“添加” > “控制器”。   
 2. 选择“MVC {version} 控制器 - 空”  。
-3. 选择“设置”  （应用程序对象和服务主体对象）。
+3. 选择“添加”   。
 4. 将其命名为“ClaimsController”  。
 5. 将控制器类的代码替换为以下代码。 这会将 `[Authorize]` 属性添加到该类：
 
@@ -377,7 +379,7 @@ ms.locfileid: "72292051"
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
 1. 选择“新注册”。 
-1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
    1. 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 **ASPNET-Tutorial**。
    1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“回复 URL”中，然后选择“注册”。  
 1. 选择“身份验证”菜单，在“隐式授权”下选择“ID 令牌”，然后选择“保存”。    
@@ -405,7 +407,7 @@ ms.locfileid: "72292051"
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
->  与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户对 Azure AD 进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页： 
+>  与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户向 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页： 
 >  > - 应用程序开发人员添加了任何需要“管理员许可”的附加权限。 
 >  > - 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。 
 >
@@ -424,14 +426,14 @@ ms.locfileid: "72292051"
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|属性 |值 |说明 |
+|属性 |Value |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
 |**主题** |使用者 |唯一标识 Web 上用户的字符串|
 |**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 **guid**|
 
-此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [Azure AD ID 令牌中的声明列表](/active-directory/develop/active-directory-token-and-claims)。
+此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [ID 令牌中的声明列表](/active-directory/develop/active-directory-token-and-claims)。
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>测试对具有 Authorize 属性的方法的访问（可选）
 
@@ -457,7 +459,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>限制谁可以登录到应用程序
 
-默认情况下，当生成本指南创建的应用程序时，应用程序会接受使用与 Azure AD 集成的任何公司或组织的工作和学校帐户进行登录。 这是针对 SaaS 应用程序推荐使用的选项。
+默认情况下，当生成本指南创建的应用程序时，应用程序会接受使用与 Microsoft 标识平台集成的任何公司或组织的工作和学校帐户进行登录。 这是针对 SaaS 应用程序推荐使用的选项。
 
 为了限制应用程序的用户登录访问权限，提供了以下多个选项。
 

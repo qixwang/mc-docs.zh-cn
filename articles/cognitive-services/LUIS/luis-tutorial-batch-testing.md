@@ -9,31 +9,31 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-origin.date: 10/14/2019
-ms.date: 12/04/2019
+origin.date: 12/19/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c0b02eaa4b6eaff25ac323131c2cf4a7b62b8139
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 923d765e10f3bad4a5fc59863a912c84c61873b2
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884960"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857477"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集
 
-本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。  
+本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。
 
-批测试允许使用一组已知的已标记话语和实体来验证活动的定型模型的状态。 在 JSON 格式的批处理文件中，添加话语并设置要在话语中预测的所需实体标签。 
+批测试允许使用一组已知的已标记话语和实体来验证活动的定型模型的状态。 在 JSON 格式的批处理文件中，添加话语并设置要在话语中预测的所需实体标签。
 
 批处理测试的要求：
 
-* 每个测试的最大话语量为 1000 个。 
-* 没有重复项。 
+* 每个测试的最大话语量为 1000 个。
+* 没有重复项。
 * 允许的实体类型：仅简单和复合的机器学习实体。 批处理测试仅适用于机器学习意向和实体。
 
-使用本教程以外的应用时，请不要使用已经添加到意向的示例话语  。 
+使用本教程以外的应用时，请不要使用已经添加到意向的示例话语  。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 
 **本教程介绍如何执行下列操作：**
 
@@ -94,15 +94,16 @@ ms.locfileid: "74884960"
 
 ## <a name="run-the-batch"></a>运行批处理
 
-1. 选择顶部导航栏的“测试”  。 
+1. 选择顶部导航栏的“测试”  。
 
-2. 选择右侧面板中的“批处理测试面板”  。 
+2. 选择右侧面板中的“批处理测试面板”  。
 
     [![LUIS 应用的屏幕截图，其中突出显示了“批处理测试面板”](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
 3. 选择“导入数据集”  。
 
-    [![LUIS 应用的屏幕截图，其中突出显示了“导入数据集”](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![LUIS 应用的屏幕截图，其中突出显示了“导入数据集”](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)
 
 4. 选择 `HumanResources-jobs-batch.json` 文件的文件位置。
 
@@ -110,7 +111,7 @@ ms.locfileid: "74884960"
 
     ![选择文件](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. 选择“运行”按钮。  
+6. 选择“运行”按钮。 
 
 7. 选择“查看结果”  。
 

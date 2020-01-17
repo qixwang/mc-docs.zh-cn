@@ -4,17 +4,17 @@ description: 如何将下游或叶设备连接到 Azure IoT Edge 网关设备。
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 10/08/2019
-ms.date: 11/04/2019
+origin.date: 12/08/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b6e457e660a00ef8969f56c9aa3899b756941741
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 79e65e277e949aed87ec07b1515fd8ab41b66b29
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389237"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859589"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -24,7 +24,7 @@ ms.locfileid: "74389237"
 
 1. 网关设备需要安全连接到下游设备，从下游设备接收通信，并将消息路由到正确的目标。 有关详细信息，请参阅[将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)。
 2. 下游设备需有一个设备标识，才能在 IoT 中心进行身份验证并知道要通过其网关设备进行通信。 有关详细信息，请参阅[在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)。
-3. **下游设备需要能够安全连接到其网关设备。**
+3. 下游设备需安全连接到其网关设备  。
 
 本文列出了下游设备的常见连接问题，并引导你设置下游设备。具体内容包括： 
 
@@ -34,9 +34,10 @@ ms.locfileid: "74389237"
 
 在本文中，术语“网关”和“IoT Edge 网关”是指配置为透明网关的 IoT Edge 设备。   
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
-让在[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)中生成的 **azure-iot-test-only.root.ca.cert.pem** 证书文件可用于下游设备。 下游设备使用此证书来验证网关设备的标识。 
+* 让在[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)中生成的 **azure-iot-test-only.root.ca.cert.pem** 证书文件可用于下游设备。 下游设备使用此证书来验证网关设备的标识。 
+* 具有指向网关设备的已修改连接字符串，如[在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)中所述。
 
 ## <a name="prepare-a-downstream-device"></a>准备下游设备
 
@@ -195,7 +196,7 @@ var options = {
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
 
-此命令通过 MQTTS（端口 8883）测试连接。 如果使用其他协议，请根据需要针对 AMQPS (5671) 或 HTTPS (433) 调整该命令。
+此命令通过 MQTTS（端口 8883）测试连接。 如果使用其他协议，请根据需要针对 AMQPS (5671) 或 HTTPS (433) 调整该命令
 
 此命令的输出可能很长，其中包括有关链中所有证书的信息。 如果连接成功，将看到类似于 `Verification: OK` 或 `Verify return code: 0 (ok)` 的行。
 

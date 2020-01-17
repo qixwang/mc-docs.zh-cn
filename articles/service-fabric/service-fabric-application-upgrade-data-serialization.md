@@ -1,26 +1,17 @@
 ---
-title: 应用程序升级：数据序列化 | Azure
+title: 应用程序升级：数据序列化
 description: 介绍有关数据序列化的最佳实践，以及数据序列化如何影响应用程序滚动升级。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 05/28/2018
 ms.author: v-yeche
-ms.openlocfilehash: 67d75e74e015f24f4a35f9f9d1138989333a54f4
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.date: 01/06/2020
+ms.openlocfilehash: 5f220dcf298453394f8865a06b55fa05700770f7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52662633"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742466"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>数据序列化如何影响应用程序升级
 在[应用程序滚动升级](service-fabric-application-upgrade.md)过程中，升级应用于部分节点，一次一个升级域。 在此过程中，一些升级域位于较新版本的应用程序上，而一些升级域位于较旧版本的应用程序上。 在滚动更新期间，新版本的应用程序必须能够读取旧版本的数据，并且旧版本的应用程序必须能够读取新版本的数据。 如果数据格式不向前和向后兼容，则升级可能会失败（或更糟），甚至可能丢失数据。 本文介绍数据格式的构成，并提供确保数据向前和向后兼容的最佳实践。
@@ -55,7 +46,7 @@ ms.locfileid: "52662633"
 数据协定是为确保数据兼容所建议的解决方案。 它具有定义完善的版本控制规则，可用于添加、删除和更改字段。 它还支持处理未知字段、挂接到序列化和反序列化过程以及类继承。 有关详细信息，请参阅 [使用数据协定](https://msdn.microsoft.com/library/ms733127.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) （使用 Visual Studio 升级应用程序）逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
 [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
@@ -63,6 +54,6 @@ ms.locfileid: "52662633"
 
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
-参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
+参考 [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md)（对应用程序升级进行故障排除）中的步骤来解决应用程序升级时的常见问题。
 
 <!--Update_Description: update meta properties -->

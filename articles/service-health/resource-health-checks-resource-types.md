@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 origin.date: 01/29/2019
 ms.author: v-yiso
-ms.date: 08/05/2019
-ms.openlocfilehash: 7b1cd08a475233dc4ca5d346c88bb2ecadd490a7
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.date: 01/20/2020
+ms.openlocfilehash: 7c80f432f97b52420443afbed738390fe69880bc
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514151"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859540"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -34,6 +34,11 @@ ms.locfileid: "68514151"
 |执行的检查|
 |---|
 |<ul><li>API 管理服务是否已启动并运行？</li></ul>|
+
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+|执行的检查|
+|---|
+|<ul><li>Batch 帐户是否已启动并正在运行？</li><li>此 Batch 帐户是否超出了池配额？</li></ul>|
 
 ## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
 |执行的检查|
@@ -107,6 +112,16 @@ ms.locfileid: "68514151"
 |---|
 |<ul><li>向 Key Vault 发出的请求是否因 Azure KeyVault 平台问题而失败？</li><li>向 Key Vault 发出的请求是否因客户发出的请求过多而受限制？</li></ul>|
 
+## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
+|执行的检查|
+|---|
+|<ul><li>Web 服务是否已启动并正在运行？</li></ul>|
+
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
+|执行的检查|
+|---|
+|<ul><li>媒体服务是否已启动并正在运行？</li></ul>|
+
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |执行的检查|
 |---|
@@ -126,6 +141,11 @@ ms.locfileid: "68514151"
 |执行的检查|
 |---|
 |<ul><li>Front Door 后端是否以错误向运行状况探测做出响应？</li><li>配置更改是否延迟了？</li></ul>|
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
+|执行的检查|
+|---|
+|<ul><li>负载均衡终结点是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |执行的检查|
@@ -162,7 +182,12 @@ ms.locfileid: "68514151"
 |---|
 |<ul><li>客户是否遇到用户生成的服务总线错误？</li><li>用户是否遇到由于服务总线命名空间升级导致的暂时性错误增加？</li></ul>|
 
-## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
+|执行的检查|
+|---|
+|<ul><li>数据库是否已启动并正在运行？</li></ul>|
+
+## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
 |执行的检查|
 |---|
 |<ul><li> 是否存在到数据库的登录？</li></ul>|

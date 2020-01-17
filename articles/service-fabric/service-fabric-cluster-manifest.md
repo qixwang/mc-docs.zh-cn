@@ -1,26 +1,17 @@
 ---
-title: 配置 Azure Service Fabric 独立群集 | Azure
+title: 配置 Azure Service Fabric 独立群集
 description: 了解如何配置独立的或本地 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/12/2018
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b1ce58ac37ff84fe9545bcfd89c2a5eda51a4963
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 711b4bf4b226b31aecb1c29c6e5629489146539b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335201"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742348"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
 本文介绍可使用 ClusterConfig.json  文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -72,7 +63,7 @@ ms.locfileid: "75335201"
         "faultDomain": "fd:/dc1/r2",
         "upgradeDomain": "UD2"
     }
-]
+],
 ```
 
 一个 Service Fabric 群集必须至少包含三个节点。 可以根据设置向此节添加更多节点。 下表说明了每个节点的配置设置：

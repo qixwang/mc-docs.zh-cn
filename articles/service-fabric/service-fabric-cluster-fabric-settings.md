@@ -1,26 +1,16 @@
 ---
-title: 更改 Azure Service Fabric 设置 | Azure
+title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/30/2019
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 5cfe634256867b79a8f2942aa3c595728c72f44c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 6e1d2b0fd4014eea06b49bb534d80edf51b9c64f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335202"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742347"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板自定义设置。 对于独立群集，可通过更新 ClusterConfig.json  文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -105,7 +95,7 @@ ms.locfileid: "75335202"
 |UpgradeHealthCheckInterval |以秒为单位的时间，默认值为 60 |动态|受监视应用程序升级期间的运行状况检查频率 |
 |UpgradeStatusPollInterval |以秒为单位的时间，默认值为 60 |动态|轮询应用程序升级状态的频率。 此值确定任何 GetApplicationUpgradeProgress 调用的更新速率 |
 
-## <a name="common"></a>常见
+## <a name="common"></a>通用
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |

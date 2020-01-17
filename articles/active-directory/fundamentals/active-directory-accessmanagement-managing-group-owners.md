@@ -2,23 +2,22 @@
 title: 添加或删除组所有者 - Azure Active Directory | Microsoft Docs
 description: 有关如何使用 Azure Active Directory 添加或删除组所有者的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-origin.date: 09/11/2018
-ms.date: 07/04/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e8001eb1b6cd98c2b9f4ec4df698c39af54eea2
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: 164c5969ab1734ea5218e428e24d9d3bd360b74c
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568652"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777025"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中添加或删除组所有者
 Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有者可以是用户或服务主体，并且能够管理组（包括成员身份）。 只有现有的组所有者或组管理管理员才能分配组所有者。 组所有者并非必须是组的成员。
@@ -31,7 +30,7 @@ Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有
 ### <a name="to-add-a-group-owner"></a>添加组所有者
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.cn)。
 
-2. 依次选择“Azure Active Directory”、“组”以及要添加所有者的组（例如此示例为“MDM 策略 - 西部”）    。
+2. 选择“Azure Active Directory”  ，选择“组”  ，然后选择要为其添加所有者的组（在本例中为“MDM 策略 - 西部”  ）。
 
 3. 在“MDM 策略 - 西部概述”页面上选择“所有者”。  
 
@@ -63,6 +62,8 @@ Azure Active Directory (Azure AD) 组由组所有者拥有和管理。 组所有
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
+
+- [用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-cmdlets.md)
 
 - [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)
 

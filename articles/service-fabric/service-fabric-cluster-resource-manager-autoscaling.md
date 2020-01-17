@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric 自动缩放服务和容器 | Azure
+title: Azure Service Fabric 自动缩放服务和容器
 description: 通过 Azure Service Fabric，可设置服务和容器的自动缩放策略。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 04/17/2018
-ms.date: 12/10/2018
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3bd0c4237d238b67620373411de060433ce0bd46
-ms.sourcegitcommit: 90d5f59427ffa599e8ec005ef06e634e5e843d1e
+ms.openlocfilehash: 161802beba97dee12a1c65669692c47e7991fb3e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083642"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742338"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。
@@ -48,16 +40,16 @@ ms.locfileid: "54083642"
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>对采用基于实例的缩放的分区负载触发器求平均值
 第一种类型的触发器基于无状态服务分区中实例的负载。 指标负载首先经过平滑处理，获得分区中每个实例的负载，然后将分区的所有实例上的这些值求平均。 有三个因素确定何时缩放服务：
 
-* 负载阈值下限是一个用于确定何时将服务缩小的值。 如果分区的所有实例的平均负载低于此值，将缩小该服务。
-* 负载阈值上限是一个用于确定何时将服务扩大的值。如果分区的所有实例的平均负载高于此值，将扩大该服务。
-* 缩放间隔确定检查触发器的频率。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，缩放间隔再次到期之前，不会再检查触发器。
+* 负载阈值下限是一个用于确定何时将服务缩小的值   。 如果分区的所有实例的平均负载低于此值，将缩小该服务。
+* 负载阈值上限是一个用于确定何时将服务扩大的值   。如果分区的所有实例的平均负载高于此值，将扩大该服务。
+* 缩放间隔确定检查触发器的频率  。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，缩放间隔再次到期之前，不会再检查触发器。
 
 该触发器只能用于无状态服务（无状态容器或 Service Fabric 服务）。 在服务有多个分区的情况下，将分别为每个分区评估触发器，并且每个分区将独立应用指定的机制。 因此，在这种情况下，根据分区的负载，可能会将服务的某些分区扩大，将某些分区会缩小，同时可能不会缩放某些分区。
 
 此触发器可使用的唯一机制是 PartitionInstanceCountScaleMechanism。 有三个因素确定如何应用此机制：
-* 缩放递增确定触发机制时将添加或删除多少个实例。
-* 最大实例计数定义了缩放的上限。 如果分区的实例数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集中可用的节点数）。
-* 最小实例计数定义了缩放的下限。 如果分区的实例数量达到此限制，则无论负载如何，都不会缩小服务。
+* 缩放递增确定触发机制时将添加或删除多少个实例  。
+* 最大实例计数定义了缩放的上限  。 如果分区的实例数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集中可用的节点数）。
+* 最小实例计数定义了缩放的下限  。 如果分区的实例数量达到此限制，则无论负载如何，都不会缩小服务。
 
 ## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
 
@@ -95,7 +87,7 @@ serviceDescription.ServicePackageActivationMode = ServicePackageActivationMode.E
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 ### <a name="using-powershell"></a>使用 Powershell
-```posh
+```powershell
 $mechanism = New-Object -TypeName System.Fabric.Description.PartitionInstanceCountScaleMechanism
 $mechanism.MinInstanceCount = 1
 $mechanism.MaxInstanceCount = 6
@@ -118,9 +110,9 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 ## <a name="average-service-load-trigger-with-partition-based-scaling"></a>对采用基于分区的缩放的服务负载触发器求平均值
 第二种触发器基于一个服务所有分区的负载。 指标负载首先经过平滑处理，获得分区中每个副本或实例的负载。 对于有状态服务，分区的负载被认为是主要副本的负载，而对于无状态服务，分区的负载是分区的所有实例的平均负载。 这些值在服务的所有分区中取平均值，并且此值用于触发自动缩放。 与之前的机制相同，有三个因素确定将何时缩放服务：
 
-* 负载阈值下限是一个用于确定何时将服务缩小的值。 如果服务的所有分区的平均负载低于此值，则将缩小该服务。
-* 负载阈值上限是一个用于确定何时将服务扩大的值。如果服务的所有分区的平均负载高于此值，则将扩大该服务。
-* 缩放间隔确定检查触发器的频率。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，缩放间隔再次到期之前，不会再检查触发器。
+* 负载阈值下限是一个用于确定何时将服务缩小的值   。 如果服务的所有分区的平均负载低于此值，则将缩小该服务。
+* 负载阈值上限是一个用于确定何时将服务扩大的值   。如果服务的所有分区的平均负载高于此值，则将扩大该服务。
+* 缩放间隔确定检查触发器的频率  。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，缩放间隔再次到期之前，不会再检查触发器。
 
 此触发器既可用于有状态服务，也可用于无状态服务。 此触发器唯一可以使用的机制是 AddRemoveIncrementalNamedPartitionScalingMechanism。 扩大服务时，则添加新的分区；缩小服务时，则删除一个现有分区。 在创建或更新服务时会检查一些限制，如果不满足以下条件，则服务创建/更新将失败：
 * 命名分区方案必须用于服务。
@@ -134,9 +126,9 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * 如果将服务的当前分区命名为“0”、“1”和“2”，那么将删除用于缩小的分区名为“2”。
 
 与通过添加或删除实例使用缩放的机制相同，有三个参数确定如何应用此机制：
-* 缩放递增确定触发机制时将添加或删除多少个分区。
-* 最大分区计数定义了缩放的上限。 如果服务的分区数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集的实际容量）。
-* 最小实例计数定义了缩放的下限。 如果服务的分区数量达到此限制，则无论负载如何，都不会缩小服务。
+* 缩放递增确定触发机制时将添加或删除多少个分区  。
+* 最大分区计数定义了缩放的上限  。 如果服务的分区数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集的实际容量）。
+* 最小实例计数定义了缩放的下限  。 如果服务的分区数量达到此限制，则无论负载如何，都不会缩小服务。
 
 > [!WARNING] 
 > 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在纵向扩展操作的情况下，新分区将为空；在缩减操作的情况下，**分区将与其包含的所有数据一起被删除**。
@@ -144,7 +136,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 ## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
 
 ### <a name="using-application-manifest"></a>使用应用程序清单
-``` xml
+```xml
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
@@ -172,7 +164,7 @@ serviceUpdate.ScalingPolicies.Add(policy);
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), serviceUpdate);
 ```
 ### <a name="using-powershell"></a>使用 Powershell
-```posh
+```powershell
 $mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
@@ -210,5 +202,4 @@ ResourceMonitorService 负责跟踪用户服务的 CPU 和内存使用情况。 
 ## <a name="next-steps"></a>后续步骤
 了解有关[应用程序可伸缩性](service-fabric-concepts-scalability.md)的详细信息。
 
-<!-- Update_Description: new articles on service fabric cluster resource manager autoscaling -->
-<!--ms.date: 12/10/2018-->
+<!-- Update_Description: update meta properties  -->

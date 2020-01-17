@@ -1,23 +1,23 @@
 ---
-title: 针对 Azure IoT 中心设备预配服务设置设备
-description: 在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
+title: 教程 - 针对 Azure IoT 中心设备预配服务设置设备
+description: 本教程介绍如何在设备制造过程中通过 IoT 中心设备预配服务 (DPS) 设置设备以进行预配
 author: wesmc7777
 ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 06/03/2019
+origin.date: 11/12/2019
+ms.date: 01/20/2020
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25047cfe52908c0e96a91c8d22a432dec69bbee6
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: 3a5b492c5296a860a2ed25a77808e6e44c47a7a9
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195025"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859752"
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务设置设备以进行预配
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
 前面的教程介绍了设置 Azure IoT 中心设备预配服务以将设备自动预配到 IoT 中心的方法。 本教程介绍如何在制造过程中设置设备，使之能够通过 IoT 中心进行自动预配。 设备在首先启动并连接到预配服务之后，即可根据其[证明机制](concepts-device.md#attestation-mechanism)进行预配。 本教程涵盖以下任务：
 
@@ -35,9 +35,9 @@ ms.locfileid: "66195025"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 
@@ -50,18 +50,18 @@ ms.locfileid: "66195025"
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-1. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
-    
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
     应该预料到此操作需要几分钟才能完成。
 
-
-1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
+4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
@@ -119,7 +119,7 @@ ms.locfileid: "66195025"
 
    1. 使用 Visual Studio 打开在 *cmake* 文件夹中创建的名为 `azure_iot_sdks.sln` 的解决方案，然后在“生成”菜单上使用“生成解决方案”命令来生成它。
 
-   1.  在 Visual Studio 的“解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“tpm_device_provision”项目，  然后选择“设为启动项目”。  
+   1. *在 Visual Studio 的* “解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“tpm_device_provision”项目，  然后选择“设为启动项目”。  
 
    1. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 输出窗口会显示 TPM 模拟器的“注册 ID”  和“认可密钥”  ，这是进行设备登记和注册所需的。 复制这些值，供以后使用。 可以关闭此窗口（包含注册 ID 和认可密钥），但让在步骤 1 中启动的 TPM 模拟器窗口保持运行状态。
 
@@ -127,7 +127,7 @@ ms.locfileid: "66195025"
 
   1. 使用 Visual Studio 打开在 *cmake* 文件夹中创建的名为 `azure_iot_sdks.sln` 的解决方案，然后在“生成”菜单上使用“生成解决方案”命令来生成它。
 
-  1.  在 Visual Studio 的“解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“dice\_device\_enrollment”项目，然后选择“设置为启动项目”。   
+  1. *在 Visual Studio 的* “解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“dice\_device\_enrollment”项目，然后选择“设置为启动项目”。   
   
   1. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 在输出窗口中，当系统提示时输入 **i** 完成单个注册。 输出窗口会显示在本地为模拟设备生成的 X.509 证书。 将输出（从 *-----BEGIN CERTIFICATE-----* 开始，到第一个 *-----END CERTIFICATE-----* 结束）复制到剪贴板，确保将这两行也包括进去。 只需要使用输出窗口中的第一个证书。
  
@@ -142,7 +142,7 @@ ms.locfileid: "66195025"
 > [!NOTE]
 > 对于这一步，我们假定使用的是模拟设备，通过从工作站运行 SDK 示例注册应用程序的方式来完成。 不过，如果生成需要部署到物理设备的注册应用程序，则适用的概念是相同的。 
 
-1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，复制“ID 范围”值。    ID 范围由此服务生成，可保证唯一性  。 它是不可变的，可用于唯一标识注册 ID。
+1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，复制“ID 范围”值。   ID 范围由此服务生成，可保证唯一性  。 它是不可变的，可用于唯一标识注册 ID。
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 

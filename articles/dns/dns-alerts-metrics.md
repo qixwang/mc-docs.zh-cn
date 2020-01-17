@@ -1,26 +1,24 @@
 ---
-title: Azure DNS 指标和警报 | Microsoft Docs
-description: 了解有关 Azure DNS 指标和警报的信息。
+title: 指标和警报 - Azure DNS
+description: 借助此学习路径，开始了解 Azure DNS 指标和警报。
 services: dns
 documentationcenter: na
 author: WenJason
 manager: digimobile
-editor: ''
-ms.assetid: ''
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/17/2018
-ms.date: 07/22/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.openlocfilehash: f0b0f342059db4be77fdbb8f5d7db565efaa46be
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.openlocfilehash: e1e574dd624af3f2b6f8465a08ca24a9ab9bd3fe
+ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297945"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777456"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 指标和警报
 Azure DNS 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称解析。 本文介绍了 Azure DNS 服务的指标和警报。
@@ -34,6 +32,8 @@ Azure DNS 为客户提供指标，帮助他们监视服务中托管的 DNS 区�
 -   RecordSetCapacityUtilization
 
 还可以在 Azure Monitor 文档页看到[这些指标的定义](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones)。
+>[!NOTE]
+> 这个时候，这些指标仅可用于 Azure DNS 中托管的公共 DNS 区域。 如果 Azure DNS 托管专用区域，那么这些指标不为这些区域提供数据。 
 
 可以看到指标的最细粒度元素是 DNS 区域。 当前无法查看区域中单个资源记录的指标。
 

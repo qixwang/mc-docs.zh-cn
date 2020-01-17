@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure 安全中心文档
 metadata:
   title: Azure 安全中心文档 - 教程和 API 参考 | Microsoft Doc
-  meta.description: 'Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
+  meta.description: 'Azure Security Center provides unified security management across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
   services: security-center
   author: cmcclister
   manager: carolz
@@ -14,7 +14,7 @@ metadata:
   ms.date: 07/26/18
   ms.author: cmcclister
 abstract:
-  description: Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 使用快速入门和教程了解如何开始使用安全中心，如何对各种工作负荷应用安全策略，如何限制你暴露于威胁之下，以及如何检测和响应攻击。
+  description: Azure 安全中心跨混合云工作负载提供统一的安全管理。 使用快速入门和教程了解如何开始使用安全中心，如何对各种工作负荷应用安全策略，如何限制你暴露于威胁之下，以及如何检测和响应攻击。
 sections:
   - title: 5 分钟快速入门
     items:

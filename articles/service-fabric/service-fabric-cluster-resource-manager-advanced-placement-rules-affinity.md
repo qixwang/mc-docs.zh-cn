@@ -1,26 +1,19 @@
 ---
-title: Service Fabric 群集Resource Manager - 相关性 | Azure
+title: Service Fabric 群集资源管理器 - 相关性
 description: 概述如何为 Service Fabric 服务配置相关性
 services: service-fabric
 documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 04/29/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 414bc453909b53e327d7efea74ef97569b868d76
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 1453ab674f6aa3cd9b802dde60af73ab84a785d0
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914511"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742342"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>在 Service Fabric 中配置和使用服务相关性
 相关性是一个控件，主要用于帮助简化将较大型的单体式应用程序转换到云和微服务领域。 它也可以用作提升服务性能的优化，不过这样做可能会产生副作用。

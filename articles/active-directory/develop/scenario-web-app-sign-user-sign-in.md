@@ -1,6 +1,6 @@
 ---
-title: 可将用户登录的 Web 应用（登录）- Microsoft 标识平台
-description: 了解如何生成可将用户登录的 Web 应用（登录）
+title: 编写可使用户登录/注销用户的 Web 应用 - Microsoft 标识平台 | Azure
+description: 了解如何生成可使用户登录/注销用户的 Web 应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd8c76da76a457d3cace45eb9c3418ab6e231a99
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1e955207b53e7e2d6f50567884be2829021c0c6f
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335395"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777030"
 ---
-# <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>可将用户登录的 Web 应用：登录和注销
+# <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
 了解如何在可将用户登录的 Web 应用的代码中添加登录。 然后了解如何让用户注销。
 
@@ -118,7 +118,7 @@ def index():
 
 在 ASP.NET 中，注销是从控制器（例如 [AccountController.cs#L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）中的 `SignOut()` 方法触发的。 此方法不是 ASP.NET 框架的一部分（与 ASP.NET Core 中的情况相反）。 它在提议重定向 URI 后发送 OpenID 登录质询。
 
-```CSharp
+```csharp
 public void SignIn()
 {
     // Send an OpenID Connect sign-in request.
@@ -342,7 +342,7 @@ else
 - 清除缓存。
 - 重定向到所需的页面。
 
-```CSharp
+```csharp
 /// <summary>
 /// Send an OpenID Connect sign-out request.
 /// </summary>
@@ -396,7 +396,7 @@ def logout():
 
 ASP.NET Core OpenID Connect 中间件提供名为 `OnRedirectToIdentityProviderForSignOut` 的 OpenID Connect 事件，可让应用截获对 Microsoft 标识平台 `logout` 终结点的调用。 有关如何订阅此事件（以清除令牌缓存）的示例，请参阅 [Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156)。
 
-```CSharp
+```csharp
     // Handling the global sign-out
     options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
     {
@@ -408,7 +408,7 @@ ASP.NET Core OpenID Connect 中间件提供名为 `OnRedirectToIdentityProviderF
 
 在 ASP.NET 中，需委托中间件执行注销，并清除会话 Cookie：
 
-```CSharp
+```csharp
 public class AccountController : Controller
 {
  ...

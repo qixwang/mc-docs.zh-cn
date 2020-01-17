@@ -1,32 +1,27 @@
 ---
-title: 使用控制台应用的标识 (v1.0) 获取令牌并调用 Microsoft Graph API | Microsoft Docs
-description: 了解如何生成与 Azure AD 集成并使用 OAuth 2.0 调用受 Azure AD 保护 API 的 .NET 守护程序应用程序
+title: 获取令牌并调用 Microsoft Graph (.NET Core Console) (v1.0) | Azure
+description: 生成与 Azure AD 集成并使用 OAuth 2.0 调用受 Azure AD 保护的 API 的 .NET 守护程序应用程序
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 07/17/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a892d47917de6703f6889f845dd2f4f067b82434
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: e99b95897d5d71e39871bb95ef193cec8da7061a
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830949"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776965"
 ---
-# <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>快速入门：使用控制台应用的标识 (v1.0) 获取令牌并调用 Microsoft Graph API 
+# <a name="quickstart-acquire-token-and-call-microsoft-graph-using-console-apps-identity-v10"></a>快速入门：使用控制台应用的标识 (v1.0) 获取令牌并调用 Microsoft Graph
 
 [Microsoft 标识平台](v2-overview.md)由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。
 

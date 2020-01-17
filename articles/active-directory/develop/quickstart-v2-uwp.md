@@ -2,27 +2,22 @@
 title: Microsoft 标识平台 Windows UWP 快速入门 | Azure
 description: 了解通用 Windows 平台 (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 059dd27beb389d31dbd2d1cb13f3e38cde58a460
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: b1ca97169df6a3d5a6d014103ed860d577f39b78
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335279"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776961"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -56,13 +51,12 @@ ms.locfileid: "75335279"
 >      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。  
 >      - 选择“注册”  以创建应用程序。
 > 1. 在应用的页面列表中，选择“身份验证”。 
-> 1. 展开“桌面 + 设备”部分。   （如果“桌面 + 设备”不可见，首先请单击顶部的横幅，以便查看预览版身份验证体验） 
-> 1. 在“重定向 URI”部分下选择“添加 URI”。    键入 **urn:ietf:wg:oauth:2.0:oob**。
+> 1. 在“重定向 URI” | “建议用于公共客户端(移动、桌面)的重定向 URI”部分中，选中 https://login.partner.microsoftonline.cn/common/oauth2/nativeclient    。
 > 1. 选择“保存”  。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
-> 为使此快速入门中的代码示例正常运行，需要将重定向 URI 添加为 **urn:ietf:wg:oauth:2.0:oob**。
+> 要使此快速入门的代码示例正常运行，需要将重定向 URI 添加为 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
@@ -180,4 +174,5 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 > [!div class="nextstepaction"]
 > [UWP - 调用 Graph API 教程](tutorial-v2-windows-uwp.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->
+

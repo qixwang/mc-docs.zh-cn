@@ -12,17 +12,17 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 12/06/2017
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 79eb0bac2d1e1afa88799e686fd13e167be21c7e
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: c41cce2a041da7786f2ed3b3966c9eb7bcc05286
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174105"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742360"
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
+# <a name="update-an-application-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 更新应用程序
 
 此示例脚本会上传现有应用程序的新版本，然后使用新位升级已部署的应用程序。
 
@@ -53,4 +53,4 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 
 在 [Service Fabric CLI 示例](../samples-cli.md)中可找到 Azure Service Fabric 的其他 Service Fabric CLI 示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

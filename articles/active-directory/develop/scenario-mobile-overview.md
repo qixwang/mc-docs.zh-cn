@@ -1,5 +1,6 @@
 ---
-title: 调用 Web API 的移动应用 - 概述 | Microsoft 标识平台
+title: 构建用于调用 Web API 的移动应用 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的移动应用（概述）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,30 +12,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f83b1b4d41a1f336a5bb23cc2503ba1a3313bc
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 6ac27e6cc1778ddbe690161daefc98bde6f83f00
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134260"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776946"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：用于调用 Web API 的移动应用程序
 
-了解构建调用 Web API 的移动应用需要知道的一切内容。
+了解如何构建用于调用 Web API 的移动应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>入门
 
-创建第一个移动应用程序并尝试快速入门！
+创建第一个移动应用程序并尝试快速入门。
 
 > [!div class="nextstepaction"]
 > [快速入门：获取令牌并从 Android 应用中调用 Microsoft Graph API](./quickstart-v2-android.md)

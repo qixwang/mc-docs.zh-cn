@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 基础结构即代码最佳做法 | Azure
+title: Azure Service Fabric 基础结构即代码最佳做法
 description: 用于管理 Service Fabric 基础结构即代码的最佳做法。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/23/2019
-ms.date: 09/02/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 65596daa5f2e5c5530b5dbe946d696ac2e5f356c
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 9ea768f027d88e7a4c84b1f8d49ad6bcbe95a8ea
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174152"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742441"
 ---
 <!--Verify successfully-->
 # <a name="infrastructure-as-code"></a>基础结构即代码
@@ -111,13 +102,15 @@ New-AzResourceGroupDeployment -Name $DeploymentName -ResourceGroupName $Resource
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
-microservices_sfpkg = zipfile.ZipFile(self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
+microservices_sfpkg = zipfile.ZipFile(
+    self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
 package_length = len(self.microservices_app_package_path)
 
 for root, dirs, files in os.walk(self.microservices_app_package_path):
     root_folder = root[package_length:]
     for file in files:
-        microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
+        microservices_sfpkg.write(os.path.join(
+            root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
 ```
@@ -169,4 +162,4 @@ Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update -->

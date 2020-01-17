@@ -1,5 +1,6 @@
 ---
-title: 诊断虚拟机网络路由问题 - Azure CLI | Azure
+title: 诊断 VM 网络路由问题 - Azure CLI
+titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
@@ -18,12 +19,12 @@ origin.date: 04/20/2018
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.custom: ''
-ms.openlocfilehash: d9833c1afcb78b85a5b2c8c2fbe6cb3d3cb8e270
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: f6412487da73aa659c5eea67c0d1707d99669dc8
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982167"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858648"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
 
@@ -150,7 +151,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-从 `az network watcher nic show-effective-route-table` 命令的输出结果中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”   。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无缘无故地指定下一跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
+从 `az network watcher nic show-effective-route-table` 命令的输出结果中可以看到，虽然有一个到 172.16.0.0/12 前缀的默认路由（其中包括地址 172.31.0.100），但“nextHopType”为“无”   。 Azure 会创建到 172.16.0.0/12 的默认路由，但不会无故指定下一个跃点类型。 在特定情况下，例如在已将 172.16.0.0/12 地址范围添加到虚拟网络的地址空间的情况下，Azure 会将路由的“nextHopType”更改为“虚拟网络”。   此时进行检查会将“nextHopType”显示为“虚拟网络”   。
 
 ## <a name="clean-up-resources"></a>清理资源
 

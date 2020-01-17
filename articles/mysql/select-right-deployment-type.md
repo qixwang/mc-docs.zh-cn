@@ -1,18 +1,18 @@
 ---
-title: 为 Azure Database for MySQL 选择适当的部署类型
+title: 选择适当的部署类型 - Azure Database for MySQL
 description: 本文介绍将 Azure Database for MySQL 部署为基础结构即服务 (IaaS) 或平台即服务 (PaaS) 之前应考虑的因素。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 08/05/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 62fe91412db4df1daceca160509c42f243678e6e
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 12/02/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 9ee3bfff058889f5c042c586a9b86178c8047e80
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142189"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776761"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
 
@@ -41,7 +41,7 @@ ms.locfileid: "73142189"
 | 操作系统修补        | 自动  | 由客户管理 |
 | MySQL 修补     | 自动  | 由客户管理 |
 | 高可用性 | 高可用性 (HA) 模型以节点级中断发生时的内置故障转移机制为依据。 在这种情况下，服务将自动创建一个新实例，并将存储附加到此实例。 | 客户建构、实施、测试和维护高可用性。 功能可能包括不中断的故障转移群集、不中断的组复制、日志传送或事务复制。|
-| 混合场景 | 使用[数据传入复制](/mysql/concepts-data-in-replication)可将数据从外部 MySQL 服务器同步到 Azure Database for MySQL 服务中。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用[只读副本](/postgresql/concepts-read-replicas)功能可将 Azure Database for MySQL 主服务器中的数据复制到最多五个只读副本服务器。 副本位于同一个 Azure 区域中，或者跨不同的区域。 使用 binlog 复制技术异步更新只读副本。<br/><br/>跨区域读取复制目前为公共预览版。| 由客户管理
+| 混合场景 | 使用[数据传入复制](/mysql/concepts-data-in-replication)可将数据从外部 MySQL 服务器同步到 Azure Database for MySQL 服务中。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用[只读副本](/mysql/concepts-read-replicas)功能可将 Azure Database for MySQL 主服务器中的数据复制到最多五个只读副本服务器。 副本位于同一个 Azure 区域中，或者跨不同的区域。 使用 binlog 复制技术异步更新只读副本。| 由客户管理
 | 备份和还原 | 自动创建[服务器备份](/mysql/concepts-backup#backups)并将其存储在用户配置的本地冗余或异地冗余存储中。 服务将创建完整备份、差异备份和事务日志备份 | 由客户管理 |
 | 监视数据库操作 | 可让客户针对数据库操作[设置警报](/mysql/concepts-monitoring)，并在即将达到阈值时采取措施。 | 由客户管理 |
 | 灾难恢复 | 将自动创建的备份存储在用户配置的[本地冗余存储或异地冗余存储](/mysql/howto-restore-server-portal)中。 备份还可以将服务器还原到某个时间点。 保留期为 7 到 35 天。 还原是使用 Azure 门户完成的。 | 完全由客户管理。 责任包括但不限于计划、测试、存档、存储和保留。 另一个选项是使用 Azure 恢复服务保管库备份 Azure VM 和 VM 上的数据库。 此选项目前为预览版。 |

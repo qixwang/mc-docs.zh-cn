@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 中的 HTTP API - Azure Functions
 description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中的 HTTP API。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/07/2019
-ms.date: 09/29/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
-ms.openlocfilehash: 76b0d416d954f5e00f458ad9f917d01b5c5dd47f
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.openlocfilehash: 3a239096b3efec2bee46726e8305fd9de009ec6e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673588"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623666"
 ---
 # <a name="http-api-reference"></a>HTTP API 引用
 
@@ -625,7 +620,7 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 HTTP 请求的格式如下（为方便阅读，已分多行显示）：
 
 ```http
-POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -636,8 +631,8 @@ POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
 
 | 字段             | 参数类型  | 说明 |
 |-------------------|-----------------|-------------|
-| **`entityType`**  | URL             | 实体的类型。 |
-| **`entityKey`**   | URL             | 实体的唯一名称。 |
+| **`entityName`**  | URL             | 实体的名称（类型）。 |
+| **`entityKey`**   | URL             | 实体的键（唯一 ID）。 |
 | **`op`**          | 查询字符串    | 可选。 要调用的用户定义操作的名称。 |
 | **`{content}`**   | 请求内容 | JSON 格式的事件负载。 |
 
@@ -650,17 +645,20 @@ Content-Type: application/json
 5
 ```
 
+> [!NOTE]
+> 默认情况下，使用 [.NET 中基于类的实体](durable-functions-dotnet-entities.md#defining-entity-classes)时，将 `op` 值指定为 `delete` 会删除实体的状态。 但是，如果实体定义名为 `delete` 的操作，则会改为调用用户定义的操作。
+
 ### <a name="response"></a>响应
 
 此操作有多种可能的响应：
 
 * **HTTP 202 (已接受)** ：已接受对信号操作进行异步处理。
 * **HTTP 400 (错误请求)** ：请求内容不是 `application/json` 类型、不是有效的 JSON，或者使用了无效的 `entityKey` 值。
-* **HTTP 404 (找不到)** ：找不到指定的 `entityType`。
+* **HTTP 404 (找不到)** ：找不到指定的 `entityName`。
 
 成功的 HTTP 请求在响应中不包含任何内容。 失败的 HTTP 请求可能会在响应内容中包含 JSON 格式的错误信息。
 
-## <a name="query-entity"></a>查询实体
+## <a name="get-entity"></a>获取实体
 
 获取指定实体的状态。
 
@@ -669,7 +667,7 @@ Content-Type: application/json
 HTTP 请求的格式如下（为方便阅读，已分多行显示）：
 
 ```http
-GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
     ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
@@ -697,6 +695,100 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 {
     "currentValue": 5
 }
+```
+
+## <a name="list-entities"></a>列表实体
+
+可以按实体名称或按上次操作日期查询多个实体。
+
+### <a name="request"></a>请求
+
+HTTP 请求的格式如下（为方便阅读，已分多行显示）：
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &lastOperationTimeFrom={timestamp}
+    &lastOperationTimeTo={timestamp}
+    &fetchState=[true|false]
+    &top={integer}
+```
+
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
+
+| 字段                       | 参数类型  | 说明 |
+|-----------------------------|-----------------|-------------|
+| **`entityName`**            | URL             | 可选。 指定后，会按实体名称（不区分大小写）筛选返回的实体的列表。 |
+| **`fetchState`**            | 查询字符串    | 可选参数。 如果设置为 `true`，则实体状态将包含在响应有效负载中。 |
+| **`lastOperationTimeFrom`** | 查询字符串    | 可选参数。 指定后，会筛选在给定 ISO8601 时间戳之后处理操作的已返回实体的列表。 |
+| **`lastOperationTimeTo`**   | 查询字符串    | 可选参数。 指定后，会筛选在给定 ISO8601 时间戳之前处理操作的已返回实体的列表。 |
+| **`top`**                   | 查询字符串    | 可选参数。 如果指定，则会限制查询返回的实体数。 |
+
+
+### <a name="response"></a>响应
+
+成功的 HTTP 200 响应包含一个 JSON 序列化的实体数组，以及每个实体的状态（可选）。
+
+默认情况下，该操作返回与查询条件匹配的前 100 个实体。 调用方可以为 `top` 指定一个查询字符串参数值，以便返回不同的最大结果数。 如果存在比返回的结果更多的结果，则会在响应标头中返回继续标记。 标头的名称为 `x-ms-continuation-token`。
+
+如果在下一个请求标头中设置了继续标记值，则可以获取下一页结果。 请求标头的此名称也是 `x-ms-continuation-token`。
+
+### <a name="example---list-all-entities"></a>示例 - 列出所有实体
+
+以下示例 HTTP 请求列出了任务中心的所有实体：
+
+```http
+GET /runtime/webhooks/durabletask/entities
+```
+
+响应 JSON 可能如下所示（进行了格式化以提高可读性）：
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z"
+    },
+    {
+        "entityId": { "key": "mice", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:15.4626159Z"
+    },
+    {
+        "entityId": { "key": "radio", "name": "device" },
+        "lastOperationTime": "2019-12-18T21:46:18.2616154Z"
+    },
+]
+```
+
+### <a name="example---filtering-the-list-of-entities"></a>示例 - 筛选实体列表
+
+以下示例 HTTP 请求仅列出了 `counter` 类型的前两个实体，并提取了其状态：
+
+```http
+GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
+```
+
+响应 JSON 可能如下所示（进行了格式化以提高可读性）：
+
+```json
+[
+    {
+        "entityId": { "key": "cats", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:45:44.6326361Z",
+        "state": { "value": 9 }
+    },
+    {
+        "entityId": { "key": "dogs", "name": "counter" },
+        "lastOperationTime": "2019-12-18T21:46:01.9477382Z",
+        "state": { "value": 10 }
+    }
+]
 ```
 
 <!-- Update_Description: wording update -->

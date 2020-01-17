@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI - sfctl chaos schedule | Azure
+title: Azure Service Fabric CLI - sfctl chaos schedule
 description: 介绍 Service Fabric CLI sfctl chaos schedule 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ceba6daf73bb09183c37c852651e8933243b9785
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: ae80d0ee7061e03e8a03c7de12e915792b9ab8ee
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254740"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742263"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 获取和设置 Chaos Schedule。
@@ -40,22 +32,22 @@ ms.locfileid: "70254740"
 
 |参数|说明|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 设置 Chaos 使用的计划。
 
-Chaos 将自动基于 Chaos Schedule 来计划运行。 提供的输入计划中的版本必须与服务器上的 Chaos Schedule 版本匹配。 如果提供的版本与服务器上的版本不匹配，则不会更新 Chaos Schedule。 如果提供的版本与服务器上的版本相匹配，则会更新 Chaos Schedule，服务器上的 Chaos Schedule 版本将递增 1 并将在达到 2,147,483,647 后回到 0。 如果在进行此调用时正在运行 Chaos，则此调用将失败。
+Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与服务器上的版本匹配，则将更新 Chaos Schedule。 更新 Chaos Schedule 时，服务器上的版本将递增 1。 在达到较大数字后，服务器上的版本将自动换回 0。 如果在进行此调用时正在运行 Chaos，则此调用将失败。
 
 ### <a name="arguments"></a>参数
 
@@ -65,18 +57,18 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 提供的输入计划中
 | --expiry-date-utc | 停止使用 Schedule 来计划 Chaos 的日期和时间。  默认值\: 9999-12-31T23\:59\:59.999Z。 |
 | --jobs | ChaosScheduleJobs 的 JSON 编码列表，表示何时运行 Chaos 以及使用哪些参数运行 Chaos。 |
 | --start-date-utc | 开始使用 Schedule 来计划 Chaos 的日期和时间。  默认值\: 1601-01-01T00\:00\:00.000Z。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 | --version | Schedule 的版本号。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ### <a name="examples"></a>示例
 
@@ -148,4 +140,4 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 提供的输入计划中
 - [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

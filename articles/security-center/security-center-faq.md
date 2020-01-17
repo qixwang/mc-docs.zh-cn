@@ -1,11 +1,10 @@
 ---
-title: Azure 安全中心常见问题 (FAQ) | Azure Docs
-description: 此 FAQ 解答有关 Azure 安全中心的问题。
+title: Azure 安全中心常见问题 (FAQ) | Microsoft Docs
+description: 此常见问题解答回答有关 Azure 安全中心的问题，Azure 安全中心是一个可帮助预防、检测和响应威胁的产品。
 services: security-center
 documentationcenter: na
-author: lingliw
-manager: digimobile
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: na
 origin.date: 03/19/2019
 ms.date: 06/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 48cf9af99b44f0b1ced317bda7e42888dfef0ebd
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 0dda408ece2140de79837e07773057079941dc24
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528309"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857899"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。

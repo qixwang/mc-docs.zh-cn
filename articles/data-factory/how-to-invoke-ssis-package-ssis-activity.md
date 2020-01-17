@@ -1,5 +1,5 @@
 ---
-title: 使用“执行 SSIS 包”活动运行 SSIS 包 - Azure | Microsoft Docs
+title: 使用“执行 SSIS 包”活动运行 SSIS 包 - Azure
 description: 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 services: data-factory
 documentationcenter: ''
@@ -8,18 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 11/11/2019
+origin.date: 11/14/2019
+ms.date: 01/06/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: cb77ec4c5eb9b76bafaa4cc32de9f1cc6d9d07a9
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: 816bf290727c76d040115cbb9bf652394ce6d884
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648761"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623613"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。 
@@ -58,7 +58,7 @@ ms.locfileid: "73648761"
 
     创建或编辑 Key Vault 链接服务时，可以选择或编辑现有的 Key Vault，或创建新的 Key Vault。 请务必授予数据工厂托管标识对 Key Vault 的访问权限（如果尚未这样做）。 此外，还可以采用以下格式直接输入机密：`<Key vault linked service name>/<secret name>/<secret version>`。 如果包需要 32 位运行时才能运行，请选中“32 位运行时”复选框  。
 
-   对于“包位置”，请选择“SSISDB”、“文件系统(包)”或“文件系统(项目)”。     如果选择“SSISDB”作为包位置（如果为 Azure-SSIS IR 预配了 Azure SQL 数据库服务器或托管实例托管的 SSIS 目录 (SSISDB)，则会自动选择该选项），请指定要运行的、已部署到 SSISDB 中的包。  
+   对于“包位置”，请选择“SSISDB”、“文件系统(包)”、“文件系统(项目)”或“嵌入包”。      如果选择“SSISDB”作为包位置（如果为 Azure-SSIS IR 预配了 Azure SQL 数据库服务器或托管实例托管的 SSIS 目录 (SSISDB)，则会自动选择该选项），请指定要运行的、已部署到 SSISDB 中的包。  
 
     如果 Azure-SSIS IR 正在运行且清除了“手动输入内容”复选框，可以从 SSISDB 浏览并选择现有的文件夹、项目、包或环境  。 选择“刷新”以从 SSISDB 获取新添加的文件夹、项目、包或环境，以便可以浏览和选择这些内容  。 若要浏览或选择包执行的环境，必须事先配置项目，以便从 SSISDB 下的相同文件夹中添加这些环境作为引用。 有关详细信息，请参阅[创建和映射 SSIS 环境](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)。
 
@@ -83,6 +83,10 @@ ms.locfileid: "73648761"
    接下来，指定用于访问项目、包或配置文件的凭据。 如果先前已输入包执行凭据的值（参阅上文），则可以通过选中“与包执行凭据相同”复选框来重复使用这些值。  否则，请在“域”、“用户名”和“密码”框中输入包访问凭据的值。    例如，如果将项目、包或配置存储在 Azure 文件存储中，则域为 `Azure`，用户名为 `<storage account name>`，密码为 `<storage account key>`。 
 
    或者，可将 Key Vault 中存储的机密用作其值（参阅上文）。 这些凭据用于访问“执行包任务”中的包和子包，全部来自其自身的路径或相同的项目以及配置（包括包中指定的配置）。 
+
+   如果选择“嵌入包”作为包位置，请通过拖放方式来运行包，或将其从文件夹“上传”到提供的框中。   包会自动压缩并嵌入到活动有效负载中。 嵌入后，可以“下载”包供以后编辑。  你还可以通过将嵌入包分配给可在多个活动中使用的管道参数来**参数化**它，从而优化管道有效负载的大小。 如果嵌入包不是全部加密的，并且我们检测到其中使用了“执行包任务”，则系统会自动选择“执行包任务”复选框，并自动添加相关子包及其文件系统引用，以便你也嵌入它们。  如果无法检测到“执行包任务”的使用，则必须手动选中“执行包任务”复选框，并添加相关子包，其文件系统会逐个引用它们，这样你就也可以嵌入它们。  如果子包使用 SQL Server 引用，请确保 Azure-SSIS IR 可以访问 SQL Server。  当前不支持为子包使用项目引用。
+   
+   ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    如果在通过 SQL Server Data Tools 创建包时使用了 **EncryptAllWithPassword** 或 **EncryptSensitiveWithPassword** 保护级别，请在“加密密码”框中输入密码的值。  或者，可将 Key Vault 中存储的机密用作其值（参阅上文）。 如果使用了 **EncryptSensitiveWithUserKey** 保护级别，请在配置文件中或在“SSIS 参数”、“连接管理器”或“属性替代”选项卡上重新输入敏感值（参阅下文）。    
 
@@ -282,7 +286,7 @@ ms.locfileid: "73648761"
    }
    ```
 
-   若要执行存储在文件系统、文件共享或 Azure 文件存储中的包，请输入包或日志位置属性的值，如下所示：
+   若要执行存储在文件系统、文件共享或 Azure 文件存储中的包，请输入包和日志位置属性的值，如下所示：
 
    ```json
    {
@@ -354,6 +358,31 @@ ms.locfileid: "73648761"
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   若要执行嵌入包，请输入包位置属性的值，如下所示：
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

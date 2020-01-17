@@ -6,16 +6,16 @@ author: WenJason
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 10/03/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: f4a92d39ef4788bbe4d79fdf2bcf3b6c660a704f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 3675fd87c985e2bfc4a5ed8fe3a0ccce5a95e7d2
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020426"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737952"
 ---
 # <a name="vnet-peering-in-azure-stack-with-vms"></a>VM 所在的 Azure Stack 中的 VNET 对等互连
 
@@ -25,8 +25,8 @@ ms.locfileid: "74020426"
 
 此部署模式是一个基础，它使得 VPN 隧道不仅可以在 Azure Stack 实例内部创建，而且还可以在 Azure Stack 实例之间创建，以及创建到本地网络等其他资源（通过使用 Windows RRAS S2S VPN 隧道）。 
 
-可以在 [Azure 智能边缘模式](https://github.com/lucidqdreams/azure-intelligent-edge-patterns
-) GitHub 存储库的 **lucidqdreams** 分支中找到该模板。 该模板位于 **S2SVPNTunnel** 文件夹中。
+可以在 [Azure 智能边缘模式](https://github.com/Azure-Samples/azure-intelligent-edge-patterns
+) GitHub 存储库中找到这些模板。 该模板位于 **S2SVPNTunnel** 文件夹中。
 
 ![替换文字](./media/azure-stack-network-howto-vnet-peering/overview.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "74020426"
 - 此模板设计用于为 VNet1 和 VNet2 自定义 VNet 名称
 - 此模板使用的是 BYOL windows
 - 删除资源组时，目前在 (1907) 上必须手动将 NSG 与隧道子网分离，以确保删除资源组完成
-- 此模板使用的是 DS3v2 vm。 RRAS 服务将安装并运行 Windows 内部 SQL Server。 如果 VM 太小，则可能会导致内存问题。 在减小 VM 大小之前，请验证性能。
+- 此模板使用的是 DS3v2 VM。 RRAS 服务将安装并运行 Windows 内部 SQL Server。 如果 VM 太小，则可能会导致内存问题。 在减小 VM 大小之前，请验证性能。
 - 这不是一个高度可用的解决方案。 如果需要更高可用性样式的解决方案，可以添加第二个 VM，必须手动将路由表中的路由更改为辅助接口的内部 IP。 还需要配置多个隧道以建立交叉连接。
 
 ## <a name="options"></a>选项

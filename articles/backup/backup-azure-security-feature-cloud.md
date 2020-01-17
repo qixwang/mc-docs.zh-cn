@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 09/13/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 484e31607b54a5808b606171d842142996dbbd73
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 9e45190437e5c1fd982581e58b28ac0ce70185e5
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838944"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857777"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
@@ -24,7 +24,7 @@ ms.locfileid: "74838944"
 ## <a name="soft-delete"></a>软删除
 
 
-### <a name="soft-delete-for-vms"></a>VM 的软删除
+### <a name="soft-delete-for-vms-using-azure-portal"></a>使用 Azure 门户对 VM 进行软删除
 
 1. 若要删除 VM 的备份数据，必须停止备份。 在 Azure 门户中转到你的恢复服务保管库，右键单击备份项，然后选择“停止备份”。 
 
@@ -66,9 +66,64 @@ ms.locfileid: "74838944"
 
 有关详细信息，请参阅下面的[常见问题解答](backup-azure-security-feature-cloud.md#frequently-asked-questions)部分。
 
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>使用 Azure Powershell 对 VM 进行软删除
+
+> [!IMPORTANT]
+> 使用 Azure PS 软删除所需的 Az.RecoveryServices 版本最低为 2.2.0。 可使用 ```Install-Module -Name Az.RecoveryServices -Force``` 获取最新版本。
+
+如上所述 Azure 门户，使用 Azure Powershell 时，步骤顺序是相同的。
+
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>使用 Azure Powershell 删除备份项
+
+使用 [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet 删除备份项。
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+备份项的“DeleteState”将从“NotDeleted”更改为“ToBeDeleted”。 备份数据会保留 14 天。 如果要还原删除操作，则应执行撤消-删除操作。
+
+#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>使用 Azure Powershell 撤销删除操作
+
+首先，获取处于软删除状态（即将删除）的相关备份项
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+然后，使用 [Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS cmdlet 执行撤消-删除操作。
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+备份项的“DeleteState”将还原为“NotDeleted”。 但保护仍处于停止状态。 需要[恢复备份](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)以重新启用保护。
+
+### <a name="soft-delete-for-vms-using-rest-api"></a>使用 REST API 对 VM 进行软删除
+
+- 如[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述，使用 REST API 删除备份。
+- 如果用户想要撤消这些删除操作，请参阅[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)所述的步骤。
+
 ## <a name="disabling-soft-delete"></a>禁用软删除
 
 软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。仅备份管理员可以禁用此功能。 如果禁用此功能，则只要删除受保护的项，就会导致即时删除，不可还原。 如果在禁用此功能之前备份数据处于软删除状态，则会保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
+
+### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 门户禁用软删除
 
 若要禁用软删除，请执行以下步骤：
 
@@ -76,8 +131,105 @@ ms.locfileid: "74838944"
 2. 在“属性”窗格中选择“安全设置” -> “更新”。    
 3. 在“安全设置”窗格的“软删除”下，选择“禁用”。  
 
-
 ![禁用软删除](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+### <a name="disabling-soft-delete-using-azure-powershell"></a>使用 Azure Powershell 禁用软删除
+
+> [!IMPORTANT]
+> 使用 Azure PS 软删除所需的 Az.RecoveryServices 版本最低为 2.2.0。 可使用 ```Install-Module -Name Az.RecoveryServices -Force``` 获取最新版本。
+
+若要禁用，请使用 [AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS cmdlet。
+
+```powershell
+Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
+
+
+StorageModelType       :
+StorageType            :
+StorageTypeState       :
+EnhancedSecurityState  : Enabled
+SoftDeleteFeatureState : Disabled
+```
+
+### <a name="disabling-soft-delete-using-rest-api"></a>使用 REST API 禁用软删除
+
+若要使用 REST API 禁用软删除功能，请参阅[此处](use-restapi-update-vault-properties.md)所述的步骤。
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>永久删除软删除的备份项
+
+如果在禁用此功能之前备份数据处于软删除状态，则会保持软删除状态。 若要立即永久删除这些项，请取消删除，然后再次将其删除，这样就可以永久删除它们。
+
+### <a name="using-azure-portal"></a>使用 Azure 门户
+
+执行以下步骤：
+
+1. 按照步骤[禁用软删除](#disabling-soft-delete)。
+2. 在 Azure 门户中，请切换到保管库，转到“备份项”并选择已软删除的 VM 
+
+![选择已软删除的 VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. 选择“撤消删除”选项  。
+
+![选择“撤消删除”](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. 此时会出现一个窗口。 选择“撤消删除”  。
+
+![选择“撤消删除”](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. 选择“删除备份数据”，永久删除备份数据  。
+
+![选择“删除备份数据”](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. 键入备份项的名称以确认你要删除恢复点。
+
+![键入备份项的名称](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. 若要删除项的备份数据，请选择“删除”  。 一条通知消息将让你获悉备份数据已删除。
+
+### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+
+如果在禁用软删除之前删除了项，则它们将处于已软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
+
+确定处于已软删除状态的项。
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+然后反转启用软删除时执行的删除操作。
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+由于软删除现在已禁用，删除操作将导致立即删除备份数据。
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+### <a name="using-rest-api"></a>使用 REST API
+
+如果在禁用软删除之前删除了项，则它们将处于已软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
+
+1. 首先，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)提到的步骤撤消删除操作。
+2. 然后，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述的 REST API 删除备份。
 
 ## <a name="other-security-features"></a>其他安全功能
 
@@ -101,7 +253,7 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="soft-delete"></a>软删除
+### <a name="for-soft-delete"></a>对于软删除
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>是否需要对每个保管库启用软删除功能？
 
@@ -137,7 +289,7 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中执行软删除操作？
 
-否。目前不支持 PowerShell 或 CLI。
+可以使用 [Powershell](#soft-delete-for-vms-using-azure-powershell) 执行软删除操作。 目前不支持 CLI。
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>其他云工作负荷（例如 Azure VM 中的 SQL Server，以及 Azure VM 中的 SAP HANA）是否支持软删除？
 

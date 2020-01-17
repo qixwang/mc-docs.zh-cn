@@ -1,36 +1,31 @@
 ---
-title: 身份验证流（Microsoft 身份验证库）
+title: MSAL 身份验证流 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 身份验证库 (MSAL) 使用的身份验证流和授权。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/16/2019
-ms.date: 11/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d89de36c15508d69a997efe306225f213845074
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 8c2aea22842e65fd56b7deb2a0cc76b579d47c81
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655356"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777003"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
 本文介绍 Microsoft 身份验证库 (MSAL) 提供的不同身份验证流。  可在各种不同的应用程序方案中使用这些流。
 
-| 流向 | 说明 | 使用位置|  
+| 流向 | 说明 | 适用范围|  
 | ---- | ----------- | ------- | 
 | [交互式](#interactive) | 通过一个提示用户在浏览器或弹出窗口中提供凭据的交互式过程获取令牌。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md) |
 | [隐式授权](#implicit-grant) | 允许应用在不执行后端服务器凭据交换的情况下获取令牌。 这可让应用登录用户、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。| [单页应用程序 (SPA)](scenario-spa-overview.md) |

@@ -1,26 +1,17 @@
 ---
-title: 云服务与 Service Fabric 之间的差异 | Azure
+title: 云服务与 Service Fabric 之间的差异
 description: 有关将应用程序从云服务迁移到 Service Fabric 的概念性概述。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 07/08/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6c316f6bc50b5d67d80bfe6c8ddc5348ab6162ac
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 54ae83ea549483e1052728418b1f55c677e49dbb
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844764"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742371"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
 Azure Service Fabric 是面向高度可缩放、高度可靠的分布式应用程序的下一代云应用程序平台。 其中引入了许多用于打包、部署、升级和管理分布式云应用程序的新功能。 
@@ -75,7 +66,7 @@ Service Fabric 应用程序还可以选择在整个应用程序中使用相同�
 直接通信是 Service Fabric 中常见的通信模型。 Service Fabric 和云服务的重要差别在于，在云服务中是连接到 VM，而在 Service Fabric 中是连接到服务。 这种差别之所以重要，其原因如下：
 
 * Service Fabric 中的服务未绑定到托管它们的 VM；这些服务可以在群集中四处移动。事实上，它们会出于以下各种原因而四处移动：资源平衡、故障转移、应用程序和基础结构升级，以及放置或负载约束。 这意味着服务实例的地址可随时更改。 
-* Service Fabric 中的一个 VM 可以托管多个服务，且每个服务有其独特的终结点。
+* Service Fabric 中的一个 VM 可以托管多个服务，且每个服务都有唯一终结点。
 
 Service Fabric 提供服务发现机制（称为“命名服务”），用于解析服务的终结点地址。 
 
@@ -113,6 +104,7 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 * [Simple migration: convert a Web or Worker Role to a Service Fabric stateless service](service-fabric-cloud-services-migration-worker-role-stateless-service.md)（简单迁移：将 Web 角色或辅助角色转换为 Service Fabric 无状态服务）
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png
 [2]: ./media/service-fabric-cloud-services-migration-differences/topology-service-fabric.png
 [5]: ./media/service-fabric-cloud-services-migration-differences/cloud-service-communication-direct.png

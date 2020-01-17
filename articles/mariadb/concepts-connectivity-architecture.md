@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB 中的连接体系结构
+title: 连接体系结构 - Azure Database for MariaDB
 description: 介绍 Azure Database for MariaDB 服务器的连接体系结构。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 05/23/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: ea53d8a50ce61cf7b0e6f83908ac687e964ab492
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+origin.date: 12/02/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 2542b169ca6174c55bd89f241322c19f0930cc6e
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530639"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776759"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍 Azure Database for MariaDB 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MariaDB 实例。
@@ -27,14 +27,13 @@ ms.locfileid: "74530639"
 
 ## <a name="azure-database-for-mariadb-gateway-ip-addresses"></a>Azure Database for MariaDB 网关 IP 地址
 
-下表列出了所有数据区域的 Azure Database for MariaDB 网关的主要 IP 和次要 IP。 主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是主 IP 地址故障时使用的故障转移 IP 地址。 如前所述，客户应该允许到这两个 IP 地址的出站流量。 第二个 IP 地址不侦听任何服务，除非 Azure Database for MariaDB 激活该地址，使之接受连接。 目前中国区域只有主 IP。 
+下表列出了所有数据区域的 Azure Database for MariaDB 网关的主要 IP 和次要 IP。 主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是主 IP 地址故障时使用的故障转移 IP 地址。 如前所述，客户应该允许到这两个 IP 地址的出站流量。 第二个 IP 地址不侦听任何服务，除非 Azure Database for MariaDB 激活该地址，使之接受连接。
 
-| **区域名称** | **主 IP 地址** | **次要 IP 地址** |
-|:----------------|:-------------|:------------------------|
-| 中国东部 | 139.219.130.35 | |
-| 中国东部 2 | 40.73.82.1 | |
-| 中国北部 | 139.219.15.17 | |
-| 中国北部 2 | 40.73.50.0 | |
+| **区域名称** | **网关 IP 地址** |
+|:----------------|:-------------|
+| 中国东部 2 | 40.73.82.1  |
+| 中国北部 2 | 40.73.50.0     |
+||||
 
 ## <a name="next-steps"></a>后续步骤
 

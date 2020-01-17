@@ -1,26 +1,17 @@
 ---
-title: 可测试性：服务通信 | Azure
+title: 可测试性：服务通信
 description: 服务到服务通信是 Service Fabric 应用程序的关键集成点。 本文讨论设计注意事项和测试技术。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 05/28/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 365c46eff1a10d8af00eee2e8bfa560842a0ea81
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 23f5272af280f208a18e1fda58ce698a93cc3efc
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52645556"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742120"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric 可测试性方案：服务通信
 Azure Service Fabric 中自然显露了微服务和面向服务的体系结构风格。 在这些类型的分布式体系结构中，组件化微服务应用程序通常由需要相互通信的多个服务组成。 即使在最简单的情况下，一般至少有一个无状态 Web 服务和一个有状态数据存储服务需要进行通信。
@@ -43,13 +34,13 @@ Azure Service Fabric 中自然显露了微服务和面向服务的体系结构�
 * 从上次与之通信起，服务实例或分区副本已经移动。 这是服务生命周期的正常部分，并且在应用程序的生命周期内应是预计会发生的。
 * 服务实例或分区副本正在移动。 尽管在 Service Fabric 中一个服务从一个节点移到另一个节点时发生故障转移的速度非常快，但如果服务的通信组件启动较慢，可用性仍然有可能出现延迟。
 
-适当地处理这些方案对于系统的顺畅运行非常重要。 若要这样做，请记住：
+适当地处理这些方案对于系统的顺畅运行非常重要。 若要实现此目的，请记住：
 
-* 可以连接的每个服务都有一个它要侦听的地址（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它已移到另一个节点，该节点具有不同的 IP 地址。）） 如果使用内置通信组件，它们会处理服务地址的重新解析。
+* 可以连接的每个服务都有一个它要侦听的地址  （例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它已移到另一个节点，该节点具有不同的 IP 地址。）） 如果使用内置通信组件，它们会处理服务地址的重新解析。
 * 服务实例再次启动其侦听程序时，服务延迟有可能暂时性增大。 这取决于服务实例移动后，服务打开侦听程序的速度。
 * 服务打开新的节点后，任何现有连接都需要关闭并重新打开。 正常的节点关闭或重新启动会等待现有连接正常关闭。
 
-### <a name="test-it-move-service-instances"></a>测试：移动服务实例
+### <a name="test-it-move-service-instances"></a>测试它：移动服务实例
 使用 Service Fabric 的可测试性工具，我们可以编写一个测试方案，以不同的方式测试这些情形。
 
 1. 移动有状态服务的主副本。
@@ -78,7 +69,7 @@ Azure Service Fabric 中自然显露了微服务和面向服务的体系结构�
 
 有状态服务使用基于仲裁的系统来复制状态以获得高可用性。 这意味着副本的仲裁必须可用才能执行写入操作。 极少数情况下，例如普遍出现的硬件故障，副本的仲裁可能不可用。 在这种情况下，不能执行写入操作，但是仍然能够执行读取操作。
 
-### <a name="test-it-write-operation-unavailability"></a>测试：写入操作不可用
+### <a name="test-it-write-operation-unavailability"></a>测试它：写入操作不可用
 使用 Service Fabric 中的可测试性工具，可以注入一个引发仲裁丢失的故障作为测试。 尽管这种情况很少见，但是依赖于有状态服务的客户端和服务准备好处理无法向有状态服务进行写入请求的情形非常重要。 有状态服务本身知晓这种可能性并且能够以得当的方式将其告知调用方也非常重要。
 
 可以使用 Invoke-ServiceFabricPartitionQuorumLoss PowerShell cmdlet 引入仲裁丢失： 
@@ -96,4 +87,4 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 [了解有关可测试性方案的详细信息](service-fabric-testability-scenarios.md)
 
-<!--Update_Description: update meta properties, update cmdlet -->
+<!-- Update_Description: update meta properties, wording update -->

@@ -1,21 +1,21 @@
 ---
-title: 教程：将 Azure 流分析作业部署到设备 - Azure IoT Edge
+title: 教程 - 使用 Azure IoT Edge 在边缘部署流分析
 description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT Edge 设备
 author: kgremban
 manager: timlt
 ms.author: v-yiso
-origin.date: 08/07/2019
-ms.date: 09/09/2019
+origin.date: 11/11/2019
+ms.date: 01/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dad464f54a5fbfbd331ea0f13312d7e3acab8472
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 49ae866d413c4f7acd3350809f7340b01c256ccd
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389555"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859726"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 
@@ -25,7 +25,7 @@ Azure IoT Edge 和 Azure 流分析已集成，因此可以在 Azure 门户中创
 
 Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 IoT Edge 设备上进行数据分析。 有关详细信息，请参阅 [Azure 流分析文档](../stream-analytics/stream-analytics-edge.md)。
 
-本教程中的流分析模块在一个滚动的 30 秒时段内计算平均温度。 当平均温度达到 70 时，模块会发送一个警报，以便设备采取操作。 在这种情况下，该操作是重置模拟温度传感器。 在生产环境中，当温度达到危险级别时，可以使用此功能关闭机器或采取预防措施。 
+本教程中的流分析模块在一个滚动的 30 秒时段内计算平均温度。 当平均温度达到 70 时，模块会发送一个警报，以便设备执行操作。 在这种情况下，该操作是重置模拟温度传感器。 在生产环境中，当温度达到危险级别时，可以使用此功能关闭机器或采取预防措施。 
 
 本教程介绍如何执行下列操作：
 
@@ -42,7 +42,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure IoT Edge 设备：
 
@@ -62,7 +62,7 @@ Azure IoT Edge 设备：
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-创建可以在 IoT Edge 设备上运行的 Azure 流分析作业时，需采用特定的存储方式，以便能够从设备进行调用。 可以使用现有 Azure 存储帐户，也可以创建新的 Azure 存储帐户。 
+创建要在 IoT Edge 设备上运行的 Azure 流分析作业时，需要以一种可从设备调用的方式存储该作业。 可以使用现有 Azure 存储帐户，也可以创建新的 Azure 存储帐户。 
 
 1. 在 Azure 门户中，转到“创建资源” > “存储” > “存储帐户”。    
 
@@ -70,9 +70,9 @@ Azure IoT Edge 设备：
 
    | 字段 | Value |
    | ----- | ----- |
-   | 订阅 | 选择与 IoT 中心相同的订阅。 |
+   | 订阅 | 选择 IoT 中心所在的订阅。 |
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
-   | Name | 为存储帐户提供唯一的名称。 | 
+   | 名称 | 为存储帐户提供唯一的名称。 | 
    | 位置 | 选择靠近你的位置。 |
 
 
@@ -80,21 +80,21 @@ Azure IoT Edge 设备：
 
 1. 查看设置，然后选择“创建”  。
 
-### <a name="create-a-new-job"></a>创建新的作业
+### <a name="create-a-new-job"></a>创建新作业
 
-1. 在 Azure 门户中，转到“创建资源” > “物联网” > “流分析作业”。   
+1. 在 Azure 门户中，访问“创建资源” > “物联网” > “流分析作业”    。
 
 1. 提供以下值，以便创建作业：
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
-   | 作业名称 | 为作业提供一个名称。 例如，**IoTEdgeJob** | 
-   | 订阅 | 选择与 IoT 中心相同的订阅。 |
+   | 作业名称 | 为作业提供一个名称。 例如 **IoTEdgeJob** | 
+   | 订阅 | 选择 IoT 中心所在的订阅。 |
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 位置 | 选择靠近你的位置。 | 
-   | 宿主环境 | 选择“边缘”。  |
+   | 宿主环境 | 选择“Edge”  。 |
  
-1. 选择**创建**。
+1. 选择“创建”  。
 
 ### <a name="configure-your-job"></a>配置作业
 
@@ -112,7 +112,7 @@ Azure IoT Edge 设备：
 
 1. 在“新建输入”  窗格中，输入 **temperature** 作为输入别名。 
 
-1. 其他字段保留默认值，然后选择“保存”。 
+1. 对其他字段保留默认值，然后选择“保存”  。
 
 1. 在“作业拓扑”下  ，打开“输出”  ，然后选择“添加”  。
 
@@ -122,11 +122,11 @@ Azure IoT Edge 设备：
 
 1. 在“新建输出”  窗格中，输入 **alert** 作为输出别名。 
 
-1. 其他字段保留默认值，然后选择“保存”。 
+1. 对其他字段保留默认值，然后选择“保存”  。
 
 1. 在“作业拓扑”下选择“查询”。  
 
-1. 将默认文本替换为以下查询。 如果 30 秒的窗口中的平均机器温度达到了 70 度，SQL 代码会将重置命令发送到 alert 输出。 重置命令已作为可执行的操作预先编程到传感器中。 
+1. 将默认文本替换为以下查询。 如果 30 秒的窗口中的平均机器温度达到了 70 度，SQL 代码会将重置命令发送到 alert 输出。 重置命令已作为可执行的操作以编程方式预先设定到传感器中。 
 
     ```sql
     SELECT  
@@ -139,7 +139,7 @@ Azure IoT Edge 设备：
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 ### <a name="configure-iot-edge-settings"></a>配置 IoT Edge 设置
 
@@ -153,13 +153,13 @@ Azure IoT Edge 设备：
 
 1. 对于“容器”字段，请选择“新建”，然后为存储容器提供一个名称。   
 
-1. 选择“保存”。  
+1. 选择“保存”  。 
 
 ## <a name="deploy-the-job"></a>部署作业
 
 现已准备好在 IoT Edge 设备上部署 Azure 流分析作业。 
 
-在本部分，请使用 Azure 门户中的**设置模块**向导来创建部署清单。  部署清单是一个 JSON 文件，它描述将要部署到设备的所有模块、存储模块映像的容器注册表、应如何管理模块以及模块如何相互通信。 IoT Edge 设备从 IoT 中心检索其部署清单，然后使用该清单中的信息来部署和配置其所有已分配的模块。 
+本部分介绍如何使用“设置模块”  向导在 Azure 门户中创建“部署清单”  。 部署清单是一个 JSON 文件，它描述将要部署到设备的所有模块、存储模块映像的容器注册表、应如何管理模块以及模块如何相互通信。 IoT Edge 设备从 IoT 中心检索其部署清单，然后使用该清单中的信息来部署和配置其所有已分配的模块。 
 
 对于本教程中，需要部署两个模块。 第一个模块是 **SimulatedTemperatureSensor**：一个模拟温度和湿度传感器的模块。 第二个是流分析作业。 传感器模块提供了作业查询将要分析的数据流。 
 
@@ -184,38 +184,34 @@ Azure IoT Edge 设备：
 
    保存更改后，流分析作业的详细信息将发布到创建的存储容器。 
 
-1. 将流分析模块添加到模块列表后，选择“配置”以查看其构建方式。  
+1. 将流分析模块添加到模块列表后，选择其名称以查看其构建方式，并在“更新 IoT Edge 模块”页上更新其设置  。
 
-   映像 URI 指向一个标准 Azure 流分析映像。 此映像用于每个部署到 IoT Edge 设备的流分析模块。 
+   “模块设置”选项卡具有指向标准 Azure 流分析映像的“映像 URI”   。 此映像用于每个部署到 IoT Edge 设备的流分析模块。
 
-   模块孪生是通过一个名为 **ASAJobInfo** 的所需属性配置的。 该属性的值指向存储容器中的作业定义。 此属性说明如何根据特定的作业详细信息配置流分析映像。 
+   “模块孪生设置”选项卡显示用于定义 Azure 流分析 (ASA) 属性（称为 ASAJobInfo）的 JSON   。 该属性的值指向存储容器中的作业定义。 此属性说明如何根据特定的作业详细信息配置流分析映像。
 
-   默认情况下，流分析模块名称与它基于的作业的名称相同。 如果需要，可在此页上更改模块名称，但不必要这样做。 
+   默认情况下，流分析模块名称与它基于的作业的名称相同。 如果需要，可在此页上更改模块名称，但不必要这样做。
 
-1. 关闭模块配置页。
+1. 选择“取消”或“保存”   。
 
-1. 记下流分析模块的名称（因为将在下一步中需要它），然后选择“下一步”  以继续。
+1. 请记下流分析模块的名称（因为需要在下一步使用它），然后选择“下一步:  路由”以继续操作。
 
-1. 将“Routes”中的默认值替换为以下代码。  将 _{moduleName}_ 的所有三个实例更新为 Azure 流分析模块的名称。 
+1. 在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式  。 使用名称/值对构造消息。 将默认的 `route` 和 `upstream` 名称和值替换为下表中显示的对（以下名称/值对），将 {moduleName} 的实例替换为 Azure 流分析模块的名称  。
 
-    ```json
-    {
-        "routes": {
-            "telemetryToCloud": "FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream",
-            "alertsToCloud": "FROM /messages/modules/{moduleName}/* INTO $upstream",
-            "alertsToReset": "FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/SimulatedTemperatureSensor/inputs/control\")",
-            "telemetryToAsa": "FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")"
-        }
-    }
-    ```
+    | 名称 | Value |
+    | --- | --- |
+    | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
+    | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |
+    | `alertsToReset` | `FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/SimulatedTemperatureSensor/inputs/control\")` |
+    | `telemetryToAsa` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")`|
 
-   此处声明的路由定义通过 IoT Edge 设备的数据流。 来自 SimulatedTemperatureSensor 的遥测数据先发送到 IoT 中心，然后发送到在流分析作业中配置的“温度”输入。  **警报**输出消息先发送到 IoT 中心，然后发送到 SimulatedTemperatureSensor 模块以触发重置命令。 
+    此处声明的路由定义通过 IoT Edge 设备的数据流。 来自 SimulatedTemperatureSensor 的遥测数据先发送到 IoT 中心，然后发送到在流分析作业中配置的“温度”输入。  **警报**输出消息先发送到 IoT 中心，然后发送到 SimulatedTemperatureSensor 模块以触发重置命令。
 
-1. 选择“**下一步**”。
+1. 在完成时选择“下一步:  查看 + 创建”。
 
-1. 在“查看部署”步骤中，可以查看在向导中提供的信息如何转换为 JSON 部署清单。  查看完清单后，选择“提交”。 
+1. 在“查看 + 创建”选项卡中，可以查看在向导中提供的信息如何转换为 JSON 部署清单  。 查看完清单后，选择“创建”  。
 
-1. 返回到“设备详细信息”页，并选择“刷新”  。  
+1. 你将返回到设备详细信息页。 选择“刷新”  。  
 
     应会看到，新的流分析模块与 IoT Edge 代理模块和 IoT Edge 中心模块都在运行。 此信息可能需要在几分钟后才能抵达 IoT Edge 设备，然后新模块将会启动。 如果暂时未看到模块运行，请继续刷新页面。
 
@@ -230,10 +226,8 @@ Azure IoT Edge 设备：
    ```cmd/sh
    iotedge list  
    ```
-   <!--
-   ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
-   -->
-2. 查看所有系统日志和指标数据。 使用流分析模块名称：
+
+1. 查看所有系统日志和指标数据。 使用流分析模块名称：
 
    ```cmd/sh
    iotedge logs -f {moduleName}  

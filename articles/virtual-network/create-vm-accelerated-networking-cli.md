@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/10/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: d94d0b4e44361d314b96d7327af9d036840b3d84
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: dda9573a18513a1fce8c6f13ba3abbce89ddcc48
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657662"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859220"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
 
@@ -65,7 +65,10 @@ ms.locfileid: "74657662"
 
 有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
 
-### <a name="regions"></a>Regions
+### <a name="custom-images"></a>自定义映像
+如果你使用的是自定义映像，并且映像支持加速网络，请确保在 Azure 上使用 Mellanox ConnectX-3 和 ConnectX-4 Lx NICs 所需的驱动程序。
+
+### <a name="regions"></a>区域
 在所有公共 Azure 区域和 Azure 中国云中均可用。
 
 <!--Follow the global site below-->
@@ -206,7 +209,9 @@ ssh azureuser@<your-public-ip-address>
 
 * **Ubuntu 16.04**：4.11.0-1013
 * **SLES SP3**：4.4.92-6.18
-* **RHEL**:7.4.2017120423
+    
+    <!--Not Available on * **RHEL**: 7.4.2017120423-->
+    
 * **CentOS**:7.4.20171206
 
 使用 `lspci` 命令确认向 VM 公开了 Mellanox VF 设备。 返回的输出与以下输出类似：

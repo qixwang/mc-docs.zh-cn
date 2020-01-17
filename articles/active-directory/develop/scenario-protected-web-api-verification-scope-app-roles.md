@@ -1,5 +1,5 @@
 ---
-title: 使用受保护的 Web API 验证范围和应用角色
+title: 使用受保护的 Web API 验证范围和应用角色 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成受保护的 Web API 和配置应用程序的代码。
 services: active-directory
@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b3ce81a4d6d7b7c0b5a4757807f307193e0fa2
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: df6ebefe3e93e0369ed06d5e2ad50fb0e21515fe
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830919"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776938"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 Web API：验证范围和应用角色
 
@@ -43,7 +42,7 @@ ms.locfileid: "73830919"
 - 控制器本身（若要保护控制器的所有操作）
 - API 的单个控制器操作
 
-```CSharp
+```csharp
     [Authorize]
     public class TodoListController : Controller
     {
@@ -60,7 +59,7 @@ ms.locfileid: "73830919"
 
 如果 API 由客户端应用代表用户调用，则该应用需要请求具有该 API 的特定范围的持有者令牌。 （请参阅[代码配置 | 持有者令牌](scenario-protected-web-api-app-configuration.md#bearer-token)。）
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : Controller
 {
@@ -87,7 +86,7 @@ public class TodoListController : Controller
 - 验证是否存在名为 `http://schemas.microsoft.com/identity/claims/scope` 或 `scp` 的声明。
 - 验证该声明是否具有包含 API 所需范围的值。
 
-```CSharp
+```csharp
     /// <summary>
     /// When applied to a <see cref="HttpContext"/>, verifies that the user authenticated in the 
     /// web API has any of the accepted scopes.
@@ -122,7 +121,7 @@ public class TodoListController : Controller
 如果 Web API 由某个[守护程序应用](scenario-daemon-overview.md)调用，该应用应该对该 Web API 拥有应用程序权限。 我们已在[公开应用程序权限（应用角色）](/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)中发现，你的 API 会公开此类权限（例如 `access_as_application` 应用角色）。
 现在，需要让 API 验证它收到的令牌是否包含 `roles` 声明，以及此声明是否具有所需的值。 执行此验证的代码类似于验证委托权限的代码，不同之处在于，前者不会对 `scopes` 进行测试，而是对 `roles` 测试控制器操作：
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -135,7 +134,7 @@ public class TodoListController : ApiController
 
 `ValidateAppRole()` 方法可能类似于：
 
-```CSharp
+```csharp
 private void ValidateAppRole(string appRole)
 {
     //
@@ -162,7 +161,7 @@ private void ValidateAppRole(string appRole)
 
 如果你希望仅允许守护程序应用调用 Web API，请在验证应用角色时添加一个条件，规定该令牌是仅限应用的令牌：
 
-```CSharp
+```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
 string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;

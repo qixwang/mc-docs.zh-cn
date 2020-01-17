@@ -1,29 +1,25 @@
 ---
-title: Xamarin Android 注意事项（适用于 .NET 的 Microsoft 身份验证库）| Azure
+title: Xamarin Android 注意事项 (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/24/2019
-ms.date: 08/23/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f9389575c2bc9287856e424d9aa42eac130bddf
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 4dcb0c0a37f7bd7775536a0b6bd9a5f9481a58c4
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993250"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776979"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>与 MSAL.NET 配合使用时特定于 Xamarin Android 的注意事项
 本文介绍将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
@@ -39,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 也可以通过回调在 PublicClientApplication 级别（MSAL4.2+ 中）设置此项。
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -49,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 建议使用[此处](https://github.com/jamesmontemagno/CurrentActivityPlugin)的 CurrentActivityPlugin。  然后，PublicClientApplication 生成器代码将如下所示：
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -87,9 +83,26 @@ protected override void OnActivityResult(int requestCode,
 </activity>
 ```
 
+或者，可以[用代码创建活动](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)，而无需手动编辑`AndroidManifest.xml`。 为此，必须创建一个具有 `Activity` 和 `IntentFilter` 属性的类。 表示上述 xml 的相同值的类为：
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3.X 清单
+
+XamarinForms 4.3.x 生成的代码在 `AndroidManifest.xml` 中将 `package` 属性设置为 `com.companyname.{appName}`。 如果将 `DataScheme` 用作 `msal{client_id}`，则可能需要将该值更改为与 `MainActivity.cs` 命名空间相同。
+
 ## <a name="use-the-embedded-web-view-optional"></a>使用嵌入式 Web 视图（可选）
 
-默认情况下，MSAL.NET 使用系统 Web 浏览器。 在某些罕见情况下，可能需要指定你需要使用嵌入式 Web 视图。 有关详细信息，请参阅 [MSAL.NET 使用 Web 浏览器](msal-net-web-browsers.md)和 [Android 系统浏览器](msal-net-system-browser-android-considerations.md)。
+默认情况下，MSAL.NET 使用系统 Web 浏览器，它使你能够通过 Web 应用程序和其他应用获取 SSO。 在某些罕见情况下，可能需要指定你需要使用嵌入式 Web 视图。 有关详细信息，请参阅 [MSAL.NET 使用 Web 浏览器](msal-net-web-browsers.md)和 [Android 系统浏览器](msal-net-system-browser-android-considerations.md)。
 
 ```csharp
 bool useEmbeddedWebView = !app.IsSystemWebViewAvailable;

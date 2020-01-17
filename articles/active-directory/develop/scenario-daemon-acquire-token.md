@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的守护程序应用（获取应用的令牌）- Microsoft 标识平台
+title: 获取用于调用 Web API（守护程序应用）的令牌 - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的守护程序应用（获取令牌）
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de68f6ceb0c1b626edfe7b0cc9845ad01647e57
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 83efabb788c58597dc5d1bfee3e2b36ac46281b8
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830931"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776955"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
@@ -34,7 +33,7 @@ ms.locfileid: "73830931"
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
@@ -71,7 +70,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://microsoftgraph.chinacloudapi.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 
 // With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the

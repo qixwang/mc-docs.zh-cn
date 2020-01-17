@@ -1,21 +1,21 @@
 ---
-title: 分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure | Azure
-description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便从 VMware 灾难恢复到 Azure。
+title: 分析部署规划器报表以使用 Azure Site Recovery 进行 VMware 灾难恢复
+description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报表，以使用 Azure Site Recovery 从 VMware 灾难恢复到 Azure。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 07/29/2019
-ms.date: 08/26/2019
+origin.date: 11/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1c938e086755867a081d3dd33809ca8a23f0d67e
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 6f3962b0407af9c629d299615f851b48c5349897
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134468"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776718"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署规划器报表以从 VMware 灾难恢复到 Azure
 
 生成的 Microsoft Excel 报表包含以下工作表：
 ## <a name="on-premises-summary"></a>本地摘要
@@ -133,7 +133,8 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 <!-- Not Avaiable on [supported target regions](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) -->
 <!-- Not Avaiable on [supported currencies](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies) -->
-**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Site Recovery 许可证成本。 成本计算基于在复制时和 DR 演练时上述四个部分（计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN，以及 Azure Site Recovery 许可证）所对应的使用量。
+
+**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Azure Site Recovery 许可证成本。 成本计算基于在复制时和 DR 演练时上述四个部分（计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN，以及 Azure Site Recovery 许可证）所对应的使用量。
 
 **按状态成本**：总灾难恢复 (DR) 成本按两种不同的状态（“复制”和“DR 演练”）分类。
 
@@ -181,7 +182,7 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **VM 名称**：VM 名称或 IP 地址，生成报告时在 VMListFile 中使用。 此列还列出附加到 VM 的磁盘 (VMDK)。 为了区分使用重复名称或 IP 地址的 vCenter VM，这些名称包含 ESXi 主机名。 列出的 ESXi 主机是在其中放置了 VM 的主机，该 VM 是在分析期间通过工具发现后放置的。
 
-**VM 兼容性**：值为“是”和“是”。   \* “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况  。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
+**VM 兼容性**：值为“是”和“是”。  **\*** “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况  。 在这里，所分析的高变动量或 IOPS 磁盘适合 P20 或 P30 类别，但考虑到磁盘大小，因此将其归入较低的 P10 或 P20 类别。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型。 例如：
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15
 * 256 GB 到 512 GB 为 P20。
@@ -220,14 +221,11 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 ![不兼容 VM 的 Excel 电子表格
 ](media/site-recovery-vmware-deployment-planner-analyze-report/incompatible-vms-v2a.png)
 
-**VM 名称**：VM 名称或 IP 地址，生成报告时在 VMListFile 中使用。 此列还列出附加到 VM 的 VMDK。 为了区分使用重复名称或 IP 地址的 vCenter VM，这些名称包含 ESXi 主机名称。 列出的 ESXi 主机是在其中放置了 VM 的主机，该 VM 是在分析期间通过工具发现后放置的。
+**VM 名称**：VM 名称或 IP 地址，生成报告时在 VMListFile 中使用。 此列还列出附加到 VM 的 VMDK。 为了区分使用重复名称或 IP 地址的 vCenter VM，这些名称包含 ESXi 主机名。 列出的 ESXi 主机是在其中放置了 VM 的主机，该 VM 是在分析期间通过工具发现后放置的。
 
 **VM 兼容性**：指示给定的 VM 为何无法与 Site Recovery 兼容使用。 会针对 VM 的每个不兼容磁盘说明原因，而根据已发布的[存储限制](https://aka.ms/azure-storage-scalbility-performance)，这些原因不外乎：
 
-* 磁盘大小超出 4095 GB。 Azure 存储目前不支持大于 4095 GB 的数据磁盘大小。
-
-* OS 磁盘大于 2048 GB。 Azure 存储目前不支持大于 2048 GB 的 OS 磁盘大小。
-
+* 数据磁盘大小错误或 OS 磁盘大小错误。 [查看](vmware-physical-azure-support-matrix.md#azure-vm-requirements)支持限制。 
 * VM 总大小（复制 + TFO）超出系统支持的存储帐户大小限制 (35 TB)。 当 VM 中的单个磁盘的性能特征超出系统支持的适用于标准存储的 Azure 或 Site Recovery 最大限制时，通常会表现出这种不兼容性。 如果出现这种情况，则必须将 VM 置于高级存储区域。 但是，高级存储帐户支持的最大大小为 35 TB，并且无法跨多个存储帐户保护单个需要保护的 VM。 另请注意，在受保护 VM 上执行测试性故障转移时，该故障转移运行时所使用的存储帐户与进行复制时所使用的存储帐户相同。 在这种情况下，可以在设置时将磁盘大小加倍，既可进行复制，又可成功地进行测试性故障转移。
 
 * 源 IOPS 超出了每个磁盘支持的存储 IOPS 限制，即 7500。
@@ -235,8 +233,6 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 * 源 IOPS 超出了每个 VM 支持的存储 IOPS 限制，即 80,000。
 
 * 平均数据变动量超出了磁盘支持的 Site Recovery 数据变动量限制：平均 I/O 大小不能超过 20 MB/秒。
-
-* 平均数据变动量超出了 VM 支持的 Site Recovery 数据变动量限制（所有磁盘变动量之和）：平均 I/O 大小不能超过 25 MB/秒。
 
 * VM 中所有磁盘的峰值数据变动量超出了每个 VM 支持的最大 Site Recovery 峰值数据变动量限制，即 54 MB/秒。
 
@@ -278,7 +274,6 @@ VMware 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细�
 
 **源数据变动量** | **最大限制**
 ---|---
-每个 VM 的平均数据变动量| 25 MB/秒
 VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 进程服务器支持的每日最大数据变动量 | 2 TB
 
@@ -290,4 +285,4 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 ## <a name="next-steps"></a>后续步骤
 详细了解[成本估算](site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

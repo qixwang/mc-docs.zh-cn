@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure 流分析 CI/CD npm 包
 description: 本文介绍如何使用 Azure 流分析 CI/CD npm 包设置持续集成和部署过程。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/15/2019
 ms.date: 07/12/2019
-ms.openlocfilehash: 77a317c0b954d2b62c46d54005cad1ec9db3717d
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 8b21d76c5d1ed8dedfb6207d132c452fbc1af833
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674696"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857140"
 ---
 # <a name="use-the-stream-analytics-cicd-npm-package"></a>使用流分析 CI/CD npm 包
 本文介绍如何使用 Azure 流分析 CI/CD npm 包设置持续集成和部署过程。
@@ -24,7 +23,7 @@ ms.locfileid: "71674696"
 
 可使用 **asa-streamanalytics-cicd** npm 包启用 Azure 流分析作业的持续集成和部署。 npm 包提供了用于生成[流分析 Visual Studio Code 项目](quick-create-vs-code.md)的 Azure 资源管理器模板的工具。 它可以在 Windows、macOS 和 Linux 上使用，而无需安装 Visual Studio Code。
 
-[下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd)后，请使用以下命令输出 Azure 资源管理器模板。 **scriptPath** 参数是项目中 **asaql** 文件的绝对路径。 请确保 asaproj.json 和 JobConfig.json 文件与脚本文件位于同一文件夹中。 如果未指定 **outputPath**，则模板将放置在项目的 **bin** 文件夹下的 **Deploy** 文件夹中。
+安装包后，请使用以下命令输出 Azure 资源管理器模板。 **scriptPath** 参数是项目中 **asaql** 文件的绝对路径。 请确保 asaproj.json 和 JobConfig.json 文件与脚本文件位于同一文件夹中。 如果未指定 **outputPath**，则模板将放置在项目的 **bin** 文件夹下的 **Deploy** 文件夹中。
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>

@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 02/28/2019
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5c4dadb76dc48ecfc6548865938526a4da5fdd80
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 72f3626c76e30cfb4502de8021e8139a090cf7d0
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068898"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859879"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -68,7 +68,7 @@ Azure 平台还有助于简化 AKS 群集的虚拟网络。 创建 Kubernetes �
 <a name="kubenet-basic-networking"></a>
 ### <a name="kubenet-basic-networking"></a>Kubenet（基本）网络
 
-kubenet 网络选项是用于创建 AKS 群集的默认配置  。 使用 kubenet，节点从 Azure 虚拟网络子网获取 IP 地址  。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 Pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址通过 NAT 转换为节点的主 IP 地址。
+kubenet 网络选项是用于创建 AKS 群集的默认配置  。 节点使用 *kubenet* 从 Azure 虚拟网络子网获取 IP 地址。 Pod 接收从逻辑上不同的地址空间到节点的 Azure 虚拟网络子网的 IP 地址。 然后配置网络地址转换 (NAT)，以便 Pod 可以访问 Azure 虚拟网络上的资源。 流量的源 IP 地址通过 NAT 转换为节点的主 IP 地址。
 
 节点使用 [kubenet][kubenet] Kubernetes 插件。 可以让 Azure 平台创建和配置虚拟网络，或选择将 AKS 群集部署到现有虚拟网络子网中。 同样，只有 Pod 和接收可路由 IP 地址的节点才能使用 NAT 与 AKS 群集外的其他资源进行通信。 这种方法大大减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
 
@@ -77,7 +77,7 @@ kubenet 网络选项是用于创建 AKS 群集的默认配置  。 使用 kubene
 <a name="azure-cni-advanced-networking"></a>
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI（高级）网络
 
-借助 Azure CNI，每个 pod 都可以从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间必须是唯一的，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，否则可能会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
+借助 Azure CNI，每个 pod 都可以从子网获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，否则可能会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
 节点使用 [Azure 容器网络接口 (CNI)][cni-networking] Kubernetes 插件。
 
@@ -95,7 +95,7 @@ Kubenet 和 Azure CNI 都为 AKS 群集提供网络连接。 不过，这两个�
     * 必须手动管理和维护用户定义的路由 (UDR)。
     * 每个群集最多可包含 400 个节点。
 * **Azure CNI**
-    * Pod 建立全面的虚拟网络连接，可以直接从群集外部进行访问。
+    * Pod 建立了全面的虚拟网络连接，可以通过其专用 IP 地址直接从已连接的网络对其进行访问。
     * 需要更多的 IP 地址空间。
 
 Kubenet 和 Azure CNI 之间存在以下行为差异：

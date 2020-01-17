@@ -1,7 +1,6 @@
 ---
-title: 将 SQL 数据库中的参考数据用于 Azure 流分析作业
+title: 在 Azure 流分析作业中使用 SQL 数据库引用数据
 description: 本文介绍如何在 Azure 门户和 Visual Studio 中对 Azure 流分析作业使用 SQL 数据库作为参考数据输入。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 01/29/2019
 ms.date: 01/29/2019
-ms.openlocfilehash: 5fc2a1a5eedd38e44c3575fe316f73e8c6c7d14a
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 0ec400309264c87902500046e1364f3eee46e9cb
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674788"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857141"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>将 SQL 数据库中的参考数据用于 Azure 流分析作业
 
