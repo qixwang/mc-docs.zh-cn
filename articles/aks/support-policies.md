@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 04/01/2019
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 904feb27794346cfea54b8162abf9f0524368f84
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: c148dea6ed85ed242aa6f9160f9decbf9f8d23c5
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068877"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859846"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -72,7 +72,7 @@ Azure 提供以下方面的技术支持：
 
 Azure 不提供以下方面的技术支持：
 
-* 有关 Kubernetes 用法的问题。 例如，Azure 支持部门不提供有关如何创建自定义入口控制器、使用应用程序工作负荷，或者应用第三方/开源软件包或工具的建议。 
+* 有关 Kubernetes 用法的问题。 例如，Azure 支持部门不提供有关如何创建自定义入口控制器、使用应用程序工作负荷，或者应用第三方/开源软件包或工具的建议。
     > [!NOTE]
     > Azure 支持部门可以提供有关 AKS 群集功能、自定义和优化的建议（例如 Kubernetes 操作问题和过程）。
 * 不是作为 Kubernetes 控制平面的一部分提供的，或者不是在 AKS 群集中部署的第三方开源项目。 这些项目可能包括 Istio、Helm、Envoy 等等。
@@ -172,5 +172,5 @@ AKS 仅支持上游 Kubernetes 项目中的稳定功能。 除非另有说明，
     * 该问题，包括上游 bug 的链接。
     * 解决方法，以及有关解决方案升级或其他持久化措施的详细信息。
     * 问题包含内容的大致时间线，根据上游版本发布频率提供。
-  
-<!--Update_Description: wording update -->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

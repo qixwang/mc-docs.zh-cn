@@ -1,41 +1,32 @@
 ---
-title: 使用 Azure Service Fabric 报告和检查运行状况 | Azure
+title: 使用 Azure Service Fabric 报告和检查运行状况
 description: 了解如何通过服务代码发送运行状况报告，并使用 Azure Service Fabric 提供的运行状况监视工具来检查服务的运行状况。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/25/2019
-ms.date: 07/08/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: b2a8c5be57ba0f5ec9d71f60642cb824641652bb
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 7510c9f0d420a2fb3d5b815fe62c7e89c35392f0
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844618"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742432"
 ---
 # <a name="report-and-check-service-health"></a>报告和检查服务运行状况
 服务发生问题时，必须能够快速检测问题，才能响应并修复所有事件和中断。 如果从服务代码向 Azure Service Fabric 运行状况管理器报告问题和失败，可使用 Service Fabric 提供的标准运行状况监视工具来检查运行状况。
 
-可通过三种方式报告服务的运行状况：
+有三种方式可以报告服务的运行状况：
 
-* 使用 [Partition](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.istatefulservicepartition?view=azure-dotnet) 或 [CodePackageActivationContext](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 对象。  
+* 使用 [Partition](https://docs.azure.cn/dotnet/api/system.fabric.istatefulservicepartition?view=azure-dotnet) 或 [CodePackageActivationContext](https://docs.azure.cn/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 对象。  
   可以使用 `Partition` 和 `CodePackageActivationContext` 对象在属于当前上下文一部分的项目中报告运行状况。 例如，作为副本一部分运行的代码只能报告该副本、其所属的分区，以及其所属应用程序的运行状况。
 * 使用 `FabricClient`。   
-  如果群集不[安全](service-fabric-cluster-security.md)或者使用管理员权限运行服务，则可以使用 `FabricClient` 从服务代码中报告运行状况。 大多数实际情况下都要求使用安全群集，或提供管理员权限。 可以使用 `FabricClient`报告任何属于群集一部分的实体的运行状况。 但是，在理想情况下，服务代码应该只发送与其本身运行状况相关的报告。
+  如果群集不[安全](service-fabric-cluster-security.md)或者使用管理员权限运行服务，则可以使用 `FabricClient` 从服务代码中报告运行状况。 大多数实际情况下都要求使用安全群集，或提供管理员权限。 可以使用 `FabricClient`报告任何属于群集一部分的实体的运行状况。 但是，理想情况下，服务代码应该只发送与其本身运行状况相关的报告。
 * 在群集、应用程序、部署的应用程序、服务、服务包、分区、副本或节点级别上使用 REST API。 可以在容器中用来报告运行状况。
 
-本文将引导完成从服务代码报告运行状况的示例。 本示例还演示如何使用 Service Fabric 提供的工具检查运行状况。 本文旨在快速介绍 Service Fabric 中的运行状况监视功能。 有关详细信息，可以从本文末尾的链接开始，阅读一系列有关运行状况的深入文章。
+本文介绍从服务代码报告运行状况的示例。 本示例还演示如何使用 Service Fabric 提供的工具检查运行状况。 本文旨在快速介绍 Service Fabric 中的运行状况监视功能。 有关详细信息，可以从本文末尾的链接开始，阅读一系列有关运行状况的深入文章。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 必须已安装以下软件：
 
 * Visual Studio 2015 或 Visual Studio 2019
@@ -65,7 +56,7 @@ ms.locfileid: "67844618"
 ## <a name="to-add-custom-health-events-to-your-service-code"></a>将自定义运行状况事件添加到服务代码
 Visual Studio 中的 Service Fabric 项目模板包含示例代码。 以下步骤说明如何从服务代码报告自定义运行状况事件。 此类报告会自动显示在 Service Fabric 提供的标准运行状况监视工具中，例如 Service Fabric Explorer、Azure 门户运行状况视图以及 PowerShell。
 
-1. 在 Visual Studio 中重新打开前面创建的应用程序，或者使用**有状态服务** Visual Studio 模板创建新应用程序。
+1. 在 Visual Studio 中重新打开前面创建的应用程序，或者使用 **有状态服务** Visual Studio 模板创建新应用程序。
 1. 打开 Stateful1.cs 文件并在 `RunAsync` 方法中找到 `myDictionary.TryGetValueAsync` 调用。 可以看到，此方法返回保存当前计数器值的 `result` ，因为此应用程序中的关键逻辑是使计数保持运行。 如果此应用程序是一个实际的应用程序，并且缺少结果即意味着失败，那么，可以标记该事件。
 1. 若要在缺少结果代表失败时报告运行状况事件，请添加以下步骤。
 
@@ -84,7 +75,7 @@ Visual Studio 中的 Service Fabric 项目模板包含示例代码。 以下步�
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-    我们将报告副本运行状况，由于它是从有状态服务报告的。 `HealthInformation` 参数存储所要报告的运行状况问题的相关信息。
+    我们报告副本运行状况，因为它是从有状态服务报告的。 `HealthInformation` 参数存储所要报告的运行状况问题的相关信息。
 
     如果创建了无状态服务，请使用以下代码
 
@@ -115,7 +106,7 @@ Visual Studio 中的 Service Fabric 项目模板包含示例代码。 以下步�
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
     ```
-1. 让我们模拟这种失败并看看它如何显示在运行状况监视工具中。 若要模拟这种失败，请注释掉之前添加的运行状况报告代码中的第一行。 注释掉第一行之后，代码将如以下示例所示。
+1. 让我们模拟这种失败并看看它如何显示在运行状况监视工具中。 若要模拟这种失败，请注释掉之前添加的运行状况报告代码中的第一行。 注释掉第一行之后，代码如以下示例所示。
 
     ```csharp
     //if(!result.HasValue)
@@ -134,7 +125,7 @@ Visual Studio 中的 Service Fabric 项目模板包含示例代码。 以下步�
 
 此报告将保留在运行状况管理器中，直到被另一份报告替换或此副本被删除。 由于我们未在 `HealthInformation` 对象中设置此运行状况报告的 `TimeToLive`，因此报告永不过期。
 
-我们建议在最细微的级别（在本例中为副本）报告运行状况。 也可以报告 `Partition` 的运行状况。
+我们建议在最细微的级别（在本例中为副本）上报告运行状况。 也可以报告 `Partition`的运行状况。
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);

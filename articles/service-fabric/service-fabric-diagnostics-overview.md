@@ -1,30 +1,23 @@
 ---
-title: Azure Service Fabric 监视和诊断概述 | Azure
+title: Azure Service Fabric 监视和诊断概述
 description: 了解 Azure Service Fabric 群集、应用程序和服务的监视与诊断。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/17/2019
-ms.date: 04/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: bd94636be70a1b523f3d7d43530a26c4377630f0
-ms.sourcegitcommit: 1ea0f453e7dcaef67f3c52747778c7f3b82e3e38
+ms.openlocfilehash: 24c14a53fc0dae7163639d1c3db225cea78e1521
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277535"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742398"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric 的监视和诊断
 
 本文概述 Azure Service Fabric 的监视和诊断。 在任何云环境中开发、测试和部署工作负荷时，监视和诊断至关重要。 例如，可以跟踪应用程序的使用方式、Service Fabric 平台所采取的操作、带性能计数器的资源利用率以及群集的总体运行状况。 可以使用此信息来诊断和更正问题，避免将来发生此类问题。 接下来的几节将简要介绍 Service Fabric 监视的每个区域，以便将生产工作负荷纳入考虑范围。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="application-monitoring"></a>应用程序监视
 应用程序监视跟踪应用程序的功能和组件的使用方式。 监视应用程序可以确保捕获影响用户的问题。 应用程序监视主要负责用户开发应用程序及其服务，因为它对应用程序的业务逻辑是唯一的。 监视应用程序可能对以下情况有帮助：
@@ -112,4 +105,4 @@ Service Fabric 还为 Reliable Services 和 Reliable Actors 编程模型提供�
 
     <!-- Not Avaiable on (https://docs.microsoft.com/azure/architecture/best-practices/monitoring)-->
 
-<!--Update_Description: update meta properties, wording update, update link  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

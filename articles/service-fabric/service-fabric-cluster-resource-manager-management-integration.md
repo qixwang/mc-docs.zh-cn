@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 群集Resource Manager - 管理集成 | Azure
+title: Service Fabric 群集资源管理器 - 管理集成
 description: 概述群集 Resource Manager 与 Service Fabric 管理之间的集成点。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9839356bc5110d23ad43b3d0af7cf98c4af284e7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f1199ffb16dd572d6c5a779b70b99e66ee94907d
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335181"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742331"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>群集 Resource Manager 与 Service Fabric 群集管理的集成
 Service Fabric 群集资源管理器不会在 Service Fabric 中驱动升级，但会关注升级。 群集 Resource Manager 帮助进行管理的第一种方式是跟踪群集及其中服务的所需状态。 无法将群集放入所需配置时，群集 Resource Manager 会发出运行状况报告。 例如，如果容量不足，则群集资源管理器会发出运行状况警告和错误，指示该问题。 集成的另一个部分与升级的工作方式有关。 在升级期间，群集资源管理器会稍微改变其行为。  

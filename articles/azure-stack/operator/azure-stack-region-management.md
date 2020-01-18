@@ -1,5 +1,6 @@
 ---
 title: Azure Stack 中的区域管理 | Microsoft Docs
+titleSuffix: Azure Stack
 description: Azure Stack 中的区域管理概述。
 services: azure-stack
 documentationcenter: ''
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 08/13/2019
-ms.date: 09/16/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: 3be32d7cb3a13dbaaf6573fd38cb8d4eecb147b2
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: cc0262c14c616fda2d092d5ec087c9cb36373e9b
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857139"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737809"
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack 中的区域管理
 
@@ -36,13 +37,13 @@ Azure Stack 使用“区域”的概念，这些区域是由构成 Azure Stack �
 
 Azure Stack 在“区域管理”  磁贴中提供了一组区域管理功能。 Azure Stack 操作员可在管理员门户的默认仪表板上访问此磁贴。 可以通过此磁贴来监视和更新 Azure Stack 区域和及其区域特定的组件。
 
-![“区域管理”磁贴](media/azure-stack-region-management/image1.png)
+![Azure Stack 管理员门户中的“区域管理”磁贴](media/azure-stack-region-management/image1.png)
 
 如果单击“区域管理”  磁贴中的一个区域，可以访问以下信息：
 
-[![“区域管理”边栏选项卡上的窗格的说明](media/azure-stack-region-management/regionssm.png "“区域管理”边栏选项卡")](media/azure-stack-region-management/regions.png#lightbox)
+[![Azure Stack 管理员门户中“区域管理”边栏选项卡上的窗格说明](media/azure-stack-region-management/regionssm.png "Azure Stack 管理员门户中的“区域管理”边栏选项卡")](media/azure-stack-region-management/regions.png#lightbox)
 
-1. **资源菜单**：访问特定的基础结构管理领域，以及查看和管理用户资源，例如存储帐户和虚拟网络。
+1. **资源菜单**：访问不同的基础结构管理区域，并查看和管理用户资源，例如存储帐户和虚拟网络。
 
 2. **警报**：列出系统范围内的警报，并提供有关每个警报的详细信息。
 
@@ -58,5 +59,3 @@ Azure Stack 在“区域管理”  磁贴中提供了一组区域管理功能。
 
 - [在 Azure Stack 中监视运行状况和警报](azure-stack-monitor-health.md)
 - [在 Azure Stack 中管理更新](azure-stack-updates.md)
-
-<!-- Update_Description: wording update -->

@@ -1,24 +1,17 @@
 ---
-title: Azure Service Fabric 环境变量 | Azure
+title: Azure Service Fabric 环境变量
 description: Service Fabric 环境变量的参考文档
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 12/07/2017
-ms.date: 11/12/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 28db35b2ba5816c051efe4e74d32672f42e6a1d4
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: e7578f145bbeb6c3733d2d834f67bfdc19550dd9
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52664408"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742390"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
 

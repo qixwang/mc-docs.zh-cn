@@ -1,26 +1,17 @@
 ---
-title: 概述 Azure Service Fabric 执行组件生命周期 | Azure
+title: 概述 Azure Service Fabric 执行组件生命周期
 description: 介绍 Service Fabric Reliable Actor 生命周期、垃圾回收和如何手动删除执行组件及其状态
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/06/2017
-ms.date: 10/15/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3f997cfe9ce2cc7739147ed9c322679162451720
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: dabb1af81c08656d8c4cecf76d683452b3b8e3d7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52663694"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742430"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>执行组件生命周期、自动垃圾回收和手动删除
 首次调用执行组件的任何方法时即可激活该执行组件。 如果在可配置的一段时间内未使用执行组件，则此执行组件将停用（执行组件运行时对其进行垃圾回收）。 还可以在任何时候手动删除执行组件及其状态。
@@ -95,7 +86,7 @@ public class Program
     }
 }
 ```
-对于每个活动的执行组件，执行组件运行时将持续跟踪其处于空闲状态（即未使用）的时间。 执行组件运行时每 `ScanIntervalInSeconds` 检查每个执行组件，以查看是否可以对它执行垃圾回收，并且如果它已空闲 `IdleTimeoutInSeconds`，则对其予以回收。
+对于每个活动的执行组件，执行组件运行时将持续跟踪其处于空闲状态（即未使用）的时间。 执行组件运行时每隔 `ScanIntervalInSeconds` 检查每个执行组件，以查看是否可以对它进行垃圾回收，并且如果它已空闲 `IdleTimeoutInSeconds`，则对其进行标记。
 
 任何时候只要使用了执行组件，其空闲时间都会重置为 0。 此后，仅在此执行组件再次空闲 `IdleTimeoutInSeconds`，才会对其执行垃圾回收。 如果执行执行组件接口方法或执行组件提醒回调，则想到执行组件被视为已使用。 如果执行其计时器回调，则执行组件**不**被视为已使用。
 
@@ -127,6 +118,7 @@ public class Program
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
 <!--Update_Description: update meta properties -->

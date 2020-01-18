@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 编程模型概述 | Azure
+title: Service Fabric 编程模型概述
 description: Service Fabric 提供了两个框架用于生成服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 10/15/2018
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f202f3d29de973c994df5f87886554517bd6d2fd
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 270e80b7a74bfac7c052e6370bc0ce644326f2bb
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646630"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742273"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
 Service Fabric 提供了多种方法来编写和管理服务。 服务可以选择使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意已编译可执行程序，也可以是在 Service Fabric 群集上托管的容器中运行的代码。
@@ -31,7 +22,7 @@ Service Fabric 提供了多种方法来编写和管理服务。 服务可以选�
 通过部署第一个[来宾可执行文件应用程序](service-fabric-deploy-existing-app.md)开始使用来宾可执行文件。
 
 ## <a name="containers"></a>容器
-默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 Service Fabric 支持在 Windows Server 2016 上部署 Linux 容器 和 Windows 容器。 可以从任何容器存储库中拉取容器映像，并将其部署到计算机上。 可以在容器中将现有应用程序部署为来宾可执行文件、Service Fabric 无状态/有状态可靠服务或 Reliable Actors，并可以将进程中的服务和容器中的服务混用于同一应用程序。
+默认情况下，Service Fabric 以进程形式部署和激活服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 Service Fabric 支持在 Windows Server 2016 上部署 Linux 容器 和 Windows 容器。 可以从任何容器存储库中拉取容器映像，并将其部署到计算机上。 可以在容器中将现有应用程序部署为来宾可执行文件、Service Fabric 无状态/有状态可靠服务或 Reliable Actors，并可以将进程中的服务和容器中的服务混用于同一应用程序。
 
 [了解有关在 Windows 或 Linux 中容器化服务的详细信息](service-fabric-deploy-container.md)
 

@@ -1,25 +1,17 @@
 ---
-title: 在 Azure Service Fabric Linux 群集上设置加密证书并对机密进行加密 | Azure
+title: 在 Azure Service Fabric Linux 群集上设置加密证书并对机密进行加密
 description: 了解如何在 Linux 群集上设置加密证书并对机密进行加密。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/04/2019
-ms.date: 01/21/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fa04c9b34553513149d96c20c1eefde1d2701203
-ms.sourcegitcommit: 35a09a86cbb3d896fa9784471ece41df7728bd71
+ms.openlocfilehash: 064301126255f7ba5d947dfeec55199ec5544069
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396710"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742282"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>在 Linux 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[在 Windows 群集上设置加密证书并对机密进行加密][secret-management-windows-specific-link]。
@@ -30,12 +22,12 @@ ms.locfileid: "54396710"
 * 证书必须包含私钥。
 * 证书密钥用法必须包括数据加密 (10)，不应包括服务器身份验证或客户端身份验证。
 
-  例如，可以通过以下命令使用 OpenSSL 来生成所需的证书：
+    例如，可以通过以下命令使用 OpenSSL 来生成所需的证书：
 
-  ```console
-  user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
-  user@linux:~$ cat TestCert.prv >> TestCert.pem
-  ```
+    ```console
+    user@linux:~$ openssl req -newkey rsa:2048 -nodes -keyout TestCert.prv -x509 -days 365 -out TestCert.pem
+    user@linux:~$ cat TestCert.prv >> TestCert.pem
+    ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在群集中安装证书
 必须在群集中每个节点上的 `/var/lib/sfcerts` 下安装此证书。 用来运行该服务的用户帐户（默认情况下为 sfuser）对已安装的证书（对于当前示例为 `/var/lib/sfcerts/TestCert.pem`）**应当具有读取访问权限**。
@@ -54,13 +46,13 @@ user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[在应用程序中指定加密的机密。][secret-management-specify-encrypted-secrets-link]
+了解如何[在应用程序中指定加密机密][secret-management-specify-encrypted-secrets-link]。
 
 <!-- Links -->
+
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md
 [environment-variables-link]: service-fabric-how-to-specify-environment-variables.md
 [secret-management-windows-specific-link]: service-fabric-application-secret-management-windows.md
 [secret-management-specify-encrypted-secrets-link]: service-fabric-application-secret-management.md#specify-encrypted-secrets-in-an-application
 
-<!-- Update_Description: new articles on service fabric application secret management linux -->
-<!--ms.date: 01/21/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

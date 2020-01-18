@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.reviewer: jiahan
+ms.reviewer: xiaofmao
 ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: 51af3d36194e5d0c941e174b8940fe44a349ded1
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 28516e6dbf323c58c53fec55ff1999b0113ac14d
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020000"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737900"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>在 Azure Stack 上部署 MySQL 资源提供程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "74020000"
 > [!IMPORTANT]
 > 只有资源提供程序才能在托管 SQL 或 MySQL 的服务器上创建项目。 如果在不是由资源提供程序创建的主机服务器上创建项目，则此类项目可能导致状态不匹配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要先实施几个先决条件，然后才能部署 Azure Stack MySQL 资源提供程序。 若要满足这些要求，请在可访问特权终结点 VM 的计算机上完成本文中的步骤。
 
@@ -47,10 +47,14 @@ ms.locfileid: "74020000"
 
   |最低 Azure Stack 版本|MySQL RP 版本|
   |-----|-----|
+  |版本 1910 (1.1910.0.58)|[MySQL RP 版本 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|
   |版本 1808 (1.1808.0.97)|[MySQL RP 版本 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
   |版本 1808 (1.1808.0.97)|[MySQL RP 版本 1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
   |版本 1804 (1.0.180513.1)|[MySQL RP 版本 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
   |     |     |
+  
+> [!IMPORTANT]
+> 在部署 MySQL 资源提供程序版本 1.1.47.0 之前，应该将 Azure Stack 系统升级到 1910 更新或更高版本。 以前不支持的 Azure Stack 版本上的 MySQL 资源提供程序版本 1.1.47.0 无法正常工作。
 
 * 请确保满足数据中心集成先决条件：
 
@@ -107,7 +111,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 
 ## <a name="deploy-the-mysql-resource-provider-using-a-custom-script"></a>使用自定义脚本部署 MySQL 资源提供程序
 
-若要在部署资源提供程序时消除任何手动配置，可以自定义以下脚本。 更改 Azure Stack 部署所需的默认帐户信息和密码。
+如果要部署 MySQL 资源提供程序版本 1.1.33.0 或更早版本，则需要在 PowerShell 中安装特定版本的 AzureRm.BootStrapper 和 Azure Stack 模块。 如果要部署 MySQL 资源提供程序版本 1.1.47.0，则可以跳过此步骤。
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -115,7 +119,11 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
+```
 
+若要在部署资源提供程序时消除任何手动配置，可以自定义以下脚本。 更改 Azure Stack 部署所需的默认帐户信息和密码。
+
+```powershell
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  
 
@@ -140,10 +148,6 @@ $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysq
 # And the cloudadmin credential required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
-
-# Clear the existing login information from the Azure PowerShell context.
-Clear-AzureRMContext -Scope CurrentUser -Force
-Clear-AzureRMContext -Scope Process -Force
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
@@ -174,5 +178,3 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 ## <a name="next-steps"></a>后续步骤
 
 [添加宿主服务器](azure-stack-mysql-resource-provider-hosting-servers.md)
-
-<!-- Update_Description: wording update -->

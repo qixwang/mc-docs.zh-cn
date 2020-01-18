@@ -1,26 +1,17 @@
 ---
-title: 适用于 Eclipse 的 Azure Service Fabric 插件 | Azure
+title: 适用于 Eclipse 的 Azure Service Fabric 插件
 description: 适用于 Eclipse 的 Service Fabric 插件入门。
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 04/06/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cc63ea985ec1b2f042a202b4f060371a6a3b3199
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 8ef9ee53d656af165a0bb82e9c6deaa7e50424d1
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174261"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742378"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
@@ -40,9 +31,9 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 
 
 从 [Eclipse 站点](https://www.eclipse.org)安装 Eclipse Neon 或更高版本。  还安装 Buildship 2.2.1 版或更高版本（Service Fabric 插件与更旧版本的 Buildship 不兼容）：
--   若要检查已安装组件的版本，请在 Eclipse 中转到“帮助” > “关于 Eclipse” > “安装详细信息”。   
--   若要更新 Buildship，请参阅 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
--   若要检查并安装 Eclipse 的更新，请转到“帮助” > “检查更新”。  
+- 若要检查已安装组件的版本，请在 Eclipse 中转到“帮助” > “关于 Eclipse” > “安装详细信息”。   
+- 若要更新 Buildship，请参阅 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
+- 若要检查并安装 Eclipse 的更新，请转到“帮助” > “检查更新”。  
 
 若要安装 Service Fabric 插件，请在 Eclipse 中转到“帮助” > “安装新软件”。  
 1. 在“使用”框中，输入“https:\//dl.microsoft.com/eclipse”。 
@@ -96,9 +87,9 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
     ![Service Fabric 右键菜单][publish/RightClick]
 
 2. 在上下文菜单中，选择以下选项之一：
-    -   若要生成应用程序但不清理，请单击“生成应用程序”。 
-    -   若要生成已清理的应用程序，请单击“重新生成应用程序”。 
-    -   若要清理已生成项目的应用程序，请单击“清理应用程序”。 
+    - 若要生成应用程序但不清理，请单击“生成应用程序”。 
+    - 若要生成已清理的应用程序，请单击“重新生成应用程序”。 
+    - 若要清理已生成项目的应用程序，请单击“清理应用程序”。 
 
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>在 Eclipse 中将 Service Fabric 应用程序部署到本地群集
 

@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 备份和还原 | Azure
+title: Service Fabric 备份和还原
 description: Service Fabric 备份和还原的概念文档
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: subramar,zhol
-ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 10/29/2018
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 339d64e82fdb93db97d07da5f84d2e79ad952d6c
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: 8934cea63bd65b189b2fc873bd22a14ca53608bc
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463565"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741863"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
 Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的内置冗余对某些情况来说可能已经足够使用，但在特定情况下，仍需要服务备份数据（到外部存储）。
@@ -187,13 +178,13 @@ Reliable Actors 框架在 Reliable Services 的基础之上构建。 承载着�
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo)
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo)
+    {
+    }
 
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -202,7 +193,7 @@ class MyCustomActorService : ActorService
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
-   (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
+    (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
 Reliable Actors 的默认状态提供程序是 `KvsActorStateProvider`。 默认情况下，未为 `KvsActorStateProvider` 启用增量备份。 可以通过在其构造函数中使用相应设置创建 `KvsActorStateProvider`，然后将其传递给 ActorService 构造函数来启用增量备份，如以下代码片段中所示：
@@ -210,13 +201,13 @@ Reliable Actors 的默认状态提供程序是 `KvsActorStateProvider`。 默认
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
+    {
+    }
 
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -266,7 +257,7 @@ class MyCustomActorService : ActorService
   - [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services 配置](service-fabric-reliable-services-configuration.md)
-  - [Reliable Collections 的开发人员参考](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  - [Reliable Collections 的开发人员参考](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   - [在 Azure Service Fabric 中定期备份和还原](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 <!--Update_Description: update meta properties, update link -->

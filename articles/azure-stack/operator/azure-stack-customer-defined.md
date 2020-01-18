@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/09/2019
-ms.date: 09/16/2019
+origin.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: wamota
-ms.lastreviewed: 08/09/2019
-ms.openlocfilehash: 6ce243f62f2fdab7d64450e47d964be9c308ca9b
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: dba6a8e1b371d862d18f2dd8f20f76b6e28fb5fe
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857364"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737823"
 ---
 #  <a name="modify-specific-settings-on-your-azure-stack-switch-configuration"></a>修改 Azure Stack 交换机配置上的特定设置
 
@@ -54,7 +54,10 @@ ms.locfileid: "70857364"
 
 ## <a name="access-control-list-updates"></a>访问控制列表更新
 
-操作员可以更改某些访问控制列表 (ACL)，允许从一系列受信任的数据中心网络访问网络设备管理接口和硬件生命周期主机 (HLH)。 操作员可以选择允许访问哪个组件以及允许从何处进行访问。 操作员可以通过访问控制列表允许特定网络范围中的管理 Jumpbox VM 访问交换机管理接口、HLH OS 和 HLH BMC。
+> [!NOTE]
+> 从 1910 版开始，部署工作表将为**允许的网络**添加一个新字段，取代允许从受信任的数据中心网络范围访问网络设备管理接口和硬件生命周期主机 (HLH) 所需的手动步骤。 有关此新功能的详细信息，请查看 [Azure Stack 的网络集成规划](azure-stack-network.md#permitted-networks)。
+
+操作员可以更改某些访问控制列表 (ACL)，允许从一系列受信任的数据中心网络访问网络设备管理接口和硬件生命周期主机 (HLH)。 操作员可以通过访问控制列表允许特定网络范围内的管理 jumpbox VM 访问交换机管理接口、HLH OS 和 HLH BMC。
 
 ## <a name="next-steps"></a>后续步骤
 

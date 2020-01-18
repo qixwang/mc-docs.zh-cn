@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议 | Azure
+title: Azure Service Fabric 中可靠集合的相关指导原则和建议
 description: 有关使用 Service Fabric Reliable Collections 的指导原则和建议
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 12/10/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 86370b6a113171625f248d7a98c9b2ed2b3ad62a
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: ccd358a220e404e94afec81399a9f714debcca3b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173958"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742386"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本部分提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见错误。
@@ -54,7 +44,7 @@ ms.locfileid: "70173958"
 * 应用程序在可靠集合中保留的数据的安全性/隐私性是用户决定，并受到存储管理的保护；即 操作系统磁盘加密可用于保护静态数据。  
 
 ### <a name="next-steps"></a>后续步骤
-* [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
+* [使用可靠集合](service-fabric-work-with-reliable-collections.md)
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理数据
     * [备份和还原](service-fabric-reliable-services-backup-restore.md)

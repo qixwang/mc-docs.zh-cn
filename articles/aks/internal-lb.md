@@ -6,21 +6,21 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 03/04/2019
-ms.date: 07/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8b3f32c525b693a3c7ed6f4565cae750e83cec33
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: 8f61e8704eabaed6d52e9810b07c08e4f9faa954
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731247"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859856"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
 若要限制访问 Azure Kubernetes 服务 (AKS) 中的应用程序，可以创建和使用内部负载均衡器。 内部负载均衡使得仅 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文介绍如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器。
 
 > [!NOTE]
-> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 默认情况下，使用服务清单在 AKS 上创建负载均衡器时，将使用基本  SKU。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
+> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -142,19 +142,21 @@ spec:
 在 [Kubernetes 服务文档][kubernetes-services]中详细了解 Kubernetes 服务。
 
 <!-- LINKS - External -->
+
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [aks-engine]: https://github.com/Azure/aks-engine
 
 <!-- LINKS - Internal -->
+
 [advanced-networking]: configure-azure-cni.md
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
-[az-role-assignment-create]: https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
+[az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
 [use-kubenet]: configure-kubenet.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

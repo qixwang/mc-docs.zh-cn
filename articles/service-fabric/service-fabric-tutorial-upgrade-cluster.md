@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中升级 Service Fabric 运行时 | Azure
+title: 在 Azure 中升级 Service Fabric 运行时
 description: 本教程介绍如何使用 PowerShell 升级 Azure 托管的 Service Fabric 群集的运行时。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 17aa29a9da7da725c5bc1f8cfc1e4ec41117b721
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 4ac2b671720c7f6d13afaed8f435326715103506
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254687"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741976"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
 
@@ -48,7 +38,7 @@ ms.locfileid: "70254687"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -207,7 +197,7 @@ sfctl cluster upgrade-status
 > * 升级群集运行时
 > * 监视升级
 
-转到下一教程：
+进入下一教程：
 
 > [!div class="nextstepaction"]
 > [删除群集](service-fabric-tutorial-delete-cluster.md)

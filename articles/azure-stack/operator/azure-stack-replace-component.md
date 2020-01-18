@@ -1,5 +1,6 @@
 ---
-title: 更换 Azure Stack 缩放单元节点上的硬件组件 | Microsoft Docs
+title: 更换 Azure Stack 缩放单元节点上的硬件组件
+titleSuffix: Azure Stack
 description: 了解如何更换 Azure Stack 集成系统上的硬件组件。
 services: azure-stack
 documentationcenter: ''
@@ -12,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/18/2019
-ms.date: 09/16/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: b88608a988efc1a17d8562ff20cdd945ada18ad1
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: d44a0c3c7e077abe4a7d735159633a016c363d27
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857305"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737803"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>更换 Azure Stack 缩放单元节点上的硬件组件
 
@@ -57,7 +58,7 @@ ms.locfileid: "70857305"
 
 * 根据硬件的物理条件，可能不需要此操作。
 
-** 固件可能因支持合同而异，不管 OEM 硬件供应商是否执行组件更换和更新。
+** OEM 硬件供应商是否进行组件更换和固件更新可能会因支持合同而异。
 
 ## <a name="review-alert-information"></a>查看警报信息
 
@@ -79,8 +80,8 @@ Azure Stack 运行状况和监视系统会跟踪存储空间直通所控制的�
    > [!NOTE]  
    > 在关闭电源操作不起作用的罕见情况下，请改用基板管理控制器 (BMC) Web 界面。
 
-4. 更换损坏的硬件组件。 OEM 硬件供应商是否执行组件更换可能会根据支持合同而有所不同。  
-5. 更新固件。 请使用硬件生命周期主机按照供应商特定的固件更新过程进行操作，以确保替换的硬件组件已应用批准的固件级别。 OEM 硬件供应商是否执行此步骤可能会根据支持合同而有所不同。  
+4. 更换损坏的硬件组件。 OEM 硬件供应商是否进行组件更换可能会因支持合同而异。  
+5. 更新固件。 请使用硬件生命周期主机按照供应商特定的固件更新过程进行操作，以确保替换的硬件组件已应用批准的固件级别。 OEM 硬件供应商是否执行此步骤可能会因支持合同而异。  
 6. 使用[修复](azure-stack-node-actions.md#scale-unit-node-actions)操作将缩放单元节点恢复到缩放单元。
 7. 使用到特权终结点[检查虚拟磁盘修复状态](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint)。 利用新的数据驱动器，完整的存储修复作业可能需要数小时的时间，具体取决于系统负载和已使用的空间。
 8. 修复操作完成后，验证是否已自动关闭所有活动警报。

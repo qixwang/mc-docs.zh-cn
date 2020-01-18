@@ -1,26 +1,17 @@
 ---
-title: Service Fabric Reliable Actors 概述 | Azure
+title: Service Fabric Reliable Actors 概述
 description: Service Fabric Reliable Actors 编程模型简介。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/01/2017
-ms.date: 12/10/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c3e1333ef077d17270af3859ba5f4726d44c22d2
-ms.sourcegitcommit: 38f95433f2877cd649587fd3b68112fb6909e0cf
+ms.openlocfilehash: 7255939035afb3c5aff22df714a59ddda76aebe6
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901121"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742431"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 简介
 Reliable Actors 是基于 [虚拟执行组件](https://research.microsoft.com/projects/orleans/) 模式的 Service Fabric 应用程序框架。 Reliable Actors API 提供单一线程编程模型，该模型是基于 Service Fabric 所提供的可扩展性和可靠性保证构建的。
@@ -44,12 +35,12 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与任何
 每个执行组件定义为执行组件类型的一个实例，与 .NET 对象是 .NET 类型的一个实例类同。 例如，可能存在用于实现计算器功能的执行组件类型，该类型的很多执行组件分布于群集中各个节点。 每个此类执行组件都由执行组件 ID 唯一标识。
 
 ## <a name="actor-lifetime"></a>执行组件生存期
-Service Fabric 执行组件是虚拟的，这表示其生存期不依赖于其内存中表示形式。 因此，不需要显式创建或销毁它们。 Reliable Actors 运行时会在它第一次接收到执行组件 ID 的请求时自动激活此执行组件。 如果一段时间未使用某个执行组件，则 Reliable Actors 运行时将回收此内存对象。 它还将掌握此执行组件的存在信息，以便将来重新激活。 如需了解更多详情，请参阅[执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)。
+Service Fabric 执行组件是虚拟的，这表示其生存期不依赖于其内存中表示形式。 因此，不需要显式创建或销毁它们。 Reliable Actors 运行时会在它第一次接收到执行组件 ID 的请求时自动激活此执行组件。 如果一段时间未使用某个执行组件，则 Reliable Actors 运行时将回收此内存对象。 它还会保留该执行组件的存在信息，以便将来将其重新激活。 如需了解更多详情，请参阅[执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)。
 
 由于采用虚拟执行组件模型，并且实际上 Reliable Actors 实现有时会偏离此模型，虚拟执行组件生命周期抽象存在一些注意事项。
 
-* 当第一次将消息发送到执行组件的执行组件 ID 时将自动激活此执行组件，并由此构造执行组件对象。 在一段时间之后，将回收此执行组件对象。 将来可以再次使用此执行组件 ID 来构造新的执行组件对象。 如果执行组件的状态存储在状态管理器中，则其生命周期长于该对象的生命周期。
-* 针对某个执行组件 ID 调用任何执行组件方法都会激活该执行组件。 出于此原因，执行组件类型允许运行时隐式调用其构造函数。 因此，虽然服务本身可将参数传递给执行组件的构造函数，但是客户端代码无法将参数传递给执行组件类型的构造函数。 结果是如果执行组件需要客户端的初始化参数，则在对其调用其他方法时在部分初始化状态下构造执行组件。 从客户端激活执行组件不存在单一入口点。
+* 当第一次将消息发送到执行组件的执行组件 ID 时将自动激活此执行组件，并由此构造执行组件对象。 一段时间之后，会回收该执行组件对象。 将来可以再次使用此执行组件 ID 来构造新的执行组件对象。 如果执行组件的状态存储在状态管理器中，则其生命周期长于该对象的生命周期。
+* 针对某个执行组件 ID 调用任何执行组件方法都会激活该执行组件。 出于此原因，执行组件类型在运行时隐式调用其构造函数。 因此，虽然服务本身可将参数传递给执行组件的构造函数，但是客户端代码无法将参数传递给执行组件类型的构造函数。 所以，如果执行组件需要客户端提供初始化参数，则在执行组件上调用其他方法时，以部分初始化状态构造该执行组件。 从客户端激活执行组件不存在单一入口点。
 * 虽然 Reliable Actors 隐式创建执行组件对象，但仍可显示删除执行组件及其状态。
 
 ## <a name="distribution-and-failover"></a>分布和故障转移
@@ -110,7 +101,7 @@ myActor.DoWorkAsync().get();
 ## <a name="concurrency"></a>并发
 Reliable Actors 运行时提供基于轮次的简单访问模型，用于访问执行组件方法。 这意味着在执行组件对象的代码内，任何时候都不可能超过一个活动线程。 基于轮次的访问极大简化了并发系统，因为无需使用数据访问的同步机制。 它还意味着系统的设计必须特别考虑每个执行组件实例的单线程访问性质。
 
-* 单个执行组件实例一次只能处理一个请求。 如果需要处理并发请求，那么一个执行组件实例会导致出现吞吐量瓶颈。
+* 单个执行组件实例一次只能处理一个请求。 如果期望一个执行组件实例处理并发请求，它会导致吞吐量瓶颈。
 * 如果两个执行组件之间存在循环请求，并同时向其中一个执行组件进行了外部请求，则这两个执行组件可能相互死锁。 执行组件运行时对于执行组件调用会自动超时，并向调用方抛出异常，以便中断可能出现的死锁情况。
 
 ![Reliable Actors 通信][3]
@@ -120,7 +111,7 @@ Reliable Actors 运行时提供基于轮次的简单访问模型，用于访问�
 
 通过在轮次的开始获取按执行组件锁并在轮次的结束释放锁，执行组件运行时强制执行基于轮次的并发。 因此，基于轮次的并发按执行组件执行，而不跨执行组件执行。 执行组件方法和计时器/提醒回调可以代表不同执行组件同时执行。
 
-以下示例对上述概念进行了说明。 假设一种类型的执行组件实现两个异步方法（即 Method1 和 Method2）、一个计时器和一个提醒。 下面的示例图展示了代表属于这种执行组件类型的两个执行组件（ActorId1 和 ActorId2）执行这些方法和回叫的时间线。
+以下示例对上述概念进行了说明。 假设一种类型的执行组件实现两个异步方法（即 Method1 和 Method2）、一个计时器和一个提醒   。 下面的示例图展示了代表属于这种执行组件类型的两个执行组件（ActorId1 和 ActorId2）执行这些方法和回叫的时间线   。
 
 ![Reliable Actors 运行时基于轮次的并发执行和访问][1]
 
@@ -133,16 +124,16 @@ Reliable Actors 运行时提供基于轮次的简单访问模型，用于访问�
 
 要重点考虑的几点：
 
-* 当代表 ActorId2 执行 Method1 以响应客户端请求 xyz789 时，收到另一个客户端请求 (abc123)，也要求由 ActorId2 执行 Method1。 但是，在前面的执行完成之前，不会开始 *Method1* 的第二次执行。 同样，在执行 Method1 以响应客户端请求 xyz789 时，触发了 ActorId2 注册的提醒。 仅在这两个 *Method1* 执行都完成之后才执行提醒回调。 所有这些都是由于正在为 *ActorId2*强制执行基于轮次的并发。
-* 同样，也为 ActorId1 强制执行了基于轮次的并发，代表 ActorId1 以串行方式执行 Method1、Method2 和计时器回叫就表明了这一点。
-* 代表 ActorId1 执行 Method1 与代表 ActorId2 执行此方法相互重叠。 这是因为仅在同一个执行组件内，而不是在不同执行组件之间强制执行基于轮次的并发执行。
+* 当代表 ActorId2 执行 Method1 以响应客户端请求 xyz789 时，收到另一个客户端请求 (abc123)，也要求由 ActorId2 执行 Method1       。 但是，在前面的执行完成之前，不会开始 *Method1* 的第二次执行。 同样，在执行 Method1 以响应客户端请求 xyz789 时，触发了 ActorId2 注册的提醒    。 仅在这两个 *Method1* 执行都完成之后才执行提醒回调。 所有这些都是由于正在为 *ActorId2*强制执行基于轮次的并发。
+* 同样，也为 ActorId1 强制执行了基于轮次的并发，代表 ActorId1 以串行方式执行 Method1、Method2 和计时器回叫就表明了这一点     。
+* 代表 ActorId1 执行 Method1 与代表 ActorId2 执行此方法相互重叠    。 这是因为仅在同一个执行组件内，而不是在不同执行组件之间强制执行基于轮次的并发执行。
 * 在一些方法/回叫执行中，方法/回叫返回的 `Task`(C#) / `CompletableFuture`(Java) 在方法返回之后完成。 在另一些方法/回叫执行中，异步操作在方法/回叫返回时就已完成。 在这两种情况下，只有在方法/回叫返回且异步操作已完成后，才会解除每个执行组件锁定。
 
 ### <a name="reentrancy"></a>重新进入
-执行组件运行时默认情况下允许重新进入。 也就是说，如果 Actor A 的执行组件方法调用 Actor B 上的方法，后者反过来又调用 Actor A 上的另一个方法，则允许运行另一个方法。 这是因为它是同一逻辑调用链上下文的一部分。 所有计时器和提醒调用都以新的逻辑上下文开始。 如需了解更多详情，请参阅 [Reliable Actors 可重入性](service-fabric-reliable-actors-reentrancy.md)。
+执行组件运行时默认情况下允许重新进入。 也就是说，如果 Actor A 的执行组件方法调用 Actor B 上的方法，后者反过来又调用 Actor A 上的另一个方法，则允许运行另一个方法    。 这是因为它是同一逻辑调用链上下文的一部分。 所有计时器和提醒调用都以新的逻辑上下文开始。 如需了解更多详情，请参阅 [Reliable Actors 可重入性](service-fabric-reliable-actors-reentrancy.md)。
 
 ### <a name="scope-of-concurrency-guarantees"></a>并发保证的范围
-执行组件运行时在它控制调用这些方法的情况下提供这些并发保证。 例如，它为响应客户端请求而执行的方法调用和计时器与提醒回调提供这些保证。 但是，如果执行组件代码在执行组件运行时提供的机制之外直接调用这些方法，则运行时不能提供任何并发保证。 例如，如果在与执行组件方法返回的任务不相关联的某项任务的上下文中调用方法，则运行时不能提供并发性保证。 如果通过执行组件依据其自身创建的线程调用方法，那么运行时也不能提供并发性保证。 因此，若要执行后台操作，执行组件应使用遵从基于轮次的并发的[执行组件计时器和执行组件提醒](service-fabric-reliable-actors-timers-reminders.md)。
+执行组件运行时控制这些方法的调用时，将提供这些并发保证。 例如，它为响应客户端请求而执行的方法调用和计时器与提醒回调提供这些保证。 但是，如果执行组件代码在执行组件运行时提供的机制之外直接调用这些方法，则运行时不能提供任何并发保证。 例如，如果在与执行组件方法返回的任务不相关联的某项任务的上下文中调用方法，则运行时不能提供并发性保证。 如果通过执行组件依据其自身创建的线程调用方法，那么运行时也不能提供并发性保证。 因此，若要执行后台操作，执行组件应使用遵从基于轮次的并发的[执行组件计时器和执行组件提醒](service-fabric-reliable-actors-timers-reminders.md)。
 
 ## <a name="next-steps"></a>后续步骤
 从生成第一个 Reliable Actors 服务开始：
@@ -150,6 +141,7 @@ Reliable Actors 运行时提供基于轮次的简单访问模型，用于访问�
    * [Java 上的 Reliable Actors 入门](service-fabric-reliable-actors-get-started-java.md)
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png

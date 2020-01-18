@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 脚本部署示例
-description: 使用 Azure CLI 在 Azure 中创建安全的 Service Fabric Linux 群集。
+description: 如何使用 Azure 命令行接口 (CLI) 在 Azure 中创建安全的 Service Fabric Linux 群集。
 services: service-fabric
 documentationcenter: ''
 author: rockboyfor
@@ -11,15 +11,15 @@ ms.assetid: ''
 ms.service: service-fabric
 ms.topic: sample
 origin.date: 01/18/2018
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: d3dedde57fef94f801e5afa97ede2cb4a1ea6ceb
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: f9d6b2c413bcaf734937cbfb46f0eeff69ec89a7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173980"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741882"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>在 Azure 中创建安全的 Service Fabric Linux 群集
 

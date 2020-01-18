@@ -1,26 +1,17 @@
 ---
-title: 使用 Visual Studio Code 开发 .NET Core Azure Service Fabric 应用程序 | Azure
+title: 使用 Visual Studio Code 开发 .NET Core Azure Service Fabric 应用程序
 description: 本文介绍如何使用 Visual Studio Code 生成、部署和调试 .NET Core Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/29/2018
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e617917d79cb172c9d32c08596ee258c1d8c55ec
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: 68a45f6581ece615f6324b0063929214fb7e48ed
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753154"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741865"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 C# Service Fabric 应用程序
 
@@ -28,7 +19,7 @@ ms.locfileid: "68753154"
 
 本文介绍如何使用 Visual Studio Code 生成、部署和调试 .NET Core Service Fabric 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设你已安装 VS Code、适用于 VS Code 的 Service Fabric Reliable Services 扩展，以及开发环境所需的所有依赖项。 有关详细信息，请参阅[入门](./service-fabric-get-started-vs-code.md#prerequisites)。
 
@@ -125,4 +116,4 @@ sudo code . --user-data-dir='.'
 
 * 了解如何[使用 VS Code 开发和调试 Java Service Fabric 应用程序](./service-fabric-develop-java-applications-with-vs-code.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update -->

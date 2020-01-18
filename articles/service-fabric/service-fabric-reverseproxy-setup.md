@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 设置反向代理 | Azure
+title: Azure Service Fabric 设置反向代理
 description: 了解如何设置和配置 Service Fabric 的反向代理。
-services: service-fabric
-documentationcenter: na
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 11/13/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9b294363209203d283e557c719a757c18b3fd8a2
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: f1c82a50984e872ef4603f67164f5de8626baec4
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254843"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741893"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 
@@ -45,13 +36,13 @@ ms.locfileid: "70254843"
 
 对于新群集，可[创建自定义资源管理器模板](service-fabric-cluster-creation-via-arm.md)，也可使用示例模板。 
 
-可在 GitHub 上的[安全反向代理示例模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample)中找到可帮助你为 Azure 群集配置安全反向代理的示例资源管理器模板。 请参阅 README 文件中的[在安全群集中配置 HTTPS 反向代理](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)，了解用于配置具有证书的安全反向代理和处理证书变换的说明和模板。
+可在 GitHub 上的[安全反向代理示例模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)中找到可帮助你为 Azure 群集配置安全反向代理的示例资源管理器模板。 请参阅 README 文件中的[在安全群集中配置 HTTPS 反向代理](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster)，了解用于配置具有证书的安全反向代理和处理证书变换的说明和模板。
 
 对于现有群集，可使用 [Azure 门户](/azure-resource-manager/resource-manager-export-template)、[PowerShell](/azure-resource-manager/resource-manager-export-template-powershell) 或 [Azure CLI](/azure-resource-manager/resource-manager-export-template-cli) 导出群集资源组的资源管理器模板。
 
 有了资源管理器模板后，可以通过以下步骤启用反向代理：
 
-1. 在模板的[“参数”部分](../azure-resource-manager/resource-group-authoring-templates.md)定义反向代理的端口。
+1. 在模板的[“参数”部分](../azure-resource-manager/templates/template-syntax.md)定义反向代理的端口。
 
     ```json
     "SFReverseProxyPort": {
@@ -62,7 +53,7 @@ ms.locfileid: "70254843"
         }
     },
     ```
-2. 在 [Microsoft.ServiceFabric/clusters](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/resource-group-authoring-templates.md)中为每个 nodetype 对象指定端口  。
+2. 在 [Microsoft.ServiceFabric/clusters](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中为每个 nodetype 对象指定端口  。
 
     端口由参数名称 reverseProxyEndpointPort 标识。
 
@@ -110,55 +101,56 @@ ms.locfileid: "70254843"
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>支持不同于群集证书的反向代理证书
 如果反向代理证书不同于用于保护群集的证书，应将前面指定的证书安装在虚拟机上，并将其添加到访问控制列表 (ACL)，使 Service Fabric 能够访问它。 可在 [Microsoft.Compute/virtualMachineScaleSets](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) [资源类型部分](../resource-group-authoring-templates.md)中执行此操作  。 要安装，请将该证书添加到 osProfile。 模板的扩展节可以更新 ACL 中的证书。
 
-  ```json
-  {
-    "apiVersion": "[variables('vmssApiVersion')]",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    ....
-      "osProfile": {
-          "adminPassword": "[parameters('adminPassword')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "computernamePrefix": "[parameters('vmNodeType0Name')]",
-          "secrets": [
+```json
+{
+"apiVersion": "[variables('vmssApiVersion')]",
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+....
+  "osProfile": {
+      "adminPassword": "[parameters('adminPassword')]",
+      "adminUsername": "[parameters('adminUsername')]",
+      "computernamePrefix": "[parameters('vmNodeType0Name')]",
+      "secrets": [
+        {
+          "sourceVault": {
+            "id": "[parameters('sfReverseProxySourceVaultValue')]"
+          },
+          "vaultCertificates": [
             {
-              "sourceVault": {
-                "id": "[parameters('sfReverseProxySourceVaultValue')]"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
-                  "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
-                }
-              ]
+              "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
+              "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
             }
           ]
         }
-   ....
-   "extensions": [
-          {
-              "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
-              "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": false,
-                      ...
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[parameters('vmNodeType0Name')]",
-                        "dataPath": "D:\\\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "testExtension": true,
-                        "reverseProxyCertificate": {
-                          "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                          "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
-                        },
-                  },
-                  "typeHandlerVersion": "1.0"
-              }
-          },
       ]
     }
-  ```
+....
+"extensions": [
+      {
+          "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
+          "properties": {
+                  "type": "ServiceFabricNode",
+                  "autoUpgradeMinorVersion": false,
+                  ...
+                  "publisher": "Microsoft.Azure.ServiceFabric",
+                  "settings": {
+                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+                    "dataPath": "D:\\\\SvcFab",
+                    "durabilityLevel": "Bronze",
+                    "testExtension": true,
+                    "reverseProxyCertificate": {
+                      "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
+                      "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
+                    },
+              },
+              "typeHandlerVersion": "1.0"
+          }
+      },
+  ]
+}
+```
+
 > [!NOTE]
 > 在现有群集上使用不同于群集证书的证书来启用反向代理时，请在启用反向代理之前在群集上安装反向代理证书并更新 ACL。 在执行步骤 1-3 开始部署以启用反向代理之前，请使用上述设置完成 [Azure 资源管理器模板](service-fabric-cluster-creation-via-arm.md)部署。
 
@@ -255,6 +247,7 @@ ms.locfileid: "70254843"
 2. 要为反向代理端口添加运行状况探测，请在负载均衡器窗口的左窗格中的“设置”下，单击“运行状况探测”   。 然后单击“运行状况探测”窗口顶部的“添加”并输入反向代理端口的详细信息，然后单击“确定”   。 默认情况下，反向代理端口为 19081，除非在创建群集时更改了它。
 
     ![配置反向代理运行状况探测](./media/service-fabric-reverseproxy-setup/lb-rp-probe.png)
+    
 3. 要添加负载均衡器规则以公开反向代理端口，请在“负载均衡器”窗口左窗格中的“设置”下，单击“负载均衡规则”   。 然后单击“负载均衡规则”窗口顶部的“添加”并输入反向代理端口的详细信息  。 确保将“端口”值设置为要在其上公开反向代理的端口，将“后端端口”值设置为启用反向代理时设置的端口，并将“运行状况探测”值设置为上一步中配置的运行状况探测    。 根据需要设置其他字段，然后单击“确定”  。
 
     ![配置反向代理的负载均衡器规则](./media/service-fabric-reverseproxy-setup/lb-rp-rule.png)
@@ -340,5 +333,4 @@ ms.locfileid: "70254843"
 * [设置使用反向代理转发到安全的 HTTP 服务](service-fabric-reverseproxy-configure-secure-communication.md)
 * 有关反向代理配置选项的信息，请参阅[自定义 Service Fabric 群集设置中的 ApplicationGateway/Http 部分](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp)。
 
-<!-- Update_Description: update meta properties, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 11/15/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 21cedaa0b239b9c5a86b89a7a1c8d7c4fecbeb44
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/15/2019
+ms.openlocfilehash: f7ae8d4417871f90159e56d2939fd7a6d379922b
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020111"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737813"
 ---
 # <a name="border-connectivity"></a>边界连接 
 网络集成规划是成功进行 Azure Stack 集成系统部署、操作和管理的重要先决条件。 边界连接规划从选择是否要将动态路由与边界网关协议 (BGP) 一起使用开始。 这需要分配 16 位的 BGP 自治系统编号（公共或专用），或者使用静态路由（在这种情况下会将静态默认路由分配给边界设备）。
@@ -69,6 +69,8 @@ TOR 设备配置有将所有流量发送到边界设备的静态默认路由。 
 透明代理（也称为截获、内联或强制代理）将截获网络层的正常通信，而无需任何特殊的客户端配置。 客户端不需要知道代理是否存在。
 
 ![透明代理](media/azure-stack-border-connectivity/transparent-proxy.png)
+
+SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并且在访问终结点时可能会导致服务故障。 与标识所需的终结点进行通信时，支持的最大超时值为 60 秒，并可以进行 3 次重试尝试。
 
 ## <a name="next-steps"></a>后续步骤
 [DNS 集成](azure-stack-integrate-dns.md)

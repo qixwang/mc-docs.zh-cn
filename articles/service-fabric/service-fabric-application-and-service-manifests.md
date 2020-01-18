@@ -1,26 +1,16 @@
 ---
-title: 描述 Azure Service Fabric 应用和服务 | Azure
+title: 描述 Azure Service Fabric 应用和服务
 description: 介绍如何使用清单来描述 Service Fabric 应用程序和服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/12/2019
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 2c6d03fb3ad2acad0da9a3c7240773003bf0dbc8
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 655a3c3763463979e5683a1719cc3832afc7118d
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174104"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741892"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单
 本文介绍如何使用 ApplicationManifest.xml 和 ServiceManifest.xml 文件来定义 Service Fabric 应用程序与服务并对其进行版本控制。  有关更多详细示例，请参阅[应用程序和服务清单示例](service-fabric-manifest-examples.md)。  [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中阐述了这些清单文件的 XML 架构。
@@ -90,7 +80,7 @@ ms.locfileid: "70174104"
 
 **DataPackage**（在前面的示例中未设置）声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
 
-**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是 *Settings.xml* 文件的一个示例：
+**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，一个回调会告知进程配置设置已更改，以便动态重新加载。 下面是 *Settings.xml* 文件的一个示例：
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">

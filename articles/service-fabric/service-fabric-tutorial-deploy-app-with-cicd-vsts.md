@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中部署具有持续集成功能和 Azure Pipelines 的 Service Fabric 应用 | Azure
+title: 在 Azure 中通过持续集成和 Azure Pipelines 部署 Service Fabric 应用
 description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric 应用程序设置持续集成和部署。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5ab378b7ddff914437db4154cbc22168b9bf27cc
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 5030ec89fed9cef582993fcd0063797dc336554c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254633"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742044"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -35,7 +25,7 @@ ms.locfileid: "70254633"
 > * 在 Azure 管道中创建发布管道
 > * 自动部署和升级应用程序
 
-在此系列教程中，你会学习如何：
+在此系列教程中，你将学习如何：
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -44,7 +34,7 @@ ms.locfileid: "70254633"
 
 <!-- Not Available on > * [Set up monitoring and diagnostics for the application](service-fabric-tutorial-monitoring-aspnet.md)-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -56,7 +46,7 @@ ms.locfileid: "70254633"
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
-如果未生成[本系列教程的第一部分](service-fabric-tutorial-create-dotnet-app.md)中的投票示例应用程序，可以下载它。 在命令窗口中，运行以下命令，将示例应用程序存储库克隆到本地计算机。
+如果未生成[本系列教程的第一部分](service-fabric-tutorial-create-dotnet-app.md)中的投票示例应用程序，可以下载它。 在命令窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -116,7 +106,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 ![选择触发器][save-and-queue2]
 
-在推送或签入时也会触发生成。 若要检查生成进度，请切换到“生成”选项卡  。在验证生成成功执行后，请定义用于将应用程序部署到群集的发布管道。
+推送或签入时也会触发生成操作。 若要检查生成进度，请切换到“生成”选项卡  。在验证生成成功执行后，请定义用于将应用程序部署到群集的发布管道。
 
 ### <a name="create-a-release-pipeline"></a>创建发布管道
 
@@ -146,13 +136,13 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 选择“+ 发布” -> “创建发布” -> “创建”，手动创建发布    。 可以在“发布”  选项卡中监视发布进度。
 
-验证部署是否已成功且应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Explorer/](http://mysftestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
+验证部署是否已成功以及应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170616.3”。
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>提交并推送更改，触发发布
 
 通过将一些代码更改签入到 Azure DevOps 来验证持续集成管道是否正常工作。
 
-在编写代码时，Visual Studio 会自动跟踪代码更改。 通过从右下角的状态栏中选择“挂起的更改”图标（![挂起的][pending]），将更改提交到本地 Git 存储库。
+在编写代码时，Visual Studio 会自动跟踪代码更改。 通过从右下角的状态栏中选择“挂起的更改”图标（![挂起][pending]），将更改提交到本地 Git 存储库。
 
 在“团队资源管理器”的“更改”视图中，添加一条消息来说明所做的更新，然后提交更改。 
 
@@ -166,7 +156,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 若要检查生成进度，请在 Visual Studio 中切换到“团队资源管理器”中的“生成”选项卡。    在验证生成成功执行后，请定义用于将应用程序部署到群集的发布管道。
 
-验证部署是否已成功以及应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 [http://mysftestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Explorer/](http://mysftestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Explorer/)。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
+验证部署是否已成功以及应用程序是否正在群集中运行。  打开 Web 浏览器并导航到 `http://mysftestcluster.chinaeast.cloudapp.chinacloudapi.cn:19080/Explorer/`。  记下应用程序版本，在本例中为“1.0.0.20170815.3”。
 
 ![Service Fabric Explorer][sfx1]
 
@@ -178,13 +168,13 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 ![Service Fabric Explorer][sfx2]
 
-应用程序升级可能要花费几分钟时间才能完成。 当升级完成后，应用程序将运行下一版本。  在本例中为“1.0.0.20170815.4”。
+应用程序升级可能要花费几分钟时间才能完成。 当升级完成后，应用程序会运行下一版本。  在本例中为“1.0.0.20170815.4”。
 
 ![Service Fabric Explorer][sfx3]
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理

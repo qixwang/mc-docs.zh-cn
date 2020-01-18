@@ -1,26 +1,17 @@
 ---
-title: 备份和还原 Azure Service Fabric 执行组件 | Azure
+title: 备份和还原 Azure Service Fabric 执行组件
 description: 了解如何在 Azure Service Fabric 执行组件中实现备份和还原。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/29/2018
-ms.date: 01/07/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6d251ae29df073b5a84f501d1f459ea179522559
-ms.sourcegitcommit: 90d5f59427ffa599e8ec005ef06e634e5e843d1e
+ms.openlocfilehash: e88634df11de2afc44a6f82d0beb257b242c68c8
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083683"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742415"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>实现 Reliable Actors 备份和还原
 
@@ -127,6 +118,7 @@ myActorServiceProxy.backupActorsAsync();
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png

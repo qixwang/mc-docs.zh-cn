@@ -13,25 +13,25 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/02/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e0cfc2999be8cff6b2e9f0d2fad8b6f338b35bf7
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 81965ab4e7e61b537709619de0486842ce5a9794
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020299"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737908"
 ---
 # <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>用于优化 Azure Stack 性能的 SQL Server 最佳做法
 
 本文提供的 SQL Server 最佳做法可优化 Azure Stack 虚拟机 (VM) 中的 SQL Server 并提高性能。 在 Azure Stack VM 中运行 SQL Server 时，请使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 Azure Stack 云中关系数据库的性能取决于许多因素，包括 VM 的系列大小和数据磁盘的配置。
 
-创建 SQL Server 映像时，[请考虑在 Azure Stack 门户中预配 VM](/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 在 Azure Stack 管理员门户中下载来自市场管理的 SQL IaaS 扩展，并下载所选的 SQL VM 虚拟硬盘驱动器 (VHD)。 其中包括 SQL2014SP2、SQL2016SP1 和 SQL2017。
+创建 SQL Server 映像时，[请考虑在 Azure Stack 门户中预配 VM](/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 从 Azure Stack 管理员门户中的“市场管理”下载 SQL IaaS 扩展，然后下载所选的 SQL Server VM 映像。 这些映像包括 SQL Server 2016 SP1、SQL Server 2016 SP2 和 SQL Server 2017。
 
 > [!NOTE]  
-> 虽然本文介绍的是如何使用全球 Azure 门户预配 SQL Server VM，但相关指南也适用于 Azure Stack，只是存在以下差异：SSD 不适用于操作系统磁盘；托管磁盘不可用；存储配置存在微小差异。
+> 虽然本文介绍的是如何使用全球 Azure 门户预配 SQL Server VM，但相关指南也适用于 Azure Stack，只是存在以下差异：SSD 不可用于操作系统磁盘，并且在存储配置上存在微小差异。
 
 本文重点介绍如何在 Azure Stack VM 上获取 SQL Server 的最佳性能。  如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求和工作负荷模式。
 

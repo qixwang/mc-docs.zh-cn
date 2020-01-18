@@ -1,26 +1,17 @@
 ---
-title: 基于执行组件的 Azure Service Fabric 执行组件中的事件 | Azure
+title: 基于执行组件的 Azure Service Fabric 执行组件中的事件
 description: Service Fabric Reliable Actors 的事件简介。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/06/2017
-ms.date: 10/15/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8b6b550edbb224375828a37b84556b24d292655c
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: a88d6c34d966faa1ccce57565a5dd546a8900e16
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52660264"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742286"
 ---
 # <a name="actor-events"></a>执行组件事件
 执行组件事件提供了一种尽最大努力将通知从执行组件发送到客户端的方法。 执行组件事件设计用于从执行组件到客户端的通信，而不应用于从执行组件到执行组件的通信。
@@ -117,7 +108,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
 * [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -1,34 +1,25 @@
 ---
-title: Reliable Services WCF 通信堆栈 | Azure
+title: Reliable Services WCF 通信堆栈
 description: Service Fabric 中的内置 WCF 通信堆栈为 Reliable Services 提供客户端到服务的 WCF 通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 06/07/2017
-ms.date: 08/20/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d20c7a033c2be423d7f1184afdb24cf6df2425fd
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 1200b76bd2c5f9fe2c70744391f3321156d66d48
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652994"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742412"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services 基于 WCF 的通信堆栈
-Reliable services 框架使服务创作者能够选择要用于其服务的通信堆栈。 他们可以通过从 [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) 方法返回的 ICommunicationListener 来插入所选的通信堆栈。 对于想要使用基于 Windows Communication Foundation (WCF) 的通信的服务创作者，该框架提供了基于 WCF 的通信堆栈实现。
+Reliable services 框架使服务创作者能够选择要用于其服务的通信堆栈。 他们可以通过从 [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) 方法返回的 ICommunicationListener  来插入所选的通信堆栈。 对于想要使用基于 Windows Communication Foundation (WCF) 的通信的服务创作者，该框架提供了基于 WCF 的通信堆栈实现。
 
 ## <a name="wcf-communication-listener"></a>WCF 通信侦听器
-特定于 WCF 的 ICommunicationListener 实现由 **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** 类提供。
+特定于 WCF 的 ICommunicationListener  实现由 **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** 类提供。
 
-假设我们有 `ICalculator`
+假设我们有 `ICalculator` 类型的服务协定
 
 ```csharp
 [ServiceContract]
@@ -66,7 +57,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 ```
 
 ## <a name="writing-clients-for-the-wcf-communication-stack"></a>为 WCF 通信堆栈编写客户端
-为编写客户端以便使用 WCF 与服务进行通信，该框架提供了 WcfClientCommunicationFactory，这是特定于 WCF 的 [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md) 实现。
+为编写客户端以便使用 WCF 与服务进行通信，该框架提供了 WcfClientCommunicationFactory  ，这是特定于 WCF 的 [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md) 实现。
 
 ```csharp
 
@@ -78,7 +69,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-可以从 WcfCommunicationClientFactory 创建的 WcfCommunicationClient 访问 WCF 通信通道。
+可以从 WcfCommunicationClientFactory  创建的 WcfCommunicationClient  访问 WCF 通信通道。
 
 ```csharp
 
@@ -92,7 +83,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-客户端代码可以使用 WcfCommunicationClientFactory 以及用于实现 ServicePartitionClient 的 WcfCommunicationClient 来确定服务终结点，并与服务通信。
+客户端代码可以使用 WcfCommunicationClientFactory  以及用于实现 ServicePartitionClient  的 WcfCommunicationClient  来确定服务终结点，并与服务通信。
 
 ```csharp
 // Create binding
@@ -126,6 +117,7 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Reliable Services 远程控制执行远程过程调用](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [在 Reliable Services 中配合使用 Web API 和 OWIN](service-fabric-reliable-services-communication-webapi.md)
 * [确保 Reliable Services 的通信安全](service-fabric-reliable-services-secure-communication-wcf.md)
+
 <!-- Update_Description: update meta properties -->

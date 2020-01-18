@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric Windows 群集上设置加密证书并对机密进行加密 | Azure
+title: 在 Azure Service Fabric Windows 群集上设置加密证书并对机密进行加密
 description: 了解如何在 Windows 群集上设置加密证书并对机密进行加密。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/04/2019
-ms.date: 03/04/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b507df267f734a94b7967c3f1a44ea361ad12491
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: 7e6e73dbb3718730e7883a85f8e2304dcc12796d
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57203986"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742281"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>在 Windows 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Windows 群集上设置加密证书并使用它来加密机密。 对于 Linux 群集，请参阅[在 Linux 群集上设置加密证书并对机密进行加密][secret-management-linux-specific-link]。
@@ -34,14 +25,14 @@ ms.locfileid: "57203986"
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
 * 证书密钥用法必须包括数据加密 (10)，不应包括服务器身份验证或客户端身份验证。 
 
-  例如，使用 PowerShell 创建自签名证书时，`KeyUsage` 标志必须设置为 `DataEncipherment`：
+    例如，使用 PowerShell 创建自签名证书时，`KeyUsage` 标志必须设置为 `DataEncipherment`：
 
-  ```powershell
-  New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
-  ```
+    ```powershell
+    New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
+    ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在群集中安装证书
-必须在群集中的每个节点上安装此证书。 有关设置说明，请参阅 [how to create a cluster using Azure Resource Manager][service-fabric-cluster-creation-via-arm] （如何使用 Azure Resource Manager 创建群集）。 
+必须在群集中的每个节点上安装此证书。 有关设置说明，请参阅 [如何使用 Azure 资源管理器创建群集][service-fabric-cluster-creation-via-arm]。 
 
 ## <a name="encrypt-application-secrets"></a>加密应用程序机密
 以下 PowerShell 命令用于加密机密。 此命令仅加密值；它并 **不** 对密码文本进行签名。 若要生成机密值的密文，必须使用群集中安装的同一个加密证书：
@@ -53,9 +44,10 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 生成的 base-64 编码字符串包含机密密文，以及用来将其加密的证书相关信息。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[在应用程序中指定加密的机密。][secret-management-specify-encrypted-secrets-link]
+了解如何[在应用程序中指定加密机密][secret-management-specify-encrypted-secrets-link]。
 
 <!-- Links -->
+
 [key-vault-get-started]:../key-vault/key-vault-overview.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

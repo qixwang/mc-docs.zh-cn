@@ -1,25 +1,16 @@
 ---
-title: 滚动更新 Azure Service Fabric 群集证书 | Azure
+title: 滚动更新 Azure Service Fabric 群集证书
 description: 了解如何滚动更新由证书公用名称标识的 Service Fabric 群集证书。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 09/06/2019
-ms.date: 09/30/2019
 ms.author: v-yeche
-ms.openlocfilehash: 743703009c132a309f6a4a89b690412aba46a7cd
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.date: 01/06/2020
+ms.openlocfilehash: 206a0db55e887c7ed6148089095c805b050e77ef
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340839"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742330"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>手动滚动更新 Service Fabric 群集证书
 当 Service Fabric 群集证书接近到期时，需要更新该证书。  如果群集已[设置为基于公用名称使用证书](service-fabric-cluster-change-cert-thumbprint-to-cn.md)（而不是指纹），证书滚动更新很简单。  从证书颁发机构获取具有新到期日期的新证书。  自签名证书不支持用于生产 Service Fabric 群集，也不支持包括在执行 Azure 门户群集创建工作流期间生成的证书。 新证书必须具有与旧证书相同的公用名称。 

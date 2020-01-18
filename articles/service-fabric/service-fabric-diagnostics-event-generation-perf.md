@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 性能监视 | Azure
+title: Azure Service Fabric 性能监视
 description: 了解用于监视和诊断 Azure Service Fabric 群集的性能计数器。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/21/2018
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 71b829867f220c938eabcc5bac71dd9f7deb5dca
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: d028ce253f884d69612754674a42ee8efb95533b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204145"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741895"
 ---
 # <a name="performance-metrics"></a>性能指标
 
@@ -90,6 +81,6 @@ Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解 Service Fabric 中的[平台级事件生成情况](service-fabric-diagnostics-event-generation-infra.md)
-* 通过 [Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)收集性能指标
 
+<!--Not Available on * Collect performance metrics through [Log Analytics agent](service-fabric-diagnostics-oms-agent.md)-->
 <!--Update_Description: update meta properties, wording update -->

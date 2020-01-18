@@ -1,26 +1,16 @@
 ---
-title: 使用 Application Insights 进行 Azure Service Fabric 事件分析 | Azure
+title: 使用 Application Insights 进行 Azure Service Fabric 事件分析
 description: 了解如何使用 Application Insights 来可视化和分析事件，以便对 Azure Service Fabric 群集进行监视和诊断。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 11/21/2018
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3e10347394f92acba701242feef46b9bbc53a7e3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f165cc76e49e911b62f92befe11cdfdf4f38ab3d
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348521"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741902"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 分析和可视化事件
 
@@ -83,7 +73,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 <!--Correct on redirect to (/azure-monitor/log-query/log-query-overview)-->
 
-单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。  若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
+单击“分析”会转到 Application Insights Analytics 门户，可在其中以更大的范围和可选性查询事件与跟踪。  若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

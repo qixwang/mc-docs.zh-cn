@@ -1,27 +1,17 @@
 ---
-title: 使用 Kestrel 将 HTTPS 终结点添加到 Azure 中的 Service Fabric 应用 | Azure
+title: 使用 Kestrel 将 HTTPS 终结点添加到 Azure 中的 Service Fabric 应用
 description: 本教程介绍如何使用 Kestrel 向 ASP.NET Core 前端 Web 服务添加 HTTPS 终结点，以及如何将应用程序部署到群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9411e75187c27f29d97c8df50bb90aade4133f86
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 11b4fd18db0ba74e2ebf15e2020c1357663e9ec5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254621"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742037"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -48,7 +38,7 @@ ms.locfileid: "70254621"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -139,7 +129,7 @@ serviceContext =>
                     int port = serviceContext.CodePackageActivationContext.GetEndpoint("EndpointHttps").Port;
                     opt.Listen(IPAddress.IPv6Any, port, listenOptions =>
                     {
-                        listenOptions.UseHttps(GetCertificateFromStore());
+                        listenOptions.UseHttps(GetHttpsCertificateFromStore());
                         listenOptions.NoDelay = true;
                     });
                 })
@@ -164,21 +154,23 @@ serviceContext =>
 另请添加以下方法，这样 Kestrel 就能通过使用者在 `Cert:\LocalMachine\My` 存储中找到证书。  
 
 如果已使用以前的 PowerShell 命令创建自签名证书，请将“&lt;your_CN_value&gt;”替换为“mytestcert”，或者使用证书的 CN。
+请注意，在本地部署到 `localhost` 的情况下，最好使用“CN=localhost”以避免身份验证异常。
 
 ```csharp
-private X509Certificate2 GetCertificateFromStore()
+private X509Certificate2 GetHttpsCertificateFromStore()
 {
-    var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-    try
+    using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
         store.Open(OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
         var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
-        return currentCerts.Count == 0 ? null : currentCerts[0];
-    }
-    finally
-    {
-        store.Close();
+
+        if (currentCerts.Count == 0)
+                {
+                    throw new Exception("Https certificate is not found.");
+                }
+
+        return currentCerts[0];
     }
 }
 ```
@@ -358,47 +350,10 @@ if ($cert -eq $null)
 
 在导出向导中，选择“是，导出私钥”，然后选择“个人信息交换(PFX)”格式。   将文件导出到 *C:\Users\sfuser\votingappcert.pfx*。
 
-接下来，使用 [Add-AzServiceFabricApplicationCertificate](https://docs.microsoft.com/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) cmdlet 在远程群集上安装证书。
+接下来，使用[提供的 Powershell 脚本](./scripts/service-fabric-powershell-add-application-certificate.md)在远程群集上安装此证书。
 
 > [!Warning]
 > 对于开发和测试应用程序，自签名证书已足够。 对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书，而不是自签名证书。
-
-```powershell
-Connect-AzAccount -Environment AzureChinaCloud
-
-$vaultname="sftestvault"
-$certname="VotingAppPFX"
-$certpw="!Password321#"
-$groupname="voting_RG"
-$clustername = "votinghttps"
-$ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
-
-$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
-
-Write-Host "Reading pfx file from $ExistingPfxFilePath"
-$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
-$base64 = [System.Convert]::ToBase64String($bytes)
-
-$jsonBlob = @{
-   data = $base64
-   dataType = 'pfx'
-   password = $certpw
-   } | ConvertTo-Json
-
-$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
-$content = [System.Convert]::ToBase64String($contentbytes)
-
-$secretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
-
-# Upload the certificate to the key vault as a secret
-Write-Host "Writing secret to $certname in vault $vaultname"
-$secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
-
-# Add a certificate to all the VMs in the cluster.
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
-```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>在 Azure 负载均衡器中打开端口 443
 
@@ -445,7 +400,7 @@ $slb | Set-AzLoadBalancer
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集
 
-转到下一教程：
+进入下一教程：
 > [!div class="nextstepaction"]
 > [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
@@ -454,4 +409,4 @@ $slb | Set-AzLoadBalancer
 [image3]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppAzure.png
 [image4]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/ExportCert.png
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 有状态 Reliable Services 的诊断功能 | Azure
+title: Azure Service Fabric 有状态可靠服务诊断功能
 description: Azure Service Fabric 中的有状态 Reliable Services 的诊断功能
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/24/2018
-ms.date: 06/03/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e330f04fb9ad8d4f6b3011480300e8c966f507f3
-ms.sourcegitcommit: d75eeed435fda6e7a2ec956d7c7a41aae079b37c
+ms.openlocfilehash: b0d94f7e8ba8f6da3ffb2920a523151d719ec4bb
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195439"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742409"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -31,7 +22,7 @@ Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出
 可帮助收集和/或查看 EventSource 事件的工具和技术的示例包括：[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)和 [Microsoft TraceEvent 库](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
 ## <a name="events"></a>事件
-| 事件名称 | 事件 ID | 级别 | 事件说明 |
+| 事件名称 | 事件 ID | Level | 事件说明 |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |信息性 |在服务 RunAsync 任务启动时发出 |
 | StatefulRunAsyncCancellation |2 |信息性 |在服务 RunAsync 任务取消时发出 |
@@ -72,7 +63,7 @@ Service Fabric TStore 是[可靠集合](service-fabric-reliable-services-reliabl
 
 *ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 生成的。
 
-*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
+*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
 
 以下计数器实例名称通常适用于 `Service Fabric Transactional Replicator` 类别的计数器：
 
@@ -83,21 +74,23 @@ Service Fabric TStore 是[可靠集合](service-fabric-reliable-services-reliabl
 #### <a name="service-fabric-tstore-category"></a>Service Fabric TStore 类别
 对于类别 `Service Fabric TStore`，计数器实例名称采用以下格式：
 
-`ServiceFabricPartitionId:ServiceFabricReplicaId:ServiceFabricStateProviderId_PerformanceCounterInstanceDifferentiator`
+`ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
 *ServiceFabricPartitionId* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 生成的。
 
-*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
+*ServiceFabricReplicaId* 是一种与给定的 Reliable Service 副本相关联的 ID。 副本 ID 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一分区生成）发生冲突。 [此处](service-fabric-concepts-replica-lifecycle.md)提供有关副本及其在 Reliable Services 中的角色的更多详细信息。
 
-*ServiceFabricStateProviderId* 是与 Reliable Service 中的状态提供程序关联的 ID。 状态提供程序 ID 包含在性能计数器实例名称中，用于区分 TStore。
+StateProviderId  是与可靠服务中的状态提供程序关联的 ID。 状态提供程序 ID 包含在性能计数器实例名称中，用于区分 TStore。
 
 *PerformanceCounterInstanceDifferentiator* 是与状态提供程序中的性能计数器实例关联的区分 ID。 此区分符 包含在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例（由同一状态提供程序生成）发生冲突。
 
+StateProviderName  是与可靠服务中的状态提供程序关联的名称。 状态提供程序名称包含在性能计数器实例名称中，以便用户轻松识别它提供的状态。
+
 以下计数器实例名称通常适用于 `Service Fabric TStore` 类别的计数器：
 
-`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337`
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-在前面的示例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 分区 ID 的字符串表示形式，`131652217797162571` 是副本 ID，`142652217797162571` 是状态提供程序 ID，`1337` 是性能计数器实例区分符。
+在前面的示例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 分区 ID 的字符串表示形式，`131652217797162571` 是副本 ID，`142652217797162571` 是状态提供程序 ID，`1337` 是性能计数器实例区分符。 `urn:MyReliableDictionary/dataStore` 是存储名为 `urn:MyReliableDictionary` 的集合的数据的状态提供程序的名称。
 
 ### <a name="transactional-replicator-performance-counters"></a>事务复制器性能计数器
 

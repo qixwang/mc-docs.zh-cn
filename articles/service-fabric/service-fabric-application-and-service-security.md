@@ -1,26 +1,16 @@
 ---
-title: 了解 Azure Service Fabric 应用程序安全性 | Azure
+title: 了解 Azure Service Fabric 应用程序安全性
 description: 有关如何在 Service Fabric 中安全运行微服务应用程序的概述。 了解如何以不同的安全帐户运行服务和启动脚本、对用户进行身份验证和授权、管理应用程序机密、保护服务通信、使用 API 网关，以及保护应用程序的静态数据。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/16/2018
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 0e00814cf8a5d6634c4b7b7caddeb9d00521eaa8
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: a08219b6188acfc988f0445beebaf32a754f2f74
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174209"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741891"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 

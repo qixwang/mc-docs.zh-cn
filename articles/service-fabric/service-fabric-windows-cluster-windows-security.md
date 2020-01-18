@@ -1,26 +1,17 @@
 ---
-title: 使用 Windows 安全性保护 Windows 上运行的群集 | Azure
+title: 使用 Windows 安全性保护 Windows 上运行的群集
 description: 了解如何使用 Windows 安全性在 Windows 上运行的独立群集中配置节点到节点安全性和客户端到节点安全性。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/24/2017
-ms.date: 07/08/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 90b2fb62f5aa7680897a578be01beede06feba14
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 0026e14d7cb00f5826ca040751f1bd024a7e0248
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844604"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741914"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>使用 Windows 安全性保护 Windows 上的独立群集
 为了防止有人未经授权访问某个 Service Fabric 群集，必须保护该群集。 当群集运行生产工作负荷时，安全性就尤为重要。 本文介绍如何在 ClusterConfig.JSON 文件中使用 Windows 安全性配置节点到节点和客户端到节点的安全性。   该过程对应于[创建在 Windows 上运行的独立群集](service-fabric-cluster-creation-for-windows-server.md)中的安全性配置步骤。 有关 Service Fabric 如何使用 Windows 安全性的详细信息，请参阅[群集安全方案](service-fabric-cluster-security.md)。

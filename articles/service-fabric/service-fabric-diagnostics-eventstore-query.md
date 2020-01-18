@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 群集中使用 EventStore API 查询群集事件 | Azure
+title: 在 Azure Service Fabric 群集中使用 EventStore API 查询群集事件
 description: 了解如何使用 Azure Service Fabric EventStore API 查询平台事件
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/25/2019
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 286536901680510695e1e5ffb49f431828af2d34
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: d621279b70478bbac23b7d9cbceec793cde2acc1
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204141"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742313"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>查询群集事件的 EventStore API
 
@@ -120,9 +111,9 @@ Body:
 
 ## <a name="query-the-eventstore-programmatically"></a>以编程方式查询 EventStore
 
-还可以通过 [Service Fabric 客户端库](https://docs.azure.cn/zh-cn/dotnet/api/overview/service-fabric?view=azure-dotnet#client-library)以编程方式查询 EventStore。
+还可以通过 [Service Fabric 客户端库](https://docs.azure.cn/dotnet/api/overview/service-fabric?view=azure-dotnet#client-library)以编程方式查询 EventStore。
 
-设置好 Service Fabric 客户端后，可以通过访问 EventStore（如 ` sfhttpClient.EventStore.<request>`）来查询事件
+设置好 Service Fabric 客户端后，可以通过访问 EventStore（如 `sfhttpClient.EventStore.<request>`）来查询事件
 
 以下是通过 `GetClusterEventListAsync` 函数请求 `2018-04-03T18:00:00Z` 和 `2018-04-04T18:00:00Z` 之间的所有群集事件的示例。
 
@@ -178,35 +169,35 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 以下是说明如何通过调用事件存储 REST API 来了解群集状态的几个示例。
 
-群集升级：
+群集升级： 
 
 若要查看上周群集最后一次成功或尝试升级的情况，可以通过查询 EventStore 中的“ClusterUpgradeCompleted”事件来查询 API 以查看群集最近完成的升级：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
-群集升级问题：
+群集升级问题： 
 
 同样，如果最新的群集升级出现问题，则可以查询群集实体的所有事件。 将会看到各种事件，包括升级启动和成功完成升级的每个 UD。 还将看到回滚开始时的事件和相应的运行状况事件。 以下查询可用于此种情况：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-节点状态更改：
+节点状态更改： 
 
 若要查看过去几天的节点状态更改情况 - 节点上升或下降的时间，或者是处于激活或停用状态（由平台、混沌服务或用户输入导致）的时间 - 请使用以下查询：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-应用程序事件：
+应用程序事件： 
 
 还可以跟踪最近的应用程序部署和升级。 使用以下查询，查看与群集中的所有应用程序事件：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-应用程序的运行状况历史记录：
+应用程序的运行状况历史记录： 
 
 除了仅查看应用程序的生命周期事件，你可能还想查看特定应用程序运行状况的历史记录数据。 可通过指定想收集其数据的应用程序名称来执行此操作。 使用此查询获取所有应用程序历史记录事件：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`。 如果要包括可能已过期的历史记录事件（已过保留时间 (TTL)），请将 `,ApplicationHealthReportExpired` 添加到查询末尾以筛选两种类型的事件。
 
-“myApp”中所有服务的历史记录运行状况：
+“myApp”中所有服务的历史记录运行状况： 
 
 目前，服务的运行状况报告事件在相应的应用程序实体下方显示为 `DeployedServicePackageNewHealthReport` 事件。 若要查看服务如何对“App1”执行操作，请使用以下查询：`https://winlrc-staging-10.chinaeast.cloudapp.chinacloudapi.cn:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
-分区重新配置：
+分区重新配置： 
 
 若要查看在群集中发生的所有分区移动，请查询 `PartitionReconfigured` 事件。 这有助于在诊断群集中的问题时，找出在特定时间内哪些工作负载在哪些节点上运行。 这是可执行此操作的示例查询：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
-混沌服务：
+混沌服务： 
 
 当混沌服务开始或停止时，群集级别会公开一个事件。 若要查看最近一次使用混沌服务的情况，请使用以下查询：`https://mycluster.cloudapp.chinacloudapi.cn:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

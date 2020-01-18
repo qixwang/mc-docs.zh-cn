@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric 诊断和监视 | Azure
+title: Azure Service Fabric 诊断和监视
 description: 本文描述了 Service Fabric Reliable ServiceRemoting 运行时的性能监视功能，例如由其发出的性能计数器。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/29/2017
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0a4aca2cd11e11b0bb8c5bae034cc856d5f7c1a3
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: a5e874e3ef96e5a4e074a28070b8b9818ee04b40
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819564"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741855"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的诊断和性能监视
 Reliable ServiceRemoting 运行时会发出[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解 ServiceRemoting 的运行状况以及进行故障排除和性能监视。
 
 ## <a name="performance-counters"></a>性能计数器
-Reliable ServiceRemoting 运行时定义以下性能计数器类别：
+Reliable ServiceRemoting 运行时定义了以下性能计数器类别：
 
 | Category | 说明 |
 | --- | --- |
@@ -45,7 +36,7 @@ Reliable ServiceRemoting 运行时定义以下性能计数器类别：
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示形式通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成。
+*ServiceFabricPartitionID* 是与性能计数器实例关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成。
 
 ServiceReplicaOrInstanceId 是与性能计数器实例相关联的 Service Fabric 副本/实例 ID 的字符串表示形式  。
 

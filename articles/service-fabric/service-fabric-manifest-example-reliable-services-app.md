@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric Reliable Services 应用程序清单示例 | Azure
+title: Azure Service Fabric Reliable Services 应用程序清单示例
 description: 了解如何为 Reliable Services Service Fabric 应用程序配置应用程序和服务清单设置。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 origin.date: 06/11/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3f058d3f8cd7803292ba94679a5e773990ef7215
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 251dc77d14aa4fb14b12e969204625436a7612ac
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174246"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742494"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 应用程序和服务清单示例
 下面是应用程序和服务清单的示例，这些清单适用于带 ASP.NET Core Web 前端和有状态后端的 Service Fabric 应用程序。 这些示例的目的是说明什么设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Service Fabric .NET 快速入门](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)清单。

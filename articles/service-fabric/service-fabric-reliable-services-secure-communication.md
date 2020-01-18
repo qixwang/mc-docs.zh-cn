@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中通过 C# 保护服务远程处理通信 | Azure
+title: 在 Azure Service Fabric 中使用 C# 保护服务远程处理通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 C# Reliable Services 的基于服务远程处理的通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 04/20/2017
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 09dd23190a2e269850f015557d14610f7fc97fb8
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: d0ae298478c02fb9b06cb1012674e99554ca0e00
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819647"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742423"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
 > [!div class="op_single_selector"]
@@ -151,7 +142,7 @@ ms.locfileid: "68819647"
             };
         }
         ```
-3. 在安全服务上使用远程堆栈而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
+3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
 
     ```csharp
 
@@ -211,4 +202,4 @@ ms.locfileid: "68819647"
 
 有关后续步骤，请阅读 [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

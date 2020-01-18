@@ -1,27 +1,18 @@
 ---
-title: 有关为 AWS 上的 Service Fabric 群集创建基础结构的教程 - Azure Service Fabric | Azure
+title: 教程：为 AWS 上的 Service Fabric 群集创建基础结构 - Azure Service Fabric
 description: 本教程介绍如何设置 AWS 基础结构来运行 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 05/11/2018
-ms.date: 07/08/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 88ff45aa64c1a9afa19f7760b960eaab03dae4f6
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: bb2f82827e131c42e2e467f7b6a51a3e292e6327
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844577"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741982"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 AWS 基础结构
 
@@ -37,7 +28,7 @@ Service Fabric 独立群集提供相应的选项让我们选择自己的环境�
 > * 登录到其中一个实例
 > * 准备 Service Fabric 的实例
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要一个 AWS 帐户。  如果没有帐户，请转到 [AWS 控制台](https://aws.amazon.com/)创建一个帐户。
 
@@ -161,6 +152,7 @@ New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Acti
 > [安装 Service Fabric](service-fabric-tutorial-standalone-create-service-fabric-cluster.md)
 
 <!-- IMAGES -->
+
 [aws-console]: ./media/service-fabric-tutorial-standalone-cluster/aws-console.png
 [aws-ec2instance]: ./media/service-fabric-tutorial-standalone-cluster/aws-ec2instance.png
 [aws-ec2configure2]: ./media/service-fabric-tutorial-standalone-cluster/aws-ec2configure2.png

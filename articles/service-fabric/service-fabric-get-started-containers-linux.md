@@ -1,26 +1,16 @@
 ---
-title: 在 Linux 上创建 Azure Service Fabric 容器应用程序 | Azure
+title: 在 Linux 上创建 Azure Service Fabric 容器应用程序
 description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程序。 生成包含应用程序的 Docker 映像，将该映像推送到容器注册表，并生成并部署 Service Fabric 容器应用程序。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/04/2019
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8d3086a3de99d6eeefb0a46030f642c253f9c7cf
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 1c74bc61da98f75de4c1a927882a28ed3ef81dd0
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340936"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742292"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -32,7 +22,7 @@ ms.locfileid: "71340936"
 > [!NOTE]
 > 本文适用于 Linux 开发环境。  Service Fabric 群集运行时和 Docker 运行时必须在同一 OS 上运行。  不能在 Windows 群集上运行 Linux 容器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 一台运行以下软件的开发计算机：
     * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
     * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
@@ -224,7 +214,7 @@ docker push myregistry.azurecr.cn/samples/helloworldapp
 
 ![HealthCheckUnhealthyDsp][3]
 
-可以为每个容器配置 **HEALTHCHECK** 行为，方法是在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分。
+通过在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分，可以为每个容器配置 **HEALTHCHECK** 行为。
 
 ```xml
 <ServiceManifestImport>
@@ -371,7 +361,7 @@ docker rmi myregistry.azurecr.cn/samples/helloworldapp
 ```
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 
-若要将其他容器服务添加到使用 yeoman 创建的应用程序，请执行以下步骤：
+若要将其他容器服务添加到已使用 yeoman 创建的应用程序，请执行以下步骤：
 
 1. 将目录更改为现有应用程序的根目录。 例如 `cd ~/YeomanSamples/MyApplication`（如果 `MyApplication` 是 Yeoman 创建的应用程序）。
 2. 运行 `yo azuresfcontainer:AddService`
@@ -384,14 +374,14 @@ docker rmi myregistry.azurecr.cn/samples/helloworldapp
 
 ```json
 {
-        "name": "Hosting",
-        "parameters": [
-          {
-                "name": "ContainerDeactivationTimeout",
-                "value" : "10"
-          },
-          ...
-        ]
+    "name": "Hosting",
+    "parameters": [
+      {
+            "name": "ContainerDeactivationTimeout",
+            "value" : "10"
+      },
+      ...
+    ]
 }
 ```
 
@@ -403,19 +393,19 @@ docker rmi myregistry.azurecr.cn/samples/helloworldapp
 
 ```json
 {
-        "name": "Hosting",
-        "parameters": [
-          {
-                "name": "PruneContainerImages",
-                "value": "True"
-          },
-          {
-                "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
-          }
-          ...
-          }
-        ]
+    "name": "Hosting",
+    "parameters": [
+      {
+            "name": "PruneContainerImages",
+            "value": "True"
+      },
+      {
+            "name": "ContainerImagesToSkip",
+            "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+      }
+      ...
+      }
+    ]
 } 
 ```
 
@@ -427,13 +417,13 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
 
 ```json
 {
-        "name": "Hosting",
-        "parameters": [
-          {
-              "name": "ContainerImageDownloadTimeout",
-              "value": "1200"
-          }
-        ]
+    "name": "Hosting",
+    "parameters": [
+      {
+          "name": "ContainerImageDownloadTimeout",
+          "value": "1200"
+      }
+    ]
 }
 ```
 
@@ -476,4 +466,4 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
 [2]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
 [3]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png
 
-<!--Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

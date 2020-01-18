@@ -1,31 +1,22 @@
 ---
-title: Service Fabric 服务的可伸缩性 | Azure
+title: Service Fabric 服务的可伸缩性
 description: 介绍如何缩放 Service Fabric 服务
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/26/2019
-ms.date: 09/30/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 403b98dea4b00b41bd321b265572aad937113585
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 672d1dbed19c82ac94df80661b2296b00732d121
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340840"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742403"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
 Azure Service Fabric 通过管理服务、分区以及群集的节点上的副本，让生成可缩放的应用程序更简单。 在同一硬件上运行多个工作负荷不仅可实现最大资源使用率，还可提供在如何选择缩放工作负荷方面的灵活性。 
 
-<!-- Not Avaiable on VIDEO -->
+<!-- Not Avaiable on Channel 9 VIDEO URL -->
 
 在 Service Fabric 中进行缩放可通过多种不同方式实现：
 
@@ -133,7 +124,7 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 ## <a name="putting-it-all-together"></a>汇总
 让我们汇总已在此文中讨论的所有观点，并讨论一个示例。 请考虑以下服务：要生成一个充当通讯簿的服务，其中保存名称和联系信息。 
 
-首先，需要考虑多个与缩放相关的问题：会有多少用户？ 每个用户会存储多少个联系人？ 如果要在第一次构建服务时解决所有问题，这会很难。 我们假设你将处理具有特定分区计数的单个静态服务。 选错分区计数的后果可能会导致以后遇到缩放问题。 同样，即使选对计数，也可能并没有所需的所有信息。 例如，还需要首先决定群集的大小（节点数和其大小）。 通常难以预测服务在其生存期内使用的资源数。 也可能很难提前知道服务实际看到的流量模式。 例如，可能人们只在早上首先添加和删除其联系人，或者也可能在一天中均匀分布。 基于此，可能需要动态地扩大和缩小服务。 也许可以学习预测何时需要扩大和缩小服务，但无论哪种方式，可能都需要应对服务不断变化的资源消耗情况。 这可能涉及更改群集的大小，以在重新组织现有资源的使用不足以解决问题时提供更多资源。 
+首先，需要考虑多个与缩放相关的问题：会有多少用户？ 每个用户会存储多少个联系人？ 如果要在第一次构建服务时解决所有问题，这会很难。 假设要处理具有特定分区计数的单个静态服务。 如果选取错误的分区计数，以后可能会存在规模问题。 同样，即使选对计数，也可能并没有所需的所有信息。 例如，还需要首先决定群集的大小（节点数和其大小）。 通常难以预测服务在其生存期内使用的资源数。 也可能很难提前知道服务实际看到的流量模式。 例如，可能人们只在早上首先添加和删除其联系人，或者也可能在一天中均匀分布。 基于此，可能需要动态地扩大和缩小服务。 也许可以学习预测何时需要扩大和缩小服务，但无论哪种方式，可能都需要应对服务不断变化的资源消耗情况。 这可能涉及更改群集的大小，以在重新组织现有资源的使用不足以解决问题时提供更多资源。 
 
 但为什么要尝试为所有用户选择出单个分区方案？ 为什么局限于一项服务和一个静态群集？ 实际情况通常更具动态。 
 

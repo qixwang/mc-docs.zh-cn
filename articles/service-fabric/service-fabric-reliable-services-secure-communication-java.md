@@ -1,25 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中通过 Java 保护服务远程处理通信 | Azure
+title: 在 Azure Service Fabric 中使用 Java 保护服务远程处理通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 Java 可靠服务的基于服务远程处理的通信。
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 06/30/2017
-ms.date: 08/20/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4d3fbd793e5095f7b4a04726f1f0ba2dc0947d54
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 7545c34e6a38ac19278cfbccbb16ed2e4521c49a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52655841"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742301"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保护 Java 服务的服务远程处理通信
 > [!div class="op_single_selector"]
@@ -60,13 +52,13 @@ ms.locfileid: "52655841"
 
     有两种方式可用于提供侦听器设置和安全凭据：
 
-   1. 使用[配置包](service-fabric-application-and-service-manifests.md)提供：
+    1. 使用[配置包](service-fabric-application-and-service-manifests.md)提供：
 
-       在 settings.xml 文件中添加名为 `TransportSettings` 的节。
+        在 settings.xml 文件中添加名为 `TransportSettings` 的节。
 
-       ```xml
-       <!--Section name should always end with "TransportSettings".-->
-       <!--Here we are using a prefix "HelloWorldStateless".-->
+        ```xml
+        <!--Section name should always end with "TransportSettings".-->
+        <!--Here we are using a prefix "HelloWorldStateless".-->
         <Section Name="HelloWorldStatelessTransportSettings">
             <Parameter Name="MaxMessageSize" Value="10000000" />
             <Parameter Name="SecurityCredentialsType" Value="X509_2" />
@@ -75,11 +67,11 @@ ms.locfileid: "52655841"
             <Parameter Name="CertificateRemoteThumbprints" Value="BD1C71E248B8C6834C151174DECDBDC02DE1D954" />
         </Section>
 
-       ```
+        ```
 
-       在这种情况下，`createServiceInstanceListeners` 方法如下所示：
+        在这种情况下，`createServiceInstanceListeners` 方法如下所示：
 
-       ```java
+        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
             ArrayList<ServiceInstanceListener> listeners = new ArrayList<>();
             listeners.add(new ServiceInstanceListener((context) -> {
@@ -87,7 +79,7 @@ ms.locfileid: "52655841"
             }));
             return listeners;
         }
-       ```
+        ```
 
         如果要在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，`FabricTransportListenerSettings` 将默认加载此节中的所有设置。
 
@@ -107,7 +99,7 @@ ms.locfileid: "52655841"
             }));
             return listeners;
         }
-       ```
+        ```
 3. 在安全服务上使用远程堆栈（而不是使用 `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` 类）调用方法来创建服务代理时，请使用 `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`。
 
     如果客户端代码正在作为服务的一部分运行，则可以从 settings.xml 文件中加载 `FabricTransportSettings`。 创建与服务代码类似的 TransportSettings 节，如上所示。 对客户端代码进行以下更改。

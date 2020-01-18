@@ -1,26 +1,16 @@
 ---
 title: Azure Service Fabric 中的可靠并发队列
-description: 可靠并发队列是一种高吞吐量队列，适用于并行排队和取消排队。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
+description: ReliableConcurrentQueue 是一个高吞吐量队列，它允许并行排队和取消排队。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 05/01/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 265b462098544c8ce7274e64195c45f36890c089
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 5ba15ce07841eeefe27b8d792e76bac73a19bb97
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254757"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742302"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
 可靠并发队列是一种异步的、事务性的已复制队列，其特点是排队和取消排队操作的高并发性。 它旨在降低[可靠队列](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)提供的严格的 FIFO 排序要求，代之以“尽力排序”要求，从而提高吞吐量并降低延迟。
@@ -37,7 +27,7 @@ ms.locfileid: "70254757"
 
 可靠并发队列作为[可靠队列](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)的替代推出， 其使用范围局限于不需要严格 FIFO 排序的情况，这种情况下，在尽量保证 FIFO 的同时，还需要考虑到并发性。  [可靠队列](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)以锁定方式强制实施 FIFO 排序，一次只允许一个事务排队，一个事务取消排队。 相对而言，可靠并发队列对排序的要求较松，允许任意数目的并发事务交叉进行排队和取消排队操作。 可靠并发队列的原则是“尽力排序”，但无法保证两个值的相对顺序。
 
-在有多个并发事务需要执行排队和/或取消排队操作的情况下，可靠并发队列相对于[可靠队列](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)而言可以提高吞吐量并降低延迟。
+在任何有多个执行排队和/或取消排队操作的并发事务的情况下，可靠并发队列相对于[可靠队列](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)而言都可以提高吞吐量并降低延迟。
 
 可靠并发队列的一个示例用例是[消息队列](https://en.wikipedia.org/wiki/Message_queue)方案。 在该方案中，一个或多个消息生成者会创建项并将其添加到队列中，同时还会有一个或多个消息使用者从队列拉取消息并对其进行处理。 多个生成者和使用者可以独立操作，使用并发事务来处理队列。
 
@@ -46,12 +36,19 @@ ms.locfileid: "70254757"
 * 队列不保证严格的 FIFO 排序。
 * 队列不读取自己的写入。 项在事务中排队时，该项对于同一事务中的取消排队者来说为不可见。
 * 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。       如果 *txnA* 中止，*A* 会立刻变得对 *txnB* 可见。
-* 可以先使用 TryDequeueAsync，然后中止事务，从而实施 TryPeekAsync 行为。   “编程模式”部分提供了一个这样的示例。
+* 可以先使用 TryDequeueAsync，然后中止事务，从而实施 TryPeekAsync 行为。   可以在“编程模式”部分中找到此行为的示例。
 * 计数是非事务性的。 可以通过计数来了解队列中的元素数目，但计数只代表一个时间点的情况，可靠性不强。
-* 不应在事务处于活动状态时对取消排队项执行开销昂贵的处理，以免事务长时间运行，对系统造成性能影响。
+* 在事务处于活动状态时，不应对取消排队项执行开销高昂的处理，以避免可能对系统性能产生影响的长时间运行事务。
 
 ## <a name="code-snippets"></a>代码片段
 让我们看看一些代码片段及其预期输出。 本部分忽略异常处理。
+
+### <a name="instantiation"></a>Instantiation
+创建可靠并发队列的实例类似于任何其他可靠集合。
+
+```csharp
+IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
+```
 
 ### <a name="enqueueasync"></a>EnqueueAsync
 下面是使用 EnqueueAsync 的一些代码片段及其预期输出。
@@ -96,10 +93,10 @@ ms.locfileid: "70254757"
     }
     ```
 
-    假定任务已成功完成且是以并行方式运行的，同时没有其他并发事务在修改队列。 那么，队列中项的顺序将无法推断。 就此代码片段来说，项的显示顺序可能是 4! 种 可能的顺序之一。  队列会尝试让项保持原有的（排队）顺序，但在出现并发操作或错误的情况下，也可能会强制其重新排序。
+    假定任务已成功完成且是以并行方式运行的，同时没有其他并发事务在修改队列。 那么，队列中项的顺序将无法推断。 就此代码片段来说，项的显示顺序可能是 4! 个 可能的顺序之一。  队列会尝试让项保持原有的（排队）顺序，但在出现并发操作或错误的情况下，也可能会强制其重新排序。
 
 ### <a name="dequeueasync"></a>DequeueAsync
-下面是使用 TryDequeueAsync 的一些代码片段及预期输出。 假定已在队列中填充以下项：
+下面是使用 TryDequeueAsync 的一些代码片段，后跟预期的输出。 假定已在队列中填充以下项：
 > 10, 20, 30, 40, 50, 60
 
 - *案例 1：单个取消排队任务*
@@ -173,7 +170,7 @@ ms.locfileid: "70254757"
 此部分介绍一些编程模式，在使用 ReliableConcurrentQueue 时可能会用到这些模式。
 
 ### <a name="batch-dequeues"></a>对取消排队进行批处理
-建议的编程模式是，通过使用者任务按批取消排队，而不是一次执行一个取消排队操作。 用户可以选择限制每个批处理之间的延迟，或者限制批处理大小。 以下代码片段显示了此编程模型。  请注意，在此示例中，提交事务后，处理就会开始。因此，如果在处理过程中发生错误，则会丢失未处理的项，这些项不会得到处理。  也可以让处理在事务范围内进行，但这种方式可能会对性能造成负面影响，并且需要对已处理的项进行相应的安排。
+建议的编程模式是，通过使用者任务按批取消排队，而不是一次执行一个取消排队操作。 用户可以选择限制每个批处理之间的延迟，或者限制批处理大小。 以下代码片段显示了此编程模型。 请注意，在此示例中，处理是在提交事务后完成的，因此，如果在处理过程中发生错误，则未处理项将丢失而不会得到处理。  或者，处理可以在事务的范围内完成，但是它可能会对性能产生负面影响，并且需要处理已处理项。
 
 ```
 int batchSize = 5;
@@ -267,9 +264,9 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>尽力清空
-考虑到数据结构的并发特性，不保证队列会被清空。  即使队列没有正在进行的用户操作，也可能会出现对 TryDequeueAsync 进行具体调用时不返回项（此前已排队并提交）的情况。  排队的项最终必定会变得对取消排队操作可见，  但在没有带外通信机制的情况下，独立的使用者无法知道队列是否已达到稳定状态，即使系统已停止所有生成者且不允许新的排队操作。 因此，清空操作只能尽力而为，其执行情况如下所示。
+考虑到数据结构的并发特性，不保证队列会被清空。  即使队列中没有正在进行的用户操作，对 TryDequeueAsync 的特定调用也可能不会返回以前排队和提交的项。  排队的项最终必定会变得对取消排队操作可见，  但在没有带外通信机制的情况下，独立的使用者无法知道队列是否已达到稳定状态，即使系统已停止所有生成者且不允许新的排队操作。 因此，清空操作只能尽力而为，其执行情况如下所示。
 
-用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，然后尝试清空队列。  如果用户知道队列中预计会有多少项，则可设置一个通知，在所有项都已取消排队后发出指示。
+用户应停止所有后续的生成者和使用者任务，等待正在进行的事务提交或中止，然后尝试清空队列。  如果用户知道队列中预期的项数，则可以设置一个通知，通知所有项都已取消排队。
 
 ```
 int numItemsDequeued;
@@ -336,7 +333,7 @@ using (var txn = this.StateManager.CreateTransaction())
 ```
 
 ## <a name="must-read"></a>必读
-* [Reliable Services 快速入门](service-fabric-reliable-services-quick-start.md)
+* [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
 * [使用可靠集合](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
@@ -345,4 +342,4 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services 编程模型的高级用法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Collections 的开发人员参考](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
 
-<!-- Update_Description: update meta properties, update link  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

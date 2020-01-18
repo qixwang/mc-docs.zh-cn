@@ -6,14 +6,15 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 11/28/2018
-ms.date: 08/26/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 76292e8a30dfa43de2c4f0a87744f5d8618ba7cf
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 748cd0e6884cc523dce746a65e9edf56472c5f8d
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993487"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859864"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -41,7 +42,7 @@ ms.locfileid: "69993487"
 * **Azure 配对区域**：对于你的地理区域，选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
 * **服务可用性**：确定配对区域应采用热/热、热/暖还是热/冷配置。 是否要同时运行两个区域，其中一个区域已准备好开始提供流量？  或者，是否要运行一个区域，以便有时间来准备好提供流量？
 
-AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部署到配对区域中，这些区域旨在一起管理区域灾难恢复。 例如，AKS 在中国东部和中国北部提供。 这些区域是配对的。 创建 AKS BC/DR 策略时，请选择这两个区域。
+AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部署到配对区域中，这些区域旨在一起管理区域灾难恢复。 例如，AKS 在中国东部 2 和中国东部 2 提供。 这些区域是配对的。 创建 AKS BC/DR 策略时，请选择这两个区域。
 
 在部署应用程序时，请向 CI/CD 管道添加另一个步骤以部署到这些 AKS 群集中。 如果未更新部署管道，应用程序可能只会部署到其中一个区域和 AKS 群集。 定向到次要区域的客户流量不会收到最新代码更新。
 
@@ -59,9 +60,16 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 流量管理器执行 DNS 查找，并为用户返回最适当的终结点。 嵌套的配置文件可为主位置指定优先级。 例如，用户在一般情况下应连接到最近的地理区域。 如果该区域有问题，流量管理器会将用户定向到次要区域。 此方式确保客户可以连接到应用程序实例，即使最近的地理区域不可用。
 
-<!--Not Available on [Configure the geographic traffic routing method using Traffic Manager](/traffic-manager/traffic-manager-configure-geographic-routing-method)-->
+有关如何设置终结点和路由的信息，请参阅[使用流量管理器配置地理流量路由方法](/traffic-manager/traffic-manager-configure-geographic-routing-method)。
+
 <!--Not Available on Preview content ### Layer 7 application routing with Azure Front Door-->
 <!--Not Avaialble on [Azure Front Door (currently in preview)](/frontdoor/front-door-overview)-->
+
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
+
+如果群集需要相互通信，则可以通过[虚拟网络对等互连](/virtual-network/virtual-network-peering-overview)来实现两个虚拟网络之间的相互连接。 这项技术将虚拟网络彼此互连，从而在世纪互联的骨干网中甚至在不同地理区域中都提供了高带宽。
+
+对等互连虚拟网络（运行 AKS 群集的虚拟网络）的先决条件是在 AKS 群集中使用标准负载均衡器，以便可通过虚拟网络对等互连访问 kubernetes 服务。
 
 ## <a name="enable-geo-replication-for-container-images"></a>为容器映像启用异地复制
 
@@ -117,7 +125,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 如果使用 Azure 托管磁盘，可以选择如下所述的复制和 DR 解决方案：
 
-* [Azure 上的 Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 * [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>基于应用程序的异步复制
@@ -138,4 +146,4 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

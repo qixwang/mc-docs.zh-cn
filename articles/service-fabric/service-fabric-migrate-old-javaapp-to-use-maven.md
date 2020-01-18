@@ -1,51 +1,42 @@
 ---
-title: 从 Java SDK 迁移到 Maven - 更新旧的 Azure Service Fabric Java 应用程序以使用 Maven | Azure
+title: 从 Java SDK 迁移到 Maven - 更新旧的 Azure Service Fabric Java 应用程序以使用 Maven
 description: 更新曾使用 Service Fabric Java SDK 的旧式 Java 应用程序，以便从 Maven 提取 Service Fabric Java 依赖项。 完成此设置以后，即可生成旧式 Java 应用程序。
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/23/2017
-ms.date: 01/21/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2efbac33d185e4d05f6355f2bf139e34d0de7248
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 1960ed097fef11bf346e3cbd317383d972e2b8f7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58627041"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742492"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新旧式 Java Service Fabric 应用程序，以便从 Maven 提取 Java 库
-我们最近已将 Service Fabric Java 二进制文件从 Service Fabric Java SDK 移至 Maven 托管。 现在，你可以使用 mavencentral 来提取最新的 Service Fabric Java 依赖项。 本快速入门介绍如何更新现有的 Java 应用程序（此前使用 Yeoman 模板或 Eclipse 创建，可与 Service Fabric Java SDK 配合使用），使之与基于 Maven 的版本兼容。
+我们最近已将 Service Fabric Java 二进制文件从 Service Fabric Java SDK 移至 Maven 托管。 现在，你可以使用 mavencentral  来提取最新的 Service Fabric Java 依赖项。 本快速入门介绍如何更新现有的 Java 应用程序（此前使用 Yeoman 模板或 Eclipse 创建，可与 Service Fabric Java SDK 配合使用），使之与基于 Maven 的版本兼容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. 首先需卸载现有的 Java SDK。
 
-   ```bash
-   sudo dpkg -r servicefabricsdkjava
-   ```
+    ```bash
+    sudo dpkg -r servicefabricsdkjava
+    ```
 2. 按照[此处](service-fabric-cli.md)提到的步骤安装最新的 Service Fabric CLI。
 
 3. 若要生成和使用 Service Fabric Java 应用程序，需确保已安装 JDK 1.8 和 Gradle。 如果尚未安装，可运行以下命令来安装 JDK 1.8 (openjdk-8-jdk) 和 Gradle：
 
-   ```bash
-   sudo apt-get install openjdk-8-jdk-headless
-   sudo apt-get install gradle
-   ```
+    ```bash
+    sudo apt-get install openjdk-8-jdk-headless
+    sudo apt-get install gradle
+    ```
 4. 按照[此处](service-fabric-application-lifecycle-sfctl.md)提到的步骤，更新应用程序的安装/卸载脚本，以便使用新的 Service Fabric CLI。 可以参考入门[示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
 
 >[!TIP]
 > 卸载 Service Fabric Java SDK 后，Yeoman 将无法使用。 请遵循[此处](service-fabric-create-your-first-linux-application-with-java.md)提到的先决条件，以便启动和运行 Service Fabric Yeoman Java 模板生成器。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
-Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral 提供的 Service Fabric Java 库。
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral  提供的 Service Fabric Java 库。
 
 ### <a name="actors"></a>执行组件
 
@@ -167,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
         mavenCentral()
@@ -241,7 +232,7 @@ dependencies {
 .
 .
 ```
-现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
     mavenCentral()
@@ -313,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
     mavenCentral()
@@ -413,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分：
+现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
 ```
 repositories {
     mavenCentral()

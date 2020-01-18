@@ -1,6 +1,7 @@
 ---
-title: Azure Stack SQL 资源提供程序 1.1.30.0 发行说明 | Microsoft Docs
-description: 了解 Azure Stack SQL 资源提供程序最新更新版的信息，包括任何已知问题和下载位置。
+title: Azure Stack SQL 资源提供程序 1.1.30.0 发行说明
+titleSuffix: Azure Stack
+description: 查看 Azure Stack SQL 资源提供程序 1.1.30.0 更新的发行说明。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
@@ -12,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 05/06/2019
-ms.date: 06/03/2019
+origin.date: 10/02/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: e2e69fb2b71860db51e2a32c7d59b40a68aba8da
-ms.sourcegitcommit: 87e9b389e59e0d8f446714051e52e3c26657ad52
+ms.openlocfilehash: b950ad06d2b398cc91deeae40e0f554f945a3c74
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66381897"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737772"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL 资源提供程序 1.1.30.0 发行说明
 
@@ -56,13 +57,13 @@ ms.locfileid: "66381897"
 
 - **SQL 宿主服务器设置边栏选项卡更新**。 修复了“设置”边栏选项卡错误地使用“密码”标题的问题。
 
-## <a name="known-issues"></a>已知问题 
+## <a name="known-issues"></a>已知问题
 
-- **SQL SKU 最长可能需要在一小时后才显示在门户中**。 创建新的 SQL 数据库时，新建的 SKU 最长可能需要在一小时后才显示出来并可供使用。 
+- **SQL SKU 最长可能需要在一小时后才显示在门户中**。 创建新的 SQL 数据库时，新建的 SKU 最长可能需要在一小时后才显示出来并可供使用。
 
     **解决方法**：无。
 
-- **重复使用 SQL 登录名**。 尝试使用与现有登录名相同的用户名在同一订阅下创建新的 SQL 登录名时，会导致重复使用同一登录名和现有密码的问题。 
+- **重复使用 SQL 登录名**。 尝试使用与现有登录名相同的用户名在同一订阅下创建新的 SQL 登录名时，会导致重复使用同一登录名和现有密码的问题。
 
     **解决方法**：在同一订阅下创建新登录名时使用不同的用户名，或者在不同订阅下使用相同的用户名创建登录名。
 
@@ -83,10 +84,11 @@ ms.locfileid: "66381897"
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
+
 - **SQL 资源提供程序无法添加 SQL Server Always On 侦听器**。 使用 SQL Server Always On 侦听器的 IP 地址时，SQL 资源提供程序 VM 无法解析侦听器的主机名。
 
     **解决方法**：确保 DNS 正常运行，以便将侦听器 IP 解析为侦听器主机名。
-    
+
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>云管理员操作 Azure Stack 时的已知问题
 请参阅 [Azure Stack 发行说明](azure-stack-servicing-policy.md)中的文档。
 
@@ -95,4 +97,4 @@ ms.locfileid: "66381897"
 
 [准备部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md#prerequisites)。
 
-[从旧版升级 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。 
+[从旧版升级 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。

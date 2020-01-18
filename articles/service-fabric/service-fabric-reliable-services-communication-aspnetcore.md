@@ -1,26 +1,17 @@
 ---
-title: 使用 ASP.NET Core 与服务通信 | Azure
+title: 使用 ASP.NET Core 与服务通信
 description: 了解如何在无状态和有状态 Reliable Services 中使用 ASP.NET Core。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 10/12/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 277c42a111fbed2f6b6e4256442c02b83481f867
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 88d7073f8c53610c193a1c723a77ce6b85789648
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174061"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741864"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -201,7 +192,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services 中的 Kestrel
 可以通过导入 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet 包来使用 Reliable Services 中的 Kestrel。 此包包含 `KestrelCommunicationListener`（`ICommunicationListener` 的实现）。 `KestrelCommunicationListener` 允许使用 Kestrel 作为 Web 服务器在 Reliable Service 内部创建 ASP.NET Core WebHost。
 
-Kestrel 是基于 libuv 的 ASP.NET Core 的跨平台 Web 服务器，libuv 是跨平台异步 I/O 库。 与 HTTP.sys 不同，Kestrel 不使用集中式终结点管理器。 与 HTTP.sys 的另一个区别在于，Kestrel 不支持在多个进程之间共享端口。 Kestrel 的每个实例必须使用唯一端口。
+Kestrel 是一个用于 ASP.NET Core 的跨平台 Web 服务器。 与 HTTP.sys 不同，Kestrel 不使用集中式终结点管理器。 与 HTTP.sys 的另一个区别在于，Kestrel 不支持在多个进程之间共享端口。 Kestrel 的每个实例必须使用唯一端口。 有关 Kestrel 的详细信息，请参阅[实现详细信息](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)。
 
 ![Kestrel 示意图][4]
 
@@ -339,6 +330,8 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
 在此配置中，`KestrelCommunicationListener` 自动从应用程序端口范围中选择未使用的端口。
+
+对于 HTTPS，它应为终结点配置 HTTPS 协议，而无需在 ServiceManifest.xml 中指定端口，并将终结点名称传递给 KestrelCommunicationListener 构造函数。
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric 配置提供程序
 ASP.NET Core 中的应用程序配置基于配置提供程序建议的键值对。 请阅读 [ASP.NET Core 中的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/)，详细了解一般的 ASP.NET Core 配置支持。

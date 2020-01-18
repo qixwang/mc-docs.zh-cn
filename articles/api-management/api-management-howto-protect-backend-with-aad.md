@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 05/21/2019
-ms.date: 10/21/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: 552779555ea15a25af949ddd768737ab8196f98d
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 5cae1d68834048e668f7153ca4e294eee718ef8e
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292562"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859496"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "72292562"
 > [!NOTE]
 > 此功能在 API 管理的“开发人员”  、“标准”  和“高级”  层中可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -62,9 +62,7 @@ ms.locfileid: "72292562"
 
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。
 
-创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。  
-
-1. 选择“公开 API”，然后单击“保存并继续”以创建应用程序 ID URI。  
+1. 选择“公开 API”  ，并将“应用程序 ID URI”  设为默认值。 记下此值以备将来使用。
 
 1. 在“添加范围”页中，创建 API 支持的新范围，  （例如“读取”）。然后单击“添加范围”以创建范围。  重复此步骤以添加 API 支持的所有范围。
 
@@ -152,9 +150,9 @@ ms.locfileid: "72292562"
 
 1. 选择“创建”  。
 
-1. 返回客户端应用的“设置”页。 
+1. 返回到客户端应用并选择“身份验证”  。
 
-1. 选择“回复 URL”，并在第一行中粘贴 **redirect_url**。  在本示例中，我们已将 `https://localhost` 替换为第一行中的 URL。  
+1. 在“重定向 URI”  下，选择类型为 **Web**，在“重定向 URI”  下粘贴 **redirect_url**，然后单击“保存”。
 
 配置 OAuth 2.0 授权服务器后，开发人员控制台可从 Azure AD 获取访问令牌。 
 
@@ -168,7 +166,7 @@ ms.locfileid: "72292562"
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。   
 
-5. 选择**保存**。
+5. 选择“保存”  。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 
@@ -205,7 +203,7 @@ ms.locfileid: "72292562"
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID of backend-app}</value>
+            <value>{Application ID URI of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

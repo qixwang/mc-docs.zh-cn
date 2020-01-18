@@ -1,29 +1,20 @@
 ---
-title: 使用系统运行状况报告进行故障排除 | Azure
+title: 使用系统运行状况报告进行故障排除
 description: 介绍了 Azure Service Fabric 组件发送的运行状况报告，以及如何使用这些报告来排查群集或应用程序问题
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 02/28/2018
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca93662a4f8d903eaf2faae0cb4b31aea2cd65c0
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: 9d23c48b858cb8c10facc4dc1a97a1796477323c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819679"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741966"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
-Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
+Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
 
 > [!NOTE]
 > 请阅读 [Service Fabric 运行状况模型](service-fabric-health-introduction.md)以了解与运行状况相关的概念。
@@ -97,7 +88,7 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
     <!--MOONCAKE: ORIGNAL AUTHOR MISSING ```-->
     
 ## <a name="node-system-health-reports"></a>节点系统运行状况报告
-System.FM 表示“故障转移管理器”服务，是管理群集节点相关信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 节点实体随节点状态一起删除。 有关详细信息，请参阅 [RemoveNodeStateAsync](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync?view=azure-dotnet)。
+System.FM 表示“故障转移管理器”服务，是管理群集节点相关信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 节点实体随节点状态一起删除。 有关详细信息，请参阅 [RemoveNodeStateAsync](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync?view=azure-dotnet)。
 
 ### <a name="node-updown"></a>节点开启/节点关闭
 节点加入环时，System.FM 报告为正常（节点已启动且正在运行）。 节点离开环时，则报告错误（节点已关闭进行升级，或只是发生故障）。 运行状况存储生成的运行状况层次结构对与 System.FM 节点报告相关的已部署实体起作用。 它将节点视为所有已部署实体的虚拟父项。 如果 System.FM 报告节点已启动并且其实例与实体关联的实例相同，则可以通过查询公开该节点上已部署的实体。 如果 System.FM 报告节点停止运行或重启（作为新实例），运行状况存储会自动清理只能位于停止运行的节点或节点的上一实例上的已部署实体。
@@ -678,7 +669,7 @@ System.Replicator  报告警告。 在主要副本上，由于一个或多个次
 * **属性**：**PrimaryReplicationQueueStatus** 或 **SecondaryReplicationQueueStatus**，视副本角色而定。
 
 ### <a name="slow-naming-operations"></a>命名操作速度慢
-如果命名操作耗时超过可接受范围，System.NamingService  会报告主要副本的运行状况。 [CreateServiceAsync](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 或 [DeleteServiceAsync](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync?view=azure-dotnet) 都是命名操作的示例。 可以在 FabricClient 下找到更多方法。 例如，可在[服务管理方法](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.servicemanagementclient?view=azure-dotnet)或[属性管理方法](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.propertymanagementclient?view=azure-dotnet)下找到更多方法。
+如果命名操作耗时超过可接受范围，System.NamingService  会报告主要副本的运行状况。 [CreateServiceAsync](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) 或 [DeleteServiceAsync](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync?view=azure-dotnet) 都是命名操作的示例。 可以在 FabricClient 下找到更多方法。 例如，可在[服务管理方法](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.servicemanagementclient?view=azure-dotnet)或[属性管理方法](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.propertymanagementclient?view=azure-dotnet)下找到更多方法。
 
 > [!NOTE]
 > 命名服务会将服务名称解析为群集中的某个位置。 用户可以使用它来管理服务名称和属性。 它是 Service Fabric 分区持久化服务。 其中一个分区代表“颁发机构所有者”  ，内含与所有 Service Fabric 名称和服务相关的元数据。 Service Fabric 名称映射到不同的分区，这些分区称为“名称所有者”  分区，因此服务是可扩展的。 有关详细信息，请参阅[命名服务](service-fabric-architecture.md)。
@@ -739,7 +730,7 @@ HealthEvents          :
 ```
 
 ## <a name="deployedapplication-system-health-reports"></a>DeployedApplication 系统运行状况报告
-**System.Hosting** 是已部署实体的主管组件。
+**System.Hosting** 是已部署实体上的主管组件。
 
 ### <a name="activation"></a>激活
 应用程序在节点上成功激活时，System.Hosting 报告正常。 否则报告错误。

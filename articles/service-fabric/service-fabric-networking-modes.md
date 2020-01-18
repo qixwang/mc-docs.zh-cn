@@ -1,26 +1,17 @@
 ---
-title: 配置 Azure Service Fabric 容器服务的网络模式 | Azure
+title: 配置 Azure Service Fabric 容器服务的网络模式
 description: 了解如何设置 Azure Service Fabric 支持的不同网络模式。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 66bb86fc782016c370e6e8113ee815c1ad912b8c
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: ae5c7d076171f7948a5c02f61b2fa27bba465e79
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174237"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742491"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -203,8 +194,8 @@ ms.locfileid: "70174237"
 
     |设置 |Value | |
     | --- | --- | --- |
-    |Priority |2000 | |
-    |Name |Custom_Dns  | |
+    |优先级 |2000 | |
+    |名称 |Custom_Dns  | |
     |Source |VirtualNetwork | |
     |目标 | VirtualNetwork | |
     |服务 | DNS (UDP/53) | |
@@ -250,9 +241,9 @@ ms.locfileid: "70174237"
 
     ```xml
     <Resources>
-     <Endpoints>
-       <Endpoint Name="ServiceEndpoint" Protocol="http" Port="80" CodePackageRef="Code"/>
-     </Endpoints>
+        <Endpoints>
+            <Endpoint Name="ServiceEndpoint" Protocol="http" Port="80" CodePackageRef="Code"/>
+        </Endpoints>
     </Resources>
     ```
 

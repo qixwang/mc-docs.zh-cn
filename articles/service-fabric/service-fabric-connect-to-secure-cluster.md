@@ -1,26 +1,16 @@
 ---
-title: 安全地连接到 Azure Service Fabric 群集 | Azure
+title: 安全地连接到 Azure Service Fabric 群集
 description: 介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 01/29/2019
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: e2794d44e5aab3b30f23aa92d2b7b640458e5ef8
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 687a5d967f79cb11dc9b16ba9d6198a6d0c01590
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174120"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741890"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -364,13 +354,13 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-系统会自动提示用户选择客户端证书。
+系统自动提示选择客户端证书。
 
 <a name="connectsecureclustersetupclientcert"></a>
 
 ## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>在远程计算机上设置客户端证书
 
-至少应有两个证书用于保护群集，一个用于保护群集和服务器证书，另一个用于保护客户端访问。  建议还使用其他辅助证书和客户端访问证书。  若要使用证书安全性来保护客户端与与群集节点之间的通信，必须先获取并安装客户端证书。 证书可以安装到本地计算机或当前用户的个人（我的）存储。  还需要服务器证书的指纹，以便客户端可以对群集进行身份验证。
+至少应有两个证书用于保护群集，一个用于保护群集和服务器证书，另一个用于保护客户端访问。  建议还使用其他辅助证书和客户端访问证书。  若要使用证书安全性来保护客户端与群集节点之间的通信，首先需要获取和安装客户端证书。 证书可以安装到本地计算机或当前用户的个人（我的）存储。  还需要服务器证书的指纹，以便客户端可以对群集进行身份验证。
 
 * 在 Windows 上：双击 PFX 文件，并按照提示在个人存储 `Certificates - Current User\Personal\Certificates` 中安装证书。 或者，可以使用 PowerShell 命令：
 

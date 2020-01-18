@@ -1,26 +1,17 @@
 ---
-title: 使用指标管理 Azure Service Fabric 应用负载 | Azure
+title: 使用指标管理 Azure Service Fabric 应用负载
 description: 了解如何在 Service Fabric 中配置和使用指标管理服务资源消耗。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 04/29/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0b76ca2b71e475fff35b4d0a6d12ecd183c70c87
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 9755ef04561c816871a4d4acc6c8bfb17ed1793e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914381"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742333"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源  。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -30,9 +21,9 @@ ms.locfileid: "72914381"
 ## <a name="default-metrics"></a>默认指标
 假设你要开始编写和部署服务。 但此时不知道该服务要消耗哪些物理或逻辑资源。 没有任何问题！ 未指定其他任何指标时，Service Fabric 群集资源管理器会使用一些默认指标。 它们具有以下特点：
 
-  - PrimaryCount - 节点上的主要副本计数 
-  - ReplicaCount - 节点上的有状态副本总计数
-  - Count - 节点上的所有服务对象（无状态和有状态）计数
+- PrimaryCount - 节点上的主要副本计数 
+- ReplicaCount - 节点上的有状态副本总计数
+- Count - 节点上的所有服务对象（无状态和有状态）计数
 
 | 指标 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 | 重量 |
 | --- | --- | --- | --- | --- |
@@ -51,10 +42,11 @@ ms.locfileid: "72914381"
 </center>
 
 需要注意的一些事项：
-  - 有状态服务的主要副本分布在多个节点上
-  - 同一分区的副本分布在不同节点上
-  - 主副本与辅助副本的总数在群集中分布
-  - 服务对象的总数平均分配在每个节点上
+
+- 有状态服务的主要副本分布在多个节点上
+- 同一分区的副本分布在不同节点上
+- 主副本与辅助副本的总数在群集中分布
+- 服务对象的总数平均分配在每个节点上
 
 很好！
 
@@ -82,13 +74,13 @@ ms.locfileid: "72914381"
 ### <a name="defining-metrics-for-your-service---an-example"></a>为服务定义指标 - 示例
 假设需要以下配置：
 
-  - 服务报告一个名为“ConnectionCount”的指标
-  - 还想使用默认指标 
-  - 已完成一些测量，并且知道该服务的主要副本通常占用 20 个单位的“ConnectionCount”
-  - 辅助副本占用 5 个单位的“ConnectionCount”
-  - 已了解“ConnectionCount”是管理此特定服务性能的最重要指标，
-  - 但仍希望主要副本是均衡的。 无论如何，均衡主要副本通常都是一个好主意。 这有助于防止某些节点或容错域的损失影响到与之相关的大部分主要副本。 
-  - 否则，使用默认指标即可
+- 服务报告一个名为“ConnectionCount”的指标
+- 还想使用默认指标 
+- 已完成一些测量，并且知道该服务的主要副本通常占用 20 个单位的“ConnectionCount”
+- 辅助副本占用 5 个单位的“ConnectionCount”
+- 已了解“ConnectionCount”是管理此特定服务性能的最重要指标，
+- 但仍希望主要副本是均衡的。 无论如何，均衡主要副本通常都是一个好主意。 这有助于防止某些节点或容错域的损失影响到与之相关的大部分主要副本。 
+- 否则，使用默认指标即可
 
 可以编写以下代码来创建包含该指标配置的服务：
 
@@ -147,10 +139,10 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="load"></a>加载
 定义指标的整个要点就是表示某种负载。 “负载”指给定节点上某个服务实例或副本对给定指标的消耗量。  可在几乎任意时间配置负载。 例如：
 
-  - 创建服务后，可以定义负载。 这称为“默认负载”  。
-  - 创建服务后，可更新服务的指标信息（包括默认负载）。 这称为“更新服务”  。 
-  - 可将给定分区的负载重置为该服务的默认值。 这称为“重置分区负载”  。
-  - 在运行时，可动态报告每个服务对象的负载。 这称为“报告负载”  。 
+- 创建服务后，可以定义负载。 这称为“默认负载”  。
+- 创建服务后，可更新服务的指标信息（包括默认负载）。 这称为“更新服务”  。 
+- 可将给定分区的负载重置为该服务的默认值。 这称为“重置分区负载”  。
+- 在运行时，可动态报告每个服务对象的负载。 这称为“报告负载”  。 
 
 可在同一服务的生存期内使用所有这些策略。 
 
@@ -188,10 +180,10 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 ### <a name="updating-a-services-metric-configuration"></a>更新服务的指标配置
 可在服务处于活动状态时，动态更新与该服务关联的指标列表以及这些指标的属性。 这样就可以进行试验并增加灵活性。 下面是一些适用的情况示例：
 
-  - 针对一项特定服务禁用报出错误的指标
-  - 基于所需行为重新配置指标的权重
-  - 仅在通过其他机制部署并验证代码之后启用新指标
-  - 根据观察到的行为和消耗量，更改服务的默认负载
+- 针对一项特定服务禁用报出错误的指标
+- 基于所需行为重新配置指标的权重
+- 仅在通过其他机制部署并验证代码之后启用新指标
+- 根据观察到的行为和消耗量，更改服务的默认负载
 
 用于更改指标配置的主要 API 是 C# 中的 `FabricClient.ServiceManagementClient.UpdateServiceAsync` 和 PowerShell 中的 `Update-ServiceFabricService`。 使用这些 API 指定的任何信息会立即替换服务的现有指标信息。 
 
@@ -283,4 +275,4 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image3]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

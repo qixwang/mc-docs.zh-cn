@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 应用程序模型 | Azure
+title: Azure Service Fabric 应用程序模型
 description: 如何在 Service Fabric 中建模和描述应用程序。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 05/28/2018
 ms.author: v-yeche
-ms.openlocfilehash: 1c6ab8287203f0e7843b7f90c2d94927ca590dcc
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.date: 01/06/2020
+ms.openlocfilehash: ab379216356ce681515759f72b9758864c87cba4
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52645546"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742295"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中对应用程序建模
 本文概述 Azure Service Fabric 应用程序模型以及如何通过清单文件定义应用程序和服务。
@@ -56,7 +46,9 @@ ms.locfileid: "52645546"
 - [应用程序托管模型](service-fabric-hosting-model.md)说明了已部署的服务和服务主机进程二者的副本（或实例）之间的关系。
 
 <!--Image references-->
+
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
+
 <!--Update_Description: update meta properties -->

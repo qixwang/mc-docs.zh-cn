@@ -1,26 +1,16 @@
 ---
-title: 指定 Service Fabric 服务终结点 | Azure
+title: 指定 Service Fabric 服务终结点
 description: 如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d7968d3c287016e061b6029a5282d4a68d2e5b10
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 65c8eb4cc201f0e44195cd6e76406b5212d280dd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254743"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742293"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -31,6 +21,8 @@ ms.locfileid: "70254743"
 
 > [!WARNING] 
 > 根据设计，静态端口不应与 ClusterManifest 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则会导致端口冲突。 对于版本 6.5CU2，当我们检测到此类冲突时，我们将发出**运行状况警告**，但让部署继续与已发布的 6.5 行为同步。 但是，我们可能会在下一个主要版本中阻止应用程序部署。
+>
+> 在版本 7.0 中，当我们检测到应用程序端口范围使用率超过 HostingConfig::ApplicationPortExhaustThresholdPercentage（默认 80%）时，我们将发出**运行状况警告**。
 >
 
 ```xml

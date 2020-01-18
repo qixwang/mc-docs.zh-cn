@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 中支持的群集版本 | Azure
+title: Azure Service Fabric 中支持的群集版本
 description: 了解 Azure Service Fabric 中的群集版本。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 08/21/2019
-ms.date: 09/30/2019
+origin.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6461717f24bcfa09e4075562ab7d97ad65c1d8bb
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: b8da91744dfa985ff053fadaabcd459618bd4e85
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340702"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741962"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 

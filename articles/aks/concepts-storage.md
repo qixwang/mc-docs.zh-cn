@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 08/26/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 58b70b96b6aa6e317f1b379dd70e7aefd616414f
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 7a325e2a10d422488609aeeda6a80ef247fab9f6
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993210"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859863"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -34,7 +34,7 @@ ms.locfileid: "69993210"
 
 用于存储和检索数据的传统卷作为 Azure 存储支持的 Kubernetes 资源创建。 你可以手动创建这些数据卷并直接分配给 Pod，也可以让 Kubernetes 自动创建它们。 这些数据卷可以使用 Azure 磁盘或 Azure 文件：
 
-- *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 *ReadWriteOnce* 的形式装载，因此仅可用于单个节点。 对于可以同时由多个节点访问的存储卷，请使用 Azure 文件。
+- *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 ReadWriteOnce  的形式装载，因此仅可用于单个 Pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
 - *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 HDD 支持的 Azure 标准存储，也可以使用由高性能 SSD 支持的Azure 高级存储。
     
     > [!NOTE] 
@@ -62,8 +62,8 @@ PersistentVolume 可以由群集管理员*静态*创建，或者由 Kubernetes A
 
 在 AKS 中会创建两个初始 StorageClass：
 
-- *default*：使用 Azure 标准存储创建托管磁盘。 回收策略会指出，在使用基础 Azure 磁盘的 Pod 被删除时，即应删除该磁盘。
-- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略同样会指出，在使用基础 Azure 磁盘的 Pod 被删除时，即应删除该磁盘。
+- *default*：使用 Azure 标准存储创建托管磁盘。 回收策略指示在删除使用基础 Azure 磁盘的持久卷后，将删除该磁盘。
+- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略再次指示在删除使用基础 Azure 磁盘的持久卷后，将删除该磁盘。
 
 如果没有为永久性卷指定 StorageClass，则会使用默认 StorageClass。 请求永久性卷时应小心，以便它们使用你需要的适当存储。 可使用 `kubectl` 创建 StorageClass 来满足其他需求。 以下示例使用高级托管磁盘并指定在删除 Pod 时应该*保留*基础 Azure 磁盘：
 

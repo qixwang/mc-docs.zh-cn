@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 群集资源管理器：移动成本 | Azure
+title: Service Fabric 群集资源管理器：移动成本
 description: Service Fabric 服务的移动成本概述
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: f8bd191981779fb17c5b0a2f9588798269341a72
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4726da9739921f0d6fbe379f7234bc864af0453a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335176"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742329"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
 尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。 
@@ -104,10 +95,10 @@ MoveCost 可帮助我们在达成对等的均衡时，查找整体导致最少�
 
 ClusterManifest.xml：
 
-``` xml
-        <Section Name="PlacementAndLoadBalancing">
-            <Parameter Name="UseMoveCostReports" Value="true" />
-        </Section>
+```xml
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="UseMoveCostReports" Value="true" />
+</Section>
 ```
 
 通过用于独立部署的 ClusterConfig.json 或用于 Azure 托管群集的 Template.json：

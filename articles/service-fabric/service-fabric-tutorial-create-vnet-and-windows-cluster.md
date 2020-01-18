@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集 | Azure
+title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 89c4e77c6fdc1a0eaa8f62bc1707fc7c22d33967
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 623e348d700afde33a76370fced0ed5125f50ee5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254766"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742071"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
@@ -45,7 +35,7 @@ ms.locfileid: "70254766"
 
 <!--Not Available on > * Set up Azure Monitor logs-->
 
-在此系列教程中，你会学习如何：
+在此系列教程中，你将学习如何：
 > [!div class="checklist"]
 > * 在 Azure 上创建安全群集
 > * [监视群集](service-fabric-tutorial-monitor-cluster.md)
@@ -55,7 +45,7 @@ ms.locfileid: "70254766"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 

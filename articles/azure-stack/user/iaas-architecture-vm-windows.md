@@ -5,17 +5,17 @@ services: azure-stack
 author: WenJason
 ms.service: azure-stack
 ms.topic: how-to
-origin.date: 11/01/2019
-ms.date: 11/18/2019
+origin.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: be11af9a1e01731a9b89c4103c861b15996329ab
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: cc255784ebe56b639d5ec10276752446ec3cbe48
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020539"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737886"
 ---
 # <a name="run-a-windows-virtual-machine-on-azure-stack"></a>在 Azure Stack 上运行 Windows 虚拟机
 
@@ -33,7 +33,7 @@ ms.locfileid: "74020539"
 
 可以通过发布的映像列表或上传到 Azure Stack Blob 存储的自定义托管映像或虚拟硬盘 (VHD) 文件来预配 VM。
 
-Azure Stack 提供了与 Azure 不同的虚拟机大小。 有关详细信息，请参阅 [Azure Stack 中的虚拟机大小](/azure-stack/user/azure-stack-vm-sizes)。 如果要将现有工作负荷转移到 Azure Stack，开始时请先使用与本地服务器/Azure 最匹配的 VM 大小。 然后从 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 等方面测量实际工作负荷的性能，并根据需要调整大小。
+Azure Stack 提供了与 Azure 不同的虚拟机大小。 有关详细信息，请参阅 [Azure Stack 中的虚拟机大小](/azure-stack/user/azure-stack-vm-sizes)。 若要将现有工作负荷转移到 Azure Stack，一开始请先使用与本地服务器/Azure 最匹配的 VM 大小。 然后从 CPU、内存和每秒磁盘输入/输出操作次数 (IOPS) 等方面测量实际工作负荷的性能，并根据需要调整大小。
 
 ## <a name="disks"></a>磁盘
 
@@ -69,13 +69,20 @@ OS 磁盘是存储在 Azure Stack blob 存储中的 VHD，因此即使主机关�
 
 **诊断**。 启用监视和诊断，包括基本运行状况指标、诊断基础结构日志和[启动诊断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)。 如果 VM 陷入不可启动状态，启动诊断有助于诊断启动故障。 创建用于存储日志的 Azure 存储帐户。 标准的本地冗余存储 (LRS) 帐户足以存储诊断日志。 有关详细信息，请参阅[启用监视和诊断](/azure-stack/user/azure-stack-metrics-azure-data)。
 
-**可用性**。 由于 Azure Stack 操作员计划的计划内维护，你的 VM 可能需要重新启动。 为了提高可用性，请在[可用性集](/azure-stack/operator/azure-stack-overview#providing-high-availability)中部署多个 VM。
+**可用性**。 由于 Azure Stack 操作员计划的计划内维护，你的 VM 可能需要重新启动。 为了在 Azure 中实现多 VM 生产系统的高可用性，可以将 VM 置于横跨多个容错域和更新域的[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)中。 在较小规模的 Azure Stack Hub 中，可用性集中的容错域定义为缩放单元中的单个节点。  
+
+在发生硬件故障时，虽然 Azure Stack Hub 的基础结构已具备故障还原能力，但基础技术（故障转移群集功能）的局限仍会导致受影响物理服务器上的 VM 出现停机。 为了与 Azure 保持一致，Azure Stack Hub 支持的可用性集最多有三个容错域。
+
+|                   |             |
+|-------------------|-------------|
+| **容错域** | 置于可用性集中的 VM 在物理上是彼此隔离的，换句话说，会尽可能均衡地让其分散到多个容错域（Azure Stack Hub 节点）中。 如果发生硬件故障，出现故障的容错域中的 VM 将在其他容错域中重启。 它们保留在与其他 VM 不同的容错域中，但如果可能，则保留在相同的可用性集中。 当硬件重新联机时，会对 VM 重新进行均衡操作，以维持高可用性。 |
+| **更新域**| 更新域是 Azure 在可用性集中提供高可用性的另一种方法。 更新域是可以同时维护的基础硬件逻辑组。 同一个更新域中的 VM 会在计划内维护期间一起重启。 当租户在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 <br>在 Azure Stack Hub 中，VM 会先跨群集中的其他联机主机进行实时迁移，然后其基础主机才会进行更新。 由于在主机更新期间不会造成租户停机，因此 Azure Stack Hub 上存在更新域功能只是为了确保与 Azure 实现模板兼容。 可用性集中的 VM 将显示 0 作为其在门户上的更新域编号。 |
 
 **备份** 有关保护 Azure Stack IaaS VM 的建议，请参阅此文。
 
 **停止 VM**。 Azure 对“已停止”和“已解除分配”状态进行了区分。 VM 状态为“已停止”时，将计费，但 VM 为“已解除分配”状态时，则不计费。 在 Azure Stack 门户中，“停止”  按钮可解除分配 VM。 如果在已登录时通过 OS 关闭，VM 会停止，但  不会解除分配，因此仍会产生费用。
 
-**删除 VM**。 如果删除 VM，不会删除 VM 磁盘。 这意味着可以安全地删除 VM，而不会丢失数据。 但是，仍将收取存储费用。 若要删除 VM 磁盘，请删除托管磁盘对象。 要防止意外删除，请使用*资源锁*锁定整个资源组或锁定单个资源（如 VM）。
+**删除 VM**。 如果删除 VM，不会删除 VM 磁盘。 这意味着可以安全地删除 VM，而不会丢失数据。 但是，仍将收取存储费用。 若要删除 VM 磁盘，请删除托管磁盘对象。 若要防止意外删除，请使用*资源锁*锁定整个资源组或锁定单个资源（如 VM）。
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -92,7 +99,7 @@ OS 磁盘是存储在 Azure Stack blob 存储中的 VHD，因此即使主机关�
 
 **审核日志**。 使用[活动日志](/azure-stack/user/azure-stack-metrics-azure-data?#activity-log)可查看预配操作和其他 VM 事件。
 
-**数据加密**。 Azure Stack 使用静态加密来保护存储子系统级别的用户数据和基础结构数据。 Azure Stack 的存储子系统是配合 128 位 AES 加密法使用 BitLocker 加密的。 有关更多详细信息，请参阅[此文](/azure-stack/operator/azure-stack-security-bitlocker)。
+**数据加密**。 Azure Stack 使用 BitLocker 128 位 AES 加密在存储子系统中保护用户和基础结构静态数据。 有关详细信息，请参阅 [Azure Stack 中的静态数据加密](/azure-stack/operator/azure-stack-security-bitlocker)。
 
 
 ## <a name="next-steps"></a>后续步骤

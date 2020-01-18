@@ -1,26 +1,16 @@
 ---
-title: 应用程序方案和设计 | Azure
+title: 应用程序方案和设计
 description: Service Fabric 中云应用程序的类别概述。 介绍使用有状态服务和无状态服务的应用程序设计。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 04/24/2019
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: f29c3b9e9b02252709b72fad573b511db7f1af4a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: e737793a48cd78585a4a38b38cc2a11f5d3f027b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336450"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742283"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
 Azure Service Fabric 提供了一个可靠而灵活的平台，可用于编写和运行多种类型的商业应用程序和服务。 这些应用程序和微服务可以无状态也可以有状态，它们在各虚拟机间资源平衡，可最大限度提高工作效率。 

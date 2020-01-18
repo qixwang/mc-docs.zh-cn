@@ -1,26 +1,17 @@
 ---
-title: 使用群集资源管理器描述群集 | Azure
+title: 使用群集资源管理器描述群集
 description: 通过为群集资源管理器指定容错域、升级域、节点属性和节点容量来描述 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 08/05/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 462abbffcd87bc7865a609c1d5cfee3ce00d9cb3
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: 0e5cbe41cda965ae90e4a3854c603da6078ee381
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753181"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742336"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用群集资源管理器描述 Service Fabric 群集
 Azure Service Fabric 的群集资源管理器功能提供多种机制用于描述群集：
@@ -94,6 +85,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 
 </center>
 
+有大量升级域既有利也有弊。 更多升级域意味着升级的每个步骤都更精细，影响的节点或服务数更少。 每次移动的服务越少，给系统带来的流失就越少。 这往往会提高可靠性，因为升级期间引入的任何问题对服务的影响更小。 更多升级域也意味着在其他节点上需要更少的可用缓冲区来处理升级的影响。 
 
 例如，如果有五个升级域，每个域中的节点处理大约 20% 的流量。 如果需要关闭升级域进行升级，则通常需要将负载转移到某个位置。 由于剩余有 4 个升级域，因此每个升级域必须具有可供 5% 的总流量使用的空间。 更多升级域意味着群集中节点上所需占用的缓冲区更少。 
 
@@ -565,10 +557,10 @@ Service Fabric 群集资源管理器如何防止整个群集过于饱和？ 对�
 以下示例演示如何在 ClusterManifest.xml 中指定缓冲容量：
 
 ```xml
-        <Section Name="NodeBufferPercentage">
-            <Parameter Name="SomeMetric" Value="0.15" />
-            <Parameter Name="SomeOtherMetric" Value="0.20" />
-        </Section>
+<Section Name="NodeBufferPercentage">
+    <Parameter Name="SomeMetric" Value="0.15" />
+    <Parameter Name="SomeOtherMetric" Value="0.20" />
+</Section>
 ```
 
 以下示例演示如何通过 ClusterConfig.json 为独立部署定义的，或者通过 Template.json 为 Azure 托管群集指定缓冲容量：

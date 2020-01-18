@@ -6,17 +6,17 @@ author: WenJason
 manager: digimobile
 ms.service: azure-stack
 ms.topic: article
-origin.date: 09/09/2019
-ms.date: 11/18/2019
+origin.date: 12/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: wamota
-ms.lastreviewed: 09/09/2019
-ms.openlocfilehash: f5352a7301667f47d454594fb01ade98210eb532
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 12/11/2019
+ms.openlocfilehash: e1e64e678d4d7dfeb6f8257d6bbf8bdd6e987736
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020232"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737879"
 ---
 # <a name="publish-azure-stack-services-in-your-datacenter"></a>在数据中心发布 Azure Stack 服务 
 
@@ -27,9 +27,12 @@ Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP �
 ![显示不同网络层和 ACL 的图表](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ### <a name="ports-and-urls"></a>端口和 URL
+
 要使 Azure Stack 服务（例如门户、Azure 资源管理器、DNS 等）可供外部网络使用，必须允许特定 URL、端口和协议的入站流量发往这些终结点。
  
 在到传统代理服务器或防火墙的透明代理上行链路正在保护解决方案的部署中，必须允许特定的端口和 URL，以便进行[入站](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)和[出站](azure-stack-integrate-endpoints.md#ports-and-urls-outbound)通信。 这包括用于标识、市场、修补和更新、注册和使用情况数据的端口与 URL。
+
+SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并且在访问终结点时可能会导致服务故障。 
 
 ## <a name="ports-and-protocols-inbound"></a>端口和协议（入站）
 
@@ -71,6 +74,8 @@ Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP �
 ## <a name="ports-and-urls-outbound"></a>端口和 URL（出站）
 
 Azure Stack 仅支持透明代理服务器。 在使用到传统代理服务器的透明代理上行链路的部署中，必须允许下表中的端口和 URL，以便进行出站通信。
+
+SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并且在访问终结点时可能会导致服务故障。 与标识所需的终结点进行通信时，支持的最大超时值为 60 秒。
 
 > [!Note]  
 > Azure Stack 不支持使用 ExpressRoute 访问下表中列出的 Azure 服务，因为 ExpressRoute 可能无法将流量路由到所有终结点。

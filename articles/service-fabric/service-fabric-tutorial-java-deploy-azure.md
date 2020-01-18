@@ -1,27 +1,18 @@
 ---
-title: 将 Java 应用部署到 Azure 中的 Service Fabric 群集 | Azure
+title: 将 Java 应用部署到 Azure 中的 Service Fabric 群集
 description: 本教程介绍如何将 Java Service Fabric 应用程序部署到 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/26/2018
-ms.date: 07/08/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: e1b99d9ee1f98f45afe6d2de910111b4a8e5cf7f
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 18899a4361b52310ee3c4f9c6e66b802403a734c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844580"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742032"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -33,7 +24,7 @@ ms.locfileid: "67844580"
 > * 在 Azure 中创建安全的 Linux 群集
 > * 将应用程序部署到群集
 
-在此系列教程中，你会学习如何：
+在此系列教程中，你将学习如何：
 
 > [!div class="checklist"]
 > * [生成 Java Service Fabric Reliable Services 应用程序](service-fabric-tutorial-create-java-app.md)
@@ -43,16 +34,16 @@ ms.locfileid: "67844580"
 
 <!-- Not Avaiable on [Set up monitoring and diagnostics for the application](service-fabric-tutorial-java-elk.md)-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
 * 如果还没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)
-* [安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)
+* [安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)
 * 安装用于 [Mac](service-fabric-get-started-mac.md) 或 [Linux](service-fabric-get-started-linux.md) 的 Service Fabric SDK
 * [安装 Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
-## <a name="create-a-service-fabric-cluster-in-azure"></a>缩放 Azure 中的 Service Fabric 群集
+## <a name="create-a-service-fabric-cluster-in-azure"></a>在 Azure 中创建 Service Fabric 群集
 
 以下步骤创建的资源是将应用程序部署到 Service Fabric 群集所必需的。 另外还会设置通过 ELK（Elasticsearch、Logstash、Kibana）堆栈监视解决方案的运行状况所需的资源。 具体说来，[事件中心](https://www.azure.cn/home/features/event-hubs/)用作接收器，接收来自 Service Fabric 的日志。 根据配置，它可以将日志从 Service Fabric 群集发送到 Logstash 实例。
 
@@ -251,5 +242,4 @@ ms.locfileid: "67844580"
 > * 创建通过 ELK 进行监视所需的资源
 
 <!-- Not Available on [Set up Monitoring & Diagnostics](service-fabric-tutorial-java-elk.md)-->
-
 <!-- Update_Description: wording update, update link  -->

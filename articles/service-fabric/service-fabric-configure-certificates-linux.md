@@ -1,25 +1,16 @@
 ---
-title: 在 Linux 上配置 Azure Service Fabric 应用程序的证书 | Azure
+title: 在 Linux 上配置 Azure Service Fabric 应用程序的证书
 description: 在 Linux 群集上使用 Service Fabric 运行时配置应用的证书
-services: service-fabric
-documentationcenter: NA
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 09/06/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 48b656934f3c19de5d82f860002dc9ce4074702c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 80e5ef66e942e8ca67065372d01b3c17235d789c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334828"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742277"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
 
@@ -88,9 +79,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 ```xml
 
 <!--Section name should always end with "TransportSettings".-->
-
 <!--Here we are using a prefix "HelloWorldStateless".-->
-
 <Section Name="HelloWorldStatelessTransportSettings">
     <Parameter Name="MaxMessageSize" Value="10000000" />
     <Parameter Name="SecurityCredentialsType" Value="X509_2" />
@@ -105,7 +94,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 
 ## <a name="configure-a-reliable-services-app-to-run-on-linux-clusters"></a>配置在 Linux 群集上运行的 Reliable Services 应用
 
-使用 Service Fabric SDK 可与 Service Fabric 运行时 API 通信，以利用该平台。 在安全的 Linux 群集上运行使用此功能的任何应用程序时，需要使用一个证书来配置该应用程序，该证书可用于验证 Service Fabric 运行时。 包含使用 .NET Core 或 Java SDK 编写的 Service Fabric Reliable Service 服务的应用程序需要此配置。 
+使用 Service Fabric SDK 可与 Service Fabric 运行时 API 通信，以利用平台。 在安全的 Linux 群集上运行使用此功能的任何应用程序时，需要使用一个证书来配置该应用程序，该证书可用于验证 Service Fabric 运行时。 包含使用 .NET Core 或 Java SDK 编写的 Service Fabric Reliable Service 服务的应用程序需要此配置。 
 
 若要配置应用程序，请在 **Certificates** 标记（位于 *ApplicationManifest.xml* 文件中的 **ApplicationManifest** 标记下面）下面添加一个 [**SecretsCertificate**](/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 元素。 以下 XML 显示按证书指纹引用的证书： 
 

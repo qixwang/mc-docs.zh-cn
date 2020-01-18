@@ -1,27 +1,17 @@
 ---
-title: 有关为 Azure VM 上的 Service Fabric 群集创建基础结构的教程 - Azure Service Fabric | Azure
+title: 教程：为 Azure VM 上的 Service Fabric 群集创建基础结构 - Azure Service Fabric
 description: 本教程介绍如何设置 Azure VM 基础结构来运行 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 020a854c9e1beba6998fe735ec43a349e53ab961
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: ee19cb690d71adb47cdee0144557f09093ae22dd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254763"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741984"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 Azure VM 基础结构
@@ -38,7 +28,7 @@ Service Fabric 独立群集提供相应的选项让我们选择自己的环境�
 > * 登录到其中一个实例
 > * 准备 Service Fabric 的实例
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要一个 Azure 订阅才能完成此教程。  如果没有帐户，请转到 [Azure 门户](https://portal.azure.cn)创建一个帐户。
 

@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 中使用 C# 进行服务远程处理 | Azure
+title: 在 Service Fabric 中使用 C# 进行服务远程处理
 description: Service Fabric 远程处理允许客户端和服务使用远程过程调用来与 C# 服务进行通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: BharatNarasimman
-ms.assetid: abfaf430-fea0-4974-afba-cfc9f9f2354b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 09/20/2017
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cf503c651251993af49715f3bc0fadf66b1df9db
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: cd536c9674c7a8f5f94af3d0f7138f509d5af2db
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340923"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742413"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -37,7 +28,7 @@ ms.locfileid: "71340923"
 可以通过两个简单的步骤为服务设置远程处理：
 
 1. 为服务创建要实现的接口。 此接口定义可供服务的远程过程调用使用的方法。 这些方法必须是返回任务的异步方法。 接口必须实现 `Microsoft.ServiceFabric.Services.Remoting.IService` 以表明此服务具有远程处理接口。
-2. 在服务中使用远程处理侦听器。 远程处理侦听器是可以提供远程处理功能的 `ICommunicationListener` 实现。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 命名空间包含一个同时适用于无状态服务和有状态服务的扩展方法 `CreateServiceRemotingListener`，可用于创建使用默认远程处理传输协议的远程处理侦听器。
+2. 在服务中使用远程处理侦听器。 远程处理侦听器是可以提供远程处理功能的 `ICommunicationListener` 实现。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 命名空间包含一个同时适用于无状态服务和有状态服务的扩展方法 `CreateServiceRemotingInstanceListeners`，可用于创建使用默认远程处理传输协议的远程处理侦听器。
 
 >[!NOTE]
 >`Remoting` 命名空间可用作名为 `Microsoft.ServiceFabric.Services.Remoting` 的单独 NuGet 包。
@@ -231,7 +222,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     不需要在客户端项目/服务中进行更改。 使用更新的接口程序集生成客户端项目便已足够。
 
 3. 此步骤是可选的。 使用 V2 侦听器属性，然后升级 V2 服务。
-此步骤确保服务仅在 V2 侦听器上侦听。
+    此步骤确保服务仅在 V2 侦听器上侦听。
 
     ```csharp
     [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
@@ -267,7 +258,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 3. 在远程处理接口上添加[程序集属性](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
 
     ```csharp
-     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
+    [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
 
     ```
 
@@ -282,9 +273,9 @@ string message = await helloWorldClient.HelloWorldAsync();
 
     ```xml
     <Resources>
-    <Endpoints>
-      <Endpoint Name="ServiceEndpointV2_1" />  
-    </Endpoints>
+        <Endpoints>
+          <Endpoint Name="ServiceEndpointV2_1" />  
+        </Endpoints>
     </Resources>
     ```
 
@@ -390,6 +381,7 @@ string message = await helloWorldClient.HelloWorldAsync();
         }
     }
     ```
+    
     ```csharp
         class JsonMessageFactory : IServiceRemotingMessageBodyFactory
             {
@@ -405,6 +397,7 @@ string message = await helloWorldClient.HelloWorldAsync();
               }
             }
     ```
+    
     ```csharp
       class ServiceRemotingRequestJsonMessageBodySerializer : IServiceRemotingRequestMessageBodySerializer
         {
@@ -451,6 +444,7 @@ string message = await helloWorldClient.HelloWorldAsync();
              }
             }
     ```
+    
     ```csharp
       class ServiceRemotingResponseJsonMessageBodySerializer : IServiceRemotingResponseMessageBodySerializer
        {
@@ -499,6 +493,7 @@ string message = await helloWorldClient.HelloWorldAsync();
            }
        }
     ```
+    
     ```csharp
     class JsonBody : WrappedMessage, IServiceRemotingRequestMessageBody, IServiceRemotingResponseMessageBody
     {

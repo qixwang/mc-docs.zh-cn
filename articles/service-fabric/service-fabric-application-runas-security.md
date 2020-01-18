@@ -1,26 +1,16 @@
 ---
-title: 在系统和本地安全帐户下运行 Azure Service Fabric 服务 | Azure
+title: 在系统和本地安全帐户下运行 Azure Service Fabric 服务
 description: 了解如何在系统和本地安全帐户下运行 Service Fabric 应用程序。  创建安全主体并应用运行方式策略以安全运行你的服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/29/2018
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 57bcf09d27e5184cedff0c57a486365493ce374d
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: adf02abdbc7b6e4abbe9c77656b57cd63a7cd661
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174067"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742284"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本地用户帐户或本地系统帐户运行服务
 使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 进程的帐户之下运行。 Service Fabric 还提供了在本地用户或系统帐户下运行应用程序的功能。 受支持的本地系统帐户类型为 LocalUser、NetworkService、LocalService 和 LocalSystem     。  如果在 Windows 独立群集上运行 Service Fabric，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。

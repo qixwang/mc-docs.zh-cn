@@ -1,25 +1,17 @@
 ---
-title: 适用于 Windows Server 的 Azure Service Fabric 独立包 | Azure
+title: 适用于 Windows Server 的 Azure Service Fabric 独立包
 description: 适用于 Windows Server 的 Azure Service Fabric 独立包的说明和内容。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/10/2017
-ms.date: 01/07/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 00f8c036d2d696e01c7eee487dbd6a54917f524d
-ms.sourcegitcommit: 90d5f59427ffa599e8ec005ef06e634e5e843d1e
+ms.openlocfilehash: 2913b94edb7c54341e9b530b10712c0e681f52d8
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083786"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742321"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
 在 [已下载](https://go.microsoft.com/fwlink/?LinkId=730690) 的 Service Fabric 独立包中，找到以下文件：
@@ -33,10 +25,10 @@ ms.locfileid: "54083786"
 | CleanFabric.ps1 |一个 PowerShell 脚本，用于从当前计算机中清除独立的 Service Fabric 安装。 以前的 MSI 安装应使用其自身关联的卸载程序来删除。 |
 | TestConfiguration.ps1 |一个 PowerShell 脚本，用于分析 Cluster.json 中指定的基础结构。 |
 | DownloadServiceFabricRuntimePackage.ps1 |一个 PowerShell 脚本，在部署计算机未连接到 Internet 的方案中，用于在带外下载最新的运行时包。 |
-| DeploymentComponentsAutoextractor.exe |包含独立包脚本所用部署组件的自解压缩存档。 |
+| DeploymentComponentsAutoextractor.exe |自解压存档，包含独立包脚本使用的部署组件。 |
 | EULA_ENU.txt |有关使用 Azure Service Fabric Windows Server 独立包的许可条款。 可以立即 [下载一份 EULA](https://go.microsoft.com/fwlink/?LinkID=733084) 。 |
 | Readme.txt |发行说明和基本安装说明的链接。 本文档包含此文件中的一部分说明。 |
-| ThirdPartyNotice.rtf |包中的第三方软件的通知。 |
+| ThirdPartyNotice.rtf |包中第三方软件的声明。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe 按需运行，收集跟踪日志并将其上传到 Azure 以提供支持。 |
 | Tools\ServiceFabricUpdateService.zip |用来为不具有 Internet 访问权限的群集启用自动代码升级的工具。 在[此处](service-fabric-cluster-upgrade-windows-server.md)可以找到更多详细信息|
 

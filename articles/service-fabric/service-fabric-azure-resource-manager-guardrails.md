@@ -1,26 +1,19 @@
 ---
-title: Service Fabric Azure 资源管理器部署准则 | Azure
+title: Service Fabric Azure 资源管理器部署准则
 description: 本文概述通过 Azure 资源管理器部署 Service Fabric 群集时常犯的错误以及如何避免它们。
 services: service-fabric
 documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/30/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2d1fa5d22045b8b7fe312f46caf63a255f26aef3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 41ab6b2d23c5dc1de70dc1fa2e453abf1afad36f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348522"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742299"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
 部署 Service Fabric 群集时，需遵循相应准则，使用有效的群集配置通过 Azure 资源管理器进行部署，否则就会失败。 以下部分概述了常见的群集配置问题，以及解决这些问题所需的步骤。 
