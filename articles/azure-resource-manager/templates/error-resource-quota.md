@@ -3,14 +3,14 @@ title: 配额错误
 description: 说明在使用 Azure 资源管理器部署资源时如何解决资源配额错误。
 ms.topic: troubleshooting
 origin.date: 03/09/2018
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: f0c7fb1ef1464f2c702d7625168fb5253eaede02
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: e242086a4682e2fa89d45d87184c2af86d499eba
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631356"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165484"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -39,8 +39,8 @@ please delete some resources of this type before creating a new one.
 
 ## <a name="cause"></a>原因
 
-按每个资源组、订阅、帐户和其他作用域应用配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，则会收到指出超过配额的错误消息。
-有关完整的配额信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
+按每个资源组、订阅、帐户和其他作用域应用配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，将收到指出超过配额的错误消息。
+有关完整的配额信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 

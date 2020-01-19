@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 origin.date: 11/05/2019
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0c9393e224d4386eb732d59fbc8c33a8fbdc461d
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 79540933bd2e11d521210fae3dbb7dd6901ec52e
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658001"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123205"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
@@ -32,7 +32,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-本快速入门使用[现有的快速入门模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)：
+本快速入门使用[现有快速入门模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)：
 
 ```json
 {
@@ -98,11 +98,11 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 }
 ```
 
-若要查找更多模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)。
+若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)。
 
 若要部署模板，请执行以下操作：
 
-1. 按说明登录到 Azure PowerShell。
+1. 从以下代码块中选择“试用”  ，然后按照说明登录 Azure Cloud shell。
 
    ```azurepowershell
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"

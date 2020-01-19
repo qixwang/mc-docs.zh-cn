@@ -1,17 +1,17 @@
 ---
 layout: HubPage
 origin.date: 11-21-2019
-ms.date: 01-13-2020
+ms.date: 01-27-2020
 ms.author: v-tawe
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
-ms.openlocfilehash: 58b98091568a427fb58283208b08cfb40361d58d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 2e0acc82d93bc48752583109c2a1835d2d785213
+ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630887"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76269936"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -53,7 +53,7 @@ ms.locfileid: "75630887"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>识别来自音频文件的语音</h3>
+                                                    <h3>识别音频文件中的语音</h3>
                                                     <p>使用语音 SDK 识别来自单个文件的语音并听录输出。</p>
                                                 </div>
                                             </div>
@@ -100,7 +100,7 @@ ms.locfileid: "75630887"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.azure.cn/pricing/details/cognitive-services/speech-services/">
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -131,6 +131,244 @@ ms.locfileid: "75630887"
                                                 <div class="cardText">
                                                     <h3>阅读文档</h3>
                                                     <p>了解如何将语音识别添加到应用、工具和产品中。 包括概念、教程、API 参考和发行说明。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                        <li>
+                            <a href="#texttospeech">文本转语音</a>
+                            <ul id="texttospeech" class="cardsC">
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/text-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-synthesis-to-audio-out.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>将语音合成到扬声器</h3>
+                                                    <p>使用语音 SDK 将语音合成到音频输出，如扬声器。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-synthesis-to-file.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>将语音合成到音频文件</h3>
+                                                    <p>使用语音 SDK 将语音合成到音频文件。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/speech-synthesis-markup">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>语音合成标记语言</h3>
+                                                    <p>使用语音合成标记语言来微调音频输出的音调、韵律和说话速率。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/language-support#text-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>语言支持</h3>
+                                                    <p>了解语音合成支持哪些语言。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>定价</h3>
+                                                    <p>详细了解与文本转语音相关的成本。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/text-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>阅读文档</h3>
+                                                    <p>了解如何将语音合成添加到应用、工具和产品中。 包括概念、教程、API 参考和发行说明。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#speechtranslation">语音翻译</a>
+                        <ul id="speechtranslation" class="cardsC">
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/translate-speech-to-text">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-translation-from-file.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>从麦克风将语音翻译为文本</h3>
+                                                    <p>使用语音 SDK 从麦克风将语音翻译为文本。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/translate-speech-to-text-multiple-languages">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-translation-from-microphone-file.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>将语音翻译为多个目标语言</h3>
+                                                    <p>使用语音 SDK 将语音翻译为多个目标语言输出。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/translate-speech-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-translation-from-microphone-audio-out.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>将语音翻译为语音</h3>
+                                                    <p>使用语音 SDK 将语音翻译为语音。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/language-support#speech-translation">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>语言支持</h3>
+                                                    <p>详细了解语音翻译的编程和口语支持。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>定价</h3>
+                                                    <p>详细了解与语音翻译相关的成本。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/speech-translation">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>阅读文档</h3>
+                                                    <p>了解如何将语音翻译添加到应用、工具和产品中。 包括概念、教程、API 参考和发行说明。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,7 +419,7 @@ ms.locfileid: "75630887"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs">
+                                <a href="https://cognitive.uservoice.com/forums/912208-speech-service">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -191,8 +429,8 @@ ms.locfileid: "75630887"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>MSDN 论坛</h3>
-                                                    <p>在 MSDN 论坛上的语音服务社区中提出问题并获得帮助。</p>
+                                                    <h3>UserVoice 论坛</h3>
+                                                    <p>针对语音服务分享想法、建议增强功能或请求新功能。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,25 +467,6 @@ ms.locfileid: "75630887"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://docs.azure.cn/cognitive-services/speech-service/how-to-custom-speech">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>使用自定义语音提高准确性</h3>
-                                                    <p>一组联机工具，可用于针对你的应用、工具和产品评估并改进 Microsoft 的语音转文本准确性。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="https://docs.azure.cn/cognitive-services/speech-service/language-support?pivots=programming-language-csharp">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -267,7 +486,7 @@ ms.locfileid: "75630887"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.azure.cn/pricing/details/cognitive-services/speech-services/">
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

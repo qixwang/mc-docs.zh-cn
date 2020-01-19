@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 07/26/2019
-ms.date: 09/23/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 42fe2a7be6e628ca615103827ed6bcdc5741f352
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 5d4c9953503a271d3b96c09f7b432f0a4e61ef13
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125628"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939796"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
@@ -30,9 +30,6 @@ ms.locfileid: "71125628"
 若要针对流指定加密选项，需要创建[流策略](streaming-policy-concept.md)并将其与[流定位符](streaming-locators-concept.md)相关联。 创建[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)，用于配置如何将内容密钥（提供对[资产](assets-concept.md)的安全访问）传送到终端客户端。 需要针对内容密钥策略设置要求（限制），只有满足这些要求，才能将使用指定配置的密钥传送到客户端。 明文格式的流式传输或下载不需要内容密钥策略。 
 
 通常，你会将内容密钥策略关联到[流定位符](streaming-locators-concept.md)。 或者，可以在[流策略](streaming-policy-concept.md)中指定内容密钥策略（为高级方案创建自定义的流策略时）。 
-
-> [!NOTE]
-> 内容密钥策略的 `Datetime` 类型的属性始终采用 UTC 格式。
 
 ## <a name="best-practices-and-considerations"></a>最佳做法和注意事项
 
@@ -58,6 +55,10 @@ ms.locfileid: "71125628"
 ## <a name="filtering-ordering-paging"></a>筛选、排序、分页
 
 请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
+
+## <a name="additional-notes"></a>附加说明
+
+* 内容密钥策略的 `Datetime` 类型的属性始终采用 UTC 格式。
 
 ## <a name="next-steps"></a>后续步骤
 

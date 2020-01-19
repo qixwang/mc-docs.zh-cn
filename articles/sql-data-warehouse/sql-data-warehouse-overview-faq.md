@@ -8,15 +8,15 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 origin.date: 11/04/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: b884f793ea2cbc18a665b7e5d2331c5e6081f53c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: d7ea02775b91ee44415250c3a43b25c03d3ce197
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624339"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964918"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -78,10 +78,6 @@ A. 支持许多功能，但也有一些功能不受支持，具体请参阅[不�
 
 ## <a name="tooling-and-administration"></a>工具和管理
 
-问： Visual Studio 中是否支持数据库项目？
-
-A. 目前不支持 Visual Studio 中的数据库项目。 如果想通过投票获取此功能，请访问“用户之声”[数据库项目功能请求]。
-
 问： SQL Analytics 是否支持 REST API？
 
 A. 是的。 SQL Analytics 还提供可与 SQL 数据库搭配使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN] 中找到 API 信息。
@@ -95,19 +91,19 @@ A. 可在[连接字符串]页找到 DW 驱动程序支持
 
 问：PolyBase 支持哪些文件格式？
 
-答：Orc、RC、Parquet 和带分隔符的平面文本
+A:Orc、RC、Parquet 和带分隔符的平面文本
 
 问：使用 PolyBase 可以连接到哪些数据源？ 
 
-答：[Azure 存储 Blob]
+A:[Azure 存储 Blob]
 
 问：连接 Azure 存储 Blob 或 ADLS 时能否进行计算下推？ 
 
-答：不能，PolyBase 仅与存储组件交互。 
+A:不能，PolyBase 仅与存储组件交互。 
 
 问：能否连接到 HDI？
 
-答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，可以将该数据加载到 SQL DW。 但是，无法生成 HDI 实例的下推计算。 
+A:HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，可以将该数据加载到 SQL DW。 但是，无法生成 HDI 实例的下推计算。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure Synapse 的综合性详细信息，请参阅[概述]页。

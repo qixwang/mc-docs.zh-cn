@@ -4,15 +4,15 @@ description: 开发可针对不同的云环境一致地工作的 Azure 资源管
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 12/09/2018
-ms.author: v-yeche
 ms.date: 01/06/2020
+ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 9cb2b66501f66c7dac94e1657f702788e04bfc07
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: ff7dd933a0b19afd538aaa87ce4c586c3395656c
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631467"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165440"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 

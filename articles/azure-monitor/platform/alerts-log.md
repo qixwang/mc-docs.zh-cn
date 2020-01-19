@@ -9,12 +9,12 @@ origin.date: 4/27/2018
 ms.date: 07/29/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 70e16d2a9b1cda2a77320c6119f3ed4f80a052aa
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: 53db355eb89564c02aad751e9f46d08c67293555
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545370"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116931"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -63,13 +63,6 @@ ms.locfileid: "75545370"
 1. 日志警报  ：选择后，可以在“搜索查询”字段中指定警报查询；如果查询语法不正确，该字段将以红色显示错误  。 如果查询语法正确 - 将以图表形式显示指定查询的历史数据供参考，同时显示用于调整时间范围（过去六个小时到过去一周）的选项。
 
     ![配置警报规则](media/alerts-log/AlertsPreviewAlertLog.png)
-
-   > [!NOTE]
-   > 
-   > 仅当查询结果包含时间详细信息时，才能显示历史数据可视化效果。 如果查询生成了汇总数据或特定列值 - 则以单一绘图的形式显示相同的数据。
-   > 对于使用 Application insights 或[切换到新的 API](alerts-log-api-switch.md) 的指标度量类型的日志警报，可以使用“聚合基于”选项指定要使用哪个特定变量对数据进行分组，如下面所示  ：
-   > 
-   > ![“聚合基于”选项](media/alerts-log/aggregate-on.png)
 
 1. 日志警报  ：打开可视化效果后，可以从显示的“条件”、“聚合”和“阈值”选项中选择“警报逻辑”。  最后，使用“时间段”选项在逻辑中指定评估指定条件的时间。  此外，通过选择“频率”来指定运行警报服务的频率。  日志警报可以基于  ：
     - [记录数目](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)：如果查询返回的记录计数大于或小于提供的值，则创建警报。
@@ -125,8 +118,6 @@ ms.locfileid: "75545370"
 
 Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQueryRules/` 相关联。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。 可以使用[计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 为 Application Insights 或 Log Analytics 创建日志警报。
 
-> [!NOTE]
-> 还可以使用旧式 [Log Analytics 警报 API](api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>使用 Azure 资源模板创建日志警报示例

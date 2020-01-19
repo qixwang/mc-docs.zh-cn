@@ -21,6 +21,8 @@
       href: /role-based-access-control/rbac-and-directory-admin-roles
     - name: 基于组的许可基础知识
       href: /active-directory/fundamentals/active-directory-licensing-whatis-azure-portal
+    - name: 使用组管理访问权限
+      href: /active-directory/fundamentals/active-directory-manage-groups
 - name: 操作指南
   expanded: true
   items:
@@ -50,8 +52,6 @@
           href: /active-directory/connect/active-directory-aadconnect
     - name: 管理组
       items:
-        - name: 使用组管理访问权限
-          href: /active-directory/fundamentals/active-directory-manage-groups
         - name: 在 Azure 门户中管理组
           href: /active-directory/fundamentals/active-directory-groups-create-azure-portal
         - name: 管理组 - 用于 Graph 的 PowerShell (v2)

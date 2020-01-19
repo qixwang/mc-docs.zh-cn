@@ -1,19 +1,16 @@
 ---
 title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/25/2019
-ms.date: 12/16/2019
+ms.date: 01/17/2020
 ms.topic: overview
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 72e9ba05d669d6864cc9ec75d60e9c3f007453bb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 33ccc6e96888697c16b1d1f813a078eb7d572894
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335804"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123325"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -21,7 +18,9 @@ ms.locfileid: "75335804"
 
 你的公司是否正遇到了大量似乎难以解决的 IT 问题？ 良好的 IT 治理涉及在战略级别规划各项举措和设置优先级，以便管理和预防问题。 Azure Policy 迎合了此策略需求。
 
-Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，使这些资源符合公司标准和服务级别协议。 Azure Policy 通过评估资源是否符合指定策略来满足此需求。 例如，可以制定一项策略，只允许环境中存在特定 SKU 大小的虚拟机。 实施此策略后，将评估新资源和现有资源的符合性。 通过使用正确的策略类型，可以确保现有资源的符合性。 本文档后面将更详细地讲述如何使用 Azure Policy 创建和实施策略。
+Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，使这些资源符合公司标准和服务级别协议。 Azure Policy 通过评估资源是否符合指定策略来满足此需求。 Azure Policy 存储的所有数据都经过静态加密。
+
+例如，可以制定一项策略，只允许环境中存在特定 SKU 大小的虚拟机。 实施此策略后，将评估新资源和现有资源的符合性。 通过使用正确的策略类型，可以确保现有资源的符合性。 本文档后面将更详细地讲述如何使用 Azure Policy 创建和实施策略。
 
 > [!IMPORTANT]
 > 现在，无论定价层如何，为所有分配都提供了 Azure Policy 的符合性评估。 如果分配未显示符合性数据，请确保已向 Microsoft.PolicyInsights 资源提供程序注册订阅。

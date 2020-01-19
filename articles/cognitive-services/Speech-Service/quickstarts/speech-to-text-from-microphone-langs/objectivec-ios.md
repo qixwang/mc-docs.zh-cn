@@ -9,22 +9,22 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 12/23/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 729f8363278ea4b0b79d119a6de76b2ac90cce0f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: f0d444e03daa78ed06db8477652c5095171e423c
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630788"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123301"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
-<!-- Quickstarts are also available for [speech synthesis](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-ios.md). -->
+针对[语音合成](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-ios.md)也提供了快速入门。
 
 本文介绍如何使用 Azure 认知服务语音 SDK 在 Objective-C 中创建 iOS 应用，以便将麦克风或包含录制音频的文件中的语音转录为文本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -286,7 +286,7 @@ ms.locfileid: "75630788"
     @end
     ```
 1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，将 `chinaeast2` 用于 1 元人民币的试用订阅。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，将 `chinaeast2` 用于试用订阅。
 1. 添加进行麦克风访问的请求。 右键单击项目树的 `Info.plist` 条目，然后选择“打开为” > “源代码”   。 将以下代码行添加到 `<dict>` 节，然后保存文件。
 
     ```xml

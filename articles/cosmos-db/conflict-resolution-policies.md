@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB 中具有多个写入区域的冲突解决类型和解决策略
+title: Azure Cosmos DB 中的冲突解决类型和解决策略
 description: 本文介绍 Azure Cosmos DB 中的冲突类别和冲突解决策略。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/05/2019
-ms.date: 09/09/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 6d1d2a2ddbd6c5ca2233c21d35edd9c633092d25
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 77b7d77bc825a504c03d580988cf491017c0feb9
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254581"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270013"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>冲突类型和解决策略
 
@@ -55,4 +55,4 @@ Azure Cosmos DB 提供了灵活的策略驱动型机制来解决写入冲突。 
 * [如何管理冲突解决策略](how-to-manage-conflicts.md)
 * [如何从冲突源读取数据](how-to-manage-conflicts.md#read-from-conflict-feed)
 
-<!-- Update_Description: update meta properties, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

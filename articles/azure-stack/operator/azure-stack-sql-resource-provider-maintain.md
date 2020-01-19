@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Stack 上维护 SQL 资源提供程序 | Microsoft Docs
-description: 了解如何在 Azure Stack 上维护 SQL 资源提供程序服务。
+title: SQL 资源提供程序维护操作
+titleSuffix: Azure Stack
+description: 了解 Azure Stack 上的 SQL 资源提供程序维护操作。
 services: azure-stack
 documentationCenter: ''
 author: WenJason
@@ -11,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 05/06/2019
-ms.date: 10/21/2019
+origin.date: 10/02/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 8a311b81b48aead0d04ac7409bdde2fbc909b29a
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 3ad21a2ee8612111ae6ed5660b126de96eb8715a
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578436"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737746"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL 资源提供程序维护操作
 
-SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作，需要更新虚拟机的安全性。 若要使用“最低特权”原则执行此操作，可以使用 [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) 终结点 *DBAdapterMaintenance*。 资源提供程序安装包包含此操作的脚本。
+SQL 资源提供程序在锁定的虚拟机 (VM) 上运行。 若要启用维护操作，需要更新 VM 的安全性。 若要使用“最低特权”原则执行此操作，请使用 [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) 终结点 *DBAdapterMaintenance*。 资源提供程序安装包包含此操作的脚本。
 
 ## <a name="patching-and-updating"></a>修补和更新
 
 不能将 SQL 资源提供程序作为 Azure Stack 的一部分进行维护，因为它是一个加载项组件。 Microsoft 会根据需要为 SQL 资源提供程序提供更新。 发布更新的 SQL 适配器后，会提供一个脚本来应用更新。 此脚本创建新的资源提供程序 VM，并将旧提供程序 VM 的状态迁移到新 VM。 有关详细信息，请参阅[更新 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。
 
-### <a name="provider-virtual-machine"></a>提供程序虚拟机
+### <a name="provider-vm"></a>提供程序 VM
 
-由于资源提供程序在用户虚拟机上运行，因此需要应用已发布的修补升级。  可以使用修补升级周期提供的 Windows 更新包将更新应用到 VM。
+由于资源提供程序在用户 VM 上运行，因此需要应用已发布的所需修补和升级。  使用修补升级周期提供的 Windows 更新包将更新应用到 VM。
 
 ## <a name="updating-sql-credentials"></a>更新 SQL 凭据
 
@@ -41,7 +42,7 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 若要修改设置，请选择“浏览”&gt;“管理资源”&gt;“SQL 宿主服务器”&gt;“SQL 登录”并选择用户名。     必须先在 SQL 实例上（必要时还需要在任何副本上）进行更改。在“设置”下，选择“密码”。  
 
-![更新管理密码](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
+![更新 SQL 管理员密码](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 ## <a name="secrets-rotation"></a>机密轮换
 
@@ -114,38 +115,38 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 ### <a name="known-issues"></a>已知问题
 
-**问题**：机密轮换日志。<br>
-如果机密轮换自定义脚本在运行时失败，则不会自动收集机密轮换的日志。
+**问题**：<br>
+机密轮换日志。 如果机密轮换自定义脚本在运行时失败，则不会自动收集机密轮换的日志。
 
 **解决方法**：<br>
 使用 Get-AzsDBAdapterLogs cmdlet 收集所有资源提供程序日志，包括 C:\Logs 中保存的 AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log。
 
-## <a name="update-the-virtual-machine-operating-system"></a>更新虚拟机操作系统
+## <a name="update-the-vm-operating-system"></a>更新 VM 操作系统
 
-使用以下方法之一更新虚拟机操作系统。
+使用以下方法之一更新 VM 操作系统。
 
 - 使用当前进行了修补的 Windows Server 2016 Core 映像安装最新的资源提供程序包。
 - 在安装或更新资源提供程序期间安装 Windows 更新包。
 
-## <a name="update-the-virtual-machine-windows-defender-definitions"></a>更新虚拟机 Windows Defender 定义
+## <a name="update-the-vm-windows-defender-definitions"></a>更新 VM Windows Defender 定义
 
 更新 Windows Defender 定义：
 
-1. 从 [Windows Defender 定义](https://www.microsoft.com/en-us/wdsi/definitions)下载 Windows Defender 定义更新
+1. 从 [Windows Defender 的安全智能更新](https://www.microsoft.com/wdsi/definitions)下载 Windows Defender 定义更新。
 
-   在定义更新页上，向下滚动到“手动下载并安装定义”。 下载“适用于 Windows 10 和 Windows 8.1 的 Windows Defender Antivirus”64 位文件。
+   在定义更新页上，向下滚动到“手动下载更新”。 下载“适用于 Windows 10 和 Windows 8.1 的 Windows Defender Antivirus”64 位文件。
 
-   或者，使用[此直接链接](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64)下载/运行 fpam-fe.exe 文件。
+   也可使用[此直接链接](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64)下载/运行 fpam-fe.exe 文件。
 
-2. 与 SQL 资源提供程序适配器虚拟机的维护终结点建立 PowerShell 会话。
+2. 与 SQL 资源提供程序适配器 VM 的维护终结点建立 PowerShell 会话。
 
-3. 使用维护终结点会话将定义更新文件复制到虚拟机。
+3. 使用维护终结点会话将定义更新文件复制到 VM。
 
 4. 在维护 PowerShell 会话中，运行 *Update-DBAdapterWindowsDefenderDefinitions* 命令。
 
 5. 安装定义之后，我们建议使用 *Remove-ItemOnUserDrive* 命令删除定义更新文件。
 
-**用于更新定义的 PowerShell 脚本示例。**
+**用于更新定义的 PowerShell 脚本示例**
 
 可以编辑并运行以下脚本来更新 Defender 定义。 将脚本中的值替换为环境中的值。
 
@@ -160,14 +161,14 @@ $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential `
 $databaseRPMachine  = "<RP VM IP address>"
 $localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
 
-# Download the Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions.
+# Download the Windows Defender update definitions file from https://www.microsoft.com/wdsi/definitions.
 Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64' `
     -Outfile $localPathToDefenderUpdate
 
 # Create a session to the maintenance endpoint.
 $session = New-PSSession -ComputerName $databaseRPMachine `
     -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
-# Copy the defender update file to the adapter virtual machine.
+# Copy the defender update file to the adapter VM.
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
      -Destination "User:\"
 # Install the update definitions.
@@ -181,7 +182,7 @@ $session | Remove-PSSession
 
 ## <a name="collect-diagnostic-logs"></a>收集诊断日志
 
-若要从锁定的虚拟机收集日志，可以使用 PowerShell Just Enough Administration (JEA) 终结点 *DBAdapterDiagnostics*。 此终结点提供以下命令：
+若要从锁定的 VM 收集日志，请使用 PowerShell Just Enough Administration (JEA) 终结点 *DBAdapterDiagnostics*。 此终结点提供以下命令：
 
 - **Get-AzsDBAdapterLog**。 此命令创建资源提供程序诊断日志的 zip 包，并将文件保存在会话的用户驱动器上。 可以不带任何参数运行此命令，收集过去四小时的日志。
 - **Remove-AzsDBAdapterLog**。 此命令删除资源提供程序 VM 上的现有日志包。
@@ -191,16 +192,16 @@ $session | Remove-PSSession
 安装或更新资源提供程序时，将创建 **dbadapterdiag** 用户帐户。 此帐户用于收集诊断日志。
 
 >[!NOTE]
->dbadapterdiag 帐户密码与部署或更新提供程序期间在虚拟机上创建的本地管理员所用的密码相同。
+>dbadapterdiag 帐户密码与部署或更新提供程序期间在 VM 上创建的本地管理员所用的密码相同。
 
-若要使用 *DBAdapterDiagnostics* 命令，请与资源提供程序虚拟机建立远程 PowerShell 会话，然后运行 **Get-AzsDBAdapterLog** 命令。
+若要使用 *DBAdapterDiagnostics* 命令，请与资源提供程序 VM 建立远程 PowerShell 会话，然后运行 **Get-AzsDBAdapterLog** 命令。
 
 使用 **FromDate** 和 **ToDate** 参数设置日志收集的时间跨度。 如果未指定上述一个或两个参数，将使用以下默认值：
 
 - FromDate 为当前时间之前的四个小时。
 - ToDate 为目前时间。
 
-**用于收集日志的 PowerShell 脚本示例。**
+**用于收集日志的 PowerShell 脚本示例**
 
 以下脚本演示如何从资源提供程序 VM 收集诊断日志。
 
@@ -231,9 +232,28 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 # Close the session.
 $session | Remove-PSSession
 ```
+## <a name="configure-azure-diagnostics-extension-for-sql-resource-provider"></a>为 SQL 资源提供程序配置 Azure 诊断扩展
+默认情况下，在 SQL 资源提供程序适配器 VM 上安装 Azure 诊断扩展。 以下步骤介绍如何为收集 SQL 资源提供程序操作事件日志和 IIS 日志自定义扩展，以便用于故障排除和审核。
+
+1. 登录到 Azure Stack Hub 管理员门户。
+
+2. 从左侧窗格中选择“虚拟机”，搜索 SQL 资源提供程序适配器 VM，然后选择该 VM  。
+
+3. 在 VM 的“诊断设置”中，转到“日志”选项卡，然后选择“自定义”，以自定义要收集的事件日志    。
+![转到诊断设置](media/azure-stack-sql-resource-provider-maintain/sqlrp-diagnostics-settings.png)
+
+4. 添加 **Microsoft-AzureStack-DatabaseAdapter/Operational!\*** 用于收集 SQL 资源提供程序操作事件日志。
+![添加事件日志](media/azure-stack-sql-resource-provider-maintain/sqlrp-event-logs.png)
+
+5. 若要启用 IIS 日志收集，请选中“IIS 日志”和“失败请求日志”   。
+![添加 IIS 日志](media/azure-stack-sql-resource-provider-maintain/sqlrp-iis-logs.png)
+
+6. 最后，选择“保存”以保存所有诊断设置  。
+
+为 SQL 资源提供程序配置事件日志和 IIS 日志收集后，即可在名为 **sqladapterdiagaccount** 的系统存储帐户中找到日志。
+
+若要详细了解 Azure 诊断扩展，请参阅[什么是 Azure 诊断扩展](/azure-monitor/platform/diagnostics-extension-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 
 [添加 SQL Server 宿主服务器](azure-stack-sql-resource-provider-hosting-servers.md)
-
-<!-- Update_Description: wording update -->

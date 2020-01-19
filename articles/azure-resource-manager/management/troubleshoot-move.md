@@ -3,14 +3,14 @@ title: 排查迁移错误
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
 origin.date: 08/27/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 743310243af0c640e91ef3fc8146c666879a1b5a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 32e8465ae80acc36b0fdcdecff993fa7d4a11e4a
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631199"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165405"
 ---
 <!--Verified successfully-->
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题
@@ -28,7 +28,7 @@ ms.locfileid: "75631199"
 
 <!--MOONCAKE: CORRECT ON /billing/billing-upgrade-1rmb-trial AND /billing/billing-upgrade-to-ea-->
 
-如果无法转换订阅，请[创建 Azure 支持请求](https://support.azure.cn/support/support-azure/?l=zh-cn)。 选择“订阅管理”  作为问题类型。
+如果无法转换订阅，请[创建 Azure 支持请求](https://support.azure.cn/support/support-azure/)。 选择“订阅管理”  作为问题类型。
 
 ## <a name="service-limitations"></a>服务限制
 

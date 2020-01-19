@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB Gremlin API 的列出和获取操作
+title: 用于列出和获取操作的 PowerShell 脚本 - Azure Cosmos DB Gremlin API
 description: Azure PowerShell 脚本 - Azure Cosmos DB Gremlin API 的列出和获取操作
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 origin.date: 05/18/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 55879c43bf41e9fc31a29ebb025fcf0f9c34db5d
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 8f8828976f61f10243bbe06ad225afc210a64d5c
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913275"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270095"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>列出和获取 Azure Cosmos DB 的数据库和图 - Gremlin API
 

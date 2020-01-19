@@ -4,15 +4,15 @@ description: 了解如何使用 Python 客户端库在 Azure 密钥保管库中�
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 10/20/2019
-ms.date: 12/09/2019
+ms.date: 01/17/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 96edfb16d4b9169df5429d7d537b0839bed691b2
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: c5d1dbcba496aa179e5d29af866ae4fca18a3269
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840108"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123349"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 
@@ -29,7 +29,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 [API 参考文档](https://docs.microsoft.com/python/api/overview/azure/key-vault?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [包（Python 包索引）](https://pypi.org/project/azure-keyvault/)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。
 - Python 2.7、3.5.3 或更高版本
@@ -144,7 +144,7 @@ from azure.identity import DefaultAzureCredential
 ```python
 credential = DefaultAzureCredential()
 
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 ```
 
 ### <a name="save-a-secret"></a>保存机密
@@ -152,7 +152,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 应用程序通过身份验证后，你可以使用 client.SetSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)将机密放入 keyvault。此操作需要使用机密的名称，本示例中使用“mySecret”。  
 
 ```python
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 ```
 
 可以使用 [az keyvault secret show](/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令来验证是否设置了机密：
@@ -167,7 +167,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ```python
 retrieved_secret = client.get_secret(secretName)
-```
+ ```
 
 机密现已保存为 `retrieved_secret.value`。
 
@@ -176,7 +176,7 @@ retrieved_secret = client.get_secret(secretName)
 最后，使用 [client.DeleteSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)从密钥保管库中删除机密。
 
 ```python
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 ```
 
 可以使用 [az keyvault secret show](/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令来验证是否已删除机密：
@@ -191,6 +191,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ```azurecli
 az group delete -g "myResourceGroup"
+```
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup"
@@ -204,37 +205,37 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-keyVaultName = os.environ["KEY_VAULT_NAME"];
-KVUri = "https://" + keyVaultName + ".vault.azure.cn";
+keyVaultName = os.environ["KEY_VAULT_NAME"]
+KVUri = "https://" + keyVaultName + ".vault.azure.cn"
 
 credential = DefaultAzureCredential()
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 
-secretName = "mySecret";
+secretName = "mySecret"
 
-print("Input the value of your secret > ");
-secretValue = raw_input();
+print("Input the value of your secret > ")
+secretValue = raw_input()
 
-print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...")
 
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 
-print(" done.");
+print(" done.")
 
-print("Forgetting your secret.");
-secretValue = "";
-print("Your secret is '" + secretValue + "'.");
+print("Forgetting your secret.")
+secretValue = ""
+print("Your secret is '" + secretValue + "'.")
 
-print("Retrieving your secret from " + keyVaultName + ".");
+print("Retrieving your secret from " + keyVaultName + ".")
 
 retrieved_secret = client.get_secret(secretName)
 
-print("Your secret is '" + retrieved_secret.value + "'.");
-print("Deleting your secret from " + keyVaultName + " ...");
+print("Your secret is '" + retrieved_secret.value + "'.")
+print("Deleting your secret from " + keyVaultName + " ...")
 
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 
-print(" done.");
+print(" done.")
 ```
 
 ## <a name="next-steps"></a>后续步骤

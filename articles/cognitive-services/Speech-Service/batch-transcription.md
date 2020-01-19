@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4a7d3fcb1cecb75e01bce79ed4c90ee0e6433fd3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 91cf879d09ddc36e61eef501d539f8dfcb118eda
+ms.sourcegitcommit: 3f2cb2b8fbe60bac19cffea5a1e3e99aa0e309c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630878"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76163007"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -35,14 +35,14 @@ ms.locfileid: "75630878"
 
 凭借易用的 API，无需部署自定义终结点，且无需遵守任何并发性要求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="subscription-key"></a>订阅密钥
 
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.cn)创建订阅密钥。
 
 >[!NOTE]
-> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://www.azure.cn/pricing/details/cognitive-services/speech-services/)。
+> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 ### <a name="custom-models"></a>自定义模式
 
@@ -173,7 +173,7 @@ ms.locfileid: "75630878"
 
 结果包含以下形式：
 
-|表单|内容|
+|Form|内容|
 |-|-|
 |`Lexical`|识别的实际单词。
 |`ITN`|已识别文本的反向文本规范化形式。 已应用缩写（“doctor smith”缩写为“dr smith”）、电话号码和其他转换。
@@ -362,4 +362,4 @@ foreach (var transcription in transcriptions)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 1 元人民币的试用订阅](https://www.azure.cn/pricing/1rmb-trial/)
+* [获取试用订阅](https://www.azure.cn/pricing/1rmb-trial/)

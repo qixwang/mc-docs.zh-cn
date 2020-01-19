@@ -1,19 +1,16 @@
 ---
 title: 确定导致非符合性的原因
 description: 有多种可能的原因会导致资源不合规。 了解如何查明导致不合规的原因。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 04/26/2019
-ms.date: 12/16/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a5c50a707ca953157fc980265dc0325f5bfd24af
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/17/2020
+ms.topic: how-to
+ms.openlocfilehash: 3fdf96556deddff4ee61109c672af98a753bb878
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335809"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123355"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -21,6 +18,9 @@ ms.locfileid: "75335809"
 
 > [!div class="checklist"]
 > - [合规性详细信息](#compliance-details)
+
+<!-- no change history in mc portal -->
+<!-- > - [Change history (Preview)](#change-history) -->
 
 ## <a name="compliance-details"></a>合规性详细信息
 

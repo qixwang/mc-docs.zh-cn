@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: d1c391f8ce4c3af7380a7f8a416efc1f8e7e1a0d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: d81ed9259c0625360a110bc5673b2709d0a86832
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630762"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123341"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
@@ -27,10 +27,11 @@ ms.locfileid: "75630762"
 > * 搜索以查看社区是否讨论你的问题，或者是否已存在有关要实现的功能的现有文档。
 > * 如果未找到满意答案，请在 Stack Overflow 上提问。 
 > * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题  。
+> * 在 UserVoice 论坛中搜索解决方案  。
 
 <!-- ## Stay informed -->
 
-<!-- News about Cognitive Services is collected in the [Cognitive Services blog](https://azure.microsoft.com/blog/topics/cognitive-services/). For the latest information about Speech Services, track the [Speech Services blog](https://azure.microsoft.com/blog/tag/speech-service/). -->
+<!-- News about Cognitive Services is collected in the [Cognitive Services blog](https://azure.microsoft.com/blog/topics/cognitive-services/). For the latest information about Speech service, track the [Speech service blog](https://azure.microsoft.com/blog/tag/speech-service/). -->
 
 ## <a name="release-notes"></a>发行说明
 
@@ -109,4 +110,8 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
  - 任何其他附加信息
 
 
-<!-- ## UserVoice forum -->
+## <a name="uservoice-forum"></a>UserVoice 论坛
+
+分享与使认知服务和伴随的 API 更好地为你开发的应用程序工作相关的想法。 使用我们不断扩展的知识库查找常见问题的解答：
+
+[UserVoice](https://cognitive.uservoice.com/)

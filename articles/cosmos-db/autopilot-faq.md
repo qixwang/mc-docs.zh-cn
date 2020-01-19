@@ -2,17 +2,17 @@
 title: 有关 Azure Cosmos DB Autopilot 模式下的吞吐量的常见问题
 description: 有关 Azure Cosmos DB 数据库和容器的 Autopilot 模式的常见问题
 author: rockboyfor
+ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/16/2019
-ms.date: 01/13/2020
-ms.author: v-yeche
-ms.openlocfilehash: 094323b8de3d228fb6779c826e293e7328d0383e
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.date: 01/20/2020
+ms.openlocfilehash: 00211753520d246300ddc101251215c100134fe5
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864976"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270022"
 ---
 # <a name="frequently-asked-questions-about-provisioned-throughput-in-azure-cosmos-db-autopilot-mode-preview"></a>有关 Azure Cosmos DB Autopilot 模式下的预配吞吐量的常见问题（预览版）
 在 Autopilot 模式下，Azure Cosmos DB 将根据使用情况自动管理和缩放容器或数据库的 RU/s。 本文解答了有关 Autopilot 模式的常见问题。 

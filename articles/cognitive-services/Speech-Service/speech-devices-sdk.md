@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9683350ee4051f2a63c0da5d446f7c53805b28b5
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: b2e181f012a8164b5e21fdc20c39dae98942217d
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630771"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123291"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 

@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: f3cdbc9bc486c5fd059fc0be440919a9e6b79e18
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: e7890329fda3f510de6106b943463431c60a9e94
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630993"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123129"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入门：获取 LUIS 终结点密钥
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始阅读本教程之前，请务必准备好以下各项：
 
@@ -35,7 +35,7 @@ LUIS 使用三种密钥：
 |密钥类型|目的|
 |--------|-------|
 |创作|用于以编程方式创建和修改 LUIS 应用|
-|入门|仅允许使用纯文本测试 LUIS 应用程序|
+|初学者|仅允许使用纯文本测试 LUIS 应用程序|
 |终结点 |授权访问特定的 LUIS 应用|
 
 对于本教程，需要使用终结点密钥类型。 本教程使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
@@ -60,3 +60,10 @@ LUIS 使用三种密钥：
 1. 选择密钥旁边的图标将其复制到剪贴板。 （可以使用其中的任一密钥。）
 
 ![LUIS 应用订阅密钥](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
+
+
+<!-- ## Next steps -->
+
+<!-- > [!div class="nextstepaction"] -->
+<!-- > [Recognize Intents](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md) -->
+

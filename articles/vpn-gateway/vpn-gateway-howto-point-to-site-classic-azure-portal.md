@@ -14,14 +14,14 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/11/2018
-ms.date: 12/16/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: f4d18438ed9752ace1586339a10973025680104c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 570945d1a9871266d922ee229721a284385131e8
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336442"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939754"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -44,7 +44,7 @@ ms.locfileid: "75336442"
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 点到站点证书身份验证连接需要以下先决条件：
 
@@ -64,7 +64,7 @@ ms.locfileid: "75336442"
 - **创建虚拟网络（经典）设置**
    - **名称**：输入 *VNet*。
    - **地址空间**：输入 192.168.0.0/16  。 对于此示例，我们只使用一个地址空间。 可以在 VNet 中使用多个地址空间，如图所示。
-   - **子网名称**：输入 FrontEnd  。
+   - **子网名称**：输入 *FrontEnd*。
    - **子网地址范围**：输入 192.168.1.0/24  。
    - **订阅**：从可用订阅列表中选择订阅。
    - **资源组**：输入 TestRG  。 如果资源组不存在，选择“新建”  。
@@ -281,7 +281,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 将
 3. 转到经典虚拟网络。 选择“点到站点 VPN 连接”，然后选择“管理证书”，打开“证书”页    。
 4. 选择“吊销列表”，打开“吊销列表”页   。 
 5. 选择“添加证书”，打开“将证书添加到吊销列表”页   。
-6. 在“指纹”页中，将证书指纹以连续文本行的形式进行粘贴，不留空格  。 选择“确定”完成操作  。
+6. 在“指纹”页中，将证书指纹以连续文本行的形式进行粘贴，不留空格  。 选择“确定”  ，以完成操作。
 
 更新完成后，不再可以使用证书来连接。 客户端在尝试使用此证书进行连接时，会收到一条消息，指出证书不再有效。
 

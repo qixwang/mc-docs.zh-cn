@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 07/07/2017
-ms.date: 12/09/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: f46dcdd5cfc9ead868bd1fc18e7f45f4c399d1e2
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: a9b795c16e666cffefda9318d76c81ffc055af46
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884067"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123260"
 ---
 # <a name="peer-two-virtual-networks"></a>对等互连两个虚拟网络
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 发行说明 | Microsoft Docs
-description: 了解 Azure Stack 集成系统的更新，包括新增功能和更新下载位置。
+title: Azure Stack Hub 发行说明 | Microsoft Docs
+description: 了解 Azure Stack Hub 集成系统的更新，包括新增功能和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
@@ -12,33 +12,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/21/2019
-ms.date: 11/18/2019
+origin.date: 12/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: prchint
-ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: fa02cf803046d281d2dadb356b08d1fcb7cdffc4
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/22/2019
+ms.openlocfilehash: 098e1c7be859f6fa8fc8d767841a113bee0918e3
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020423"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737890"
 ---
-# <a name="azure-stack-updates-release-notes"></a>Azure Stack 更新：发行说明
+# <a name="azure-stack-hub-updates-release-notes"></a>Azure Stack Hub 更新：发行说明
 
-*适用于：Azure Stack 集成系统*
+*适用于：Azure Stack Hub 集成系统*
 
-本文介绍 Azure Stack 更新包的内容。 此更新包括新的改进，以及此 Azure Stack 版本的修复。
+本文介绍 Azure Stack Hub 更新包的内容。 此更新包括新的改进，以及此 Azure Stack Hub 版本的修复。
 
 若要访问不同版本的发行说明，请使用左侧目录上方的版本选择器下拉列表。
 
-::: moniker range=">=azs-1905"
+::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
-> 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
+> 此更新包仅适用于 Azure Stack Hub 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 ::: moniker-end
-::: moniker range="<azs-1905"
+::: moniker range="<azs-1906"
 > [!IMPORTANT]  
-> 如果 Azure Stack 实例落后于两个以上的更新，则认为它不符合。 必须[至少更新到最低支持版本才能获得支持](azure-stack-servicing-policy.md#keep-your-system-under-support)。 
+> 如果 Azure Stack Hub 实例落后于两个以上的更新，则认为它不符合。 必须[至少更新到最低支持版本才能获得支持](azure-stack-servicing-policy.md#keep-your-system-under-support)。
 ::: moniker-end
 
 ## <a name="update-planning"></a>更新规划
@@ -49,17 +49,174 @@ ms.locfileid: "74020423"
 - [安全更新](release-notes-security-updates.md)
 - [应用更新之前和之后的活动清单](release-notes-checklist.md)
 
-有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack 的修补和更新问题进行故障排除](azure-stack-updates-troubleshoot.md)。
+有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack Hub 的修补和更新问题进行故障排除](azure-stack-updates-troubleshoot.md)。
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+::: moniker range="azs-1910"
+## <a name="1910-build-reference"></a>1910 内部版本参考
+
+Azure Stack Hub 1910 更新内部版本号为 **1.1910.0.58**。
+
+### <a name="update-type"></a>更新类型
+
+从版本 1908 开始，运行 Azure Stack Hub 的底层操作系统已更新为 Windows Server 2019。 这可以实现核心基础增强，并在不久的将来将更多功能引入 Azure Stack Hub。
+
+Azure Stack Hub 1910 更新内部版本类型为“快速”  。
+
+与以前的更新相比，1910 更新包更大。 增加的大小会导致下载时间更长。 此更新将长时间保留为“正在准备”状态，操作员可预期此过程所需的时间长于以前的更新。  无论 Azure Stack Hub 环境中有多少个物理节点，完成 1910 更新的预估时间都大约为 10 小时。 确切的更新运行时间通常取决于租户工作负荷在系统上使用的容量、系统网络连接（如果已连接到 Internet），以及系统的硬件规格。 运行时间超过预期值并不常见，因此，除了更新失败之外，无需要求 Azure Stack Hub 操作员执行操作。 此运行时近似值特定于 1910 更新，不应与其他 Azure Stack Hub 更新进行比较。
+
+有关更新内部版本类型的详细信息，请参阅[在 Azure Stack Hub 中管理更新](azure-stack-updates.md)。
+
+<!-- ## What's in this update -->
+
+<!-- The current theme (if any) of this release. -->
+
+### <a name="whats-new"></a>新增功能
+
+<!-- What's new, also net new experiences and features. -->
+
+- 管理员门户现在会在区域属性菜单中显示特权终结点 IP 地址，以方便进行发现。 此外，还会显示当前配置的时间服务器和 DNS 转发器。
+
+- 现在，在发生错误时，Azure Stack Hub 运行状况和监视系统可针对各种硬件组件引发警报。 这需要进行额外的配置。 有关详细信息，请参阅[监视 Azure Stack Hub 硬件组件](azure-stack-hardware-monitoring.md)。
+
+- [Azure Stack Hub 的 Cloud-init 支持](/virtual-machines/linux/using-cloud-init)：Cloud-init 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。 市场中的 Ubuntu 映像已更新为支持使用 cloud-init 进行预配。
+
+- 与 Azure 一样，Azure Stack Hub 现在支持所有 Windows Azure Linux 代理版本。
+
+- 提供了新版 Azure Stack Hub 管理员 PowerShell 模块。 <!-- For more information, see -->
+
+- 已在特权终结点 (PEP) 中添加 **Set-AzSDefenderManualUpdate** cmdlet，用于为 Azure Stack Hub 基础结构中的 Windows Defender 定义配置手动更新。 有关详细信息，请参阅[更新 Azure Stack Hub 上的 Windows Defender Antivirus](azure-stack-security-av.md)。
+
+- 已在特权终结点 (PEP) 中添加 **Get-AzSDefenderManualUpdate** cmdlet，用于为 Azure Stack Hub 基础结构中的 Windows Defender 定义检索手动更新配置。 有关详细信息，请参阅[更新 Azure Stack Hub 上的 Windows Defender Antivirus](azure-stack-security-av.md)。
+
+- 已在特权终结点 (PEP) 中添加 **Set-AzSDnsForwarder** cmdlet，用于在 Azure Stack Hub 中更改 DNS 服务器的转发器设置。 有关 DNS 配置的详细信息，请参阅 [Azure Stack Hub 数据中心 DNS 集成](azure-stack-integrate-dns.md)。
+
+- 已在特权终结点 (PEP) 中添加 **Get-AzSDnsForwarder** cmdlet，用于在 Azure Stack Hub 中检索 DNS 服务器的转发器设置。 有关 DNS 配置的详细信息，请参阅 [Azure Stack Hub 数据中心 DNS 集成](azure-stack-integrate-dns.md)。
+
+### <a name="improvements"></a>改进
+
+<!-- Changes and product improvements with tangible customer-facing value. -->
+
+- Azure Stack Hub 的功能已得到改进，可自动补救一些修补升级问题，过去，这些问题会导致更新失败，或者使操作员无法启动 Azure Stack Hub 更新。 因此，**Test-AzureStack -UpdateReadiness** 组中包含的测试较少。 有关详细信息，请参阅[验证 Azure Stack Hub 系统状态](azure-stack-diagnostic-test.md#groups)。 以下三项测试保留在 **UpdateReadiness** 组中：
+
+  - **AzSInfraFileValidation**
+  - **AzSActionPlanStatus**
+  - **AzsStampBMCSummary**
+
+- 添加了审核规则来报告外部设备（例如 USB 密钥）装载到 Azure Stack Hub 基础结构节点的时间。 审核日志通过 syslog 发出，并显示为“Microsoft-Windows-Security-Auditing:  6416|即插即用事件”。 有关如何配置 syslog 客户端的详细信息，请参阅 [Syslog 转发](azure-stack-integrate-security.md)。
+
+- Azure Stack Hub 的内部证书即将改用 4096 位 RSA 密钥。 运行内部机密轮换会将旧的 2048 位证书替换为 4096 位长的证书。 有关 Azure Stack Hub 中的机密轮换的详细信息，请参阅[在 Azure Stack Hub 中轮换机密](azure-stack-rotate-secrets.md)。
+
+- 将多个内部组件升级到符合国家安全系统委员会 - 政策 15（CNSSP-15，该政策提供使用公共标准来安全共享信息的最佳做法）的密码编译算法复杂性和密钥强度。 其中的改进包括，在 Kerberos 身份验证中使用 AES256，以及在 VPN 加密中使用 SHA384。 有关 CNSSP-15 的详细信息，请参阅[国家安全系统委员会的“政策”页](http://www.cnss.gov/CNSS/issuances/Policies.cfm)。
+
+- 由于上述升级，Azure Stack Hub 现在对 IPsec/IKEv2 配置使用新的默认值。 Azure Stack Hub 端使用的新默认值如下：
+
+   **IKE 阶段 1（主模式）参数**
+
+   | 属性              | Value|
+   |-|-|
+   | SDK 版本           | IKEv2 |
+   |Diffie-Hellman 组   | ECP384 |
+   | 身份验证方法 | 预共享密钥 |
+   |加密和哈希算法 | AES256、SHA384 |
+   |SA 生存期（时间）     | 28,800 秒|
+
+   **IKE 阶段 2（快速模式）参数**
+
+   | 属性| Value|
+   |-|-|
+   |SDK 版本 |IKEv2 |
+   |加密和哈希算法（加密）     | GCMAES256|
+   |加密和哈希算法（身份验证） | GCMAES256|
+   |SA 生存期（时间）  | 27,000 秒  |
+   |SA 生存期（千字节） | 33,553,408     |
+   |完全向前保密 (PFS) | ECP384 |
+   |死对等体检测 | 支持|
+
+   [默认的 IPsec/IKE 提案](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)文档中也反映了这些更改。
+
+- 基础结构备份服务改进了计算备份所需的可用空间的逻辑，而不是依赖固定的阈值。 该服务使用备份大小、保留策略、预留和外部存储位置的当前利用率，来确定是否需要对操作员引发警告。
+
+### <a name="changes"></a>更改
+
+- 将市场项从 Azure 下载到 Azure Stack Hub 时，可以使用新的用户界面来指定项的版本（如果存在多个版本时）。 新 UI 可用于联网场景和离线场景。 有关详细信息，请参阅[将市场项从 Azure 下载到 Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)。  
+
+- 从版本 1910 开始，Azure Stack Hub 系统**需要**额外的 /20 专用内部 IP 空间。 此网络是 Azure Stack Hub 系统的专用网络，并且可以在数据中心内的多个 Azure Stack Hub 系统上重复使用。 这是 Azure Stack Hub 的专用网络，不能与数据中心内的网络重叠。 /20 专用 IP 空间划分成多个网络，使你能够在容器上运行 Azure Stack Hub 基础结构（如以前的 [1905 发行说明](release-notes.md?view=azs-1905)中所述）。 在容器中运行 Azure Stack Hub 基础结构的目标是优化利用率并提升性能。 此外，/20 专用 IP 空间还用于实现正在进行的工作，以减少部署前所需的可路由 IP 空间。
+
+  - 请注意，/20 输入是版本 1910 之后下一个 Azure Stack Hub 更新的先决条件。 发布版本 1910 之后的下一个 Azure Stack Hub 更新后，当你尝试安装该更新时，如果尚未完成以下补救步骤中所述的 /20 输入，则更新将会失败。 在完成上述补救步骤之前，管理员门户中会出现警报。 请参阅[数据中心网络集成](azure-stack-network.md#private-network)一文，了解如何使用此新专用空间。 
+
+  - 补救步骤：若要进行补救，请按照说明[打开 PEP 会话](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)。 准备一个大小为 /20 的[专用内部 IP 范围](azure-stack-network.md#logical-networks)，然后使用以下示例，在 PEP 会话中运行以下 cmdlet（仅适用于 1910 及更高版本）：`Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`。 如果成功执行该操作，将会出现消息“Azs 内部网络范围已添加到配置”。  如果成功完成，管理员门户中的警报将会关闭。 Azure Stack Hub 系统现在可以更新到下一个版本。
+  
+- 如果在上传过程中外部存储位置耗尽了容量，基础结构备份服务将会删除部分上传的备份数据。  
+
+- 基础结构备份服务将标识服务添加到 AAD 部署的备份有效负载。  
+
+- Azure Stack PowerShell 模块已更新为适用于版本 1910 的 1.8.0 版。<br>更改包括：
+   - **新的 DRP 管理模块**：使用部署资源提供程序 (DRP) 能够以协调的方式将资源提供程序部署到 Azure Stack Hub。 这些命令与 Azure 资源管理器层交互，从而与 DRP 交互。
+   - **BRP**： <br />
+           - 支持 Azure stack 基础结构备份的单个角色还原。 <br />
+           - 将参数 `RoleName` 添加到 cmdlet `Restore-AzsBackup`。
+   - **FRP**：“驱动器”和“卷”资源的中断性变更，提供 API 版本 `2019-05-01`。   Azure Stack Hub 1910 和更高版本支持的功能： <br />
+            - `ID`、`Name`、`HealthStatus` 和 `OperationalStatus` 的值已更改。 <br />
+            - 支持“驱动器”资源的新属性 `FirmwareVersion`、`IsIndicationEnabled`、`Manufacturer`和 `StoragePool`。  <br />
+            - 已弃用“驱动器”资源的属性 `CanPool` 和 `CannotPoolReason`；改用 `OperationalStatus`。 
+
+### <a name="fixes"></a>修复项
+
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+
+- 修复了以下问题：在 Azure Stack Hub 1904 版本之前部署的环境中无法强制实施 TLS 1.2 策略。
+- 修复了以下问题：创建时已启用 SSH 授权的 Ubuntu 18.04 VM 不允许使用 SSH 密钥登录。 
+- 从虚拟机规模集 UI 中删除了“重置密码”。 
+- 修复了以下问题：从门户删除负载均衡器不会删除基础结构层中的对象。
+- 修复了以下问题：管理员门户上的网关池用量警报显示不正确的百分比。
+<!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
+
+## <a name="security-updates"></a>安全更新
+
+有关此 Azure Stack Hub 更新中的安全更新的信息，请参阅 [Azure Stack Hub 安全更新](release-notes-security-updates.md)。
+
+## <a name="update-planning"></a>更新规划
+
+应用更新之前，请务必查看以下信息：
+
+- [已知问题](known-issues.md)
+- [安全更新](release-notes-security-updates.md)
+- [应用更新之前和之后的活动清单](release-notes-checklist.md)
+
+## <a name="download-the-update"></a>下载更新
+
+可从 [Azure Stack Hub 下载页](https://aka.ms/azurestackupdatedownload)下载 Azure Stack Hub 1910 更新包。
+
+## <a name="hotfixes"></a>修补程序
+
+Azure Stack Hub 定期发布修补程序。 将 Azure Stack Hub 更新到 1910 之前，请务必先安装 1908 的最新 Azure Stack Hub 修补程序。
+
+Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿尝试在 ASDK 上安装修补程序。
+
+### <a name="prerequisites-before-applying-the-1910-update"></a>先决条件：应用 1910 更新之前
+
+必须在包含以下修补程序的版本 1908 中应用 Azure Stack 版本 1910：
+
+<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
+- [Azure Stack Hub 修补程序 1.1908.11.47](https://support.microsoft.com/help/4535000)
+
+### <a name="after-successfully-applying-the-1910-update"></a>成功应用 1910 更新之后
+
+安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
+
+<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
+- [Azure Stack Hub 修补程序 1.1910.9.78](https://support.microsoft.com/help/4536210)
+::: moniker-end
+
 ::: moniker range="azs-1908"
 ## <a name="1908-build-reference"></a>1908 内部版本参考
 
 Azure Stack 1908 更新内部版本号为 **1.1908.4.33**。
 
-### <a name="update-type-1908"></a>更新类型
+### <a name="update-type"></a>更新类型
 
 对于 1908，运行 Azure Stack 的底层操作系统已更新为 Windows Server 2019。 这可以实现核心基础增强，并在不久的将来将更多功能引入 Azure Stack。
 
@@ -75,7 +232,7 @@ Azure Stack 1908 更新内部版本类型为“完整”。  因此，1908 更�
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1908"></a>新增功能
+### <a name="whats-new"></a>新增功能
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -83,25 +240,24 @@ Azure Stack 1908 更新内部版本类型为“完整”。  因此，1908 更�
 - Azure Stack 基础结构的所有组件现在都以 FIPS 140-2 模式运行。
 - Azure Stack 操作员现在可以删除门户用户数据。 有关详细信息，请参阅[从 Azure Stack 中清除门户用户数据](azure-stack-portal-clear.md)。
 
-### <a name="improvements-1908"></a>改进
+### <a name="improvements"></a>改进
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - Azure Stack 的静态数据加密已得到改进，可将机密持久保存到物理节点的硬件受信任平台模块 (TPM)。
 
-### <a name="changes-1908"></a>更改
+### <a name="changes"></a>更改
 
 - 硬件提供商将在 Azure Stack 版本 1908 的同一发布时间发布 OEM 扩展包 2.1 或更高版本。 必须安装 OEM 扩展包 2.1 或更高版本才能使用 Azure Stack 版本 1908。 有关如何下载 OEM 扩展包 2.1 或更高版本的详细信息，请与系统的硬件提供商联系，并参阅 [OEM 更新](azure-stack-update-oem.md#oem-contact-information)一文。  
 
-### <a name="fixes-1908"></a>修复
+### <a name="fixes"></a>修复项
 
 - 修复了与将来的 Azure Stack OEM 更新兼容的问题，以及使用客户用户映像进行 VM 部署的问题。 此问题是在 1907 中发现的，已在修补程序 [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44) 中予以修复  
 - 修复了 OEM 固件更新的问题，并更正了 Fabric Ring Health 的 Test-AzureStack 中的诊断错误。 此问题是在 1907 中发现的，已在修补程序 [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35) 中予以修复
 - 修复了 OEM 固件更新过程的问题。 此问题是在 1907 中发现的，已在修补程序 [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37) 中予以修复
 
-
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-## <a name="security-updates-1908"></a>安全更新
+## <a name="security-updates"></a>安全更新
 
 有关此 Azure Stack 更新中的安全更新的信息，请参阅 [Azure Stack 安全更新](release-notes-security-updates.md)。
 
@@ -109,7 +265,7 @@ Azure Stack 1908 更新内部版本类型为“完整”。  因此，1908 更�
 
 可从 [Azure Stack 下载页](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1908 更新包。
 
-## <a name="hotfixes-1908"></a>修补程序
+## <a name="hotfixes"></a>修补程序
 
 Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1908 之前，请务必先安装 1907 的最新 Azure Stack 修补程序。
 
@@ -129,7 +285,7 @@ Azure Stack 1908 更新需要系统硬件提供商提供的 **Azure Stack OEM 2.
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack 修补程序 1.1908.8.41](https://support.microsoft.com/help/4528074)
+- [Azure Stack 修补程序 1.1908.11.47](https://support.microsoft.com/help/4535000)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -137,7 +293,7 @@ Azure Stack 1908 更新需要系统硬件提供商提供的 **Azure Stack OEM 2.
 
 Azure Stack 1907 更新内部版本号为 **1.1907.0.20**。
 
-### <a name="update-type-1907"></a>更新类型
+### <a name="update-type"></a>更新类型
 
 Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部版本类型的详细信息，请参阅[管理 Azure Stack 中的更新](azure-stack-updates.md)一文。 根据内部测试，完成 1907 更新所需的预期时间约为 13 个小时。
 
@@ -145,11 +301,11 @@ Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部
 - 运行时间超过预期并不常见，因此，除了更新失败之外，无需要求 Azure Stack 操作员执行操作。
 - 此运行时近似值特定于 1907 更新，不应与其他 Azure Stack 更新进行比较。
 
-## <a name="whats-in-this-update-1907"></a>此更新的内容
+## <a name="whats-in-this-update"></a>此更新的内容
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1907"></a>新增功能
+### <a name="whats-new"></a>新增功能
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -159,7 +315,7 @@ Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部
 
 - 添加了内部机密轮换过程，以便在系统更新期间轮换内部 SQL TLS 证书。
 
-### <a name="improvements-1907"></a>改进
+### <a name="improvements"></a>改进
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -176,7 +332,7 @@ Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部
 
 - 改进了管理员操作内部日志的存储方式。 这可以尽量减少内部日志进程使用的内存和存储，从而改进管理员操作期间的性能和可靠性。 你还可能会注意到，管理员门户中的更新边栏选项卡页加载时间有所改善。 作为此项改进的一部分，系统将不再提供超过 6 个月的更新日志。 如果需要这些更新的日志，请务必先针对超过 6 个月的所有已运行更新[下载摘要](azure-stack-apply-updates.md)，然后执行 1907 更新。
 
-### <a name="changes-1907"></a>更改
+### <a name="changes"></a>更改
 
 - Azure Stack 版本 1907 包含警告警报，指示操作员在更新到版本 1908 之前，先将其系统的 OEM 包更新为版本 2.1 或更高版本。 有关如何应用 Azure Stack OEM 更新的详细信息，请参阅[应用 Azure Stack 原始设备制造商更新](azure-stack-update-oem.md)。
 
@@ -188,7 +344,9 @@ Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部
 
 - 我们现在会验证引入到“计算”->“VM 映像”边栏选项卡中的映像是否为页 Blob 类型。 
 
-### <a name="fixes-1907"></a>修复
+- 特权终结点命令 **Set-BmcCredential** 现在会更新基板管理控制器中的凭据。
+
+### <a name="fixes"></a>修复项
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - 修复了在资源管理器模板中将发布者、套餐和 SKU 视为区分大小写的问题：除非映像参数的大小写与发布者、套餐和 SKU 的大小写相同，否则不会提取该映像进行部署。
@@ -217,11 +375,11 @@ Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部
 
 - 修复了运行状况资源提供程序中的一个问题，该问题会影响管理员门户中区域和警报边栏选项卡的可用性。 此问题是在 1906 中发现的，已在修补程序 [KB4512794](https://support.microsoft.com/help/4512794) 中予以修复。
 
-## <a name="security-updates-1907"></a>安全更新
+## <a name="security-updates"></a>安全更新
 
 有关此 Azure Stack 更新中的安全更新的信息，请参阅 [Azure Stack 安全更新](release-notes-security-updates.md)。
 
-## <a name="update-planning-1907"></a>更新规划
+## <a name="update-planning"></a>更新规划
 
 应用更新之前，请务必查看以下信息：
 
@@ -229,11 +387,11 @@ Azure Stack 1907 更新内部版本类型为“快速”  。 有关更新内部
 - [安全更新](release-notes-security-updates.md)
 - [应用更新之前和之后的活动清单](release-notes-checklist.md)
 
-## <a name="download-the-update-1907"></a>下载更新
+## <a name="download-the-update"></a>下载更新
 
 可从 [Azure Stack 下载页](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1907 更新包。
 
-## <a name="hotfixes-1907"></a>修补程序
+## <a name="hotfixes"></a>修补程序
 
 Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1907 之前，请务必先安装 1906 的最新 Azure Stack 修补程序。
 
@@ -259,11 +417,11 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 Azure Stack 1906 更新内部版本号为 **1.1906.0.30**。
 
-### <a name="update-type-1906"></a>更新类型
+### <a name="update-type"></a>更新类型
 
 Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部版本类型的详细信息，请参阅[管理 Azure Stack 中的更新](azure-stack-updates.md)一文。 无论 Azure Stack 环境中有多少个物理节点，完成 1906 更新的预估时间都大约为 10 小时。 确切的更新运行时间通常取决于租户工作负荷在系统上使用的容量、系统网络连接（如果已连接到 Internet），以及系统的硬件规格。 运行时间超过预期值并不常见，因此，除了更新失败之外，无需要求 Azure Stack 操作员执行操作。 此运行时近似值特定于 1906 更新，不应与其他 Azure Stack 更新进行比较。
 
-## <a name="whats-in-this-update-1906"></a>此更新的内容
+## <a name="whats-in-this-update"></a>此更新的内容
 
 <!-- The current theme (if any) of this release. -->
 
@@ -279,7 +437,7 @@ Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部
 
 - 使用 AD FS 的 Azure Stack 部署现在支持 Visual Studio Code。
 
-### <a name="improvements-1906"></a>改进
+### <a name="improvements"></a>改进
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -297,7 +455,7 @@ Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部
 
 - 版本 1906 引入了更高的更新进度可见性，让你确保更新不会暂停。 操作员可在“更新”边栏选项卡中看到更多的更新步骤总数。  你还可能会发现，与以前的更新相比，现在有更多的更新步骤同时进行。
 
-#### <a name="networking-updates-1906"></a>网络更新
+#### <a name="networking-updates"></a>网络更新
 
 - 将 DHCP 响应程序中设置的租约时间更新为与 Azure 一致。
 
@@ -305,7 +463,7 @@ Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部
 
 - 从负载均衡器和公共 IP 中删除了**标准** SKU 选项，因为目前不支持该选项。
 
-### <a name="changes-1906"></a>更改
+### <a name="changes"></a>更改
 
 - 创建存储帐户的体验现在与 Azure 一致。
 
@@ -315,7 +473,7 @@ Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部
 
 - 更新了基础结构备份资源提供程序中的字符串以使用一致的术语。
 
-### <a name="fixes-1906"></a>修复
+### <a name="fixes"></a>修复项
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
@@ -337,11 +495,11 @@ Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部
 
 - 现在可以从“虚拟机规模集”  边栏选项卡中删除规模集。
 
-## <a name="security-updates-1906"></a>安全更新
+## <a name="security-updates"></a>安全更新
 
 有关此 Azure Stack 更新中的安全更新的信息，请参阅 [Azure Stack 安全更新](release-notes-security-updates.md)。
 
-## <a name="update-planning-1906"></a>更新规划
+## <a name="update-planning"></a>更新规划
 
 应用更新之前，请务必查看以下信息：
 
@@ -349,11 +507,11 @@ Azure Stack 1906 更新内部版本类型为“快速”  。 有关更新内部
 - [安全更新](release-notes-security-updates.md)
 - [应用更新之前和之后的活动清单](release-notes-checklist.md)
 
-## <a name="download-the-update-1906"></a>下载更新
+## <a name="download-the-update"></a>下载更新
 
 可从 [Azure Stack 下载页](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1906 更新包。
 
-## <a name="hotfixes-1906"></a>修补程序
+## <a name="hotfixes"></a>修补程序
 
 Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1906 之前，请务必先安装 1905 的最新 Azure Stack 修补程序。 更新后，安装[适用于 1906 的任何修补程序](#after-successfully-applying-the-1906-update)。
 
@@ -374,131 +532,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - [Azure Stack 修补程序 1.1906.15.60](https://support.microsoft.com/help/4524559)
 ::: moniker-end
 
-::: moniker range="azs-1905"
-## <a name="1905-build-reference"></a>1905 内部版本参考
-
-Azure Stack 1905 更新内部版本号为 **1.1905.0.40**。
-
-### <a name="update-type-1905"></a>更新类型
-
-Azure Stack 1905 更新内部版本类型为“完整”。  因此，1905 更新的运行时间比快速更新（例如 1903 和 1904 ）更久。 完整更新的确切运行时间通常取决于 Azure Stack 实例包含的节点数目、租户工作负荷在系统上使用的容量、系统的网络连接（如果已连接到 Internet），以及系统的硬件配置。 在我们的内部测试中，1905 更新的预期运行时间如下：4 个节点 - 35 小时，8 个节点 - 45 小时，12 个节点 - 55 小时，16 个节点 - 70 小时。 1905 的运行时间超过预期值并不常见，因此，除了更新失败之外，无需要求 Azure Stack 操作员执行操作。 有关更新内部版本类型的详细信息，请参阅[在 Azure Stack 中管理更新](azure-stack-updates.md)。
-
-## <a name="whats-in-this-update-1905"></a>此更新的内容
-
-<!-- The current theme (if any) of this release. -->
-
-<!-- What's new, also net new experiences and features. -->
-
-- Azure Stack 中的更新引擎可通过此更新来更新缩放单元节点的固件。 这需要从硬件合作伙伴获取合规的更新包。 请联系硬件合作伙伴了解他们是否提供该包。
-
-- 现在支持 Windows Server 2019，可通过 Azure Stack 市场来与其联合。
-Windows Server 2019 现可通过此更新成功地在 2016 主机上启动。
-
-- 使用新的 [Azure 帐户 Visual Studio Code 扩展](../user/azure-stack-dev-start-vscode-azure.md)，开发人员可以通过登录和查看订阅以及许多其他服务来以 Azure Stack 作为目标。 Azure 帐户扩展同时适用于 Azure Active Directory (Azure AD) 和 AD FS 环境，并且只需要对 Visual Studio Code 用户设置进行少量更改。 Visual Studio Code 需要向服务主体授予权限才能在此环境中运行。 为此，请导入标识脚本并运行 [Azure Stack 中的多租户](../operator/azure-stack-enable-multitenancy.md)中指定的 cmdlet。 这需要更新主目录，并为每个目录注册来宾租户目录。 更新到 1905 或更高版本后，若要更新包含 Visual Studio Code 服务主体的主目录租户，将显示警报。 
-
-### <a name="improvements-1905"></a>改进
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
-- 在 Azure Stack 上强制实施 TLS 1.2 的过程中，以下扩展已更新到这些版本：
-
-  - microsoft.customscriptextension-arm-1.9.3
-  - microsoft.iaasdiagnostics-1.12.2.2
-  - microsoft.antimalware-windows-arm-1.5.5.9
-  - microsoft.dsc-arm-2.77.0.0
-  - microsoft.vmaccessforlinux-1.5.2
-
-  请立即下载这些扩展版本，以便在将来的版本中强制实施 TLS 1.2 时，能够成功完成新的扩展部署。 请始终设置 **autoUpgradeMinorVersion=true**，以自动执行扩展的次要版本更新（例如，1.8 更新为 1.9）。
-
-- Azure Stack 门户中有新的“帮助和支持概述”，可让操作员轻松检查其支持选项、获取专家帮助，以及详细了解 Azure Stack。  在集成系统上，创建支持请求会预先选择 Azure Stack 服务。 我们强烈建议客户使用此体验来提交票证，而不是使用 Azure 门户。 有关详细信息，请参阅 [Azure Stack 帮助和支持](azure-stack-help-and-support-overview.md)。
-
-- 加入了多个 Azure Active Directory （通过[此过程](azure-stack-enable-multitenancy.md)）时，可能会在进行某些更新时或对 Azure AD 服务主体授权的更改导致权限丢失时，忽略重新运行脚本的操作。 这可能会导致各种问题，例如无法访问某些功能，或者更为分立、难以追溯到原始问题的失败。 为了防止此问题，1905 导入了新的功能用于检查这些权限并在发现某些配置问题时创建警报。 此验证每小时运行一次，并显示为了修复问题所要采取的补救措施。 所有租户处于正常状态后，警报将会关闭。
-
-- 提高了服务故障转移期间基础结构备份操作的可靠性。
-
-- 提供了新版 [Azure Stack Nagios 插件](azure-stack-integrate-monitor.md#integrate-with-nagios)，该插件使用 [Azure Active Directory 身份验证库](/active-directory/develop/active-directory-authentication-libraries) (ADAL) 进行身份验证。 该插件现在还支持 Azure Stack 的 Azure AD 和 Active Directory 联合身份验证服务 (AD FS) 部署。 有关详细信息，请参阅 [Nagios 插件交换](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)网站。
-
-- 已发布新的混合配置文件 **2019-03-01-Hybrid**，可支持 Azure Stack 中的所有最新功能。 Azure PowerShell 和 Azure CLI 都支持 **2019-03-01-Hybrid** 配置文件。 .NET、Ruby、Node.js、Go 和 Python SDK 已发布可支持 **2019-03-01-Hybrid** 配置文件的包。 其各自的文档和一些示例也已更新以反映更改。
-
-- [Node.js SDK](https://www.npmjs.com/search?q=2019-03-01-hybrid) 现在支持 API 配置文件。 支持 **2019-03-01-Hybrid** 配置文件的包已发布。
-
-- 1905 Azure Stack 更新添加了两个新的基础结构角色，可改善平台的可靠性与支持能力：
-
-  - **基础结构环**：将来，基础结构环将托管现有基础结构角色（例如 xrp）的容器化版本，这些角色目前需要自身的指定基础结构 VM。 这会改善平台的可靠性，并减少 Azure Stack 所需的基础结构 VM 数目。 因而这可以减少 Azure Stack 基础结构角色将来的总体资源消耗量。
-  - **支持环**：将来，支持环将用于处理客户的增强支持方案。  
-
-  此外，我们添加了额外的域控制器 VM 实例来改善此角色的可用性。
-
-  这些更改在以下方面会增加 Azure Stack 基础结构的资源消耗量：
-  
-    | Azure Stack SKU | 增加计算消耗量 | 增加内存消耗量 |
-    | -- | -- | -- |
-    |4 个节点|22 个 vCPU|28 GB|
-    |8 个节点|38 个 vCPU|44 GB|
-    |12 个节点|54 个 vCPU|60 GB|
-    |16 个节点|70 个 vCPU|76 GB|
-  
-### <a name="changes-1905"></a>更改
-
-- 为了在计划内和计划外维护方案期间提高可靠性和可用性，Azure Stack 为域服务添加了额外的基础结构角色实例。
-
-- 通过此项更新，系统可在修复和添加节点操作期间验证硬件，以确保在缩放单元中使用同构的缩放单元节点。
-
-- 如果计划的备份无法完成且超过定义的保留期，基础结构备份控制器将确保至少保留一个成功的备份。 
-
-### <a name="fixes-1905"></a>修复
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
-
-- 已修复以下问题：在重启缩放单元中的节点之后，出现“计算主机代理”警告。 
-
-- 已修复管理员门户中的市场管理问题，这些问题使得系统在应用了筛选条件时显示不正确的结果，以及在发布者筛选器中显示重复的发布者名称。 此外提高了性能，可以更快显示结果。
-
-- 已修复可用备份边栏选项卡中的问题：系统在完成对外部存储位置的上传操作之前列出新的可用备份。 现在，只有在成功上传到存储位置后，可用备份才会显示在列表中。 
-
-<!-- ICM: 114819337; Task: 4408136 -->
-- 已修复备份操作期间的修复密钥检索问题。 
-
-<!-- Bug: 4525587 -->
-- 已修复 OEM 更新在操作员门户中将版本显示为“未定义”的问题。
-
-### <a name="security-updates-1905"></a>安全更新
-
-有关此 Azure Stack 更新中的安全更新的信息，请参阅 [Azure Stack 安全更新](release-notes-security-updates.md)。
-
-## <a name="update-planning-1905"></a>更新规划
-
-应用更新之前，请务必查看以下信息：
-
-- [已知问题](known-issues.md)
-- [安全更新](release-notes-security-updates.md)
-- [应用更新之前和之后的活动清单](release-notes-checklist.md)
-
-## <a name="download-the-update-1905"></a>下载更新
-
-可从 [Azure Stack 下载页](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1905 更新包。 使用下载程序工具时，请务必使用最新版本，并且不是下载目录中的缓存副本。
-
-## <a name="hotfixes-1905"></a>修补程序
-
-Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1905 之前，请务必先安装 1904 的最新 Azure Stack 修补程序。
-
-Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 ASDK 上安装修补程序。
-
-### <a name="before-applying-the-1905-update"></a>应用 1905 更新之前
-
-必须在包含以下修补程序的版本 1904 中应用 Azure Stack 版本 1905：
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack 修补程序 1.1904.4.45](https://support.microsoft.com/help/4505688)
-
-### <a name="after-successfully-applying-the-1905-update"></a>成功应用 1905 更新之后
-
-安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack 修补程序 1.1905.3.48](https://support.microsoft.com/help/4510078)
-::: moniker-end
-
-::: moniker range=">=azs-1905"
+::: moniker range=">=azs-1906"
 ## <a name="automatic-update-notifications"></a>自动更新通知
 
 其系统可从基础结构网络访问 Internet 的客户在操作员门户中会看到“有可用的更新”消息。  无法访问 Internet 的系统可以下载并导入包含相应 .xml 的 .zip 文件。
@@ -524,6 +558,9 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-1905"
+## <a name="1905-archived-release-notes"></a>1905 已存档的发行说明
+::: moniker-end
 ::: moniker range="azs-1904"
 ## <a name="1904-archived-release-notes"></a>1904 已存档的发行说明
 ::: moniker-end
@@ -561,7 +598,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 ## <a name="1802-archived-release-notes"></a>1802 已存档的发行说明
 ::: moniker-end
 
-::: moniker range="<azs-1905"
+::: moniker range="<azs-1906"
 可以访问 [TechNet 库中旧版本 Azure Stack 的发行说明](https://aka.ms/azsarchivedrelnotes)。 提供这些已存档文档仅供参考，并不意味着支持这些版本。 有关 Azure Stack 支持的信息, 请参阅 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。 如需进一步的帮助，请联系 Microsoft 客户支持服务。
 ::: moniker-end
 

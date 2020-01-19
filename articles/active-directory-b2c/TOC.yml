@@ -163,9 +163,9 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
-                    - name: 日期
+                    - name: Date
                       href: date-transformations.md
                     - name: 常规
                       href: general-transformations.md
@@ -262,6 +262,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookie 定义
       href: cookie-definitions.md
+    - name: 错误代码
+      href: error-codes.md
     - name: 启用计费
       href: active-directory-b2c-how-to-enable-billing.md
     - name: 威胁管理

@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 .NET Framework 发送和接收事件 - Azure 事件中心
-description: 快速入门：本文演练如何创建可将事件发送到 Azure 事件中心的 .NET Framework 应用程序。
+title: Azure 事件中心 - 使用 .NET Framework 发送/接收事件
+description: 快速入门：本文提供了一个演练，说明如何创建将事件发送到 Azure 事件中心的 .NET Framework 应用程序。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 12/02/2019
+origin.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 51b17cbbdc49a4ea3aa62afddd33b6dabc0f602e
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: ce3f3407bdbaaf352a6d310e471f800b0769f22b
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658095"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123287"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 向/从 Azure 事件中心发送/接收事件
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 将事件发送到 Azure 事件中心或从其接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程展示了如何在 C# 中创建 NET Framework 控制台应用程序，以便将事件发送到事件中心或从其接收事件。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本教程，需要满足以下先决条件：
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com)。
@@ -223,7 +223,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 
 <!-- Links -->
-[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost?view=azure-dotnet
+[EventProcessorHost]: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
 [Event Hubs overview]: event-hubs-about.md
 [Event Hubs Programming Guide]: event-hubs-programming-guide.md
 [Azure Storage account]:../storage/common/storage-create-storage-account.md

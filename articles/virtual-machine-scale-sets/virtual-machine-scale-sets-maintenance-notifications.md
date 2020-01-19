@@ -12,15 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/20/2019
-ms.date: 09/23/2019
+ms.date: 01/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 06b4f33494c0abb1ac4f6d93284156a6fa9069be
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.openlocfilehash: e8cf86c004a535e76119e8522388831c8d10c74d
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673570"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116930"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -34,7 +33,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）：
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../azure-monitor/platform/activity-logs-overview.md)，向通知添加收件人和消息发送选项（如电子邮件、短信和 Webhook）。  
+- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../azure-monitor/platform/platform-logs-overview.md)，向通知添加收件人和消息发送选项（如电子邮件、短信和 Webhook）。  
 - 出现通知时会提供自助时段  。 在此窗口（通常为 35 天）内，可以发现此批中包括了哪些 VM。 可以根据自身计划需要，主动启动维护。
 - 自助时段过后，就会开始计划内维护时段。  在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于 VM。 
 
@@ -95,7 +94,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 ## <a name="notification-and-alerts-in-the-portal"></a>门户中的通知和警报
 
-Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建活动日志警报，为此通信添加收件人和通道。 有关详细信息，请参阅[使用 Azure 活动日志监视订阅活动](../azure-monitor/platform/activity-logs-overview.md)。
+Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建活动日志警报，为此通信添加收件人和通道。 有关详细信息，请参阅[使用 Azure 活动日志监视订阅活动](../azure-monitor/platform/platform-logs-overview.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 在左侧菜单中，选择“监视”  。 
@@ -187,7 +186,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **答:** 可用性集或虚拟机规模集中部署的虚拟机使用更新域。 执行维护时，Azure 遵循更新域约束，不会从其他更新域（在同一可用性集中）重新启动 VM。 Azure 还会至少等待 30 分钟，然后才移到下一组 VM。 
 
-有关高可用性的详细信息，请参阅 [Azure 中虚拟机的区域和可用性](../virtual-machines/windows/regions-and-availability.md)。
+有关高可用性的详细信息，请参阅 [Azure 中虚拟机的区域和可用性](../virtual-machines/windows/availability.md)。
 
 **问：如何收到有关计划内维护的通知？**
 
@@ -224,4 +223,4 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 了解如何使用[计划事件](../virtual-machines/windows/scheduled-events.md)从 VM 内注册维护事件。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

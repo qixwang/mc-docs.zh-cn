@@ -5,27 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: quickstart
-ms.date: 01/09/2020
+ms.date: 01/15/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edf22bd46c24e181584de496601a115e0af7e464
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 48a998bb072186a1d75f5e44194304b96b37189a
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776888"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116741"
 ---
 # <a name="quickstart-configure-azure-active-directory-self-service-password-reset"></a>快速入门：配置 Azure Active Directory 自助式密码重置
 
 在本快速入门中，我们将配置 Azure Active Directory (AD) 自助式密码重置 (SSPR)，使用户能够重置其密码或解锁其帐户。 借助 SSPR，用户可以在没有支持人员或管理员帮助的情况下重置自己的凭据。 此功能允许用户重新获得对其帐户的访问权限，而无需等待额外的支持。
 
 > [!IMPORTANT]
-> 本快速入门演示管理员如何启用自助式密码重置。 如果你的 IT 团队尚未启用重置你自己的密码的功能，请联系支持人员以获得更多帮助。
+> 本快速入门演示管理员如何启用自助式密码重置。 如果你是已注册自助式密码重置的最终用户并且需要返回到你的帐户，请转到 https://passwordreset.activedirectory.windowsazure.cn 。
 >
-> 如果 IT 团队已启用密码重置，则可在[针对自助式密码重置注册][register-sspr]后[重置工作或学校密码][reset-password]。 如果尚未针对自助式密码重置注册，请联系支持人员获取更多帮助。
+> 如果你的 IT 团队尚未启用重置自己密码的功能，请联系支持人员以获得更多帮助。
 
 ## <a name="prerequisites"></a>必备条件
 

@@ -11,13 +11,13 @@ metadata:
   ms.author: v-tawe
   manager: nitinme
   origin.date: 11/04/2019
-  ms.date: 12/16/2019
-  ms.openlocfilehash: 759a27bb8b6af8ec3f15df1199226be946430e3b
-  ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+  ms.date: 01/27/2020
+  ms.openlocfilehash: af463d9071fa1e048849e1383a03b88521fda7b8
+  ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75631083"
+  ms.lasthandoff: 01/16/2020
+  ms.locfileid: "76123215"
 highlightedContent:
   items:
   - title: 什么是认知服务？

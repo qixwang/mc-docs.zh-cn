@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 08/14/2019
-ms.date: 09/02/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 1971be6a068f4a4a8611d99c2c072b4eb5e605d8
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: 3f360eaec65fc209c81f078d6be23a0d88b427fd
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131685"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939762"
 ---
 # <a name="generate-and-export-certificates"></a>生成并导出证书
 

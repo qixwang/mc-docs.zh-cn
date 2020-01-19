@@ -12,22 +12,22 @@ origin.date: 10/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5f3ae8da8d334dc8ccdac7adc222fbec5f6a441e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: fde372a81c2a2d827b30a279bcf0244a924b3559
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631685"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123139"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [将源文件上传到 Azure Blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建一个空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -651,7 +651,7 @@ namespace BatchClient
 现在，可以使用语音服务构建应用并测试语音识别。
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. “启动应用” - 在菜单栏中，选择“调试” > “开始调试”，或按 F5     。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

@@ -111,8 +111,10 @@
           href: event-hubs-ip-filtering.md
     - name: 故障排除
       items:
-        - name: 异常
+        - name: 故障排除指南
           href: event-hubs-messaging-exceptions.md
+        - name: 资源管理器异常
+          href: resource-manager-exceptions.md
 - name: 参考
   items:
     - name: Java

@@ -3,25 +3,25 @@ title: 教程 - 添加模板函数
 description: 将模板函数添加到 Azure 资源管理器模板以构造值。
 author: rockboyfor
 origin.date: 10/04/2019
-ms.author: v-yeche
 ms.date: 01/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: ac3cb2f57d203567c7e0b777ad51c028a015a93e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.author: v-yeche
+ms.openlocfilehash: 3c60bf0a723a472770f8096c1954d74924555e03
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631622"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165383"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教程：将模板函数添加到资源管理器模板
 
 本教程介绍如何将[模板函数](template-functions.md)添加到模板。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 建议完成[有关参数的教程](template-tutorial-add-parameters.md)，但这不是必需的。
 
-必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
+必须已安装带有资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
 ## <a name="review-template"></a>审阅模板
 
@@ -159,7 +159,7 @@ az group deployment create \
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 在左侧菜单中选择“资源组”。 
-1. 选择已将内容部署到其中的资源组。
+1. 选择已部署到的资源组。
 1. 可以看到一项存储帐户资源已部署，且其位置与资源组一样。
 
 ## <a name="clean-up-resources"></a>清理资源

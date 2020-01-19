@@ -5,22 +5,20 @@ services: container-service
 author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 29e42cd8bcdb11c64f67489346b3b7a3356e641e
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: e55c98a2527d2f6c47e041c57e8c407a62174b22
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068881"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859853"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 负载均衡器
 
-若要在 Azure Kubernetes 服务 (AKS) 中提供对应用程序的访问权限，可以创建并使用 Azure 负载均衡器。 在 AKS 中运行的负载均衡器可用作内部或外部负载均衡器。 内部负载均衡器使得仅 AKS 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 外部负载均衡器接收入口的一个或多个公共 IP，并使得 Kubernetes 服务可以通过公共 IP 在外部进行访问。
+若要通过 Azure Kubernetes 服务 (AKS) 中 `LoadBalancer` 类型的 Kubernetes 服务提供对应用程序的访问权限，可以使用 Azure 负载均衡器。 在 AKS 中运行的负载均衡器可用作内部或外部负载均衡器。 内部负载均衡器使得仅 AKS 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 外部负载均衡器接收入口的一个或多个公共 IP，并使得 Kubernetes 服务可以通过公共 IP 在外部进行访问。
 
-Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 默认情况下，使用服务清单在 AKS 上创建负载均衡器时，将使用基本  SKU。 使用标准 SKU 负载均衡器可提供其他特性和功能，例如更大的后端池和可用性区域。  在选择使用标准或基本负载均衡器之前，必须了解两者之间的差异。   创建 AKS 群集后，无法更改该群集的负载均衡器 SKU。 有关基本和标准 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU 的比较][azure-lb-comparison]。  
-
-本文介绍如何在 Azure Kubernetes 服务 (AKS) 中创建和使用标准 SKU Azure 负载均衡器。 
+Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 默认情况下，创建 AKS 群集时将使用标准 SKU。  使用标准 SKU 负载均衡器可提供其他特性和功能，例如更大的后端池和可用性区域。  在选择使用标准或基本负载均衡器之前，必须了解两者之间的差异。   创建 AKS 群集后，无法更改该群集的负载均衡器 SKU。 有关基本和标准 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU 的比较][azure-lb-comparison]。  
 
 本文假设读者基本了解 Kubernetes 和 Azure 负载均衡器的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]和[什么是 Azure 负载均衡器？][azure-lb]。
 
@@ -32,9 +30,17 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 �
 
 ## <a name="before-you-begin"></a>准备阶段
 
-如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 通常，将“网络参与者”  角色分配给委派资源上的服务主体。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
+本文假设已有一个 AKS 群集，其中包含标准 SKU Azure 负载均衡器。  如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-必须创建一个 AKS 群集，以将负载均衡器的 SKU 设置为“标准”而不是默认的“基本”。  
+如果使用现有子网或资源组，则 AKS 群集服务主体还需要有权管理网络资源。 通常，将“网络参与者”  角色分配给委派资源上的服务主体。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
+
+### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>从基本 SKU 负载均衡器转移到标准 SKU
+
+如果现有的群集包含基本 SKU 负载均衡器，则在进行迁移以使用包含标准 SKU 负载均衡器的群集时，需要注意一些重要的行为差异。
+
+例如，假设只能在创建群集时定义群集的 `load-balancer-sku` 类型，则通过蓝/绿部署迁移群集是常用的做法。 但是，基本 SKU 负载均衡器使用基本 SKU IP 地址，而这些地址与标准 SKU 负载均衡器不兼容，因为这些负载均衡器需要标准 SKU IP 地址。     在迁移群集以升级负载均衡器 SKU 时，需要提供一个具有兼容 IP 地址 SKU 的新 IP 地址。
+
+有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](acs-aks-migration.md)，以查看迁移时要考虑的重要主题列表。 以下限制也是在 AKS 中使用标准 SKU 负载均衡器时要注意的重要行为差异。
 
 ### <a name="limitations"></a>限制
 
@@ -43,229 +49,21 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 �
 * 至少需要指定一个公共 IP 或 IP 前缀来允许 AKS 群集的出口流量。 此外，需要使用公共 IP 或 IP 前缀来保持控制平面与代理节点之间的连接，以及保持与旧版 AKS 的兼容性。 可以使用以下选项指定标准 SKU 负载均衡器的公共 IP 或 IP 前缀： 
     * 提供自己的公共 IP。
     * 提供自己的公共 IP 前缀。
-    * 指定最大为 100 的数字，以允许 AKS 群集在其所在的同一个资源组（名称通常以 *MC_* 开头）中创建多个标准 SKU 公共 IP。  AKS 会将公共 IP 分配到标准 SKU 负载均衡器。  默认情况下，如果未指定公共 IP、公共 IP 前缀或 IP 数目，系统会在 AKS 群集所在的同一个资源组中自动创建一个公共 IP。 此外，必须允许公共地址，并避免创建任何会阻止创建 IP 的 Azure 策略。
-* 对负载均衡器使用标准 SKU时，必须使用 Kubernetes 1.13 或更高版本。 
+    * 指定最大为 100 的数字，以允许 AKS 群集在其所在的同一个资源组（名称通常以 *MC_* 开头）中创建多个标准 SKU 公共 IP。  AKS 会将公共 IP 分配到标准 SKU 负载均衡器。  默认情况下，如果未指定公共 IP、公共 IP 前缀或 IP 数目，系统会在 AKS 群集所在的同一个资源组中自动创建一个公共 IP。 此外，必须允许公共地址，并避免创建任何会阻止创建 IP 的 Azure Policy。
+* 对负载均衡器使用标准 SKU 时，必须使用 Kubernetes 1.13 或更高版本。  
 * 只能在创建 AKS 群集时定义负载均衡器 SKU。 创建 AKS 群集后，无法更改负载均衡器 SKU。
-* 在一个群集中只能使用一个负载均衡器 SKU。
+* 在一个群集中只能使用一种类型的负载均衡器 SKU（基本或标准）。
+* 标准 SKU 负载均衡器仅支持标准 SKU IP 地址。  
 
-## <a name="create-a-resource-group"></a>创建资源组
+## <a name="use-the-standard-sku-load-balancer"></a>使用标准 SKU 负载均衡器 
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
+如果创建 AKS 群集，默认情况下，在该群集中运行服务时将使用标准 SKU 负载均衡器。  例如，[使用 Azure CLI 的快速入门][aks-quickstart-cli]部署的是使用标准 SKU 负载均衡器的示例应用程序。  
 
-以下示例在“chinaeast2”  位置创建名为“myResourceGroup”  的资源组。
+## <a name="configure-the-load-balancer-to-be-internal"></a>将负载均衡器配置为内部负载均衡器
 
-```azurecli
-az group create --name myResourceGroup --location chinaeast2
-```
+还可将负载均衡器配置为内部负载均衡器且不公开公共 IP。 若要将负载均衡器配置为内部负载均衡器，请添加 `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` 作为 *LoadBalancer* 服务的注释。 可在[此处][internal-lb-yaml]查看示例 YAML 清单，以及有关内部负载均衡器的更多详细信息。
 
-以下示例输出显示已成功创建资源组：
-
-```json
-{
-  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
-  "location": "chinaeast2",
-  "managedBy": null,
-  "name": "myResourceGroup",
-  "properties": {
-    "provisioningState": "Succeeded"
-  },
-  "tags": null,
-  "type": null
-}
-```
-
-## <a name="create-aks-cluster"></a>创建 AKS 群集
-若要运行支持标准 SKU 负载均衡器的 AKS 群集，该群集需将 *load-balancer-sku* 参数设置为 *standard*。  创建群集时，此参数将创建使用标准 SKU 的负载均衡器。  在群集上运行 *LoadBalancer* 服务时，将使用该服务的配置更新标准 SKU 负载均衡器的配置。  使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
-
-> [!NOTE]
-> 只能在创建群集时使用 *load-balancer-sku* 属性。 创建 AKS 群集后，无法更改负载均衡器 SKU。 此外，在一个群集中只能使用一种类型的负载均衡器 SKU。
-> 
-> 若要使用自己的公共 IP，请使用 *load-balancer-outbound-ips* 或 *load-balancer-outbound-ip-prefixes* 参数。 也可以在[更新群集](#optional---provide-your-own-public-ips-or-prefixes-for-egress)时使用这两个参数。
-
-```azurecli
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys \
-    --vm-set-type AvailabilitySet
-```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
-
-片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。
-
-## <a name="connect-to-the-cluster"></a>连接至群集
-
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
-
-<!--MOONCAKE: Not Avaiable on If you use Azure Local Shell, `kubectl` is already installed.-->
-
-```azurecli
-az aks install-cli
-```
-
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
-
-```azurecli
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
-
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
-
-```azurecli
-kubectl get nodes
-```
-
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
-
-```
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.10
-```
-
-## <a name="verify-your-cluster-uses-the-standard-sku"></a>验证群集是否使用标准 SKU 
-
-使用 [az aks show][az-aks-show] 显示群集的配置。
-
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster
-
-{
-  "aadProfile": null,
-  "addonProfiles": null,
-   ...
-   "networkProfile": {
-    "dnsServiceIp": "10.0.0.10",
-    "dockerBridgeCidr": "172.17.0.1/16",
-    "loadBalancerSku": "standard",
-    ...
-```
-
-验证 *loadBalancerSku* 属性是否显示为 *standard*。
-
-## <a name="use-the-load-balancer"></a>使用负载均衡器
-
-若要在群集上使用负载均衡器，请创建包含服务类型 *LoadBalancer* 的服务清单。 若要显示负载均衡器的工作状况，请创建另一个清单并在其中包含要在群集上运行的示例应用程序。 此示例应用程序将通过负载均衡器公开，并可通过浏览器查看。
-
-创建名为 `sample.yaml` 的清单，如以下示例所示：
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-back
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
-  template:
-    metadata:
-      labels:
-        app: azure-vote-back
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-back
-        image: redis
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 6379
-          name: redis
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-back
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: azure-vote-back
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-front
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
-  template:
-    metadata:
-      labels:
-        app: azure-vote-front
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-front
-        image: dockerhub.azk8s.cn/microsoft/azure-vote-front:v1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-        env:
-        - name: REDIS
-          value: "azure-vote-back"
-```
-
-以上清单配置两个部署：*azure-vote-front* 和 *azure-vote-back*。 若要将 *azure-vote-front* 部署配置为使用负载均衡器公开，请创建名为 `standard-lb.yaml` 的清单，如以下示例所示：
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-front
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-vote-front
-```
-
-服务 *azure-vote-front* 使用 *LoadBalancer* 类型在 AKS 群集上配置负载均衡器，以连接到 *azure-vote-front* 部署。
-
-使用 [kubectl apply][kubectl-apply] 部署示例应用程序和负载均衡器，并指定 YAML 清单的名称：
-
-```console
-kubectl apply -f sample.yaml
-kubectl apply -f standard-lb.yaml
-```
-
-标准 SKU 负载均衡器现已配置为公开示例应用程序。  使用 [kubectl get][kubectl-get] 查看 *azure-vote-front* 的服务详细信息，以查看负载均衡器的公共 IP。 负载均衡器的公共 IP 地址显示在 *EXTERNAL-IP* 列中。 可能需要一两分钟，IP 地址才会从 *\<pending\>* 更改为实际的外部 IP 地址，如以下示例所示：
-
-```
-$ kubectl get service azure-vote-front
-
-NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
-```
-
-在浏览器中导航到公共 IP，并验证是否能够看到示例应用程序。 在以上示例中，公共 IP 为 `52.179.23.131`。
-
-![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
-
-> [!NOTE]
-> 还可将负载均衡器配置为内部负载均衡器且不公开公共 IP。 若要将负载均衡器配置为内部负载均衡器，请添加 `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` 作为 *LoadBalancer* 服务的注释。 可在[此处][internal-lb-yaml]查看示例 YAML 清单，以及有关内部负载均衡器的更多详细信息。
-
-## <a name="optional---scale-the-number-of-managed-public-ips"></a>可选 - 调整托管公共 IP 的数量
+## <a name="scale-the-number-of-managed-public-ips"></a>调整托管公共 IP 的数量
 
 结合默认创建的托管出站公共 IP 使用标准 SKU 负载均衡器时，可以使用 *load-balancer-managed-ip-count* 参数来调整托管出站公共 IP 的数量。 
 
@@ -282,7 +80,7 @@ az aks update \
 
 还可以在创建群集时，通过追加 `--load-balancer-managed-outbound-ip-count` 参数并将其设置为所需的值，使用 *load-balancer-managed-ip-count* 参数来设置托管出站公共 IP 的初始数量。 托管出站公共 IP 的默认数量为 1。
 
-## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>可选 - 提供自己的出口公共 IP 或前缀
+## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>提供自己的出口公共 IP 或前缀
 
 使用标准 SKU 负载均衡器时，AKS 群集将自动在为它创建的同一个资源组中创建公共 IP，并将该公共 IP 分配给标准 SKU 负载均衡器。   或者，可以在创建群集时分配自己的公共 IP，或更新现有群集的负载均衡器属性。
 
@@ -340,42 +138,75 @@ az aks update \
 
 结合 *load-balancer-outbound-ips* 参数使用 *az aks create* 命令可在启动时使用你的公共 IP 创建新的群集。
 
-```
+```azurecli
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
     --node-count 1 \
     --load-balancer-sku standard \
     --generate-ssh-keys \
-    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2> \
-    --vm-set-type AvailabilitySet
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
+<!--Not Available on --vm-set-type AvailabilitySet-->
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 结合 *load-balancer-outbound-ip-prefixes* 参数使用 *az aks create* 命令可在启动时使用你的公共 IP 前缀创建新的群集。
 
-```
+```azurecli
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
     --node-count 1 \
     --load-balancer-sku standard \
     --generate-ssh-keys \
-    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2> \
-    --vm-set-type AvailabilitySet
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
+<!--Not Available on --vm-set-type AvailabilitySet-->
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
-## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>清理标准 SKU 负载均衡器配置
+## <a name="show-the-outbound-rule-for-your-load-balancer"></a>显示负载均衡器的出站规则
 
-若要删除示例应用程序和负载均衡器配置，请使用 [kubectl delete][kubectl-delete]：
+若要显示负载均衡器中创建的出站规则，请使用 [az network lb outbound-rule list][az-network-lb-outbound-rule-list] 并指定 AKS 群集的节点资源组：
+
+```azurecli
+NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
+```
+
+上述命令将列出负载均衡器的出站规则，例如：
 
 ```console
-kubectl delete -f sample.yaml
-kubectl delete -f standard-lb.yaml
+AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
+------------------------ ----------------  ---------------------- ---------------  ---------- -------------------  -------------
+0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_chinaeast2  
 ```
+
+在示例输出中，*AllocatedOutboundPorts* 为 0。 *AllocatedOutboundPorts* 的值表示 SNAT 端口分配将根据后端池大小还原为自动分配。 有关更多详细信息，请参阅[负载均衡器出站规则][azure-lb-outbound-rules]和 [Azure 中的出站连接][azure-lb-outbound-connections]。
+
+## <a name="restrict-access-to-specific-ip-ranges"></a>仅限特定的 IP 范围进行访问
+
+默认情况下，与负载均衡器的虚拟网络关联的网络安全组 (NSG) 包含一个允许所有入站外部流量的规则。 可以更新此规则，以便仅允许来自特定 IP 范围的入站流量。 以下清单使用 *loadBalancerSourceRanges* 来指定允许其发送入站外部流量的新 IP 范围：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+以上示例将更新规则，以便仅允许来自 *MY_EXTERNAL_IP_RANGE* 范围的入站外部流量。 [Kubernetes 文档][kubernetes-cloud-provider-firewall]中提供了有关使用此方法限制负载均衡器服务访问权限的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -384,6 +215,7 @@ kubectl delete -f standard-lb.yaml
 <!-- LINKS - External -->
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -407,11 +239,14 @@ kubectl delete -f standard-lb.yaml
 [az-feature-register]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-register
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
 [az-provider-register]: https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-register
+[az-network-lb-outbound-rule-list]: https://docs.azure.cn/cli/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
 [az-network-public-ip-show]: https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
 [az-network-public-ip-prefix-show]: https://docs.azure.cn/cli/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
@@ -419,5 +254,4 @@ kubectl delete -f standard-lb.yaml
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
 
-<!--Update_Description: new articles on load balancer standard -->
-<!--ms.date: 10/17/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

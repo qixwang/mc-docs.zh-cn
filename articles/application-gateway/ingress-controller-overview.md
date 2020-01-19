@@ -5,15 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 42c7f7aad6a994ee25f4b29e168d075b90583254
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 7b1fe6f418e266a382b8109891e2b22eaca8d8a8
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328445"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116920"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>什么是应用程序网关入口控制器？
 应用程序网关入口控制器 (AGIC) 是一个 Kubernetes 应用程序。有了它，[Azure Kubernetes 服务 (AKS)](https://www.azure.cn/home/features/kubernetes-service/) 客户就可以利用 Azure 的本机[应用程序网关](https://www.azure.cn/home/features/application-gateway/) L7 负载均衡器向 Internet 公开云软件。 AGIC 监视托管时所在的 Kubernetes 群集并持续更新应用程序网关，以便向 Internet 公开所选服务。
@@ -29,7 +28,7 @@ ms.locfileid: "74328445"
 
 ![Azure 应用程序网关 + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC 通过 Kubernetes [入口资源](http://kubernetes.io/docs/user-guide/ingress/)以及服务和部署/Pod 进行配置。 它提供许多功能，利用 Azure 的本机应用程序网关 L7 负载均衡器。 例如：
+AGIC 通过 Kubernetes [入口资源](https://kubernetes.io/docs/user-guide/ingress/)以及服务和部署/Pod 进行配置。 它提供许多功能，利用 Azure 的本机应用程序网关 L7 负载均衡器。 例如：
   - URL 路由
   - 基于 Cookie 的相关性
   - SSL 终止
@@ -45,3 +44,4 @@ AGIC 能够处理多个命名空间并有 ProhibitedTargets，这意味着 AGIC 
 - [ **“棕色地带”部署**](ingress-controller-install-existing.md)：在现有的 AKS 和应用程序网关上安装 AGIC。
 
 
+<!-- Update_Description: link update -->

@@ -9,12 +9,12 @@ origin.date: 05/06/2019
 ms.date: 12/16/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0cd62798010935620d611ba06a13e832e433d494
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 89f7d82cdcf875103ec25f54ad703cca2e5345f1
+ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467314"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020990"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
@@ -227,18 +227,18 @@ ms.locfileid: "75467314"
 
 是的。 根据映像的类型，可能存在 3 种场景。
 
- 方案 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
+ 应用场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
 
- 方案 2：如果你有非托管的映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
+ 应用场景 2：如果你有非托管的映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
 
- 方案 3：如果本地文件系统中包含 VHD，则需要将 VHD 上传到托管映像，然后可以从该映像创建映像定义和映像版本。
+ 应用场景 3：如果本地文件系统中包含 VHD，则需要将 VHD 上传到托管映像，然后可以从该映像创建映像定义和映像版本。
 
 - 如果 VHD 适用于 Windows VM，请参阅[上传 VHD](/virtual-machines/windows/upload-generalized-managed)。
 - 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户（[Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用化映像创建 VM。 预览版不提供 PowerShell 支持。
+是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户（[Windows](../articles/virtual-machines/windows/shared-images-portal.md) 或 [Linux](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用化映像创建 VM。 预览版不提供 PowerShell 支持。
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可将它移到其他订阅？
 

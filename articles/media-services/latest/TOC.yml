@@ -5,6 +5,7 @@
     - name: 关于媒体服务
       href: media-services-overview.md
     - name: 媒体服务中的新增功能
+      displayName: release notes
       href: release-notes.md
 - name: 教程
   expanded: true
@@ -147,7 +148,7 @@
       items:
         - name: 概述
           href: media-services-apis-overview.md
-          displayName: 'accessing, long-running, invalid character, name, naming, file name'
+          displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 对实体进行分页、筛选、排序
           href: entities-overview.md
         - name: RBAC
@@ -271,7 +272,7 @@
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Azure CLI
-      href: /cli/ams?view=azure-cli-latest
+      href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK
       items:
         - name: .NET
@@ -301,7 +302,7 @@
     - name: SDK/工具
       items:
         - name: Azure CLI
-          href: /cli/install-azure-cli?view=azure-cli-latest
+          href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
         - name: Java

@@ -108,6 +108,8 @@
           maintainContext: true
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
+        - name: 使用多个节点池
+          href: use-multiple-node-pools.md
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
     - name: 配置数据卷
@@ -177,6 +179,8 @@
           maintainContext: true
         - name: 轮换证书
           href: certificate-rotation.md
+        - name: 为磁盘使用 BYOK
+          href: azure-disk-customer-managed-keys.md
     - name: 监视和日志记录
       items:
         - name: 用于容器的 Azure Monitor

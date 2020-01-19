@@ -3,15 +3,15 @@ title: 部署模板 - Azure 门户
 description: 了解如何使用 Azure 门户创建第一个 Azure 资源管理器模板，以及如何部署该模板。
 author: rockboyfor
 origin.date: 06/12/2019
-ms.date: 01/06/2020
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.author: v-yeche
-ms.openlocfilehash: 6aa4378c40bd957a7a6bc1687c39c949a8bf999e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: c1738784c0c156b3d8616cdafcbe20696e0bc807
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631541"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165477"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
@@ -33,14 +33,14 @@ ms.locfileid: "75631541"
 需要有经验的模板开发人员在尝试部署不熟悉的 Azure 资源时，会使用此方法来生成模板。 有关使用门户导出模板的更多信息，请参阅[将资源组导出到模板](../management/manage-resource-groups-portal.md#export-resource-groups-to-templates)。 查找工作模板的另一种方法是 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)。
 
 1. 在 Web 浏览器中转到 [Azure 门户](https://portal.azure.cn)，然后登录。
-2. 在 Azure 门户菜单中，选择“创建资源”  。
+1. 在 Azure 门户菜单中，选择“创建资源”  。
 
     ![在 Azure 门户菜单中，选择“创建资源”](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-3. 选择“存储” > “存储帐户”   。
+1. 选择“存储” > “存储帐户”   。
 
     ![创建 Azure 存储帐户](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-4. 输入以下信息：
+1. 输入以下信息：
 
     |名称|Value|
     |----|----|
@@ -56,8 +56,8 @@ ms.locfileid: "75631541"
     > [!NOTE]
     > 某些导出的模板需要经过一些编辑才能部署。
 
-5. 在屏幕底部选择“查看 + 创建”。  请勿在下一步中选择“创建”  。
-6. 在屏幕底部选择“下载自动化模板”。  门户显示生成的模板：
+1. 在屏幕底部选择“查看 + 创建”。  请勿在下一步中选择“创建”  。
+1. 在屏幕底部选择“下载自动化模板”。  门户显示生成的模板：
 
     ![通过门户生成模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
@@ -66,9 +66,9 @@ ms.locfileid: "75631541"
     定义了六个参数。 其中一个名为 **storageAccountName**。 在上一屏幕截图中，第二个突出显示的部分显示如何在模板中引用此参数。 在下一部分，请编辑此模板，以便将生成的名称用于存储帐户。
 
     在模板中定义了一个 Azure 资源。 类型为 `Microsoft.Storage/storageAccounts`。 查看资源定义方式和定义结构。
-7. 在屏幕顶部选择“下载”  。
-8. 打开下载的 zip 文件，然后将“template.json”保存到计算机  。 在下一部分，请使用模板部署工具来编辑此模板。
-9. 选择“参数”选项卡，查看为参数提供的值。  部署模板时，请写下这些值，下一部分需要它们。
+1. 在屏幕顶部选择“下载”  。
+1. 打开下载的 zip 文件，然后将“template.json”保存到计算机  。 在下一部分，请使用模板部署工具来编辑此模板。
+1. 选择“参数”选项卡，查看为参数提供的值。  部署模板时，请写下这些值，下一部分需要它们。
 
     ![通过门户生成模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
@@ -84,14 +84,14 @@ ms.locfileid: "75631541"
 Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存在的存储帐户名，则部署可能失败。 若要避免此问题，可以修改模板，以便使用模板函数调用 `uniquestring()`，以生成唯一的存储帐户名。
 
 1. 从 Azure 门户菜单或“主页”页面，选择“创建资源”   。
-2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
-3. 选择“模板部署”。 
+1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
+1. 选择“模板部署”  。
 
     ![Azure 资源管理器模板库](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
-4. 选择“创建”  。
-5. 选择“在编辑器中生成自己的模板”  。
-6. 选择“加载文件”，  然后按说明加载在上部分下载的 template.json。
-7. 对模板进行以下三处更改：
+1. 选择“创建”  。
+1. 选择“在编辑器中生成自己的模板”  。
+1. 选择“加载文件”，  然后按说明加载在上部分下载的 template.json。
+1. 对模板进行以下三处更改：
 
     ![Azure Resource Manager 模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
@@ -156,8 +156,8 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
            "outputs": {}
         }
         ```
-8. 选择“保存”  。
-9. 输入以下值：
+1. 选择“保存”  。
+1. 输入以下值：
 
     |名称|Value|
     |----|----|
@@ -173,12 +173,12 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 
     ![Azure 资源管理器模板部署](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-deploy.png)
 
-10. 选择“购买”。 
-11. 选择屏幕顶部的铃铛图标（通知）可查看部署状态。 此时会看到“部署正在进行”。  等待部署完成。
+1. 选择“购买”。 
+1. 选择屏幕顶部的铃铛图标（通知）可查看部署状态。 此时会看到“部署正在进行”。  等待部署完成。
 
     ![Azure 资源管理器模板部署通知](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
 
-12. 从通知窗格选择“转到资源组”  。 将看到类似于以下的屏幕：
+1. 从通知窗格选择“转到资源组”  。 将看到类似于以下的屏幕：
 
     ![Azure 资源管理器模板部署资源组](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
@@ -189,9 +189,9 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
-3. 选择资源组名称。  应会看到资源组中的存储帐户。
-4. 在顶部菜单中选择“删除资源组”。 
+1. 在“按名称筛选”字段中输入资源组名称。 
+1. 选择资源组名称。  应会看到资源组中的存储帐户。
+1. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

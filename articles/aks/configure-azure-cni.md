@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 27b0e07f6e43e37144996202fd5aabf2814b0f10
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: bb317490085d4941750c152f9039c4beb68cbc01
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859878"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165452"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -98,7 +98,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认  最�
 
 创建 AKS 群集时，可为 Azure CNI 网络配置以下参数：
 
-**虚拟网络**：要将 Kubernetes 群集部署到的虚拟网络。 要为群集创建新的虚拟网络，请选择“新建”，并按照“创建虚拟网络”部分中的步骤操作   。 有关 Azure 虚拟网络的限制和配额的信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)。
+**虚拟网络**：要将 Kubernetes 群集部署到的虚拟网络。 要为群集创建新的虚拟网络，请选择“新建”，并按照“创建虚拟网络”部分中的步骤操作   。 有关 Azure 虚拟网络的限制和配额的信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)。
 
 **子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作   。 对于混合连接，地址范围不应与环境中的其他任何虚拟网络重叠。
 
@@ -143,9 +143,6 @@ az aks create \
     --service-cidr 10.2.0.0/24 \
     --generate-ssh-keys
 ```
-
-<!--MOONCAKE: --vm-set-type AvailabilitySet -->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 ## <a name="configure-networking---portal"></a>配置网络 - 门户
 

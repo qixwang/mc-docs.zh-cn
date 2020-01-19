@@ -9,14 +9,14 @@ ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 10/18/2018
-ms.date: 10/17/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7fae5c65d380344c5996193ad170f3865ed66adf
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: ed50861727ac4969e650dc463e66ec9e497e84c8
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838917"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123354"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure 后端连接功能中的互操作性：控制平面分析
 

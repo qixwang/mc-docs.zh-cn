@@ -13,14 +13,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/05/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 06bab838f6d526dfe1257b9da357bb4077fbea80
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: bf25d379ad7919686328e0a1f37b9a5b11e4e30c
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859707"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964914"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -94,7 +94,7 @@ Azure 负载均衡器在开放式系统互连 (OSI) 模型的第四层上运行�
 
 *图：使用公共负载均衡器对 Web 流量进行均衡*
 
-Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共 IP 地址。 Azure 负载均衡器在负载平衡集内的三个 VM 之间分配请求。 有关负载均衡器算法的详细信息，请参阅[负载均衡器的概念](load-balancer-overview.md##load-balancer-concepts)。
+Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共 IP 地址。 Azure 负载均衡器在负载平衡集内的三个 VM 之间分配请求。 有关负载均衡器算法的详细信息，请参阅[负载均衡器的概念](load-balancer-overview.md#load-balancer-concepts)。
 
 默认情况下，Azure 负载均衡器在多个 VM 实例之间平均分发网络流量。 还可以配置会话关联。 有关详细信息，请参阅[配置 Azure 负载均衡器的分配模式](load-balancer-distribution-mode.md)。
 

@@ -1,19 +1,16 @@
 ---
 title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/25/2019
-ms.date: 12/16/2019
+ms.date: 01/17/2020
 ms.topic: quickstart
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: cfcb21cff9e1e0ec700eb29752b7b302faf73e81
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0da9027f946ef8b388a20483242f89932d5a58ed
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335935"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123151"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -22,7 +19,7 @@ ms.locfileid: "75335935"
 
 此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 

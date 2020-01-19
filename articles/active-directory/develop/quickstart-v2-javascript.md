@@ -1,35 +1,30 @@
 ---
-title: 在 JavaScript SPA 中登录用户并获得访问令牌 | Azure
+title: 在 JavaScript 单页应用中登录用户 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 JavaScript 应用程序如何使用 Microsoft 标识平台调用需要访问令牌的 API。
+description: 了解 JavaScript 应用如何使用 Microsoft 标识平台调用需要访问令牌的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/11/2019
-ms.date: 11/07/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256e621d312c283f890e1797db723b9a6c074f19
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 319729fc6040c7d8930837ba54482d7cd5dcc4a7
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830942"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116790"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
 在本快速入门中，你将使用代码示例了解 JavaScript 单页应用程序 (SPA) 如何登录工作帐户和学校帐户的用户。 JavaScript SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [创建免费帐户](https://www.azure.cn/pricing/1rmb-trial)
 * [Node.js](https://nodejs.org/en/download/)。
@@ -60,7 +55,7 @@ ms.locfileid: "73830942"
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。  
 > 1. 在“重定向 URI”部分的下拉列表中，选择“Web”平台，然后将值设置为 `http://localhost:30662/`。  
 > 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
-> 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。 
+> 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”  。
 > 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框。     由于此应用需要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 > 1. 在窗格顶部，选择“保存”  。
 
@@ -94,7 +89,7 @@ var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
         authority: "https://login.partner.microsoftonline.cn/Enter_the_Tenant_info_here",
-        redirectURI: "http://localhost:30662/"
+        redirectUri: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -112,7 +107,7 @@ var msalConfig = {
 >
 > 其中：
 > - *\<Enter_the_Application_Id_here>* 是已注册的应用程序的“应用程序(客户端) ID”  。
-> - *\<Enter_the_Tenant_info_here >* 设置为以下选项之一：
+> - *\<Enter_the_Tenant_info_here>* 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”  ，请将此值替换为“租户 ID”  或“租户名称”  （例如，*contoso.microsoft.com*）。
 >    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**  。
 >
@@ -141,7 +136,7 @@ var msalConfig = {
 
 ## <a name="more-information"></a>详细信息
 
-### <a name="how-the-sample-works"></a>此示例的工作原理
+### <a name="how-the-sample-works"></a>示例工作原理
 
 ![本快速入门中的示例应用的工作原理](./media/quickstart-v2-javascript/javascriptspa-intro.svg)
 

@@ -3,16 +3,16 @@ title: Azure Functions SignalR 服务绑定
 description: 了解如何将 Azure Functions 与 SignalR 服务绑定配合使用。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: e6917bb14189e8cd84fafb253951b1b34d766e26
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: fc74ec8eab0bfff54b1a8c1754098776842a6e14
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624282"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116901"
 ---
-# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR 服务绑定
+# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
 
 本文介绍如何使用 Azure Functions 中的 SignalR 服务绑定进行身份验证，并向连接到 [Azure SignalR 服务](https://www.azure.cn/home/features/signalr-service/)的客户端发送实时消息。 Azure Functions 支持 SignalR 服务的输入和输出绑定。
 
@@ -20,7 +20,7 @@ ms.locfileid: "75624282"
 
 ## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-[Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) Nuget 包 1.* 版本中提供了 SignalR 服务绑定。 [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet 包 1.* 版本中提供了 SignalR 服务绑定。 [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
@@ -142,7 +142,7 @@ public SignalRConnectionInfo negotiate(
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `UserId` 属性设置为任一标头中的值。
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `UserId` 属性设置为任一标头中的值。
 
 ```cs
 [FunctionName("negotiate")]
@@ -159,7 +159,7 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
 示例 function.json：
 
@@ -190,7 +190,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
 示例 function.json：
 
@@ -218,7 +218,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
 ```java
 @FunctionName("negotiate")

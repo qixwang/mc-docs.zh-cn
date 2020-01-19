@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 中的函数链 - Azure
 description: 了解如何运行执行一系列函数的 Durable Functions 示例。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 12/07/2018
-ms.date: 11/18/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: c081e8612d6cb570bc8106a5cf65433930c9831f
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 90e345eab19a18b6bb29e4b86edb0430204e12c7
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178983"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116907"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -146,7 +141,7 @@ public static string Run(string name)
 
 此函数具有 `DurableActivityContext` 类型的参数，该参数可用于获取由业务流程协调程序函数对 `CallActivityAsync<T>` 的调用传递给它的输入。
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 ```JavaScript
 module.exports = function(context) {
@@ -203,7 +198,7 @@ Content-Type: application/json; charset=utf-8
 
 查看函数执行日志。 由于[业务流程可靠性](durable-functions-orchestrations.md#reliability)主题中所述的重播行为，`E1_HelloSequence` 函数已多次启动和完成。 另一方面，由于未重播这些函数执行，因此只执行三次 `E1_SayHello`。
 
-## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
+## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
 
 下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 

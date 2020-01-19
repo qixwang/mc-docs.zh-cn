@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 01/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 234fba6408087b5867bae8bf3ec07abb45a2b97a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: b735edcdb81e490ef2492652782392dc802dde6a
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623580"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116733"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -24,7 +24,7 @@ OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权*协议，将其用作*身份验证*协议。 使用此身份验证协议可以执行单一登录。 它引入了 ID 令牌的概念，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。 
 
-因为 OpenID Connect 扩展了 OAuth 2.0，因此，它还能使应用程序安全地获取访问令牌  。 可以使用 access_token 访问由[授权服务器](active-directory-b2c-reference-protocols.md)保护的资源。 如果要生成的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。 如果要使用 Azure AD B2C 向移动或桌面应用程序添加标识管理，则应使用 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)，而不是 OpenID Connect。 有关令牌的详细信息，请参阅 [Azure Active Directory B2C 中的令牌概述](active-directory-b2c-reference-tokens.md)
+因为 OpenID Connect 扩展了 OAuth 2.0，因此，它还能使应用程序安全地获取访问令牌  。 可以使用 access_token 访问由[授权服务器](active-directory-b2c-reference-protocols.md)保护的资源。 如果要生成的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。 有关令牌的详细信息，请参阅 [Azure Active Directory B2C 中的令牌概述](active-directory-b2c-reference-tokens.md)
 
 Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了简单的身份验证和授权。 它引入了[用户流参数](active-directory-b2c-reference-policies.md)，可让你使用 OpenID Connect 向应用程序添加注册、登录和配置文件管理等用户体验。
 

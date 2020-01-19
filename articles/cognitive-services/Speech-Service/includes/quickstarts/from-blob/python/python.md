@@ -12,19 +12,19 @@ origin.date: 10/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 830cad9cd0445127315ac02fed32c61e87f66e2f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 44efa7449e769ea760a80cc33e1c8ee0868e95a3
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631679"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123141"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [将源文件上传到 Azure Blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md)
 > * [创建空示例项目](../../../../quickstarts/create-project.md)
@@ -37,7 +37,7 @@ ms.locfileid: "75631679"
 
 1. 转到  https://editor.swagger.io 。
 1. 单击“文件”，然后单击“导入 URL”   。
-1. 输入 swagger URL，包括语音服务订阅的区域：`https://<your-region>.cris.azure.cn/docs/v2.0/swagger`。
+1. 输入 Swagger URL，包括语音服务订阅的区域：`https://<your-region>.cris.azure.cn/docs/v2.0/swagger`。
 1. 单击“生成客户端”，然后选择“Python”   。
 1. 保存客户端库。
 1. 将下载的 python-client-generated.zip 提取到文件系统中的某个位置。
@@ -81,7 +81,7 @@ import swagger_client as cris_client
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format="%(message)s")
 
-# Your subscription key and region for the speech service
+# Your subscription key and region for the Speech service
 SUBSCRIPTION_KEY = "YourSubscriptionKey"
 SERVICE_REGION = "YourServiceRegion"
 
@@ -216,7 +216,7 @@ import swagger_client as cris_client
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format="%(message)s")
 
-# Your subscription key and region for the speech service
+# Your subscription key and region for the Speech service
 SUBSCRIPTION_KEY = "YourSubscriptionKey"
 SERVICE_REGION = "YourServiceRegion"
 

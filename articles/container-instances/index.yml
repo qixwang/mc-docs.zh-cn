@@ -1,0 +1,81 @@
+### YamlMime:Landing
+title: Azure 容器实例文档
+summary: 在托管的无服务器 Azure 环境中按需运行 Docker 容器。 Azure 容器实例是一种解决方案，适用于任何可在独立容器中运行而无需业务流程的方案。 运行事件驱动的应用程序，从容器开发管道快速部署，并运行数据处理和生成作业。
+metadata:
+  title: Azure 容器实例文档 - 按需运行无服务器容器
+  description: Azure 容器实例 (ACI) 用于在托管的无服务器云环境中运行 Docker 容器，不需设置 VM、群集或业务流程协调程序。
+  services: 
+  ms.service: container-instances
+  ms.topic: landing-page
+  ms.collection: collection
+  author: rockboyfor
+  origin.date: 09/25/2019
+  ms.date: 01/15/2020
+  ms.author: v-yeche
+  ms.openlocfilehash: 53d026690dece1463fed144f09fc9690cfaa34ba
+  ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75965112"
+landingContent:
+- title: 关于 Azure 容器实例
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 容器实例？
+      url: container-instances-overview.md
+    - text: 容器组
+      url: container-instances-container-groups.md
+    - text: 常见问题
+      url: container-instances-faq.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 部署容器实例 - CLI
+      url: container-instances-quickstart.md
+    - text: 部署容器实例 - 门户
+      url: container-instances-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: 通过 Azure 容器实例运行 Docker 容器
+      url: /learn/modules/run-docker-with-azure-container-instances/
+- title: 创建多容器组
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署容器组 - YAML
+      url: container-instances-multi-container-yaml.md
+    - text: 部署容器组 - 模板
+      url: container-instances-multi-container-group.md
+- title: 部署方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 连接到虚拟网络
+      url: container-instances-vnet.md
+    - text: 配置重启策略
+      url: container-instances-restart-policy.md
+    - text: 设置环境变量。
+      url: container-instances-environment-variables.md
+- title: 管理容器应用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 停止和启动容器
+      url: container-instances-stop-start.md
+    - text: 更新正在运行的容器
+      url: container-instances-update.md
+    - text: 在容器之间共享数据
+      url: container-instances-volume-emptydir.md
+- title: 与 Azure 集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 从 Azure 容器注册表部署映像
+      url: container-instances-using-azure-container-registry.md
+    - text: 使用托管标识
+      url: container-instances-managed-identity.md
+    - text: 装载 Azure 文件共享
+      url: container-instances-volume-azure-files.md

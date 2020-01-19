@@ -6,15 +6,15 @@ author: WenJason
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-origin.date: 11/13/2019
-ms.date: 12/02/2019
+origin.date: 01/10/2020
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 8c7689fa5f10888c8af0021d833d6e0addc6dbd3
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: d0d4b25e31570f60827bbadd8783ec3191f925b9
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74552986"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939764"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -34,7 +34,7 @@ VPN 网关连接需依赖于多个具有特定设置的资源。 大多数资源
 
 ### <a name="settings"></a>设置
 
-为每个资源选择的设置对于成功创建连接至关重要。 有关 VPN 网关的各个资源和设置的信息，请参阅 [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。 本文包含的信息有助于了解网关类型、网关 SKU、VPN 类型、连接类型、网关子网、本地网关，以及可能需要考虑的其他各项资源设置。
+为每个资源选择的设置对于创建成功的连接至关重要。 有关 VPN 网关的各个资源和设置的信息，请参阅 [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。 本文包含的信息有助于了解网关类型、网关 SKU、VPN 类型、连接类型、网关子网、本地网关，以及可能需要考虑的其他各项资源设置。
 
 ### <a name="tools"></a>部署工具
 
@@ -75,7 +75,7 @@ VPN 网关连接需依赖于多个具有特定设置的资源。 大多数资源
 
 ### <a name="S2S"></a>站点到站点
 
-站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 S2S 连接可用于跨界和混合配置。 S2S 连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。 若要了解如何选择 VPN 设备，请参阅 [VPN 网关常见问题解答 - VPN 设备](vpn-gateway-vpn-faq.md#s2s)。
+站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。 S2S 连接可用于跨界和混合配置。 S2S 连接要求位于本地的 VPN 设备分配有一个公共 IP 地址。 若要了解如何选择 VPN 设备，请参阅 [VPN 网关常见问题解答 - VPN 设备](vpn-gateway-vpn-faq.md#s2s)。
 
 ![Azure VPN 网关站点到站点连接示例](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 
@@ -152,7 +152,7 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 
 ## <a name="faq"></a>常见问题解答
 
-有关 VPN 网关的常见问题，请参阅 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
+有关 VPN 网关的常见问题，请参阅 [VPN 网关常见问题解答](vpn-gateway-vpn-faq.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

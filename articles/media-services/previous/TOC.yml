@@ -50,6 +50,7 @@
 - name: 如何
   items:
     - name: 旧组件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: 从 Azure 媒体编码器迁移
@@ -444,6 +445,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: 平滑流式处理 HEVC
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: 旧组件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: 资源
   items:
     - name: 定价

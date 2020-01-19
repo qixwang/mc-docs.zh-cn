@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: ec40342ff3f9446dad488ed771287fb94970bdb4
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 7ad97983c511d444821e56e500434956d49735d0
+ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742452"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75957107"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限（预览）
 
@@ -111,9 +111,9 @@ ms.locfileid: "75742452"
 
 有关更多详细信息，请参阅[保管库 - 更新访问策略](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。
 
-## <a name="next-steps"></a>后续步骤
-* [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+<!--Not Available on ## Next steps-->
+<!--Not Available on * [Deploy an Azure Service Fabric application with a system-assigned managed identity](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)-->
+<!--Not Available on * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)-->
 
 <!--Update_Description: new articles on how to grant access other resources -->
 <!--new.date: 09/02/2019-->

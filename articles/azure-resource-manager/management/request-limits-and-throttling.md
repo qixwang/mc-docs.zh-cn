@@ -3,15 +3,15 @@ title: 请求限制
 description: 介绍在达到订阅限制后如何对 Azure Resource Manager 请求进行限制。
 ms.topic: conceptual
 origin.date: 10/26/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: b968006d7a29ff312fa6b19581e5226049ee6f5b
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 7f35162b6945bf680acc6dbc175d2bc61f5e03cc
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631292"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165459"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求数
 
@@ -103,7 +103,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ## <a name="retrieving-the-header-values"></a>检索标头值
 
-检索代码或脚本中的这些标头值与检索任何标头值没有什么不同。 
+在代码或脚本中检索这些标头值与检索任何标头值无异。 
 
 例如，在 **C#** 中，可使用以下代码从名为 **response** 的 **HttpWebResponse** 对象中检索标头值：
 
@@ -200,7 +200,7 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ## <a name="next-steps"></a>后续步骤
 
 * 有关完整的 PowerShell 示例，请参阅[查看订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
-* 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)。
+* 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 * 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](async-operations.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

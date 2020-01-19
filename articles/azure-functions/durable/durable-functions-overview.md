@@ -3,15 +3,15 @@ title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 author: cgillum
 ms.topic: overview
-ms.date: 12/31/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 65e08715d2274f3aa233215ac70a68d017e017d4
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 114dcab5b21d28925942e4e303de11f2806b7782
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623669"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116909"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -48,7 +48,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 
 可按以下示例所示使用 Durable Functions 来实现函数链模式。
 
-在此示例中，值 `F1`、`F2`、`F3` 和 `F4` 是函数应用中其他函数的名称。 可以使用一般命令性编码构造来实现控制流。 代码按从上到下的顺序执行。 代码可能涉及现有的语言控制流语义，例如条件语句和循环语句。 可在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
+在此示例中，值 `F1`、`F2``F3` 和 `F4` 是同一函数应用中其他函数的名称。 可以使用一般命令性编码构造来实现控制流。 代码按从上到下的顺序执行。 代码可能涉及现有的语言控制流语义，例如条件语句和循环语句。 可在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -171,7 +171,7 @@ module.exports = df.orchestrator(function*(context) {
 
 异步 HTTP API 模式解决了使用外部客户端协调长时间运行的操作的状态时出现的问题。 实现此模式的一种常用方式是让 HTTP 终结点触发长时间运行的操作。 然后，将客户端重定向到某个状态终结点，客户端可轮询该终结点，以了解操作是何时完成的。
 
-![HTTP API 模式示意图](./media/durable-functions-concepts/async-http-api.png)
+![HTTP API 模式的示意图](./media/durable-functions-concepts/async-http-api.png)
 
 Durable Functions **原生支持**此模式，可以简化甚至消除为了与长时间运行的函数执行进行交互而需要编写的代码。 例如，Durable Functions 快速入门示例（[C#](durable-functions-create-first-csharp.md) 和 [JavaScript](quickstart-js-vscode.md)）演示了可用于启动新业务流程协调程序函数实例的简单 REST 命令。 启动实例后，该扩展会公开 Webhook HTTP API 用于查询业务流程协调程序函数的状态。 
 
@@ -353,7 +353,7 @@ module.exports = df.orchestrator(function*(context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-也可以通过另一个函数使用持久业务流程客户端引发事件：
+也可以在同一函数应用中，使用另一个函数的持久业务流程客户端引发事件：
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

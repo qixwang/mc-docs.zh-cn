@@ -1,19 +1,19 @@
 ---
-title: 使用批量执行程序库在 Azure Cosmos DB 中批量导入和更新数据
+title: Azure Cosmos DB 批量执行程序库概述
 description: 通过批量执行程序库提供的批量导入和批量更新 API 功能，在 Azure Cosmos DB 中执行批量操作。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 09/09/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 7b97a867cc31c8a68db02ca496f6aae68e06877c
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 239ae6277e335661274ba1326260b4f35f4c5729
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254811"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270079"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
 

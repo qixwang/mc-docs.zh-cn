@@ -1,19 +1,16 @@
 ---
 title: 针对资源中的数组属性创作策略
 description: 了解如何使用 Azure Policy 定义规则来处理数组参数和数组语言表达式、评估 [*] 别名，以及追加元素。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/26/2019
-ms.date: 12/16/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 03e63764290d8ba1ef231ab25470601a153fc310
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/17/2020
+ms.topic: how-to
+ms.openlocfilehash: dd302791d3f064fe3663af54d1d7e38682250916
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335808"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123360"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源中的数组属性创作策略
 

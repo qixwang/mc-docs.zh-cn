@@ -5,16 +5,18 @@ author: rockboyfor
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 140029cd6b49bf6337d63b9532af20fc7be45dab
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 9c31d54bf7b3e877335c34fa6dadaa4eccd59ca4
+ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742396"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75957110"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 
-本文档介绍通过 Windows 群集的 Windows Azure 诊断 (WAD) 扩展设置性能计数器集合所需的步骤。 对于 Linux 群集，设置 [Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)来收集节点的性能计数器。 
+本文档介绍通过 Windows 群集的 Windows Azure 诊断 (WAD) 扩展设置性能计数器集合所需的步骤。
+
+<!--Not Available on [Log Analytics agent](service-fabric-diagnostics-oms-agent.md)-->
 
 > [!NOTE]
 > 应针对适用于你的这些步骤在群集上部署 WAD 扩展。 如果还未设置，请查看[使用 Windows Azure 诊断的事件聚合和集合](service-fabric-diagnostics-event-aggregation-wad.md)。  

@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8752299185013ef54e061ae580f64ce219d0dd8d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 39a896fd111b633422e6b27bd73a28f750e1ef77
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630785"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123293"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "75630785"
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始使用语音设备 SDK 之前，需要：
 
@@ -41,9 +41,9 @@ ms.locfileid: "75630785"
 
 <!-- - If you plan to use the Conversation Transcription you must use a [circular microphone device](get-speech-devices-sdk.md) and this feature is currently only available for "en-US" and "zh-CN" in regions, “chinaeast2”. You must have a speech key in one of those regions to use Conversation Transcription. -->
 
-<!-- - If you plan to use the Speech Services to identify intents (or actions) from user utterances, you'll need a [Language Understanding Service (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). -->
+<!-- - If you plan to use the Speech service to identify intents (or actions) from user utterances, you'll need a [Language Understanding Service (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). -->
 
-<!--  You can [create a simple LUIS model](https://docs.azure.cn/cognitive-services/luis/) or use the sample LUIS model, LUIS-example.json. The sample LUIS model is available from the [Speech Devices SDK download site](https://aka.ms/sdsdk-luis). To upload your model's JSON file to the [LUIS portal](https://luis.azure.cn), select **Import new app**, and then select the JSON file. -->
+<!--  You can [create a simple LUIS model](https://docs.azure.cn/cognitive-services/luis/) or use the sample LUIS model, LUIS-example.json. The sample LUIS model is available from the [Speech Devices SDK download site](https://csspeechstorage.blob.core.windows.net/azure-kinect-dk/drop/LUIS-example.json). To upload your model's JSON file to the [LUIS portal](https://luis.azure.cn), select **Import new app**, and then select the JSON file. -->
 
 - 在电脑上安装 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
 

@@ -9,24 +9,24 @@ ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 09/17/2019
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 291ff81f7bd2bb70840d7f6bf166286dd672eb2e
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: d1b798d0f743ca7c7c60da31a4c9c4e498f2699a
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657979"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123348"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>快速入门：使用资源管理器模板设置机密以及从 Azure Key Vault 检索机密
 
 [Azure Key Vault](./key-vault-overview.md) 是为密钥、密码、证书等机密及其他机密提供安全存储的云服务。 本快速入门重点介绍部署资源管理器模板用于创建 Key Vault 和机密的过程。
 
-[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以声明要部署的内容，而不需要编写一系列编程命令来进行创建。 若要详细了解如何开发资源管理器模板，请参阅[资源管理器文档](/azure-resource-manager/)和[模板参考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)。
+[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 若要详细了解如何开发资源管理器模板，请参阅[资源管理器文档](/azure-resource-manager/)和[模板参考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 

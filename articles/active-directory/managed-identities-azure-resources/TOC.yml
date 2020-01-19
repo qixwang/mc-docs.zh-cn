@@ -18,10 +18,6 @@
       items:
         - name: 访问 Azure 存储
           href: tutorial-vm-windows-access-storage.md
-        - name: 使用访问密钥访问 Azure 存储
-          href: tutorial-windows-vm-access-storage.md
-        - name: 使用 SAS 访问 Azure 存储
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: 访问 Azure SQL
           href: tutorial-windows-vm-access-sql.md
         - name: 访问 Azure Key Vault
@@ -58,7 +54,7 @@
           href: qs-configure-cli-windows-vm.md
         - name: PowerShell
           href: qs-configure-powershell-windows-vm.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: qs-configure-template-windows-vm.md
         - name: REST
           href: qs-configure-rest-vm.md
@@ -72,7 +68,7 @@
           href: qs-configure-cli-windows-vmss.md
         - name: PowerShell
           href: qs-configure-powershell-windows-vmss.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: qs-configure-template-windows-vmss.md
         - name: REST
           href: qs-configure-rest-vmss.md
@@ -102,7 +98,7 @@
           href: how-to-manage-ua-identity-cli.md
         - name: PowerShell
           href: how-to-manage-ua-identity-powershell.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: how-to-manage-ua-identity-arm.md
         - name: REST
           href: how-to-manage-ua-identity-rest.md
@@ -112,7 +108,7 @@
           href: how-to-view-managed-identity-service-principal-portal.md
         - name: PowerShell
           href: how-to-view-managed-identity-service-principal-powershell.md
-- name: 引用
+- name: 参考
   items:
     - name: CLI
       href: 'https://docs.microsoft.com/en-us/cli/azure/identity'
@@ -124,15 +120,13 @@
       href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
     - name: Ruby
       href: 'https://rubygems.org/gems/azure_mgmt_msi'
-    - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/ms-rest-azure'
 - name: 资源
   items:
     - name: 反馈和已知问题
       href: known-issues.md
     - name: 支持 Azure 资源托管标识的 Azure 服务
       href: services-support-managed-identities.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-msi'
     - name: AAD 开发者论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

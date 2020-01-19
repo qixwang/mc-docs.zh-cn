@@ -10,15 +10,15 @@ metadata:
   ms.topic: landing-page
   ms.collection: na
   author: rockboyfor
-  ms.author: v-yeche
   origin.date: 12/19/2019
+  ms.author: v-yeche
   ms.date: 01/06/2020
-  ms.openlocfilehash: 7fad0946b3697687c2c5431c0dbdca1102a1c5c2
-  ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+  ms.openlocfilehash: e797036be638a15b96cce7623eb600c248920258
+  ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75631294"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76165473"
 landingContent:
 - title: 关于 Azure Resource Manager 模板
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
       url: template-best-practices.md
     - text: 部署模式
       url: deployment-modes.md
-    - text: 链接模板
+    - text: 链接的模板
       url: linked-templates.md
     - text: 订阅级部署
       url: deploy-to-subscription.md

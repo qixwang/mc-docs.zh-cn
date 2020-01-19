@@ -1,5 +1,5 @@
 ---
-title: 通过 Spark 进行的 Azure Cosmos DB Cassandra API 上的表复制操作。
+title: 通过 Spark 进行的 Azure Cosmos DB Cassandra API 上的表复制操作
 description: 本文详细介绍了如何在 Azure Cosmos DB Cassandra API 中的表之间复制数据
 author: rockboyfor
 ms.author: v-yeche
@@ -8,13 +8,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: d816c008565d8d1cc5a9dcfeed1380da3c063ea8
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.date: 01/20/2020
+ms.openlocfilehash: 564f3b475f92441b49a6ab9f4259981464f10ffc
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988680"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270066"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>通过 Spark 进行的 Azure Cosmos DB Cassandra API 上的表复制操作
 
@@ -32,7 +32,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmos.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -150,3 +150,5 @@ newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: stri
  * 使用 Java 应用程序开始[创建 Cassandra API 帐户、数据库和表](create-cassandra-api-account-java.md)。
  * 使用 Java 应用程序[将示例数据加载到 Cassandra API 表](cassandra-api-load-data.md)。
  * 使用 Java 应用程序[从 Cassandra API 帐户查询数据](cassandra-api-query-data.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

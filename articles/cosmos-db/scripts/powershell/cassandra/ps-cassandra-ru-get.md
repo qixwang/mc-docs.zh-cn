@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB 获取吞吐量（RU/秒）- Cassandra API
+title: 用于获取 Azure Cosmos DB Cassandra API 资源的吞吐量（RU/秒）的 PowerShell 脚本
 description: Azure PowerShell 脚本 - Azure Cosmos DB 获取吞吐量（RU/秒）- Cassandra API
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 origin.date: 07/03/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: e53e674984bc8645d30c7468172f97c47813e822
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3362956104db932d128f4e18750694b73953c99e
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914466"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270102"
 ---
 # <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>获取 Azure Cosmos DB 的密钥空间或表的吞吐量（RU/秒）- Cassandra API
 

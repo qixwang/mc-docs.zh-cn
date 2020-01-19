@@ -14,17 +14,17 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-origin.date: 05/23/2019
-ms.date: 12/09/2019
+origin.date: 12/05/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 4be733fbb5045c00960b1176e9b6080b2dfc8fef
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: a94a739cdefd3640210b3f0907b72de113947344
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884553"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123156"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用发送推送通知
 
@@ -45,7 +45,7 @@ ms.locfileid: "74884553"
 > * 针对 iOS 推送通知配置通知中心
 > * 发送测试推送通知
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，请在开始前[创建一个试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 最新版本的 [Xcode][Install Xcode]
@@ -88,7 +88,7 @@ ms.locfileid: "74884553"
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. 在 `AppDelegate.cs` 中添加以下 using 语句：
+7. 在 `AppDelegate.cs` 中，添加以下 using 语句：
 
     ```csharp
     using WindowsAzure.Messaging;
@@ -137,7 +137,7 @@ ms.locfileid: "74884553"
     {
         Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
 
-        Hub.UnregisterAllAsync (deviceToken, (error) => {
+        Hub.UnregisterAll (deviceToken, (error) => {
             if (error != null)
             {
                 System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
