@@ -5,12 +5,12 @@ ms.topic: conceptual
 original.date: 03/12/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: 043214e60134e8654b24e66fc403d8b44e8112cc
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: beba16e4e8d9c852cbf0428014887cfd7d0bc669
+ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742328"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75957109"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -88,6 +88,7 @@ az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
 az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 ```
 
+<a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>
 ## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>手动从节点类型/虚拟机规模集中删除 VM
 按节点类型进行缩放时，将从规模集中删除 VM 实例。 如果节点类型为“铜”持续性级别，Service Fabric 将不知道发生了什么情况，因此会报告节点已丢失。 然后 Service Fabric 将报告群集的不正常状态。 若要防止状态错误，必须从群集中显式删除节点并删除节点状态。
 
