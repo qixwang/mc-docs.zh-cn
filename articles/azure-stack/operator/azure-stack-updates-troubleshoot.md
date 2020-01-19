@@ -12,24 +12,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 09/23/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.lastreviewed: 09/23/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: abfb08918035e4f9a4fb2dd460c6d3fdbad7fd5d
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 9bb3029fa6b5d63ecdf72d8b9fb05d27fc33f0b9
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020473"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737734"
 ---
-# <a name="troubleshooting-patch-and-update-issues-for-azure-stack"></a>排查 Azure Stack 的修补和更新问题
+# <a name="best-practices-for-troubleshooting-azure-stack-hub-patch-and-update-issues"></a>排查 Azure Stack Hub 修补程序和更新问题的最佳做法
 
-*适用于：Azure Stack 集成系统*
+本文概述了用于排查 Azure Stack 修补程序和更新问题以及修复常见修补程序和更新问题的最佳做法。
 
-可以使用本文中的指南解决更新 Azure Stack 时遇到的问题。
 
-## <a name="preparationfailed"></a>PreparationFailed
+Azure Stack Hub 修补程序和更新过程旨在让操作员以一致且简单的方式应用更新包。 虽然不常见，但在修补和更新期间可能会出现问题。 如果在修补和更新过程中遇到问题，建议执行以下步骤：
+
+0. **先决条件**：请确保已遵循[更新活动清单](release-notes-checklist.md)，并[配置“日志自动收集”](azure-stack-configure-automatic-diagnostic-log-collection.md)。
+1. 按照在更新失败时创建的失败警报中的补救步骤进行操作。
+2. 查看[常见的 Azure Stack Hub 修补程序和更新问题](/azure-stack/operator/azure-stack-updates-troubleshoot#Common-Azure-Stack-Hub-patch-and-update-issues)，并在问题已列出的情况下采取建议的措施。
+3. 如果无法解决上述步骤的问题，请创建 [Azure Stack 支持票证](azure-stack-help-and-support-overview.md)。 请确保已针对发生问题的时间跨度[收集日志](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection)。
+
+## <a name="common-azure-stack-hub-patch-and-update-issues"></a>常见 Azure Stack Hub 修补程序和更新问题
+
+*适用于：Azure Stack Hub 集成系统*
+
+### <a name="preparationfailed"></a>PreparationFailed
 
 **适用于**：此问题适用于所有支持的版本。
 
@@ -37,7 +47,7 @@ ms.locfileid: "74020473"
 
 **补救措施**：可以通过再次单击“立即安装”  来解决此问题。 如果此问题仍然存在，建议按照[安装更新](azure-stack-apply-updates.md?#install-updates-and-monitor-progress)部分的说明手动上传更新包。
 
-**发生率**：常见
+**发生率**：通用
 
 ## <a name="next-steps"></a>后续步骤
 

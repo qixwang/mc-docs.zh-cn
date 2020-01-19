@@ -12,98 +12,83 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/13/2019
-ms.date: 11/18/2019
+origin.date: 11/07/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: asganesh
-ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 6b3e959ff4f02e6997192814569cadb89662ac68
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 7a12046f364e7192b8ee161e0da9ffdfcf99e521
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020252"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737822"
 ---
 # <a name="azure-stack-datacenter-integration-walkthrough"></a>Azure Stack 数据中心集成演练
 
-本文介绍从采购集成的系统到解决方案提供商成功完成现场部署在内的端到端 Azure Stack 客户体验。 使用此信息可以简化旅程，并帮助你（Azure Stack 客户）设置预期。
-
-Azure Stack 客户应该为以下阶段做好准备：
+本文介绍 Azure Stack 数据中心集成的端到端过程，涉及从购买到部署后支持的整个过程。 集成是客户、解决方案提供商和 Microsoft 之间的协作项目。 单击以下选项卡可以查看项目中每个成员的特定步骤，并查看后续部分，大致了解项目时间线的不同阶段。 
 
 # <a name="customertabcustomer"></a>[客户](#tab/customer)
 
-1. 描述预期用例，并指定要求。
-2. 确定要使用的计费模型，并审查和审批合同。
-3. 完成[部署工作表](azure-stack-deployment-worksheet.md)，确保满足所有部署先决条件，并且已准备好进行部署。
-4. 准备数据中心：确保已准备好所有必要的电源和散热设备、边界连接，并满足其他必要的数据中心集成要求。
-5. 可在部署期间提供订阅凭据，并在所提供的数据有疑问时提供支持。
+1. 描述用例和要求
+1. 确定计费模型
+1. 查看和批准合同
+1. 完成 [部署工作表](azure-stack-deployment-worksheet.md)
+1. 确保满足部署先决条件
+1. 准备数据中心 
+1. 在部署过程中提供订阅信息
+1. 解决有关提供的数据的任何问题
 
 # <a name="partnertabpartner"></a>[合作伙伴](#tab/partner)
 
-1. 规划阶段：
-   - 根据客户要求建议解决方案选项。
-   - 根据需要提议概念证明 (POC)。
-   - 建立业务关系。
-   - 确定支持级别。
-2. 订单处理：
-   - 准备好与客户签署的必要合同。
-   - 创建客户采购订单。
-   - 确定交付时间表。
-   - 根据需要让客户与 Azure 联系。
-3. 部署前
-   - 为客户提供必要的培训，确保客户了解所有部署先决条件和数据中心集成选项。
-   - 帮助客户验证所收集的数据，以确保完整性和准确性。
-4. 工厂处理
-   - 应用最后一个已验证的基线版本。
-   - 应用所需的 Microsoft 部署工具包。
-5. 硬件交付：
-   - 将硬件寄送到客户所在地。
-6. 现场部署
-   - 由现场工程师处理部署。
-   - 机架和堆栈。
-   - 硬件生命周期主机 (HLH) 部署。
-   - Azure Stack 部署。
-   - 移交给客户。
+1. 根据客户要求建议解决方案选项
+1. 提议概念证明 (POC) 
+1. 确定支持级别
+1. 准备好与客户签署的合同
+1. 创建客户采购订单
+1. 指定传递计划
+1. 让客户与 Microsoft 联系 
+1. 在部署时培训客户 
+1. 帮助客户验证收集的数据
+1. 安装和验证基线版本和 Microsoft 部署工具包
+1. 将硬件寄送到客户所在地
+1. 提供现场工程师
+1. 机架和堆栈
+1. 部署硬件生命周期主机 (HLH) 
+1. 部署 Azure Stack
+1. 移交给客户
 
 # <a name="microsofttabmicro"></a>[Microsoft](#tab/micro)
 
-1. 与合作伙伴洽谈以提供售前支持。
-2. 准备所需的软件许可与合同。
-3. 为客户提供所需的工具用于收集数据中心集成要求和文档。
-4. 每月提供最新的基线版本和工具链更新。
-5. Azure 支持工程师针对任何部署问题提供协助。
+1. 与合作伙伴合作以获取预售支持
+2. 准备软件许可与合同
+3. 提供工具以收集数据中心集成要求
+4. 提供每月基线版本和工具链更新
+5. Microsoft 支持工程师会针对任何部署问题提供协助
 
+---
 
-
-## <a name="planning-phase"></a>规划阶段
-在规划阶段，Azure 或 Azure Stack 解决方案合作伙伴将与你一起评估解决方案并了解你的需求，以确定 Azure Stack 解决方案是否是适合你：
-
-他们将帮助你确定以下问题的答案：
+## <a name="planning"></a>规划
+Microsoft 或 Azure Stack 解决方案合作伙伴会帮助你评估你的目标。 他们会帮助你确定如下问题：
 
 -   Azure Stack 解决方案是否适合你的组织？
-
--   需要哪种规模的解决方案？
-
 -   组织适合使用哪种计费模型和许可模型？
-
+-   需要哪种规模的解决方案？
 -   电源和散热要求是什么？
 
-若要确保硬件解决方案完美符合需求，请在采购前的规划中使用 [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) 来帮助确定 Azure Stack 硬件解决方案适用的容量和配置。
+使用 [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) 来调查和分析最佳硬件容量和配置以满足你的需求。 
 
-该电子表格并非旨在替代你自己对硬件解决方案适用度的调查与分析。  规划 Azure Stack 部署时，还应该查看适用于 Azure Stack 集成系统的[一般数据中心集成注意事项](azure-stack-datacenter-integration.md)。
+## <a name="ordering"></a>排序
+你的组织承诺购买 Azure Stack、签署合同和采购订单，并向解决方案提供商提供集成要求数据。
 
-## <a name="order-process-phase"></a>订单处理阶段
-在此阶段，很多关于可行性方面的问题已有解答。 现已准备好要完成 Azure Stack 的采购，在签署所有必要的合同与采购订单后，需要向解决方案提供商提供集成要求数据。
-
-## <a name="pre-deployment-phase"></a>部署前的阶段
-在此阶段，需要确定如何将 Azure Stack 集成到数据中心。 为了简化此过程，Azure 会汇编一个要求模板来帮助你收集所需的信息，以规划环境中的集成式系统部署。 此要求模板是在与解决方案提供商协作的情况下生成的。
-
+## <a name="pre-deployment"></a>部署前
+你决定如何将 Azure Stack 集成到数据中心。 Microsoft 与解决方案提供商合作发布[部署工作表](azure-stack-deployment-worksheet.md)，帮助你收集必要的信息。
 [一般数据中心集成注意事项](azure-stack-datacenter-integration.md)一文提供的信息可帮助你完成该模板（名为“部署工作表”）。
 
 > [!IMPORTANT]
-> 在此阶段，必须先调查并确定所有必要信息，然后再订购解决方案。 请注意，此步骤相当耗时，需要与组织中的多个专业单位协调，并从中收集数据。 信息不正确或不完整可能导致部署时间延长。 
+> 在对解决方案进行排序之前，将调查所有先决条件，这样有助于防止部署延迟。 验证先决条件可能需要一些时间，并且需要组织中的不同部门进行协调和数据收集。 
 
-在部署前的阶段，需要确定以下项：
+需选择以下项：
 
 - **Azure Stack 连接模型和标识提供者**。 可以选择在[连接到 Internet（和 Azure）时或者离线时](azure-stack-connection-models.md)部署 Azure Stack。 若要从 Azure Stack（包括混合方案）获得最大效益，建议在连接到 Azure 时进行部署。 选择 Active Directory 联合身份验证服务 (AD FS) 还是 Azure Active Directory (Azure AD) 是在部署时必须进行的一次性决策。 **以后，除非重新部署整个系统，否则将无法更改标识提供者**。
 
@@ -116,12 +101,11 @@ Azure Stack 客户应该为以下阶段做好准备：
 
 - **防火墙集成**。 建议[使用防火墙](azure-stack-firewall.md)来帮助保护 Azure Stack。 防火墙有助于防止 DDOS 攻击，以及执行入侵检测和内容检查。 但应注意，它可能成为 Azure 存储服务的吞吐量瓶颈。
 
-
 - **证书要求**。 必须在现场工程师抵达数据中心进行部署之前准备好全部[所需的证书](azure-stack-pki-certs.md)。 
 
 通过部署工作表收集所有必要信息后，解决方案提供商将会根据收集的数据开始工厂处理，确保将 Azure Stack 成功集成到数据中心。
 
-## <a name="hardware-delivery-phase"></a>硬件交付阶段
+## <a name="hardware-delivery"></a>硬件交付 
 当解决方案抵达你的设施时，解决方案提供商将与你一起安排日程。 收到并安置好解决方案后，需要与解决方案提供商一起安排好时间，让工程师到现场执行 Azure Stack 部署。
 
 在现场工程师抵达开始部署解决方案之前，将所有必要数据锁住并准备好，这一点**至关重要**。 
@@ -135,7 +119,7 @@ Azure Stack 客户应该为以下阶段做好准备：
 > [!TIP]
 > 如果有任何一项信息发生更改，请务必在计划实际部署之前，将此更改告知解决方案提供商。
 
-## <a name="onsite-deployment-phase"></a>现场部署阶段
+## <a name="onsite-deployment"></a>现场部署 
 硬件解决方案提供商的现场工程师必须在场才能开始部署 Azure Stack。 为确保部署成功，请确保所有通过部署工作表提供的信息未曾更改。
 
 以下检查是部署体验期间现场工程师应执行的操作：
@@ -149,7 +133,7 @@ Azure Stack 客户应该为以下阶段做好准备：
 > [!NOTE]
 > 现场工程师可能需要一个工作周的时间来完成部署过程。
 
-## <a name="post-deployment-phase"></a>部署后阶段
+## <a name="post-deployment"></a>后期部署 
 在集成后的阶段，合作伙伴必须先执行几个步骤，然后才能将解决方案移交给客户。 在此阶段，验证非常重要，它可以确保系统部署正确且运行正常。 
 
 OEM 合作伙伴应执行的操作包括：
@@ -181,7 +165,7 @@ OEM 合作伙伴应执行的操作包括：
 
   -   [Nagios 集成](azure-stack-integrate-monitor.md#integrate-with-nagios)。
 
-## <a name="overall-timeline"></a>整体时间表
+## <a name="schedule"></a>计划
 
 ![Azure Stack 现场部署的大致时间线](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
 

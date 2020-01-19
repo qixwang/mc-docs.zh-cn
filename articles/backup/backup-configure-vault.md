@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/04/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 49b7bfc64ebf04890c3fe8907137fe6d90475783
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 097934e1be3fd11fe5add774a2fd94a83654cb92
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838907"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858245"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>使用 Azure 备份 MARS 代理备份 Windows 计算机
 
@@ -65,15 +65,16 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的文件、文�
 * 20.190.128.0/18
 * 40.126.0.0/18
 
+对上面列出的所有 URL 和 IP 地址的访问都使用端口 443 上的 HTTPS 协议。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
 恢复服务保管库会存储你在不同时间创建的所有备份和恢复点，并且包含应用到已备份的计算机的备份策略。 按如下所述创建保管库：
 
 1. 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.cn/) 。
-2. 在搜索中键入“恢复服务”，然后单击“恢复服务保管库”。  
+2. 搜索并选择“恢复服务保管库”  。
 
-    ![创建恢复服务保管库步骤 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png)
+    ![创建恢复服务保管库步骤 1](./media/backup-configure-vault/open-recovery-services-vaults.png)
 
 3. 在“恢复服务保管库”菜单中，单击“+添加”   。
 
@@ -144,7 +145,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
    * Azure 备份在将数据快照发送到 Azure 之前，会使用缓存来存储这些快照。
    * 缓存位置的可用空间应该至少为所要备份的数据大小的 5%。
 
-     ![MARS 向导 - 安装设置](./media/backup-configure-vault/mars1.png)
+    ![MARS 向导 - 安装设置](./media/backup-configure-vault/mars1.png)
 
 3. 在“代理配置”中，指定 Windows 计算机上运行的代理如何连接到 Internet。   。
 
@@ -174,45 +175,66 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 * Azure 备份不会自动考虑夏令时 (DST)。 这可能会导致实际时间与计划的备份时间存在一定的偏差。
 
 按如下所述创建策略：
-
-1. 在每台计算机上打开 MARS 代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
+1. 下载并注册 MARS 代理后，启动代理控制台。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。  
 2. 在“操作”中单击“计划备份”。  
 
     ![计划 Windows Server 备份](./media/backup-configure-vault/schedule-first-backup.png)
-
 3. 在计划备份向导中选择“开始”，然后单击“下一步”。  
 4. 在“选择要备份的项”中，单击“添加项”。  
-5. 在“选择项”中，选择要备份的内容。   。
+
+    ![选择要备份的项](./media/backup-azure-manage-mars/select-item-to-backup.png)
+
+5. 在“选择项”中选择要备份的内容，然后单击“确定”。  
+
+    ![选择的要备份的项](./media/backup-azure-manage-mars/selected-items-to-backup.png)
+
 6. 在“选择要备份的项”页中，单击“下一步”。  
 7. 在“指定备份计划”页中，指定何时创建每日备份或每周备份。   。
 
-    * 创建备份时会创建一个恢复点。
-    * 在环境中创建的恢复点数目取决于备份计划。
+    - 创建备份时会创建一个恢复点。
+    - 在环境中创建的恢复点数目取决于备份计划。
 
-8. 可以计划每日备份，每天最多备份三次。 例如，以下屏幕截图显示了两个每日备份，一个在午夜创建，另一个在下午 6 点创建。
+
+8. 可以计划每日备份，每天最多备份三次。 例如，以下屏幕截图显示了两个每日备份，一个在午夜创建，另一个在下午 6:00 创建。
 
     ![每日计划](./media/backup-configure-vault/day-schedule.png)
+
 
 9. 也可以运行每周备份。 例如，以下屏幕截图显示了每隔两周的星期日和星期三上午 9:30 和凌晨 1:00 创建的备份。
 
     ![每周日程安排](./media/backup-configure-vault/week-schedule.png)
 
+
 10. 在“选择保留策略”页上，指定如何存储数据的历史副本。   。
 
-* 保留设置指定要存储哪些恢复点，以及要存储多长时间。
-* 例如，在设置每日保留设置时，可以指明在针对每日保留指定的时间，要将最新恢复点保留指定的天数。 另举一例，可以指定每月保留策略，指明在每个月的 30 日创建的恢复点应保留 12 个月。
-  * 每日和每周恢复点保留期通常与备份计划相一致。 这意味着，根据计划触发备份时，备份创建的恢复点将存储每日或每周保留策略中指定的持续时间。
-  * 例如，在以下屏幕截图中：
-    * 在午夜和下午 6 点创建的每日备份将保留 7 天。
-    * 在星期六的午夜和下午 6 点创建的备份将保留 4 周。
-    * 在当月最后一周的星期六午夜和下午 6 点创建的备份将保留 12 个月。 - 在 3 月份最后一周的星期六创建的备份将保留 10 年。
+    - 保留设置指定要存储哪些恢复点，以及要存储多长时间。
+    - 例如，在设置每日保留设置时，可以指明在针对每日保留指定的时间，要将最新恢复点保留指定的天数。 另举一例，可以指定每月保留策略，指明在每个月的 30 日创建的恢复点应保留 12 个月。
+    - 每日和每周恢复点保留期通常与备份计划相一致。 这意味着，根据计划触发备份时，备份创建的恢复点将存储每日或每周保留策略中指定的持续时间。
+    - 例如，在以下屏幕截图中：
 
-   ![保留示例](./media/backup-configure-vault/retention-example.png)
+        -   在午夜和下午 6:00 创建的每日备份将保留 7 天。
+        -   在星期六的午夜和下午 6:00 创建的备份将保留 4 周。
+        -   在当月最后一周的星期六午夜和下午 6:00 创建的备份将保留 12 个月。
+        -   在 3 月份最后一周的星期六创建的备份将保留 10 年。
 
-12. 在“选择初始备份类型”中，指定如何通过网络或脱机创建初始备份。   。
+    ![保留示例](./media/backup-configure-vault/retention-example.png)
 
-13. 在“确认”中复查信息，然后单击“完成”   。
-14. 在向导完成创建备份计划后，请单击“**关闭**”。
+
+11. 在“选择初始备份类型”中，  决定是要通过网络进行初始备份还是使用脱机备份（有关脱机备份的详细信息，请参阅此[文章](backup-azure-backup-import-export.md)）。 若要通过网络进行初始备份，请选择“自动通过网络进行”  ，然后单击“下一步”。 
+
+    ![初始备份类型](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
+
+
+12. 在“确认”中复查信息，然后单击“完成”   。
+
+    ![确认备份类型](./media/backup-azure-manage-mars/confirm-backup-type.png)
+
+
+13. 在向导完成创建备份计划后，请单击“**关闭**”。
+
+    ![确认修改备份过程](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
+
+必须在安装了代理的每台计算机上创建一项策略。
 
 ### <a name="perform-the-initial-backup-offline"></a>脱机执行初始备份
 
