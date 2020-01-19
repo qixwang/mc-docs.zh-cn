@@ -1,20 +1,19 @@
 ---
-title: 有关使用 Azure Site Recovery 进行 VMware 到 Azure 的灾难恢复时的常见问题 | Azure
+title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问题
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
-services: site-recovery
-origin.date: 06/27/2019
-ms.date: 09/30/2019
+origin.date: 11/14/2019
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: v-yeche
-ms.openlocfilehash: 4729466265d5bb5505160b912ba57c071a3ab807
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 0ca13c0b0e31b9d874643f5c3228566728d1216d
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340999"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776652"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -182,7 +181,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>是否可以通过添加磁盘或调整磁盘大小来修改正在复制的 VM？
 
-对于从 VMware 复制到 Azure，可以修改磁盘大小。 如果要添加新磁盘，则必须为 VM 添加磁盘并重新启用保护。
+对于从 VMware 复制到 Azure，可以修改源 VM 的磁盘大小。 如果要添加新磁盘，则必须为 VM 添加磁盘并重新启用保护。
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 vCenter Server？
 
@@ -351,10 +350,6 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 
 从 Azure 故障回复时，Azure 中的数据将复制回到本地 VM，这需要提供专用访问权限。
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>是否可以在故障转移后调整 Azure VM 的大小？
-
-否，无法在故障转移后更改目标 VM 的大小或类型。
-
 ## <a name="automation-and-scripting"></a>自动化和脚本
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用脚本设置复制？
@@ -372,4 +367,4 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 - [查看](vmware-physical-azure-support-matrix.md)支持要求。
 - [设置](vmware-azure-tutorial.md) VMware 到 Azure 的复制。
 
-<!-- Update_Description: update meta properties; wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

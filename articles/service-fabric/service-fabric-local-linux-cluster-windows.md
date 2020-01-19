@@ -1,32 +1,23 @@
 ---
-title: 设置 Windows 上的 Azure Service Fabric Linux 群集 | Azure
+title: 在 Windows 上设置 Azure Service Fabric Linux 群集
 description: 本文介绍如何设置在 Windows 开发计算机上运行的 Service Fabric Linux 群集。 这对于跨平台开发尤其有用。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/20/2017
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6d4f02f5d18c803edc975cb7ecce627a1e6b17e8
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: 74b40ba217e7206ef25efcf125f5c798648813da
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204083"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742497"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
 本文档介绍如何在 Windows 开发计算机上设置本地 Linux Service Fabric。 设置本地 Linux 群集有助于快速测试在 Windows 计算机上开发的面向 Linux 群集的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 基于 Linux 的 Service Fabric 群集不在 Windows 本机上运行。 为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB RAM
@@ -116,9 +107,9 @@ ms.locfileid: "57204083"
 
 ### <a name="known-limitations"></a>已知限制 
 
- 以下是在 Mac 的容器中运行的本地群集的已知限制： 
+以下是在 Mac 的容器中运行的本地群集的已知限制： 
 
- * DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
+* DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>后续步骤
 * [Eclipse](/service-fabric/service-fabric-get-started-eclipse) 入门

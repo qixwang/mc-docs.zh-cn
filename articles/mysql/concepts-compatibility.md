@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 驱动程序和管理工具兼容性
+title: 驱动程序和工具兼容性 - Azure Database for MySQL
 description: 本文介绍与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/06/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 6bebc4defbe81ffe7b6ebb7931b57467a283de63
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+origin.date: 12/05/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 32638a29fa87063fdcb8ae3e230f42bb297ded69
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530653"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776673"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
 > [!NOTE]
@@ -34,7 +34,7 @@ Azure Database for MySQL 使用世界上最常用的 MySQL 数据库社区版。
 | Python | MySQL 连接器/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2，将 8.0.16+ 与 MySQL 8.0 配合使用  | 1.2.2 及以下版本 | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11、0.8.0、0.8.1、0.9.3+ | 0.9.0 - 0.9.2（web2py 中的回归） | |
 | Java | MariaDB 连接器/J | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 及以下版本 | | 
-| Java | MySQL 连接器/J | https://github.com/mysql/mysql-connector-j | 5.1.20+，将 8.0.17+ 与 MySQL 8.0 配合使用 | 5.1.9 和更低版本 | |
+| Java | MySQL 连接器/J | https://github.com/mysql/mysql-connector-j | 5.1.21+，将 8.0.17+ 与 MySQL 8.0 配合使用 | 5.1.20 和更低版本 | |
 | C | MySQL 连接器/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2+ | | |
 | C | MySQL 连接器/ODBC (myodbc) | https://github.com/mysql/mysql-connector-odbc | 3.51.29+ | | |
 | C++ | MySQL 连接器/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9+ | 1.1.3 和更低版本 | | 

@@ -11,16 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/26/2019
-ms.date: 11/13/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456ba3bba2be92729454ac9fe2754f11ee0b8861
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: fe9ed4c2b16771d34ed6a03065bb7f6644dbb2ad
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084596"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777060"
 ---
 # <a name="assign-users-to-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中向应用程序分配用户
 本文介绍如何将用户分配到 Azure Active Directory (Azure AD) 中的应用程序。 首先必须将用户分配给应用程序，然后管理员才能授予这些用户访问权限以执行以下操作：
@@ -31,10 +30,11 @@ ms.locfileid: "74084596"
 
 -   查看显示在其 [Office 365 应用程序启动器](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中的应用程序。
 
-## <a name="prerequisites"></a>先决条件
-在将用户分配到应用程序之前，必须要求用户分配。 若要要求用户分配，请执行以下操作：
+## <a name="configure-the-application-to-require-assignment"></a>将应用程序配置为需要分配
 
-1. 使用管理员帐户登录到 Azure 门户。
+可将应用程序配置为需要分配才能访问。 若要需要分配，请执行以下操作：
+
+1. 使用管理员帐户或以**企业应用**下应用的所有者身份登录到 Azure 门户。
 2. 在主菜单中单击“所有服务”  项。
 3. 选择要用于应用程序的目录。
 4. 单击“企业应用程序”选项卡  。

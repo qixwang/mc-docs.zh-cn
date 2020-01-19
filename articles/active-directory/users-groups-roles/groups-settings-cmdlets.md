@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 12/11/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a179361ac9137dfe6df3b48bacf7f4ff0cead47
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 27a29c3eeb1cca1050379345a801a3da7c3c5656
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336407"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777064"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
@@ -36,7 +36,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 
 ## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
 
-请先确保卸载任意较早版本的适用于 Windows PowerShell 的 Azure Active Directory PowerShell for Graph 模块，并安装 [Azure Active Directory PowerShell for Graph - 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)，然后再运行 PowerShell 命令。
+在运行 PowerShell 命令之前，请确保卸载任何旧版本的 Azure Active Directory PowerShell for Graph、Windows PowerShell 模块，并安装 [Azure Active Directory PowerShell for Graph - 公共预览版（比 2.0.0.137 更新）](https://www.powershellgallery.com/packages/AzureADPreview)。
 
 1. 以管理员身份打开 Windows PowerShell 应用。
 2. 卸载任何以前版本的 AzureADPreview。
@@ -53,7 +53,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>在目录级别创建设置
-这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 365 组。 Get-AzureADDirectorySettingTemplate cmdlet 仅在 [Azure AD PowerShell for Graph 预览模块](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)中可用。
+这些步骤在目录级别创建设置，这些设置适用于目录中的所有 Office 365 组。 Get-AzureADDirectorySettingTemplate cmdlet 仅在 [Azure AD PowerShell for Graph 预览模块](https://www.powershellgallery.com/packages/AzureADPreview)中可用。
 
 1. 在 DirectorySettings cmdlet 中，必须指定要使用的 SettingsTemplate 的 ID。 如果不知道此 ID，此 cmdlet 将返回所有设置模板的列表：
   
@@ -76,12 +76,13 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 2. 若要添加使用准则 URL，首先需获取定义使用准则 URL 值的 SettingsTemplate 对象，即 Group.Unified 模板：
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. 接下来，创建基于该模板的新设置对象：
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. 然后更新使用准则值：
   
@@ -91,22 +92,57 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 5. 然后应用设置：
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. 可以使用以下命令读取值：
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>在目录级别更新设置
-若要在设置模板中更新 UsageGuideLinesUrl 的值，请直接通过上面的步骤 4 编辑 URL，然后通过步骤 5 设置新值。
+若要在设置模板中更新 UsageGuideLinesUrl 的值，请从 Azure AD 读取当前设置，否则我们可能最终会覆盖 UsageGuideLinesUrl 以外的现有设置。
 
-若要删除 UsageGuideLinesUrl 的值，请使用上面的步骤 4 编辑 URL，使之变为空字符串：
-
+1. 从 Group.Unified SettingsTemplate 获取当前设置：
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. 检查当前设置：
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   输出：
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. 若要删除 UsageGuideLinesUrl 的值，请将 URL 编辑为空字符串：
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-然后，通过步骤 5 设置新值。
+4. 将更新保存到目录：
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>模板设置
 以下是 Group.Unified SettingsTemplate 中定义的设置。 除非另有说明，否则这些功能都需要 Azure Active Directory Premium P1 许可证。 

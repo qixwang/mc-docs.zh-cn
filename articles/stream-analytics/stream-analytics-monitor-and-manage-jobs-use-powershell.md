@@ -8,13 +8,14 @@ manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.openlocfilehash: 11964ae40b68842da6380ed5e79c1ef9a909582f
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+origin.date: 04/12/2019
+ms.date: 1/6/2020
+ms.openlocfilehash: bbf2a413be3d339101143b4807b5895efea82b82
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674836"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856383"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。

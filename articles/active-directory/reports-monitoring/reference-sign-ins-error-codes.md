@@ -13,17 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-origin.date: 08/08/2019
-ms.date: 11/28/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f676338e2f0146b9248e3f4bc7c2f95fbc8a7e
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 030aedfa8356e28b0e7dae6d98dd9ab2f9114a9a
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655435"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777069"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -37,9 +36,13 @@ ms.locfileid: "74655435"
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>如何才能显示失败的登录？ 
 
-导航到 [Azure 门户](https://portal.azure.cn)中的[登录报告](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+在 [Azure 门户](https://portal.azure.cn)菜单中，选择“Azure Active Directory”，或从任意页搜索并选择“Azure Active Directory”   。
 
-![登录活动](./media/reference-sign-ins-error-codes/61.png "登录活动")
+![选择 Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+在“监视”  下，选择“登录”  以打开[登录报告](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+
+![登录活动](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
 
 在“登录状态”下拉框中选择“失败”，以筛选报告，显示所有失败的登录。  
 
@@ -64,6 +67,7 @@ ms.locfileid: "74655435"
 |50000|登录服务出现问题。 请[开具支持票证](https://support.azure.cn/en-us/support/support-azure/)以解决此问题。|
 |50001|在此租户中找不到服务主体名称。 如果在应用程序尚未由租户管理员安装，或者资源主体在目录中找不到或无效，则可能会发生这种情况。|
 |50002|由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。|
+|50005|用户尝试从条件访问策略目前不支持的平台登录到设备。|
 |50007|找不到此应用程序的合作伙伴加密证书。 请向 Microsoft [开具支持票证](https://support.azure.cn/en-us/support/support-azure/)以解决此问题。|
 |50008|SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。|
 |50010|由于未配置令牌受众，应用程序的受众 URI 验证失败。 请联系应用程序所有者获得解决方法。|
@@ -101,6 +105,7 @@ ms.locfileid: "74655435"
 |50128|域名无效 - 未在请求中找到或提供的任何凭据均未暗示任何租户标识信息。|
 |50129|设备未加入工作区 - 需要**加入工作区**才能注册设备。|
 |50130|无法将声明值解释为已知的身份验证方法。|
+|50131|用于各种条件访问错误。 例如 Windows 设备状态不正确，请求因活动、访问策略和安全策略决策可疑而被阻止。|
 |50132|以下原因导致凭据被吊销：<ul><li>SSO 项目无效或已过期</li><li>应用程序的会话不够新</li><li>已发送无提示登录请求，但用户在 Azure AD 中的会话无效或已过期。</li></ul>|
 |50133|会话因过期或最近更改了密码而无效。|
 |50135|由于存在帐户风险，需要更改密码。|
@@ -126,6 +131,10 @@ ms.locfileid: "74655435"
 |51004|用户帐户在目录中不存在。|
 |51006|需要 Windows 集成身份验证。 用户已通过声明使用丢失的会话令牌登录。 请求用户重新登录。|
 |52004|用户尚未许可 LinkedIn 资源的访问权限。 |
+|53000|条件访问策略需要符合的设备，该设备不符合。 让用户使用已批准的 MDM 提供程序（例如 Intune）注册其设备。|
+|53001|条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。|
+|53002|使用的应用程序不是支持条件访问的获批准应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
+|53003|访问因条件访问策略而被阻止。|
 |53004|在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。|
 |65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y向租户管理员发送针对资源 Z的授权请求。|
 |65004|用户拒绝许可该应用的访问权限。 让用户重试登录并许可应用|
@@ -142,6 +151,8 @@ ms.locfileid: "74655435"
 |70018|由于用户为设备代码流键入了错误的用户代码，验证码无效。 授权未获批准。|
 |70019|验证码已过期。 让用户重试登录。|
 |70037|提供了错误的质询响应。 已拒绝远程控制身份验证会话。|
+|70043|Azure 条件访问会话管理强制会话过期|
+|70044|Azure 条件访问会话管理强制会话过期|
 |75001|SAML 消息绑定期间出错。|
 |75003|应用程序返回了与不受支持的绑定相关的错误（无法通过 HTTP POST 以外的绑定发送 SAML 协议响应）。 请联系应用程序所有者。|
 |75005|Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 请联系应用程序所有者。|
@@ -167,9 +178,11 @@ ms.locfileid: "74655435"
 |90051| 委派令牌无效。 指定的国家云 ID ({cloudId}) 无效。|
 |90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|
 |90094| 该授权需要管理员权限。 让租户管理员同意此应用程序。|
-|500021|租户受公司代理限制。 拒绝访问资源。|
+|500011| 在名为 <tenant ID> 的租户中找不到名为 <site address> 的资源主体。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。|
+|500021| 租户受公司代理限制。 拒绝访问资源。|
 |500121| 在强身份验证请求期间身份验证失败。|
 |500133| 断言不在其有效时间范围内。 确保访问令牌在用于用户断言或请求新令牌之前没有过期。|
+|530021|应用程序不符合条件访问已批准应用要求。|
 |530032|被安全策略阻止。| 
 |700016|在目录“{tenantName}”中找不到标识符为“{appIdentifier}”的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。|
 |900432|跨云请求不支持机密客户端。|

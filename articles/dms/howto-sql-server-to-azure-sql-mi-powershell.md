@@ -1,6 +1,7 @@
 ---
-title: 使用数据库迁移服务和 PowerShell 将 SQL Server 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
+title: PowerShell：将 SQL Server 迁移到 SQL 托管实例
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure PowerShell 和 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,18 +9,18 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 04/29/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: c53d89b2c209cc61866267ec228eaa1ee1b73471
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.date: 01/13/2020
+ms.openlocfilehash: dda253a82ef6d679f54abbb8acce255d94a6643b
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831377"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776636"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL 数据库托管实例
+# <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 和 Azure 数据库迁移服务将 SQL Server 迁移到 SQL 数据库托管实例
 在本文中，我们将使用 Azure PowerShell 将还原为 SQL Server 2005 或更高版本的本地实例的 **Adventureworks2016** 数据库迁移到 Azure SQL 数据库托管实例。 可以使用 Azure PowerShell 中的 `Az.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库托管实例。
 
 在本文中，学习如何：
@@ -34,7 +35,7 @@ ms.locfileid: "73831377"
 
 本文包含有关如何执行联机迁移和脱机迁移的详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成这些步骤，需满足以下条件：
 

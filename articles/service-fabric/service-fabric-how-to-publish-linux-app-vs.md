@@ -1,26 +1,17 @@
 ---
-title: 了解如何创建 .NET Core 应用程序并将其发布到远程 Azure Service Fabric Linux 群集 | Azure
+title: 了解如何创建 .NET Core 应用程序并将其发布到远程 Azure Service Fabric Linux 群集
 description: 在 Visual Studio 中创建 .NET Core 应用并将其发布到远程 Linux 群集
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 05/20/2019
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ebb6a072df665540151d5ba2c1c8a49843659c00
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: afa2453129cf45cbfbeb03556ac6c5182f0dcc33
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753164"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742507"
 ---
 <!--Verify successfully-->
 <!--Need Reopen the Visual Studio project and refresh certification after about half an hour-->
@@ -35,18 +26,23 @@ ms.locfileid: "68753164"
 1. 以**管理员**身份启动 Visual Studio。
 2. 通过单击“文件”->“新建”->“项目”来创建项目。 
 3. 在“新建项目”对话框中，选择“云”->“Service Fabric 应用程序”。  
+    
     ![create-application]
+    
 4. 命名应用程序，并单击“确定”  。
 5. 在“新建 Service Fabric 服务”页中，选择要在“.NET Core 部分”创建的服务类型。  
+    
     ![create-service]
 
 ## <a name="deploy-to-a-remote-linux-cluster"></a>部署到远程 Linux 群集
 1. 在“解决方案资源管理器”中，右键单击该应用程序并选择“生成”。 
 
     ![build-application]
+    
 2. 应用程序的生成过程完成后，右键单击服务，然后选择编辑 **csproj 文件**。
 
     ![edit-csproj]
+    
 3. 将 UpdateServiceFabricManifestEnabled 属性从 True 编辑为 **False**，前提是服务为**执行组件项目类型**。 如果应用程序没有执行组件服务，请跳到步骤 4。
     
     ```xml
@@ -76,6 +72,7 @@ ms.locfileid: "68753164"
     ![publish-application]
 
 <!--Image references-->
+
 [create-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
 [create-service]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
 [build-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png

@@ -1,29 +1,25 @@
 ---
-title: 自定义浏览器和 WebView | Microsoft 标识平台
-description: 了解如何自定义由适用于 iOS 和 macOS 的 MSAL 用来登录用户的浏览器体验
+title: 自定义浏览器和 Web 视图 (MSAL iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何自定义用于登录用户的 MSAL iOS/macOS 浏览器体验。
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 08/28/2019
-ms.date: 11/01/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6134e4e860afe4cb9f1fc1cb12521871ca951e0b
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: c09159ff236888fd717cf13b8075ff9aa8ca2bbb
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831045"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776826"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 WebView
 
@@ -166,3 +162,4 @@ typedef NS_ENUM(NSInteger, MSALWebviewType)
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
 
+<!-- Update_Description: wording update -->

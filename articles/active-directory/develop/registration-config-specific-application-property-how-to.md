@@ -1,6 +1,6 @@
 ---
-title: 如何填写自定义开发应用程序的特定字段 | Microsoft Docs
-description: 有关使用 Azure AD 注册自定义开发的应用程序时如何填写特定字段的指南
+title: 自定义开发应用的 Azure 门户注册字段
+description: 向 Azure AD 注册自定义开发的应用程序指南
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,18 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 06/28/2019
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 260384b160b19e5f7522adb709a57511105829ae
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 1d3f05d23878098dc6afeeb7718cde56ff3ee4c1
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134278"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777051"
 ---
-# <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>如何填写自定义开发应用程序的特定字段
+# <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>自定义开发应用的 Azure 门户注册字段
 
 本文简要介绍 [Azure 门户](https://portal.azure.cn)中应用程序注册表单中的所有可用字段。
 
@@ -40,16 +39,16 @@ ms.locfileid: "70134278"
 
 ## <a name="fields-in-the-application-registration-form"></a>应用程序注册表单中的字段
 
-
 | 字段            | 说明                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | 应用程序的名称。 它应至少具有四个字符。                |
+| 名称             | 应用程序的名称。 它应至少具有四个字符。                |
 | 支持的帐户类型| 选择想要应用程序支持的帐户：仅在此组织目录中的帐户、任何组织目录中的帐户。  |
-| 重定向 URI（可选） | 选择要生成的应用的类型：“Web”或“公共客户端(移动和桌面)”，然后输入应用程序的重定向 URI (或回复 URL)。   对于 Web 应用程序，请提供应用的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 myapp://auth。若要查看 Web 应用程序或本机应用程序的特定示例，请参阅[快速入门](/active-directory/develop)。|
+| 重定向 URI（可选） | 选择要生成的应用的类型：“Web”或“公共客户端(移动和桌面)”，然后输入应用程序的重定向 URI (或回复 URL)。   对于 Web 应用程序，请提供应用的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 myapp://auth。若要查看 Web 应用程序或本机应用程序的具体示例，请参阅[快速入门](/active-directory/develop)。|
 
 填写上述字段后，会在 Azure 门户中注册应用程序，并重定向到应用程序概览页面。 左窗格“管理”  下的“设置”页包含多个用于自定义应用程序的字段。 下面的这些表介绍所有字段。 将只能看到这些字段的一个子集，具体取决于创建的是 Web 应用程序还是公共客户端应用程序。
 
 ### <a name="overview"></a>概述
+
 | 字段           | 说明        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 应用程序 ID  | 注册应用程序时，Azure AD 会为应用程序分配一个应用程序 ID。 应用程序 ID 可用于在对 Azure AD 的身份验证请求中唯一标识应用程序，以及访问图形 API 等资源。                                                          |
@@ -76,4 +75,4 @@ ms.locfileid: "70134278"
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 客户端机密            | 可以创建客户端机密或密钥以编程方式访问由 Azure AD 保护的 Web API，而无需任何用户交互。 在“新建客户端机密”  页中，输入密钥说明和到期日期并保存以生成密钥。 请确保将其保存在安全位置，不然在以后将无法访问它。             |
 
-<!-- Update_Description: update metedata properties -->
+<!-- Update_Description: wording update -->

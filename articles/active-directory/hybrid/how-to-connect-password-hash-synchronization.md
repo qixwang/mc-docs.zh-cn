@@ -9,19 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 04/02/2019
-ms.date: 11/26/2019
+ms.date: 01/07/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c324ee454a274455e0599da1454963749c0be4a6
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: ab102cae080c912fe018fc8a1bbaf804e9f60921
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655377"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776902"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -124,15 +123,12 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
   
 临时密码功能有助于确保首次使用凭据时完成其所有权转移，以最大程度地减少多个人员知道该凭据的持续时间。
 
-若要在 Azure AD 中支持已同步用户的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令（请将 <AAD Connector Name> 替换为特定于环境的连接器名称）来启用 *ForcePasswordResetOnLogonFeature* 功能：
+若要在 Azure AD 中支持同步用户的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用 ForcePasswordResetOnLogonFeature  功能：
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
-可以使用以下命令来确定连接器名称：
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Azure Active Directory (Microsoft)"}).Name`
-
-注意事项：如果强制用户在下次登录时更改其密码，则同时也需要执行密码更改操作。  AD Connect 不会自行选取强制密码更改标志，此功能只是对密码哈希同步期间检测的密码更改的补充。
+> [!NOTE]
+> 如果强制用户在下次登录时更改其密码，则同时也需要执行密码更改操作。  AD Connect 本身不会选取强制密码更改标志；它是对密码哈希同步期间检测到的密码更改的补充。
 
 > [!CAUTION]
 > 如果未在 Azure AD 中启用自助式密码重置 (SSPR)，当用户在 Azure AD 中重置其密码，然后尝试使用新密码登录 Active Directory 时，其体验会令人困惑，因为新密码在 Active Directory 中尚未生效。 请仅在租户中启用了 SSPR 和密码写回时，才使用此功能。

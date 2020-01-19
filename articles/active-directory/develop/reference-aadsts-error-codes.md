@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 身份验证和授权错误代码 | Microsoft Docs
+title: Azure AD 身份验证和授权错误代码
 description: 了解 Azure AD 安全令牌服务 (STS) 返回的 AADSTS 错误代码。
 services: active-directory
 documentationcenter: ''
@@ -12,20 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-origin.date: 08/30/2019
-ms.date: 10/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddcaaea29663fa3c8ace3ea57899b6db0463902a
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: 9270141cd4e475d415129664c44329d64c9d530f
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292062"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777053"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
 想要查找有关 Azure Active Directory (Azure AD) 安全令牌服务 (STS) 返回的 AADSTS 错误代码的信息？ 请阅读本文档来查找 AADSTS 错误说明、修复方法和一些建议的解决方法。
 
@@ -41,7 +40,7 @@ ms.locfileid: "72292062"
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
-| 错误 | Description |
+| 错误 | 说明 |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 这是 Azure AD 引发的中断，使得 UI 允许用户从多个有效 SSO 会话中进行选择。 此错误相当常见。如果指定了 `prompt=none`，可能会在应用程序中返回此错误。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果用户单击会话选择逻辑已拒绝的某个磁贴，则会出现此错误。 触发此错误时，用户可以从更新的磁贴/会话列表中进行选择或选择另一个帐户进行恢复。 此错误的原因可能是代码缺陷或出现争用状况。 |
@@ -134,6 +133,8 @@ ms.locfileid: "72292062"
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 直通用户不支持会话控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
+| AADSTS50196 | LoopDetected - 检测到客户端循环。 检查应用的逻辑，以确保实现了令牌缓存，并且正确处理了错误情况。  该应用在太短的时间内发出了太多相同请求，表明它处于错误状态或滥用请求令牌。 |
+| AADSTS50199 | CmsiInterrupt - 此身份验证需要用户交互。  由于这是“interaction_required”错误，因此客户端应进行交互式身份验证。之所以发生这种情况，是因为系统 Web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为他们要登录的应用。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 已禁用该功能。 |
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目录中不存在该用户帐户。 |

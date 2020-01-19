@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/10/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3baebfaef3222a3bd7df9a5f477520b6113673e4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: abeaef7562479d15fb4bcf9cd8e4148120b1bcb4
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336125"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777082"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本文概述了登录报告。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
@@ -54,9 +54,15 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-[Azure 门户](https://portal.azure.cn)入门。 若要访问登录报告，请选择“登录”，然后转到“监视”。   某些登录记录最多可能需要两个小时才会显示在门户中。
+在 [Azure 门户](https://portal.azure.cn)菜单中，选择“Azure Active Directory”，或从任意页搜索并选择“Azure Active Directory”   。
 
-![登录活动](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "登录活动")
+![选择“Azure Active Directory”](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+在“监视”  下，选择“登录”  以打开[登录报告](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+
+![登录活动](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
+
+某些登录记录最多可能需要两个小时才会显示在门户中。
 
 > [!IMPORTANT]
 > 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录  。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
@@ -76,9 +82,9 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/19.png "登录活动")
 
-显示其他字段，或者删除已显示的字段。
+通过“列”  对话框，可以访问可选属性。 在登录报告中，对于给定的登录请求，不能将具有多个值的字段作为列。 例如，“身份验证详细信息”、“条件访问数据”和“网络位置”就是这样的。   
 
-![登录活动](./media/concept-sign-ins/02.png "登录活动")
+![登录活动](./media/concept-sign-ins/columns.png "登录活动")
 
 选择列表视图中的某个项可获得更详细的信息。
 

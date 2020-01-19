@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Node.js 中使用 Azure 服务总线队列
+title: 在 Node.js 中通过 azure-sb 包使用 Azure 服务总线队列
 description: 快速入门：了解如何在来自 Node.js 应用程序的 Azure 中使用服务总线队列。
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 11/05/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ba67b4c9b53e830f4d4769c270e43764acf90d87
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 7eb629348e6d6f4b201eed29e687313c13fdf8d0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528003"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855191"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入门：通过 Node.js 和 azure-sb 包使用 Azure 中的服务总线队列
 
@@ -30,7 +30,7 @@ ms.locfileid: "74528003"
 
 本教程介绍如何创建 Node.js 应用程序，以便向服务总线队列发送消息以及从中接收消息。 示例用 JavaScript 编写并使用 Node.js Azure 模块。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 
@@ -44,7 +44,7 @@ ms.locfileid: "74528003"
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][Create and deploy a Node.js application to an Azure Website]或 [Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）。
 
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
 若要使用 Azure 服务总线，请下载并使用 Node.js Azure 包。 此程序包包括一组用来与服务总线 REST 服务通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包

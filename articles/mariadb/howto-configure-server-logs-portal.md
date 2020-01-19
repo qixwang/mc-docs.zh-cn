@@ -1,24 +1,24 @@
 ---
-title: 从 Azure 门户配置和访问 Azure Database for MariaDB 中的服务器日志
-description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MariaDB 中的服务器日志。
+title: 访问慢查询日志 - Azure 门户 - Azure Database for MariaDB
+description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MariaDB 中的慢查询日志。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 09/30/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 3eedff95001d6d84ae806ee8ff1720a88942b4c3
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+origin.date: 12/02/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 8488cd43223d0737773f0d4c6424bbd7284d6169
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191584"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776666"
 ---
-# <a name="configure-and-access-server-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问服务器日志
+# <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
 
 可以从 Azure 门户配置、列出并下载 [Azure Database for MariaDB 慢查询日志](concepts-server-logs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文中的步骤要求具备 [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
 ## <a name="configure-logging"></a>配置日志记录

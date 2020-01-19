@@ -1,31 +1,26 @@
 ---
-title: 有关从应用注册（旧版）过渡到 Azure 门户中新应用注册体验的培训指南
-description: Azure 门户中的新应用注册体验简介
+title: 新的 Azure 门户应用注册培训指南
+description: 介绍新的 Azure 门户应用注册体验
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a52501664d34106ecc4a25604eab2ce6b87780a
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 12a5768275ed531c756963930a0266c277fcd80a
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655468"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776856"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>从应用注册（旧版）转换到 Azure 门户中的新应用注册体验
+# <a name="new-azure-portal-app-registration-training-guide"></a>新的 Azure 门户应用注册培训指南
 
 在 Azure 门户上的新[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中，可以发现许多的改进。 如果你熟悉 Azure 门户中的应用注册（旧版）体验，可以参考本培训指南开始使用新的体验。
 

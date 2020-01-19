@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的桌面应用（移到生产环境）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的桌面应用（移到生产环境）
+title: 将调用 Web API 的桌面应用移到生产环境 - Microsoft 标识平台 | Azure
+description: 了解如何将调用 Web API 的桌面应用移到生产环境
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352bfc868c610747201e9efe9db9dffe964a1bbe
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 8d8d575ce557f8f384d85aa1565db3bde81b2074
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830922"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777045"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>调用 Web API 的桌面应用 - 移到生产环境
 
-本文提供了进一步改进应用程序并将其移到生产环境的详细信息。
+本文详细介绍了如何将调用 Web API 的桌面应用移到生产环境。
 
 ## <a name="handling-errors-in-desktop-applications"></a>在桌面应用程序中处理错误
 
@@ -51,7 +50,7 @@ Microsoft 标识平台 (v2.0) 终结点不允许你一次获取多个资源的�
 
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
-```CSharp
+```csharp
 string[] scopesForCustomerApi = new string[]
 {
   "https://mytenant.partner.onmschina.cn/customerapi/customer.read",
@@ -104,7 +103,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 需要调用第二个 Web API 时，可以调用 `AcquireTokenSilent` API：
 
-```CSharp
+```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 

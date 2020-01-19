@@ -1,6 +1,6 @@
 ---
-title: 单页应用程序（调用 Web API）-Microsoft 标识平台
-description: 了解如何生成单页应用程序（调用 Web API）
+title: 生成调用 Web API 的单页应用 - Microsoft 标识平台 | Azure
+description: 了解如何生成调用 Web API 的单页应用程序
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -11,19 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/06/2019
-ms.date: 06/20/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c8f54703dbb01470416b615132694c4ae3b358
-ms.sourcegitcommit: 9d5fd3184b6a47bf3b60ffdeeee22a08354ca6b1
+ms.openlocfilehash: bdb8fb8a7892c8a67d555db73fb611b11605095b
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67305877"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776932"
 ---
-# <a name="single-page-application---call-a-web-api"></a>单页应用程序 - 调用 Web API
+# <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 Web API
 
 我们建议你在调用 Web API 之前调用 `acquireTokenSilent` 方法获取或续订访问令牌。 有了令牌后，就可以调用受保护的 Web API 了。
 
@@ -51,10 +50,11 @@ ms.locfileid: "67305877"
 
 ### <a name="angular"></a>Angular
 
-正如在[获取令牌部分](scenario-spa-acquire-token.md)中所述，MSAL Angular 包装器利用 HTTP 拦截器自动无提示获取访问令牌，并将它们附加到对 API 的 HTTP 请求中。
+MSAL Angular 包装器器利用 HTTP 拦截器自动以无提示方式获取访问令牌并将其附加到对 API 的 HTTP 请求中。 有关详细信息，请参阅[获取令牌以调用 API](scenario-spa-acquire-token.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [移到生产环境](scenario-spa-production.md)
+> [转移到生产环境](scenario-spa-production.md)
 
+<!-- Update_Description: wording update -->

@@ -11,14 +11,14 @@ ms.topic: article
 origin.date: 01/23/2019
 ms.date: 11/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f45d2633536d48e5c41f8b839c50b624867f2388
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 59e6de92177bc644ffee913058149668bf2cdea6
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528027"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854519"
 ---
-# <a name="use-firewall-rules"></a>使用防火墙规则
+# <a name="azure-service-bus---use-firewall-rules"></a>Azure 服务总线 - 使用防火墙规则
 
 对于只能从某些已知站点访问 Azure 服务总线的方案，防火墙规则使你能够配置规则，以接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
 

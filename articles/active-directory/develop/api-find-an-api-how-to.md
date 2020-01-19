@@ -1,27 +1,23 @@
 ---
-title: 如何为自定义开发的应用程序查找所需的特定 API | Microsoft Docs
+title: 查找自定义开发的应用的 API | Azure
 description: 如何配置访问自定义开发的 Azure AD 应用程序中的特定 API 所需的权限
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 06/28/2019
-ms.date: 08/23/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4800a1e0be17236496d4ca56fff3dc4184bcbce9
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: e9059ddcaa61a9146cc9b8380023befd8810afef
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993275"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776837"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
 
@@ -37,7 +33,7 @@ ms.locfileid: "69993275"
 
 ## <a name="next-steps"></a>后续步骤
 
--   [了解 Azure Active Directory 应用程序清单](/active-directory/develop/active-directory-application-manifest)
+- [了解 Azure Active Directory 应用程序清单](/active-directory/develop/active-directory-application-manifest)
 
 
 

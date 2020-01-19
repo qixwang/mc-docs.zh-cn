@@ -1,33 +1,27 @@
 ---
 title: Android 中的中介身份验证 | Azure
+titlesuffix: Microsoft identity platform
 description: Microsoft 标识平台中适用于 Android 的中介身份验证和授权概述
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/14/2019
-ms.date: 11/01/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16f096fc721d827eac48db1c43a70f6c12cb7a5b
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 641a4096e3b20d7357f1c666f2c8d7c2cbcb04b0
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831049"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776838"
 ---
-# <a name="brokered-auth-in-android"></a>Android 中的中介身份验证
-
-## <a name="introduction"></a>简介
+# <a name="brokered-authentication-in-android"></a>Android 中的中介身份验证
 
 必须使用 Microsoft 的某个身份验证中介来参与设备范围的单一登录 (SSO) 并符合组织条件访问策略的要求。 与中介集成可提供以下优势：
 
@@ -130,3 +124,4 @@ MSAL 首先使用中介绑定服务，因为调用此服务不需要任何 Andro
 - 要求用户禁用 Microsoft Authenticator 应用和 Intune 公司门户的超级优化。
 - 要求用户授予 `"READ_CONTACTS"` 权限
 
+<!-- Update_Description: wording update -->

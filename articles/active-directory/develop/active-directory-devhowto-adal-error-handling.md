@@ -1,27 +1,23 @@
 ---
-title: Azure AD 身份验证库 (ADAL) 客户端的错误处理最佳做法
+title: ADAL 客户端应用错误处理最佳做法 | Azure
 description: 提供适用于 ADAL 客户端应用程序的错误处理指南和最佳做法。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: v-junlch
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 02/27/2017
-ms.date: 11/05/2019
+ms.date: 01/06/2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4904ee596de89e33bb2ea07b3824983d89128b2f
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 666cb21ed0ca9cb123f0991cdde527c057937dbc
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831000"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776861"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -578,6 +574,7 @@ window.Logging = {
     }
 };
 ```
+
 ## <a name="related-content"></a>相关内容
 
 * [Azure AD Developer's Guide][AAD-Dev-Guide]（Azure AD 开发人员指南）
@@ -600,4 +597,4 @@ window.Logging = {
 [AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->

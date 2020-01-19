@@ -1,6 +1,7 @@
 ---
-title: 将 SQL Server Integration Services 包重新部署到 Azure SQL 数据库 | Microsoft Docs
-description: 了解如何将 SQL Server Integration Services 包迁移到 Azure SQL 数据库。
+title: 将 SSIS 包重新部署到 SQL 单一数据库
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure 数据库迁移服务和数据迁移助手将 SQL Server Integration Services 包和项目迁移或重新部署到 Azure SQL 数据库单一数据库。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,18 +9,18 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 06/08/2019
-ms.date: 07/08/2019
-ms.openlocfilehash: 65ead18e0b6825727834da856afa5edf3d8ce651
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/13/2020
+ms.openlocfilehash: 17a04e54c23a52f0d50aa50c1f2253178564562e
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571479"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776689"
 ---
-# <a name="redeploy-sql-server-integration-services-packages-to-azure-sql-database"></a>将 SQL Server Integration Services 包重新部署到 Azure SQL 数据库
+# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务将 SSIS 包重新部署到 Azure SQL 数据库
 
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Sever 托管的源 SSISDB 迁移到 Azure SQL 数据库托管的目标 SSISDB，可以使用 Integration Services 部署向导来重新部署它们。 可以从 SQL Server Management Studio (SSMS) 中启动向导。
 
@@ -34,7 +35,7 @@ ms.locfileid: "67571479"
 > * 评估源 SSIS 项目/包。
 > * 将 SSIS 项目/包迁移到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成这些步骤，需满足以下条件：
 

@@ -9,15 +9,15 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-origin.date: 11/08/2019
-ms.date: 12/05/2019
+origin.date: 12/09/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a420854524e6131d5a49c72cea5afd52f2f47f36
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: ef73ff1dd10440a1804de81e38a7cadf60c74b78
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884586"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858144"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -33,13 +33,27 @@ LUIS 理解以下语言：
 
 | 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
-| [中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-
-
+| 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
+| 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|-|-|-|-|
+| *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
+| 荷兰语 |`nl-NL` |✔|  -   |-|✔|
+| 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
+| 法语（加拿大） |`fr-CA` |-|   -   |-|✔|
+| 德语 |`de-DE` |✔| ✔ |✔ |✔|
+| Hindi | `hi-IN`|-|-|-|-|
+| 意大利语 |`it-IT` |✔| ✔ |✔|✔|
+| *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
+| 朝鲜语 |`ko-KR` |✔|   -   |-|仅关键短语|
+| 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
+| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
+| 西班牙语（墨西哥）|`es-MX` |-|  -   |✔|✔|
+| 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。
 
-### <a name="chinese-support-notes"></a>*中文支持说明
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
+
+### <a name="japanese-support-notes"></a>*日语支持说明
 
  - 在 `zh-cn` 区域性中，LUIS 要求简体中文字符集，而不是繁体字符集。
  - 意向、实体、功能和正则表达式的名称可采用中文或罗马字符。
@@ -57,4 +71,17 @@ LUIS 理解以下语言：
 
 |语言|  每个空格或特殊字符 | 字符级|复合词|[返回的切分后的实体](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
+|阿拉伯语|||||
 |中文||✔||✔|
+|荷兰语|||✔|✔|
+|英语 (en-us)|✔ ||||
+|法语 (fr-FR)|✔||||
+|法语 (fr-CA)|✔||||
+|德语|||✔|✔|
+| Hindi |✔|-|-|-|-|
+|意大利语|✔||||
+|日语||||✔|
+|朝鲜语||✔||✔|
+|葡萄牙语（巴西）|✔||||
+|西班牙语 (es-ES)|✔||||
+|西班牙语 (es-MX)|✔||||

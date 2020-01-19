@@ -1,6 +1,6 @@
 ---
-title: Android - Microsoft 标识平台入门 | Azure
-description: Android 应用如何从 Microsoft 标识平台获取访问令牌并调用 Microsoft Graph API 或需要访问令牌的 API。
+title: 登录/注销用户并调用 Microsoft Graph (Android) - Microsoft 标识平台 | Azure
+description: 从 Microsoft 标识平台 (Android) 获取访问令牌并调用需要访问令牌的 Microsoft Graph 或 API
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -11,20 +11,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/10/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f2c7909b2f41874674364dcc1786ab11b0331ca
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: d873cbefc075b940e46618b9c63a009511f441a4
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830899"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776918"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>教程：从 Android 应用将用户登录并调用 Microsoft Graph
+# <a name="tutorial-sign-users-inout-and-call-the-microsoft-graph-from-an-android-app"></a>教程：从 Android 应用登录/注销用户并调用 Microsoft Graph
 
 > [!NOTE]
 > 本教程尚未更新为使用适用于 Android 1.0 版库的 MSAL。 它可以与本教程中配置的早期版本配合使用。
@@ -59,7 +58,7 @@ ms.locfileid: "73830899"
 
  MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录 (SSO)，并管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 本教程需要 Android Studio 版本 3.5。
 

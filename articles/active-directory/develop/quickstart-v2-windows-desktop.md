@@ -2,28 +2,22 @@
 title: Microsoft 标识平台 Windows 桌面快速入门 | Microsoft Docs
 description: 了解 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 07/16/2019
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f48375a92937f74ef70de3a180cf14dde9728f7f
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 8cd7e9240dd15a303f000c21e5559027a2b3c127
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134293"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777054"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -56,13 +50,12 @@ ms.locfileid: "70134293"
 >      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。  
 >      - 选择“注册”  以创建应用程序。
 > 1. 在应用的页面列表中，选择“身份验证”。 
-> 1. 展开“桌面 + 设备”部分。   （如果“桌面 + 设备”不可见，首先请单击顶部的横幅，以便查看预览版身份验证体验） 
-> 1. 在“重定向 URI”部分下选择“添加 URI”。    键入 **urn:ietf:wg:oauth:2.0:oob**。
+> 1. 在“重定向 URI”   | “建议用于公共客户端(移动、桌面)的重定向 URI”  部分中，选中 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
 > 1. 选择“保存”  。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 要使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 urn:ietf:wg:oauth:2.0:oob  。
+> 要使此快速入门的代码示例正常运行，需要将答复 URL 添加为 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >

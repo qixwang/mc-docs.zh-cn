@@ -1,6 +1,7 @@
 ---
-title: 使用数据库迁移服务和 PowerShell 将 SQL Server 迁移到 Azure SQL 数据库 | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL 数据库。
+title: Powershell：将 SQL Server 迁移到 SQL 数据库
+titleSuffix: Azure Database Migration Service
+description: 了解如何通过 Azure PowerShell 使用 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 03/12/2019
-ms.date: 05/20/2019
-ms.openlocfilehash: 30008dce8e48ec29dc5a7cebcc7fa978c2bc5827
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+ms.date: 01/13/2020
+ms.openlocfilehash: 03c72eb17177b9b27a1b236349769ad370bd967a
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952148"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776629"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL 数据库
 在本文中，我们将使用 Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Azure PowerShell 中的 `Az.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。
@@ -29,7 +30,7 @@ ms.locfileid: "68952148"
 > * 在 Azure 数据库迁移服务实例中创建迁移项目。
 > * 运行迁移。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成这些步骤，需满足以下条件：
 
 - [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)（任意版本）
@@ -181,6 +182,9 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
 -  SourceCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到源服务器。
 -  TargetCred。 [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) 对象，用于连接到目标服务器。
 -  SelectedDatabase。 表示源和目标数据库映射的 AzDataMigrationSelectedDB 对象。
+- *SchemaValidation*。 （可选，开关参数）迁移后，在源和目标之间执行架构信息比较。
+- *DataIntegrityValidation*。 （可选，开关参数）迁移后，在源和目标之间执行基于校验和的数据完整性验证。
+- *QueryAnalysisValidation*。 （可选，开关参数）迁移后，通过从源数据库检索查询并在目标中执行查询来执行快速智能的查询分析。
 
 以下示例创建并启动名为 myDMSTask 的迁移任务：
 
@@ -195,6 +199,24 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb `
   -TargetConnection $targetConnInfo `
   -TargetCred $targetCred `
   -SelectedDatabase  $selectedDbs `
+```
+
+以下示例创建并启动与上面相同的迁移任务，但还执行所有三项验证：
+
+```powershell
+$migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDb `
+  -ResourceGroupName myResourceGroup `
+  -ServiceName $service.Name `
+  -ProjectName $project.Name `
+  -TaskName myDMSTask `
+  -SourceConnection $sourceConnInfo `
+  -SourceCred $sourceCred `
+  -TargetConnection $targetConnInfo `
+  -TargetCred $targetCred `
+  -SelectedDatabase  $selectedDbs `
+  -SchemaValidation `
+  -DataIntegrityValidation `
+  -QueryAnalysisValidation `
 ```
 
 ## <a name="monitor-the-migration"></a>监视迁移

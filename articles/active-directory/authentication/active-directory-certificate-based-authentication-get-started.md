@@ -1,23 +1,22 @@
 ---
-title: 基于证书的身份验证入门 - Azure Active Directory
+title: 基于证书的身份验证 - Azure Active Directory
 description: 了解如何在环境中配置基于证书的身份验证
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-origin.date: 01/15/2018
-ms.date: 04/08/2019
+ms.date: 01/09/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f9402dc5df347900d58649dbb55f748b0a9630
-ms.sourcegitcommit: 1e18b9e4fbdefdc5466db81abc054d184714f2b4
+ms.openlocfilehash: fc1c7f572fcc1d0cac3d7e4efb02b4ec95076f90
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59243676"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776893"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -37,13 +36,16 @@ ms.locfileid: "59243676"
 
 若要配置基于证书的身份验证，以下语句必须为真：
 
-- 仅使用新式身份验证 (ADAL) 的浏览器应用程序或本机客户端的联合环境支持基于证书的身份验证 (CBA)。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
+- 仅浏览器应用程序的联合环境、使用新式身份验证 (ADAL) 的本机客户端或 MSAL 库支持基于证书的身份验证 (CBA)。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
 - 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。
 - 必须已在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在 [配置证书颁发机构](#step-2-configure-the-certificate-authorities) 部分查找相关步骤。
 - 对于 Exchange ActiveSync 客户端，客户端证书的“使用者可选名称”字段的主体名称或 RFC822 名称值必须为 Exchange Online 中用户的可路由电子邮件地址。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
 - 客户端设备必须能够访问至少一个颁发客户端证书的证书颁发机构。
 - 必须已向客户端颁发用于客户端身份验证的客户端证书。
+
+>[!IMPORTANT]
+>Azure Active Directory 成功下载和缓存的 CRL 的最大大小为 20MB，下载 CRL 所需的时间不得超过 10 秒。  如果 Azure Active Directory 无法下载 CRL，则使用相应 CA 颁发的证书进行的基于证书的身份验证将失败。 确保 CRL 文件符合大小限制的最佳做法是将证书生存期保持在合理的限制内，并清理过期的证书。 
 
 ## <a name="step-1-select-your-device-platform"></a>步骤 1：选择设备平台
 
@@ -137,7 +139,7 @@ ms.locfileid: "59243676"
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
-若要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
+若要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。  将定期引用 CRL，以撤销对该列表中证书的访问权限。
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 
@@ -145,7 +147,7 @@ ms.locfileid: "59243676"
 
 以下步骤概述了通过设置 **StsRefreshTokenValidFrom** 字段更新授权令牌并使其失效的过程。
 
-**若要配置撤销，请执行以下操作：**
+**若要配置吊销，请执行以下操作：**
 
 1. 使用管理员凭据连接到 MSOL 服务：
 
@@ -169,7 +171,7 @@ ms.locfileid: "59243676"
 
 作为第一个配置测试，应尝试使用**设备上的浏览器**登录 [Outlook Web Access](https://outlook.office365.com) 或 [SharePoint Online](https://microsoft.sharepoint.com)。
 
-如果登录成功，则表示：
+如果登录成功，则可确定：
 
 - 已为测试设备预配用户证书
 - 已正确配置 AD FS
@@ -209,4 +211,4 @@ EAS 配置文件必须包含以下信息：
 
 [有关 iOS 设备上基于证书的身份验证的其他信息。](active-directory-certificate-based-authentication-ios.md)
 
-<!-- Update_Description: update metedata properties -->
+<!-- Update_Description: wording update -->

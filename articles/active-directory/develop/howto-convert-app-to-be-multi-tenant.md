@@ -1,30 +1,26 @@
 ---
-title: 如何构建可让任何 Azure AD 用户登录的应用
+title: 生成登录 Azure AD 用户的应用
+titleSuffix: Microsoft identity platform
 description: 介绍如何生成可让用户从任何 Azure Active Directory 租户进行登录的多租户应用程序。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/22/2019
-ms.date: 08/23/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213872f5b17d851f0a0fa657728f3fce081e9f23
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 1b39607080a5ff927cc81acbd5069421017b67ad
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993219"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776841"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -42,7 +38,7 @@ ms.locfileid: "69993219"
 3. [将代码更新为处理多个颁发者值](#update-your-code-to-handle-multiple-issuer-values)
 4. [了解用户和管理员的同意意向并进行适当的代码更改](#understand-user-and-admin-consent)
 
-让我们详细了解每个步骤。 也可以直接跳转到[此多租户示例列表][AAD-Samples-MT]。
+让我们详细了解每个步骤。 也可以直接跳转到[此多租户示例列表](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
 
@@ -180,7 +176,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="related-content"></a>相关内容
 
-* [Multi-tenant application samples][AAD-Samples-MT]（多租户应用程序示例）
+* [Multi-tenant application samples](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)（多租户应用程序示例）
 * [适用于应用程序的品牌准则][AAD-App-Branding]
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
@@ -198,7 +194,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 [AAD-Graph-Overview]: active-directory-graph-api.md
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
+[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.cn
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview

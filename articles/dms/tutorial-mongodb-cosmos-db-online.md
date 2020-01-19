@@ -1,6 +1,7 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API | Microsoft Docs
-description: 了解如何使用 Azure 数据库迁移服务从本地 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
+title: 教程：将 MongoDB 联机迁移到用于 MongoDB 的 Azure Cosmos DB API
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure 数据库迁移服务从本地 MongoDB 联机迁移到 Azure Cosmos DB API for MongoDB。
 services: dms
 author: WenJason
 ms.author: v-jay
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 09/25/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 3aae2a81a6321dd153d82bb092b189bd199bad99
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 01/13/2020
+ms.openlocfilehash: 0ab29a57bcc0d05a61e03da9eefceca37f0172a6
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416224"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776647"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -44,13 +45,13 @@ ms.locfileid: "73416224"
 
 本文介绍从 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。 有关脱机迁移方法，请参阅[使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API](tutorial-mongodb-cosmos-db.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
-- 完成迁移前步骤，例如估计吞吐量、选择分区键和索引策略。
-- [创建 Azure Cosmos DB 的用于 MongoDB 的 API 帐户](https://portal.azure.cn/#create/Microsoft.DocumentDB)。
-- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* [完成迁移前](../cosmos-db/mongodb-pre-migration.md)步骤，例如估计吞吐量、选择分区键和索引策略。
+* [创建 Azure Cosmos DB 的用于 MongoDB 的 API 帐户](https://portal.azure.cn/#create/Microsoft.DocumentDB)。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
 
     > [!NOTE]
     > 在设置 VNET 期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
@@ -245,7 +246,7 @@ ms.locfileid: "73416224"
 
 ## <a name="post-migration-optimization"></a>迁移后优化
 
-将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 你还可以执行其他迁移后优化步骤，例如优化索引策略，为你的 Azure Cosmos DB 帐户更新默认一致性级别或配置全局分发。
+将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 你还可以执行其他迁移后优化步骤，例如优化索引策略，为你的 Azure Cosmos DB 帐户更新默认一致性级别或配置全局分发。 有关详细信息，请参阅[迁移后优化](../cosmos-db/mongodb-post-migration.md)一文。
 
 ## <a name="additional-resources"></a>其他资源
 
