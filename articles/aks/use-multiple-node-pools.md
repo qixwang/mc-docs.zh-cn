@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 12/16/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: c96d9f227048414fdd8bf5d9c14429c8959659df
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 4c0c38c929f51e181bda6bc244dbe7bfbdf10647
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859837"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165412"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -36,11 +36,11 @@ ms.locfileid: "75859837"
 * 无法使用 HTTP 应用程序路由加载项。
 * AKS 群集必须通过标准 SKU 负载均衡器来使用多个节点池，而基本 SKU 负载均衡器并不支持该功能。
 * AKS 群集必须对节点使用虚拟机规模集。
-* 无法像执行大部分操作时那样使用现有的资源管理器模板来来添加或删除节点池， 而只能[使用单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)对 AKS 群集中的节点池进行更改。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 Linux 节点池的名称长度必须为 1 到 12 个字符；Windows 节点池的名称长度必须为 1 到 6 个字符。
 * AKS 群集最多可以包含 8 个节点池。
 * AKS 群集在这八节点池中最多可以有 800 个节点。
-* 所有节点池必须位于同一子网中。
+* 所有节点池必须位于同一 vnet 和子网中。
+* 在创建群集的过程中创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与已为控制平面设置的版本相匹配。 这可以在已使用每节点池操作预配了群集后更新。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
@@ -604,9 +604,9 @@ az group delete --name myResourceGroup --yes --no-wait
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 
-    <!--Not Available on [aks-windows]: windows-container-cli.md-->
+<!--Not Available on [aks-windows]: windows-container-cli.md-->
     
 [az-group-deployment-create]: https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create
 
-<!-- Update_Description: new article about use multiple node pools -->
-<!--NEW.date: 12/16/2019-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->
