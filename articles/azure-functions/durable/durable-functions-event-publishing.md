@@ -1,21 +1,14 @@
 ---
 title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 03/14/2019
-ms.date: 11/18/2019
-ms.author: v-junlch
-ms.openlocfilehash: c3d78c51ec16166d7be333535d9dc8d0ec686b52
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.date: 01/14/2020
+ms.openlocfilehash: 1ecbe806ff25501cb09913fbb8feafa722893466
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179160"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116910"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -29,7 +22,7 @@ ms.locfileid: "74179160"
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 在 Durable Functions 项目中安装 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。
 * 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)。
@@ -91,7 +84,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 可能的 Azure 事件网格配置属性可以在 [host.json 文档](../functions-host-json.md#durabletask)中找到。 配置 `host.json` 文件后，函数应用将生命周期事件发送到事件网格主题。 这适用于同时在本地和 Azure 中运行函数应用的情况。
 
-在函数应用和 `local.setting.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
+在函数应用和 `local.settings.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
 
 ```json
 {
@@ -269,7 +262,7 @@ namespace LifeCycleEventSpike
 * **`id`** ：事件网格事件的唯一标识符。
 * **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **`data`** ：Durable Functions 特定的参数。
-  * **`hubName`** ：[任务中心](durable-functions-task-hubs.md)名称。
+  * **`hubName`** ：任务中心](durable-functions-task-hubs.md)名称。
   * **`functionName`** ：业务流程协调程序函数名称。
   * **`instanceId`** ：Durable Functions instanceId。
   * **`reason`** ：与跟踪事件关联的其他数据。 
@@ -292,3 +285,4 @@ namespace LifeCycleEventSpike
 > [!div class="nextstepaction"]
 > [了解 Durable Functions 中的版本控制](durable-functions-versioning.md)
 
+<!-- Update_Description: wording update -->

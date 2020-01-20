@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 12/16/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 770c50fa5b3bf0f7cb62053b6896bd8f8d94e95d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c96d9f227048414fdd8bf5d9c14429c8959659df
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348571"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859837"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -39,7 +39,7 @@ ms.locfileid: "75348571"
 * 无法像执行大部分操作时那样使用现有的资源管理器模板来来添加或删除节点池， 而只能[使用单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)对 AKS 群集中的节点池进行更改。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 Linux 节点池的名称长度必须为 1 到 12 个字符；Windows 节点池的名称长度必须为 1 到 6 个字符。
 * AKS 群集最多可以包含 8 个节点池。
-* AKS 群集的这 8 个节点池最多可以包含 400 个节点。
+* AKS 群集在这八节点池中最多可以有 800 个节点。
 * 所有节点池必须位于同一子网中。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
@@ -132,7 +132,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
 > [!NOTE]
-> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南](troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade)中的详细信息。
+> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南]([aks-pending-upgrade](troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade))中的详细信息。
 
 最初在第一个步骤中创建 AKS 群集时，为 `--kubernetes-version` 指定了 *1.13.10*。 这同时设置了控制平面和默认节点池的 Kubernetes 版本。 本部分中的命令说明如何升级单个特定的节点池。
 
@@ -600,7 +600,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [gpu-cluster]: gpu-cluster.md
 [az-group-delete]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest?view=azure-cli-latest
+[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 

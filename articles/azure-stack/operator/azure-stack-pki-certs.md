@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 09/10/2019
-ms.date: 11/18/2019
+origin.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 2225e38122b8863bc24406d3cd78162b86140e80
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 12/16/2019
+ms.openlocfilehash: 2b287b3b21404583e677d75e01d56542648b3427
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020059"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737903"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -38,7 +38,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 ## <a name="certificate-requirements"></a>证书要求
 以下列表描述了部署 Azure Stack 时需要满足的证书要求：
 
-- 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 如需完整列表，请参阅 [Microsoft 受信任根证书计划：参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)。
+- 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 如需完整列表，请参阅 [Microsoft 受信任根证书计划：参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)中找到完整列表。
 - Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 http 终结点。
 - 在 pre-1903 内部版本中轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发。 就 1903 及更高版本来说，证书可以由任何企业或公共证书颁发机构来颁发。
 - 不支持使用自签名证书。
@@ -57,7 +57,8 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 确保使用者名称与使用者可选名称扩展 (x509v3_config) 中的使用者可选名称匹配。 “使用者可选名称”字段允许你指定要受单个 SSL 证书保护的其他主机名（网站、IP 地址、公用名称）。
 
 > [!NOTE]  
-> 不支持自签名证书。
+> 不支持自签名证书。  
+> 在断开连接模式下部署 Azure Stack Hub 时，建议使用企业证书颁发机构颁发的证书。 这很重要，因为访问 Azure Stack 终结点的客户端必须能够联系证书吊销列表 (CRL)。
 
 > [!NOTE]  
 > 支持在证书的信任链中包含中间证书颁发机构。

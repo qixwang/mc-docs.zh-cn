@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 origin.date: 12/19/2019
-ms.date: 01/13/2019
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1c5f00952d748f0b5d2d281aae30327a3178186a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: d06a5eed4412d46342a9214aa307121d5043cde6
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631078"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123231"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -73,6 +73,8 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 认知服务中的 API 托管在不断扩大的 Microsoft 托管数据中心网络上。 你可以在 [Azure 区域列表](https://www.azure.cn/home/features/products-by-region)中找到每个 API 的区域可用性。
 
+正在寻找我们尚不支持的区域？ 请在我们的 [UserVoice 论坛](https://cognitive.uservoice.com/)上填写功能申请，告诉我们你的需求。
+
 ## <a name="supported-cultural-languages"></a>支持的区域性语言
 
  认知服务在服务级别支持各种区域性语言。 可以在[支持的语言列表](language-support.md)中找到每个 API 的语言可用性。
@@ -86,7 +88,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 认知服务已获得多种认证，例如 CSA STAR Certification、FedRAMP Moderate 和 HIPAA BAA。
 
-<!-- You can [download](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) certifications for your own audits and security reviews. -->
+可以[下载](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)认证自行进行审核和安全审查。
 
 若要了解隐私和数据管理，请转到[信任中心](https://www.trustcenter.cn/)。
 

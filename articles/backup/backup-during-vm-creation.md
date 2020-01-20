@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/13/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 38e166aacb9493014dc3ce187804ef20ec0d751c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: f3fbdd2874bac4cf48ef9d71fa78ff1ef38a5ead
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838899"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858199"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -51,8 +51,22 @@ ms.locfileid: "74838899"
 
       ![默认备份策略](./media/backup-during-vm-creation/daily-policy.png)
 
-> [!NOTE]
-> Azure 备份服务会创建一个单独的资源组（而非 VM 资源组）来存储快照，采用的命名格式为 **AzureBackupRG_geography_number**（例如：AzureBackupRG_northeurope_1）。 此资源组中的数据将按 Azure 虚拟机备份策略的“保留即时恢复快照”  部分中指定的天数保留。  对此资源组应用锁定可能会导致备份失败。 <br> 此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建资源点集合，从而导致备份失败。
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>虚拟机的 Azure 备份资源组
+
+备份服务将创建一个单独的资源组 (RG) 而非 VM 的资源组来存储还原点集合 (RPC)。 RPC 容纳托管 VM 的即时恢复点。 备份服务创建的资源组的默认命名格式为 `AzureBackupRG_<Geo>_<number>`。 例如：*AzureBackupRG_northeurope_1*。 现在可以自定义 Azure 备份创建的资源组名称。
+
+需要注意的要点：
+
+1. 可以使用 RG 的默认名称，也可以根据公司要求对其进行编辑。
+2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可以有 600 个 RPC。
+              ![创建策略时选择名称](./media/backup-during-vm-creation/create-policy.png)
+3. 该模式应遵循下面的 RG 命名规则，并且总长度不应超过允许的最大 RG 名称长度。
+    1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结尾。
+    2. 资源组名称最多可包含 74 个字符，包括 RG 名称和后缀。
+4. 第一个 `<alpha-numeric-string>` 是必需的，但“n”后面的第二个是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
+5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧 RG 中，不会被删除，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
+![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
+6. 建议不要锁定为了供备份服务使用而创建的资源组。
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>在创建 VM 后启动备份
 

@@ -1,7 +1,6 @@
 ---
 title: 从 Azure 流分析输出到 Azure SQL 数据库
 description: 了解如何将数据从 Azure 流分析输出到 SQL Azure，并实现更高的写入吞吐量速率。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 03/18/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: 8a4323c5195ba895472856b3e7c14da2af47e3c9
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 28adff42c3b9df51ecf286d6339cab337ef3f222
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528407"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75855173"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
