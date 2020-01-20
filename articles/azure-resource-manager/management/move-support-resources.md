@@ -1,16 +1,16 @@
 ---
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
-ms.topic: reference
-origin.date: 10/24/2019
+ms.topic: conceptual
+origin.date: 01/02/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 9c7638f0fe2bdf57648fcfda1c6909c4dab6b5eb
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: f69828c7c6d054dfb08a268f9e165c2e07cc2972
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631142"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165458"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -191,12 +191,23 @@ ms.locfileid: "75631142"
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
+<!--MOONCAKE CUSTOMIZATION: PROFILES AND PROFILES / ENDPOOINTS IS NO FOR SUBSCRIPTION-->
+<!--UPDATE CAREFULLY, CORRECT BY EMAIL-->
+
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | 否 | 否 |
-> | 配置文件 | 是 | 是 |
-> | profiles/endpoints | 是 | 是 |
+> | 配置文件 | 是 | 否 |
+> | profiles/endpoints | 是 | 否 |
+
+> [!NOTE]
+> 目前，Azure 中国不支持有关跨订阅移动 CDN 资源的自助服务。
+> 当尝试在 Azure 中国中跨订阅移动 CDN 配置文件或配置文件/终结点时，请联系 [Azure 支持](https://support.azure.cn/support/contact/)或在 [Azure 支持网站](https://support.azure.cn/support/support-azure/)上提交请求以获得帮助。
+> 
+
+<!--UPDATE CAREFULLY, CORRECT BY EMAIL-->
+<!--MOONCAKE CUSTOMIZATION: PROFILES AND PROFILES / ENDPOOINTS IS NO FOR SUBSCRIPTION-->
 
 <!-- Not Available on ## Microsoft.CertificateRegistration-->
 
@@ -384,6 +395,7 @@ ms.locfileid: "75631142"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | domains | 是 | 是 |
+> | eventSubscriptions | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 |
 > | topics | 是 | 是 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -439,10 +451,8 @@ ms.locfileid: "75631142"
 > | webtests | 是 | 是 |
 > | workbooks | 是 | 是 |
 
-<!--MOONCAKE: CORRECT ON #monitor-limits -->
-
 > [!IMPORTANT]
-> 确保移到新订阅时，不会超出[订阅配额](../../azure-subscription-service-limits.md#azure-monitor-limits)。
+> 确保移到新订阅时，不会超出[订阅配额](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -556,6 +566,7 @@ ms.locfileid: "75631142"
 > | publicipprefixes | 是 | 是 |
 > | routefilters | 否 | 否 |
 > | routetables | 是 | 是 |
+> | securegateways | 是 | 是 |
 > | serviceendpointpolicies | 是 | 是 |
 > | trafficmanagerprofiles | 是 | 是 |
 > | virtualhubs | 否 | 否 |
@@ -585,12 +596,8 @@ ms.locfileid: "75631142"
 > | ------------- | ----------- | ---------- |
 > | workspaces | 是 | 是 |
 
-<!--MOONCAKE: CORRECT ON #monitor-limits -->
-
 > [!IMPORTANT]
-> 确保移到新订阅时，不会超出[订阅配额](../../azure-subscription-service-limits.md#monitor-limits)。
-
-<!--MOONCAKE: CORRECT ON #monitor-limits -->
+> 确保移到新订阅时，不会超出[订阅配额](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits)。
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 

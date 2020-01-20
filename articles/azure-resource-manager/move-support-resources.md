@@ -4,12 +4,12 @@ description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: reference
 origin.date: 10/24/2019
 ms.date: 11/25/2019
-ms.openlocfilehash: 8919d1c9b4f08b7e234ee5155d78f1935d3124ed
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 41fe21aa0105b75eb90ded91fcb9a43e20ab9382
+ms.sourcegitcommit: 742f6d7b67d5350d83b2551d09c32a40d4d2e20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389349"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912549"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -182,12 +182,23 @@ ms.locfileid: "74389349"
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
+<!--MOONCAKE CUSTOMIZATION: PROFILES AND PROFILES / ENDPOOINTS IS NO FOR SUBSCRIPTION-->
+<!--UPDATE CAREFULLY-->
+
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | 否 | 否 |
-> | 配置文件 | 是 | 是 |
-> | profiles/endpoints | 是 | 是 |
+> | 配置文件 | 是 | 否 |
+> | profiles/endpoints | 是 | 否 |
+
+> [!NOTE]
+> 目前，Azure 中国不支持有关跨订阅移动 CDN 资源的自助服务。
+> 当尝试在 Azure 中国中跨订阅移动 CDN 配置文件或配置文件/终结点时，请联系 [Azure 支持](https://support.azure.cn/support/contact/)或在 [Azure 支持网站](https://support.azure.cn/support/support-azure/)上提交请求以获得帮助。
+> 
+
+<!--UPDATE CAREFULLY-->
+<!--MOONCAKE CUSTOMIZATION: PROFILES AND PROFILES / ENDPOOINTS IS NO FOR SUBSCRIPTION-->
 
 <!-- Not Available on ## Microsoft.CertificateRegistration-->
 
