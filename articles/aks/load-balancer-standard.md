@@ -134,7 +134,7 @@ az aks update \
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>在创建群集时定义自己的公共 IP 或前缀
 
-在创建群集时，你可能想要使用自己的出口 IP 地址或 IP 前缀，以支持出口终结点白名单等方案。 将上面所示的相同参数追加到群集创建步骤，可在群集生命周期的起始部分定义自己的公共 IP 和 IP 前缀。
+在创建群集时，你可能想要使用自己的出口 IP 地址或 IP 前缀，以支持出口终结点允许列表等方案。 将上面所示的相同参数追加到群集创建步骤，可在群集生命周期的起始部分定义自己的公共 IP 和 IP 前缀。
 
 结合 *load-balancer-outbound-ips* 参数使用 *az aks create* 命令可在启动时使用你的公共 IP 创建新的群集。
 
