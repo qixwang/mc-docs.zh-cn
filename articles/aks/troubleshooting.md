@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: troubleshooting
 origin.date: 12/13/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: a62aa0a2c2b982db1370543c5dc3b3f977893fc4
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 0787abc07ef79a9a9b5378379f371c197f1c0c80
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859845"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165415"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -83,13 +83,12 @@ ms.locfileid: "75859845"
     * 使用高级网络和**不足的子网（网络）资源**缩放群集。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高资源配额](../azure-resource-manager/templates/error-resource-quota.md#solution)，然后尝试扩展到超出初始配额限制。
 2. 解决升级失败的根本原因后，群集应会进入成功状态。 确认处于成功状态后，重试原始操作。
 
+<a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>尝试升级或缩放群集时，有错误指出我的群集当前正在升级或升级失败
 
 *此故障排除帮助摘自 [aks-pending-upgrade](troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade)*
 
-使用单节点池时，群集上的升级和缩放操作是互斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 因此，如果当前正在执行升级或缩放操作，或者曾经尝试过这些操作，但随后失败，则其他操作会受到限制。 
-
-<!--MOONCAKE: Not Available on [multiple node pools](use-multiple-node-pools.md)-->
+带有单个节点池或[多个节点池](use-multiple-node-pools.md)的群集上的升级和缩放操作是互斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 因此，如果当前正在执行升级或缩放操作，或者曾经尝试过这些操作，但随后失败，则其他操作会受到限制。 
 
 若要诊断此问题，请运行 `az aks show -g myResourceGroup -n myAKSCluster -o table` 检索群集上的详细状态。 根据结果：
 
@@ -100,7 +99,21 @@ ms.locfileid: "75859845"
 
 如果你已将 AKS 群集移动到其他订阅，或者将拥有订阅的群集移动到新租户，则群集将会由于失去角色分配和服务主体权限而丢失功能。 由于此约束，**AKS 不支持在订阅或租户之间移动群集**。
 
-<!--Not Available on ## I'm receiving errors trying to use features that require virtual machine scale sets-->
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>尝试使用需要虚拟机规模集的功能时收到错误
+
+*此故障排除帮助来自 aka.ms/aks-vmss-enablement*
+
+可能会收到指示 AKS 群集不在虚拟机规模集上的错误，例如：
+
+**AgentPool“agentpool”已将自动缩放设置为已启用，但它未在虚拟机规模集上**
+
+若要使用群集自动缩放程序或多节点池等功能，必须创建使用虚拟机规模集的 AKS 群集。 如果尝试使用依赖于虚拟机规模集的功能，并以常规的非虚拟机规模集 AKS 群集为目标，则会返回错误。
+
+按照相应文档中的*开始之前*步骤操作，以便正确创建 AKS 群集：
+
+<!--Not Available on * [Use the cluster autoscaler](cluster-autoscaler.md)-->
+
+* [创建和使用多个节点池](use-multiple-node-pools.md)
 
 ## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>针对 AKS 资源和参数强制实施了什么命名限制？
 
@@ -444,5 +457,12 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 几分钟后，代理节点将使用更新的存储密钥重试 Azure 文件装载。
 
+<!--Not Available on ### Cluster autoscaler fails to scale with error failed to fix node group sizes-->
+
+<!-- LINKS - internal -->
+
 [view-master-logs]: view-master-logs.md
-<!--Update_Description: wording update-->
+
+<!--Not Available on [cluster-autoscaler]: cluster-autoscaler.md-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

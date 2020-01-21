@@ -150,7 +150,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 
-不支持扩展扩展或链式复制。 
+不支持扩展或链式复制。 
 
 <!--Not Available on Request this feature in the [feedback forum](https://support.azure.cn/en-us/support/contact/)-->
 
