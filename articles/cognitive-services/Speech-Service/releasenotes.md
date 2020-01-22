@@ -9,26 +9,43 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 056efe2affc53728a459e9c7e9a44deca6308d7a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 75624e7ebbb1af56726dbdf9bbc8a213a75f56d1
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630777"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123294"
 ---
 # <a name="release-notes"></a>发行说明
 
-<!-- ## Speech SDK 1.8.0: 2019-November release -->
+## <a name="speech-sdk-180-2019-november-release"></a>语音 SDK 1.8.0：2019-November 版本
 
-<!-- **New Features** -->
+**新功能**
 
+- 通过 Nuget 和 Unity 包在 Windows (UWP)、Android 和 iOS 上添加了 `KeywordRecognizer` 支持
+
+<!-- - Added a `FromHost()` API, to ease use with on-prem containers and sovereign clouds. -->
+<!-- - Added Automatic Source Language Detection for Speech Recognition (in Java and C++) -->
+<!-- - Added `SourceLanguageConfig` object for Speech Recognition, used to specify expected source languages (in Java and C++) -->
 <!-- - Added Remote Conversation Java API to do Conversation Transcription in asynchronous batches. -->
+
+**重大更改**
+
+- 对话听录器功能已移到 `Microsoft.CognitiveServices.Speech.Transcription` 命名空间下。
+- 部分对话听录器方法已移到新的 `Conversation` 类。
+- 放弃了对 32 位（ARMv7 和 x86）iOS 的支持
+
+**Bug 修复**
+
+- 针对以下问题进行了修复：如果在不使用有效语音服务订阅密钥的情况下使用本地 `KeywordRecognizer`，则会发生故障
 
 **示例**
 
+- `KeywordRecognizer` 的 Xamarin 示例
+- `KeywordRecognizer` 的 Unity 示例
 - 用于自动源语言检测的 C++ 和 Java 示例。
 
 ## <a name="speech-sdk-170-2019-september-release"></a>语音 SDK 1.7.0：2019-September 版本
@@ -40,6 +57,9 @@ ms.locfileid: "75630777"
 - 添加了对 Android、iOS 和 Linux 上的 ALaw、Mulaw、FLAC 的 `Compressed` 输入支持
 - 在 `Connection` 类中添加了 `SendMessageAsync`，用于向服务发送消息
 - 在用于设置消息属性 `Connection` 类中添加了 `SetMessageProperty`
+- TTS 为 Java（Jre 和 Android）、Python、Swift 和 Objective-C 添加了绑定
+- TTS 添加了对 macOS、iOS 和 Android 的播放支持。
+- 为 TTS 添加了“字边界”信息。
 
 **Bug 修复**
 
@@ -63,7 +83,9 @@ ms.locfileid: "75630777"
 
 **示例**
 
+- UWP 和 Unity 上的文本转语音快速入门示例
 - iOS 上的 Swift 快速入门示例
+- 用于语音和翻译的 Unity 示例
 - `DialogServiceConnector` 的更新的快速入门示例
 
 **改进 / 更改**
@@ -72,6 +94,8 @@ ms.locfileid: "75630777"
   - `SpeechBotConnector` 已重名为 `DialogServiceConnector`
   - `BotConfig` 已重名为 `DialogServiceConfig`
   - `BotConfig::FromChannelSecret()` 已重新映射到 `DialogServiceConfig::FromBotSecret()`
+  - 重命名后，仍旧支持所有现有的 Direct Line 语音客户端
+- 更新了 TTS REST 适配器以支持代理和持久连接
 - 改写了传递无效区域时出现的错误消息
 - Swift/Objective-C：
   - 改进了错误报告：可能导致出错的方法现在有两个版本：一个版本公开用于错误处理的 `NSError` 对象，另一个版本引发异常。 前者向 Swift 公开。 此项更改需要对现有的 Swift 代码进行改编。
@@ -79,6 +103,7 @@ ms.locfileid: "75630777"
 
 **Bug 修复**
 
+- 针对 TTS 进行了以下问题的修复：`SpeakTextAsync` 不等到音频完成渲染就会提前返回
 - 修复了 C# 中的封送字符串，以支持完整语言
 - 修复了示例中的 .NET Core 应用问题，以使用 net461 目标框架加载核心库
 - 修复了示例中的偶发性问题，以将本机库部署到输出文件夹
@@ -94,12 +119,17 @@ ms.locfileid: "75630777"
 <!-- **Bug fixes** -->
 
 <!-- - Fix FromSubscription when used with Conversation Transcription. -->
+<!-- - Fix bug in keyword spotting for voice assistants. -->
 
 ## <a name="speech-sdk-150-2019-may-release"></a>语音 SDK 1.5.0：2019 年 5 月发布
 
 **新功能**
 
 - 短语提示功能通过 SDK 提供。 有关详细信息，请参阅[此文](how-to-phrase-lists.md)。
+
+<!-- - Keyword spotting (KWS) is now available for Windows and Linux. KWS functionality might work with any microphone type, official KWS support, however, is currently limited to the microphone arrays found in the Azure Kinect DK hardware or the Speech Devices SDK. -->
+<!-- - Conversation transcription functionality is available through the SDK. See [here](conversation-transcription-service.md). -->
+<!-- - Add support for voice assistants using the Direct Line Speech channel. -->
 
 **示例**
 
@@ -112,6 +142,9 @@ ms.locfileid: "75630777"
 - Objective-C：已将 `OutputFormat` 属性添加到 `SPXSpeechConfiguration`。
 - SDK 现在支持将 Debian 9 用作 Linux 分发版。
 
+**Bug 修复**
+
+- 修复了文本转语音中过早销毁讲述人资源的问题。
 
 ## <a name="speech-sdk-142"></a>语音 SDK 1.4.2
 
@@ -127,6 +160,7 @@ ms.locfileid: "75630777"
 
 **新功能**
 
+- SDK 现在支持 beta 版本的文本转语音服务。 Windows 和 Linux 桌面版中的 C++ 和 C# 支持该版本。 有关详细信息，请查看[文本转语音概述](text-to-speech.md#get-started)。
 - SDK 现在支持将 MP3 和 Opus/OGG 音频文件用作流输入文件。 此功能只能通过 C++ 和 C# 在 Linux 上使用，目前为 beta 版（更多详细信息请参见[此处](how-to-use-codec-compressed-audio-input-streams.md)）。
 - 适用于 Java、.NET Core C++和 Objective-C 的语音 SDK 已获得 macOS 支持。 macOS 的 Objective-C 支持目前以 beta 版提供。
 - iOS：适用于 iOS (Objective-C) 的语音 SDK 现在也已作为 CocoaPod 发布。
@@ -136,6 +170,7 @@ ms.locfileid: "75630777"
 **示例**
 
 - 添加了有关在 macOS 上的 C++ 和 Objective-C 中使用语音 SDK 的示例。
+- 已添加用于演示文本转语音服务用法的示例。
 
 **改进 / 更改**
 
@@ -170,7 +205,9 @@ ms.locfileid: "75630777"
 [示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk)中提供了以下新内容：
 
 - `AudioConfig.FromMicrophoneInput` 的其他示例。
+- 其他有关翻译的 Python 示例。
 - 有关在 iOS 中使用 `Connection` 对象的更多示例。
+- 有关具有音频输出的翻译的更多 Java 示例。
 - 有关使用[批量听录 REST API](batch-transcription.md) 的新示例。
 
 **改进 / 更改**
@@ -198,6 +235,7 @@ ms.locfileid: "75630777"
 - 对于某些语言&nbsp;/ 环境，由 SDK 创建的 SessionId 并非总是真正随机的。 已添加了随机生成器初始化来修复此问题。
 - 改进了对授权令牌的处理。 如果希望使用授权令牌，请在 `SpeechConfig` 中进行指定并将订阅密钥保留为空。 然后，像往常一样创建识别器。
 - 过去，在某些情况下，`Connection` 对象不能正确释放。 现在已修复此问题。
+- JavaScript 示例已修复，在 Safari 上也支持用于翻译合成的音频输出。
 
 ## <a name="speech-sdk-121"></a>语音 SDK 1.2.1
 
@@ -219,7 +257,7 @@ ms.locfileid: "75630777"
   - 适用于 JavaScript 的语音 SDK 已开放了源代码。 [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js) 上提供了源代码。
   - 我们现在支持 Node.js，可以在[此处](quickstart-js-node.md)找到详细信息。
   - 已删除了对音频会话的长度限制，将自动在后台进行重新连接。
-- `Connection` 对象
+- （属于`Connection` 对象）的父级。
   - 可以从 `Recognizer` 中访问 `Connection` 对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
     （此功能在 JavaScript 和 Python 中尚不可用。）
 - 支持 Ubuntu 18.04。
@@ -247,6 +285,7 @@ ms.locfileid: "75630777"
 
 **示例**
 
+- 更新并修复了几个示例（例如，翻译的输出语音，等等）。
 - 在[示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk)中添加了 Node.js 示例。
 
 ## <a name="speech-sdk-110"></a>语音 SDK 1.1.0

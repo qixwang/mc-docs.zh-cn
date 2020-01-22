@@ -6,17 +6,25 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
 origin.date: 08/14/2019
-ms.date: 09/02/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 27cabf58d4b77f37b550e8ecc59666c4eb221183
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: 1730aef1f37858142b833aed5dbf0b191de490f9
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131717"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939758"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
+
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>如果在使用证书身份验证进行连接时收到指示证书不匹配的消息，我该怎么办？
+
+取消选中“通过验证证书来验证服务器的标识”  ，或在手动创建配置文件时**将服务器 FQDN 随证书一起添加**。 为此，可以在命令提示符下运行 **rasphone**，并从下拉列表中选择配置文件。
+
+通常不建议绕过服务器标识验证，但在使用 Azure 证书身份验证的情况下，会在 VPN 隧道协议 (IKEv2/SSTP) 和 EAP 协议中将同一证书用于服务器验证。 由于服务器证书和 FQDN 已通过 VPN 隧道协议进行验证，因此在 EAP 中再次验证同一证书就是多余的。
+
+![点到站点](./media/vpn-gateway-faq-p2s-all-include/servercert.png "服务器证书")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>是否可以使用自己的内部 PKI 根 CA 来生成用于点到站点连接的证书？
 

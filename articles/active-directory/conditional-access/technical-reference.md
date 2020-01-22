@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: reference
-ms.date: 01/09/2020
+ms.date: 01/15/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fb517f1cfdba495f680819fd0d94937ee926e6
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: c6ce5134eae8ebd3bb21f357deb4a253631200be
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859409"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116740"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -29,8 +29,6 @@ ms.locfileid: "75859409"
 - 客户端应用程序条件
 - 批准的客户端应用程序要求
 
-如果这不是你要查找的信息，请在本文末尾留下评论。
-
 ## <a name="cloud-apps-assignments"></a>云应用分配
 
 使用条件访问策略，可以控制用户如何访问你的[云应用](conditions.md#cloud-apps-and-actions)。 配置条件访问策略时，至少需要一个云应用。 
@@ -41,6 +39,7 @@ ms.locfileid: "75859409"
 
 可以从 Microsoft 为以下云应用分配条件访问策略：
 
+- Office 365（预览版）
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL 数据库和数据仓库
@@ -71,6 +70,22 @@ ms.locfileid: "75859409"
 - Skype for Business Online
 - 虚拟专用网络 (VPN)
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365（预览版）
+
+Office 365 提供基于云的高效生产和协作服务，如 Exchange、SharePoint 和 Microsoft Teams。 Office 365 云服务已深度集成，以确保用户拥有顺畅的协作体验。 使用 Office 365（预览版）应用可以一次同时将这些服务作为目标。 我们建议使用新的 Office 365（预览版）应用，而不是以 Office 365 Exchange Online 和 Office 365 SharePoint Online 等单个云应用为目标，从而避免因不一致的策略和服务依赖项而导致的问题。
+
+Office 365（预览版）客户端应用中包含的关键应用程序：
+
+- Office 365 Exchange Online
+- Office 365 SharePoint Online
+- Microsoft Teams
+- Office 365 Yammer
+- Office 门户
+- Microsoft Forms
+- Microsoft Power Automate
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>其他应用程序
 
@@ -132,6 +147,29 @@ ms.locfileid: "75859409"
 
 在 Windows 7、iOS、Android 和 macOS 上，Azure AD 使用客户端证书来标识设备，该证书是在将设备注册到 Azure AD 时预配的。  用户首次通过浏览器登录时，系统会提示用户选择此证书。 用户必须在使用浏览器之前选择此证书。
 
+#### <a name="chrome-support"></a>Chrome 支持
+
+如需在 Windows 10 创意者更新（版本 1703）或更高版本中获得 Chrome 支持，请安装 Windows 10 Accounts 扩展  。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
+
+若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
+
+|    |    |
+| --- | --- |
+| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| 名称 | 1 |
+| 类型 | REG_SZ (String) |
+| 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+
+对于 Windows 8.1 和 7  中的 Chrome 支持，请创建以下注册表项：
+
+|    |    |
+| --- | --- |
+| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| 名称 | 1 |
+| 类型 | REG_SZ (String) |
+| 数据 | {"pattern":"https://device.login.partner.microsoftonline.cn","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+
+这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>支持的移动应用程序和桌面客户端
 
@@ -239,3 +277,4 @@ ms.locfileid: "75859409"
 <!--Image references-->
 [1]: ./media/technical-reference/01.png
 
+<!-- Update_Description: wording update -->

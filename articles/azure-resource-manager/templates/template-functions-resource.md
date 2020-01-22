@@ -2,15 +2,15 @@
 title: 模板函数 - 资源
 description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
-origin.date: 12/09/2019
+origin.date: 01/06/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: b0c664ed00c1272c87f0453c26f999b9f902483b
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 82749c2eecf6605d10b0aa02ecc6192de35f857d
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631316"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165376"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的资源函数
 
@@ -200,9 +200,15 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | microsoft.web/locations | listwsdlinterfaces |
 | microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
 | microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| microsoft.web/sites/backups | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listbackups) |
+| Microsoft.Web/sites/config | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listconfigurations) |
+| microsoft.web/sites/functions | [listkeys]()
 | microsoft.web/sites/functions | [listsecrets](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionsecrets) |
-| microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](https://docs.microsoft.com/rest/api/appservice/webapps/listhybridconnectionkeys) |
+| microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](https://docs.microsoft.com/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](https://docs.microsoft.com/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| microsoft.web/sites/slots/functions | [listsecrets](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/backups | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft.Web/sites/slots/config | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listconfigurationsslot) |
 | microsoft.web/sites/slots/functions | [listsecrets](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 若要确定哪些资源类型具有列表操作，请使用以下选项：
@@ -646,13 +652,13 @@ resourceGroup()
 }
 ```
 
-只有在资源组包含的资源由另一服务托管时，才会返回 **managedBy** 属性。 就 AKS 来说，此属性的值是管理资源的资源 ID。
+只有在资源组包含的资源由另一服务托管时，才会返回 **managedBy** 属性。 对于托管应用程序和 AKS，此属性的值是管理资源的资源 ID。
 
-<!--Not Available on Managed Applications, Databricks -->
+<!--Not Available on Databricks -->
 
 ### <a name="remarks"></a>备注
 
-`resourceGroup()` 函数不能用于[在订阅级别部署的](deploy-to-subscription.md)模板中。 它只能用于部署到资源组的模板中。
+`resourceGroup()` 函数不能用于[在订阅级别部署的](deploy-to-subscription.md)模板中。 它只能用于部署到资源组的模板中。 可以在以资源组为目标的[链接模板或嵌套模板（具有内部范围）](linked-templates.md)中使用 `resourceGroup()` 函数，即使父模板部署到订阅，也是如此。 在这种情况下，链接模板或嵌套模板将在资源组级别进行部署。 若要详细了解如何在订阅级别部署中将资源组作为目标，请参阅[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
 
 resourceGroup 函数的一个常见用途是在与资源组相同的位置中创建资源。 以下示例使用资源组位置作为默认参数值。
 

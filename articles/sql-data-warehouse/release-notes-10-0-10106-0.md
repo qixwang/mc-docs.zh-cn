@@ -6,18 +6,18 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
 origin.date: 11/12/2019
-ms.date: 01/06/2020
+ms.date: 01/20/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnick
 manager: digimobile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5c47a16b4f6b63da9bdc2ddef9ea08b4ab8eba0
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: e2b3f1611cc62db7610bb5e676b679d64bd2d5e0
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623634"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964890"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -38,6 +38,7 @@ ms.locfileid: "75623634"
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**Copy（预览版）**|我们很高兴地宣布，现已推出简单灵活 COPY 语句的公共预览版用于数据引入。 现在，只需一条语句就能无缝引入数据并获得更高的灵活性，且无需分配高特权用户。 有关详细信息，请参阅 [COPY 命令文档](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。|
+|**工作负载隔离（预览版）**|为了在客户使其数据仓库大众化时为客户提供支持，我们宣布推出用于智能工作负载管理的新功能。 新的[工作负载隔离](/sql-data-warehouse/sql-data-warehouse-workload-isolation)功能使你能够管理异类工作负载的执行，同时提供灵活性以及对数据仓库资源的控制。 这会提高执行可预测性，并增强满足预定义 SLA 的能力。 </br>除了工作负载隔离外，现在还有其他选项可用于[工作负载分类](/sql-data-warehouse/sql-data-warehouse-workload-classification)。  除了登录分类以外，[创建工作负载分类器](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)语法还提供根据查询标签、会话上下文和时间对请求进行分类的功能。|
 |**具体化视图（正式版）**|具体化视图会保留从视图定义查询返回的数据，并在基础表中的数据更改时自动更新。 它提高了复杂查询（通常是使用联接和聚合的查询）的性能，同时提供了简单的维护操作。 有关详细信息，请参阅[使用具体化视图优化性能](/sql-data-warehouse/performance-tuning-materialized-views)。  安装 [SQL Server Management Studio 18.4 或更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)可以编写具体化视图的脚本。|
 |**动态数据掩码（正式版）**|动态数据掩码 (DDM) 根据定义的掩码规则在查询结果中即时将数据仓库中的敏感数据模糊化，以防止有人未经授权访问这些数据。 有关详细信息，请参阅 [SQL 数据库动态数据掩码](/sql-database/sql-database-dynamic-data-masking-get-started)。|
 |**读取提交的快照隔离（正式版）**|可以使用 ALTER DATABSE 来为用户数据库启用或禁用快照隔离。 若要避免对当前工作负荷产生影响，可以在数据库维护期间设置此选项，或等到该数据库没有其他活动的连接时设置此选项。 有关详细信息，请参阅 [ALTER DATABASE SET 选项](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。|
@@ -52,7 +53,7 @@ ms.locfileid: "75623634"
 |**Azure 顾问一键式集成**|现在，SQL 数据仓库直接在概述边栏选项卡中与 Azure 顾问建议集成，并提供一键式体验。 现在可以在概述边栏选项卡中发现建议，而无需导航到 Azure 顾问边栏选项卡。 在[此处](sql-data-warehouse-concept-recommendations.md)详细了解建议。|
 |**读取提交的快照隔离（预览版）**|可以使用 ALTER DATABSE 来为用户数据库启用或禁用快照隔离。  若要避免对当前工作负荷产生影响，可以在数据库维护期间设置此选项，或等到该数据库没有其他活动的连接时设置此选项。 有关详细信息，请参阅 [ALTER DATABASE SET 选项](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。|
 |**EXECUTE AS (Transact-SQL)**| [EXECUTE AS](https://docs.microsoft.com/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) T-SQL 支持现已在 SQL 数据仓库中推出，使客户能够将会话的执行上下文设置为指定的用户。|
-|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围应用已扩展，现在支持： </br> - [FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys.user_token (Transact-SQL)](https://docs.microsoft.com/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
+|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围应用已扩展，现在支持： </br> - [FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys.user_token (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 
 ## <a name="july-2019"></a>2019 年 7 月
 

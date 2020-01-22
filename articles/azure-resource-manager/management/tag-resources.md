@@ -2,15 +2,15 @@
 title: 为逻辑组织标记资源
 description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
 ms.topic: conceptual
-origin.date: 12/05/2019
+origin.date: 01/03/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 085fac900b73f08453ebf2912de59f363a6cd8aa
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: aab6fb5df024d45cc8cda070b9a0b8926bf4c97f
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631667"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165469"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -214,60 +214,73 @@ az group list --tag Dept=IT
 az resource list --tag Dept=Finance
 ```
 
-每次将标记应用到某个资源或资源组时，都会覆盖该资源或资源组中的现有标记。 因此，必须根据该资源或资源组是否包含现有标记来使用不同的方法。
+将标记添加到资源组或资源时，可以覆盖现有的标记，或将新标记追加到现有标记之后。
 
-若要将标记添加到*不包含现有标记的资源组*，请使用：
+若要覆盖资源组的现有标记，请使用：
 
 ```azurecli
-az group update -n examplegroup --set tags.Environment=Test tags.Dept=IT
+az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
 ```
 
-若要将标记添加到*不包含现有标记的资源*，请使用：
+若要将标记追加到资源组的现有标记之后，请使用：
 
 ```azurecli
-az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-若要将标记添加到已带标记的资源，请检索现有标记，重新格式化该值，然后重新应用现有标记和新标记：
+若要覆盖资源的标记，请使用：
 
 ```azurecli
-jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags -o json)
-rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
-az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+```
+
+若将标记追加到资源的现有标记之后，请使用：
+
+```azurecli
+az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
 若要将资源组中的所有标记应用于其资源，并且不保留资源上的现有标记  ，请使用以下脚本：
 
 ```azurecli
-groups=$(az group list --query [].name --output tsv)
-for rg in $groups
+jsontags=$(az group show --name examplegroup --query tags -o json)
+tags=$(echo $jsontags | tr -d '"{},' | sed 's/: /=/g')
+resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
+for id in $resourceids
 do
-  jsontag=$(az group show -n $rg --query tags -o json)
-  t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
-  r=$(az resource list -g $rg --query [].id --output tsv)
-  for resid in $r
-  do
-    az resource tag --tags $t --id $resid
-  done
+  az resource tag --tags $tags --id $id
 done
 ```
 
 若要将资源组中的所有标记应用于其资源，并且保留资源上的现有标记  ，请使用以下脚本：
 
 ```azurecli
-groups=$(az group list --query [].name --output tsv)
-for rg in $groups
+jsontags=$(az group show --name examplegroup --query tags -o json)
+tags=$(echo $jsontags | tr -d '"{},' | sed 's/: /=/g')
+
+resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
+for id in $resourceids
 do
-  jsontag=$(az group show -n $rg --query tags -o json)
-  t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
-  r=$(az resource list -g $rg --query [].id --output tsv)
-  for resid in $r
-  do
-    jsonrtag=$(az resource show --id $resid --query tags -o json)
-    rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
-    az resource tag --tags $t$rt --id $resid
-  done
+  resourcejsontags=$(az resource show --id $id --query tags -o json)
+  resourcetags=$(echo $resourcejsontags | tr -d '"{},' | sed 's/: /=/g')
+  az resource tag --tags $tags$resourcetags --id $id
 done
+```
+
+如果标记名称或值包含空格，则必须执行几个额外的步骤。 下面的示例在标记可能包含空格时将资源组中的所有标记应用于其资源。
+
+```azurecli
+jsontags=$(az group show --name examplegroup --query tags -o json)
+tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
+origIFS=$IFS
+IFS=','
+read -a tagarr <<< "$tags"
+resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
+for id in $resourceids
+do
+  az resource tag --tags "${tagarr[@]}" --id $id
+done
+IFS=$origIFS
 ```
 
 ## <a name="templates"></a>模板
@@ -427,7 +440,7 @@ Azure 门户和 PowerShell 均在后台使用[资源管理器 REST API](https://
 
 可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境（例如，在生产环境中运行的 VM 的计费使用情况）对成本进行分类。
 
-可以通过使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.cn/)下载使用情况文件。
+可以通过使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.cn/Subscriptions)下载使用情况文件。
 
 <!-- Not Available [Azure Billing REST API Reference](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)-->
 <!-- Not Available [Azure Resource Usage and RateCard APIs](../billing/billing-usage-rate-card-overview.md) -->

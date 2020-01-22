@@ -4,14 +4,14 @@ description: 了解在与 Azure Cache for Redis 通信时如何从应用程序�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 01/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9caa6a75955af21329f3d2e5893a4957f80c8cbb
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 1521882084d025f1224105658db6040111324b65
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624320"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116913"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -50,15 +50,15 @@ Redis .NET Core 客户端默认使用最新 TLS 版本。
 
 ### <a name="java"></a>Java
 
-在 Java 6 或更低版本上，Redis Java 客户端使用 TLS 1.0。 如果在缓存中禁用了 TLS 1.0，则 Jedis、Lettuce 和 Radisson 无法连接到 Azure Cache for Redis。 目前没有已知的解决方法。
+在 Java 6 或更低版本上，Redis Java 客户端使用 TLS 1.0。 如果在缓存中禁用了 TLS 1.0，则 Jedis、Lettuce 和 Redisson 无法连接到 Azure Cache for Redis。 升级 Java 框架以使用新的 TLS 版本。
 
-在 Java 7 或更高版本上，Redis 客户端默认不使用 TLS 1.2，但可以配置为使用此版本。 Lettuce 和 Radisson 暂时不支持此配置。 如果缓存仅接受 TLS 1.2 连接，它们的工作会中断。 Jedis 允许使用以下代码片段指定基础 TLS 设置：
+对于 Java 7，Redis 客户端默认不使用 TLS 1.2，但可以配置为使用此版本。 Jedis 允许使用以下代码片段指定基础 TLS 设置：
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 SSLParameters sslParameters = new SSLParameters();
 sslParameters.setEndpointIdentificationAlgorithm("HTTPS");
-sslParameters.setProtocols(new String[]{"TLSv1", "TLSv1.1", "TLSv1.2"});
+sslParameters.setProtocols(new String[]{"TLSv1.2"});
  
 URI uri = URI.create("rediss://host:port");
 JedisShardInfo shardInfo = new JedisShardInfo(uri, sslSocketFactory, sslParameters, null);
@@ -67,6 +67,10 @@ shardInfo.setPassword("cachePassword");
  
 Jedis jedis = new Jedis(shardInfo);
 ```
+
+Lettuce 和 Redisson 客户端尚不支持指定 TLS 版本，因此，如果缓存仅接受 TLS 1.2 连接，这些客户端将无法工作。 我们正在审查这些客户端的修补程序，因此请检查那些包是否有包含此支持的更新版本。
+
+在 Java 8 中，默认情况下会使用 TLS 1.2，并且在大多数情况下都不需要更新客户端配置。 为了安全起见，请测试你的应用程序。
 
 ### <a name="nodejs"></a>Node.js
 
@@ -96,7 +100,7 @@ PhpRedis 不支持任何 PHP 版本上的 TLS。
 
 Redis-py 默认使用 TLS 1.2。
 
-### <a name="go"></a>前往
+### <a name="go"></a>GO
 
 Redigo 默认使用 TLS 1.2。
 

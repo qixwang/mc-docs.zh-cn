@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: a6ae76da677bf1e62c89b29c61c205b39cee23a1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/17/2019
+ms.date: 01/17/2020
+ms.openlocfilehash: 1825e87d30b2a5d760c76a7b083bfdb0e19de537
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336479"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123127"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建基本索引
 
@@ -38,7 +38,7 @@ ms.locfileid: "75336479"
 
 3. 使用[获取索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-get-started-postman.md) 等 Web 测试工具下载索引架构。 现在，门户中会显示所创建的索引的 JSON 表示形式。 
 
-   接下来，你将切换到基于代码的方法。 门户并不十分适合用于迭代，因为在其中无法编辑已创建的索引。 但是，可以使用 Postman 和 REST 完成剩余的任务。
+   接下来，你将切换到基于代码的方法。 门户并不十分适用于迭代，因为在其中无法编辑已创建的索引。 但是，可以使用 Postman 和 REST 完成剩余的任务。
 
 4. [加载索引和数据](search-what-is-data-import.md)。 Azure 认知搜索接受 JSON 文档。 若要以编程方式加载数据，可以在请求有效负载中使用包含 JSON 文档的 Postman。 如果无法轻松将数据表示为 JSON，此步骤耗费的精力是最大的。
 
@@ -176,10 +176,9 @@ ms.locfileid: "75336479"
 | `facetable` |允许在 [分面导航](search-faceted-navigation.md) 结构中使用字段进行用户自主筛选。 通常，包含重复值的字段更适合分面导航，这些重复值可用于将多个文档（例如，同属一个品牌或服务类别的多个文档）组合在一起。 |
 | `searchable` |将字段标记为可全文搜索。 |
 
+## <a name="index-size"></a>索引大小
 
-## <a name="storage-implications"></a>存储影响
-
-所选的属性会影响存储。 以下屏幕截图演示了各种属性组合产生的索引存储模式。
+索引大小由上传的文档的大小以及索引配置（例如，是否包括建议器，以及如何在各个字段上设置属性）决定。 以下屏幕截图演示了各种属性组合产生的索引存储模式。
 
 索引基于[内置的房地产示例](search-get-started-portal.md)数据源，可在门户中对其编制索引和执行查询。 尽管未显示索引架构，但可以基于索引名称推断属性。 例如，只选择了 *realestate-searchable* 索引中的 **searchable** 属性，只选择了 *realestate-retrievable* 索引中的 **retrievable** 属性，等等。
 
@@ -187,13 +186,13 @@ ms.locfileid: "75336479"
 
 尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 否。 将字段添加到**建议器**是否会增大索引大小？ 是的。
 
-支持筛选和排序的索引在比例上大于仅支持全文搜索的索引。 原因在于，筛选和排序操作基于精确匹配执行查询，因此文档将按原样存储。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。
+支持筛选和排序的索引在比例上大于仅支持全文搜索的那些索引。 筛选和排序操作扫描完全匹配项，要求存在完整的文档。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。 
 
 > [!Note]
 > 存储体系结构被视为 Azure 认知搜索的实现细节，随时可能在不另行通知的情况下进行更改。 不保证将来仍会保持当前的行为。
 
 ## <a name="suggesters"></a>建议器
-建议器是定义要使用索引中的哪些字段来支持搜索中的自动填写或提前键入查询的架构部分。 当用户尝试键入搜索查询时，通常将部分搜索字符串发送到[建议 (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions)，该 API 返回一组建议的短语。 
+建议器是定义要使用索引中的哪些字段来支持搜索中的自动填写或提前键入查询的架构部分。 通常，当用户尝试键入搜索查询时，部分搜索字符串将发送到[建议 (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions)，并且该 API 会返回一组建议的文档或短语。 
 
 添加到建议器的字段用于生成自动提示搜索词。 在索引编制期间创建所有搜索词，并单独存储它们。 有关创建建议器结构的详细信息，请参阅[添加建议器](index-add-suggesters.md)。
 

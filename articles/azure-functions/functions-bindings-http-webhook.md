@@ -3,14 +3,14 @@ title: Azure Functions HTTP 触发器和绑定
 description: 了解如何在 Azure Functions 中使用 HTTP 触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3e989797a61ec69bd87f0de3424916232f4be37b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3111fa298125a2924ded0bc96b6fe7a95ba0eab8
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624287"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116903"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -457,11 +457,11 @@ public HttpResponseMessage<String> HttpTrigger(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| 类型  | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
-| direction  | 不适用| 必需 - 必须设置为 `in`。 |
-| name  | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| **direction** | 不适用| 必需 - 必须设置为 `in`。 |
+| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel  |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
-| methods  |方法  | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
+| methods  |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route  | Route  | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | webHookType  | WebHookType  | 仅支持 1.x 版运行时。 <br/><br/>将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel  属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel  属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
 
@@ -602,7 +602,7 @@ public class HttpTriggerJava {
 
 ### <a name="using-route-parameters"></a>使用路由参数
 
-路由参数定义的函数的 `route` 模式适用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
+定义了函数的 `route` 模式的路由参数可用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
 
 下面的配置演示如何将 `{id}` 参数传递到绑定的 `rowKey`。
 
@@ -702,10 +702,10 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ### <a name="authorization-keys"></a>授权密钥
 
-Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的难度。  标准 HTTP 触发器可能会要求在请求中出现此类 API 密钥。 
+Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的难度。  标准 HTTP 触发器可能要求在请求中提供此类 API 密钥。 
 
 > [!IMPORTANT]
-> 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
+> 尽管密钥可能有助于在开发期间模糊处理 HTTP 终结点，但它们并不适合用于在生产环境中保护 HTTP 触发器。 有关详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
 
 > [!NOTE]
 > 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2\.x 及更高版本的 Functions 运行时不包括对 Webhook 提供程序的内置支持。
@@ -741,20 +741,20 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 可以允许匿名请求，它不需要密钥。 可能还需要使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#trigger---configuration)。
 
 > [!NOTE]
-> 在本地运行函数时，不管指定的身份验证级别设置为何，都会禁用授权。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。
+> 在本地运行函数时，不管指定的授权级别设置为何，都会禁用授权。 发布到 Azure 之后，会强制实施触发器中的 `authLevel` 设置。 
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
 
-若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一：
+若要在生产环境中完全保护函数终结点，应考虑实施以下函数应用级安全选项之一：
 
 * 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)以及[使用客户端标识](#working-with-client-identities)。
 
-* 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 针对传入的请求提供各种 API 安全选项。 若要了解详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 若要了解详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
+* 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 针对传入的请求提供各种 API 安全选项。 有关详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 有关详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
 
 * 将函数应用部署到 Azure 应用服务环境 (ASE)。 ASE 提供要在其中运行函数的专用托管环境。 ASE 允许配置单个前端网关，可以使用它对所有传入请求进行身份验证。 有关详细信息，请参阅[为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)。
 
-使用其中的某个函数应用级安全方法时，应将 HTTP 触发的函数身份验证级别设置为 `anonymous`。
+使用其中的某个函数应用级安全方法时，应将 HTTP 触发的函数授权级别设置为 `anonymous`。
 
 ### <a name="webhooks"></a>Webhook
 
@@ -784,7 +784,7 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
+如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 
 ## <a name="output"></a>输出
 
@@ -798,7 +798,7 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 |---------|---------|
 | **type** |必须设置为 `http`。 |
 | **direction** | 必须设置为 `out`。 |
-| name  | 在响应的函数代码中使用的变量名称，或者 `$return` 以使用返回值。 |
+| **name** | 在响应的函数代码中使用的变量名称，或者 `$return` 以使用返回值。 |
 
 ## <a name="output---usage"></a>输出 - 用法
 
@@ -838,8 +838,8 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 | customHeaders|无|使你可以在 HTTP 响应中设置自定义标头。 前面的示例将 `X-Content-Type-Options` 标头添加到响应中，以避免内容类型探查。 |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|启用时，将为此设置将导致请求处理管道，以定期检查系统性能计数器类似连接/线程/进程/内存/CPU 等，并通过内置的高阈值 (80%)，如果有任何这些计数器请求拒绝与 429“太忙”响应，直至恢复到正常水平的计数器。<br/><sup>\*</sup>消耗计划中的默认值为 `true`。 专用计划中的默认值为 `false`。|
 |hsts|未启用|`isEnabled` 设置为 `true` 时，将强制执行 [.NET Core 的 HTTP 严格传输安全性 (HSTS) 行为](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如 [`HstsOptions` 类](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定义。 上面的示例还将 [`maxAge`](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) 属性设置为 10 天。 `hsts` 支持的属性包括： <table><tr><th>属性</th><th>说明</th></tr><tr><td>excludedHosts</td><td>未添加 HSTS 标头的主机名的字符串数组。</td></tr><tr><td>includeSubDomains</td><td>布尔值，指示是否启用了 Strict-Transport-Security 标头的 includeSubDomain 参数。</td></tr><tr><td>maxAge</td><td>定义 Strict-Transport-Security 标头的 max-age 参数的字符串。</td></tr><tr><td>preload</td><td>布尔值，指示是否启用了 Strict-Transport-Security 标头的 preload 参数。</td></tr></table>|
-|maxConcurrentRequests|100<sup>\*</sup>|并行执行的 http 函数数目上限。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，某个 http 函数可能使用了大量系统资源（内存/CPU/插槽），从而在并发性过高时导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。 <br/><sup>*</sup>消耗计划的默认值为 100。 专用计划的默认值是无限制的 (`-1`)。|
-|maxOutstandingRequests|200<sup>\*</sup>|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。 <br/><sup>\*</sup>\消耗计划的默认值为 200。 专用计划的默认值是无限制的 (`-1`)。|
+|maxConcurrentRequests|100<sup>\*</sup>|并行执行的 HTTP 函数数目上限。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，你可能有一个使用大量系统资源（内存/CPU/套接字）的 HTTP 函数，它在并发度太高时会导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。 <br/><sup>*</sup>消耗计划的默认值为 100。 专用计划的默认值是无限制的 (`-1`)。|
+|maxOutstandingRequests|200<sup>\*</sup>|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。 <br/><sup>\*</sup>消耗计划的默认值为 200。 专用计划的默认值是无限制的 (`-1`)。|
 |routePrefix|api|应用到所有路由的路由前缀。 使用空字符串可删除默认前缀。 |
 
 
