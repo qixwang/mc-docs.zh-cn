@@ -2,26 +2,22 @@
 title: 在 Azure Functions 中自定义 HTTP 终结点
 description: 了解如何在 Azure Functions 中自定义 HTTP 触发器终结点
 author: mattchenderson
-manager: gwallace
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 05/04/2017
-ms.date: 09/06/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 3ca8f1d72881d0e2bccc66e65b04ec8c154586f3
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.openlocfilehash: 8b3c1a5519af438462c64af872cc5a7c60ebbd9e
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70805742"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116885"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
-本文介绍如何使用 Azure Functions 构建高度可缩放的 API。 Azure Functions 附带了一系列内置 HTTP 触发器和绑定，方便使用各种语言（包括 Node.JS、C# 等等）创建终结点。 在本文中，将自定义一个 HTTP 触发器来处理 API 设计中的特定操作。 此外，还要通过将 API 与 Azure Functions 代理集成并设置模拟 API，来准备扩展 API。 所有这些操作会在 Functions 无服务器计算环境的顶层完成，因此，不需要考虑如何缩放资源 - 只需专注于自己的 API 逻辑。
+本文介绍如何使用 Azure Functions 构建高度可缩放的 API。 Azure Functions 附带了一组内置的 HTTP 触发器和绑定，方便你使用各种语言（包括 Node.js、C# 等等）创建终结点。 在本文中，将自定义一个 HTTP 触发器来处理 API 设计中的特定操作。 此外，还要通过将 API 与 Azure Functions 代理集成并设置模拟 API，来准备扩展 API。 所有这些操作会在 Functions 无服务器计算环境的顶层完成，因此，不需要考虑如何缩放资源 - 只需专注于自己的 API 逻辑。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -102,7 +98,7 @@ ms.locfileid: "70805742"
 
     | 字段 | 示例值 | 说明 |
     |---|---|---|
-    | Name | HelloProxy | 仅用于管理的友好名称 |
+    | 名称 | HelloProxy | 仅用于管理的友好名称 |
     | 路由模板 | /api/remotehello | 确定可以使用哪个路由来调用此代理 |
     | 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
     

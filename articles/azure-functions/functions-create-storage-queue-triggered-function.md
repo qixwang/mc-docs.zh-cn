@@ -1,32 +1,24 @@
 ---
-title: 在 Azure 中创建由队列消息触发的函数 | Microsoft Docs
+title: 在 Azure 中创建由队列消息触发的函数
 description: 使用 Azure Functions 创建由提交到 Azure 存储队列的消息调用的无服务器函数。
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
-origin.date: 10/01/2018
-ms.date: 02/22/2019
-ms.author: v-junlch
+ms.date: 01/13/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: e592ae6cfdbd295ce304803aeb430a1d5a19fb49
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.openlocfilehash: 378b0f7b081536a35537f336a1883856a5930d3f
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665606"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116887"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
 
 了解如何创建在将消息提交到 Azure 存储队列时触发的函数。
 
-![在日志中查看消息。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
+![查看日志中的消息。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 下载并安装 [Azure 存储资源管理器](https://storageexplorer.com/)。
 
@@ -44,17 +36,17 @@ ms.locfileid: "56665606"
 
 ## <a name="create-a-queue-triggered-function"></a>创建队列触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮   。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 
-1. 依次选择“更多模板”、“完成并查看模板”。
+1. 依次选择“更多模板”  、“完成并查看模板”  。
 
     ![Functions 快速入门选择更多模板](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-1. 在搜索字段中，键入 `queue`，然后选择“队列触发器”模板。
+1. 在搜索字段中，键入 `queue`，然后选择“队列触发器”  模板。
 
-1. 如果系统提示，请选择“安装”以在函数应用中安装 Azure 存储扩展的任何依赖项。 安装成功后，选择“继续”。
+1. 如果系统提示，请选择“安装”  以在函数应用中安装 Azure 存储扩展以及任何依赖项。 安装成功后，选择“继续”  。
 
     ![安装绑定扩展](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -66,27 +58,27 @@ ms.locfileid: "56665606"
     |---|---|---|
     | **名称** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
     | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
-    | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |    
+    | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |    
 
-1. 单击“创建”以创建函数。
+1. 单击“创建”以创建函数  。
 
 接下来，连接到 Azure 存储帐户并创建 **myqueue-items** 存储队列。
 
 ## <a name="create-the-queue"></a>创建队列
 
-1. 在函数中，单击“集成”，展开“文档”，并复制**帐户名称**和**帐户密钥**。 在 Azure 存储资源管理器中使用这些凭据连接到存储帐户。 如果已连接存储帐户，请跳到步骤 4。
+1. 在函数中，单击“集成”  ，展开“文档”  ，并复制**帐户名称**和**帐户密钥**。 在 Azure 存储资源管理器中使用这些凭据连接到存储帐户。 如果已连接存储帐户，请跳到步骤 4。
 
     ![获取存储帐户连接凭据。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. 运行 [Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，并单击“下一步”。
+1. 运行 [Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”  ，并单击“下一步”  。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 
-1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”，并单击“连接”。
+1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”  ，并单击“连接”  。
 
     ![输入存储凭据和连接。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 展开附加的存储帐户，右键单击“队列”，单击“创建队列”，键入 `myqueue-items`，并按 Enter。
+1. 展开附加的存储帐户，右键单击“队列”  ，单击“创建队列”  ，键入 `myqueue-items`，并按 Enter。
 
     ![创建存储队列。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
 
@@ -94,19 +86,19 @@ ms.locfileid: "56665606"
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”并确保日志流式处理未暂停。
+1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”  并确保日志流式处理未暂停。
 
-1. 在存储资源管理器中，依次展开存储帐户、“队列”和 **myqueue-items**，然后单击“添加消息”。
+1. 在存储资源管理器中，依次展开存储帐户、“队列”  和 **myqueue-items**，然后单击“添加消息”  。
 
     ![将消息添加到队列。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 
-1. 将“Hello World!” 消息键入到“消息文本”中，单击“确定”。
+1. 将“Hello World!” 消息键入到“消息文本”  中，单击“确定”  。
 
 1. 等待几秒钟，返回到函数日志并验证是否已从队列中读取新消息。
 
-    ![在日志中查看消息。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    ![查看日志中的消息。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
 
-1. 返回到存储资源管理器中，单击“刷新”，并验证该消息是否已处理且不再在队列中。
+1. 返回到存储资源管理器中，单击“刷新”  ，并验证该消息是否已处理且不再在队列中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

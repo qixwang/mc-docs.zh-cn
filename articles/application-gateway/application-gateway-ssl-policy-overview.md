@@ -5,15 +5,14 @@ services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/16/2019
-ms.date: 11/21/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: b264ff276a35d0c4a9c756a013de09820580d142
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: b32f6a563d128409d357d37265b6d7bf03ef05a6
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327139"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116922"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>应用程序网关 SSL 策略概述
 
@@ -29,7 +28,7 @@ SSL 策略包括 SSL 协议版本控制和 SSL 握手期间会使用的密码套
 
 |属性  |Value  |
 |---|---|
-|Name     | AppGwSslPolicy20150501        |
+|名称     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
 |默认| True（如果未指定预定义策略） |
 |CipherSuites     |TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_3DES_EDE_CBC_SHA<br>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA |
@@ -38,7 +37,7 @@ SSL 策略包括 SSL 协议版本控制和 SSL 握手期间会使用的密码套
   
 |属性  |Value  |
 |   ---      |  ---       |
-|Name     | AppGwSslPolicy20170401        |
+|名称     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
 |默认| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
@@ -47,7 +46,7 @@ SSL 策略包括 SSL 协议版本控制和 SSL 握手期间会使用的密码套
 
 |属性  |Value  |
 |---|---|
-|Name     | AppGwSslPolicy20170401S        |
+|名称     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
 |默认| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
@@ -99,8 +98,19 @@ SSL 策略包括 SSL 协议版本控制和 SSL 握手期间会使用的密码套
 > [!NOTE]
 > 用于连接的 SSL 密码套件也基于所使用的证书类型。 在从客户端到应用程序网关的连接中，所使用的密码套件基于应用程序网关侦听器上的服务器证书的类型。 在从应用程序网关到后端池的连接中，所使用的密码套件基于后端池服务器上的服务器证书的类型。
 
+## <a name="known-issue"></a>已知问题
+应用程序网关 v2 目前不支持以下加密：
+- DHE-RSA-AES128-GCM-SHA256
+- DHE-RSA-AES128-SHA
+- DHE-RSA-AES256-GCM-SHA384
+- DHE-RSA-AES256-SHA
+- DHE-DSS-AES128-SHA256
+- DHE-DSS-AES128-SHA
+- DHE-DSS-AES256-SHA256
+- DHE-DSS-AES256-SHA
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何配置 SSL 策略，请参阅[配置应用程序网关上的 SSL 策略](application-gateway-configure-ssl-policy-powershell.md)。
 
-<!-- Update_Description: update metedata properties -->
+<!-- Update_Description: wording update -->

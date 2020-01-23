@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 10/15/2019
-ms.date: 12/02/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: b450ac347678b861f749a1b834fcf742e2d4d206
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: 462ed6c8e5bc7459fdf76e3c51219546ab5b5abe
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74553077"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939768"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
@@ -25,7 +25,9 @@ ms.locfileid: "74553077"
 
 VPN 网关数据包捕获可在网关上运行，或者在特定的连接上运行，具体取决于客户的需求。 还可以同时在多个隧道上运行数据包捕获。 可以捕获单向或双向流量、IKE 和 ESP 流量以及内部数据包，并可对 VPN 网关进行筛选。
 
-查明高流量相关的问题时，使用 5 元组筛选器（源子网、目标子网、源端口、目标端口、协议）和 TCP 标志（SYN、ACK、FIN、URG、PSH、RST）将很有帮助。
+查明高流量相关问题时，使用 5 元组筛选器（源子网、目标子网、源端口、目标端口、协议）和 TCP 标志（SYN、ACK、FIN、URG、PSH、RST）将很有帮助。
+
+运行数据包捕获时，每个属性只能使用一个选项。
 
 ## <a name="setup-packet-capture-using-powershell"></a>使用 PowerShell 设置数据包捕获
 
@@ -63,7 +65,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - 运行数据包捕获可能会影响性能。 不需要数据包捕获时，请记得将其停止。
 - 建议的最短数据包捕获持续时间为 600 秒。 由于路径中多个组件之间的同步问题，使用较短的数据包捕获持续时间可能无法提供完整的数据。
-- 数据包捕获数据文件以 PCAP 或 ETL 格式生成。 可能需要通过 Netmon 分析器来理解数据。
+- 数据包捕获数据文件以 PCAP 格式生成。 使用 Wireshark 或其他常用应用程序打开 PCAP 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

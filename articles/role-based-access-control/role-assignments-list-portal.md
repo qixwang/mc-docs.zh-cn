@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 01/16/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: a7813778e7d11e8141abd1e560d3e3a0c92c9feb
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3c161cf034a8e6ed64a01112e39d6f797f3b99d9
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624404"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116935"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配
 
@@ -40,6 +40,22 @@ ms.locfileid: "75624404"
     ![用户的角色分配](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. 要更改订阅，请单击“订阅”列表  。
+
+## <a name="list-owners-of-a-subscription"></a>列出订阅的所有者
+
+已分配订阅的[所有者](built-in-roles.md#owner)角色的用户可以管理订阅中的所有内容。 按照以下步骤列出订阅的所有者。
+
+1. 在 Azure 门户中，依次单击“所有服务”、“订阅”   。
+
+1. 单击要列出其所有者的订阅。
+
+1. 单击“访问控制(IAM)”  。
+
+1. 单击“角色分配”选项卡以查看此订阅的所有角色分配  。
+
+1. 滚动到“所有者”  部分，以查看已分配此订阅的“所有者”角色的所有用户。
+
+   ![“订阅访问控制 - 角色分配”选项卡](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>列出某个范围内的角色分配
 
@@ -112,3 +128,4 @@ ms.locfileid: "75624404"
 - [使用 Azure RBAC 和 Azure 门户添加或删除角色分配](role-assignments-portal.md)
 - [ Azure 资源 RBAC 故障排除](troubleshooting.md)
 
+<!-- Update_Description: wording update -->

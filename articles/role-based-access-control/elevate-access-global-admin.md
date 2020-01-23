@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 01/16/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: f64bc0332ecabb8c9e9f550cbd940ba80a43603e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 22ca1013826ed4dfea32c2a852af3a9e7e6bfa1c
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624175"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116940"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 中的全局管理员不一定对目录中的�
 - 查看组织中的所有 Azure 订阅或管理组
 - 允许自动化应用（例如发票或审计应用）访问所有 Azure 订阅或管理组
 
-## <a name="how-does-elevate-access-work"></a>提升访问权限的工作原理是什么？
+## <a name="how-does-elevated-access-work"></a>提升访问权限的工作原理是什么？
 
 Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分配不授予对 Azure 资源的访问权限，Azure 角色分配页不授予对 Azure AD 的访问权限。 但是，Azure AD 中的[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)可为自己分配对目录中所有 Azure 订阅和管理组的访问权限。 如果无权访问 Azure 订阅资源（如虚拟机或存储帐户），并且想使用全局管理员权限来获取这些资源的访问权限，则请使用此功能。
 

@@ -1,19 +1,16 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告合规性的方式。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 12/02/2019
+ms.date: 01/17/2020
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 914b5804559080f8502bd0ab619804f1b06a96f5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 144087d42ba0d5ff03bb714ec7dc2b6f84d3e7b4
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335813"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123361"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -83,7 +80,7 @@ Disabled 效果的替代效果是针对策略分配设置的 **enforcementMode**
 }
 ```
 
-示例 2：使用具有数组**值**的 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果该数组尚不存在，系统会创建该数组。
+示例 2：使用 **[\*]** [别名](definition-structure.md#aliases)和数组 **value** 在存储帐户上设置 IP 规则的单个 **field/value** 对。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果该数组尚不存在，系统会创建该数组。
 
 ```json
 "then": {

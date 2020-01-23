@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/21/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 33e0b34c2822cd2a2c43f3f8b3d82bc22291c7b6
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 1be8ebd22bda7bc7293d60d0d1dd284085960ddb
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859521"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964916"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure 标准负载均衡器概述
 
@@ -39,20 +39,6 @@ ms.locfileid: "75859521"
 资源的虚拟网络范围是一个重要方面。  尽管基本负载均衡器存在于可用性集范围内部，但标准负载均衡器与虚拟网络范围完全集成，且所有虚拟网络概念均适用。
 
 负载均衡器资源是一些对象，可在其中表述 Azure 应如何设定其多租户基础结构，以实现想要创建的场景。  负载均衡器资源与实际基础结构之间不存在直接的关系，创建负载均衡器不会创建实例，可始终使用容量，且无需考虑启动或缩放延迟。 
-
-## <a name="why-use-standard-load-balancer"></a>为何使用标准负载均衡器？
-
-使用标准负载均衡器可以扩展应用程序，并为小型部署到大型复杂多区域体系结构创建高可用性。
-
-查看下表，了解标准负载均衡器与基本负载均衡器之间的差异概述：
-
->[!NOTE]
-> 新设计应采用标准负载均衡器。 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-请查看[负载均衡器的服务限制](https://docs.azure.cn/zh-cn/azure-subscription-service-limits#load-balancer)、[定价](https://www.azure.cn/zh-cn/pricing/details/load-balancer/)和 [SLA](https://www.azure.cn/zh-cn/support/sla/load-balancer/)。
-
 
 ### <a name="backend"></a>后端池
 
@@ -168,38 +154,24 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 4. 将所有 VM 实例附加到新的标准 SKU 资源。
 
-### <a name="migrate-from-standard-to-basic-sku"></a>从标准 SKU 迁移到基本 SKU
-
-1. 根据需要创建新的基本版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。  将 HTTPS 探测更改为针对 443/tcp 的 TCP 探测。 
-
-2. 如果适用，从所有 VM 实例中删除标准 SKU 资源（负载均衡器和公共 IP）。 确保还会删除可用性集的所有 VM 实例。
-
-3. 将所有 VM 实例附加到新的基本 SKU 资源。
-
 >[!IMPORTANT]
->
->使用基本 SKU 和标准 SKU 具有以下限制。
->
->标准 SKU 的 HA 端口和诊断只能在标准 SKU 中使用。 无法从标准 SKU 迁移到基本 SKU，并同时保留这些功能。
->
->根据本文所述，基本和标准 SKU 存在一定差异。  请确保理解这些差异并做好相应准备。
 >
 >必须对负载均衡器和公共 IP 资源使用匹配的 SKU。 不能混合使用基本 SKU 资源和标准 SKU 资源。 无法将独立的虚拟机、可用性集资源中的虚拟机或虚拟机规模集资源同时附加到两个 SKU。
 
 ## <a name="region-availability"></a>上市区域
 
-标准负载均衡器目前已在所有公有云区域推出。
+标准负载均衡器目前在所有 Azure 区域中均可用。
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>SLA 
 
 可以使用标准负载均衡器，其 SLA 为 99.99%。  有关详细信息，请查看[标准负载均衡器 SLA](https://www.azure.cn/zh-cn/support/sla/load-balancer/)。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>定价 
 
-使用标准负载均衡器是收费的。
+使用标准负载均衡器是收费的。 
 
-- 已配置的负载均衡规则和出站规则的数量（入站 NAT 规则不计入规则总数）
-- 处理的入站和出站数据的数量，与规则无关。 
+- 已配置的负载均衡规则和出站规则的数量（入站 NAT 规则不计入规则总数） 
+- 处理的入站和出站数据的数量，与规则无关。
 
 有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://azure.cn/pricing/details/load-balancer/)页。
 
@@ -209,12 +181,13 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。
 - 负载均衡器规则不能跨越两个虚拟网络。  前端及其相关的后端实例必须位于相同的虚拟网络中。  
 - 标准 SKU LB 和 PIP 资源不支持[移动订阅操作](../azure-resource-manager/resource-group-move-resources.md)。
-- 考虑到 VNet 出现之前的服务和其他平台服务的运行方式带来的副作用，只有在使用内部标准负载均衡器的情况下，才可以访问没有 VNet 和其他 Azure 平台服务的 Web 辅助角色。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
+- 由于 VNet 之前的服务和其他平台服务运行方式的副作用，没有 VNet 和其他 Azure 平台服务的 Web 辅助角色只能从内部标准负载均衡器后面的实例进行访问。 请勿依赖此服务，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建[出站连接](load-balancer-outbound-connections.md)。
 - 负载均衡器属于 TCP 或 UDP 产品，用于对这些特定的 IP 协议进行负载均衡和端口转发。  负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。 负载均衡器不会终止、响应 UDP 或 TCP 流的有效负载，也不与之交互。 它不是一个代理。 必须使用负载均衡或入站 NAT 规则（TCP 或 UDP）中所用的同一协议在带内成功验证与前端的连接，并且必须至少有一个虚拟机为客户端生成了响应，这样才能看到前端发出的响应。   未从前端负载均衡器收到带内响应表明没有任何虚拟机能够做出响应。  在虚拟机都不能做出响应的情况下，无法与负载均衡器前端交互。  这一点也适用于出站连接，其中的[端口伪装 SNAT](load-balancer-outbound-connections.md#snat) 仅支持 TCP 和 UDP；其他任何 IP 协议（包括 ICMP）也会失败。  分配实例级公共 IP 地址即可缓解问题。
 - 公共负载均衡器在将虚拟网络中的专用 IP 地址转换为公共 IP 地址时提供[出站连接](load-balancer-outbound-connections.md)，而内部负载均衡器则与此不同，它不会将出站发起连接转换为内部负载均衡器的前端，因为两者都位于专用的 IP 地址空间中。  这可以避免不需要转换的唯一内部 IP 地址空间内发生 SNAT 耗尽。  负面影响是，如果来自后端池中 VM 的出站流尝试流向该 VM 所在池中内部负载均衡器的前端，并映射回到自身，则这两个流的分支不会匹配，并且该流将会失败。   如果该流未映射回到后端池中的同一 VM（在前端中创建了流的 VM），则该流将会成功。   如果流映射回到自身，则出站流显示为源自 VM 并发往前端，并且相应的入站流显示为源自 VM 并发往自身。 从来宾 OS 的角度看，同一流的入站和出站部分在虚拟机内部不匹配。 TCP 堆栈不会将同一流的这两半看作是同一流的组成部分，因为源和目标不匹配。  当流映射到后端池中的任何其他 VM 时，流的两半将会匹配，且 VM 可以成功响应流。  此方案的症状是间歇性的连接超时。 可通过几种常用解决方法来可靠地实现此方案（从后端池发起流，并将其传送到后端池的相应内部负载均衡器前端），包括在内部负载均衡器的后面插入第三方代理，或[使用 DSR 式规则](load-balancer-multivip-overview.md)。  尽管可以使用公共负载均衡器来缓解问题，但最终的方案很容易导致 [SNAT 耗尽](load-balancer-outbound-connections.md#snat)，除非有精心的管理，否则应避免这种做法。
 
 ## <a name="next-steps"></a>后续步骤
 
+- 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。
 - 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
 - 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
 - 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers)。
@@ -223,8 +196,4 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)。
 - 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)。
-- 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。
 - 详细了解[网络安全组](../virtual-network/security-overview.md)。
-- 了解 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
-- 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
-- 详细了解[负载均衡器](load-balancer-overview.md)。

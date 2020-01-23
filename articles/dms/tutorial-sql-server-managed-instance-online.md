@@ -13,12 +13,12 @@ ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 12/17/2019
 ms.date: 01/13/2020
-ms.openlocfilehash: f8d36c3ad062c0b39d5eaa21aa1821f04d15c465
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.openlocfilehash: ed34793dfeb7dd83f4436f35b9a5777877f79fd6
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776746"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939815"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 
@@ -217,7 +217,7 @@ ms.locfileid: "75776746"
 
 
 > [!NOTE]
-  > 如果 Azure 数据库迁移服务显示“�系统错误 53�”或“�系统错误 57�”错误，原因可能是 Azure 数据库迁移服务无法访问 Azure 文件共享。 如果遇到这其中的一个错误，请按[此处](/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的说明操作，授予从虚拟网络访问存储帐户的权限。
+  > 如果 Azure 数据库迁移服务显示“系统错误 53”或“系统错误 57”错误，原因可能是 Azure 数据库迁移服务无法访问 Azure 文件共享。 如果遇到这其中的一个错误，请按[此处](/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的说明操作，授予从虚拟网络访问存储帐户的权限。
 
 
 2. 选择“保存”  。

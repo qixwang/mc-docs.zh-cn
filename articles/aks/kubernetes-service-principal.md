@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0d968c843d031ca530d45397c48b73d5b0fd5110
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: a9158ce638a2fb3976d744035e8c2252c31ddddd
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859854"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165441"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -38,9 +38,6 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup
 ```
-
-<!--Not Available on  --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 ## <a name="manually-create-a-service-principal"></a>手动创建服务主体
 
@@ -73,9 +70,6 @@ az aks create \
     --service-principal <appId> \
     --client-secret <password>
 ```
-
-<!--Not Available on  --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。    选择“使用现有”并指定以下值： 
 
@@ -138,6 +132,8 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集的代理节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
 - 使用 [az aks create][az-aks-create] 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
+- 如果没有在其他 AKS CLI 命令中明确传递服务主体，则将使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
+- 也可以选择删除 aksServicePrincipal.json 文件，AKS 将创建新的服务主体。
 - 删除通过 [az aks create][az-aks-create] 创建的 AKS 群集时，不会删除自动创建的服务主体。
     - 若要删除服务主体，请查询群集 *servicePrincipalProfile.clientId*，然后使用 [az ad app delete][az-ad-app-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
 

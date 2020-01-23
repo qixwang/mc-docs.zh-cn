@@ -1,19 +1,20 @@
 ---
-title: 为 VPN 网关配置 Always On VPN 隧道
+title: 配置 Always-On VPN 隧道
+titleSuffix: Azure VPN Gateway
 description: 为 VPN 网关配置 Always On VPN 隧道的步骤
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 10/02/2019
-ms.date: 11/11/2019
+origin.date: 12/11/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: b204368c6476ae41465ade82f9b4ec05df1f1a5c
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: 8b91a4742ed1ae8734b9b226c11ee99c59a64015
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742290"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939742"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>配置 Always On VPN 设备隧道
 
@@ -37,7 +38,7 @@ Always On VPN 连接包括两种隧道：
 
 必须满足以下要求才能成功建立设备隧道：
 
-* 该设备必须是已加入域且运行 Windows 10 企业版或教育版 1709 或更高版本的计算机。
+* 该设备必须是已加入域且运行 Windows 10 企业版或教育版 1809 或更高版本的计算机。
 * 只可针对 Windows 内置 VPN 解决方案配置该隧道；结合计算机证书身份验证使用 IKEv2 建立该隧道。 
 * 对于每台设备，只能配置一个设备隧道。
 
@@ -139,15 +140,15 @@ Always On VPN 连接包括两种隧道：
 1. 在管理员命令提示符下，运行以下命令启动 PowerShell：
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
    ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. 在 PowerShell 中，切换到 **devicecert.ps1** 和 **VPNProfile.xml** 所在的文件夹，然后运行以下命令：
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)

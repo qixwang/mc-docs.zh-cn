@@ -1,20 +1,20 @@
 ---
 title: 将 MongoDB 应用程序连接到 Azure Cosmos DB
-description: 了解如何将 MongoDB 应用连接到 Azure Cosmos DB。
+description: 了解如何通过从 Azure 门户获取连接字符串将 MongoDB 应用连接到 Azure Cosmos DB
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-origin.date: 05/21/2019
-ms.date: 10/28/2019
+origin.date: 12/02/2019
+ms.date: 01/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f0e737241725bf464db1f4f39927e83ceb454e62
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 922be457802de986d961973b497bb9ba46335d44
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970281"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270038"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB。 然后，可使用 Azure Cosmos 数据库作为 MongoDB 应用的数据存储。 
@@ -24,7 +24,7 @@ ms.locfileid: "72970281"
 - [快速启动方法](#QuickstartConnection)，适合搭配 .NET、Node.js、MongoDB Shell、Java 和 Python 驱动程序使用
 - [自定义连接字符串方法](#GetCustomConnection)，适合搭配其他驱动程序使用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 一个 Azure 帐户。 如果没有 Azure 帐户，请立即创建一个 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 - Cosmos 帐户。 有关说明，请参见[使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 .NET SDK 生成 Web 应用](create-mongodb-dotnet.md)。
@@ -77,4 +77,4 @@ Azure Cosmos DB 支持标准的 MongoDB 连接字符串 URI 格式，但要满�
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

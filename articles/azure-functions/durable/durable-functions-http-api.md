@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP API - Azure Functions
 description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中的 HTTP API。
 author: cgillum
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3a239096b3efec2bee46726e8305fd9de009ec6e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 506ada1b0caefdc3dcfccc02bad1d2305b2d0cfd
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623666"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116908"
 ---
 # <a name="http-api-reference"></a>HTTP API 引用
 
@@ -105,7 +105,7 @@ Content-Length: 83
 }
 ```
 
-Http 响应旨在与轮询使用者模式兼容  。 它还包括以下值得注意的响应标头：
+HTTP 响应旨在与轮询使用者模式兼容  。 它还包括以下值得注意的响应标头：
 
 * **位置**：状态终结点的 URL。 此 URL 包含的值与 `statusQueryGetUri` 字段的值相同。
 * **Retry-After**：在执行下一个轮询操作之前应等待的秒数。 默认值为 `10`。

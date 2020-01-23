@@ -2,13 +2,13 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: 18b6daaac4f15851bf931bb6e28fb01e0a1ef48e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: cf422bae4c3961d650919f0eb9d7284ca2dee187
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624138"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116866"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -27,7 +27,7 @@ ms.locfileid: "75624138"
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
-以下示例 *host.json* 文件指定了所有可能的选项。
+以下示例 host.json  文件指定了所有可能的选项（仅供内部使用的选项除外）。
 
 ```json
 {
@@ -88,7 +88,7 @@ ms.locfileid: "75624138"
 
 ## <a name="extensionbundle"></a>extensionBundle 
 
-扩展捆绑可让你将一组兼容的 Functions 绑定扩展添加到函数应用。 若要了解详细信息，请参阅[用于本地开发的扩展捆绑](functions-bindings-register.md#extension-bundles)。
+使用扩展捆绑可将一组兼容的 Functions 绑定扩展添加到函数应用。 若要了解详细信息，请参阅[用于本地开发的扩展捆绑](functions-bindings-register.md#extension-bundles)。
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 

@@ -1,22 +1,15 @@
 ---
 title: 使用 Azure 门户创建 Durable Functions
 description: 了解如何针对门户开发安装 Azure Functions 的 Durable Functions 扩展。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 10/23/2018
-ms.date: 11/18/2019
-ms.author: v-junlch
+ms.date: 01/14/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: c7e1547b19162f4ce76a38916cc252d48cb7dbb8
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: f4c8caed3500e60ead4c05d43c1831acea652797
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178994"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116912"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -29,7 +22,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 你可以创建 .NET 或 JavaScript 应用。
+必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 你可以创建 .NET 或 JavaScript 应用。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -75,7 +68,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在搜索字段中键入 `durable`，然后选择“Durable Functions HTTP 初学者”  模板。
 
-1. 系统提示时，请选择“安装”  以在函数应用中安装 Azure DurableTask 扩展的任何依赖项。 对于给定的函数应用，只需安装该扩展一次。 安装成功后，选择“继续”  。
+1. 系统提示时，请选择“安装”  以在函数应用中安装 Azure DurableTask 扩展和任何依赖项。 对于给定的函数应用，只需安装该扩展一次。 安装成功后，选择“继续”  。
 
     ![安装绑定扩展](./media/durable-functions-create-portal/install-durabletask-extension.png)
 

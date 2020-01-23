@@ -2,13 +2,13 @@
 title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: 0a0b4b1c4fd32093da9fa8dfcda8e518fab4574c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: 54d53476b96bb30b12ce172021d534e88ed2bd74
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624116"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116875"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -186,7 +186,7 @@ ms.locfileid: "75624116"
 |属性  |默认 | 说明 |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|启用时，将为此设置将导致请求处理管道，以定期检查系统性能计数器类似连接/线程/进程/内存/CPU 等，并通过内置的高阈值 (80%)，如果有任何这些计数器请求拒绝与 429“太忙”响应，直至恢复到正常水平的计数器。|
-|maxConcurrentRequests|无限制 (`-1`)|要并行执行的 http 函数数目上限。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，某个 http 函数可能使用了大量系统资源（内存/CPU/插槽），从而在并发性过高时导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。|
+|maxConcurrentRequests|无限制 (`-1`)|将并行执行的 HTTP 函数的最大数目。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，你可能有一个使用大量系统资源（内存/CPU/套接字）的 HTTP 函数，因此当并发性太高时会导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。|
 |maxOutstandingRequests|无限制 (`-1`)|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。|
 |routePrefix|api|应用到所有路由的路由前缀。 使用空字符串可删除默认前缀。 |
 
@@ -194,7 +194,7 @@ ms.locfileid: "75624116"
 
 作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，我们建议你不要设置 ID 值。 省略 `id` 时，Azure 中会自动生成 ID。 
 
-如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
+如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可以省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
 
 ```json
 {

@@ -6,13 +6,13 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/05/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f5b18c1b4122bb20a2c75d8f77dbb1a5b5b85b11
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/20/2020
+ms.openlocfilehash: c300cbb56e0259d453530f93a8bd6c3c8f2a4f02
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335736"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270041"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -118,13 +118,14 @@ Cosmos DB 会定期自动备份数据。 有关备份保留间隔和时限的详
 
 ## <a name="per-request-limits"></a>每个请求的限制
 
-Cosmos DB 支持针对容器、项和数据库等资源执行 [CRUD 和查询操作](https://docs.microsoft.com/rest/api/cosmos-db/)。  
+Azure Cosmos DB 支持对容器、项和数据库等资源执行 [CRUD 和查询操作](https://docs.microsoft.com/rest/api/cosmos-db/)。 它还支持针对容器中具有相同分区键的多个项的[事务性批处理请求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch?view=azure-dotnet)。
 
 | 资源 | 默认限制 |
 | --- | --- |
 | 单个操作（例如存储过程执行或单个查询页检索）的最长执行时间| 5 秒 |
-| 最大请求大小（存储过程，CRUD）| 2 MB |
+| 最大请求大小（例如，存储过程、CRUD）| 2 MB |
 | 最大响应大小（例如分页查询） | 4 MB |
+| 事务性批处理中的最大操作数 | 100 |
 
 一旦查询等操作达到执行超时或响应大小限制，就会返回一个结果页面，并向客户端返回一个继续令牌用于恢复执行。 单个查询可以针对不同的页面/继续执行活动运行的持续时间没有实际的限制。
 

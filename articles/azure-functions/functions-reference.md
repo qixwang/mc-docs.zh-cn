@@ -3,13 +3,13 @@ title: Azure Functions 开发指南
 description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: 7693e6a8073661ae597dd97f8ecb81b8542e886f
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: 93b5d1ad6ee4f636f9c281d0fcce2f0c44b9a2e7
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624110"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116841"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -102,6 +102,6 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 * [在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)
-* [Azure Functions NodeJS developer reference（Azure Functions NodeJS 开发人员参考）](functions-reference-node.md)
+* [Azure Functions Node.js 开发人员参考](functions-reference-node.md)
 
 <!-- Update_Description: wording update -->

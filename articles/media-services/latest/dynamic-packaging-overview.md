@@ -1,7 +1,7 @@
 ---
-title: 媒体服务中的动态打包
+title: Azure 媒体服务 v3 中的动态打包
 titleSuffix: Azure Media Services
-description: Azure 媒体服务中动态打包的概述。
+description: 本文概述了 Azure 媒体服务中的动态打包。
 author: WenJason
 manager: digimobile
 editor: ''
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 origin.date: 10/17/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: juliako
-ms.openlocfilehash: 68acc015ddfc29914f19cd90d6f64132c7920570
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: f95d6cb52c86530105f15f42239a8ed8bb7c4061
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807623"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939811"
 ---
-# <a name="dynamic-packaging-in-media-services"></a>媒体服务中的动态打包
+# <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
 > [!NOTE]
 > Google Widevine 目前在中国地区不可用。
 
-Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端了解不同的协议，例如 iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。 
+Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端可理解不同的协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。 
 
 在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点（标准或高级）的标准功能。
 

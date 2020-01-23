@@ -7,8 +7,8 @@ author: Brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
+origin.date: 11/28/2019
+ms.date: 01/17/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 014a181a241b52e01a1122c306b557b8b6968218
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 847d46cb45496d349a7969bdacac81cc11004ac7
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336152"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123157"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
@@ -38,7 +38,7 @@ ms.locfileid: "75336152"
  若要概览计分概要文件，请参阅下面的示例，其中展示了名为“geo”的简单概要文件。 此文件用于提升在“hotelName”字段中具有搜索词的项。  它还使用 `distance` 函数优先提升在当前位置十公里范围内的项。 如果有人搜索“inn”一词，而“inn”恰好是酒店名称的一部分，包含当前位置 10 公里范围内带有“inn”的酒店的文档会在搜索结果中的较高位置出现。  
 
 
-```  
+```json
 "scoringProfiles": [
   {  
     "name":"geo",
@@ -93,7 +93,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  此示例演示具有两个计分概要文件的索引架构（`boostGenre`、`newAndHighlyRated`）。 针对此索引的任何查询（包含任一概要文件作为查询参数）将使用此概要文件对结果集进行计分。  
 
-```  
+```json
 {  
   "name": "musicstoreindex",  
   "fields": [  
@@ -235,14 +235,14 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 |属性|说明|  
 |---------------|-----------------|  
-|`Name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
-|`Text`|包含 Weights 属性。|  
-|`Weights`|可选。 指定字段名称和相对权重的名称-值对。 相对权重必须为正整数或浮点数。 最大值为 int32.MaxValue。<br /><br /> 可以指定不带相应权重的字段名称。 权重用于指示一个字段相对于另一个字段的重要性。|  
-|`Functions`|可选。 计分函数仅可应用于可筛选的字段。|  
-|`Type`|计分函数的必需项。 指示要使用的函数类型。 有效值包括 magnitude、freshness、distance 和 tag。 可以在每个计分概要文件中包含多个函数。 函数名称必须小写。|  
-|`Boost`|计分函数的必需项。 用作原始分数乘数的正数。 不得等于 1。|  
-|`Fieldname`|计分函数的必需项。 计分函数仅可应用于作为索引字段集合一部分且可筛选的字段。 此外，每个函数类型都引入了其他限制（freshness 与 datetime 字段结合使用、magnitude 与 integer 或 double 字段结合使用、distance 与 location 字段结合使用。）。 仅可按函数定义指定单个字段。 例如，若要在同一概要文件中使用两次 magnitude，则需要包含两个定义 magnitude，每个字段一个。|  
-|`Interpolation`|计分函数的必需项。 定义从范围起始至范围结束的分数提升增量的斜率。 有效值包括 Linear（默认值）、Constant、Quadratic 和 Logarithmic。 请参阅[设置插值](#bkmk_interpolation)获取详细信息。|  
+|`name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
+|`text`|包含 weights 属性。|  
+|`weights`|可选。 包含多个名称/值对，每个名称/值对指定一个字段名称和相对权重。 相对权重必须为正整数或浮点数。<br /><br /> 权重用于指示一个可搜索字段相对于另一个字段的重要性。|  
+|`functions`|可选。 计分函数仅可应用于可筛选的字段。|  
+|`type`|计分函数的必需项。 指示要使用的函数类型。 有效值包括 magnitude、freshness、distance 和 tag。 可以在每个计分概要文件中包含多个函数。 函数名称必须小写。|  
+|`boost`|计分函数的必需项。 用作原始分数乘数的正数。 不得等于 1。|  
+|`fieldname`|计分函数的必需项。 计分函数仅可应用于作为索引字段集合一部分且可筛选的字段。 此外，每个函数类型都引入了其他限制（freshness 与 datetime 字段结合使用、magnitude 与 integer 或 double 字段结合使用、distance 与 location 字段结合使用。）。 仅可按函数定义指定单个字段。 例如，若要在同一概要文件中使用两次 magnitude，则需要包含两个定义 magnitude，每个字段一个。|  
+|`interpolation`|计分函数的必需项。 定义从范围起始至范围结束的分数提升增量的斜率。 有效值包括 Linear（默认值）、Constant、Quadratic 和 Logarithmic。 请参阅[设置插值](#bkmk_interpolation)获取详细信息。|  
 |`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   星级评分：  根据“星级评分”字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **利润：** 当两个文档相关时，零售商可能希望先提升具有较高利润的文档。<br />-   **点击次数：** 对于跟踪产品或页面点击行为的应用程序，可使用 magnitude 提升容易获得最多流量的项。<br />-   **下载次数：** 对于跟踪下载的应用程序，magnitude 函数可提升下载次数最多的项。|  
 |`magnitude` &#124; `boostingRangeStart`|设置对其进行量值计分的范围的起始值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 1。 对于超过 50% 的利润率，这里应为 50。|  
 |`magnitude` &#124; `boostingRangeEnd`|设置对其进行量值计分的范围的结束值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 4。|  
@@ -262,10 +262,10 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 |||  
 |-|-|  
-|`Linear`|对于在最大和最小范围内的项目，将按递减的方式进行提升。 Linear 是计分概要文件的默认内插。|  
-|`Constant`|对于起始和结束范围内的项，将对排名结果应用恒定提升。|  
-|`Quadratic`|与具有不断减小的提升的线性内插相比，二次方最初以较小的速度递减，然后在接近结束范围时，以更高的间隔递减。 tag 计分函数中不允许使用此内插选项。|  
-|`Logarithmic`|与具有恒定递减提升的 Linear 内插相比，Logarithmic 最初以较大的速度递减，然后在接近结束范围时，以明显更小的间隔递减。 tag 计分函数中不允许使用此内插选项。|  
+|`linear`|对于在最大和最小范围内的项目，将按递减的方式进行提升。 Linear 是计分概要文件的默认内插。|  
+|`constant`|对于起始和结束范围内的项，将对排名结果应用恒定提升。|  
+|`quadratic`|与具有不断减小的提升的线性内插相比，二次方最初以较小的速度递减，然后在接近结束范围时，以更高的间隔递减。 tag 计分函数中不允许使用此内插选项。|  
+|`logarithmic`|与具有恒定递减提升的 Linear 内插相比，Logarithmic 最初以较大的速度递减，然后在接近结束范围时，以明显更小的间隔递减。 tag 计分函数中不允许使用此内插选项。|  
 
  ![关系图上的常数、线性、二次、log10 线](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 

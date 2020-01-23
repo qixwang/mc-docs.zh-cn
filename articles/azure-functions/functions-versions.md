@@ -2,13 +2,13 @@
 title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: bb5f411f4cf65dfcf1bc2920fab943231cf11700
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: 367e92e26bc73637a52e888f139b95a4ac908a8b
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624257"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116832"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -66,7 +66,7 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 * 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
 
-* 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到 unlimited（无限）。
+* 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到无限。
 
 * 默认情况下，将对消耗计划函数实施 HTTP 并发性限制，每个实例的并发请求数默认为 100。 可以在 host.json 文件中的 [`maxConcurrentRequests`](functions-host-json.md#http) 设置内更改此值。
 
@@ -102,7 +102,7 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) 应用程序设置指定。 支持以下主要运行时版本值：
 
-| 值 | 运行时目标 |
+| Value | 运行时目标 |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |
@@ -117,7 +117,7 @@ Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio 运行时版本
 
-在 Visual Studio 中，可在创建项目时选择运行时版本。 用于 Visual Studio 的 Azure Functions 工具支持这两个主要运行时版本。 基于项目设置进行调试和发布时，将使用正确的版本。 版本设置在 `.csproj` 文件中的以下属性内定义：
+在 Visual Studio 中，可在创建项目时选择运行时版本。 用于 Visual Studio 的 Azure Functions 工具支持这三个主要运行时版本。 基于项目设置进行调试和发布时，将使用正确的版本。 版本设置在 `.csproj` 文件中的以下属性内定义：
 
 ##### <a name="version-1x"></a>版本 1.x
 
@@ -148,7 +148,7 @@ Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 你可以打开面向 2.x 的现有函数，并通过编辑 `.csproj` 文件并更新上述值来迁移到 3.x。  Visual Studio 将基于项目元数据自动管理运行时版本。  但是，如果你之前从未创建过 3.x 应用，则 Visual Studio 在你的计算机上可能尚无适用于 3.x 的模板和运行时。  这可能会出现错误，例如“没有与项目中指定的版本匹配的可用函数运行时”  若要提取最新的模板和运行时，请完成体验来创建新的函数项目。  到达版本和模板选择屏幕后，请等待 Visual Studio 完成最新模板提取。  在最新的 .NET Core 3 模板可用并显示后，你应该能够运行和调试为版本 3.x 配置的任何项目。
 
 > [!IMPORTANT]
-> 只有使用版本 16.4 或更高版本时，才能在 Visual Studio 中开发 3.x 版函数。
+> 只有使用 Visual Studio 版本 16.4 或更高版本时，才能在 Visual Studio 中开发 3.x 版函数。
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code 和 Azure Functions Core Tools
 

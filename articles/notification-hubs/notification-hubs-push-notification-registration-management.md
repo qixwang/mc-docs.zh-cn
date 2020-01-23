@@ -12,21 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 04/08/2019
-ms.date: 12/09/2019
+origin.date: 12/17/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 96f590591246e75dad4a4cf31593cc881e7a08d9
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: f2fe59647f889b6c27e0ed58a4bc0fae17dbf0ce
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884978"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123310"
 ---
 # <a name="registration-management"></a>注册管理
-
-## <a name="overview"></a>概述
 
 本主题说明如何向通知中心注册设备以接收推送通知。 本主题将概要介绍注册，并介绍注册设备的两种主要模式：直接从设备向通知中心注册，以及通过应用程序后端注册。
 
@@ -113,7 +111,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 从客户端应用管理设备注册时，后端只负责发送通知。 客户端应用使 PNS 句柄保持最新状态，并且会注册标记。 下图演示了此模式。
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
+![从设备注册](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 设备首先从 PNS 检索 PNS 句柄，然后直接向通知中心进行注册。 注册成功之后，应用后端即可发送以该注册为目标的通知。 有关如何发送通知的详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
@@ -128,9 +126,9 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 此时，仅支持使用 [通知中心 REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)执行此操作。
 
-也可以使用 [JSON-Patch standard ](https://tools.ietf.org/html/rfc6902)以 PATCH 方法更新安装。
+也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
 
-```
+```csharp
 class DeviceInstallation
 {
     public string installationId { get; set; }
@@ -211,7 +209,7 @@ else
 
 这些方法为调用它们的设备创建或更新注册。 这意味着，若要更新句柄或标记，必须覆盖整个注册。 请记住，注册是暂时性的，因此，始终应使用具有特定设备所需的当前标记的可靠存储。
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -266,7 +264,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 从后端管理注册需要编写附加代码。 每次设备中的应用启动时，该应用都必须为后端提供已更新的 PNS 句柄（以及标记和模板），然后后端必须在通知中心上更新此句柄。 下图演示了此设计。
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![注册管理](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 从后端管理注册的优点是即使在设备上的相应应用处于非活动状态也能修改注册标记，并且在向其注册添加标记之前能够对客户端应用进行身份验证。
 
@@ -276,7 +274,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -319,7 +317,7 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 从应用后端可以对注册执行基本 CRUDS 操作。 例如：
 
-```
+```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
 // create a registration description object of the correct type, e.g.

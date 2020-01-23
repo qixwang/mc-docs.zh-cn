@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3054aa31605931c77e09d8076fef99cda91ef99
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 7e2926d07631248175ea5336b880d29a42059844
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776867"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116737"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
 
@@ -67,7 +67,7 @@ ms.locfileid: "75776867"
 | `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“en-us”）。 |
 | `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。 已格式化 LL（“en”）。 |
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
-| `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA、AAD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  | 
+| `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA、Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），它必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。| 
 | `groups`| 组声明的可选格式 |JWT、SAML| |与[应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置（也是必需的）结合使用。 有关详细信息，请参阅下面的[组声明](#configuring-groups-optional-claims)。 
 | `acct`             | 租户中的用户帐户状态。 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
 | `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
@@ -126,9 +126,7 @@ ms.locfileid: "75776867"
 
 可以通过 UI 或应用程序清单为应用程序配置可选声明。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 在左侧菜单中，选择“Azure Active Directory”  。
+1. 转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择“Azure Active Directory”  。
 1. 在“管理”部分，选择“应用注册”。  
 1. 在列表中选择要为其配置可选声明的应用程序。
 
@@ -229,8 +227,6 @@ ms.locfileid: "75776867"
 
 本部分介绍可选声明下的配置选项，这些选项可将组声明中使用的组特性从默认的组 objectID 更改为从本地 Windows Active Directory 同步的特性。 可以通过 UI 或应用程序清单为应用程序配置组可选声明。
 
-> [!IMPORTANT]
-> 有关更多详细信息，包括本地特性中组声明公共预览版的重要注意事项，请参阅[使用 Azure AD 配置应用程序的组声明](../hybrid/how-to-connect-fed-group-claims.md)。
 
 **通过 UI 配置组可选声明：**
 1. 登录到 [Azure 门户](https://portal.azure.cn)

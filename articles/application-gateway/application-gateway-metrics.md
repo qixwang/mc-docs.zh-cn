@@ -5,15 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/29/2019
-ms.date: 09/18/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9ea504ac3fceb8239feb554e43c0027ec70fdc32
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.openlocfilehash: bd298d19de46857c33e0f7fa72edc479d25836a7
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083283"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116924"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -23,19 +22,21 @@ ms.locfileid: "71083283"
 
 ### <a name="timing-metrics"></a>计时指标
 
-可以使用与请求和响应计时相关的以下指标。 分析这些指标可以确定应用程序是否由于 WAN、应用程序网关、应用程序网关与后端之间的网络或者应用程序性能的问题而减慢。
+可以使用与请求和响应计时相关的以下指标。 分析特定侦听器的这些指标即可确定应用程序速度变慢是否是由于 WAN、应用程序网关、应用程序网关与后端应用程序之间的网络或者后端应用程序性能的问题。
+
+> [!NOTE]
+>
+> 如果应用程序网关中有多个侦听器，则请在比较不同的延迟指标时始终按“侦听器”  维度进行筛选，以便获得有意义的推理结果。
 
 - **客户端 RTT**
 
-  客户端与应用程序网关之间的平均往返时间。 此指标指示建立连接和返回确认所用的时间。
+  客户端与应用程序网关之间的平均往返时间。 此指标指示建立连接和返回确认所用的时间。 
 
 - **应用程序网关总时间**
 
   处理请求和发送响应平均花费的时间。 此时间按特定的平均时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，这通常包括应用程序网关处理时间、请求和响应数据包遍历网络的时间，以及后端服务器做出响应所花费的时间。
-
-- **后端连接时间**
-
-  与后端服务器建立连接所花费的时间。 
+  
+按侦听器筛选后，如果“客户端 RTT”远大于“应用程序网关总时间”，则可以推断客户端观察到的延迟是由于客户端和应用程序网关之间的网络连接性不好。   如果这两个延迟相当，则高延迟可能是由于以下任一原因导致的：应用程序网关、应用程序网关与后端应用程序之间的网络或者后端应用程序性能。
 
 - **后端第一个字节响应时间**
 
@@ -44,6 +45,13 @@ ms.locfileid: "71083283"
 - **后端最后一个字节响应时间**
 
   从开始与后端服务器建立连接，到收到响应正文的最后一个字节的间隔时间
+  
+如果“应用程序网关总时间”远长于特定侦听器的“后端最后一个字节的响应时间”，则可以推断出延迟高可能是由于应用程序网关问题。   另一方面，如果这两个指标相当，则可能是应用程序网关和后端应用程序之间的网络或后端应用程序的性能出了问题。
+
+- **后端连接时间**
+
+  与后端应用程序建立连接所花费的时间。 在使用 SSL 时，它包括握手所用的时间。 请注意，此指标不同于其他延迟指标，因为这仅度量连接时间，因此不应与其他延迟直接进行大小比较。 不过，将“后端连接时间”的模式与其他延迟的模式进行比较即可了解是否可以通过应用程序网关和后端应用程序之间的网络差异推断出其他延迟会增加。  
+  
 
 ### <a name="application-gateway-metrics"></a>应用程序网关指标
 
@@ -116,6 +124,10 @@ ms.locfileid: "71083283"
 
 应用程序网关支持以下指标：
 
+- **CPU 使用率**
+
+  显示分配给应用程序网关的 CPU 的使用率。  正常情况下，CPU 使用率不应经常超过 90%，因为这可能导致托管在应用程序网关后面的网站中出现延迟，并破坏客户端体验。 可以通过修改应用程序网关的配置（具体方法是：增加实例计数和/或移到更大的 SKU 大小）来间接控制或改进 CPU 使用率。
+
 - **当前连接数**
 
   使用应用程序网关建立的当前连接计数
@@ -158,7 +170,7 @@ ms.locfileid: "71083283"
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
-[![](./media/application-gateway-diagnostics/figure5.png "度量值视图")](./media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](./media/application-gateway-diagnostics/figure5.png "Metric view")](./media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。
 
@@ -180,3 +192,4 @@ ms.locfileid: "71083283"
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
 
+<!-- Update_Description: wording update -->

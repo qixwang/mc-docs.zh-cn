@@ -1,24 +1,16 @@
 ---
-title: 在 Azure 中创建由 Blob 存储触发的函数 | Microsoft Docs
+title: 在 Azure 中创建由 Blob 存储触发的函数
 description: 使用 Azure Functions 创建由添加到 Azure Blob 存储的项调用的无服务器函数。
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
-origin.date: 10/01/2018
-ms.date: 04/26/2019
-ms.author: v-junlch
+ms.date: 01/13/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f59e5898c6b2732335ee3aeb394b272edd495930
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.openlocfilehash: 6afc477b3bf306768916a466cd1e76336e1ff97b
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64854991"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116890"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
 
@@ -26,7 +18,7 @@ ms.locfileid: "64854991"
 
 ![查看日志中的消息。](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 下载并安装 [Azure 存储资源管理器](https://storageexplorer.com/)。
 + Azure 订阅。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
@@ -43,17 +35,17 @@ ms.locfileid: "64854991"
 
 ## <a name="create-a-blob-storage-triggered-function"></a>创建 Blob 存储触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮   。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 
-1. 依次选择“更多模板”、“完成并查看模板”。
+1. 依次选择“更多模板”  、“完成并查看模板”  。
 
     ![Functions 快速入门选择更多模板](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
-1. 在搜索字段中，键入 `blob`，然后选择“Blob 触发器”模板。
+1. 在搜索字段中，键入 `blob`，然后选择“Blob 触发器”  模板。
 
-1. 如果系统提示，请选择“安装”以在函数应用中安装 Azure 存储扩展的任何依赖项。 安装成功后，选择“继续”。
+1. 如果系统提示，请选择“安装”  以在函数应用中安装 Azure 存储扩展以及任何依赖项。 安装成功后，选择“继续”  。
 
     ![安装绑定扩展](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
 
@@ -67,25 +59,25 @@ ms.locfileid: "64854991"
     | **路径**   | samples-workitems/{name}    | 所监视的 Blob 存储中的位置。 blob 的文件名将作为 _name_ 参数传入绑定。  |
     | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
 
-1. 单击“创建”以创建函数。
+1. 单击“创建”以创建函数  。
 
 接下来，连接到 Azure 存储帐户并创建 **samples-workitems** 容器。
 
 ## <a name="create-the-container"></a>创建容器
 
-1. 在函数中，单击“集成”，展开“文档”，并复制**帐户名称**和**帐户密钥**。 使用这些凭据连接到存储帐户。 如果已连接存储帐户，请跳到步骤 4。
+1. 在函数中，单击“集成”  ，展开“文档”  ，并复制**帐户名称**和**帐户密钥**。 使用这些凭据连接到存储帐户。 如果已连接存储帐户，请跳到步骤 4。
 
     ![获取存储帐户连接凭据。](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. 运行 [Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，并单击“下一步”。
+1. 运行 [Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”  ，并单击“下一步”  。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 
-1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”，并单击“连接”。 
+1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”  ，并单击“连接”  。 
 
     ![输入存储凭据和连接。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 展开附加的存储帐户，右键单击“Blob 容器”，单击“创建 blob 容器”，键入 `samples-workitems`，并按 Enter。
+1. 展开附加的存储帐户，右键单击“Blob 容器”  ，单击“创建 blob 容器”  ，键入 `samples-workitems`，并按 Enter。
 
     ![创建存储队列。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -93,21 +85,20 @@ ms.locfileid: "64854991"
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”并确保日志流式处理未暂停。
+1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”  并确保日志流式处理未暂停。
 
-1. 在存储资源管理器中，依次展开存储帐户、“Blob 容器”和 **samples-workitems**。 依次单击“上传”、“上传文件...”。
+1. 在存储资源管理器中，依次展开存储帐户、“Blob 容器”  和 **samples-workitems**。 依次单击“上传”  、“上传文件...”  。
 
     ![将文件上传到 blob 容器。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 
-1. 在“上传文件”对话框中，单击“文件”字段。 浏览到本地计算机上的文件（如图像文件），选择它并单击“打开”，并单击“上传”。
+1. 在“上传文件”  对话框中，单击“文件”  字段。 浏览到本地计算机上的文件（如图像文件），选择它并单击“打开”  ，并单击“上传”  。
 
 1. 返回到函数日志并验证是否已读取 blob。
 
-    ![查看日志中的消息。](./media/functions-create-storage-blob-triggered-function/functions-blob-storage-trigger-view-logs.png)
+   ![查看日志中的消息。](./media/functions-create-storage-blob-triggered-function/functions-blob-storage-trigger-view-logs.png)
 
     >[!NOTE]
     > 当 Function App 在默认消耗计划中运行时，添加或更新 blob 与触发函数之间可能会有多达几分钟的延迟。 如果需要在 blob 触发的函数中降低延迟，请考虑在应用服务计划中运行 Function App。
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

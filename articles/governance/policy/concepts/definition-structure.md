@@ -1,19 +1,16 @@
 ---
 title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/26/2019
-ms.date: 12/16/2019
+ms.date: 01/17/2020
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 09fa04382c00c3ccc02dffedaea41990c2eb2a3d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: edcd4f5fe9ab0a0b6cc6282bf88df34558661e5b
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335814"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123362"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -198,7 +195,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 **not** 语法反转条件的结果。 **allOf** 语法（与逻辑 **And** 操作相似）要求所有条件为 true。 **anyOf** 语法（与逻辑 **Or** 操作相似）要求一个或多个条件为 true。
 
-可以嵌套逻辑运算符。 以下示例显示了嵌套在 allOf  操作中的 not  操作。
+可以嵌套逻辑运算符。 以下示例显示了嵌套在 allOf 操作中的 not 操作   。
 
 ```json
 "if": {
@@ -313,7 +310,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 #### <a name="value-examples"></a>Value 示例
 
-此策略规则示例使用 **value** 将 `resourceGroup()` 函数和返回的 **name** 属性的结果与 **like** 条件 `*netrg` 进行对比。 此规则拒绝名称以 `*netrg` 结尾的资源组中 **type** 不为 `Microsoft.Network/*` 的资源。
+此策略规则示例使用 **value** 将 `resourceGroup()` 函数和返回的 **name** 属性的结果与 **like** 条件 `*netrg` 进行对比。 此规则拒绝名称以 `*netrg` 结尾的任何资源组中 **type** 不为 `Microsoft.Network/*` 的资源。
 
 ```json
 {

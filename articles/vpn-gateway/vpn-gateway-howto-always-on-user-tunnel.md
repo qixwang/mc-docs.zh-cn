@@ -1,19 +1,20 @@
 ---
-title: 为 VPN 网关配置 Always On VPN 用户隧道
+title: 配置 Always-On VPN 用户隧道
+titleSuffix: Azure VPN Gateway
 description: 本文介绍如何为 VPN 网关配置 Always On VPN 用户隧道
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 10/02/2019
-ms.date: 11/11/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: a5737b3b874e1397e0a504c478f8bed68da84755
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: cd27ccb0701589f748508c9eb6eb64ed19ab0235
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750264"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939741"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>配置 Always On VPN 用户隧道
 
@@ -99,9 +100,10 @@ Always On VPN 连接包括下述两种隧道类型之一：
    ```
 1. 复制以下文本，在 *usercert.ps1* 所在的文件夹中将其另存为 *VPNProfile.xml*。 编辑以下文本，使之与环境匹配：
 
-   * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
-   * `<Address>192.168.3.5</Address>`
-   * `<Address>192.168.3.4</Address>`
+   * `<Servers>azuregateway-1234-56-78dc.chinacloudapp.cn</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
+   * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
+   * `<Address>192.168.3.4</Address>  <= IP of resource in the vnet or the vnet address space`
+   * `<PrefixSize>32</PrefixSize>     <= Subnet mask`
 
    ```
     <VPNProfile>  

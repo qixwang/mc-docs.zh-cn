@@ -1,20 +1,16 @@
 ---
 title: Azure Functions 可靠事件处理
 description: 避免 Azure Functions 中缺少事件中心消息
-services: functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/12/2019
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: ca7aa06682efd3a4df4b23d2d85898e3a7b8ec9e
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: de57e5d29542c93f9a4363e61627f75962827a28
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034497"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116836"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理
 
@@ -63,7 +59,7 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 ### <a name="retry-mechanisms-and-policies"></a>重试机制和策略
 
-某些异常在性质上是暂时性的，稍后再次尝试操作时不会重现。 正因如此，第一个步骤始终是重试操作。 你可以自行编写重试处理规则，不过，有许多现成的工具可以完成此工作。 使用这些库可以定义可靠的重试策略，而这些策略也有助于保持处理顺序。
+某些异常在性质上是暂时性的，稍后再次尝试操作时不会重现。 正因如此，第一个步骤始终是重试操作。 你可以自己编写重试处理规则，但是这些规则太常见了，有很多工具都可以使用。 使用这些库可以定义可靠的重试策略，而这些策略也有助于保持处理顺序。
 
 将故障处理库引入函数可以定义基本和高级重试策略。 例如，可以实现一个遵循以下规则所演示的工作流的策略：
 
@@ -86,7 +82,7 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 ## <a name="stop-and-restart-execution"></a>停止和重启执行
 
-尽管少量的错误可能是可接受的，但如果应用遇到严重的故障，该怎么办？ 在系统达到正常状态之前，你可能想要停止基于事件的触发。 通常可以通过断路器模式来实现处理暂停。 断路器模式允许应用“中断”事件进程的线路，稍后再恢复。
+尽管少量的错误可能是可接受的，但如果应用遇到严重的故障，该怎么办？ 在系统达到正常状态之前，你可能想要停止基于事件的触发。 通常可以通过断路器模式获得暂停处理的机会。 断路器模式允许应用“中断”事件进程的线路，稍后再恢复。
 
 在事件进程中实现断路器需要两项信息：
 
@@ -135,3 +131,5 @@ Azure 逻辑应用随附了不同服务的内置连接器，提供有状态业�
 
 - [Azure Functions 错误处理](./functions-bindings-error-pages.md)
 - [使用事件网格自动调整已上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
+
+<!-- Update_Description: wording update -->

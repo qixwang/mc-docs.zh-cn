@@ -1,5 +1,5 @@
 ---
-title: 常见问题解答 - Azure 事件中心 | Azure
+title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 services: event-hubs
 documentationcenter: na
@@ -7,15 +7,15 @@ author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-origin.date: 08/07/2018
-ms.date: 08/12/2019
-ms.author: v-biyu
-ms.openlocfilehash: 7b9012f38ee23cd56ce733b35f16f3bea81e0fd1
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+origin.date: 12/02/2019
+ms.date: 01/17/2020
+ms.author: v-tawe
+ms.openlocfilehash: ae378b5b57eee31c1310c174dd229181becc1465
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72872980"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123346"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -54,7 +54,9 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>事件的最长保留期有多久？
 
-事件中心标准版目前支持的最长保留期为七天。 事件中心并非永久性的数据存储。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新机器学习模型。 如果需要将消息保留 7 天以上，那么启用事件中心的[事件中心捕获](event-hubs-capture-overview.md)功能，可将数据从事件中心拉取到选定的存储帐户。 启用捕获功能需要支付费用，具体因购买的吞吐量单位而异。
+事件中心标准版目前支持的最长保留期为七天。 事件中心不应作为永久性的数据存储。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新机器学习模型。 如果需要将消息保留七天以上，请启用事件中心的[事件中心捕获](event-hubs-capture-overview.md)功能，将数据从事件中心提取到所选的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能需要支付费用，具体因购买的吞吐量单位而异。
+
+可以在存储帐户上配置已捕获数据的保留期。 Azure 存储的“生命周期管理”  功能为常规用途 v2 和 blob 存储帐户提供了基于规则的丰富策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
@@ -99,6 +101,8 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
     ```
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
+<!-- ## Apache Kafka integration -->
+
 
 ## <a name="throughput-units"></a>吞吐量单位
 
@@ -138,7 +142,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ## <a name="dedicated-clusters"></a>专用群集
 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>什么是事件中心专用群集？
-事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以利用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
+事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以使用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
 
 ### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>一个容量单位可以实现多大的处理量？
 对于专用群集，可以引入和流式传输的数据量取决于各种因素，例如生成者、使用者、引入和处理速率，等等。 
@@ -147,9 +151,9 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 | 有效负载形状 | 接收方 | 入口带宽| 入口消息 | 出口带宽 | 出口消息 | TU 总数 | 每个 CU 的 TU 数 |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB 批 | 2 | 400 MB/秒 | 400K 消息/秒 | 800 MB/秒 | 800K 消息/秒 | 400 TU | 100 TU | 
-| 10x10KB 批 | 2 | 666 MB/秒 | 66.6K 消息/秒 | 1.33 GB/秒 | 133K 消息/秒 | 666 TU | 166 TU |
-| 6x32KB 批 | 1 | 1.05 GB/秒 | 34K 消息/秒 | 1.05 GB/秒 | 34K 消息/秒 | 1000 TU | 250 TU |
+| 100x1KB 批 | 2 | 400 MB/秒 | 400k 消息数/秒 | 800 MB/秒 | 800k 消息数/秒 | 400 TU | 100 TU | 
+| 10x10KB 批 | 2 | 666 MB/秒 | 66.6k 消息数/秒 | 1.33 GB/秒 | 133k 消息数/秒 | 666 TU | 166 TU |
+| 6x32KB 批 | 1 | 1.05 GB/秒 | 34k 消息数/秒 | 1.05 GB/秒 | 34k 消息数/秒 | 1000 TU | 250 TU |
 
 测试中使用了以下条件：
 
@@ -160,7 +164,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 结果大致反映了一个专用事件中心群集可以实现的处理量。 此外，专用群集还为微批和长期保留方案启用了“事件中心捕获”。
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
-可以通过提交提高配额支持请求或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是暂时性的，到时会 Azure 门户或 Azure 资源管理器模板提供完全自助的服务，只需大约两个小时即可部署群集。
+可以通过提交[提高配额支持请求](https://portal.azure.cn/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是暂时性的，到时会 Azure 门户或 Azure 资源管理器模板提供完全自助的服务，只需大约两个小时即可部署群集。
 
 ## <a name="best-practices"></a>最佳实践
 

@@ -1,6 +1,6 @@
 ---
-title: 配置 Postman 以便进行 Azure 媒体服务 REST API 调用
-description: 了解如何为媒体服务 REST API 调用配置 Postman。
+title: 配置 Postman 以进行 Azure 媒体服务 v3 REST API 调用
+description: 本文演示如何配置 Postman，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 11/07/2019
-ms.date: 12/09/2019
+origin.date: 12/05/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: e6e1961da4aaac4bf334863d2d18d53542d9eb8c
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: a82b09dc214904552ffbf381cabc3ba88bbfc100
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807641"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939774"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>配置 Postman 以进行媒体服务 v3 REST API 调用
 
 本文演示如何配置 **Postman**，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。 本文说明如何将环境和集合文件导入到 **Postman**。 集合包含调用 Azure 媒体服务 (AMS) REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
 
 开始开发之前，请查看[使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息

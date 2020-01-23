@@ -1,6 +1,6 @@
 ---
-title: 智能检测 - Azure Application Insights 中的安全检测包 | Azure Docs
-description: 使用 Azure Application Insights 监视应用程序的潜在安全问题。
+title: 使用 Azure Application Insights 的安全检测包
+description: 使用 Azure Application Insights 和智能检测监视应用程序，以发现潜在的安全问题。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 12/12/2017
 ms.date: 08/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 558fbfb2274911310d769f666fb244c54aebfb7c
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 29333103c18e640d52cb0a5c3805c73cd064d6a2
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730519"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116928"
 ---
 # <a name="application-security-detection-pack-preview"></a>应用程序安全检测包（预览版）
 
@@ -21,7 +21,7 @@ Application Insights 会自动分析应用程序生成的遥测数据并检测�
 
 除了[配置应用来发送遥测数据](/azure-monitor/app/usage-overview)之外，此功能不要求进行特殊设置。
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>我何时会收到此类型的智能检测通知？
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
 检测到的安全问题分三种类型：
 1. 不安全的 URL 访问：正在同时通过 HTTP 和 HTTPS 访问应用程序中的 URL。 通常情况下，接受 HTTPS 请求的 URL 不应当接受 HTTP 请求。 这可能表明应用程序中存在 bug 或安全问题。
 2. 不安全的窗体：应用程序中的窗体（或其他“POST”请求）使用了 HTTP 而非 HTTPS。 使用 HTTP 可能会危害窗体发送的用户数据的安全。

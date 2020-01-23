@@ -1,21 +1,22 @@
 ---
-title: 排序规则 - Azure SQL 数据仓库 | Microsoft Docs
+title: 排序规则
 description: Azure SQL 数据仓库中支持的排序规则类型。
 services: sql-data-warehouse
 author: WenJason
 manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-origin.date: 07/10/2019
-ms.date: 09/02/2019
+origin.date: 12/04/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: f80e300c829989b73b460ffabd68060ae3283ffc
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 11c880f260e74f44ef436e25be76df2423dddc20
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70132755"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964896"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的数据库排序规则支持。
 
@@ -100,5 +101,9 @@ ms.locfileid: "70132755"
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>查看当前的排序规则
-若要查看数据库的当前排序规则，可运行以下 T-SQL 代码片段：SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation；将 ‘Collation’ 作为属性参数传递时，DatabasePropertyEx 函数返回指定数据库的当前排序规则。 可以在 MSDN 上详细了解 DatabasePropertyEx 函数。
+若要查看数据库的当前排序规则，可运行以下 T-SQL 代码片段：
+```sql
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
+```
+将 ‘Collation’ 作为属性参数传递时，DatabasePropertyEx 函数返回指定数据库的当前排序规则。 可以在 MSDN 上详细了解 DatabasePropertyEx 函数。
 

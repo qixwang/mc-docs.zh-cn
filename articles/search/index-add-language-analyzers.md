@@ -7,8 +7,8 @@ author: Yahnoosh
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
+origin.date: 12/10/2019
+ms.date: 01/17/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 6fa04b84e4f78c9cda7c319ad264801705000f78
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ac8f70ac6c1b807f2655fa05a2380b703b4cbc04
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336151"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123159"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
@@ -49,7 +49,10 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 ## <a name="configuring-analyzers"></a>配置分析器
 
-语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称  。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。 或者，可以使用 indexAnalyzer 和 searchAnalyzer 代替“分析器”，以在索引或查询时具有不同的分析规则    。 
+语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称  。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。
+
+> [!NOTE]
+> 不能在为字段编制索引时和查询时使用不同的语言分析器。 该功能是为[自定义分析器](index-add-custom-analyzers.md)保留的。 因此，如果尝试将 **searchAnalyzer** 或 **indexAnalyzer** 属性设为语言分析器的名称，REST API 将返回错误响应。 必须改用 **analyzer** 属性。
 
 使用 **searchFields** 查询参数指定在查询中针对哪个特定于语言的字段进行搜索。 可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)中查看包含分析器属性的查询示例。 
 
@@ -68,7 +71,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |巴斯克语||eu.lucene|  
 |保加利亚语|bg.microsoft|bg.lucene|  
 |加泰罗尼亚语|ca.microsoft|ca.lucene|  
-|中文(简体)|zh-Hans.microsoft|zh-Hans.lucene|  
+|简体中文|zh-Hans.microsoft|zh-Hans.lucene|  
 |中文(繁体)|zh-Hant.microsoft|zh-Hant.lucene|  
 |克罗地亚语|hr.microsoft||  
 |捷克语|cs.microsoft|cs.lucene|  
@@ -83,7 +86,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |希腊语|el.microsoft|el.lucene|  
 |古吉拉特语|gu.microsoft||  
 |希伯来语|he.microsoft||  
-|印地语|hi.microsoft|hi.lucene|  
+|Hindi|hi.microsoft|hi.lucene|  
 |匈牙利语|hu.microsoft|hu.lucene|  
 |冰岛语|is.microsoft||  
 |印度尼西亚语|id.microsoft|id.lucene|  
@@ -100,13 +103,13 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |挪威语|nb.microsoft|no.lucene|  
 |波斯语||fa.lucene|  
 |波兰语|pl.microsoft|pl.lucene|  
-|葡萄牙语(巴西)|pt-Br.microsoft|pt-Br.lucene|  
+|葡萄牙语（巴西）|pt-Br.microsoft|pt-Br.lucene|  
 |葡萄牙语(葡萄牙)|pt-Pt.microsoft|pt-Pt.lucene|  
 |旁遮普语|pa.microsoft||  
 |罗马尼亚语|ro.microsoft|ro.lucene|  
 |俄语|ru.microsoft|ru.lucene|  
-|塞尔维亚语(西里尔文)|sr-cyrillic.microsoft||  
-|塞尔维亚语(拉丁语系)|sr-latin.microsoft||  
+|塞尔维亚语（西里尔）|sr-cyrillic.microsoft||  
+|塞尔维亚语（拉丁）|sr-latin.microsoft||  
 |斯洛伐克语|sk.microsoft||  
 |斯洛文尼亚语|sl.microsoft||  
 |西班牙语|es.microsoft|es.lucene|  

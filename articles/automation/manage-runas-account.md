@@ -2,20 +2,16 @@
 title: 管理 Azure 自动化运行方式帐户
 description: 本文介绍如何使用 PowerShell 或门户管理运行方式帐户。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: WenJason
-ms.author: v-jay
 origin.date: 05/24/2019
-ms.date: 01/06/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 55308e316caf926e80ce248d2521eb180c1ecd44
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 08c72d9988594e1db96a1d3d4fc3aeed0570eac6
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624120"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939804"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -65,7 +61,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。 可以单独创建运行方式帐户和经典运行方式帐户。 如果不需管理经典资源，可以只创建 Azure 运行方式帐户。
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
-2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“自动化”  。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”  。
+2. 在 Azure 门户中，搜索并选择“自动化帐户”  。
 3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。 
 4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”   。
 5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”   。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户    。
@@ -73,7 +69,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 ## <a name="create-run-as-account-using-powershell"></a>使用 PowerShell 创建运行方式帐户
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 以下列表提供了在 PowerShell 中创建运行方式帐户所要满足的要求：
 
@@ -84,7 +80,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请完成以下步骤    ：
 
-1. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“自动化”  。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”  。
+1. 在 Azure 门户中，搜索并选择“自动化帐户”  。
 1. 在“自动化帐户”页中选择自动化帐户，然后在“帐户设置”下  选择“属性”  。
 1. 记下“属性”页上的“订阅 ID”、“名称”和“资源组”值。    
 

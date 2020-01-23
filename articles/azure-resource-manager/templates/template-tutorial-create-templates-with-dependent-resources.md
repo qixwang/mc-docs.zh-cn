@@ -3,15 +3,15 @@ title: 具有依赖资源的模板
 description: 了解如何使用多个资源创建 Azure 资源管理器模板，以及如何使用 Azure 门户部署该模板
 author: rockboyfor
 origin.date: 03/04/2019
-ms.date: 01/06/2020
-ms.topic: tutorial
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 24a36c739afd57c6d867e7d34ee5d42962668c12
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.topic: tutorial
+ms.openlocfilehash: 443b0891b3877f4cf3041fc4fdf81b7890a2e25e
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631577"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165395"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
 
@@ -32,7 +32,7 @@ ms.locfileid: "75631577"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -124,7 +124,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 1. 选择前面在本教程中保存的模板。 默认名称为 **azuredeploy.json**。  如果某个文件的文件名相同，则会覆盖旧文件，没有任何通知。
 
-    还可以选择使用 ls $HOME  命令和 cat $HOME/azuredeploy.json  命令来验证文件是否已成功上传。
+    可以选择使用 ls $HOME  命令和 cat $HOME/azuredeploy.json  命令来验证文件是否已成功上传。
 
 1. 在本地 Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
 
@@ -141,7 +141,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         -adminUsername $adminUsername `
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json
+        -TemplateFile "$HOME/azuredeploy.json"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
@@ -166,11 +166,8 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
 4. 在顶部菜单中选择“删除资源组”。 
 
-## <a name="next-steps"></a>后续步骤
-
-本教程介绍如何通过开发和部署模板来创建虚拟机、虚拟网络和依赖资源。 若要了解如何根据条件部署 Azure 资源，请参阅：
-
-> [!div class="nextstepaction"]
-> [使用条件](./template-tutorial-use-conditions.md)
+<!--Not Available on ## Next steps-->
+<!--Not Available on deployment scripts to perform pre/post deployment operations-->
+<!--Not Available on > [Use deployment script](./template-tutorial-deployment-script.md)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

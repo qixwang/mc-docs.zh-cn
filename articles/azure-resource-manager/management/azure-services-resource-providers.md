@@ -3,14 +3,14 @@ title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
 origin.date: 11/11/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: b82147925a8c8cc4a6899bcc578dfaf03a5de145
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: a577994c3637a2fa9c8e458469fa61fbf2e1e451
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631207"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165466"
 ---
 <!--Verify sucessfully-->
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -84,7 +84,7 @@ ms.locfileid: "75631207"
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.SignalRService | [Azure SignalR 服务](../../azure-signalr/index.yml) |
 | Microsoft.SiteRecovery | [站点恢复](../../site-recovery/index.yml) |
-| Microsoft.Solutions | Azure 托管应用程序 |
+| Microsoft.Solutions | [Azure 托管应用程序](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL 数据库](../../sql-database/index.yml)<br />[SQL 数据仓库](/sql-data-warehouse/) |
 | Microsoft.Storage | [存储](../../storage/index.yml) |
 | Microsoft.StreamAnalytics | [流分析](../../stream-analytics/index.yml) |

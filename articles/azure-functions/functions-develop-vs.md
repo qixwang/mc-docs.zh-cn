@@ -1,20 +1,15 @@
 ---
-title: 使用 Visual Studio 开发 Azure Functions | Microsoft Docs
+title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用用于 Visual Studio 2019 的 Azure Functions 工具开发和测试 Azure Functions。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-origin.date: 08/21/2019
-ms.date: 09/29/2019
-ms.author: v-junlch
-ms.openlocfilehash: 1925b0a7b3d0005ccb1b3807742737460f852a73
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.date: 01/13/2020
+ms.openlocfilehash: ac2100c97af8053c3b0e0e75d57b24c5ffb9f1c8
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673581"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116882"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -32,7 +27,7 @@ Visual Studio 在开发函数时提供以下优势：
 
 除非另有说明，否则将演示 Visual Studio 2019 的过程和示例。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 从 Visual Studio 2017 开始，Azure Functions Tools 包含在 Visual Studio 的 Azure 开发工作负荷中。 请确保在 Visual Studio 安装中包括 **Azure 开发**工作负荷。
 
@@ -68,7 +63,7 @@ Visual Studio 在开发函数时提供以下优势：
 1. 更新完成后，请选择“关闭”  并重启 Visual Studio。
 
 > [!NOTE]  
-在 Visual Studio 2019 和更高版本中，Azure Functions Tools 扩展将作为 Visual Studio 的一部分更新。  
+> 在 Visual Studio 2019 和更高版本中，Azure Functions Tools 扩展将作为 Visual Studio 的一部分更新。  
 
 ## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目
 

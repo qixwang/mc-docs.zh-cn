@@ -9,22 +9,22 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 12/23/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6805dfbd57e399a2c097b0107dd64d3e61643e26
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: ad1d7d4db0ed594007bdec6a5570b6e28748a291
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630931"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123299"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 识别语音
 
-<!-- Quickstarts are also available for [speech synthesis](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/swift-macos.md). -->
+针对[语音合成](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/swift-macos.md)也提供了快速入门。
 
 本文介绍如何使用认知服务语音 SDK 在 Swift 中创建一个 macOS 应用，以便将通过麦克风录制的语音转录为文本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请满足以下一系列先决条件：
 
@@ -162,7 +162,7 @@ ms.locfileid: "75630931"
     }
     ```
 1. 在 `AppDelegate.swift` 中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的区域（例如，对于 1 元人民币的试用订阅，为 `chinaeast2`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的区域（例如，对于试用订阅，为 `chinaeast2`）。
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>安装用作 CocoaPod 的 SDK
 

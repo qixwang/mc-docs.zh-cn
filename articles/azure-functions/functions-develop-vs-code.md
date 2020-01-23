@@ -2,13 +2,13 @@
 title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开发和测试 Azure Functions。
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: f13029be7c98dbe60df7ee9e47f0a798875f7908
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: 6dca2ea85318ae97b6a096b5823d31108c85af7e
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624272"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116884"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -36,7 +36,7 @@ Azure Functions 扩展提供以下优势：
 > [!IMPORTANT]
 > 不要对单个函数应用混合使用本地开发和门户开发。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在安装并运行 [Azure Functions 扩展][适用于 visual studio code 的 azure functions 扩展]之前，必须符合以下要求：
 
@@ -92,10 +92,6 @@ Azure Functions 扩展提供以下优势：
 
 绑定将在扩展包中实现，但 HTTP 和计时器触发器除外。 对于需要扩展包的触发器和绑定，必须安装这些包。 安装绑定扩展的过程取决于项目的语言。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 在终端窗口中运行 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令，在项目中安装所需的扩展包。 以下命令安装 Azure 存储扩展，用于实现 Blob、队列和表存储的绑定。
@@ -103,6 +99,10 @@ Azure Functions 扩展提供以下优势：
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -112,13 +112,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 此操作的结果取决于项目语言：
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-此时会在项目中创建一个新文件夹。 该文件夹包含新的 function.json 文件和新的 JavaScript 代码文件。
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 将新的 C# 类库 (.cs) 文件添加到项目。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+此时会在项目中创建一个新文件夹。 该文件夹包含新的 function.json 文件和新的 JavaScript 代码文件。
 
 ---
 
@@ -127,6 +127,24 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 可以通过添加输入和输出绑定来扩展函数。 添加绑定的过程取决于项目的语言。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
 以下示例连接到名为 `outqueue` 的存储队列，其中，存储帐户的连接字符串已在 local.settings.json 中的 `MyStorageConnection` 应用程序设置内进行设置。
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+更新函数方法，将以下参数添加到 `Run` 方法定义：
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+此代码要求添加以下 `using` 语句：
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 将一个或多个消息添加到集合。 函数完成后，这些消息将发送到队列。
+
+有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -142,7 +160,7 @@ Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 functi
 | **选择具有方向的绑定** | `Azure Queue Storage` | 该绑定是 Azure 存储队列绑定。 |
 | **用于在代码中标识此绑定的名称** | `msg` | 用于标识代码中引用的绑定参数的名称。 |
 | **要将消息发送到的队列** | `outqueue` | 绑定要写入到的队列的名称。 如果 *queueName* 不存在，首次使用绑定时，它会创建该属性。 |
-| **从 local.setting.json 中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
+| **从“local.settings.json”中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
 
 在此示例中，以下绑定已添加到 function.json 文件中的 `bindings` 数组：
 
@@ -166,25 +184,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---javascript-example)参考文章。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-更新函数方法，将以下参数添加到 `Run` 方法定义：
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-此代码要求添加以下 `using` 语句：
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 将一个或多个消息添加到集合。 函数完成后，这些消息将发送到队列。
-
-有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

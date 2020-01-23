@@ -1,20 +1,14 @@
 ---
-title: Azure Functions Java 开发人员参考 | Microsoft Docs
+title: Azure Functions Java 开发人员参考
 description: 了解如何使用 Java 开发函数。
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, java
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/14/2018
-ms.date: 11/11/2019
-ms.author: v-junlch
-ms.openlocfilehash: 0422ec20fd94c5481224f4ed8b4f0ad0040b0ea7
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.date: 01/13/2020
+ms.openlocfilehash: 18194662a97c1e5f8421d31c4e086901a7c7b395
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934244"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116843"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -195,7 +189,7 @@ Azure Functions 支持使用第三方库。 默认情况下，项目 `pom.xml` �
 
 [azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) 使用 [gson](https://github.com/google/gson) 库将输入数据转换为 POJO。 用作函数输入的 POJO 类型应是 `public`。
 
-### <a name="binary-data"></a>二进制数据
+### <a name="binary-data"></a>Binary data
 
 通过将 function.json 中的 `dataType` 字段设置为 `binary`，将二进制输入或输出绑定到 `byte[]`：
 
@@ -364,7 +358,7 @@ public class Function {
     }
 }
 ```
-在上述示例中，`queryValue` 绑定到 Http 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，演示如何从队列触发器元数据绑定到 `Id`。
+在前面的示例中，`queryValue` 绑定到 HTTP 请求 URL `http://{example.host}/api/metadata?name=test` 中的查询字符串参数 `name`。 下面是另一个示例，演示如何从队列触发器元数据绑定到 `Id`。
 
 ```java
  @FunctionName("QueueTriggerMetadata")

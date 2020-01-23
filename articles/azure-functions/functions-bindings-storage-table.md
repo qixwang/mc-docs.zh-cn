@@ -3,14 +3,14 @@ title: Azure Functions 的 Azure 表存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure 表存储绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 12/31/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: 26e6f87733b975631fbfb3e3c22bc641aab5b6c9
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 1c0bc7b7a37ad2b104f856da346fa3467e559c16
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623707"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116895"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -491,11 +491,11 @@ public int run(
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 *function.json* 文件和 `Table` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `Table` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型  | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
 |**name** | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
 |**tableName** | **TableName** | 表的名称。| 
@@ -503,7 +503,7 @@ public int run(
 |**rowKey** |**RowKey** | 可选。 要读取的表实体的行键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
 |**take** |**Take** | 可选。 要在 JavaScript 中读取的最大实体数。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
 |**filter** |**Filter** | 可选。 JavaScript 中的表输入的 OData 筛选表达式。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
-|**连接** |**Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接  |**Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -531,7 +531,7 @@ public int run(
 使用 Azure 表存储输出绑定读取将实体写入 Azure 存储帐户中的表。
 
 > [!NOTE]
-> 此输出绑定不支持更新现有实体。 请使用 [Azure 存储 SDK](/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) 中的 `TableOperation.Replace` 操作来更新现有实体。   
+> 此输出绑定不支持更新现有实体。 根据需要使用 [Azure 存储 SDK](/cosmos-db/tutorial-develop-table-dotnet#insert-or-merge-an-entity) 中的相应 [`TableOperation`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation?view=azure-dotnet) 更新现有实体。   
 
 ## <a name="output---example"></a>输出 - 示例
 
@@ -570,7 +570,7 @@ public class TableStorage
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数写入多个表实体。
 
-*function.json* 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -625,7 +625,7 @@ public class Person
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [F# 脚本](functions-reference-fsharp.md)代码。 该函数写入多个表实体。
 
-*function.json* 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -672,7 +672,7 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数写入多个表实体。
 
-*function.json* 文件如下所示：
+function.json  文件如下所示：
 
 ```json
 {
@@ -755,13 +755,13 @@ public static MyPoco TableOutput(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型  | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
 |**tableName** |**TableName** | 表的名称。| 
 |**partitionKey** |**PartitionKey** | 要写入的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
 |**rowKey** |**RowKey** | 要写入的表实体的行键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
-|**连接** |**Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接  |**Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

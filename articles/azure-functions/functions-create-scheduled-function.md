@@ -1,23 +1,16 @@
 ---
-title: 在 Azure 中创建按计划运行的函数 | Microsoft Docs
+title: 在 Azure 中创建按计划运行的函数
 description: 了解如何在 Azure 中创建根据所定义的计划运行的函数。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
-ms.service: azure-functions
 ms.topic: quickstart
-origin.date: 03/28/2018
-ms.date: 11/18/2019
-ms.author: v-junlch
+ms.date: 01/13/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7dc930d71d22f7b7b43870846668741f8355dec6
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 1ebf999daa215b88e5c96df1b89f214b090d4399
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178963"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116889"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
 
@@ -25,7 +18,7 @@ ms.locfileid: "74178963"
 
 ![在 Azure 门户中创建 Function App](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -60,7 +53,7 @@ ms.locfileid: "74178963"
     | **名称** | 默认 | 定义计时器触发的函数的名称。 |
     | **计划** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](functions-bindings-timer.md#ncrontab-expressions)，计划函数每分钟运行一次。 |
 
-4. 单击“创建”。  将使用所选语言创建一个每分钟运行一次的函数。
+4. 单击**创建**。 此时将使用所选语言创建一个每分钟运行一次的函数。
 
 5. 通过查看写入到日志的跟踪信息来验证执行情况。
 
@@ -76,7 +69,7 @@ ms.locfileid: "74178963"
 
 ![Azure 门户中的函数更新计时器计划。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-现在已获得一个每小时运行一次的函数。 
+现在已获得一个每小时运行一次的函数。
 
 ## <a name="clean-up-resources"></a>清理资源
 

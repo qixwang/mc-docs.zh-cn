@@ -2,13 +2,13 @@
 title: 手动安装或更新 Azure Functions 绑定扩展
 description: 了解如何为已部署的函数应用安装或更新 Azure Functions 绑定扩展。
 ms.topic: reference
-ms.date: 12/31/2019
-ms.openlocfilehash: ba7f54db2db3c3b981c77a88957f1e63b8264aeb
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: 14fcf33c634d3cf76fb32d006312263fb341735a
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623657"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116819"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>从门户中手动安装或更新 Azure Functions 绑定扩展
 

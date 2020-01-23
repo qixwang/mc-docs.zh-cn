@@ -9,18 +9,18 @@ manager: digimobile
 origin.date: 10/11/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 57839c196f84e921efdc49183e10f5668135fc09
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 9eab6fb4e691fb619ddc13561a89a26eea4a7026
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528197"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116944"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>为 Python 应用程序设置 Azure Monitor（预览版）
 
 Azure Monitor 通过与 [OpenCensus](https://opencensus.io) 集成，来支持 Python 应用程序的分布式跟踪、指标收集和日志记录。 本文将逐步介绍设置 OpenCensus for Python 并将监视数据发送到 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 - Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更低的版本在经过轻微的更改后也可能适用。
@@ -39,11 +39,11 @@ Azure Monitor 通过与 [OpenCensus](https://opencensus.io) 集成，来支持 P
 
 1. 此时会显示一个配置框。 参考下表填写输入字段。
 
-   | 设置        | 值           | 说明  |
+   | 设置        | Value           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 用于标识所监视的应用的名称 |
    | **资源组**     | MyResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称 |
-   | **Location** | 中国东部 | 离你较近的位置或离托管应用的位置较近的位置 |
+   | **位置** | 中国东部 | 离你较近的位置或离托管应用的位置较近的位置 |
 
 1. 选择“创建”  。
 
@@ -59,6 +59,12 @@ python -m pip install opencensus-ext-azure
 > 命令 `python -m pip install opencensus-ext-azure` 假设已经为 Python 安装设置了一个 `PATH` 环境变量。 如果尚未配置此变量，则需要提供 Python 可执行文件所在位置的完整目录路径。 结果是如下所示的命令：`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`
 
 SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送到 Azure Monitor：跟踪、指标和日志。 有关这些遥测数据类型的详细信息，请参阅[数据平台概述](/azure-monitor/platform/data-platform)。 按照以下说明通过三个导出程序发送这些遥测数据类型。
+
+## <a name="telemetry-type-mappings"></a>遥测类型映射
+
+下面是 OpenCensus 提供的导出程序，它映射到会在 Azure Monitor 中出现的遥测类型。
+
+![将遥测类型从 OpenCensus 映射到 Azure Monitor 的屏幕截图](./media/opencensus-python/0012-telemetry-types.png)
 
 ### <a name="trace"></a>跟踪
 
@@ -267,7 +273,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     90
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将指标数据发出到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将日志数据发出到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
 
     ```python
     import logging
@@ -292,9 +298,58 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
         main()
     ```
 
-4. 导出程序会将日志数据发送到 Azure Monitor。 可在 `traces` 下找到数据。
+4. 导出程序会将日志数据发送到 Azure Monitor。 可在 `traces` 下找到数据。 
 
-5. 有关如何使用跟踪上下文数据扩充日志的详细信息，请参阅 OpenCensus Python [日志集成](/azure-monitor/app/correlation#logs-correlation)。
+> [!NOTE]
+> 此上下文中的 `traces` 不同于 `Tracing`。 `traces` 是指使用 `AzureLogHandler` 时 Azure Monitor 中会出现的遥测类型。 `Tracing` 是指 OpenCensus 中的一种概念，与[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)相关。
+
+5. 若要设置日志消息的格式，可以使用内置 Python [日志记录 API](https://docs.python.org/3/library/logging.html#formatter-objects) 中的 `formatters`。
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. 还可以将自定义维度添加到日志中。 它们会显示为 Azure Monitor 的 `customDimensions` 中的键值对。
+> [!NOTE]
+> 要使此功能生效，需要将字典作为参数传递给日志，任何其他数据结构都会被忽略。 若要保留字符串格式，请将其存储在字典中，并将其作为参数传递。
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. 有关如何使用跟踪上下文数据扩充日志的详细信息，请参阅 OpenCensus Python [日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
 
 ## <a name="view-your-data-with-queries"></a>使用查询查看数据
 

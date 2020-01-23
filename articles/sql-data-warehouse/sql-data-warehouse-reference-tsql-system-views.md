@@ -1,5 +1,5 @@
 ---
-title: 系统视图 - Azure SQL 数据仓库 | Microsoft Docs
+title: 系统视图
 description: 有关 Azure SQL 数据仓库支持的系统视图的文档的链接。
 services: sql-data-warehouse
 author: WenJason
@@ -7,16 +7,17 @@ manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: query
-origin.date: 06/13/2018
-ms.date: 09/02/2019
+origin.date: 01/06/2020
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: a97bf905e8398c50991b159b29fcd963efa1e873
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5fd43b321b050298226f7b140dd8ea7fabbf17a4
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131885"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964921"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库支持的系统视图
 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
@@ -41,7 +42,6 @@ ms.locfileid: "70131885"
 * [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql)
 * [sys.pdw_table_distribution_properties](https://msdn.microsoft.com/library/mt203896.aspx)
 * [sys.pdw_table_mappings](https://msdn.microsoft.com/library/mt203876.aspx)
-* [sys.resource_governor_workload_groups](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-governor-workload-groups-transact-sql)
 * [sys.workload_management_workload_classifier_details](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql)（预览版）
 * [sys.workload_management_workload_classifiers](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)（预览版）
 
@@ -64,6 +64,7 @@ ms.locfileid: "70131885"
 * [sys.dm_pdw_sys_info](https://msdn.microsoft.com/library/mt203900.aspx)
 * [sys.dm_pdw_wait_stats](https://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
+* [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql)（预览版）
 
 ## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>适用于 SQL 数据仓库的 SQL Server DMV
 以下 DMV 适用于 SQL 数据仓库，但必须在连接到 **master** 数据库后才能执行。

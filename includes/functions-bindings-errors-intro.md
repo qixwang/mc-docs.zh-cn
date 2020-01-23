@@ -2,15 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 09/04/2018
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0c8714fcfdbbbbfa4f4bc88a2bc0aa12bb1bd125
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 06893f92885968564019e3ae5d90a68a4a7fb436
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034423"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76118075"
 ---
 Azure Functions 中引发的错误可能来自以下任一来源：
 
@@ -37,7 +36,7 @@ Azure Functions 中引发的错误可能来自以下任一来源：
 * [Azure 队列存储](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure 服务总线（队列/主题）](../articles/azure-functions/functions-bindings-service-bus.md)
 
-默认情况下，这些触发器最多重试请求五次。 第五次重试后，这两种触发器都会将消息写入到一个[有害队列](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages)。
+默认情况下，这些触发器最多重试请求五次。 第五次重试后，Azure 队列存储和 Azure 服务总线触发器会将消息写入 [有害队列](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages)。
 
 需要为任何其他触发器或绑定类型手动实现重试策略。 手动实现可能包括将错误信息写入到一个[有害队列](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs)。 写入到有害队列后，你就有机会在稍后重试操作。 Blob 存储触发器也使用此方法。
 

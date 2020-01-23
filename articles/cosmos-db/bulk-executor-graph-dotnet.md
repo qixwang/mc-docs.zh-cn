@@ -1,20 +1,20 @@
 ---
-title: 使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
+title: 通过 Azure Cosmos DB Gremlin API 使用图批量执行程序 .NET 库
 description: 了解如何使用批量执行程序库将图数据大规模导入 Azure Cosmos DB Gremlin API 容器中。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 85b49aa9849e046aa5f3f3179a69573682d8968b
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 9ffe6e77590541bf78c65990cb9a7df3da86206d
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970290"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270072"
 ---
 <!--Verify sucessfully-->
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
@@ -115,7 +115,7 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>示例应用程序
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 * 包含 Azure 开发工作负荷的 Visual Studio 2019。 一开始可以使用免费的 [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)。
 * Azure 订阅。 可以[在此创建一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
      
@@ -145,7 +145,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 ---|---
 `EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.cn:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](/cosmos-db/secure-access-to-data#master-keys)
-`DatabaseName`、`CollectionName`|这些是**目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是**无限制集合**。
+`DatabaseName`, `CollectionName`|这些是**目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是**无限制集合**。
 `CollectionThroughput`|如果 `ShouldCleanupOnStart` 选项设置为 `true`，则使用此项来创建新的集合。
 `ShouldCleanupOnStart`|此项会在程序运行之前删除数据库帐户和集合，然后使用 `DatabaseName`、`CollectionName` 和 `CollectionThroughput` 值创建新的。
 `ShouldCleanupOnFinish`|此项会在程序运行之后删除具有指定 `DatabaseName` 和 `CollectionName` 的数据库帐户和集合。

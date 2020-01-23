@@ -1,35 +1,30 @@
 ---
-title: 初始化客户端应用程序（适用于 JavaScript 的 Microsoft 身份验证库）
+title: 初始化 MSAL.js 客户端应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 初始化客户端应用程序。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/12/2019
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e358f48ea6cd06b69cca0661b2cb7adc2e368f9
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 8cc28d2b41c7ecc3e5218ff04541c98a13c66afc
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830971"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116792"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)。 该用户代理应用程序是某种形式的公共客户端应用程序，其中的客户端代码在 Web 浏览器等用户代理中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在初始化应用程序之前，首先需要[使用 Azure 门户将其注册](scenario-spa-app-registration.md)，使应用能够与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
 
 - 客户端 ID（表示应用程序 GUID 的字符串）
@@ -120,7 +115,7 @@ export type Configuration = {
         * `https://login.partner.microsoftonline.cn/<tenant>` - tenant 是与租户关联的域（例如 contoso.partner.onmschina.cn），或者表示目录的 `TenantID` 属性的 GUID，仅用于将特定组织的用户登录。
         * `https://login.partner.microsoftonline.cn/common` - 用于通过工作和学校帐户将用户登录。
         * `https://login.partner.microsoftonline.cn/organizations/` - 用于通过工作和学校帐户将用户登录。
-    * 在 Azure AD B2C 中，此 URL 采用 `https://<instance>/tfp/<tenant>/<policyName>/` 格式，其中，instance 是 Azure AD B2C 域，tenant 是 Azure AD B2C 租户的名称，policyName 是要应用的 B2C 策略的名称。
+    * 在 Azure AD B2C 中，其格式为 `https://<instance>/tfp/<tenant>/<policyName>/`，其中 instance 是 Azure AD B2C 域（即 {your-tenant-name}.b2clogin.cn），tenant 是 Azure AD B2C 租户的名称（即 {your-tenant-name}.partner.onmschina.cn），policyName 是要应用的 B2C 策略的名称。
 
 
 - **validateAuthority**：可选。  验证令牌的颁发者。 默认值为 `true`。 对于 B2C 应用程序，由于颁发机构值是已知的，并且根据不同的策略而异，因此，颁发机构验证不起作用，必须设置为 `false`。

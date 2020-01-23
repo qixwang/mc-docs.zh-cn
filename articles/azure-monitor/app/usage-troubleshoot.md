@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 中用户行为分析工具的故障排除
+title: 排查用户分析工具问题 - Azure Application Insights
 description: 故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ manager: digimobile
 origin.date: 07/11/2018
 ms.date: 8/4/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bb3eb16d69a418f21ca29c58e097fc5764f95bef
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: fe29068e58682df38a486457d7c95036e120ecab
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730518"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116933"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 如果对 [Application Insights 中的用户行为分析工具](usage-overview.md)有疑问：[用户、会话、活动](usage-segmentation.md)，[漏斗图](usage-funnels.md)，[用户流](usage-flows.md)，[保留期](usage-retention.md)或队列？ 请参考下面的解答。

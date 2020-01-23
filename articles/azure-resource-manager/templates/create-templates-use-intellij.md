@@ -3,27 +3,27 @@ title: 部署模板 - IntelliJ IDEA
 description: 了解如何使用 IntelliJ IDEA 创建第一个 Azure 资源管理器模板，以及如何部署该模板。
 ms.devlang: java
 origin.date: 08/01/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.topic: quickstart
-ms.openlocfilehash: 98586d386da760d00be6ab494d6e725528f807ed
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.topic: conceptual
+ms.openlocfilehash: 945bb31ac546c84e06fa990a21b752355ed9ead1
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631233"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165433"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>快速入门：使用 IntelliJ IDEA 创建和部署 Azure 资源管理器模板
+# <a name="create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>使用 IntelliJ IDEA 创建和部署 Azure 资源管理器模板
 
 了解如何使用 IntelliJ IDEA 将资源管理器模板部署到 Azure，以及如何直接从 IDE 编辑和更新该模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
 
-![资源管理器模板快速入门门户图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
+![资源管理器模板门户关系图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 完成本教程后，部署 Azure 存储帐户。 可以通过同一过程来部署其他 Azure 资源。
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -33,7 +33,7 @@ ms.locfileid: "75631233"
 
 ## <a name="deploy-a-quickstart-template"></a>部署快速入门模板
 
-无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)打开一个模板。 Azure 快速入门模板是资源管理器模板的存储库。 本快速入门中使用的模板称为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
+无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)打开一个模板。 Azure 快速入门模板是资源管理器模板的存储库。 本文中使用的模板名为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
 1. 单击右键并将 [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) 和 [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) 保存到本地计算机。
 
@@ -82,7 +82,7 @@ ms.locfileid: "75631233"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门重点介绍了如何使用 IntelliJ IDEA 来部署 Azure 快速入门模板中的现有模板。 此外，介绍了如何查看和更新 Azure 上的现有部署。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 若要详细了解模板开发，请参阅新的初学者教程系列：
+本文重点介绍了如何使用 IntelliJ IDEA 来部署 Azure 快速入门模板中的现有模板。 此外，介绍了如何查看和更新 Azure 上的现有部署。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 若要详细了解模板开发，请参阅新的初学者教程系列：
 
 > [!div class="nextstepaction"]
 > [初学者教程](./template-tutorial-create-first-template.md)

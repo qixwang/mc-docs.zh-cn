@@ -3,14 +3,14 @@ title: Azure Functions 网络选项
 description: 在 Azure Functions 中可用的所有网络选项的概述。
 author: alexkarcher-msft
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: f3dc71e4d3bbed1b6eab888bf676442de3b4e563
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 729c0a32492e541161d799eb5085235698d6c331
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624049"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116862"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 

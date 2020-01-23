@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 - HEVC 的平滑流式处理协议 (MS-SSTR) 修正 | Microsoft Docs
-description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本规范对平滑流式处理协议文档 (MS-SSTR) 做了修正，包括对 HEVC 引入和流式处理的支持。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
+description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 08/19/2019
-ms.date: 09/23/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 7e9c9ecef41f78f99e56c71d2412163af88261cd
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a22f25c12a068c62a01a625bb9c776ffac76f7f1
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124422"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939782"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -65,7 +65,7 @@ ms.locfileid: "71124422"
 
 ### <a name="121-normative-references"></a>1.2.1 规范参考 
 
->  [MS SSTR] 平滑流式处理协议 *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] 平滑流式处理协议 v20140502  [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
 >   [ISO/IEC 14496-12] 国际标准化组织编写的“信息技术 -- 音频-视频对象编码 -- 第 12 部分：ISO 基本媒体文件格式”，ISO/IEC 14496-12:2014 版本 4，以及勘误 1、修正 1 和 2。
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>

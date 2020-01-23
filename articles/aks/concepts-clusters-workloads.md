@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0e48b925ece7cee8c6dab8277d0c8b7635bbd5b9
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 1cc6aa03ef397fb708b944ba6fbd91d49a952ae3
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859881"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165454"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -101,9 +101,9 @@ kubectl describe node [NODE_NAME]
 |---|---|---|---|---|---|---|---|
 |Kube 预留 (millicore)|60|100|140|180|260|420|740|
 
--  内存 - 预留的内存包括两个值的总和
+- **内存** - AKS 使用的内存包含两个值的和。
 
-1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 memory.available<750Mi，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。
+1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，这是一种反应性操作。
 
 2. 第二个值是为 kubelet 守护程序正常运行而预留的内存 (kube-reserved) 的累进率。
     - 前 4 GB 内存的 25%
@@ -112,33 +112,49 @@ kubectl describe node [NODE_NAME]
     - 下一个 112 GB 内存的 6%（最多 128 GB）
     - 128 GB 以上任何内存的 2%
 
-由于采用了这两个定义的规则来保持 Kubernetes 节点和代理节点的正常运行，可分配的 CPU 和内存量看上去将少于节点本身可以提供的量。 上面定义的资源预留无法更改。
+上述内存和 CPU 分配规则用于保持代理节点正常运行，某些托管系统 Pod 对群集运行状况至关重要。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不是 Kubernetes 群集一部分的情况， 上述资源预留无法更改。
 
-例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配：
+例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配（基于硬逐出阈值为 750Mi 的情况）。
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
-除了 Kubernetes 的预留外，基础节点 OS 还预留了一定数量的 CPU 和内存资源以维持 OS 功能的运行。
+除了 Kubernetes 本身的预留外，基础节点 OS 还预留了一定数量的 CPU 和内存资源以维持 OS 功能的运行。
 
 如需相关的最佳做法，请参阅 [AKS 中适用于基本计划程序功能的最佳做法][operator-best-practices-scheduler]。
 
 ### <a name="node-pools"></a>节点池
 
-具有相同配置的节点将统一合并成节点池  。 Kubernetes 群集包含单节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池  。 AKS 中的此默认节点池包含运行代理节点的基础 VM。
+具有相同配置的节点将统一合并成节点池  。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池  。 AKS 中的此默认节点池包含运行代理节点的基础 VM。
 
-<!--Not Available on or more-->
-<!--Not Available on Multiple node pool support is currently in preview in AKS.-->
+<!--CORRECT FOR Multiple node pool support in AKS.-->
 
 > [!NOTE]
 > 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
 
-缩放或升级 AKS 群集时，将对默认节点池执行操作。
+缩放或升级 AKS 群集时，将对默认节点池执行操作。 还可以选择缩放或升级特定节点池。 对于升级操作，将在节点池中的其他节点上计划正在运行的容器，直到成功升级所有节点。
 
-<!--Not Available on [Create and manage multiple node pools for a cluster in AKS][use-multiple-node-pools]-->
+若要详细了解如何在 AKS 中使用多个节点池，请参阅[为 AKS 中的群集创建和管理多个节点池][use-multiple-node-pools]。
 
+### <a name="node-selectors"></a>节点选择器
 
-<!--Not Available on ### Node selectors-->
-<!--Not Available on [Create and manage multiple node pools for a cluster in AKS][use-multiple-node-pools]-->
+在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 例如，入口控制器不应在 Windows Server 节点（当前在 AKS 中为预览版）上运行。 可以通过节点选择器定义各种参数（如节点 OS），以控制对 Pod 进行计划的位置。
+
+以下基本示例使用节点选择器 *"beta.kubernetes.io/os": linux* 来计划 Linux 节点上的 NGINX 实例：
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: dockerhub.azk8s.cn/library/nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+若要详细了解如何控制对 Pod 进行计划的位置，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
 
 ## <a name="pods"></a>Pod
 
@@ -282,9 +298,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中 
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
-
-<!--Not Available on [use-multiple-node-pools]: use-multiple-node-pools.md-->
-
+[use-multiple-node-pools]: use-multiple-node-pools.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 
 <!--Not Available on [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md-->

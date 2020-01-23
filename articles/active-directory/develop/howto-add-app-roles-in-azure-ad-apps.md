@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 485d1b7cfd67824eccb263008693e02cb086f987
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 5e81bb35f73687a5d042b9f87aae662f9ebde06b
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776847"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116734"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -37,9 +37,9 @@ ms.locfileid: "75776847"
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在顶栏中选择帐户，然后选择“切换目录”。 
-1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。   
-1. 选择左侧导航栏中的“所有服务”  ，并选择“Azure Active Directory”  。
+1. 在门户工具栏中选择“目录 + 订阅”  图标。
+1. 在**收藏夹**或“所有目录”  列表中，选择要将应用程序注册到的 Active Directory 租户。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
 1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表   。
 1. 选择一个应用程序，以便在其中定义应用角色。 然后选择“清单”  。
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
@@ -129,4 +129,4 @@ ms.locfileid: "75776847"
 - [AAD 访问令牌](access-tokens.md)
 - [AAD `id_tokens`](id-tokens.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

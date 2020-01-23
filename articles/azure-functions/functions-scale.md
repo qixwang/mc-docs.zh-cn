@@ -3,26 +3,26 @@ title: Azure Functions 的缩放和托管
 description: 了解如何在 Azure Functions 消耗计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 01/13/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ba20b47d506f59321c8ca57b035304b9bd11922
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 35576f2badc07c92c2a55affa5cec2b50a6664dd
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624092"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116834"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三个托管计划可用于 Azure Functions：[消耗计划](#consumption-plan)和[应用服务计划](#app-service-plan)。
+在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三个托管计划可用于 Azure Functions：[消耗计划](#consumption-plan)和[专用(应用服务)计划](#app-service-plan)。
 
 选择的托管计划决定了以下行为：
 
 * 函数应用的缩放方式。
 * 每个函数应用实例可用的资源。
-* 对 VNET 连接等高级功能的支持。
+* 对 Azure 虚拟网络连接等高级功能的支持。
 
-消耗计划在代码运行时自动添加计算能力。 应用在需要处理负载时会扩展，在代码停止运行时会缩减。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
+消耗计划在代码运行时自动添加计算能力。 应用在需要处理负载时会横向扩展，在代码停止运行时会缩小。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
 
 选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着，它永远不会缩减为零。 （要求启用 [Always On](#always-on)。）
 
@@ -31,7 +31,7 @@ ms.locfileid: "75624092"
 功能支持划分为以下两个类别：
 
 * 正式版 (GA)：完全受支持并获批在生产中使用。 
-* 预览版：尚不完全受支持，但已获批在生产环境中使用。 
+* 预览版：尚未完全受支持，也未获批用于生产。 
 
 下表指出了在 Windows 或 Linux 上运行应用时，目前对三个托管计划的支持级别：
 
