@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 系统分配的托管标识访问 Azure Key Vault
+title: 教程：使用托管标识访问 Azure Key Vault - Windows - Azure AD
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 11/20/2017
-ms.date: 10/11/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c9db3d154cdbde3071eb180bbeeb34308eba4c4
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: 37a815b426b3de28d337e8accc7f5aa92079aa33
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292069"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116802"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -36,13 +35,13 @@ ms.locfileid: "72292069"
 > * 授予 VM 对 Key Vault 中存储的密钥的访问权限 
 > * 使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>授予 VM 对 Key Vault 中存储的密钥的访问权限 
+## <a name="grant-access"></a>授予访问权限  
  
-使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 Azure 资源的托管标识用于这些服务，请将服务凭据存储在 Azure Key Vault 中，然后使用 VM 的托管标识访问 Key Vault 以检索凭据。 
+本部分说明如何授予 VM 访问密钥保管库中存储的机密的权限。 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 Azure 资源的托管标识用于这些服务，请将服务凭据存储在 Azure Key Vault 中，然后使用 VM 的托管标识访问 Key Vault 以检索凭据。 
 
 首先，我们需要创建一个 Key Vault 并授予 VM 的系统分配托管标识对 Key Vault 的访问权限。   
 
@@ -67,9 +66,9 @@ ms.locfileid: "72292069"
 5. 明确指定激活日期和到期日期，并将“已启用”  设置为“是”  。 
 6. 单击“创建”  以创建密钥。 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥  
+## <a name="get-an-access-token"></a>获取访问令牌  
 
-如果未安装 PowerShell 4.3.1 或更高版本，则需要[下载并安装最新版本](https://docs.microsoft.com/powershell/azure/overview)。
+本部分介绍如何使用 VM 标识获取访问令牌并使用它从 Key Vault 中检索机密。 如果未安装 PowerShell 4.3.1 或更高版本，则需要[下载并安装最新版本](https://docs.microsoft.com/powershell/azure/overview)。
 
 首先，我们使用 VM 的系统分配托管标识获取访问令牌，向 Key Vault 证明身份：
  
@@ -117,4 +116,4 @@ ms.locfileid: "72292069"
 > [!div class="nextstepaction"]
 >[Azure 密钥保管库](/key-vault/key-vault-overview)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

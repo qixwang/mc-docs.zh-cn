@@ -1,23 +1,18 @@
 ---
 title: 估算 Azure Functions 中的消耗计划成本
 description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
-author: ggailey777
-ms.author: v-junlch
-origin.date: 09/20/2019
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.topic: conceptual
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: 4a30df1e1d9e1d74dd7ec2cab436067c37e066d8
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 5164cbf84a01903d1dc015b65d8a42dafa96573e
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034482"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116891"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
 
-在 Azure Functions 中运行的应用目前有三种类型的托管计划，每种计划具有自身的定价模型： 
+对于在 Azure Functions 中运行的应用，目前有三种类型的托管计划，每种计划都有自己的定价模型： 
 
 | 计划 | 说明 |
 | ---- | ----------- |
@@ -26,7 +21,7 @@ ms.locfileid: "73034482"
 
 选择对函数性能和成本要求最有利的计划。 若要了解详细信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
 
-本文仅涉及到消耗计划，因为此计划产生可变的成本。 
+本文仅涉及到消耗计划，因为此计划产生可变的成本。 本文将取代[消耗计划成本计费常见问题解答](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)一文。
 
 Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 Durable Functions 时的成本注意事项，请参阅 [Durable Functions 计费](./durable/durable-functions-billing.md)。
 
@@ -82,7 +77,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
     | 订阅    |  你的订阅  | 包含你的函数应用的订阅。  |
     | 资源组     | 你的资源组  | 包含你的函数应用的资源组。   |
     | 资源类型     |  应用服务 | 函数应用将作为应用服务实例显示在 Monitor 中。 |
-    | Resource     |  你的函数应用  | 要监视的函数应用。        |
+    | 资源     |  你的函数应用  | 要监视的函数应用。        |
 
 1. 选择“应用”以选择你的函数应用作为要监视的资源。 
 
@@ -189,7 +184,7 @@ az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resour
   ]
 }
 ```
-此特定响应显示，在从 `2019-09-11T21:46` 到 `2019-09-11T23:18` 的时间段内，应用消耗了 1110000000 MB 毫秒（1083.98 GB 秒）。
+此特定响应显示，从 `2019-09-11T21:46` 到 `2019-09-11T23:18`，应用消耗了 1110000000 MB 毫秒（1083.98 GB 秒）。
 
 ## <a name="determine-memory-usage"></a>确定内存用量
 
@@ -219,3 +214,4 @@ performanceCounters
 [定价页]: https://www.azure.cn/pricing/details/azure-functions/
 [Azure 门户]: https://portal.azure.cn
 
+<!-- Update_Description: wording update -->

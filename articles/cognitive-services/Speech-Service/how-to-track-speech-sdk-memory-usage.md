@@ -1,7 +1,7 @@
 ---
 title: 如何跟踪语音 SDK 内存使用情况 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音服务 SDK 支持多种编程语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文讨论了 SDK 中内置的内存管理工具。
+description: 语音服务 SDK 支持使用多种编程语言进行语音到文本和文本到语音转换，以及语音翻译。 本文讨论了 SDK 中内置的内存管理工具。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,12 +12,12 @@ origin.date: 12/10/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2533198d8104c0e07ddec60206f8016bc9b0e49b
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 7740fc44cb5cbee670332319175bde3af986044c
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631502"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123363"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>如何跟踪语音 SDK 内存使用情况
 
@@ -95,7 +95,7 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")
 ```terminal
 Runtime error: The maximum object count of 500 has been exceeded.
 The threshold can be adjusted by setting the SPEECH-ObjectCountErrorThreshold property on the SpeechConfig object.
-See http://https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-object-tracking-speech-sdk for more detailed information.
+See http://https://docs.azure.cn/cognitive-services/speech-service/how-to-object-tracking-speech-sdk for more detailed information.
 Handle table dump by ojbect type:
 class Microsoft::CognitiveServices::Speech::Impl::ISpxRecognitionResult 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxRecognizer 0

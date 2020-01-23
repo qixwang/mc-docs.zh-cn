@@ -4,18 +4,17 @@ description: Key Vault 限制可限制并发调用数，以防止过度使用资
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
-tags: ''
 ms.service: key-vault
 ms.topic: conceptual
-origin.date: 05/10/2018
-ms.date: 10/30/2019
+origin.date: 12/02/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 866fcf8f5512c4ec03113ea8f63cbd0e167d7629
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: a85bdd4683d757b4348e86455c17d6bd11f208c0
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426097"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123304"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -25,10 +24,34 @@ ms.locfileid: "73426097"
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault 如何处理其限制？
 
-Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault 客户端的服务质量。 当超过服务阈值时，Key Vault 会在一段时间内限制该客户端发出其他任何请求。 在这种情况下，Key Vault 返回 HTTP 状态代码 429（请求过多），请求失败。 此外，Key Vault 会跟踪向限制值返回 429 计数的失败请求。 
+Key Vault 中的服务限制可防止资源滥用，确保所有 Key Vault 客户端的服务质量。 当超过服务阈值时，Key Vault 会在一段时间内限制客户端发出其他任何请求，返回 HTTP 状态代码 429（请求过多），而请求会失败。 Key Vault 会跟踪向限制值返回 429 计数的失败请求。 
+
+Key Vault 最初设计用于在部署时存储和检索机密。  世界已经演变，Key Vault 现在是在运行时用于存储和检索机密，而应用和服务往往希望将 Key Vault 当作数据库使用。  当前的限制不支持高吞吐率。
+
+Key Vault 最初是根据 [Azure Key Vault 服务限制](key-vault-service-limits.md)中指定的限制创建的。  下面是最大化 Key Vault 吞吐率的一些建议指导原则/最佳做法：
+1. 确保已实施限制。  客户端必须遵循 429 指数退避策略，并确保按照下面的指导执行重试。
+1. 将 Key Vault 流量划分到多个保管库和不同区域。   为每个安全性/可用性域使用单独的保管库。   如果你有 5 个应用，每个应用已划分到 2 个区域，则我们建议配置 10 个保管库，其中每个保管库包含应用和区域特有的机密。  所有事务类型的订阅范围限制是单个 Key Vault 限制的 5 倍。 例如，每个订阅的 HSM-其他事务数限制为 10 秒内 5,000 个事务。 考虑在服务或应用中缓存机密，以便同时减少 Key Vault 的直接 RPS，并/或处理基于突发的流量。  还可以将流量划分到不同的区域，以最大程度地减少延迟并使用不同的订阅/保管库。  不要将超过订阅限制的流量发送到单个 Azure 区域中的 Key Vault 服务。
+1. 在内存中缓存从 Azure Key Vault 检索的机密，并尽可能地从内存中重新使用机密。  仅当缓存的副本停止工作（例如，因为它已在源中轮换）时，才从 Azure Key Vault 重新读取。 
+1. Key Vault 是为你自己的服务机密设计的。   如果存储客户的机密（尤其是对于高吞吐量密钥存储方案），请考虑将密钥放在支持加密的数据库中或存储帐户中，并只将主密钥存储在 Azure Key Vault 中。
+1. 可以在不访问 Key Vault 的情况下加密、包装和验证公钥操作，这不仅可以降低限制的风险，而且还能提高可靠性（前提是正确缓存公钥材料）。
+1. 如果使用 Key Vault 存储服务的凭据，请检查该服务是否支持使用 AAD 身份验证直接进行身份验证。 这可以减少 Key Vault 中的负载，提高可靠性并简化代码，因为 Key Vault 现在可以使用 AAD 令牌。  许多服务已改用 AAD 身份验证。在[支持 Azure 资源托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)中查看最新列表。
+1. 考虑在一个较长的时间段内错开负载/部署，使其不会超过当前的 RPS 限制。
+1. 如果应用包含多个需要读取相同机密的节点，请考虑使用扇出模式，让一个实体从 Key Vault 读取机密，并扇出到所有节点。   仅在内存中缓存检索的机密。
+如果你发现上述方案仍不能满足需求，请填写下表并联系我们，以确定可以添加多少附加容量（例如，以下示例仅供演示目的）。
+
+| 保管库名称 | 保管库区域 | 对象类型（机密、密钥或证书） | 操作* | 键类型 | 密钥长度或曲线 | HSM 密钥？| 所需的稳定状态 RPS | 所需的峰值 RPS |
+|--|--|--|--|--|--|--|--|--|
+| https://mykeyvault.vault.azure.cn/ | | 键 | 签名 | EC | P-256 | 否 | 200 | 1000 |
+
+\* 有关可能值的完整列表，请参阅 [Azure Key Vault 操作](/rest/api/keyvault/key-operations)。
+
+如果增加容量已获批准，请注意容量增加后的以下考虑因素：
+1. 数据一致性模型更改。 将吞吐量容量更高的保管库加入允许列表后，Key Vault 服务数据一致性保证会发生更改（需要满足更大量的 RPS，因为底层 Azure 存储服务无法跟进）。  简而言之：
+  1. **不使用允许列表**：Key Vault 服务在后续调用（例如 SecretGet、KeySign）中会立即反映写入操作（例如 SecretSet、CreateKey）的结果。
+  1. **使用允许列表**：Key Vault 服务在 60 秒内在后续调用（例如 SecretGet、KeySign）中反映写入操作（例如 SecretSet、CreateKey）的结果。
+1. 客户端代码必须遵循 429 次重试的退避策略。 调用 Key Vault 服务的客户端代码在收到 429 响应代码时，不得立即重试 Key Vault 请求。  此处发布的 Azure Key Vault 限制指导建议在收到 429 Http 响应代码时立即应用指数退避。
 
 如果出现限制值较高的有效业务用例，请与我们联系。
-
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>如何针对服务限制来限制应用
 
@@ -42,97 +65,24 @@ Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault �
 
 实现指数退避的代码如下所示。 
 ```
-    public sealed class RetryWithExponentialBackoff
+SecretClientOptions options = new SecretClientOptions()
     {
-        private readonly int maxRetries, delayMilliseconds, maxDelayMilliseconds;
-
-        public RetryWithExponentialBackoff(int maxRetries = 50,
-            int delayMilliseconds = 200,
-            int maxDelayMilliseconds = 2000)
+        Retry =
         {
-            this.maxRetries = maxRetries;
-            this.delayMilliseconds = delayMilliseconds;
-            this.maxDelayMilliseconds = maxDelayMilliseconds;
-        }
-
-        public async Task RunAsync(Func<Task> func)
-        {
-            ExponentialBackoff backoff = new ExponentialBackoff(this.maxRetries,
-                this.delayMilliseconds,
-                this.maxDelayMilliseconds);
-            retry:
-            try
-            {
-                await func();
-            }
-            catch (Exception ex) when (ex is TimeoutException ||
-                ex is System.Net.Http.HttpRequestException)
-            {
-                Debug.WriteLine("Exception raised is: " +
-                    ex.GetType().ToString() +
-                    " –Message: " + ex.Message +
-                    " -- Inner Message: " +
-                    ex.InnerException.Message);
-                await backoff.Delay();
-                goto retry;
-            }
-        }
-    }
-
-    public struct ExponentialBackoff
-    {
-        private readonly int m_maxRetries, m_delayMilliseconds, m_maxDelayMilliseconds;
-        private int m_retries, m_pow;
-
-        public ExponentialBackoff(int maxRetries, int delayMilliseconds,
-            int maxDelayMilliseconds)
-        {
-            m_maxRetries = maxRetries;
-            m_delayMilliseconds = delayMilliseconds;
-            m_maxDelayMilliseconds = maxDelayMilliseconds;
-            m_retries = 0;
-            m_pow = 1;
-        }
-
-        public Task Delay()
-        {
-            if (m_retries == m_maxRetries)
-            {
-                throw new TimeoutException("Max retry attempts exceeded.");
-            }
-            ++m_retries;
-            if (m_retries < 31)
-            {
-                m_pow = m_pow << 1; // m_pow = Pow(2, m_retries - 1)
-            }
-            int delay = Math.Min(m_delayMilliseconds * (m_pow - 1) / 2,
-                m_maxDelayMilliseconds);
-            return Task.Delay(delay);
-        }
-    }
+            Delay= TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromSeconds(16),
+            MaxRetries = 5,
+            Mode = RetryMode.Exponential
+         }
+    };
+    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.cn"), new DefaultAzureCredential(),options);
+                                 
+    //Retrieve Secret
+    secret = client.GetSecret(secretName);
 ```
 
 
-在客户端 C\# 应用程序中使用此代码很简单。 下面的示例演示使用 HttpClient 类的方法。
-
-```csharp
-public async Task<Cart> GetCartItems(int page)
-{
-    _apiClient = new HttpClient();
-    //
-    // Using HttpClient with Retry and Exponential Backoff
-    //
-    var retry = new RetryWithExponentialBackoff();
-    await retry.RunAsync(async () =>
-    {
-        // work with HttpClient call
-        dataString = await _apiClient.GetStringAsync(catalogUrl);
-    });
-    return JsonConvert.DeserializeObject<Cart>(dataString);
-}
-```
-
-请记住，此代码仅适用于概念证明。 
+在客户端 C# 应用程序中使用此代码很简单。 
 
 ### <a name="recommended-client-side-throttling-method"></a>推荐的客户端限制方法
 
@@ -146,4 +96,6 @@ public async Task<Cart> GetCartItems(int page)
 
 此时，应不会收到 HTTP 429 响应代码。
 
-<!-- Update_Description: update metedata properties -->
+<!-- ## See also -->
+
+
