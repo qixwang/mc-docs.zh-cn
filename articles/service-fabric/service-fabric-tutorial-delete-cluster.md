@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中删除 Service Fabric 群集 | Azure
+title: 在 Azure 中删除 Service Fabric 群集
 description: 在本教程中，你将了解如何删除 Azure 托管的 Service Fabric 群集及其所有资源。 可以删除包含群集的资源组，也可以有选择地删除资源。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: d3e59f14397311c936a9cac5c1c414de5e43d15f
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 98eef620110f5293b3f03f24532d0c9d02772823
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254750"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742050"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>教程：删除在 Azure 中运行的 Service Fabric 群集
 
@@ -44,7 +34,7 @@ ms.locfileid: "70254750"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -124,5 +114,4 @@ az resource delete --name "<name of the Resource>" --resource-type "Microsoft.Se
 * 了解如何为 [Windows 群集](service-fabric-diagnostics-event-aggregation-wad.md)聚合和收集事件以监视群集事件。
 
 <!--Not Availabel on and [setup Log Analytics](service-fabric-diagnostics-oms-setup.md)-->
-
 <!-- Update_Description: wording update -->

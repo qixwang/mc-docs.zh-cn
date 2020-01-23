@@ -1,26 +1,18 @@
 ---
-title: 配置 Azure Active Directory 身份验证 - Azure 应用服务
-description: 了解如何为应用服务应用配置 Azure Active Directory 身份验证。
-author: cephalin
-services: app-service
-documentationcenter: ''
-manager: gwallace
-editor: ''
+title: 配置 Azure AD 身份验证
+description: 了解如何将 Azure Active Directory 身份验证配置为应用服务应用的标识提供者。
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service
-ms.workload: web,mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 09/03/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: aeb14cf179b8a74eec586e55234340fe0133fdc2
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: seodec18
+ms.openlocfilehash: fddf94ec966e4a7212d4af05832ab4d3a01c4761
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555819"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600502"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>将应用服务应用配置为使用 Azure AD 登录
 

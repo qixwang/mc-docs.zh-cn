@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 11/22/2019
-ms.date: 12/16/2019
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 60ffc13fd9bdc1a22a2f9e605142275c88257f71
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3e6b7b440d41d1b4838e2db14a2b5846c68e938c
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348525"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123217"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务的支持和帮助选项
 
@@ -27,8 +27,7 @@ ms.locfileid: "75348525"
 > * 通过搜索来查看社区是否已讨论你的问题，或者是否已存在现有文档。
 > * 如果未找到满意答案，请在 Stack Overflow 上提问。 
 > * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题  。
-
-<!-- > * Search for a solution in the *UserVoice forum*. -->
+> * 在 UserVoice 论坛中搜索解决方案  。
 
 ## <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -58,7 +57,22 @@ ms.locfileid: "75348525"
 > * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)（如何正确提问？）
 > * [How to create a minimal, reproducible example?](https://stackoverflow.com/help/minimal-reproducible-example)（如何创建最小且可重现的示例？）
 
-<!-- ## UserVoice forum -->
+## <a name="uservoice-forum"></a>UserVoice 论坛
+
+<div class='icon is-large'>
+    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+</div>
+
+若要请求新功能，请将其发布到 UserVoice。 分享你的想法，让认知服务和随附的 API 更适用于你开发的应用程序：
+
+| 服务                       | 认知服务 UserVoice URL |
+|-------------------------------|---------------|
+| 计算机视觉               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| 人脸                          | https://cognitive.uservoice.com/forums/430315-face |
+| 语言理解 (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
+| 语音服务               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| 文本分析                | https://cognitive.uservoice.com/forums/555922-text-analytics |
+| 文本翻译               | https://cognitive.uservoice.com/forums/558796-translator |
 
 ## <a name="release-notes"></a>发行说明
 
@@ -82,9 +96,29 @@ ms.locfileid: "75348525"
 
 有关认知服务的新闻在 [Azure 博客](https://azure.microsoft.com/blog/topics/cognitive-services/)中共享。
 
-<!-- ## Search -->
+## <a name="search"></a>搜索
 
-<!-- ### Scoped search -->
+<div class='icon is-large'>
+    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
+</div>
+
+你可能会在文档、示例或对 [Stack Overflow](https://www.stackoverflow.com) 问题的解答中找到你需要的解答。
+
+ - https://stackoverflow.com/questions/tagged/azure-cognitive-services
+
+### <a name="scoped-search"></a>限定范围的搜索
+
+为了更快地获得结果，请将搜索范围限定为相关站点，例如 Stack Overflow、Microsoft docs 或 GitHub 代码示例。 在[常用搜索引擎](https://bing.com)中使用 `site:` 查询表示法：
+
+```
+{search keywords} site:stackoverflow.com
+```
+
+其中 `{search keywords}` 是搜索的上下文。 此搜索将结果范围限定为 Stack Overflow。 请考虑适当使用这些范围内的搜索：
+
+ - Stack Overflow：`site:stackoverflow.com`
+ - Microsoft Docs：`site:docs.azure.cn`
+ - GitHub 示例：`site:github.com/azure-samples`
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 

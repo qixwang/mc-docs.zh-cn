@@ -1,21 +1,14 @@
 ---
 title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 12/03/2018
-ms.date: 11/18/2019
-ms.author: v-junlch
-ms.openlocfilehash: 92e8bc5e0f756019f7fcd8b2eab1ecdffa453936
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.date: 01/13/2020
+ms.openlocfilehash: 5f3f18256956eb50e8573a112032a8e4487fe49d
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178950"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116813"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -52,7 +45,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>数据中心出站 IP 地址
 
-如果需要将函数应用使用的出站 IP 地址加入允许列表，另一种做法是将函数应用的数据中心（Azure 区域）加入允许列表。 可以[下载列出所有 Azure 数据中心的 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
+如果需要将函数应用使用的出站 IP 地址加入允许列表，另一种做法是将函数应用的数据中心（Azure 区域）加入允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
 
 例如，中国北部区域的 JSON 片段可能如下所示：
 
@@ -84,9 +77,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 删除函数应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个函数应用，然后重新创建它。
-- 删除 SSL 绑定（例如，在[证书续订](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)期间）。
+- 删除 SSL 绑定（例如，在[证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间）。
 
-在[消耗计划](functions-scale.md#consumption-plan)中运行函数应用时，如果未执行上面所列的操作，入站 IP 地址也可能会更改。
+当函数应用在[消耗计划](functions-scale.md#consumption-plan)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），入站 IP 地址也可能会更改。
 
 ## <a name="outbound-ip-address-changes"></a>出站 IP 地址更改
 
@@ -95,7 +88,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 执行可能更改入站 IP 地址的任何操作。
 * 更改应用服务计划的定价层。 应用可在所有定价层中使用的所有可能出站 IP 地址列表在 `possibleOutboundIPAddresses` 属性中指定。 请参阅[查找出站 IP](#find-outbound-ip-addresses)。
 
-在[消耗计划](functions-scale.md#consumption-plan)中运行函数应用时，如果未执行上面所列的操作，出站 IP 地址也可能会更改。
+当函数应用在[消耗计划](functions-scale.md#consumption-plan)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），入站 IP 地址也可能会更改。
 
 有意强制出站 IP 地址更改：
 

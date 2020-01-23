@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure 数据工厂通过控制表从数据库进行大容量复制 | Microsoft Docs
+title: 使用控制表从数据库进行大容量复制
 description: 了解如何使用解决方案模板通过外部控制表从数据库大容量复制数据，以使用 Azure 数据工厂存储源表的分区列表。
 services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 12/14/2018
-ms.date: 07/08/2019
-ms.openlocfilehash: a0a2313d3ffa037944f1fa75d12d5ed3d39e98dc
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 01/06/2020
+ms.openlocfilehash: 387aeeaa36f4b0ef34d38866a68e6b9aaa2f3599
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570239"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623955"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库进行大容量复制
 
@@ -36,12 +34,16 @@ ms.locfileid: "67570239"
 - **ForEach** 可从查找活动中获取分区列表，然后针对复制活动循环访问每个分区。
 - **复制**可将每个分区从源数据库存储复制到目标存储。
 
-模板定义了五个参数：
+模板定义以下参数：
 - *Control_Table_Name* 是外部控制表，用于存储源数据库的分区列表。
 - *Control_Table_Schema_PartitionID* 是外部控制表中用于存储每个分区 ID 的列名。 请确保源数据库中每个分区的分区 ID 都是独一无二的。
 - *Control_Table_Schema_SourceTableName* 是外部控制表，用于存储源数据库中的每个表名。
 - *Control_Table_Schema_FilterQuery* 是外部控制表中的列名，用于存储筛选器查询以从源数据库中的每个分区获取数据。 例如，如果按年份对数据进行分区，则存储在每一行中的查询可能类似于“select * from datasource where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999''”。
-- *Data_Destination_Folder_Path* 是将数据复制到目标存储的路径。 仅当所选目标是基于文件的存储时，此参数才可见。 如果选择 SQL 数据仓库作为目标存储，则不需此参数。 但 SQL 数据仓库中的表名和模式必须与源数据库中的表名和模式相同。
+- *Data_Destination_Folder_Path* 是将数据复制到目标存储中时使用的路径（当所选目标是“文件系统”时适用）。 
+- *Data_Destination_Container* 是将数据复制到目标存储时使用的根文件夹路径。 
+- *Data_Destination_Directory* 是将数据复制到目标存储中时使用的根下的目录路径。 
+
+仅当所选目标是基于文件的存储时，最后三个参数（定义目标存储中的路径）才可见。 如果选择“Azure Synapse Analytics（以前称为 SQL DW）”作为目标存储，则不需要这些参数。 但 SQL 数据仓库中的表名和模式必须与源数据库中的表名和模式相同。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
@@ -71,7 +73,7 @@ ms.locfileid: "67570239"
 
 3. 创建与源数据库（要从其复制数据）的**新**连接。
 
-     ![与源数据库建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![与源数据库建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. 创建与目标数据存储（要将数据复制到其中）的**新**连接。
 
@@ -79,8 +81,6 @@ ms.locfileid: "67570239"
 
 5. 选择“使用此模板”  。
 
-    ![使用此模板](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. 可以看到管道，如以下示例所示：
 
     ![查看管道](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -93,7 +93,7 @@ ms.locfileid: "67570239"
 
     ![查看结果](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. （可选）如果选择 SQL 数据仓库作为数据目标，则必须输入作为暂存的 Azure Blob 存储的连接，这是 SQL 数据仓库 Polybase 所要求的。 请确保已在 Blob 存储中创建容器。
+9. （可选）如果选择“Azure Synapse Analytics（以前为 SQL DW）”作为数据目标，需要按 SQL 数据仓库 Polybase 的要求，输入用于暂存的 Azure Blob 存储的连接。 模板会自动为 Blob 存储生成容器路径。 检查是否在管道运行后创建了容器。
     
     ![Polybase 设置](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

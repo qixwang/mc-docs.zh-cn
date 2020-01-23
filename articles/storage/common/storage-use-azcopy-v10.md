@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/23/2019
-ms.date: 12/02/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: e6677ea7ec7e77c79d074456cf51da84846f45d9
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 2a2ec0b2f7fa03fbe4057d5346d71431cea5826e
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655466"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624025"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -35,14 +35,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-这些文件压缩成 zip 文件（Windows 和 Mac）或 tar 文件（Linux）。
-
-在 Linux 上，可以使用以下命令来下载和解压缩 tar 文件。
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
-tar -xf azcopy.tar.gz
-```
+这些文件压缩成 zip 文件（Windows 和 Mac）或 tar 文件（Linux）。 要在 Linux 上下载并解压缩 tar 文件，请参阅 Linux 分发文档。
 
 > [!NOTE]
 > 若要向/从 [Azure 表存储](/storage/tables/table-storage-overview)服务复制数据，请安装 [AzCopy 版本 7.3](https://aka.ms/downloadazcopynet)。
@@ -253,7 +246,7 @@ azcopy login --identity --identity-resource-id "<resource-id>" --aad-endpoint ht
 azcopy copy "C:\local\path" "https://account.blob.core.chinacloudapi.cn/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-若要详细了解 SAS 令牌及其获取方式，请参阅[使用共享访问签名 (SAS)](/common/storage-sas-overview)。
+若要详细了解 SAS 令牌及其获取方式，请参阅[使用共享访问签名 (SAS)](/storage/common/storage-sas-overview)。
 
 ## <a name="transfer-files"></a>传输文件
 

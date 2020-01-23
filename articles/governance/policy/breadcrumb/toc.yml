@@ -12,3 +12,6 @@
         - name: 策略
           tocHref: /azure-monitor
           topicHref: /governance/policy
+        - name: 策略
+          tocHref: /key-vault
+          topicHref: /governance/policy

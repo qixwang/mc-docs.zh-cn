@@ -5,23 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 07/11/2018
-ms.date: 08/15/2019
+ms.date: 01/09/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510b8287a8803cad33144f502c7a5b6fbf2ab4a5
-ms.sourcegitcommit: 8aafc2af4f15907358c02bde82bc6fab8eb2442a
+ms.openlocfilehash: d1589d390687b0857ec5f87b2edf401c46562755
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69448468"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776829"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
-若要部署 Azure Active Directory (Azure AD) 自助密码重置 (SSPR)，身份验证数据必须存在。 某些组织让其用户输入其身份验证数据本身。 但是，许多组织倾向于与 Active Directory 中已存在的数据同步。 在以下情况下，无需用户交互已同步的数据就会提供给 Azure AD 和 SSPR：
+若要部署 Azure Active Directory (Azure AD) 自助密码重置 (SSPR)，身份验证数据必须存在。 某些组织让其用户输入其身份验证数据本身。 其他组织倾向于与 Active Directory 中已存在的数据同步。 如果符合以下要求，则无需用户交互，已同步的数据就会提供给 Azure AD 和 SSPR：
 
 * 在本地目录中正确设置数据的格式。
 * [使用快速设置配置 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
@@ -42,21 +41,18 @@ ms.locfileid: "69448468"
 | telephoneNumber | 办公电话 |
 | mobile | 移动电话 |
 
-用户验证其移动电话号码后，Azure AD 中身份验证联系人信息下的“电话”字段也将填充该号码。
+用户验证其移动电话号码后，Azure AD 中的“身份验证联系人信息”下的“电话”字段也将填充该号码。  
 
 ## <a name="authentication-contact-info"></a>身份验证联系人信息
 
-全局管理员可以手动为用户设置身份验证联系人信息，如以下屏幕截图中所示。
+在 Azure 门户中 Azure AD 用户的“身份验证方法”  页上，全局管理员可以手动设置身份验证联系人信息，如以下示例屏幕截图所示：
 
 ![Azure AD 中用户的身份验证联系信息][Contact]
 
-如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户将在密码重置注册页和密码重置工作流中看到该号码。
-
-“备用电话”字段不用于密码重置。
-
-如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将在密码重置注册页和密码重置工作流中看到该电子邮件。
-
-如果“备用电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户将**不**会在密码重置注册页上看到该电子邮件，但会将在密码重置工作流中看到该电子邮件。
+* 如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户会在密码重置注册页和密码重置工作流中看到该号码。  
+* “备用电话”字段不用于密码重置。 
+* 如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户会在密码重置注册页和密码重置工作流中看到该电子邮件。  
+* 如果“电子邮件”字段已填充且在 SSPR 策略中启用了“电子邮件”，则用户不会在密码重置注册页中看到该电子邮件，但会在密码重置工作流中看到它。   
 
 ## <a name="security-questions-and-answers"></a>安全问题和答案
 
@@ -170,3 +166,4 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "全局管理员可以修改用户的身份验证联系人信息"
 
+<!-- Update_Description: wording update -->

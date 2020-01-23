@@ -1,43 +1,43 @@
 ---
-title: 通过 Visual Studio Code 部署模块 - Azure IoT Edge | Microsoft Docs
-description: 使用 Visual Studio Code 将模块部署至 IoT Edge 设备
+title: 通过 Visual Studio Code 部署模块 - Azure IoT Edge
+description: 将 Visual Studio Code 与 Azure IoT Tools 结合使用，根据部署清单的配置将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备。
 author: kgremban
 manager: timlt
 ms.author: v-yiso
 origin.date: 01/09/2019
-ms.date: 09/09/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6c72f42b27d1ec2189e63265741f7731fafc260f
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: fd0016e64910f04d0b95b70a063a169fd9fda7ea
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173986"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859714"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 
 使用业务逻辑创建 IoT Edge 模块后，需要将其部署到设备后才能在边缘操作。 如果多个模块共同协作来收集和处理数据，可同时部署它们并声明用于连接它们的路由规则。 
 
-本文介绍如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
-* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-portal.md)。 
+* Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
+* 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
 * 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一节中运行命令来将配置应用到设备时，会用到这个文件路径。
+若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一部分通过运行命令将配置应用到设备时，会用到这个文件路径。
 
-下面是一个基本的部署清单示例，其中具有一个模块：
+下面是一个基本的部署清单示例，其中有一个模块：
 
    ```json
    {

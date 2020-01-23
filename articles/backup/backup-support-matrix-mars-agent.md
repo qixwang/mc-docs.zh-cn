@@ -6,12 +6,12 @@ origin.date: 08/30/2019
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.author: v-lingwu
-ms.openlocfilehash: c56c9d3be3d33ec6afb3c6220b01e5437feff8fe
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 6077f30ef84b92810474b4ae18a39410576a23a0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838880"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854358"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -58,9 +58,18 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 
 MARS 代理需要以下 URL 的访问权限：
 
-- http://www.msftncsi.com/ncsi.txt
+- <http://www.msftncsi.com/ncsi.txt>
+- *.azure.cn
+- *.WindowsAzure.cn
+- *.MicrosoftOnline.cn
 - *.chinacloudapi.cn
 
+以及以下 IP 地址：
+
+- 20.190.128.0/18
+- 40.126.0.0/18
+
+对上面列出的所有 URL 和 IP 地址的访问都使用端口 443 上的 HTTPS 协议。
 
 ### <a name="throttling-support"></a>限制支持
 
@@ -74,7 +83,12 @@ MARS 代理需要以下 URL 的访问权限：
 >[!NOTE]
 > MARS 代理不支持 Windows Server Core SKU。
 
-在本地计算机和 Azure VM 上运行的某些操作系统中，可以使用 MARS 代理直接备份到 Azure。 所有操作系统必须是 64 位，并且应该运行最新的服务包和更新。 下表汇总了这些操作系统：
+可以使用 MARS 代理在以下运行的操作系统上直接备份到 Azure：
+
+1. 本地 Windows 服务器
+2. 运行 Windows 的 Azure VM
+
+所有操作系统必须是 64 位，并且应该运行最新的服务包和更新。 下表汇总了这些操作系统：
 
 **操作系统** | **文件/文件夹** | **系统状态** | **软件/模块要求**
 --- | --- | --- | ---

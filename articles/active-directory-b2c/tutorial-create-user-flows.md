@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-origin.date: 06/07/2019
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c8c73c609353590840ebcaac29bbc73d6858bbdb
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 7034dc7b83eb9596e5264418236bb459d6ddf7ad
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847132"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624051"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -42,12 +41,12 @@ ms.locfileid: "72847132"
 注册和登录用户流通过单一配置处理注册和登录体验。 根据上下文将应用程序用户引导至正确的路径。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
 
-    ![已选中 B2C 租户的目录和订阅筛选器](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![Azure 门户 中的 B2C 租户、目录和订阅窗格](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
-1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-1. 在左侧菜单的“策略”下选择“用户流(策略)”，然后选择“新建用户流”。   
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+1. 在“策略”下选择“用户流(策略)”，然后选择“新建用户流”    。
 
     ![门户中的“用户流”页面，突出显示了“新建用户流”按钮](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -83,8 +82,8 @@ ms.locfileid: "72847132"
 
 如果希望用户能够在你的应用程序中编辑其个人资料，请使用个人资料编辑用户流。
 
-1. 在 Azure AD B2C 租户概览页的左侧菜单中，选择“用户流(策略)”，然后选择“新建用户流”。  
-1. 在“建议”选项卡上选择“个人资料编辑”用户流。 
+1. 在 Azure AD B2C 租户概览页的菜单中，选择“用户流(策略)”，然后选择“新建用户流”   。
+1. 在“建议”选项卡上选择“个人资料编辑”用户流   。
 1. 输入该用户流的**名称**。 例如 *profileediting1*。
 1. 对于“标识提供者”  ，请选择“本地帐户登录”。 
 1. 对于“用户属性”，请选择你希望客户能够在其个人资料中编辑的属性。  例如，选择“显示更多”，然后选择“显示名称”和“职务”所对应的属性和声明。    单击 **“确定”** 。
@@ -101,8 +100,8 @@ ms.locfileid: "72847132"
 
 若要允许应用程序用户重置其密码，请使用密码重置用户流。
 
-1. 在左侧菜单中选择“用户流(策略)”，然后选择“新建用户流”。  
-1. 在“建议”选项卡上选择“密码重置”用户流。 
+1. 在 Azure AD B2C 租户概览菜单中，选择“用户流(策略)”，然后选择“新建用户流”   。
+1. 在“建议”选项卡上选择“密码重置”用户流   。
 1. 输入该用户流的**名称**。 例如 *passwordreset1*。
 1. 对于“标识提供者”  ，请启用“使用电子邮件地址重置密码”。 
 1. 在“应用程序声明”下单击“显示更多”，并选择你希望在发回到应用程序的授权令牌中返回的声明。  例如，选择“用户的对象 ID”。 

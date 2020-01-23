@@ -3,15 +3,15 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 author: lingliw
-origin.date: 08/20/2019
-ms.date: 11/06/2019
+origin.date: 12/2/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 1d7c93e3d6563146b106c67f30dbd4a3ed94ed08
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 6f8d39fb6b23cb409ccbc1b4303dc8fb9cbd7fd8
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838906"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858222"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -47,7 +47,7 @@ ms.locfileid: "74838906"
 4. 指定要使用的存储冗余类型；可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 或[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 以下示例显示，testVault 的 -BackupStorageRedundancy 选项设置为 GeoRedundant。
 
    > [!TIP]
-   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，在变量中存储备份恢复服务保管库对象可提供方便。
+   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
    >
    >
 
@@ -300,7 +300,7 @@ PolicyState     : Valid
 
 ### <a name="including-and-excluding-files-to-be-backed-up"></a>包含和排除要备份的文件
 
-`OBFileSpec` 对象定义要在备份中包含与排除的文件。 这组规则可划分出计算机上要保护的文件和文件夹。 可以设置任意数量的文件包含或排除规则，并将其与策略相关联。 创建新的 OBFileSpec 对象时，可执行以下操作：
+`OBFileSpec` 对象定义要在备份中包含与排除的文件。 这组规则可划分出计算机上要保护的文件和文件夹。 可设置任意数量的文件包含或排除规则，并将其与策略相关联。 创建新的 OBFileSpec 对象时，可执行以下操作：
 
 * 指定要包含的文件和文件夹
 * 指定要排除的文件和文件夹
@@ -439,7 +439,7 @@ Get-OBPolicy | Remove-OBPolicy
 ```
 
 ```Output
-21Vianet Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
 使用 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 可以提交策略对象。 这也会提示用户确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
@@ -449,7 +449,7 @@ Set-OBPolicy -Policy $NewPolicy
 ```
 
 ```Output
-21Vianet Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
          DatasourceId:4508156004108672185
@@ -566,11 +566,11 @@ The backup operation completed successfully.
 
 ## <a name="restore-data-from-azure-backup"></a>从 Azure 备份还原数据
 
-本部分将引导完成自动从 Azure 备份恢复数据的步骤。 此过程涉及以下步骤：
+本部分引导用户完成自动从 Azure 备份恢复数据的步骤。 此过程涉及以下步骤：
 
 1. 选取源卷
 2. 选择要还原的备份点
-3. 选择要还原的项
+3. 指定要还原的项
 4. 触发还原过程
 
 ### <a name="picking-the-source-volume"></a>选取源卷
@@ -594,95 +594,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>选择要从中还原的备份点
 
-结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们选择源卷 *D:* 的最新备份点，并使用它还原特定的文件。
+结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们选择源卷 C: 的最新备份点，并使用它恢复特定文件  。
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 对象 `$Rps` 是备份点数组。 第一个元素是最新备份点，第 N 个元素是最旧的备份点。 为了选择最新的点，我们会使用 `$Rps[0]`。
 
-### <a name="choosing-an-item-to-restore"></a>选择要还原的项
+### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
-为了识别要还原的确切文件或文件夹，请以递归方式使用 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet。 这样，只需使用 `Get-OBRecoverableItem`便可浏览文件夹层次结构。
-
-在本示例中，如果我们要还原文件 finances.xls，可以使用对象 `$FilesFolders[1]` 引用该文件  。
+若要还原特定文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-也可以使用 ```Get-OBRecoverableItem``` cmdlet 来搜索要还原的项。 在本示例中，为了搜索 *finances.xls* ，我们可以运行以下命令来获取该文件上的句柄：
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
@@ -720,9 +686,9 @@ The recovery operation completed successfully.
 
 * 这会从计算机中删除文件筛选器，并停止跟踪更改。
 * 所有的策略信息将从计算机中删除，但服务中会继续存储这些策略信息。
-* 将删除所有备份计划，且不会进一步创建备份。
+* 所有备份计划都会被删除，且不会进一步创建备份。
 
-不过，Azure 中存储的数据会根据你设置的保留策略继续保留。 较旧的恢复点会自动过时。
+不过，根据设置的保留策略继续保留 Azure 中存储的数据。 较旧的恢复点会自动过时。
 
 ## <a name="remote-management"></a>远程管理
 

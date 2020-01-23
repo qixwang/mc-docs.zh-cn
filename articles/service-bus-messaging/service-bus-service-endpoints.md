@@ -1,23 +1,23 @@
 ---
-title: 适用于 Azure 服务总线的虚拟网络服务终结点和规则 | Microsoft Docs
-description: 将 Microsoft.ServiceBus 服务终结点添加到虚拟网络。
+title: 虚拟网络服务终结点 - Azure 服务总线
+description: 本文提供了有关如何向虚拟网络中添加 Microsoft.ServiceBus 服务终结点的信息。
 services: service-bus
 documentationcenter: ''
 author: lingliw
 manager: digimobile
 editor: spelluru
-ms.service: service-bus
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
-origin.date: 09/05/2018
-ms.date: 08/29/2019
+origin.date: 12/20/2019
+ms.date: 1/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: d4fea6f2a6610085e5060fb7c910556de1801a0c
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: 6b08c75848339cd9a8356ddc84af1f01071f1a5c
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169597"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853832"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
@@ -33,12 +33,10 @@ ms.locfileid: "70169597"
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）  -
-> - Azure Monitor
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
-> - Azure 数据资源管理器
 >
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure 应用服务

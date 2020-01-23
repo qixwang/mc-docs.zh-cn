@@ -1,5 +1,6 @@
 ---
-title: 更换 Azure Stack 集成系统上的缩放单元节点 | Microsoft Docs
+title: 更换 Azure Stack 集成系统上的缩放单元节点
+titleSuffix: Azure Stack
 description: 了解如何更换 Azure Stack 集成系统上的物理缩放单元节点。
 services: azure-stack
 documentationcenter: ''
@@ -11,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 07/18/2019
-ms.date: 09/16/2019
+origin.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 10ec7b13356938f97b4aa76b82c3f2ef4287c4d7
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: cb319d57f5df4e6a73a9618f3da77369bdbb6a42
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857237"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737792"
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>更换 Azure Stack 集成系统上的缩放单元节点
 
@@ -30,8 +31,7 @@ ms.locfileid: "70857237"
 本文介绍更换 Azure Stack 集成系统上的物理计算机（也称为缩放单元节点）的一般过程。 实际的缩放单元节点更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
 
 > [!CAUTION]  
-> 固件分级对于本文中所述的操作的成功至关重要。 缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或阻止 Azure Stack 自动化部署操作系统。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。<br>
-有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
+> 固件分级对于本文中所述的操作的成功至关重要。 缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或阻止 Azure Stack 自动化部署操作系统。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。 有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
 
 以下流程图显示更换整个缩放单元节点的一般 FRU 过程。
 
@@ -40,7 +40,7 @@ ms.locfileid: "70857237"
 *根据硬件的物理条件，可能不需要此操作。
 
 > [!Note]  
-> 如果关闭操作失败，建议使用清空操作，再使用停止操作。 有关更多详细信息，请参阅可用的节点操作。  
+> 如果关闭操作确实失败，则建议先执行清空操作，再执行停止操作。 有关详细信息，请参阅 [Azure Stack 中的缩放单元节点操作](/azure-stack/operator/azure-stack-node-actions)。
 
 ## <a name="review-alert-information"></a>查看警报信息
 
@@ -60,7 +60,7 @@ ms.locfileid: "70857237"
 
 提供以下步骤作为缩放单元节点更换过程的高级概述。 有关系统特有的详细步骤，请参阅 OEM 硬件供应商的 FRU 文档。 请勿在未参考 OEM 提供的文档的情况下按照这些步骤操作。
 
-1. 使用**关闭**操作正常关闭缩放单元节点。 根据硬件的物理条件，可能不需要此操作。 
+1. 使用**关闭**操作正常关闭缩放单元节点。 根据硬件的物理条件，可能不需要此操作。
 
 2. 万一关闭操作失败，请使用[清空](azure-stack-node-actions.md#drain)操作使缩放单元节点进入维护模式。 根据硬件的物理条件，可能不需要此操作。
 
@@ -72,7 +72,7 @@ ms.locfileid: "70857237"
    > [!NOTE]  
    > 在关闭电源操作不起作用的罕见情况下，请改用基板管理控制器 (BMC) Web 界面。
 
-4. 更换物理计算机。 通常，这由 OEM 硬件供应商来完成。
+4. 更换物理计算机。 通常，此更换由 OEM 硬件供应商来完成。
 5. 使用[修复](azure-stack-node-actions.md#repair)操作将新的物理计算机添加到缩放单元。
 6. 使用到特权终结点[检查虚拟磁盘修复状态](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint)。 利用新的数据驱动器，完整的存储修复作业可能需要数小时的时间，具体取决于系统负载和已使用的空间。
 7. 修复操作完成后，验证是否已自动关闭所有活动警报。

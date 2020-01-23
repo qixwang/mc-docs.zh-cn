@@ -1,26 +1,16 @@
 ---
-title: Service Fabric 应用的容量规划 | Azure
+title: Service Fabric 应用的容量规划
 description: 介绍如何识别 Service Fabric 应用程序所需的计算节点数
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: de20b8fbf5ec104896bcd00c6e343334e4fe3f45
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 40339d1acce8ef64d40b76a0f6a42d70dbfc120a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336360"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742274"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 应用程序的容量规划
 本文档介绍如何评估运行 Azure Service Fabric 应用程序所需的资源量（CPU、RAM 和磁盘存储空间）。 资源要求经常会随着时间而变化。 开发/测试服务时需要的资源通常很少，之后进入生产环境且应用程序受欢迎度提高时需要的资源会更多。 设计应用程序时，应仔细规划长期要求并做出选择，以便到时服务可以缩放以应对较高的客户需求。
@@ -70,4 +60,4 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 [10]: service-fabric-concepts-partitioning.md
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update  -->

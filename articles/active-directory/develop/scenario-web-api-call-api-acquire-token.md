@@ -1,6 +1,7 @@
 ---
-title: 调用其他 Web API 的 Web API（获取应用的令牌）- Microsoft 标识平台
-description: 了解如何构建调用其他 Web API 的 Web API（获取应用的令牌）。
+title: 获取调用 Web API 的 Web API 的令牌 | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何生成调用 Web API 的 Web API（要求获取应用的令牌）。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 06/20/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef873ad920ebea82143e2a0de66428da17cdb676
-ms.sourcegitcommit: 9d5fd3184b6a47bf3b60ffdeeee22a08354ca6b1
+ms.openlocfilehash: 702e8b60ed23b9dcfa72f481f8ab5d25608f8080
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67305914"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776928"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>调用 Web API 的 Web API - 获取应用的令牌
 
@@ -31,7 +31,7 @@ ms.locfileid: "67305914"
 
 下面是将在 API 控制器的操作中调用的代码示例，调用下游 API（名为 todolist）。
 
-```CSharp
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...
@@ -54,7 +54,7 @@ private async Task GetTodoList(bool isAppStarting)
 
 `GetAccountIdentifier` 方法使用与 Web API 收到其 JWT 的用户的标识相关联的声明：
 
-```CSharp
+```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 {
  string userObjectId = GetObjectId(claimsPrincipal);
@@ -75,3 +75,4 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 > [!div class="nextstepaction"]
 > [调用 Web API](scenario-web-api-call-api-call-api.md)
 
+<!-- Update_Description: wording update -->

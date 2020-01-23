@@ -5,14 +5,15 @@ services: container-service
 author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 12/02/2019
+origin.date: 11/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 038b1f17db412d5d664e9aa03f4d44e7f53d65f5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f22de32c6e0acbed44f9f3b75df67c058ceaa70b
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336329"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859880"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -21,7 +22,7 @@ ms.locfileid: "75336329"
 本文介绍如何使用 API 服务器已授权 IP 地址范围来限制哪些 IP 地址和 CIDR 可以访问控制平面。
 
 > [!IMPORTANT]
-> 在新的群集上，仅支持在标准 SKU 负载均衡器中使用 API 服务器已授权 IP 地址范围。  配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作。  也可以升级这些现有群集，升级后它们可继续正常工作。
+> 在新的群集上，仅支持在标准 SKU 负载均衡器中使用 API 服务器已授权 IP 地址范围。  配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器   。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -51,7 +52,7 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 1 \
-    --vm-set-type AvailabilitySet \
+    --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --api-server-authorized-ip-ranges 73.140.245.0/24 \
     --generate-ssh-keys
@@ -74,7 +75,7 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 1 \
-    --vm-set-type AvailabilitySet \
+    --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --api-server-authorized-ip-ranges 73.140.245.0/24 \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2> \
@@ -98,7 +99,7 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 1 \
-    --vm-set-type AvailabilitySet \
+    --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --api-server-authorized-ip-ranges 0.0.0.0/32 \
     --generate-ssh-keys
@@ -156,6 +157,4 @@ az aks update \
 [route-tables]: ../virtual-network/manage-route-table.md
 [standard-sku-lb]: load-balancer-standard.md
 
-
-<!-- Update_Description: new article about api server authorized ip ranges -->
-<!--NEW.date: 11/25/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

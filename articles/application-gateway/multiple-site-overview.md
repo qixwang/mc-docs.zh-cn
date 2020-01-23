@@ -4,20 +4,19 @@ description: 本文概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 01/17/2019
-ms.date: 11/21/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: 7a55a771b23bbfb11b549a3e31aff6dbb72e5cba
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 68d91664e85a7fd4b2b75a381fd9086a63e5d661
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326809"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116917"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
-托管多个站点可以让你在同一应用程序网关实例上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关通过两个名为 ContosoServerPool 和 FabrikamServerPool 的后端服务器池来为 contoso.com 和 fabrikam.com 提供流量。
+使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关通过两个名为 ContosoServerPool 和 FabrikamServerPool 的后端服务器池来为 contoso.com 和 fabrikam.com 提供流量。
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 

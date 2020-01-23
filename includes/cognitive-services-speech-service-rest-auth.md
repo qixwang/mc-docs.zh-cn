@@ -3,23 +3,23 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/29/2019
-ms.date: 09/24/2019
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 703fd80f612a974cac2afb19d50f3af604901d66
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 758ccf7599043d168dbf317ad735c19655e7ab66
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389355"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123295"
 ---
 ## <a name="authentication"></a>身份验证
 
 每个请求都需要一个授权标头。 下表列出了每个服务支持的标头：
 
-| 支持的授权标头 | 语音转文本 |
-|------------------------|----------------|
-| Ocp-Apim-Subscription-Key | 是 |
-| Authorization:持有者 | 是 |
+| 支持的授权标头 | 语音转文本 | 文本转语音 |
+|------------------------|----------------|----------------|
+| Ocp-Apim-Subscription-Key | 是 | 否 |
+| Authorization:持有者 | 是 | 是 |
 
 使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 

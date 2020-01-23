@@ -1,28 +1,24 @@
 ---
-title: v1.0 应用程序的范围（Microsoft 身份验证库）| Azure
+title: v1.0 应用的范围 (MSAL) | Azure
 description: 了解使用 Microsoft 身份验证库 (MSAL) 的 v1.0 应用程序的范围。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70ff706c74a26417fdd44ffc7334096d734ebe6d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c462d91d73ce288d3dbf933714af56deda978929
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334803"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776969"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -30,7 +26,7 @@ OAuth2 权限是适用于开发人员的 Azure Active Directory (Azure AD) (v1.0
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 
-若要获取 v1.0 应用程序（例如 Azure AD Graph，网址为 https:\//graph.chinacloudapi.cn）的特定范围的令牌，需要通过将所需资源标识符与该资源的所需 OAuth2 权限相连接，来创建范围。
+若要获取 v1.0 应用程序（例如 Azure AD Graph，网址为 https://graph.chinacloudapi.cn) ）的特定范围的令牌，请将所需资源标识符与该资源的所需 OAuth2 权限相连接以创建范围。
 
 例如，若要以用户的身份访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，请执行以下操作：
 

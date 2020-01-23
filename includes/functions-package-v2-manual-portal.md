@@ -6,20 +6,19 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
-origin.date: 10/04/2018
-ms.date: 07/17/2019
+ms.date: 12/31/2019
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 8728f5a357dd7c9bd4e77aee7e2b30ca30ba53d1
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: 4bcd05ebe083f76fda89cab867c518b12ef6368b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "74179025"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624281"
 ---
 下表说明了如何在每个开发环境中添加对此绑定的支持。
 
-| 开发环境               | 添加支持 <br>Functions 2.x  |
+| 开发环境               | 添加支持 |
 |----------------------|----------------|
 |本地开发 - C# 类库       | [安装包](../articles/azure-functions/functions-bindings-register.md#vs) |
 |本地开发 - C# 脚本、JavaScript、F# |[注册扩展](../articles/azure-functions/functions-bindings-register.md#extension-bundles)         |

@@ -2,28 +2,24 @@
 title: Microsoft 标识平台中的身份验证 | Azure
 description: 了解 Microsoft 标识平台 (v2.0) 中的身份验证的基础知识。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b13e62dec61303f2aba6da0498c7c8053f4151cf
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3c3c42551227b5760a3b4edefed218e8b470b342
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334904"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776840"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -169,8 +165,9 @@ MSAL 使用浏览器获取令牌，与对 Web 应用一样，将身份验证委�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Microsoft 标识平台开发人员术语表](developer-glossary.md)来熟悉常用术语。
-请参阅[身份验证流和应用方案](authentication-flows-app-scenarios.md)来详细了解 Microsoft 标识平台支持的其他用户身份验证方案。
-请参阅 [MSAL 库](msal-overview.md)，了解可以借助哪些 Microsoft 库在单个简化编程模型中开发可以处理 Azure AD 帐户和 Azure AD B2C 用户的应用程序。
+- 请参阅 [Microsoft 标识平台开发人员术语表](developer-glossary.md)来熟悉常用术语。
+- 请参阅[身份验证流和应用方案](authentication-flows-app-scenarios.md)来详细了解 Microsoft 标识平台支持的其他用户身份验证方案。
+- 请参阅 [MSAL 库](msal-overview.md)，了解可以借助哪些 Microsoft 库在单个简化编程模型中开发可以处理 Azure AD 帐户和 Azure AD B2C 用户的应用程序。
+- 请参阅[将应用服务与 Microsoft 标识平台集成](/app-service/configure-authentication-provider-aad)，以了解如何为应用服务应用配置身份验证。
 
 <!-- Update_Description: wording update -->

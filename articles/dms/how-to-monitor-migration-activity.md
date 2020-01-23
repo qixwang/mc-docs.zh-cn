@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据库迁移服务监视迁移活动 | Microsoft Docs
+title: 监视迁移活动 - Azure 数据库迁移服务
 description: 了解如何使用 Azure 数据库迁移服务来监视迁移活动。
 services: database-migration
 author: WenJason
@@ -8,18 +8,18 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 03/12/2019
-ms.date: 05/20/2019
-ms.openlocfilehash: c7440ae9e48c476ec71fe5771181c698be09d6e5
-ms.sourcegitcommit: 99ef971eb118e3c86a6c5299c7b4020e215409b3
+ms.date: 01/13/2020
+ms.openlocfilehash: d404e2fe67d51418520ec7e21c9e31a17f4bc4db
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65830280"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776686"
 ---
-# <a name="monitor-migration-activity"></a>监视迁移活动
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务监视迁移活动
 本文介绍如何在数据库级别和表级别监视迁移进度。
 
 ## <a name="monitor-at-the-database-level"></a>在数据库级别监视

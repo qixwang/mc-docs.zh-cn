@@ -12,16 +12,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/23/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 488bc268f7bd9138167ce1cce3805fbe5bf00cdc
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: c65168837837090b99b491f61cc759c4a7ec08a8
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020273"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737741"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
 
@@ -29,8 +29,10 @@ ms.locfileid: "74020273"
 
 就绪性检查器工具执行以下证书验证：
 
-- **读取 PFX**  
+- **分析 PFX**  
     检查 PFX 文件是否有效且密码正确，以及公开的信息是否受密码保护。 
+- **到期日期**  
+    检查最短有效期是否为 7 天。 
 - **签名算法**  
     检查签名算法是否不是 SHA1。
 - **私钥**  
@@ -47,13 +49,11 @@ ms.locfileid: "74020273"
     检查其他证书的顺序，验证顺序是否正确。
 - **其他证书**  
     确保除了相关叶证书及其链以外，PFX 中未打包其他证书。
-- **无配置文件**  
-    检查新用户是否无需加载用户配置文件即可加载 PFX 数据，可在证书有效期内模拟 gMSA 帐户的行为。
 
 > [!IMPORTANT]  
 > PKI 证书是一个 PFX 文件，其密码应被视为敏感信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在验证用于 Azure Stack 部署的 PKI 证书之前，系统应符合以下先决条件：
 
@@ -72,13 +72,13 @@ ms.locfileid: "74020273"
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ```
 
-2. 创建证书目录结构。 在以下示例中，可将 `<c:\certificates>` 更改为所选的新目录路径。
+2. 创建证书目录结构。 在以下示例中，可将 `<C:\Certificates\Deployment>` 更改为所选的新目录路径。
     ```powershell  
-    New-Item C:\Certificates -ItemType Directory
+    New-Item C:\Certificates\Deployment -ItemType Directory
     
     $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'ARM Admin', 'ARM Public', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal'
     
-    $destination = 'c:\certificates'
+    $destination = 'C:\Certificates\Deployment'
     
     $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
     ```
@@ -91,64 +91,124 @@ ms.locfileid: "74020273"
     > ```
     
      - 将证书放入上一步骤中创建的相应目录。 例如：  
-        - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
-        - `c:\certificates\Admin Portal\CustomerCertificate.pfx`
-        - `c:\certificates\ARM Admin\CustomerCertificate.pfx`
+        - `C:\Certificates\Deployment\ACSBlob\CustomerCertificate.pfx`
+        - `C:\Certificates\Deployment\Admin Portal\CustomerCertificate.pfx`
+        - `C:\Certificates\Deployment\ARM Admin\CustomerCertificate.pfx`
 
 3. 在 PowerShell 窗口中，更改 **RegionName** 和 **FQDN** 的值以适用于 Azure Stack 环境，然后运行以下命令：
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-
-    Invoke-AzsCertificateValidation -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
+    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
     ```
 
 4. 检查输出和所有证书是否通过所有测试。 例如：
 
-```powershell
-Invoke-AzsCertificateValidation v1.1809.1005.1 started.
-Testing: ARM Public\ssl.pfx
-Thumbprint: 7F6B27****************************E9C35A
-    PFX Encryption: OK
-    Signature Algorithm: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Parse PFX: OK
-    Private Key: OK
-    Cert Chain: OK
-    Chain Order: OK
-    Other Certificates: OK
-Testing: Admin Extension Host\ssl.pfx
-Thumbprint: A631A5****************************35390A
-    PFX Encryption: OK
-    Signature Algorithm: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Parse PFX: OK
-    Private Key: OK
-    Cert Chain: OK
-    Chain Order: OK
-    Other Certificates: OK
-Testing: Public Extension Host\ssl.pfx
-Thumbprint: 4DBEB2****************************C5E7E6
-    PFX Encryption: OK
-    Signature Algorithm: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Parse PFX: OK
-    Private Key: OK
-    Cert Chain: OK
-    Chain Order: OK
-    Other Certificates: OK
+    ```powershell
+    Invoke-AzsCertificateValidation v1.1912.1082.37 started.
+    Testing: KeyVaultInternal\adminvault.pfx
+    Thumbprint: B1CB76****************************565B99
+            Expiry Date: OK
+            Signature Algorithm: OK
+            DNS Names: OK
+            Key Usage: OK
+            Key Length: OK
+            Parse PFX: OK
+            Private Key: OK
+            Cert Chain: OK
+            Chain Order: OK
+            Other Certificates: OK
+    Testing: ARM Public\management.pfx
+    Thumbprint: 44A35E****************************36052A
+            Expiry Date: OK
+            Signature Algorithm: OK
+            DNS Names: OK
+            Key Usage: OK
+            Key Length: OK
+            Parse PFX: OK
+            Private Key: OK
+            Cert Chain: OK
+            Chain Order: OK
+            Other Certificates: OK
+    Testing: Admin Portal\adminportal.pfx
+    Thumbprint: 3F5E81****************************9EBF9A
+            Expiry Date: OK
+            Signature Algorithm: OK
+            DNS Names: OK
+            Key Usage: OK
+            Key Length: OK
+            Parse PFX: OK
+            Private Key: OK
+            Cert Chain: OK
+            Chain Order: OK
+            Other Certificates: OK
+    Testing: Public Portal\portal.pfx
 
-Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-Invoke-AzsCertificateValidation Completed
-```
+    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsCertificateValidation Completed
+    ```
 
+    若要验证其他 Azure Stack 服务的证书，请更改 ```-CertificateType``` 的值。 例如：
+
+    ```powershell  
+    # App Services
+    Invoke-AzsCertificateValidation -CertificateType AppServices -CertificatePath C:\Certificates\AppServices -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+
+    # DBAdapter
+    Invoke-AzsCertificateValidation -CertificateType DBAdapter -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+
+    # EventHub
+    Invoke-AzsCertificateValidation -CertificateType EventHub -CertificatePath C:\Certificates\EventHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+
+    # IoTHub
+    Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    ```
+每个文件夹都应包含证书类型的单个 PFX 文件，如果证书类型有多证书要求，则每个单独的证书都应有嵌套文件夹且名称要敏感。  以下代码显示了所有证书类型的示例文件夹/证书结构，以及 ```-CertificateType``` 和 ```-CertificatePath``` 的相应值。
+    
+    ```powershell  
+    C:\>tree c:\SecretStore /A /F
+        Folder PATH listing
+        Volume serial number is 85AE-DF2E
+        C:\SECRETSTORE
+        \---AzureStack
+            +---CertificateRequests
+            \---Certificates
+                +---AppServices         # Invoke-AzsCertificateValidation `
+                |   +---API             #     -CertificateType AppServices `
+                |   |       api.pfx     #     -CertificatePath C:\Certificates\AppServices
+                |   |
+                |   +---DefaultDomain
+                |   |       wappsvc.pfx
+                |   |
+                |   +---Identity
+                |   |       sso.pfx
+                |   |
+                |   \---Publishing
+                |           ftp.pfx
+                |
+                +---DBAdapter           # Invoke-AzsCertificateValidation `
+                |       dbadapter.pfx   #   -CertificateType DBAdapter `
+                |                       #   -CertificatePath C:\Certificates\DBAdapter
+                |
+                +---Deployment          # Invoke-AzsCertificateValidation `
+                |   +---ACSBlob         #   -CertificateType Deployment `
+                |   |       acsblob.pfx #   -CertificatePath C:\Certificates\Deployment
+                |   |
+                |   +---ACSQueue
+                |   |       acsqueue.pfx
+               ./. ./. ./. ./. ./. ./. ./.    <- Deployment certificate tree trimmed.
+                |   \---Public Portal
+                |           portal.pfx
+                |
+                +---EventHub            # Invoke-AzsCertificateValidation `
+                |       eventhub.pfx    #   -CertificateType EventHub `
+                |                       #   -CertificatePath C:\Certificates\EventHub
+                |
+                \---IoTHub              # Invoke-AzsCertificateValidation `
+                        iothub.pfx      #   -CertificateType IoTHub `
+                                        #   -CertificatePath C:\Certificates\IoTHub
+    ```
 ### <a name="known-issues"></a>已知问题
 
 **症状**：跳过了测试
@@ -179,77 +239,6 @@ Invoke-AzsCertificateValidation Completed
     ```
 
 **解决方法**：遵循针对每个证书的每组测试下的详细信息部分中的工具指导。
-
-## <a name="perform-platform-as-a-service-certificate-validation"></a>执行平台即服务证书验证
-
-如果计划 SQL/MySQL 或应用程序服务部署，请使用以下步骤准备和验证 Azure Stack PKI 证书以获取平台即服务 (PaaS) 证书。
-
-1.  在 PowerShell 提示符（5.1 或更高版本）下，运行以下 cmdlet 安装 **AzsReadinessChecker**：
-
-    ```powershell  
-      Install-Module Microsoft.AzureStack.ReadinessChecker -force
-    ```
-
-2.  为每个需要验证的 PaaS 证书创建一个包含路径和密码的嵌套哈希表。 在 PowerShell 窗口中运行：
-
-    ```powershell  
-        $PaaSCertificates = @{
-        'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
-        'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
-        'PaaSAPICert' = @{'pfxPath' = '<Path to API PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
-        'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
-        'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
-        }
-    ```
-
-3.  更改 **RegionName** 和 **FQDN** 的值以匹配 Azure Stack 环境来启动验证。 运行：
-
-    ```powershell  
-    Invoke-AzsCertificateValidation -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
-    ```
-4.  检查输出和所有证书是否通过所有测试。
-
-    ```powershell
-    Invoke-AzsCertificateValidation v1.0 started.
-    Thumbprint: 95A50B****************************FA6DDA
-        Signature Algorithm: OK
-        Parse PFX: OK
-        Private Key: OK
-        Cert Chain: OK
-        DNS Names: OK
-        Key Usage: OK
-        Key Size: OK
-        Chain Order: OK
-        Other Certificates: OK
-    Thumbprint: EBB011****************************59BE9A
-        Signature Algorithm: OK
-        Parse PFX: OK
-        Private Key: OK
-        Cert Chain: OK
-        DNS Names: OK
-        Key Usage: OK
-        Key Size: OK
-        Chain Order: OK
-        Other Certificates: OK
-    Thumbprint: 76AEBA****************************C1265E
-        Signature Algorithm: OK
-        Parse PFX: OK
-        Private Key: OK
-        Cert Chain: OK
-        DNS Names: OK
-        Key Usage: OK
-        Key Size: OK
-        Chain Order: OK
-        Other Certificates: OK
-    Thumbprint: 8D6CCD****************************DB6AE9
-        Signature Algorithm: OK
-        Parse PFX: OK
-        Private Key: OK
-        Cert Chain: OK
-        DNS Names: OK
-        Key Usage: OK
-        Key Size: OK
-    ```
 
 ## <a name="certificates"></a>证书
 

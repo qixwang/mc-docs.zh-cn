@@ -4,19 +4,19 @@ description: 本快速入门使用组注册。 在本快速入门中，将使用
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 24d189df8d8ea5714697d366f38b089e2b375345
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6a65ce33a47aed48dbf8565fff39c9c989aa9ffa
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334727"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859594"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>快速入门：使用 Node.js 将 X.509 设备注册到设备预配服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "75334727"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 安装 [Node.js v4.0 或更高版本](https://nodejs.org)。
 - 安装 [Git](https://git-scm.com/download/)。
@@ -45,11 +45,15 @@ ms.locfileid: "75334727"
 
 若要使用此测试工具来生成证书，请执行以下步骤： 
  
-1. 打开命令提示符或 Git Bash shell，并切换到计算机上的某个工作文件夹。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
-    
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+1. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的标记名称。
+
+2. 打开命令提示符或 Git Bash shell，并切换到计算机上的某个工作文件夹。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
 
    应该预料到此操作需要几分钟才能完成。
 
@@ -141,7 +145,7 @@ ms.locfileid: "75334727"
 如果打算学习 Node.js 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有 Azure 资源。
  
 1. 关闭计算机上的 Node.js 示例输出窗口。
-2. 在 Azure 门户中导航到设备预配服务，选择“管理注册”，然后选择“注册组”选项卡。   选中通过本快速入门注册的 X.509 设备的“组名称”旁边的复选框，然后按窗格顶部的“删除”按钮   。    
+2. 在 Azure 门户中导航到设备预配服务，选择“管理注册”，然后选择“注册组”选项卡   。选中通过本快速入门注册的 X.509 设备的“组名称”旁边的复选框，然后按窗格顶部的“删除”按钮   。    
 3. 在 Azure 门户的设备预配服务中选择“证书”，然后选择为本快速入门上传的证书，再按“证书详细信息”窗口顶部的“删除”按钮。     
  
 ## <a name="next-steps"></a>后续步骤

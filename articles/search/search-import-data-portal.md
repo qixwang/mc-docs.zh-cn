@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 833485456288c73ab70a192ac08eb0692302ac6d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/17/2020
+ms.openlocfilehash: 0098feb7fc616fd747f3f27578bb460b2ce6eca4
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336522"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123312"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
@@ -74,7 +74,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 ## <a name="wizard-output"></a>向导输出
 
-在幕后，向导将会创建、配置和调用以下对象。 向导运行完成后，可以在门户页中找到其输出。 服务的“概述”页包含索引、索引器和数据源的列表。 可以在门户中查看索引定义的完整 JSON 代码。 对于其他定义，可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 来获取特定的对象。
+在幕后，向导将会创建、配置和调用以下对象。 向导运行完成后，可以在门户页中找到其输出。 服务的“概述”页包含索引、索引器、数据源和技能组的列表。 可以在门户中查看索引定义的完整 JSON 代码。 对于其他定义，可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/) 来获取特定的对象。
 
 | Object | 说明 | 
 |--------|-------------|
@@ -109,7 +109,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 1. 设置属性以确定如何在索引中使用该字段。 
 
-   请花些时间来完成此步骤，因为属性确定了索引中字段的物理表达式。 以后若要更改属性（即使是以编程方式进行更改），几乎总要删除并重建索引。 **Searchable** 和 **Retrievable** 等核心属性[对存储会产生负面影响](search-what-is-an-index.md#storage-implications)。 启用筛选器和使用建议器会提高存储要求。 
+   请花些时间来完成此步骤，因为属性确定了索引中字段的物理表达式。 以后若要更改属性（即使是以编程方式进行更改），几乎总要删除并重建索引。 **Searchable** 和 **Retrievable** 等核心属性[对存储会产生负面影响](search-what-is-an-index.md#index-size)。 启用筛选器和使用建议器会提高存储要求。 
    
    + “可搜索”启用全文搜索  。 在自由格式查询或查询表达式中使用的每个字段必须有此属性。 为标记为“可搜索”的每个字段创建反向索引  。
 

@@ -4,22 +4,21 @@ description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 08/04/2019
-ms.date: 11/04/2019
+origin.date: 11/22/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b2abd5d2160b5db47fa8bc093be8d3a75bad383
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: e0f195d53529c95503a1a58bdcdf43b88749635f
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914477"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859524"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
-Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT Edge 子设备上启用脱机操作。 只要 IoT Edge 设备有机会连接到 IoT 中心，它和任何子设备就可以在间歇性或无 Internet 连接的情况下继续运作。 
-
+Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT Edge 子设备上启用脱机操作。 只要 IoT Edge 设备有机会连接到 IoT 中心，该设备和任何子设备就可以在间歇性或无 Internet 连接的情况下继续运作。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -41,7 +40,9 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
 4. **与 IoT 中心重新连接和重新同步**
 
-   一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息按照它们存储的相同顺序传递。 模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的 IoT 子设备集所做的任何更改。
+   一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息会立即传递到 IoT 中心，但取决于连接速度、IoT 中心延迟和相关因素。 这些消息会按照存储它们的相同顺序传递。
+
+   模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的 IoT 子设备集所做的任何更改。
 
 ## <a name="restrictions-and-limits"></a>约束和限制
 

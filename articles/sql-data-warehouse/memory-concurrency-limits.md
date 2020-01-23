@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
 origin.date: 10/04/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: dbea81afc17550729e34010a29770367ac1d2899
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 9d70a323e406163d53cff6f8876adb71fdc646d4
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74808066"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964925"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的内存和并发限制
 查看分配给 Azure SQL 数据仓库中的各个性能级别和资源类的内存和并发限制。  
@@ -51,7 +51,7 @@ ms.locfileid: "74808066"
 最高服务级别为 DW30000c，包括 60 个计算节点，每个计算节点有一个分布区。 例如，DW30000c 级别的 600 TB 数据仓库的每个计算节点可以处理大约 10 TB 数据。
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>工作负荷组的并发性最大值
-引入工作负荷组-LINK TBD 以后，并发槽的概念不再适用。  每个请求的资源按百分比分配，在工作负荷组定义中指定。  但是，即使删除了并发槽，每个查询所需的资源量仍有一个最小值，具体取决于服务级别。  下表定义了每个查询所需的最小资源量，具体取决于服务级别和能够实现的相关并发目标。 
+引入[工作负荷组](sql-data-warehouse-workload-isolation.md)后，并发槽的概念不再适用。  每个请求的资源按百分比分配，在工作负荷组定义中指定。  但是，即使删除了并发槽，每个查询所需的资源量仍有一个最小值，具体取决于服务级别。  下表定义了每个查询所需的最小资源量，具体取决于服务级别和能够实现的相关并发目标。 
 
 |服务级别|并发查询数上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支持的最小百分比|
 |---|---|---|

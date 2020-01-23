@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析中的流单元
 description: 本文介绍 Azure 流分析中的流单元设置和影响性能的其他因素。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/28/2019
 ms.date: 11/19/2019
-ms.openlocfilehash: ca29cb3a4945671a25cfba901d97e3aea657fa4f
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 408ef9f32649415cd1057dfd21e2f8040f1376aa
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528408"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854642"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -23,7 +22,7 @@ ms.locfileid: "74528408"
 
 为了实现低延迟流式处理，Azure 流分析作业将执行内存中的所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
-SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使用情况。 对于占用最小内存的流式处理作业，此指标通常介于 10% 到 20%。 如果 SU% 利用率较低且输入事件被积压，则工作负载可能需要更多计算资源，这需要你增加 SU 的数量。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 Microsoft 建议针对 SU 利用率指标达到 80% 设置警报，以防止资源耗尽。 有关详细信息，请参阅[教程：为 Azure 流分析作业设置警报](stream-analytics-set-up-alerts.md)。
+SU 利用率指标的范围为 0% 到 100%，描述工作负荷的内存消耗量。 对于占用最小内存的流式处理作业，此指标通常介于 10% 到 20%。 如果 SU 利用率较低并且输入事件积压，则可能表示工作负荷需更多的计算资源，这就需要增加 SU 的数目。 最好保持低于 80% 的 SU 指标，以应对偶发的峰值。 Microsoft 建议针对 SU 利用率指标达到 80% 设置警报，以防止资源耗尽。 有关详细信息，请参阅[教程：为 Azure 流分析作业设置警报](stream-analytics-set-up-alerts.md)。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>配置流分析流式处理单元 (SU)
 1. 登录到 [Azure 门户](https://portal.azure.cn/)
@@ -99,7 +98,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 事件中心分区应根据分组键进行分区，以避免减少步骤的需要。 有关详细信息，请参阅[事件中心概述](../event-hubs/event-hubs-what-is-event-hubs.md)。 
 
 ## <a name="temporal-joins"></a>时态联接
-时态联接的消耗内存（状态大小）与联接的时态调整空间中的事件数量成正比，即事件输入速率与调整空间大小的乘积。 换而言之，联接消耗的内存与 DateDiff 时间范围乘以平均事件速率的结果成正比。
+时态联接的消耗内存（状态大小）与联接的时态调整空间中的事件数量（即事件输入速率乘以调整空间大小）成正比。 换而言之，联接消耗的内存与 DateDiff 时间范围乘以平均事件速率的结果成正比。
 
 联接中的不匹配事件数会影响查询的内存利用率。 以下查询将查找产生点击量的广告印象：
 
@@ -155,7 +154,7 @@ ASA 中的引用数据会被加载到内存中，以便快速查找。 在当前
 [img.stream.analytics.configure.scale]: ./media/stream-analytics-scale-jobs/StreamAnalytics.configure.scale.png
 [img.stream.analytics.perfgraph]: ./media/stream-analytics-scale-jobs/perf.png
 [img.stream.analytics.streaming.units.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsStreamingUnitsExample.jpg
-[img.stream.analytics.preview.portal.settings.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsPreviewPortalJobSettings-NewPortal.png
+[img.stream.analytics.preview.portal.settings.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsPreviewPortalJobSettings-NewPortal.png   
 
 <!--Update_Description: update meta properties -->
 

@@ -1,26 +1,18 @@
 ---
-title: 配置 TLS 相互身份验证 - Azure 应用服务
-description: 了解如何将应用配置为使用 TLS 客户端证书身份验证。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: 配置 TLS 相互身份验证
+description: 了解如何在 TLS 上对客户端证书进行身份验证。 Azure App Service 使客户端证书可用于应用程序代码进行验证。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 68456bfe1527f844321a3a6207c92c0668cf8c4c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: cf6b8644996491a907f60742791d1d38ef6b9214
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336168"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600518"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 

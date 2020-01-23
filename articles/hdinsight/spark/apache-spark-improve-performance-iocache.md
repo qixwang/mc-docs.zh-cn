@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 10/29/2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 74e811fbee89f8a8ea5b1cd1318a08fc97562101
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/23/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 8c67f7622c94e1c1a3fb0c4a6db720868d75f075
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348580"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631076"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能
 
@@ -33,15 +33,13 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 ## <a name="getting-started"></a>入门
 
-默认情况下，在预览版中将停用 Azure HDInsight IO 缓存。 IO 缓存可用于运行 Apache Spark 2.3 的 Azure HDInsight 3.6+ Spark 群集。  若要激活 IO 缓存，请执行以下操作：
+默认情况下，在预览版中将停用 Azure HDInsight IO 缓存。 IO 缓存可用于运行 Apache Spark 2.3 的 Azure HDInsight 3.6+ Spark 群集。  要在 HDInsight 4.0 上激活 IO 缓存，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择 HDInsight 群集。
-
-1. 在“概述”  页（选择群集时默认打开）中，选择  “群集仪表板”下的  “Ambari 主页”。
+1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn`，其中 `CLUSTERNAME` 是群集的名称。
 
 1. 选择左侧的“IO 缓存”  服务。
 
-1. 依次选择”操作”  和“激活”  。
+1. 选择“操作”（在 HDI 3.6 中为“服务操作”）和“激活”    。
 
     ![在 Ambari 中启用 IO 缓存服务](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "在 Ambari 中启用 IO 缓存服务")
 

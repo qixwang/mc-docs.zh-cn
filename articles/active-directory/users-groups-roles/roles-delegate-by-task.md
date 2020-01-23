@@ -1,27 +1,25 @@
 ---
-title: 按管理员任务委托最小特权角色 - Azure Active Directory | Microsoft Docs
+title: 按管理任务委派角色 - Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory 中为标识任务委托角色
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 05/31/2019
-ms.date: 10/25/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dace35711212831b5722b8634dfdb85ca68a37f
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.openlocfilehash: 2b7c901000b62b210e82c26ae3e519274b5c2275
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912648"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116742"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -42,11 +40,11 @@ ms.locfileid: "72912648"
 创建、读取、更新和删除注册用户流 |全局管理员角色 | 
 创建、读取、更新和删除用户特性 | 全局管理员角色 | 
 创建、读取、更新和删除用户 | 全局管理员（[请参阅文档](/active-directory-b2c/active-directory-b2c-faqs)）
-读取所有配置 | 全局管理员角色 | 
-读取 B2C 审核日志 | 全局管理员（[请参阅文档](/active-directory-b2c/active-directory-b2c-faqs)） | 
+读取所有配置 | 全局读取者 | 
+读取 B2C 审核日志 | 全局读取者（[请参阅文档](/active-directory-b2c/active-directory-b2c-faqs)） | 
 
 > [!NOTE]
-> Azure AD B2C 全局管理员的权限与 Azure AD 全局管理员的权限不同。 如果你拥有 Azure AD B2C 全局管理员权限，请确保你位于 Azure AD B2C 目录（而不是 Azure AD 目录）中。
+> Azure AD B2C 全局读取者的权限与 Azure AD 全局管理员的权限不同。 如果你拥有 Azure AD B2C 全局管理员权限，请确保你位于 Azure AD B2C 目录（而不是 Azure AD 目录）中。
 
 ## <a name="company-branding"></a>公司品牌
 
@@ -65,7 +63,7 @@ ms.locfileid: "72912648"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-读取所有配置 | 全局管理员角色 | 
+读取所有配置 | 全局读取者 | 
 
 ## <a name="custom-domain-names"></a>自定义域名
 
@@ -92,6 +90,8 @@ ms.locfileid: "72912648"
 更新企业应用程序属性 | 企业应用程序所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
 更新企业应用程序预配 | 企业应用程序所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
 更新企业应用程序自助服务 | 企业应用程序所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
+更新单一登录属性 | 企业应用程序所有者（[请参阅文档](/active-directory/fundamentals/users-default-permissions)） | 云应用程序管理员、应用程序管理员
+
 
 ## <a name="groups"></a>组
 
@@ -149,7 +149,8 @@ ms.locfileid: "72912648"
 ---- | --------------------- | ----------------
 管理标识提供者 | 全局管理员角色 | 
 管理设置 | 全局管理员角色 | 
-读取所有配置 | 全局管理员角色 | 
+管理使用条款 | 全局管理员角色 | 
+读取所有配置 | 全局读取者 | 
 
 ## <a name="password-reset"></a>密码重置
 
@@ -163,7 +164,7 @@ ms.locfileid: "72912648"
 配置注册 | 全局管理员角色 |
 读取所有配置 | 安全管理员 | 用户管理员 |
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## <a name="privileged-identity-management"></a>Privileged identity management
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
@@ -185,7 +186,7 @@ ms.locfileid: "72912648"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 配置身份验证方法 | 全局管理员角色 | 
-读取所有配置 | 全局管理员角色 | 
+读取所有配置 | 全局读取者 | 
 
 ## <a name="security---identity-security-score"></a>安全性 - 标识安全分数
 

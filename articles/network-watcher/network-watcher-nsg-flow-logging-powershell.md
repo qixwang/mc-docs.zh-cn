@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序管理网络安全组流日志 - PowerShell | Azure Docs
+title: 管理 NSG 流日志 - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 PowerShell 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c497a8e5419df4eddcc5641fb02b601123036009
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 0a75c171dfa95650b825d77b97d965efe935d8ba
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982177"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858591"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>使用 PowerShell 配置网络安全组流日志
 

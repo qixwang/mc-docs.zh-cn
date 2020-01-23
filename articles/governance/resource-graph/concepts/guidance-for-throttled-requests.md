@@ -1,19 +1,19 @@
 ---
 title: 针对受限制请求的指南
-description: 了解如何进行批处理、错开、分页和并行查询，以避免 Azure Resource Graph 限制请求。
+description: 了解如何进行分组、错开、分页和并行查询，以避免 Azure Resource Graph 限制请求。
 author: DCtheGeek
 ms.author: v-yiso
-origin.date: 11/21/2019
-ms.date: 12/16/2019
+origin.date: 12/02/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 44c19b19950dd2d1016505cef51933441813e126
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: b05af503f53d3cb1188ac37b75f5c19cc18a797b
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884670"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859519"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中受限请求的指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "74884670"
 本文介绍与在 Azure Resource Graph 中创建查询相关的四个方面和模式：
 
 - 了解限制标头
-- 批处理查询
+- 分组查询
 - 错开查询
 - 分页的影响
 
@@ -42,9 +42,9 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
 
 有关演示如何使用标头回退查询请求的示例，请参阅[并行查询](#query-in-parallel)中的示例。 
 
-## <a name="batching-queries"></a>批处理查询
+## <a name="grouping-queries"></a>分组查询
 
-按订阅、资源组或单个资源批处理查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使用小于 _300_ 的批大小。
+按订阅、资源组或单个资源分组查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使组大小小于 300  。
 
 - 优化不当的方法示例
 
@@ -67,19 +67,19 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
   }
   ```
 
-- 优化的批处理方法示例 #1
+- 优化的分组方法示例 #1
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -90,21 +90,25 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
   }
   ```
 
-- 优化的批处理方法示例 #2
+- 优化的分组方法示例 #2，用于在一个查询中获取多个资源
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -154,12 +158,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-尽管我们建议使用批处理而不是并行化，但有时，并不能轻松地批处理查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退： 
+尽管我们建议使用分组而不是并行化，但有时，并不能轻松地分组查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退： 
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

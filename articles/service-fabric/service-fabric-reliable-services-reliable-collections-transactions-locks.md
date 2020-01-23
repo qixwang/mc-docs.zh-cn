@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 可靠集合中的事务和锁模式 | Azure
+title: Azure Service Fabric 可靠集合中的事务和锁定模式
 description: Azure Service Fabric 可靠状态管理器和可靠集合事务和锁定。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: masnider,rajak
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 05/01/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 54eb4f0a910c94c13e44073adbb9a9f88daff65b
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: c497a2329cfa9ac14f8aedf5d3f9f75db231b4f7
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254758"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742382"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
@@ -28,8 +18,8 @@ ms.locfileid: "70254758"
 事务是作为单个逻辑工作单元执行的一系列操作。
 事务必须显示以下 ACID 属性。 （请参阅： https://technet.microsoft.com/library/ms190612)
 * **原子性**：事务必须是原子工作单元。 换而言之，要么执行其所有数据修改，要么一个数据修改也不执行。
-* **一致性**：完成后，事务必须使所有数据处于一致状态。 事务结束时，所有内部数据结构必须都正确。
-* **隔离**：并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 用于 ITransaction 中的某个操作的隔离级别由执行该操作的 IReliableState 确定。
+* **一致性**：事务在完成时，必须使所有的数据都保持一致状态。 事务结束时，所有内部数据结构必须都正确。
+* **隔离**：由并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 用于 ITransaction 中的某个操作的隔离级别由执行该操作的 IReliableState 确定。
 * **持续性**：事务完成后，其效果永久存在于系统中。 即使系统发生故障，修改也会保留。
 
 ### <a name="isolation-levels"></a>隔离级别
@@ -38,11 +28,11 @@ Reliable Collections 支持两种隔离级别：
 
 * **可重复的读取**：指定语句不能读取已由其他事务修改但尚未提交的数据，并且指定，其他任何事务都不能在当前事务完成之前修改由当前事务读取的数据。 有关详细信息，请参阅 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)。
 * **快照**：指定事务中任何语句读取的数据都是事务开始时便存在的数据的事务上一致的版本。
-  事务只能识别在其开始之前提交的数据修改。
-  在当前事务中执行的语句看不到在当前事务开始以后由其他事务所做的数据修改。
-  其效果就好像事务中的语句获得了已提交数据的快照，因为该数据在事务开始时就存在。
-  快照跨 Reliable Collections 一致。
-  有关详细信息，请参阅 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)。
+      事务只能识别在其开始之前提交的数据修改。
+      在当前事务中执行的语句看不到在当前事务开始以后由其他事务所做的数据修改。
+      其效果就好像事务中的语句获得了已提交数据的快照，因为该数据在事务开始时就存在。
+      快照跨 Reliable Collections 一致。
+      有关详细信息，请参阅 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)。
 
 Reliable Collections 会在事务创建时根据副本的操作和角色，为指定读取操作自动选择要使用的隔离级别。
 下表描述了用于 Reliable Dictionary 和 Reliable Queue 操作的默认隔离级别。
@@ -78,9 +68,9 @@ Reliable Queue 使用操作级别锁，允许具有 `TryPeekAsync` 和/或 `TryD
 
 | 请求\授予 | 无 | 共享 | 更新 | 排他 |
 | --- |:--- |:--- |:--- |:--- |
-| 共享 |无冲突 |无冲突 |冲突 |冲突 |
-| 更新 |无冲突 |无冲突 |冲突 |冲突 |
-| 排他 |无冲突 |冲突 |冲突 |冲突 |
+| 共享 |无冲突 |无冲突 |冲突 |Conflict |
+| 更新 |无冲突 |无冲突 |冲突 |Conflict |
+| 排他 |无冲突 |冲突 |Conflict |Conflict |
 
 可靠集合 API 中的超时参数用于死锁检测。
 例如，两个事务（T1 和 T2）正在尝试读取和更新 K1。

@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中与服务建立连接和通信 | Azure
+title: 在 Azure Service Fabric 中与服务建立连接并与之通信
 description: 了解如何在 Service Fabric 中解析服务、建立连接以及与之通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: msfussell
-ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/01/2017
-ms.date: 03/04/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: be21aa6ab5b61a1e178dbe93d7acd1dd9b269677
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: ddde8c310bd688e4e5803f6f9a2044e5bb33d7b8
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204178"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742449"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
@@ -70,7 +61,7 @@ Service Fabric 提供一种服务发现和解析服务，称为“命名服务�
 在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但是在某些环境中，群集可能位于通过一组有限端口对外部入口流量进行路由的负载均衡器之后。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
-Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送到群集的所有外部流量都必须通过该负载均衡器。 该负载均衡器自动在给定端口上将入站流量转发到打开了相同端口的随机 *节点* 。 Azure 负载均衡器只了解节点上打开的端口，它不了解各个服务打开的端口。
+Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送到群集的所有外部流量都必须通过该负载均衡器。 该负载均衡器自动在给定端口上将入站流量转发到打开了相同端口的随机 *节点* 。 Azure 负载均衡器只了解节点上打开的端口，它不了解各个服务打开的端口   。
 
 ![Azure 负载均衡器和 Service Fabric 拓扑][3]
 
@@ -92,7 +83,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
 
             public Task<string> OpenAsync(CancellationToken cancellationToken)
             {
-                EndpointResourceDescription endpoint = 
+                EndpointResourceDescription endpoint =
                     serviceContext.CodePackageActivationContext.GetEndpoint("WebEndpoint");
 
                 string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
@@ -114,7 +105,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
 
             protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
             {
-                return new[] {new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
+                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
             }
 
             ...
@@ -166,7 +157,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
 
     ![在 Azure 负载均衡器中转发流量][8]
 
-请务必记住，Azure 负载均衡器和探测只了解节点，而不了解在节点上运行的服务。 Azure 负载均衡器始终将流量发送到响应探测的节点，因此必须格外小心以确保服务在能够响应探测的节点上可用。
+请务必记住，Azure 负载均衡器和探测只了解节点，而不了解在节点上运行的服务   。 Azure 负载均衡器始终将流量发送到响应探测的节点，因此必须格外小心以确保服务在能够响应探测的节点上可用。
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services：内置通信 API 选项
 Reliable Services 框架附带几个预建的通信选项。 可以根据所选的编程模型、通信框架和编写服务时使用的编程语言决定哪个选项最适合自己。

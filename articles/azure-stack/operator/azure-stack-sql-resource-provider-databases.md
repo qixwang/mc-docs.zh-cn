@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Stack 上使用 SQL Adapter 资源提供程序提供的数据库 | Microsoft Docs
-description: 如何创建和管理使用 SQL 适配器资源提供程序预配的 SQL 数据库
+title: 创建 SQL 数据库
+titleSuffix: Azure Stack
+description: 了解如何创建和管理使用 SQL 资源提供程序适配器预配的 SQL 数据库。
 services: azure-stack
 documentationCenter: ''
 author: WenJason
@@ -12,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
-ms.reviewer: quying
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 3682b759d8e478098d38c8d6524530a367ec2081
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 1bd7f4fee3ece913c32e31ba2b950ea5abb06046
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020312"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737752"
 ---
 # <a name="create-sql-databases"></a>创建 SQL 数据库
 
@@ -40,25 +41,27 @@ ms.locfileid: "74020312"
 
 4. 在“创建数据库”下，选择“SKU”。   在“选择 SKU”下，为数据库选择 SKU。 
 
-   ![创建数据库](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![在 Azure Stack 用户门户中创建数据库。](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
    >向 Azure Stack 添加宿主服务器时，系统会为它们分配 SKU。 将在 SKU 的宿主服务器池中创建数据库。
 
 5. 选择“登录名”。 
+
 6. 在“选择登录名”下选择现有登录名，或者选择“+ 创建新登录名”。  
+
 7. 在“新建登录名”下，输入一个名称作为  **数据库登录名**，然后输入一个**密码**。
 
    >[!NOTE]
    >这些设置是仅为访问此数据库创建的 SQL 身份验证凭据。 登录用户名必须全局唯一。 可以对使用同一 SKU 的其他数据库重用登录设置。
 
-   ![新建数据库用户名](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+   ![在 Azure Stack 用户门户中创建新的数据库登录](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
 8. 选择“确定”  ，完成数据库的部署。
 
-在“概要”（在数据库部署后显示）下，记下“连接字符串”。   可以将此字符串用于任何需要访问 SQL Server 数据库的应用程序。
+在“概要”（在数据库部署后显示）下，记下“连接字符串”。   可以在任何需要访问 SQL Server 数据库的应用中使用此字符串。
 
-![检索连接字符串](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+![检索 SQL Server 数据库的连接字符串](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
 ## <a name="sql-always-on-databases"></a>SQL Always On 数据库
 
@@ -68,13 +71,13 @@ ms.locfileid: "74020312"
 
 以下屏幕捕获显示了如何使用 SQL Server Management Studio 在 SQL Always On 中查看数据库状态。
 
-![AlwaysOn 数据库状态](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
+![SQL Server Management Studio 中的 AlwaysOn 数据库状态](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-AlwaysOn 数据库应显示为已进行同步，在所有 SQL 实例中可用并显示在“可用性组”中。 在上一屏幕捕获中，数据库示例为 newdb1，其状态为“newdb1 (已同步)”。 
+AlwaysOn 数据库应显示为“已同步”  且在所有 SQL 实例上可用，并显示在**可用性组**中。 在上一屏幕截图中，数据库示例为 newdb1，其状态为“newdb1 (已同步)”。 
 
 ### <a name="delete-an-alwayson-database"></a>删除 AlwaysOn 数据库
 
-从资源提供程序中删除 SQL AlwaysOn 数据库时，SQL 会从主副本和可用性组中删除数据库。
+从资源提供程序中删除 SQL AlwaysOn 数据库时，SQL 会从**主**副本和可用性组中删除该数据库。
 
-然后，SQL 会将该数据库置于另一副本中并让其处于“正在还原”状态，在受到触发之前并不删除该数据库。 如果未删除数据库，次要副本将转为“未进行同步”状态。
+然后，SQL 会将该数据库置于另一副本中并将其设为“正在还原”  状态，并不删除该数据库（除非被触发）。 如果未删除该数据库，次要副本将转为“未进行同步”  状态。
 

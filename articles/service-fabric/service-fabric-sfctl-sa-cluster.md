@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI - sfctl sa-cluster | Azure
+title: Azure Service Fabric CLI - sfctl sa-cluster
 description: 介绍 Service Fabric CLI sfctl standalone cluster 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e637cedd5ea84ba3cfabefa8a2a6dea0c2d945ca
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 216d07ea51271817d4954479ed6c18c78b854333
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254715"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742186"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理独立 Service Fabric 群集。
@@ -42,17 +34,17 @@ ms.locfileid: "70254715"
 |参数|说明|
 | --- | --- |
 | --configuration-api-version [必需] | 独立群集 json 配置的 API 版本。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-sa-cluster-config-upgrade"></a>sfctl sa-cluster config-upgrade
 开始升级 Service Fabric 独立群集的配置。
@@ -69,7 +61,7 @@ ms.locfileid: "70254715"
 | --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。  默认值\: PT0H0M0S。 |
 | --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。  默认值\: PT0H0M0S。 <br /><br /> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。  默认值\: PT0H0M0S。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 | --unhealthy-applications | 升级过程中允许的不正常应用程序最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --unhealthy-nodes | 升级过程中允许的不正常节点最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --upgrade-domain-delta-unhealthy-nodes | 升级过程中允许的升级域增量运行状况降级最大百分比。 允许的值为 0 到 100 的整数值。 |
@@ -80,11 +72,11 @@ ms.locfileid: "70254715"
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ### <a name="examples"></a>示例
 
@@ -104,20 +96,20 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 |参数|说明|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update  -->

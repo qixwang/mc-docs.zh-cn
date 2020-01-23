@@ -3,14 +3,14 @@ title: 资源管理器部署和经典部署
 description: 介绍 Resource Manager 部署模型与经典（或服务管理）部署模型之间的差异。
 ms.topic: conceptual
 origin.date: 08/22/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: bf5a5427cb9fc91a374f468f7d4855c96b884ae6
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: db6592416c7741ee9d272967a9b74d123e7fbd9b
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631170"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165467"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器和经典部署：了解部署模型和资源状态
 
@@ -49,7 +49,7 @@ Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。
 
 对于虚拟机、存储帐户和虚拟网络，如果资源是通过经典部署创建的，则必须继续通过经典操作对其进行操作。 如果虚拟机、存储帐户或虚拟网络是通过 Resource Manager 部署创建的，则必须继续使用 Resource Manager 操作。 如果订阅包含通过 Resource Manager 部署和经典部署创建的各种资源，则可能不容易进行这种区分。 此资源组合会产生意外的结果，因为资源不支持相同的操作。
 
-在某些情况下，Resource Manager 命令可以检索通过经典部署创建的资源信息，或者执行管理任务，例如将经典资源移到另一个资源组。 但这些情况并不意味着该类型支持 Resource Manager 操作。 例如，假设某个资源组包含使用经典部署创建的虚拟机。 如果运行以下 Resource Manager PowerShell 命令：
+在某些情况下，Resource Manager 命令可以检索通过经典部署创建的资源信息，或者执行管理任务（例如将经典资源移到另一个资源组）， 但这些情况并不意味着该类型支持 Resource Manager 操作。 例如，假设某个资源组包含使用经典部署创建的虚拟机。 如果运行以下 Resource Manager PowerShell 命令：
 
 ```powershell
 Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
@@ -82,7 +82,7 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 请注意资源之间的以下关系：
 
-* 所有资源都存在于资源组中。
+* 所有资源存在于一个资源组中。
 * 虚拟机依赖在存储资源提供程序中定义的具体存储帐户，在 Blob 存储中存储其磁盘（必需）。
 * 虚拟机引用在网络资源提供程序中定义的具体 NIC（必需）和在计算资源提供程序中定义的可用性集（可选）。
 * NIC 引用虚拟机的指定 IP 地址（必需）、虚拟机的虚拟网络的子网（必需）和网络安全组（可选）。
@@ -123,7 +123,7 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 1. [平台支持的从经典部署模型迁移到 Azure Resource Manager 的技术深入探讨](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
-3. [使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
+3. [使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -137,7 +137,7 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 **对订阅的配额有何影响？**
 
-通过 Azure Resource Manager 创建的虚拟机、虚拟网络和存储帐户的配额与其他配额是分开的。 每个订阅都将获取配额，以使用新的 API 创建资源。 可以在[此处](../../azure-subscription-service-limits.md)了解有关额外配额的详细信息。
+通过 Azure Resource Manager 创建的虚拟机、虚拟网络和存储帐户的配额与其他配额是分开的。 每个订阅会获取配额以使用新的 API 创建资源。 可以在[此处](../../azure-resource-manager/management/azure-subscription-service-limits.md)了解有关额外配额的详细信息。
 
 **可以通过 Resource Manager API 继续使用自动化脚本来预配虚拟机、虚拟网络、存储帐户吗？**
 

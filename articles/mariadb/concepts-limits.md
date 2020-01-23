@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB 中的限制
+title: 限制 - Azure Database for MariaDB
 description: 本文介绍了 Azure Database for MariaDB 中的限制，例如连接数和存储引擎选项。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 04/15/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: 2eb5d621398b287b983c28a771aebddda6a353e7
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+origin.date: 12/09/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 70494bb6157929c97d8d98aabf54a71d65fcbe7f
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308925"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776758"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -24,17 +24,17 @@ ms.locfileid: "68308925"
 |---|---|---|
 |基本| 1| 50|
 |基本| 2| 100|
-|常规用途| 2| 300|
-|常规用途| 4| 625|
-|常规用途| 8| 1250|
-|常规用途| 16| 2500|
-|常规用途| 32| 5000|
-|常规用途| 64| 10000|
-|内存优化| 2| 600|
-|内存优化| 4| 1250|
-|内存优化| 8| 2500|
-|内存优化| 16| 5000|
-|内存优化| 32| 10000|
+|常规用途| 2| 600|
+|常规用途| 4| 1250|
+|常规用途| 8| 2500|
+|常规用途| 16| 5000|
+|常规用途| 32| 10000|
+|常规用途| 64| 20000|
+|内存优化| 2| 800|
+|内存优化| 4| 2500|
+|内存优化| 8| 5000|
+|内存优化| 16| 10000|
+|内存优化| 32| 20000|
 
 当连接数超出限制时，可能会收到以下错误：
 > 错误 1040 (08004)：连接过多

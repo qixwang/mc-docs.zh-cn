@@ -1,26 +1,17 @@
 ---
-title: 更改 Azure Service Fabric 执行组件中的 ReliableDictionaryActorStateProvider 设置 | Azure
+title: 更改 Azure Service Fabric 执行组件中的 ReliableDictionaryActorStateProvider 设置
 description: 了解如何配置 ReliableDictionaryActorStateProvider 类型的 Azure Service Fabric 有状态执行组件。
-services: Service-Fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/02/2017
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3e32b57af74476e7eae4b3f4dec4bb4065cb5612
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: 2da12004bc04331bc535fe4b2f2a91c0a6e91de9
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463553"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742426"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>配置 Reliable Actors - ReliableDictionaryActorStateProvider
 通过更改 Visual Studio 包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 ReliableDictionaryActorStateProvider 的默认配置。
@@ -28,7 +19,7 @@ ms.locfileid: "57463553"
 Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
 > [!NOTE]
-> 请**勿**删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
+> 请 **勿** 删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
 > 
 > 
 
@@ -40,7 +31,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
 
 ### <a name="configuration-names"></a>配置名称
-| Name | 计价单位 | 默认值 | 备注 |
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |千字节 |8388608 |以内核模式分配给记录器写入缓冲区内存池的最小 KB 数。 此内存池用于在将状态信息写入磁盘之前缓存这些信息。 |
 | WriteBufferMemoryPoolMaximumInKB |千字节 |无限制 |记录器写入缓冲区内存池可以增长到的大小上限。 |
@@ -85,9 +76,9 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>配置名称
-| Name | 计价单位 | 默认值 | 备注 |
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
+| BatchAcknowledgementInterval |秒 |0.015 |收到操作后，向主要复制器发回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要详细了解如何在服务清单中定义终结点资源，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
 | MaxReplicationMessageSize |字节 |50 MB |可以在单个消息中传输的复制数据的最大大小。 |
 | MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，释放一个操作。 此值必须大于 64 和 2 的幂。 |
@@ -101,7 +92,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 ## <a name="sample-configuration-file"></a>示例配置文件
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="MyActorServiceReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>
@@ -121,7 +112,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 
 ## <a name="remarks"></a>备注
 BatchAcknowledgementInterval 参数用于控制复制延迟。 “0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多确认消息，每个包含较少的确认）。
-BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。 这直接转换为事务提交的延迟。
+BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是会造成更高的操作延迟。 这直接转换为事务提交的延迟。
 
 CheckpointThresholdInMB 参数控制复制器可以用于将状态信息存储在副本的专用日志文件中的磁盘空间量。 将此值提高到大于默认值可以在将副本添加到集时缩短重新配置的时间。 这是因为日志中会提供更多的操作历史记录，从而发生部分状态传输。 在崩溃后，这可能会延长副本恢复时间。
 

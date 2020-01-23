@@ -4,17 +4,17 @@ description: Azure 存储帐户的热、冷、存档访问层。
 author: WenJason
 ms.author: v-jay
 origin.date: 03/23/2019
-ms.date: 11/25/2019
+ms.date: 01/06/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: d32132d55fe311db4992652e94ae58f7e1aca02f
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 51ba04de77e4f877db3ccab26a0a8cea2047c3f8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328761"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624269"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -136,9 +136,11 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 如果要导航到用户的存储帐户，请先选择“所有资源”，然后选择用户的存储帐户。
+1. 在 Azure 门户中，搜索并选择“所有资源”  。
 
-1. 在“设置”中，单击“配置”以查看和更改帐户配置。 
+1. 选择存储帐户。
+
+1. 在“设置”中，选择“配置”以查看和更改帐户配置   。
 
 1. 根据需求选择合适的访问层：将“访问层”  设置为“冷”  或“热”  。
 
@@ -148,7 +150,9 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 若要导航到存储帐户中的 Blob，请依次选择“所有资源”、存储帐户、容器、Blob。
+1. 在 Azure 门户中，搜索并选择“所有资源”  。
+
+1. 选择容器，然后选择自己的 blob。
 
 1. 在“Blob 属性”中选择“更改层”。  
 

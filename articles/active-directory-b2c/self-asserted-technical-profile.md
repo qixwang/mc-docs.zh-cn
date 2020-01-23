@@ -1,5 +1,6 @@
 ---
-title: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件 | Microsoft Docs
+title: 定义自定义策略中的自断言技术配置文件
+titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e7cfac9c475c6100be0f6cdb2a65426e713e4006
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: cdeef36c0ebe3251fe49e7b9853f3a656aaf4b3b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847150"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624014"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -38,7 +38,7 @@ ms.locfileid: "72847150"
 
 ## <a name="input-claims"></a>输入声明
 
-在自断言技术配置文件中，你可以使用“InputClaims”  和“InputClaimsTransformations”  元素预填充自断言页面上出现的声明的值（输出声明）。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
+在自断言技术配置文件中，你可以使用“InputClaims”和“InputClaimsTransformations”元素预填充自断言页面上出现的声明的值（显示声明）   。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,31 +51,92 @@ ms.locfileid: "72847150"
   </InputClaims>
 ```
 
+## <a name="display-claims"></a>显示声明
+
+此显示声明功能目前以预览版提供  。
+
+“DisplayClaims”元素包含要呈现在屏幕上用于从用户处收集数据的声明列表  。 若要预填充输出声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
+
+“DisplayClaims”中的声明顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序  。 若要强制用户提供特定声明的值，请将“DisplayClaim”元素的“Required”属性设置为 `true`   。
+
+“DisplayClaims”集合中的“ClaimType”元素需要将“UserInputType”元素设置为 Azure AD B2C 支持的任意用户输入类型    。 例如 `TextBox` 或 `DropdownSingleSelect`。
+
+### <a name="add-a-reference-to-a-displaycontrol"></a>添加对 DisplayControl 的引用
+
+在显示声明集合中，可以包含对已创建的 [DisplayControl](display-controls.md) 的引用。 显示控件是一个具有特殊功能的用户界面元素，可以与 Azure AD B2C 后端服务进行交互。 它允许用户在页面上执行某些操作，这些操作在后端调用验证技术配置文件。 例如，验证电子邮件地址、电话号码或客户会员号。
+
+以下示例 `TechnicalProfile` 阐释了如何配合使用显示声明和显示控件。
+
+* 第一个显示声明引用收集和验证电子邮件地址的 `emailVerificationControl` 显示控件。
+* 第五个显示声明引用收集和验证电话号码的 `phoneVerificationControl` 显示控件。
+* 其他显示声明为 ClaimTypes，要从用户处收集。
+
+```XML
+<TechnicalProfile Id="Id">
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim DisplayControlReferenceId="phoneVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
+</TechnicalProfile>
+```
+
+如上所述，引用显示控件的显示声明可以自己运行验证，例如，验证电子邮件地址。 此外，自断言页面支持在执行下一个业务流程步骤之前使用验证技术配置文件来验证整个页面，包括任何用户输入（声明类型或显示控件）。
+
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>谨慎细心地配合使用显示声明和输出声明
+
+如果在自断言技术配置文件中指定一个或多个“DisplayClaim”元素，则必须对要从用户处收集的、要在屏幕上显示的每个声明使用 DisplayClaim   。 至少包含一个显示声明的自断言技术配置文件中不显示任何输出声明。
+
+请思考以下示例，其中 `age` 声明被定义为基本策略中的输出声明  。 在将任何显示声明添加到自断言技术配置文件之前，屏幕上会显示 `age` 声明，用于从用户处收集数据：
+
+```XML
+<TechnicalProfile Id="id">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="age" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+如果继承了该基本策略的叶策略随后指定 `officeNumber` 作为显示声明  ：
+
+```XML
+<TechnicalProfile Id="id">
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="officeNumber" />
+  </DisplayClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="officeNumber" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+屏幕上不再向用户显示基本策略中的 `age` 声明 - 它实际上处于“隐藏”状态。 若要显示 `age` 声明并从用户处收集“年龄”值，需要将 `age` 添加到 DisplayClaim  。
 
 ## <a name="output-claims"></a>输出声明
 
-“OutputClaims”  元素包含要呈现以从用户处收集数据的声明列表。 若要使用某些值预填充输出声明，请使用前面描述的输入声明。 另外，此元素还可能包含默认值。 “OutputClaims”  中的声明顺序将控制 Azure AD B2C 将声明呈现在屏幕上的顺序。 “DefaultValue”  属性只有在从未设置过声明时才会生效。 但是，如果之前在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”  属性设置为 `true`。 若要强制用户提供特定输出声明的值，请将“OutputClaims”  元素的“Required”  属性设置为 `true`。
+“OutputClaims”元素包含要返回到下一个业务流程步骤的的声明列表  。 “DefaultValue”属性只有在从未设置过声明的情况下才会生效  。 如果在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”  属性设置为 `true`。
 
-“OutputClaims”  集合中的“ClaimType”  元素需要将“UserInputType”  元素设置为 Azure AD B2C 支持的任意用户输入类型，例如 `TextBox` 或 `DropdownSingleSelect`。 或者“OutputClaim”  元素必须设置“DefaultValue”  。
+> [!NOTE]
+> 在以前的 Identity Experience Framework (IEF) 版本中，输出声明用于从用户处收集数据。 若要从用户处收集数据，请改用“DisplayClaims”集合  。
 
-“OutputClaimsTransformations”  元素可能包含用于修改输出声明或生成新声明的“OutputClaimsTransformation”  元素的一个集合。
+**OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-下面的输出声明始终将设置为 `live.com`：
+### <a name="when-you-should-use-output-claims"></a>何时应使用输出声明
 
-```XML
-<OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" AlwaysUseDefaultValue="true" />
-```
+在自断言技术配置文件中，输出声明集合将声明返回到下一个业务流程步骤。
 
-### <a name="use-case"></a>使用案例
+以下情况应使用输出声明：
 
-关于输出声明，有四种场景：
-
-- **从用户处收集输出声明** - 当你需要从用户处收集信息（如出生日期）时，应将声明添加到“OutputClaims”  集合。 呈现给用户的声明必须指定“UserInputType”  ，如 `TextBox` 或 `DropdownSingleSelect`。 如果自断言技术配置文件包含输出相同声明的验证技术配置文件，则 Azure AD B2C 不会将声明呈现给用户。 如果没有任何要呈现给用户的输出声明，Azure AD B2C 将跳过技术配置文件。
-- **在输出声明中设置默认值** - 无需从用户处收集数据或从验证技术配置文件返回数据。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”  声明设置为 `true`。
+- 声明由输出声明转换输出  。
+- 在输出声明中设置默认值无需从用户处收集数据或从验证技术配置文件返回数据  。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”  声明设置为 `true`。
 - **验证技术配置文件返回输出声明** - 你的技术配置文件可以调用返回某些声明的验证技术配置文件。 你需要发出声明并将其返回到用户旅程中的下一个业务流程步骤。 例如，当使用本地帐户登录时，名为 `SelfAsserted-LocalAccountSignin-Email` 的自断言技术配置文件会调用名为 `login-NonInteractive` 的验证技术配置文件。 此技术配置文件将验证用户凭据，并返回用户配置文件。 例如“userPrincipalName”、“displayName”、“givenName”和“surName”。
-- **通过输出声明转换输出声明**
+- **显示控件返回输出声明** - 技术配置文件可能引用[显示控件](display-controls.md)。 显示控件返回某些声明，如已验证的电子邮件地址。 你需要发出声明并将其返回到用户旅程中的下一个业务流程步骤。 此显示控件功能目前以预览版提供  。
 
-在以下示例中，`LocalAccountSignUpWithLogonEmail` 自断言技术配置文件演示了如何使用输出声明并将“executed-SelfAsserted-Input”  设置为 `true`。 `objectId`、`authenticationSource`、`newUser` 声明是 `AAD-UserWriteUsingLogonEmail` 验证技术配置文件的输出，不会显示给用户。
+以下示例演示如何使用同时包含显示声明和输出声明的自断言技术配置文件。
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -86,32 +147,30 @@ ms.locfileid: "72847150"
     <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
     <Item Key="language.button_continue">Create</Item>
   </Metadata>
-  <CryptographicKeys>
-    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-  </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" />
   </InputClaims>
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim DisplayControlReferenceId="SecondaryEmailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
   <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" Required="true" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
-    <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
     <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
     <OutputClaim ClaimTypeReferenceId="authenticationSource" />
     <OutputClaim ClaimTypeReferenceId="newUser" />
-
-    <!-- Optional claims, to be collected from the user -->
-    <OutputClaim ClaimTypeReferenceId="displayName" />
-    <OutputClaim ClaimTypeReferenceId="givenName" />
-    <OutputClaim ClaimTypeReferenceId="surName" />
   </OutputClaims>
   <ValidationTechnicalProfiles>
     <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
   </ValidationTechnicalProfiles>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
 </TechnicalProfile>
-
 ```
 
 ## <a name="persist-claims"></a>保存声明
@@ -143,16 +202,4 @@ ms.locfileid: "72847150"
 
 不使用“CryptographicKeys”  元素。
 
-
 <!-- Update_Description: wording update -->
-
-
-
-
-
-
-
-
-
-
-

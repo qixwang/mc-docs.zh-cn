@@ -12,18 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/30/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dd6373e8bb4eaecb362d5bcfaefb8281ed0df8
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 1f7f61f344842dfc37cd3455f79d4a8d2d9f00f2
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830895"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776909"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 
@@ -45,7 +44,7 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
 
-授权代码流始于客户端将用户定向到的 `/authorize` 终结点。 在此请求中，客户端指示了用户需要提供的权限。 可以通过在 Azure 门户中选择“应用注册”>“终结点”，获取租户的 OAuth 2.0 授权终结点  。
+授权代码流始于客户端将用户定向到 `/authorize` 终结点。 在此请求中，客户端指示了用户需要提供的权限。 可以通过在 Azure 门户中选择“应用注册”>“终结点”，获取租户的 OAuth 2.0 授权终结点  。
 
 ```
 // Line breaks for legibility only
@@ -64,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许值为租户标识符，例如独立于租户令牌的 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.partner.onmschina.cn` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可在 Azure 门户中找到该值。 单击服务边栏中的“Azure Active Directory”  ，单击“应用注册”  ，然后选择应用程序。 |
 | response_type |必填 |必须包括授权代码流的 `code` 。 |
-| redirect_uri |建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 |
+| redirect_uri |建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。 |
 | response_mode |可选 |指定将生成的令牌送回到应用程序时应该使用的方法。 可以是 `query`、`fragment` 或 `form_post`。 `query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 代码流的默认值为 `query`。  |
 | state |建议 |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
 | resource | 建议 |目标 Web API 的应用 ID URI（受保护的资源）。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用程序注册”，打开应用程序的“设置”页面，然后单击“属性”     。 也可能是外部资源，如 `https://microsoftgraph.chinacloudapi.cn`。 这在授权或令牌请求中是必需的。 要确保减少身份验证提示，请将其置于授权请求中以确保获得用户许可。 |
@@ -95,7 +94,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | admin_consent |如果管理员同意许可请求提示的内容，则该值为 True。 |
 | code |应用程序请求的授权代码。 应用程序可以使用该授权代码请求目标资源的访问令牌。 |
 | session_state |一个标识当前用户会话的唯一值。 此值为 GUID，但应将其视为无需检查即可传递的不透明值。 |
-| state |如果请求中包含 state 参数，响应中就应该出现相同的值。 应用程序在使用响应之前最好验证请求和响应中的状态值是否完全相同。 这可以帮助检测客户端的[跨网站请求伪造 (CSRF) 攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 |
+| state |如果请求中包含 state 参数，响应中就应该出现相同的值。 应用程序在使用响应之前最好验证请求和响应中的 state 值是否完全相同。 这可以帮助检测客户端的[跨网站请求伪造 (CSRF) 攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 |
 
 ### <a name="error-response"></a>错误响应
 错误响应也可能发送到 `redirect_uri` ，以便应用程序可以适当地处理。
@@ -119,7 +118,7 @@ error=access_denied
 | --- | --- | --- |
 | invalid_request |协议错误，例如，缺少必需的参数。 |修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
 | unauthorized_client |不允许客户端应用程序请求授权代码。 |客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
-| access_denied |资源所有者拒绝了许可 |客户端应用程序可以通知用户除非用户许可，否则无法继续。 |
+| access_denied |资源所有者拒绝了许可 |客户端应用程序可以通知用户，除非用户许可，否则无法继续。 |
 | unsupported_response_type |授权服务器不支持请求中的响应类型。 |修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
 | server_error |服务器遇到意外的错误。 |重试请求。 这些错误可能是临时状况导致的。 客户端应用程序可向用户说明，其响应由于临时错误而延迟。 |
 | temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
@@ -211,7 +210,7 @@ grant_type=authorization_code
 ```
 | 参数 | 说明 |
 | --- | --- |
-| error |用于分类发生的错误类型与响应错误的错误码字符串。 |
+| error |可用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 | error_codes |可帮助诊断的 STS 特定错误代码列表。 |
 | timestamp |发生错误的时间。 |
@@ -238,7 +237,7 @@ grant_type=authorization_code
 | unsupported_grant_type |授权服务器不支持权限授予类型。 |更改请求中的授权类型。 这种类型的错误应该只在开发过程中发生，并且应该在初始测试过程中检测到。 |
 | invalid_resource |目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 |这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 | interaction_required |请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请对同一资源使用交互式授权请求进行重试，而不是非交互式请求。 |
-| temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
+| temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可向用户说明，其响应由于临时状况而延迟。 |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>使用访问令牌访问资源
 已经成功获取 `access_token`，现在可以通过在 `Authorization` 标头中包含令牌，在 Web API 的请求中使用令牌。 [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) 规范说明了如何使用 HTTP 请求中的持有者令牌访问受保护的资源。
@@ -251,7 +250,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ### <a name="error-response"></a>错误响应
-实现 RFC 6750 的受保护资源会发出 HTTP 状态代码。 如果请求不包含身份验证凭据或缺少令牌，则响应将包含 `WWW-Authenticate` 标头。 当某个请求失败时，资源服务器使用 HTTP 状态代码和错误代码做出响应。
+实现 RFC 6750 的受保护资源会发出 HTTP 状态代码。 如果请求不包含身份验证凭据或缺少令牌，则响应包含 `WWW-Authenticate` 标头。 当某个请求失败时，资源服务器使用 HTTP 状态代码和错误代码做出响应。
 
 以下是当客户端请求不包含持有者令牌时的不成功响应示例：
 
@@ -343,7 +342,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 说明 |
 | --- | --- |
-| error |用于分类发生的错误类型与响应错误的错误码字符串。 |
+| error |可用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 | error_codes |可帮助诊断的 STS 特定错误代码列表。 |
 | timestamp |发生错误的时间。 |

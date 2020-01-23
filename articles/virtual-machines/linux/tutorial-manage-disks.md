@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure CLI 管理 Azure 磁盘 | Azure
+title: 教程 - 使用 Azure CLI 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure CLI 为虚拟机创建和管理 Azure 磁盘
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,12 +17,12 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 3b4beb9ce48b736f1aacc926a917de9e13741984
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 2bbd837b5f85fa091e270cf204d98e4684ee00fa
+ms.sourcegitcommit: 9ad55db07ab590d666157d18a81e7b34cf706ec6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831433"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913216"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -47,7 +47,7 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 
-若要安装应用程序和存储数据，可添加额外的数据磁盘。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 虚拟机的大小决定可附加到 VM 的数据磁盘数。 对于每个 VM vCPU，都可以附加四个数据磁盘。
+若要安装应用程序和存储数据，可添加额外的数据磁盘。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 虚拟机的大小决定可附加到 VM 的数据磁盘数。
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 
@@ -275,6 +275,6 @@ az vm disk attach \
 转到下一教程，了解如何自动配置 VM。
 
 > [!div class="nextstepaction"]
-> [自动配置 VM](./tutorial-automate-vm-deployment.md)
+> [自动执行 VM 配置](./tutorial-automate-vm-deployment.md)
 
 <!--Update_Description: update meta properties, update link, wording update -->

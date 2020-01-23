@@ -1,19 +1,19 @@
 ---
-title: 创建基于路由的 Azure VPN 网关：PowerShell | Microsoft Docs
+title: Azure VPN 网关：创建基于路由的网关：PowerShell
 description: 使用 PowerShell 快速创建基于路由的 VPN 网关
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
-origin.date: 10/18/2018
-ms.date: 03/25/2019
+origin.date: 02/11/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 2f7ccc62012161b4a64af03c045a842e6ce3d941
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+ms.openlocfilehash: 4766cec692b31a37ed18b49b3bde5fcdfd31159a
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63845126"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939803"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 创建基于路由的 VPN 网关
 
@@ -78,7 +78,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 使用 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork) cmdlet 设置虚拟网络的子网配置。
 
 ```azurepowershell
-$virtualNetwork | Set-AzVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="PublicIP"></a>请求公共 IP 地址

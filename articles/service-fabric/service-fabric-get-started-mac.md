@@ -1,25 +1,17 @@
 ---
-title: 在 Mac OS X 上设置开发环境以使用 Azure Service Fabric | Azure
+title: 在 Mac OS X 上设置开发环境以使用 Azure Service Fabric
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Mac OS X 上开始生成应用程序了。
-services: service-fabric
-documentationcenter: linux
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/17/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cc37cb6b1fc2541a04a90bdd544b6f4bbf519a33
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 45c3c82a01e3a0db6fe43f7d34296e16c068005b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174252"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742376"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -31,7 +23,7 @@ ms.locfileid: "70174252"
 
 可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB 的 RAM。
@@ -124,9 +116,9 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
 
 ### <a name="known-limitations"></a>已知限制 
 
- 以下是在 Mac 的容器中运行的本地群集的已知限制： 
+以下是在 Mac 的容器中运行的本地群集的已知限制： 
 
- * DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
+* DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>在 Mac 上设置 Service Fabric CLI (sfctl)
 

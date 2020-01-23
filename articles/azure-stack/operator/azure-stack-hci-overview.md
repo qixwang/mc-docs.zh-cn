@@ -8,13 +8,13 @@ ms.author: v-jay
 ms.localizationpriority: medium
 ms.prod: windows-server-threshold
 origin.date: 11/04/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 193401e5a914076a276e7346538e1bf47820af31
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 01/13/2020
+ms.openlocfilehash: db6f2fcc97d0eac4e3d9e989e92dd4a5dba3b0f6
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624210"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737880"
 ---
 # <a name="azure-stack-hci-overview"></a>Azure Stack HCI 概述
 
@@ -44,7 +44,7 @@ Azure Stack HCI 是由众多硬件合作伙伴提供的 Azure 超融合解决方
 
 ## <a name="the-azure-stack-family"></a>Azure Stack 系列
 
-Azure Stack HCI 属于 Azure 和 Azure Stack 系列，与 Azure Stack 使用相同的软件定义计算、存储及网络软件。 下面是不同解决方案的快速摘要（如需更多详细信息，请参阅[比较 Azure Stack 生态系统](compare-azure-azure-stack.md)）：
+Azure Stack HCI 属于 Azure 和 Azure Stack 系列，与 Azure Stack Hub 使用相同的软件定义计算、存储及网络软件。 下面是不同解决方案的快速摘要（如需更多详细信息，请参阅[比较 Azure Stack 生态系统](compare-azure-azure-stack.md)）：
 
 - [Azure](https://www.azure.cn) - 将公有云服务用于按需自助式计算资源，以便迁移和现代化现有应用，以及生成新的云原生应用。
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - 在本地运行虚拟化应用、更换和整合过时的服务器基础结构，以及连接到 Azure 以使用云服务。
@@ -84,7 +84,7 @@ Azure Stack HCI 解决方案在行业标准的 x86 服务器和组件上结合�
 
 ## <a name="management-tools-and-system-center"></a>管理工具和 System Center
 
-Azure Stack HCI 与 Azure Stack 使用相同的虚拟化和软件定义存储和网络软件。 但是，使用 Azure Stack HCI 可在群集上拥有完全管理员权限，并且可以直接管理其所有技术：
+Azure Stack HCI 与 Azure Stack Hub 使用相同的虚拟化和软件定义存储和网络软件。 但是，使用 Azure Stack HCI 可在群集上拥有完全管理员权限，并且可以直接管理其所有技术：
 
 - [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-on-windows-server)
 - [存储空间直通](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
@@ -109,7 +109,7 @@ Azure Stack HCI 与 Azure Stack 使用相同的虚拟化和软件定义存储和
 
 ## <a name="faq"></a>常见问题
 
-### <a name="what-do-azure-stack-and-azure-stack-hci-solutions-have-in-common"></a>Azure Stack 和 Azure Stack HCI 解决方案有哪些共同之处？
+### <a name="what-do-azure-stack-hub-and-azure-stack-hci-solutions-have-in-common"></a>Azure Stack Hub 和 Azure Stack HCI 解决方案有哪些共同之处？
 
 Azure Stack HCI 解决方案与 Azure Stack Hub 同样有 Hyper-V 架构的软件定义计算、存储和网络技术功能。 这两个产品都符合严格的测试和验证准则，目的是确保与基础硬件平台配合时的可靠性和兼容性。
 
@@ -143,7 +143,7 @@ Windows Server 2019 几乎是每个 Azure 产品的基础。 你重视的所有�
 
 ### <a name="how-does-the-cost-of-azure-stack-hci-compare-to-azure-stack-hub"></a>Azure Stack HCI 和 Azure Stack Hub 的成本有何差别？ 
 
-Azure Stack Hub 以完全集成的系统销售，其中包括服务和支持。 你购买的 Azure Stack 可以是由你管理的系统，或者是我们的合作伙伴提供的完全托管服务。 除了基础系统以外，在 Azure Stack 或 Azure 上运行的 Azure 服务都以预付费的模式销售。
+Azure Stack Hub 以完全集成的系统销售，其中包括服务和支持。 你可以购买 Azure Stack Hub 作为你管理的系统，也可以作为我们的合作伙伴提供的完全托管服务。 除了基础系统以外，在 Azure Stack Hub 或 Azure 上运行的 Azure 服务都按预付费方式出售。
 
 Azure Stack HCI 解决方案遵循传统的购买模式。 可以向 Azure Stack HCI 合作伙伴购买经验证的硬件，以及从现有的各种渠道购买软件（具有软件定义的数据中心功能的 Windows Server 2019 Datacenter Edition 以及 Windows 管理中心）。 对于与 Windows 管理中心配合使用的 Azure 服务，可以通过 Azure 订阅付费。
 

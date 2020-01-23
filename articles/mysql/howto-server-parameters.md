@@ -1,18 +1,18 @@
 ---
-title: 如何在 Azure Database for MySQL 中配置服务器参数
+title: 配置服务器参数 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置 MySQL 服务器参数。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/19/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: 924063470bf587139b8aef695b2c754f5bc8a7fe
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+origin.date: 12/05/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 704b5ee146808cee254e43fbd2d1ce8b91a30161
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839015"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776638"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -80,6 +80,9 @@ InnoDB 缓冲池大小不可配置，并且与[定价层](concepts-service-tiers
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 应重启服务器，以确保正确填充时区表。 若要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

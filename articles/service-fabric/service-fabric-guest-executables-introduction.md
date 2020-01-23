@@ -1,26 +1,16 @@
 ---
-title: 将现有可执行文件部署到 Azure Service Fabric | Azure
+title: 将现有可执行文件打包到 Azure Service Fabric
 description: 了解如何将现有应用程序打包为来宾可执行文件，以便部署到 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: na
 origin.date: 03/15/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0028e371967f40568ef9c41cd9d5e91150d502fa
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: f4c70bb433ee44f8ce6692a7a380e68c7d01f307
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174250"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742372"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>将现有可执行文件部署到 Service Fabric
 可以在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件。
@@ -49,7 +39,7 @@ ms.locfileid: "70174250"
 * **服务清单** 服务清单描述服务的组件。 其中包含服务的名称和类型、其代码以及配置等数据。 服务清单还包含一些可以用于在部署之后配置服务的其他参数。
 
 ## <a name="application-package-file-structure"></a>应用程序包文件结构
-应用程序应遵循预定义的目录结构，才能将应用程序部署到 Service Fabric。 下面是该结构的示例。
+要将应用程序部署到 Service Fabric，应用程序应遵循预定义的目录结构。 下面是该结构的示例。
 
 ```
 |-- ApplicationPackageRoot

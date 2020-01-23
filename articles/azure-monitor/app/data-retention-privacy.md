@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 09/29/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 32c715318d8f10737b4f068ea9a5ac3f4c36e2f5
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: 52e6b7672782a009ba5c56815b1e9a69888ef4ef
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500356"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545360"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -98,7 +98,7 @@ Azure 只使用这些数据来向你提供服务。
 ## <a name="where-is-the-data-held"></a>数据保存在哪个位置？
 * 在中国。 创建新的 Application Insights 资源时，可以选择存储位置。 
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着必须在美国、欧洲或东南亚托管我的应用？
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-china"></a>这是否意味着必须在中国托管我的应用？
 * 否。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？

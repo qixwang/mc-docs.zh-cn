@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
-description: 介绍有关使用 Azure Database for PostgreSQL（单一服务器）中的扩展来扩展数据库功能的功能。
+title: 扩展 - Azure Database for PostgreSQL - 单一服务器
+description: 了解 Azure Database for PostgreSQL 中可用的 Postgres 扩展 - 单一服务器
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/11/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 27dfc659fb760c91a516d38c9bd8d54f4aedd2de
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+origin.date: 12/20/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: ed17d0e60f354a736435fa927d6a9149eb783571
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191563"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776735"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展会如同内置功能一样运行。
@@ -27,7 +27,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 11。 
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 数据集示例|
@@ -72,7 +72,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 10。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 数据集示例|
@@ -118,7 +118,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 9.6。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US 数据集示例|
@@ -164,7 +164,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 9.5。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US 数据集示例|
@@ -225,7 +225,7 @@ pgAudit 扩展提供会话和对象审核日志记录。 若要了解如何在 A
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。
 
-[详细了解 TimescaleDB](https://docs.timescale.com/latest)，[Timescale, Inc.](https://www.timescale.com/) 的注册商标。
+[详细了解 TimescaleDB](https://docs.timescale.com/latest)，它是 [Timescale, Inc.](https://www.timescale.com/) 的注册商标。 Azure Database for PostgreSQL 提供 Timescale 的开放源代码版本。 若要了解此版本中有哪些 Timescale 功能可用，请参阅 [Timescale 产品比较](https://www.timescale.com/products/)。
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
 若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要**重启服务器**才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
@@ -253,4 +253,25 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 > 如果看到错误，请确认是否已在保存 shared_preload_libraries 后[重启服务器](howto-restart-server-portal.md)。 
 
 现在可以[从头开始](https://docs.timescale.com/getting-started/creating-hypertables)创建 TimescaleDB hypertable，也可以迁移 [PostgreSQL 中的现有时序数据](https://docs.timescale.com/getting-started/migrating-data)。
+
+### <a name="restoring-a-timescale-database"></a>还原 Timescale 数据库
+若要使用 pg_dump 和 pg_restore 还原 Timescale 数据库，需要在目标数据库中运行两个帮助程序过程：`timescaledb_pre_restore()` 和 `timescaledb_post restore()`。
+
+首先，准备目标数据库：
+
+```SQL
+--create the new database where you'll perform the restore
+CREATE DATABASE tutorial;
+\c tutorial --connect to the database 
+CREATE EXTENSION timescaledb;
+
+SELECT timescaledb_pre_restore();
+```
+
+现在，你可在原始数据库上运行 pg_dump，然后执行 pg_restore。 还原后，请确保在还原的数据库中运行以下命令：
+
+```SQL
+SELECT timescaledb_post_restore();
+```
+
 

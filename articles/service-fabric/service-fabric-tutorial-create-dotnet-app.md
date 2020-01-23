@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 .NET 应用 | Azure
+title: 在 Azure 中的 Service Fabric 上创建 .NET 应用
 description: 本教程介绍如何使用 ASP.NET Core 前端和 Reliable Services 有状态后端创建一个应用程序，然后将其部署到群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/10/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5414d855eeea35a01a8fb9282c989d685b9f84f8
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 38e181b43f4e8a1fe2a881a9382798ab45c4cb43
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254828"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742101"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建和部署应用程序
 
@@ -47,7 +37,7 @@ ms.locfileid: "70254828"
 
 <!-- Not Available on [Set up monitoring and diagnostics for the application](service-fabric-tutorial-monitoring-aspnet.md)-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 * 如果还没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)
@@ -59,23 +49,23 @@ ms.locfileid: "70254828"
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>创建 ASP.NET Web API 服务作为可靠服务
 
-首先，使用 ASP.NET Core 创建投票应用程序的 Web 前端。 ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。 若要全面了解 ASP.NET Core 如何与 Service Fabric 集成，强烈建议你通读 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 一文。 现可按照本指南快速入门。 若要了解有关 ASP.NET Core 的详细信息，请参阅 [ASP.NET Core 文档](https://docs.microsoft.com/aspnet/core/)。
+首先，使用 ASP.NET Core 创建投票应用程序的 Web 前端。 ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。 若要全面了解 ASP.NET Core 如何与 Service Fabric 集成，强烈建议你通读 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 一文。 现在可以按照本教程快速入门。 若要了解有关 ASP.NET Core 的详细信息，请参阅 [ASP.NET Core 文档](https://docs.microsoft.com/aspnet/core/)。
 
-1. 以管理员身份启动 Visual Studio。 
+1. 以**管理员**身份启动 Visual Studio。
 
 2. 通过单击“文件”  ->  “新建”->  “项目”创建项目。
 
 3. 在“新建项目”对话框中，选择“云”>“Service Fabric 应用程序”。  
 
-4. 将应用程序命名为“Voting”，然后单击“确定”   。
+4. 将应用程序命名为“Voting”，然后单击“创建”   。
 
     ![Visual Studio 中的新建项目对话框](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog.png)
 
-5. 在“新建 Service Fabric 服务”页中，选择“无状态 ASP.NET Core”，将服务命名为“VotingWeb”，然后单击“确定”     。
+5. 在“新建 Service Fabric 服务”页中，选择“无状态 ASP.NET Core”，将服务命名为“VotingWeb”，然后单击“创建”     。
 
     ![在新建服务对话框中选择 ASP.NET Web 服务](./media/service-fabric-tutorial-create-dotnet-app/new-project-dialog-2.png) 
 
-6. 下一页将提供一组 ASP.NET Core 项目模板。 对于本教程，请选择“Web 应用程序(模型-视图-控制器)”，然后单击“确定”   。
+6. 下一页提供一组 ASP.NET Core 项目模板。 对于本教程，请选择“Web 应用程序(模型-视图-控制器)”，然后单击“创建”   。
 
     ![选择 ASP.NET 项目类型](./media/service-fabric-tutorial-create-dotnet-app/vs-new-aspnet-project-dialog.png)
 
@@ -258,7 +248,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-在 `CreateServiceInstanceListeners()` 的下面添加以下 `GetVotingDataServiceName` 方法，然后保存所做更改。 `GetVotingDataServiceName` 返回轮询的服务名称
+在 `CreateServiceInstanceListeners()` 的下面添加以下 `GetVotingDataServiceName` 方法，然后保存所做更改。 `GetVotingDataServiceName` 在投票时返回服务名称。
 
 ```csharp
 internal static Uri GetVotingDataServiceName(ServiceContext context)
@@ -269,7 +259,7 @@ internal static Uri GetVotingDataServiceName(ServiceContext context)
 
 ### <a name="add-the-votescontrollercs-file"></a>添加 VotesController.cs 文件
 
-添加控制器用于定义投票操作。 右键单击“控制器”文件夹，然后选择“添加”->“新建项”->“Visual C#”->“ASP.NET Core”->“类”   。 将文件命名为“VotesController.cs”，然后单击“添加”   。  
+添加控制器用于定义投票操作。 右键单击“Controllers”文件夹，然后选择“添加”->“新建项”->“Visual C#”->“ASP.NET Core”->“类”。   将文件命名为“VotesController.cs”，然后单击“添加”   。  
 
 将 *VotesController.cs* 文件内容替换为以下内容，然后保存所做更改。  稍后在执行[更新 VotesController.cs 文件](#updatevotecontroller_anchor)时将会修改此文件，以读取和写入来自后端服务的投票数据。  现在，控制器会将静态字符串数据返回到视图中。
 
@@ -315,9 +305,9 @@ namespace VotingWeb.Controllers
 
 ### <a name="configure-the-listening-port"></a>配置侦听端口
 
-创建 VotingWeb 前端服务后，Visual Studio 会随机选择服务侦听的端口。  VotingWeb 服务充当此应用程序的前端并接受外部流量，因此让我们将此服务绑定到已知的固定端口。  [服务清单](service-fabric-application-and-service-manifests.md)声明服务终结点。
+创建 VotingWeb 前端服务后，Visual Studio 会随机选择服务侦听的端口。  VotingWeb 服务充当此应用程序的前端并接受外部流量，因此让我们将该服务绑定到已知的固定端口。  [服务清单](service-fabric-application-and-service-manifests.md)声明服务终结点。
 
-在解决方案资源管理器中，打开“VotingWeb/PackageRoot/ServiceManifest.xml”  。  在“资源”部分中查找“终结点”元素，并将“端口”值更改为 **80**    。 若要在本地部署和运行应用程序，应用程序侦听端口必须为打开状态且在你的计算机上可用。
+在解决方案资源管理器中，打开“VotingWeb/PackageRoot/ServiceManifest.xml”  。  在“Resources”部分中查找“Endpoint”元素，并将“Port”值更改为 8080。     若要在本地部署和运行应用程序，应用程序侦听端口必须为打开状态且在你的计算机上可用。
 
 ```xml
 <Resources>
@@ -330,15 +320,15 @@ namespace VotingWeb.Controllers
   </Resources>
 ```
 
-此外，更新投票项目中的应用程序 URL 属性值，使 Web 浏览器在调试应用程序时打开到正确的端口。  在解决方案资源管理器中，选择“投票”项目并将“应用程序 URL”属性更新为 **8080**   。
+此外，更新投票项目中的应用程序 URL 属性值，使 Web 浏览器在调试应用程序时打开到正确的端口。  在解决方案资源管理器中，选择“Voting”项目并将“应用程序 URL”属性更新为 8080    。
 
-### <a name="deploy-and-run-the-voting-application-locally"></a>在本地部署并运行“投票”应用程序
-现在可以继续运行“投票”应用程序进行调试。 在 Visual Studio 中，按 **F5** 在调试模式下将应用程序部署到本地 Service Fabric 群集。 如果此前未以管理员身份打开 Visual Studio，则应用程序会失败。 
+### <a name="deploy-and-run-the-voting-application-locally"></a>在本地部署并运行“Voting”应用程序
+现在可以继续运行“Voting”应用程序进行调试。 在 Visual Studio 中，按 **F5** 在调试模式下将应用程序部署到本地 Service Fabric 群集。 如果此前未以管理员身份打开 Visual Studio，则应用程序会失败。 
 
 > [!NOTE]
 > 首次在本地运行和部署应用程序时，Visual Studio 会创建用于调试的本地 Service Fabric 群集。  创建群集可能需要一段时间。 群集创建状态显示在 Visual Studio 输出窗口中。
 
-将“投票”应用程序部署到本地 Service Fabric 群集后，Web 应用会在浏览器选项卡中自动打开，如下所示：
+将“Voting”应用程序部署到本地 Service Fabric 群集后，Web 应用会在浏览器选项卡中自动打开，如下所示：
 
 ![ASP.NET Core 前端](./media/service-fabric-tutorial-create-dotnet-app/debug-front-end.png)
 
@@ -350,23 +340,23 @@ namespace VotingWeb.Controllers
 
 Service Fabric 允许使用 Reliable Collections 直接在服务内以一致、可靠的方式存储数据。 Reliable Collections 是一组高度可用的可靠集合类，用过 C# 集合的用户都对它很熟悉。
 
-在本教程中，创建一个服务，用于在 Reliable Collections 中存储计数器值。
+在本教程中，将创建一个服务，用于在 Reliable Collections 中存储计数器值。
 
-1. 在解决方案资源管理器中，右键单击“投票”应用程序项目中的“服务”，并选择“添加”->“新建 Service Fabric 服务...”   。
+1. 在解决方案资源管理器中，右键单击“Voting”应用程序项目中的“服务”，并选择“添加”->“新建 Service Fabric 服务...”   。
 
-2. 在“新建 Service Fabric 服务”对话框中，选择“有状态 ASP.NET Core”，将服务命名为“VotingData”，然后按“确定”     。
+2. 在“新建 Service Fabric 服务”对话框中，选择“有状态 ASP.NET Core”，将服务命名为“VotingData”，然后按“创建”     。
 
     创建服务项目后，应用程序中会有两个服务。 随着继续生成应用程序，可采用相同的方式添加更多服务。 每个服务都可以单独进行版本控制和升级。
 
-3. 下一页将提供一组 ASP.NET Core 项目模板。 本教程中，选择“API”  。
+3. 下一页提供一组 ASP.NET Core 项目模板。 本教程中，选择“API”  。
 
     Visual Studio 会创建 VotingData 服务项目，并在解决方案资源管理器中显示。
 
-    ![解决方案资源管理器](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
+    ![Views\Shared\_Layout.cshtml](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
 
 ### <a name="add-the-votedatacontrollercs-file"></a>添加 VoteDataController.cs 文件
 
-在“VotingData”项目中，右键单击“控制器”文件夹，然后选择“添加”->“新建项目”->“类”    。 将文件命名为“VoteDataController.cs”，然后单击“添加”   。 将文件内容替换为以下内容，然后保存所做更改。
+在“VotingData”项目中，右键单击“Controllers”文件夹，然后选择“添加”->“新建项”->“类”    。 将文件命名为“VoteDataController.cs”，然后单击“添加”   。 将文件内容替换为以下内容，然后保存所做更改。
 
 ```csharp
 namespace VotingData.Controllers
@@ -480,7 +470,7 @@ namespace VotingData.Controllers
 <a name="updatevotecontroller_anchor"></a>
 ### <a name="update-the-votescontrollercs-file"></a>更新 VotesController.cs 文件
 
-在“VotingWeb”项目中，打开 Controllers/VotesController.cs 文件   。  将 `VotesController` 类定义内容替换为以下内容，然后保存所做更改。 如果在前面的步骤中发现反向代理端口不是 19081，更改发现的端口从 19081 GetProxyAddress 方法中使用的端口。
+在“VotingWeb”项目中，打开 Controllers/VotesController.cs 文件   。  将 `VotesController` 类定义内容替换为以下内容，然后保存所做更改。 如果在前面的步骤中发现反向代理端口不是 19081，将GetProxyAddress 方法中使用的端口19081更改为发现的端口。
 
 ```csharp
 public class VotesController : Controller
@@ -635,7 +625,7 @@ public class VotesController : Controller
     4. 最后，将后端服务的响应返回到客户端 **(3)** 。
 
 5. 按 F5 以继续操作  。
-    1. 此时，到达后端服务中的断点。
+    1. 此时到达后端服务中的断点。
 
         ![添加投票后端服务](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
@@ -655,7 +645,7 @@ public class VotesController : Controller
 > * 将 ASP.NET Core Web 应用程序服务作为无状态 Web 服务创建
 > * 使用反向代理与有状态服务通信
 
-转到下一教程：
+进入下一教程：
 > [!div class="nextstepaction"]
 > [将应用程序部署到 Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 

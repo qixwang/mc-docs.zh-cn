@@ -1,37 +1,26 @@
 ---
-title: 在 Java 中创建第一个 Azure Service Fabric 可靠服务 | Azure
+title: 在 Java 中创建第一个 Azure Service Fabric 可靠服务
 description: 介绍如何创建包含无状态服务和有状态服务的 Azure Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/02/2017
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: bbfca4b00d6063dc56386a11398db17798ee9ee6
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: db0b229b2a670b7e41979ec1020de5ae42b1134b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463595"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742388"
 ---
-# <a name="get-started-with-reliable-services"></a>Reliable Services 入门
+# <a name="get-started-with-reliable-services-in-java"></a>Java 中的 Reliable Services 入门
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
 >
 >
 
-本文介绍 Azure Service Fabric Reliable Services 的基础知识，并演示如何创建和部署以 Java 编写的简单 Reliable Service 应用程序。
-
-<!-- Not Available  This Microsoft Virtual Academy -->
+本文介绍 Azure Service Fabric Reliable Services 的基础知识，并演示如何创建和部署以 Java 编写的简单 Reliable Service 应用程序。 
 
 ## <a name="installation-and-setup"></a>安装和设置
 在开始之前，请确保已在计算机上设置 Service Fabric 开发环境。
@@ -101,21 +90,21 @@ public static void main(String[] args) throws Exception {
 
 * 名为 `runAsync()`的开放式入口点方法，可在其中开始执行任何工作负荷，包括长时间运行的计算工作负荷。
 
-```java
-@Override
-protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
-    ...
-}
-```
+    ```java
+    @Override
+    protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+        ...
+    }
+    ```
 
 * 一个通信入口点，可在其中插入选择的通信堆栈。 这就是可以开始接收来自用户和其他服务请求的位置。
 
-```java
-@Override
-protected List<ServiceInstanceListener> createServiceInstanceListeners() {
-    ...
-}
-```
+    ```java
+    @Override
+    protected List<ServiceInstanceListener> createServiceInstanceListeners() {
+        ...
+    }
+    ```
 
 本教程将重点放在 `runAsync()` 入口点方法上。 可在其中立即开始运行代码。
 
@@ -206,10 +195,10 @@ ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddRelia
 
 Reliable Collections 可以存储任何 Java 类型（包括自定义类型），但需要注意以下几点：
 
-* Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable HashMap 会将数据存储到每个副本上的本地磁盘中。 这意味着 Reliable HashMaps 中存储的所有内容都必须可序列化。 
+* Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable HashMap 会将数据存储到每个副本上的本地磁盘中。  这意味着 Reliable HashMaps 中存储的所有内容都必须可序列化。  
 * 在 Reliable HashMaps 上提交事务时，将复制对象以实现高可用性。 存储在 Reliable HashMaps 中的对象保留在服务的本地内存中。 这意味着对对象进行本地引用。
 
-   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
+    切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
 
 可靠状态管理器自动管理 Reliable HashMaps。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 建议不要将可靠集合实例的引用保存到类成员变量或属性中。 请特别小心，确保在服务生命周期中始终将引用设置为某个实例。 可靠状态管理器会代为处理此工作，且已针对重复访问对其进行优化。
 
@@ -233,7 +222,7 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 
 Reliable HashMaps 上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
-Reliable HashMap 操作是事务性的，因此可以跨多个 Reliable HashMaps 和操作保持状态一致。 例如，可以在单个事务中，从一个可靠字典中获取工作项、对其执行操作并将结果保存在另一个 Reliable HashMap 中。 事务被视为基本操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并将该项保留在队列中待处理。
+Reliable HashMap 操作是事务性的，因此可以跨多个 Reliable HashMaps 和操作保持状态一致。  例如，可以在单个事务中，从一个可靠字典中获取工作项、对其执行操作并将结果保存在另一个 Reliable HashMap 中。 事务被视为基本操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并将该项保留在队列中待处理。
 
 ## <a name="build-the-application"></a>构建应用程序
 
@@ -265,7 +254,7 @@ $ gradle
 
 这些命令的参数可以在应用程序包内的生成清单中找到。
 
-应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”  节点，注意现在有一个条目是用于应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
 > 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样做可允许 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  

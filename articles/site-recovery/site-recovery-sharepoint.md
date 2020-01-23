@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复 | Azure
+title: 使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 description: 本文介绍如何使用 Azure Site Recovery 功能为多层 SharePoint 应用程序设置灾难恢复。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 06/27/2019
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf267068992d616b75ed2994e6797b04a12be25a
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 489de1b54cd2ee8b9d2e62fde4c02720e1301a33
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340953"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776715"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 
@@ -31,7 +31,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 <!-- Not Available on VIDEO-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保了解以下知识：
 
@@ -75,7 +75,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 * 有关保护 Active Directory 和 DNS 的指导，请参阅[保护 Active Directory 和 DNS](site-recovery-active-directory.md) 文档。
 
-* 有关保护 SQL 服务器上运行的数据库层的指导，请参阅[保护 SQL Server](site-recovery-active-directory.md) 文档。
+* 有关保护 SQL 服务器上运行的数据库层的指导，请参阅[保护 SQL Server](site-recovery-sql.md) 文档。
 
 ## <a name="networking-configuration"></a>网络配置
 
@@ -93,7 +93,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
 
-| **Where** | **Source** | **目标**|
+| **Where** | **Source** | **Target**|
 | --- | --- | --- |
 | 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.cn |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |

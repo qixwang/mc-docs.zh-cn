@@ -1,32 +1,22 @@
 ---
-title: Service Fabric 服务分区 | Azure
+title: Service Fabric 服务分区
 description: 介绍如何对 Service Fabric 有状态服务进行分区。 使用分区可以将数据存储在本地计算机上，以便数据和计算可以一起扩展。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/30/2017
-ms.date: 03/04/2019
 ms.author: v-yeche
-ms.openlocfilehash: 0128b85c64ea037df5888803d116281fe8134a7f
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.date: 01/06/2020
+ms.openlocfilehash: 36975f1990c61e95d1d143345268192697381028
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204125"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742359"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上获取。
 
 ## <a name="partitioning"></a>分区
-分区并不是 Service Fabric 所独有的。 事实上，它是构建可缩放服务的核心模式。 从更广泛的意义来说，可将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 一种众所周知的分区形式是 [数据分区][wikipartition]，也称为分片。
+分区并不是 Service Fabric 所独有的。 事实上，它是生成可缩放服务的核心模式。 从更广泛的意义来说，可将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 [数据分区][wikipartition]是一种众所周知的分区形式，也称为分片。
 
 ### <a name="partition-service-fabric-stateless-services"></a>Service Fabric 无状态服务分区
 对于无状态服务，可以将分区视为包含服务的一个或多个实例的逻辑单元。 图 1 显示一个无状态服务，其五个实例使用一个分区在群集中分布。
@@ -41,7 +31,7 @@ ms.locfileid: "57204125"
 
 本演练的其余部分侧重于有状态服务。
 
-### <a name="partition-service-fabric-stateful-services"></a>对 Service Fabric 有状态服务进行分区
+### <a name="partition-service-fabric-stateful-services"></a>Service Fabric 有状态服务分区
 通过 Service Fabric 可以提供到一流的状态（数据）分区方式，从而方便地开发可缩放有状态服务。 从概念上讲，可以将有状态服务的分区视为使用在群集中的节点间进行分布和平衡的[副本](service-fabric-availability-services.md)而具有高度可靠性的缩放单元。
 
 在 Service Fabric 有状态服务的上下文中进行分区是指确定特定服务分区负责服务完整状态的某个部分的过程。 （如前所述，分区是一组[副本](service-fabric-availability-services.md)）。 Service Fabric 的一大优点是它将分区置于不同节点上。 这使它们可以按照节点的资源限制增长。 随着数据需求的增长，分区也会增长，Service Fabric 会在节点间重新平衡分区。 这可确保硬件资源的持续高效使用。
@@ -116,7 +106,7 @@ Service Fabric 提供了三个分区方案可供选择：
 
 良好的分发哈希算法的特征是易于计算，几乎没有冲突，并且均匀地分发键。 高效的哈希算法的一个很好示例是 [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) 哈希算法。
 
-有关选择常规哈希代码算法的很好的资源是 [哈希函数的维基百科网页](http://en.wikipedia.org/wiki/Hash_function)。
+有关选择常规哈希代码算法的很好的资源是 [哈希函数的维基百科网页](https://en.wikipedia.org/wiki/Hash_function)。
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>生成具有多个分区的有状态服务
 让我们创建具有多个分区的第一个可靠有状态服务。 在此示例中，会生成一个非常简单的应用程序，在其中要以相同字母开头的所有姓氏存储在相同分区中。
@@ -129,10 +119,10 @@ Service Fabric 提供了三个分区方案可供选择：
 > 
 > 
 
-1. 打开“Visual Studio” > “文件” > “新建” > “项目”。
-2. 在“新建项目”对话框中，选择 Service Fabric 应用程序。
+1. 打开“Visual Studio” > “文件” > “新建” > “项目”     。
+2. 在“新建项目”对话框中，选择 Service Fabric 应用程序  。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
+4. 在“创建服务”  对话框中，选择“有状态”  服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
 
     ```xml
@@ -157,10 +147,10 @@ Service Fabric 提供了三个分区方案可供选择：
     现在服务已配置为侦听具有 26 个分区的内部终结点。
 7. 接下来，需要重写 Processing 类的 `CreateServiceReplicaListeners()` 方法。
 
-   > [!NOTE]
-   > 对于此示例，我们假定使用一个简单 HttpCommunicationListener。 有关 Reliable Service 通信的详细信息，请参阅 [Reliable Service 通信模型](service-fabric-reliable-services-communication.md)。
-   > 
-   > 
+    > [!NOTE]
+    > 对于此示例，我们假定使用一个简单 HttpCommunicationListener。 有关 Reliable Service 通信的详细信息，请参阅 [Reliable Service 通信模型](service-fabric-reliable-services-communication.md)。
+    > 
+    > 
 8. 副本所侦听的 URL 的建议格式为以下格式： `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`。
     因此，要将通信侦听器配置为侦听正确的终结点以及使用此模式。
 
@@ -168,7 +158,7 @@ Service Fabric 提供了三个分区方案可供选择：
 
     额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，强制客户端重新解析地址。 “+”在此处用作地址，以便副本在所有可用主机（IP、FQDN、localhost 等）上进行侦听下面的代码演示一个示例。
 
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
          return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
@@ -196,7 +186,7 @@ Service Fabric 提供了三个分区方案可供选择：
     该侦听 URL 提供给 HttpListener。 发布的 URL 是发布到 Service Fabric 命名服务（用于服务发现）的 URL。 客户端会通过该发现服务请求此地址。 客户端获取的地址需要具有节点的实际 IP 或 FQDN 才能连接。 因此需要将“+”替换为节点的 IP 或 FQDN，如上所示。
 9. 最后一步是将处理逻辑添加到服务，如下所示。
 
-    ```CSharp
+    ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         string output = null;
@@ -242,7 +232,7 @@ Service Fabric 提供了三个分区方案可供选择：
 10. 让我们将一个无状态服务添加到项目，以查看如何调用特定分区。
 
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，并将它发送到 Alphabet.Processing 服务进行处理。
-11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示。
+11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示   。
 
     ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)上获取。
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。
@@ -252,7 +242,7 @@ Service Fabric 提供了三个分区方案可供选择：
     ```
 13. 需要在 Web 类中返回 ServiceInstanceListeners 的集合。 同样，可以选择实现简单 HttpCommunicationListener。
 
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
@@ -268,7 +258,7 @@ Service Fabric 提供了三个分区方案可供选择：
     ```
 14. 现在需要实现处理逻辑。 HttpCommunicationListener 在请求进入时调用 `ProcessInputRequest` 。 让我们继续操作，添加下面的代码。
 
-    ```CSharp
+    ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         String output = null;
@@ -290,7 +280,7 @@ Service Fabric 提供了三个分区方案可供选择：
             string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
 
             output = String.Format(
-                    "Result: {0}. <p>Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. <br>Processing service partition ID: {4}. <br>Processing service replica address: {5}",
+                    "Result: {0}. <p>Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. <br />Processing service partition ID: {4}. <br />Processing service replica address: {5}",
                     result,
                     partitionKey,
                     firstLetterOfLastName,
@@ -314,7 +304,7 @@ Service Fabric 提供了三个分区方案可供选择：
 
     让我们逐步演练其步骤。 此代码将查询字符串参数 `lastname` 的第一个字母读入一个字符中。 随后，从姓氏第一个字母的十六进制值减去 `A` 的十六进制值，以确定此字母的分区键。
 
-    ```CSharp
+    ```csharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
@@ -323,19 +313,19 @@ Service Fabric 提供了三个分区方案可供选择：
     请记住，对于此示例，我们在使用 26 个分区，其中每个分区有一个分区键。
     接下来，通过对 `servicePartitionResolver` 对象使用 `ResolveAsync` 方法，获取此键的服务分区 `partition`。 `servicePartitionResolver` 定义为
 
-    ```CSharp
+    ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
 
     `ResolveAsync` 方法采用服务 URI、分区键和取消标记作为参数。 处理服务的服务 URI 为 `fabric:/AlphabetPartitions/Processing`。 接下来，我们会获取分区的终结点。
 
-    ```CSharp
+    ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
 
     最后，我们会生成终结点 URL 以及查询字符串，并调用处理服务。
 
-    ```CSharp
+    ```csharp
     JObject addresses = JObject.Parse(ep.Address);
     string primaryReplicaAddress = (string)addresses["Endpoints"].First();
 
@@ -364,7 +354,7 @@ Service Fabric 提供了三个分区方案可供选择：
 该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和执行组件分支子进程
-服务结构不支持 Reliable Services，因此也不支持 Reliable Actors 分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。 
+服务结构不支持 Reliable Services，因此也不支持 Reliable Actors 分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](https://docs.azure.cn/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Service Fabric 概念的信息，请参阅以下内容：

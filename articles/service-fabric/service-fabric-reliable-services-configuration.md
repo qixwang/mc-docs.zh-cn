@@ -1,26 +1,17 @@
 ---
-title: 配置 Azure Service Fabric Reliable Services | Azure
+title: 配置 Azure Service Fabric Reliable Services
 description: 了解如何在 Azure Service Fabric 中配置有状态 Reliable Services。
-services: Service-Fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/02/2017
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ab3530ec8be6aa59519f64a8fe1650f0eec1424a
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: 0ed3efd1153f3d55277eb0aa79bb6b9f75f06195
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463594"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742410"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Service。
@@ -29,7 +20,8 @@ ms.locfileid: "57463594"
 全局 Reliable Service 配置在群集的群集清单中的 KtlLogger 节下面指定。 它可配置共享日志位置和大小，以及记录器所使用的全局内存限制。 群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
 
 ### <a name="configuration-names"></a>配置名称
-| Name | 计价单位 | 默认值 | 备注 |
+
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |千字节 |8388608 |以内核模式分配给记录器写入缓冲区内存池的最小 KB 数。 此内存池用于在将状态信息写入磁盘之前缓存这些信息。 |
 | WriteBufferMemoryPoolMaximumInKB |千字节 |无限制 |记录器写入缓冲区内存池可以增长到的大小上限。 |
@@ -51,13 +43,13 @@ ms.locfileid: "57463594"
 如果想要在本地开发环境中更改此设置，需要编辑本地 clustermanifest.xml 文件。
 
 ```xml
-   <Section Name="KtlLogger">
-     <Parameter Name="SharedLogSizeInMB" Value="4096"/>
-     <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
-     <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
-     <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
-     <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
-   </Section>
+<Section Name="KtlLogger">
+    <Parameter Name="SharedLogSizeInMB" Value="4096"/>
+    <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
+    <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
+    <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
+    <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
+</Section>
 ```
 
 ### <a name="remarks"></a>备注
@@ -71,7 +63,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 可以通过使用配置包（配置）或服务实现（代码）来修改有状态 Reliable Services 的默认配置。
 
 * **配置** — 通过为应用程序中的每个服务更改 Microsoft Visual Studio 包根目录下的 Config 文件夹中生成的 Settings.xml 文件，可以使用配置包来完成配置。
-* 代码 - 通过使用 ReliableStateManagerConfiguration 对象和相应的选项集创建 ReliableStateManager，可以使用代码来完成配置。
+* 代码  - 通过使用 ReliableStateManagerConfiguration 对象和相应的选项集创建 ReliableStateManager，可以使用代码来完成配置。
 
 默认情况下，Azure Service Fabric 运行时在 Settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
@@ -110,22 +102,24 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>配置名称
-| Name | 计价单位 | 默认值 | 备注 |
+
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
+| BatchAcknowledgementInterval |秒 |0.015 |收到操作后，向主要复制器发回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要详细了解如何在服务清单中定义终结点资源，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
 | MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，释放一个操作。 此值必须大于 64 和 2 的幂。 |
 | MaxSecondaryReplicationQueueSize |操作的数量 |16384 |辅助队列中的操作的最大数目。 会在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
 | CheckpointThresholdInMB |MB |50 |创建状态检查点后的日志文件空间量。 |
 | MaxRecordSizeInKB |KB |1024 |复制器可以在日志中写入的最大记录大小。 此值必须是 4 的倍数，且大于 16。 |
-| MinLogSizeInMB |MB |0（系统确定） |事务日志的最小大小。 不允许将日志截断为低于此设置的大小。 0 表示复制器会确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
-| TruncationThresholdFactor |因子 |2 |确定会触发截断的日志的大小。 截断阈值由 MinLogSizeInMB 乘以 TruncationThresholdFactor 确定。 TruncationThresholdFactor 必须是大于 1。 MinLogSizeInMB * TruncationThresholdFactor 必须小于 MaxStreamSizeInMB。 |
-| ThrottlingThresholdFactor |系数 |4 |确定副本会开始受到限制的日志的大小。 限制阈值（以 MB 为单位）由 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 确定。 限制阈值（以 MB 为单位）必须大于截断阈值（以 MB 为单位）。 截断阈值（以 MB 为单位）必须小于 MaxStreamSizeInMB。 |
-| MaxAccumulatedBackupLogSizeInMB |MB |800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份会生成导致累积备份日志的备份日志，增量备份请求会失败，因为相关完整备份会大于此大小。 在这种情况下，用户需要执行完整备份。 |
+| MinLogSizeInMB |MB |0（系统确定） |事务日志的最小大小。 不允许将日志截断为低于此设置的大小。 0 表示复制器会确定最小日志大小。 增加此值会提高执行部分复制和增量备份的可能性，因为这会降低截断相关日志记录的可能性。 |
+| TruncationThresholdFactor |因子 |2 |确定会触发截断的日志的大小。 截断阈值由 MinLogSizeInMB 乘以 TruncationThresholdFactor 确定。 TruncationThresholdFactor 必须大于 1。 MinLogSizeInMB * TruncationThresholdFactor 必须小于 MaxStreamSizeInMB。 |
+| ThrottlingThresholdFactor |因子 |4 |确定副本会开始受到限制的日志的大小。 限制阈值（以 MB 为单位）由 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 确定。 限制阈值（以 MB 为单位）必须大于截断阈值（以 MB 为单位）。 截断阈值（以 MB 为单位）必须小于 MaxStreamSizeInMB。 |
+| MaxAccumulatedBackupLogSizeInMB |MB |800 |给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求会失败。 在这种情况下，用户需要执行完整备份。 |
 | SharedLogId |GUID |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 GUID。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，还必须指定 SharedLogPath。 |
 | SharedLogPath |完全限定的路径名 |"" |指定要在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，还必须指定 SharedLogId。 |
 | SlowApiMonitoringDuration |秒 |300 |设置托管 API 调用的监视间隔。 示例：用户提供的备份回调函数。 此间隔时间过去后，会向运行状况管理器发送一个警告运行状况报告。 |
 | LogTruncationIntervalSeconds |秒 |0 |在每个副本上启动日志截断的可配置间隔。 它用于确保还基于时间而不仅仅是根据日志大小来截断日志。 此设置还会强制清除可靠字典中的已删除条目。 因此，它可用于确保及时清除已删除的项目。 |
+| EnableStableReads |布尔 |False |启用稳定读取会将次要副本限制为返回仲裁已确认的值。 |
 
 ### <a name="sample-configuration-via-code"></a>通过代码进行配置的示例
 ```csharp
@@ -148,6 +142,7 @@ class Program
     }
 }    
 ```
+
 ```csharp
 class MyStatefulService : StatefulService
 {
@@ -161,7 +156,7 @@ class MyStatefulService : StatefulService
 ### <a name="sample-configuration-file"></a>示例配置文件
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="ReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="ReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>
@@ -181,7 +176,7 @@ class MyStatefulService : StatefulService
 
 ### <a name="remarks"></a>备注
 BatchAcknowledgementInterval 控制复制延迟。 “0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多确认消息，每个包含较少的确认）。
-BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。 这直接转换为事务提交的延迟。
+BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是会造成更高的操作延迟。 这直接转换为事务提交的延迟。
 
 CheckpointThresholdInMB 的值控制复制器可以用于将状态信息存储在副本的专用日志文件中的磁盘空间量。 将此值提高到大于默认值可以在将副本添加到集时缩短重新配置的时间。 这是因为日志中会提供更多的操作历史记录，从而发生部分状态传输。 在崩溃后，这可能会延长副本恢复时间。
 

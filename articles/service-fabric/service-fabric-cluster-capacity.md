@@ -1,26 +1,16 @@
 ---
-title: 规划 Service Fabric 群集容量 | Azure
+title: 规划 Service Fabric 群集容量
 description: Service Fabric 群集容量规划注意事项。 节点类型、操作、耐久性和可靠性层
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 07/09/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd447d8df4fe0311b1dd20294698f3b7179df117
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1b77e101026943971e35f61fb5a7b31880047251
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336355"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742367"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -75,7 +65,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 * 非主节点类型的“VM 数量下限”为一  。 但是，应该根据想要在此节点类型中运行的应用程序/服务的副本数目选择此数目。 部署群集之后，节点类型中的 VM 数目可能会增加。
 
 ## <a name="the-durability-characteristics-of-the-cluster"></a>群集的持久性特征
-耐久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重启、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。
+持久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重启、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。
 
 | 持续性层  | 所需 VM 数量下限 | 受支持的 VM SKU                                                                  | 你对虚拟机规模集所做的更新                               | Azure 启动的更新和维护                                                              | 
 | ---------------- |  ---------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -170,7 +160,8 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 - 建议至少为 50 GB。 对于你的工作负荷，尤其是在运行 Windows 容器时，需要更大的磁盘。 
 - 生产工作负荷不支持不完整的核心 VM SKU，例如标准 A0。
 - 由于性能原因，不支持将一系列 VM SKU 用于生产工作负荷。
-- 不支持低优先级 VM。
+
+    <!--Not Available on - Low-priority VMs are not supported.-->
 
 > [!WARNING]
 > 在正在运行的群集上更改主节点 VM SKU 大小是一种扩展操作，并在[虚拟机规模集横向扩展](virtual-machine-scale-set-scale-node-type-scale-out.md)文档中进行了说明。
@@ -221,4 +212,4 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
 
-<!--Update_Description: wording update, wording update -->
+<!-- Update_Description: update meta properties, wording update -->

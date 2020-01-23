@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 上创建基于执行组件的服务 | Azure
+title: 在 Azure Service Fabric 上创建基于执行组件的服务
 description: 了解如何使用 Service Fabric Reliable Actors 在 C# 中创建、调试和部署第一个基于执行组件的服务。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/10/2019
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 60e34ceb4c7c08e2886b9fb532657643d191c8e3
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: 0a2262f5fdaf5f1d458cc4d000c04915c65e0698
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819573"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742439"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -29,7 +20,7 @@ ms.locfileid: "68819573"
 
 本文演示在 Visual Studio 中创建和调试简单的 Reliable Actor 应用程序。 有关 Reliable Actors 的详细信息，请参阅 [Service Fabric Reliable Actors 简介](service-fabric-reliable-actors-introduction.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，确保计算机上已设置 Service Fabric 开发环境（包括 Visual Studio）。 有关详细信息，请参阅[如何设置开发环境](service-fabric-get-started.md)。
 

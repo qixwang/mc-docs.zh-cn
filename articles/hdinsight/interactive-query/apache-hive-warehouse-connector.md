@@ -1,5 +1,5 @@
 ---
-title: 将 Apache Spark 和 Apache Hive 与 Hive 仓库连接器相集成
+title: Apache Spark & Hive - Hive 仓库连接器 - Azure HDInsight
 description: 了解如何将 Apache Spark 和 Apache Hive 与 Azure HDInsight 上的 Hive 仓库连接器相集成。
 author: nakhanha
 ms.reviewer: hrasheed
@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 10/08/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 405d8eef371b504bc6e20d21ca47db6f95ecd957
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 01/13/2020
+ms.openlocfilehash: b55754dce0192ddefc38c39bfa9443b58dba947d
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425676"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631082"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>将 Apache Spark 和 Apache Hive 与 Hive 仓库连接器相集成
 
@@ -108,7 +108,7 @@ Hive 仓库连接器支持的部分操作如下：
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.2.1-8.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
@@ -132,7 +132,7 @@ Hive 仓库连接器支持的部分操作如下：
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/3.0.1.0-183/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-183.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
     --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'

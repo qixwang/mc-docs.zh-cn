@@ -11,16 +11,16 @@ pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
 origin.date: 06/26/2019
-ms.date: 09/16/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: b35796ae0f523052f064ad09b301813312ca478e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: f006c104b103722b2bf8be6b5a584f1ec79dcee1
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020245"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737814"
 ---
 # <a name="validate-azure-stack-system-state"></a>验证 Azure Stack 系统状态
 
@@ -49,7 +49,7 @@ Azure Stack 操作员必须能够按需确定系统的运行状况和状态，�
 
    有关详细信息，请参阅[参数注意事项](azure-stack-diagnostic-test.md#parameter-considerations)和[用例](azure-stack-diagnostic-test.md#use-case-examples)。
 
-3. 如果有任何测试报告了“失败”  ，请运行 `Get-AzureStackLog`。 有关集成系统的说明，请参阅[在 Azure Stack 集成系统上运行 Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems)；有关 ASDK 的说明，请参阅[在 ASDK 系统上运行 Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system)。
+3. 如果有任何测试报告了“失败”  ，请运行 `Get-AzureStackLog`。 有关集成系统的说明，请参阅[在 Azure Stack 集成系统上运行 Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)；有关 ASDK 的说明，请参阅[在 ASDK 系统上运行 Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system)。
 
    该 cmdlet 收集 Test-AzureStack 生成的日志。 如果测试报告“WARN”（警告），建议你不要改为收集日志并联系 CSS。 
 
@@ -168,16 +168,11 @@ Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" -Inclu
 为了改善操作员体验，已启用 **Group** 参数以同时运行多个测试类别。 目前定义了三个组：**Default**、**UpdateReadiness** 和 **SecretRotationReadiness**。
 
 - **默认**：被视为 **Test-AzureStack** 的标准运行。 如果未选择其他组，则默认会运行此组。
-- **UpdateReadiness**：检查是否可以更新 Azure Stack 实例。 当 **UpdateReadiness** 组运行时，警告将作为错误显示在控制台输出中，应将其视为更新的阻碍。 以下类别属于 **UpdateReadiness** 组：
+- **UpdateReadiness**：检查是否可以更新 Azure Stack 实例。 当 **UpdateReadiness** 组运行时，警告将作为错误显示在控制台输出中，应将其视为更新的阻碍。 从 Azure Stack 1910 版开始，以下类别属于 **UpdateReadiness** 组：
 
-  - **AzsAcsSummary**
-  - **AzsDefenderSummary**
-  - **AzsHostingInfraSummary**
-  - **AzsInfraCapacity**
-  - **AzsInfraRoleSummary**
-  - **AzsPortalAPISummary**
-  - **AzsSFRoleSummary**
-  - **AzsStoreSummary**
+  - **AzsInfraFileValidation**
+  - **AzsActionPlanStatus**
+  - **AzsStampBMCSummary**
 
 - **SecretRotationReadiness**：检查 Azure Stack 实例是否处于可以运行机密轮换的状态。 当 **SecretRotationReadiness** 组运行时，警告将作为错误显示在控制台输出中，应将其视为机密轮换的阻碍。 以下类别属于 SecretRotationReadiness 组：
 
@@ -241,6 +236,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)。
+若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)。
 
 若要了解有关故障排除的详细信息，请参阅 [Azure Stack 故障排除](azure-stack-troubleshooting.md)。

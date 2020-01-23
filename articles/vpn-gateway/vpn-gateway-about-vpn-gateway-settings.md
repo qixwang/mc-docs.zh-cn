@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/02/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 0c259e79a9bbd449b8b5052e2ba4568243d264e4
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: 397454837bb289518146aa5fa13d56d0f191ea02
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74552988"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939767"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 
@@ -151,7 +151,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
  本地网络网关不同于虚拟网络网关。 创建 VPN 网关配置时，本地网络网关通常代表本地位置。 在经典部署模型中，本地网络网关称为本地站点。
 
-指定本地网络网关的名称（即本地 VPN 设备的公共 IP 地址），并指定位于本地位置的地址前缀。 Azure 将查看网络流量的目标地址前缀、查阅针对本地网络网关指定的配置，并相应地路由数据包。 也应该针对使用 VPN 网关连接的 VNet 到 VNet 配置指定本地网络网关。
+指定本地网络网关的名称（即本地 VPN 设备的公共 IP 地址），并指定位于本地位置的地址前缀。 Azure 查看网络流量的目标地址前缀、查阅针对本地网络网关指定的配置，并相应地路由数据包。 也应该针对使用 VPN 网关连接的 VNet 到 VNet 配置指定本地网络网关。
 
 以下 PowerShell 示例创建新的本地网络网关：
 

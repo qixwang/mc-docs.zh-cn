@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 06/25/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d9838fd74e66d6bc7f90b7f2efa679a09795f041
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 8ffa3da87eb0b976d4bc6fae84dc8b59f635f889
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730412"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116946"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -58,7 +58,7 @@ ms.locfileid: "73730412"
 System Center Operations Manager 运行状况检查解决方案从以下源收集数据：
 
 * 注册表
-* Windows Management Instrumentation (WMI)
+* Windows 管理规范 (WMI)
 * 事件日志
 * 文件数据
 * 使用 PowerShell 和 SQL 查询直接从 Operations Manager 收集，以及从指定的管理服务器收集。  
@@ -143,6 +143,7 @@ GO
 USE [OperationsManager]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [UserName]
+
 ```
 
 ### <a name="configure-the-health-check-rule"></a>配置运行状况检查规则
@@ -173,7 +174,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
     如果设置的值小于 1440 分钟，该规则将按一天的间隔运行。 在本示例中，规则将忽略间隔值，按一天的频率运行。
 
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>了解如何设置建议的优先级
+## <a name="understanding-how-recommendations-are-prioritized"></a>了解如何划分建议的优先级
 
 每项建议都指定有一个权重值，用于标识该建议的相对重要性。 仅显示 10 个最重要的建议。
 
@@ -215,7 +216,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“工作区摘要”  菜单项。  
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。  
 5. 在“System Center Operations Manager 运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。 
-6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“受影响的对象”  下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![重点区域](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![重点区域](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
 7. 可以采取“建议的操作”  中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”  。
 
 ## <a name="ignore-recommendations"></a>忽略建议

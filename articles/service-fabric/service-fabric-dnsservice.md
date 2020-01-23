@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric DNS 服务 | Azure
+title: Azure Service Fabric DNS 服务
 description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 07/20/2018
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1881ab4fe8b174c40998347f1a541009f2a1f120
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f0c0ba997799eb1d3491179f59f9d25510f0a397
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336333"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742394"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -75,14 +65,14 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
     - 若要启用采用默认设置的 DNS 服务，请将其添加到 `properties` 节中的 `addonFeatures` 节，如以下示例所示：
 
         ```json
-           "properties": {
-              ...
+        "properties": {
+          ...
 
-              "addonFeatures": [
-                "DnsService"
-              ],
-              ...
-           }
+          "addonFeatures": [
+            "DnsService"
+          ],
+          ...
+        }
         ```
     - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `properties` 节中的 `fabricSettings` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 
@@ -174,14 +164,14 @@ New-ServiceFabricService `
 
 对于 DNS 查询中使用的分区，适用以下命名限制：
 
-   - 分区名称应符合 DNS 规范。
-   - 不应使用多标签分区名称（名称中包括句点“.”）。
-   - 分区名称应为小写。
+- 分区名称应符合 DNS 规范。
+- 不应使用多标签分区名称（名称中包括句点“.”）。
+- 分区名称应为小写。
 
 针对分区的 DNS 查询的格式如下：
 
 ```
-    <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
+<First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
 其中：
 

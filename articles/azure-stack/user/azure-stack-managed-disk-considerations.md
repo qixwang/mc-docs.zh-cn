@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 托管磁盘的差异和注意事项 | Microsoft Docs
+title: Azure Stack 托管磁盘；差异和注意事项 | Microsoft Docs
 description: 了解 Azure Stack 中托管磁盘和托管映像的差异与注意事项。
 services: azure-stack
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/25/2019
-ms.date: 10/21/2019
+origin.date: 10/04/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 9ccecc136821ddcfcd70dd3b977f2a3bae445b62
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: fe4bfa14becc6721fa95267d3c7a8e644746c72f
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578311"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737884"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘：差异与注意事项
 
@@ -31,24 +31,24 @@ ms.locfileid: "72578311"
 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../operator/azure-stack-manage-storage-accounts.md)简化了 IaaS 虚拟机 (VM) 的磁盘管理。
 
 > [!NOTE]  
-> 从 1808 更新开始，推出了 Azure Stack 上的托管磁盘。 从 1811 更新开始，使用 Azure Stack 门户创建 VM 时，会默认启用它。
+> 从 1808 更新开始，推出了 Azure Stack 上的托管磁盘。 从 1811 更新开始，使用 Azure Stack 门户创建 VM 时，会默认启用该功能。
   
 ## <a name="cheat-sheet-managed-disk-differences"></a>速查表：托管磁盘的差异
 
 | 功能 | Azure（中国） | Azure Stack |
 | --- | --- | --- |
-|静态数据加密 |Azure 存储服务加密 (SSE)、Azure 磁盘加密 (ADE)     |BitLocker 128 位 AES 加密      |
+|静态数据加密 |Azure 存储服务加密 (SSE)、Azure 磁盘加密 (ADE)。     |BitLocker 128 位 AES 加密      |
 |映像          | 托管自定义映像 |支持|
 |备份选项 | Azure 备份服务 |尚不支持 |
 |灾难恢复选项 | Azure Site Recovery |尚不支持|
-|磁盘类型     |高级 SSD、标准 SSD 和标准 HDD |高级 SSD、标准 HDD |
-|高级磁盘  |完全支持 |可部署，但无性能限制或保证  |
-|高级磁盘 IOPS  |取决于磁盘大小  |每个磁盘 2300 IOPS |
-|高级磁盘吞吐量 |取决于磁盘大小 |每个磁盘 145 MB/秒 |
+|磁盘类型     |高级 SSD、标准 SSD 和标准 HDD。 |高级 SSD、标准 HDD |
+|高级磁盘  |完全支持。 |可部署，但无性能限制或保证  |
+|高级磁盘 IOPS  |取决于磁盘大小。  |每个磁盘 2300 IOPS |
+|高级磁盘吞吐量 |取决于磁盘大小。 |每个磁盘 145 MB/秒 |
 |磁盘大小  |Azure 高级磁盘：P4 (32 GiB) 到 P80 (32 TiB)<br>Azure 标准 SSD 磁盘：E10 (128 GiB) 到 E80 (32 TiB)<br>Azure 标准 HDD 磁盘：S4 (32 GiB) 到 S80 (32 TiB) |M4：32 GiB<br>M6：64 GiB<br>M10：128 GiB<br>M15：256 GiB<br>M20：512 GiB<br>M30：1023 GiB |
-|磁盘快照复制|支持附加到正在运行的 VM 的快照 Azure 托管磁盘|尚不支持 |
-|磁盘性能分析 |支持的聚合指标和每磁盘指标 |尚不支持 |
-|迁移      |提供从现有非托管 Azure 资源管理器 VM 迁移的工具，而无需重新创建 VM  |尚不支持 |
+|磁盘快照复制|支持附加到正在运行的 VM 的快照 Azure 托管磁盘。|尚不支持 |
+|磁盘性能分析 |支持的聚合指标和每磁盘指标。 |尚不支持 |
+|迁移      |提供从现有非托管 Azure 资源管理器 VM 迁移的工具，而无需重新创建 VM。  |尚不支持 |
 
 > [!NOTE]  
 > Azure Stack 中的托管磁盘 IOPs 和吞吐量是一个上限数字而非预配的数字，这可能会受在 Azure Stack 中运行的硬件和工作负荷影响。
@@ -160,7 +160,7 @@ Azure Stack 支持托管映像，可让你在通用化 VM（非托管和托管�
 
 执行此步骤之前，请务必正确通用化 VM。 通用化之后，不再可以使用此 VM。 基于未正确通用化的映像创建 VM 会导致 **VMProvisioningTimeout** 错误。
 
-遵照[从存储帐户中的 VHD 创建映像](/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account)中的说明，从存储帐户中的通用化 VHD 创建托管映像。 将来可以使用此映像创建托管 VM。
+按照[从使用存储帐户的 VM 创建映像](/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vm-that-uses-a-storage-account)中的说明，从存储帐户中的通用化 VHD 创建托管映像。 将来可以使用此映像创建托管 VM。
 
 #### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>情况 2：使用 PowerShell 基于托管映像创建托管 VM
 
@@ -173,7 +173,7 @@ Azure Stack PowerShell 模块 1.6.0 或更低版本：
 ```powershell
 # Variables for common values
 $ResourceGroupName = "MyResourceGroup"
-$Location = "chinaeast"
+$Location = "local"
 $VirtualMachineName = "MyVM"
 $ImageRG = "managedlinuxrg"
 $ImageName = "simplelinuxvmm-image-2019122"
@@ -229,7 +229,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmC
 - 如果订阅是在应用 1808 更新之前创建的，请遵循以下步骤来更新订阅。 否则，在此订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器发生内部错误。”
    1. 在 Azure Stack 用户门户中，转到“订阅”，找到相应订阅。  依次单击“资源提供程序”、“Microsoft.Compute”  、“重新注册”  。 
    2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。  
-- 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[此文](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中发生内部错误。”
+- 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[此文](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中出现内部错误。”
 
 ## <a name="next-steps"></a>后续步骤
 

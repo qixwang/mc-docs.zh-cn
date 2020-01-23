@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI- sfctl settings | Azure
+title: Azure Service Fabric CLI- sfctl settings
 description: 介绍 Service Fabric CLI sfctl settings 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 75eabb0d27011a3335beb09068d34c20533e3d3f
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 6a6d1f1223f9b0d3fdbb33693df3f4864e65a494
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254705"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742175"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 配置此 sfctl 实例的本地设置。

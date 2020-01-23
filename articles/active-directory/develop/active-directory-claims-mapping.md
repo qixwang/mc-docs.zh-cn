@@ -1,5 +1,6 @@
 ---
-title: 为 Azure AD 租户中的应用自定义声明（公共预览版）
+title: 自定义 Azure AD 租户应用声明 (Powershell)
+titleSuffix: Microsoft identity platform
 description: 本页介绍 Azure Active Directory 声明映射。
 services: active-directory
 author: rwike77
@@ -8,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 03/28/2019
-ms.date: 08/22/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77b25468a8215995fe73fef2e784cde37d49b020
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: cd82d0a16f564541c17e21acdb99f4bac8543ea1
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993707"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776866"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -31,7 +29,7 @@ ms.locfileid: "69993707"
 此功能由租户管理员用来自定义以令牌形式针对其租户中的特定应用程序发出的声明。 可以使用声明映射策略执行以下操作：
 
 - 选择在令牌中包含的声明。
-- 创建尚不存在的声明类型。
+- 创建尚未存在的声明类型。
 - 选择或更改在特定声明中发出的数据的源。
 
 > [!NOTE]
@@ -305,14 +303,14 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | User | postalcode | 邮政编码 |
 | User | preferredlanguange | 首选语言 |
 | User | onpremisesuserprincipalname | 本地 UPN |
-| User | mailnickname | 邮件别名 |
+| User | mailNickname | 邮件别名 |
 | User | extensionattribute1 | 扩展属性 1 |
 | User | extensionattribute2 | 扩展属性 2 |
 | User | extensionattribute3 | 扩展属性 3 |
 | User | extensionattribute4 | 扩展属性 4 |
 | User | extensionattribute5 | 扩展属性 5 |
 | User | extensionattribute6 | 扩展属性 6 |
-| 用户 | extensionattribute7 | 扩展属性 7 |
+| User | extensionattribute7 | 扩展属性 7 |
 | User | extensionattribute8 | 扩展属性 8 |
 | User | extensionattribute9 | 扩展属性 9 |
 | User | extensionattribute10 | 扩展属性 10 |
@@ -343,7 +341,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。
 
 > [!NOTE]
-> 受限制声明集中的声明的名称和 URI 不能用于声明类型元素。 有关详细信息，请参阅本文后面的“例外和限制”部分。
+> 受限声明集中的声明的 Name 和 URI 不能用于声明类型元素。 有关详细信息，请参阅本文后面的“例外和限制”部分。
 
 ### <a name="claims-transformation"></a>声明转换
 
@@ -399,7 +397,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | User | extensionattribute4 | 扩展属性 4 |
 | User | extensionattribute5 | 扩展属性 5 |
 | User | extensionattribute6 | 扩展属性 6 |
-| 用户 | extensionattribute7 | 扩展属性 7 |
+| User | extensionattribute7 | 扩展属性 7 |
 | User | extensionattribute8 | 扩展属性 8 |
 | User | extensionattribute9 | 扩展属性 9 |
 | User | extensionattribute10 | 扩展属性 10 |
@@ -418,7 +416,13 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。  启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID 连接元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来检查其令牌签名密钥的特殊 URI。  
+必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure Powershell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure Powershell cmdlet 的详细信息，请单击[此处](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+
+启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID 连接元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
+
+```
+https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>跨租户方案
 
@@ -428,18 +432,18 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 声明映射策略只能分配给服务主体对象。
 
-### <a name="example-claims-mapping-policies"></a>示例声明映射策略
+### <a name="example-claims-mapping-policies"></a>声明映射策略示例
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 以下示例将创建、更新、链接和删除服务主体的策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
 
 若要开始，请执行以下步骤：
 
 1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
-1. 运行 Connect 命令登录到你的 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
+1. 运行 Connect 命令，登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
    ``` powershell
    Connect-AzureAD -AzureEnvironmentName AzureChinaCloud -Confirm
@@ -466,7 +470,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 Azure AD Graph Explorer 中登录到 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 [Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -490,7 +494,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 Azure AD Graph Explorer 中登录到 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 [Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -514,11 +518,12 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 Azure AD Graph Explorer 中登录到 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 [Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令： 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
- 
+
+<!-- Update_Description: wording update -->
 

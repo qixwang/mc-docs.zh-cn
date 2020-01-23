@@ -1,6 +1,7 @@
 ---
-title: Azure Stack SQL 资源提供程序 1.1.30.0 发行说明 | Microsoft Docs
-description: 了解 Azure Stack SQL 资源提供程序最新更新版的信息，包括任何已知问题和下载位置。
+title: Azure Stack SQL 资源提供程序 1.1.33.0 发行说明
+titleSuffix: Azure Stack
+description: 查看 Azure Stack SQL 资源提供程序 1.1.33.0 更新的发行说明。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
@@ -12,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 05/06/2019
-ms.date: 06/03/2019
+origin.date: 10/02/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 07a937adf3c8a64746e4a663213739e464d7326c
-ms.sourcegitcommit: 87e9b389e59e0d8f446714051e52e3c26657ad52
+ms.openlocfilehash: 8b778b4dd85819fb194ddeed127929df801b2905
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66381899"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737753"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>SQL 资源提供程序 1.1.33.0 发行说明
 
@@ -45,21 +46,22 @@ ms.locfileid: "66381899"
 此 Azure Stack SQL 资源提供程序版本包含以下改进和修复：
 
 ### <a name="fixes"></a>修复项
-- **SQL 资源提供程序门户扩展可能选择了错误的订阅**。 SQL 资源提供程序使用 Azure 资源管理器调用来确定要使用的第一个服务管理员订阅，该订阅可能不是默认的提供程序订阅。  如果发生这种情况，则表明 SQL 资源提供程序运行不正常。 
+
+- **SQL 资源提供程序门户扩展可能选择了错误的订阅**。 SQL 资源提供程序使用 Azure 资源管理器调用来确定要使用的第一个服务管理员订阅，该订阅可能不是默认的提供程序订阅。  如果发生这种情况，则表明 SQL 资源提供程序运行不正常。
 
 - **SQL 宿主服务器未列出托管的数据库。** 查看 SQL 宿主服务器的租户资源时，可能会发现用户创建的数据库未列出。
 
-- **如果 TLS 1.2 未启用，以前的 SQL 资源提供程序 (1.1.30.0) 部署可能会失败**。 更新了 SQL 资源提供程序 1.1.33.0，可以在部署资源提供程序、更新资源提供程序或轮换机密时启用 TLS 1.2。 
+- **如果未启用 TLS 1.2，以前的 SQL 资源提供程序 (1.1.30.0) 部署可能会失败**。 更新了 SQL 资源提供程序 1.1.33.0，可以在部署资源提供程序、更新资源提供程序或轮换机密时启用 TLS 1.2。
 
 - **SQL 资源提供程序机密轮换失败**。 修复了在轮换机密时会生成以下错误代码的问题：`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
-## <a name="known-issues"></a>已知问题 
+## <a name="known-issues"></a>已知问题
 
-- **SQL SKU 最长可能需要在一小时后才显示在门户中**。 创建新的 SQL 数据库时，新建的 SKU 最长可能需要在一小时后才显示出来并可供使用。 
+- **SQL SKU 最长可能需要在一小时后才显示在门户中**。 创建新的 SQL 数据库时，新建的 SKU 最长可能需要在一小时后才显示出来并可供使用。
 
     **解决方法**：无。
 
-- **重复使用 SQL 登录名**。 尝试使用与现有登录名相同的用户名在同一订阅下创建新的 SQL 登录名时，会导致重复使用同一登录名和现有密码的问题。 
+- **重复使用 SQL 登录名**。 尝试使用与现有登录名相同的用户名在同一订阅下创建新的 SQL 登录名时，会导致重复使用同一登录名和现有密码的问题。
 
     **解决方法**：在同一订阅下创建新登录名时使用不同的用户名，或者在不同订阅下使用相同的用户名创建登录名。
 
@@ -79,4 +81,4 @@ ms.locfileid: "66381899"
 
 [准备部署 SQL 资源提供程序](azure-stack-sql-resource-provider-deploy.md#prerequisites)。
 
-[从旧版升级 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。 
+[从旧版升级 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。

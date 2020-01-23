@@ -10,15 +10,15 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
 origin.date: 11/06/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 866ac08e21810c5a95d9b23bcc444edf77b4ffad
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: ab4f2289acf4ab9cc9ae7a6fc0cb454ea4fa6f34
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807609"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964895"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 Visual Studio 2019 入门
 Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于执行以下操作：
@@ -44,6 +44,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 - [行级安全](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
 - [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
 - [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) 函数 
+- [带约束的表](/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints)不受支持。 对于这些表对象，请将生成操作设为“无”。
 
 ## <a name="next-steps"></a>后续步骤
 

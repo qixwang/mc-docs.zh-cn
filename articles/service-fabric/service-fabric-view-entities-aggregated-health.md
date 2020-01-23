@@ -1,26 +1,17 @@
 ---
-title: 如何查看 Azure Service Fabric 实体的聚合运行状况 | Azure
+title: 如何查看 Azure Service Fabric 实体的聚合运行状况
 description: 说明如何通过运行状况查询和常规查询，查询、查看和评估 Azure Service Fabric 实体的聚合运行状况。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 02/28/2018
-ms.date: 04/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 09e9a69609ac514d008675091daf84a53da06d4e
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: fad18dd9bd41fb63ff29fc251019190cf38de61a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254701"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741932"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -33,7 +24,7 @@ Service Fabric 提供多种方式来获取实体聚合运行状况：
 * 运行状况查询（通过 PowerShell、API 或 REST）
 * 常规查询，返回将运行状况作为属性之一的实体的列表（通过 PowerShell、API 或 REST）
 
-为了演示这些选项，让我们使用一个具有五个节点的本地群集和 [fabric:/WordCount 应用程序](https://aka.ms/servicefabric-wordcountapp)。 **fabric:/WordCount** 应用程序包含两个默认服务：类型为 `WordCountServiceType` 的有状态服务，和类型为 `WordCountWebServiceType` 的无状态服务。 我更改了 `ApplicationManifest.xml`，从而需要有状态服务的七个目标副本以及一个分区。 由于群集中只有五个节点，因此系统组件会对服务分区报告警告，因为它低于目标计数。
+为了演示这些选项，让我们使用一个具有五个节点的本地群集和 [fabric:/WordCount 应用程序](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg)。 **fabric:/WordCount** 应用程序包含两个默认服务：类型为 `WordCountServiceType` 的有状态服务，和类型为 `WordCountWebServiceType` 的无状态服务。 我更改了 `ApplicationManifest.xml`，从而需要有状态服务的七个目标副本以及一个分区。 由于群集中只有五个节点，因此系统组件会对服务分区报告警告，因为它低于目标计数。
 
 ```xml
 <Service Name="WordCountService">
@@ -98,7 +89,7 @@ Service Fabric 为每个支持的[实体类型](service-fabric-health-introducti
 ### <a name="api"></a>API
 若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthAsync](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync?view=azure-dotnet) 方法。
 
-以下调用将获取群集运行状况：
+以下调用会获取群集运行状况：
 
 ```csharp
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
@@ -305,7 +296,7 @@ _Node_0                     Ok
 
 * [必需] 标识应用程序的应用程序名称 (URI)。
 * [可选] 用于取代应用程序清单策略的应用程序运行状况策略。
-* [可选] 事件、服务和已部署应用程序的筛选器，指定有哪些相关项目，并且应该在结果中返回项目（例如，仅错误或警告和错误）。 所有事件、服务和已部署应用程序的都用于评估实体聚合运行状况，无论筛选器为何。
+* [可选] 事件、服务和已部署应用程序的筛选器，指定有哪些相关项目，并且应该在结果中返回项目（例如，仅错误或警告和错误）。 所有事件、服务和已部署应用程序都用于评估实体聚合运行状况，无论筛选器为何。
 * [可选] 用于排除运行状况统计信息的筛选器。 如果未指定，则运行状况统计信息包括所有应用程序子级的正常、警告和错误计数：服务、分区、副本、部署的应用程序和部署的服务包。
 
 ### <a name="api"></a>API
@@ -653,7 +644,7 @@ HealthEvents          :
 
 * [必需] 标识已部署应用程序的应用程序名称 (URI) 和节点名称（字符串）。
 * [可选] 用于取代应用程序清单策略的应用程序运行状况策略。
-* [可选] 事件和已部署服务包的筛选器，指定有哪些相关项目，并且应该在结果中返回项目（例如，仅错误或警告和错误）。 所有事件和已部署服务包的都用于评估实体聚合运行状况，无论筛选器为何。
+* [可选] 事件和已部署服务包的筛选器，指定有哪些相关项目，并且应该在结果中返回项目（例如，仅错误或警告和错误）。 所有事件和已部署服务包都用于评估实体聚合运行状况，无论筛选器为何。
 * [可选] 用于排除运行状况统计信息的筛选器。 如果未指定，则运行状况统计信息显示处于正常、警告和错误运行状况的已部署服务包数。
 
 ### <a name="api"></a>API
@@ -1009,7 +1000,7 @@ ApplicationHealthStateChunks :
 >
 >
 
-如果常规查询返回实体的未知运行状况状态，则可能表示运行状况存储中不存在有关该实体的完整数据。 此外，也有可能对运行状况存储的子查询未成功（例如，发生通信错误，或运行状况存储已受限制）。 通过对实体进行运行状况查询进行跟进。 如果子查询发生暂时性错误，例如网络问题，此跟进查询可能成功。 它还可以从运行状况存储提供关于为何实体未公开的详细信息。
+如果常规查询返回实体的未知运行状况状态，则可能表示运行状况存储中不存在有关该实体的完整数据。 此外，也有可能对运行状况存储的子查询未成功（例如，发生通信错误，或运行状况存储已受限制）。 通过对实体进行运行状况查询跟进。 如果子查询发生暂时性错误，例如网络问题，此跟进查询可能成功。 它还可以从运行状况存储提供关于为何实体未公开的详细信息。
 
 包含实体的 **HealthState** 的查询为：
 
@@ -1082,7 +1073,7 @@ HealthState            : Error
 ```
 
 ## <a name="cluster-and-application-upgrades"></a>群集和应用程序升级
-在群集与应用程序的受监视升级期间，Service Fabric 将检查运行状况，以确保一切都能维持在运行状况良好的状态。 如果实体通过使用已设置的运行状况策略评估为状况不良，升级过程将应用升级特定的策略来确定后续措施。 升级可能会暂停，以允许用户交互（例如修复错误条件或更改策略），或是它自动回滚到以前的正常版本。
+在群集与应用程序的受监视升级期间，Service Fabric 将检查运行状况，以确保一切都能维持在运行状况良好的状态。 如果实体通过使用已配置的运行状况策略评估为不正常，升级过程通过应用升级特定的策略来确定后续措施。 升级可能会暂停，以允许用户交互（例如修复错误条件或更改策略），或是它自动回滚到以前的正常版本。
 
 在*群集*升级期间，可以获取群集升级状态。 升级状态包括状况不正常的评估，指向群集中状况不正常的项目。 如果升级因运行状况问题而回滚，则升级状态将记住最后的不正常原因。 此信息可帮助管理员调查升级回滚或停止后发生的问题。
 

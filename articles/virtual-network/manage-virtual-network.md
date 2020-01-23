@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/10/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7024e447770b849c6c075b84cf56faad6f09dacb
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: cc6f677e7d14039f044a00121a7ea9109d93fec9
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657637"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859215"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -70,7 +70,7 @@ ms.locfileid: "74657637"
 
     - **子网地址范围**：此范围必须处于为虚拟网络输入的地址空间内。 可以指定的最小范围为 /29，为子网提供八个 IP 地址。 Azure 保留每个子网中的第一个地址和最后一个地址，以确保协议一致性。 此外还会保留三个地址供 Azure 服务使用。 因此，子网地址范围为 /29 的虚拟网络仅有三个可用 IP 地址。 如果打算将虚拟网络连接到 VPN 网关，必须创建一个网关子网。 详细了解[网关子网地址范围具体考虑事项](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fvirtual-network%2ftoc.json#gwsub)。 在特定条件下，可以在子网创建后更改地址范围。 若要了解如何更改子网地址范围，请参阅[管理子网](virtual-network-manage-subnet.md)。
     - **订阅**：选择一个[订阅](../azure-glossary-cloud-terminology.md?toc=%2fvirtual-network%2ftoc.json#subscription)。 不能在多个 Azure 订阅中使用同一个虚拟网络。 但是，可通过[虚拟网络对等](virtual-network-peering-overview.md)将一个订阅中的虚拟网络连接到另一个订阅中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络处于同一订阅中。
-    - **资源组**：选择现有的[资源组](../azure-resource-manager/resource-group-overview.md?toc=%2fvirtual-network%2ftoc.json#resource-groups)，或创建一个新组。 连接到虚拟网络的 Azure 资源可以与虚拟网络处于同一资源组中，也可以处于不同资源组中。
+    - **资源组**：选择现有的[资源组](../azure-resource-manager/management/overview.md?toc=%2fvirtual-network%2ftoc.json#resource-groups)，或创建一个新组。 连接到虚拟网络的 Azure 资源可以与虚拟网络处于同一资源组中，也可以处于不同资源组中。
     - **位置**：选择 Azure [位置](https://status.azure.com/status/)（也称为区域）。 一个虚拟网络只能位于一个 Azure 区域中。 但是，可以使用 VPN 网关将一个位置中的虚拟网络连接到另一个位置中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络位于同一区域中。
 
  命令
@@ -84,7 +84,7 @@ ms.locfileid: "74657637"
 1. 在门户顶部的搜索框中，输入“虚拟网络”  。 当“虚拟网络”出现在搜索结果中时，请将其选中  。
 2. 在虚拟网络列表中，选择要查看其设置的虚拟网络。
 3. 将列出所选虚拟网络的以下设置：
-    - **概述**：提供有关虚拟网络的信息，包括地址空间和 DNS 服务器。 以下屏幕截图显示了名为  MyVNet 的虚拟网络的概述设置：
+    - **概览**：提供有关虚拟网络的信息，包括地址空间和 DNS 服务器。 以下屏幕截图显示了名为  MyVNet 的虚拟网络的概述设置：
 
         ![网络接口概述](./media/manage-virtual-network/vnet-overview.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "74657637"
         - [访问控制 (IAM)](../role-based-access-control/overview.md)
         - [标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fvirtual-network%2ftoc.json)
         - [锁](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fvirtual-network%2ftoc.json)
-        - [自动化脚本](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+        - [自动化脚本](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
  命令
 
@@ -113,7 +113,7 @@ ms.locfileid: "74657637"
 
 可以为虚拟网络添加和删除地址范围。 地址范围必须以 CIDR 表示法指定，并且不能和同一虚拟网络中的其他地址范围重叠。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 
 
-如果没有与虚拟网络关联的子网，可以减小其地址范围。 否则，只能扩展地址范围，例如，将 /16 更改为 /8。 你可以从一个较小的地址范围开始，以后对其进行扩展或添加其他范围。
+可以减小虚拟网络的地址范围，只要它仍包括任何关联子网的范围。 此外，还可以扩展地址范围，例如，将 /16 更改为 /8。 
 
 无法添加以下的地址范围：
 
@@ -182,7 +182,7 @@ ms.locfileid: "74657637"
 
 若要在虚拟网络上执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)：
 
-| 操作                                  |   Name                                |
+| 操作                                  |   名称                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   读取虚拟网络              |
 |Microsoft.Network/virtualNetworks/write  |   创建或更新虚拟网络  |

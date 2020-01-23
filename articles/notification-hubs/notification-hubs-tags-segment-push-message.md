@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 12/09/2019
+origin.date: 12/09/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: ef63b66996c57c3e94d05e77fb443e198fad94f8
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: fb9e34020478d9e62730af0a3c56177b7352cf2d
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884973"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123124"
 ---
 # <a name="routing-and-tag-expressions"></a>路由和标记表达式
 
@@ -42,7 +42,7 @@ ms.locfileid: "74884973"
 
 标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、“@”、“#”、“.”、“:”、“-”。 以下示例显示了一个应用程序，可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签：
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
+![标记概述](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
 在此图中，标记为 Beatles 的消息仅传送到使用标记 Beatles 注册的平板电脑   。
 
@@ -66,7 +66,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 标记不必进行预配，并且可以参考多个特定于应用的概念。 例如，此示例应用程序的用户可以对乐队发表评论，并且不仅想要接收有关其喜爱乐队的评论的 toast，而且想要接收来自其好友的所有评论（不管他们在对哪个乐队发表评论）的 toast。 下图显示了此方案的示例：
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
+![标记好友](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
 在此图中，Alice 对于 Beatles 的更新感兴趣，而 Bob 对于 Wailers 的更新感兴趣。 Bob 还对 Charlie 的评论感兴趣，而 Charlie 对 Wailers 感兴趣。 当发送有关 Charlie 对 Beatles 的评论的通知时，Alice 和 Bob 都会收到它。
 
@@ -81,7 +81,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 使用标记的另一种方法就是标识特定用户的所有设备。 可以使用包含用户 ID 的标记来标记注册，如下图所示：
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
+![标记用户](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
 在此图中，标记为 uid:Alice 的消息将传到标记为“uid:Alice”的所有注册，即 Alice 的所有设备。
 
@@ -95,7 +95,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 (follows_RedSox || follows_Cardinals) && location_Boston
 ```
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
+![标记表达式](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
 标记表达式可以包含所有布尔运算符，如 AND (&&)、OR (||) 和 NOT (!)。 标记表达式还可以包含括号。 标记表达式在只包含 OR 的情况下限制为 20 个标记；否则限制为 6 个标记。
 

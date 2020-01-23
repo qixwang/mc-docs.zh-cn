@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6ed951a363703ca9064c4c16f09a7268c1ad4fc7
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: d02bfa59d74a03ade3d6108a18bec12d9773f91e
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624327"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116923"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -25,7 +25,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虚拟网络和专用子网
 
@@ -46,9 +46,9 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>应用程序网关子网中的网络安全组
 
-应用程序网关支持网络安全组 (NSG)。 但同时存在多种限制：
+应用程序网关支持网络安全组 (NSG)。 但是，存在一些限制：
 
-- 对于应用程序网关 v1 SKU，必须允许 TCP 端口 65503-65534 上的传入 Internet 流量，对于目标子网为 *Any* 的 v2 SKU，必须允许 TCP 端口 65200-65535 上的传入 Internet 流量。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
+- 对于应用程序网关 v1 SKU，必须允许 TCP 端口 65503-65534 上的传入 Internet 流量，对于目标子网为 **Any** 且源为 **GatewayManager** 服务标记的 v2 SKU，必须允许 TCP 端口 65200-65535 上的传入 Internet 流量。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 外部实体（包括这些网关的客户）无法在这些终结点上通信。
 
 - 不能阻止出站 Internet 连接。 NSG 中的默认出站规则允许 Internet 连接。 建议：
 
@@ -57,12 +57,12 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 必须允许来自 **AzureLoadBalancer** 标记的流量。
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 IP
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 IP
 
 对于此方案，请在应用程序网关子网中使用 NSG。 按以下优先顺序对子网施加以下限制：
 
-1. 允许从源 IP 或 IP 范围到整个应用程序网关子网目标或特定的已配置专用前端 IP 的传入流量。 NSG 在公共 IP 上不起作用。
-2. 允许来自所有源的传入请求到达应用程序网关 v1 SKU 的端口 65503-65534，以及 v2 SKU 的端口 65200-65535 以便进行[后端运行状况通信](/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体将无法对这些终结点做出任何更改。
+1. 允许来自源 IP 或 IP 范围的传入流量，其目标为整个应用程序网关子网地址范围，目标端口为入站访问端口，例如，使用端口 80 进行 HTTP 访问。
+2. 允许特定的传入请求，这些请求来自采用 **GatewayManager** 服务标记的源，其目标为“任意”  ，目标端口为 65503-65534（适用于应用程序网关 v1 SKU）或 65200-65535（适用于 v2 SKU），可以进行[后端运行状况通信](/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体将无法对这些终结点做出任何更改。
 3. 允许[网络安全组](/virtual-network/security-overview)中的传入 Azure 负载均衡器探测（*AzureLoadBalancer* 标记）和入站虚拟网络流量（*VirtualNetwork* 标记）。
 4. 使用“全部拒绝”规则阻止其他所有传入流量。
 5. 允许发往 Internet 的所有目标的出站流量。
@@ -74,10 +74,10 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 对于 v2 SKU，应用网关子网不支持 UDR。 有关详细信息，请参阅 [Azure 应用程序网关 v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)。
 
 > [!NOTE]
-> v2 SKU 不支持 UDR。  如果需要 UDR，应继续部署 v1 SKU。
+> 目前，v2 SKU 不支持 UDR。
 
 > [!NOTE]
-> 在应用程序网关子网中使用 UDR 会导致[后端运行状况视图](/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状态显示为“未知”。 此外，还会导致应用程序网关日志和指标生成失败。 建议不要在应用程序网关子网中使用 UDR，以便能够查看后端运行状况、日志和指标。
+> 在应用程序网关子网中使用 UDR 可能会导致[后端运行状况视图](/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状态显示为“未知”。 此外，可能还会导致应用程序网关日志和指标生成失败。 建议不要在应用程序网关子网中使用 UDR，以便能够查看后端运行状况、日志和指标。
 
 ## <a name="front-end-ip"></a>前端 IP
 
@@ -256,7 +256,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="connection-draining"></a>连接清空
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例继续维护现有连接，并在可配置的超时时间内处理正在进行的请求，并且不会接收任何新请求或连接。 此情况的唯一例外是由于网关托管会话相关性而绑定到注销实例的请求，这些请求将继续被代理到注销实例。 连接清空将应用到已从后端池中显式删除的后端实例。
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 它确保后端池的所有注销实例继续维护现有连接，并在可配置的超时时间内处理正在进行的请求，并且不会接收任何新请求或连接。 此情况的唯一例外是由于网关托管会话相关性而绑定到注销实例的请求，这些请求将继续被转发到注销实例。 连接清空将应用到已从后端池中显式删除的后端实例。
 
 ### <a name="protocol"></a>协议
 

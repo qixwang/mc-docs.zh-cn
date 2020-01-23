@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 的审核日志
+title: 审核日志 - Azure Database for MySQL
 description: 介绍了 Azure Database for MySQL 中提供的审核日志，以及用于启用日志记录级别的可用参数。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 06/26/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 2b6a4bdf6d42e3dca49e327bbd437becc1160f9b
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 12/09/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 25936b90308bfc888fd090f268d805e9253fe697
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142089"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776675"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
@@ -33,7 +33,7 @@ ms.locfileid: "73142089"
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
 - `audit_log_include_users`：要包括 MySQL 用户进行日志记录。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
 > [!Note]
-> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。例如，如果 audit_log_include_users = `demouser` 并且 audit_log_exclude_users = `demouser`，它将审核日志，因为 `audit_log_include_users` 的优先级更高。
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
 - `audit_log_exclude_users`：不对 MySQL 用户进行日志记录。 此参数的最大长度为 512 个字符。
 
 > [!Note]

@@ -1,26 +1,17 @@
 ---
-title: 故障分析服务概述 | Azure
+title: 故障分析服务概述
 description: 本文介绍 Service Fabric 中用于针对服务引入故障和运行测试方案的故障分析服务。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/15/2017
-ms.date: 09/10/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 659edfec190d07ef932ce27f8f4ac02302ef0d91
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 67a2ab3cab49d1d8548b09762a5349fbb8930834
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646280"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742122"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
 故障分析服务是在 Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
@@ -47,9 +38,9 @@ ms.locfileid: "52646280"
 ## <a name="testing-distributed-systems"></a>测试分布式系统
 Service Fabric 让编写和管理分布式可扩展应用程序的工作变得更加轻松。 故障分析服务使得测试分布式应用程序变得更加容易。 在测试时有三个需要解决的主要问题：
 
-1. 模拟/生成在现实世界中可能发生的故障：Service Fabric 的一个重要方面是它允许分布式应用程序从各种故障中恢复。 然而，为了测试应用程序能够从这些故障中恢复过来，我们需要一种机制，在受控的测试环境中模拟/生成这些现实故障。
-1. 生成相关故障的能力：系统中的基本故障（例如网络故障、计算机故障）可轻松地单独生成。 生成可能在真实环境中由于这些个体故障的相互作用而发生的大量应用场景是一种非凡的能力。
-1. 跨各种开发和部署级别的统一体验：有很多能够执行各种故障的故障注入系统。 然而，当从单机开发人员方案转到在大型测试环境中运行相同的测试以在生产测试中使用它们时，在所有这些系统中的体验就很不理想。
+1. 模拟/生成在现实方案中可能会发生的故障：Service Fabric 的一个重要方面是它允许分布式应用程序从各种故障中恢复。 然而，为了测试应用程序能够从这些故障中恢复过来，我们需要一种机制，在受控的测试环境中模拟/生成这些现实故障。
+1. 生成相关故障的能力：系统中的基本故障（例如网络故障和计算机故障）可轻松地单独生成。 生成可能在真实环境中由于这些个体故障的相互作用而发生的大量应用场景是一种非凡的能力。
+1. 跨各种开发和部署级别的统一体验：有许多能够执行各种故障的故障注入系统。 然而，当从单机开发人员方案转到在大型测试环境中运行相同的测试以在生产测试中使用它们时，在所有这些系统中的体验就很不理想。
 
 尽管有很多用于解决上述问题的机制，仍然缺少一种能够保证完成相同任务的系统 - 从单机开发人员环境以各种方式转到生产群集测试。 故障分析服务可帮助应用程序开发人员专注于测试他们的业务逻辑。 故障分析服务可提供对服务与底层分布式系统的交互进行测试所需的所有能力。
 
@@ -103,5 +94,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 使用内置[测试方案](service-fabric-testability-scenarios.md)开始测试应用程序和服务，或使用由故障分析服务提供的[故障操作](service-fabric-testability-actions.md)编写自己的测试方案。
 
 <!--Image references-->
+
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png
+
 <!-- Update_Description: update meta properties -->

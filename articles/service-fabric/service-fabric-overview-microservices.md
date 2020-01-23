@@ -1,26 +1,16 @@
 ---
-title: Azure 微服务简介 | Azure
+title: Azure 微服务简介
 description: 概述了为何使用微服务方法生成云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台来实现此目的。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/18/2019
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: f24bad840670bdd9a20282ba18808d75e3628974
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: 1565799ce6bcd65c29f22395e62050d4aee7c388
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753169"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742488"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>为何要使用微服务方法构建应用程序？
 
@@ -92,17 +82,17 @@ ms.locfileid: "68753169"
 
 ### <a name="written-in-any-programming-language-using-any-framework"></a>使用任何编程语言编写并使用任何框架
 
-作为开发人员，我们应该根据本身的技能或服务需求，自由选择所需的语言或框架。 在某些服务中，可能会认为 C++ 的性能优点胜于一切。 而在其他服务中，C# 或 Java 的简易管理开发可能才是最重要的。 在某些情况下，可能需要使用特定合作伙伴库、数据存储技术，或向客户端公开服务的方式。
+作为开发人员，我们希望根据本身的技能和要创建的服务的需求，自由选择语言或框架。 对于某些服务来说，你可能会认为 C++ 的性能优点胜于一切。 对于其他服务来说，C# 或 Java 的简易管理开发可能更重要。 在某些情况下，可能需要使用特定合作伙伴库、数据存储技术，或向客户端公开服务的方式。
 
-在选择了技术之后，接下来要做的是服务的操作管理或生命周期管理和缩放。
+在选择技术之后，需考虑服务的运营管理或生命周期管理和缩放。
 
 ### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>允许独立控制版本、部署及缩放的代码和状态
 
-无论选择以何种方式编写微服务，代码和（可选）状态都应该独立部署、升级和缩放。 这是难以解决的问题之一，因为这涉及到所选的技术。 在缩放方面，难以了解如何分区（或分片）代码和状态。 当代码和状态使用不同的技术时（目前的普遍情况），微服务的部署脚本必须能够妥善缩放两者。 这也关乎到灵活性和弹性，以便可以升级某些微服务，而无需一次性全部升级。
+无论你以何种方式编写微服务，代码和（可选）状态都应该独立部署、升级和缩放。 此问题难以解决，因为这涉及到所选的技术。 在缩放方面，难以了解如何分区（或分片）代码和状态。 当代码和状态使用不同的技术时（目前的普遍情况），微服务的部署脚本必须能够妥善缩放两者。 这种区分也涉及灵活性和弹性，因此可以升级某些微服务，无需一次性全部升级。
 
-暂时回到单一式方法和微服务方法的比较，下图显示了状态存储方法的差异。
+接下来，我们来比较一下整体方法和微服务方法。 下图显示了各种状态存储方法的差异：
 
-#### <a name="state-storage-between-application-styles"></a>应用程序样式之间的状态存储
+#### <a name="state-storage-for-the-two-approaches"></a>这两种方法的状态存储
 
 ![Service Fabric 平台状态存储][Image2]
 

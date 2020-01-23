@@ -1,5 +1,5 @@
 ---
-title: 用于登录用户的 Web 应用（代码配置）- Microsoft 标识平台
+title: 配置用于用户登录的 Web 应用 - Microsoft 标识平台 | Azure
 description: 了解如何构建用于登录用户的 Web 应用（代码配置）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4258025a55200683233b65311917bf2eb913919e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 099674c8da17b393cb3fd11114836f7867529353
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335407"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777033"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -34,8 +34,8 @@ ms.locfileid: "75335407"
 | 平台 | 库 | 说明 |
 |----------|---------|-------------|
 | ![.NET](./media/sample-v2-code/logo_net.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 在由 ASP.NET 和 ASP.NET Core 直接使用的情况下，适用于 .NET 的 Microsoft 标识模型扩展提议了一组在 .NET Framework 和 .NET Core 上运行的 DLL。 在 ASP.NET 或 ASP.NET Core Web 应用中，可以使用 **TokenValidationParameters** 类控制令牌验证（尤其适用于某些合作伙伴方案）。 |
-| ![Java](./media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 适用于 Java 的 Microsoft 身份验证库 (MSAL)。 目前以公共预览版提供。 |
-| ![Python](./media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | 适用于 Python 的 MSAL。 目前以公共预览版提供。 |
+| ![Java](./media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 支持 Java Web 应用程序 |
+| ![Python](./media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | 支持 Python Web 应用程序 |
 
 选择与所需平台对应的选项卡：
 
@@ -83,7 +83,7 @@ ms.locfileid: "75335407"
 {
   "AzureAd": {
     // Azure cloud instance among:
-    // "https://login.chinacloudapi.cn/" for Azure AD China operated by 21Vianet
+    // - "https://login.chinacloudapi.cn/" for Azure AD China operated by 21Vianet
     "Instance": "https://login.partner.microsoftonline.cn/",
 
     // Azure AD audience among:
@@ -206,7 +206,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core Web 应用（和 Web API）中，应用程序受到保护，因为控制器或控制器操作中包含 `[Authorize]` 属性。 此属性检查是否已对用户进行身份验证。 用于初始化应用程序的代码位于 Startup.cs 文件中。 
+在 ASP.NET Core Web 应用（和 Web API）中，应用程序受到保护，因为控制器或控制器操作中包含 `[Authorize]` 属性。 此属性检查是否已对用户进行身份验证。 用于初始化应用程序的代码位于 Startup.cs 文件中。
 
 若要使用 Microsoft 标识平台（前称为 Azure AD v2.0）添加身份验证，需要添加以下代码。 代码中的注释应该浅显易懂。
 
@@ -217,7 +217,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 以下代码摘自 [Startup.cs#L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)。
 
-```CSharp
+```csharp
 public class Startup
 {
  ...
@@ -252,7 +252,7 @@ public class Startup
 
 身份验证不起作用时，跟踪 OpenId Connect 中间件事件有助于排查 Web 应用程序的问题。 将 `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` 设置为 `true` 可以显示 ASP.NET Core 中间件集在处理 HTTP 响应后处理 `HttpContext.User` 中的用户标识过程中如何阐述详细的信息。
 
-```CSharp
+```csharp
 /// <summary>
 /// Add authentication with the Microsoft identity platform.
 /// This method expects the configuration file to have a section named "AzureAd" with the necessary settings to initialize authentication options.
@@ -315,7 +315,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 与 ASP.NET Web 应用和 Web API 中的身份验证相关的代码位于 [App_Start/Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61) 文件中。
 
-```CSharp
+```csharp
  public void ConfigureAuth(IAppBuilder app)
  {
   app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -339,7 +339,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-该 Java 示例使用 Spring 框架。 应用程序受到保护，因为已实现一个用于截获每个 HTTP 响应的筛选器。 在 Java Web 应用快速入门中，此筛选器是 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` 中的 `AuthFilter`。 
+该 Java 示例使用 Spring 框架。 应用程序受到保护，因为已实现一个用于截获每个 HTTP 响应的筛选器。 在 Java Web 应用快速入门中，此筛选器是 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` 中的 `AuthFilter`。
 
 该筛选器处理 OAuth 2.0 授权代码流，并检查用户是否已完成身份验证（`isAuthenticated()` 方法）。 如果用户未完成身份验证，该筛选器将计算 Azure AD 授权终结点的 URL，并将浏览器重定向到此 URI。
 

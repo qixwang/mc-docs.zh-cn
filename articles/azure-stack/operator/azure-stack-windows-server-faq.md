@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/29/2019
-ms.date: 10/21/2019
+origin.date: 12/27/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
-ms.openlocfilehash: 360578f71278b7a57eed857b6db8c93a6da0c799
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 9c015239ad31d755c0dd8eac39c209f3c35d77b7
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578327"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737735"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack 市场中的 Windows Server 常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "72578327"
 
 首先，请确定是否有任何 Azure 资源管理器模板引用了特定的版本。 如果有，请更新这些模板，或保留旧的映像版本。 最好是使用 **version: latest**。
 
-接下来，如果有任何虚拟机规模集引用特定的版本，则应考虑将来是否要缩放它们，并确定是否要保留旧版本。 如果上述两个条件都不适用，请先在市场中删除旧映像，然后下载新映像。 如果原始映像是使用“市场管理”下载的，请使用“市场管理”将其删除。 然后下载新版本。
+接下来，如果任何虚拟机规模集引用特定版本，则应考虑是否会在以后对其进行缩放，并决定是否保留旧版本。 如果上述两个条件都不适用，请先在市场中删除旧映像，然后下载新映像。 如果原始映像是使用“市场管理”下载的，请使用“市场管理”将其删除。 然后下载新版本。
 
 ### <a name="what-are-the-licensing-options-for-windows-server-marketplace-images-on-azure-stack"></a>Azure Stack 上的 Windows Server 市场映像有哪些许可选项？
 
@@ -57,7 +57,7 @@ Azure Stack 不支持 Azure 混合使用权益 (AHUB)。 通过“容量”模�
 可以通过运行以下脚本来更改许可证模型属性，以将自带许可 (BYOL) 切换为预付费模型：
 
 ```powershell
-vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
 $vm.LicenseType = "None"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
@@ -81,6 +81,8 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>对于使用 Windows Server 的其他 VM （例如 SQL 或 Machine Learning Server），该如何处理？
 
 这些映像应用 **licenseType** 参数，因此它们采用即用即付模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 即付即付许可不适用于分层软件产品。
+
+请注意，如果版本为 XX.X.20190410 或更高版本，则只能更改市场中 SQL Server 映像的 **licenseType** 属性。 如果正在运行来自市场的 SQL Server 映像的旧版本，则不能更改 **licenseType** 属性，并且必须使用市场中的最新 SQL Server 映像重新部署。
 
 ### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>我已签署企业协议 (EA) 且将使用 EA Windows Server 许可证，如何确保映像正确计费？
 

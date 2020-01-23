@@ -1,25 +1,26 @@
 ---
-title: 在 Azure 门户中使用 RBAC 管理 Azure AD 对 Blob 和队列数据的访问权限 - Azure 存储 | Microsoft Docs
-description: 在 Azure 门户中使用基于角色的访问控制 (RBAC) 向安全主体分配容器和队列的访问权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
+title: 使用 Azure 门户为数据访问分配 RBAC 角色
+titleSuffix: Azure Storage
+description: 了解如何使用 Azure 门户通过基于角色的访问控制 (RBAC) 向 Azure Active Directory 安全主体分配权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 07/25/2019
-ms.date: 11/25/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 60ae598e9710e088b434ed204d795d4dc2584aa0
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: f0e67cc0689035a8c1ed80da54bac8ac13ff14f7
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328720"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624167"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限
+# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户为 blob 和队列数据分配 RBAC 角色
 
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。 
+Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 或队列数据的通用权限集。
 
 将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -54,12 +55,12 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 此处所示的过程将分配限定于容器的角色，但你可以按照相同的步骤分配限定于队列的角色： 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，导航到存储帐户并显示该帐户的“概述”  。
+1. 在 [Azure 门户](https://portal.azure.cn)中，转到存储帐户并显示该帐户的“概述”  。
 1. 在“服务”下选择“Blob”。  
 1. 找到要针对其分配角色的容器，并显示该容器的设置。 
 1. 选择“访问控制(IAM)”以显示容器的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
 
-    ![显示容器访问控制设置的屏幕截图](media/storage-auth-aad-rbac-portal/portal-access-control-container.png)
+    ![显示容器访问控制设置的屏幕截图](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
 1. 单击“添加角色分配”  按钮以添加一个新角色。
 1. 在“添加角色分配”窗口中，选择要分配的 Azure 存储角色  。 然后通过搜索找到要为其分配该角色的安全主体。

@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器中的日志
-description: Azure Database for PostgreSQL - 单一服务器中的日志记录配置、存储和分析的概念
+title: 日志 - Azure Database for PostgreSQL - 单一服务器
+description: 介绍 Azure Database for PostgreSQL 中的日志记录配置、存储和分析 - 单一服务器
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 10/25/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: fc57485876dba976322935c9f2b45d630640a343
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 01/13/2020
+ms.openlocfilehash: 41705ba5095f437d94ca6ad290e80dfcebc26237
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020827"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776633"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
 Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。 可以配置和访问的日志信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （无法访问事务日志）。
@@ -66,6 +66,8 @@ Azure Database for PostgreSQL 与 Azure Monitor 诊断日志设置相集成。 �
    5. 选择日志类型“PostgreSQLLogs”。 
    7. 保存设置。
 
+若要使用 Powershell、CLI 或 REST API 启用诊断日志，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
+
 ### <a name="access-diagnostic-logs"></a>访问诊断日志
 
 访问日志的方式取决于所选的终结点。
@@ -104,7 +106,7 @@ AzureDiagnostics
 | ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | 资源 URI |
-| Resource | 服务器的名称 |
+| 资源 | 服务器的名称 |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | 日志记录级别，例如：LOG, ERROR, NOTICE |

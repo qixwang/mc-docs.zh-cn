@@ -1,23 +1,23 @@
 ---
-title: 通过参数化 URL 共享 Azure 时序见解自定义视图 | Microsoft Docs
-description: 本文介绍如何在 Azure 时序见解中生成参数化 URL，以便轻松共享自定义视图。
+title: 通过参数化 URL 共享自定义视图 - Azure 时序见解 | Microsoft Docs
+description: 了解如何创建参数化 URL，以便在 Azure 时序见解中轻松共享自定义的资源管理器视图。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: anshan
+author: deepakpalled
+ms.author: v-yiso
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
-origin.date: 04/30/2019
-ms.date: 07/08/2019
+origin.date: 12/12/2019
+ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 06e2b635b35523df44dbaea4709f45feb677daa1
-ms.sourcegitcommit: c0f7c439184efa26597e97e5431500a2a43c81a5
+ms.openlocfilehash: 80092aef7e52885c0e3b9659952548f62555cd2b
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67456384"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859697"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -47,11 +47,12 @@ ms.locfileid: "67456384"
 
 `to=<integer>` 是以 JavaScript 毫秒为单位的一个值，代表搜索时间跨度的结束时间。 
 
-若要确定某个日期对应的 JavaScript 毫秒，请参阅[纪元和 Unix 时间戳转换器](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html)。
+> [!TIP]
+> 若要轻松地将日期转换为 JavaScript 毫秒，请尝试 [Epoch 与 Unix 时间戳转换器](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html)。
 
 ### <a name="relative-time-values"></a>相对时间值
 
-对于相对时间值，请使用 `relativeMillis=<value>`，其中  value 为 JavaScript 毫秒，来自后端的最新数据。
+对于相对时间值，请使用 `relativeMillis=<value>`，其中“值”为从 API 收到的最近时间戳的 JavaScript 毫秒  。
 
 例如，`&relativeMillis=3600000` 显示最新的 60 分钟的数据。
 
@@ -68,7 +69,7 @@ ms.locfileid: "67456384"
 
 ### <a name="optional-parameters"></a>可选参数
 
-`timeSeriesDefinitions=<collection of term objects>` 参数指定时序见解视图的术语：
+`timeSeriesDefinitions=<collection of term objects>` 参数指定将在时序见解视图中显示的谓词术语：
 
 | 参数 | URL 项 | 说明 |
 | --- | --- | --- |
@@ -76,7 +77,11 @@ ms.locfileid: "67456384"
 | **splitBy** | `\<string>` | 要按其进行拆分的列名。  |
 | **measureName** | `\<string>` | 度量值的列名。  |
 | **predicate** | `\<string>` | 用于服务器端筛选的  where 子句。 |
-| **useSum** | `true` | 一个可选参数，指定对度量值使用总和。 </br>  请注意，如果所选度量值为 `Events`，则默认选择计数。  </br>  如果未选择 `Events`，则默认选择平均值。 |
+| **useSum** | `true` | 一个可选参数，指定对度量值使用总和。 |
+
+> [!NOTE]
+> 如果所选 useSum 度量值为 `Events`，则默认选择计数  。  
+> 如果未选择 `Events`，则默认选择平均值。 |
 
 * `multiChartStack=<true/false>` 键值对在图表中启用堆栈。
 * `multiChartSameScale=<true/false>` 键值对不同可选参数的条件启用相同的 Y 轴比例。  
@@ -86,15 +91,19 @@ ms.locfileid: "67456384"
 | 对 | 说明 |
 | --- | --- |
 | `multiChartStack=false` | `true` 是默认启用的，因此请将 `false` 传递到堆栈。 |
-| `multiChartStack=false&multiChartSameScale=true` | 必须启用堆叠才能在不同的条件中使用同一 Y 轴比例。  它在默认情况下为 `false`，因此传递“true”即可启用此功能。 |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 单位为天、小时、分钟、秒、毫秒。  请始终将单位大写。 </br> 为 timeBucketSize 传递所需的整数即可定义单位数。  注意，平滑度最多可以调整为 7 天。  |
-| `timezoneOffset=-<integer>` | 整数的单位始终为毫秒。 </br> 注意，此功能与我们在时序见解资源管理器中启用的功能稍有差别，该资源管理器允许选择本地浏览器时间或 UTC。 |
+| `multiChartStack=false&multiChartSameScale=true` | 必须启用堆叠才能在不同的条件中使用同一 Y 轴比例。  它在默认情况下为 `false`，因此传递 `true` 即可启用此功能。 |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 单位 = `days`、`hours`、`minutes`、`seconds`、`milliseconds`。  请始终将单位大写。 </br> 为 timeBucketSize 传递所需的整数即可定义单位数  。  |
+| `timezoneOffset=-<integer>` | 整数的单位始终为毫秒。 |
+
+> [!NOTE]
+> timeBucketUnit 值最多可以平滑为 7 天  。
+> timezoneOffset 值既不是 UTC 也不是本地时间  。
 
 ### <a name="examples"></a>示例
 
 若要将时序定义以 URL 参数的形式添加到时序见解环境，请追加：
 
-```plaintext
+```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
@@ -103,24 +112,28 @@ ms.locfileid: "67456384"
 
 * 环境 ID
 * 过去 60 分钟的数据
-* 构成可选参数的术语（F1PressureID、F2TempStation 和 F3VibrationPL）
+* 构成可选参数的术语（F1PressureID、F2TempStation 和 F3VibrationPL）   
 
 可以为视图构造以下参数化 URL：
 
-```plaintext
+```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
+[![时序见解资源管理器参数化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+
 > [!TIP]
-> [使用 URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) 查看实时资源管理器。
+> [使用 URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) 上方示例查看实时资源管理器。
 
-上述 URL 描述并生成时序见解资源管理器视图：
+上述 URL 描述并显示参数化的时序见解资源管理器视图。 
 
-[![时序见解资源管理器术语](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+* 参数化谓词。
 
-完整视图（包括图表）：
+  [![时序见解资源管理器参数化谓词。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
-[![图表视图](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+* 共享的完整图表视图。
+
+  [![共享的完整图表视图。](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

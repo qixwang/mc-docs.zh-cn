@@ -14,16 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
 origin.date: 05/01/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 45970fc70632fe83715032ec3c1140fea42db977
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 2fad35a79e98c6bffae9a83b39590868c3850609
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807654"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939813"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
+
+>通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 
 本文介绍 Azure 媒体服务 v3 中引入的更改，说明两个版本之间的差异，并提供迁移指导。
 

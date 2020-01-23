@@ -15,16 +15,16 @@ ms.workload: na
 origin.date: 09/22/2018
 ms.date: 09/26/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 57f9d4e79281e0136e3ba7a9c045d21c009e5321
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 7bcc914d52ae6664a41a42218c591fdf01d384d0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329994"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854213"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
-本文将讨论 Azure 服务总线的事务功能。 很多讨论已在 [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式  功能，虽然原子事务示例在范围内更广泛且更复杂。
+本文将讨论 Microsoft Azure 服务总线的事务功能。 很多讨论已在[服务总线中的 AMQP 事务示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式  功能，虽然原子事务示例在范围内更广泛且更复杂。
 
 ## <a name="transactions-in-service-bus"></a>服务总线中的事务
 
@@ -62,7 +62,7 @@ var sender = new MessageSender(connection, QueueName);
 var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-简单事务处理随后使用这些元素，如以下示例所示：
+简单事务处理随后使用这些元素，如以下示例所示。 若要参考完整示例，请参阅 [GitHub 上的源代码](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)：
 
 ```csharp
 var receivedMessage = await receiver.ReceiveAsync();

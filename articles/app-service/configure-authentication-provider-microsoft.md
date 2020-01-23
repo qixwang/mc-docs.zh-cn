@@ -1,26 +1,18 @@
 ---
-title: 配置 Microsoft 帐户身份验证 - Azure 应用服务
-description: 了解如何为应用服务应用配置 Microsoft 帐户身份验证。
-author: mattchenderson
-services: app-service
-documentationcenter: ''
-manager: syntaxc4
-editor: ''
+title: 配置 Microsoft 身份验证
+description: 了解如何作为标识提供者为应用服务应用配置 Microsoft 帐户身份验证。
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/08/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 1eb7ed63ce5e59e3670dd7dfdb2929a37e0ae838
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: d82c1dd202ccf7bd8ac111296518a83039b7371b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555986"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600499"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>将应用服务应用配置为使用 Microsoft 帐户登录
 

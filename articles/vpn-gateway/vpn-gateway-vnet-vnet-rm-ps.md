@@ -1,19 +1,19 @@
 ---
-title: 使用 VNet 到 VNet 连接将 Azure 虚拟网络连接到另一 VNet：PowerShell | Microsoft Docs
+title: 使用 Azure VPN 网关 VNet 到 VNet 连接将一个 VNet 连接到另一个 VNet：PowerShell
 description: 使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起来。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 02/15/2019
-ms.date: 01/06/2020
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: dc1e710b25fce8a6413c8a3f64952fead7778f0a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 8cf0f6f08ad1be64a96ebedab9b8399c3b027958
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624261"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939737"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -63,7 +63,7 @@ ms.locfileid: "75624261"
 
 此配置的步骤使用 TestVNet1 和 TestVNet4。
 
-  ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 ## <a name="samesub"></a>如何连接相同订阅中的 VNet
 
@@ -92,7 +92,6 @@ ms.locfileid: "75624261"
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
 * 连接（1 到 4）：VNet1 到 VNet4
-* 连接（1 到 5）：VNet1 到 VNet5（适用于不同订阅中的 VNet）
 * 连接类型：VNet2VNet
 
 **TestVNet4 的值：**

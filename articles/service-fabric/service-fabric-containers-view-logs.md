@@ -1,26 +1,16 @@
 ---
-title: 查看 Azure Service Fabric 中的容器日志 | Azure
+title: 查看 Azure Service Fabric 中的容器日志
 description: 介绍在使用 Service Fabric Explorer 运行 Service Fabric 容器服务时，如何查看相应的容器日志。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 05/15/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 289447f5b78b260356619e3c4c91e92dd3e7af07
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: abc944fb4b2bdaeaf2ee3b22da01faa525df5bcd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336449"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742458"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>查看 Service Fabric 容器服务的日志
 Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和 Windows 容器](service-fabric-containers-overview.md)。  本文介绍如何查看正在运行的容器服务或无响应容器的容器日志，以便诊断和排查问题。
@@ -48,7 +38,7 @@ Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和
 设置 **RunInteractive** 与 Docker 的 `--interactive` 和 `tty` [标志](https://docs.docker.com/engine/reference/commandline/run/#options)相对应。 在清单文件中将此设置设为 true 时，这些标志用于启动容器。  
 
 ### <a name="rest"></a>REST
-使用[获取部署在节点上的容器日志](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)操作来获取故障容器的日志。 指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。  指定 `&Previous=true`。 该响应将包含该代码包实例中无响应容器的容器日志。
+使用[获取部署在节点上的容器日志](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)操作来获取故障容器的日志。 指定运行容器的节点的名称、应用程序名称、服务清单名称和代码包名称。  指定 `&Previous=true`。 该响应将包含该代码包实例中无响应容器的容器日志。
 
 请求 URI 的格式如下：
 
@@ -78,11 +68,9 @@ sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttp
 ```
 
 ## <a name="next-steps"></a>后续步骤
-
-<!-- Not Available on - Work through the [Create a Linux container application tutorial](service-fabric-tutorial-create-container-images.md)-->
-
+- 学习[创建 Linux 容器应用程序教程](service-fabric-tutorial-create-container-images.md)。
 - 详细了解 [Service Fabric 和容器](service-fabric-containers-overview.md)
 
 [Image1]: media/service-fabric-containers-view-logs/view-container-logs-sfx.png
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

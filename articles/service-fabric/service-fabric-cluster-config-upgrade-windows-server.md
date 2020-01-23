@@ -1,26 +1,17 @@
 ---
-title: 升级独立 Azure Service Fabric 群集的配置 | Azure
+title: 升级独立 Azure Service Fabric 群集的配置
 description: 了解如何升级运行独立 Service Fabric 群集的配置。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/09/2018
-ms.date: 12/10/2018
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 043a4edf0398479ba13e8f8f2fd20fdf1eada84a
-ms.sourcegitcommit: 38f95433f2877cd649587fd3b68112fb6909e0cf
+ms.openlocfilehash: d3a83609eccaa8e8200b838c65746531525735f2
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901183"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742365"
 ---
 <!--Verify Successfully-->
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 
@@ -28,11 +19,11 @@ ms.locfileid: "52901183"
 对于任何新式系统而言，升级能力是实现产品长期成功的关键所在。 Azure Service Fabric 群集是你拥有的资源。 本文介绍如何升级独立 Service Fabric 群集的配置设置。
 
 ## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>在 ClusterConfig.json 文件中自定义群集设置
-通过“ClusterConfig.json”文件配置独立群集。 若要了解不同设置的详细信息，请参阅[独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)。
+通过“ClusterConfig.json”文件配置独立群集  。 若要了解不同设置的详细信息，请参阅[独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)。
 
-可以在“ClusterConfig.json”中[群集属性](./service-fabric-cluster-manifest.md#cluster-properties)部分下的 `fabricSettings` 部分中添加、更新或删除设置。 
+可以在“ClusterConfig.json”中[群集属性](./service-fabric-cluster-manifest.md#cluster-properties)部分下的 `fabricSettings` 部分中添加、更新或删除设置  。 
 
-例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”：
+例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”   ：
 
 ```json
       {
@@ -89,7 +80,7 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 * 了解[应用程序升级](service-fabric-application-upgrade.md)。
 
 <!--Image references-->
+
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG
 
-<!-- Update_Description: new articles on service fabric cluster config upgrade windows server -->
-<!--ms.date: 12/10/2018-->
+<!-- Update_Description: update meta properties -->

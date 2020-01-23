@@ -1,26 +1,17 @@
 ---
-title: 执行组件诊断和监视 | Azure
+title: 执行组件诊断和监视
 description: 本文描述了 Service Fabric Reliable Actors 运行时中的诊断和性能监视功能，包括由其发出的事件和性能计数器。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/26/2017
-ms.date: 12/10/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 55ace63d62dd97fdef823b49c90917497e1f92c3
-ms.sourcegitcommit: 38f95433f2877cd649587fd3b68112fb6909e0cf
+ms.openlocfilehash: 0f1538dfb02e00f7e6b30f1dbe5798a1d4972254
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901152"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742288"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
 Reliable Actors 运行时发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件和[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解运行时的运行状况以及进行故障排除和性能监视。
@@ -28,7 +19,7 @@ Reliable Actors 运行时发出 [EventSource](https://msdn.microsoft.com/library
 ## <a name="eventsource-events"></a>EventSource 事件
 Reliable Actors 运行时的 EventSource 提供程序名称为“Microsoft-ServiceFabric-Actors”。 [在 Visual Studio 中调试](service-fabric-debugging-your-application.md)执行组件应用程序时，来自此事件源的事件显示在“[诊断事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)”窗口中。
 
-有助于收集和/或查看 EventSource 事件的工具和技术示例包括 [PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)、[语义日志记录](https://msdn.microsoft.com/library/dn774980.aspx)和 [Microsoft TraceEvent 库](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
+有助于收集和/或查看 EventSource 事件的工具和技术示例包括 [PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)、[语义日志记录](https://msdn.microsoft.com/library/dn774980.aspx)和 [Microsoft TraceEvent 库](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
 ### <a name="keywords"></a>关键字
 属于 Reliable Actors EventSource 的所有事件都与一个或多个关键字相关联。 这样能够对收集的事件进行筛选。 定义了以下关键字位。
@@ -43,7 +34,7 @@ Reliable Actors 运行时的 EventSource 提供程序名称为“Microsoft-Servi
 ## <a name="performance-counters"></a>性能计数器
 Reliable Actors 运行时定义以下性能计数器类别。
 
-| 类别 | 说明 |
+| Category | 说明 |
 | --- | --- |
 | Service Fabric 执行组件 |特定于 Azure Service Fabric 执行组件的计数器，例如保存执行组件状态所用的时间。 |
 | Service Fabric 执行组件方法 |特定于由 Service Fabric 执行组件实现的方法的计数器，例如调用执行组件方法的频率。 |
@@ -60,7 +51,7 @@ Reliable Actors 运行时定义以下性能计数器类别。
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示形式通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成。
+*ServiceFabricPartitionID* 是与性能计数器实例关联的 Service Fabric 分区 ID 的字符串表示形式。 分区 ID 是 GUID，并且其字符串表示形式通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成。
 
 *ActorRuntimeInternalID* 是由 Fabric 执行组件运行时生成的供其内部使用的 64 位整数的字符串表示形式。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
@@ -93,7 +84,7 @@ Reliable Actors 运行时定义以下性能计数器类别。
 ### <a name="actor-method-events-and-performance-counters"></a>执行组件方法事件和性能计数器
 Reliable Actors 运行时发出以下与[执行组件方法](service-fabric-reliable-actors-introduction.md)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |详细 |0x2 |执行组件运行时即将调用执行组件方法。 |
 | ActorMethodStop |8 |详细 |0x2 |执行组件方法已执行完毕。 也就是说，已返回运行时的对执行组件方法的异步调用，此执行组件方法返回的任务已完成。 |
@@ -110,7 +101,7 @@ Reliable Actors 运行时发布与执行执行组件方法相关的以下性能�
 ### <a name="concurrency-events-and-performance-counters"></a>并发事件和性能计数器
 Reliable Actors 运行时发出以下与[并发](service-fabric-reliable-actors-introduction.md#concurrency)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |详细 |0x8 |在执行组件中每次新的轮次开始时写入此事件。 其中包含挂起的执行组件调用数。这些调用稍后将获取用于强制执行基于轮次的并发的每执行组件锁定。 |
 
@@ -125,7 +116,7 @@ Reliable Actors 运行时发布与并发相关的以下性能计数器。
 ### <a name="actor-state-management-events-and-performance-counters"></a>执行组件状态管理事件和性能计数器
 Reliable Actors 运行时发出以下与[执行组件状态管理](service-fabric-reliable-actors-state-management.md)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 个 |详细 |0x4 |执行组件运行时即将保存执行组件状态。 |
 | ActorSaveStateStop |11 |详细 |0x4 |执行组件运行时已完成保存执行组件状态。 |
@@ -140,7 +131,7 @@ Reliable Actors 运行时发布与执行组件状态管理相关的以下性能�
 ### <a name="events-related-to-actor-replicas"></a>与执行组件副本相关的事件
 Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |信息性 |0x1 |执行组件副本将角色更改为“主要”。 这意味着在此副本内创建此分区的执行组件。 |
 | ReplicaChangeRoleFromPrimary |2 |信息性 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 完成正在进行中的任何请求后，会销毁执行组件。 |
@@ -148,7 +139,7 @@ Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reli
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>执行组件激活和停用事件以及性能计数器
 Reliable Actors 运行时发出以下与[执行组件激活和停用](service-fabric-reliable-actors-lifecycle.md)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |信息性 |0x1 |执行组件已激活。 |
 | ActorDeactivated |6 |信息性 |0x1 |执行组件已停用。 |

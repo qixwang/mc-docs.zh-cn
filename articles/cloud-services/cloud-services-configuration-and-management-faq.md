@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 origin.date: 07/23/2018
 ms.author: v-yiso
-ms.date: 11/18/2019
-ms.openlocfilehash: b0cb2b93e4a5b748c79a50178da86d76c83aeb1e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.date: 01/20/2020
+ms.openlocfilehash: ea1850144418c9fee62d998575fc05c99f7dcbcf
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389160"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859495"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -138,7 +138,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 提高本地资源的配额限制。
 
 有关详细信息，请参阅以下文档：
-* [在 Azure 存储中存储和查看诊断数据](../monitoring-and-diagnostics/azure-diagnostics-storage.md)
+* [在 Azure 存储中存储和查看诊断数据](/azure-monitor/platform/diagnostics-extension-to-storage)
 * [IIS 日志停止写入到云服务中](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
@@ -203,7 +203,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 完成此过程后，可使用以下方法之一验证是否已启用 HTTP/2：
 
 - 在 IIS 日志中启用协议版本，并查看 IIS 日志。 日志中会显示 HTTP/2。 
-- 在 Internet Explorer/Microsoft Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
+- 在 Internet Explorer 或 Microsoft Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
 
 有关详细信息，请参阅 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
@@ -335,11 +335,11 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 ### <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>Azure 门户不显示我的云服务的 SDK 版本。 如何查看版本？
 
-我们正努力在 Azure 门户中实现此功能。 同时，你可以使用以下 PowerShell 命令获取 SDK 版本：
+我们正努力在 Azure 门户中实现此功能。 在此同时，你可以使用以下 PowerShell 命令获取 SDK 版本：
 
     Get-AzureService -ServiceName "<Cloud service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
 
-### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想将云服务关闭几个月。 如何在不丢失 IP 地址的情况下降低云服务的计费成本？
+### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想要关闭云服务几个月。 如何在不丢失 IP 地址的情况下降低云服务的计费成本？
 
 已部署的云服务使用的计算和存储资源会产生费用。 因此，即使关闭 Azure VM，也仍要支付存储费用。 
 

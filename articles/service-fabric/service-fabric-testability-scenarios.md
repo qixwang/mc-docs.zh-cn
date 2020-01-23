@@ -1,26 +1,17 @@
 ---
-title: 为 Azure Service Fabric 创建混沌测试和故障转移测试 | Azure
+title: 为 Azure Service Fabric 创建混沌测试和故障转移测试
 description: 使用 Service Fabric 混沌测试和故障转移测试方案来引入故障，并验证服务的可靠性。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 06/07/2017
-ms.date: 10/15/2018
+origin.date: 10/01/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e059967b290667ab81c67991bd7cfb82c7533f44
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: d5d9299372d0ec9d013c0a9943cc833ecc67a5fd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52645572"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742115"
 ---
 # <a name="testability-scenarios"></a>可测试性方案
 大型分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 使开发人员能够编写出可以在不可靠基础结构上运行的服务。 若要编写高质量的服务，开发人员需要能够引入这种不可靠的基础结构来测试其服务的稳定性。
@@ -28,7 +19,7 @@ ms.locfileid: "52645572"
 故障分析服务使开发人员能够引入故障操作，在存在故障的情况下测试服务。 然而，定向模拟故障只能做到这种程度。 若要进一步测试，可以使用 Service Fabric 中的测试方案：混沌测试和故障转移测试。 这些方案在整个群集模拟连续交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。 为测试配置故障率和故障类型后，就可以通过 C# API 或 PowerShell 启动该测试，在群集和服务中生成故障。
 
 > [!WARNING]
-> ChaosTestScenario 被更易复原、基于服务的混沌取代。 有关详细信息，请参阅新文章[控制混沌](service-fabric-controlled-chaos.md)。
+> ChaosTestScenario 会被更具弹性的、基于服务的混沌测试取代。 有关详细信息，请参阅新文章[控制混沌](service-fabric-controlled-chaos.md)。
 > 
 > 
 
@@ -52,7 +43,7 @@ ms.locfileid: "52645572"
 ### <a name="important-configuration-options"></a>重要的配置选项
 * **TimeToRun**：测试在成功完成之前将要运行的总时间。 测试也可以提前完成来代替验证失败。
 * **MaxClusterStabilizationTimeout**：在测试失败之前，等待群集变得正常的最长时间。 执行的检查包括群集运行状况是否正常、服务运行状况是否正常、对于服务分区而言目标副本集是否达到设定的大小以及是否不存在 InBuild 副本。
-* **MaxConcurrentFaults**：每次循环中并发故障的最大数量。 数字越大，测试越激进，从而导致更复杂的故障转移和转换组合。 在没有外部故障的情况下，测试保证不管此配置有多高，都不会出现仲裁丢失或数据丢失。
+* **MaxConcurrentFaults**：每次迭代造成的最大并发错误数。 数字越大，测试越激进，从而导致更复杂的故障转移和转换组合。 在没有外部故障的情况下，测试保证不管此配置有多高，都不会出现仲裁丢失或数据丢失。
 * **EnableMoveReplicaFaults**：启用或禁用导致主副本或辅助副本移动的故障。 默认情况下，这些故障处于禁用状态。
 * **WaitTimeBetweenIterations**：循环之间（即在一轮故障和对应的验证之后）等待的时间量。
 
@@ -134,6 +125,8 @@ class Test
 
 PowerShell
 
+Service Fabric PowerShell 模块提供了两种方法来开始混沌测试。 `Invoke-ServiceFabricChaosTestScenario` 是基于客户端的，如果客户端计算机在测试期间关闭，则不会引入进一步的故障。 另外，还提供了一组命令，用于在计算机关闭的情况下使测试保持运行。 `Start-ServiceFabricChaos` 使用名为 FaultAnalysisService 的有状态且可靠的系统服务，确保在 TimeToRun 启动之前，将继续引入故障。 `Stop-ServiceFabricChaos` 可用于手动停止该测试，`Get-ServiceFabricChaosReport` 将用于获取报表。 有关详细信息，请参阅 [Azure Service Fabric Powershell 参考](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)和[在 Service Fabric 群集中引入受控混沌](service-fabric-controlled-chaos.md)。
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -147,7 +140,7 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 ```
 
 ## <a name="failover-test"></a>故障转移测试
-故障转移测试方案是混沌测试方案针对特定服务分区的一个版本。 它在特定服务分区上测试故障转移的效果，同时不影响其他服务。 一旦配置好目标分区信息和其他参数，它就可以作为一个客户端工具运行，使用 C# API 或 PowerShell 生成针对一个服务分区的故障。 该方案遍历一系列的模块故障和服务验证，同时业务逻辑在一边继续运行以提供工作负荷。 服务验证失败指出存在需要进一步调查的问题。
+故障转移测试方案是混沌测试方案针对特定服务分区的一个版本。 它在特定服务分区上测试故障转移的效果，同时不影响其他服务。 一旦配置好目标分区信息和其他参数，它就可以作为一个客户端工具运行，使用 C# API 或 PowerShell 生成针对一个服务分区的故障。 该方案重复一系列的模块故障和服务验证，同时业务逻辑在一边继续运行以提供工作负荷。 服务验证失败指出存在需要进一步调查的问题。
 
 ### <a name="faults-simulated-in-the-failover-test"></a>在故障转移测试中模拟的故障
 * 重新启动分区所在的已部署代码包

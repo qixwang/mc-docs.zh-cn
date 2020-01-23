@@ -1,26 +1,17 @@
 ---
-title: 了解 Azure Service Fabric 术语 | Azure
+title: 了解 Azure Service Fabric 术语
 description: Service Fabric 的术语概述。 讨论本文档其余部分所用的重要术语概念和术语。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: chackdan;subramar
-ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 09/17/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4fd6dfb0b65aed3704284ea0b4c3f6bfde846ecc
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 168ff7907b67b572c5b8e82b3377e25f7cc78354
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254749"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742153"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
@@ -114,9 +105,10 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 若要部署服务，需要描述服务的运行方式。 Service Fabric 支持 3 种不同的部署模型：
 
 ### <a name="resource-model-preview"></a>资源模型（预览版）
-Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，包括应用程序、服务、网络和卷。 资源是使用 JSON 文件定义的，该文件可以部署到群集终结点。 还可以使用 YAML 文件架构更轻松地创作定义文件。 可将资源部署到 Service Fabric 运行的任何位置。 资源模型是用来描述 Service Fabric 应用程序的最简单方法。 其主要重点在于容器化服务的简单部署和管理。
+Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，包括应用程序、服务、网络和卷。 资源是使用 JSON 文件定义的，该文件可以部署到群集终结点。 资源模型是用来描述 Service Fabric 应用程序的最简单方法。 其主要重点在于容器化服务的简单部署和管理。
 
-<!--Not Avaialble on For Service Fabric Mesh, the Azure Resource Model schema is used.-->
+<!--Not Available on For Service Fabric Mesh, the Azure Resource Model schema is used.-->
+<!--Not Available on A YAML file schema can also be used to more easily author definition files. Resources can be deployed anywhere Service Fabric runs.-->
 <!-- Not Available on [Introduction to the Service Fabric Resource Model](/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)-->
 
 ### <a name="native-model"></a>本机模块
@@ -139,9 +131,7 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 有关详细信息，请阅读[为服务选择编程模型](service-fabric-choose-framework.md)一文。
 
 ### <a name="docker-compose"></a>Docker Compose 
-[Docker Compose](https://docs.docker.com/compose/) 是 Docker 项目的一部分。 Service Fabric 对使用 Docker Compose 模型部署应用程序提供有限支持。
-
-<!-- Pending on [deploying applications using the Docker Compose model](service-fabric-docker-compose.md)-->
+[Docker Compose](https://docs.docker.com/compose/) 是 Docker 项目的一部分。 Service Fabric 对[使用 Docker Compose 模型部署应用程序](service-fabric-docker-compose.md)提供了有限支持。
 
 ## <a name="environments"></a>环境
 

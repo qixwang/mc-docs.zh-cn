@@ -5,15 +5,15 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 06/04/2018
-ms.date: 12/24/2018
+origin.date: 09/28/2019
+ms.date: 01/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a2dbbefad62bb105f88c77fb06bf4d84e909a6b6
-ms.sourcegitcommit: 0a5a7daaf864ef787197f2b8e62539786b6835b3
+ms.openlocfilehash: 9c253ddfc451186920ef96f98b550c6048c35fd7
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53711683"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939765"
 ---
-不要将包含目标为 0.0.0.0/0 路由的路由表关联到网关子网。 这样做会阻止网关正常工作。
+**不支持**以 0.0.0.0/0 为目标的用户定义路由和 GatewaySubnet 上的 NSG。 使用此配置创建的网关将被阻止创建。 网关需要访问管理控制器才能正常工作。

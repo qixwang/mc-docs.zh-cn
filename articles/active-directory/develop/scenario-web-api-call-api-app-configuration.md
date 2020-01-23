@@ -1,5 +1,6 @@
 ---
-title: 调用下游 Web API 的 Web API（应用的代码配置）- Microsoft 标识平台
+title: 配置调用 Web API 的 Web 应用 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的 Web API（应用的代码配置）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 07/16/2019
-ms.date: 11/26/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffbd3099bcbaafb828c5fff4c0caaedf109d440c
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 9ec82ea172ed8e20cc54932d0899c87f5a2a8c8d
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655399"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777037"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>调用 Web API 的 Web API - 代码配置
 
@@ -33,7 +33,7 @@ ms.locfileid: "74655399"
 
 在任何受保护的 Web API 的代码配置的基础上，需订阅持有者令牌的验证，该令牌是在调用 API 时接收的：
 
-```CSharp
+```csharp
 /// <summary>
 /// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
@@ -79,7 +79,7 @@ AddAccountToCacheFromJwt() 方法需要执行以下操作：
 
 ![图像](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
-```CSharp
+```csharp
 IConfidentialClientApplication app;
 
 #if !VariationWithCertificateCredentials
@@ -108,7 +108,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 实际上，OBO 流通常用于获取下游 API 的令牌并将其存储在 MSAL.NET 用户令牌缓存中，这样 Web API 的其他部分就可以稍后调用 ``AcquireTokenOnSilent`` 的[重写](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)，以便调用下游 API。 此调用的作用是根据需要刷新令牌。
 
-```CSharp
+```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
 {
     try

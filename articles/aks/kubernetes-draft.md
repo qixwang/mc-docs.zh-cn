@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 06/20/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68f5e88ec281adeb4f67a8818b1c97a6c1f539f8
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: e5314b31628f47a180af2fc1ee852ea33ee31382
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859852"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165442"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入门：使用 Draft 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -26,7 +26,7 @@ Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行�
 * Azure 订阅。 如果你没有 Azure 订阅，可以创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [已安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 * 已安装并配置 Docker。 Docker 提供的包可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker。
-* [已安装 Helm](https://github.com/helm/helm#install)。
+* [已安装 Helm v2][helm-install]。
 * [已安装 Draft][draft-documentation]。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
@@ -37,9 +37,6 @@ Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行�
 az group create --name MyResourceGroup --location chinaeast2
 az aks create -g MyResourceGroup -n MyAKS --location chinaeast2 --node-vm-size Standard_DS2_v2 --node-count 1 --generate-ssh-keys
 ```
-
-<!--Not Available on --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 若要使用 Draft 在 AKS 群集中运行应用程序，需要使用 Azure 容器注册表来存储容器映像。 以下示例使用 [az acr create][az-acr-create] 在位于“基本”SKU 的 *MyResourceGroup* 资源组中创建名为 *MyDraftACR* 的 ACR。  你应提供自己的唯一注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 “基本”SKU 是用于开发目的的成本优化入口点，可在存储与吞吐量之间实现平衡。 
@@ -99,7 +96,7 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 若要从本地计算机连接到 Kubernetes 群集，请使用 [kubectl][kubectl]（Kubernetes 命令行客户端）。
 
-可以使用 [az aks install-cli][] 命令在本地安装 `kubectl`：
+也可使用 [az aks install-cli][] 命令在本地安装它：
 
 <!--Not Available on If you use the Azure local Shell, `kubectl` is already installed.-->
 <!--MOONCAKE:  Not Available on Cloud Shell-->
@@ -342,8 +339,9 @@ az group delete --name MyResourceGroup --yes --no-wait
 [example-java-hello-l7]: https://github.com/Azure/draft/blob/master/examples/example-java/src/main/java/helloworld/Hello.java#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
-[helm-init]: https://docs.helm.sh/helm/#helm-init
+[helm-init]: https://v2.helm.sh/docs/helm/#helm-init
+[helm-install]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
+[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
 
 <!-- Update_Description: update meta properties, wording update, update link -->

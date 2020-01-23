@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/31/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: a1a383b12536d2df552bf1c868b2a402ff88713b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 4e5a9bfce7234fc818254463f5d090e6e7d618ef
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624112"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116838"
 ---
 ## <a name="register-extensions"></a>注册扩展
 
@@ -25,7 +25,7 @@ ms.locfileid: "75624112"
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-若要了解更多信息，请参阅[注册 Azure Functions 绑定扩展](../articles/azure-functions/functions-bindings-register.md#extension-bundles)。 在将绑定添加到 functions.json 文件之前，应该先将扩展捆绑包添加到 host.json。
+若要了解更多信息，请参阅[注册 Azure Functions 绑定扩展](../articles/azure-functions/functions-bindings-register.md#extension-bundles)。 在将绑定添加到 function.json 文件之前，应该先将扩展捆绑包添加到 host.json。
 
 ### <a name="register-individual-extensions"></a>注册单个扩展
 

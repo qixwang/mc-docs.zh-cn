@@ -11,16 +11,16 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-origin.date: 08/22/2019
-ms.date: 09/23/2019
+origin.date: 12/24/2019
+ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 4ebc847389f7b52cacd32e09389fe85667a01b7b
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 0fb0d1b89bc16c9aa54120b59cfe1e9f6ab9575d
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528237"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599921"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入门：使用 Azure Monitor 从混合环境中的 Linux 计算机收集数据
 
@@ -85,7 +85,7 @@ ms.locfileid: "74528237"
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    以下命令包括 `-p` 代理参数和示例语法。
+    代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
@@ -97,12 +97,13 @@ ms.locfileid: "74528237"
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    以下命令包括 `-p` 代理参数和示例语法。
+    代理服务器要求进行身份验证时，以下命令包括 `-p` 代理参数和示例语法：
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-2. 运行以下命令重启代理： 
+
+3. 运行以下命令重启代理： 
 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]

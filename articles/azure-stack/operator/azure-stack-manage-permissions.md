@@ -16,12 +16,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 1e7013fb3f1e28c4d5f0c6b0855a443f6164f9aa
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 13391afee1e1c2851c187533475026875567ab0b
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020210"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737954"
 ---
 # <a name="set-access-permissions-using-role-based-access-control"></a>使用基于角色的访问控制设置访问权限
 
@@ -32,6 +32,9 @@ Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的�
  - 读者：用户可以查看所有内容，但不能进行任何更改。
  - 参与者：用户可以管理所有内容（对资源的访问权限除外）。
  - 所有者：用户可以管理所有内容，包括对资源的访问权限。
+ - 自定义：用户对资源具有受限的特定访问权限。
+
+ 有关创建自定义角色的详细信息，请参阅 [Azure 资源的自定义角色](/role-based-access-control/custom-roles)。
 
 ## <a name="set-access-permissions-for-a-user"></a>设置用户的访问权限
 

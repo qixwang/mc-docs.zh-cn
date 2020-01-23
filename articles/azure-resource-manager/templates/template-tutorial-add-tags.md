@@ -3,25 +3,25 @@ title: 教程 - 将标记添加到模板中的资源
 description: 将标记添加到在 Azure 资源管理器模板中部署的资源。 可以通过标记对资源进行逻辑组织。
 author: rockboyfor
 origin.date: 10/04/2019
-ms.date: 01/06/2020
-ms.topic: tutorial
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: fe777c61cd5f14d2163387c5c56485995ee0f949
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.topic: tutorial
+ms.openlocfilehash: ec1c5192b0cd1c005da24756dd6e93382d84fe90
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631603"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165386"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>教程：在资源管理器模板中添加标记
 
 本教程介绍如何将标记添加到模板中的资源。 可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 标记值显示在成本报告中。 完成本教程需要 **8 分钟**。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 建议完成[有关快速入门模板的教程](template-tutorial-quickstart-template.md)，但这不是必需的。
 
-必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
+必须已安装带有资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
 ## <a name="review-template"></a>审阅模板
 
@@ -220,7 +220,6 @@ ms.locfileid: "75631603"
       "apiVersion": "2016-09-01",
       "name": "[parameters('appServicePlanName')]",
       "location": "[parameters('location')]",
-      "tags": "[parameters('resourceTags')]",
       "sku": {
         "name": "B1",
         "tier": "Basic",
@@ -229,6 +228,7 @@ ms.locfileid: "75631603"
         "capacity": 1
       },
       "kind": "linux",
+      "tags": "[parameters('resourceTags')]",
       "properties": {
         "perSiteScaling": false,
         "reserved": true,
@@ -242,16 +242,16 @@ ms.locfileid: "75631603"
       "kind": "app",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[parameters('appServicePlanName')]"
+      ],
       "tags": "[parameters('resourceTags')]",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
-      },
-      "dependsOn": [
-        "[parameters('appServicePlanName')]"
-      ]
+      }
     }
   ],
   "outputs": {
@@ -299,7 +299,7 @@ az group deployment create \
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 在左侧菜单中选择“资源组”。 
-1. 选择已将内容部署到其中的资源组。
+1. 选择已部署到的资源组。
 1. 选择一项资源，例如存储帐户资源。 可以看到，它现在有标记。
 
     ![显示标记](./media/template-tutorial-add-tags/show-tags.png)

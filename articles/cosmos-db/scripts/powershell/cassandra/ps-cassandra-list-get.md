@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB Cassandra API 的列出和获取操作
+title: 用于列出和获取 Azure Cosmos DB Cassandra API 资源的 PowerShell 脚本
 description: Azure PowerShell 脚本 - Azure Cosmos DB Cassandra API 的列出和获取操作
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 origin.date: 05/18/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 62cda0d8e796e4a6121fcbf0620ec0284b1113c7
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: e3d35b05f250cc83d85b338c8170ca7788a09cad
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914465"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270103"
 ---
 # <a name="list-and-get-keyspaces-and-tables-for-azure-cosmos-db---cassandra-api"></a>列出和获取 Azure Cosmos DB 的密钥空间和表 - Cassandra API
 

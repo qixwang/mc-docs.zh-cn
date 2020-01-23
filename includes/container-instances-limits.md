@@ -1,19 +1,21 @@
 ---
-author: dlepow
+author: rockboyfor
 ms.service: container-instances
 ms.topic: include
-ms.date: 02/13/2019
-ms.author: danlep
-ms.openlocfilehash: dbbed7b4a04d81fccf5e6473e2625fa21e8c603f
-ms.sourcegitcommit: 1414c787aa13b802e43fc7317af96a9e14889e20
+origin.date: 02/13/2019
+ms.date: 01/15/2020
+ms.author: v-yeche
+ms.openlocfilehash: 8b875600e69f3cd1f062d4ad4871ce9a3d450850
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68332765"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964900"
 ---
-| Resource | 默认限制 |
+| 资源 | 默认限制 |
 | --- | :--- |
-| 每个订阅的容器组数 | 100<sup>1</sup> |
+| 每个区域每个订阅的标准 sku 容器组数 | 100<sup>1</sup> |
+| 每个区域每个订阅的专用 sku 容器组数 | 0<sup>1</sup> |
 | 每个容器组的容器数 | 60 |
 | 每个容器组的卷数 | 20 个 |
 | 每个 IP 的端口数 | 5 |
@@ -24,8 +26,12 @@ ms.locfileid: "68332765"
 | 每小时删除容器次数 | 300<sup>1</sup> |
 | 每 5 分钟删除容器次数 | 100<sup>1</sup> |
 
+<!--Not Avaialble on [subscription](../articles/billing-buy-sign-up-azure-subscription.md)-->
 
 <sup>1</sup>要请求提高上限，请创建一个 [Azure 支持请求][azure-support]。<br />
 
 <!-- LINKS - External -->
-[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
+
+[azure-support]: https://support.azure.cn/support/support-azure/
+
+<!-- Update_Description: update meta properties, wording update, update link -->

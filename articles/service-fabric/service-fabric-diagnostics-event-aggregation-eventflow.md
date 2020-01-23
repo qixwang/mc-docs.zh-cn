@@ -1,26 +1,17 @@
 ---
-title: 使用 EventFlow 聚合 Azure Service Fabric 事件 | Azure
+title: 使用 EventFlow 聚合 Azure Service Fabric 事件
 description: 了解通过使用 EventFlow 集合和收集事件来监视和诊断 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/25/2019
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a5724a1e6a073dc00443f697862b7bb75fa3bbf5
-ms.sourcegitcommit: 1ea0f453e7dcaef67f3c52747778c7f3b82e3e38
+ms.openlocfilehash: b728659eee8460af04a66e5c1779038d4c472509
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277536"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742417"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 聚合和收集事件
 
@@ -90,7 +81,7 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-请注意， `eventFlowConfig.json` 文件是服务配置包的一部分。 对此文件的更改可以包含在服务的完全升级或仅配置的升级中，并且会接受 Service Fabric 升级运行状况检查和自动回退（如果升级失败）。 有关详细信息，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
+请注意， `eventFlowConfig.json` 文件是服务配置包的一部分。 对此文件所做的更改可以包含在服务的完整升级或者仅限配置的升级中，会接受 Service Fabric 升级运行状况检查，如果升级失败，这些更改会自动回滚。 有关详细信息，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
 
 通过配置的 *filters* 节可进一步自定义将通过 EventFlow 管道到达输出的信息，使你能够删除或包含某些信息，或更改事件数据的结构。 有关筛选的详细信息，请参阅 [EventFlow 筛选器](https://github.com/Azure/diagnostics-eventflow#filters)。
 
@@ -155,8 +146,7 @@ servicefabric:/<section-name>/<setting-name>
 
 在 Visual Studio 中启动服务并观察“调试”输出窗口。 该服务启动后，应开始看到服务正向已配置输出发送记录的证据。 导航到事件分析和可视化平台，并确认日志已开始显示（可能需要几分钟时间）。
 
-## <a name="next-steps"></a>后续步骤
-
+<!-- Not Available on ## Next steps-->
 <!-- Not Available on * * [Event Analysis and Visualization with Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) -->
 <!-- Not Available on * [Event Analysis and Visualization with Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)-->
 

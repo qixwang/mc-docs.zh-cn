@@ -1,26 +1,17 @@
 ---
-title: 在 Windows 中调试 Azure Service Fabric 应用 | Azure
+title: 在 Windows 中调试 Azure Service Fabric 应用
 description: 了解如何监视和诊断本地开发计算机上使用 Azure Service Fabric 编写的服务。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/25/2019
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d65a78007458781ae73e6d8c14168ca930e22672
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: 354d7de6e9fa53a92e7fcde5f76a461c811e5c45
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204076"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741897"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]
@@ -42,24 +33,24 @@ ms.locfileid: "57204076"
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>在 Visual Studio 中查看 Service Fabric 系统事件
 Service Fabric 发出 ETW 事件以帮助应用程序开发人员了解平台中发生的情况。 如果还没有这么做，请继续遵循[在 Visual Studio 中创建第一个应用程序](service-fabric-tutorial-create-dotnet-app.md)中的步骤。 此信息将帮助你使应用程序启动并运行，通过诊断事件查看器显示跟踪消息。
 
-1. 如果诊断事件窗口未自动显示，请在 Visual Studio 中转到“视图”选项卡上，选择“其他窗口”，然后选择“诊断事件查看器”。
-2. 每个事件都有标准元数据信息，它将显示事件来自的节点、应用程序和服务。 也可以使用事件窗口顶端的“筛选事件”框来筛选事件列表。 例如，可根据“节点名称”或“服务名称”进行筛选。 查看事件详细信息时，也可以使用事件窗口顶端的“暂停”按钮来暂停，稍后再继续，而不会丢失任何事件。
+1. 如果诊断事件窗口未自动显示，请在 Visual Studio 中转到“视图”选项卡上，选择“其他窗口”，然后选择“诊断事件查看器”    。
+2. 每个事件都有标准元数据信息，它将显示事件来自的节点、应用程序和服务。 也可以使用事件窗口顶端的“筛选事件”框来筛选事件列表  。 例如，可根据“节点名称”或“服务名称”进行筛选。   查看事件详细信息时，也可以使用事件窗口顶端的“暂停”按钮来暂停，稍后再继续，而不会丢失任何事件  。
 
     ![Visual Studio 诊断事件查看器](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>将自己的自定义跟踪添加到应用程序代码
-Service Fabric Visual Studio 项目模板包含示例代码。 该代码演示如何添加自定义应用程序代码 ETW 跟踪（与来自 Service Fabric 的系统跟踪一起显示在 Visual Studio ETW 查看器中）。 此方法的优点是元数据会自动添加到跟踪中，并已配置了 Visual Studio 诊断事件查看器来显示它们。
+Service Fabric Visual Studio 项目模板包含示例代码。 该代码显示如何添加自定义应用程序代码 ETW 跟踪（与来自 Service Fabric 的系统跟踪一起显示在 Visual Studio ETW 查看器中）。 此方法的优点是元数据会自动添加到跟踪中，并已配置了 Visual Studio 诊断事件查看器来显示它们。
 
-对于从服务模板（无状态或有状态）创建的项目，只要搜索 `RunAsync` 实现即可：
+对于从服务模板（无状态或有状态）创建的项目，只要搜索 `RunAsync` 实现即可  ：
 
 1. 对 `ServiceEventSource.Current.ServiceMessage` in the `RunAsync` 的调用显示了应用程序代码中的自定义 ETW 跟踪的一个示例。
-2. 在 ServiceEventSource.cs 文件中，可找到 `ServiceEventSource.ServiceMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
+2. 在 ServiceEventSource.cs 文件中，可找到 `ServiceEventSource.ServiceMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件  。
 
-对于从 Actor 模板（无状态或有状态）创建的项目：
+对于从 Actor 模板（无状态或有状态）创建的项目  ：
 
 1. 打开 **"ProjectName".cs** 文件，其中，*ProjectName* 是为 Visual Studio 项目选择的名称。  
-2. 在 DoWorkAsync 方法中查找代码 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`。  这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
-3. 在文件 ActorEventSource.cs 中，可找到 `ActorEventSource.ActorMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
+2. 在 DoWorkAsync 方法中查找代码 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`  。  这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
+3. 在文件 ActorEventSource.cs 中，可找到 `ActorEventSource.ActorMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件  。
 
 将自定义 ETW 跟踪添加到服务代码之后，可以再次生成、部署和运行应用程序以在诊断事件查看器中查看事件。 如果使用 **F5**调试应用程序，则自动打开诊断事件查看器。
 

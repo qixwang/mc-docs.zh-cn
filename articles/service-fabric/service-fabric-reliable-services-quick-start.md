@@ -1,26 +1,17 @@
 ---
-title: 在 C# 中创建第一个 Service Fabric 应用程序 | Azure
+title: 在 C# 中创建第一个 Service Fabric 应用程序
 description: 介绍如何创建包含无状态服务和有状态服务的 Azure Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d9b44d75-e905-468e-b867-2190ce97379a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 07/10/2019
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cce947e1412b192bddf64478f7f2dbf04b5a3fd6
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: f8760fc3c10987b263ec28c16e14966522eb012d
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819684"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742387"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -29,7 +20,7 @@ ms.locfileid: "68819684"
 > 
 > 
 
-Azure Service Fabric 应用程序包含运行代码的一个或多个服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md)同时创建无状态与有状态的 Service Fabric 应用程序。  
+Azure Service Fabric 应用程序包含运行代码的一个或多个服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md) 同时创建无状态与有状态的 Service Fabric 应用程序。  
 
 ## <a name="basic-concepts"></a>基本概念
 了解几个基本概念，即可开始使用 Reliable Services：
@@ -115,7 +106,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 `RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `RunAsync` 实现中的 `Task.Run()` 安排新的 Task。
 
-取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等待任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `RunAsync()`。
+取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等待任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `RunAsync()` 。
 
 在此无状态服务示例中，计数存储在本地变量中。 不过，由于这是无状态服务，因此，所存储的值仅在其所在服务实例的当前生命周期中存在。 当服务移动或重新启动时，值就会丢失。
 
@@ -176,7 +167,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和可靠集合，可以将数据直接存储在服务中而无需外部持久性存储。 可靠集合可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个 *副本* 来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
+[IReliableDictionary](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) 是一种字典实现，可用于将状态可靠地存储在服务中。 利用 Service Fabric 和可靠集合，可以将数据直接存储在服务中而无需外部持久性存储。 可靠集合可让数据具备高可用性。 Service Fabric 通过创建和管理服务的多个 *副本* 来实现此目的。 它还提供一个抽象 API，消除了管理这些副本及其状态转换所存在的复杂性。
 
 可靠集合可以存储任何 .NET 类型（包括自定义类型），但需要注意以下几点：
 
@@ -185,7 +176,7 @@ var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<str
 
     切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
 
-可靠状态管理器管理可靠集合。 在服务中，可随时随地向可靠状态管理器按名称请求可靠集合。 可靠状态管理器可确保能取回引用。 不建议将对可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中始终将引用设置为某个实例。 可靠状态管理器会代为处理此工作，且已针对重复访问对其进行优化。
+可靠状态管理器会代为管理可靠集合。 在服务中，可随时随地向可靠状态管理器按名称请求可靠集合。 可靠状态管理器可确保能取回引用。 不建议将对可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中始终将引用设置为某个实例。 可靠状态管理器会代为处理此工作，且已针对重复访问对其进行优化。
 
 ### <a name="transactional-and-asynchronous-operations"></a>事务和异步操作
 ```csharp
@@ -228,4 +219,4 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 
 [Reliable Services 的开发人员参考](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!-- Update_Description: wording update， update meta properties, update link -->
+<!-- Update_Description: update meta properties, wording update -->

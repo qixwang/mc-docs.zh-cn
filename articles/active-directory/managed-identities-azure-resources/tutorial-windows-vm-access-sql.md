@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 系统分配托管标识访问 Azure SQL
+title: 教程`:`使用托管标识访问 Azure SQL - Windows - Azure AD
 description: 本教程将指导你完成使用 Windows VM 系统分配托管标识访问 Azure SQL 的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/16/2019
-ms.date: 11/13/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b724e1da35bff73e4b0f27659d632b13f670faf
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: d2ab7b1e9037a4bf4ea7cf2383b9d953669fa3ef
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084474"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116764"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -35,11 +34,11 @@ ms.locfileid: "74084474"
 > * 在数据库中创建一个代表 VM 的系统分配标识的包含用户
 > * 使用 VM 标识获取访问令牌，并使用它查询 Azure SQL 服务器
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>授予 VM 对 Azure SQL 服务器中的数据库的访问权限
+## <a name="grant-access"></a>授予访问权限
 
 若要授予 VM 对 Azure SQL Server 中数据库的访问权限，可以使用现有 SQL Server，或创建一个新的 SQL Server。 若要使用 Azure 门户创建新的服务器和数据库，请遵循此 [Azure SQL 快速入门](/sql-database/sql-database-get-started-portal)。 [Azure SQL 文档](/sql-database/)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
@@ -48,7 +47,7 @@ ms.locfileid: "74084474"
 1. 为 SQL 服务器启用 Azure AD 身份验证。
 2. 在数据库中创建一个代表 VM 的系统分配标识的**包含用户**。
 
-## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>为 SQL 服务器启用 Azure AD 身份验证
+## <a name="enable-azure-ad-authentication"></a>启用 Azure AD 身份验证
 
 使用以下步骤[为 SQL Server 配置 Azure AD 身份验证](/sql-database/sql-database-aad-authentication-configure)：
 
@@ -59,9 +58,9 @@ ms.locfileid: "74084474"
 5.  选择要设为服务器管理员的 Azure AD 用户帐户，单击“选择”。 
 6.  在命令栏中，单击“保存”  。
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>在数据库中创建一个代表 VM 的系统分配标识的包含用户
+## <a name="create-user"></a>创建用户
 
-在下一步骤中，需要使用 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
+本部分介绍如何在数据库中创建一个表示 VM 的系统分配标识的包含用户。 在此步骤中，需要使用 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
 
 - [使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](/sql-database/sql-database-ssms-mfa-authentication)
 - [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](/sql-database/sql-database-aad-authentication-configure)
@@ -100,9 +99,9 @@ SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（如用户、组
 
 VM 中运行的代码现在可使用其系统分配托管标识获取令牌，并使用该令牌在 SQL 服务器中进行身份验证。
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>使用 VM 的系统分配托管标识获取访问令牌，并用它调用 Azure SQL
+## <a name="get-an-access-token"></a>获取访问令牌
 
-Azure SQL 原本就支持 Azure AD 身份验证，因此可以直接接受使用 Azure 资源的托管标识获取的访问令牌。 使用**访问令牌**方法来与 SQL 建立连接。 在某种程度上，这是将 Azure SQL 与 Azure AD 集成，不同于在连接字符串中提供凭据。
+本部分介绍如何使用 VM 的系统分配托管标识获取访问令牌，并使用它调用 Azure SQL。 Azure SQL 原本就支持 Azure AD 身份验证，因此可以直接接受使用 Azure 资源的托管标识获取的访问令牌。 使用**访问令牌**方法来与 SQL 建立连接。 在某种程度上，这是将 Azure SQL 与 Azure AD 集成，不同于在连接字符串中提供凭据。
 
 以下 .NET 代码示例使用访问令牌来与 SQL 建立连接。 此代码必须在 VM 上运行才能访问 VM 的系统分配托管标识的终结点。 使用访问令牌方法需要 **.NET Framework 4.6** 或更高版本或 **.NET Core 2.2** 或更高版本。 相应地替换 AZURE-SQL-SERVERNAME 和 DATABASE 的值。 请注意，Azure SQL 的资源 ID 为“`https://database.chinacloudapi.cn/`”。
 

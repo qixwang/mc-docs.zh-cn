@@ -1,6 +1,6 @@
 ---
-title: 使用 Python 组件的 Apache Storm - Azure HDInsight | Azure
-description: 了解如何创建使用 Python 组件的 Apache Storm 拓扑。
+title: 使用 Python 组件的 Apache Storm - Azure HDInsight
+description: 了解如何在 Azure HDInsight 中创建使用 Python 组件的 Apache Storm 拓扑
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,15 +14,15 @@ ms.devlang: python
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 04/30/2018
-ms.date: 09/23/2019
+origin.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6c7ff17da2cfcde51afd29290065902369f9ace9
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.openlocfilehash: ca04bbe9be0da789b5a79958aadfadf767187892
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921102"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631085"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
 
@@ -31,17 +31,17 @@ ms.locfileid: "70921102"
 > [!IMPORTANT]  
 > 本文档中的信息已使用 Storm on HDInsight 3.6 进行测试。 
 
-[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) 上提供了此项目的代码。
-
 ## <a name="prerequisites"></a>先决条件
 
-* Python 2.7 或更高版本
+* HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
-* Java JDK 1.8 或更高版本
+* 本地 Storm 开发环境（可选）。 仅当想要在本地运行拓扑时，才需要本地 Storm 环境。 有关详细信息，请参阅[设置开发环境](http://storm.apache.org/releases/current/Setting-up-development-environment.html)。
 
-* [Apache Maven 3](https://maven.apache.org/download.cgi)
+* [Python 2.7 或更高版本](https://www.python.org/downloads/)。
 
-* （可选）本地 Storm 开发环境。 仅当想要在本地运行拓扑时，才需要本地 Storm 环境。 有关详细信息，请参阅[设置开发环境](http://storm.apache.org/releases/current/Setting-up-development-environment.html)。
+* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
+
+* 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
 ## <a name="storm-multi-language-support"></a>Storm 多语言支持
 
@@ -83,13 +83,47 @@ Flux 需要 Python 脚本位于包含拓扑的 jar 文件内的 `/resources` 目
 
 ## <a name="build-the-project"></a>生成项目
 
-在项目的根目录中，使用以下命令：
+1. 从 [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) 下载项目。
 
-```bash
-mvn clean compile package
-```
+1. 打开命令提示符并导航到项目根：`hdinsight-python-storm-wordcount-master`。 输入以下命令：
+
+    ```cmd
+    mvn clean compile package
+    ```
 
 此命令可创建 `target/WordCount-1.0-SNAPSHOT.jar` 文件，其中包含已编译的拓扑。
+
+## <a name="run-the-storm-topology-on-hdinsight"></a>在 HDInsight 上运行 Storm 拓扑
+
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)将 `WordCount-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集上的 Storm。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+
+    ```cmd
+    scp target/WordCount-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.cn:
+    ```
+
+1. 文件上传后，使用 SSH 连接到群集：
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```
+
+1. 在 SSH 会话中，使用以下命令在群集上启动拓扑：
+
+    ```bash
+    storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
+    ```
+
+    启动后，Storm 拓扑会一直运行，直到被停止。
+
+1. 使用 Storm UI 查看群集上的拓扑。 Storm UI 位于 `https://CLUSTERNAME.azurehdinsight.cn/stormui`。 将 `CLUSTERNAME` 替换为群集名称。
+
+1. 停止 Storm 拓扑。 使用以下命令在群集上停止拓扑：
+
+    ```bash
+    storm kill wordcount
+    ```
+
+    或者，可以使用 Storm UI。 在拓扑的“拓扑操作”下，选择“终止”   。
 
 ## <a name="run-the-topology-locally"></a>在本地运行拓扑
 
@@ -104,53 +138,20 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 拓扑启动后，它会向本地控制台发出类似如下文本的信息：
 
-    24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
-    24302 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting the
-    24302 [Thread-28] INFO  o.a.s.t.ShellBolt - ShellLog pid:2437, name:counter-bolt Emitting years:160
-    24302 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=the, count=599}
-    24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=seven, count=302}
-    24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=dwarfs, count=143}
-    24303 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
-    24303 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting cow
-    24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
+```output
+24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
+24302 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting the
+24302 [Thread-28] INFO  o.a.s.t.ShellBolt - ShellLog pid:2437, name:counter-bolt Emitting years:160
+24302 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=the, count=599}
+24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=seven, count=302}
+24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=dwarfs, count=143}
+24303 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
+24303 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting cow
+24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
+```
 
 若要停止拓扑，请使用 __Ctrl + C__。
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>在 HDInsight 上运行 Storm 拓扑
-
-1. 使用以下命令将 `WordCount-1.0-SNAPSHOT.jar` 文件复制到 Storm on HDInsight 群集：
-
-    ```bash
-    scp target\WordCount-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.cn
-    ```
-
-    将 `sshuser` 替换为群集的 SSH 用户。 将 `mycluster` 替换为群集名称。 系统可能会提示输入 SSH 用户的密码。
-
-    有关使用 SSH 和 SCP 的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-2. 文件上传后，使用 SSH 连接到群集：
-
-    ```bash
-    ssh sshuser@mycluster-ssh.azurehdinsight.cn
-    ```
-
-3. 在 SSH 会话中，使用以下命令在群集上启动拓扑：
-
-    ```bash
-    storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
-    ```
-
-3. Storm UI 可以用于查看群集上的拓扑。 Storm UI 位于 https://mycluster.azurehdinsight.cn/stormui 。 将 `mycluster` 替换为群集名称。
-
-> [!NOTE]
-> 启动后，Storm 拓扑会一直运行，直到被停止。 若要停止拓扑，可使用以下方法之一：
->
-> * 从命令行运行 `storm kill TOPOLOGYNAME` 命令
-> * Storm UI 中的“终止”  按钮。
-
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文档，了解配合使用 Python 和 HDInsight 的其他方式：
-
-* [如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义函数 (UDF)](../hadoop/python-udf-hdinsight.md)
-<!--Update_Description: wording update-->
+请参阅以下文档，了解配合使用 Python 和 HDInsight 的其他方式：[如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义函数 (UDF)](../hadoop/python-udf-hdinsight.md)。

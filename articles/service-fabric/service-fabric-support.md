@@ -1,26 +1,17 @@
 ---
-title: 了解 Azure Service Fabric 支持选项 | Azure
+title: 了解 Azure Service Fabric 支持选项
 description: 支持的 Azure Service Fabric 群集版本，以及文件支持票证的链接
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/24/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 21fe3b9bb288813e86bb9b10ad0d325a96aa1b51
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 5cf41f731b3b78f2e50db476e2003e8d92d12506
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254625"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742156"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 

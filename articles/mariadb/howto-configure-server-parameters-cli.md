@@ -1,24 +1,24 @@
 ---
-title: 在 Azure Database for MariaDB 中配置服务参数
+title: 配置服务器参数 - Azure CLI - Azure Database for MariaDB
 description: 本文介绍了如何使用 Azure CLI 命令行实用工具在 Azure Database for MariaDB 中配置服务参数。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 11/09/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: 221a0e3ade689a4fcfd6c3ad0d5ac3cc0c717252
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+origin.date: 12/05/2020
+ms.date: 01/13/2020
+ms.openlocfilehash: d11f8f7b17ff4139c4cac4b88f3fa9830001b4be
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191578"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776630"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/install-azure-cli) 命令行实用工具。
@@ -68,6 +68,9 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 应重启服务器，以确保正确填充时区表。 若要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 04/25/2019
-ms.date: 10/24/2019
+ms.date: 01/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f841f9614ccb50abfcb1117bac84ab6e8f63fa5f
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: b8ed0651889a0a88c3d73965374eadfef0238d8d
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847105"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116745"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
@@ -27,9 +26,13 @@ ms.locfileid: "72847105"
 > [!NOTE]
 > 如果要为用户流启用 JavaScript，请参阅 [Azure Active Directory B2C 中的 JavaScript 和页面布局版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为应用程序的用户界面元素选择页面布局。 如果打算使用 Javascript，需要为自定义策略中的所有内容定义定义一个页面布局版本。
+### <a name="select-a-page-layout"></a>选择页面布局
+
+* 为应用程序的用户界面元素[选择页面布局](page-layout.md)。
+
+    如果打算使用 JavaScript，则需要为自定义策略中的*所有*内容定义[定义页面布局版本](page-layout.md#replace-datauri-values)。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 

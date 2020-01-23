@@ -1,21 +1,21 @@
 ---
-title: 教程：使用 Java 应用程序将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 表
+title: 教程：Java 应用：将示例数据加载到 Azure Cosmos DB 的 Cassandra API 表中
 description: 本教程展示了如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB 中的 Cassandra API 表。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 05/20/2019
-ms.date: 06/17/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 58c3b52602cf58d6e9a6322a2adfc792a8d24eff
-ms.sourcegitcommit: 48a45ba95a6d1c15110191409deb0e7aac4bd88b
+ms.openlocfilehash: 4380a176e8beaa3c3341951d8c4dfbb2792364dd
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68293430"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270068"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>教程：将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 表
@@ -30,7 +30,7 @@ ms.locfileid: "68293430"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 本文是由多个部分组成的教程。 在开始使用本文档之前，请确保[创建 Cassandra API 帐户、密钥空间和表](create-cassandra-api-account-java.md)。   
 
@@ -76,7 +76,7 @@ ms.locfileid: "68293430"
      repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
     ```
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 打开一个命令提示符或终端窗口，并将文件夹路径更改到你在其中创建了项目的位置。 运行“mvn clean install”命令，以在目标文件夹中生成 cosmosdb cassandra examples.jar 文件并运行应用程序。 
 
@@ -97,4 +97,4 @@ java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.exa
 > [!div class="nextstepaction"]
 > [从 Cassandra API 帐户查询数据](cassandra-api-query-data.md)
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

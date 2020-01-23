@@ -9,17 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-origin.date: 10/07/2019
-ms.date: 11/04/2019
+origin.date: 12/13/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 1b0b5a547291222abef6eebf57465066e00bcb88
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.openlocfilehash: 0c1ec05d24a5f89210d4336dfe462803027519fe
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416285"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939805"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
+
+>通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 
 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -35,6 +37,29 @@ ms.locfileid: "73416285"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
+## <a name="november-2019"></a>2019 年 11 月
+
+### <a name="live-transcription-preview"></a>实时听录预览版
+
+### <a name="content-protection"></a>内容保护
+
+9 月份在有限区域发布的“令牌重放防护”功能现在已在所有区域提供。 
+媒体服务客户现在可以对同一令牌用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
+
+### <a name="new-recommended-live-encoder-partners"></a>新推荐的实时编码器合作伙伴
+
+添加的支持针对用于 RTMP 实时流式处理的以下新推荐合作伙伴编码器：
+
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 和 Max 运动摄像头](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>文件编码增强功能
+- 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
+- 改善了 Media Encoder Standard 中大小重设器的性能和多线程处理。 在特定情况下，客户会看到 5-40% 的 VOD 编码性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
+- 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
+-  改善了可变帧速率 (VFR) 源内容的 AV 同步
+
 ## <a name="september-2019"></a>2019 年 9 月
 
 ###  <a name="media-services-v3"></a>媒体服务 v3  
@@ -42,8 +67,17 @@ ms.locfileid: "73416285"
 #### <a name="live-linear-encoding-of-live-events"></a>直播活动的实时线性编码
 
 媒体服务 v3 宣布推出对直播活动进行实时线性编码的 24 小时 x 365 天预览版。
+## <a name="august-2019"></a>2019 年 8 月
+
+###  <a name="media-services-v2"></a>媒体服务 v2  
+
+#### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+
+我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将于 2020 年 3 月 31 日停用。
+
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder) 和[将 AME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder)。
  
-## <a name="june-2019"></a>2019 年 7 月
+## <a name="june-2019"></a>2019 年 6 月
 
 ### <a name="video-subclipping"></a>视频子剪辑
 
@@ -62,7 +96,7 @@ ms.locfileid: "73416285"
 
 使用多种编解码器和语言流式处理具有多个音频轨道的资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出（版本 4 或更高版本）的多个音频轨道。
 
-### <a name="performance-improvements"></a>性能提升
+### <a name="performance-improvements"></a>性能改进
 
 添加了包括媒体服务性能改进的更新。
 

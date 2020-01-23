@@ -1,22 +1,20 @@
 ---
-title: 使用 WebJobs 运行后台任务 - Azure应用服务
-description: 了解如何使用 WebJobs 在 Azure 应用服务 Web 应用、API 应用或移动应用中运行后台任务。
+title: 使用 WebJobs 运行后台任务
+description: 了解如何使用 WebJobs 在 Azure 应用服务中运行后台任务。 从各种脚本格式中进行选择，并使用 CRON 表达式运行它们。
 author: ggailey777
-manager: gwallace
-s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
-ms.service: app-service
+ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 origin.date: 10/16/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 49a51c3b9f5339af88612beece0f84e3267e0eec
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 117804ae4c6fdbf8b2e65f19eff23c1f59cb6359
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555945"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600222"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 

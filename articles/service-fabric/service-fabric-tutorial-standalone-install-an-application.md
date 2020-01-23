@@ -1,27 +1,18 @@
 ---
-title: 教程：在独立 Service Fabric 群集上安装应用程序 - Azure Service Fabric | Azure
+title: 教程：在独立 Service Fabric 群集上安装应用程序 - Azure Service Fabric
 description: 本教程介绍如何将应用程序安装到独立 Service Fabric 群集中。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 64e4b95a354dec313b594536b701cefceb796bdb
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: b0cfc8201c16eaa9620ed27aa45de540cf906a1a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254691"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741977"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教程：在 Service Fabric 独立群集上部署应用程序
 
@@ -35,7 +26,7 @@ Service Fabric 独立群集提供相应的选项让我们选择自己的环境�
 > * 下载示例应用
 > * 部署到群集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 

@@ -1,21 +1,19 @@
 ---
-title: 适用于 Azure 应用服务的安全建议
-description: 适用于 Azure 应用服务的安全建议。 实施这些建议将有助于你履行我们的共享职责模型中描述的安全职责，并改进 Web 应用解决方案的总体安全性。
-services: app-service
+title: 安全建议
+description: 实施安全建议，履行我们责任分担模型中所述的安全义务。 提高应用的安全性。
 author: barclayn
 manager: barbkess
-ms.service: app-service
 ms.topic: conceptual
 origin.date: 06/17/2019
-ms.date: 09/05/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: security-recommendations
-ms.openlocfilehash: d19e9d4b7994f903c1a8b546e90b6ee782618302
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: e720d22c3ce3193682721e943b428ec671528fc4
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583566"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600256"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 

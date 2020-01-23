@@ -1,24 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中参数化配置文件 | Azure
+title: 在 Azure Service Fabric 中参数化配置文件
 description: 了解如何在 Service Fabric 中参数化配置文件。
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/09/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7ea6b6b21855eee5693e31a99afd99198bcc239c
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: eca24a50711b8a750d125aa3185941520eeffc4c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174247"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742508"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
@@ -32,9 +25,9 @@ ms.locfileid: "70174247"
 1. 通过添加以下 XML，设置配置参数名称和值，例如高速缓存大小等于 25：
 
     ```xml
-      <Section Name="MyConfigSection">
+    <Section Name="MyConfigSection">
         <Parameter Name="CacheSize" Value="25" />
-      </Section>
+    </Section>
     ```
 
 1. 保存并关闭该文件。
@@ -60,10 +53,10 @@ ms.locfileid: "70174247"
     </ConfigOverrides>
     ```
 
-> [!NOTE]
-> 在添加 ConfigOverride 的情况下，Service Fabric 将始终选择应用程序参数或应用程序清单中指定的默认值。
->
->
+    > [!NOTE]
+    > 在添加 ConfigOverride 的情况下，Service Fabric 将始终选择应用程序参数或应用程序清单中指定的默认值。
+    >
+    >
 
 ## <a name="next-steps"></a>后续步骤
 有关 Visual Studio 中其他可用应用管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)。

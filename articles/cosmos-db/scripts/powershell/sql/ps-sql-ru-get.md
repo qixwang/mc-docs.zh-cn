@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB 获取预配吞吐量（RU/秒）- SQL (Core) API
+title: 用于获取预配吞吐量（RU/秒）的 PowerShell 脚本 - Azure Cosmos DB SQL (Core) API
 description: Azure PowerShell 脚本 - Azure Cosmos DB 获取预配吞吐量（RU/秒）- SQL (Core) API
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 origin.date: 07/03/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: e69f4c16133d7c962d27f42f4dfb6f3861781f83
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3643cf8ccb54b0f6b6b50c74c50900a5e071e1fd
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914479"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270105"
 ---
 # <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>获取 Azure Cosmos DB 的数据库或容器的预配吞吐量（RU/秒）- SQL (Core) API
 

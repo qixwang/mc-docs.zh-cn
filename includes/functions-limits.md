@@ -2,16 +2,16 @@
 author: ggailey777
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 12/05/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: f6ff640b01e18c6be28e41db149386b8263f3ee1
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 36d771881b21bec3c3f4d03ca1690762feb0b6fd
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885039"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116835"
 ---
-| Resource | [消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan) | 高级计划 | [应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
+| 资源 | [消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan) | 高级计划 | [应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | 向外扩展 | 事件驱动 | 事件驱动 | [手动/自动缩放](../articles/app-service/manage-scale-up.md) | 
 | 最大实例数 | 200 | 100 | 10-20 |
@@ -27,7 +27,7 @@ ms.locfileid: "74885039"
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) | 每个[区域](https://azure.microsoft.com/global-infrastructure/regions/) 100 个 |每个资源组 100 个 |每个资源组 100 个 |
 | 存储<sup>6</sup> |1 GB |250 GB |50-1000 GB |
 | 每个应用的自定义域数</a> |500<sup>7</sup> |500 |500 |
-| 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |包含无限制的 SNI SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 
+| 自定义域 [SSL 支持](../articles/app-service/configure-ssl-bindings.md) |包含无限制的 SNI SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 
 
 <sup>1</sup> 有关各种应用服务计划选项的特定限制，请参阅[应用服务计划限制](../articles/azure-subscription-service-limits.md#app-service-limits)。  
 <sup>2</sup> 默认情况下，应用服务计划中的 Functions 1.x 运行时的超时是无限制的。  

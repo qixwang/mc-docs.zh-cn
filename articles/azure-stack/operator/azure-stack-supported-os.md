@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/11/2019
-ms.date: 07/29/2019
+origin.date: 08/14/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 06/06/2018
-ms.openlocfilehash: 4ba513ac7ab3c0b3b6bcaa606bf15e8e7c19e5a8
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 06/06/2019
+ms.openlocfilehash: f2a45cdf99664e1e9d50ae2371ee996525d2631a
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513383"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737733"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack 支持的来宾操作系统
 
@@ -55,9 +55,9 @@ Datacenter 版本可在市场中下载；客户可以自带包含其他版本的
 市场中列为可用的 Linux 发行版包括必要的 Windows Azure Linux 代理 (WALA)。 如果将自己的映像带到 Azure Stack，请遵循[将 Linux 映像添加到 Azure Stack](azure-stack-linux.md) 中的指导。
 
 > [!NOTE]
-> 自定义映像应该使用最新的公共 WALA 版本（基于 1903 Azure Stack 及更高版本，或者包含 1901/1902 修补程序）或 2.2.20 版本生成。 2\.2.20 之前的版本以及介于 2.2.20 和 2.2.35 之间（排他）的版本在 Azure Stack 上可能无法正常运行。
+> 自定义映像应该使用最新的公共 WALA 版本（基于 1903 Azure Stack 及更高版本，或者包含 1901/1902 修补程序）或 2.2.20 版本生成。 2\.2.20 之前的版本以及介于 2.2.21 和 2.2.34（含）之间的版本在 Azure Stack 上可能无法正常运行。 在 Azure Stack 1910 版及更高版本中，所有 Azure WALA 代理版本都将使用 Azure Stack。
 >
-> 目前 Azure Stack 不支持 [cloud-init](https://cloud-init.io/)。
+> 目前，Azure Stack 1910 版及更高版本都支持 [cloud-init](https://cloud-init.io/)。
 
 | 分发 | 说明 | 发布者 | 市场 |
 | --- | --- | --- | --- |
@@ -65,9 +65,10 @@ Datacenter 版本可在市场中下载；客户可以自带包含其他版本的
 | 基于 CentOS 的 7.5 | 64 位 | Rogue Wave | 是 |
 | 基于 CentOS 的 7.3 | 64 位 | Rogue Wave | 是 |
 | ClearLinux | 64 位 | ClearLinux.org | 是 |
-| 容器 Linux |  64 位 | CoreOS | Stable |
+| CoreOS Linux (Stable) |  64 位 | CoreOS | 是 |
 | Debian 8 "Jessie" | 64 位 | credativ |  是 |
 | Debian 9“Stretch” | 64 位 | credativ | 是 |
+| Oracle Linux | 64 位 | Oracle | 是 |
 | Red Hat Enterprise Linux 7.1（及更高版本） | 64 位 | Red Hat | 自带映像 |
 | SLES 11SP4 | 64 位 | SUSE | 是 |
 | SLES 12SP3 | 64 位 | SUSE | 是 |

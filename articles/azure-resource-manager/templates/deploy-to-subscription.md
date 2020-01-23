@@ -5,16 +5,16 @@ ms.topic: conceptual
 origin.date: 11/07/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: dc1e090384a9e5a8640c376a508669aefcc3af2e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: e411e34bbf81a029fb497092fd4109f77a2f661c
+ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631201"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75957103"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
-通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，也可在订阅级别创建资源。 可以使用订阅级别部署来执行在该级别合理的操作，例如创建资源组或分配[基于角色的访问控制](../role-based-access-control/overview.md)。
+通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，也可在订阅级别创建资源。 可以使用订阅级别部署来执行在该级别合理的操作，例如创建资源组或分配[基于角色的访问控制](../../role-based-access-control/overview.md)。
 
 若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。 Azure 门户不支持在订阅级别部署。
 

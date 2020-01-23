@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: eabdc79db815c796280042ef6b7915a12a3f0084
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/17/2019
+ms.date: 01/17/2020
+ms.openlocfilehash: d40d38df683a70bbc7c789ccf8b57c250d06daf7
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336517"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123134"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
-对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 认知搜索](search-create-service-portal.md)     。
+对存储、工作负载以及索引和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 认知搜索](search-create-service-portal.md)     。
 
 + **免费**层是 Azure 订阅随附的多租户共享服务。 索引和查询请求针对其他租户使用的副本和分区执行。
 
@@ -66,13 +66,12 @@ ms.locfileid: "75336517"
 
 ## <a name="document-limits"></a>文档限制 
 
-自 2018 年 10 月起，在任何区域的任何可计费层（基本、S1，S2、S3、S3 HD）创建的任何新服务都不再有任何文档数限制<sup>1</sup>。 虽然自 2017 年 11 月/12 月以来大多数区域的文档数量不受限制，但仍有五个区域继续实施文档数限制。 根据你创建搜索服务的时间和地点，你可能正在运行仍受文档数限制的服务。
+自 2018 年 10 月起，在任何区域的任何可计费层（基本、S1，S2、S3、S3 HD）创建的任何新服务都不再有任何文档数限制。 虽然自 2017 年 11 月/12 月以来大多数区域对文档数量没有限制，但仍有一些区域在该日期后继续实施文档数限制。 根据你创建搜索服务的时间和地点，你可能正在运行仍受文档数限制的服务。
 
-若要确定你的服务是否具有文档数限制，请检查你的服务的概述页中的“使用情况”磁贴。 文档数可能不受限制，也可能基于层受限于某个限制。
+若要确定服务是否有文档数限制，请使用 [GET 服务统计信息 REST API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)。 文档数限制会在响应中反映出来，`null` 指示没有限制。
 
-  ![“使用情况”磁贴](media/search-limits-quotas-capacity/portal-usage-tile.png)
-
-<sup>1</sup> 尽管没有任何 SKU 特定的文档限制，但每个索引仍需符合最大安全限制，以确保服务的稳定性。 此限制是 Lucene 实施的。 每个 Azure 认知搜索文档在内部作为一个或多个 Lucene 文档编制索引。 每个搜索文档的 Lucene 文档数取决于复杂集合字段中的元素总数。 每个元素作为一个单独的 Lucene 文档编制索引。 例如，在复杂集合字段中包含 3 个元素的文档将作为 4 个 Lucene 文档编制索引 - 1 个索引针对该文档本身，3 个索引针对元素。 每个索引的最大 Lucene 文档数大约为 250 亿。
+> [!NOTE]
+> 尽管没有任何 SKU 特定的文档数限制，但每个索引仍需符合最大安全限制，以确保服务的稳定性。 此限制是 Lucene 实施的。 每个 Azure 认知搜索文档在内部作为一个或多个 Lucene 文档编制索引。 每个搜索文档的 Lucene 文档数取决于复杂集合字段中的元素总数。 每个元素作为一个单独的 Lucene 文档编制索引。 例如，在复杂集合字段中包含 3 个元素的文档将作为 4 个 Lucene 文档编制索引 - 1 个索引针对该文档本身，3 个索引针对元素。 每个索引的最大 Lucene 文档数大约为 250 亿。
 
 ### <a name="regions-previously-having-document-limits"></a>以前具有文档数限制的区域
 

@@ -6,13 +6,13 @@ ms.author: v-yiso
 ms.topic: conceptual
 ms.service: service-health
 origin.date: 09/04/2018
-ms.date: 08/05/2019
-ms.openlocfilehash: 6c62794e0ee48f07bc31bcd8e4296966b4b4f021
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.date: 01/20/2020
+ms.openlocfilehash: 4023f8fb579919be57185c217cf86ff1803dd50b
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514155"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859550"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -25,7 +25,7 @@ ms.locfileid: "68514155"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要按本页中的说明操作，需事先进行几项设置：
 

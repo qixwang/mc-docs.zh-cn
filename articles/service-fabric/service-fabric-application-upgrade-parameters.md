@@ -1,26 +1,16 @@
 ---
-title: 应用程序升级：升级参数 | Azure
+title: 应用程序升级：升级参数
 description: 介绍与升级 Service Fabric 应用程序相关的参数，包括要执行的运行状况检查，以及用于自动撤消升级的策略。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/08/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 3edebc5c444fb33f2e1e5490437b5c4edd280967
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 874ee77b88d575da142c968082f231fda3d0ebdd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336377"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742465"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
 本文介绍 Azure Service Fabric 应用程序升级期间应用的各种参数。 应用程序升级参数控制升级期间应用的超时和运行状况检查，并指定在升级失败时必须应用的策略。 应用程序参数使用以下项应用于升级：
@@ -30,7 +20,7 @@ ms.locfileid: "75336377"
 - [REST](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
 
 应用程序升级通过三个可供用户选择的升级模式中的一个进行启动。 每个模式都有自己的应用程序参数集：
-- 受监视
+- Monitored
 - 不受监视的自动
 - 不受监视的手动
 
@@ -80,7 +70,7 @@ Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升�
 > | UpgradeDomainTimeoutSec |PS、VS |升级单个升级域的最长时间（以秒为单位）。 如果达到了此超时限制，升级会停止，然后根据 *FailureAction* 的设置继续。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
 > | UpgradeReplicaSetCheckTimeoutSec |PS、VS |以秒为度量单位。<br />**无状态服务**- 在单个升级域内，Service Fabric 尝试确保服务的其他实例可用。 如果有多个目标实例，则 Service Fabric 等待多个实例可用，直到达到最大超时值。 此超时使用 *UpgradeReplicaSetCheckTimeoutSec* 属性指定。 如果超时到期，Service Fabric 将继续进行升级，而无论服务实例数是多少。 如果只有一个目标实例，则 Service Fabric 不会等待，而是会立即继续进行升级。<br /><br />**有状态服务** - 在单个升级域内，Service Fabric 尝试确保副本集具有仲裁。 Service Fabric 会等待可用的仲裁，直到达到最大超时值（由 *UpgradeReplicaSetCheckTimeoutSec* 属性指定）。 如果超时到期，Service Fabric 会继续进行升级，而无论是否具有仲裁。 前滚时，此设置设置为 never（无限）；回退时，设置为 1200 秒。 |
 > | UpgradeTimeoutSec |PS、VS |应用于整个升级的超时（以秒为单位）。 如果达到了此超时限制，则升级会停止，并会触发 *FailureAction*。 默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
-> | WhatIf | PS | 允许的值为 **True** 和 **False**。 显示如果此 cmdlet 运行将会发生什么。 此 cmdlet 未运行。 |
+> | WhatIf | PS | 允许的值为 **True** 和 **False**。 显示运行该 cmdlet 时会发生什么情况。 cmdlet 未运行。 |
 
 *MaxPercentUnhealthyServices*、*MaxPercentUnhealthyPartitionsPerService* 和 *MaxPercentUnhealthyReplicasPerPartition* 条件可按照应用程序实例的服务类型进行指定。 为每个服务设置这些参数可让应用程序包含不同评估策略的不同服务类型。 例如，无状态网关服务类型可以有一个 *MaxPercentUnhealthyPartitionsPerService*，它不同于特定应用程序实例的有状态引擎服务类型。
 
@@ -116,7 +106,7 @@ Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升�
 | warning-as-error | 允许的值为 **True** 和 **False**。 默认值为 **False**。 可以作为标记进行传递。 在升级期间评估应用程序的运行状况时，将应用程序的警告运行状况事件视为错误。 默认情况下，Service Fabric 不会将警告运行状况事件评估为失败（错误），因此即使存在警告事件，升级也可以继续。 |
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) （使用 Visual Studio 升级应用程序）逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
 [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
@@ -128,6 +118,6 @@ Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升�
 
 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
 
-参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
+参考 [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md)（对应用程序升级进行故障排除）中的步骤来解决应用程序升级时的常见问题。
 
 <!-- Update_Description: update meta properties, wording update  -->

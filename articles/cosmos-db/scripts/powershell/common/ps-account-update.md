@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell 脚本 - 更新 Azure Cosmos 帐户
+title: 用于更新 Azure Cosmos 帐户的 PowerShell 脚本
 description: Azure PowerShell 脚本示例 - 更新 Azure Cosmos 帐户或修改区域
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
 origin.date: 09/20/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5d182a23ceede7665e8bbc4700cdb3e37757d2cd
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 5478f588080b1a3cf808e1b5d6c7fd8f52344b61
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913277"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270097"
 ---
 # <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos 帐户或修改区域
 

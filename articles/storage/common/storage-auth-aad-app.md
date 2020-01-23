@@ -1,22 +1,23 @@
 ---
-title: 使用客户端应用程序中的 Azure Active Directory 授权访问 Blob 和队列 - Azure 存储
+title: 从 Azure AD 获取用于从客户端应用程序授权请求的令牌
+titleSuffix: Azure Storage
 description: 使用 Azure Active Directory 从客户端应用程序内部进行身份验证、获取 OAuth 2.0 令牌，以及授权对 Azure Blob 存储和队列存储的请求。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 07/18/2019
-ms.date: 10/28/2019
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 284de14652c355fbad2fe5656ebd2de06c9bd9ce
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3a3fc696811b7bbfc4be58ae796d48c76ebea543
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914450"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624170"
 ---
-# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>使用客户端应用程序中的 Azure Active Directory 授权访问 Blob 和队列
+# <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
 将 Azure Active Directory (Azure AD) 与 Azure Blob 存储和队列存储配合使用的主要优点在于不再需要在代码中存储凭据。 可以从 Microsoft 标识平台（以前称为 Azure AD）请求 OAuth 2.0 访问令牌。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure Blob 存储或队列存储请求授权。
 

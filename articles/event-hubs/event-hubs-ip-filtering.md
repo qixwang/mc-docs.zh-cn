@@ -9,17 +9,17 @@ ms.service: event-hubs
 ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
-origin.date: 12/06/2018
-ms.date: 12/16/2019
+origin.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: e284ab6d6c7384773e939bcd8bf803dea40e49a4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d0bf1307df743c970592c286145c2bfc1da36bc2
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336244"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123347"
 ---
-# <a name="use-firewall-rules"></a>使用防火墙规则
+# <a name="azure-event-hubs---use-firewall-rules"></a>Azure 事件中心 - 使用防火墙规则
 
 对于只应从某些已知站点访问 Azure 事件中心的方案，可使用防火墙规则配置相关规则，以接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
 

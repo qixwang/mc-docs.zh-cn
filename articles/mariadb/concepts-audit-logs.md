@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB 的审核日志
+title: 审核日志 - Azure Database for MariaDB
 description: 介绍了 Azure Database for MariaDB 中提供的审核日志，以及用于启用日志记录级别的可用参数。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 06/26/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: 40fd209107d6467dc2ab205a8b372387f13dcf4c
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+origin.date: 12/09/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: e56a77c23a82f68d80df02e31ecae2c62cdfa7c2
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308972"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776760"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的审核日志
 
@@ -28,6 +28,9 @@ ms.locfileid: "68308972"
 可以调整的其他参数包括：
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
+- `audit_log_include_users`：要包含在日志记录中的 MariaDB 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
+> [!Note]
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
 - `audit_log_exclude_users`：要从日志记录中排除的 MariaDB 用户。 最多允许对四个用户这样做。 参数的最大长度为 256 个字符。
 
 | **事件** | **说明** |

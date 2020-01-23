@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
+title: 教程`:`使用托管标识访问 Azure Cosmos DB - Windows - Azure AD
 description: 本教程介绍了使用 Windows VM 上系统分配的托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/10/2018
-ms.date: 08/05/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d03934bdec971ae870dd5c8fc1526a79e56d3d
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.openlocfilehash: 0c447ee6d3b6fa1ecaea3a63aa467923beb979d5
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68818591"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116768"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -35,7 +34,7 @@ ms.locfileid: "68818591"
 > * 使用 Windows VM 系统分配的托管标识获取访问令牌来调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -52,7 +51,7 @@ ms.locfileid: "68818591"
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。    选择提供 Cosmos DB 的“位置”。 
 6. 单击**创建**。
 
-## <a name="create-a-collection-in-the-cosmos-db-account"></a>在 Cosmos DB 帐户中创建集合
+## <a name="create-a-collection"></a>创建集合 
 
 接下来，在 Cosmos DB 帐户中添加数据集合，以便在后续步骤中进行查询。
 
@@ -60,9 +59,9 @@ ms.locfileid: "68818591"
 2. 在“概览”选项卡中单击“+/添加集合”按钮，此时“添加集合”面板就会滑出。  
 3. 为集合提供数据库 ID、集合 ID，选择存储容量，输入分区键，输入吞吐量值，然后单击“确定”。   就本教程来说，使用“测试”作为数据库 ID 和集合 ID，选择固定的存储容量和最低吞吐量（400 RU/秒）就可以了。  
 
-## <a name="grant-windows-vm-system-assigned-managed-identity-access-to-the-cosmos-db-account-access-keys"></a>向 Windows VM 系统分配的托管标识授予对 Cosmos DB 帐户访问密钥的访问权限
+## <a name="grant-access"></a>授予访问权限
 
-Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用系统分配的托管标识从资源管理器检索 Cosmos DB 访问密钥，然后使用该密钥访问 Cosmos DB。 在此步骤中，将向 Windows VM 系统分配的托管标识授予对 Cosmos DB 帐户密钥的访问权限。
+本部分介绍如何授予 Windows VM 系统分配的托管标识访问 Cosmos DB 帐户访问密钥的权限。 Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用系统分配的托管标识从资源管理器检索 Cosmos DB 访问密钥，然后使用该密钥访问 Cosmos DB。 在此步骤中，将向 Windows VM 系统分配的托管标识授予对 Cosmos DB 帐户密钥的访问权限。
 
 若要向 Windows VM 系统分配的托管标识授予在 Azure 资源管理器中使用 PowerShell 访问 Cosmos DB 帐户的权限，请更新环境的 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 的值。 Cosmos DB 在使用访问密钥时支持两种级别的粒度：对帐户的读/写访问权限，以及对帐户的只读访问权限。  如果需要获取帐户的读/写密钥，请分配 `DocumentDB Account Contributor` 角色；如果需要获取帐户的只读密钥，请分配 `Cosmos DB Account Reader Role` 角色。  对于本教程，请分配 `Cosmos DB Account Reader Role`：
 
@@ -70,9 +69,9 @@ Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用系统�
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
-## <a name="get-an-access-token-using-the-windows-vm-system-assigned-managed-identity-to-call-azure-resource-manager"></a>使用 Windows VM 系统分配的托管标识获取访问令牌来调用 Azure 资源管理器
+## <a name="get-an-access-token"></a>获取访问令牌
 
-在本教程的剩余部分中，我们从先前创建的 VM 入手。 
+本部分介绍如何使用 Windows VM 系统分配的托管标识获取访问令牌，以调用 Azure 资源管理器。 在本教程的剩余部分中，我们从先前创建的 VM 入手。 
 
 需在 Windows VM 上安装最新版本的 [Azure CLI](/cli/install-azure-cli)。
 
@@ -99,9 +98,9 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
    $ArmToken = $content.access_token
    ```
 
-## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
+## <a name="get-access-keys"></a>获取访问密钥 
 
-现在，请使用在上一部分检索到的访问令牌通过 PowerShell 调用资源管理器，以便检索 Cosmos DB 帐户访问密钥。 有了访问密钥以后，即可查询 Cosmos DB。 请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 参数值替换为你自己的值。 将 `<ACCESS TOKEN>` 值替换为前面检索到的访问令牌。  若要检索读/写密钥，请使用密钥操作类型 `listKeys`。  若要检索只读密钥，请使用密钥操作类型 `readonlykeys`：
+本部分介绍如何从 Azure 资源管理器获取访问密钥以进行 Cosmos DB 调用。 现在，请使用在上一部分检索到的访问令牌通过 PowerShell 调用资源管理器，以便检索 Cosmos DB 帐户访问密钥。 有了访问密钥以后，即可查询 Cosmos DB。 请务必将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 参数值替换为你自己的值。 将 `<ACCESS TOKEN>` 值替换为前面检索到的访问令牌。  若要检索读/写密钥，请使用密钥操作类型 `listKeys`。  若要检索只读密钥，请使用密钥操作类型 `readonlykeys`：
 
 ```powershell
 Invoke-WebRequest -Uri 'https://management.chinacloudapi.cn/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
@@ -186,4 +185,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 >[Azure Cosmos DB 概述](/cosmos-db/introduction)
 
 
-
+<!-- Update_Description: wording update -->

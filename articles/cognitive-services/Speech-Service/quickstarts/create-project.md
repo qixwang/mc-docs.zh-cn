@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 11/19/2019
-ms.date: 12/16/2019
+ms.date: 01/27/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: a5b1c6c920edbecacce1cd34d1e17d3e6fb321d8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: df6e7bb60f0e7113446c32f1a88473491ac8d5c8
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336252"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123160"
 ---
 # <a name="quickstart-create-a-project"></a>快速入门：创建一个项目
 
@@ -64,3 +64,7 @@ ms.locfileid: "75336252"
 
 - [快速入门：识别来自麦克风的语音](speech-to-text-from-microphone.md)
 - [快速入门：从文件中识别语音](speech-to-text-from-file.md)
+- [快速入门：将语音转换为文本](translate-speech-to-text.md)
+- [快速入门：将语音合成为文本](text-to-speech.md)
+
+<!-- - [Quickstart: Recognize Intents](intent-recognition.md) -->

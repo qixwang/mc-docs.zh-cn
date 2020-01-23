@@ -1,26 +1,16 @@
 ---
-title: Service Fabric 群集安全性：客户端角色 | Azure
+title: Service Fabric 群集安全性：客户端角色
 description: 本文介绍两个客户端角色以及提供给这些角色的权限。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 75d5b6904d66e457c854108b834310e6638bbc09
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: c3ba08bac6917084c931ee34ffa6449c069477fd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335163"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742325"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>适用于 Service Fabric 客户端的基于角色的访问控制
 Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。  

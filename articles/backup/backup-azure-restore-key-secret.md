@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 08/28/2017
 ms.date: 08/28/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f2ccdc7bf69b6348bb7886e13e8d4fa4d3139f7d
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: ce56a89f0ff6054655399ad95a50156986e989ac
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838929"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857701"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>使用 Azure 备份还原已加密 VM 的密钥保管库密钥和机密
 
@@ -19,7 +19,7 @@ ms.locfileid: "74838929"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **备份加密的 VM** - 已使 Azure 备份备份加密的 Azure VM。 有关如何备份已加密 Azure VM 的详细信息，请参阅[使用 PowerShell 管理 Azure VM 的备份和还原](backup-azure-vms-automation.md)一文。
 * **配置 Azure 密钥保管库** - 确保已存在要将密钥和机密还原到其中的密钥保管库。 有关密钥保管库管理的详细信息，请参阅 [Azure Key Vault 入门](../key-vault/key-vault-get-started.md)一文。
@@ -31,7 +31,7 @@ ms.locfileid: "74838929"
 > 为加密 VM 还原磁盘后，请确保：
 >
 > * 在 $details 中填写还原磁盘作业详细信息，如[“还原磁盘”部分中的 PowerShell 步骤](backup-azure-vms-automation.md#restore-an-azure-vm)所述
-> * 只有将密钥和机密还原到密钥保管库之后，才应该从还原磁盘创建 VM  。
+> * 只有**将密钥和机密还原到 Key Vault 之后**，才应该从还原磁盘创建 VM。
 
 查询已还原磁盘属性以获取作业详细信息。
 
@@ -53,7 +53,7 @@ $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 
 ## <a name="restore-key"></a>还原密钥
 
-在上述目标路径中生成了 JSON 文件后，从 JSON 生成密钥 Blob 文件，并将其提供给还原密钥 cmdlet，以便将密钥 (KEK) 放回密钥保管库。
+在上述目标路径中生成了 JSON 文件后，从 JSON 生成密钥 Blob 文件，并将其提供给还原密钥 cmdlet，以便将密钥 (KEK) 放回 Key Vault。
 
 ```powershell
 $keyDestination = 'C:\keyDetails.blob'
@@ -65,7 +65,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 使用先前生成的 JSON 文件来获取密钥名称和值，并将其他提供给设置密钥 cmdlet，以便将机密 (BEK) 放回 Key Vault。 如果 VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet  。
 
-**如果 Windows VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet**。
+**如果 Windows VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet。**
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -75,13 +75,13 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-**如果 Linux VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet**。
+**如果 Linux VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet。**
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
 $Secret = ConvertTo-SecureString -String $secretdata -AsPlainText -Force
 $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
-$Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = $encryptionObject.OsDiskKeyAndSecretDetails.KeyUrl;'MachineName' = 'vm-name'}
+$Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKeyFileName' = 'LinuxPassPhraseFileName';'DiskEncryptionKeyEncryptionKeyURL' = <Key_url_of_newly_restored_key>;'MachineName' = 'vm-name'}
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
@@ -110,7 +110,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 ### <a name="restore-key"></a>还原密钥
 
-使用下列 cmdlet 从恢复点获取密钥 (KEK) 信息，并将其提供给还原密钥 cmdlet，以将其放回密钥保管库。
+使用下列 cmdlet 从恢复点获取密钥 (KEK) 信息，并将其提供给还原密钥 cmdlet，以将其放回 Key Vault。
 
 ```powershell
 $rp1 = Get-AzRecoveryServicesBackupRecoveryPoint -RecoveryPointId $rp[0].RecoveryPointId -Item $backupItem -KeyFileDownloadLocation 'C:\Users\downloads'

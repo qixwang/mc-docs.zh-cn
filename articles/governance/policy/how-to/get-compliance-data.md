@@ -1,19 +1,16 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 02/01/2019
 ms.date: 12/02/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a498e08c933f2614d7d249ea65007b8046fc8951
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.topic: how-to
+ms.openlocfilehash: 3d46d40e0097104030af9103fb18b487a95dfe54
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657937"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123265"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -76,7 +73,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的 `{ResourceContainerGUID}` 位置 URI  。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态    。 评估扫描完成后，返回“200 OK”状态  。 已完成的扫描的正文为 JSON 响应，其状态为：
+以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 相反，会为新请求提供同一 `{ResourceContainerGUID}` 位置 URI  以查询状态。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态    。 评估扫描完成后，返回“200 OK”状态  。 已完成的扫描的正文为 JSON 响应，其状态为：
 
 ```json
 {

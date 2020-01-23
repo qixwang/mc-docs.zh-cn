@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric 和 VS Code 入门 | Azure
+title: Azure Service Fabric 和 VS Code 入门
 description: 本文概述如何使用 Visual Studio Code 创建 Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/29/2018
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 89b943d4c4417eb1505664ac4f0a3eb3dec17efd
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: f5baf9ce632dd0e006a02adca6fd18ce721b6610
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340844"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742374"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -30,7 +22,7 @@ ms.locfileid: "71340844"
 > [!IMPORTANT]
 > 可在 Windows 计算机上开发 Service Fabric Java 应用程序，但只能将其部署到 Azure Linux 群集。 Windows 不支持调试 Java 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须在所有环境中安装以下必备组件。
 

@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 09/24/2019
-ms.date: 11/11/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 04e7ecdc4998669c6e59b795b002670998b4c39c
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: 34de9a59ea4f5798ab5efe8c7caaeda258f38f77
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742291"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939761"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
@@ -208,7 +208,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 
 ## <a name="revokeclient"></a>吊销客户端证书
 
-可以吊销客户端证书。 证书吊销列表用于选择性地拒绝基于单个客户端证书的点到站点连接。 这不同于删除受信任的根证书。 如果从 Azure 中删除受信任的根证书 .cer，它会吊销由吊销的根证书生成/签名的所有客户端证书的访问权限。 如果吊销客户端证书而非根证书，则可继续使用从根证书生成的其他证书进行身份验证。
+可以吊销客户端证书。 通过证书吊销列表，可以选择性地拒绝基于单个客户端证书的点到站点连接。 这不同于删除受信任的根证书。 如果从 Azure 中删除受信任的根证书 .cer，它会吊销由吊销的根证书生成/签名的所有客户端证书的访问权限。 如果吊销客户端证书而非根证书，则可继续使用从根证书生成的其他证书进行身份验证。
 
 常见的做法是使用根证书管理团队或组织级别的访问权限，并使用吊销的客户端证书针对单个用户进行精细的访问控制。
 

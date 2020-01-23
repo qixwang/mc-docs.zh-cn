@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 11/04/2019
-ms.date: 11/25/2019
+ms.date: 01/27/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d94ebacf4ac99b7641ddb79dcc5d4003206ca385
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 686af511dd423c0eb17d217cd5f4f8c5c1bceaf6
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389983"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123137"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>快速入门：识别存储在 Blob 存储中的语音
 
@@ -48,4 +48,5 @@ ms.locfileid: "74389983"
 ::: zone pivot="programming-language-more"
 [!INCLUDE [Header](../includes/quickstarts/from-file/more/header.md)]
 [!INCLUDE [More samples](../includes/quickstarts/from-blob/more/more.md)]
+
 ::: zone-end

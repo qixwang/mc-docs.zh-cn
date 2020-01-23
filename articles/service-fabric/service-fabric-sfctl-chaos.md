@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric CLI - sfctl chaos | Azure
+title: Azure Service Fabric CLI - sfctl chaos
 description: 介绍 Service Fabric CLI sfctl chaos 命令。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-origin.date: 12/06/2018
-ms.date: 09/02/2019
+origin.date: 09/17/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d7d73f4e44162869a963b805fe37d790ed211778
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: d1ea5ffbdcd794695dcbd51d1dae874b905be9fb
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254728"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742255"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 启动、停止和报告混沌测试服务。
@@ -47,20 +39,20 @@ ms.locfileid: "70254728"
 |参数|说明|
 | --- | --- |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
-| --end-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的结束时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https://docs.microsoft.com/en-us/dotnet/api/system.datetime.tofiletimeutc?view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)。 |
+| --end-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的结束时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --start-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的开始时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https://docs.microsoft.com/en-us/dotnet/api/system.datetime.tofiletimeutc?view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --start-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的开始时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-chaos-get"></a>sfctl chaos get
 获取 Chaos 的状态。
@@ -71,22 +63,22 @@ ms.locfileid: "70254728"
 
 |参数|说明|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 在群集中启动混沌测试。
 
-如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。 如果进行此调用时运行混沌，调用将失败，错误代码为 FABRIC_E_CHAOS_ALREADY_RUNNING。
+如果尚未在群集中运行混沌测试，则使用混沌测试参数中指定的值开始运行混沌测试。 如果进行此调用时运行混沌，调用将失败，错误代码为 FABRIC_E_CHAOS_ALREADY_RUNNING。 有关更多详细信息，请参阅[在 Service Fabric 群集中引入受控的混沌测试](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)一文。
 
 ### <a name="arguments"></a>参数
 
@@ -101,7 +93,7 @@ ms.locfileid: "70254728"
 | --max-percent-unhealthy-apps | 在混沌测试期间评估群集运行状况时，报告错误之前允许的最大不正常应用程序百分比。 <br /><br /> 报告错误之前允许的最大不正常应用程序百分比。 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。 默认百分比为零。 |
 | --max-percent-unhealthy-nodes | 在混沌测试期间评估群集运行状况时，报告错误之前允许的最大不正常节点百分比。 <br /><br /> 报告错误之前允许的最大不正常节点百分比。 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果向上进一，以容忍少量节点上出现一次失败。 默认百分比为零。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
 | --time-to-run | 混沌测试在自动停止之前要运行的总时间（以秒为单位）。 最大允许值为 4,294,967,295 (System.UInt32.MaxValue)。  默认值\: 4294967295。 |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 默认值\: 60。 |
 | --wait-time-between-faults | 单次迭代中发生连续错误的间隔等待时间（以秒为单位）。  默认值\: 20。 <br /><br /> 值越大越低错误和更简单之间重叠的状态的序列转换群集内通过。 建议是从开始向上移动时的 1 和 5 和练习请小心之间的值。 |
 | --wait-time-between-iterations | 混沌测试的每两次连续迭代的间隔时间（以秒为单位）。 值越大，故障注入率越低。  默认值\: 30。 |
 | --warning-as-error | 指示是否将警告的严重性视为与错误相同。 |
@@ -110,11 +102,11 @@ ms.locfileid: "70254728"
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-chaos-stop"></a>sfctl chaos stop
 如果 Chaos 正在群集中运行，则会停止 Chaos 并将 Chaos Schedule 置于已停止状态。
@@ -125,20 +117,20 @@ ms.locfileid: "70254728"
 
 |参数|说明|
 | --- | --- |
-| --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
 |参数|说明|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

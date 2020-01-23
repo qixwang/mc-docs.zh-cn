@@ -1,21 +1,16 @@
 ---
 title: 通过 Azure 门户创建第一个无服务器函数
 description: 了解如何使用 Azure 门户创建第一个可无服务器执行的 Azure Function。
-author: ggailey777
-manager: gwallace
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.service: azure-functions
 ms.topic: quickstart
-origin.date: 03/28/2018
-ms.date: 10/28/2019
-ms.author: v-junlch
+ms.date: 01/13/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 7f8b51ffd0eeecdd03d351d83acc1e11ab5fed4c
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 5beaa593d5f76fe49f389f3a1056be463e1703e2
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034459"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116892"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
@@ -34,7 +29,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 
+必须使用 Function App 托管函数的执行。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 

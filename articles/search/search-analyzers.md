@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 7b81b92e8a58c4d7ae725490aa0da50474e080ba
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/10/2019
+ms.date: 01/17/2020
+ms.openlocfilehash: e5ad821b805601da2685e6d79e7dedea242bb28f
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336467"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123303"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
@@ -55,6 +55,9 @@ Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)]
 2. 在索引中的[字段定义](https://docs.microsoft.com/rest/api/searchservice/create-index)中，将字段的 **analyzer** 属性设置为某个目标分析器的名称（例如 `"analyzer" = "keyword"`。 有效值包括预定义分析器、语言分析器或在索引架构中定义的自定义分析器的名称。 在服务中创建索引之前，请在索引定义阶段规划好分析器的分配。
 
 3. 或者，可以不使用单个 **analyzer** 属性，而使用 **indexAnalyzer** 和 **searchAnalyzer** 字段参数分别设置用于索引和查询的不同分析器。 如果其中的某个活动需要特定的转换，而其他活动不需要该转换，则你可以使用不同的分析器来准备和检索数据。
+
+> [!NOTE]
+> 不能在为字段编制索引时和查询时使用不同的[语言分析器](index-add-language-analyzers.md)。 该功能是为[自定义分析器](index-add-custom-analyzers.md)保留的。 因此，如果尝试将 **searchAnalyzer** 或 **indexAnalyzer** 属性设为语言分析器的名称，REST API 将返回错误响应。 必须改用 **analyzer** 属性。
 
 不允许将 **analyzer** 或 **indexAnalyzer** 分配到实际已创建的字段。 如有任何疑问，请查看下表，其中列出了需要重新生成的操作详情以及原因。
  

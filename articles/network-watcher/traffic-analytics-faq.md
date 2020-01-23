@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 origin.date: 03/08/2018
 ms.date: 9/29/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 743db98f5cc5063310fe5aa2a75498db7860aaa7
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: 14c915310d35c5fa2bf7cf66fe6a732f2bba1ecd
+ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500352"
+ms.lasthandoff: 12/30/2019
+ms.locfileid: "75545369"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -73,7 +73,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
-否。 现在，你只能在一个区域“中国东部 2”中为你的工作区启用 NSG。
+否。 现在，只能在一个区域“中国东部 2”中启用 NSG 和 Log Analytics 工作区。
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 

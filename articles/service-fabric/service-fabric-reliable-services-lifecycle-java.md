@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric Reliable Services 生命周期 | Azure
+title: Azure Service Fabric Reliable Services 生命周期
 description: 了解 Service Fabric Reliable Services 中的生命周期事件
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/30/2017
-ms.date: 01/21/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cf65dde6d31b455a3a94243c790e14509351ad58
-ms.sourcegitcommit: 35a09a86cbb3d896fa9784471ece41df7728bd71
+ms.openlocfilehash: e40395815b189175b5f4e64fb9d8d31f3a6c6cfd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396652"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742407"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services 生命周期
 > [!div class="op_single_selector"]
@@ -33,13 +25,13 @@ Reliable Services 是 Azure Service Fabric 中可用的编程模型之一。 了
 一般情况下，Reliable Services 生命周期包括以下事件：
 
 * 在启动期间：
-  * 构造服务。
-  * 服务可能会构造并返回零个或多个侦听器。
-  * 打开返回的任何侦听器，以便与服务通信。
-  * 调用服务的 `runAsync` 方法，使服务能够执行长时间运行的工作或后台工作。
+    * 构造服务。
+    * 服务可能会构造并返回零个或多个侦听器。
+    * 打开返回的任何侦听器，以便与服务通信。
+    * 调用服务的 `runAsync` 方法，使服务能够执行长时间运行的工作或后台工作。
 * 在关闭期间：
-  * 取消传递给 `runAsync` 的取消令牌，同时关闭侦听器。
-  * 销毁服务对象本身。
+    * 取消传递给 `runAsync` 的取消令牌，同时关闭侦听器。
+    * 销毁服务对象本身。
 
 根据可靠服务是无状态服务还是有状态服务，Reliable Services 中事件的顺序可能略有变化。 
 
@@ -77,8 +69,8 @@ Reliable Services 是 Azure Service Fabric 中可用的编程模型之一。 了
 2. `StatefulServiceBase.onOpenAsync()` 。 此调用是服务中不常见的重写。
 3. 这些事件将并行发生：
     - 调用 `StatefulServiceBase.createServiceReplicaListeners()`。 
-      - 如果服务是主要服务，则打开所有返回的侦听器。 对每个侦听器调用 `CommunicationListener.openAsync()`。
-      - 如果服务是辅助服务，则只打开已标记为 `listenOnSecondary = true` 的侦听器。 在辅助服务上打开的侦听器较不常见。
+        - 如果服务是主要服务，则打开所有返回的侦听器。 对每个侦听器调用 `CommunicationListener.openAsync()`。
+        - 如果服务是辅助服务，则只打开已标记为 `listenOnSecondary = true` 的侦听器。 在辅助服务上打开的侦听器较不常见。
     - 如果该服务目前是主要服务，则调用该服务的 `StatefulServiceBase.runAsync()` 方法。
 4. 所有副本侦听器的 `openAsync()` 调用完成并已调用 `runAsync()` 后，将调用 `StatefulServiceBase.onChangeRoleAsync()`。 此调用是服务中不常见的重写。
 
@@ -134,7 +126,7 @@ Service Fabric 更改有状态服务的主副本的原因有多种。 最常见�
 * 如果服务因引发某种意外的异常从 `runAsync()` 退出，将导致失败。 已关闭服务对象，并已报告运行状况错误。
 * 虽然从这些方法返回没有时间限制，但会立即丧失写入的能力。 因此，无法完成任何实际工作。 建议尽快在收到取消请求后返回。 如果服务在合理的时间内未响应这些 API 调用，Service Fabric 可能会强行终止服务。 通常，只有在应用程序升级期间或删除服务时，才发生这种情况。 此超时默认为 15 分钟。
 * `onCloseAsync()` 路径中的故障将导致 `onAbort()` 调用。 这一调用是最后一个机会，服务会尽最大努力清理并释放其占用的资源。 当在节点上检测到永久性故障时，或者当 Service Fabric 由于内部错误而无法可靠地管理服务实例的生命周期时，通常会调用此方法。
-* 当有状态服务副本要更改角色（例如，更改为主要副本或次要副本）时，调用 `OnChangeRoleAsync()`。 主副本将指定为写状态（允许创建和写入可靠集合）。 辅助副本将指定为读取状态（只能从现有的可靠集合读取）。 有状态服务中的大部分工作在主副本执行。 次要副本可执行只读验证、报表生成、数据挖掘或其他只读作业。
+* 当有状态服务副本要更改角色（例如，更改为主要副本或次要副本）时，调用 `OnChangeRoleAsync()`。 主副本将指定为写状态（允许创建和写入可靠集合）。 辅助副本将指定为读取状态（只能从现有的可靠集合读取）。 有状态服务中的大部分工作在主要副本执行。 次要副本可执行只读验证、报表生成、数据挖掘或其他只读作业。
 
 ## <a name="next-steps"></a>后续步骤
 * [Reliable Services 简介](service-fabric-reliable-services-introduction.md)

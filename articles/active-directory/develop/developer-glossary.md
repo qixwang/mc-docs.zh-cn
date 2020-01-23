@@ -2,28 +2,23 @@
 title: Microsoft 标识平台开发人员术语表 | Azure
 description: 常用的 Microsoft 标识平台开发人员概念和功能的术语列表。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f56e9028ee6c0b39d36bb9d80d406826145d467
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 24731d5af43ec92464934ace24b3abbb0f5ebb84
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334889"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776848"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -46,7 +41,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="application-manifest"></a>应用程序清单
 
-[Azure 门户][AZURE-portal]提供的一项功能，可生成以 JSON 表示的应用程序标识配置，作为其关联 [Application][AAD-Graph-App-Entity] 实体和 [ServicePrincipal][AAD-Graph-Sp-Entity] 实体的更新机制。 有关更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
+[Azure 门户][AZURE-portal]提供的一项功能，可生成以 JSON 表示的应用程序标识配置，作为其关联 [Application][Graph-App-Resource] 实体和 [ServicePrincipal][Graph-Sp-Resource] 实体的更新机制。 有关更多详细信息，请参阅[了解 Azure Active Directory 应用程序清单][AAD-App-Manifest]。
 
 ## <a name="application-object"></a>应用程序对象
 
@@ -121,7 +116,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 标识平台
 
-Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开发人员平台的进化版。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。 它是一种全功能的平台，包含身份验证服务、库、应用程序注册和配置、完整的开发人员文档、代码示例，以及其他开发人员内容。 Microsoft 标识平台支持行业标准协议，例如 OAuth 2.0 和 OpenID Connect。 有关更多详细信息，请参阅[关于 Microsoft 标识平台](about-microsoft-identity-platform.md)。
+Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开发人员平台的一种演变。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。 它是一种全功能的平台，包含身份验证服务、库、应用程序注册和配置、完整的开发人员文档、代码示例，以及其他开发人员内容。 Microsoft 标识平台支持行业标准协议，例如 OAuth 2.0 和 OpenID Connect。 有关更多详细信息，请参阅[关于 Microsoft 标识平台](about-microsoft-identity-platform.md)。
 
 ## <a name="multi-tenant-application"></a>多租户应用程序
 
@@ -142,7 +137,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 权限也会在 [同意](#consent) 过程中出现，让管理员或资源所有者有机会允许/拒绝客户端对其租户中的资源进行访问。
 
-权限请求是在 [Azure 门户][AZURE-portal]中用于应用程序的“API 权限”  页上配置的，方法是选择所需的“委托的权限”和“应用程序权限”（后者需要“全局管理员”角色中的成员资格）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][AAD-Graph-App-Entity]中。
+权限请求是在 [Azure 门户][AZURE-portal]中用于应用程序的“API 权限”  页上配置的，方法是选择所需的“委托的权限”和“应用程序权限”（后者需要“全局管理员”角色中的成员资格）。 [公共客户端](#client-application)无法安全地维护凭据，因此它只能请求委托的权限，而[机密客户端](#client-application)则可以请求委托的权限和应用程序权限。 客户端的[应用程序对象](#application-object)将声明的权限存储在其 [requiredResourceAccess 属性][Graph-App-Resource]中。
 
 ## <a name="resource-owner"></a>资源所有者
 
@@ -152,25 +147,25 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 根据 [OAuth2 授权框架][OAuth2-Role-Def]的定义，这是托管受保护资源的服务器，该服务器能够接受并响应出示[访问令牌](#access-token)的[客户端应用程序](#client-application)发出的受保护资源请求。 它也称为受保护的资源服务器或资源应用程序。
 
-资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 Azure AD Graph API，以及可访问邮件和日历等数据的 Office 365 API。 这两项也可通过 [Microsoft Graph API][Microsoft-Graph] 进行访问。
+资源服务器使用 OAuth 2.0 授权框架公开 API，并通过[范围](#scopes)和[角色](#roles)强制实施其受保护资源的访问权限。 示例包括可访问 Azure AD 租户数据的 [Microsoft Graph API][Microsoft-Graph]，以及可访问邮件和日历等数据的 Office 365 API。 
 
-与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的 [注册](#application-registration) 来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Azure AD 图形 API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
+与客户端应用程序一样，资源应用程序的标识配置是通过 Azure AD 租户中的 [注册](#application-registration) 来建立的，可提供应用程序和服务主体对象。 Microsoft 提供的某些 API（例如 Microsoft Graph API）在预配期间将预先注册的服务主体设置为在所有租户中可用。
 
 ## <a name="roles"></a>角色
 
 与[范围](#scopes)一样，角色提供某种方式让[资源服务器](#resource-server)控制其受保护资源的访问权限。 有两种类型的角色：“用户”角色为需要资源访问权限的用户/组实现基于角色的访问控制，“应用程序”角色为需要访问权限的 [客户端应用程序](#client-application) 实现相同的访问控制。
 
-角色是资源定义的字符串（例如“开支审批人”、“只读”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [appRoles 属性][AAD-Graph-Sp-Entity]中。 也可通过 Azure 门户为用户分配“用户”角色，并配置用于访问“应用程序”角色的客户端[应用程序权限](#permissions)。
+角色是资源定义的字符串（例如“开支审批人”、“只读”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [appRoles 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户为用户分配“用户”角色，并配置用于访问“应用程序”角色的客户端[应用程序权限](#permissions)。
 
-有关 Azure AD 的 Graph API 公开的应用程序角色的详细讨论，请参阅 [Graph API 权限范围][AAD-Graph-Perm-Scopes]。 有关分步实现示例，请参阅[使用 RBAC 和 Azure 门户管理访问权限][AAD-RBAC]。
+有关 Microsoft Graph API 公开的应用程序角色的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 有关分步实现示例，请参阅[使用 RBAC 和 Azure 门户管理访问权限][AAD-RBAC]。
 
 ## <a name="scopes"></a>范围
 
 与[角色](#roles)一样，范围提供某种方式让[资源服务器](#resource-server)控制其受保护资源的访问权限。 对于资源所有者已为其提供资源的委托访问权限的[客户端应用程序](#client-application)，范围可用于实现[基于范围][OAuth2-Access-Token-Scopes]的访问控制。
 
-范围是资源定义的字符串（例如“Mail.Read”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [oauth2Permissions 属性][AAD-Graph-Sp-Entity]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
+范围是资源定义的字符串（例如“Mail.Read”、“Directory.ReadWrite.All”），在 [Azure 门户][AZURE-portal]中通过资源的[应用程序清单](#application-manifest)进行管理，并且存储在资源的 [oauth2Permissions 属性][Graph-Sp-Resource]中。 也可通过 Azure 门户配置用于访问范围的客户端应用程序[委托权限](#permissions)。
 
-命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Azure AD 的 Graph API 公开的范围的详细介绍，请参阅 [Graph API 权限范围][AAD-Graph-Perm-Scopes]。 有关 Office 365 服务公开的范围，请参阅 [Office 365 API permissions reference][O365-Perm-Ref]（Office 365 API 权限参考）。
+命名约定最佳实践是使用“resource.operation.constraint”格式。 有关 Microsoft Graph API 公开的范围的详细讨论，请参阅 [Graph API 权限范围][Graph-Perm-Scopes]。 有关 Office 365 服务公开的范围，请参阅 [Office 365 API permissions reference][O365-Perm-Ref]（Office 365 API 权限参考）。
 
 ## <a name="security-token"></a>安全令牌
 
@@ -212,7 +207,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 
 ## <a name="user-principal"></a>用户主体
 
-与服务主体对象用于表示应用程序实例的方式一样，用户主体对象是另一种类型的安全主体，它代表用户。 Azure AD Graph [用户实体][AAD-Graph-User-Entity]定义了用户对象的架构，包括用户相关属性，例如姓名、用户主体名称、目录角色成员身份等。这样即可提供 Azure AD 的用户标识配置，用于在运行时建立用户主体。 用户主体用于代表经身份验证的用户执行单一登录、记录[同意](#consent)委托、做出访问控制决策等操作。
+与服务主体对象用于表示应用程序实例的方式一样，用户主体对象是另一种类型的安全主体，它代表用户。 Microsoft Graph [用户资源类型][Graph-User-Resource]定义了用户对象的架构，包括与用户相关的属性，例如名字和姓氏、用户主体名称、目录角色成员身份等。这样即可提供 Azure AD 的用户标识配置，用于在运行时建立用户主体。 用户主体用于代表经身份验证的用户执行单一登录、记录[同意](#consent)委托、做出访问控制决策等操作。
 
 ## <a name="web-client"></a>Web 客户端
 
@@ -231,10 +226,10 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://docs.microsoft.com/graph/permissions-reference
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
+[Graph-Perm-Scopes]: https://docs.microosft.com/graph/permissions-reference
+[Graph-App-Resource]: https://docs.microosft.com/graph/api/resources/application
+[Graph-Sp-Resource]: https://docs.microosft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-User-Resource]: https://docs.microosft.com/graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md

@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的移动应用 - 调用 Web API
+title: 从移动应用调用 Web API | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的移动应用（调用 Web API）
 services: active-directory
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e21dd1c7825e8a251926a823a9404aae01a86aab
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 490e74b219247955e744f062eb813595fbe77826
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830921"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777043"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的移动应用 - 调用 Web API
 
@@ -134,7 +133,7 @@ task.resume()
 
 如果需要为同一用户调用多个 API，则在为用户获取令牌后，可以通过随后调用 `AcquireTokenSilent` 获取令牌来避免重复要求用户提供凭据。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -147,7 +146,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 - 用户已同意第一个 API，但现在需要同意更多范围（增量许可）
 - 第一个 API 不需要多重身份验证，但下一个 API 需要。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

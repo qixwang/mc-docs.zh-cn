@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/24/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9fd343bcc9e439f43f0f778be4554f68245c52d
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: c464cf854cb2404a0fbc2b7a5ae4655f322902a6
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830904"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777029"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -54,7 +53,7 @@ ms.locfileid: "73830904"
 本指南创建的应用程序显示用来查询图形 API 的按钮和用来注销的按钮。它还显示包含调用结果的文本框。
 
 > [!NOTE]
-> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)并跳到[应用程序注册](#register-your-application "a应用程序注册”)步骤，在运行代码示例前对其进行配置。
+> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)并跳到[应用程序注册](#register-your-application "应用程序注册步骤")步骤，在运行代码示例前对其进行配置。
 
 ### <a name="create-your-application"></a>创建应用程序
 
@@ -350,7 +349,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 为应用程序配置身份验证：
 
 1. 回到 [Azure 门户](https://portal.azure.cn)中，在“管理”下选择“身份验证”。  
-1. 在“重定向 URI”列表中，选择“公共客户端(移动和桌面)”作为“类型”，输入 `urn:ietf:wg:oauth:2.0:oob` 作为“重定向 URI”。    
+1. 在“重定向 URI” | “建议用于公共客户端(移动、桌面)的重定向 URI”部分中，选中 https://login.partner.microsoftonline.cn/common/oauth2/nativeclient    。
 1. 选择“保存”  。
 
 为应用程序配置 API 权限：

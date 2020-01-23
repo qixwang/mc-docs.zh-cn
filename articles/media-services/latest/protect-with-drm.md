@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 05/25/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: e513d8fdc56a7b75d79574c95f6b95d0546ecee0
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: e4efe0d43d450854ca98bf9b9cb979af88268299
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807656"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939809"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
@@ -50,7 +50,7 @@ ms.locfileid: "74807656"
 > * 使用指定的流式处理策略创建 StreamingLocator。
 > * 创建一个用于播放文件的 URL。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 以下项目是完成本教程所需具备的条件：
 
@@ -251,17 +251,17 @@ private static async Task<Job> WaitForJobToFinishAsync(IAzureMediaServicesClient
 
 ## <a name="create-a-content-key-policy"></a>创建内容密钥策略
 
-内容密钥提供对资产的安全访问。 通过 DRM 加密内容时，需要创建[内容密钥策略](content-key-policy-concept.md)。 此策略配置如何将内容密钥传送到最终的客户端。 内容密钥与流定位器相关联。 媒体服务还提供密钥传送服务，将加密密钥和许可证传送给已授权的用户。 
+内容密钥提供对资产的安全访问。 通过 DRM 加密内容时，需要创建[内容密钥策略](content-key-policy-concept.md)。 此策略配置如何将内容密钥传送到最终的客户端。 内容密钥与流定位器相关联。 媒体服务还提供密钥传送服务，将加密密钥和许可证传送给已授权的用户。
 
 需要在使用指定的配置传送密钥时必须满足的**内容密钥策略**中设置要求（限制）。 此示例设置了以下配置和要求：
 
-* 配置 
+* 配置
 
     配置了 [PlayReady](playready-license-template-overview.md) 许可证，因此只能由媒体服务许可证传送服务传送这些许可证。 尽管此示例应用未配置 [FairPlay](fairplay-license-overview.md) 许可证，但它包含一个可用来配置 FairPlay 的方法。 可以添加 FairPlay 配置作为另一个选项。
 
 * 限制
 
-    该应用在策略中设置了 JWT 令牌类型限制。
+    该应用在策略中设置了 JSON Web 令牌 (JWT) 令牌类型限制。
 
 当播放器请求流时，媒体服务将使用指定的密钥动态加密内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
@@ -412,7 +412,7 @@ private static string GetTokenAsync(string issuer, string audience, string keyId
 
 ## <a name="build-a-streaming-url"></a>生成流 URL
 
-创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 后，可以获取流 URL。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径  。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
+创建 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 后，可以获取流 URL。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径  。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**将处于停止状态，因此需要调用 **Start**  。
 
 ```c#
 private static async Task<string> GetDASHStreamingUrlAsync(

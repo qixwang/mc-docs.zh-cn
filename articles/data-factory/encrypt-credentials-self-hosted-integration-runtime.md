@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中加密凭据 | Microsoft Docs
+title: 在 Azure 数据工厂中加密凭据
 description: 了解如何在装有自承载集成运行时的计算机上加密和存储本地数据存储的凭据。
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,16 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 01/15/2018
-ms.date: 07/08/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 83d215389d64c646547238cb286e906d1bbfff4f
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 53e2c3e9167d0aae8045332ee42ef3b9defa2d6a
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570285"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624066"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>在 Azure 数据工厂中加密本地数据存储的凭据
 可以在装有自承载集成运行时的计算机上加密和存储本地数据存储（包含敏感信息的链接服务）的凭据。 
@@ -37,10 +36,7 @@ ms.locfileid: "67570285"
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<servername>;Database=<databasename>;User ID=<username>;Password=<password>;Timeout=60"
-            }
+            "connectionString": "Server=<servername>;Database=<databasename>;User ID=<username>;Password=<password>;Timeout=60"
         },
         "connectVia": {
             "type": "integrationRuntimeReference",

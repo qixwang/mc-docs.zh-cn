@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 应用程序级监视 | Azure
-description: 了解用于监视和诊断 Azure Service Fabric 群集的应用程序和服务级事件和日志。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 应用程序级监视
+description: 了解用于监视和诊断 Azure Service Fabric 群集的应用程序和服务级别的事件和日志。
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/21/2018
-ms.date: 01/07/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a8c73b190332e435c37db729f80a417d3fdfb803
-ms.sourcegitcommit: 90d5f59427ffa599e8ec005ef06e634e5e843d1e
+ms.openlocfilehash: c5ee92ff5691344e884f826fef43946c7083bc8f
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083746"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742314"
 ---
 # <a name="application-logging"></a>应用程序日志记录
 
@@ -39,10 +30,12 @@ ms.locfileid: "54083746"
 
 必须认真规划如何检测代码。 适当的检测计划有助于避免代码基变得不稳定，从而需要重新检测代码。 为了降低风险，可以选择一个检测库，例如，Microsoft ASP.NET Core 中包含的 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)。 ASP.NET Core 提供一个可在所选提供程序中使用的 [ILogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger) 接口，同时尽量减轻对现有代码的影响。 可以在 Windows 和 Linux 上的 ASP.NET Core 中以及整个 .NET Framework 中使用代码，从而将检测代码标准化。
 
+<!--MOONCAKE: CORECT ON https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-->
 
 ## <a name="next-steps"></a>后续步骤
 
-选择了用于检测应用程序和服务的日志记录提供程序之后，需要将日志和事件聚合才能将其发送到任何的分析平台。 阅读有关 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 的信息，更好地了解一些推荐的选项。
+选择了用于检测应用程序和服务的日志记录提供程序之后，需要聚合日志和事件才能将其发送到任何的分析平台。 阅读有关 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 的信息，更好地了解一些 Azure Monitor 推荐选项。
+
 <!-- Not Available on [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)-->
 
 <!--Update_Description: update meta properties, wording update-->

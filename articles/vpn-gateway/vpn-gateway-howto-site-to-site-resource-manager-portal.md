@@ -1,23 +1,23 @@
 ---
 title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：门户 | Microsoft Docs
-description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤有助于使用门户创建跨界站点到站点 VPN 网关连接。
+description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用门户创建跨界站点到站点 VPN 网关连接。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 10/04/2019
-ms.date: 11/20/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: bf003cafff365190d8f9667a1e49380f99788362
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+ms.openlocfilehash: 919ce0030a7098ad8d3c17515313c037bf82bbd1
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74202766"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939752"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
-本文介绍如何使用 Azure 门户创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于 Resource Manager 部署模型。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
+本文介绍如何使用 Azure 门户创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于 Resource Manager 部署模型。 也可使用不同的部署工具或部署模型创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
@@ -31,13 +31,13 @@ ms.locfileid: "74202766"
 
 ![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-在开始配置之前，请验证你是否符合以下条件：
+在开始配置之前，请验证是否符合以下条件：
 
-* 确保有一台兼容的 VPN 设备，并且可对其进行配置。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
+* 确保有一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
-* 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。 
+* 如果熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。 
 
 ### <a name="values"></a>示例值
 
@@ -48,7 +48,7 @@ ms.locfileid: "74202766"
 * **订阅：** 要使用的订阅
 * **资源组：** TestRG1
 * **区域：** 中国北部
-* **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（对于本练习来说是可选的）
+* **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（可选，适用于本练习）
 * **网关子网地址范围：** 10.1.255.0/27
 * **虚拟网络网关名称：** VNet1GW
 * **公共 IP 地址名称：** VNet1GWIP
@@ -57,7 +57,7 @@ ms.locfileid: "74202766"
 * **网关类型：** VPN
 * **本地网络网关名称：** Site1
 * **连接名称：** VNet1toSite1
-* **共享密钥：** 本示例使用“abc123”。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
+* **共享机密：** 本示例使用“abc123”。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
 
 ## <a name="CreatVNet"></a>1.创建虚拟网络
 
@@ -65,7 +65,7 @@ ms.locfileid: "74202766"
 
 ## <a name="VNetGateway"></a>2.创建 VPN 网关
 
-在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
+在此步骤中为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
@@ -102,7 +102,7 @@ ms.locfileid: "74202766"
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
 - 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的密钥来使用。
-- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，并单击网关的名称。 
+- 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，然后单击网关的名称。 
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "74202766"
 
 ## <a name="reset"></a>如何重置 VPN 网关
 
-如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md)。
+如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 Azure VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md)。
 
 ## <a name="resize"></a>如何更改网关 SKU（重设网关大小）
 

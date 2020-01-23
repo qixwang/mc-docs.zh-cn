@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/29/2019
-ms.date: 10/21/2019
+origin.date: 12/05/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: wamota
-ms.lastreviewed: 08/29/2019
-ms.openlocfilehash: 4c0d1b198d594288e2c71f7d4e77cf92a5807e5a
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.lastreviewed: 12/05/2019
+ms.openlocfilehash: db0188c96f0e5d136134a6c21a623a82994af622
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578324"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737731"
 ---
 # <a name="about-deployment-network-traffic"></a>关于部署网络流量
 了解 Azure Stack 部署期间的网络流量有助于使部署成功。 本文将引导你逐步了解部署过程中的网络流量，以便你知道应出现的结果。
@@ -43,7 +43,7 @@ Azure Stack 解决方案提供商可以预配其他管理 VM。 在解决方案�
 在部署开始之前，必须满足一些最低要求。这些要求可以由 OEM 进行验证，目的是确保部署成功完成：
 
 -   [Certificates](azure-stack-pki-certs.md)
--   [Azure 订阅](https://www.azure.cn/pricing/1rmb-trial/?b=17.06)
+-   [Azure 订阅](azure-stack-validate-registration.md)。 你可能需要检查订阅。
 -   Internet 访问
 -   DNS
 -   NTP
@@ -58,7 +58,7 @@ DVM 配置了一个来自 BMC 网络的 IP，要求对 Internet 进行网络访�
 
 部署期间 DVM 所需的 Internet 访问仅限出站访问，不得在部署期间进行入站调用。 请注意，它使用 IP 作为源，且 Azure Stack 不支持代理配置。 因此，必要时需提供透明代理或 NAT 来访问 Internet。 在部署期间，一些内部组件将开始使用公共 VIP 通过外部网络访问 Internet。 部署完以后，Azure 和 Azure Stack 之间的所有通信都使用公共 VIP 通过外部网络来完成。
 
-Azure Stack 交换机上的网络配置包含访问控制列表 (ACL)，用于限制特定网络源和目标之间的流量。 DVM 是访问不受限的唯一组件；即使 HLH 也受到很大限制。 可以向 OEM 询问自定义选项，以便更容易地从网络进行管理和访问。 由于存在这些 ACL，因此必须确保在部署时不更改 DNS 和 NTP 服务器地址， 否则需重新配置解决方案的所有交换机。
+Azure Stack 交换机上的网络配置包含访问控制列表 (ACL)，用于限制特定网络源和目标之间的流量。 DVM 是访问不受限的唯一组件；即使 HLH 也受到限制。 可以向 OEM 询问自定义选项，以便更容易地从网络进行管理和访问。 由于存在这些 ACL，因此必须确保在部署时不更改 DNS 和 NTP 服务器地址， 否则需重新配置解决方案的所有交换机。
 
 部署完成后，系统的组件将继续使用外部网络通过 SDN 使用提供的 DNS 和 NTP 服务器地址。 例如，如果在部署完成以后查看 DNS 请求，会发现源从 DVM IP 更改为公共 VIP。
 

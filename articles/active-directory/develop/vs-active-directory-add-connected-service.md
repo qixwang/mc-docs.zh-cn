@@ -1,28 +1,25 @@
 ---
-title: 在 Visual Studio 中使用连接服务添加 Azure Active Directory
+title: 使用 Active Directory 连接服务 (Visual Studio)
 description: 使用 Visual Studio 中的“添加连接服务”对话框添加 Azure Active Directory
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
-ms.prod: visual-studio-dev15
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.custom: vs-azure
+ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 03/12/2018
-ms.date: 07/01/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e13c57c66ca430f2e6a0a0fd7e8a44332c49d39
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: e2d5c28530c3a1e412150f180666b107dde9fb74
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568654"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776905"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务添加 Azure Active Directory
+# <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务添加 Azure Active Directory
 
 通过使用 Azure Active Directory (Azure AD)，可以支持 ASP.NET MVC Web 应用程序或 Web API 服务中的 Active Directory 身份验证的单一登录 (SSO)。 通过 Azure AD 身份验证，用户可以使用其帐户从 Azure Active Directory 连接到 Web 应用程序。 通过 Web API 的 Azure AD 身份验证的优点包括，从 Web 应用程序公开 API 时提供增强的数据安全性。 通过 Azure AD，不需要使用其自己的帐户和用户管理来管理单独的身份验证系统。
 
@@ -30,9 +27,9 @@ ms.locfileid: "67568654"
 
 目前，Active Directory 连接服务不支持 ASP.NET Core 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- Azure 帐户：如果没有 Azure 帐户，可以[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+- Azure 帐户：如果没有 Azure 帐户，可以[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - **Visual Studio 2015** 或更高版本。 [立即下载 Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>使用“连接服务”对话框连接到 Azure Active Directory

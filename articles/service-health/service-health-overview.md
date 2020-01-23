@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
 origin.date: 05/10/2019
-ms.date: 08/05/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: 1a6639a35a051bd1b1711d4ee91888203044ba89
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 22a21d414ba1c1db4cf959b12ce1c6db2e2a262b
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514429"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859712"
 ---
 # <a name="service-health"></a>服务运行状况
 服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，在服务问题影响到自己时提前获得通知。
@@ -32,7 +32,7 @@ ms.locfileid: "68514429"
 3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括已弃用某些 Azure 功能，或超出了使用配额。
 
 > [!NOTE]
-> 若要查看服务运行状况事件，用户必须具有订阅读者角色。
+> 若要查看服务运行状况事件，必须授予用户对订阅的[读者角色](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="get-started-with-service-health"></a>服务运行状况入门
 若要启动服务运行状况仪表板，请在门户仪表板上选择“服务运行状况”磁贴。 如果以前删除了该磁贴或者正在使用自定义仪表板，请在“更多服务”（仪表板左下角）中搜索“服务运行状况”服务。

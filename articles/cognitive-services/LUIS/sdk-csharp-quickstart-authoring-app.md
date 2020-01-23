@@ -1,26 +1,26 @@
 ---
 title: 快速入门：适用于 .NET 的语言理解 (LUIS) 创作客户端库
 titleSuffix: Azure Cognitive Services
-description: 从适用于 .NET 的 LUIS 客户端库开始操作。 请按照以下步骤安装程序包并试用基本任务的示例代码。
+description: 借助此快速入门，了解适用于 .NET 的 LUIS 客户端库的入门知识。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 services: cognitive-services
 author: lingliw
 manager: digimobile
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-origin.date: 08/30/2019
-ms.date: 09/23/2019
+origin.date: 12/11/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a205da65e120918a20ddb1d135d2797d46dba0e0
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: fea29dff0b70ec6b15757e0a684e67bc995d9545
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982147"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854216"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>快速入门：适用于 .NET 的语言理解 (LUIS) 创作客户端库
+# <a name="quickstart-language-understanding-luis-authoring-2x-client-library-for-net"></a>快速入门：适用于 .NET 的语言理解 (LUIS) 创作 2.x 客户端库
 
-适用于 .NET 的语言理解 (LUIS) 创作客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用语言理解 (LUIS) 可在用户的自然语言对话文本中应用自定义的机器学习智能，以预测整体含义并提炼出相关的详细信息。 
+适用于 .NET 的语言理解 (LUIS) 创作 2.x 客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用语言理解 (LUIS) 可在用户的自然语言对话文本中应用自定义的机器学习智能，以预测整体含义并提炼出相关的详细信息。
 
 使用适用于 .NET 的语言理解 (LUIS) 创作客户端库可以：
 
@@ -31,10 +31,11 @@ ms.locfileid: "74982147"
 
 [参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [创作包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/) | [C# 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 语言理解 (LUIS) 门户帐户 - [免费创建](https://luis.azure.cn)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+
 
 ## <a name="setting-up"></a>设置
 
@@ -74,7 +75,7 @@ export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
 编辑 `.bash_profile`，然后添加环境变量：
 
 ```bash
-export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
 export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
 ```
 
@@ -83,15 +84,15 @@ export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
-在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。 
+在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
 
-1. 在控制台窗口（例如 CMD、PowerShell 或 Bash）中，使用 dotnet `new` 命令创建名为 `language-understanding-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：`Program.cs`。 
+1. 在控制台窗口（例如 CMD、PowerShell 或 Bash）中，使用 dotnet `new` 命令创建名为 `language-understanding-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：`Program.cs`。
 
     ```dotnetcli
     dotnet new console -n language-understanding-quickstart
     ```
 
-1. 将目录更改为新创建的应用文件夹。 
+1. 将目录更改为新创建的应用文件夹。
 
 1. 可使用以下代码生成应用程序：
 
@@ -99,8 +100,8 @@ export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
     dotnet build
     ```
 
-    生成输出不应包含警告或错误。 
-    
+    生成输出不应包含警告或错误。
+
     ```console
     ...
     Build succeeded.
@@ -128,8 +129,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring --v
 创建客户端后，可以使用此客户端访问如下所述的功能：
 
 * 应用 - [创建](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.addasync?view=azure-dotnet)、[删除](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.deleteasync?view=azure-dotnet)、[发布](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet)
-* 示例言语 - [按批添加](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet)、[按 ID 删除](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet) 
-* 特征 - 管理[短语列表](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet) 
+* 示例言语 - [按批添加](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet)、[按 ID 删除](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet)
+* 特征 - 管理[短语列表](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet)
 * 模型 - 管理[意向](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet)和实体
 * 模式 - 管理[模式](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet)
 * 训练 - [训练](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet)应用和轮询[训练状态](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet)
@@ -149,7 +150,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring --v
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
-在首选的编辑器或 IDE 中，从项目目录打开 **Program.cs** 文件。 将现有 `using` 代码替换为以下 `using` 指令：
+在首选的编辑器或 IDE 中，从项目目录打开 *Program.cs* 文件。 将现有 `using` 代码替换为以下 `using` 指令：
 
     ```
     using Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring;
@@ -295,11 +296,11 @@ async static Task AddEntities(LUISAuthoringClient client, ApplicationInfo app_in
 
 ## <a name="add-example-utterance-to-intent"></a>将示例言语添加到意向
 
-为了确定言语的意向并提取实体，应用需要言语示例。 这些示例需要针对特定的单个意向，并且应该标记所有自定义实体。 无需标记预生成实体。 
+为了确定言语的意向并提取实体，应用需要言语示例。 这些示例需要针对特定的单个意向，并且应该标记所有自定义实体。 无需标记预生成实体。
 
-通过创建 [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) 对象的列表来添加示例言语（每个示例言语对应于一个对象）。 每个示例应使用实体名称和实体值的名称/值对字典来标记所有实体。 实体值应与示例言语文本中显示的值完全相同。 
+通过创建 [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) 对象的列表来添加示例言语（每个示例言语对应于一个对象）。 每个示例应使用实体名称和实体值的名称/值对字典来标记所有实体。 实体值应与示例言语文本中显示的值完全相同。
 
-结合应用 ID、版本 ID 和示例列表调用 [Examples.BatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ExamplesExtensions_BatchAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_IExamples_System_Guid_System_String_System_Collections_Generic_IList_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_Models_ExampleLabelObject__System_Threading_CancellationToken_)。 该调用将以结果列表做出响应。 需要检查每个示例的结果，以确保该示例已成功添加到模型中。 
+结合应用 ID、版本 ID 和示例列表调用 [Examples.BatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ExamplesExtensions_BatchAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_IExamples_System_Guid_System_String_System_Collections_Generic_IList_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_Models_ExampleLabelObject__System_Threading_CancellationToken_)。 该调用将以结果列表做出响应。 需要检查每个示例的结果，以确保该示例已成功添加到模型中。
 
 ```
 async static Task AddUtterances(LUISAuthoringClient client, ApplicationInfo app_info)
@@ -351,7 +352,7 @@ static EntityLabelObject CreateLabel(string utterance, string key, string value)
 
 创建模型后，需要为此模型版本训练 LUIS 应用。 已训练模型可在[容器](luis-container-howto.md)中用于过渡槽或生产槽。 
 
-[Train.TrainVersionAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions?view=azure-dotnet) 方法需要应用 ID 和版本 ID。 
+[Train.TrainVersionAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions?view=azure-dotnet) 方法需要应用 ID 和版本 ID。
 
 极小的模型（如本快速入门中所示的模型）很快就能完成训练。 对于生产级应用程序，应用的训练应该包括轮询调用 [GetStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_TrainExtensions_GetStatusAsync_Microsoft_Azure_CognitiveServices_Language_LUIS_Authoring_ITrain_System_Guid_System_String_System_Threading_CancellationToken_) 方法以确定训练何时或者是否成功。 响应是一个 [ModelTrainingInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-dotnet) 对象列表，其中分别列出了每个对象的状态。 所有对象必须成功，才能将训练视为完成。
 

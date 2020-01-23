@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 事件存储 | Azure
+title: Azure Service Fabric 事件存储
 description: 了解 Azure Service Fabric 的 EventStore
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/06/2019
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e7ea8443e35da498b78456a297680739a55d89a9
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.openlocfilehash: d981aecfeb64a16975dff8b2a43d52fd4bb7521a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753178"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742312"
 ---
 # <a name="eventstore-overview"></a>EventStore 概述
 

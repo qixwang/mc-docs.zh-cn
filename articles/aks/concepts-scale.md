@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 02/28/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: ed5a960c4f41387dd9735898f054c841281e781d
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: c8d3edf793978d73e131cbefb3e2b8bc0bc56916
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068897"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165450"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -30,6 +30,8 @@ ms.locfileid: "73068897"
 ## <a name="manually-scale-pods-or-nodes"></a>手动缩放 Pod 或节点
 
 可以手动缩放副本 (Pod) 和节点，以测试应用程序如何响应可用资源和状态的更改。 手动缩放资源还可以定义用于维持固定成本的设定数量的资源，例如节点数。 若要手动缩放，请定义副本或节点计数。 然后，Kubernetes API 根据该副本或节点计数计划创建其他 Pod 或排空节点。
+
+缩减节点时，Kubernetes API 将调用与群集使用的计算类型绑定的相关 Azure 计算 API。 例如，对于基于 VM 规模集构建的群集，选择要删除的节点的逻辑由 VM 规模集 API 确定。 若要详细了解如何在缩减节点时选择要删除的节点，请参阅 [VMSS 常见问题解答](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
 
 若要开始使用手动缩放 Pod 和节点，请参阅[在 AKS 中缩放应用程序][aks-scale]。
 
@@ -53,22 +55,8 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 <!--Not Available on ## Cluster autoscaler-->
 
-### <a name="scale-up-events"></a>纵向扩展事件
-
-如果节点没有足够的计算资源来运行请求的 Pod，则该 Pod 无法按照计划继续运行。 除非节点池中有其他可用的计算资源，否则无法启动该 Pod。
-
-当群集自动缩放程序通知由于节点池资源限制而无法将 Pod 列入计划时，节点池中的节点数量会增加，提供额外的计算资源。 当这些额外的节点成功部署并可在节点池中使用时，可将 Pod 计划为运行。
-
-如果应用程序需要快速缩放，则某些 Pod 可能会保持等待计划的状态，直到群集自动缩放程序部署的其他节点可以接受列入计划的 Pod。 对于具有高突发需求的应用程序，可以使用虚拟节点和 Azure 容器实例进行缩放。
-
-### <a name="scale-down-events"></a>纵向缩减事件
-
-群集自动缩放程序还会监视最近未收到新计划请求的节点的 Pod 计划状态。 此方案表明节点池具有的计算资源多于所需资源，并且可以减少节点数。
-
-默认情况下，计划删除传递超过 10 分钟不再需要的阈值的节点。 发生这种情况时，会计划 Pod 在节点池中的其他节点上运行，并且群集自动缩放程序会减少节点数。
-
-当群集自动缩放程序减少节点数时，由于在不同节点上计划 Pod，应用程序可能会发生一些中断。 为最大限度地减少中断，请避免使用单个 Pod 实例的应用程序。
-
+<!--Not Available on ### Scale up events-->
+<!--Not Available on ### Scale down events-->
 <!--Not Available on ## Burst to Azure Container Instances-->
 
 ## <a name="next-steps"></a>后续步骤
@@ -90,6 +78,8 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 <!-- LINKS - external -->
 
+[virtual-kubelet]: https://virtual-kubelet.io/
+
 <!-- LINKS - internal -->
 
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -105,5 +95,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+
+<!--Not Available on [virtual-nodes-cli]: virtual-nodes-cli.md-->
 
 <!-- Update_Description: wording update, update link -->

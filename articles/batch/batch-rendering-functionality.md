@@ -1,6 +1,6 @@
 ---
 title: 渲染功能 - Azure Batch
-description: Azure Batch 中的特定渲染功能
+description: 标准 Azure Batch 功能用于运行渲染工作负荷和应用。 Batch 包含用于支持渲染工作负荷的特定功能。
 services: batch
 ms.service: batch
 author: lingliw
@@ -8,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1824911eb56f98db4d8e19371ec6aacf2cebe4a5
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 741c481695a05f89911d168954c5998a5becc666
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838994"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858108"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -38,12 +38,12 @@ ms.locfileid: "74838994"
 
 如果池 VM 上需要其他应用程序，则可以使用其他选项：
 
-- 基于标准市场映像的自定义映像：
-  - 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅[使用自定义映像创建虚拟机池](/batch/batch-custom-images)。 Autodesk 和 Chaos Group 已分别修改了 Arnold 和 V-Ray，可以验证 Azure Batch 许可服务。 请确保这些应用程序的版本提供此支持，否则，即用即付许可模式将不适用。 运行无头模式（批处理/命令行模式）时，最新版本的 Maya 或 3ds Max 不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
-- [应用程序包](/batch/batch-application-packages)：
-  - 使用一个或多个 ZIP 文件打包应用程序文件，通过 Azure 门户上传，然后在池配置中指定该包。 创建池 VM 时，将下载 ZIP 文件并解压缩文件。
-- 资源文件：
-  - 应用程序文件将上传到 Azure Blob 存储；在[池启动任务](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)中指定文件引用。 创建池 VM 时，会将资源文件下载到每个 VM。
+* 共享映像库中的自定义映像：
+  * 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。 Autodesk 和 Chaos Group 已分别修改了 Arnold 和 V-Ray，可以验证 Azure Batch 许可服务。 请确保这些应用程序的版本提供此支持，否则，即用即付许可模式将不适用。 运行无头模式（批处理/命令行模式）时，最新版本的 Maya 或 3ds Max 不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
+* [应用程序包](/batch/batch-application-packages)：
+  * 使用一个或多个 ZIP 文件打包应用程序文件，通过 Azure 门户上传，然后在池配置中指定该包。 创建池 VM 时，将下载 ZIP 文件并解压缩文件。
+* 资源文件：
+  * 应用程序文件将上传到 Azure Blob 存储；在[池启动任务](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)中指定文件引用。 创建池 VM 时，会将资源文件下载到每个 VM。
 
 ### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>预装应用程序的即用即付许可
 

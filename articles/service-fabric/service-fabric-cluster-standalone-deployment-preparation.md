@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric 独立群集部署准备 | Azure
+title: Azure Service Fabric 独立群集部署准备
 description: 在部署专用于处理生产工作负荷的群集之前要考虑的与准备环境和创建群集配置相关的文档。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 09/11/2018
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8b305e7654524a6f70f15c2eb0da2bcc205fe89f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 93d09d2dc3a98117e88507f82ed5e358ccd9979b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335152"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742322"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -162,7 +154,7 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-目前，此配置测试模块不会验证安全配置，因此必须单独执行验证。
+当前此配置测试模块不验证安全配置，因此这必须独立完成。
 
 > [!NOTE]
 > 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](/service-fabric/service-fabric-support)告知我们。

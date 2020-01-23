@@ -4,15 +4,15 @@ description: 了解如何使用 .NET 客户端库 (v3) 在 Azure 密钥保管库
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 11/05/2019
-ms.date: 12/09/2019
+ms.date: 01/17/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 9568f71efec46aac665db3f999ed27d38b12a913
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 73d003360e06b7bd7a0d9c58c762834d51ccbd12
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840112"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123352"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v3)
 
@@ -36,7 +36,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 > 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。
 * [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。

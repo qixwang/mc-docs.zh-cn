@@ -4,17 +4,17 @@ description: 使用本文了解 Azure IoT Edge 的标准诊断技能，例如检
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 04/26/2019
-ms.date: 11/04/2019
+origin.date: 11/20/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a03d47f8f2176df05984ade15a3caae2c6e0c247
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: af81fe81a9059aa2a5a8a479bf6443516e071931
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914370"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859744"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -75,7 +75,7 @@ ms.locfileid: "72914370"
    
    - 更新以下行：
     
-      ```
+      ```bash
       [Service]
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
@@ -171,13 +171,13 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
 ### <a name="restart-containers"></a>重启容器
 在为了解信息而调查日志和消息后，可以尝试重启容器：
 
-```
+```cmd
 iotedge restart <container name>
 ```
 
 重启 IoT Edge 运行时容器：
 
-```
+```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
@@ -300,9 +300,9 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
 
 对于 IoT Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 可通过两种方式实现此目的：
 
-在 UI 中： 
+在 Azure 门户中：
 
-在门户中，导航到“设备详细信息” > “设置模块” > “配置高级 Edge 运行时设置”    。 为 Edge 中心模块创建名为 *OptimizeForPerformance*、设置为 *false* 的环境变量。
+在 IoT 中心，选择 IoT Edge 设备，然后从设备详细信息页中依次选择“设置模块” > “运行时设置”   。 为 Edge 中心模块创建名为 *OptimizeForPerformance*、设置为 *false* 的环境变量。
 
 ![设为 false 的 OptimizeForPerformance](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -388,7 +388,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 在要应用到引擎启动的所有容器模块的容器引擎设置中，指定环境的 DNS 服务器。 创建名为 `daemon.json` 的文件，并在其中指定要使用的 DNS 服务器。 例如：
 
-```
+```json
 {
     "dns": ["1.1.1.1"]
 }
@@ -398,7 +398,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 将 `daemon.json` 放入平台上的适当位置： 
 
-| 平台 | Location |
+| 平台 | 位置 |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | 包含 Windows 容器的 Windows 主机 | `C:\ProgramData\iotedge-moby\config` |
@@ -416,7 +416,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 可以针对 IoT Edge 部署中每个模块的 *createOptions* 设置 DNS 服务器。 例如：
 
-```
+```json
 "createOptions": {
   "HostConfig": {
     "Dns": [

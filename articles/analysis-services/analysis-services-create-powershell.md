@@ -5,21 +5,21 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: quickstart
 origin.date: 07/29/2019
-ms.date: 11/25/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 341c6d11499f09b169f6785245beb0923d0e600c
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: 00022b7cadbafc25bb4a1809896e8937410b3b97
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203635"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165471"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 
 本快速入门介绍如何从命令行使用 PowerShell，以便在 Azure 订阅中创建 Azure Analysis Services 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ Import-Module Az.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅。 按屏幕指令操作。
+使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅。 按屏幕说明操作。
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud
@@ -45,7 +45,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](../azure-resource-manager/resource-group-overview.md)是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 创建服务器时，必须在订阅中指定资源组。 如果还没有资源组，可以使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令新建一个。 以下示例在中国北部区域中创建名为 `myResourceGroup` 的资源组。
+[Azure 资源组](../azure-resource-manager/management/overview.md)是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 创建服务器时，必须在订阅中指定资源组。 如果还没有资源组，可以使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令新建一个。 以下示例在中国北部区域中创建名为 `myResourceGroup` 的资源组。
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaNorth"

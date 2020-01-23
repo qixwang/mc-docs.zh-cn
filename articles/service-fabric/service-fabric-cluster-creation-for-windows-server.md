@@ -1,26 +1,17 @@
 ---
-title: 创建独立 Azure Service Fabric 群集 | Azure
+title: 创建独立 Azure Service Fabric 群集
 description: 在运行 Windows Server 的任何本地或任意云计算机（物理或虚拟）上创建 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/21/2019
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 86dbfa68116c9d3f84a9c63fd0ff068ad7d36eb0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1be4393e8c03de430249a793f8cab59c6f8560c0
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336354"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742364"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。 Azure 上的传统 Service Fabric 群集作为托管服务提供，而独立的 Service Fabric 群集是自助服务。
@@ -52,7 +43,7 @@ ms.locfileid: "75336354"
 
 在 [此处](service-fabric-cluster-standalone-package-contents.md)查找有关包内容的详细信息。
 
-在创建群集时自动下载 Service Fabric 运行时包。 如果通过未连接到 Internet 的计算机部署，请从此处下载带外的运行时包： <br />
+创建群集时，会自动下载 Service Fabric 运行时包。 如果通过未连接到 Internet 的计算机部署，请从此处下载带外的运行时包： <br />
 [下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
 
 在此处查找独立群集配置示例： <br />
@@ -171,7 +162,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ## <a name="remove-a-cluster"></a>删除群集
 若要删除群集，请运行包文件夹中的 *RemoveServiceFabricCluster.ps1* Powershell 脚本，并传入 JSON 配置文件的路径。 可以选择性地指定删除日志的位置。
 
-可以在对群集配置文件中列为节点的所有计算机具有管理员访问权限的任何计算机上运行此脚本。 运行此脚本的计算机不一定是群集的一部分。
+可以在对群集配置文件中列为节点的所有计算机具有管理员访问权限的任何计算机上运行此脚本。 运行此脚本的计算机不必要是群集的一部分。
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration
@@ -228,7 +219,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ## <a name="next-steps"></a>后续步骤
 * [使用 PowerShell 部署和删除应用程序](service-fabric-deploy-remove-applications.md)
 * [独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)
-* [在独立 Service Fabric 群集中添加或删除节点](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [向独立 Service Fabric 群集添加或删除节点](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [升级独立 Service Fabric 群集版本](service-fabric-cluster-upgrade-windows-server.md)
 * [使用运行 Windows 的 Azure VM 创建独立 Service Fabric 群集](service-fabric-cluster-creation-with-windows-azure-vms.md)
 * [使用 Windows 安全性保护 Windows 上的独立群集](service-fabric-windows-cluster-windows-security.md)

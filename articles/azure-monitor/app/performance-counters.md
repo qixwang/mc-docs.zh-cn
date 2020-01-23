@@ -9,12 +9,12 @@ manager: digimobile
 origin.date: 12/13/2018
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6246e649a65e7aff9acdfeb150fb677f1fda9d2d
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 1086ac7b9b5c24e1dad12f49a5609e328ab20960
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730423"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116942"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -139,7 +139,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>在 Azure Web 应用中运行的应用程序的性能计数器
 
-部署到 Azure Web 应用的 ASP.NET 和 ASP.NET Core 应用程序都在特殊的沙盒环境中运行。 此环境不允许直接访问系统性能计数器。 然而，计数器的有限子集将公开为环境变量，如[此处](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)所述。 适用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK 从这些特殊的环境变量中收集 Azure Web 应用的性能计数器。 在此环境中只有一部分计数器可用，可以在[此处](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)找到完整列表。
+部署到 Azure Web 应用的 ASP.NET 和 ASP.NET Core 应用程序都在特殊的沙盒环境中运行。 此环境不允许直接访问系统性能计数器。 然而，计数器的有限子集将公开为环境变量，如[此处](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)所述。 适用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK 从这些特殊的环境变量中收集 Azure Web 应用的性能计数器。 在此环境中只有一部分计数器可用，可以在[此处](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)找到完整列表。
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core 应用程序中的性能计数器
 

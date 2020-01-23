@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一/共用数据库 | Microsoft Docs
+title: 教程：将 SQL Server 脱机迁移到 SQL 单一数据库
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 services: dms
 author: WenJason
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 4008868bb7d9d467b57a2d7913ebe0959b93506e
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.date: 01/13/2020
+ms.openlocfilehash: fae739e9015172056d8669c8c4daa138809bc143
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655450"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776748"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -38,7 +39,7 @@ ms.locfileid: "74655450"
 
 本文介绍如何从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -146,7 +147,7 @@ ms.locfileid: "74655450"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
+1. 登录到 Azure 门户。 搜索并选择“订阅”  。
 
    ![显示门户订阅](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -154,13 +155,13 @@ ms.locfileid: "74655450"
 
     ![显示资源提供程序](media/tutorial-sql-server-to-azure-sql/portal-select-resource-provider.png)
 
-3. 搜索“迁移”，然后选择“注册”  。
+3. 搜索迁移，然后选择 Microsoft.DataMigration 旁的“注册”   。
 
     ![注册资源提供程序](media/tutorial-sql-server-to-azure-sql/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>创建实例
 
-1. 在 Azure 门户中，选择 **+ 创建资源**，搜索 Azure 数据库迁移服务，然后从下拉列表选择**Azure 数据库迁移服务**。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 搜索并选择“Azure 数据库迁移服务”  。
 
     ![Azure 市场](media/tutorial-sql-server-to-azure-sql/portal-marketplace.png)
 
@@ -190,15 +191,16 @@ ms.locfileid: "74655450"
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
+1. 在 Azure 门户菜单中，选择“所有服务”  。 搜索并选择“Azure 数据库迁移服务”  。
 
      ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-sql-server-to-azure-sql/dms-search.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例  。
+2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例  。
 
-    ![查找 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
+3. 选择“新建迁移项目”  。
 
-3. 选择“+ 新建迁移项目”  。
+     ![查找 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
+
 4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”，然后在“选择活动类型”中选择“脱机数据迁移”。       
 
     ![创建数据库迁移服务项目](media/tutorial-sql-server-to-azure-sql/dms-create-project2.png)

@@ -2,20 +2,16 @@
 title: 在 Azure 自动化混合 Runbook 辅助角色上运行 runbook
 description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或云提供商的计算机上运行 runbook。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
 origin.date: 01/29/2019
-ms.date: 11/18/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 04d3d91c39c31b06c1d713ce32e19bc8a16326a7
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.openlocfilehash: 69027ab0f7d402dd9fe32ee491e66f87400bcbbc
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116229"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939808"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -71,7 +67,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 使用以下过程针对混合辅助角色组指定 RunAs 帐户：
 
-1. 创建具有本地资源访问权限的[凭据资产](automation-credentials.md)。
+1. 创建具有本地资源访问权限的 [凭据资产](automation-credentials.md) 。
 2. 在 Azure 门户中打开自动化帐户。
 3. 选择“混合辅助角色组”  磁贴，并选择组。
 4. 选择“所有设置”  ，并选择“混合辅助角色组设置”  。
@@ -143,7 +139,6 @@ This allows the use of the AzureRunAsConnection to authenticate to Azure and man
 .\Export-RunAsCertificateToHybridWorker
 
 .NOTES
-AUTHOR: Azure Automation Team
 LASTEDIT: 2016.10.13
 #>
 

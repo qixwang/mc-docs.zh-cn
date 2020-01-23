@@ -1,22 +1,16 @@
 ---
 title: Azure Functions 绑定表达式和模式
 description: 了解如何基于通用模式创建不同的 Azure Functions 绑定表达式。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 03/20/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: d63316e2eae11d2e48c1c68cb6a28e8005629689
-ms.sourcegitcommit: 5c73061b924d06efa98d562b5296c862ce737cc7
+ms.openlocfilehash: d02d9ac04adc17edfcfe0a6e74ef7ed645cfe024
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58256374"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116902"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
@@ -153,7 +147,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中  ，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -173,7 +167,7 @@ public static void Run(
   ]
 ```
 
-相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue.md#trigger---message-metadata)。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
+相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue.md#trigger---message-metadata)。 在门户“集成”  选项卡的绑定配置区域下方的“文档”  部分中，还提供了文档。  
 
 ## <a name="json-payloads"></a>JSON 有效负载
 
@@ -291,7 +285,7 @@ public class BlobName
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{rand-guid}"
+  "path": "my-output-container/{rand-guid}.txt"
 }
 ```
 
@@ -304,15 +298,15 @@ public class BlobName
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{DateTime}"
+  "path": "my-output-container/{DateTime}.txt"
 }
 ```
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json 和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
+在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json  和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [使用 Azure 函数返回值](./functions-bindings-return-value.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

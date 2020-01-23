@@ -4,17 +4,17 @@ description: 如何使用 Azure IoT 中心设备预配服务中的自定义分�
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 11/14/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 32a07c4cf6c6f923163c652b495d9c193b89c970
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: c39dd8f0842cae53d8be852358222c141270b910
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658102"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859608"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -44,9 +44,12 @@ ms.locfileid: "74658102"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
+以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 
@@ -416,18 +419,21 @@ ms.locfileid: "74658102"
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-2. 打开命令提示符或 Git Bash shell。 执行以下命令来克隆 Azure IoT C SDK GitHub 存储库：
-    
+2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
+
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
     应该预料到此操作需要几分钟才能完成。
 
 
-3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
+4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
@@ -541,7 +547,7 @@ ms.locfileid: "74658102"
    
     保存文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出是模拟热泵设备成功启动并连接到预配服务实例以通过自定义分配策略分配到 Contoso 热泵 IoT 中心的一个示例：
 

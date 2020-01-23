@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的 Web 应用（获取应用的令牌）- Microsoft 标识平台
+title: 在调用 Web API 的 Web 应用中获取令牌 - Microsoft 标识平台 | Azure
 description: 了解如何生成调用 Web API 的 Web 应用（获取应用的令牌）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,17 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd967b3f6ce5f930a8b365570361fe84a21bdad5
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: ecc4287ef0d54fd2405782f86cb29812a0013e98
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830917"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776926"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用 - 获取应用的令牌
 
@@ -34,7 +33,7 @@ ms.locfileid: "73830917"
 
 控制器方法受 `[Authorize]` 属性的保护，该属性会强制经身份验证的用户使用 Web 应用。 下面是用于调用 Microsoft Graph 的代码。
 
-```CSharp
+```csharp
 [Authorize]
 public class HomeController : Controller
 {
@@ -55,7 +54,7 @@ public class HomeController : Controller
 
 下面是 HomeController 操作的简化代码，该操作获取调用 Microsoft Graph 所需的令牌。
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token

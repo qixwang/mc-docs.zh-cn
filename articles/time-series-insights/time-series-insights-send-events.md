@@ -1,24 +1,24 @@
 ---
 title: 向 Azure 时序见解环境发送事件 | Microsoft Docs
-description: 了解如何配置事件中心，并运行示例应用程序来推送可以在 Azure 时序见解中查看的事件。
+description: 了解如何配置事件中心，运行示例应用程序并向 Azure 时序见解环境发送事件。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 10/10/2019
-ms.date: 11/04/2019
+origin.date: 12/05/2019
+ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c20329ff3a611975ac29cb07ed759252222add67
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 1bff57bac053bd02f76161cbf2db8ee9e494323d
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970339"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859691"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
@@ -31,14 +31,14 @@ ms.locfileid: "72970339"
 1. 选择事件中心。
 1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心  。  
 
-    [![事件中心列表](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
+    [![事件中心列表](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
 1. 创建事件中心后，请在事件中心列表中选择它。
 1. 在菜单中的“实体”下，选择“事件中心”   。
 1. 选择事件中心的名称对其进行配置。
 1. 在“概述”下选择“使用者组”，然后选择“使用者组”    。
 
-    [![创建使用者组](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
+    [![创建使用者组](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
 1. 请确保创建一个使用者组，由时序见解事件源独占使用。
 
@@ -47,11 +47,11 @@ ms.locfileid: "72970339"
 
 1. 在菜单中的“设置”下，选择“共享访问策略”，然后选择“添加”    。
 
-    [![选择“共享访问策略”，然后选择“添加”按钮](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
+    [![选择“共享访问策略”，然后选择“添加”按钮](media/send-events/add-shared-access-policy.png)](media/send-events/add-shared-access-policy.png#lightbox)
 
 1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问   。 将使用此共享访问策略在本文后面的 C# 示例中发送事件。
 
-    [![在“策略名称”框中输入 MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
+    [![在“策略名称”框中输入 MySendPolicy](media/send-events/configure-shared-access-policy-confirm.png)](media/send-events/configure-shared-access-policy-confirm.png#lightbox)
 
 1. 在“声明”下选择“发送”复选框   。
 
@@ -73,18 +73,18 @@ ms.locfileid: "72970339"
 
 1. 转到“共享访问策略”   > “MySendPolicy”  。 复制“连接字符串 - 主密钥”的值  。
 
-    [![复制主密钥连接字符串的值](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
+    [![复制主密钥连接字符串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
 1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 URL 运行模拟 windmill 设备。
 1. 在网页上的“事件中心连接字符串”框中，粘贴在 [windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串  。
   
-    [![将主密钥连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
+    [![将主密钥连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. 选择“单击可启动”  。 模拟器生成可以直接使用的实例 JSON。
 
 1. 返回到 Azure 门户中的事件中心。 在“概述”页面上，可以看到事件中心收到的新事件  ：
 
-    [![显示事件中心指标的事件中心“概述”页](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
+    [![显示事件中心指标的事件中心“概述”页](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 
 ## <a name="json"></a>支持的 JSON 形状
 
@@ -194,7 +194,7 @@ ms.locfileid: "72970339"
 
     |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
-    |chinaeast|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压强|psi|108.09|
+    |chinaeast|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压力|psi|108.09|
     |chinaeast|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,26 +1,16 @@
 ---
-title: 详细了解 Azure Service Fabric | Azure
+title: 详细了解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 12/08/2017
-ms.date: 08/05/2019
 ms.author: v-yeche
-ms.openlocfilehash: ba3cd277d4fb9423563b5c088c9f4964fc76d672
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.date: 01/06/2020
+ms.openlocfilehash: 001aa7b6b6e67966b7393c1837ecf14d177b6901
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753144"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741885"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -46,7 +36,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 构成群集的计算机或 VM 称为节点。 需为每个节点分配节点名称（字符串）。 节点具有各种特征，如放置属性。 每个计算机或 VM 都有一个自动启动 Windows 服务 `FabricHost.exe`，此服务在引导时开始运行，然后启动两个可执行文件：`Fabric.exe` 和 `FabricGateway.exe`。 这两个可执行文件构成了节点。 在开发或测试方案中，可以通过运行 `Fabric.exe` 和 `FabricGateway.exe` 的多个实例，在单台计算机或 VM 上托管多个节点。
 
-命名应用程序是执行一个或多个特定功能的命名服务的集合。 服务执行完整且独立的功能（它们可以独立于其他服务启动和运行），并由代码、配置和数据组成。 将应用程序包复制到映像存储后，可以通过指定应用程序包的应用程序类型（使用其名称/版本）在群集内创建应用程序的实例。 会为每个应用程序类型实例分配一个如下所示的 URI 名称：*fabric:/MyNamedApp*。 在群集中，可以从单个应用程序类型创建多个命名应用程序。 也可以从不同的应用程序类型创建命名应用程序。 可单独管理每个命名应用程序并设置其版本。
+命名应用程序是由执行一个或多个特定功能的命名服务组成的集合。 服务执行完整且独立的功能（它们可以独立于其他服务启动和运行），并由代码、配置和数据组成。 将应用程序包复制到映像存储后，可以通过指定应用程序包的应用程序类型（使用其名称/版本）在群集内创建应用程序的实例。 会为每个应用程序类型实例分配一个如下所示的 URI 名称：*fabric:/MyNamedApp*。 在群集中，可以从单个应用程序类型创建多个命名应用程序。 也可以从不同的应用程序类型创建命名应用程序。 可单独管理每个命名应用程序并设置其版本。
 
 创建命名应用程序后，可以通过指定服务类型（使用其名称/版本），在群集中创建应用程序服务类型之一的实例（命名服务）。 需为每个服务类型实例分配一个 URI 名称，该名称归并到实例的命名应用程序的 URI 之下。 例如，如果在命名应用程序“MyNamedApp”中创建命名服务“MyDatabase”，则 URI 类似于： *fabric:/MyNamedApp/MyDatabase*。 在一个命名应用程序中可以创建一个或多个命名服务。 每个命名服务可以有自身的分区方案和实例/副本计数。 
 
@@ -79,7 +69,7 @@ Service Fabric 的关键区别在于，大力注重使用[内置编程模型](se
 Service Fabric 提供了多种方法来编写和管理服务。 服务可以使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意编译可执行程序，并在 Service Fabric 群集上托管。 有关详细信息，请参阅[支持的编程模型](service-fabric-choose-framework.md)。
 
 ### <a name="containers"></a>容器
-默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 重要的是，可以在同一应用程序中混合使用进程中的服务和容器中的服务。 Service Fabric 支持在 Windows Server 2016 上部署 Linux 容器 和 Windows 容器。 可以在容器中部署现有应用程序、无状态服务或有状态服务。 
+默认情况下，Service Fabric 以进程形式部署和激活服务。 Service Fabric 还可以在[容器](service-fabric-containers-overview.md)中部署服务。 重要的是，可以在同一应用程序中混合使用进程中的服务和容器中的服务。 Service Fabric 支持在 Windows Server 2016 上部署 Linux 容器 和 Windows 容器。 可以在容器中部署现有应用程序、无状态服务或有状态服务。 
 
 ### <a name="reliable-services"></a>Reliable Services
 [Reliable Services](service-fabric-reliable-services-introduction.md) 是一个用于编写服务的轻型框架，这些服务与 Service Fabric 平台集成并且受益于完整的平台功能集。 Reliable Services 可以是无状态的（与大多数服务平台类似，例如 Web 服务器或 Azure 云服务中的辅助角色），此时状态保存在外部解决方案中，例如 Azure DB 或 Azure 表存储。 Reliable Services 也可以是有状态的，此时状态使用 Reliable Collections 直接保存在服务中。 通过复制使状态具有[高可用性](service-fabric-availability-services.md)，以及通过[分区](service-fabric-concepts-partitioning.md)来分布状态，所有状态由 Service Fabric 自动管理。
@@ -99,7 +89,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>应用程序生命周期
 与其他平台一样，Service Fabric 上的应用程序通常会经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 Service Fabric 为云应用程序的整个应用程序生命周期提供一流的支持：从开发到部署、到日常管理和维护，再到最终解除授权。 服务模型使多个不同角色可以独立参与到应用程序生命周期中。 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)一文提供了有关 API 的概述，以及在 Service Fabric 应用程序生命周期的各个阶段，它们是如何被不同角色所使用的。 
 
-可以使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# API](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.applicationmanagementclient?view=azure-dotnet)、[Java API](https://docs.azure.cn/java/api/overview/servicefabric?view=azure-java-stable) 和 [REST API](https://docs.microsoft.com/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](service-fabric-set-up-continuous-integration.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) 等工具来设置持续集成/持续部署管道。
+可以使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# API](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.applicationmanagementclient?view=azure-dotnet)、[Java API](https://docs.azure.cn/java/api/overview/servicefabric?view=azure-java-stable) 和 [REST API](https://docs.microsoft.com/rest/api/servicefabric/) 管理整个应用生命周期。 还可以使用 [Azure Pipelines](service-fabric-set-up-continuous-integration.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) 等工具来设置持续集成/持续部署管道。
 
 <!--MOONCAKE: CORRECT on https://docs.azure.cn/java/api/overview/servicefabric -->
 
@@ -125,7 +115,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 可在运行 Windows Server 或 Linux 的虚拟机或物理计算机上创建 Service Fabric 群集。 可在包含一组互连 Windows Server 或 Linux 计算机（本地计算机、Azure 计算机或任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
 
 ### <a name="clusters-on-azure"></a>Azure 上的群集
-在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure 资源管理器资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集已集成了 Azure 诊断和 Azure Monitor 日志。 群集节点类型是[虚拟机规模集](/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
+在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure Resource Manager 资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集已集成了 Azure 诊断和 Azure Monitor 日志。 群集节点类型是[虚拟机规模集](/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
 
 可以通过 [Azure 门户](service-fabric-cluster-creation-via-portal.md)、[模板](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) 在 Azure 上创建群集。
 
@@ -175,7 +165,7 @@ Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统
 
 Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运行状况报告](service-fabric-view-entities-aggregated-health.md)：
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他可视化工具。
-* 运行状况查询（通过 [PowerShell](https://docs.microsoft.com/powershell/module/ServiceFabric/)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](https://docs.azure.cn/zh-cn/dotnet/api/system.fabric.fabricclient.healthclient?view=azure-dotnet) 和 [Java FabricClient API](https://docs.azure.cn/java/api/system.fabric) 或 [REST API](https://docs.microsoft.com/rest/api/servicefabric)）。
+* 运行状况查询（通过 [PowerShell](https://docs.microsoft.com/powershell/module/ServiceFabric/)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.healthclient?view=azure-dotnet) 和 [Java FabricClient API](https://docs.azure.cn/java/api/system.fabric) 或 [REST API](https://docs.microsoft.com/rest/api/servicefabric)）。
 * 常规查询，返回将运行状况作为属性之一的实体的列表（通过 PowerShell、CLI、API 或 REST）。
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断

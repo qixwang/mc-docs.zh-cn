@@ -1,20 +1,20 @@
 ---
-title: Azure 安全中心内的实时虚拟机访问 | Docs
+title: Azure 安全中心中的实时虚拟机访问 | Microsoft Docs
 description: 本文档说明 Azure 安全中心中的实时 VM 访问如何帮助你控制对 Azure 虚拟机的访问。
 services: security-center
-documentationcenter: na
-author: lingliw
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 origin.date: 09/10/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 26294c976452cbf01abf1bae3bd8706697f4f263
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 2dc3709f6e2afbf2145188820cfc321147e49de4
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528310"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857903"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
@@ -177,10 +177,10 @@ ms.locfileid: "74528310"
 
 若要轻松地在 VM 间进行实时访问，可以将 VM 设置为仅允许从 VM 内直接进行实时访问。
 
-1. 在 Azure 门户中，选择“虚拟机”  。
-2. 单击要实行实时访问限制的虚拟机。
-3. 在菜单中，单击“配置”  。
-4. 在“实时访问”下，单击“启用实时策略”   。 
+1. 在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“虚拟机”  。 
+2. 选择要实行实时访问限制的虚拟机。
+3. 在菜单中选择“配置”  。
+4. 在“实时访问”下，选择“启用实时策略”   。 
 
 此操作可为使用以下设置的 VM 启用实时访问：
 

@@ -1,33 +1,23 @@
 ---
-title: 将证书导入到 Azure Service Fabric 上运行的容器 | Azure
+title: 将证书导入到 Azure Service Fabric 上运行的容器
 description: 了解如何将证书文件导入到 Service Fabric 容器服务。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1fefae3d400e8ac5f9bd7af5c94f51cf062c1414
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 2d9b819743645ca76f04e5a2a158bd3c3ee02928
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254838"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742420"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>将证书文件导入到 Service Fabric 上运行的容器
 
 可以通过指定证书保护容器服务。 Service Fabric 提供一种机制，供容器内服务访问在 Windows 或 Linux 群集（5.7 版或更高版本）的节点中安装的证书。 必须在群集的所有节点上将证书安装到 LocalMachine 下的证书存储中。 与证书对应的私钥必须可用、可访问，在 Windows 上还必须可导出。 `ContainerHostPolicies` 标记下的应用程序清单中提供了证书信息，如以下代码片段所示：
 
 ```xml
-  <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
+<ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
     <CertificateRef Name="MyCert1" X509StoreName="My" X509FindValue="[Thumbprint1]"/>
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
@@ -47,7 +37,7 @@ ms.locfileid: "70254838"
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
- ```
+```
 
 容器服务或进程负责将证书文件导入到容器中。 要导入证书，可以在容器进程内使用 `setupentrypoint.sh` 脚本或执行自定义代码。 下面是用于导入 PFX 文件的 C# 示例代码：
 

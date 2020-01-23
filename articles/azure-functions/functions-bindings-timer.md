@@ -4,15 +4,15 @@ description: 了解如何在 Azure Functions 中使用计时器触发器。
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 12/31/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
 ms.custom: ''
-ms.openlocfilehash: b9178abeb45d51cbde7eb538115ac1ef8f70d3e4
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7798b1066cbf9edac5331505576db154ef40d4a3
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624253"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116894"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -132,7 +132,9 @@ public void keepAlive(
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)。
 
-该特性的构造函数采用 CRON 表达式或 `TimeSpan`： 仅当函数应用在应用服务计划中运行时才能使用 `TimeSpan`。 以下示例显示了一个 CRON 表达式：
+该特性的构造函数采用 CRON 表达式或 `TimeSpan`： 仅当函数应用在应用服务计划中运行时才能使用 `TimeSpan`。 消耗计划不支持 `TimeSpan`。
+
+以下示例显示了一个 CRON 表达式：
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -177,7 +179,7 @@ public void keepAlive(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型  | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**type** | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中表示计时器对象的变量的名称。 | 
 |**schedule**|**ScheduleExpression**|[CRON 表达式](#ncrontab-expressions)或 [TimeSpan](#timespan) 值。 只能对在应用服务计划中运行的函数应用使用 `TimeSpan`。 可以将计划表达式放在应用设置中并将此属性设置为用 **%** 符号括起的应用设置名称，例如此示例中的“%ScheduleAppSetting%”。 |

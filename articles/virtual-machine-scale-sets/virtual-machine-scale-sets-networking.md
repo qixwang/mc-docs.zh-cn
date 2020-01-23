@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟机规模集的网络 | Microsoft Docs
-description: Azure 虚拟机规模集的配置网络属性。
+title: Azure 虚拟机规模集的网络
+description: 如何为 Azure 虚拟机规模集配置一些更高级的网络属性。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -13,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/17/2017
-ms.date: 10/30/2019
+ms.date: 01/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 58df08cc75e06b0d6d571ce9f50d52626a55c46b
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: 0f8eca2c32197b9902653106a779303f8c562354
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142076"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116929"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -393,4 +392,4 @@ az vmss show `
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: update metedata properties -->

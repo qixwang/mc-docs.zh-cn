@@ -1,22 +1,16 @@
 ---
 title: 适用于 Azure Functions 的 通知中心绑定
 description: 了解如何在 Azure Functions 中使用 Azure 通知中心绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
-origin.date: 11/21/2017
-ms.date: 11/11/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
-ms.openlocfilehash: edc7aea4ed1b838d549d2118caa673faaf0aa079
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: f138efe8bc7c7f1799d60d188456f129a177bf2b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934258"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624284"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
 
@@ -32,9 +26,9 @@ ms.locfileid: "73934258"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-此绑定在 Functions 2.x 中不可用。
+此绑定在 Functions 2.x 及更高版本中不可用。
 
 ## <a name="example---template"></a>示例 - 模板
 
@@ -309,4 +303,4 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 > [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: wording update -->

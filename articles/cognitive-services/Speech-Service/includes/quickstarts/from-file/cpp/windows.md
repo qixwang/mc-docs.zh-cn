@@ -10,14 +10,14 @@ ms.topic: include
 origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: ee7f613d9446846d9800702bf4f1f78992e9d504
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 510741bd4684f69790d649ff5319f7b92bf116ab
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631062"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123308"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
@@ -80,7 +80,7 @@ ms.locfileid: "75631062"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，对于 1 元人民币的试用订阅，为 `chinaeast2`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，对于试用订阅，为 `chinaeast2`）。
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 

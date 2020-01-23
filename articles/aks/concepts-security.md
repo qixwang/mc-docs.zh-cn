@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 07/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 65349315e930effe4dbdc99d5c4fbfd2cc6b927f
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: 7a9de693cbb39b127c6b46c14091b7c8609bdfdd
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731229"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859877"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -84,7 +84,7 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 
 若要开始为 AKS 群集提供保护，请参阅[升级 AKS 群集][aks-upgrade-cluster]。
 
-如需相关的最佳做法，请参阅 [AKS 中群集安全性和升级的最佳做法][operator-best-practices-cluster-security]。
+如需相关的最佳做法，请参阅 [AKS 中群集安全性和升级的最佳做法][operator-best-practices-cluster-security]和 [AKS 中的 Pod 安全的最佳做法][developer-best-practices-pod-security]。
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -95,11 +95,13 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 - [Kubernetes/AKS 规模][aks-concepts-scale]
 
 <!-- LINKS - External -->
+
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
 
 <!-- LINKS - Internal -->
+
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
 [aks-aad]: azure-ad-integration.md
@@ -110,7 +112,7 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 
 <!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
-
 <!-- Update_Description: wording update, update link -->

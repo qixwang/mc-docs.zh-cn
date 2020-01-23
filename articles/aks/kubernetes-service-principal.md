@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68909dce8b5a837d7e77c19b73fb2e705a6a1c88
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: a9158ce638a2fb3976d744035e8c2252c31ddddd
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068884"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165441"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -36,17 +36,15 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 在下述 Azure CLI 示例中，尚未指定服务主体。 在此方案中，Azure CLI 为 AKS 群集创建一个服务主体。 若要成功完成此操作，Azure 帐户必须具有创建服务主体所需的相应权限。
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --vm-set-type AvailabilitySet
+az aks create --name myAKSCluster --resource-group myResourceGroup
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 ## <a name="manually-create-a-service-principal"></a>手动创建服务主体
 
 若要通过 Azure CLI 手动创建服务主体，请使用 [az ad sp create-for-rbac][az-ad-sp-create] 命令。 在以下示例中，`--skip-assignment` 参数阻止系统分配更多的默认分配。
 
 ```azurecli
-az ad sp create-for-rbac --skip-assignment
+az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 ```
 
 输出类似于以下示例。 记下你自己的 `appId`和 `password`。 在下一部分创建 AKS 群集时，会使用这些值。
@@ -54,8 +52,8 @@ az ad sp create-for-rbac --skip-assignment
 ```json
 {
   "appId": "559513bd-0c19-4c1a-87cd-851a26afd5fc",
-  "displayName": "azure-cli-2019-03-04-21-35-28",
-  "name": "http://azure-cli-2019-03-04-21-35-28",
+  "displayName": "myAKSClusterServicePrincipal",
+  "name": "http://myAKSClusterServicePrincipal",
   "password": "e763725a-5eee-40e8-a466-dc88d980f415",
   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db48"
 }
@@ -70,11 +68,8 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --service-principal <appId> \
-    --client-secret <password> \
-    --vm-set-type AvailabilitySet
+    --client-secret <password>
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。    选择“使用现有”并指定以下值： 
 
@@ -99,7 +94,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="azure-container-registry"></a>Azure 容器注册表
 
-如果使用 Azure 容器注册表 (ACR) 作为容器映像存储，则需授予 AKS 群集读取和拉取映像的权限。 必须向 AKS 群集的服务主体委托注册表的“读者”角色。  有关详细步骤，请参阅[向 AKS 授予对 ACR 的访问权限][aks-to-acr]。
+如果使用 Azure 容器注册表 (ACR) 作为容器映像存储，则需要向 AKS 群集的服务主体授予读取和拉取映像的权限。 目前，建议的配置是使用 [az aks create][az-aks-create] 或 [az aks update][az-aks-update] 命令与注册表集成，并为服务主体分配适当的角色。 有关详细步骤，请参阅[通过 Azure Kubernetes 服务向 Azure 容器注册表进行身份验证][aks-to-acr]。
 
 ### <a name="networking"></a>网络
 
@@ -137,6 +132,8 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 指定服务主体**客户端 ID** 时，请使用 `appId` 的值。
 - 在 Kubernetes 群集的代理节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
 - 使用 [az aks create][az-aks-create] 命令自动生成服务主体时，会将服务主体凭据写入用于运行命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
+- 如果没有在其他 AKS CLI 命令中明确传递服务主体，则将使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
+- 也可以选择删除 aksServicePrincipal.json 文件，AKS 将创建新的服务主体。
 - 删除通过 [az aks create][az-aks-create] 创建的 AKS 群集时，不会删除自动创建的服务主体。
     - 若要删除服务主体，请查询群集 *servicePrincipalProfile.clientId*，然后使用 [az ad app delete][az-ad-app-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
 
@@ -180,6 +177,7 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 [az-ad-app-list]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-list
 [az-ad-app-delete]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-delete
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-update]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-update
 [rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
 [rbac-custom-role]: ../role-based-access-control/custom-roles.md
 [rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
@@ -188,4 +186,4 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 04/26/2018
-ms.date: 07/15/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e616e351bbcbfc6a842ac3ffd5b173acc934af99
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 3063d4958703573846d634d6fa9a5177345e89e8
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569991"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631089"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -105,7 +105,7 @@ ms.locfileid: "67569991"
 }
 ```
 
-根对象中包含模块标识属性，以及 `tags`、`reported` 和 `desired` 属性的容器对象。 `properties` 容器包含一些只读元素（`$metadata`、`$etag` 和 `$version`），[模块孪生元数据][lnk-module-twin-metadata] and [Optimistic concurrency][lnk-concurrency] 部分描述了这些元素。
+根对象中包含模块标识属性，以及 `tags`、`reported` 和 `desired` 属性的容器对象。 `properties` 容器包含一些只读元素（`$metadata`、`$etag` 和 `$version`），[模块孪生元数据][lnk-module-twin-metadata]和[乐观并发][lnk-concurrency]部分描述了这些元素。
 
 ### <a name="reported-property-example"></a>报告属性示例
 在上面的示例中，模块孪生包含模块应用报告的 `batteryLevel` 属性。 使用此属性可以根据上次报告的电池电量水平查询和操作模块。 其他示例包括让模块应用报告模块功能或连接选项。
@@ -174,7 +174,7 @@ ms.locfileid: "67569991"
 
   - 属性
 
-    | Name | Value |
+    | 名称 | Value |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -184,7 +184,7 @@ ms.locfileid: "67569991"
     moduleId | 模块 的 ID |
     hubName | IoT 中心的名称 |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | “replaceTwin”或“updateTwin” |
 
     消息系统属性以 `$` 符号作为前缀。
@@ -258,7 +258,9 @@ ms.locfileid: "67569991"
 * 所有字符串的值的长度最多为 512 个字节。
 
 ## <a name="module-twin-size"></a>模块孪生大小
-IoT 中心对 `tags`、`properties/desired` 和 `properties/reported`（不包括只读元素）的各个总值强制实施 8KB 大小限制。
+
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包含只读元素。
+
 该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 

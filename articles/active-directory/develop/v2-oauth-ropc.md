@@ -1,6 +1,7 @@
 ---
-title: 使用 Microsoft 标识平台通过资源所有者密码凭据 (ROPC) 授予让用户登录 | Azure
-description: 支持使用资源所有者密码凭据授予的无浏览器身份验证流。
+title: 使用资源所有者密码凭据授予进行登录 | Azure
+titleSuffix: Microsoft identity platform
+description: 支持使用资源所有者密码凭据 (ROPC) 授予的无浏览器身份验证流。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e67b008b30b27e75cc4c7f7e647d608300fc599
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9c0ebd2d2fb5e5242f5c4ee13233ca62559a17f2
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335385"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777027"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
 Microsoft 标识平台支持 [OAuth 2.0 资源所有者密码凭据 (ROPC) 授予](https://tools.ietf.org/html/rfc6749#section-4.3)，后者允许应用程序通过直接处理用户的密码来登录用户。  本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 

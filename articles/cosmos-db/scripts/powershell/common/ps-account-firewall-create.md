@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell 脚本 - 创建启用 IP 防火墙的 Azure Cosmos 帐户
+title: PowerShell 脚本：创建启用 IP 防火墙的 Azure Cosmos 帐户
 description: Azure PowerShell 脚本示例 - 创建启用 IP 防火墙的 Azure Cosmos 帐户
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
 origin.date: 09/20/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0442068f4c79e2bcc5c3a97bd4ab54220023ed69
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 1fe40a0297412c9e3d25830090fc96649618761e
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914790"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270099"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>创建启用 IP 防火墙的 Azure Cosmos 帐户
 
@@ -90,5 +90,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: new articles on powershell accout firewall create -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

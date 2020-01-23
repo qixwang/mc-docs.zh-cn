@@ -65,7 +65,7 @@
   items:
     - name: 应用集成
       items:
-        - name: 注册应用程序
+        - name: 注册 OIDC 应用程序
           href: tutorial-register-applications.md
         - name: 添加 Web API 应用程序
           href: add-web-application.md
@@ -83,6 +83,8 @@
               href: tutorial-create-user-flows.md
             - name: 资源所有者密码凭据
               href: configure-ropc.md
+            - name: 设置自助密码重置
+              href: active-directory-b2c-reference-sspr.md
         - name: UX 自定义
           items:
             - name: 用户界面自定义
@@ -161,9 +163,9 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: Boolean
+                    - name: 布尔
                       href: boolean-transformations.md
-                    - name: 日期
+                    - name: Date
                       href: date-transformations.md
                     - name: 常规
                       href: general-transformations.md
@@ -171,6 +173,8 @@
                       href: integer-transformations.md
                     - name: JSON
                       href: json-transformations.md
+                    - name: 电话号码
+                      href: phone-number-claims-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
                     - name: String
@@ -192,12 +196,18 @@
                   items:
                     - name: 关于技术配置文件
                       href: technical-profiles-overview.md
+                    - name: Azure 多重身份验证
+                      href: multi-factor-auth-technical-profile.md
+                      displayName: mfa
                     - name: 声明解析程序
                       href: claim-resolver-overview.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
                     - name: JWT 令牌颁发者
                       href: jwt-issuer-technical-profile.md
+                    - name: 一次性密码
+                      href: one-time-password-technical-profile.md
+                      displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
                     - name: REST
@@ -210,6 +220,11 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: 验证
                       href: validation-technical-profile.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: 验证
+                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty
@@ -247,6 +262,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookie 定义
       href: cookie-definitions.md
+    - name: 错误代码
+      href: error-codes.md
     - name: 启用计费
       href: active-directory-b2c-how-to-enable-billing.md
     - name: 威胁管理

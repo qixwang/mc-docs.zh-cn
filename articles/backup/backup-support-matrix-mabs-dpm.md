@@ -6,12 +6,12 @@ origin.date: 02/17/2019
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.author: v-lingwu
-ms.openlocfilehash: 26ea2f96f02792f721e28040793845aa4de508a8
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 24ecafc3a11ea043019a591d59b41f5d232405a9
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838881"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854359"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -53,7 +53,7 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-**方案** | **代理** | **Location**
+**方案** | **代理** | **位置**
 --- | --- | ---
 **备份本地计算机/工作负荷** | DPM/MABS 保护代理在要备份的计算机上运行。<br/><br/> DPM/MABS 服务器上的 MARS 代理。<br/> 启用此功能所需的 Microsoft Azure 恢复服务代理或 Azure 备份代理的最低版本为 2.0.8719.0。  | DPM/MABS 必须在本地运行。
 
@@ -151,48 +151,11 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 ## <a name="supported-backups-to-mabs"></a>MABS 支持的备份
 
-下表汇总了可以从本地计算机和 Azure VM 备份到 MABS 的内容。
-
-**备份** | **版本** | **MABS** | **详细信息** |
---- | --- | --- | --- |
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>（32/64 位） | MABS v3、v2 | 本地。 | 卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。<br/><br/> 卷必须至少为 1 GB，且采用 NTFS。 |
-**Windows Server 2016（Datacenter、Standard，不支持 Nano）**<br/><br/> 64/32 位 | MABS v3、v2 | 本地/Azure VM。| 卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows Server 2012 R2（Datacenter 和 Standard）**<br/><br/> 64/32 位 | MABS v3、v2 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VMprotection**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows Server 2012 SP1（Datacenter 和 Standard）**<br/><br/> 64/32 位 | MABS v3、v2 <br/><br/> 必须安装 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows 2008 R2 SP1（Standard 和 Enterprise）**<br/><br/> 64/32 位 | MABS v3、v2 支持。<br/><br/> 必须安装 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。 | 本地/Azure VM。 |   **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows 2008 R2（Standard 和 Enterprise）**<br/><br/> 64/32 位 | 对于 MABS v3、v2，OS 必须运行 SP1。 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。 |
-**Windows Server 2008 SP2**<br/><br/> 64/32 位 | MABS v3、v2 | 如果将 MABS 部署为 VMware VM，则支持 MABS v2、v3。<br/><br/> 不支持 Azure VM 上运行的 MABS。 | 卷/共享/文件夹/文件；系统状态/裸机。 |
-**Windows Storage Server 2008** | MABS v3、v2 | 用作本地物理服务器/Hyper-V VM 的 MABS。 <br/><br/> 不支持 Azure VM 上运行的 MABS。 | 卷/共享/文件夹/文件；系统状态/裸机。
-**SQL Server 2017** | MABS v3 | 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。 |
-**SQL Server 2016/2016 SP1** | MABS v3、v2 | 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。 |
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3、v2 | 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。 |
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | MABS v3、v2 | 本地。 | 备份独立 Exchange 服务器和 DAG 下的数据库。<br/><br/> 恢复邮箱和 DAG 下的邮箱数据库。<br/><br/> 不支持 ReFS。<br/><br/> 备份非共享的磁盘群集。<br/><br/> 备份配置为连续复制的 Exchange 服务器。 |
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | MABS v3、v2 | 本地/Azure VM。 | 备份场和前端 Web 服务器。<br/><br/> 恢复场、数据库、Web 应用、文件或列表项、SharePoint 搜索和前端 Web 服务器。<br/><br/> 无法使用 SQL Server AlwaysOn 备份内容数据库的场。 |
-**Windows Server 2016 上的 Hyper-V**<br/><br/> **Windows Server 2008 R2 SP1** | MABS v3、v2 | 本地。 | **Hyper-V 主机上的 MABS 代理**：备份整个 VM 和主机数据文件。 备份使用本地存储的 VM、群集中使用 CSV 存储的 VM，以及使用 SMB 文件服务器存储的 VM。<br/><br/> **来宾 VM 上的 MABS 代理**：备份 VM 上运行的工作负荷。 CSV。<br/><br/> **恢复**：VM、VHD/卷/文件夹/文件的项级恢复。<br/><br/> **Linux VM**：当 Hyper-V 在 Windows Server 2012 R2 和更高版本上运行时进行备份。 Linux VM 的恢复是针对整个计算机进行的。 |
-**VMware VM：vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 | 本地。 | 在 CSV、NFS 和 SAN 存储中备份 VMware VM。<br/><br/> 恢复整个 VM。<br/><br/> Windows/Linux 备份。<br/><br/> 文件夹/文件的项级恢复（仅适用于 Windows VM）。<br/><br/> 不支持 VMware vApp。<br/><br/> Linux VM 的恢复是针对整个计算机进行的。 |
+有关可以使用 Azure 备份服务器保护的各种服务器和工作负载的信息，请参阅 [Azure 备份服务器保护矩阵](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix)。
 
 ## <a name="supported-backups-to-dpm"></a>DPM 支持的备份
 
-下表汇总了可以从本地计算机和 Azure VM 备份到 DPM 的内容。
-
-**备份** | **DPM** | **详细信息**
---- | --- | ---
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>（32/64 位） | 仅限本地。<br/><br/> 使用 DPM 2012 R2 备份 Windows 10 时，我们建议安装 [Update 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)。 | 卷/共享/文件夹/文件。<br/><br/> 支持已删除重复数据的卷。<br/><br/> 卷必须至少为 1 GB，且采用 NTFS。
-**Windows Server 2016（Datacenter、Standard，不支持 Nano）**<br/><br/> 64/32 位 | 本地/Azure VM。<br/><br/> 仅限 DPM 2016。| 卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> 支持已删除重复数据的卷。
-**Windows Server 2012 R2（Datacenter 和 Standard）**<br/><br/> 64/32 位 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> DPM 2012 R2 和更高版本支持已删除重复数据的卷。
-**Windows Server 2012 SP1（Datacenter 和 Standard）**<br/><br/> 64/32 位 | 本地/Azure VM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。<br/><br/> DPM 2012 R2 和更高版本支持已删除重复数据的卷。
-**Windows 2008 R2 SP1（Standard 和 Enterprise）**<br/><br/> 64/32 位 | 本地/Azure VM。<br/><br/> 必须安装 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。 |   **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。<br/><br/> **Azure VM 保护**：卷/共享/文件夹/文件。
-**Windows 2008 R2（Standard 和 Enterprise）**<br/><br/> 64/32 位 | 本地。<br/><br/> 无法将 DPM 安装为 VMware VM。<br/><br/> 不支持 Azure VM 上运行的 DPM。 | **本地保护**：卷/共享/文件夹/文件；系统状态/裸机。
-**Windows Server 2008 SP2**<br/><br/> 64/32 位 | 仅限本地。<br/><br/> 支持作为 VMware VM 运行的 DPM。 不支持作为物理服务器或 Hyper-V VM 运行。 | 卷/共享/文件夹/文件；系统状态/裸机。
-**Windows Storage Server 2008** | 在本地作为物理服务器或 Hyper-V VM 运行的 DPM。 | 卷/共享/文件夹/文件；系统状态/裸机。
-**SQL Server 2017** | DPM SAC；运行更新汇总 5 或更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
-**SQL Server 2016 SP1** | 不支持 DPM 2012 R2；支持 DPM SAC，以及运行更新汇总 4 或更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
-**SQL Server 2016** | 不支持 DPM 2012 R2。 支持 DPM SAC，以及运行更新汇总 2 和更高版本的 DPM 2016。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | 包含运行更新汇总 4 和更高版本的 DPM 2012 R2 的 SQL Server 2014。<br/><br/> 本地/Azure VM。| 备份 SQL Server 数据库。<br/><br/> 支持 SQL Server 群集备份。<br/><br/>不支持 CSV 中存储的数据库。
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | 对于 Exchange 2016，DPM 2012 R2 需要更新汇总 9 或更高版本。<br/><br/> 本地 | 备份独立 Exchange 服务器和 DAG 下的数据库。<br/><br/> 恢复邮箱和 DAG 下的邮箱数据库。<br/><br/> 不支持 ReFS。<br/><br/> 备份非共享的磁盘群集。<br/><br/> 备份配置为连续复制的 Exchange 服务器。
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | DPM 2016 和更高版本上的 SharePoint 2016。<br/><br/>本地/Azure VM。 | 备份场和前端 Web 服务器。<br/><br/> 恢复场、数据库、Web 应用、文件或列表项、SharePoint 搜索和前端 Web 服务器。<br/><br/> 无法使用 SQL Server AlwaysOn 备份内容数据库的场。
-**Windows Server 2016 上的 Hyper-V**<br/><br/> **Windows Server 2012 R2/2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 SP1** | Windows Server 2016 上的 Hyper-V 支持 DPM 2016 和更高版本。<br/><br/> 本地。 | **Hyper-V 主机上的 MABS 代理**：备份整个 VM 和主机数据文件。 备份使用本地存储的 VM、群集中使用 CSV 存储的 VM，以及使用 SMB 文件服务器存储的 VM。<br/><br/> **来宾 VM 上的 MABS 代理**：备份 VM 上运行的工作负荷。 CSV。<br/><br/> **恢复**：VM、VHD/卷/文件夹/文件的项级恢复。<br/><br/> **Linux VM**：当 Hyper-V 在 Windows Server 2012 R2 和更高版本上运行时进行备份。 Linux VM 的恢复是针对整个计算机进行的。
-**VMware VM：vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 <br/><br/> DPM 2012 R2 需要 System Center 更新汇总 1 <br/><br/>本地。 | 在 CSV、NFS 和 SAN 存储中备份 VMware VM。<br/><br/> 恢复整个 VM。<br/><br/> Windows/Linux 备份。<br/><br/> 文件夹/文件的项级恢复（仅适用于 Windows VM）。<br/><br/> 不支持 VMware vApp。<br/><br/> Linux VM 的恢复是针对整个计算机进行的。
+有关可以使用 Data Protection Manager 保护的各种服务器和工作负载的信息，请参阅 [DPM 可以备份的内容](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)一文。
 
 - DPM/MABS 备份的群集工作负荷应与 DPM/MABS 位于同一域中，或者在子域/受信任的域中。
 - 可以使用 NTLM/证书身份验证在不受信任的域或工作组中备份数据。

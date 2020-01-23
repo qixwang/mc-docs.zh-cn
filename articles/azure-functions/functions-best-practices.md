@@ -1,21 +1,16 @@
 ---
-title: Azure Functions 最佳做法 | Microsoft Docs
+title: Azure Functions 最佳做法
 description: 了解 Azure Functions 的最佳做法和模式。
-author: ggailey777
-manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 10/16/2017
-ms.date: 11/18/2019
-ms.author: v-junlch
+ms.date: 12/30/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05e7cba866b197ed0af35853b12e17333febbe96
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 924f67910517bd08e0a1c2ab80b97f5e709c7ba3
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178971"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624106"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -75,7 +70,11 @@ ms.locfileid: "74178971"
 
 ### <a name="share-and-manage-connections"></a>共享和管理连接
 
-只要可能，请重用与外部资源的连接。  请参阅[如何管理 Azure Functions 中的连接](./manage-connections.md)。
+只要可能，请重用与外部资源的连接。 请参阅[如何管理 Azure Functions 中的连接](./manage-connections.md)。
+
+### <a name="avoid-sharing-storage-accounts"></a>避免共享存储帐户
+
+创建函数应用时，必须将其与存储帐户相关联。 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中维护。 若要最大程度地提高性能，请对每个函数应用使用单独的存储帐户。 如果有 Durable Functions 或事件中心触发的函数，则请注意，这两种函数都会产生大量存储事务，这一点特别重要。 当应用程序逻辑与 Azure 存储交互时，无论是直接（使用存储 SDK）交互还是通过某个存储绑定进行交互，都应使用专用存储帐户。 例如，如果有事件中心触发的函数将一些数据写入 blob 存储，请使用两个存储帐户&mdash;一个用于函数应用，另一个用于由函数存储的 blob。
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一函数应用中混合测试和生产代码
 
@@ -89,9 +88,17 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>使用异步代码，但避免阻止调用
 
-异步编程是推荐的最佳做法。 但是，请始终避免引用 `Result` 属性或在 `Task` 实例上调用 `Wait` 方法。 这种方法会导致线程耗尽。
+异步编程是推荐的最佳做法，在涉及到阻止 I/O 操作时更是如此。
+
+在 C# 中，请始终避免引用 `Result` 属性或在 `Task` 实例上调用 `Wait` 方法。 这种方法会导致线程耗尽。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>使用多个工作进程
+
+默认情况下，Functions 的任何主机实例均使用单个工作进程。 若要提高性能，尤其是使用单线程运行时的性能，请使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 增加每个主机的工作进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>尽量批量接收消息
 

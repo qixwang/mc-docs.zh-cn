@@ -1,5 +1,5 @@
 ---
-title: 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
+title: Azure 中继 - 迁移到共享访问签名授权
 description: 将应用程序从访问控制服务迁移到 SAS
 services: service-bus-relay
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 12/20/2017
-ms.date: 10/15/2018
+origin.date: 12/19/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 1b438c089f3219dfc610c128f6029b8fc6fd9e5f
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: 7dfcb762b4523e8e765ebf099c27796da1530474
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169560"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857351"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
+# <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 中继 - 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
 过去，Azure 中继应用程序有两种不同的授权模型可以选择。一种是中继服务直接提供的[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 令牌模型。另一种是联合模型，其中授权规则是由 [Azure Active Directory](/active-directory/) 访问控制服务 (ACS) 在内部进行管理，从 ACS 获取的令牌会传递到中继，以授予对相应功能的访问权限。
 
@@ -39,7 +39,7 @@ ACS 和中继通过签名密钥  这一共用概念进行集成。 ACS 命名空
 
 迁移方案分为三大类：
 
-1.  **未更改的默认值**。 一些客户使用 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与中继命名空间配对）自动生成的所有者  服务标识及其密钥，不添加新规则。
+1.  **未更改默认值**： 一些客户使用 [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) 对象，同时传递为 ACS 命名空间（与中继命名空间配对）自动生成的所有者  服务标识及其密钥，不添加新规则。
 
 2.  **包含简单规则的自定义服务标识**。 一些客户添加新的服务标识，并授予每个新服务标识对一个特定实体的“发送”  、“侦听”  和“管理”  权限。
 

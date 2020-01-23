@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 09/11/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 11dddcef63f353a3bf32997f7d5948063223db78
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 69ecca9f443c6eef4c27d118e307f1fb62bca317
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838928"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858284"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -106,7 +106,7 @@ ms.locfileid: "74838928"
     ```
 
    > [!TIP]
-   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，在变量中存储备份恢复服务保管库对象可提供方便。
+   > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 因此，在变量中存储备份恢复服务保管库对象可提供方便。
    >
    >
 
@@ -515,25 +515,45 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 还原磁盘以后，通过以下步骤从磁盘创建和配置虚拟机。
 
 > [!NOTE]
-> 若要使用已还原的磁盘创建加密 VM，则 Azure 角色必须有权执行 **Microsoft.KeyVault/vaults/deploy/action** 操作。 如果用户角色不具有此权限，请创建具有此操作的自定义角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md)（Azure RBAC 中的自定义角色）。
 >
->
+> 1. 需要 AzureAz 模块 3.0.0 或更高版本。 <br>
+> 2. 若要使用已还原的磁盘创建加密 VM，则 Azure 角色必须有权执行 **Microsoft.KeyVault/vaults/deploy/action** 操作。 如果用户角色不具有此权限，请创建具有此操作的自定义角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md)（Azure RBAC 中的自定义角色）。 <br>
+> 3. 还原磁盘后，你现在可以获取可以直接用来创建新 VM 的部署模板。 没有更多不同的 PS cmdlet 可用来创建加密/未加密的托管/非托管 VM。<br>
+> <br>
 
-> [!NOTE]
-> 还原磁盘后，你现在可以获取可以直接用来创建新 VM 的部署模板。 没有更多不同的 PS cmdlet 可用来创建加密/未加密的托管/非托管 VM。
+### <a name="create-a-vm-using-the-deployment-template"></a>使用部署模板创建 VM
 
 生成的作业详细信息提供了可以查询和部署的模板 URI。
 
 ```powershell
    $properties = $details.properties
+   $storageAccountName = $properties["Target Storage Account Name"]
+   $containerName = $properties["Config Blob Container Name"]
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-只需要部署模板来创建新的 VM，如[此处](/azure-resource-manager/resource-group-template-deploy)所述。
+模板不可直接进行访问，因为它位于客户的存储帐户和给定容器下。 需要完整的 URL（连同临时 SAS 令牌）才能访问此模板。
+
+1. 首先从 templateBlobURI 中提取模板名称。 此格式如下所述。 可以使用 Powershell 中的拆分操作从该 URL 提取最终模板名称。
+
+```http
+https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+```
+
+2. 然后，可以生成完整的 URL，如[此处](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment)所述。
 
 ```powershell
-New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
+Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
+$templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
 ```
+
+3. 部署模板来创建新的 VM，如[此处](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)所述。
+
+```powershell
+New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+```
+
+### <a name="create-a-vm-using-the-config-file"></a>使用配置文件创建 VM
 
 以下部分列出了使用“VMConfig”文件创建 VM 所需的步骤。
 
@@ -566,18 +586,18 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
 4. 附加 OS 磁盘和数据磁盘。 此步骤提供了各种托管和加密的 VM 配置的示例。 请使用适合你的 VM 配置的示例。
 
-   * **非托管且非加密 VM** - 对于非托管的非加密 VM，请使用以下示例。
+* **非托管且非加密 VM** - 对于非托管的非加密 VM，请使用以下示例。
 
-       ```powershell
+```powershell
        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
        {
         $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
        }
-       ```
+```
 
-   * **使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），需先将机密还原到 Key Vault，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原已加密的虚拟机](backup-azure-restore-key-secret.md)。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。 设置 OS 磁盘时，请确保提及相关的 OS 类型。
+* **使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），需先将机密还原到 Key Vault，然后才能附加磁盘。 有关详细信息，请参阅[从 Azure 备份恢复点还原已加密的虚拟机](backup-azure-restore-key-secret.md)。 以下示例展示了如何为加密的 VM 附加 OS 和数据磁盘。 设置 OS 磁盘时，请确保提及相关的 OS 类型。
 
       ```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.cn:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -602,13 +622,13 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
      {
      $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
-      ```
+```
 
-   * **不使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到 Key Vault。 然后执行以下脚本，在已还原的 OS Blob 上设置加密详细信息（对于数据 Blob，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl。<br>
+* **不使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到 Key Vault。 然后执行以下脚本，在已还原的 OS Blob 上设置加密详细信息（对于数据 Blob，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl。
 
-   仅当源 keyVault/机密不可用时，才需要执行以下脚本。
+仅当源 keyVault/机密不可用时，才需要执行以下脚本。
 
-      ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
       $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
@@ -616,26 +636,26 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
-      ```
+```
 
-    **机密可用**并且同时在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。<br>
+**机密可用**并且同时在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
 
-    如果源 keyVault/机密已经可用，则不需要执行上述脚本。
+如果源 keyVault/机密已经可用，则不需要执行上述脚本。
 
-      ```powershell
+```powershell
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
       foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
       {
       $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
-      ```
+```
 
-   * **不使用 Azure AD 的非托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的非托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到 Key Vault。 然后执行以下脚本，在已还原的 OS Blob 上设置加密详细信息（对于数据 Blob，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
+* **不使用 Azure AD 的非托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的非托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到 Key Vault。 然后执行以下脚本，在已还原的 OS Blob 上设置加密详细信息（对于数据 Blob，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
 
-   仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
+仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
 
-    ```powershell
+```powershell
       $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
       $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
       $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
@@ -644,56 +664,73 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
       $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
-      ```
+```
 
-   **密钥/机密可用**并且在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
+**密钥/机密可用**并且在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
 
-    如果源 keyVault/密钥/机密可用，则不需要执行上述脚本。
+如果源 keyVault/密钥/机密可用，则不需要执行上述脚本。
 
-    ```powershell
+```powershell
       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
       foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
       {
       $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
       }
-      ```
+```
 
-   * 托管的非加密 VM  -对于托管的非加密 VM，将附加还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+* 托管的非加密 VM  -对于托管的非加密 VM，将附加还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-   * **使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+* **使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-   * **使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+* **使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），请附加已还原的托管磁盘。 有关深入信息，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-   * **不使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到密钥保管库。 然后执行以下脚本，在已还原的 OS 磁盘上设置加密详细信息（对于数据磁盘，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl。
+* **不使用 Azure AD 的托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到密钥保管库。 然后执行以下脚本，在已还原的 OS 磁盘上设置加密详细信息（对于数据磁盘，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl。
 
-     仅当源 keyVault/机密不可用时，才需要执行以下脚本。  
+仅当源 keyVault/机密不可用时，才需要执行以下脚本。  
 
-     ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-      $diskupdateconfig = Set-AzDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
-      Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-      ```
+```powershell
+$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+```
 
-     机密可用并且在 OS 磁盘上设置加密详细信息之后，若要附加已还原的托管磁盘，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+机密可用并且在 OS 磁盘上设置加密详细信息之后，若要附加已还原的托管磁盘，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
-   * **不使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到密钥保管库。 然后执行以下脚本，在已还原的 OS 磁盘上设置加密详细信息（对于数据磁盘，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
+* **不使用 Azure AD 的托管加密 VM（BEK 和 KEK）** - 对于不使用 Azure AD 的托管加密 VM（使用 BEK 和 KEK 加密），如果源 **keyVault/密钥/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将密钥和机密还原到密钥保管库。 然后执行以下脚本，在已还原的 OS 磁盘上设置加密详细信息（对于数据磁盘，不需要执行此步骤）。 可从已还原的 keyVault 提取 $dekurl 和 $kekurl。
 
-   仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
+仅当源 keyVault/密钥/机密不可用时，才需要执行以下脚本。
 
-   ```powershell
-     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-     $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-     $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-     $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-     $diskupdateconfig = Set-AzDiskUpdateDiskEncryptionKey -DiskUpdate $diskupdateconfig -SecretUrl $dekUrl -SourceVaultId $keyVaultId  
-     $diskupdateconfig = Set-AzDiskUpdateKeyEncryptionKey -DiskUpdate $diskupdateconfig -KeyUrl $kekUrl -SourceVaultId $keyVaultId  
-     Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-    ```
+```powershell
+$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+$kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+$encryptionSettingsElement.KeyEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+$encryptionSettingsElement.KeyEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+$encryptionSettingsElement.KeyEncryptionKey.SourceVault.Id = $keyVaultId
+$encryptionSettingsElement.KeyEncryptionKey.KeyUrl = $kekUrl
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+```
 
-    密钥/机密可用并且在 OS 磁盘上设置加密详细信息之后，若要附加已还原的托管磁盘，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
+密钥/机密可用并且在 OS 磁盘上设置加密详细信息之后，若要附加已还原的托管磁盘，请参阅[使用 PowerShell 将数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-disk-ps.md)。
 
 5. 设置网络设置。
 
@@ -722,13 +759,13 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
      **仅限 BEK**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
      **BEK 和 KEK**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId  -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
    * **对于不使用 Azure AD 的 VM** - 可使用以下命令来手动启用数据磁盘的加密。
@@ -738,13 +775,13 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
      **仅限 BEK**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
 
       **BEK 和 KEK**
 
       ```powershell  
-      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
+      Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm.Name -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的桌面应用（调用 Web API）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的桌面应用（调用 Web API）
+title: 从桌面应用调用 Web API - Microsoft 标识平台 | Azure
+description: 了解如何生成调用 Web API 的桌面应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,17 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a79cb473f893b413cc174af35da00a68541346a6
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: cc68ccade0c2e38be56ea0905853f1e767504629
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830925"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777046"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的桌面应用 - 调用 Web API
 
@@ -101,7 +100,7 @@ task.resume()
 
 如果你需要为同一用户调用多个 API，则在获得了第一个 API 的令牌后，就可以直接调用 `AcquireTokenSilent`，在大多数情况下你将以无提示方式获取其他 API 的令牌。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -114,7 +113,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 - 用户已同意第一个 API，但现在需要同意更多范围（增量许可）
 - 第一个 API 不需要多重身份验证，但下一个 API 需要。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

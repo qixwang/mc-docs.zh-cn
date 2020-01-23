@@ -1,26 +1,18 @@
 ---
-title: Azure Service Fabric 的体系结构 | Azure
+title: Azure Service Fabric 的体系结构
 description: Service Fabric 是一个分布式系统平台，可用于生成面向云的可缩放、易管理的可靠应用程序。 本文介绍 Service Fabric 的体系结构。
 services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: rishirsinha
-ms.assetid: 6b554243-70cb-4c22-9b28-1a8b4703f45e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 10/12/2017
-ms.date: 05/28/2018
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: c7be305935fae4cc8f7fc5f6e82228b9304adac9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 1e545469e6b59bcc285a405bbc23e3ee2ed061e2
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52649278"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742461"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric 体系结构
 Service Fabric 是利用分层子系统而生成的。 这些子系统让你能够编写这样的应用程序：
@@ -52,9 +44,9 @@ Service Fabric 是利用分层子系统而生成的。 这些子系统让你能�
 ## <a name="management-subsystem"></a>管理子系统
 管理子系统提供端到端服务和应用程序生命周期管理。 PowerShell cmdlet 和管理 API 使你能够设置、部署、修补、升级和取消设置应用程序，而不会丢失可用性。 管理子系统通过以下服务执行此功能。
 
-* **群集管理器**：这是与可靠性子系统中的故障转移管理器交互的主服务，可基于服务放置约束在节点上放置应用程序。 故障转移子系统中的 Resource Manager 确保约束永远不会中断。 群集管理器管理应用程序从设置到取消设置的生命周期。 它与运行状况管理器集成，可确保在升级期间，从语义运行状况的角度来看应用程序可用性不会丢失。
-* **运行状况管理器**：此服务对应用程序、服务和群集实体启用运行状况监视。 群集实体（如节点、服务分区和副本）可以报告运行状况信息，此信息随后聚合到集中式运行状况存储中。 此运行状况信息提供群集中多个节点间分布的服务和节点的总体时间点运行状况快照，可让你采取任何需要的纠正措施。 运行状况查询 API 使你能够查询向运行状况子系统报告的运行状况事件。 运行状况查询 API 为特定群集实体返回存储在运行状况存储中的原始运行状况数据，或已解释的聚合运行状况数据。
-* **映像存储区**：此服务提供存储和分发应用程序二进制文件的功能。 此服务提供简单的分布式文件存储，应用程序可上传到该存储中或从该存储中下载。
+* 群集管理器  ：这是与可靠性子系统中的故障转移管理器交互的主服务，可基于服务放置约束在节点上放置应用程序。 故障转移子系统中的 Resource Manager 确保约束永远不会中断。 群集管理器管理应用程序从设置到取消设置的生命周期。 它与运行状况管理器集成，可确保在升级期间，从语义运行状况的角度来看应用程序可用性不会丢失。
+* 运行状况管理器  ：此服务对应用程序、服务和群集实体启用运行状况监视。 群集实体（如节点、服务分区和副本）可以报告运行状况信息，此信息随后聚合到集中式运行状况存储中。 此运行状况信息提供群集中多个节点间分布的服务和节点的总体时间点运行状况快照，可让你采取任何需要的纠正措施。 运行状况查询 API 使你能够查询向运行状况子系统报告的运行状况事件。 运行状况查询 API 为特定群集实体返回存储在运行状况存储中的原始运行状况数据，或已解释的聚合运行状况数据。
+* 映像存储区  ：此服务提供存储和分发应用程序二进制文件的功能。 此服务提供简单的分布式文件存储，应用程序可上传到该存储中或从该存储中下载。
 
 ## <a name="hosting-subsystem"></a>宿主子系统
 群集管理器通知宿主子系统（在每个节点上运行）需要为特定节点管理的服务。 然后，宿主子系统管理该节点上的应用程序的生命周期。 它与可靠性和运行状况组件交互，可确保副本正确放置且正常运行。

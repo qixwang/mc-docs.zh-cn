@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
 origin.date: 04/09/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: d67905c5a78662f3d56e2d233f8da29db76d539e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 010cf0c1353a42f1aa082de55bc0c14fb967789d
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335884"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165387"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -27,13 +27,13 @@ ms.locfileid: "75335884"
 
 ## <a name="provisioned-infrastructure"></a>预配的基础结构
 
-所有其他网络、计算和存储限制均适用于预配的基础结构。 若要了解相关限制，请参阅 [Azure 订阅和服务限制](../azure-subscription-service-limits.md)。
+所有其他网络、计算和存储限制均适用于预配的基础结构。 若要了解相关限制，请参阅 [Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 > [!IMPORTANT]
 > 升级 AKS 群集时，会临时使用其他资源。 这些资源包括虚拟网络子网中的可用 IP 地址，或者虚拟机 vCPU 配额。
 
 <!--Not Available on  If you use Windows Server containers (currently in preview in AKS)-->
-<!--Not Available on  [Upgrade a node pool in AKS][nodepool-upgrade]-->
+<!--Not Available on  WINDOWS UPDATE [Upgrade a node pool in AKS][nodepool-upgrade]-->
 
 ## <a name="restricted-vm-sizes"></a>受限制的 VM 大小
 
@@ -64,12 +64,11 @@ AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU �
 <!-- LINKS - External -->
 
 [azure-support]: https://support.azure.cn/support/support-azure/
-[region-availability]: https://www.azure.cn/home/features/products-by-region
+[region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2
 
 <!-- LINKS - Internal -->
 
 [vm-skus]: ../virtual-machines/linux/sizes.md
-
-<!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 
 <!-- Update_Description: update meta properties, wording update, update link -->

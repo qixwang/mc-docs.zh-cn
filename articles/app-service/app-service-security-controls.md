@@ -1,21 +1,17 @@
 ---
-title: Azure 应用服务的安全控制
-description: 用于评估 Azure 应用服务的安全控制的清单
-services: app-service
-documentationcenter: ''
+title: 安全控件
+description: 查找用于评估组织 Azure 应用服务的安全控制的清单。
 author: msmbaldwin
-manager: rkarlin
-ms.service: app-service
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9d6a459e7830b036562c9ad07c2d2d5abd703359
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 586be336fc65a34b46e674dcf4365c9e7996620b
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556047"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600522"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure 应用服务的安全控制
 

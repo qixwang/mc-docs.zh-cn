@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Azure Application Insights 进行监视
-description: 提供有关快速安装 Node.js Web 应用以使用 Application Insights 进行监视的说明
+title: 快速入门 - 使用 Azure Monitor Application Insights 监视 Node.js
+description: 提供有关快速安装 Node.js Web 应用以使用 Azure Monitor Application Insights 进行监视的说明
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -9,12 +9,12 @@ ms.author: v-lingwu
 origin.date: 07/12/2019
 ms.date: 08/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 38945c4db0bc63e2c60877d192da487726cb9c63
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: a350a500276bcfda445f88116ec352a42ed7f2f0
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528410"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599920"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -52,8 +52,8 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     | 设置        | Value           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **应用程序类型** | Node.js 应用程序 | 所监视的应用的类型 |
-   | **Location** | 中国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
+   | **位置** | 中国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 选择“创建”  。
 

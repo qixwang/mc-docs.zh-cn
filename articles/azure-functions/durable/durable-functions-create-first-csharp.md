@@ -1,22 +1,16 @@
 ---
 title: 使用 C# 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio 创建并发布 Azure 持久函数。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jeconnoc
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
-ms.service: azure-functions
 ms.topic: quickstart
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 01/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: d08eb3545fb8163fe770d6b8ac540bed628b7fe7
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: d3a5f76f0e715472627a4003a10d091dff44a963
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178996"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116914"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -28,7 +22,7 @@ ms.locfileid: "74178996"
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -40,7 +34,7 @@ ms.locfileid: "74178996"
 
 ## <a name="create-a-function-app-project"></a>创建函数应用项目
 
-Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为一个逻辑单元，以用于管理、部署和共享资源。
+Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
 1. 在 Visual Studio 中，从“文件”  菜单中选择“新建”   > “项目”  。
 
@@ -54,7 +48,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     ![Visual Studio 中的“新建 Azure Functions 应用程序”对话框](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | 设置      | 建议的值  | Description                      |
+    | 设置      | 建议的值  | 说明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **版本** | Azure Functions 2.0 <br />(.NET Core) | 创建一个函数项目，并让其使用 Azure Functions 的版本 2.0 运行时（支持 .NET Core）。 Azure Functions 1.0 支持 .NET Framework。 有关详细信息，请参阅[如何指向 Azure Functions 运行时版本](../functions-versions.md)。   |
     | **模板** | 空 | 创建一个空的函数应用。 |

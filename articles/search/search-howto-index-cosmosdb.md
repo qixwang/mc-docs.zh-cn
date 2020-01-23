@@ -9,20 +9,22 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 090a3ae781ecd5b9a2a3247818d06472d1a35853
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/17/2020
+ms.openlocfilehash: 24d13df39dced5cc660850fe1ce416c98a640471
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336532"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123171"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 
 > [!IMPORTANT] 
 > SQL API 已推出正式版。
-> MongoDB API、Gremlin API 和 Cassandra API 支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+> MongoDB API、Gremlin API 和 Cassandra API 支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+
+> [!WARNING]
+> Azure 认知搜索仅支持将[索引策略](https://docs.azure.cn/cosmos-db/index-policy)设为[一致](https://docs.azure.cn/cosmos-db/index-policy#indexing-mode)的 Cosmos DB 集合。 不建议使用延迟索引策略为集合编制索引，这可能会导致数据丢失。 不支持禁用索引的集合。
 
 本文介绍如何配置 Azure Cosmos DB [索引器](search-indexer-overview.md)以提取内容，并使内容在 Azure 认知搜索中可搜索。 此工作流将创建一个 Azure 认知搜索索引，然后连同从 Azure Cosmos DB 中提取的现有文本一起加载该索引。 
 
@@ -185,7 +187,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 可以指定一个 SQL 查询来平展嵌套的属性或数组、投影 JSON 属性并筛选要编制索引的数据。 
 
 > [!WARNING]
-> **MongoDB API**、**Gremlin API**和 **Cassandra API** 不支持自定义查询：必须将 `container.query` 参数设置为 null，或将其省略。
+> **MongoDB API**、**Gremlin API**和 **Cassandra API** 不支持自定义查询：必须将 `container.query` 参数设置为 null，或将其省略。 如果需要使用自定义查询，请在[用户之声](https://feedback.azure.com/forums/263029-azure-search)上告知我们。
 
 示例文档：
 
@@ -248,7 +250,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 > [!NOTE]
 > 对于已分区集合，默认文档键是 Azure Cosmos DB 的 `_rid` 属性，Azure 认知搜索会自动将其重命名为 `rid`，因为字段名称不能以下划线字符开头。 此外，Azure Cosmos DB 的 `_rid` 值包含了在 Azure 认知搜索键中无效的字符。 因此，`_rid` 值采用 Base64 编码。
 > 
-> 对于 MongoDB 集合，Azure 认知搜索会自动将 `_id` 属性重命名为 `doc_id`。  
+> 对于 MongoDB 集合，Azure 认知搜索会自动将 `_id` 属性重命名为 `id`。  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>JSON 数据类型与 Azure 认知搜索数据类型之间的映射
 | JSON 数据类型 | 兼容的目标索引字段类型 |
@@ -296,7 +298,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 ## <a name="indexing-changed-documents"></a>为已更改的文档编制索引
 
-数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是 Azure Cosmos DB 提供的使用 `_ts`（时间戳）属性的 `High Water Mark` 策略，它按如下所示指定：
+数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是使用 Azure Cosmos DB 提供的 `_ts`（时间戳）属性的 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy)，该属性按如下所示指定：
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",

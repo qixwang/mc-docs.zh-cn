@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户捕获流式处理事件 - Azure事件中心
+title: 事件中心 - 使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 services: event-hubs
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 02/06/2019
-ms.date: 01/07/2019
-ms.author: v-biyu
-ms.openlocfilehash: 8a498670a90032ececf24b2daae7b4afa5014282
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+origin.date: 12/20/2019
+ms.date: 01/17/2020
+ms.author: v-tawe
+ms.openlocfilehash: a75961901c61da54382eec167ddf7d23237af4e9
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72873078"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123249"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 

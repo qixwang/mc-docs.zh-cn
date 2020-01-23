@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中保护基于 WCF 的服务通信 | Azure
+title: 在 Azure Service Fabric 中保护基于 WCF 的服务通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 Reliable Services 的基于 WCF 的通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 04/20/2017
-ms.date: 08/05/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c10e201d3b0c01531bb82e2615fbd56bd2a1c19b
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.openlocfilehash: efd3fdf4b4808c5796a928ca176a738f96d23843
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819644"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742300"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>保护服务的基于 WCF 的通信
 安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在使用服务远程处理时提高安全性。

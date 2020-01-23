@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Cosmos DB 帐户
-description: 本文介绍如何创建和使用 Azure Cosmos DB 帐户
+description: 本文介绍如何创建和使用 Azure Cosmos 帐户。 它还显示了 Azure Cosmos 帐户中的元素层次结构
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 origin.date: 07/23/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 60427eb02758a7438e39e0e14e5b60a3d734093a
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: b0980f931aff78ba8e05029462fa858db9925268
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970300"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270015"
 ---
 # <a name="work-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
 
@@ -45,4 +45,4 @@ Azure Cosmos 容器是基本的缩放单元。 容器可以提供几乎无限的
 * [如何在 Azure Cosmos 帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)
 * [Azure Cosmos DB SLA](https://www.azure.cn/support/sla/cosmos-db/)
 
-<!-- Update_Description: update meta properties  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

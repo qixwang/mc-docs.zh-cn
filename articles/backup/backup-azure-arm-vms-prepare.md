@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 04/03/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: be967e9a99e93e819dcb0180f3e384fb95720402
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e4b304d37f33518b3c078c414efe359e2bc4b5f5
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838953"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858535"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -66,9 +66,8 @@ ms.locfileid: "74838953"
 
 ![备份保管库列表](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Azure 备份服务会创建一个单独的资源组（而非 VM 资源组）来存储快照，采用的命名格式为 **AzureBackupRG_geography_number**（例如：AzureBackupRG_northeurope_1）。 此资源组中的数据将按 Azure 虚拟机备份策略的“保留即时恢复快照”  部分中指定的天数保留。  对此资源组应用锁定可能会导致备份失败。<br>
-此资源组还应排除在任何名称/标记限制之外，因为限制策略会阻止在其中再次创建“资源点”集合，从而导致备份失败。
+>[!NOTE]
+> Azure 备份现在允许自定义由 Azure 备份服务创建的资源组名称。 有关详细信息，请参阅[虚拟机的 Azure 备份资源组](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)。
 
 ### <a name="modify-storage-replication"></a>修复存储复制
 

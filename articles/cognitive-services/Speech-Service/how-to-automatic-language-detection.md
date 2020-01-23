@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 10/26/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 75decfb29a796faa6d7e9937bb8ced5ee5ce8b69
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: ab7e9e7ec55fb1e44483caad9978449ea5c9766e
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630873"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123376"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音转文本的自动语言检测
 

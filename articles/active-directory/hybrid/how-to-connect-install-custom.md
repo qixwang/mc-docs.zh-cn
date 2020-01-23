@@ -10,17 +10,16 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/14/2019
-ms.date: 11/26/2019
+ms.date: 01/15/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e74fddb5d1eb6910e46cb0576c9047c5bf97f601
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 9797cb843e0e7a91169703f245a47354c1212d2a
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655382"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116797"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。  如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
@@ -81,7 +80,7 @@ ms.locfileid: "74655382"
 | 选项 | 说明 |
 | --- | --- |
 | 创建新帐户 | 如果需要使用 Azure AD Connect 向导创建一个 Azure AD Connect 需要的 AD DS 帐户，以便在目录同步期间连接到 AD 林，请选择此选项。 选择此选项时，请输入企业管理员帐户的用户名和密码。 Azure AD Connect 向导将使用提供的企业管理员帐户创建所需的 AD DS 帐户。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 |
-| 使用现有帐户 | 如果需要提供一个现有的 AD DS 帐户，以便在目录同步期间用在 Azure AD Connect 中以连接到 AD 林，请选择此选项。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\syncuser 或 fabrikam.com\syncuser。 此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。 不过，根据情况，可能会需要更多权限。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](reference-connect-accounts-permissions.md##create-the-ad-ds-connector-account)。 |
+| 使用现有帐户 | 如果需要提供一个现有的 AD DS 帐户，以便在目录同步期间用在 Azure AD Connect 中以连接到 AD 林，请选择此选项。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\syncuser 或 fabrikam.com\syncuser。 此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。 不过，根据情况，可能会需要更多权限。 有关详细信息，请参阅 [Azure AD Connect 帐户和权限](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account)。 |
 
 ![连接目录](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -229,7 +228,7 @@ Azure 中国区目前不支持单一登录 (SSO)。
 ![AD FS 服务器](./media/how-to-connect-install-custom/adfs2.png)
 
 ### <a name="specify-the-web-application-proxy-servers"></a>指定 Web 应用程序代理服务器
-输入要用作 Web 应用程序代理服务器的服务器。 Web 应用程序代理服务器部署在外围网络中（面向 Extranet），支持来自 Extranet 的身份验证请求。 可以根据容量规划需求添加一个或多个服务器。 Microsoft 建议安装一台 Web 应用程序代理服务器用于测试和试验部署。 然后，在完成初始配置之后通过再次运行 Azure AD Connect，根据缩放需求添加并部署更多的服务器。 我们建议使用数量相当的代理服务器，以满足来自 Intranet 的身份验证要求。
+输入要用作 Web 应用程序代理服务器的服务器。 Web 应用程序代理服务器部署在外围网络中（面向 Extranet），支持来自 Extranet 的身份验证请求。 可以根据容量规划需求添加一个或多个服务器。 Microsoft 建议安装一台 Web 应用程序代理服务器用于测试和试验部署。 然后，在完成初始配置之后通过再次运行 Azure AD Connect，根据缩放需求添加和部署更多的服务器。 我们建议使用数量相当的代理服务器，以满足来自 Intranet 的身份验证要求。
 
 > [!NOTE]
 > <ul>
@@ -248,7 +247,7 @@ Azure 中国区目前不支持单一登录 (SSO)。
 AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory 中查找用户信息。 它可以支持两种类型的服务帐户：
 
 * **组托管服务帐户** - Active Directory 域服务中随 Windows Server 2012 一起引入。 此类型的帐户提供 AD FS 之类的服务，让可以使用单个帐户，且不需要定期更新帐户密码。 如果 AD FS 服务器所属的域中已有 Windows Server 2012 域控制器，请使用此选项。
-*  域用户帐户 - 此类型的帐户会要求你提供密码，并在密码更改或过期时定期更新密码。 仅当 AD FS 服务器所属的域中没有 Windows Server 2012 域控制器时，才使用此选项。
+* **域用户帐户** - 此类型的帐户会要求提供密码，并在密码更改或过期时定期更新密码。 仅当 AD FS 服务器所属的域中没有 Windows Server 2012 域控制器时，才使用此选项。
 
 如果选择了组托管的服务帐户且从未在 Active Directory 中使用过此功能，则系统会提示输入企业管理员凭据。 这些凭据用于启动密钥存储，以及在 Active Directory 中启用该功能。
 
@@ -317,7 +316,7 @@ Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索�
 ![已准备好配置](./media/how-to-connect-install-custom/readytoconfigure2.png)
 
 ### <a name="staging-mode"></a>过渡模式
-在过渡模式下，可以同时设置新的同步服务器。 系统仅支持一台同步服务器导出到云中的一个目录。 但如果想要从另一台服务器（例如运行 DirSync 的服务器）迁移，则可以启用过渡模式的 Azure AD Connect。 启用后，同步引擎将像平时一样导入并同步数据，但不会将任何内容导出到 Azure AD。 密码同步功能在过渡模式下已禁用。
+在过渡模式下，可以同时设置新的同步服务器。 系统仅支持将一台同步服务器导出到云中的一个目录。 但如果想要从另一台服务器（例如运行 DirSync 的服务器）迁移，则可以启用过渡模式的 Azure AD Connect。 启用后，同步引擎将像平时一样导入并同步数据，但不会将任何内容导出到 Azure AD。 密码同步功能在过渡模式下已禁用。
 
 ![暂存模式](./media/how-to-connect-install-custom/stagingmode.png)
 
@@ -326,7 +325,7 @@ Azure AD Connect 将尝试验证从上一步中的 PingFederate 元数据检索�
 有关详细信息，请参阅[过渡模式](how-to-connect-sync-staging-server.md)。
 
 ### <a name="verify-your-federation-configuration"></a>验证联合配置
-单击“验证”按钮时，Azure AD Connect 会验证 DNS 设置。
+单击“验证”按钮后，Azure AD Connect 会验证 DNS 设置。
 
 **Intranet 连接检查**
 

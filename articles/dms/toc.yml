@@ -65,11 +65,13 @@
           href: known-issues-troubleshooting-dms.md
         - name: 已知问题 - 联机迁移到 Azure SQL DB 单一数据库
           href: known-issues-azure-sql-online.md
+        - name: 已知问题 - 联机迁移到 Azure SQL DB 托管实例
+          href: known-issues-azure-sql-db-managed-instance-online.md
         - name: 已知问题 - 联机迁移到 Azure DB for MySQL
           href: known-issues-azure-mysql-online.md
-        - name: 已知问题 - 从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
+        - name: 已知问题 - 从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL - 单一服务器
           href: known-issues-azure-postgresql-online.md
-        - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL 单一服务器
+        - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL - 单一服务器
           href: known-issues-oracle-azure-postgresql-online.md
     - name: 工具和指南
       items:
@@ -79,7 +81,7 @@
           href: 'https://aka.ms/datamigration'
         - name: 数据迁移助手
           href: 'https://aka.ms/dma'
-        - name: SQL Server 迁移助手
+        - name: SQL Server Migration Assistant
           href: 'https://aka.ms/ssma'
         - name: 数据库实验助手
           href: 'https://aka.ms/dea-docs'

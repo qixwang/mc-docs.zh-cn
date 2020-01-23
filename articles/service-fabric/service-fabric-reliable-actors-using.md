@@ -1,26 +1,17 @@
 ---
-title: 在 Azure Service Fabric 执行组件中实现功能 | Azure
+title: 在 Azure Service Fabric 执行组件中实现功能
 description: 介绍了如何通过与继承 StatefulService 时相同的方式来编写可实现服务级功能的执行组件服务。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/19/2018
-ms.date: 10/15/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5bfd037a0a8b2e7716c1b65f04c82ba44cbae4e0
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 75234dc6567b1b106721b585a5b0e75a82454bf4
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625806"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741856"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在执行组件服务中实现服务级功能
 
@@ -162,9 +153,9 @@ public class Program
 
 1. 在执行组件接口上添加以下程序集属性。
 
-   ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
-   ```
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+    ```
 
 2. 构建并升级执行组件服务和执行组件客户端项目以开始使用 V2 堆栈。
 
@@ -174,12 +165,12 @@ public class Program
 
 1. 在执行组件接口上添加以下程序集属性。 此属性启动执行组件服务的两个侦听器：V1（现有的）和 V2_1 侦听器。 通过此项更改升级执行组件服务。
 
-   ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
-   ```
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+    ```
 
 2. 在完成上一个升级后升级执行组件客户端。
-   此步骤确保执行组件代理使用远程处理 V2_1 堆栈。
+    此步骤确保执行组件代理使用远程处理 V2_1 堆栈。
 
 3. 此步骤是可选的。 更改上面的属性来删除 V1 侦听器。
 
@@ -195,9 +186,9 @@ public class Program
 
 1. 在执行组件接口上添加以下程序集属性。
 
-   ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
-   ```
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+    ```
 
 2. 构建并升级执行组件服务和执行组件客户端项目以开始使用 V2 堆栈。
 
@@ -207,12 +198,12 @@ public class Program
 
 1. 在执行组件接口上添加以下程序集属性。 此属性启动执行组件服务的两个侦听器：V1（现有的）和 V2 侦听器。 通过此项更改升级执行组件服务。
 
-   ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
-   ```
+    ```csharp
+    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+    ```
 
 2. 在完成上一个升级后升级执行组件客户端。
-   此步骤确保执行组件代理使用远程处理 V2 堆栈。
+    此步骤确保执行组件代理使用远程处理 V2 堆栈。
 
 3. 此步骤是可选的。 更改上面的属性来删除 V1 侦听器。
 
@@ -229,6 +220,7 @@ public class Program
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png
 [2]: ./media/service-fabric-reliable-actors-platform/app-deployment-scripts.png
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png

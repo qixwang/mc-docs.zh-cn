@@ -1,6 +1,7 @@
 ---
 title: 提供者资源使用情况 API | Microsoft Docs
-description: 资源使用情况 API 的参考，该 API 用于检索 Azure Stack 使用情况信息
+titleSuffix: Azure Stack
+description: 资源使用情况 API 的参考，该 API 用于检索 Azure Stack 使用情况信息。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
@@ -12,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/16/2019
-ms.date: 09/16/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: b89cba0ef1e2d350baeb5d1aba0d9b4aa6ce1b6c
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 688aadd0b1e10373081dd3e40b7ce7f170b93fa3
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857295"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737883"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 
@@ -45,14 +46,14 @@ ms.locfileid: "70857295"
 
 | 参数 | 说明 |
 | --- | --- |
-| `armendpoint` |Azure Stack 环境的 Azure 资源管理器终结点。 按 Azure Stack 约定，Azure 资源管理器终结点名称的格式为 `https://adminmanagement.{domain-name}`。 例如，对于开发工具包，如果域名为 *local.azurestack.external*，则资源管理器终结点是 `https://adminmanagement.local.azurestack.external`。 |
+| `armendpoint` |Azure Stack 环境的 Azure 资源管理器终结点。 按 Azure Stack 约定，Azure 资源管理器终结点名称的格式为 `https://adminmanagement.{domain-name}`。 例如，对于 Azure Stack 开发工具包 (ASDK)，如果域名为“local.azurestack.external”  ，则资源管理器终结点为 `https://adminmanagement.local.azurestack.external`。 |
 | `subId` |进行调用的用户的订阅 ID。 |
-| `reportedStartTime` |查询的开始时间。 `DateTime` 的值应为以协调世界时 (UTC) 和小时开始时的时间呈现，例如 13:00。 对于每日聚合，请将此值设置为 UTC 午夜。 格式是转义的 ISO 8601，例如 `2015-06-16T18%3a53%3a11%2b00%3a00Z`，其中冒号转义为 `%3a` 而加号转义为 `%2b`，使其符合 URI 规范。 |
+| `reportedStartTime` |查询的开始时间。 `DateTime` 的值应为以协调世界时 (UTC) 和小时开始时的时间呈现，例如 13:00。 对于每日聚合，请将此值设置为 UTC 午夜。 格式是转义的 ISO 8601，例如 `2015-06-16T18%3a53%3a11%2b00%3a00Z`，其中冒号转义为 `%3a`，而加号转义为 `%2b`，使其符合 URI 规范。 |
 | `reportedEndTime` |查询的结束时间。 适用于 `reportedStartTime` 的约束也适用于此参数。 `reportedEndTime` 的值不得为未来或当前的日期。 如果是，结果会设为“处理未完成”。 |
 | `aggregationGranularity` |这是可选参数，它有两个截然不同的可能值：**daily** 和 **hourly**。 如同以上两个值所暗示，一个会每日返回数据，另一个则会每小时返回数据。 默认值为 **daily** 选项。 |
 | `subscriberId` |订阅 ID。 若要获取筛选的数据，需要提供者直接租户的订阅 ID。 如果未指定订阅 ID 参数，调用会返回所有提供者直接租户的使用情况数据。 |
 | `api-version` |用于发出此请求的协议版本。 此值设置为 `2015-06-01-preview`。 |
-| `continuationToken` |从上次调用使用情况 API 提供者取回的标记。 响应大于 1,000 行时，需要此标记， 可作为进度的书签。 若无此标记，则会从一天或小时开始时的时间检索数据，取决于所传入的粒度。 |
+| `continuationToken` |从上次调用使用情况 API 提供者取回的标记。 响应大于 1,000 行时，需要此标记， 可作为进度的书签。 如果此标记不存在，则根据传入的粒度从一天或一小时的开始检索数据。 |
 
 ### <a name="response"></a>响应
 
@@ -105,7 +106,7 @@ meterID1",
 
 ### <a name="powershell"></a>PowerShell
 
-若要生成使用情况数据，你应当有正在运行且在主动使用系统的资源，例如，活动虚拟机或包含某些数据的存储帐户。 如果不确定你是否有任何资源在 Azure Stack 市场中运行，请部署一个虚拟机 (VM)，并验证 VM 监视边栏选项卡以确保它正在运行。 使用以下 PowerShell cmdlet 来查看使用情况数据：
+若要生成使用情况数据，你应该有正在运行且主动使用系统的资源，例如，活动的虚拟机 (VM) 或包含某些数据的存储帐户。 如果不确定你是否有任何资源在 Azure Stack 市场中运行，请部署一个 VM，并验证“VM 监视”边栏选项卡以确保它正在运行。 使用以下 PowerShell cmdlet 来查看使用情况数据：
 
 1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
 2. [配置 Azure Stack 用户](../user/azure-stack-powershell-configure-user.md)或 [Azure Stack 操作员](azure-stack-powershell-configure-admin.md) PowerShell 环境。

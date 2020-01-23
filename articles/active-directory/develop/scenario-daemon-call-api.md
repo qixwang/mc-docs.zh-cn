@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的守护程序应用（调用 Web API）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的守护程序应用（调用 Web API）
+title: 从守护程序应用调用 Web API - Microsoft 标识平台 | Azure
+description: 了解如何构建用于调用 Web API 的守护程序应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30025d6eda1d871724378b89a38d33e274724cfa
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 93e0cce6386eaa861cea439ed6b9cef1a0b5fb05
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830930"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777047"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>调用 Web API 的守护程序应用 - 从应用调用 Web API
 
@@ -30,7 +29,7 @@ ms.locfileid: "73830930"
 
 ## <a name="calling-a-web-api-daemon-application"></a>调用 Web API 守护程序应用程序
 
-下面介绍如何使用令牌来调用 API
+下面介绍如何使用令牌来调用 API：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

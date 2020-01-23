@@ -1,22 +1,22 @@
 ---
-title: 教程 - 自定义用户界面体验 - Azure Active Directory B2C | Microsoft Docs
-description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面。
+title: 教程：自定义用户界面
+titleSuffix: Azure AD B2C
+description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面 (UI)。
 services: B2C
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f186f0c6aaf2d65d60f79b7da4c18f4ec3b67247
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: f7bb0d913e9e8abbeedca96f4c18b97371fb3691
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847131"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624043"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
 
@@ -46,7 +46,7 @@ ms.locfileid: "72847131"
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 请确保使用的是包含 Azure 订阅的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含订阅的目录  。 此目录与包含 Azure B2C 租户的目录不同。
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择“存储帐户”  。
-4. 选择“设置”  （应用程序对象和服务主体对象）。
+4. 选择“添加”   。
 5. 在“资源组”下，选择“新建”，输入新资源组的名称，然后单击“确定”    。
 6. 输入存储帐户的名称。 所选名称在 Azure 中需唯一，且必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 7. 选择存储帐户的位置或接受默认位置。

@@ -74,7 +74,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 - 在此体系结构中，数据迁移是通过 AWS Direct Connect 与 Azure Express Route 之间的专用对等互连链路完成的，因此，数据永远不会遍历公共 Internet。  它需要使用 AWS VPC 和 Azure 虚拟网络。 
 - 需要在 Azure 虚拟网络中的 Windows VM 上安装 ADF 自承载集成运行时才能实现此体系结构。  可以手动纵向扩展自承载 IR VM 或横向扩展到多个 VM（最多 4 个节点），以充分利用网络和存储 IOPS/带宽。 
-- 如果可以接受通过 HTTPS 传输数据，但你想要将源 S3 的网络访问权限锁定为特定的 IP 范围，你可以采用此体系结构的一种变体：删除 AWS VPC 并使用 HTTPS 替换专用链路。  将在 Azure VM 上保留 Azure Virtual 和自承载 IR，因此，可以使用可公开路由的静态 IP 进行白名单操作。 
+- 如果可以接受通过 HTTPS 传输数据，但你想要将源 S3 的网络访问权限锁定为特定的 IP 范围，你可以采用此体系结构的一种变体：删除 AWS VPC 并使用 HTTPS 替换专用链路。  将在 Azure VM 上保留 Azure Virtual 和自承载 IR，因此，可以使用可公开路由的静态 IP 进行允许列表操作。 
 - 可以使用此体系结构实现初始快照数据迁移和增量数据迁移。 
 
 ## <a name="implementation-best-practices"></a>有关实现的最佳做法 

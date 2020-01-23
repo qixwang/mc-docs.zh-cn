@@ -16,12 +16,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: f231949f0da3c18e9ec07dfdc5de0a132669f848
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 2ebcd8579e9d2717cb1785a5ab073606ec3a4e34
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020003"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737914"
 ---
 # <a name="add-mysql-hosting-servers-in-azure-stack"></a>在 Azure Stack 中添加 MySQL 宿主服务器
 
@@ -72,7 +72,7 @@ ms.locfileid: "74020003"
 
 以下信息适用于 RP 和 MySQL 宿主服务器：
 
-* 确保将所有宿主服务器配置为使用 TLS 1.2 进行通信。 请参阅 [Configuring MySQL to Use Encrypted Connections](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html)（将 MySQL 配置为使用加密连接）。
+* 确保将所有宿主服务器配置为使用 TLS 1.1 进行通信。 请参阅 [Configuring MySQL to Use Encrypted Connections](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html)（将 MySQL 配置为使用加密连接）。
 * 部署[透明数据加密](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html)。
 * MySQL RP 不支持 caching_sha2_password 身份验证。
 

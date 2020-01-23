@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: howto
 origin.date: 11/13/2019
 ms.date: 12/23/2019
-ms.openlocfilehash: af8f100552e99aeb10f793474c9b5b93188238e9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4f32b577538c6312c629872b30198bf26fde156e
+ms.sourcegitcommit: 69c57c22a12e7de3afd7508408d1eae94a5e2f92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335923"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76162508"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -187,7 +187,7 @@ alter table myacidtable compact 'major';
     将脚本文件上传到 Azure 存储帐户，完成后，Azure 门户中该文件的 URL 将会为 `https://<storage_account_name>.blob.core.chinacloudapi.cn/<container_name>/install-data-analytics-studio.sh`。 
 
     > [!NOTE]
-    > 这些说明假定你已在 [Azure 门户](https://portal.azure.cn)中创建了存储帐户。 若要详细了解如何创建存储帐户并上传文件，请参阅[创建存储帐户](https://docs.azure.cn/zh-cn/storage/common/storage-quickstart-create-account?tabs=azure-portal)和[使用 Azure 门户上传、下载和列出 blob](https://docs.azure.cn/zh-cn/storage/blobs/storage-quickstart-blobs-portal)。
+    > 这些说明假定你已在 [Azure 门户](https://portal.azure.cn)中创建了存储帐户，并将存储访问级别设为了“容器”。 若要详细了解如何创建存储帐户并上传文件，请参阅[创建存储帐户](https://docs.azure.cn/zh-cn/storage/common/storage-quickstart-create-account?tabs=azure-portal)和[使用 Azure 门户上传、下载和列出 blob](https://docs.azure.cn/zh-cn/storage/blobs/storage-quickstart-blobs-portal)。
     > 
 
 2. 将以下脚本以本地方式另存为 `LaunchDASInstaller.sh`，然后将其上传到 Azure 存储帐户。 请注意，脚本中的 `<storage_account_name>` 和 `<container_name>` 应替换为在步骤 1 中创建的实际名称。

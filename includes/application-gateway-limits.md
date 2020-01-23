@@ -2,16 +2,16 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 12/04/2019
+ms.date: 01/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1368cb7c64d3ee6122835f3e6e050ed1a6202f7f
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: fd9ccdc2b53f4de629203806dbe03c9d72a6106c
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885180"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76118109"
 ---
-| Resource | 默认/最大限制 | 注意 |
+| 资源 | 默认/最大限制 | 注意 |
 | --- | --- | --- |
 | Azure 应用程序网关 |每个订阅 1,000 个 | |
 | 前端 IP 配置 |2 |公共和专用各 1 个 |
@@ -36,7 +36,7 @@ ms.locfileid: "74885180"
 | 最大 URL 长度|32KB| |
 | HTTP/2 的最大标头大小 |4KB| |
 | 最大文件上传大小：标准 |2 GB | |
-| 最大文件上传大小 WAF |中型 WAF 网关，100 MB<br>大型 WAF 网关，500 MB| |
+| 最大文件上传大小 WAF |v1 中型 WAF 网关，100 MB<br>v1 大型 WAF 网关，500 MB<br>v2 WAF，750 MB| |
 | WAF 正文大小限制，不带文件|128 KB||
 | 最大 WAF 自定义规则|100||
 | 最大 WAF 排除项数|100||

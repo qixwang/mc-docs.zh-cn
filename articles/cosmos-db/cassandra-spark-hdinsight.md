@@ -8,20 +8,20 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: e3e8bf8dfa0b2959b20401492554600cf63d51ec
-ms.sourcegitcommit: 24b69c0a22092c64c6c3db183bb0655a23340420
+ms.date: 01/20/2020
+ms.openlocfilehash: b1b69df13d95db3c17c97b630700e16ff302ff32
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72842906"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270074"
 ---
 <!--Verify sucessfully-->
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>使用 HDInsight 从 YARN 上的 Spark 访问 Azure Cosmos DB Cassandra API
 
 本文介绍如何使用 spark-shell 的 HDInsight 从 YARN 上的 Spark 访问 Azure Cosmos DB Cassandra API。 HDInsight 是世纪互联在 Azure 上的 Hortonworks Hadoop PaaS，可利用 HDFS 的对象存储，包括 [Spark](../hdinsight/spark/apache-spark-overview.md) 在内，有多种类型。  虽然本文档中的内容参考了 HDInsight Spark，但可适用于所有 Hadoop 分发。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [预配 Azure Cosmos DB Cassandra API](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -31,7 +31,7 @@ ms.locfileid: "72842906"
 
 * [查看使用 Cassandra API 的代码示例](cassandra-spark-generic.md#next-steps)
 
-* [使用 cqlsh 进行验证（如需要）](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [使用 cqlsh 进行验证（如需要）](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
 *  Spark2 中的 Cassandra API 配置 - Cassandra 的 Spark 连接器需要将 Cassandra 连接详细信息作为 Spark 上下文的一部分进行初始化。 启动 Jupyter 笔记本时，Spark 会话和上下文已初始化，因此，不建议停止然后重新初始化 Spark 上下文，除非它是完整的，将每项配置都作为 HDInsight 默认 Jupyter Notebook 启动的一部分进行设置。 解决办法是将 Cassandra 实例详细信息直接添加到 Ambari 中的 Spark2 服务配置。 这是针对每个需要 Spark2 服务重新启动的群集的一次性活动。
 
@@ -40,11 +40,11 @@ ms.locfileid: "72842906"
     2. 然后转到自定义 spark2-defaults 并添加具有以下内容的新属性，然后重新启动 Spark2 服务：
 
         ```scala
-        spark.cassandra.connection.host=YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn<br>
-        spark.cassandra.connection.port=10350<br>
-        spark.cassandra.connection.ssl.enabled=true<br>
-        spark.cassandra.auth.username=YOUR_COSMOSDB_ACCOUNT_NAME<br>
-        spark.cassandra.auth.password=YOUR_COSMOSDB_KEY<br>
+        spark.cassandra.connection.host=YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmos.azure.cn<br />
+        spark.cassandra.connection.port=10350<br />
+        spark.cassandra.connection.ssl.enabled=true<br />
+        spark.cassandra.auth.username=YOUR_COSMOSDB_ACCOUNT_NAME<br />
+        spark.cassandra.auth.password=YOUR_COSMOSDB_KEY<br />
         ```
 
 ## <a name="access-azure-cosmos-db-cassandra-api-from-spark-shell"></a>从 Spark shell 访问 Azure Cosmos DB Cassandra API

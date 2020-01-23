@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟机规模集常见问题解答 | Microsoft Docs
-description: 获取有关虚拟机规模集常见问题的解答。
+title: Azure 虚拟机规模集常见问题解答
+description: 获取有关 Azure 虚拟机规模集最常见问题的解答。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -13,16 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 05/24/2019
-ms.date: 06/13/2019
+ms.date: 01/02/2020
 ms.author: v-junlch
 ms.custom: na
-ms.openlocfilehash: f3cf45b79d7988eef53e864cb0ea9446440c8fc3
-ms.sourcegitcommit: 4c10e625a71a955a0de69e9b2d10a61cac6fcb06
+ms.openlocfilehash: dcaaeb01c5115669be7da55994e4318533a72cd8
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67046972"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624174"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -60,6 +59,9 @@ ms.locfileid: "67046972"
 
 如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 容错域与和更新域中的 VM 是均衡的。
 
+### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>在一个规模集中使用多个扩展时，是否可以强制规定执行序列？
+
+是的，可以使用规模集[扩展序列化](virtual-machine-scale-sets-extension-sequencing.md)。
 
 ## <a name="autoscale"></a>自动缩放
 
@@ -326,6 +328,18 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 从合规性角度看，虚拟机规模集是 Azure 计算平台的基础部分。 它们与 CRP 共享团队、工具、进程、部署方法、安全控制、实时 (JIT) 编译、监视、警报等。 虚拟机规模集符合支付卡行业 (PCI) 规范，因为 CRP 属于当前 PCI 数据安全标准 (DSS) 证明的一部分。
 
 有关详细信息，请参阅 [Microsoft 信任中心](https://www.trustcenter.cn)。
+
+### <a name="does-managed-identities-for-azure-resourcesactive-directorymanaged-identities-azure-resourcesoverview-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](/active-directory/managed-identities-azure-resources/overview)用于虚拟机规模集？
+
+是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 的“Azure 快速入门”模板中查看一些示例 MSI 模板。
+
+## <a name="deleting"></a>正在删除 
+
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>删除实例时，是否遵守我在虚拟机规模集实例上设置的锁？
+
+在 Azure 门户中，可通过选择多个实例来删除单个实例或批量删除。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 但是，如果批量选择多个实例，并且这些实例中的任何一个实例都带有锁，则不遵守锁，并且所有选定的实例都将被删除。 
+ 
+在 Azure CLI 中，只能删除单个实例。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 
 
 ## <a name="extensions"></a>扩展
 
@@ -707,4 +721,3 @@ $diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -Cre
 $osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk')
 ```
 
-<!-- Update_Description: wording update -->

@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 SQL Server 联机迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+title: 教程：将 SQL Server 联机迁移到 SQL 托管实例
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 SQL Server 到 Azure SQL 数据库托管实例的联机迁移。
 services: dms
 author: WenJason
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 11/06/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 607b38ae5a39a1b18b215fd1a6804db306f17c80
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+origin.date: 12/17/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: ed34793dfeb7dd83f4436f35b9a5777877f79fd6
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655449"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939815"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 
@@ -43,11 +44,14 @@ ms.locfileid: "74655449"
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Azure 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
+> [!IMPORTANT]
+> 请尽量缩短联机迁移过程的持续时间，将实例重新配置或计划维护造成的中断风险降到最低，这一点至关重要。 如果发生此类事件，迁移过程将从头开始。 如果是计划内维护，则在重新启动迁移过程之前，会有 36 小时的宽限期。
+
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 本文介绍如何从 SQL Server 联机迁移到 SQL 数据库托管实例。 有关脱机迁移，请参阅[使用 DMS 将 SQL Server 脱机迁移到 SQL 数据库托管实例](tutorial-sql-server-to-managed-instance.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -187,7 +191,7 @@ ms.locfileid: "74655449"
 
     ![选择目标](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. 选择“保存”。 
+4. 选择“保存”  。
 
 ## <a name="select-source-databases"></a>选择源数据库
 
@@ -195,7 +199,7 @@ ms.locfileid: "74655449"
 
     ![选择源数据库](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. 选择“保存”。 
+2. 选择“保存”  。
 
 ## <a name="configure-migration-settings"></a>配置迁移设置
 
@@ -203,15 +207,20 @@ ms.locfileid: "74655449"
 
     | | |
     |--------|---------|
-    |**SMB 网络位置共享** | 包含可由 Azure 数据库迁移服务用来执行迁移的完整数据库备份文件和事务日志备份文件的本地 SMB 网络共享。 运行源 SQL Server 实例的服务帐户必须对此网络共享拥有读/写特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。|
-    |**用户名** | 确保 Windows 用户具有对上面提供的网络共享的完全控制权限。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。 |
-    |**密码** | 用户密码。 |
+    |**SMB 网络位置共享** | 本地 SMB 网络共享或 Azure 文件共享，其中包含可由 Azure 数据库迁移服务用来执行迁移的完整数据库备份文件和事务日志备份文件。 运行源 SQL Server 实例的服务帐户必须对此网络共享拥有读/写特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。|
+    |**用户名** | 确保 Windows 用户具有对上面提供的网络共享的完全控制权限。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。 如果使用 Azure 文件共享，请将带 AZURE\ 前缀的存储帐户名称用作用户名。 |
+    |**密码** | 用户密码。 如果使用 Azure 文件共享，请将存储帐户密钥用作密码。 |
     |**Azure 存储帐户的订阅** | 选择包含 Azure 存储帐户的订阅。 |
     |**Azure 存储帐户** | 选择可让 DMS 将备份文件从 SMB 网络共享上传到的并用于数据库迁移的 Azure 存储帐户。  为获得最佳文件上传性能，我们建议在 DMS 服务所在的同一区域中选择存储帐户。 |
 
     ![配置迁移设置](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
-2. 选择“保存”。 
+
+> [!NOTE]
+  > 如果 Azure 数据库迁移服务显示“系统错误 53”或“系统错误 57”错误，原因可能是 Azure 数据库迁移服务无法访问 Azure 文件共享。 如果遇到这其中的一个错误，请按[此处](/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的说明操作，授予从虚拟网络访问存储帐户的权限。
+
+
+2. 选择“保存”  。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 

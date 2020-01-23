@@ -1,19 +1,16 @@
 ---
-title: Azure Service Fabric - 部署支持托管标识的新 Azure Service Fabric 群集 | Azure
+title: Azure Service Fabric - 部署支持托管标识的新 Azure Service Fabric 群集
 description: 本文介绍如何创建启用了托管标识的新 Service Fabric 群集
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
 ms.topic: article
-origin.date: 07/25/2019
-ms.date: 09/30/2019
+origin.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 3f001de9a7eaaa6ce16fc7a635efa9eb834e67c5
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.date: 01/06/2020
+ms.openlocfilehash: 7341e9c1aced02a012bdfe7ccc7cc939ba1c7515
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340942"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742455"
 ---
 <!--Verify successfully with New Deployment-->
 
@@ -63,5 +60,4 @@ ms.locfileid: "71340942"
 * [从服务代码中利用 Service Fabric 应用程序的托管标识](./how-to-managed-identity-service-fabric-app-code.md)
 * [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
 
-<!--Update_Description: new articles on configure new azure service fabric enable managed identity -->
-<!--new.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

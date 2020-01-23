@@ -1,6 +1,7 @@
 ---
-title: 有关联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制的文章 | Microsoft Docs
-description: 了解在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制。
+title: 已知问题：联机迁移到 Azure Database for MySQL
+titleSuffix: Azure Database Migration Service
+description: 了解在使用 Azure 数据库迁移服务时联机迁移到 Azure Database for MySQL 的已知问题和迁移限制。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,22 +9,25 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 origin.date: 11/08/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 5b7d2152372bb57ae3fb419971e1e94a1726b6fb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: 07273705facc678ab7d973f67c982deb9383e721
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336456"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776626"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>联机迁移到 Azure DB for MySQL 时存在的已知问题/迁移限制
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务联机迁移到 Azure DB for MySQL 的问题和限制
 
 以下部分描述了在从 MySQL 联机迁移到 Azure Database for MySQL 时存在的已知问题和限制。
 
 ## <a name="online-migration-configuration"></a>联机迁移配置
+
 
 - 源 MySQL 服务器版本必须是 5.6.35、5.7.18 或以上
 - Azure Database for MySQL 支持：

@@ -1,5 +1,5 @@
 ---
-title: 配置帐户以对受 PlayReady 保护的内容进行脱机流式处理 - Azure
+title: 使用媒体服务 v3 进行脱机 PlayReady 流式处理 - Azure
 description: 本文介绍如何配置 Azure 媒体服务帐户，以便对适用于 Windows 10 的 PlayReady 进行脱机流式处理。
 services: media-services
 keywords: DASH, DRM, Widevine 脱机模式, ExoPlayer, Android
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/01/2019
-ms.date: 09/23/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 7a5b21d75e9bbbc848961c8091a54b3bf9cd11ce
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a95a361db8b58b10225417fe1f16211c659227ed
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125556"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939814"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒体服务 v3 进行适用于 Windows 10 的 PlayReady 脱机流式处理
 
 > [!NOTE]
 > Google Widevine 目前在中国地区不可用。
@@ -103,7 +103,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 ```
 
 ![脱机模式下播放受 PlayReady 保护的 fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
-
 
 由于视频受 PlayReady 保护，屏幕截图将不能包含该视频。
 

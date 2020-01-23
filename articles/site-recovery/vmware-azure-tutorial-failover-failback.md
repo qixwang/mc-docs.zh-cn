@@ -1,25 +1,22 @@
 ---
-title: 使用 Site Recovery 在灾难恢复到 Azure 期间对 VMware VM 和物理服务器进行故障转移和故障回复 | Azure
-description: 了解如何使用 Site Recover 在灾难恢复到 Azure 期间将 VMware VM 和物理服务器故障转移到 Azure 以及如何故障回复到本地站点。
-author: rockboyfor
-manager: digimobile
+title: 通过 Site Recovery 将 VMware VM 故障转移到 Azure
+description: 了解如何在 Azure Site Recovery 中将 VMware VM 故障转移到 Azure
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-origin.date: 08/22/2019
-ms.date: 09/30/2019
+origin.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: MVC
-ms.openlocfilehash: 48d3186536d3fa37e929b08dea9179452c266e51
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 645d8e69b1f82346d58dbb50bf0a34a3dd1ebf10
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340966"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776743"
 ---
-# <a name="fail-over-and-fail-back-vmware-vms"></a>故障转移和故障回复 VMware VM
+# <a name="fail-over-vmware-vms"></a>故障转移 VMware VM
 
-本文介绍如何将本地 VMware 虚拟机 (VM) 故障转移到 [Azure Site Recovery](site-recovery-overview.md)。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware 虚拟机 (VM) 故障转移到 Azure。
 
 本文是系列教程的第四篇文章，介绍如何为本地计算机设置到 Azure 的灾难恢复。
 
@@ -27,28 +24,21 @@ ms.locfileid: "71340966"
 
 > [!div class="checklist"]
 > * 验证 VMware VM 属性是否符合 Azure 要求。
-> * 运行到 Azure 的故障转移。
+> * 将特定 VM 故障转移到 Azure。
 
 > [!NOTE]
 > 教程介绍了某个方案的最简单部署路径。 它们尽可能地使用默认选项，并且不显示所有可能的设置和路径。 若要详细了解故障转移，请参阅[对 VM 和物理服务器进行故障转移](site-recovery-failover.md)。
+
+[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中故障转移多个 VM，请查看](site-recovery-failover.md)本文[。
 
 ## <a name="before-you-start"></a>开始之前
 
 完成前一篇教程：
 
 1. 确保已[设置 Azure](tutorial-prepare-azure.md)，以便能够将本地 VMware VM、Hyper-V VM 和物理计算机灾难恢复到 Azure。
-2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 环境，以实现灾难恢复。 若要为物理服务器设置灾难恢复，请查看[支持矩阵](vmware-physical-secondary-support-matrix.md)。
-3. 为 [VMware VM](vmware-azure-tutorial.md)、[Hyper-V VM](hyper-v-azure-tutorial.md) 或[物理机](physical-azure-disaster-recovery.md)设置灾难恢复。
+2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 环境，以实现灾难恢复。 
+3. 为 [VMware VM](vmware-azure-tutorial.md) 设置灾难恢复。
 4. 运行[灾难恢复演练](tutorial-dr-drill-azure.md)，以确保一切按预期方式进行。
-
-## <a name="failover-and-failback"></a>故障转移和故障回复
-
-故障转移和故障回复有四个阶段：
-
-1. **故障转移到 Azure：** 当本地主站点出现故障时，可将计算机故障转移到 Azure。 故障转移后，将会基于复制的数据创建 Azure VM。
-2. **重新保护 Azure VM：** 在 Azure 中重新保护 Azure VM，使之开始复制回本地 VMware VM。 重新保护期间，为确保数据一致性，本地 VM 会关闭。
-3. **故障转移到本地：** 本地站点正常运行后，可运行故障转移以便从 Azure 故障回复。
-4. **重新保护本地 VM：** 故障回复数据后，重新保护故障回复到的本地 VM，使之开始复制到 Azure。
 
 ## <a name="verify-vm-properties"></a>验证 VM 属性
 
@@ -81,6 +71,7 @@ ms.locfileid: "71340966"
     <!--MOONCAKE: CORRECT ON **Protected Items**-->
 
 2. 在“故障转移”  中，选择要故障转移到的“恢复点”  。 可以使用以下选项之一：
+    
     * **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的恢复点目标 (RPO)，因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
     * **最新处理**：此选项将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供较低的 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
     * **最新应用一致**：此选项将 VM 故障转移到由 Site Recovery 处理的最新应用一致恢复点。
@@ -102,7 +93,7 @@ ms.locfileid: "71340966"
 
 ## <a name="connect-to-failed-over-vm"></a>连接到故障转移的 VM
 
-1. 如果想在故障转移后通过使用远程桌面协议 (RDP) 和安全外壳 (SSH) 连接到 Azure VM，请[验证是否符合要求](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
+1. 如果想在故障转移后通过使用远程桌面协议 (RDP) 和安全外壳 (SSH) 连接到 Azure VM，请[验证是否符合要求](failover-failback-overview.md#connect-to-azure-after-failover)。
 2. 故障转移后，请转到该 VM，并通过与它建立[连接](../virtual-machines/windows/connect-logon.md)来进行验证。
 3. 若要在故障转移后使用不同的恢复点，请使用“更改恢复点”。  在下一步骤中提交故障转移后，此选项不再可用。
 4. 验证后，选择“提交”以确认故障转移后的 VM 恢复点  。
@@ -119,4 +110,4 @@ ms.locfileid: "71340966"
 > [重新保护 Azure VM](vmware-azure-reprotect.md)
 > [从 Azure 故障回复](vmware-azure-failback.md)
 
-<!-- Update_Description: update meta propreties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

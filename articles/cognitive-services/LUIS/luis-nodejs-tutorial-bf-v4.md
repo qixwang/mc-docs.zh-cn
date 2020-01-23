@@ -1,7 +1,7 @@
 ---
 title: 教程：语言理解机器人 Node.js v4
 titleSuffix: Azure Cognitive Services
-description: 使用 Node.js，生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
+description: 本教程使用 Node.js 生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
 services: cognitive-services
 author: lingliw
 ms.custom: seodec18
@@ -12,12 +12,12 @@ ms.topic: tutorial
 origin.date: 10/14/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fb25ab29ec01382289c544a83bf1a498c5448792
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 3b391095607655547f5ced4c96b1d2ff968f1719
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884587"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857702"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人 
 
@@ -33,7 +33,7 @@ ms.locfileid: "74884587"
 > * 在计算机本地启动机器人和模拟器
 > * 在机器人中查看话语结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [机器人模拟器](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)

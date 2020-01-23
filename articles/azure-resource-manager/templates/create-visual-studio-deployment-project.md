@@ -1,16 +1,16 @@
 ---
 title: 创建和部署 Visual Studio 资源组项目
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
-ms.topic: quickstart
+ms.topic: conceptual
 origin.date: 10/16/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 9cd56538ef2079213d4c41c23bf2939c8639b639
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: f5cf6ca87a07596937bd6a2435c1e8c9a66d16f3
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631231"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165437"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
@@ -196,11 +196,11 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 1. 选择创建的 Web 应用项目。
 
-   ![添加引用](./media/create-visual-studio-deployment-project/add-reference.png)
+    ![添加引用](./media/create-visual-studio-deployment-project/add-reference.png)
 
-   通过添加引用，可以将 Web 应用项目链接到资源组项目中，并自动设置一些属性。 可以在“属性”  窗口中看到这些用于引用的属性。 “包含文件路径”  包含创建包所在的路径。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。
+    通过添加引用，可以将 Web 应用项目链接到资源组项目中，并自动设置一些属性。 可以在“属性”  窗口中看到这些用于引用的属性。 “包含文件路径”  包含创建包所在的路径。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。
 
-   ![查看引用](./media/create-visual-studio-deployment-project/see-reference.png)
+    ![查看引用](./media/create-visual-studio-deployment-project/see-reference.png)
 
 1. 返回到你的模板 (WebSite.json)，向模板添加资源。
 
@@ -387,7 +387,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你学习了如何使用 Visual Studio 创建和部署模板。 若要详细了解模板开发，请参阅新的初学者教程系列：
+本文介绍了如何使用 Visual Studio 创建和部署模板。 若要详细了解模板开发，请参阅新的初学者教程系列：
 
 > [!div class="nextstepaction"]
 > [初学者教程](./template-tutorial-create-first-template.md)

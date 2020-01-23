@@ -3,14 +3,14 @@ title: 使用 Azure Functions Core Tools
 description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 01/13/2020
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 50b4252c6f55d9fbb97adc67a6330ee070bd8f17
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: b0a84fc64b58a4e02aa2128728325976a17456cd
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624114"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116839"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -26,8 +26,8 @@ ms.locfileid: "75624114"
 > * [注册触发器和绑定扩展](#register-extensions)。
 > * [定义存储和其他连接](#local-settings-file)。
 > * [从触发器和特定于语言的模板创建函数](#create-func)。
-> * [在本地运行函数](#start)
-> * [将项目发布到 Azure](#publish)
+> * [在本地运行函数。](#start)
+> * [将项目发布到 Azure。](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools 版本
 
@@ -56,7 +56,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 安装 [Node.js]，其中包括 npm。
     - 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
-    - 对于 3.x 版工具，仅支持 Node 10 及更高版本。
+    - 对于 3.x 版工具，仅支持 Node.js 10 及更高版本。
 
 1. 安装 Core Tools 包：
 
@@ -154,7 +154,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [local.settings.json](#local-settings-file) 以及若干个子文件夹，这些子文件夹包含各个函数的代码。 此目录相当于 Azure 中的一个函数应用。 若要详细了解 Functions 文件夹的结构，请参阅 [Azure Functions 开发人员指南](functions-reference.md#folder-structure)。
 
-版本 2.x 要求在初始化项目时为项目选择默认语言，添加的所有函数使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
+版本 2.x 要求在初始化项目时为项目选择默认语言。 在版本 2.x 中，添加的所有函数使用默认语言模板。 在版本 1.x 中，每次创建函数时都要指定语言。
 
 在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
@@ -223,7 +223,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 ### <a name="get-your-storage-connection-strings"></a>获取存储连接字符串
 
-即使在使用存储仿真器进行开发时，你也可能希望使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
+即使在使用 Azure 存储仿真器进行开发时，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
 - 在 [Azure 门户]中，搜索并选择“存储帐户”  。 
   ![从 Azure 门户选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
@@ -231,7 +231,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
   选择你的存储帐户，在“设置”中选择“访问密钥”，然后复制其中一个**连接字符串**值。  
   ![从 Azure 门户复制连接字符串](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”  中，展开你的订阅，选择你的存储帐户，然后复制主或辅助连接字符串。
+- 使用 [Azure 存储资源管理器](https://storageexplorer.com/)连接到你的 Azure 帐户。 在“资源管理器”  中，展开你的订阅，展开“存储帐户”，选择你的存储帐户，然后复制主或辅助连接字符串。 
 
   ![从存储资源管理器复制连接字符串](./media/functions-run-local/storage-explorer.png)
 
@@ -349,7 +349,7 @@ func host start
 | **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，为语言辅助角色启用调试。 仅限 2.x 版。 |
-| **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限 1.x 版。 |
+| **`--nodeDebugPort -n`** | Node.js 调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限 1.x 版。 |
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 只能与 `--cert` 配合使用。 仅限 2.x 版。 |
 | **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
@@ -368,7 +368,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->在本地运行时，不会对 HTTP 终结点强制执行身份验证。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook.md#authorization-keys)一文。
+>在本地运行时，不会对 HTTP 终结点强制执行授权操作。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook.md#authorization-keys)一文。
 
 ### <a name="passing-test-data-to-a-function"></a>将测试数据传递给函数
 
@@ -470,7 +470,7 @@ func azure functionapp publish <FunctionAppName>
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
+| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Azure 存储仿真器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下发布选项仅在版本 2.x 中受支持：
@@ -509,7 +509,7 @@ func deploy
 
 ## <a name="next-steps"></a>后续步骤
 
-Azure Functions Core Tools 是[开源工具且托管在 GitHub 上](https://github.com/azure/azure-functions-cli)。  
+了解如何使用 Azure Functions Core Tools 开发、测试和发布 Azure Functions [Microsoft 学习模块](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools 是[开源工具，托管在 GitHub 上](https://github.com/azure/azure-functions-cli)。  
 若要提交 bug 或功能请求，[请打开 GitHub 问题](https://github.com/azure/azure-functions-cli/issues)。
 
 <!-- LINKS -->

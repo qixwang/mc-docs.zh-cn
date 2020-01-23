@@ -3,18 +3,19 @@ title: Azure 存储迁移常见问题解答 | Microsoft 文档
 description: 有关迁移 Azure 存储的常见问题解答
 services: storage
 author: WenJason
+manager: digimobile
 ms.service: storage
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 09/09/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 00367c0ede6e6ddd4e05c7e4f005098c6cbfae38
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d5cfa01d247d3b989c38b96eede98058f01a6249
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335959"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624145"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -237,7 +238,7 @@ Azure 文件共享上不允许使用高级存储。
 
 **如何实现从经典存储帐户迁移到 Azure 资源管理器存储帐户？**
 
-可以使用“Move-AzStorageAccount”cmdlet  。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
+可以使用 Move-AzureStorageAccount cmdlet  。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
 
 如果有虚拟机，则在迁移存储帐户数据之前，还需要执行其他步骤。 有关详细信息，请参阅[使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)。
 
@@ -259,7 +260,7 @@ Azure 文件共享上不允许使用高级存储。
 
 -   使用共享访问签名 (SAS) 令牌提供资源的访问权限。 
 
--   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户](storage-account-manage.md#access-keys)。
+-   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
 
 -   更改访问策略以允许匿名访问。 有关详细信息，请参阅[授予对容器和 Blob 的匿名用户权限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
@@ -283,7 +284,7 @@ AzCopy 安装在什么位置？
 
     - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使 “<https://mystorageaccountname.blob.core.chinacloudapi.cn/images/image.gif>” 显示为 “<https://www.contoso.com/images/image.gif"?>”？**
+**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使“https:\//mystorageaccountname.blob.core.chinacloudapi.cn/images/image.gif”显示为“https:\//www.contoso.com/images/image.gif”？**
 
 使用自定义域的存储帐户当前不支持 SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。

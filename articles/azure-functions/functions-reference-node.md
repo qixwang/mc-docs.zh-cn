@@ -1,24 +1,15 @@
 ---
-title: Azure Functions JavaScript 开发人员参考 | Microsoft 文档
+title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.service: azure-functions
-ms.devlang: nodejs
 ms.topic: reference
-origin.date: 02/24/2019
-ms.date: 11/11/2019
-ms.author: v-junlch
-ms.openlocfilehash: 5b0fc77f70e59de6a2463d4851443bd10055bcef
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.date: 01/13/2020
+ms.openlocfilehash: 671079908bf8d770c114958bf9e6defe5258e710
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934254"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116844"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -379,9 +370,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 + **通过 `context` 对象的 `req` 和 `res` 属性。** 采用此方式时，可以使用传统模式通过上下文对象访问 HTTP 数据，而不必使用完整的 `context.bindings.name` 模式。 以下示例展示了如何访问 `context` 上的 `req` 和 `res` 对象：
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -413,6 +404,16 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
+
+## <a name="scaling-and-concurrency"></a>缩放和并发
+
+默认情况下，Azure Functions 会自动监视应用程序上的负载，并按需为 Node.js 创建更多主机实例。 针对不同触发器类型，Functions 会使用内置阈值（而非用户可配置的阈值）来决定何时添加实例，如消息时间和 QueueTrigger 的队列大小。 有关详细信息，请参阅[消耗计划的工作原理](functions-scale.md#how-the-consumption-plans-work)。
+
+此缩放行为足以满足多个 Node.js 应用程序的需求。 对于占用大量 CPU 的应用程序，可使用多个语言工作进程进一步提高性能。
+
+默认情况下，每个 Functions 主机实例都有一个语言工作进程。 使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 应用程序设置可增加每个主机的工作进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。 
 
 ## <a name="node-version"></a>Node 版本
 
@@ -699,5 +700,4 @@ module.exports = async function (context) {
 
 [`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
 
-
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->

@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 12/13/2018
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 471bf507885a7b03e1161fcdc9816f54c5417711
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 7722070e84b5a4e6c0a89c624df3cff912f1cf12
+ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658054"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859229"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
@@ -42,11 +42,14 @@ ms.locfileid: "74658054"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单中，选择“+ 创建资源”  。 
+
+    <!--Not Available on Home page-->
+    
 2. 选择“网络”，然后选择“虚拟网络”   。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 名称                    | myVirtualNetwork                                   |
     | 地址空间           | 10.0.0.0/16                                        |
@@ -60,42 +63,51 @@ ms.locfileid: "74658054"
 
 使用应用程序安全组可以将功能类似的服务器（例如 Web 服务器）组合在一起。
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单中，选择“+ 创建资源”  。 
+
+    <!--Not Available on Home page-->
+    
 2. 在“在市场中搜索”框中输入“应用程序安全组”   。 当“应用程序安全组”显示在搜索结果中时，将其选中，再次在“所有项”下选择“应用程序安全组”，然后选择“创建”     。
 3. 输入或选择以下信息，然后选择“创建”  ：
 
-    | 设置        | 值                                                         |
+    | 设置        | Value                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgWebServers                                               |
+    | 名称           | myAsgWebServers                                               |
     | 订阅   | 选择订阅。                                     |
     | 资源组 | 选择“使用现有”，然后选择“myResourceGroup”   。 |
     | 位置       | 中国东部                                                       |
 
 4. 再次完成步骤 3 并指定以下值：
 
-    | 设置        | 值                                                         |
+    | 设置        | Value                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgMgmtServers                                              |
+    | 名称           | myAsgMgmtServers                                              |
     | 订阅   | 选择订阅。                                     |
     | 资源组 | 选择“使用现有”，然后选择“myResourceGroup”   。 |
     | 位置       | 中国东部                                                       |
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户菜单中，选择“+ 创建资源”  。 
+    
+    <!--Not Available on Home page-->
+    
 2. 依次选择“网络”、“网络安全组”   。
 3. 输入或选择以下信息，然后选择“创建”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myNsg|
+    |名称|myNsg|
     |订阅| 选择订阅。|
     |资源组 | 选择“使用现有”，然后选择“myResourceGroup”   。|
     |位置|中国东部|
 
 ## <a name="associate-network-security-group-to-subnet"></a>将网络安全组关联到子网
 
-1. 在门户顶部的“搜索资源、服务和文档”  框中，开始键入“myNsg”。  当“myNsg”出现在搜索结果中时，将其选中。 
+1. 在门户顶部的“搜索资源”框中，开始键入 myNsg   。 当“myNsg”出现在搜索结果中时，将其选中。 
+
+    <!--CORRECT ON the *search resources* box-->
+    
 2. 在“设置”下选择“子网”，然后选择“+ 关联”，如下图所示：   
 
     ![将 NSG 关联到子网](./media/tutorial-filter-network-traffic/associate-nsg-subnet.png)
@@ -115,7 +127,7 @@ ms.locfileid: "74658054"
     | 目标             | 选择“应用程序安全组”，然后选择  **myAsgWebServers** 作为**应用程序安全组**。  |
     | 目标端口范围 | 输入 80,443                                                                                                    |
     | 协议                | 选择 TCP                                                                                                      |
-    | Name                    | Allow-Web-All                                                                                                   |
+    | 名称                    | Allow-Web-All                                                                                                   |
 
 3. 使用以下值再次完成步骤 2：
 
@@ -124,8 +136,8 @@ ms.locfileid: "74658054"
     | 目标             | 选择“应用程序安全组”，然后选择  **myAsgMgmtServers** 作为**应用程序安全组**。 |
     | 目标端口范围 | 输入 3389                                                                                                      |
     | 协议                | 选择 TCP                                                                                                      |
-    | Priority                | 输入 110                                                                                                       |
-    | Name                    | Allow-RDP-All                                                                                                   |
+    | 优先级                | 输入 110                                                                                                       |
+    | 名称                    | Allow-RDP-All                                                                                                   |
 
     在本教程中，将在 Internet 上为分配给 *myAsgMgmtServers* 应用程序安全组的 VM 公开 RDP（端口 3389）。 在生产环境中，建议使用 VPN 或专用网络连接来连接到要管理的 Azure 资源，而不要向 Internet 公开端口 3389。
 
@@ -139,7 +151,9 @@ ms.locfileid: "74658054"
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+<!--MOONCAKE: Correct on Virtual Machines-->
+
+1. 在 Azure 门户菜单中，选择“+ 创建资源”  。
 2. 选择“虚拟机”，然后选择“Windows Server 2016 Datacenter”。  
 
     <!--MOONCAKE: Correct on Virtual Machines-->
@@ -150,7 +164,7 @@ ms.locfileid: "74658054"
     |---|---|
     |订阅| 选择订阅。|
     |资源组| 选择“使用现有资源组”，再选择“myResourceGroup”   。|
-    |Name|myVmWeb|
+    |名称|myVmWeb|
     |位置| 选择“中国东部”。 |
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
@@ -158,11 +172,10 @@ ms.locfileid: "74658054"
 4. 选择 VM 的大小，然后选择“选择”  。
 5. 在“网络”  下选择以下值，并接受剩下的默认设置：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |虚拟网络 |选择“myVirtualNetwork”  。|
-    |NIC 网络安全组 |选择“高级”。 |
-    |公共入站端口|选择“无”。  |
+    |NIC 网络安全组 |选择“无”。 |
 
 6. 选择左下角的“查看 + 创建”  ，选择“创建”  以开始 VM 部署。
 
@@ -218,7 +231,7 @@ ms.locfileid: "74658054"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤
@@ -230,4 +243,4 @@ ms.locfileid: "74658054"
 > [!div class="nextstepaction"]
 > [创建路由表](./tutorial-create-route-table-portal.md)
 
-<!-- Update_Description: update cmdlet, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

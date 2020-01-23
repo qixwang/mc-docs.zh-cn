@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 1f6181268ee852faaaf60050f15f38898d106350
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f037da72be2786cc053295559946b7e3962b983a
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336388"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858701"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -36,7 +36,11 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/insights-logs-networksec
 ```
 可以使用[流量分析](traffic-analytics.md)来分析流日志并获取网络流量的见解。
 
-适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 2147483647 天。 如果未设置保留策略，则会永久保留日志。
+适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 365 天。 如果未设置保留策略，则会永久保留日志。
+
+> [!NOTE] 
+> 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。
+
 
 ## <a name="log-file"></a>日志文件
 

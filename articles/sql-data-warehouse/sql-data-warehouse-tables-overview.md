@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
 origin.date: 03/15/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: da348eda388692c6817ecf6afe50865761018e5a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: e270eb09d9b8fd3e8c9c89fe51876c83289c99f3
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624135"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964915"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
@@ -45,7 +45,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 表  | 表类型 | SQL 数据仓库 |
 |:-----|:-----|:------|:-----|
 | 城市 | 维度 | wwi.DimCity |
-| 顺序 | Fact | wwi.FactOrder |
+| 订单 | Fact | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>表暂留 
@@ -109,7 +109,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 有关列存储功能的列表，请参阅[列存储索引的新增功能](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-what-s-new)。 若要提高列存储索引性能，请参阅[最大化列存储索引的行组质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 ## <a name="statistics"></a>统计信息
-查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 [创建统计信息](/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics)的过程是自动发生的。  但是，更新统计信息的过程不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
+查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 [创建统计信息](/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)的过程是自动发生的。  但是，更新统计信息的过程不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
 
 ## <a name="primary-key-and-unique-key"></a>主键和唯一键
 仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。  仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。  查看 [SQL 数据仓库表约束](sql-data-warehouse-table-constraints.md)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 04/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e272eafdaf23c973f13ecf928fe6f42392f7e111
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 640d278b351fd74af550b4845562c83c7b4e2fbc
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838898"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858197"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -24,7 +24,7 @@ ms.locfileid: "74838898"
 
 * 可以使用执行备份作业期间创建的用于恢复的快照，而无需等待将数据传输到保管库的操作完成。 它缩短了快照在触发还原之前复制到保管库的等待时间。
 * 默认情况下，可在本地保留快照两天，这缩短了备份和还原时间。 此默认快照保留期值可配置为 1 到 5 天的任何值。
-* 最大支持 4 TB 的磁盘。 Azure 备份不建议重设磁盘大小。 若要注册 Azure 备份大磁盘的受限公共预览版以支持大于 4 TB 且最大 30 TB 的磁盘，请参阅[备份磁盘大小高达 30 TB 的 VM](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)。
+* 最大支持 32 TB 的磁盘大小。 Azure 备份不建议重设磁盘大小。
 * 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
 * 还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
 * 若要通过 Instant Restore 备份使用高级存储的 VM，建议从总的已分配存储空间中分配 *50%* 的可用空间，这**只**在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求。
@@ -55,7 +55,7 @@ ms.locfileid: "74838898"
 
 ## <a name="cost-impact"></a>成本影响
 
-增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 费用仍按快照占用的空间按 GB 计算，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)中所述的价格相同。
+增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 仍然对快照占用的每 GB 使用空间计费，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)上提到的价格相同。 对于使用非托管磁盘的 VM，可以在每个磁盘的 VHD 文件的菜单中看到快照。 对于托管磁盘，快照存储在指定资源组的还原点集合资源中，并且快照本身不直接可见。
 
 >[!NOTE]
 > 就每周策略来说，快照保留期固定为 5 天。

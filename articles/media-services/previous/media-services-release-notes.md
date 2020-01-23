@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 08/21/2019
-ms.date: 09/23/2019
+origin.date: 10/01/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: b510c8ecced29e24634a795e84d6fcfccc89fb8c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 5353bdc9a389dc1a0ea84b7d8747594959816819
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124583"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939771"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -54,7 +54,7 @@ ms.locfileid: "71124583"
 
 ### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将于 2019 年 11 月 30 日停用。
+我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将于 2020 年 3 月 31 日停用。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder) 和[将 AME 迁移到 Media Encoder Standard](/media-services/previous/migrate-azure-media-encoder)。
 

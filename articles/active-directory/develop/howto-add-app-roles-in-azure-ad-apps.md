@@ -1,29 +1,26 @@
 ---
-title: 在 Azure Active Directory 注册的应用中添加应用角色并在令牌中接收这些角色
+title: 添加应用角色并从令牌中获取这些角色 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的 `roles` 声明中接收它们。
 services: active-directory
 documentationcenter: ''
 author: kkrishna
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.reviewer: ''
+ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabbeda3d8235d901777e3ce22dcacb419cff616
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5e81bb35f73687a5d042b9f87aae662f9ebde06b
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334887"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116734"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -40,9 +37,9 @@ ms.locfileid: "75334887"
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 在顶栏中选择帐户，然后选择“切换目录”。 
-1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。   
-1. 选择左侧导航栏中的“所有服务”  ，并选择“Azure Active Directory”  。
+1. 在门户工具栏中选择“目录 + 订阅”  图标。
+1. 在**收藏夹**或“所有目录”  列表中，选择要将应用程序注册到的 Active Directory 租户。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 
 1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表   。
 1. 选择一个应用程序，以便在其中定义应用角色。 然后选择“清单”  。
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
@@ -127,7 +124,7 @@ ms.locfileid: "75334887"
 ## <a name="more-information"></a>详细信息
 
 - [使用 Azure AD 应用程序角色在 Web 应用中授权 &amp; 角色声明（示例）](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
-- [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
+- [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 应用清单](/active-directory/develop/reference-app-manifest)
 - [AAD 访问令牌](access-tokens.md)
 - [AAD `id_tokens`](id-tokens.md)

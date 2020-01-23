@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB 服务器 VNet 服务终结点概述 | Microsoft Docs
+title: VNet 服务终结点 - Azure Database for MariaDB
 description: 介绍了 VNet 服务终结点如何为 Azure Database for MariaDB 服务器工作。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 02/26/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: f72df85d713136af64ea3d4c4c8ecee4365928ba
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+origin.date: 12/02/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: d43e71f385ecca30b69b9abaf82337d46d0a8aad
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624088"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776727"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -145,7 +145,7 @@ ms.locfileid: "75624088"
 - [使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 规则](howto-manage-vnet-portal.md)
  
 <!--
-- [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-cli.md)
+- [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)
 -->
 
 <!-- Link references, to text, Within this same GitHub repo. -->

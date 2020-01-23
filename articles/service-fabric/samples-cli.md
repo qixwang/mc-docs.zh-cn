@@ -1,27 +1,16 @@
 ---
 title: Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例
-description: Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例
-services: service-fabric
-documentationcenter: service-fabric
-author: rockboyfor
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
+description: 关于管理群集、应用程序和服务的 Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例。
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 origin.date: 04/09/2018
-ms.date: 08/26/2019
 ms.author: v-yeche
-ms.custom: mvc
-ms.openlocfilehash: e157660a08202cef5cb40393d71d20f660315cc0
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 3da6a2c1f0618ac4cee27b9409f2317ca2e379c1
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174082"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741883"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例
 

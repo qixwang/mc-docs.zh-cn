@@ -1,22 +1,22 @@
 ---
-title: 本快速入门展示了如何使用 C# 将 X.509 设备注册到 Azure 设备预配服务 | Microsoft Docs
+title: 使用 C# 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册。 本快速入门介绍如何使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
 author: wesmc7777
 ms.author: v-yiso
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 2b26a6cfc35644a71d22c80b05ff0f45ad1583bc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 845bb2d951a43970448e6e0765153aadf784598f
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336423"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859596"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入门：使用 C# 将 X.509 设备注册到设备预配服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "75336423"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/)。
 * 安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
@@ -54,11 +54,15 @@ ms.locfileid: "75336423"
 
 若要使用此测试工具来生成证书，请执行以下步骤：
 
-1. 打开命令提示符窗口或 Git Bash shell，并切换到计算机上的某个工作文件夹。 运行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
+1. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的标记名称。
 
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+2. 打开命令提示符或 Git Bash shell，并切换到计算机上的某个工作文件夹。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
 
    应该预料到此操作需要几分钟才能完成。
 

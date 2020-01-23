@@ -1,31 +1,19 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建容器映像 | Azure
+title: 在 Azure 中的 Service Fabric 上创建容器映像
 description: 本教程介绍如何创建多容器 Service Fabric 应用程序的容器映像。
-services: service-fabric
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, 容器, 微服务, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 07/22/2019
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: a6058455e305d7ab3d7942b09ec04bb9ce64b852
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 456b3360ad9b8c6241ffaf757530cce62ae1f755
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341121"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742103"
 ---
 <!--Verify successfully-->
-
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
 本教程是演示如何在 Linux Service Fabric 群集中使用容器的教程系列的第 1 部分。 本教程中准备了一个要用于 Service Fabric 的多容器应用程序。 在后续教程中，这些映像用作 Service Fabric 应用程序的一部分。 本教程介绍如何执行下列操作：
@@ -45,7 +33,7 @@ ms.locfileid: "71341121"
 <!--Pending to verify > * [Build and Run a Service Fabric Application with Containers](service-fabric-tutorial-package-containers.md)-->
 <!--Pending to verify > * [How failover and scaling are handled in Service Fabric](service-fabric-tutorial-containers-failover.md)-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 设置 Service Fabric 的 Linux 开发环境。 按照[此处](service-fabric-get-started-linux.md)的说明设置 Linux 环境。
 * 本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。

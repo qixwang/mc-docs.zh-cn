@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 DMS 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+title: 教程：将 SQL Server 迁移到 SQL 托管实例
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
 services: dms
 author: WenJason
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 11/08/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 1713d4d22a24f0cbde2eae056fa9b49d6b16f0d9
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+origin.date: 12/17/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 5cc3f0299d02b16429ddc1356ffe4f4707c0c293
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655446"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776765"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例
 
@@ -41,7 +42,7 @@ ms.locfileid: "74655446"
 
 本文介绍如何从 SQL Server 脱机迁移到 SQL 数据库托管实例。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例](tutorial-sql-server-managed-instance-online.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -62,6 +63,15 @@ ms.locfileid: "74655446"
 - 如果在源数据库的前面使用了防火墙设备，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库，并通过 SMB 端口 445 访问文件。
 - 按照[在 Azure 门户中创建 Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-get-started)一文中的详述创建 Azure SQL 数据库托管实例。
 - 确保用于连接源 SQL Server 和目标托管实例的登录名是 sysadmin 服务器角色的成员。
+
+    >[!NOTE]
+    >默认情况下，Azure 数据库迁移服务仅支持迁移 SQL 登录名。 但是，可通过以下方式启用迁移 Windows 登录名的功能：
+    >
+    >- 确保目标 SQL 数据库托管实例具有 AAD 读取访问权限，这可由具有**公司管理员**或**全局管理员**角色的用户通过 Azure 门户进行配置。
+    >- 配置 Azure 数据库迁移服务实例以启用 Windows 用户/组登录名迁移，这通过 Azure 门户在“配置”页上进行设置。 启用此设置后，重启服务以使更改生效。
+    >
+    > 重启服务后，Windows 用户/组登录名将出现在可用于迁移的登录名列表中。 对于迁移的所有 Windows 用户/组登录名，系统都会提示提供关联的域名。 不支持服务用户帐户（域名为 NT AUTHORITY 的帐户）和虚拟用户帐户（域名为 NT SERVICE 的帐户）。
+
 - 创建网络共享，供 Azure 数据库迁移服务用来备份源数据库。
 - 确保运行源 SQL Server 实例的服务帐户对你创建的网络共享拥有写入权限，并且源服务器的计算机帐户具有对同一共享的读/写访问权限。
 - 请记下在前面创建的网络共享中拥有完全控制权限的 Windows 用户（和密码）。 Azure 数据库迁移服务可模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
@@ -71,7 +81,7 @@ ms.locfileid: "74655446"
 
 1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
 
-    ![显示门户订阅](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)        
+    ![显示门户订阅](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)
 
 2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”  。
 
@@ -85,7 +95,7 @@ ms.locfileid: "74655446"
 
 1. 在 Azure 门户中，选择“+ 创建资源”，搜索“Azure 数据库迁移服务”，然后从下拉列表选择“Azure 数据库迁移服务”    。
 
-     ![Azure 市场](media/tutorial-sql-server-to-managed-instance/portal-marketplace.png)
+    ![Azure 市场](media/tutorial-sql-server-to-managed-instance/portal-marketplace.png)
 
 2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
@@ -159,9 +169,9 @@ ms.locfileid: "74655446"
 
     如果尚未预配 SQL 数据库托管实例，请选择相应的[链接](/sql-database/sql-database-managed-instance-get-started)来帮助预配实例。 仍可继续进行项目创建，然后在 Azure SQL 数据库托管实例准备就绪后返回到此特定项目以执行迁移。
 
-     ![选择目标](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
+    ![选择目标](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
-2. 选择“保存”。 
+2. 选择“保存”  。
 
 ## <a name="select-source-databases"></a>选择源数据库
 
@@ -176,7 +186,7 @@ ms.locfileid: "74655446"
 1.  在“选择登录名”屏幕上，选择要迁移的登录名。
 
     >[!NOTE]
-    >此版本仅支持迁移 SQL 登录名。
+    >默认情况下，Azure 数据库迁移服务仅支持迁移 SQL 登录名。 若要启用对迁移 Windows 登录名的支持，请参阅本教程的**先决条件**部分。
 
     ![选择登录名](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 
@@ -197,7 +207,7 @@ ms.locfileid: "74655446"
 
     ![配置迁移设置](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 
-2. 选择“保存”。 
+2. 选择“保存”  。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 

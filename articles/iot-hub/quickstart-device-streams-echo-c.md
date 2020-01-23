@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure IoT 中心设备流（预览版）使用 C 与设备应用进行通信 | Microsoft Docs
+title: 通过 Azure IoT 中心设备流使用 C 与设备应用进行通信
 description: 在本快速入门中，我们将运行一个通过设备流来与 IoT 设备通信的 C 设备端应用程序。
 author: robinsh
 ms.service: iot-hub
@@ -8,14 +8,14 @@ ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 08/20/2019
-ms.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: e0024d8c30dcad853d365d7ac04bd4c8685c76e3
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: d912cb628defa93420f18f3539c606165571ea6a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425953"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75631088"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C 中与设备应用程序通信（预览）
 
@@ -61,18 +61,19 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 1. 按照下载页上的说明安装 [CMake 生成系统](https://cmake.org/download/)。
 
-1. 打开命令提示符或 Git Bash shell。 运行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
+1. 打开命令提示符或 Git Bash shell。 运行以下命令，以克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
 
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    ```cmd/sh
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     此操作需要花费几分钟时间。
 
-1. 按以下命令中所示在 Git 存储库的根目录中创建 *cmake* 目录，并转到该文件夹。
+1. 在 git 存储库的根目录中创建 cmake 子目录，并导航到所属文件夹  。 从 azure-iot-sdk-c 目录运行以下命令  ：
 
-    ```cmd
-    cd azure-iot-sdk-c
+    ```cmd/sh
     mkdir cmake
     cd cmake
     ```

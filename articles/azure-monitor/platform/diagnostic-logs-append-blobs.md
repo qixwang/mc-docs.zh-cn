@@ -1,6 +1,6 @@
 ---
-title: 为 Azure Monitor 诊断日志的格式更改做准备
-description: 介绍其影响以及如何更新工具以处理新的 Azure 诊断日志，这些诊断日志已于 2018 年 11 月 1 日更改为使用追加 blob。
+title: 为 Azure Monitor 资源日志的格式更改做准备
+description: 描述影响以及如何更新工具以处理新的 Azure 资源日志，这些资源日志已于 2018 年 11 月 1 日更改为使用追加 Blob。
 author: lingliw
 services: monitoring
 ms.service: azure-monitor
@@ -9,17 +9,17 @@ origin.date: 07/06/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 3336d8e1c0dbd5beb1050b50fd866e9111f0ef15
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: cce417e775dcd0f0f99731d65e5d7fbd3d9d9f81
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839034"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599894"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 诊断日志的格式更改做准备
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备
 
 > [!WARNING]
-> 如果[使用资源诊断设置将 Azure 资源诊断日志或指标发送到存储帐户](../../azure-monitor/platform/resource-logs-collect-storage.md)或使用日志配置文件将活动日志发送到存储帐户，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。 
+> 如果[使用资源诊断设置将 Azure 资源资源日志或指标发送到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。 
 >
 > 
 
@@ -36,8 +36,8 @@ Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送
   * [由诊断设置导出的 Azure 资源指标](../../azure-monitor/platform/resource-logs-overview.md)
 * 此更改不会影响：
   * 网络流日志
-  * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务诊断日志、存储分析日志）
-  * 将 Azure 诊断日志和活动日志路由到其他目标（事件中心、Log Analytics）
+  * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务资源日志、存储分析日志）
+  * 将 Azure 资源日志和活动日志路由到其他目标（事件中心、Log Analytics）
 
 ### <a name="how-to-see-if-you-are-impacted"></a>如何查看是否受到影响
 

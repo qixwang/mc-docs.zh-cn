@@ -1,29 +1,24 @@
 ---
-title: 将使用 Microsoft Authenticator 的 Xamarin iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
+title: 使用代理将 Xamarin 应用迁移到 MSAL.NET
 titleSuffix: Microsoft identity platform
-description: 了解如何将使用 Microsoft Authenticator 的 Xamarin iOS 应用程序从适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 迁移到适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET)。
-documentationcenter: dev-center-name
+description: 了解如何将使用 Microsoft Authenticator 的 Xamarin iOS 应用从 ADAL.NET 迁移到 MSAL.NET。
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/08/2019
-ms.date: 11/05/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9559db75c2bda0dfa95069c92b11e855aaabae55
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 2ead4737a66122d9f1d755e67b37916938edeced
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830964"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776989"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
 
@@ -31,14 +26,14 @@ ms.locfileid: "73830964"
 
 要从哪里入手？ 本文会帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设你已有一个与 iOS 中介集成的 Xamarin iOS 应用。 如果没有，请直接迁移到 MSAL.NET，然后在其中开始实施中介。 有关如何使用新应用程序调用 MSAL.NET 中的 iOS 中介的信息，请参阅[此文档](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>背景
 
 ### <a name="what-are-brokers"></a>什么是中介？
 
-中介是 Microsoft 在 Android 和 iOS 上提供的应用程序。 （请参阅“iOS 和 Android 上的 Microsoft Authenticator 应用”以及“Android 上的 Intune 公司门户应用”。） 
+中介是 Microsoft 在 Android 和 iOS 上提供的应用程序。 （请参阅 iOS 和 Android 上的 [Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) 应用以及 Android 上的 Intune 公司门户应用。） 
 
 中介可以实现：
 
@@ -56,14 +51,14 @@ ms.locfileid: "73830964"
 
 `PlatformParameters` 构造函数中将 `useBroker` 标志设置为 true 才能调用中介：
 
-```CSharp
+```csharp
 public PlatformParameters(
         UIViewController callerViewController, 
         bool useBroker)
 ```
 此外，在特定于平台的代码中（对于本示例，是在 iOS 的页面呈现器中）将 `useBroker` 
 标志设置为 true：
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -71,7 +66,7 @@ page.BrokerParameters = new PlatformParameters(
 ```
 
 然后，在获取令牌调用中包含参数：
-```CSharp
+```csharp
  AuthenticationResult result =
                     await
                         AuthContext.AcquireTokenAsync(
@@ -87,7 +82,7 @@ page.BrokerParameters = new PlatformParameters(
 
 `WithBroker()` 参数（默认设置为 true）以调用中介：
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -95,7 +90,7 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 在“获取令牌”调用中：
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -111,7 +106,7 @@ UIViewController 将传入
 
 iOS 特定平台中的 `PlatformParameters`。
 
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -126,16 +121,16 @@ page.BrokerParameters = new PlatformParameters(
 例如： 
 
 在 `App.cs`中：
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 在 `AppDelegate.cs`中：
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 在“获取令牌”调用中：
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -144,7 +139,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步骤 3：更新 AppDelegate 以处理回调
-ADAL 和 MSAL 都会调用中介，而中介通过 `AppDelegate` 类的 `OpenUrl` 方法回调应用程序。 有关详细信息，请参阅[此文档](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback)。
+ADAL 和 MSAL 都会调用中介，而中介通过 `AppDelegate` 类的 `OpenUrl` 方法回调应用程序。 有关详细信息，请参阅[此文档](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback)。
 
 ADAL.NET 和 MSAL.NET 在此方面没有差别。
 
@@ -166,7 +161,7 @@ The
 
 例如： `$"msauth.(BundleId")`
 
-```CSharp
+```csharp
  <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -199,7 +194,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 `msauth`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauth</string>
@@ -211,10 +206,11 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 `msauthv2`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauthv2</string>
+     <string>msauthv3</string>
 </array>
 ```
 </table>
@@ -241,7 +237,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查是否在设备上安装
 
 </table>
 
-有关如何在门户中注册重定向 URI 的详细信息，请参阅[在 Xamarin.iOS 应用程序中利用中介](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app)。
+有关如何在门户中注册重定向 URI 的详细信息，请参阅[在 Xamarin.iOS 应用程序中利用中介](msal-net-use-brokers-with-xamarin-apps.md#step-8-make-sure-the-redirect-uri-is-registered-with-your-app)。
 
 ## <a name="next-steps"></a>后续步骤
 

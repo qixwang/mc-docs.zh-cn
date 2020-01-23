@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器中的查询存储
+title: 查询存储 - Azure Database for PostgreSQL - 单一服务器
 description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的查询存储功能。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 10/14/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 2487777305167cfe599629b16ccc66175fb9b7bc
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.date: 01/13/2020
+ms.openlocfilehash: 54de5724a66c10f7e7ad3c6070d4683dd241b1fe
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191554"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776745"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -47,8 +47,8 @@ az postgres server configuration set --name pgms_wait_sampling.query_capture_mod
 
 ## <a name="information-in-query-store"></a>查询存储中的信息
 查询存储有两个存储：
-- 运行时统计信息存储，用于保存查询执行统计信息。
-- 等待统计信息存储，用于保存等待统计信息。
+- 用于保存查询执行统计信息的运行时统计信息存储。
+- 用于保存等待统计信息的等待统计信息存储。
 
 使用查询存储的常见方案包括：
 - 确定在给定时间范围内执行查询的次数
@@ -73,7 +73,7 @@ SELECT * FROM query_store.qs_view;
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
-还可以将查询存储数据发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)进行分析和发出警报，发送到事件中心进行流式处理，以及发送到 Azure 存储进行存档。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。
+还可以将查询存储数据发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)进行分析和发出警报，发送到事件中心进行流式处理，以及发送到 Azure 存储进行存档。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。 若要了解有关设置的信息，请参阅 [Azure Monitor 诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
 
 
 ## <a name="finding-wait-queries"></a>查找等待查询
@@ -174,7 +174,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="functions"></a>函数
 Query_store.qs_reset() 返回无效值
 
-`qs_reset` 丢弃查询存储到目前为止收集的所有统计信息。 只能由服务器管理员角色执行此函数。
+`qs_reset` 丢弃查询存储迄今收集的所有统计信息。 只能由服务器管理员角色执行此函数。
 
 Query_store.staging_data_reset() 返回无效值
 

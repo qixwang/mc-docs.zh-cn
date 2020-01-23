@@ -1,28 +1,29 @@
 ---
-title: 使用数据工厂向/从 Azure Data Lake Storage Gen2 复制数据 | Microsoft Docs
-description: 了解如何使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据。
+title: 在 Azure Data Lake Storage Gen2 中复制和转换数据
+description: 了解如何使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据，以及如何在 Azure Data Lake Storage Gen2 中转换数据。
 services: data-factory
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 09/09/2019
-ms.date: 10/14/2019
-ms.author: v-jay
-ms.openlocfilehash: e9803c0bd8f85951db3f2419c7e88b5fad4f1f6a
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.custom: seo-lt-2019
+origin.date: 12/13/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: bcc2ed71a4d0c354c6a692fd1d3b5bdc80a738fb
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275522"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624242"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据
+# <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Data Lake Storage Gen2 中复制和转换数据
 
 Azure Data Lake Storage Gen2 (ADLS Gen2) 是一组专用于大数据分析的功能，内置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。 它可使用文件系统和对象存储范例与数据进行交互。
 
-本文概述如何向/从 Azure Data Lake Storage Gen2 复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Data Lake Storage Gen2 复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -33,16 +34,17 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) 是一组专用于大数据分析的功
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 - [Delete 活动](delete-activity.md)
 
-具体而言，使用此连接器可以：
+对于复制活动，使用此连接器可以：
 
-- 通过使用帐户密钥、服务主体或托管标识进行 Azure 资源身份验证来复制数据。
+- 通过使用帐户密钥、服务主体或托管标识进行 Azure 资源身份验证来从/向 Azure Data Lake Storage Gen2 复制数据。
 - 按原样复制文件，或使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
+- [在复制期间保留文件元数据](#preserve-metadata-during-copy)。
+
+>[!IMPORTANT]
+>如果在 Azure 存储防火墙设置上启用了“允许信任的 Microsoft 服务访问此存储帐户”  选项，并且要使用 Azure 集成运行时连接到 Data Lake Storage Gen2，则必须对 ADLS Gen2 使用[托管标识身份验证](#managed-identity)。
 
 >[!TIP]
 >如果启用分层命名空间，则当前 Blob 和 Data Lake Storage Gen2 API 之间没有操作的互操作性。 如果遇到“ErrorCode=FilesystemNotFound”错误，详细消息为“指定的文件系统不存在”，这是由于指定的接收器文件系统是通过 Blob API 而非其他地方的 Data Lake Storage Gen2 API 创建的。 若要解决此问题，请指定其名称不同于已存在的 Blob 容器名称的一个新文件系统。 然后，数据工厂在复制数据期间将自动创建该文件系统。
-
->[!NOTE]
->如果在 Azure 存储防火墙设置上启用“允许受信任的 Microsoft 服务访问此存储帐户”  选项，则使用 Azure Integration Runtime 连接 Data Lake Storage Gen2 将失败并显示“已禁止”错误。 出现该错误消息的原因是数据工厂不被视为受信任的服务。 请改用自承载集成运行时进行连接。
 
 ## <a name="get-started"></a>入门
 
@@ -68,7 +70,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 若要使用存储帐户密钥身份验证，需支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS  。 |是 |
 | url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.chinacloudapi.cn`。 | 是 | 
@@ -110,20 +112,17 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
     - 应用程序密钥
     - 租户 ID
 
-2. 向服务主体授予适当的权限。 在[文件和目录上的访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)中详细了解 Data Lake Storage Gen2 中的权限的工作原理
+2. 向服务主体授予适当的权限。 查看[文件和目录上的访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)中的一些示例，来了解 Data Lake Storage Gen2 中的权限的工作原理。
 
-    - **作为源**：在存储资源管理器，至少授予从源文件系统开始的“执行”权限，并授予“读取”权限以复制文件   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据读取者”角色  。
-    - **作为接收器**：在存储资源管理器，至少授予从接收器文件系统开始的“执行”权限，并授予接收器文件夹的“写入”权限   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据参与者”角色  。
+    - **作为源**：在存储资源管理器中，至少授予对所有上游文件夹和文件系统的“执行”权限，并授予对文件的“读取”权限以进行复制   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据读取者”角色  。
+    - **作为接收器**：在存储资源管理器中，至少授予对所有上游文件夹和文件系统的“执行”权限，并授予对接收器文件夹的“写入”权限   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据参与者”角色  。
 
 >[!NOTE]
->若要列出从帐户级别开始的文件夹或测试连接，需要在 IAM 中使用“存储 Blob 数据读取者”权限为服务主体授予对存储帐户的权限。  对于以下情况需要这样做：
->- 使用**复制数据工具**创作复制管道。
->- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。 
->如果你担心在帐户级别授予权限，请在创作期间，跳过测试连接，并输入已授予权限的父路径，然后选择从该指定路径进行浏览。 只要在要复制的文件上授予服务主体适当的权限，复制活动就可以正常工作。
+>如果你使用数据工厂 UI 进行创作，并且未在 IAM 中为服务主体设置“存储 Blob 数据读取者/参与者”角色，则在执行测试连接或在文件夹中浏览/导航时，请选择“测试到文件路径的连接”或“从指定路径浏览”，然后指定具有“读取 + 执行”权限的路径以继续。 目前，测试到文件系统的连接将失败，请指定一个子目录来测试，或跳过此操作。
 
 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS  。 |是 |
 | url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.chinacloudapi.cn`。 | 是 | 
@@ -164,23 +163,20 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 1. 通过复制与工厂一起生成的**服务标识应用程序 ID** 值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
-2. 向托管标识授予适当的权限。 在[文件和目录上的访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)中详细了解 Data Lake Storage Gen2 中的权限的工作原理。
+2. 向托管标识授予适当的权限。 查看[文件和目录上的访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)中的一些示例，来了解 Data Lake Storage Gen2 中的权限的工作原理。
 
-    - **作为源**：在存储资源管理器，至少授予从源文件系统开始的“执行”权限，并授予“读取”权限以复制文件   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据读取者”角色  。
-    - **作为接收器**：在存储资源管理器，至少授予从接收器文件系统开始的“执行”权限，并授予接收器文件夹的“写入”权限   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据参与者”角色  。
+    - **作为源**：在存储资源管理器中，至少授予对所有上游文件夹和文件系统的“执行”权限，并授予对文件的“读取”权限以进行复制   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据读取者”角色  。
+    - **作为接收器**：在存储资源管理器中，至少授予对所有上游文件夹和文件系统的“执行”权限，并授予对接收器文件夹的“写入”权限   。 或者，在访问控制 (IAM) 中至少授予“存储 Blob 数据参与者”角色  。
 
 >[!NOTE]
->若要列出从帐户级别开始的文件夹或测试连接，需要在 IAM 中使用“存储 Blob 数据读取者”权限为托管标识授予对存储帐户的权限。  对于以下情况需要这样做：
->- 使用**复制数据工具**创作复制管道。
->- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。 
->如果你担心在帐户级别授予权限，请在创作期间，跳过测试连接，并输入已授予权限的父路径，然后选择从该指定路径进行浏览。 只要在要复制的文件上授予服务主体适当的权限，复制活动就可以正常工作。
+>如果你使用数据工厂 UI 进行创作，并且未在 IAM 中为托管实例设置“存储 Blob 数据读取者/参与者”角色，则在执行测试连接或在文件夹中浏览/导航时，请选择“测试到文件路径的连接”或“从指定路径浏览”，然后指定具有“读取 + 执行”权限的路径以继续。 目前，测试到文件系统的连接将失败，请指定一个子目录来测试，或跳过此操作。
 
 >[!IMPORTANT]
 >如果在使用 Data Lake Storage Gen2 托管标识身份验证时使用 PolyBase 将 Data Lake Storage Gen2 中的数据载入 SQL 数据仓库，请确保同时遵循[此指南](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步骤 1 和 2，以便 1) 将 SQL 数据库服务器注册到 Azure Active Directory (Azure AD)，2) 将存储 Blob 数据参与者角色分配到 SQL 数据库服务器；剩余的任务将由数据工厂处理。 如果源 Data Lake Storage Gen2 中已配置 Azure 虚拟网络终结点，若要使用 PolyBase 从中加载数据，必须使用 PolyBase 所需的托管标识身份验证。
 
 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS  。 |是 |
 | url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.chinacloudapi.cn`。 | 是 | 
@@ -208,22 +204,16 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 
 有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)。
 
-- 对于 **Parquet、带分隔符文本、JSON、Avro 和二进制格式**，请参阅 [Parquet、带分隔符文本、JSON、Avro 和二进制格式数据集](#format-based-dataset)部分。
-- 有关其他格式（如 **ORC 格式**），请参阅[其他格式数据集](#other-format-dataset)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Parquet、带分隔符文本、JSON、Avro 和二进制格式数据集
+基于格式的数据集中 `location` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
-若要在 **Parquet、带分隔符文本、Avro 或二进制格式**之间来回复制数据，请参阅 [Parquet 格式](format-parquet.md)、[带分隔符文本格式](format-delimited-text.md)、[Avro 格式](format-avro.md)和[二进制格式](format-binary.md)文章，了解基于格式的数据集和支持的设置。 基于格式的数据集中 `location` 设置下的 Data Lake Storage Gen2 支持以下属性：
-
-| 属性   | 说明                                                  | 必选 |
+| 属性   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 **AzureBlobFSLocation**。 | 是      |
 | fileSystem | Data Lake Storage Gen2 文件系统名称。                              | 否       |
 | folderPath | 给定文件系统下的文件夹路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
 | fileName   | 给定 fileSystem + folderPath 下的文件名。 如果要使用通配符筛选文件，请跳过此设置并在活动源设置中指定。 | 否       |
-
-> [!NOTE]
-> copy、lookup 或 GetMetadata 活动仍然按原样支持下一部分中提到的带有 Parquet 或文本格式的 **AzureBlobFSFile** 类型数据集，以实现向后兼容。 但它不能与映射数据流功能配合使用。 我们建议今后使用新的模型。 数据工厂创作 UI 会生成这些新类型。
 
 **示例：**
 
@@ -252,67 +242,17 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 }
 ```
 
-### <a name="other-format-dataset"></a>其他格式数据集
-
-若要以 **ORC 格式**将数据复制到 Data Lake Storage Gen2 或从中复制数据，需要支持以下属性：
-
-| 属性 | 说明 | 必选 |
-|:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 AzureBlobFSFile  。 |是 |
-| folderPath | Data Lake Storage Gen2 中的文件夹的路径。 如果未指定，它指向根目录。 <br/><br/>支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果实际文件夹名内具有通配符或此转义符，请使用 `^` 进行转义。 <br/><br/>示例：filesystem/folder/。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
-| fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 preserveHierarchy，则复制活动会自动生成采用以下模式的文件名称  ：“*Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]* ”，例如“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 如果使用表名称而不是查询从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”，例如“MyTable.csv”。  |否 |
-| modifiedDatetimeStart | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。 如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。 如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| modifiedDatetimeEnd | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。 如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。 如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| format | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat      。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[ORC 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
-| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”  和“最快”  。 |否 |
-
->[!TIP]
->如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。 
-
-**示例：**
-
-```json
-{
-    "name": "ADLSGen2Dataset",
-    "properties": {
-        "type": "AzureBlobFSFile",
-        "linkedServiceName": {
-            "referenceName": "<Azure Data Lake Storage Gen2 linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "folderPath": "myfilesystem/myfolder",
-            "fileName": "*",
-            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
-            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
-            "format": {
-                "type": "TextFormat",
-                "columnDelimiter": ",",
-                "rowDelimiter": "\n"
-            },
-            "compression": {
-                "type": "GZip",
-                "level": "Optimal"
-            }
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>复制活动属性
 
 要完整了解可供活动定义使用的各个部分和属性，请参阅[复制活动配置](copy-activity-overview.md#configuration)和[管道和活动](concepts-pipelines-activities.md)。 本部分列出了 Data Lake Storage Gen2 源和接收器支持的属性。
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>Azure Data Lake Storage Gen2 作为源类型
 
-- 若要从 **Parquet、带分隔符文本、JSON、Avro 和二进制格式**复制，请参阅 [Parquet、带分隔符文本、JSON、Avro 和二进制格式源](#format-based-source)部分。
-- 若要从其他格式（如 **ORC 格式**）复制，请参阅[其他格式源](#other-format-source)部分。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a> Parquet、带分隔符文本、JSON、Avro 和二进制格式源
+基于格式的复制源中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
-若要从 **Parquet、带分隔符文本、JSON、Avro 和二进制格式**复制数据，请参阅 [Parquet 格式](format-parquet.md)、[带分隔符文本格式](format-delimited-text.md)、[Avro 格式](format-avro.md)和[二进制格式](format-binary.md)文章，了解基于格式的复制活动源和支持的设置。 基于格式的复制源中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
-
-| 属性                 | 说明                                                  | 必选                                      |
+| 属性                 | 说明                                                  | 必需                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 **AzureBlobFSReadSetting**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
@@ -321,9 +261,6 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 | modifiedDatetimeStart    | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。 如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。 如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否                                            |
-
-> [!NOTE]
-> 对于 Parquet 或带分隔符的文本格式，仍然按原样支持下一部分中提到的 **AzureBlobFSSource** 类型复制活动源，以实现向后兼容性。 我们建议今后使用新的模型。 数据工厂创作 UI 会生成这些新类型。
 
 **示例：**
 
@@ -366,11 +303,146 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 ]
 ```
 
-#### <a name="other-format-source"></a>其他格式源
+### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Azure Data Lake Storage Gen2 作为接收器类型
 
-若要以 **ORC 格式**从 Data Lake Storage Gen2 复制数据，复制活动 **source** 节需要支持以下属性：
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-| 属性 | 说明 | 必选 |
+基于格式的复制接收器中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
+
+| 属性                 | 说明                                                  | 必需 |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | `storeSettings` 下的 type 属性必须设置为 **AzureBlobFSWriteSetting**。 | 是      |
+| copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
+| maxConcurrentConnections | 可以同时连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
+
+**示例：**
+
+```json
+"activities":[
+    {
+        "name": "CopyToADLSGen2",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Parquet output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "ParquetSink",
+                "storeSettings":{
+                    "type": "AzureBlobFSWriteSetting",
+                    "copyBehavior": "PreserveHierarchy"
+                }
+            }
+        }
+    }
+]
+```
+
+### <a name="folder-and-file-filter-examples"></a>文件夹和文件筛选器示例
+
+本部分介绍使用通配符筛选器生成文件夹路径和文件名的行为。
+
+| folderPath | fileName | recursive | 源文件夹结构和筛选器结果（用**粗体**表示的文件已检索）|
+|:--- |:--- |:--- |:--- |
+| `Folder*` | （为空，使用默认值） | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | （为空，使用默认值） | 是 | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | 是 | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+
+### <a name="some-recursive-and-copybehavior-examples"></a>一些 recursive 和 copyBehavior 示例
+
+本节介绍了将 recursive 和 copyBehavior 值进行不同组合所产生的复制操作行为。
+
+| recursive | copyBehavior | 源文件夹结构 | 生成目标 |
+|:--- |:--- |:--- |:--- |
+| 是 |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用与源相同的结构创建目标 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| 是 |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成的名称 |
+| 是 |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File5 的内容将合并到一个文件中，且自动生成文件名。 |
+| false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
+| false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
+| false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
+
+## <a name="preserve-metadata-during-copy"></a>在复制期间保留元数据
+
+将文件从 Amazon S3/Azure Blob/Azure Data Lake Storage Gen2 复制到 Azure Data Lake Storage Gen2/Azure Blob 时，可以选择保留文件元数据和数据。 从[保留元数据](copy-activity-preserve-metadata.md#preserve-metadata)中了解更多信息。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
+
+若要了解有关属性的详细信息，请查看 [GetMetadata 活动](control-flow-get-metadata-activity.md) 
+
+## <a name="delete-activity-properties"></a>Delete 活动属性
+
+若要了解有关属性的详细信息，请查看 [Delete 活动](delete-activity.md)
+
+## <a name="legacy-models"></a>旧模型
+
+>[!NOTE]
+>仍按原样支持以下模型，以实现向后兼容性。 建议你以后使用前面部分中提到的新模型，ADF 创作 UI 已经切换到生成新模型。
+
+### <a name="legacy-dataset-model"></a>旧数据集模型
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为 AzureBlobFSFile  。 |是 |
+| folderPath | Data Lake Storage Gen2 中的文件夹的路径。 如果未指定，它指向根目录。 <br/><br/>支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果实际文件夹名内具有通配符或此转义符，请使用 `^` 进行转义。 <br/><br/>示例：filesystem/folder/。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
+| fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 preserveHierarchy，则复制活动会自动生成采用以下模式的文件名称  ：“*Data.[activity run ID GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]* ”，例如“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 如果使用表名称而不是查询从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”，例如“MyTable.csv”。  |否 |
+| modifiedDatetimeStart | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。 如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。 如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| modifiedDatetimeEnd | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 当你要从大量文件中进行文件筛选时，启用此设置将影响数据移动的整体性能。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。 如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。 如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
+| format | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat      。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[ORC 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
+| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”  和“最快”  。 |否 |
+
+>[!TIP]
+>如需复制文件夹下的所有文件，请仅指定 **folderPath**。<br>如需复制具有给定名称的单个文件，请指定文件夹部分的 **folderPath** 和文件名部分的 **fileName**。<br>如需复制文件夹下的文件子集，请指定文件夹部分的 **folderPath** 和通配符筛选器部分的 **fileName**。 
+
+**示例：**
+
+```json
+{
+    "name": "ADLSGen2Dataset",
+    "properties": {
+        "type": "AzureBlobFSFile",
+        "linkedServiceName": {
+            "referenceName": "<Azure Data Lake Storage Gen2 linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "folderPath": "myfilesystem/myfolder",
+            "fileName": "*",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ",",
+                "rowDelimiter": "\n"
+            },
+            "compression": {
+                "type": "GZip",
+                "level": "Optimal"
+            }
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
+
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 AzureBlobFSSource  。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |
@@ -408,64 +480,9 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 ]
 ```
 
-### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Azure Data Lake Storage Gen2 作为接收器类型
+### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-- 若要复制到 **Parquet、带分隔符文本、JSON、Avro 和二进制格式**，请参阅 [Parquet、带分隔符文本、JSON、Avro 和二进制格式接收器](#format-based-sink)部分。
-- 若要复制到其他格式（如 **ORC/JSON 格式**），请参阅[其他格式接收器](#other-format-sink)部分。
-
-#### <a name="format-based-sink"></a> Parquet、带分隔符文本、JSON、Avro 和二进制格式接收器
-
-若要以 **Parquet、带分隔符文本、JSON、Avro 和二进制格式**复制数据，请参阅 [Parquet 格式](format-parquet.md)、[带分隔符文本格式](format-delimited-text.md)、[Avro 格式](format-avro.md)和[二进制格式](format-binary.md)文章，了解基于格式的复制活动接收器和支持的设置。 基于格式的复制接收器中的 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
-
-| 属性                 | 说明                                                  | 必选 |
-| ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 属性必须设置为 **AzureBlobFSWriteSetting**。 | 是      |
-| copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
-| maxConcurrentConnections | 可以同时连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
-
-> [!NOTE]
-> 对于 Parquet 或带分隔符的文本格式，仍然按原样支持下一部分中提到的 **AzureBlobFSSink** 类型复制活动接收器，以实现向后兼容性。 我们建议今后使用新的模型。 数据工厂创作 UI 会生成这些新类型。
-
-**示例：**
-
-```json
-"activities":[
-    {
-        "name": "CopyToADLSGen2",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "<input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<Parquet output dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "<source type>"
-            },
-            "sink": {
-                "type": "ParquetSink",
-                "storeSettings":{
-                    "type": "AzureBlobFSWriteSetting",
-                    "copyBehavior": "PreserveHierarchy"
-                }
-            }
-        }
-    }
-]
-```
-
-#### <a name="other-format-sink"></a>其他格式接收器
-
-若要以 **ORC 格式**将数据复制到 Data Lake Storage Gen2，**sink** 节中需要支持以下属性：
-
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 AzureBlobFSSink  。 |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否 |
@@ -503,41 +520,6 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 ]
 ```
 
-### <a name="folder-and-file-filter-examples"></a>文件夹和文件筛选器示例
-
-本部分介绍使用通配符筛选器生成文件夹路径和文件名的行为。
-
-| folderPath | fileName | recursive | 源文件夹结构和筛选器结果（用**粗体**表示的文件已检索）|
-|:--- |:--- |:--- |:--- |
-| `Folder*` | （为空，使用默认值） | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | （为空，使用默认值） | 是 | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | `*.csv` | 是 | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-
-### <a name="some-recursive-and-copybehavior-examples"></a>一些 recursive 和 copyBehavior 示例
-
-本节介绍了将 recursive 和 copyBehavior 值进行不同组合所产生的复制操作行为。
-
-| recursive | copyBehavior | 源文件夹结构 | 生成目标 |
-|:--- |:--- |:--- |:--- |
-| 是 |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用与源相同的结构创建目标 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| 是 |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成的名称 |
-| 是 |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File5 的内容将合并到一个文件中，且自动生成文件名。 |
-| false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
-| false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
-| false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
-
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
-
-若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
-
-## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
-
-若要了解有关属性的详细信息，请查看 [GetMetadata 活动](control-flow-get-metadata-activity.md) 
-
-## <a name="delete-activity-properties"></a>Delete 活动属性
-
-若要了解有关属性的详细信息，请查看 [Delete 活动](delete-activity.md)
 ## <a name="next-steps"></a>后续步骤
 
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

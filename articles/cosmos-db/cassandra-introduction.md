@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Cassandra API 简介
-description: 了解如何使用 Azure Cosmos DB“直接迁移”现有的应用程序以及如何通过使用 Cassandra 驱动程序和熟悉的 CQL 的 Cassandra API 构建新的应用程序。
+description: 了解如何使用 Azure Cosmos DB“直接迁移”现有的应用程序以及如何使用 Cassandra 驱动程序和 CQL 构建新的应用程序
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 origin.date: 05/21/2019
-ms.date: 06/17/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 4d8a98300b2c0f5226e77566dc503836047bd76e
-ms.sourcegitcommit: 48a45ba95a6d1c15110191409deb0e7aac4bd88b
+ms.openlocfilehash: 357807c78ed9dfe3f2393a1edfc122fb217541fa
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68293429"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270078"
 ---
 <!--Verify successfully-->
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 简介
@@ -37,7 +37,7 @@ Azure Cosmos DB Cassandra API 可以充当为 [Apache Cassandra](https://cassand
 
 **一致性选择**：Azure Cosmos DB 提供五个定义明确的一致性级别以供选择，可在一致性和性能之间实现最佳平衡。 这些一致性级别分别是：强、有限过期、会话、一致前缀和最终。 通过这些定义明确、实用且直观的一致性级别，开发者可以在一致性、可用性和延迟之间实现精确的平衡。 在[一致性级别](consistency-levels.md)一文中了解详细信息。 
 
-**企业级**：Azure cosmos DB 提供[符合性认证](https://www.trustcenter.cn/zh-cn/cloudservices/azure.html)，以确保用户可以安全地使用该平台。 Azure Cosmos DB 还提供静态和动态加密、IP 防火墙和审核日志以控制平面活动。
+**企业级**：Azure cosmos DB 提供[符合性认证](https://www.trustcenter.cn/cloudservices/azure.html)，以确保用户可以安全地使用该平台。 Azure Cosmos DB 还提供静态和动态加密、IP 防火墙和审核日志以控制平面活动。
 
 ## <a name="next-steps"></a>后续步骤
 

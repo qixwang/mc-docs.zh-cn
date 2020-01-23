@@ -1,26 +1,16 @@
 ---
-title: 在 Linux 上设置开发环境 | Azure
+title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0aa9cada235447c40cee26c0e64599ca9b6c0129
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 8e38c964bfe3129d9b1f8408a260d877a38f88bd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174254"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742377"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -36,7 +26,7 @@ ms.locfileid: "70174254"
 
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 支持使用以下操作系统版本进行开发。
 
@@ -49,7 +39,7 @@ ms.locfileid: "70174254"
     ```
 
 <!--Not Available on * Red Hat Enterprise Linux 7.4 (Service Fabric preview support)-->
-<!--MOONCAKE: Deployment raise error with "PlatformImageNotFound" -->
+<!--MOONCAKE CUSTOMIZATION: Deployment raise error with "PlatformImageNotFound" -->
 
 ## <a name="installation-methods"></a>安装方法
 
@@ -232,7 +222,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse** 。 
 
-4. 选择“设置”  （应用程序对象和服务主体对象）。
+4. 选择“添加”   。
 
     ![“可用软件”页][sf-eclipse-plugin]
 
@@ -293,4 +283,4 @@ sudo apt-get install servicefabric servicefabricsdkcommon
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
 
-<!--Update_Description: update meta properties, wording udpate -->
+<!--Update_Description: update meta properties, wording update-->

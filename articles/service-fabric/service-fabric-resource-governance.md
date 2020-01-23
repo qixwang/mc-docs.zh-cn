@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 容器和服务的资源调控 | Azure
+title: Azure Service Fabric 容器和服务的资源治理
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/09/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: bd60f7dd2b26e3d07ef4713a0631c7fd89a2f2b5
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: f6918ecada36256dbaf23790d17e4fd476f5ed24
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254756"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742436"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -112,6 +102,18 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 </Section>
 ```
 
+> [!IMPORTANT]
+> 从 Service Fabric version 7.0 开始，我们更新了在用户手动提供节点资源容量值的情况下，节点资源容量的规则计算方法。 让我们考虑以下这种情况：
+>
+> * 节点上总共有 10 个 CPU 核心数
+> * SF 配置为使用用户服务总资源的 80%（默认设置），这将为节点上运行的其他服务（包括 Service Fabric 系统服务）保留 20% 的缓冲区
+> * 用户决定手动覆盖 CPU 核心数指标的节点资源容量，并将其设置为 5 个核心
+>
+> 我们已更改了关于 Service Fabric 用户服务可用容量的规则计算方式，内容如下：
+>
+> * 在 Service Fabric 7.0 之前，用户服务的可用容量将计算为 5 个核心数（忽略 20% 的容量缓冲区） 
+> * 从 Service Fabric 7.0 开始，用户服务的可用容量将计算为 4 个核心数（不忽略 20% 的容量缓冲区） 
+
 ## <a name="specify-resource-governance"></a>指定资源治理
 
 应用程序清单（ServiceManifestImport 部分）中指定了资源调控限制，如以下示例所示：
@@ -143,7 +145,7 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 
 ### <a name="using-application-parameters"></a>使用应用程序参数
 
-指定资源调控时，可使用[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)管理多个应用配置。 下例展示应用程序参数的用法：
+指定资源调控设置时，可使用[应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)管理多个应用配置。 下例展示应用程序参数的用法：
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -188,6 +190,27 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 >
 > 使用应用程序参数指定资源调控时，Service Fabric 无法降级到 6.1 之前的版本。
 
+## <a name="enforcing-the-resource-limits-for-user-services"></a>强制执行用户服务的资源限制
+
+虽然将资源治理应用于 Service Fabric 服务可以确保这些受治理资源服务不超过其资源配额，但许多用户仍然需要以非治理模式运行某些 Service Fabric 服务。 使用非治理 Service Fabric 服务时，可能会遇到“失控”的非治理服务消耗 Service Fabric 节点上所有可用资源的情况，这可能会导致严重的问题，例如：
+
+* 节点上运行的其他服务（包括 Service Fabric 系统服务）的资源不足
+* 节点以不正常状态结束
+* 群集管理 API Service Fabric 无响应
+
+为了防止发生这些情况，Service Fabric 允许你对节点上运行的所有 Service Fabric 用户服务（受治理和未受治理）实施资源限制，以确保用户服务永远不会使用超过指定数量的资源 ** 。 此限制可通过将 ClusterManifest 的 PlacementAndLoadBalancing 部分中的 EnforceUserServiceMetricCapacities 配置的值设置为 true 来实现。 默认情况下，此设置处于关闭状态。
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+其他备注：
+
+* 资源限制强制仅适用于 `servicefabric:/_CpuCores` 和 `servicefabric:/_MemoryInMB` 资源指标
+* 仅当资源指标的节点容量可用于 Service Fabric 时，资源限制强制实施才会起作用，可以通过自动检测机制，也可以通过用户手动指定节点容量（如[启用资源治理的群集设置](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分所述）。 如果未配置节点容量，则无法使用资源限制强制实施功能，因为 Service Fabric 不知道要为用户服务保留多少资源。 如果“EnforceUserServiceMetricCapacities”为 true 但未配置节点容量，则 Service Fabric 将发出运行状况警告。
+
 ## <a name="other-resources-for-containers"></a>容器的其他资源
 
 除了 CPU 和内存之外，还可以为容器指定其他资源限制。 这些限制是在代码包一级指定，并在容器启动时应用。 这些资源与 CPU 和内存不同，群集资源管理器不会注意到它们，也不会针对它们进行任何容量检查或负载均衡。
@@ -216,4 +239,4 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 * 若要详细了解群集资源管理器，请阅读 [Service Fabric 群集资源管理器简介](service-fabric-cluster-resource-manager-introduction.md)。
 * 若要详细了解应用程序模型、服务包、代码包以及如何将副本映射到它们，请阅读 [Service Fabric 中的应用程序建模](service-fabric-application-model.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

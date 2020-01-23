@@ -8,13 +8,13 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/14/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 782f8e33a3c1b8285cb7ce93e9c62359849ed676
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/13/2020
+ms.openlocfilehash: ad8ca91004f8ab563c44393e522c9f1325d0dc5a
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335745"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630832"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成
 
@@ -85,7 +85,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 > [!TIP]
 > * 将数据从 ADF 复制到 Azure 数据资源管理器时，请使用 `ingest from query` 命令。  
-> * 对于大型数据集 (>1GB)，请使用复制活动。
+> * 对于大型数据集 (>1GB)，请使用复制活动。  
 
 ## <a name="required-permissions"></a>所需的权限
 
@@ -119,13 +119,90 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 | **数据处理复杂性** | 延迟根据源文件格式、列映射和压缩而有所不同。|
 | **运行集成运行时的 VM** | <ul><li>对于 Azure 复制，无法更改 ADF VM 和计算机 SKU。</li><li> 对于本地到 Azure 的复制，请确定托管自承载 IR 的 VM 是否足够强大。</li></ul>|
 
-## <a name="monitor-activity-progress"></a>监视活动进度
+## <a name="tips-and-common-pitfalls"></a>提示和常见错误
+
+### <a name="monitor-activity-progress"></a>监视活动进度
 
 * 监视活动进度时，“写入的数据”属性可能比“读取的数据”属性要大得多，因为“读取的数据”是根据二进制文件大小计算的，而“写入的数据”是在反序列化并解压缩数据后，根据内存中大小计算的。    
 
 * 监视活动进度时，可以看到数据已写入 Azure 数据资源管理器接收器。 查询 Azure 数据资源管理器表时，会看到数据尚未抵达。 这是因为，复制到 Azure 数据资源管理器的过程是分两个阶段完成的。 
     * 第一阶段读取源数据，将数据拆分为 900-MB 的区块，然后将每个区块上传到 Azure Blob。 ADF 活动进度视图会显示第一阶段。 
     * 将所有数据上传到 Azure Blob 后，第二个阶段随即开始。 Azure 数据资源管理器引擎节点下载 Blob，并将数据引入接收器表。 然后，Azure 数据资源管理器表中会显示这些数据。
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>因转义不当而无法引入 CSV 文件
+
+Azure 数据资源管理器要求 CSV 文件遵循 [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)。
+它要求：
+* 包含需要转义的字符（例如 " 和新行）的字段应以 **"** 字符开头和结尾，不使用空格。 字段中的所有 **"** 字符  都使用双 **"** 字符 ( **""** ) 进行转义。 例如， _"Hello, ""World"""_ 是一个有效的 CSV 文件，所包含的单个记录有一个内容为 _Hello, "World"_ 的列或字段。
+* 文件中的所有记录必须有相同的列数和字段数。
+
+Azure 数据工厂允许反斜杠（转义）字符。 如果使用 Azure 数据工厂生成一个包含反斜杠字符的 CSV 文件，则无法将该文件引入 Azure 数据资源管理器。
+
+#### <a name="example"></a>示例
+
+以下文本值：Hello, "World"<br/>
+ABC   DEF<br/>
+"ABC\D"EF<br/>
+"ABC DEF<br/>
+
+应该会在相应的 CSV 文件中显示如下："Hello, ""World"""<br/>
+"ABC   DEF"<br/>
+"""ABC DEF"<br/>
+"""ABC\D""EF"<br/>
+
+使用默认的转义字符（反斜杠）时，以下 CSV 不能在 Azure 数据资源管理器中使用："Hello, \"World\""<br/>
+"ABC   DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>嵌套的 JSON 对象
+
+将 JSON 文件复制到 Azure 数据资源管理器时，请注意：
+* 不支持数组。
+* 如果 JSON 结构包含对象数据类型，Azure 数据工厂会将对象的子项平展，并尝试将每个子项映射到 Azure 数据资源管理器表中的不同列。 若要将整个对象项映射到 Azure 数据资源管理器中的单个列，请执行以下操作：
+    * 将整个 JSON 行引入 Azure 数据资源管理器中的单个动态列。
+    * 使用 Azure 数据工厂的 JSON 编辑器手动编辑管道定义。 在“映射”中，执行以下操作： 
+       * 删除为每个子项创建的多个映射，并添加单个可将对象类型映射到表列的映射。
+       * 在右方括号后面添加一个逗号，后跟：<br/>
+       `"mapComplexValuesToString": true`。
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>在复制到 Azure 数据资源管理器时指定 AdditionalProperties
+
+> [!NOTE]
+> 目前，手动编辑 JSON 有效负载即可使用此功能。 
+
+在复制活动的“sink”节下添加单个行，如下所示：
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+对值的转义操作可能很微妙。 请使用以下代码片段作为参考：
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+输出的值：
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

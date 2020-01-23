@@ -1,31 +1,27 @@
 ---
-title: 浏览器上的已知问题（适用于 JavaScript 的 Microsoft 身份验证库）| Azure
+title: Internet Explorer 和 Microsoft Edge (MSAL.js) 的问题 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解将适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与 Internet Explorer 和 Microsoft Edge 浏览器配合使用时的已知问题。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/16/2019
-ms.date: 06/17/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10f817784664a52bdf9846518c0e8a09b84590a8
-ms.sourcegitcommit: 9d5fd3184b6a47bf3b60ffdeeee22a08354ca6b1
+ms.openlocfilehash: d31e3fb924b4d484e1bd1832c73e957a32599fab
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67305851"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776992"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>将 Internet Explorer 和 Microsoft Edge 浏览器与 MSAL.js 配合使用的已知问题
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
 
 ## <a name="issues-due-to-security-zones"></a>安全区域造成的问题
 用户已多次向我们报告 IE 和 Microsoft Edge 中的身份验证存在问题（自从 Microsoft Edge 浏览器版本更新到 40.15063.0.0 开始）。  我们正在跟踪这些问题，并已通知 Microsoft Edge 团队。 Microsoft Edge 正在努力寻求解决方法。下面是常见问题的描述，以及可以实施的可行解决方法。
@@ -44,8 +40,8 @@ ms.locfileid: "67305851"
 - **通过弹出窗口使用登录名进行身份验证时，弹出窗口不会关闭或处于停滞状态**。 通过 Microsoft Edge 或 IE (InPrivate) 中的弹出窗口进行身份验证时，在输入凭据并登录后，如果有多个跨安全区域的域涉及导航，则弹出窗口不会关闭，因为 MSAL.js 丢失了弹出窗口的句柄。  
 
     下面是 Microsoft Edge 问题跟踪程序中这些问题的链接：  
-    - [Bug 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Bug 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
+    - Bug 13861050
+    - Bug 13861663
 
 ### <a name="update-fix-available-in-msaljs-023"></a>更新：MSAL.js 0.2.3 中提供了修复措施
 [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) 中已发布身份验证重定向循环问题的修复措施。 在 MSAL.js 配置中启用标志 `storeAuthStateInCookie` 即可利用此修复措施。 此标志默认设置为 false。
@@ -79,3 +75,4 @@ ms.locfileid: "67305851"
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[在 Internet Explorer 中使用 MSAL.js](msal-js-use-ie-browser.md)。
 
+<!-- Update_Description: wording update -->

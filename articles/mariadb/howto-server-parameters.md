@@ -1,18 +1,18 @@
 ---
-title: 如何在 Azure Database for MariaDB 中配置服务器参数
+title: 配置服务器参数 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 中配置 MariaDB 服务器参数。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 04/15/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: e3ff721efb51248a25b933cee5813df3aff227fd
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+origin.date: 12/9/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 1d7338ec8d624eca343f93d48f73dfde522bb743
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191598"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776730"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 
@@ -38,21 +38,21 @@ Azure Database for MariaDB 支持配置某些服务器参数。 本文介绍如�
 
 InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing-tiers.md)而定。
 
-|**定价层**| **vCore(s)**|InnoDB 缓冲池 (MB) | 最大连接数 |
-|---|---|---|---|
-|基本| 1| 1024| 50|
-|基本| 2| 2560| 100|
-|常规用途| 2| 3584| 300|
-|常规用途| 4| 7680| 625|
-|常规用途| 8| 15360| 1250|
-|常规用途| 16| 31232| 2500|
-|常规用途| 32| 62976| 5000|
-|常规用途| 64| 125952| 10000|
-|内存优化| 2| 7168| 600|
-|内存优化| 4| 15360| 1250|
-|内存优化| 8| 30720| 2500|
-|内存优化| 16| 62464| 5000|
-|内存优化| 32| 125952| 10000|
+|**定价层**| **vCore(s)**|InnoDB 缓冲池 (MB) |
+|---|---|---|
+|基本| 1| 1024|
+|基本| 2| 2560|
+|常规用途| 2| 3584|
+|常规用途| 4| 7680|
+|常规用途| 8| 15360|
+|常规用途| 16| 31232|
+|常规用途| 32| 62976|
+|常规用途| 64| 125952|
+|内存优化| 2| 7168|
+|内存优化| 4| 15360|
+|内存优化| 8| 30720|
+|内存优化| 16| 62464|
+|内存优化| 32| 125952|
 
 以下附加服务器参数不可在系统中配置：
 
@@ -78,6 +78,8 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 CALL mysql.az_load_timezone();
 ```
 
+> [!IMPORTANT]
+> 应重启服务器，确保正确填充时区表。 要重启服务器，请使用 [Azure 门户](howto-restart-server-portal.md)或 [CLI](howto-restart-server-cli.md)。
 要查看可用的时区值，请运行以下命令：
 
 ```sql

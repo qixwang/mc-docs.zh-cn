@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos 帐户的帐户密钥和连接字符串操作
+title: 用于获取 Azure Cosmos 帐户的密钥和连接字符串操作的 PowerShell 脚本
 description: Azure PowerShell 脚本示例 - Azure Cosmos 帐户的帐户密钥和连接字符串操作
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
 origin.date: 09/20/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9a9b1caf04894115a75a5207e6399c81d7fe8268
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 1dd2bec8a74ee546c4d7b73fb2135278432e1c49
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913278"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270098"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 执行 Azure Cosmos 帐户的连接字符串和帐户密钥操作
 

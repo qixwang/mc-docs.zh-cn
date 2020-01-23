@@ -1,22 +1,19 @@
 ---
-title: Azure Service Fabric - 使用用户分配的托管标识部署应用程序 | Azure
+title: 部署具有用户分配的托管标识的应用程序
 description: 本文介绍如何使用用户分配的托管标识部署 Service Fabric 应用程序
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
 ms.topic: article
-origin.date: 08/09/2019
-ms.date: 09/30/2019
+origin.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: d3e4b5fbca4fd08c749ddb81085e1aa77c476633
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.date: 01/06/2020
+ms.openlocfilehash: dc7a20a167f25b01ea657254b2ceeba7c948aad6
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340870"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742451"
 ---
 <!--Not Available on "apiVersion": "2019-06-01-preview"-->
-<!--Release before confirm-->
+<!--RELEAASE BEFORE CONFIRM-->
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>使用用户分配的托管标识部署 Service Fabric 应用程序（预览）
 
 若要使用托管标识部署 Service Fabric 应用程序，需通过 Azure 资源管理器部署应用程序，通常需要使用 Azure 资源管理器模板。 若要详细了解如何通过 Azure 资源管理器部署 Service Fabric 应用程序，请参阅[将应用程序和服务作为 Azure 资源管理器资源进行管理](service-fabric-application-arm-resource.md)。
@@ -111,5 +108,7 @@ ms.locfileid: "71340870"
 * [如何在 Service Fabric 应用程序代码中使用托管标识](how-to-managed-identity-service-fabric-app-code.md)
 * [如何为 Service Fabric 应用程序授予对其他 Azure 资源的访问权限](how-to-grant-access-other-resources.md)
 
+<!--Not Available on "apiVersion": "2019-06-01-preview"-->
+<!--RELEAASE BEFORE CONFIRM-->
 <!--Update_Description: new articles on service fabric how to deploy applicaton with user assigned managed identity -->
 <!--new.date: 09/02/2019-->

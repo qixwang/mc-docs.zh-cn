@@ -9,24 +9,24 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4cc35feb0c5935519e9059b85b0750ad948c1b6e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 6eb85b8f734d71e21d25115138405c7f3722b8e6
+ms.sourcegitcommit: 3f2cb2b8fbe60bac19cffea5a1e3e99aa0e309c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630874"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76163010"
 ---
-# <a name="try-the-speech-service-for-free"></a>免费试用语音服务
+# <a name="try-the-speech-service"></a>试用语音服务
 
 以简单、经济的方式开始使用语音服务。  在试用期，只需支付 1 元即可创建一个新的 Azure 帐户。
 
 > [!NOTE]
 > 语音服务有两个服务层级：免费和订阅，它们具有不同的限制和优势。 注册免费的 Azure 帐户时，该帐户附带 1,500 个服务额度，可用于支付长达 30 天的付费语音服务订阅。
 >
-> 如果使用免费的低流量语音服务层级，即使是在免费试用帐户或服务额度过期之后，也仍可以保留此免费订阅。
+> 如果使用免费的低容量“语音”服务层级，即使在试用或服务额度过期后，也可以保留此免费订阅。
 >
 > 有关详细信息，请参阅[认知服务定价 - 语音服务](https://www.azure.cn/pricing/details/cognitive-services/)。
 
@@ -72,15 +72,15 @@ ms.locfileid: "75630874"
 部署新的语音资源需要花费片刻时间。 部署完成后，选择“转到资源”，然后在左侧导航窗格中选择“密钥”以显示语音服务订阅密钥。   每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 若要将密钥快速复制/粘贴到代码编辑器或其他位置，请选择每个密钥旁边的复制按钮，切换窗口，然后将剪贴板中的内容粘贴到所需位置。
 
 > [!IMPORTANT]
-> 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 例如，请使用 Azure Key Vault 安全存储密钥。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
+> 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 安全存储密钥 - 例如，使用 Azure Key Vault。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
 
 ## <a name="switch-to-a-new-subscription"></a>切换到新订阅
 
-若要从一个订阅切换到另一个订阅（例如，在免费试用过期或发布应用程序的情况下进行切换），请将代码中的区域和订阅密钥替换为新 Azure 资源的区域和订阅密钥。
+若要从一个订阅切换到另一个订阅（例如，在试用到期时或发布应用程序时），请将代码中的区域和订阅密钥替换为新 Azure 资源的区域和订阅密钥。
 
 ## <a name="about-regions"></a>关于区域
 
-- 如果应用程序使用[语音 SDK](speech-sdk.md)，请在创建语音配置时提供区域代码，例如 `chinaeast`。
+- 如果应用程序使用[语音 SDK](speech-sdk.md)，请在创建语音配置时提供区域代码，例如 `chinaeast2`。
 - 如果应用程序使用某个语音服务的 [REST API](rest-apis.md)，则区域是你在发出请求时使用的终结点 URI 的一部分。
 - 为某个区域创建的密钥仅在该区域有效。 尝试在其他区域使用此类密钥会导致身份验证错误。
 

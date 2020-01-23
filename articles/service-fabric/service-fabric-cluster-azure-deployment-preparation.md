@@ -1,25 +1,16 @@
 ---
-title: 规划 Azure Service Fabric 群集部署 | Azure
+title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/20/2019
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 4e248ca67b2d3002235bd089af89bebc5075b025
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 095e1308a672dd274763c8803eac9058f363cd22
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174107"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742369"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 

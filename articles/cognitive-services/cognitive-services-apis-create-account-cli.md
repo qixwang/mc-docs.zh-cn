@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 10/04/2019
-ms.date: 11/19/2019
+ms.date: 01/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: eb937e00361b18bb6c63ce4e14320c2f3d2c9e3d
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 4d329032888a2f9c8d122364029b68f5b3c37dbe
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657939"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123224"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "74657939"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 有效的 Azure 订阅 - [创建 1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest)

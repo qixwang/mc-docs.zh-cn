@@ -1,23 +1,66 @@
 ---
 title: 用于容器的 Azure Monitor 常见问题解答 | Microsoft Docs
 description: 用于容器的 Azure Monitor 是用于监视 Azure 中的 AKS群集和容器实例的运行状况的解决方案。 本文将解答一些常见问题。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: v-lingwu
 origin.date: 10/15/2019
-ms.date: 10/29/2019
-ms.openlocfilehash: a39800c2316643a0199b83a3a591440279c2b308
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.date: 11/30/2019
+ms.openlocfilehash: 169ef6f669712419c59d852f235d77cbc3b783f3
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528368"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599932"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>用于容器的 Azure Monitor 常见问题解答
 
 本 Microsoft 常见问题解答列出了用于容器的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+
+## <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>我看不到在查询 ContainerLog 表时填充的图像和名称属性值。
+
+对于代理版本 ciprod12042019 和更高版本，默认情况下，不会为每个日志行填充这两个属性，这样是为了最大程度地减少收集日志数据时产生的成本。 有两个可用于查询表的选项，其中包含这些属性及其值：
+
+### <a name="option-1"></a>选项 1 
+
+联接其他表以在结果中包含这些属性值。
+
+通过在 ContainerID 属性上进行联接，将查询修改为包含 ```ContainerInventory``` 表中的 Image 和 ImageTag 属性。 通过在 ContainerID 属性上进行联接，可以包含 KubepodInventory 表的 ContaineName 字段中的 Name 属性（与以前在 ```ContainerLog``` 表中显示的相同）。建议使用此选项。
+
+下面的示例是一个示例详细查询，说明如何使用联接获取这些字段值。
+
+```
+//lets say we are querying an hour worth of logs
+let startTime = ago(1h);
+let endTime = now();
+//below gets the latest Image & ImageTag for every containerID, during the time window
+let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
+//below gets the latest Name for every containerID, during the time window
+let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
+let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+ContainerLog
+| where TimeGenerated >= startTime and TimeGenerated < endTime 
+| join kind= leftouter (
+   ContainerData
+) on $left.ContainerID == $right.ContainerID2 | project-away ContainerID1, ContainerID2, Name, Image, ImageTag | project-rename Name = Name1, Image=Image1, ImageTag=ImageTag1 
+
+```
+
+### <a name="option-2"></a>方法 2
+
+为每个容器日志行的这些属性重新启用收集。
+
+如果第一个选项因涉及到查询更改而不方便，则可通过在代理配置映射中启用设置 ```log_collection_settings.enrich_container_logs``` 来重新启用收集这些字段的功能，如[数据收集配置设置](./container-insights-agent-config.md)中所述。
+
+> [!NOTE]
+> 对于包含 50 个以上节点的大型群集，不建议使用第二个选项，因为它将从群集中的每个节点生成 API 服务器调用以执行此扩充。 此选项还会增加收集的每个日志行的数据大小。
+
+## <a name="can-i-view-metrics-collected-in-grafana"></a>能否查看在 Grafana 中收集的指标？
+
+用于容器的 Azure Monitor 支持在 Grafana 仪表板中查看 Log Analytics 工作区中存储的度量值。 我们提供了一个模板。你可以从 Grafana 的[仪表板存储库](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker)下载该模板来开始操作，并可通过该模板来了解如何从受监视的群集查询更多数据，以便在自定义 Grafana 仪表板中进行可视化。 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>是否可以使用用于容器的 Azure Monitor 监视 AKS-engine 群集？
 
@@ -80,11 +123,8 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 如果为 AKS 群集启用用于容器的 Azure Monitor 后，删除了该群集将其数据发送到的 Log Analytics 工作区，则尝试升级该群集时，该操作将会失败。 若要解决这一问题，必须禁用监视，然后重新启用该监视，同时引用订阅中的另一个有效工作区。 当你尝试再次升级群集时，该升级操作应进行处理并成功完成。  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>需要为代理打开哪些端口和域，或将哪些端口和域加入允许列表？
-- .ods.opinsights.azure.cn 443
-- .oms.opinsights.azure.cn 443
-- .blob.core.windows.net 443
-- microsoft.com 80（*说明：用于网络连接。仅当代理映像版本为 ciprod09262019 或更低版本时，才需要此项。* ）
-- dc.services.visualstudio.com 443
+
+有关 Azure 云、Azure 美国政府云和 Azure 中国云的容器化代理所需的代理和防火墙配置信息，请参阅[网络防火墙要求](container-insights-onboard.md#network-firewall-requirements)。
 
 ## <a name="next-steps"></a>后续步骤
 

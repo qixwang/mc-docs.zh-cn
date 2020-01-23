@@ -1,21 +1,16 @@
 ---
-title: Service Fabric Azure 文件卷驱动程序（正式版）| Azure
+title: Service Fabric Azure 文件存储卷驱动程序 (GA)
 description: Service Fabric 支持使用 Azure 文件备份容器中的卷。
-services: service-fabric
-author: rockboyfor
-manager: digimobile
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 origin.date: 06/10/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 34aa3dee27a00bae7248621b99876a1d9a757b26
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 8179d8768f44f3703fabb574b743519e0dc85b22
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336448"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742356"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure 文件存储卷驱动程序
 Azure 文件存储卷插件即为 Docker 容器提供基于 [Azure 文件存储](/storage/files/storage-files-introduction)的卷的 [Docker 卷插件](https://docs.docker.com/engine/extend/plugins_volume/)，现在是 **GA（正式版）** 。
@@ -26,7 +21,7 @@ Azure 文件存储卷插件即为 Docker 容器提供基于 [Azure 文件存储]
 > Azure 文件存储卷插件的版本 6.5.661.9590 是 GA（正式发布）版本。 
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Windows 版 Azure 文件卷插件仅适用于 [Windows Server 1709 版](https://docs.microsoft.com/windows-server/get-started/whats-new-in-windows-server-1709)、[Windows 10 1709 版](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709)或更高版本的操作系统。
 
 * Linux 版 Azure 文件卷插件适用于 Service Fabric 支持的所有操作系统版本。

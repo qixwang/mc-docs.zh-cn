@@ -4,15 +4,15 @@ description: 了解如何使用 .NET 客户端库 (v4) 在 Azure 密钥保管库
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 05/20/2019
-ms.date: 12/09/2019
+ms.date: 01/17/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 1e13283963ef19f05478148efd346b7f338dc829
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: c183660f651c85b4fc823ae2455b4011bfb5677f
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838946"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123351"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 
@@ -29,7 +29,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 [API 参考文档](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。
 * [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。

@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中监视和诊断 Service Fabric 上的 ASP.NET Core 服务 | Azure
+title: 在 Azure 中监视和诊断 Service Fabric 上的 ASP.NET Core 服务
 description: 在本教程中，你会学习如何为 Azure Service Fabric ASP.NET Core 应用程序设置监视和诊断。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 07/10/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: f8740248fdf5b98bf9c60eb678155c23e9ab9da2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 7e7c75624f123f5515c4a09bb403ca4301e4759e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348549"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742014"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -34,7 +24,7 @@ ms.locfileid: "75348549"
 > * 使用 Application Insights 中的应用映射功能
 > * 使用 Application Insights API 添加自定义事件
 
-在此系列教程中，你会学习如何：
+在此系列教程中，你将学习如何：
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -42,7 +32,7 @@ ms.locfileid: "75348549"
 > * [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * 设置应用程序的监视和诊断
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -52,7 +42,7 @@ ms.locfileid: "75348549"
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
-如果未生成[本教程系列的第一部分](service-fabric-tutorial-create-dotnet-app.md)中的投票示例应用程序，还可以下载它。 在命令窗口或终端中运行以下命令，将示例应用存储库克隆到本地计算机。
+如果未生成[本系列教程的第一部分](service-fabric-tutorial-create-dotnet-app.md)中的投票示例应用程序，可以下载它。 在命令窗口或终端中运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -279,7 +269,7 @@ public async Task<IActionResult> Delete(string name)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，你已学习了如何执行以下操作：
 > [!div class="checklist"]
 > * 为应用程序配置 Application Insights
 > * 收集响应遥测数据，跟踪服务之间基于 HTTP 的通信

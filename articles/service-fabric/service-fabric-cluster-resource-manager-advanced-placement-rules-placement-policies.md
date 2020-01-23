@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 群集Resource Manager - 放置策略 | Azure
+title: Service Fabric 群集资源管理器 - 放置策略
 description: 概述 Service Fabric 服务的其他放置策略和规则
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 04/29/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: b084ec7f287267849045fa1175863a2f60a1f255
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: d63d30755a0ac3fa131a9d155a15e18c40b3b41c
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914510"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742343"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
 放置策略是可用于在某些不常见的特定情况下控制服务位置的附加规则。 这些情况可能包括：

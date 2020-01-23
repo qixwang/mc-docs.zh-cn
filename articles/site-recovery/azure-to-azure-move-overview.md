@@ -1,67 +1,64 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 移动到另一个 Azure 区域 | Azure
-description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
-services: site-recovery
+title: 使用 Azure Site Recovery 将 Azure VM 移动到另一个区域
+description: 使用 Azure Site Recovery 将 Azure VM 从一个 Azure 区域移动到另一个 Azure 区域。
 author: rockboyfor
 ms.service: site-recovery
 ms.topic: tutorial
 origin.date: 01/28/2019
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: MVC
-ms.openlocfilehash: 0c6934112eb4233bebf94a728f86bd4b097d7cac
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: b13b8bd58f7d988e27ee996bdb808c0cbd454fda
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463711"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776756"
 ---
-# <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
+<!--NOT AVAILABLE ON AZURE CHINA CLOUD-->
+<!--RELEASE BEFORE CONFIRMATION AND CAREFULLY-->
+# <a name="moving-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
-Azure 随着客户群的扩大而不断扩建，由于需求的增大，我们将会添加新区域的支持。 此外，每个月都会添加新的服务功能。 因此，有时你想要将 VM 移到不同的区域或可用性区域以提高可用性。
+本文概述了使用 [Azure Site Recovery](site-recovery-overview.md) 将 Azure VM 移动到另一个 Azure 区域的原因和所涉及的步骤。 
 
-本文档逐步讲解在哪种场合下可以移动 VM，并提供有关如何在目标中配置体系结构以实现更高可用性的指导。 
-> [!div class="checklist"]
-> * [为何要移动 Azure VM](#why-would-you-move-azure-vms)
-> * [如何移动 Azure VM](#how-to-move-azure-vms)
-> * [典型体系结构](#typical-architectures-for-a-multi-tier-deployment)
-> * [将 VM 按原样移到目标区域](#move-azure-vms-to-another-region)
-> * [移动 VM 以提高可用性](#move-vms-to-increase-availability)
 
-## <a name="why-would-you-move-azure-vms"></a>为何要移动 Azure VM
+## <a name="reasons-to-move-azure-vms"></a>移动 Azure VM 的原因
 
-客户移动 VM 的原因如下：-
+移动 VM 的原因如下：
 
-- 如果你在一个区域中部署了 VM，而 Azure 添加了新的支持区域，并且该区域更靠近应用程序或服务的最终用户，则你可以**将 VM 按原样移到新区域**以降低延迟。 若要整合订阅或者监管/组织规则要求移动 VM，可以采用相同的方法。 
-- 如果 VM 部署为单一实例 VM 或部署为可用性集的一部分，并且你希望提高可用性 SLA，则可**将 VM 移动到可用性区域中**。 
+- 你已在一个区域中部署了 VM，而 Azure 添加了新的支持区域，并且该区域更靠近应用程序或服务的最终用户。 在这种情况下，可将 VM 按原样移到新区域以降低延迟。 若要整合订阅或者监管或组织规则要求移动 VM，可以使用相同的方法。
 
-## <a name="how-to-move-azure-vms"></a>如何移动 Azure VM
+<!--Not Available on **move your VMs into an Availability Zone**-->
+
+## <a name="steps-to-move-azure-vms"></a>移动 Azure VM 的步骤
+
 移动 VM 的过程包括以下步骤：
 
-1. 验证先决条件 
-2. 准备源 VM 
-3. 准备目标区域 
-4. 将数据复制到目标区域 - 使用 Azure Site Recovery 复制技术将源 VM 中的数据复制到目标区域
-5. 测试配置：复制完成后，通过执行到非生产网络的测试故障转移来测试配置。
-6. 执行移动 
-7. 丢弃源区域中的资源 
-
-> [!IMPORTANT]
-> 目前，Azure Site Recovery 支持将 VM 从一个区域移到另一个区域，而不支持在一个区域中移动。 
+1. 验证先决条件。
+2. 准备源 VM。
+3. 准备目标区域。
+4. 将数据复制到目标区域。 使用 Azure Site Recovery 复制技术将源 VM 中的数据复制到目标区域。
+5. 测试配置。 复制完成后，通过执行到非生产网络的测试故障转移来测试配置。
+6. 执行移动。
+7. 丢弃源区域中的资源。
 
 > [!NOTE]
-> [此处](#next-steps)所述的每种方案的文档中提供了这些步骤的详细指导
+> 以下部分提供了有关这些步骤的详细信息。
+
+> [!IMPORTANT]
+> 目前，Azure Site Recovery 支持将 VM 从一个区域移到另一个区域，但不支持在一个区域中移动。
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>多层部署的典型体系结构
-以下部分逐步讲解客户对 Azure 中的多层应用程序最常采用的部署体系结构。 此处使用的示例是采用公共 IP 的三层式应用程序。 每个层（Web 层、应用层和数据库层）各有 2 个 VM，并已通过负载均衡器连接到其他层。 数据库层在 VM 之间使用 SQL Always ON 复制，以实现高可用性 (HA)。
 
-1.  **跨不同的层部署的单一实例 VM** - 层中的每个 VM 配置为单一实例 VM，已通过负载均衡器连接到其他层。 这是客户采用的最简单配置。
+本部分介绍 Azure 中的多层应用程序的最常用部署体系结构。 示例是采用公共 IP 的三层式应用程序。 每个层（Web 层、应用层和数据库层）各有两个 VM，并已通过 Azure 负载均衡器连接到其他层。 数据库层在 VM 之间使用 SQL Server Always On 复制，以实现高可用性。
 
-    ![single-VMs](media/move-vm-overview/regular-deployment.PNG)
+* **跨不同的层部署的单一实例 VM**：层中的每个 VM 配置为单一实例 VM，并已通过负载均衡器连接到其他层。 此配置最容易采用。
 
-2. **每个层中跨可用性集部署的 VM** - 层中的每个 VM 在可用性集中进行配置。 [可用性集](/virtual-machines/windows/tutorial-availability-sets)确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 这样，就可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 会受到影响，整体解决方案仍可使用和操作。 
+    ![跨层的单一实例 VM 部署](media/move-vm-overview/regular-deployment.png)
 
-    ![avset](media/move-vm-overview/AVset.PNG)
+* **每个层中跨可用性集部署的 VM**：层中的每个 VM 在可用性集中进行配置。 [可用性集](/virtual-machines/windows/tutorial-availability-sets)确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 这可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 会受到影响，整体解决方案仍可使用和操作。
+
+    ![跨可用性集的 VM 部署](media/move-vm-overview/avset.png)
 
 <!--Not Available on **VMs in each tier deployed across Availability Set**-->
 <!--Not Available on Available zone-->
@@ -70,25 +67,25 @@ Azure 随着客户群的扩大而不断扩建，由于需求的增大，我们�
 
 根据上述[体系结构](#typical-architectures-for-a-multi-tier-deployment)，下面演示了将 VM 按原样移到目标区域后的部署布局。
 
-1. **跨不同的层部署的单一实例 VM** 
+* **跨不同的层部署的单一实例 VM**
 
-    ![single-zone.PNG](media/move-vm-overview/single-zone.PNG)
+    ![跨层的单一实例 VM 部署](media/move-vm-overview/single-zone.png)
 
-2. **每个层中跨可用性集部署的 VM**
+* **每个层中跨可用性集部署的 VM**
 
-    ![crossregionAset.PNG](media/move-vm-overview/crossregionAset.PNG)
+    ![跨区域可用性集](media/move-vm-overview/crossregionaset.png)
 
 <!--Not Available on **VMs in each tier deployed across Availability Zone**-->
 
 ## <a name="move-vms-to-increase-availability"></a>移动 VM 以提高可用性
 
-1. **跨不同的层部署的单一实例 VM** 
+* **跨不同的层部署的单一实例 VM**
 
-     ![single-zone.PNG](media/move-vm-overview/single-zone.PNG)
+    ![跨层的单一实例 VM 部署](media/move-vm-overview/single-zone.png)
 
-2. **每个层中跨可用性集部署的 VM** - 使用 Azure Site Recovery 为 VM 启用复制时，可以选择配置为将可用性集中的 VM 放入单独的可用性区域。 完成移动操作后，可用性 SLA 将达到 99.9%。
+* **每个层中跨可用性集部署的 VM**：使用 Azure Site Recovery 为 VM 启用复制时，可将可用性集中的 VM 配置到独立的可用性区域。 完成移动操作后，可用性 SLA 将达到 99.99%。
 
-     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
+    ![跨可用性集和可用性区域的 VM 部署](media/move-vm-overview/aset-azone.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -98,5 +95,8 @@ Azure 随着客户群的扩大而不断扩建，由于需求的增大，我们�
 > * [将 Azure VM 移到另一区域](azure-to-azure-tutorial-migrate.md)
 
 <!--Not Available on  * [Move Azure VMs into Availability Zones](move-azure-VMs-AVset-Azone.md)-->
+
+<!--NOT AVAILABLE ON AZURE CHINA CLOUD-->
+<!--RELEASE BEFORE CONFIRMATION AND CAREFULLY-->
 <!--Update_Description: new articles on azure to azure move overview -->
 <!--ms.date: 03/11/2019-->

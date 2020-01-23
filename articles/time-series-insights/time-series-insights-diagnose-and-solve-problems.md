@@ -3,21 +3,21 @@ title: 诊断、排查和解决问题 - Azure 时序见解 | Microsoft Docs
 description: 本文介绍如何诊断、排查和解决 Azure 时序见解环境中的常见问题。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: dpalled
+author: deepakpalled
+ms.author: v-yiso
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-origin.date: 10/10/2019
-ms.date: 12/02/2019
+origin.date: 12/06/2019
+ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 79b5765b4dbc675e420e9a6d3a53be4cbfb0912e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: ba8269e4287502940d5e9b6e7fae29206be243c0
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389123"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859731"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>诊断和解决时序见解环境中的问题
 
@@ -34,7 +34,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B：事件源密钥缺少所需的权限
 
-* 对于 Azure IoT 中心内的某个 IoT 中心，必须提供具有“服务连接”权限的密钥。  **iothubowner** 或 **service** 策略可正常运行，因为两者都具有“服务连接”权限。 
+* 对于 Azure IoT 中心内的某个 IoT 中心，必须提供具有“服务连接”权限的密钥。  选择“iothubowner”或“服务”策略，因为两者都具有“服务连接”权限    。
 
    [![IoT 中心“服务连接”权限](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -46,13 +46,17 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 注册 IoT 中心或事件中心时，必须设置用于读取数据的使用者组。 不能共享此使用者组。  如果共享此使用者组，底层 IoT 中心或事件中心会随机自动断开某个读取者的连接。 请提供唯一的使用者组，供时序见解从中读取。
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>原因 D：环境刚完成预配
+
+在环境及其数据首次创建之后的几分钟内，数据显示在时间序列见解资源管理器中。
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>问题：显示了一些数据，但缺失一些数据
 
 如果仅显示了一部分数据，并且数据显示滞后，则应该考虑到几种可能性。
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>原因 A：环境受限制
 
-如果在创建包含数据的事件源之后预配了环境，则经常会发生限制问题。 Azure IoT 中心和 Azure 事件中心将数据存储最长 7 天。 时序见解始终最先处理事件源中的最早事件（先进先出 (*FIFO*)）。
+如果在创建包含数据的事件源之后预配了环境，则经常会发生[限制](time-series-insights-environment-mitigate-latency.md)问题。 Azure IoT 中心和 Azure 事件中心将数据存储最长 7 天。 时序见解始终最先处理事件源中的最早事件（先进先出 (*FIFO*)）。
 
 例如，如果某个事件源中有 500 万个事件，当你连接到 S1（单一单位时序见解环境）时，时序见解每天会读取大约 100 万个事件。 时序见解看上去遇到了 5 天的延迟。 但是，实际原因是环境受到了限制。
 
@@ -110,3 +114,5 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[如何减少 Azure 时序见解中的延迟](time-series-insights-environment-mitigate-latency.md)。
+
+- 了解[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。

@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/04/2018
 ms.date: 06/11/2019
-ms.openlocfilehash: 2b8c5372c82c581f47cf1814e4bd409bf12562ce
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 5816fbd69b154c4fc7f9924b4d191edbb38578c0
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674781"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857035"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>使用 API 实现 IoT Edge 流分析的 CI/CD
 
@@ -30,11 +30,11 @@ ms.locfileid: "71674781"
 对于 Linux，可使用 `Curl` 或 `Wget` 命令：
 
 ```bash
-curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body>}” { <url> }   
+curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
 ```
 
 ```bash
-wget -q -O- --{ <method> }-data="<request body>”--header=Content-Type:application/json --auth-no-challenge --http-user="<Admin>" --http-password="<password>" <url>
+wget -q -O- --{ <method> } -data="<request body>" --header=Content-Type:application/json --auth-no-challenge --http-user="<Admin>" --http-password="<password>" <url>
 ```
  
 ### <a name="windows"></a>Windows
@@ -50,7 +50,7 @@ $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Content-Type", 'application/json') 
 $headers.Add("Authorization", $basicAuthValue) 
 $content = "<request body>" 
-$response = Invoke-RestMethod <url>-Method <method> -Body $content -Headers $Headers 
+$response = Invoke-RestMethod <url> -Method <method> -Body $content -Headers $Headers 
 echo $response 
 ```
  
@@ -180,7 +180,7 @@ curl -d –X GET https://management.chinacloudapi.cn/subscriptions/{subscription
 { 
   edgePackageUrl : null 
   error : null 
-  manifest : "{"supportedPlatforms":[{"os":"linux","arch":"amd64","features":[]},{"os":"linux","arch":"arm","features":[]},{"os":"windows","arch":"amd64","features":[]}],"schemaVersion":"2","name":"{jobname}","version":"1.0.0.0","type":"docker","settings":{"image":"{imageurl}","createOptions":null},"endpoints":{"inputs":["],"outputs":["{outputnames}"]},"twin":{"contentType":"assignments","content":{"properties.desired":{"ASAJobInfo":"{asajobsasurl}","ASAJobResourceId":"{asajobresourceid}","ASAJobEtag":"{etag}",”PublishTimeStamp”:”{publishtimestamp}”}}}}" 
+  manifest : "{"supportedPlatforms":[{"os":"linux","arch":"amd64","features":[]},{"os":"linux","arch":"arm","features":[]},{"os":"windows","arch":"amd64","features":[]}],"schemaVersion":"2","name":"{jobname}","version":"1.0.0.0","type":"docker","settings":{"image":"{imageurl}","createOptions":null},"endpoints":{"inputs":["\],"outputs":["{outputnames}"]},"twin":{"contentType":"assignments","content":{"properties.desired":{"ASAJobInfo":"{asajobsasurl}","ASAJobResourceId":"{asajobresourceid}","ASAJobEtag":"{etag}","PublishTimeStamp":"{publishtimestamp}"}}}}" 
   status : "Succeeded" 
 } 
 ```

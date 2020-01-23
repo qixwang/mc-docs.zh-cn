@@ -1,6 +1,6 @@
 ---
-title: 使用 Microsoft 标识平台隐式流保护单页应用程序 | Azure
-description: 使用 Microsoft 标识平台隐式流实现为单页面应用生成 Web 应用。
+title: OAuth 2.0 隐式授权流 - Microsoft 标识平台 | Azure
+description: 使用 Microsoft 标识平台隐式流保护单页应用。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694ec44b694caf65aed18b3fe1a3261f3823ce94
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5f8fef3fd07296bd32446c68cff4b70b1ebfa857
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335255"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776907"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -82,7 +82,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `redirect_uri` | 建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 |
 | `scope` | 必填 |[范围](v2-permissions-and-consent.md)的空格分隔列表。 对于 OpenID Connect (id_token)，它必须包含范围 `openid`，该范围在许可 UI 中会转换为“将你登录”权限。 或者，也可以包含 `email` 和 `profile` 范围，以获取对其他用户数据的访问权限。 也可以在此请求中包含其他范围，以请求对各种资源的许可（如果请求了访问令牌）。 |
 | `response_mode` | 可选 |指定将生成的令牌送回到应用程序时应该使用的方法。 默认为仅查询访问令牌，但如果请求包括 id_token，则会进行分段。 |
-| `state` | 建议 |同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该 state 也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
+| `state` | 建议 |同样随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该 state 也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
 | `nonce` | 必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 只有请求 id_token 时才是必需的。 |
 | `prompt` | 可选 |表示需要的用户交互类型。 目前的有效值为“login”、“none”、“select_account”和“consent”。 `prompt=login` 将强制用户在该请求上输入凭据，取消单一登录。 `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果请求无法通过单一登录静默完成，则 Microsoft 标识平台终结点将返回一个错误。 `prompt=select_account` 将用户发送到一个帐户选取器，其中将显示在会话中记住的所有帐户。 `prompt=consent` 会在用户登录之后触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | `login_hint`  |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。|
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 请尝试将以下请求复制并粘贴到浏览器选项卡中！ （不要忘记使用适用于用户的正确值替换 `login_hint` 值）
 >
->`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2user.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint={your-username}`
+>`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint={your-username}`
 >
 
 借助 `prompt=none` 参数，此请求立即成功或立即失败，并返回应用程序。 成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的 `redirect_uri` 的应用。

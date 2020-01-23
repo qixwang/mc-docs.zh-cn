@@ -40,7 +40,6 @@
         - name: Azure Stack Capacity Planner
           href: azure-stack-capacity-planner.md
     - name: 数据中心集成
-      href: azure-stack-customer-journey.md
       items:
         - name: 演练
           href: azure-stack-customer-journey.md
@@ -62,6 +61,8 @@
               href: azure-stack-customer-defined.md
             - name: DNS 集成
               href: azure-stack-integrate-dns.md
+            - name: 配置 DNS 转发器
+              href: azure-stack-configure-dns.md
             - name: 配置时间服务器
               href: azure-stack-configure-time.md
             - name: 防火墙集成
@@ -151,8 +152,6 @@
               href: azure-stack-servicing-policy.md
             - name: 应用更新的清单
               href: release-notes-checklist.md
-            - name: 规划更新
-              href: azure-stack-update-plan.md
             - name: 准备更新包
               href: azure-stack-update-prepare-package.md
             - name: 应用更新
@@ -167,6 +166,8 @@
               href: azure-stack-updates-troubleshoot.md
         - name: 监视运行状况和警报
           href: azure-stack-monitor-health.md
+        - name: 监视硬件组件
+          href: azure-stack-hardware-monitoring.md
         - name: 管理网络资源
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: 更改用户订阅所有者
@@ -339,10 +340,12 @@
               href: azure-stack-mysql-resource-provider-remove.md
             - name: MySQL 资源提供程序发行说明
               items:
-                - name: MySQL 资源提供程序 1.1.30.0 发行说明
-                  href: azure-stack-mysql-resource-provider-11300.md
+                - name: MySQL 资源提供程序 1.1.47.0 发行说明
+                  href: azure-stack-mysql-resource-provider-11470.md
                 - name: MySQL 资源提供程序 1.1.33.0 发行说明
                   href: azure-stack-mysql-resource-provider-11330.md
+                - name: MySQL 资源提供程序 1.1.30.0 发行说明
+                  href: azure-stack-mysql-resource-provider-11300.md
         - name: Azure Stack 上的 SQL
           items:
             - name: 概述
@@ -361,10 +364,12 @@
               href: azure-stack-sql-resource-provider-remove.md
             - name: SQL 资源提供程序发行说明
               items:
-                - name: SQL 资源提供程序 1.1.30.0 发行说明
-                  href: azure-stack-sql-resource-provider-11300.md
+                - name: SQL 资源提供程序 1.1.47.0 发行说明
+                  href: azure-stack-sql-resource-provider-11470.md
                 - name: SQL 资源提供程序 1.1.33.0 发行说明
                   href: azure-stack-sql-resource-provider-11330.md
+                - name: SQL 资源提供程序 1.1.30.0 发行说明
+                  href: azure-stack-sql-resource-provider-11300.md
     - name: 使用情况和计费
       href: azure-stack-billing-and-chargeback.md
       items:
@@ -394,7 +399,6 @@
                 - name: 使用注册错误代码
                   href: azure-stack-registration-errors.md
     - name: 备份 Azure Stack
-      href: azure-stack-backup-infrastructure-backup.md
       items:
         - name: 从管理控制台为 Azure Stack 启用备份
           href: azure-stack-backup-enable-backup-console.md
@@ -402,6 +406,8 @@
           href: azure-stack-backup-enable-backup-powershell.md
         - name: 备份 Azure Stack
           href: azure-stack-backup-back-up-azure-stack.md
+        - name: 使用备份服务恢复数据
+          href: azure-stack-backup-infrastructure-backup.md
         - name: 在 Azure Stack 上备份文件和应用程序
           href: /backup/backup-mabs-files-applications-azure-stack
         - name: 将 Azure Stack VM 复制到 Azure

@@ -1,26 +1,17 @@
 ---
-title: 有关执行组件类型序列化的 Reliable Actors 说明 | Azure
+title: 有关执行组件类型序列化的 Reliable Actors 说明
 description: 讨论了定义可序列化类的基本要求，这些类可用于定义 Service Fabric Reliable Actors 的状态和接口
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/02/2017
-ms.date: 05/28/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: b65b325b1c1b2bd9fa7993766b6af688e34a4f02
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: e1ac73639b7974159eae7a9413ec663c0863b227
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52666724"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742429"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>有关 Service Fabric Reliable Actors 类型序列化的说明
 所有方法的参数、执行组件接口中每个方法返回的任务的结果类型和执行组件的状态管理器中存储的对象都必须是[数据协定可序列化](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer?view=azure-dotnet)。 这同样适用于[执行组件事件接口](service-fabric-reliable-actors-events.md)中定义的方法的参数。 （执行组件事件接口方法始终返回 void。）

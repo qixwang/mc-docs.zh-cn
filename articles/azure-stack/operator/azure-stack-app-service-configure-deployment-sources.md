@@ -17,12 +17,12 @@ ms.date: 04/29/2019
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 7a1ee4cbaa599605f7bf2198be0bac05c7dea95c
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: e07396a482655787656c418eabdf633da97725bf
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578497"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624172"
 ---
 # <a name="configure-deployment-sources-for-app-services-on-azure-stack"></a>为 Azure Stack 上的应用服务配置部署源
 
@@ -140,7 +140,7 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 
 ## <a name="next-steps"></a>后续步骤
 
-用户现在可以对[持续部署](/app-service/deploy-continuous-deployment)和[本地 Git 部署](/app-service/deploy-local-git)等操作使用部署源。
+用户现在可以对[本地 Git 部署](/app-service/deploy-local-git)等操作使用部署源。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

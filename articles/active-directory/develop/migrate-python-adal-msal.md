@@ -1,28 +1,26 @@
 ---
-title: 适用于 Python 的 ADAL 到 MSAL 迁移指南 | Azure
+title: Python ADAL 到 MSAL 的迁移指南 | Azure
 description: 了解如何将 Azure Active Directory 身份验证库 (ADAL) Python 应用迁移到适用于 Python 的 Microsoft 身份验证库 (MSAL)。
 services: active-directory
 titleSuffix: Microsoft identity platform
 author: rayluo
-manager: henrikm
-editor: twhitney
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: Python
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
-ms.reviewer: ''
+ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15e9c539a5bff110a19102464a2cf16b2076945
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6341c4d631920cf6d3223b521358fa5d10be733a
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334816"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777001"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>适用于 Python 的 ADAL 到 MSAL 迁移指南
 
@@ -30,7 +28,7 @@ ms.locfileid: "75334816"
 
 ## <a name="difference-highlights"></a>差异重点说明
 
-ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证库 (MSAL) 适用于 Microsoft 标识平台（前称为 Azure Active Directory v2.0 终结点）。 Microsoft 标识平台与 Azure Active Directory v1.0 的不同之处在于：
+ADAL 适用于 Azure Active Directory (Azure AD) v1.0 终结点。 Microsoft 身份验证库 (MSAL) 适用于 Microsoft 标识平台（前称为 Azure Active Directory v2.0 终结点）。 Microsoft 标识平台与 Azure AD v1.0 的不同之处在于：
 
 支持：
   - 工作和学校帐户（Azure AD 预配帐户）

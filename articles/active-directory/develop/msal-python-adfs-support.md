@@ -1,33 +1,29 @@
 ---
-title: 适用于 Python 的 Microsoft 身份验证库中的 AD FS 支持 | Azure
+title: Azure AD FS 支持 (MSAL Python)
 titleSuffix: Microsoft identity platform
 description: 了解适用于 Python 的 Microsoft 身份验证库中的 Active Directory 联合身份验证服务 (AD FS) 支持
 services: active-directory
-documentationcenter: dev-center-name
 author: abhidnya13
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3c1efcd3cd42cf44f57c35632cc861b2ee5c30c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 58eccf71ca2a8c3a4cc3342402fd6bf674d6e8fb
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348509"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776977"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>适用于 Python 的 MSAL 中的 Active Directory 联合身份验证服务支持
 
-借助 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS)，可以使用适用于 Python 的 Microsoft 身份验证库 (MSAL) 将基于 OpenID Connect 和 OAuth 2.0 的身份验证与授权添加到应用中。 使用适用于 Python 的 MSAL 库，应用可以根据 AD FS 直接对用户进行身份验证。 有关方案的详细信息，请参阅[面向开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)。
+借助 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS)，可以使用适用于 Python 的 Microsoft 身份验证库 (MSAL) 将基于 OpenID Connect 和 OAuth 2.0 的身份验证与授权添加到应用中。 使用适用于 Python 的 MSAL 库，应用可以根据 AD FS 直接对用户进行身份验证。 有关方案的详细信息，请参阅[面向开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-development)。
 
 通常，可以通过两种方式对 AD FS 进行身份验证：
 
@@ -63,4 +59,6 @@ ms.locfileid: "75348509"
 MSAL Python 支持 ADFS 2019。
 
 它不支持直接与 ADFS 2016 或 ADFS v2 建立连接。 如果你的方案需要直接连接到 ADFS 2016，请使用最新版本的 ADAL Python。 将本地系统升级到 ADFS 2019 后，即可使用 MSAL Python。
+
+<!-- Update_Description: wording update -->
 

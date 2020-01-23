@@ -1,6 +1,6 @@
 ---
-title: 调用 Web API 的守护程序应用（应用配置）- Microsoft 标识平台
-description: 了解如何构建调用 Web API 的守护程序应用（应用配置）
+title: 配置调用 Web API 的守护程序应用 - Microsoft 标识平台 | Azure
+description: 了解如何为调用 Web API 的守护程序应用程序配置代码（应用配置）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/06/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5576ec41b4df264537bee6b9f3049f7e6758541
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: b0e80c36644208e7704dddcbefb9cbe78e1d6638
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830933"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777050"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -35,8 +34,8 @@ ms.locfileid: "73830933"
   MSAL 库 | 说明
   ------------ | ----------
   ![MSAL.NET](./media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持用于构建守护程序应用程序的平台为 .NET Framework 和 .NET Core 平台（不包括 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于构建公共客户端应用程序）
-  ![Python](./media/sample-v2-code/logo_python.png) <br/> MSAL Python | 开发中 -目前为公共预览版
-  ![Java](./media/sample-v2-code/logo_java.png) <br/> MSAL Java | 开发中 -目前为公共预览版
+  ![Python](./media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 对守护程序应用程序的支持
+  ![Java](./media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 对守护程序应用程序的支持
 
 ## <a name="configuration-of-the-authority"></a>配置颁发机构
 
@@ -133,7 +132,7 @@ public class TestData {
 在 MSAL.NET 中，机密客户端应用程序通过 `IConfidentialClientApplication` 接口表示。
 在源代码中使用 MSAL.NET 命名空间
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 IConfidentialClientApplication app;
 ```
@@ -161,7 +160,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
            .WithClientSecret(config.ClientSecret)
            .WithAuthority(new Uri(config.Authority))
@@ -201,7 +200,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithCertificate(certificate)
@@ -268,7 +267,7 @@ MSAL.NET 可以通过两种方法将签名的断言提供给机密客户端应�
 
 使用 `WithClientAssertion` 时，需提供签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -278,7 +277,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 使用 `WithClientClaims` 时，MSAL.NET 会自行计算一个签名断言，其中包含 Azure AD 预期的声明，以及你想要发送的其他客户端声明。
 下面是演示如何这样做的代码片段：
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 var claims = new Dictionary<string, string> { { "client_ip", ipAddress } };
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);

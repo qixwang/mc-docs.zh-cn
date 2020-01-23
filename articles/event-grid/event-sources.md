@@ -6,14 +6,14 @@ author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 origin.date: 02/12/2019
-ms.date: 07/29/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: bccc52219fee89b538fccf73b1f284e1a0cfcae7
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.openlocfilehash: 2bd943a59571c99ef9ea161b86510e33a75a748e
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68337488"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859523"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -79,9 +79,31 @@ ms.locfileid: "68337488"
 |标题  |说明  |
 |---------|---------|
 | [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
+| [使用事件网格来触发操作，对 IoT 中心事件进行响应](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
 | [事件架构](event-schema-iot-hub.md) | 说明 IoT 中心事件中的字段。 |
 | [订阅设备已连接和设备已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | 显示如何订阅设备连接状态事件。 |
 
+## <a name="key-vault-preview"></a>Key Vault（预览版）
+
+与事件网格的 Key Vault 集成目前处于预览阶段。 
+
+订阅要在机密即将过期、机密过期或机密具有可用的新版本时通知的 Key Vault 事件。 
+
+|标题  |说明  |
+|---------|---------|
+| [通过 Azure 事件网格监视 Key Vault 事件](../key-vault/event-grid-overview.md) | 概述 Key Vault 与事件网格的集成。 |
+| [教程：使用事件网格创建并监视 Key Vault 事件](../key-vault/event-grid-tutorial.md) | 了解如何为 Key Vault 设置事件网格通知。 |
+| [事件架构](event-schema-key-vault.md) | 显示 Key Vault 事件中的字段。 |
+
+## <a name="media-services"></a>媒体服务
+
+订阅媒体服务事件即可响应作业状态事件。
+
+|标题  |说明  |
+|---------|---------|
+| [概述：响应媒体服务事件](../media-services/latest/reacting-to-media-services-events.md) | 概述媒体服务与事件网格的集成。 |
+| [教程：使用 CLI 将 Azure 媒体服务事件路由到自定义 Web 终结点](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fevent-grid%2ftoc.json) | 说明如何从媒体服务发送事件。 |
+| [事件架构](../media-services/latest/media-services-event-schemas.md?toc=%2fevent-grid%2ftoc.json) | 说明媒体服务事件中的字段。 |
 
 ## <a name="resource-groups"></a>资源组
 
@@ -111,13 +133,34 @@ ms.locfileid: "68337488"
 
 |标题  |说明  |
 |---------|---------|
+| [快速入门：使用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure CLI 将 Blob 存储事件发送到 WebHook。 |
+| [快速入门：使用 PowerShell 将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure PowerShell 将 Blob 存储事件发送到 WebHook。 |
 | [快速入门：使用 Azure 门户创建和路由 Blob 存储事件](blob-event-quickstart-portal.md) | 介绍如何使用门户将 Blob 存储事件发送到 WebHook。 |
 | [Azure CLI：订阅 Blob 存储帐户的事件](./scripts/event-grid-cli-blob.md) | 用于订阅 Blob 存储帐户的事件的示例脚本。 它将事件发送到 WebHook。 |
 | [PowerShell：订阅 Blob 存储帐户的事件](./scripts/event-grid-powershell-blob.md) | 用于订阅 Blob 存储帐户的事件的示例脚本。 它将事件发送到 WebHook。 |
 | [资源管理器模板：创建 Blob 存储和订阅](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | 部署 Azure Blob 存储帐户并订阅该存储帐户的事件。 它将事件发送到 WebHook。 |
+| [概述：响应 Blob 存储事件](../storage/blobs/storage-blob-event-overview.md) | 概述 Blob 存储与事件网格的集成。 |
 | [事件架构](event-schema-blob-storage.md) | 说明 Blob 存储事件中的字段。 |
 
 
+
+## <a name="azure-signalr"></a>Azure SignalR
+订阅 Azure SignalR 服务事件，以响应客户端连接事件。
+
+|标题 | 说明 |
+|---------|---------|
+| [使用事件网格响应 Azure SignalR 服务事件](../azure-signalr/signalr-concept-event-grid-integration.md) | 概述 Azure SignalR 服务与事件网格的集成。 |
+| [如何将 Azure SignalR 服务事件发送到事件网格](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何通过事件网格将 Azure SignalR 服务事件发送到应用程序。 |
+| [事件架构](event-schema-azure-signalr.md) | 显示 Azure SignalR 服务事件中的字段。 |
+
+## <a name="azure-machine-learning"></a>Azure 机器学习
+
+订阅 Azure 机器学习工作区事件以响应模型注册。
+
+| 标题 | 说明 |
+| ----- | ----- |
+| [使用 Azure 机器学习事件](../machine-learning/concept-event-grid-integration.md) | 概述 Azure 机器学习与事件网格的集成。 |
+| [Azure 机器学习的 Azure 事件网格事件架构](event-schema-machine-learning.md) | 显示 Azure 机器学习事件中的字段。 |
 
 ## <a name="next-steps"></a>后续步骤
 

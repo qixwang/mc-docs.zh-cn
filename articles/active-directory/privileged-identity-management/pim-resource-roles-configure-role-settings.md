@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 12/10/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07eab0b643001fee6be3ed3752deca6e951d2259
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 58523333354b2c729b022699dd9c56a0021f1e98
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336090"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116804"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
@@ -58,10 +58,17 @@ ms.locfileid: "75336090"
 
 1. 使用“通知”选项卡或页面底部的  “下一步:  激活”按钮即可转到此角色的通知设置选项卡。 这些设置控制与此角色相关的所有电子邮件通知。
 
-    > [!NOTE]
-    > 此通知 UI 当前在 Azure 区域和订阅中推出。 如果无法配置这些具体的通知，请在一天或两天后再次查看。
-
     ![角色设置页中的角色“通知”选项卡](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    在角色设置页上的“通知”  选项卡上，Privileged Identity Management 允许对接收通知的人员及其收到的通知进行精细控制。
+
+    - **关闭电子邮件**<br>可以通过清除“默认收件人”复选框并删除任何其他收件人来关闭特定电子邮件。  
+
+    - **将电子邮件限制为指定的电子邮件地址**<br>可以通过清除“默认收件人”复选框来关闭发送给默认收件人的电子邮件。 然后，可以添加其他电子邮件地址作为其他收件人。 如果要添加多个电子邮件地址，请使用分号 (;) 分隔它们。
+
+    - **向默认收件人和其他收件人发送电子邮件**<br>可以通过选择“默认收件人”复选框并添加其他收件人的电子邮件地址，将电子邮件发送给默认收件人和其他收件人。
+
+    - **仅限关键电子邮件**<br>对于每种类型的电子邮件，可以选择该复选框以仅接收关键电子邮件。 这意味着，仅当电子邮件需要即时操作时，Privileged Identity Management 才会继续向配置的收件人发送电子邮件。 例如，将要触发要求管理员批准扩展请求的电子邮件时，不会触发要求用户扩展其角色分配的电子邮件。
 
 1. 随时选择“更新”按钮，对角色设置进行更新。 
 

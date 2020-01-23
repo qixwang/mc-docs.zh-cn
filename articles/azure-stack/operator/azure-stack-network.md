@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/07/2019
-ms.date: 11/18/2019
+origin.date: 10/23/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 5ab0e21d188cf7d1d0c3bcaeeb57e44cadadabee
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: b086bdff8155389b986e93319c6493f1ea9bfdd3
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020168"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737907"
 ---
 # <a name="network-integration-planning-for-azure-stack"></a>Azure Stack 的网络集成规划
 
@@ -49,9 +49,12 @@ Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能�
 | 公共 VIP | Azure Stack 总共使用此网络中的 31 个地址。 8 个公共 IP 地址由少量的 Azure Stack 服务使用，剩余的地址由租户 VM 使用。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 其余 15 个 IP 保留用于将来的 Azure 服务。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
 | 交换机基础结构 | 用于路由的专用交换机管理接口的点到点 IP 地址，以及分配给交换机的环回地址。 | /26 | 
 | 基础结构 | 用于通信的 Azure Stack 内部组件。 | /24 |
-| 专用 | 用于存储网络和专用 VIP。 | /24 | 
+| 专用 | 用于存储网络、专用 VIP、基础结构容器和其他内部功能。 从版本 1910 开始，此子网的大小将更改为 /20。 有关详细信息，请参阅本文中的[专用网络](#private-network)部分。 | /20 | 
 | BMC | 用于与物理主机上的 BMC 通信。 | /26 | 
 | | | |
+
+> [!NOTE]
+> 系统更新到版本 1910 后，门户上的警报将提醒操作员运行新的 PEP cmdlet **Set-AzsPrivateNetwork** 来添加新的 /20 专用 IP 空间。 有关运行该 cmdlet 的说明，请参阅 [1910 发行说明](release-notes.md)。 有关选择 /20 专用 IP 空间的详细信息和指导，请参阅本文中的[专用网络](#private-network)部分。
 
 ## <a name="network-infrastructure"></a>网络基础结构
 
@@ -67,13 +70,21 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 
 ### <a name="private-network"></a>专用网络
 
-此 /24（254 个主机 IP）网络专用于 Azure Stack 区域（不会扩展到 Azure Stack 区域的边界交换机设备以外），并划分成两个子网：
+此 /20（4096 个 IP）网络专用于 Azure Stack 区域（不会路由到 Azure Stack 系统的边界交换机设备以外），并划分为多个子网，下面是一些示例：
 
-- **存储网络**：一个 /25（126 个主机 IP）网络，用于支持空间直通和服务器消息块 (SMB) 存储流量与 VM 实时迁移的使用。
+- **存储网络**：一个 /25（128 个 IP）网络，用于支持空间直通和服务器消息块 (SMB) 存储流量与 VM 实时迁移的使用。
 - **内部虚拟 IP 网络**：一个 /25 网络，专用于软件负载均衡器的仅限内部的 VIP。
+- **容器网络**：一个 /23（512 个 IP）网络，专用于在运行基础结构服务的容器之间处理仅限内部的流量。
+
+从版本 1910 开始，专用网络的大小将更改为专用 IP 空间的 /20（4096 个 IP）。 此网络专用于 Azure Stack 系统（不会路由到 Azure Stack 系统的边界交换机设备以外），并且可以在数据中心内的多个 Azure Stack 系统上重复使用。 这是 Azure Stack 的专用网络，不能与数据中心内的其他网络重叠。 如果发生重叠，Azure Stack 可能无法在外部路由企业网络流量。 有关专用 IP 空间的指导，建议遵循 [RFC 1918](https://tools.ietf.org/html/rfc1918)。
+
+此 /20 专用 IP 空间将划分为多个网络，以便在将来版本的容器上运行 Azure Stack 系统内部基础结构。 有关详细信息，请参阅 [1910 发行说明](release-notes.md)。 此外，借助此新专用 IP 空间，可以在部署之前持续减少所需的可路由 IP 空间。
+
+对于在版本 1910 之前部署的系统，此 /20 子网将是更新到 1910 之后，要输入系统中的附加网络。 需要通过 **Set-AzsPrivateNetwork** PEP cmdlet 将此附加网络提供给系统。 有关此 cmdlet 的指导，请参阅 [1910 发行说明](release-notes.md)。
 
 ### <a name="azure-stack-infrastructure-network"></a>Azure Stack 基础结构网络
-此 /24 网络专用于内部 Azure Stack 组件，使这些组件能够相互通信和交换数据。 此子网可以从 Azure Stack 解决方案外部路由到数据中心，我们不建议在此子网上使用公共的或可以通过 Internet 路由的 IP 地址。 此网络广播到边界，但其大多数 IP 受访问控制列表 (ACL) 的保护。 允许进行访问的 IP 在一个小的范围内（其大小相当于一个 /27 网络），可托管[特权终结点 (PEP)](azure-stack-privileged-endpoint.md) 和 [Azure Stack 备份](azure-stack-backup-reference.md)之类的服务。
+
+此 /24 网络专用于内部 Azure Stack 组件，使这些组件能够相互通信和交换数据。 对于 Azure Stack 解决方案，此子网可从外部路由到数据中心。 我们不建议在此子网上使用公共或可从 Internet 路由的 IP 地址。 此网络广播到边界，但其大多数 IP 受访问控制列表 (ACL) 的保护。 允许进行访问的 IP 在一个小的范围内（其大小相当于一个 /27 网络），可托管[特权终结点 (PEP)](azure-stack-privileged-endpoint.md) 和 [Azure Stack 备份](azure-stack-backup-reference.md)之类的服务。
 
 ### <a name="public-vip-network"></a>公共 VIP 网络
 
@@ -86,6 +97,10 @@ HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在
 ### <a name="switch-management-network"></a>交换机管理网络
 
 此 /29（六个主机 IP）网络专用于连接交换机的管理端口。 其允许带外访问，以完成部署、管理和故障排除。 它是从上述交换机基础结构网络计算而来的。
+
+## <a name="permitted-networks"></a>允许的网络
+
+从版本 1910 开始，部署工作表将包含一个新字段，允许操作员更改某些访问控制列表 (ACL)，以允许从受信任的数据中心网络范围访问网络设备管理接口和硬件生命周期主机 (HLH)。 更改访问控制列表后，操作员可以允许特定网络范围内的管理 Jumpbox VM 访问交换机管理接口、HLH OS 和 HLH BMC。 操作员可在此列表中提供一个或多个子网；如果留空，则默认为拒绝访问。 借助此项新功能，在部署后，就不需要根据[修改 Azure Stack 交换机配置中的特定设置](azure-stack-customer-defined.md#access-control-list-updates)所述进行人工干预。
 
 ## <a name="next-steps"></a>后续步骤
 

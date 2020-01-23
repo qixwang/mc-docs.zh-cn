@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 01f55ddf421957be75492debe8115c48d2199dcf
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: fd734859d5ead0182a2f14c9ec352a5c5e0bc7bc
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528036"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854288"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "74528036"
 [服务总线队列](service-bus-queues-topics-subscriptions.md)是用于存储消息的实体。 有多个应用程序，或者有多个需要彼此通信的分布式应用程序部分时，队列特别有用。 队列和发行中心的相似之处在于，两者都会接收多个产品（消息），再从该处送出。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>什么是 Azure 服务总线主题和订阅？
-主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub  ）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
+主题可被视为队列，使用多个订阅时，它成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub  ）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什么是分区实体？
 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传递层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息中转站处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 此外，消息传送存储的临时中断不会导致分区队列或主题不可用。
@@ -87,7 +87,7 @@ ms.locfileid: "74528036"
 
 ## <a name="best-practices"></a>最佳实践
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
-请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus] � 此文介绍了如何在交换消息时优化性能。
+请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus] - 此文介绍了如何在交换消息时优化性能。
 
 ### <a name="what-should-i-know-before-creating-entities"></a>创建实体前的须知事项有哪些？
 队列和主题的以下属性是固定不变的。 预配实体时，请考虑此限制，因为必须创建新的替代实体才可修改这些属性。

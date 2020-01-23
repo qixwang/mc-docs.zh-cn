@@ -1,26 +1,16 @@
 ---
-title: 为 Azure Service Fabric 中的有状态服务开发单元测试 | Azure
+title: 为 Azure Service Fabric 中的有状态服务开发单元测试
 description: 了解如何为 Service Fabric 有状态服务开发单元测试。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 09/04/2018
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c1037234334018dece63d641073b9e75163a2482
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 4e5ac79e3684f96b540bd9236012ca3faf1272ae
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625269"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742502"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
 对 Service Fabric 有状态服务进行单元测试可发现传统应用程序或特定于域的单元测试不一定会捕获的常见错误。 在为有状态服务开发单元测试时，应牢记一些特殊注意事项。
@@ -43,28 +33,31 @@ ms.locfileid: "58625269"
 作为测试的排列部分的一部分，将创建模拟副本集和状态管理器。 然后，副本集将自己为每个副本创建已测试服务的实例。 它还将自己执行生命周期事件，例如 `OnChangeRole` 和 `RunAsync`。 模拟状态管理器将确保对状态管理器执行的任何操作均按照实际状态管理器那样运行和保持。
 
 1. 创建将实例化正在测试的服务的服务工厂委托。 这应该与通常在 Service Fabric 服务或执行组件的 `Program.cs` 中找到的服务工厂回叫类似或相同。 这应遵循以下签名：
-   ```csharp
-   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-   ```
+    
+    ```csharp
+    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+    ```
 2. 创建 `MockReliableStateManager` 类的实例。 这将模拟与状态管理器的所有交互。
 3. 创建 `MockStatefulServiceReplicaSet<TStatefulService>` 的实例，其中 `TStatefulService` 是要测试服务的类型。 这将需要在步骤 #1 中创建的委托和在 #2 中实例化的状态管理器
 4. 将副本添加到副本集。 指定角色（如 Primary、ActiveSecondary、IdleSecondary）和副本的 ID
-   > 保留副本 ID！ 这些将有可能在单元测试的行为和断言部分中使用。
+    
+    > [!NOTE]
+    > 保留副本 ID！ 这些将有可能在单元测试的行为和断言部分中使用。
 
-```csharp
-//service factory to instruct how to create the service instance
-var serviceFactory = (StatefulServiceContext context, IReliableStateManagerReplica2 stateManager) => new MyStatefulService(context, stateManager);
-//instantiate a new mock state manager
-var stateManager = new MockReliableStateManager();
-//instantiate a new replica set with the service factory and state manager
-var replicaSet = new MockStatefulServiceReplicaSet<MyStatefulService>(CreateStatefulService, stateManager);
-//add a new Primary replica with id 1
-await replicaSet.AddReplicaAsync(ReplicaRole.Primary, 1);
-//add a new ActiveSecondary replica with id 2
-await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
-//add a second ActiveSecondary replica with id 3
-await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
-```
+    ```csharp
+    //service factory to instruct how to create the service instance
+    var serviceFactory = (StatefulServiceContext context, IReliableStateManagerReplica2 stateManager) => new MyStatefulService(context, stateManager);
+    //instantiate a new mock state manager
+    var stateManager = new MockReliableStateManager();
+    //instantiate a new replica set with the service factory and state manager
+    var replicaSet = new MockStatefulServiceReplicaSet<MyStatefulService>(CreateStatefulService, stateManager);
+    //add a new Primary replica with id 1
+    await replicaSet.AddReplicaAsync(ReplicaRole.Primary, 1);
+    //add a new ActiveSecondary replica with id 2
+    await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 2);
+    //add a second ActiveSecondary replica with id 3
+    await replicaSet.AddReplicaAsync(ReplicaRole.ActiveSecondary, 3);
+    ```
 
 ## <a name="execute-service-requests"></a>执行服务请求
 可以使用便捷属性和查找在特定副本上执行服务请求。
@@ -142,4 +135,4 @@ public async Task TestServiceState_InMemoryState_PromoteActiveSecondary()
 ## <a name="next-steps"></a>后续步骤
 了解如何测试[服务间通信](service-fabric-testability-scenarios-service-communication.md)和[使用受控的混沌模拟故障](service-fabric-controlled-chaos.md)。
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

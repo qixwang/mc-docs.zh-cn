@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的 Web 应用（调用 Web API）- Microsoft 标识平台
+title: 从 Web 应用调用 Web API - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的 Web 应用（调用 Web API）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,17 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7515f39ae84c42287c0ebc5d23ec4a3c57b43891
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 852411e46a074ea7d8c95115fd5175c87ca6d177
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830911"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777032"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>调用 Web API 的 Web 应用 - 调用 Web API
 
@@ -42,7 +41,7 @@ ms.locfileid: "73830911"
 }
 ```
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);

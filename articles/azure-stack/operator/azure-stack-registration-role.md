@@ -1,6 +1,7 @@
 ---
-title: 如何为 Azure Stack 创建注册角色
-description: 如何创建自定义角色，以避免使用全局管理员身份进行注册。
+title: 为 Azure Stack 注册创建自定义角色
+titleSuffix: Azure Stack
+description: 了解如何创建自定义角色，以避免使用全局管理员身份注册 Azure Stack。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
@@ -12,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 06/10/2019
-ms.date: 07/29/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: cedd05fc6ce5242c057d2fae472e62a8dfa66066
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.openlocfilehash: 5364b19185e3c8867ced58c1653a58d9a45b5c91
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513427"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737810"
 ---
 # <a name="create-a-custom-role-for-azure-stack-registration"></a>为 Azure Stack 注册创建自定义角色
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!WARNING]
-> 这不是一种安全态势功能。 如果你想要实施约束来防止意外更改 Azure 订阅，可以使用此功能。 向某个用户委托此自定义角色的权限时，该用户有权编辑权限和提升权限。 请只将受信任的用户分配到自定义角色。
+> 这不是一种安全状况功能。 如果你想要实施约束来防止意外更改 Azure 订阅，可以使用此功能。 向某个用户委托此自定义角色的权限时，该用户有权编辑权限和提升权限。 请只将受信任的用户分配到自定义角色。
 
-在 Azure Stack 注册期间，必须使用 Azure Active Directory 帐户登录。 该帐户需要以下 Azure Active Directory 权限和 Azure 订阅权限：
+在 Azure Stack 注册期间，必须使用 Azure Active Directory (Azure AD) 帐户登录。 该帐户需要以下 Azure AD 权限和 Azure 订阅权限：
 
-* **Azure Active Directory 租户中的应用程序注册权限：** 管理员拥有应用程序注册权限。 用户的权限是租户中所有用户的全局设置。 若要查看或更改设置，请参阅[创建可访问资源的 Azure AD 应用程序和服务主体](/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+* **Azure AD 租户中的应用注册权限：** 管理员具有应用注册权限。 用户的权限是租户中所有用户的全局设置。 若要查看或更改设置，请参阅[创建可访问资源的 Azure AD 应用和服务主体](/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
 
-    “用户可以注册应用程序”设置必须设置为“是”才能让用户帐户注册 Azure Stack。   如果“应用注册”设置指定为“否”，则你无法使用用户帐户，而必须使用全局管理员帐户来注册 Azure Stack。 
+    “用户可以注册应用程序”设置必须设置为“是”才能让用户帐户注册 Azure Stack。   如果“应用注册”设置设为“否”  ，则不能使用用户帐户注册 Azure Stack，必须使用全局管理员帐户。
 
 * **一组足够高的 Azure 订阅权限：** 属于“所有者”角色的用户具有足够的权限。 对于其他帐户，可以通过分配自定义角色来分配权限集，如以下部分所述。
 
@@ -44,7 +45,7 @@ ms.locfileid: "68513427"
 
 若要创建自定义角色，必须拥有所有 `AssignableScopes` 的 `Microsoft.Authorization/roleDefinitions/write` 权限，例如[所有者](/role-based-access-control/built-in-roles#owner)或[用户访问权限管理员](/role-based-access-control/built-in-roles#user-access-administrator)。 使用以下 JSON 模板来简化自定义角色的创建。 该模板创建允许对 Azure Stack 注册进行必要读取和写入访问的自定义角色。
 
-1. 创建一个 JSON 文件。 例如 `C:\CustomRoles\registrationrole.json`
+1. 创建一个 JSON 文件。 例如，`C:\CustomRoles\registrationrole.json`。
 2. 将以下 JSON 添加到该文件。 将 `<SubscriptionID>` 替换为你的 Azure 订阅 ID。
 
     ```json
@@ -89,11 +90,11 @@ ms.locfileid: "68513427"
 
 1. 使用在 Azure 订阅中拥有足够权限的帐户登录，以委托权限 - 例如[所有者](/role-based-access-control/built-in-roles#owner)或[用户访问管理员](/role-based-access-control/built-in-roles#user-access-administrator)。
 2. 在“订阅”中，选择“访问控制(IAM)”>“添加角色分配”。  
-3. 在“角色”中，选择创建的自定义角色“Azure Stack 注册角色”。  
+3. 在“角色”  中，选择已创建的自定义角色：*Azure Stack 注册角色*。
 4. 选择要分配到该角色的用户。
 5. 选择“保存”，将选定的用户分配到该角色。 
 
-    ![选择要分配到角色的用户](media/azure-stack-registration-role/assign-role.png)
+    ![在 Azure 门户中选择要分配到自定义角色的用户](media/azure-stack-registration-role/assign-role.png)
 
 有关使用自定义角色的详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](/role-based-access-control/role-assignments-portal)。
 

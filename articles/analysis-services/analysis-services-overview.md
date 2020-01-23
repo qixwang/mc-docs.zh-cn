@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: overview
 origin.date: 10/30/2019
-ms.date: 11/25/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 73965eb6e7a4460f3e47fc12e1e5cae584e1a702
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: ac008c9cecd9273f35e9b981e4c9893435434a84
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203628"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165472"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -37,7 +37,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 <!--MOONCAKE Not Available on **Developer** -->
 
-可在基本层  和标准层  中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、QPU 数和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
+可在基本层  和标准层  中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、QPU 数和内存大小而异。 创建服务器时，会在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
 
 <!--MOONCAKE Not Available on ### Developer tier-->
 
@@ -47,7 +47,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
-|B1    |    40     |    10     |
+|B1    |    40     |    10 个     |
 |B2    |    80     |    16     |
 
 ### <a name="standard-tier"></a>标准层
@@ -58,7 +58,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
-|S0    |    40     |    10     |
+|S0    |    40     |    10 个     |
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
@@ -82,8 +82,8 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|---------|
-|中国北部     |    B1、B2、S0、S1、S2、S4    | 1 |
-|中国东部 2     |    B1、B2、S0、S1、S2、S4    | 7 |
+|中国北部     |    B1, B2, S0, S1, S2, S4    | 1 |
+|中国东部 2     |    B1, B2, S0, S1, S2, S4    | 7 |
 |中国东部 2     |    S8v2、S9v2    | 3 |
 
 <!--MOONCAKE: Available on China North regions-->
@@ -127,11 +127,11 @@ Azure Analysis Services 中的表格模型支持各种数据源：从简单的�
 
 <!-- Not Available on Azure Data Lake Store-->
 
-## <a name="compatibility-level"></a>兼容性级别
+## <a name="compatibility-level"></a>兼容级别
 
 “兼容性级别”是指 Analysis Services 引擎中特定于发布的行为。 Azure Analysis Services 支持 1200 和更高兼容级别的表格模型。 若要了解详细信息，请参阅[表格模型的兼容性级别](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)。
 
-## <a name="your-data-is-secure"></a>你的数据是安全的
+## <a name="your-data-is-secure"></a>数据是安全的
 
 Azure Analysis Services 为多个级别的敏感数据提供安全性。
 
@@ -143,11 +143,11 @@ Azure Analysis Services 为多个级别的敏感数据提供安全性。
 
 Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定的 IP 地址除外。 默认情况下，没有为新服务器启用防火墙保护。 建议在创建服务器以后立即通过服务器预配脚本或门户启用防火墙保护并配置规则。 配置规则，按个人客户端 IP 或范围指定允许的 IP 地址。 也可允许或阻止 Power BI（服务）连接。 使用门户或 PowerShell 配置防火墙和规则。 有关详细信息，请参阅[配置服务器防火墙](analysis-services-qs-firewall.md)。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
-### <a name="data-security"></a>数据安全
+### <a name="data-security"></a>数据安全性
 
 Azure Analysis Services 使用 Azure Blob 存储来持久保留 Analysis Services 数据库的存储和元数据。 使用 [Azure Blob 服务器端加密 (SSE)](../storage/common/storage-service-encryption.md) 加密 Blob 中的数据文件。 使用“直接查询”模式时，仅存储元数据。 查询时通过加密的协议从数据源访问实际数据。
 
@@ -176,13 +176,13 @@ Analysis Services 使用[基于角色的授权](https://docs.microsoft.com/analy
 Azure Analysis Services 受 [Microsoft 联机服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)和 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)的约束。
 若要详细了解 Azure 安全性，请参阅 [Azure 信任中心](https://www.trustcenter.cn/cloudservices/azure.html)。
 
-## <a name="use-the-tools-you-already-know"></a>使用已经熟悉的工具
+## <a name="use-the-tools-you-already-know"></a>使用熟悉的工具
 
 ![BI 开发人员工具](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
 ### <a name="visual-studio"></a>Visual Studio
 
-使用带有 Analysis Services 项目的 Visual Studio 开发和部署模型。 Analysis Services 项目扩展包括可帮助你快速入门的模板和向导。 Visual Studio 中的模型创作环境现在包括现代 Get Data 数据源查询和混合功能，可用于创建表格 1400 及更高模型。 如果你熟悉 Power BI Desktop 和 Excel 2016 中的“获取数据”功能，则已知道创建高度自定义的数据源查询很容易。 
+使用带有 Analysis Services 项目的 Visual Studio 开发和部署模型。 Analysis Services 项目扩展包括可帮助你快速入门的模板和向导。 Visual Studio 中的模型创作环境现在包括现代 Get Data 数据源查询和混合功能，可用于创建表格 1400 及更高模型。 如果熟悉 Power BI Desktop 和 Excel 2016 中的“获取数据”功能，则已知道创建高度自定义的数据源查询很容易。 
 
 Azure Analysis Services 项目作为免费的可安装 VSIX 包提供。 [从市场下载](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)。 此扩展适用于任何版本的 Visual Studio 2017 及更高版本，包括免费的 Community 版本。
 
@@ -206,10 +206,9 @@ Azure Analysis Services 项目作为免费的可安装 VSIX 包提供。 [从市
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
-Azure Analysis Services 与 Azure 指标集成，提供多种多样的资源特定指标来帮助监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用 [Azure 资源诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://www.azure.cn/home/features/storage/)，将其流式传输到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)，并将其导出到 [Azure](https://www.azure.cn/) 服务 [Azure Monitor 日志](https://www.azure.cn/home/features/monitor/)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
+Azure Analysis Services 与 Azure 指标集成，提供多种多样的资源特定指标来帮助监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用 [Azure 资源诊断日志](../azure-monitor/platform/platform-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://www.azure.cn/home/features/storage/)，将其流式传输到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)，并将其导出到 [Azure](https://www.azure.cn/) 服务 [Azure Monitor 日志](https://www.azure.cn/home/features/monitor/)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
 
 <!--MOONCAKE: CORRECT ON  [Azure Monitor logs](https://www.azure.cn/zh-cn/home/features/monitor/)-->
-<!--Not Avaialble on  [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-->
 
 Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services)。 DMV 基于 SQL 语法，能够与返回元数据和监视有关服务器实例的信息的架构行集相对接。
 
@@ -236,7 +235,7 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.m
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [注册 Azure 免费试用帐户](https://www.azure.cn/pricing/1rmb-trial-full)   
+> [注册 Azure 1 元人民币的试用订阅](https://www.azure.cn/pricing/1rmb-trial-full)   
 
 > [!div class="nextstepaction"]
 > [快速入门：创建服务器 - 门户](analysis-services-create-server.md)   

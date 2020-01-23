@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 平台级别监视 | Azure
+title: Azure Service Fabric 平台级别监视
 description: 了解用于监视和诊断 Azure Service Fabric 群集的平台级别事件和日志。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/21/2018
-ms.date: 04/29/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cff254f3da704fa2cc532d13718ba14e18557c08
-ms.sourcegitcommit: 1ea0f453e7dcaef67f3c52747778c7f3b82e3e38
+ms.openlocfilehash: 5e827667a3f005eb49b7c2bd8fcb09d0746b37b5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277534"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741901"
 ---
 # <a name="monitoring-the-cluster"></a>监视群集
 

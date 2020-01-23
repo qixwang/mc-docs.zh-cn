@@ -12,19 +12,19 @@ origin.date: 10/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 342fc9e666f20085bc195245db1c7b1dc87387e8
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 07a34a71db6c0a349a6b31350a85b263e56038e2
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631718"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123140"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [将源文件上传到 Azure Blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)

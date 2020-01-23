@@ -1,26 +1,16 @@
 ---
-title: 在 Linux 上创建 Azure Service Fabric Reliable Actors Java 应用程序 | Azure
+title: 在 Linux 上创建 Azure Service Fabric Reliable Actors Java 应用程序
 description: 了解如何在五分钟内创建并部署一个 Java Service Fabric Reliable Actors 应用程序。
-services: service-fabric
-documentationcenter: java
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 06/18/2018
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5984b088fdf0a7cca204368b1a424f4cb538f642
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: ee8fb052261c4d3993204e524cd9999760dc6d36
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174049"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741887"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
 > [!div class="op_single_selector"]
@@ -31,7 +21,7 @@ ms.locfileid: "70174049"
 
 借助本快速入门，只需几分钟即可在 Linux 开发环境中创建第一个 Azure Service Fabric Java 应用程序。  完成后，即拥有一个在本地开发群集上运行的简单 Java 单一服务应用程序。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 开始之前，请安装 Service Fabric SDK、Service Fabric CLI、Yeoman，设置 Java 开发环境，并在 [Linux 开发环境](service-fabric-get-started-linux.md)中设置开发群集。 如果使用 Mac OS X，则可[使用 Docker 在 Mac 上设置开发环境](service-fabric-get-started-mac.md)。
 
 另请安装 [Service Fabric CLI](service-fabric-cli.md)。
@@ -39,9 +29,9 @@ ms.locfileid: "70174049"
 ### <a name="install-and-set-up-the-generators-for-java"></a>为 Java 安装和设置生成器
 Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模板生成器从终端创建 Service Fabric Java 应用程序。  如果尚未安装 Yeoman，请参阅 [Service Fabric 入门（使用 Linux）](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)，获取有关如何设置 Yeoman 的说明。 运行以下命令，安装用于 Java 的 Service Fabric Yeoman 模板生成器。
 
-  ```bash
-  npm install -g generator-azuresfjava
-  ```
+```bash
+npm install -g generator-azuresfjava
+```
 
 ## <a name="basic-concepts"></a>基本概念
 若要开始使用 Reliable Actors，只需了解几个基本概念：
@@ -64,7 +54,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 Service Fabric 应用程序包含一个或多个服务，每个服务都在提供应用程序功能时具有特定角色。 有了在上一部分安装的生成器，就可以轻松地创建第一个服务，并在以后添加更多服务。  此外，还可使用适用于 Eclipse 的插件创建、生成和部署 Service Fabric Java 应用程序。 请参阅[使用 Eclipse 创建和部署第一个 Java 应用程序](service-fabric-get-started-eclipse.md)。 对于本快速入门，使用 Yeoman 创建具有单项服务的应用程序，该服务用于存储和获取获取计数器值。
 
 1. 在终端中，键入 ``yo azuresfjava``。
-2. 命名应用程序。
+2. 为应用程序命名。
 3. 选择第一个服务的类型并将其命名。 对于本教程，请选择“Reliable Actor 服务”。 有关其他服务类型的详细信息，请参阅 [Service Fabric 编程模型概述](service-fabric-choose-framework.md)。
     ![适用于 Java 的 Service Fabric Yeoman 生成器][sf-yeoman]
 
@@ -244,7 +234,7 @@ gradle
     watch -n 1 ./testclient.sh
     ```
 
-2. 在 Service Fabric Explorer 中，找到托管角色服务的主要副本的节点。 在以下屏幕截图中，该节点是节点 3。 主要服务副本处理读写操作。  然后将服务状态更改向外复制到次要副本，该副本在下方屏幕截图的节点 0 和 1 上运行。
+2. 在 Service Fabric Explorer 中，找到托管角色服务的主要副本的节点。 在以下屏幕截图中，该节点是节点 3。 主要服务副本处理读写操作。  然后将服务状态更改向外复制到次要副本，该副本在下方屏幕截图中的节点 0 和节点 1 上运行。
 
     ![在 Service Fabric Explorer 中查找主副本][sfx-primary]
 

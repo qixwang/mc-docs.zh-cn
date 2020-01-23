@@ -1,35 +1,37 @@
 ---
-title: 为 Stretch Database TSQL 启用透明数据加密 - Azure | Azure
+title: 为 Stretch Database 启用透明数据加密 (T-SQL)
 description: 为 Azure TSQL 上的 SQL Server Stretch Database 启用透明数据加密 (TDE)
 services: sql-server-stretch-database
 documentationcenter: ''
-author: rockboyfor
-manager: jhubbard
-editor: ''
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 01/23/2017
-ms.date: 03/24/2017
+ms.date: 01/19/2020
+author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 5237da94801901707c8d9d76b718c83318e10a73
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.reviewer: jroth
+manager: digimobile
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e086408da425ea2d530fe9a292f47835989d1a8e
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58627326"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270023"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE) (Transact-SQL)
 > [!div class="op_single_selector"]
->- [Azure 门户](./sql-server-stretch-database-encryption-tde.md)
->- [TSQL](./sql-server-stretch-database-tde-tsql.md)
+> * [Azure 门户](sql-server-stretch-database-encryption-tde.md)
+> * [TSQL](sql-server-stretch-database-tde-tsql.md)
+>
+>
 
 透明数据加密 (TDE) 无需更改应用程序，即可对静态的数据库、相关备份和事务日志文件进行实时加密和解密，避免恶意活动造成的威胁。
 
-TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 Azure 服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 有关 TDE 的一般描述，请参阅[透明数据加密 (TDE)]。
+TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 Azure 服务器都是唯一的。 Azure 至少每隔 90 天自动轮换这些证书。 有关 TDE 的一般描述，请参阅[透明数据加密 (TDE)]。
 
 ## <a name="enabling-encryption"></a>启用加密
 
@@ -71,8 +73,11 @@ TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的�
 结果 ```1``` 表示数据库已加密，```0``` 表示数据库未加密。
 
 <!--Anchors-->
-[透明数据加密 (TDE)]: https://msdn.microsoft.com/zh-cn/library/bb934049.aspx
+
+[透明数据加密 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 <!--Image references-->
 
 <!--Link references-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

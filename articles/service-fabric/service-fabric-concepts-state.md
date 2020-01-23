@@ -1,29 +1,20 @@
 ---
-title: 管理 Azure Service Fabric 服务中的状态 | Azure
+title: 管理 Azure Service Fabric 服务中的状态
 description: 了解如何定义和管理 Service Fabric 服务中的服务状态。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 10/15/2018
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4a5f9d60d43f6ec524f5b4b27d9ed25815d1f3ad
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 8bf9b1a3a0c826fdafe8a0427322f8ffef86f8a5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652418"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742402"
 ---
 # <a name="service-state"></a>服务状态
-服务状态指的是服务正常运行所需的内存中数据或磁盘上数据。 这包括（例如）服务为正常工作而读取和写入的数据结构和成员变量等。 这可能还包括存储在磁盘上的文件或其他资源，具体取决于服务的体系结构。 例如，数据库用于存储数据和事务日志的文件。
+服务状态指的是服务正常运行所需的内存中数据或磁盘上数据  。 这包括（例如）服务为正常工作而读取和写入的数据结构和成员变量等。 这可能还包括存储在磁盘上的文件或其他资源，具体取决于服务的体系结构。 例如，数据库用于存储数据和事务日志的文件。
 
 例如，请设想一个计算器服务。 基本计算器服务需要两个数字并返回总和。 执行此计算不涉及成员变量或其他信息。
 

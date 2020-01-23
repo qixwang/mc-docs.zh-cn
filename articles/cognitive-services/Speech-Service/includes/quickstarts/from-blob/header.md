@@ -12,12 +12,12 @@ origin.date: 10/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f0a4735ca0d68a0292d126a91f0b974b9e58f985
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 08d2816974d9dc3d8670042c6e688ccf34b66b1a
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631675"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123138"
 ---
 在本快速入门中，将使用 REST API 在批处理过程中识别文件中的语音。 批处理过程无需任何用户交互即可执行语音听录。 它为你提供了一个简单的编程模型，而无需管理并发性、自定义语音模型或其他详细信息。 它需要高级控制选项，同时可以有效利用 Azure 语音服务资源。
 

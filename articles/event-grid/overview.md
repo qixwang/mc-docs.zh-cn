@@ -7,15 +7,15 @@ manager: timlt
 ms.service: event-grid
 ms.topic: overview
 origin.date: 10/22/2019
-ms.date: 12/23/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
 ms.custom: seodec18
-ms.openlocfilehash: 7be90fbb20774f0aacfd0ba931d8cdae96d07534
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8892a7736454f2094b71b7ebb2d4b488775272cd
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335779"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859723"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -83,7 +83,7 @@ ms.locfileid: "75335779"
 *  按事件支付 - 仅支付事件网格的使用量。
 *  高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
 *  内置事件 - 使用资源定义的内置事件快速启动和运行。
-*  自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
+* **自定义事件** - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
 
 有关事件网格、事件中心和服务总线之间的比较，请参阅[在传送消息的 Azure 服务之间进行选择](compare-messaging-services.md)。
 

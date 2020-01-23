@@ -1,26 +1,16 @@
 ---
-title: Service Fabric 应用升级教程 | Azure
+title: Service Fabric 应用升级教程
 description: 本文逐步指导使用 Visual Studio 部署 Service Fabric 应用程序、更改代码以及推出升级版本。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/23/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: 89b90761361c76794abaecc3b3db7fef66595a05
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: d0ff548db5b336557f875e3aa3d7079854e400bc
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336335"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742464"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 > [!div class="op_single_selector"]

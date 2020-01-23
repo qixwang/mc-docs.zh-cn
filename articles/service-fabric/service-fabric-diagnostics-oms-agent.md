@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric - 使用 Azure Monitor 日志进行性能监视 | Azure
+title: Azure Service Fabric - 使用 Azure Monitor 日志进行性能监视
 description: 了解如何设置 Log Analytics 代理以监视 Azure Service Fabric 群集的容器和性能计数器。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 04/16/2018
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8d828cfbec6479e9a47c8ac4d77ad82319456b43
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 271904e149ab95099a7a511de3a1c57aded15a7b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348569"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742419"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
 
@@ -101,7 +92,7 @@ ms.locfileid: "75348569"
 
 10. 单击“容器指标”图形可了解更多详细信息。 还可以使用 Kusto 查询语言，像查询群集事件一样查询性能计数器数据，以及基于节点、性能计数器名称和值进行筛选。
 
-![Log Analytics 性能计数器查询](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
+    ![Log Analytics 性能计数器查询](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 

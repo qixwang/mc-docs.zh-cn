@@ -1,26 +1,16 @@
 ---
-title: 管理 Azure Service Fabric 群集中的证书 | Azure
+title: 管理 Azure Service Fabric 群集中的证书
 description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更新证书和从群集中删除证书。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/13/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: aa2736e41254ae8c451bd26b944677ed2dd7e345
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 33a3ef1c16b50091d1a55ce6404b9435724ec2e5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335160"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742324"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -270,7 +260,7 @@ Get-ServiceFabricClusterHealth
 
 除群集证书外，还可添加客户端证书来执行 Service Fabric 群集上的管理操作。
 
-可以添加两种类型的客户端证书 - 管理证书或只读证书。 这些证书稍后可用于在群集上控制对管理员操作和查询操作的访问。 默认情况下，群集证书会添加到允许的管理证书列表。
+可以添加两种类型的客户端证书 - 管理证书或只读证书。 然后，可以使用这些证书在群集上控制对管理操作和查询操作的访问。 默认情况下，群集证书会添加到允许的管理证书列表。
 
 可以指定任意数量的客户端证书。 每次执行添加/删除操作都会导致对 Service Fabric 群集的配置进行更新
 

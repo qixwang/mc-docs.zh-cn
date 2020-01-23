@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6daea3cc59417022ebe2429fd8cca56e79e227bb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c420abad615b04aa7b4579527660290afcf8b2b5
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335380"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776904"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -98,7 +98,10 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 
 [`offline_access` 范围](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) 可让应用长时间代表用户访问资源。 在同意页上，此范围将显示为“维持对已授予访问权限的数据的访问”权限。 用户批准 `offline_access` 范围后，应用可接收来自 Microsoft 标识平台令牌终结点的刷新令牌。 刷新令牌的生存期较长。 旧的访问令牌过期时，应用可以获取新的访问令牌。
 
-如果应用未显式请求 `offline_access` 范围，则收不到刷新令牌。 这意味着，在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换授权代码时，只能从 `/token` 终结点接收访问令牌。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的授权代码。 此重定向期间，用户可能需要再次输入其凭据或重新同意权限，具体取决于应用类型。 当服务器自动请求 `offline_access` 范围时，客户端必须继续请求它才能收到刷新令牌。
+> [!NOTE]
+> 目前，此权限会出现在所有同意屏幕上，即使对于不提供刷新令牌的流（[隐式流](v2-oauth2-implicit-grant-flow.md)）也是如此。  这是为了涵盖客户端可以在隐式流中开始的场景，然后移至需要刷新令牌的代码流的场景。
+
+在 Microsoft 标识平台上（向 v2.0 终结点发出的请求），应用程序必须显式请求 `offline_access` 范围才能接收刷新令牌。 这意味着，在 [OAuth 2.0 授权代码流](active-directory-v2-protocols.md)中兑换授权代码时，只能从 `/token` 终结点接收访问令牌。 访问令牌在短期内有效。 访问令牌的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的授权代码。 此重定向期间，用户可能需要再次输入其凭据或重新同意权限，具体取决于应用类型。 
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [Microsoft 标识平台协议参考](active-directory-v2-protocols.md)。
 
@@ -202,7 +205,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 | `tenant` | 必须 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `common` 以一般方式引用，如示例所示。 |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。 |
 | `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
-| `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
+| `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 |`scope`        | 必须      | 定义应用程序请求的权限集。 这可以是静态范围（使用 /.default）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 | 
 
 

@@ -3,14 +3,14 @@ title: 测试 Azure Functions
 description: 为 Visual Studio 中的 C# 函数和 VS Code 中的 JavaScript 函数创建自动测试
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: dca2ee38f48003c3907243a47da970e64dcadd07
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: d69bad875afed2f9abe7795c0246356158fc1f72
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885036"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116829"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "74885036"
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
 4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”   。 
-5. 使用 Nuget 从测试应用 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 添加引用
+5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用
 6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
 ### <a name="create-test-classes"></a>创建测试类
@@ -47,7 +47,7 @@ ms.locfileid: "74885036"
 
 每个函数采用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 的实例来处理消息日志记录。 有些测试不记录消息，或者与日志记录的实现方式无关。 还有一些测试需要评估记录的消息，以确定是否通过了测试。
 
-`ListLogger` 类用于实现 `ILogger` 接口并保存在消息的内部列表中，以便在测试期间用于评估。
+`ListLogger` 类实现了 `ILogger` 接口，并保存了一个内部消息列表，以供测试期间进行评估。
 
 **右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **NullScope.cs**，然后输入以下代码：  
 
@@ -377,4 +377,4 @@ npm test
 - [Azure Functions 错误处理](./functions-bindings-error-pages.md)
 - [Azure 函数事件网格触发器本地调试](./functions-debug-event-grid-trigger-local.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->

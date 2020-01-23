@@ -1,24 +1,17 @@
 ---
 title: 在 .NET Azure Functions 中使用依赖项注入
 description: 了解如何使用依赖项注入在 .NET 函数中注册和使用服务
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: azure functions, 函数, 无服务器体系结构
-ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
-origin.date: 09/05/2019
-ms.date: 11/11/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
 ms.reviewer: jehollan
-ms.openlocfilehash: 2bd0e3f37115575128dc3907a043bb0f623858cd
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: caf5a17ecb7561b9e50d932f52c6885b8221a625
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934250"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116870"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -28,7 +21,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及�
 
 - 对依赖项注入的支持始于 Azure Functions 2.x。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须先安装以下 NuGet 包，然后才能使用依赖项注入：
 
@@ -201,4 +194,4 @@ public class HttpTrigger
 
 - [适用于函数的最佳做法](functions-best-practices.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->

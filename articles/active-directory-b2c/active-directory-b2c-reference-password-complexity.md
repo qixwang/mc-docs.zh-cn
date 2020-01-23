@@ -1,5 +1,6 @@
 ---
-title: 密码复杂性 - Azure Active Directory B2C | Microsoft Docs
+title: 配置密码复杂性要求
+titleSuffix: Azure AD B2C
 description: 如何配置由 Azure Active Directory B2C 中的使用者提供的密码复杂性要求。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 02/11/2019
-ms.date: 10/23/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: dde0cd5a043763f72a4b29d477c1e08fb2afc67a
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: ceff6e5775d249b4b0517995512fadc16f8c1dba
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847052"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623565"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -36,9 +36,9 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择“用户流”  。
+2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+3. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+4. 选择“用户流(策略)”  。
 2. 选择一个用户流，然后单击“属性”  。
 3. 在“密码复杂性”  下，将此用户流的密码复杂性更改为“简单”  、“强”  或“自定义”  。
 

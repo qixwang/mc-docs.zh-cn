@@ -3,14 +3,14 @@ title: 使用 GitHub Actions 在 Azure Functions 中进行代码更新
 description: 了解如何使用 GitHub Actions 来定义一个在 GitHub 中生成和部署 Azure Functions 项目的工作流。
 author: ahmedelnably
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 01/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: b29e2dc827a7b2f80033778d064b592d63ff0fc1
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 88f6f637f141f39395d544d4be4f7b1e64c51c6d
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624136"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116868"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
@@ -54,11 +54,14 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-1. 在 [GitHub](https://github.com) 中浏览存储库，选择“设置”   >   “机密” >   “添加新机密”。
+1. 在 [GitHub](https://github.com) 中浏览到存储库，选择“设置”   >   “机密” >   “添加新机密”。
 
    ![添加机密](./media/functions-how-to-github-actions/add-secret.png)
 
-1. 使用 `AZURE_CREDENTIALS` 作为**名称**，复制的命令输出作为**值**，然后选择“添加机密”。  如果使用发布配置文件，请使用 `SCM_CREDENTIALS` 作为**名称**，文件内容作为**值**。
+1. 添加新机密。
+
+   * 如果使用的是通过使用 Azure CLI 创建的服务主体，请使用 `AZURE_CREDENTIALS` 作为“名称”  。 然后，将复制的 JSON 对象输出粘贴为“值”  ，并选择“添加密钥”  。
+   * 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为“名称”  。 然后使用发布配置文件的文件内容  作为“值”，并选择“添加密钥”  。
 
 GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 

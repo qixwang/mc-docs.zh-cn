@@ -5,18 +5,18 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 03/21/2018
-ms.date: 03/04/2019
+origin.date: 11/04/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 1e8a33cf0869608b63221ca97648e4d9611652bd
-ms.sourcegitcommit: 15a80d044339dab8bce43eb7be110ba01f630056
+ms.openlocfilehash: 0575f84501acb25ab6f13da3649225641a6c79bb
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69578664"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939766"
 ---
-对于当前 SKU（VpnGw1、VpnGw2 和 VPNGW3），如果希望调整网关 SKU 大小以升级到更强大的 SKU，可以使用 `Resize-AzVirtualNetworkGateway` PowerShell cmdlet。 也可以使用此 cmdlet 降级网关 SKU 大小。 如果使用的是基本网关 SKU，[请改用这些说明](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize)来调整网关大小。
+可以使用 `Resize-AzVirtualNetworkGateway` PowerShell cmdlet 升级或降级第 1 代或第 2 代 SKU（除基本 SKU 外，所有 VpnGw SKU 都可以调整大小）。 如果使用的是基本网关 SKU，[请改用这些说明](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize)来调整网关大小。
 
 以下 PowerShell 示例演示如何将网关 SKU 的大小调整为 VpnGw2。
 

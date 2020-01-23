@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/11/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 01e4930c39c4059ef2b2f75e11082891ca9ea353
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 8dba6872a3cfa510738e028fec1eb1f4f7dee249
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838886"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858536"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -28,7 +28,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 > * 发现数据库并设置备份。
 > * 为数据库设置自动保护。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
@@ -235,11 +235,12 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![编辑日志备份策略](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”。  
-    * 默认已禁用压缩。
-    * Azure 备份在后端使用 SQL 本机备份压缩。
+13. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”   。 默认已禁用此选项。 如果启用，SQL Server 会向 VDI 发送压缩的备份流。  请注意，Azure 备份将根据此控件的值，使用 COMPRESSION/NO_COMPRESSION 子句替代实例级别的默认值。
 
 14. 完成备份策略的编辑后，选择“确定”。 
+
+> [!NOTE]
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会多保留一段时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异备份和 2 小时日志备份。 这些备份都保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份会保留到 12 月 22 日。
 
 ## <a name="enable-auto-protection"></a>启用自动保护  
 
@@ -266,5 +267,5 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 了解如何：
 
-- [还原已备份的 SQL Server 数据库](restore-sql-database-azure-vm.md)
-- [管理已备份的 SQL Server 数据库](manage-monitor-sql-database-backup.md)
+* [还原已备份的 SQL Server 数据库](restore-sql-database-azure-vm.md)
+* [管理已备份的 SQL Server 数据库](manage-monitor-sql-database-backup.md)

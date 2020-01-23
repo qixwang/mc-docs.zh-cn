@@ -1,23 +1,22 @@
 ---
-title: Azure Data Lake Storage Gen2 Hive 性能优化指南 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 Hive 性能优化指南
-services: storage
+title: 调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Azure Data Lake Storage Gen2 Hive 性能优化指南。
 author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 05/27/2019
+origin.date: 11/18/2019
+ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 540d1638e1f0bda402d149d17b8c0e464d346182
-ms.sourcegitcommit: 623e8f0d52c42d236ad2a0136d5aebd6528dbee3
+ms.openlocfilehash: e4277cd92baab76d2f6cf1e1462ba1bb1b03ea2b
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67236046"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623602"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Hive、HDInsight 和 Azure Data Lake Storage Gen2
 
 已设置默认设置，以便针对许多不同用例提供良好性能。  对于 I/O 密集型查询，可以优化 Hive 以获取更好的 Azure Data Lake Storage Gen2 性能。  
 

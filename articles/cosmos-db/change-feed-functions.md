@@ -1,19 +1,19 @@
 ---
 title: 如何将 Azure Cosmos DB 更改源与 Azure Functions 配合使用
-description: 将 Azure Cosmos DB 更改源与 Azure Functions 配合使用
+description: 使用 Azure Functions 连接到 Azure Cosmos DB 更改源。 稍后，可以创建在发生每个新事件时触发的响应式 Azure Functions。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 10/28/2019
+origin.date: 12/03/2019
+ms.date: 01/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 33af9e197c78bb7e694dd513ceae5ad8b69b2945
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 31358a4cc0393c6647ffb53a4c548df5c8613c34
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970288"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270064"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
 

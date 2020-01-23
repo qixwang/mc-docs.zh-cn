@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2020
+ms.date: 01/16/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 0a0832bdfd982577482043ab8ec40a544df13cea
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3e95ac307e913d57601de5f80f3e0d3ab90b84ba
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624181"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116937"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 
@@ -111,6 +111,18 @@ $image = New-AzImageConfig -Location "ChinaNorth" -SourceVirtualMachineId $vm.ID
 New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
 ```
 
+## <a name="configure-the-network-security-group-rules"></a>配置网络安全组规则
+在创建规模集之前，需要配置关联的网络安全组规则，以允许访问 HTTP、RDP 和远程处理 
+
+```azurepowershell
+$rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
+
+$rule2 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+
+$rule3 = New-AzNetworkSecurityRuleConfig -Name remoting-rule -Description "Allow PS Remoting" -Access Allow -Protocol Tcp -Direction Inbound -Priority 120 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5985
+
+New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -Location "ChinaNorth" -SecurityRules $rule1,$rule2,$rule3
+```
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>从自定义 VM 映像创建规模集
 现在，请使用 [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 来创建规模集，前者使用 `-ImageName` 参数来定义在上一步创建的自定义 VM 映像。 若要将流量分配到单独的 VM 实例，则还要创建负载均衡器。 负载均衡器包含的规则可在 TCP 端口 80 上分配流量，并允许 TCP 端口 3389 上的远程桌面流量，以及 TCP 端口 5985 上的 PowerShell 远程流量。 出现提示时，请针对规模集中的 VM 实例提供自己的所需管理凭据：
@@ -122,6 +134,7 @@ New-AzVmss `
   -VMScaleSetName "myScaleSet" `
   -VirtualNetworkName "myVnet" `
   -SubnetName "mySubnet" `
+  -SecurityGroupName "myNSG"
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
   -UpgradePolicyMode "Automatic" `
@@ -168,4 +181,4 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [将应用程序部署到规模集](tutorial-install-apps-powershell.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: code update -->

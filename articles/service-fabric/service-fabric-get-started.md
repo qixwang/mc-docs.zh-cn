@@ -1,26 +1,17 @@
 ---
-title: 设置 Azure 微服务的 Windows 开发环境 | Azure
+title: 设置 Azure 微服务的 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 11/18/2019
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6e0eaef7e3bd9108bad6e5ee40ae0b970a218bf2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 18f8ca9a2a2b764d9c2e2bf24d6f2ec55594d82a
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336193"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742373"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -34,7 +25,7 @@ ms.locfileid: "75336193"
 
 <!-- MOONCAKE: Not Available on [Azure Service Fabric applications][1]-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 

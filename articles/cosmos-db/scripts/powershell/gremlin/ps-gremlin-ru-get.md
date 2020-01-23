@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB 获取吞吐量（RU/秒）- Gremlin API
+title: 用于获取吞吐量（RU/秒）的 PowerShell 脚本 - Azure Cosmos DB Gremlin API
 description: Azure PowerShell 脚本 - Azure Cosmos DB 获取吞吐量（RU/秒）- Gremlin API
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 origin.date: 07/03/2019
-ms.date: 10/28/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8de028a5399de5f9010e2f5c5ce1db0104160135
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 5269bcf0634d9d3a85db0f9acdf5c846f8a3bf01
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913274"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270094"
 ---
 # <a name="get-throughput-rus-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>获取 Azure Cosmos DB 的数据库或图的吞吐量（RU/秒）- Gremlin API
 

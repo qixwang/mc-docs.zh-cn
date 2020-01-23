@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 08/09/2018
 ms.date: 06/11/2019
-ms.openlocfilehash: 0f872f5c1136d2d8f57b179f65d4279265679a3c
-ms.sourcegitcommit: 3702f1f85e102c56f43d80049205b2943895c8ce
+ms.openlocfilehash: 2d27b6ee93968a133a450ae2ce6dddc5c47e0974
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68969602"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75857104"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>停止或删除 Azure 流分析作业
 
@@ -36,6 +36,7 @@ ms.locfileid: "68969602"
 
    ![停止 Azure 流分析作业](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
+
 ## <a name="delete-a-job-in-azure-portal"></a>删除 Azure 门户中的作业
 
 >[!WARNING] 
@@ -48,6 +49,7 @@ ms.locfileid: "68969602"
 3. 在流分析作业页上，选择“删除”  以删除作业。 
 
    ![删除 Azure 流分析作业](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
+
 
 ## <a name="stop-or-delete-a-job-using-powershell"></a>使用 PowerShell 停止或删除作业
 

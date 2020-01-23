@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 52adaf05282c33e21f238ba2b7771eb2555c43ee
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/17/2019
+ms.date: 01/17/2020
+ms.openlocfilehash: 22f530e93ff38bdf1ecc5e04b761fcee4a0ff66e
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336534"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123311"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 
@@ -76,7 +76,7 @@ ms.locfileid: "75336534"
 + 将所有索引器计划为在同一时间运行。
 
 > [!NOTE]
-> Azure 认知搜索不支持将副本或分区专用于特定的工作负荷。 重度并发索引的风险是使系统过载，导致查询性能下降。 如果创建了测试环境，请先在该环境中实施并行索引，以了解利弊。
+> 在 Azure 认知搜索中，不能将单个副本或分区分配给索引或查询处理。 系统确定如何使用资源。 若要了解对查询性能的影响，可以先在测试环境中尝试并行索引，然后再将其投入生产。  
 
 ### <a name="how-to-configure-parallel-indexing"></a>如何配置并行索引编制
 
@@ -89,7 +89,6 @@ ms.locfileid: "75336534"
 3. 在 Azure 认知搜索索引器可以访问的级别，将数据分配到多个容器。 这可能是 Azure SQL 数据库中的多个表、Azure Blob 存储中的多个容器，或多个集合。 为每个表或容器定义一个数据源对象。
 
 4. 创建并计划要并行运行的多个索引器：
-
 
    + 假设某个服务包含六个副本。 配置六个索引器（每个索引器映射到包含 1/6 数据集的数据源），以便对整个数据集进行 6 向拆分。 
 

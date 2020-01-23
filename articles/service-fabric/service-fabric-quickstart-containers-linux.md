@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 Linux 容器应用 | Azure
+title: 在 Azure 中的 Service Fabric 上创建 Linux 容器应用
 description: 在此快速入门中，将使用你的应用程序生成 Docker 映像、将映像推送到容器注册表，然后将容器部署到 Service Fabric 群集。
-services: service-fabric
-documentationcenter: linux
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/22/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 2dd1b683455935e82d304be8000305c937a9c30a
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: c624ccb6e648d4ef0e37cc1a33698175c9d13b3e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174238"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742481"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入门：将 Linux 容器部署到 Service Fabric
 
@@ -31,7 +21,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ![Voting 应用网页][quickstartpic]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门教程，需先执行以下操作：
 
@@ -196,9 +186,12 @@ az group delete --name $ResourceGroupName
 - 在 Mac 上：使用 Keychain 应用。
 - 在 Ubuntu 上：按照查看证书时所使用的步骤删除此证书。
 
-<!--Pending on ## Next steps-->
+## <a name="next-steps"></a>后续步骤
 
-<!--Pending on [Create a Linux container app](./service-fabric-tutorial-create-container-images.md)-->
+在本快速入门中，你已将 Linux 容器应用程序部署到 Azure 中的 Service Fabric 群集，在应用程序上执行了故障转移，并在群集中缩放了应用程序。 若要详细了解如何在 Service Fabric 中使用 Linux 容器，请继续学习适用于 Linux 容器应用的教程。
+
+> [!div class="nextstepaction"]
+> [创建 Linux 容器应用](./service-fabric-tutorial-create-container-images.md)
 
 [sfx]: ./media/service-fabric-quickstart-containers-linux/containersquickstartappinstance.png
 [quickstartpic]: ./media/service-fabric-quickstart-containers-linux/votingapp.png
@@ -206,4 +199,4 @@ az group delete --name $ResourceGroupName
 [containersquickstartscale]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscale.png
 [containersquickstartscaledone]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscaledone.png
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

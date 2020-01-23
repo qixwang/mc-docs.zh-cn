@@ -13,15 +13,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 05/16/2018
-ms.date: 01/14/2019
+origin.date: 12/12/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0fc1a376ec2f709bfa8d72ccf0130c5884650430
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: feabb11ca51c33fe1c3447a296f160d974f1fd79
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845260"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630859"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 包含的 MapReduce 示例
 
@@ -37,34 +37,34 @@ ms.locfileid: "67845260"
 
 ## <a name="the-mapreduce-examples"></a>MapReduce 示例
 
-**位置**：示例位于 `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` 处的 HDInsight 群集上。
+示例位于 `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` 处的 HDInsight 群集上。 这些示例的源代码包含在 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` 处的 HDInsight 群集上。
 
-**内容**：下面的示例都包含在该存档文件中：
+下面的示例都包含在该存档文件中：
 
-* `aggregatewordcount`：一种基于聚合的 MapReduce 程序，用于计算输入文件中的单词数。
-* `aggregatewordhist`：一种基于聚合的 MapReduce 程序，用于计算输入文件中单词的直方图。
-* `bbp`：一种 MapReduce 程序，使用 Bailey-Borwein-Plouffe 来计算 Pi 的精确位数。
-* `dbcount`：一个作业示例，用于计算存储在数据库中的 pageview 日志数。
-* `distbbp`：一种 MapReduce 程序，使用 BBP 类型的公式来计算 Pi 的精确位数。
-* `grep`：一种 MapReduce 程序，用于计算输入中某个正则表达式的匹配数。
-* `join`：一种作业，可以将经过排序且等分的数据集联接起来。
-* `multifilewc`：一种作业，可计算多个文件中的单词数。
-* `pentomino`：一种 MapReduce 平铺排列程序，用于查找五格拼板问题的解决方案。
-* `pi`：一种 MapReduce 程序，可使用拟蒙特卡罗法估算 Pi 值。
-* `randomtextwriter`：一种 MapReduce 程序，可以为每个节点写入 10 GB 的随机文本数据。
-* `randomwriter`：一种 MapReduce 程序，可以为每个节点写入 10 GB 的随机数据。
-* `secondarysort`：一个示例，用于定义化简阶段的次级排序。
-* `sort`：一种 MapReduce 程序，用于对随机写入器所写入的数据进行排序。
-* `sudoku`：数独解算器。
-* `teragen`：为 terasort 生成数据。
-* `terasort`：运行 terasort。
-* `teravalidate`：检查 terasort 的结果。
-* `wordcount`：一种 MapReduce 程序，用于计算输入文件中的单词数。
-* `wordmean`：一种 MapReduce 程序，用于计算输入文件中单词的平均长度。
-* `wordmedian`：一种 MapReduce 程序，用于计算输入文件中单词的中间长度。
-* `wordstandarddeviation`：一种 MapReduce 程序，用于计算输入文件中单词长度的标准差。
-
-**源代码**：这些示例的源代码包含在 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` 处的 HDInsight 群集上。
+|示例 |说明 |
+|---|---|
+|aggregatewordcount|计算输入文件中的单词数。|
+|aggregatewordhist|计算输入文件中单词的直方图。|
+|bbp|使用 Bailey-Borwein-Plouffe 来计算 Pi 的精确位数。|
+|dbcount|计算存储在数据库中的 pageview 日志数。|
+|distbbp|使用 BBP 类型的公式来计算 Pi 的精确位数。|
+|grep|计算输入中某个正则表达式的匹配数。|
+|join|将经过排序且等分的数据集联接起来。|
+|multifilewc|计算多个文件中的单词数。|
+|pentomino|平铺排列程序，用于查找五格拼板问题的解决方案。|
+|pi|使用拟蒙特卡罗法估算 Pi 值。|
+|randomtextwriter|为每个节点写入 10 GB 的随机文本数据。|
+|randomwriter|为每个节点写入 10 GB 的随机数据。|
+|secondarysort|定义化简阶段的次级排序。|
+|sort|对随机写入器所写入的数据进行排序。|
+|sudoku|数独解算器。|
+|teragen|为 terasort 生成数据。|
+|terasort|运行 terasort。|
+|teravalidate|检查 terasort 的结果。|
+|wordcount|计算输入文件中的单词数。|
+|wordmean|计算输入文件中单词的平均长度。|
+|wordmedian|计算输入文件中单词的中值长度。|
+|wordstandarddeviation|计算输入文件中单词长度的标准差。|
 
 ## <a name="run-the-wordcount-example"></a>运行 wordcount 示例
 
@@ -74,13 +74,13 @@ ms.locfileid: "67845260"
     ssh sshuser@CLUSTER-ssh.azurehdinsight.cn
     ```
 
-2. 在 `username@#######:~$` 提示符下，使用以下命令列出示例：
+2. 在 SSH 会话中，使用以下命令来列出示例：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    此命令将生成本文档前一节的示例列表。
+    此命令生成本文档前一节的示例列表。
 
 3. 使用以下命令来获取有关特定示例的帮助。 在本例中为 **wordcount** 示例：
 
@@ -90,7 +90,9 @@ ms.locfileid: "67845260"
 
     会收到以下消息：
 
-        Usage: wordcount <in> [<in>...] <out>
+    ```output
+    Usage: wordcount <in> [<in>...] <out>
+    ```
 
     此消息表示可以为源文档提供多个输入路径。 最后的路径是存储输出（源文档中的单词数）的位置。
 
@@ -216,7 +218,6 @@ GraySort 是一种基准排序。 该指标是在给大量数据（通常至少 
 
 在本文中，学习了如何运行基于 Linux 的 HDInsight 群集附带的示例。 有关将 Pig、Hive 和 MapReduce 用于 HDInsight 的教程，请参阅以下主题：
 
-* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
 

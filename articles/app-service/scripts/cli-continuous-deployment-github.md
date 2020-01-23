@@ -10,18 +10,18 @@ origin.date: 09/02/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 42161163028fab5189fb230d91ce26615c1b1f88
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 796b4fa79f10c4b5bb4e30097ff7fcbd4915bd4a
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600361"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123130"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>使用 CLI 从 GitHub 通过持续部署创建应用服务应用
 
 此示例脚本使用其相关资源在应用服务中创建应用，并从 GitHub 存储库设置持续部署。 有关不进行持续部署的 GitHub 部署，请参阅[从 GitHub 创建应用并部署代码](cli-deploy-github.md)。 在此示例中，需要以下项：
 
-* 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。 若要获得自动生成，请根据[准备存储库](../deploy-continuous-deployment.md#prepare-your-repository)表构建存储库。
+* 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。
 * GitHub 帐户的[个人访问令牌(PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

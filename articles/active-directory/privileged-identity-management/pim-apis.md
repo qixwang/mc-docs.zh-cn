@@ -1,26 +1,25 @@
 ---
-title: 适用于 PIM 的 Microsoft Graph API（预览版） - Azure Active Directory | Microsoft Docs
+title: 适用于 PIM 的 Microsoft Graph API（预览版）- Azure AD | Microsoft Docs
 description: 介绍如何使用适用于 Azure AD Privileged Identity Management (PIM) 的 Microsoft Graph API（预览版）。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-origin.date: 11/13/2018
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1c81821d61b2bea76d076e68746002dc0bee59
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 0e9f6e3a86657c3848ec2186e007c17bce74e705
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830835"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116814"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>适用于 Privileged Identity Management 的 Microsoft Graph API（预览版）
 
@@ -30,6 +29,8 @@ ms.locfileid: "73830835"
 
 > [!IMPORTANT]
 > Microsoft Graph 中 /beta 版本下的 API 为预览版，可能会进行更改。 不支持在生产应用程序中使用这些 API。
+>
+> 尽管所有 PIM 操作都通过图形 API 命令进行支持，但我们使用另一个系统来批准激活请求。 用于批准的图形 API 目前正在开发中，将在接下来的几个月内发布。
 
 ## <a name="required-permissions"></a>所需的权限
 

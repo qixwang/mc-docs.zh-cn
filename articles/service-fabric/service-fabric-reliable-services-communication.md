@@ -1,26 +1,17 @@
 ---
-title: Reliable Services 通信概述 | Azure
+title: Reliable Services 通信概述
 description: 概述 Reliable Services 通信模型，包括在服务上打开侦听器、解析终结点，以及在服务之间进行通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: BharatNarasimman
-ms.assetid: 36217988-420e-409d-b0a4-e0e875b6eac8
-ms.service: service-fabric
-ms.devlang: csharp, java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 11/01/2017
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a1f6aa25cb8ec28fc32fa1f4cd051c6992d19ea1
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 95cbdcf0792663c58a021458c675328c13c32822
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174057"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742411"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通信 API
 “Azure Service Fabric 即平台”完全不受服务间通信的影响。 所有协议和堆栈（从 UDP 到 HTTP）都可接受。 至于服务应以哪种方式通信，完全由服务开发人员选择。 Reliable Services 应用程序框架提供了一些内置的通信堆栈和 API，可用于生成自定义通信组件。

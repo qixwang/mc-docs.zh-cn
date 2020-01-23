@@ -1,24 +1,17 @@
 ---
-title: 使用 Jenkins 针对 Azure Service Fabric Linux 应用程序进行持续生成和集成 | Azure
+title: 使用 Jenkins 持续生成和集成 Azure Service Fabric Linux 应用程序
 description: 使用 Jenkins 针对 Service Fabric Linux 应用程序进行持续生成和集成
-services: service-fabric
-documentationcenter: java
 author: rockboyfor
-manager: digimobile
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 07/31/2018
-ms.date: 08/05/2019
 ms.author: v-yeche
-ms.openlocfilehash: e60d93598c081e0d53be92652049c8306ea5ca92
-ms.sourcegitcommit: 86163e2669a646be48c8d3f032ecefc1530d3b7f
+ms.date: 01/06/2020
+ms.openlocfilehash: 7341b4f0623804a87ffcb5cce951ac1cb2d22fb1
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68753174"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742294"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。
@@ -36,7 +29,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
     * 对于开发和测试环境，使用[通过群集管理终结点配置部署](#configure-deployment-using-cluster-management-endpoint)。 这是设置最简单的部署方法。
     * 对于生产环境，使用[通过 Azure 凭据配置部署](#configure-deployment-using-azure-credentials)。 Azure 建议对生产环境使用此方法，因为借助 Azure 凭据，可以限制 Jenkins 作业对 Azure 资源的访问权限。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 确保本地安装 Git。 可以根据操作系统[从 Git 下载页](https://git-scm.com/downloads)安装相应的 Git 版本。 如果你是 Git 的新用户，请通过 [Git 文档](https://git-scm.com/docs)了解详细信息。
 - 本文章使用 GitHub 上的 Service Fabric 入门示例：[https://github.com/Azure-Samples/service-fabric-java-getting-started](https://github.com/Azure-Samples/service-fabric-java-getting-started) 适用于生成和部署应用程序  。 可以创建此存储库的分支来按照说明进行操作，也可以使用自己的 GitHub 项目并对说明进行相应修改。
@@ -61,7 +54,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下各部分展示了如何在群集内部对其进行设置，同时使用 Azure 存储帐户保存容器实例的状态。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 - 准备好已安装 Docker 的 Service Fabric Linux 群集。 在 Azure 中运行的 Service Fabric 群集已安装 Docker。 如果要在本地（OneBox 开发环境）运行群集，请使用 `docker info` 命令检查计算机上是否安装了 Docker。 如果未安装，请使用以下命令安装它：
 
     ```sh
@@ -163,7 +156,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下部分说明如何在群集外部设置 Jenkins。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 - 确保计算机上安装了 Docker。 可在终端中使用以下命令安装 Docker：
 
     ```sh
@@ -192,7 +185,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
     1. 若要登录到 Jenkins 仪表板，请在 web 浏览器中打开以下 URL：`http://<HOST-IP>:8080`。 使用上一步的密码解锁 Jenkins。
     1. （可选。）首次登录后，可以创建自己的用户帐户供后续步骤使用，或者继续使用管理员帐户。 如果创建了一个用户，则需要继续使用该用户。
 1. 使用[生成新的 SSH 密钥并将其添加到 SSH 代理](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)中的步骤，将 GitHub 设置为使用 Jenkins。
-    * 根据 GitHub 提供的说明生成 SSH 密钥，然后将 SSH 密钥添加到托管存储库的 GitHub 帐户。
+    * 根据 GitHub 提供的说明生成 SSH 密钥，并将 SSH 密钥添加到托管存储库的 GitHub 帐户。
     * 在 Jenkins Docker shell（而不是主机）中运行上述链接中提到的命令。
     * 若要从主机登录到 Jenkins shell，请使用以下命令：
 
@@ -209,7 +202,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 此部分中的步骤演示如何配置 Jenkins 作业以响应 GitHub 存储库中的更改，提取更改，并生成它们。 本部分结束时，会执行最后的步骤，也就是根据选择的部署环境配置作业，使其将应用程序部署到开发/测试环境或生产环境。 
 
 1. 在 Jenkins 仪表板上，单击“新建项”  。
-1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。  
+1. 输入项名称（例如 MyJob  ）。 选择“自由格式的项目”，并单击“确定”。  
 1. “作业配置”页面会打开。 （若要获取 Jenkins 仪表板的配置，请单击该作业，并单击“配置”）  。
 
 1. 在“常规”选项卡上，选择“GitHub 项目”框，并指定 GitHub 项目 URL   。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 `https://github.com/{your-github-account}/service-fabric-java-getting-started`）集成的 Service Fabric Java 应用程序。
@@ -331,6 +324,7 @@ Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使�
 现已配置 GitHub 和 Jenkins。 考虑在存储库分支的 `reliable-services-actor-sample/Actors/ActorCounter` 项目中做出一些示例更改， https://github.com/Azure-Samples/service-fabric-java-getting-started 。 将更改推送到远程 `master` 分支（或配置使用的任何分支）。 这会触发配置的 Jenkins 作业 `MyJob`。 它会从 GitHub 提取更改、生成这些更改并将应用程序部署到在生成后操作中指定的群集。  
 
 <!-- Images -->
+
 [build-step]: ./media/service-fabric-cicd-your-linux-application-with-jenkins/build-step.png
 [build-step-dotnet]: ./media/service-fabric-cicd-your-linux-application-with-jenkins/build-step-dotnet.png
 

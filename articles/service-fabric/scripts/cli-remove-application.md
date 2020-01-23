@@ -12,17 +12,17 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 12/06/2017
-ms.date: 08/26/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: ba8fee35722dac78236835292ce73b569d7df91d
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 6e4cf897e7d7964233bb9d02d5d13a207dfcb2a3
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173968"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742297"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>从 Service Fabric 群集中删除应用程序
+# <a name="remove-an-application-from-a-service-fabric-cluster-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 从 Service Fabric 群集中删除应用程序
 
 此示例脚本删除了正在运行的 Service Fabric 应用程序实例，并从群集中取消注册了应用程序类型和版本。  删除应用程序实例时也会删除与该应用程序关联的所有正在运行的服务实例。 接下来，会从映像存储区中删除应用程序文件。 
 

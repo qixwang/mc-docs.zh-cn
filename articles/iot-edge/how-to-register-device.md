@@ -4,19 +4,19 @@ description: 使用适用于 Azure CLI 的 IoT 扩展注册新的 IoT Edge 设�
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 10/21/2019
-ms.date: 12/02/2019
+origin.date: 11/12/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7d9e06d98e5e9118b471ffbdce8fa52f539cba8e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: aaf4e56f78997cf1dfb1f288191b1d7a048aff31
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74390035"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859738"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>注册 Azure IoT Edge 设备
 
@@ -57,7 +57,7 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。
 
 1. 在门户的 **IoT Edge** 页中，单击 IoT Edge 设备列表中的设备 ID。
-2. 复制**连接字符串(主密钥)** 或**连接字符串(辅助密钥)** 的值。
+2. 复制“主连接字符串”或“辅助连接字符串”的值   。
 
 ## <a name="register-with-visual-studio-code"></a>注册到 Visual Studio Code
 

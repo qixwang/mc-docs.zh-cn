@@ -1,21 +1,14 @@
 ---
 title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/22/2018
-ms.date: 11/11/2019
-ms.author: v-junlch
-ms.openlocfilehash: 0deea1ddec0988f3f643115bb59dc4543608b87b
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.date: 01/13/2020
+ms.openlocfilehash: 57d37c48096ba340c0d63fa4440fcb75d0797bca
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934252"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116906"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -27,7 +20,7 @@ ms.locfileid: "73934252"
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-在 2.x 版 Functions 运行时中，基于运行时环境配置应用行为。 [在初始化期间读取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)此值。 可以将 `AZURE_FUNCTIONS_ENVIRONMENT` 设置为任何值，但支持[三个值](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[Development](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) 和 [Production](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 如果未设置 `AZURE_FUNCTIONS_ENVIRONMENT`，则在本地环境中默认为 `Development`，在 Azure 中默认为 `Production`。 应使用此设置（而不是 `ASPNETCORE_ENVIRONMENT`）来设置运行时环境。 
+在 2.x 和更高版本的 Functions 运行时中，基于运行时环境配置应用行为。 [在初始化期间读取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)此值。 可以将 `AZURE_FUNCTIONS_ENVIRONMENT` 设置为任何值，但支持[三个值](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[Development](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) 和 [Production](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 如果未设置 `AZURE_FUNCTIONS_ENVIRONMENT`，则在本地环境中默认为 `Development`，在 Azure 中默认为 `Production`。 应使用此设置（而不是 `ASPNETCORE_ENVIRONMENT`）来设置运行时环境。 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -105,6 +98,19 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
+## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
+
+此设置使函数应用能够在版本 3.x 运行时上以版本 2.x 兼容模式运行。 仅当在[将函数应用从运行时版本 2.x 升级到版本 3.x](functions-versions.md#migrating-from-2x-to-3x) 时遇到问题的情况下，才使用此设置。 
+
+>[!IMPORTANT]
+> 在更新应用以便在版本 3.x 上正常运行时，此设置仅用作短期解决方法。 只要 [2.x 运行时受支持](functions-versions.md)，此设置就受支持。 如果在不使用此设置的情况下遇到阻止应用在版本 3.x 上运行的问题，请[报告问题](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
+
+需要 [FUNCTIONS\_EXTENSION\_VERSION](functions-app-settings.md#functions_extension_version) 设置为 `~3`。
+
+|键|示例值|
+|---|------------|
+|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|是|
+
 ## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
 指定语言工作进程的最大数量，其默认值为 `1`。 允许的最大值为 `10`。 函数调用均匀地分布在语言工作进程中。 语言工作进程每 10 秒生成一次，直到达到 FUNCTIONS\_WORKER\_PROCESS\_COUNT 设置的计数。 使用多个语言工作进程与[缩放](functions-scale.md)不同。 当工作负荷混合使用 CPU 绑定和 I/O 绑定调用时，请考虑使用此设置。 此设置适用于所有非 .NET 语言。
@@ -174,8 +180,8 @@ _仅限 Windows_。
 
 |键|Value|说明|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中的函数的后端 URL 的调用将不再直接发送到该函数，而是定向回 Function App 的 HTTP 前端|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 具有指向 Function App 中的函数的后端 URL 的调用将直接转发到该函数|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用将不再直接发送到该函数，而是定向回函数应用的 HTTP 前端|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 具有指向本地函数应用中函数的后端 URL 的调用将直接转发到该函数|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES

@@ -1,25 +1,15 @@
 ---
-title: 为 Azure Service Fabric Windows 群集启用磁盘加密 | Azure
+title: 为 Azure Service Fabric Windows 群集启用磁盘加密
 description: 本文介绍如何在 Azure 资源管理器中使用 Azure Key Vault 为 Azure Service Fabric 群集节点启用磁盘加密。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 03/22/2019
-ms.date: 12/16/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 41c36e1adf971aae671f4358a1c6cebdee8c0076
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 37f0f0838eccd9838319cf42871ae3b83004e03e
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348561"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742391"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>为 Windows 中的 Azure Service Fabric 群集节点启用磁盘加密 
 > [!div class="op_single_selector"]
@@ -38,7 +28,7 @@ ms.locfileid: "75348561"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 **自我注册** 
 
@@ -62,14 +52,14 @@ ms.locfileid: "75348561"
 2. 安装最新版本的 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)，其中包含新的加密命令。
 3. 安装最新版本的 [Azure PowerShell 中的 Azure SDK](https://github.com/Azure/azure-powershell/releases)。 以下是在规模集实例上启用 ([Set](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密、检索 ([Get](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态以及删除 ([disable](https://docs.microsoft.com/powershell/module/az.compute/disable-azvmssdiskencryption)) 加密所需的虚拟机规模集 Azure 磁盘加密 cmdlet。
 
-| 命令 | 版本 |  Source  |
-| ------------- |-------------| ------------|
-| Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
-| Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
-| Disable-AzVmssDiskEncryption   | 1.0.0 或更高版本 | Az.Compute |
-| Get-AzVmssDiskEncryption   | 1.0.0 或更高版本 | Az.Compute |
-| Get-AzVmssVMDiskEncryption   | 1.0.0 或更高版本 | Az.Compute |
-| Set-AzVmssDiskEncryptionExtension   | 1.0.0 或更高版本 | Az.Compute |
+    | 命令 | 版本 |  Source  |
+    | ------------- |-------------| ------------|
+    | Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
+    | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
+    | Disable-AzVmssDiskEncryption   | 1.0.0 或更高版本 | Az.Compute |
+    | Get-AzVmssDiskEncryption   | 1.0.0 或更高版本 | Az.Compute |
+    | Get-AzVmssVMDiskEncryption   | 1.0.0 或更高版本 | Az.Compute |
+    | Set-AzVmssDiskEncryptionExtension   | 1.0.0 或更高版本 | Az.Compute |
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>受支持的磁盘加密方案
 * 只有使用托管磁盘创建的规模集才支持虚拟机规模集加密， 本机（或非托管）磁盘规模集则不支持。
@@ -102,15 +92,15 @@ az account set --subscription $subscriptionId
 如果已有一个自定义模板，请仔细检查模板中的所有三个证书相关参数以及参数文件已按如下所示命名且如下所示的值为 null：
 
 ```Json
-   "certificateThumbprint": {
-      "value": ""
-    },
-    "sourceVaultValue": {
-      "value": ""
-    },
-    "certificateUrlValue": {
-      "value": ""
-    },
+"certificateThumbprint": {
+  "value": ""
+},
+"sourceVaultValue": {
+  "value": ""
+},
+"certificateUrlValue": {
+  "value": ""
+},
 ```
 
 ```powershell

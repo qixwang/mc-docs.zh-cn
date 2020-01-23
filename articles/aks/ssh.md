@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: container-service
 ms.topic: article
 origin.date: 07/31/2019
-ms.date: 08/26/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 54447d0051491123b9939341770cab736f3212b5
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 485a201efb028b9e162dc42cfe7f160cd261a7cb
+ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993451"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859844"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -46,10 +46,12 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-以上示例将 *myResourceGroup* 中 *myAKSCluster* 的群集资源组名称分配到 *CLUSTER_RESOURCE_GROUP*。 然后，该示例使用 *CLUSTER_RESOURCE_GROUP* 列出规模集名称并将其分配到 *SCALE_SET_NAME*。  
+以上示例将 *myResourceGroup* 中 *myAKSCluster* 的群集资源组名称分配到 *CLUSTER_RESOURCE_GROUP*。 然后，该示例使用 *CLUSTER_RESOURCE_GROUP* 列出规模集名称并将其分配到 *SCALE_SET_NAME*。
 
-> [!NOTE]
-> SSH 密钥目前只能使用 Azure CLI 添加到 Linux 节点。 
+> [!IMPORTANT]
+> 此时，应该使用 Azure CLI 仅更新基于虚拟机规模集的 AKS 群集的 SSH 密钥。
+>
+> 对于 Linux 节点，目前只能使用 Azure CLI 添加 SSH 密钥。
 
 <!--Not Available on Windows Server nodes-->
 
@@ -108,11 +110,11 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-以上示例将 *myResourceGroup* 中 *myAKSCluster* 的群集资源组名称分配到 *CLUSTER_RESOURCE_GROUP*。 然后，该示例使用 *CLUSTER_RESOURCE_GROUP* 列出虚拟机名称。 示例输出显示了虚拟机的名称： 
+以上示例将 *myResourceGroup* 中 *myAKSCluster* 的群集资源组名称分配到 *CLUSTER_RESOURCE_GROUP*。 然后，该示例使用 *CLUSTER_RESOURCE_GROUP* 列出虚拟机名称。 示例输出显示了虚拟机的名称：
 
 ```
 Name                      ResourceGroup                                  Location
-------------------------  ---------------------------------------------  ----------
+------------------------ ---------------------------------------------  ----------
 aks-nodepool1-79590246-0  MC_myResourceGroupAKS_myAKSClusterRBAC_chinaeast2  chinaeast2
 ```
 
@@ -141,7 +143,7 @@ az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 
 ```
 VirtualMachine            PrivateIPAddresses
-------------------------  --------------------
+------------------------ --------------------
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
@@ -152,7 +154,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 1. 运行 `debian` 容器映像，并在其上附加一个终端会话。 可以使用此容器来与 AKS 群集中的任何节点建立 SSH 会话：
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
     <!--Not Available on Windows Server nodes (currently in preview in AKS), add a node selector-->
@@ -163,21 +165,12 @@ aks-nodepool1-79590246-0  10.240.0.4
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. 打开一个未连接到容器的新终端窗口，使用 [kubectl get pod][kubectl-get] 命令列出 AKS 群集中的 Pod。 在上一步骤中创建的 pod 以名称 *aks-ssh* 开头，如以下示例所示：
+1. 打开一个未连接到容器的新终端窗口，将专用 SSH 密钥复制到帮助程序 Pod 中。 此私钥用来与 AKS 节点建立 SSH 连接。 
 
-    ```
-    $ kubectl get pods
-
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. 在前面的步骤中，你已将 SSH 公钥添加到要进行故障排除的 AKS 节点。 现在，请将 SSH 私钥复制到帮助器 Pod 中。 此私钥用来与 AKS 节点建立 SSH 连接。
-
-    提供在上一步骤中获取的自己的 *aks-ssh* pod 名称。 如果需要，请将 *~/.ssh/id_rsa* 更改为 SSH 私钥的位置：
+    如果需要，请将 *~/.ssh/id_rsa* 更改为 SSH 私钥的位置：
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. 返回到与容器建立的终端会话，更新复制的 `id_rsa` SSH 私钥中的权限，使其成为用户只读的密钥：
@@ -215,9 +208,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 ## <a name="next-steps"></a>后续步骤
 
-如需其他故障排除数据，可以[查看 kubelet 日志][view-kubelet-logs]。
-
-<!--Not Avaialble on [view the Kubernetes master node logs][view-master-logs]-->
+如需其他故障排除数据，可以[查看 kubelet 日志][view-kubelet-logs]或[查看 Kubernetes 主节点日志][view-master-logs]。
 
 <!-- EXTERNAL LINKS -->
 
@@ -230,9 +221,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 [az-vm-user-update]: https://docs.azure.cn/cli/vm/user?view=azure-cli-latest#az-vm-user-update
 [az-vm-list-ip-addresses]: https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
-
-<!--Not Avaialble on [view-master-logs]: view-master-logs.md-->
-
+[view-master-logs]: view-master-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
@@ -240,9 +229,11 @@ aks-nodepool1-79590246-0  10.240.0.4
 <!--Not Avaialble on [aks-windows-rdp]: rdp.md-->
 
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
-[ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
+
+<!--Not Available on [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md-->
+
 [az-vmss-list]: https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-list
 [az-vmss-extension-set]: https://docs.azure.cn/cli/vmss/extension?view=azure-cli-latest#az-vmss-extension-set
 [az-vmss-update-instances]: https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-update-instances
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

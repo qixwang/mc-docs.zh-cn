@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 可靠服务编程模型概述 | Azure
+title: Service Fabric 可靠服务编程模型概述
 description: 了解 Service Fabric 的 Reliable Service 编程模型，并开始编写自己的服务。
-services: Service-Fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek; mani-ramaswamy
-ms.assetid: 0c88a533-73f8-4ae1-a939-67d17456ac06
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 03/09/2018
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: e60d211aa362df5d86160be04f7f86c7c813fbd8
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: 7c08ca5d6bbc957aecde71531ba558c59d01cfd5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463584"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742408"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概述
 Azure Service Fabric 可简化无状态和有状态 Reliable Services 的编写与管理。 本主题的内容：
@@ -37,15 +28,15 @@ Service Fabric 通过 [Service Fabric 应用程序管理](service-fabric-deploy-
 Reliable Services 可提供简单且功能强大的顶级编程模型，以便帮助用户表达对其应用程序至关重要的内容。 借助 Reliable Services 编程模型有以下益处：
 
 * 访问其余的 Service Fabric 编程 API。 与建模为[来宾可执行文件](service-fabric-guest-executables-introduction.md)的 Service Fabric Services 不同，Reliable Services 往往直接使用其余的 Service Fabric API。 这样，服务便可以：
-  * 查询系统
-  * 报告群集中实体的运行状况
-  * 接收有关配置和代码更改的通知
-  * 查找其他服务并与它们通信
-  * （可选）使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
-  * ...以及访问其他许多功能，所有这些操作都可通过使用多种编程语言编写的一流编程模型执行。
+    * 查询系统
+    * 报告群集中实体的运行状况
+    * 接收有关配置和代码更改的通知
+    * 查找其他服务并与它们通信
+    * （可选）使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+    * ...以及访问其他许多功能，所有这些操作都可通过使用多种编程语言编写的一流编程模型执行。
 * 类似于用户所习惯编程模型的简单模型，用于运行自己的代码。 代码具有定义完善的入口点和易于管理的生命周期。
 * 可插式通信模型。 使用选择的传输方式，如包含 [Web API](service-fabric-reliable-services-communication-webapi.md) 的 HTTP、WebSockets、自定义 TCP 协议，等等。 Reliable Services 提供一些极佳的自带选项供选用，但也可以提供自己的选项。
-* 对于有状态服务，Reliable Services 编程模型允许使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 直接在服务内以一致、可靠的方式存储状态。 Reliable Collections 是一组简单的高度可用、可靠集合类，用过 C# 集合的用户都对它很熟悉。 一直以来，服务需借助外部系统来进行可靠的状态管理。 利用 Reliable Collections，可将状态存储在计算旁边，获得高可用性外部存储一样的高可用性和可靠性。 此模型还能改善延迟问题，因为可将运行此模型所需的计算资源与状态放置在一起。
+* 对于有状态服务，Reliable Services 编程模型允许使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md) 直接在服务内以一致、可靠的方式存储状态。 Reliable Collections 是一组简单的高度可用、可靠集合类，用过 C# 集合的用户都对它很熟悉。 按照惯例，服务需借助外部系统来进行可靠的状态管理。 利用 Reliable Collections，可将状态存储在计算旁边，获得高可用性外部存储一样的高可用性和可靠性。 此模型还能改善延迟问题，因为可将运行此模型所需的计算资源与状态放置在一起。
 
 ## <a name="what-makes-reliable-services-different"></a>Reliable Services 有何不同之处？
 Service Fabric 中的 Reliable Services 与你以前编写的服务不同。 Service Fabric 提供可靠性、可用性、一致性和可伸缩性。

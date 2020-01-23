@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 715f4323f4e46971351d5b5bdf3a4a789635b47b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7e2657802c0795bbd25c47c5efecf65ce63023b7
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624325"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116921"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
 
@@ -27,7 +27,7 @@ ms.locfileid: "75624325"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，必须已安装 ManagedServiceIdentity 模块：
 
@@ -70,6 +70,8 @@ $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -Certifica
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
+> [!NOTE]
+> SSL 终止必须使用 -EnableSoftDelete 标志才能正常工作。
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -144,4 +146,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 [详细了解 SSL 终止](ssl-overview.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->

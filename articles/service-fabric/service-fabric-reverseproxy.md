@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 反向代理 | Azure
+title: Azure Service Fabric 反向代理
 description: 使用 Service Fabric 的反向代理从群集内部和外部与微服务通信
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 11/03/2017
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 449bd594999d3b4122b99b229f481dcd6a5ecca9
-ms.sourcegitcommit: f1ecc209500946d4f185ed0d748615d14d4152a7
+ms.openlocfilehash: 85d2b72bd36baa82df5e1a4a4fcd4f84344e0c55
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463680"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742383"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
@@ -85,8 +76,8 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **PartitionKind：** 服务分区方案。 该方案可以是“Int64Range”或“Named”。 对于使用单独分区方案的服务，此参数不是必需的。
 * **ListenerName** 服务中的终结点采用以下形式：{"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}}。 当服务公开了多个终结点时，此参数标识应将客户端请求转发到的终结点。 如果服务只有一个侦听器，则可以省略此项。
 * **TargetReplicaSelector** 这指定应当如何选择目标副本或实例。
-  * 当目标服务为有状态服务时，TargetReplicaSelector 可以是下列其中一项：“PrimaryReplica”、“RandomSecondaryReplica”或“RandomReplica”。 如果未指定此参数，默认值为“PrimaryReplica”。
-  * 当目标服务为无状态服务时，反向代理将选择服务分区的一个随机实例来将实例转发到其中。
+    * 当目标服务为有状态服务时，TargetReplicaSelector 可以是下列其中一项：“PrimaryReplica”、“RandomSecondaryReplica”或“RandomReplica”。 如果未指定此参数，默认值为“PrimaryReplica”。
+    * 当目标服务为无状态服务时，反向代理将选择服务分区的一个随机实例来将实例转发到其中。
 * **超时：** 此参数指定反向代理针对服务创建的 HTTP 请求（代表客户端请求）的超时。 默认值为 60 秒。 这是一个可选参数。
 
 ### <a name="example-usage"></a>用法示例
@@ -156,9 +147,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 对于本地群集，`Fabric_NodeIPOrFQDN` 默认设置为“localhost”。 使用 `-UseMachineName` 参数启动本地群集，确保容器可访问节点上运行的反向代理。 有关详细信息，请参阅[配置开发人员环境以调试容器](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)。
 
-在 Docker Compose 容器中运行的 Service Fabric 服务需要特殊的 docker-compose.yml 端口部分 http: 或 https: 配置。
-
-<!-- Not Available on  [Docker Compose deployment support in Azure Service Fabric](service-fabric-docker-compose.md)-->
+在 Docker Compose 容器中运行的 Service Fabric 服务需要特殊的 docker-compose.yml 端口部分 http: 或 https: 配置  。 有关详细信息，请参阅 [Azure Service Fabric 中的 Docker Compose 部署支持](service-fabric-docker-compose.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [在群集上设置和配置反向代理](service-fabric-reverseproxy-setup.md)。

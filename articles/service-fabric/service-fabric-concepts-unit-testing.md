@@ -1,26 +1,16 @@
 ---
-title: 对 Azure Service Fabric 中的有状态服务进行单元测试 | Azure
+title: 对 Azure Service Fabric 中的有状态服务进行单元测试
 description: 了解对 Service Fabric 有状态服务进行单元测试的概念和实践。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 09/04/2018
-ms.date: 09/02/2019
 ms.author: v-yeche
-ms.openlocfilehash: 90da6c3090960f3768200f1cb78f31cddadb23f0
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 01/06/2020
+ms.openlocfilehash: 7b82d02c58340acb5f0c7e6bdc1f21644b4ce87b
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174116"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742401"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>对 Service Fabric 中的有状态服务进行单元测试
 
@@ -69,15 +59,15 @@ ms.locfileid: "70174116"
 单元测试应尽可能多地执行可以修改有状态服务状态的应用程序代码。 建议测试在本质上更加端到端。 存在的唯一模拟是记录、模拟和/或验证远程资源交互。 这包括与状态管理器和可靠集合的交互。 以下代码片段是用于演示端到端测试的一个测试的 gherkin 的示例：
 
 ```
-    Given stateful service named "fabric:/MyApp/MyService" is created
-    And a new replica is created as "Primary" with id "111"
-    And a new replica is created as "IdleSecondary" with id "222"
-    And a new replica is created as "IdleSecondary" with id "333"
-    And all idle secondary replicas are promoted to active secondary
-    When a request is made to add the an employee "John Smith"
-    And the active secondary replica "222" is promoted to primary
-    And a request is made to get all employees
-    Then the request should should return the "John Smith" employee
+Given stateful service named "fabric:/MyApp/MyService" is created
+And a new replica is created as "Primary" with id "111"
+And a new replica is created as "IdleSecondary" with id "222"
+And a new replica is created as "IdleSecondary" with id "333"
+And all idle secondary replicas are promoted to active secondary
+When a request is made to add the an employee "John Smith"
+And the active secondary replica "222" is promoted to primary
+And a request is made to get all employees
+Then the request should should return the "John Smith" employee
 ```
 
 此测试断言当一个副本提升为主要副本时，在该副本上捕获的数据可用于次要副本。 假设可靠集合是员工数据的后备存储，则此测试可能会引发的一个潜在故障是，应用程序代码是否未在 `CommitAsync` 事务上执行以保存新员工。 在这种情况下，获取员工的第二个请求将不会返回第一个请求添加的员工。

@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 484683b618e175f4fc5fa1dacd2667422e428194
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 32297eba2b4b8e7eab916edb51342e7c4d1a9ef6
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630804"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123300"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -24,7 +24,7 @@ ms.locfileid: "75630804"
 
 本文介绍如何使用 Azure 认知服务语音 SDK 在 Objective-C 中创建一个 macOS 应用，以便将通过麦克风录制的语音转录为文本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -154,7 +154,7 @@ ms.locfileid: "75630804"
     @end
     ```
 1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，将 `chinaeast2` 用于 1 元人民币的试用订阅。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，将 `chinaeast2` 用于试用订阅。
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 

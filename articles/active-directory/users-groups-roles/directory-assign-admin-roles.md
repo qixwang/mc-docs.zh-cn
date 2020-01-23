@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 12/11/2019
+ms.date: 01/08/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 663899b7a7cb7f127efc001fd378ac574ff12d43
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 045021042f75920b6a1889e63e7af10f0fb35715
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336409"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777002"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -70,7 +70,7 @@ ms.locfileid: "75336409"
 
 ### <a name="authentication-administratorauthentication-administrator-permissions"></a>[身份验证管理员](#authentication-administrator-permissions)
 
-具有此角色的用户可以设置或重置非密码凭据，并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）： 
+身份验证管理员角色目前以公共预览版提供。 具有此角色的用户可以设置或重置非密码凭据，并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）： 
 
 * 身份验证管理员
 * 目录读者
@@ -264,7 +264,9 @@ In | 有权执行的操作
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune 管理员](#intune-service-administrator-permissions)
 
-具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
+具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)。
+
+此角色可创建和管理所有安全组。 但是，Intune 管理员对 Office 组没有管理员权限。 这意味着管理员无法更新租户中所有 Office 组的所有者或成员身份。 但可以管理他们自己创建的 Office 组，这是其最终用户权限的一部分。 因此，他们创建的任何 Office 组（非安全组）都应根据其 250 的配额进行计数。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Intune 管理员”。
@@ -365,7 +367,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报告
-标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>Encryption<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
 [Privileged Identity Management](/active-directory/privileged-identity-management/pim-configure) | 以只读方式访问 Azure AD Privileged Identity Management 中显示的所有信息：Azure AD 角色分配的策略和报告以及安全评审。<br>**无法**注册 Azure AD Privileged Identity Management 或对其进行任何更改。 充当此角色的人员可以在 Privileged Identity Management 门户中或通过 PowerShell 为符合条件的用户激活其他角色（例如，全局管理员或特权角色管理员）。
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报告
 Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP 中启用基于角色的访问控制后，拥有只读权限的用户（例如 Azure AD 安全读取者角色）在被分配到 Windows Defender ATP 角色之前会失去访问权限。
@@ -415,7 +417,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[用户管理员](#user-administrator-permissions)
 
-具有此角色的用户可以创建用户、管理用户的所有方面（但存在一些限制，具体请参阅下文），以及更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 下表列出了不存在这种限制的角色。
+具有此角色的用户可以创建用户、管理用户的所有方面（但存在一些限制，具体请参阅下文），以及更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
 | | |
 | --- | --- |
@@ -657,7 +659,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="company-administrator-permissions"></a>公司管理员权限
 
-可以管理 Azure AD 和使用 Azure AD 标识的 Microsoft 服务的所有方面。
+可以管理 Azure AD 和使用 Azure AD 标识的 Microsoft 服务的所有方面。 此角色也称为全局管理员角色。 
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -986,8 +988,8 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | microsoft.office365.webPortal/allEntities/standard/read   | 读取 microsoft.office365.webPortal 中所有资源的标准属性。 |
 
-### <a name="group-administrator"></a>组管理员
-可以管理组和组设置的所有方面，如命名策略和过期策略
+### <a name="group-administrator-permissions"></a>组管理员权限
+可以管理组和组设置的所有方面，如命名策略和过期策略。
 
 | **操作** | **说明** |
 | --- | --- |
@@ -1341,6 +1343,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
 | microsoft.directory/devices/bitLockerRecoveryKeys/read | 读取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 属性。 |
+| microsoft.directory/policies/conditionalAccess/basic/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 | microsoft.directory/signInReports/allProperties/read | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
 | microsoft.aad.identityProtection/allEntities/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | 读取 microsoft.aad.privilegedIdentityManagement 中的所有资源。 |

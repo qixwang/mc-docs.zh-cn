@@ -1,33 +1,33 @@
 ---
-title: 使用 Azure 流分析的 IoT 实时数据流
+title: 使用 Azure 流分析处理实时 IoT 数据流
 description: 带流分析和实时数据处理的 IoT 传感器标记和数据流
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: quickstart
-origin.date: 08/09/2019
-ms.date: 06/11/2019
-ms.openlocfilehash: 3b411c85a682a49afa8c045a6765a5004d10dd13
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+origin.date: 11/26/2019
+ms.date: 01/06/2020
+ms.openlocfilehash: 6808ae4903676c6bb85517f994ee5a507c64077e
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674823"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75856941"
 ---
-# <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>开始使用 Azure 流分析处理来自 IoT 设备的数据
+# <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
 
-本教程介绍如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 我们会使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
+本文介绍如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * [Azure 订阅](https://www.azure.cn/pricing/1rmb-trial/)
 * 可从 [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted)
 
 ## <a name="scenario"></a>方案
-Contoso 是一家工业自动化公司，该公司已将其制造流程完全自动化。 这家工厂中的设备配有可实时发送数据流的传感器。 在此方案中，产品车间经理希望通过传感器数据获得实时见解，从而找到规律并采取措施。 我们对传感器数据使用流分析查询语言 (SAQL)，查找传入数据流的有趣规律。
 
-下图中，Texas Instruments SensorTag 设备正在生成数据。 数据的有效负载是 JSON 格式，如下所示：
+Contoso 是一家工业自动化公司，该公司已将其制造流程完全自动化。 这家工厂中的设备配有可实时发送数据流的传感器。 在此方案中，产品车间经理希望通过传感器数据获得实时见解，从而找到规律并采取措施。 可以对传感器数据使用流分析查询语言 (SAQL)，查找传入数据流的有趣规律。
+
+在本示例中，数据是 Texas Instruments SensorTag 设备生成的。 数据的有效负载是 JSON 格式，如下所示：
 
 ```json
 {
@@ -43,77 +43,117 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 为了方便使用，本入门指南提供从实际 SensorTag 设备中捕获的示例数据文件。 可以对示例数据运行查询并查看结果。 在后续教程中，学习如何将作业连接到输入和输出并将其部署到 Azure 服务。
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
-1. 在 [Azure 门户](https://portal.azure.cn)中，单击加号，再在右侧的文本窗口中键入 **流分析** 。 然后在结果列表中选择“流分析作业”  。
 
+1. 在 [Azure 门户](https://portal.azure.cn)的左侧导航菜单中，选择“+ 创建资源”  。 然后从“分析”中选择“流分析作业”   。
+   
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
-2. 输入唯一作业名并验证订阅是否与作业对应。 然后新建资源组或选择订阅中的现有资源组。
-3. 接着选择作业位置。 为了加快处理速度并降低数据传输成本，建议选择与资源组和预期存储帐户相同的位置。
 
+1. 输入唯一作业名并验证订阅是否与作业对应。 新建资源组或选择订阅中的现有资源组。
+
+1. 为你的作业选择一个位置。 为资源组和所有资源使用同一位置，以提高处理速度并降低成本。 完成配置后，选择“创建”  。
+   
     ![新建流分析作业详细信息](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
-    > [!NOTE]
-    > 只应为每个区域创建此存储帐户一次。 跨该区域中创建的所有流分析作业共享此存储。
-    > 
-    > 
-4. 勾选框以将作业放在仪表板上，并单击“创建”  。
-   
-    ![正在执行流分析作业创建](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. 此时会在浏览器窗口右上角显示“部署已启动...”。 很快它会变为已完成的窗口，如下所示。
-   
-    ![流分析部署成功](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
-
 ## <a name="create-an-azure-stream-analytics-query"></a>创建 Azure 流分析查询
-创建作业后，接着需要打开并生成查询。 可单击相应磁贴轻松访问作业。
+创建作业后的下一步是编写查询。 可以使用示例数据测试查询，无需将输入或输出连接到作业。
 
-![Azure 门户中的流分析作业磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+从 GitHub 下载 [HelloWorldASA-InputStream.json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+)。 然后，在 Azure 门户中导航到 Azure 流分析作业。
 
-在“作业拓扑”  窗格中，单击“查询”  框以转到查询编辑器。 “查询”  编辑器允许输入针对传入事件数据执行转换的 T-SQL 查询。
+在左侧菜单的“作业拓扑”下，选择“查询”   。 然后，选择“上传示例输入”  。 上传 `HelloWorldASA-InputStream.json` 文件，然后选择“确定”  。
 
 ![流分析仪表板查询磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-### <a name="query-archive-your-raw-data"></a>查询：存档原始数据
-查询的最简单形式是传递查询，该查询会将所有输入数据存档到其指定的输出。 将 [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) 中的示例数据文件下载到计算机中的某个位置。 
+请注意，系统将在“输入预览”表中自动填充数据预览  。
 
-1. 从 PassThrough.txt 文件粘贴查询。 
-   
-    ![将查询粘贴到流分析查询编辑器中](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
-2. 单击输入旁边的三个点，并选择“上传文件中的示例数据”  框。
-   
-    ![选择在文件中上传示例数据](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
-3. 会在右侧打开一个窗格，请在此处选择下载位置中的 HelloWorldASA InputStream.json 数据文件，并在窗格底部单击“确定”  。
-   
-    ![上传 json 示例数据文件](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
-4. 然后在窗口左上方单击“测试”  齿轮，接着根据示例数据集处理测试查询。 处理完成后，查询下方会打开一个结果窗口。
-   
-    ![流分析查询的测试结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![示例输入数据的预览](./media/stream-analytics-get-started-with-iot-devices/input-preview.png)
+
+### <a name="query-archive-your-raw-data"></a>查询：存档原始数据
+
+查询的最简单形式是传递查询，该查询会将所有输入数据存档到其指定的输出。 此查询是在新的 Azure 流分析作业中填充的默认查询。
+
+```sql
+SELECT 
+    *
+INTO
+    Output
+FROM
+    InputStream
+```
+
+选择“测试查询”，然后在“测试结果”表中查看结果   。
+
+![流分析查询的测试结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>查询：根据条件筛选数据
-让我们尝试基于条件筛选结果。 我们希望仅显示来自“sensorA”的事件的结果。 查询在 Filtering.txt 文件中。
+
+让我们尝试基于条件筛选结果。 我们希望仅显示来自“sensorA”的事件的结果。
+
+```sql
+SELECT 
+    time,
+    dspl AS SensorName,
+    temp AS Temperature,
+    hmdt AS Humidity
+INTO
+   Output
+FROM
+    InputStream
+WHERE dspl='sensorA'
+```
+
+将查询粘贴到编辑器中，然后选择“测试查询”以查看结果  。
 
 ![筛选数据流](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-请注意，查询区分大小写，并且会比较字符串的值。 单击“测试”  齿轮执行查询。 查询应返回 1,860 个事件中的 389 行。
-
-![执行查询测试后的第二个输出结果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
-
 ### <a name="query-alert-to-trigger-a-business-workflow"></a>查询：触发业务工作流的警报
-让我们创建更详细的查询。 对于每个类型的传感器，我们想要每 30 秒监视一次平均温度，且仅在平均温度高于 100 度的情况下显示结果。 我们会写入以下查询，并单击“测试”  查看结果。 查询在 ThresholdAlerting.txt 文件中。
+
+让我们创建更详细的查询。 对于每个类型的传感器，我们想要每 30 秒监视一次平均温度，且仅在平均温度高于 100 度的情况下显示结果。
+
+```sql
+SELECT 
+    System.Timestamp AS OutputTime,
+    dspl AS SensorName,
+    Avg(temp) AS AvgTemperature
+INTO
+   Output
+FROM
+    InputStream TIMESTAMP BY time
+GROUP BY TumblingWindow(second,30),dspl
+HAVING Avg(temp)>100
+```
 
 ![30 秒筛选查询](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-现在，会看到结果只包含 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的**轮转窗口**对事件流进行分组。 临时查询必须声明我们所希望的时间进展方式。 通过使用 **TIMESTAMP BY** 子句，我们已指定 **OUTPUTTIME** 列用于将时间与所有临时计算关联。 有关详细信息，请阅读有关 [Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的 MSDN 文章。
+会看到结果只有 245 行，以及平均温度高于 100 度的传感器的名称。 此查询按 **dspl**（传感器名称）以 30 秒的**轮转窗口**对事件流进行分组。 临时查询必须声明你希望的时间进展方式。 通过使用 TIMESTAMP BY 子句，你已指定 OUTPUTTIME 列用于将时间与所有临时计算关联   。 有关详细信息，请阅读有关 [Time Management](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)（时间管理）和 [Windowing functions](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)（窗口化函数）的文章。
 
 ### <a name="query-detect-absence-of-events"></a>查询：检测事件缺失
-如何编写查询来确定是否缺少输入事件？ 让我们找出传感器最后一次发送数据且下 5 秒未发送事件的情况。 查询在 AbsenceOfEvent.txt 文件中。
+
+如何编写查询来确定是否缺少输入事件？ 让我们找出传感器最后一次发送数据且下 5 秒未发送事件的情况。
+
+```sql
+SELECT 
+    t1.time,
+    t1.dspl AS SensorName
+INTO
+   Output
+FROM
+    InputStream t1 TIMESTAMP BY time
+LEFT OUTER JOIN InputStream t2 TIMESTAMP BY time
+ON
+    t1.dspl=t2.dspl AND
+    DATEDIFF(second,t1,t2) BETWEEN 1 and 5
+WHERE t2.dspl IS NULL
+```
 
 ![检测事件缺失](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列的带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 MSDN 文档 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)（联接）。
+此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列的带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)。
 
 ## <a name="conclusion"></a>结论
-本教程旨在演示如何编写不同的流分析查询语言查询，并在浏览器中查看结果。 但是，这仅仅是一个开始。 使用流分析还可以完成许多其他操作。 流分析支持多种输入和输出，甚至可以使用 Azure 机器学习中的函数，因而是用于分析数据流的可靠工具。 有关如何编写查询的详细信息，请阅读有关[常用查询模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
 
-<!--Not Available on https://azure.microsoft.com/en-us/documentation/learning-paths/stream-analytics/ -->
+本文旨在演示如何编写不同的流分析查询语言查询，并在浏览器中查看结果。 但这只是入门知识。 流分析支持多种输入和输出，甚至可以使用 Azure 机器学习中的函数，因而是用于分析数据流的可靠工具。 有关如何编写查询的详细信息，请阅读有关[常用查询模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
+
 
 <!--Update_Description: wording update, update meta propreties -->
 

@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/13/2020
+ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8bc4590c3606b8a6641b72cedd82dbce4917dac9
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: a6aa1b0b8e4a23b66cd10ba8086a95cc2f77694e
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630764"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123292"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
-使用语音软件开发工具包 (SDK)，应用程序可以访问语音服务的功能，这使得开发启用了语音的软件更为容易。 目前，SDK 允许访问**语音转文本**。
+使用语音软件开发工具包 (SDK)，应用程序可以访问语音服务的功能，这使得开发启用了语音的软件更为容易。 目前，这些 SDK 可以访问**语音转文本**、**文本转语音**、**语音翻译**。
 
-可以轻松通过麦克风捕获音频，读取流中的数据，或使用语音 SDK 访问存储中的音频文件。 语音 SDK 支持在 WAV/PCM 16 位 16 kHz/8 kHz 单声道音频中进行语音识别。 可以使用[语音转文本 REST 终结点](https://docs.azure.cn/zh-cn/cognitive-services/speech-service/overview#reference-docs)或[批量听录服务](https://docs.azure.cn/zh-cn/cognitive-services/speech-service/batch-transcription#supported-formats)支持其他音频格式。
+可以轻松通过麦克风捕获音频，读取流中的数据，或使用语音 SDK 访问存储中的音频文件。 语音 SDK 支持在 WAV/PCM 16 位 16 kHz/8 kHz 单声道音频中进行语音识别。 可以使用[语音转文本 REST 终结点](https://docs.azure.cn/cognitive-services/speech-service/overview#reference-docs)或[批量听录服务](https://docs.azure.cn/cognitive-services/speech-service/batch-transcription#supported-formats)支持其他音频格式。
 
  有关功能和支持平台的一般概述，请参阅文档[进入页](https://docs.azure.cn/cognitive-services/speech-service/)。
 

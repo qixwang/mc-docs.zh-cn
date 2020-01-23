@@ -1,5 +1,6 @@
 ---
 title: Azure Stack 中的配额类型 | Microsoft Docs
+titleSuffix: Azure Stack
 description: 查看和编辑可用于 Azure Stack 中的服务和资源的不同配额类型。
 services: azure-stack
 documentationcenter: ''
@@ -13,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 08/13/2019
-ms.date: 10/21/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: f133caf2bb75455bc16a9d9037ae7573c3ad47e5
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 9a5437ab988d04326e2d4fe375b40c2f82c53214
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020287"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737891"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-[配额](service-plan-offer-subscription-overview.md#plans)定义用户订阅可以预配或使用的资源限制。 例如，配额可能允许用户最多创建五个 VM。 每个资源都可以有自已的配额类型。
+[配额](service-plan-offer-subscription-overview.md#plans)定义用户订阅可以预配或使用的资源限制。 例如，配额可能允许用户最多创建五个虚拟机 (VM)。 每个资源都可以有自已的配额类型。
 
 > [!IMPORTANT]
 > 在用户门户中出现可用的新配额或者强制实施更改的配额可能需要长达两小时的时间。
@@ -37,25 +38,25 @@ ms.locfileid: "74020287"
 
 | **类型** | **默认值** | **说明** |
 | --- | --- | --- |
-| 虚拟机的数目上限 | 50 | 订阅可以在此位置创建的虚拟机数目上限。 |
-| 虚拟机核心的数目上限 | 100 | 订阅可以在此位置创建的核心数目上限（例如，A3 VM 有四个核心）。 |
+| 最大 VM 数 | 50 | 订阅可以在此位置创建的 VM 数目上限。 |
+| 最大 VM 核心数 | 100 | 订阅可以在此位置创建的核心数目上限（例如，A3 VM 有四个核心）。 |
 | 可用性集的数目上限 | 10 个 | 可以在此位置创建的可用性集数目上限。 |
-| 虚拟机规模集的数目上限 | 100 | 可以在此位置创建的虚拟机规模集数目上限。 |
-| 标准托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的标准托管磁盘的最大容量。 |
-| 高级托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的高级托管磁盘的最大容量。 |
+| 虚拟机规模集的数目上限 | 100 | 可以在此位置创建的规模集数目上限。 |
+| 标准托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的标准托管磁盘的最大容量。 此值是所有标准托管磁盘的分配大小和所有标准快照的已使用大小的总和。 |
+| 高级托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的高级托管磁盘的最大容量。 此值是所有高级托管磁盘的分配大小和所有高级快照的已使用大小的总和。 |
 
-> [!NOTE]  
-> 非托管磁盘（页 Blob）的最大容量独立于托管磁盘配额。 可以在“存储配额”中设置此值。 
+> [!NOTE]
+> 非托管磁盘（页 Blob）的最大容量独立于托管磁盘配额。 可以在“存储配额”的“最大容量(GB)”中设置此值。  
 
 ## <a name="storage-quota-types"></a>存储配额类型
 
 | **项目** | **默认值** | **说明** |
 | --- | --- | --- |
-| 最大容量 (GB) |2048 |可供此位置的订阅使用的总存储容量（包括 Blob 以及所有相关联的快照、表、队列）。 |
+| 最大容量 (GB) |2048 |可供此位置的订阅使用的总存储容量。 此值是所有 Blob（包括非托管磁盘）和所有关联的快照、表、队列的已使用大小的总和。 |
 | 存储帐户的总数 |20 个 |订阅可以在此位置创建的存储帐户数目上限。 |
 
-> [!NOTE]  
-> 托管磁盘的最大容量独立于总存储配额。 可以在“计算配额”中设置此值。 
+> [!NOTE]
+> 如果在一个订阅中超出“最大容量(GB)”  ，则无法在此订阅中创建新的存储资源。 但在 VM 中，可以继续使用此订阅中创建的非托管磁盘，这可能会导致总使用容量远远超出配额限制。<br>托管磁盘的最大容量独立于总存储配额。 可以在“计算配额”中设置此值。 
 
 ## <a name="network-quota-types"></a>网络配额类型
 
@@ -80,11 +81,11 @@ ms.locfileid: "74020287"
 3. 在打开的边栏选项卡中，选择“服务和配额”。 
 4. 在“名称”列中单击要查看的配额，将其选中。 
 
-    [![配额](media/azure-stack-quota-types/quotas1sm.png "查看配额")](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Azure Stack 管理员门户中的配额](media/azure-stack-quota-types/quotas1sm.png "在管理员门户中查看配额")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>资源提供程序
 
-1. 在管理门户的默认仪表板上，找到“资源提供程序”磁贴。 
+1. 在管理员门户的默认仪表板上，找到“资源提供程序”磁贴。 
 2. 选择要查看其配额的服务，例如“计算”、“网络”或“存储”。   
 3. 选择“配额”  ，然后选择要查看的配额。
 
@@ -98,10 +99,12 @@ ms.locfileid: "74020287"
 2. 单击要编辑其配额的计划的名称，将其选中。
 3. 在打开的边栏选项卡中，选择“服务和配额”。 
 4. 在“名称”列中单击要编辑的配额，将其选中。 
-    [![配额](media/azure-stack-quota-types/quotas1sm.png "View quotas")](media/azure-stack-quota-types/quotas1.png#lightbox)
+
+    [![Azure Stack 管理员门户中的配额](media/azure-stack-quota-types/quotas1sm.png "在管理员门户中查看配额")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5. 在打开的边栏选项卡中，选择“在计算中编辑”、“在网络中编辑”或“在存储中编辑”。   
-    ![配额](media/azure-stack-quota-types/quotas3.png "View quotas")
+
+    ![在 Azure Stack 管理员门户中编辑计划](media/azure-stack-quota-types/quotas3.png "在 Azure Stack 管理员门户中编辑计划")
 
 或者，可以按照以下过程来编辑配额：
 

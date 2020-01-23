@@ -1,25 +1,18 @@
 ---
-title: 如何使用 WebJobs SDK - Azure
-description: 详细了解如何为 WebJobs SDK 编写代码。 创建事件驱动的后台处理作业，用于访问 Azure 服务和第三方服务中的数据。
-services: app-service\web, storage
-documentationcenter: .net
+title: 如何使用 WebJobs SDK
+description: 详细了解如何为 WebJobs SDK 编写代码。 创建事件驱动的后台处理作业，用于访问 Azure 和第三方服务中的数据。
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4ccd47391d73c82107c835c4d75291c3e49cbf19
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 704558aa757fe441fb9a4d2885797e942976d049
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555920"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600212"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -93,7 +86,7 @@ static void Main(string[] args)
 版本 3.x  使用标准 ASP.NET Core API。 对 [`HostBuilder`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例调用 [`UseEnvironment`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) 方法。 传递名为 `development` 的字符串，如以下示例中所示：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -104,7 +97,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -245,7 +238,7 @@ static void Main(string[] args)
 在版本 3.*x* 中，存储绑定包含在 `Microsoft.Azure.WebJobs.Extensions.Storage` 包中。 在 `ConfigureWebJobs` 方法中调用 `AddAzureStorage` 扩展方法，如下所示：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -256,7 +249,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -264,7 +257,7 @@ static void Main()
 若要使用其他触发器和绑定类型，请安装包含这些类型的 NuGet 包，并调用在扩展中实现的 `Add<binding>` 扩展方法。 例如，若要使用 Azure Cosmos DB 绑定，请安装 `Microsoft.Azure.WebJobs.Extensions.CosmosDB` 并调用 `AddCosmosDB`，如下所示：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -275,7 +268,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -327,7 +320,7 @@ public class Functions
 在 `ConfigureWebJobs` 方法中调用 `AddExecutionContextBinding` 扩展方法，如下所示：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -338,7 +331,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -382,7 +375,7 @@ class Program
 此示例演示如何配置 Azure Cosmos DB 触发器：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -399,8 +392,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -412,7 +404,7 @@ static void Main()
 此示例演示如何配置事件中心触发器：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -428,8 +420,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -443,7 +434,7 @@ static void Main()
 #### <a name="version-3x"></a>版本 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -459,8 +450,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -489,7 +479,7 @@ static void Main(string[] args)
 此示例演示如何配置 SendGrid 输出绑定：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -504,8 +494,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -517,7 +506,7 @@ static void Main()
 此示例演示如何配置服务总线触发器：
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -532,8 +521,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -547,7 +535,7 @@ static void Main()
 #### <a name="version-3x"></a>版本 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -558,8 +546,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -818,7 +805,7 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 
 如果 Web 应用在多个实例上运行，则会有一个连续的 WebJob 在每个实例上运行，并侦听触发器和调用函数。 各种触发器绑定旨在以协作方式有效分担各个实例上的工作，以便横向扩展到多个实例后可以处理更多的负载。
 
-队列和 Blob 触发器自动阻止函数多次处理队列消息或 Blob；函数不需要是幂等的。
+尽管某些触发器可能会导致重复处理，但队列和 Blob 存储触发器可以自动阻止函数多次处理队列消息或 Blob。 有关详细信息，请参阅 Azure Functions 文档中的[针对完全相同的输入进行设计](../azure-functions/functions-idempotent.md)。
 
 计时器触发器会自动确保只会运行计时器的一个实例，因此，在给定的计划时间，不会运行多个函数实例。
 
@@ -933,7 +920,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 在生成器中调用 [`ConfigureServices`]，以将自定义 [`ITelemetryInitializer`] 添加到管道。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -960,8 +947,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -1011,7 +997,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a id="nextsteps"></a> 后续步骤
 
-本文提供的代码片段演示了如何处理 WebJobs SDK 的常用方案。 有关完整示例，请参阅 [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk-samples)。
+本文提供的代码片段演示了如何处理 WebJobs SDK 的常用方案。 有关完整示例，请参阅 [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost)。
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient

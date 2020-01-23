@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 11/14/2019
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3d6165dbfe071588374bfb8e3912b177f7ea73e7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1627be136bcb58470f02099420f2d220e10d4bc6
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336475"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776705"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -344,7 +344,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 下表中总结了本月添加的功能。
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 添加了对 Oracle Linux 6.8 和 6.9/7.0 以及 UEK5 内核的支持。
+**Linux 支持** |  添加了对具有 Red Hat 兼容内核的 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 的支持以及对 Unbreakable Enterprise Kernel (UEK) 第 5 版的支持。
 **LVM** | 添加了对 LVM 和 LVM2 卷的支持。<br/><br/> 现在支持磁盘分区和 LVM 卷上的 /boot 目录。
 **Directories** | 添加了对这些设置为独立分区的目录，或不在同一系统磁盘中的文件系统的支持：<br/><br/> /(root)、/boot、/usr、/usr/local、/var、/etc。
 **Windows Server 2008** | 添加了对动态磁盘的支持。
@@ -356,7 +356,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 添加了对 Oracle Linux 6.8 和 6.9/7.0 以及 UEK5 内核的支持。
+**Linux 支持** | 添加了对具有 Red Hat 兼容内核的 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 的支持以及对 Unbreakable Enterprise Kernel (UEK) 第 5 版的支持。
 **Linux BRTFS 文件系统** | 支持对 Azure VM 使用。
 **已启用防火墙的存储（门户/PowerShell）** | 添加了对[已启用防火墙的存储帐户](/storage/common/storage-network-security)的支持。<br/><br/> 可将已启用防火墙的存储帐户中使用非托管磁盘的 Azure VM 复制到另一个 Azure 区域，以实现灾难恢复。<br/><br/> 可将已启用防火墙的存储帐户用作非托管磁盘的目标存储帐户。<br/><br/> 支持在门户和 PowerShell 中使用。
 

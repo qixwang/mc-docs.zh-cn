@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 oirgin.date: 08/21/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: a5a5bd4abd0971029149d68a1cdce486cab50545
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 9c6c5f7113e4e8fe2b0f32c20427746dabd072ec
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807651"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939797"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>从 Azure 媒体编码器迁移到 Media Encoder Standard
 
-本文介绍了从 2020 年 3 月 1 日停用的旧 Azure 媒体编码器 (AME) 媒体处理器迁移到 Media Encoder Standard 媒体处理器的步骤。  
+本文讨论了从旧版 Azure 媒体编码器 (AME) 媒体处理器（将于 2020 年 3 月 31 日停用）迁移到 Media Encoder Standard 媒体处理器的步骤。  
 
 使用 AME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 AME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
 

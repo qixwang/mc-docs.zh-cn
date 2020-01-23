@@ -1,26 +1,15 @@
 ---
-title: Azure Service Fabric 生产就绪情况核对清单 | Azure
+title: Azure Service Fabric 生产就绪情况核对清单
 description: 遵循最佳做法，让 Service Fabric 应用程序和群集做好生产准备。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-origin.date: 06/05/2019
-ms.date: 07/08/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: d79579395291dd3711bfa64681c309760f877eb7
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 5b60a06ffd0915055c1f20bdff40c54a12c1c6e3
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844926"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742483"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -28,7 +17,9 @@ ms.locfileid: "67844926"
 
 ## <a name="prerequisites-for-production"></a>生产的先决条件
 1. Azure Service Fabric 最佳做法：[应用程序设计](./service-fabric-best-practices-applications.md)、[安全性](./service-fabric-best-practices-security.md)、[网络](./service-fabric-best-practices-networking.md)、[容量规划和缩放](./service-fabric-best-practices-capacity-scaling.md)和[基础结构即代码](./service-fabric-best-practices-infrastructure-as-code.md)。
+    
     <!--Not Available on [Monitoring and Diagnostics](./service-fabric-best-practices-monitoring.md)-->
+    
 1. 如果使用执行组件编程模型，则实现 Reliable Actors 安全配置
 1. 对于具有超过 20 个核心或 10 个节点的群集，请为系统服务创建专用的主节点类型。 添加[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，保留系统服务的主节点类型。
 1. 对主节点类型使用 D2v2 或更高版本的 SKU。 建议选择至少有 50 GB 硬盘容量的 SKU。
@@ -41,8 +32,8 @@ ms.locfileid: "67844926"
     
     <!--Not Available on and [Monitor containers with Azure Monitor logs](service-fabric-diagnostics-oms-containers.md)-->
     <!--Not Available on [Azure Monitor logs](service-fabric-diagnostics-event-analysis-oms.md)-->
-    <!--Not Available on [Azure Monitor logs](service-fabric-diagnostics-oms-agent.md)-->
-
+    
+1. 基础虚拟机规模集基础结构通过警报（例如，通过 [Azure Monitor 日志](service-fabric-diagnostics-oms-agent.md)）进行监视。
 1. 该群集始终具有[主要和辅助证书](service-fabric-cluster-security-update-certs-azure.md)（因此不会将你拒之门外）。
 1. 维护用于开发、暂存和生产的独立集群。 
 1. 首先会在开发和暂存群集中测试[应用程序升级](service-fabric-application-upgrade.md)和[群集升级](service-fabric-tutorial-upgrade-cluster.md)。 
@@ -72,4 +63,4 @@ ms.locfileid: "67844926"
 * [部署 Service Fabric Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * 了解 Service Fabric [应用程序生命周期](service-fabric-application-lifecycle.md)。
 
-<!-- Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update -->

@@ -1,5 +1,5 @@
 ---
-title: 具有角色的上下文数据 - LUIS
+title: 教程：具有角色的上下文数据 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 基于上下文查找相关的数据。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。
 services: cognitive-services
@@ -9,29 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-origin.date: 10/14/2019
-ms.date: 12/05/2019
+origin.date: 12/17/2019
+ms.date: 1/2/2020
 ms.author: diberry
-ms.openlocfilehash: 7bf13e5fb67c8390415ee783ee768ed732d41722
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 3050a5b197f7955833ff693aab5d0c289939a9f1
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884724"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854625"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
-在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。  
+在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。
 
-角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。
 
 **本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
 > * 创建新应用
-> * 添加意向 
+> * 添加意向
 > * 使用角色获取来源和目标信息
 > * 定型
 > * 发布
@@ -62,7 +60,8 @@ ms.locfileid: "74884724"
 
 1. 在弹出对话框中输入 `MoveEmployeeToCity`，然后选择“完成”。  
 
-    ![“创建新意向”对话框的屏幕截图](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![“创建新意向”对话框的屏幕截图](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. 将示例陈述添加到意向。
 

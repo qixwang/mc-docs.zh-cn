@@ -5,15 +5,15 @@ services: container-service
 author: rockboyfor
 ms.service: container-service
 ms.topic: troubleshooting
-origin.date: 08/13/2018
-ms.date: 10/28/2019
+origin.date: 12/13/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: bd627e9c3d6aaa446a827a4d84979b2d2093541b
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 0787abc07ef79a9a9b5378379f371c197f1c0c80
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068853"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165415"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -35,7 +35,7 @@ ms.locfileid: "73068853"
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 insufficientSubnetSize 错误。 我该怎么办？
 
-如果使用 Azure CNI（高级网络），AKS 会根据配置的每个节点的“最大 Pod 数”预分配 IP 地址。 AKS 群集中的节点数可介于 1 和 110 之间的任意位置。 根据配置的每个节点的最大 Pod 数，子网大小应大于“节点数和每个节点的最大 Pod 数的乘积”。 以下基本等式对此进行了概要介绍：
+如果使用 Azure CNI（高级网络），AKS 会根据配置的每个节点的“最大 Pod 数”分配 IP 地址。 根据配置的每个节点的最大 Pod 数，子网大小必须大于“节点数和每个节点的最大 Pod 数的乘积”设置。 以下公式对此进行了概述：
 
 子网大小 > 群集中的节点数（考虑到未来的缩放要求）* 每个节点的最大 Pod 数。
 
@@ -80,16 +80,15 @@ ms.locfileid: "73068853"
 
 1. 除非群集摆脱 `failed` 状态，否则 `upgrade` 和 `scale` 操作不会成功。 常见的根本问题和解决方法包括：
     * 使用**不足的计算 (CRP) 配额**进行缩放。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高计算配额](https://support.azure.cn/support/support-azure/)，然后尝试扩展到超出初始配额限制。
-    * 使用高级网络和**不足的子网（网络）资源**缩放群集。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高资源配额](../azure-resource-manager/resource-manager-quota-errors.md#solution)，然后尝试扩展到超出初始配额限制。
+    * 使用高级网络和**不足的子网（网络）资源**缩放群集。 若要解决此问题，请先将群集缩放回到配额内的稳定目标状态。 遵循[这些步骤请求提高资源配额](../azure-resource-manager/templates/error-resource-quota.md#solution)，然后尝试扩展到超出初始配额限制。
 2. 解决升级失败的根本原因后，群集应会进入成功状态。 确认处于成功状态后，重试原始操作。
 
+<a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>尝试升级或缩放群集时，有错误指出我的群集当前正在升级或升级失败
 
 *此故障排除帮助摘自 [aks-pending-upgrade](troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade)*
 
-使用单节点池时，群集上的升级和缩放操作是互斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 因此，如果当前正在执行升级或缩放操作，或者曾经尝试过这些操作，但随后失败，则其他操作会受到限制。 
-
-<!--MOONCAKE: Not Available on [multiple node pools](use-multiple-node-pools.md)-->
+带有单个节点池或[多个节点池](use-multiple-node-pools.md)的群集上的升级和缩放操作是互斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 因此，如果当前正在执行升级或缩放操作，或者曾经尝试过这些操作，但随后失败，则其他操作会受到限制。 
 
 若要诊断此问题，请运行 `az aks show -g myResourceGroup -n myAKSCluster -o table` 检索群集上的详细状态。 根据结果：
 
@@ -100,7 +99,21 @@ ms.locfileid: "73068853"
 
 如果你已将 AKS 群集移动到其他订阅，或者将拥有订阅的群集移动到新租户，则群集将会由于失去角色分配和服务主体权限而丢失功能。 由于此约束，**AKS 不支持在订阅或租户之间移动群集**。
 
-<!--Not Available on ## I'm receiving errors trying to use features that require virtual machine scale sets-->
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>尝试使用需要虚拟机规模集的功能时收到错误
+
+*此故障排除帮助来自 aka.ms/aks-vmss-enablement*
+
+可能会收到指示 AKS 群集不在虚拟机规模集上的错误，例如：
+
+**AgentPool“agentpool”已将自动缩放设置为已启用，但它未在虚拟机规模集上**
+
+若要使用群集自动缩放程序或多节点池等功能，必须创建使用虚拟机规模集的 AKS 群集。 如果尝试使用依赖于虚拟机规模集的功能，并以常规的非虚拟机规模集 AKS 群集为目标，则会返回错误。
+
+按照相应文档中的*开始之前*步骤操作，以便正确创建 AKS 群集：
+
+<!--Not Available on * [Use the cluster autoscaler](cluster-autoscaler.md)-->
+
+* [创建和使用多个节点池](use-multiple-node-pools.md)
 
 ## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>针对 AKS 资源和参数强制实施了什么命名限制？
 
@@ -108,6 +121,7 @@ ms.locfileid: "73068853"
 
 Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违反了这些限制之一，则会返回一个错误，要求你提供不同的输入。 将应用以下通用的命名准则：
 
+* 群集名称必须为 1-63 个字符。 唯一允许的字符是字母、数字、短划线和下划线。 第一个和最后一个字符必须是字母或数字。
 * AKS *MC_* 资源组名称组合了资源组名称和资源名称。 自动生成的语法 `MC_resourceGroupName_resourceName_AzureRegion` 不能超过 80 个字符。 如果需要，请缩短你的资源组名称或 AKS 群集名称的长度。
 * *dnsPrefix* 的开头和结尾必须是字母数字值。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
 
@@ -329,7 +343,10 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
     az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
     ```
 
-<!--Not Available on * For a VMSS-based cluster:-->
+* 对于基于 VMSS 的群集：
+    ```console
+    az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
+    ```
 
 ## <a name="azure-files-and-aks-troubleshooting"></a>Azure 文件存储和 AKS 故障排除
 
@@ -440,4 +457,12 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 几分钟后，代理节点将使用更新的存储密钥重试 Azure 文件装载。
 
-<!--Update_Description: wording update-->
+<!--Not Available on ### Cluster autoscaler fails to scale with error failed to fix node group sizes-->
+
+<!-- LINKS - internal -->
+
+[view-master-logs]: view-master-logs.md
+
+<!--Not Available on [cluster-autoscaler]: cluster-autoscaler.md-->
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: f9cfce23fb49006f44c466589602738e7664dd43
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 1c9fed1b67ef81899e6ca03b3e684931ec84a013
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020275"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737740"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>在 Azure Stack 中管理更新概述
 
@@ -82,7 +82,7 @@ ms.locfileid: "74020275"
 
 1. **规划更新**。
 
-    准备好 Azure Stack，使更新过程能够尽量顺畅地进行，并尽量减轻对用户造成的影响。 向用户通知任何可能的服务中断，然后遵循准备要更新的实例的步骤操作。 有关规划更新的更多步骤，请参阅[规划 Azure Stack 更新](azure-stack-update-plan.md)。
+    准备好 Azure Stack，使更新过程能够尽量顺畅地进行，并尽量减轻对用户造成的影响。 向用户通知任何可能的服务中断，然后遵循准备要更新的实例的步骤操作。 有关计划更新的更多步骤，请参阅 [Azure Stack 更新活动清单](release-notes-checklist.md)。
 
 2. **上传和准备更新包**。
 
@@ -104,6 +104,6 @@ Azure Stack 包含用于处理 Microsoft 软件更新应用程序的更新资源
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始更新过程，请遵循[规划 Azure Stack 更新](azure-stack-update-plan.md)中的步骤。
+- 若要开始更新过程，请按照 [Azure Stack 更新活动清单](release-notes-checklist.md)中的步骤操作。
 - 若要了解支持的 Azure Stack 版本，请参阅 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。  
 - 若要详细了解当前更新和最近的更新，请参阅 [Azure Stack 发行说明](release-notes.md)。

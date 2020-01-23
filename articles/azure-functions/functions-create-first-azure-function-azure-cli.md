@@ -1,29 +1,24 @@
 ---
 title: 使用 Azure CLI 创建第一个函数
 description: 了解如何使用 Azure CLI 和 Azure Functions Core Tools 创建第一个支持无服务器执行的 Azure 函数。
-author: ggailey777
-ms.author: v-junlch
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
-origin.date: 11/13/2018
-ms.date: 10/28/2019
+ms.date: 01/13/2020
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 9805c4abf1ed94a7de7b1693be2e4e1a8f65cbb5
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 8b4bde819537e3dc24ed37f521895ff1a37a2fc6
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034419"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116893"
 ---
 # <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>快速入门：使用 Azure CLI 通过命令行创建第一个函数
 
-本快速入门主题逐步讲解如何通过命令行或终端创建第一个函数。 使用 Azure CLI 创建函数应用（托管函数的[无服务器](https://azure.microsoft.com/solutions/serverless/)基础结构）。 此函数代码项目通过 [Azure Functions Core Tools](functions-run-local.md) 从模板生成，该工具也用于将函数应用项目部署到 Azure。
+本快速入门主题逐步讲解如何通过命令行或终端创建第一个函数。 使用 Azure CLI 创建函数应用（托管函数的[无服务器](https://azure.microsoft.com/solutions/serverless/)基础结构）。 函数代码项目是使用 [Azure Functions Core Tools](functions-run-local.md)（也可用于将函数应用项目部署到 Azure）从模板生成的。
 
 可以使用 Mac、Windows 或 Linux 计算机执行以下步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 运行此示例之前，必须做好以下准备：
 
@@ -51,7 +46,7 @@ ms.locfileid: "73034419"
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 使用 [az functionapp create](/cli/functionapp#az-functionapp-create) 命令创建 Function App。 
+必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 可以使用它将函数分组为一个逻辑单元，以便更轻松地管理、部署、缩放和共享资源。 使用 [az functionapp create](/cli/functionapp#az-functionapp-create) 命令创建 Function App。
 
 在以下命令中，请将 `<APP_NAME>` 占位符替换成唯一函数应用名称，将 `<STORAGE_NAME>` 替换为存储帐户名。 `<APP_NAME>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 你还应该通过 `dotnet` (C#) 或 `node` (JavaScript) 为函数应用设置 `<language>` 运行时。
 

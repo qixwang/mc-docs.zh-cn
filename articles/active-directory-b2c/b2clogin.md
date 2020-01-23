@@ -1,5 +1,6 @@
 ---
-title: 将重定向 URL 设置为 b2clogin.cn - Azure Active Directory B2C
+title: 将应用程序和 API 迁移到 b2clogin.cn
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 的重定向 URL 中使用 b2clogin.cn。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 08/17/2019
-ms.date: 09/02/2019
+ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c852056ec381b963f11564abbdd803af2de446f3
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.openlocfilehash: b9a6626eca514cd15a7ddf97460f2a5d6ff53ea0
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310746"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75623608"
 ---
 # <a name="set-redirect-urls-to-b2clogincn-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.cn
 
@@ -73,13 +73,15 @@ https://{your-tenant-name}.b2clogin.cn/{your-tenant-name}.partner.onmschina.cn/o
 https://contosob2c.b2clogin.cn/00000000-0000-0000-0000-000000000000/B2C_1_signupsignin1
 ```
 
+如需了解如何迁移受 Azure AD B2C 保护的 Azure API 管理 API，请参阅[使用 Azure AD B2C 保护 Azure API 管理 API](secure-api-management.md) 的[迁移到 b2clogin.cn](secure-api-management.md#migrate-to-b2clogincom) 部分。
+
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL)
 
 ### <a name="validateauthority-property"></a>ValidateAuthority 属性
 
 如果使用 [MSAL.NET][msal-dotnet] v2 或更低版本，请在客户端实例化中将 **ValidateAuthority** 属性设置为 `false`，以允许重定向到 *b2clogin.cn*。 在 MSAL.NET v3 和更高版本中不需要此设置。
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```
@@ -96,6 +98,10 @@ this.clientApplication = new UserAgentApplication(
   }
 );
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+如需了解如何迁移受 Azure AD B2C 保护的 Azure API 管理 API，请参阅[使用 Azure AD B2C 保护 Azure API 管理 API](secure-api-management.md) 的[迁移到 b2clogin.cn](secure-api-management.md#migrate-to-b2clogincom) 部分。
 
 <!-- LINKS - External -->
 [msal-dotnet]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet

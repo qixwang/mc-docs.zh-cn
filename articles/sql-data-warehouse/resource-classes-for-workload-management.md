@@ -7,17 +7,17 @@ manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-origin.date: 11/04/2019
-ms.date: 12/09/2019
+origin.date: 12/04/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8b4625fc5b69d63d2b17644937d150e5cc2d2cae
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 8de1369a522a2ad407084e01927dccd809fc1b00
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884653"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964888"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -25,7 +25,7 @@ ms.locfileid: "74884653"
 
 ## <a name="what-are-resource-classes"></a>什么是资源类
 
-查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以针对并发运行的查询数以及分配给每个查询的计算资源量设置限制，从而帮助管理工作负荷。  我们需要在内存和并发性之间进行权衡。
+查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以通过对并发运行的查询数和分配给每个查询的计算资源数设置限制，帮助你配置查询资源。  我们需要在内存和并发性之间进行权衡。
 
 - 较小的资源类可以减少每个查询的最大内存量，但同时会提高并发性。
 - 较大的资源类可以增加每个查询的最大内存量，但同时会降低并发性。
@@ -66,14 +66,18 @@ ms.locfileid: "74884653"
 - largerc
 - xlargerc
 
-每个资源类的内存分配如下（**与服务级别无关**）。  还列出了最小并发查询数。  对于某些服务级别，不只是可以实现最小并发性。
+每个资源类的内存分配如下所示。 
 
-| 资源类 | 内存百分比 | 最小并发查询数 |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3%                | 32                     |
-| mediumrc       | 10%               | 10 个                     |
-| largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| 服务级别  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
+| DW200c         | 12.5%             | 12.5%                  | 22%                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
+| DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
+| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
+| DW1000c 到<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+
+
 
 ### <a name="default-resource-class"></a>默认资源类
 
@@ -106,6 +110,8 @@ ms.locfileid: "74884653"
 
 > [!NOTE]  
 > 针对动态管理视图 (DMV) 或其他系统视图执行的 SELECT 语句不受任何并发限制的约束。 用户可以对系统进行监视，而不用考虑在系统中执行的查询的数目。
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>资源类不会控制的操作
 
@@ -179,6 +185,11 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 - 更大的资源类优先于更小的资源类。 例如，如果某个用户是 mediumrc 和 largerc 的成员，则查询将使用 largerc 来运行。 同样，如果某个用户是 staticrc20 和 statirc80 的成员，则查询将使用 staticrc80 资源分配来运行。
 
 ## <a name="recommendations"></a>建议
+
+>[!NOTE]
+>请考虑利用工作负荷管理功能（[工作负荷隔离](sql-data-warehouse-workload-isolation.md)、[分类](sql-data-warehouse-workload-classification.md)和[重要性](sql-data-warehouse-workload-importance.md)），以更好地控制工作负荷和可预测的性能。  
+>
+>
 
 我们建议创建一个专门用于运行特定类型的查询或负载操作的用户。 为该用户提供永久性的资源类，而不是频繁更改资源类。 静态资源类对工作负荷提供的整体控制度更高，因此，我们建议先使用静态资源类，然后再考虑动态资源类。
 
@@ -302,35 +313,35 @@ AS
 (
 SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_smallrc,1 AS slots_used_mediumrc,2 AS slots_used_largerc,4 AS slots_used_xlargerc,1 AS slots_used_staticrc10,2 AS slots_used_staticrc20,4 AS slots_used_staticrc30,4 AS slots_used_staticrc40,4 AS slots_used_staticrc50,4 AS slots_used_staticrc60,4 AS slots_used_staticrc70,4 AS slots_used_staticrc80
   UNION ALL
-    SELECT 'DW200c', 8, 8, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
+   SELECT 'DW200c',8,8,1,2,4,8,1,2,4,8,8,8,8,8
   UNION ALL
-    SELECT 'DW300c', 12, 12, 1, 2, 4, 8, 1, 2, 4, 8, 8, 8, 8, 8
+   SELECT 'DW300c',12,12,1,2,4,8,1,2,4,8,8,8,8,8
   UNION ALL
-    SELECT 'DW400c', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+   SELECT 'DW400c',16,16,1,4,8,16,1,2,4,8,16,16,16,16
   UNION ALL
-    SELECT 'DW500c', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+   SELECT 'DW500c',20,20,1,4,8,16,1,2,4,8,16,16,16,16
   UNION ALL
-    SELECT 'DW1000c', 32, 40, 1, 4, 8, 28, 1, 2, 4, 8, 16, 32, 32, 32
+   SELECT 'DW1000c',32,40,1,4,8,28,1,2,4,8,16,32,32,32
   UNION ALL
-    SELECT 'DW1500c', 32, 60, 1, 6, 13, 42, 1, 2, 4, 8, 16, 32, 32, 32
+   SELECT 'DW1500c',32,60,1,6,13,42,1,2,4,8,16,32,32,32
   UNION ALL
-    SELECT 'DW2000c', 48, 80, 2, 8, 17, 56, 1, 2, 4, 8, 16, 32, 64, 64
+   SELECT 'DW2000c',48,80,2,8,17,56,1,2,4,8,16,32,64,64
   UNION ALL
-    SELECT 'DW2500c', 48, 100, 3, 10, 22, 70, 1, 2, 4, 8, 16, 32, 64, 64
+   SELECT 'DW2500c',48,100,3,10,22,70,1,2,4,8,16,32,64,64
   UNION ALL
-    SELECT 'DW3000c', 64, 120, 3, 12, 26, 84, 1, 2, 4, 8, 16, 32, 64, 64
+   SELECT 'DW3000c',64,120,3,12,26,84,1,2,4,8,16,32,64,64
   UNION ALL
-    SELECT 'DW5000c', 64, 200, 6, 20, 44, 140, 1, 2, 4, 8, 16, 32, 64, 128
+   SELECT 'DW5000c',64,200,6,20,44,140,1,2,4,8,16,32,64,128
   UNION ALL
-    SELECT 'DW6000c', 128, 240, 7, 24, 52, 168, 1, 2, 4, 8, 16, 32, 64, 128
+   SELECT 'DW6000c',128,240,7,24,52,168,1,2,4,8,16,32,64,128
   UNION ALL
-    SELECT 'DW7500c', 128, 300, 9, 30, 66, 210, 1, 2, 4, 8, 16, 32, 64, 128
+   SELECT 'DW7500c',128,300,9,30,66,210,1,2,4,8,16,32,64,128
   UNION ALL
-    SELECT 'DW10000c', 128, 400, 12, 40, 88, 280, 1, 2, 4, 8, 16, 32, 64, 128
+   SELECT 'DW10000c',128,400,12,40,88,280,1,2,4,8,16,32,64,128
   UNION ALL
-    SELECT 'DW15000c', 128, 600, 18, 60, 132, 420, 1, 2, 4, 8, 16, 32, 64, 128
+   SELECT 'DW15000c',128,600,18,60,132,420,1,2,4,8,16,32,64,128
   UNION ALL
-    SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
+   SELECT 'DW30000c',128,1200,36,120,264,840,1,2,4,8,16,32,64,128
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
 ,map  

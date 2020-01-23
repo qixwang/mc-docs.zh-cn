@@ -6,15 +6,15 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 06/07/2019
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: 632696ba4d1cd64c981f0e4783e1e4e67fd4ae2f
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: b8a205d5a3d0337fba0f5d2d192ef139e2c418e9
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528292"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600147"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -36,7 +36,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 ## <a name="example"></a>示例
 
-我们以名为 Stock Prices 的应用程序为例。该应用程序使用名为 `Stock` 的外部 API 显示某只股票的当前市价。 Stock Prices 应用程序有一个名为 `Stock page` 的页面，可以由客户端 Web 浏览器通过 `GET /Home/Stock` 打开。 应用程序使用 HTTP 调用 `GET /api/stock/value` 来查询 `Stock` API。
+接下来举例说明。 名为 Stock Prices 的应用程序使用名为 Stock 的外部 API 显示某只股票的当前市价。 Stock Prices 应用程序有一个名为 Stock 的页面，可以由客户端 Web 浏览器通过 `GET /Home/Stock` 打开。 该应用程序使用 HTTP 调用 `GET /api/stock/value` 查询 Stock API。
 
 可以运行一个查询来分析生成的遥测数据：
 
@@ -59,14 +59,14 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 ## <a name="correlation-headers"></a>关联标头
 
-我们将过渡到 [W3C 跟踪上下文](https://w3c.github.io/trace-context/)，该协议用于定义：
+Application Insights 正在过渡到 [W3C Trace-Context](https://w3c.github.io/trace-context/)，该协议定义：
 
 - `traceparent`：承载调用的全局唯一操作 ID 和唯一标识符。
-- `tracestate`：承载跟踪系统特定的上下文。
+- `tracestate`：承载系统特定的跟踪上下文。
 
-最新版 Application Insights SDK 支持跟踪上下文协议，但你可能需要选择加入此协议（它会保持与 Application Insights SDK 支持的旧关联协议的后向兼容性）。
+最新版本 Application Insights SDK 支持 Trace-Context 协议，但你可能需要选择启用此协议。 （将保持与 Application Insights SDK 支持的旧关联协议的后向兼容性。）
 
-[关联 HTTP 协议（即 Request-Id）](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)即将弃用。 此协议定义两个标头：
+[关联 HTTP 协议（也称为 Request-Id）](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)即将弃用。 此协议定义两个标头：
 
 - `Request-Id`：承载调用的全局唯一 ID。
 - `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
@@ -76,47 +76,47 @@ Application Insights 还为关联 HTTP 协议定义了[扩展](https://github.co
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
  
   > [!NOTE]
-  > 从 `Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 开始，不需进行配置 
+  >  从 `Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 开始，不再需要进行配置。
 
-W3C 跟踪上下文支持以后向兼容方式提供，关联预期可以与使用旧版 SDK（没有 W3C 支持）进行检测的应用程序配合使用。 
+W3C Trace-Context 支持以后向兼容的方式实现。 关联预期可与使用旧版 SDK（不提供 W3C 支持）进行检测的应用程序配合使用。
 
-如果因故需要继续使用旧的 `Request-Id` 协议，则可通过以下配置禁用  跟踪上下文
+如果需要保持使用旧式 `Request-Id` 协议，可通过以下配置禁用 Trace-Context：
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
   Activity.ForceDefaultIdFormat = true;
 ```
 
-如果运行较旧版的 SDK，建议更新它，或应用以下配置来启用跟踪上下文。
-从版本 2.8.0-beta1 开始，`Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 包中提供此功能。
-此项默认禁用。 若要启用该项，请更改 `ApplicationInsights.config`：
+如果运行旧版 SDK，我们建议更新它，或应用以下配置来启用 Trace-Context。
+从版本 2.8.0-beta1 开始，`Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 包中会提供此功能。
+此项默认禁用。 若要启用它，请对 `ApplicationInsights.config` 进行以下更改：
 
-- 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素，并将值设为 `true`。
-- 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素，并将值设为 `true`。
-- 在 `TelemetryInitializers` 下添加 `W3COperationCorrelationTelemetryInitializer`，类似于 
+- 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素并将其值设置为 `true`。
+- 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素并将其值设置为 `true`。
+- 在 `TelemetryInitializers` 下添加 `W3COperationCorrelationTelemetryInitializer`。 设置如以下示例所示：
 
 ```xml
 <TelemetryInitializers>
   <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
    ...
-</TelemetryInitializers> 
+</TelemetryInitializers>
 ```
 
 ### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
 
  > [!NOTE]
-  > 从 `Microsoft.ApplicationInsights.AspNetCore` 版本 2.8.0 开始，不需进行配置。
+  > 从 `Microsoft.ApplicationInsights.AspNetCore` 版本 2.8.0 开始，不再需要进行配置。
  
-W3C 跟踪上下文支持以后向兼容方式提供，关联预期可以与使用旧版 SDK（没有 W3C 支持）进行检测的应用程序配合使用。 
+W3C Trace-Context 支持以后向兼容的方式实现。 关联预期可与使用旧版 SDK（不提供 W3C 支持）进行检测的应用程序配合使用。
 
-如果因故需要继续使用旧的 `Request-Id` 协议，则可通过以下配置禁用  跟踪上下文
+如果需要保持使用旧式 `Request-Id` 协议，可通过以下配置禁用 Trace-Context：
 
 ```csharp
   Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
   Activity.ForceDefaultIdFormat = true;
 ```
 
-如果运行较旧版的 SDK，建议更新它，或应用以下配置来启用跟踪上下文。
+如果运行旧版 SDK，我们建议更新它，或应用以下配置来启用 Trace-Context。
 
 此功能在 `Microsoft.ApplicationInsights.AspNetCore` 的版本 2.5.0-beta1 以及 `Microsoft.ApplicationInsights.DependencyCollector` 的版本 2.8.0-beta1 中提供。
 此项默认禁用。 若要启用该项，请将 `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` 设置为 `true`：
@@ -142,6 +142,7 @@ public void ConfigureServices(IServiceCollection services)
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
+    
   - 对于 Spring Boot 应用，请添加以下属性：
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -165,13 +166,13 @@ public void ConfigureServices(IServiceCollection services)
   > 理想情况下，当所有服务都已更新为支持 W3C 协议的较新版 SDK 时，应将该功能关闭。 强烈建议你尽快迁移到这些更新的 SDK。
 
 > [!IMPORTANT]
-> 请确保传入和传出配置完全相同。
+> 确保传入和传出配置完全相同。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>启用对 Web 应用的 W3C 分布式跟踪支持
 
-此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` 配置。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容：
+此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` 配置。提供 AI_AND_W3C 是为了与 Application Insights 检测的任何旧式服务向后兼容：
 
-- **NPM 设置（如果使用代码段设置，则忽略）**
+- **npm 设置（如果使用代码片段设置，则忽略）**
 
   ```javascript
   import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
@@ -179,12 +180,12 @@ public void ConfigureServices(IServiceCollection services)
   const appInsights = new ApplicationInsights({ config: {
     instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
     distributedTracingMode: DistributedTracingModes.W3C
-    /* ...Other Configuration Options... */
+    /* ...other configuration options... */
   } });
   appInsights.loadAppInsights();
   ```
   
-- **代码段设置（如果使用 NPM 设置，则忽略）**
+- **代码片段设置（如果使用 npm 设置，则忽略）**
 
   ```
   <script type="text/javascript">
@@ -193,7 +194,7 @@ public void ConfigureServices(IServiceCollection services)
     {
       instrumentationKey:"INSTRUMENTATION_KEY",
       distributedTracingMode: 2 // DistributedTracingModes.W3C
-      /* ...Other Configuration Options... */
+      /* ...other configuration options... */
     }
   );
   window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
@@ -212,17 +213,17 @@ public void ConfigureServices(IServiceCollection services)
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
 
-有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。 
+有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
 有关 OpenTracing 概念的定义，请参阅 OpenTracing [规范](https://github.com/opentracing/specification/blob/master/specification.md)和 [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遥测关联
 
-OpenCensus Python 遵循上述 `OpenTracing` 数据模型规范。 它还支持 [W3C 跟踪上下文](https://w3c.github.io/trace-context/)，无需任何配置。
+OpenCensus Python 遵循上述 `OpenTracing` 数据模型规范。 它也支持 [W3C Trace-Context](https://w3c.github.io/trace-context/)，无需任何配置。
 
 ### <a name="incoming-request-correlation"></a>传入请求关联
 
-OpenCensus Python 将传入请求中的 W3C 跟踪上下文标头关联到从请求本身生成的范围。 OpenCensus 会通过适合常用 Web 应用程序框架（`flask`、`django` 和 `pyramid`）的集成自动完成该操作。 W3C 跟踪上下文标头只需使用[正确格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充并通过请求发送即可。 下面是一个演示该操作的示例 `flask` 应用程序。
+OpenCensus Python 将传入请求中的 W3C Trace-Context 标头关联到从请求本身生成的范围。 OpenCensus 会通过适合以下流行 Web 应用程序框架的集成自动完成该操作：Flask、Django 和 Pyramid。 只需使用[正确的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充 W3C Trace-Context 标头，并通过请求发送即可。 下面是演示此设置的示例 Flask 应用程序：
 
 ```python
 from flask import Flask
@@ -245,27 +246,30 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-它在本地计算机上运行示例 `flask` 应用程序，侦听端口 `8080`。 为了关联跟踪上下文，我们向终结点发送一个请求。 在以下示例中，我们可以使用 `curl` 命令。
+此代码在本地计算机上运行示例 Flask 应用程序，并侦听端口 `8080`。 若要关联跟踪上下文，请向终结点发送一个请求。 在此示例中，可以使用 `curl` 命令：
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-看看[跟踪上下文标头格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，我们可以获得以下信息：`version`：`00`
-`trace-id`：`4bf92f3577b34da6a3ce929d0e0e4736`
-`parent-id/span-id`：`00f067aa0ba902b7`
-`trace-flags`：`01`
+查看 [Trace-Context 标头格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)，可以获得以下信息：
+
+`version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
 
 如果查看发送到 Azure Monitor 的请求条目，可以看到填充了跟踪标头信息的字段。 可以在 Azure Monitor Application Insights 资源中的“日志(分析)”下找到此数据。
 
-![“日志(分析)”中请求遥测的屏幕截图，其中的跟踪标头字段以红框突出显示](./media/opencensus-python/0011-correlation.png)
+![“日志(分析)”中的请求遥测数据](./media/opencensus-python/0011-correlation.png)
 
-`id` 字段采用 `<trace-id>.<span-id>` 格式，其中的 `trace-id` 取自在请求中传递的跟踪标头，`span-id` 是针对该范围生成的 8 字节数组。 
+`id` 字段采用 `<trace-id>.<span-id>` 格式，其中的 `trace-id` 取自在请求中传递的跟踪标头，`span-id` 是针对该范围生成的 8 字节数组。
 
 `operation_ParentId` 字段采用 `<trace-id>.<parent-id>` 格式，其中的 `trace-id` 和 `parent-id` 取自在请求中传递的跟踪标头。
 
-### <a name="logs-correlation"></a>日志关联
+### <a name="log-correlation"></a>日志关联
 
-OpenCensus Python 允许使用跟踪 ID、范围 ID 和采样标志来扩充日志记录，从而对日志进行关联。 若要执行该操作，请安装 OpenCensus [日志记录集成](https://pypi.org/project/opencensus-ext-logging/)。 以下属性将添加到 Python `LogRecord`：`traceId`、`spanId` 和 `traceSampled`。 请注意，这只对集成后创建的记录器生效。
-下面是一个演示该操作的示例应用程序。
+OpenCensus Python 允许通过添加跟踪 ID、范围 ID 和采样标志进行日志记录，从而对日志进行关联。 可以通过安装 OpenCensus [日志记录集成](https://pypi.org/project/opencensus-ext-logging/)来添加这些属性。 以下属性将添加到 Python `LogRecord` 对象：`traceId`、`spanId` 和 `traceSampled`。 请注意，这只对集成后创建的记录器生效。
+
+下面是演示此设置的示例应用程序：
 
 ```python
 import logging
@@ -284,26 +288,26 @@ with tracer.span(name='hello'):
     logger.warning('In the span')
 logger.warning('After the span')
 ```
-运行该代码时，我们会在控制台中获得以下信息：
+运行此代码时，控制台中将输出以下内容：
 ```
 2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-注意，有一个针对范围中的日志消息的 spanId，它与属于名为 `hello` 的范围的 spanId 相同。
+请注意，范围中的日志消息有一个对应的 `spanId`。 它与属于名为 `hello` 的范围的 `spanId` 相同。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
 .NET 至今已定义了多种方式来关联遥测和诊断日志：
 
-- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。 
+- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。
 - `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
 - `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 
 - Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
 
-但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 是支持跨计算机自动关联的一种方式。 .NET 库支持“DiagnosticSource”，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
+但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 支持自动跨计算机关联。 .NET 库支持 `DiagnosticSource`，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
 
-`DiagnosticSource` 中的[指南活动](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
+`DiagnosticSource` 中的[活动用户指南](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
@@ -316,24 +320,24 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK 中的遥测关联
 
-从版本 2.0.0 开始，[用于 Java 的 Application Insights SDK](../../azure-monitor/app/java-get-started.md) 支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还负责传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
+[适用于 Java 的 Application Insights SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
 
 > [!NOTE]
-> 只有通过 Apache HTTPClient 进行的调用才能使用关联功能。 如果使用 Spring RestTemplate 或 Feign，则二者实际上都可以与 Apache HTTPClient 配合使用。
+> 只有通过 Apache HttpClient 进行的调用才能使用关联功能。 Spring RestTemplate 和 Feign 实际上都可以与 Apache HttpClient 配合使用。
 
-目前不支持跨消息传送技术（例如，Kafka、RabbitMQ 或 Azure 服务总线）自动进行上下文传播。 但是，可以通过 `trackDependency` 和 `trackRequest` API 手动编码此类方案。 在这些 API 中，让依赖项遥测代表由生成者排队的消息，让请求代表由使用者处理的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
+目前不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 可以使用 `trackDependency` 和 `trackRequest` 方法手动为此类方案编写代码。 在这些方法中，依赖项遥测表示生成者排队的消息。 请求表示使用者正在处理的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
 
-### <a name="telemetry-correlation-in-asynchronous-java-application"></a>异步 Java 应用程序中的遥测关联
+### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>异步 Java 应用程序中的遥测关联
 
-若要在异步 Spring Boot 应用程序中关联遥测，请遵循[此](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)深入文章。 它为检测 Spring 的 [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) 和 [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) 提供了指导。 
+若要了解如何在异步 Spring Boot 应用程序中关联遥测，请参阅[异步 Java 应用程序中的分布式跟踪](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)。 此文提供了有关检测 Spring 的 [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) 和 [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) 的指导。
 
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>角色名称
 
-有时候，可能需要对组件名称在[应用程序映射](../../azure-monitor/app/app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一，以便手动设置 `cloud_RoleName`：
+你可能需要对组件名称在[应用程序映射](../../azure-monitor/app/app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一来手动设置 `cloud_RoleName`：
 
-- 从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
+- 使用 Application Insights Java SDK 2.5.0 和更高版本时，可以通过将 `<RoleName>` 添加到 ApplicationInsights.xml 文件来指定 `cloud_RoleName`：
 
   ```XML
   <?xml version="1.0" encoding="utf-8"?>
@@ -344,11 +348,11 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
   </ApplicationInsights>
   ```
 
-- 如果你通过 Application Insights Spring Boot 入门版使用 Spring Boot，则唯一需要执行的更改是在 application.properties 文件中为应用程序设置自定义名称。
+- 如果将 Spring Boot 与 Application Insights Spring Boot Starter 配合使用，则只需在 application.properties 文件中为应用程序设置自定义名称：
 
   `spring.application.name=<name-of-app>`
 
-  Spring Boot 入门版会自动将 `cloudRoleName` 分配给你为 `spring.application.name` 属性输入的值。
+  Spring Boot Starter 会自动将 `cloudRoleName` 分配给你为 `spring.application.name` 属性输入的值。
 
 ## <a name="next-steps"></a>后续步骤
 

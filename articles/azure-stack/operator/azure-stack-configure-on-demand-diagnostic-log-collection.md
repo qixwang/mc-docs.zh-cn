@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 10/30/2019
-ms.date: 11/18/2019
+origin.date: 11/07/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: shisab
-ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: caf0a4f3537a4171cf79f2e9b6c3953907a53ce8
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: ae0463fb5bc562f424e2f52a0ee90aa68f5fe7a1
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020268"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737878"
 ---
 # <a name="collect-azure-stack-diagnostic-logs-on-demand"></a>按需收集 Azure Stack 诊断日志
 
 *适用于：Azure Stack 集成系统*
 
-在故障排除过程中，Microsoft 客户支持服务 (CSS) 可能需要分析诊断日志。 从 1907 版开始，Azure Stack 操作员可以通过“帮助和支持”将按需诊断日志上传到 Azure 中的 Blob 容器。  如果门户不可用，操作员可以通过特权终结点 (PEP) 使用 Get-AzureStackLog 来收集日志。 本主题介绍如何通过这两种方法按需收集诊断日志。
+在故障排除过程中，Azure 客户支持服务 (CSS) 可能需要分析诊断日志。 从 1907 版开始，Azure Stack 操作员可以通过“帮助和支持”将诊断日志上传到 Azure 中的 Blob 容器。  相对于以前使用 PowerShell 的方法，建议使用“帮助和支持”  ，因为它更简单。 但是，如果门户不可用，操作员可以继续使用 **Get-AzureStackLog** 通过特权终结点 (PEP) 收集日志，就像在以前的版本中一样。 本主题介绍如何通过这两种方法按需收集诊断日志。
 
 >[!Note]
 >作为按需收集日志的备用方案，可以通过启用[诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)功能来简化故障排除过程。 如果需要调查系统运行状况，请自动上传日志供 CSS 分析。 
@@ -47,37 +47,13 @@ ms.locfileid: "74020268"
 >[!NOTE]
 >如果启用了诊断日志自动收集，“帮助和支持”会显示何时在进行日志收集。  如果单击“立即收集日志”以收集特定时间的日志，而此时系统正在进行自动日志收集，则当自动日志收集完成后，按需收集就会开始。  
 
-## <a name="using-pep-to-collect-diagnostic-logs"></a>使用 PEP 收集诊断日志
+## <a name="use-the-privileged-endpoint-pep-to-collect-diagnostic-logs"></a>使用特权终结点 (PEP) 收集诊断日志
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
-可以通过 Azure Stack 诊断工具轻松高效地进行日志收集。 下图显示了诊断工具的工作原理：
 
-![Azure Stack 诊断工具工作流图](media/azure-stack-diagnostics/get-azslogs.png)
 
-### <a name="trace-collector"></a>跟踪收集器
-
-跟踪收集器默认启用，可以在后台持续运行，以便从 Azure Stack 组件服务收集所有 Windows 事件跟踪 (ETW) 日志。 ETW 日志存储在一个常用的本地共享中，其时间限制为五天。 一旦达到此限制，就会在创建新文件时删除最旧的文件。 每个文件默认允许的最大大小为 200 MB。 每 2 分钟进行一次大小检查，如果当前文件 >= 200 MB，则会保存该文件并生成新文件。 按事件会话生成的文件的总大小也存在 8 GB 的限制。
-
-### <a name="get-azurestacklog"></a>Get-AzureStackLog
-
-可以使用 PowerShell cmdlet Get-AzureStackLog 从 Azure Stack 环境中的所有组件收集日志。 此工具将日志以 zip 文件形式保存在用户定义的位置。 如果 Azure Stack 技术支持团队需要日志来排查问题，他们可能要求你运行 Get-AzureStackLog。
-
-> [!CAUTION]
-> 这些日志文件可能包含个人身份信息 (PII)。 在公开发布任何日志文件之前，请考虑到这一因素。
-
-下面是一些收集的示例日志类型：
-
-* **Azure Stack 部署日志**
-* **Windows 事件日志**
-* **Panther 日志**
-* **群集日志**
-* **存储诊断日志**
-* **ETW 日志**
-
-这些文件由跟踪收集器收集并保存在共享中。 然后，可以根据需要使用 Get-AzureStackLog 来收集它们。
-
-#### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>在 Azure Stack 集成系统上运行 Get-AzureStackLog
+### <a name="run-get-azurestacklog-on-azure-stack-integrated-systems"></a>在 Azure Stack 集成系统上运行 Get-AzureStackLog
 
 若要在集成系统上运行 Get-AzureStackLog，需访问特权终结点 (PEP)。 下面是一个可以通过 PEP 来运行的示例脚本，用于在集成系统上收集日志：
 
@@ -101,7 +77,7 @@ if ($session) {
 }
 ```
 
-#### <a name="run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>在 Azure Stack 开发工具包 (ASDK) 系统上运行 Get-AzureStackLog
+### <a name="run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>在 Azure Stack 开发工具包 (ASDK) 系统上运行 Get-AzureStackLog
 
 使用以下步骤在 ASDK 主机上运行 `Get-AzureStackLog`。
 
@@ -264,4 +240,34 @@ if ($session) {
    Remove-PSSession -Session $session
 }
 ```
+
+### <a name="how-diagnostic-log-collection-using-the-pep-works"></a>使用 PEP 收集诊断日志的工作原理
+
+可以通过 Azure Stack 诊断工具轻松高效地进行日志收集。 下图显示了诊断工具的工作原理：
+
+![Azure Stack 诊断工具工作流图](media/azure-stack-diagnostics/get-azslogs.png)
+
+
+#### <a name="trace-collector"></a>跟踪收集器
+
+跟踪收集器默认启用，可以在后台持续运行，以便从 Azure Stack 组件服务收集所有 Windows 事件跟踪 (ETW) 日志。 ETW 日志存储在一个常用的本地共享中，其时间限制为五天。 一旦达到此限制，就会在创建新文件时删除最旧的文件。 每个文件默认允许的最大大小为 200 MB。 每 2 分钟进行一次大小检查，如果当前文件 >= 200 MB，则会保存该文件并生成新文件。 按事件会话生成的文件的总大小也存在 8 GB 的限制。
+
+#### <a name="get-azurestacklog"></a>Get-AzureStackLog
+
+可以使用 PowerShell cmdlet Get-AzureStackLog 从 Azure Stack 环境中的所有组件收集日志。 此工具将日志以 zip 文件形式保存在用户定义的位置。 如果 Azure Stack 技术支持团队需要日志来排查问题，他们可能要求你运行 Get-AzureStackLog。
+
+> [!CAUTION]
+> 这些日志文件可能包含个人身份信息 (PII)。 在公开发布任何日志文件之前，请考虑到这一因素。
+
+下面是一些收集的示例日志类型：
+
+* **Azure Stack 部署日志**
+* **Windows 事件日志**
+* **Panther 日志**
+* **群集日志**
+* **存储诊断日志**
+* **ETW 日志**
+
+这些文件由跟踪收集器收集并保存在共享中。 然后，可以根据需要使用 Get-AzureStackLog 来收集它们。
+
 

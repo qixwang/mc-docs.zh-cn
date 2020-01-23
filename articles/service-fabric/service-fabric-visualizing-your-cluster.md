@@ -1,26 +1,17 @@
 ---
-title: 使用 Azure Service Fabric Explorer 可视化群集 | Azure
+title: 使用 Azure Service Fabric Explorer 将群集可视化
 description: Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群集中的云应用程序和节点的应用程序。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 01/24/2019
-ms.date: 07/08/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9472cb59af5845d2070d739e003c8047a844b5cc
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: a6f292a89d4a0044ebe2d3d50a57d7a6f36d9cdd
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844918"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741929"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
 
@@ -95,7 +86,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 
 例如，若要删除某应用程序实例，只需从左侧树中选择该应用程序，然后选择“操作” > “删除应用程序”   。
 
-![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
+![在 Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
 > [!TIP]
 > 可以通过单击每个元素旁边的省略号执行相同的操作。
@@ -104,7 +95,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 >
 >
 
-还可使用 Service Fabric Explorer 为给定应用程序类型和版本创建应用程序实例。 在树视图中选择应用程序类型，在右窗格中单击想要的版本旁边的“**创建应用实例**”链接。
+还可使用 Service Fabric Explorer 为给定应用程序类型和版本创建应用程序实例。 在树视图中选择应用程序类型，并在右侧窗格中单击所需版本旁边的“创建应用实例”  链接。
 
 ![在 Service Fabric Explorer 中创建应用程序实例][sfx-create-app-instance]
 
@@ -129,11 +120,27 @@ EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 S
 
 ![Service Fabric Explorer 群集图][sfx-imagestore]
 
+## <a name="backup-and-restore"></a>备份和还原
+Service Fabric Explorer 提供了与[备份和还原](./service-fabric-reliable-services-backup-restore.md)进行交互的功能。 若要查看 SFX 中的备份和还原功能，必须启用高级模式。
+
+![启用高级模式][0]
+
+可以执行以下操作：
+
+* 创建、编辑和删除备份策略。
+* 为应用程序、服务或分区启用和禁用备份。
+* 为应用程序、服务或分区暂停和恢复备份。
+* 触发和跟踪分区备份。
+* 触发和跟踪分区还原。
+
+有关备份和还原服务的详细信息，请参阅 [REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)。
+
 ## <a name="next-steps"></a>后续步骤
 * [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 应用程序](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
+
 [sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png
 [sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-map.png
 [sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/sfx-application-tree.png
@@ -142,5 +149,6 @@ EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 S
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 
-<!--Update_Description: update meta properties-->
+<!-- Update_Description: update meta properties, wording update, update link -->

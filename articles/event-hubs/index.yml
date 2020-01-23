@@ -11,14 +11,14 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: v-tawe
-  ms.date: 10/23/2019
-  origin.date: 09/05/2019
-  ms.openlocfilehash: 57f5f513960393c3ed159f57ea46cf0347cd474b
-  ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+  origin.date: 01/17/2020
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 1020d3b08889556539b291e92f378ad0e67cc6fb
+  ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/24/2019
-  ms.locfileid: "72872842"
+  ms.lasthandoff: 01/16/2020
+  ms.locfileid: "76123343"
 landingContent:
 - title: 关于事件中心
   linkLists:

@@ -12,22 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/05/2018
-ms.date: 08/27/2019
+ms.date: 01/07/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ca91588066eb7eed7889fa5aaa1430ab4cf7b6
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 6551b57fbd9c17e80c7c0703114b9528b2d29bb3
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776898"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
-通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可以通过 [Azure AD Graph API 目录扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)或 [Microsoft Graph](https://developer.microsoft.com/graph/) 使用这些属性。 可以使用 [Azure AD Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china/)和 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。
+通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可以通过 [Azure AD Graph API 目录扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)或 [Microsoft Graph](https://developer.microsoft.com/graph/) 使用这些属性。 可以使用 [Azure AD Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china/)和 [Microsoft Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)查看可用属性。 
 
 目前，没有任何 Office 365 工作负荷使用这些属性。
+
+## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>自定义要与 Azure AD 同步的属性
 
 在安装向导的自定义设置路径中配置要同步的其他属性。
 
@@ -50,11 +51,17 @@ ms.locfileid: "70134083"
 
 Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度为 250 个字符。 如果属性值更长，则同步引擎会将其截断。
 
-在安装 Azure AD Connect 期间，会注册可以使用这些属性的应用程序。 可以在 Azure 门户中看到此应用程序。
+## <a name="configuration-changes-in-azure-ad-made-by-the-wizard"></a>向导在 Azure AD 中进行的配置更改
+
+在安装 Azure AD Connect 期间，会注册可以使用这些属性的应用程序。 可以在 Azure 门户中看到此应用程序。 其名称始终为“租户架构扩展应用”  。
 
 ![架构扩展应用](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-这些属性带有 extension \_{AppClientId}\_ 前缀。 对于 Azure AD 租户中的所有属性，AppClientId 具有相同的值。
+请确保选择“所有应用程序”  以查看此应用。
+
+这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀  。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
+
+## <a name="viewing-attributes-using-graph"></a>使用 Graph 查看属性
 
 现在可以通过 Azure AD Graph API 使用这些属性。 可以使用 [Azure AD Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china/)查询它们。
 
@@ -63,7 +70,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 另外，也可以使用 [Microsoft Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)通过 Microsoft Graph API 查询属性。
 
 >[!NOTE]
-> 你需要指定要返回的属性。 按如下所示显式选择属性：https\://microsoftgraph.chinacloudapi.cn/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division。 
+> 在 Microsoft Graph 中，你需要请求要返回的属性。 按如下所示显式选择属性：https\://microsoftgraph.chinacloudapi.cn/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division。
 >
 > 有关详细信息，请参阅 [Microsoft Graph：使用查询参数](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)。
 

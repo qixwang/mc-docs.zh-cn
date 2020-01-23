@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Resource Manager 模板创建 Azure 服务总线主题订阅和规则 | Azure Docs
+title: 使用 Azure 模板创建服务总线主题订阅和规则
 description: 使用 Azure Resource Manager 模板创建包含主题、订阅和规则的服务总线命名空间
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 11/27/2019
+ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e116c39edec9a6e8ea45d373c8a02df085e5a058
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 276b762f6c2545d1b55a0479f88c2242c44b53bd
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330100"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853831"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建包含主题、订阅和规则的服务总线命名空间
 
@@ -46,7 +46,7 @@ ms.locfileid: "71330100"
 
 使用此模板，你将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
 
-[服务总线主题和订阅](./service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。  使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
+[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。  使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## <a name="what-are-rules-filters"></a>什么是规则（筛选器）？
 
@@ -176,8 +176,6 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅下面的主题，其中演示了如何创建订阅筛选器：[使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
-
 通过查看以下文章了解如何管理这些资源：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)

@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - Azure Cosmos DB 更新 MongoDB API 的 RU/秒
-description: Azure PowerShell 脚本 - Azure Cosmos DB 更新 MongoDB API 的 RU/秒
+title: 用于更新 RU/秒的 PowerShell 脚本 - Azure Cosmos DB 的 API for MongoDB
+description: 了解如何使用 PowerShell 脚本更新 Azure Cosmos DB 的 API for MongoDB 中数据库或容器的吞吐量
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-origin.date: 05/18/2019
-ms.date: 10/28/2019
+origin.date: 12/02/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: ff2538f824bc61029553f5ecedb298916ed56f4a
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 82f4e7ffd05c9e98e3109bdac0eadbe4647b93b2
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914478"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270089"
 ---
 # <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>更新 Azure Cosmos DB 的数据库或集合的 RU/秒 - MongoDB API
 
@@ -82,4 +82,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 可以在 [Azure Cosmos DB PowerShell 脚本](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 11/13/2019
-ms.date: 12/09/2019
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 9ee3646d190de18f7cba7cac961d72d8dec6d87b
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: f428b700b792e76f6938a641b6c323d51ff3d0aa
+ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807548"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939792"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 

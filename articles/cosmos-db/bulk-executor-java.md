@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 01/13/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 41665d8d59354719f87a043c99a4f7bf8a9f71e2
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 174fa458f01fcf7f0b2721458229fbc25055caef
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599855"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270070"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -23,7 +23,7 @@ ms.locfileid: "75599855"
 
 目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 Java 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "75599855"
 
     - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档  
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档  
 
     - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 
@@ -143,8 +143,6 @@ ms.locfileid: "75599855"
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中批量更新数据
 
 可以使用 BulkUpdateAsync API 更新现有文档。 此示例将 Name 字段设置为新值，并从现有文档中删除 Description 字段。 有关完整的受支持字段更新操作集，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。 
-
-<!--CORRECT ON [API documentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)-->
 
 1. 定义更新项以及相应的字段更新操作。 此示例使用 SetUpdateOperation 更新 Name 字段，并使用 UnsetUpdateOperation 删除所有文档中的 Description 字段。 还可以执行其他操作，例如，根据特定的值递增文档字段、将特定的值推送到数组字段，或者从数组字段中删除特定的值。 若要了解批量更新 API 提供的不同方法，请参阅 [API 文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)。  
 

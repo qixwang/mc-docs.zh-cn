@@ -1,27 +1,17 @@
 ---
-title: 在 Visual Studio 中管理 Azure Service Fabric 应用程序 | Azure
+title: 在 Visual Studio 中管理 Azure Service Fabric 应用程序
 description: 使用 Visual Studio 来创建、开发、打包、部署和调试 Azure Service Fabric 应用程序和服务。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.custom: vs-azure
-ms.workload: azure-vs
 origin.date: 03/26/2018
-ms.date: 03/04/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 021751526cfe5460ba7c42e3d46d1601c9a182eb
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: d37d8996b17aa13e29bdabbe3c20a99ffaf3d6ef
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626879"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742498"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。
@@ -38,13 +28,13 @@ ms.locfileid: "58626879"
 在 Visual Studio 中，按 **F5** 部署应用程序，然后将调试程序附加到所有应用程序实例。 可以使用 **Ctrl + F5** 部署应用程序而不进行调试，或者使用发布配置文件将应用程序发布到本地或远程群集。
 
 ### <a name="application-debug-mode"></a>应用程序调试模式
-Visual Studio 提供一个名为“应用程序调试模式”的属性，它控制 Visual Studio 在调试时如何处理应用程序部署。
+Visual Studio 提供一个名为“应用程序调试模式”  的属性，它控制 Visual Studio 在调试时如何处理应用程序部署。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>设置“应用程序调试模式”属性
-1. 在 Service Fabric 应用程序项目 (<em>.sfproj) 的快捷菜单上，选择“属性”（或按 **F4** 键）。
-2. 在“属性”窗口中，设置“应用程序调试模式”属性。
+1. 在 Service Fabric 应用程序项目 (*.sfproj) 的快捷菜单上，选择“属性”  （或按 **F4** 键）。
+2. 在“属性”窗口中，设置“应用程序调试模式”属性。  
 
-![设置“应用程序调试模式”属性][debugmodeproperty]
+    ![设置“应用程序调试模式”属性][debugmodeproperty]
 
 #### <a name="application-debug-modes"></a>应用程序调试模式
 
@@ -69,7 +59,7 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 ![新的服务会添加到应用程序清单中][newserviceapplicationmanifest]
 
 ## <a name="package-your-service-fabric-application"></a>打包 Service Fabric 应用程序
-要将应用程序及其服务部署到群集中，你需要创建应用程序包。  该包整理应用程序清单、服务清单和特定布局的其他必要文件。  Visual Studio 设置和管理“pkg”目录中应用程序项目的文件夹中的程序包。  单击“应用程序”上下文菜单中的“包”可创建或更新应用程序包。
+要将应用程序及其服务部署到群集中，你需要创建应用程序包。  该包整理应用程序清单、服务清单和特定布局的其他必要文件。  Visual Studio 设置和管理“pkg”目录中应用程序项目的文件夹中的程序包。  单击“应用程序”上下文菜单中的“包”可创建或更新应用程序包。  
 
 ## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>使用云资源管理器删除应用程序和应用程序类型
 可以使用云资源管理器从 Visual Studio 内部执行基本的群集管理操作，可以从“视图”  菜单启动该管理器。 例如，可以删除本地或远程群集上的应用程序和取消预配其上的应用程序类型。
@@ -82,6 +72,7 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+
 ## <a name="next-steps"></a>后续步骤
 * [Service Fabric 应用程序模型](service-fabric-application-model.md)
 * [Service Fabric 应用程序部署](service-fabric-deploy-remove-applications.md)
@@ -90,6 +81,7 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 * [使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
+
 [addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
 [newservice]:./media/service-fabric-manage-application-in-visual-studio/newservice.png

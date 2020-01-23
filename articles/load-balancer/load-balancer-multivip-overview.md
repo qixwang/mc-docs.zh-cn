@@ -1,7 +1,6 @@
 ---
-title: Azure 负载均衡器的多个前端
-titlesuffix: Azure Load Balancer
-description: Azure 负载均衡器上的多个前端概述
+title: 多个前端 - Azure 负载均衡器
+description: 通过此学习路径，开始大致了解 Azure 标准负载均衡器上的多个前端
 services: load-balancer
 documentationcenter: na
 author: WenJason
@@ -12,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/07/2019
-ms.date: 08/26/2019
+ms.date: 01/20/2020
 ms.author: v-jay
-ms.openlocfilehash: 90500955f7413004816e31a524cca4da3bf5b7a0
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 304caae3652bf3b9aef034e70285cb6d50a36910
+ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993369"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75964924"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -31,7 +30,7 @@ ms.locfileid: "69993369"
 
 下表包含一些示例前端配置：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -55,7 +54,7 @@ Azure 负载均衡器允许在相同的负载均衡器配置中混用这两种�
 
 在此方案中，前端的配置如下：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -71,7 +70,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 现在，Azure 负载均衡器的完整映射如下：
 
-| 规则 | 前端 IP 地址 | 协议 | 端口 | 目标 | 端口 |
+| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
@@ -100,12 +99,32 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 * 前端 1：来宾 OS 中的环回接口，该接口上已配置前端 1 的 IP 地址
 * 前端 2：来宾 OS 中的环回接口，该接口上已配置前端 2 的 IP 地址
 
+对于后端池中的每个 VM，请在 Windows 命令提示符下运行以下命令。
+
+若要获取 VM 上的接口名称列表，请键入以下命令：
+
+    netsh interface show interface 
+
+对于 VM NIC（Azure 托管），请键入以下命令：
+
+    netsh interface ipv4 set interface �interfacename� weakhostreceive=enabled
+   （将 interfacename 替换为此接口的名称）
+
+对于添加的每个环回接口，重复以下命令：
+
+    netsh interface ipv4 set interface �interfacename� weakhostreceive=enabled 
+   （将 interfacename 替换为此环回接口的名称）
+     
+    netsh interface ipv4 set interface �interfacename� weakhostsend=enabled 
+   （将 interfacename 替换为此环回接口的名称）
+
 > [!IMPORTANT]
 > 环回接口的配置在来宾 OS 中执行。 此配置不是由 Azure 执行或管理。 如果没有此配置，规则无法正常运行。 运行状况探测定义使用 VM 的 DIP（而不是环回接口）表示 DSR 前端。 因此，服务必须在 DIP 端口上提供探测响应，以反映表示 DSR 前端的环回接口上提供的服务的状态。
 
+
 假设上述方案使用相同的前端配置：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -119,7 +138,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 下表显示负载均衡器中的完整映射：
 
-| 规则 | 前端 IP 地址 | 协议 | 端口 | 目标 | 端口 |
+| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |与前端 (65.52.0.1) 相同 |与前端 (80) 相同 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |与前端 (65.52.0.2) 相同 |与前端 (80) 相同 |

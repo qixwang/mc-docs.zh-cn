@@ -9,12 +9,12 @@ manager: digimobile
 origin.date: 10/17/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b944a7d95f79a33849e8c773831eb1195b1a14bf
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 6dd34100c3436227b59b08e261154c477d7dc91a
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982123"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116941"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -166,7 +166,8 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
                 "location": "[parameters('appLocation')]",
                 "tags": {},
                 "properties": {
-                    "ApplicationId": "[parameters('appName')]"
+                    "ApplicationId": "[parameters('appName')]",
+                    "retentionInDays": "[parameters('retentionInDays')]"
                 },
                 "dependsOn": []
             },
@@ -180,7 +181,6 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -252,10 +252,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 若要使用上面的模板将数据保留期设置为 365 天，请运行以下代码：
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
-               -TemplateFile .\template1.json `
-               -retentionInDays 365 `
-               -appName myApp
+New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+       -TemplateFile .\template1.json `
+       -retentionInDays 365 `
+       -appName myApp
 ```
 
 也可使用以下脚本来更改保留期。 请复制此脚本，将其另存为 `Set-ApplicationInsightsRetention.ps1`。
@@ -356,188 +356,19 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
                -appName myApp
 ```
 
-|价格代码|计划|
+|价格代码|plan|
 |---|---|
 |1|“每 GB”计划（以前名为“基本”计划）|
 |2|“每节点”计划（以前名为“企业”计划）|
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 
-要同时设置指标警报和应用资源，请将如下代码合并到模板文件：
-
-```JSON
-{
-    parameters: { ... // existing parameters ...
-            "responseTime": {
-              "type": "int",
-              "defaultValue": 3,
-              "minValue": 1,
-              "metadata": {
-                "description": "Enter response time threshold in seconds."
-              }
-    },
-    variables: { ... // existing variables ...
-      // Alert names must be unique within resource group.
-      "responseAlertName": "[concat('ResponseTime-', toLower(parameters('appName')))]"
-    }, 
-    resources: { ... // existing resources ...
-     {
-      //
-      // Metric alert on response time
-      //
-      "name": "[variables('responseAlertName')]",
-      "type": "Microsoft.Insights/alertrules",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]",
-      // Ensure this resource is created after the app resource:
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
-      },
-      "properties": {
-        "name": "[variables('responseAlertName')]",
-        "description": "response time alert",
-        "isEnabled": true,
-        "condition": {
-          "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-          "dataSource": {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('microsoft.insights/components', parameters('appName'))]",
-            "metricName": "request.duration"
-          },
-          "threshold": "[parameters('responseTime')]", //seconds
-          "windowSize": "PT15M" // Take action if changed state for 15 minutes
-        },
-        "actions": [
-          {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-            "sendToServiceOwners": true,
-            "customEmails": []
-          }
-        ]
-      }
-    }
-}
-```
-
-调用模板时，可选择添加此参数：
-
-    `-responseTime 2`
-
-当然可以参数化其他字段。 
-
-要查找其他警报规则的类型名称和配置详细信息，请手动创建规则，并在 [Azure 资源管理器](https://resources.azure.com/)中对其进行检查。 
+若要自动创建指标警报，请参阅[指标警报模板](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)一文
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
 
-此示例用于进行 ping 测试（测试一页）。  
-
-可用性测试中**有两个部分**：测试本身和通知失败的警报。
-
-将以下代码合并到创建应用的模板文件中。
-
-```JSON
-{
-    parameters: { ... // existing parameters here ...
-      "pingURL": { "type": "string" },
-      "pingText": { "type": "string" , defaultValue: ""}
-    },
-    variables: { ... // existing variables here ...
-      "pingTestName":"[concat('PingTest-', toLower(parameters('appName')))]",
-      "pingAlertRuleName": "[concat('PingAlert-', toLower(parameters('appName')), '-', subscription().subscriptionId)]"
-    },
-    resources: { ... // existing resources here ...
-    { //
-      // Availability test: part 1 configures the test
-      //
-      "name": "[variables('pingTestName')]",
-      "type": "Microsoft.Insights/webtests",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]",
-      // Ensure this is created after the app resource:
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
-      },
-      "properties": {
-        "Name": "[variables('pingTestName')]",
-        "Description": "Basic ping test",
-        "Enabled": true,
-        "Frequency": 900, // 15 minutes
-        "Timeout": 120, // 2 minutes
-        "Kind": "ping", // single URL test
-        "RetryEnabled": true,
-        "Locations": [
-          {
-            "Id": "us-va-ash-azr"
-          },
-          {
-            "Id": "emea-nl-ams-azr"
-          },
-          {
-            "Id": "apac-jp-kaw-edge"
-          }
-        ],
-        "Configuration": {
-          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExecutionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
-        },
-        "SyntheticMonitorId": "[variables('pingTestName')]"
-      }
-    },
-
-    {
-      //
-      // Availability test: part 2, the alert rule
-      //
-      "name": "[variables('pingAlertRuleName')]",
-      "type": "Microsoft.Insights/alertrules",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]", 
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource",
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/webtests', variables('pingTestName')))]": "Resource"
-      },
-      "properties": {
-        "name": "[variables('pingAlertRuleName')]",
-        "description": "alert for web test",
-        "isEnabled": true,
-        "condition": {
-          "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.LocationThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition",
-          "dataSource": {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('microsoft.insights/webtests', variables('pingTestName'))]",
-            "metricName": "GSMT_AvRaW"
-          },
-          "windowSize": "PT15M", // Take action if changed state for 15 minutes
-          "failedLocationCount": 2
-        },
-        "actions": [
-          {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-            "sendToServiceOwners": true,
-            "customEmails": []
-          }
-        ]
-      }
-    }
-}
-```
-
-要发现其他测试位置的代码，或自动创建更复杂的 Web 测试，请手动创建示例，并在 [Azure 资源管理器](https://resources.azure.com/)中参数化代码。
+若要自动执行可用性测试，请参阅[指标警报模板](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)一文。
 
 ## <a name="add-more-resources"></a>添加更多资源
 

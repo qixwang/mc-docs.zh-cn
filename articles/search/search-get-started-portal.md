@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 48fc1158886ca8aeae391b4ffb12c1018bb08732
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/17/2020
+ms.openlocfilehash: c5057a0d6944f80641eea92926c7b2f3e63ea0d9
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336038"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123173"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "75336038"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
@@ -138,6 +138,10 @@ ms.locfileid: "75336038"
 我们继续。现在应已创建了一个可以使用内置[**搜索资源管理器**](search-explorer.md)查询页查询的搜索索引。 该页提供了一个搜索框，用于测试任意查询字符串。
 
 **搜索浏览器**仅用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)，但它接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作中使用的所有搜索参数。
+
+> [!TIP]
+> 以下步骤在 [Azure 认知搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)第 6 分 8 秒处开始演示。
+>
 
 1. 单击命令栏上的“搜索浏览器”  。
 
@@ -265,7 +269,7 @@ ms.locfileid: "75336038"
 
 ## <a name="next-steps"></a>后续步骤
 
-该门户对于初始探索和小任务非常有用，而尽早查看 API 有助于更深入地了解概念和工作流：
+使用门户向导生成在浏览器中运行的即用型 Web 应用。 可以在刚刚创建的小索引上尝试使用此向导，也可以使用内置的示例数据集之一来获得更丰富的搜索体验。
 
 > [!div class="nextstepaction"]
-> [使用 .NET SDK 创建索引](https://docs.azure.cn/search/search-create-index-dotnet)
+> [在门户中创建搜索应用](search-create-app-portal.md)

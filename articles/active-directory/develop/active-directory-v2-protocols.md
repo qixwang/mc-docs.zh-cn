@@ -1,32 +1,27 @@
 ---
-title: 了解 Microsoft 标识平台支持的授权协议 | Azure
+title: OAuth 2.0 和 OpenID Connect 协议 - Microsoft 标识平台 | Azure
 description: 有关 Microsoft 标识平台终结点支持的 OAuth 2.0 和 OpenID Connect 协议的指导。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 05/30/2019
-ms.date: 08/23/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31117f7b5d82537f1080987da4eb4a752c00974e
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 55c09e972703b8a223eea82878fe7a4e44e532c9
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993232"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776858"
 ---
-# <a name="microsoft-identity-platform-protocols"></a>Microsoft 标识平台协议
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft 标识平台上的 OAuth 2.0 和 OpenID Connect 协议
 
 使用行业标准协议 OpenID Connect 和 OAuth 2.0 的标识即服务的 Microsoft 标识平台终结点。 尽管此服务符合标准，但这些协议的两个实现之间仍然可能存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
 

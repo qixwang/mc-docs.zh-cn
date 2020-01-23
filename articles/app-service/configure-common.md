@@ -1,27 +1,19 @@
 ---
-title: 在门户中配置应用 - Azure 应用服务
-description: 了解如何在 Azure 门户中配置应用服务应用的常用设置。
+title: 在门户中配置应用
+description: 了解如何在 Azure 门户中配置应用服务应用的常用设置。 应用设置、连接字符串、平台、语言堆栈、容器等
 keywords: azure 应用服务, web 应用, 应用设置, 环境变量
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/13/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 4e3e73970bdc179684a9873b8e2291eec1d6475d
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: a82f17961d2172afa012f2b06b82aba1e173ec28
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555808"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600500"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 

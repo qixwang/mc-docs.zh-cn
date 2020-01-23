@@ -1,26 +1,16 @@
 ---
-title: 创建 Azure Service Fabric 群集 | Azure
+title: 创建 Azure Service Fabric 群集
 description: 了解如何使用 Azure 资源管理器在 Azure 中设置安全的 Service Fabric 群集。  可以使用默认模板或自己的群集模板创建群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/16/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: f92df53c24b36129bafc6949652dddae60c10a86
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 2074fbdb35a06fd932cd7fb320d066da0764a157
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336353"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742362"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -37,7 +27,7 @@ ms.locfileid: "75336353"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 在本文中，使用 Service Fabric RM powershell 或 Azure CLI 模块部署群集：
 
 * [Azure PowerShell 4.1 及更高版本][azure-powershell]

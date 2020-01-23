@@ -3,18 +3,18 @@ title: 理解查询语言
 description: 介绍 Resource Graph 表和所提供的可以与 Azure Resource Graph 配合使用的 Kusto 数据类型、运算符和函数。
 author: DCtheGeek
 ms.author: v-yiso
-origin.date: 10/18/2019
-ms.date: 11/04/2019
+origin.date: 12/05/2019
+ms.date: 01/20/2020
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d17a6f13681aca231076a332a6812090f13482bc
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 7773c9801f0b659a9e05317dbc8e7b5e4083a661
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914470"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859520"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -78,6 +78,7 @@ Resource Graph 支持所有 KQL [数据类型](https://docs.microsoft.com/en-us/
 |[extend](https://docs.microsoft.com/en-us/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
 |[join](https://docs.microsoft.com/en-us/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接风格：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中存在 3 个 `join` 的限制。 不允许自定义联接策略，例如广播联接。 可以用在单个表中，也可以用在 _Resources_ 表和 _ResourceContainers_ 表之间。 |
 |[limit](https://docs.microsoft.com/en-us/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`take` 的同义词 |
+|[mvexpand](https://docs.microsoft.com/en-us/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 _RowLimit_ 最大值：400。 默认值为 128。 |
 |[mv-expand](https://docs.microsoft.com/en-us/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ 最大值：400 |
 |[order](https://docs.microsoft.com/en-us/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
 |[project](https://docs.microsoft.com/en-us/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
@@ -123,6 +124,6 @@ Resource Graph 支持所有 KQL [数据类型](https://docs.microsoft.com/en-us/
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[初学者查询](../samples/starter.md)中使用中的语言
-- 请参阅[高级查询](../samples/advanced.md)中的高级使用
-- 了解如何[浏览资源](explore-resources.md)
+- 在[初学者查询](../samples/starter.md)中了解使用的语言。
+- 在[高级查询](../samples/advanced.md)中了解高级用法。
+- 详细了解如何[浏览资源](explore-resources.md)。

@@ -1,26 +1,16 @@
 ---
-title: Azure Service Fabric 的网络模式 | Azure
+title: Azure Service Fabric 的网络模式
 description: 介绍 Service Fabric 的常见网络模式以及如何使用 Azure 网络功能创建群集。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/19/2018
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 35aad407361e21bf013b1b921c6a43e8a27209a1
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: c850a09516138e477f75d885b2a98d0f20cbdd06
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340829"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742485"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：
@@ -31,6 +21,8 @@ ms.locfileid: "71340829"
 - [内部和外部负载均衡器](#internalexternallb)
 
 Service Fabric 在标准的虚拟机规模集中运行。 可在虚拟机规模集中使用的任何功能同样可在 Service Fabric 群集中使用。 虚拟机规模集与 Service Fabric 的 Azure Resource Manager 模板的网络部分是相同的。 部署到现有虚拟网络后，可以轻松地整合其他网络功能，例如 Azure ExpressRoute、Azure VPN 网关、网络安全组和虚拟网络对等互连。
+
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>允许 Service Fabric 资源提供程序查询群集
 
 与其他网络功能相比，Service Fabric 的独特之处体现在一个方面。 [Azure 门户](https://portal.azure.cn)在内部使用 Service Fabric 资源提供程序连接到群集，以获取有关节点和应用程序的信息。 Service Fabric 资源提供程序需要对管理终结点上的 HTTP 网关端口（默认为 19080）具有可公开访问的入站访问权限。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 使用该管理终结点来管理群集。 Service Fabric 资源提供程序还使用此端口来查询有关群集的信息，以便在 Azure 门户中显示。 
 
@@ -292,7 +284,7 @@ DnsSettings              : {
 <a name="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>仅限内部的负载均衡器
 
-本方案用仅限内部的负载均衡器替代默认 Service Fabric 模板中的外部负载均衡器。 有关对 Azure 门户和 Service Fabric 资源提供程序的影响，请参阅前面部分。
+本方案用仅限内部的负载均衡器替代默认 Service Fabric 模板中的外部负载均衡器。 有关对 Azure 门户和 Service Fabric 资源提供程序的影响，请参阅[本文前面部分](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)。
 
 1. 删除 `dnsName` 参数。 （不需要此参数。）
 
@@ -390,7 +382,7 @@ DnsSettings              : {
 <a name="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部和外部负载均衡器
 
-本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住前文所述的 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
+本方案从现有的单节点类型外部负载均衡器着手，添加一个相同节点类型的内部负载均衡器。 附加到后端地址池的后端端口只能分配给单个负载均衡器。 选择哪个负载均衡器使用应用程序端口，哪个负载均衡器使用管理终结点（端口 19000 和 19080）。 如果将管理终结点放在内部负载均衡器上，请记住[前文所述](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)的 Service Fabric 资源提供程序限制。 本示例将管理终结点保留在外部负载均衡器上。 还需要添加一个端口号为 80 的应用程序端口，并将其放在内部负载均衡器上。
 
 在双节点类型的群集中，一个节点类型位于外部负载均衡器上。 另一个节点类型位于内部负载均衡器上。 要使用双节点类型的群集，请在门户创建的双节点类型模板（附带两个负载均衡器）中，将第二个负载均衡器切换为内部负载均衡器。 有关详细信息，请参阅[仅限内部的负载均衡器](#internallb)部分。
 

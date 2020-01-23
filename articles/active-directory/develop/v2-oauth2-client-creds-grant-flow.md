@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft 标识平台在无需用户交互的情况下访问安全资源 | Azure
+title: Microsoft 标识平台中的 OAuth 2.0 客户端凭据流 | Azure
 description: 使用 OAuth 2.0 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce564dd29101d34aa0ee7c85b154846d9d21d38
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5cc0529383bebdafa49d5958de6013ae043d77c4
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335381"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777026"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -31,7 +31,7 @@ ms.locfileid: "75335381"
 
 可通过 RFC 6749 中指定的 [OAuth 2.0 客户端凭据授予](https://tools.ietf.org/html/rfc6749#section-4.4)（有时称为“双重 OAuth”  ），使用应用程序标识来访问 Web 托管的资源。 这种授予通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 此类应用程序通常称为守护程序  或服务帐户  。
 
-本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
+本文介绍如何在应用程序中直接针对协议进行编程。 如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
 
 OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了进行更高级别的保证，Microsoft 标识平台还允许调用服务将证书（而不是共享机密）用作凭据。
 
@@ -65,7 +65,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 ### <a name="application-permissions"></a>应用程序权限
 
-可使用 API 公开一组应用程序权限，而不是使用 ACL。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限来执行以下操作：
+可使用 API 公开一组应用程序权限，而不是使用 ACL  。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限来执行以下操作：
 
 * 读取所有邮箱中的邮件
 * 在所有邮箱中读取和写入邮件
@@ -75,6 +75,11 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 有关应用程序权限的详细信息，请转到 [Microsoft Graph](https://developer.microsoft.com/graph)。
 
 若要在应用中使用应用程序权限，请执行后续部分所述的步骤。
+
+
+> [!NOTE]
+> 以应用程序形式（不同于与以用户身份）进行身份验证时，不能使用“委托的权限”（用户授予的范围）。  必须使用“应用程序权限”（也称为“角色”），这些权限是由管理员为应用程序授予的（或通过 Web API 预授权来授予的）。    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 

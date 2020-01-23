@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric 中的副本和实例 | Azure
+title: Azure Service Fabric 中的副本和实例
 description: 了解副本和实例 - 其功能和生命周期
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 01/10/2018
-ms.date: 05/28/2018
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4459c73bc850a230800457eae85b52675f8be3f3
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 0513dccdd68e0ce1639f5416890a4ca7b9cbd5e2
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52667256"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742357"
 ---
 # <a name="replicas-and-instances"></a>副本和实例 
 本文概述了有状态服务副本和无状态服务实例的生命周期。
 
 ## <a name="instances-of-stateless-services"></a>无状态服务的实例
-无状态服务的实例是在其中一个群集节点上运行的服务逻辑的副本。 分区内的实例由其 InstanceId 唯一标识。 实例的生命周期可在以下图表中进行建模：
+无状态服务的实例是在其中一个群集节点上运行的服务逻辑的副本。 分区内的实例由其 InstanceId 唯一标识  。 实例的生命周期可在以下图表中进行建模：
 
 ![实例生命周期](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
@@ -36,7 +27,7 @@ ms.locfileid: "52667256"
 如果此实例的应用程序主机或节点发生故障，它将转换为已删除状态。
 
 ### <a name="ready-rd"></a>就绪 (RD)
-在就绪状态下，实例已启动并且正在节点上运行。 如果此实例是可靠的服务，则已调用 RunAsync。 
+在就绪状态下，实例已启动并且正在节点上运行。 如果此实例是可靠的服务，则已调用 RunAsync。  
 
 如果此实例的应用程序主机或节点发生故障，它将转换为已删除状态。
 
@@ -47,7 +38,7 @@ ms.locfileid: "52667256"
 在已删除状态下，实例不再在节点上运行。 此时，Service Fabric 维护关于此实例的元数据，该元数据最终也将被删除。
 
 > [!NOTE]
-> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换。
+> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换  。
 >
 
 ## <a name="replicas-of-stateful-services"></a>有状态服务的副本
@@ -64,11 +55,11 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 
 如果 InBuild 副本的应用程序主机或节点发生故障，它将转换为关闭状态。
 
-   - **主 InBuild 副本**：主 InBuild 副本是分区的第一个副本。 此副本通常发生在创建分区时。 当分区的所有副本均重启或删除时，主 InBuild 副本也会出现。
+- 主 InBuild 副本  ：主 InBuild 副本是分区的第一个副本。 此副本通常发生在创建分区时。 当分区的所有副本均重启或删除时，主 InBuild 副本也会出现。
 
-   - **IdleSecondary InBuild 副本**：这些副本可以是群集资源管理器创建的新副本，也可以是已关闭并需要添加回集的现有副本。 这些副本先由主要副本播种或生成，然后才能加入到副本集作为活动的次要副本并参与操作的仲裁确认。
+- 空闲辅助 InBuild 副本  ：这些副本可以是群集资源管理器创建的新副本，也可以是已关闭并需要添加回集的现有副本。 这些副本先由主要副本播种或生成，然后才能加入到副本集作为活动的次要副本并参与操作的仲裁确认。
 
-   - **ActiveSecondary InBuild 副本**：此状态可在某些查询中观察到。 这是一种优化，其中副本集不会更改，但需要生成一个副本。 副本本身遵循常规状态的计算机转换（如副本角色部分所述）。
+- 活动的辅助 InBuild 副本  ：在某些查询中会观察到此状态。 这是一种优化，其中副本集不会更改，但需要生成一个副本。 副本本身遵循常规状态的计算机转换（如副本角色部分所述）。
 
 ### <a name="ready-rd"></a>就绪 (RD)
 就绪副本是参与复制和操作的仲裁确认的副本。 就绪状态适用于主要副本和活动的次要副本。
@@ -78,9 +69,9 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 ### <a name="closing-cl"></a>关闭 (CL)
 在以下情况下，副本会进入关闭状态：
 
-- **关闭副本代码**：Service Fabric 可能需要关闭副本的运行代码。 此关闭可能由多种原因导致。 例如，它可能由应用程序、构造或基础结构升级导致，或由副本报告的错误导致。 副本关闭完成后，副本将转换为关闭状态。 与存储在磁盘上的此副本关联的持久状态未得到清理。
+- 关闭副本代码  ：Service Fabric 可能需要关闭副本的运行代码。 此关闭可能由多种原因导致。 例如，它可能由应用程序、构造或基础结构升级导致，或由副本报告的错误导致。 副本关闭完成后，副本将转换为关闭状态。 与存储在磁盘上的此副本关联的持久状态未得到清理。
 
-- **从群集中删除副本**：Service Fabric 可能需要删除持久状态并关闭副本的运行代码。 此关闭可能由多种原因导致，例如负载均衡。
+- 从群集中删除副本  ：Service Fabric 可能需要删除持久状态并关闭副本的运行代码。 此关闭可能由多种原因导致，例如负载均衡。
 
 ### <a name="dropped-dd"></a>已删除 (DD)
 在已删除状态下，实例不再在节点上运行。 节点上也没有保留任何状态。 此时，Service Fabric 维护关于此实例的元数据，该元数据最终也将被删除。
@@ -107,21 +98,21 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 副本角色在备用状态下不相关。
 
 > [!NOTE]
-> 任何未关闭或删除的副本将被视为可启动的副本。
+> 任何未关闭或删除的副本将被视为可启动  的副本。
 >
 
 > [!NOTE]
-> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换。
+> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换  。
 >
 
 ## <a name="replica-role"></a>副本角色 
 副本的角色确定其在副本集内的功能：
 
-- **主要副本 (P)**：副本集有一个主要副本，该副本负责执行读取和写入操作。 
-- **活动的次要副本 (S)**：此类副本用于从主要副本接收状态更新、应用这些更新，然后发送回确认。 副本集内有多个活动的次要副本。 这些活动次要副本的数量确定服务可以处理的错误数量。
-- **空闲的次要副本 (I)**：这些副本通过主要副本生成。 在将其升级到活动次要副本之前，它们接收来自主要副本的状态。 
-- **无 (N)**：这些副本在副本集内没有任何职责。
-- **未知 (U)**：在副本从 Service Fabric 接收任何 ChangeRole API 调用前，该角色为副本的初始角色。
+- 主要副本 (P)  ：副本集有一个主要副本，该副本负责执行读取和写入操作。 
+- 活动的次要副本 (S)  ：此类副本用于从主要副本接收状态更新、应用这些更新，然后发送回确认。 副本集内有多个活动的次要副本。 这些活动次要副本的数量确定服务可以处理的错误数量。
+- 空闲的次要副本 (I)  ：这些副本通过主要副本生成。 在将其升级到活动次要副本之前，它们接收来自主要副本的状态。 
+- 无 (N)  ：这些副本在副本集内没有任何职责。
+- 未知 (U)  ：在副本从 Service Fabric 接收任何 ChangeRole API 调用前，该角色为副本的初始角色  。
 
 以下图表说明了副本角色转换以及可能发生此类转换的一些示例方案：
 
@@ -146,4 +137,5 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 有关 Service Fabric 概念的详细信息，请参阅以下文章：
 
 [Reliable Services 生命周期 - C#](service-fabric-reliable-services-lifecycle.md)
+
 <!--Update_Description: update meta properties -->

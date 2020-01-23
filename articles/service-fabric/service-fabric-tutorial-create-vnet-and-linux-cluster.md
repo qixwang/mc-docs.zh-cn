@@ -1,33 +1,23 @@
 ---
-title: 在 Azure 中创建 Linux Service Fabric 群集 | Azure
+title: 在 Azure 中创建 Linux Service Fabric 群集
 description: 了解如何使用 Azure CLI 将 Linux Service Fabric 群集部署到现有 Azure 虚拟网络。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 02/14/2019
-ms.date: 09/02/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: dcdcdef1a8c70ca6073dc51c4bd1c6c67466eca7
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 3c6434b0bd24361ed9cedfda02652d213c4d6a16
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254824"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742070"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
 本文介绍了如何使用 Azure CLI 和模板将 Linux Service Fabric 群集部署到 [Azure 虚拟网络 (VNET)](../virtual-network/virtual-networks-overview.md) 中。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 若要使用 PowerShell 创建 Windows 群集，请参阅[在 Azure 上创建安全的 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
@@ -102,7 +92,7 @@ ms.locfileid: "70254824"
 
 [AzureDeploy.Parameters][parameters] 参数文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
 
-|参数|示例值|说明|
+|参数|示例值|注释|
 |---|---||
 |adminUserName|vmadmin| 群集 VM 的管理员用户名。 |
 |adminPassword|Password#1234| 群集 VM 的管理员密码。|
@@ -190,4 +180,4 @@ sfctl cluster health
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
 
-<!--Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update -->

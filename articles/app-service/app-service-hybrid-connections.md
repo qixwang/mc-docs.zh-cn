@@ -1,26 +1,19 @@
 ---
-title: 混合连接 - Azure 应用服务 | Azure
-description: 如何创建混合连接并使用它来访问不同网络中的资源
-services: app-service
-documentationcenter: ''
+title: 混合连接
+description: 了解如何在 Azure 应用服务中创建混合连接来访问不同网络中的资源。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 06/06/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 9131032ad321267c4d270f8bcd2bf16c6ababcbf
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.custom: seodec18
+ms.openlocfilehash: 6dcd358d221094ada990dc878e2b25d1a12b348d
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556018"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600527"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接 #
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的复制活动 | Microsoft Docs
+title: Azure 数据工厂中的复制活动
 description: 了解 Azure 数据工厂中的复制活动。 可以使用复制活动将数据从支持的源数据存储复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -8,21 +8,18 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 08/12/2019
-ms.date: 10/14/2019
+origin.date: 12/10/2019
+ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 0eaa1402e15c32b3690a9a950011939014c29047
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 4059e4c188ecb9d7771b7c1eaa1b70535a980e52
+ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275416"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75624250"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
-
-## <a name="overview"></a>概述
 
 在 Azure 数据工厂中，可以使用复制活动在本地与云数据存储之间复制数据。 复制数据后，可以使用其他活动进一步转换和分析数据。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
 
@@ -49,28 +46,13 @@ ms.locfileid: "72275416"
 
 ### <a name="supported-file-formats"></a>支持的文件格式
 
-可以使用复制活动在两个基于文件的数据存储之间按原样复制文件。 在这种情况下，无需任何序列化或反序列化操作即可有效复制数据。
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-复制活动还可使用以下格式读取和写入文件：
-- 文本
-- JSON
-- Avro
-- ORC
-- Parquet
-
-复制活动可使用以下编解码器压缩和解压缩文件： 
-- Gzip
-- Deflate
-- Bzip2
-- ZipDeflate
-
-有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
-
-例如，可执行以下复制活动：
+可以使用复制活动在两个基于文件的数据存储之间按原样复制文件，在这种情况下，无需任何序列化或反序列化即可高效复制数据。 此外，还可以分析或生成给定格式的文件。例如，可以执行以下操作：
 
 * 从本地 SQL Server 数据库复制数据，并将数据以 Parquet 格式写入 Azure Data Lake Storage Gen2。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob 存储。
-* 从本地文件系统复制压缩文件，将其解压缩并写入 Azure Data Lake Storage Gen2。
+* 从本地文件系统复制压缩文件，动态解压缩，然后将提取的文件写入 Azure Data Lake Storage Gen2。
 * 从 Azure Blob 存储复制 Gzip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
 * 需要序列化/反序列化或压缩/解压缩的其他许多活动。
 
@@ -144,13 +126,14 @@ ms.locfileid: "72275416"
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
 | outputs | 指定创建的指向接收器数据的数据集。 复制活动仅支持单个输出。 | 是 |
 | typeProperties | 指定用于配置复制活动的属性。 | 是 |
-| source | 指定复制源类型以及用于检索数据的相应属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
-| 接收器 | 指定复制接收器类型以及用于写入数据的相应属性。<br/><br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
-| 转换器 | 指定从源到接收器的显式列映射。 当默认复制行为无法满足需求时，此属性适用。<br/><br/>有关详细信息，请参阅[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
-| dataIntegrationUnits | 指定一个度量值，用于表示 [Azure Integration Runtime](concepts-integration-runtime.md) 在复制数据时的算力。 这些单位以前称为云数据移动单位 (DMU)。 <br/><br/>有关详细信息，请参阅[数据集成单位](copy-activity-performance.md#data-integration-units)。 | 否 |
-| parallelCopies | 指定从源读取数据和向接收器写入数据时想要复制活动使用的并行度。<br/><br/>有关详细信息，请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | 否 |
-| enableStaging<br/>stagingSettings | 指定是否将临时数据分阶段存储在 Blob 存储中，而不是将数据直接从源复制到接收器。<br/><br/>有关有用的方案和配置详细信息，请参阅[分阶段复制](copy-activity-performance.md#staged-copy)。 | 否 |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 选择将数据从源复制到接收器时如何处理不兼容的行。<br/><br/>有关详细信息，请参阅[容错](copy-activity-fault-tolerance.md)。 | 否 |
+| source | 指定复制源类型以及用于检索数据的相应属性。<br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
+| 接收器 | 指定复制接收器类型以及用于写入数据的相应属性。<br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
+| 转换器 | 指定从源到接收器的显式列映射。 当默认复制行为无法满足需求时，此属性适用。<br/>有关详细信息，请参阅[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
+| dataIntegrationUnits | 指定一个度量值，用于表示 [Azure Integration Runtime](concepts-integration-runtime.md) 在复制数据时的算力。 这些单位以前称为云数据移动单位 (DMU)。 <br/>有关详细信息，请参阅[数据集成单位](copy-activity-performance.md#data-integration-units)。 | 否 |
+| parallelCopies | 指定从源读取数据和向接收器写入数据时想要复制活动使用的并行度。<br/>有关详细信息，请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | 否 |
+| 保护区 | 指定在数据复制期间是否保留元数据/ACL。 <br/>有关详细信息，请参阅[保留元数据](copy-activity-preserve-metadata.md)。 |否 |
+| enableStaging<br/>stagingSettings | 指定是否将临时数据分阶段存储在 Blob 存储中，而不是将数据直接从源复制到接收器。<br/>有关有用的方案和配置详细信息，请参阅[分阶段复制](copy-activity-performance.md#staged-copy)。 | 否 |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 选择将数据从源复制到接收器时如何处理不兼容的行。<br/>有关详细信息，请参阅[容错](copy-activity-fault-tolerance.md)。 | 否 |
 
 ## <a name="monitoring"></a>监视
 
@@ -251,13 +234,9 @@ ms.locfileid: "72275416"
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>架构和数据类型映射
+## <a name="incremental-copy"></a>增量复制
 
-有关复制活动如何将源数据映射到接收器的信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
-
-## <a name="fault-tolerance"></a>容错
-
-默认情况下，如果源数据行与接收器数据行不兼容，复制活动将停止复制数据，并返回失败结果。 要使复制成功，可将复制活动配置为跳过并记录不兼容的行，仅复制兼容的数据。 有关详细信息，请参阅[复制活动容错](copy-activity-fault-tolerance.md)。
+数据工厂可让你以递增方式将增量数据从源数据存储复制到接收器数据存储。 有关详细信息，请参阅[教程：以增量方式复制数据](tutorial-incremental-copy-overview.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 
@@ -271,8 +250,17 @@ ms.locfileid: "72275416"
 
 ![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>增量复制
-数据工厂可让你以递增方式将增量数据从源数据存储复制到接收器数据存储。 有关详细信息，请参阅[教程：以增量方式复制数据](tutorial-incremental-copy-overview.md)。
+## <a name="preserve-metadata-along-with-data"></a>保留元数据和数据
+
+在将数据从源复制到接收器时，在进行 Data Lake 迁移这样的情况下，还可以选择使用复制活动来保存元数据和 ACL 以及数据。 有关详细信息，请参阅[保留元数据](copy-activity-preserve-metadata.md)。
+
+## <a name="schema-and-data-type-mapping"></a>架构和数据类型映射
+
+有关复制活动如何将源数据映射到接收器的信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+
+## <a name="fault-tolerance"></a>容错
+
+默认情况下，如果源数据行与接收器数据行不兼容，复制活动将停止复制数据，并返回失败结果。 要使复制成功，可将复制活动配置为跳过并记录不兼容的行，仅复制兼容的数据。 有关详细信息，请参阅[复制活动容错](copy-activity-fault-tolerance.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：

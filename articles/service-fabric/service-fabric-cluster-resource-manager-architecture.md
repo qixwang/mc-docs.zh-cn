@@ -1,26 +1,17 @@
 ---
-title: Resource Manager 体系结构 | Azure
+title: 资源管理器体系结构
 description: Service Fabric 群集 Resource Manager 的体系结构概述。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 04/29/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: c9713e1e73fb5f65f2867dd3efa7fedb44aa0345
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 20907aa6a25862fc9870b19e99b46e4562c740c4
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914509"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742339"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>群集 Resource Manager 体系结构概述
 Service Fabric 群集资源管理器是在群集中运行的中心服务。 它管理群集中服务所需的状态，对资源消耗和任何放置规则而言尤其如此。 
@@ -74,4 +65,4 @@ Service Fabric 群集资源管理器是在群集中运行的中心服务。 它�
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
 [Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

@@ -1,19 +1,16 @@
 ---
 title: 如何创建 Guest Configuration 策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux VM 的 Azure Policy Guest Configuration 策略。
-author: DCtheGeek
 ms.author: v-tawe
-origin.date: 11/21/2019
-ms.date: 12/16/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 4a9b85c3877d7b1652485e5a5321958d848480b6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/16/2019
+ms.date: 01/17/2020
+ms.topic: how-to
+ms.openlocfilehash: 52f785b2178b55485f1b775b0ee803ce59c30968
+ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335807"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76123153"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建 Guest Configuration 策略
 

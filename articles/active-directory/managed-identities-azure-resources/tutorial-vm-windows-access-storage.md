@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 系统分配的托管标识访问 Azure 存储
+title: 使用 Windows VM 系统分配的托管标识访问 Azure 存储 | Microsoft Docs
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/12/2018
-ms.date: 08/05/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e111057c0fa849e3fafe928bf324fea0bc29ab3
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.openlocfilehash: 9b62a962d9677016c7917b9f042e81019cea8e1c
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68818594"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116807"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure 存储
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配的托管标识来访问 Azure 存储。 学习如何：
+本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配的托管标识来访问 Azure 存储。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在存储帐户中创建 Blob 容器
@@ -37,11 +36,11 @@ ms.locfileid: "68818594"
 > [!NOTE]
 > 适用于 Azure 存储的 Azure Active Directory 身份验证当前处于公共预览版。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>创建存储帐户
+## <a name="create-account"></a>创建帐户
 
 在本部分中，创建一个存储帐户。
 
@@ -50,7 +49,7 @@ ms.locfileid: "68818594"
 3. 在“名称”  下，输入存储帐户的名称。
 4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“存储(常规用途 v1)”。    
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
-6. 单击“创建”。 
+6. 单击**创建**。
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -70,9 +69,9 @@ ms.locfileid: "68818594"
 7. 在“上传 blob”  窗格中，在“文件”  下，单击文件夹图标并浏览到本地计算机上的文件 **hello_world.txt**，选择该文件，然后单击“上传”。 
     ![上传文本文件](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>向 VM 授予对 Azure 存储容器的访问权限
+## <a name="grant-access"></a>授予访问权限
 
-可以使用 VM 的系统分配的托管标识检索 Azure 存储 blob 中的数据。
+本部分介绍如何授予 VM 访问 Azure 存储容器的权限。 可以使用 VM 的系统分配的托管标识检索 Azure 存储 blob 中的数据。
 
 1. 导航回新创建的存储帐户。
 2. 单击左侧面板中的“访问控制(IAM)”  链接。
@@ -84,7 +83,7 @@ ms.locfileid: "68818594"
 
     ![分配权限](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>获取访问令牌并使用它来调用 Azure 存储 
+## <a name="get-an-access-token"></a>获取访问令牌 
 
 Azure 存储原本就支持 Azure AD 身份验证，因此可以直接接受使用托管标识获取的访问令牌。 在某种程度上，这是将 Azure 存储与 Azure AD 集成，不同于在连接字符串中提供凭据。
 
@@ -169,3 +168,4 @@ namespace StorageOAuthToken
 > [!div class="nextstepaction"]
 > [Azure 存储](/storage/common/storage-introduction)
 
+<!-- Update_Description: wording update -->

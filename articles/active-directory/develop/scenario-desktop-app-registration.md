@@ -1,5 +1,5 @@
 ---
-title: 调用 Web API 的桌面应用（应用注册）- Microsoft 标识平台
+title: 注册用于调用 Web API 的桌面应用 - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的桌面应用（应用注册）
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/09/2019
-ms.date: 11/07/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f111d6c107c5222c60b6a00f1165d7747b7605b
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 76ca9dff3fe88f0f9db3496ade718182d59e1664
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830926"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776954"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>调用 Web API 的桌面应用 - 应用注册
 
-本文包含适用于桌面应用程序的应用注册详细信息。
+本文涵盖了桌面应用程序的应用注册详细信息。
 
 ## <a name="supported-accounts-types"></a>支持的帐户类型
 

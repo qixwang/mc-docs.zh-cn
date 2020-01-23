@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/24/2019
-ms.date: 11/18/2019
+origin.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: c0e2f8dc1fd03ab3634ef7837c7218a037c3eb16
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 0415a272f7d9f00593ddbf641306b02b51697db2
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020182"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737888"
 ---
 # <a name="create-vm-disk-storage-in-azure-stack"></a>在 Azure Stack 中创建 VM 磁盘存储
 
@@ -37,22 +37,24 @@ ms.locfileid: "74020182"
 
 非托管磁盘要求创建存储帐户用于存储磁盘。 你创建的磁盘称为 VM 磁盘并且存储在存储帐户中的容器中。
 
-### <a name="best-practice-guidelines"></a>最佳做法准则
+## <a name="best-practice-guidelines"></a>最佳做法准则
 
-为了改进性能并降低总体成本，建议将每个 VM 磁盘置于单独的容器中。 容器可以容纳 OS 磁盘或数据磁盘，但不应二者同时容纳。 但是，也可以将这两种磁盘放在同一容器中。
+建议对 VM 使用托管磁盘，以便更轻松地进行管理和容量平衡。 不需在使用托管磁盘之前准备存储帐户和容器。 创建多个托管磁盘时，会将这些磁盘分配到多个卷中，这有助于平衡卷的容量。  
+
+对于非托管磁盘，为了改进性能并降低总体成本，建议将每个非托管磁盘置于单独的容器中。 虽然可以将 OS 磁盘和数据磁盘放置在同一个容器中，但最佳做法是让一个容器容纳一个 OS 磁盘或一个数据磁盘，而不是同时容纳这二者。
 
 如果向 VM 添加一个或多个数据磁盘，请使用更多的容器作为存储这些磁盘的位置。 附加 VM 的 OS 磁盘也应当位于其自己的容器中。
 
 创建 VM 时，可将同一存储帐户重复用于每个新虚拟机。 只有创建的容器才应是唯一的。
 
-### <a name="adding-new-disks"></a>添加新磁盘
+## <a name="adding-new-disks"></a>添加新磁盘
 
 下表概述了如何使用门户以及 PowerShell 添加磁盘：
 
 | 方法 | 选项
 |-|-|
 |用户门户|- 向现有 VM 添加新的数据磁盘。 新磁盘由 Azure Stack 创建。 </br> </br> - 将现有的磁盘 (.vhd) 文件添加到以前创建的 VM。 若要执行此操作，必须准备 .vhd，然后将该文件上传到 Azure Stack。 |
-|[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - 使用 OS 磁盘创建新的 VM，同时向该 VM 添加一个或多个数据磁盘。 |
+|[PowerShell](#use-powershell-to-add-multiple-disks-to-a-vm) | - 使用 OS 磁盘创建新的 VM，同时向该 VM 添加一个或多个数据磁盘。 |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>使用门户向 VM 添加磁盘
 
@@ -165,24 +167,99 @@ ms.locfileid: "74020182"
 
     ![示例：完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
-## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>使用 PowerShell 将多个非托管磁盘添加到 VM
+## <a name="use-powershell-to-add-multiple-disks-to-a-vm"></a>使用 PowerShell 将多个磁盘添加到 VM
 
-可以使用 PowerShell 来预配某个 VM，然后添加新的数据磁盘，或者附加预先存在的 .vhd 文件作为数据磁盘。
+可以使用 PowerShell 来预配某个 VM，然后添加新的数据磁盘，或者附加预先存在的托管磁盘或 .vhd 文件作为数据磁盘。
 
-**Add-AzureRmVMDataDisk** cmdlet 可以向 VM 添加数据磁盘。 可以在创建 VM 时添加数据磁盘，也可以向现有的 VM 添加数据磁盘。 指定 **VhdUri** 参数，使磁盘分布到不同的容器。
+**Add-AzureRmVMDataDisk** cmdlet 可以向 VM 添加数据磁盘。 可以在创建 VM 时添加数据磁盘，也可以向现有的 VM 添加数据磁盘。 对于非托管磁盘，请指定 **VhdUri** 参数，将磁盘分配到不同的容器。
 
-### <a name="add-data-disks-to-a-new-vm"></a>将数据磁盘添加到新的 VM
+### <a name="add-data-disks-to-a-new-vm"></a>将数据磁盘添加到**新** VM
 
-以下示例使用 PowerShell 命令来创建具有三个数据磁盘的 VM，每个磁盘放置在不同的容器中。
+以下示例使用 PowerShell 命令创建包含三个数据磁盘的 VM。 由于使用托管磁盘或非托管磁盘时存在细微差别，因此为此命令提供了多个部件。 
 
-第一个命令创建 VM 对象，然后将它存储在 `$VirtualMachine` 变量中。 此命令用于向 VM 分配名称和大小：
+#### <a name="create-virtual-machine-configuration-and-network-resources"></a>创建虚拟机配置和网络资源
+
+以下脚本创建 VM 对象，然后将它存储在 `$VirtualMachine` 变量中。 这些命令为 VM 指定名称和大小，然后创建 VM 的网络资源（虚拟网络、子网、虚拟网络适配器、NSG 和公共 IP 地址）：
 
 ```powershell
+# Create new virtual machine configuration
 $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine" `
                                       -VMSize "Standard_A2"
+
+# Set variables
+$rgName = "myResourceGroup"
+$location = "local"
+
+# Create a subnet configuration
+$subnetName = "mySubNet"
+$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+
+# Create a vnet configuration
+$vnetName = "myVnetName"
+$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
+                                  -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+
+# Create a public IP
+$ipName = "myIP"
+$pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
+                                  -AllocationMethod Dynamic
+
+# Create a network security group configuration
+$nsgName = "myNsg"
+$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
+                                                -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
+                                                -SourceAddressPrefix Internet -SourcePortRange * `
+                                                -DestinationAddressPrefix * -DestinationPortRange 3389
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
+                                       -Name $nsgName -SecurityRules $rdpRule
+
+# Create a NIC configuration
+$nicName = "myNicName"
+$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
+                                   -Location $location -SubnetId $vnet.Subnets[0].Id `
+                                   -NetworkSecurityGroupId $nsg.Id -PublicIpAddressId $pip.Id
+
 ```
 
-接下来的三个命令将三个数据磁盘的路径分配到 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 变量。 在 URL 中定义另一路径名称，使磁盘分布到不同的容器：
+#### <a name="add-managed-disk"></a>添加托管磁盘
+>[!NOTE]  
+>它仅用于在此部分添加托管磁盘。 
+
+下面的三个命令将托管数据磁盘添加到 `$VirtualMachine` 中存储的虚拟机。 每个命令都会指定磁盘的名称和其他属性：
+
+```powershell
+$VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' `
+                                        -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
+                                        -CreateOption Empty
+```
+
+```powershell
+$VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk2' `
+                                        -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 `
+                                        -CreateOption Empty
+```
+
+```powershell
+$VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
+                                        -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 `
+                                        -CreateOption Empty
+```
+
+以下命令将 OS 磁盘作为托管磁盘添加到 `$VirtualMachine` 中存储的虚拟机。
+
+```powershell
+# Set OS Disk
+$osDiskName = "osDisk"
+$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $osDiskName  `
+                                      -CreateOption FromImage -Windows
+```
+
+#### <a name="add-unmanaged-disk"></a>添加非托管磁盘
+
+>[!NOTE]  
+>此部分仅用于添加非托管磁盘。 
+
+接下来的三个命令将三个非托管数据磁盘的路径分配给 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 变量。 在 URL 中定义另一路径名称，使磁盘分布到不同的容器：
 
 ```powershell
 $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
@@ -196,84 +273,90 @@ $DataDiskVhdUri02 = "https://contoso.blob.local.azurestack.external/test2/data2.
 $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
 ```
 
-最后三个命令将数据磁盘添加到 `$VirtualMachine` 中存储的虚拟机。 每个命令都会指定磁盘的名称、位置和其他属性。 每个磁盘的 URI 分别存储在 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 中：
+下面的三个命令将数据磁盘添加到 `$VirtualMachine` 中存储的虚拟机。 每个命令都会指定磁盘的名称和其他属性。 每个磁盘的 URI 分别存储在 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 中：
 
 ```powershell
 $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' `
-                -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
-                -VhdUri $DataDiskVhdUri01 -CreateOption Empty
+                                        -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
+                                        -VhdUri $DataDiskVhdUri01 -CreateOption Empty
 ```
 
 ```powershell
 $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk2' `
-                -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 `
-                -VhdUri $DataDiskVhdUri02 -CreateOption Empty
+                                        -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 `
+                                        -VhdUri $DataDiskVhdUri02 -CreateOption Empty
 ```
 
 ```powershell
 $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
-                -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 `
-                -VhdUri $DataDiskVhdUri03 -CreateOption Empty
+                                        -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 `
+                                        -VhdUri $DataDiskVhdUri03 -CreateOption Empty
 ```
 
-使用以下 PowerShell 命令将 OS 磁盘和网络配置添加到 VM，然后启动新 VM：
+以下命令将非托管 OS 磁盘添加到 `$VirtualMachine` 中存储的虚拟机。
 
 ```powershell
-# Set variables
-$rgName = "myResourceGroup"
-$location = "local"
 # Set OS Disk
 $osDiskUri = "https://contoso.blob.local.azurestack.external/vhds/osDisk.vhd"
 $osDiskName = "osDisk"
-
 $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $osDiskName -VhdUri $osDiskUri `
-    -CreateOption FromImage -Windows
+                                      -CreateOption FromImage -Windows
+```
 
-# Create a subnet configuration
-$subnetName = "mySubNet"
-$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
 
-# Create a vnet configuration
-$vnetName = "myVnetName"
-$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
-    -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+#### <a name="create-new-virtual-machine"></a>创建新的虚拟机
+使用以下 PowerShell 命令设置 OS 映像，将网络配置添加到 VM，然后启动新 VM。
 
-# Create a public IP
-$ipName = "myIP"
-$pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
-    -AllocationMethod Dynamic
-
-# Create a network security group configuration
-$nsgName = "myNsg"
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
-    -SourceAddressPrefix Internet -SourcePortRange * `
-    -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $location `
-    -Name $nsgName -SecurityRules $rdpRule
-
-# Create a NIC configuration
-$nicName = "myNicName"
-$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
--Location $location -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -PublicIpAddressId $pip.Id
-
+```powershell
 #Create the new VM
-$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName VirtualMachine | `
-    Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
-    -Skus 2016-Datacenter -Version latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
+$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName VirtualMachine -ProvisionVMAgent | `
+                  Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
+                  -Skus 2016-Datacenter -Version latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
+
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $VirtualMachine
 ```
 
-### <a name="add-data-disks-to-an-existing-vm"></a>向现有 VM 添加新的数据磁盘
 
-以下示例使用 PowerShell 命令将三个数据磁盘添加到现有的 VM。 第一个命令通过 **Get-AzureRmVM** cmdlet 获取名为 **VirtualMachine** 的 VM。 此命令将 VM 存储在 `$VirtualMachine` 变量中：
+### <a name="add-data-disks-to-an-existing-vm"></a>向**现有** VM 添加数据磁盘
+以下示例使用 PowerShell 命令将三个数据磁盘添加到现有的 VM。
+
+#### <a name="get-virtual-machine"></a>获取虚拟机
+
+ 第一个命令通过 **Get-AzureRmVM** cmdlet 获取名为 **VirtualMachine** 的 VM。 此命令将 VM 存储在 `$VirtualMachine` 变量中：
 
 ```powershell
 $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
                                 -Name "VirtualMachine"
 ```
 
-接下来的三个命令将三个数据磁盘的路径分配到 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 变量。 VHD URI 中的不同路径名称表示用于放置磁盘的不同容器。
+#### <a name="add-managed-disk"></a>添加托管磁盘
+
+>[!NOTE]  
+>此部分仅用于添加托管磁盘。
+
+接下来的三个命令将托管数据磁盘添加到 `$VirtualMachine` 变量中存储的 VM。 每个命令都会指定磁盘的名称和其他属性：
+
+```powershell
+Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk1" -Lun 0 `
+                      -Caching ReadOnly -DiskSizeinGB 10 -CreateOption Empty
+```
+
+```powershell
+Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk2" -Lun 1 `
+                      -Caching ReadOnly -DiskSizeinGB 11 -CreateOption Empty
+```
+
+```powershell
+Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3" -Lun 2 `
+                      -Caching ReadOnly -DiskSizeinGB 12 -CreateOption Empty
+```
+
+#### <a name="add-unmanaged-disk"></a>添加非托管磁盘
+
+>[!NOTE]  
+>此部分仅用于添加非托管磁盘。 
+
+接下来的三个命令将三个数据磁盘的路径分配给 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 变量。 VHD URI 中的不同路径名称表示用于放置磁盘的不同容器。
 
 ```powershell
 $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
@@ -290,24 +373,26 @@ $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.
 接下来的三个命令将数据磁盘添加到 `$VirtualMachine` 变量中存储的 VM。 每个命令都会指定磁盘的名称、位置和其他属性。 每个磁盘的 URI 分别存储在 `$DataDiskVhdUri01`、`$DataDiskVhdUri02` 和 `$DataDiskVhdUri03` 中：
 
 ```powershell
-Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" `
+Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk1" `
                       -VhdUri $DataDiskVhdUri01 -LUN 0 `
                       -Caching ReadOnly -DiskSizeinGB 10 -CreateOption Empty
 ```
 
 ```powershell
-Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk2" `
+Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk2" `
                       -VhdUri $DataDiskVhdUri02 -LUN 1 `
                       -Caching ReadOnly -DiskSizeinGB 11 -CreateOption Empty
 ```
 
 ```powershell
-Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk3" `
+Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3" `
                       -VhdUri $DataDiskVhdUri03 -LUN 2 `
                       -Caching ReadOnly -DiskSizeinGB 12 -CreateOption Empty
 ```
 
-最后一个命令更新 `-ResourceGroupName` 的 `$VirtualMachine` 中存储的 VM 的状态：
+#### <a name="update-virtual-machine-state"></a>更新虚拟机状态
+
+以下命令更新 `-ResourceGroupName` 的 `$VirtualMachine` 中存储的 VM 的状态：
 
 ```powershell
 Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine

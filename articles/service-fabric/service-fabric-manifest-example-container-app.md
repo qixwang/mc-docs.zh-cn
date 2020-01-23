@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric 容器应用程序清单示例 | Azure
+title: Azure Service Fabric 容器应用程序清单示例
 description: 了解如何为多容器 Service Fabric 应用程序配置应用程序和服务清单设置。
-services: service-fabric
-documentationcenter: na
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 origin.date: 06/08/2018
-ms.date: 09/30/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0bbb83cdbdec5baaa3a75bbb3f9f3a029d8639bc
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 29e421b2e51c1f8dc2dc51f6124c1bb319b590cb
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340782"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742504"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
 下面以示例方式说明了多容器 Service Fabric 应用程序的应用程序和服务清单。 这些示例的目的是说明什么设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。

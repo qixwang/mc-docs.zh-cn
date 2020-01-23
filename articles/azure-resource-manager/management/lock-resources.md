@@ -3,18 +3,18 @@ title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
 ms.topic: conceptual
 origin.date: 05/14/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 255fc8b383299bbfe55ea16212923dc58d261c57
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 8597a4b6cfe24a501194127c128d79bea0310f1a
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631165"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165468"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
-管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
+作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
 * **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。 
 * **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”  角色授予的权限。 
@@ -41,6 +41,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。  
 
 <!--Not Available on ## Managed Applications and locks-->
+<!--Not Available on Azure Databricks-->
 
 ## <a name="portal"></a>门户
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]

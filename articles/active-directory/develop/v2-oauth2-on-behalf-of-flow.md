@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d511ef68ccecf30a00001e86c27ae4b0a735caa
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5a13ae4062d28d51960fc753e628df1bc0fa2cd6
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335252"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116779"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -35,12 +35,12 @@ OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服
 
 > [!NOTE]
 >
-> - Microsoft 标识平台终结点并非支持所有方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。 具体而言，具有 Azure AD 受众的应用不支持已知的客户端应用程序。 因此，OBO 的常见许可模式不适用于登录工作或学校帐户的客户端。 若要详细了解如何处理该流的此步骤，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
+> - Microsoft 标识平台终结点并非支持所有方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](azure-ad-endpoint-comparison.md)。 
 > - 自 2018 年 5 月起，派生 `id_token` 的某些隐式流不能用于 OBO 流。 单页应用 (SPA) 应改为将**访问**令牌传递给中间层机密客户端，才能执行 OBO 流。 有关哪些客户端可以执行 OBO 调用的详细信息，请参阅[限制](#client-limitations)。
 
 ## <a name="protocol-diagram"></a>协议图
 
-假定已在应用程序中使用 [OAuth 2.0 授权代码授权流](v2-oauth2-auth-code-flow.md)对用户进行身份验证。 此时，应用程序已获得 API A  的访问令牌（令牌 A），其中包含用户对访问中间层 Web API (API A) 的声明和许可。 现在，API A 需要向下游 Web API (API B) 发出身份验证请求。
+假定已在应用程序中使用 [OAuth 2.0 授权代码授权流](v2-oauth2-auth-code-flow.md)或其他登录流对用户进行身份验证。 此时，应用程序已获得 API A  的访问令牌（令牌 A），其中包含用户对访问中间层 Web API (API A) 的声明和许可。 现在，API A 需要向下游 Web API (API B) 发出身份验证请求。
 
 所遵循的步骤构成 OBO 流，并借助以下关系图进行说明。
 
@@ -48,9 +48,9 @@ OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服
 
 1. 客户端应用程序使用令牌 A（其中包含 API A 的 `aud` 声明）向 API A 发出请求。
 1. API A 向 Microsoft 标识平台令牌颁发终结点进行身份验证并请求访问 API B 的令牌。
-1. Microsoft 标识平台令牌颁发终结点使用令牌 A 验证 API A 的凭据，并颁发访问 API B 的令牌（令牌 B）。
-1. 令牌 B 在向 API B 发出的请求的授权标头中设置。
-1. API B 返回受保护资源中的数据。
+1. Microsoft 标识平台令牌颁发终结点使用令牌 A 验证 API A 的凭据，并颁发供 API B（令牌 B）访问 API A 的访问令牌。
+1. 令牌 B 由 API A 在向 API B 发出的请求的 authorization 标头中设置。
+1. 受保护资源中的数据通过 API B 返回到 API A，并从那返回到客户端。
 
 > [!NOTE]
 > 在此方案中，中间层服务无需用户干预，就要获取用户对访问下游 API 的许可。 因此，在身份验证过程的同意步骤中会提前显示授权访问下游 API 的选项。 若要了解如何为应用设置此选项，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
@@ -74,7 +74,7 @@ https://login.partner.microsoftonline.cn/<tenant>/oauth2/v2.0/token
 | `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给应用的应用程序（客户端）ID。 |
 | `client_secret` | 必须 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。 |
-| `assertion` | 必须 | 请求中使用的令牌值。 |
+| `assertion` | 必须 | 请求中使用的令牌值。  此令牌必须有发出此 OBO 请求的应用（由 `client-id` 字段表示的应用）的受众。 |
 | `scope` | 必须 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 
@@ -106,7 +106,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必须 |  [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给应用的应用程序（客户端）ID。 |
 | `client_assertion_type` | 必须 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必须 | 断言（JSON Web 令牌），需使用作为应用程序凭据注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
+| `client_assertion` | 必须 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
 | `assertion` | 必须 | 请求中使用的令牌值。 |
 | `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 | `scope` | 必须 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
@@ -161,7 +161,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上述访问令牌是 v1.0 格式的令牌。 这是因为该令牌是基于要访问的资源提供的。 Microsoft Graph 请求 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 只有应用程序才能查看访问令牌。 客户端不应该检查它们。
+> 上述访问令牌是 v1.0 格式的令牌。 这是因为该令牌是基于要访问的**资源**提供的。 Microsoft Graph 设置为接受 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 只有应用程序才能查看访问令牌。 客户端**不得**检查它们。
 
 ### <a name="error-response-example"></a>错误响应示例
 
@@ -193,24 +193,22 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>为中间层应用程序获得同意
 
-根据应用程序的受众，可以考虑使用不同的策略来确保 OBO 流的成功。 在所有情况下，最终目标都是确保给予适当的同意。 但是，如何实现这一点取决于应用程序支持哪些用户。
-
-### <a name="consent-for-azure-ad-only-applications"></a>同意 Azure AD 专用应用程序
-
-#### <a name="default-and-combined-consent"></a>/.default 和组合同意
-
-对于只需要登录工作或学校帐户的应用程序，传统的“已知客户端应用程序”方法就足够了。 中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 Microsoft 标识平台终结点中，此功能是使用 [`/.default` 范围](v2-permissions-and-consent.md#the-default-scope)实现的。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
+根据应用程序的体系结构或使用情况，可以考虑使用不同的策略来确保 OBO 流的成功。 在所有情况下，最终目标都是确保给予适当的许可，使客户端应用可以调用中间层应用，中间层应用有权调用后端资源。 
 
 
-#### <a name="pre-authorized-applications"></a>预授权应用程序
+### <a name="default-and-combined-consent"></a>/.default 和组合同意
 
-应用程序门户的一项功能是“预授权应用程序”。 通过这种方式，资源可以指示给定应用程序始终具有接收某些范围的权限。 这主要用于使前端客户端和后端资源之间的连接更顺畅。 一个资源可以声明多个预授权应用程序 - 任何此类应用程序都可以在 OBO 流中请求这些权限，并在未经用户同意的情况下接收这些权限。
+中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 Microsoft 标识平台终结点中，此功能是使用 [`/.default` 范围](v2-permissions-and-consent.md#the-default-scope)实现的。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。  用户同意这两个应用程序，接着 OBO 流便开始工作。
 
-#### <a name="admin-consent"></a>管理员同意
+### <a name="pre-authorized-applications"></a>预授权应用程序
+
+资源可以指示给定应用程序始终具有接收某些范围的权限。 这主要用于使前端客户端和后端资源之间的连接更顺畅。 一个资源可以声明多个预授权应用程序 - 任何此类应用程序都可以在 OBO 流中请求这些权限，并在未经用户同意的情况下接收这些权限。
+
+### <a name="admin-consent"></a>管理员同意
 
 租户管理员可以通过为中间层应用程序提供管理员同意，保证应用程序有权调用其所需的 API。 为此，管理员可以在其租户中找到中间层应用程序，打开“所需的权限”页面，然后选择为应用授予权限。 若要详细了解管理员同意功能，请参阅[同意和权限文档](v2-permissions-and-consent.md)。
 
-#### <a name="use-of-a-single-application"></a>使用单一应用程序
+### <a name="use-of-a-single-application"></a>使用单一应用程序
 
 在某些情况下，可能只有一对中间层和前端客户端。 在这种情况下，你可能会发现将其作为单一应用程序更轻松，完全无需使用中间层应用程序。 若要在前端和 Web API 之间进行身份验证，可以使用 cookie、id_token 或为应用程序本身请求的访问令牌。 然后，从此单一应用程序请求同意后端资源。
 

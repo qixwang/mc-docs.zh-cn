@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能和命令
+title: Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能
 description: 了解 Azure Cosmos DB Cassandra API 中的 Apache Cassandra 功能支持
 author: rockboyfor
 ms.author: v-yeche
@@ -8,13 +8,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 origin.date: 09/24/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: 28776f2b42f271c46253a14950004f4a7a18eb74
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/20/2020
+ms.openlocfilehash: f01822400a4af8f5f801a83508344bd80208223b
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334846"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270065"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -44,7 +44,7 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 
 * ascii  
 * bigint  
-* Blob  
+* blob  
 * boolean  
 * counter  
 * date  

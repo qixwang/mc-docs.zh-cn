@@ -1,6 +1,6 @@
 ---
 title: 使用渲染应用程序 - Azure Batch
-description: 如何配合 Azure Batch 使用渲染应用程序
+description: 如何通过 Azure Batch 使用渲染应用程序。 本文简要介绍如何运行每个渲染应用程序。
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
-ms.openlocfilehash: ba9e1b555e7ab4ec7c14fd77cfafca7edfbdf755
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 4ecc8da920ebe15380717211fe04e51c63c13970
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838995"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858198"
 ---
 # <a name="rendering-applications"></a>渲染应用程序
 

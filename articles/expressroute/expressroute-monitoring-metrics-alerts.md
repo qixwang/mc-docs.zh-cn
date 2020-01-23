@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 origin.date: 08/22/2019
-ms.date: 11/04/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: ddad2a6d910189e29445e1c861833bb51f42b1f8
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 0f6624f7ac36f13529b1004124fe3664cd55030f
+ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389445"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75859746"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -25,7 +25,7 @@ ms.locfileid: "74389445"
 
 ## <a name="expressroute-metrics"></a>ExpressRoute 指标
 
-若要查看“指标”，请导航到“Azure Monitor”页，单击“指标”。    若要查看 **ExpressRoute** 指标，请按资源类型“ExpressRoute 线路”进行筛选。  若要查看 **Global Reach** 指标，请按资源类型“ExpressRoute 线路”进行筛选，然后选择一个已启用 Global Reach 的 ExpressRoute 线路资源。  若要查看 **ExpressRoute Direct** 指标，请按“ExpressRoute 端口”筛选资源类型。  
+若要查看“指标”，请导航到“Azure Monitor”页，单击“指标”。    若要查看 ExpressRoute 指标，请按资源类型“ExpressRoute 线路”进行筛选   。 若要查看 **Global Reach** 指标，请按资源类型“ExpressRoute 线路”进行筛选，然后选择一个已启用 Global Reach 的 ExpressRoute 线路资源。  若要查看 **ExpressRoute Direct** 指标，请按“ExpressRoute 端口”筛选资源类型。  
 
 选择指标后，将应用默认聚合。 （可选）可以应用拆分，它将显示具有不同维度的指标。
 

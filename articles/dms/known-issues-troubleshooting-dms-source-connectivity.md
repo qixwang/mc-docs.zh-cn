@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.topic: article
 origin.date: 06/28/2019
 ms.date: 07/22/2019
-ms.openlocfilehash: 644a8895fc8af812c3cdc1611955422b6f7236d1
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+ms.openlocfilehash: 48fc346a4e798681930b05e6481eef24f14ee5c8
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952141"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776734"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>排查连接到源数据库时出现的 DMS 错误
 
@@ -80,7 +80,7 @@ ms.locfileid: "68952141"
 > [!NOTE]
 > 有关排查连接到源 AWS RDS SQL Server 时出现的问题的详细信息，请参阅以下资源：
 >
-> * [解决与 SQL Server 的连接错误](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
+> * [解决 SQL Server 连接错误](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
 > * [如何解决连接到 Amazon RDS 数据库实例时出现的问题？](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="known-issues"></a>已知问题

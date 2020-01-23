@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务 | Azure
-description: 使用 WCF 中继构建客户端和服务应用程序。
+title: 使用 Azure 中继向客户端公开本地 WCF REST 服务
+description: 教程：使用 WCF 中继构建客户端和服务应用程序。
 services: service-bus-relay
 documentationcenter: na
 author: lingliw
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/05/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bc43753fd21461efc87f0c1c0e1f95abf87f1486
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 15da12b2bf0a35e54704df40887adb2950719f73
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528349"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854360"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教程：使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -44,7 +44,7 @@ ms.locfileid: "74528349"
 > * 实现 WCF 客户端。
 > * 运行应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要满足以下先决条件：
 
@@ -64,7 +64,7 @@ ms.locfileid: "74528349"
 ### <a name="create-a-relay-contract-with-an-interface"></a>使用接口创建中继协定
 
 1. 以管理员身份启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并选择“以管理员身份运行”  。
-1. 在 Visual Studio 中选择“创建新项目”  。
+1. 在 Visual Studio 中，选择“新建项目”  。
 1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。   
 1. 将项目命名为 *EchoService* 并选择“创建”  。
 
@@ -98,7 +98,7 @@ ms.locfileid: "74528349"
     }
     ```
 
-    该命名空间值不同于在整个代码范围内使用的命名空间。 相反，该命名空间值将用作此协定的唯一标识符。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。
+    该命名空间值不同于在整个代码范围内使用的命名空间。 相反，该命名空间值用作此协定的唯一标识符。 显式指定命名空间可防止将默认的命名空间值添加到约定名称中。
 
    > [!NOTE]
    > 通常情况下，服务协定命名空间包含一个包括版本信息的命名方案。 服务协定命名空间中包括的版本信息可以使服务通过将新服务协定定义为新命名空间并将其公开到新的终结点上，来隔离重大更改。 以这种方式，客户端可以继续使用旧的服务协定，而无需进行更新。 版本信息可能包含日期或内部版本号。 有关详细信息，请参阅 [服务版本控制](https://docs.microsoft.com/dotnet/framework/wcf/service-versioning)。 对于本教程，服务协定命名空间的命名方案不包含版本信息。
@@ -284,7 +284,8 @@ namespace Microsoft.ServiceBus.Samples
     ```
 
 ### <a name="create-a-base-address-for-the-service"></a>为服务创建基本地址
-在上一个步骤中添加的代码后面，为服务的基址创建 `Uri` 实例。 此 URI 指定服务总线方案、命名空间，以及服务接口的路径。
+
+在上一部分添加的代码后面，为服务的基址创建 `Uri` 实例。 此 URI 指定服务总线方案、命名空间，以及服务接口的路径。
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");

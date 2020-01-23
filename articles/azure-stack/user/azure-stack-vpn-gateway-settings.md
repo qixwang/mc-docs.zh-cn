@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 10/03/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 1bc52d2d934e7a51025987835fa58a21d63ee7f4
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 80bcf930441e01c9b8d482b033fbd99033c51056
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020093"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737899"
 ---
 # <a name="configure-vpn-gateway-settings-for-azure-stack"></a>配置 Azure Stack 的 VPN 网关设置
 
@@ -172,9 +172,9 @@ Azure Stack 默认情况下仅支持一个套餐，这与 Azure 不同，后者�
 | 属性              | Value|
 |-|-|
 | SDK 版本           | IKEv2 |
-|Diffie-Hellman 组   | 组 2（1024 位） |
+|Diffie-Hellman 组   | ECP384 |
 | 身份验证方法 | 预共享密钥 |
-|加密和哈希算法 | AES256、SHA256 |
+|加密和哈希算法 | AES256、SHA384 |
 |SA 生存期（时间）     | 28,800 秒|
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE 阶段 2（快速模式）参数
@@ -186,10 +186,8 @@ Azure Stack 默认情况下仅支持一个套餐，这与 Azure 不同，后者�
 |加密和哈希算法（身份验证） | GCMAES256|
 |SA 生存期（时间）  | 27,000 秒  |
 |SA 生存期（千字节） | 33,553,408     |
-|完全向前保密 (PFS) |无（请参阅**注释 1**） |
+|完全向前保密 (PFS) | ECP384 |
 |死对等体检测 | 支持|  
-
-**注释 1：** 在版本 1807 以前，Azure Stack 使用值 PFS2048 作为“完全向前保密(PFS)”值。
 
 ## <a name="next-steps"></a>后续步骤
 

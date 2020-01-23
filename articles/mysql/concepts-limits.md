@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 中的限制
+title: 限制 - Azure Database for MySQL
 description: 本文介绍了 Azure Database for MySQL 中的限制，例如连接数和存储引擎选项。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 12/6/2018
-ms.date: 05/20/2019
-ms.openlocfilehash: 77205109eb1384fe5dbf48f91683339282715652
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+origin.date: 12/9/2019
+ms.date: 01/13/2020
+ms.openlocfilehash: 34ee68b271115697cea0aff035b52c1dc946f238
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65731980"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776738"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 
@@ -24,21 +24,21 @@ ms.locfileid: "65731980"
 ## <a name="maximum-connections"></a>最大连接数
 每个定价层的最大连接数和 vCore 数如下所示： 
 
-|**定价层**|**vCore(s)**| 最大连接数|
+|**定价层**|**vCore(s)**| 最大连接数 |
 |---|---|---|
 |基本| 1| 50|
 |基本| 2| 100|
-|常规用途| 2| 300|
-|常规用途| 4| 625|
-|常规用途| 8| 1250|
-|常规用途| 16| 2500|
-|常规用途| 32| 5000|
-|常规用途| 64| 10000|
-|内存优化| 2| 600|
-|内存优化| 4| 1250|
-|内存优化| 8| 2500|
-|内存优化| 16| 5000|
-|内存优化| 32| 10000|
+|常规用途| 2| 600|
+|常规用途| 4| 1250|
+|常规用途| 8| 2500|
+|常规用途| 16| 5000|
+|常规用途| 32| 10000|
+|常规用途| 64| 20000|
+|内存优化| 2| 1250|
+|内存优化| 4| 2500|
+|内存优化| 8| 5000|
+|内存优化| 16| 10000|
+|内存优化| 32| 20000|
 
 当连接数超出限制时，可能会收到以下错误：
 > 错误 1040 (08004)：连接过多

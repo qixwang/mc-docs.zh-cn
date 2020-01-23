@@ -1,26 +1,17 @@
 ---
-title: Service Fabric 群集Resource Manager - 应用程序组 | Azure
+title: Service Fabric 群集资源管理器 - 应用程序组
 description: 概述 Service Fabric 群集 Resource Manager 中的应用程序组功能
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/18/2017
-ms.date: 04/29/2019
+ms.date: 01/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 66bba1165469091fa1cee97ff30924d706b01c63
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: f18ae268bc662d121e572e5312ec6343e7a44a26
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913269"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742340"
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
 Service Fabric 的群集 Resource Manager 通常通过将负载（通过[指标](service-fabric-cluster-resource-manager-metrics.md)表示）平均分散到整个群集来管理群集资源。 Service Fabric 管理群集中节点的容量，并通过[容量](service-fabric-cluster-resource-manager-cluster-description.md)管理整个群集。 指标和容量非常适用于许多种工作负荷，但大量使用不同 Service Fabric 应用程序实例的模式有时还有其他要求。 例如，如果想要：
@@ -48,14 +39,14 @@ Service Fabric 的群集 Resource Manager 通常通过将负载（通过[指标]
 
 Powershell
 
-``` posh
+```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MaximumNodes 3
 Update-ServiceFabricApplication -ApplicationName fabric:/AppName -MaximumNodes 5
 ```
 
 C#
 
-``` csharp
+```csharp
 ApplicationDescription ad = new ApplicationDescription();
 ad.ApplicationName = new Uri("fabric:/AppName");
 ad.ApplicationTypeName = "AppType1";
@@ -81,13 +72,13 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 
 Powershell：
 
-``` posh
+```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -Metrics @("MetricName:Metric1,MaximumNodeCapacity:100,MaximumApplicationCapacity:1000")
 ```
 
 C#：
 
-``` csharp
+```csharp
 ApplicationDescription ad = new ApplicationDescription();
 ad.ApplicationName = new Uri("fabric:/AppName");
 ad.ApplicationTypeName = "AppType1";
@@ -134,13 +125,13 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 
 Powershell
 
-``` posh
+```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MinimumNodes 2 -Metrics @("MetricName:Metric1,NodeReservationCapacity:20")
 ```
 
 C#
 
- ``` csharp
+```csharp
 ApplicationDescription ad = new ApplicationDescription();
 ad.ApplicationName = new Uri("fabric:/AppName");
 ad.ApplicationTypeName = "AppType1";
@@ -163,13 +154,13 @@ Service Fabric 为 Application1 保留两个节点上的容量，并不允许 Ap
 
 Powershell：
 
-``` posh
+```powershell
 Get-ServiceFabricApplicationLoadInformation -ApplicationName fabric:/MyApplication1
 ```
 
 C#
 
-``` csharp
+```csharp
 var v = await fc.QueryManager.GetApplicationLoadInformationAsync("fabric:/MyApplication1");
 var metrics = v.ApplicationLoadMetricInformation;
 foreach (ApplicationLoadMetricInformation metric in metrics)
@@ -190,7 +181,7 @@ ApplicationLoad 查询返回针对应用程序所指定应用程序容量的基�
 ## <a name="removing-application-capacity"></a>删除应用程序容量
 为应用程序设置应用程序容量参数后，可以使用更新应用程序 API 或 PowerShell cmdlet 来删除这些参数。 例如：
 
-``` posh
+```powershell
 Update-ServiceFabricApplication -Name fabric:/MyApplication1 -RemoveApplicationCapacity
 
 ```

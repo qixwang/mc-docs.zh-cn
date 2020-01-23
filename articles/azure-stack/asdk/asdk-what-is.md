@@ -13,17 +13,17 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-origin.date: 02/08/2019
-ms.date: 11/18/2019
+origin.date: 11/27/2019
+ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: misainat
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 15fad8ba5cef2ca6b2319d3181518ad9afb86898
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/27/2019
+ms.openlocfilehash: c963f10639342131e28b5234933ba9ed0e5c804e
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020123"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737881"
 ---
 # <a name="what-is-the-azure-stack-hub-development-kit-asdk"></a>什么是 Azure Stack Hub 开发工具包 (ASDK)？
 [Azure Stack Hub 集成系统](../operator/azure-stack-overview.md)的大小范围为 4 到 16 个节点，由硬件合作伙伴和 Azure 共同提供支持。 使用 Azure Stack Hub 集成系统可为生产工作负荷启用新方案。 如果你是 Azure Stack Hub 操作员，想要管理集成系统基础结构并提供服务，请参阅我们的[操作员文档](/azure-stack/operator)。
@@ -50,7 +50,7 @@ ASDK 旨在为以下人员提供 Azure 一致性混合云体验：
 |说明|ASDK|多节点 Azure Stack Hub|
 |-----|-----|-----|
 |**缩放**|所有组件都安装在一个单节点服务器计算机上。|大小范围为 4-16 节点。|
-|**复原能力**|单节点配置不提供高可用性|支持[高可用性](../operator/azure-stack-overview.md#providing-high-availability)功能。|
+|**复原能力**|单节点配置不提供高可用性|支持高可用性功能。|
 |**联网**|ASDK 主机路由所有 ASDK 网络流量。 无其他切换要求。|需要在多节点部署中使用更复杂的[网络路由基础架构](../operator/azure-stack-network.md#network-infrastructure)，包括架顶 (TOR)、基板管理控制器 (BMC) 和边界（数据中心网络）交换机。|
 |**修补和更新过程**|若要改用新版 ASDK，必须在 ASDK 主计算机上重新部署 ASDK。|[修补和更新](../operator/azure-stack-updates.md)过程用于更新已安装的 Azure Stack Hub 版本。|
 |**支持**|MSDN Azure Stack 论坛。 Microsoft 客户服务和支持 (CSS) 支持不  适用于非生产环境。|[MSDN Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)和完整的 CSS 支持。|

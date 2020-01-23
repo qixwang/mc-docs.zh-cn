@@ -1,7 +1,7 @@
 ---
 title: 快速入门：适用于 Python 的语言理解 (LUIS) 创作客户端库
 titleSuffix: Azure Cognitive Services
-description: 适用于 Python 的 LUIS 客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。
+description: 通过本快速入门开始使用用于 Python 的 LUIS 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 services: cognitive-services
 author: lingliw
 manager: digimobile
@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 11/22/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 746053344ee94400a96c972cac6f8436b5e3c0d6
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 0531066ad000574587a675992dc9f39406767ecf
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982144"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75854225"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>快速入门：适用于 Python 的语言理解 (LUIS) 创作客户端库
 
@@ -31,7 +31,7 @@ ms.locfileid: "74982144"
 
 [参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [创作包 (Pypi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 语言理解 (LUIS) 门户帐户：[免费创建一个](https://luis.azure.cn)。
 * [Python 3.x](https://www.python.org/)

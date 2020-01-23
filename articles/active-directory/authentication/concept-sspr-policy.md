@@ -1,23 +1,22 @@
 ---
-title: Azure AD 自助式密码重置策略 - Azure Active Directory
+title: 自助密码重置策略 - Azure Active Directory
 description: 配置 Azure AD 自助密码重置策略选项
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 05/16/2018
-ms.date: 10/08/2019
+ms.date: 01/09/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1053124d64a5dc8c0e3af1ce5afab90d891cc5
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: fb3054adba7b0d981f6f06df263f18e592ce1c29
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292016"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776827"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -55,7 +54,7 @@ ms.locfileid: "72292016"
   * 特权身份验证管理员
 
 * 如果在试用订阅中已过 30 天；或
-* 虚域存在（例如 contoso.com）；或
+* 已为 Azure AD 租户配置了自定义域，如 *contoso.com*；或
 * Azure AD Connect 正在从本地目录同步标识
 
 ### <a name="exceptions"></a>异常
@@ -175,3 +174,4 @@ Azure 云服务的全局管理员或用户管理员可使用用于 Windows Power
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
+<!-- Update_Description: wording update -->

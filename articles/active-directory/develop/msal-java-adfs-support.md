@@ -1,33 +1,29 @@
 ---
-title: 适用于 Java 的 Microsoft 身份验证库中的 AD FS 支持
+title: AD FS 支持（适用于 Java 的 MSAL）
 titleSuffix: Microsoft identity platform
 description: 了解适用于 Java 的 Microsoft 身份验证库 (MSAL4j) 中的 Active Directory 联合身份验证服务 (AD FS) 支持。
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 01/06/2020
 ms.author: v-junlch
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 414ca584216c060230c1c3281c1eaf78ea4968fe
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 81cb2c69b2384545dcd35b1160aa2a70c7634e06
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348531"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776994"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java 中的 Active Directory 联合身份验证服务支持
 
-使用 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS) 可将基于 OpenID Connect 和 OAuth 2.0 的身份验证与授权添加到适用于 Java 的 Microsoft 身份验证库 (MSAL for Java) 应用。 集成后，应用即可对通过 Azure AD 进行联合的 AD FS 中的用户进行身份验证。 有关方案的详细信息，请参阅[面向开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)。
+使用 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS) 可将基于 OpenID Connect 和 OAuth 2.0 的身份验证与授权添加到适用于 Java 的 Microsoft 身份验证库 (MSAL for Java) 应用。 集成后，应用即可对通过 Azure AD 进行联合的 AD FS 中的用户进行身份验证。 有关方案的详细信息，请参阅[面向开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-development)。
 
 使用 MSAL for Java 的应用将先与 Azure Active Directory (Azure AD) 通信，然后与 AD FS 联合。
 
@@ -51,7 +47,5 @@ MSAL for Java 会连接到 Azure AD，后者可将在 Azure AD 中管理的用�
 
 通过将 `ConfidentialClientApplication.AcquireToken()` 或 `PublicClientApplication.AcquireToken()` 与 `IntegratedWindowsAuthenticationParameters` 或 `UsernamePasswordParameters` 配合使用来获取令牌时，MSAL for Java 会让标识提供者根据用户名进行联系。 MSAL for Java 从标识提供者处获取 [SAML 1.1 令牌](reference-saml-tokens.md)，然后将其提供给 Azure AD，后者会返回 JSON Web 令牌 (JWT)。
 
-## <a name="next-steps"></a>后续步骤
 
-有关联合案例，请参阅[使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为](/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
-
+<!-- Update_Description: wording update -->

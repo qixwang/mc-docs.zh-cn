@@ -1,25 +1,17 @@
 ---
-title: Azure Service Fabric 反向代理安全通信 | Azure
+title: Azure Service Fabric 反向代理安全通信
 description: 配置反向代理以启用安全的端到端通信。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 origin.date: 08/10/2017
-ms.date: 09/10/2018
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 733b17d60059795ca0f1164bcf1ce9ccd9623392
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 568965be88cbea2d950d7e06aa2b6ff7191aa0fe
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52650862"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742434"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
@@ -31,24 +23,24 @@ ms.locfileid: "52650862"
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>在反向代理与服务之间建立安全连接 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>反向代理在服务中进行身份验证：
-反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板 [Microsoft.ServiceFabric/clusters](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/resource-group-authoring-templates.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
+反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定  。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
 
 服务可以实现逻辑来验证反向代理提供的证书。 服务可以在配置包中将已接受的客户端证书详细信息指定为配置设置。 此设置可在运行时读取，并用于验证反向代理提供的证书。 请参阅[管理应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)来添加配置设置。 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>反向代理通过服务提供的证书验证服务的身份：
-反向代理支持使用以下策略来对服务提供的证书执行服务器证书验证：None、ServiceCommonNameAndIssuer 和 ServiceCertificateThumbprints。
+反向代理支持使用以下策略对服务提供的证书执行服务器证书验证：None、ServiceCommonNameAndIssuer 和 ServiceCertificateThumbprints。
 若要选择反向代理使用的策略，请在 [fabricSettings](service-fabric-cluster-fabric-settings.md) 中的 **ApplicationGateway/Http** 节下指定 **ApplicationCertificateValidationPolicy**。
 
 下一部分介绍了其中每个选项的配置详细信息。
 
 ### <a name="service-certificate-validation-options"></a>服务证书验证选项 
 
-- **None**：反向代理跳过代理服务证书的验证，并建立安全连接。 这是默认行为。
-在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，指定值为 **None** 的 **ApplicationCertificateValidationPolicy**。
+- **无**：反向代理跳过代理服务证书的验证，并建立安全连接。 这是默认行为。
+    在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，指定值为 **None** 的 **ApplicationCertificateValidationPolicy**。
 
-   ```json
-   {
-   "fabricSettings": [
+    ```json
+    {
+    "fabricSettings": [
              ...
              {
                "name": "ApplicationGateway/Http",
@@ -61,14 +53,14 @@ ms.locfileid: "52650862"
              }
            ],
            ...
-   }
-   ```
+    }
+    ```
 
-- **ServiceCommonNameAndIssuer**：反向代理根据证书公用名称和直接颁发者的指纹，验证服务提供的证书：在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定值为 **ServiceCommonNameAndIssuer** 的 **ApplicationCertificateValidationPolicy**。
+- **ServiceCommonNameAndIssuer**：反向代理根据证书公用名称和直接颁发者的指纹验证服务提供的证书： 在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，为 **ApplicationCertificateValidationPolicy** 指定值 **ServiceCommonNameAndIssuer**。
 
-   ```json
-   {
-   "fabricSettings": [
+    ```json
+    {
+    "fabricSettings": [
              ...
              {
                "name": "ApplicationGateway/Http",
@@ -81,17 +73,17 @@ ms.locfileid: "52650862"
              }
            ],
            ...
-   }
-   ```
+    }
+    ```
 
-   若要指定服务公用名称和颁发者指纹，请在 **fabricSettings** 下添加 [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) 节，如下所示。 可在 **parameters** 数组中添加多个证书公用名称和颁发者指纹对。 
+    若要指定服务公用名称和颁发者指纹，请在 **fabricSettings** 下添加 [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) 节，如下所示。 可在 **parameters** 数组中添加多个证书公用名称和颁发者指纹对。 
 
-   如果反向代理要连接的终结点所提供的证书的公用名和颁发者指纹与此处指定的任何值匹配，则会建立 SSL 通道。 
-   如果无法匹配证书详细信息，则反向代理将无法处理该客户端的请求并返回 502（错误的网关）状态代码。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。 
+    如果反向代理要连接的终结点所提供的证书的公用名和颁发者指纹与此处指定的任何值匹配，则会建立 SSL 通道。 
+    如果无法匹配证书详细信息，则反向代理将无法处理该客户端的请求并返回 502（错误的网关）状态代码。 HTTP 状态行也会包含短语“Invalid SSL Certificate”。 
 
-   ```json
-   {
-   "fabricSettings": [
+    ```json
+    {
+    "fabricSettings": [
              ...
              {
                "name": "ApplicationGateway/Http/ServiceCommonNameAndIssuer",
@@ -108,14 +100,14 @@ ms.locfileid: "52650862"
              }
            ],
            ...
-   }
-   ```
+    }
+    ```
 
-- **ServiceCertificateThumbprints**：反向代理将根据代理服务证书的指纹验证该证书。 使用自签名证书配置服务后，可以选择此方法：在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，指定值为 **ServiceCertificateThumbprints** 的 **ApplicationCertificateValidationPolicy**。
+- **ServiceCertificateThumbprints**：反向代理将根据代理服务证书的指纹验证该证书。 当服务配置了自签名证书时，可以选择使用此路由：在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，为 **ApplicationCertificateValidationPolicy** 指定值 **ServiceCertificateThumbprints**。
 
-   ```json
-   {
-   "fabricSettings": [
+    ```json
+    {
+    "fabricSettings": [
              ...
              {
                "name": "ApplicationGateway/Http",
@@ -128,14 +120,14 @@ ms.locfileid: "52650862"
              }
            ],
            ...
-   }
-   ```
+    }
+    ```
 
-   另外，在 **ApplicationGateway/Http** 节中，指定包含 **ServiceCertificateThumbprints** 条目的指纹。 可在 value 字段中以逗号分隔列表的形式指定多个指纹，如下所示：
+    另外，在 **ApplicationGateway/Http** 节中，指定包含 **ServiceCertificateThumbprints** 条目的指纹。 可在 value 字段中以逗号分隔列表的形式指定多个指纹，如下所示：
 
-   ```json
-   {
-   "fabricSettings": [
+    ```json
+    {
+    "fabricSettings": [
              ...
              {
                "name": "ApplicationGateway/Http",
@@ -149,10 +141,10 @@ ms.locfileid: "52650862"
              }
            ],
            ...
-   }
-   ```
+    }
+    ```
 
-   如果此配置条目中列出了服务器证书的指纹，则反向代理可成功建立 SSL 连接。 否则，它会终止连接，无法处理客户端的请求并返回 502（错误的网关）。 HTTP 状态行也会包含短语“Invalid SSL Certificate”。
+    如果此配置条目中列出了服务器证书的指纹，则反向代理可成功建立 SSL 连接。 否则，它会终止连接，无法处理客户端的请求并返回 502（错误的网关）。 HTTP 状态行也会包含短语“Invalid SSL Certificate”。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>服务公开安全和不安全终结点时使用的终结点选择逻辑
 Service Fabric 支持为服务配置多个终结点。 有关详细信息，请参阅[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。
@@ -196,10 +188,10 @@ Service Fabric 支持为服务配置多个终结点。 有关详细信息，请�
 
 ## <a name="next-steps"></a>后续步骤
 * [在群集上设置和配置反向代理](service-fabric-reverseproxy-setup.md)。
-* 请参阅[配置反向代理以连接到安全服务](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services)，获取用于通过不同的服务证书验证选项配置安全反向代理的 Azure Resource Manager 模板示例。
+* 请参阅[配置反向代理以连接到安全服务](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
 * 参阅 [GitHub 上的示例项目](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)中服务之间的 HTTP 通信示例。
 * [使用 Reliable Services 远程控制执行远程过程调用](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [管理群集证书](service-fabric-cluster-security-update-certs-azure.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

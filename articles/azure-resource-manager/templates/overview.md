@@ -2,15 +2,15 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板部署资源的好处。
 ms.topic: conceptual
-origin.date: 09/25/2019
+origin.date: 01/02/2020
+ms.date: 01/20/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: c95527ae264211fa0f3c905d591dd66b57e52cdf
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 6c3fec7f3fafbd8dd6470837fdc31f2123449817
+ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631558"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165474"
 ---
 <!--Verify successfully-->
 # <a name="azure-resource-manager-templates-overview"></a>Azure 资源管理器模板概述
@@ -76,16 +76,15 @@ ms.locfileid: "75631558"
 ```json
 "resources": [
   {
-    "apiVersion": "2016-01-01",
     "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
     "name": "mystorageaccount",
     "location": "chinanorth",
     "sku": {
       "name": "Standard_LRS"
     },
     "kind": "Storage",
-    "properties": {
-    }
+    "properties": {}
   }
 ]
 ```
@@ -98,12 +97,11 @@ https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroup
 REQUEST BODY
 {
   "location": "chinanorth",
-  "properties": {
-  }
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage"
+  "kind": "Storage",
+  "properties": {}
 }
 ```
 

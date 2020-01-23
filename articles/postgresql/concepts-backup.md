@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
+title: 备份和还原 - Azure Database for PostgreSQL - 单一服务器
 description: 了解如何自动备份和还原 Azure Database for PostgreSQL 服务器 - 单一服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 08/21/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 007bd287be8867c820047094743a7d6a1eec3e26
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.date: 01/03/2020
+ms.openlocfilehash: bc054436770eff3cef1d733e4bf76f04e46cb140
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530634"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776661"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -63,7 +63,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 ### <a name="geo-restore"></a>异地还原
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 查看 [Azure Database for MySQL 定价层](concepts-pricing-tiers.md)，以获取受支持区域的列表。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 查看 [Azure Database for PostgeSQL 定价层](concepts-pricing-tiers.md)，以获取受支持区域的列表。
 
 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 

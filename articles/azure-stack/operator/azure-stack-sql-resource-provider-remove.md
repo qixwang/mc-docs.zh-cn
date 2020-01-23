@@ -1,26 +1,28 @@
 ---
-title: 在 Azure Stack 上删除 SQL 资源提供程序 | Microsoft Docs
+title: 删除 SQL 资源提供程序
+titleSuffix: Azure Stack
 description: 了解如何从 Azure Stack 部署中删除 SQL 资源提供程序。
 services: azure-stack
 documentationCenter: ''
-author: mattbriggs
-manager: femila
+author: WenJason
+manager: digimobile
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2018
-ms.author: mabrigg
-ms.reviewer: quying
+origin.date: 10/02/2019
+ms.date: 01/13/2020
+ms.author: v-jay
+ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: 3028f51ceb73dfc3d553f3211e37fba13ebf6f97
-ms.sourcegitcommit: 05aa4e4870839a3145c1a3835b88cf5279ea9b32
+ms.openlocfilehash: dc40e4145f64441034e2bb8d27885ddcf2e46da6
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64529857"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737744"
 ---
 # <a name="remove-the-sql-resource-provider"></a>删除 SQL 资源提供程序
 
@@ -29,15 +31,15 @@ ms.locfileid: "64529857"
 > [!NOTE]
 > 可以在[部署资源提供程序先决条件](./azure-stack-sql-resource-provider-deploy.md#prerequisites)中找到资源提供程序安装程序的下载链接。
 
-删除 SQL 资源提供程序不会从托管服务器中删除租户数据库。
+删除 SQL 资源提供程序不会从宿主服务器中删除租户数据库。
 
 ## <a name="dependency-cleanup"></a>依赖项清理
 
 在运行 DeploySqlProvider.ps1 脚本来删除资源提供程序之前，需要执行几个清理任务。
 
-Azure Stack 操作员负责执行以下清理任务：
+Azure Stack 操作员负责以下清理任务：
 
-* 删除引用了 SQL 适配器的所有计划。
+* 删除引用 SQL 适配器的所有计划。
 * 删除与 SQL 适配器关联的所有配额。
 
 ## <a name="to-remove-the-sql-resource-provider"></a>删除 SQL 资源提供程序
@@ -53,11 +55,11 @@ Azure Stack 操作员负责执行以下清理任务：
 
 4. 使用以下参数运行 DeploySqlProvider.ps1 脚本：
 
-    * **Uninstall**。 删除资源提供程序和所有关联的资源。
-    * **PrivilegedEndpoint**。 特权终结点的 IP 地址或 DNS 名称。
-    * **AzureEnvironment**。 用于部署 Azure Stack 的 Azure 环境。 仅对于 Azure AD 部署是必需的。
-    * **CloudAdminCredential**。 访问特权终结点时所需的云管理员凭据。
-    * **AzCredential**。 Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。
+    * **Uninstall**：删除资源提供程序和所有关联的资源。
+    * **PrivilegedEndpoint**：特权终结点的 IP 地址或 DNS 名称。
+    * **AzureEnvironment**：用于部署 Azure Stack 的 Azure 环境。 仅对于 Azure AD 部署是必需的。
+    * **CloudAdminCredential**：访问特权终结点时所需的云管理员凭据。
+    * **AzCredential**：Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。
 
 ## <a name="next-steps"></a>后续步骤
 

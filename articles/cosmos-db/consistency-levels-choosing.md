@@ -1,19 +1,19 @@
 ---
-title: 为使用 Azure Cosmos DB 的应用程序选择适当的一致性级别
+title: 为 Azure Cosmos DB 应用选择适当的一致性级别
 description: 在 Azure Cosmos DB 中为你的应用程序选择适当的一致性级别。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/23/2019
-ms.date: 09/09/2019
+ms.date: 01/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4ea04b040f7a0336927711ef2ac2252cdad3f088
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: be0b3762b78a71c2e72a79be3dac11513c833eac
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254807"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270024"
 ---
 # <a name="choose-the-right-consistency-level"></a>选择适当的一致性级别 
 

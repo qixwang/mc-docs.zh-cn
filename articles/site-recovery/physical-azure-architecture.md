@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 将物理服务器灾难恢复到 Azure 的体系结构 | Azure
+title: Azure Site Recovery 中的物理服务器灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地物理服务器灾难恢复到 Azure 的过程中使用的组件和体系结构。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 09/09/2019
-ms.date: 09/30/2019
+origin.date: 11/14/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca0b755ccdea9ba6eee1bf10b941e4589ce8fdb2
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: a767beea9139aa260acffb0bd9de850fbd45bcc4
+ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340858"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776660"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
 
@@ -60,7 +60,7 @@ ms.locfileid: "71340858"
 - 不支持计划内故障转移。
 - 必须故障回复到本地 VMware VM。 这意味着，即使将本地物理服务器复制到 Azure 时也需要本地 VMware 基础结构。
 - 对单台计算机进行故障转移，或者创建恢复计划来同时对多台计算机进行故障转移。
-- 运行故障转移时，将使用 Azure 存储中的已复制数据创建 Azure VM。
+- 运行故障转移时，使用 Azure 存储中复制的数据创建 Azure VM。
 - 触发初始故障转移之后，可提交它来开始访问 Azure VM 中的工作负荷。
 - 当本地主站点再次可用时，便可以故障回复。
 - 需要设置故障回复基础结构，包括：

@@ -5,19 +5,21 @@ author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-origin.date: 1/16/2019
-ms.date: 04/12/2019
+origin.date: 12/04/2019
+ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: d7d70f7e8e77ad59a48e495070b4781dfd6d43c0
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: b5ee0ec162d817c7286406e97f62ccc6055b6bb5
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982128"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599862"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件  。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](activity-log-export.md)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](diagnostic-logs-schema.md)的映射。
+[Azure 活动日志](activity-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
+
+以下示例显示了从门户、PowerShell、CLI 和 REST API 访问活动日志时的架构。 [将活动日志流式传输到存储或事件中心](resource-logs-stream-event-hubs.md)时，架构是不同的。 本文末尾提供了这些属性到[资源日志架构](diagnostic-logs-schema.md)的映射。
 
 ## <a name="administrative"></a>管理
 此类别包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
@@ -118,7 +120,7 @@ ms.locfileid: "74982128"
 | channels |以下值之一：“Admin”、“Operation” |
 | 声明 |Active Directory 使用 JWT 令牌来验证用户或应用程序，以在资源管理器中执行此操作。 |
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| 说明 |事件的静态文本说明。 |
+| description |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
 | eventName | 管理事件的易记名称。 |
 | category | 始终为“Administrative” |
@@ -182,13 +184,13 @@ ms.locfileid: "74982128"
     "title": "Network Infrastructure - UK South",
     "service": "Service Fabric",
     "region": "UK South",
-    "communication": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
+    "communication": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Cognitive Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
     "incidentType": "Incident",
     "trackingId": "NA0F-BJG",
     "impactStartTime": "2017-07-20T21:41:00.0000000Z",
     "impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"UK South\"}],\"ServiceName\":\"Service Fabric\"}]",
     "defaultLanguageTitle": "Network Infrastructure - UK South",
-    "defaultLanguageContent": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
+    "defaultLanguageContent": "Starting at approximately 21:41 UTC on 20 Jul 2017, a subset of customers in UK South may experience degraded performance, connectivity drops or timeouts when accessing their Azure resources hosted in this region. Engineers are investigating underlying Network Infrastructure issues in this region. Impacted services may include, but are not limited to App Services, Automation, Service Bus, Log Analytics, Key Vault, SQL Database, Service Fabric, Event Hubs, Stream Analytics, Azure Data Movement, API Management, and Azure Cognitive Search. Multiple engineering teams are engaged in multiple workflows to mitigate the impact. The next update will be provided in 60 minutes, or as events warrant.",
     "stage": "Active",
     "communicationId": "636361902146035247",
     "version": "0.1.1"
@@ -217,7 +219,7 @@ ms.locfileid: "74982128"
         "localizedValue": "Resource Health"
     },
     "eventTimestamp": "2018-09-04T15:33:43.65Z",
-    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
     "level": "Critical",
     "operationId": "",
     "operationName": {
@@ -233,7 +235,7 @@ ms.locfileid: "74982128"
         "value": "Microsoft.Compute/virtualMachines",
         "localizedValue": "Microsoft.Compute/virtualMachines"
     },
-    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
     "status": {
         "value": "Active",
         "localizedValue": "Active"
@@ -243,7 +245,7 @@ ms.locfileid: "74982128"
         "localizedValue": ""
     },
     "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
-    "subscriptionId": "<subscription Id>",
+    "subscriptionId": "<subscription ID>",
     "properties": {
         "stage": "Active",
         "title": "Virtual Machine health status changed to unavailable",
@@ -262,7 +264,7 @@ ms.locfileid: "74982128"
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
-| 说明 |警报事件的静态文本说明。 |
+| description |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
 | category | 始终为“ResourceHealth” |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -357,7 +359,7 @@ ms.locfileid: "74982128"
 | channels | 始终是“Admin, Operation” |
 | 声明 | 具有 SPN（服务主体名称）的 JSON blob，或警报引擎资源类型。 |
 | correlationId | 字符串格式的 GUID。 |
-| 说明 |警报事件的静态文本说明。 |
+| description |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
 | category | 始终为“Alert” |
 | level |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
@@ -467,7 +469,7 @@ ms.locfileid: "74982128"
 | channels | 始终是“Admin, Operation” |
 | 声明 | 具有 SPN（服务主体名称）的 JSON blob，或自动缩放引擎资源类型。 |
 | correlationId | 字符串格式的 GUID。 |
-| 说明 |自动缩放事件的静态文本说明。 |
+| description |自动缩放事件的静态文本说明。 |
 | eventDataId |自动缩放事件的唯一标识符。 |
 | level |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |自动缩放设置的资源组名称。 |
@@ -506,7 +508,7 @@ ms.locfileid: "74982128"
         "localizedValue": "Security"
     },
     "eventTimestamp": "2017-10-18T06:02:18.6179339Z",
-    "id": "/subscriptions/<subscription ID>/providers/Microsoft.Security/locations/centralus/alerts/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/events/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/ticks/636439033386179339",
+    "id": "/subscriptions/<subscription ID>/providers/Microsoft.Security/locations/chinaeast/alerts/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/events/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/ticks/636439033386179339",
     "level": "Informational",
     "operationId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
     "operationName": {
@@ -522,7 +524,7 @@ ms.locfileid: "74982128"
         "value": "Microsoft.Security/locations/alerts",
         "localizedValue": "Microsoft.Security/locations/alerts"
     },
-    "resourceId": "/subscriptions/<subscription ID>/providers/Microsoft.Security/locations/centralus/alerts/2518939942613820660_a48f8653-3fc6-4166-9f19-914f030a13d3",
+    "resourceId": "/subscriptions/<subscription ID>/providers/Microsoft.Security/locations/chinaeast/alerts/2518939942613820660_a48f8653-3fc6-4166-9f19-914f030a13d3",
     "status": {
         "value": "Active",
         "localizedValue": "Active"
@@ -555,11 +557,11 @@ ms.locfileid: "74982128"
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
-| 说明 |安全事件的静态文本说明。 |
+| description |安全事件的静态文本说明。 |
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
 | category | 始终为“Security” |
-| id |安全事件的唯一资源标识符。 |
+| ID |安全事件的唯一资源标识符。 |
 | level |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | resourceGroupName |资源的资源组名称。 |
 | resourceProviderName |Azure 安全中心的资源提供程序名称。 始终为“Microsoft.Security”。 |
@@ -636,10 +638,10 @@ ms.locfileid: "74982128"
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
-| 说明 |建议事件的静态文本说明 |
+| description |建议事件的静态文本说明 |
 | eventDataId | 建议事件的唯一标识符。 |
 | category | 始终为“Recommendation” |
-| id |建议事件的唯一资源标识符。 |
+| ID |建议事件的唯一资源标识符。 |
 | level |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | operationName |操作的名称。  始终为“Microsoft.Advisor/generateRecommendations/action”|
 | resourceGroupName |资源的资源组名称。 |
@@ -749,7 +751,7 @@ ms.locfileid: "74982128"
 | channels | Policy 事件仅使用“操作”通道。 |
 | 声明 | Active Directory 使用 JWT 令牌来验证用户或应用程序，以在资源管理器中执行此操作。 |
 | correlationId | 通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| 说明 | 对于 Policy 事件，此字段是空白的。 |
+| description | 对于 Policy 事件，此字段是空白的。 |
 | eventDataId | 事件的唯一标识符。 |
 | eventName | “BeginRequest”或“EndRequest”。 “BeginRequest”用于延迟的 auditIfNotExists 和 deployIfNotExists 评估，并且在 deployIfNotExists 效果启动模板部署时使用。 所有其他操作返回“EndRequest”。 |
 | category | 将活动日志事件声明为属于“Policy”。 |
@@ -772,11 +774,15 @@ ms.locfileid: "74982128"
 | properties.policies | 包括有关生成此策略评估结果的策略定义、分配、影响和参数的详细信息。 |
 | relatedEvents | 对于 Policy 事件，此字段是空白的。 |
 
-## <a name="mapping-to-diagnostic-logs-schema"></a>映射到诊断日志架构
 
-以下是从上述架构到诊断日志架构的属性映射：
+## <a name="schema-from-storage-account-and-event-hubs"></a>来自存储帐户和事件中心的架构
+将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](diagnostic-logs-schema.md)。 下表提供从上述架构到资源日志架构的属性映射。
 
-| 诊断日志架构属性 | 活动日志 REST API 架构属性 | 注释 |
+> [!IMPORTANT]
+> 写入到存储帐户的活动日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 若要详细了解此格式更改，请参阅[为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备](diagnostic-logs-append-blobs.md)。
+
+
+| 资源日志架构属性 | 活动日志 REST API 架构属性 | 注释 |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | ResourceId | ResourceId | subscriptionId、resourceType 和 resourceGroupName 都是从 resourceId 推断而来。 |
@@ -784,7 +790,7 @@ ms.locfileid: "74982128"
 | category | 操作名称的一部分 | 操作类型分类：“写入”/“删除”/“操作” |
 | resultType | status.value | |
 | resultSignature | substatus.value | |
-| resultDescription | 说明 |  |
+| resultDescription | description |  |
 | durationMs | 不适用 | 始终为 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
@@ -796,6 +802,67 @@ ms.locfileid: "74982128"
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
 | properties.eventProperties | properties |  |
+
+下面是使用此架构的事件的示例。
+
+``` JSON
+{
+    "records": [
+        {
+            "time": "2015-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

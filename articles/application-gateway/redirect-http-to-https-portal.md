@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
+title: 在门户中进行 HTTP 到 HTTPS 重定向 - Azure 应用程序网关
 description: 了解如何使用 Azure 门户创建支持从 HTTP 到 HTTPS 重定向流量的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 12/07/2018
-ms.date: 04/16/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9b5c9405c110914312fd35e6d9dc6f55262ab8e4
-ms.sourcegitcommit: bf3df5d77e5fa66825fe22ca8937930bf45fd201
+ms.openlocfilehash: d1a674f52dd7181716444083caaec87a0d6d0b09
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686410"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116918"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -119,15 +118,15 @@ Export-PfxCertificate `
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>添加具有重定向配置的路由规则
 
-1. 在“myAppGateway”  上，选择“规则”  ，然后选择“+基本”  。
-2. 对于“名称”  ，输入 Rule2  。
+1. 在“myAppGateway”  上，选择“规则”  ，然后选择“+请求路由规则”  。
+2. 对于“规则名称”  ，键入“Rule2”  。
 3. 确保对于侦听器选择 MyListener  。
-4. 选中“配置重定向”  复选框。
+4. 单击“后端目标”  选项卡，将“目标类型”  选为“重定向”  。
 5. 对于“重定向类型”  ，选择“永久”  。
 6. 对于“重定向目标”  ，选择“侦听器”  。
 7. 确保“目标侦听器”  设置为“appGatewayHttpListener”  。
-8. 选中“包含查询字符串”  和“包含路径”  复选框。
-9. 选择“确定”  。
+8. 对于“包含查询字符串”  和“包含路径”  ，请选择“是”  。
+9. 选择“添加”   。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
@@ -228,3 +227,4 @@ Update-AzVmss `
 
 了解如何[创建支持内部重定向的应用程序网关](redirect-internal-site-powershell.md)。
 
+<!-- Update_Description: wording update -->

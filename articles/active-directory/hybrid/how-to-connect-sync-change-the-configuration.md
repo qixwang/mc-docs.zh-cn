@@ -1,28 +1,23 @@
 ---
-title: Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改 | Microsoft Docs
+title: Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改
 description: 介绍如何对 Azure AD Connect 同步中的配置进行更改。
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/30/2018
-ms.date: 11/13/2019
+ms.date: 01/07/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65786742c52ad07483ec8e4f4e20f0ee857a84e9
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: a1a0731056568a7f094123d03fac71d8045a8999
+ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084674"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75776913"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -205,7 +200,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 - Azure AD 只接受 UserType 属性的两个值：**Member** 和 **Guest**。
 - 如果没有在 Azure AD Connect 中启用 UserType 属性同步，则通过目录同步创建的 Azure AD 用户的 UserType 属性将设置为 **Member**。
-- Azure AD 不允许在现有 Azure AD 用户中使用会被 Azure AD Connect 更改的 UserType 属性。 只能在创建 Azure AD 用户的过程中设置该属性。
+- Azure AD 不允许在现有 Azure AD 用户中使用会被 Azure AD Connect 更改的 UserType 属性。 该属性只能在创建 Azure AD 用户期间进行设置，并且可以[通过 Powershell](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) 进行更改。
 
 在启用 UserType 属性同步之前，必须首先确定如何从本地 Active Directory 派生属性。 下面是最常见的方法：
 
@@ -269,7 +264,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | Value | 详细信息 |
     | --- | --- | --- |
-    | Name | *提供名称* | 例如 *In from AD - User UserType* |
+    | 名称 | *提供名称* | 例如 *In from AD - User UserType* |
     | 说明 | *提供说明* |  |
     | 连接的系统 | 选择本地 AD 连接器  |  |
     | 连接的系统对象类型 | **User** |  |
@@ -311,7 +306,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | Value | 详细信息 |
     | ----- | ------ | --- |
-    | Name | *提供名称* | 例如“Out to AAD - User UserType”  |
+    | 名称 | *提供名称* | 例如“Out to AAD - User UserType”  |
     | 说明 | *提供说明* ||
     | 连接的系统 | 选择 AAD 连接器  ||
     | 连接的系统对象类型 | **User** ||
@@ -398,7 +393,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 
 ## <a name="next-steps"></a>后续步骤
-* 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
+* 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
 * 在[了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)中阅读有关表达式语言的详细信息。
 
 **概述主题**

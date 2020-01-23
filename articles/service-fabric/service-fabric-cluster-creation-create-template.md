@@ -1,26 +1,16 @@
 ---
-title: 创建 Azure Service Fabric 群集模板 | Azure
+title: 创建 Azure Service Fabric 群集模板
 description: 了解如何为 Service Fabric 群集创建资源管理器模板。 为客户端身份验证配置安全性、Azure Key Vault 和 Azure Active Directory (Azure AD)。
-services: service-fabric
-documentationcenter: .net
-author: rockboyfor
-manager: digimobile
-editor: chackdan
-ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 08/16/2018
-ms.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: f7d8c795061301169d726d0b26408d8fe5524ce0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 01/06/2020
+ms.openlocfilehash: 5a6901b3352ba385dadc2224b4f7075b29a945e5
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336357"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742366"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 

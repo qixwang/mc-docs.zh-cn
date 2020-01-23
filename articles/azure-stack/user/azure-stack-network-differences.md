@@ -6,18 +6,18 @@ keywords: ''
 author: WenJason
 manager: digimobile
 origin.date: 10/10/2019
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: article
 ms.service: azure-stack
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
-ms.openlocfilehash: adf8fcbad881c603ef4a887a6bf5b33525da97ab
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: e126b7ba7003101025044dbdd8657a8b7b9630d7
+ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020304"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75737920"
 ---
 # <a name="differences-and-considerations-for-azure-stack-networking"></a>Azure Stack 网络的差异和注意事项
 
@@ -63,6 +63,7 @@ Azure Stack 网络具有许多由 Azure 网络提供的功能。 但是，在部
 |  | 服务终结点的入站 NAT 规则支持 | Azure 支持为入站 NAT 规则指定服务终结点。 | Azure Stack 尚不支持服务终结点，因此无法指定这些设置。 |
 |  | 协议 | Azure 支持指定 GRE 或 ESP。 | Azure Stack 不支持协议类。 |
 | 公共 IP 地址 | 公共 IP 地址版本 | Azure 同时支持 IPv6 和 IPv4。 | 仅支持 IPv4。 |
+| | SKU | Azure 支持“基本”和“标准”。 | 仅支持“基本”。 |
 | 网络接口 | 获取有效路由表 | 支持 | 尚不支持。 |
 |  | 获取有效 ACL | 支持 | 尚不支持。 |
 |  | 启用加速网络 | 支持 | 尚不支持。 |

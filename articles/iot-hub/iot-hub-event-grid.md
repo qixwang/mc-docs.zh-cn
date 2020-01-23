@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 02/20/2019
-ms.date: 12/02/2019
+ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8ac022407443f2e5f990492f3e582af983db01cd
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 05cd0f55f948d5826433dc01cba6c79c74d2d0a0
+ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389359"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75630926"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -185,13 +185,11 @@ devices/{deviceId}
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 
-若要接收设备已连接和设备已断开连接事件，必须为设备打开 D2C 链路或 C2D 链路。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路。
+若要接收设备连接状态事件，设备必须通过 Iot 中心执行“D2C 发送遥测数据”或“C2D 接收消息”操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议它们执行“C2D 接收消息”操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路；对于 IoT 中心 C# SDK，则调用[用于 AMQP 的设备客户端](iot-hub-amqp-support.md#device-client)。
 
 如果正在发送遥测数据，则 D2C 链路是打开的。 
 
-如果设备连接闪烁，则意味着设备频繁连接和断开连接，我们不会发送每个连接状态，但会发布最后的连接状态，该状态最终是一致的。  例如，如果设备一开始一直处于连接状态，然后连接闪烁了几秒钟，接着回到连接状态， 则不会发布新的设备连接状态事件（自初始连接状态以后）。 
-
-如果 IoT 中心发生服务中断，我们将在服务中断结束后立即发布设备连接状态。 如果设备在服务中断期间断开连接，则设备已断开连接事件将在 10 分钟内发布。
+如果设备连接闪烁，则意味着设备频繁连接和断开连接，我们将不会发送每个连接状态，但会通过定期快照发布当前连接状态，直到闪烁继续。 接收具有不同序列号或不同连接状态事件的相同连接状态事件均意味着设备连接状态发生变化。
 
 ## <a name="tips-for-consuming-events"></a>使用事件的提示
 

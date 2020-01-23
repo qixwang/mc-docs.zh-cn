@@ -1,19 +1,16 @@
 ---
-title: Azure Service Fabric - 将现有的 Azure Service Fabric 群集配置为启用托管标识支持 | Azure
+title: Azure Service Fabric - 将现有的 Azure Service Fabric 群集配置为启用托管标识支持
 description: 本文介绍如何将现有的 Azure Service Fabric 群集配置为启用托管标识支持
-services: service-fabric
-author: rockboyfor
-ms.service: service-fabric
 ms.topic: article
-origin.date: 07/25/2019
-ms.date: 09/30/2019
+origin.date: 12/09/2019
 ms.author: v-yeche
-ms.openlocfilehash: ed2d7d18f1cc81e169520cde1fc68206c325437f
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.date: 01/06/2020
+ms.openlocfilehash: 940b152a3c7ba595fd587e8934509406b03fdcb4
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340784"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75742456"
 ---
 <!--Pending for Verify-->
 <!--Verify successfully with New Deployment-->

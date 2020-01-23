@@ -1,19 +1,14 @@
 ---
-title: 使用 Visual Studio Code 开发 Azure Functions | Microsoft Docs
+title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开发和测试 Azure Functions。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 08/21/2019
-ms.date: 10/28/2019
-ms.author: v-junlch
-ms.openlocfilehash: e5a8a2cf287136b91c358bc73f2305fa7ee60674
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.date: 01/13/2020
+ms.openlocfilehash: 6dca2ea85318ae97b6a096b5823d31108c85af7e
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034411"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116884"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -25,7 +20,7 @@ Azure Functions 扩展提供以下优势：
 * 将 Azure Functions 项目直接发布到 Azure。
 * 以各种语言编写函数，同时利用 Visual Studio Code 的优势。
 
-该扩展可与 Azure Functions 版本 2.x 运行时支持的以下语言配合使用：
+该扩展可与 Azure Functions 运行时版本 2.x（及以上）支持的以下语言配合使用：
 
 * [C# 编译](functions-dotnet-class-library.md)
 * [C# 脚本](functions-reference-csharp.md)<sup>*</sup>
@@ -41,7 +36,7 @@ Azure Functions 扩展提供以下优势：
 > [!IMPORTANT]
 > 不要对单个函数应用混合使用本地开发和门户开发。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在安装并运行 [Azure Functions 扩展][适用于 visual studio code 的 azure functions 扩展]之前，必须符合以下要求：
 
@@ -97,10 +92,6 @@ Azure Functions 扩展提供以下优势：
 
 绑定将在扩展包中实现，但 HTTP 和计时器触发器除外。 对于需要扩展包的触发器和绑定，必须安装这些包。 安装绑定扩展的过程取决于项目的语言。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 在终端窗口中运行 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令，在项目中安装所需的扩展包。 以下命令安装 Azure 存储扩展，用于实现 Blob、队列和表存储的绑定。
@@ -108,6 +99,10 @@ Azure Functions 扩展提供以下优势：
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -117,13 +112,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 此操作的结果取决于项目语言：
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-此时会在项目中创建一个新文件夹。 该文件夹包含新的 function.json 文件和新的 JavaScript 代码文件。
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 将新的 C# 类库 (.cs) 文件添加到项目。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+此时会在项目中创建一个新文件夹。 该文件夹包含新的 function.json 文件和新的 JavaScript 代码文件。
 
 ---
 
@@ -132,6 +127,24 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 可以通过添加输入和输出绑定来扩展函数。 添加绑定的过程取决于项目的语言。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
 以下示例连接到名为 `outqueue` 的存储队列，其中，存储帐户的连接字符串已在 local.settings.json 中的 `MyStorageConnection` 应用程序设置内进行设置。
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+更新函数方法，将以下参数添加到 `Run` 方法定义：
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+此代码要求添加以下 `using` 语句：
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 将一个或多个消息添加到集合。 函数完成后，这些消息将发送到队列。
+
+有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -147,7 +160,7 @@ Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 functi
 | **选择具有方向的绑定** | `Azure Queue Storage` | 该绑定是 Azure 存储队列绑定。 |
 | **用于在代码中标识此绑定的名称** | `msg` | 用于标识代码中引用的绑定参数的名称。 |
 | **要将消息发送到的队列** | `outqueue` | 绑定要写入到的队列的名称。 如果 *queueName* 不存在，首次使用绑定时，它会创建该属性。 |
-| **从 local.setting.json 中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
+| **从“local.settings.json”中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
 
 在此示例中，以下绑定已添加到 function.json 文件中的 `bindings` 数组：
 
@@ -171,25 +184,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---javascript-example)参考文章。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-更新函数方法，将以下参数添加到 `Run` 方法定义：
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-此代码要求添加以下 `using` 语句：
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 将一个或多个消息添加到集合。 函数完成后，这些消息将发送到队列。
-
-有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -264,7 +259,7 @@ Azure Functions 扩展可让你在本地开发计算机上运行函数项目。 
 
 若要在本地运行函数项目，必须满足以下附加要求：
 
-* 安装 [Azure Functions Core Tools](functions-run-local.md#v2) 版本 2.x。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
+* 安装版本 2.x 或更高版本的[Azure Functions Core Tools](functions-run-local.md#v2)。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
 
 * 针对所选语言安装特定必需组件：
 
@@ -376,6 +371,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 |Azure Functions 命令  | 说明  |
 |---------|---------|
 |**添加新设置**  |  在 Azure 中创建新的应用程序设置。 有关详细信息，请参阅[发布应用程序设置](#publish-application-settings)。 可能还需要[将此设置下载到本地设置](#download-settings-from-azure)。 |
+| **配置部署源** | 将 Azure 中的函数应用连接到本地 Git 存储库。 |
 | **连接到 GitHub 存储库** | 将函数应用连接到 GitHub 存储库。 |
 | **复制函数 URL** | 获取 Azure 中运行的 HTTP 触发函数的远程 URL。 有关详细信息，请参阅[获取已部署的函数的 URL](#get-the-url-of-the-deployed-function)。 |
 | **在 Azure 中创建函数应用** | 在 Azure 中的订阅内创建新的函数应用。 有关详细信息，请参阅有关如何[发布到 Azure 中的新函数应用](#publish-to-azure)的部分。        |
@@ -384,6 +380,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 |**删除函数**  | 从 Azure 中的函数应用内删除现有的函数。 由于此删除操作不会影响本地项目，因此请考虑在本地删除函数，然后[重新发布项目](#republish-project-files)。 |
 | **删除代理** | 从 Azure 中的函数应用内删除 Azure Functions 代理。 有关代理的详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
 | **删除设置** | 删除 Azure 中的函数应用设置。 此操作不影响 local.settings.json 文件中的设置。 |
+| **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的连续部署连接。 |
 | **下载远程设置** | 将 Azure 中所选函数应用的设置下载到 local.settings.json 文件中。 如果本地文件已加密，则会将其解密、更新，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。 在运行此命令之前，请确保已保存对 local.settings.json 文件所做的更改。 |
 | **编辑设置** | 更改 Azure 中现有函数应用设置的值。 此命令不影响 local.settings.json 文件中的设置。  |
 | **加密设置** | 加密[本地设置](#local-settings-file)中 `Values` 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |

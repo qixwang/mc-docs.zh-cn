@@ -1,26 +1,20 @@
 ---
-title: 排查域和 SSL 证书问题 - Azure 应用服务 | Azure
-description: 排查 Azure 应用服务中的域和 SSL 证书问题
-services: app-service\web
-documentationcenter: ''
+title: 排查域和 SSL 证书问题
+description: 查找在 Azure 应用服务中配置域或 SSL 证书时可能遇到的常见问题的解决方案。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 11/25/2019
+ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 3c37b4ecb07f2969d979c3968f59100c5fb95053
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.openlocfilehash: 353449939af11df28686a325cf8214f941263c17
+ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555947"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75600225"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 

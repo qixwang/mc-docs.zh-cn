@@ -1,21 +1,22 @@
 ---
 title: Azure 快速入门 - 运行 Batch 作业 - .NET
-description: 使用 Batch .NET 客户端库快速运行 Batch 作业和任务。
+description: 使用 Batch .NET 客户端库快速运行 C# 应用程序中的 Azure Batch 示例作业和任务。
 services: batch
 author: lingliw
 manager: digimobile
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/29/2018
+origin.date: 11/29/2018
+ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: fd7559f2dafb60c8e7dda29651e35c970f53db34
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: f0b0b4e771ecfc8e4ae563b2f2fe973f6bec35fa
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583750"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75858537"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
@@ -25,7 +26,7 @@ ms.locfileid: "72583750"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
 

@@ -2,25 +2,21 @@
 title: Microsoft 标识平台 Java Web 应用快速入门 | Azure
 description: 了解如何使用 OpenID Connect 在 Java Web 应用中实现 Microsoft 登录。
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 01/15/2020
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: a668bbbeb6d1e81b23e6a7ff93ffb5413cd6e611
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3a07062fc5aad84fd406918450e2e290974ca2c6
+ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335280"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76116795"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -32,7 +28,7 @@ ms.locfileid: "75335280"
 
 ![显示本快速入门生成的示例应用的工作原理](./media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要运行此示例，需要：
 
@@ -65,7 +61,7 @@ ms.locfileid: "75335280"
 >    - 暂时将“重定向 URI”留空，并选择“注册”。  
 > 1. 在“概述”页上，找到应用程序的“应用程序(客户端) ID”和“目录(租户) ID”值。    复制这些值供稍后使用。
 > 1. 从菜单中选择“身份验证”，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me`。 
+>    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。 
 >    - 选择“保存”  。
 > 1. 从菜单中选择“证书和机密”  ，并在“客户端密码”  部分中，单击“新建客户端密码”  ：
 >
@@ -125,7 +121,7 @@ ms.locfileid: "75335280"
 
 1. 在首页上，选择“登录”按钮重定向到 Azure Active Directory 并提示用户输入其凭据。 
 
-1. 用户完成身份验证后，将重定向到 *http://localhost:8080/msal4jsamples/secure/aad* 。 他们现已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
+1. 用户完成身份验证后，将重定向到 *http://localhost:8080/msal4jsample/secure/aad* 。 他们现已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
     - *注销*：将当前用户从应用程序中注销，并将其重定向到主页。
     - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含令牌的请求调用 Microsoft Graph，这会返回有关已登录用户的基本信息。
 
@@ -179,4 +175,4 @@ import com.microsoft.aad.msal4j.*;
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

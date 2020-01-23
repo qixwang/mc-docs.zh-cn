@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线高级和标准消息传送定价层概述 | Azure
+title: Azure 服务总线高级层和标准层 | Microsoft Docs
 description: 服务总线高级和标准消息传送层
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,16 +15,16 @@ ms.topic: conceptual
 origin.date: 03/05/2019
 ms.date: 09/15/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b117d79e214c5f9e5319bf5b45c349efab7ed94d
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 267ad2e4a6e3475bb80d1428d79417b6b3170dec
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330107"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853601"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
-服务总线消息传送（包括队列和主题等实体）将企业消息传送功能与丰富的云规模发布-订阅语义结合在一起。 对于许多完善的云解决方案，服务总线消息传送会用作通信基础结构。
+服务总线消息传送（包括队列和主题等实体）将企业消息传送功能与丰富的云规模发布-订阅语义结合在一起。 对于许多复杂的云解决方案，服务总线消息传送用作通信中枢。
 
 服务总线消息传送的 *高级* 层处理有关任务关键应用程序的规模、性能和可用性的常见客户请求。 高级层建议用于生产方案。 虽然功能集几乎完全相同，但这两个层的服务总线消息传送旨在满足不同的使用情形。
 
@@ -68,7 +68,7 @@ ms.locfileid: "71330107"
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下链接：
 
-* [Azure 服务总线高级消息传送简介（博客文章）](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure 服务总线高级消息传送简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure 服务总线高级消息传送简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)

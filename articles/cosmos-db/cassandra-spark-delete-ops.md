@@ -1,5 +1,5 @@
 ---
-title: 从 Spark 删除对 Azure Cosmos DB Cassandra API 执行的操作
+title: 通过 Spark 对 Azure Cosmos DB Cassandra API 执行删除操作
 description: 本文详细介绍了如何从 Spark 删除 Azure Cosmos DB Cassandra API 表中的数据
 author: rockboyfor
 ms.author: v-yeche
@@ -8,13 +8,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: 900e92ca6a8e2f9fb33a49b9d1a17e4bbeb55023
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.date: 01/20/2020
+ms.openlocfilehash: 5c60f9eac7b1a9593507df5acd38461c9cf40a28
+ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988694"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270077"
 ---
 <!--Update_Description: new articles on  -->
 <!--ms.date: 03/18/2019-->
@@ -34,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmos.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -70,7 +70,7 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>Dataframe API
+## <a name="dataframe-api"></a>数据帧 API
 
 ### <a name="delete-rows-that-match-a-condition"></a>删除与条件匹配的行
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 模板创建 Azure 服务总线命名空间和队列 | Azure Docs
-description: 使用 Azure Resource Manager 模板创建服务总线命名空间和队列
+title: 使用 Azure 模板创建 Azure 服务总线命名空间和队列
+description: 快速入门：使用 Azure Resource Manager 模板创建服务总线命名空间和队列
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c7453da66c2485949e8a73e9fead1b4c56070ff8
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 663944411122d0631dd0ccc82f5d9cbb74bc5340
+ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330013"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75853835"
 ---
-# <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板创建服务总线命名空间和队列
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure Resource Manager 模板创建服务总线命名空间和队列
 
 本文介绍如何使用创建服务总线命名空间和命名空间中队列的 Azure Resource Manager 模板。 本文介绍如何指定要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
@@ -54,7 +54,7 @@ ms.locfileid: "71330013"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
@@ -95,15 +95,16 @@ ms.locfileid: "71330013"
 创建“Messaging”  类型的标准服务总线命名空间和队列。
 
 ```json
-"resources ": [{
-        "apiVersion": "[variables('sbVersion')]",
+{
+    "resources": [{
+        "apiVersion": "2017-04-01",
         "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/Namespaces",
-        "location": "[variables('location')]",
-        "kind": "Messaging",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
         "sku": {
-            "name": "Standard",
+            "name": "Standard"
         },
+        "properties": {},
         "resources": [{
             "apiVersion": "[variables('sbVersion')]",
             "name": "[parameters('serviceBusQueueName')]",
@@ -112,10 +113,11 @@ ms.locfileid: "71330013"
                 "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
             ],
             "properties": {
-                "path": "[parameters('serviceBusQueueName')]",
+                "path": "[parameters('serviceBusQueueName')]"
             }
         }]
     }]
+}
 ```
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令

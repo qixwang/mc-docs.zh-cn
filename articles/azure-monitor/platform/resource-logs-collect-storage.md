@@ -5,35 +5,38 @@ author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/15/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: f9b1e54853e61f2a357320ebc23d5b46fb2549bd
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 87753ebc79e9ff88e616ea762bd2022de9ab16cb
+ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72971150"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75599913"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
-Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源内部操作的丰富、频繁的数据。 本文介绍如何将资源日志收集到到 Azure 存储帐户，以便保留要存档的数据。
+Azure 中的[平台日志](resource-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到到 Azure 存储帐户，以便保留要存档的数据。
 
 ## <a name="prerequisites"></a>先决条件
 需[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)（如果还没有）。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发送日志的资源所在的订阅中。
 
-不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 不过，如果还要将[活动日志](activity-logs-overview.md)存档到存储帐户，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。
+
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2 帐户目前不支持作为诊断设置的目标，即使它们可能在 Azure 门户中被列为有效选项。
+
+
+不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制数据所需的访问权限。 不过，如果要将活动日志和资源日志一同存档，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。
 
 ## <a name="create-a-diagnostic-setting"></a>创建诊断设置
-默认不会收集资源日志。 需要通过创建 Azure 资源的诊断设置，在 Azure 存储帐户和其他目标中收集资源日志。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
+需要通过创建 Azure 资源的诊断设置，将平台日志发送到存储和其他目标。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
 
 
-## <a name="data-retention"></a>数据保留
-保留策略定义存储在存储帐户中的每个日志类别和指标数据的保留天数。 可将保留策略设置为 0 到 365 之间的任意天数。 保留策略为零表示系统会无限期存储该日志类别的事件。
-
-保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。 
+## <a name="collect-data-from-compute-resources"></a>对来自计算资源的数据进行收集
+诊断设置将收集 Azure 计算资源的资源日志，如收集任何其他资源一样，但不会收集来宾操作系统或工作负载的资源。 若要收集该数据，请安装 [Windows Azure 诊断代理](diagnostics-extension-overview.md)。 有关详细信息，请参阅[在 Azure 存储中存储和查看诊断数据](diagnostics-extension-to-storage.md)。
 
 
-## <a name="schema-of-resource-logs-in-storage-account"></a>存储帐户中的资源日志的架构
+## <a name="schema-of-platform-logs-in-storage-account"></a>存储帐户中的平台日志架构
 
 创建诊断设置以后，一旦在已启用的日志类别之一中出现事件，就会在存储帐户中创建存储容器。 容器中的 blob 使用以下命名约定：
 

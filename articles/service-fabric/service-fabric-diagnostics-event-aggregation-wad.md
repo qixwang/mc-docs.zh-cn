@@ -1,26 +1,17 @@
 ---
-title: 使用 Windows Azure 诊断聚合 Azure Service Fabric 事件 | Azure
+title: 使用 Windows Azure 诊断聚合 Azure Service Fabric 事件
 description: 了解如何使用 WAD 聚合和收集事件，以便对 Azure Service Fabric 群集进行监视和诊断。
-services: service-fabric
-documentationcenter: .net
 author: rockboyfor
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 origin.date: 04/03/2018
-ms.date: 12/09/2019
+ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 126a34213b49a0cfc2f0bdc621631a0f34996db9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 943682b787e7d2c59fe8611fc5f49c7117e10b85
+ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335896"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75741968"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Windows Azure 诊断聚合和集合事件
 > [!div class="op_single_selector"]
@@ -38,10 +29,10 @@ ms.locfileid: "75335896"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文中使用了以下工具：
 
-* [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure Resource Manager 模板](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -291,7 +282,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 若要将诊断更新为从新的 EventSource 通道（表示要部署的新应用程序）收集日志，请执行之前描述的相同的步骤，其中描述了现有群集的诊断设置。
 
-在使用 `New-AzResourceGroupDeployment` PowerShell 命令应用配置更新之前，请更新 template.json 文件中的 `EtwEventSourceProviderConfiguration` 节，添加新 EventSource 通道的条目。 事件源的名称定义为 Visual Studio 生成的 ServiceEventSource.cs 文件中的代码的一部分。
+在使用 `New-AzResourceGroupDeployment` PowerShell 命令应用配置更新之前，请更新 template.json 文件中的 `EtwEventSourceProviderConfiguration` 节，添加新 EventSource 通道的条目。 事件源的名称定义为 Visual Studio 生成的 ServiceEventSource.cs 文件中代码的一部分。
 
 例如，如果事件源名为 My-Eventsource，请添加以下代码，将来自 My-Eventsource 的事件放入名为 MyDestinationTableName 的表中。
 
