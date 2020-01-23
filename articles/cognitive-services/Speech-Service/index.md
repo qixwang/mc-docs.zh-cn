@@ -100,7 +100,7 @@ ms.locfileid: "75630887"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.azure.cn/pricing/details/cognitive-services/speech-services/">
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -267,7 +267,7 @@ ms.locfileid: "75630887"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.azure.cn/pricing/details/cognitive-services/speech-services/">
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

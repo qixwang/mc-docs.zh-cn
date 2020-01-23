@@ -28,7 +28,7 @@ ms.locfileid: "75630874"
 >
 > 如果使用免费的低流量语音服务层级，即使是在免费试用帐户或服务额度过期之后，也仍可以保留此免费订阅。
 >
-> 有关详细信息，请参阅[认知服务定价 - 语音服务](https://www.azure.cn/pricing/details/cognitive-services/speech-services/)。
+> 有关详细信息，请参阅[认知服务定价 - 语音服务](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 <!--not support Microsoft Account-->
 

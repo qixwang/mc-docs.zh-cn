@@ -29,7 +29,7 @@ ms.locfileid: "75336542"
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.cn)创建订阅密钥。 如果计划从基线模型获取听录，则需要创建一个密钥。
 
 >[!NOTE]
-> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://www.azure.cn/pricing/details/cognitive-services/speech-services/)。
+> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 ### <a name="custom-models"></a>自定义模式
 

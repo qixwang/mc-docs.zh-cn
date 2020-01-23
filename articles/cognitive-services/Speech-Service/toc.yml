@@ -212,7 +212,7 @@
     - name: 区域
       href: regions.md
     - name: 定价和限制
-      href: 'https://www.azure.cn/pricing/details/cognitive-services/speech-services/'
+      href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: 合规性
       href: 'https://www.azure.cn/support/sla/cognitive-services/'
     - name: 隐私和 Cookie
