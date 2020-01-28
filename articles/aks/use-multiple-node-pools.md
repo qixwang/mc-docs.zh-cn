@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 12/16/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4c0c38c929f51e181bda6bc244dbe7bfbdf10647
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 72bd80ee0b78fd25adb1961c2f2ab83918038126
+ms.sourcegitcommit: de60969043e6dd8ef706ed13e0684a7c35b26bdb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165412"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76550221"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -132,7 +132,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
 > [!NOTE]
-> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南]([aks-pending-upgrade](troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade))中的详细信息。
+> 不能对群集或节点池同时执行升级和缩放操作，否则会返回错误。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 请阅读[故障排除指南](https://docs.azure.cn/aks/troubleshooting#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade)中的详细信息。
 
 最初在第一个步骤中创建 AKS 群集时，为 `--kubernetes-version` 指定了 *1.13.10*。 这同时设置了控制平面和默认节点池的 Kubernetes 版本。 本部分中的命令说明如何升级单个特定的节点池。
 

@@ -5,16 +5,18 @@ ms.topic: conceptual
 origin.date: 11/22/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
-ms.openlocfilehash: 9b60c4d57cfb2dd8b2cf7c11dcb2aa9d9ad9a9d8
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 537a3f3dbbc2399e061940f1f6efc59634d074d9
+ms.sourcegitcommit: de60969043e6dd8ef706ed13e0684a7c35b26bdb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631211"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76550222"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
-本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”  的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”  的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和 [Azure 账单发票和每日使用情况数据](../../billing/billing-download-azure-invoice-daily-usage-date.md)中的标记查看成本。
+本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”  的列指示资源类型是否具有标记的属性。 
 
+<!--Not Avaialble on [Cost Management cost analysis](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)-->
+<!--Not Avaialble on [Azure billing invoice and daily usage data](../../billing/billing-download-azure-invoice-daily-usage-date.md)-->
 <!--Not Available on [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)-->
 
 跳转到资源提供程序命名空间：
@@ -920,7 +922,7 @@ ms.locfileid: "75631211"
 > | deployments / operations | 否 | 否 |
 > | deploymentScripts | 是 | 是 |
 > | deploymentScripts / logs | 否 | 否 |
-> | links | 否 | 否 |
+> | 链接 | 否 | 否 |
 > | notifyResourceJobs | 否 | 否 |
 > | providers | 否 | 否 |
 > | resourceGroups | 是 | 否 |

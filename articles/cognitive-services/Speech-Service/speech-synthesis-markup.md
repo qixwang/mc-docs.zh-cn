@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 07/05/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: a01ec44b9d7115073602f9b44e2cf690857d9f1d
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: e84c4a399c1ec8a0233aa9aa4fcd2998b650eeb9
+ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269948"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76283263"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -89,7 +89,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -109,10 +109,10 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         Good morning!
     </voice>
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         Good morning to you too Jessa!
     </voice>
 </speak>
@@ -158,7 +158,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -183,7 +183,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -219,7 +219,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
@@ -227,7 +227,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
@@ -264,7 +264,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -280,7 +280,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -296,7 +296,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Guy24kRUS">
+    <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -308,7 +308,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
@@ -329,7 +329,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| interpret-as | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必需 |
+| interpret-as | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必须 |
 | format | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的更多信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
 | 详细信息 | 指示要朗读的详细信息的级别。 例如，此属性可以要求语音合成引擎朗读标点符号。 没有为 `detail` 定义标准值。 | 可选 |
 
@@ -345,7 +345,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 | date  | dmy, mdy, ymd, ydm, ym, my, md, dm, d, m, y | 此文本朗读为日期。 `format` 属性指定日期的格式 (*d=day, m=month, and y=year*)。 语音合成引擎将以下内容：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />朗读为“Today is October nineteenth two thousand sixteen.” |
 | digits, number_digit | | 此文本朗读为个体数字的序列。 语音合成引擎将以下内容：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />朗读为“1 2 3 4 5 6 7 8 9.” |
 | fraction | | 此文本朗读为分数。 语音合成引擎将以下内容：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />朗读为“three eighths of an inch.” |
-| ordinal  | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />朗读为“Select the third option”。 |
+| 序号  | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />朗读为“Select the third option”。 |
 | telephone  | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可以使用此信息来指导其电话号码的发音。 电话号码中也可能包含国家/地区代码，如果是，则它优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
 | time | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和 02:50:45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
 
@@ -359,7 +359,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
  
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice  name="en-US-Jessa24kRUS">
+    <voice name="en-US-Jessa24kRUS">
     <p>
     Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
     on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.

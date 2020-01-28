@@ -13,12 +13,12 @@ metadata:
   origin.date: 12/19/2019
   ms.author: v-yeche
   ms.date: 01/06/2020
-  ms.openlocfilehash: e797036be638a15b96cce7623eb600c248920258
-  ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+  ms.openlocfilehash: 1616b99b18758491affb9b310f0af2e259071ceb
+  ms.sourcegitcommit: de60969043e6dd8ef706ed13e0684a7c35b26bdb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76165473"
+  ms.lasthandoff: 01/23/2020
+  ms.locfileid: "76550219"
 landingContent:
 - title: 关于 Azure Resource Manager 模板
   linkLists:
@@ -90,8 +90,6 @@ landingContent:
       url: deploy-portal.md
     - text: 使用 REST API
       url: deploy-rest.md
-    - text: 模拟部署
-      url: template-deploy-what-if.md
     - text: 查看部署历史记录
       url: deployment-history.md
 - title: 管理模板

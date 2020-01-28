@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
 origin.date: 04/13/2018
-ms.date: 11/25/2019
+ms.date: 01/20/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 83e4c81bfa619c7551cc4abf5d5f5a6d6a9c3cbc
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 84affd242dd8b0b2483e30e2d49e621b8372b6cc
+ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658027"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76530879"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>如何在 Azure 门户中创建经典 VNet
 若要基于上述方案创建经典 VNet，请执行以下步骤。
@@ -26,7 +26,7 @@ ms.locfileid: "74658027"
 4. 在“虚拟网络”窗格中，键入 VNet 的**名称**，并单击“地址空间”。   为 VNet 及其第一个子网配置地址空间设置，然后单击“确定”  。 下图显示了我们的方案的 CIDR 块设置。
 
     ![“地址空间”窗格](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-5. 单击“资源组”  并选择要将 VNet 添加到的资源组，或者单击“新建资源组”  将 VNet 添加到新资源组。 下图显示了名为 **TestRG** 的新资源组的资源组设置。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
+5. 单击“资源组”  并选择要将 VNet 添加到的资源组，或者单击“新建资源组”  将 VNet 添加到新资源组。 下图显示了名为 **TestRG** 的新资源组的资源组设置。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../articles/azure-resource-manager/management/overview.md#resource-groups)。
 
     ![“创建资源组”窗格](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 6. 如有必要，更改 VNet 的“订阅”和“位置”设置   。 

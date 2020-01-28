@@ -12,12 +12,12 @@ origin.date: 11/21/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 65c4717b5bbf753c30184d4429a59bca379ba78f
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 90477ae38b4b6a84228e01ebd8e12920a11967df
+ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269935"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76283264"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -63,11 +63,11 @@ Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 若
 `sv-SE` | 瑞典语（瑞典） | 是 | 否
 `ta-IN` | 泰米尔语（印度） | 是 | 是
 `te-IN` | 泰卢固语（印度） | 是 | 是
+`th-TH` | 泰语（泰国） | 是 | 否
+`tr-TR` | 土耳其 | 是 | 是
 `zh-CN` | 中文(普通话，简体) | 是 | 是
 `zh-HK` | 中文(粤语，繁体) | 是 | 是
 `zh-TW` | 中文(台湾普通话) | 是 | 是
-`th-TH` | 泰语（泰国） | 是 | 否
-`tr-TR` | 土耳其 | 是 | 是
 
 ## <a name="text-to-speech"></a>文本转语音
 

@@ -4,12 +4,12 @@ description: 遵循最佳做法，让 Service Fabric 应用程序和群集做好
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b60a06ffd0915055c1f20bdff40c54a12c1c6e3
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 663389565fd3ae8487d2f10f76aa3059dd9f33b9
+ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742483"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508766"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -32,8 +32,8 @@ ms.locfileid: "75742483"
     
     <!--Not Available on and [Monitor containers with Azure Monitor logs](service-fabric-diagnostics-oms-containers.md)-->
     <!--Not Available on [Azure Monitor logs](service-fabric-diagnostics-event-analysis-oms.md)-->
+    <!--Not Avaiable on [Azure Monitor logs](service-fabric-diagnostics-oms-agent.md)-->
     
-1. 基础虚拟机规模集基础结构通过警报（例如，通过 [Azure Monitor 日志](service-fabric-diagnostics-oms-agent.md)）进行监视。
 1. 该群集始终具有[主要和辅助证书](service-fabric-cluster-security-update-certs-azure.md)（因此不会将你拒之门外）。
 1. 维护用于开发、暂存和生产的独立集群。 
 1. 首先会在开发和暂存群集中测试[应用程序升级](service-fabric-application-upgrade.md)和[群集升级](service-fabric-tutorial-upgrade-cluster.md)。 

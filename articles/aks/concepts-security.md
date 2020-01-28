@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/01/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7a9de693cbb39b127c6b46c14091b7c8609bdfdd
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 602fb76cf47515ba000a91c204a8c3e26e6e7775
+ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859877"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76283260"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -112,7 +112,7 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
-[developer-best-practices-pod-security]:developer-best-practices-pod-security.md
+[developer-best-practices-pod-security]: developer-best-practices-pod-security.md
 
 <!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
 <!-- Update_Description: wording update, update link -->

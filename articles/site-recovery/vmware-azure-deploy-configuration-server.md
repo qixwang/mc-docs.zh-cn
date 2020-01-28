@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 10/15/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: adc8d3fd48c28ac244d8772ef68d89e3ecd868c9
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.openlocfilehash: d8f16e08c5ed05c5787c1e65728ee3c46de082b2
+ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776655"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508763"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -23,6 +23,7 @@ ms.locfileid: "75776655"
 > [!TIP]
 > 若要了解配置服务器的角色（Azure Site Recovery 体系结构的一部分），请参阅 [VMware 到 Azure 的灾难恢复的体系结构](vmware-azure-architecture.md)。
 
+<a name="deployment-of-configuration-server-through-ova-template"></a>
 ## <a name="deploy-a-configuration-server-through-an-ova-template"></a>通过 OVA 模板部署配置服务器
 
 必须将配置服务器设置为一个高度可用的 VMware VM，它符合一定的最低硬件和大小调整要求。 为了便于部署，Site Recovery 提供了一个可下载的开放虚拟化应用程序 (OVA) 模板，用于设置符合此处列出的所有强制性要求的配置服务器。
@@ -148,6 +149,7 @@ ms.locfileid: "75776655"
 
 参阅我们的[故障排除文章](vmware-azure-troubleshoot-configuration-server.md)来解决部署和连接问题。
 
+<a name="faq"></a>
 ## <a name="faqs"></a>常见问题
 
 * 通过 OVF 部署在配置服务器上的许可证有效期是多长？ 如果不重新激活许可证会发生什么情况？
@@ -169,7 +171,7 @@ ms.locfileid: "75776655"
 * 在哪里可以找到最新版本的配置服务器？
 
     有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的说明，请参阅 [Site Recovery 中的服务更新](../site-recovery/service-updates-how-to.md)。
-* 在哪里可以下载配置服务器的通行短语？
+* 在哪里可以下载配置服务器的密码？
 
     若要下载通行短语，请参阅[管理用于 VMware VM 灾难恢复的配置服务器](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。
 * 是否可以更改通行短语？
