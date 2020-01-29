@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7279e08680ed07e867bfcc4c475f4a265075b13f
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 41db06fa9000e40341c1b2ea43d2e018db05016d
+ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123551"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76308998"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
 
@@ -29,6 +29,6 @@ ms.locfileid: "76123551"
 | Java | |[Android](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android)、[JRE](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre) |
 | JavaScript | |[浏览器](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) |
 | Node.js | |[Windows、Linux 和 macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) |
-| Objective-C |[macOs](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-macos.md)、[iOS](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-ios.md) |[iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios)、[macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos) |
+| Objective-C |[macOS](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-macos.md)、[iOS](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/objectivec-ios.md) |[iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios)、[macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos) |
 | Python | |[Windows、Linux 和 macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) |
-| Swift | [macOs](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/swift-macos.md)、[iOS](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/swift-ios.md)|[iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios)、[macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos) |
+| Swift | [macOS](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/swift-macos.md)、[iOS](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech-langs/swift-ios.md)|[iOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios)、[macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos) |

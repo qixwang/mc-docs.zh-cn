@@ -6,17 +6,19 @@ ms.topic: reference
 origin.date: 09/17/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: a4cb970255d0a2e0222da6c826924c5a9d26d355
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: ebbeda02a3d818765062af85a7c8faacdf2d7be4
+ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742227"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508764"
 ---
 # <a name="sfctl-events"></a>sfctl events
 从事件存储中检索事件（如果已安装 EventStore 服务）。
 
-可以通过对运行 6.4 或更高版本的任何 SFRP 群集进行配置升级，来添加 EventStore 系统服务。 请访问如下 url\: https\://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-eventstore。
+可以通过对运行 6.4 或更高版本的任何 SFRP 群集进行配置升级，来添加 EventStore 系统服务。 请检查以下 URL \: https\://docs.azure.cn/service-fabric/service-fabric-diagnostics-eventstore。
+
+<!--URL Correct on https\://docs.azure.cn/service-fabric/-->
 
 ## <a name="commands"></a>命令
 
