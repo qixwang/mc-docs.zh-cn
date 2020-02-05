@@ -22005,9 +22005,66 @@
         "source_path": "articles/firewall/public-preview.md",
         "redirect_url": "/firewall/overview",
         "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-cpp-linux.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-cpp-macos.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-cpp-windows.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=windows&pivots=programming-language-cpp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-csharp-dotnet-windows.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-csharp-dotnetcore-windows.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-csharp-unity.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-csharp-uwp.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwp&pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-csharp-xamarin.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-java-android.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-java-jre.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":  "articles/cognitive-services/speech-service/quickstart-platform-python.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-portal/resource-group-portal.md",
+      "redirect_url": "/azure-resource-manager/management/manage-resources-portal",
+      "redirect_document_id": false
     }
-
-
-
   ]
 }
