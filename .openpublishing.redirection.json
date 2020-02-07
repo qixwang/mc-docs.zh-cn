@@ -22067,6 +22067,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/event-hubs/event-hubs-managed-service-identity.md",
+      "redirect_url": "/event-hubs/authenticate-managed-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/event-hubs/event-hubs-python.md",
+      "redirect_url": "/event-hubs/event-hubs-python-get-started-send",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md",
       "redirect_url": "/storage/blobs/data-lake-storage-explorer",
       "redirect_document_id": false
