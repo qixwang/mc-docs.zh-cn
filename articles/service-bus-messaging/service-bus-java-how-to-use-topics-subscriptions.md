@@ -1,6 +1,6 @@
 ---
-title: 快速入门：通过 Java 使用 Azure 服务总线主题和订阅
-description: 快速入门：在 Azure 中使用服务总线主题和订阅。
+title: 通过 Java 使用 Azure 服务总线主题和订阅
+description: 在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。
 services: service-bus-messaging
 documentationcenter: java
 author: lingliw
@@ -12,35 +12,34 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/19/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 4ef9dc1f01f1cb54a035c8ea6bd25a2190e3db62
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: a9bf817810f4278f9b97d304daa3f024808e4b5f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528024"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067983"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-在本快速入门中，你将编写一些 Java 代码，用于将消息发送到 Azure 服务总线主题，然后从该主题的订阅接收消息。 
+在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 按照[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线**命名空间**。
     2. 获取**连接字符串**。
     3. 在此命名空间中创建一个**主题**。
-    4. 在命名空间中创建对该主题的**三个订阅**。
+    4. 在此命名空间中创建对此主题的**三个订阅**。
 3. [Azure SDK for Java][Azure SDK for Java]。
 
-
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] 。 然后，可以将 **Azure Libraries for Java** 添加到项目：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java] 。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] 。 然后，可以将 **Azure Libraries for Java** 添加到项目：
 
 ![将适用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 

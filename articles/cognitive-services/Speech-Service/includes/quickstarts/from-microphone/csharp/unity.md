@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 29c4e8799853590ee0e4f35c7f4dace7b375f297
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 1508b161528587cb4d1857b355f547f8b3777e90
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123359"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029019"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）

@@ -6,20 +6,23 @@ author: spelluru
 ms.service: event-grid
 ms.topic: reference
 origin.date: 01/17/2019
-ms.date: 11/11/2019
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 1ec927861fbd2c65b836683b05a3dc745f70624b
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: d883d51894831811a728a0b094444653cf70fa67
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426081"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068324"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
 
 本文提供 Blob 存储事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 有关示例脚本和教程的列表，请参阅[存储事件源](event-sources.md#storage)。
+
+>[!NOTE]
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API 的事件列表
 
@@ -69,7 +72,7 @@ ms.locfileid: "73426081"
     "api": "PutBlockList",
     "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-    "eTag": "0x8D4BCC2E4835CD0",
+    "eTag": "\"0x8D4BCC2E4835CD0\"",
     "contentType": "text/plain",
     "contentLength": 524288,
     "blobType": "BlockBlob",
@@ -108,7 +111,7 @@ ms.locfileid: "73426081"
     "api": "CreateFile",
     "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
     "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-    "eTag": "0x8D4BCC2E4835CD0",
+    "eTag": "\"0x8D4BCC2E4835CD0\"",
     "contentType": "text/plain",
     "contentLength": 0,
     "contentOffset": 0,

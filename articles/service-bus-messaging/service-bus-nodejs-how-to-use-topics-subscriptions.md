@@ -1,5 +1,5 @@
 ---
-title: 快速入门：如何通过 Node.js 使用 Azure 服务总线主题和订阅
+title: 通过 azure/service-bus Node.js 包使用 Azure 服务总线主题和订阅
 description: 快速入门：了解如何通过 Node.js 应用在 Azure 中使用服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,14 +15,14 @@ ms.topic: quickstart
 origin.date: 11/05/2019
 ms.date: 11/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: aeb89244815b0d276cf63109bfedc9b6cb82e87b
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 7601e87609df7ca59c627f48036a6edf069343a1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527987"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028580"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何通过 Node.js 和 azure-sb 包使用服务总线主题与订阅
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何将服务总线主题和订阅与 Node.js 和 azure-sb 包配合使用
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
@@ -41,7 +41,7 @@ ms.locfileid: "74527987"
 
 有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)一节。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
 

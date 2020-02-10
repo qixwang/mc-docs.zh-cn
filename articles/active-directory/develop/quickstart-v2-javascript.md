@@ -10,15 +10,14 @@ ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 319729fc6040c7d8930837ba54482d7cd5dcc4a7
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 00ff6d00cc5809a4a68422598382b730540f244d
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116790"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067670"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -26,7 +25,7 @@ ms.locfileid: "76116790"
 
 ## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅 - [创建免费帐户](https://www.azure.cn/pricing/1rmb-trial)
+* Azure 订阅 - [创建订阅](https://www.azure.cn/pricing/1rmb-trial)
 * [Node.js](https://nodejs.org/en/download/)。
 * [Visual Studio Code](https://code.visualstudio.com/download)（用于编辑项目文件）或 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)（或将项目作为 Visual Studio 解决方案运行）。
 
@@ -61,7 +60,7 @@ ms.locfileid: "76116790"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使本快速入门的代码示例正常运行，需将重定向 URI 添加为 `http://localhost:30662/` 并启用“隐式授权”。 
+> 为使本快速入门的代码示例正常运行，需将 `redirectUri` 添加为 `http://localhost:30662/` 并启用“隐式授权”。 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -166,7 +165,7 @@ var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
         authority: "https://login.partner.microsoftonline.cn/Enter_the_Tenant_Info_Here",
-        redirectURI: "http://localhost:30662/"
+        redirectUri: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -181,7 +180,7 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |---------|---------|
 > |`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
 > |`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.partner.microsoftonline.cn/common`。 |
-> |`redirectURI`     | 应用程序注册配置的答复/重定向 URI。 在本例中为 `http://localhost:30662/`。 |
+> |`redirectUri`     | 应用程序注册配置的答复/redirectUri。 在本例中为 `http://localhost:30662/`。 |
 > |`cacheLocation`  | （可选）针对身份验证状态设置浏览器存储。 默认为 sessionStorage。   |
 > |`storeAuthStateInCookie`  | （可选）用于存储身份验证请求状态的库，验证浏览器 Cookie 中的身份验证流时需要该状态。 此 Cookie 是针对 IE 和 Edge 浏览器设置的，目的是缓解某些[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 |
 

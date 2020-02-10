@@ -1,21 +1,21 @@
 ---
-title: 使用 Java 创建文档数据库 - Azure Cosmos DB
-description: 演示了一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Java 代码示例
+title: 快速入门 - 通过 Azure Cosmos DB 使用 Java 创建文档数据库
+description: 本快速入门演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Java 代码示例
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 10/31/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4867bdd7d278c2ad1ca9020b030bf7cec6a00354
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 33c1cc2e79c36925acebe4b51c935c7c9ef4c938
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334559"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980550"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "75334559"
 
 本快速入门介绍如何使用 Java 应用程序创建和管理 Azure Cosmos DB SQL API 帐户的文档数据库。 首先，请使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户，使用 SQL Java SDK 创建 Java 应用，然后使用 Java 应用程序将资源添加到 Cosmos DB 帐户。 本快速入门中的说明适用于任何能够运行 Java 的操作系统。 完成本快速入门以后，你就会熟悉如何通过 UI 或编程方式（以首选方式为准）创建和修改 Cosmos DB 数据库和容器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "75334559"
 
 * [Java 开发工具包 (JDK) 版本 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
@@ -64,9 +64,9 @@ ms.locfileid: "75334559"
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的 SQL API 应用程序，设置连接字符串，并运行应用程序。 会看到以编程方式处理数据是多么容易。 
+现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的一个 SQL API 应用，设置连接字符串，并运行该应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+1. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
@@ -85,12 +85,12 @@ ms.locfileid: "75334559"
         .setConnectionPolicy(defaultPolicy)
         .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
         .buildClient();
+
     ```
 
 * 创建 CosmosDatabase。
 
     ```java
-
     database = client.createDatabaseIfNotExists(databaseName).getDatabase();
 
     ```
@@ -98,7 +98,6 @@ ms.locfileid: "75334559"
 * 创建 CosmosContainer。
 
     ```java
-
     CosmosContainerProperties containerProperties =
         new CosmosContainerProperties(containerName, "/lastName");
 
@@ -110,7 +109,6 @@ ms.locfileid: "75334559"
 * 使用 `createItem` 方法创建项。
 
     ```java
-
     //  Create item using container that we created using sync client
 
     //  Use lastName as partitionKey for cosmos item
@@ -123,7 +121,6 @@ ms.locfileid: "75334559"
 * 使用 `getItem` 和 `read` 方法执行点读取
 
     ```java
-
     CosmosItem item = container.getItem(family.getId(), family.getLastName());
     try {
         CosmosItemResponse read = item.read(new CosmosItemRequestOptions(family.getLastName()));
@@ -141,7 +138,6 @@ ms.locfileid: "75334559"
 * 使用 `queryItems` 方法对 JSON 执行 SQL 查询。
 
     ```java
-
     // Set some common query options
     FeedOptions queryOptions = new FeedOptions();
     queryOptions.maxItemCount(10);

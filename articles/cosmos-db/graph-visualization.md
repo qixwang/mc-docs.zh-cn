@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 origin.date: 07/02/2019
-ms.date: 07/29/2019
-ms.openlocfilehash: 507f9a7a7fb6b5b22d6084327a84bb7e5a9018fd
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.date: 02/10/2020
+ms.openlocfilehash: cb6e086e9ed21f68c1b67d42c8b1e7a0243a396e
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68672300"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980531"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>使用数据可视化解决方案可视化在 Azure Cosmos DB Gremlin API 中存储的图数据
 
-使用各种数据可视化解决方案可视化在 Azure Cosmos DB Gremlin API 中存储的数据。 [Apache Tinkerpop 社区](http://tinkerpop.apache.org/#poweredby)建议使用以下解决方案进行图数据可视化。
+使用各种数据可视化解决方案可视化在 Azure Cosmos DB Gremlin API 中存储的数据。 [Apache Tinkerpop 社区](https://tinkerpop.apache.org/#poweredby)建议使用以下解决方案进行图数据可视化。
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
@@ -52,5 +52,4 @@ ms.locfileid: "68672300"
 - [Re-Graph 技术概述](https://cambridge-intelligence.com/regraph/technology/)
 - [图可视化用例](https://cambridge-intelligence.com/use-cases/)
 
-<!--Update_Description: new articles on graph visualization -->
-<!--ms.date: 07/29/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

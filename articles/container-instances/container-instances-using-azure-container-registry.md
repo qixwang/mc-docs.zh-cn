@@ -7,12 +7,12 @@ origin.date: 12/30/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3aa43c289a5bb7401cbbf8db01c1dfdaf98df2f7
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 93ade2f3d396d8de129d4578c00d43812ca50dde
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965091"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068150"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
@@ -116,7 +116,7 @@ az container create \
 
 ```console
 $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_LOGIN_SERVER/aci-helloworld:v1 --registry-login-server $ACR_LOGIN_SERVER --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
-"aci-demo-25007.chinaeast2.azurecontainer.cn"
+"aci-demo-25007.chinaeast2.azurecontainer.console.azure.cn"
 ```
 
 成功启动容器后，可在浏览器导航到容器的 FQDN，以验证应用程序是否成功运行。

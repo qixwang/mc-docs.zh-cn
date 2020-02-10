@@ -3,17 +3,17 @@ title: 使用 Azure 资源管理器模板创建 Azure 数据资源管理器群�
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 author: orspod
 ms.author: v-tawe
-ms.reviewer: oflipman
+ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/26/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 2a0a65d41a7578aea927cbb98cc8ee34f070aea5
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/17/2020
+ms.openlocfilehash: 43a1ff29c30f4253448ea26d59c1304d98eed2af
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631111"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037936"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
@@ -156,26 +156,7 @@ Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。 
-
-### <a name="clean-up-resources-using-the-azure-portal"></a>使用 Azure 门户清理资源
-
-按[清理资源](create-cluster-database-portal.md#clean-up-resources)中的步骤删除 Azure 门户中的资源。
-
-### <a name="clean-up-resources-using-powershell"></a>使用 PowerShell 清理资源
-
-如果 Azure PowerShell 仍处于打开状态，则无需复制/运行第一行 (Read-Host)。
-
-```powershell
-$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
-$resourceGroupName = "${projectName}rg"
-
-Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
-
-Write-Host "Press [ENTER] to continue ..."
-```
+[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

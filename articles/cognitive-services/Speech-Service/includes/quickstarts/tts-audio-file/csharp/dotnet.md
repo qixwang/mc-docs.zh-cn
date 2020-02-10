@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 10/28/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 01ff6886400af709354d7ec109d2552646013d2c
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 41819afe58269de39924d317d5e9472e55f92680
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123523"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028229"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -186,7 +186,7 @@ namespace helloworld
 
 现在，可以使用语音服务构建应用并测试语音合成。
 
-1. **编译代码** - 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”   。
+1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
 2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 3. 开始合成 - 将文本转换为语音，并保存在指定的音频数据中  。
 

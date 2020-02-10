@@ -1,20 +1,20 @@
 ---
-title: 如何通过 C++ 使用 Azure 表存储和 Azure Cosmos DB 表 API
+title: 通过 C++ 使用 Azure 表存储和 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
 origin.date: 10/07/2019
-ms.date: 12/16/2019
-author: rockboyfor
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3d95f6912a43370d0c96d5eaa170a8adf60884ed
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+author: rockboyfor
+ms.openlocfilehash: f6b231ec6d6ba30d02d8c8f3335a3ecc9500d801
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336000"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068357"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
 
@@ -343,7 +343,7 @@ std::wcout << U("PartitionKey: ") << entity.partition_key() << U(", RowKey: ") <
 
 ### <a name="replace-an-entity"></a>替换条目
 
-要替换实体，请从表服务中检索它，修改实体对象，然后将更改保存回表服务。 以下代码更改现有客户的电话号码和电子邮件地址。 此代码并不调用 `table_operation::insert_entity`，而是使用 `table_operation::replace_entity`。 这一方法会导致在服务器上完全替换该实体，除非服务器上的该实体自检索到它以后就发生更改。 如果已更改，则操作失败。 操作失败可防止应用程序覆盖另一个组件在检索与更新之间所做的更改。 正确处理此失败问题的方法是再次检索实体，进行更改（如果仍有效），然后再次执行 `table_operation::replace_entity` 操作。  
+要替换条目，请从表服务中检索它，修改条目对象，然后将更改保存回表服务。 以下代码更改现有客户的电话号码和电子邮件地址。 此代码并不调用 `table_operation::insert_entity`，而是使用 `table_operation::replace_entity`。 这一方法会导致在服务器上完全替换该实体，除非服务器上的该实体自检索到它以后就发生更改。 如果已更改，则操作失败。 操作失败可防止应用程序覆盖另一个组件在检索与更新之间所做的更改。 正确处理此失败问题的方法是再次检索实体，进行更改（如果仍有效），然后再次执行 `table_operation::replace_entity` 操作。  
 
 ```cpp
 // Retrieve the storage account from the connection string.

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: d4316d70e5d2767888a795191e58de1d65641d54
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 258522c51e6a71ae1216438f714b8ea988740283
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631059"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029114"
 ---
 [!INCLUDE [dotnet](./dotnet.md)]
 

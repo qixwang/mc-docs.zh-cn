@@ -6,8 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -16,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: f037da72be2786cc053295559946b7e3962b983a
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: bb8bedae7fd4f141e9e91070d98ff859c5384ff7
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858701"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028481"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 

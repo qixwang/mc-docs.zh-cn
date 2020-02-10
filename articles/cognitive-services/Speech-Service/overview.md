@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 origin.date: 11/05/2019
-ms.date: 01/27/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: baee26aba8af4cae82255e4e074c165fc004ba10
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 8768c456bab7ab11e0f8cb5159e3c7706ec97f1e
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269953"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028227"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -30,8 +30,8 @@ ms.locfileid: "76269953"
 | 服务 | 功能 | 说明 | SDK | REST |
 | ------- | ------- | ----------- | --- | ---- |
 | [语音转文本](speech-to-text.md) | 语音转文本 | 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](https://docs.azure.cn/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.azure.cn/cognitive-services/speech-service/rest-apis) |
-|         | [批量听录](batch-transcription.md) | 使用批量听录能够以异步方式对大量的数据进行语音转文本听录。 这是一个基于 REST 的服务，它使用的终结点与自定义和模型管理相同。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
-|         | [创建自定义语音模型](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
+| | [批量听录](batch-transcription.md) | 使用批量听录能够以异步方式对大量的数据进行语音转文本听录。 这是一个基于 REST 的服务，它使用的终结点与自定义和模型管理相同。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
+| | [创建自定义语音模型](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://chinaeast2.cris.azure.cn/swagger/ui/index) |
 | [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](text-to-speech.md#core-features) 将输入文本转换为类似人类的合成语音。 从标准语音中选择（请参阅[语言支持](language-support.md)）。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.azure.cn/cognitive-services/speech-service/rest-apis) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](https://docs.azure.cn/cognitive-services/speech-service/speech-sdk-reference) | 否 |
 
@@ -57,7 +57,7 @@ ms.locfileid: "76269953"
 | -------------------- | -------------------- | ----------------- |
 | [识别来自音频文件的语音](quickstarts/speech-to-text-from-file.md) | [将语音合成为音频文件](quickstarts/text-to-speech-audio-file.md) | [将语音转换为文本](quickstarts/translate-speech-to-text.md) |
 | [使用麦克风识别语音](quickstarts/speech-to-text-from-microphone.md) | [将语音合成到扬声器](quickstarts/text-to-speech.md) | [将语音翻译为多种目标语言](quickstarts/translate-speech-to-text-multiple-languages.md) |
-| [识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) | [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [将语音转换为语音](quickstarts/translate-speech-to-speech.md) |
+| [识别存储在 Blob 存储中的语音](quickstarts/from-blob.md) | | [将语音转换为语音](quickstarts/translate-speech-to-speech.md) |
 
 > [!NOTE]
 > “语音转文本”和“文本转语音”功能也有 REST 终结点和相关联的快速入门。

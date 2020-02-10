@@ -7,27 +7,26 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 04/16/2019
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 6501015cd62b931ac9c0a38816596ddeeedc363d
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 2ff535d33b243105acc54ee4c788d06763d3a795
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847149"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028136"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
-通过此功能，可以对以下各方面进行[按用户流](active-directory-b2c-reference-policies.md)的精细控制：
+通过此功能，可以对以下各方面进行[按用户流](user-flow-overview.md)的精细控制：
 
 - 由 Azure AD B2C 管理的 Web 应用程序会话的生存期。
 - Azure AD B2C 租户中跨多个应用和用户流的单一登录 (SSO) 行为。
 
 这些设置不适用于密码重置用户流。
 
-Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-reference-oidc.md)以启用对 Web 应用的安全登录。 可使用以下属性来管理 Web 应用程序会话：
+Azure AD B2C 支持 [OpenID Connect 身份验证协议](openid-connect.md)以启用对 Web 应用的安全登录。 可使用以下属性来管理 Web 应用程序会话：
 
 ## <a name="session-behavior-properties"></a>会话行为属性
 
@@ -61,4 +60,4 @@ Azure AD B2C 支持 [OpenID Connect 身份验证协议](active-directory-b2c-ref
 
 8. 单击“保存”  。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

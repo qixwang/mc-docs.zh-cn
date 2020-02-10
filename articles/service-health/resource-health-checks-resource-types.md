@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Supportability
 origin.date: 01/29/2019
 ms.author: v-yiso
-ms.date: 01/20/2020
-ms.openlocfilehash: 7c80f432f97b52420443afbed738390fe69880bc
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.date: 02/17/2020
+ms.openlocfilehash: 121c4f9992a1b470ad5d9592afbfd63ff380edee
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859540"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068231"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -132,7 +132,7 @@ ms.locfileid: "75859540"
 |---|
 |<ul><li>VPN 隧道是否已连接？</li><li>是否存在连接配置冲突？</li><li>是否已正确配置预共享密钥？</li><li>是否可访问 VPN 本地设备？</li><li>IPSec/IKE 安全策略中是否有不匹配内容？</li><li>S2S VPN 连接是设置正确还是处于连接失败状态？</li><li>VNET 到 VNET 连接是设置正确还是处于连接失败状态？</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |执行的检查|
 |---|
 |<ul><li>ExpressRoute 线路是否正常运行？</li></ul>|
@@ -212,7 +212,7 @@ ms.locfileid: "75859540"
 |---|
 |<ul><li>主机服务器是否已启动并正在运行？</li><li>Internet 信息服务器是否正在运行？</li><li>负载均衡器是否正在运行？</li><li>是否可从数据中心内访问 Web 应用？</li><li>托管站点内容的存储帐户是否可用？</li></ul>|
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 -  请参阅 [Azure 服务运行状况仪表板简介](service-health-overview.md)和 [Azure 资源运行状况简介](resource-health-overview.md)，了解更多相关信息。 
 -  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.md)
 - 设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况事件的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 

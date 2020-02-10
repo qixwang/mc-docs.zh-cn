@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 origin.date: 06/24/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 958e31a0d4a0c947f95ed085918a25236f2ac406
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 81d3e829356e73e3f52a32f48d5009d523949f2b
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913296"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980527"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
@@ -32,14 +32,14 @@ Azure Cosmos DB 支持 [Apache Tinkerpop](https://tinkerpop.apache.org) 的图�
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub 上的 Gremlin-JavaScript](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [使用 Node.js 创建图形](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub 上的 Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [使用 Python 创建图形](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub 上的 Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [使用 PHP 创建图形](create-graph-php.md) | 3.1.0 |
-| [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文档](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 控制台创建图形](create-graph-gremlin-console.md) | 3.2.0 + |
+| [Gremlin console](https://tinkerpop.apache.org/downloads.html)（Gremlin 控制台） | [TinkerPop 文档](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 控制台创建图形](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>支持的图对象
 TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术语来描述图形提供程序提供的功能。 Azure Cosmos DB 提供一个可跨多个服务器或群集分区的持久性、高并发性、可写的图形数据库。 
 
 下表列出了 Azure Cosmos DB 实现的 TinkerPop 功能： 
 
-| 类别 | Azure Cosmos DB 实现 |  说明 | 
+| Category | Azure Cosmos DB 实现 |  注释 | 
 | --- | --- | --- |
 | 图形功能 | 提供持久性和并发访问。 旨在支持事务 | 可通过 Spark 连接器实现计算机方法。 |
 | 变量功能 | 支持布尔值、整数、字节、双精度值、浮点值、长整数和字符串 | 支持基元类型，通过数据模型与复杂类型兼容 |
@@ -50,7 +50,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin 网络格式：GraphSON
 
-从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 [GraphSON 格式](http://tinkerpop.apache.org/docs/current/reference/#graphson)。 Azure Cosmos DB 目前支持“GraphSONv2”版本。 GraphSON 是 Gremlin 标准格式，它使用 JSON 来表示顶点、边缘和属性（单值和多值属性）。
+从 Gremlin 操作返回结果时，Azure Cosmos DB 使用 [GraphSON 格式](https://tinkerpop.apache.org/docs/current/reference/#graphson)。 Azure Cosmos DB 目前支持“GraphSONv2”版本。 GraphSON 是 Gremlin 标准格式，它使用 JSON 来表示顶点、边缘和属性（单值和多值属性）。
 
 例如，以下代码片段显示了从 Azure Cosmos DB *返回到客户端*的某个顶点的 GraphSON 表示形式。 
 
@@ -120,7 +120,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 ## <a name="gremlin-steps"></a>Gremlin 的步骤
 现在，让我们了解 Azure Cosmos DB 支持的 Gremlin 步骤。 有关 Gremlin 的完整参考信息，请参阅 [TinkerPop 参考](https://tinkerpop.apache.org/docs/3.3.2/reference)。
 
-| 步骤 | Description | TinkerPop 3.2 文档 |
+| 步骤 | 说明 | TinkerPop 3.2 文档 |
 | --- | --- | --- |
 | `addE` | 在两个顶点之间添加边缘 | [addE 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | 将顶点添加到图形 | [addV 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
@@ -164,10 +164,10 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | `V` | 包括顶点与边缘之间的遍历所需的步骤：`V`、`E`、`out`、`in`、`both`、`outE`、`inE`、`bothE`、`outV`、`inV`、`bothV` 和 `otherV` | [vertex 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#vertex-steps) |
 | `where` | 用于筛选遍历返回的结果。 支持 `eq`、`neq`、`lt`、`lte`、`gt`、`gte` 和 `between` 运算符  | [where 步骤](https://tinkerpop.apache.org/docs/3.3.2/reference/#where-step) |
 
-Azure Cosmos DB 提供的写入优化引擎默认支持自动对顶点和边缘中的所有属性编制索引。 因此，使用筛选器、范围查询、排序或聚合对任何属性执行的查询将从索引处理，并可有效完成。 有关 Azure Cosmos DB 中索引编制的工作原理的详细信息，请参阅有关[架构不可知的索引编制](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)的文章。
+Azure Cosmos DB 提供的写入优化引擎默认支持自动对顶点和边缘中的所有属性编制索引。 因此，使用筛选器、范围查询、排序或聚合对任何属性执行的查询会从索引处理，并可有效完成。 有关 Azure Cosmos DB 中索引编制的工作原理的详细信息，请参阅有关[架构不可知的索引编制](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)的文章。
 
 ## <a name="next-steps"></a>后续步骤
-* 开始[使用我们的 SDK](create-graph-dotnet.md) 构建图形应用程序 
+* 开始[使用 SDK](create-graph-dotnet.md) 生成图形应用程序 
 * 详细了解 Azure Cosmos DB 中的[图形支持](graph-introduction.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

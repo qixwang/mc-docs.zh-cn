@@ -3,31 +3,31 @@ title: 快速入门：识别存储在 Blob 存储中的语音，C++ - 语音服�
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 10/28/2019
-ms.date: 01/13/2020
+origin.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: fa2366436a8b31160d7601961b32dee4938a14f6
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 792992a62c5f56d3c3d5a4c5a63e274ea2bc5a78
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123142"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029133"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [将源文件上传到 Azure Blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
+> * [创建空示例项目](../../../../quickstarts/create-project.md?pivots=programmming-language-cpp)
+> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -94,7 +94,8 @@ int wmain()
     return 0;
 }
 ```
-（需要将 `YourSubscriptionKey`、`YourServiceRegion` 和 `YourFileUrl` 的值替换成自己的值。）
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>JSON 包装器
 

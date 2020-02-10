@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 origin.date: 12/19/2019
-ms.date: 01/27/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: d06a5eed4412d46342a9214aa307121d5043cde6
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 858e38ed20940d5c525dd5f5294dc790bfc447ec
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123231"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028183"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -27,7 +27,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |服务名称|服务说明|
 |:-----------|:------------------|
 |[计算机视觉](https://docs.azure.cn/cognitive-services/computer-vision/ "计算机视觉")|使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级算法。|
-|[人脸 API](https://docs.azure.cn/cognitive-services/face/ "人脸 API")|使用人脸 API 可访问高级人脸算法，支持人脸属性检测和识别。|
+|[人脸](https://docs.azure.cn/cognitive-services/face/ "人脸 API")|使用人脸 API 可访问高级人脸算法，支持人脸属性检测和识别。|
 
 ## <a name="speech-apis"></a>语音 API
 
@@ -36,7 +36,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[语音服务](https://docs.azure.cn/cognitive-services/speech-service/ "语音服务")|语音服务将语音支持功能添加到应用程序。|
 
 > [!NOTE]
-> 正在查找 [Azure 认知搜索](https://docs.microsoft.com/azure/search/)？ 尽管它对某些任务使用认知服务，但它是支持其他方案的另一种搜索技术。
+> 正在查找 [Azure 认知搜索](https://docs.azure.cn/search/)？ 尽管它对某些任务使用认知服务，但它是支持其他方案的另一种搜索技术。
 
 
 ## <a name="language-apis"></a>语言 API

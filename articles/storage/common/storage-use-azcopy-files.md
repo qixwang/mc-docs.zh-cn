@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 9c12642c8dcfd5db8483a7a6534a5b18f67c4af0
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: b79ca92c3030d8e5ce92a16685df33f3d256f9ad
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328785"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028834"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -147,7 +147,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy copy 'https://<storage-account-name>.file.core.chinacloudapi.cn/<file-share-name>/<file-path>?<SAS-token>?<SAS-token>' '<local-file-path>'` |
+| **语法** | `azcopy copy 'https://<storage-account-name>.file.core.chinacloudapi.cn/<file-share-name>/<file-path>?<SAS-token>' '<local-file-path>'` |
 | **示例** | `azcopy copy 'https://mystorageaccount.file.core.chinacloudapi.cn/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D' 'C:\myDirectory\myTextFile.txt'` |
 
 ### <a name="download-a-directory"></a>下载目录

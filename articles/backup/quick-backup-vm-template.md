@@ -8,12 +8,12 @@ origin.date: 05/14/2019
 ms.date: 09/16/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: ed5cf5e898f5cdc71fb5e008d0761c9bb345217e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 3b427dfd81a666ac1439e4bd15b98d8c1c48a24a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838872"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028870"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>使用资源管理器模板在 Azure 中备份虚拟机
 
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-在本快速入门中，使用 Azure PowerShell 来部署资源管理器模板。 [Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 和 [Rest API](../azure-resource-manager/resource-group-template-deploy-rest.md) 也可用于部署模板。
+在本快速入门中，使用 Azure PowerShell 来部署资源管理器模板。 [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 和 [Rest API](../azure-resource-manager/templates/deploy-rest.md) 也可用于部署模板。
 
 ## <a name="start-a-backup-job"></a>启动备份作业
 

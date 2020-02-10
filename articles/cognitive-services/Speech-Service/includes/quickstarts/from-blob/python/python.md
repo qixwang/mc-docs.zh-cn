@@ -3,31 +3,31 @@ title: 快速入门：识别存储在 Blob 存储中的语音，C# - 语音服�
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 10/28/2019
-ms.date: 01/13/2020
+origin.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44efa7449e769ea760a80cc33e1c8ee0868e95a3
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 87628264c24bdb0be4cfdb6ac650e3e83cccb573
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123141"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029310"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [将源文件上传到 Azure Blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md)
 > * [创建空示例项目](../../../../quickstarts/create-project.md)
+> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>下载并安装 API 客户端库
 
@@ -44,7 +44,8 @@ ms.locfileid: "76123141"
 1. 使用 pip：`pip install path/to/package/python-client` 在 Python 环境中安装提取的 python-client 模块。
 1. 已安装的名为 `swagger_client` 的包。 可以使用命令 `python -c "import swagger_client"` 来检查安装是否正常工作。
 
-> **注意：** 由于 [Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
+> [!NOTE]
+> 由于 `swagger_client`Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入  包时可能会遇到错误。
 > 这些错误可以通过从已安装的包中删除
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -103,7 +104,8 @@ def transcribe():
 if __name__ == "__main__":
     transcribe()
 ```
-（需要将 `YourSubscriptionKey`、`YourServiceRegion` 和 `YourFileUrl` 的值替换成自己的值。）
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>创建和配置 Http 客户端
 首先，我们需要具有正确的基本 URL 和身份验证集的 Http 客户端。

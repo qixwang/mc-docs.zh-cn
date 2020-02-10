@@ -4,10 +4,8 @@ titleSuffix: Azure Network Watcher
 description: 本页说明如何在 REST 中使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 services: network-watcher
 documentationcenter: na
-author: rockboyfor
+author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2017
 ms.date: 08/13/2018
-ms.author: v-yeche
-ms.openlocfilehash: 9d11ae10fa1c749c0b4d5ff33371f5f512dcf720
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.author: v-lingwu
+ms.openlocfilehash: f5c1acb01dd834bd22cf60cb7ae5014d92e4043e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335860"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028981"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
@@ -324,7 +322,7 @@ is a transient state while the Azure platform is being updated.",
 
 操作文本提供有关如何解决问题的常规指导。 如果可以对问题采取措施，将提供一个包含更多指导的链接。 如果没有更多指导，响应将提供一个用于建立支持案例的 URL。  有关响应的属性及其包含的内容的详细信息，请访问[网络观察程序故障排除概述](network-watcher-troubleshoot-overview.md)
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](http://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>后续步骤
 

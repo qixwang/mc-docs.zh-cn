@@ -2,30 +2,30 @@
 title: 快速入门：从音频文件中识别语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: chlandsi
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 01/13/2020
+origin.date: 01/30/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4c4bb039c24d6d567c6c241a57ee5d26e92723d2
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 74813368a6fdb31141832f83dd1f0dc222910230
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631073"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029303"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [创建 LUIS 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md)
-> * [创建空示例项目](../../../../quickstarts/create-project.md)
+> * [设置开发环境](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
+> * [创建空示例项目](../../../../quickstarts/create-project.md?pivots=programming-language-python)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -54,8 +54,7 @@ python quickstart.py
 > [!NOTE]
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
-````Python
-
+```python
 import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified subscription key and service region.
@@ -72,7 +71,6 @@ audio_input = speechsdk.AudioConfig(filename=audio_filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 
 print("Recognizing first result...")
-
 
 # Starts speech recognition, and returns after a single utterance is recognized. The end of a
 # single utterance is determined by listening for silence at the end or until a maximum of 15
@@ -92,8 +90,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Speech Recognition canceled: {}".format(cancellation_details.reason))
     if cancellation_details.reason == speechsdk.CancellationReason.Error:
         print("Error details: {}".format(cancellation_details.error_details))
-
-````
+```
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>通过 Visual Studio Code 安装并使用语音 SDK
 
@@ -115,14 +112,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 复制 [Python 代码](#sample-code)并将其粘贴到新建的文件，然后保存文件。
 1. 插入语音服务订阅信息。
 1. 如果已选择 Python 解释器，窗口底部的状态栏左侧会显示它。
-   否则，会显示可用 Python 解释器的列表。 打开命令面板 (Ctrl+Shift+P) 并输入 **Python:Select Interpreter**。 选择适当的解释器。
+   否则，会显示可用 Python 解释器的列表。 打开命令面板 <kbd>Ctrl+Shift+P</kbd> 并输入 **Python:Select Interpreter**。 选择适当的解释器。
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
-   若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (Ctrl+Shift+P) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
+   若要安装语音 SDK 包，请打开终端。 再次启动命令面板 <kbd>Ctrl+Shift+P</kbd> 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
 1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。 
    头 15 秒，通过音频文件提供的语音输入将被识别并记录到控制台窗口中。
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

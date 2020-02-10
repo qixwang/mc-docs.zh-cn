@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 10/04/2019
-ms.date: 01/20/2020
+ms.date: 02/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4d329032888a2f9c8d122364029b68f5b3c37dbe
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 79466f6f7acdca29e051ca2436c943f981ecb348
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123224"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028182"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -91,7 +91,7 @@ az group create \
 | 服务                    | 种类                      |
 |----------------------------|---------------------------|
 | 计算机视觉            | `ComputerVision`          |
-| 人脸 API                   | `Face`                    |
+| 人脸                       | `Face`                    |
 
 ### <a name="speech"></a>语音
 

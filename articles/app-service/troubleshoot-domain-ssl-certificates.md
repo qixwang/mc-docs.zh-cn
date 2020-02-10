@@ -6,15 +6,15 @@ manager: dcscontentpm
 tags: top-support-issue
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 353449939af11df28686a325cf8214f941263c17
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 64e835d2eab71528ae07813206edc11bd6d8fb3c
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600225"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979320"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -92,7 +92,7 @@ ms.locfileid: "75600225"
 
     1. 登录到 [Azure 门户](https://portal.azure.cn)。
     2. 转到“应用服务证书”，选择该证书。 
-    3. 选择  “证书配置” > “步骤 2：验证” > “域验证”。   此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    3. 选择  “证书配置” > “步骤 2：验证” > “域验证”。**  此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 
@@ -320,6 +320,6 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **是否可将使用自定义域的 Web 应用移到另一个订阅，或者将其从应用服务环境 v1 移到 v2？**
 
-是的，可以在订阅之间移动 Web 应用。 请遵照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导操作。 移动 Web 应用时存在一些限制。 有关详细信息，请参阅[移动应用服务资源时存在的限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+是的，可以在订阅之间移动 Web 应用。 请遵照[如何在 Azure 中移动资源](../azure-resource-manager/management/move-resource-group-and-subscription.md)中的指导操作。 移动 Web 应用时存在一些限制。 有关详细信息，请参阅[移动应用服务资源时存在的限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 移动 Web 应用之后，自定义域设置中的域的主机名绑定应保持不变。 无需执行额外的步骤即可配置主机名绑定。

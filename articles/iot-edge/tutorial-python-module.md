@@ -6,20 +6,20 @@ author: shizn
 manager: philmea
 ms.author: v-yiso
 origin.date: 10/14/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 3b8e22a3d427778bcb697b29ccbaeb6b82a575a4
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: f67475e0a9b91502747346d5f2eaa489664abeb4
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859497"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966501"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发并部署 Python IoT Edge 模块
 
-使用 Visual Studio Code 开发 C 代码并将其部署到运行 Azure IoT Edge 的 Linux 设备。 
+使用 Visual Studio Code 开发 Python 代码并将其部署到运行 Azure IoT Edge 的 Linux 设备。 
 
 可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 本教程介绍如何执行下列操作：    
 
@@ -100,7 +100,7 @@ ms.locfileid: "75859497"
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以开发适用于 Linux AMD64 和 Linux ARM32v7 设备的 C 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认设置为 Linux AMD64。 
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 Python 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认设置为 Linux AMD64。 
 
 1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或者选择窗口底部边栏中的快捷方式图标。 
 

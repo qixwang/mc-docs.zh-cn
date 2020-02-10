@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 02/07/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0815a09ab162627b281478b80d48b11825fbb2c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9d322cf4bbd55a0bc2dc4236b64d6e2d1eeab23f
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334931"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067550"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -30,7 +30,7 @@ ms.locfileid: "75334931"
 > [!WARNING]
 > 当 `Azure Access Control service (ACS) is retired on November 7th, 2018` 时，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
-> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到更新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到更新版本，请参阅文章 [Azure AD Connect：从以前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 密码写回提供：
@@ -86,7 +86,7 @@ ms.locfileid: "75334931"
 1. 找到用户帐户后，将尝试直接在相应的 Active Directory 林中重置密码。
 1. 如果密码设置操作成功，将告知用户其密码已更改。
    > [!NOTE]
-   > 如果用户密码哈希已使用密码哈希同步功能同步到 Azure AD，本地密码策略可能会弱于云密码策略。 在这种情况下，将实施本地策略。 此策略可确保在云中强制实施本地策略。
+   > 如果用户密码哈希已使用密码哈希同步功能同步到 Azure AD，本地密码策略可能会弱于云密码策略。 在这种情况下，将实施本地策略。 此策略可确保在云中强制实施本地策略，无论使用密码哈希同步还是联合身份验证来提供单一登录，都不例外。
 
 1. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的可能原因如下：
     * 服务已关闭。
@@ -163,7 +163,7 @@ ms.locfileid: "75334931"
    * 任何管理员发起的最终用户密码重置操作（使用 `Microsoft 365 admin center`）
 
 > [!WARNING]
-> 在本地 Active Directory 管理工具（如 Active Directory 用户和计算机或 Active Directory 管理中心）中使用“用户下次登录时必须更改密码”复选框已作为 Azure AD Connect 的预览功能受到支持。 有关详细信息，请参阅文章[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)。
+> 在本地 Active Directory 管理工具（如 Active Directory 用户和计算机或 Active Directory 管理中心）中使用“用户下次登录时必须更改密码”复选框已作为 Azure AD Connect 的预览功能受到支持。 有关详细信息，请参阅文章[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)。
 
 ## <a name="next-steps"></a>后续步骤
 

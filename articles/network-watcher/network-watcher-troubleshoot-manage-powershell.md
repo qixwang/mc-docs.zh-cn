@@ -6,8 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -16,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 06/19/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 4aa6a3ba90f73a1fbf9b92f41ee63b5a62b80fc6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1e96de68fd8b8203b8909f33f81bc8afae52af7e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336473"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028985"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 网络观察程序 PowerShell 对虚拟网络网关和连接进行故障排除
 

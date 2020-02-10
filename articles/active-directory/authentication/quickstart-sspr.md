@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48a998bb072186a1d75f5e44194304b96b37189a
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: caef1571ed9d69489a97ef31728a515b9e3e61ea
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116741"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067549"
 ---
 # <a name="quickstart-configure-azure-active-directory-self-service-password-reset"></a>快速入门：配置 Azure Active Directory 自助式密码重置
 
@@ -69,7 +69,7 @@ ms.locfileid: "76116741"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要禁用自助式密码重置，请在 Azure 门户中搜索并选择“Azure Active Directory”  。 选择“属性” > “密码重置”，然后在“启用自助式密码重置”下选择“无”     。 准备就绪后，选择“保存”。 
+若要禁用自助式密码重置，请在 Azure 门户中搜索并选择“Azure Active Directory”  。 选择“密码重置”  ，然后在“已启用自助服务密码重置”  下选择“无”  。 准备就绪后，选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

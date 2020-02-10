@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB 中的自动联机备份和按需数据还原
+title: Azure Cosmos DB 中的联机备份和按需数据还原
 description: 本文介绍了 Azure Cosmos DB 中自动联机备份和按需数据还原的工作原理。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/21/2019
-ms.date: 06/17/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 727b7c36ccc1ce79c63cfb958106a294c5baaf9d
-ms.sourcegitcommit: b418463868dac6b3c82b292f70d4a17bc5e01e95
+ms.openlocfilehash: df4ad8c829eec04d899eb35852c4abd9ac2aa8bf
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69578628"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028792"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 通过 Azure Cosmos DB SQL API 帐户，还可采用以下某一方法维护备份：
 
-<!--Not Available on * Use [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)-->
+* 使用 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)定期将数据移至所选的存储。
 
 * 使用 Azure Cosmos DB [更改源](change-feed.md)定期读取数据来进行完整备份和增量更改，并将其存储在自己的存储中。
 
@@ -82,9 +82,7 @@ Azure Cosmos DB 每四个小时拍摄一次数据快照。 在任何给定时间
 可通过以下方式将数据迁移回原始的 Azure Cosmos 帐户：
 
 * 使用 [Cosmos DB 数据迁移工具](import-data.md)
-    
-    <!--Not Available on * Using [Azure Data Factory]( ../data-factory/connector-azure-cosmos-db.md)-->
-    
+* 使用 [Azure 数据工厂]( ../data-factory/connector-azure-cosmos-db.md)
 * 使用 Azure Cosmos DB 中的[更改源](change-feed.md) 
 * 编写自定义代码
 
@@ -94,9 +92,9 @@ Azure Cosmos DB 每四个小时拍摄一次数据快照。 在任何给定时间
 
 接下来可了解如何从 Azure Cosmos 帐户还原数据，或了解如何将数据迁移到 Azure Cosmos 帐户
 
-* 若要提出还原请求，请联系 Azure 支持，并[从 Azure 门户提交票证](https://support.azure.cn/zh-cn/support/support-azure/)
+* 若要提出还原请求，请联系 Azure 支持，并[从 Azure 门户提交票证](https://support.azure.cn/support/support-azure/)
 * [如何从 Azure Cosmos 帐户还原数据](how-to-backup-and-restore.md)
 * [使用 Cosmos DB 更改源](change-feed.md)将数据移动到 Azure Cosmos DB。
+* [使用 Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)将数据移动到 Azure Cosmos DB。
 
-<!--Not Available on * [Use Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)-->
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure 门户访问 Blob 或队列数据 - Azure 存储
+title: 使用 Azure 门户访问 Blob 或队列数据
+titleSuffix: Azure Storage
 description: 使用 Azure 门户访问 Blob 或队列数据时，门户会在后台对 Azure 存储发出请求。 可以使用 Azure AD 帐户或存储帐户访问密钥对这些 Azure 存储请求进行身份验证和授权。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 03/19/2019
-ms.date: 09/30/2019
+ms.topic: how-to
+origin.date: 01/10/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 669e79bb7fe9d78b8761065b6a9c07d7065a43ac
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 55d21ca5079d216829dda64128d8b1684eeb02b5
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306707"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028939"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 Blob 或队列数据
 
@@ -57,8 +58,7 @@ ms.locfileid: "71306707"
     
 自定义角色能够支持内置角色所提供的相同权限的不同组合。 有关创建自定义 RBAC 角色的详细信息，请参阅 [Azure 资源的自定义角色](../../role-based-access-control/custom-roles.md)和[了解 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
-> [!NOTE]
-> 不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。   
+不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。   
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>在门户中导航到 Blob 或队列
 

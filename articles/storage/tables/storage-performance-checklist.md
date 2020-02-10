@@ -6,21 +6,21 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 10/10/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: tables
-ms.openlocfilehash: 719a1637131946ce5d942eeb276d382e924ff23b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: fd4f786de5fd40b2b9525af336a727b5cabf219e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624251"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028970"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表
 
 在开发使用表存储的高性能应用程序方面，Azure 制定了许多经过证实的做法。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
 
-Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅 [Azure 存储的存储帐户可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fstorage%2ftables%2ftoc.json)。
+Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2ftables%2ftoc.json)和[表存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="checklist"></a>清单
 
@@ -261,7 +261,7 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 #### <a name="denormalization"></a>非规范化
 
-与使用关系数据库不同，根据经过验证的做法，若要提高表数据的查询效率，需对数据进行非规范化。 也就是说，需要将相同的数据复制到多个实体中（一个实体对应一个用于查找数据的键）以尽量降低查询在查找客户端所需数据时必须扫描的实体数，这样就不必扫描大量实体来查找应用程序需要的数据。 例如，在电子商务网站中，可能希望通过两种方式查找订单：按客户 ID（供此客户的订单）和按日期（提供某个日期的订单）。 在表存储中，最好是将实体（或者对实体的引用）存储两次 – 一次使用表名称、PK 和 RK 进行存储，以便能够按客户 ID 快速查找，另一次则通过日期来加快查找速度。  
+与使用关系数据库不同，根据经过验证的做法，若要提高表数据的查询效率，需对数据进行非规范化。 也就是说，需要将相同的数据复制到多个实体中（一个实体对应一个用于查找数据的键）以尽量降低查询在查找客户端所需数据时必须扫描的实体数，这样就不必扫描大量实体来查找应用程序需要的数据。 例如，在电子商务网站中，可能希望通过两种方式查找订单：按客户 ID（提供此客户的订单）和按日期（提供某个日期的订单）。 在表存储中，最好是将实体（或者对实体的引用）存储两次 – 一次使用表名称、PK 和 RK 进行存储，以便能够按客户 ID 快速查找，另一次则通过日期来加快查找速度。  
 
 ### <a name="insert-update-and-delete"></a>插入、更新和删除
 
@@ -290,5 +290,6 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 ## <a name="next-steps"></a>后续步骤
 
-- [存储帐户的 Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fstorage%2ftables%2ftoc.json)
+- [表存储的可伸缩性和性能目标](scalability-targets.md)
+- [标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2ftables%2ftoc.json)
 - [状态和错误代码](https://docs.microsoft.com/rest/api/storageservices/Status-and-Error-Codes2)

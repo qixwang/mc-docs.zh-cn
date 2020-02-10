@@ -3,19 +3,19 @@ title: 为 Azure 门户的用户设置目录级别的非活动超时值 | Micros
 description: 管理员可以强制执行会话注销之前的最长空闲时间设置。非活动超时策略在目录级别设置。
 services: azure-portal
 keywords: 设置, 超时
-author: kfollis
+author: mgblythe
 ms.author: v-tawe
 origin.date: 12/19/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: a95485342d9eb16b1bbfa725db27fa657764ec36
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 4af113216b3db89657410d21391a52a2ff5fa831
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600615"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028224"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>设置目录级别的非活动超时
 

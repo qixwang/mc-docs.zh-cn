@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: dda8c54290f30fb8fb4f086ecca5fda2f32538d9
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 2c45eac8cf8e8057b5f0c9b88d73867281da8fee
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631010"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029280"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 

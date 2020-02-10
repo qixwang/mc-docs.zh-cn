@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos 模拟器下载和发行说明
-description: 阅读 Azure Cosmos 模拟器发行说明并下载。
+description: 获取不同版本的 Azure Cosmos 模拟器发行说明并下载信息。
 ms.service: cosmos-db
 ms.topic: tutorial
 author: rockboyfor
 ms.author: v-yeche
 origin.date: 06/20/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 8399799c5c66418458f175d4b5160a7e7f38c3e3
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 02/10/2020
+ms.openlocfilehash: 3bd6da73ef2e5fd316cf87d232941bc74e33cfce
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913284"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028931"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -26,6 +26,14 @@ ms.locfileid: "72913284"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="290"></a>2.9.0
+
+- 此版本添加了用于将一致性设置为一致前缀并提高用户和权限的最大限制的选项。
+
+### <a name="272"></a>2.7.2
+
+- 此版本向 Cosmos 模拟器添加了 MongoDB 版本 3.6 服务器支持。 若要启动针对服务 3.6 版本的 MongoDB 终结点，请使用“/EnableMongoDBEndpoint=3.6”选项从管理员命令行启动模拟器。
 
 ### <a name="270"></a>2.7.0
 
@@ -45,4 +53,4 @@ ms.locfileid: "72913284"
 
 - 修复了当主计算机上存在网络监视应用（如 Pulse Client）时模拟器无法启动的问题。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -9,18 +9,18 @@ ms.topic: quickstart
 origin.date: 11/14/2018
 ms.date: 12/02/2019
 ms.author: v-jay
-ms.openlocfilehash: 2291beb76363eee7ccbb4a677aa550a0d3b30a94
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 10f335b3fe4472d47414b122d40fac2d0d20ad67
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655426"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028859"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>快速入门：使用 Ruby 上传、下载和列出 Blob
 
 本快速入门介绍如何使用 Ruby 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -60,7 +60,7 @@ blob_client = Azure::Storage::Blob::BlobService.create(
 ## <a name="run-the-sample"></a>运行示例
 此示例将在“文档”文件夹中创建一个测试文件。 示例程序会将该测试文件上传到 Blob 存储，列出容器中的 blob，并使用新名称下载此文件。 
 
-运行示例。 以下输出是运行应用程序时返回的输出的示例：
+运行该示例。 以下输出是运行应用程序时返回的输出的示例：
   
 ```
 Creating a container: quickstartblobs7b278be3-a0dd-438b-b9cc-473401f0c0e8
@@ -76,7 +76,7 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 ```
 按任意键继续时，示例程序会删除存储容器和文件。 继续前，请在“文档”文件夹中查看这两个文件。 可以打开它们，并看到它们完全相同。
 
-还可以使用工具（如 [Azure 存储资源管理器](http://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
+还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
 
 验证文件后，按任意键可完成演示并删除测试文件。 了解此示例的用途后，请打开 example.rb 文件来查看代码。 
 

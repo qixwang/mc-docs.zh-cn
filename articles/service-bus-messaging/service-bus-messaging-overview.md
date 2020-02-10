@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息传送概述 | Azure
-description: 介绍服务总线消息传送
+title: Azure 服务总线消息传送概述 | Microsoft Docs
+description: 本文粗略概述了 Azure 服务总线（一种完全托管的企业集成消息代理）。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -12,12 +12,12 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.custom: mvc
 ms.author: v-lingwu
-ms.openlocfilehash: 678ca2f0198efd078caebd9de9110d1db3ea4644
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 39ba423c866fb60d20df86fbe6835677a1aced32
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528022"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067974"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -103,7 +103,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-在 Azure 区域数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
+在 Azure 区域或数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
 
 ### <a name="security"></a>安全性
 

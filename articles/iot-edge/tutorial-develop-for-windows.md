@@ -1,21 +1,21 @@
 ---
-title: 为 Windows 设备开发模块 - Azure IoT Edge | Microsoft Docs
+title: 教程 - 使用 Azure IoT Edge 开发用于 Windows 设备的模块
 description: 本教程逐步介绍如何设置开发计算机和云资源，以使用适用于 Windows 设备的 Windows 容器开发 IoT Edge 模块
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 08/15/2019
-ms.date: 11/04/2019
+origin.date: 11/11/2019
+ms.date: 01/27/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 78f979e7d74fc15c7c1bd8a6dab3860b37529c36
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 0dd7d95c6e25c4980d52f4cb3464e780a87721e5
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389541"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966503"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
@@ -52,7 +52,7 @@ ms.locfileid: "74389541"
 | **语言** | C#（不支持调试） | C <br> C# |
 | **详细信息** | [适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [适用于 Visual Studio 2017 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)、[适用于 Visual Studio 2019 的 Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 一台开发计算机：
 
@@ -160,7 +160,7 @@ IoT Edge 运行时需要使用注册表凭据将容器映像提取到 IoT Edge �
 
 1. 在模块解决方案中打开 **deployment.template.json** 文件。
 
-1. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性，并确保它包含正确的信息。
+1. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 它应该会根据你在创建项目时提供的信息自动填写注册表地址，而用户名和密码字段应包含变量名称。 例如： 
 
    ```json
    "registryCredentials": {

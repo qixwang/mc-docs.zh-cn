@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 11/22/2019
-ms.date: 01/27/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3e6b7b440d41d1b4838e2db14a2b5846c68e938c
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 661574760fef4d8bb196b3d7d534928731dec198
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123217"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028180"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务的支持和帮助选项
 
@@ -82,7 +82,7 @@ ms.locfileid: "76123217"
 
 我们一推出新版本就会更新发行说明。 说明包含有关新功能、改进和 bug 修复的信息。
 
- - [人脸 API](face/releasenotes.md)
+ - [人脸](face/releasenotes.md)
  - [语言理解 (LUIS)](luis/whats-new.md)
  - [语音服务](speech-service/releasenotes.md)
  - [语音服务 SDK](speech-service/devices-sdk-release-notes.md)

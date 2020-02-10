@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 8ec8ac800fcb49674fc0d387f63844104684965d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/17/2020
+ms.openlocfilehash: 7c2f57e01b34089bb9099cab6e58baf158d29215
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631109"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037937"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>使用 Python 为 Azure 数据资源管理器创建事件中心数据连接
 
@@ -25,12 +25,12 @@ ms.locfileid: "75631109"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供了从事件中心、IoT 中心和写入 blob 容器的 blob 引入数据（数据加载）的功能。 在本文中，你将使用 Python 为 Azure 数据资源管理器创建事件中心数据连接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-* 创建[群集和数据库](create-cluster-database-csharp.md)
-* 创建[表和列映射](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-* 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
+* 创建[群集和数据库](create-cluster-database-python.md)
+* 创建[表和列映射](python-ingest-data.md#create-a-table-on-your-cluster)
+* 设置[数据库和表策略](database-table-policies-python.md)（可选）
 * 创建[包含要引入的数据的事件中心](ingest-data-event-hub.md#create-an-event-hub)。 
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
@@ -60,19 +60,19 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, subscription_id)
 
-resource_group_name = "testrg";
+resource_group_name = "testrg"
 #The cluster and database that are created as part of the Prerequisites
-cluster_name = "mykustocluster";
-database_name = "mykustodatabase";
-data_connection_name = "myeventhubconnect";
+cluster_name = "mykustocluster"
+database_name = "mykustodatabase"
+data_connection_name = "myeventhubconnect"
 #The event hub that is created as part of the Prerequisites
 event_hub_resource_id = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
-consumer_group = "$Default";
-location = "China East 2";
+consumer_group = "$Default"
+location = "China East 2"
 #The table and column mapping that are created as part of the Prerequisites
-table_name = "StormEvents";
-mapping_rule_name = "StormEvents_CSV_Mapping";
-data_format = "csv";
+table_name = "StormEvents"
+mapping_rule_name = "StormEvents_CSV_Mapping"
+data_format = "csv"
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                         parameters=EventHubDataConnection(event_hub_resource_id=event_hub_resource_id, consumer_group=consumer_group, location=location,

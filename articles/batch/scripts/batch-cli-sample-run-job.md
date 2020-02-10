@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 运行 Batch 作业 | Microsoft Docs
-description: Azure CLI 脚本示例 - 使用 Batch 运行作业
+title: Azure CLI 脚本示例 - 运行批处理作业
+description: 此脚本创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。
 services: batch
 documentationcenter: ''
 author: dlepow
@@ -12,15 +12,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-origin.date: 01/29/2018
-ms.date: 09/07/2018
-ms.author: v-junlch
-ms.openlocfilehash: 7234b8cd9aba800bce8de4451f106db53b28e2e4
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+origin.date: 12/12/2019
+ms.date: 2/3/2020
+ms.author: v-lingwu
+ms.openlocfilehash: b7527c74375decb0e4dacb7c9b75dffbb8dbcd5a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52653224"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028582"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI 示例：使用 Azure Batch 运行作业和任务
 

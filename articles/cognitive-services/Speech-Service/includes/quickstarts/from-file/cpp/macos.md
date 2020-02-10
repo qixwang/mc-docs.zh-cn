@@ -2,27 +2,27 @@
 title: 快速入门：从音频文件中识别语音，C++ (macOS) - 语音服务
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: wolfma61
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 01/13/2020
+origin.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 75f3e66d78c12c849803ab792bdb61670c2e504a
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 13b0cc1fcb895a0a5232534589793e8b9e2f4b13
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123307"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029230"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建一个 Azure 搜索资源](../../../../get-started.md)
+> * [创建 Azure 语音资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=macos)
 

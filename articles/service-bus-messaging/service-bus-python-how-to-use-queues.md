@@ -1,6 +1,6 @@
 ---
-title: 如何通过 Python 使用 Azure 服务总线队列 | Azure
-description: 了解如何通过 Python 使用 Azure 服务总线队列。
+title: 快速入门：通过 Python 使用 Azure 服务总线队列
+description: 本文介绍如何使用 Python 创建 Azure 服务总线队列，并向其发送消息和从中接收消息。
 services: service-bus-messaging
 documentationcenter: python
 author: lingliw
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/18/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: b67a3858f894c73ab2f3bbb7dfdd66426087cc35
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: d55300ee9b961991af8a727e93fa08d0cf04b35e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527985"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068001"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入门：通过 Python 使用 Azure 服务总线队列
 
@@ -30,7 +30,7 @@ ms.locfileid: "74527985"
 
 有关 Python Azure 服务总线库的详细信息，请参阅[适用于 Python 的服务总线库](/python/api/overview/azure/servicebus?view=azure-python)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 - 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的主连接字符串，以便稍后在本文中使用。  
 - 装有 [Python Azure 服务总线][Python Azure Service Bus package]包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。 

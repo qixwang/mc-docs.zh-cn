@@ -5,20 +5,21 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
 origin.date: 06/15/2018
 ms.date: 9/29/2019
-ms.author: kumud
+ms.author: v-lingwu
 ms.reviewer: yagup
-ms.openlocfilehash: cb0aa43692813a6124bed7e995a26a00edb3ee2b
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 7ea3ec3d532c42aed1a1b1bcda22a62c0abd6ead
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982180"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028988"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -66,7 +67,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 * 中国东部 2
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -102,7 +103,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 在启用 NSG 流日志记录之前，必须提供要记录其流的网络安全组。 如果没有网络安全组，请参阅[创建网络安全组](../virtual-network/manage-network-security-group.md#create-a-network-security-group)来创建一个。
 
-在 Azure 门户中找到“网络观察程序”，然后选择“NSG 流日志”   。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
+在 Azure 门户左侧选择“监视”，然后依次选择“网络观察程序”、“NSG 流日志”。    选择要为其启用 NSG 流日志的网络安全组，如下图所示：
 
 ![选择需要启用 NSG 流日志的 NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -150,7 +151,7 @@ New-AzStorageAccount `
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
-在门户中选择“所有服务”，然后在“筛选器”框中输入“网络观察程序”。    然后选择“网络观察程序”和“流量分析”。  
+在门户左侧选择“所有服务”，并在“筛选器”框中输入“监视”。    当“监视”出现在搜索结果中时，请选择它。  若要开始浏览流量分析及其功能，请依次选择“网络观察程序”、“流量分析”   。
 
 ![访问流量分析仪表板](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

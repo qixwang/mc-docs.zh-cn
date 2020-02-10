@@ -6,8 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -16,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1c32064f9314cf58db10504a5882bed4d9201c67
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ccb06b61fa2c107b0597d4b81f1d680500f015de
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336390"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028485"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 
@@ -36,13 +34,13 @@ ms.locfileid: "75336390"
 
 本方案将已知合理的基准与针对虚拟机返回的安全组视图结果进行比较。
 
-此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的包含有效虚拟机的资源组已存在。
 
 ## <a name="scenario"></a>方案
 
 本文所述的方案将获取虚拟机的安全组视图。
 
-本方案中的操作：
+在此方案中，将：
 
 - 检索已知合理的规则集
 - 使用 REST API 检索虚拟机

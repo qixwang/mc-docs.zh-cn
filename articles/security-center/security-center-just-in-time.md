@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 09/10/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2dc3709f6e2afbf2145188820cfc321147e49de4
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 9826affee8113de984cf885f2bc7c112df28099c
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857903"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068217"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
@@ -25,7 +25,7 @@ ms.locfileid: "75857903"
 
 
 > [!NOTE]
-> 安全中心实时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> 安全中心实时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="attack-scenario"></a>攻击方案
 

@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 脚本示例 - 创建 Batch 帐户 - 用户订阅 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在用户订阅模式下创建 Batch 帐户
+title: Azure CLI 脚本示例 - 创建 Batch 帐户 - 用户订阅
+description: 此脚本在用户订阅模式下创建 Azure Batch 帐户。 此帐户将计算节点分配到你的订阅。
 services: batch
 documentationcenter: ''
-author: dlepow
+author: lingliw
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 01/29/2018
 ms.date: 09/07/2018
-ms.author: v-junlch
-ms.openlocfilehash: 95d4c826f7f3707ce6756edfd662553f617aab16
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.author: v-lingwu
+ms.openlocfilehash: 3b029c0e50339da0cdb71b2867c0810127c0f4a9
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52654524"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028606"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI 示例：在用户订阅模式下创建 Batch 帐户
 

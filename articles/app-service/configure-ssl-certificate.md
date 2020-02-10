@@ -4,16 +4,16 @@ description: 在 Azure 应用服务中创建免费的证书、导入应用服务
 tags: buy-ssl-certificates
 ms.topic: tutorial
 origin.date: 10/25/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 32451522041bc8c6ed9679dfb1a441c2df9c3f03
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 3be6f3bb02320b6affa18a43e84e2779388fe704
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600495"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979344"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -26,10 +26,12 @@ ms.locfileid: "75600495"
 |选项|说明|
 |-|-|
 | 创建免费应用服务托管证书（预览版） | 如果只需保护 `www` [自定义域](app-service-web-tutorial-custom-domain.md)或应用服务中的任何非裸域，则可以轻松使用私有证书。 |
+| 购买应用服务证书 | 由 Azure 管理的私有证书。 它结合了自动化证书管理的简单性以及续订和导出选项的灵活性。 |
+| 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](https://docs.azure.cn/key-vault/) 管理 [PKCS12 证书](https://wikipedia.org/wiki/PKCS_12)时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传私有证书 | 如果你已有第三方提供商提供的私有证书，则可以上传它。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传公用证书 | 公用证书不用于保护自定义域，但可以将其加载到代码中（如果需要它们来访问远程资源）。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 按照本操作方法指南操作：
 
@@ -126,7 +128,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ## <a name="upload-a-public-certificate"></a>上传公用证书
 
-支持使用 .cer 格式的公用证书  。 
+公共证书可以使用 *.cer* 格式。 
 
 在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
@@ -134,7 +136,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 在“名称”  中，键入证书的名称。 在“CER 证书文件”中  ，选择你的 CER 文件。
 
-单击“上载” 。 
+单击“上传”。 
 
 ![将公用证书上传到应用服务中](./media/configure-ssl-certificate/upload-public-cert.png)
 

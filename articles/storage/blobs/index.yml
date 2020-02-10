@@ -13,12 +13,12 @@ metadata:
   ms.author: v-jay
   origin.date: 08/20/2019
   ms.date: 01/06/2020
-  ms.openlocfilehash: 9dd6c3f511511d46c38bbc8add5a71aa7fefb5aa
-  ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+  ms.openlocfilehash: 60ade4f0e8c7b0cd76e37badd965c28a84a2556b
+  ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75623623"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77028881"
 landingContent:
 - title: 关于 Blob 存储
   linkLists:

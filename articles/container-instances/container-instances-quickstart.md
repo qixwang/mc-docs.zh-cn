@@ -9,13 +9,14 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 1b81d4c9637d0009e50885c9c759fa0e05657f68
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 1af71ed71c85d522e5357155ad8bc6c9d49f4230
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965026"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068356"
 ---
+<!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
 
 使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
@@ -66,7 +67,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query "{
 $ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
 FQDN                                    ProvisioningState
 ---------------------------------       -------------------
-aci-demo.chinaeast2.azurecontainer.cn   Succeeded
+aci-demo.chinaeast2.azurecontainer.console.azure.cn   Succeeded
 ```
 
 如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。

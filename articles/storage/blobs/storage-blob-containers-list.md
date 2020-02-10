@@ -9,12 +9,12 @@ origin.date: 10/01/2019
 ms.date: 10/28/2019
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 5cd4525938f04ee68beb956eb276cfc7f5d3195f
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 93c494ad0550881061da450942424afd6f4d4b17
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914455"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028955"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器
 
@@ -50,7 +50,8 @@ ms.locfileid: "72914455"
 以下示例以异步方式列出存储帐户中以指定的前缀开头的容器。 该示例每次以 5 个结果为增量列出容器，并使用继续标记获取下一个结果段。 该示例还会连同结果一起返回容器元数据。
 
 ```csharp
-private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
+private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
+                                                        string prefix)
 {
     Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
 

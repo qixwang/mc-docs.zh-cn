@@ -3,16 +3,16 @@ title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.reviewer: saurse
 author: lingliw
-ms.topic: conceptual
+ms.topic: troubleshooting
 origin.date: 07/15/2019
 ms.date: 09/15/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5332dc4013ddbdaab2b31d879c9200403ad72569
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 90389b41db179dd2c0f4dd1b30482e8f00801947
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839061"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028647"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -169,7 +169,7 @@ Set-ExecutionPolicy Unrestricted
 如果缓存文件夹（也称为 scratch 文件夹）配置不正确、缺少必备项或具有受限访问权限，则备份操作可能会失败。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
-如果仍需帮助，请[联系支持人员](https://www.azure.cn/support/support-azure/)以快速解决问题。
+如果仍需要帮助，可 [联系支持人员](https://www.azure.cn/support/support-azure/) 来快速解决问题。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[如何使用 Azure 备份代理备份 Windows Server](tutorial-backup-windows-server-to-azure.md)。

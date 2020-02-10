@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: a72bf72186d67831415728c1f10039d117ebed15
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: c064b19ee9aa92569b4264e80daa7188e7150c2b
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631016"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029129"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -31,11 +31,11 @@ ms.locfileid: "75631016"
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
-第一步是确保项目在 Visual Studio 中打开。
+第一步是确保在 Visual Studio 中打开项目。
 
-## <a name="start-with-some-boilerplate-code"></a>从一些样板代码开始
+## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
-让我们添加一些代码作为项目的主干。
+添加一些代码作为项目的框架。
 
 1. 在“解决方案资源管理器”  中打开 `MainPage.xaml`。
 
@@ -208,7 +208,7 @@ var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
 
 ## <a name="display-the-recognition-results-or-errors"></a>显示识别结果（或错误）
 
-如果语音服务返回了识别结果，则需执行一些操作。 我们会简单地将结果输出到状态面板。
+语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到状态面板。
 
 ```csharp
  // Checks result.

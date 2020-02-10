@@ -5,8 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
-editor: ''
-ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/20/2017
 ms.author: v-yeche
-ms.openlocfilehash: fb33d56b7c2a21b603c10f75285f2d68268a4c9b
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 3d81c5f01189885d8aa36fb08ddccab803772686
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52666805"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028877"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
 

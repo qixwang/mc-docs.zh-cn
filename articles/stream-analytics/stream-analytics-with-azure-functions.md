@@ -5,17 +5,16 @@ services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
-ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: tutorial
 origin.date: 06/05/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: a1a21348300e86e252accd0dd5462e1410a86cdc
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: a8c7580d5ddaa36cace4af8c9a061914766abb4e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857178"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068298"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
@@ -214,7 +213,7 @@ ms.locfileid: "75857178"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了一个运行 Azure 函数的简单流分析作业，若要详细了解流分析作业，请继续学习下一教程：
+在本教程中，你创建了一个简单的运行 Azure 函数的流分析作业。 若要详细了解流分析作业，请继续阅读下一教程：
 
 > [!div class="nextstepaction"]
 > [在流分析作业中运行 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)

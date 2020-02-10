@@ -13,15 +13,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 12/20/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: accessibility
-ms.openlocfilehash: 88d6baadd53521247d2fbe422aceeb107322ee37
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 3d08eac21ac8828c749df0de1d47adcc18c3f73c
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600567"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028191"
 ---
 # <a name="supported-devices"></a>支持的设备
 

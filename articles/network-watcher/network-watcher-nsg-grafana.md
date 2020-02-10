@@ -6,7 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
@@ -17,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 09/15/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: b5e64aecab56627a5858723ded2332315a992469
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: de702f6ec793beb0e0d1b760ab6d77bde4ff6a65
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336386"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028475"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 08/20/2019
 ms.author: v-jamebr
 ms.date: 09/30/2019
-ms.openlocfilehash: 8a988732b6ba5de9851b0e9f1414a3803fd6e13d
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 4f9bec2d1c8e1ecc1d49f777ff483a39486f3730
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156017"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067969"
 ---
 # <a name="get-started-with-device-management-net"></a>设备管理入门 (.NET)
 
@@ -33,7 +33,7 @@ ms.locfileid: "71156017"
 
 * **TriggerReboot**。 此应用在模拟设备应用中调用直接方法、显示响应以及显示更新的报告属性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Visual Studio。
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
@@ -197,7 +197,7 @@ ms.locfileid: "71156017"
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```

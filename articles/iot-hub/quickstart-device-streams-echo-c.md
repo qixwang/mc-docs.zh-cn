@@ -10,12 +10,12 @@ ms.custom: mvc
 origin.date: 08/20/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: d912cb628defa93420f18f3539c606165571ea6a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 07491cdd470cccd32fdc5bdee20aa98f7cce2809
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631088"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068071"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C 中与设备应用程序通信（预览）
 
@@ -25,7 +25,6 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 服务和设备应用程序可以使用 [IoT 中心设备流](iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 在公共预览期，C SDK 仅支持设备端的设备流。 因此，本快速入门只介绍如何运行设备端应用程序。 若要运行相应的服务端应用程序，请参阅以下文章：
  
-   * [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)
    * [通过 IoT 中心设备流使用 Node.js 与设备应用进行通信](./quickstart-device-streams-echo-nodejs.md)
 
 本快速入门中的设备端 C 应用程序具有以下功能：
@@ -38,7 +37,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要具备以下先决条件：
 
@@ -71,7 +70,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
     此操作需要花费几分钟时间。
 
-1. 在 git 存储库的根目录中创建 cmake 子目录，并导航到所属文件夹  。 从 azure-iot-sdk-c 目录运行以下命令  ：
+1. 在 git 存储库的根目录中创建 cmake 子目录，并导航到该文件夹  。 从 azure-iot-sdk-c  目录运行以下命令：
 
     ```cmd/sh
     mkdir cmake
@@ -181,7 +180,6 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 如前所述，IoT 中心 C SDK 仅支持设备端的设备流。 若要生成和运行随附的服务端应用程序，请按照以下快速入门之一中的说明进行操作：
 
-* [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)
 
 * [通过 IoT 中心设备流使用 Node.js 与设备应用进行通信](./quickstart-device-streams-echo-nodejs.md)
 

@@ -3,21 +3,21 @@ title: 使用语音 SDK 开发应用 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在支持的平台上部署使用语音 SDK 的应用程序。
 services: cognitive-services
-author: jhakulin
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 01/13/2020
+origin.date: 01/30/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c933d73c6665791c0763568754fc54100862e51f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 854a06c7dcb1c8dc6d1888e44bc6578ba198bbec
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630988"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028178"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 

@@ -1,6 +1,6 @@
 ---
-title: 如何在 Node.js 中使用 Azure 服务总线队列 - azure/service-bus | Microsoft Docs
-description: 了解如何在来自 Node.js 应用程序的 Azure 中使用服务总线队列。
+title: 如何在 Node.js 中使用 azure/service-bus 队列
+description: 了解如何使用新的 @azure/service-bus 包编写一个 Nodejs 程序，该程序用于向/从服务总线队列发送/接收消息。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -12,24 +12,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 11/05/2019
+origin.date: 01/27/2020
 ms.date: 11/18/2019
 ms.author: aschhab
-ms.openlocfilehash: d3113011cbd15df465fefaba8b83841fa65b9cbb
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: fc73f445ca7a0c97771aa65ea143dbe644fc441d
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528244"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067955"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何通过 Node.js 和 azure/service-bus 包使用服务总线队列
+# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何将服务总线队列与 Node.js 和 azure/service-bus 包配合使用
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
 本教程介绍如何使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包编写一个 Nodejs 程序，用于向/从服务总线队列发送/接收消息。 此包使用速度更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)，而旧版 [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用的是[服务总线 REST 运行时 API](https://docs.microsoft.com/rest/api/servicebus/service-bus-runtime-rest)。 示例是使用 JavaScript 编写的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。 记下服务总线实例的连接字符串以及创建的队列的名称。 我们将在示例中使用这些值。
 
@@ -48,7 +48,7 @@ npm install @azure/service-bus
 若要与服务总线队列交互，首先需要实例化 [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) 类，并使用它来实例化 [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) 类。 安装队列客户端后，可以创建发送方，并在其上使用 [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) 或 [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) 方法发送消息。
 
 1. 打开你喜好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)
-2. 创建名为 `send.js` 的文件，并在其中粘贴以下代码。 此代码会将 10 条消息发送到队列。
+2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 此代码会将 10 条消息发送到队列。
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -86,7 +86,7 @@ npm install @azure/service-bus
     });
     ```
 3. 输入以上代码中显示的连接字符串和队列名称。
-4. 然后，在命令提示符中运行命令 `node send.js` 以执行此文件。
+4. 然后在命令提示符下运行命令 `node send.js` 以执行此文件。
 
 祝贺！ 你已将消息发送到服务总线队列。
 
@@ -98,7 +98,7 @@ npm install @azure/service-bus
 若要与服务总线队列交互，首先需要实例化 [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) 类，并使用它来实例化 [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) 类。 安装队列客户端后，可以创建接收方，并在其上使用 [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) 或 [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) 方法来接收消息。
 
 1. 打开你喜好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)
-2. 创建名为 `recieve.js` 的文件，并在其中粘贴以下代码。 此代码尝试从队列接收 10 条消息。 收到的实际消息计数取决于队列中的消息数以及网络延迟。
+2. 创建一个名为 `recieve.js` 的文件，并将下面的代码粘贴到其中。 此代码尝试从队列接收 10 条消息。 收到的实际消息计数取决于队列中的消息数以及网络延迟。
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -127,7 +127,7 @@ npm install @azure/service-bus
     });
     ```
 3. 输入以上代码中显示的连接字符串和队列名称。
-4. 然后，在命令提示符中运行命令 `node receiveMessages.js` 以执行此文件。
+4. 然后在命令提示符下运行命令 `node receiveMessages.js` 以执行此文件。
 
 祝贺！ 你已从服务总线队列收到了消息。
 

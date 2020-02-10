@@ -6,26 +6,26 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 12/11/2019
-ms.date: 01/06/2020
+origin.date: 01/17/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: aee6d831c509765df3d95e3682a7fc4013d8d1f2
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 5576652a6af65208cccd36fc5648c580fb19c687
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624382"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028556"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
 Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
-本操作指南文章介绍如何使用 [Azure 门户](https://portal.azure.cn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、[Azure CLI](/cli/?view=azure-cli-latest) 或 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-overview.md)创建存储帐户。  
+本操作指南文章介绍如何使用 [Azure 门户](https://portal.azure.cn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、[Azure CLI](/cli/?view=azure-cli-latest) 或 [Azure 资源管理器模板](../../azure-resource-manager/management/overview.md)创建存储帐户。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 
@@ -240,7 +240,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-或者，你可以删除资源组，该操作将删除该资源组中的存储帐户和其他任何资源。 有关删除资源组的详细信息，请参阅[删除资源组和资源](../../azure-resource-manager/resource-group-delete.md)。
+或者，你可以删除资源组，该操作将删除该资源组中的存储帐户和其他任何资源。 有关删除资源组的详细信息，请参阅[删除资源组和资源](../../azure-resource-manager/management/delete-resource-group.md)。
 
 > [!WARNING]
 > 无法恢复已删除的存储帐户，也无法检索删除之前该存储帐户包含的任何内容。 删除帐户前请务必备份要保存的任何内容。 对于帐户中的任务资源也是如此 — 一旦你删除了一个 Blob、表、队列或文件 ，则它会被永久删除。

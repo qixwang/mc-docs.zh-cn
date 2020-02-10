@@ -1,26 +1,25 @@
 ---
 title: Azure 快速入门 - 使用 Go 在对象存储中创建 blob | Microsoft Docs
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Go 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-services: storage
 author: WenJason
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-origin.date: 11/14/2018
-ms.date: 03/25/2019
 ms.author: v-jay
-ms.openlocfilehash: 7cda3a7d7b329ae6cf40a6d16f8e7b5d7a92e337
-ms.sourcegitcommit: c70402dacd23ccded50ec6aea9f27f1cf0ec22ba
+origin.date: 11/14/2018
+ms.date: 02/10/2020
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 2aed31b1bd3e481e10cdfdd669aa3a1cd56d75b0
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58253955"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028898"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
 
 本快速入门介绍如何使用 Go 编程语言上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -90,7 +89,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 按键继续时，示例程序会删除存储容器和文件。 
 
 > [!TIP]
-> 还可以使用工具（如 [Azure 存储资源管理器](http://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
+> 还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
 >
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
@@ -112,7 +111,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-本部分创建一个新的容器。 容器名为 **quickstartblobs-[随机字符串]**。 
+本部分创建一个新的容器。 容器名为 **quickstartblobs-[随机字符串]** 。 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.

@@ -7,12 +7,12 @@ origin.date: 04/24/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: abf2b4c63a5ad8edd180bb5ac3168950731240ba
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 8a4a329f64ee0ae6f57e9218804f51796dfe3d7d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838888"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028569"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
@@ -40,8 +40,4 @@ Azure 备份具有以下主要优势：
 
 - [查看](backup-architecture.md)不同备份方案的体系结构和组件。
 - [验证](backup-support-matrix.md)对备份和 [Azure VM 备份](backup-support-matrix-iaas.md)的支持要求和限制。
-
-[green]: ./media/backup-introduction-to-azure-backup/green.png
-[yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
-[red]: ./media/backup-introduction-to-azure-backup/red.png
 

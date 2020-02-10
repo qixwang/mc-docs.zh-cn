@@ -1,6 +1,6 @@
 ---
-title: Azure 中继混合连接协议指南 | Azure
-description: Azure 中继混合连接协议指南。
+title: Azure 中继混合连接协议指南 | Microsoft 文档
+description: 本文介绍如何与混合连接中继的客户端交互，以连接侦听器和发送方角色中的客户端。
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 05/02/2018
-ms.date: 11/26/2018
-ms.author: v-yiso
-ms.openlocfilehash: 6b553f10662b054022126b1935e0025d2b7f87b1
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+origin.date: 01/21/2020
+ms.date: 2/6/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 6b6944e118918a8e93bb4d1cb8ee0d7f19a897ef
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857386"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067858"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
 

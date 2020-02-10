@@ -9,15 +9,15 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-origin.date: 11/20/2019
-ms.date: 12/23/2019
+origin.date: 12/11/2019
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 405c853ef06b2f78acf0eeda6b2df0690cdb0c98
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4c9dceda64b7f266a1b5169bb558479d1c0ab957
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335688"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966518"
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
@@ -79,7 +79,7 @@ Azure 时序见解会捕获每一个新事件并将其存储为一行，所做�
 1. 在 Azure 门户中预配时序见解环境。
 1. 连接到 IoT 中心或事件中心等事件源。 
 1. 上传参考数据。 这不是一项附加服务。
-1. 使用时序见解资源管理器，几分钟内就可以看到你的数据。
+1. 使用时序见解资源管理器在几分钟内查看并显示数据。
 
 ## <a name="explorer"></a>资源管理器
 

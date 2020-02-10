@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 09/06/2018
-ms.date: 07/15/2019
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5463da1fb031ca52c562bb6069d8604f00cda31f
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 22b1ced725b52abb245cff750a6bcbf577a279af
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570521"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068203"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -60,6 +60,10 @@ ms.locfileid: "67570521"
 单击“创建”  将此新建策略添加到现有列表。
 
 有关特定权限授予的访问权限的详细信息，请参阅 [IoT 中心权限](./iot-hub-devguide-security.md#iot-hub-permissions)。
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="message-routing-for-an-iot-hub"></a>IoT 中心的消息路由
 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 origin.date: 07/23/2018
 ms.author: v-yiso
-ms.date: 01/20/2020
-ms.openlocfilehash: ea1850144418c9fee62d998575fc05c99f7dcbcf
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.date: 02/17/2020
+ms.openlocfilehash: af9db748f8d37d53924c079e4b2d7df993cec8e8
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859495"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068382"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -138,7 +138,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 提高本地资源的配额限制。
 
 有关详细信息，请参阅以下文档：
-* [在 Azure 存储中存储和查看诊断数据](/azure-monitor/platform/diagnostics-extension-to-storage)
+* [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS 日志停止写入到云服务中](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
@@ -237,7 +237,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
-有关如何在云服务上通过 Application Insights 利用自定义指标来配置自动缩放的更多详细信息，请参阅[在 Azure 中根据自定义指标自动缩放入门](../azure-monitor/platform/autoscale-custom-metric.md)
+s
 
 有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
@@ -273,7 +273,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 使用[常见启动任务](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文中的 IIS 启动脚本。
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>什么是云服务配额限制？
-请参阅[服务特定的限制](../azure-subscription-service-limits.md#subscription-limits)。
+请参阅[服务特定的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期的行为，不会导致应用程序出现任何问题。 为 Azure PaaS VM 中的 %approot% 驱动器启用了日记，因此，占用的空间量在实际上是文件平时占用的空间量的两倍。 但是，有几个因素会在本质上消除此状态造成的问题。

@@ -6,16 +6,16 @@ author: shizn
 manager: philmea
 ms.author: v-yiso
 origin.date: 05/28/2019
-ms.date: 12/02/2019
+ms.date: 01/27/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 396037f71742d4cdec9588d5634871cba0a5d57e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6c6866fc10a438c85b1fd854a54a847907260a8f
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336457"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966547"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C IoT Edge 模块
 
@@ -43,7 +43,7 @@ ms.locfileid: "75336457"
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![在 Visual Studio 中开发 WinAMD64 的 C 模块](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Windows 容器的开发环境：[开发适用于 Windows 设备的 IoT Edge 模块](tutorial-develop-for-windows.md)。 完成该教程后，已应准备好以下必备组件： 
 
@@ -101,45 +101,43 @@ ms.locfileid: "75336457"
 
 1. 在 Visual Studio 解决方案资源管理器中打开 **deployment.template.json** 文件。 
 
-2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 
-
-3. 使用你的凭据用以下格式更新该属性： 
+2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 它应该会根据你在创建项目时提供的信息自动填写注册表地址，而用户名和密码字段应包含变量名称。 例如： 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. 保存 deployment.template.json 文件。 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-默认模块代码接收输入队列中的消息，然后通过输出队列传递这些消息。 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。 更新模块，使其分析每条消息中的温度数据，并仅在温度超过特定的阈值时，才将消息发送到 IoT 中心。 
+5. Save your changes to the .env file.
+
+### Update the module with custom code
+
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
 
 
-1. 在此场景中，来自传感器的数据采用 JSON 格式。 若要筛选 JSON 格式的消息，请导入用于 C 的 JSON 库。本教程使用 Parson。
+1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
 
-   1. 下载 [Parson GitHub 存储库](https://github.com/kgabis/parson)。 将 **parson.c** 和 **parson.h** 文件复制到 **CModule** 项目中。
+   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
 
-   2. 在 Visual Studio 中，从 CModule 项目文件夹打开 **CMakeLists.txt** 文件。 在文件顶部，导入名为 **my_parson** 的充当库的 Parson 文件。
+   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
 
       ```
-      add_library(my_parson
-          parson.c
-          parson.h
-      )
+      add_library(my_parson        parson.c        parson.h    )
       ```
 
-   3. 将 **my_parson** 添加到 CMakeLists.txt 文件的 **target_link_libraries** 节中的库列表。
+   3. Add `my_parson` to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
 
-   4. 保存 **CMakeLists.txt** 文件。
+   4. Save the **CMakeLists.txt** file.
 
-   5. 打开“CModule”   > “main.c”  。 在 include 语句的列表底部，添加一个新的语句，以便包括适用于 JSON 支持的 `parson.h`：
+   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
 
       ```c
       #include "parson.h"

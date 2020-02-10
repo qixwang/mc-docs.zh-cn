@@ -4,14 +4,14 @@ description: 了解如何使用 Azure PowerShell 对 Azure Redis 缓存执行管
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: c6022ac89fec06fc58df4dc9077ca67e33ff0940
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 8f32dfaf65d89f78ed0bcd4b5f9854d85a5697a8
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623655"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028028"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "75623655"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-有关经典部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/resource-manager-deployment-model.md)。
+有关经典部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -77,7 +77,7 @@ ms.locfileid: "75623655"
 | --- | --- | --- |
 | 名称 |缓存的名称 | |
 | 位置 |缓存的位置 | |
-| ResourceGroupName |将在其中创建缓存的资源组名称 | |
+| ResourceGroupName |要在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
 | SKU |指定缓存的 SKU。 有效值是：Basic、Standard、Premium |标准 |
@@ -195,7 +195,7 @@ ms.locfileid: "75623655"
 
 `ResourceGroupName`、`Name` 和 `Location` 是必需的参数，其余则是可选参数并且有默认值。 运行前面的命令会使用指定的名称、位置和资源组创建标准 SKU Azure Redis 缓存实例，其大小为 1 GB，且禁用了非 SSL 端口。
 
-若要创建高级缓存，请指定大小 P1 (6 GB - 60 GB)、P2 (13 GB - 130 GB)、P3 (26 GB - 260 GB) 或 P4 (53 GB - 530 GB)。 若要启用群集，使用 `ShardCount` 参数指定分片计数。 以下示例将创建包含 3 个分片的 P1 高级缓存。 P1 高级缓存的大小为 6 GB。由于我们指定了 3 个分片，因此总大小为 18 GB (3 x 6 GB)。
+若要创建高级缓存，请指定大小 P1 (6 GB - 60 GB)、P2 (13 GB - 130 GB)、P3 (26 GB - 260 GB) 或 P4 (53 GB - 530 GB)。 若要启用群集，使用 `ShardCount` 参数指定分片计数。 以下示例创建包含 3 个分片的 P1 高级缓存。 P1 高级缓存的大小为 6 GB。由于我们指定了 3 个分片，因此总大小为 18 GB (3 x 6 GB)。
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "China North" -Sku Premium -Size P1 -ShardCount 3
 
@@ -731,8 +731,8 @@ ms.locfileid: "75623655"
 要了解有关将 Windows PowerShell 与 Azure 配合使用的详细信息，请参阅以下资源：
 
 * [MSDN 上的 Azure Redis 缓存 cmdlet 文档](https://docs.microsoft.com/powershell/module/az.rediscache)
-* [Azure 资源管理器 Cmdlet](https://go.microsoft.com/fwlink/?LinkID=394765)：了解如何在 Azure Resource Manager 模块中使用这些 cmdlet。
-* [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-template-deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
+* [Azure Resource Manager Cmdlet](https://go.microsoft.com/fwlink/?LinkID=394765)：了解如何在 Azure Resource Manager 模块中使用这些 cmdlet。
+* [使用资源组管理 Azure 资源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
 * [Azure 博客](https://azure.microsoft.com/blog/)：了解 Azure 中的新功能。
 * [Windows PowerShell 博客](https://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
 * [“你好，脚本编写专家！”博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。

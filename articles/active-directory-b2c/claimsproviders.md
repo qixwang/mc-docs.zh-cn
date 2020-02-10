@@ -2,21 +2,20 @@
 title: ClaimsProviders  - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ClaimsProvider 元素。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 06/05/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c0e2b6c068a5a3b3381217a0e5a94870db5136e4
-ms.sourcegitcommit: 26e99f63fe3c2ffbdcdcc17691199bbacabdd048
+ms.openlocfilehash: abf2d2be033c72ec202795363275bc2f1af19e35
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687624"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028086"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -53,7 +52,7 @@ ClaimsProvider  元素包含以下子元素：
 | 元素 | 出现次数 | 说明 |
 | ------- | ---------- | ----------- |
 | 域 | 0:1 | 一个字符串，包含声明提供程序的域名。 此域名用于声明提供程序中定义的所有技术配置文件，除非被技术配置文件覆盖。 域名也可以在 **domain_hint** 中引用。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md)的**将登录重定向到社交提供者**部分。 |
-| DisplayName | 0:1 | 一个字符串，其中包含可以向用户显示的声明提供程序的名称。 |
+| DisplayName | 1:1 | 一个字符串，其中包含可以向用户显示的声明提供程序的名称。 |
 | [技术配置文件](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
 
 **ClaimsProvider** 可组织技术配置文件与声明提供程序的关联方式。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：

@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure 门户设计 Azure Database for PostgreSQL - 单个服务器
+title: 教程：设计 Azure Database for PostgreSQL - 单一服务器 - Azure 门户
 description: 本教程演示如何使用 Azure 门户设计你的第一个 Azure Database for PostgreSQL - 单个服务器。
 author: WenJason
 ms.author: v-jay
@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 origin.date: 06/25/2019
-ms.date: 08/05/2019
-ms.openlocfilehash: 4fa526c31df36ac4614763f6f6b16838f6e1784e
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.date: 02/10/2020
+ms.openlocfilehash: 7b466d76f47e9b6b409e6841c190007055255062
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732410"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068004"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for PostgreSQL - 单个服务器
 
@@ -29,12 +29,12 @@ ms.locfileid: "68732410"
 > * 更新数据
 > * 还原数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ## <a name="create-an-azure-database-for-postgresql"></a>创建用于 PostgreSQL 的 Azure 数据库
 
-创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
+创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建服务器。
 
 可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
 1. 在 Azure 门户的左上角单击“创建资源”。 
@@ -57,7 +57,7 @@ ms.locfileid: "68732410"
     数据源 | *无* | 选择“无”，从头开始创建新的服务器  。 （如果是从现有 Azure Database for PostgreSQL 服务器的异地备份创建服务器，则会选择“备份”  ）。
     管理员用户名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0 到 9)和非字母数字字符（!, $, #, % 等）。
-    Location|离用户最近的区域| 最靠近用户的位置。
+    位置|离用户最近的区域| 最靠近用户的位置。
     版本|最新主版本| 除非另有特定的要求，否则为最新 PostgreSQL 主版本。
     计算 + 存储 | **常规用途**、**第 5 代**、**2 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“配置服务器”  。 接下来，选择“常规用途”  选项卡。“第 5 代”、“4 个 vCore”、“100 GB”和“7 天”分别是“计算代系”、“vCore”、“存储”和“备份保持期”的默认值         。 可以按原样保留这些滑块，也可以对其进行调整。 若要在异地冗余存储中启用服务器备份，请从“备份冗余选项”  中选择“异地冗余”  。 若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
 

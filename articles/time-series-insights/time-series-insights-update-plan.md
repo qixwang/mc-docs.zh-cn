@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 11/22/2019
 ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d1ce4274bfeaa6c86723b7afdc6ae5f768a5000
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 933b383f39b1f6f524caddb256696116b3f12d4d
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859652"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068056"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -54,7 +54,6 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 若要开始，需要三个附加项：
  
 - [时序模型](./time-series-insights-update-tsm.md) 
-- [连接到时序见解的事件源](./time-series-insights-how-to-add-an-event-source-iothub.md) 
 - [事件源的事件](./time-series-insights-send-events.md)它们映射到模型并且采用有效 JSON 格式 
 
 ## <a name="review-preview-limits"></a>查看预览版限制
@@ -75,7 +74,7 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 > [!TIP]
 > 验证事件源的格式设置和分析要求。
 
-如果留空，则事件源的事件排队时间会用作事件时间戳。 如果发送历史数据或批处理事件，则自定义时间戳属性比默认事件排队时间更有帮助。 有关详细信息，请阅读如何[在 Azure IoT 中心中添加事件源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
+如果留空，则事件源的事件排队时间会用作事件时间戳。 如果发送历史数据或批处理事件，则自定义时间戳属性比默认事件排队时间更有帮助。
 
 ## <a name="understand-the-time-series-model"></a>了解时序模型
 

@@ -4,22 +4,25 @@ description: 查看、下载和运行 Azure 存储的示例代码和应用程序
 author: WenJason
 ms.author: v-jay
 origin.date: 09/06/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 1e6677bd60c0a3b85dc704477000fa1a3e198037
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 3a6aa72900614d743c4ebc0b12410915e89bb766
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328757"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028995"
 ---
 # <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 存储示例
 
 下表概述了我们的示例存储库以及每个示例中介绍的方案。 单击链接可查看 GitHub 中相应的示例代码。
 
-## <a name="blob-samples"></a>Blob 示例
+> [!NOTE]
+> 这些示例使用 Azure 存储 Java v11 库。 有关 v12 代码，请参阅 GitHub 存储库中的[示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)。
+
+## <a name="blob-samples-v11"></a>Blob 示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -31,7 +34,7 @@ ms.locfileid: "74328757"
 | 删除 Blob | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | 删除容器 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Blob 元数据/属性/统计信息 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
-| 容器 ACL/元数据/属性 | [Java 中 Azure Blob 服务入门](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
+| 容器 ACL/元数据/属性 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | 获取页面范围 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399) |
 | 租用 Blob/容器 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | 列出 Blob/容器 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
@@ -40,7 +43,7 @@ ms.locfileid: "74328757"
 | 服务属性 | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | 快照 Blob | [Getting Started with Azure Blob Service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>文件示例
+## <a name="file-samples-v11"></a>文件示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -54,7 +57,7 @@ ms.locfileid: "74328757"
 | 列出共享 | [Getting Started with Azure File Service in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | 共享属性/元数据/统计信息 | [Getting Started with Azure File Service in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>队列示例
+## <a name="queue-samples-v11"></a>队列示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -67,7 +70,7 @@ ms.locfileid: "74328757"
 | 队列服务属性 | [Getting Started with Azure Queue Service in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | 更新消息 | [Getting Started with Azure Queue Service in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>表示例
+## <a name="table-samples-v11"></a>表示例 (v11)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|

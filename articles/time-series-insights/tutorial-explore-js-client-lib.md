@@ -10,12 +10,12 @@ origin.date: 07/29/2019
 ms.date: 09/02/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: fbd269763fea5b245efb166bcb2b49e04a44946e
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 0704c422abaa21ea2216dd5438b4446b7c29cc59
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993138"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068347"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -35,9 +35,9 @@ ms.locfileid: "69993138"
 > * 时序见解示例应用源文件在 [GitHub 示例存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)中提供。
 > * 请阅读[时序见解客户端参考文档](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。
 
-如果没有 Azure 订阅，请注册一个[试用的 Azure 订阅](https://wwww.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，请注册一个[试用的 Azure 订阅](https://w www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程使用浏览器的“开发人员工具”功能  。 现代 Web 浏览器（[Microsoft Edge](https://docs.microsoft.com/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）通常可以通过键盘上的 F12 热键访问“Web 检查器视图”  。 访问该视图的另一种方法是右键单击网页，然后选择“检查元素”  。
 
@@ -571,8 +571,6 @@ authContext.getTsiToken().then(function(token){
 
 时序见解示例应用程序使用演示数据集。 若要了解如何创建自己的时序见解环境和数据集，请阅读下文：
 
-> [!div class="nextstepaction"]
-> [教程：创建 Azure 时序见解环境](tutorial-create-populate-tsi-environment.md)
 
 或查看时序见解示例应用程序源文件：
 

@@ -1,32 +1,33 @@
 ---
-title: 快速入门：使用 Node.js 发送和接收事件 - Azure 事件中心
-description: 快速入门：本文提供了一个演练，说明如何创建从 Azure 事件中心发送事件的 Node.js 应用程序。
+title: 使用 Node.js（旧版）向/从 Azure 事件中心发送/接收事件
+description: 本文提供了创建 Node.js 应用程序的演练，该应用程序使用旧的 azure/event-hubs 版本 2 包向/从 Azure 事件中心发送/接收事件。
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 12/02/2019
+origin.date: 01/15/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 18acfd6581a9c070625f6bbae3c8ef26190158e4
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 0afa731dfa9edb833237bb9d2ce6d064ebe0af13
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658089"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067733"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>快速入门：使用 Node.js 向/从 Azure 事件中心发送/接收事件
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>快速入门：使用 Node.js（@azure/event-hubs 版本 2）向/从 Azure 事件中心发送/接收事件
 
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程介绍了如何创建 Node.js 应用程序来将事件发送到事件中心或从其接收事件。
 
-> [!NOTE]
-> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+> [!WARNING]
+> 本快速入门适用于 Azure 事件中心 Java Script SDK 版本 2。 我们建议你将代码[迁移](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)到 [Java Script SDK 版本 5](get-started-node-send-v2.md)。 
 
-## <a name="prerequisites"></a>先决条件
+
+
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要满足以下先决条件：
 
@@ -37,10 +38,10 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 
 ### <a name="install-npm-package"></a>安装 npm 包
-若要安装[事件中心的 npm 包](https://www.npmjs.com/package/@azure/event-hubs)，请打开路径中包含 `npm` 的命令提示符，将目录更改为要包含示例的文件夹，然后运行此命令
+若要安装[事件中心的 npm 包](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)，请打开路径中包含 `npm` 的命令提示符，将目录更改为要包含示例的文件夹，然后运行此命令
 
 ```shell
-npm install @azure/event-hubs
+npm install @azure/event-hubs@2
 ```
 
 若要安装[事件处理程序主机的 npm 包](https://www.npmjs.com/package/@azure/event-processor-host)，请改为运行以下命令
@@ -51,13 +52,16 @@ npm install @azure/event-processor-host
 
 ## <a name="send-events"></a>发送事件
 
-本部分介绍如何创建一个向事件中心发送事件的 Node.js 应用程序。 
+本部分展示了如何创建 Node.js 应用程序来将事件发送到事件中心。 
+
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
-2. 创建名为 `send.js` 的文件，并在其中粘贴以下代码。 按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
+2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 
 
     ```javascript
-    const { EventHubClient } = require("@azure/event-hubs");
+    const { EventHubClient } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -82,7 +86,7 @@ npm install @azure/event-processor-host
       console.log("Error occurred: ", err);
     });
     ```
-3. 输入以上代码中显示的连接字符串和事件中心名称
+3. 在上面的代码中输入连接字符串和事件中心的名称
 4. 然后在命令提示符下运行命令 `node send.js` 以执行此文件。 这会向事件中心发送 100 个事件
 
 祝贺！ 现在已向事件中心发送事件。
@@ -95,7 +99,7 @@ npm install @azure/event-processor-host
 1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
 2. 创建一个名为 `receive.js` 的文件，并将下面的代码粘贴到其中。
     ```javascript
-    const { EventHubClient, delay } = require("@azure/event-hubs");
+    const { EventHubClient, delay } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

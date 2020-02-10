@@ -3,7 +3,7 @@
 - name: 双重验证帮助
   items:
     - name: 概述
-      href: user-help-two-step-verification-overview.md
+      href: multi-factor-authentication-end-user-first-time.md
     - name: 设置帐户
       href: multi-factor-authentication-end-user-first-time.md
     - name: 管理设置
@@ -13,7 +13,7 @@
 - name: 密码重置帮助
   items:
     - name: 概述
-      href: user-help-password-reset-overview.md
+      href: active-directory-passwords-reset-register.md
     - name: 注册密码重置
       href: active-directory-passwords-reset-register.md
     - name: 重置密码

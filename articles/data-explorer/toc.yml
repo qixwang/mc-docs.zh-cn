@@ -27,11 +27,15 @@
       href: visualize-power-bi.md
 - name: 概念
   items:
-    - name: 数据引入概述
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: 数据引入
+      items:
+        - name: 数据引入概述
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: 数据可视化概述
       href: viz-overview.md
+    - name: 安全概述
+      href: security.md
 - name: 操作指南
   items:
     - name: 创建群集和数据库
@@ -52,36 +56,38 @@
           items:
             - name: Azure 门户
               href: ingest-data-event-hub.md
-            - name: Python
-              href: data-connection-event-hub-python.md
             - name: 'C#'
               href: data-connection-event-hub-csharp.md
+            - name: Python
+              href: data-connection-event-hub-python.md
             - name: Azure Resource Manager 模板
               href: data-connection-event-hub-resource-manager.md
         - name: IoT 中心
           items:
             - name: Azure 门户
               href: ingest-data-iot-hub.md
-            - name: Python
-              href: data-connection-iot-hub-python.md
             - name: 'C#'
               href: data-connection-iot-hub-csharp.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager 模板
               href: data-connection-iot-hub-resource-manager.md
         - name: 一键式引入
           href: ingest-data-one-click.md
+        - name: 使用 SDK
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET 标准 SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET 标准 SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: 使用 Azure 数据工厂复制数据
-          href: data-factory-load-data.md
+        - name: json 格式的数据
+          href: ingest-json-formats.md
     - name: 查询数据
       items:
         - name: 编写查询
@@ -128,6 +134,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: 安全
+      items:
+        - name: 管理群集安全性
+          href: manage-cluster-security.md
+        - name: 配置托管标识
+          href: managed-identities.md
+        - name: 配置客户管理的密钥
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager 模板
+              href: customer-managed-keys-resource-manager.md
     - name: 管理
       items:
         - name: 群集
@@ -138,16 +156,30 @@
               href: manage-cluster-horizontal-scaling.md
             - name: 管理群集纵向缩放
               href: manage-cluster-vertical-scaling.md
-            - name: 管理群集安全性
-              href: manage-cluster-security.md
             - name: 检查群集运行状况
               href: check-cluster-health.md
+            - name: 添加群集主体
+              items:
+                - name: 'C#'
+                  href: cluster-principal-csharp.md
+                - name: Python
+                  href: cluster-principal-python.md
+                - name: Azure Resource Manager 模板
+                  href: cluster-principal-resource-manager.md
         - name: 数据库
           items:
             - name: 后继数据库
               href: follower.md
             - name: 管理数据库权限
               href: manage-database-permissions.md
+            - name: 添加数据库主体
+              items:
+                - name: 'C#'
+                  href: database-principal-csharp.md
+                - name: Python
+                  href: database-principal-python.md
+                - name: Azure Resource Manager 模板
+                  href: database-principal-resource-manager.md
             - name: 策略
               items:
                 - name: 'C#'
@@ -172,6 +204,8 @@
           items:
             - name: 与数据工厂集成
               href: data-factory-integration.md
+            - name: 使用 Azure 数据工厂复制数据
+              href: data-factory-load-data.md
             - name: 使用 Azure 数据工厂模板批量复制数据
               href: data-factory-template.md
             - name: 使用 Azure 数据工厂运行控制命令

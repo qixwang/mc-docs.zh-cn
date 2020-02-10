@@ -5,15 +5,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 origin.date: 06/24/2019
-ms.date: 07/29/2019
+ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: d041edce736e124369e437345c1badb2ee1e23c1
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.openlocfilehash: bde4d9628f171a78b86868f012d42e8a8cb5f418
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68672306"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028823"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 连接到 Azure Cosmos DB 的 API for MongoDB 
 
@@ -55,5 +55,4 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-<!--Update_Description: new articles on mongodb compass -->
-<!--ms.date: 07/29/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

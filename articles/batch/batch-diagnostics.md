@@ -15,12 +15,12 @@ origin.date: 12/05/2018
 ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 8dcb904637e011573b9dba56a125b93ca64ad266
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: f3013d7d3bf99699dbd0f9cc3c33ff91f0eccc83
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970939"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028861"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -108,7 +108,7 @@ ms.locfileid: "72970939"
 
     ![Batch 诊断](media/batch-diagnostics/diagnostics-portal.png)
 
-用于启用日志收集的其他选项包括：在门户中使用 Azure Monitor 配置诊断设置、使用[资源管理器模板](../azure-monitor/platform/diagnostic-settings-template.md)，或者使用 Azure PowerShell 或 Azure CLI。 请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)。
+用于启用日志收集的其他选项包括：在门户中使用 Azure Monitor 配置诊断设置、使用[资源管理器模板](../azure-monitor/platform/diagnostic-settings-template.md)，或者使用 Azure PowerShell 或 Azure CLI。 请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/platform-logs-overview.md)。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>访问存储中的诊断日志

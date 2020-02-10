@@ -6,14 +6,14 @@ author: chenyl
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 12/16/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: ce2c726295992b6f9030e37bdbdd8cc57b795987
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 0d4c1c39d62aaaf9092ec8579e1a4e664fa27dda
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600575"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028176"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何将事件从 Azure SignalR 服务发送到事件网格
 
@@ -21,6 +21,7 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户][azure-account]。
 
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 本文中的 Azure CLI 命令已根据 **Bash** shell 设置了格式。 如果使用其他 shell（例如 PowerShell 或命令提示符），则可能需要相应地调整行连续字符或变量赋值行。 本文使用变量来最大程度地减少所需的命令编辑量。
 
@@ -154,7 +155,7 @@ cd NegotitationServer
 dotnet user-secrets set Azure:SignalR:ConnectionString "<Connection String>"
 dotnet run
 
-# Use a seperate command line
+# Use a separate command line
 # Start a client
 cd SignalRClient
 dotnet run

@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 05/21/2019
 ms.date: 09/02/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7311f7dccd1c06ba26cbe46584fdf09cf7adb65e
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: 19256ad65eaf9af673502fbbf1c0fdc7d65abddf
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169537"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068228"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用存储资源管理器管理 Azure Blob 存储资源
 
@@ -29,7 +29,7 @@ ms.locfileid: "70169537"
 [Azure Blob 存储](storage/blobs/storage-dotnet-how-to-use-blobs.md)是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。
 可以使用 Blob 存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器来处理 Blob 容器和 Blob。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，需要满足以下先决条件：
 
@@ -170,16 +170,16 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
 1. 打开存储资源管理器。
 2. 在左窗格中，展开包含你想要管理的 Blob 容器的存储帐户。
 3. 展开该存储帐户的“Blob 容器”。 
-4. 双击想要查看的 Blob 容器。
+4. 双击你想要查看的 Blob 容器。
 5. 主窗格会显示 Blob 容器的内容。
 
    ![查看 Blob 容器][3]
-6. 主窗格会显示该 Blob 容器的内容。
+6. 主窗格会显示 Blob 容器的内容。
 7. 根据所要执行的任务完成以下步骤：
 
    * **将文件上传到 Blob 容器**
 
-     1. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。  
+     1. 在主窗格的工具栏上选择“上传”，并从下拉菜单中选择“上传文件”。  
 
         ![“上传文件”菜单][15]
      2. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传的文件。  
@@ -190,7 +190,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
      5. 选择“上传”。 
    * **将文件夹上传到 Blob 容器**
 
-     1. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件夹”。  
+     1. 在主窗格的工具栏上选择“上传”，并从下拉菜单中选择“上传文件夹”。  
 
         ![“上传文件夹”菜单][17]
      2. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传其内容的文件夹。  

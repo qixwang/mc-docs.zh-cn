@@ -1,20 +1,20 @@
 ---
-title: Azure 表存储概述 | Microsoft Docs
-description: 在 Azure 门户中创建一个 Azure 存储表服务表。
+title: 快速入门 - 在 Azure 门户中创建 Azure 存储表
+description: 在本快速入门中，请在 Azure 门户中创建一个 Azure 存储表服务表。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: quickstart
-origin.date: 04/23/2018
-ms.date: 12/10/2018
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-jay
-ms.component: tables
-ms.openlocfilehash: fa94b804b21d93f6f2140d8b9f0c54d76b722e42
-ms.sourcegitcommit: 5f2849d5751cb634f1cdc04d581c32296e33ef1b
+ms.subservice: tables
+ms.openlocfilehash: f4d7c7684ea8183e4d35d275dd8ff333ab04ce56
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53029004"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028547"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 存储表 
 
@@ -22,9 +22,9 @@ ms.locfileid: "53029004"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成此快速入门，请首先在 [Azure 门户](https://portal.azure.cn/#create/Microsoft.StorageAccount-ARM)中创建 Azure 存储帐户。 有关如何创建帐户的帮助，请参阅[创建存储帐户](../common/storage-quickstart-create-account.md)。
+若要完成此快速入门，请首先在 [Azure 门户](https://portal.azure.cn/#create/Microsoft.StorageAccount-ARM)中创建 Azure 存储帐户。 有关如何创建帐户的帮助，请参阅[创建存储帐户](../common/storage-account-create.md)。
 
 ## <a name="add-a-table"></a>添加表
 
@@ -34,11 +34,11 @@ ms.locfileid: "53029004"
 
    ![Azure 门户](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
-2. 单击“+ 表”。
+2. 单击“+ 表”  。
 
    ![Azure 门户](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
-3. 在“表名”框中键入表名，然后单击“确定”。 
+3. 在“表名”  框中键入表名，然后单击“确定”  。 
 
    ![Azure 门户](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 

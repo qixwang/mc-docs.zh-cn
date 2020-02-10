@@ -1,20 +1,20 @@
 ---
-title: 快速入门 - 使用 Azure CLI 创建 Azure Database for PostgreSQL - 单一服务器
-description: 使用 Azure CLI（命令行界面）创建和管理 Azure Database for PostgreSQL - 单一服务器的快速入门指南。
+title: 快速入门：创建服务器 - Azure CLI - Azure Database for PostgreSQL（单一服务器）
+description: 使用 Azure CLI（命令行界面）创建 Azure Database for PostgreSQL（单一服务器）的快速入门指南。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 06/25/2019
-ms.date: 08/05/2019
+ms.date: 02/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b850224af208c5d8e74028de8af68cebcbbc614
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.openlocfilehash: 3db275ccad843a3ba968b569e863c875966075f7
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732417"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068113"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -39,7 +39,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/group) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 应提供唯一名称。 以下示例在 `chinaeast` 位置创建名为 `myresourcegroup` 的资源组。
+使用 [az group create](/cli/group) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 应提供唯一名称。 以下示例在 `chinaeast` 位置创建名为 `myresourcegroup` 的资源组。
 ```cli
 az group create --name myresourcegroup --location chinaeast
 ```
@@ -210,7 +210,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以通过删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)来清除在此快速入门中创建的所有资源。
+可以通过删除 [Azure 资源组](../azure-resource-manager/management/overview.md)来清除在此快速入门中创建的所有资源。
 
 > [!TIP]
 > 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用后续的快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure CLI 中执行以下步骤，删除通过此快速入门创建的所有资源。

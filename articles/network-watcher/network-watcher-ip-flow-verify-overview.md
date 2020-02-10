@@ -5,8 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: d352fb2d-4b4f-4ac4-9c2e-1cfccf0e7e03
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 11/30/2017
 ms.date: 12/24/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 517cf8dcd18710c2a988f0eaefe58fa7ce6a72bc
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: b82b7c8c1e0b08b29f39e1b3c12fc1e6292a69a7
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674674"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028483"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure 网络观察程序中的“IP 流验证”简介
 

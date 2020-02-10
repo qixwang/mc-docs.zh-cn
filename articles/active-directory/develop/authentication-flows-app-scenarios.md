@@ -9,16 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae95f53bece50644b2c6deae5daa2a37bad815ea
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: f5a621530d94bd71639aadb8e329199c416894be
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776845"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067543"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -238,7 +237,7 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
  </tr>
 
   <tr>
-   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">设备代码</a></td>
    <td>工作或学校帐户</td>
  </tr>
@@ -307,4 +306,4 @@ Microsoft 身份验证库支持多种平台：
 ## <a name="next-steps"></a>后续步骤
 详细了解[身份认证基本信息](authentication-scenarios.md)和[访问令牌](access-tokens.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

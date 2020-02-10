@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d31e3fb924b4d484e1bd1832c73e957a32599fab
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 34269d6e52a81685f6c74f113ef4bc089254aca8
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776992"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067712"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
 
@@ -38,10 +37,6 @@ ms.locfileid: "75776992"
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.partner.microsoftonline.cn)`
 
 - **通过弹出窗口使用登录名进行身份验证时，弹出窗口不会关闭或处于停滞状态**。 通过 Microsoft Edge 或 IE (InPrivate) 中的弹出窗口进行身份验证时，在输入凭据并登录后，如果有多个跨安全区域的域涉及导航，则弹出窗口不会关闭，因为 MSAL.js 丢失了弹出窗口的句柄。  
-
-    下面是 Microsoft Edge 问题跟踪程序中这些问题的链接：  
-    - Bug 13861050
-    - Bug 13861663
 
 ### <a name="update-fix-available-in-msaljs-023"></a>更新：MSAL.js 0.2.3 中提供了修复措施
 [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) 中已发布身份验证重定向循环问题的修复措施。 在 MSAL.js 配置中启用标志 `storeAuthStateInCookie` 即可利用此修复措施。 此标志默认设置为 false。

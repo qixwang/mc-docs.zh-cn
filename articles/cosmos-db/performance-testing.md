@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 09/09/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 74336d8c6231cce98681a6e93b7222be60f8d4b4
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: e1c4749b712a489345284012effe203e718fa91b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254851"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028779"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 执行性能和规模测试
 

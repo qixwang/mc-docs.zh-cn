@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure CLI 创建服务总线队列 | Azure Docs
+title: 快速入门 - 使用 Azure CLI 创建服务总线队列 | Microsoft Docs
 description: 在本快速入门中，你将了解如何使用 Azure CLI 创建服务总线队列。 然后，你将使用示例 Java 应用程序向队列发送消息以及从中接收消息。
 services: service-bus-messaging
 author: lingliw
@@ -7,22 +7,22 @@ manager: digimobile
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-origin.date: 09/18/2018
-ms.date: 09/15/2019
+origin.date: 04/10/2019
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: b135df6b46cec2059e0c79b6270b0b9b1c38b5d2
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 9743fd7be7496aaf081ec6d1035258464253d7e8
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982184"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068266"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户][trial account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

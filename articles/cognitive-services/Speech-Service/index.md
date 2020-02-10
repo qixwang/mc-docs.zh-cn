@@ -1,17 +1,17 @@
 ---
 layout: HubPage
-origin.date: 11-21-2019
-ms.date: 01-27-2020
+origin.date: 01-24-2020
+ms.date: 02-17-2020
 ms.author: v-tawe
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
-ms.openlocfilehash: 2e0acc82d93bc48752583109c2a1835d2d785213
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: e00b542528428d612f3188e65785f5abbb2adeb5
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269936"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028103"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -378,6 +378,68 @@ ms.locfileid: "76269936"
                         </ul>
                     </li>
                     <li>
+                        <a href="#deploy-architecture">承载</a>
+                        <ul id="deploy-architecture" class="cardsC">
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>创建 Azure 语音服务资源</h3>
+                                                    <p>了解如何获取 Azure 订阅密钥、如何创建语音资源以及如何入门。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/sovereign-clouds">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>主权云</h3>
+                                                    <p>Azure 主权云中的语音服务资源可用性。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regions.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>支持的区域</h3>
+                                                    <p>了解支持语音服务的位置。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#support">支持</a>
                         <ul id="support" class="cardsC">
                             <li>
@@ -431,6 +493,44 @@ ms.locfileid: "76269936"
                                                 <div class="cardText">
                                                     <h3>UserVoice 论坛</h3>
                                                     <p>针对语音服务分享想法、建议增强功能或请求新功能。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/scenario-availability">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>应用场景和功能可用性</h3>
+                                                    <p>了解多种编程语言和环境下的多种语音 SDK 功能方案。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/regions">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>支持的区域</h3>
+                                                    <p>了解语音服务的可用区域和终结点。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -507,16 +607,11 @@ ms.locfileid: "76269936"
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#scenarios">应用场景</a>
-                <ul id="scenarios">
                     <li>
-                        <a href="#use-cases">用例</a>
-                        <ul id="use-cases" class="cardsC">
+                        <a href="#text-to-speech-customization">文本转语音</a>
+                        <ul id="text-to-speech-customization" class="cardsC">
                             <li>
-                                <a href="scenario-availability.md">
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/speech-synthesis-markup">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -526,32 +621,48 @@ ms.locfileid: "76269936"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>应用场景和功能可用性</h3>
-                                                    <p>了解平台和编程语言提供的应用场景和功能可用性。</p>
+                                                    <h3>通过 SSML 改进合成</h3>
+                                                    <p>使用语音合成标记语言来微调音频输出的音调、韵律和说话速率。
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#deploy-architecture">部署</a>
-                        <ul id="deploy-architecture" class="cardsC">
                             <li>
-                                <a href="regions.md">
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/language-support#text-to-speech">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>支持的区域</h3>
-                                                    <p>了解支持语音服务的位置。</p>
+                                                    <h3>语言支持</h3>
+                                                    <p>详细了解自定义语音的编程和口语支持。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.azure.cn/pricing/details/cognitive-services/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>定价</h3>
+                                                    <p>详细了解与自定义语音相关的成本。
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

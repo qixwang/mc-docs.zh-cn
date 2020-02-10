@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 origin.date: 08/17/2018
-ms.date: 10/28/2019
-ms.openlocfilehash: e97b4959dc320242d0655d5277ba0b35fc104347
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a661054b760287d2612d89b251818bc556270b4
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912932"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068359"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明

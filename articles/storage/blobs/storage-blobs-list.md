@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: article
-origin.date: 11/08/2019
-ms.date: 11/25/2019
+origin.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 4e06bb367a37e652c41c87e1e3720e721cd4cc3d
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 7ae0b669d0ef38b99577b0b945c3c7b0757204c1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328759"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028902"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -141,12 +141,12 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     try
     {
         // Call the listing operation and enumerate the result segment.
-        // When the continuation token is null, the last segment has been returned and 
+        // When the continuation token is null, the last segment has been returned and
         // execution can exit the loop.
         do
         {
             BlobResultSegment resultSegment = await container.ListBlobsSegmentedAsync(prefix,
-                false, BlobListingDetails.Metadata, null, null, null, null);
+                false, BlobListingDetails.Metadata, null, continuationToken, null, null);
             foreach (var blobItem in resultSegment.Results)
             {
                 // A hierarchical listing may return both virtual directories and blobs.

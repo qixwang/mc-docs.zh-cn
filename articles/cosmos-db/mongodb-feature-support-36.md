@@ -4,30 +4,30 @@ description: 了解 Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-origin.date: 10/16/2019
-ms.date: 10/28/2019
+origin.date: 01/15/2020
+ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 6706c070a3b22302e85e39dac414a6a8efad964f
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3e1cd62ab14b03018724809f48d1bb9b02fe821c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914841"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028812"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB 的用于 MongoDB 的 API 通信。 Azure Cosmos DB 的用于 MongoDB 的 API 允许按照 MongoDB [线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
+Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB's API for MongoDB 进行通信。 Azure Cosmos DB 的用于 MongoDB 的 API 允许按照 MongoDB [线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
 
 通过使用 Azure Cosmos DB 的用于 MongoDB 的 API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[多区域分发](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、自动编制每个字段的索引、静态加密和备份等。
 
 ## <a name="protocol-support"></a>协议支持
 
-默认情况下，对于新帐户，Azure Cosmos DB 的 API for MongoDB 与 MongoDB 服务器版本 **3.6** 兼容。 支持的运算符以及限制或例外已列在下面。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的用于 MongoDB 的 API。
+默认情况下，对于新帐户，Azure Cosmos DB 的 API for MongoDB 与 MongoDB 服务器版本 **3.6** 兼容。 支持的运算符以及限制或例外已列在下面。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的用于 MongoDB 的 API。 请注意，使用 Azure Cosmos DB's API for MongoDB 帐户时，3.6 版的帐户的终结点格式为 `*.mongo.cosmos.azure.cn`，而 3.2 版的帐户的终结点格式为 `*.documents.azure.cn`。
 
 ## <a name="query-language-support"></a>查询语言支持
 
-Azure Cosmos DB 的用于 MongoDB 的 API 为 MongoDB 查询语言构造提供全面的支持。 下面是一个详细列表，列出了目前支持的操作、运算符、阶段、命令和选项。
+Azure Cosmos DB 的用于 MongoDB 的 API 为 MongoDB 查询语言构造提供全面的支持。 可以在下面查找当前支持的操作、运算符、阶段、命令和选项的详细列表。
 
 ## <a name="database-commands"></a>数据库命令
 
@@ -35,43 +35,76 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 ### <a name="query-and-write-operation-commands"></a>查询和写入操作命令
 
-- delete
-- find
-- findAndModify
-- getLastError
-- getMore
-- insert
-- update
+|命令  |支持 |
+|---------|---------|
+|删除 | 是 |
+|find | 是     |
+|findAndModify | 是  |
+|getLastError|   是 |
+|getMore  |  是  |
+|getPrevError | 否  |
+|insert  |   是  |
+|parallelCollectionScan  | 是   |
+|resetError |   否  |
+|update  |   是  |
+|[更改流](mongodb-change-streams.md)  |  是  |
+|GridFS |   是  |
 
 ### <a name="authentication-commands"></a>身份验证命令
 
-- logout
-- authenticate
-- getnonce
+|命令  |支持 |
+|---------|---------|
+|authenticate    |   是      |
+|logout    |      是   |
+|getnonce   |    是     |
 
 ### <a name="administration-commands"></a>管理命令
 
-- dropDatabase
-- listDatabases
-- listCollections
-- drop
-- create
-- filemd5
-- createIndexes
-- listIndexes
-- dropIndexes
-- connectionStatus
-- reIndex
-- killCursors
+|命令  |支持 |
+|---------|---------|
+|Capped Collections   |   否      |
+|cloneCollectionAsCapped     |   否      |
+|collMod     |   否      |
+|collMod: expireAfterSeconds   |   否      |
+|convertToCapped   |  否       |
+|copydb     |  否       |
+|create   |    是     |
+|createIndexes     |  是       |
+|currentOp     |  是       |
+|drop     |   是      |
+|dropDatabase     |  是       |
+|dropIndexes     |   是      |
+|filemd5    |   是      |
+|killCursors    |  是       |
+|killOp     |   否      |
+|listCollections     |  是       |
+|listDatabases     |  是       |
+|listIndexes     |  是       |
+|reIndex     |    是     |
+|renameCollection     |    否     |
+|connectionStatus    |     否    |
 
 ### <a name="diagnostics-commands"></a>诊断命令
 
-- buildInfo
-- collStats
-- dbStats
-- hostInfo
-- listDatabases
-- whatsmyuri
+|命令  |支持 |
+|---------|---------|
+|buildInfo       |   是      |
+|collStats    |  是       |
+|connPoolStats     |  否       |
+|connectionStatus     |  否       |
+|dataSize     |   否      |
+|dbHash    |    否     |
+|dbStats     |   是      |
+|explain     | 否        |
+|explain: executionStats     |     否    |
+|features     |    否     |
+|hostInfo     |   否      |
+|listDatabases       |   是      |
+|listCommands     |  否       |
+|profiler     |  否       |
+|serverStatus     |  否       |
+|top     |    否     |
+|whatsmyuri     |   是      |
 
 <a name="aggregation-pipeline"/>
 
@@ -79,252 +112,432 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 ### <a name="aggregation-commands"></a>聚合命令
 
-- aggregate
-- count
-- distinct
+|命令  |支持 |
+|---------|---------|
+|aggregate |   是  |
+|count     |   是  |
+|distinct  | 是 |
+|mapReduce | 否 |
 
 ### <a name="aggregation-stages"></a>聚合阶段
 
-- $project
-- $match
-- $limit
-- $skip
-- $unwind
-- $group
-- $sample
-- $sort
-- $lookup
-- $out
-- $count
-- $addFields
-- $redact
-- $replaceRoot
+|命令  |支持 |
+|---------|---------|
+|$collStats |否|
+|$project   |是|
+|$match |是|
+|$redact|   是|
+|$limit |是|
+|$skip  |是|
+|$unwind|   是|
+|$group |   是|
+|$sample|       是|
+|$sort  |是|
+|$geoNear|  否|
+|$lookup    |   是|
+|$out       |是|
+|$indexStats|       否|
+|$facet |否|
+|$bucket|   否|
+|$bucketAuto|   否|
+|$sortByCount|  是|
+|$addFields |是|
+|$replaceRoot|  是|
+|$count |是|
+|$currentOp|    否|
+|$listLocalSessions |否|
+|$listSessions  |否|
+|$graphLookup   |否|
 
-### <a name="aggregation-expressions"></a>聚合表达式
+### <a name="boolean-expressions"></a>布尔表达式
 
-#### <a name="boolean-expressions"></a>布尔表达式
+|命令  |支持 |
+|---------|---------|
+|$and| 是|
+|$or|是|
+|$not|是|
 
-- $and
-- $or
-- $not
+### <a name="set-expressions"></a>设置表达式
 
-#### <a name="set-expressions"></a>设置表达式
+|命令  |支持 |
+|---------|---------|
+| $setEquals | 是|
+|$setIntersection|是|
+| $setUnion|是|
+| $setDifference|是|
+| $setIsSubset|是|
+| $anyElementTrue|是|
+| $allElementsTrue|是|
 
-- $setEquals
-- $setIntersection
-- $setUnion
-- $setDifference
-- $setIsSubset
-- $anyElementTrue
-- $allElementsTrue
+### <a name="comparison-expressions"></a>比较表达式
 
-#### <a name="comparison-expressions"></a>比较表达式
+|命令  |支持 |
+|---------|---------|
+|$cmp     |  是       |
+|$eq|   是| 
+|$gt |  是| 
+|$gte|  是| 
+|$lt    |是|
+|$lte|  是| 
+|$ne    |   是| 
+|$in    |   是| 
+|$nin   |   是| 
 
-- $cmp
-- $eq
-- $gt
-- $gte
-- $lt
-- $lte
-- $ne
+### <a name="arithmetic-expressions"></a>算术表达式
 
-#### <a name="arithmetic-expressions"></a>算术表达式
+|命令  |支持 |
+|---------|---------|
+|$abs |  是       |
+| $add |  是       |
+| $ceil |  是       |
+| $divide |  是       |
+| $exp |  是       |
+| $floor |  是       |
+| $ln |  是       |
+| $log |  是       |
+| $log10 |  是       |
+| $mod |  是       |
+| $multiply |  是       |
+| $pow |  是       |
+| $sqrt |  是       |
+| $subtract |  是       |
+| $trunc |  是       |
 
-- $abs
-- $add
-- $ceil
-- $divide
-- $exp
-- $floor
-- $ln
-- $log
-- $log10
-- $mod
-- $multiply
-- $pow
-- $sqrt
-- $subtract
-- $trunc
+### <a name="string-expressions"></a>字符串表达式
 
-#### <a name="string-expressions"></a>字符串表达式
+|命令  |支持 |
+|---------|---------|
+|$concat |  是       |
+| $indexOfBytes|  是       |
+| $indexOfCP|  是       |
+| $split|  是       |
+| $strLenBytes|  是       |
+| $strLenCP|  是       |
+| $strcasecmp|  是       |
+| $substr|  是       |
+| $substrBytes|  是       |
+| $substrCP|  是       |
+| $toLower|  是       |
+| $toUpper|  是       |
 
-- $concat
-- $indexOfBytes
-- $indexOfCP
-- $split
-- $strLenBytes
-- $strLenCP
-- $strcasecmp
-- $substr
-- $substrBytes
-- $substrCP
-- $toLower
-- $toUpper
+### <a name="text-search-operator"></a>文本搜索运算符
 
-#### <a name="array-expressions"></a>数组表达式
+|命令  |支持 |
+|---------|---------|
+| $meta | 否|
 
-- $arrayElemAt
-- $concatArrays
-- $filter
-- $indexOfArray
-- $isArray
-- $range
-- $reverseArray
-- $size
-- $slice
-- $in
+### <a name="array-expressions"></a>数组表达式
 
-#### <a name="date-expressions"></a>日期表达式
+|命令  |支持 |
+|---------|---------|
+|$arrayElemAt   |   是|
+|$arrayToObject|    是|
+|$concatArrays  |   是|
+|$filter    |   是|
+|$indexOfArray  |是|
+|$isArray   |   是|
+|$objectToArray |是|
+|$range |是|
+|$reverseArray  |   是|
+|$reduce|   是|
+|$size  |   是|
+|$slice |   是|
+|$zip   |   是|
+|$in    |   是|
 
-- $dayOfYear
-- $dayOfMonth
-- $dayOfWeek
-- $year
-- $month
-- $week
-- $hour
-- $minute
-- $second
-- $millisecond
-- $isoDayOfWeek
-- $isoWeek
+### <a name="variable-operators"></a>变量运算符
 
-#### <a name="conditional-expressions"></a>条件表达式
+|命令  |支持 |
+|---------|---------|
+|$map   |否|
+|$let   |是|
 
-- $cond
-- $ifNull
+### <a name="system-variables"></a>系统变量
 
-## <a name="aggregation-accumulators"></a>聚合累加器
+|命令  |支持 |
+|---------|---------|
+|$$CURRENT| 是|
+|$$DESCEND|     是|
+|$$KEEP     |是|
+|$$PRUNE    |   是|
+|$$REMOVE   |是|
+|$$ROOT     |是|
 
-Cosmos DB 支持所有 MongoDB v3.6 累加器，但以下除外：
+### <a name="literal-operator"></a>文本运算符
 
-- $stdDevPop
-- $stdDevSamp
+|命令  |支持 |
+|---------|---------|
+|$literal   |是|
+
+### <a name="date-expressions"></a>日期表达式
+
+|命令  |支持 |
+|---------|---------|
+|$dayOfYear |是    |
+|$dayOfMonth|   是 |
+|$dayOfWeek |是    |
+|$year  |是    |
+|$month |是|   
+|$week  |是    |
+|$hour  |是    |
+|$minute|   是|    
+|$second    |是    |
+|$millisecond|  是|    
+|$dateToString  |是    |
+|$isoDayOfWeek  |是    |
+|$isoWeek   |是    |
+|$dateFromParts|    否| 
+|$dateToParts   |否 |
+|$dateFromString|   否|
+|$isoWeekYear   |是    |
+
+### <a name="conditional-expressions"></a>条件表达式
+
+|命令  |支持 |
+|---------|---------|
+| $cond| 是|
+| $ifNull| 是|
+| $switch |是|
+
+### <a name="data-type-operator"></a>数据类型运算符
+
+|命令  |支持 |
+|---------|---------|
+| $type| 是|
+
+### <a name="accumulator-expressions"></a>累加器表达式
+
+|命令  |支持 |
+|---------|---------|
+|$sum   |是    |
+|$avg   |是    |
+|$first|    是|
+|$last  |是    |
+|$max   |是    |
+|$min   |是    |
+|$push| 是|
+|$addToSet| 是|
+|$stdDevPop|    否  |
+|$stdDevSamp|   否|
+
+### <a name="merge-operator"></a>合并运算符
+
+|命令  |支持 |
+|---------|---------|
+| $mergeObjects | 是|
+
+## <a name="data-types"></a>数据类型
+
+|命令  |支持 |
+|---------|---------|
+|Double |是    |
+|String |是    |
+|Object |是    |
+|Array  |是    |
+|二进制数据    |是|   
+|ObjectId   |是    |
+|布尔    |是    |
+|Date   |是    |
+|Null   |是    |
+|32 位整数 (int)   |是    |
+|Timestamp  |是    |
+|64 位整数 (long)  |是    |
+|MinKey |是    |
+|MaxKey |是    |
+|Decimal128 |是|   
+|Regular Expression |是|
+|Javascript |是|
+|JavaScript（带范围）|   是 |
+|Undefined  |是    |
+
+## <a name="indexes-and-index-properties"></a>索引和索引属性
+
+### <a name="indexes"></a>索引
+
+|命令  |支持 |
+|---------|---------|
+|单字段索引 |是    |
+|复合索引 |是    |
+|多键索引 |是    |
+|文本索引 |否|
+|2dsphere   |是    |
+|2d 索引   |否 |
+|哈希索引   | 是|
+
+### <a name="index-properties"></a>索引属性
+
+|命令  |支持 |
+|---------|---------|
+|TTL|   是 |
+|唯一 |是|
+|部分|   否|
+|不区分大小写   |否|
+|稀疏 |否 |
+|背景|    是 |
 
 ## <a name="operators"></a>运算符
 
-以下运算符在其相应的使用示例中受支持。 请考虑下面的查询中使用的示例文档：
+### <a name="logical-operators"></a>逻辑运算符
 
-```json
-{
-  "Volcano Name": "Rainier",
-  "Country": "United States",
-  "Region": "US-Washington",
-  "Location": {
-    "type": "Point",
-    "coordinates": [
-      -121.758,
-      46.87
-    ]
-  },
-  "Elevation": 4392,
-  "Type": "Stratovolcano",
-  "Status": "Dendrochronology",
-  "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-}
-```
+|命令  |支持 |
+|---------|---------|
+|$or    |   是|
+|$and   |   是|
+|$not   |   是|
+|$nor   |   是| 
 
-运算符 | 示例 |
---- | --- |
-$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
-$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
-$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
-$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
-$lte | `{ "Elevation": { $lte: 5000 } }` | | -
-$ne | `{ "Elevation": { $ne: 1 } }` |  | -
-$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
-$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
-$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
-$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
-$exists | `{ "Status": { $exists: true } }`|  | -
-$type | `{ "Status": { $type: "string" } }`|  | -
-$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
-$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
+### <a name="element-operators"></a>元素运算符
 
-### <a name="notes"></a>说明
+|命令  |支持 |
+|---------|---------|
+|$exists|   是|
+|$type  |   是|
+
+### <a name="evaluation-query-operators"></a>评估查询运算符
+
+|命令  |支持 |
+|---------|---------|
+|$expr  |   否|
+|$jsonSchema    |   否|
+|$mod   |   是|
+|$regex |   是|
+|$text  | 否（不支持。 请改用 $regex。）| 
+|$where |否| 
 
 在 $regex 查询中，左定位表达式允许索引搜索。 但是，使用“i”修饰符（不区分大小写）和“m”修饰符（多行）会导致在所有表达式中进行集合扫描。
-需要包括“$”或“|”时，最好是创建两个（或两个以上）正则表达式查询。
-例如，如果原始查询为 ```find({x:{$regex: /^abc$/})```，则必须将其修改为 ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
-第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。
-竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
+
+需要包括“$”或“|”时，最好是创建两个（或两个以上）正则表达式查询。 例如，给定以下原始查询：```find({x:{$regex: /^abc$/})```，必须按如下所示进行修改：
+
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
+
+第一部分会使用索引将搜索限制为以 ^abc 开头的那些文档，第二部分会匹配确切的条目。 竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 若要利用该索引，建议将该查询拆分成两个不同的查询，再通过 $or 运算符联接到一起：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
+
+### <a name="array-operators"></a>数组运算符
+
+|命令  |支持 | 
+|---------|---------|
+| $all | 是| 
+| $elemMatch | 是| 
+| $size | 是 | 
+
+### <a name="comment-operator"></a>注释运算符
+
+|命令  |支持 | 
+|---------|---------|
+$comment |是| 
+
+### <a name="projection-operators"></a>投影运算符
+
+|命令  |支持 |
+|---------|---------|
+|$elemMatch |是|
+|$meta| 否|
+|$slice | 是|
 
 ### <a name="update-operators"></a>更新运算符
 
 #### <a name="field-update-operators"></a>字段更新运算符
 
-- $inc
-- $mul
-- $rename
-- $setOnInsert
-- $set
-- $unset
-- $min
-- $max
-- $currentDate
+|命令  |支持 |
+|---------|---------|
+|$inc   |   是|
+|$mul   |   是|
+|$rename    |   是|
+|$setOnInsert|  是|
+|$set   |是|
+|$unset| 是|
+|$min   |是|
+|$max   |是|
+|$currentDate   | 是|
 
 #### <a name="array-update-operators"></a>数组更新运算符
 
-- $addToSet
-- $pop
-- $pullAll
-- $pull
-- $pushAll
-- $push
-- $each
-- $slice
-- $sort
-- $position
+|命令  |支持 |
+|---------|---------|
+|$  |是|
+|$[]|   是|
+|$[<identifier>]|   是|
+|$addToSet  |是|
+|$pop   |是|
+|$pullAll|  是|
+|$pull  |是|
+|$push  |是|
+|$pushAll| 是|
+
+#### <a name="update-modifiers"></a>更新修饰符
+
+|命令  |支持 |
+|---------|---------|
+|$each  |   是|
+|$slice |是|
+|$sort  |是|
+|$position  |是|
 
 #### <a name="bitwise-update-operator"></a>位更新运算符
 
-- $bit
+|命令  |支持 |
+|---------|---------|
+| $bit  |   是|    
+|$bitsAllSet    |   否|
+|$bitsAnySet    |   否|
+|$bitsAllClear  |否|
+|$bitsAnyClear  |否|
 
 ### <a name="geospatial-operators"></a>地理空间运算符
 
-运算符 | 示例 | |
---- | --- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | 是 |
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | 是 |
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | 是 |
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | 是 |
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | 是 |
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | 是 |
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | 是 |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | 是 |
+运算符 | 支持| 
+--- | --- |
+$geoWithin | 是 |
+$geoIntersects | 是 | 
+$near |  是 |
+$nearSphere |  是 |
+$geometry |  是 |
+$minDistance | 是 |
+$maxDistance | 是 |
+$center | 是 |
+$centerSphere | 是 |
+$box | 是 |
+$polygon |  是 |
 
-## <a name="sort-operations"></a>排序操作
+## <a name="cursor-methods"></a>游标方法
+
+|命令  |支持 |
+|---------|---------|
+|cursor.batchSize() |   是|
+|cursor.close() |是|
+|cursor.isClosed()|     是|
+|cursor.collation()|    否|
+|cursor.comment()   |是|
+|cursor.count() |是|
+|cursor.explain()|  否|
+|cursor.forEach()   |是|
+|cursor.hasNext()   |是|
+|cursor.hint()  |是|
+|cursor.isExhausted()|  是|
+|cursor.itcount()   |是|
+|cursor.limit() |是|
+|cursor.map()   |是|
+|cursor.maxScan()   |是|
+|cursor.maxTimeMS()|    是|
+|cursor.max()   |是|
+|cursor.min()   |是|
+|cursor.next()| 是|
+|cursor.noCursorTimeout()   |否|
+|cursor.objsLeftInBatch()   |是|
+|cursor.pretty()|   是|
+|cursor.readConcern()|  是|
+|cursor.readPref()      |是|
+|cursor.returnKey() |否|
+|cursor.showRecordId()| 否|
+|cursor.size()  |Nes|
+|cursor.skip()  |是|
+|cursor.sort()  |   是|
+|cursor.tailable()| 否|
+|cursor.toArray()   |是|
+
+## <a name="sort-operations"></a>排序运算符
 
 使用 `findOneAndUpdate` 操作时，支持基于单个字段的排序操作，但不支持基于多个字段的排序操作。
-
-## <a name="additional-operators"></a>其他运算符
-
-运算符 | 示例 | 说明
---- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` |
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | 不支持。 改为使用 $regex。
-
-## <a name="unsupported-operators"></a>不支持的运算符
-
-```$where``` 和 ```$eval``` 运算符不受 Azure Cosmos DB 支持。
-
-### <a name="methods"></a>方法
-
-支持下列方法：
-
-#### <a name="cursor-methods"></a>游标方法
-
-方法 | 示例 | 说明
---- | --- | --- |
-cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 不返回没有排序关键字的文档
 
 ## <a name="unique-indexes"></a>唯一索引
 
@@ -336,7 +549,7 @@ Cosmos DB 支持基于文档时间戳的生存时间 (TTL)。 转到 [Azure 门�
 
 ## <a name="user-and-role-management"></a>用户和角色管理
 
-Cosmos 数据库尚不支持用户和角色。 但是，Cosmos DB 支持基于角色的访问控制 (RBAC) 以及读写型和只读型密码/密钥，后者可以通过 [Azure 门户](https://portal.azure.cn)（“连接字符串”页）获取。
+Cosmos 数据库尚不支持用户和角色。 不过 Cosmos DB 支持基于角色的访问控制 (RBAC) 以及读写和只读密码/密钥，可通过 [Azure 门户](https://portal.azure.cn)（连接字符串页面）获取这些内容。
 
 ## <a name="replication"></a>复制
 
@@ -356,11 +569,11 @@ Azure Cosmos DB 尚不支持服务器端会话命令。
 
 ## <a name="next-steps"></a>后续步骤
 
+- 有关详细信息，请查看 [Mongo 3.6 版本功能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-<sup>注意：本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
+注意：<sup>本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
 
-<!--Update_Description: new articles on mongodb feature support 3.6 version  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

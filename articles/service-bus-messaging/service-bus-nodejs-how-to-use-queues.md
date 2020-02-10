@@ -1,6 +1,6 @@
 ---
 title: 在 Node.js 中通过 azure-sb 包使用 Azure 服务总线队列
-description: 快速入门：了解如何在来自 Node.js 应用程序的 Azure 中使用服务总线队列。
+description: 了解如何使用 azure-sb 包创建 Node.js 应用程序，该应用程序用于向/从 Azure 服务总线队列发送/接收消息。
 services: service-bus-messaging
 documentationcenter: nodejs
 author: lingliw
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/18/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 7eb629348e6d6f4b201eed29e687313c13fdf8d0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: bb5d7241d9770b754f80e8830e36a108417080a7
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75855191"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068007"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入门：通过 Node.js 和 azure-sb 包使用 Azure 中的服务总线队列
 

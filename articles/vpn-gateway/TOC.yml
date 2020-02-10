@@ -122,14 +122,30 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: 创建和安装 VPN 客户端配置文件
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: 关于客户端 VPN 配置文件下载文件
-              href: about-vpn-profile-download.md
         - name: RADIUS 身份验证
           items:
             - name: 配置 P2S VPN
               href: point-to-site-how-to-radius-ps.md
             - name: 创建和安装 VPN 客户端配置文件
               href: point-to-site-vpn-client-configuration-radius.md
+        - name: Azure AD 身份验证
+          items:
+            - name: 配置租户
+              href: openvpn-azure-ad-tenant.md
+            - name: 使用多客户端应用配置租户
+              href: openvpn-azure-ad-tenant-multi-app.md
+            - name: 配置多重身份验证 (MFA)
+              href: openvpn-azure-ad-mfa.md
+            - name: 配置 VPN 客户端
+              href: openvpn-azure-ad-client.md
+            - name: 关于客户端 VPN 配置文件下载文件
+              href: about-vpn-profile-download.md
+        - name: OpenVPN
+          items:
+            - name: 为点到站点连接配置 OpenVPN
+              href: vpn-gateway-howto-openvpn.md
+            - name: 配置 OpenVPN 客户端
+              href: vpn-gateway-howto-openvpn-clients.md
         - name: 为 P2S 转换到公共 CA 网关证书
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: 配置 Always On VPN 设备隧道
@@ -242,7 +258,7 @@
     - name: 论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: 订阅和服务限制
-      href: ../azure-subscription-service-limits.md?toc=%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvpn-gateway%2ftoc.json
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/vpn-gateway'
     - name: 定价计算器

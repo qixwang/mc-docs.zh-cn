@@ -5,6 +5,7 @@
     - name: 关于时序见解
       href: time-series-insights-update-overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: Azure 时序见解 GA
       items:
@@ -14,20 +15,6 @@
       items:
         - name: 探索时序见解预览版
           href: time-series-insights-update-quickstart.md
-- name: 教程
-  items:
-    - name: 时序见解 JavaScript 客户端库
-      href: tutorial-explore-js-client-lib.md
-    - name: 创建单页 Web 应用
-      href: tutorial-create-tsi-sample-spa.md
-    - name: Azure 时序见解 GA
-      items:
-        - name: 创建时序见解环境
-          href: tutorial-create-populate-tsi-environment.md
-    - name: Azure 时序见解预览版
-      items:
-        - name: 设置预览版环境
-          href: time-series-insights-update-create-environment.md
 - name: 概念
   items:
     - name: Azure 时序见解 GA
@@ -62,24 +49,16 @@
           href: time-series-insights-update-tsm.md
         - name: 时序查询
           href: time-series-insights-update-tsq.md
-        - name: 在资源管理器预览版中实现数据可视化
-          href: time-series-insights-update-explorer.md
         - name: 开发
           items:
             - name: 身份验证和授权
               href: time-series-insights-authentication-and-authorization.md
             - name: '使用 C# 查询数据'
               href: time-series-insights-update-query-data-csharp.md
-            - name: Power BI 集成
-              href: concepts-power-bi.md
 - name: 操作指南
   items:
     - name: 授予数据访问权限
       href: time-series-insights-data-access.md
-    - name: 连接到事件中心
-      href: time-series-insights-how-to-add-an-event-source-eventhub.md
-    - name: 连接到 IoT 中心
-      href: time-series-insights-how-to-add-an-event-source-iothub.md
     - name: 使用模板管理资源
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure 时序见解 GA
@@ -94,7 +73,7 @@
           href: time-series-insights-send-events.md
         - name: 缩放环境
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: 用于查询的形状 JSON
+        - name: 针对传入和查询调整 JSON
           href: how-to-shape-query-json.md
         - name: 缓解限制
           href: time-series-insights-environment-mitigate-latency.md
@@ -110,10 +89,8 @@
           href: time-series-insights-update-how-to-troubleshoot.md
         - name: 数据建模
           href: time-series-insights-update-how-to-tsm.md
-        - name: 用于查询的形状 JSON
+        - name: 针对传入和查询调整 JSON
           href: time-series-insights-update-how-to-shape-events.md
-        - name: 连接到 Power BI
-          href: how-to-connect-power-bi.md
 - name: 参考
   items:
     - name: 时序见解

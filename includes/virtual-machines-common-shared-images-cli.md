@@ -9,12 +9,12 @@ origin.date: 05/21/2019
 ms.date: 07/01/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 3ad3e0495f2ba73e9be6417509278592d209ed19
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 3b33738848ffd2d6a0f5d8b290043df4490afbf2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272531"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029262"
 ---
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -31,7 +31,7 @@ ms.locfileid: "72272531"
 
 映像库是用于启用映像共享的主要资源。 允许用于库名称的字符为大写或小写字母、数字、点和句点。 库名称不能包含短划线。   库名称在你的订阅中必须唯一。 
 
-使用 [az sig create](https://docs.azure.cn/zh-cn/cli/sig?view=azure-cli-latest#az-sig-create) 创建一个映像库。 以下示例在 *myGalleryRG* 中创建一个名为 *myGallery* 的库。
+使用 [az sig create](https://docs.azure.cn/cli/sig?view=azure-cli-latest#az-sig-create) 创建一个映像库。 以下示例在 *myGalleryRG* 中创建一个名为 *myGallery* 的库。
 
 ```azurecli
 az group create --name myGalleryRG --location chinanorth
@@ -42,7 +42,7 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](/virtual-machines/linux/shared-image-galleries#image-definitions)。
 
-使用 [az sig image-definition create](https://docs.microsoft.com/en-us/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-create) 在该库中创建一个初始映像定义。
+使用 [az sig image-definition create](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-create) 在该库中创建一个初始映像定义。
 
 ```azurecli 
 az sig image-definition create \
@@ -57,7 +57,7 @@ az sig image-definition create \
 
 ## <a name="create-an-image-version"></a>创建映像版本 
 
-使用 [az image gallery create-image-version](https://docs.microsoft.com/en-us/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-create) 根据需要创建映像的版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](https://docs.azure.cn/zh-cn/cli/image?view?view=azure-cli-latest#az-image-list) 获取资源组中的映像的相关信息。 
+使用 [az image gallery create-image-version](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-create) 根据需要创建映像的版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](https://docs.azure.cn/cli/image?view?view=azure-cli-latest#az-image-list) 获取资源组中的映像的相关信息。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -85,7 +85,7 @@ az sig image-version create \
 
 ## <a name="share-the-gallery"></a>共享库
 
-我们建议你在库级别与其他用户共享。 若要获取库的对象 ID，请使用 [az sig show](https://docs.microsoft.com/en-us/cli/azure/sig?view=azure-cli-latest#az-sig-show)。
+我们建议你在库级别与其他用户共享。 若要获取库的对象 ID，请使用 [az sig show](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-show)。
 
 ```azurecli
 az sig show \
@@ -94,7 +94,7 @@ az sig show \
    --query id
 ```
 
-使用对象 ID 作为作用域以及电子邮件地址，并使用 [az role assignment create](https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create) 授予用户对共享映像库的访问权限。
+使用对象 ID 作为作用域以及电子邮件地址，并使用 [az role assignment create](https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create) 授予用户对共享映像库的访问权限。
 
 ```azurecli
 az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>

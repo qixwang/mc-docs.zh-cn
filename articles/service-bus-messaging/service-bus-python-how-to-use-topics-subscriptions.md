@@ -1,6 +1,6 @@
 ---
 title: 快速入门：通过 Python 使用 Azure 服务总线主题和订阅
-description: 了解如何使用 Python 中的 Azure 服务总线主题和订阅
+description: 本文介绍如何创建 Azure 服务总线主题、订阅、向主题发送消息以及从订阅接收消息。
 services: service-bus-messaging
 documentationcenter: python
 author: lingliw
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/19/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 32ebd6ae0aeb3d815ce61a6470d295058f3a495e
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 9446438db649423edbc9a3badda226720e5770bb
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527981"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068262"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
 
@@ -34,7 +34,7 @@ ms.locfileid: "74527981"
 - 从订阅接收消息
 - 删除主题和订阅
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 - 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的命名空间名称、共享访问密钥名称和主密钥值，以便稍后在本快速入门中使用。  
 - 装有 [Azure Python SDK][Azure Python package] 包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。

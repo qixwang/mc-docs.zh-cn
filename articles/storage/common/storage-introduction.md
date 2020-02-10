@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 06/20/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 5f5c6065b03c75c327a1b830b489b7a75716b2e3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 90242123a43fe5cd123aa1c3688650aa24b9fd6d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624149"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028630"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -22,7 +22,7 @@ Azure 存储是 Microsoft 提供的适用于现代数据存储场景的云存储
 
 - **持久且具有高可用性。** 冗余可确保数据在发生短暂的硬件故障时是安全的。 还可以选择在各个数据中心或地理区域之间复制数据，从而在发生本地灾难或自然灾害时提供额外的保护。 以此方式复制的数据在发生意外中断时将保持高可用性。
 - **安全。** 该服务将对写入到 Azure 存储的所有数据进行加密。 Azure 存储可以精细地控制谁可以访问你的数据。
-- **可缩放。** Azure 存储设计为可大规模缩放以满足当今的应用程序在数据存储和性能方面的需求。 
+- **可缩放。** Azure 存储设计为可大规模缩放以满足当今的应用程序在数据存储和性能方面的需求。
 - **托管的。** Azure 为你处理硬件维护、更新和关键问题。
 - **易访问。** 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问 Azure 存储中的数据。 Microsoft 以各种语言（包括 NET、Java、Node.js、Python、PHP、Ruby、Go 和其他语言）提供了适用于 Azure 存储的客户端库以及成熟的 REST API。 Azure 存储支持通过 Azure PowerShell 或 Azure CLI 运行脚本。 而且，Azure 门户和 Azure 存储资源管理器提供了用于处理数据的简单可视化解决方案。  
 
@@ -32,14 +32,14 @@ Azure 存储包括以下数据服务：
 
 - [Azure Blob](../blobs/storage-blobs-introduction.md)：适用于文本和二进制数据的可大规模缩放的对象存储。
 - [Azure 文件](../files/storage-files-introduction.md)：适用于云或本地部署的托管文件共享。
-- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息存储。 
+- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息存储。
 - [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无架构存储。
 
-对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-account-create.md)。
 
 ## <a name="blob-storage"></a>Blob 存储
 
-Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据，例如文本或二进制数据。 
+Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据，例如文本或二进制数据。
 
 Blob 存储最适合用于：
 
@@ -108,7 +108,7 @@ Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中�
 
 ## <a name="encryption"></a>Encryption
 
-有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
+有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](../blobs/security-recommendations.md)。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
@@ -171,4 +171,4 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要启动并运行 Azure 存储，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+若要启动并运行 Azure 存储，请参阅[创建存储帐户](storage-account-create.md)。

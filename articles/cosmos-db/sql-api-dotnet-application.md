@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure Cosmos DB 的 ASP.NET Core MVC 教程：Web 应用程序开发
+title: 使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用教程
 description: ASP.NET Core MVC 教程介绍如何创建使用 Azure Cosmos DB 的 MVC Web 应用程序。 我们将存储 JSON 并从 Azure 应用服务上托管的待办事项应用中访问数据 - ASP NET Core MVC 教程分步说明。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0cd5e9d1209ed403410b175a5587a614ac84e118
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9e94bcfe1103577344a4f9a32eebef6563a29ce2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336005"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028742"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序
 
@@ -44,7 +44,7 @@ ms.locfileid: "75336005"
 > 本教程假定你先前有使用 ASP.NET Core MVC 和 Azure 应用服务的经验。 如果你不熟悉 ASP.NET Core 或[必备工具](#prerequisites)，我们建议从 [GitHub][GitHub] 下载完整的示例项目，然后添加所需的 NuGet 包并运行它。 生成项目之后，可以回顾本文以深入了解项目上下文中的代码。
 
 <a name="prerequisites"></a>
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 
@@ -147,7 +147,7 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
 
 接下来，让我们创建以下三个视图。
 
-* 添加“列出项”视图
+* 添加“列表项”视图
 * 添加“新建项”视图
 * 添加“编辑项”视图
 
@@ -448,7 +448,6 @@ Azure Cosmos DB 使用 JSON 来移动和存储数据。 可以使用 `JsonProper
 1. 在同一文件中添加以下 **InitializeCosmosClientInstanceAsync** 方法，用于读取配置并初始化客户端。
 
     ```csharp
-
     /// <summary>
     /// Creates a Cosmos DB database and a container with the specified partition key. 
     /// </summary>

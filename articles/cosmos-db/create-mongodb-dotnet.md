@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/21/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 0076b97ff9372f7764a509c0427054a5f99e044e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 02/10/2020
+ms.openlocfilehash: a72ebafb359e156ffe69c21737d16e3d56c32e16
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913322"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980554"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的 API for MongoDB 构建 .NET Web 应用 
 
@@ -62,7 +62,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
@@ -151,7 +151,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 3. 从结果中安装“MongoDB.Driver”  库。 这会安装 MongoDB.Driver 包以及所有依赖项。
 
-4. 单击 Ctrl+F5 运行应用程序。 应用会显示在浏览器中。 
+4. 单击 Ctrl+F5 运行应用程序。 你的应用会显示在浏览器中。 
 
 5. 在浏览器中单击“创建”  ，并在“任务列表”应用中创建一些新任务。
 
@@ -170,4 +170,4 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

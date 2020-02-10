@@ -15,22 +15,22 @@ ms.topic: conceptual
 origin.date: 03/09/2017
 ms.date: 09/10/2018
 ms.author: v-junlch
-ms.openlocfilehash: 16d8b38ea40b2fd6e15ad2e9aef8bddaf1c9ef53
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: e21ca46f993c633ec15bb123c239e322edcc4b9f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169534"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068221"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
 
 Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中提供文件共享的服务。 支持 SMB 2.1 和 SMB 3.0。 通过 Azure 文件存储，可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。 可以使用文件存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器处理文件共享和文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，需要满足以下先决条件：
 
-- [下载并安装存储资源管理器](http://www.storageexplorer.com/)
+- [下载并安装存储资源管理器](https://www.storageexplorer.com/)
 
 - [连接到 Azure 存储帐户或服务](/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -200,11 +200,11 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件上传到文件共享**
 
-        a.  在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。  
+        a.  在主窗格的工具栏上选择“上传”，并从下拉菜单中选择“上传文件”。  
 
         ![上传文件](./media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 (…) 按钮，以选择要上传的文件。   
+        b. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传的文件。  
 
         ![添加文件](./media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -216,7 +216,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
         ![“上传文件夹”菜单](./media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 (…) 按钮，以选择要上传其内容的文件夹。   
+        b. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传其内容的文件夹。  
 
         c. （可选）指定要将选定文件夹的内容上传到其中的目标文件夹。 如果目标文件夹不存在，系统会创建一个。
 

@@ -5,8 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 05/09/2018
 ms.date: 10/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 3333c439567497dc16097aeb1ea1eb0c75c55367
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: b1d0d92593d4bae5101f2efefe0de14b9df44fb8
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982172"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028978"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -134,7 +132,7 @@ ms.locfileid: "74982172"
 
 | 关系类型 | 示例                                                                                                |
 | ---               | ---                                                                                                    |
-| 包含       | 虚拟网络包含子网。 子网包含网络接口。                            |
+| Containment       | 虚拟网络包含子网。 子网包含网络接口。                            |
 | 关联        | 网络接口与 VM 关联。 公共 IP 地址与网络接口关联。 |
 
 ## <a name="properties"></a>属性

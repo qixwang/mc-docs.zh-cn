@@ -6,13 +6,14 @@ origin.date: 12/18/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 54b7d1d09b58c5978198c7561d14da7a0cc86d1b
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 3cc2143ba0c09f243933b5d1823f9796e78979f1
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964991"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067883"
 ---
+<!--Verified successfully-->
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教程：创建 Azure 容器注册表并推送容器映像
 
 这是三部分教程的第二部分。 本教程的[第一部分](container-instances-tutorial-prepare-app.md)为 Node.js Web 应用程序创建了 Docker 容器映像。 在本教程中，我们将此映像推送到 Azure 容器注册表。 如果尚未创建容器映像，请返回[教程 1 - 创建容器映像](container-instances-tutorial-prepare-app.md)。

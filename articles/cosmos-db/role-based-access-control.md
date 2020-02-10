@@ -1,18 +1,18 @@
 ---
-title: 将 Azure Cosmos DB 中基于角色的访问控制与 Azure Active Directory 集成
+title: Azure Cosmos DB 中基于角色的访问控制
 description: 了解 Azure Cosmos DB 如何使用 Active Directory 集成 (RBAC) 来提供数据库保护。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/31/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca4ec9ce30e821809918b2048315422feae074d3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 04d6648308943c1bb917df672f81393c011f4b6c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335842"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028750"
 ---
 <!--Verify Successfully-->
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中基于角色的访问控制

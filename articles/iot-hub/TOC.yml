@@ -10,6 +10,8 @@
   items:
     - name: 发送遥测
       items:
+        - name: 入门
+          href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
         - name: Node.js
@@ -38,16 +40,12 @@
           href: quickstart-control-device-android.md
     - name: 使用设备流进行通信（预览版）
       items:
-        - name: .NET
-          href: quickstart-device-streams-echo-csharp.md
         - name: Node.js
           href: quickstart-device-streams-echo-nodejs.md
         - name: C
           href: quickstart-device-streams-echo-c.md
     - name: 使用设备流发送 SSH/RDP 流量（预览版）
       items:
-        - name: .NET
-          href: quickstart-device-streams-proxy-csharp.md
         - name: Node.js
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
@@ -88,6 +86,8 @@
       href: iot-hub-scaling.md
     - name: 高可用性和灾难恢复
       href: iot-hub-ha-dr.md
+    - name: 如何将 IoT 中心克隆到另一个区域
+      href: iot-hub-how-to-clone.md
     - name: 了解 IoT 中心 IP 地址
       href: iot-hub-understand-ip-address.md
     - name: 支持其他协议

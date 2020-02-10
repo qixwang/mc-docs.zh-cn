@@ -2,14 +2,14 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 6894d3727257f0764e189ca030c496e70b2c3b07
-ms.sourcegitcommit: 99ef971eb118e3c86a6c5299c7b4020e215409b3
+ms.openlocfilehash: 519a9141c008eaddcfc301f19b2430626dddeda6
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65830246"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966502"
 ---
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -19,23 +19,23 @@ ms.locfileid: "65830246"
 
 如果还没有容器注册表，请执行以下步骤，以便在 Azure 中创建一个新的：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “容器注册表”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”   >   “容器” >   “容器注册表”。
 
 2. 提供以下值，以便创建容器注册表：
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 注册表名称 | 提供唯一名称。 |
    | 订阅 | 从下拉列表中选择“订阅”。 |
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 位置 | 选择靠近你的位置。 |
-   | 管理员用户 | 设置为“启用”。 |
-   | SKU | 选择“基本”。 |
+   | 管理员用户 | 设置为“启用”。  |
+   | SKU | 选择“基本”。  |
 
-5. 选择“创建”。
+3. 选择“创建”  。
 
-6. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。
+4. 创建容器注册表后，浏览到它，然后从左窗格中，选择“设置”下菜单中的“访问密钥”   。
 
-7. 复制“登录服务器”、“用户名”和“密码”的值，然后将其存储在某个方便的位置。 本教程自始至终会用到这些值来访问容器注册表。
+5. 复制“登录服务器”、“用户名”和“密码”的值，然后将其存储在某个方便的位置。    本教程自始至终会用到这些值来访问容器注册表。
 
    ![为容器注册表复制登录服务器、用户名和密码](./media/iot-edge-create-container-registry/registry-access-key.png)

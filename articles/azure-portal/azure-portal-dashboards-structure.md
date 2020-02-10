@@ -13,20 +13,20 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 origin.date: 12/20/2019
 ms.author: v-tawe
-ms.date: 01/13/2020
-ms.openlocfilehash: 7fac53cd9f478aed39b3c743523211922e4e2c83
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.date: 02/17/2020
+ms.openlocfilehash: 2582199c4c811a996b2837e37d0c675e21a85cef
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600569"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028204"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
 
 ![示例仪表板](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-由于共享的 [Azure 仪表板是资源](/azure-resource-manager/resource-group-overview)，所以此仪表板可以表示为 JSON。  以下 JSON 表示上面构思的仪表板。
+由于共享的 [Azure 仪表板是资源](https://docs.azure.cn/azure-resource-manager/resource-group-overview)，所以此仪表板可以表示为 JSON。  以下 JSON 表示上面构思的仪表板。
 
 ```json
 

@@ -14,12 +14,12 @@ origin.date: 11/14/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4386ad0dd5bc4b5bab7132b3e18f999868dfc37
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 1d5c1147df880c65260d68009b6ae5b7724a60b2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329644"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028918"
 ---
 # <a name="persist-job-and-task-output"></a>持久保存作业和任务输出
 
@@ -51,17 +51,17 @@ Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库
 
-Batch 定义了一组可选的约定，用于命名 Azure 存储中的任务输出文件。 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)介绍了这些约定。 如果给定的输出文件取决于作业和任务的名称，则文件约定标准决定了 Azure 存储中目标容器和 Blob 路径的名称。
+Batch 定义了一组可选的约定，用于命名 Azure 存储中的任务输出文件。 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)介绍了这些约定。 如果给定的输出文件取决于作业和任务的名称，则文件约定标准决定了 Azure 存储中目标容器和 Blob 路径的名称。
 
 你可以自行决定是否使用文件约定标准来命名输出数据文件。 你还可以任意命名目标容器和 Blob。 如果使用文件约定标准来命名输出文件，则可在 [Azure 门户][portal]中查看输出文件。
 
-通过 C# 和 .NET 生成 Batch 解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)将任务数据持久保存到 Azure 存储帐户。 文件约定库负责将输出文件移至 Azure 存储，并以已知方式对目标容器和 Blob 命名。
+通过 C# 和 .NET 生成 Batch 解决方案的开发人员可以使用[适用于 .NET 的文件约定库][nuget_package]，按 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)将任务数据持久保存到 Azure 存储帐户。 文件约定库负责将输出文件移至 Azure 存储，并以已知方式对目标容器和 Blob 命名。
 
 有关使用适用于 .NET 的文件约定库保存任务输出的详细信息，请参阅[使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>实现 Batch 文件约定标准
 
-如果使用 .NET 之外的语言，则可在自己的应用程序中实现 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)。
+如果使用 .NET 之外的语言，则可在自己的应用程序中实现 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)。
 
 如果需要经验证的命名方案，或者需要在 Azure 门户中查看任务输出，则可能需要自行实现文件约定命名标准。
 

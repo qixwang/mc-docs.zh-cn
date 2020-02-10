@@ -8,15 +8,15 @@ manager: digimobile
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 11/19/2019
+origin.date: 12/20/2019
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 59e6de92177bc644ffee913058149668bf2cdea6
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: e0214b9d0877c73dcb96746ab90567ae5b6665b8
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854519"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068027"
 ---
 # <a name="azure-service-bus---use-firewall-rules"></a>Azure 服务总线 - 使用防火墙规则
 
@@ -46,7 +46,6 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 > 实施 IP 筛选（防火墙规则）时，受信任的 Azure 服务不受支持，但很快就会变得可用。
 >
 > 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）  -
-> - Azure Monitor
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
@@ -152,6 +151,6 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 
 <!-- Links -->
 
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: service-bus-service-endpoints.md
 [express-route]:  /expressroute/expressroute-faqs#supported-services

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b62a962d9677016c7917b9f042e81019cea8e1c
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: cfbd1e53e827ce784f55dc6cde71bfa4fd390065
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116807"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067684"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure 存储
 
@@ -40,7 +40,18 @@ ms.locfileid: "76116807"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-account"></a>创建帐户
+
+
+## <a name="enable"></a>启用
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>授予访问权限
+
+
+### <a name="create-storage-account"></a>创建存储帐户
 
 在本部分中，创建一个存储帐户。
 
@@ -53,7 +64,7 @@ ms.locfileid: "76116807"
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>创建 blob 容器，并将文件上传到存储帐户
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>创建 blob 容器，并将文件上传到存储帐户
 
 文件需要 blob 存储，因此你需要创建用于存储文件的 blob 容器。 然后将文件上传到新存储帐户中的 blob 容器。
 
@@ -69,7 +80,7 @@ ms.locfileid: "76116807"
 7. 在“上传 blob”  窗格中，在“文件”  下，单击文件夹图标并浏览到本地计算机上的文件 **hello_world.txt**，选择该文件，然后单击“上传”。 
     ![上传文本文件](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-access"></a>授予访问权限
+### <a name="grant-access"></a>授予访问权限
 
 本部分介绍如何授予 VM 访问 Azure 存储容器的权限。 可以使用 VM 的系统分配的托管标识检索 Azure 存储 blob 中的数据。
 
@@ -83,7 +94,7 @@ ms.locfileid: "76116807"
 
     ![分配权限](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token"></a>获取访问令牌 
+## <a name="access-data"></a>访问数据 
 
 Azure 存储原本就支持 Azure AD 身份验证，因此可以直接接受使用托管标识获取的访问令牌。 在某种程度上，这是将 Azure 存储与 Azure AD 集成，不同于在连接字符串中提供凭据。
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 响应包含文件内容：
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>禁用
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

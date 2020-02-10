@@ -7,14 +7,14 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
-ms.openlocfilehash: abc9216936b04924b513254333a2c1fa1698c9cf
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: da220f0ee9d6fe0c4458a85c44495f55f193bcc1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624144"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028548"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
@@ -141,7 +141,7 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 #### <a name="transaction-costs"></a>事务成本
 
-事务度量值表中某个 API 的所有条目的“ *TotalBillableRequests*”计得之和表示该特定 API 的事务总数。 例如  ，通过对行健为 'user;GetBlob'  的所有条目的计费请求进行求和可以算出一段给定时间中 'GetBlob'  事务的总数。
+事务度量值表中某个 API 的所有条目的 *'TotalBillableRequests'* 计得之和表示该特定 API 的事务总数。 例如  ，通过对行健为 'user;GetBlob'  的所有条目的计费请求进行求和可以算出一段给定时间中 'GetBlob'  事务的总数。
 
 若要估算 Blob 存储帐户的事务费用，需将事务细分成三组，因为这些事务价格不一样。
 
@@ -159,7 +159,7 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 * 从存储帐户检索的数据量可以通过查看主要为 *'GetBlob'* 和 *'CopyBlob'* 操作的 *'TotalEgress'* 计得之和来估算。
 
-* 写入到存储帐户的数据量可以通过查看主要为 'PutBlob'  、'PutBlock'  、'CopyBlob'  和 'AppendBlock'  操作的 'TotalIngress'  计得之和来估算。
+* 写入到存储帐户的数据量可以通过查看主要为 *'PutBlob'* 、 *'PutBlock'* 、 *'CopyBlob'* 和 *'AppendBlock'* 操作的 *'TotalIngress'* 计算之和来估算。
 
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 
@@ -168,4 +168,4 @@ Blob 访问层允许根据预期使用模式选择最具经济效益的存储。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建存储帐户](storage-quickstart-create-account.md)
+* [创建存储帐户](storage-account-create.md)

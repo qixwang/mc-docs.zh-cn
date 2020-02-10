@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 02/24/2017
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8f3a495553906deff40b51ecad07e3ae026226a4
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 2d937dc0b253965b4a96deab69fe23ac6c39d164
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858018"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028942"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://www.azure.cn/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -74,6 +74,8 @@ ms.locfileid: "75858018"
 安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。
 
 ![安全警报](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
+
+选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按类型和日期进行分组。
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：

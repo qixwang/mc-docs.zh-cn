@@ -7,15 +7,15 @@ ms.service: storage
 ms.devlang: Java
 ms.topic: article
 origin.date: 08/13/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: e93d1796ba56be32305d56aac892b9d827f5c239
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 56a600f611cbd03a70af96ce5a7b13f0fdeef3f4
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328711"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028625"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -36,7 +36,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 * 客户和合作伙伴下载生成项目时的性能。
 * 通过选择匿名访问、基于过期的共享访问、签名访问、专用访问等来控制用户访问策略。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 需要下列项才能将 Blob 服务用于 Hudson CI 解决方案：
 
 * 一个 Hudson 持续集成解决方案。
@@ -54,7 +54,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
      
       虽然典型 Hudson CI 解决方案会设置为作为一个服务运行，但在本教程中，通过命令行运行 Hudson war 就足够了。
 * 一个 Azure 帐户。 可以在 <https://www.azure.cn> 中注册 Azure 帐户。
-* Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-quickstart-create-account.md)中的步骤创建一个。
+* Azure 存储帐户。 如果还没有存储帐户，可使用[创建存储帐户](../common/storage-account-create.md)中的步骤创建一个。
 * 建议熟悉 Hudson CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Hudson CI 生成项目的存储库时所需的步骤。
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>如何将 Blob 服务用于 Hudson CI
@@ -146,7 +146,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 以下信息概述了 Blob 服务组件。
 
 * **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 存储帐户是访问 blob 的最高级别的命名空间。 一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
-* **容器**：一个容器包含一组 Blob 集。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无数个 Blob。
+* **容器**：容器对 Blob 集进行分组。 所有 blob 必须位于相应的容器中。 一个帐户可以包含无限个容器。 一个容器可以存储无数个 Blob。
 * **Blob**：任何类型和大小的文件。 Azure 存储中可存储两类 Blob：块 Blob 和页 Blob。 大部分文件都是块 blob。 单个块 Blob 最大可以为 200 GB。 本教程使用的是块 Blob。 另一种 blob 类型为页 blob，其大小可达 1 TB，对文件中的一系列字节进行频繁修改时，这种 blob 更加高效。 有关 Blob 的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx)（了解块 Blob、追加 Blob 和页 Blob）。
 * **URL 格式**：使用以下 URL 格式可对 Blob 寻址：
   

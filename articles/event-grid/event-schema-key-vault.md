@@ -8,12 +8,12 @@ ms.topic: reference
 origin.date: 10/25/2019
 ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: bbe91ee0be5bd28d57d8fe03ec1082f2a68e2409
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 5c62b29b3359c0df0ebd042d0c6b06fc120c2a74
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859768"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068322"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault 的 Azure 事件网格事件架构（预览版）
 
@@ -81,10 +81,6 @@ Azure Key Vault 帐户生成以下事件类型：
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关如何创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 若要详细了解 Key Vault 与事件网格的集成，请参阅[使用 Azure 事件网格（预览版）监视 Key Vault](../key-vault/event-grid-overview.md)。
-* 有关 Key Vault 与事件网格集成的教程，请参阅[通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/event-grid-tutorial.md)。
 * 若要获取有关 Key Vault 和 Azure 自动化的其他指南，请参阅：
     - [什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
-    - [通过 Azure 事件网格监视 Key Vault（预览版）](../key-vault/event-grid-overview.md)
-    - [通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）](../key-vault/event-grid-tutorial.md)
     - [Azure 自动化概述](/automation/)

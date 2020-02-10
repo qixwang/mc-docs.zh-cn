@@ -6,21 +6,21 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 10/10/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: queues
-ms.openlocfilehash: 92cf8709fd761bd5015e9817e7522255196fe501
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 453eaad1cf9639ee255edee338f55cefff83d48c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914823"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028975"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>队列存储的性能与可伸缩性查检表
 
 在开发使用队列存储的高性能应用程序方面，Azure 制定了许多经过证实的做法。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
 
-Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅 [Azure 存储的存储帐户可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fstorage%2fqueues%2ftoc.json)。
+Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2fqueues%2ftoc.json)和[队列存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="checklist"></a>清单
 
@@ -52,7 +52,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 如果应用程序接近或超过任何可伸缩性目标，则可能会出现事务处理延迟或限制越来越严重的现象。 当 Azure 存储对应用程序进行限制时，该服务将开始返回 503（服务器繁忙）或 500（操作超时）错误代码。 保持在可伸缩性目标限制范围内，以避免这些错误，是增强应用程序性能的重要组成部分。
 
-有关队列服务可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](/storage/common/storage-scalability-targets?toc=%2fstorage%2fqueues%2ftoc.json#azure-queue-storage-scale-targets)。
+有关队列服务可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](/storage/queues/scalability-targets#scale-targets-for-queue-storage)。
 
 ### <a name="maximum-number-of-storage-accounts"></a>最大存储帐户数
 
@@ -85,7 +85,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，使用任何网络都是这样。  WireShark 或 NetMon 可用于诊断此问题。  
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 在任何分布式环境中，将客户端放置在服务器附近可提供最佳性能。 要以最低的延迟访问 Azure 存储，则最好是将客户端放置在同一 Azure 区域内。 例如，如果 Azure Web 应用使用 Azure 存储，请将二者放在同一个区域（例如中国东部或中国北部）。 将资源放到一起可降低延迟和成本，因为在同一个区域使用带宽是免费的。  
 
@@ -178,7 +178,7 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 ## <a name="queue-polling-interval"></a>队列轮询间隔
 
-大多数应用程序会轮询获取队列中的消息，队列可能是适合于该应用程序的事务的最大源之一。 理智选择轮询间隔：轮询过于频繁可能导致应用程序接近队列的可伸缩性目标。 不过，200,000 次事务仅收费 0.01 美元（在撰写本文时），一个处理器每秒轮询一次且持续一个月的成本不到 15 美分，因此成本通常不是影响选择轮询间隔的一项因素。  
+大多数应用程序会轮询获取队列中的消息，队列可能是适合于该应用程序的事务的最大源之一。 理智选择轮询间隔：轮询过于频繁可能导致应用程序接近队列的可伸缩性目标。 但是，200,000 次事务仅收费 0.01 美元（在撰写本文时），一个处理器每秒轮询一次且持续一个月的成本不到 15 美分，因此成本通常不是影响选择轮询间隔的因素。  
 
 如需最新成本信息，请参阅 [Azure 存储定价](https://azure.cn/pricing/details/storage/)。  
 
@@ -195,5 +195,6 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 ## <a name="next-steps"></a>后续步骤
 
-- [存储帐户的 Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fstorage%2fqueues%2ftoc.json)
+- [队列存储的可伸缩性和性能目标](scalability-targets.md)
+- [标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2fqueues%2ftoc.json)
 - [状态和错误代码](https://docs.microsoft.com/rest/api/storageservices/Status-and-Error-Codes2)

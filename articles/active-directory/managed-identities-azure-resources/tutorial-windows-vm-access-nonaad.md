@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a815b426b3de28d337e8accc7f5aa92079aa33
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 965569d3bbcdf8b81437b12758ea1983d79e7f8c
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116802"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067590"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -38,6 +38,13 @@ ms.locfileid: "76116802"
 ## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+
+## <a name="enable"></a>启用
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
 
 ## <a name="grant-access"></a>授予访问权限  
  
@@ -66,7 +73,7 @@ ms.locfileid: "76116802"
 5. 明确指定激活日期和到期日期，并将“已启用”  设置为“是”  。 
 6. 单击“创建”  以创建密钥。 
  
-## <a name="get-an-access-token"></a>获取访问令牌  
+## <a name="access-data"></a>访问数据  
 
 本部分介绍如何使用 VM 标识获取访问令牌并使用它从 Key Vault 中检索机密。 如果未安装 PowerShell 4.3.1 或更高版本，则需要[下载并安装最新版本](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -108,6 +115,13 @@ ms.locfileid: "76116802"
     ```
     
 在检索 Key Vault 中的密钥后，可以使用该密钥对需要名称和密码的服务进行身份验证。 
+
+
+## <a name="disable"></a>禁用
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

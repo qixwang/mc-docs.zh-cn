@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f7bb0d913e9e8abbeedca96f4c18b97371fb3691
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 660913d36d6493e5f36d0c8d30be1cf84ad5a53e
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624043"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028113"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
 
-对于更常见的用户体验，例如注册、登录和配置文件编辑，可在 Azure Active Directory B2C (Azure AD B2C) 中使用[用户流](active-directory-b2c-reference-policies.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-overview.md)。
+对于更常见的用户体验，例如注册、登录和配置文件编辑，可在 Azure Active Directory B2C (Azure AD B2C) 中使用[用户流](user-flow-overview.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-overview.md)。
 
 在本文中，学习如何：
 
@@ -31,9 +31,9 @@ ms.locfileid: "75624043"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-[创建用户流](tutorial-create-user-flows.md)以便用户注册并登录到你的应用程序。
+[创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
 ## <a name="create-customization-files"></a>创建自定义文件
 
@@ -139,7 +139,7 @@ ms.locfileid: "75624043"
 ## <a name="update-the-user-flow"></a>更新用户流
 
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-2. 选择“用户流(策略)”  ，然后选择”B2C_1_signupsignin1”  用户流。
+2. 依次选择“用户流(策略)”  和“B2C_1_signupsignin1”  用户流。
 3. 选择“页面布局”，然后在“统一注册或登录页面”下，对“使用自定义页面内容”单击“是”     。
 4. 在“自定义页面 URI”中，输入之前记录的“custom-ui.html”文件的 URI   。
 5. 在页面顶部，选择“保存”  。
@@ -166,6 +166,6 @@ ms.locfileid: "75624043"
 > * 测试自定义 UI
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C 中的语言自定义 ](active-directory-b2c-reference-language-customization.md)
+> [Azure Active Directory B2C 中的语言自定义 ](user-flow-language-customization.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: links update -->

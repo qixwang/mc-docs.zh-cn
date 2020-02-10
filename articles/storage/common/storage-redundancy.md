@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 09/17/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c1a1acc3854bb59e76d9215492d2ee8e33403103
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 6707b6aa7a42a4f049df86a1e87232d984a07813
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914372"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028934"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -69,7 +69,7 @@ Azure 存储使用循环冗余检验 (CRC) 定期验证存储的数据的完整�
 
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
 - [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)
-- [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)
+- [标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)
 - [使用 RA-GRS 存储设计高度可用的应用程序](../storage-designing-ha-apps-with-ragrs.md)
 - [Azure 存储冗余选项和读取访问异地冗余存储](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP 论文 - Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

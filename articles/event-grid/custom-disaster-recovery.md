@@ -1,25 +1,28 @@
 ---
-title: 为 Azure 事件网格中的自定义主题构建自己的灾难恢复方案 | Microsoft Docs
+title: Azure 事件网格中自定义主题的灾难恢复
 description: 发生区域性的服务中断时使 Azure 事件网格保持连接。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-origin.date: 01/16/2018
-ms.date: 06/03/2019
+origin.date: 01/21/2020
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7f8ffd438acacd6ff18cb44e1c2bf35175ff8434
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: d223834e8cc2bdbc866421ae2872328ef48c3a61
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195296"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068329"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。
 
 本教程将介绍如何为事件网格中的自定义主题创建主动-被动故障转移体系结构。 实现故障转移的方式为：在两个区域之间镜像主题和订阅，然后管理当某个主题不正常时执行的故障转移。 本教程中的体系结构可故障转移所有新流量。 必须注意，使用此设置时，在有问题的区域再次正常之前，正在进行的事件不可恢复。
+
+> [!NOTE]
+> 事件网格现在支持服务器端的自动异地灾难恢复 (GeoDR)。 如果希望更好地控制故障转移过程，仍然可以实现客户端灾难恢复逻辑。 有关自动 GeoDR 的详细信息，请参阅 [Azure 事件网格中的服务器端异地灾难恢复](geo-disaster-recovery.md)。
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 

@@ -1,5 +1,6 @@
 ---
-title: 诊断虚拟机网络流量筛选器问题 - 快速入门 - Azure PowerShell | Azure
+title: 快速入门：诊断 VM 网络流量筛选器问题 - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
@@ -18,12 +19,12 @@ origin.date: 04/20/2018
 ms.date: 04/20/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: ffbe5e081ede63c84b010a489dfa0261e28ac0d0
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: a89a87e4f7736e4314860e814a1266c414368337
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982170"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028991"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure PowerShell
 

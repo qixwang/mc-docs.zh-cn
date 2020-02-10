@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-origin.date: 11/17/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: fe78ab40353c26495149453f260184e198b4fef1
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 01/29/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 34c8eed24309bcb8f68020f1f3f370798490703a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630950"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037931"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 
@@ -31,7 +31,7 @@ ms.locfileid: "75630950"
 > [!NOTE]
 > 在同一 Azure 位置或区域中创建所有资源。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)。 在本教程中，数据库名为 TestDatabase  。
@@ -331,7 +331,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 2. 将[更新策略](https://docs.microsoft.com/azure/kusto/concepts/updatepolicy)添加到目标表。 此策略将针对 *DiagnosticRawRecords* 中间数据表中任何新引入的数据自动运行查询，并将查询结果引入到 *DiagnosticMetrics* 表中：
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
@@ -345,7 +345,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -364,7 +364,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 2. 将[更新策略](https://docs.microsoft.com/azure/kusto/concepts/updatepolicy)添加到目标表。 此策略将针对 *DiagnosticRawRecords* 中间数据表中任何新引入的数据自动运行查询，并将查询结果引入到 *DiagnosticLogs* 表中：
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
@@ -377,7 +377,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -626,4 +626,4 @@ ActivityLogs
 
 * 通过[为 Azure 数据资源管理器编写查询](write-queries.md)了解如何针对从 Azure 数据资源管理器提取的数据编写更多查询。
 * [使用诊断日志监视 Azure 数据资源管理器引入操作](using-diagnostic-logs.md)
-* [使用指标监视群集运行状况](using-metrics.md)
+* [使用指标来监视群集运行状况](using-metrics.md)

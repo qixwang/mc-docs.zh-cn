@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/18/2019
+origin.date: 01/16/2020
+ms.date: 2/6/2020
 ms.author: aschhab
-ms.openlocfilehash: bb7d9de65ae53ab60f57efe4b7d8f4d4f6d0610c
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: d6e417cf4566ca04c2b6f7865c77ad076fc30d8a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857700"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068006"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何将服务总线主题和订阅与 Node.js 和 azure/service-bus 包配合使用
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]

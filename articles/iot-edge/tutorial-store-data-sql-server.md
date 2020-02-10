@@ -1,21 +1,21 @@
 ---
-title: 教程：使用 SQL 模块存储数据 - Azure IoT Edge | Microsoft Docs
-description: 了解如何使用 SQL Server 模块将数据存储到本地的 IoT Edge 设备
+title: 教程 - 使用 SQL 模块存储数据 - Azure IoT Edge
+description: 本教程介绍如何使用 SQL Server 模块将数据存储到本地的 IoT Edge 设备
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: v-yiso
 origin.date: 03/28/2019
-ms.date: 11/04/2019
+ms.date: 01/27/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4401a7be5d7e559d3a35439a6ccb0c7c4816322a
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 662e408fae5f58d1d8c07c6564e8fb2b96d7ec09
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389539"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966499"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -35,12 +35,13 @@ ms.locfileid: "74389539"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件： 
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个[运行 Azure IoT Edge 的 AMD64 Linux 设备](quickstart-linux.md)。
+  * ARM 设备（如 Raspberry Pi）无法运行 SQL Server。 如果要在 ARM 设备上使用 SQL，可以注册以试用 [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/) 预览版。 
 * 一个容器注册表，例如 [Azure 容器注册表](/container-registry/)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
@@ -62,9 +63,9 @@ ms.locfileid: "74389539"
 
 2. 打开 VS Code 命令面板，方法是选择“视图”   >   “命令面板”。
 
-3. 在命令面板中，键入并运行“Azure IoT Edge:  New IoT Edge solution”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+3. 在命令面板中，键入并运行 **Azure IoT Edge:New IoT Edge solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **SqlSolution**），或者接受默认名称。 |

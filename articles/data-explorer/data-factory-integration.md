@@ -7,14 +7,14 @@ ms.author: v-tawe
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 11/14/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: ad8ca91004f8ab563c44393e522c9f1325d0dc5a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 01/20/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 8ab070e2aeb19aeec4bce61a414f83728f18d1ed
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630832"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037923"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成
 
@@ -46,6 +46,8 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 
 [使用 Azure 数据工厂模板从数据库批量复制到 Azure 数据资源管理器](data-factory-template.md)是一个预定义的 Azure 数据工厂管道。 使用该模板可针对每个数据库或每个表创建多个管道，以更快地复制数据。 
 
+<!-- ### Mapping data flows  -->
+
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>复制数据时在复制活动与 Azure 数据资源管理器命令活动之间进行选择 
 
 本部分帮助你根据数据复制需求选择正确的活动。
@@ -64,7 +66,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 |---|---|---|
 | **流程说明** | ADF 对 Kusto 执行查询，处理结果，然后将结果发送到目标数据存储。 <br>（**ADX > ADF > 接收器数据存储**） | ADF 将 `.export` 控制命令发送到 Azure 数据资源管理器，后者执行该命令，然后将数据直接发送到目标数据存储。 <br>（**ADX > 接收器数据存储**） |
 | **支持的目标数据存储** | 有多种[支持的数据存储](/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2、Azure Blob、SQL 数据库 |
-| **性能** | 集中式 | <ul><li>分布式（默认配置），从多个节点同时导出数据</li><li>速度更快，COGS 成本效益更高。</li></ul> |
+| **“性能”** | 集中式 | <ul><li>分布式（默认配置），从多个节点同时导出数据</li><li>速度更快，COGS 成本效益更高。</li></ul> |
 | **服务器限制** | 可以提高/禁用[查询限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。 默认情况下，ADF 查询包含： <ul><li>500,000 条记录或 64 MB 的大小限制。</li><li>10 分钟时间限制。</li><li>`noTruncation` 设置为 false。</li></ul> | 默认情况下，可提高或禁用查询限制： <ul><li>禁用大小限制。</li><li>将服务器超时提高至 1 小时。</li><li>`MaxMemoryConsumptionPerIterator` 和 `MaxMemoryConsumptionPerQueryPerNode` 提高至最大值（5 GB，TotalPhysicalMemory/2）。</li></ul>
 
 > [!TIP]
@@ -80,7 +82,7 @@ Azure IR (Integration Runtime) 支持使用 Azure 数据资源管理器在 Azure
 |---|---|---|---|
 | **流程说明** | ADF 从源数据存储获取数据，将数据转换为表格格式，并执行所需的架构映射更改。 然后，ADF 将数据上传到 Azure Blob，将数据拆分为区块，然后下载 Blob 以将其引入 ADX 表中。 <br> （**源数据存储 > ADF > Azure Blob > ADX**） | 这些命令可以执行查询或 `.show` 命令，并将查询结果引入表中 (**ADX > ADX**)。 | 此命令通过从一个或多个云存储项目“提取”数据，将数据引入表中。 |
 | **支持的源数据存储** |  [多种选项](https://docs.azure.cn/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2、Azure Blob、SQL（使用 sql_request 插件）、Cosmos（使用 cosmosdb_sql_request 插件），以及提供 HTTP 或 Python API 的任何其他数据存储。 | Filesystem、Azure Blob 存储、ADLS Gen 1、ADLS Gen 2 |
-| **性能** | 引入内容将会排队并受到管理，确保实现小规模的引入，并通过提供负载均衡、重试和错误处理来确保高可用性。 | <ul><li>这些命令并不旨在用于导入大量数据。</li><li>它们可按预期方式运行，且成本低廉。 但是，对于生产方案以及在流量速率和数据量较大时，请使用复制活动。</li></ul> |
+| **“性能”** | 引入内容将会排队并受到管理，确保实现小规模的引入，并通过提供负载均衡、重试和错误处理来确保高可用性。 | <ul><li>这些命令并不旨在用于导入大量数据。</li><li>它们可按预期方式运行，且成本低廉。 但是，对于生产方案以及在流量速率和数据量较大时，请使用复制活动。</li></ul> |
 | **服务器限制** | <ul><li>无大小限制。</li><li>最大超时限制：引入每个 Blob 为 1 小时。 |<ul><li>只有查询部分存在大小限制，可通过指定 `noTruncation=true` 来跳过该限制。</li><li>最大超时限制：1 小时。</li></ul> | <ul><li>无大小限制。</li><li>最大超时限制：1 小时。</li></ul>|
 
 > [!TIP]

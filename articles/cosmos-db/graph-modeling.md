@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Gremlin API 的图形数据建模
-description: 了解如何使用 Cosmos DB Gremlin API 对图形数据库建模。
+description: 了解如何使用 Azure Cosmos DB Gremlin API 为图形数据库建模。 本文介绍何时使用图形数据库和最佳做法为实体和关系建模。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-origin.date: 06/24/2019
-ms.date: 09/09/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f76f98072afab3a018686da9262b9f8bc502383d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f68b7bc7d83b21f39031437edfaa91ec4666f098
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336094"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980529"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
 
@@ -24,7 +24,7 @@ ms.locfileid: "75336094"
 本指南中概述的过程基于以下假设：
 * 识别了问题空间中的实体  。 每个请求以原子方式使用这些实体  。 换句话说，数据库系统不会在多个查询请求中检索单个实体的数据。
 * 了解数据库系统的读取和写入要求  。 这些要求将指导图形数据模型所需的优化。
-* 充分了解 [Apache Tinkerpop 属性图形标准](http://tinkerpop.apache.org/docs/current/reference/#graph-computing)的原则。
+* 充分了解 [Apache Tinkerpop 属性图形标准](https://tinkerpop.apache.org/docs/current/reference/#graph-computing)的原则。
 
 ## <a name="when-do-i-need-a-graph-database"></a>何时需要图形数据库？
 
@@ -42,7 +42,7 @@ ms.locfileid: "75336094"
 
 ## <a name="how-to-use-graph-objects"></a>如何使用图形对象
 
-[Apache Tinkerpop 属性图形标准](http://tinkerpop.apache.org/docs/current/reference/#graph-computing)定义了两种类型的对象：顶点和边缘   。 
+[Apache Tinkerpop 属性图形标准](https://tinkerpop.apache.org/docs/current/reference/#graph-computing)定义了两种类型的对象：顶点和边缘   。 
 
 以下是图形对象中属性的最佳实践：
 
@@ -93,7 +93,7 @@ ms.locfileid: "75336094"
 
 边缘对象具有默认方向，在使用 `out()` 或 `outE()` 函数时后跟遍历。 使用这种自然方向可以实现高效操作，因为所有顶点都与其传出边缘一起存储。 
 
-但是，使用 `in()` 函数在边缘的相反方向遍历将始终导致跨分区查询。 有关详细信息，请参阅[图形分区](graph-partitioning.md)。 如果需要使用 `in()` 函数不断遍历，建议在两个方向上添加边缘。
+但是，使用 `in()` 函数在边缘的相反方向遍历将始终导致跨分区查询。 详细了解[图形分区](graph-partitioning.md)。 如果需要使用 `in()` 函数不断遍历，建议在两个方向上添加边缘。
 
 你可以通过在 `.addE()` Gremlin 步骤中使用 `.to()` 或 `.from()` 谓词来确定边缘方向。 或通过使用[适用于 Gremlin API 的批量执行程序库](bulk-executor-graph-dotnet.md)来确定。
 
@@ -115,4 +115,4 @@ ms.locfileid: "75336094"
 * 了解[图形数据库分区](graph-partitioning.md)以处理大型图形。
 * 使用 [executionProfile 步骤](graph-execution-profile.md)评估 Gremlin 查询。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

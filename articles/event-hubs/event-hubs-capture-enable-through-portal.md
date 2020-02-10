@@ -14,14 +14,14 @@ ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 12/20/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: a75961901c61da54382eec167ddf7d23237af4e9
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 3154f991a1410a535bc1042036db7f66e9792d91
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123249"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067742"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 

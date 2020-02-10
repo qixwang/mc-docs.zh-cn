@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 09/17/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: fc47c80e3bc30f09196221fdda09f8e4b92ab4c2
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.openlocfilehash: 8dd916976b738b7e7006951ce58fb318f4881e2c
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083252"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028090"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -72,7 +71,7 @@ Protocol  元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | 是 | 要使用的声明类型名称。 |
 
 在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname  声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
@@ -369,7 +368,7 @@ Paragraph  用户输入类型用于提供仅在段落标记中显示文本的字
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>

@@ -6,15 +6,15 @@ keywords: ''
 author: banisadr
 ms.author: v-yiso
 origin.date: 11/15/2019
-ms.date: 01/20/2020
+ms.date: 02/17/2020
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 23759d2ab20f964a7b09e667bcea26e50b8cca7f
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 876f2a702f679368152d28aba61abe3d25c69bbc
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859771"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068331"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入门：使用事件网格将自定义事件路由到 Azure 函数
 
@@ -183,13 +183,12 @@ Azure 事件网格是针对云的事件处理服务。 Azure 函数是受支持�
     ![资源组](./media/custom-event-to-function/delete-resource-groups.png)
 
 
-```
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-Now that you know how to create topics and event subscriptions, learn more about what Event Grid can help you do:
+了解如何创建主题和事件订阅以后，即可进一步学习事件网格的功能：
 
-- [About Event Grid](overview.md)
-- [Route Blob storage events to a custom web endpoint](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
-- [Stream big data into a data warehouse](event-grid-event-hubs-integration.md)
+- [关于事件网格](overview.md)
+- [将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fevent-grid%2ftoc.json)
+- [通过 Azure 事件网格和逻辑应用监视虚拟机的更改](monitor-virtual-machine-changes-event-grid-logic-app.md)
+- [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)

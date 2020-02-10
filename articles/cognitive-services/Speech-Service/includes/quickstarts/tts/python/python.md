@@ -3,20 +3,20 @@ title: 快速入门：合成语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 Python 中使用语音 SDK 合成语音
 services: cognitive-services
-author: yulin-li
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: f13ecfb8a37fb31345aead857ee14abdf23fb07e
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 431987a1209d186f89b78b2cf8b1b53e94c3cbbb
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123557"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029096"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -26,21 +26,20 @@ ms.locfileid: "76123557"
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md)
 > * [创建空示例项目](../../../../quickstarts/create-project.md)
-```
 
-## Support and updates
+## <a name="support-and-updates"></a>支持和更新
 
-Updates to the Speech SDK Python package are distributed via PyPI and announced in the [Release notes](~/articles/cognitive-services/Speech-Service/releasenotes.md).
-If a new version is available, you can update to it with the command `pip install --upgrade azure-cognitiveservices-speech`.
-Check which version is currently installed by inspecting the `azure.cognitiveservices.speech.__version__` variable.
+语音 SDK Python 包的更新将通过 PyPI 分发，[发行说明](~/articles/cognitive-services/Speech-Service/releasenotes.md)中会发布相关通告。
+如果有新版本可用，可以使用 `pip install --upgrade azure-cognitiveservices-speech` 命令进行更新。
+通过查看 `azure.cognitiveservices.speech.__version__` 变量来检查当前安装的版本。
 
-If you have a problem, or you're missing a feature, see [Support and help options](~/articles/cognitive-services/Speech-Service/support.md).
+如果遇到问题或者缺少某项功能，请查看[支持和帮助选项](~/articles/cognitive-services/Speech-Service/support.md)。
 
-## Create a Python application that uses the Speech SDK
+## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>使用语音 SDK 创建 Python 应用程序
 
-### Run the sample
+### <a name="run-the-sample"></a>运行示例
 
-You can copy the [sample code](#sample-code) from this quickstart to a source file `quickstart.py` and run it in your IDE or in the console:
+可将本快速入门中的[示例代码](#sample-code)复制到源文件 `quickstart.py`，然后在 IDE 或控制台中运行该代码
 
 ```sh
 python quickstart.py

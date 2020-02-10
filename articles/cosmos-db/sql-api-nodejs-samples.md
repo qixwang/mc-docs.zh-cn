@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 origin.date: 08/23/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7d82a09b5f5bc3eaa6af8e4f9aac4e37f0c68afd
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 077524f0cc72f4b0a7a8b9bfe06ce0453cba8efc
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336167"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028728"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中数据的 Node.js 示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "75336167"
 > 
 > 
 
-对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的示例解决方案包含在 [azure-cosmos-js](https://github.com/Azure/azure-cosmos-js/tree/master/samples) GitHub 存储库中。 本文将提供：
+对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的示例解决方案包含在 [azure-cosmos-js](https://github.com/Azure/azure-cosmos-js/tree/master/samples) GitHub 存储库中。 本文提供：
 
 * 指向每个 Node.js 示例项目文件中任务的链接。
 * 指向相关 API 参考内容的链接。
@@ -72,7 +72,7 @@ ms.locfileid: "75336167"
 
 ## <a name="item-examples"></a>项示例
 
-[ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) 文件演示如何对项执行 CRUD 操作。 若要在运行以下示例之前了解 Azure Cosmos 文档，请参阅概念文章：[使用数据库、容器和项](databases-containers-items.md)。 
+[ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) 文件演示如何对项执行 CRUD 操作。 若要在运行以下示例之前了解 Azure Cosmos 文档，请参阅概念文章：[使用数据库、容器和项](databases-containers-items.md)。 
 
 | 任务 | API 参考 |
 | --- | --- |
@@ -99,7 +99,7 @@ ms.locfileid: "75336167"
 
 ## <a name="server-side-programming-examples"></a>服务器端编程示例
 
-[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) 项目的 [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) 文件演示如何执行以下任务。 若要在运行以下示例之前了解如何在 Azure Cosmos DB 中进行服务器端编程，请参阅概念文章：[存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)。 
+[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) 项目的 [index.ts](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) 文件演示如何执行以下任务。 若要在运行以下示例之前了解如何在 Azure Cosmos DB 中进行服务器端编程，请参阅概念文章：[存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)。 
 
 | 任务 | API 参考 |
 | --- | --- |

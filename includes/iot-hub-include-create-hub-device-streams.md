@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: e2e2ccb81392d3fffc3bbb0cd613ae2798baac7a
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 6b5a3b25da063287e576d78ee1a78201bd5a3e42
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155883"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068067"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.cn)创建 IoT 中心。
 
@@ -27,7 +27,7 @@ ms.locfileid: "71155883"
 
    - **订阅**：选择要用于中心的订阅。
 
-   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/manage-resource-groups-portal.md)。
+   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
    - **区域**：选择你希望中心所在的区域。 选择支持 IoT 中心设备流预览版的区域：“美国中部”或“美国中部 EUAP”。  
 

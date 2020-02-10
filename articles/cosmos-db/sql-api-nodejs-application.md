@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 JavaScript SDK 生成 Node.js Web 应用，以管理 Azure Cosmos DB SQL API 数据
+title: 教程：使用 Azure Cosmos DB JavaScript SDK 构建 Node.js Web 应用以管理 SQL API 数据
 description: 此 Node.js 教程探讨了如何使用 Azure Cosmos DB 通过在 Azure 应用服务的 Web 应用功能中托管的 Node.js Express Web 应用程序存储和访问数据。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 59eedd224db4739a2b61d1c813f1cfe54608882e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9d5467bb4dbc7a480408973fc7033bd40adced14
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336172"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028738"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -40,7 +40,7 @@ ms.locfileid: "75336172"
 > * 运行应用程序并将其部署到 Azure
 
 <a name="_Toc395783176"></a>
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 
@@ -121,7 +121,7 @@ ms.locfileid: "75336172"
     const debug = require('debug')('todo:taskDao')
 
     // For simplicity we'll set a constant partition key
-    const partitionKey = '0'
+    const partitionKey = undefined
     class TaskDao {
       /**
        * Manages reading, adding, and updating Tasks in Cosmos DB

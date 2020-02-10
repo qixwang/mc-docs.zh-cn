@@ -6,14 +6,14 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 320ad0b93307167294f1b0a882df08114c460ab1
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: b4d83b0c627c885369c29c3f326976bc1965c6d0
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970270"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980540"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据加密 
 
@@ -38,33 +38,33 @@ ms.locfileid: "72970270"
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>问：如果启用存储服务加密，需另付多少 Azure 存储费用？
-答：没有任何额外费用。
+A:没有任何额外费用。
 
 ### <a name="q-who-manages-the-encryption-keys"></a>问：加密密钥由谁管理？
-答：密钥由世纪互联管理。
+A:密钥由世纪互联管理。
 
 <!-- Notice:  Should Be 21Vianet -->
 
 ### <a name="q-how-often-are-encryption-keys-rotated"></a>问：加密密钥多久轮换一次？
-答：世纪互联针对加密密钥轮换提供一组内部指导原则，Cosmos DB 必须遵守这些指导原则。 未发布具体的指导原则。 Azure 发布了[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)，可以将其视为内部指导原则的一部分，其中提供的最佳做法对开发人员很有用。
+A:世纪互联针对加密密钥轮换提供一组内部指导原则，Cosmos DB 必须遵守这些指导原则。 未发布具体的指导原则。 Azure 发布了[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)，可以将其视为内部指导原则的一部分，其中提供的最佳做法对开发人员很有用。
 
 <!-- Notice:  Should Be 21Vianet -->
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>问：我可以使用自己的加密密钥吗？
-答：Cosmos DB 是一项 PaaS 服务，我们一直在努力使该服务易于使用。 我们注意到此问题经常被作为一个与满足符合性要求（例如 PCI-DSS）相关的代理问题问起。 在构建此功能时，我们一直与符合性审核机构合作，确保使用 Cosmos DB 的客户满足相关要求，不需要客户自己管理密钥。
+A:Cosmos DB 是一项 PaaS 服务，我们一直在努力使该服务易于使用。 我们注意到此问题经常被作为一个与满足符合性要求（例如 PCI-DSS）相关的代理问题问起。 在构建此功能时，我们一直与符合性审核机构合作，确保使用 Cosmos DB 的客户满足相关要求，不需要客户自己管理密钥。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>问：哪些区域已开启了此加密？
-答：所有 Azure Cosmos DB 区域都已针对所有用户数据开启了此加密。
+A:所有 Azure Cosmos DB 区域都已针对所有用户数据开启了此加密。
 
 ### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>问：加密是否会影响性能延迟和吞吐量 SLA？
-答：现已为所有现有帐户和新帐户启用了静态加密，对性能 SLA 没有影响或更改。 可以在 [Cosmos DB SLA](https://www.azure.cn/support/sla/cosmos-db) 页上阅读详细信息，查看最新保证。
+A:现已为所有现有帐户和新帐户启用了静态加密，对性能 SLA 没有影响或更改。 可以在 [Cosmos DB SLA](https://www.azure.cn/support/sla/cosmos-db) 页上阅读详细信息，查看最新保证。
 
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>问：本地模拟器是否支持静态加密？
-答：模拟器是独立的开发/测试工具，不使用托管 Cosmos DB 服务使用的密钥管理服务。 建议在要存储敏感的模拟器测试数据的驱动器上启用 BitLocker。 [模拟器支持更改默认数据目录](local-emulator.md)以及使用已知位置。
+A:模拟器是独立的开发/测试工具，不使用托管 Cosmos DB 服务使用的密钥管理服务。 建议在要存储敏感的模拟器测试数据的驱动器上启用 BitLocker。 [模拟器支持更改默认数据目录](local-emulator.md)以及使用已知位置。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Cosmos DB 安全性和最新改进的概述，请参阅 [Azure Cosmos 数据库安全性](database-security.md)。
 有关我们的认证的详细信息，请参阅 [Azure 信任中心](https://www.trustcenter.cn/cloudservices/azure.html)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

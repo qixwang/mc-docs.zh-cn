@@ -5,15 +5,15 @@ author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 10/28/2019
+origin.date: 12/04/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1ba1ac60d35a5002ad090ced8c1d4a79f408f5f3
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 2224ce1d777bf7921d24fc4e27195ab3edf9d9e2
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970269"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980538"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>事务和乐观并发控制
 
@@ -21,7 +21,7 @@ ms.locfileid: "72970269"
 
 Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACID（原子性, 一致性, 隔离性, 持久性）的事务。 容器[逻辑分区](partition-data.md)范围内的所有数据库操作都以事务方式在分区副本托管的数据库引擎内执行。 这些操作同时包括写入（更新逻辑分区内的一个或多个项）和读取操作。 下表说明了不同的操作和事务类型：
 
-| **操作**  | **操作类型** | **单项或多项事务** |
+| **操作** | **操作类型** | **单项或多项事务** |
 |---------|---------|---------|
 | 插入（不带前/后触发器） | 写入 | 单项事务 |
 | 插入（带前/后触发器） | 写入和读取 | 多项事务 |
@@ -48,15 +48,15 @@ Azure Cosmos DB 中的数据库引擎支持使用快照隔离且完全符合 ACI
 
 直接在数据库引擎中执行 JavaScript 的能力可实现针对容器项的数据库操作的性能和事务性执行。 此外，由于 Azure Cosmos 数据库引擎本机支持 JSON 和 JavaScript，因此应用程序和数据库类型系统之间不存在任何阻抗失配。
 
-## <a name="optimistic-concurrency-control"></a>乐观并发控制 
+## <a name="optimistic-concurrency-control"></a>乐观并发控制
 
 乐观并发控制可以防止丢失更新和删除。 并发冲突的操作受数据库引擎的常规悲观锁定的限制，该引擎由拥有该项的逻辑分区托管。 如果两个并发操作尝试更新逻辑分区内的一个最新版的项，则其中一个会成功，而另一个将失败。 但是，如果尝试同时更新相同项的一个或两个操作以前读取过该项的较旧值，则该数据库无法确定这一个或两个冲突操作以前读取的值是否确实是该项的最新值。 幸运的是，在允许这两个操作进入数据库引擎内的事务边界之前，可以使用**乐观并发控制 (OCC)** 检测这种情况。 OCC 可防止数据意外覆盖其他人所做的更改。 它还可以防止其他人意外覆盖你自己的更改。
 
 Azure Cosmos DB 的通信协议层对项的并发更新受 OCC 限制。 Azure Cosmos 数据库可确保要更新（或删除）项的客户端版本与 Azure Cosmos 容器中该项的版本相同。 这可保证你的写入内容不会被他人的写入内容意外覆盖，反之亦然。 在多用户环境中，乐观并发控制可防止意外删除或更新项的错误版本。 在这种情况下，可防止项出现令人痛恨的“丢失更新”或“丢失删除”问题。
 
-存储在 Azure Cosmos 容器中的每个项都具有系统定义的 `_etag` 属性。 每次更新项时，`_etag` 的值都由服务器自动生成和更新。 `_etag` 可与客户端提供的 `if-match` 请求标头配合使用，使服务器能够决定是否可以条件性地更新某项。 如果 `if-match` 标头的值与服务器上的 `_etag` 的值匹配，则会更新该项。 如果 `if-match` 请求标头值不再是最新值，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应消息。 然后客户端可重新提取该项，以在服务器上获取该项的当前版本，或用该项自己的 `_etag` 值覆盖服务器中该项的版本。 此外，`_etag` 可以与 `if-none-match` 标头配合使用，以确定是否需要重新提取资源。 
+存储在 Azure Cosmos 容器中的每个项都具有系统定义的 `_etag` 属性。 每次更新项时，`_etag` 的值都由服务器自动生成和更新。 `_etag` 可与客户端提供的 `if-match` 请求标头配合使用，使服务器能够决定是否可以条件性地更新某项。 如果 `if-match` 标头的值与服务器上的 `_etag` 的值匹配，则会更新该项。 如果 `if-match` 请求标头值不再是最新值，则服务器会拒绝该操作，并提供“HTTP 412 前置条件失败”响应消息。 然后客户端可重新提取该项，以在服务器上获取该项的当前版本，或用该项自己的 `_etag` 值覆盖服务器中该项的版本。 此外，`_etag` 可以与 `if-none-match` 标头配合使用，以确定是否需要重新提取资源。
 
-每次更新项时，项的 `_etag` 值都会发生更改。 对于替换项操作，必须在请求选项中显式表达 `if-match`。 有关示例，请参阅 [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446) 中的示例代码。 将对存储过程接触的所有写入项隐式检查 `_etag` 值。 如果检查到任何冲突，存储过程将回退事务并引发异常。 通过此方法，将以原子方式应用存储过程中的所有写入内容或不应用任何写入内容。 这是应用程序重新应用更新并重试原始客户端请求的信号。
+每次更新项时，项的 `_etag` 值都会发生更改。 对于替换项操作，必须在请求选项中显式表达 `if-match`。 有关示例，请参阅 [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674) 中的示例代码。 将对存储过程接触的所有写入项隐式检查 `_etag` 值。 如果检查到任何冲突，存储过程将回退事务并引发异常。 通过此方法，将以原子方式应用存储过程中的所有写入内容或不应用任何写入内容。 这是应用程序重新应用更新并重试原始客户端请求的信号。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -67,4 +67,4 @@ Azure Cosmos DB 的通信协议层对项的并发更新受 OCC 限制。 Azure C
 - [冲突类型和解决策略](conflict-resolution-policies.md)
 - [存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

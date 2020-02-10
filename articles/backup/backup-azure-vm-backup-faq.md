@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/17/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 86ef791d75842729110ba7a4ef6cf5e57a132a4e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b2453a000bdf8e08e241c82e44cf8fdd12ef614a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839024"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028867"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -103,8 +103,6 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 
 ### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>升级到托管磁盘后，是否可以还原非托管 VM 磁盘的备份？
 是的，可以使用从非托管磁盘迁移到托管磁盘之前创建的备份。
-- 默认情况下，还原 VM 作业将创建非托管 VM。
-- 但是，你可以还原磁盘并使用这些磁盘来创建托管 VM。
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>如何将 VM 还原至将它迁移到托管磁盘之前的某个还原点？
 默认情况下，还原 VM 作业将使用非托管磁盘创建 VM。 若要使用托管磁盘创建 VM，请执行以下操作：
@@ -115,12 +113,15 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 [详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中执行此操作。
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>是否可以还原已删除的 VM？
+
 是的。 即使删除了 VM，也仍可以转到保管库中的相应备份项，然后从恢复点还原。
 
 ### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>如何将 VM 还原到相同的可用性集？
+
 对于托管磁盘 Azure VM，可以在还原托管磁盘时通过在模板中提供一个选项，来实现还原到可用性集。 此模板包含名为“可用性集”的输入参数。 
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>我们提高还原速度？
+
 [即时还原](backup-instant-restore-capability.md)功能有助于更快地备份和从快照即时还原。
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>更改已加密 VM 的密钥保管库设置时会发生什么情况？
@@ -136,6 +137,7 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 
 ### <a name="what-happens-if-i-modify-a-backup-policy"></a>如果修改备份策略，会发生什么情况？
+
 VM 是使用已修改策略或新策略中的计划和保留设置备份的。
 
 - 如果延长保留期，则会根据新策略对现有的恢复点进行标记和保留。

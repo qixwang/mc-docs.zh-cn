@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
-description: 了解如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据。
+description: 了解如何使用 MongoDB shell 命令从 Azure Cosmos DB 的 API for MongoDB 查询数据
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-origin.date: 12/26/2018
-ms.date: 10/28/2019
+origin.date: 12/03/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 52bd872b49469e43f611f7570f2f2253f70b56b1
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: f3422f80758a229f281d5240a5ab12982d9fe5e4
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912899"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068334"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
 

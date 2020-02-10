@@ -13,19 +13,19 @@ metadata:
   ms.author: v-junlch
   origin.date: 08/26/2019
   ms.date: 11/14/2019
-  ms.openlocfilehash: 20f61cbb133db54ac43ccff449b5e06c89cec1e8
-  ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+  ms.openlocfilehash: 25db6b720dc48b296d6a3f74d6b38d8199be3dc5
+  ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/14/2019
-  ms.locfileid: "74084847"
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77067722"
 landingContent:
 - title: 选择双重验证方法
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是双重验证？
-      url: user-help-two-step-verification-overview.md
+      url: multi-factor-authentication-end-user-first-time.md
   - linkListType: how-to-guide
     links:
     - text: 设置验证方法
@@ -39,7 +39,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: 什么是密码重置？
-      url: user-help-password-reset-overview.md
+      url: active-directory-passwords-reset-register.md
   - linkListType: how-to-guide
     links:
     - text: 注册密码重置

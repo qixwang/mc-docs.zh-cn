@@ -10,13 +10,14 @@ origin.date: 03/21/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9bf879ba8a0885605ddb1cb176eb150821c19a2a
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 8e38dde5ab41866912e976f19472e69bd6116716
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965049"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068345"
 ---
+<!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 中部署容器实例
 
 使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
@@ -29,7 +30,7 @@ ms.locfileid: "75965049"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+<!--IT IS POERSHELL ARTICLES NOT CLI-->
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
@@ -80,7 +81,7 @@ ImageRegistryCredentials :
 RestartPolicy            : Always
 IpAddress                : 52.226.19.87
 DnsNameLabel             : aci-demo-win
-Fqdn                     : aci-demo-win.chinaeast2.azurecontainer.cn
+Fqdn                     : aci-demo-win.chinaeast2.azurecontainer.console.azure.cn
 Ports                    : {80}
 OsType                   : Windows
 Volumes                  :

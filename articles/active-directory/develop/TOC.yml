@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows 桌面 .NET
               href: tutorial-v2-windows-desktop.md
+            - name: 在 Android 应用中使用共享设备模式
+              href: tutorial-v2-shared-device-mode.md
         - name: 守护程序应用
           items:
             - name: ASP.NET 守护程序 Web 应用
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: 移动平台特定的配置
                   items:
+                    - name: 适用于 Android 设备的共享设备模式
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Android 上的系统浏览器
@@ -386,6 +390,8 @@
               href: active-directory-claims-mapping.md
             - name: 配置可选声明
               href: active-directory-optional-claims.md
+            - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 应用程序配置
           items:
             - name: 新的 Azure 门户应用注册培训指南
@@ -684,8 +690,10 @@
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Microsoft 标识平台开发人员博客
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure 资源的托管标识
+      href: /active-directory/managed-identities-azure-resources/overview
     - name: 获取帮助
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Azure 资源的托管标识
-      href: /active-directory/managed-identities-azure-resources/overview

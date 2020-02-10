@@ -10,12 +10,12 @@ ms.custom: mvc
 origin.date: 03/14/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
-ms.openlocfilehash: 9754f3b69c106a36c5e3540d99104f9bd9971a0d
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 8d644700f4dbc35e4a366a84dc1c99d574b86bea
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426033"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068069"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
@@ -27,7 +27,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 * [通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)
 
-* [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)。
+
 
 本快速入门中的服务端 Node.js 应用程序具有以下功能：
 
@@ -40,7 +40,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
@@ -110,7 +110,7 @@ az extension add --name azure-cli-iot-ext
 
    * [通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)
 
-   * [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)
+
 
 在继续下一步之前，请确保设备端应用程序正在运行。
 

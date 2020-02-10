@@ -1,21 +1,21 @@
 ---
-title: 教程 - 通过 Azure 门户使用发布/订阅渠道和主题筛选器更新零售库存分类 | Azure Docs
+title: 使用 Azure 门户和主题/订阅更新清单
 description: 本教程介绍如何从主题和订阅发送和接收消息，以及如何使用 .NET 添加和使用筛选器规则
 services: service-bus-messaging
 author: lingliw
 manager: digimobile
 ms.author: v-lingwu
-origin.date: 09/22/2018
-ms.date: 09/26/2019
+origin.date: 01/21/2020
+ms.date: 2/6/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 6c0e6f6c2729f9ae7e908815c2dbd209cdb62971
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 28920a56172ff9b6e3f7354e9d2c30aa6ed72430
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330000"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067966"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新清单
 
@@ -35,7 +35,7 @@ ms.locfileid: "71330000"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户][]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保已安装：
 

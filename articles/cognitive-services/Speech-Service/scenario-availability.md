@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 68a0b1cdc7f521dc814f7ea056a6dddd8a13eabc
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: aef3e613c3c6ad293f4cdd96a029353c866ada0e
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123298"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028181"
 ---
 # <a name="scenario-availability"></a>方案可用性
 
@@ -35,6 +35,7 @@ ms.locfileid: "76123298"
 <!-- - **Keyword Spotting (KWS)** -->
 <!-- - **Voice assistants** -->
 <!-- - **Conversation Transcription** -->
+<!-- - **Multi-device Conversation** -->
 <!-- - **Call Center Transcription** -->
 - **编解码器压缩的音频输入**
   - C++/Linux

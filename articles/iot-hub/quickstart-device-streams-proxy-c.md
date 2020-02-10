@@ -10,12 +10,12 @@ ms.custom: mvc
 origin.date: 03/14/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: b2b5a4b38ff687d52fd9b0944adf093d280a19ec
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 62aec462c24ea6d55e8f209105745eecdbec992e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630925"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068351"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -31,7 +31,6 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 下图演示了设备本地和服务本地代理程序如何在 SSH 客户端与 SSH 守护程序进程之间实现端到端的连接。 在公共预览期，C SDK 仅支持设备端的设备流。 因此，本快速入门只会提供有关运行设备本地代理应用程序的说明。 若要生成和运行随附的服务端应用程序，请按照以下快速入门之一中的说明进行操作：
 
-* [使用 C# 代理通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-csharp.md)
 * [使用 NodeJS 代理通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-nodejs.md)。
 
 ![本地代理设置](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
@@ -50,7 +49,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
@@ -149,7 +148,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
-在此部分，请建立一个端到端的流，通过隧道来传输 SSH 流量。
+在本部分中，你将建立一个端到端的流，通过隧道来传输 SSH 流量。
 
 ### <a name="run-the-device-local-proxy-application"></a>运行设备本地代理应用程序
 
@@ -194,7 +193,6 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 若要按“工作原理”部分所述建立端到端的流以通过隧道传输 SSH 流量，需要在每端（服务端和设备端）设置一个本地代理。 在公共预览期，IoT 中心 C SDK 仅支持设备端的设备流。 若要生成并运行服务本地代理，请遵照以下快速入门之一中的说明：
 
-   * [使用 C# 代理应用通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-csharp.md)
    * [使用 Node.js 代理应用通过 IoT 中心设备流实现 SSH/RDP 方案](./quickstart-device-streams-proxy-nodejs.md)
 
 ### <a name="establish-an-ssh-session"></a>从 SSH 会话建立连接

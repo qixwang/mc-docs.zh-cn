@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 origin.date: 12/16/2019
-ms.date: 01/20/2020
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7adc3c4e7780ead057200518c9269252da420120
-ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
+ms.openlocfilehash: 9b72ed9ed60afe6ac2b282dab5205f1b16f8bd4d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288530"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028761"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>了解 NoSQL 数据库与关系数据库之间的差别
 

@@ -1,5 +1,5 @@
 ---
-title: 将 Azure CLI 用于 Azure 存储 | Microsoft Docs
+title: 将 Azure CLI 用于 Azure 存储
 description: 了解如何将 Azure 命令行界面 (Azure CLI) 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。
 services: storage
 author: WenJason
@@ -7,16 +7,16 @@ ms.service: storage
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 06/02/2017
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 1ebb54b0ed62baadcabc1435814b9b08cc98dd03
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 97a5b2178970e366801cd059cc685c9f12eac548
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624160"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028640"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -24,18 +24,18 @@ ms.locfileid: "75624160"
 
 本指南介绍如何使用 [Azure CLI](/cli/get-started-with-az-cli2) 执行多个使用 Azure 存储帐户中的资源的任务。 在使用本指南之前，我们建议下载并安装或者升级到最新版 CLI。
 
-指南中的示例假设在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。 
+指南中的示例假设在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本指南假设读者了解 Azure 存储的基本概念。 本指南还假设读者能够满足下面针对 Azure 和存储服务指定的帐户创建要求。
 
 ### <a name="accounts"></a>帐户
 * **Azure 帐户**：如果没有 Azure 订阅，可以[创建一个试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-* **存储帐户**：请参阅[关于 Azure 存储帐户](storage-create-storage-account.md)中的[创建存储帐户](storage-quickstart-create-account.md)。
+* **存储帐户**：请参阅[关于 Azure 存储帐户](storage-account-overview.md)中的[创建存储帐户](storage-account-create.md)。
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
@@ -144,9 +144,9 @@ echo "Done"
    * \<file_to_upload\>：本地计算机上小文件的路径，例如：“~/images/HelloWorld.png”  。
    * \<destination_file\>：目标文件路径，如“~/downloadedImage.png”  。
 
-3. 更新了必要的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 my_storage_sample.sh  。
+3. 更新所需的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 my_storage_sample.sh  。
 
-4. 如有必要，将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
+4. 如果需要，请将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
 
 5. 执行该脚本。 例如，在 Bash 中： `./my_storage_sample.sh`
 
@@ -334,7 +334,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -359,7 +359,7 @@ az storage directory create --name myDir --share-name myshare
 目录路径可以包括多个级别，例如 dir1/dir2  。 但在创建子目录之前，必须确保所有父目录都存在。 例如，对于路径 dir1/dir2，必须先创建目录 dir1，然后再创建目录 dir2    。
 
 ### <a name="upload-a-local-file-to-a-share"></a>将本地文件上传到共享
-以下示例将文件从 **~/temp/samplefile.txt** 上传到 **myshare** 文件共享的根目录。 `--source` 参数指定要上传的现有本地文件。
+以下示例将文件从 ~/temp/samplefile.txt 上传到 myshare 文件共享的根目录   。 `--source` 参数指定要上传的现有本地文件。
 
 ```azurecli
 az storage file upload --share-name myshare --source ~/temp/samplefile.txt
@@ -389,7 +389,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>复制文件      
 可将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 例如，要将文件复制到不同共享中的目录，请执行以下操作：        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -523,7 +523,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 可以通过提供 `--snapshot` 参数和共享快照时间戳使用 `az storage share delete` 命令来删除共享快照：
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 示例输出
@@ -534,7 +534,7 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 ```
 
 ## <a name="next-steps"></a>后续步骤
-下面是一些用于详细了解如何使用 Azure CLI 的附加资源。 
+下面是一些用于详细了解如何使用 Azure CLI 的附加资源。
 
 * [Azure CLI 入门](https://docs.azure.cn/cli/get-started-with-az-cli2)
 * [Azure CLI 命令参考](https://docs.azure.cn/cli)

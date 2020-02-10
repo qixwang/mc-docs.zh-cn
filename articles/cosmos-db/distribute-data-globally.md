@@ -6,13 +6,13 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/23/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: ec3894890dd922f1ac4e83ebd7a4c9ffdeca5ead
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.date: 02/10/2020
+ms.openlocfilehash: 72274746d8fa8274e97afa7bb12269ec3b0b1bfc
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254751"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980537"
 ---
 # <a name="multiple-region-data-distribution-with-azure-cosmos-db---overview"></a>使用 Azure Cosmos DB 多区域分配数据 - 概述
 
@@ -65,6 +65,5 @@ Azure Cosmos DB 是一个多区域分布式数据库服务，旨在提供低延�
 * [为你的应用程序选择适当的一致性级别](consistency-levels-choosing.md)
 * [跨 Azure Cosmos DB API 的一致性级别](consistency-levels-across-apis.md)
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
-* [如何实现自定义同步以根据更高可用性和性能进行优化](how-to-custom-synchronization.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

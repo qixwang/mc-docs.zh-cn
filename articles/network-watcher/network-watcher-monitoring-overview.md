@@ -5,7 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -17,12 +16,12 @@ origin.date: 04/24/2018
 ms.date: 12/24/2018
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: a3aec22ff5d2f4d76450ab687f22b368adb92d08
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: eeca4c388c64717abda1a4525952ecfbeb9d7fff
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335715"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028486"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 

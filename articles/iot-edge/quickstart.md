@@ -4,18 +4,18 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 08/16/2019
-ms.date: 12/23/2019
+origin.date: 11/06/2019
+ms.date: 01/27/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc, seodec18
-ms.openlocfilehash: ae773c22dc7dd4c419893bd11dc0001a7fe6f95c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.custom: mvc
+ms.openlocfilehash: 173a262c7a1306d76ba3e996a48cabf5bf97514c
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336458"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966465"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Windows 设备
 
@@ -44,7 +44,7 @@ ms.locfileid: "75336458"
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 云资源： 
 
@@ -87,7 +87,7 @@ IoT Edge 设备：
 以下代码在资源组“IoTEdgeResources”中创建免费的“F1”中心   。 将 *{hub_name}* 替换为 IoT 中心的唯一名称。
 
    ```azurecli
-   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
+   az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
    如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 如果出现一条错误，指示 IoT 中心名称不可用，则表明他人已使用具有该名称的中心。 请尝试一个新名称。 
@@ -124,7 +124,7 @@ IoT Edge 设备：
 在 IoT Edge 设备上安装 Azure IoT Edge 运行时，并使用设备连接字符串对其进行配置。
 ![关系图 - 在设备上启动运行时](./media/quickstart/start-runtime.png)
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次 IoT Edge 设备启动并通过启动 IoT Edge 代理启动设备时，**IoT Edge 安全守护程序**就会启动。 **IoT Edge 代理**管理 IoT Edge 设备上模块（包括 IoT Edge 中心）的部署和监视。 **IoT Edge 中心**处理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 **IoT Edge 安全守护程序在** IoT Edge 设备每次启动时启动，并通过启动 IoT Edge 代理引导设备。 **IoT Edge 代理**管理 IoT Edge 设备上模块（包括 IoT Edge 中心）的部署和监视。 **IoT Edge 中心**处理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。
 
 安装脚本还包含一个名为 Moby 的容器引擎，用于管理 IoT Edge 设备上的容器映像。 
 
@@ -229,8 +229,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
    ![查看模块中的数据](./media/quickstart/iotedge-logs.png)
 
-也可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看到达 IoT 中心的消息。 
-
+也可使用 [Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看到达 IoT 中心的消息。
 
 ## <a name="clean-up-resources"></a>清理资源
 

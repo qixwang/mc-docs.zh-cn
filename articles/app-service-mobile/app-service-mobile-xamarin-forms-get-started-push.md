@@ -6,21 +6,21 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: f19ccfda1c3c2438b8e9c5ecb775d4814338f0b0
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: a4d22acc0279f4baf897d9a1d5030fcb2fd00da6
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600542"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028179"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
 >
 > 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
@@ -30,7 +30,7 @@ ms.locfileid: "75600542"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于 iOS，用户需要 [Apple Developer Program 会员资格](https://developer.apple.com/programs/ios/) 和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
@@ -153,7 +153,7 @@ ms.locfileid: "75600542"
 
 #### <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
-1. 在 Visual Studio 中，打开 Windows 项目中的 **App.xaml.cs**，并添加以下语句。
+1. 在 Visual Studio 中，打开 Windows 项目中的 **App.xaml.cs** ，并添加以下语句。
 
     ```csharp
     using Newtonsoft.Json.Linq;
@@ -209,7 +209,7 @@ ms.locfileid: "75600542"
 1. 在 Visual Studio 中，右键单击 Windows 项目，并单击“设为启动项目”  。
 2. 按“运行”按钮生成项目并启动应用程序  。
 3. 在应用中，为新 todoitem 键入一个名称，并单击加号 ( **+** ) 图标以添加它。
-4. 确认在添加项时收到了通知。
+4. 确认在添加该项目时收到了通知。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -224,7 +224,7 @@ ms.locfileid: "75600542"
 * [向应用程序添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
   了解如何使用标识提供者对应用的用户进行身份验证。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。
 
 <!-- Images. -->
 

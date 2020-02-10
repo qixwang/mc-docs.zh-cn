@@ -1,29 +1,20 @@
 ---
-title: 在 Azure Redis 缓存中导入和导出数据 | Microsoft Docs
+title: 在 Azure Redis 缓存中导入和导出数据
 description: 了解如何使用高级 Azure Redis 缓存实例在 blob 存储中导入和导出数据
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 07/31/2017
-ms.date: 11/12/2019
+ms.topic: conceptual
+ms.date: 02/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: f48c359b18dae7ae318365c5b146a257c49bdbe2
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: 0aa35913275b0eb010cc54f97a4ffaef3986b928
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934240"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028030"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
-导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Azure Redis 缓存数据库 (RDB) 快照以及将 Azure Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。 
+导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Azure Redis 缓存数据库 (RDB) 快照以及将 Azure Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。
 
 - 导出  - 可以将 Azure Redis 缓存 RDB 快照导出到页 Blob。
 - 导入  - 可以从页 Blob 或块 Blob 导入 Azure Redis 缓存 RDB 快照。
@@ -33,7 +24,7 @@ ms.locfileid: "73934240"
 本文提供使用 Azure Redis 缓存导入和导出数据的指南，并提供常见问题的解答。
 
 > [!IMPORTANT]
-> 导入/导出处于预览状态，仅适用于[高级层](cache-premium-tier-intro.md)缓存。
+> 导入/导出仅适用于[高级层](cache-premium-tier-intro.md)缓存。
 >
 >
 
@@ -48,7 +39,7 @@ ms.locfileid: "73934240"
 1. 若要导入一个或多个导出的缓存 blob，请在 Azure 门户中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，然后在“资源”菜单  中单击“导入数据”  。
 
     ![导入数据](./media/cache-how-to-import-export-data/cache-import-data.png)
-2. 单击“选择 Blob”，并选择包含要导入数据的存储帐户  。
+2. 单击“选择 Blob”  ，选择包含要导入的数据的存储帐户。
 
     ![选择存储帐户](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. 单击包含要导入的数据的容器。
@@ -66,7 +57,7 @@ ms.locfileid: "73934240"
 
     ![导入](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    可以通过关注 Azure 门户中的通知或通过查看[审核日志](../azure-resource-manager/resource-group-audit.md)中的事件，来监视导入操作的进度。
+    可以通过关注 Azure 门户中的通知或通过查看[审核日志](../azure-resource-manager/management/view-activity-logs.md)中的事件，来监视导入操作的进度。
 
     ![导入进度](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
@@ -79,7 +70,7 @@ ms.locfileid: "73934240"
 2. 单击“选择存储容器”并选择所需的存储帐户  。 存储帐户必须与缓存在同一订阅和区域中。
 
    > [!IMPORTANT]
-   > 导出适用于页 blob，经典存储帐户和 Resource Manager 存储帐户都支持页 blob，但目前 Blob 存储帐户不支持页 blob。 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
+   > 导出适用于页 blob，经典存储帐户和资源管理器存储帐户都支持页 blob，但目前 Blob 存储帐户不支持页 blob。 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
    >
 
     ![存储帐户](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
@@ -90,7 +81,7 @@ ms.locfileid: "73934240"
 
     ![导出](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    可通过关注 Azure 门户中的通知或查看[审核日志](../azure-resource-manager/resource-group-audit.md)中的事件，来监视导出操作的进度。
+    可通过关注 Azure 门户中的通知或查看[审核日志](../azure-resource-manager/management/view-activity-logs.md)中的事件，来监视导出操作的进度。
 
     ![导出数据完成](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 
@@ -108,7 +99,7 @@ ms.locfileid: "73934240"
 * [导入/导出与 Redis 持久性有何区别？](#how-is-importexport-different-from-redis-persistence)
 * [能否使用 PowerShell、CLI 或其他管理客户端自动执行导入/导出？](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
 * [我在导入/导出操作期间收到超时错误。它意味着什么？](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
-* [在将数据导出到 Azure Blob 存储时遇到错误。发生了什么情况？](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
+* [在将我的数据导出到 Azure Blob 存储时收到错误。发生了什么情况？](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
 ### <a name="what-pricing-tiers-can-use-importexport"></a>哪些定价层可以使用导入/导出？
 导入/导出仅在高级定价层中可用。
@@ -118,8 +109,8 @@ ms.locfileid: "73934240"
 
 > [!IMPORTANT]
 > 使用页 blob 时，要成功导入从非 Azure Redis 缓存的 Redis 服务器导出的数据，页 blob 大小必须在 512 字节边界上对齐。 有关用于执行任何所需的字节填充的示例代码，请参阅[示例页 blob 上传](https://github.com/JimRoberts-MS/SamplePageBlobUpload)。
-> 
-> 
+>
+>
 
 ### <a name="what-rdb-versions-can-i-import"></a>可以导入哪些 RDB 版本？
 
@@ -130,7 +121,7 @@ ms.locfileid: "73934240"
 * **导入** - 在导入操作开始时，缓存即变为不可用，在导入操作完成后，缓存变为可供使用。
 
 ### <a name="can-i-use-importexport-with-redis-cluster"></a>能否对 Redis 群集使用导入/导出？
-能，并且可以在群集缓存和非群集缓存之间导入/导出。 由于 Redis 群集[仅支持数据库 0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)，因此将不会导入 0 以外的数据库中的任何数据。 导入群集缓存数据时，密钥会在群集的分片之间重新分发。
+能，并且可以在群集缓存和非群集缓存之间导入/导出。 由于 Redis 群集[仅支持数据库 0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)，因此不会导入 0 以外的数据库中的任何数据。 导入群集缓存数据时，密钥会在群集的分片之间重新分发。
 
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>导入/导出如何使用自定义数据库设置？
 某些定价层具有不同的[数据库限制](cache-configure.md#databases)，因此，如果在缓存创建过程中为 `databases` 设置配置了自定义值，则在导入时需注意一些注意事项。
@@ -149,7 +140,7 @@ Azure Redis 缓存暂留能够将 Redis 中存储的数据长期保存在 Azure 
 是，有关 PowerShell 说明，请参阅[导入 Azure Redis 缓存](cache-how-to-manage-redis-cache-powershell.md#to-import-an-azure-cache-for-redis)和[导出 Azure Redis 缓存](cache-how-to-manage-redis-cache-powershell.md#to-export-an-azure-cache-for-redis)。
 
 ### <a name="i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean"></a>在导入/导出操作期间收到超时错误。 它意味着什么？
-如果在发起操作前停留在“导入数据”或“导出数据”边栏选项卡的时间超过 15 分钟，则将收到错误，其错误消息类似于以下示例   ：
+如果在发起操作前停留在“导入数据”  或“导出数据”  边栏选项卡的时间超过 15 分钟，则会收到错误，其错误消息类似于以下示例：
 
     The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 

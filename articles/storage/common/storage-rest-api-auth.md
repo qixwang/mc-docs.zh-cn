@@ -7,30 +7,30 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/01/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ee71ce2b898e3557f91edb478b7966e19a2d0eef
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 25103ac19c687894c4511da870290d665bc0c5f2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624332"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028998"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
 本文介绍如何调用 Azure 存储 REST API，包括如何构建授权标头。 本文内容是从对 REST 无甚了解、而且也不知道如何进行 REST 调用的开发人员角度编写的。 了解如何调用 REST 操作后，即可利用这一知识使用任何其他的 Azure 存储 REST 操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-示例应用程序列出了存储帐户的 blob 容器。 若要尝试本文中的代码，需准备以下各项： 
+示例应用程序列出了存储帐户的 blob 容器。 若要尝试本文中的代码，需准备以下各项：
 
 - 安装 [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)（包含 **Azure 开发**工作负荷）。
 
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
 
-- 通用存储帐户。 如果还没有存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+- 通用存储帐户。 如果还没有存储帐户，请参阅[创建存储帐户](storage-account-create.md)。
 
 - 本文中将举例说明如何列出存储帐户中的容器。 若要查看输出，请在开始之前，将一些容器添加到存储帐户中的 blob 存储。
 
@@ -44,7 +44,7 @@ ms.locfileid: "75624332"
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 storage-dotnet-rest-api-with-auth 文件夹并打开，然后双击 StorageRestApiAuth.sln。 
+此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 storage-dotnet-rest-api-with-auth 文件夹并打开，然后双击 StorageRestApiAuth.sln。
 
 ## <a name="about-rest"></a>关于 REST
 
@@ -94,16 +94,16 @@ REST 是一种体系结构，用于通过 Internet 协议（例如 HTTP/HTTPS）
 
 在我们的示例项目中，用于创建授权标头的代码位于单独的类中。 这样做是为了让你可以获取整个类并将其添加到你自己的解决方案中，然后“按原样”使用。 授权标头代码适用于 Azure 存储的大多数 REST API 调用。
 
-要生成请求（这是一个 HttpRequestMessage 对象），请转到 Program.cs 中的 ListContainersAsyncREST。 用于生成请求的步骤如下： 
+要生成请求（这是一个 HttpRequestMessage 对象），请转到 Program.cs 中的 ListContainersAsyncREST。 用于生成请求的步骤如下：
 
-- 创建要用于调用服务的 URI。 
+- 创建要用于调用服务的 URI。
 - 创建 HttpRequestMessage 对象并设置有效负载。 有效负载对于 ListContainersAsyncREST 为 null，因为我们未传入任何内容。
 - 添加 x-ms-date 和 x-ms-version 的请求标头。
 - 获取授权标头并添加。
 
-你需要一些基本信息： 
+你需要一些基本信息：
 
-- 对于 ListContainers，方法  是 `GET`。 在实例化请求时设置此值。 
+- 对于 ListContainers，方法  是 `GET`。 在实例化请求时设置此值。
 - 资源  是指示正在调用的 API 的 URI 查询部分，因此，值为 `/?comp=list`。 如前文所述，该资源位于显示有关 [ListContainers API](https://docs.microsoft.com/rest/api/storageservices/List-Containers2) 信息的参考文档页上。
 - URI 是通过为该存储帐户创建 Blob 服务终结点并连结该资源而构建的。 请求 URI  的值最终为 `http://contosorest.blob.core.chinacloudapi.cn/?comp=list`。
 - 对于 ListContainers，requestBody  为 null 并且没有任何额外标头  。
@@ -161,7 +161,7 @@ httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetA
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -210,7 +210,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.chinacloudapi.cn/">
   <Containers>
     <Container>
@@ -309,7 +309,7 @@ StringToSign = VERB + "\n" +
 
 ### <a name="canonicalized-headers"></a>规范化标头
 
-若要创建此值，请检索以“x-ms-”开头的标头并对其进行排序，然后将它们格式化为 `[key:value\n]` 字符串实例，并将其连结到一个字符串中。 在此示例中，规范化标头如下所示： 
+若要创建此值，请检索以“x-ms-”开头的标头并对其进行排序，然后将它们格式化为 `[key:value\n]` 字符串实例，并将其连结到一个字符串中。 在此示例中，规范化标头如下所示：
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -317,7 +317,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 以下是用于创建该输出的代码：
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -445,7 +445,7 @@ https://myaccount.blob.core.chinacloudapi.cn/container-1?restype=container&comp=
 在 ListContainersAsyncREST 中，更改将 URI 设置为 ListBlobs API 的代码。 容器名称为 container-1  。
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.chinacloudapi.cn/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -517,7 +517,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**响应正文 (XML)：** 此 XML 响应显示 blob 及其属性列表。 
+**响应正文 (XML)：** 此 XML 响应显示 blob 及其属性列表。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

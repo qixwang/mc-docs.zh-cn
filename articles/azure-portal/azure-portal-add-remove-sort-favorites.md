@@ -3,20 +3,20 @@ title: 在 Azure 门户中添加、删除和排列收藏夹 | Azure
 description: 了解如何在收藏夹列表中添加或删除项以及如何重新排列项的顺序
 services: azure-portal
 keywords: 收藏夹,门户
-author: kfollis
+author: mgblythe
 ms.author: v-tawe
 origin.date: 12/20/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 34c3c45b3f4e4f056495a1a50d6d6c7398dd7306
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 5ea0eaabf3b0021a743cf395d0ea6ff372874b2f
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600573"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028223"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>添加、删除和重新排列收藏夹
 

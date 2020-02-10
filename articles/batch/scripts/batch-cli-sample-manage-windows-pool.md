@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 脚本示例 - Batch 中的 Windows 池 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中创建和管理 Windows 池
+title: Azure CLI 脚本示例 - Batch 中的 Windows 池
+description: 此脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中创建和管理 Windows 计算节点池的命令。
 services: batch
 documentationcenter: ''
-author: dlepow
+author: lingliw
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,21 +12,21 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-origin.date: 01/29/2018
-ms.date: 09/07/2018
-ms.author: v-junlch
-ms.openlocfilehash: 213a34986c049460864fbcc1b0dd7d00a628e8cc
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+origin.date: 12/12/2019
+ms.date: 2/5/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 018a0ce7a37e9c76d9675f7e3cc1ab80035b277b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52658397"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028598"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Windows 池
 
 此脚本演示了 Azure Batch 中一些可用于在 Azure CLI 中创建和管理 Windows 计算节点池的命令。 可通过两种方式配置 Windows 池：使用云服务配置，或使用虚拟机配置。 此示例介绍如何使用云服务配置来创建 Windows 池。
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
 ## <a name="example-script"></a>示例脚本
 ```azurecli

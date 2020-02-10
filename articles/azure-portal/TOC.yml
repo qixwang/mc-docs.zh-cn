@@ -28,6 +28,12 @@
       href: azure-portal-markdown-tile.md
     - name: 导出或删除用户设置
       href: azure-portal-export-delete-settings.md
+    - name: 排查 Azure 门户问题
+      items:
+        - name: 恢复已删除的仪表板
+          href: recover-shared-deleted-dashboard.md
+        - name: 捕获浏览器跟踪以进行故障排除
+          href: capture-browser-trace.md
 - name: 参考
   items:
     - name: 键盘快捷方式

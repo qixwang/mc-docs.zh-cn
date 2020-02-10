@@ -1,19 +1,20 @@
 ---
 title: 将事件发布到自定义 Azure 事件网格主题
-description: 说明如何将事件发布到 Azure 事件网格的自定义主题
+description: 本文说明如何将事件发布到自定义主题。 它显示发布和事件数据的格式。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/17/2019
+origin.date: 01/23/2020
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: c9a2c55ccac40a03d22afccbfa674f10c6c2edb0
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: b9862015523814135116ff2eadac14c859a32d6f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195098"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068161"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
@@ -76,7 +77,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 64 KB。
+有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB（正式版）或 1 MB（预览版）。
+
+> [!NOTE]
+> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
 
 例如，有效的事件数据架构是：
 

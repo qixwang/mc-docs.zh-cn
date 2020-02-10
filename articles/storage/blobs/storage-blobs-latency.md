@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 09/05/2019
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 6037287bf29a332f82aef4f4549050658138b110
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 82b37c39aeae9b9a83ea2f2bf0f43f9b557746c2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306870"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028948"
 ---
 # <a name="latency-in-blob-storage"></a>Blob 存储中的延迟
 
@@ -64,5 +64,5 @@ Azure 存储为块 blob 提供两个延迟指标。 可以在 Azure 门户中查
 
 ## <a name="next-steps"></a>后续步骤
 
-- [存储帐户的 Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md)
-- [Azure 存储性能和可伸缩性清单](../common/storage-performance-checklist.md)
+- [Blob 存储的可伸缩性和性能目标](scalability-targets.md)
+- [Blob 存储的性能与可伸缩性查检表](storage-performance-checklist.md)

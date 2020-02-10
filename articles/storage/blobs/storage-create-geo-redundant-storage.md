@@ -7,17 +7,17 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 2b3e0b2c406f13bddcdb36d6ab3a576a70e1058d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 2097669aa9fd2bc5a92dcc244ea5641617c9ff51
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624216"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028947"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "75624216"
 
 完成本教程后，将会生成一个控制台应用程序，用于上传 Blob 并从[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 存储帐户检索它。
 
-RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复制过程可确保次要区域中的数据最终一致。 应用程序使用断路器模式来确定要连接到的终结点，在模拟故障和恢复时在终结点之间自动切换。
+RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复制过程可确保次要区域中的数据最终一致。 应用程序使用[断路器](/azure/architecture/patterns/circuit-breaker)模式来确定要连接到的终结点，在模拟故障和恢复时在终结点之间自动切换。
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -36,13 +36,13 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 > * 设置连接字符串
 > * 运行控制台应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* 安装包含 **Azure 开发**工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+* 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)（包含 **Azure 开发**工作负荷）。
 
   ![Azure 开发（位于“Web 和云”下）](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -77,10 +77,10 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
    | **名称** | mystorageaccount | 存储帐户的唯一值 |
    | 部署模型  | Resource Manager  | 资源管理器包含最新功能。|
    |  帐户类型 | StorageV2 | 有关帐户类型的详细信息，请参阅[存储帐户的类型](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **性能** | 标准 | 对于示例方案，“标准”已足够。 |
+   | **“性能”** | 标准 | 对于示例方案，“标准”已足够。 |
    | **复制**| 读取访问异地冗余存储 (RA-GRS) | 这是运行示例所必需的。 |
    |**订阅** | 你的订阅 |有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.cn/Subscriptions)。 |
-   |**ResourceGroup** | MyResourceGroup |如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   |**ResourceGroup** | MyResourceGroup |有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
    |**位置** | 中国东部 | 选择一个位置。 |
 
 ![创建存储帐户](media/storage-create-geo-redundant-storage/createragrsstracct.png)

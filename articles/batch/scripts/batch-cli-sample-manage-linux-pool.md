@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 脚本示例 - Batch 中的 Linux 池 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中创建和管理 Linux 池
+title: Azure CLI 脚本示例 - Batch 中的 Linux 池
+description: 此脚本演示了 Azure CLI 中一些可用于在 Azure Batch 中创建和管理 Linux 计算节点池的命令。
 services: batch
 documentationcenter: ''
-author: dlepow
+author: lingliw
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 01/29/2018
 ms.date: 09/07/2018
-ms.author: v-junlch
-ms.openlocfilehash: 514ca5fb09d66276cb2a189f08d5ba83da76daab
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.author: v-lingwu
+ms.openlocfilehash: 54e3eabcc79c6ba3eb136c5adcef9a8e1f37f0d0
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52658400"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028600"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Linux 池
 

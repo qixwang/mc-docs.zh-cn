@@ -1,21 +1,21 @@
 ---
-title: 有关开发适用于 Windows 的 C# 模块的教程 - Azure IoT Edge | Microsoft Docs
+title: 教程 - 使用 Azure IoT Edge 开发用于 Windows 的 C# 模块
 description: 本教程介绍如何使用 C# 代码创建 IoT Edge 模块并将其部署到 Windows IoT Edge 设备。
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: v-yiso
 origin.date: 04/23/2019
-ms.date: 11/04/2019
+ms.date: 01/27/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b6cc1dd85a045d15d865dd2ce812af882534756d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0b5bce3d20b7389c1355c18cae19e1ce6d5bdb73
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336454"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966543"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C# IoT Edge 模块
 
@@ -44,7 +44,7 @@ ms.locfileid: "75336454"
 | **Windows AMD64 开发** | ![在 VS Code 中开发 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) | ![在 Visual Studio 中开发 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 调试** |   | ![在 Visual Studio 中调试 WinAMD64 的 C# 模块](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，应已完成上一篇教程[开发适用于 Windows 设备的 IoT Edge 模块](tutorial-develop-for-windows.md)来设置开发环境。 完成该教程后，已应准备好以下必备组件： 
 
@@ -93,29 +93,30 @@ Azure IoT Edge Tools 为 Visual Studio 中支持的所有 IoT Edge 模块语言�
 
 1. 在 Visual Studio 解决方案资源管理器中打开 **deployment.template.json** 文件。 
 
-2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 
-
-3. 使用你的凭据用以下格式更新该属性： 
+2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 它应该会根据你在创建项目时提供的信息自动填写注册表地址，而用户名和密码字段应包含变量名称。 例如： 
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
-   ```
 
-4. 保存 deployment.template.json 文件。 
+3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
 
-### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
+4. Add the **Username** and **Password** values from your Azure container registry. 
 
-默认模块代码接收输入队列中的消息，然后通过输出队列传递这些消息。 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。 更新模块，使其分析每条消息中的温度数据，并仅在温度超过特定的阈值时，才将消息发送到 IoT 中心。 
+5. Save your changes to the .env file.
 
-1. 在 Visual Studio 中，打开“CSharpModule”   > “Program.cs”  。
+### Update the module with custom code
 
-2. 在 **CSharpModule** 命名空间的顶部，为稍后要使用的类型添加三个 **using** 语句：
+The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+
+1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+
+2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

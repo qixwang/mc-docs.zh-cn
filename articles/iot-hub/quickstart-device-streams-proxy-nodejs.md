@@ -10,12 +10,12 @@ ms.custom: mvc
 origin.date: 03/14/2019
 ms.author: v-yiso
 ms.date: 11/11/2019
-ms.openlocfilehash: ee0fd182f21bbf79931ca4cd632a68855ea73caf
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.openlocfilehash: 5182a25221ce90b2cf2549aef653b7f6e1f8d207
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797599"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068253"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -29,8 +29,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只会提供有关运行服务本地代理应用程序的说明。 若要运行设备本地代理应用程序，请参阅：  
 
-   * [使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)
-   * [使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-csharp.md)
+   * [使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)
 
 本文将介绍 SSH 的设置（使用端口 22），然后介绍如何修改 RDP 的设置（使用端口 3389）。 由于设备流不区分应用程序和协议，因此，可以修改同一示例（通常是修改通信端口）来适应其他类型的客户端/服务器应用程序流量。
 
@@ -38,7 +37,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
@@ -98,14 +97,14 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
-在此部分，请建立一个端到端的流，通过隧道来传输 SSH 流量。
+在本部分中，你将建立一个端到端的流，通过隧道来传输 SSH 流量。
 
 ### <a name="run-the-device-local-proxy-application"></a>运行设备本地代理应用程序
 
 如前所述，IoT 中心 Node.js SDK 仅支持服务端的设备流。 对于设备本地应用程序，请使用下述快速入门之一中提供的设备代理应用程序：
 
    * [使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)
-   * [使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-csharp.md) 
+
 
 在继续下一步之前，请确保设备本地代理应用程序正在运行。
 

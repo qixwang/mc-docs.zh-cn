@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: 07470da7301f99d967f5991a5506ded2c4e31f28
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: ec8cb3b4aee8dd3380938fbac47f49fb76a787b3
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857992"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068297"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -32,10 +32,10 @@ ms.locfileid: "75857992"
       - 输出事件不符合目标接收器的架构。 
       - 事件架构可能与查询中事件的已定义/预期架构不匹配。
       - 事件中某些字段的数据类型可能不符合预期。
-      
+
     - 如果“运行时错误数”大于 0，则表示作业可以接收数据，但在处理查询时将遇到错误。
-      - 若要查找错误，请转到[审核日志](../azure-resource-manager/resource-group-audit.md)并筛选“失败”  状态。
-      
+      - 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)并筛选“失败”  状态。
+
     - 如果“输入事件数”大于 0 且“输出事件数”等于 0，则会出现以下情况之一：
       - 查询处理导致生成零个输出事件。
       - 事件或其字段可能出现格式错误，导致完成查询处理后生成零个输入。

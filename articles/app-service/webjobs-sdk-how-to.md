@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 704558aa757fe441fb9a4d2885797e942976d049
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: bf79a5e420e5d421109a731c31504d790c9c0b36
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600212"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979319"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -34,7 +34,6 @@ ms.locfileid: "75600212"
 > * Azure Functions C# 类库的示例代码类似于 WebJobs SDK 代码，不过，在 WebJobs SDK 项目中，无需指定 `FunctionName` 特性。
 > * 某些绑定类型，例如 HTTP (Webhook) 以及基于 HTTP 的事件网格，只在 Functions 中受支持。
 >
-
 <!-- > For more information, see [Compare the WebJobs SDK and Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs). -->
 
 ## <a name="webjobs-host"></a>WebJobs 主机
@@ -683,8 +682,8 @@ public static void CreateQueueMessage(
 Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每篇绑定参考文章中介绍了以下信息。 （此示例基于存储队列。）
 
 * [包](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 需要安装哪个包才能在 WebJobs SDK 项目中支持绑定。
-* [示例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
-* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 用于绑定类型的特性。
+* [示例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
+* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 用于绑定类型的特性。
 * [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 特性属性和构造函数参数的解释。
 * [使用情况](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
   
@@ -984,7 +983,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` 对象配置[自适应采样](/azure-monitor/app/sampling)。 这意味着，在某些大容量方案中，Applications Insights 会向服务器发送选定的遥测数据子集。
+`SamplingPercentageEstimatorSettings` 对象配置[自适应采样](https://docs.azure.cn/azure-monitor/app/sampling)。 这意味着，在某些大容量方案中，Applications Insights 会向服务器发送选定的遥测数据子集。
 
 创建遥测工厂后，可将其传入 Application Insights 日志记录提供程序：
 

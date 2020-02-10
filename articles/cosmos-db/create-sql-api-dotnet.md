@@ -1,6 +1,6 @@
 ---
-title: 生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
-description: 了解如何生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
+title: 快速入门 - 生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
+description: 本快速入门介绍如何生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 07/12/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: d609d7c68471a1fb761307176b81307e2c4b7943
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/10/2020
+ms.openlocfilehash: df530025ea5d5d6701a2f55fee4afc18ae2370ab
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334546"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980542"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 
@@ -25,7 +25,6 @@ ms.locfileid: "75334546"
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 开始使用适用于 .NET 的 Azure Cosmos DB SQL API 客户端库。 按照本文档中的步骤安装 .NET 包，生成应用，并尝试对存储在 Azure Cosmos DB 中的数据执行基本 CRUD 操作的示例代码。 
 
@@ -38,7 +37,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 [API 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://www.azure.cn/pricing/1rmb-trial/)。
     
@@ -312,6 +311,8 @@ namespace todo
     }
 }
 ```
+
+<!--CORRECT ON CSHARP CODE FORMAT-->
 
 ### <a name="create-a-database"></a>创建数据库 
 

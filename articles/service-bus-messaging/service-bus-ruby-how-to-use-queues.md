@@ -1,6 +1,6 @@
 ---
-title: 如何通过 Ruby 使用 Azure 服务总线队列 | Azure
-description: 了解如何在 Azure 中使用服务总线队列。 用 Ruby 编写的代码示例。
+title: 如何通过 Ruby 使用 Azure 服务总线队列
+description: 本教程介绍如何创建 Ruby 应用程序，以便向服务总线队列发送消息以及从中接收消息。
 services: service-bus-messaging
 documentationcenter: ruby
 author: lingliw
@@ -11,16 +11,16 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
-ms.topic: article
-origin.date: 04/10/2019
-ms.date: 09/02/2019
+ms.topic: quickstart
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: df5acaf2f13b6b90c801b3cac203eac0d7da8e1b
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: 1f9e588a3adcc0d81fac566cd3d441d9cb240c9e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169612"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068284"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>如何通过 Ruby 使用服务总线队列
 
@@ -28,7 +28,7 @@ ms.locfileid: "70169612"
 
 本教程介绍如何创建 Ruby 应用程序，以便向服务总线队列发送消息以及从中接收消息。 相关示例用 Ruby 编写且使用 Azure gem。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤操作。
     1. 阅读服务总线**队列**的快速**概述**。 
@@ -73,7 +73,7 @@ message.correlation_id = "test-correlation-id"
 azure_service_bus_service.send_queue_message("test-queue", message)
 ```
 
-服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小在创建时定义，上限为 5 GB。
+服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列中包含的消息数量不受限制，但消息的总大小受限制。 此队列大小在创建时定义，上限为 5 GB。
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>如何从队列接收消息
 对 Azure::ServiceBusService 对象使用 `receive_queue_message()` 方法可从队列接收消息  。 默认情况下，消息在被读取的同时会被锁定，从而无法从队列中删除。 但是，可以通过将 `:peek_lock` 选项设置为“false”，在读取消息时将其从队列中删除  。

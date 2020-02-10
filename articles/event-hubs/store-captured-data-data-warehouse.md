@@ -6,20 +6,20 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: v-tawe
 ms.custom: seodec18
-origin.date: 11/05/2019
-ms.date: 12/02/2019
+origin.date: 01/15/2020
+ms.date: 02/17/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 6dbb716a5c1bd9add5c714b40702ebce617ab3d9
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: e3141b2f72db943e4c36d9b69a87480009064db0
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657750"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067726"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 
-若要将事件中心的流式处理数据自动传递到 Azure Blob 存储或 Azure Data Lake Store，最容易的方式是使用事件中心[捕获](/event-hubs/event-hubs-capture-overview)。 可以随后处理数据并将其传递到所选的任何其他存储目标，例如 SQL 数据仓库或 Cosmos DB。 本教程介绍如何使用[事件网格](/event-grid/overview)触发的 Azure 函数将事件中心的数据捕获到 SQL 数据仓库中。
+若要将事件中心的流式处理数据自动传递到 Azure Blob 存储或 Azure Data Lake Store，最容易的方式是使用事件中心[捕获](https://docs.azure.cn/event-hubs/event-hubs-capture-overview)。 可以随后处理数据并将其传递到所选的任何其他存储目标，例如 SQL 数据仓库或 Cosmos DB。 本教程介绍如何使用[事件网格](https://docs.azure.cn/event-grid/overview)触发的 Azure 函数将事件中心的数据捕获到 SQL 数据仓库中。
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -36,14 +36,16 @@ ms.locfileid: "74657750"
 > * 将示例数据流式传输到事件中心。 
 > * 在 SQL 数据仓库中验证捕获的数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs/)。 在安装时，请确保安装以下工作负荷：.NET 桌面开发、Azure 开发、ASP.NET 和 Web 开发、Node.js 开发、Python 开发
-- 下载 [Git 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 示例解决方案包含以下组件：
+- 下载 [Git 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)。该示例解决方案包含以下组件：
     - *WindTurbineDataGenerator* – 一个简单的发布服务器，可以将示例性的风力涡轮机数据发送到启用了捕获功能的事件中心
     - *FunctionDWDumper* – 一个 Azure Function，可以在 Avro 文件捕获到 Azure 存储 Blob 时接收事件网格通知。 它接收 Blob 的 URI 路径、读取其内容并将该数据推送到 SQL 数据仓库。
+
+    此示例使用最新的 Azure.Messaging.EventHubs 包。 可在[此处](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)找到使用 Microsoft.Azure.EventHubs 包的旧示例。 
 
 ### <a name="deploy-the-infrastructure"></a>部署基础结构
 使用 Azure PowerShell 或 Azure CLI 通过此 [Azure 资源管理器模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json)部署本教程所需的基础结构。 此模板可创建以下资源：
@@ -85,7 +87,7 @@ az group deployment create \
 若要通过 PowerShell 部署该模板，请使用以下命令：
 
 ```powershell
-New-AzureRmResourceGroup -Name rgDataMigration -Location chinaeast
+New-AzResourceGroup -Name rgDataMigration -Location chinaeast
 
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
@@ -178,7 +180,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ## <a name="next-steps"></a>后续步骤 
 可以将强大的数据可视化工具与数据仓库配合使用，以便获取可行的见解。
 
-本文介绍如何[将 Power BI 与 SQL 数据仓库配合使用](/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)
+本文介绍如何[将 Power BI 与 SQL 数据仓库配合使用](https://docs.azure.cn/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)
 
 
 

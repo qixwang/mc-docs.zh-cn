@@ -7,19 +7,19 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: cf2c2eab4c8057c4c51bc2019cfec263d3e56b82
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 02/17/2019
+ms.openlocfilehash: d611da97acf78d9ab49765a95810ea6be318672c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020987"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037946"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>在 Redash 中可视化 Azure 数据资源管理器的数据
 
-[Redash](https://www.redash.io/) 可以连接和查询数据源，并可以生成仪表板来可视化数据并将其与同事共享。 本文介绍如何将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化。
+[Redash](https://redash.io/) 可以连接和查询数据源，并可以生成仪表板来可视化数据并将其与同事共享。 本文介绍如何将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. [创建群集和数据库](create-cluster-database-portal.md)。
 1. 根据[将示例数据引入 Azure 数据资源管理器](ingest-sample-data.md)中所述引入数据。 有关更多引入选项，请参阅[引入概述](ingest-data-overview.md)。

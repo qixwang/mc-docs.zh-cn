@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET 和 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Xamarin.Forms 应用
+title: 使用 .NET 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin 应用
 description: 提供了一个 Xamarin 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 06/20/2018
-ms.date: 06/17/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2700658c6ded314c5aed3c8873958eb73e2312b5
-ms.sourcegitcommit: 43eb6282d454a14a9eca1dfed11ed34adb963bd1
+ms.openlocfilehash: e50e378cbe192d3f6b4b0938d41daef4b89cde7d
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151466"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980544"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin.Forms 应用
 
@@ -65,7 +65,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
@@ -155,7 +155,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”  ，并单击“读写密钥”  。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
+1. 在 [Azure 门户](https://portal.azure.cn/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”  ，然后单击“读写密钥”  。 在后续步骤中，将使用屏幕右侧的复制按钮复制“主连接字符串”。
 
 2. 打开 **TaskList.Core** 项目的 **Helpers** 目录中的 **APIKeys.cs** 文件。
 
@@ -171,7 +171,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 2. 单击“还原所有 NuGet 包”  。
 3. 右键单击“TaskList.Android”，并选择“设为启动项目”。  
 4. 按 F5 开始调试应用程序。
-5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/zh-cn/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
+5. 如果想要在 iOS 上运行，首先请将计算机连接到 Mac（参阅操作[说明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)）。
 6. 右键单击“TaskList.iOS”项目，并选择“设为启动项目”。  
 7. 单击 F5 开始调试应用程序。
 
@@ -195,4 +195,4 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [!div class="nextstepaction"]
 > [将数据导入到使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Azure Cosmos DB](mongodb-migrate.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

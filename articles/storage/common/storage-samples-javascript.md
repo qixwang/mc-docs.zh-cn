@@ -4,22 +4,25 @@ description: 查看、下载和运行 Azure 存储的示例代码和应用程序
 author: WenJason
 ms.author: v-jay
 origin.date: 09/26/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 92d2b5c6e584760b115e3ed157e943bf3dfb62ce
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: d57e571a0d493fde2c8bd774e1cf4d451d8b2839
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328752"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028994"
 ---
 # <a name="azure-storage-samples-using-javascript"></a>使用 JavaScript 的 Azure 存储示例
 
 下表概述了示例存储库和每个示例中涉及的方案。 单击链接可查看 GitHub 中相应的示例代码。
 
-## <a name="blob-samples"></a>Blob 示例
+> [!NOTE]
+> 这些示例使用 Azure 存储 JavaScript v10 库。 有关 v12 代码，请参阅 GitHub 存储库中的[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
+
+## <a name="blob-samples-v10"></a>Blob 示例 (v10)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -44,7 +47,7 @@ ms.locfileid: "74328752"
 | 设置 Cors 规则 | [在 JavaScript 中开始使用 Azure Blob 服务](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L152) |
 | 快照 Blob | [在 JavaScript 中开始使用 Azure Blob 服务](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L79) |
 
-## <a name="file-samples"></a>文件示例
+## <a name="file-samples-v10"></a>文件示例 (v10)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -54,7 +57,7 @@ ms.locfileid: "74328752"
 | 列出目录和文件 | [在 JavaScript 中开始使用 Azure 文件服务](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L115) |
 | 列出共享 | [在 JavaScript 中开始使用 Azure 文件服务](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L187) |
 
-## <a name="queue-samples"></a>队列示例
+## <a name="queue-samples-v10"></a>队列示例 (v10)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -72,7 +75,7 @@ ms.locfileid: "74328752"
 | 队列统计信息 | [在 JavaScript 中开始使用 Azure 队列服务](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L149) |
 | 更新消息 | [在 JavaScript 中开始使用 Azure 队列服务](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L176) |
 
-## <a name="table-samples"></a>表示例
+## <a name="table-samples-v10"></a>表示例 (v10)
 
 | **方案** | **示例代码** |
 |--------------|-----------------|
@@ -87,7 +90,7 @@ ms.locfileid: "74328752"
 | SAS | [JavaScript 中的共享访问签名](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87) |
 | 表 ACL | [在 JavaScript 中开始使用 Azure 表服务](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255) |
 | 表 Cors 规则 | [在 JavaScript 中开始使用 Azure 表服务](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149) |
-| 表属性 | [在 JavaScript 中开始使用 Azure 表服务](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188) |
+| 表的属性 | [在 JavaScript 中开始使用 Azure 表服务](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188) |
 | 表统计信息 | [在 JavaScript 中开始使用 Azure 表服务](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243) |
 | 更新实体 | [在 JavaScript 中开始使用 Azure 表服务](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49) |
 

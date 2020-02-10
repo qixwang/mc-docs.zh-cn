@@ -10,13 +10,14 @@ origin.date: 04/17/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ca4794cde16260589dde574af40078f0d2e85ed8
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 643ec270c93ecdf5adee08d9e553ed3dc2bb1540
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965050"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068120"
 ---
+<!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
 
 使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
@@ -55,7 +56,7 @@ ms.locfileid: "75965050"
 
 <!--CORRECT ON public Microsoft `aci-helloworld`-->
 
-在“网络”页，为容器指定一个“DNS 名称标签”   。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.cn` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
+在“网络”页，为容器指定一个“DNS 名称标签”   。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.console.azure.cn` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
 ![在 Azure 门户中配置新的容器实例][aci-portal-04]
 

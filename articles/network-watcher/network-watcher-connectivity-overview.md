@@ -3,7 +3,7 @@ title: Azure 网络观察程序排查连接问题简介 | Azure
 description: 此页概述了网络观察程序排查连接问题功能
 services: network-watcher
 documentationcenter: na
-author: rockboyfor
+author: lingliw
 manager: digimobile
 editor: ''
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 07/11/2017
 ms.date: 04/30/2018
-ms.author: v-yeche
-ms.openlocfilehash: e9da5799381be08e0a97d9e69e9dab16b9bb21a6
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.author: v-lingwu
+ms.openlocfilehash: ce6e6028a0f2539c879dbc9f0760b9786174f363
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674679"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028490"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
 

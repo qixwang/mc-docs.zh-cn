@@ -4,16 +4,16 @@ description: 本文提供有关 Azure Cosmos DB 多区域分布的技术详细�
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 09/09/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 6d61c171664b87196df9e079dbb68189085b240a
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 0959970f1331b348a9346a37786ebc7343b6b5e4
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254518"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980534"
 ---
 # <a name="multiple-region-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB 多区域分配数据 - 揭秘
 
@@ -90,4 +90,4 @@ Cosmos DB 的多区域分布依赖于两个关键抽象 – 副本集和分区�
 * [如何配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [如何创建自定义冲突解决策略](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

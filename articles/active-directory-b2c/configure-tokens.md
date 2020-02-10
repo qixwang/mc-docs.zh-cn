@@ -7,22 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 04/16/2019
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 5fe5567a7f2ca8840700c9fdd2849379a5b2cbba
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 9ec8779382afa288b532a0f971abc53f454af280
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847117"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028082"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
-本文介绍如何在 Azure Active Directory B2C (Azure AD B2C) 中配置[令牌的生存期和兼容性](active-directory-b2c-reference-tokens.md)。
+本文介绍如何在 Azure Active Directory B2C (Azure AD B2C) 中配置[令牌的生存期和兼容性](tokens-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
@@ -55,8 +54,8 @@ ms.locfileid: "72847117"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[使用访问令牌](active-directory-b2c-access-tokens.md)。
+详细了解如何[使用访问令牌](access-tokens.md)。
 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->
 

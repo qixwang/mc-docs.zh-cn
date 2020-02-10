@@ -13,12 +13,12 @@ ms.reviewer: seyadava
 ms.custom: mvc
 manager: digimobile
 ms.lastreviewed: 06/03/2019
-ms.openlocfilehash: 2de43698d6c2c1cf0880d450b4d717b545af8ef1
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 563cabbef0368a8d034d98de0adf8996100b7ac0
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857083"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028502"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>在 Azure Stack 上部署 Ethereum 区块链网络
 
@@ -37,7 +37,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 - 选择部署体系结构。
 - 部署独立网络、联盟领导者网络或联盟成员网络。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [从市场](../operator/azure-stack-download-azure-marketplace-item.md)下载最新项目：
 
@@ -46,7 +46,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 - 适用于 Linux 的自定义脚本 2.0
 - 适用于 Windows 的自定义脚本扩展
 
-有关区块链方案的更多信息，请参阅 [Ethereum 权威证明联盟解决方案模板](https://docs.microsoft.com/zh-cn/azure/blockchain/templates/ethereum-poa-deployment)。
+有关区块链方案的更多信息，请参阅 [Ethereum 权威证明联盟解决方案模板](https://docs.microsoft.com/azure/blockchain/templates/ethereum-poa-deployment)。
 
 ## <a name="deployment-architecture"></a>部署体系结构
 
@@ -104,7 +104,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     ---------------|-------------|----------------|-------------
     订阅 | 要将联盟网络部署到的订阅。 | | 消耗订阅
     资源组 | 部署联盟网络的资源组。 | | EthereumResources
-    Location | 资源组的 Azure 区域。 | | local
+    位置 | 资源组的 Azure 区域。 | | local
 
 8. 选择“创建”  。
 
@@ -152,7 +152,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     ---------------|-------------|----------------|-------------
     订阅 | 要将联盟网络部署到的订阅。 | | 消耗订阅
     资源组 | 部署联盟网络的资源组。 | | MemberResources
-    Location | 资源组的 Azure 区域。 | | local
+    位置 | 资源组的 Azure 区域。 | | local
 
 8. 选择“创建”  。
 
@@ -202,7 +202,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     ---------------|-------------|----------------|-------------
     订阅 | 领导者的订阅。 | | 消耗订阅
     资源组 | 领导者的资源组。 | | EthereumResources
-    Location | 资源组的 Azure 区域。 | | local
+    位置 | 资源组的 Azure 区域。 | | local
 
 8. 选择“创建”  。
 

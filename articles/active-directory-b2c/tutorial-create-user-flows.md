@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 7034dc7b83eb9596e5264418236bb459d6ddf7ad
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: e5bdb88e4316fb73b26cba0670aa149e33013ab0
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624051"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028115"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
-可以在应用程序中使用[用户流](active-directory-b2c-reference-policies.md)，让用户注册、登录或管理其配置文件。 可以在 Azure Active Directory B2C (Azure AD B2C) 租户中创建多个不同类型的用户流，并根据需要在应用程序中使用它们。 可以跨应用程序重复使用用户流。
+可以在应用程序中使用[用户流](user-flow-overview.md)，让用户注册、登录或管理其配置文件。 可以在 Azure Active Directory B2C (Azure AD B2C) 租户中创建多个不同类型的用户流，并根据需要在应用程序中使用它们。 可以跨应用程序重复使用用户流。
 
 在本文中，学习如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "75624051"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [注册](tutorial-register-applications.md)属于要创建的用户流的应用程序。
 
@@ -94,7 +94,7 @@ ms.locfileid: "75624051"
 1. 选择已创建的用户流以打开其概览页，然后选择“运行用户流”。 
 1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。  “回复 URL”应显示为 `https://jwt.ms`。 
 1. 单击“运行用户流”，然后使用前面创建的帐户登录。 
-1. 现在，你可以更改用户的显示名称和职务。 单击“继续”。  令牌将返回到 `https://jwt.ms` 并显示出来。
+1. 现在，你可以更改用户的显示名称和职务。 单击 **“继续”** 。 令牌将返回到 `https://jwt.ms` 并显示出来。
 
 ## <a name="create-a-password-reset-user-flow"></a>创建密码重置用户流
 
@@ -124,4 +124,4 @@ ms.locfileid: "75624051"
 > * 创建配置文件编辑用户流
 > * 创建密码重置用户流
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

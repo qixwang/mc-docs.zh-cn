@@ -1,21 +1,21 @@
 ---
-title: 将 Blob 存储事件发送到 Web 终结点 - 门户 | Microsoft Docs
-description: 使用 Azure 事件网格和 Azure 门户创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
+title: 快速入门：将 Blob 存储事件发送到 Web 终结点 - 门户
+description: 快速入门：使用 Azure 事件网格和 Azure 门户创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: v-yiso
-origin.date: 07/11/2019
-ms.date: 07/29/2019
+origin.date: 11/05/2019
+ms.date: 02/17/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 8791ae7ef3ea7dbb9e4d78bbf1cd4065d5df5818
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.openlocfilehash: c11a558a13bd29f6e4f927ccd70af33651adf2cc
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68337551"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068182"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 
@@ -39,9 +39,12 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
    ![选择“存储”](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. 要订阅事件，请创建常规用途 v2 存储帐户或 Blob 存储帐户。 有关详细信息，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
+1. 要订阅事件，请创建常规用途 v2 存储帐户或 Blob 存储帐户。 有关详细信息，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
 
    ![开始执行步骤](./media/blob-event-quickstart-portal/provide-blob-values.png)
+
+>[!NOTE]
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
@@ -142,5 +145,6 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 了解如何创建自定义主题和事件订阅后，请详细了解事件网格的功能：
 
 - [关于事件网格](overview.md)
+- [将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fevent-grid%2ftoc.json)
 - [通过 Azure 事件网格和逻辑应用监视虚拟机的更改](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)

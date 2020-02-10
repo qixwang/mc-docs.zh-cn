@@ -1,6 +1,6 @@
 ---
-title: 教程 - 通过 Azure CLI 使用发布/订阅渠道和主题筛选器更新零售库存分类 | Azure Docs
-description: 在本教程中，你将了解如何从主题和订阅发送和接收消息，以及如何使用 Azure CLI 添加和使用筛选器规则
+title: 教程：通过 Azure CLI 使用发布/订阅频道和主题筛选器更新零售库存分类
+description: 教程：在本教程中，你将了解如何从主题和订阅发送和接收消息，以及如何使用 Azure CLI 添加和使用筛选器规则
 services: service-bus-messaging
 author: lingliw
 manager: digimobile
@@ -10,12 +10,12 @@ ms.date: 09/26/2019
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: ed941928643e6b1017af6c4cae58beb61c5acd67
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 95184c3416383ec6162e263623c2f8e3654d8724
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528421"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067958"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 
@@ -35,7 +35,7 @@ ms.locfileid: "74528421"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户][]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Java 开发服务总线应用，必须安装以下项：
 

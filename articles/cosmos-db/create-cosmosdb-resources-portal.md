@@ -1,20 +1,20 @@
 ---
-title: 从 Azure 门户创建 Azure Cosmos 数据库。
-description: 使用 Azure 门户创建 Azure Cosmos 数据库、容器和项。
+title: 快速入门 - 从 Azure 门户创建 Azure Cosmos DB 资源
+description: 本快速入门介绍如何使用 Azure 门户创建 Azure Cosmos 数据库、容器和项。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 09/01/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 90b8fba6f37b2466f661c28dff6bc83286af0ea7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/02/2019
+ms.date: 02/10/2020
+ms.openlocfilehash: 508038012b208d932859e2840f2b9684544e84ee
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335377"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980559"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 
@@ -31,7 +31,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帐户、创建文档数据库和容器，并将数据添加到容器。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -108,4 +108,4 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

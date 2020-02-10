@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5f3898808d75f6a6d7cd847ba1bff6d8e8cbd174
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 8f8cb648ca5b4c424625dda279a6178ada3227a3
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631005"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029081"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建一个空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -66,10 +66,10 @@ namespace helloworld
 
 > [!NOTE]
 > 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
-
-```csharp
-var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
+> ```csharp
+> var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+> ```
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
 
@@ -97,7 +97,7 @@ var result = await recognizer.RecognizeOnceAsync();
 
 语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到控制台。
 
-在 using 语句中 `RecognizeOnceAsync()` 的下面，添加以下代码：
+在 using 语句中的 `RecognizeOnceAsync()` 下方，添加以下代码：
 
 ```csharp
 if (result.Reason == ResultReason.RecognizedSpeech)
@@ -186,7 +186,7 @@ namespace helloworld
 现在，可以使用语音服务构建应用并测试语音识别。
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. “启动应用” - 在菜单栏中，选择“调试” > “开始调试”，或按 F5     。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

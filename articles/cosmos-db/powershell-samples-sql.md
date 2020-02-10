@@ -1,18 +1,18 @@
 ---
 title: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - SQL (Core) API
-description: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - SQL (Core) API
+description: 获取用于在 Azure Cosmos DB SQL API 帐户中执行各种常见任务的 Azure PowerShell 示例
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
 origin.date: 09/20/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4fa81c3d4597c0d2785a48de0e92e7c057eb0a08
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3088e6b56468b8b4784250779bb0d80afd64c577
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914412"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028769"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - SQL (Core) API
 
@@ -34,4 +34,4 @@ ms.locfileid: "72914412"
 |[创建启用 IP 防火墙的 Cosmos 帐户](scripts/powershell/common/ps-account-firewall-create.md)| 创建启用 IP 防火墙的 Azure Cosmos 帐户。 |
 |||
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

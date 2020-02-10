@@ -15,13 +15,13 @@ ms.workload: na
 origin.date: 12/20/2019
 ms.author: v-tawe
 ms.custom: accessibility
-ms.date: 01/13/2020
-ms.openlocfilehash: 68cb350d9bbf9d00c71c7c8e792a2773871c7561
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.date: 02/17/2020
+ms.openlocfilehash: 16ee8ec775b386a44c53323fc35cdb30641541bb
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600568"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028193"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 门户中的键盘快捷方式
 
@@ -29,7 +29,7 @@ ms.locfileid: "75600568"
 
 ## <a name="actions"></a>操作
 
-|为了执行此操作 |按 |
+|为了执行此操作 |请按 |
 | --- | --- |
 |创建资源|G+N|
 | 打开“所有服务”|G+B|
@@ -40,14 +40,14 @@ ms.locfileid: "75600568"
 
 ## <a name="navigation"></a>导航
 
-|为了执行此导航 |按 |
+|为了执行此导航 |请按 |
 | --- | --- |
 |将焦点移到命令栏 |G+, |
 |在标头和左边栏之间切换焦点 | G+. |
 
 ## <a name="go-to"></a>转到
 
-|转到此位置 |按 |
+|转到此位置 |请按 |
 | --- | --- |
 |转到“仪表板”  |G+D |
 |转到“所有资源” |G+A |

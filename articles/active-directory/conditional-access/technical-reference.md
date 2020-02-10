@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: reference
-ms.date: 01/15/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6ce5134eae8ebd3bb21f357deb4a253631200be
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 09acef93f19a4b6c9a6ef1a68c8d853be6de6987
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116740"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067533"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -81,7 +81,7 @@ Office 365（预览版）客户端应用中包含的关键应用程序：
 - Office 365 SharePoint Online
 - Microsoft Teams
 - Office 365 Yammer
-- Office 门户
+- Office.com
 - Microsoft Forms
 - Microsoft Power Automate
 - Microsoft Planner

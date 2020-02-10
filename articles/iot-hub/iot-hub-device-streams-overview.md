@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: b9c57bbfa6e76071d5cb76c707c23a27e8c75c69
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 008bb005abe473d7f65354faa995c3f0cff2b9ed
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993767"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068293"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
@@ -166,7 +166,6 @@ IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例
 
 以下是 echo 示例：
 
-* [C# 服务和服务程序](quickstart-device-streams-echo-csharp.md)
 
 * [Node.js 服务程序](quickstart-device-streams-echo-nodejs.md)
 
@@ -202,7 +201,6 @@ IoT 中心页上提供两个[快速入门示例](/azure/iot-hub)。 这些示例
 
 使用以下链接获取有关如何以选择的语言运行本地代理程序的说明。 与[回显示例](#echo-sample)类似，可以使用不同的语言运行设备本地代理程序和服务本地代理程序，因为它们完全可互操作。
 
-* [C# 服务和服务程序](quickstart-device-streams-proxy-csharp.md)
 
 * [Node.js 服务程序](quickstart-device-streams-proxy-nodejs.md)
 

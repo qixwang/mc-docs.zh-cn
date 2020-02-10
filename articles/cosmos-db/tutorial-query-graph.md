@@ -1,20 +1,20 @@
 ---
 title: 如何查询 Azure Cosmos DB 中的图数据？
-description: 学习如何查询 Azure Cosmos DB 中的图数据
+description: 了解如何使用 Gremlin 查询从 Azure Cosmos DB 查询图形数据
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-origin.date: 01/02/2018
-ms.date: 03/18/2019
+origin.date: 12/03/2018
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 82bb6b57d21847e0cbcae08e23b32a405cfe02a5
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.openlocfilehash: ae02e2a4662d1e606c9122b69794da1520f6663c
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988338"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067889"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>教程：使用 Gremlin 查询 Azure Cosmos DB Gremlin API
@@ -26,7 +26,7 @@ Azure Cosmos DB [Gremlin API](graph-introduction.md) 支持 [Gremlin](https://gi
 > [!div class="checklist"]
 > * 使用 Gremlin 查询数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使这些查询生效，必须拥有 Azure Cosmos DB 帐户，且容器中必须包含图数据。 没有这些内容？ 请学习 [5 分钟快速入门](create-graph-dotnet.md)或[开发人员教程](tutorial-query-graph.md)，创建帐户并填充数据库。 可以使用 [Gremlin 控制台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)或你最喜爱的 Gremlin 驱动程序运行以下查询。
 
@@ -82,5 +82,4 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 > [!div class="nextstepaction"]
 > [多区域分布](distribute-data-globally.md)
 
-<!--Update_Description: new articles on tutorial query graph -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

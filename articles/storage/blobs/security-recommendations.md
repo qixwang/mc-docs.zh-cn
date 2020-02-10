@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.custom: security-recommendations
-ms.openlocfilehash: 81c6272ea985f96a334178a31f8173ea28419b47
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 392d8e63e2570e82a8accc98e74c4ae3ba3b64fd
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624453"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028908"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 

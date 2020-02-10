@@ -7,14 +7,14 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/30/2018
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 306bf2309522b88d8faa0bce402ed889302878d0
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 05954549d44a4f97d619e822d9dc64f8bf47ef88
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600469"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979352"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -24,7 +24,7 @@ ms.locfileid: "75600469"
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>如果需要移动应用服务资源，是否有什么限制需要注意？
 
-如果打算将应用服资源转移到新的资源组或订阅，有一些限制需要注意。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+如果打算将应用服资源转移到新的资源组或订阅，有一些限制需要注意。 有关详细信息，请参阅[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何将自定义域名用于 Web 应用？
 
@@ -50,11 +50,11 @@ ms.locfileid: "75600469"
 
 当前，Azure Application Insights 不支持移动操作。 如果原始资源组包括 Application Insights 资源，则无法移动该资源。 如果在尝试移动应用服务应用时包括了 Application Insights 资源，则整个移动操作会失败。 不过，即使 Application Insights 和应用服务计划不与应用位于同一资源组中，应用也可以正常运行。
 
-有关详细信息，请参阅[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+有关详细信息，请参阅[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
-## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>我可以在何处找到指导清单并详细了解资源移动操作？
+## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>可从何处找到指南清单，了解有关资源移动操作的详细信息？
 
-[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)说明如何将资源移到新订阅或同一订阅的新资源组中。 可以获取有关资源移动清单的信息，了解哪些服务支持移动操作，并了解有关应用服务限制及其他主题的详细信息。
+[应用服务限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)说明如何将资源移到新订阅或同一订阅的新资源组中。 可以获取有关资源移动清单的信息，了解哪些服务支持移动操作，并了解有关应用服务限制及其他主题的详细信息。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>如何为 Web 应用设置服务器时区？
 
@@ -83,13 +83,13 @@ ms.locfileid: "75600469"
 
 随即显示出站 IP 地址列表。
 
-<!-- To learn how to get the outbound IP address if your website is hosted in an App Service Environment, see [Outbound network addresses](environment/network-info.md#outbound-network-addresses). -->
+如果你的网站在应用服务环境中承载，则若要了解如何获取出站 IP 地址，请参阅[出站网络地址](environment/network-info.md#outbound-network-addresses)。
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的保留或专用入站 IP 地址？
 
 若要为针对 Azure 应用网站的入站调用设置专用的或保留的 IP 地址，请安装和配置基于 IP 的 SSL 证书。
 
-请注意，若要将专用或保留 IP 地址用于入站调用，应用服务计划必须处于基本或更高服务计划中。
+请注意，若要将专用或保留的 IP 地址用于入站调用，应用服务计划必须包含在基本或更高的服务计划中。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>是否可以导出应用服务证书以在 Azure 外部使用（如用于在其他位置承载的网站）？ 
 
@@ -102,19 +102,19 @@ ms.locfileid: "75600469"
 有关详细信息，请参阅[应用服务证书和自定义域的常见问题解答](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
 
 
-## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>当我尝试备份 Web 应用时，为何看到消息“已部分成功”？
+## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>尝试备份 Web 应用时，为何出现“部分成功”的消息？
 
 备份失败的一个常见原因是应用程序正在使用某些文件。 执行备份时，正在使用的文件会被锁定。 这会阻止对这些文件的备份操作，并可能导致“部分成功”状态。 可以通过将文件从备份过程中排除来防止这种情况发生。 可以选择仅备份所需文件。 有关详细信息，请参阅 [Azure Web 应用仅备份站点的重要部分](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/)。
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何从 HTTP 响应中删除标头？
 
-若要移删除 HTTP 响应的标头，请更新站点的 web.config 文件。 有关详细信息，请参阅[在 Azure 网站上删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+若要从 HTTP 响应中删除标头，请更新站点的 web.config 文件。 有关详细信息，请参阅[在 Azure 网站上删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>应用服务是否符合 PCI 标准 3.0 和 3.1？
 
 目前，Azure App Service 的 Web 应用功能符合 PCI 数据安全标准 (DSS) 3.0 版级别 1。 PCI DSS 3.1 版正在设计之中。 我们正在计划如何采用最新标准。
 
-PCI DSS 3.1 版证书要求禁用传输层安全性 (TLS) 1.0。 当前，对于大多数应用服务计划，不会选择禁用 TLS 1.0。 但是，如果使用应用服务环境，或者愿意将工作负荷迁移到应用服务环境，则可以更好地控制环境。 这涉及到通过与 Azure 支持部门联系来禁用 TLS 1.0。 在不久的将来，我们计划使用户可以访问这些设置。
+PCI DSS 3.1 版证书要求禁用传输层安全性 (TLS) 1.0。 目前，大多数应用服务计划无法禁用 TLS 1.0。 但是，如果使用应用服务环境，或者愿意将工作负荷迁移到应用服务环境，则可以更好地控制环境。 这涉及到通过与 Azure 支持部门联系来禁用 TLS 1.0。 在不久的将来，我们计划使用户可以访问这些设置。
 
 有关详细信息，请参阅 [App Service Web 应用 PCI 标准 3.0 和 3.1 符合性](https://support.microsoft.com/help/3124528)。
 
@@ -157,11 +157,11 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 在站点层面上，有两种方法可用于控制应用服务的入站流量：
 
 * 启用动态 IP 限制。 若要了解如何启用动态 IP 限制，请参阅[适用于 Azure 网站的 IP 和域限制](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)。
-* 开启“模块安全”。 若要了解如何打开模块安全，请参阅 [Azure 网站上的 ModSecurity Web 应用程序防火墙](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/)。
+* 开启“模块安全”。 若要了解如何开启模块安全，请参阅 [Azure 网站上的 ModSecurity Web 应用程序防火墙](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/)。
 
 如果使用应用服务环境，则可以使用 [Barracuda 防火墙](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/)。
 
-## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何在应用服务 Web 应用中阻止端口？
+## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何在应用服务 Web 应用中封锁端口？
 
 在应用服务共享租户环境中，由于基础结构的性质，无法封锁特定端口。 TCP 端口 4020、4022 和 4024 也可能打开，用于 Visual Studio 远程调试。
 
@@ -186,7 +186,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 ### <a name="f12-console-output"></a>F12 控制台输出
 
 1. 选择“控制台”选项卡。 
-2. 对于每个至少包含一项的选项卡，选择选项卡（“错误”  、“警告”  或“信息”  ）。 如果未选中选项卡，移开光标时，选项卡图标呈灰色或黑色。
+2. 对于每个至少包含一项的选项卡，选择选项卡（“错误”  、“警告”  或“信息”  ）。 如果未选择选项卡，则选项卡图标会在光标离开它时为灰色或黑色。
 3. 右键单击窗格中的信息区域，然后选择“全部复制”  。
 4. 将复制的文本粘贴到文件中，然后保存该文件。
 
@@ -208,7 +208,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 为了提供容错能力，应用服务环境要求每个辅助角色池至少需要一个额外的计算资源。 无法为额外的计算资源分配工作负荷。
 
-<!-- For more information, see [How to create an App Service Environment](environment/app-service-web-how-to-create-an-app-service-environment.md). -->
+有关详细信息，请参阅[如何创建应用服务环境](environment/create-external-ase.md)。
 
 ## <a name="why-do-i-see-timeouts-when-i-try-to-create-an-app-service-environment"></a>在尝试创建应用服务环境时，为何遇到超时？
 
@@ -227,7 +227,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 有关详细信息，请参阅[部署（创建）新 Azure 应用服务环境时的常见问题](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/)。
 
-## <a name="why-cant-i-delete-my-app-service-plan"></a>为何无法删除应用服务计划？
+## <a name="why-cant-i-delete-my-app-service-plan"></a>为什么无法删除应用服务计划？
 
 如果应用服务计划与任何应用服务应用相关联，则无法删除此应用服务计划。 删除应用服务计划前，请从应用服务计划中删除所有关联的应用服务应用。
 
@@ -243,7 +243,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
     {month} {day of the week}" }
     ```
 
-有关计划 Web 作业的详细信息，请参阅[使用 Cron 表达式创建计划 Web 作业](webjobs-create.md#CreateScheduledCRON)。
+有关计划的 Web 作业的详细信息，请参阅[使用 Cron 表达式创建计划的 Web 作业](webjobs-create.md#CreateScheduledCRON)。
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>如何对应用服务应用执行渗透测试？
 
@@ -251,7 +251,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>如何为使用流量管理器的应用服务 Web 应用配置自定义域名？
 
-若要了解如何对使用 Azure 流量管理器进行负载平衡的应用服务应用使用自定义域名，请参阅[为使用流量管理器的 Azure Web 应用配置自定义域名](web-sites-traffic-manager-custom-domain-name.md)。
+若要了解如何将自定义域名用于使用 Azure 流量管理器实现负载均衡的应用服务应用，请参阅[为使用流量管理器的 Azure Web 应用配置自定义域名](web-sites-traffic-manager-custom-domain-name.md)。
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>我的应用服务证书被标记为存在欺诈。 如何解决此问题？
 
@@ -290,9 +290,9 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>为什么自动缩放不按预期方式工作？
 
-如果 Azure 自动缩放未按预期方式缩放 web 应用，可能会陷入一种困境，在这种情况下，建议主动选择不进行缩放以避免由“不稳定”引起的无限循环。 当扩大与缩小阈值之间没有足够空间时，通常会发生这种情况。 若要了解如何避免“波动”以及如何了解其他自动缩放最佳做法，请参阅[自动缩放最佳做法](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices)。
+如果 Azure 自动缩放未按预期方式缩放 web 应用，可能会陷入一种困境，在这种情况下，建议主动选择不进行缩放以避免由“不稳定”引起的无限循环。 这种情况通常是因扩展阈值和缩小阈值之间的差值不足所致。 若要了解如何避免“波动”以及如何了解其他自动缩放最佳做法，请参阅[自动缩放最佳做法](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices)。
 
-## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>为何自动缩放有时只部分缩放？
+## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>为什么自动缩放有时仅进行部分缩放？
 
 当指标超过预配置的限值时，将触发自动缩放。 有时可能会发现，与预期相比，仅填充了部分容量。 当所需的实例数无法实现时，则可能会发生这种情况。 在这种情况下，自动缩放使用可用的实例数进行部分填充。 然后，自动缩放运行重新平衡逻辑，以获取更多容量。 它会分配剩余实例。 请注意，这可能需要几分钟的时间。
 
@@ -310,7 +310,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 </system.webServer>
 ```
 
-还可以指定要压缩的特定动态和静态 MIME 类型。 有关详细信息，请参阅我们在[简单 Azure 网站上的 httpCompression 设置](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview)中对论坛问题的回复。
+还可以指定要压缩的特定动态和静态 MIME 类型。 有关详细信息，请参阅[简单 Azure 网站上的 httpCompression 设置](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview)，查看我们对一个论坛问题的回复。
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>如何从本地环境迁移到应用服务？
 

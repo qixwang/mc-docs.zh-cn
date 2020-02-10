@@ -12,12 +12,12 @@ origin.date: 01/23/2018
 ms.date: 01/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: a1e32f8570e3ddef0efe38dd9c88c3bf3cbe3470
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 4cbb37deea6bcea7e54977b5e707dd507c393012
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330049"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028590"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
@@ -31,7 +31,7 @@ ms.locfileid: "71330049"
 > * 创建一个 Batch 池，作为 R 会话的并行后端
 > * 在池中运行示例并行模拟
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 已安装的 [R](https://www.r-project.org/) 发行版，例如 [Microsoft R Open](https://mran.microsoft.com/open)。 使用 R 3.3.1 或更高版。
 

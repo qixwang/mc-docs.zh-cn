@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 55deab80899b8fd038bdf367fa07e8d6f22fd693
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 71e7d89625c2c0d960c8e80d50fbe90f6806670b
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623971"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028145"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>使用自定义策略在 Azure Active Directory B2C 中选择页面布局
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-无论你使用的是用户流还是自定义策略，都可以在 Azure Active Directory B2C (Azure AD B2C) 策略中启用 JavaScript 客户端代码。 若要为应用程序启用 JavaScript，必须在[自定义策略](active-directory-b2c-overview-custom.md)中添加一个元素，选择一个页面布局，并在请求中使用 [b2clogin.cn](b2clogin.md)。
+无论你使用的是用户流还是自定义策略，都可以在 Azure Active Directory B2C (Azure AD B2C) 策略中启用 JavaScript 客户端代码。 若要为应用程序启用 JavaScript，必须在[自定义策略](custom-policy-overview.md)中添加一个元素，选择一个页面布局，并在请求中使用 [b2clogin.cn](b2clogin.md)。
 
 页面布局是 Azure AD B2C 提供的元素与你提供的内容之间的关联。
 

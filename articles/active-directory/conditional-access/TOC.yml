@@ -17,6 +17,8 @@
       href: concept-conditional-access-policy-common.md
     - name: 条件访问策略组件
       href: concept-conditional-access-policies.md
+    - name: 云应用和操作
+      href: concept-conditional-access-cloud-apps.md
     - name: Conditions
       href: conditions.md
     - name: 位置条件

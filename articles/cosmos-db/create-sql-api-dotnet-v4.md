@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 62a3599df047270911ce4775a47f9f16bef5205c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/10/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: 7c2f45124b194b8be6d95c69bcaa3ee70549edef
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348469"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980543"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://www.azure.cn/pricing/1rmb-trial/)。 
 
@@ -58,8 +58,10 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 <!--Not Available on Azure Cloud Shell-->
 
+<!--CORRECT ON globlly unique-->
 
 Azure Cosmos 帐户名必须是全局唯一的，请确保在本地电脑上运行该命令之前更新 `mysqlapicosmosdb` 值。
+
 
 ```azurecli
 
@@ -125,7 +127,7 @@ Time Elapsed 00:00:34.17
 当仍在应用程序目录中时，使用 DotNet 添加包命令安装适用于 .NET 的 Azure Cosmos DB 客户端库。
 
    ```bash
-   dotnet add package Azure.Cosmos --version 4.0.0-preview
+   dotnet add package Azure.Cosmos --version 4.0.0-preview3
    ```
 
 ### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>从 Microsoft Azure 门户复制 Azure Cosmos 帐户凭据
@@ -164,13 +166,14 @@ Time Elapsed 00:00:34.17
 本文所述的示例代码在 Azure Cosmos DB 中创建家庭数据库。 家庭数据库包含家庭详细信息，例如名称、地址、位置、关联的父母、子女和宠物。 在将数据填充到 Azure Cosmos 帐户之前，请定义家庭项的属性。 在示例应用程序的根级别创建一个名为 `Family.cs` 的新类，并向其中添加以下代码：
 
 ```csharp
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace todo
 {
     public class Family
     {
-        [JsonProperty(PropertyName = "id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         public string LastName { get; set; }
         public Parent[] Parents { get; set; }
@@ -179,7 +182,7 @@ namespace todo
         public bool IsRegistered { get; set; }
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonSerializer.Serialize(this);
         }
     }
 
@@ -217,7 +220,6 @@ namespace todo
 从项目目录，在编辑器中打开 `Program.cs` 文件，并在应用程序顶部添加以下 using 指令：
 
 ```csharp
-
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -229,7 +231,6 @@ using Azure.Cosmos;
 在 `Program` 类中，添加以下全局变量。 其中包括终结点和授权密钥、数据库的名称以及要创建的容器。 确保根据环境替换终结点和授权密钥值。 
 
 ```csharp
-
 private const string EndpointUrl = "https://<your-account>.documents.azure.cn:443/";
 private const string AuthorizationKey = "<your-account-key>";
 private const string DatabaseId = "FamilyDatabase";
@@ -240,7 +241,6 @@ private const string ContainerId = "FamilyContainer";
 最后，替换 `Main` 方法：
 
 ```csharp
-
 static async Task Main(string[] args)
 {
 
@@ -261,14 +261,13 @@ static async Task Main(string[] args)
 定义 `program.cs` 类中的 `CreateDatabaseAsync` 方法。 该方法创建 `FamilyDatabase`（如果尚不存在）。
 
 ```csharp
-
 /// <summary>
 /// Create the database if it does not exist
 /// </summary>
 private static async Task CreateDatabaseAsync(CosmosClient cosmosClient)
 {
     // Create a new database
-    Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync(Program.DatabaseId);
+    CosmosDatabase database = await cosmosClient.CreateDatabaseIfNotExistsAsync(Program.DatabaseId);
     Console.WriteLine("Created Database: {0}\n", database.Id);
 }
 
@@ -279,7 +278,6 @@ private static async Task CreateDatabaseAsync(CosmosClient cosmosClient)
 定义 `Program` 类中的 `CreateContainerAsync` 方法。 该方法创建 `FamilyContainer`（如果尚不存在）。 
 
 ```csharp
-
 /// <summary>
 /// Create the container if it does not exist. 
 /// Specify "/LastName" as the partition key since we're storing family information, to ensure good distribution of requests and storage.
@@ -288,7 +286,7 @@ private static async Task CreateDatabaseAsync(CosmosClient cosmosClient)
 private static async Task CreateContainerAsync(CosmosClient cosmosClient)
 {
     // Create a new container
-    Container container = await cosmosClient.GetDatabase(Program.DatabaseId).CreateContainerIfNotExistsAsync(Program.ContainerId, "/LastName");
+    CosmosContainer container = await cosmosClient.GetDatabase(Program.DatabaseId).CreateContainerIfNotExistsAsync(Program.ContainerId, "/LastName");
     Console.WriteLine("Created Container: {0}\n", container.Id);
 }
 
@@ -299,7 +297,6 @@ private static async Task CreateContainerAsync(CosmosClient cosmosClient)
 通过使用以下代码添加 `AddItemsToContainerAsync` 方法来创建家庭项。 可以使用 `CreateItemAsync` 或 `UpsertItemAsync` 方法来创建项：
 
 ```csharp
-
 /// <summary>
 /// Add Family items to the container
 /// </summary>
@@ -332,14 +329,14 @@ private static async Task AddItemsToContainerAsync(CosmosClient cosmosClient)
         IsRegistered = false
     };
 
-    Container container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
+    CosmosContainer container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
     try
     {
         // Read the item to see if it exists.  
         ItemResponse<Family> andersenFamilyResponse = await container.ReadItemAsync<Family>(andersenFamily.Id, new PartitionKey(andersenFamily.LastName));
         Console.WriteLine("Item in database with id: {0} already exists\n", andersenFamilyResponse.Value.Id);
     }
-    catch(CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+    catch(CosmosException ex) when (ex.Status == (int)HttpStatusCode.NotFound)
     {
         // Create an item in the container representing the Andersen family. Note we provide the value of the partition key for this item, which is "Andersen"
         ItemResponse<Family> andersenFamilyResponse = await container.CreateItemAsync<Family>(andersenFamily, new PartitionKey(andersenFamily.LastName));
@@ -398,7 +395,6 @@ private static async Task AddItemsToContainerAsync(CosmosClient cosmosClient)
 插入项后，可以运行查询以获取“Andersen”家庭的详细信息。 以下代码显示如何直接使用 SQL 查询来执行查询。 获取“Anderson”家庭详细信息的 SQL 查询是：`SELECT * FROM c WHERE c.LastName = 'Andersen'`。 在 `Program` 类中定义 `QueryItemsAsync` 方法，并向其中添加以下代码：
 
 ```csharp
-
 /// <summary>
 /// Run a query (using Azure Cosmos DB SQL syntax) against the container
 /// </summary>
@@ -408,7 +404,7 @@ private static async Task QueryItemsAsync(CosmosClient cosmosClient)
 
     Console.WriteLine("Running query: {0}\n", sqlQueryText);
 
-    Container container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
+    CosmosContainer container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
 
     QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
 
@@ -428,13 +424,12 @@ private static async Task QueryItemsAsync(CosmosClient cosmosClient)
 通过使用以下代码添加 `ReplaceFamilyItemAsync` 方法来读取家庭项，然后对其更新。
 
 ```csharp
-
 /// <summary>
 /// Replace an item in the container
 /// </summary>
 private static async Task ReplaceFamilyItemAsync(CosmosClient cosmosClient)
 {
-    Container container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
+    CosmosContainer container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
 
     ItemResponse<Family> wakefieldFamilyResponse = await container.ReadItemAsync<Family>("Wakefield.7", new PartitionKey("Wakefield"));
     Family itemBody = wakefieldFamilyResponse;
@@ -456,13 +451,12 @@ private static async Task ReplaceFamilyItemAsync(CosmosClient cosmosClient)
 通过使用以下代码添加 `DeleteFamilyItemAsync` 方法来删除家庭项。
 
 ```csharp
-
 /// <summary>
 /// Delete an item in the container
 /// </summary>
 private static async Task DeleteFamilyItemAsync(CosmosClient cosmosClient)
 {
-    Container container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
+    CosmosContainer container = cosmosClient.GetContainer(Program.DatabaseId, Program.ContainerId);
 
     string partitionKeyValue = "Wakefield";
     string familyId = "Wakefield.7";
@@ -479,13 +473,12 @@ private static async Task DeleteFamilyItemAsync(CosmosClient cosmosClient)
 最后，可以使用以下代码删除添加 `DeleteDatabaseAndCleanupAsync` 方法的数据库：
 
 ```csharp
-
 /// <summary>
 /// Delete the database and dispose of the Cosmos Client instance
 /// </summary>
 private static async Task DeleteDatabaseAndCleanupAsync(CosmosClient cosmosClient)
 {
-    Database database = cosmosClient.GetDatabase(Program.DatabaseId);
+    CosmosDatabase database = cosmosClient.GetDatabase(Program.DatabaseId);
     DatabaseResponse databaseResourceResponse = await database.DeleteAsync();
 
     Console.WriteLine("Deleted Database: {0}\n", Program.DatabaseId);
@@ -543,5 +536,4 @@ az group delete -g "myResourceGroup"
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)
 
-<!-- Update_Description: new article about create sql api dotnet v4 -->
-<!--NEW.date: 12/09/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

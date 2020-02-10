@@ -6,8 +6,6 @@ services: network-watcher
 documentationcenter: ''
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: ''
 ms.service: network-watcher
 ms.workload: ''
 ms.tgt_pltfrm: na
@@ -16,12 +14,12 @@ ms.topic: article
 origin.date: 05/10/2018
 ms.date: 9/29/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0a6be2e38338c73ad0d3ef7961392415aec19135
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0ca763830207c7f1ee919608274abcbf47f3bc72
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336468"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028980"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限
 

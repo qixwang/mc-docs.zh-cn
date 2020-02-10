@@ -7,14 +7,14 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/18/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
-ms.openlocfilehash: efb4738da18bb960f86b46db6cb1cd1d2a24bed5
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: a3290c172cd19f00c60d9e59e0fb4de04af15b7d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624383"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028553"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
@@ -57,4 +57,4 @@ Azure 建议定期轮换访问密钥，以帮助保护存储帐户的安全。 �
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 存储帐户概述](storage-account-overview.md)
-- [创建存储帐户](storage-quickstart-create-account.md)
+- [创建存储帐户](storage-account-create.md)

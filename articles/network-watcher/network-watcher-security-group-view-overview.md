@@ -3,7 +3,7 @@ title: Azure 网络观察程序中的安全组视图简介 | Azure
 description: 此页概述了网络观察程序安全视图功能
 services: network-watcher
 documentationcenter: na
-author: rockboyfor
+author: lingliw
 manager: digimobile
 editor: ''
 ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/26/2017
-ms.date: 09/30/2018
-ms.author: v-yeche
-ms.openlocfilehash: 968f7c56b7d1a6f836deca54295665fa143f59c5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 12/12/2019
+ms.author: v-lingwu
+ms.openlocfilehash: 2259fd360d84276de954fdf67c309b319853e2cc
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336385"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028882"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure 网络观察程序中的有效安全规则视图简介
 

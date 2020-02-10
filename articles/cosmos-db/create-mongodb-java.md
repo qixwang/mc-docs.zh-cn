@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 Azure API for Mongo DB 和 Java SDK 生成 Web 应用 - Azure Cosmos DB
-description: 演示一个 Java 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
+title: 快速入门：使用 Azure Cosmos DB API for Mongo DB 和 Java SDK 构建 Web 应用
+description: 了解如何构建 Java 代码示例，可以参考该示例使用 Azure Cosmos DB 的 API for MongoDB 进行连接和查询。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 12/26/2018
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f4fdbbb1df7cc1a61e5a6f749e3a866916091018
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: dfb480c958ba1348f4c65f8a626499e0d05d5e8e
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913323"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980551"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "72913323"
 
 本快速入门演示如何使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 创建 Cosmos 帐户。 然后生成并部署使用 [MongoDB Java 驱动程序](https://docs.mongodb.com/ecosystem/drivers/java/)构建的控制台应用。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在运行此示例之前，必须具备以下先决条件：
 * [安装适用于 Azure 的 JDK 和 Azure Stack JDK 版本 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
@@ -67,7 +67,7 @@ ms.locfileid: "72913323"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
@@ -81,7 +81,7 @@ ms.locfileid: "72913323"
 
 以下代码片段全部摘自 Program.java 文件。
 
-* 将对 DocumentClient 进行初始化。
+* 此时会对 DocumentClient 进行初始化。
 
     ```java
     MongoClientURI uri = new MongoClientURI("FILLME");`

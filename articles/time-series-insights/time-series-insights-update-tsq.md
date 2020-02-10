@@ -11,16 +11,15 @@ ms.topic: conceptual
 origin.date: 12/16/2019
 ms.date: 01/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0a71b56d112125cf33a1cb686a81648d3cd852c8
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 1001e4334a6c5b3533746d993a4770fcd222c1f6
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859627"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068051"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据查询
 
-Azure 时序见解预览版允许通过公共 Surface API 对存储在环境中的事件和元数据进行数据查询。 这些 API 也用于[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
 
 时序见解中提供三个主要 API 类别：
 

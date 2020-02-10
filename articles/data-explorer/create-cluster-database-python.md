@@ -1,19 +1,19 @@
 ---
 title: 使用 Python 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 Python 创建 Azure 数据资源管理器群集和数据库。
-author: oflipman
+author: lucygoldbergmicrosoft
 ms.author: v-tawe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: a393387a3621983f0762451dbdccfbb2e7e6b30a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 8b86ac7f1a4030aab1e5caddad101e2606dab3cd
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335950"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037939"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "75335950"
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 Python 创建群集和数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -111,13 +111,16 @@ pip install azure-mgmt-kusto
     databaseName="mykustodatabase"
     
     database_operations = kusto_management_client.databases 
-    _database = Database(location=location,
+    _database = ReadWriteDatabase(location=location,
                         soft_delete_period=softDeletePeriod,
                         hot_cache_period=hotCachePeriod)
     
     #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
     poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
+
+        [!NOTE]
+        If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|

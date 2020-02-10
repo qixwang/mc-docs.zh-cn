@@ -6,16 +6,16 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-origin.date: 3/13/2019
-ms.date: 11/18/2019
+origin.date: 03/13/2019
+ms.date: 01/20/2020
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 4d4d26b33813e8229bd3340a17fc2d0704949944
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 5ce97e84ff063e781d5e2d27026ce36fc07aec85
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831368"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966504"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -36,7 +36,7 @@ ms.locfileid: "73831368"
 > * 运行该应用，直至警报开始触发。 
 > * 查看指标结果并检查诊断日志。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>启用诊断日志 
 
-创建新的 IoT 中心时，会默认禁用[诊断日志](../azure-monitor/platform/resource-logs-overview.md)。 在此部分，请为中心启用诊断日志。
+创建新的 IoT 中心时，会默认禁用[诊断日志](../azure-monitor/platform/platform-logs-overview.md)。 在此部分，请为中心启用诊断日志。
 
 1. 首先，如果尚未进入门户的中心，请单击“资源组”，然后单击资源组 Contoso-Resources  。 从显示的资源列表中选择中心。 
 

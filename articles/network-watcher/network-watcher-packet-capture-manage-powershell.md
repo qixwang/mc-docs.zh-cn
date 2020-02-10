@@ -6,8 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
-ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -16,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 09/10/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 9cd2c89335fe6d3a83a6dfe7ede6191e809c635f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0f665b3169531d08361f60ff84acfcebdd415e25
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336381"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028879"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -101,7 +99,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-以下示例是运行 `Get-AzVMExtension` 后的响应示例
+以下示例是运行 `Get-AzVMExtension` 后的响应的实例
 
 ```
 ResourceGroupName       : testrg
@@ -154,7 +152,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
-> 可为数据包捕获定义多个筛选器。
+> 可以为数据包捕获定义多个筛选器。
 
 ### <a name="step-4"></a>步骤 4
 

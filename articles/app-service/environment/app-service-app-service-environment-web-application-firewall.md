@@ -7,18 +7,18 @@ ms.topic: tutorial
 origin.date: 03/03/2018
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: b9f89a6bdefe2d9e55f9a44fed8f7e06abf1a6a7
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: seodec18
+ms.openlocfilehash: 2c5bceb6d5b989c6bdce092ad350e89ac3637f9b
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600485"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979336"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
 
-Web 应用程序防火墙 (WAF) 会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，有助于保护 Web 应用程序的安全。 为了进行数据丢失防护 (DLP)，该防火墙还会检查后端 Web 服务器的响应。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。 Azure 通过[应用程序网关](https://docs.azure.cn/application-gateway/application-gateway-introduction)提供 WAF 功能。  若要了解如何将应用服务环境与应用程序网关集成，请阅读[将 ILB ASE 与应用程序网关集成](integrate-with-application-gateway.md)文档。
+Web 应用程序防火墙 (WAF) 会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，有助于保护 Web 应用程序的安全。 为了进行数据丢失防护 (DLP)，该防火墙还会检查后端 Web 服务器的响应。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。 Azure 通过[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)提供 WAF 功能。  若要了解如何将应用服务环境与应用程序网关集成，请阅读[将 ILB ASE 与应用程序网关集成](https://docs.azure.cn/app-service/environment/integrate-with-application-gateway)文档。
 
 除了 Azure 应用程序网关，还有多个市场选项，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)，在 [Azure 市场](https://market.azure.cn/marketplace/apps/vstecscloud.barracuda_web_application_firewall_formigration?tab=Overview)中提供。 本文档其余部分重点介绍如何将应用服务环境与 Barracuda WAF 设备集成。
 

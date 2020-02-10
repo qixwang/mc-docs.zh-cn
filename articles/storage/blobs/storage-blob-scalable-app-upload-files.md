@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 10/08/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 43a1c5fc123d48f7fc47a32af249ecccea27b52c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 437db71cb914d02c5db0b2b08ea8e27c4b979596
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624268"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028905"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -29,9 +29,9 @@ ms.locfileid: "75624268"
 
 Azure Blob 存储提供可缩放的服务来存储数据。 为了尽可能提高应用程序的性能，建议了解 blob 存储的工作方式。 了解 Azure Blob 的限制非常重要，要深入了解这些限制，请访问：[Blob 存储可伸缩性和性能目标](../blobs/scalability-targets.md)。
 
-在使用 Blob 设计高性能应用程序时，[分区命名](../blobs/storage-performance-checklist.md#partitioning)是另一个潜在重要因素。 对于大于或等于4 MiB 的块大小，会使用高吞吐量块 blob，并且分区命名不会影响性能。 对于小于4 MiB 的块大小，Azure 存储使用基于范围的分区方案来进行缩放和负载均衡。 此配置意味着具有相似命名约定或前缀的文件转到相同分区。 此逻辑还包括文件上传到的容器的名称。 本教程中使用名称为 GUID 的文件以及随机生成的内容。 然后将这些文件和内容上传到五个使用随机名称的不同容器。
+在使用 Blob 设计高性能应用程序时，[分区命名](../blobs/storage-performance-checklist.md#partitioning)是另一个潜在重要因素。 对于大于或等于4 MiB 的块大小，会使用[高吞吐量块 blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)，并且分区命名不会影响性能。 对于小于4 MiB 的块大小，Azure 存储使用基于范围的分区方案来进行缩放和负载均衡。 此配置意味着具有相似命名约定或前缀的文件转到相同分区。 此逻辑还包括文件上传到的容器的名称。 本教程中使用名称为 GUID 的文件以及随机生成的内容。 然后将这些文件和内容上传到五个使用随机名称的不同容器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须先完成以前的“存储”教程：[为可缩放的应用程序创建虚拟机和存储帐户][previous-tutorial]。
 
@@ -45,7 +45,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>配置连接字符串
 
-在 Azure 门户中，导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。   从主密钥或辅助密钥复制“连接字符串”  。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的 \<storageConnectionString\>  ：
+在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。   复制主密钥或辅助密钥中的**连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的 **\<storageConnectionString\>** ：
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -67,7 +67,7 @@ dotnet run
 
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 
-|属性|值|说明|
+|属性|Value|说明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation)| 是| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |

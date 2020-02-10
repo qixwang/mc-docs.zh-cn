@@ -4,18 +4,18 @@ description: 将 Azure Blob 存储模块部署到 IoT Edge 设备以在边缘存
 author: arduppal
 ms.author: v-yiso
 origin.date: 12/13/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: philmea
-ms.openlocfilehash: 23056502ba2c7ab86d9377ab5e70eab3e16b0465
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 6421610ccb903994ec70089926e33973d49f52bc
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859720"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966500"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>将 IoT Edge 上的 Azure Blob 存储模块部署到设备
 
@@ -110,27 +110,24 @@ Azure 门户引导你创建部署清单并将部署推送到 IoT Edge 设备。
 
    ```json
    {
-     "properties.desired": {
-       "deviceAutoDeleteProperties": {
-         "deleteOn": <true, false>,
-         "deleteAfterMinutes": <timeToLiveInMinutes>,
-         "retainWhileUploading":<true,false>
+     "deviceAutoDeleteProperties": {
+       "deleteOn": <true, false>,
+       "deleteAfterMinutes": <timeToLiveInMinutes>,
+       "retainWhileUploading": <true,false>
+     },
+     "deviceToCloudUploadProperties": {
+       "uploadOn": <true, false>,
+       "uploadOrder": "<NewestFirst, OldestFirst>",
+       "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+       "storageContainersForUpload": {
+         "<source container name1>": {
+           "target": "<target container name1>"
+         }
        },
-       "deviceToCloudUploadProperties": {
-         "uploadOn": <true, false>,
-         "uploadOrder": "<NewestFirst, OldestFirst>",
-         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "storageContainersForUpload": {
-           "<source container name1>": {
-             "target": "<target container name1>"
-           }
-         },
-         "deleteAfterUpload":<true,false>
-       }
+       "deleteAfterUpload": <true,false>
      }
    }
-
-      ```
+   ```
 
    有关在部署模块后配置 deviceToCloudUploadProperties 和 deviceAutoDeleteProperties 的信息，请参阅[编辑模块孪生](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)。 若要详细了解所需属性，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
 

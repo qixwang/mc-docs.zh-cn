@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 脚本示例 - 在 Batch 中添加应用程序 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 中添加应用程序
+title: Azure CLI 脚本示例 - 在 Batch 中添加应用程序
+description: 此示例脚本演示如何添加要与 Azure Batch 池或任务配合使用的应用程序。
 services: batch
 documentationcenter: ''
-author: dlepow
+author: lingliw
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 01/29/2018
 ms.date: 09/07/2018
-ms.author: v-junlch
-ms.openlocfilehash: 6f7243a02f4c377413f4e5add10991da4ffea839
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.author: v-lingwu
+ms.openlocfilehash: 8c8bf2998283de6633fc06fc0221b2e65a5ed6d7
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737234"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028610"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI 示例：向 Azure Batch 帐户添加应用程序
 

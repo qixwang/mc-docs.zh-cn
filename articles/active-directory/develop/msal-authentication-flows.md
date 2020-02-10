@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c2aea22842e65fd56b7deb2a0cc76b579d47c81
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 79897efb36ed80e8c5a0b8135e8284b93cf0010d
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777003"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067714"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -32,9 +31,9 @@ ms.locfileid: "75777003"
 | [授权代码](#authorization-code) | 在设备上安装的应用中使用，以访问受保护的资源，例如 Web API。 这样，就可以添加对移动应用和桌面应用的登录与 API 访问权限。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md)、[Web 应用](scenario-web-app-call-api-overview.md) | 
 | [代理](#on-behalf-of) | 应用程序调用某个服务或 Web API，而后者又需要调用另一个服务或 Web API。 思路是通过请求链传播委托用户标识和权限。 | [Web API](scenario-web-api-call-api-overview.md) |
 | [客户端凭据](#client-credentials) | 允许你使用应用程序的标识访问 Web 托管的资源。 通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。 | [守护程序应用](scenario-daemon-overview.md) |
-| [设备代码](#device-code) | 允许用户登录到智能电视、IoT 设备或打印机等输入受限的设备。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [设备代码](#device-code) | 允许用户登录到智能电视、IoT 设备或打印机等输入受限的设备。 | [桌面/移动应用](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Windows 集成身份验证](scenario-desktop-acquire-token.md#integrated-windows-authentication) | 允许已加入域或已加入 Azure Active Directory (Azure AD) 的计算机上的应用程序以静默方式获取令牌（无需用户进行任何 UI 交互）。| [桌面/移动应用](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [用户名/密码](scenario-desktop-acquire-token.md#username--password) | 允许应用程序通过直接处理用户的密码将用户登录。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username--password) |
+| [用户名/密码](scenario-desktop-acquire-token.md#username-and-password) | 允许应用程序通过直接处理用户的密码将用户登录。 不建议使用此流。 | [桌面/移动应用](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
  
@@ -234,4 +233,4 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 有关使用 MSAL.NET 和 Azure AD B2C 的详细信息，请参阅[将 ROPC 与 Azure AD B2C (MSAL.NET) 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

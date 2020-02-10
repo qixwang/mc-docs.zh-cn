@@ -4,17 +4,17 @@ description: Azure 队列用于在应用程序组件之间进行可靠的异步�
 author: WenJason
 ms.author: v-jay
 origin.date: 05/21/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: ccd9a03ad359e51f83447b5e01694f21ceb0fd4c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 08eee26cdfcc062fc0b7076e3e382cadefdf53b7
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624100"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028936"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -32,13 +32,13 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 **估计完成时间：** 45 分钟
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [适用于 .NET 的 Azure 存储通用客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 * [适用于 .NET 的 Azure 存储队列客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* 一个 [Azure 存储帐户](../common/storage-quickstart-create-account.md?toc=%2fstorage%2fqueues%2ftoc.json)
+* 一个 [Azure 存储帐户](../common/storage-account-create.md?toc=%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

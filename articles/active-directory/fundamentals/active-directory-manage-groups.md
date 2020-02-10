@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b09d7e75cc5fc3bcaf97cfb690c4f63cbbf78ff
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: fb00c1c989674dc6f9073309d5252b49c8bb71a6
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116771"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067690"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理应用和资源访问
 通过 Azure Active Directory (Azure AD) 可以使用组来管理基于云的应用、本地应用和资源。 资源可以是 Azure AD 组织的一部分（例如用于通过 Azure AD 中的角色管理对象的权限），也可以是组织外部的资源（Azure 服务、SharePoint 站点和本地资源）。
@@ -45,6 +45,8 @@ Azure AD 通过向单个用户或整个 Azure AD 组提供访问权限，帮助�
 
 - **组分配。** 资源所有者将 Azure AD 组分配到资源，这会自动向所有组成员授予对该资源的访问权限。 组成员身份由组所有者和资源所有者管理，允许任一所有者在该组中添加或删除成员。 有关添加或删除组成员的详细信息，请参阅[如何：使用 Azure Active Directory 门户在一个组中添加或删除另一个组](active-directory-groups-membership-azure-portal.md)。 
 
+- **基于规则的分配。** 资源所有者创建一个组，并使用一条规则来定义要将哪些用户分配到特定的资源。 该规则基于分配给单个用户的属性。 资源所有者管理该规则，确定需要提供哪些属性和值才能访问该资源。 
+
 - **External authority assignment**（外部机构分配）。 访问来自外部源，例如本地目录。 在这种情况下，资源所有者将分配一个组以提供资源访问权限，外部源将管理组成员。
 
    ![访问管理示意图概览](./media/active-directory-manage-groups/access-management-overview.png)
@@ -54,7 +56,6 @@ Azure AD 通过向单个用户或整个 Azure AD 组提供访问权限，帮助�
 
 - [使用 Azure Active Directory 创建新组](active-directory-groups-create-azure-portal.md)或[使用 PowerShell cmdlet 创建和管理新组](../users-groups-roles/groups-settings-v2-cmdlets.md)
 
-- [使用 Azure AD Connect 将本地组同步到 Azure](../connect/active-directory-aadconnect.md)
 
 - [使用 Azure AD Connect 将本地组同步到 Azure](../hybrid/whatis-hybrid-identity.md)
 <!-- Update_Description: wording update -->

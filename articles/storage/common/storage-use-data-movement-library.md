@@ -8,19 +8,19 @@ ms.service: storage
 ms.devlang: dotnet
 ms.topic: how-to
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 10f44a946283f0673219cf9c587b7495b769ed4e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 56365e569cbe383f45f93ebfe635d2ed18deb7b4
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623675"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028526"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
 
-Azure 存储数据移动库是一个高性能的跨平台开源库，用于上传、下载和复制 Blob 与文件。 此库是驱动 [AzCopy](../storage-use-azcopy.md) 的核心数据移动框架。 数据移动库提供用于 .NET 的 Azure 存储客户端库中不能提供的便利方法。 这些方法提供的功能可用于设置并行操作数目、跟踪传输进度、轻松恢复已取消的传输，等等。
+Azure 存储数据移动库是一个高性能的跨平台开源库，用于上传、下载和复制 Blob 与文件。 数据移动库提供用于 .NET 的 Azure 存储客户端库中不能提供的便利方法。 这些方法提供的功能可用于设置并行操作数目、跟踪传输进度、轻松恢复已取消的传输，等等。
 
 此库还使用 .NET Core，这意味着，可以在构建适用于 Windows、Linux 和 macOS 的 .NET 应用时使用它。 若要了解有关 .NET Core 的详细信息，请参阅 [.NET Core 文档](https://dotnet.github.io/)。 此库也适用于面向 Windows 的传统 .NET Framework 应用。
 
@@ -33,10 +33,10 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 - 将文件从 URL 复制到 Blob 存储。
 - 从 Blob 存储复制到 Blob 存储。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- 一个 [Azure 存储帐户](storage-quickstart-create-account.md)
+- 一个 [Azure 存储帐户](storage-account-create.md)
 
 ## <a name="setup"></a>设置
 
@@ -46,7 +46,7 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新启动 Visual Studio Code。
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。 ” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
 6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
-7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，并验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。
+7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，然后验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>将数据移动库添加到项目
 

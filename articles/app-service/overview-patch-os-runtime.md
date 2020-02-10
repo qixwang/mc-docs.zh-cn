@@ -3,15 +3,15 @@ title: OS 和运行时修补频率
 description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应用具有哪些运行时和修补程序级别，以及如何获取更新公告。
 ms.topic: article
 origin.date: 02/02/2018
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 1e2f3d2d62a20ac1b9326f2617dcf809f5c52e4d
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 717e0517ac9259402684e7b9462846c6cc174b11
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600417"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979330"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -67,17 +67,17 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>已弃用的版本
+### <a name="deprecated-versions"></a>已弃用的版本  
 
 弃用某个旧版本后，将会公布删除日期，以便你可以相应地规划运行时版本升级。 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>如何在实例中查询 OS 和运行时更新状态？
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>如何在实例中查询 OS 和运行时更新状态？  
 
 尽管关键的 OS 信息已被限制访问（请参阅 [Azure 应用服务中的操作系统功能](operating-system-functionality.md)），但可以使用 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)在应用服务实例中查询有关 OS 版本和运行时版本的信息。 
 
 下表显示了应用中运行的 Windows 和语言运行时版本：
 
-| 信息 | 查找位置 |
+| 信息 | 查找位置 | 
 |-|-|
 | Windows 版本 | 查看 `https://<appname>.scm.chinacloudsites.cn/Env.cshtml`（在“系统信息”下） |
 | .NET 版本 | 在 `https://<appname>.scm.chinacloudsites.cn/DebugConsole` 中的命令提示符下运行以下命令： <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
@@ -85,6 +85,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | PHP 版本 | 在 `https://<appname>.scm.chinacloudsites.cn/DebugConsole` 中的命令提示符下运行以下命令： <br> `php --version` |
 | 默认的 Node.js 版本 | 在 [Azure Cli](/cli/get-started-with-azure-cli) 中运行下列命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 在 `https://<appname>.scm.chinacloudsites.cn/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |
+| Java 版本 | 在 `https://<appname>.scm.chinacloudsites.cn/DebugConsole` 中的命令提示符下运行以下命令： <br> `java -version` |  
 
 > [!NOTE]  
 > 访问注册表位置 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`，其中存储了有关[“KB”修补](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)的信息。该位置已被锁定。

@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e851c58567fe5dfeefd6d7121291bf6986619c6
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: d97cdd2e9e97a610c45e92a526e3e1d83edbfa5c
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116765"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067681"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
 
@@ -54,7 +54,16 @@ ms.locfileid: "76116765"
 - 运行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以获得 `PowerShellGet` 模块的预发布版本（运行此命令安装 `Az.ManagedServiceIdentity` 模块后，可能需要从当前 PowerShell 会话中退出`Exit`）。
 - 运行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 来安装 `Az.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配的标识操作。
 
-## <a name="create-identity"></a>创建标识
+
+## <a name="enable"></a>启用
+
+对于基于用户分配标识的方案，需要执行以下步骤：
+
+- 创建标识
+ 
+- 分配新建的标识
+
+### <a name="create-identity"></a>创建标识
 
 本部分说明如何创建用户分配的标识。 用户分配的标识是作为独立的 Azure 资源创建的。 使用 [New-AzUserAssignedIdentity](https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)，Azure 可在你的 Azure AD 租户中创建可分配给一个或多个 Azure 服务实例的标识。
 
@@ -80,7 +89,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-identity"></a>分配标识
+### <a name="assign-identity"></a>分配标识
 
 本部分介绍如何将用户分配的标识分配给 Windows VM。 用户分配的标识可以由多个 Azure 资源上的客户端使用。 使用以下命令将用户分配的标识分配给单个 VM。 将上一步返回的 `Id` 属性用于 `-IdentityID` 参数。
 
@@ -114,7 +123,9 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token"></a>获取访问令牌 
+## <a name="access-data"></a>访问数据
+
+### <a name="get-an-access-token"></a>获取访问令牌 
 
 在本教程的剩余部分，你将从先前创建的 VM 入手。
 
@@ -134,7 +145,7 @@ CanDelegate: False
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-properties"></a>读取属性
+### <a name="read-properties"></a>读取属性
 
 使用上一个步骤中检索到的访问令牌访问 Azure 资源管理器，并读取向用户分配的标识授予了访问权限的资源组的属性。 将 `<SUBSCRIPTION ID>` 替换为你环境的订阅 ID。
 

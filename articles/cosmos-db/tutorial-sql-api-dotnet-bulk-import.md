@@ -1,21 +1,21 @@
 ---
-title: 将数据批量导入到 Azure Cosmos DB SQL API 帐户时优化吞吐量
-description: 了解如何生成用于优化将数据导入到 Azure Cosmos DB 所需的预配吞吐量 (RU/s) 的 .NET 控制台应用程序。
+title: 使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
+description: 了解如何通过生成 .NET 控制台应用程序将数据导入或引入到 Azure Cosmos DB 来优化导入数据所需的预配吞吐量 (RU/s)
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: cee927fac9aa00cc15bff76d7eb2ee18719ac323
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 25790b12f4de6a66e50112e88bcaf01f587f08d2
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348555"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068333"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>将数据批量导入到 Azure Cosmos DB SQL API 帐户时优化吞吐量
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 
 本教程演示如何生成用于优化将数据导入到 Azure Cosmos DB 所需的预配吞吐量 (RU/s) 的 .NET 控制台应用程序。 在本文中，你将读取示例数据源中的数据，并将其导入到 Azure Cosmos 容器中。
 本教程使用 [3.0+ 版](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) Azure Cosmos DB .NET SDK，后者以 .NET Framework 或 .NET Core 为目标。
@@ -28,7 +28,7 @@ ms.locfileid: "75348555"
 > * 连接到启用了批量支持的 Azure Cosmos 帐户
 > * 通过并发创建操作执行数据导入
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 
@@ -121,7 +121,6 @@ ms.locfileid: "75348555"
 在 `Main` 方法中，添加以下代码以初始化 CosmosClient 对象：
 
 ```csharp
-
 CosmosClient cosmosClient = new CosmosClient(EndpointUrl, AuthorizationKey, new CosmosClientOptions() { AllowBulkExecution = true });
 
 ```
@@ -131,7 +130,6 @@ CosmosClient cosmosClient = new CosmosClient(EndpointUrl, AuthorizationKey, new 
 然后可以创建一个容器来存储所有项。  将 `/pk` 定义为分区键，将 50000 RU/s 定义为预配的吞吐量，并定义将排除所有字段以优化写入吞吐量的自定义索引策略。 在 CosmosClient 初始化语句后面添加以下代码：
 
 ```csharp
-
 Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync(Program.DatabaseName);
 
 await database.DefineContainer(Program.ContainerName, "/pk")
@@ -161,7 +159,6 @@ await database.DefineContainer(Program.ContainerName, "/pk")
 定义要保存的项的定义。 需要在 `Program.cs` 文件中定义 `Item` 类：
 
 ```csharp
-
 public class Item
 {
     public string id {get;set;}
@@ -175,7 +172,6 @@ public class Item
 接下来，在 `Program` 类中创建一个 helper 函数。 此 helper 函数将获取你定义用于插入的项数并生成随机数据：
 
 ```csharp
-
 private static IReadOnlyCollection<Item> GetItemsToInsert()
 {
     return new Bogus.Faker<Item>()
@@ -194,7 +190,6 @@ private static IReadOnlyCollection<Item> GetItemsToInsert()
 若要将数据转换为流实例，请在 `Main` 方法中，在创建容器后直接添加以下代码：
 
 ```csharp
-
 Dictionary<PartitionKey, Stream> itemsToInsert = new Dictionary<PartitionKey, Stream>(ItemsToInsert);
 foreach (Item item in Program.GetItemsToInsert())
 {
@@ -208,7 +203,6 @@ foreach (Item item in Program.GetItemsToInsert())
 接下来，使用数据流创建并发任务并填充任务列表以将项插入到容器中。 若要执行此操作，请将以下代码添加到 `Program` 类：
 
 ```csharp
-
 Container container = database.GetContainer(ContainerName);
 List<Task> tasks = new List<Task>(ItemsToInsert);
 foreach (KeyValuePair<PartitionKey, Stream> item in itemsToInsert)
@@ -237,9 +231,9 @@ await Task.WhenAll(tasks);
 
 若要运行示例，只需使用 `dotnet` 命令即可：
 
-```bash
-dotnet run
-```
+   ```bash
+   dotnet run
+   ```
 
 ## <a name="get-the-complete-sample"></a>获取完整示例
 
@@ -249,10 +243,10 @@ dotnet run
 
 可以通过更改为存储库目录并使用 `dotnet` 来运行示例：
 
-```bash
-cd cosmos-dotnet-bulk-import-throughput-optimizer
-dotnet run
-```
+   ```bash
+   cd cosmos-dotnet-bulk-import-throughput-optimizer
+   dotnet run
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -269,5 +263,4 @@ dotnet run
 > [!div class="nextstepaction"]
 >[使用 SQL API 查询 Azure Cosmos DB](tutorial-query-sql-api.md)
 
-<!-- Update_Description: new article about tutorial sql api dotnet bulk import -->
-<!--NEW.date: 12/09/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

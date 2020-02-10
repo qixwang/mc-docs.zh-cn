@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 12/12/2019
-ms.date: 01/06/2020
+ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6e3e3552e2f07d908d2232b745fd0c8c90b08fce
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3078d265b702b6c1a8112654a49878e8650f1b37
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624161"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028886"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Blob 和队列的访问权限
 
@@ -80,7 +80,7 @@ Azure 门户可以使用 Azure AD 帐户或帐户访问密钥来访问 Azure 存
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>通过 PowerShell 或 Azure CLI 访问数据
 
-Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录。 登录后，会话将在这些凭据下运行。 有关详细信息，请参阅[使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据](storage-auth-aad-script.md)。
+Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录。 登录后，会话将在这些凭据下运行。 有关详细信息，请参阅[使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据](authorize-active-directory-powershell.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

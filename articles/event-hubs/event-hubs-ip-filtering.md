@@ -10,14 +10,14 @@ ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
 origin.date: 12/20/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: d0bf1307df743c970592c286145c2bfc1da36bc2
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: d9590084e876493369b04be24bba59542e6349fc
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123347"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067735"
 ---
 # <a name="azure-event-hubs---use-firewall-rules"></a>Azure 事件中心 - 使用防火墙规则
 
@@ -153,7 +153,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 <!-- Links -->
 
 [express-route]:  /expressroute/expressroute-faqs#supported-services
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 
 <!-- [lnk-vnet]: event-hubs-service-endpoints.md -->
 

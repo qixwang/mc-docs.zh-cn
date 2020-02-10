@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 中继向客户端公开本地 WCF REST 服务
-description: 教程：使用 WCF 中继构建客户端和服务应用程序。
+description: 本教程介绍如何使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务。
 services: service-bus-relay
 documentationcenter: na
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 11/05/2019
-ms.date: 11/20/2019
+origin.date: 01/21/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 15da12b2bf0a35e54704df40887adb2950719f73
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 6e3abec7f1829fe82fb53fb2d981e33339eba580
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854360"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068355"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教程：使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -68,7 +68,7 @@ ms.locfileid: "75854360"
 1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。   
 1. 将项目命名为 *EchoService* 并选择“创建”  。
 
-    ![创建控制台应用][2]
+   ![创建控制台应用][2]
 
 1. 在“解决方案资源管理器”  中，右键单击项目，并选择“管理 NuGet 包”  。 在“NuGet 包管理器”中选择“浏览”，然后搜索并选择“WindowsAzure.ServiceBus”。    选择“安装”  并接受使用条款。
 
@@ -502,6 +502,7 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IEchoChannel : IEchoContract, IClientChannel { }
 
+
     class Program
     {
         static void Main(string[] args)
@@ -748,7 +749,9 @@ namespace Microsoft.ServiceBus.Samples
 
     以下是来自控制台窗口的示例输出。 此处的值只是示例。
 
-    `Your Service Namespace: myNamespace` `Your SAS Key: <SAS key value>`
+    `Your Service Namespace: myNamespace`
+
+    `Your SAS Key: <SAS key value>`
 
     服务应用程序将其正在侦听的地址打印到控制台窗口中，如下面的示例中所示。
 

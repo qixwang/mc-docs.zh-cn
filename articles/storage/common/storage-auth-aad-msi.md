@@ -5,18 +5,18 @@ description: 了解如何使用 Azure 资源的托管标识在应用程序中授
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: conceptual
-origin.date: 11/25/2019
-ms.date: 01/06/2020
+ms.topic: how-to
+origin.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 93bbbf6c88d2341f06d1df487e6e3aaef14ba6bc
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: fe0765d137076584b4d5e8f41839e4416e5a2ad6
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624164"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028889"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)。
 - [将 Azure AD 与存储应用程序一起使用](storage-auth-aad-app.md)。
-- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据](storage-auth-aad-script.md)。
+- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 Blob 或队列数据](authorize-active-directory-powershell.md)。

@@ -4,14 +4,14 @@ description: 遵循这些最佳做法了解如何有效使用 Azure Redis 缓存
 author: joncole
 ms.service: cache
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/05/2020
 ms.author: v-junlch
-ms.openlocfilehash: 254ce486f974dbec753d47caf830af115865e500
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: caef336a9b9ba8f415591c514ad2afdae488056c
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116915"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028023"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -46,14 +46,6 @@ ms.locfileid: "76116915"
 
  * **为键设置过期值。**  过期时会主动删除键，而不会等到出现内存压力的时候。  如果由于内存压力而激发逐出，可能会导致服务器上的负载增大。  有关详细信息，请参阅 [EXPIRE](https://redis.io/commands/expire) 和 [EXPIREAT](https://redis.io/commands/expireat) 命令的文档。
  
-## <a name="client-library-specific-guidance"></a>特定于客户端库的指南
- * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
- * [Java - 应使用哪种客户端？](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
- * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
- * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
- * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net 会话状态提供程序](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>何时可以安全重试？

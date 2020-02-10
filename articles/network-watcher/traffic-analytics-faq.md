@@ -5,7 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 origin.date: 03/08/2018
 ms.date: 9/29/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 14c915310d35c5fa2bf7cf66fe6a732f2bba1ecd
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: 12e7a6195825a327a47ec3a7f4a7b885f2eef2a3
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545369"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028979"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -73,7 +72,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
-否。 现在，只能在一个区域“中国东部 2”中启用 NSG 和 Log Analytics 工作区。
+是，这些 NSG 可与 Log Analytics 工作区位于不同区域。
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 

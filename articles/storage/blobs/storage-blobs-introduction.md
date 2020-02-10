@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 20644762e127619326e61249e8d04f54aeaeb0b2
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: aa342e40156888b2a31773423a08df155d5501ad
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328760"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028904"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -42,7 +42,7 @@ Blob 存储提供了三种类型的资源：
 http://mystorageaccount.blob.core.chinacloudapi.cn 
 ```
 
-若要创建存储帐户，请参阅[创建存储帐户](../common/storage-quickstart-create-account.md)。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md?toc=%2fstorage%2fblobs%2ftoc.json)。
+若要创建存储帐户，请参阅[创建存储帐户](../common/storage-account-create.md)。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md?toc=%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="containers"></a>容器
 
@@ -72,5 +72,5 @@ Azure 存储支持三种类型的 Blob：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建存储帐户](../common/storage-create-storage-account.md?toc=%2fstorage%2fblobs%2ftoc.json)
-* [Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md)
+- [创建存储帐户](../common/storage-create-storage-account.md?toc=%2fstorage%2fblobs%2ftoc.json)
+- [Blob 存储的可伸缩性和性能目标](scalability-targets.md)

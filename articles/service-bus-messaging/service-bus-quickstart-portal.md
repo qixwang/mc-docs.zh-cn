@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建服务总线队列 | Azure Docs
+title: 使用 Azure 门户创建服务总线队列
 description: 在本快速入门中，你将了解如何使用 Azure 门户创建服务总线队列。 然后，你将使用示例客户端应用程序向队列发送消息以及从中接收消息。
 services: service-bus-messaging
 author: lingliw
@@ -7,22 +7,22 @@ manager: digimobile
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-origin.date: 09/03/2019
-ms.date: 09/15/2019
+origin.date: 01/16/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: d02ea83774c80ffcec60ccf54088f95444e74b3d
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: a9e428173f40b967d27386cb00f72787dff82828
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330135"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068294"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>快速入门：使用 Azure 门户创建服务总线队列
 本快速入门介绍如何使用 [Azure 门户][Azure portal]创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列以及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保已安装：
 
@@ -54,7 +54,7 @@ ms.locfileid: "71330135"
 
 1. 通过发出以下命令克隆[服务总线 GitHub 存储库](https://github.com/Azure/azure-service-bus/)：
 
-   ```shell
+   ```
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
@@ -64,18 +64,15 @@ ms.locfileid: "71330135"
 
 4. 在命令提示符窗口中键入以下命令：
 
-   ```shell
-   dotnet build
-   ```
-
+    ```
+    dotnet build
+    ```
 5. 导航到 `bin\Debug\netcoreapp2.0` 文件夹。
-
 6. 键入以下命令以运行程序。 请务必将 `myConnectionString` 替换为先前获取的值，将 `myQueueName` 替换为所创建队列的名称：
 
-   ```shell
-   dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
-   ``` 
-
+    ```shell
+    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
+    ``` 
 7. 观察发送到队列并随后从队列中接收的 10 条消息：
 
    ![程序输出](./media/service-bus-quickstart-portal/dotnet.png)
@@ -127,7 +124,7 @@ static void Main(string[] args)
 
 ### <a name="message-loop"></a>消息循环
 
-MainAsync() 方法使用命令行参数创建队列客户端，调用名为 `RegisterOnMessageHandlerAndReceiveMessages()` 的接收消息处理程序，并发送消息集：
+MainAsync() 方法使用命令行参数创建队列客户端、调用名为 `RegisterOnMessageHandlerAndReceiveMessages()` 的接收消息处理程序，并发送消息集：
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

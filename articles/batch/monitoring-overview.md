@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 29f012737aa4a34746fb0050c8292b8bb82fa3c8
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: c38efcdfbe9343825a6f50724520daf76adeb9d7
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528195"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028840"
 ---
 # <a name="monitor-batch-solutions"></a>监视 Batch 解决方案
 
@@ -25,7 +25,7 @@ Azure 和 Batch 服务提供了一系列服务、工具和 API 来监视 Batch �
 
 ## <a name="subscription-level-monitoring"></a>订阅级监视
 
-在订阅级别（包括 Batch 帐户），[Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)将操作事件数据收集到[几个类别](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log)中。
+在订阅级别（包括 Batch 帐户），[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)将操作事件数据收集到[几个类别](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)中。
 
 对于 Batch 帐户，具体而言，活动日志收集与帐户创建和删除以及密钥管理相关的事件。
 

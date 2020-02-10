@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
-origin.date: 11/20/2017
-ms.date: 03/18/2019
+origin.date: 11/20/2018
+ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: a6f821a23c0a0d18ffe7e6b682cdd58cc9fe7248
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.openlocfilehash: a092e55513921a5f5db9ecf88a041cf7259aedf5
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988513"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068219"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>用于 Node.js 的 Azure Cosmos DB 表 API：发行说明和资源
@@ -37,11 +37,12 @@ ms.locfileid: "57988513"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+<a name="1.0.0"></a>
+### <a name="100"></a>1.0.0
 * 正式发布版
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
-Azure 会在停用 SDK 时至少提前 12 个月发出通知，以便用户顺利转换为更高版本/受支持版本。
+Azure 会在停用 SDK 时至少提前 12 个月  发出通知，以便用户顺利转换为更高版本/受支持版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
 
@@ -55,5 +56,4 @@ Azure 会在停用 SDK 时至少提前 12 个月发出通知，以便用户顺�
 ## <a name="see-also"></a>另请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 服务页。
 
-<!--Update_Description: new articles on table sdk nodejs -->
-<!--ms.date: 03/18/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

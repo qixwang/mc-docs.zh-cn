@@ -6,8 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
-editor: ''
-ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -16,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 09/10/2018
 ms.date: 09/30/2018
 ms.author: v-yeche
-ms.openlocfilehash: 569ab04b4c73370f9b48405cc88ed4f315593605
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 0c8769a1f04c637ed4a5d54dd1e91082d6c041f0
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336383"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028471"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 

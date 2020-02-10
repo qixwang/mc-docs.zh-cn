@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/09/2019
-ms.date: 01/20/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3b69064b3f84ee62ea86a616eaaf996ed900b5f2
-ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
+ms.openlocfilehash: f3fd2e1ccd5d02761a41bbd81cdfc865f691d8d6
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288539"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980470"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>将用户访问权限仅限于数据操作
 

@@ -12,12 +12,12 @@ ms.topic: overview
 origin.date: 10/29/2019
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91284597c28c589290b7b3ddf1678706b5ae3afc
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: b97a22138926fcbe31c8a7d18def5f4fc25c3db5
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74388943"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068058"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 
@@ -77,7 +77,6 @@ Azure 时序见解为数据处理、存储（数据和元数据）以及查询�
 | 适用于 IoT 规模的时序数据的多层存储 | 使用用于提取数据的共享数据处理管道，可以将数据提取到热存储和冷存储中。 热存储用于进行交互式查询，而冷存储用于存储大量数据。 若要详细了解如何利用高性能的基于资产的查询，请参阅[查询](./time-series-insights-update-tsq.md)。 |
 | 用于情景化原始遥测数据和派生基于资产的见解的时序模型 | 可以使用时序模型为时序数据创建实例、层次结构、类型和变量。 若要详细了解时序模型，请参阅[时序模型](./time-series-insights-update-tsm.md)。  |
 | 与其他数据解决方案顺利持续集成 | 时序见解冷存储中的数据[存储](./time-series-insights-update-storage-ingress.md)在开放源代码 Apache Parquet 文件中。 这样就可以与其他数据解决方案（第一方或第三方）进行数据集成，以实现包括商业智能、高级机器学习和预测分析在内的方案。 |
-| 近实时数据浏览 | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)用户体验提供的可视化功能适用于通过引入管道流式传输的所有数据。 连接事件源后，便可查看、浏览和查询事件数据。 通过这种方式，可以验证设备是否按预期方式发出数据。 此外可以监视 IoT 资产的运行状况、生产效率和整体成效。 | 
 | 扩展性和集成 | 通过“导出”选项，可直接在时序浏览器用户体验中使用 Azure 时序见解 Power BI 连接器集成，从而允许客户将在用户体验中创建的时序查询直接导出到 Power BI 桌面并查看其时序图以及其他 BI 分析  。 通过从 IoT 时序等各种数据源提供进行分析的单一玻璃窗格，这为投资 Power BI 的行业 IoT 企业提供了一种新的方案。 | 
 | 在时序见解平台上构建的自定义应用程序 | 时序见解支持 [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 SDK 提供了丰富的控件并且简化了对查询的访问。 使用 SDK 基于时序见解构建自定义 IoT 应用程序，以满足业务需求。 还可以直接使用时序见解[查询 API](./time-series-insights-update-tsq.md) 将数据推送到自定义 IoT 应用程序中。 |
 

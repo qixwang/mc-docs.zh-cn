@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB 中的 Azure 表存储支持
-description: 了解 Azure Cosmos DB 表 API 和 Azure 存储表如何协同工作。
+description: 了解 Azure Cosmos DB 表 API 和 Azure 存储表如何通过共享相同的表数据模型和操作来协同工作
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-origin.date: 08/05/2019
-ms.date: 09/09/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 0002c28f80fdaefe720cb7c600856d0718f8c927
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 3e7c605878155d51c5e8107459ffc1e71d89dd54
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254699"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067910"
 ---
 <!--Verify sucessfully-->
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure 表存储 API 和 Azure Cosmos DB 进行开发
 
-Azure Cosmos DB 表 API 和 Azure 表存储通过其 SDK 共享相同的表数据模型，并公开相同的创建、删除、更新和查询操作。 
+Azure Cosmos DB 表 API 和 Azure 表存储通过其 SDK 共享相同的表数据模型，并公开相同的创建、删除、更新和查询操作。
 
 [!INCLUDE [storage-table-cosmos-comparison](../../includes/storage-table-cosmos-comparison.md)]
 
@@ -50,4 +50,4 @@ Azure 表存储的以下 SDK 可用于开发：
 - [适用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 此项目提供了一个 Ruby 包，使用该包可轻松访问 Azure 存储表服务。
 - [Azure 存储表 PHP 客户端库](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table)。 此项目提供了一个 PHP 客户端库，使用该库可轻松访问 Azure 存储表服务。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

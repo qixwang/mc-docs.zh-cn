@@ -1,21 +1,21 @@
 ---
-title: 通过 Python 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
+title: 通过 Python 使用 Azure Cosmos DB 表 API 和 Azure 表存储
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
 origin.date: 04/05/2018
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 079c8c00bfeed0ee19144d0cb99b5b8130867319
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: da0c41ee15bcb9b5cec876fb31120a11e667af8e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912915"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068342"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>通过 Python 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 
@@ -34,15 +34,14 @@ Azure 表存储和 Azure Cosmos DB 是用于在云中存储结构化 NoSQL 数�
 
 浏览此示例中的方案时，可能需要参考[用于 Python API 的 Azure Cosmos DB SDK 参考](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要成功完成此示例，需要以下项：
 
 - [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5 或 3.6
 - [用于 Python 的 Azure Cosmos DB 表 SDK](https://pypi.python.org/pypi/azure-cosmosdb-table/)。 此 SDK 同时与 Azure 表存储和 Azure Cosmos DB 表 API 连接。
-- [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)
+- [Azure 存储帐户](../storage/common/storage-account-create.md)
 
-<!-- Not Available on Azure Cosmos DB Table API -->
 <!-- Not Avaiable on  [Azure Cosmos DB account](https://www.azure.cn/try/cosmosdb/) -->
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
@@ -74,7 +73,7 @@ from azure.cosmosdb.table.models import Entity
 <!--MOONCAKE: Add the endpoint_suffix configuration -->
 
 ```python
-table_service = TableService(account_name='myaccount', account_key='mykey',endpoint_suffix='core.chinacloudapi.cn')
+table_service = TableService(account_name='myaccount', account_key='mykey', endpoint_suffix='core.chinacloudapi.cn')
 ```
 
 <!--MOONCAKE: Add the endpoint_suffix configuration -->
@@ -240,8 +239,8 @@ table_service.delete_table('tasktable')
 
 * [常见问题解答 - 使用表 API 进行开发](/cosmos-db/faq)
 * [用于 Python API 的 Azure Cosmos DB SDK 参考](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
-* [Python 开发人员中心](/develop/python/)
-* [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)：一种跨平台的免费应用程序，用于在 Windows、macOS 和 Linux 上对 Azure 存储数据进行可视化处理。
+* [Python 开发人员中心](https://docs.azure.cn/develop/python/)
+* [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)：一种跨平台的免费应用程序，用于在 Windows、macOS 和 Linux 上对 Azure 存储数据进行可视化处理。
 * [在 Visual Studio (Windows) 中使用 Python](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 [py_commit_batch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python
@@ -257,4 +256,4 @@ table_service.delete_table('tasktable')
 [py_TableService]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python
 [py_TableBatch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python
 
-<!--Update_Description: update meta propreties, wording update, update link-->
+<!-- Update_Description: update meta properties, wording update, update link -->

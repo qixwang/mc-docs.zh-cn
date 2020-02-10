@@ -1,20 +1,20 @@
 ---
 title: 教程：如何在 Azure Cosmos DB 中使用 SQL 进行查询？
-description: 教程：了解在 Azure Cosmos DB 中使用 SQL 进行查询
+description: 教程：了解如何使用查询板块在 Azure Cosmos DB 中使用 SQL 查询进行查询
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 origin.date: 11/05/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 57c5314c8a623be0a4b7df216296c40a559d1301
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 771b1cba7c976c510f8c6c1a0e4e6f53ca03ea46
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335992"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067886"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>教程：使用 SQL API 查询 Azure Cosmos DB
 
@@ -64,7 +64,7 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) 支持使用 SQL 查询文
 有关 SQL 查询的详细信息，请参阅：
 * [SQL 查询和 SQL 语法](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假定已拥有 Azure Cosmos DB 帐户和集合。 没有这些内容？ 完成 [5 分钟快速入门](create-cosmosdb-resources-portal.md)。
 
@@ -143,4 +143,4 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) 支持使用 SQL 查询文
 > [!div class="nextstepaction"]
 > [多区域分配数据](tutorial-global-distribution-sql-api.md)
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update -->

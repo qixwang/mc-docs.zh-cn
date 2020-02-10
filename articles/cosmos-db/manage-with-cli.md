@@ -4,15 +4,15 @@ description: 使用 Azure CLI 管理 Azure Cosmos DB 帐户、数据库和容器
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/28/2019
-ms.date: 10/28/2019
+origin.date: 01/21/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 148327f351bdc22b63bae5cad6425469a7b72ffe
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: daa07bacb6bd94287bacad51c961959d604cce00
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970257"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028524"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
@@ -232,13 +232,16 @@ az cosmosdb sql database create \
 resourceGroupName='MyResourceGroup'
 accountName='mycosmosaccount'
 databaseName='database1'
-increaseRU=1000
+newRU=1000
 
-originalRU=$(az cosmosdb sql database throughput show \
+# Get minimum throughput to make sure newRU is not lower than minRU
+minRU=$(az cosmosdb sql database throughput show \
     -g $resourceGroupName -a $accountName -n $databaseName \
-    --query throughput -o tsv)
+    --query resource.minimumThroughput -o tsv)
 
-newRU=$((originalRU + increaseRU))
+if [ $minRU -gt $newRU ]; then
+    newRU=$minRU
+fi
 
 az cosmosdb sql database throughput update \
     -a $accountName \
@@ -345,13 +348,16 @@ resourceGroupName='MyResourceGroup'
 accountName='mycosmosaccount'
 databaseName='database1'
 containerName='container1'
-increaseRU=1000
+newRU=1000
 
-originalRU=$(az cosmosdb sql container throughput show \
+# Get minimum throughput to make sure newRU is not lower than minRU
+minRU=$(az cosmosdb sql container throughput show \
     -g $resourceGroupName -a $accountName -d $databaseName \
-    -n $containerName --query throughput -o tsv)
+    -n $containerName --query resource.minimumThroughput -o tsv)
 
-newRU=$((originalRU + increaseRU))
+if [ $minRU -gt $newRU ]; then
+    newRU=$minRU
+fi
 
 az cosmosdb sql container throughput update \
     -a $accountName \

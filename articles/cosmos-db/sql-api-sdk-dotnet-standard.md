@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 origin.date: 07/12/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43ea5a2f9ca6a8886af3d341c140ae428983797c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 0fd6eece74f7bc923b10737121d8d63843dac219
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913212"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028726"
 ---
 # <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET Standard SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "72913212"
 |---|---|
 |**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
 |**API 文档**|[ 参考文档](https://docs.azure.cn/dotnet/api/overview/cosmosdb?view=azure-dotnet)|
-|**示例**|[.NET代码示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples)|
+|**示例**|[.NET代码示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
 |**入门**|[Azure Cosmos DB .NET SDK 入门](sql-api-get-started.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-dotnet-application.md)|
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](https://docs.microsoft.com//dotnet/standard/net-standard)|

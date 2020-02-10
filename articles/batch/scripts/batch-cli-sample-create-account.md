@@ -1,9 +1,9 @@
 ---
-title: Azure CLI 脚本示例 - 创建 Batch 帐户 - Batch 服务 | Microsoft Docs
-description: Azure CLI 脚本示例 - 在 Batch 服务模式下创建 Batch 帐户
+title: Azure CLI 脚本示例 - 创建 Batch 帐户 - Batch 服务
+description: 此脚本在 Batch 服务模式下创建 Azure Batch 帐户，并演示如何查询或更新该帐户的各个属性。
 services: batch
 documentationcenter: ''
-author: dlepow
+author: lingliw
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 01/29/2018
 ms.date: 09/07/2018
-ms.author: v-junlch
-ms.openlocfilehash: 8ee667cafe777f392751e2bca483567238aa6459
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.author: v-lingwu
+ms.openlocfilehash: ae8251fc696a98619eeafd4dd6f59a587a818168
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52658394"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028609"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI 示例：在 Batch 服务模式下创建 Batch 帐户
 

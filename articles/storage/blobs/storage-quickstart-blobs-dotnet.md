@@ -4,23 +4,23 @@ description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存�
 author: WenJason
 ms.author: v-jay
 origin.date: 11/05/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 56651d765cde2320a626a431d9879eafca6008a0
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7232d3a2046624aa38da513e533ffbba4d8b51cd
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624087"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028945"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
 适用于 .NET 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Azure 的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
 > [!NOTE]
-> 若要开始使用以前的 SDK 版本，请参阅[快速入门：适用于 .NET 的 Azure Blob 存储客户端库](storage-quickstart-blobs-dotnet-legacy.md)。
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：适用于 .NET 的 Azure Blob 存储客户端库](storage-quickstart-blobs-dotnet-legacy.md)。
 
 使用适用于 .NET 的 Azure Blob 存储客户端库 v12 完成以下操作：
 
@@ -34,7 +34,7 @@ ms.locfileid: "75624087"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [创建一个 1 元试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)
 * Azure 存储帐户 - [创建存储帐户](/storage/common/storage-quickstart-create-account)
@@ -230,7 +230,8 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
 
 ```csharp
 // Download the blob to a local file
-// Append the string "DOWNLOAD" before the .txt extension so you can see both files in MyDocuments
+// Append the string "DOWNLOAD" before the .txt extension 
+// so you can compare the files in the data directory
 string downloadFilePath = localFilePath.Replace(".txt", "DOWNLOAD.txt");
 
 Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
@@ -268,7 +269,7 @@ Console.WriteLine("Done");
 
 ## <a name="run-the-code"></a>运行代码
 
-此应用在本地 *MyDocuments* 文件夹中创建一个测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
+此应用在本地 data  文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
 
 导航到应用程序目录，然后生成并运行应用程序。
 
@@ -300,7 +301,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“MyDocuments”文件夹中查找这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“data”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
 
 验证文件后，按 Enter 键以删除测试文件并完成演示  。
 

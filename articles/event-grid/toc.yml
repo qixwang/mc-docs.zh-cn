@@ -17,6 +17,9 @@
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fevent-grid%2ftoc.json
         - name: 门户
           href: blob-event-quickstart-portal.md
+        - name: 模板
+          displayName: 'arm, resource manager template'
+          href: blob-event-quickstart-template.md
     - name: 自定义事件
       items:
         - name: Azure CLI
@@ -25,6 +28,8 @@
           href: custom-event-quickstart-powershell.md
         - name: 门户
           href: custom-event-quickstart-portal.md
+    - name: 作为事件处理程序的 Azure Functions
+      href: custom-event-to-function.md
     - name: 充当事件处理程序的队列存储
       href: custom-event-to-queue-storage.md
     - name: 充当事件处理程序的事件中心
@@ -75,7 +80,7 @@
           href: scripts/event-grid-powershell-resource-group.md
         - name: 订阅和筛选资源组事件
           href: scripts/event-grid-powershell-resource-group-filter.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: template-samples.md
     - name: 代码示例
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
@@ -103,6 +108,8 @@
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
+    - name: 通过 AAD 保护 WebHook
+      href: secure-webhook-delivery.md
     - name: 死信与重试
       href: manage-event-delivery.md
     - name: 筛选事件
@@ -123,6 +130,8 @@
       href: custom-disaster-recovery.md
     - name: 排查错误
       href: troubleshoot-errors.md
+    - name: 为主题启用诊断日志
+      href: enable-diagnostic-logs-topic.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -154,6 +163,8 @@
           href: event-schema-event-hubs.md
         - name: IoT 中心
           href: event-schema-iot-hub.md
+        - name: 密钥保管库
+          href: event-schema-key-vault.md
         - name: 资源组
           href: event-schema-resource-groups.md
         - name: 服务总线
@@ -162,6 +173,8 @@
           href: event-schema-azure-maps.md
         - name: 应用配置
           href: event-schema-app-configuration.md
+        - name: Azure SignalR
+          href: event-schema-azure-signalr.md
     - name: 模板资源
       items:
         - name: 事件订阅
@@ -180,5 +193,5 @@
       href: 'https://www.azure.cn/pricing/details/event-grid/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventgrid'

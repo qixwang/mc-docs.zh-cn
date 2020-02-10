@@ -1,6 +1,6 @@
 ---
-title: 快速入门：如何通过 PHP 使用服务总线主题
-description: 快速入门：了解如何通过 PHP 使用 Azure 中的服务总线主题。
+title: 如何通过 PHP 使用 Azure 服务总线主题
+description: 本教程介绍如何通过 PHP 应用程序使用 Azure 服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: php
 author: lingliw
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 11/18/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 417b6bb4a50ca65322f731b5a0457392f6e145ba
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: cc62ee4e844cf29abf926c6b248783c893eb437e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527986"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068268"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入门：如何通过 PHP 使用服务总线主题和订阅
 
@@ -34,7 +34,7 @@ ms.locfileid: "74527986"
 - 从订阅接收消息
 - 删除主题和订阅
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或者注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
 

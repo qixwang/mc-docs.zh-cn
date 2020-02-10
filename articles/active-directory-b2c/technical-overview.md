@@ -7,20 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-origin.date: 09/19/2019
-ms.date: 10/23/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 171c5775bfb1adeff216b54e816b695194e72040
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: d827a92a20006b7a221caf1d2954ab3d58fb24e2
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72850451"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028132"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
-本文是[关于 Azure Active Directory B2C](active-directory-b2c-overview.md) 一文的配套文档，其中更深入地介绍了该服务。 本文介绍你将在该服务中使用的主要资源和该服务的功能，以及如何通过这些功能为应用程序中的客户提供完全自定义的标识体验。
+本文是[关于 Azure Active Directory B2C](overview.md) 一文的配套文档，其中更深入地介绍了该服务。 本文介绍你将在该服务中使用的主要资源和该服务的功能，以及如何通过这些功能为应用程序中的客户提供完全自定义的标识体验。
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C 租户
 
@@ -60,7 +59,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 * **本地**标识：将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
 * **社交**或**企业**标识：用户的标识由 Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
 
-具有使用者帐户的用户可以通过多个标识（例如用户名、电子邮件、员工 ID 等）登录。 单个帐户可以有多个本地和社交标识。
+具有使用者帐户的用户可以通过多个标识（例如用户名、电子邮件、员工 ID、政府 ID 等）登录。 单个帐户可以有多个本地和社交标识。
 
 ![使用者帐户标识](./media/technical-overview/identities.png)<br/>*图：在 Azure AD B2C 中具有多个标识的单个使用者帐户*
 
@@ -104,7 +103,7 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 使用用户流可以有效地定义和实现大多数移动、Web 和单页应用程序的最常见标识方案。 除非你的复杂用户旅程方案要求自定义策略具有完全灵活性，否则我们建议使用内置用户流。
 
-在 [Azure Active Directory B2C 中的用户流](active-directory-b2c-reference-policies.md)中详细了解用户流。
+在 [Azure Active Directory B2C 中的用户流](user-flow-overview.md)中详细了解用户流。
 
 ### <a name="custom-policy"></a>自定义策略
 
@@ -125,13 +124,13 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 需要构建复杂的标识方案时，自定义策略的极高灵活性可以发挥最大的作用。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
 
-在 [Azure Active Directory B2C 中的自定义策略](active-directory-b2c-overview-custom.md)中详细了解自定义策略。
+在 [Azure Active Directory B2C 中的自定义策略](custom-policy-overview.md)中详细了解自定义策略。
 
 ## <a name="protocols-and-tokens"></a>协议和令牌
 
-Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](active-directory-b2c-reference-protocols.md)。 在 OpenID Connect 的 Azure AD B2C 实现中，应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。
+Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](protocols-overview.md)。 在 OpenID Connect 的 Azure AD B2C 实现中，应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。
 
-向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌或访问令牌](active-directory-b2c-reference-tokens.md)。 此安全令牌定义用户的标识。 令牌是从 Azure AD B2C 终结点（例如 `/token` 或 `/authorize` 终结点）接收的。 通过这些令牌，可以访问用于验证标识以及允许访问安全资源的声明。
+向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌或访问令牌](tokens-overview.md)。 此安全令牌定义用户的标识。 令牌是从 Azure AD B2C 终结点（例如 `/token` 或 `/authorize` 终结点）接收的。 通过这些令牌，可以访问用于验证标识以及允许访问安全资源的声明。
 
 对于外部标识，Azure AD B2C 支持与任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 和 WS 联合身份验证标识提供者联合。
 
@@ -167,7 +166,7 @@ Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](a
 
 ![以不同语言显示 UI 文本的三个注册/登录页](./media/technical-overview/localization.png)
 
-在 [Azure Active Directory B2C 中的语言自定义](active-directory-b2c-reference-language-customization.md)中了解本地化的工作原理。
+在 [Azure Active Directory B2C 中的语言自定义](user-flow-language-customization.md)中了解本地化的工作原理。
 
 ## <a name="add-your-own-business-logic"></a>添加自己的业务逻辑
 
@@ -216,7 +215,7 @@ Azure AD B2C 租户与用于员工和合作伙伴的企业 Azure Active Director
 
 Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
 
-有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](active-directory-b2c-reference-mfa.md)。
+有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](custom-policy-multi-factor-authentication.md)。
 
 ### <a name="smart-account-lockout"></a>智能帐户锁定
 
@@ -224,13 +223,13 @@ Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的
 
 ![帐户智能锁定](./media/technical-overview/smart-lockout1.png)
 
-有关管理密码保护设置的详细信息，请参阅[管理 Azure Active Directory B2C 中的资源和数据受到的威胁](active-directory-b2c-reference-threat-management.md)。
+有关管理密码保护设置的详细信息，请参阅[管理 Azure Active Directory B2C 中的资源和数据受到的威胁](threat-management.md)。
 
 ### <a name="password-complexity"></a>密码复杂性
 
 在注册或密码重置期间，用户必须提供符合复杂性规则的密码。 默认情况下，Azure AD B2C 实施强密码策略。 Azure AD B2C 还提供相应的配置选项用于指定客户所用密码的复杂性要求。
 
-可以在[用户流](active-directory-b2c-reference-password-complexity.md)和 `custom policies` 中配置密码复杂性要求。
+可以在[用户流](user-flow-password-complexity.md)和 `custom policies` 中配置密码复杂性要求。
 
 ## <a name="auditing-and-logs"></a>审核和日志
 
@@ -247,7 +246,6 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 
 ![Azure 门户中显示的单个用户审核日志](./media/technical-overview/audit-log.png)
 
-有关审核日志的更多详细信息，请参阅[访问 Azure AD B2C 审核日志](active-directory-b2c-reference-audit-logs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -256,3 +254,4 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 > [!div class="nextstepaction"]
 > [教程：创建 Azure Active Directory B2C 租户 >](tutorial-create-tenant.md)
 
+<!-- Update_Description: wording update -->

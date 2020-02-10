@@ -1,6 +1,6 @@
 ---
-title: 监视网络通信 - 教程 - Azure 门户 | Azure
-description: 了解如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
+title: 教程：使用 Azure 门户监视网络通信
+description: 此教程介绍如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
 author: lingliw
@@ -17,12 +17,12 @@ origin.date: 10/25/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 75e4b0f5d555f1b7d9556ce325070250da67f0f4
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 9b89edfb19b97f7f51e035894765d09397f162fd
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730386"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028883"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -50,14 +50,14 @@ ms.locfileid: "73730386"
 2. 选择“计算”  ，然后选择操作系统。 在本教程中，使用的是 **Windows Server 2016 Datacenter**。
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myVM1|
+    |名称|myVM1|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
-    |Location| 选择“中国东部” |
+    |位置| 选择“中国东部” |
 
 4. 选择 VM 的大小，然后选择“选择”  。
 5. 在“设置”  下选择“扩展”  。 选择“添加扩展”，然后选择“用于 Windows 的网络观察程序代理”，如下图所示：  
@@ -75,7 +75,7 @@ ms.locfileid: "73730386"
 |步骤|设置|Value|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | 名称                                  | myVm2                                                                   |
 | 3 | 身份验证类型                   | 粘贴 SSH 公钥，或者在选择“密码”后输入密码。  |
 | 3 | 资源组                        | 选择“使用现有资源组”，再选择“myResourceGroup”   。                 |
 | 6 | 扩展                            | **适用于 Linux 的网络观察程序代理**                                             |
@@ -92,9 +92,9 @@ ms.locfileid: "73730386"
 4. 选择“+ 添加”  。
 5. 输入或选择要监视的连接信息，然后选择“添加”  。 在下图所示的示例中，将通过端口 22 监视从 *myVm1* VM 到 *myVm2* VM 的连接：
 
-    | 设置                  | 值               |
+    | 设置                  | Value               |
     | ---------                | ---------           |
-    | Name                     | myVm1-myVm2(22)     |
+    | 名称                     | myVm1-myVm2(22)     |
     | Source                   |                     |
     | 虚拟机          | myVM1               |
     | 目标              |                     |
@@ -152,8 +152,8 @@ ms.locfileid: "73730386"
     | ---                     | ---            |
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
-    | Priority                | 100            |
-    | Name                    | DenySshInbound |
+    | 优先级                | 100            |
+    | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
 
@@ -170,7 +170,7 @@ ms.locfileid: "73730386"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

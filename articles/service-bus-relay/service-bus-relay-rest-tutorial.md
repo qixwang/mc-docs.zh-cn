@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 11/05/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ecf16dd91793fc104134c65029212b9bf4787db2
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 63fa39754cb39c9ad683553693bb7573e93a8180
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527934"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067951"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>教程：Azure WCF 中继 REST 教程
 
@@ -39,7 +39,7 @@ ms.locfileid: "74527934"
 > * 托管并运行基于 REST 的 WCF 服务。
 > * 运行和测试服务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要满足以下先决条件：
 
@@ -63,7 +63,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
 ### <a name="to-create-a-contract-with-an-interface"></a>使用接口创建协定
 
 1. 以管理员身份启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并选择“以管理员身份运行”  。
-1. 在 Visual Studio 中选择“创建新项目”  。
+1. 在 Visual Studio 中，选择“新建项目”  。
 1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。   
 1. 将项目命名为 *ImageListener*。 使用默认的**位置**，然后选择“创建”。 
 
@@ -261,7 +261,7 @@ namespace Microsoft.ServiceBus.Samples
 
     此实现使用 `MemoryStream` 检索映像并准备将其流式传输到浏览器。 它将流位置设置为从零开始，将流内容声明为 *.jpg*，然后流式传输信息。
 
-1. 选择“生成” > “生成解决方案”   。
+1. 选择“构建”   >   “构建解决方案”。
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>定义配置以便在服务总线上运行 Web 服务
 
