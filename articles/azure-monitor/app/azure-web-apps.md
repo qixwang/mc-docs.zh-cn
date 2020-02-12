@@ -8,12 +8,12 @@ origin.date: 04/26/2019
 author: lingliw
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 68a8c13899a482ac79fbf54d74a44d3ff6a242ab
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: f333e46ec480065a5903785690f194ad8b5cf728
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982061"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028465"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -38,7 +38,9 @@ ms.locfileid: "74982061"
 > [!NOTE]
 > 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会遵循手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](/azure-monitor/app/azure-web-apps#troubleshooting)。
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>为 .NET 应用程序启用基于代理的监视
+## <a name="enable-agent-based-monitoring"></a>启用基于代理的监视
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的组合。 有关详细信息，请参阅[故障排除部分](/azure-monitor/app/azure-web-apps#troubleshooting)中的说明。
@@ -74,11 +76,11 @@ ms.locfileid: "74982061"
 
     * 有关受支持自适应采样遥测处理器设置的列表，可以参阅[代码](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)和[相关的文档](sampling.md)。
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>为 .NET Core 应用程序启用基于代理的监视
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-支持以下 .NET Core 版本：ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2
+支持以下 .NET Core 版本：ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0
 
-基于代理/扩展的监视目前**不支持**面向 .NET Core 的完整框架、独立部署和 ASP.NET Core 3.0。 （在上述所有方案中，都可通过代码进行[手动检测](asp-net-core.md)。）
+基于代理/扩展的监视目前**不支持**将 .NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[/azure-monitor/app/asp-net-core)。）
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。 
 
@@ -91,11 +93,27 @@ ms.locfileid: "74982061"
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 .NET Core 2.0、2.1 和 2.2，.NET Core 提供“建议的集合”或“已禁用”。  
+2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 .NET Core 2.0、2.1、2.2 和 3.0，.NET Core 提供“建议的集合”或“已禁用”。  
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>为 .NET 应用程序启用客户端监视
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+在应用服务 Web 应用中的“设置”下，选择“Application Insights”   >   “启用”。  基于 Node.js 代理的监视目前为预览版。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+基于 Java 应用服务的 Web 应用程序当前不支持基于自动代理/扩展的监视。 若要针对 Java 应用程序启用监视，需[手动检测应用程序](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+基于 Python 应用服务的 Web 应用程序当前不支持基于自动代理/扩展的监视。 若要针对 Python 应用程序启用监视，需[手动检测应用程序](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
+
+---
+
+## <a name="enable-client-side-monitoring"></a>启用客户端监视
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 可以选择为 ASP.NET 启用客户端监视。 若要启用客户端监视：
 
@@ -112,7 +130,7 @@ ms.locfileid: "74982061"
 
 若要禁用客户端监视，请从“应用程序设置”中删除关联的键值对，或将值设置为 false。
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>为 .NET Core 应用程序启用客户端监视
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 对于使用“建议的集合”的 .NET Core 应用，**默认已启用**客户端监视，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED”。 
 
@@ -128,6 +146,20 @@ ms.locfileid: "74982061"
    * **保存**设置并**重新启动**应用。
 
 ![应用程序设置 UI 的屏幕截图](./media/azure-web-apps/appinsights-javascript-disabled.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+若要针对 Node.js 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+若要针对 Java 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+若要针对 Python 应用程序启用客户端监视，需[手动将客户端 JavaScript SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+
+---
 
 ## <a name="automate-monitoring"></a>自动监视
 
@@ -325,10 +357,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 下面是我们针对 Azure 应用服务中运行的基于 .NET 和 .NET Core 的应用程序的基于扩展/代理的监视提供的分步故障排除指南。
 
 > [!NOTE]
-> 仅支持通过基于手动 SDK 的检测在 Azure 应用服务中使用 Java 和 Node.js 应用程序，因此，以下步骤不适用于这些方案。
-
-> [!NOTE]
-> 不支持 ASP.NET Core 3.0 应用程序。 请通过 ASP.NET Core 3.0 应用的代码执行[手动检测](/azure-monitor/app/asp-net-core)。
+> 仅支持通过基于手动 SDK 的检测在 Azure 应用服务中使用 Java 应用程序，因此，以下步骤不适用于这些方案。
 
 1. 通过 `ApplicationInsightsAgent` 检查应用程序是否受监视。
     * 检查 `ApplicationInsightsAgent_EXTENSION_VERSION` 应用设置是否设置为值“~2”。
@@ -351,7 +380,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 下表更详细地解释了这些值的含义、其根本原因和建议的修复方法：
 
-|问题值|说明|解决方法
+|问题值|说明|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值表示扩展已检测到 SDK 的某个功能已在应用程序中存在，因此将会回退。 原因可能是引用了 `System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation` 或 `Microsoft.ApplicationInsights`  | 删除引用。 某中的某些引用是从特定的 Visual Studio 模板默认添加的，而旧版 Visual Studio 可能会添加对 `Microsoft.ApplicationInsights` 的引用。
 |`AppAlreadyInstrumented:true` | 如果应用程序面向 .NET Core 2.1 或 2.2 并引用 [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) 元包，则它会引入 Application Insights，因此扩展将会回退。 | [建议](https://github.com/aspnet/Announcements/issues/287) .NET Core 2.1、2.2 客户改用 Microsoft.AspNetCore.App 元包。|
@@ -375,7 +404,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
 * [将 Azure 诊断配置为](../platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../platform/data-platform.md)以确保服务可用且做出快速响应。
-* 每当操作事件发生或指标超过阈值时[接收警报通知](../platform/alerts-overview.md)。
+* [接收警报通知](../platform/alerts-overview.md) 。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
 * [设置可用性 Web 测试](monitor-web-app-availability.md)，以便在站点关闭时发出警报。
 
