@@ -28,11 +28,11 @@ ms.locfileid: "77028362"
 - SpeechSDK 中的 TTS：*config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
 - 身份验证令牌：https[]()://chinaeast2.api.cognitive.microsoft.cn/sts/v1.0/issueToken
 - Azure 门户： https://portal.azure.cn
-- 自定义语音门户： https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- 自定义语音识别门户： https://chinaeast2.cris.azure.cn/Home/CustomSpeech
 - 可用的 SKU：S0
 - 支持的功能：
   - 语音转文本
-  - 自定义语音（声学/语言调整）
+  - 自定义语音识别（声学/语言调整）
   - 文本转语音
   - 语音翻译器
 - 不支持的功能
