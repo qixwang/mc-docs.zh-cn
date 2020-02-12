@@ -1,31 +1,34 @@
 ---
-title: 将 Azure 门户 URL 加入安全列表 | Azure
+title: 在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
 description: 将这些 URL 添加到代理服务器旁路，以便与 Azure 门户及其服务通信
 services: azure-portal
 keywords: ''
-author: kfollis
+author: mgblythe
 ms.author: v-tawe
-origin.date: 09/13/2019
-ms.date: 12/16/2019
+origin.date: 01/29/2020
+ms.date: 02/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 72935de82273fbab2965ed0be6aee417a24bc339
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 33922800a6eccf56726c98d480a53ae15274232c
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335798"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028192"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
 
-若要在局域网或广域网和 Azure 云之间实现良好的性能和连接性，请配置本地安全设备，绕过针对 Azure 门户 URL 的安全限制。 网络管理员经常会部署代理服务器、防火墙或其他设备，以确保用户访问 Internet 时的安全性并控制其访问方式。 但是，旨在保护用户的规则有时候可能会阻止合法的与业务相关的 Internet 流量（包括你与 Azure 之间的通信）或降低其速度。 为了优化你的网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 URL 添加到安全列表。
+可以配置本地安全设备，绕过针对 Azure 门户 URL 的安全限制。 此配置可以改进局域网或广域网和 Azure 云之间的性能和连接性。
+
+网络管理员经常会部署代理服务器、防火墙或其他设备。 这些设备有助于确保用户访问 Internet 时的安全性并控制其访问方式。 旨在保护用户的规则有时候可能会阻止合法的与业务相关的 Internet 流量或降低其速度。 该流量包括你与 Azure 之间的通信。 为了优化你的网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 URL 添加到安全列表。
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>用于跳过代理的 Azure 门户 URL
 
-Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Azure 云。 选择云，然后将 URL 列表添加到代理服务器或防火墙，使发往这些终结点的网络流量可以绕过限制。
+Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Azure 云。 若要让发往这些终结点的网络流量绕过限制，请选择你的云。 然后，将 URL 列表添加到代理服务器或防火墙。
 
 #### <a name="public-cloudtabpublic-cloud"></a>[公有云](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -49,6 +52,7 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[美国政府云](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -61,6 +65,7 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[中国政府云](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

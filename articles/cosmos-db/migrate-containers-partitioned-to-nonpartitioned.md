@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/25/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 95cdfc723d59534072f5133b1c6e1f1d519e0018
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 86883896aa6975612493d7d89de6ed347188bf9f
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914469"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028828"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>将未分区的容器迁移到已分区的容器
 
@@ -92,7 +92,7 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-有关完整示例，请参阅 [.Net 示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub 存储库。
+有关完整示例，请参阅 [.Net 示例][1] GitHub 存储库。
 
 ## <a name="migrate-the-documents"></a>迁移文档
 
@@ -111,13 +111,21 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-有关如何将文档重新分区的完整示例，请参阅 [.Net 示例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub 存储库。 
+有关如何将文档重新分区的完整示例，请参阅 [.Net 示例][1] GitHub 存储库。 
 
 ## <a name="compatibility-with-sdks"></a>与 SDK 的兼容性
 
 旧版 Azure Cosmos DB SDK（例如 V2.x.x 和 V1.x.x）不支持系统定义的分区键属性。 因此，从旧版 SDK 读取容器定义时，读取结果不包含任何分区键定义，这些容器的行为与以前完全相同。 使用旧版 SDK 生成的应用程序将继续使用未分区的容器，就如同未发生任何更改一样。 
 
 如果迁移的容器已由最新/V3 版 SDK 使用，当你开始在新文档中填充系统定义的分区键时，不再可以从旧版 SDK 访问（读取、更新、删除、查询）此类文档。
+
+## <a name="known-issues"></a>已知问题
+
+**使用 V3 SDK 查询未通过分区键插入的项的计数可能涉及更高的吞吐量消耗**
+
+如果从 V3 SDK 中查询使用 V2 SDK 插入的项，或查询通过带 `PartitionKey.None` 参数的 V3 SDK 来插入的项，则在 FeedOptions 中提供 `PartitionKey.None` 参数时，计数查询可能会消耗更多的 RU/秒。 如果未使用分区键插入其他项，建议不要提供 `PartitionKey.None` 参数。
+
+如果使用不同的分区键值插入新项，则通过在 `FeedOptions` 中传递适当的密钥来查询此类项计数不会有任何问题。 插入具有分区键的新文档后，如果只需要查询不带分区键值的文档计数，则该查询可能会再次产生更高的 RU/秒（类似于常规分区集合）。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -126,4 +134,6 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 * [在容器和数据库上预配吞吐量](set-throughput.md)
 * [使用 Azure Cosmos 帐户](account-overview.md)
 
-<!--Update_Description: update meta properties -->
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration
+
+<!-- Update_Description: update meta properties, wording update, update link -->

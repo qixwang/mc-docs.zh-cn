@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 服务器防火墙规则
+title: 防火墙规则 - Azure Database for MySQL
 description: 了解如何使用防火墙规则启用到 Azure Database for MySQL 服务器的连接。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 9fb6c1ae612ff29837f13f79e1a8bf6680f1a62f
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+origin.date: 01/15/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: c2a81f906a97d68dc85eea99e68c4f5c148186db
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020873"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068348"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则
 
@@ -40,10 +40,12 @@ ms.locfileid: "74020873"
 如果该请求的 IP 地址位于任何数据库级或服务器级防火墙规则中指定的范围外，则连接请求失败。
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
-若要允许来自 Azure 的应用程序连接到 Azure Database for MySQL 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到你的数据库服务器时，防火墙将验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并点击“保存”  。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
+建议找到任何应用程序或服务的传出 IP 地址，并显式允许访问这些单个 IP 地址或范围。 例如，可以查找 Azure 应用服务的传出 IP 地址，或使用绑定到虚拟机或其他资源的公共 IP（请参阅下面的内容，了解如何通过服务终结点与虚拟机的专用 IP 进行连接）。 
+
+如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。 可以从 Azure 门户启用此设置，方法是：从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并点击“保存”  。 在 Azure CLI 中，起始和结束地址为 0.0.0.0 的防火墙规则设置执行等效操作。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
 
 > [!IMPORTANT]
-> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。  选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
 > 
 
 ![在门户中配置“允许访问 Azure 服务”](./media/concepts-firewall-rules/allow-azure-services.png)

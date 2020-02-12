@@ -4,17 +4,17 @@ description: 对 AzCopy 进行配置、优化和故障排除
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 10/16/2019
-ms.date: 01/06/2020
+origin.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 083b26ee7b8632956fae0d499b302ae5e5c318b3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 27cc19cfd639fb9fdd7ab32983f8ff76aa73ab55
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624361"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028857"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -42,6 +42,14 @@ AzCopy 目前不支持要求通过 NTLM 或 Kerberos 进行身份验证的代理
 ## <a name="optimize-performance"></a>优化性能
 
 可以指定性能基准，然后使用命令和环境变量在性能与资源消耗量之间找到最佳的平衡。
+
+本部分将帮助你执行以下优化任务：
+
+> [!div class="checklist"]
+> * 运行基准测试
+> * 优化吞吐量
+> * 优化内存用量 
+> * 优化文件同步
 
 ### <a name="run-benchmark-tests"></a>运行基准测试
 
@@ -98,6 +106,14 @@ azcopy jobs resume <job-id> --cap-mbps 10
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>优化文件同步
+
+[sync](storage-ref-azcopy-sync.md) 命令标识目标中的所有文件，然后在开始同步操作前比较文件名和上次修改的时间戳。 如果有大量文件，则可通过消除此前期处理来提高性能。 
+
+若要实现此目的，请改用 [azcopy copy](storage-ref-azcopy-copy.md) 命令，并将 `--overwrite` 标志设置为 `ifSourceNewer`。 AzCopy 会在文件复制时比较文件，而不执行任何预先扫描和比较。 如果有大量文件要比较，这会提供性能优势。
+
+[azcopy copy](storage-ref-azcopy-copy.md) 命令不会从目标中删除文件，因此，若要在源中不存在文件时删除目标中的文件，请使用 [azcopy sync](storage-ref-azcopy-sync.md) 命令，并将 `--delete-destination` 标志设置为 `true` 或 `prompt` 值。 
 
 ## <a name="troubleshoot-issues"></a>排查问题
 

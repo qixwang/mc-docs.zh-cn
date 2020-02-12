@@ -4,25 +4,25 @@ description: 使用 Azure 事件网格订阅 Blob 存储事件。
 author: WenJason
 ms.author: v-jay
 origin.date: 01/30/2018
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: dbcbbdc8b2016c993c8c21681546ed3a2dc34f2c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7183fd5364cf862f411959bd0b9bf3b0005e54f1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624273"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028954"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
-Azure 存储事件允许应用程序使用新式无服务器体系结构响应事件，例如 Blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。
+Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删除。 为此，它无需复杂的代码或高价低效的轮询服务。
 
-相反，可以通过 [Azure 事件网格](/event-grid/)向订阅者（如 Azure Functions 或 Azure 逻辑应用，甚至是你的自定义 HTTP 侦听器）推送事件，且仅需为已使用的内容付费。
+通过 [Azure 事件网格](/event-grid/)向订阅者（如 Azure Functions 或 Azure 逻辑应用，甚至是你自己的 HTTP 侦听器）推送事件。 最大好处是，使用多少就付多少费用。
 
-Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富的重试策略和死信传递向应用程序提供可靠的传递服务。
+Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信向应用程序提供可靠的事件传递。
 
 常见的 Blob 存储事件方案包括图像或视频处理、搜索索引或任何面向文件的工作流。 异步文件上传十分适合事件。 基于事件的体系结构对于鲜少更改，但要求立即响应的情况尤为有效。
 
@@ -33,6 +33,9 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 |Azure 门户    |[快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点](/event-grid/blob-event-quickstart-portal?toc=%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[快速入门：利用 PowerShell 将存储事件路由到 Web 终结点](/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点](/storage/blobs/storage-blob-event-quickstart?toc=%2fstorage%2fblobs%2ftoc.json)|
+
+>[!NOTE]
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
 
 ## <a name="the-event-model"></a>事件模型
 
@@ -51,7 +54,7 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 
 ## <a name="filtering-events"></a>筛选事件
 
-可按事件类型以及已创建或已删除对象的容器名称和 blob 名称来筛选 blob 事件订阅。  可在[创建](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)事件订阅期间或[以后](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)将筛选器应用于事件订阅。 事件网格中的使用者筛选器基于“开始时间”和“结束时间”的匹配进行筛选，将含有匹配使用者的事件传送给订阅方。
+可以按事件类型、容器名称或已创建/删除的对象的名称来[筛选 Blob 事件](/cli/eventgrid/event-subscription?view=azure-cli-latest)。 事件网格中的筛选器与主题的开头或结尾匹配，因此具有匹配的主题的事件会转到订阅服务器。
 
 若要详细了解如何应用筛选器，请参阅[筛选事件网格的事件](/event-grid/how-to-filter-events)。
 

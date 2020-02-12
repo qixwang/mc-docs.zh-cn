@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-origin.date: 12/03/2019
-ms.date: 01/17/2020
+origin.date: 01/16/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: bc9c2c606d3465b5133e299ae30846b098b74419
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 11dc3762d9a2047ce74a256ec2ba70218fdbc4ac
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123345"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067734"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Azure 事件中心故障排除指南
 本文提供了事件中心 .NET Framework API 导致的一些 .NET 异常，以及其他用于排查问题的提示。 
@@ -86,13 +86,13 @@ ms.locfileid: "76123345"
     
     解决方法：修改分区分发策略，或尝试 [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 可能会有所帮助。
 
-2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.com)中检查事件中心命名空间窗口中的“指标”  屏幕来确认）。 门户显示聚合（1 分钟）的信息，但我们会实时测量吞吐量 - 因此它只是一个估计值。
+2. 事件中心命名空间没有足够的吞吐量单位（可以在 [Azure 门户](https://portal.azure.cn)中检查事件中心命名空间窗口中的“指标”  屏幕来确认）。 门户显示聚合（1 分钟）的信息，但我们会实时测量吞吐量，因此它只是一个估计值。
 
     解决方法：增加命名空间上的吞吐量单位可有所帮助。 可在门户上的事件中心命名空间屏幕的“缩放”  窗口中执行此操作。 或者，可以使用[自动膨胀](event-hubs-auto-inflate.md)。
 
 #### <a name="error-code-50001"></a>错误代码 50001
 
-此错误很少发生。 但如果为命名空间运行代码的容器的 CPU 比较低（在事件中心负载均衡器开始运行前几秒钟内），则可能发生此错误。
+此错误很少发生。 但如果为命名空间运行代码的容器的 CPU 比较低时（在事件中心负载均衡器开始之前不超过几秒钟），则可能发生此错误。
 
 #### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>对 GetRuntimeInformation 方法的调用限制
 Azure 事件中心每秒最多支持 50 次对 GetRuntimeInfo 的调用。 达到限制后，你可能会收到类似以下的异常：
@@ -104,25 +104,42 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
 以下步骤可帮助排查 *.servicebus.chinacloudapi.cn 下所有服务的连接性/证书/超时问题。 
 
-- 浏览至 `https://sbwagn2.servicebus.chinacloudapi.cn/` 或使用 [wget](https://www.gnu.org/software/wget/)。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
-- 运行以下命令，检查防火墙是否阻止了任何端口。 根据使用的库，还会使用其他端口。 例如：443、5672、9354。
+- 浏览至 `https://<yournamespacename>.servicebus.chinacloudapi.cn/` 或使用 [wget](https://www.gnu.org/software/wget/)。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
+
+    成功消息的示例：
+    
+    ```xml
+    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+    ```
+    
+    失败错误消息的示例：
+
+    ```json
+    <Error>
+        <Code>400</Code>
+        <Detail>
+            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+        </Detail>
+    </Error>
+    ```
+- 运行以下命令，检查防火墙是否阻止了任何端口。 使用的端口为 443 (HTTPS)、5671 (AMQP) 和 9093 (Kafka)。 根据使用的库，还会使用其他端口。 下面是用于检查 5671 端口是否被阻止的示例命令。
 
     ```powershell
-    tnc sbwagn2.servicebus.chinacloudapi.cn -port 5671
+    tnc <yournamespacename>.servicebus.chinacloudapi.cn -port 5671
     ```
 
     在 Linux 上：
 
     ```shell
-    telnet sbwagn2.servicebus.chinacloudapi.cn 5671
+    telnet <yournamespacename>.servicebus.chinacloudapi.cn 5671
     ```
-- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 运行大约 1 分钟，检查连接是否部分受阻。 可从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
+- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 可从[此处](https://docs.microsoft.com/sysinternals/downloads/psping)下载 `psping` 工具。
 
     ```shell
-    psping.exe -t -q ehedhdev.servicebus.chinacloudapi.cn:9354 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.chinacloudapi.cn:5671 -nobanner     
     ```
     如果使用的是 `tnc`、`ping` 等其他工具，可以使用等效的命令。 
-- 如果上述步骤没有帮助，请执行网络跟踪并对其进行分析，或者联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
+- 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -131,5 +148,3 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
 * [事件中心常见问题](event-hubs-faq.md)
-
-<!--Update_Description: update meta properties, wording update -->

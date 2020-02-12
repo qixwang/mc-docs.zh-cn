@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
+title: 使用虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
 description: 本文档介绍 Azure Cosmos 帐户的虚拟网络和子网访问控制。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 1dc084051f6b591bd9f9aca9292153bb7332bb72
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5201f71e7b31e1b2c552584d6fb19ca7254243b0
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335990"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068328"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
 
@@ -41,6 +41,12 @@ ms.locfileid: "75335990"
 
 在子网中为 Azure Cosmos DB 启用服务终结点后，抵达帐户的流量源将从公共 IP 切换到虚拟网络和子网。 如果 Azure Cosmos 帐户仅包含基于 IP 的防火墙，则已启用服务的子网发出的流量将不再与 IP 防火墙规则相匹配，因此遭到拒绝。 请重温有关从基于 IP 的防火墙无缝迁移到基于虚拟网络的访问控制的步骤。
 
+### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>对于使用 VNET 服务终结点的 Azure Cosmos 帐户，是否需要其他 RBAC 权限？
+
+将 VNet 服务终结点添加到 Azure Cosmos 帐户后，若要对帐户设置进行任何更改，需要有权访问 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 操作，该操作针对 Azure Cosmos 帐户上配置的所有 VNET。 此权限是必需的，因为在评估任何属性之前，授权过程会验证对资源（例如数据库和虚拟网络资源）的访问。
+
+即使用户不使用 Azure CLI 指定 VNET ACL，授权也会验证 VNet 资源操作的权限。 目前，Azure Cosmos 帐户的控制平面支持设置 Azure Cosmos 帐户的完整状态。 控制平面调用的参数之一是 `virtualNetworkRules`。 如果未指定此参数，Azure CLI 会执行“获取数据库”调用以检索 `virtualNetworkRules` 并在“更新”调用中使用此值。
+
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>对等互连的虚拟网络是否也有权访问 Azure Cosmos 帐户？ 
 只有已添加到 Azure Cosmos 帐户的虚拟网络及其子网才拥有此访问权限。 将对等互连的虚拟网络中的子网添加到帐户之后，对等互连的 VNet 才可以访问该帐户。
 
@@ -55,6 +61,9 @@ NSG 规则用于限制与虚拟网络中子网之间的连接。 将 Azure Cosmo
 
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>服务终结点是否适用于所有 VNet？
 否，只能为 Azure 资源管理器虚拟网络启用服务终结点。 经典虚拟网络不支持服务终结点。
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>为 Azure Cosmos DB 启用了服务终结点访问时，我能否“接受从公用 Azure 数据中心内连接”？  
+仅当你希望自己的 Azure Cosmos DB 帐户可供其他 Azure 第一方服务（例如 Azure 数据工厂和 Azure 认知搜索）或给定 Azure 区域中部署的任何服务访问时，才需要这样做。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,15 +8,15 @@ manager: digimobile
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/04/2019
+origin.date: 01/06/2020
+ms.date: 01/15/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c8f0366dc8da88c834f2b84574065b40d8c8d903
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 8289264cc7e185844f4a9883c14cf10ba6b9be80
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884801"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028843"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>将语言理解 (LUIS) 容器部署到 Azure 容器实例
 
@@ -26,7 +26,20 @@ ms.locfileid: "74884801"
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
-<!-- [!INCLUDE [Create LUIS Container Instance resource](../containers/includes/create-container-instances-resource.md)] -->
+## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
+
+LUIS 容器需要在运行时中拉取的 `.gz` 模型文件。 容器必须能够通过容器实例中的卷装载来访问此模型文件。 有关如何创建 Azure 文件共享的信息，请参阅[创建文件共享](../../storage/files/storage-how-to-create-file-share.md)。 记下 Azure 存储帐户名称、密钥和文件共享名称，因为稍后需要用到它们。
+
+### <a name="export-and-upload-packaged-luis-app"></a>导出和上传打包的 LUIS 应用
+
+若要将 LUIS 模型（打包的应用）上传到 Azure 文件共享，需要首先<a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">将其从 LUIS 门户导出<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在 Azure 门户中，导航到存储帐户资源的“概览”  页，然后选择“文件共享”。  。 选择最近创建的文件共享名称，然后选择“上传”  按钮。
+
+> [!div class="mx-imgBorder"]
+> ![上传到文件共享](media/luis-how-to-deploy-to-aci/upload-file-share.png)
+
+上传 LUIS 模型文件。
+
+[!INCLUDE [Create LUIS Container instance resource](../containers/includes/create-container-instances-resource-from-azure-cli.md)]
 
 [!INCLUDE [API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 

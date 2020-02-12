@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器中的防火墙规则
-description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器的防火墙规则。
+title: 防火墙规则 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍如何使用防火墙规则连接到 Azure Database for PostgreSQL（单一服务器）。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/25/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 77a90e9a36a0f5c2ea1553181d6a37a36e8ae268
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+origin.date: 01/15/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: 75784e0337943a408ababcfda1edeb09083f0970
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020694"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068369"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的防火墙规则
 在指定哪些计算机具有访问权限之前，Azure Database for PostgreSQL 服务器防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -33,10 +33,12 @@ ms.locfileid: "74020694"
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:致命错误: 主机 "123.45.67.890"、用户 "adminuser"、数据库 "postgresql"、SSL 没有 pg\_hba.conf 条目
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
-若要允许来自 Azure 的应用程序连接到 Azure Database for PostgreSQL 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到你的数据库服务器时，防火墙将验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并点击“保存”  。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for PostgreSQL 服务器。
+建议找到任何应用程序或服务的传出 IP 地址，并显式允许访问这些单个 IP 地址或范围。 例如，可以查找 Azure 应用服务的传出 IP 地址，或使用绑定到虚拟机或其他资源的公共 IP（请参阅下面的内容，了解如何通过服务终结点与虚拟机的专用 IP 进行连接）。 
+
+如果某个固定的传出 IP 地址不适用于 Azure 服务，可以考虑启用来自所有 Azure 数据中心 IP 地址的连接。 可以从 Azure 门户启用此设置，方法是：从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并点击“保存”  。 在 Azure CLI 中，起始和结束地址为 0.0.0.0 的防火墙规则设置执行等效操作。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for PostgreSQL 服务器。
 
 > [!IMPORTANT]
-> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> “允许访问 Azure 服务”选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。  选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
 > 
 
 ![在门户中配置“允许访问 Azure 服务”](media/concepts-firewall-rules/allow-azure-services.png)

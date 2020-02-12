@@ -1,6 +1,6 @@
 ---
-title: 在 Linux 上安装 Azure IoT Edge
-description: 在运行 Ubuntu 的 Linux AMD64 设备上安装 Azure IoT Edge 的相关说明
+title: 在 Linux 上安装 Azure IoT Edge | Microsoft Docs
+description: 在运行 Ubuntu 或 Raspbian 的 Linux 设备上安装 Azure IoT Edge 的相关说明
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -8,14 +8,14 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 origin.date: 07/22/2019
-ms.date: 11/04/2019
+ms.date: 01/27/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0ae4f57f31d298f257fa2d72675be5aef5d3f11e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 910b56a82b727efc1a3817100549ad06c1df55dc
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914486"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966441"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
@@ -109,11 +109,11 @@ sudo apt-get update
 sudo apt-get install iotedge
 ```
 
-IoT Edge 成功安装以后，输出会提示你更新配置文件。 执行[配置 Azure IoT Edge 安全守护程序](#configure-the-security-daemon)部分的步骤，完成设备预配。 
+IoT Edge 成功安装以后，输出会提示你更新配置文件。 执行[配置安全守护程序](#configure-the-security-daemon)部分的步骤，完成设备预配。 
 
 ## <a name="install-a-specific-runtime-version"></a>安装特定的运行时版本
 
-若要安装特定版本的 Azure IoT Edge 运行时，可以直接将 IoT Edge GitHub 存储库中的组件文件作为目标。 使用以下步骤将所有 IoT Edge 组件安装到设备上：首先是 Moby 引擎和 CLI，然后是 libiothsm，最后是 IoT Edge 安全守护程序。
+若要安装特定版本的 Moby 和 Azure IoT Edge 运行时（而不是使用最新版本），可以直接将 IoT Edge GitHub 存储库中的组件文件作为目标。 使用以下步骤将所有 IoT Edge 组件安装到设备上：首先是 Moby 引擎和 CLI，然后是 libiothsm，最后是 IoT Edge 安全守护程序。 如果不想更改到特定运行时版本，请跳到下一部分：[配置安全守护程序](#configure-the-security-daemon)。
 
 1. 导航到 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)，找到需要将其作为目标的发行版。 
 
@@ -167,8 +167,7 @@ IoT Edge 成功安装以后，输出会提示你更新配置文件。 按照下�
 
 ### <a name="option-1-manual-provisioning"></a>选项 1：手动预配
 
-若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device-portal.md)，可以通过在 IoT 中心注册新设备来创建该设备连接字符串。
-
+若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device.md#register-in-the-azure-portal)，可以通过在 IoT 中心注册新设备来创建该设备连接字符串。
 
 打开配置文件。 
 
@@ -268,7 +267,9 @@ journalctl -u iotedge --no-pager --no-full
 sudo iotedge check
 ```
 
-并且列出正在运行的模块：
+在将第一个模块部署到设备上的 IoT Edge 之前， **$edgeHub** 系统模块不会部署到设备。 因此，自动检查会返回一个针对 `Edge Hub can bind to ports on host` 连接性检查的错误。 此错误可以忽略，除非它是在将模块部署到设备后发生的。
+
+最后，列出正在运行的模块：
 
 ```bash
 sudo iotedge list

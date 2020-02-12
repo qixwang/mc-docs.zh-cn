@@ -8,14 +8,14 @@ author: spelluru
 manager: ''
 ms.topic: conceptual
 origin.date: 08/22/2019
-ms.date: 10/23/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: b2b431a70ec75b29c1385ed9fa2f757376ae850e
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: 3c7d2024ab859df04d7671ce3b15b2364cce018d
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887676"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067743"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
 Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -73,16 +73,71 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 分配此角色后，Web 应用程序即可访问已定义范围内的事件中心资源。 
 
 ### <a name="test-the-web-application"></a>测试 Web 应用程序
+1. 创建事件中心命名空间和事件中心。 
+2. 将 Web 应用部署到 Azure。 请参阅下面的选项卡式部分，获取 GitHub 上的 Web 应用程序的链接。 
+3. 确保将 SendReceive.aspx 设置为 Web 应用的默认文档。 
+3. 为 Web 应用启用**标识**。 
+4. 将此标识分配给命名空间级别或事件中心级别的“事件中心数据所有者”  角色。 
+5. 运行 Web 应用程序，输入命名空间名称和事件中心名称，输入一条消息，然后选择“发送”  。 若要接收事件，请选择“接收”。  
+#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure.Messaging.EventHubs（最新）](#tab/latest)
+现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
+
+安装 [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) 中的最新包，开始使用 **EventHubProducerClient** 向事件中心发送事件，使用 **EventHubConsumerClient** 接收事件。  
+
+```csharp
+protected async void btnSend_Click(object sender, EventArgs e)
+{
+    await using (EventHubProducerClient producerClient = new EventHubProducerClient(txtNamespace.Text, txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        // create a batch
+        using (EventDataBatch eventBatch = await producerClient.CreateBatchAsync())
+        {
+
+            // add events to the batch. only one in this case. 
+            eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(txtData.Text)));
+
+            // send the batch to the event hub
+            await producerClient.SendAsync(eventBatch);
+        }
+
+        txtOutput.Text = $"{DateTime.Now} - SENT{Environment.NewLine}{txtOutput.Text}";
+    }
+}
+protected async void btnReceive_Click(object sender, EventArgs e)
+{
+    await using (var consumerClient = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, $"{txtNamespace.Text}.servicebus.windows.net", txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        int eventsRead = 0;
+        try
+        {
+            using CancellationTokenSource cancellationSource = new CancellationTokenSource();
+            cancellationSource.CancelAfter(TimeSpan.FromSeconds(5));
+
+            await foreach (PartitionEvent partitionEvent in consumerClient.ReadEventsAsync(cancellationSource.Token))
+            {
+                txtOutput.Text = $"Event Read: { Encoding.UTF8.GetString(partitionEvent.Data.Body.ToArray()) }{ Environment.NewLine}" + txtOutput.Text;
+                eventsRead++;
+            }
+        }
+        catch (TaskCanceledException ex)
+        {
+            txtOutput.Text = $"Number of events read: {eventsRead}{ Environment.NewLine}" + txtOutput.Text;
+        }
+    }
+}
+```
+
+#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft.Azure.EventHubs（旧版）](#tab/old)
 现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
 
-从 [Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 安装最新包，并开始使用 EventHubClient 通过事件中心发送和接收数据，如以下代码所示： 
+从 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 安装最新包，并开始使用 EventHubClient 通过事件中心发送和接收数据，如以下代码所示： 
 
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
 ```
+---
 
 ## <a name="next-steps"></a>后续步骤
-- 从 GitHub 下载[示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)。
 - 请参阅下文，了解 Azure 资源的托管标识：[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 - 请参阅以下相关文章：
     - [使用 Azure Active Directory 对应用程序的 Azure 事件中心请求进行身份验证](authenticate-application.md)

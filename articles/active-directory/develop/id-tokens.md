@@ -2,28 +2,23 @@
 title: Microsoft 标识平台 ID 令牌参考 | Microsoft Docs
 description: 了解如何使用 Azure AD v1.0 和 Microsoft 标识平台 (v2.0) 终结点发出的访问令牌。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/27/2019
-ms.date: 11/05/2019
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a764b57f44737c7858e485926f1a2691f22994ac
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 339fcab995b26a15664780643e8603c7b341da85
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830980"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067576"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -86,9 +81,15 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`rh` | 不透明字符串 |Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值固定不变，无法重新分配或重复使用。 使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
 |`tid` | 字符串，GUID | 表示用户所属的 Azure AD 租户的 GUID。 对于工作和学校帐户，该 GUID 就是用户所属组织的不可变租户 ID。 需要 `profile` 作用域才能接收此声明。 |
-|`unique_name` | String | 提供一个用户可读值，用于标识令牌使用者。 不保证此值在租户中唯一，只应该用于显示目的。 仅在 v1.0 `id_tokens` 中颁发。 |
+|`unique_name` | String | 提供一个用户可读值，用于标识令牌使用者。 此值在任何给定时间点都是唯一的，但随着电子邮件和其他标识符的重复使用，此值可能会重新出现在其他帐户上，因此只应该用于显示目的。 仅在 v1.0 `id_tokens` 中颁发。 |
 |`uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
+
+
+> [!NOTE]
+> v1 和 v2 id_token 携带的信息量存在差异，如上述示例所示。 该版本实质上指定了从其颁发它的 Azure AD 平台终结点。 [Azure AD Oauth 实现](/active-directory/develop/about-microsoft-identity-platform)多年来一直在发展。 目前，我们有两个不同的用于 AzureAD 应用程序的 oAuth 终结点。 可以使用归类为 v2 的任何新终结点，也可以使用称为 v1 的旧终结点。 这两个终结点的 Oauth 终结点是不同的。 V2 终结点是更新的终结点，我们尝试在其中迁移 v1 终结点的所有功能。建议新开发人员使用 v2 终结点。 
+> - V1：Azure Active Directory 终结点：`https://login.partner.microsoftonline.cn/common/oauth2/authorize`
+> - V2：Microsoft 标识平台终结点：`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>验证 id_token
 

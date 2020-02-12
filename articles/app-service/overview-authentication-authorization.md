@@ -4,16 +4,16 @@ description: 了解 Azure 应用服务中内置的身份验证和授权支持，
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 origin.date: 08/12/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 4f54dff614d73fdb4b55ba54af928ac0eaa07157
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 070ca86999eb408cc44fe1f3eb964b09a5f0ebd6
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600429"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979346"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -26,9 +26,9 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 安全身份验证和授权需要对联合身份验证、加密、[JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授权类型](https://oauth.net/2/grant-types/)等安全性方面有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
 > [!IMPORTANT]
-> 对于 AuthN/AuthO，无需使用应用服务。 许多 Web 框架绑定了安全功能，你可以根据需要使用不同的功能。 如果所需的灵活性超出了应用服务能够提供的范畴，还可以编写自己的实用工具。  
+> 对于 AuthN/AuthO，无需使用应用服务。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
 >
-> 但是，如果使用任何非应用服务选项进行远程身份验证，请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；对客户端浏览器进行更新时，应用的身份验证机制可能被破坏。 ASP.NET Core 文档介绍了如何在应用中处理此操作，请参阅 [HTTP：浏览器 SameSite 更改影响身份验证](https://docs.microsoft.com/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication)。 它包含有关如何针对主要浏览器测试此中断性变更的有用指导，不考虑你是否使用 ASP.NET Core。
+> 应用服务托管的 ASP.NET Core 2.1 及更高版本已针对此中断性变更进行了修补，并且会相应地处理 Chrome 80 和更低版本的浏览器。 此外，ASP.NET Framework 4.7.2 的相同修补程序会在 2020 年 1 月之前的应用服务实例上部署。 有关详细信息（包括如何了解应用是否已收到修补程序），请参阅 [Azure 应用服务 SameSite Cookie 更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
 
 有关特定于本机移动应用的信息，请参阅[使用 Azure 应用服务对移动应用进行用户身份验证和授权](../app-service-mobile/app-service-mobile-auth.md)。
@@ -100,7 +100,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 | 步骤 | 不使用提供程序 SDK | 使用提供程序 SDK |
 | - | - | - |
 | 1.将用户登录 | 将客户端重定向到 `/.auth/login/<provider>`。 | 客户端代码直接使用提供程序的 SDK 将用户登录，并接收身份验证令牌。 有关详细信息，请参阅提供程序文档。 |
-| 2.身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` 进行验证。 |
+| 2.身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers)`/.auth/login/<provider>` 进行验证。 |
 | 3.建立经过身份验证的会话 | 应用服务将经过身份验证的 Cookie 添加到响应中。 | 应用服务将自身的身份验证令牌返回给客户端代码。 |
 | 4.提供经过身份验证的内容 | 客户端在后续请求中包含身份验证 Cookie（由浏览器自动处理）。 | 客户端代码在 `X-ZUMO-AUTH` 标头中提供身份验证令牌（由移动应用客户端 SDK 自动处理）。 |
 

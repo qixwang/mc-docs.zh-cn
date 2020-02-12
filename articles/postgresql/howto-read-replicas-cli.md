@@ -1,18 +1,18 @@
 ---
-title: 通过 Azure CLI、REST API 管理 Azure Database for PostgreSQL（单一服务器）的只读副本
+title: 管理只读副本 - Azure CLI、REST API - Azure Database for PostgreSQL（单一服务器）
 description: 了解如何通过 Azure CLI 和 REST API 管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 09/12/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 30a00046b96c5f762da598e2443e9ff0c8bbc34d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+origin.date: 01/23/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: 5ef482f87cdd5f0c0f368d131c61a68b1a6cbbed
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624357"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068377"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>通过 Azure CLI、REST API 创建和管理只读副本
 
@@ -21,7 +21,7 @@ ms.locfileid: "75624357"
 ## <a name="azure-cli"></a>Azure CLI
 可以使用 Azure CLI 创建和管理只读副本。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - [安装 Azure CLI 2.0](/cli/install-azure-cli?view=azure-cli-latest)
 - 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-up-azure-cli.md)。
@@ -37,6 +37,11 @@ ms.locfileid: "75624357"
    ```azurecli
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
+
+> [!NOTE]
+> 如果尝试在 Azure CLI 中设置 azure.replication_support 时出现“给定的值无效”错误，则可能是服务器在默认情况下已设置 REPLICA。 Bug 阻止此设置正确反映在 REPLICA 为内部默认值的较新服务器上。 <br><br>
+> 可以跳过“准备主服务器”步骤，转到“创建副本”。 <br><br>
+> 若要确认服务器是否属于此类别，请访问 Azure 门户中服务器的复制页。 在工具栏中，“禁用复制”会灰显，“添加副本”会处于活动状态。
 
 2. 重启服务器以应用更改。
 

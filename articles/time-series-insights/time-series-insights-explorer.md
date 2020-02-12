@@ -11,14 +11,14 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 origin.date: 11/20/2019
-ms.date: 12/23/2019
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc51e491c7411bc2ed041070dbcb0ac54c45c56a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c60692297bd28870f5450725cf2dba55bcc9712c
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335712"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966523"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
@@ -29,13 +29,13 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 > [!TIP]
 > 有关演示环境的指导教程，请阅读 [Azure 时序见解快速入门](time-series-quickstart.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在可以使用时序见解资源管理器之前，必须：
 
-- 创建时序见解环境。 有关详细信息，请参阅[如何开始使用时序见解环境](./time-series-insights-get-started.md)。
+- 创建时序见解环境。 有关详细信息，请阅读[如何开始使用时序见解环境](./time-series-insights-get-started.md)。
 - 提供对环境中帐户的[访问](time-series-insights-data-access.md)。
-- 在环境中添加 [IoT 中心](time-series-insights-how-to-add-an-event-source-iothub.md)或[事件中心](time-series-insights-how-to-add-an-event-source-eventhub.md)事件源。
+- 在环境中添加 IoT 中心或事件中心事件源。
 
 ## <a name="explore-and-query-data"></a>浏览和查询数据
 
@@ -43,7 +43,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 若要开始，请在 Web 浏览器中打开[时序见解资源管理器](https://insights.timeseries.azure.com/)。 在窗口左侧选择一个环境。 有权访问的所有环境均按字母顺序列出。
 
-1. 选择环境后，使用顶部的“从”和“到”配置，或者单击并拖到所需的时间跨度   。 单击右上角的放大镜，或者右键单击所选时间跨度并选择“搜索”  。
+1. 选择环境后，使用顶部的“从”和“到”配置，或者将其选中并拖到所需的时间跨度   。 单击右上角的放大镜，或者右键单击所选时间跨度并选择“搜索”  。
 
 1. 还可以通过选择“自动打开”  按钮，每分钟自动刷新可用性。 “自动打开”按钮仅适用于可用性图表，而不适用于主要可视化效果的内容  。
 
@@ -51,7 +51,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
    [![时序见解环境选择](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
-1. 接下来，将看到一个图表，该图表显示的是所选时间范围内所有事件的计数。 在此有许多控件：
+1. 接下来，会显示一个图表，该图表显示的是所选时间范围内所有事件的计数。 在此有许多控件：
 
     - **搜索词编辑器面板**：术语空间是查询环境的位置。 它位于屏幕的左侧：
       - **度量值**：此下拉列表显示所有数值列（**双精度**）。
@@ -74,11 +74,11 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
          [![示例 GA 查询](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. 可以使用“间隔大小”  滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以查看数据更精细、分辨率更高的剪切片段。 滑块的默认起点设置为所选的数据的最佳视图，可以平衡分辨率、查询速度和粒度。
+1. 可以使用“间隔大小”  滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以显示并分析数据更精细、分辨率更高的剪切片段。 滑块的默认起点设置为所选的数据的最佳视图，可以平衡分辨率、查询速度和粒度。
 
 1. 使用“时间画笔”工具可以轻松从一个时间跨度导航到另一个时间跨度。 
 
-1. 选择“保存”  图标可以保存当前查询，并与环境的其他用户共享该查询。 选择“打开”  图标时，可以看到所有已保存的查询和有权访问的环境中的其他用户的任何共享查询。
+1. 选择“保存”  图标可以保存当前查询，并与环境的其他用户共享该查询。 选择“打开”  图标时，可以查看所有已保存的查询和有权访问的环境中的其他用户的任何共享查询。
 
    [![查询](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
@@ -102,7 +102,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
     [![GA 资源管理器热度地图图表](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. 通过选择或右键单击浏览事件时，会显示“事件”面板  。 在这里，可以看到所有原始事件并可将事件导出为 JSON 或 CSV 文件。 时序见解存储所有原始数据。
+1. 通过选择或右键单击浏览事件时，会显示“事件”面板  。 在这里，可以查看所有原始事件并可将事件导出为 JSON 或 CSV 文件。 时序见解存储所有原始数据。
 
     [![事件](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
@@ -113,7 +113,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
       [![“统计信息”列图表和选项](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-现在，你已了解时序见解资源管理器 Web 应用中可用的各种功能和选项。
+现在，你已了解时序见解资源管理器 Web 应用中可用的关键功能、配置设置和显示选项。
 
 ## <a name="next-steps"></a>后续步骤
 

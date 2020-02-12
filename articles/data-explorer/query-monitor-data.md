@@ -7,14 +7,14 @@ ms.author: v-tawe
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 07/10/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: eff7a026d45669f85f5214dd83f13442a35aa3b8
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+origin.date: 01/28/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 7b5def2c6f51f16e122a60aff7611500a062936c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020962"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037944"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器（预览版）查询 Azure Monitor 中的数据
 
@@ -24,10 +24,10 @@ Azure 数据资源管理器代理流：
 
 ![ADX 代理流](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!NOTE]
-> ADX 代理处于预览模式。 若要启用此功能，请联系 [ADXProxy](mailto:adxproxy@microsoft.com) 团队。
+> ADX 代理处于预览模式。 [连接到代理](#connect-to-the-proxy)，为群集启用 ADX 代理功能。 如果有任何疑问，请联系 [ADXProxy](mailto:adxproxy@microsoft.com) 团队。
 
 ## <a name="connect-to-the-proxy"></a>连接到代理
 
@@ -37,11 +37,12 @@ Azure 数据资源管理器代理流：
 
 1. 在 Azure 数据资源管理器 UI (https://dataexplorer.azure.cn/clusters) 中，选择“添加群集”。 
 
-1. 在“添加群集”窗口中： 
+1. 在“添加群集”窗口中，添加 LA 或 AI 群集的 URL。  
+    
+    * 对于 LA：`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * 对于 AI：`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
-    * 添加 LA 或 AI 群集的 URL。 例如： `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
-
-    * 选择“设置”  （应用程序对象和服务主体对象）。
+    * 选择“添加”   。
 
     ![添加群集](media/adx-proxy/add-cluster.png)
 
@@ -53,7 +54,7 @@ Azure 数据资源管理器代理流：
 
 ## <a name="run-queries"></a>运行查询
 
-可以使用 Kusto 资源管理器、ADX Web 资源管理器、Jupyter Kqlmagic 或 REST API 来查询代理群集。 
+可以使用支持 Kusto 查询的客户端工具运行查询，例如：Kusto 资源管理器、ADX Web UI、Jupyter Kqlmagic、Flow、PowerQuery、PowerShell、Jarvis、Lens、REST API。
 
 > [!TIP]
 > * 数据库名称应与代理群集中指定的资源名称相同。 名称区分大小写。
@@ -61,19 +62,9 @@ Azure 数据资源管理器代理流：
 >     * 如果名称包含特殊字符，将按代理群集名称中的 URL 编码替换这些字符。 
 >     * 如果名称包含的字符不符合 [KQL 标识符命名规则](https://docs.microsoft.com/azure/kusto/query/schema-entities/entity-names)，这些字符将由短划线 **-** 字符替换。
 
-### <a name="query-against-the-native-azure-data-explorer-cluster"></a>针对本机 Azure 数据资源管理器群集运行查询 
+### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>从 LA 或 AI ADX 代理群集直接查询
 
-针对 Azure 数据资源管理器群集（例如 *help* 群集中的 *StormEvents* 表）运行查询。 运行查询时，请确认是否在左窗格中选择了本机 Azure 数据资源管理器群集。
-
-```kusto
-StormEvents | take 10 // Demonstrate query through the native ADX cluster
-```
-
-![查询 StormEvents 表](media/adx-proxy/query-adx.png)
-
-### <a name="query-against-your-la-or-ai-cluster"></a>针对 LA 或 AI 群集运行查询
-
-针对 LA 或 AL 群集运行查询时，请确认是否在左窗格中选择了 LA 或 AI 群集。 
+在 LA 或 AI 群集上运行查询。 验证是否在左窗格中选择了群集。 
 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
@@ -81,18 +72,7 @@ Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 
 ![查询 LA 工作区](media/adx-proxy/query-la.png)
 
-### <a name="query-your-la-or-ai-cluster-from-the-adx-proxy"></a>从 ADX 代理查询 LA 或 AI 群集  
-
-从代理针对 LA 或 AI 群集运行查询时，请确认是否在左窗格中选择了 ADX 本机群集。 以下示例演示如何查询使用本机 ADX 群集的 LA 工作区
-
-```kusto
-cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name').Perf
-| take 10 
-```
-
-![从 Azure 数据资源管理器代理运行查询](media/adx-proxy/query-adx-proxy.png)
-
-### <a name="cross-query-of-la-or-ai-cluster-and-the-adx-cluster-from-the-adx-proxy"></a>从 ADX 代理对 LA 或 AI 群集和 ADX 群集运行跨产品查询 
+### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>对 LA 或 AI ADX 代理群集和 ADX 本机群集进行交叉查询 
 
 从代理运行跨群集查询时，请确认是否在左窗格中选择了 ADX 本机群集。 以下示例演示如何将 ADX 群集表与 LA 工作区合并到一起（使用 `union`）。
 
@@ -106,7 +86,7 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-![从 Azure 数据资源管理器代理运行交叉查询](media/adx-proxy/cross-query-adx-proxy.png)
+   [ ![从 Azure 数据资源管理器代理运行交叉查询](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
 使用 [`join` 运算符](https://docs.microsoft.com/azure/kusto/query/joinoperator)（而不是 union）可能需要指定 [`hint`](https://docs.microsoft.com/azure/kusto/query/joinoperator#join-hints) 才能针对 Azure 数据资源管理器本机群集（而不是针对代理）运行查询。 
 

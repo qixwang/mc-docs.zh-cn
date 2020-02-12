@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 702e8b60ed23b9dcfa72f481f8ab5d25608f8080
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: be798510fdad798fce0d001770614891b4af384a
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776928"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067700"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>调用 Web API 的 Web API - 获取应用的令牌
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web API：获取应用的令牌
 
 构建客户端应用程序对象后，使用它来获取可用于调用 Web API 的令牌。
 
 ## <a name="code-in-the-controller"></a>控制器中的代码
 
-下面是将在 API 控制器的操作中调用的代码示例，调用下游 API（名为 todolist）。
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
+下面是在 API 控制器的操作中调用的代码示例。 它调用下游 API（名为 *todolist*）。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -50,9 +51,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` 与你在文章[调用 Web API 的 Web API - 应用配置](scenario-web-api-call-api-app-configuration.md)中看到的类似。 `BuildConfidentialClient()` 使用仅包含一个帐户信息的缓存实例化 `IConfidentialClientApplication`。 该帐户由 `GetAccountIdentifier` 方法提供。
+`BuildConfidentialClient()` 类似于[调用 Web API 的 Web API：应用配置](scenario-web-api-call-api-app-configuration.md)中的方案。 `BuildConfidentialClient()` 使用仅包含一个帐户信息的缓存实例化 `IConfidentialClientApplication`。 该帐户由 `GetAccountIdentifier` 方法提供。
 
-`GetAccountIdentifier` 方法使用与 Web API 收到其 JWT 的用户的标识相关联的声明：
+`GetAccountIdentifier` 方法使用与 Web API 收到其 JSON Web 令牌 (JWT) 的用户的标识相关联的声明：
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -70,9 +71,36 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 }
 ```
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+下面是在 API 控制器的操作中调用的代码示例。 它调用下游 API - Microsoft Graph。
+
+```java
+@RestController
+public class ApiController {
+
+    @Autowired
+    MsalAuthHelper msalAuthHelper;
+
+    @RequestMapping("/graphMeApi")
+    public String graphMeApi() throws MalformedURLException {
+
+        String oboAccessToken = msalAuthHelper.getOboToken("https://microsoftgraph.chinacloudapi.cn/.default");
+
+        return callMicrosoftGraphMeEndpoint(oboAccessToken);
+    }
+
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。 使用 MSAL Python 演示此流的示例尚不可用。
+
+---
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [调用 Web API](scenario-web-api-call-api-call-api.md)
+> [调用 Web API 的 Web API：调用 API](scenario-web-api-call-api-call-api.md)
 
 <!-- Update_Description: wording update -->

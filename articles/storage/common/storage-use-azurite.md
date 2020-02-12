@@ -4,16 +4,16 @@ description: Azurite 开源模拟器（预览版）提供一个免费的本地�
 author: WenJason
 ms.author: v-jay
 origin.date: 08/31/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 75319e48db21e3e2f6c7333d1c8e06c1ffc50fb9
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 07b6633fa01573096120d79850e0ddaf088cabd1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623681"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028529"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模拟器进行本地 Azure 存储开发和测试（预览）
 
@@ -58,11 +58,11 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
 
    * **Azurite:Blob 主机** - Blob 服务的侦听终结点。 默认设置为 127.0.0.1。
    * **Azurite:Blob 端口** - Blob 服务的侦听端口。 默认端口为 10000。
-   * **Azurite:调试** - 将调试日志输出到 Azurite 通道。 默认值为 **false**。
+   * **Azurite:调试** - 将调试日志输出到 Azurite 通道。 默认值是 **false**秒。
    * **Azurite:位置** - 工作区位置路径。 默认值为 Visual Studio Code 的工作文件夹。
    * **Azurite:队列主机** - 队列服务的侦听终结点。 默认设置为 127.0.0.1。
    * **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
-   * **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值为 **false**。
+   * **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false**秒。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -283,6 +283,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>松散模式
+
+**可选** 默认情况下，Azurite 应用严格模式来阻止不受支持的请求标头和参数。 使用 **--loose** 开关禁用严格模式。
+
+```console
+azurite --loose
+```
+
+请注意大写的“L”快捷方式开关：
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 SDK 的授权
 
 使用任何身份验证策略从 Azure 存储 SDK 或工具（例如 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)）连接到 Azurite。 需要身份验证。 Azurite 支持使用共享密钥和共享访问签名 (SAS) 进行授权。 Azurite 还支持匿名访问公共容器。
@@ -308,6 +322,33 @@ azurite -d path/debug.log
 ```
 
 有关详细信息，请参阅[配置 Azure 存储连接字符串](storage-configure-connection-string.md)。
+
+### <a name="custom-storage-accounts-and-keys"></a>自定义存储帐户和密钥
+
+Azurite 支持自定义存储帐户名称和密钥，但需将 `AZURITE_ACCOUNTS` 环境变量设置为以下格式：`account1:key1[:key2];account2:key1[:key2];...`。
+
+例如，使用包含一个密钥的自定义存储帐户：
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+也可使用多个存储帐户，每个存储帐户有两个密钥：
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+默认情况下，Azurite 每分钟刷新环境变量中的自定义帐户名和密钥。 利用此功能，可以动态轮换帐户密钥，或添加新的存储帐户，而无需重启 Azurite。
+
+> [!NOTE]
+> 设置自定义存储帐户时，将禁用默认的 `devstoreaccount1` 存储帐户。
+
+> [!NOTE]
+> 使用自定义帐户名称和密钥时，请相应地更新连接字符串。
+
+> [!NOTE]
+> 使用 `export` 关键字在 Linux 环境中设置环境变量；在 Windows 中使用 `set`。
 
 ### <a name="storage-explorer"></a>存储资源管理器
 
