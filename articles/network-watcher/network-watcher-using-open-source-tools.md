@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 08/13/2018
 ms.author: v-yeche
-ms.openlocfilehash: 88513b100edca89d979c383d10084e974d1befc3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5e008f66d7cbf36f928426f53e975b2dbe130986
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336471"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028986"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -71,13 +71,13 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
 1. 统计信息
 
-    在此窗格中可以查看网络流量统计信息 - 源与目标 IP 发送和接收的字节数、每个源与目标 IP 的流、各个流使用的协议，以及流的持续时间。
+    在此窗格中可以查看网络流量统计信息 � 从源 IP 接收及向目标 IP 发送的字节数、每个源 IP 和目标 IP 的流、用于各种流的协议以及流的持续时间。
 
     ![CapAnalysis 统计信息][7]
 
 1. Geomap
 
-    此窗格提供网络流量的地图视图，其中使用颜色来按比例显示来自每个国家/地区的流量。 选择突出显示的国家/地区可以查看更多流统计数据，例如，该国家/地区的 IP 发送和接收的数据比例。
+    此窗格提供网络流量的地图视图，颜色可根据每个国家/地区的流量大小进行调整。 可以选择突出显示的国家/地区来查看更多流统计数据，例如，从该国家/地区的 IP 发送和接收的数据比例。
 
     ![Geomap][8]
 

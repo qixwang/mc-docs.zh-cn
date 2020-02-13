@@ -4,16 +4,16 @@ description: 了解 ASE 网络流量以及如何通过 ASE 设置网络安全组
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-origin.date: 05/31/2019
-ms.date: 01/13/2020
+origin.date: 01/24/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 019f5df2a9277635a94e56740a60046a8b4c9f14
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 7f940c41b4d23584707cecd597d0b2a704cf7675
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600475"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979333"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -54,7 +54,7 @@ ms.locfileid: "75600475"
 
 仅仅是为了让 ASE 保持正常运行，ASE 就需要打开以下端口：
 
-| 用途 | 源 | 目标 |
+| 用途 | 从 | 如果 |
 |-----|------|----|
 | 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
@@ -89,7 +89,7 @@ ASE 在以下端口上与可通过 Internet 访问的地址通信：
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL、Windows 更新、Azure 服务 | 80/443 |
+| CRL、Windows 更新、Azure 服务 | 80/443 |
 | Azure SQL | 1433 | 
 | 监视 | 12000 |
 

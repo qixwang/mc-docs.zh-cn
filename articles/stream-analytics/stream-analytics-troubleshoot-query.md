@@ -8,20 +8,20 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: 03ae919943f1257c90e93d18e0cc43523df517bf
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: efc8350867d7161a2444ad16b4259949a73e0dd7
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857295"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068299"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
 
 本文介绍开发流分析查询的常见问题以及如何进行故障排除。
 
-## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出 
+## <a name="query-is-not-producing-expected-output"></a>查询未生成预期输出
 1.  通过本地测试检查错误：
-    - 在“查询”选项卡上，选择“测试”   。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
+    - 在 Azure 门户的“查询”选项卡上，选择“测试”   。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
     - 还可以使用适用于 Visual Studio 的流分析工具[直接针对实时输入测试查询](stream-analytics-live-data-local-testing.md)。
 
 2.  如果使用了 [Timestamp By  ](https://msdn.microsoft.com/library/azure/mt573293.aspx)，请验证事件的时间戳是否大于[作业开始时间](stream-analytics-out-of-order-and-late-events.md)。
@@ -49,10 +49,10 @@ ms.locfileid: "75857295"
 
 ![流分析 SELECT INTO 查询示例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-请注意，虽然作业正在运行，但在输出中未生成任何事件。 在“监视”  磁贴上，可以看见输入正在生成数据，但不知道 JOIN 的哪个步骤导致所有事件被删除  。
+请注意，虽然作业正在运行，但在输出中未生成任何事件。 在此处所示的“监视”  磁贴上，可以看到输入正在生成数据，但不知道 **JOIN** 的哪个步骤导致所有事件被丢弃。
 
 ![流分析监视磁贴](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 在此情况下，可添加几个额外的 SELECT INTO 语句，用于“记录”中间 JOIN 结果，以及从输入中读取的数据。
 
 此示例中添加了两个新的“临时输出”。 可任意选择你喜欢的接收器。 此处使用 Azure 存储作为示例：

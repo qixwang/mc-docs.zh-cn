@@ -8,14 +8,14 @@ manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 05/30/2019
+origin.date: 01/17/2020
 ms.date: 08/30/2019
-ms.openlocfilehash: e7f30e40ff5844031726a1e7753651e3ae890539
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 09dee7bc8c9ddbc56330247f5343bd1ae6f3ac63
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528105"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067954"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -32,7 +32,7 @@ ms.locfileid: "74528105"
 
 ## <a name="create-edit-or-test-inputs"></a>创建、编辑或测试输入
 
-可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-vs-code.md) 在流式处理作业上添加输入和查看或编辑现有输入。 还可以基于 Azure 门户、[Visual Studio](stream-analytics-vs-tools-local-run.md) 和d [Visual Studio Code](vscode-local-run.md) 的示例数据测试输入连接和[测试查询](stream-analytics-manage-job.md#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。  若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
+可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-vs-code.md) 在流式处理作业上添加输入和查看或编辑现有输入。 还可以基于 Azure 门户、[Visual Studio](stream-analytics-vs-tools-local-run.md) 的示例数据测试输入连接和[测试查询](stream-analytics-manage-job.md#test-your-query)。 编写查询时，将在 FROM 子句中列出输入。 可以在门户的“查询”页中获取可用输入的列表。  若要使用多个输入，可以对其执行 `JOIN` 操作，也可以编写多个 `SELECT` 查询。
 
 
 ## <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输
@@ -105,6 +105,7 @@ Azure IoT 中心是已针对 IoT 方案进行优化，具有高度可缩放的�
 | **共享访问策略名称** | 提供对 IoT 中心的访问权限的共享访问策略。 每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | **共享访问策略密钥** | 用于授予对 IoT 中心的访问权限的共享访问密钥。  此选项会自动进行填充，除非已选择手动提供 IoT 中心设置的选项。 |
 | **使用者组** | 强烈建议对每个流分析作业使用不同的使用者组。 用于从 IoT 中心引入数据的使用者组。 流分析使用 $Default 所有者组，除非指定了其他组。  |
+| **分区键** | 如果输入按属性分区，则可以添加此属性的名称。 分区键是可选的，如果查询包含有关此属性的 PARTITION BY 或 GROUP BY 子句，则分区键用于提高查询性能。 |
 | **事件序列化格式** | 传入数据流的序列化格式（JSON、CSV 或 Avro）。  请确保该 JSON 格式符合规范，对于十进制数字不包括前导 0。 |
 | **编码** | 目前只支持 UTF-8 这种编码格式。 |
 | **事件压缩类型** | 用于读取传入数据流的压缩类型，例如 None（默认）、GZip 或 Deflate。 |
@@ -163,7 +164,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 
 | 属性 | 说明 |
 | --- | --- |
-| **BlobName** |提供事件的输入 blob 的名称。 |
+| **BlobName** |提供事件源自的输入 blob 的名称。 |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |
 | **BlobLastModifiedUtcTime** |上次修改 blob 的日期和时间。 |
 | **PartitionId** |输入适配器的从零开始的分区 ID。 |

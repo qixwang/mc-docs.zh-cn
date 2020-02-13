@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 中的只读副本。
+title: 只读副本 - Azure Database for MySQL。
 description: 了解 Azure Database for MySQL 中的只读副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/17/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: a8388b47a61450328ce57a8ce66d9368c56270fc
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+origin.date: 01/16/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: b6be75c2e94793a49e6db41274a8124971e9957d
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838876"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068373"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -110,7 +110,7 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 > [!IMPORTANT]
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
 
-创建副本时，防火墙规则、虚拟网络规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
+创建副本服务器时，防火墙规则、虚拟网络规则和参数设置会从主服务器继承到副本服务器。 之后，副本服务器的规则将独立。
 
 ### <a name="stopped-replicas"></a>停止的副本
 
@@ -118,7 +118,7 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 
 ### <a name="deleted-master-and-standalone-servers"></a>删除的主服务器和独立服务器
 
-删除主服务器后，将对所有只读副本停止复制。 这些副本服务器将成为独立服务器。 将删除主服务器本身。
+删除主服务器后，将对所有只读副本停止复制。 这些副本会自动成为独立服务器，并且可以接受读取和写入。 将删除主服务器本身。
 
 ### <a name="user-accounts"></a>用户帐户
 

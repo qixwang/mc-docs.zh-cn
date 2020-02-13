@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 池调整大小完成事件 | Microsoft Docs
-description: Batch 池调整大小完成事件参考。
+title: Azure Batch 池调整大小完成事件
+description: Batch 池调整大小完成事件参考。 查看已成功完成增加大小的池的示例。
 services: batch
 author: lingliw
 manager: digimobile
@@ -12,12 +12,12 @@ ms.workload: big-compute
 origin.date: 04/20/2017
 ms.date: 09/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cba4b1fb300f2fd2d6d2a30cd1e69fca153bf45d
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 7a433580bfe2c38720b143517b6aa145f2f27d81
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838997"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028940"
 ---
 # <a name="pool-resize-complete-event"></a>池调整大小完成事件
 

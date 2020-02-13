@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 09/23/2019
-ms.date: 01/06/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 9b65bef9469ac3c5bab0aa9f69e4897650e84f51
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 4d087b104d480f95e8ad81ff34ec874ad3dc3e79
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624125"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028938"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-azure-storage"></a>对 Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -87,7 +87,7 @@ ms.locfileid: "75624125"
 * 提供必要的过程和工具来帮助你确定应用程序中的问题是否与 Azure 存储有关。
 * 为提供用于解决与 Azure 存储相关的问题的可操作指南。
 
-### <a name="how-this-guide-is-organized">本指南的组织方式</a>
+### <a name="how-this-guide-is-organized"></a>本指南的组织方式
 “[监视存储服务]”一节介绍如何使用 Azure 存储分析度量值（存储度量值）监视 Azure 存储服务的运行状况和性能。
 
 “[诊断存储问题]”一节介绍如何使用 Azure 存储分析日志记录（存储日志记录）诊断问题。 它还介绍了如何使用其中一个客户端库（如 .NET 存储客户端库或 Azure SDK for Java）中的工具启用客户端日志记录。
@@ -101,11 +101,11 @@ ms.locfileid: "75624125"
 ## <a name="monitoring-your-storage-service"></a>监视存储服务
 如果熟悉 Windows 性能监视，则可以将存储度量值视为 Windows 性能监视器计数器的 Azure 存储等效项。 在“存储指标”中，可找到一组综合指标（相当于 Windows 性能监视器术语中的计数器），例如服务可用性、向服务发送的请求总数或向服务发出的成功请求的百分比。 有关可用度量值的完整列表，请参阅[存储分析度量值表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 可以指定希望存储服务每隔一小时还是每隔一分钟收集和聚合一次度量值。 有关如何启用度量值和监视存储帐户的详细信息，请参阅 [Enabling storage metrics and viewing metrics data](https://go.microsoft.com/fwlink/?LinkId=510865)（启用存储度量值并查看度量值数据）。
 
-可以选择要在 [Azure 门户](https://portal.azure.cn)中显示哪些每小时度量值，并配置规则以便在每小时度量值超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](/monitoring-and-diagnostics/monitoring-overview-alerts)。
+可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.cn)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](/monitoring-and-diagnostics/monitoring-overview-alerts)。
 
 存储服务尽最大努力收集指标，但可能无法记录每个存储操作。
 
-在 Azure 门户中，可以查看存储帐户的度量值，如可用性、请求总数和平均延迟数。 也已设置通知规则，以便在可用性下降到低于某个级别时向管理员发出警报。 通过查看此数据，一个可能的调查方面是表服务成功百分比低于 100%（有关详细信息，请参阅“[度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]”一节）。
+在 Azure 门户中，可以查看存储帐户的指标，如可用性、请求总数和平均延迟数。 也已设置通知规则，以便在可用性下降到低于某个级别时向管理员发出警报。 通过查看此数据，一个可能的调查方面是表服务成功百分比低于 100%（有关详细信息，请参阅“[度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]”一节）。
 
 应通过以下方式持续监视 Azure 应用程序以确保它们正常运行并按预期执行操作：
 
@@ -156,7 +156,7 @@ ms.locfileid: "75624125"
 
 通常，对于作为出现需要调查的问题的指示器的任何这些值，将监视其意外更改。
 
-在 [Azure 门户](https://portal.azure.cn)中，可以添加警报规则，以便在此服务的任何性能度量值低于或超过指定阈值时通知用户。
+在 [Azure 门户](https://portal.azure.cn)中，可以添加警报规则，以便在此服务的任何性能指标低于或超过指定阈值时通知用户。
 
 本指南的“[故障排除指南]”一节介绍与性能相关的一些常见存储服务问题。
 
@@ -200,7 +200,7 @@ ms.locfileid: "75624125"
 * [Common REST API Error Codes（常见的 REST API 错误代码）](https://msdn.microsoft.com/library/azure/dd179357.aspx)
 * [Blob 服务错误代码](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [队列服务错误代码](https://msdn.microsoft.com/library/azure/dd179446.aspx)
-* [表服务错误代码](https://msdn.microsoft.com/library/azure/dd179438.aspx)
+* [Table Service Error Codes（表服务错误代码）](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [File Service Error Codes](https://msdn.microsoft.com/library/azure/dn690119.aspx)（文件服务错误代码）
 
 ### <a name="storage-emulator-issues"></a>存储模拟器问题
@@ -211,7 +211,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="storage-logging-tools"></a>存储日志记录工具
 存储日志记录为 Azure 存储帐户中的存储请求提供服务器端日志记录功能。 有关如何启用服务器端日志记录和访问日志数据的详细信息，请参阅 [Enabling Storage Logging and Accessing Log Data](https://go.microsoft.com/fwlink/?LinkId=510867)（启用存储日志记录和访问日志数据）。
 
-使用 .NET 存储客户端库可以收集与应用程序执行的存储操作相关的客户端日志数据。 有关详细信息，请参阅 [Client-side Logging with the .NET Storage Client Library](https://go.microsoft.com/fwlink/?LinkId=510868)（使用 .NET 存储客户端库的客户端日志记录）。
+通过用于 .NET 的存储客户端库，可以收集与应用程序执行的存储操作相关的客户端日志数据。 有关详细信息，请参阅 [Client-side Logging with the .NET Storage Client Library](https://go.microsoft.com/fwlink/?LinkId=510868)（使用 .NET 存储客户端库的客户端日志记录）。
 
 > [!NOTE]
 > 在某些情况下（如 SAS 授权失败），用户可能会报告一个错误，而你可能在服务器端存储日志中未找到该错误所对应的请求数据。 可以使用存储客户端库的日志记录功能调查该问题的原因是否出在客户端上，或者使用网络监视工具调查网络。
@@ -397,7 +397,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="metrics-show-high-AverageServerLatency"></a>度量值显示高 AverageServerLatency
 如果 blob 下载请求出现高 **AverageServerLatency**，则应使用存储日志记录日志来了解对于同一 blob（或一组 blob）是否存在重复的请求。 对于 Blob 上传请求，应调查客户端正在使用的数据块大小（例如，小于 64 K 的数据块大小可能会导致开销，除非读取操作也在小于 64 K 的区块中进行），以及是否有多个客户端正在并行将数据块上传到同一 Blob。 还应检查每分钟度量值以了解导致超出每秒可伸缩性目标的请求数峰值：另请参阅“[度量值显示 PercentTimeoutError 增加]”。
 
-如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容分发网络 (CDN) 缓存这些 Blob。 对于上传请求，你可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
+如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容分发网络 (CDN) 缓存这些 Blob。 对于上传请求，可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
 
 高 **AverageServerLatency** 值也可能是设计欠佳的表或查询的症状，它会导致扫描操作或执行追加/前面预置反模式。 有关详细信息，请参阅“[度量值显示 PercentThrottlingError 增加]”。
 
@@ -416,7 +416,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 * 检查存储日志记录日志以查找在长于平常的时间段内具有高于预期的 **E2ELatency** 和 **ServerLatency** 值的任何队列操作。
 
 ### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>度量值显示 PercentThrottlingError 增加
-当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务进行限制是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关存储帐户的可伸缩性目标和存储帐户中的分区的性能目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
+当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务进行限制是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关存储帐户的可伸缩性目标和存储帐户中分区的性能目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)。
 
 如果 **PercentThrottlingError** 度量值显示失败并出现限制错误的请求百分比增加，则需要调查以下两种情况之一：
 
@@ -438,7 +438,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 如果将事务分布到多个分区中，仍必须注意为存储帐户设置的伸缩性限制。 例如，如果使用 10 个队列（每个队列每秒最多处理 2,000 条 1KB 消息），将达到存储帐户每秒 20,000 条消息的总体限制。 如果每秒需要处理的实体数超过 20,000 个，则应考虑使用多个存储帐户。 还应牢记，请求和实体的大小对存储服务何时限制客户端有影响：如果使用较大的请求和实体，则可能会更快地受到限制。
 
-低效的查询设计也会导致达到表分区的伸缩性限制。 例如，一个使用筛选器的查询仅选择分区中百分之一的实体，但却扫描该分区中的所有实体，从而将需要访问每个实体。 读取的每个实体均会计入该分区中的事务总数；因此，很容易就会达到可伸缩性目标。
+低效的查询设计也会导致达到表分区的伸缩性限制。 例如，一个使用筛选器的查询仅选择分区中百分之一的实体，但却扫描该分区中的所有实体，这需要访问每个实体。 读取的每个实体均会计入该分区中的事务总数；因此，很容易就会达到可伸缩性目标。
 
 > [!NOTE]
 > 性能测试应显示应用程序中的任何低效查询设计。
@@ -446,7 +446,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 >
 
 ### <a name="metrics-show-an-increase-in-PercentTimeoutError"></a>度量值显示 PercentTimeoutError 增加
-度量值显示其中一个存储服务的 **PercentTimeoutError** 增加。 同时，客户端将收到存储操作发出的大量“500 操作超时”HTTP 状态消息。
+度量值显示其中一个存储服务的 **PercentTimeoutError** 增加。 同时，客户端收到存储操作发出的大量“500 操作超时”HTTP 状态消息。
 
 > [!NOTE]
 > 当存储服务通过将分区移到新服务器来对请求进行负载均衡时，可能会临时地看到超时错误。
@@ -671,7 +671,7 @@ client.SetServiceProperties(sp);
 如果安装并使用存储客户端库的最新版本，但未更新存储模拟器，通常会出现这种情况。 应安装存储模拟器的最新版本，或者使用云存储而不是模拟器进行开发和测试。
 
 #### <a name="storage-emulator-requires-administrative-privileges"></a>运行存储模拟器需要管理权限
-运行存储模拟器时，系统提示提供管理员凭据。 仅首次初始化存储模拟器时，才会出现这种情况。 初始化存储模拟器后，将无需管理权限即可再次运行。
+运行存储模拟器时，系统提示提供管理员凭据。 仅首次初始化存储模拟器时，才会出现这种情况。 初始化存储模拟器后，无需管理权限即可再次运行。
 
 有关详细信息，请参阅 [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)。 也可以在 Visual Studio 中初始化存储模拟器，但这也需要管理特权。
 
@@ -718,7 +718,7 @@ sqllocaldb create v11.0
 
 本附录提供了一个简要演练，介绍如何配置 Fiddler 以捕获已安装 Fiddler 的本地计算机与 Azure 存储服务之间的流量。
 
-启动 Fiddler 后，它将开始捕获本地计算机上的 HTTP 和 HTTPS 通信。 以下是一些用于控制 Fiddler 的有用命令：
+启动 Fiddler 后，它会开始捕获你的本地计算机上的 HTTP 和 HTTPS 流量。 以下是一些用于控制 Fiddler 的有用命令：
 
 * 停止和启动捕获流量。 在主菜单上，转到“文件”  ，然后单击“捕获流量”  在打开和关闭捕获之间进行切换。
 * 保存捕获的通信数据。 在主菜单上，转到“文件”  ，单击“保存”  ，然后单击“所有会话”  ，这样即可将流量保存在一个会话存档文件中。 以后可以重新加载“会话存档”以供分析，或者将其发送到 Azure 支持部门（如果要求）。

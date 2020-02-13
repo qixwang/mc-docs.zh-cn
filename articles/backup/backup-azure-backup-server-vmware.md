@@ -7,18 +7,18 @@ ms.topic: conceptual
 origin.date: 12/11/2018
 ms.date: 12/21/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 1a1293f97c91be61fd66d0859337da3edfbc305b
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e89fcd29a633760a15f6a612ed060b5da337594e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838990"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028944"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
 本文介绍如何使用 Azure 备份服务器将 VMware ESXi 主机/vCenter 服务器上运行的 VMware VM 备份到 Azure。
 
-本文介绍以下操作：
+本文介绍如何执行以下操作：
 
 - 设置一个安全通道，使 Azure 备份服务器能够通过 HTTPS 来与 VMware 服务器通信。
 - 设置一个可供 Azure 备份服务器用来访问 VMware 服务器的 VMware 帐户。
@@ -134,26 +134,41 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 ### <a name="role-permissions"></a>角色权限
 
-**6.5/6.0** | **5.5**
---- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Network.Assign
-Network.Assign |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **vCenter 6.5 及更高版本用户帐户的特权**        | **vCenter 6.0 用户帐户的特权**               | **vCenter 5.5 用户帐户的特权** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                      |                                                           |                                             |
+| Datastore.Browse datastore                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
+| Datastore.Low-level file operations                          | Global.Manage custom attributes                           | Datastore.AllocateSpace                     |
+| Datastore cluster.Configure a datatstore cluster             | Global.Set custom attribute                               | VirtualMachine.Config.ChangeTracking        |
+| Global.Disable methods                                       | Host.Local operations.Create virtual machine              | VirtualMachine.State.RemoveSnapshot         |
+| Global.Enable methods                                        | Network. Assign network                                   | VirtualMachine.State.CreateSnapshot         |
+| Global.Licenses                                              | Resource. Assign virtual machine to resource pool         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Global.Log event                                             | Virtual machine.Configuration.Add new disk                | VirtualMachine.Interact.PowerOff            |
+| Global.Manage custom attributes                              | Virtual machine.Configuration.Advanced                    | VirtualMachine.Inventory.Create             |
+| Global.Set custom attribute                                  | Virtual machine.Configuration.Disk change tracking        | VirtualMachine.Config.AddNewDisk            |
+| Network.Assign network                                       | Virtual machine.Configuration.Host USB device             | VirtualMachine.Config.HostUSBDevice         |
+| Resource. Assign virtual machine to resource pool            | Virtual machine.Configuration.Query unowned files         | VirtualMachine.Config.AdvancedConfig        |
+| Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Swapfile placement          | VirtualMachine.Config.SwapPlacement         |
+| Virtual machine.Configuration.Advanced                       | Virtual machine.Interaction.Power Off                     | Global.ManageCustomFields                   |
+| Virtual machine.Configuration.Disk change tracking           | Virtual machine.Inventory. Create new                     |                                             |
+| Virtual machine.Configuration.Disk lease                     | Virtual machine.Provisioning.Allow disk access            |                                             |
+| Virtual machine.Configuration.Extend virtual disk            | Virtual machine.Provisioning. Allow read-only disk access |                                             |
+| Virtual machine.Guest Operations.Guest Operation Modifications | Virtual machine.Snapshot management.Create snapshot       |                                             |
+| Virtual machine.Guest Operations.Guest Operation Program Execution | Virtual machine.Snapshot management.Remove Snapshot       |                                             |
+| Virtual machine.Guest Operations.Guest Operation Queries     |                                                           |                                             |
+| Virtual machine .Interaction .Device connection              |                                                           |                                             |
+| Virtual machine .Interaction .Guest operating system management by VIX API |                                                           |                                             |
+| Virtual machine .Inventory.Register                          |                                                           |                                             |
+| Virtual machine .Inventory.Remove                            |                                                           |                                             |
+| Virtual machine .Provisioning.Allow disk access              |                                                           |                                             |
+| Virtual machine .Provisioning.Allow read-only disk access    |                                                           |                                             |
+| Virtual machine .Provisioning.Allow virtual machine download |                                                           |                                             |
+| Virtual machine .Snapshot management. Create snapshot        |                                                           |                                             |
+| Virtual machine .Snapshot management.Remove Snapshot         |                                                           |                                             |
+| Virtual machine .Snapshot management.Revert to snapshot      |                                                           |                                             |
+| vApp.Add virtual machine                                     |                                                           |                                             |
+| vApp.Assign resource pool                                    |                                                           |                                             |
+| vApp.Unregister                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>创建 VMware 帐户
 
@@ -163,21 +178,17 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     此时会显示“vCenter 用户和组”面板。 
 
-
 2. 在“vCenter 用户和组”面板中，选择“用户”选项卡，然后单击“添加用户”图标（加号）。  
 
-     ![“vCenter 用户和组”面板](./media/backup-azure-backup-server-vmware/usersandgroups.png)
-
+    ![“vCenter 用户和组”面板](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
 3. 在“新建用户”对话框中，添加用户信息并选择“确定”。   在此过程中，用户名是 BackupAdmin。
 
     ![“新建用户”对话框](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-
 4. 若要将用户帐户与角色关联，请在“导航器”面板中单击“全局权限”。   在“全局权限”面板中选择“管理”选项卡，然后单击“添加”图标（加号）。  
 
     ![“全局权限”面板](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
-
 
 5. 在“全局权限 Root - 添加权限”中，单击“添加”选择用户或组。  
 
@@ -187,17 +198,13 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![添加 BackupAdmin 用户](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-
-7.  在“分配的角色”的下拉列表中，选择“BackupAdminRole” > “确定”。   
+7. 在“分配的角色”的下拉列表中，选择“BackupAdminRole” > “确定”。   
 
     ![向角色分配用户](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
-
 新用户帐户和关联的角色显示在“全局权限”面板的“管理”选项卡的列表中。  
 
-
 ## <a name="add-the-account-on-azure-backup-server"></a>在 Azure 备份服务器上添加帐户
-
 
 1. 打开 Azure 备份服务器。 如果在桌面上找不到该图标，请从应用列表中打开“Microsoft Azure 备份”。
 
@@ -206,7 +213,6 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 2. 在 Azure 备份服务器控制台中，单击“管理” >  “生产服务器” > “管理 VMware”。   
 
     ![Azure 备份服务器控制台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
-
 
 3. 在“管理证书”对话框中，单击“添加”。  
 
@@ -220,20 +226,17 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
     ![Azure 备份服务器的“管理凭据”对话框](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
-
-## <a name="add-the-vcenter-server"></a>添加 vCenter 服务器 
+## <a name="add-the-vcenter-server"></a>添加 vCenter 服务器
 
 将 vCenter 服务器添加到 Azure 备份服务器。
-
 
 1. 在 Azure 备份服务器控制台中，单击“管理” > “生产服务器” > “添加”。   
 
     ![打开生产服务器添加向导](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-
 2. 在“生产服务器添加向导” > “选择生产服务器类型”页中，选择“VMware 服务器”，然后单击“下一步”。    
 
-     ![生产服务器添加向导](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+    ![生产服务器添加向导](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
 3. 在“选择计算机”>“服务器名称/IP 地址”中，指定 VMware 服务器的 FQDN 或 IP 地址。   如果所有 ESXi 服务器由同一个 vCenter 管理，请指定 vCenter 名称。 否则请添加 ESXi 主机。
 
@@ -257,48 +260,43 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
    ![“完成”页](./media/backup-azure-backup-server-vmware/summary-screen.png)
 
-如果有多个 ESXi 主机不受 vCenter 服务器的管理，或者有多个 vCenter 服务器实例，则需要重新运行向导来添加服务器。 
-
-
-
+如果有多个 ESXi 主机不受 vCenter 服务器的管理，或者有多个 vCenter 服务器实例，则需要重新运行向导来添加服务器。
 
 ## <a name="configure-a-protection-group"></a>配置保护组
 
-添加要备份的 VMware VM。 保护组收集多个 VM，并将相同的数据保留和备份设置应用到组中的所有 VM。 
-
+添加要备份的 VMware VM。 保护组收集多个 VM，并将相同的数据保留和备份设置应用到组中的所有 VM。
 
 1. 在 Azure 备份服务器控制台中，单击“保护”>“新建”。  
 
     ![打开“创建新保护组”向导](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-2. 在“新建保护组”向导的欢迎页中，单击“下一步”。  
+1. 在“新建保护组”向导的欢迎页中，单击“下一步”。  
 
     ![“创建新保护组”向导对话框](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-3. 在“选择保护组类型”页上选择“服务器”，然后单击“下一步”。    此时会显示“选择组成员”页。 
+1. 在“选择保护组类型”页上选择“服务器”，然后单击“下一步”。    此时会显示“选择组成员”页。 
 
-4. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。   。
+1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。   。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
-5. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。 上获取。
+1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
 
-     ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+    ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-
-6. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。  若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。   。
+1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。  若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。   。
 
     ![选择数据保护方法](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-7. 在“指定短期目标”中，指定要在磁盘中备份数据多长时间。 
-   - 在“保留期”中，指定保留磁盘恢复点的天数。  
+1. 在“指定短期目标”中，指定要在磁盘中备份数据多长时间。 
+   - 在“保留期”中，指定保留磁盘恢复点的天数。 
    - 在“同步频率”中，指定创建磁盘恢复点的频率。 
        - 如果不想要设置备份间隔，可以选中“紧靠在恢复点之前”，以便计划每个恢复点之前的那一刻运行备份。 
        - 短期备份是完整备份而不是增量备份。
        - 单击“修改”以更改执行短期备份的时间/日期。 
 
-     ![指定短期目标](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+         ![指定短期目标](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
-8. 在“检查磁盘分配”中，检查为 VM 备份提供的磁盘空间。  对于 VM。
+1. 在“检查磁盘分配”中，检查为 VM 备份提供的磁盘空间。  对于 VM。
 
    - 建议的磁盘分配基于指定的保留期、工作负荷类型，以及受保护数据的大小。 做出所需的任何更改，然后单击“下一步”。 
    - **数据大小：** 保护组中数据的大小。
@@ -307,39 +305,38 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
    - **自动增长：** 如果启用此设置，当受保护组中的数据超过初始分配时，Azure 备份服务器会尝试将磁盘大小增加 25%。
    - **存储池详细信息：** 显示存储池的状态，包括总磁盘大小和剩余磁盘大小。
 
-     ![查看磁盘分配](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+    ![查看磁盘分配](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-9. 在“选择副本创建方法”页中指定如何创建初始备份，然后单击“下一步”。  
+1. 在“选择副本创建方法”页中指定如何创建初始备份，然后单击“下一步”。  
    - 默认设置为“自动通过网络”和“立即”。  
    - 若使用默认设置，则建议指定非高峰时间。 选择“稍后”并指定日期和时间。 
    - 如果数据量很大或者网络状态欠佳，请考虑使用可移动介质脱机复制数据。
 
-     ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
+    ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-10. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。   。
-     - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
-     - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。 
+1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。   。
+      - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
+      - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。 
 
-11. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。  可以选择单个成员，或者单击“全选”选择所有成员。   。
+1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。  可以选择单个成员，或者单击“全选”选择所有成员。   。
 
-     ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+    ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-12. 在“指定联机备份计划”页中，指定将数据从本地存储备份到 Azure 的频率。 
+1. 在“指定联机备份计划”页中，指定将数据从本地存储备份到 Azure 的频率。 
 
     - 将根据计划生成数据的云恢复点。  。
-    - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。 
+    - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。
 
     ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-13. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。  然后单击“下一步”。 
+1. 在“指定联机保留策略”页中，指明要在 Azure 中将通过每天/每周/每月/每年备份创建的恢复点保留多长时间。  然后单击“下一步”。 
 
     - 在 Azure 中保留数据的时间长短没有限制。
     - 唯一的限制是每个受保护实例的恢复点不可超过 9999 个。 在本示例中，受保护的实例是 VMware 服务器。
 
     ![指定联机保留策略](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-
-14. 在“摘要”页中检查设置，然后单击“创建组”。  
+1. 在“摘要”页中检查设置，然后单击“创建组”。  
 
     ![保护组成员和设置摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
@@ -348,31 +345,31 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 若要备份 vSphere 6.7，请执行以下操作：
 
 - 在 DPM 服务器上启用 TLS 1.2
-  >[!Note]
-  >VMWare 6.7 及更高版本已启用 TLS 作为通信协议。
+
+>[!NOTE]
+>VMWare 6.7 及更高版本已启用 TLS 作为通信协议。
 
 - 按如下所示设置注册表项：
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>后续步骤
 

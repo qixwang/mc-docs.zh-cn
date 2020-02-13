@@ -17,16 +17,20 @@ origin.date: 12/14/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: ''
-ms.openlocfilehash: a9c426e15b32f9e1d90994b00dcc5a6216f5dae9
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: f37639348487819b5d76e374e6442466e2efb6aa
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982171"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028977"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>查看从特定位置到 Azure 区域的相对延迟
 
-本教程介绍如何使用 Azure [网络观察程序](network-watcher-monitoring-overview.md)服务，根据用户的人口统计，帮助确定要将应用程序或服务部署到哪个 Azure 区域。 此外，还可以使用此服务来帮助评估服务提供商与 Azure 之间的连接。  
+> [!WARNING]
+> 此功能目前处于预览状态，并且仍在测试稳定性。
+
+本教程介绍如何使用 Azure [网络观察程序](network-watcher-monitoring-overview.md)服务，根据用户的人口统计，帮助确定要将应用程序或服务部署到哪个 Azure 区域。 此外，还可以使用此服务来帮助评估服务提供商与 Azure 的连接。  
+        
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -127,7 +131,7 @@ Get-AzNetworkWatcherReachabilityReport `
 
 ## <a name="view-available"></a>查看可用的国家/地区、州/省、城市和提供商
 
-数据适用于特定的 Internet 服务提供商、国家/地区、州/省和城市。 若要查看所有可查看其数据的可用 Internet 服务提供商、国家/地区、州/省和城市列表，请输入以下命令：
+数据适用于特定的 Internet 服务提供商、国家/地区、州/省和城市。 若要查看你可以查看其数据的所有可用 Internet 服务提供商、国家/地区、州/省和城市的列表，请输入以下命令：
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_chinaeast -ResourceGroupName NetworkWatcherRG

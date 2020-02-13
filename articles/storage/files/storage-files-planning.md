@@ -4,16 +4,16 @@ description: 了解规划 Azure 文件部署时应考虑的问题。
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 04/25/2019
-ms.date: 10/14/2019
+origin.date: 10/16/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 267ea1c4b6a5ad071574f75b0e0a82eb39791fbf
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: c72040b295440db3bdfce27dda23878d133e6c38
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275562"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028958"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "72275562"
 
 ![文件结构](./media/storage-files-introduction/files-concepts.png)
 
-* **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅[可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fstorage%2ffiles%2ftoc.json)。
+* **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2ffiles%2ftoc.json)。
 
 * **共享**：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的总容量限制为止。 对于标准文件共享，总容量最大为 5 TiB（正式版）；对于高级文件共享，总容量最大为 100 TiB。
 
