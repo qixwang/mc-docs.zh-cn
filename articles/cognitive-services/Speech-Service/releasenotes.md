@@ -1,25 +1,65 @@
 ---
 title: 发行说明 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 参阅语音服务的功能发布、改进、bug 修复和已知问题的运行日志。
+description: 不断更新的语音服务功能版本、改进、bug 修复和已知问题的日志。
 services: cognitive-services
-author: BrianMouncer
+author: oscholz
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 11/05/2019
-ms.date: 01/27/2020
+origin.date: 01/15/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 75624e7ebbb1af56726dbdf9bbc8a213a75f56d1
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 6c0325e0bd379414682d25ef8d019d5ac3138dae
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123294"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028186"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-sdk-190-2020-january-release"></a>语音 SDK 1.9.0：2020 年 1 月版
+
+**新功能**
+
+- Objective-C：已将 `SendMessage` 和 `SetMessageProperty` 方法添加到 `Connection` 对象。 参阅[此处](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)的文档。
+- TTS C++ API 现在支持将 `std::wstring` 用作合成文本输入，这样，在将 wstring 传递给 SDK 之前，无需先将其转换为字符串。 请参阅[此处](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)的详细信息。 
+- C#：现在提供[语言 ID](https://docs.azure.cn/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) 和[源语言配置](https://docs.azure.cn/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp)。
+- JavaScript：已将一项功能添加到 `Connection` 对象，以便从语音服务以回调 `receivedServiceMessage` 的形式传递自定义消息。
+- JavaScript：感谢 [orgads](https://github.com/orgads) 的贡献，我们现在可以采用 `NODE_TLS_REJECT_UNAUTHORIZED`。 请参阅[此处](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)的详细信息。
+
+
+**中断性变更**
+
+- `OpenSSL` 已更新到版本 1.1.1b，并静态链接到适用于 Linux 的语音 SDK 核心库。 如果未在系统上的 `/usr/lib/ssl` 目录中安装收件箱 `OpenSSL`，这可能会造成中断。 请查看语音 SDK 的[文档](how-to-configure-openssl-linux.md)来解决此问题。
+- 我们已将为 C# `WordLevelTimingResult.Offset` 返回的数据类型从 `int` 更改为 `long`，以便在语音数据超过 2 分钟时能够访问 `WordLevelTimingResults`。
+- `PushAudioInputStream` 和 `PullAudioInputStream` 现在可以根据 `AudioStreamFormat`（创建这两个类时选择性地指定）将 wav 标头信息发送到语音服务。 现在，客户必须使用[支持的音频输入格式](how-to-use-audio-input-streams.md)。 任何其他格式会导致识别结果欠佳，或者导致出现其他问题。 
+
+**Bug 修复**
+
+- 请参阅上述“中断性变更”中的 `OpenSSL` 更新。 修复了 Linux 和 Java 中的间歇性崩溃和性能问题（负载较高时发生锁争用）。 
+- Java:改进了高并发方案中的对象封闭。
+- 重新构建了 Nuget 包。 删除了 lib 文件夹中 `Microsoft.CognitiveServices.Speech.core.dll` 和 `Microsoft.CognitiveServices.Speech.extension.kws.dll` 的三个副本，使 Nuget 包更小且可更快地下载；添加了编译某些 C++ 本机应用时所需的标头。
+- 修复了[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)的快速入门示例。 修复的问题为在 Linux、MacOS、Windows 上退出但不显示“未找到麦克风”异常。
+- 修复了 Azure Web 应用环境中的 SDK 部署错误，并解决了[此客户问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)。
+- 修复了从挂起状态恢复 SDK 时出现的 TTS 401 错误。
+- JavaScript：感谢 [euirim](https://github.com/euirim) 的贡献，修复了音频数据的循环导入。 
+- JavaScript：添加了设置服务属性的支持（版本 1.7 中已添加此项支持）。
+- JavaScript：修复了以下问题：连接错误可能导致 websocket 重新连接尝试连续失败。
+
+
+**示例**
+
+- 为[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)的服务器方案添加了 TTS 示例。
+
+
+**其他更改**
+
+- 优化了 Android 上的 SDK 核心库大小。
+- 1\.9.0 及更高版本中的 SDK 支持聊天听录器的语音签名版本字段中的 `int` 和 `string` 类型。
 
 ## <a name="speech-sdk-180-2019-november-release"></a>语音 SDK 1.8.0：2019-November 版本
 

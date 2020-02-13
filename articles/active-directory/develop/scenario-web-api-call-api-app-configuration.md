@@ -12,22 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec82ea172ed8e20cc54932d0899c87f5a2a8c8d
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: b9f713783680f225cfb83f2c62c649784608d65e
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777037"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067638"
 ---
-# <a name="web-api-that-calls-web-apis---code-configuration"></a>调用 Web API 的 Web API - 代码配置
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
 注册 Web API 后，可以配置应用程序的代码。
 
-用于配置 Web API 的代码，配置后它就可以调用下游 Web API，而后者又基于用来保护 Web API 的代码。 有关详细信息，请参阅[受保护的 Web API - 应用配置](scenario-protected-web-api-app-configuration.md)。
+用于配置 Web API 的代码，配置后它就可以调用下游 Web API，而后者又基于用来保护 Web API 的代码。 有关详细信息，请参阅[受保护的 Web API：应用配置](scenario-protected-web-api-app-configuration.md)。
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>订阅 OnTokenValidated 的代码
 
@@ -35,10 +36,10 @@ ms.locfileid: "75777037"
 
 ```csharp
 /// <summary>
-/// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
+/// Protects the web API with the Microsoft identity platform, or Azure Active Directory (Azure AD) developer platform
 /// This supposes that the configuration files have a section named "AzureAD"
 /// </summary>
-/// <param name="services">Service collection to which to add authentication</param>
+/// <param name="services">The service collection to which to add authentication</param>
 /// <param name="configuration">Configuration</param>
 /// <returns></returns>
 public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollection services,
@@ -48,15 +49,15 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.AddTokenAcquisition();
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
-        // When an access token for our own web API is validated, we add it 
-        // to MSAL.NET's cache so that it can be used from the controllers.
+        // When an access token for our own web API is validated, we add it
+        // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
         options.Events.OnTokenValidated = async context =>
         {
             context.Success();
 
-            // Adds the token to the cache, and also handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -70,14 +71,14 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 
 AddAccountToCacheFromJwt() 方法需要执行以下操作：
 
-- 实例化 MSAL 机密客户端应用程序
-- 调用 `AcquireTokenOnBehalf`，以便将通过 Web API 的客户端获取的持有者令牌与同一用户的持有者令牌进行交换，但目的是供我们的 API 调用下游 API。
+- 实例化 Microsoft 身份验证库 (MSAL) 机密客户端应用程序。
+- 调用 `AcquireTokenOnBehalf` 方法。 此调用将通过 Web API 的客户端获取的持有者令牌与同一用户的持有者令牌进行交换，但它会让该 API 调用某个下游 API。
 
 ### <a name="instantiate-a-confidential-client-application"></a>实例化机密客户端应用程序
 
-此流仅在机密客户端流中可用，因此受保护的 Web API 会分别通过 `WithClientSecret` 或 `WithCertificate` 方法将客户端凭据（客户端机密或证书）提供给 [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
+此流仅在机密客户端流中可用，使受保护的 Web API 通过 `WithClientSecret` 或 `WithCertificate` 方法将客户端凭据（客户端机密或证书）提供给 [ConfidentialClientApplicationBuilder 类](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
 
-![图像](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![IConfidentialClientApplication 方法列表](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -95,18 +96,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-最后，机密客户端应用程序还可以使用客户端断言（而不是客户端密码或证书）来证明其身份。
-[客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案
+最后，机密客户端应用程序无需通过客户端机密或证书来提供自身的标识，而可以使用客户端断言来证明其身份。
+有关此高级方案的详细信息，请参阅[机密客户端断言](msal-net-client-assertions.md)。
 
-### <a name="how-to-call-on-behalf-of"></a>如何进行代理调用
+### <a name="how-to-call-on-behalf-of"></a>如何调用代理
 
-若要进行代理 (OBO) 调用，方法是在 `IConfidentialClientApplication` 接口上调用 [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) 方法。
+可以通过对 `IConfidentialClientApplication` 接口调用 [AcquireTokenOnBehalf 方法](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)来发出代理 (OBO) 调用。
 
-基于持有者令牌构建 `UserAssertion`，而该令牌是 Web API 从其自己的客户端接收的。 有[两个构造函数](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)，一个采用 JWT 持有者令牌，另一个采用任何类型的用户断言（另一类型的安全令牌，该类型随后在名为 `assertionType` 的另一参数中指定）。
+`UserAssertion` 类是从持有者令牌生成的，该令牌是 Web API 从其自身的客户端接收的。 有[两个构造函数](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)：
+* 一个构造函数采用 JSON Web 令牌 (JWT) 持有者令牌
+* 一个构造函数采用任何类型的用户断言（另一种安全令牌，随后会在名为 `assertionType` 的附加参数中指定其类型）
 
-![图像](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![UserAssertion 属性和方法](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-实际上，OBO 流通常用于获取下游 API 的令牌并将其存储在 MSAL.NET 用户令牌缓存中，这样 Web API 的其他部分就可以稍后调用 ``AcquireTokenOnSilent`` 的[重写](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)，以便调用下游 API。 此调用的作用是根据需要刷新令牌。
+在实践中，往往使用 OBO 流来获取下游 API 的令牌，并将其存储在 MSAL.NET 用户令牌缓存中。 这样做的目的是使 Web API 的其他部分随后可以调用 ``AcquireTokenOnSilent`` 的[重写](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)来调用下游 API。 此调用的作用是根据需要刷新令牌。
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -128,7 +131,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
         // Create the application
         var application = BuildConfidentialClientApplication(httpContext, principal);
 
-        // .Result to make sure that the cache is filled-in before the controller tries to get access tokens
+        // .Result to make sure that the cache is filled in before the controller tries to get access tokens
         var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
                                                         userAssertion)
                                 .ExecuteAsync()
@@ -141,16 +144,92 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-还可以在 [NodeJS 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61) 中看到代理流实现的示例。
+代理 (OBO) 流用于获取所需的令牌来调用下游 Web API。 在此流中，Web API 从客户端应用程序接收拥有用户委托权限的持有者令牌，然后用此令牌交换另一个访问令牌来调用下游 Web API。
+
+以下代码在 Web API 中使用 Spring Security 框架的 `SecurityContextHolder` 来获取已验证的持有者令牌。 然后，它通过 MSAL Java 库结合 `OnBehalfOfParameters` 使用 `acquireToken` 调用来获取下游 API 的令牌。 MSAL 将缓存令牌，使后续的 API 调用可以使用 `acquireTokenSilently` 获取缓存的令牌。
+
+```Java
+@Component
+class MsalAuthHelper {
+
+    @Value("${security.oauth2.client.authority}")
+    private String authority;
+
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String secret;
+
+    @Autowired
+    CacheManager cacheManager;
+
+    private String getAuthToken(){
+        String res = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null){
+            res = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+        }
+        return res;
+    }
+
+    String getOboToken(String scope) throws MalformedURLException {
+        String authToken = getAuthToken();
+
+        ConfidentialClientApplication application =
+                ConfidentialClientApplication.builder(clientId, ClientCredentialFactory.create(secret))
+                        .authority(authority).build();
+
+        String cacheKey = Hashing.sha256()
+                .hashString(authToken, StandardCharsets.UTF_8).toString();
+
+        String cachedTokens = cacheManager.getCache("tokens").get(cacheKey, String.class);
+        if(cachedTokens != null){
+            application.tokenCache().deserialize(cachedTokens);
+        }
+
+        IAuthenticationResult auth;
+        SilentParameters silentParameters =
+                SilentParameters.builder(Collections.singleton(scope))
+                        .build();
+        auth = application.acquireTokenSilently(silentParameters).join();
+
+        if (auth == null){
+            OnBehalfOfParameters parameters =
+                    OnBehalfOfParameters.builder(Collections.singleton(scope),
+                            new UserAssertion(authToken))
+                            .build();
+
+            auth = application.acquireToken(parameters).join();
+        }
+
+        cacheManager.getCache("tokens").put(cacheKey, application.tokenCache().serialize());
+
+        return auth.accessToken();
+    }
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+代理 (OBO) 流用于获取所需的令牌来调用下游 Web API。 在此流中，Web API 从客户端应用程序接收拥有用户委托权限的持有者令牌，然后用此令牌交换另一个访问令牌来调用下游 Web API。
+
+Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。 我们尚未编写在 MSAL Python 中演示此流的示例。
+
+---
+
+也可以参阅 [Node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61) 中的 OBO 流实现示例。
 
 ## <a name="protocol"></a>协议
 
-有关代理协议的详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 代理流](/active-directory/develop/v2-oauth2-on-behalf-of-flow)。
+有关 OBO 协议的详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 代理流](/active-directory/develop/v2-oauth2-on-behalf-of-flow)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [获取应用的令牌](scenario-web-api-call-api-acquire-token.md)
+> [调用 Web API 的 Web API：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)
 
 <!-- Update_Description: wording update -->
