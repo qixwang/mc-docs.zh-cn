@@ -3,20 +3,20 @@ title: 预览版环境中的数据建模 - Azure 时序见解 | Microsoft Docs
 description: 了解 Azure 时序见解预览版中的数据建模。
 author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 origin.date: 12/20/2019
-ms.date: 01/20/2020
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 459758153313a28a5373f58d87d8b08d5f94e09c
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 0bf723e11b6a7437df1ff876cf9956174e92fc27
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859671"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068066"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
 
@@ -24,7 +24,7 @@ ms.locfileid: "75859671"
 
 > [!TIP]
 > * 了解预览版[时序模型](time-series-insights-update-tsm.md)。
-> * 若要详细了解如何在预览版 UI 中进行导航，请参阅 [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
+
 
 ## <a name="instances"></a>Instances
 
@@ -67,7 +67,7 @@ Azure 时序见解资源管理器在浏览器中支持实例“创建”、“�
 
 1. 选择该实例，然后选择“删除”或“垃圾桶图标”   。
 
-   [![通过选择“删除”来删除类型。](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+   [![通过选择“删除”来删除实例。](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
 1. 通过选择“删除”来确认删除  。
 
@@ -171,7 +171,7 @@ Azure 时序见解资源管理器在浏览器中支持类型“创建”、“�
 
 - 有关时序模型的详细信息，请阅读[数据建模](./time-series-insights-update-tsm.md)。
 
-- 若要详细了解预览版，请阅读[在 Azure 时序见解预览版资源管理器中可视化数据](./time-series-insights-update-explorer.md)。
+
 
 - 若要了解支持的 JSON 形状，请阅读[支持的 JSON 形状](./time-series-insights-send-events.md#supported-json-shapes)。
 

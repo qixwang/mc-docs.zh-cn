@@ -4,16 +4,16 @@ description: 教程：如何使用 Cosmos DB 模拟器生成任务在 Azure DevO
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: tutorial
-origin.date: 05/23/2019
-ms.date: 12/16/2019
+origin.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 11d1ed01ac71b2025ac2e069dcb2bf8a06f8bfad
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 78083e97f85fcc1f51d24b1c8da321ba81272b72
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335993"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067890"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -48,12 +48,17 @@ ms.locfileid: "75335993"
 
     ![针对生成管道选择团队项目、存储库和分库](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. 最后，选择生成管道所需的模板。 在本教程中，我们将选择 **ASP.NET** 模板。 
+3. 最后，选择生成管道所需的模板。 在本教程中，我们将选择 **ASP.NET** 模板。 现在，我们有了一个生成管道，可以通过设置它来使用 Azure Cosmos DB 模拟器生成任务。 
 
 > [!NOTE]
 > 为此 CI 选择的代理池应该安装用于 Windows 的 Docker，除非已在以前的任务中作为 CI 的一部分手动完成该安装。 有关代理池的选择，请参阅 [Microsoft 托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)一文；我们建议从 `Hosted VS2017` 开始。
 
-现在，我们有了一个生成管道，可以通过设置它来使用 Azure Cosmos DB 模拟器生成任务。 
+Azure Cosmos DB 模拟器目前不支持托管的 VS2019 代理池。 但是，模拟器安装了 VS2019，因此可以通过以下 PowerShell cmdlet 启动模拟器，对它进行使用。 如果在使用 VS2019 时遇到任何问题，请联系 [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) 团队获取帮助：
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 <a name="addEmulatorBuildTaskToBuildDefinition"></a>
 ## <a name="add-the-task-to-a-build-pipeline"></a>将任务添加到生成管道
@@ -62,7 +67,7 @@ ms.locfileid: "75335993"
 
 1. 接下来选择代理作业旁边的 **+** 符号，以便添加模拟器生成任务。 在搜索框中搜索 **cosmos**，选择“Azure Cosmos DB 模拟器”，然后将其添加到代理作业。  此生成任务会启动一个容器，其中的 Cosmos DB 模拟器实例已经运行。 应该将 Azure Cosmos DB 模拟器任务置于任何其他预期模拟器会处于运行状态的任务之前。
 
-   ![向生成定义添加模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_3.png)
+    ![向生成定义添加模拟器生成任务](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
 在本教程中，我们会将任务添加到开始的时候，确保模拟器在测试执行之前可用。
 

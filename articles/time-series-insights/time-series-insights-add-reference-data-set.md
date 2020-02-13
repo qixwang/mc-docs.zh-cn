@@ -3,21 +3,21 @@ title: 如何向环境添加参考数据集 - Azure 时序见解 | Microsoft Doc
 description: 本文介绍了如何添加参考数据集来增强 Azure 时序见解环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 12/03/2019
-ms.date: 01/20/2020
+origin.date: 01/21/2020
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8f2f54147b57c5ffaa765cc60027920344fc5df
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: bb7576abf0ddc94d37897012e01446f24ce11f71
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859537"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068118"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -31,13 +31,15 @@ ms.locfileid: "75859537"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择时序见解环境。
+1. 查找现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择时序见解环境。
 
-1. 选择“概述”页面。  找到**时序见解资源管理器 URL** 并打开此链接。  
+1. 选择“概述”页面。  展开页面顶部附近的“概要”  部分，找到“时序见解资源管理器 URL”  并打开链接。  
 
-   查看 TSI 环境的资源管理器。
+   [![展开“概要”部分](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-1. 在 TSI 资源管理器中展开环境选择器。 选择活动的环境。 选择资源管理器页面右上角的参考数据图标。
+   查看时序见解环境的资源管理器。
+
+1. 在时序见解资源管理器中展开环境选择器。 选择活动的环境。 选择资源管理器页面右上角的参考数据图标。
 
    [![添加参考数据](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 
@@ -65,7 +67,7 @@ ms.locfileid: "75859537"
 
    [![查看参考数据](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. 检查每个列以查看采用的数据类型，并根据需要更改数据类型。  在列标题中选择数据类型符号： **#** 表示双精度（数字数据）、**T|F** 表示布尔值，**Abc** 表示字符串。
+1. 查看每个列以了解所采用的数据类型，并根据需要更改数据类型。  在列标题中选择数据类型符号： **#** 表示双精度（数字数据）、**T|F** 表示布尔值，**Abc** 表示字符串。
 
    [![在列标题上选择数据类型。](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -109,4 +111,4 @@ ms.locfileid: "75859537"
 
 * 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。
 
-* 有关完整的 API 参考，请参阅[引用数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 文档。
+* 有关完整的 API 参考，请阅读[参考数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 文档。

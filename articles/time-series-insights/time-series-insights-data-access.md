@@ -9,15 +9,15 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 11/20/2019
-ms.date: 12/23/2019
+origin.date: 01/10/2020
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 75dab14269f6725c6708650bc5d2f2156c07fb57
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f320e5bb4bf040c9a658b1911620c16da9a0ca28
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334676"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068122"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
@@ -111,7 +111,7 @@ ms.locfileid: "75334676"
 
 1. 来宾现在可以使用管理员提供的环境 URL 访问共享环境。 来宾将该 URL 输入其 Web 浏览器即可立刻进行访问。
 
-1. 来宾用户选择时序资源管理器右上角的配置文件图标即可查看管理员的租户。
+1. 在时序资源管理器的右上角选择其配置文件图标后，将向来宾用户显示管理员的租户。
 
     [![在 insights.azure.com 上选择头像](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
@@ -124,9 +124,7 @@ ms.locfileid: "75334676"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[如何将 Azure 事件中心事件源添加到](./time-series-insights-how-to-add-an-event-source-eventhub.md)时序见解环境。
 * 发送[事件到事件源](./time-series-insights-send-events.md)。
-* [在时序见解预览版资源管理器中查看环境](./time-series-insights-update-explorer.md)。
 
 <!-- Images -->
 [1]: media/data-access/data-access-one.png

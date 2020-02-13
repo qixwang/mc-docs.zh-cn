@@ -3,22 +3,22 @@ title: 如何监视和降低限制 - Azure 时序见解 | Microsoft Docs
 description: 了解如何监视、诊断并减少在 Azure 时序见解中导致延迟和限制的性能问题。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-origin.date: 11/21/2019
-ms.date: 12/23/2019
+origin.date: 01/21/2020
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d99db0ded62903982c124b2db0d9eb140bbdd4a1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 62b729fb0768e749db7334f414c20ff7891d70cb
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335701"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068104"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -36,13 +36,13 @@ ms.locfileid: "75335701"
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>使用警报监视延迟和限制
 
-警报有助于诊断并缓解环境导致的延迟问题。
+警报有助于诊断并缓解环境中出现的延迟问题。
 
 1. 在 Azure 门户中，选择时序见解环境。 然后选择“警报”  。
 
    [![向时序见解环境添加警报](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. 然后将显示“创建规则”  面板。 在“条件”  下选择“添加”  。
+1. 选择“+ 新建警报规则”。  然后将显示“创建规则”  面板。 在“条件”  下选择“添加”  。
 
    [![添加警报窗格](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
@@ -70,11 +70,11 @@ ms.locfileid: "75335701"
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 
-* 如果受到限制，则会看到“入口收到消息时间延迟”  的值，该值告知你时序见解环境落后于消息命中事件源时的实际时间多少秒（不计索引时间，该时间大约为 30-60 秒）。  
+* 如果你受到限制，则会注册“入口收到消息时间延迟”  的值，以通知你消息到达事件源的实际时间比时序见解环境晚多少秒（不包括索引时间，该时间大约为 30-60 秒）。  
 
    入口收到消息计数延迟也应该有一个值，用于确定你在消息数方面落后多少。  若要赶上来，最容易的方式是增加环境的容量，使之达到能够克服此差异的规模。  
 
-  例如，如果你看到 S1 环境显示有 5,000,000 条消息的延迟，那么可以将环境的大小增加到 6 个单元，以便在大约一天的时间内赶上进度。  甚至可以增加更多，这样追赶速度会更快。 在一开始预配某个环境时，尤其是在将其连接到某个事件源，而该事件源中已经有事件时，或者在批量上传大量历史数据时，追赶期是常见的现象。
+  例如，如果 S1 环境显示有 5,000,000 条消息的延迟，那么你可以将环境的大小增加到 6 个单元，以便在大约一天的时间内赶上进度。  甚至可以增加更多，这样追赶速度会更快。 在一开始预配某个环境时，尤其是在将其连接到某个事件源，而该事件源中已经有事件时，或者在批量上传大量历史数据时，追赶期是常见的现象。
 
 * 另一种方法是将“入口已存储事件”警报设置为在 2 小时的时间内 >= 略低于总环境容量的阈值  。  此警报有助于了解是否持续达到容量要求，指示很可能存在延迟。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "75335701"
 
 要减少限制和延迟，最佳的更正方法是增加环境容量。
 
-可以根据要分析的数据量，适当地配置环境，从而避免延迟和限制。 有关如何向环境增加容量的更多信息，请参阅[缩放环境](time-series-insights-how-to-scale-your-environment.md)。
+可以根据要分析的数据量，适当地配置环境，从而避免延迟和限制。 有关如何为环境添加容量的更多信息，请阅读[缩放环境](time-series-insights-how-to-scale-your-environment.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

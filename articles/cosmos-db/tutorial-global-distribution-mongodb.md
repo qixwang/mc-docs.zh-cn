@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行多区域分发的教程
+title: 教程：使用 Azure Cosmos DB API for MongoDB 设置多区域分发
 description: 了解如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置多区域分发。
 author: rockboyfor
 ms.author: v-yeche
@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 origin.date: 12/26/2018
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 75cb59e3fa5672539172c18d3c1294cd8c953de6
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 97c6b349909e0875e0b49a619121d3cc2d641f1f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912909"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068336"
 ---
 # <a name="set-up-multiple-region-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置多区域分布式数据库
 
@@ -49,17 +49,17 @@ ms.locfileid: "72912909"
          "minWireVersion": 0,
          "maxWireVersion": 2,
          "tags": {
-            "region": "China North "
+            "region": "China North 2"
          },
          "hosts": [
-            "vishi-api-for-mongodb-chinaeast2.documents.azure.cn:10255",
-            "vishi-api-for-mongodb-chinanorth2.documents.azure.cn:10255",
-            "vishi-api-for-mongodb-chinanorth.documents.azure.cn:10255"
+            "vishi-api-for-mongodb-chinaeast.documents.azure.cn:10255",
+            "vishi-api-for-mongodb-chinanorth.documents.azure.cn:10255",
+            "vishi-api-for-mongodb-chinanorth2.documents.azure.cn:10255"
          ],
          "setName": "globaldb",
          "setVersion": 1,
-         "primary": "vishi-api-for-mongodb-chinanorth.documents.azure.cn:10255",
-         "me": "vishi-api-for-mongodb-chinanorth.documents.azure.cn:10255"
+         "primary": "vishi-api-for-mongodb-chinanorth2.documents.azure.cn:10255",
+         "me": "vishi-api-for-mongodb-chinanorth2.documents.azure.cn:10255"
       }
    ```
 

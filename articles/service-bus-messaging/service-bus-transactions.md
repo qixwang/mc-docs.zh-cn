@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线中事务处理概述 | Azure
-description: Azure 服务总线原子事务和发送方式概述
+title: Azure 服务总线中事务处理概述
+description: 本文概要介绍了 Azure 服务总线中的事务处理和“发送方式”功能。
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 09/22/2018
-ms.date: 09/26/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 7bcc914d52ae6664a41a42218c591fdf01d384d0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: fbeea56c1c501e2f35a3e7e50d4acb5fa44711a6
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854213"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067956"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线预提取消息 | Azure Docs
-description: 通过预提取 Azure 服务总线消息提升性能。
+title: Azure 服务总线预提取消息 | Microsoft Docs
+description: 通过预提取 Azure 服务总线消息提升性能。 在应用程序请求消息之前，消息随时可供本地检索。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/30/2018
-ms.date: 09/15/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 499c4404e3394a39dfc970b99f6b5f2e093fe567
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 14071fd3d79f9c63cd4e7582a6d010f128e0c642
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330132"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068002"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 

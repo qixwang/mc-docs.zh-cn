@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线故障排除指南 | Microsoft Docs
-description: 服务总线消息传送异常和建议的操作列表。
+description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 09/21/2018
-ms.date: 11/26/2018
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c8bf7a0778d287f60168102463a87086d46e0ea4
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: f890dcbbfdb760d7608e504b038902ffb0976f54
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854287"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068012"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供了服务总线 .NET Framework API 生成的部分 .NET 异常，以及其他故障排除技巧。 
@@ -110,22 +110,39 @@ ConnectionsQuotaExceeded for namespace xxx.
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
 以下步骤可帮助排除 *.servicebus.windows.net 下所有服务的连接性/证书/超时问题。 
 
-- 浏览至 `https://sbwagn2.servicebus.windows.net/` 或使用 [wget](https://www.gnu.org/software/wget/)。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
-- 运行以下命令，检查防火墙是否阻止了任何端口。 根据使用的库，还会使用其他端口。 例如：443、5672、9354。
+- 浏览至 `https://<yournamespace>.servicebus.chinacloudapi.cn/` 或使用 [wget](https://www.gnu.org/software/wget/)。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
+
+    成功消息的示例：
+    
+    ```xml
+    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+    ```
+    
+    失败错误消息的示例：
+
+    ```json
+    <Error>
+        <Code>400</Code>
+        <Detail>
+            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+        </Detail>
+    </Error>
+    ```
+- 运行以下命令，检查防火墙是否阻止了任何端口。 所用的端口为 443 (HTTPS)、5671 (AMQP) 和 9354 (Net Messaging/SBMP)。 根据使用的库，还会使用其他端口。 下面是用于检查 5671 端口是否被阻止的示例命令。 
 
     ```powershell
-    tnc sbwagn2.servicebus.windows.net -port 5671
+    tnc <yournamespacename>.servicebus.chinacloudapi.cn -port 5671
     ```
 
     在 Linux 上：
 
     ```shell
-    telnet sbwagn2.servicebus.windows.net 5671
+    telnet <yournamespacename>.servicebus.chinacloudapi.cn 5671
     ```
-- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 运行大约 1 分钟，检查连接是否部分受阻。 可从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
+- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 可从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
 
     ```shell
-    psping.exe -t -q ehedhdev.servicebus.windows.net:9354 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.chinacloudapi.cn:5671 -nobanner     
     ```
     如果使用的是 `tnc`、`ping` 等其他工具，可以使用等效的命令。 
 - 如果上述步骤没有帮助，请执行网络跟踪并对其进行分析，或者联系 [Microsoft 支持部门](https://support.microsoft.com/)。

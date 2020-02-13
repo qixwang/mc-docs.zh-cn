@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户创建中继命名空间
-description: 如何使用 Azure 门户创建中继命名空间。
+title: 使用 Azure 门户创建中继命名空间 | Microsoft Docs
+description: 本文提供了一个演练，演示如何使用 Azure 门户创建中继命名空间。
 services: service-bus-relay
 documentationcenter: .net
 author: lingliw
@@ -12,22 +12,22 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-origin.date: 12/20/2017
-ms.date: 02/05/2018
-ms.author: v-yiso
-ms.openlocfilehash: fa8456547635d0a280ff2921cb5329c7fa45ffcf
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+origin.date: 01/21/2020
+ms.date: 2/6/2020
+ms.author: v-lingwu
+ms.openlocfilehash: edb227c606f8bd8c2ff37043653f8bc364278217
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329783"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068381"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>使用 Azure 门户创建中继命名空间
 
 命名空间是适用于所有 Azure 中继组件的作用域容器。 单个命名空间中可存在多个中继，命名空间通常用作应用程序容器。 目前有两种方法可用来创建中继命名空间：
 
 1. Azure 门户（本文）。
-2. [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)模板。
+2. [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板。
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 门户中创建命名空间
 

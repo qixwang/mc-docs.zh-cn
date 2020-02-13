@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure 门户中创建服务总线命名空间
-description: 使用 Azure 门户创建服务总线命名空间。
+description: 本文提供有关在 Azure 门户中创建 Azure 服务总线命名空间的说明。
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 02/12/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a6a7e0428287bb5d9b0efdd8c3197a4f5a829ec0
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 00e857819482e70a20a0780be09896e38fc55c7a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330325"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068273"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>使用 Azure 门户创建服务总线命名空间。
 

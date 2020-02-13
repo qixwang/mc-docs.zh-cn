@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线中 AMQP 1.0 的概述
-description: 了解如何在 Azure 中使用高级消息队列协议 (AMQP) 1.0。
+description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-origin.date: 09/25/2018
-ms.date: 10/31/2018
+origin.date: 01/23/2019
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 494645f40c61efb8990761052384ee483f8404fd
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: c1e7e3759e34c522507e9aeaadbe0facdfb92f44
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330333"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068280"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
 
@@ -63,7 +63,6 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * 风险较低且可控
 
 ## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和 Service Bus
-
 Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并使用 AMQP 1.0 通过服务总线交换消息。
@@ -76,7 +75,7 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 | 语言 | 库 |
 | --- | --- |
-| Java |Apache Qpid Java 消息服务 (JMS) 客户端<br/>软件 SwiftMQ IIT Java 客户端 |
+| Java |Apache Qpid Java 消息服务 (JMS) 客户端<br/>IIT 软件 SwiftMQ Java 客户端 |
 | C |Apache Qpid Proton-C |
 | PHP |Apache Qpid Proton-PHP |
 | Python |Apache Qpid Proton-Python |

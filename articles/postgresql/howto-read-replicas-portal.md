@@ -1,25 +1,25 @@
 ---
-title: 通过 Azure 门户管理 Azure Database for PostgreSQL（单一服务器）的只读副本
+title: 管理只读副本 - Azure 门户 - Azure Database for PostgreSQL（单一服务器）
 description: 了解如何通过 Azure 门户管理 Azure Database for PostgreSQL（单一服务器）的只读副本。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: a71c32f7a8affdfc5d220c70e22a144513a56ad3
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+origin.date: 01/24/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: f6177cbfd5a22642ca6eaf2f04e86caa071ef609
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307869"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068379"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>准备主服务器
@@ -28,6 +28,9 @@ ms.locfileid: "71307869"
 1. 在 Azure 门户中，选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。
 
 2. 在服务器边栏中的“设置”下，选择“复制”。  
+
+> [!NOTE] 
+> 如果看到“禁用复制支持”  灰显，则默认情况下复制设置已在服务器上设置。 可以跳过以下步骤，转去创建只读副本。 
 
 3. 选择“启用复制支持”。  
 

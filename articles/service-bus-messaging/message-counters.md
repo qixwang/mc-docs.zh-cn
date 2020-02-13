@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息计数 | Azure Docs
-description: 检索 Azure Service Bus 消息计数。
+title: Azure 服务总线 - 消息计数
+description: 使用 Azure 资源管理器和 Azure 服务总线 NamespaceManager API 检索队列和订阅中保留的消息计数。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
+origin.date: 01/24/2020
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 17af856edec321adf190b67979665ad2a8d2568b
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 20df0d8a0c75559d142ee1e70f7f8f5b983fd8e4
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330346"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067995"
 ---
 # <a name="message-counters"></a>消息计数器
 

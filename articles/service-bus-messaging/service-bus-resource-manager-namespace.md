@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板创建服务总线消息传送命名空间 | Azure Docs
+title: 使用模板创建 Azure 服务总线命名空间
 description: 使用 Azure 资源管理器模板创建服务总线消息命名空间
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 06/21/2019
 ms.date: 09/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 484797d765ccced6044b6c4f5272b1522acbbc70
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 8976992aeeac00e62a51d9be68254f6d68ba20af
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528326"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068286"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 

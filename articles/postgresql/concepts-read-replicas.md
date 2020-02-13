@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL（单一服务器）中的只读副本
+title: 只读副本 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍 Azure Database for PostgreSQL（单一服务器）中的只读副本功能。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 11/17/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: 34f5ca2a32f2639ce814307d886e5114269afaaa
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+origin.date: 01/23/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: 90d8024cd0911f6c6adaf69b20579750c10e5f49
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838688"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068316"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -40,8 +40,6 @@ ms.locfileid: "74838688"
 如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
 
 ## <a name="create-a-replica"></a>创建副本
-主服务器的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 （`azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层）。
-
 启动“创建副本”工作流时，将创建空白的 Azure Database for PostgreSQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
 每个副本都启用了存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 自动增长功能允许副本与复制到它的数据保持同步，并防止由于存储空间不足错误而导致的复制中断。
@@ -129,7 +127,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 本部分汇总了有关只读副本功能的注意事项。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 创建只读副本之前，必须将主服务器上的 `azure.replication_support` 参数设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 `azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层。
 
 ### <a name="new-replicas"></a>新副本

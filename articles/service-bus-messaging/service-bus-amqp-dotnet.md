@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线与 .NET 和 AMQP 1.0 | Azure
-description: 使用 AMQP 通过 .NET 使用 Azure 服务总线
+title: .NET 和 AMQP 1.0 中的 Azure 服务总线 | Microsoft Docs
+description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .NET 应用程序使用 Azure 服务总线。
 services: service-bus-messaging
 documentationCenter: na
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 09/25/2018
-ms.date: 10/31/2018
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5ef0b22aa15dfd75877f67bace6b62e84ea9c3b1
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: e97447723ff045dbf11124c668d91b0f7e2db2cb
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330332"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068023"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -52,7 +52,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 其中 `namespace` 和 `SAS key` 是在创建服务总线命名空间时从 [Azure 门户][Azure portal]获取的。 有关详细信息，请参阅[使用 Azure 门户创建服务总线命名空间][Create a Service Bus namespace using the Azure portal]。
 
-使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。 此表示法使客户端库使用 AMQP 1.0 连接到服务总线。
+使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。 此表示法指示客户端库使用 AMQP 1.0 连接到服务总线。
 
 ## <a name="message-serialization"></a>消息序列化
 使用默认协议时，.NET 客户端库的默认序列化行为是使用 [DataContractSerializer][DataContractSerializer] 类型序列化 [BrokeredMessage][BrokeredMessage] 实例，以便在客户端库和服务总线服务之间传输。 使用 AMQP 传输模式时，客户端库使用 AMQP 类型系统将[中转消息][BrokeredMessage]序列化为 AMQP 消息。 此序列化使得消息能够由可能在不同平台上运行的接收应用程序接收和解释，例如，使用 JMS API 来访问服务总线的 Java 应用程序。
@@ -63,7 +63,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 | .NET 正文对象类型 | 映射的 AMQP 类型 | AMQP 正文部分类型 |
 | --- | --- | --- |
-| bool |布尔值 |AMQP 值 |
+| bool |boolean |AMQP 值 |
 | 字节 |ubyte |AMQP 值 |
 | ushort |ushort |AMQP 值 |
 | uint |uint |AMQP 值 |
@@ -93,7 +93,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>行为差异
 

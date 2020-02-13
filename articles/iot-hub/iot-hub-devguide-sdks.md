@@ -6,16 +6,16 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 09/14/2018
+origin.date: 01/14/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.date: 09/30/2019
-ms.openlocfilehash: 25af7dc26831ddc4dfbf90885f5e0dc83dd822e7
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.date: 02/17/2020
+ms.openlocfilehash: 24997ded13025887424fe797c18acd600ec7bf1c
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155991"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068162"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -112,8 +112,8 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 Python 的 Azure IoT 中心服务 SDK： 
 
-* 通过 [pip](https://pypi.python.org/pypi/azure-iothub-service-client/) 下载
-* [源代码](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)
+* 通过 [pip](https://pypi.python.org/pypi/azure-iot-hub/) 下载
+* [源代码](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 适用于 C 的 Azure IoT 中心服务 SDK： 
 
@@ -165,7 +165,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 Azure IoT SDK 还提供了一组工具来帮助开发：
 * [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)：一种跨平台命令行工具，用于帮助诊断与 IoT 中心连接相关的问题。
-* [设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)：一个 Windows 桌面应用程序，用于连接到 IoT 中心。
+* [azure-iot-explorer](https://github.com/Azure/azure-iot-explorer)：一个跨平台的桌面应用程序，用于连接到 IoT 中心并添加/管理 IoT 设备及与其通信。
 
 与使用 Azure IoT SDK 进行开发相关的文档：
 * 了解如何使用 IoT 中心 SDK [管理连接和可靠的消息传送](iot-hub-reliability-features-in-sdks.md)。

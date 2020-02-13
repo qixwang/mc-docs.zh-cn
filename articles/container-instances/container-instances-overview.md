@@ -6,12 +6,12 @@ origin.date: 04/25/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 426af7f9318471b93b054d2ad423e564e74ee594
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 69b879fea785a9b3844215a19d07368552a25cf7
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965053"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068084"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -25,7 +25,7 @@ ms.locfileid: "75965053"
 
 ## <a name="container-access"></a>容器访问
 
-使用 Azure 容器实例可以通过公共 IP 地址和完全限定的域名 (FQDN) 直接向 Internet 公开容器组。 创建容器实例时，可以指定自定义的 DNS 名称标签，以便通过 customlabel  .azureregion  .azurecontainer.cn 访问你的应用程序。
+使用 Azure 容器实例可以通过公共 IP 地址和完全限定的域名 (FQDN) 直接向 Internet 公开容器组。 创建容器实例时，可以指定自定义的 DNS 名称标签，以便应用程序可在 customlabel  .azureregion  .azurecontainer.console.azure.cn 上访问。
 
 通过提供交互式 shell，Azure 容器实例还可以在正在运行的容器中执行命令，以帮助进行应用程序开发和故障排除。 访问通过 HTTPS 进行，并使用 TLS 来保护客户端连接。
 

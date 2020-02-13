@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor（预览版）中的 Azure 中继指标 | Azure Docs
-description: 使用 Azure 监视来监视 Azure 中继
+title: Azure Monitor 中的 Azure 中继指标（预览版）| Microsoft Docs
+description: 本文介绍如何使用 Azure Monitor 监视 Azure 中继状态。
 services: service-bus-relay
 documentationcenter: .NET
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 11/28/2018
-ms.date: 09/23/2019
+origin.date: 01/21/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: bbdfa644e75c63005a947a9b1587f634fa1899d6
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: cdf45f5a7bea4992af9012912103dc7cb691fdd2
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970994"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068315"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 Azure 中继指标提供 Azure 订阅中的资源的状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估中继资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视 Azure 中继的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。

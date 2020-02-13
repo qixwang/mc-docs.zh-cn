@@ -9,15 +9,15 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 12/03/2019
-ms.date: 01/20/2020
+origin.date: 01/31/2020
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2388a3b291c5489433cdab2d4b45794abe99fe88
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 30d5f1bbf7a50df83c7ac14d75ea3bb01128b28e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859705"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068102"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的时序见解环境
 本文介绍如何使用 Azure 门户创建新的时序见解环境。
@@ -44,7 +44,7 @@ ms.locfileid: "75859705"
    设置|建议的值|说明
    ---|---|---
    环境名称 | 唯一的名称 | 此名称在[时序资源管理器](https://insights.timeseries.azure.com)中代表环境
-   订阅 | 你的订阅 | 如果有多个订阅，最好是选择包含事件源的订阅。 时序见解可以自动检测存在于同一订阅中的 Azure IoT 中心和事件中心资源。
+   订阅 | 你的订阅 | 如果有多个订阅，最好是选择包含事件源的订阅。 时序见解可以自动检测 Azure IoT 中心和事件中心资源是否存在于同一订阅中。
    资源组 | 创建新资源组或使用现有的资源组 | 资源组是结合使用的 Azure 资源的集合。 可以选择现有的资源组，例如，包含事件中心或 IoT 中心的资源组。 或者，如果此资源与其他资源不相关，则可以创建新资源组。
    位置 | 最靠近事件源的位置 | 最好是选择包含事件源数据的同一个数据中心位置，以尽量避免增加跨界和跨区域的带宽费用，以及将数据移出区域时增大延迟。
    定价层 | S1 | 选择所需的吞吐量。 若要尽量降低费用并获得入门容量，请选择 S1。
@@ -64,6 +64,5 @@ ms.locfileid: "75859705"
 
 ## <a name="next-steps"></a>后续步骤
 * [定义数据访问策略](time-series-insights-data-access.md)来保护环境。
-* [将事件中心事件源添加](time-series-insights-how-to-add-an-event-source-eventhub.md)到 Azure 时序见解环境。 
 * [发送事件](time-series-insights-send-events.md)到事件源。
 * 在[时序见解资源管理器](https://insights.timeseries.azure.com)中查看环境。

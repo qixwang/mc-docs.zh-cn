@@ -1,26 +1,26 @@
 ---
-title: Azure Database for PostgreSQL（单一服务器）中的限制
+title: 限制 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍了 Azure Database for PostgreSQL（单一服务器）中的限制，例如连接数和存储引擎选项。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 06/25/2019
-ms.date: 12/02/2019
+origin.date: 01/28/2020
+ms.date: 02/10/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bbb72614233e160fe78e30f31848dfce0c34c3b7
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: 1cf64db233655f95553fe9318e27b2194c665bc6
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530633"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068368"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的限制
 下列各部分介绍数据库服务中的容量和功能限制。 如果想了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
 
 
 ## <a name="maximum-connections"></a>最大连接数
-每个定价层的最大连接数和 vCore 数如下所示： 
+每个定价层的最大连接数和 vCore 数如下所示。 Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
 
 |**定价层**| **vCore(s)**| 最大连接数  | **最大用户连接数** |
 |---|---|---|---|
@@ -41,7 +41,10 @@ ms.locfileid: "74530633"
 当连接数超出限制时，可能会收到以下错误：
 > 严重：很抱歉，客户端数过多
 
-Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
+> [!IMPORTANT]
+> 为了获得最佳体验，我们建议你使用 pgBouncer 之类的连接池来有效地管理连接。
+
+PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而且，创建新连接需要时间。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。
 
 ## <a name="functional-limitations"></a>功能限制
 ### <a name="scale-operations"></a>缩放操作

@@ -9,14 +9,14 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 origin.date: 12/13/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2afc99881f2e667b4908e4002ef6ab192b5378bb
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 41f089cf0588ba98e8893c1fff56ddb54a877c1b
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859653"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068063"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>对预览版环境进行诊断和故障排除
 
@@ -30,7 +30,7 @@ ms.locfileid: "75859653"
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>问题：预览版资源管理器中未显示数据
 
-在 [Azure 时序见解预览版资源管理器](https://insights.timeseries.azure.com/preview)中未看见数据有多个常见原因。
+有几种常见原因导致数据可能不会出现在 [Azure 时序见解预览版资源管理器](https://insights.timeseries.azure.com/preview)中。
 
 - 事件源可能未接收数据。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75859653"
 
 - 事件源数据不是 JSON 格式。
 
-    时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+    时序见解仅支持 JSON 数据。 有关 JSON 示例，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 
 - 事件源密钥缺少所需权限。
 
@@ -62,7 +62,7 @@ ms.locfileid: "75859653"
 
 - 在预配时指定的时序 ID 属性不正确、缺失或为 null。
 
-    如果在预配环境时时序 ID 属性配置不正确，则可能会发生此问题。 有关详细信息，请参阅[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 目前无法更新现有时序见解环境来使用其他时序 ID。
+    如果在预配环境时时序 ID 属性配置不正确，则可能会发生此问题。 有关详细信息，请阅读[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 目前无法更新现有时序见解环境来使用其他时序 ID。
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>问题：显示了一些数据，但是还有一些数据缺失
 
@@ -99,7 +99,7 @@ ms.locfileid: "75859653"
 
 - 你可能在访问时序见解 S1 或 S2 环境。
 
-   时序模型仅在即用即付环境中受支持。 若要详细了解如何从时序见解预览版资源管理器访问 S1 或 S2 环境，请参阅[可视化资源管理器中的数据](./time-series-insights-update-explorer.md)。
+   时序模型仅在即用即付环境中受支持。 
 
    [![环境中没有事件。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 

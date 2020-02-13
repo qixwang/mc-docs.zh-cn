@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB SQL 查询中的标量表达式
-description: 了解 Azure Cosmos DB 的标量表达式 SQL 语法。
+description: 了解 Azure Cosmos DB 的标量表达式 SQL 语法。 本文还介绍了如何使用运算符将标量表达式组合成复杂表达式。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/17/2019
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 99d00b3d0f83bddfb0ae28117339a6374381e9e7
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 81de93b2b710b27a5982a06e683666a996349518
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306765"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067925"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查询中的标量表达式
 
@@ -112,7 +112,7 @@ ms.locfileid: "71306765"
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -127,7 +127,7 @@ ms.locfileid: "71306765"
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

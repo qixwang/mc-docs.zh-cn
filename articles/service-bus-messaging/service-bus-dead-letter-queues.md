@@ -1,6 +1,6 @@
 ---
-title: 服务总线死信队列 | Azure Docs
-description: Azure 服务总线死信队列概述
+title: 服务总线死信队列 | Microsoft 文档
+description: 介绍 Azure 服务总线中的死信队列。 服务总线队列和主题订阅提供了一个称为“死信队列”的辅助子队列。
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 02/12/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: fa7842e37713aed26618bd00c4b1815cf601aae2
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 0708de12b75eae8ab02f7c2b72cfd637cb5ef4a8
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330319"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067984"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 

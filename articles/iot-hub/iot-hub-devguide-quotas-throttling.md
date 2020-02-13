@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 08/08/2019
 ms.author: v-yiso
-ms.date: 01/13/2020
-ms.openlocfilehash: 1313b02d2c50af498691f6d61e5c352b19235081
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/17/2020
+ms.openlocfilehash: e0435cad18412d2517469aceb1a858556a7d03f5
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630979"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068177"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -111,6 +111,7 @@ IoT 中心强制实施其他操作限制：
 | 自动设备和模块配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 20 个模块。 每个付费 SKU 中心 100 个部署（包括分层部署）。 每个免费 SKU 中心 10 个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
+| 共享访问策略 | 共享访问策略的最大数目为 16 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 
@@ -126,7 +127,7 @@ IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和
 * 在离设备最近的 Azure 区域预配 IoT 中心。
 * 请考虑在设备上或在离设备近的网关上使用 Azure IoT Edge 执行易受延迟影响的操作。
 
-如前所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
+如上所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
 如果发现操作延迟意外增加，请与 [Microsoft 支持](https://www.azure.cn/support/contact/)联系。
 
 ## <a name="next-steps"></a>后续步骤

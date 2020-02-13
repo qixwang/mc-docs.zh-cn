@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息会话 | Azure Docs
-description: 使用会话处理一系列 Azure 服务总线消息。
+title: Azure 服务总线消息会话 | Microsoft Docs
+description: 本文说明了如何使用会话实现对无限的相关消息序列的连贯有序处理。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 1b520fa4b190251f49bad688d5e5266be2bf6859
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: b853a6faa6e6060b4cf73cc98521ec1c69c81e8d
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330335"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067987"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
-使用世纪互联 Azure 服务总线会话，能够以连贯有序的方式处理一系列无限多的相关消息。 若要在服务总线中实现 FIFO 保证，请使用会话。 服务总线没有规定消息之间的关系性质，也没有定义用于确定消息序列开始或结束位置的特定模型。
+使用 Microsoft Azure 服务总线会话，能够以连贯有序的方式处理一系列无限多的相关消息。 若要在服务总线中实现 FIFO 保证，请使用会话。 服务总线没有规定消息之间的关系性质，也没有定义用于确定消息序列开始或结束位置的特定模型。
 
 > [!NOTE]
 > 服务总线的基本层不支持会话。 标准层和高级层支持会话。 有关详细信息，请参阅[服务总线定价](https://www.azure.cn/en-us/pricing/details/service-bus/)。

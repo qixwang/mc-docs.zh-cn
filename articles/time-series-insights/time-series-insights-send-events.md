@@ -11,18 +11,18 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 origin.date: 12/05/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bff57bac053bd02f76161cbf2db8ee9e494323d
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 58e044d99abb1d2517ce92081cdf48176721402f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859691"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067864"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
-本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在 [Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
+本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
 
@@ -61,7 +61,7 @@ ms.locfileid: "75859691"
 
 ### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
 
-1. 如果尚未创建事件源，请完成步骤以[创建事件源](/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
+1. 如果尚未创建事件源，请完成创建事件源的步骤。
 
 1. 为 `timeSeriesId` 设置一个值。 若要详细了解时间序列 ID，请参阅[时序模型](./time-series-insights-update-tsm.md)  。
 
@@ -82,7 +82,7 @@ ms.locfileid: "75859691"
 
 1. 选择“单击可启动”  。 模拟器生成可以直接使用的实例 JSON。
 
-1. 返回到 Azure 门户中的事件中心。 在“概述”页面上，可以看到事件中心收到的新事件  ：
+1. 返回到 Azure 门户中的事件中心。 在“概述”  页上，显示事件中心收到的新事件。
 
     [![显示事件中心指标的事件中心“概述”页](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 

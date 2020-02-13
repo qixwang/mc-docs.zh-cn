@@ -1,35 +1,45 @@
 ---
-title: 使用 Azure 资源管理器模板创建和管理 Azure Cosmos DB
+title: 使用资源管理器模板创建和管理 Azure Cosmos DB
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB for SQL (Core) API
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/12/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c9650ceb22d762fac6ca0319629d666eef85dad1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c17d945048e187ea56b392273b21172d83d879c4
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336275"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028927"
 ---
 <!--Verify successfully-->
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB SQL (Core) API 资源
 
-本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文的示例仅适用于 SQL API 帐户。若要查找其他 API 类型帐户的示例，请参阅将 Azure 资源管理器模板与 Azure Cosmos DB 的适用于 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[表](manage-table-with-resource-manager.md)的 API 配合使用的相关文章。
+在本文中，你将了解如何使用 Azure 资源管理器模板来帮助自动管理 Azure Cosmos DB 帐户、数据库和容器。
 
-如何为 MongoDB、Gremlin、Cassandra 和表 API 创建和管理 Cosmos DB 帐户、数据库和容器。
+本文仅展示了适用于 SQL API 帐户的 Azure 资源管理器模板示例。 你还可以查找适用于 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md) 和[表](manage-table-with-resource-manager.md) API 的模板示例。
 
-## 创建 Azure Cosmos 帐户、数据库和容器 <a name="create-resource"></a>
+<a name="create-resource"></a>
 
-使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建 Azure Cosmos 帐户，所使用的两个容器在数据库级别共享 400 RU/秒的吞吐量，一个容器使用专用的 400 RU/秒吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+## <a name="create-an-azure-cosmos-account-database-and-container"></a>创建 Azure Cosmos 帐户、数据库和容器
 
-> [!NOTE]
+下面的 Azure 资源管理器模板创建包含以下项的 Azure Cosmos 帐户：
+
+* 两个在数据库级别共享 400 请求单位/秒 (RU/s) 吞吐量的容器。
+* 一个具有专用 400 RU/s 吞吐量的容器。
+
+若要创建 Azure Cosmos DB 资源，请复制下面的示例模板，并按照说明通过 [PowerShell](#deploy-via-powershell) 或 [Azure CLI](#deploy-via-azure-cli) 进行部署。
+
+* 还可以访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql/)，然后从 Azure 门户部署模板。
+* 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+
+> [!IMPORTANT]
 >
-> - 不能同时在 Azure Cosmos 帐户中添加或删除位置，也不能修改其他属性。 这些操作必须作为单独的操作完成。
-> - 帐户名称必须为小写且不超过 44 个字符。
-> - 若要更新 RU/秒，请使用更新的吞吐量属性值重新提交模板。
+> * 在 Azure Cosmos 帐户中添加或删除位置时，不能同时修改其他属性。 这些操作必须单独执行。
+> * 帐户名称限制为 44 个字符，全部小写。
+> * 若要更改吞吐量值，请使用更新后的 RU/s 重新提交模板。
 
 ```json
 {
@@ -340,15 +350,16 @@ ms.locfileid: "75336275"
 ```
 
 > [!NOTE]
-> 若要使用大分区键创建容器，请在上一模板中的 `partitionKey` 对象内包括 `"version":2` 属性。
+> 若要使用大的分区键创建容器，请修改前面的模板以在 `partitionKey` 对象内包括 `"version":2` 属性。
 
 ### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
 
-使用以下脚本通过 PowerShell 部署 Azure 资源管理器模板。
+若要使用 PowerShell 部署 Azure 资源管理器模板，请执行以下操作：
 
-<!--Not Available on **Copy** the script and select **Try it** to open Azure local Shell. To paste the script, right-click the shell, and then select **Paste**:-->
+<!--Not Available on  Select **Try it** to open Azure Cloud Shell.-->
 
 ```powershell
+
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $accountName = Read-Host -Prompt "Enter the account name"
 $location = Read-Host -Prompt "Enter the location (i.e. chinanorth2)"
@@ -381,13 +392,13 @@ New-AzResourceGroupDeployment `
 
 <!--CORRECT ON POWERSHELL CONTAINS ONE DASH(-) IN CMDLET-->
 
-如果选择使用本地安装的 PowerShell 版本，则需[安装](https://docs.microsoft.com/powershell/azure/install-az-ps) Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
+你可以选择使用本地安装的 PowerShell 版本来部署模板。 你需要[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 请运行 `Get-Module -ListAvailable Az` 来查找所需的版本。
 
 <!--Not Available on Azure Cloud Shell-->
 
 ### <a name="deploy-via-azure-cli"></a>通过 Azure CLI 部署
 
-使用以下脚本通过 Azure CLI 部署 Azure 资源管理器模板。
+若要使用 Azure CLI 部署 Azure 资源管理器模板，请执行以下操作：
 
 <!--Not Avaialble on Cloud Shell of select **Try it** to open Azure local Shell. To paste the script, right-click the shell, and then select **Paste**:-->
 
@@ -420,13 +431,19 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 如果选择使用本地安装的 Azure CLI 版本，请参阅 [Azure 命令行界面 (CLI)](https://docs.azure.cn/cli/?view=azure-cli-latest) 一文。
+`az cosmosdb show` 命令显示预配后的新建 Azure Cosmos 帐户。 你可以选择使用本地安装的 Azure CLI 版本来部署模板。 有关详细信息，请参阅 [Azure 命令行接口 (CLI)](https://docs.azure.cn/cli/?view=azure-cli-latest) 一文。
 
 <!--Not Available on instead of using CloudShell-->
 
-## 使用服务器端功能创建 Azure Cosmos DB 容器 <a name="create-sproc"></a>
+<a name="create-sproc"></a>
+## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>使用服务器端功能创建 Azure Cosmos DB 容器
 
-使用 Azure 资源管理器模板通过存储过程、触发器和用户定义的函数创建 Azure Cosmos DB 容器。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql-container-sprocs/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
+可以使用 Azure 资源管理器模板创建包含存储过程、触发器和用户定义的函数的 Azure Cosmos DB 容器。
+
+复制下面的示例模板，并按照说明通过 [PowerShell](#deploy-with-powershell) 或 [Azure CLI](#deploy-with-azure-cli) 进行部署。
+
+* 还可以访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql-container-sprocs/)，然后从 Azure 门户部署模板。
+* 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 
 ```json
 {
@@ -435,7 +452,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
     "parameters": {
         "accountName": {
             "type": "string",
-            "defaultValue": "[concat('cosmosaccount-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('cosmos-', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "Cosmos DB account name"
             }
@@ -504,14 +521,14 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
         "databaseName": {
             "type": "string",
             "metadata": {
-                "description": "The name for the SQL database"
+                "description": "The name for the Core (SQL) database"
             }
         },
         "containerName": {
             "type": "string",
             "defaultValue": "container1",
             "metadata": {
-                "description": "The name for the first SQL container"
+                "description": "The name for the Core (SQL) API container"
             }
         },
         "throughput": {
@@ -618,8 +635,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
                         "resource": {
                         "id": "myStoredProcedure",
                         "body": "function () { var context = getContext(); var response = context.getResponse(); response.setBody('Hello, World'); }"
-                        },
-                        "options": {}
+                        }
                     }
                 },
                 {
@@ -633,8 +649,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
                         "triggerType": "Pre",
                         "triggerOperation": "Create",
                         "body": "function validateToDoItemTimestamp(){var context=getContext();var request=context.getRequest();var itemToCreate=request.getBody();if(!('timestamp'in itemToCreate)){var ts=new Date();itemToCreate['timestamp']=ts.getTime();}request.setBody(itemToCreate);}"
-                        },
-                        "options": {}
+                        }
                     }
                 },
                 {
@@ -646,8 +661,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
                         "resource": {
                         "id": "myUserDefinedFunction",
                         "body": "function tax(income){if(income==undefined)throw'no input';if(income<1000)return income*0.1;else if(income<10000)return income*0.2;else return income*0.4;}"
-                        },
-                        "options": {}
+                        }
                     }
                 }
             ]
@@ -657,9 +671,9 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ```
 
-### <a name="deploy-stored-procedure-template-via-powershell"></a>通过 PowerShell 部署存储过程模板
+### <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 
-使用以下脚本通过 PowerShell 部署资源管理器模板。
+若要使用 PowerShell 部署 Azure 资源管理器模板，请执行以下操作：
 
 <!--Not Available on  **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
 
@@ -688,13 +702,14 @@ New-AzResourceGroupDeployment `
  (Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2019-08-01" -ResourceGroupName $resourceGroupName).name
 ```
 
-如果选择使用本地安装的 PowerShell 版本，则需[安装](https://docs.microsoft.com/powershell/azure/install-az-ps) Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 
+你可以选择使用本地安装的 PowerShell 版本来部署模板。 你需要[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 请运行 `Get-Module -ListAvailable Az` 来查找所需的版本。
 
 <!--MOONCAKE: Not available on instead of using CloudShell-->
 
-### <a name="deploy-stored-procedure-template-via-azure-cli"></a>通过 Azure CLI 部署存储过程模板
+### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-使用以下脚本通过 Azure Local CLI 部署资源管理器模板。
+若要使用 Azure CLI 部署 Azure 资源管理器模板，请执行以下操作：
+
 
 <!--Not Available on **Copy** the script and select **Try it** to open the Azure Cloud shell. To paste the script, right-click the shell, and then select **Paste**:-->
 
@@ -717,18 +732,20 @@ az group deployment create --resource-group $resourceGroupName \
    --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion databaseName=$databaseName \
    containerName=$containerName
 
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
+az cosmosdb show --resource-group $resourceGroupName --name $accountName --output tsv
 ```
+
+<!--MOONCAKE: parameter correct on --name $accountName-->
 
 ## <a name="next-steps"></a>后续步骤
 
 下面是一些其他资源：
 
-- [Azure 资源管理器文档](/azure-resource-manager/)
+* [Azure 资源管理器文档](/azure-resource-manager/)
     
     <!--Not Available on  - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
-- [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
+* [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

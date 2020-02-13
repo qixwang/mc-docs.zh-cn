@@ -1,6 +1,6 @@
 ---
-title: 结合使用 Azure 资源的托管标识与 Azure 服务总线 | Microsoft Docs
-description: 结合使用 Azure 资源的托管标识与 Azure 服务总线
+title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
+description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 08/22/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: aschhab
-ms.openlocfilehash: 3ba5134f309efa818a2a1e8a222ead77f37d17d2
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: eebfde9bb8fe2de1463ac3fc3c16239845735bf0
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528025"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068269"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -57,6 +57,12 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 以下列表描述了可将服务总线资源访问权限限定到哪些级别，从最小的范围开始：
 
 - **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 RBAC 角色分配用户/组/托管标识。 
+    ```azurecli
+    az role assignment create \
+        --role $service_bus_role \
+        --assignee $assignee_id \
+        --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
+    ```
 - **服务总线命名空间**：角色分配横跨命名空间中服务总线的整个拓扑，并延伸至与之关联的使用者组。
 - **资源组**：角色分配适用于资源组下的所有服务总线资源。
 - **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。

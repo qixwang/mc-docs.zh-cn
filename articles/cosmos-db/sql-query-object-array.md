@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB 中使用数组和对象
-description: 了解 Azure Cosmos DB 的数组和对象创建 SQL 语法。
+description: 了解用于在 Azure Cosmos DB 中创建数组和对象的 SQL 语法。 本文还提供了一些对数组对象执行操作的示例
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 06/21/2019
-ms.date: 09/30/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4aacdc1587a2fe02c45735e1e2ea524a31908476
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 21c70ab10ba3845a6e0191e3dbb88890d0c26a1f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306763"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067866"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 
@@ -27,7 +27,7 @@ Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -63,7 +63,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     FROM Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -99,7 +99,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     FROM c IN Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -132,7 +132,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     WHERE c.grade = 8
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -147,7 +147,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     FROM child IN Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

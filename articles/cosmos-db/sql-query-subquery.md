@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 的 SQL 子查询
-description: 了解 Azure Cosmos DB 中的 SQL 子查询及其常见用例
+description: 了解 Azure Cosmos DB 中的 SQL 子查询及其常见用例以及不同类型的子查询
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/23/2019
-ms.date: 09/30/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f604ffa8bf381b44b31e7b70b96f7a22ec7ae018
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 466f1bcf8d9ae904645431fafa2155bec9b0703e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306758"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068261"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查询示例
 
@@ -523,4 +523,4 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 - [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update -->

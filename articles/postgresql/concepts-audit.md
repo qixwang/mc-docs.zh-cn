@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for PostgreSQL（单一服务器）中使用 pgAudit 进行的审核日志记录
+title: 审核日志记录 - Azure Database for PostgreSQL（单一服务器）
 description: Azure Database for PostgreSQL（单一服务器）中的 pgAudit 审核日志记录的概念。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/14/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: cecdc788c7f9961976d5238c32270527a9033adb
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+origin.date: 01/28/2020
+ms.date: 02/10/2020
+ms.openlocfilehash: 1813254adc60bc52f825279b8be0d517fba1f787
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73191601"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068370"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的审核日志记录
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 > 在 Azure Database for PostgreSQL 上，pgAudit 为预览版。
 > 此扩展只能在“常规用途”和“内存优化”服务器上启用。
 
-如果需要对计算和存储缩放之类的操作进行 Azure 资源级别的日志记录，请参阅 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)。
+如果需要对计算和存储缩放之类的操作进行 Azure 资源级别的日志记录，请参阅 [Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="usage-considerations"></a>使用注意事项
 默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL 中，这些 .log 文件可以通过 Azure 门户或 CLI 下载。 文件集合的最大存储为 1 GB，每个文件的可用时间最长为七天（默认为三天）。 此服务是一个短期存储选项。
@@ -66,10 +66,8 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 [安装 pgAudit](#installing-pgaudit)以后，即可配置其参数，以便开始日志记录。 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)提供每个参数的定义。 请先测试参数，确认获取的是预期的行为。
 
 > [!NOTE]
-> 将 `pgaudit.log_client` 设置为 ON 会将日志重定向到客户端进程（例如 psql）而不是写入文件。 通常应让此设置保持禁用状态。
-
-> [!NOTE]
-> `pgaudit.log_level` 只有在 `pgaudit.log_client` 为 on 的情况下启用。 另外，在 Azure 门户中，`pgaudit.log_level` 目前存在 Bug：会显示一个组合框，这意味着可以选择多个级别。 但是，只应选择一个级别。 
+> 将 `pgaudit.log_client` 设置为 ON 会将日志重定向到客户端进程（例如 psql）而不是写入文件。 通常应让此设置保持禁用状态。 <br> <br>
+> `pgaudit.log_level` 只有在 `pgaudit.log_client` 为 on 的情况下启用。
 
 > [!NOTE]
 > 在 Azure Database for PostgreSQL 中，根据 pgAudit 文档中的说明，不能使用 `-`（减号）快捷方式来设置 `pgaudit.log`。 所有必需的声明类（READ、WRITE 等）应该单独指定。
@@ -88,6 +86,22 @@ t=%m u=%u db=%d pid=[%p]:
 ### <a name="getting-started"></a>入门
 若要快速开始，请将 `pgaudit.log` 设置为 `WRITE`，并打开日志来查看输出。 
 
+## <a name="viewing-audit-logs"></a>查看审核日志
+如果使用的是 .log 文件，则审核日志将与 PostgreSQL 错误日志包含在同一文件中。 可以从 Azure [门户](howto-configure-server-logs-in-portal.md)或 [CLI](howto-configure-server-logs-using-cli.md) 下载日志文件。 
+
+如果使用的是 Azure 诊断日志记录，则访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
+
+Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../azure-monitor/log-query/log-query-overview.md)概述中详细了解查询和警报。
+
+可以通过此查询开始使用。 可以基于查询配置警报。
+
+搜索特定的服务器在过去一天生成的所有 Postgres 日志
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [了解 Azure Database for PostgreSQL 中的日志记录](concepts-server-logs.md)

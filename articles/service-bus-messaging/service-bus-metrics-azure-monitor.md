@@ -1,21 +1,21 @@
 ---
 title: Azure Monitor 中的 Azure 服务总线指标 | Microsoft Docs
-description: 使用 Azure Monitor 监视服务总线实体
+description: 本文介绍如何使用 Azure Monitor 监视服务总线实体（队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: .NET
 author: lingliw
 manager: digimobile
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 11/06/2018
-ms.date: 09/23/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 65326681e5ccfb2ed5b8327d333c34ba8581f5b0
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: 3c57b14feb43cf06c87c14ace75df1887cfe0773
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041202"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067976"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 

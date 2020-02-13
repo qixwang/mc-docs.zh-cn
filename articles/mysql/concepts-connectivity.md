@@ -1,19 +1,19 @@
 ---
-title: 处理暂时性错误并有效地连接到 Azure Database for MySQL | Microsoft Docs
+title: 暂时性连接错误 - Azure Database for MySQL
 description: 了解如何处理暂时性连接错误并有效地连接到 Azure Database for MySQL。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误, 有效连接
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 11/09/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: 36f616de9ab424f343281283c839d23cc415d860
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+origin.date: 12/02/2019
+ms.date: 02/10/2020
+ms.openlocfilehash: ca3ccedee6c2be8b029f6e076e056875c59228bf
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426080"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068194"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>处理暂时性错误并有效地连接到 Azure Database for MySQL
 
@@ -56,7 +56,7 @@ ms.locfileid: "73426080"
 
 管理数据库连接可能会对整个应用程序的性能造成很大的影响。 若要优化应用程序的性能，目标应是减少建立连接的次数，以及在关键代码路径中建立连接的时间。 我们强烈建议使用数据库连接池或持久性连接来与 Azure Database for MySQL 建立连接。 数据库连接池将处理数据库连接的创建、管理和分配。 当某个程序请求数据库连接时，它会优先分配现有的空闲数据库连接，而不是创建新的连接。 该程序用完数据库连接后，该连接将会恢复，以供进一步使用，而不是直接关闭。
 
-为方便演示，本文提供了一段使用 JAVA 的[示例代码](./sample-scripts-java-connection-pooling.md)。 有关详细信息，请参阅 [Apache 通用 DBCP](http://commons.apache.org/proper/commons-dbcp/)。
+为方便演示，本文提供了一段使用 JAVA 的[示例代码](./sample-scripts-java-connection-pooling.md)。 有关详细信息，请参阅 [Apache 通用 DBCP](https://commons.apache.org/proper/commons-dbcp/)。
 
 > [!NOTE]
 > 服务器将配置一个超时机制，以便在某个连接空闲一段时间后将其关闭，从而释放资源。 请务必设置验证系统，以确保在使用持久性连接时这些连接保持有效性。 有关详细信息，请参阅[在客户端中配置验证系统以确保持久性连接的有效性](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)。
@@ -99,7 +99,7 @@ public class SimpleTestOnBorrowExample {
             // The pool itself doesn't timeout the query, it is still up to the JDBC driver to enforce query timeouts. 
             // A value less than or equal to zero will disable this feature.
           p.setValidationQueryTimeout(1);
-            // set other usefull pool properties.
+            // set other useful pool properties.
           DataSource datasource = new DataSource();
           datasource.setPoolProperties(p);
 

@@ -3,21 +3,20 @@ title: 如何在环境中配置保留期 - Azure 时序见解 | Microsoft Docs
 description: 了解如何在 Azure 时序见解环境中配置保留期。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: v-yiso
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 11/21/2019
-ms.date: 12/23/2019
+origin.date: 01/17/2020
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f7f40c1e57ca5d5e8ccf00ebbb9e18d2aebb19c5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: e00268d74260f89ae01eecdd7b58e7b3d73d9a64
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335695"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068096"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。
@@ -28,7 +27,7 @@ ms.locfileid: "75335695"
 
 每个时序见解环境都有一项附加设置：“超出存储限制时的行为”。  此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 -  清除旧数据（默认行为）  
-- **暂停传入**
+- 暂停传入 
 
 有关有助于更好地了解这些设置的详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。  
 
@@ -40,7 +39,7 @@ ms.locfileid: "75335695"
 
 1. 在“设置”标题下，选择“存储配置”   。
 
-    [![依次选择“设置”、“配置”](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![在“设置”下，选择“存储配置”](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 1. 选择“数据保留时间(天)”  ，以通过使用滚动条或在文本框中键入数字来配置保留期。
 
@@ -48,7 +47,7 @@ ms.locfileid: "75335695"
 
 6. 切换“超出存储限制时的行为”  设置。 选择“清除旧数据”  或“暂停传入”  行为。
 
-    [![数据保留 - 接受并保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![暂停传入 - 接受并保存。](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
 1. 查看文档以了解丢失数据的潜在风险。 选择“保存”  以配置更改。
 

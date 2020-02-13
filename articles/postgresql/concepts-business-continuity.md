@@ -1,18 +1,18 @@
 ---
-title: 有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
-description: 有关使用 Azure Database for PostgreSQL 确保业务连续性的概述。
+title: 业务连续性 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍使用 Azure Database for PostgreSQL 时的业务连续性（时间点还原、数据中心服务中断、异地还原）。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 08/21/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 5f5bd11996b10d57d7cec09a94259715aabe09ee
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.date: 02/10/2020
+ms.openlocfilehash: e668a3091f3a7b63dd5668e909cb21d20117ba50
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307878"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068371"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 
@@ -30,7 +30,7 @@ Azure Database for PostgreSQL 提供了业务连续性功能，这包括自动�
 | 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
 
 > [!IMPORTANT]
-> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)帮助防止意外删除服务器。
+> 已删除的服务器**无法**还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 使用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md)帮助防止意外删除服务器。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 

@@ -1,9 +1,9 @@
 ---
-title: Azure 中继节点 API 概述 | Azure
-description: 中继节点 API 概述
+title: Azure 中继 Node API 概述 | Microsoft Docs
+description: 本文概述了用于 Azure 中继服务的 Node.js API。 它还演示了如何使用 hyco-ws Node 包。
 services: service-bus-relay
 documentationcenter: na
-author: spelluru
+author: lingliw
 manager: timlt
 editor: ''
 ms.assetid: b7d6e822-7c32-4cb5-a4b8-df7d009bdc85
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 01/23/2018
-ms.date: 11/26/2018
-ms.author: v-yiso
-ms.openlocfilehash: d10479fff5c4faca46a2cae4f77aa613dd9db7ab
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+origin.date: 01/21/2020
+ms.date: 2/6/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 98d97ff7650ff40c1021667cc7636a1eb412d2d4
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330433"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068232"
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接 Node API 概述
+# <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接节点 API 概述
 
 ## <a name="overview"></a>概述
 
@@ -110,7 +110,7 @@ var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 
 `hycows.RelayedServer` 类可替代 `ws.Server` 类，不侦听本地网络，但委托侦听 Azure 中继服务。
 
-这两个类通常为约定兼容，也就是说，使用 `ws.Server` 类的现有应用程序可以轻易改为使用中继版本。 主要差异在于构造函数和可用选项。
+这两个类通常为协定兼容，也就是说，使用 `ws.Server` 类的现有应用程序可以轻易改为使用中继版本。 主要差异在于构造函数和可用选项。
 
 #### <a name="constructor"></a>构造函数  
 
@@ -134,7 +134,7 @@ var wss = new server(
 
 #### <a name="events"></a>事件
 
-`RelayedServer` 实例将发出三个事件，使你能够处理传入的请求、建立连接，以及检测错误条件。 订阅 `connect` 事件后才能处理消息。 
+`RelayedServer` 实例会发出三个事件，以便能够处理传入的请求、建立连接，以及检测错误条件。 订阅 `connect` 事件后才能处理消息。 
 
 ##### <a name="headers"></a>headers
 
@@ -142,7 +142,7 @@ var wss = new server(
 function(headers)
 ```
 
-接受传入连接前将引发 `headers` 事件，可以实现将标头的修改发送到客户端。 
+接受传入连接前会引发 `headers` 事件，实现将标头的修改发送到客户端。 
 
 ##### <a name="connection"></a>连接
 

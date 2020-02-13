@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线管理库 | Azure
-description: 在 .NET 中管理服务总线命名空间和消息实体。
+title: Azure 服务总线管理库 | Microsoft Docs
+description: 本文介绍如何使用 Azure 服务总线管理库动态预配服务总线命名空间和实体。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 06/05/2019
-ms.date: 08/29/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9e0374318c5be52200af8d68b739273d7e393467
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: 0f8a23d8733c4560045791f3cf4c3329da44ab5a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169525"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068013"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -28,12 +28,12 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 
 ## <a name="supported-functionality"></a>受支持的功能
 
-* 命名空间创建、更新、删除
+* 创建、更新、删除命名空间
 * 创建、更新、删除队列
 * 创建、更新、删除主题
 * 创建、更新、删除订阅
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 

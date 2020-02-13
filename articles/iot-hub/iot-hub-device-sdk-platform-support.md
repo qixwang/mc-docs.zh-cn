@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 设备 SDK 平台支持 | Microsoft Docs
-description: 概念 - Azure IoT 设备 SDK 支持的平台的列表
+description: 开源设备 SDK 在 GitHub 上以 C、.NET(C#)、Java、Node.js 和 Python 提供，用于将设备连接到 Azure IoT 中心和设备预配服务 (DPS)。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 10/08/2019
-ms.date: 11/11/2019
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 47305372b2feb740f43bd80a7394269632d63c7d
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 3516162ebfce1a4a93870dab1bfa3e58b3a4547a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389602"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068292"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
 
@@ -48,10 +48,11 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 | 操作系统                  | TLS 库                  | 其他要求                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL、WolfSSL 或 BearSSL | Berkeley 套接字</br></br>可移植操作系统接口 (POSIX)                       |
-| iOS 12.2            | OpenSSL 或 Native OSX        | 在 OSX 10.13.4 中仿真的 XCode                                                               |
+| iOS 12.2            | OpenSSL                      | 在 OSX 10.13.4 中仿真的 XCode                                                               |
 | Windows 10 系列   | SChannel                     |                                                                                             |
 | Mbed OS 5.4         | Mbed TLS 2                   | [MXChip IoT 开发工具包](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
+| Arduino             | BearSSL                      | [ESP32 或 ESP8266](https://github.com/Azure/azure-iot-arduino#simple-sample-instructions) 
 
 ### <a name="python-sdk"></a>Python SDK
 
@@ -59,11 +60,11 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 
 | 操作系统                  | 编译器                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
-| MacOS High Sierra   | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
-| Windows 10 系列   | Python 2.7 *、3.4*、3.5*、3.6、3.7 |
+| Linux               | Python 2.7.*、3.5 或更高版本 |
+| MacOS High Sierra   | Python 2.7.*、3.5 或更高版本 |
+| Windows 10 系列   | Python 2.7.*、3.5 或更高版本 |
 
-\* 只有 Python 3.5.3 或更高版本支持异步 API，我们建议使用 3.7 或更高版本。
+只有 Python 3.5.3 或更高版本支持异步 API，我们建议使用 3.7 版或更高版本。
 
 ### <a name="net-sdk"></a>.NET SDK
 

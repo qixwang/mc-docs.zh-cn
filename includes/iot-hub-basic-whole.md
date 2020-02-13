@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: aaec2df89d3ff7dcab303279472b6bdff66a0dda
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 05727c146ae535580b0dace774a81ba38841c18c
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335963"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067968"
 ---
 >[!NOTE]
->本文中所述的功能仅可在 IoT 中心的标准层中使用。 有关基本和标准 IoT 中心层的详细信息，请参阅[如何选择合适的 IoT 中心层](~/articles/iot-hub/iot-hub-scaling.md)。
+>本文介绍的功能仅在 IoT 中心的标准层中可用。 有关基本和标准/免费 IoT 中心层的详细信息，请参阅[选择合适的 IoT 中心层](../articles/iot-hub/iot-hub-scaling.md)。

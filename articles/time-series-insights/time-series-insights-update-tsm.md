@@ -9,14 +9,14 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 origin.date: 12/20/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1266977a3a1bd515fb5af589947bdf952778a20
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 75d631b65459c7b46bb3141fd40a4aa4604aaaf8
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859629"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068055"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
@@ -24,7 +24,6 @@ ms.locfileid: "75859629"
 
 > [!TIP]
 >  * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
-> * 若要了解如何在时序模型 UI 中导航，请阅读有关 [Azure 时序见解预览版资源管理器](time-series-insights-update-explorer.md)的文章。
 > * 通过时序见解 Web 资源管理器了解[如何使用时序模型](time-series-insights-update-how-to-tsm.md)。
 
 ## <a name="summary"></a>摘要
@@ -102,7 +101,6 @@ ms.locfileid: "75859629"
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的 UUID。 |
 | typeId | 与实例关联的时序模型类型的 UUID。 默认情况下，所有已发现的新实例都会关联到默认类型。
-| name | **name** 属性可选，并且区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称，也仍会在 [well](time-series-insights-update-explorer.md#4-time-series-well) 中提供 **timeSeriesId**。 |
 | description | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
 | instanceFields | 实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
@@ -130,7 +128,7 @@ ms.locfileid: "75859629"
 ```
 
 > [!TIP]
-> 有关时序见解实例 API 以及创建、读取、更新和删除 (CRUD) 支持，请参阅[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[实例 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
+> 有关时序见解实例 API 以及创建、读取、更新和删除 (CRUD) 支持，请阅读[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[实例 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
 
 ## <a name="time-series-model-hierarchies"></a>时序模型层次结构
 
@@ -187,7 +185,7 @@ ms.locfileid: "75859629"
 * `ManufactureDate` 定义包含父级 `year` 和子级 `month` 的层次结构。 每个 `ManufactureDate` 可以包含多个 `years`，而后者又可以包含多个 `months`。
 
 > [!TIP]
-> 有关时序见解实例 API 和 CRUD 支持，请参阅[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[层次结构 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
+> 有关时序见解实例 API 和 CRUD 支持，请阅读[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[层次结构 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
 
 ### <a name="hierarchy-example"></a>层次结构示例
 
@@ -217,7 +215,6 @@ ms.locfileid: "75859629"
 | ID4 | “building” = “1000”, “floor” = “10”  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
-时序 **ID1** 和 **ID4** 在 [Azure 时序见解资源管理器](time-series-insights-update-explorer.md)中显示为层次结构 **H1** 的一部分，因为它们包含已完全定义且正确排序的 *building*、*floor* 和 *room* 参数。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。 
 
@@ -232,7 +229,7 @@ ms.locfileid: "75859629"
 [![时序模型类型示例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 有关时序见解实例 API 和 CRUD 支持，请参阅[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
+> 有关时序见解实例 API 和 CRUD 支持，请阅读[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
 
 ### <a name="type-properties"></a>Type 属性
 
@@ -392,6 +389,7 @@ ms.locfileid: "75859629"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 时序见解预览存储和入口](./time-series-insights-update-storage-ingress.md)
+- 阅读 [Azure 时序见解预览版存储和引入](./time-series-insights-update-storage-ingress.md)。
+
 - 在 [Azure 时序见解预览版中的数据建模](./time-series-insights-update-how-to-tsm.md)中了解常用的时序模型操作
 - 阅读新[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)的参考文档。

@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线 SQLFilter 语法参考 | Azure
-description: 有关 SqlFilter 语法的详细信息。
+title: Azure 服务总线 SQLFilter 语法参考 | Microsoft Docs
+description: 本文提供了有关 SQLFilter 语法的详细信息。 SqlFilter 支持 SQL-92 标准的子集。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
@@ -15,16 +15,16 @@ ms.workload: na
 origin.date: 09/05/2018
 ms.date: 10/31/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 68d23cf1860a8e1b77b655dcfe1db0bd6fe9f909
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 0037a5e337c437dc9506c9e0802ea7aedf90588a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625352"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067971"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
-SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
+SqlFilter  对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
   
  本主题列出有关 SqlFilter 语法的详细信息。  
   
@@ -65,9 +65,9 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ## <a name="remarks"></a>备注
 
-访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 在运算符求值过程中，未知值的处理方式很特殊。  
+访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -89,13 +89,13 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 此语法是指任何以字母开头且后跟一个或多个下划线/字母/数字的字符串。  
   
-`[:IsLetter:]` 是指其类别为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
+`[:IsLetter:]` 是指分类为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
   
 `[:IsDigit:]` 是指分类为十进制数字的任何 Unicode 字符。 `System.Char.IsDigit(c)` 返回 `true`（如果 `c` 为 Unicode 数字）。  
   
 `<regular_identifier>` 不能是保留关键字。  
   
-`<delimited_identifier>` 是用左/右方括号 ([]) 括起来的任何字符串。 右方括号采用两个右方括号的形式。 下面是 `<delimited_identifier>`的示例：  
+`<delimited_identifier>` 是用左/右方括号 ([]) 括起来的任何字符串。 右方括号以两个右方括号表示。 下面是 `<delimited_identifier>`的示例：  
   
 ```  
 [Property With Space]  
@@ -103,7 +103,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ```  
   
-`<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 建议不要使用带引号的标识符，因为很容易与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是 `<quoted_identifier>`的示例：  
+`<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 不建议使用带引号的标识符，因为很容易将其与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是 `<quoted_identifier>`的示例：  
   
 ```  
 "Contoso & Northwind"  
@@ -124,7 +124,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 -   `_`：任何单个字符。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -133,7 +133,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ### <a name="remarks"></a>备注  
 
-`<escape_char>` 必须是作为长度为 1 的字符串进行求值的表达式。 作为转义符用于 LIKE 运算符。  
+`<escape_char>` 必须是作为长度为 1 的字符串进行求值的表达式。 它用作 LIKE 运算符的转义符。  
   
  例如，`property LIKE 'ABC\%' ESCAPE '\'` 匹配 `ABC%`，而不匹配以 `ABC` 开头的字符串。  
   
@@ -173,7 +173,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -184,7 +184,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
 
 布尔常量以关键字 **TRUE** 或 **FALSE** 表示。 这些值作为 `System.Boolean`存储。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -212,7 +212,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 请注意以下 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 语义：  
   
--   属性名称不区分大小写。  
+-   属性名称区分大小写。  
   
 -   运算符尽可能遵循 C# 隐式转换语义。  
   
@@ -226,7 +226,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 - 尝试对不存在的系统属性求值会引发 [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 异常。  
   
-- 不存在的属性在进行内部求值时会被视为**未知**。  
+- 不存在的属性在内部作为 **未知**进行求值。  
   
   算术运算符中的未知求值：  
   
@@ -240,11 +240,11 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
   `[NOT] LIKE`中的未知求值：  
   
-- 如果任何操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果任何操作数的求值结果为“未知”  ，则结果为“未知”  。  
   
   `[NOT] IN`中的未知求值：  
   
-- 如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果左侧操作数的求值结果为“未知”  ，则结果为“未知”  。  
   
   **AND** 运算符中的未知求值：  
   

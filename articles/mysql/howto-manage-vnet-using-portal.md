@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和规则 | Microsoft Docs
+title: 管理 VNet 终结点 - Azure 门户 - Azure Database for MySQL
 description: 使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和规则
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 11/20/2019
-ms.openlocfilehash: 963840a970a84d8cf21599a3ff66c1e6951dd68c
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+origin.date: 12/02/2019
+ms.date: 02/10/2020
+ms.openlocfilehash: 542f89bc02c7d455ce5174f88a946f2bc5f4afa3
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74202772"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068346"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和 VNet 规则
 
 > [!NOTE] 
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
-虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中，VNet 服务终结点均可用。
+虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中均提供 VNet 服务终结点。
 
 > [!NOTE]
 > 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
@@ -65,4 +65,4 @@ ms.locfileid: "74202772"
 - 有关连接到 Azure Database for MySQL 服务器的帮助，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

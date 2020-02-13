@@ -1,23 +1,23 @@
 ---
-title: Azure 服务总线常见问题解答 (FAQ) | Azure Docs
-description: 回答了一些关于 Azure 服务总线的常见问题。
+title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
+description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
 services: service-bus-messaging
 author: lingliw
 manager: digimobile
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: fd734859d5ead0182a2f14c9ec352a5c5e0bc7bc
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 568ba2951e09701737937fb5cd91a6ed630dcc87
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854288"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068025"
 ---
-# <a name="service-bus-faq"></a>服务总线常见问题解答
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
 本文讨论了一些关于世纪互联 Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](https://www.azure.cn/support/faq/)了解常规的 Azure 定价和支持信息。
 
@@ -151,7 +151,7 @@ Azure 保留禁用在给定月份超过使用配额的客户帐户的权利，�
 
 #### <a name="portal"></a>门户
 
-若要使用 Azure 门户将服务总线命名空间迁移到其他订阅，可按照[此处](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)的说明操作。 
+若要使用 Azure 门户将服务总线命名空间迁移到其他订阅，可按照[此处](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)的说明操作。 
 
 #### <a name="powershell"></a>PowerShell
 

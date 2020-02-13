@@ -1,6 +1,6 @@
 ---
-title: Azure 中继身份验证和授权
-description: Azure 中继中的共享访问签名 (SAS) 身份验证概述
+title: Azure 中继身份验证和授权 | Microsoft Docs
+description: 本文概述了如何使用 Azure 中继服务进行共享访问签名 (SAS) 身份验证。
 services: service-bus-relay
 documentationcenter: na
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 01/23/2018
-ms.date: 08/29/2019
-ms.author: v-yiso
-ms.openlocfilehash: 50e039a32085acec2a38cb98b1c43d14300b51c6
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+origin.date: 01/21/2020
+ms.date: 2/6/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 867fa257ec4b3834d6bc87abc65f19974debe72b
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329643"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068248"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
 

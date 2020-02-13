@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Cosmos DB 中的日期
-description: 了解如何使用 Azure Cosmos DB 中的日期。
+description: 了解如何在 Azure Cosmos DB 中存储、索引和查询 DataTime 对象
 ms.service: cosmos-db
 author: rockboyfor
 ms.author: v-yeche
 ms.topic: conceptual
 origin.date: 09/25/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 8b05348b980c240b7dcf937d54b1ea32aa9f6f27
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 02/10/2020
+ms.openlocfilehash: ee85ee210646d24bf0c8d04729ba711a9cd59ad0
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912889"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068326"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 Azure Cosmos DB 通过本机 [JSON](https://www.json.org) 数据模型提供架构灵活性和丰富的索引。 所有 Azure Cosmos DB 资源（包括数据库、容器、文档和存储过程）均作为 JSON 文档进行建模和存储。 为使代码可移植，JSON（及 Azure Cosmos DB）仅支持一小组基本类型：字符串、数字、布尔值、数组、对象和 Null。 但是，JSON 具有相当的灵活性，允许开发人员和框架使用这些基元并将其编写为对象或数组，以便表示更复杂的类型。 

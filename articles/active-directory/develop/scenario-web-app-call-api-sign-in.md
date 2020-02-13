@@ -11,32 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 162a9f2fb6d02efec2368f9e9f2c86a4eaaaa923
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 7c40c7343b6f665fb1bf3908280cd8b613f3cf2f
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776921"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067618"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>在全局注销时从缓存中删除帐户
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>调用 Web API 的 Web 应用：在全局注销时从令牌缓存中删除帐户
 
-你已经知道如何向 Web 应用添加登录。 你在[用于登录用户的 Web 应用 - 添加登录](scenario-web-app-sign-user-sign-in.md)中学习它。
+你已在[用于将用户登录的 Web 应用：登录和注销](scenario-web-app-sign-user-sign-in.md)中了解了如何向 Web 应用中添加登录信息。
 
-这里的不同之处在于，当用户从此应用程序或任何其他应用程序中注销以后，你需要从令牌缓存中删除与用户相关联的令牌。
+对于调用 web api 的 web 应用，注销是不同的。 当用户从你的应用程序或从任何应用程序中注销时，你必须从令牌缓存中删除与该用户关联的令牌。
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>在注销后拦截回叫 - 单一注销
+## <a name="intercept-the-callback-after-single-sign-out"></a>在单一注销后拦截回调
 
-应用程序可以拦截 `logout` 后事件，例如，清除与已注销帐户相关联的令牌缓存的条目。Web 应用将在缓存中存储用户的访问令牌。 拦截 `logout` 后回叫后，Web 应用程序即可从令牌缓存中删除用户。
+要清除与已注销帐户相关联的令牌缓存条目，应用程序可以拦截 `logout` 后事件。 Web 应用会在令牌缓存中存储每个用户的访问令牌。 通过拦截 `logout` 后回调，Web 应用程序可以从缓存中删除用户。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-[WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) 的 `AddMsal()` 方法说明了此机制。
+对于 ASP.NET Core，[WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) 的 `AddMsal()` 方法中说明了拦截机制。
 
-使用为应用程序注册的**注销 URL** 可以实现单一注销。Microsoft 标识平台 `logout` 终结点会调用注册到应用程序的**注销 URL**。 如果注销是从你的 Web 应用或者另一 Web 应用或浏览器启动的，则会发生此调用。 有关详细信息，请参阅[单一注销](v2-protocols-oidc.md#single-sign-out)。
+使用之前为应用程序注册的注销 URL 可以实现单一注销。Microsoft 标识平台 `logout` 终结点调用你的注销 URL。 如果注销是从你的 Web 应用或者另一 Web 应用或浏览器启动的，则会发生此调用。 有关详细信息，请参阅[单一注销](v2-protocols-oidc.md#single-sign-out)。
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -49,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -62,19 +61,19 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-RemoveAccountAsync 的代码可从 [Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) 获得。
+[Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) 中提供了 `RemoveAccountAsync` 的代码。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET 示例不会在全局注销时删除缓存中的帐户
+ASP.NET 示例不会在全局注销时删除缓存中的帐户。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Java 示例不会在全局注销时删除缓存中的帐户
+Java 示例不会在全局注销时删除缓存中的帐户。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python 示例不会在全局注销时删除缓存中的帐户
+Python 示例不会在全局注销时删除缓存中的帐户。
 
 ---
 

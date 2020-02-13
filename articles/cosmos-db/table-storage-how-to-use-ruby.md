@@ -1,31 +1,29 @@
 ---
-title: 如何配合使用 Ruby 和 Azure 表存储 | Azure
-description: 使用 Azure 表存储将结构化数据存储在云中。
-services: cosmos-db
-author: rockboyfor
+title: 通过 Ruby 使用 Azure Cosmos DB 表 API 和 Azure 表存储
+description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 origin.date: 04/05/2018
-ms.date: 01/21/2019
+ms.date: 02/10/2020
+author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: bcb50f6ec53d02814cb25f70154c612b25a52ca3
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: f7cfb3e9f13cc2aa1c5a0a842f47b86707d43ae3
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254782"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067913"
 ---
-# <a name="how-to-use-azure-table-storage-with-ruby"></a>如何配合使用 Ruby 和 Azure 表存储
-<!-- Not Available on Azure Cosmos DB Table API -->
+# <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何通过 Ruby 使用 Azure 表存储或 Azure Cosmos DB 表 API
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概述
-本指南演示如何使用 Azure 表服务执行常见任务。 示例是采用 Ruby 编写的，并使用了[用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 涉及的方案包括创建和删除表、在表中插入和查询条目  。
-<!-- Not Available on Azure Cosmos DB Table API -->
+本指南介绍如何使用 Azure 表服务和 Azure Cosmos DB 表 API 执行常见方案。 示例是采用 Ruby 编写的，并使用了[用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 涉及的方案包括创建和删除表、在表中插入和查询条目  。
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -33,11 +31,11 @@ ms.locfileid: "70254782"
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-<!-- Not Avaiable on ### Create an Azure Cosmos DB Table API account -->
+### <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
-## <a name="add-access-to-storage"></a>添加对存储的访问权限
-<!-- Not Available on Azure Cosmos DB -->
-若要使用 Azure 存储，必须下载和使用 Ruby Azure 包，其中包括一组便于与表 REST 服务进行通信的库。
+## <a name="add-access-to-storage-or-azure-cosmos-db"></a>添加对存储或 Azure Cosmos DB 的访问权限
+要使用 Azure 存储或 Azure Cosmos DB，必须下载和使用 Ruby azure 包，其中包括一组便于与表 REST 服务进行通信的库。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
@@ -58,6 +56,7 @@ Azure.config.storage_account_name = "<your Azure Storage account>"
 Azure.config.storage_access_key = "<your Azure Storage access key>"
 Azure.config.storage_endpoint_suffix = "core.chinacloudapi.cn"
 ```
+
 <!-- Add Azure.config.strage_endpoint_suffix configuration -->
 
 从 Azure 门户中的经典或 Resource Manager 存储帐户中获取这些值：
@@ -68,7 +67,13 @@ Azure.config.storage_endpoint_suffix = "core.chinacloudapi.cn"
 4. 在显示的“访问密钥”边栏选项卡中，可看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个密钥。
 5. 单击复制图标以将密钥复制到剪贴板。
 
-<!-- Not Available on ## Add an Azure Cosmos DB connection -->
+## <a name="add-an-azure-cosmos-db-connection"></a>添加 Azure Cosmos DB 连接
+要连接到 Azure Cosmos DB，请从 Azure 门户中复制主连接字符串，并使用复制的连接字符串创建 Client 对象：  创建 TableService 对象时，可以传递 Client 对象：  
+
+```ruby
+common_client = Azure::Storage::Common::Client.create(storage_account_name:'myaccount', storage_access_key:'mykey', storage_table_host:'mycosmosdb_endpoint')
+table_client = Azure::Storage::Table::TableService.new(client: common_client)
+```
 
 ## <a name="create-a-table"></a>创建表
 使用 Azure::Storage::Table::TableService 对象可以对表和实体进行操作  。 要创建表，请使用 create_table()  方法。 以下示例创建表或输出存在的错误。
@@ -82,8 +87,8 @@ rescue
 end
 ```
 
-## <a name="add-an-entity-to-a-table"></a>向表中添加条目
-若要添加条目，应首先创建定义条目属性的哈希对象。 请注意，必须为每个实体指定 PartitionKey  和 RowKey  。 这些值是实体的唯一标识符，并且查询它们比查询其他属性快很多。 Azure 存储使用 **PartitionKey** 将表的实体自动分发到多个存储节点。 具有相同 **PartitionKey** 的条目存储在同一个节点上。 **RowKey** 是条目在其所属分区内的唯一 ID。
+## <a name="add-an-entity-to-a-table"></a>将实体添加到表
+若要添加条目，应首先创建定义条目属性的哈希对象。 请注意，必须为每个实体指定 PartitionKey  和 RowKey  。 这些值是条目的唯一标识符，查询它们比查询其他属性快很多。 Azure 存储使用 **PartitionKey** 将表的实体自动分发到多个存储节点。 具有相同 **PartitionKey** 的条目存储在同一个节点上。 **RowKey** 是条目在其所属分区内的唯一 ID。
 
 ```ruby
 entity = { "content" => "test entity",
@@ -107,7 +112,7 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-对于 update_entity() 和 merge_entity()，如果要更新的实体不存在，更新操作会失败   。 因此，如果想要存储某个实体而不考虑它是否已存在，则应改用 insert_or_replace_entity() 或 insert_or_merge_entity()   。
+对于 update_entity()  和 merge_entity()  ，如果要更新的实体不存在，更新操作将失败。 因此，如果想要存储某个实体而不考虑它是否已存在，则应改用 insert_or_replace_entity() 或 insert_or_merge_entity()   。
 
 ## <a name="work-with-groups-of-entities"></a>使用实体组
 有时，有必要成批地同时提交多项操作以确保通过服务器进行原子处理。 若要完成此操作，首先要创建一个 Batch  对象，然后对 TableService  使用 execute_batch()  方法。 以下示例演示在一个批次中提交 RowKey 为 2 和 3 的两个条目。 请注意，此操作仅适用于具有相同 PartitionKey 的条目。
@@ -168,8 +173,10 @@ azure_table_service.delete_table("testtable")
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
-  <!-- Notice: Remove from Microsoft -->
+* [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 提供的免费独立应用，可用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
+    
+    <!-- Notice: Remove from Microsoft -->
+    
 * [Ruby 开发人员中心](https://docs.azure.cn/develop/ruby)
 * [适用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)
 

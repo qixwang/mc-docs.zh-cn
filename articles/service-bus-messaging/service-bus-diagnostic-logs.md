@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线诊断日志 | Azure Docs
-description: 了解如何为 Azure 中的服务总线设置诊断日志。
+title: Azure 服务总线诊断日志 | Microsoft Docs
+description: 本文概述了可用于 Azure 服务总线的所有操作和诊断日志。
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-origin.date: 01/23/2019
-ms.date: 1/2/2020
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a0c1579c12691c1db82a07ea8d91008cc7cfa114
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: e8e643d5cfc507aeb9db6cbbe1e78d3c0fbaaf79
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858014"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067985"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的系统函数
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数。
+description: 了解 Azure Cosmos DB 中内置的和用户定义的 SQL 系统函数。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 10/28/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 376cbd1fdc356b700d82a13ee84c1160d7d13c38
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: e4cbf744bc701e9bef426d474e72c37a7fa0cbb3
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912968"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068259"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>系统函数 (Azure Cosmos DB)
 
@@ -48,4 +48,4 @@ Cosmos DB 函数与 ANSI SQL 函数之间的主要差别在于，Cosmos DB 函�
 - [用户定义的函数](sql-query-udfs.md)
 - [聚合](sql-query-aggregates.md)
 
-<!--Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update -->

@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/10/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9b8c7bb3a450d4268f941973e17da251cbe5beca
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 8ad7fe2956745784796e116933e9f09669071acf
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913066"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067861"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
 
@@ -52,6 +52,9 @@ ORDER BY <sort_specification>
 
 ORDER BY 子句要求索引策略包含所要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称排序，而不支持根据计算的属性排序。 Azure Cosmos DB 支持多个 ORDER BY 属性。 若要运行包含多个 ORDER BY 属性的查询，应在所要排序的字段中定义[组合索引](index-policy.md#composite-indexes)。
 
+> [!Note] 
+> 如果对某些文档排序所依据的属性可能未定义，并且你希望在 ORDER BY 查询中检索它们，则必须显式在这些属性上创建索引。 默认索引策略不允许检索未定义排序属性的文档。
+
 ## <a name="examples"></a>示例
 
 例如，以下查询按居住城市名称的升序检索家庭：
@@ -62,7 +65,7 @@ ORDER BY 子句要求索引策略包含所要排序的字段的索引。 Azure C
     ORDER BY f.address.city
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -85,7 +88,7 @@ ORDER BY 子句要求索引策略包含所要排序的字段的索引。 Azure C
     ORDER BY f.creationDate DESC
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

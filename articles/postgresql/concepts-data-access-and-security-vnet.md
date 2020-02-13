@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL（单一服务器）中的虚拟网络 (VNet) 服务终结点概述
-description: 了解适用于 Azure Database for PostgreSQL（单一服务器）的虚拟网络 (VNet) 服务终结点的原理。
+title: 虚拟网络规则 - Azure Database for PostgreSQL（单一服务器）
+description: 了解如何使用虚拟网络 (vnet) 服务终结点连接到 Azure Database for PostgreSQL（单一服务器）。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 5/6/2019
-ms.date: 11/20/2019
-ms.openlocfilehash: f1629180054853c73bf11331f99198ada607a58a
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+ms.date: 02/10/2020
+ms.openlocfilehash: 1307bb7be7548876611e72ab0853eb1d8c7dfc1f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74202773"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068372"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>对 Azure Database for PostgreSQL（单一数据库）使用虚拟网络服务终结点和规则
 
@@ -133,9 +133,9 @@ ms.locfileid: "74202773"
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNET 服务终结点的情况下，将 VNET 防火墙规则添加到服务器
 
-仅设置防火墙规则无助于保护连接到 VNet 的服务器。 还必须打开 VNet 服务终结点才能确保安全  。 打开服务终结点后，VNet 子网会出现停机，直到它从“关”的状态变成了“开”    。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
+仅设置防火墙规则无助于将服务器保护到 VNet。 还必须**打开** VNet 服务终结点才能使安全性生效。 **打开**服务终结点时，VNet 子网会遇到停机，直到它完成从“关”到“开”   的转换。 这在大型 VNet 的上下文中尤其如此。 可以使用 **IgnoreMissingServiceEndpoint** 标志，减少或消除转换期间的停机时间。
 
-可使用 Azure CLI 或门户设置 IgnoreMissingServiceEndpoint 标志  。
+可以使用 Azure CLI 或门户设置 **IgnoreMissingServiceEndpoint** 标志。
 
 ## <a name="related-articles"></a>相关文章
 - [Azure 虚拟网络][vm-virtual-network-overview]
@@ -148,7 +148,7 @@ ms.locfileid: "74202773"
 
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -162,4 +162,4 @@ ms.locfileid: "74202773"
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

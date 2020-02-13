@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息浏览
-description: 浏览和速览服务总线消息
+title: Azure 服务总线 - 消息浏览
+description: 通过浏览和扫视服务总线消息，Azure 服务总线客户端可以枚举队列或订阅中驻留的所有消息。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
+origin.date: 01/24/2020
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5fc52c713c844dd54b70c9e55b21fb98524f7060
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: a96483711beefec69a4a82da580a21b2e6d9f1f3
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330347"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068033"
 ---
 # <a name="message-browsing"></a>消息浏览
 

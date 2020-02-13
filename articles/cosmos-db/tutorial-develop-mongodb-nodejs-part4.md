@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用 - 创建 Cosmos 帐户
-titleSuffix: Azure Cosmos DB
+title: 使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用（第 4 部分）
 description: 本教程系列的第 4 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同
 author: rockboyfor
 ms.service: cosmos-db
@@ -8,16 +7,16 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 12/06/2018
-ms.date: 03/18/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d60c8b5e8473f4dfd228c8a779e662bfa6ee2617
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 1173123ac9d9616af58c3b6c67a0ae0ee9ed2d49
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254606"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067912"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用 - 创建 Cosmos 帐户
 
@@ -31,7 +30,7 @@ ms.locfileid: "70254606"
 
 <!-- Not Available ## Video walkthrough-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始教程的此部分之前，请确保已完成教程[第 3 部分](tutorial-develop-mongodb-nodejs-part3.md)的步骤。 
 
@@ -70,6 +69,8 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 4. 在左侧导航中向下滚动，单击“以多区域方式复制数据”选项卡。此时会显示一个映射，可以在其中看到允许将数据复制到其中的不同区域。  例如，可以单击“中国北部”或“中国东部”，并将数据复制到“中国”。 若要详细了解多区域复制，可参阅[如何使用 Azure Cosmos DB 在多个区域分配数据](distribute-data-globally.md)。 至于现在，我们只需保留这一个实例，这样在需要复制时，我们就知道如何去做。
 
+    <!--CORRECT ON China-->
+    
     ![Azure 门户中的新 Azure Cosmos DB 帐户](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
 
 ## <a name="next-steps"></a>后续步骤

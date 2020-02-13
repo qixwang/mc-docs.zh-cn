@@ -4,29 +4,26 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-origin.date: 08/31/2019
-ms.date: 01/13/2020
+origin.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: d02ce996767bec0af3a4d07e9953e9afc57d09d5
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 4f3655dae03dd48099b632fbdb5cae70394e36a2
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600478"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979351"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
 应用服务环境 (ASE) 需要访问许多的外部依赖项才能正常运行。 ASE 驻留在客户的 Azure 虚拟网络 (VNet) 中。 客户必须允许 ASE 依赖项流量，对于想要锁定从 VNet 传出的所有流量的客户而言，这是一个问题。
 
-ASE 有许多入站依赖项。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.azure.cn/app-service/environment/management-addresses)文档中发布。 可以使用该信息创建网络安全组规则来保护入站流量。
+有许多用于管理 ASE 的入站终结点。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.azure.cn/app-service/environment/management-addresses)文档中发布。 还有一个名为 AppServiceManagement 的服务标记，可以与网络安全组 (NSG) 一起使用来保护入站流量。
 
-ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组 (NSG) 锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
+ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
 
 保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。  
-
-> [!NOTE]
-> 目前，我们无法完全锁定出站连接。
 
 ## <a name="system-architecture"></a>系统体系结构
 
@@ -43,6 +40,12 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ![使用 Azure 防火墙的 ASE 连接流][5]
 
+## <a name="locking-down-inbound-management-traffic"></a>锁定入站管理流量
+
+如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，将第一个规则设置为允许来自端口 454、455 上名为 AppServiceManagement 的服务标记的流量。 这是从公共 IP 管理你的 ASE 所需的唯一条件。 位于该服务标记后面的地址仅用来管理 Azure 应用服务。 流经这些连接的管理流量由身份验证证书提供加密和保护。 此通道上的典型流量包括客户发起的命令和运行状况探测等等。 
+
+通过门户创建的带有新子网的 ASE 在创建时带有一个 NSG，其中包含 AppServiceManagement 标记的允许规则。  
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
 使用 Azure 防火墙锁定现有 ASE 的传出流量的步骤如下：
@@ -52,14 +55,19 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
    ![选择服务终结点][2]
   
 1. 在 ASE 所在的 VNet 中创建名为 AzureFirewallSubnet 的子网。 遵循 [Azure 防火墙文档](https://docs.azure.cn/firewall/)中的指导创建 Azure 防火墙。
+
 1. 在 Azure 防火墙 UI >“规则”>“应用程序规则集合”中，选择“添加应用程序规则集合”。 提供名称、优先级，并设置“允许”。 在“FQDN 标记”部分提供名称，将源地址设置为 *，然后选择“应用服务环境 FQDN 标记”和“Windows 更新”。 
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分提供名称，选择“任何”，将源和目标地址设置为 *，将端口设置为 123。  此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在 IP 地址下，提供一个名称，选择“任何”作为协议，将源和目标地址设置为 *，将端口设置为 123。  此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
 
    ![添加 NTP 网络规则][3]
+   
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在“服务标记”下，提供一个名称，选择“任何”  作为协议，将 * 设置为源地址，选择服务标记 AzureMonitor，然后将端口设置为 80、443。 此规则允许系统向 Azure Monitor 提供运行状况和指标信息。
 
+   ![添加 NTP 服务标记网络规则][6]
+   
 1. 使用[应用服务环境管理地址](https://docs.azure.cn/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。 将虚拟设备路由添加到 0.0.0.0/0 的路由表，并将 Azure 防火墙专用 IP 地址用作下一跃点。 
 
    ![创建路由表][4]
@@ -226,3 +234,4 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 [3]: ./media/firewall-integration/firewall-ntprule.png
 [4]: ./media/firewall-integration/firewall-routetable.png
 [5]: ./media/firewall-integration/firewall-topology.png
+[6]: ./media/firewall-integration/firewall-ntprule-monitor.png

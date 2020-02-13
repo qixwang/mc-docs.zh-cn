@@ -1,20 +1,20 @@
 ---
-title: 通过 .NET Standard SDK 开始使用 Azure Cosmos DB 表 API
-description: 使用 Azure Cosmos DB 表 API 将结构化数据存储在云中。
+title: 使用 .NET Standard SDK 的 Azure Cosmos DB 表 API
+description: 了解如何在 Azure Cosmos DB 表 API 帐户中存储和查询结构化数据
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-origin.date: 05/20/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: ae6ebe4506b1f703d03d0171f7d738e2c70bfef4
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+origin.date: 12/03/2019
+ms.date: 02/10/2020
+ms.openlocfilehash: 07df4850ce560dba37d01ddb3d796206dac878c8
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306821"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067898"
 ---
 <!--Verify sucessfully-->
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
@@ -23,11 +23,11 @@ ms.locfileid: "71306821"
 
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-可以使用 Azure Cosmos DB 表 API 或 Azure 表存储将结构化的 NoSQL 数据存储在云中，以便通过无架构设计提供密钥/属性存储。 由于 Azure Cosmos DB 表 API 和表存储是无架构的，因此随着应用程序需求的发展，可以轻松调整数据。 可以使用 Azure Cosmos DB 表 API 或表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，或者服务需要的其他类型的元数据。 
+可以使用 Azure Cosmos DB 表 API 或 Azure 表存储将结构化的 NoSQL 数据存储在云中，以便通过无架构设计提供键/属性存储。 由于 Azure Cosmos DB 表 API 和表存储是无架构的，因此随着应用程序需求的发展，可以轻松调整数据。 可以使用 Azure Cosmos DB 表 API 或表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，或者服务需要的其他类型的元数据。 
 
-本教程介绍了一个示例，展示如何将[适用于 .NET 的 Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)用于 Azure Cosmo DB 表 API 和 Azure 表存储方案。 必须使用特定于 Azure 服务的连接。 这些方案使用 C# 示例进行讨论，说明了如何创建表、插入/更新数据、查询数据和删除表。
+本教程介绍了一个示例，展示如何将[适用于 .NET 的 Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)用于 Azure Cosmos DB 表 API 和 Azure 表存储方案。 必须使用特定于 Azure 服务的连接。 这些方案使用 C# 示例进行讨论，说明了如何创建表、插入/更新数据、查询数据和删除表。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要成功完成此示例，需要以下项：
 
@@ -61,7 +61,7 @@ ms.locfileid: "71306821"
 
 1. 在“解决方案资源管理器”  中，右键单击自己的项目并选择“管理 NuGet 包”  。
 
-1. 联机搜索 `Microsoft.Azure.Cosmos.Table`、`Microsoft.Extensions.Configuration`、`Microsoft.Extensions.Configuration.Json`、`Microsoft.Extensions.Configuration.Binder`，并选择“安装”以安装 Azure Cosmos DB 表库  。
+1. 联机搜索 [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)、[`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration)、[`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)、[`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)，并选择“安装”以安装 Azure Cosmos DB 表库  。
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
 
@@ -181,6 +181,12 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 }
 ```
 
+如果收到“503 服务不可用异常”错误，则连接模式所需的端口可能已被防火墙阻止。 若要解决此问题，打开所需端口或使用网关模式连接，如以下代码所示：
+
+```csharp
+tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
+```
+
 ## <a name="define-the-entity"></a>定义实体 
 
 实体使用派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity?view=azure-dotnet)的自定义类映射到 C# 对象。 要将实体添加到表，请创建用于定义实体的属性的类。
@@ -209,7 +215,7 @@ namespace CosmosTableSamples.Model
 }
 ```
 
-此代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 需要存储在表中的实体必须是受支持的类型，例如，必须派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity?view=azure-dotnet) 类。 要存储在表中的实体属性必须是相应类型的公共属性，并且允许获取和设置值。 此外，实体类型必须公开无参数构造函数。
+此代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。 实体的分区键和行键共同唯一地标识表中的实体。 分区键相同的实体可以实现比分区键不同的实体更快的查询速度，但使用不同的分区键可实现更高的并行操作可伸缩性。 需要存储在表中的实体必须是受支持的类型，例如，派生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity?view=azure-dotnet) 类。 要存储在表中的实体属性必须是相应类型的公共属性，并且允许获取和设置值。 此外，实体类型必须公开无参数构造函数。
 
 ## <a name="insert-or-merge-an-entity"></a>插入或合并实体
 
@@ -252,7 +258,7 @@ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable tab
 
 ### <a name="get-an-entity-from-a-partition"></a>从分区获取实体
 
-可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation?view=azure-dotnet) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键行密钥、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件  ： 
+可以通过使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation?view=azure-dotnet) 类下的 Retrieve 方法从分区获取实体。 以下代码示例获取客户实体的分区键、行键、电子邮件和电话号码。 此示例还打印出用于查询实体的请求单元。 要查询实体，请将以下代码追加到“SamplesUtils.cs”文件  ： 
 
 ```csharp
 public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
@@ -440,4 +446,4 @@ namespace CosmosTableSamples
 >[如何查询数据](../cosmos-db/table-import.md)
 
 <!--Verify sucessfully-->
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update -->

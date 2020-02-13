@@ -1,6 +1,6 @@
 ---
-title: Azure 中继 .NET Standard API 概述
-description: Azure 中继 .NET Standard API 概述
+title: Azure 中继 .NET Standard API 概述 | Microsoft Docs
+description: 本文总结了 Azure 中继混合连接 .NET 标准 API 的一些关键技术。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/23/2018
 ms.date: 09/26/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 065ec5565aa82c81c0730308ff86b4b79931e3e9
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: f037905e8ff538988d99b587a5b65dd58599f4e0
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330385"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068236"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
@@ -63,6 +63,7 @@ catch (ArgumentException ae)
 ```
 
 ## <a name="hybrid-connection-stream"></a>混合连接流
+
 无论使用的是 [HybridConnectionClient][HCClient]，还是 [HybridConnectionListener][HCListener]，[HybridConnectionStream][HCStream] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
 
 ### <a name="getting-a-hybrid-connection-stream"></a>获取混合连接流
@@ -119,6 +120,7 @@ while (!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="sending-data"></a>发送数据
+
 建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
 
 ```csharp
@@ -135,6 +137,7 @@ await textWriter.WriteLineAsync("hello");
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 若要了解有关 Azure 中继的详细信息，请访问以下链接：
 
 * [Microsoft.Azure.Relay reference](/dotnet/api/microsoft.azure.relay)

@@ -1,21 +1,21 @@
 ---
 title: 介绍 Azure Cosmos DB 概念的白皮书
-description: 这些白皮书详细介绍了 Azure Cosmos DB 中的概念。
+description: 获取有关 Azure Cosmos DB 的白皮书列表，这些白皮书详细介绍了这些概念。
 ms.service: cosmos-db
 author: rockboyfor
 ms.author: v-yeche
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 01/07/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 274086f50996b3bf7850e954d7e6a075014ce5a7
-ms.sourcegitcommit: ce4b37e31d0965e78b82335c9a0537f26e7d54cb
+ms.openlocfilehash: 6a7b1a24e05c73a99baa0e71f116bc9dbad62f86
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54026699"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068327"
 ---
-# <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB 白皮书 
+# <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB 白皮书
 
 可以通过这些白皮书更深入地了解 Azure Cosmos DB 概念。 本文提供了 Azure Cosmos DB 的可用白皮书的列表。
 

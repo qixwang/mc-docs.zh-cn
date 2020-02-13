@@ -1,21 +1,21 @@
 ---
 title: Azure 服务总线消息传送队列、主题和订阅
-description: 服务总线消息传送实体概述。
+description: 本文概述了 Azure 服务总线消息实体（队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
 manager: digimobile
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 09/18/2018
-ms.date: 09/15/2019
+origin.date: 01/16/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: f6109e8c5c34a209baea0ccdbcc68f8bb26b9473
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 32bb6a31ea2317be9ef524a1aaee86299d66196e
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75853565"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068000"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
@@ -41,7 +41,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="receive-modes"></a>接收模式
 
-可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete  或 PeekLock  。 使用 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete  或 PeekLock  。 在 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式下，接收操作是单次执行的；也就是说，当服务总线收到来自使用者的请求时，它会将该消息标记为“正在使用”，并将其返回给使用者应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 使用 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，并将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 完成接收过程的第二个阶段。 服务总线发现 **CompleteAsync** 调用时会将消息标记为“正在使用”。
 

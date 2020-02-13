@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 流分析 CI/CD npm 包
+title: 使用 CI/CD npm 包部署 Azure 流分析作业
 description: 本文介绍如何使用 Azure 流分析 CI/CD npm 包设置持续集成和部署过程。
 author: lingliw
 ms.author: v-lingwu
@@ -7,17 +7,18 @@ manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 05/15/2019
-ms.date: 07/12/2019
-ms.openlocfilehash: 8b21d76c5d1ed8dedfb6207d132c452fbc1af833
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+origin.date: 01/28/2020
+ms.date: 2/6/2020
+ms.openlocfilehash: d680af782a4f93c6599fb5f3f045f8be7c4f127a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857140"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068215"
 ---
-# <a name="use-the-stream-analytics-cicd-npm-package"></a>使用流分析 CI/CD npm 包
-本文介绍如何使用 Azure 流分析 CI/CD npm 包设置持续集成和部署过程。
+# <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 包部署 Azure 流分析作业 
+
+可以使用 Azure 流分析 CI/CD npm 包为流分析作业设置持续的集成和部署过程。 本文介绍通常如何在任何 CI/CD 系统中使用 npm 包，以及使用 Azure Pipelines 进行部署的具体说明。
 
 ## <a name="build-the-vs-code-project"></a>生成 VS Code 项目
 
@@ -59,5 +60,5 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 ## <a name="next-steps"></a>后续步骤
 
 * [快速入门：在 Visual Studio Code（预览版）中创建 Azure 流分析云作业](quick-create-vs-code.md)
-* [使用 Visual Studio Code（预览版）在本地测试流分析查询](vscode-local-run.md)
-* [使用 Visual Studio Code（预览版）浏览 Azure 流分析](vscode-explore-jobs.md)
+* [使用 Visual Studio Code（预览版）在本地测试流分析查询](visual-studio-code-local-run.md)
+* [使用 Visual Studio Code（预览版）浏览 Azure 流分析](visual-studio-code-explore-jobs.md)

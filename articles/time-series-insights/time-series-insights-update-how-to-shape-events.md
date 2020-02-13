@@ -1,6 +1,6 @@
 ---
 title: 塑造事件 - Azure 时序见解 | Microsoft Docs
-description: 了解如何使用 Azure 时序见解预览版塑造事件。
+description: 了解最佳做法以及如何在 Azure 时序见解预览版中塑造用于查询的事件。
 author: deepakpalled
 ms.author: v-yiso
 manager: cshankar
@@ -8,15 +8,15 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 10/31/2019
-ms.date: 12/02/2019
+origin.date: 12/16/2019
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: a293a6145ddc25a264fda2badb5d94388d438f06
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 1d16497da37c998e30f8322e37f54645f9cd160b
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74388940"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068059"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
@@ -32,7 +32,7 @@ ms.locfileid: "74388940"
 若要获得最高的查询性能，请执行以下操作：
 
 * 不要发送不必要的属性。 时序见解预览版按使用情况收费。 最好是存储后再处理要查询的数据。
-* 对于静态数据，请使用实例字段。 此做法有助于避免通过网络发送静态数据。 实例字段是时序模型的组件，其工作方式类似于时序见解正式版服务中的参考数据。 若要详细了解实例字段，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+* 对于静态数据，请使用实例字段。 此做法有助于避免通过网络发送静态数据。 实例字段是时序模型的组件，其工作方式类似于时序见解正式版服务中的参考数据。 若要详细了解实例字段，请阅读[时序模型](./time-series-insights-update-tsm.md)。
 * 在两个或多个事件中共享维度属性。 此做法可以更有效地通过网络发送数据。
 * 不要使用深层数组嵌套。 时序见解预览版最多支持两个级别的包含对象的嵌套数组。 时序见解预览版会将消息中的数组平展成包含属性值对的多个事件。
 * 如果所有或大多数事件只存在几个度量，最好是在同一个对象中将这些度量作为单独的属性发送。 单独发送度量可以减少事件数目，并可能会提高查询的效率，因为要处理的事件更少。
@@ -156,6 +156,4 @@ ms.locfileid: "74388940"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要将这些指导原则付诸实践，请参阅 [Azure 时序见解预览版查询语法](./time-series-insights-query-data-csharp.md)。 可以详细了解时序见解预览版数据访问 REST API 的查询语法。
-
-- 若要了解支持的 JSON 形状，请参与[支持的 JSON 形状](./time-series-insights-send-events.md#json)。
+若要将这些指导原则付诸实践，请阅读 [Azure 时序见解预览版查询语法](./time-series-insights-query-data-csharp.md)。 可以详细了解时序见解预览版数据访问 REST API 的查询语法。

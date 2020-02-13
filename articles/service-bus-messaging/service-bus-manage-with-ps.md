@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 管理 Azure 服务总线资源 | Azure
-description: 使用 PowerShell 模块创建和管理服务总线资源
+title: 使用 PowerShell 管理 Azure 服务总线资源 | Microsoft Docs
+description: 本文介绍如何使用 Azure PowerShell 模块创建和管理服务总线实体（命名空间、队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: .NET
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 09/21/2018
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 438ad8809ba89d080329ae8f1c3227aa16b728b9
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 32443d50a12b5b95195018b922edc499aeec8c59
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330293"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068020"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
@@ -30,7 +30,7 @@ Azure PowerShell 是一个脚本编写环境，可用于控制和自动执行 Az
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，需要符合以下先决条件：
 

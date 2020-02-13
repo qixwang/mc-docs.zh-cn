@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线到事件网格集成概述 | Microsoft Docs
-description: 服务总线消息传送和事件网格集成的说明
+description: 本文介绍 Azure 服务总线消息传送如何与 Azure 事件网格集成。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 09/05/2018
-ms.date: 08/29/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: aschhab
-ms.openlocfilehash: e9671ca1926a37f18ba6f90b5531b55bb3a14e40
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: f1799a75b93323235e9e4319ce42ce32074be3e3
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528328"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068282"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 

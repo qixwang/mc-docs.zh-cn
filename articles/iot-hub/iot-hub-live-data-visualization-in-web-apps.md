@@ -1,5 +1,5 @@
 ---
-title: 在 Web 应用中可视化 Azure IoT 中心内的实时传感器数据 | Microsoft Docs
+title: Web 应用中 IoT 中心数据的实时数据可视化
 description: 使用 Web 应用程序将从传感器收集的并发送到 Azure IoT 中心的温度和湿度数据可视化。
 author: robinsh
 ms.service: iot-hub
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 origin.date: 05/31/2019
 ms.author: v-yiso
-ms.date: 06/17/2019
-ms.openlocfilehash: 5bc00f34b7e79096190a248a4db6021ae5c49bdf
-ms.sourcegitcommit: 1ebfbb6f29eda7ca7f03af92eee0242ea0b30953
+ms.date: 02/17/2020
+ms.openlocfilehash: 1a9682bac0be233357d495964f6326980bd5c750
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732520"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068116"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心内的实时传感器数据
 
@@ -165,10 +165,10 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. 现在，在应用服务计划中预配一个 Web 应用。 使用 `--deployment-local-git` 参数可从本地计算机上的 Git 存储库上传和部署 Web 应用代码。 Web 应用名称必须全局唯一，可以包含大小写字母、数字和连字符。
+2. 现在，在应用服务计划中预配一个 Web 应用。 使用 `--deployment-local-git` 参数可从本地计算机上的 Git 存储库上传和部署 Web 应用代码。 Web 应用名称必须全局唯一，可以包含大小写字母、数字和连字符。 请确保为 `--runtime` 参数指定 Node 版本 10.6 或更高版本，具体取决于所使用的 Node.js 运行时版本。 可以使用 `az webapp list-runtimes` 命令获取支持的运行时列表。
 
    ```azurecli
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. 现在，为指定 IoT 中心连接字符串和事件中心使用者组的环境变量添加应用程序设置。 `-settings` 参数中的每项设置以空格分隔。 请使用 IoT 中心的服务连接字符串，以及前面在本教程中创建的使用者组。 不要将值括在引号中。

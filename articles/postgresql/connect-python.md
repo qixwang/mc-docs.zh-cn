@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 连接到 Azure Database for PostgreSQL - 单一服务器
+title: 使用 Python 进行连接 - Azure Database for PostgreSQL - 单一服务器
 description: 本快速入门提供了可用于从 Azure Database for PostgreSQL - 单一服务器连接和查询数据的 Python 代码示例。
 author: WenJason
 ms.author: v-jay
@@ -8,23 +8,27 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 origin.date: 11/07/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 378cc5efcf93da4c3c922bc811d3641fe5a8acb7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/10/2020
+ms.openlocfilehash: 1857671476a90127acf69f8b6d9339c31c68bba5
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335031"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068134"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>使用 Python 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
-本快速入门演示了如何使用 macOS、Ubuntu Linux 或 Windows 上的 Python 来处理 Azure Database for PostgreSQL。 本快速入门介绍了如何连接数据库和使用 SQL 语句查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Python，但不熟悉如何使用 Azure Database for PostgreSQL。
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Python 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
-## <a name="prerequisites"></a>先决条件
-- 创建 Azure Database for PostgreSQL - 单一服务器，方法是使用[快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)或[快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md) 中的步骤。 
+本快速入门介绍如何使用 macOS、Ubuntu Linux 或 Windows 上的 Python 来处理 Azure Database for PostgreSQL。 本快速入门介绍了如何连接数据库和使用 SQL 语句查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Python，但不熟悉如何使用 Azure Database for PostgreSQL。
+
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+
+- 完成[快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)或[快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md) 中的步骤。
   
 - [Python](https://www.python.org/downloads/) 2.7.9+ 或 3.4+。
   
-- 使用 `pip install -U pip` 安装的 [pip](https://pip.pypa.io/en/stable/installing/) 包安装程序的最新更新。 
+- 最新 [pip](https://pip.pypa.io/en/stable/installing/) 包安装程序。
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>安装适用于 PostgreSQL 的 Python 库
 [psycopg2](https://pypi.python.org/pypi/psycopg2/) 模块可连接到 PostgreSQL 数据库并对其进行查询，并可作为 Linux、macOS 或 Windows [轮](https://pythonwheels.com/)包提供。 安装二进制版本的模块，包括所有依赖项。 有关 `psycopg2` 安装和要求的详细信息，请参阅[安装](http://initd.org/psycopg/docs/install.html)。 

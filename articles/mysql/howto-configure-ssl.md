@@ -1,18 +1,18 @@
 ---
-title: 配置 SSL 连接性以安全连接到 Azure Database for MySQL
+title: 配置 SSL - Azure Database for MySQL
 description: 介绍了如何正确配置 Azure Database for MySQL 和关联的应用程序，以正确使用 SSL 连接
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 07/02/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 8d16c09b389385e981c9f8dbd032ad4cafc7425d
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 12/05/2019
+ms.date: 02/10/2020
+ms.openlocfilehash: 602dd3e8745c73e68a63d15acddf36a52df9a659
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142155"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068305"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 
@@ -70,10 +70,12 @@ az mysql server update --resource-group myresource --name mydemoserver --ssl-enf
 ```dos
 mysql> status
 ```
-通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL:  使用中的密码为 AES256-SHA” 
+查看输出以确认连接是否已加密，如果已加密，输出应显示为：“SSL:  使用中的密码为 AES256-SHA” 
 
 ## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MySQL 建立安全连接，请参阅以下代码示例：
+
+请参阅 Azure Database for MySQL 服务支持的[兼容驱动程序](concepts-compatibility.md)列表。
 
 ### <a name="php"></a>PHP
 ```php

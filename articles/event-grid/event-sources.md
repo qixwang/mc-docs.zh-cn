@@ -1,19 +1,19 @@
 ---
 title: Azure 事件网格事件源
-description: 介绍 Azure 事件网格支持的事件源
+description: 本文介绍 Azure 事件网格支持的事件源。 事件源即事件发生的位置。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 origin.date: 02/12/2019
-ms.date: 01/20/2020
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 2bd943a59571c99ef9ea161b86510e33a75a748e
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 5f78190503b1e7aea6c23a25432e493f486a3130
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859523"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068319"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -91,19 +91,8 @@ ms.locfileid: "75859523"
 
 |标题  |说明  |
 |---------|---------|
-| [通过 Azure 事件网格监视 Key Vault 事件](../key-vault/event-grid-overview.md) | 概述 Key Vault 与事件网格的集成。 |
-| [教程：使用事件网格创建并监视 Key Vault 事件](../key-vault/event-grid-tutorial.md) | 了解如何为 Key Vault 设置事件网格通知。 |
 | [事件架构](event-schema-key-vault.md) | 显示 Key Vault 事件中的字段。 |
 
-## <a name="media-services"></a>媒体服务
-
-订阅媒体服务事件即可响应作业状态事件。
-
-|标题  |说明  |
-|---------|---------|
-| [概述：响应媒体服务事件](../media-services/latest/reacting-to-media-services-events.md) | 概述媒体服务与事件网格的集成。 |
-| [教程：使用 CLI 将 Azure 媒体服务事件路由到自定义 Web 终结点](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fevent-grid%2ftoc.json) | 说明如何从媒体服务发送事件。 |
-| [事件架构](../media-services/latest/media-services-event-schemas.md?toc=%2fevent-grid%2ftoc.json) | 说明媒体服务事件中的字段。 |
 
 ## <a name="resource-groups"></a>资源组
 
@@ -130,6 +119,9 @@ ms.locfileid: "75859523"
 ## <a name="storage"></a>存储
 
 订阅 Blob 存储事件即可响应创建的 Blob 和删除的事件。
+
+>[!NOTE]
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”  不  支持与事件网格集成。
 
 |标题  |说明  |
 |---------|---------|

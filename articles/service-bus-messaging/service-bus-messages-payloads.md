@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息、有效负载和序列化
-description: 概述了服务总线消息有效负载
+title: Azure 服务总线消息、有效负载和序列化 | Microsoft Docs
+description: 本文概述了 Azure 服务总线消息、有效负载、消息路由和序列化。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 09/26/2018
-ms.date: 10/31/2018
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9dbd92dbcd3ba2ab249aae7c7579cf7e3bd969b3
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 562f8c00157ba6e8795ca867952e0af5157bd69d
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75853837"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067979"
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 

@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 08/23/2019
 ms.date: 09/23/2019
-ms.openlocfilehash: 8c536610ec21e648053d8667a80b3e3650b6c3d9
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 10e568f55e3b78ffb7f9b8a3a06152a118d1518b
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854643"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068300"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>使用样本数据测试 Azure 流分析作业
 
-在 Azure 流分析中，无需启动或停止作业即可测试查询。 可以在 Azure 门户上，针对输入接收器传入的数据或者从本地文件上传的示例数据测试查询。 还可以在 [Visual Studio](stream-analytics-live-data-local-testing.md) 和 [Visual Studio Code](vscode-local-run.md) 中，基于本地示例数据或实时数据在本地测试查询。 
+在 Azure 流分析中，无需启动或停止作业即可测试查询。 可以在 Azure 门户上，针对输入接收器传入的数据或者从本地文件上传的示例数据测试查询。 还可以在 [Visual Studio](stream-analytics-live-data-local-testing.md) 中基于本地示例数据或实时数据在本地测试查询。 
 
 ## <a name="sample-incoming-data-from-input"></a>来自输入的示例传入数据
 

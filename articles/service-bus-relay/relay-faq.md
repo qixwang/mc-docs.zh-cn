@@ -1,6 +1,6 @@
 ---
-title: Azure 中继常见问题解答 | Azure Docs
-description: 获取 Azure 中继的某些常见问题的解答。
+title: Azure 中继常见问题 | Microsoft Docs
+description: 本文提供了一些有关 Azure 中继服务的常见问题解答 (FAQ)。
 services: service-bus-relay
 documentationcenter: na
 author: lingliw
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 05/21/2018
-ms.date: 09/26/2019
+origin.date: 01/21/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: baebc5882cd21eaa22d8ad6e64b02e9fafde2af9
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: bd4cad68ebb22b600d5fb12cf6f279453097b2a0
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329773"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068242"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题解答
 
-本文解答一些关于 [Azure 中继](/service-bus-messaging/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](http://go.microsoft.com/fwlink/?LinkID=185083)。
+本文解答一些关于 [Azure 中继](/service-bus-messaging/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://go.microsoft.com/fwlink/?LinkID=185083)。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -48,15 +48,15 @@ ms.locfileid: "71329773"
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>使用混合连接时怎样计费？
 以下是三种示例计费方案，适用于混合连接：
 
-*   方案 1：
+*   应用场景 1：
     *   有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。
     *   在该月通过连接发送了 3 GB 的数据。 
     *   总费用是 5 美元。
-*   方案 2：
+*   应用场景 2：
     *   有一个侦听器，例如一个混合连接管理器实例，在安装后已持续运行一整月。
     *   在该月通过连接发送了 10 GB 的数据。
     *   总费用是 7.50 美元。 其中 5 美元是针对连接和第一个 5 GB 的收费，另外 2.50 美元是针对其余 5 GB 数据的收费。
-*   方案 3：
+*   应用场景 3：
     *   有两个混合连接管理器实例（A 和 B），在安装后已持续运行一整月。
     *   在该月通过连接 A 发送了 3 GB 的数据。
     *   在该月通过连接 B 发送了 6 GB 的数据。
@@ -81,7 +81,7 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用 **netTCPRelay** 绑定的中继，所有数据都会被视为用于计算可计费消息的数据流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
 
 ## <a name="quotas"></a>配额
-| 配额名称 | 作用域 |  说明 | Value |
+| 配额名称 | 作用域 |  注释 | Value |
 | --- | --- | --- | --- |
 | 中继上的并发侦听器数 |实体 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
 | 服务命名空间中所有中继终结点的并发中继连接数 |命名空间 |- |5,000 |

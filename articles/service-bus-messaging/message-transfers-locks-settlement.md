@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息传输、锁定和处置 | Microsoft Docs
-description: 服务总线消息传输和处置操作概述
+title: Azure 服务总线消息传输、锁定和处置
+description: 本文概述了 Azure 服务总线消息传输、锁定和处置操作。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 09/25/2018
-ms.date: 10/31/2018
+origin.date: 01/24/2019
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: e4f1cea327d2e6510c5cf016b39a7d85a4c7d156
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 36d4297a42cd388af8bf5d76878781fefef99867
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730216"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068028"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 

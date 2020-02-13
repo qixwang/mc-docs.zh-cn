@@ -1,6 +1,6 @@
 ---
-title: 开始在 .NET 中使用 Azure 中继混合连接 Websocket | Azure
-description: 为 Azure 中继混合连接 Websocket 编写 C# 控制台应用程序。
+title: Azure 中继混合连接 - .NET 中的 WebSocket
+description: 为 Azure 中继混合连接 WebSocket 编写 C# 控制台应用程序。
 services: service-bus-relay
 documentationcenter: .net
 author: lingliw
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/01/2018
 ms.date: 09/26/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 979a2bef854b4f3d45b35f3b935cd421eb16e87c
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: bdc3be9baae846e1be7cc1c71e0c685fcb38099c
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330296"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068246"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>开始在 .NET 中使用中继混合连接 WebSocket
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "71330296"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要满足以下先决条件：
 
-* [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+* [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 * Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="create-a-namespace"></a>创建命名空间
@@ -63,7 +63,7 @@ ms.locfileid: "71330296"
 2. 运行客户端应用程序并输入一些文本。
 3. 确保服务器应用程序控制台显示了客户端应用程序中输入的文本。
 
-![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 祝贺你，你已创建了一个完整的混合连接应用程序！
 

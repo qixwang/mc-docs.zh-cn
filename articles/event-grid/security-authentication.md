@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 origin.date: 05/22/2019
-ms.date: 12/23/2019
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: d1b2ecdadf13472cef03deab67813d0d97219258
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 761063dde793c90142d8a692922b1847de2ef31a
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336180"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068158"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -96,7 +96,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 创建事件订阅期间，是否看到“尝试验证所提供的终结点 https:\//your-endpoint-here 失败。 有关更多详细信息，请访问 https:\//aka.ms/esvalidation ”等错误消息，它表示验证握手出现故障。 若要解决此错误，请验证以下各方面：
 
-* 能否控制目标终结点中的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
+* 是否控制在目标终结点中运行的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
 * 如果有权访问应用程序代码，请实现基于 ValidationCode 的握手机制，如上面的示例中所示。
 
 * 如果无权访问应用程序代码（例如，如果使用的是支持 Webhook 的第三方服务），则可以使用手动握手机制。 请确保使用 2018-05-01-preview API 版本或更高版本（安装事件网格 Azure CLI 扩展）以便接收验证事件中的 validationUrl。 若要完成手动验证握手，请获取 `validationUrl` 属性的值，并在 Web 浏览器中访问该 URL。 如果验证成功，应当会在 Web 浏览器中看到指明验证已成功的消息。 你将看到事件订阅的 provisioningState 为“Succeeded”。 
@@ -246,7 +246,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 ]
 ```
 
-**EventGrid EventSubscription 读者（预览）** ：读取事件网格订阅
+**EventGrid EventSubscription 读者**：读取事件网格订阅
 
 ```json
 [
@@ -349,6 +349,10 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 ```
 
 可以使用 [PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md) 和 [REST](../role-based-access-control/custom-roles-rest.md) 创建自定义角色。
+
+## <a name="encryption-at-rest"></a>静态加密
+
+事件网格服务写入到磁盘的所有事件或数据均由 Microsoft 托管的密钥进行加密，以确保静态加密。 此外，按照[事件网格重试策略](delivery-and-retry.md)，保留事件或数据的最长时间为 24 小时。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
 
 ## <a name="next-steps"></a>后续步骤
 

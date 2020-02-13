@@ -9,14 +9,14 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 origin.date: 12/19/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: a27cc0724cfcd625407a555148d5bd3080bd4917
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: f476b0e7c63931f7d69aae2cc7913584d2ba72fe
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859664"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068235"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
 
@@ -34,7 +34,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
   
 > [!TIP]
 > * 了解[如何规划环境](./time-series-insights-update-plan.md)。
-> * 了解如何[添加事件中心源](./time-series-insights-how-to-add-an-event-source-eventhub.md)或如何[添加 IoT 中心源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
+
 
 可以了解如何执行以下操作：
 
@@ -70,7 +70,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 
 1. **（可选）** 可以现在就添加事件源， 也可以等到预配完实例后再添加。
 
-   * 时序见解支持使用 [Azure IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)和 [Azure 事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)作为事件源选项。 虽然在创建环境时只能添加单个事件源，但可以在以后添加其他事件源。 
+   * 时序见解支持使用“Azure IoT 中心”和“Azure 事件中心”作为事件源选项。 虽然在创建环境时只能添加单个事件源，但可以在以后添加其他事件源。 
    
      在添加事件源时，可以选择现有的使用者组，也可以创建新的使用者组。 最好创建唯一的使用者组，确保所有事件对 Azure 时序见解预览版环境可见。
 
@@ -87,14 +87,13 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 
 ## <a name="manage-the-environment"></a>管理环境
 
-可以使用 Azure 门户管理 Azure 时序见解预览版环境。 通过 Azure 门户进行管理时，你会看到 PAYG Azure 时序见解预览版环境和通常可用的 S1 或 S2 环境之间的一些重要区别：
+可以使用 Azure 门户管理 Azure 时序见解预览版环境。 通过 Azure 门户管理环境时，要考虑到 PAYG Azure 时序见解预览环境与正式发布的 S1 或 S2 环境之间有几个关键差异：
 
 * Azure 门户预览版的“概述”边栏选项卡进行了以下更改  ：
 
   * 删除了容量，因为它不适用于 PAYG 环境。
   * 添加了“时序 ID”属性  。 它决定了数据的分区方式。
   * 删除了引用数据集。
-  * 显示的 URL 会将你定向到 [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
   * 列出了 Azure 存储帐户名称。
 
 * 在 Azure 时序见解预览版中删除了Azure 门户的“配置”边栏选项卡，因为 PAYG 环境不可配置  。 但是，可以使用“存储配置”来配置新引入的暖存储。 
@@ -103,13 +102,6 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 
 [![Azure 门户中的时序见解预览版环境](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
-## <a name="next-steps"></a>后续步骤
-
-- 阅读[计划环境](./time-series-insights-update-plan.md)，详细了解时序见解通常可用的环境和预览版环境。
-
-- 了解如何[添加事件中心源](./time-series-insights-how-to-add-an-event-source-eventhub.md)。
-
-- 配置 [IoT 中心源](./time-series-insights-how-to-add-an-event-source-iothub.md)。
 
 <!-- Images -->
 [1]: media/v2-update-manage/manage_one.PNG

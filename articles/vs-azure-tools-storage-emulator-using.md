@@ -2,7 +2,7 @@
 title: 在 Visual Studio 中配置和使用存储模拟器 | Microsoft Docs
 description: 配置和使用存储模拟器，该模拟器是一个在本地开发计算机上模拟 Azure 中提供的 Blob、队列和表存储服务的实用程序。
 services: visual-studio-online
-author: ghogen
+author: lingliw
 manager: douge
 assetId: c8e7996f-6027-4762-806e-614b93131867
 ms.prod: visual-studio-dev15
@@ -12,13 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 origin.date: 08/17/2017
 ms.date: 09/26/2018
-ms.author: v-junlch
-ms.openlocfilehash: d68d7b016fc251edb4447ce997622f0976c45163
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.author: v-lingwu
+ms.openlocfilehash: e84a3b6f9cbdc13d5c090afcfc774d3e2b484999
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528238"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068374"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>在 Visual Studio 中配置和使用存储模拟器
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -30,26 +30,29 @@ Azure SDK 开发环境包含存储模拟器，这是一个用于模拟本地开�
 
 > [!NOTE]
 > 存储模拟器的模拟与 Azure 存储服务之间在功能上存在一些差异。 有关具体差异的信息，请参阅 Azure SDK 文档中的 [Differences Between the Storage Emulator and Azure Storage Services](storage/common/storage-use-emulator.md)（存储模拟器与 Azure 存储服务之间的差异）。
-> 
-> 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>为存储模拟器配置连接字符串
 若要从角色内的代码访问存储模拟器，需要配置指向存储模拟器并且以后可以更改为指向 Azure 存储帐户的连接字符串。 连接字符串是一个配置设置，角色可在运行时读取该设置以连接到存储帐户。 有关如何创建连接字符串的详细信息，请参阅[配置 Azure 存储连接字符串](/storage/common/storage-configure-connection-string)。
 
 > [!NOTE]
 > 可通过使用 **DevelopmentStorageAccount** 属性将引用返回到代码的存储模拟器帐户中。 如果要通过代码访问存储模拟器，此方法能正常工作；但是如果计划将应用程序发布到 Azure，则需创建连接字符串来访问 Azure 存储帐户并修改代码（将其发布前）以便使用该连接字符串。 如果要在存储模拟器帐户与 Azure 存储帐户之间进行频繁切换，使用连接字符串可以简化此过程。
-> 
-> 
 
 ## <a name="initializing-and-running-the-storage-emulator"></a>初始化和运行存储模拟器
-可指定在 Visual Studio 中运行或调试服务的时间，Visual Studio 将自动启动存储模拟器。 在解决方案资源管理器中打开 **Azure** 项目的快捷菜单，然后选择“属性”。  在“开发”选项卡上的“启动 Azure 存储模拟器”列表中，选择“True”（如果尚未设置为该值）。   
+
+可指定在 Visual Studio 中运行或调试服务的时间，Visual Studio 将自动启动存储模拟器。 在解决方案资源管理器中打开 **Azure** 项目的快捷菜单，然后选择“属性”。  在“开发”选项卡上的“启动 Azure 存储模拟器”列表中，选择“True”（如果尚未设置为该值）。     某些项目类型没有“开发”  选项卡。如果是这种情况，可以通过设置项目文件中的 `StartDevelopmentStorage` 元素来启用或禁用存储模拟器启动。 将其设置为 **True** 以启用，或将其设置为 **False** 以禁用。  例如，在 Azure Functions 项目中，打开项目文件进行编辑，并按如下方式修改 XML 代码：
+
+```xml
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+    <StartDevelopmentStorage>True</StartDevelopmentStorage>
+  </PropertyGroup>
+```
 
 当你第一次从 Visual Studio 中运行或调试服务时，存储模拟器将启动一个初始化过程。 此过程保留用于存储模拟器的本地端口，并创建存储模拟器数据库。 完成后，除非删除存储模拟器数据库，否则不需要再次运行此过程。
 
 > [!NOTE]
 > 从 2012 年 6 月版的 Azure Tools 开始，存储模拟器默认在 SQL Express LocalDB 中运行。 在 Azure Tools 此前的版本中，存储模拟器针对 SQL Express 2005 或 2008 的默认实例运行。必须先安装该实例，然后才能安装 Azure SDK。 也可以针对 SQL Express 的命名实例或 Microsoft SQL Server 的命名实例或默认实例运行存储模拟器。 如果需要配置存储模拟器以针对默认实例以外的实例运行，请参阅[使用 Azure 存储模拟器进行开发和测试](storage/common/storage-use-emulator.md)。
-> 
-> 
 
 存储模拟器提供一个用户界面，用于查看本地存储服务的状态以及启动、停止和重置这些服务。 启动存储模拟器服务后，可通过在 Windows 任务栏中右键单击“Azure 模拟器”的通知区域图标，显示用户界面或者启动或停止服务。
 

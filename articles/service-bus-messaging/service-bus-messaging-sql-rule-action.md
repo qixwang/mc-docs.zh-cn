@@ -1,6 +1,6 @@
 ---
-title: Azure 中的 SQLRuleAction 语法参考
-description: 有关 SQLRuleAction 语法的详细信息。
+title: Azure 服务总线中的 SQLRuleAction 语法参考
+description: 本文提供 SQLRuleAction 语法参考。 这些操作是以针对中转消息执行的基于 SQL 语言的语法编写的。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
@@ -15,14 +15,14 @@ ms.workload: na
 origin.date: 09/05/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0f1526db3512fa217da1e97165362f3bc2654bf0
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 9f84215787f7161278a8069eadfb59aeff206bbc
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329873"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068010"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction 语法
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
 
 SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行  。   
   
@@ -70,7 +70,7 @@ SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sql
   
 ### <a name="remarks"></a>备注  
 
-访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 在运算符求值过程中，未知值的处理方式很特殊。  
+访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
 
 ## <a name="property_name"></a>property_name  
 
@@ -99,7 +99,7 @@ SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sql
 
  `<regular_identifier>` 不能是保留关键字。  
 
- `<delimited_identifier>` 是用左/右方括号 ([]) 括起来的任何字符串。 右方括号采用两个右方括号的形式。 下面是 `<delimited_identifier>`的示例：  
+ `<delimited_identifier>` 是用左/右方括号 ([]) 括起来的任何字符串。 右方括号以两个右方括号表示。 下面是 `<delimited_identifier>`的示例：  
 
 ```  
 [Property With Space]  
@@ -107,7 +107,7 @@ SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sql
 
 ```  
 
- `<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 建议不要使用带引号的标识符，因为很容易与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是 `<quoted_identifier>`的示例：  
+ `<quoted_identifier>` 是指使用双引号引起来的任何字符串。 标识符中的双引号以两个双引号表示。 不建议使用带引号的标识符，因为很容易将其与字符串常量混淆。 如果可能，请使用分隔标识符。 下面是 `<quoted_identifier>`的示例：  
 
 ```  
 "Contoso & Northwind"  
@@ -137,7 +137,7 @@ SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sql
 
 ### <a name="remarks"></a>备注
 
- `<escape_char>` 必须是作为长度为 1 的字符串进行求值的表达式。 作为转义符用于 LIKE 运算符。  
+ `<escape_char>` 必须是作为长度为 1 的字符串进行求值的表达式。 它用作 LIKE 运算符的转义符。  
 
  例如，`property LIKE 'ABC\%' ESCAPE '\'` 匹配 `ABC%`，而不匹配以 `ABC` 开头的字符串。  
 

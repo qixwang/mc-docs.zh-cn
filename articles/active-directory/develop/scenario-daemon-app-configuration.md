@@ -12,36 +12,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0e80c36644208e7704dddcbefb9cbe78e1d6638
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 7574504605aa2cbbe97110ff53ba7f7ef0d1c639
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777050"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067713"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
 了解如何为调用 Web API 的守护程序应用程序配置代码。
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>支持守护程序应用的 MSAL 库
+## <a name="msal-libraries-that-support-daemon-apps"></a>支持守护程序应用的 MSAL 库
 
-支持守护程序应用的 Microsoft 库包括：
+以下 Microsoft 库支持守护程序应用：
 
   MSAL 库 | 说明
   ------------ | ----------
-  ![MSAL.NET](./media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持用于构建守护程序应用程序的平台为 .NET Framework 和 .NET Core 平台（不包括 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于构建公共客户端应用程序）
-  ![Python](./media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 对守护程序应用程序的支持
-  ![Java](./media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 对守护程序应用程序的支持
+  ![MSAL.NET](./media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持使用 .NET Framework 和 .NET Core 平台构建守护程序应用程序。 （不支持 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序。）
+  ![Python](./media/sample-v2-code/logo_python.png) <br/> MSAL Python | Python 中支持守护程序应用程序。
+  ![Java](./media/sample-v2-code/logo_java.png) <br/> MSAL Java | Java 中支持守护程序应用程序。
 
-## <a name="configuration-of-the-authority"></a>配置颁发机构
+## <a name="configure-the-authority"></a>配置颁发机构
 
-如果你是 ISV 并希望提供多租户工具，则可使用 `organizations`。 但请记住，你还需向客户说明如何授予管理员同意。 有关详细信息，请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前 MSAL 中有一个限制：仅当客户端凭据是应用程序机密（而不是证书）时才允许使用 `organizations`。
+守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，它们支持的帐户类型不能是任何组织目录中的帐户。 你需要选择“我的组织中的帐户”  或“任何组织中的帐户”  。
 
-## <a name="application-configuration-and-instantiation"></a>应用程序配置和实例化
+因此，在应用程序配置中指定的颁发机构应该是租户的（指定租户 ID 或者与组织相关联的域名）。
+
+如果你是 ISV 并且希望提供多租户工具，则可以使用 `organizations`。 但请记住，你还需向客户说明如何授予管理员同意。 有关详细信息，请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前 MSAL 中有一个限制：仅当客户端凭据是应用程序机密（而不是证书）时才允许使用 `organizations`。
+
+## <a name="configure-and-instantiate-the-application"></a>配置并实例化应用程序
 
 在 MSAL 库中，客户端凭据（机密或证书）是作为机密客户端应用程序构造的参数传递的。
 
@@ -52,9 +55,9 @@ ms.locfileid: "75777050"
 
 配置文件定义：
 
-- 颁发机构或者云实例和 tenantId
-- 通过应用程序注册获得的 ClientID
-- 客户端机密或证书
+- 颁发机构或者云实例和租户 ID。
+- 通过应用程序注册获得的客户端 ID。
+- 客户端机密或证书。
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -70,11 +73,11 @@ ms.locfileid: "75777050"
 }
 ```
 
-你提供一个 clientSecret 或 certificateName。 两项设置都是独占性的。
+请提供 `ClientSecret` 或 `CertificateName`。 这些设置是互斥的。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-使用客户端机密生成机密客户端时，[Python 守护程序](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的 [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) 配置文件如下所示。
+使用客户端机密构建机密客户端时，[Python 守护程序](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的 [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) 配置文件如下所示：
 
 ```Json
 {
@@ -86,7 +89,7 @@ ms.locfileid: "75777050"
 }
 ```
 
-使用证书生成机密客户端时，[Python 守护程序](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的 [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) 配置文件如下所示。
+使用证书构建机密客户端时，[Python 守护程序](https://github.com/Azure-Samples/ms-identity-python-daemon)示例中的 [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) 配置文件如下所示：
 
 ```Json
 {
@@ -101,7 +104,7 @@ ms.locfileid: "75777050"
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) 是用来配置 MSAL Java 开发示例的类：
 
 ```Java
 public class TestData {
@@ -115,12 +118,11 @@ public class TestData {
 
 ---
 
-### <a name="instantiation-of-the-msal-application"></a>安装 MSAL 应用程序
+### <a name="instantiate-the-msal-application"></a>实例化 MSAL 应用程序
 
-若要实例化 MSAL 应用程序，需执行以下操作：
+若要实例化 MSAL 应用程序，你需要添加、引用或导入 MSAL 包（取决于语言）。
 
-- 添加、引用或导入 MSAL 包（具体取决于语言）
-- 然后，构造取决于你是使用客户端机密还是使用证书（或者是使用充当高级方案的已签名断言）
+构造取决于你是使用客户端机密还是使用证书（还是使用已签名断言，这是一种高级方案）。
 
 #### <a name="reference-the-package"></a>引用此包
 
@@ -130,7 +132,7 @@ public class TestData {
 
 向应用程序添加 [Microsoft.IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包。
 在 MSAL.NET 中，机密客户端应用程序通过 `IConfidentialClientApplication` 接口表示。
-在源代码中使用 MSAL.NET 命名空间
+在源代码中使用 MSAL.NET 命名空间。
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -154,9 +156,9 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-secrets"></a>通过客户端机密实例化机密客户端应用程序
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>使用客户端机密实例化机密客户端应用程序
 
-下面是代码，用于通过客户端机密实例化机密客户端应用程序：
+下面的代码用于使用客户端机密实例化机密客户端应用程序：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -172,7 +174,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential=config["secret"],
@@ -194,9 +196,9 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-certificate"></a>通过客户端证书实例化机密客户端应用程序
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>通过客户端证书实例化机密客户端应用程序
 
-下面的代码演示如何使用证书来生成应用程序：
+下面的代码用于使用证书来构建应用程序：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -213,7 +215,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -225,12 +227,12 @@ app = msal.ConfidentialClientApplication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-在 MSAL.Java 中，可以使用两个生成器通过证书来实例化机密客户端应用程序：
+在 MSAL Java 中，可以通过两个生成器使用证书来实例化机密客户端应用程序：
 
 ```Java
 
-InputStream pkcs12Certificate = ... ; /* containing PCKS12 formatted certificate*/
-string certificatePassword = ... ;    /* contains the password to access the certificate */
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
 ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         TestData.CONFIDENTIAL_CLIENT_ID,
@@ -254,7 +256,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="advanced-scenario---instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案 - 通过客户端断言实例化机密客户端应用程序
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>高级方案：使用客户端断言实例化机密客户端应用程序
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -265,7 +267,7 @@ MSAL.NET 可以通过两种方法将签名的断言提供给机密客户端应�
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-使用 `WithClientAssertion` 时，需提供签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案
+使用 `WithClientAssertion` 时，需提供签名的 JWT。 [客户端断言](msal-net-client-assertions.md)详细介绍了这一高级方案。
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -274,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-使用 `WithClientClaims` 时，MSAL.NET 会自行计算一个签名断言，其中包含 Azure AD 预期的声明，以及你想要发送的其他客户端声明。
-下面是演示如何这样做的代码片段：
+使用 `WithClientClaims` 时，MSAL.NET 将生成一个已签名断言，其中包含 Azure AD 预期的声明，以及你想要发送的其他客户端声明。
+此代码展示了如何执行该操作：
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -296,7 +298,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},

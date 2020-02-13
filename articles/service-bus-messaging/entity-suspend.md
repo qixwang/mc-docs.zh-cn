@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线暂停消息实体
-description: 暂停和重新激活 Azure 服务总线消息实体。
+title: Azure 服务总线 - 暂停消息实体
+description: 本文介绍如何暂时暂停和重新激活 Azure 服务总线消息实体（队列、主题和订阅）。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 04/12/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c8c2b3ac5e28ecfe820be17f9b35949a5fee2a91
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 36c5d218f04b3b17f731fdeeb82833f4dc670f3d
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329782"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068039"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 
@@ -29,7 +29,7 @@ ms.locfileid: "71329782"
 
 暂停或重新激活可以由用户或系统执行。 系统只会出于重大管理原因（如达到订阅支出限制），才会暂停实体。 系统禁用的实体不能被用户重新激活，但在暂停原因消除后就会还原。
 
-在门户中各个实体的“属性”  部分内，可以更改状态；下面的屏幕截图展示了队列状态的切换开关：
+在门户中，相应实体的“属性”  部分允许更改状态；下面的屏幕截图显示了队列状态的切换开关：
 
 ![][1]
 
@@ -42,7 +42,7 @@ ms.locfileid: "71329782"
 可以为队列设置如下状态：
 
 -   **活动**：队列处于活动状态。
--   **已禁用**：队列处于暂停状态。
+-   **Disabled**：队列处于暂停状态。
 -   **SendDisabled**：队列部分处于暂停状态，允许执行接收操作。
 -   **ReceiveDisabled**：队列部分处于暂停状态，允许执行发送操作。
 

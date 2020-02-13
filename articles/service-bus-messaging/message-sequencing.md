@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息序列化和时间戳
-description: 通过时间戳保持服务总线消息的序列和顺序
+title: Azure 服务总线消息序列化和时间戳 | Microsoft Docs
+description: 本文介绍如何保留 Azure 服务总线消息的序列化和排序（使用时间戳）。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: dc8d06cce1a343efc304297d338ab8edd85d582f
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: d90cff35b2ee7cb4341cd43117e17847a224d784
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330337"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068029"
 ---
 # <a name="message-sequencing-and-timestamps"></a>消息序列化和时间戳
 
@@ -27,7 +27,7 @@ ms.locfileid: "71330337"
 
 如果消息的绝对顺序至关重要，和/或使用者需要消息的可信唯一标识符，中转站会向消息分发相对于队列或主题的无间隔递增序列号。 对于已分区实体，序列号是相对于分区进行分发。
 
-SequenceNumber  值是在中转站接受并存储消息时分配给消息的唯一 64 位整数，可用作内部标识符。 对于已分区实体，最前面的 16 位数反映的是分区标识符。 在 48-64 位范围用尽后，序列号会回滚到 0。
+SequenceNumber  值是在中转站接受并存储消息时分配给消息的唯一 64 位整数，可用作内部标识符。 对于已分区实体，最前面的 16 位数反映的是分区标识符。 在 48/64 位范围用尽后，序列号会回滚到 0。
 
 序列号可作为唯一标识符受到信任，因为它是由中央主管中立机构（而不是客户端）分配。 它还表示真正的到达顺序，比作为顺序条件的时间戳更为精确，因为时间戳在消息传递速度极快时的解析度可能不够高，并且可能会在中转站所有权跨节点转让时受到时钟偏差的影响（不过影响很小）。
 

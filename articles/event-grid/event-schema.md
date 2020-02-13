@@ -1,20 +1,20 @@
 ---
 title: Azure 事件网格事件架构
-description: 介绍为 Azure 事件网格中事件所提供的属性
+description: 介绍所有事件都存在的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-origin.date: 01/20/2019
-ms.date: 07/29/2019
+origin.date: 01/21/2020
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7c91983eea4ee514dfdacc80035f4adb64a075a5
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.openlocfilehash: 8c3b58bbf0d7e76b9cb3ed100deb2dbcae6a4357
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68337366"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068321"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -104,6 +104,7 @@ ms.locfileid: "68337366"
 * [IoT 中心](event-schema-iot-hub.md)
 * [资源组（管理操作）](event-schema-resource-groups.md)
 * [服务总线](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 对于自定义主题，事件发布者确定数据对象。 顶级数据应具有与标准资源所定义事件相同的字段。
 

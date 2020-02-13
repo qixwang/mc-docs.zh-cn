@@ -1,5 +1,5 @@
 ---
-title: 使用资源管理器模板创建 Azure 服务总线资源 | Azure Docs
+title: 使用模板创建 Azure 服务总线资源
 description: 使用 Azure Resource Manager 模板自动创建服务总线资源
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 09/11/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 04891a602b76c80b73427c4606573de4d2f15fc1
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 97f18c236697af86c6f3722f0162f6cc0f4ccb55
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75853822"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068285"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 模板创建服务总线资源
 

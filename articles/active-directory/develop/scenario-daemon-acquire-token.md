@@ -12,24 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83efabb788c58597dc5d1bfee3e2b36ac46281b8
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 874840ef22c4c73dd1096d2fd6d9acc1a704277d
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776955"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067657"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
-构建机密客户端应用程序以后，可以获取应用的令牌，方法是调用 ``AcquireTokenForClient``，传递作用域，然后强制刷新或不刷新令牌。
+在构建机密客户端应用程序以后，可以获取应用的令牌，方法是调用 `AcquireTokenForClient`，传递作用域，然后强制刷新令牌。
 
 ## <a name="scopes-to-request"></a>请求的作用域
 
-请求客户端凭据流时，其作用域是资源的名称后跟 `/.default`。 这种表示法告知 Azure AD 使用在应用程序注册过程中静态声明的**应用程序级权限**。 另外，如前所示，这些 API 权限必须由租户管理员授予
+请求客户端凭据流时，其作用域是资源的名称后跟 `/.default`。 此表示法告知 Azure Active Directory (Azure AD) 使用在应用程序注册过程中静态声明的*应用程序级权限*。 另外，这些 API 权限必须由租户管理员授予。
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -56,26 +55,26 @@ final static String GRAPH_DEFAULT_SCOPE = "https://microsoftgraph.chinacloudapi.
 
 ---
 
-### <a name="case-of-azure-ad-v10-resources"></a>Azure AD (v1.0) 资源的情况
+### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) 资源
 
-用于客户端凭据的作用域应该始终为 resourceId+"/.default"
+用于客户端凭据的作用域应该始终为资源 ID 后跟 `/.default`。
 
 > [!IMPORTANT]
-> 对于向接受 v1.0 访问令牌的资源请求访问令牌的 MSAL，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
-> 因此，如果像 Azure SQL ( **https://database.chinacloudapi.cn** ) 一样，资源预期受众以斜杠结尾（例如 Azure SQL：`https://database.chinacloudapi.cn/` ），则需请求作用域 `https://database.chinacloudapi.cn//.default` （注意其中的双斜杠）。 另请参阅 MSAL.NET 问题 [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败。
+> 当 MSAL 向接受 1.0 版访问令牌的资源请求访问令牌时，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
+> 因此，就像 Azure SQL 数据库 (**https:\//database.chinacloudapi.cn**) 一样，如果资源需要以斜杠结尾的受众（对于 Azure SQL 数据库为 `https://database.chinacloudapi.cn/`），你将需要请求作用域 `https://database.chinacloudapi.cn//.default`。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
-为了获取应用的令牌，你将使用 `AcquireTokenForClient` 或等效命令，具体取决于平台。
+为了获取应用的令牌，你将使用 `AcquireTokenForClient` 或其等效命令，具体取决于平台。
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```csharp
 using Microsoft.Identity.Client;
 
-// With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the
+// With client credentials flows, the scope is always of the shape "resource/.default" because the
 // application permissions need to be set statically (in the portal or by PowerShell), and then granted by
-// a tenant administrator
+// a tenant administrator.
 string[] scopes = new string[] { "https://microsoftgraph.chinacloudapi.cn/.default" };
 
 AuthenticationResult result = null;
@@ -86,14 +85,14 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
-    // The application does not have sufficient permissions
-    // - did you declare enough app permissions in during the app creation?
-    // - did the tenant admin needs to grant permissions to the application.
+    // The application doesn't have sufficient permissions.
+    // - Did you declare enough app permissions during app creation?
+    // - Did the tenant admin grant permissions to the application?
 }
 catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 {
-    // Invalid scope. The scope has to be of the form "https://resourceurl/.default"
-    // Mitigation: change the scope to be as expected !
+    // Invalid scope. The scope has to be in the form "https://resourceurl/.default"
+    // Mitigation: Change the scope to be as expected.
 }
 ```
 
@@ -103,9 +102,9 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 # The pattern to acquire a token looks like this.
 result = None
 
-# Firstly, looks up a token from cache
-# Since we are looking for token for the current app, NOT for an end user,
-# notice we give account parameter as None.
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
 result = app.acquire_token_silent(config["scope"], account=None)
 
 if not result:
@@ -113,17 +112,17 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 
 if "access_token" in result:
-    # Call a protected API with the access token
+    # Call a protected API with the access token.
     print(result["token_type"])
 else:
     print(result.get("error"))
     print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You may need this when reporting a bug
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-这是来自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)的摘录。
+此代码摘自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)。
 
 ```Java
 ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
@@ -139,7 +138,7 @@ BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
     System.out.println("Returned ok - " + res);
     System.out.println("ID Token - " + res.idToken());
 
-    /* call a protected API with res.accessToken() */
+    /* Call a protected API with res.accessToken() */
 };
 
 future.whenCompleteAsync(processAuthResult);
@@ -150,12 +149,12 @@ future.join();
 
 ### <a name="protocol"></a>协议
 
-如果还没有所选语言的库，则可能需要直接使用协议：
+如果还没有适用于所选语言的库，你可能希望直接使用协议：
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
 
@@ -165,10 +164,10 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
 
@@ -183,7 +182,7 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 
 ## <a name="application-token-cache"></a>应用程序令牌缓存
 
-在 MSAL.NET 中，`AcquireTokenForClient` 使用**应用程序令牌缓存**（所有其他 AcquireTokenXX 方法使用用户令牌缓存）。请勿在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用**用户**令牌缓存。 `AcquireTokenForClient` 会检查**应用程序**令牌缓存本身并对其进行更新。
+在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他 AcquireToken*XX* 方法都使用用户令牌缓存。）不要在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用“用户”  令牌缓存。 `AcquireTokenForClient` 会检查*应用程序*令牌缓存本身并对其进行更新。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -194,7 +193,7 @@ scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2F.default
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>你是否忘记提供管理员许可？ 守护程序应用需要它！
 
 如果在调用 API 时出现错误“权限不足，无法完成该操作”，  则租户管理员需要授予对应用程序的权限。 请查看上面的步骤 6：注册客户端应用。
-通常会看到类似以下错误描述的错误：
+通常会看到如下错误：
 
 ```JSon
 Failed to call the web API: Forbidden

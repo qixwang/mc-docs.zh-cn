@@ -1,6 +1,6 @@
 ---
 title: IoT 中心的 Azure 事件网格架构 | Microsoft Docs
-description: IoT 中心的事件架构格式和属性参考页
+description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -8,14 +8,15 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/17/2019
+origin.date: 01/21/2020
+ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5affbd8059931b5378adc3f87af2441be7bb02f7
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.openlocfilehash: 784e4c1b56f071477981d6ebd33a2d340afcfbad
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68337548"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068323"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT 中心的 Azure 事件网格事件架构
 
@@ -33,6 +34,7 @@ Azure IoT 中心发出以下事件类型：
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
 | Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
+| Microsoft.Devices.DeviceTelemetry | 当遥测消息发送到 IoT 中心时发布。 |
 
 ## <a name="example-event"></a>示例事件
 
@@ -56,6 +58,40 @@ DeviceConnected 和 DeviceDisconnected 事件的架构具有相同结构。 此�
   }, 
   "dataVersion": "1", 
   "metadataVersion": "1" 
+}]
+```
+
+将遥测事件发送到 IoT 中心时，将引发 DeviceTelemetry 事件。 此事件的示例架构如下所示。
+
+```json
+[{
+  "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceTelemetry",
+  "eventTime": "2019-01-07T20:58:30.48Z",
+  "data": {        
+      "body": {            
+          "Weather": {                
+              "Temperature": 900            
+          },
+          "Location": "CN"        
+      },
+        "properties": {            
+          "Status": "Active"        
+        },
+        "systemProperties": {            
+            "iothub-content-type": "application/json",
+            "iothub-content-encoding": "utf-8",
+            "iothub-connection-device-id": "d1",
+            "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+            "iothub-connection-auth-generation-id": "123455432199234570",
+            "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
+            "iothub-message-source": "Telemetry"        
+        }    
+    },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -129,7 +165,9 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | hubName | string | 已创建或已删除设备的 IoT 中心的名称。 |
 | deviceId | string | 设备的唯一标识符。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
 
-每个事件发布者的数据对象内容是不同的。 对于**设备已连接**和**设备已断开连接** IoT 中心事件，数据对象包含以下属性：
+每个事件发布者的数据对象内容是不同的。 
+
+对于**设备已连接**和**设备已断开连接** IoT 中心事件，数据对象包含以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
@@ -137,7 +175,15 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | deviceConnectionStateEventInfo | object | 设备连接状态事件信息
 | sequenceNumber | string | 一个数字，有助于指示设备已连接或设备已断开连接事件的顺序。 最新事件的序列号将大于上一个事件。 此数字可能会变化超过 1，但严格地说，是在增加。 请参阅[如何使用序列号](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
-每个事件发布者的数据对象内容是不同的。 对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
+对于**设备遥测** IoT 中心事件，数据对象包含 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
+
+| 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| body | string | 来自设备的消息内容。 |
+| properties | string | 应用程序属性是用户定义的字符串，可以添加到消息。 这些字段是可选的。 |
+| 系统属性 | string | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)有助于标识消息的内容和源。 设备遥测消息必须采用有效的 JSON 格式，并且在消息系统属性中将 contentType 设置为 JSON，将 contentEncoding 设置为 UTF-8。 如果未设置此项，则 IoT 中心将以 base 64 编码格式写入消息。  |
+
+对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
@@ -162,3 +208,4 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)
+* 若要了解 IoT 中心与事件网格如何协同工作，请参阅[使用事件网格触发操作对 IoT 中心事件做出响应](../iot-hub/iot-hub-event-grid.md)。

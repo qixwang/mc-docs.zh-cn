@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中创建并管理 VNet 服务终结点和规则
+title: 使用虚拟网络规则 - Azure 门户 - Azure Database for PostgreSQL（单一服务器）
 description: 使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中创建并管理 VNet 服务终结点和规则
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 5/6/2019
-ms.date: 11/20/2019
-ms.openlocfilehash: 7bff65ded12a59d08443d05b969bdd6ee666e462
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a5720a638ae7ca94d7d344cec08f59ce96beb54
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74202756"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068250"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中创建并管理 VNet 服务终结点和 VNet 规则
 虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到你的 Azure Database for PostgreSQL 服务器。 有关 Azure Database for PostgreSQL VNet 服务终结点（包括限制）的概述，请参阅 [Azure Database for PostgreSQL Server VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for PostgreSQL 的所有支持区域中，VNet 服务终结点均可用。
@@ -20,6 +20,7 @@ ms.locfileid: "74202756"
 > [!NOTE]
 > 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 > 在 VNet 对等互连的情况下，如果流量通过具有服务终结点的公共 VPN 网关流动，并且应该流向对等机，请创建 ACL/VNet 规则，以便网关 VNet 中的 Azure 虚拟机能够访问 Azure Database for PostgreSQL 服务器。
+
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>在 Azure 门户中创建 VNet 规则和启用服务终结点
 
@@ -61,4 +62,4 @@ ms.locfileid: "74202756"
 - 有关连接到 Azure Database for PostgreSQL 服务器的帮助，请参阅 [Azure Database for PostgreSQL 的连接库](./concepts-connection-libraries.md)
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

@@ -1,19 +1,19 @@
 ---
-title: 诊断和排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
+title: 排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
 description: 使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的常见问题及其解决方法和诊断步骤
 author: rockboyfor
 ms.service: cosmos-db
 origin.date: 07/17/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 46b3b5a697ff69d5efa37fea4a6c06b13e5c3881
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ce12708b79f992b74515b4756632461381765c4f
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335996"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067899"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断和排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
 

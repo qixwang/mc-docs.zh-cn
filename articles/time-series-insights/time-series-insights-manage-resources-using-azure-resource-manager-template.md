@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure 资源管理器模板管理 Azure 时序见解环境 | Microsoft Docs
-description: 本文介绍如何使用 Azure 资源管理器以编程方式管理 Azure 时序见解环境。
+title: 使用 Azure 资源管理器模板管理环境 - Azure 时序见解 | Microsoft Docs
+description: 了解如何使用 Azure 资源管理器以编程方式管理 Azure 时序见解环境。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -9,15 +9,15 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 10/10/2019
-ms.date: 11/04/2019
+origin.date: 12/06/2019
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3a50948f35432dde4ead3ce68b41f1c35eeda3f5
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: d958ed6edb4836abda546cd3ea317eb93e1ffcd2
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914365"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068352"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "72914365"
 
 时序见解支持以下资源：
 
-   | Resource | 说明 |
+   | 资源 | 说明 |
    | --- | --- |
    | 环境 | 时序见解环境是从事件中转站读取的、经存储的并可供查询使用的事件的逻辑分组。 有关详细信息，请参阅[规划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
    | 事件源 | 事件源是与事件中转站建立的连接，时序见解从该中转站读取和引入事件至环境。 目前支持的事件源是 IoT 中心和事件中心。 |
@@ -34,8 +34,8 @@ ms.locfileid: "72914365"
 
 资源管理器模板是用于定义资源组中资源的基础结构和配置的 JSON 文件。 以下文档介绍更详细地介绍了模板文件：
 
-- [Azure 资源管理器模板部署](../azure-resource-manager/template-deployment-overview.md)
-- [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)
+- [Azure 资源管理器模板部署](../azure-resource-manager/templates/overview.md)
+- [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)
 - [Microsoft.TimeSeriesInsights 资源类型](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)
 
 GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) 快速入门模板。 此模板创建一个时序见解环境、一个配置为使用事件中心的事件的子事件源，以及授予环境数据访问权限的访问策略。 如果未指定现有的事件中心，则会连同部署创建一个事件中心。
@@ -54,7 +54,29 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
      若要创建参数文件，请复制 [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) 文件。
 
-      <!--[!code-json[deployment-parameters](~/quickstart-templates/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json)]-->
+     ```JSON
+     {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "eventHubNamespaceName": {
+              "value": "GEN-UNIQUE"
+          },
+          "eventHubName": {
+              "value": "GEN-UNIQUE"
+          },
+          "consumerGroupName": {
+              "value": "GEN-UNIQUE"
+          },
+          "environmentName": {
+            "value": "GEN-UNIQUE"
+          },
+          "eventSourceName": {
+            "value": "GEN-UNIQUE"
+          }
+      }
+    }
+    ```
 
     <div id="required-parameters"></div>
 
@@ -76,8 +98,8 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
      | --- | --- |
      | existingEventHubResourceId | 要通过事件源连接到时序见解环境的现有事件中心的可选资源 ID。 **注意：** 部署模板的用户必须有权对事件中心执行 listkeys 操作。 如果未传递任何值，则模板会创建新的事件中心。 |
      | environmentDisplayName | 要在工具或用户界面中显示的可选友好名称，而不是环境名称。 |
-     | environmentSkuName | SKU 的名称。 有关详细信息，请参阅[时序见解定价页](https://www.azure.cn/pricing/details/time-series-insights/)。  |
-     | environmentSkuCapacity | SKU 的单位容量。 有关详细信息，请参阅[时序见解定价页](https://www.azure.cn/pricing/details/time-series-insights/)。|
+     | environmentSkuName | SKU 的名称。 有关详细信息，请阅读[“时序见解定价”页](https://www.azure.cn/pricing/details/time-series-insights/)。  |
+     | environmentSkuCapacity | SKU 的单位容量。 有关详细信息，请阅读[“时序见解定价”页](https://www.azure.cn/pricing/details/time-series-insights/)。|
      | environmentDataRetentionTime | 环境事件可供查询的最小时间跨度。 必须以 ISO 8601 格式指定该值，例如 `P30D` 表示保留策略为 30 天。 |
      | eventSourceDisplayName | 要在工具或用户界面中显示的可选友好名称，而不是事件源名称。 |
      | eventSourceTimestampPropertyName | 用作事件源时间戳的事件属性。 如果未为 timestampPropertyName 指定值，或者指定 null 或空字符串，则会使用事件创建时间。 |
@@ -120,7 +142,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
      }
      ```
   
-    * 有关详细信息，请参阅[参数](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)一文。
+    * 有关详细信息，请阅读[参数](../azure-resource-manager/templates/parameter-files.md)一文。
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>使用 PowerShell 在本地部署快速入门模板
 
@@ -175,7 +197,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 创建部署
 
-    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 Mode 参数，则将使用默认值 Incremental。   有关详细信息，请参阅 [增量部署和完整部署](../azure-resource-manager/deployment-modes.md)。
+    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 Mode 参数，则将使用默认值 Incremental。   有关详细信息，请阅读[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
     * 以下命令提示在 PowerShell 窗口中输入五个必需的参数：
 
@@ -195,7 +217,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * 若要运行[完整](../azure-resource-manager/deployment-modes.md)部署，请将 Mode 参数设置为 Complete：  
+    * 若要运行[完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 Mode 参数设置为 Complete：  
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -253,4 +275,4 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 REST API 以编程方式管理时序见解资源 的信息，请参阅[时序见解管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)。
+- 有关使用 REST API 以编程方式管理时序见解资源的信息，请阅读[时序见解管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)。

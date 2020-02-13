@@ -1,24 +1,23 @@
 ---
 title: 规划 GA 环境 - Azure 时序见解 | Microsoft Docs
-description: 了解在规划 GA 环境时应遵循的最佳做法。
+description: 准备、配置和部署 Azure 时序见解 GA 环境的最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: v-yiso
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 11/22/2019
-ms.date: 12/23/2019
+origin.date: 01/21/2020
+ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ffd16dd87820258dcfda315a153f415d186711b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 991e38adfae9759244e89e4b40afd40cd93378de
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334665"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068103"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解正式版环境
 
@@ -64,7 +63,7 @@ Azure 时序见解具有两种模式：
 
 1. 在“数据保留时间(天)”框中，输入 1 到 400 的值  。
 
-   [![配置保留期](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+   [![配置保留期](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
 > 若要详细了解如何实施适当的数据保留策略，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
@@ -123,6 +122,4 @@ Azure 时序见解具有两种模式：
 
 - 开始[在 Azure 门户中创建新的时序见解环境](time-series-insights-get-started.md)。
 
-- 了解如何[将事件中心事件源添加](time-series-insights-how-to-add-an-event-source-eventhub.md)到时序见解。
 
-- 了解如何[配置 IoT 中心事件源](time-series-insights-how-to-add-an-event-source-iothub.md)。

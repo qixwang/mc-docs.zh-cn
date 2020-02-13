@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线消息传送示例概述 | Azure
-description: 介绍服务总线消息传送示例并提供每个示例的链接
+title: Azure 服务总线消息传送示例概述
+description: 服务总线消息传送示例演示 Azure 服务总线消息传送方面的关键功能。 提供指向 GitHub 上的示例的链接。
 services: service-bus-messaging
 documentationcenter: na
 author: lingliw
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 03/13/2019
-ms.date: 09/02/2019
+origin.date: 01/27/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: edfa08dd0bffa4eefc05b4da2aed158bff6e1979
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 4526a968abae0a953c87d1445d65ad432530a540
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329999"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068281"
 ---
 # <a name="service-bus-messaging-samples"></a>服务总线消息传送示例
 服务总线消息传送示例演示[服务总线消息传送](/service-bus/)中的关键功能。 目前，可以在以下两个位置找到这些示例：

@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: b714343ec88ff5fec3680345cf9bfb26655b4077
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: da16b7866f55b2461b92885ac6e474b59891a149
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624469"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068367"
 ---
 # <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>标准存储帐户的可伸缩性和性能目标
 
@@ -25,3 +25,7 @@ ms.locfileid: "75624469"
 
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
+## <a name="see-also"></a>另请参阅
+
+- [Azure 存储资源提供程序的可伸缩性目标](../common/scalability-targets-resource-provider.md)
+- [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 10/25/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 41705ba5095f437d94ca6ad290e80dfcebc26237
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.date: 02/10/2020
+ms.openlocfilehash: 4343d9435e83303e421775bcfd5ea97554aee653
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776633"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068318"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
 Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。 可以配置和访问的日志信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （无法访问事务日志）。
@@ -79,7 +79,7 @@ Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **Az
 搜索特定的服务器在过去一天生成的所有 Postgres 日志
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 

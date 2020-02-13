@@ -1,19 +1,19 @@
 ---
 title: 如何筛选 Azure 事件网格的事件
-description: 显示如何创建筛选事件的 Azure 事件网格订阅。
+description: 本文介绍在创建事件网格订阅时如何筛选事件（按事件类型、按主题、按运算符和数据等）。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 01/07/2019
+origin.date: 01/21/2020
 ms.author: v-yiso
-ms.date: 06/03/2019
-ms.openlocfilehash: ce1ad1335b0fd52a07b04cb75a6e96c58f2f7ff6
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.date: 02/17/2020
+ms.openlocfilehash: c234db039902bd253ad870dc2a4a5ed6681462da
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195196"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068320"
 ---
 # <a name="filter-events-for-event-grid"></a>筛选事件网格的事件
 
@@ -185,8 +185,6 @@ az eventgrid event-subscription create \
 ## <a name="filter-by-operators-and-data"></a>按运算符和数据进行筛选
 
 为提高筛选灵活性，可以使用运算符和数据属性来筛选事件。
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>订阅高级筛选器
 

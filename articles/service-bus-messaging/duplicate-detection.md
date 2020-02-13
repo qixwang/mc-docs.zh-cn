@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线重复消息检测 | Azure
-description: 检测重复的服务总线消息
+title: Azure 服务总线重复消息检测 | Microsoft Docs
+description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
 services: service-bus-messaging
 documentationcenter: ''
 author: lingliw
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 33b855afb57dda7f0a27b2fd2beb599650c214b5
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 0e8218bfc7e90df224f6bc86548aec464f6edfad
+ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330147"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067996"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
