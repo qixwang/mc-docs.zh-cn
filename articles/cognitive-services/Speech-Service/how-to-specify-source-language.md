@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 10/26/2019
-ms.date: 01/13/2020
+origin.date: 01/07/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a1eb7921e52faadaa778b6f3b634da6869783c21
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: fa72ef428c9d50dcc615892b46812fc70320a71f
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630980"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028177"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 
@@ -27,23 +27,28 @@ ms.locfileid: "75630980"
 
 ## <a name="how-to-specify-source-language-in-c"></a>如何在 C# 中指定源语言
 
-第一步是创建 `SpeechConfig`：
+在此示例中，使用 `SpeechRecognizer` 构造将源语言显式作为参数提供。
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-接下来，使用 `SpeechRecognitionLanguage` 指定音频的源语言：
+在此示例中，源语言是使用 `SourceLanguageConfig` 提供的。 然后，将 `sourceLanguageConfig` 作为参数传递给 `SpeechRecognizer` 构造。
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "de-DE";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-如果使用自定义模型进行识别，则可使用 `EndpointId` 指定终结点：
+在此示例中，源语言和自定义终结点是使用 `SourceLanguageConfig` 提供的。 然后，将 `sourceLanguageConfig` 作为参数传递给 `SpeechRecognizer` 构造。
 
 ```csharp
-speechConfig.EndpointId = "The Endpoint ID for your custom model.";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
+
+>[!Note]
+> 在 C# 中，`SpeechRecognitionLanguage` 和 `EndpointId` set 方法已从 `SpeechConfig` 类中弃用。 建议不要使用这些方法，在构造 `SpeechRecognizer` 时不应使用它们。
 
 ::: zone-end
 

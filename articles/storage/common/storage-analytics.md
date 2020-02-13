@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 03/03/2017
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ec28aa1b6ecce27dbcef562312b47dedc6bd19fb
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: c34ccefbeb440720f39bb7ad1801cd980d5efb27
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624143"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028890"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -24,7 +24,7 @@ Azure 存储分析执行日志记录并为存储帐户提供指标数据。 可�
 
 聚合数据存储在众所周知的 Blob（用于日志记录）和众所周知的表（用于度量）中，可以使用 BLOB 服务和表服务 API 对其进行访问。
 
-存储分析对于存储的数据量有 20 TB 的限制，这与存储帐户的总限制无关。 有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
+存储分析对于存储的数据量有 20 TB 的限制，这与存储帐户的总限制无关。 有关存储帐户限制的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)。
 
 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 

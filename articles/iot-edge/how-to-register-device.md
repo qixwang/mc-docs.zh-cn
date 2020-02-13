@@ -4,19 +4,18 @@ description: 使用适用于 Azure CLI 的 IoT 扩展注册新的 IoT Edge 设�
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 11/12/2019
-ms.date: 01/20/2020
+origin.date: 01/08/2020
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: aaf4e56f78997cf1dfb1f288191b1d7a048aff31
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 20c4a011b1ac2164863514f5c0df64326074aaa7
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859738"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966552"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>注册 Azure IoT Edge 设备
 
@@ -24,9 +23,9 @@ ms.locfileid: "75859738"
 
 使用以下工具之一即可选择注册：
 
-* [Azure 门户](https://portal.azure.cn)提供一个图形用户界面，用于创建、查看和管理 Azure 资源。
-* [Visual Studio Code](https://code.visualstudio.com/) 是一个源代码编辑器。 有了 Azure IoT 扩展，就可以轻松地使用开发 IoT 解决方案时使用的工具来管理 IoT 资源。
-* [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是用于管理 Azure 资源的命令行工具。 它的可重用命令有助于自动完成任务。
+* 如果你希望使用图形用户界面来创建、查看和管理 Azure 资源，请[在 Azure 门户中注册设备](#register-in-the-azure-portal)。
+* 如果你希望在开发 IoT 解决方案的同一位置管理 Azure IoT 资源，请[使用 Visual Studio Code 注册设备](#register-with-visual-studio-code)。
+* 如果你希望使用命令行工具来管理 Azure 资源或想要自动执行任务，请[使用 Azure CLI 注册设备](#register-with-the-azure-cli)。
 
 ## <a name="register-in-the-azure-portal"></a>在 Azure 门户中注册
 

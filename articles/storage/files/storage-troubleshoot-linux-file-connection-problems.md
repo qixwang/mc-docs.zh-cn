@@ -5,19 +5,19 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/16/2018
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: df5ef5bc9987fb26f573d1accbc841e2029918f6
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: a01ed0cc1eeb5c95c199450482082278f9a21adb
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328740"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028869"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
-本文列出了从 Linux 客户端进行连接时，与 Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 
+本文列出了从 Linux 客户端连接时与 Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 
 
 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) 确保 Linux 客户端满足正确的先决条件。 AzFileDiagnostics 自动检测本文中提到的大多数症状。 它有助于设置环境以获得最佳性能。 也可以在 [Azure 文件共享疑难解答](/storage/files/storage-troubleshoot-windows-file-connection-problems)中找到此信息。 疑难解答提供了帮助你解决连接、映射和装载 Azure 文件共享问题的步骤。
 
@@ -131,25 +131,24 @@ ms.locfileid: "74328740"
 
 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件共享所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。 验证是否已在存储帐户中禁用[需要安全传输](/storage/common/storage-require-secure-transfer)设置。 
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现“授权失败”错误
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>尝试访问或删除 Azure 文件共享时出现错误“无访问权限”  
+尝试访问或删除门户中的 Azure 文件共享时，可能会收到以下错误：
 
-浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
+无访问权限  
+错误代码：403 
 
-授权失败  
-你无权访问
-
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1：你的用户帐户无权访问该存储帐户
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 1：在存储帐户上启用了虚拟网络或防火墙规则
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
-浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户  。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)。
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2：你的用户帐户无权访问该存储帐户
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
+浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户  。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](/storage/blobs/security-recommendations#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
@@ -219,11 +218,11 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: cannot access '&lt;path&gt;':输入/输出错误
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: cannot access '&lt;path&gt;':Input/output error
 
 尝试使用 ls 命令列出 Azure 文件共享中的文件时，该命令在列出文件时挂起。 收到以下错误：
 
-**ls: 无法访问'&lt;path&gt;':Input/output error**
+**ls: cannot access'&lt;path&gt;':Input/output error**
 
 
 ### <a name="solution"></a>解决方案
@@ -234,7 +233,7 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - 4.12.11+
 - 4\.13 或更高的所有版本
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't':Operation not supported
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: failed to create symbolic link 't':Operation not supported
 
 ### <a name="cause"></a>原因
 默认情况下，使用 CIFS 在 Linux 上装载 Azure 文件共享不会启用对符号链接 (symlink) 的支持。 出现如下错误：

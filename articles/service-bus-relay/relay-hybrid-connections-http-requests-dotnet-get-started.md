@@ -1,5 +1,5 @@
 ---
-title: 开始在 .NET 中使用 Azure 中继混合连接 HTTP 请求 | Azure
+title: Azure 中继混合连接 - HTTP 请求 (.NET)
 description: 使用 .NET 为 Azure 中继混合连接 HTTP 请求编写 C# 控制台应用程序。
 services: service-bus-relay
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/01/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 5c403058dd947840290431bb123c77c65a25d585
-ms.sourcegitcommit: 68f7c41974143a8f7bd9b7a54acf41c09893e587
+ms.openlocfilehash: e24202f954a999a3d9537380e2454555c995b2e1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68332215"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028558"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>开始在 .NET 中使用中继混合连接 HTTP 请求
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "68332215"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要满足以下先决条件：
 
-* [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+* [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
 * Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="1-create-a-namespace"></a>1.创建命名空间

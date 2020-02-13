@@ -1,18 +1,18 @@
 ---
 title: 如何在 Azure Cosmos DB 中配置多主数据库
-description: 了解如何在 Azure Cosmos DB 中配置应用程序中的多主数据库。
+description: 了解如何在 Azure Cosmos DB 中使用不同 SDK 为应用程序配置多主数据库。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 07/03/2019
-ms.date: 09/30/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 938ee5913fd42a4688f6414865b9855b8efff7d0
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 7d59cfe8af6fae4e462159e46af8a18625fb4800
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306747"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980483"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Java 应用创建 Cassandra API 帐户 - Azure Cosmos DB
+title: 教程：生成 Java 应用以创建 Azure Cosmos DB Cassandra API 帐户
 description: 本教程介绍如何使用 Java 应用程序创建 Cassandra API 帐户，以及如何向该帐户添加数据库（也称键空间）和表。
 author: rockboyfor
 ms.author: v-yeche
@@ -8,15 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 12/06/2018
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 6cce60923b1d9f4ff38689d52d41eb55f603f6ed
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 2dc369391bdf8bb896e7b4277cf91de34486060c
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306807"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980555"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
@@ -32,13 +32,13 @@ ms.locfileid: "71306807"
 > * 添加数据库和表
 > * 运行应用程序
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
-* 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。 
+* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
 * 获取最新版本的 [Java 开发工具包 (JDK)](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)。 
 
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档。 
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档。 
     - 在 Ubuntu 上，可以通过运行  `apt-get install maven` 来安装 Maven。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户 
@@ -51,11 +51,11 @@ ms.locfileid: "71306807"
 
     |设置   |建议的值  |说明  |
     |---------|---------|---------|
-    |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmosdb.azure.cn 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
+    |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmos.azure.cn 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
     |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库  。  |
     |订阅    |  你的订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
     |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称  。 为简单起见，可以使用与 ID 相同的名称。    |
-    |Location    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
+    |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
 
     ![使用门户创建帐户](./media/create-cassandra-api-account-java/create-account.png)
 
@@ -231,5 +231,4 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 > [!div class="nextstepaction"]
 > [将示例数据加载到 Cassandra API 表](cassandra-api-load-data.md)。
 
-<!--Update_Description: wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

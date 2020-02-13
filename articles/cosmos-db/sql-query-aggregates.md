@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的聚合函数
-description: 了解 Azure Cosmos DB 的 SQL 聚合函数语法。
+description: 了解 SQL 聚合函数语法以及 Azure Cosmos DB 支持的聚合函数类型。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/31/2019
-ms.date: 07/29/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 25d5a30306c768b9f47505cc5e57e93d6b6fe6fd
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.openlocfilehash: c1e1906b911381a1fc55462d5a736bb8ae2d2695
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68672264"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028714"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聚合函数
 
@@ -25,7 +25,7 @@ ms.locfileid: "68672264"
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -40,7 +40,7 @@ ms.locfileid: "68672264"
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [ 2 ]
@@ -54,7 +54,7 @@ ms.locfileid: "68672264"
     WHERE f.address.state = "WA"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [ 1 ]

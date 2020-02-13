@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 遥测数据模型 - 请求遥测 | Azure Docs
+title: 适用于请求遥测的数据模型 - Azure Application Insights
 description: 适用于请求遥测的 Application Insights 数据模型
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ origin.date: 01/07/2019
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: 17f6b87278c06b9b9b254f0565666c145fb2f02f
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: c841beb4784099511f9ef853d844aec90a48855f
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970915"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028437"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "72970915"
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
@@ -50,7 +50,7 @@ ms.locfileid: "72970915"
 
 ## <a name="duration"></a>持续时间
 
-采用 `DD.HH:MM:SS.MMMMMM` 格式的请求持续时间。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
+请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
 
 ## <a name="response-code"></a>响应代码
 

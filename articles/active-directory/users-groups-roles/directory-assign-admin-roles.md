@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 01/08/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 045021042f75920b6a1889e63e7af10f0fb35715
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: d0d48b445328d6c149f01278bf998aa531f01b60
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777002"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067718"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -347,7 +347,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 
 ### <a name="security-operatorsecurity-operator-permissions"></a>[安全操作员](#security-operator-permissions)
 
-具有此角色的用户可以管理警报，并对安全相关的功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、Privileged Identity Management 以及 Office 365 安全与合规中心。 [Office 365 安全与合规中心](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)提供了有关 Office 365 权限的详细信息。
+具有此角色的用户可以管理警报，并对安全相关功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、Privileged Identity Management 以及 Office 365 安全与合规中心中的所有信息。 [Office 365 安全与合规中心](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)提供了有关 Office 365 权限的详细信息。
 
 In | 有权执行的操作
 --- | ---
@@ -397,12 +397,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn/)中的“Skype for Business 管理员”。
 
-### <a name="teams-administratorteams-service-administrator-permissions"></a>[Teams 管理员](#teams-service-administrator-permissions)
-
-充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 此外，此角色还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。
-> [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Teams 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Teams 管理员”。
-
 ### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Teams 通信管理员](#teams-communications-administrator-permissions)
 
 充当此角色的用户可以管理 Microsoft Teams 工作负荷的语音与电话相关方面。 这包括用于分配电话号码的管理工具、语音和会议策略，以及通话分析工具集的完全访问权限。
@@ -414,6 +408,10 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 ### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[Teams 通信支持专家](#teams-communications-support-specialist-permissions)
 
 充当此角色的用户可以使用 Microsoft Teams 和 Skype for Business 管理中心的用户通话故障排除工具，来排查 Microsoft Teams 和 Skype for Business 中的通信问题。 充当此角色的用户只能查看他们所查找的特定用户的通话中的用户详细信息。 此角色无权查看、创建或管理支持票证。
+
+### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Teams 服务管理员](#teams-service-administrator-permissions)
+
+充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 此外，此角色还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[用户管理员](#user-administrator-permissions)
 
@@ -1537,7 +1535,7 @@ Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3
 全局读取者 | 全局读取者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 组管理员 | 组管理员 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
-支持管理员 | 密码管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+支持管理员 | 支持管理员  | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 许可证管理员 | 许可证管理员 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a

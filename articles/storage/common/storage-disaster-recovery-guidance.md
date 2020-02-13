@@ -1,20 +1,22 @@
 ---
-title: 灾难恢复和存储帐户故障转移（预览版）- Azure 存储
+title: 灾难恢复和存储帐户故障转移（预览版）
+titleSuffix: Azure Storage
 description: Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过帐户故障转移，可以在主终结点不可用时为存储帐户启动故障转移过程。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 02/25/2019
-ms.date: 11/19/2019
+ms.topic: conceptual
+origin.date: 01/23/2020
+ms.date: 02/10/2020
 ms.author: v-jay
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7b1013b9821d3037f84acff4f6ff4b4aa071eb37
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 4446393f3f0c70284e5abbabfcd335fc6280c2c9
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179006"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028874"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
 
@@ -24,14 +26,16 @@ Azure 致力于确保 Azure 服务一直可用。 不过，可能会发生计划
 
 ## <a name="choose-the-right-redundancy-option"></a>选择正确的冗余选项
 
-为了实现冗余，所有存储帐户都会进行复制。 为帐户选择哪个冗余选项取决于所需的复原能力水平。 若要防止区域中断，请选择有权或无权从次要区域读取数据的异地冗余存储：  
+Azure 存储将维护存储帐户的多个副本，以确保持续性和高可用性。 为帐户选择哪个冗余选项取决于所需的复原能力水平。 若要防止区域中断，请选择有权或无权从次要区域读取数据的异地冗余存储：  
 
-**异地冗余存储 (GRS)** ：在至少相距数百英里的两个地理区域之间异步复制数据。 如果主要区域遭遇服务中断，次要区域便会成为数据的冗余源。 可以通过启动故障转移，将辅助终结点转换为主终结点。
+**异地冗余存储 (GRS)** 在至少相距数百英里的两个地理区域中异步复制数据。 如果主要区域遭遇服务中断，次要区域便会成为数据的冗余源。 可以通过启动故障转移，将辅助终结点转换为主终结点。
 
 **读取访问权限异地冗余存储 (RA-GRS)** ：为异地冗余存储提供附加优势，即对辅助终结点的读取访问权限。 如果主终结点发生中断，配置了 RA-GRS 且旨在实现高可用性的应用程序可以继续从辅助终结点读取数据。 我们建议对应用程序使用 RA-GRS，以获取最大复原能力。
 
+有关 Azure 存储中冗余的详细信息，请参阅 [Azure 存储冗余](storage-redundancy.md)。
+
 > [!WARNING]
-> 异地冗余存储有数据丢失风险。 数据是异步复制到次要区域。也就是说，数据写入主要区域与数据写入次要区域之间存在延迟。 在服务中断的情况下，对主终结点执行、但尚未复制到辅助终结点的写入操作将会丢失。 
+> 异地冗余存储有数据丢失风险。 数据是异步复制到次要区域，这意味着数据写入主要区域与数据写入次要区域之间存在延迟。 发生服务中断时，尚未复制到辅助终结点的对主终结点的写入操作将丢失。
 
 ## <a name="design-for-high-availability"></a>旨在实现高可用性
 

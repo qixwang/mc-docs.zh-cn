@@ -1,5 +1,5 @@
 ---
-title: 使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 设备管理 | Microsoft Docs
+title: 使用 Azure IoT Tools for VSCode 管理 Azure IoT设备
 description: 使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理，特点是使用直接方法并提供孪生所需的属性管理选项。
 author: formulahendry
 ms.service: iot-hub
@@ -7,14 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 origin.date: 01/04/2019
-ms.date: 08/05/2019
+ms.date: 01/27/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8d5a05ce0f17eb4cc9140542ce5577595340383f
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 61cdb26ad0941af40c30fcf3037bc1d005208d25
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514377"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966554"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
 
@@ -67,7 +67,7 @@ ms.locfileid: "68514377"
 
 1. 右键单击设备并选择“调用直接方法”  。 
 1. 在输入框中输入方法名称和有效负载。
-3. 结果将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
+3. 结果将显示在“输出”   > “Azure IoT 中心”  视图中。
 
 ## <a name="read-device-twin"></a>读取设备孪生
 
@@ -86,7 +86,7 @@ ms.locfileid: "68514377"
  
 1. 右键单击设备，然后选择“将 C2D 消息发送到设备”  。 
 1. 在输入框中输入消息。
-3. 结果将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
+3. 结果将显示在“输出”   > “Azure IoT 中心”  视图中。
 
 ## <a name="next-steps"></a>后续步骤
 

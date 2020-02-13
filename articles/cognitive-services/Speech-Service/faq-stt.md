@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/04/2019
-ms.date: 01/27/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 09c15f37ffc9eccc6174485a291957ec48c4427b
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 0848b328134587bc1a91e154c14037c978a3c389
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123271"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028173"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -80,7 +80,7 @@ ms.locfileid: "76123271"
 
 **问：双声道音频如何收费？**
 
-**答**：如果你单独提交每个声道（每个声道在其自己的文件中），将按文件的持续时间对你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。
+**答**：如果你单独提交每个声道（每个声道在其自己的文件中），则将按每个文件的持续时间对你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。 有关定价的详细信息，请参阅 [Azure 认知服务定价页](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 > [!IMPORTANT]
 > 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。

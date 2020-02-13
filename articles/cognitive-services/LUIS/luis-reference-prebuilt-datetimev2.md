@@ -9,15 +9,15 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-origin.date: 10/14/2019
-ms.date: 12/05/2019
+origin.date: 01/07/2020
+ms.date: 01/15/2020
 ms.author: v-lingwu
-ms.openlocfilehash: eac6e442bee86774b8e255ce277f43a5458ecd2f
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: d18c7f5173e590c67645d3bba049c69c4446fbc1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884528"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028832"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
@@ -147,6 +147,7 @@ ms.locfileid: "74884528"
 |属性名称|属性说明|
 |--|--|
 |timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
+|mod|术语，用于说明如何使用 `before`、`after` 等值。|
 |type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
 |value|**可选。** 采用 yyyy-MM-dd（日期）、HH:mm:ss（时间）、yyyy-MM-dd HH:mm:ss（日期/时间）格式的日期/时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
 
@@ -160,13 +161,13 @@ ms.locfileid: "74884528"
 
 ## <a name="ambiguous-dates"></a>歧义日期
 
-如果日期可以是过去或未来的日期，则 LUIS 会提供这两个值。 包括年份中的月份和日期的陈述就是一个例子。  
+如果日期可以是过去或未来的日期，则 LUIS 会提供这两个值。 包括年份中的月份和日期的陈述就是一个例子。
 
 例如，给定以下话语：
 
 `May 2nd`
 
-* 如果今天的日期是 2017 年 5 月 3 日，则 LUIS 会提供“2017-05-02”和“2018-05-02”作为值。 
+* 如果今天的日期是 2017 年 5 月 3 日，则 LUIS 会提供“2017-05-02”和“2018-05-02”作为值。
 * 如果今天的日期是 2017 年 5 月 1 日，则 LUIS 会提供“2016-05-02”和“2017-05-02”作为值。
 
 以下示例显示了实体“5 月 2 日”的解析。 此解析假设今天的日期是 2017 年 5 月 2 日和 2018 年 5 月 1 日之间的某个日期。
@@ -270,7 +271,7 @@ ms.locfileid: "74884528"
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>数字日期的日期范围解析示例
 
@@ -374,7 +375,7 @@ ms.locfileid: "74884528"
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>星期日期的日期范围解析示例
 
@@ -475,7 +476,7 @@ ms.locfileid: "74884528"
     }
   ]
 ```
-* * * 
+* * *
 
 ## <a name="ambiguous-time"></a>歧义时间
 如果时间或时间范围歧义，values 数组将包含两个 time 元素。 如果存在歧义的时间，则 values 包含 A.M. 和 P.M. 时间。
@@ -485,7 +486,7 @@ ms.locfileid: "74884528"
 DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析包含时间范围的陈述。
 
 自 API V2 以来的更改：
-* `datetimeV2.timex.type` 属性不再返回，因为它在父级别 `datetimev2.type` 返回。 
+* `datetimeV2.timex.type` 属性不再返回，因为它在父级别 `datetimev2.type` 返回。
 * `datetimeV2.value` 属性已重名为 `datetimeV2.timex`。
 
 下面显示了以下话语及其部分 JSON 响应。
@@ -580,7 +581,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
   ]
 ```
 
-* * * 
+* * *
 
 ## <a name="time-resolution-example"></a>时间解析示例
 
@@ -667,15 +668,15 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 ]
 ```
 
-* * * 
+* * *
 
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
-`datetime` 预生成实体已弃用，已由 datetimeV2 取代  。 
+`datetime` 预生成实体已弃用，已由 datetimeV2 取代  。
 
 若要在 LUIS 应用中将 `datetime` 替换为 `datetimeV2`，请完成以下步骤：
 
-1. 打开 LUIS Web 界面的“实体”窗格。  
+1. 打开 LUIS Web 界面的“实体”窗格。 
 2. 删除 **datetime** 预生成实体。
 3. 单击“添加预生成实体” 
 4. 选择“datetimeV2”并单击“保存”。  
@@ -684,7 +685,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 
 详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
-了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。 
+了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。
 
 
 

@@ -9,12 +9,12 @@ origin.date: 11/19/2019
 ms.date: 12/4/2019
 ms.reviewer: lmolkova
 ms.author: v-lingwu
-ms.openlocfilehash: c39ede9477306f100e7a2bb085607d54779e908e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 2fef5f30210a5f223a0099d9495ef024f6fc3c8b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839006"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028435"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
@@ -38,6 +38,10 @@ configuration.InstrumentationKey = " *your key* ";
 var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
+
+> [!NOTE]
+> 遥测不会立即发送。 遥测项将由 ApplicationInsights SDK 进行批处理和发送。 在控制台应用（调用 `Track()` 方法后立即退出）中，除非在应用退出之前完成 `Flush()` 和 `Sleep`，否则无法发送遥测，如本文后面的[完整示例](#full-example)所示。
+
 
 * 安装最新版本的 [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) 包 - 它可自动跟踪 HTTP、SQL 或一些其他外部依赖项调用。
 
@@ -188,7 +192,7 @@ namespace ConsoleApp
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");
 
             // enable known dependency tracking, note that in future versions, we will extend this list. 
-            // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
+            // please check default settings in https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
 
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");

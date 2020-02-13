@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: 9730f9bfa89d2a93a83916d2daaf8dc1a3af3f7d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 02/05/2020
+ms.openlocfilehash: d1839ed98cd5912e31a3fadf2292e700c25292d0
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623652"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028027"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -58,12 +58,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>更改正在运行的高级缓存上的群集大小
-若要更改正在运行并且已启用群集功能的高级缓存上的群集大小，请在“资源菜单”  中单击“Redis 群集大小”  。
-
-> [!NOTE]
-> 虽然 Azure Redis 缓存高级层已发行正式发布版，但 Redis 群集大小功能目前以预览版提供。
-> 
-> 
+若要更改正在运行且已启用群集功能的高级缓存上的群集大小，请在“资源”菜单  中单击“群集大小”  。
 
 ![Redis 群集大小][redis-cache-redis-cluster-size]
 
@@ -121,7 +116,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 Redis 群集协议要求每个客户端以群集模式直接连接到每个分片，并且还定义了新的错误响应，例如“MOVED”或“CROSSSLOTS”。 尝试将不支持群集的客户端用于群集模式缓存可能会导致大量 [MOVED 重定向异常](https://redis.io/topics/cluster-spec#moved-redirection)，或者如果你正在进行跨槽多键请求，则只会中断应用程序。
 
 > [!NOTE]
-> 如果使用 StackExchange.Redis 作为客户端，请确保使用最新版本的 [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)，即 1.0.481 或更高，以便群集功能能够正常使用。 如果对 move 异常有任何疑问，请参阅 [move 异常](#move-exceptions)了解详细信息。
+> 如果使用 StackExchange.Redis 作为客户端，请确保使用最新版本的 [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)，即 1.0.481 或更高，以便群集功能能够正常使用。 如果对 move 异常有任何疑问，请参阅 [move 异常](#move-exceptions) 了解详细信息。
 >
 
 ### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>启用群集功能后，如何连接到缓存？

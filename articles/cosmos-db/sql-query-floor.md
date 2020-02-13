@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 FLOOR
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 FLOOR。
+description: 了解 Azure Cosmos DB 中的 FLOOR SQL 系统函数，该函数返回小于或等于指定数值表达式的最大整数
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: b6644b9cdabf43bada26202b7423eac6f5ac6451
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 9571584ac477eec1d09eac19fae6046128fa5b12
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914737"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028660"
 ---
 # <a name="floor-azure-cosmos-db"></a>FLOOR (Azure Cosmos DB)
  返回小于或等于指定数值表达式的最大整数。  
@@ -53,5 +53,4 @@ SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query floor -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -3,42 +3,34 @@ title: 快速入门：Azure Blob 存储库 v12 - Python
 description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
 author: WenJason
 ms.author: v-jay
-origin.date: 11/05/2019
-ms.date: 01/06/2020
+origin.date: 01/24/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d59425c9351d492f714329fdaa5d94c9f789f30c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 4d32c4f0ce31a4e9a22c6c31ed86605b087cb2d4
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624182"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028891"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure Blob 存储客户端库 v12
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
-适用于 Python 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Azure 的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
-
-> [!NOTE]
-> 若要使用之前的 SDK 版本入门，请参阅[快速入门：适用于 Python 的 Azure Blob 存储客户端库](storage-quickstart-blobs-python-legacy.md)。
-
-使用 Azure Blob 存储客户端库完成以下操作：
-
-* 创建容器
-* 将 blob 上传到 Azure 存储
-* 列出容器中所有的 blob
-* 将 blob 下载到本地计算机
-* 删除容器
+本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
 [API 参考文档](https://docs.microsoft.com/python/api/azure-storage-blob) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-blob/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+- 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
+- [Python](https://www.python.org/downloads/) 2.7、3.5 或更高版本。
+
+> [!NOTE]
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：使用 Python v2.1 SDK 管理 blob](storage-quickstart-blobs-python-legacy.md)。
+
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅 - [创建一个 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)
-* Azure 存储帐户 - [创建存储帐户](/storage/common/storage-quickstart-create-account)
-* 适用于你的操作系统的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更高版本
 
 ## <a name="setting-up"></a>设置
 
@@ -82,7 +74,7 @@ pip install azure-storage-blob
 
 1. 在代码编辑器中打开新文本文件
 1. 添加 `import` 语句
-1. 为程序创建结构，包括非常基本的异常处理
+1. 为程序创建结构，包括基本的异常处理
 
     代码如下：
 
@@ -235,7 +227,7 @@ with open(download_file_path, "wb") as download_file:
 
 以下代码使用 [delete_container](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) 方法删除整个容器，从而清除该应用所创建的资源。 也可根据需要删除本地文件。
 
-在删除 blob、容器和本地文件之前，应用会调用 `input()` 以暂停并等待用户输入。 可以通过这种方式验证是否已正确创建资源，然后再删除该资源。
+在删除 blob、容器和本地文件之前，应用会调用 `input()` 以暂停并等待用户输入。 可以通过此机会验证是否已正确创建资源，然后再删除这些资源。
 
 将此代码添加到 `try` 块的末尾：
 

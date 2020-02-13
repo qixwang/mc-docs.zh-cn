@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 5411b02420ad2132e217c5211633ee98cfa03972
-ms.sourcegitcommit: 99c408fd0f1fc264acaed41f1a77fea4ebbc0e0f
+ms.openlocfilehash: d5d7bf9bc96a162825905f4875e6c1ae86e0115f
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74354354"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028933"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -102,6 +102,8 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --aad-endpo
 
 |选项|说明|
 |--|--|
+|--aad-endpoint|要使用的 Azure Active Directory 终结点。 默认值 (https://login.microsoftonline.com) 适用于公共 Azure 云。 在国家云中进行身份验证时设置此参数。 请参阅 [Azure AD 身份验证终结点](/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+托管服务标识不需要此标志。|
 |--application-id string|用户分配标识的应用程序 ID。 服务主体身份验证所需。|
 |--certificate-path string|用于 SPN 身份验证的证书的路径。 基于证书的服务主体身份验证所需。|
 |-h、--help|显示 login 命令的帮助内容。|

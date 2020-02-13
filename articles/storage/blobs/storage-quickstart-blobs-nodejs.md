@@ -3,42 +3,34 @@ title: 快速入门：Azure Blob 存储库 v12 - JavaScript
 description: 本快速入门介绍如何使用适用于 JavaScript 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
 author: WenJason
 ms.author: v-jay
-origin.date: 11/19/2019
-ms.date: 01/06/2020
+origin.date: 01/24/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: eebef3bc8e50623e0762086f14248ea9f5aab772
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: faef93c5e77ce1cc96dd442475d919a6efad267a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624189"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028894"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v12
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
-适用于 JavaScript 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Azure 的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
-
-> [!NOTE]
-> 若要开始使用以前的 SDK 版本，请参阅[快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库](storage-quickstart-blobs-nodejs-v10.md)。
-
-使用适用于 JavaScript 的 Azure Blob 存储客户端库 v12 完成以下操作：
-
-* 创建容器
-* 将 blob 上传到 Azure 存储
-* 列出容器中所有的 blob
-* 将 blob 下载到本地计算机
-* 删除容器
+本快速入门介绍如何使用 Node.js 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
 [API 参考文档](https://docs.microsoft.com/javascript/api/@azure/storage-blob) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-blob) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+- 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
+- [Node.js](https://nodejs.org/en/download/)。
+
+> [!NOTE]
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：在 Node.js 中使用 JavaScript v10 SDK 管理 blob](storage-quickstart-blobs-nodejs-legacy.md)。
+
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅 - [创建 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)
-* Azure 存储帐户 - [创建存储帐户](/storage/common/storage-quickstart-create-account)
-* 适用于操作系统的当前 [Node.js](https://nodejs.org/en/download/)。
 
 ## <a name="setting-up"></a>设置
 
@@ -97,7 +89,7 @@ npm install
 
 1. 在代码编辑器中打开另一个新文本文件
 1. 添加 `require` 调用以加载 Azure 和 Node.js 模块
-1. 为程序创建结构，包括非常基本的异常处理
+1. 为程序创建结构，包括基本的异常处理
 
     代码如下：
 

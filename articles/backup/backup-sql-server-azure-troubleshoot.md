@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/18/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d0971a80c0c4cdd90ac1a6ff2f75516915eee018
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 2375f2315d2cac014d8e7c51f3bc7ea2455fd9f8
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838883"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028501"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -133,13 +133,15 @@ ms.locfileid: "74838883"
 在触发重新注册操作之前，请检查是否存在以下一种或多种症状：
 
 * 所有操作（例如备份、还原和配置备份）在 VM 失败，并出现以下错误代码之一：**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
-* 备份项的“备份状态”区域显示“无法访问”。   排除可能导致相同状态的所有其他原因：
+* 如果备份项的“备份状态”  区域显示为“无法访问”  ，请排除可能导致相同状态的其他所有原因：
 
-  * 缺少在 VM 上执行备份相关操作的权限  
-  * VM 已关闭，因此备份无法进行
-  * 网络问题  
+  * 缺少在 VM 上执行备份相关操作的权限。
+  * VM 已关闭，因此备份无法进行。
+  * 网络问题。
 
-  ![重新注册 VM 时出现“无法访问”状态](./media/backup-azure-sql-database/re-register-vm.png)
+   ![重新注册 VM](./media/backup-azure-sql-database/re-register-vm.png)
+
+
 
 * 使用 Always On 可用性组时，更改备份优先顺序或完成故障转移后备份开始失败。
 

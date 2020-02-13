@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - Azure REST API | Azure
+title: 排查连接问题 - Azure REST API
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure REST API 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 origin.date: 08/02/2017
 ms.date: 10/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: fbbdd24da8ce8f76c3899872e54fbc84f1a4c1c7
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 01c97e415da67f490fc4a28e372457e00761dc46
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674678"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028488"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序排查连接问题
 

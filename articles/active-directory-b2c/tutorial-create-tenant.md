@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f70de3bedbd0ecbe7c11f6feadd5d36bd14ce1ab
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 612c51f3aa34d5251d22999cdd02b1b7af422d74
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623745"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028116"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -68,6 +68,8 @@ ms.locfileid: "75623745"
     对于“资源组”  ，选择“新建”  。 输入要包含该租户的资源组的**名称**，选择**资源组位置**，然后选择“创建”。 
 
     ![Azure 门户中的“链接订阅”设置窗体](./media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
+    出于计费目的，可以将多个 Azure AD B2C 租户链接到单个 Azure 订阅。 
 
 ## <a name="select-your-b2c-tenant-directory"></a>选择 B2C 租户目录
 

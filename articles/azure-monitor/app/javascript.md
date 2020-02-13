@@ -9,12 +9,12 @@ manager: digimobile
 origin.date: 09/12/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 26477995786ae4033bcf76d494a2b32325adf9bc
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e376f3f68b45a8b4a5f10d5460651a90132c3706
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839027"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028440"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -99,7 +99,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
-| Name | 默认 | 说明 |
+| 名称 | 默认 | 说明 |
 |------|---------|-------------|
 | instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
 | accountId | Null | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 |
@@ -130,12 +130,16 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
 | isBeaconApiDisabled | 是 | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
+| onunloadDisableBeacon | false | 默认值为 false。 选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有剩余的遥测 |
 | sdkExtension | Null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
 | isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)请求。 |
 | appId | Null | appId 用于在客户端上发生的 AJAX 依赖项与服务器端请求之间进行关联。 启用信标 API 后，无法自动使用 appId，但可以在配置中手动设置它。 默认值为 null |
 | enableCorsCorrelation | false | 如果为 true，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有 CORS 请求，以将传出的 AJAX 依赖项关联到服务器端上的对应请求。 默认值为 false |
 | namePrefix | undefined | 一个可选值，用作 localStorage 和 Cookie 名称的名称后缀。
 | enableAutoRouteTracking | false | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。
+| enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求标头，默认值为 false。
+| enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
+| distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。
 
 ## <a name="single-page-applications"></a>单页应用程序
 
@@ -249,7 +253,7 @@ SDK V2 版本中的重大更改：
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-最新 ✔ | 最新 ✔ | 9+ ✔ | 最新 ✔ | 最新 ✔ |
+Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Edge ✔ | Opera 最新版 ✔ | Safari 最新版 ✔ |
 
 ## <a name="open-source-sdk"></a>开源 SDK
 

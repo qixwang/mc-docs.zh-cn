@@ -1,18 +1,18 @@
 ---
-title: 用于管理 Azure Cosmos DB's API for MongoDB 中存储的数据的 MongoDB 扩展命令
+title: 用于管理 Azure Cosmos DB's API for MongoDB 中的数据的 MongoDB 扩展命令
 description: 本文介绍如何使用 MongoDB 扩展命令来管理 Azure Cosmos DB's API for MongoDB 中存储的数据。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 03/26/2019
-ms.date: 05/13/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a1dd2adc17db5e8287339d65f8314799a643749e
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.openlocfilehash: 241b6a3e5f7038b70eaebf0ae7b13ccb2cff7c14
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65668924"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028815"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理 Azure Cosmos DB's API for MongoDB 中存储的数据 
 
@@ -47,7 +47,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction   |  字符串  |   自定义命令的名称，必须是“CreateDatabase”。      |
+| customAction   |  string  |   自定义命令的名称，必须是“CreateDatabase”。      |
 | offerThroughput | int  | 对数据库设置的预配吞吐量。 此参数是可选的。 |
 
 ### <a name="output"></a>输出
@@ -90,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction    |    字符串     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
+| customAction    |    string     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
 |  offerThroughput   |  int       |     要对数据库设置的新预配吞吐量。    |
 
 ### <a name="output"></a>输出
@@ -123,7 +123,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是“GetDatabase”|
+|  customAction   |   string      |   自定义命令的名称。 必须是“GetDatabase”|
 
 ### <a name="output"></a>输出
 
@@ -166,10 +166,10 @@ db.runCommand({customAction: "GetDatabase"});
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction    | 字符串 | 自定义命令的名称。 必须是“CreateCollection”     |
-| collection      | 字符串 | 集合的名称                                   |
+| customAction    | string | 自定义命令的名称。 必须是“CreateCollection”     |
+| collection      | string | 集合的名称                                   |
 | offerThroughput | int    | 要对数据库设置的预配吞吐量。 它是一个可选参数 |
-| shardKey        | 字符串 | 要在其中创建分片集合的分片键路径。 它是一个可选参数 |
+| shardKey        | string | 要在其中创建分片集合的分片键路径。 它是一个可选参数 |
 
 ### <a name="output"></a>输出
 
@@ -212,8 +212,8 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是“UpdateCollection”。      |
-|  collection   |   字符串      |   集合的名称。       |
+|  customAction   |   string      |   自定义命令的名称。 必须是“UpdateCollection”。      |
+|  collection   |   string      |   集合的名称。       |
 | offerThroughput   |int|   要对集合设置的预配吞吐量。|
 
 ## <a name="output"></a>输出
@@ -247,8 +247,8 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 |**字段**|**类型** |**说明** |
 |---------|---------|---------|
-| customAction    |   字符串      |   自定义命令的名称。 必须是“GetCollection”。      |
-| collection    |    字符串     |    集合的名称。     |
+| customAction    |   string      |   自定义命令的名称。 必须是“GetCollection”。      |
+| collection    |    string     |    集合的名称。     |
 
 ### <a name="output"></a>输出
 
@@ -293,5 +293,4 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 * [Azure Cosmos DB 中的索引](../cosmos-db/index-policy.md)
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)
 
-<!--Update_Description: new articles on mongodb custom commands -->
-<!--ms.date: 04/15/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

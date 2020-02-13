@@ -1,18 +1,18 @@
 ---
 title: 了解如何在 Azure Cosmos DB 中管理数据库帐户
-description: 了解如何在 Azure Cosmos DB 中管理数据库帐户
+description: 了解如何使用 Azure 门户、PowerShell、CLI 和 Azure 资源管理器模板管理 Azure Cosmos DB 资源
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 10/31/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.date: 12/16/2019
-ms.openlocfilehash: 4d13a05f02e48eafaaeb4c5bd7192aeff73bff1a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 963e2dfd03b7bc8a8eed7fb39c705e00567cd558
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336215"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980503"
 ---
 <!-- Verify Successfully-->
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
@@ -37,7 +37,7 @@ ms.locfileid: "75336215"
 请参阅[使用 Powershell 创建 Azure Cosmos DB 帐户](manage-with-powershell.md#create-account)
 
 <a name="create-database-account-via-arm-template"></a>
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 此 Azure 资源管理器模板将为 SQL API 创建一个 Azure Cosmos 帐户（配置有两个区域以及用于选择一致性级别、自动故障转移和多主数据库的选项）。 若要部署此模板，请在自述文件页[创建 Azure Cosmos 帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)上，单击“部署到 Azure”
 
@@ -179,7 +179,7 @@ ms.locfileid: "75336215"
 
 3. 在“自动故障转移”窗格中，确保将“启用自动故障转移”设置为“开”。    
 
-4. 选择“保存”。 
+4. 选择“保存”  。
 
     ![自动故障转移门户菜单](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -213,7 +213,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 4. 若要修改故障转移优先级，请将鼠标指针悬停在读取区域上，并通过在行左侧出现的三个点拖动读取区域。
 
-5. 选择“保存”。 
+5. 选择“保存”  。
 
     ![自动故障转移门户菜单](./media/how-to-manage-database-account/automatic-failover.png)
 

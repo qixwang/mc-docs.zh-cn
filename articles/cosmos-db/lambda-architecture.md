@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Cosmos DB 和 HDInsight (Apache Spark) 的 Lambda 体系结构
+title: 使用 Azure Cosmos DB 和 Apache Spark 实现 Lambda 体系结构
 description: 本文介绍如何实现使用 Azure Cosmos DB、HDInsight 和 Spark 的 lambda 体系结构
 ms.service: cosmos-db
 author: rockboyfor
 ms.author: v-yeche
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: 28287327911f3df918181805cd90a2ea337dd44d
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.date: 02/10/2020
+ms.openlocfilehash: 346ce6b1eedd743ce87aedfa69c457fcd266a461
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254432"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980443"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上实现 lambda 体系结构 
 
@@ -47,7 +47,7 @@ lambda 体系结构是一种通用、可缩放且容错的数据处理体系结�
 
 * Azure Cosmos 容器
 * HDInsight (Apache Spark 2.1) 群集
-* Spark 连接器 [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
+* Spark 连接器 [1.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.6/jar)
 
 ## <a name="speed-layer"></a>速度层
 
@@ -178,6 +178,7 @@ val writeConfigMap = Map(
 
 // Configuration to write
 val writeConfig = Config(writeConfigMap)
+
 ```
 
 指定 `SaveMode`（指示是要 `Overwrite`还是 `Append` 文档）后，创建与前面示例中的 Spark SQL 查询类似的 `tweets_bytags` 数据帧。  创建 `tweets_bytags` 数据帧后，可以使用 `write` 方法和前面指定的 `writeConfig` 将其保存。
@@ -237,6 +238,7 @@ val sinkConfigMap = configMap.-("collection").+(("collection", sinkCollectionNam
 // Start the stream writer to new collection
 val streamingQueryWriter = streamData.writeStream.format(classOf[CosmosDBSinkProvider].getName).outputMode("append").options(sinkConfigMap).option("checkpointLocation", "streamingcheckpointlocation")
 var streamingQuery = streamingQueryWriter.start()
+
 ```
 
 ## <a name="lambda-architecture-rearchitected"></a>Lambda 体系结构：重新构建

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 3828c1bf491ebd55be966463ecee97014e652996
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: f5316d33733d0005e5c29991907de3094dfddbf8
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623761"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028122"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -99,6 +99,7 @@ ms.locfileid: "75623761"
 | OutputClaimsTransformations | 0:1 | 事先定义的、对在从声明提供程序收到声明之后应执行的声明转换的引用列表。 |
 | ValidationTechnicalProfiles | 0:n | 对技术配置文件用来进行验证的其他技术配置文件的引用列表。 有关详细信息，请参阅[验证技术配置文件](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | 控制令牌中使用者名称的生成，其中的使用者名称与声明分开指定。 例如 OAuth 或 SAML。  |
+| IncludeInSso | 0:1 |  使用此技术配置文件时是应当对会话应用单一登录 (SSO) 行为，还是需要显式交互。 此元素仅在验证技术配置文件内使用的 SelfAsserted 配置文件中有效。 可能的值为 `true`（默认）或 `false`。 |
 | IncludeClaimsFromTechnicalProfile | 0:1 | 要将其中的所有输入和输出声明添加到此技术配置文件的技术配置文件的标识符。 必须在同一个策略文件中定义被引用的技术配置文件。 |
 | IncludeTechnicalProfile |0:1 | 要将其中的所有数据添加到此技术配置文件的技术配置文件的标识符。 被引用的技术配置文件必须在同一个策略文件中。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | 用于会话管理的另一个技术配置文件。 |
@@ -110,7 +111,7 @@ Protocol  元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、`session management`、`self-asserted` 或 `None`。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、`session management`、`self-asserted` 或 `None`。 |
 | Handler | 否 | 当协议名称设置为 `Proprietary` 时，指定 Azure AD B2C 用来确定协议处理程序的程序集的完全限定名称。 |
 
 ## <a name="metadata"></a>Metadata

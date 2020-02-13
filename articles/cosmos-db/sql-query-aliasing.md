@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB 中指定别名
-description: 了解如何为 Azure Cosmos DB SQL 查询中的值指定别名
+description: 了解如何在 Azure Cosmos DB SQL 查询中使用别名来区分两个同名属性
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 06/20/2019
-ms.date: 09/30/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0ca5860c9f43e3e08579af286d9362d689597eb6
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 8d83c85eec1c669ff0af39cf1c1b9168e8c77788
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306769"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028709"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中指定别名
 
@@ -30,7 +30,7 @@ ms.locfileid: "71306769"
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{

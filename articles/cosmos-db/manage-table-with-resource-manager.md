@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB 表 API 的 Azure 资源管理器模板
+title: Azure Cosmos DB 表 API 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB 表 API。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/12/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: d4cd5a84dc21a2ee5adecd471b257cabe0db86b0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f06adce040460f327e2f6b1133fb4141ae435d9b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335744"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028926"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB 表 API 资源
@@ -35,7 +35,7 @@ ms.locfileid: "75335744"
     "parameters": {
         "accountName": {
             "type": "string",
-            "defaultValue": "[uniqueString(resourceGroup().id)]",
+            "defaultValue": "[concat('table-', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "Cosmos DB account name"
             }
@@ -87,7 +87,7 @@ ms.locfileid: "75335744"
         },  
         "multipleWriteLocations": {
             "type": "bool",
-            "defaultValue": true,
+            "defaultValue": false,
             "allowedValues": [ true, false ],
             "metadata": {
                 "description": "Enable multi-master to make all regions writable."
@@ -142,11 +142,13 @@ ms.locfileid: "75335744"
         [ 
             {
                 "locationName": "[parameters('primaryRegion')]",
-                "failoverPriority": 0
+                "failoverPriority": 0,
+                "isZoneRedundant": false
             }, 
             {
                 "locationName": "[parameters('secondaryRegion')]",
-                "failoverPriority": 1
+                "failoverPriority": 1,
+                "isZoneRedundant": false
             }
         ]
     },
@@ -213,7 +215,7 @@ New-AzResourceGroupDeployment `
 
 <!--MOONCAKE: parameter correct on -ResourceType-->
 
-如果选择使用本地安装的 PowerShell 版本，则需[安装](https://docs.microsoft.com/powershell/azure/install-az-ps) Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 
+如果选择使用本地安装的 PowerShell 版本，则需[安装](https://docs.microsoft.com/powershell/azure/install-az-ps) Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。
 
 <!--MOONCAKE: Not available on instead of using CloudShell-->
 
@@ -257,6 +259,6 @@ az cosmosdb show --resource-group $resourceGroupName --name $accountName --outpu
     <!--Not Available on  - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
 - [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

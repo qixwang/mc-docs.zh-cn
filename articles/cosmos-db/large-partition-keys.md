@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 门户和各种 SDK 通过大分区键创建 Azure Cosmos 容器。
+title: 使用大分区键创建 Azure Cosmos 容器
 description: 了解如何使用 Azure 门户和不同的 SDK 通过大分区键在 Azure Cosmos DB 中创建容器。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/28/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd61d45fa73752b933a575a4272671ddca8a5eeb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d025abc19f818d931e1f8f22376c676fbb9c8ce4
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336122"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980440"
 ---
 # <a name="create-containers-with-large-partition-key"></a>使用大分区键创建容器
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 使用基于哈希的分区方案实现数据的水平缩放。 
 
 若要创建具有大分区键支持的容器，请参阅
 
-* [创建具有大分区键大小的 Azure Cosmos 容器](manage-with-powershell.md##create-container-big-pk)
+* [创建具有大分区键大小的 Azure Cosmos 容器](manage-with-powershell.md#create-container-big-pk)
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>创建大分区键 (.Net SDK)
 

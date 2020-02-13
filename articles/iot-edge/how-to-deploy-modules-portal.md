@@ -1,21 +1,21 @@
 ---
 title: 从 Azure 门户部署模块 - Azure IoT Edge
-description: 使用 Azure 门户将模块部署到 IoT Edge 设备
+description: 根据部署清单的配置，在 Azure 门户中使用 IoT 中心将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备。
 author: kgremban
 manager: timlt
 ms.author: v-yiso
-origin.date: 06/25/2019
-ms.date: 09/09/2019
+origin.date: 12/30/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f9347527b96ebf92aa5e0fbe974607ad906e5e26
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: d5857bd6b00b625e06784e7a2c64b7f547717a1c
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859715"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966497"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -37,12 +37,12 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 ### <a name="select-device-and-add-modules"></a>选择设备并添加模块
 
 1. 登录 [Azure 门户](https://portal.azure.cn)，导航到 IoT 中心。
-1. 从菜单中选择“IoT Edge”  。
+1. 在左窗格的菜单中，选择“IoT Edge”  。
 1. 在设备列表中单击目标设备的 ID。
-1. 选择“设置模块”  。
+1. 在上方栏中，选择“设置模块”  。
 1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据  。
 1. 在此页的“IoT Edge 模块”部分，选择“添加”   。
-1. 在下拉列表中找到模块类型：
+1. 从下拉菜单中查看模块类型：
 
    * **IoT Edge 模块** - 提供模块名称和容器映像 URI。 例如，示例 SimulatedTemperatureSensor 模块的映像 URI 为 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。 如果模块映像存储在专用容器注册表中，则在此页面上添加凭据来访问该映像。 
    * **市场模块** - Azure 市场中托管的模块。 某些市场模块需要其他配置，因此请查看 [Azure 市场 IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)列表中的模块详细信息。
@@ -94,9 +94,10 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 可以将 Azure 市场中的模块快速部署到 Azure 门户的 IoT 中心的设备上。
 
 1. 在 Azure 门户中，导航到 IoT 中心。
+1. 在左窗格的“自动设备管理”下，选择“IoT Edge”   。
 1. 选择要接收部署的 IoT Edge 设备。
-1. 选择“设置模块”  。
-1. 在“IoT Edge 模块”部分中，单击“添加”下拉列表，然后选择“市场模块”    。
+1. 在上方栏中，选择“设置模块”  。
+1. 在“IoT Edge 模块”  部分中，单击“添加”  ，然后从下拉菜单中选择“市场模块”  。
 
 ![在 IoT 中心添加模块](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 

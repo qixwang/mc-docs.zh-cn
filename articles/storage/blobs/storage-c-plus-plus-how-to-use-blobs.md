@@ -8,12 +8,12 @@ ms.date: 01/06/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 19a3e388a8eec089bdb2f26e48a48e7a5d608c24
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: c272326be521e63bd8a3f0c8fe9aef589f3dc95b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624267"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028903"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
 
@@ -40,7 +40,7 @@ ms.locfileid: "75624267"
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何生成源代码和导出到 Nuget 的指南。
+可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何生成源代码和导出到 NuGet 的指南。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>配置应用程序以访问 Blob 存储
 将以下 include 语句添加到 C++ 文件的顶部，要在此使用 Azure 存储 API 来访问 blob：  

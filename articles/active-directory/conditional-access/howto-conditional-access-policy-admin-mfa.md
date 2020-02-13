@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c570281145d71c1353cca14a83d574060132917f
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 5d21792fd285adc31f8d6df94fd659d6ac092d68
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859283"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067530"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -77,3 +77,4 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
+<!-- Update_Description: wording update -->

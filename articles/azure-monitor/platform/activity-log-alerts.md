@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 09/17/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: dbd86c47f20ab048eb9c9259cb2949a63a8dcbb3
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 013d4eeadf6b6afb9fc844de6bd830d709e207b6
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970773"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028968"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
 
@@ -32,7 +32,7 @@ ms.locfileid: "72970773"
 
 在上述任何情况下，活动日志警报只监视在其中创建该警报的订阅中的事件。
 
-可以基于活动日志事件的 JSON 对象中的任何顶层属性配置活动日志警报。 有关详细信息，请参阅 [Azure 活动日志概述](activity-logs-overview.md#categories-in-the-activity-log)。 若要了解有关服务运行状况事件的详细信息，请参阅[接收有关服务通知的活动日志警报](/service-health/alerts-activity-log-service-notifications)。 
+可以基于活动日志事件的 JSON 对象中的任何顶层属性配置活动日志警报。 有关详细信息，请参阅[活动日志中的类别](activity-log-view.md#categories-in-the-activity-log)。 若要了解有关服务运行状况事件的详细信息，请参阅[接收有关服务通知的活动日志警报](alerts-activity-log-service-notifications.md)。 
 
 活动日志警报有几个常见选项：
 

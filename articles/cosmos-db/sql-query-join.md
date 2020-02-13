@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 的 SQL JOIN 查询
-description: 了解 Azure Cosmos DB 的 JOIN SQL 语法。
+description: 了解如何联接 Azure Cosmos DB 中的多个表以查询数据
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/17/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a6ab9bb0dd5ff5d25bacbcdb9d0d5f0a801d0cad
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1a815161ec451dc1622061687a0db7c2f144ed0d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336348"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028967"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
 
@@ -127,7 +127,7 @@ ms.locfileid: "75336348"
     JOIN f.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -148,7 +148,7 @@ ms.locfileid: "75336348"
     JOIN c IN f.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -185,7 +185,7 @@ JOIN 子句真正实用的地方是通过以其他方式难以投影的形式基
     JOIN p IN c.pets
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -241,7 +241,7 @@ JOIN 子句真正实用的地方是通过以其他方式难以投影的形式基
     WHERE p.givenName = "Shadow"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

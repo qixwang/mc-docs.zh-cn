@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acb908c82758166de1da2cc60609babbfb1f37df
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 72c13f345e83a5f0c243db6348dc038e1b0814cb
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859273"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067529"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
 
@@ -25,12 +25,12 @@ ms.locfileid: "75859273"
 ## <a name="define-locations"></a>定义位置
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问” > “命名位置”     。
 1. 选择“新建位置”。 
 1. 为位置命名。
 1. 选择“IP 范围”，  前提是你知道特定的可以从外部访问的 IPv4 地址范围，这些范围构成了该位置或“国家/地区”。 
    1. 提供“IP 范围”，或者选择“国家/地区”作为要指定的位置。  
-      * 如果选择“国家/地区”，可以选择包括未知区域。
+      * 如果选择“国家/地区”，可以选择“包括未知区域”。
 1. 选择“保存” 
 
 若要详细了解条件访问中的位置条件，可参阅 [Azure Active Directory 条件访问中的位置条件是什么](location-condition.md)一文
@@ -60,3 +60,4 @@ ms.locfileid: "75859273"
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
+<!-- Update_Description: wording update -->

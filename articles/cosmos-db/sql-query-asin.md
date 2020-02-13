@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ASIN
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ASIN。
+description: 了解 Azure Cosmos DB 中的 Arcsine (ASIN) SQL 系统函数如何返回其正弦是指定数值表达式的角度（以弧度为单位）
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: cc20040dec74447c8d5d61cdc5c8708848031748
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 5d513aaec41cb347c676289c3506d0d55ae2b37c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914756"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028694"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
  返回角度（弧度），其正弦是指定的数值表达式。 也被称为反正弦。  
@@ -53,5 +53,4 @@ SELECT ASIN(-1) AS asin
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query asin  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

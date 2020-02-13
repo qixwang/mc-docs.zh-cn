@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 07/05/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: e84c4a399c1ec8a0233aa9aa4fcd2998b650eeb9
-ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
+ms.openlocfilehash: efaca4e00a8d4c82b8904d5760b96ce8133e3c04
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76283263"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966555"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -31,7 +31,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ## <a name="standard-voices"></a>标准语音
 
-从标准语音中进行选择，在 45 种以上的语言和区域设置中，有 75 种以上的标准语音可用。 有关支持的语言、区域设置和标准语音的完整列表，请参阅[语言支持](language-support.md)。
+从标准语音中进行选择，在 10 种以上的语言和区域设置中，有 50 种以上的标准语音可用。 有关支持的语言、区域设置和标准语音的完整列表，请参阅[语言支持](language-support.md)。
 
 若要详细了解标准语音，请参阅[文本转语音概述](text-to-speech.md)。
 

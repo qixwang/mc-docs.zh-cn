@@ -7,15 +7,15 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
 origin.date: 11/24/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: prishet
-ms.openlocfilehash: 2600fc04c05082aecc4e0c4c2ac085d9e9486f45
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3221613f56706f5ee4f99e7c72a8ae58a8ed2eee
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624475"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028971"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL（预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "75624475"
 
 | [提供反馈](https://github.com/Azure/azure-powershell/issues) |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -271,6 +271,9 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 可以获取、设置和更新目录与文件的访问权限。
 
+> [!NOTE]
+> 若要使用 Azure Active Directory (Azure AD) 为命令授权，请确保已为安全主体分配了[存储 Blob 数据所有者角色](/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](/storage/blobs/data-lake-storage-access-control)。
+
 ### <a name="get-directory-and-file-permissions"></a>获取目录和文件权限
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。
@@ -343,19 +346,60 @@ $file.ACL
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the directory ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew  
+
 ```
+
 此示例为某个用户授予对某个文件的写入和执行权限。
 
 ```powershell
 $filesystemName = "my-file-system"
 $fileName = "my-directory/upload.txt"
 $Id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Get the file ACL
 $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName).ACL
-$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $id -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $acl
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+# To avoid duplicate ACL, remove the ACL entries that will be added later.
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "group" -and $a.DefaultScope -eq $true-and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+
+# Add ACL Entries
+$aclnew = New-AzDataLakeGen2ItemAclObject -AccessControlType group -EntityId $id -Permission "-wx" -DefaultScope -InputObject $aclnew
+
+# Update ACL on server
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileName -Acl $aclnew 
+
 ```
 
 ### <a name="set-permissions-on-all-items-in-a-file-system"></a>对文件系统中的所有项设置权限

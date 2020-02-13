@@ -1,5 +1,6 @@
 ---
-title: JavaScript 和页面布局版本 - Azure Active Directory B2C | Microsoft Docs
+title: JavaScript 和页面布局版本
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中启用 JavaScript 和使用页面布局版本。
 services: active-directory-b2c
 author: mmacy
@@ -7,22 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 04/25/2019
-ms.date: 07/23/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 5db1efd5a3967666e32bc10dd3371993b6bdc354
-ms.sourcegitcommit: e2af455871bba505d80180545e3c528ec08cb112
+ms.openlocfilehash: ddfc399365e626bcc98a32d65a0fb5c90cd9bfed
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68391603"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028104"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页面布局版本
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaScript 适用于用户流中的用户界面元素和自定义策略。 若要为应用程序启用 JavaScript，必须向[自定义策略](active-directory-b2c-overview-custom.md)添加一个元素，或者在门户中为用户流启用它，选择页面布局，并在请求中使用 [b2clogin.cn](b2clogin.md)。
+Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaScript 适用于用户流中的用户界面元素和自定义策略。 若要为应用程序启用 JavaScript，必须向[自定义策略](custom-policy-overview.md)添加一个元素，或者在门户中为用户流启用它，选择页面布局，并在请求中使用 [b2clogin.cn](b2clogin.md)。
 
 如果你打算启用 [JavaScript](javascript-samples.md) 客户端代码，则需要确保 JavaScript 所基于的元素是不可变的。 否则，任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，可以强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也可为页面指定页面布局版本。
 

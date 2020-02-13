@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/23/2019
-ms.date: 09/09/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 01a3b06bbd94a9d1d81687fed0b17d6f84903d72
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 4809be90dfd71f6d086b39e69ff19621292cf611
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254747"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980535"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>在 Azure Cosmos DB SQL API 帐户中使用地理空间和 GeoJSON 位置数据
 
@@ -95,7 +95,7 @@ GeoJSON 中的多边形
 ### <a name="coordinate-reference-systems"></a>坐标参考系统
 由于地球的形状不规则，地理空间数据的坐标可以用许多坐标参考系统 (CRS) 来表示，而这些系统各有自己的参考框架和测量单位。 例如，“英国国家网格”对英国而言是非常精确的参考系统，但对其他地区则不是。 
 
-现今最常使用的 CRS 是世界测地系统 [WGS-84](http://earth-info.nga.mil/GandG/wgs84/)。 GPS 设备和许多地图服务（包括谷歌地图和必应地图 API）均使用 WGS-84。 Azure Cosmos DB 仅支持对使用 WGS-84 CRS 的地理空间数据进行索引编制和查询。 
+现今最常使用的 CRS 是世界测地系统 [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)。 GPS 设备和许多地图服务（包括谷歌地图和必应地图 API）均使用 WGS-84。 Azure Cosmos DB 仅支持对使用 WGS-84 CRS 的地理空间数据进行索引编制和查询。 
 
 <!--MOONCAKE: CORRECT ON Google-->
 
@@ -374,4 +374,4 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 * 详细了解 [Azure Cosmos DB 查询](how-to-sql-query.md)
 * 详细了解 [Azure Cosmos DB 索引策略](index-policy.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

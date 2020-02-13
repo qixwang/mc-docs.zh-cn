@@ -6,16 +6,16 @@ manager: brymat
 ms.author: arduppal
 ms.reviewer: arduppal
 origin.date: 12/13/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8c16f79618316d66d7015a06121b23ec257a1958
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: bb3fe9efa50197d1b8ce0a219a9b1da59b5e84ae
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859733"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966550"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
 
@@ -171,7 +171,7 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-    - 使用此 SDK 时遇到已知问题，因为此版本的模块不会返回 blob 创建时间。 因此，很少方法（如列出 blob）不起作用。 解决方法是，将 blob 客户端上的 API 版本显式设置为“2017-04-17”。 <br>示例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
+    - Python SDK 2.1 之前的版本存在一个已知问题，即模块不返回 blob 创建时间。 由于该问题，某些方法（如 list blobs）无法正常工作。 解决方法是，将 blob 客户端上的 API 版本显式设置为“2017-04-17”。 示例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
     - [追加 Blob 示例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 - [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
@@ -259,12 +259,6 @@ IoT Edge 上的 Blob 存储模块使用 Azure 存储 SDK，并与适用于块 Bl
 不受支持：
 
 * 来自 URL 的追加块
-
-## <a name="event-grid-on-iot-edge-integration"></a>IoT Edge 集成上的事件网格
-> [!CAUTION]
-> IoT Edge 与事件网格的集成处于预览阶段
-
-IoT Edge 模块上的 Azure Blob 存储现在提供与 IoT Edge 事件网格的集成。 有关此集成的详细信息，请参阅[部署模块、发布事件和验证事件交付的教程](../event-grid/edge/react-blob-storage-events-locally.md)。
 
 ## <a name="release-notes"></a>发行说明
 

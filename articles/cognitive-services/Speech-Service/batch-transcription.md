@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 01/27/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 91cf879d09ddc36e61eef501d539f8dfcb118eda
-ms.sourcegitcommit: 3f2cb2b8fbe60bac19cffea5a1e3e99aa0e309c0
+ms.openlocfilehash: 3a94cb759f48b13280241edf8cbda8b90f714f95
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76163007"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028175"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -79,7 +79,7 @@ ms.locfileid: "76163007"
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -89,18 +89,13 @@ ms.locfileid: "76163007"
 使用以下可选属性来配置听录：
 
 | 参数 | 说明 |
-|-----------|------------|
-|`ProfanityFilterMode`|指定如何处理识别结果中的亵渎内容
-||**`Masked`** - 默认设置。 以星号取代亵渎内容<br>`None` - 禁用亵渎内容筛选<br>`Removed` - 从结果中删除所有亵渎内容<br>`Tags` - 添加亵渎内容标记
-|`PunctuationMode`|指定如何处理识别结果中的标点
-||`Automatic` - 服务插入标点<br>`Dictated` - 听写的（口述）标点<br>**`DictatedAndAutomatic`** - 默认设置。 听写和自动标点<br>`None` - 禁用标点
-|`AddWordLevelTimestamps`|指定是否应将单词级时间戳添加到输出
-||`True` - 启用单词级时间戳<br>**`False`** - 默认设置。 禁用单词级时间戳
-|`AddSentiment`|指定是否将情绪分析添加到言语
-||`True` - 为每个言语启用情绪分析<br>**`False`** - 默认设置。 禁用情绪分析
-|`AddDiarization`|指定是否执行分割聚类分析。如果为 `true`，则输入预期为单声道音频，其中最多包含两段语音。 `AddWordLevelTimestamps` 需设置为 `true`
-||`True` - 启用分割聚类<br>**`False`** - 默认设置。 禁用分割聚类
-|`TranscriptionResultsContainerUrl`|将可选的 SAS 令牌存储到 Azure 中的可写容器。 结果将存储在此容器中
+|-----------|-------------|
+| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`Masked`（将不雅内容替换为星号）、`Removed`（从结果中删除所有不雅内容）或 `Tags`（添加“不雅内容”标记）。 默认设置为 `Masked`。 |
+| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`Dictated`（表示使用显式标点）、`Automatic`（允许解码器处理标点）或 `DictatedAndAutomatic`（表示使用专用标点符号或自动使用标点）。 |
+| `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
+| `AddSentiment` | 指定应将情绪添加到言语。 接受的值为 `true`（按言语启用情绪）和 `false`（默认值，禁用情绪）。 |
+| `AddDiarization` | 指定应该对预期为包含两个语音的单声道输入执行分割聚类分析。 接受的值为 `true`（启用分割聚类）和 `false`（默认值，禁用分割聚类）。 还需要将 `AddWordLevelTimestamps` 设置为 true。|
+|`TranscriptionResultsContainerUrl`|Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果将存储在此容器中。
 
 ### <a name="storage"></a>存储
 
@@ -126,29 +121,29 @@ ms.locfileid: "76163007"
           "Display": string
         }
       ]
-      SegmentResults:[                                     'for each individual segment'
+      SegmentResults:[                                      'for each individual segment'
         {
-          "RecognitionStatus": Success | Failure
+          "RecognitionStatus": "Success | Failure"
           "ChannelNumber": null
-          "SpeakerId": null | "1 | 2"                     'null if no diarization
-                                                            or stereo input file, the
-                                                            speakerId as a string if
-                                                            diarization requested for
-                                                            mono audio file'
-          "Offset": number                                'time in milliseconds'
-          "Duration": number                              'time in milliseconds'
-          "OffsetInSeconds" : number                      'Real number. Two decimal places'
-          "DurationInSeconds" : number                    'Real number. Two decimal places'
+          "SpeakerId": null | "1 | 2"                       'null if no diarization
+                                                             or stereo input file, the
+                                                             speakerId as a string if
+                                                             diarization requested for
+                                                             mono audio file'
+          "Offset": number                                  'time in milliseconds'
+          "Duration": number                                'time in milliseconds'
+          "OffsetInSeconds" : number                        'Real number. Two decimal places'
+          "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
             {
-              "Confidence": number                        'between 0 and 1'
+              "Confidence": number                          'between 0 and 1'
               "Lexical": string
               "ITN": string
               "MaskedITN": string
               "Display": string
               "Sentiment":
-                {                                          'this is omitted if sentiment is
-                                                            not requested'
+                {                                           'this is omitted if sentiment is
+                                                             not requested'
                   "Negative": number                        'between 0 and 1'
                   "Neutral": number                         'between 0 and 1'
                   "Positive": number                        'between 0 and 1'
@@ -156,10 +151,11 @@ ms.locfileid: "76163007"
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                         'time in milliseconds'
-                  "Duration": number                       'time in milliseconds'
-                  "OffsetInSeconds": number                'Real number. Two decimal places'
-                  "DurationInSeconds": number              'Real number. Two decimal places'
+                  "Offset": number                          'time in milliseconds'
+                  "Duration": number                        'time in milliseconds'
+                  "OffsetInSeconds": number                 'Real number. Two decimal places'
+                  "DurationInSeconds": number               'Real number. Two decimal places'
+                  "Confidence": number                      'between 0 and 1'
                 }
               ]
             }

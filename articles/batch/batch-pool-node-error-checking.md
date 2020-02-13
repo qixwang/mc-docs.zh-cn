@@ -1,20 +1,20 @@
 ---
 title: 检查池和节点错误 - Azure Batch
-description: 创建池和节点时要检查的错误以及如何避免错误
+description: 本文介绍在创建池和节点时可能发生的后台操作、要检查的错误以及如何避免这些错误。
 services: batch
 author: lingliw
 manager: digimobile
 ms.service: batch
-ms.author: markscu
+ms.author: v-lingwu
 origin.date: 08/23/2019
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9f32500ad1c164f9e43a76d8da599b916e53e452
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: fe0c68cbcd130e02ce468cd1602e70648853a034
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838998"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028941"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 

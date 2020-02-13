@@ -1,18 +1,18 @@
 ---
-title: 优化 Azure Cosmos DB 中运行查询的请求单位和成本
+title: 优化在 Azure Cosmos DB 中运行查询所需的成本和 RU/秒
 description: 了解如何评估查询的请求单位费用，并在查询性能和成本方面优化查询。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 354433e2966ef4565bfb52c276997efa11d1abd6
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 02/10/2020
+ms.openlocfilehash: f19ea907d2f97041059594bdb4bec690ecd0edd9
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914425"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028788"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本
 

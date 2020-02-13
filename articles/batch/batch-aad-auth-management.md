@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 对 Batch 管理解决方案进行身份验证 | Microsoft Docs
-description: 通过 Azure 资源管理器和 Batch 资源提供程序生成的应用程序使用 Azure AD 进行身份验证。
+title: 使用 Azure Active Directory 对 Batch 管理解决方案进行身份验证
+description: 了解如何使用 Azure Active Directory 通过使用 Batch Management .NET 库的应用程序进行身份验证。
 services: batch
 documentationcenter: .net
 author: lingliw
@@ -15,12 +15,12 @@ ms.workload: big-compute
 origin.date: 04/27/2017
 ms.date: 09/07/2018
 ms.author: v-junlch
-ms.openlocfilehash: 011e790b8c5c8a7b531ff2e9853d2a351660a165
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 0f4a8b9d2ca15936b91b99b1b117742534dbbb8b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838962"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028974"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 
@@ -44,7 +44,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
-## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure 资源管理器 API 授予应用程序访问权限
+## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure Resource Manager API 授予应用程序访问权限
 
 接下来，需要将应用程序的访问权限委派给 Azure Resource Manager API。 Resource Manager API 的 Azure AD 标识符为 **Azure Service Management API**。
 
@@ -63,7 +63,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 现在，“所需的权限”边栏选项卡会显示向 ADAL 和 Resource Manager API 授予的应用程序权限。  首先在 Azure AD 中注册应用程序时，默认向 ADAL 授予权限。
 
-![向 Azure 资源管理器 API 委派权限](./media/batch-aad-auth-management/required-permissions-management-plane.png)
+![向 Azure Resource Manager API 委派权限](./media/batch-aad-auth-management/required-permissions-management-plane.png)
 
 ## <a name="azure-ad-endpoints"></a>Azure AD 终结点
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB Gremlin API 的执行配置文件函数评估查询
+title: 使用执行配置文件评估以 Azure Cosmos DB Gremlin API 编写的查询
 description: 了解如何使用执行配置文件步骤改善 Gremlin 查询及排查其问题。
 services: cosmos-db
 author: rockboyfor
@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 origin.date: 03/27/2019
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ff89227f134eb5b86fc733109380f74d63a79abf
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 70dae771019bc471833ed8c8e4bfd2e56835f30a
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306723"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980530"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
 
@@ -391,4 +391,4 @@ Cosmos DB Gremlin 运行时运算符|说明
 * 了解 Azure Cosmos DB [支持的 Gremlin 功能](gremlin-support.md)。 
 * 详细了解 [Azure Cosmos DB 中的 Gremlin API](graph-introduction.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update -->

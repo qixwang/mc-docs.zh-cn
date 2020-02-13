@@ -5,19 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 02/01/2019
-ms.date: 11/12/2019
+ms.date: 02/07/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514a56f81c7e05180a99e56c5d08524e8b40a3c9
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: a1d60d714b677bb79ef898c52eeb9d712f35cb3d
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084485"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067555"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -54,7 +53,7 @@ ms.locfileid: "74084485"
 
 ### <a name="converged-registration-preview"></a>聚合注册（预览版）
 
-如果使用聚合注册的公共预览版，可在“身份验证方法”服务下找到有关审核日志中用户活动的信息  。
+如果使用的是聚合注册的公共预览版，则将在“安全性”   > “身份验证方法”  下找到有关审核日志中用户活动的信息。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 
@@ -181,7 +180,7 @@ ms.locfileid: "74084485"
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 

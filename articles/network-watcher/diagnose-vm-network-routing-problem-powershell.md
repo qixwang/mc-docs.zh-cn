@@ -1,5 +1,6 @@
 ---
-title: 诊断虚拟机网络路由问题 - Azure PowerShell | Azure
+title: 诊断 VM 网络路由问题 - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
@@ -18,16 +19,16 @@ origin.date: 04/20/2018
 ms.date: 07/02/2018
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: a89e01d1d7b0ff8555a77437e8467b80427965bd
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 3a925a60d3ccbdf7c8dcf1ed6fd2317fd5d67a06
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982166"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028880"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>诊断虚拟机网络路由问题 - Azure PowerShell
 
-在本教程中，请先部署虚拟机 (VM)，然后检查到某个 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
+本文首先部署虚拟机 (VM)，然后检查其与 IP 地址和 URL 的通信。 确定通信失败的原因以及解决方法。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -82,7 +83,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-next-hop"></a>使用下一个跃点
 
-Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时候，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [Get-AzureRmNetworkWatcherNextHop](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 命令确定流量发送到特定地址时的下一个路由跃点。
+Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆盖默认路由。 有时，自定义路由可能会导致通信故障。 要测试来自 VM 的路由，请使用 [Get-AzureRmNetworkWatcherNextHop](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 命令确定流量发送到特定地址时的下一个路由跃点。
 
 测试从 VM 发往 www.bing.com 的某个 IP 地址的出站通信：
 

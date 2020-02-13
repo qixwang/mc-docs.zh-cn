@@ -1,22 +1,22 @@
 ---
-title: 关于 Azure Active Directory B2C 自定义策略中的技术配置文件 | Microsoft Docs
-description: 了解技术配置文件如何用于 Azure Active Directory B2C 中的自定义策略。
+title: 自定义策略中的技术配置文件概述
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure Active Directory B2C 的自定义策略中使用技术配置文件。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ec71fe593f0557e57fd8d25f0f3703565eabacdb
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 8e64427b63700f2f52772442577a28d7143dedd6
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847135"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028124"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -38,7 +38,7 @@ ms.locfileid: "72847135"
 - [RESTful 提供程序](restful-technical-profile.md) - 调用 REST API 服务，例如验证用户输入、扩充用户数据或与业务线应用程序集成。
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
-- [会话管理](active-directory-b2c-reference-sso-custom.md) - 处理不同类型的会话。
+- [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
 
 ## <a name="technical-profile-flow"></a>技术配置文件流
 
@@ -56,7 +56,7 @@ ms.locfileid: "72847135"
 4. ValidationTechnicalProfiles  - 对于[自断言技术配置文件](self-asserted-technical-profile.md)，你可以调用输入[验证技术配置文件](validation-technical-profile.md)。 验证技术配置文件可验证用户分析的数据并返回错误消息或正常信息，包含或不包含输出声明。 例如，在 Azure AD B2C 创建新帐户之前，它会检查用户是否已存在于目录服务中。 你可以调用 REST API 技术配置文件来添加自己的业务逻辑。<p>验证技术配置文件的输出声明的范围仅限于在相同技术配置文件下调用验证技术配置文件和其他验证技术配置文件的技术配置文件。 如果要在下一个业务流程步骤中使用输出声明，则需要将输出声明添加到调用验证技术配置文件的技术配置文件中。
 5. OutputClaims  - 将声明返回到声明包中。 可以在下一个业务流程步骤或输出声明转换中使用这些声明。
 6. OutputClaimsTransformations  - 从声明包中提取每个输出[声明转换](claimstransformations.md)的输入声明。 先前步骤中的技术配置文件的输出声明可以是输出声明转换的输入声明。 执行后，输出声明将被放回到声明包中。 输出声明转换的输出声明也可以是后续输出声明转换的输入声明。
-7. 单一登录 (SSO) 会话管理   - [SSO 会话管理](active-directory-b2c-reference-sso-custom.md)控制与已经过身份验证的用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。
+7. 单一登录 (SSO) 会话管理   - [SSO 会话管理](custom-policy-reference-sso.md)控制与已经过身份验证的用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。
 
 技术配置文件可以从其他技术配置文件继承，以更改设置或添加新功能。   IncludeTechnicalProfile 元素是对基本技术配置文件的引用，可从中派生技术配置文件。
 
@@ -107,7 +107,7 @@ ms.locfileid: "72847135"
 
 技术配置文件可以包括或继承另一个技术配置文件，该文件可以包括其他配置文件。 级别数没有限制。 根据业务要求，用户旅程可能会调用 AAD-UserReadUsingAlternativeSecurityId（如果用户社交帐户不存在，则会引发错误）或 AAD-UserReadUsingAlternativeSecurityId-NoError（不会引发错误）   。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: links update -->
 
 
 

@@ -1,20 +1,22 @@
 ---
-title: Azure 存储中用于实现跨区域持续性的异地冗余存储 (GRS) | Microsoft Docs
+title: 用于实现跨区域持续性的异地冗余存储 (GRS)
+titleSuffix: Azure Storage
 description: 异地冗余存储 (GRS) 在相距数百英里的两个区域之间复制数据。 GRS 针对数据中心内的硬件故障以及区域性灾难提供保护。
 services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 10/20/2018
-ms.date: 10/28/2019
+ms.topic: conceptual
+origin.date: 01/02/2020
+ms.date: 02/10/2020
 ms.author: v-jay
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6fb8243d15f39f5044decbdc7cdd4be25e00355e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: f4417a238b4478a423135e16cd633fd19cf371b1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914374"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029000"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>异地冗余存储 (GRS)：Azure 存储的跨区域复制
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -26,12 +28,12 @@ ms.locfileid: "72914374"
 
 使用 RA-GRS 时需要注意一些注意事项：
 
-* 应用程序必须管理在使用 RA-GRS 时要与哪些终结点进行交互。
-* 由于异步复制涉及延迟，因此如果无法将数据从主要区域中恢复，则尚未复制到次要区域的更改可能会丢失。
-* 可以检查存储帐户的上次同步时间。 上次同步时间是 GMT 日期/时间值。 在上次同步时间之前主要位置的写入内容已成功写入次要位置，这意味着可以从次要位置读取这些内容。 在上次同步时间之后发生的主位置写入可能可供读取，也可能尚不可供读取。 可以使用 [Azure 门户](https://portal.azure.cn/)、[Azure PowerShell](storage-powershell-guide-full.md) 或通过 Azure 存储客户端库之一查询此值。
-* 如果 Azure 启动了到次要区域的故障转移，则在故障转移完成以后，将恢复你对该帐户的读写访问权限。 有关详细信息，请参阅[灾难恢复指南](storage-disaster-recovery-guidance.md)。
-* 要实现高可用性时使用 RA-GRS。 有关可伸缩性的指南，请查看[性能清单](storage-performance-checklist.md)。
-* 有关如何使用 RA-GRS 进行高可用性设计的建议，请参阅[使用 RA-GRS 存储设计高可用性应用程序](storage-designing-ha-apps-with-ragrs.md)。
+- 应用程序必须管理在使用 RA-GRS 时要与哪些终结点进行交互。
+- 由于异步复制涉及延迟，因此如果无法将数据从主要区域中恢复，则尚未复制到次要区域的更改可能会丢失。
+- 可以检查存储帐户的“上次同步时间”  属性。 **上次同步时间**是 GMT 日期/时间值。 在**上次同步时间**之前进行的所有主要位置写入均已成功写入辅助位置，这意味着可以从辅助位置读取这些写入内容。 在**上次同步时间**之后进行的主要位置写入尚不一定可供读取。 可以使用 PowerShell、Azure CLI 或某个 Azure 存储客户端库查询此值。 有关详细信息，请参阅[使用读取访问异地冗余存储设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time)中的**获取上次同步时间**。
+- 如果 Azure 启动了到次要区域的故障转移，则在故障转移完成以后，将恢复你对该帐户的读写访问权限。 有关详细信息，请参阅[灾难恢复指南](storage-disaster-recovery-guidance.md)。
+- 要实现高可用性时使用 RA-GRS。 有关可伸缩性的指南，请查看[性能清单](storage-performance-checklist.md)。
+- 有关如何使用 RA-GRS 进行高可用性设计的建议，请参阅[使用 RA-GRS 存储设计高可用性应用程序](storage-designing-ha-apps-with-ragrs.md)。
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>什么是采用 GRS 的 RPO 和 RTO？
 

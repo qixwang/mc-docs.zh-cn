@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Application Insights 进行 Java Web 应用分析 | Azure Docs
+title: 使用 Azure Application Insights 进行 Java Web 应用分析
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 05/24/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b1e7a22a4aa456e057d12d3c276337045deb7a98
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b69cb471ae33c2b8c6bd724bef927f4bc13e31bf
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838940"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028443"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 

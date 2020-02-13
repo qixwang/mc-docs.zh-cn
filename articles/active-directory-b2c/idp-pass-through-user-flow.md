@@ -1,5 +1,6 @@
 ---
-title: 通过用户流将访问令牌传递给应用程序 - Azure Active Directory B2C
+title: 通过用户流将访问令牌传递给应用
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中以用户流中声明的方式传递 OAuth2.0 标识提供者的访问令牌。
 services: active-directory-b2c
 author: mmacy
@@ -7,24 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 08/17/2019
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e0e29e6941a9a8c046150d8e29206573e8179c9a
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 85328a914efb2165c7211cf5e2c11527d94978fe
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847108"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028170"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
 
-Azure Active Directory B2C (Azure AD B2C) 中的[用户流](active-directory-b2c-reference-policies.md)允许应用程序的用户通过标识提供者进行注册或登录。 此过程开始时，Azure AD B2C 会从标识提供者处收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 在用户流中启用声明即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
+Azure Active Directory B2C (Azure AD B2C) 中的[用户流](user-flow-overview.md)允许应用程序的用户通过标识提供者进行注册或登录。 此过程开始时，Azure AD B2C 会从标识提供者处收到一个[访问令牌](tokens-overview.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 在用户流中启用声明即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
 
-Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
+Azure AD B2C 当前仅支持传递 [OAuth 2.0](authorization-code-flow.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 应用程序必须使用 [v2 用户流](user-flow-versions.md)。
 * 用户流是使用 OAuth 2.0 标识提供者配置的。
@@ -56,6 +56,6 @@ Azure AD B2C 当前仅支持传递 [OAuth 2.0](active-directory-b2c-reference-oa
 
 ## <a name="next-steps"></a>后续步骤
 
-在 [Azure AD B2C 令牌概述](active-directory-b2c-reference-tokens.md)中了解详细信息。
+在 [Azure AD B2C 令牌概述](tokens-overview.md)中了解详细信息。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: links update -->

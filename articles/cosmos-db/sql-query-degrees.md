@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 DEGREES
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 DEGREES。
+description: 了解 Azure Cosmos DB 中的 DEGREES SQL 系统函数，该函数返回指定角度（以弧度为单位）的相应角度（以度为单位）
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 6059e220e90a86cc6abec0b128d4751c36c9df74
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: f3396a21ac4b23d35978169db71301fd0debec02
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914739"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028667"
 ---
 # <a name="degrees-azure-cosmos-db"></a>DEGREES (Azure Cosmos DB)
  返回指定角度（弧度）的相应角度（度）。  
@@ -53,5 +53,4 @@ SELECT DEGREES(PI()/2) AS degrees
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query degrees  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

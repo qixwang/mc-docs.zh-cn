@@ -1,21 +1,20 @@
 ---
-title: 使用 PowerShell 对 Azure 队列存储执行操作 - Azure 存储
+title: 在 PowerShell 中执行 Azure 队列存储操作
 description: 如何使用 PowerShell 对 Azure 队列存储执行操作
-services: storage
 author: WenJason
-ms.service: storage
-ms.topic: conceptual
-origin.date: 05/15/2019
-ms.date: 07/15/2019
 ms.author: v-jay
-ms.reviewer: cbrooks
+origin.date: 05/15/2019
+ms.date: 02/10/2020
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: e809631ccdfabf32f46ba6e3702d566bb60b69ca
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: ca055a29bab20db4f2357e92f9279299029d4824
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844511"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028976"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -100,7 +99,7 @@ $queue = Get-AzStorageQueue -Name $queueName -Context $ctx
 $queue
 
 # Retrieve all queues and show their names
-Get-AzStorageQueue -Context $ctx | select Name
+Get-AzStorageQueue -Context $ctx | Select-Object Name
 ```
 
 ## <a name="add-a-message-to-a-queue"></a>向队列添加消息
@@ -111,17 +110,16 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ```powershell
 # Create a new message using a constructor of the CloudQueueMessage class
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 1"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 1")
+
 # Add a new message to the queue
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 2"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 2")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 3"
+
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 3")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
@@ -135,7 +133,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 代码分两步从队列中读取消息。 调用 [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) 方法时，将获取队列中的下一条消息。 从 **GetMessage** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 若要完成从队列中删除消息，请调用 [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) 方法。 
 
-在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage   删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
+在以下示例中，你将读完三条队列消息，然后等待 10 秒（不可见超时）。 然后再次读取这三条消息，读取后，通过调用 DeleteMessage  删除该消息。 如果在删除消息后尝试读取队列，$queueMessage 将返回为 NULL。
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue

@@ -1,10 +1,10 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - Azure CLI | Microsoft Docs
+title: 排查连接问题 - Azure CLI
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure CLI 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
-author: lingliwu
-manager: jeconnoc
+author: lingliw
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 07/11/2017
 ms.date: 10/19/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 5f2761857aa6b00ece5a5a673d4ab4218d276b72
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: da5270dd063a6724b2651f0a9658bb5ee31f695a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674709"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028491"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序排查连接问题
 

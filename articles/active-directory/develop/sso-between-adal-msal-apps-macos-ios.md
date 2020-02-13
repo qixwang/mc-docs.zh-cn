@@ -1,5 +1,5 @@
 ---
-title: iOS 和 macOS 上的 ADAL 与 MSAL 应用之间的 SSO - Microsoft 标识平台
+title: ADAL 应用与 MSAL 应用 (iOS/macOS) 之间的 SSO - Microsoft 标识平台 | Azure
 description: ''
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 08/28/2019
-ms.date: 11/01/2019
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ea9ddc6fcd678d4dbd608bebac7b8dc28ea790c
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 97e02ffe9585e04b0779638807325b5dcde8d741
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831014"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067692"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO
 
@@ -173,7 +171,7 @@ MSAL 支持的帐户查找 API：
 /*!
  Returns account for the given account identifier (received from an account object returned in a previous acquireToken call)
  
- @param  error      The error that occured trying to get the accounts, if any, if you're
+ @param  error      The error that occurred trying to get the accounts, if any, if you're
                     not interested in the specific error pass in nil.
  */
 - (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier
@@ -183,7 +181,7 @@ MSAL 支持的帐户查找 API：
 Returns account for for the given username (received from an account object returned in a previous acquireToken call or ADAL)
     
 @param  username    The displayable value in UserPrincipleName(UPN) format
-@param  error       The error that occured trying to get the accounts, if any, if you're
+@param  error       The error that occurred trying to get the accounts, if any, if you're
                     not interested in the specific error pass in nil.
 */
 - (MSALAccount *)accountForUsername:(NSString *)username
@@ -292,3 +290,4 @@ do {
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
 
+<!-- Update_Description: wording update -->

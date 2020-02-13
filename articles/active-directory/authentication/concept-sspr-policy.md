@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb3054adba7b0d981f6f06df263f18e592ce1c29
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 81e09f1ac10412be0a33150a5308408189406820
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776827"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067562"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -62,7 +62,7 @@ ms.locfileid: "75776827"
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
 * 它在试用订阅的前 30 天中；或
-* 虚域不存在 (*.partner.onmschina.cn)；以及
+* 尚未为 Azure AD 租户配置自定义域，因此使用的是默认值（即，*.partner.onmschina.cn  ）。 请注意，建议不要将默认的“*.partner.onmschina.cn”  域用于生产环境；并且
 * Azure AD Connect 未同步标识
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>适用于所有用户帐户的 UserPrincipalName 策略
@@ -85,8 +85,8 @@ ms.locfileid: "75776827"
 | 不允许的字符 | Unicode 字符。 |
 | 密码限制 |<ul><li>至少 8 个字符，最多包含 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
 | 密码过期期限（最长密码期限） |<ul><li>默认值：“90”天  。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
-| 密码过期通知（何时通知用户密码过期） |<ul><li>默认值：“14”天（密码到期前）  。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
-| 密码过期（密码是否过期） |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
+| 密码到期通知（何时通知用户密码到期） |<ul><li>默认值：“14”天（密码到期前）  。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
+| 密码过期（让密码永不过期） |<ul><li>默认值：**false**（指示密码有到期日期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
 | 密码更改历史记录 | 用户更改密码时，上一个密码*不能*再次使用。 |
 | 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |
 | 帐户锁定 | 使用错误密码 10 次登录尝试失败之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。 |

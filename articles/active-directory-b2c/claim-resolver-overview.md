@@ -1,26 +1,26 @@
 ---
-title: 关于 Azure Active Directory B2C 自定义策略中的声明解析程序 | Microsoft Docs
-description: 了解声明解析程序如何用于 Azure Active Directory B2C 中的自定义策略。
+title: 自定义策略中的声明解析程序
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure Active Directory B2C 的自定义策略中使用声明解析程序。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 01/25/2019
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: a943f3c2d9323edbf31c3363fc4e21fdba850ae7
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 5d1a5c2f3651a432cc96632ca8e03952f98d243a
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847120"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028087"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
-Azure Active Directory B2C (Azure AD B2C) [自定义策略](active-directory-b2c-overview-custom.md)中的声明解析程序提供关于授权请求的上下文信息，例如策略名称、请求相关 ID、用户界面语言等。
+Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overview.md)中的声明解析程序提供关于授权请求的上下文信息，例如策略名称、请求相关 ID、用户界面语言等。
 
 若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序   。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
 
@@ -49,9 +49,9 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](active-directory-b2c
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
-| {Culture:LCID}   | 语言代码的 LCID。 | 1033 |
+| {Culture:LCID}   | 语言代码的 LCID。 | 2052 |
 | {Culture:RegionName} | 区域的两字母 ISO 代码。 | US |
-| {Culture:RFC5646} | RFC5646 语言代码。 | en-US |
+| {Culture:RFC5646} | RFC5646 语言代码。 | zh-CN |
 
 ### <a name="policy"></a>策略
 

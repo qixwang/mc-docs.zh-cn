@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/27/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: a6aa1b0b8e4a23b66cd10ba8086a95cc2f77694e
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: ecac09c0fd1a3cc9f04682fc7149f071a1a7f5bd
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123292"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028185"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -33,6 +33,9 @@ ms.locfileid: "76123292"
 ## <a name="get-the-sdk"></a>获取 SDK
 
 ### <a name="windows"></a>Windows
+
+> [!WARNING]
+> 语音 SDK 支持 Windows 10 或更高版本。 **不支持**更早的 Windows 版本。
 
 对于 Windows，我们支持以下语言：
 

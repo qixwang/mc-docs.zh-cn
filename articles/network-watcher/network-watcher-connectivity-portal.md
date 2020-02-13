@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - Azure 门户 | Azure
+title: 排查连接问题 - Azure 门户
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure 门户使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 origin.date: 08/03/2017
 ms.date: 10/19/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 258e15787bc3f0b52d3df00fd2c36724a7234228
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: a3f547fae8434ba2496d958dff022972688a4d73
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674684"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028489"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>通过 Azure 门户使用 Azure 网络观察程序排查连接问题
 

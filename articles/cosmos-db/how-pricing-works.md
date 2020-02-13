@@ -6,13 +6,13 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/01/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: d6c1f55d0f27a1ff39ade8cc03b1a8b937d95011
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.date: 02/10/2020
+ms.openlocfilehash: ffa6e201c9b00c82af633f5e70f74d9dd4d120e6
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913295"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980525"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的定价模型 
 
@@ -33,14 +33,14 @@ Azure Cosmos DB 的定价模型可简化成本管理和计划。 使用 Azure Co
 
 Azure Cosmos DB 中的定价模型在所有 API 中都是一致的。 有关详细信息，请参阅 [Azure Cosmos DB 定价模型如何对客户而言更具经济效益](total-cost-ownership.md)。 数据库或容器需要最小吞吐量来确保 SLA，可以按每 100 RU/秒 37.94 元的价格增加或减少预配的吞吐量。
 
-目前，基于数据库和容器的吞吐量的最低价格是 151.76 元/月（请参阅 [Azure Cosmos DB 定价页](https://www.azure.cn/pricing/details/cosmos-db/)，获取最新信息）。 如果工作负荷使用多个容器，那么可以通过使用数据库级别的吞吐量来优化成本，因为数据库级别的吞吐量使得数据库中的任意数量的容器可以在容器之间共享吞吐量。 下表总结了预配的吞吐量和不同实体的成本：
+目前，基于数据库和容器的吞吐量的最低价格是 151.76 元/月（请参阅 [Azure Cosmos DB 定价页](https://www.azure.cn/pricing/details/cosmos-db/)，了解最新信息）。 如果工作负荷使用多个容器，那么可以通过使用数据库级别的吞吐量来优化成本，因为数据库级别的吞吐量使得数据库中的任意数量的容器可以在容器之间共享吞吐量。 下表总结了预配的吞吐量和不同实体的成本：
 
-|**实体**  | **最小吞吐量和成本** |**规模增量和成本** |**预配范围** |
+|**实体** | **最小吞吐量和成本** |**规模增量和成本** |**预配范围** |
 |---------|---------|---------|-------|
 |数据库    | 400 RU/秒（151.76 元/月）    | 100 RU/秒（37.94 元/月）   |吞吐量预留给数据库，并由数据库中的容器共享 |
 |容器     | 400 RU/秒（151.76 元/月）    | 100 RU/秒（37.94 元/月）  |吞吐量预留给特定容器 |
 
-如上表所示，Azure Cosmos DB 的最低吞吐量的最低价格为 151.76 元/月。 如果从最低吞吐量开始，随着时间逐步扩大吞吐量以支持生产工作负荷，那么成本将平稳上升，增量为 37.94 元/月。 Azure Cosmos DB 的定价模型是弹性的，按比例增加或减少时，价格会平稳地上升或下降。
+如上表所示，Azure Cosmos DB 的最低吞吐量起步价为 151.76 元/月。 如果你从最低吞吐量开始，并随着时间的推移逐步增加吞吐量以支持生产工作负荷，则成本将以每月 37.94 元的增量平稳增长。 Azure Cosmos DB 的定价模型是弹性的，按比例增加或减少时，价格会平稳地上升或下降。
 
 <!--MOONCAKE CUSTOMIZE: 24 美元/月 to 151.76 人民币/月 on 400RU/s-->
 
@@ -74,4 +74,4 @@ Azure Cosmos DB 免费为开发人员提供多个选项。 这些选项包括：
     
 * 了解 [Azure Cosmos DB 模拟器](local-emulator.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

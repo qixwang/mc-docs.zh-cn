@@ -6,22 +6,22 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 12/20/2019
-ms.date: 01/06/2020
+origin.date: 01/17/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 49a19a47cc0277503fa1780679bf12684b6102e5
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 6c49639407252c6ce87a0fdcac42440941e8cd7e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624364"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028549"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
 Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
 
-若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](storage-account-create.md)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 
@@ -43,7 +43,7 @@ Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队
 >
 > 若要详细了解如何升级到常规用途 v2 帐户，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。
 
-常规用途 v2 存储帐户提供多个访问层用于根据使用模式存储数据。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
+常规用途 v2 存储帐户提供多个访问层，可以根据使用模式来存储数据。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
 
 ### <a name="general-purpose-v1-accounts"></a>常规用途 v1 帐户
 
@@ -65,9 +65,9 @@ Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队
 
 ### <a name="filestorage-accounts"></a>FileStorage 帐户
 
-FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。 
+FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。
 
-FileStorage 帐户提供了独特的性能专用特征，例如 IOPS 突发。 有关这些特征的更多信息，请参阅文件规划指南的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
+FileStorage 帐户提供了独特的性能特征，例如 IOPS 突发。 有关这些特征的更多信息，请参阅文件规划指南的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 
@@ -78,10 +78,14 @@ FileStorage 帐户提供了独特的性能专用特征，例如 IOPS 突发。 �
 
 ## <a name="performance-tiers"></a>性能层
 
+根据所创建的存储帐户类型，可以在标准性能层和高级性能层之间进行选择。
+
+### <a name="general-purpose-storage-accounts"></a>通用存储帐户
+
 可以针对下述两个性能层之一配置常规用途存储帐户：
 
 - 用于存储 Blob、文件、表、队列和 Azure 虚拟机磁盘的标准性能层。 有关标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](scalability-targets-standard-account.md)。
-- 仅用于存储非托管虚拟机磁盘的高级性能层。 Azure 建议在 Azure 虚拟机中使用托管磁盘，而不是使用非托管磁盘。 若要详细了解高级性能层的可伸缩性目标，请参阅[高级页 Blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
+- 用于存储非托管虚拟机磁盘的高级性能层。 Azure 建议在 Azure 虚拟机中使用托管磁盘，而不是使用非托管磁盘。 若要详细了解高级性能层的可伸缩性目标，请参阅[高级页 Blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-page-blobs.md)。
 
 ## <a name="access-tiers-for-block-blob-data"></a>块 Blob 数据的访问层
 
@@ -91,7 +95,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 - **热**访问层。 此层已优化，适合频繁访问存储帐户中的对象。 访问热层中的数据最经济高效，但存储费用较高。 新的存储帐户默认在热层中创建。
 - **冷**访问层。 此层已优化，适合存储大量不常访问且存储时间至少为 30 天的数据。 将数据存储在冷层中更经济高效，但与访问热层中的数据相比，访问该数据的费用可能较高。
-- **存档**层。 此层仅适用于单个块 Blob。 存档层已优化，适合可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据。 存档层是最经济高效的数据存储选项。 但是，访问这些数据的开销比访问热层或冷层中的数据要高。
+- **存档**层。 此层仅适用于单个块 blob 和追加 blob。 存档层已优化，适合可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据。 存档层是最经济高效的数据存储选项。 但是，访问这些数据的开销比访问热层或冷层中的数据要高。
 
 如果数据的使用模式有所更改，可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -139,7 +143,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 - **共享访问签名：** 如果不使用 Azure AD 授权，则使用共享访问签名来委托对存储帐户中资源的访问权限。 共享访问签名是一个令牌，其中封装了对目标对象为 URL 上的 Azure 存储的请求进行授权所需的所有信息。 可以在共享访问签名中指定存储资源、授予的权限以及权限有效时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
 
 > [!NOTE]
-> 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。 
+> 与其他授权方式相比，使用 Azure AD 凭据对用户或应用程序进行身份验证可以提供优越的安全性和易用性。 虽然可以继续为应用程序使用共享密钥授权，但是，使用 Azure AD 不需要将帐户访问密钥与代码存储在一起。 也可以继续使用共享访问签名 (SAS) 授予对存储帐户中的资源的精细访问权限，但 Azure AD 提供了类似的功能，并且不需要管理 SAS 令牌，也不需要担心吊销已泄露的 SAS。
 >
 > 我们建议尽量对 Azure 存储 Blob 和队列应用程序使用 Azure AD 授权。
 
@@ -172,4 +176,4 @@ AzCopy 是一个 Windows 命令行实用程序，用于将数据高性能复制�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建存储帐户](storage-quickstart-create-account.md)
+- [创建存储帐户](storage-account-create.md)

@@ -1,22 +1,21 @@
 ---
-title: 支持 Azure 资源托管标识的 Azure 服务
+title: 支持托管标识的 Azure 服务 - Azure AD
 description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务列表
 services: active-directory
 author: MarkusVi
 ms.author: v-junlch
-origin.date: 09/24/2019
-ms.date: 11/13/2019
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5a31b9fafcf993d2dbfb7e47a649226cd0a4f21
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 10d90729c4c665dedd8f6b6a4a288b69935aeaac
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084481"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067685"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -129,6 +128,17 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 请参阅以下列表来配置 Azure 容器注册表任务的托管标识（在可用的区域中）：
 
 - [Azure CLI](/container-registry/container-registry-tasks-authentication-managed-identity)
+
+### <a name="azure-service-fabric"></a>Azure Service Fabric
+[Service Fabric 应用程序的托管标识](/service-fabric/concepts-managed-identity)处于预览状态，并在所有区域中均可用。
+
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 可用 | 不可用 | 不可用 |不可用 |
+
+请参考下表为所有区域中的 Azure Service Fabric 应用程序配置托管标识：
+- [Azure Resource Manager 模板](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>支持 Azure AD 身份验证的 Azure 服务
 

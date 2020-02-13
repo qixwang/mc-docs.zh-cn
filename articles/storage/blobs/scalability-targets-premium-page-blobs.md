@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 24e2aafc9506a7651fdccb8bb3753ea06576950c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 9852b0d9c58bef253608355298d08687a94ba61c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624467"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028909"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>高级页 blob 存储帐户的可伸缩性和性能目标
 
@@ -32,7 +32,7 @@ ms.locfileid: "75624467"
 
 | 总帐户容量                            | 本地冗余存储帐户的总带宽                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| 磁盘容量：35 TB <br>快照容量：10 TB | 为入站<sup>1</sup> 和出站<sup>2</sup> 流量提供最高 50 Gbps 的带宽 |
+| 磁盘容量：4 TB（单个磁盘）/35 TB（所有磁盘的累计总数） <br>快照容量：10 TB | 为入站<sup>1</sup> 和出站<sup>2</sup> 流量提供最高 50 Gbps 的带宽 |
 
 <sup>1</sup> 发送到存储帐户的所有数据（请求）
 
@@ -47,3 +47,4 @@ ms.locfileid: "75624467"
 ## <a name="see-also"></a>另请参阅
 
 - [标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md)
+- [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

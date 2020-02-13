@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义 OpenID Connect 技术配置文件 | Microsoft Docs
+title: 在自定义策略中定义 OpenID Connect 技术配置文件
+titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义 OpenID Connect 技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/24/2019
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c2e9d6f9349a863c92976b5222170ddb79f91631
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 702a6501767665d60a651364affb6a020283d4b1
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847159"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028154"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -88,5 +88,5 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 配置标识提供者的重定向 URI 时，请输入 `https://{your-tenant-name}.b2clogin.cn/{your-tenant-name}.partner.onmschina.cn/oauth2/authresp`。 确保将 `{your-tenant-name}` 替换为你的租户名称。 重定向 URI 需要采用全小写形式。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->
 

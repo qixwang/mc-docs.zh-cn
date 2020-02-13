@@ -1,5 +1,5 @@
 ---
-title: 用于登录用户的 Web 应用（移到生产环境）- Microsoft 标识平台
+title: 将用于登录用户的 Web 应用移到生产环境 - Microsoft 标识平台 | Azure
 description: 了解如何构建用于登录用户的 Web 应用（移到生产环境）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec51ed0bbf052cfe7b854f22f029c569c6744f21
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1a3c3a7a3f9a145d3e06681688c8ab8e74a0a6fa
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334797"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067695"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
@@ -30,6 +29,13 @@ ms.locfileid: "75334797"
 
 ## <a name="next-steps"></a>后续步骤
 
+### <a name="same-site"></a>同一站点
+
+请确保了解 Chrome 浏览器的新版本可能存在的问题
+
+> [!div class="nextstepaction"]
+> [如何在 Chrome 浏览器中处理 SameSite Cookie 更改](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>用于调用 Web API 的方案
 
 Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 Web 应用调用 Web API 是以下方案的目标：
@@ -37,7 +43,7 @@ Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 �
 > [!div class="nextstepaction"]
 > [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深入探讨：ASP.NET Core Web 应用教程
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>深入探讨：ASP.NET Core Web 应用教程
 
 了解如何在此 ASP.NET Core 教程中通过其他方法登录用户： 
 
@@ -52,7 +58,7 @@ Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 �
 - [Azure AD B2C](/active-directory-b2c/active-directory-b2c-overview)
 - 国家云
 
-### <a name="sample-code-java-web-app"></a>示例代码：Java Web 应用
+## <a name="sample-code-java-web-app"></a>示例代码：Java Web 应用
 
 通过 GitHub 上的此示例详细了解 Java Web 应用： 
 

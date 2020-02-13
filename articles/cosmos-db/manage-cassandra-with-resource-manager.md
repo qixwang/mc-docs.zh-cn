@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB Cassandra API 的 Azure 资源管理器模板
+title: Azure Cosmos DB Cassandra API 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB Cassandra API。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/12/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6c16b95e3764b089eb2d71474979033ddccc074d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6e286a222941780845ad135aed3131c1d6981096
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336436"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028930"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Cassandra API 资源
@@ -25,7 +25,7 @@ ms.locfileid: "75336436"
 
 > [!NOTE]
 > 帐户名称必须为小写且不超过 44 个字符。
-> 若要更新 RU/秒，请使用更新的吞吐量属性值重新提交模板。
+> 若要更新 RU/秒，请重新提交包含已更新吞吐量属性值的模板。
 
 ```json
 {
@@ -86,7 +86,7 @@ ms.locfileid: "75336436"
         },  
         "multipleWriteLocations": {
             "type": "bool",
-            "defaultValue": true,
+            "defaultValue": false,
             "allowedValues": [ true, false ],
             "metadata": {
                 "description": "Enable multi-master to make all regions writable."
@@ -106,26 +106,26 @@ ms.locfileid: "75336436"
                 "description": "The name for the Cassandra Keyspace"
             }
         },
+        "table1Name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the first Cassandra table"
+            }
+        },
+        "table2Name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the second Cassandra table"
+            }
+        },
         "throughput": {
             "type": "int",
             "defaultValue": 400,
             "minValue": 400,
             "maxValue": 1000000,
             "metadata": {
-                "description": "The throughput for the Cassandra Keyspace"
+                "description": "The throughput for both Cassandra tables"
             }       
-        },
-        "table1Name": {
-            "type": "string",
-            "metadata": {
-                "description": "The name for first the Cassandra table"
-            }
-        },
-        "table2Name": {
-            "type": "string",
-            "metadata": {
-                "description": "The name for second the Cassandra table"
-            }
         }
     },
     "variables": {
@@ -153,11 +153,13 @@ ms.locfileid: "75336436"
         [ 
             {
                 "locationName": "[parameters('primaryRegion')]",
-                "failoverPriority": 0
+                "failoverPriority": 0,
+                "isZoneRedundant": false
             }, 
             {
                 "locationName": "[parameters('secondaryRegion')]",
-                "failoverPriority": 1
+                "failoverPriority": 1,
+                "isZoneRedundant": false
             }
         ]
     },
@@ -168,7 +170,6 @@ ms.locfileid: "75336436"
             "name": "[variables('accountName')]",
             "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
-            "tags": {},
             "kind": "GlobalDocumentDB",
             "properties": {
                 "capabilities": [{ "name": "EnableCassandra" }],
@@ -187,8 +188,7 @@ ms.locfileid: "75336436"
             "properties":{
                 "resource":{
                     "id": "[parameters('keyspaceName')]"
-                },
-                "options": { "throughput": "[parameters('throughput')]" }
+                }
             }
         },
         {
@@ -213,7 +213,8 @@ ms.locfileid: "75336436"
                             { "name": "posted_month" }, 
                             { "name": "posted_time" } 
                         ]
-                    }
+                    },
+                    "options": { "throughput": "[parameters('throughput')]" }
                 }
             }
         },
@@ -242,7 +243,8 @@ ms.locfileid: "75336436"
                         "clusterKeys": [ 
                             { "name": "loadid", "orderBy": "asc" } 
                         ]
-                    }
+                    },
+                    "options": { "throughput": "[parameters('throughput')]" }
                 }
             }
         }
@@ -298,6 +300,6 @@ az cosmosdb show --resource-group $resourceGroupName --name $accountName --outpu
     <!--Not Available on [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
 - [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

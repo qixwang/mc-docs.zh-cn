@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：.NET 更改源处理器 API、SDK 和资源
+title: Azure Cosmos DB .NET 更改源处理器 API
 description: 了解有关更改源处理器 API 的信息。
 author: rockboyfor
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 origin.date: 01/30/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 691cfec88385857940980d1d7f448237d51d59f7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c2bdd82477888ebedb549c77c3da2982700d1c05
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335838"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028725"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 

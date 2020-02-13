@@ -1,18 +1,18 @@
 ---
-title: 如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
+title: 使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 description: 了解如何使用 Azure Cosmos DB Core API 为某个真实示例建模和分区
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/23/2019
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: fd04bc267b52537c58ff584f87fab613f6d71705
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: c23353e58810b515096286543b50591d5137cc89
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306686"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980511"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 
@@ -125,7 +125,7 @@ ms.locfileid: "71306686"
 
 ![将单个项写入用户容器](./media/how-to-model-partition-example/V1-C1.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 7 毫秒 | 5.71 RU | ✅ |
 
@@ -135,7 +135,7 @@ ms.locfileid: "71306686"
 
 ![从用户容器检索单个项](./media/how-to-model-partition-example/V1-Q1.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -145,7 +145,7 @@ ms.locfileid: "71306686"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 9 毫秒 | 8.76 RU | ✅ |
 
@@ -157,7 +157,7 @@ ms.locfileid: "71306686"
 
 每个附加查询根据相应容器的分区键进行筛选，而我们恰好需要使用分区来最大化性能和可伸缩性。 但是，我们最终需要执行四个操作才能返回一个帖子，因此，我们将在下一次迭代中改进此方法。
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 9 毫秒 | 19.54 RU | ⚠ |
 
@@ -172,7 +172,7 @@ ms.locfileid: "71306686"
 - 必须针对第一个查询返回的每个帖子，发出用于聚合评论数和点赞数的查询；
 - 主查询不会根据 `posts` 容器的分区键进行筛选，导致扇出并在整个容器中进行分区扫描。
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 130 毫秒 | 619.41 RU | ⚠ |
 
@@ -182,7 +182,7 @@ ms.locfileid: "71306686"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 7 毫秒 | 8.57 RU | ✅ |
 
@@ -194,7 +194,7 @@ ms.locfileid: "71306686"
 
 尽管主查询会根据容器的分区键进行筛选，但单独聚合用户名会降低总体性能。 稍后我们将会改进。
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 23 毫秒 | 27.72 RU | ⚠ |
 
@@ -204,7 +204,7 @@ ms.locfileid: "71306686"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 6 毫秒 | 7.05 RU | ✅ |
 
@@ -214,7 +214,7 @@ ms.locfileid: "71306686"
 
 ![检索帖子的所有点赞并聚合其附加数据](./media/how-to-model-partition-example/V1-Q5.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 59 毫秒 | 58.92 RU | ⚠ |
 
@@ -226,7 +226,7 @@ ms.locfileid: "71306686"
 
 同样，我们的初始查询不会根据 `posts` 容器的分区键进行筛选，这会触发高开销的扇出。但这一次情况更糟，因为我们的目标是一个大得多的结果集，并要使用 `ORDER BY` 子句将结果排序，因此会消耗更多的请求单位。
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 306 毫秒 | 2063.54 RU | ⚠ |
 
@@ -371,7 +371,7 @@ function updateUsernames(userId, username) {
 
 ![从帖子容器检索单个项](./media/how-to-model-partition-example/V2-Q2.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -381,7 +381,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有评论](./media/how-to-model-partition-example/V2-Q4.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 4 毫秒 | 7.72 RU | ✅ |
 
@@ -391,7 +391,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有点赞](./media/how-to-model-partition-example/V2-Q5.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 4 毫秒 | 8.92 RU | ✅ |
 
@@ -451,7 +451,7 @@ function updateUsernames(userId, username) {
 
 ![检索用户的所有帖子](./media/how-to-model-partition-example/V3-Q3.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 4 毫秒 | 6.46 RU | ✅ |
 
@@ -535,7 +535,7 @@ function truncateFeed() {
 
 ![检索最近的帖子](./media/how-to-model-partition-example/V3-Q6.png)
 
-| **延迟** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **“性能”** |
 | --- | --- | --- |
 | 9 毫秒 | 16.97 RU | ✅ |
 

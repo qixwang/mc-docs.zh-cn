@@ -3,39 +3,27 @@ title: 快速入门：适用于 Java 的 Azure Blob 存储客户端库 v8
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Java 的 Azure 存储客户端库 v8 将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 author: WenJason
 ms.author: v-jay
-origin.date: 10/05/2019
-ms.date: 11/25/2019
+origin.date: 01/24/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 8cb56c340a5ea800f4b7fd68993125946cf40fe2
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: 4e2eddec1cd85b4c0572087bb0fe694965cf48d2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328767"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028943"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>快速入门：适用于 Java 的 Azure Blob 存储客户端库 v8
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：使用 Java v8 SDK 管理 blob
 
-适用于 Java 的 Azure Blob 存储客户端库 v8 入门。 Azure Blob 存储是 Azure 的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
+本快速入门介绍如何使用 Java 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载并列出 blob。 你还将创建容器、设置容器权限并删除容器。
 
-使用适用于 Java 的 Azure Blob 存储客户端库完成以下操作：
+## <a name="prerequisites"></a>必备条件
 
-* 创建容器
-* 设置容器权限
-* 在 Azure 存储中创建 blob
-* 将 blob 下载到本地计算机
-* 列出容器中所有的 blob
-* 删除容器
-
-## <a name="prerequisites"></a>先决条件
-
-* Azure 订阅 - [创建试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
-* Azure 存储帐户 - [创建存储帐户](/storage/common/storage-quickstart-create-account)
-* 包含 Maven 集成的 IDE。
-* 或者，从命令行安装和配置 Maven。
-
-本指南使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](https://www.eclipse.org/downloads/)。
+- 具有活动订阅的 Azure 帐户。 [免费创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+- 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
+- 包含 Maven 集成的 IDE。 本指南使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](https://www.eclipse.org/downloads/)。
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
@@ -155,7 +143,7 @@ System.out.println("Uploading the sample file ");
 blob.uploadFromFile(sourceFile.getAbsolutePath());
 ```
 
-有多个可以与 Blob 存储配合使用的 `upload` 方法，其中包括 [upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext)。 例如，如果有字符串，可以使用 `UploadText` 方法，而不是 `Upload` 方法。 
+有多个可以与 Blob 存储配合使用的 `upload` 方法，其中包括 [upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext)。 例如，如果有字符串，可以使用 `UploadText` 方法，而不是 `Upload` 方法。
 
 块 blob 可以是任何类型的文本或二进制文件。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 将追加 Blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
 

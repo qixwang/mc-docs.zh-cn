@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB API for MongoDB 的 Azure 资源管理器模板
+title: Azure Cosmos DB API for MongoDB 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB API for MongoDB。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.date: 12/16/2019
-ms.openlocfilehash: fc19764e02e526151b415de03908154c2d773e98
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: a868a4b6f23561e2b4c42a0345393fe7eb6ea7d5
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335849"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028928"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB MongoDB API 资源
@@ -87,7 +87,7 @@ ms.locfileid: "75335849"
         },  
         "multipleWriteLocations": {
             "type": "bool",
-            "defaultValue": true,
+            "defaultValue": false,
             "allowedValues": [ true, false ],
             "metadata": {
                 "description": "Enable multi-master to make all regions writable."
@@ -105,7 +105,7 @@ ms.locfileid: "75335849"
             "minValue": 400,
             "maxValue": 1000000,
             "metadata": {
-                "description": "The throughput for the Mongo DB database"
+                "description": "The shared throughput for the Mongo DB database"
             }           
         },
         "collection1Name": {
@@ -146,11 +146,13 @@ ms.locfileid: "75335849"
         [ 
             {
                 "locationName": "[parameters('primaryRegion')]",
-                "failoverPriority": 0
+                "failoverPriority": 0,
+                "isZoneRedundant": false
             }, 
             {
                 "locationName": "[parameters('secondaryRegion')]",
-                "failoverPriority": 1
+                "failoverPriority": 1,
+                "isZoneRedundant": false
             }
         ]
     },
@@ -281,6 +283,6 @@ az cosmosdb show --resource-group $resourceGroupName --name $accountName --outpu
     <!--Not Available on - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
 - [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

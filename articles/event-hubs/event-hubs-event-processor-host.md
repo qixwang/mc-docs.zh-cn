@@ -11,17 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 08/16/2018
-ms.date: 08/12/2019
-ms.author: v-biyu
-ms.openlocfilehash: 6161ce093388fc3f93af4ebf6b99e50069f80554
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.custom: seodec18
+origin.date: 01/10/2020
+ms.date: 02/17/2020
+ms.author: v-tawe
+ms.openlocfilehash: 2015ae48440d9ddfb5f9ae24fb8ced6419a17759
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72872979"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067736"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
+> [!NOTE]
+> 本文适用于旧版 Azure 事件中心 SDK。 若要了解如何将代码迁移到新版 SDK，请参阅以下迁移指南。 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> 另请参阅[跨应用程序的多个实例均衡分区负载](event-processor-balance-partition-load.md)。
 
 Azure 事件中心是强大的遥测引入服务，使用它能以较低的成本流式传输数百万个事件。 本文介绍如何通过*事件处理程序主机* (EPH) 使用引用的事件；EPH 是一个智能使用者代理，可以简化检查点、租用和并行事件读取器的管理。  
 
@@ -115,8 +124,8 @@ public class SimpleEventProcessor : IEventProcessor
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
 | $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
-| : |   |   |   |   |
-| : |   |   |   |   |
+| 解码的字符： |   |   |   |   |
+| 解码的字符： |   |   |   |   |
 | $Default | 15 | Consumer\_VM3 | 2018-04-15T01:22:56 | 976 |
 
 此处，每个主机按特定的持续时间（租约持续时间）获取分区所有权。 如果某个主机发生故障（VM 关闭），则租约将会过期。 其他主机尝试获取分区所有权，其中一个主机会成功。 此过程会重置具有新所有者的分区上的租约。 这样，每次只会有一个读取者可以从使用者组中任意给定的分区读取事件。

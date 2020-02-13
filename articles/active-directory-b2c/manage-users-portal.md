@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/09/2019
-ms.date: 11/22/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 9a11394da62484702925d88a86571c41c44119c4
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: c34c9b1a5011daed4e4ab55c93de5c894227175d
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461644"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028156"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 门户在 Azure AD B2C 中创建和删除使用者用户
 
@@ -60,5 +59,8 @@ ms.locfileid: "74461644"
 
 若要详细了解如何在删除后的头 30 天内还原用户或永久删除用户，请参阅[使用 Azure Active Directory 还原或删除最近删除的用户](../active-directory/fundamentals/active-directory-users-restore.md)。
 
+## <a name="next-steps"></a>后续步骤
 
+有关自动用户管理方案（例如，将用户从其他标识提供者迁移到 Azure AD B2C 目录），请参阅 [Azure AD B2C:用户迁移](user-migration.md)。
 
+<!-- Update_Description: wording update -->

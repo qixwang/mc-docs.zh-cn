@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的 SQL 查询执行
-description: 了解 Azure Cosmos DB 中的 SQL 查询执行
+description: 了解如何在 Azure Cosmos DB 中创建并执行 SQL 查询。 本文介绍如何使用 REST API、.NET SDK、JavaScript SDK 和各种其他 SDK 创建和执行 SQL 查询。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 05/31/2019
-ms.date: 09/30/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2eb3b0c0e9e4bb82218bfec34418b9ee38349a92
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 1ff8d0b051305652278c01dd9a35eadeafbcc057
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306767"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028665"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查询执行
 
@@ -43,7 +43,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-其结果是：
+结果有：
 
 ```json
     HTTP/1.1 200 Ok
@@ -114,7 +114,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-其结果是： 
+结果有： 
 
 ```json
     HTTP/1.1 200 Ok
@@ -294,4 +294,4 @@ Azure Cosmos DB 提供一种编程模型，用于通过存储过程和触发器�
 - [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB 一致性级别](consistency-levels.md)
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update -->

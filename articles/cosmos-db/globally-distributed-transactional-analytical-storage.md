@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos 容器的多区域分布式事务和分析存储
+title: Azure Cosmos 容器的多区域分布式事务和分析存储（个人预览版）
 description: 了解 Azure Cosmos 容器的事务和分析存储及其配置选项。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/30/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 429544bced39a560ec7ddf5c46519ce07d8f1d14
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4cc46bfa19c8637f139f9156aade1dc7b8a56244
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336096"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980533"
 ---
 # <a name="multiple-regionally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos 容器的多区域分布式事务和分析存储
 
-Azure Cosmos 容器在内部以两个存储引擎（事务存储引擎和可更新的分析存储引擎）为后盾。 这两个存储引擎采用结构化的日志，并已经过写入优化，可加快更新速度。 但是，两者的编码方式有所不同：
+Azure Cosmos 容器由两个存储引擎提供内部支持 - 事务存储引擎和可更新的分析存储引擎（个人预览版）。 这两个存储引擎采用结构化的日志，并已经过写入优化，可加快更新速度。 但是，两者的编码方式有所不同：
 
 * **事务存储引擎** - 以行导向格式进行编码，可实现快速事务读取和查询。
 

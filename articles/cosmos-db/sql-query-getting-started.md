@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的 SQL 查询入门
-description: SQL 查询简介
+description: 了解如何使用 SQL 查询从 Azure Cosmos DB 查询数据。 可以将示例数据上传到 Azure Cosmos DB 中的容器并对其进行查询。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 06/21/2019
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: efb6f73c7d046af8e49d8a167895ff452d1328e4
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: cf71b657c3d5e3c04f2f64e5a0601615f6d76582
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306766"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028650"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 
@@ -147,7 +147,7 @@ Azure Cosmos DB SQL API 帐户支持使用 结构化查询语言 (SQL) 作为 JS
     ORDER BY f.address.city ASC
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

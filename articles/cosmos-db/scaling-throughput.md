@@ -1,19 +1,19 @@
 ---
 title: 在 Azure Cosmos DB 中缩放吞吐量
-description: 本文介绍 Azure Cosmos DB 如何弹性缩放吞吐量
+description: 本文介绍 Azure Cosmos DB 如何跨预配 Azure Cosmos 帐户的不同区域缩放吞吐量。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 07/23/2019
-ms.date: 09/09/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: cce2794421213321b054d577f2f4848a8dd8c741
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: cde33e48295945a6bea6df21891ba7154b56136a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254870"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028749"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>全局缩放预配的吞吐量 
 
@@ -43,4 +43,4 @@ ms.locfileid: "70254870"
 
 * [获取和设置容器与数据库的吞吐量](set-throughput.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 12/20/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: acba531f6c7d05e125e9d30a8fd76aa374851717
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 4ecc8daac42f4ad56c90479dac9fb8fcfddb2018
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624157"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028642"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 
@@ -48,7 +48,7 @@ ms.locfileid: "75624157"
 
 Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能的一部分。 但在某些情况下，这些错误指示你可能能够优化客户端应用程序以提高性能。
 
-在此情况下，我们将低成功率视为低于 100% 的任何状态。 但是，可以根据自己的需求选择不同的度量值级别。 我们建议在测试期间，为关键性能度量值建立基线容差。 例如，可以根据测试，确定应用程序应该持续保持 90% 或 85% 的成功率。 如果度量值数据显示应用程序与该数字有偏差，则可以调查导致成功率上升的原因。
+在此情况下，我们将低成功率视为低于 100% 的任何状态。 但是，可以根据自己的需求选择不同的指标级别。 我们建议在测试期间，为关键性能指标建立基线容差。 例如，可以根据测试，确定应用程序应该持续保持 90% 或 85% 的成功率。 如果指标数据显示应用程序与该数字有偏差，则可以调查导致成功率上升的原因。
 
 对于我们的示例方案，一旦我们确定了成功率指标低于 100%，我们会检查日志以查找与指标相关的错误，并使用它们来找出导致较低成功率的原因。 我们会专门介绍 400 范围内的错误。 然后，我们更细致地调查 404（未找到）错误。
 
@@ -98,7 +98,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 ### <a name="collect-a-network-trace"></a>收集网络跟踪
 
-当客户端应用程序正在运行时，可以使用 Message Analyzer 收集 HTTP/HTTPS 网络跟踪。 Message Analyzer 在后端使用 [Fiddler](https://www.telerik.com/fiddler) 。 在收集网络跟踪之前，我们建议配置 Fiddler 来记录未加密的 HTTPS 通信：
+当客户端应用程序正在运行时，可以使用 Message Analyzer 收集 HTTP/HTTPS 网络跟踪。 Message Analyzer 在后端使用 [Fiddler](https://www.telerik.com/fiddler) 。 在收集网络跟踪之前，我们建议配置 Fiddler，记录未加密的 HTTPS 通信：
 
 1. 安装 [Fiddler](https://www.telerik.com/download/fiddler)。
 2. 启动 Fiddler。
@@ -129,7 +129,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 应用程序运行一段时间后，便可查看 [Azure 门户](https://portal.azure.cn)中显示的指标图表，以观察服务的性能。
 
-首选，在 Azure 门户中导航到存储帐户。 默认情况下，包含“成功百分比”  的监视图显示在帐户边栏选项卡上。 如果以前修改过此图表以显示不同指标，则请添加“成功百分比”  指标。
+首先，在 Azure 门户中导航到存储帐户。 默认情况下，包含“成功百分比”  的监视图显示在帐户边栏选项卡上。 如果以前修改过此图表以显示不同指标，则请添加“成功百分比”  指标。
 
 现在，监视图中会显示“成功百分比”  ，以及可能已添加的任何其他指标。 接下来要通过在 Message Analyzer 中分析日志进行调查，在此情况下，成功率百分比略低于 100%。
 
@@ -144,13 +144,13 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 Azure 存储将服务器日志数据写入 Blob，将指标写入表。 存储帐户的已知 `$logs` 容器中提供了日志 Blob。 日志 Blob 按年、月、日和小时的分层形式命名，因此，可以轻松地找到想要调查的时间范围。 例如，在 `storagesample` 帐户中，对应于 2015 年 1 月 2 日早晨 8-9 点的日志 blob 容器为 `https://storagesample.blob.core.chinacloudapi.cn/$logs/blob/2015/01/08/0800`。 此容器中的各个 blob 均按顺序命名，并以 `000000.log` 开头。
 
-可以使用 AzCopy 命令行工具将这些服务器端日志文件下载到本地计算机上的所选位置。 例如，可以使用以下命令将发生于 2015 年 1 月 2 日 Blob 操作的日志文件下载到文件夹 `C:\Temp\Logs\Server`；将 `<storageaccountname>` 替换为自己的存储帐户名称，将 `<storageaccountkey>` 替换为自己的帐户访问密钥：
+可以使用 AzCopy 命令行工具将这些服务器端日志文件下载到本地计算机上的所选位置。 例如，可以使用以下命令将发生于 2015 年 1 月 2 日的 Blob 操作的日志文件下载到文件夹 `C:\Temp\Logs\Server`；将 `<storageaccountname>` 替换为自己的存储帐户名称：
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.chinacloudapi.cn/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.chinacloudapi.cn/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
-可以从 [Azure 下载](/downloads/)页下载 AzCopy。 若要深入了解如何使用 AzCopy，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
+可以从 [Azure 下载](/downloads/)页下载 AzCopy。 有关使用 AzCopy 的详细信息，请参阅 [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md)（使用 AzCopy 命令行实用程序传输数据）。
 
 有关下载服务器端日志的其他信息，请参阅 [Download Storage Logging log data](https://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)（下载存储日志记录日志数据）。
 
@@ -185,7 +185,7 @@ Message Analyzer 包括 Azure 存储的资产，可帮助你分析服务器、�
 可以将所有已保存的日志文件（服务器端、客户端和网络）导入到 Microsoft Message Analyzer 的单个会话中以进行分析。
 
 1. 在 Microsoft Message Analyzer 的“文件”  菜单上，单击“新建会话”  ，并单击“空白会话”  。 在“新建会话”  对话框中，输入分析会话的名称。 在“会话详细信息”  面板中，单击“文件”  按钮。
-2. 要加载 Message Analyzer 生成的网络跟踪数据，请单击“添加文件”  ，浏览到 .matp 文件经由 Web 跟踪会话保存到的位置，再选择该 .matp 文件，然后单击“打开”  。
+2. 若要加载 Message Analyzer 生成的网络跟踪数据，请单击“添加文件”  ，浏览到 .matp 文件经由 Web 跟踪会话保存到的位置，再选择该 .matp 文件，并单击“打开”  。
 3. 要加载服务器端日志数据，请单击“添加文件”  ，浏览到服务器端日志下载到的位置，再选择分析时间范围内的日志文件，然后单击“打开”  。 在“会话详细信息”  面板中，将每个服务器端日志文件的“文本日志配置”  下拉列表设置为 **AzureStorageLog**，确保 Microsoft Message Analyzer 可正确分析日志文件。
 4. 要加载客户端日志数据，请单击“添加文件”  ，浏览到客户端日志保存到的位置，选择想要分析的日志文件，并单击“打开”  。 接下来，在“会话详细信息”  面板中，将每个客户端日志文件的“文本日志配置”  下拉列表设置为 **AzureStorageClientDotNetV4**，确保 Microsoft Message Analyzer 可正确分析日志文件。
 5. 在“新建会话”  对话框中单击“开始”  ，加载并分析日志数据。 日志数据显示在 Message Analyzer 分析网格中。
@@ -194,7 +194,7 @@ Message Analyzer 包括 Azure 存储的资产，可帮助你分析服务器、�
 
 ![配置 Message Analyzer 会话](./media/storage-e2e-troubleshooting/configure-mma-session-1.png)
 
-请注意，Message Analyzer 会将日志文件载入内存中。 如果有大量的日志数据，则需要进行筛选，以便从 Message Analyzer 获得最佳性能。
+请注意，Message Analyzer 会将日志文件载入内存中。 如果有大量日志数据，需要进行筛选，以便从 Message Analyzer 获得最佳性能。
 
 首先，确定你想要审查的时间范围，并使用尽可能小的时间范围。 在许多情况下，需要审查最多几分钟或几小时的时间段。 导入可以满足需求的最小日志集。
 
@@ -334,4 +334,3 @@ Message Analyzer 将查找并选择搜索条件与客户端请求 ID 匹配的�
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * [Microsoft Message Analyzer Operating Guide](https://technet.microsoft.com/library/jj649776.aspx)（Microsoft Message Analyzer 操作指南）
-<!--Update_Description: update link-->

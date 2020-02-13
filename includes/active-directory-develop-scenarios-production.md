@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 06/21/2019
+ms.date: 02/05/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 3b26bffa5e15139949133419fa559eb06686e239
-ms.sourcegitcommit: a0f90b99b9081d25ced6fa3c4eb7903fb0904d61
+ms.openlocfilehash: f5f3162d3b2bf27280494abf0b8919df22769326
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67307603"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067696"
 ---
 使应用程序变得出色：
 
@@ -30,5 +29,5 @@ ms.locfileid: "67307603"
 
 测试集成：
 
-- 使用 [Microsoft 标识平台集成清单](../articles/active-directory/develop/identity-platform-integration-checklist.md)。
+- 使用 [Microsoft 标识平台的集成清单](../articles/active-directory/develop/identity-platform-integration-checklist.md)。
 

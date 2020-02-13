@@ -1,18 +1,18 @@
 ---
-title: 无服务器数据库计算 - Azure Functions 和 Azure Cosmos DB
+title: 使用 Azure Cosmos DB 和 Azure Functions 进行无服务器数据库计算
 description: 了解 Azure Cosmos DB 和 Azure Functions 如何一起使用，以创建事件驱动型无服务器计算应用。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 07/17/2019
-ms.date: 09/09/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: e468028cd3f2daf321ee6972fc794f5b3e98d84f
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 81cb2a2171544f13fbb4a1f3eb7eae99057fd2d6
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254509"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028746"
 ---
 <!--Verify sucessfully-->
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
@@ -68,7 +68,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在财务实现中，当银行帐户余额低于特定金额时，可以调用一个函数。
 
-**实现：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
+**实施：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
 
 1. 通过[计时器触发器](../azure-functions/functions-bindings-timer.md)，可以使用**输入绑定**每隔一定时间检索存储在 Azure Cosmos 容器中的银行帐户余额信息。
 2. 如果余额低于用户设置的低余额阈值，则采取 Azure Function 中的某个措施。
@@ -152,4 +152,4 @@ Azure Functions 的优点：
 * [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-cosmosdb.md)
 
 <!--Verify sucessfully-->
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

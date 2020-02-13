@@ -5,17 +5,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 03/21/2019
-ms.date: 01/06/2020
+origin.date: 01/21/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 42278b5e98b1be67a3e9c8aacc5992f553720129
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3fff4dbce8403a5996b5114adc5b8c6482d76746
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624288"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028937"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -261,6 +261,8 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
+如果是在本地使用 [ExpressRoute](/expressroute/expressroute-introduction)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Azure 网络主干时，会向 Azure 服务流量应用这些地址。 对于 Microsoft 对等互连，所用 NAT IP 地址要么由客户提供，要么由服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)。
+
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
 可以通过 Azure 门户、PowerShell 或 CLIv2 管理存储帐户的 IP 网络规则。
@@ -373,8 +375,9 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 事件网格         | Microsoft.EventGrid        | 启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/event-grid/event-sources)和[发布到队列](/event-grid/event-handlers)的信息。 |
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](/event-hubs/event-hubs-capture-overview)。|
 | Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-|Azure Monitor|Microsoft.Insights|允许将监视数据写入受保护存储帐户[了解详细信息](/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
-|Azure 网络|Microsoft.Network|存储和分析网络流量日志。 [了解详细信息](/network-watcher/network-watcher-packet-capture-overview)。|
+| Azure 导入导出      | Microsoft.ImportExport     | 允许使用导入/导出服务将数据导入 Azure 以及从 Azure 导出数据。 [了解详细信息](/storage/common/storage-import-export-service)。  |
+| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入安全存储帐户，包括资源诊断日志、Azure Active Directory 登录和审核日志，以及 Microsoft Intune 日志。 [了解详细信息](/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，请启用复制，以实现 Azure IaaS 虚拟机的灾难恢复。  [了解详细信息](/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。  在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
@@ -385,6 +388,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 逻辑应用         | Microsoft.Logic/workflows       | 使逻辑应用能够访问存储帐户。 |
 | Azure SQL 数据仓库 | Microsoft.Sql                   | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/stream-analytics/blob-output-managed-identity)。 |
+| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
 
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
@@ -461,4 +465,4 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 在[服务终结点](/virtual-network/virtual-network-service-endpoints-overview)中了解有关 Azure 网络服务终结点的详细信息。
 
-在 [Azure 存储安全指南](storage-security-guide.md)中深入了解 Azure 存储安全。
+在 [Azure 存储安全指南](../blobs/security-recommendations.md)中深入了解 Azure 存储安全。

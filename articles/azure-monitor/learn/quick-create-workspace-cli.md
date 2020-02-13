@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 03/12/2019
 ms.date: 08/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d90c02116584caf374bc67b2bf6db2fb2acd414a
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 86bd18ab54ebb4b533aaa605696de3afb42cfb78
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982059"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028919"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -22,9 +22,9 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 * 订阅中的 Azure 资源  
 * 受 System Center Operations Manager 监视的本地计算机  
-* System Center Configuration Manager 中的设备集合  
+* Configuration Manager 中的设备集合  
 * Azure 存储中的诊断或日志数据  
- 
+
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：
 
 * [从 Azure 虚拟机收集数据](../learn/quick-collect-azurevm.md)
@@ -46,7 +46,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 * sku - 默认为新的“按 GB”定价层，该层已在 2018 年 4 月的定价模型中发布
 
 >[!WARNING]
->如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。 
+>如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。
 >
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
@@ -107,9 +107,9 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
     }
     ```
 
-2. 按要求编辑模板。  查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
+2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。   
-4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令：
+4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示你输入工作区名称时，请提供在所有 Azure 订阅中全局唯一的名称。
 
     ```azurecli
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json

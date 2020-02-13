@@ -2,26 +2,22 @@
 title: 为何更新为 Microsoft 标识平台 (v2.0) | Azure
 description: 了解 Microsoft 标识平台 (v2.0) 终结点与 Azure Active Directory (Azure AD) v1.0 终结点之间的差异，以及更新为 v2.0 的益处。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c6a4f27d8a74c65f2d9a34b37da6f92f131cc4e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5e080f851dc349b574c4b2aa1d119f18d975c25e
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334896"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067526"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为何更新为 Microsoft 标识平台 (v2.0)？
 

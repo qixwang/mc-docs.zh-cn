@@ -9,12 +9,12 @@ origin.date: 03/15/2019
 ms.date: 08/20/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: d44578a6f0bc54dba79b68a668acb4ff81303cad
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: c054d64370250f42ca38599b968278cd9f2f7912
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528340"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028477"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -70,13 +70,13 @@ ms.locfileid: "74528340"
 
 ![端到端事务详细信息的屏幕截图](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>在 Analytics 中查看
+### <a name="view-logs-analytics"></a>查看日志（分析）
 
-若要进一步查询和调查应用程序数据，请单击“在 Analytics 中查看”。 
+若要进一步查询和调查应用程序数据，请单击“在日志(分析)中查看”。 
 
-![“在 Analytics 中查看”按钮的屏幕截图](media/app-map/view-in-analytics.png)
+![“在 Analytics 中查看”按钮的屏幕截图](media/app-map/view-logs.png)
 
-![分析体验的屏幕截图](media/app-map/analytics.png)
+![分析体验的屏幕截图。 汇总过去 12 小时内请求的平均响应持续时间的折线图。](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>警报
 

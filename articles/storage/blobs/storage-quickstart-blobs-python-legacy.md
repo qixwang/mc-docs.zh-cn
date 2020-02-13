@@ -3,34 +3,31 @@ title: 快速入门：适用于 Python 的 Azure Blob 存储客户端库 v2.1
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Python 的存储客户端库 v2.1 将 blob 上传到 Azure 存储、下载 blob，然后列出容器中的 blob。
 author: WenJason
 ms.author: v-jay
-origin.date: 09/11/2019
-ms.date: 11/25/2019
+origin.date: 01/24/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 29fe62a2021792b9a67c19ea7dee2a225cd95ec8
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: ba4db00e5859ed14d5012cafad696660671f9880
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328776"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028959"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>快速入门：适用于 Python 的 Azure Blob 存储客户端库 v2.1
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入门：使用 Python v2.1 SDK 管理 blob
 
-本文介绍如何使用 Python 在 Azure Blob 存储的容器中上传、下载和列出块 Blob。 Blob 是简单的对象，可用于存储大量的文本或二进制数据，其中包括图像、文档、流媒体和存档数据。 Azure 存储中的 Blob 不同于文件共享、无架构表和消息队列。  有关详细信息，请参阅 [Azure 存储简介](/storage/common/storage-introduction)。
+本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并将创建和删除容器。
+
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+- 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
+- [Python](https://www.python.org/downloads/)。
+- [用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-sdk-for-python)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-请确保已安装下述额外的必备组件：
-
-* [Python](https://www.python.org/downloads/)
-
-* [Azure Storage SDK for Python](https://github.com/Azure/azure-sdk-for-python)
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
@@ -68,7 +65,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 1. 安装依赖项：
 
     ```console
-    pip install azure-storage-blob
+    pip install azure-storage-blob==2.1.0
     ```
 
 1. 转到示例应用程序：

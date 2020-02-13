@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 LTRIM
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 LTRIM。
+description: 了解 Azure Cosmos DB 中的 LTRIM SQL 系统函数，以便返回删除前导空格后的字符串表达式。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: c7879245a100a1fe14a269698e19b99385e30830
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: e758a813b5774b48180c5963acad0fa16b141fce
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914697"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028962"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
  返回删除前导空格后的字符串表达式。  
@@ -53,5 +53,4 @@ SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query ltrim  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

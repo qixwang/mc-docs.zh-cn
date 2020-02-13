@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB 多主数据库优势
-description: 了解 Azure Cosmos DB 中的多主数据库的优势。
+description: 了解 Azure Cosmos DB 中多主数据库的优势，比较单个和多个写入位置中的延迟和 SLA 要求。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 07/08/2019
-ms.date: 07/29/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 82484f237aa0e6abecce3ef33fe783f4b2f6244f
-ms.sourcegitcommit: b418463868dac6b3c82b292f70d4a17bc5e01e95
+ms.openlocfilehash: 14a9b4562119afcab7cf38eed015cb4d6ac27d2c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69578614"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028795"
 ---
 # <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>了解 Azure Cosmos DB 中的多主数据库优势
 
-Cosmos DB 帐户操作员应该选择适当的多区域分发配置，确保满足其应用程序的延迟、可用性和 RTO 要求。 配置了多个写入位置的 Azure Cosmos 帐户相对于只有单个写入位置的帐户有很大的优势，其中包括：99.999% 的写入可用性 SLA、99% 情况下 <10 毫秒的写入延迟 SLA，以及在发生区域灾难时 RTO = 0。
+Cosmos DB 帐户操作员应该选择适当的多区域分发配置，以确保满足其应用程序的延迟、可用性和 RTO 要求。 配置了多个写入位置的 Azure Cosmos 帐户相对于只有单个写入位置的帐户有很大的优势，其中包括：99.999% 的写入可用性 SLA、99% 情况下 <10 毫秒的写入延迟 SLA，以及在发生区域灾难时 RTO = 0。
 
 ## <a name="comparison-of-features"></a>功能比较
 

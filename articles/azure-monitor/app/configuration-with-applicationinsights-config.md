@@ -9,12 +9,12 @@ origin.date: 05/22/2019
 ms.date: 6/4/2019
 ms.reviewer: olegan
 ms.author: v-lingwu
-ms.openlocfilehash: d753a3746036891c0fd0acbc0f85fe01caa0447f
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 28a2e388e7c6aec87cff24a9c618b3b67aa2845f
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839005"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028457"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -231,47 +231,23 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
    </ApplicationInsights>
 ```
 
-#### <a name="local-forwarder"></a>本地转发器
-
-[本地转发器](opencensus-local-forwarder.md)是从各种 SDK 和框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 本地转发器与 Application Insights Java SDK 结合使用时，可为[实时指标](../../azure-monitor/app/live-stream.md)和自适应采样提供全面支持。
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-如果使用的是 SpringBoot 入门版，请将以下内容添加到配置文件（application.properties）中：
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-SpringBoot application.properties 和 applicationinsights.xml 配置的默认值是相同的。
-
 ## <a name="instrumentationkey"></a>InstrumentationKey
 确定显示数据的 Application Insights 资源。 通常，我们会使用单独的密钥为每个应用程序单独创建一个资源。
 
 如果想要以动态方式设置密钥（例如，要将应用程序的结果发送到不同的资源），可以在配置文件中省略密钥，并在代码中设置密钥。
 
-若要为 TelemetryClient 的所有实例（包括标准遥测模块）设置密钥，请在 TelemetryConfiguration.Active 中设置密钥。 请在初始化方法中执行此操作，例如通过 ASP.NET 服务中的 global.aspx.cs：
+若要为 TelemetryClient 的所有实例（包括标准遥测模块）设置密钥， 请在初始化方法中执行此操作，例如通过 ASP.NET 服务中的 global.aspx.cs：
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights;
 
     protected void Application_Start()
     {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey =
-          // - for example -
-          WebConfigurationManager.AppSettings["ikey"];
-      //...
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.InstrumentationKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+        var telemetryClient = new TelemetryClient(configuration);
+   
 ```
 
 如果只想将特定的一组事件发送到不同的资源，可以针对特定的 TelemetryClient 设置密钥：

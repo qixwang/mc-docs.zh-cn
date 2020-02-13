@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 10/23/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 3589c0032c4016895e8e698e2fb7aef589cc4c6f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 02/03/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: f9df2c50b6ac9f42723a78133b3965123cfda764
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630906"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037933"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>通过 Python 以端到端方式将 blob 引入到 Azure 数据资源管理器中
 
@@ -26,7 +26,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器以从新存储帐户引入数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -50,7 +50,7 @@ pip install azure-storage-blob
 
 下面的代码示例提供了一个分步过程，该过程导致将数据引入到 Azure 数据资源管理器中。 
 
-首先创建一个资源组。 还将创建 Azure 资源，例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 然后，在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建数据连接，将 Azure 数据资源管理器配置为从新存储帐户引入数据。
+首先创建一个资源组。 还将创建 Azure 资源，例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库，并添加主体。 然后，在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建数据连接，将 Azure 数据资源管理器配置为从新存储帐户引入数据。
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -88,6 +88,16 @@ kusto_table_name = "Events"
 kusto_column_mapping_name = "Events_CSV_Mapping"
 kusto_data_connection_name = deployment_name + "kustoeventgridconnection"
 
+#principals
+principal_id_for_cluster = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+role_for_cluster_principal = "AllDatabasesAdmin";
+tenant_id_for_cluster_principal = tenant_id;
+principal_type_for_cluster = "App";
+principal_id_for_database = "xxxxxxxx@xxxxxxxx.com";//User Email
+role_for_database_principal = "Admin";
+tenant_id_for_database_principal = tenant_id;
+principal_type_for_database = "User";
+
 
 credentials = ServicePrincipalCredentials(
     client_id=client_id,
@@ -104,7 +114,7 @@ resource_client.resource_groups.create_or_update(
     }
 )
 
-print('Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, and database by using an Azure Resource Manager template.')
+print('Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.')
 #Read the Azure Resource Manager template
 with open(azure_resource_template_path, 'r') as template_file_fd:
     template = json.load(template_file_fd)
@@ -115,7 +125,15 @@ parameters = {
     'storageAccountName': storage_account_name,
     'containerName': storage_container_name,
     'kustoClusterName': kusto_cluster_name,
-    'kustoDatabaseName': kusto_database_name
+    'kustoDatabaseName': kusto_database_name,
+    'principalIdForCluster': principal_id_for_cluster,
+    'roleForClusterPrincipal': role_for_cluster_principal,
+    'tenantIdForClusterPrincipal': tenant_id_for_cluster_principal,
+    'principalTypeForCluster': principal_type_for_cluster,
+    'principalIdForDatabase': principal_id_for_database,
+    'roleForDatabasePrincipal': role_for_database_principal,
+    'tenantIdForDatabasePrincipal': tenant_id_for_database_principal,
+    'principalTypeForDatabase': principal_type_for_database
 }
 parameters = {k: {'value': v} for k, v in parameters.items()}
 deployment_properties = {

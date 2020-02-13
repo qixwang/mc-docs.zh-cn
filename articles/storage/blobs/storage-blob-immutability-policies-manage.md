@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 11/26/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 93bb807f47f43d8ac20942d4b9b392ab4c3305c3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 85ded24d2a9eb6a5e0cc48e3325ab5f48fc05309
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624458"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028956"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>为 Blob 存储设置和管理不可变性策略
 
@@ -58,7 +58,7 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
     ![策略类型下面的“标记名称”框](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. 若要清除法定保留，只需删除应用的法定保留标识符标记。
+9. 若要清除法定保留，请删除已应用的法定保留标识符标记。
 
 ### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 

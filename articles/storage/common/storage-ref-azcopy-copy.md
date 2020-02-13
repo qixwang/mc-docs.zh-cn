@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 488a2dc52a37be7293994f3de53d554d5d054a46
-ms.sourcegitcommit: 99c408fd0f1fc264acaed41f1a77fea4ebbc0e0f
+ms.openlocfilehash: 0668f00dfdefe76c0d9fb313f0704c82b083393c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74354350"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028999"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -218,7 +218,7 @@ azcopy copy [source] [destination] [flags]
 
 **--no-guess-mime-type**                   阻止 AzCopy 根据文件的扩展名或内容来检测内容类型。
 
-**--overwrite** 字符串                     如果此标志设置为 true，则会覆盖目标上有冲突的文件和 Blob。 可能的值包括“true”、“false”和“prompt”。 （默认值为“true”）
+**--overwrite** 字符串                     如果此标志设置为 true，则会覆盖目标上有冲突的文件和 Blob。 可能的值包括“true”、“false”、“ifSourceNewer”和“prompt”。 （默认值为“true”）
 
 **--page-blob-tier** 字符串                使用此 Blob 层将页 Blob 上传到 Azure 存储。 （默认值为“None”）
 

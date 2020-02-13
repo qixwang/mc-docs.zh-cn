@@ -4,17 +4,17 @@ description: 了解如何创建生命周期策略规则，以将陈旧数据从�
 author: WenJason
 ms.author: v-jay
 origin.date: 05/21/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 5198158220cf28a65812097c624888fa1c4f7270
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 50c6d8168988407900431fd9b9419159f6f485b1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623621"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028946"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -248,6 +248,9 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 以下示例规则将筛选帐户，以针对 `container1` 中存在的、以 `foo` 开头的对象运行操作。  
 
+>[!NOTE]
+>生命周期管理仅支持块 blob 类型。  
+
 - 在上次修改后的 30 天后，将 Blob 分层到冷层
 - 在上次修改后的 90 天后，将 Blob 分层到存档层
 - 在上次修改后的 2,555 天（7 年）后，删除 Blob
@@ -346,9 +349,9 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>引入时存档数据
+### <a name="archive-data-after-ingest"></a>引入数据后对其进行存档
 
-某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 以下生命周期策略配置为在引入数据后立即存档数据。 此示例将容器 `archivecontainer` 中的存储帐户中的块 Blob 转移到存档层。 转移是通过在上次修改后的 0 天内处理 Blob 实现的：
+某些数据在云中保持空闲状态，并且在存储后很少（如果有）被访问。 以下生命周期策略已配置为在引入数据后立即对其进行存档。 此示例将容器 `archivecontainer` 中的存储帐户中的块 Blob 转移到存档层。 转移是通过在上次修改后的 0 天内处理 Blob 实现的：
 
 > [!NOTE] 
 > 建议将 blob 直接上传到存档层以提高效率。 可以将 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) 或 [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) 的 x-ms-acess-tier 标头用于 REST 版本 2018-11-09 和更新版本或我们的最新 Blob 存储客户端库。 

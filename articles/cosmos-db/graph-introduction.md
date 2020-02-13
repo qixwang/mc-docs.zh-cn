@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 origin.date: 07/18/2019
-ms.date: 09/09/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7fdd0944d3b3cd4ace5ac283ee49537c53af97b7
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 56f8bb39f8c99e94ee2e605e452818ff2aeeef6e
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254820"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980532"
 ---
 <!--Verify sucessfully-->
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 简介：Gremlin API
@@ -38,15 +38,15 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供多区域分发�
 
 * **多区域复制**
 
-  Azure Cosmos DB 可以自动将图形数据复制到中国任何 Azure 区域。 多区域复制简化了需要多区域访问数据的应用程序的开发过程。 Azure Cosmos DB 除了最大限度地减少中国任何地方的读写延迟外，还提供了一种自动区域故障转移机制，可以在某区域服务中断（这种情况很少见）的情况下确保应用程序持续可用。 
+    Azure Cosmos DB 可以自动将图形数据复制到中国任何 Azure 区域。 多区域复制简化了需要多区域访问数据的应用程序的开发过程。 Azure Cosmos DB 除了最大限度地减少中国任何地方的读写延迟外，还提供了一种自动区域故障转移机制，可以在某区域服务中断（这种情况很少见）的情况下确保应用程序持续可用。 
     
     <!--MOONCAKE: CUSTOMIZE ON any China Azure region-->
     
 * **使用最广泛采用的图形查询标准进行快速查询和遍历**
 
-  存储异类顶点和边缘，并通过熟悉的 Gremlin 语法对其进行查询。 Gremlin 是一种命令式函数查询语言，提供了丰富的接口来实现常见的图形算法。 
+    存储异类顶点和边缘，并通过熟悉的 Gremlin 语法对其进行查询。 Gremlin 是一种命令式函数查询语言，提供了丰富的接口来实现常见的图形算法。 
 
-  Azure Cosmos DB 支持丰富的实时查询和遍历，而无需指定架构提示、二级索引或视图。 在[通过使用 Gremlin 查询图形](gremlin-support.md)中了解详细信息。
+    Azure Cosmos DB 支持丰富的实时查询和遍历，而无需指定架构提示、二级索引或视图。 在[通过使用 Gremlin 查询图形](gremlin-support.md)中了解详细信息。
 
 * **完全托管的图形数据库**
 
@@ -60,7 +60,7 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供多区域分发�
 
 * **与 Apache TinkerPop 兼容**
 
-    Azure Cosmos DB 支持[开放源代码 Apache TinkerPop 标准](http://tinkerpop.apache.org/)。 Tinkerpop 标准拥有丰富的应用程序和库生态系统，它们可以轻松地与 Azure Cosmos DB 的 Gremlin API 集成。 
+    Azure Cosmos DB 支持[开放源代码 Apache TinkerPop 标准](https://tinkerpop.apache.org/)。 Tinkerpop 标准拥有丰富的应用程序和库生态系统，它们可以轻松地与 Azure Cosmos DB 的 Gremlin API 集成。 
 
 * **可优化的一致性级别**
 
@@ -96,7 +96,7 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供多区域分发�
 
 * **顶点** - 顶点表示人员、地点或事件等离散实体。
 
-* **边** - 边表示顶点之间的关系。 例如，一个人可能认识其他人、涉及到某个事件以及最近处于某个位置。 
+* **边** - 边表示顶点之间的关系。 例如，一个人可能认识另一个人、与某个事件相关，并且最近出现在某个地点。 
 
 * **属性** - 属性表示有关顶点和边的信息。 顶点或边缘中可以包含任意数量的属性，并且这些属性可用于描述和筛选查询中的对象。 属性示例包括具有姓名和年龄的顶点，或具有时间戳和/或体重的边缘。 
 
@@ -152,4 +152,4 @@ Azure Cosmos DB 是一个完全托管的图形数据库，提供多区域分发�
 * [Azure Cosmos DB 图形入门教程](create-graph-dotnet.md)。
 * 了解如何[通过使用 Gremlin 在 Azure Cosmos DB 中查询图形](gremlin-support.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

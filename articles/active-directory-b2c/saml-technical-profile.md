@@ -1,5 +1,6 @@
 ---
-title: 定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
+title: 在自定义策略中定义 SAML 技术配置文件
+titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 11/04/2019
-ms.date: 11/22/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 02d6efa1dba07c9a37ccf88f57a19d46cd529ac4
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: d3cd88667a5539d4aed3b2937019a55506c22cd3
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461610"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028137"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 
@@ -38,7 +38,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 SAML 2.0 标识提供者提供支�
 https://your-tenant-name.b2clogin.cn/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
-替换以下值：
+请替换以下值：
 
 - 将 **your-tenant-name** 替换为你的租户名称，例如 fabrikam.b2clogin.cn。
 - 将 your-policy  替换为你的策略名称。 使用配置 SAML 提供者技术配置文件的策略或从该策略继承的策略。
@@ -139,4 +139,4 @@ https://your-tenant-name.b2clogin.cn/your-tenant-name/your-policy/samlp/metadata
 | MetadataSigning |否 | X509 证书（RSA 密钥集），用于对 SAML 元数据进行签名。 Azure AD B2C 使用此密钥对元数据进行签名。  |
 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->

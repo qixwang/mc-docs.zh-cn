@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d1f1792d8ae9bdb23a568ae8e4cb6140241c2b4
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 623352be34e74a32fa1518add023d5a5fb9c97b3
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116781"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067711"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -50,7 +49,7 @@ ms.locfileid: "76116781"
 
 | 键  | 值类型 | 说明  | 示例值 |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | 可为 Null 的 Int32 | 指定资源所需的访问令牌版本。 此参数会更改独立于用于请求访问令牌的终结点或客户端生成的 JWT 的版本和格式。<br/><br/>使用的端点 v1.0 或 v2.0 由客户端选择，仅影响 id_tokens 的版本。 资源需要显式配置 `accesstokenAcceptedVersion` 以指示受支持的访问令牌格式。<br/><br/>`accesstokenAcceptedVersion` 的可能值为 1、2 或为 null。 如果值为 null，则此参数默认为 1，这对应于 v1.0 终结点。 | `2` |
+| `accessTokenAcceptedVersion` | 可为 Null 的 Int32 | 指定资源所需的访问令牌版本。 此参数会更改独立于用于请求访问令牌的终结点或客户端生成的 JWT 的版本和格式。<br/><br/>使用的端点 v1.0 或 v2.0 由客户端选择，仅影响 id_tokens 的版本。 资源需要显式配置 `accesstokenAcceptedVersion` 以指示受支持的访问令牌格式。<br/><br/>`accesstokenAcceptedVersion` 的可能值为 1、2 或为 null。 如果值为 null，则此参数默认为 1，这对应于 v1.0 终结点。 <br/><br/>如果 `signInAudience` 为 `AzureADandPersonalMicrosoftAccount`，则值必须为 `2`  | `2` |
 | `addIns` | 集合 | 定义使用方服务在特定上下文中调用某个应用时可以使用的自定义行为。 例如，呈现文件流的应用程序可以设置其“FileHandler”功能的 addIns 属性。 Office 365 等服务可以通过此参数在用户正在处理的文档上下文中调用该应用程序。 | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
 | `allowPublicClient` | 布尔 | 指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型。 例如，这样的一种情况是 [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流，其中发生了没有 URL 重定向的 HTTP 请求。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。 | `false` |
 | `availableToOtherTenants` | 布尔 | 如果应用程序与其他租户共享，则为 true；否则为 false。 <br><br> 注意：_仅在应用注册（旧版）体验中可用。此功能已由[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中的 `signInAudience` 取代。_ | |

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/22/2019
-ms.date: 01/06/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 53e3cb9809830dbf86fb03a7d39d4f007e045039
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: ed29e1f3149d1da94370a539b7386c71f5725200
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623685"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028860"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -245,40 +245,52 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > * 将容器复制到另一个存储帐户
 > * 将所有容器、目录和文件复制到另一个存储帐户
 
-这些示例也适用于具有分层命名空间的帐户。
-
 有关详细参考文档，请参阅 [azcopy copy](storage-ref-azcopy-copy.md)。
 
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
+ 这些示例也适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。 
+
 ### <a name="copy-a-blob-to-another-storage-account"></a>将 Blob 复制到另一个存储帐户
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.chinacloudapi.cn/<container-name>/<blob-path>?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.chinacloudapi.cn/<container-name>/<blob-path>'` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn/mycontainer/myTextFile.txt'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn/mycontainer/myTextFile.txt'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>将目录复制到另一个存储帐户
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.chinacloudapi.cn/<container-name>/<directory-path>?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.chinacloudapi.cn/<container-name>' --recursive` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn/mycontainer' --recursive` |
+| **示例**（分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn/mycontainer' --recursive` |
 
 ### <a name="copy-a-container-to-another-storage-account"></a>将容器复制到另一个存储帐户
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.chinacloudapi.cn/<container-name>?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.chinacloudapi.cn/<container-name>' --recursive` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn/mycontainer' --recursive` |
+| **示例**（分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn/mycontainer' --recursive` |
 
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>将所有容器、目录和 Blob 复制到另一个存储帐户
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.chinacloudapi.cn/?<SAS-token>' 'https://<destination-storage-account-name>.blob.core.chinacloudapi.cn/' --recursive` |
 | **示例** | `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn' --recursive` |
+| **示例**（分层命名空间）| `azcopy copy 'https://mysourceaccount.blob.core.chinacloudapi.cn?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.chinacloudapi.cn' --recursive` |
 
 ## <a name="synchronize-files"></a>同步文件
 

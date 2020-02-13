@@ -4,19 +4,19 @@ description: 了解如何在 Azure 门户中导出或删除用户设置、专用
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-origin.date: 04/08/2019
-ms.date: 11/04/2019
+origin.date: 01/29/2020
+ms.date: 02/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: v-tawe
-ms.openlocfilehash: 2eaaf9e9314f1604cceb532b86c6f674e8e2b266
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.openlocfilehash: 97369b52ffc60297da8711ffc2345db54023021d
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020738"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028202"
 ---
 # <a name="export-or-delete-user-settings"></a>导出或删除用户设置
 
@@ -32,29 +32,27 @@ ms.locfileid: "74020738"
 
 ## <a name="export-or-delete-your-portal-settings"></a>导出或删除门户设置
 
-1. 登录到 [Azure 门户](http://portal.azure.cn)。
-2. 在门户的头部区域，选择“设置”  。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-    ![显示门户设置齿轮的屏幕截图](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+1. 在门户的标题中，选择![“设置”图标](media/azure-portal-export-delete-settings/settings-icon.png)“设置”  。
 
-3. 选择“导出所有设置”  或“删除所有设置和专用仪表板”  。
+1. 选择“导出所有设置”  或“删除所有设置和专用仪表板”  。
 
-    ![显示了门户导出和删除设置的屏幕截图](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Azure 门户设置和设置选项](media/azure-portal-export-delete-settings/azure-portal-settings-with-export-delete.png)
 
       下表介绍了这些操作。
 
       | 操作 | 说明 |
       | --- | --- |
-      | **导出所有设置** | 创建包含你的用户设置（例如颜色主题、收藏夹以及专用仪表板）的一个 .json 文件。|
+      | **导出所有设置** | 创建一个 .json  文件，其中包含你的用户设置（如颜色主题、收藏夹和专用仪表板）。|
       | **删除所有设置和专用仪表板** | 删除指向专用仪表板的所有链接以及你对门户所做的其他自定义设置。 |
 
 > [!NOTE]
-> 由于用户设置是动态的并且存在数据损坏风险，因此你无法从 .json 文件导入设置。
+> 由于用户设置的动态性质和数据损坏风险，因此不能从 .json  文件导入设置。
 >
 >
-
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建并共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
-* [对收藏夹执行添加、删除和排序操作](azure-portal-add-remove-sort-favorites.md)
+* [使用基于角色的访问控制来共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
+* [添加、删除和重新排列收藏夹](azure-portal-add-remove-sort-favorites.md)

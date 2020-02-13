@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 02/19/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 817b742e19636cd7a8dc5df7bbbcbf76939c4071
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 9602030d08c877a9b7819a11ed4424cd86b23c08
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838960"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028921"
 ---
 # Azure 备份体系结构和组件 <a name="architecture-built-in-azure-vm-backup"></a>
 
@@ -96,7 +96,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 下表汇总了不同备份类型支持的功能：
 
-**功能** | **本地 Windows Server 计算机（直接备份）** | **Azure VM** | **DPM/MABS 中的计算机或应用**
+**功能** | **直接备份文件和文件夹（使用 MARS 代理）** | **Azure VM 备份** | **DPM/MABS 中的计算机或应用**
 --- | --- | --- | ---
 备份到保管库 | ![是][green] | ![是][green] | ![是][green]
 依次备份到 DPM/MABS 磁盘和 Azure | | | ![是][green]
@@ -106,23 +106,23 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ![表键](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>体系结构：直接备份 Azure VM
+## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 
 1. 为 Azure VM 启用备份时，将会根据指定的计划运行备份。
 1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
     - 对于 Windows VM，将安装 VMSnapshot 扩展。
     - 对于 Linux VM，将安装 VMSnapshot Linux 扩展。
-1. 该扩展创建存储级快照。 
+1. 该扩展创建存储级快照。
     - 对于正在运行的 Windows VM，备份服务将与卷影复制服务 (VSS) 互相配合，来创建 VM 的应用一致性快照。 备份服务默认创建完整的 VSS 备份。 如果 Azure 备份无法创建应用一致性快照，则会创建文件一致性快照。
     - 对于 Linux VM，Azure 备份将创建文件一致性快照。 对于应用一致性快照，需要手动自定义前脚本/后脚本。
-    - 可以通过并行备份每个 VM 磁盘来优化备份。 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，并只存储已更改的数据。 
-1. 创建快照后，数据将传输到保管库。 
+    - 可以通过并行备份每个 VM 磁盘来优化备份。 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，并只存储已更改的数据。
+1. 创建快照后，数据将传输到保管库。
     - 只会复制自上次备份以来发生更改的数据块。
     - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密进行加密的 Azure VM。
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
 1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
 
-Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM 中的工作负荷（例如 SQL Server 数据库备份），则也需要访问 Internet 来传输后端数据。 
+Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM 中的工作负荷（例如 SQL Server 数据库备份），则也需要访问 Internet 来传输后端数据。
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 

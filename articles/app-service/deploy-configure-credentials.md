@@ -3,33 +3,33 @@ title: 配置部署凭据
 description: 了解 Azure 应用服务中有哪些类型的部署凭据，以及如何配置和使用这些凭据。
 ms.topic: article
 origin.date: 08/14/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: f0236a5f919a19ce185267093d6b479f52fd1e07
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: cc9322e77bc0a72053234457b128090701e06c36
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600494"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979354"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](app-service-web-overview.md)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
 
-* **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 在任何订阅中，它均可用于为 Azure 帐户有权访问的任何应用部署应用服务。 这是在门户 GUI（例如应用的[资源页](/azure-resource-manager/manage-resources-portal#manage-resources)的“概览”和“属性”）中呈现的默认组。   当通过基于角色的访问控制 (RBAC) 或共同管理员权限授予用户应用访问权限时，该用户便可使用其自己的用户级别凭据直到被撤销访问权限。 请勿与其他 Azure 用户共享这些凭据。
+* **用户级凭据**：一组适用于整个 Azure 帐户的凭据。 在任何订阅中，它均可用于为 Azure 帐户有权访问的任何应用部署应用服务。 这是在门户 GUI（例如应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)的“概览”和“属性”）中呈现的默认组。   当通过基于角色的访问控制 (RBAC) 或共同管理员权限授予用户应用访问权限时，该用户便可使用其自己的用户级别凭据直到被撤销访问权限。 请勿与其他 Azure 用户共享这些凭据。
 
-* **应用级凭据**：用于每个应用的一组凭据。 只能使用它部署到该应用。 每个应用的凭据在其创建时自动生成。 这些凭据不能手动进行配置，但可随时进行重置。 如果要通过 (RBAC) 授予用户访问应用级别凭据的权限，该用户必须是应用的参与者或更高级别身份。 读者不可进行发布，因此无法访问这些凭据。
+* **应用级凭据**：用于每个应用的一组凭据。 只能使用它部署到该应用。 每个应用的凭据在其创建时自动生成。 这些凭据不能手动进行配置，但可随时进行重置。 若要通过 (RBAC) 授予用户访问应用级别凭据的权限，该用户必须是应用的参与者或更高级别角色（包括“网站参与者”内置角色）。 读者不可进行发布，因此无法访问这些凭据。
 
 ## <a name="userscope"></a>配置用户级凭据
 
-可以在任何应用的[资源页面](/azure-resource-manager/manage-resources-portal#manage-resources)中配置用户级凭据。 无论在哪个应用中配置这些凭据，这些凭据都适用于 Azure 帐户中的所有应用和所有订阅。 
+可以在任何应用的[资源页面](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)中配置用户级凭据。 无论在哪个应用中配置这些凭据，这些凭据都适用于 Azure 帐户中的所有应用和所有订阅。 
 
 ### <a name="in-the-azure-cli"></a>在 Azure CLI 中
 
 若要在 [Azure CLI](/cli/) 中配置部署用户，请运行 [az webapp deployment user set](/cli/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 将 \<username> 和 \<password> 替换为部署用户名和密码。 
 
-- 用户名必须在 Azure 中唯一，并且对于本地 Git 推送，不能包含“@”符号。 
+- 用户名必须在 Azure 中唯一，并且为了本地 Git 推送，不能包含“@”符号。 
 - 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。 
 
 ```azurecli

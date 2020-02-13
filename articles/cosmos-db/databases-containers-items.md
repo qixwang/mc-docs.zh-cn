@@ -6,14 +6,14 @@ ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/01/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 11fe89d832332cfa6dc79523154cddd2dea177c2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1f7ec438ff19b2588f864d9dd4b5a330edd36199
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336541"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980539"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数据库、容器和项
 
@@ -82,7 +82,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 | 系统定义的属性 | 由系统生成或用户可配置 | 目的 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | 由系统生成 | 容器的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
+|\_rid | 由系统生成 | 容器的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
 |\_etag | 由系统生成 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
 |\_ts | 由系统生成 | 容器上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
 |\_self | 由系统生成 | 容器的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
@@ -118,7 +118,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 | 系统定义的属性 | 由系统生成或用户可配置| 目的 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | 由系统生成 | 项的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
+|\_rid | 由系统生成 | 项的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
 |\_etag | 由系统生成 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
 |\_ts | 由系统生成 | 项上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
 |\_self | 由系统生成 | 项的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
@@ -147,4 +147,4 @@ Azure Cosmos 项支持以下操作。 可以使用任一 Azure Cosmos API 来执
 * [使用更改源生成被动式应用程序](change-feed.md)
 * [对 Azure Cosmos 容器配置唯一键约束](unique-keys.md)
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

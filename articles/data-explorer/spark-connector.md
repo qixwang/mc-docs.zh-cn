@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 04/29/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: f5f455490e7f5d64471fd84f22092a26524c7f25
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+origin.date: 01/14/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 0759c4ee87a3a1b6bf6bbc468a079dc2e67edfec
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657657"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037942"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>适用于 Apache Spark 的 Azure 数据资源管理器连接器（预览版）
 
@@ -27,14 +27,14 @@ Azure 数据资源管理器 Spark 连接器是可在任何 Spark 群集上运行
 > [!NOTE]
 > 尽管下面的某些示例提到了 [Azure Databricks](https://docs.azuredatabricks.net/) Spark 群集，但 Azure 数据资源管理器 Spark 连接器并不直接依赖于 Databricks 或任何其他 Spark 分发版。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [创建 Azure 数据资源管理器群集和数据库](/data-explorer/create-cluster-database-portal) 
 * 创建 Spark 群集
 * 安装 Azure 数据资源管理器连接器库，以及[依赖项](https://github.com/Azure/azure-kusto-spark#dependencies)中列出的库，包括以下 [Kusto Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library) 库：
     * [Kusto 数据客户端](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto 引入客户端](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* [Spark 2.4、Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 的预生成库
+* [Spark 2.4、Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 的预生成库和 [Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
 
 ## <a name="how-to-build-the-spark-connector"></a>如何生成 Spark 连接器
 
@@ -83,20 +83,13 @@ mvn clean install
 > [!NOTE]
 > 建议使用最新的 Azure 数据资源管理器 Spark 连接器版本执行以下步骤：
 
-1. 根据具体的 Azure Databricks 群集使用 Spark 2.4 和 Scala 2.11 设置以下 Spark 群集： 
+1. 使用 Spark 2.4.4 和 Scala 2.11，基于 Azure Databricks 群集设置以下 Spark 群集设置： 
 
     ![Databricks 群集设置](media/spark-connector/databricks-cluster.png)
-
-1. 导入 Azure 数据资源管理器连接器库：
+    
+1. 从 Maven 安装最新 spark-kusto-connector 库：
 
     ![导入 Azure 数据资源管理器库](media/spark-connector/db-create-library.png)
-
-1. 添加其他依赖项（如果从 maven 使用，则不需要）：
-
-    ![添加依赖项](media/spark-connector/db-dependencies.png)
-
-    > [!TIP]
-    > 在[此处](https://github.com/Azure/azure-kusto-spark#dependencies)可以找到每个 Spark 版本的正确 Java 发行版。
 
 1. 验证是否已安装所有必需的库：
 
@@ -116,9 +109,9 @@ Azure 数据资源管理器 Spark 连接器允许使用 [Azure AD 应用程序](
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD 身份验证颁发机构。 Azure AD 目录（租户）ID。        |
 |**KUSTO_AAD_CLIENT_PASSWORD**    |    客户端的 Azure AD 应用程序密钥。     |
 
-### <a name="azure-data-explorer-privileges"></a>Azure 数据资源管理器特权
+### <a name="azure-data-explorer-privileges"></a>Azure 数据资源管理器权限
 
-必须授予对 Azure 数据资源管理器群集的以下特权：
+必须在 Azure 数据资源管理器群集上授予以下权限：
 
 * 对于读取（数据源）操作，Azure AD 应用程序必须对目标数据库拥有“查看者”特权，或者对目标表拥有“管理员”特权。  
 * 对于写入（数据接收器）操作，Azure AD 应用程序必须对目标数据库拥有“引入者”特权。  此外，它必须对目标数据库拥有“用户”特权，这样才能创建新表。  如果目标表已存在，可以配置对目标表的“管理员”特权。 
@@ -145,18 +138,19 @@ Azure 数据资源管理器 Spark 连接器允许使用 [Azure AD 应用程序](
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
-    val conf = Map(
-            KustoSinkOptions.KUSTO_CLUSTER -> cluster,
-            KustoSinkOptions.KUSTO_TABLE -> table,
-            KustoSinkOptions.KUSTO_DATABASE -> database,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_ID -> appId,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-            KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId)
-    
+    import org.apache.spark.sql.{SaveMode, SparkSession}
+
     df.write
       .format("com.microsoft.kusto.spark.datasource")
-      .options(conf)
-      .save()
+      .option(KustoSinkOptions.KUSTO_CLUSTER, cluster)
+      .option(KustoSinkOptions.KUSTO_DATABASE, database)
+      .option(KustoSinkOptions.KUSTO_TABLE, "Demo3_spark")
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_ID, appId)
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey)
+      .option(KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
+      .option(KustoSinkOptions.KUSTO_TABLE_CREATE_OPTIONS, "CreateIfNotExist")
+      .mode(SaveMode.Append)
+      .save()  
     ```
     
    或者使用简化的语法：
@@ -189,7 +183,6 @@ Azure 数据资源管理器 Spark 连接器允许使用 [Azure AD 应用程序](
           .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
           .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
           .start()
-    
     ```
 
 ## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark 源：从 Azure 数据资源管理器读取数据
@@ -252,3 +245,9 @@ Azure 数据资源管理器 Spark 连接器允许使用 [Azure AD 应用程序](
     
     display(dfFiltered)
     ```
+
+## <a name="next-steps"></a>后续步骤
+
+* 详细了解 [Azure 数据资源管理器 Spark 连接器](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [代码示例](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+

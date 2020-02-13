@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心 API 概述 | Azure
-description: 可用 Azure 事件中心 API 的概述
+description: 本文概述了使用 Azure 事件中心服务时可用的 API（运行时和管理）。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 07/02/2018
-ms.date: 09/10/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: c14588196708647f91876e57e9c7fc93c5b1d7be
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: a824b4333b89e1041fd71212ba4f1bf6ac46fc0b
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72873088"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067741"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中心 API
 
@@ -63,4 +63,4 @@ ms.locfileid: "72873088"
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.md)

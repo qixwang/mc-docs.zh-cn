@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-yiso
 origin.date: 12/12/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1588cac03b76dca3399227949d6c5d83e2bf9a9f
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: bd3f47b28005695b6575b3f15dddcd105ecce6a7
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859624"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966556"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解单设备或大规模的 IoT Edge 自动部署
 
@@ -94,7 +94,7 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 * **目标**显示与部署目标条件匹配的 IoT Edge 设备。
 * **已应用**显示的目标 IoT Edge 设备尚未成为另一优先级更高的部署的目标。
 * **报告成功**显示的 IoT Edge 设备已向服务报告模块已成功部署。 
-* **报告失败**显示的 IoT Edge 设备已向服务报告一个或多个模块未成功部署。 若要进一步调查此错误，请通过远程方式连接到这些设备并查看日志文件。
+* **报告失败**显示已向服务报告一个或多个模块未成功部署的 IoT Edge 设备。 若要进一步调查此错误，请通过远程方式连接到这些设备并查看日志文件。
 
 此外，还可以定义自己的自定义指标来帮助监视和管理部署。 
 

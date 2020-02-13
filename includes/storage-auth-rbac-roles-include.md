@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: include
 origin.date: 07/25/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: d3a30fc89e4eda4f9a358888f715f51400f880c2
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 65db201d41322f5e48a9f261d5c73d458c00154c
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914405"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028885"
 ---
 Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访问 blob 和队列数据：
 
@@ -30,3 +30,5 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 > RBAC 角色分配可能需要最多五分钟的时间进行传播。
 >
 > 只有为数据访问显式定义的角色才允许安全主体访问 blob 或队列数据。 **所有者**、**参与者**和**存储帐户参与者**等角色允许安全主体管理存储帐户，但不提供对该帐户中 blob 或队列数据的访问。
+>
+> 可以使用 Azure AD 帐户或存储帐户访问密钥授权访问 Azure 门户中的 Blob 或队列数据。 有关详细信息，请参阅[使用 Azure 门户访问 blob 或队列数据](../articles/storage/common/storage-access-blobs-queues-portal.md)。

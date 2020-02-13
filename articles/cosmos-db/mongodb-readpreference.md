@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cosmos DB 的用于 MongoDB 的 API 中使用 MongoDB 读取首选项
+title: 在 Azure Cosmos DB 的 API for MongoDB 中使用读取首选项
 description: 了解如何在 Azure Cosmos DB 的用于 MongoDB 的 API 中使用 MongoDB 读取首选项
 author: rockboyfor
 ms.author: v-yeche
@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 origin.date: 02/26/2019
-ms.date: 06/17/2019
-ms.openlocfilehash: 286a708c8e63be16f02b4b8c32e4b630c17f80cb
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.date: 02/10/2020
+ms.openlocfilehash: 1127d7fa0e19e4f3263540fbe9153aac32d4e749
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028803"
 ---
 # <a name="how-to-multiple-regionally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的 API for MongoDB 在多个区域中分配读取操作
 
 本文介绍如何通过 Azure Cosmos DB 的 API for MongoDB 使用 [MongoDB 读取首选项](https://docs.mongodb.com/manual/core/read-preference/)设置在多个区域中分配读取操作。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]

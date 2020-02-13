@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 04/23/2019
-ms.date: 01/06/2020
+origin.date: 01/13/2020
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 7423925ed20961e7c177e2fe5ad29ed1f43e94a3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: b16b02696cb4321376acb9c15f6a37f241e415da
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624212"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028528"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -57,12 +57,17 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
+ 这些示例也适用于具有分层命名空间的帐户。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以在这些帐户上使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。 
+
 ### <a name="copy-an-object"></a>复制对象
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>/<blob-name>'` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myblob'` |
+| **示例**（分层命名空间） | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myblob'` |
 
 > [!NOTE]
 > 本文中的示例对 AWS S3 桶使用路径样式的 URL（例如：`http://s3.amazonaws.com/<bucket-name>`）。 
@@ -73,31 +78,43 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 
 ### <a name="copy-a-directory"></a>复制目录
 
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
+
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>复制桶
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.chinacloudapi.cn/<container-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>复制所有区域中的所有桶
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.chinacloudapi.cn' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.chinacloudapi.cn' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>复制特定 S3 区域中的所有桶
+
+对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.chinacloudapi.cn`)。
 
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.chinacloudapi.cn' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.chinacloudapi.cn' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>处理对象命名规则的差异
 

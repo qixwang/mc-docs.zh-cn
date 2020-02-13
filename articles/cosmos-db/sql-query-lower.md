@@ -1,22 +1,24 @@
 ---
 title: Azure Cosmos DB 查询语言中的 LOWER
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 LOWER。
+description: 了解 Azure Cosmos DB 中的 LOWER SQL 系统函数，以便返回在将大写字符数据转换为小写后的字符串表达式
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 81a76f5c8d01d10e4fadce7c8935c689ad398d0f
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 0e6e202e68617cc64cd7dca25fe10338b3569810
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914699"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028963"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  返回在将大写字符数据转换为小写后的字符串表达式。  
+
+LOWER 系统函数不使用索引。 如果计划频繁进行不区分大小写的比较，则 LOWER 系统函数可能会消耗大量 RU。 如果是这种情况，可以在插入时将大小写规范化，而不是每次都使用 LOWER 系统函数将数据规范化以进行比较。 于是，诸如 SELECT * FROM c WHERE LOWER(c.name) = 'bob' 的查询只需变成 SELECT * FROM c WHERE c.name = 'bob'。
 
 ## <a name="syntax"></a>语法
 
@@ -54,5 +56,4 @@ SELECT LOWER("Abc") AS lower
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query lower -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

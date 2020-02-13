@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 遥测数据模型 - 指标遥测 | Azure Docs
+title: 适用于指标遥测的数据模型 - Azure Application Insights
 description: 适用于指标遥测的 Application Insights 数据模型
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ origin.date: 04/25/2017
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: e250761569c659196d8f0253d0f56941494f49f9
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 58447f9f2af4fa70a068de52c38fcb4fd8aafea2
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970868"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028450"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
@@ -38,7 +38,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 工作正在进行... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均请求执行时间
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 工作正在进行... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | 队列中等待处理的请求数
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 想要在 Application Insights 门户和 UI 中看到的指标的名称。 
 

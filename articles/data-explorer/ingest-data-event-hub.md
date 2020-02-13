@@ -3,17 +3,17 @@ title: 将数据从事件中心引入到 Azure 数据资源管理器
 description: 本文介绍如何将数据从事件中心引入（加载）到 Azure 数据资源管理器中。
 author: orspod
 ms.author: v-tawe
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 07/17/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: be92724456823d38dc988df9f099d1f03e088055
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 03b26f1f32592248603e173b6e13d58d3c8f7876
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630952"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037938"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -25,7 +25,7 @@ ms.locfileid: "75630952"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看通过系统的数据流。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [一个测试群集和数据库](create-cluster-database-portal.md)。
@@ -110,7 +110,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     ![事件中心连接](media/ingest-data-event-hub/event-hub-connection.png)
 
-    数据源：
+    **数据源：**
 
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
@@ -119,9 +119,10 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件中心 | test-hub  | 你创建的事件中心。 |
     | 使用者组 | test-group  | 在创建的事件中心定义的使用者组。 |
     | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，则系统属性将添加到第一个记录中。 添加系统属性时，[创建](https://docs.microsoft.com/azure/kusto/management/tables#create-table)或[更新](https://docs.microsoft.com/azure/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](https://docs.microsoft.com/azure/kusto/management/mappings)以包括所选属性。 |
+    | 压缩 | *无* | 事件中心消息有效负载的压缩类型。 支持的压缩类型：None、GZip  。|
     | | |
 
-    目标表：
+    **目标表：**
 
     路由引入数据有两个选项：静态和动态。   
     本文将使用静态路由，需在其中指定表名、数据格式和映射。 因此，请让“我的数据包含路由信息”保留未选中状态。 
@@ -129,15 +130,17 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable  | 在“TestDatabase”  中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 支持的压缩选项：GZip |
-    | 列映射 | TestMapping  | 在 **TestDatabase** 中创建的[映射](https://docs.microsoft.com/azure/kusto/management/mappings)，它将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。 对于 JSON、多行 JSON 或 AVRO 是必需的，对于其他格式是可选的。|
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
+    | 列映射 | TestMapping  | 在 **TestDatabase** 中创建的[映射](https://docs.microsoft.com/azure/kusto/management/mappings)，它将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。 对于 JSON 或多行 JSON 是必需的，对于其他格式是可选的。|
     | | |
 
     > [!NOTE]
     > * 选择“我的数据包含路由信息”  以使用动态路由，其中你的数据包含必要的路由信息，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)注释中所示。 如果同时设置了静态和动态属性，则动态属性将覆盖静态属性。 
     > * 只有创建数据连接后进入队列的事件才会被引入。
-    > * 通过[在 Azure 门户中创建支持请求](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)，为静态路由启用 GZip 压缩。 为动态路由启用 GZip 压缩，如 [示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)所示。 
-    > * 压缩有效负载不支持 Avro 格式和事件系统属性。
+    > * 还可以通过动态属性设置压缩类型，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)中所示。
+    > * GZip 压缩有效负载不支持 Avro、ORC 和 PARQUET 格式以及事件系统属性。
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 

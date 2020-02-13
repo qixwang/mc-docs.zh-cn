@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序通过 VPN 网关诊断本地连接 | Azure
+title: 通过 VPN 网关诊断本地连接
+titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序资源故障排除功能通过 VPN 网关诊断本地连接。
 services: network-watcher
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ee054f0ea6626baab8d692c3a0c7e935a5b8bcec
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: dd69824acc870506f19a3567360fcf5207e6f6d0
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335205"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028487"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 

@@ -1,24 +1,26 @@
 ---
-title: 针对 Azure 存储使用 Python 的客户端加密 | Microsoft Docs
+title: 使用 Python 进行客户端加密
+titleSuffix: Azure Storage
 description: 适用于 Python 的 Azure 存储客户端库支持客户端加密，实现 Azure 存储应用程序的最高安全性。
 services: storage
 author: WenJason
 ms.service: storage
 ms.devlang: python
-ms.topic: article
-origin.date: 05/11/2017
-ms.date: 05/27/2019
+ms.topic: how-to
+origin.date: 12/04/0219
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 55b97d9559be0fbcc0f6680246b82c53b38d7603
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.openlocfilehash: dfd9eebae321e7f128c1d224c973a90db2d2da06
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004040"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028637"
 ---
-# <a name="client-side-encryption-with-python-for-azure-storage"></a>使用适用于 Azure 存储的 Python 进行客户端加密
+# <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
+
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
@@ -71,7 +73,7 @@ ms.locfileid: "66004040"
 ### <a name="queues"></a>队列
 由于队列消息可以采用任何格式，客户端库定义一个自定义格式，其在消息文本中包括初始化向量 (IV) 和已加密的内容加密密钥 (CEK)。
 
-在加密过程中，客户端库将生成 16 字节的随机 IV 和 32 字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
+在加密过程中，客户端库会生成 16 个字节的随机 IV 和 32 个字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
 
 ```
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
@@ -152,7 +154,7 @@ KEK 必须实现以下方法才能成功加密数据：
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -164,7 +166,8 @@ my_block_blob_service.key_encryption_key = kek
 my_block_blob_service.key_resolver_funcion = key_resolver.resolve_key
 
 # Upload the encrypted contents to the blob.
-my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
+my_block_blob_service.create_blob_from_stream(
+    container_name, blob_name, stream)
 
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
@@ -176,7 +179,7 @@ blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -202,7 +205,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -210,10 +213,13 @@ key_resolver = KeyResolver()
 key_resolver.put_key(kek)
 
 # Define the encryption resolver_function.
+
+
 def my_encryption_resolver(pk, rk, property_name):
     if property_name == 'foo':
         return True
     return False
+
 
 # Set the KEK and key resolver on the service object.
 my_table_service.key_encryption_key = kek
@@ -225,7 +231,8 @@ my_table_service.insert_entity(table_name, entity)
 
 # Retrieve Entity
 # Note: No need to specify an encryption resolver for retrieve, but it is harmless to leave the property set.
-my_table_service.get_entity(table_name, entity['PartitionKey'], entity['RowKey'])
+my_table_service.get_entity(
+    table_name, entity['PartitionKey'], entity['RowKey'])
 ```
 
 ### <a name="using-attributes"></a>使用属性

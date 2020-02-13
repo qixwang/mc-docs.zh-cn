@@ -1,26 +1,17 @@
 ---
-title: 如何缩放 Azure Redis 缓存 | Microsoft Docs
-description: 了解如何缩放 Azure Redis 缓存实例
-services: cache
-documentationcenter: ''
+title: 如何缩放 Azure Redis 缓存
+description: 了解如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具缩放 Azure Cache for Redis 实例。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 04/11/2017
-ms.date: 11/12/2019
 ms.author: v-junlch
-ms.openlocfilehash: b2a272de84477f714d2719d97a8f892d727519f6
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.service: cache
+ms.topic: conceptual
+ms.date: 02/05/2020
+ms.openlocfilehash: e4b0556954c304a841149f81da77bcb63d5540e3
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934241"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028022"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 创建缓存后，如果应用程序的要求发生更改，可以缩放缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -47,7 +38,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ![定价层][redis-cache-pricing-tier-blade]
 
 
-可以扩展到不同定价层，但有以下限制：
+可以缩放到其他定价层，但有以下限制：
 
 * 不能从较高的定价层缩放到较低的定价层。
   * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
@@ -127,18 +118,18 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
 * 如果在创建**高级**缓存时启用了群集，则可以[更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果创建缓存时未启用群集功能，可以稍后进行配置。
   
-  有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
+  有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 
 ### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>缩放后，我是否需要更改缓存名称或访问密钥？
 不需要，在缩放操作期间缓存名称和密钥不变。
 
 ### <a name="how-does-scaling-work"></a>缩放的工作原理？
-* 将 **基本** 缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。 在此期间，缓存不可用，且缓存中的所有数据都将丢失。
+* 将 **基本** 缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。 在此期间，缓存不可用，且缓存中的所有数据都会丢失。
 * 将**基本**缓存缩放为**标准**缓存时，将预配副本缓存并将主缓存中的数据复制到副本缓存。 在缩放过程中，缓存仍然可用。
 * 将**标准**缓存缩放为不同大小或缩放到**高级**缓存时，将关闭其中一个副本，同时将其重新预配为新的大小，将数据转移，然后，在重新预配另一个副本之前，另一个副本将执行一次故障转移，类似于一个缓存节点发生故障时所发生的过程。
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>在缩放过程中是否会丢失缓存中的数据？
-* 将**基本**缓存缩放为新的大小时，所有数据都将丢失，且在缩放操作期间缓存将不可用。
+* 将 **基本** 缓存缩放为新的大小时，所有数据都会丢失，且在缩放操作期间缓存将不可用。
 * 将**基本**缓存缩放为**标准**缓存时，通常将保留缓存中的数据。
 * 将**标准**缓存扩展为更大大小或更大层，或者将**高级**缓存扩展为更大大小时，通常将保留所有数据。 将**标准**或**高级**缓存缩小到更小大小时，数据可能会丢失，具体取决于与缩放后的新大小相关的缓存中的数据量。 如果缩小时数据丢失，则使用 [allkeys lru](https://redis.io/topics/lru-cache) 逐出策略逐出密钥。 
 
@@ -175,7 +166,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 
 ### <a name="how-long-does-scaling-take"></a>缩放需要多长时间？
-缩放大约需要 20 分钟，具体取决于缓存中的数据量。
+缩放时间取决于缓存中的数据量，数据量越大，完成缩放所需的时间就越长。 缩放大约需要 20 分钟。 对于群集缓存，每个分片缩放大约需要 20 分钟。
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>如何判断缩放何时完成？
 在 Azure 门户中可以看到进行中的缩放操作。 缩放完成后，缓存状态更改为 **正在运行**。
@@ -186,6 +177,4 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!-- Update_Description: link update -->
-
-
+<!-- Update_Description: wording update -->

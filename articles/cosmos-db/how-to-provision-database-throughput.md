@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB 中预配数据库吞吐量
-description: 了解如何在 Azure Cosmos DB 中预配数据库级别的吞吐量
+description: 了解如何使用 Azure 门户、CLI、PowerShell 和各种其他 SDK 在 Azure Cosmos DB 中预配数据库级别的吞吐量。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/28/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a1572b799b52b21a8f18d98d6373300385967146
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8c5d2eaf054e0ebc7e3d630e1eab9998f50cba2c
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336400"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980469"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配吞吐量
 
@@ -69,7 +69,6 @@ await client.CreateDatabaseIfNotExistsAsync(
 ### <a name="net-v3-sdk"></a>.NET V3 SDK
 
 ```csharp
-
 //create the database with throughput
 string databaseName = "MyDatabaseName";
 await this.cosmosClient.CreateDatabaseIfNotExistsAsync(

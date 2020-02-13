@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 10/02/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 20b82f98c415837193b7387939db1ed6bc02b458
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: 8245382d26117a9f2edd2ed777e26b0b6f4c2039
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934256"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028807"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具和 ODBC 驱动程序连接到 Azure Cosmos DB
 
@@ -73,7 +73,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 1. 单击“测试”按钮，确保可以连接到 Azure Cosmos DB 帐户。  
 
 1. 单击“高级选项”  并设置以下值：
-    *  **REST API 版本**：选择操作的 [REST API 版本](https://docs.microsoft.com/rest/api/cosmos-db/)。 默认为 2015-12-16。 如果有使用[大分区键](large-partition-keys.md)的容器且需要 REST API 版本 2018-12-31，请执行以下操作：
+    * **REST API 版本**：选择操作的 [REST API 版本](https://docs.microsoft.com/rest/api/cosmos-db/)。 默认为 2015-12-16。 如果有使用[大分区键](large-partition-keys.md)的容器且需要 REST API 版本 2018-12-31，请执行以下操作：
         - 键入 **2018-12-31** 作为 REST API 版本
         - 在“开始”菜单中  键入“regedit”，找到并打开“注册表编辑器”  应用程序。
         - 在注册表编辑器中，导航到此路径：**Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
@@ -99,7 +99,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 <a name="container-mapping"></a>
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a>步骤 3：使用容器映射方法创建架构定义
 
-可以使用两种类型的采样方法：**容器映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 以下步骤使用容器映射方法为一个或多个容器中的数据创建架构。 此采样方法会检索容器页面中的数据，确定数据的结构。 它会将容器转置到 ODBC 端的某个表。 如果容器中的数据是同构的，此采样方法十分快速高效。 如果容器包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为这是确定容器中数据结构的更可靠采样方法。 
+可以使用两种类型的采样方法：**容器映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 以下步骤使用容器映射方法为一个或多个容器中的数据创建架构。 此采样方法会检索容器页面中的数据，确定数据的结构。 它会将容器转置到 ODBC 端的某个表。 如果容器中的数据是同构的，此采样方法十分快速高效。 如果容器包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为它提供了确定容器中数据结构的更可靠采样方法。 
 
 1. 完成[连接到 Azure Cosmos 数据库](#connect)中的步骤 1-4 后，请在“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口中单击“架构编辑器”。  
 
@@ -180,7 +180,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 若要查询链接的数据库，请输入 SSMS 查询。 在此示例中，查询从名为 `customers` 的容器的表中选择：
 
 ```sql
-SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
+SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT * FROM [customers].[customers]')
 ```
 
 执行查询。 结果应如下所示：

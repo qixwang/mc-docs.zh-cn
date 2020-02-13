@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 LOG
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 LOG。
+description: 了解 Azure Cosmos DB 中的 LOG SQL 系统函数，以便返回指定数值表达式的自然对数
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 7e24d071d8e02050925ff3f3288cc802b370c169
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 5f416ee8ad2b18310dbf1fa6a69ea77e2ae3e4cd
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914702"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028965"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
  返回指定数值表达式的自然对数。  
@@ -42,7 +42,7 @@ LOG (<numeric_expr> [, <base>])
 
   自然对数是以 **e** 为底的对数，其中，**e** 是一个无理常量，约等于 2.718281828。 
 
-  某个数的指数的自然对数也是该数本身：LOG( EXP( n ) ) = n。 并且某个数的自然对数的指数就是该数本身：EXP( LOG( n ) ) = n。  
+  数字的指数的自然对数是数字本身：LOG( EXP( n ) ) = n。 以及数字的自然对数的指数是数字本身：EXP( LOG( n ) ) = n。  
 
 ## <a name="examples"></a>示例
 
@@ -76,5 +76,4 @@ SELECT EXP(LOG(10)) AS expLog
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query log  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

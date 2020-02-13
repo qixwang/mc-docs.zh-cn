@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
 origin.date: 12/06/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: ba8269e4287502940d5e9b6e7fae29206be243c0
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 66426fa229c279d0ed31e4dfe9dd9e8bc5603bb8
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859731"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966520"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>诊断和解决时序见解环境中的问题
 
@@ -103,9 +103,9 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 
 使用时序见解资源管理器是确保捕获时间戳属性名称并让其正常运行的最简单方法。 在时序见解资源管理器中使用图表，并在输入时间戳属性名称之后选择一个时间段。 右键单击所做的选择，然后选择“浏览事件”选项。 
 
-第一个列标头应是时间戳属性名称。 在“时间戳”一词旁边，应会看到“($ts)”。  
+第一个列标头应是时间戳属性名称。 在单词 **Timestamp** 旁边，将显示 **($ts)** 。
 
-不会看到以下值：
+以下值将不会显示：
 
 - *(abc)* ：指示时序见解正在读取字符串形式的数据值。
 - 日历图标：  指示时序见解正在读取日期时间形式的数据值。 

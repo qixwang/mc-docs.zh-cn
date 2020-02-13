@@ -1,20 +1,20 @@
 ---
-title: 使用 Studio 3T 连接到 Azure Cosmos DB 的用于 MongoDB 的 API
+title: 使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB
 description: 了解如何使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 origin.date: 11/01/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 57a97765c564148699ae47935900065b0a6f8495
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ae848e0c5a7f4663e7ddf91129d7d2acc033e89e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335851"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028821"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Azure Cosmos 帐户
 

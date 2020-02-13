@@ -1,19 +1,19 @@
 ---
 title: 使用 C# 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 C# 创建 Azure 数据资源管理器群集和数据库
-author: oflipman
+author: lucygoldbergmicrosoft
 ms.author: v-tawe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.data: 06/03/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 99d185ab30b98a6d7ed472a1b3a4b2018ad77a30
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/17/2020
+ms.openlocfilehash: 3c2ee8ddca6b037ff13dda4a9fb2fa5e82b96392
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631112"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037941"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 创建 Azure 数据资源管理器群集和数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "75631112"
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 C# 创建群集和数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
 * 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
@@ -73,7 +73,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | clusterName | *mykustocluster* | 所需的群集名称。|
+   | clusterName | mykustocluster  | 所需的群集名称。|
    | skuName | *Standard_D13_v2* | 将用于群集的 SKU。 |
    | 层 | *标准* | SKU 层。 |
    | 容量 | *数字* | 群集实例的数目。 |
@@ -98,15 +98,18 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
     var softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
     var databaseName = "mykustodatabase";
-    var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
+    var database = new ReadWriteDatabase(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
 
     await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
+        [!NOTE]
+        If you are using C# version 2.0.0 or below, use Database instead of ReadWriteDatabase.
+
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | clusterName | *mykustocluster* | 将在其中创建数据库的群集的名称。|
-   | databaseName | *mykustodatabase* | 数据库名称。|
+   | clusterName | mykustocluster  | 将在其中创建数据库的群集的名称。|
+   | databaseName | mykustodatabase  | 数据库名称。|
    | resourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
    | softDeletePeriod | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
    | hotCachePeriod | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
@@ -114,7 +117,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 2. 若要查看已创建的数据库，请运行以下命令：
 
     ```csharp
-    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName);
+    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName) as ReadWriteDatabase;
     ```
 
 现在，你有了一个群集和一个数据库。

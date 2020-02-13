@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8deca9027257a536f8939322a63d6ead0deb774d
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: f5518d2b8bf646de10dd9a6e39675caed35a935c
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776952"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067648"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>用于调用 Web API 的移动应用 - 获取令牌
 
@@ -241,7 +240,7 @@ catch(MsalUiRequiredException)
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-此修饰符在高级方案中使用，其中，你希望用户提前许可多个资源（不想要使用增量许可，这种许可通常与 MSAL.NET/Microsoft 标识平台 v2.0 配合使用）。 有关详细信息，请参阅[如何：让用户提前许可多个资源](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)。
+此修饰符在高级方案中使用，其中，你希望用户提前许可多个资源（不想要使用增量许可，这种许可通常与 MSAL.NET/Microsoft 标识平台 v2.0 配合使用）。 有关详细信息，请参阅[如何：让用户提前许可多个资源](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -255,7 +254,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ### <a name="acquire-tokens-via-the-protocol"></a>通过协议获取令牌
 
-建议不要直接使用协议。 
+建议不要直接使用协议。 如果这样做，应用将不支持某些单一登录 (SSO)、设备管理和条件访问方案。
 
 使用协议获取移动应用的令牌时，需发出两个请求：获取授权代码，然后用它来换取令牌。
 

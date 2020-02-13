@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 CONTAINS
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 CONTAINS。
+description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系统函数如何返回一个布尔值指示第一个字符串表达式是否包含第二个字符串表达式
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 1087b417a19717d70c8d6210eb4ceda6284d6ddf
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 2800ef4500d417caff12bcf7c9ba02f2e7530754
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914743"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028678"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
  返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。  
@@ -56,5 +56,4 @@ SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query contains  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

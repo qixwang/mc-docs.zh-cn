@@ -11,16 +11,16 @@ ms.topic: conceptual
 origin.date: 12/10/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: f1615ccba67e9d65976a383f149503d3d15a7b58
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 8a6faf56fa165202d5a351e14cda84152c72275b
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269945"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966442"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
-语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 从标准语音中进行选择。 75 种以上的标准语音在 45 种以上的语言中提供，区域设置在一系列所选语言和区域中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 从标准语音中进行选择。 50 种以上的标准语音在 10 种以上的语言中提供，区域设置在一系列所选语言和区域中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 <!-- > [!NOTE] -->
 <!-- > Bing Speech was decommissioned on October 15, 2019. If your applications, tools, or products are using the Bing Speech APIs or Custom Speech, we've created guides to help you migrate to the Speech service. -->
@@ -32,7 +32,7 @@ ms.locfileid: "76269945"
 
 <!-- * Asynchronous synthesis of long audio - Use the [Long Audio API](long-audio-api.md) to asynchronously synthesize text-to-speech files longer than 10 minutes (for example audio books or lectures). Unlike synthesis performed using the Speech SDK or speech-to-text REST API, responses aren't returned in real time. The expectation is that requests are sent asynchronously, responses are polled for, and that the synthesized audio is downloaded when made available from the service. Only neural voices are supported. -->
 
-* 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 45 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+* 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 10 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 <!-- * Neural voices - Deep neural networks are used to overcome the limits of traditional speech synthesis with regards to stress and intonation in spoken language. Prosody prediction and voice synthesis are performed simultaneously, which results in more fluid and natural-sounding outputs. Neural voices can be used to make interactions with chatbots and voice assistants more natural and engaging, convert digital texts such as e-books into audiobooks, and enhance in-car navigation systems. With the human-like natural prosody and clear articulation of words, neural voices significantly reduce listening fatigue when you interact with AI systems. For a full list of neural voices, see [supported languages](language-support.md#text-to-speech). -->
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB Gremlin API 的 Azure 资源管理器模板
+title: Azure Cosmos DB Gremlin API 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB Gremlin API。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/12/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f15e5f655adb8ecb729d1f8d3246a33a28891edc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: a9955f832ffee55c6136e29d8f31bc5ff75d2e7b
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336182"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028929"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Gremlin API 资源
 
@@ -91,7 +91,7 @@ ms.locfileid: "75336182"
         },
         "multipleWriteLocations": {
             "type": "bool",
-            "defaultValue": true,
+            "defaultValue": false,
             "allowedValues": [
                 true,
                 false
@@ -113,9 +113,16 @@ ms.locfileid: "75336182"
         },
         "databaseName": {
             "type": "string",
-            "defaultValue": "sampledb",
+            "defaultValue": "database1",
             "metadata": {
                 "description": "The name for the Gremlin database"
+            }
+        },
+        "graphName": {
+            "type": "string",
+            "defaultValue": "graph1",
+            "metadata": {
+                "description": "The name for the Gremlin graph"
             }
         },
         "throughput": {
@@ -124,21 +131,7 @@ ms.locfileid: "75336182"
             "minValue": 400,
             "maxValue": 1000000,
             "metadata": {
-                "description": "Throughput shared across the Gremlin database"
-            }
-        },
-        "graph1Name": {
-            "type": "string",
-            "defaultValue": "graph1",
-            "metadata": {
-                "description": "The name for the first Gremlin graph"
-            }
-        },
-        "graph2Name": {
-            "type": "string",
-            "defaultValue": "graph2",
-            "metadata": {
-                "description": "The name for the second Gremlin graph"
+                "description": "Throughput for the Gremlin graph"
             }
         }
     },
@@ -166,11 +159,13 @@ ms.locfileid: "75336182"
         "locations": [
             {
                 "locationName": "[parameters('primaryRegion')]",
-                "failoverPriority": 0
+                "failoverPriority": 0,
+                "isZoneRedundant": false
             },
             {
                 "locationName": "[parameters('secondaryRegion')]",
-                "failoverPriority": 1
+                "failoverPriority": 1,
+                "isZoneRedundant": false
             }
         ]
     },
@@ -180,7 +175,6 @@ ms.locfileid: "75336182"
             "name": "[variables('accountName')]",
             "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
-            "tags": {},
             "kind": "GlobalDocumentDB",
             "properties": {
                 "capabilities": [
@@ -205,22 +199,19 @@ ms.locfileid: "75336182"
             "properties": {
                 "resource": {
                     "id": "[parameters('databaseName')]"
-                },
-                "options": {
-                    "throughput": "[parameters('throughput')]"
                 }
             }
         },
         {
             "type": "Microsoft.DocumentDb/databaseAccounts/gremlinDatabases/graphs",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('graph1Name'))]",
+            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('graphName'))]",
             "apiVersion": "2019-08-01",
             "dependsOn": [
                 "[resourceId('Microsoft.DocumentDB/databaseAccounts/gremlinDatabases', variables('accountName'),  parameters('databaseName'))]"
             ],
             "properties": {
                 "resource": {
-                    "id": "[parameters('graph1Name')]",
+                    "id": "[parameters('graphName')]",
                     "indexingPolicy": {
                         "indexingMode": "consistent",
                         "includedPaths": [
@@ -230,48 +221,25 @@ ms.locfileid: "75336182"
                         ],
                         "excludedPaths": [
                             {
-                                "path": "/MyPathToNotIndex/*"
+                                "path": "/myPathToNotIndex/*"
                             }
                         ]
                     },
                     "partitionKey": {
                         "paths": [
-                            "/MyPartitionKey"
+                            "/myPartitionKey"
                         ],
                         "kind": "Hash"
-                    }
-                }
-            }
-        },
-        {
-            "type": "Microsoft.DocumentDb/databaseAccounts/gremlinDatabases/graphs",
-            "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('graph2Name'))]",
-            "apiVersion": "2019-08-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.DocumentDB/databaseAccounts/gremlinDatabases', variables('accountName'), parameters('databaseName'))]"
-            ],
-            "properties": {
-                "resource": {
-                    "id": "[parameters('graph2Name')]",
-                    "indexingPolicy": {
-                        "indexingMode": "consistent",
-                        "includedPaths": [
-                            {
-                                "path": "/*"
-                            }
-                        ]
                     },
-                    "partitionKey": {
-                        "paths": [
-                            "/MyPartitionKey"
-                        ],
-                        "kind": "Hash"
+                    "options": {
+                        "throughput": "[parameters('throughput')]"
                     }
                 }
             }
         }
     ]
 }
+
 ```
 
 ## <a name="deploy-with-the-azure-cli"></a>使用 Azure CLI 进行部署
@@ -319,6 +287,6 @@ az cosmosdb show --resource-group $resourceGroupName --name $accountName --outpu
     <!--Not Available on - [Azure Cosmos DB resource provider schema](https://docs.microsoft.com/azure/templates/microsoft.documentdb/allversions)-->
     
 - [Azure Cosmos DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [排查常见的 Azure 资源管理器部署错误](../azure-resource-manager/templates/common-deployment-errors.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

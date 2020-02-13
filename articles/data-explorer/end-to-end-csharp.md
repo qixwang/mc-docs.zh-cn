@@ -6,14 +6,14 @@ ms.author: v-tawe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 10/23/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 0d3c19447d45f8f99256bd449af40f587f235c19
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 02/03/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: fcb7a490970cae0d09b3f00c80e3cd3ad2f78f53
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630820"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037925"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>通过 C# 以端到端方式将 blob 引入到 Azure 数据资源管理器中
 
@@ -26,7 +26,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器以从新存储帐户引入数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -46,7 +46,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 下面的代码示例提供了一个分步过程，该过程导致将数据引入到 Azure 数据资源管理器中。 
 
-首先创建一个资源组。 还将创建 Azure 资源，例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 然后，在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建数据连接，将 Azure 数据资源管理器配置为从新存储帐户引入数据。 
+首先创建一个资源组。 还将创建 Azure 资源，例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库，并添加主体。 然后，在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建数据连接，将 Azure 数据资源管理器配置为从新存储帐户引入数据。 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -70,6 +70,16 @@ string kustoTableName = "Events";
 string kustoColumnMappingName = "Events_CSV_Mapping";
 string kustoDataConnectionName = deploymentName + "kustoeventgridconnection";
 
+//principals
+string principalIdForCluster = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+string roleForClusterPrincipal = "AllDatabasesAdmin";
+string tenantIdForClusterPrincipal = tenantId;
+string principalTypeForCluster = "App";
+string principalIdForDatabase = "xxxxxxxx@xxxxxxxx.com";//User Email
+string roleForDatabasePrincipal = "Admin";
+string tenantIdForDatabasePrincipal = tenantId;
+string principalTypeForDatabase = "User";
+
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
 var resourceManagementClient = new ResourceManagementClient(serviceCreds);
 Console.WriteLine("Step 1: Create a new resource group in your Azure subscription to manage all the resources for using Azure Data Explorer.");
@@ -78,8 +88,23 @@ await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(resourceGroupN
     new ResourceGroup() { Location = locationSmallCase });
 
 Console.WriteLine(
-    "Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, and database by using an Azure Resource Manager template.");
-var parameters = $"{{\"eventHubNamespaceName\":{{\"value\":\"{eventHubNamespaceName}\"}},\"eventHubName\":{{\"value\":\"{eventHubName}\"}},\"storageAccountName\":{{\"value\":\"{storageAccountName}\"}},\"containerName\":{{\"value\":\"{storageContainerName}\"}},\"kustoClusterName\":{{\"value\":\"{kustoClusterName}\"}},\"kustoDatabaseName\":{{\"value\":\"{kustoDatabaseName}\"}}}}";
+    "Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.");
+var parameters = new Dictionary<string, Dictionary<string, object>>();
+parameters["eventHubNamespaceName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubNamespaceName}};
+parameters["eventHubName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubName }};
+parameters["storageAccountName"] = new Dictionary<string, object>(capacity: 1) {{"value", storageAccountName }};
+parameters["containerName"] = new Dictionary<string, object>(capacity: 1) {{"value", storageContainerName }};
+parameters["kustoClusterName"] = new Dictionary<string, object>(capacity: 1) {{"value", kustoClusterName }};
+parameters["kustoDatabaseName"] = new Dictionary<string, object>(capacity: 1) {{"value", kustoDatabaseName }};
+parameters["principalIdForCluster"] = new Dictionary<string, object>(capacity: 1) {{"value", principalIdForCluster }};
+parameters["roleForClusterPrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", roleForClusterPrincipal }};
+parameters["tenantIdForClusterPrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", tenantIdForClusterPrincipal }};
+parameters["principalTypeForCluster"] = new Dictionary<string, object>(capacity: 1) {{"value", principalTypeForCluster }};
+parameters["principalIdForDatabase"] = new Dictionary<string, object>(capacity: 1) {{"value", principalIdForDatabase }};
+parameters["roleForDatabasePrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", roleForDatabasePrincipal }};
+parameters["tenantIdForDatabasePrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", tenantIdForDatabasePrincipal }};
+parameters["principalTypeForDatabase"] = new Dictionary<string, object>(capacity: 1) {{"value", principalTypeForDatabase }};
+            
 string template = File.ReadAllText(azureResourceTemplatePath, Encoding.UTF8);
 await resourceManagementClient.Deployments.CreateOrUpdateAsync(resourceGroupName, deploymentName,
     new Deployment(new DeploymentProperties(DeploymentMode.Incremental, template: template,

@@ -7,13 +7,13 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 2541c843a67a99dae87bcb3ca71e518c2e48f6ae
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/17/2020
+ms.openlocfilehash: 82bb27e5e4046ee8cbd74ef696af5d3da8a1501a
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630958"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77037928"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "75630958"
 * 单个群集可以后继多个先导群集中的数据库。 
 * 一个群集可以同时包含后继数据库和先导数据库
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 1. 为先导和后继数据库[创建群集和数据库](/data-explorer/create-cluster-database-portal)。
@@ -128,7 +128,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板附加数据库
 
-本部分介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)附加数据库。 
+本部分介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)将数据库附加到现有群集。 
 
 ```json
 {
@@ -139,7 +139,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -160,7 +160,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the leader cluster to create."
+                "description": "The resource ID of the leader cluster."
             }
         },
         "defaultPrincipalsModificationKind": {
@@ -180,17 +180,6 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     },
     "variables": {},
     "resources": [
-        {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
         {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
@@ -218,7 +207,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 |**设置**  |**说明**  |
 |---------|---------|
-|后继群集名称     |  后继群集的名称       |
+|后继群集名称     |  后继群集的名称。  |
 |附加的数据库配置名称    |    附加的数据库配置对象的名称。 该名称必须在群集级别唯一。     |
 |数据库名称     |      要后继的数据库的名称。 若要后继所有先导数据库，请使用“*”。   |
 |先导群集资源 ID    |   先导群集的资源 ID。      |
@@ -394,7 +383,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 ## <a name="limitations"></a>限制
 
 <!-- * [Streaming ingestion](data-explorer/ingest-data-streaming) can't be used on a database that is being followed. -->
-
+<!-- * Data encryption using [customer managed keys](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) is not supported on both leader and follower clusters. -->
 * 后继和先导群集必须位于同一区域。
 * 在分离已附加到其他群集的数据库之前，无法删除该数据库。
 * 在分离包含已附加到其他群集的数据库的群集之前，无法删除该群集。

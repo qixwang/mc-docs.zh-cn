@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure Cosmos DB MongoDB API 时的迁移后优化步骤
+title: 使用 Azure Cosmos DB 的 API for MongoDB 进行迁移后的优化步骤
 description: 本文档提供从 MongoDB 迁移到 Azure Cosmos DB MongoDB API 后的优化方法。
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-origin.date: 04/18/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: dc0f250ab3fe513eec916a530dd2a79025bb0faa
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 75f4c1bd5ce6e23606542214ad07747f54ac82a0
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914815"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028809"
 ---
-# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB MongoDB API 时的迁移后优化步骤 
+# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 进行迁移后的优化步骤 
 
-将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 本指南提供迁移后应考虑的步骤。 有关迁移步骤，请参阅[将 MongoDB 迁移到 Azure Cosmos DB MongoDB API](../dms/tutorial-mongodb-cosmos-db.md) 教程。
+将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 本指南提供迁移后应考虑的步骤。 有关迁移步骤，请参阅[将 MongoDB 迁移到 Azure Cosmos DB 的 API for MongoDB 教程](../dms/tutorial-mongodb-cosmos-db.md)。
 
 本指南介绍如何：
 - [连接应用程序](#connect-account)
@@ -51,9 +50,9 @@ ms.locfileid: "72914815"
 <a name="distribute-data"></a>
 ## <a name="globally-distribute-your-data"></a>全局分发数据
 
-Azure Cosmos DB 面向中国的所有 [Azure 区域](https://www.azure.cn/home/features/products-by-region)提供。 为 Azure Cosmos DB 帐户选择默认的一致性级别后，可以关联一个或多个 Azure 区域（具体取决于多区域分发需求）。 为了实现高可用性和业务连续性，我们始终建议至少在 2 个区域中运行 Azure Cosmos DB。 可以查看有关 [Azure Cosmos DB 中多区域部署的优化成本](optimize-cost-regions.md)的提示。
+Azure Cosmos DB 面向中国的所有 [Azure 区域](https://status.azure.com/status/)提供。 为 Azure Cosmos DB 帐户选择默认的一致性级别后，可以关联一个或多个 Azure 区域（具体取决于多区域分发需求）。 为了实现高可用性和业务连续性，我们始终建议至少在 2 个区域中运行 Azure Cosmos DB。 可以查看有关 [Azure Cosmos DB 中多区域部署的优化成本](optimize-cost-regions.md)的提示。
 
-若要多区域分发数据，请参阅[在 Azure Cosmos DB MongoDB API 中多区域分发数据](tutorial-global-distribution-mongodb.md)。 
+若要多区域分配数据，请参阅[在 Azure Cosmos DB 的 API for MongoDB 中多区域分配数据](tutorial-global-distribution-mongodb.md)。 
 
 <a name="consistency"></a>
 ## <a name="set-consistency-level"></a>设置一致性级别
@@ -74,5 +73,4 @@ Azure Cosmos DB 提供 5 个妥善定义的[一致性级别](consistency-levels.
 * [Azure Cosmos DB 中的索引](index-overview.md)
 * [Azure Cosmos DB 中的请求单位](request-units.md)
 
-<!--Update_Description: new articles on mongodb pre migration -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

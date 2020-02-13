@@ -1,30 +1,24 @@
 ---
-title: Azure AD B2C（适用于 .NET 的 Microsoft 身份验证库）
+title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解将 Azure AD B2C 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/29/2019
-ms.date: 11/05/2019
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54923b41aa6c2aeeae6b2e2947a17f7c532e00a8
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 96bf247621eb8dedcaa3012c302ad415c6cbbd04
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830966"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067671"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
@@ -173,10 +167,10 @@ MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 
 建议的解决方法是使用[按策略缓存](#acquire-a-token-to-apply-a-policy)
 
-或者，如果使用了 `B2C custom policies`，可以使用 `tid` 声明，因为这样可以提供向应用程序返回其他声明的功能。 
+或者，如果使用的是 B2C 自定义策略，则可以使用 `tid` 声明，因为它提供了向应用程序返回其他声明的功能。 详细了解[声明转换](/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>“在令牌响应中缺失”的缓解措施
-一种做法是使用“name”声明作为首选用户名。 [B2C 文档](../../active-directory-b2c/active-directory-b2c-reference-policies.md)中提到了该过程 ->“在‘返回声明’列中，选择需要在成功获得配置文件编辑体验后发回到应用程序的授权令牌中返回的声明。 例如，选择‘显示名称’、‘邮政编码’。”
+一种做法是使用“name”声明作为首选用户名。 [B2C 文档](../../active-directory-b2c/user-flow-overview.md)中提到了该过程 ->“在‘返回声明’列中，选择需要在成功获得配置文件编辑体验后发回到应用程序的授权令牌中返回的声明。 例如，选择‘显示名称’、‘邮政编码’。”
 
 ## <a name="next-steps"></a>后续步骤 
 

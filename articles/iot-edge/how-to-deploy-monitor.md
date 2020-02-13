@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-yiso
-origin.date: 11/21/2019
-ms.date: 01/20/2020
+origin.date: 12/30/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4af55312c184c6ba06f36c652371c92c881d03a8
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 5fb5de431200b7d690778a76d80963591b9ac986
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859709"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966551"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
@@ -25,7 +25,9 @@ ms.locfileid: "75859709"
 
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
-创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记  标识设备。 每个设备都可以具有多个标记，你可以采用适合你的解决方案的任何方式定义这些标记。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
+创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记  标识设备。 每个设备都可以具有多个标记，你可以采用适合你的解决方案的任何方式定义这些标记。 
+
+例如，如果管理有智能楼宇的校园，可以将位置、房间类型和环境标记添加到设备：
 
 ```json
 "tags":{
@@ -47,8 +49,8 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 创建部署和创建分层部署的步骤非常相似。 任何差异都会在以下步骤中显示出来。 
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，转到 IoT 中心。
-1. 从左侧栏，选择“自动设备管理”下的“IoT Edge”   。
-1. 选择“创建部署”或“创建分层部署”   。
+1. 在左窗格的菜单上，选择“自动设备管理”  下的“IoT Edge”  。
+1. 在上面的栏中，选择“创建部署”或“创建分层部署”   。
 
 创建部署需要五个步骤。 下列各节将引导完成每个步骤。 
 
@@ -75,8 +77,8 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 若要将自定义代码添加为模块，或手动添加 Azure 服务模块，请执行以下步骤：
 
 1. 在页面的“容器注册表凭据”部分中，为包含此部署模块映像的任何专用容器注册表提供名称和凭据  。 如果找不到 Docker 映像的容器注册表凭据，IoT Edge 代理会报告错误 500。
-1. 在页面的“IoT Edge 模块”部分，单击“添加”下拉列表   。
-1. 选择“IoT Edge 模块”  。
+1. 在页面的“IoT Edge 模块”部分，单击“添加”   。
+1. 从下拉菜单中选择“IoT Edge 模块”  。
 1. 为模块指定“IoT Edge 模块名称”  。
 1. 对于“映像 URI”  字段，输入模块的容器映像。 
 1. 使用下拉菜单选择“重启策略”  。 从以下选项中选择： 
@@ -97,7 +99,7 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 若要从 Azure 市场添加模块，请执行以下步骤：
 
 1. 在页面的“IoT Edge 模块”部分，单击“添加”   。
-1. 选择“市场模块”  。
+1. 从下拉菜单中选择“市场模块”  。
 1. 从“IoT Edge 模块市场”页面选择一个模块  。 系统会自动为你的订阅、资源组和设备配置所选的模块。 然后，所选模块将显示在 IoT Edge 模块列表中。 某些模块可能需要其他配置。 有关详细信息，请参阅[从 Azure 市场部署模块](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace)。
 
 #### <a name="add-a-stream-analytics-module"></a>添加流分析模块
@@ -105,9 +107,9 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 要添加 Azure 流分析中的模块，请执行以下步骤：
 
 1. 在页面的“IoT Edge 模块”部分，单击“添加”   。
-1. 选择“Azure 流分析模块”  。
-1. 选择下拉菜单中的“订阅”  。
-1. 选择下拉菜单中的“IoT Edge 作业”  。
+1. 从下拉菜单中选择“Azure 流分析模块”  。
+1. 在右窗格中，选择你的**订阅**。
+1. 选择你的 IoT Edge 作业  。
 1. 选择“保存”  ，将模块添加到部署。
 
 #### <a name="configure-module-settings"></a>配置模块设置
@@ -201,7 +203,7 @@ SELECT deviceId FROM devices
 
 1. 登录 [Azure 门户](https://portal.azure.cn)，导航到 IoT 中心。 
 1. 选择“IoT Edge”  。
-1. 选择“IoT Edge 部署”  。 
+1. 选择“IoT Edge 部署”选项卡  。
 
    ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
@@ -223,7 +225,7 @@ SELECT deviceId FROM devices
 
 1. 登录 [Azure 门户](https://portal.azure.cn)，导航到 IoT 中心。 
 1. 选择“IoT Edge”  。
-1. 选择“IoT Edge 部署”  。 
+1. 选择“IoT Edge 部署”选项卡  。
 
    ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 

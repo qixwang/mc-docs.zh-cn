@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的分区
-description: Azure Cosmos DB 中的分区概述。
+description: 了解 Azure Cosmos DB 中的分区、选择分区键时的最佳做法，以及如何管理逻辑分区
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 08/01/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: dc1b9c5765187090597c0a33e3d9d4812e419b5a
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+origin.date: 12/02/2019
+ms.date: 02/10/2020
+ms.openlocfilehash: a1404e0cd213deea1180a9189e4f76c661056a1d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914418"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028778"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
 

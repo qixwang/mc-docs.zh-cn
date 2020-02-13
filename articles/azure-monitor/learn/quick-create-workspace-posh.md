@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 03/12/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 53a086041cfaed9c3300d9db09e2dcf653c97f46
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: f9b954f30d80598b5743303ca140ae5ad6781e95
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982132"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028887"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>使用 Azure PowerShell 创建 Log Analytics 工作区
 
@@ -22,7 +22,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 * 订阅中的 Azure 资源  
 * 受 System Center Operations Manager 监视的本地计算机  
-* System Center Configuration Manager 中的设备集合  
+* Configuration Manager 中的设备集合  
 * Azure 存储中的诊断或日志数据  
  
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：

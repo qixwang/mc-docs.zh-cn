@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的数学函数
-description: 了解 Azure Cosmos DB 中的数学 SQL 系统函数。
+description: 了解 Azure Cosmos DB 中的数学函数，以便基于作为参数提供的输入值执行计算，并返回数值。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 451887060a1fe5589e478c1c1fcbe53b6b924985
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3fca67a8618e1c712b3ca8030b183af02e19770d
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914700"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028961"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学函数 (Azure Cosmos DB)  
 
@@ -55,5 +55,4 @@ ms.locfileid: "72914700"
 - [用户定义的函数](sql-query-udfs.md)
 - [聚合](sql-query-aggregates.md)
 
-<!--Update_Description: new articles on sql query mathematical function  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

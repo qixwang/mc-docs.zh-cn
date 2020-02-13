@@ -7,14 +7,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 origin.date: 09/09/2019
-ms.date: 10/08/2019
+ms.date: 01/27/2020
 ms.author: v-yiso
-ms.openlocfilehash: e5eeb2e1fd9e9f73ca1f7422fcd8eb38f8dea2a5
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 583bb94abac97569650b8b441223fadc15742886
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341126"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966505"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务进行故障排除
 
@@ -47,6 +47,30 @@ ms.locfileid: "71341126"
 
 有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/platform/alerts-overview.md)
 
+## <a name="using-log-analytic-to-view-and-resolve-errors"></a>使用 Log Analytic 查看和解决错误
+
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+
+2. 浏览到 IoT 中心。
+
+3. 选择“诊断设置”。 
+
+4. 选择“启用诊断”  。
+
+5. 允许收集所需的日志。
+
+    | 日志名称 | 说明 |
+    |-------|------------|
+    | DeviceOperations | 与设备连接事件相关的日志 |
+    | ServiceOperations | 与使用服务 SDK（例如，创建或更新注册组）相关的事件日志|
+
+6. 启用“发送到 Log Analytics”  （[请参见定价](https://azure.microsoft.com/pricing/details/log-analytics/)）。 
+
+7. 转到 Azure 门户中“设备预配服务”资源下的“日志”  选项卡。
+
+8. 单击“运行”  以查看最近事件。
+
+9. 如果有结果，请查找 `OperationName`、`ResultType`、`ResultSignature` 和 `ResultDescription`（错误消息）以获取有关错误的更多详细信息。
 
 
 ## <a name="common-error-codes"></a>常见错误代码

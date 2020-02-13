@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 07/23/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: df4b50e2e89da1ad706325dae46d1f03ae83dfbf
-ms.sourcegitcommit: e2af455871bba505d80180545e3c528ec08cb112
+ms.openlocfilehash: 3317dd99f34dc963128e42edf136aaf8dce496fc
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68391567"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028165"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -67,7 +66,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 </OrchestrationStep>
 ```
 
-## <a name="sign-up-or-sign-in-error-messages"></a>注册或登录错误消息
+### <a name="sign-up-or-sign-in-error-messages"></a>注册或登录错误消息
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -120,7 +119,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 | **ver_intro_msg** | 验证是必需的。 请单击“发送”按钮。 |
 | **ver_input** | 验证码 |
 
-## <a name="sign-up-and-self-asserted-pages-error-messages"></a>注册和自断言页错误消息
+### <a name="sign-up-and-self-asserted-pages-error-messages"></a>注册和自断言页错误消息
 
 | ID | 默认值 |
 | -- | ------------- |
@@ -190,6 +189,29 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 下面的示例演示如何在 MFA 验证页中使用某些用户界面元素：
 
 ![注册页电子邮件验证 UX 元素](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="verification-display-control-user-interface-elements"></a>验证显示控件用户界面元素
+
+以下是[验证显示控件](display-control-verification.md)的 ID
+
+| ID | 默认值 |
+| -- | ------------- |
+|verification_control_but_change_claims |更改 |
+|verification_control_fail_send_code |无法发送代码，请稍后重试。 |
+|verification_control_fail_verify_code |无法验证代码，请稍后重试。 |
+|verification_control_but_send_code |发送验证码 |
+|verification_control_but_send_new_code |发送新代码 |
+|verification_control_but_verify_code |验证验证码 |
+
+### <a name="verification-display-control-error-messages"></a>验证显示控件错误消息
+
+| ID | 默认值 |
+| -- | ------------- |
+|UserMessageIfMaxRetryAttempted |一次性密码提供的验证已超过最大尝试次数 |
+|UserMessageIfSessionDoesNotExist |一次性密码验证会话已过期 |
+|UserMessageIfSessionConflict |一次性密码验证会话存在冲突 |
+|UserMessageIfInvalidCode |为验证提供的一次性密码不正确 |
+
 
 <!-- Update_Description: wording update -->
 

@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9270141cd4e475d415129664c44329d64c9d530f
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 62fd92422b65dd925620a8a6901046a29018e6ba
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777053"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067667"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -222,6 +221,7 @@ ms.locfileid: "75777053"
 | AADSTS90092 | GraphNonRetryableError |
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
+| AADSTS900382 | 跨云请求不支持机密客户端。 |
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
 | AADSTS901002 | AADSTS901002：不支持“resource”请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |

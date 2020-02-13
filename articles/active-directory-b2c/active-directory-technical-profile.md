@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件 | Microsoft Docs
+title: 在自定义策略中定义 Azure AD 技术配置文件
+titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/23/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f3bb3a829993aab6dcabf75010280604c66d8478
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: b16b8a2414765e84f5e11c689cdf0f843ef5da2e
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847126"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028100"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -263,7 +263,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 | ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。  | 
 | ClientId | 否 | 作为第三方访问租户的客户端标识符。 | 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->
 
 
 

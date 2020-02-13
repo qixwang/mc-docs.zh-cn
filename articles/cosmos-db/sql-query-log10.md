@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 查询语言中的 LOG10
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 LOG10。
+description: 了解 Azure Cosmos DB 中的 LOG10 SQL 系统函数，以便返回指定数值表达式的以 10 为底的对数
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
-ms.openlocfilehash: 080e1895f3b4f53593e5982769fc017e87a95d53
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 072b5e145bda574d72cfebac6a81584568e53cea
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914701"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028964"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
  返回指定数值表达式以 10 为底的对数。  
@@ -57,5 +57,4 @@ SELECT LOG10(100) AS log10
 - [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 简介](introduction.md)
 
-<!--Update_Description: new articles on sql query log10  -->
-<!--New.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

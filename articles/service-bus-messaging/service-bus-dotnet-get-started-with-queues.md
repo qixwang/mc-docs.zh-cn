@@ -12,22 +12,21 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+origin.date: 11/27/2019
+ms.date: 1/16/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 56904920b9c1e14551cdc86334255c3f862ca459
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 70d68f73b8ff2428e81e2e784e4f51bb44b6be97
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528038"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028935"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。 
+在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
@@ -76,17 +75,11 @@ ms.locfileid: "74528038"
 
     以 `ServiceBusConnectionString` 变量的形式输入命名空间的连接字符串。 输入队列名称。
 
-1. 将 `Main()` 的默认内容替换为以下代码行：
+1. 将 `Main()` 方法替换为以下 **async** `Main` 方法。 它调用 `SendMessagesAsync()` 方法（将在下一步中添加），以将消息发送到队列。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. 在 `Main()` 之后直接添加以下异步 `MainAsync()` 方法，以调用“发送消息”方法：
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         const int numberOfMessages = 10;
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
@@ -102,7 +95,6 @@ ms.locfileid: "74528038"
         await queueClient.CloseAsync();
     }
     ```
-
 1. 在 `MainAsync()` 方法后直接添加以下 `SendMessagesAsync()` 方法，以便执行发送 `numberOfMessagesToSend` 所指定的消息数（当前设置为 10）的工作：
 
     ```csharp
@@ -149,25 +141,20 @@ namespace CoreSenderApp
         const string QueueName = "<your_queue_name>";
         static IQueueClient queueClient;
 
-        static void Main(string[] args)
-        {
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task MainAsync()
-        {
+        public static async Task Main(string[] args)
+        {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
+    
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-
-            // Send Messages
+    
+            // Send messages.
             await SendMessagesAsync(numberOfMessages);
-
+    
             Console.ReadKey();
-
+    
             await queueClient.CloseAsync();
         }
 
@@ -237,14 +224,8 @@ namespace CoreSenderApp
 1. 将 `Main()` 的默认内容替换为以下代码行：
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. 在 `Main()` 之后直接添加以下异步 `MainAsync()` 方法，以调用 `RegisterOnMessageHandlerAndReceiveMessages()` 方法：
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
@@ -283,7 +264,7 @@ namespace CoreSenderApp
     ```
 
 1. 直接在前面的方法后添加以下 `ProcessMessagesAsync()` 方法，以便处理接收的消息：
- 
+
     ```csharp
     static async Task ProcessMessagesAsync(Message message, CancellationToken token)
     {

@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-yiso
 origin.date: 11/22/2019
-ms.date: 01/20/2020
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e0f195d53529c95503a1a58bdcdf43b88749635f
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 67bf61a06a80ff2ed43ec1697436a34126416e22
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859524"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966553"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -139,7 +139,7 @@ az iot hub device-identity add-children \
 
 ### <a name="host-storage-for-system-modules"></a>系统模块的主机存储
 
-默认情况下，消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 若要改进可靠性，尤其是在脱机操作时改进可靠性，也可在主机 IoT Edge 设备上设置专用存储。
+默认情况下，消息和模块状态信息存储在 IoT Edge 中心的本地容器文件系统中。 若要改进可靠性，尤其是在脱机操作时改进可靠性，也可在主机 IoT Edge 设备上设置专用存储。 有关详细信息，请参阅[向模块授予对设备本地存储的访问权限](how-to-access-host-storage-from-module.md)
 
 ## <a name="next-steps"></a>后续步骤
 

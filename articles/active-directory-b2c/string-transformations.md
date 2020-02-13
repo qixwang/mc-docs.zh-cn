@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的 字符串声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的字符串声明转换示例。
+title: 自定义策略的字符串声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的字符串声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 54a2b3614dd7b2e70a67b009ae0010cd333e8e60
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 4e83cfa159481ce955e061df71149769d484cd07
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847147"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028134"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -158,8 +158,8 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputClaim | inputClaim1 | string | 要比较的第一个声明类型。 |
 | InputClaim | inputClaim2 | string | 要比较的第二个声明类型。 |
 | InputParameter | operator | string | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
-| InputParameter | ignoreCase | 布尔值 | 指定此比较是否应忽略所比较字符串的大小写。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此声明转换后生成的 ClaimType。 |
+| InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
+| OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换检查一个声明是否等于另一个声明。 例如，以下声明转换检查 email  声明的值是否等于 Verified.Email  声明的值。
 
@@ -188,7 +188,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **operator**：不等于
     -  ignoreCase: true
 - 输出声明：
-    -  outputClaim: true
+    - **outputClaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -199,8 +199,8 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputClaim | inputClaim1 | string | 要比较的声明类型。 |
 | InputParameter | operator | string | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
 | InputParameter | compareTo | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
-| InputParameter | ignoreCase | 布尔值 | 指定此比较是否应忽略所比较字符串的大小写。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此声明转换后生成的 ClaimType。 |
+| InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
+| OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
 
 可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion  声明的值是否等于 `v1`。
 
@@ -228,7 +228,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **operator**：EQUAL
     -  ignoreCase:  true
 - 输出声明：
-    -  outputClaim: true
+    - **outputClaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -238,9 +238,9 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | string | 指定要生成的随机值，`GUID`（全局唯一 ID）或 `INTEGER`（数字）。 |
 | InputParameter | stringFormat | string | [可选]格式化随机值。 |
-| InputParameter | base64 | 布尔值 | [可选]将随机值转换为 base64。 如果应用字符串格式，则字符串格式之后的值将被编码为 base64。 |
+| InputParameter | base64 | boolean | [可选]将随机值转换为 base64。 如果应用字符串格式，则字符串格式之后的值将被编码为 base64。 |
 | InputParameter | maximumNumber | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定最大数。 |
-| InputParameter | 种子  | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定随机值的种子。 注意：同一个种子生成相同的随机数字序列。 |
+| InputParameter | seed  | int | [可选]仅限 `INTEGER` randomGeneratorType。 指定随机值的种子。 注意：同一个种子生成相同的随机数字序列。 |
 | OutputClaim | outputClaim | string | 调用此声明转换后将生成的 ClaimTypes。 随机值。 |
 
 下面的示例将生成全局唯一 ID。 此声明转换用于创建随机 UPN（用户主体名称）。
@@ -299,7 +299,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | stringFormat | string | 字符串格式，包括 {0} 参数。 |
 | OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
-使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName  。 所有社交标识提供者技术配置文件都调用 **CreateUserPrincipalName** 来生成 **userPrincipalName**。   
+使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName  。 所有社交标识提供者技术配置文件都调用 **CreateUserPrincipalName** 来生成 **userPrincipalName**。
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -358,7 +358,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **inputClaim1**：Joe
     - **inputClaim2**：Fernando
 - 输入参数：
-    -  stringFormat: {0} {1}
+    - **stringFormat**：{0} {1}
 - 输出声明：
     - **outputClaim**：Joe Fernando
 
@@ -379,7 +379,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -413,7 +413,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | string | 包含查找值的声明 |
 | InputParameter | |string | inputParameters 集合。 |
-| InputParameter | errorOnFailedLookup | 布尔值 | 控制在没有任何匹配查找时是否返回错误。 |
+| InputParameter | errorOnFailedLookup | boolean | 控制在没有任何匹配查找时是否返回错误。 |
 | OutputClaim | inputParameterId | string | 调用此声明转换后将生成的 ClaimTypes。 匹配 ID 的值。 |
 
 下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）。
@@ -512,7 +512,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | stringMatchMsgCode | string | 字符串相等情况下第二个要设置的值。 |
 | OutputClaim | outputClaim1 | string | 如果字符串相等，则此输出声明包含 `stringMatchMsg` 输入参数的值。 |
 | OutputClaim | outputClaim2 | string | 如果字符串相等，则此输出声明包含 `stringMatchMsgCode` 输入参数的值。 |
-| OutputClaim | stringCompareResultClaim | 布尔值 | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
 可以使用此声明转换检查一个声明是否等于指定的值。 例如，以下声明转换将检查 termsOfUseConsentVersion  声明的值是否等于 `v1`。 如果是，则将值更改为 `v2`。
 
@@ -559,7 +559,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | stringComparison | string | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
 | InputParameter | outputClaimIfMatched | string | 字符串相等情况下要设置的值。 |
 | OutputClaim | outputClaim | string | 如果字符串相等，则此输出声明包含 `outputClaimIfMatched` 输入参数的值。 或者如果字符串不匹配，则为 NULL。 |
-| OutputClaim | stringCompareResultClaim | 布尔值 | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
+| OutputClaim | stringCompareResultClaim | boolean | 比较结果输出声明类型，将基于比较结果设置为 `true` 或 `false`。 |
 
 例如，以下声明转换检查 ageGroup  声明的值是否等于 `Minor`。 如果是，则返回 `B2C_V1_90001` 值。
 

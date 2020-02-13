@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/28/2019
-ms.date: 06/17/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: cc59a394d944713b3bf12e3268415d8f81fef378
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 9d72a9612a8539844ebee48cd1638872be852be5
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254789"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980541"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure Resource Manager 模板来部署和集成 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/)、[Azure 应用服务](/app-service-web/app-service-changes-existing-services)、Web 应用以及示例 Web 应用程序。
@@ -26,7 +26,7 @@ ms.locfileid: "70254789"
 
 <a name="Prerequisites"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 > [!TIP]
 > 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要有其中每个领域的知识。
 > 
@@ -59,10 +59,11 @@ ms.locfileid: "70254789"
     <!--Customized on Mooncake-->
     
     将 Location 的 allowedValues 属性更改为 ["China East","China East 2","China North","China North 2"]。
+    
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
 4. 单击“编辑参数”  ，为每个必需参数提供值，并单击“确定”  。  参数如下：
 
-    1. SITENAME：指定应用服务 Web 应用名称，该名称用来构造用于访问 Web 应用的 URL（例如，如果指定“mydemodocdbwebapp”，则用于访问 Web 应用的 URL 是 mydemodocdbwebapp.chinacloudsites.cn）。
+    1. SITENAME：指定应用服务 Web 应用名称，并用来构造用于访问 Web 应用的 URL（例如，如果指定“mydemodocdbwebapp”，则用于访问 Web 应用的 URL 为 `mydemodocdbwebapp.chinacloudsites.cn`）。
     2. HOSTINGPLANNAME：指定要创建的应用服务托管计划的名称。
     3. LOCATION：指定要在其中创建 Azure Cosmos DB 和 Web 应用资源的 Azure 位置。
     4. DATABASEACCOUNTNAME：指定要创建的 Azure Cosmos DB 帐户的名称。   
@@ -75,7 +76,7 @@ ms.locfileid: "70254789"
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
 7. 部署完成后，会打开“资源组”窗格。
     ![“资源组”窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
-8. 若要使用应用程序，请导航到 Web 应用 URL（上述示例中的 URL 是 http://mydemodocdbwebapp.chinacloudsites.cn) ）。  会看到下列 Web 应用程序：
+8. 若要使用应用程序，请导航到 Web 应用 URL（上述示例中的 URL 是 `http://mydemodocdbwebapp.chinacloudsites.cn`）。  会看到下列 Web 应用程序：
 
     ![示例待办事项应用程序](./media/create-website/image2.png)
 9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的“资源组”窗格。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“数据资源管理器”  。
@@ -100,7 +101,9 @@ ms.locfileid: "70254789"
     <!--Customized on Mooncake-->
     
     将 Location 的 allowedValues 属性更改为 ["China East","China East 2","China North","China North 2"]。
+    
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
+    
 4. 单击“编辑参数”  ，为每个必需参数提供值，并单击“确定”  。  参数如下：
 
    1. SITENAME：指定应用服务 Web 应用名称，该名称用来构造用于访问 Web 应用的 URL（例如，如果指定“mydemodocdbwebapp”，则用于访问 Web 应用的 URL 是 mydemodocdbwebapp.chinacloudsites.cn）。
@@ -122,6 +125,8 @@ ms.locfileid: "70254789"
     ![应用程序设置的屏幕截图](./media/create-website/TemplateDeployment10.png)  
 10. 继续随意浏览 Azure 门户，或按照其中一个 Azure Cosmos DB [示例](/cosmos-db/sql-api-dotnet-samples)来创建自己的 Azure Cosmos DB 应用程序。
 
+    <!--CORRECT ON [samples](/cosmos-db/sql-api-dotnet-samples)-->
+    
 <a name="NextSteps"></a>
 
 ## <a name="next-steps"></a>后续步骤
@@ -136,4 +141,4 @@ ms.locfileid: "70254789"
 
 <!-- Not Available on [Try App Service](https://go.microsoft.com/fwlink/?LinkId=523751)-->
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,15 +5,15 @@ author: ahmedelnably
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 origin.date: 01/14/2018
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 20005ebb0d6a78434036726f2020a74840829d09
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: ecdef2ca1858b872a36a255b528c644fc72ec8ab
+ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600520"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76979341"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure App Service 应用
 
@@ -44,7 +44,7 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
     $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "China North" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
+要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。  请注意，仅在克隆整个应用（包括其所有槽）时才支持 `IncludeSourceWebAppSlots` 参数。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
 
 ```powershell
     $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "China North" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
@@ -55,6 +55,23 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 ```powershell
     $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "China East" -AppServicePlan NewAppServicePlan -SourceWebApp $srcapp
 ```
+
+## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>将现有应用克隆到应用服务环境
+方案：你想要将位于中国东部区域的现有应用内容克隆到现有应用服务环境 (ASE) 的新应用中。
+
+如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取源应用的信息（在本例中，该应用名为 `source-webapp`）：
+
+```powershell
+$srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
+```
+
+如果知道 ASE 的名称和 ASE 所属的资源组名称，可在现有 ASE 中创建新的应用，如以下命令所示：
+
+```powershell
+$destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "China East 2" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
+```
+
+由于使用了旧版本，需要提供 `Location` 参数，但在 ASE 中创建应用时，可忽略该参数。 
 
 ## <a name="cloning-an-existing-app-slot"></a>克隆现有的应用槽
 方案：希望将应用的现有部署槽位克隆到新应用或新槽位。 新的应用可与原始应用槽位于相同或不同的区域。
@@ -113,5 +130,5 @@ $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<
 * [应用服务克隆](app-service-web-app-cloning.md)
 * [在 Azure 应用服务中备份应用](manage-backup.md)
 * [Azure 流量管理器预览版对 Azure Resource Manager 的支持](../traffic-manager/traffic-manager-powershell-arm.md)
-* [将 Azure PowerShell 与 Azure Resource Manager 结合使用](../azure-resource-manager/manage-resources-powershell.md)
+* [将 Azure PowerShell 与 Azure Resource Manager 结合使用](../azure-resource-manager/management/manage-resources-powershell.md)
 

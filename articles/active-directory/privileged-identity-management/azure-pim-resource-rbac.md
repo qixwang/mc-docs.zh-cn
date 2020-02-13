@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中查看 Azure 资源角色的活动和审核历史记录 - Azure Active Directory | Microsoft Docs
+title: 在 PIM 中查看 Azure 资源角色的审核报告 - Azure AD | Microsoft Docs
 description: 在 Azure AD Privileged Identity Management (PIM) 中查看 Azure 资源角色的活动和审核历史记录。
 services: active-directory
 documentationcenter: ''
@@ -13,16 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-origin.date: 04/09/2019
-ms.date: 11/05/2019
+ms.date: 02/07/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d49a8961eb42f85432cfaa240af56a4d0fea27ff
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 4b61e659c0b25853a39f8aeec9157b67ec00515d
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830845"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067717"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure 资源角色的活动和审核历史记录
 
@@ -109,6 +108,9 @@ ms.locfileid: "73830845"
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
     ![当前用户的审核列表](./media/azure-pim-resource-rbac/my-audit-time.png)
+    
+> [!NOTE]
+> 访问审核历史记录需要“全局管理员”或“特权角色管理员”角色。
 
 ## <a name="next-steps"></a>后续步骤
 

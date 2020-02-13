@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 遥测数据模型 - 依赖项遥测 | Azure Docs
+title: Azure Monitor Application Insights 依赖关系数据模型
 description: 适用于依赖项遥测的 Application Insights 数据模型
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,18 +9,18 @@ origin.date: 04/17/2017
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: a32f7717dabed91d968c17f37177eebb902ddbc5
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 8e99efffe59dabb5ea93d28038c49bac4241c61e
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970871"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028449"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 通过此依赖项调用启动的命令的名称。 低基数值。 示例包括存储过程名称和 URL 路径模板。
 

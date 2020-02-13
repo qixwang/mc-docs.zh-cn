@@ -1,10 +1,9 @@
 ---
-title: 使用 .NET Core 发送和接收事件 - Azure 事件中心 | Azure
-description: 本文提供了创建 .NET Core 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
+title: 使用 .NET 向/从 Azure 事件中心发送/接收事件（旧版）
+description: 本文提供了创建 .NET Core 应用的演练，该应用使用旧 Microsoft.Azure.EventHubs 包向/从 Azure 事件中心发送/接收事件。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -12,25 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 04/15/2019
-ms.date: 09/16/2019
+origin.date: 01/15/2020
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9c5ba76ee3fc3418e42d4f70f249175d31fcafb9
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 280bd6f05345f13a3a76465cf534db0a4977c294
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658006"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067737"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>使用 .NET Core 将事件发送到 Azure 事件中心或从其接收事件
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (Microsoft.Azure.EventHubs) 向/从 Azure 事件中心发送/接收事件
 事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程介绍如何在 C# 中创建 .NET Core 应用程序，以便将事件发送到事件中心或从其接收事件。 
 
-> [!NOTE]
-> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+> [!WARNING]
+> 本快速入门使用旧 **Microsoft.Azure.EventHubs** 包。 建议[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)代码以使用最新 [Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md) 包。  
 
-## <a name="prerequisites"></a>先决条件
+
+## <a name="prerequisites"></a>必备条件
 
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com)。
 - [.NET Core Visual Studio 2015 或 2017 工具](https://www.microsoft.com/net/core)。 
@@ -38,6 +38,10 @@ ms.locfileid: "74658006"
 
 ## <a name="send-events"></a>发送事件 
 此部分介绍如何创建可将事件发送到事件中心的 .NET Core 控制台应用程序。 
+
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 

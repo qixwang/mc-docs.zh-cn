@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的 FROM 子句
-description: 了解 Azure Cosmos DB 的 SQL FROM 子句
+description: 了解 Azure Cosmos DB 的 FROM 子句的 SQL 语法和示例。 本文还演示了如何使用 FROM 子句设置结果的范围并获取子项。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 06/10/2019
-ms.date: 10/28/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 193570bf343b91827bc7316f6478d870ecf894f5
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: d7e3398060b7b748ce59f863cca4ba65958f6ee4
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913157"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028651"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
@@ -115,7 +115,7 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
     FROM Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -155,7 +155,7 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
     FROM Families.address.state
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

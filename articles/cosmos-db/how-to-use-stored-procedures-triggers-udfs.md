@@ -1,18 +1,18 @@
 ---
-title: 了解如何使用 Azure Cosmos DB SDK 调用存储过程、触发器和用户定义的函数
+title: 使用 Azure Cosmos DB SDK 注册和使用存储过程、触发器与用户定义的函数
 description: 了解如何使用 Azure Cosmos DB SDK 注册和调用存储过程、触发器与用户定义的函数
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/17/2019
-ms.date: 10/28/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c536fbd3154c8d6c8f10086cd4928359e1988f5e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 01c0cf3d697bed439e7440ab2c4ff053f8655340
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913288"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980456"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中注册和使用存储过程、触发器与用户定义的函数
 
@@ -132,6 +132,7 @@ asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArg
         successfulCompletionLatch.countDown();
         System.out.println(storedProcedureResponse.getActivityId());
     }, error -> {
+        successfulCompletionLatch.countDown();
         System.err.println("an error occurred while executing the stored procedure: actual cause: "
                 + error.getMessage());
     });
@@ -146,7 +147,7 @@ successfulCompletionLatch.await();
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-await container.storedProcedures.create({
+await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
 });
@@ -163,7 +164,7 @@ const newItem = [{
 }];
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
+const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
 ### <a name="stored-procedures---python-sdk"></a>存储过程 - Python SDK

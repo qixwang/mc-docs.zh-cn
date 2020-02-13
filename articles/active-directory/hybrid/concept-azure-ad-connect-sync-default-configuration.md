@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/13/2017
-ms.date: 08/27/2019
+ms.date: 02/07/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9542c2d4ca63371bfbb1301d68a6df635465130
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 8eb577a69441e190f1416a816f818821600d2ac0
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134088"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067694"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中将说明这些规则及其对配置有何影响。 此外还会逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性设置）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -39,13 +38,13 @@ ms.locfileid: "70134088"
 
 * 必须具有 sourceAnchor。
 * 在 Azure AD 中创建对象之后，无法更改 sourceAnchor。 如果值在本地更改，对象将停止同步，直到 sourceAnchor 重新改回其原先的值。
-* 必须填充 accountEnabled (userAccountControl) 属性。 在本地 Active Directory 中始终有此属性存在，并且进行填充。
+* 必须填充 accountEnabled (userAccountControl) 属性。 本地 Active Directory 中始终存在此属性，并已进行填充。
 
 以下用户对象 **不会** 同步到 Azure AD：
 
 * `IsPresent([isCriticalSystemObject])`。 确保不会同步 Active Directory 中的多个现成对象（例如内置的管理员帐户）。
 * `IsPresent([sAMAccountName]) = False`。 确定不会同步没有 sAMAccountName 属性的用户对象。 这种情况实际上只发生在从 NT4 升级的域中。
-* `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. 不同步 Azure AD Connect Sync 和早期版本使用的服务帐户。
+* `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. 不同步 Azure AD Connect 同步和早期版本使用的服务帐户。
 * 不同步不在 Exchange Online 中运行的 Exchange 帐户。
   * `[sAMAccountName] = "SUPPORT_388945a0"`
   * `Left([mailNickname], 14) = "SystemMailbox{"`
@@ -83,7 +82,7 @@ ms.locfileid: "70134088"
     * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`。 是否有包含“SMTP:”的项，如果有，是否可在字符串中找到 \@？
     * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`。 是否已填充邮件属性，如果是，是否可在字符串中找到 \@？
 
-以下联系人对象**不会**同步到 Azure AD：
+以下联系人对象 **不会** 同步到 Azure AD：
 
 * `IsPresent([isCriticalSystemObject])`。 确保不会同步标记为关键的联系人对象。 不应是任何使用默认配置的项。
 * `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`。
@@ -174,7 +173,7 @@ SRE 是一个资源套件工具，随 Azure AD Connect 同步一起安装。必�
 
 ![同步规则编辑器中的“联接规则”选项卡](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-联接规则的内容取决于在安装向导中选择的匹配选项。 对于入站规则，评估从源连接器空间中的对象开始，将按顺序对联接规则中的每个组进行评估。 如果根据某个联接规则，某个源对象的评估结果是与 Metaverse 中的某个对象完全匹配，则这两个对象将联接在一起。 如果已对所有规则进行评估但没有匹配项，则使用描述页上的“链接类型”。 如果此配置设为“预配”，则在目标（即 Metaverse）中创建一个新对象。  **投影** 到 Metaverse。
+联接规则的内容取决于在安装向导中选择的匹配选项。 对于入站规则，评估从源连接器空间中的对象开始，将按顺序对联接规则中的每个组进行评估。 如果根据某个联接规则，某个源对象的评估结果是与 Metaverse 中的某个对象完全匹配，则这两个对象将联接在一起。 如果已对所有规则进行评估但没有匹配项，则使用描述页上的“链接类型”。 如果此配置设为“Provision”  ，并且联接条件中至少存在一个属性（具有值），则会在目标 (Metaverse) 中创建一个新对象。 **投影** 到 Metaverse。
 
 只对联接规则评估一次。 当连接器空间对象与 metaverse 对象联接在一起时，只要仍然满足同步规则的范围，它们就保持联接。
 
@@ -221,7 +220,7 @@ NULL
 ### <a name="putting-it-all-together"></a>汇总
 我们现在对同步规则已有足够的认识，能够了解配置如何在不同的同步规则下运行。 如果观察某个用户和提供给 metaverse 的属性，会发现规则按以下顺序应用：
 
-| Name | 注释 |
+| 名称 | 注释 |
 |:--- |:--- |
 | In from AD - User Join |联接连接器空间对象与 metaverse 的规则。 |
 | In from AD - UserAccount Enabled |登录 Azure AD 和 Office 365 所需的属性。 我们可以从已启用的帐户获取这些属性。 |
@@ -231,7 +230,7 @@ NULL
 | In from AD - User Lync |仅当检测到 Lync 时才存在。 传递所有基础结构 Lync 属性。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
+* 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
 * 在 [Understanding Declarative Provisioning Expressions](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)（了解声明性预配表达式）中了解有关表达式语言的详细信息。
 * 在[了解用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)中继续了解现成配置的工作原理
 * 在[如何更改默认配置](how-to-connect-sync-change-the-configuration.md)中了解如何使用声明性预配进行实际更改。

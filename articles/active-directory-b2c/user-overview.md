@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/05/2019
-ms.date: 11/22/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 5a90d8879106b4c1946a03e888249e1b74f30e95
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: d82aafafc6e411cf5c8b151002d53dbaadc88492
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461607"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028101"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
@@ -33,7 +32,7 @@ ms.locfileid: "74461607"
 
 ## <a name="work-account"></a>工作帐户
 
-基于 Azure AD 的所有租户以相同的方式创建工作帐户。 若要创建工作帐户，可以使用[快速入门：向 Azure Active Directory 添加新用户](../active-directory/fundamentals/add-users-azure-active-directory.md)中的信息。 使用 Azure 门户中的“新建用户”  选项创建工作帐户。
+基于 Azure AD 的所有租户以相同的方式创建工作帐户。 若要创建工作帐户，可以使用[快速入门：向 Azure Active Directory 添加新用户](../active-directory/fundamentals/add-users-azure-active-directory.md)。 使用 Azure 门户中的“新建用户”  选项创建工作帐户。
 
 添加新工作帐户时，需要考虑以下配置设置：
 
@@ -77,14 +76,14 @@ ms.locfileid: "74461607"
 
 ## <a name="consumer-user"></a>使用者用户
 
-使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户。 使用[注册或登录用户流程](../active-directory-b2c/active-directory-b2c-reference-policies.md)、Azure AD 图形 API 或 Azure 门户创建使用者帐户。
+使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户。 使用[注册或登录用户流程](user-flow-overview.md)、Azure AD 图形 API 或 Azure 门户创建使用者帐户。
 
-可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)。
+可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
 
-可以使用[使用 Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) 的创建使用者用户帐户  部分中的信息创建 Azure AD B2C 使用者帐户。 还可以使用同一文章中的“更新使用者用户帐户”  部分中的信息来管理帐户的属性。
+可以使用[使用 Azure AD Graph API](manage-user-accounts-graph-api.md) 的创建使用者用户帐户  部分中的信息创建 Azure AD B2C 使用者帐户。 还可以使用同一文章中的“更新使用者用户帐户”  部分中的信息来管理帐户的属性。
 
 ### <a name="migrate-consumer-user-accounts"></a>迁移使用者用户帐户
 
-可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 
+可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 有关详细信息，请参阅[用户迁移](user-migration.md)。
 
 <!-- Update_Description: wording update -->

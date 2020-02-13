@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f40da12f60103776834f4b963d53d3347ce93257
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 76112a55b38335b806039520736ebaeaf0a8fccc
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624036"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028105"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
 
-必须在你管理的租户中注册应用程序，然后这些[应用程序](active-directory-b2c-apps.md)才能与 Azure Active Directory B2C (Azure AD B2C) 交互。 本教程介绍如何使用 Azure 门户注册 Web 应用程序。
+必须在你管理的租户中注册应用程序，然后这些[应用程序](application-types.md)才能与 Azure Active Directory B2C (Azure AD B2C) 交互。 本教程介绍如何使用 Azure 门户注册 Web 应用程序。
 
 在本文中，学习如何：
 
@@ -30,13 +30,13 @@ ms.locfileid: "75624036"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果尚未创建自己的 [Azure AD B2C 租户](tutorial-create-tenant.md)，请立即创建一个。 可以使用现有的 Azure AD B2C 租户。
 
 ## <a name="register-a-web-application"></a>注册 Web 应用程序
 
-若要在 Azure AD B2C 租户中注册应用程序，可以使用当前的“应用程序”体验，  或者使用我们新推出的统一“应用注册(预览版)”体验。  [详细了解此新体验](https://aka.ms/b2cappregintro)。
+若要在 Azure AD B2C 租户中注册应用程序，可以使用当前的“应用程序”体验，  或者使用我们新推出的统一“应用注册(预览版)”体验。  [详细了解此新体验](/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 
@@ -88,7 +88,7 @@ ms.locfileid: "75624036"
 
 ## <a name="create-a-client-secret"></a>创建客户端机密
 
-如果应用程序将代码交换为令牌，则需要创建应用程序机密。
+如果应用程序将授权代码交换为访问令牌，则需要创建应用程序机密。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 

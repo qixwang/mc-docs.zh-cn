@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 12/2/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 6f8d39fb6b23cb409ccbc1b4303dc8fb9cbd7fd8
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 2a0b10508146bc585ea296dd55dd85ef62064466
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858222"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028574"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 

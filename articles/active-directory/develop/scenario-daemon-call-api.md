@@ -12,24 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e0cce6386eaa861cea439ed6b9cef1a0b5fb05
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 83528b9fdc283a4c3e8b54c8e46515294aa98ebe
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777047"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067709"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>调用 Web API 的守护程序应用 - 从应用调用 Web API
 
-守护程序应用可以从 .NET 守护程序应用程序调用 Web API，也可以调用多个预先批准的 Web API。
+.NET 守护程序应用可以调用一个 Web API。 .NET 守护程序应用还可以调用多个预先批准的 Web API。
 
-## <a name="calling-a-web-api-daemon-application"></a>调用 Web API 守护程序应用程序
+## <a name="calling-a-web-api-from-a-daemon-application"></a>从守护程序应用程序调用一个 Web API
 
-下面介绍如何使用令牌来调用 API：
+下面介绍如何使用令牌来调用一个 API：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -68,7 +67,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>调用多个 API
 
-对于守护程序应用，需要预先批准调用的 Web API。 守护程序应用不会有任何增量许可（没有用户交互）。 租户管理员需要预先同意应用程序和所有 API 权限。 如果要调用多个 API，则每次调用 `AcquireTokenForClient` 时都需要为每个资源获取一个令牌。 MSAL 将使用应用程序令牌缓存来避免不必要的服务调用。
+对于守护程序应用，需要预先批准调用的 Web API。 守护程序应用没有增量同意。 （没有用户交互。）租户管理员需要预先为应用程序提供同意和所有 API 权限。 如果要调用多个 API，则每次调用 `AcquireTokenForClient` 时都需要为每个资源获取一个令牌。 MSAL 将使用应用程序令牌缓存来避免不必要的服务调用。
 
 ## <a name="next-steps"></a>后续步骤
 

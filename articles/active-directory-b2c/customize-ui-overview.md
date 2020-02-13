@@ -1,5 +1,6 @@
 ---
-title: 自定义 Azure Active Directory B2C 中的用户界面
+title: 自定义用户界面
+titleSuffix: Azure AD B2C
 description: 了解如何自定义使用 Azure Active Directory B2C 的应用程序的用户界面。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 09/25/2019
-ms.date: 10/24/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: fd5f3361d4d333a5175727c1a33beb561f896b97
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 0590621f99b503d8922d085d6a5aea9707130008
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847112"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028078"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -28,13 +28,16 @@ ms.locfileid: "72847112"
 
 ### <a name="user-flows"></a>用户流
 
-如果使用[用户流](active-directory-b2c-reference-policies.md)，可以使用内置的页面布局模板或自己的 HTML 和 CSS 来更改用户流页面的外观。  本文稍后会介绍这两种方法。
+如果使用[用户流](user-flow-overview.md)，可以使用内置的页面布局模板或自己的 HTML 和 CSS 来更改用户流页面的外观。  本文稍后会介绍这两种方法。
 
 使用 [Azure 门户](tutorial-customize-ui.md)配置用户流的 UI 自定义。
 
+> [!TIP]
+> 如果只想修改用户流页的横幅徽标、背景图像和背景色，可以试用本文稍后介绍的[公司品牌(预览)](#company-branding-preview) 功能。
+
 ### <a name="custom-policies"></a>自定义策略
 
-如果使用[自定义策略](active-directory-b2c-overview-custom.md)在应用程序中提供注册或登录、密码重置或个人资料编辑，则可使用策略文件来自定义 UI。
+如果使用[自定义策略](custom-policy-overview.md)在应用程序中提供注册或登录、密码重置或个人资料编辑，则可使用策略文件来自定义 UI。
 
 如果需要根据客户的决策提供动态内容，可以使用可根据查询字符串中发送的参数动态更改页面内容的自定义策略。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
@@ -59,6 +62,8 @@ ms.locfileid: "72847112"
 选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”  字段中。
 
 ## <a name="custom-html-and-css"></a>自定义 HTML 和 CSS
+
+如果希望使用自定义的 HTML 和 CSS 设计自己的策略布局，则可以通过针对策略中存在的每个布局名称切换“使用自定义页面内容”开关来实现。 请按照以下有关自定义布局配置的说明进行操作：
 
 Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/) 的方法在客户浏览器中运行代码。
 
@@ -137,14 +142,14 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 | ------------- | ------------------- |
 | 标识提供者选项 | 包含标识提供者的按钮列表，客户可在注册或登录时选择这些按钮。 这些按钮包括社交标识提供者。 |
 | 本地帐户注册 | 包含一个窗体，用于基于电子邮件地址或用户名的本地帐户注册。 该窗体可以包含不同的输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 |
-| 社交帐户注册 | 使用社交标识提供者的现有帐户进行注册时，可能会显示此页面。 在必须使用注册窗体收集客户的其他信息时使用此页面。 |
+| 社交帐户注册 | 使用社交标识提供者的现有帐户进行注册时，可能会显示此页面。 在必须使用注册表单收集客户的其他信息时使用此页面。 |
 | 统一注册或登录 | 处理可以使用社交标识提供者的客户的注册和登录。 |
 | 多重身份验证 | 用户可以在注册或登录期间（使用文字或语音）验证其电话号码。 |
 | 错误 | 向客户提供错误信息。 |
 
 ## <a name="localize-content"></a>本地化内容
 
-可通过在 Azure AD B2C 租户中启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+可通过在 Azure AD B2C 租户中启用[语言自定义](user-flow-language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。
 

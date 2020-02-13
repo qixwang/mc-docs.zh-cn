@@ -1,23 +1,22 @@
 ---
-title: 自定义 Azure AD 自助式密码重置 - Azure Active Directory
+title: 自定义自助式密码重置 - Azure Active Directory
 description: 用于 Azure AD 自助服务密码重置的自定义选项
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 07/30/2019
-ms.date: 10/25/2019
+ms.date: 02/07/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f44a98f9f98e92ffd671df65f23da46544b7c9fc
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.openlocfilehash: 89eebc3d1ebd581dd89b9c91a19654cc3123d7e7
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912734"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067572"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -44,9 +43,9 @@ ms.locfileid: "72912734"
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
-1. 如果已分配“密码管理员”  角色，则会通知充当此角色的管理员。
-2. 如果未分配密码管理员，则会通知充当“用户管理员”  角色的管理员。
-3. 如果上述两个角色都未分配，则会通知“全局管理员”  。
+1. 如果已分配“支持管理员”  角色或“密码管理员”  角色，则会通知具有这些角色的管理员。
+1. 如果未分配支持管理员和密码管理员，则会通知具有“用户管理员”  角色的管理员。
+1. 如果上述角色均未分配，则会通知“全局管理员”  。
 
 在所有情况下，最多会向 100 个收件人发送通知。
 

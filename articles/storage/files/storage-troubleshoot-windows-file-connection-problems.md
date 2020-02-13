@@ -1,21 +1,19 @@
 ---
 title: 在 Windows 中排查 Azure 文件问题 | Microsoft Docs
 description: 在 Windows 中排查 Azure 文件问题
-services: storage
 author: WenJason
-tags: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 origin.date: 01/02/2019
-ms.date: 08/05/2019
+ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 3d29e2f78c40563de884e8021402edf7301760df
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.openlocfilehash: 57ce8e20cdef5fd1c3969d078e9a8cd9718b4ef1
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732314"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028866"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -40,7 +38,7 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 1. 从支持 SMB 加密的客户端（Windows 8、Windows Server 2012 或更高版本）进行连接，或者从用于 Azure 文件共享的 Azure 存储帐户所在数据中心内的虚拟机进行连接。
-2. 如果客户端不支持 SMB 加密，请确保在存储帐户上禁用[需要安全传输](/storage/common/storage-require-secure-transfer)设置。
+2. 如果客户端不支持 SMB 加密，请验证是否已在存储帐户上禁用[需要安全传输](/storage/common/storage-require-secure-transfer)设置。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则 
 
@@ -98,7 +96,7 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 与 IT 部门或 ISP 配合，向 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=42064)开放端口 445 出站通信。
 
 #### <a name="solution-2---use-rest-api-based-tools-like-storage-explorerpowershell"></a>解决方案 2 - 使用基于 REST API 的工具，例如存储资源管理器/Powershell
-除了 SMB，Azure 文件存储还支持 REST。 REST 访问可以通过端口 443 进行（标准 tcp）。 有许多工具是用 REST API 编写的，可以给用户带来丰富的 UI 体验。 [存储资源管理器](/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer/)，然后将其连接到 Azure 文件存储支持的文件共享。 也可使用 [PowerShell](/storage/files/storage-how-to-use-files-powershell)，此工具也使用 REST API。
+除了 SMB，Azure 文件存储还支持 REST。 REST 访问可以通过端口 443 进行（标准 tcp）。 有许多工具是用 REST API 编写的，可以给用户带来丰富的 UI 体验。 [存储资源管理器](/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，然后将其连接到 Azure 文件存储支持的文件共享。 也可使用 [PowerShell](/storage/files/storage-how-to-use-files-powershell)，此工具也使用 REST API。
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2：NTLMv1 已启用
 
@@ -134,28 +132,30 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 > [!Note]  
 > Get-AzStorageFileHandle 和 Close-AzStorageFileHandle cmdlet 包括在 Az PowerShell 模块 2.4 或更高版本中。 若要安装最新 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现“授权失败”错误
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>尝试访问或删除 Azure 文件共享时出现错误“无访问权限”  
+尝试访问或删除门户中的 Azure 文件共享时，可能会收到以下错误：
 
-浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
+无访问权限  
+错误代码：403 
 
-授权失败  
-你无权访问 
-
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1：你的用户帐户无权访问该存储帐户
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 1：在存储帐户上启用了虚拟网络或防火墙规则
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
-浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户  。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)。
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2：你的用户帐户无权访问该存储帐户
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)。
+浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户  。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](/storage/blobs/security-recommendations#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
+尝试删除文件时，可能会收到以下错误：
+
+SMB 客户端已将指定的资源标记为删除。
 
 ### <a name="cause"></a>原因
 如果该文件或目录有一个打开的句柄，通常会出现此问题。 
@@ -180,7 +180,7 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 -   如果知道要通过写入进行扩展的文件的最终大小，并且软件在文件上未写入的尾部包含零时尚未出现兼容性问题，请提前设置文件大小，而不是使每次写入都成为扩展写入。
 -   使用正确的复制方法：
     -   为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy.md?toc=%2fstorage%2ffiles%2ftoc.json)。
-    -   在本地计算机上的文件共享之间使用 [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/)。
+    -   在本地计算机上的文件共享之间使用 [Robocopy](/storage/files/storage-files-deployment-guide#robocopy)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 或 Windows Server 2012 R2 的注意事项
 
@@ -204,7 +204,7 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 
 ### <a name="cause"></a>原因
 
-默认情况下，Windows 文件资源管理器不以管理员身份运行。 如果通过管理性命令提示符运行 net use，则可以管理员身份映射网络驱动器。 由于映射的驱动器以用户为中心，如果不同用户帐户下已装载这些驱动器，则已登录的用户帐户将不显示它们。
+默认情况下，Windows 文件资源管理器不以管理员身份运行。 如果通过管理性命令提示符运行 net use，则可以管理员身份映射网络驱动器。 由于映射的驱动器以用户为中心，如果在其他用户帐户上安装了这些驱动器，则登录的用户帐户不会显示它们。
 
 ### <a name="solution"></a>解决方案
 通过非管理员命令行中装载共享。 或者，可按照[此 TechNet 主题](https://technet.microsoft.com/library/ee844140.aspx)配置 **EnableLinkedConnections** 注册表值。

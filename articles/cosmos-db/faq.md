@@ -1,19 +1,19 @@
 ---
-title: 有关 Azure Cosmos DB 中不同 API 的常见问题
+title: 有关 Azure Cosmos DB 中不同 API 的常见问题解答
 description: 获取有关 Azure Cosmos DB（多区域分布式多模型数据库服务）的常见问题的解答。 了解容量、性能级别和缩放。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/01/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 6c6310c10716dcb7aba9aaccab9d59ba429bfb45
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 84ddbe0f9ec37d74c88ffa3ece5be0d3dd9f2d99
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336095"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980536"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -78,8 +78,6 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 若要请求新功能，请在 [Azure 支持站点](https://support.azure.cn/support/support-azure/)上提交新的请求。
 
 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://support.azure.cn/support/support-azure/)。
-
-其他问题可以通过 [Azure 支持](https://support.azure.cn/support/contact/)提交给团队。
 
 <!--Not Available on however this isn't a technical support alias-->
 
@@ -275,16 +273,14 @@ Azure Cosmos DB 实施严格的安全要求和标准。 Azure Cosmos DB 帐户�
 
 | 类 | 不支持的方法 |
 |-------|-------- |
-| CloudTableClient | \*ServiceProperties* |
-|                  | \*ServiceStats* |
+| CloudTableClient | \*ServiceProperties\* |
+|                  | \*ServiceStats\* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
 | TableServiceContext | *（此类已弃用） |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
-
-如果其中的任何差异会给项目造成问题，请联系 [Azure 支持部门](https://support.azure.cn/support/contact/)并告知我们。
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>如何提供有关 SDK 或 Bug 的反馈？
 
@@ -397,7 +393,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>在某个区域出现故障时，表 API 如何处理故障转移？
 
-表 API 利用 Azure Cosmos DB 的多区域分布式平台。 若要确保应用程序能够容许数据中心停机，请在 Azure Cosmos DB 门户中为帐户额外启用至少一个区域。详见[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。
+表 API 利用 Azure Cosmos DB 的多区域分布式平台。 若要确保应用程序能够容许数据中心停机，请在 Azure Cosmos DB 门户中为帐户额外启用至少一个区域。详见[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。 可以使用门户设置区域的优先级。请参阅[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。
 
 可以视需要为帐户添加任意数目的区域，并通过提供故障转移优先级来控制可将该帐户故障转移到哪个位置。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。 [最新的 .NET 客户端 SDK](table-sdk-dotnet.md) 可自动寻址，但其他 SDK 则不可以。 换句话说，它能够检测到有故障的区域，并自动故障转移到新区域。
 
@@ -767,7 +763,7 @@ Azure Cosmos DB 的所有 API 目前都提供间隔四小时的两个免费完�
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>当某个区域出现故障时，Cassandra API 帐户如何处理故障转移？
 
-Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的多区域分布式平台。 若要确保应用程序能够容许数据中心停机，请在 Azure Cosmos DB 门户中为帐户额外启用至少一个区域。详见[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。
+Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的多区域分布式平台。 若要确保应用程序能够容许数据中心停机，请在 Azure Cosmos DB 门户中为帐户额外启用至少一个区域。详见[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。 可以使用门户设置区域的优先级。请参阅[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。
 
 可以视需要为帐户添加任意数目的区域，并通过提供故障转移优先级来控制可将该帐户故障转移到哪个位置。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。
 
@@ -790,4 +786,4 @@ Apache Cassandra API 提供了与 Apache Cassandra 相同的 CQL 功能。 我�
 [azure-portal]: https://portal.azure.cn
 [query]: sql-api-sql-query.md
 
-<!--Update_Description: update meta properties, update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

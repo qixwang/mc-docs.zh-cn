@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台和 OAuth 授权代码流 | Azure
+title: OAuth 授权代码流 - Microsoft 标识平台 | Azure
 description: 使用 OAuth 2.0 身份验证协议的 Microsoft 标识平台实现生成 Web 应用程序。
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a67fe89d867fb369e078732aedddad9b4018103
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 78cf41e17327b6c2eb5c3a1ff6981bcf733b4bd8
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335261"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067611"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -46,7 +45,7 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 
 ## <a name="request-an-authorization-code"></a>请求授权代码
 
-授权代码流始于客户端将用户定向到 `/authorize` 终结点。 在这项请求中，客户端指示必须向用户获取的权限：
+授权代码流始于客户端将用户定向到 `/authorize` 终结点。 在此请求中，客户端向用户请求 `openid`、`offline_access` 和 `https://microsoftgraph.chinacloudapi.cn/mail.read ` 权限。  某些权限受管理员限制，例如使用 `Directory.ReadWrite.All` 将数据写入组织的目录。 如果应用程序向组织用户请求访问以下权限之一，用户会收到错误消息，指出他们未经授权，无法许可应用的权限。 若要请求访问受管理员限制的范围，应该直接向公司管理员请求。  有关详细信息，请参阅[管理员限制的权限](v2-permissions-and-consent.md#admin-restricted-permissions)。
 
 ```
 // Line breaks for legibility only
@@ -56,23 +55,23 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
+&scope=openid%20offline_access%20https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read
 &state=12345
 ```
 
 > [!TIP]
 > 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
-> <a href="https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read&state=12345" target="_blank">https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize...</a>
+> <a href="https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read&state=12345" target="_blank">https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize...</a>
 
 | 参数    | 必需/可选 | 说明 |
 |--------------|-------------|--------------|
 | `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | 必填    | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验分配给应用的**应用程序（客户端）ID**。  |
 | `response_type` | 必填    | 必须包括授权代码流的 `code` 。       |
-| `redirect_uri`  | 必填 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。   |
+| `redirect_uri`  | 必填 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。   |
 | `scope`  | 必填    | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  对于请求的 `/authorize` 段，这可以涵盖多个资源，从而允许应用获得你要调用的多个 Web API 的同意。 |
 | `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 有关详细信息，请参阅 [OpenID Connect 协议](/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
-| `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
+| `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 | `prompt`  | 可选    | 表示需要的用户交互类型。 目前仅有的有效值为 `login`、`none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果请求无法通过单一登录静默完成，则 Microsoft 标识平台终结点将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | `login_hint`  | 可选    | 如果事先知道用户名，可用于预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
 | `domain_hint`  | 可选    | 可以是 `consumers` 或 `organizations` 之一。<br/><br/>如果包含，它跳过用户在登录页上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。 通常，应用将在重新身份验证期间使用此参数，方法是从上次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
@@ -141,7 +140,7 @@ Host: https://login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
+&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
@@ -171,7 +170,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read",
+    "scope": "https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
@@ -254,7 +253,7 @@ Host: https://login.partner.microsoftonline.cn
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read
+&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
@@ -282,7 +281,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fuser.read",
+    "scope": "https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }

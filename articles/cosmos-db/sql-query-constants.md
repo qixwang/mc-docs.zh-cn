@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中的 SQL 常量
-description: 了解 Azure Cosmos DB 中的 SQL 常量
+description: 了解如何使用 Azure Cosmos DB 中的 SQL 查询常量来表示特定数据值
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 05/31/2019
-ms.date: 09/30/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: acc7f9afbe8b02716ecddf604076fecb18f7d606
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: d79bf09362c349435705b4366a957fbb1c944333
+ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306768"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028680"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
 
@@ -26,7 +26,7 @@ ms.locfileid: "71306768"
 |**Null**|单一值：**null**|  
 |**布尔值**|值：**false**、**true**。|  
 |**数字**|双精度浮点数，按 IEEE 754 标准。|  
-|字符串 |由零个或多个 Unicode 字符构成的序列。 字符串必须括在单引号或双引号中。|  
+|**字符串**|由零个或多个 Unicode 字符构成的序列。 字符串必须括在单引号或双引号中。|  
 |**数组**|由零个或多个元素构成的序列。 每个元素可以是任何标量数据类型的值，但 **Undefined** 除外。|  
 |**Object**|由零个或多个名称/值对构成的无序集。 名称是一个 Unicode 字符串，值可以是任何标量数据类型，但 **Undefined** 除外。|  
 
@@ -124,4 +124,4 @@ ms.locfileid: "71306768"
 - [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

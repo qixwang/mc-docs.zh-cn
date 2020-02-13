@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 01/08/2020
+ms.date: 02/07/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030aedfa8356e28b0e7dae6d98dd9ab2f9114a9a
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 2858f032ac7aba922a8477b51c553586521ba553
+ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777069"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77067724"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -38,7 +38,7 @@ ms.locfileid: "75777069"
 
 在 [Azure 门户](https://portal.azure.cn)菜单中，选择“Azure Active Directory”，或从任意页搜索并选择“Azure Active Directory”   。
 
-![选择 Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+![选择“Azure Active Directory”](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
 
 在“监视”  下，选择“登录”  以打开[登录报告](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
 
@@ -91,6 +91,7 @@ ms.locfileid: "75777069"
 |50072|用户需注册进行双重身份验证（交互式）。|
 |50074|用户未通过 MFA 质询。|
 |50076|用户未通过 MFA 质询（非交互式）。|
+|50078|提供的多重身份验证已过期，你必须刷新多重身份验证才能访问。|
 |50079|用户需要注册双重身份验证（非交互式登录）。|
 |50085|刷新令牌需要社交 IDP 登录。 请让用户尝试使用用户名和密码再次登录。|
 |50089|流令牌过期 - 身份验证失败。 请让用户尝试使用用户名和密码再次登录|
@@ -177,7 +178,7 @@ ms.locfileid: "75777069"
 |90014| 协议消息的必填字段缺失，请与应用程序所有者联系。 如果你是应用程序所有者，请确保具有登录请求所需的所有参数。 |
 |90051| 委派令牌无效。 指定的国家云 ID ({cloudId}) 无效。|
 |90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|
-|90094| 该授权需要管理员权限。 让租户管理员同意此应用程序。|
+|90094| 应用请求了不允许登录用户同意的权限，并且该用户已被阻止。 |
 |500011| 在名为 <tenant ID> 的租户中找不到名为 <site address> 的资源主体。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。|
 |500021| 租户受公司代理限制。 拒绝访问资源。|
 |500121| 在强身份验证请求期间身份验证失败。|
@@ -186,6 +187,8 @@ ms.locfileid: "75777069"
 |530032|被安全策略阻止。| 
 |700016|在目录“{tenantName}”中找不到标识符为“{appIdentifier}”的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。|
 |900432|跨云请求不支持机密客户端。|
+|5000811|无法验证 SAML 令牌签名。 签名密钥标识符与所有有效的已注册密钥都不匹配。|
+|7000215|提供的客户端密码无效。|
 |7000218|请求正文必须包含以下参数：“client_assertion”或“client_secret”。|
 
 

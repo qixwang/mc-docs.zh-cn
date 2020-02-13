@@ -1,5 +1,5 @@
 ---
-title: 使用适用于 Visual Studio Code 的 Azure IoT 工具管理 Azure IoT 中心云设备消息传送
+title: 使用 Azure IoT Tools for VSCode 管理 IoT 中心消息
 description: 了解如何使用适用于 Visual Studio Code 的 Azure IoT 工具来监视设备到云消息，并在 Azure IoT 中心中发送云到设备消息。
 author: formulahendry
 ms.service: iot-hub
@@ -7,14 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 origin.date: 01/18/2019
-ms.date: 08/05/2019
+ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8a8631545ab9d6425f4367329f76411f69e68c80
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: dde7c5ce6c281a4f29f18d6d62720eed3962b63f
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514461"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966548"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
 
@@ -57,7 +57,7 @@ ms.locfileid: "68514461"
 
 1. 右键单击设备，然后选择“开始监视内置事件终结点”  。
 
-2. 受监视的消息将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
+2. 受监视的消息将显示在“输出”   > “Azure IoT 中心”  视图中。
 
 3. 若要停止监视，请右键单击“输出”  视图，然后选择“停止监视内置事件终结点”  。
 
@@ -67,7 +67,7 @@ ms.locfileid: "68514461"
 
 1. 右键单击设备，然后选择“将 C2D 消息发送到设备”  。 
 1. 在输入框中输入消息。
-1. 结果将显示在“输出”   > “Azure IoT 中心工具包”  视图中。
+3. 结果将显示在“输出”   > “Azure IoT 中心”  视图中。
 
 ## <a name="next-steps"></a>后续步骤
 

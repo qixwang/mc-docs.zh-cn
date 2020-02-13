@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB 中预配容器吞吐量
-description: 了解如何在 Azure Cosmos DB 中预配容器级别的吞吐量
+description: 了解如何使用 Azure 门户、CLI、PowerShell 和各种其他 SDK 在 Azure Cosmos DB 中预配容器级别的吞吐量。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/28/2019
-ms.date: 12/16/2019
+origin.date: 12/13/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6e0f95743f8dda6def67072199bdda84678432a3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 03fe0ea1c76962d15dacbb7e0a5999a4015d3207
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336401"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980485"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
@@ -66,9 +66,7 @@ await client.CreateDocumentCollectionAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.NET V3 SDK
-
 ```csharp
-
 // Create a container with a partition key and provision throughput of 1000 RU/s
 string containerName = "myContainerName";
 string partitionKeyPath = "/myPartitionKey";
@@ -91,7 +89,7 @@ const { database } = await client.databases.createIfNotExists({ id: "databaseId"
 
 // Create a container with the specified throughput
 const { resource } = await database.containers.createIfNotExists({
-id: "contaierId ",
+id: "containerId",
 throughput: 1000
 });
 

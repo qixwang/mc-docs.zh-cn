@@ -1,18 +1,18 @@
 ---
 title: 管理 Azure Cosmos DB 中的索引策略
-description: 了解如何管理 Azure Cosmos DB 中的索引策略
+description: 了解如何管理索引策略、在索引中包括或排除属性、如何使用不同的 Azure Cosmos DB SDK 定义索引
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/28/2019
-ms.date: 10/28/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0cf263f55fb7585bb6f3f5802c93b5e58b16958c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: a5048eee38ba9eea184c7dbd96da3d5dd6890f4a
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913291"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980494"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -376,22 +376,16 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 ```csharp
 // Retrieve the container's details
 ResourceResponse<DocumentCollection> containerResponse = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("database", "container"));
-
 // Set the indexing mode to consistent
 containerResponse.Resource.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
-
 // Add an included path
 containerResponse.Resource.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-
 // Add an excluded path
 containerResponse.Resource.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/name/*" });
-
 // Add a spatial index
 containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(new SpatialSpec() { Path = "/locations/*", SpatialTypes = new Collection<SpatialType>() { SpatialType.Point } } );
-
 // Add a composite index
 containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<CompositePath> {new CompositePath() { Path = "/name", Order = CompositePathSortOrder.Ascending }, new CompositePath() { Path = "/age", Order = CompositePathSortOrder.Descending }});
-
 // Update container with changes
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
@@ -614,9 +608,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>使用 Python SDK
+## <a name="use-the-python-sdk-v3"></a>使用 Python SDK V3
 
-使用 [Python SDK](https://pypi.org/project/azure-cosmos/) 时（请参阅有关其用法的[此快速入门](create-sql-api-python.md)），容器配置是作为字典管理的。 从此字典中，可以访问索引策略及其所有属性。
+使用 [Python SDK V3](https://pypi.org/project/azure-cosmos/) 时（有关其用法，请参阅[此快速入门](create-sql-api-python.md)），容器配置将作为字典进行管理。 从此字典中，可以访问索引策略及其所有属性。
 
 检索容器的详细信息
 
@@ -678,6 +672,72 @@ container['indexingPolicy']['compositeIndexes'] = [
 response = client.ReplaceContainer(containerPath, container)
 ```
 
+## <a name="use-the-python-sdk-v4"></a>使用 Python SDK V4
+
+使用 [Python SDK V4](https://pypi.org/project/azure-cosmos/) 时，容器配置将作为字典进行管理。 从此字典中，可以访问索引策略及其所有属性。
+
+检索容器的详细信息
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+将索引模式设置为“一致”
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+使用包含的路径和空间索引定义索引策略
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+使用排除的路径定义索引策略
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+添加组合索引
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+使用更改更新容器
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 阅读以下文章中有关索引的详细信息：
@@ -685,4 +745,4 @@ response = client.ReplaceContainer(containerPath, container)
 - [索引概述](index-overview.md)
 - [索引策略](index-policy.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

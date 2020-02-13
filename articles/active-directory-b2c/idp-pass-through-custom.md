@@ -1,30 +1,30 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
-description: 了解如何在 Azure Active Directory B2C 中使用自定义策略将 OAuth2.0 标识提供者的访问令牌作为声明传递给应用程序。
+title: 通过自定义策略将访问令牌传递给应用
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure Active Directory B2C 中通过自定义策略将 OAuth 2.0 标识提供者的访问令牌作为声明传递给应用程序。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 08/17/2019
-ms.date: 09/02/2019
+ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 545edeb311777b04fe255f04ed7c17d3da5cd377
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.openlocfilehash: ee84866e7357d2121d7eace9cbcc49d63ec4cd01
+ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310739"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77028171"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
-Azure Active Directory B2C (Azure AD B2C) 中的 `custom policy` 允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
+Azure Active Directory B2C (Azure AD B2C) 中的 `custom policy` 允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](tokens-overview.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
 
-Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 和 [OpenID Connect](active-directory-b2c-reference-oidc.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
+Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Connect](openid-connect.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 自定义策略使用 OAuth 2.0 或 OpenID Connect 标识提供者进行配置。
 
@@ -91,6 +91,6 @@ Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.
 
 ## <a name="next-steps"></a>后续步骤
 
-在 [Azure Active Directory B2C 令牌参考](active-directory-b2c-reference-tokens.md)中了解有关令牌的更多信息。
+在 [Azure Active Directory B2C 令牌参考](tokens-overview.md)中了解有关令牌的更多信息。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: links update -->

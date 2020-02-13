@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 时序见解查询中塑造 JSON 的最佳做法 | Microsoft Docs
-description: 了解如何提高 Azure 时序见解查询的效率。
+title: 塑造 JSON 的最佳做法 - Azure 时序见解查询 | Microsoft Docs
+description: 了解如何通过塑造 JSON 提高 Azure 时序见解查询的效率。
 services: time-series-insights
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-origin.date: 10/09/2019
-ms.date: 11/04/2019
+origin.date: 12/05/2019
+ms.date: 01/27/2020
 ms.author: v-yiso
 ms.custom: seodec18
-ms.openlocfilehash: 6a4bba1628ad593f5d43f9abb8e822d5ff1edbaa
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 320110b045b04166e308057ac263159e6b1b50ec
+ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389512"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966516"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能 
 
@@ -45,7 +45,7 @@ ms.locfileid: "74389512"
 
 ## <a name="example-overview"></a>示例概述
 
-以下两个示例演示如何发送事件，并强调前面所述的建议。 遵循每个示例可以了解建议的应用方式。
+以下两个示例演示如何发送事件，并强调前面所述的建议。 在每个示例后，你可以查看建议是如何应用的。
 
 这些示例基于多个设备发送度量值或信号的场景。 度量值或信号可能包括“流速”、“引擎油压”、“温度”和“湿度”。 在第一个示例中，所有设备提供了一些度量值。 第二个示例涉及许多的设备，每个设备发送多个唯一的度量值。
 

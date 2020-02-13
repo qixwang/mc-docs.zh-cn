@@ -1,18 +1,18 @@
 ---
-title: 了解如何在 Azure Cosmos DB 中配置和管理生存时间
-description: 了解如何在 Azure Cosmos DB 中配置和管理生存时间
+title: 在 Azure Cosmos DB 中配置和管理生存时间
+description: 了解如何在 Azure Cosmos DB 中配置和管理容器和项的生存时间
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 09/28/2019
-ms.date: 10/28/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c8f77d762c9f2e2c19f2e85d7d7c7884087c6852
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3fb20079bf3e7bb957a22aad160d4e2dd9d1cb19
+ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913289"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980471"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
@@ -90,7 +90,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 DocumentCollection collectionDefinition = new DocumentCollection();
 collectionDefinition.Id = "myContainer";
 collectionDefinition.PartitionKey.Paths.Add("/myPartitionKey");
-collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+collectionDefinition.DefaultTimeToLive = 90 * 60 * 60 * 24 // expire all documents after 90 days
 
 DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
     UriFactory.CreateDatabaseUri("myDatabaseName"),
@@ -157,13 +157,13 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
     ```json
     {
-    "id": "1",
-    "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
-    "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
-    "_etag": "\"0d00b23f-0000-0000-0000-5c7712e80000\"",
-    "_attachments": "attachments/",
-    "ttl": 10,
-    "_ts": 1551307496
+        "id": "1",
+        "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
+        "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
+        "_etag": "\"0d00b23f-0000-0000-0000-5c7712e80000\"",
+        "_attachments": "attachments/",
+        "ttl": 10,
+        "_ts": 1551307496
     }
     ```
 
@@ -300,4 +300,4 @@ await client.GetContainer("database", "container").ReplaceContainerAsync(contain
 
 * [生存时间](time-to-live.md)
 
-<!-- Update_Description: update meta properties， wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->
