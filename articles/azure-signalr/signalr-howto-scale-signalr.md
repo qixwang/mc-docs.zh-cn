@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 12/11/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: b8601dc6c623f0b29af32146b36f3477acebe581
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 10993286506312a76aa55ece835fedd33ddbab87
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600582"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179331"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>如何缩放 Azure SignalR 服务实例？
 本文介绍如何缩放 Azure SignalR 服务的实例。 有两种方案可用于缩放、纵向扩展和横向扩展。
@@ -82,7 +82,7 @@ az signalr update \
 
 有关详细信息，例如每个定价层包含的消息和连接，请参阅 [SignalR Service 定价详细信息](https://www.azure.cn/pricing/details/signalr-service/)。
 
-有关每个层中的服务限制、配额和约束表格，请参阅 [SignalR 服务限制](../azure-subscription-service-limits.md#azure-signalr-service-limits)。
+有关每个层中的服务限制、配额和约束表格，请参阅 [SignalR 服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

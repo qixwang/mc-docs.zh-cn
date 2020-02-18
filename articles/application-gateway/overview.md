@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/30/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: c68e16dc4bef0583e752e76f638641ca2d7e474c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3090a865aa3561f3a16a405cf6f12c25cbcaeb66
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624276"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155557"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -64,7 +64,7 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 ## <a name="url-based-routing"></a>基于 URL 的路由
 
-基于 URL 路径的路由用于根据请求的 URL 路径，将流量路由到后端服务器池。 方案之一是将不同内容类型的请求路由到不同的池。
+基于 URL 路径的路由可让你根据请求的 URL 路径，将流量路由到后端服务器池。 方案之一是将不同内容类型的请求路由到不同的池。
 
 例如，将 `http://contoso.com/video/*` 的请求路由到 VideoServerPool，将 `http://contoso.com/images/*` 的请求路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
@@ -136,7 +136,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 应用程序网关的 Standard 和 WAF SKU 目前提供三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
 
-有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
+有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
 
 下表显示了已启用 SSL 卸载的每个应用程序网关 v1 实例的平均性能吞吐量：
 
@@ -156,4 +156,4 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 - [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure PowerShell](quick-create-powershell.md)
 - [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI](quick-create-cli.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

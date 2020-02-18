@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 origin.date: 04/18/2019
-ms.date: 10/30/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 34bad6ea4c70c8c69fa19e3f02b5e48cc8b4a131
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: ad1242a776c9a5e0157e31dd82495f1c7be86e71
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425870"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112195"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -88,12 +88,12 @@ Key Vault 日志记录保存有关针对保管库执行的活动的信息。 Key
     - 签名、验证、加密、解密、包装和解包密钥、获取机密，以及列出密钥和机密（及其版本）。
 - 导致出现 401 响应的未经身份验证的请求。 示例包括不包含持有者令牌、格式不正确或已过期，或者包含无效令牌的请求。
 
-在执行 Key Vault 操作 10 分钟后，即可访问日志记录信息。 存储帐户中的日志完全由你管理。 
+在执行 Key Vault 操作 10 分钟后，即可访问日志记录信息。 存储帐户中的日志完全由你管理。
 
 - 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
 - 删除不想继续保留在存储帐户中的日志。
 
-有关如何安全管理存储帐户的建议，请查看 [Azure 存储安全指南](../storage/common/storage-security-guide.md)
+有关如何安全管理存储帐户的建议，请查看 [Azure 存储安全指南](../storage/blobs/security-recommendations.md)
 
 ## <a name="next-steps"></a>后续步骤
 

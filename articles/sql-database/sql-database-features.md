@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: bonova, sstein
 origin.date: 05/10/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 5e1ffb54384ad6444104b3a0476917fb1af14f9d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: efd40ea531cf4d3c5fef81818b77923e843f8041
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335741"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155684"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
 
@@ -36,7 +36,7 @@ Azure SQL 数据库将管理数据库并保证其高可用性。 可能影响高
 | **SQL 功能** | **单一数据库和弹性池** | **托管实例** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | 是 - 请参阅[证书存储](sql-database-always-encrypted.md)和[密钥保管库](sql-database-always-encrypted-azure-key-vault.md) | 是 - 请参阅[证书存储](sql-database-always-encrypted.md)和[密钥保管库](sql-database-always-encrypted-azure-key-vault.md) |
-| [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | 每个数据库都保证 [99.99-99.995% 可用性](sql-database-high-availability.md)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-business-continuity.md)中对灾难恢复进行了讨论 | 每个数据库都保证 [99.99.% 可用性](sql-database-high-availability.md)，并且[不能由用户管理](sql-database-managed-instance-transact-sql-information.md#always-on-availability)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-business-continuity.md)中对灾难恢复进行了讨论。 使用[自动故障转移组](sql-database-auto-failover-group.md)在另一个区域中配置辅助 Always On 托管实例。 不能将其他 SQL Server 实例和单一数据库用作托管实例的辅助数据库。 |
+| [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | 每个数据库都保证 [99.99-99.995% 可用性](sql-database-high-availability.md)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-business-continuity.md)中对灾难恢复进行了讨论 | 每个数据库都保证 [99.99.% 可用性](sql-database-high-availability.md)，并且[不能由用户管理](sql-database-managed-instance-transact-sql-information.md#availability)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-business-continuity.md)中对灾难恢复进行了讨论。 使用[自动故障转移组](sql-database-auto-failover-group.md)在另一个区域中配置辅助 Always On 托管实例。 不能将其他 SQL Server 实例和单一数据库用作托管实例的辅助数据库。 |
 | [附加数据库](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | 否 | 否 |
 | [审核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [是](sql-database-auditing.md)| [是](sql-database-managed-instance-auditing.md)，但有一些[差异](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [Azure Active Directory (AAD) 身份验证](sql-database-aad-authentication.md) | 是的。 仅限 AAD 用户。 | 是的。 包括服务器级 AAD 登录名。 |
@@ -84,7 +84,6 @@ Azure SQL 数据库将管理数据库并保证其高可用性。 可能影响高
 | [运算符](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](sql-database-managed-instance-transact-sql-information.md) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | 否。 可以使用 `OPENROWSET` 函数查询 Azure Blob 存储上的文件中的数据。 | 否。 可以使用 `OPENROWSET` 函数查询 Azure Blob 存储上的文件中的数据。 |
 | [查询通知](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
-| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | 是，[处于公开预览状态](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | 否 |
 | [恢复模型](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 
 | [资源调控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | 否 | 是 |
 | [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | 否 | 是，对 Azure Blob 存储上的备份文件使用必需的 `FROM URL` 选项。 请参阅[还原差异](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
@@ -136,7 +135,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [SQL 别名](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | 否，使用 [DNS 别名](dns-alias-overview.md) | 否，请使用 [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) 在客户端计算机上设置别名。 |
 | [SQL 数据同步](sql-database-get-started-sql-data-sync.md) | 是 | 否 |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | 否，[Azure Analysis Services](/analysis-services/) 是一项单独的 Azure 云服务。 | 否，[Azure Analysis Services](/analysis-services/) 是一项单独的 Azure 云服务。 |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS ，其中程序包存储在由 Azure SQL 数据库承载的 SSISDB 中并在 Azure SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。 <br/><br/>若要比较 SQL 数据库服务器和托管实例中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。 | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS ，其中程序包存储在由托管实例承载的 SSISDB 中并在 Azure SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。 <br/><br/>若要比较 SQL 数据库和托管实例中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。 |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | 是，使用 Azure 数据工厂 (ADF) 环境中的托管 SSIS ，其中程序包存储在由 Azure SQL 数据库承载的 SSISDB 中并在 Azure SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。 | 否。 |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) |
 | [Query Performance Insights (QPI)](sql-database-query-performance.md) | 是 | 否。 使用 SQL Server Management Studio 和 Azure Data Studio 中的内置报告。 |
 | [VNet](../virtual-network/virtual-networks-overview.md) | 部分支持，可以使用 [VNet 终结点](sql-database-vnet-service-endpoint-rule-overview.md)进行受限访问 | 是，托管实例注入到客户的 VNet 中。 请参阅[子网](sql-database-managed-instance-transact-sql-information.md#subnet)和 [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |

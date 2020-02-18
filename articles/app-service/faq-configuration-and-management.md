@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 10/30/2018
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 05954549d44a4f97d619e822d9dc64f8bf47ef88
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 7498f7d743f4ff6839271245becb342944227236
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979352"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179339"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -83,7 +83,7 @@ ms.locfileid: "76979352"
 
 随即显示出站 IP 地址列表。
 
-如果你的网站在应用服务环境中承载，则若要了解如何获取出站 IP 地址，请参阅[出站网络地址](environment/network-info.md#outbound-network-addresses)。
+如果你的网站在应用服务环境中承载，则若要了解如何获取出站 IP 地址，请参阅[出站网络地址](environment/network-info.md#ase-ip-addresses)。
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的保留或专用入站 IP 地址？
 

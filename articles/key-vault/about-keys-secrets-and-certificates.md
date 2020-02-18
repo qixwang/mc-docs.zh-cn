@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 12/02/2019
+ms.date: 02/17/2019
 ms.author: v-tawe
-ms.openlocfilehash: c1b975717e7640801a92403f827418917c4ef67f
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 19ac7e687b7ab84102488645d755dd879a079960
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838983"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112172"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 

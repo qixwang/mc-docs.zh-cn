@@ -12,21 +12,21 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: c63c7d9520f64c7c85b7e49034842301eb090ea3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 9cb3451248321bb540dc252b52d6a290a659d6ce
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623818"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128828"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 添加或删除角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 REST API 分配角色。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -105,8 +105,8 @@ ms.locfileid: "75623818"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure RBAC 和 REST API 列出角色分配](role-assignments-list-rest.md)
-- [使用 Resource Manager 模板和 Resource Manager REST API 部署资源](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [使用 Resource Manager 模板和 Resource Manager REST API 部署资源](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)
 - [使用 REST API 为 Azure 资源创建自定义角色](custom-roles-rest.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

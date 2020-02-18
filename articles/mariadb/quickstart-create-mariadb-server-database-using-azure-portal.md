@@ -1,19 +1,19 @@
 ---
-title: 快速入门：创建 Azure Database for MariaDB 服务器 - Azure 门户
+title: 快速入门：创建服务器 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure 门户在大约五分钟内快速创建示例 Azure Database for MariaDB 服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-origin.date: 04/15/2019
-ms.date: 07/26/2019
-ms.openlocfilehash: 55ee94111e21314792b936cd5607589bc94008d6
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+origin.date: 12/02/2019
+ms.date: 02/17/2020
+ms.openlocfilehash: 4470f6eb5718c8fc5b61f84995f1e82b6a275919
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514282"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192476"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MariaDB 服务器
 
@@ -27,7 +27,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>创建 Azure Database for MariaDB 服务器
 
-创建 Azure Database for MariaDB 服务器时，请使用定义好的一组[计算和存储资源](concepts-pricing-tiers.md)。 请在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建该服务器。
+创建 Azure Database for MariaDB 服务器时，请使用定义好的一组[计算和存储资源](concepts-pricing-tiers.md)。 请在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建该服务器。
 
 若要创建 Azure Database for MariaDB 服务器，请执行以下操作：
 
@@ -50,7 +50,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
     服务器管理员登录名 | **myadmin** | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。      
     密码 |  由用户选择 | 为服务器管理员帐户输入新密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0-9)和非字母数字字符（!, $, #, % 等）。
     确认密码 |  由用户选择| 确认管理员帐户密码。
-    Location |  离用户最近的区域| 选择最靠近用户或其他 Azure 应用程序的位置。
+    位置 |  离用户最近的区域| 选择最靠近用户或其他 Azure 应用程序的位置。
     版本 |  最新版本| 最新版本，有特定要求（即要求使用其他版本）的除外。
     定价层 | 请参阅说明。 | 新服务器的计算、存储和备份配置。 选择“定价层”   >   “常规用途”。 为以下设置保留默认值：<br><ul><li>**计算代系**（第 5 代）</li><li>**vCore**（4 个 vCore）</li><li>**存储空间** (100 GB)</li><li>**备份保持期**（7 天）</li></ul><br>若要在异地冗余存储中启用服务器备份，请选择“异地冗余”作为“备份冗余选项”   。 <br><br>若要保存此定价层选择，请选择“确定”  。 下一个屏幕截图捕获了这些选择。
   
@@ -105,13 +105,13 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
 在 Powershell 提示符下输入以下 mysql 命令行，连接到 Azure Database for MariaDB 服务器。
 
-若要通过 mysql 实用程序连接到 Azure Database for MariaDB 服务器，请使用以下格式：
+    To connect to an Azure Database for MariaDB server by using the mysql utility, use the following format:
 
     ```bash
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
     ```
 
-例如，以下命令连接到示例服务器：
+    For example, the following command connects to our example server:
 
     ```azurecli
     mysql --host mydemoserver.mariadb.database.chinacloudapi.cn --user myadmin@mydemoserver -p
@@ -143,12 +143,12 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
     mysql>
     ```
     
-> [!TIP]
-> 如果未将防火墙配置为允许 Azure Cloud Shell 的 IP 地址，则会出现以下错误：
->
->   错误 2003 (28000): 不允许 IP 地址为 123.456.789.0 的客户端访问服务器。
->
-> 若要解决此错误，请确保服务器配置符合[配置服务器级防火墙规则](#configure-firewall-rule)中所述步骤的要求。
+    > [!TIP]
+    > If the firewall isn't configured to allow the IP address of Azure Cloud Shell, the following error occurs:
+    >
+    >   ERROR 2003 (28000): Client with IP address 123.456.789.0 is not allowed to access the server.
+    >
+    > To resolve the error, ensure that the server configuration matches the steps that are described in [Configure a server-level firewall rule](#configure-firewall-rule).
 
 4. 若要验证连接，请在 `mysql>` 提示符处输入 **status**，以便检查服务器状态。
 
@@ -207,7 +207,7 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以通过两种方式清理在本快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 此选项删除资源组中的所有资源。 若要保持其他资源原封不动，请只删除单服务器资源。
+可以通过两种方式清理在本快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/management/overview.md)。 此选项删除资源组中的所有资源。 若要保持其他资源原封不动，请只删除单个服务器资源。
 
 > [!TIP]
 > 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用 Azure Database for MariaDB 快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请执行以下步骤，删除在本快速入门中创建的所有资源。

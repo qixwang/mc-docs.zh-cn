@@ -3,14 +3,14 @@ title: 确定导致非符合性的原因
 description: 有多种可能的原因会导致资源不合规。 了解如何查明导致不合规的原因。
 ms.author: v-tawe
 origin.date: 04/26/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3fdf96556deddff4ee61109c672af98a753bb878
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 2a839f0155192a1ba1af7523fc3dc819489ed1b6
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123355"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112181"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 

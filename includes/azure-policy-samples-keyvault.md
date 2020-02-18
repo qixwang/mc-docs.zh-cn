@@ -6,15 +6,15 @@ author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
 origin.date: 01/26/2019
-ms.date: 03/04/2019
-ms.author: v-biyu
+ms.date: 02/17/2019
+ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 519afd0d200f5458c0641ad24fddcc6169666ac9
-ms.sourcegitcommit: b066ffa5ad735a6ea167044fe390cfd891d37df1
+ms.openlocfilehash: 3e832f3c9011e8b9d2e688f570c18c9d84f6730d
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56409081"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112317"
 ---
 ## <a name="key-vault"></a>密钥保管库
 

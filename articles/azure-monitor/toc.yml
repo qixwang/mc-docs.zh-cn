@@ -111,7 +111,7 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-    - name: 常见问题解答
+    - name: 常见问题
       items:
         - name: Log Analytics
           displayName: FAQ
@@ -555,8 +555,6 @@
                   href: platform/activity-log-view.md
                 - name: 收集和分析
                   href: platform/activity-log-collect.md
-                - name: 在租户之间收集
-                  href: platform/activity-log-collect-tenants.md
                 - name: 导出
                   href: platform/activity-log-export.md
                 - name: 架构
@@ -589,7 +587,7 @@
               items:
                 - name: 解决方案概述
                   href: insights/network-performance-monitor.md
-                - name: 性能监视
+                - name: 性能监视器
                   href: insights/network-performance-monitor-performance-monitor.md
                 - name: 服务连接监视器
                   href: insights/network-performance-monitor-service-connectivity.md
@@ -900,7 +898,7 @@
           href: 'https://www.microsoft.com/azure/templates/microsoft.insights/allversions'
         - name: 日志
           href: 'https://www.microsoft.com/azure/templates/microsoft.operationalinsights/allversions'
-    - name: 度量值
+    - name: 指标
       items:
         - name: 支持的指标
           href: platform/metrics-supported.md
@@ -935,7 +933,7 @@
       href: 'https://www.azure.cn/zh-cn/home/features/products-by-region'
     - name: 快速入门模板
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=monitoring'
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=monitor'

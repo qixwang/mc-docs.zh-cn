@@ -10,13 +10,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 07/29/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 81da99f391ac8e07498f686e343ab4ff01f71809
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 262353c8d6c0548787df5f61b1cffa3e96c72506
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336067"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155624"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 的单一数据库中设计关系数据库
 
@@ -35,13 +35,13 @@ Azure SQL 数据库是云 (Azure) 中的关系数据库即服务 (DBaaS)。 本�
 > [!TIP]
 > 以下 Microsoft Learn 模块可帮助你免费学习如何[开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)，包括创建简单数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/) 或更高版本。
 
 ## <a name="create-a-blank-single-database"></a>创建空的单一数据库
 
-创建 Azure SQL 数据库中的单一数据库时，会使用定义好的一组计算和存储资源。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建，使用[数据库服务器](sql-database-servers.md)进行托管。
+创建 Azure SQL 数据库中的单一数据库时，会使用定义好的一组计算和存储资源。 数据库在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建，使用[数据库服务器](sql-database-servers.md)进行托管。
 
 遵循以下步骤创建空白的单一数据库。
 
@@ -63,8 +63,8 @@ Azure SQL 数据库是云 (Azure) 中的关系数据库即服务 (DBaaS)。 本�
 
     | 设置       | 建议的值 | 说明 |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-    | 服务器管理员登录名  | 任何有效的名称 | 如需有效的登录名，请参阅[Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+    | **服务器名称** | 任何全局唯一名称 | 有关有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+    | **服务器管理员登录名** | 任何有效的名称 | 如需有效的登录名，请参阅[Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须使用以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置** | 任何有效的位置 | 中国东部、中国东部 2、中国北部、中国北部 2 |
 

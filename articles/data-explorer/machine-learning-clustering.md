@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/29/2019
 ms.date: 01/13/2020
-ms.openlocfilehash: 36f9748421e40cd51e22a259e7262d87cb498a0e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 69ba9cbf42ee0b6cbc6aace261c0e1c4d8210844
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630948"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179336"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure 数据资源管理器中的机器学习功能
 
@@ -27,7 +27,6 @@ Azure 数据资源管理器包含三个机器学习插件：[`autocluster`](http
 
 常见方案包括根据特定的条件（例如，出现异常行为迹象的时间范围、高温设备读数、长时间运行的命令，以及开销最高的用户）选择数据集。 我们希望通过一种简单快速的方法找出数据中的常见模式（段）。 模式是其记录共享多个维度（分类列）中相同值的数据集的子集。 以下查询以 10 分钟箱为单位生成并显示一周内的服务时序异常：
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -43,7 +42,6 @@ demo_clustering1
 
 数据中的第二个高峰发生在星期二下午。 以下查询用于进一步诊断此高峰。 使用该查询能够以更高的精度（以一分钟箱为单位，绘制八个小时的数据）围绕高峰重绘图表，以验证它是否为陡峰，并查看其边界。
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=) **\]**
 
 ```kusto
 let min_t=datetime(2016-08-23 11:00);
@@ -56,7 +54,6 @@ demo_clustering1
 
 我们可以看到，从 15:00 到 15:02 出现了较窄的两分钟高峰。 以下查询统计了此两分钟时段内的异常数：
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -72,7 +69,6 @@ demo_clustering1
 
 以下查询从 972 个异常中采样 20 个异常：
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XOsQrCMBSF4b1Pccd2aLmJKKL4DoLu4doeNDSJJb1SBx/eOHV0/37OCVCKPrkJMjo9DaJQH1FbNruW963dkNkemJtjFX5U3v+oLXRAfLo+vGZF9uluqg8tD2TQOaP3M66lu6jEiW7QBUj1+qHr1pGmhCojyPIX7QHvzakAAAA=) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -109,7 +105,6 @@ demo_clustering1
 
 即使异常数不到 1000 个，也仍很难发现常见段，因为每个列中包含多个值。 可以使用 [`autocluster()`](https://docs.microsoft.com/azure/kusto/query/autoclusterplugin) 插件即时提取常见段的简短列表，并在高峰的两分钟时段内找出相关的聚类，如以下查询中所示：
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -135,7 +130,6 @@ autocluster 使用专属算法来挖掘多个维度并提取相关的段。 “�
 
 也可以按以下查询中所示使用 [`basket()`](https://docs.microsoft.com/azure/kusto/query/basketplugin) 插件：
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -171,7 +165,6 @@ basket 对项集挖掘实现先验算法 (Apriori)，并提取其记录集覆盖
 
 以下查询使用 `diffpatterns` 查找高峰的两分钟时段内的相关聚类（不同于基线中的聚类）。 我们将基线时间范围定义为 15:00 之前的 8 分钟（开始出现高峰的时间）。 我们还需要按二元列 (AB) 进行扩展，指定特定的记录是属于基线还是异常集。 `Diffpatterns` 实现监督式学习算法，其中，会按异常标志与基线标志 (AB) 生成两个类标签。
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -198,7 +191,6 @@ demo_clustering1
 
 最具主导性的段是 `autocluster` 提取的同一个段，它在两分钟异常时段内的覆盖率也是 65.74%。 但是，它在八分钟基线时段内的覆盖率仅为 1.7%。 两者相差 64.04%。 这种差异看起来与异常高峰相关。 若要验证这种假设，可将原始图表拆分为属于这个有问题的段的记录，以及属于其他段的记录，如以下查询中所示：
 
-**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRsWrDMBCG9zzF4cmGGuJUjh2Ktw7tUkLTzuEsnRNRnRQkuSQlD185yRTo0EWIO913/J8MRWBttxE6iC5INOhzRey20owhktd2V8EZwsiMXv/Q9Dpfe5I60Idm2kTkQ1E8AczMxMLjf1h4/IN1PzY7Ax0jWQWBdomvhyF/p512FroOMsIxA0zdTdpKn1bHSzmMzbX8TAfjTkw2vqpLp69VpYQaatEogXOBsqrbtl5WDake6yabXWjkv7WkFxeuPGqG5VzWqhQrIUqx6B/L1WKB6aBViy01imT2ANnau94QT9c35xlNVqQAjF9UhpSHAtiRO+lGG/MCUoZ7CTB4x7ePie5mNbk4QDVn6E+ThUT0SQh5iGlM7tHHX4WFgLHOAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  

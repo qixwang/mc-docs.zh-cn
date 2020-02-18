@@ -11,14 +11,14 @@ ms.topic: include
 origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 412c875a7c66fcb45589cec6b797a3d57f1d46b0
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 5d4f17250a51bfd7205ea19bebcf4716f837a06e
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631026"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112328"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -56,10 +56,10 @@ python quickstart.py
 ```python
 import azure.cognitiveservices.speech as speechsdk
 
-# Creates an instance of a speech config with specified subscription key and service region.
+# Creates an instance of a speech config with specified host and subscription key.
 # Replace with your own subscription key and service region (e.g., "chinaeast2").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
+speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
 
 # Creates a recognizer with the given settings
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)

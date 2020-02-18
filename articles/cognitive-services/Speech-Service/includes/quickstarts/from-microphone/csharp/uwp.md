@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 12/17/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: c064b19ee9aa92569b4264e80daa7188e7150c2b
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 600bd12979bfc5c02f0d62c1d2d488fbbb30e5ba
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029129"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112302"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -178,12 +178,12 @@ ms.locfileid: "77029129"
 在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
-> 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/)
+> 此示例使用 `FromHost()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/)
 
 ```csharp
-// Creates an instance of a speech config with specified subscription key and service region.
+// Creates an instance of a speech config with specified host and subscription key.
 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 ```
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer

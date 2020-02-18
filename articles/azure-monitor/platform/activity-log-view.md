@@ -10,12 +10,12 @@ origin.date: 12/07/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: eb5a887c8279c533c65ed2b8b60038e5d3608baa
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 1687604337124b6e63384e200174762f6e2e96f9
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599863"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155545"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 
@@ -52,22 +52,6 @@ ms.locfileid: "75599863"
 | 建议 | 包含 Azure 顾问提供的建议事件。 |
 | 安全性 | 包含 Azure 安全中心生成的任何警报的记录。 安全事件的一个示例是“执行了可疑的双扩展名文件”。  |
 | 策略 | 包含 Azure Policy 执行的所有效果操作的记录。 策略事件的示例包括审核  和拒绝  。 Policy 执行的每个操作建模为对资源执行的操作。 |
-
-## <a name="view-change-history"></a>查看更改历史记录
-
-查看活动日志时，可以查看在该事件时间范围内发生了哪些更改。 可以通过“更改历史记录”查看此信息。  从活动日志中选择一个需要深入了解的事件。 选择“更改历史记录(预览)”选项卡，查看与该事件关联的任何更改。 
-
-![事件的更改历史记录列表](media/activity-logs-overview/change-history-event.png)
-
-如果有任何与该事件关联的更改，则会看到一个列表，其中包含可以选择的更改。 此时会打开“更改历史记录(预览)”页。  在此页上，可以看到对资源的更改。 从以下示例可以看出，我们不仅能够看到 VM 更改了大小，而且能够看到更改前 VM 的大小，以及更改后的大小。
-
-![显示了差异的更改历史记录页](media/activity-logs-overview/change-history-event-details.png)
-
-
-
-
-
-
 
 ## <a name="powershell"></a>PowerShell
 使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet 从 PowerShell 检索活动日志。 下面是一些常见示例。
@@ -175,7 +159,7 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 必须创建一个诊断设置，以便将订阅的活动日志发送到 Log Analytics 工作区。 请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 平台日志](resource-logs-collect-workspace.md)。
 
 ### <a name="install-the-solution"></a>安装解决方案

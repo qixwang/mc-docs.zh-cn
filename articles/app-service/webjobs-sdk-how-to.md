@@ -7,12 +7,12 @@ ms.topic: article
 origin.date: 02/18/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: bf79a5e420e5d421109a731c31504d790c9c0b36
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 70c00b5b01d9895a1326b57625d738f5e3044ab7
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979319"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179329"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -683,7 +683,7 @@ Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每
 
 * [包](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 需要安装哪个包才能在 WebJobs SDK 项目中支持绑定。
 * [示例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
-* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 用于绑定类型的特性。
+* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 用于绑定类型的特性。
 * [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 特性属性和构造函数参数的解释。
 * [使用情况](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
   

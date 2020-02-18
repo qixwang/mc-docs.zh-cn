@@ -13,12 +13,12 @@ ms.reviewer: mathoma, carlrab
 manager: digimobile
 origin.date: 08/21/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: b55c910519c909ef7f0e256b1f38131d8dff1e9d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 7cd78711daea36bdc696ff19cfa7ac81e2edc3e4
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336061"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155619"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
@@ -137,7 +137,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -Database
 
 ```powershell
 # get all LTR policies within a server
-$ltrPolicies = Get-AzSqlDatabase -ResourceGroupName Default-SQL-WestCentralUS -ServerName trgrie-ltr-server | `
+$ltrPolicies = Get-AzSqlDatabase -ResourceGroupName Default-SQL-ChinaEast -ServerName trgrie-ltr-server | `
     Get-AzSqlDatabaseLongTermRetentionPolicy -Current
 
 # get the LTR policy of a specific database

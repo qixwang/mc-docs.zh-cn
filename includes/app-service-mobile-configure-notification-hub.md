@@ -6,10 +6,10 @@ ms.topic: include
 origin.date: 08/23/2018
 ms.date: 12/16/2019
 ms.openlocfilehash: 1f07e05a24909e1f1b1a44d400dc2ab0e59f294a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: d468b4e0c3288555b1ac5aec43c228328f49b60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 02/14/2020
 ms.locfileid: "75334627"
 ---
 Azure 应用服务的移动应用功能使用 [Azure 通知中心]发送推送内容，因此用户需为移动应用配置通知中心。

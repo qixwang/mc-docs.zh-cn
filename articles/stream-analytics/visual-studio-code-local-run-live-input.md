@@ -2,16 +2,17 @@
 title: 使用 Visual Studio Code 通过实时流输入在本地测试 Azure 流分析查询
 description: 本文介绍了如何使用适用于 Visual Studio Code 的 Azure 流分析工具通过实时流输入在本地测试查询。
 ms.service: stream-analytics
-author: su-jie
-ms.author: sujie
-ms.date: 11/14/2019
+author: lingliw
+origin.date: 05/15/2019
+ms.date: 2/6/2020
+ms.author: v-lingwu
 ms.topic: conceptual
-ms.openlocfilehash: 678f7cc437ccbea5f68dc5685f6cae7eb2572b8e
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: cc069a28060e1167c9cf3f482a47978052d08d06
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068557"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128869"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 通过实时流输入在本地测试流分析查询
 

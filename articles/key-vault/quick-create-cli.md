@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 origin.date: 09/03/2019
-ms.date: 10/30/2019
+ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9fbba35452805730aed70e75643beaecbc2eb7d5
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 6efaa488c5b9d7adfb9724a5be46f54768739c00
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838947"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112198"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 

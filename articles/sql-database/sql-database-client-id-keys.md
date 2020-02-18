@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 03/12/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 32bd8204b824b5d8c1333d988b192f71ffdddf18
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5ca48ec5ac1afd9e90c34d2cf0f3331220c7a9cf
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336438"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155734"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>获取对应用程序进行身份验证所需的值以便从代码访问 SQL 数据库
 
@@ -34,7 +34,7 @@ ms.locfileid: "75336438"
 
 ```powershell
 # sign in to Azure
-Connect-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 
 # for multiple subscriptions, uncomment and set to the subscription you want to work with
 #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"

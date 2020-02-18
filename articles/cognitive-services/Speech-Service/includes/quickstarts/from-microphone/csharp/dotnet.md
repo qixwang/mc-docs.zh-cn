@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 12/17/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8f8cb648ca5b4c424625dda279a6178ada3227a3
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: cb14bf6f62fd3e2d8ac8201b887f355b00531f1c
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029081"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156210"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -65,11 +65,11 @@ namespace helloworld
 在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
-> 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
-> ```csharp
-> var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-> ```
-> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
+> 此示例使用 `FromHost()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
+
+```csharp
+var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey")
+```
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
 
@@ -142,8 +142,7 @@ namespace helloworld
     {
         public static async Task RecognizeSpeechAsync()
         {
-            var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
+            var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey")
             using (var recognizer = new SpeechRecognizer(config))
             {
                 var result = await recognizer.RecognizeOnceAsync();

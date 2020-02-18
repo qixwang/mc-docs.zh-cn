@@ -8,14 +8,14 @@ ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: d05201ff5042461b90d7e02f9f1a3880e6b1e6be
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8164d3ad704786a3699a806f401dad06324a5f34
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336289"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155712"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -57,7 +57,7 @@ ms.locfileid: "75336289"
 ### <a name="managed-instance-h2-2019-updates"></a>托管实例 H2 2019 更新
 
 - 使用[自动故障转移组](/sql-database/sql-database-auto-failover-group)可以将主实例中的所有数据库复制到另一个区域中的辅助实例。
-- 使用[全局跟踪标志](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql?view=sql-server-ver15)配置托管实例行为。
+- 使用[全局跟踪标志](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)配置托管实例行为。
 
 ### <a name="managed-instance-h1-2019-updates"></a>托管实例 H1 2019 更新
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: efadf81f8ba7cb7c67f138f9fc85267a2cfc4d6a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: bcde9f00f65e3446c356d75a4f9f4209df7a5e0b
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623824"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128833"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配
 
@@ -27,7 +27,7 @@ ms.locfileid: "75623824"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -232,6 +232,6 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 - [使用 Azure RBAC 和 Azure PowerShell 列出角色分配](role-assignments-list-powershell.md)
 - [教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限](tutorial-role-assignments-group-powershell.md)
 - [教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色](tutorial-custom-role-powershell.md)
-- [使用 Azure PowerShell 管理资源](../azure-resource-manager/manage-resources-powershell.md)
+- [使用 Azure PowerShell 管理资源](../azure-resource-manager/management/manage-resources-powershell.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

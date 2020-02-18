@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: adc293f2c4789961a7996b6c7117a6996e5c63f5
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 4774db2b0995de07bf7fff7ac4a8be6fc56b60e8
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116926"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155544"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -158,7 +158,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>应用程序网关有哪些限制？ 是否可以提高这些限制？
 
-请参阅[应用程序网关限制](../azure-subscription-service-limits.md#application-gateway-limits)。
+请参阅[应用程序网关限制](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)。
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>是否可以同时对外部和内部流量使用应用程序网关？
 
@@ -408,4 +408,4 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 若要详细了解应用程序网关，请参阅[什么是 Azure 应用程序网关？](overview.md)。
 
-<!--Update_Description: wording update-->
+<!--Update_Description: link update-->

@@ -6,15 +6,15 @@ author: amitbapat
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 01/02/2019
-ms.date: 10/30/2019
+ms.date: 02/17/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: c131aa16de6d7e4c5a91af0849847175de459270
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 3d17cfe1606b63ef3dd6a86ea5709d76d87e8c29
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839010"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112212"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -64,7 +64,7 @@ ms.locfileid: "74839010"
 |受信服务|支持的使用方案|
 | --- | --- |
 |Azure 虚拟机部署服务|[将证书从客户托管的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)。|
-|Azure 资源管理器模板部署服务|[在部署期间传递安全值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。|
+|Azure 资源管理器模板部署服务|[在部署期间传递安全值](../azure-resource-manager/templates/key-vault-parameter.md)。|
 |Azure 磁盘加密卷加密服务|允许在虚拟机部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥。 这将启用 [Azure 磁盘加密](../security/azure-security-disk-encryption.md)。|
 |Azure 备份|允许使用 [Azure 备份](../backup/backup-introduction-to-azure-backup.md)在 Azure 虚拟机备份期间备份和还原相关密钥和机密。|
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|

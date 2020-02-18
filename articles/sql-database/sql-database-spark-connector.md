@@ -13,12 +13,12 @@ ms.reviewer: carlrab
 manager: digimobile
 origin.date: 09/25/2018
 ms.date: 08/26/2019
-ms.openlocfilehash: d49183047025cce0e38dcd120ac6b7e4b8939561
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3a18d10d19c49ca45d8c6ece92e8d1b30c7b675e
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334945"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155705"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>通过适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器，加速实时大数据分析
 
@@ -136,7 +136,7 @@ sqlContext.sqlDBQuery(config)
 ```
 
 ## <a name="connect-spark-to-azure-sql-database-using-aad-authentication"></a>使用 AAD 身份验证将 Spark 连接到 Azure SQL 数据库
-可使用 Azure Active Directory (AAD) 身份验证连接到 Azure SQL 数据库。 使用 AAD 身份验证集中管理数据库用户的身份，并充当 SQL Server 身份验证的替代方案。
+可使用 Azure Active Directory (AAD) 身份验证连接到 Azure SQL 数据库。 使用 AAD 身份验证以集中管理数据库用户的标识且作为 SQL Server 身份验证的一种替代方法使用。
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>使用 ActiveDirectoryPassword 身份验证模式进行连接
 #### <a name="setup-requirement"></a>安装程序要求
 如果使用 ActiveDirectoryPassword 身份验证模式，则需要下载 [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) 及其依赖项，并将他它们包含在 Java 生成路径中。
@@ -216,7 +216,6 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 ## <a name="next-steps"></a>后续步骤
 从 [azure-sqldb-spark GitHub 存储库](https://github.com/Azure/azure-sqldb-spark)下载适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器（如果尚未下载），并浏览该存储库中的其他资源：
 
--   [示例 Azure Databricks 笔记本](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [示例脚本 (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 此外，还可能需要查看 [Apache Spark SQL, DataFrames, and Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html)（Apache Spark SQL、DataFrame 和数据集指南）。

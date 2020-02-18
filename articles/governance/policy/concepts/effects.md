@@ -3,14 +3,14 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告合规性的方式。
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 144087d42ba0d5ff03bb714ec7dc2b6f84d3e7b4
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 2c6f8e9b4f3e09948996754897c244c1921e31af
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123361"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112173"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -327,7 +327,7 @@ AuditIfNotExists 效果的  “details”属性具有定义要匹配的相关资
 与 AuditIfNotExists 类似，DeployIfNotExists 策略定义在满足条件时执行模板部署。
 
 > [!NOTE]
-> **deployIfNotExists** 支持[嵌套模板](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template)，但目前不支持[链接模版](../../../azure-resource-manager/resource-group-linked-templates.md)。
+> **deployIfNotExists** 支持[嵌套模板](../../../azure-resource-manager/templates/linked-templates.md#nested-template)，但目前不支持[链接模版](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
@@ -367,7 +367,7 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 - **DeploymentScope**（可选）
   - 允许的值为 Subscription  和 ResourceGroup  。
-  - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
+  - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/templates/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
   - 使用订阅级别部署时，必须在 _Deployment_ 中指定 _location_ 属性。
   - 默认值是 ResourceGroup  。
 - **Deployment** [必选]

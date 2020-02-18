@@ -1,6 +1,6 @@
 ---
 title: 使用智能见解排查性能问题
-description: 智能见解可以帮助排查 Azure SQL 数据库性能问题。
+description: Intelligent Insights 可以帮助排查 Azure SQL 数据库性能问题。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,17 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 01/25/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 75952bfebe3bc6d4fd2e8fd611b9576ae0e08281
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 493ed47e0888c870b2863f366141c5f48dfc25a3
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335961"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155595"
 ---
-# <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用智能见解排查 Azure SQL 数据库性能问题
+# <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
-本页提供有关通过[智能见解](sql-database-intelligent-insights.md)数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 可将诊断日志遥测数据流式传输到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
+本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 可将诊断日志遥测数据流式传输到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
 
 ## <a name="detectable-database-performance-patterns"></a>可检测的数据库性能模式
 
@@ -125,7 +125,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 有关更多建议，请参阅 [How to resolve blocking problems that are caused by lock escalation in SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)（如何解决 SQL Server 中的锁升级造成的阻塞问题）。
 
-## <a name="increased-maxdop"></a>MAXDOP 提升
+## <a name="increased-maxdop"></a>增加的 MAXDOP
 
 ### <a name="what-is-happening"></a>发生了什么
 
@@ -185,7 +185,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 > 若要持续进行 SQL 数据库性能优化，建议启用 [SQL 数据库自动优化](sql-database-automatic-tuning.md)。 SQL 数据库内置智能的这项独特功能可以持续监视 SQL 数据库并自动优化和创建数据库的索引。
 >
 
-## <a name="new-query"></a>新查询
+## <a name="new-query"></a>新建查询
 
 ### <a name="what-is-happening"></a>发生了什么
 
@@ -312,6 +312,6 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 如果降低了定价层，因而减少了可供 SQL 数据库使用的 DTU 数，但同时对性能感到满意，则不需采取任何措施。 如果降低定价层后对 SQL 数据库的性能不满意，请减少数据库工作负荷，或考虑将定价层提升到更高的级别。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[智能见解](sql-database-intelligent-insights.md)概念。
-- 使用[智能见解 Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
-- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)。
+- 了解 [Intelligent Insights](sql-database-intelligent-insights.md) 概念。
+- 使用 [Intelligent Insights Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/platform-logs-overview.md)。

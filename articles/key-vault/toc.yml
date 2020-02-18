@@ -1,4 +1,4 @@
-- name: 密钥保管库文档
+- name: Key Vault 文档
   href: index.yml
 - name: 概述
   items:
@@ -55,7 +55,7 @@
         - name: 通过编写代码提取共享访问签名令牌
           href: storage-keys-sas-tokens-code.md
     - name: Azure Resource Manager 模板
-      href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
+      href: ../azure-resource-manager/templates/key-vault-parameter.md
     - name: 设置密钥轮换和审核
       href: key-vault-key-rotation-log-monitoring.md
 - name: 示例
@@ -100,7 +100,7 @@
       items:
         - name: 建议
           href: security-recommendations.md
-    - name: 身份验证
+    - name: Authenticate
       items:
         - name: 使用应用服务托管标识
           href: managed-identity.md
@@ -128,6 +128,8 @@
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: 参考
   items:
+    - name: Key Vault REST 错误代码
+      href: rest-error-codes.md
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
     - name: Azure CLI

@@ -4,17 +4,17 @@ description: 用于评估 Azure VPN 网关的安全控制的清单
 services: sql-database
 author: WenJason
 manager: digimobile
-ms.service: load-balancer
+ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 05/06/2019
-ms.date: 12/02/2019
+origin.date: 09/06/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: c754cc421d958795363fddf4d9764df152381724
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 59401fd363a0e2042af246296981add1b98a7c05
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655456"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156788"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN 网关的安全控制
 
@@ -37,7 +37,7 @@ ms.locfileid: "74655456"
 |---|---|--|
 | Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅 [Azure Monitor 指标/警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。  |
 | 控制和管理平面日志记录和审核| 是 | Azure 资源管理器活动日志。 |
-| 数据平面日志记录和审核 | 是 | [Azure Monitor 诊断日志](../azure-resource-manager/resource-group-audit.md)，用于 VPN 连接日志记录和审核。 |
+| 数据平面日志记录和审核 | 是 | [Azure Monitor 诊断日志](../azure-resource-manager/management/view-activity-logs.md)，用于 VPN 连接日志记录和审核。 |
 
 ## <a name="identity"></a>标识
 

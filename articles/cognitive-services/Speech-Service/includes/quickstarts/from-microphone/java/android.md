@@ -11,14 +11,14 @@ ms.topic: include
 origin.date: 11/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: ad2e9dbc9bcd52e88833632f7f6ea8dc4a7e9c73
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: d48fe97a27386e4fcdbdc57e21ad3d98cdeaac10
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631017"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112342"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -104,12 +104,7 @@ ms.locfileid: "75631017"
     import static android.Manifest.permission.*;
     
     public class MainActivity extends AppCompatActivity {
-    
-        // Replace below with your own subscription key
-        private static String speechSubscriptionKey = "YourSubscriptionKey";
-        // Replace below with your own service region (e.g., "chinaeast2").
-        private static String serviceRegion = "YourServiceRegion";
-    
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -124,7 +119,7 @@ ms.locfileid: "75631017"
             TextView txt = (TextView) this.findViewById(R.id.hello); // 'hello' is the ID of your text view
     
             try {
-                SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
+                SpeechConfig config = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
                 assert(config != null);
     
                 SpeechRecognizer reco = new SpeechRecognizer(config);

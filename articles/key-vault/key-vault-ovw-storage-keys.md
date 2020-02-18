@@ -9,12 +9,12 @@ ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/18/2019
 ms.date: 12/09/2019
-ms.openlocfilehash: 799eda87c793d4a905eaa1c9436b14b56a2b7c5c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b357ee9ae9774f613197ebc5e42ef8ada06062f8
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838975"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112209"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 
@@ -45,16 +45,16 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 | 租户 | 云 | 应用程序 ID |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本指南，必须先执行以下操作：
 
 - [安装 Azure CLI](/cli/install-azure-cli)。
 - [创建密钥保管库](quick-create-cli.md)
-- [创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli)。 存储帐户名必须仅使用小写字母和数字。 名称的长度必须为 3 到 24 个字符。
+- [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-cli)。 存储帐户名必须仅使用小写字母和数字。 名称的长度必须为 3 到 24 个字符。
       
 ## <a name="manage-storage-account-keys"></a>管理存储帐户密钥
 

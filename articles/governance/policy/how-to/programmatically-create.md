@@ -3,14 +3,14 @@ title: 以编程方式创建策略
 description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 REST API 以编程方式创建和管理适用于 Azure Policy 的策略。
 ms.author: v-tawe
 origin.date: 01/31/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 6923bea34b78696c848a6fd250e1b5e06880b366
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 92fec15d9a8ce961c4ac5bdd615ea3034f9d5e23
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123154"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112170"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
@@ -32,7 +32,7 @@ ms.locfileid: "76123154"
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../../azure-resource-manager/resource-manager-supported-services.md)。
+   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../../azure-resource-manager/management/resource-providers-and-types.md)。
 
 1. 安装 Azure CLI（如果尚未安装）。 可以通过[在 Windows 上安装 Azure CLI](/cli/install-azure-cli-windows) 获取最新版本。
 

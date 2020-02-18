@@ -1,8 +1,7 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL 数据库 - 功能
+title: 功能
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Azure SQL 数据库 - 功能
   meta.description: Learn about the features in Azure SQL Database.
   services: sql-database
@@ -13,12 +12,12 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   origin.date: 02/06/2019
-  ms.date: 08/19/2019
+  ms.date: 02/17/2020
   ms.author: v-jay
 sections:
   - items:
       - type: paragraph
-        text: Azure SQL 数据库不仅仅是一个可以用来通过 SQL 语言进行数据查询的经典关系数据库引擎。 若要执行功能更强大的操作和实现高级方案，可以使用 Azure SQL 数据库中的数据库功能。
+        text: Azure SQL 数据库不仅仅是一个可以用来通过 SQL 语言进行数据查询的经典关系数据库引擎。 借助 Azure SQL 数据库中的数据库功能，可以执行更有效的操作并实现高级方案。
       - type: list
         style: cards
         className: cardsM

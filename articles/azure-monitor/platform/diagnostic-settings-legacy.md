@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: v-lingwu
 origin.date: 12/20/2019
 ms.date: 12/31/2019
-ms.openlocfilehash: 03b445835cb5a15c6f12fd6d105f51f35474a4c5
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: b9b525a239489cd0ae9dfd05a6f264b774ff872e
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600178"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155548"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>通过旧版设置收集 Azure 活动日志
 [Azure 活动日志](activity-logs-overview.md)是一种方便用户深入了解 Azure 中发生的订阅级别事件的[平台日志](platform-logs-overview.md)。 最近，你创建了日志配置文件，以便将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)并使用了连接器将其收集到 [Log Analytics 工作区](activity-log-collect.md)。 本文介绍各方法之间的区别、如何使用现有旧版设置，以及如何在准备诊断设置时清除旧版设置。
@@ -69,7 +69,6 @@ ms.locfileid: "75600178"
 有关使用旧版集合方法的详细信息，请参阅以下文章。
 
 - [收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](activity-log-collect.md)
-- [跨 Azure Active Directory 租户将 Azure 活动日志收集到 Azure Monitor 中](activity-log-collect-tenants.md)
 - [将 Azure 活动日志导出到存储或 Azure 事件中心](activity-log-export.md)
 
 ## <a name="disable-existing-settings"></a>禁用现有设置

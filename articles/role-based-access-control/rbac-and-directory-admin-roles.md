@@ -11,20 +11,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/02/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 98f32b78e7a6975cbf014ecbb1a2d45bd9ab243d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: b6cf3a17c623ac9ed5bb5e2e3bc39e893f3d2807
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624354"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128845"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
-如果你不熟悉 Azure，可能会发现，要理解 Azure 中的所有不同角色存在一定的难度。 本文将帮助解释以下角色，以及应在何时使用其中的每种角色：
+如果你不熟悉 Azure，可能会发现，要理解 Azure 中的所有不同角色存在一定的难度。 本文介绍以下角色，以及应在何时使用其中的每种角色：
 - 经典订阅管理员角色
 - Azure 基于角色的访问控制 (RBAC) 角色
 - Azure Active Directory (Azure AD) 管理员角色
@@ -42,11 +42,11 @@ ms.locfileid: "75624354"
 
 帐户管理员、服务管理员和共同管理员是 Azure 中的三种经典订阅管理员角色。 经典订阅管理员对 Azure 订阅拥有完全访问权限。 他们可以使用 Azure 门户、Azure 资源管理器 API 和经典部署模型 API 来管理资源。 用于注册 Azure 的帐户会自动同时设置为帐户管理员和服务管理员。 然后，可以添加其他共同管理员。 服务管理员和共同管理员拥有在订阅范围内分配有“所有者”角色（Azure RBAC 角色）的用户的等效访问权限。 下表描述了这三种经典订阅管理角色之间的差别。
 
-| 经典订阅管理员 | 限制 | 权限 | 说明 |
+| 经典订阅管理员 | 限制 | 权限 | 注释 |
 | --- | --- | --- | --- |
-| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>访问 [Azure 帐户中心](https://account.windowsazure.cn/Subscriptions)</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。<br>帐户管理员无权访问 Azure 门户。 |
-| 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.cn)中管理服务</li><li>取消订阅</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员具有 Azure 门户的完全访问权限。 |
-| 共同管理员 | 每个订阅有 200 个 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
+| 帐户管理员 | 每个 Azure 帐户 1 个帐户管理员 | <ul><li>访问 [Azure 帐户中心](https://account.windowsazure.cn/Subscriptions)</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的账单所有者。<br>帐户管理员无权访问 Azure 门户。 |
+| 服务管理员 | 每个 Azure 订阅 1 个服务管理员 | <ul><li>在 [Azure 门户](https://portal.azure.cn)中管理服务</li><li>取消订阅</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员有权访问 Azure 门户。 |
+| 共同管理员 | 每个订阅 200 个共同管理员 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
 
 在 Azure 门户中，可以使用“经典管理员”  选项卡管理共同管理员或查看服务管理员。
 
@@ -70,18 +70,18 @@ Azure 订阅可帮助你组织 Azure 资源的访问权限。 它们还可帮助
 
 ## <a name="azure-rbac-roles"></a>Azure RBAC 角色
 
-Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)构建的授权系统，它针对 Azure 资源（例如计算和存储）提供精细的访问权限管理。 Azure RBAC 包括 70 多个内置角色。 有四个基本的 RBAC 角色。 前三个角色适用于所有资源类型：
+Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/management/overview.md)构建的授权系统，它针对 Azure 资源（例如计算和存储）提供精细的访问权限管理。 Azure RBAC 包括 70 多个内置角色。 有四个基本的 RBAC 角色。 前三个角色适用于所有资源类型：
 
-| Azure RBAC 角色 | 权限 | 说明 |
+| Azure RBAC 角色 | 权限 | 注释 |
 | --- | --- | --- |
 | [所有者](built-in-roles.md#owner) | <ul><li>对所有资源的完全访问权限</li><li>将访问权限委托给其他人</li></ul> | 服务管理员和共同管理员在订阅范围内分配有“所有者”角色<br>适用于所有资源类型。 |
 | [参与者](built-in-roles.md#contributor) | <ul><li>创建和管理所有类型的 Azure 资源</li><li>无法将访问权限授予其他人</li></ul> | 适用于所有资源类型。 |
-| [读取者](built-in-roles.md#reader) | <ul><li>查看 Azure 资源</li></ul> | 适用于所有资源类型。 |
+| [读者](built-in-roles.md#reader) | <ul><li>查看 Azure 资源</li></ul> | 适用于所有资源类型。 |
 | [用户访问管理员](built-in-roles.md#user-access-administrator) | <ul><li>管理用户对 Azure 资源的访问</li></ul> |  |
 
 剩余的内置角色允许管理特定的 Azure 资源。 例如，[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色允许用户创建和管理虚拟机。 有关所有内置角色的列表，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
 
-只有 Azure 门户和 Azure 资源管理器 API 支持 Azure RBAC。 分配有 RBAC 角色的用户、组和应用程序无法使用 [Azure 经典部署模型 API](../azure-resource-manager/resource-manager-deployment-model.md)。
+只有 Azure 门户和 Azure 资源管理器 API 支持 Azure RBAC。 分配有 RBAC 角色的用户、组和应用程序无法使用 [Azure 经典部署模型 API](../azure-resource-manager/management/deployment-models.md)。
 
 在 Azure 门户中，使用 RBAC 的角色分配显示在“访问控制(IAM)”边栏选项卡上。  在整个门户中都可以找到此边栏选项卡，例如，在管理组、订阅、资源组和各种资源所在的部分。
 
@@ -97,9 +97,9 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/resource-
 
 Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创建或编辑用户、将管理角色分配给其他人、重置用户密码、管理用户许可证以及管理域。 下表描述了几个更重要的 Azure AD 管理员角色。
 
-| Azure AD 管理员角色 | 权限 | 说明 |
+| Azure AD 管理员角色 | 权限 | 注释 |
 | --- | --- | --- |
-| [全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>管理对 Azure Active Directory 中所有管理功能的访问，以及与 Azure Active Directory 联合的服务</li><li>将管理员角色分配给其他人</li><li>重置任何用户和其他所有管理员的密码</li></ul> | 注册 Azure Active Directory 租户的人员将成为全局管理员。 |
+| [全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>管理对 Azure Active Directory 中所有管理功能的访问，以及与 Azure Active Directory 联合的服务</li><li>将管理员角色分配给其他人</li><li>重置任何用户和所有其他管理员的密码</li></ul> | 注册 Azure Active Directory 租户的人员将成为全局管理员。 |
 | [用户管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>创建和管理用户与组的所有方面</li><li>管理支持票证</li><li>监视服务运行状况</li><li>更改用户、支持管理员和其他用户帐户管理员的密码</li></ul> |  |
 | [计费管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>购买产品</li><li>管理订阅</li><li>管理支持票证</li><li>监视服务运行状况</li></ul> |  |
 
@@ -109,7 +109,7 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 
 ## <a name="differences-between-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Azure RBAC 角色与 Azure AD 管理员角色之间的差别
 
-从较高层面讲，Azure RBAC 角色控制 Azure 资源的管理权限，而 Azure AD 管理员角色控制 Azure Active Directory 资源的管理权限。 下表比较了两者之间的一些差别。
+概略说来，Azure RBAC 角色控制 Azure 资源的管理权限，而 Azure AD 管理员角色控制 Azure Active Directory 资源的管理权限。 下表比较了两者之间的一些差别。
 
 | Azure RBAC 角色 | Azure AD 管理员角色 |
 | --- | --- |
@@ -132,3 +132,4 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 - [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Azure 经典订阅管理员](classic-administrators.md)
 
+<!-- Update_Description: link update -->

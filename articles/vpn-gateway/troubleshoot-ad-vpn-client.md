@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/02/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 6e49d866947eb2118888a4d7cd8dc5c289fe6c73
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: 47c851db63fdd7c0574ba0dd5440c865818f4cec
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74553075"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156778"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>排查 Azure AD 身份验证 VPN 客户端问题
 
@@ -46,7 +46,7 @@ ms.locfileid: "74553075"
 
 ![诊断](./media/troubleshoot-ad-vpn-client/3.png)
 
-1. 单击  要对其运行诊断的配置文件旁边的“...”。 选择“诊断”->“运行诊断”。 
+1. 在“架构”属性中  要对其运行诊断的配置文件旁边的“...”。 选择“诊断”->“运行诊断”。 
 2. 客户端将运行一系列测试并显示测试结果
 
    * Internet 访问 – 检查客户端是否已建立 Internet 连接
@@ -67,3 +67,6 @@ ms.locfileid: "74553075"
 
    ![查看文件](./media/troubleshoot-ad-vpn-client/5.png)
 
+## <a name="next-steps"></a>后续步骤
+
+有关详细信息，请参阅[为使用 Azure AD 身份验证的 P2S 开放 VPN 连接创建 Azure Active Directory 租户](openvpn-azure-ad-tenant.md)。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 查询 Azure SQL 数据库
+title: 使用 Java 查询数据库
 description: 介绍如何使用 Java 创建连接到 Azure SQL 数据库的程序并使用 T-SQL 语句对其进行查询。
 services: sql-database
 ms.service: sql-database
@@ -10,45 +10,48 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: v-masebo
 origin.date: 03/25/2019
-ms.date: 09/09/2019
+ms.date: 02/17/2020
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: dee04351298e52afa0c6290ddf886e10982ab0e1
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.openlocfilehash: ed7e35727d656af7713cd7a0e8b63d253caf69fc
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70372980"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155686"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>快速入门：使用 Java 连接到 Azure SQL 数据库并进行查询
+# <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入门：使用 Java 查询 Azure SQL 数据库
 
-本文演示了如何使用 [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 连接到 Azure SQL 数据库。 然后即可使用 T-SQL 语句来查询数据。
+在本快速入门中，你将使用 Java 连接到 Azure SQL 数据库，并使用 T-SQL 语句来查询数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成此示例，请确保具备以下先决条件：
+- 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+- 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)
+- [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 相关的软件
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  || 单一数据库 | 托管实例 |
-  |:--- |:--- |:---|
-  | 创建| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md)| [从 VM 进行连接](sql-database-managed-instance-configure-vm.md)|
-  |||[从现场进行连接](sql-database-managed-instance-configure-p2s.md)
-  |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](sql-database-import.md) 文件还原或导入 Adventure Works|
-  
-  > [!IMPORTANT]
-  > 本文中脚本的编写目的是使用 Adventure Works 数据库。 使用托管实例时，必须将 Adventure Works 数据库导入一个实例数据库，或者修改本文中的脚本，以便使用 Wide World Importers 数据库。
+  安装 Homebrew 和 Java，然后使用[在 macOS 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
 
-- 已为操作系统安装与 Java 相关的软件：
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  - **MacOS**：安装 Homebrew 和 Java，然后安装 Maven。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)。
+  安装 Java 和 Java 开发工具包，然后使用[在 Ubuntu 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)中的步骤 **1.2**、**1.3** 和 **1.4** 安装 Maven。
 
-  - **Ubuntu**：安装 Java 和 Java 开发工具包，然后安装 Maven。 请参阅[步骤 1.2、1.3 和 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)。
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-  - **Windows**：安装 Java，然后安装 Maven。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)。
+  安装 Java，然后使用[在 Windows 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
+
+  ---
+
+> [!IMPORTANT]
+> 本文中脚本的编写目的是使用 **Adventure Works** 数据库。
+
+> [!NOTE]
+> 可以选择使用 Azure SQL 托管实例。
+>
+> 若要执行创建和配置操作，请使用 [Azure 门户](sql-database-managed-instance-get-started.md)、[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) 或 [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)，然后设置[现场](sql-database-managed-instance-configure-p2s.md)或 [VM](sql-database-managed-instance-configure-vm.md) 连接性。
+>
+> 若要加载数据，请参阅[通过 BACPAC 进行还原](sql-database-import.md)（使用 [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 文件），或参阅[还原 Wide World Importers 数据库](sql-database-managed-instance-get-started-restore.md)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
@@ -78,7 +81,7 @@ ms.locfileid: "70372980"
     </dependency>
     ```
 
-1. 另请在 pom.xml  中向项目添加以下属性。 如果没有 properties 节，可以将其添加到 dependencies 后面。
+1. 另外，在 pom.xml  中添加项目的以下属性。 如果没有 properties 节，可以将其添加到 dependencies 后面。
 
    ```xml
    <properties>

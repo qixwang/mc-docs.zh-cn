@@ -5,12 +5,12 @@ ms.author: v-tawe
 origin.date: 11/25/2019
 ms.date: 01/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: ba2936d54ff8ce22ca21499d91b3933b4b943a8b
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 859702a53b8275f97ef841fa7191e1be0fb12716
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123316"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112175"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -68,7 +68,7 @@ ms.locfileid: "76123316"
 
 ### <a name="resource-manager-templates"></a>Resource Manager 模板
 
-可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)。
+可通过多种方式查找包含所要管理的属性的[资源管理器模板](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md)。
 
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 

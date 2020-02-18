@@ -3,14 +3,15 @@ title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.author: v-tawe
 origin.date: 11/25/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: overview
-ms.openlocfilehash: 33ccc6e96888697c16b1d1f813a078eb7d572894
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: cbf6b0ed587920b699ac2561921c4835903691d6
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123325"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112178"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -64,7 +65,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ## <a name="policy-assignment"></a>策略分配
 
-策略分配是在特定作用域内发生的已分配的策略定义。 此作用域的范围是从[管理组](../management-groups/overview.md)到资源组。 术语“作用域”指分配到策略定义的所有资源组、订阅或管理组  。 策略分配由所有子资源继承。 此设计意味着应用于资源组的策略也应用于该资源组中的资源。 但是，可以从策略分配中排除子作用域。
+策略分配是在特定作用域内发生的已分配的策略定义。 此作用域的范围是从[管理组](../management-groups/overview.md)到单个资源。 术语“作用域”指分配到策略定义的所有资源、资源组、订阅或管理组  。 策略分配由所有子资源继承。 此设计意味着应用于资源组的策略也应用于该资源组中的资源。 但是，可以从策略分配中排除子作用域。
 
 例如，可以在订阅作用域中分配阻止创建网络资源的策略。 可以排除订阅中用于网络基础结构的资源组。 然后可以向信任的用户授予此网络资源组的访问权限，包括创建网络资源。
 
@@ -95,7 +96,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ## <a name="initiative-assignment"></a>计划分配
 
-类似于策略分配，计划分配是分配给特定作用域的计划定义。 计划分配将减少为每个作用域生成多个计划定义的需要。 另外，此范围也是从管理组到资源组。
+类似于策略分配，计划分配是分配给特定作用域的计划定义。 计划分配将减少为每个作用域生成多个计划定义的需要。 此作用域的范围也可以是从管理组到单个资源。
 
 每个计划都可以分配给不同的作用域。 可以将一个计划分配给 subscriptionA 和 subscriptionB   。
 

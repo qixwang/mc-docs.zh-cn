@@ -11,14 +11,14 @@ ms.topic: include
 origin.date: 10/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 35eaf2a4275ac5dcdba9917ec4f0484dba6aa1a4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 70db6396005e3592cf4eae3dccae2a6bc224b2d4
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631013"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112334"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -95,9 +95,9 @@ ms.locfileid: "75631013"
             {
                 try
                 {
-                    // Creates an instance of a speech config with specified subscription key and service region.
+                    // Creates an instance of a speech config with specified host and subscription key.
                     // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                    var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourRegion");
+                    var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
     
                     // Creates a speech recognizer using microphone as audio input.
                     using (var recognizer = new SpeechRecognizer(config))

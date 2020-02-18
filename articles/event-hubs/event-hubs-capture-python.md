@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 01/15/2020
-ms.date: 02/7/2020
+ms.date: 02/07/2020
 ms.author: v-tawe
-ms.openlocfilehash: f8e877800a1d8bd95c3a097e63b898ddee0f1f41
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: d50ae02da22e7bb378c33ce0685039d8c66be3ee
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067739"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179338"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入门：事件中心捕获演练：Python（azure-eventhub 版本 1）
 

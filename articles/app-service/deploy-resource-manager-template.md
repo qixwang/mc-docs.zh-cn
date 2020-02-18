@@ -7,12 +7,12 @@ origin.date: 01/03/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 915e6a4fc9717b1a5f2aaf09498cb3d2492a985f
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: cda97027a09a6c38ef14de65f566054605cf12fb
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600488"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179318"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -95,7 +95,7 @@ ms.locfileid: "75600488"
 
 ## <a name="choose-a-unique-web-app-name"></a>选择唯一的 Web 应用名称
 
-Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名约定，也可以使用 [uniqueString 函数](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring)来帮助生成唯一名称。
+Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名约定，也可以使用 [uniqueString 函数](../azure-resource-manager/templates/template-functions-string.md#uniquestring)来帮助生成唯一名称。
 
 ```json
 {

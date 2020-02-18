@@ -1,6 +1,7 @@
 ---
-title: 快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例 | Microsoft Docs
-description: 使用 Azure 门户创建 Azure 数据库迁移服务的实例
+title: 快速入门：使用 Azure 门户创建实例
+titleSuffix: Azure Database Migration Service
+description: 使用 Azure 门户创建 Azure 数据库迁移服务的实例。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-origin.date: 11/05/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 258562180978ad2f1e1c6be24972c258ca3f2bf9
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: eeef919ffa74a0cc1e85cef4f95d94e2dce20fc0
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655447"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192455"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
@@ -55,11 +56,11 @@ ms.locfileid: "74655447"
     - 选择要在其中创建实例的 Azure **订阅**。
     - 选择现有的**资源组**或创建一个新资源组。
     - 选择距离源或目标服务器最近的“位置”  。
-    - 选择现有的虚拟网络 (VNET) 或创建一个。 
+    - 选择一个现有的虚拟网络或创建一个。 
 
-        VNet 为 Azure 数据库迁移服务提供对源数据库和目标环境的访问权限。
+        虚拟网络为 Azure 数据库迁移服务提供了对源数据库和目标环境的访问权限。
 
-        有关如何在 Azure 门户中创建 VNet 的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+        有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
     - 对于“定价层”  选择“基本: 1 vCore”。
 
@@ -73,7 +74,7 @@ ms.locfileid: "74655447"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以通过删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)来清理在本快速入门中创建的资源。 若要删除资源组，请导航到所创建的 Azure 数据库迁移服务实例。 选择该**资源组**的名称，然后选择“删除资源组”。  此操作会删除资源组本身及其包含的所有资产。
+可以通过删除 [Azure 资源组](../azure-resource-manager/management/overview.md)来清理在本快速入门中创建的资源。 若要删除资源组，请导航到所创建的 Azure 数据库迁移服务实例。 选择该**资源组**的名称，然后选择“删除资源组”。  此操作会删除资源组本身及其包含的所有资产。
 
 ## <a name="next-steps"></a>后续步骤
 

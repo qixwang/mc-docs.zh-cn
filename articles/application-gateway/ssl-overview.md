@@ -5,15 +5,14 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-origin.date: 03/19/2019
-ms.date: 09/18/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: a156baeccfbc099efaa114f4d920daa079c989e8
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.openlocfilehash: 257e4fc63a0f86d1ba6b81d3a7ae04ba20af2f01
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083254"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155532"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>应用程序网关的 SSL 终止和端到端 SSL 概述
 
@@ -51,7 +50,7 @@ ms.locfileid: "71083254"
 有关详细信息，请参阅[配置应用程序网关的 SSL 终止](/application-gateway/create-ssl-portal)。
 
 ### <a name="size-of-the-certificate"></a>证书大小
-查看[应用程序网关限制](/azure-subscription-service-limits#application-gateway-limits)部分，了解支持的最大 SSL 证书大小。
+查看[应用程序网关限制](/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits)部分，了解支持的最大 SSL 证书大小。
 
 ## <a name="end-to-end-ssl-encryption"></a>端到端 SSL 加密
 
@@ -77,7 +76,7 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
 
 ![端到端 ssl 方案][1]
 
-在此示例中，使用 TLS1.2 的请求通过端到端 SSL 路由到池 1 中的后端服务器。
+此示例通过端到端 SSL 将使用 TLS1.2 的请求路由到 Pool1 中的后端服务器。
 
 ## <a name="end-to-end-ssl-and-whitelisting-of-certificates"></a>端到端 SSL 和证书允许列表
 
@@ -116,4 +115,4 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
 
 [1]: ./media/ssl-overview/scenario.png
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

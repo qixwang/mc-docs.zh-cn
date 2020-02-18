@@ -7,14 +7,14 @@ Customer intent: As someone with a basic network background, but is new to Azure
 ms.service: vpn-gateway
 ms.topic: overview
 origin.date: 01/10/2020
-ms.date: 01/20/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: d0d4b25e31570f60827bbadd8783ec3191f925b9
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 6bc2eb5f08369961517742dcfdad45afb5efb296
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939764"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156776"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -26,7 +26,7 @@ VPN 网关是特定类型的虚拟网关，用于跨公共 Internet 在 Azure �
 
 为虚拟网络网关配置的一项设置是网关类型。 网关类型指定如何使用虚拟网络网关以及网关所采取的操作。 网关类型“vpn”指定创建的虚拟网关类型为“VPN 网关”，而非 ExpressRoute 网关。 一个虚拟网络可以有两个虚拟网络网关：一个 VPN 网关和一个 ExpressRoute 网关，与[共存](#coexisting)连接配置的情况相同。 有关详细信息，请参阅[网关类型](vpn-gateway-about-vpn-gateway-settings.md#gwtype)。
 
-创建虚拟网关可能需要多达 45 分钟才能完成。 创建虚拟网关时，会将网关 VM 部署到网关子网，并使用指定的设置进行配置。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议或家）连接到虚拟网络。
+创建虚拟网关可能需要多达 45 分钟才能完成。 创建虚拟网关时，会将网关 VM 部署到网关子网，并使用指定的设置进行配置。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 OpenVPN、IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议室或家）连接到虚拟网络。
 
 ## <a name="configuring"></a>配置 VPN 网关
 
@@ -42,7 +42,7 @@ VPN 网关连接需依赖于多个具有特定设置的资源。 大多数资源
 
 ### <a name="models"></a>部署模型
 
-目前有两种适用于 Azure 的部署模型。 配置 VPN 网关时，采取的步骤取决于用于创建虚拟网络的部署模型。 例如，如果使用经典部署模型创建了 VNet，则使用经典部署模型的指导原则和说明来创建及配置 VPN 网关设置。 有关部署模型的详细信息，请参阅 [了解 Resource Manager 和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
+目前有两种适用于 Azure 的部署模型。 配置 VPN 网关时，采取的步骤取决于用于创建虚拟网络的部署模型。 例如，如果使用经典部署模型创建了 VNet，则使用经典部署模型的指导原则和说明来创建及配置 VPN 网关设置。 有关部署模型的详细信息，请参阅 [了解 Resource Manager 和经典部署模型](../azure-resource-manager/management/deployment-models.md)。
 
 ### <a name="planningtable"></a>规划表
 
@@ -157,5 +157,5 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 ## <a name="next-steps"></a>后续步骤
 
 - 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
-- 查看[订阅和服务限制](../azure-subscription-service-limits.md#networking-limits)。
+- 查看[订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 - 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。

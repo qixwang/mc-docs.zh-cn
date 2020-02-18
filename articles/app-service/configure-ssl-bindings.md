@@ -8,12 +8,12 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6e474dc9735912cee754e5ea987b251e8e6e86a7
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 3a127eaeaa26f9119ac4d5c9055ed5ca571716c7
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600501"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179317"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 
@@ -35,7 +35,7 @@ ms.locfileid: "75600501"
 > * 强制实施 TLS 1.1/1.2
 > * 使用脚本自动完成 TLS 管理
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 按照本操作方法指南操作：
 
@@ -43,8 +43,8 @@ ms.locfileid: "75600501"
 - [将域名映射到应用](app-service-web-tutorial-custom-domain.md)
 - [将专用证书添加到应用](configure-ssl-certificate.md)
 
-> [!NOTE]
-> 添加专用证书最简单的方法是[创建免费的应用服务托管证书](configure-ssl-certificate.md#create-a-free-certificate-preview)（预览版）。
+<!-- > [!NOTE] -->
+<!-- > The easiest way to add a private certificate is to [create a free App Service Managed Certificate](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview). -->
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -54,7 +54,7 @@ ms.locfileid: "75600501"
 
 执行以下步骤：
 
-在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
 在应用的左侧导航窗格中，通过以下方式启动“TLS/SSL 绑定”对话框  ：
 
@@ -72,10 +72,11 @@ ms.locfileid: "75600501"
 如果应用不具有所选自定义域的证书，则有以下两种选择：
 
 - **上传 PFX 证书** - 遵循[上传专用证书](configure-ssl-certificate.md#upload-a-private-certificate)中的工作流，然后在此处选择此选项。
-- **导入应用服务证书** - 遵循[导入应用服务证书](configure-ssl-certificate.md#import-an-app-service-certificate)中的工作流，然后在此处选择此选项。
 
-> [!NOTE]
-> 还可以[创建免费证书](configure-ssl-certificate.md#create-a-free-certificate-preview)（预览版）或[导入 Key Vault 证书](configure-ssl-certificate.md#import-a-certificate-from-key-vault)，但必须单独执行，然后返回到“TLS/SSL 绑定”对话框  。
+<!-- - **Import App Service Certificate** - Follow the workflow at [Import an App Service certificate](configure-ssl-certificate.md#import-an-app-service-certificate), then select this option here. -->
+
+<!-- > [!NOTE] -->
+<!-- > You can also [Create a free certificate](configure-ssl-certificate.md#create-a-free-certificate-preview) (Preview) or [Import a Key Vault certificate](configure-ssl-certificate.md#import-a-certificate-from-key-vault), but you must do it separately and then return to the **TLS/SSL Binding** dialog. -->
 
 ### <a name="create-binding"></a>创建绑定
 

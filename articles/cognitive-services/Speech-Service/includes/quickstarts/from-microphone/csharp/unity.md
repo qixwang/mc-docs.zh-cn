@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 12/17/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1508b161528587cb4d1857b355f547f8b3777e90
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 2960efb0f2bea0afc07508c4140a3a4777314c74
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029019"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112318"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
@@ -119,10 +119,10 @@ ms.locfileid: "77029019"
     
         public async void ButtonClick()
         {
-            // Creates an instance of a speech config with specified subscription key and service region.
+            // Creates an instance of a speech config with specified host and subscription key.
             // Replace with your own subscription key and service region (e.g., "chinaeast2").
-            var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-    
+            var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
+
             // Make sure to dispose the recognizer after use!
             using (var recognizer = new SpeechRecognizer(config))
             {

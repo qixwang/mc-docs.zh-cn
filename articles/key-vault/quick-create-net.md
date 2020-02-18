@@ -4,15 +4,15 @@ description: 了解如何使用 .NET 客户端库 (v4) 在 Azure 密钥保管库
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 05/20/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c183660f651c85b4fc823ae2455b4011bfb5677f
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: af46502543ca2c0cdc6b5d69dad35f2d0e472158
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123351"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112196"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 
@@ -23,7 +23,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 提高安全性以及控制密钥和密码。
 - 在几分钟内创建并导入加密密钥。
 - 通过云扩展和全局冗余减少延迟。
-- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 简化和自动化与 TLS/SSL 证书相关的任务。
 
 <!-- - Use FIPS 140-2 Level 2 validated HSMs. -->
 

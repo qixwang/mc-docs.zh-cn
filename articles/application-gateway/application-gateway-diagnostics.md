@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: e3f0200e6aa154f3d018d18c4b4767e8b4d5dbf6
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 6538cccf712047e09ccbd29eb26eaf960be7c233
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884950"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155556"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -29,9 +29,9 @@ ms.locfileid: "74884950"
 
 ## <a name="back-end-health"></a>后端运行状况
 
-应用程序网关提供通过门户、PowerShell 和 命令行接口 (CLI) 监视后端池各个成员的运行状况的功能。 还可通过性能诊断日志找到后端池的聚合运行状况摘要。 
+应用程序网关提供通过门户、PowerShell 和命令行界面 (CLI) 监视后端池各成员运行状况的功能。 还可通过性能诊断日志找到后端池的聚合运行状况摘要。
 
-后端运行状况报告反映对后端实例的应用程序网关运行状况探测的输出。 如果探测成功且后端能够接收流量，则可认为后端运行状况正常， 否则不正常。
+后端运行状况报告反映了应用程序网关对后端实例进行的运行状况探测的输出。 如果探测成功且后端能够接收流量，则可认为后端运行状况正常， 否则不正常。
 
 > [!IMPORTANT]
 > 如果应用程序网关子网上存在网络安全组 (NSG)，请在应用程序网关子网上打开端口范围 65503-65534（适用于 v1 SKU）和 65200-65535（适用于 v2 SKU），以便接收入站流量。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
@@ -39,7 +39,7 @@ ms.locfileid: "74884950"
 
 ### <a name="view-back-end-health-through-the-portal"></a>通过门户查看后端运行状况
 
-在门户中，后端运行状况是自动提供的。 在现有的应用程序网关中，选择“监视”   > “后端运行状况”  。 
+在门户中，后端运行状况是自动提供的。 在现有的应用程序网关中，选择“监视”   > “后端运行状况”  。
 
 后端池中的每个成员都列在此页上（不管其是 NIC、IP 还是 FQDN）。 会显示后端池名称、端口、后端 HTTP 设置名称以及运行状况。 运行状况的有效值为“正常”、“不正常”、“未知”。   
 
@@ -64,7 +64,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="results"></a>结果
 
-以下代码片段显示了响应的示例：
+以下代码片段演示了一个响应示例：
 
 ```json
 {
@@ -101,7 +101,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 * **防火墙日志**：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。
 
 > [!NOTE]
-> 日志仅适用于在 Azure 资源管理器部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要更好地了解两种模型，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)一文。
+> 日志仅适用于在 Azure 资源管理器部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要更好地了解两种模型，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/management/deployment-models.md)一文。
 
 可通过三种方式存储日志：
 
@@ -126,8 +126,8 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     ```powershell
     Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
-    
-> [!TIP] 
+
+> [!TIP]
 >活动日志不需要单独的存储帐户。 使用存储来记录访问和性能需支付服务费用。
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
@@ -258,7 +258,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 |Value  |说明  |
 |---------|---------|
-|instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
+|instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
 |unHealthyHostCount     | 后端池中运行不正常的主机数。        |
 |requestCount     | 服务的请求数。        |
@@ -297,7 +297,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |---------|---------|
 |instanceId     | 为其生成了防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的起始 IP。      |
-|clientPort     |  请求的初始端口。       |
+|clientPort     |  请求的起始端口。       |
 |requestUri     | 所收到请求的 URI。       |
 |ruleSetType     | 规则集类型。 可用值为 OWASP。        |
 |ruleSetVersion     | 所使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
@@ -336,10 +336,10 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
-    "hostname": "40.90.218.100", 
+    "hostname": "40.90.218.100",
     "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
-} 
+}
 
 ```
 
@@ -347,19 +347,19 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 可使用以下任意方法查看和分析活动日志数据：
 
-* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
+* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
 * **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用 [Power BI 模板应用](https://docs.microsoft.com/power-bi/service-template-apps-overview)，可以分析数据。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 
 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可从 Blob 存储帐户收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
-还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
+还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将其转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 
 > [!TIP]
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
-> 
-> 
+>
+>
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>通过 GoAccess 分析访问日志
 
@@ -382,4 +382,4 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 [9]: ./media/application-gateway-diagnostics/figure9.png
 [10]: ./media/application-gateway-diagnostics/figure10.png
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

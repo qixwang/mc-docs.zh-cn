@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 12/17/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: a9b474c906cbc77b506b6a6970ddd3e1552b118b
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 696745a07a529201c313f3cf6d070bd4ef0f66fa
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029192"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112282"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -39,9 +39,9 @@ ms.locfileid: "77029192"
     using namespace Microsoft::CognitiveServices::Speech;
     
     void recognizeSpeech() {
-        // Creates an instance of a speech config with specified subscription key and service region.
+        // Creates an instance of a speech config with specified host and subscription key.
         // Replace with your own subscription key and service region (e.g., "chinaeast2").
-        auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
     
         // Creates a speech recognizer
         auto recognizer = SpeechRecognizer::FromConfig(config);

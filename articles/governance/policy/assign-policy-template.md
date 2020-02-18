@@ -3,14 +3,14 @@ title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
 ms.author: v-tawe
 origin.date: 11/25/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 0da9027f946ef8b388a20483242f89932d5a58ed
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 9195cbb6aad1463556c4e903b53e7c5678531755
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123151"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112215"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -84,7 +84,7 @@ ms.locfileid: "76123151"
    | 资源组 | 选择“新建”，指定名称，然后选择“确定”。   在此屏幕截图中，资源组名称为 mypolicyquickstart\<MMDD 格式的日期\>rg  。 |
    | 位置 | 选择区域。 例如，**中国北部**。 |
    | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。  |
-   | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]** 。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |
+   | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]** 。 **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |
    | 策略定义 ID | 指定 **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**。 |
    | 我同意上述条款和条件 | （选择） |
 
@@ -94,8 +94,8 @@ ms.locfileid: "76123151"
 
 - 若要查找更多示例模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)。
 - 若要查看模板参考，请转到 [Azure 模板参考](https://docs.microsoft.com/azure/templates/microsoft.authorization/allversions)。
-- 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/resource-group-overview.md)。
-- 若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](../../azure-resource-manager/deploy-to-subscription.md)。
+- 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/management/overview.md)。
+- 若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](../../azure-resource-manager/templates/deploy-to-subscription.md)。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
 

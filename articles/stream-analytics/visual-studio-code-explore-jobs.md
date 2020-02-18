@@ -2,16 +2,17 @@
 title: 在 Visual Studio Code 中探索 Azure 流分析作业
 description: 本文介绍如何将 Azure 流分析作业导出到本地项目、列出作业和查看作业实体。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
-ms.date: 05/15/2019
+author: lingliw
+origin.date: 05/15/2019
+ms.date: 2/6/2020
+ms.author: v-lingwu
 ms.topic: conceptual
-ms.openlocfilehash: 543c829f8cf2d71e828c182f4119a32ce0227592
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 4f123b37620b0e462678c504519988995cddfeec
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068558"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128866"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>使用 Visual Studio Code（预览版）浏览 Azure 流分析
 

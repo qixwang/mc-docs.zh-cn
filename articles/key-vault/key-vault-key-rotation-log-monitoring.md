@@ -8,14 +8,14 @@ tags: ''
 ms.service: key-vault
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 10/30/2019
+ms.date: 02/17/2019
 ms.author: v-tawe
-ms.openlocfilehash: 98b59a86edc983bf88e994178f5f61a050837a8d
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 794772ed3840e5eb759c4d60348b5a3a01265c9e
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425902"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112183"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用密钥轮换和审核设置 Azure Key Vault
 
@@ -315,7 +315,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didn't have a date. Setting to now.");
         }
     }
 

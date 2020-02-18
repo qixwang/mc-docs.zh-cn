@@ -10,12 +10,12 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cbb516611f2995000980d3a361dc1a297ffdcd45
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 912c3d0eba43618b0dd0bd13fe63417b15bcb827
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600497"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179315"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -45,7 +45,7 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 
 <!--[!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]-->
 
-有关详细信息，请参阅[使用 Azure CLI 流式处理日志](troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)。
+有关详细信息，请参阅[使用 Azure CLI 流式处理日志](troubleshoot-diagnostic-logs.md#stream-logs)。
 
 ### <a name="app-logging"></a>应用日志记录
 

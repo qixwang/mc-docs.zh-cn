@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 7397c3e73dd6f3d0331d53f477efbfdb74276ee0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: d468b4e0c3288555b1ac5aec43c228328f49b60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 02/14/2020
 ms.locfileid: "75334626"
 ---
 1. 在 Mac 上启动“Keychain Access”  。 在左侧导航栏中的“类别”下，打开“我的证书”   。 找到已在前一部分下载的 SSL 证书，并公开其内容。 仅选择证书（不选择私钥）。 然后[将其导出](https://support.apple.com/kb/PH20122?locale=en_US)。

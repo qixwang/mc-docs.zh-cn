@@ -5,12 +5,12 @@ ms.author: v-tawe
 origin.date: 02/01/2019
 ms.date: 12/02/2019
 ms.topic: how-to
-ms.openlocfilehash: 3d46d40e0097104030af9103fb18b487a95dfe54
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: a61b170ba830bf8772610cb8c2783d148a7fa828
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123265"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179332"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -135,9 +135,13 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 
 ![Azure Policy 符合性事件的示例](../media/getting-compliance-data/compliance-events.png)
 
-对于[“资源提供程序”模式](../concepts/definition-structure.md#resource-provider-modes)资源，在“资源符合性”选项卡上  选择资源或右键单击行并选择“查看符合性详细信息”  即可打开组件符合性详细信息。 此页还提供多个选项卡，用于查看分配给此资源的策略、事件、组件事件以及更改历史记录。
+<!-- For [Resource Provider mode](../concepts/definition-structure.md#resource-provider-modes) resources, -->
+<!-- on the **Resource compliance** tab, selecting the resource or right-clicking on the row and -->
+<!-- selecting **View compliance details** opens the component compliance details. This page also offers -->
+<!-- tabs to see the policies that are assigned to this resource, events, component events, and change -->
+<!-- history. -->
 
-![Azure Policy 组件符合性详细信息的示例](../media/getting-compliance-data/compliance-components.png)
+<!-- ![Example of Azure Policy Component compliance details](../media/getting-compliance-data/compliance-components.png) -->
 
 回到资源符合性页，右键单击要收集其更多详细信息的事件所在的行，然后选择“显示活动日志”。  活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
 

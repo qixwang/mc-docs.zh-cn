@@ -3,19 +3,24 @@ title: 教程：管理标记治理
 description: 本教程使用 Azure Policy 的修改效果来创建和执行新资源和现有资源上的标记治理模型。
 ms.author: v-tawe
 origin.date: 11/25/2019
-ms.date: 12/16/2019
+ms.date: 02/17/2020
 ms.service: azure-policy
 ms.topic: tutorial
-ms.openlocfilehash: a1fa7dff86d8cf1615bdd7ed13c0baf7d6b051f9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3d7b1487a3c31ccbf9b7a3965fc45639e9b5eb46
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336239"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112165"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>教程：通过 Azure Policy 管理标记治理
 
 [标记](../../../azure-resource-manager/resource-group-using-tags.md)是将 Azure 资源组整理到分类中的关键部分。
+
+<!-- [best practices for tag management](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources), -->
+<!-- tags can be the basis for applying your business policies with Azure Policy or -->
+<!-- [tracking costs with Cost Management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources). -->
+
 无论你使用标记的方式和原因是什么，重要的是你可以在 Azure 资源上快速添加、更改和删除这些标记。
 
 Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理标记，而无论你处于资源调控的哪个阶段。 “修改”在以下情况下有帮助  ：
@@ -31,7 +36,7 @@ Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理�
 > - 将每个要求映射到策略定义
 > - 将标记策略分组为一个计划
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要一个 Azure 订阅才能完成此教程。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 

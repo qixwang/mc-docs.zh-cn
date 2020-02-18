@@ -6,12 +6,12 @@ origin.date: 10/24/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: d43146f2b6594babd141df91566e914d8c1d7d24
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 20331e03db14bdd2e0f4923986c4aea17d7dd4b3
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600528"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179306"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -209,7 +209,6 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 尽管应用服务会处理最简单的授权问题（例如，拒绝未经身份验证的请求），但应用可能需要更精细的授权行为，例如，仅将访问权限限制给特定的一组用户。 在某些情况下，需要编写自定义应用程序代码以允许或拒绝已登录用户的访问。 在其他情况下，应用服务或标识提供者可能无需进行代码更改即可提供帮助。
 
 - [服务器级别](#server-level-windows-apps-only)
-- [标识提供者级别](#identity-provider-level)
 - [应用程序级别](#application-level)
 
 ### <a name="server-level-windows-apps-only"></a>服务器级别（仅限 Windows 应用）

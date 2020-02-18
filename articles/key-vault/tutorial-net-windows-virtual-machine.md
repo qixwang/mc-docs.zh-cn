@@ -7,15 +7,15 @@ manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 origin.date: 01/02/2019
-ms.date: 12/09/2019
+ms.date: 02/17/2019
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: ccba888a056ddf966cc11d6f6bf167e3aaf0e454
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 09e6f5537192c441102e87d328ebb61ba01833cb
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838866"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112182"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的 Windows 虚拟机配合使用
 
@@ -38,7 +38,7 @@ Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资
 
 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
@@ -183,10 +183,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-编辑类文件，使之包含在下面的两步过程中使用的代码：
+编辑类文件，使之包含在下面的三步过程中使用的代码：
 
 1. 从 VM 上的本地 MSI 终结点获取一个令牌。 这还会从 Azure AD 获取令牌。
-1. 将令牌传递到 Key Vault，然后获取机密。 
+2. 将令牌传递到 Key Vault，然后获取机密。 
+3. 将保管库名称和机密名称添加到请求。
 
 ```csharp
  class Program
@@ -207,9 +208,10 @@ using Newtonsoft.Json.Linq;
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.cn/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

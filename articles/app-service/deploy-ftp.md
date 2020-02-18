@@ -7,12 +7,12 @@ origin.date: 09/18/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: b8dce6b0d87f23c2dbd1635a67fba4052aa4f41a
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 1d9f780f1fbac8e59d1ec04c9498415cf457256c
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600490"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179323"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -22,7 +22,7 @@ ms.locfileid: "75600490"
 
 ## <a name="open-ftp-dashboard"></a>打开 FTP 仪表板
 
-在 [Azure 门户](https://portal.azure.cn)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
+在 [Azure 门户](https://portal.azure.cn)中，打开应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)。
 
 若要打开 FTP 仪表板，请单击“部署中心”   > “FTP”   > “仪表板”  。
 

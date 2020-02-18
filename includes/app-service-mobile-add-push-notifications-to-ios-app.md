@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 2997fe05133ba66d4bef3a8df37c1b68fa76feec
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: d468b4e0c3288555b1ac5aec43c228328f49b60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 02/14/2020
 ms.locfileid: "75334628"
 ---
 **Objective-C**：

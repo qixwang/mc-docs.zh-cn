@@ -1,5 +1,5 @@
 ---
-title: 通过 .NET 使用 Visual Studio 和 C# 查询 Azure SQL 数据库 | Microsoft Docs
+title: 使用具有 .NET 和 C# 的 Visual Studio 进行查询
 description: 使用 Visual Studio 创建连接到 Azure SQL 数据库的 C# 应用并使用 Transact-SQL 语句对其进行查询。
 services: sql-database
 ms.service: sql-database
@@ -10,20 +10,20 @@ ms.topic: quickstart
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-origin.date: 03/25/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 0714292b0b1df3c3dccd5178450271e768886647
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+origin.date: 12/31/2019
+ms.date: 02/17/2020
+ms.openlocfilehash: 3e89a55d3aa4ec3f45a071cdea56bcd5f95839c3
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041196"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155649"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询 Azure SQL 数据库
 
 本快速入门展示了如何使用 Visual Studio 中的 [.NET Framework](https://www.microsoft.com/net/) 和 C# 代码通过 Transact-SQL 语句查询 Azure SQL 数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，需要以下项：
 
@@ -102,7 +102,6 @@ ms.locfileid: "73041196"
                        Console.WriteLine("\nQuery data example:");
                        Console.WriteLine("=========================================\n");
                        
-                       connection.Open();       
                        StringBuilder sb = new StringBuilder();
                        sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
                        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
@@ -112,6 +111,7 @@ ms.locfileid: "73041196"
    
                        using (SqlCommand command = new SqlCommand(sql, connection))
                        {
+                           connection.Open();
                            using (SqlDataReader reader = command.ExecuteReader())
                            {
                                while (reader.Read())

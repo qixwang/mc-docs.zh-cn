@@ -7,13 +7,13 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/10/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: b1b2a4379d95d00d4950b1876d921294d6985f55
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.date: 02/17/2020
+ms.openlocfilehash: b4ee03bfd320ce3246dd8a73dcc9177c2f1530ca
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840118"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112180"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -49,13 +49,14 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 | Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本指南，必须先执行以下操作：
 
 - [安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)。
 - [创建密钥保管库](quick-create-powershell.md)
-- [创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)。 存储帐户名必须仅使用小写字母和数字。 名称的长度必须为 3 到 24 个字符。
+- [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell)。 存储帐户名必须仅使用小写字母和数字。 名称的长度必须为 3 到 24 个字符。
+      
 
 ## <a name="manage-storage-account-keys"></a>管理存储帐户密钥
 
@@ -118,7 +119,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
+如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 

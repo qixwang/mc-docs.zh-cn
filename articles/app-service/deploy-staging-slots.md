@@ -6,12 +6,12 @@ ms.topic: article
 origin.date: 09/19/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9a8126a72db0e6fa65e9e9131db2304535c5c602
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 548b1348eeafd1b5656867d41a25e7549aaee561
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600487"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179326"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -33,7 +33,7 @@ ms.locfileid: "75600487"
 ## <a name="add-a-slot"></a>添加槽
 应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位    。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
+1. 在 [Azure 门户](https://portal.azure.cn/)中，打开应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)。
 
 2. 在左窗格中，选择“部署槽” > “添加槽”   。
    

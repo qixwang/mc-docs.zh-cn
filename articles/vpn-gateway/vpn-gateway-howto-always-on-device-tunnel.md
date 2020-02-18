@@ -7,14 +7,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 12/11/2019
-ms.date: 01/20/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 8b91a4742ed1ae8734b9b226c11ee99c59a64015
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 8b8c7fba0a263b13464c8b67e8f3f0977b941d26
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939742"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156799"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>配置 Always On VPN 设备隧道
 
@@ -103,9 +103,9 @@ Always On VPN 连接包括两种隧道：
    ```
 1. 复制以下文本，并在 **devicecert.ps1** 所在的同一文件夹中将文件保存为 ***VPNProfile.xml***。 编辑以下文本，使之与你的环境相匹配。
 
-   * `<Servers>azuregateway-1234-56-78dc.chinacloudapp.cn</Servers>`
-   * `<Address>192.168.3.5</Address>`
-   * `<Address>192.168.3.4</Address>`
+   * `<Servers>azuregateway-1234-56-78dc.chinacloudapp.cn</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
+   * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
+   * `<Address>192.168.3.4</Address> <= IP of resource in the vnet or the vnet address space`
 
    ```
    <VPNProfile>  

@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 09/11/2019
 ms.author: v-tawe
 ms.openlocfilehash: 4873cfad639b1a41f8602056158cb764863cb058
-ms.sourcegitcommit: 32d62e27e59e42c8d21a667e77b61b8d87efbc19
+ms.sourcegitcommit: d468b4e0c3288555b1ac5aec43c228328f49b60c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
+ms.lasthandoff: 02/14/2020
 ms.locfileid: "71006579"
 ---
 **.NET 后端 (C#)** ：

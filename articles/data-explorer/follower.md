@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: 82bb27e5e4046ee8cbd74ef696af5d3da8a1501a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 5ce4d97614c56300fe4a4102461ab0604c49e88e
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037928"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179333"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -374,7 +374,7 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 ### <a name="manage-permissions"></a>管理权限
 
-所有只读数据库类型的权限管理方式都是相同的。 请参阅[在 Azure 门户中管理权限](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)。
+所有只读数据库类型的权限管理方式都是相同的。 请参阅[在 Azure 门户中管理权限](https://docs.azure.cn/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal)。
 
 ### <a name="configure-caching-policy"></a>配置缓存策略
 

@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 12/02/2019
 ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8de8ed728e177fe8202955759df697e94e58852d
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: ad45cfc1c11407e6d05ec6f0997c03791e79e4b4
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600149"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155524"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -33,7 +33,7 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
    | ------------- |:-------------|:-----|
    | **名称**      | 唯一值 | 标识所监视的应用的名称。 |
    | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
-   | **位置** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置。 |
+   | **位置** | 中国东部 2 | 选择离你近的位置或离托管应用的位置近的位置。 |
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”  。
 
@@ -69,7 +69,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 #### <a name="example"></a>示例
 
 ```powershell
-New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location 'China East'
+New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location 'China East 2'
 ```
 #### <a name="results"></a>结果
 
@@ -78,7 +78,7 @@ Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/m
 ResourceGroupName  : testgroup
 Name               : test1027
 Kind               : web
-Location           : China East
+Location           : China East 2
 Type               : microsoft.insights/components
 AppId              : 8323fb13-32aa-46af-b467-8355cf4f8f98
 ApplicationType    : web
@@ -120,13 +120,13 @@ az monitor app-insights component create --app
 #### <a name="example"></a>示例
 
 ```azurecli
-az monitor app-insights component create --app demoApp --location 'China East' --kind web -g demoRg --application-type web
+az monitor app-insights component create --app demoApp --location 'China East 2' --kind web -g demoRg --application-type web
 ```
 
 #### <a name="results"></a>结果
 
 ```azurecli
-az monitor app-insights component create --app demoApp --location 'China East' --kind web -g demoApp  --application-type web
+az monitor app-insights component create --app demoApp --location 'China East 2' --kind web -g demoApp  --application-type web
 {
   "appId": "87ba512c-e8c9-48d7-b6eb-118d4aee2697",
   "applicationId": "demoApp",
@@ -139,7 +139,7 @@ az monitor app-insights component create --app demoApp --location 'China East' -
   "id": "/subscriptions/{subid}/resourceGroups/demoApp/providers/microsoft.insights/components/demoApp",
   "instrumentationKey": "00000000-aaaa-bbbb-cccc-dddddddddddd",
   "kind": "web",
-  "location": "China East",
+  "location": "China East 2",
   "name": "demoApp",
   "provisioningState": "Succeeded",
   "requestSource": "rest",

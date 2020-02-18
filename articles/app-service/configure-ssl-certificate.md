@@ -8,12 +8,12 @@ ms.date: 02/17/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 3be6f3bb02320b6affa18a43e84e2779388fe704
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 68b716f2e1581cfec4e64a3465d93fb8bdfd0934
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979344"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179316"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -40,7 +40,7 @@ ms.locfileid: "76979344"
 
 ## <a name="private-certificate-requirements"></a>私有证书要求
 
-[免费应用服务托管证书](#create-a-free-certificate-preview)或[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
+<!-- The [free App Service Managed Certificate](#create-a-free-certificate-preview) or the [App Service certificate](#import-an-app-service-certificate) already satisfy the requirements of App Service. If you choose to upload or import a private certificate to App Service, your certificate must meet the following requirements: -->
 
 * 已导出为[受密码保护的 PFX 文件](https://wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
 * 包含长度至少为 2048 位的私钥

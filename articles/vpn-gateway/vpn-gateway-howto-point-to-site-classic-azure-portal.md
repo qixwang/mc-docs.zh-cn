@@ -2,26 +2,18 @@
 title: 使用点到站点和证书身份验证将计算机连接到虚拟网络：Azure 经典门户 |Microsoft Docs
 description: 使用 Azure 门户创建经典的点到站点 VPN 网关连接。
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-service-management
-ms.assetid: 65e14579-86cf-4d29-a6ac-547ccbd743bd
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 12/11/2018
-ms.date: 01/20/2020
+ms.topic: conceptual
+origin.date: 01/09/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 570945d1a9871266d922ee229721a284385131e8
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 7b44f584d47216a8f4dfccdb457c86d3b652cbe9
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939754"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156758"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -102,7 +94,7 @@ ms.locfileid: "75939754"
 
 5. 从下拉列表中选择要使用的“订阅”  。
 
-6. 选择现有“资源组”  。 或者，通过选择“新建”并输入名称，创建新的资源组  。 如果要创建新资源组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 选择现有“资源组”  。 或者，通过选择“新建”并输入名称，创建新的资源组  。 如果要创建新资源组，请根据计划的配置值来命名资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md#resource-groups)。
 
 7. 为 VNet 选择“位置”  。 此设置确定部署到此 VNet 的资源的地理位置。
 
