@@ -22105,7 +22105,13 @@
       "source_path": "articles/storage/scripts/storage-common-transfer-between-storage-accounts.md",
       "redirect_url": "https://docs.microsoft.com/previous-versions/azure/storage/storage-common-transfer-between-storage-accounts",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/media-services/previous/media-services-configure-fmle-live-encoder.md",
+      "redirect_url": "/media-services/previous/media-services-configure-wirecast-live-encoder/",
+      "redirect_document_id": false
     }
+
 
   ]
 }
