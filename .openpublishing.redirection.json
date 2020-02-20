@@ -22110,6 +22110,16 @@
       "source_path": "articles/media-services/previous/media-services-configure-fmle-live-encoder.md",
       "redirect_url": "/media-services/previous/media-services-configure-wirecast-live-encoder/",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-monitor/platform/activity-logs-overview.md",
+      "redirect_url": "/azure-monitor/platform/platform-logs-overview/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-monitor/platform/resource-logs-overview.md",
+      "redirect_url": "/azure-monitor/platform/platform-logs-overview/",
+      "redirect_document_id": false
     }
 
 
