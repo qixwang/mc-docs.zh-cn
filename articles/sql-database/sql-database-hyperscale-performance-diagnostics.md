@@ -10,22 +10,19 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 10/18/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 88edc17ddd6eebcff7c26df71405f2503830a327
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 76fce58456b784eee38111affd41ca475f7188b3
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336278"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155740"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模服务层级性能故障排除诊断
 
-
 若要排查超大规模数据库中的性能问题，请根据 Azure SQL 数据库计算节点上的[常规性能优化方法](sql-database-monitor-tune-overview.md)着手调查性能问题。 但是，由于超大规模数据库采用[分布式体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，我们添加了附加的诊断方法用于帮助进行故障排除。 本文将描述超大规模数据库特定的诊断数据。
 
-
 ## <a name="log-rate-throttling-waits"></a>日志速率限制等待
-
 
 每个 Azure SQL 数据库服务级别通过[日志速率调控](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)来强制实施日志生成速率限制。 在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 如果在应用日志服务中的新日志记录后，[页面服务器或其他计算副本](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)明显滞后，则会发生此限制。
 
@@ -38,20 +35,20 @@ ms.locfileid: "75336278"
 |RBIO_RG_REPLICA        | 如果由于可读辅助副本的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
 |RBIO_RG_LOCALDESTAGE   | 如果由于日志服务的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
 
-
 ## <a name="page-server-reads"></a>页面服务器读取
 
 计算副本不会在本地缓存数据库的完整副本。 计算副本本地的数据存储在缓冲池（内存）和本地弹性缓冲池扩展 (RBPEX) 缓存中，该缓存是数据页面的部分（非涵盖性）缓存。 此本地 RBPEX 缓存的大小与计算大小成比例，是计算层内存的 3 倍。 RBPEX 类似于缓冲池，因为它包含最常访问的数据。 另一方面，每个页面服务器为它维护的数据库部分提供一个涵盖性的 RBPEX 缓存。
  
 在计算副本上发出读取请求时，如果数据不在缓冲池或本地 RBPEX 缓存中，则会发出 getPage(pageId, LSN) 函数调用，并从相应的页面服务器提取页面。 从页面服务器执行的读取属于远程读取，因此，比从本地 RBPEX 执行的读取更慢。 排查 IO 相关的性能问题时，我们需要能够通过相对较慢的远程页面服务器读取来判断已完成的 IO 数。
 
-多个 DMV 和扩展事件包含的列与字段指定了从页面服务器执行的远程读取数，可将其与读取总数进行比较。 
+多个 DMV 和扩展事件包含的列与字段指定了从页面服务器执行的远程读取数，可将其与读取总数进行比较。 查询存储还会捕获远程读取作为查询运行时统计信息的一部分。
 
-- 执行 DMV 中提供了用于报告页面服务器读取操作的列，例如：
+- 执行 DMV 和目录视图中提供了用于报告页面服务器读取操作的列，例如：
     - [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
     - [sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
     - [sys.dm_exec_procedure_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys.dm_exec_trigger_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys.query_store_runtime_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - 页面服务器读取操作将添加到以下扩展事件：
     - sql_statement_completed
     - sp_statement_completed
@@ -65,30 +62,26 @@ ms.locfileid: "75336278"
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
 > [!NOTE]
-> 若要在 SSMS 的查询计划属性窗口中查看这些属性，需要安装 SSMS 18.3 或更高版本。
-
+> 若要在查询计划属性窗口中查看这些属性，需要安装 SSMS 18.3 或更高版本。
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>虚拟文件统计信息和 IO 记帐
 
-在 Azure SQL 数据库中，[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是监视 SQL Server IO 的主要方式。 超大规模数据库采用[分布式体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，因此其 IO 特征有所不同。 本部分重点介绍如何对此 DMF 中所示的数据文件执行 IO（读取和写入）。 在超大规模数据库中，此 DMF 中显示的每个数据文件对应于一个远程页面服务器。 此处提到的 RBPEX 缓存是基于 SSD 的本地缓存，它是计算副本上的非涵盖性缓存。
-
+在 Azure SQL 数据库中，[sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是监视 SQL Server IO 的主要方式。 “超大规模”采用[分布式体系结构](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，因此其 IO 特征有所不同。 本部分重点介绍如何对此 DMF 中所示的数据文件执行 IO（读取和写入）。 在超大规模数据库中，此 DMF 中显示的每个数据文件对应于一个远程页面服务器。 此处提到的 RBPEX 缓存是基于 SSD 的本地缓存，它是计算副本上的非涵盖性缓存。
 
 ### <a name="local-rbpex-cache-usage"></a>本地 RBPEX 缓存使用情况
 
-本地 RBPEX 缓存位于本地 SSD 存储中的计算节点上。 因此，此 RBPEX 缓存上的 IO 比远程页面服务器上的 IO 更快。 目前，超大规模数据库中的 [sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) 包含一个特殊行用于报告计算副本的本地 RBPEX 缓存中完成的 IO。 对于 `database_id` 和 `file_id` 列，此行的值均为 0。 例如，以下查询返回自数据库启动以来的 RBPEX 使用情况统计信息。
+本地 RBPEX 缓存位于本地 SSD 存储中的计算副本上。 因此，针对此缓存运行的 IO 比针对远程页面服务器运行的 IO 速度更快。 目前，超大规模数据库中的 [sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) 包含一个特殊行用于报告计算副本的本地 RBPEX 缓存中完成的 IO。 对于 `database_id` 和 `file_id` 列，此行的值均为 0。 例如，以下查询返回自数据库启动以来的 RBPEX 使用情况统计信息。
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
 在 RBPEX 中完成的读取数与在所有其他数据文件中完成的聚合读取数之比提供了 RBPEX 缓存命中率。
 
-
 ### <a name="data-reads"></a>数据读取
 
 - 当计算副本上的 SQL Server 引擎发出读取请求时，这些请求可由本地 RBPEX 缓存或远程页面服务器提供服务，如果读取多个页面，则还可以通过两者的组合来提供服务。
 - 当计算副本读取特定文件（例如 file_id 1）中的某些页面时，如果此数据仅驻留在本地 RBPEX 缓存中，则此读取操作的所有 IO 将计入 file_id 0 (RBPEX)。 如果该数据的某个部分位于本地 RBPEX 缓存中，而某个部分位于远程页面服务器上，则对于从 RBPEX 提供服务的部分，IO 将计入 file_id 0；对于从远程页面服务器提供服务的部分，IO 将计入 file_id 1。 
-- 当计算副本从页面服务器请求位于特定 [LSN](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) 的页面时，如果页面服务器未捕获到请求的 LSN，则计算副本上的读取操作将会等待，直到页面服务器捕获到该 LSN，然后会将页面返回到计算副本。 对于从计算副本上的页面服务器执行的任何读取，如果该操作正在等待该 IO，则会出现 PAGEIOLATCH_* 等待类型。 此等待时间包括捕获到页面服务器上位于所需 LSN 处的请求页面的时间，以及将该页面从页面服务器传输到计算副本所需的时间。
+- 当计算副本从页面服务器请求位于特定 [LSN](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) 的页面时，如果页面服务器未捕获到请求的 LSN，则计算副本上的读取操作将会等待，直到页面服务器捕获到该 LSN，然后会将页面返回到计算副本。 对于从计算副本上的页面服务器执行的任何读取，如果该操作正在等待该 IO，则会出现 PAGEIOLATCH_* 等待类型。 在“超大规模”中，此等待时间包括捕获到页面服务器上位于所需 LSN 处的请求页面的时间，以及将该页面从页面服务器传输到计算副本所需的时间。
 - 大型读取（例如预读）通常是使用[“分散/聚合”读取](https://docs.microsoft.com/sql/relational-databases/reading-pages/)完成的。 这样就可以一次性（在 SQL Server 引擎中被视为单次读取）读取最多 4 MB 的页面。 但是，如果读取的数据位于 RBPEX 中，则这些读取操作被视为多个单独的 8 KB 读取，因为缓冲池和 RBPEX 始终使用 8 KB 页面。 因此，针对 RBPEX 检测到的读取 IO 数可能大于引擎执行的实际 IO 数。
-
 
 ### <a name="data-writes"></a>数据写入
 
@@ -99,11 +92,11 @@ ms.locfileid: "75336278"
 ### <a name="log-writes"></a>日志写入
 
 - 在主计算副本上，日志写入计入 sys.dm_io_virtual_file_stats 的 file_id 2。 主计算副本上的日志写入将写入到日志登陆区域。
-- 提交时，辅助副本上的日志记录不会强化。 在超大规模服务层级中，日志由 Xlog 服务应用到远程副本。 由于日志写入实际上不是在辅助副本上发生的，因此，辅助副本上的日志 IO 的任何记帐仅用于跟踪目的。
+- 提交时，辅助副本上的日志记录不会强化。 在“超大规模”中，日志服务以异步方式将日志应用到次要副本。 由于日志写入实际上不是在次要副本上发生的，因此，次要副本上的日志 IO 的任何记帐仅用于跟踪目的。
 
 ## <a name="additional-resources"></a>其他资源
 
-- 有关超大规模单一数据库的 vCore 资源限制，请参阅[超大规模服务层级的 vCore 限制](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
+- 有关“超大规模”单一数据库的 vCore 资源限制，请参阅[超大规模服务层级的 vCore 限制](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
 - 有关如何优化 Azure SQL 数据库性能，请参阅 [Azure SQL 数据库中的查询性能](sql-database-performance-guidance.md)
 - 有关如何使用查询存储优化性能，请参阅[使用查询存储进行性能监视](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
 - 有关 DMV 监视脚本，请参阅[使用动态管理视图监视 Azure SQL 数据库的性能](sql-database-monitoring-with-dmvs.md)

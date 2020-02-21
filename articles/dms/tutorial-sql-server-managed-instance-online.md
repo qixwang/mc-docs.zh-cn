@@ -11,14 +11,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 12/17/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: ed34793dfeb7dd83f4436f35b9a5777877f79fd6
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+origin.date: 01/10/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 4b269668d1b285c01ef098122d4d726ae7cd6d41
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939815"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192457"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 
@@ -45,7 +45,7 @@ ms.locfileid: "75939815"
 > 为获得最佳迁移体验，Azure 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
 > [!IMPORTANT]
-> 请尽量缩短联机迁移过程的持续时间，将实例重新配置或计划维护造成的中断风险降到最低，这一点至关重要。 如果发生此类事件，迁移过程将从头开始。 如果是计划内维护，则在重新启动迁移过程之前，会有 36 小时的宽限期。
+> 尽量缩短联机迁移过程的持续时间，将实例重新配置或计划维护造成的中断风险降到最低。 如果发生此类事件，迁移过程将从头开始。 如果是计划内维护，则在重新启动迁移过程之前，会有 36 小时的宽限期。
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -55,10 +55,10 @@ ms.locfileid: "75939815"
 
 要完成本教程，需要：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 [了解使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](/dms/resource-network-topologies)。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 [了解使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](/dms/resource-network-topologies)。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在设置 VNet 期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > 在设置虚拟网络期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -69,9 +69,9 @@ ms.locfileid: "75939815"
     > [!IMPORTANT]
     > 关于在迁移过程中使用的存储帐户，必须执行以下操作之一：
     > * 选择允许所有网络访问该存储器帐户。
-    > * 为 VNet 设置 ACL。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security)一文。
+    > * 在 MI 子网中启用[子网委托](/virtual-network/manage-subnet-delegation)，并更新存储帐户防火墙规则以允许此子网。
 
-* 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -116,11 +116,11 @@ ms.locfileid: "75939815"
 
 4. 选择要在其中创建 DMS 实例的位置。
 
-5. 选择一个现有 VNet，或者创建一个。
+5. 选择现有的虚拟网络或创建一个虚拟网络。
 
-    VNet 为 Azure 数据库迁移服务提供源 SQL Server 和目标 SQL 数据库托管实例的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供源 SQL Server 和目标 SQL 数据库托管实例的访问权限。
 
-    有关如何在 Azure 门户中创建 VNet 的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
     有关更多详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](/dms/resource-network-topologies)一文。
 
@@ -207,7 +207,7 @@ ms.locfileid: "75939815"
 
     | | |
     |--------|---------|
-    |**SMB 网络位置共享** | 本地 SMB 网络共享或 Azure 文件共享，其中包含可由 Azure 数据库迁移服务用来执行迁移的完整数据库备份文件和事务日志备份文件。 运行源 SQL Server 实例的服务帐户必须对此网络共享拥有读/写特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。|
+    |**SMB 网络位置共享** | 本地 SMB 网络共享或 Azure 文件共享，其中包含可由 Azure 数据库迁移服务用来执行迁移的完整数据库备份文件和事务日志备份文件。 运行源 SQL Server 实例的服务帐户必须对此网络共享拥有读/写特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。 为提高性能，建议为每个要迁移的数据库使用单独的文件夹。 可以使用“高级设置”选项提供数据库级文件共享路径。  |
     |**用户名** | 确保 Windows 用户具有对上面提供的网络共享的完全控制权限。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。 如果使用 Azure 文件共享，请将带 AZURE\ 前缀的存储帐户名称用作用户名。 |
     |**密码** | 用户密码。 如果使用 Azure 文件共享，请将存储帐户密钥用作密码。 |
     |**Azure 存储帐户的订阅** | 选择包含 Azure 存储帐户的订阅。 |
@@ -215,10 +215,11 @@ ms.locfileid: "75939815"
 
     ![配置迁移设置](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
+    > [!NOTE]
+    > 如果 Azure 数据库迁移服务显示“系统错误 53”或“系统错误 57”错误，原因可能是 Azure 数据库迁移服务无法访问 Azure 文件共享。 如果遇到这其中的一个错误，请按[此处](/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的说明操作，授予从虚拟网络访问存储帐户的权限。
 
-> [!NOTE]
-  > 如果 Azure 数据库迁移服务显示“系统错误 53”或“系统错误 57”错误，原因可能是 Azure 数据库迁移服务无法访问 Azure 文件共享。 如果遇到这其中的一个错误，请按[此处](/storage/common/storage-network-security?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)的说明操作，授予从虚拟网络访问存储帐户的权限。
-
+    > [!IMPORTANT]
+    > 如果启用了环回检查功能，并且源 SQL Server 和文件共享位于同一台计算机上，则源将无法使用 FQDN 访问文件共享。 若要解决此问题，请按照[此处](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)的说明禁用环回检查功能。
 
 2. 选择“保存”  。
 

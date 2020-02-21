@@ -1,5 +1,5 @@
 ---
-title: “超大规模”常见问题解答
+title: Azure SQL 数据库“超大规模”常见问题解答
 description: 对客户关于“超大规模”服务层级中的 Azure SQL 数据库（通常称为超大规模数据库）提出的常见问题的回答。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 10/12/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 03452a218f763cd2d4b74d2af19ad47f168d4016
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: d69f2a7adba0034e968742be0d350579111411d7
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336223"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155720"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 
@@ -47,9 +47,9 @@ ms.locfileid: "75336223"
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
 | |托管实例 | 8、16、24、32、40、64、80 个 vCore | 不适用 | 8、16、24、32、40、64、80 个 vCore |
 | **存储类型** | 全部 |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
-| **存储大小** | 单一数据库/弹性池 | 5 GB - 4 TB | 最多 100 TB | 5 GB - 4 TB |
+| **存储大小** | 单一数据库/弹性池*| 5 GB - 4 TB | 最多 100 TB | 5 GB - 4 TB |
 | | 托管实例  | 32 GB - 8 TB | 不适用 | 32 GB - 4 TB |
-| **IOPS** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
+| **IOPS** | 单一数据库 | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不适用 | 1375 IOPS/vCore |
 |**可用性**|全部|1 个副本，无读取扩展，无本地缓存 | 多个副本，最多 4 个读取扩展，部分本地缓存 | 3 个副本，1 个读取扩展，完整的本地存储 |
 |**备份**|全部|RA-GRS，7-35 天保留期（默认为 7 天）| RA-GRS，7 天保留期，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天保留期（默认为 7 天） |
@@ -158,7 +158,7 @@ ms.locfileid: "75336223"
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>`tempdb` 是否会随着数据库增长而缩放
 
-`tempdb` 数据库位于本地 SSD 存储，是根据预配的计算大小配置的。 为提供最大性能优势，对 `tempdb` 进行了优化。 `tempdb` 大小不可配置，它由你管理。
+`tempdb` 数据库位于本地 SSD 存储，其大小与预配的计算大小成比例。 为提供最大性能优势，对 `tempdb` 进行了优化。 `tempdb` 大小不可配置，它由你管理。
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>数据库大小是否自动增长，我是否需要管理数据文件的大小
 
@@ -166,7 +166,7 @@ ms.locfileid: "75336223"
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>“超大规模”支持或最初使用的最小数据库大小是多少
 
-10 GB。
+40 GB。 创建的“超大规模”数据库的初始大小为 10 GB。 然后，它每隔 10 分钟增大 10 GB，直至达到 40 GB 大小。 其中的每个 10 GB 区块在不同的页面服务器中分配，以提供更大的 IOPS 和更高的 I/O 并行度。 由于这种优化，即使选择小于 40 GB 的初始数据库大小，数据库也会自动扩大为至少 40 GB。
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>数据库的大小按多少增量增长
 
@@ -269,13 +269,13 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 无论数据库大小，RPO 最少为 0，RTO 目标不超过 10 分钟。 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>大型数据库的备份是否影响主计算节点的计算性能
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>数据库备份是否影响主要副本或次要副本的计算性能
 
-否。 备份由存储子系统管理，利用存储快照。 它们不会影响主计算节点上的用户工作负荷。
+否。 备份由存储子系统管理，利用存储快照。 它们不会影响用户工作负荷。
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>能否对“超大规模”数据库执行异地还原
 
-是的。  完全支持异地还原。
+是的。  完全支持异地还原。 与时间点还原不同，异地还原可能需要长时间运行数据大小相关的操作。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>能否对“超大规模”数据库设置异地复制
 
@@ -297,7 +297,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>“超大规模”是否支持 R 和 Python
 
-否。 Azure SQL 数据库中不支持 R 和 Python。
+目前没有。
 
 ### <a name="are-compute-nodes-containerized"></a>计算节点是否是容器化的
 
@@ -307,11 +307,11 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>可以在“超大规模”数据库中推送多少写入吞吐量
 
-对于任何“超大规模”计算大小，事务日志吞吐量限制设置为 100 MB/秒。 实现此速率的能力取决于多种因素，包括但不限于工作负荷类型、客户端配置，以及在主要计算副本上提供足够的计算容量来以此速率生成日志。
+对于任何“超大规模”计算大小，事务日志吞吐量上限设置为 100 MB/秒。 实现此速率的能力取决于多种因素，包括但不限于工作负荷类型、客户端配置，以及在主要计算副本上提供足够的计算容量来以此速率生成日志。
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>在最大的计算节点上可以获得多少 IOPS
 
-IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存在计算副本上，则它的 IO 性能与使用本地 SSD 时相同。
+IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存在计算副本上，则它的 IO 性能与使用本地 SSD 时类似。
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>吞吐量是否受备份影响
 
@@ -319,7 +319,11 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>当我预配其他计算副本时，吞吐量是否会受到影响
 
-从技术上讲，由于存储已共享，并且主要计算副本和次要计算副本之间没有发生直接物理复制，添加次要副本不会影响主要副本上的吞吐量。 但我们可以限制连续主动写入工作负荷，从而允许日志应用到次要副本和页面服务器上，并避免次要副本上读取性能不佳。
+由于存储已共享，并且主要计算副本和次要计算副本之间没有发生直接物理复制，添加次要副本不会直接影响主要副本上的吞吐量。 但我们可以限制在主要副本上连续主动写入工作负荷，从而允许日志应用到次要副本和页面服务器上，并避免次要副本上读取性能不佳。
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>如何诊断和排查“超大规模”数据库中的性能问题
+
+对于大多数性能问题，尤其是根本原因与存储无关的性能问题，可以采取常用的 SQL Server 诊断和故障排除步骤。 有关特定于“超大规模”的存储诊断，请参阅 [SQL 超大规模服务层级性能故障排除诊断](sql-database-hyperscale-performance-diagnostics.md)。
 
 ## <a name="scalability-questions"></a>可伸缩性问题
 
@@ -368,7 +372,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>系统是否对读取工作负荷进行智能负载均衡
 
-否。 具有只读意向的连接将重定向到任意读取扩展副本。
+否。 具有只读意向的新连接将重定向到任意读取扩展副本。
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>能否独立于主要副本纵向扩展/缩减次要计算副本
 
@@ -384,7 +388,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存�
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>主要和次要计算副本之间的延迟是多少
 
-从主要副本上提交事务的时间起，具体取决于当前日志生成速率，可能是瞬时的，也可能为低延迟（毫秒计）。
+从在主要副本上提交事务的时间开始算起，到该事务显示在次要副本上的时间为止的数据延迟取决于当前日志生成速率。 典型的数据延迟只有几毫秒。
 
 ## <a name="next-steps"></a>后续步骤
 

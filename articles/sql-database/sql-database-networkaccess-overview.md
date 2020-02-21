@@ -1,9 +1,10 @@
 ---
-title: Azure SQL 数据库和数据仓库网络访问控制 | Microsoft Docs
+title: 网络访问控件
 description: 用于管理访问及配置单一数据库或共用数据库的 Azure SQL 数据库和数据仓库网络访问控制的概述。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 08/05/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: 1f6f263888b5ac0cde12cd685b9dbe4f3bc665ee
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.date: 02/17/2020
+ms.openlocfilehash: 313f2eca14d89087d9aa00f94027aafb70376a58
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70373040"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155725"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -46,24 +47,50 @@ ms.locfileid: "70373040"
 
 设置为“打开”时，Azure SQL Server 将允许 Azure 边界范围内的所有资源（不一定是订阅的一部分）发起的通信。 
 
-在许多情况下，“打开”设置的访问权限宽松度会超过大多数客户的需要。他们可能希望将此设置指定为“关闭”，并将其替换为限制性更强的 IP 防火墙规则或虚拟网络防火墙规则。   这会影响以下功能：
+在许多情况下，“打开”设置的访问权限宽松度会超过大多数客户的需要。他们可能希望将此设置指定为“关闭”，并将其替换为限制性更强的 IP 防火墙规则或虚拟网络防火墙规则。   这样做会影响 Azure 中的 VM 上运行的以下功能，这些 VM 不在你的 VNet 中，因此会通过 Azure IP 地址连接到 SQL 数据库。
 
 ### <a name="import-export-service"></a>导入/导出服务
+当“允许 Azure 服务访问服务器”设置为“关闭”时，导入导出服务无法正常工作。  不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)。
 
-Azure SQL 数据库导入/导出服务在 Azure 中的 VM 上运行。 这些 VM 不在 VNet 中，因此在连接到数据库时会获取 Azure IP。 删除“允许 Azure 服务访问服务器”后，这些 VM 将无法访问数据库。 
-直接在代码中使用 DACFx API 运行 BACPAC 导入或导出可以解决此问题。
+### <a name="data-sync"></a>数据同步
+若要在“允许 Azure 服务访问服务器”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便为托管**中心**数据库的区域，从 **SQL 服务标记**[添加 IP 地址](sql-database-server-level-firewall-rule.md)。 
+将这些服务器级防火墙规则添加到同时托管**中心**数据库和**成员**数据库（可能位于不同的区域）的逻辑服务器
 
-### <a name="sql-database-query-editor"></a>SQL 数据库查询编辑器
+使用以下 PowerShell 脚本生成与中国东部 2 区域的 SQL 服务标记对应的 IP 地址
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location chinaeast2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.ChinaEast2" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+3
+PS C:\> $sql.Properties.AddressPrefixes
+40.73.82.0/23
+40.73.169.0/26
+40.73.170.0/26
+```
 
-Azure SQL 数据库查询编辑器部署在 Azure 中的 VM 上。 这些 VM 不在 VNet 中。 因此，这些 VM 在连接到数据库时会获取 Azure IP。 删除“允许 Azure 服务访问服务器”后，这些 VM 将无法访问数据库。 
+> [!TIP]
+> 即使指定 Location 参数，Get-AzNetworkServiceTag 也会返回 SQL 服务标记的全局范围。 请务必将范围筛选为托管同步组所用中心数据库的区域
 
-### <a name="table-auditing"></a>表审核
+请注意，PowerShell 脚本的输出采用无类域间路由 (CIDR) 表示法，需使用 [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) 将其转换为开始和结束 IP 地址格式，如下所示
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-目前有两种方法可对 SQL 数据库启用审核。 在 Azure SQL Server 上启用服务终结点后，表审核会失败。 在这里，解决办法是转为 Blob 审核。
+执行以下附加步骤，将所有 IP 地址从 CIDR 转换为开始和结束 IP 地址格式。
 
-### <a name="impact-on-data-sync"></a>对数据同步的影响
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+现在，可将其添加为不同的防火墙规则，然后将“允许 Azure 服务访问服务器”设置为“关闭”。 
 
-Azure SQL 数据库具有数据同步功能，可使用 Azure IP 连接到数据库。 使用服务终结点时，将会禁用对 SQL 数据库服务器的“允许 Azure 服务访问服务器”访问权限，并会中断数据同步功能。 
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
 基于 IP 的防火墙是 Azure SQL Server 的一项功能，在显式[添加客户端计算机的 IP 地址](sql-database-server-level-firewall-rule.md)之前，它会阻止对数据库服务器的所有访问。

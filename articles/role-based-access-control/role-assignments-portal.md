@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 21f93b083bce893ba88b98dda2a0d9b7225145f9
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: d0d45d72607ea723393b21f6526c5c26c9589ebf
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623828"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128843"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户添加或删除角色分配
 
@@ -27,15 +27,15 @@ ms.locfileid: "75623828"
 
 如需在 Azure Active Directory 中分配管理员角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](../active-directory/users-groups-roles/directory-manage-roles-portal.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
 
-## <a name="overview-of-access-control-iam"></a>“访问控制(IAM)”概述
+## <a name="access-control-iam"></a>访问控制 (IAM)
 
-使用“访问控制(标识和访问管理)”边栏选项卡可以分配角色。  该功能也称为标识和访问管理，会显示在 Azure 门户中的多个位置。 下面显示了订阅的“访问控制(IAM)”边栏选项卡的示例。
+使用“访问控制(IAM)”边栏选项卡可以分配角色，以授予对 Azure 资源的访问权限。  该功能也称为标识和访问管理，会显示在 Azure 门户中的多个位置。 下面显示了订阅的“访问控制(IAM)”边栏选项卡的示例。
 
 ![订阅的“访问控制(IAM)”边栏选项卡](./media/role-assignments-portal/access-control-subscription.png)
 
@@ -55,21 +55,25 @@ ms.locfileid: "75623828"
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
-通过以下步骤在不同的范围分配角色。
+在 Azure RBAC 中，若要授予对 Azure 资源的访问权限，请添加角色分配。 遵循以下步骤分配角色。
 
-1. 在 Azure 门户中单击“所有服务”，然后选择范围。  例如，可以选择“管理组”、“订阅”、“资源组”或某个资源    。
+1. 在 Azure 门户中单击“所有服务”，然后选择要授予访问权限的范围。  例如，可以选择“管理组”、“订阅”、“资源组”或某个资源    。
 
-1. 单击特定的资源。
+1. 单击该范围的特定资源。
 
 1. 单击“访问控制(IAM)”  。
 
-1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配  。
+1. 单击“角色分配”选项卡以查看在此范围内的角色分配。 
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。  
+    ![“访问控制(IAM)”和“角色分配”选项卡](./media/role-assignments-portal/role-assignments.png)
+
+1. 单击“添加” > “角色分配”。  
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
    ![添加菜单](./media/role-assignments-portal/add-menu.png)
+
+    此时会打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -81,23 +85,29 @@ ms.locfileid: "75623828"
 
    片刻之后，会在所选范围内为安全主体分配角色。
 
+    ![添加角色分配 - 保存](./media/role-assignments-portal/add-role-assignment-save.png)
+
 ## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>将用户分配为订阅的管理员
 
 若要使某个用户成为 Azure 订阅的管理员，请在订阅范围内为其分配[所有者](built-in-roles.md#owner)角色。 “所有者”角色授予用户对订阅中所有资源的完全访问权限，包括将访问权限授予其他用户的权限。 这些步骤与任何其他角色分配是相同的。
 
 1. 在 Azure 门户中，依次单击“所有服务”、“订阅”   。
 
-1. 单击要添加角色分配的订阅。
+1. 单击要授予访问权限的订阅。
 
 1. 单击“访问控制(IAM)”  。
 
-1. 单击“角色分配”选项卡以查看此订阅的所有角色分配  。
+1. 单击“角色分配”选项卡以查看此订阅的角色分配。 
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。  
+    ![“访问控制(IAM)”和“角色分配”选项卡](./media/role-assignments-portal/role-assignments.png)
+
+1. 单击“添加” > “角色分配”。  
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
    ![添加菜单](./media/role-assignments-portal/add-menu.png)
+
+    此时会打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -111,7 +121,7 @@ ms.locfileid: "75623828"
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
 
-在 RBAC 中，若要删除访问权限，请删除角色分配。 通过以下步骤删除角色分配。
+在 Azure RBAC 中，若要从 Azure 资源删除访问权限，请删除角色分配。 通过以下步骤删除角色分配。
 
 1. 在要删除访问权限的范围（例如管理组、订阅、资源组或资源）内打开“访问控制(IAM)”  。
 
@@ -127,7 +137,7 @@ ms.locfileid: "75623828"
 
 1. 在显示的“删除角色分配”消息中，单击“是”。 
 
-    不能删除继承的角色分配。 如果需要删除继承的角色分配，则必须在创建角色分配的作用域上进行操作。 在“作用域”  列的“(继承)”  旁，有一条链接指向分配了此角色的范围。 请转到该处列出的范围以删除角色分配。
+    此时会显示一条消息，指出无法删除继承的角色分配，而你正在尝试删除子范围的角色分配。 应在角色的分配范围打开“访问控制(IAM)”，然后重试。 在正确的范围打开“访问控制(IAM)”的快捷方法是查看“范围”列，然后单击“(继承)”旁边的链接。  
 
    ![“删除角色分配”消息](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 

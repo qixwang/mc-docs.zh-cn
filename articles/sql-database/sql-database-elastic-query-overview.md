@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库弹性查询概述 | Microsoft Docs
+title: 弹性查询概述
 description: 使用弹性查询可运行跨多个数据库的 Transact-SQL 查询。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
-manager: digimobile
-origin.date: 07/01/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 1a51e2255f27d3e6d5fade5a519c32b9386461dc
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+origin.date: 12/05/2019
+ms.date: 02/17/2020
+ms.openlocfilehash: e7533a1085b354e890ee7d4e7649a23edd680ff8
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544329"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155692"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 
@@ -58,10 +57,10 @@ ms.locfileid: "69544329"
 弹性查询的客户方案的特征包括以下拓扑：
 
 * **垂直分区 - 跨数据库查询**（拓扑 1）：数据在数据层中的多个数据库之间垂直分区。 通常，不同的表集驻留在不同的数据库上。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 采用此拓扑的常见使用案例需要使用一个查询跨多个数据库中的表进行查询或编译报表。
-* **水平分区 - 分片**（拓扑 2）：将数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。
+* **水平分区 - 分片**（拓扑 2）：将数据进行水平分区以将行分布到扩大的数据层上。 使用此方法时，所有参与数据库中的架构是相同的。 此方法也称为“分片”。 可以使用 (1) 弹性数据库客户端库或 (2) 自我分片来执行和管理分片。 可使用弹性查询跨多个分片查询或编译报表。 分片通常是弹性池中的数据库。 可将弹性查询视为一次性查询弹性池的所有数据库的高效方式，前提是数据库共享通用架构。
 
 > [!NOTE]
-> 弹性查询最适用于可以在外部源端执行大多数处理（筛选、聚合）的报告方案。 它不适用于从远程数据库传输大量数据的 ETL 操作。 对于使用更复杂查询的大量报表工作负荷或数据仓库方案，还可以考虑使用 [Azure SQL 数据仓库](https://www.azure.cn/home/features/sql-data-warehouse/)。
+> 弹性查询最适用于可以在外部源端执行大多数处理（筛选、聚合）的报告方案。 它不适用于从远程数据库传输大量数据的 ETL 操作。 对于使用更复杂查询的大量报表工作负荷或数据仓库方案，还可以考虑使用 [Azure Synapse Analytics](https://www.azure.cn/home/features/sql-data-warehouse/)。
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>垂直分区 - 跨数据库查询
@@ -119,6 +118,9 @@ ms.locfileid: "69544329"
 有关水平分区方案所需的步骤的详细信息，可以在[水平分区的弹性查询](sql-database-elastic-query-horizontal-partitioning.md)中找到。
 
 若要开始编写代码，请参阅[弹性查询入门 - 水平分区（分片）](sql-database-elastic-query-getting-started.md)。
+
+> [!IMPORTANT]
+> 能否对大量的数据库成功执行弹性查询，在很大程度上取决于执行查询期间每个数据库的可用性。 如果其中的某个数据库不可用，整个查询将会失败。 如果你打算一次性查询数百甚至数千个数据库，请确保客户端应用程序中嵌入了重试逻辑，或者考虑利用[弹性数据库作业](/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview)（预览版）并查询一小部分数据库，然后将每个查询的结果合并到一个目标中。
 
 ## <a name="t-sql-querying"></a>T-SQL 查询
 

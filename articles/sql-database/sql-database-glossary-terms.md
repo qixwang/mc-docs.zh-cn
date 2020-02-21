@@ -10,46 +10,30 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-origin.date: 04/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: eff89df435c9cd8289435b0ac2593ea7d791c10c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/22/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: f7661762bc6b6dc0b5372c08f85d267633f8276c
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336283"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155680"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL 数据库术语表
 
 |上下文|术语|详细信息|
 |:---|:---|:---|
-|Azure 服务名称|Azure SQL 数据库或 SQL 数据库|[Azure SQL 数据库服务](sql-database-technical-overview.md)|
-|计算层|无服务器 |[无服务器计算层](sql-database-serverless.md)
-||已预配|[无服务器计算层](sql-database-serverless.md)
+|Azure 服务|Azure SQL 数据库或 SQL 数据库|[Azure SQL 数据库服务](sql-database-technical-overview.md)|
+|购买模型|基于 DTU 的购买模型|[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)|
+||基于 vCore 的购买模型|[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)|
 |部署选项 |单一数据库|[单一数据库](sql-database-single-database.md)|
 ||弹性池|[弹性池](sql-database-elastic-pool.md)|
 ||托管实例|[托管实例](sql-database-managed-instance.md)|
-|服务器对象|SQL 数据库服务器或数据库服务器|[数据库服务器](sql-database-servers.md)|
+|服务层|基本、标准、高级、常规用途、超大规模、业务关键|有关 vCore 模型中的服务层级，请参阅[单一数据库和弹性池](sql-database-service-tiers-vcore.md#service-tiers)以及[托管实例](sql-database-managed-instance.md#managed-instance-service-tiers)。 有关 DTU 模型中的服务层级，请参阅 [DTU 模型](sql-database-service-tiers-dtu.md#compare-the-dtu-based-service-tiers)。|
+|计算层|无服务器计算|[无服务器计算](sql-database-service-tiers-vcore.md#compute-tiers)
+||预配计算|[预配计算](sql-database-service-tiers-vcore.md#compute-tiers)
+|计算的代|Gen5、M 系列、Fsv2 系列|[硬件代系](sql-database-service-tiers-vcore.md#hardware-generations)
+|服务器实体|SQL 数据库服务器或数据库服务器|[数据库服务器](sql-database-servers.md)|
 ||SQL 数据库托管实例服务器、托管实例服务器或实例服务器|[托管实例](sql-database-managed-instance.md)|
-数据库对象|Azure SQL 数据库|Azure SQL 数据库中的任何数据库|
-||单一数据库|使用单一数据库部署选项创建的数据库|
-||共用数据库|在弹性池内创建或移入其中的数据库|
-||实例数据库|在托管实例中创建的数据库|
-||基本数据库|在基于 DTU 的购买模型的“基本”服务层级内创建或移入其中的数据库|
-||标准数据库|在基于 DTU 的购买模型的“标准”服务层级内创建或移入其中的数据库|
-||高级数据库|在基于 DTU 的购买模型的“高级”服务层级内创建或移入其中的数据库|
-||常规用途数据库|在基于 vCore 的购买模型的“常规用途”服务层级内创建或移入其中的数据库|
-||“超大规模”数据库|在基于 vCore 的购买模型的“超大规模”服务层级内创建或移入其中的数据库|
-||业务关键数据库|在基于 vCore 的购买模型的“业务关键”服务层级内创建或移入其中的数据库|
-||已预配的数据库|在已预配的计算层中配置的数据库|
-|[购买模型和资源](sql-database-purchase-models.md)|基于 DTU 的购买模型|[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)|
-||基于 vCore 的购买模型|[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)|
-||vCore|虚拟机监控程序向来宾 OS 提供的核心。|
-||服务层|购买模型中的服务级别|
-||计算大小|服务层级内单一数据库、弹性池或托管实例的计算资源的数量|
-||存储量|单个数据库、弹性池或托管实例的可用存储量|
-||计算的代|服务层级内的处理器代系|
-|数据库服务器 IP 防火墙规则|IP 防火墙规则|[IP 防火墙规则](sql-database-firewall-configure.md)|
-||服务器级别 IP 防火墙规则|[服务器级 IP 防火墙规则](sql-database-firewall-configure.md)|
-|| 数据库级 IP 防火墙规则|[数据库级 IP 防火墙规则](sql-database-firewall-configure.md)|
-||虚拟网络终结点和规则|[虚拟网络终结点和规则](sql-database-vnet-service-endpoint-rule-overview.md)|
+|资源类型|vCore|提供给单一数据库、弹性池或托管实例的计算资源的 CPU 核心。|
+||计算大小和存储量|计算大小是可用于单一数据库、弹性池或托管实例的最大 CPU、内存和其他非存储相关资源量。  存储大小是可用于单一数据库、弹性池或托管实例的最大存储量。  有关 vCore 模型中的大小选项，请参阅 [vCore 单一数据库](sql-database-vcore-resource-limits-single-databases.md)、[vCore 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)和[托管实例](sql-database-managed-instance-resource-limits.md)。  有关 DTU 模型中的大小选项，请参阅 [DTU 单一数据库](sql-database-dtu-resource-limits-single-databases.md)和 [DTU 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)。

@@ -1,24 +1,28 @@
 ---
 title: Azure 应用程序网关的运行状况监视概述
-description: 了解 Azure 应用程序网关中的监视功能
+description: Azure 应用程序网关会监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/06/2018
-ms.date: 04/16/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 73d18dbdfff48c982c52edf7c02346fdaf5259a9
-ms.sourcegitcommit: bf3df5d77e5fa66825fe22ca8937930bf45fd201
+ms.openlocfilehash: dc61f5b0d64933c1ef4f87206a880f37331e97dc
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686309"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155541"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
-默认情况下，Azure 应用程序网关会监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。 应用程序网关持续监视不正常的实例，一旦这些实例恢复可用状态并能响应运行状况探测，应用程序网关就会将它们添加回到正常的后端池中。 应用程序网关发送的运行状况探测所针对的端口与后端 HTTP 设置中定义的端口相同。 此配置可确保探测所测试的端口即是客户用来连接到后端的端口。
+默认情况下，Azure 应用程序网关会监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。 应用程序网关持续监视不正常的实例，一旦这些实例恢复可用状态并能响应运行状况探测，应用程序网关就会将它们添加回正常的后端池中。 应用程序网关发送的运行状况探测所针对的端口与后端 HTTP 设置中定义的端口相同。 此配置可确保探测所测试的端口即是客户用来连接到后端的端口。 
+
+应用程序网关用于运行状况探测的源 IP 地址取决于后端池：
+ 
+- 如果后端池是公共终结点，则源地址是应用程序网关前端公共 IP 地址。
+- 如果后端池是专用终结点，则源 IP 地址来自应用程序网关子网专用 IP 地址空间。
+
 
 ![应用程序网关探测示例][1]
 
@@ -55,7 +59,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | 值 | 说明 |
+| 探测属性 | Value | 说明 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
@@ -83,10 +87,10 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 | 探测属性 | 说明 |
 | --- | --- |
-| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
-| 路径 |探测的相对路径。 有效路径以“/”开头。 |
+| `Path` |探测的相对路径。 有效路径以“/”开头。 |
 | 时间间隔 |探测间隔（秒）。 此值是每两次连续探测之间的时间间隔。 |
 | 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则将探测标记为失败。  |
 | 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
@@ -106,4 +110,3 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
 
-<!-- Update_Description: wording update -->

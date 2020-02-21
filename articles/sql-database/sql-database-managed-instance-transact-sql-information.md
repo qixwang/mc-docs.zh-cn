@@ -8,16 +8,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: sstein, carlrab, bonova
-origin.date: 11/04/2019
-ms.date: 12/16/2019
+ms.reviewer: sstein, carlrab, bonova, danil
+origin.date: 12/30/2019
+ms.date: 02/17/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 6e46b68f256d48de70e70a6e018cfbd2aeb7b393
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2d23bba2cf02ab1292a0ca4d08f374d6d509a646
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336138"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155703"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "75336138"
 
 与 SQL Server 相比，托管实例中引入了一些 PaaS 限制，并且在行为方面有一些变化。 这些差异划分为以下几个类别：<a name="Differences"></a>
 
-- [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异。
+- [可用性](#availability)包括 [Always-On 可用性组](#always-on-availability-groups)和[备份](#backup)方面的差异。
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名和用户名](#logins-and-users)以及[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异。
 - [配置](#configuration)包括[缓冲池扩展](#buffer-pool-extension)、[排序规则](#collation)、[兼容性级别](#compatibility-levels)、[数据库镜像](#database-mirroring)、[数据库选项](#database-options)、[SQL Server 代理](#sql-server-agent)以及[表选项](#tables)方面的差异。
 - [功能](#functionalities)包括 [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分布式事务](#distributed-transactions)、[已扩展事件](#extended-events)、[外部库](#external-libraries)、[文件流和文件表](#filestream-and-filetable)、[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、[Polybase](#polybase)、[复制](#replication)、[还原](#restore-statement)、[Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-and-triggers)。
@@ -39,7 +39,7 @@ ms.locfileid: "75336138"
 
 ## <a name="availability"></a>可用性
 
-### <a name="always-on-availability"></a>Always On
+### <a name="always-on-availability-groups"></a>Always On 可用性组
 
 [高可用性](sql-database-high-availability.md)内置在托管实例中，用户无法控制。 不支持以下语句：
 
@@ -66,7 +66,7 @@ ms.locfileid: "75336138"
 
 - 使用托管实例可将数据库备份到最多包含 32 个条带的备份，如果使用备份压缩，则这种方法对于不超过 4 TB 的数据库而言已足够。
 - 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
-- 在托管实例中使用 `BACKUP` 命令最大可以设置 195 GB 的备份条带大小（即最大 Blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
+- 在托管实例中使用 `BACKUP` 命令最大可以设置 195 GB 的备份条带大小（即最大 Blob 大小）。 增加备份命令中的带状线数量以缩小单个带状线大小，将其保持在限制范围内。
 
     > [!TIP]
     > 从本地环境或虚拟机中的 SQL Server 备份数据库时，若要解决此限制，可以：
@@ -192,7 +192,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持[缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)。
 - 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>排序规则
 
 默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
@@ -407,41 +407,11 @@ WITH PRIVATE KEY (<private_key_options>)
 - 支持快照和双向复制类型。 不支持合并复制、对等复制和可更新订阅。
 - [事务复制](sql-database-managed-instance-transactional-replication.md)在托管实例上为公共预览版，但存在一些约束：
     - 所有类型的复制参与者（发布服务器、分发服务器、拉取订阅服务器和推送订阅服务器）都可以放置在托管实例上，但发布服务器和分发服务器必须同时在云中或同时在本地。
-    - 托管实例可以与最新版 SQL Server 通信。 请在[此处](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)查看支持的版本。
+    - 托管实例可以与最新版 SQL Server 通信。 有关详细信息，请参阅[支持的版本矩阵](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)。
     - 事务复制有一些[其他的网络要求](sql-database-managed-instance-transactional-replication.md#requirements)。
 
-若要了解如何配置复制，请参阅[复制教程](replication-with-sql-database-managed-instance.md)。
-
-
-如果对[故障转移组](sql-database-auto-failover-group.md)中的数据库启用了复制，则托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移后，在新的主节点上重新配置这些发布内容。 在此方案中，需要执行以下活动：
-
-1. 停止数据库上运行的所有复制作业（如果有）。
-2. 通过在发布服务器数据库上运行以下脚本，删除发布服务器中的订阅元数据：
-
-   ```sql
-   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
-   ```             
- 
-1. 删除订阅服务器中的订阅元数据。 在订阅服务器实例的订阅数据库中运行以下脚本：
-
-   ```sql
-   EXEC sp_subscription_cleanup
-      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.chinacloudapi.cn>', 
-      @publisher_db = N'<publisher database>', 
-      @publication = N'<name of publication>'; 
-   ```                
-
-1. 通过在已发布的数据库中运行以下脚本，强制删除发布服务器中的所有复制对象：
-
-   ```sql
-   EXEC sp_removedbreplication
-   ```
-
-1. 强制删除原始主实例中的旧分发服务器（如果故障回复到曾经具有分发服务器的旧主实例）。 在旧的分发服务器托管实例中的 master 数据库上运行以下脚本：
-
-   ```sql
-   EXEC sp_dropdistributor 1,1
-   ```
+有关配置事务复制的详细信息，请参阅以下教程：
+- [MI 发布服务器与订阅服务器之间的复制](replication-with-sql-database-managed-instance.md)
 
 ### <a name="restore-statement"></a>RESTORE 语句 
 
@@ -536,11 +506,55 @@ WITH PRIVATE KEY (<private_key_options>)
 
 在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据实例存储大小受到限制。 在“常规用途”层级上，`Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
 
+### <a name="msdb"></a>MSDB
+
+托管实例中的以下 MSDB 架构必须由其相应的预定义角色拥有：
+
+- 常规角色
+  - TargetServersRole
+- [固定数据库角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+  - SQLAgentUserRole
+  - SQLAgentReaderRole
+  - SQLAgentOperatorRole
+- [DatabaseMail 角色](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
+  - DatabaseMailUserRole
+- [集成服务角色](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
+  - msdb
+  - db_ssisltduser
+  - db_ssisoperator
+  
+> [!IMPORTANT]
+> 客户更改预定义的角色名称、架构名称和架构所有者将会影响服务的正常运行。 如果对这些属性进行任何更改，在检测到此类更改后会立即将其还原到预定义值，或者最迟在下次更新服务时还原，以确保服务正常运行。
+
 ### <a name="error-logs"></a>错误日志
 
 托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或用于 Azure Data Studio 的[托管实例扩展（预览版）](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
 
 ## <a name="Issues"></a> 已知问题
+
+### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限
+
+**日期：** 2019 年 12 月
+
+如果将非 sysadmin 登录名添加到任何 [SQL 代理固定数据库角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)，则会出现以下问题：需要向主存储过程授予显式 EXECUTE 权限才能使这些登录名正常工作。 如果遇到此问题，将显示错误消息“在对象 <object_name> 中拒绝了 EXECUTE 权限(Microsoft SQL Server，错误:229)”。
+
+**解决方法**：将登录名添加到任一 SQL 代理固定数据库角色之后：添加到这些角色的每个登录名的 SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole 将执行以下 T-SQL 脚本，以向列出的存储过程显式授予 EXECUTE 权限。
+
+```tsql
+USE [master]
+GO
+CREATE USER [login_name] FOR LOGIN [login_name]
+GO
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+```
+
+### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>重启代理进程可能会中断 SQL 代理作业
+
+**日期：** 2019 年 12 月
+
+每次启动一个作业，SQL 代理就会创建一个新会话，这会逐渐增大内存消耗量。 为了避免达到内部内存限制，从而阻止已计划作业的执行，一旦代理的内存消耗量达到阈值，就会重启代理进程。 这可能会中断重启时正在运行的作业的执行。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>内存中 OLTP 内存限制不适用
 

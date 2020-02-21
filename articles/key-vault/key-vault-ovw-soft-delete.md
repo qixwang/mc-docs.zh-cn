@@ -6,20 +6,20 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 03/19/2019
-ms.date: 10/30/2019
-ms.openlocfilehash: b2df31308260791f9e00948a27dd8e7bfdb706ba
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 02/17/2019
+ms.openlocfilehash: dea207a315b100ce456eb29e93b51bb3dc890ccb
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426098"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112211"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
 Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象，称为软删除。 本文将具体探讨以下方案：
 
 - 支持 Key Vault 的可恢复删除
-- 支持 Key Vault 对象的可恢复删除（例如 提供的支持
+- 针对 Key Vault 对象（例如密钥、机密和证书）的可恢复删除 提供的支持
 
 ## <a name="supporting-interfaces"></a>支持接口
 
@@ -31,19 +31,27 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 1. 在典型情景中，用户可能无意中删除了 Key Vault 或 Key Vault 对象；如果 Key Vault 或 Key Vault 对象在预设的某个时间段内可恢复，则用户可以撤消删除并恢复其数据。
 
-2. 在另一种情景中，恶意用户可能会试图删除 Key Vault 或 Key Vault 对象（例如保管库内的密钥），导致业务中断。 作为安全措施，可将 Key Vault 或 Key Vault 对象的删除与基础数据的实际删除区分开，例如，将数据删除的权限限制为不同的受信任角色。 此方法实际上需要对可能导致数据立即丢失的操作进行仲裁。
+2. 在另一种情景中，恶意用户可能会试图删除 Key Vault 或 Key Vault 对象（例如保管库内的密钥），导致业务中断。 作为一项安全措施，可将 Key Vault 或 Key Vault 对象的删除与基础数据的实际删除区分开来，例如，将数据删除权限仅授予另一个受信任角色。 此方法实际上需要对可能导致数据立即丢失的操作进行仲裁。
 
 ### <a name="soft-delete-behavior"></a>软删除行为
 
 有此功能时，对 Key Vault 或 Key Vault 对象的 DELETE 操作是软删除，因此可以有效地在给定保留期（90 天）内保留资源，同时通过外观提示已删除对象。 该服务进一步提供了用于恢复已删除对象的机制，实质上是撤消删除。 
 
-软删除是一种可选的 Key Vault 行为，在此版本中**默认未启用**。 可以通过 [CLI](key-vault-soft-delete-cli.md) 或 [Powershell](key-vault-soft-delete-powershell.md) 来启用它。
+现在，默认会为新建的 Key Vault 启用软删除。 可以通过 [Azure CLI](key-vault-soft-delete-cli.md) 或 [Azure PowerShell](key-vault-soft-delete-powershell.md) 禁用软删除。
+
+默认保留期为 90 天，但可以通过 Azure 门户将保留策略间隔设置为 7 到 90 天的值。 清除保护保留策略使用相同的间隔。 
+
+对 Key Vault 设置软删除后，无法禁用软删除，并且无法更改保留策略间隔。 
+
+在保留期结束之前，无法重复使用已软删除的 Key Vault 的名称。 
 
 ### <a name="purge-protection"></a>清除保护 
 
-启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 这些保管库和对象仍然可以恢复，从而确保客户将遵循保留策略。 
-
 清除保护是一种可选的 Key Vault 行为，**默认未启用**。 可以通过 [CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) 或 [Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection) 来启用它。
+
+启用清除保护后，在保留期结束之前，无法清除处于已删除状态的保管库或对象。 软删除的保管库和对象仍可恢复，这可以确保遵循保留策略。 
+
+默认保留期为 90 天，但可以通过 Azure 门户将保留策略间隔设置为 7 到 90 天的值。 设置并保存保留策略间隔后，无法为该保管库更改保留策略间隔。 
 
 ### <a name="permitted-purge"></a>允许的清除
 
@@ -65,7 +73,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 ### <a name="soft-delete-retention-period"></a>软删除保留期
 
-软删除的资源将保留设定的一段时间（90 天）。 以下项在软删除保留间隔期间适用：
+软删除的资源将保留设定的一段时间（90 天）。 在软删除保留间隔内，以下情况属实：
 
 - 可以列出订阅中处于软删除状态的所有 Key Vault 和 Key Vault 对象，并可访问与这些对象有关的删除和恢复信息。
     - 只有具有特殊权限的用户才能列出已删除的保管库。 我们建议用户创建一个具有这些特殊权限的自定义角色来处理已删除的保管库。
@@ -74,7 +82,7 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
     - 有权在资源组下创建 key vault 的用户（自定义角色的成员）可以还原该保管库。
 - 只有特权用户可以强制删除 Key Vault 或 Key Vault 对象，方法是对相应的代理资源发出删除命令。
 
-除非恢复 Key Vault 或 Key Vault 对象，否则在保留间隔结束时，服务将清除已软删除的 Key Vault 或 Key Vault 对象及其内容。 资源删除不可重新计划。
+除非恢复 Key Vault 或 Key Vault 对象，否则在保留间隔结束时，服务会清除已软删除的 Key Vault 或 Key Vault 对象及其内容。 资源删除不可重新计划。
 
 ### <a name="billing-implications"></a>计费影响
 
