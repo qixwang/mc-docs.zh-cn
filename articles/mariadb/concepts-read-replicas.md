@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB 中的只读副本
+title: 只读副本 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 中的只读副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 11/17/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: ceccfd4cb328a2915af566bd9391e96ab0059055
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+origin.date: 01/16/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 4b4ea4c4acc578c38ee0a1354e57bb24f1119e52
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839044"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192473"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -119,7 +119,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 ### <a name="deleted-master-and-standalone-servers"></a>删除的主服务器和独立服务器
 
-删除主服务器后，将对所有只读副本停止复制。 这些副本服务器将成为独立服务器。 将删除主服务器本身。
+删除主服务器后，将对所有只读副本停止复制。 这些副本会自动成为独立服务器，并且可以接受读取和写入。 将删除主服务器本身。
 
 ### <a name="user-accounts"></a>用户帐户
 

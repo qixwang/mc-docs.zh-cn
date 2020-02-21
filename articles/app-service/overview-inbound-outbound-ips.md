@@ -6,12 +6,12 @@ origin.date: 06/06/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 2743ae4ad1ee073fe5fda6784c37b13bac3e9823
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 1964ed4c11ae66c1ca05dbd5f6c15aca62d47ca8
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600422"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179330"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -25,7 +25,7 @@ ms.locfileid: "75600422"
 
 - 删除应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个应用，然后重新创建它。 
-- 删除现有的 SSL 绑定，例如在证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-certificate)）。
+- 删除特定时段（例如，证书续订期间）的现有 SSL 绑定。
 
 ## <a name="find-the-inbound-ip"></a>找到入站 IP
 
@@ -37,7 +37,7 @@ nslookup <app-name>.chinacloudsites.cn
 
 ## <a name="get-a-static-inbound-ip"></a>获取静态入站 IP
 
-有时，你可能需要对应用使用专用静态 IP 地址。 若要获取静态入站 IP 地址，需要配置[基于 IP 的 SSL 绑定](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain)。 如果并不真正需要使用 SSL 功能来保护应用，甚至可以上传一个自签名证书来实现此绑定。 在基于 IP 的 SSL 绑定中，证书将绑定到 IP 地址本身，因此，应用服务会预配一个静态 IP 地址来实现此目的。 
+有时，你可能需要对应用使用专用静态 IP 地址。 若要获取静态入站 IP 地址，需要配置[基于 IP 的 SSL 绑定](configure-ssl-bindings.md#secure-a-custom-domain)。 如果并不真正需要使用 SSL 功能来保护应用，甚至可以上传一个自签名证书来实现此绑定。 在基于 IP 的 SSL 绑定中，证书将绑定到 IP 地址本身，因此，应用服务会预配一个静态 IP 地址来实现此目的。 
 
 ## <a name="when-outbound-ips-change"></a>出站 IP 更改时
 

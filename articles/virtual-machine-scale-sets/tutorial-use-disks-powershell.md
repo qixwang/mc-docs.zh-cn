@@ -1,28 +1,19 @@
 ---
-title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘 | Microsoft 文档
+title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘
 description: 了解如何通过 Azure PowerShell 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 03/27/2018
-ms.date: 05/16/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 91be7454735f476514b8d587338b5267c0c14d69
-ms.sourcegitcommit: 10a858569fbfde321e71b649701ca3862bbc0178
+ms.openlocfilehash: c4f6ec2ae2757386c74028ed49a69fcd01b79fe4
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917453"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128864"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 
@@ -73,7 +64,7 @@ Azure 提供两种类型的磁盘。
 标准存储受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负荷。
 
 ### <a name="premium-disk"></a>高级磁盘
-高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 建议对运行生产工作负荷的 VM 使用这些磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将舍入为下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
+高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 建议对运行生产工作负荷的 VM 使用这些磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将向上舍入到下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
 
 ### <a name="premium-disk-performance"></a>高级磁盘性能
 |高级存储磁盘类型 | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
@@ -298,7 +289,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和磁盘，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+若要删除规模集和磁盘，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -320,4 +311,4 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [对规模集 VM 实例使用自定义映像](tutorial-use-custom-image-powershell.md)
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: update metedata properties -->

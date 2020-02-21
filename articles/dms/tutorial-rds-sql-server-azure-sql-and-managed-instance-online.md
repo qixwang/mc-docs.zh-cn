@@ -1,6 +1,7 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例 | Microsoft Docs
-description: 了解使用 Azure 数据库迁移服务执行从 RDS SQL Server 到 Azure SQL 数据库或 Azure SQL 数据库托管实例的联机迁移操作。
+title: 教程：将 RDS SQL Server 联机迁移到 SQL 数据库
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure 数据库迁移服务执行从 RDS SQL Server 到 Azure SQL 数据库单一数据库或托管实例的联机迁移操作。
 services: dms
 author: WenJason
 ms.author: v-jay
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 05/08/2019
-ms.date: 08/12/2019
-ms.openlocfilehash: f6ae4f146c528d3c5e087525340667cc82821879
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: bbd7db9a104ebd669724e70b4360363410698aa8
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952146"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192463"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](/sql-database/)或 [Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例  。
@@ -42,7 +43,7 @@ ms.locfileid: "68952146"
 
 本文介绍如何从 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 要完成本教程，需要：
 
 * 创建 [RDS SQL Server 数据库](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)。
@@ -52,10 +53,10 @@ ms.locfileid: "68952146"
     > 若要迁移到 Azure SQL 数据库托管实例，请遵循[创建 Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-get-started)一文中的详细信息，并创建名为 AdventureWorks2012 的空数据库  。 
  
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更高版本。
-* 使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Azure 虚拟网络 (VNet)。 若要迁移到 Azure SQL 数据库托管实例，请确保在用于 Azure SQL 数据库托管实例的同一 VNet 中（但在不同的子网）中创建 DMS 实例。  或者，如果对 DMS 使用不同的 VNet，则需要在两个 VNet 之间创建 VNet 对等互连。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Azure 虚拟网络。 若要迁移到 Azure SQL 数据库托管实例，请确保在用于 Azure SQL 数据库托管实例的同一虚拟网络的不同子网中创建 DMS 实例。  或者，如果对 DMS 使用不同的虚拟网络，则需要在两个虚拟网络之间创建虚拟网络对等互连。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在设置 VNet 期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > 在设置虚拟网络期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -63,10 +64,10 @@ ms.locfileid: "68952146"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。 
 
-* 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
-* 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNET 子网范围。
+* 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 确保用于连接到源 RDS SQL Server 实例的凭据与属于“Processadmin”服务器角色的帐户相关联，并与属于要迁移的所有数据库上的“db_owner”数据库角色的帐户相关联。
 * 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限；如果迁移到 Azure SQL 数据库托管实例，该帐户需是 sysadmin 角色的成员。
 * 源 RDS SQL Server 版本必须为 SQL Server 2012 和更高版本。 若要确定 SQL Server 实例正在运行的版本，请参阅[如何确定 SQL Server 及其组件的版本、版本类别和更新级别](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)一文。
@@ -164,11 +165,11 @@ ms.locfileid: "68952146"
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。 
 
-5. 选择现有的 VNet，或新建一个 VNet。
+5. 选择现有虚拟网络或新建一个。
 
-    VNet 为 Azure 数据库迁移服务提供了对源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供了对源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
 
-    若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
 6. 选择定价层；对于此联机迁移，请务必选择“高级”定价层。
 

@@ -1,21 +1,19 @@
 ---
-title: 使用 Azure PowerShell 加密 Azure 规模集磁盘 | Microsoft Docs
+title: 使用 Azure PowerShell 加密 Azure 规模集磁盘
 description: 了解如何使用 Azure PowerShell 来加密 Windows 虚拟机规模集中的 VM 实例和附加的磁盘
-services: virtual-machine-scale-sets
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.topic: article
-origin.date: 10/15/2019
-ms.date: 10/29/2019
+ms.topic: conceptual
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 16eb7f52f1a34acbe8f5bef77b6e9a191f47987e
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: 63e873ff4f750b76ab019fc9a622d5b6273ccf08
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142197"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128829"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>通过 Azure PowerShell 对虚拟机规模集中的操作系统和附加的数据磁盘进行加密
 
@@ -151,3 +149,4 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 - 在本文中，我们已使用 Azure PowerShell 加密了虚拟机规模集。 也可以使用 [Azure CLI](disk-encryption-cli.md) 或 [Azure 资源管理器模板](disk-encryption-azure-resource-manager.md)。
 - 如果希望在预配另一个扩展后应用 Azure 磁盘加密，可以使用[扩展排序](virtual-machine-scale-sets-extension-sequencing.md)。
 
+<!-- Update_Description: update metedata properties -->

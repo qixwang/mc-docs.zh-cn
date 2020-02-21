@@ -1,5 +1,5 @@
 ---
-title: 设置 Azure SQL 数据同步 | Microsoft Docs
+title: 设置数据同步
 description: 本教程介绍如何设置 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
@@ -9,16 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: douglasl
-manager: digimobile
+ms.reviewer: carlrab
 origin.date: 01/14/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 6c98db1cd3f07ddb1dd919427ae75cfa95e2d35a
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 02/17/2020
+ms.openlocfilehash: 23395c9695dbe69e14b7038eb2470f0707144358
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544325"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155683"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：设置 Azure SQL 数据库和本地 SQL Server 之间的 SQL 数据同步
 
@@ -35,14 +34,20 @@ ms.locfileid: "69544325"
 
 ## <a name="create-sync-group"></a>创建同步组
 
-1. 在浏览器中，导航到 Azure 门户。 从仪表板中找到 SQL 数据库，或者在“SQL 数据库”页的工具栏上选择“SQL 数据库”图标，选择要用作数据同步的中心数据库的数据库   。
+1. 若要查找 SQL 数据库，请转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择“SQL 数据库”  。
+
+    ![搜索“SQL 数据库”，Microsoft Azure 门户](media/sql-database-get-started-sql-data-sync/search-for-sql-databases.png)
+
+1. 选择要用作数据同步的中心数据库的数据库。
+
+    ![从SQL 数据库列表中进行选择，Microsoft Azure 门户](media/sql-database-get-started-sql-data-sync/select-sql-database.png)
 
     > [!NOTE]
     > 中心数据库是同步拓扑的中央终结点，其中同步组具有多个数据库终结点。 同步组中具有终结点的所有其他成员数据库会与中心数据库进行同步。
 
-1. 在选定数据库的“SQL 数据库”页中，选择“同步到其他数据库”   。
+1. 在选定数据库的“SQL 数据库”菜单中，选择“同步到其他数据库”   。
 
-    ![“同步到其他数据库”选项](media/sql-database-get-started-sql-data-sync/datasync-overview.png)
+    ![同步到其他数据库、SQL 数据库，Microsoft Azure 门户](media/sql-database-get-started-sql-data-sync/sync-to-other-databases.png)
 
 1. 在“同步到其他数据库”页中，选择“新建同步组”   。 “新建同步组”页随即打开，其中突出显示“创建同步组(步骤 1)”   。
 

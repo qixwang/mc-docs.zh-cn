@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 11/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: c789eea9e851da2624e44e1f933acf76a5f9a636
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 523ae00a94d10aaa4cc0c3ae3cfca1cf682d9e7b
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336070"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155627"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -50,7 +50,7 @@ ms.locfileid: "75336070"
 
 若要复制数据库，请使用以下示例。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 对于 PowerShell，请使用 [New-AzSqlDatabaseCopy](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet。
 
@@ -64,7 +64,7 @@ New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourcese
 
 数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要取消仍在进行的复制操作，请使用 [Remove-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) cmdlet 删除目标数据库。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azure-cli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `

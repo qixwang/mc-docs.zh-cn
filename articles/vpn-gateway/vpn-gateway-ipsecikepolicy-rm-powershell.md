@@ -1,27 +1,20 @@
 ---
-title: 为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略：Azure 资源管理器：PowerShell | Microsoft Docs
+title: 用于 S2S VPN 和 VNet 到 VNet 连接的 IPsec/IKE 策略
+titleSuffix: Azure VPN Gateway
 description: 使用 Azure 资源管理器和 PowerShell 通过 Azure VPN 网关为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 origin.date: 02/14/2018
-ms.date: 11/11/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 53ba1476d07b04d19df5cb8aa03507490e22b167
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: 7c514e2e971e5ce71331d84541c224366deeafaa
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742286"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156804"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
@@ -64,7 +57,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 下表列出了支持的加密算法和密钥强度，客户可自行配置：
 
-|  IPsec/IKEv2  | **选项**    |
+| **IPsec/IKEv2**  | **选项**    |
 | ---  | --- 
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5  |
@@ -349,7 +342,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-如果没有配置 IPsec/IKE 策略，则命令 (PS> $connection6.policy) 返回的值为空。 这并不意味着未对连接配置 IPsec/IKE，而是表示没有自定义 IPsec/IKE 策略。 实际连接使用本地 VPN 设备和 Azure VPN 网关之间协商的默认策略。
+如果没有配置 IPsec/IKE 策略，则命令 (PS> $connection6.IpsecPolicies) 返回的值为空。 这并不意味着未对连接配置 IPsec/IKE，而是表示没有自定义 IPsec/IKE 策略。 实际连接使用本地 VPN 设备和 Azure VPN 网关之间协商的默认策略。
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2.为连接添加或更新 IPsec/IKE 策略
 

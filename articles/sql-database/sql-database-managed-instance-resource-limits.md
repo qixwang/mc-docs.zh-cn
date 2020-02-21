@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 origin.date: 11/27/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: c9d210a058ac8cc46026b7bdc82717f1a0cadf0e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 25d4ea1d15bb9cdbcfc729f2bbe2f77183d01f3e
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336139"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155739"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -65,7 +65,7 @@ ms.locfileid: "75336139"
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
-| vCore 数目\* | 第 4 代：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 <br/>\*相同数量的 vCore 专用于只读查询。 |
+| vCore 数目\* | Gen4：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 <br/>\*相同数量的 vCore 专用于只读查询。 |
 | 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：为读写查询提供 20.4 GB - 408 GB (5.1GB/vCore)<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
 | 最大实例存储大小（预留） | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 2 TB（适用于 24 个 vCore）<br/>- 4 TB（适用于 32、40、64、80 个 vCore） |
 | 最大数据库大小 | 不超过当前可用的实例大小（最大为 2 TB - 8 TB，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 4 TB，具体取决于 vCore 数）。 |
@@ -87,7 +87,7 @@ ms.locfileid: "75336139"
 > - 与最大存储大小限制进行比较的实例存储大小同时包括用户数据库和系统数据库中的数据和日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。
 > - “常规用途”层级上的吞吐量和 IOPS 还取决于不受托管实例显式限制的[文件大小](#file-io-characteristics-in-general-purpose-tier)。
 > - 可以使用自动故障转移组在不同的 Azure 区域中创建另一个只读副本。
-> - 最大实例 IOPS 取决于工作负荷的文件布局和分布。 例如，如果创建 7 个 1 GB 文件（每个文件最大 5K IOPS）和 7 个小文件（小于 128 GB，每个文件 500 IOPS），并且工作负荷可以使用所有文件，则每个实例可以处理 38500 IOPS (7x5000+7x500)。 请注意，部分 IOPS 还用于自动备份。
+> - 最大实例 IOPS 取决于工作负荷的文件布局和分布。 例如，如果创建 7 个 1 TB 文件（每个文件最大 5K IOPS）和 7 个小文件（小于 128 GB，每个文件 500 IOPS），并且工作负载可以使用所有文件，则每个实例可以处理 38500 IOPS (7x5000+7x500)。 请注意，部分 IOPS 还用于自动备份。
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>“常规用途”层级中的文件 IO 特征
 
@@ -117,7 +117,7 @@ ms.locfileid: "75336139"
 支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，托管实例有两个默认限制（可以通过[在 Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)来按需提高），具体取决于订阅类型是哪一类型：
 
 - **子网限制**：在单一区域中部署托管实例的子网数上限。
-- **vCore 限制**：可跨单一区域的所有实例部署的 vCore 数上限。 实例总数不受限制，只要在 vCore 限制内即可。
+- **vCore 单元限制**：可跨单一区域的所有实例部署的 vCore 单元数上限。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用 4 个 vCore 单位。 实例总数不受限制，只要在 vCore 单元限制内即可。
 
 > [!Note]
 > 这些限制是默认设置，不是技术限制。 如果在当前区域中需要更多托管实例，可以[在 Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)，以根据需要提高限制。 或者，可以在另一个 Azure 区域中创建新的托管实例，而不需要发送支持请求。

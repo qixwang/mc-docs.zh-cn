@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/12/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 0123d3c226f3319ddd267d3d1faf3832c2f9ce7b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: f4979fb3b240f823df3722a42ac82f59af1713fa
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335740"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155682"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
 
@@ -102,7 +102,7 @@ IP 地址用户是否需要访问所有数据库？
 
 ### <a name="connections-from-inside-azure"></a>从 Azure 内部连接
 
-若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 在应用程序尝试从 Azure 连接到你的数据库服务器时，防火墙将验证是否允许 Azure 连接。 如果防火墙设置的开始和结束 IP 地址都等于 *0.0.0.0*，则表示允许 Azure 连接。 如果不允许连接，则该请求将不会访问 Azure SQL 数据库服务器。
+若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 在应用程序尝试从 Azure 连接到你的数据库服务器时，防火墙将验证是否允许 Azure 连接。 如果防火墙设置的开始和结束 IP 地址都等于 *0.0.0.0*，则表示允许 Azure 连接。 若要直接从 Azure 门户边栏选项卡中将其打开，可以设置防火墙规则，也可以在“防火墙和虚拟网络”设置中将“允许 Azure 服务和资源访问此服务器”切换为“启用”。    如果不允许连接，则该请求将不会访问 Azure SQL 数据库服务器。
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 如果选择此选项，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
@@ -128,13 +128,15 @@ IP 地址用户是否需要访问所有数据库？
 
 #### <a name="from-the-database-overview-page"></a>从数据库概述页
 
-1. 若要在数据库概述页中设置服务器级 IP 防火墙规则，请选择工具栏上的“设置服务器防火墙”  ，如下图所示。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+1. 若要在数据库概述页中设置服务器级 IP 防火墙规则，请选择工具栏上的“设置服务器防火墙”  ，如下图所示。 
 
-      ![服务器 IP 防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![服务器 IP 防火墙规则](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
 2. 选择工具栏上的“添加客户端 IP” 以添加当前使用的计算机的 IP 地址，然后单选择“保存”。   此时，系统针对当前 IP 地址创建服务器级别 IP 防火墙规则。
 
-      ![设置服务器级 IP 防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![设置服务器级 IP 防火墙规则](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>从服务器概述页
 

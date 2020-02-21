@@ -1,20 +1,19 @@
 ---
-title: 旧式 Azure 虚拟网络 VPN 网关 SKU | Microsoft Docs
+title: 旧式 Azure 虚拟网络 VPN 网关 SKU
 description: 如何使用旧式虚拟网络网关 SKU；“基本”、“标准”和“高性能”。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 origin.date: 08/15/2019
-ms.date: 09/02/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 327d6421143fd440054a6fd6e96a490825579434
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: e74f0d1735c0a20ed92fe08d4462b1ef61d6f588
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131687"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156793"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网关 SKU（传统 SKU）
 
@@ -24,7 +23,7 @@ ms.locfileid: "70131687"
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-可以在 [虚拟网络网关](https://www.azure.cn/pricing/details/vpn-gateway)  部分（位于“虚拟网络网关定价”页上）中查看旧版网关定价。
+可以在“虚拟网关”部分（位于 [ExpressRoute 定价页](https://azure.cn/pricing/details/expressroute)上）查看旧版网关定价。 
 
 ## <a name="agg"></a>按 SKU 列出的估计聚合吞吐量
 

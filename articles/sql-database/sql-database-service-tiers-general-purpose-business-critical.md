@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
-origin.date: 10/01/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: a784e4abe7831929fd30b911a073f5d2a41b711b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/30/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: abd4a613b7f71e1032822740f1e2f2b049fc3398
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336221"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155715"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层级
 
@@ -51,9 +51,10 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 |**可用性**|全部| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99.995%（具有区域冗余单一数据库）](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**备份**|全部|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7 天，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
 |**内存中 OLTP** | | 不适用 | 不适用 | 可用 |
-|**只读副本**| | 0  | 0 - 4 | 1（内置，包含在价格中） |
+|**只读副本**| | 0 内置 <br> 0 - 4 使用[异地复制](sql-database-active-geo-replication.md) | 0 - 4 内置 | 1 内置，包含在价格中 <br> 0 - 4 使用[异地复制](sql-database-active-geo-replication.md) |
 |**定价/计费** | 单一数据库 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。 | [每个副本的 vCore 和已用存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>尚未收费的 IOPS。 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。 |
-|| 托管实例 | [vCore 和保留存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚不收费。 | 不适用 | [vCore 和保留存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。<br/>备份存储尚不收费。 | 
+|| 托管实例 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用| 不适用 | [vCore、保留存储和备份存储](https://azure.cn/pricing/details/sql-database/)收费。 <br/>IOPS 不收取费用。| 
+|**折扣模型**| | [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[即用即付](/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)开发/测试订阅| [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[即用即付](/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)开发/测试订阅| [Azure 混合权益](sql-database-azure-hybrid-benefit.md)（在开发/测试订阅中不可用）<br/>[提前支付](/billing/billing-sign-up-azure-account-and-get-a-pia-subscription)开发/测试订阅|
 
 有关详细信息，请参阅[单一数据库 (vCore)](sql-database-vcore-resource-limits-single-databases.md)、[单一数据库池 (vCore)](sql-database-dtu-resource-limits-single-databases.md)、[单一数据库 (DTU)](sql-database-dtu-resource-limits-single-databases.md)、[单一数据库池 (DTU)](sql-database-dtu-resource-limits-single-databases.md)和[托管实例](sql-database-managed-instance-resource-limits.md)页中服务层级之间的详细差异。
 

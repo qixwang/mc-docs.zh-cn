@@ -5,15 +5,15 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 01/18/2019
-ms.date: 12/02/2019
+origin.date: 01/10/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: d0a9c41414f3500bbeef7afa4576ec4201361221
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: a55c2fcdd986efb30255f6f592149f5446bb2e11
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74552993"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156755"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -23,13 +23,15 @@ ms.locfileid: "74552993"
 
 点到站点 VPN 可使用以下协议之一：
 
+* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+
 * 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
 
 >[!NOTE]
->P2S 的 IKEv2 仅可用于资源管理器部署模型。 它不可用于经典部署模型。
+>P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。
 >
 
 ## <a name="authentication"></a>如何对 P2S VPN 客户端进行身份验证？
@@ -41,6 +43,21 @@ ms.locfileid: "74552993"
 使用本机 Azure 证书身份验证时，设备上的客户端证书用于对连接方用户进行身份验证。 客户端证书从受信任的根证书生成，并安装在每台客户端计算机上。 可以使用通过企业解决方案生成的根证书，也可以生成自签名证书。
 
 客户端证书的验证由 VPN 网关执行，在建立 P2S VPN 连接期间发生。 验证时需要使用根证书，必须将该证书上传到 Azure。
+
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用本机 Azure Active Directory 身份验证进行身份验证
+
+Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 本机 Azure AD 身份验证只适用于 OpenVPN 协议和 Windows 10，并且需要使用 [Azure VPN 客户端（预览版）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)。
+
+有了本机 Azure AD 身份验证，就可以利用 Azure AD 的条件访问和针对 VPN 的多重身份验证 (MFA) 功能。
+
+大致说来，需要执行以下步骤来配置 Azure AD 身份验证：
+
+1. [配置 Azure AD 租户](openvpn-azure-ad-tenant.md)
+
+2. [在网关上启用 Azure AD 身份验证](/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+
+3. [下载并配置 Azure VPN Client（预览版）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Active Directory (AD) 域服务器进行身份验证
 
@@ -122,6 +139,27 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
+## <a name="TLS policies"></a>在 P2S 的 VPN 网关上配置了哪些 TLS 策略？
+**TLS**
+
+|**策略** |
+|---| 
+|TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 |
+|TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 |
+|TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 |
+|TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 |
+|TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 |
+|TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 |
+|TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 |
+|TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 |
+|TLS_RSA_WITH_AES_128_GCM_SHA256 |
+|TLS_RSA_WITH_AES_256_GCM_SHA384 |
+|TLS_RSA_WITH_AES_128_CBC_SHA256 |
+|TLS_RSA_WITH_AES_256_CBC_SHA256 |
+
+
+
+
 ## <a name="configure"></a>如何配置 P2S 连接？
 
 P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2S 配置的步骤，以及用于配置 VPN 客户端设备的链接：
@@ -129,6 +167,8 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 * [配置 P2S 连接 - RADIUS 身份验证](point-to-site-how-to-radius-ps.md)
 
 * [配置 P2S 连接 - Azure 本机证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
+
+* [配置 OpenVPN](vpn-gateway-howto-openvpn.md)
 
 ## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>如何删除 P2S 连接的配置？
 
@@ -150,4 +190,4 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 
 * [配置 P2S 连接 - Azure 本机证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-<!--Update_Description: wording update-->
+**“OpenVPN”是 OpenVPN Inc. 的商标。**

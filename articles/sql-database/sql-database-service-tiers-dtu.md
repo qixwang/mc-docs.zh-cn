@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 11/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f7fc8e30fae38d35e7b1c3c5cdd55b700c637f29
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 1486764041303c71777a69c074df8590fe1d65e1
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336222"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155718"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
@@ -52,7 +52,7 @@ ms.locfileid: "75336222"
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
-单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](sql-database-purchase-models.md#dtu-based-purchasing-model)？
+单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
 
 ||基本|标准|高级|
 | :-- | --: | --: | --: |
@@ -145,7 +145,7 @@ ms.locfileid: "75336222"
 3. 关闭数据库连接。
 4. 退出。
 
-随机选择了步调延迟（在步骤 2c 中），但却使用了平均值为 1.0 秒的分布。 因此，平均而言，每个用户每秒最多可以生成一个事务。
+随机选择了步调延迟（在步骤 2c 中），但却使用了平均值为 1.0 秒的分布。 因此，每个用户平均每秒最多可以生成一个事务。
 
 ### <a name="scaling-rules"></a>缩放规则
 

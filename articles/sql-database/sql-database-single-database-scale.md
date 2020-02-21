@@ -11,26 +11,24 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 04/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: bf16a44c2325ffa9cf57d8a401312e294b1a437f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: d52c40372402160447d582bf4f5c646c4b72d6ff
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334947"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155707"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
 本文介绍如何在预配的计算层级中缩放适用于 Azure SQL 数据库的计算和存储资源。 另外，[无服务器计算层级](sql-database-serverless.md)提供自动缩放计算功能，并且按秒对使用的计算计费。
-
-## <a name="change-compute-size-vcores-or-dtus"></a>更改计算大小（vCore 或 DTU）
 
 最初选择 vCore 或 DTU 数量后，可以使用 [Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/sql/db#az-sql-db-update) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)，根据实际体验动态扩展或缩减单一数据库。
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小的影响
+## <a name="impact"></a>影响
 
 更改服务层级或计算大小主要涉及到由服务执行的以下步骤：
 
@@ -45,7 +43,7 @@ ms.locfileid: "75334947"
 > [!IMPORTANT]
 > 执行工作流中的任何步骤期间都不会丢失数据。 确保已在特定的应用程序和组件中实现某些[重试逻辑](sql-database-connectivity-issues.md)，这些应用程序和组件在服务层级更改时使用 Azure SQL 数据库。
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小所造成的延迟
+## <a name="latency"></a>延迟 
 
 可根据如下所述，将更改服务层级或者重新缩放单一数据库或弹性池的计算大小所造成的估计延迟参数化：
 
@@ -58,7 +56,7 @@ ms.locfileid: "75334947"
 > [!TIP]
 > 若要监视正在进行的操作，请参阅：[使用 SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/sql/db/op)、[使用 T-SQL 监视操作](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)及以下两个 PowerShell 命令：[Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseactivity) 和 [Stop-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>取消服务层级更改或计算重新缩放操作
+## <a name="cancelling-changes"></a>取消更改
 
 服务层级更改或计算重新缩放操作可以取消。
 
@@ -87,7 +85,7 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小时的其他注意事项
+## <a name="additional-considerations"></a>其他注意事项
 
 - 如果要升级到更高的服务层级或计算大小，除非显式指定了更大的大小（最大），否则，最大数据库大小不会增大。
 - 若要对数据库进行降级，数据库所用空间必须小于目标服务层级和计算大小允许的最大大小。
@@ -97,7 +95,7 @@ else {
 - 各服务层级的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短  。 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
 - 更改完成前不会应用数据库的新属性。
 
-### <a name="billing-during-compute-rescaling"></a>计算重新缩放期间的计费
+## <a name="billing"></a>计费 
 
 将根据使用最高服务层级的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，并在五分钟后将其删除，则将按该数据库存在一小时收费。
 
@@ -121,6 +119,10 @@ else {
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
+
+### <a name="geo-replicated-database"></a>异地复制的数据库
+
+若要更改复制的辅助数据库的数据库大小，请更改主数据库的大小。 然后，此更改也会在辅助数据库上复制并实现。 
 
 ## <a name="next-steps"></a>后续步骤
 

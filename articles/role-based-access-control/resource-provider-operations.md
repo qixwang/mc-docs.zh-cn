@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 4853b5f51e0f446ecfa8ba7ac5872b1184bf2777
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: e07a60278814b3b3f69fd53e34aaca7f0dc5b4b5
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623838"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128862"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
-本文档列出了可对每个 Azure 资源管理器资源提供程序使用的操作。 可以在[自定义角色](custom-roles.md)中使用这些操作，针对 Azure 中的资源提供精细的[基于角色的访问控制 (RBAC)](overview.md)。 操作字符串的格式如下：`{Company}.{ProviderName}/{resourceType}/{action}`。 有关资源提供程序命名空间如何映射到 Azure 服务的列表，请参阅[将资源提供程序与服务匹配](../azure-resource-manager/azure-services-resource-providers.md)。
+本文档列出了可对每个 Azure 资源管理器资源提供程序使用的操作。 可以在[自定义角色](custom-roles.md)中使用这些操作，针对 Azure 中的资源提供精细的[基于角色的访问控制 (RBAC)](overview.md)。 操作字符串的格式如下：`{Company}.{ProviderName}/{resourceType}/{action}`。 有关资源提供程序命名空间如何映射到 Azure 服务的列表，请参阅[将资源提供程序与服务匹配](../azure-resource-manager/management/azure-services-resource-providers.md)。
 
 资源提供程序操作一直在不断发展。 若要获取最新操作，请使用 [Get-AzProviderOperation](https://docs.microsoft.com/powershell/module/az.resources/get-azprovideroperation) 或 [az provider operation list](/cli/provider/operation#az-provider-operation-list)。
 
@@ -351,7 +351,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.ApiManagement/service/policy/write | 创建租户级别的策略配置 |
 > | 操作 | Microsoft.ApiManagement/service/policyDescriptions/read | 列出所有策略说明。 |
 > | 操作 | Microsoft.ApiManagement/service/policySnippets/read | 列出所有策略片段。 |
-> | 操作 | Microsoft.ApiManagement/service/portalsettings/read | 获取门户的登录设置，或获取门户的注册设置，或获取门户的委托设置。 |
+> | 操作 | Microsoft.ApiManagement/service/portalsettings/read | 列出门户设置的集合。 或者获取门户的登录设置，或获取门户的注册设置，或获取门户的委托设置。 |
 > | 操作 | Microsoft.ApiManagement/service/portalsettings/write | 更新登录设置。 或者创建或更新登录设置。 或者更新注册设置、更新注册设置或更新委托设置。 或者创建或更新委托设置。 |
 > | 操作 | Microsoft.ApiManagement/service/products/apis/delete | 从指定的产品中删除指定的 API。 |
 > | 操作 | Microsoft.ApiManagement/service/products/apis/read | 列出与产品关联的 API 集合。 |
@@ -424,6 +424,38 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.ApiManagement/service/users/write | 创建或更新用户。 或更新按标识符指定的用户的详细信息。 |
 > | 操作 | Microsoft.ApiManagement/service/write | 创建 API 管理服务的新实例 |
 > | 操作 | Microsoft.ApiManagement/unregister/action | 取消注册 Microsoft.ApiManagement 资源提供程序的订阅 |
+
+## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
+
+> [!div class="mx-tdCol2BreakAll"]
+> | 操作类型 | 操作 | 说明 |
+> | --- | --- | --- |
+> | 操作 | Microsoft.AppConfiguration/checkNameAvailability/read | 检查资源名称是否可供使用。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/delete | 删除配置存储区。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/eventGridFilters/delete | 删除配置存储区事件网格筛选器。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/eventGridFilters/read | 获取指定的配置存储区事件网格筛选器的属性，或列出指定配置存储区下的所有配置存储区事件网格筛选器。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/eventGridFilters/write | 使用指定的参数创建或更新配置存储区事件网格筛选器。 |
+> | DataAction | Microsoft.AppConfiguration/configurationStores/keyValues/delete | 从配置存储区中删除现有的键-值。 |
+> | DataAction | Microsoft.AppConfiguration/configurationStores/keyValues/read | 从配置存储区中读取键-值。 |
+> | DataAction | Microsoft.AppConfiguration/configurationStores/keyValues/write | 在配置存储区中创建或更新键-值。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/ListKeys/action | 列出指定的配置存储区的 API 密钥。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/ListKeyValue/action | 列出指定的配置存储区的键-值。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/privateEndpointConnectionProxies/delete | 删除指定配置存储区的专用终结点连接代理。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/privateEndpointConnectionProxies/read | 获取指定配置存储区的专用终结点连接代理。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/privateEndpointConnectionProxies/validate/action | 验证指定配置存储区的专用终结点连接代理。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/privateEndpointConnectionProxies/write | 创建或更新指定配置存储区的专用终结点连接代理。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/providers/Microsoft.Insights/diagnosticSettings/read | 读取配置存储区的所有诊断设置值。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/providers/Microsoft.Insights/diagnosticSettings/write | 写入/覆盖 Microsoft 应用配置的诊断设置。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/providers/Microsoft.Insights/metricDefinitions/read | 检索 Microsoft 应用配置的所有指标定义。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/read | 获取指定的配置存储区的属性，或列出指定资源组或订阅下的所有配置存储区。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/RegenerateKey/action | 为指定的配置存储区重新生成 API 密钥。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/syncTasks/delete | 删除配置存储区同步任务。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/syncTasks/read | 获取指定的配置存储区同步任务的属性，或列出指定的配置存储区下的所有配置存储区同步任务。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/syncTasks/write | 使用指定的参数创建或更新配置存储区同步任务。 |
+> | 操作 | Microsoft.AppConfiguration/configurationStores/write | 使用指定的参数创建或更新配置存储区。 |
+> | 操作 | Microsoft.AppConfiguration/locations/operationsStatus/read | 获取操作的状态。 |
+> | 操作 | Microsoft.AppConfiguration/operations/read | 列出 Microsoft 应用配置支持的所有操作。 |
+> | 操作 | Microsoft.AppConfiguration/register/action | 注册订阅以使用 Microsoft 应用程序配置。 |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -795,7 +827,6 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Cache/redis/linkedservers/read | 获取与 Redis 缓存关联的链接服务器。 |
 > | 操作 | Microsoft.Cache/redis/linkedservers/write | 将链接服务器添加到 Redis 缓存 |
 > | 操作 | Microsoft.Cache/redis/listKeys/action | 在管理门户中查看 Redis 缓存访问密钥的值 |
-> | 操作 | Microsoft.Cache/redis/listUpgradeNotifications/read | 列出缓存租户的最新升级通知。 |
 > | 操作 | Microsoft.Cache/redis/metricDefinitions/read | 获取 Redis 缓存的可用指标 |
 > | 操作 | Microsoft.Cache/redis/patchSchedules/delete | 删除 Redis 缓存的修补计划 |
 > | 操作 | Microsoft.Cache/redis/patchSchedules/read | 获取 Redis 缓存的修补计划 |
@@ -828,6 +859,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Capacity/reservationorders/calculaterefund/action | 计算新购买项目的退款金额和价格，并返回策略错误。 |
 > | 操作 | Microsoft.Capacity/reservationorders/delete | 删除任何预订 |
 > | 操作 | Microsoft.Capacity/reservationorders/merge/action | 合并任何预留 |
+> | 操作 | Microsoft.Capacity/reservationorders/mergeoperationresults/read | 轮询任何合并操作 |
 > | 操作 | Microsoft.Capacity/reservationorders/read | 读取所有预订 |
 > | 操作 | Microsoft.Capacity/reservationorders/reservations/action | 更新任何预订 |
 > | 操作 | Microsoft.Capacity/reservationorders/reservations/availablescopes/action | 查找任何可用范围 |
@@ -837,6 +869,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Capacity/reservationorders/reservations/write | 创建任何预订 |
 > | 操作 | Microsoft.Capacity/reservationorders/return/action | 返回任何预留 |
 > | 操作 | Microsoft.Capacity/reservationorders/split/action | 拆分任何预留 |
+> | 操作 | Microsoft.Capacity/reservationorders/splitoperationresults/read | 轮询任何拆分操作 |
 > | 操作 | Microsoft.Capacity/reservationorders/swap/action | 交换任何预留 |
 > | 操作 | Microsoft.Capacity/reservationorders/write | 创建任何预订 |
 > | 操作 | Microsoft.Capacity/tenants/register/action | 注册任何租户 |
@@ -1230,7 +1263,7 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/processimage/match/action | 根据某个自定义图像列表模糊匹配某个图像。<br>可以使用此 API 创建和管理自定义图像列表。<br> |
 > | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/processimage/ocr/action | 返回在图像中找到的采用指定语言的任何文本。 如果未在输入中指定语言，则检测结果默认为英语。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/processtext/detectlanguage/action | 此操作检测给定输入内容的语言。<br>返回构成提交文本的首要语言的 ISO 639-3 代码。<br>支持 110 多种语言。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/processtext/screen/action | 该操作检测 100 多种语言的猥亵内容，并将其与自定义和共享的黑名单相匹配。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/processtext/screen/action | 该操作检测 100 多种语言的猥亵内容，并将其与自定义和共享的阻止列表相匹配。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/jobs/action | 将返回在此终结点上发布的图像内容的作业 ID。  |
 > | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/jobs/read | 获取作业 ID 的作业详细信息。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ContentModerator/teams/reviews/accesskey/read | 获取团队的评审内容访问密钥。 |
@@ -1278,7 +1311,7 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/regions/action | 此 API 接受一批图像区域和（可选）标记，以使用区域信息更新现有图像。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/regions/delete | 删除一组图像区域。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/suggested/action | 此 API 提取按建议的标记 ID 筛选的未标记图像。 如果未找到图像，则返回空数组。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/suggested/count/action | 此 API 使用 tagId 获取按给定阈值的建议标记提供的未标记图像计数。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/suggested/count/action | 此 API 使用标记 ID 获取按给定阈值的建议标记提供的未标记图像计数。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/tagged/count/read | 筛选依据为某个字词和/或关系。 例如，如果提供的标记 ID 适用于“Dog”， |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/tagged/read | 此 API 支持批处理和范围选择。 默认情况下，它只返回与图像匹配的前 50 个图像。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/projects/images/tags/action | 将一组图像与一组标记相关联。 |
@@ -1319,9 +1352,9 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/user/state/write | 更新用户状态 |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/user/tier/write | *NotDefined* |
 > | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/users/read | *NotDefined* |
-> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/whitelist/delete | 删除具有特定功能的已加入白名单的用户 |
-> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/whitelist/read | 获取具有特定功能的已加入白名单的用户列表 |
-> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/whitelist/write | 在白名单中更新或创建具有特定功能的用户 |
+> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/whitelist/delete | 删除具有特定功能的已加入允许列表的用户 |
+> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/whitelist/read | 获取具有特定功能的已加入允许列表的用户列表 |
+> | DataAction | Microsoft.CognitiveServices/accounts/CustomVision.Prediction/whitelist/write | 在允许列表中更新或创建具有特定功能的用户 |
 > | 操作 | Microsoft.CognitiveServices/accounts/delete | 删除 API 帐户 |
 > | DataAction | Microsoft.CognitiveServices/accounts/EntitySearch/search/action | 获取给定查询的实体和位置结果。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/detect/action | 检测图像中的人脸，返回人脸矩形以及可选的 faceId、地标和属性。 |
@@ -1365,6 +1398,12 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | 提交人员组训练任务。 训练是只有经过训练的人员组可以使用的关键步骤。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | 检查已完成或仍在进行的人员组训练状态。 PersonGroup 训练是触发的异步操作 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | 使用指定的 personGroupId、名称和用户提供的 userData 创建新的人员组。 更新现有人员组的名称和 userData。 如果属性不在请求正文中，则属性保持不变。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/snapshot/apply/action | 应用快照，并提供用户指定的对象 ID。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/snapshot/delete | 删除快照。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/snapshot/read | 获取快照操作的状态。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/snapshot/take/action | 为对象创建快照。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/snapshot/write | 更新快照的属性。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/snapshots/read | 列出用户可访问的所有快照和信息。* |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | 验证两张人脸是否属于同一个人，或者一张人脸是否属于某一个人。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/FormRecognizer/custom/models/analyze/action | 从给定的文档中提取键值对。 输入文档必须是支持的内容类型之一：“application/pdf”、“image/jpeg”或“image/png”。 系统将返回 JSON 格式的成功响应， |
 > | DataAction | Microsoft.CognitiveServices/accounts/FormRecognizer/custom/models/delete | 删除模型项目。 |
@@ -1383,6 +1422,22 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.CognitiveServices/accounts/NewsSearch/categorysearch/action | 返回所提供类别的新闻。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/NewsSearch/search/action | 获取与给定查询相关的新闻文章。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/NewsSearch/trendingtopics/action | 获取通过必应确定的热门主题。 这些主题与必应主页底部的横幅中显示的主题相同。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/alterations/read | 从运行时下载更改。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/alterations/write | 替换更改数据。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/endpointkeys/refreshkeys/action | 重新生成终结点密钥。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/endpointsettings/write | 更新终结点的终结点设置。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/create/write | 用于创建新知识库的异步操作。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/delete | 删除知识库及其所有数据。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/download/read | 下载知识库。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/publish/action | 将知识库测试索引中的所有更改发布到其生产索引。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/train/action | 用于将建议添加到知识库的 Train 调用。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/write | 用于修改知识库或替换知识库内容的异步操作。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/operations/read | 获取特定的长时间运行的操作的详细信息。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/QnAMaker/root/action | QnA Maker |
 > | 操作 | Microsoft.CognitiveServices/accounts/read | 读取 API 帐户。 |
 > | 操作 | Microsoft.CognitiveServices/accounts/regenerateKey/action | 再生成密钥 |
 > | 操作 | Microsoft.CognitiveServices/accounts/skus/read | 读取现有资源的可用 SKU。 |
@@ -1540,7 +1595,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/reimage/action | 对虚拟机规模集的实例进行映像重置 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/reimageAll/action | 重置虚拟机规模集实例的所有磁盘（OS 磁盘和数据磁盘）的映像  |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/restart/action | 重新启动虚拟机规模集的实例 |
-> | 操作 | Microsoft.Compute/virtualMachineScaleSets/rollingUpgrades/cancel/action | 取消虚拟机规模集的滚动升级 |
+> | 操作 | Microsoft.Compute/virtualMachineScaleSets/rollingUpgrades/action | 取消虚拟机规模集的滚动升级 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/rollingUpgrades/read | 获取虚拟机规模集的最新滚动升级状态 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/scale/action | 验证现有虚拟机规模集是否可以缩小/扩大到指定的实例计数 |
 > | 操作 | Microsoft.Compute/virtualMachineScaleSets/skus/read | 列出现有虚拟机规模集的有效 SKU |
@@ -1756,7 +1811,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.CostManagement/exports/read | 按范围列出导出。 |
 > | 操作 | Microsoft.CostManagement/exports/run/action | 运行导出。 |
 > | 操作 | Microsoft.CostManagement/exports/write | 创建或更新指定的导出。 |
-> | 操作 | Microsoft.CostManagement/externalBillingAccounts/dimension/read | 列出外部 BillingAccounts 的所有支持的维度。 |
+> | 操作 | Microsoft.CostManagement/externalBillingAccounts/dimensions/read | 列出外部 BillingAccounts 的所有支持的维度。 |
 > | 操作 | Microsoft.CostManagement/externalBillingAccounts/externalSubscriptions/read | 列出已经过身份验证的用户的 externalBillingAccount 中的 externalSubscription。 |
 > | 操作 | Microsoft.CostManagement/externalBillingAccounts/forecast/action | 预测外部 BillingAccounts 的使用情况数据。 |
 > | 操作 | Microsoft.CostManagement/externalBillingAccounts/forecast/read | 预测外部 BillingAccounts 的使用情况数据。 |
@@ -1854,6 +1909,15 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | 列出或获取存储帐户凭据 |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | 列出或获取存储帐户凭据 |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | 创建或更新存储帐户凭据 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/containers/delete | 删除容器 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/containers/operationResults/read | 列出或获取操作结果 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/containers/read | 列出或获取容器 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/containers/refresh/action | 使用云中的数据刷新容器元数据 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/containers/write | 创建或更新容器 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/delete | 删除存储帐户 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/operationResults/read | 列出或获取操作结果 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/read | 列出或获取存储帐户 |
+> | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccounts/write | 创建或更新存储帐户 |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/delete | 删除触发器 |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/operationResults/read | 列出或获取操作结果 |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | 列出或获取触发器 |
@@ -1884,6 +1948,8 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | 获取 Databricks 工作区的可用日志定义 |
 > | 操作 | Microsoft.Databricks/workspaces/read | 检索 Databricks 工作区列表。 |
 > | 操作 | Microsoft.Databricks/workspaces/refreshPermissions/action | 刷新工作区的权限 |
+> | 操作 | Microsoft.Databricks/workspaces/storageEncryption/delete | 在 Databricks 工作区的托管存储帐户中禁用客户管理的密钥加密 |
+> | 操作 | Microsoft.Databricks/workspaces/storageEncryption/write | 在 Databricks 工作区的托管存储帐户中启用管理的密钥加密 |
 > | 操作 | Microsoft.Databricks/workspaces/updateDenyAssignment/action | 更新工作区的托管资源组的拒绝分配无操作 |
 > | 操作 | Microsoft.Databricks/workspaces/virtualNetworkPeerings/delete | 删除虚拟网络对等互连 |
 > | 操作 | Microsoft.Databricks/workspaces/virtualNetworkPeerings/read | 获取虚拟网络对等互连。 |
@@ -2110,6 +2176,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.DataMigration/services/checkStatus/action | 检查服务是否已部署并正在运行 |
 > | 操作 | Microsoft.DataMigration/services/configureWorker/action | 将 DMS 辅助角色配置为服务的可用辅助角色 |
 > | 操作 | Microsoft.DataMigration/services/delete | 删除资源及其所有子级 |
+> | 操作 | Microsoft.DataMigration/services/getHybridDownloadLink/action | 从 RP Blob 存储获取 DMS 辅助角色包下载链接。 |
 > | 操作 | Microsoft.DataMigration/services/projects/accessArtifacts/action | 生成一个可用于 GET 或 PUT 项目的 URL |
 > | 操作 | Microsoft.DataMigration/services/projects/delete | 删除资源及其所有子级 |
 > | 操作 | Microsoft.DataMigration/services/projects/files/delete | 删除资源及其所有子级 |
@@ -2482,6 +2549,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.DevSpaces/controllers/read | 读取 Azure Dev Spaces 控制器属性 |
 > | 操作 | Microsoft.DevSpaces/controllers/write | 创建或更新 Azure Dev Spaces 控制器属性 |
 > | 操作 | Microsoft.DevSpaces/locations/checkContainerHostMapping/action | 检查容器主机的现有控制器映射 |
+> | 操作 | Microsoft.DevSpaces/locations/checkContainerHostMapping/read | 检查容器主机的现有控制器映射 |
 > | 操作 | Microsoft.DevSpaces/locations/operationresults/read | 读取异步操作的状态 |
 > | 操作 | Microsoft.DevSpaces/register/action | 将 Microsoft Dev Spaces 资源提供程序注册到订阅 |
 
@@ -2609,56 +2677,21 @@ ms.locfileid: "75623838"
 > | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DocumentDB/databaseAccountNames/read | 检查名称可用性。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | 删除集合。 仅适用于 API 类型：“mongodb”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“mongodb”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | 读取某个集合或列出所有集合。 仅适用于 API 类型：“mongodb”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“mongodb”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/read | 读取集合吞吐量。 仅适用于 API 类型：“mongodb”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/write | 更新集合吞吐量。 仅适用于 API 类型：“mongodb”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | 创建或更新集合。 仅适用于 API 类型：“mongodb”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | 删除容器。 仅适用于 API 类型：“sql”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“sql”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | 读取某个容器或列出所有容器。 仅适用于 API 类型：“sql”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“sql”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/read | 读取容器吞吐量。 仅适用于 API 类型：“sql”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/write | 更新容器吞吐量。 仅适用于 API 类型：“sql”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | 创建或更新容器。 仅适用于 API 类型：“sql”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | 删除数据库。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | 删除图形。 仅适用于 API 类型：“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | 读取某个图形或列出所有图形。 仅适用于 API 类型：“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“gremlin”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/read | 读取图形吞吐量。 仅适用于 API 类型：“gremlin”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/write | 更新图形吞吐量。 仅适用于 API 类型：“gremlin”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | 创建或更新图形。 仅适用于 API 类型：“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | 读取某个数据库或列出所有数据库。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/read | 读取数据库吞吐量。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/write | 更新数据库吞吐量。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | 创建数据库。 仅适用于 API 类型：“sql”、“mongodb”、“gremlin”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | 删除密钥空间。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | 读取某个密钥空间或列出所有密钥空间。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/read | 读取密钥空间吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/write | 更新密钥空间吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | 删除表。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | 读取某个表或列出所有表。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/read | 读取表吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/write | 更新表吞吐量。 仅适用于 API 类型：“cassandra”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | 创建或更新表。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | 创建密钥空间。 仅适用于 API 类型：“cassandra”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | 删除表。 仅适用于 API 类型：“table”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“table”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | 读取某个表或列出所有表。 仅适用于 API 类型：“table”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/operationResults/read | 读取异步操作的状态。 仅适用于 API 类型：“table”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/read | 读取表吞吐量。 仅适用于 API 类型：“table”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/write | 更新表吞吐量。 仅适用于 API 类型：“table”。 仅适用于设置类型：“throughput”。 |
-> | 操作 | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | 创建或更新表。 仅适用于 API 类型：“table”。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/backup/action | 提交配置备份的请求 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/delete | 删除 Cassandra 密钥空间。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read | 读取 Cassandra 密钥空间或列出所有 Cassandra 密钥空间 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/delete | 删除 Cassandra 表。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/read | 读取 Cassandra 表或列出所有 Cassandra 表。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/read | 读取 Cassandra 表吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/write | 更新assandra 表吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/write | 创建或更新 Cassandra 表。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/read | 读取 Cassandra 密钥空间吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/write | 更新assandra 密钥空间吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/write | 创建assandra 密钥空间。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/changeResourceGroup/action | 更改数据库帐户的资源组 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/databases/collections/metricDefinitions/read | 读取集合指标定义。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/databases/collections/metrics/read | 读取集合指标。 |
@@ -2673,10 +2706,38 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/delete | 删除数据库帐户。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/failoverPriorityChange/action | 更改数据库帐户的区域故障转移优先级。 用于执行手动故障转移操作 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/getBackupPolicy/action | 获取数据库帐户的备份策略 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/delete | 删除 Gremlin 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/delete | 删除 Gremlin 图形。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/read | 读取 Gremlin 图形列出所有 Gremlin 图形。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/read | 读取 Gremlin 图形吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/write | 更新 Gremlin 图形吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/write | 创建或更新 Gremlin 图形 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/read | 读取 Gremlin 数据库或列出所有 Gremlin 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/read | 读取 Gremlin 数据库吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/write | 更新 Gremlin 数据库吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/write | 创建 Gremlin 数据库。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/action | 获取数据库帐户的连接字符串 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/listKeys/action | 列出数据库帐户的密钥 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/metricDefinitions/read | 读取数据库帐户指标定义。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/metrics/read | 读取数据库帐户指标。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/delete | 删除 MongoDB 集合。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/read | 读取 MongoDB 集合或列出所有 MongoDB 集合。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/read | 读取 MongoDB 集合吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/write | 更新 MongoDB 集合吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/write | 创建或更新 MongoDB 集合。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/delete | 删除 MongoDB 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/read | 读取 MongoDB 数据库或列出所有 MongoDB 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/read | 读取 MongoDB 数据库吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/write | 更新 MongoDB 数据库吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/write | 创建 MongoDB 数据库。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/offlineRegion/action | 使数据库帐户的区域脱机。  |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/onlineRegion/action | 使数据库帐户的区域联机。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/operationResults/read | 读取异步操作的状态 |
@@ -2704,6 +2765,39 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/region/databases/collections/partitions/read | 读取集合中的区域性数据库帐户分区 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/region/metrics/read | 读取区域和数据库帐户指标。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/restore/action | 提交还原请求 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/delete | 删除 SQL 容器。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/read | 读取 SQL 容器或列出所有 SQL 容器。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/storedProcedures/delete | 删除 SQL 存储过程。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/storedProcedures/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/storedProcedures/read | 读取 SQL 存储过程或列出所有 SQL 存储过程。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/storedProcedures/write | 创建或更新 SQL 存储过程。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/read | 读取 SQL 容器吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/write | 更新 SQL 容器吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/triggers/delete | 删除 SQL 触发器。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/triggers/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/triggers/read | 读取 SQL 触发器或列出所有 SQL 触发器。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/triggers/write | 创建或更新 SQL 触发器。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/userDefinedFunctions/delete | 删除 SQL 用户定义的函数。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/userDefinedFunctions/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/userDefinedFunctions/read | 读取 SQL 用户定义的函数或列出所有 SQL 用户定义的函数。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/userDefinedFunctions/write | 创建或更新 SQL 用户定义的函数。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/write | 创建或更新 SQL 容器。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/delete | 删除 SQL 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/read | 读取 SQL 数据库或列出所有 SQL 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/read | 读取 SQL 数据库吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/write | 更新 SQL 数据库吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/sqlDatabases/write | 创建 SQL 数据库。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/delete | 删除表。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/read | 读取某个表或列出所有表。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/operationResults/read | 读取异步操作的状态。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/read | 读取表吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/write | 更新表吞吐量。 |
+> | 操作 | Microsoft.DocumentDB/databaseAccounts/tables/write | 创建或更新表。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/usages/read | 读取数据库帐户使用情况。 |
 > | 操作 | Microsoft.DocumentDB/databaseAccounts/write | 更新数据库帐户。 |
 > | 操作 | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/action | 向 Microsoft.DocumentDB 通知正在删除虚拟网络或子网 |
@@ -2891,7 +2985,6 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.HDInsight/clusters/applications/read | 获取 HDInsight 群集的应用程序 |
 > | 操作 | Microsoft.HDInsight/clusters/applications/write | 创建或更新 HDInsight 群集的应用程序 |
 > | 操作 | Microsoft.HDInsight/clusters/changerdpsetting/action | 更改 HDInsight 群集的 RDP 设置 |
-> | 操作 | Microsoft.HDInsight/clusters/configurations/action | 更新 HDInsight 群集配置 |
 > | 操作 | Microsoft.HDInsight/clusters/configurations/action | 获取 HDInsight 群集配置 |
 > | 操作 | Microsoft.HDInsight/clusters/configurations/read | 获取 HDInsight 群集配置 |
 > | 操作 | Microsoft.HDInsight/clusters/delete | 删除 HDInsight 群集 |
@@ -2910,6 +3003,20 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.HDInsight/locations/checkNameAvailability/read | 检查名称可用性 |
 > | 操作 | Microsoft.HDInsight/register/action | 注册订阅的 HDInsight 资源提供程序 |
 > | 操作 | Microsoft.HDInsight/unregister/action | 取消注册订阅的 HDInsight 资源提供程序 |
+
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+
+> [!div class="mx-tdCol2BreakAll"]
+> | 操作类型 | 操作 | 说明 |
+> | --- | --- | --- |
+> | 操作 | Microsoft.HybridCompute/machines/delete | 删除 Azure Arc 计算机 |
+> | 操作 | Microsoft.HybridCompute/machines/extensions/delete | 删除 Azure Arc 扩展 |
+> | 操作 | Microsoft.HybridCompute/machines/extensions/read | 读取任何 Azure Arc 扩展 |
+> | 操作 | Microsoft.HybridCompute/machines/extensions/write | 安装或更新 Azure Arc 扩展 |
+> | 操作 | Microsoft.HybridCompute/machines/read | 读取任何 Azure Arc 计算机 |
+> | 操作 | Microsoft.HybridCompute/machines/reconnect/action | 重新连接 Azure Arc 计算机 |
+> | 操作 | Microsoft.HybridCompute/machines/write | 写入 Azure Arc 计算机 |
+> | 操作 | Microsoft.HybridCompute/register/action | 注册 Microsoft.HybridCompute 资源提供程序 |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
@@ -3001,6 +3108,9 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Insights/Components/PricingPlans/Write | 写入 Application Insights 组件定价计划 |
 > | 操作 | Microsoft.Insights/Components/ProactiveDetectionConfigs/Read | 读取 Application Insights 主动检测配置 |
 > | 操作 | Microsoft.Insights/Components/ProactiveDetectionConfigs/Write | 写入 Application Insights 主动检测配置 |
+> | 操作 | Microsoft.Insights/Components/providers/Microsoft.Insights/diagnosticSettings/Read | 读取资源诊断设置 |
+> | 操作 | Microsoft.Insights/Components/providers/Microsoft.Insights/diagnosticSettings/Write | 创建或更新资源诊断设置 |
+> | 操作 | Microsoft.Insights/Components/providers/Microsoft.Insights/logDefinitions/Read | 读取日志定义 |
 > | 操作 | Microsoft.Insights/Components/providers/Microsoft.Insights/MetricDefinitions/Read | 读取指标定义 |
 > | 操作 | Microsoft.Insights/Components/Purge/Action | 从 Application Insights 清除数据 |
 > | 操作 | Microsoft.Insights/Components/Query/Read | 对 Application Insights 日志运行查询 |
@@ -3039,6 +3149,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Insights/Logs/ADSecurityAssessmentRecommendation/Read | 从 ADSecurityAssessmentRecommendation 表读取数据 |
 > | 操作 | Microsoft.Insights/Logs/Alert/Read | 从 Alert 表读取数据 |
 > | 操作 | Microsoft.Insights/Logs/AlertHistory/Read | 从 AlertHistory 表读取数据 |
+> | 操作 | Microsoft.Insights/Logs/ApplicationInsights/Read | 从 ApplicationInsights 表读取数据 |
 > | 操作 | Microsoft.Insights/Logs/AzureActivity/Read | 从 AzureActivity 表读取数据 |
 > | 操作 | Microsoft.Insights/Logs/AzureMetrics/Read | 从 AzureMetrics 表读取数据 |
 > | 操作 | Microsoft.Insights/Logs/BoundPort/Read | 从 BoundPort 表读取数据 |
@@ -3262,13 +3373,50 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.KeyVault/register/action | 注册订阅 |
 > | 操作 | Microsoft.KeyVault/unregister/action | 取消注册订阅 |
 > | 操作 | Microsoft.KeyVault/vaults/accessPolicies/write | 通过合并或替换操作更新现有的访问策略，或者将新的访问策略添加到保管库。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificatecas/delete | 删除证书颁发者 |
+> | DataAction | Microsoft.KeyVault/vaults/certificatecas/read | 读取证书颁发者 |
+> | DataAction | Microsoft.KeyVault/vaults/certificatecas/write | 写入证书颁发者 |
+> | DataAction | Microsoft.KeyVault/vaults/certificatecontacts/write | 管理证书联系人 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/backup/action | 创建证书的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的证书。 可能存在限制。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/create/action | 创建新证书。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/delete | 删除证书。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/import/action | 将包含私钥的现有有效证书导入 Azure Key Vault。 要导入的证书可以采用 PFX 或 PEM 格式。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/purge/action | 清除证书，使其不可恢复。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/read | 列出指定的 Key Vault 中的证书，或获取有关证书的信息。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/recover/action | 恢复已删除的证书。 该操作与 Delete 操作相反。 该操作在启用了软删除的保管库中适用，必须在保留间隔内发出。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/restore/action | 将已备份的证书及其所有版本还原到保管库。 |
+> | DataAction | Microsoft.KeyVault/vaults/certificates/update/action | 更新与给定证书关联的指定属性。 |
 > | 操作 | Microsoft.KeyVault/vaults/delete | 删除密钥保管库 |
 > | 操作 | Microsoft.KeyVault/vaults/deploy/action | 部署 Azure 资源时启用对密钥保管库中机密的访问 |
 > | 操作 | Microsoft.KeyVault/vaults/eventGridFilters/delete | 通知 Microsoft.KeyVault 正在删除 Key Vault 的 EventGrid 订阅 |
 > | 操作 | Microsoft.KeyVault/vaults/eventGridFilters/read | 通知 Microsoft.KeyVault 正在查看 Key Vault 的 EventGrid 订阅 |
 > | 操作 | Microsoft.KeyVault/vaults/eventGridFilters/write | 通知 Microsoft.KeyVault 正在创建 Key Vault 的新 EventGrid 订阅 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/backup/action | 创建密钥的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的密钥。 可能存在限制。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/create/action | 创建新密钥。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/decrypt/action | 使用密钥解密加密文本。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/delete | 删除密钥。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/encrypt/action | 使用密钥加密纯文本。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/import/action | 导入外部创建的密钥，存储它，然后将密钥参数和属性返回给客户端。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/purge/action | 清除密钥，使其不可恢复。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/read | 列出指定保管库中的密钥，或读取密钥的属性和公共材料。<br>对于非对称密钥，此操作会公开公钥，并提供执行公钥算法（例如加密和验证签名）的功能。<br>永远不会公开私钥和对称密钥。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/recover/action | 恢复已删除的密钥。 该操作与 Delete 操作相反。 该操作在启用了软删除的保管库中适用，必须在保留间隔内发出。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/restore/action | 将已备份的密钥及其所有版本还原到保管库。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/sign/action | 使用密钥签名哈希。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/unwrap/action | 使用 Key Vault 密钥解包对称密钥。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/update/action | 更新与给定密钥关联的指定属性。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/verify/action | 验证哈希。 请注意，如果密钥为非对称密钥，此操作可以由拥有读取访问权限的主体执行。 |
+> | DataAction | Microsoft.KeyVault/vaults/keys/wrap/action | 使用 Key Vault 密钥包装对称密钥。 请注意，如果 Key Vault 密钥为非对称密钥，则可以使用读取访问权限执行此操作。 |
 > | 操作 | Microsoft.KeyVault/vaults/read | 查看密钥保管库的属性 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/backup/action | 创建机密的备份文件。 该文件可用于还原同一订阅的 Key Vault 中的机密。 可能存在限制。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/delete | 删除机密。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/getSecret/action | 获取机密值。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/purge/action | 清除机密，使其不可恢复。 |
 > | 操作 | Microsoft.KeyVault/vaults/secrets/read | 查看机密的属性，但不查看其值。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/readMetadata/action | 列出或查看机密的属性，但不列出或查看机密的值。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/recover/action | 恢复已删除的机密。 该操作与 Delete 操作相反。 该操作在启用了软删除的保管库中适用，必须在保留间隔内发出。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/restore/action | 将已备份的机密及其所有版本还原到保管库。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/setSecret/action | 创建新机密。 |
+> | DataAction | Microsoft.KeyVault/vaults/secrets/update/action | 更新与给定机密关联的指定属性。 |
 > | 操作 | Microsoft.KeyVault/vaults/secrets/write | 创建新的机密，或更新现有机密的值。 |
 > | 操作 | Microsoft.KeyVault/vaults/write | 创建新的密钥保管库，或更新现有密钥保管库的属性 |
 
@@ -3278,45 +3426,48 @@ ms.locfileid: "75623838"
 > | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Kusto/Clusters/Activate/action | 启动群集。 |
-> | 操作 | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/delete | 删除附加的数据库配置 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/read | 读取附加的数据库配置 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/write | 写入附加的数据库配置 resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/delete | 删除附加的数据库配置资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/read | 读取附加的数据库配置资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations/write | 写入附加的数据库配置资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/CheckNameAvailability/action | 检查群集名称可用性。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/AddPrincipals/action | 添加数据库主体。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/CheckNameAvailability/action | 检查给定类型的名称可用性。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | 删除数据连接 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/read | 读取数据连接 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/write | 写入数据连接 resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | 删除数据连接资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/read | 读取数据连接资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnections/write | 写入数据连接资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/DataConnectionValidation/action | 验证数据库数据连接。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/delete | 删除数据库 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | 删除事件中心连接 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | 读取事件中心连接 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | 写入事件中心连接 resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/delete | 删除数据库资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | 删除事件中心连接资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | 读取事件中心连接资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | 写入事件中心连接资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/EventHubConnectionValidation/action | 验证数据库事件中心连接。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/ListPrincipals/action | 列出数据库主体。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/delete | 删除数据库主体分配 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/read | 读取数据库主体分配 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/write | 写入数据库主体分配 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/read | 读取数据库 resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/delete | 删除数据库主体分配资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/read | 读取数据库主体分配资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/PrincipalAssignments/write | 写入数据库主体分配资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/read | 读取数据库资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/Databases/RemovePrincipals/action | 删除数据库主体。 |
-> | 操作 | Microsoft.Kusto/Clusters/Databases/write | 写入数据库 resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/Databases/write | 写入数据库资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/Deactivate/action | 停止群集。 |
-> | 操作 | Microsoft.Kusto/Clusters/delete | 删除群集 resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/delete | 删除群集资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/DetachFollowerDatabases/action | 分离关注者的数据库。 |
 > | 操作 | Microsoft.Kusto/Clusters/DiagnoseVirtualNetwork/action | 诊断服务所依赖的外部资源的网络连接状态。 |
 > | 操作 | Microsoft.Kusto/Clusters/ListFollowerDatabases/action | 列出关注者的数据库。 |
-> | 操作 | Microsoft.Kusto/Clusters/read | 读取群集 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Clusters/SKUs/read | 读取群集 SKU resourceCopy。 |
+> | 操作 | Microsoft.Kusto/Clusters/PrincipalAssignments/delete | 删除 Cluster 主体分配资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/PrincipalAssignments/read | 读取 Cluster 主体分配资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/PrincipalAssignments/write | 写入 Cluster 主体分配资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/read | 读取群集资源。 |
+> | 操作 | Microsoft.Kusto/Clusters/SKUs/read | 读取群集 SKU 资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/Start/action | 启动群集。 |
 > | 操作 | Microsoft.Kusto/Clusters/Stop/action | 停止群集。 |
-> | 操作 | Microsoft.Kusto/Clusters/write | 写入群集 resourceCopy。 |
-> | 操作 | Microsoft.Kusto/Locations/CheckNameAvailability/action | 检查 resourceCopy 名称可用性。 |
+> | 操作 | Microsoft.Kusto/Clusters/write | 写入群集资源。 |
+> | 操作 | Microsoft.Kusto/Locations/CheckNameAvailability/action | 检查资源名称可用性。 |
 > | 操作 | Microsoft.Kusto/Locations/GetNetworkPolicies/action | 获取网络意向策略 |
-> | 操作 | Microsoft.Kusto/locations/operationresults/read | 读取操作 resourceCopy |
-> | 操作 | Microsoft.Kusto/Operations/read | 读取操作 resourceCopy |
+> | 操作 | Microsoft.Kusto/locations/operationresults/read | 读取操作资源 |
+> | 操作 | Microsoft.Kusto/Operations/read | 读取操作资源 |
 > | 操作 | Microsoft.Kusto/register/action | 订阅注册操作 |
 > | 操作 | Microsoft.Kusto/Register/action | 将订阅注册到 Kusto 资源提供程序。 |
-> | 操作 | Microsoft.Kusto/SKUs/read | 读取 SKU resourceCopy. |
+> | 操作 | Microsoft.Kusto/SKUs/read | 读取 SKU 资源。 |
 > | 操作 | Microsoft.Kusto/Unregister/action | 将订阅取消注册到 Kusto 资源提供程序。 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
@@ -3329,6 +3480,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.LabServices/labAccounts/galleryImages/delete | 删除库映像。 |
 > | 操作 | Microsoft.LabServices/labAccounts/galleryImages/read | 读取库映像。 |
 > | 操作 | Microsoft.LabServices/labAccounts/galleryImages/write | 添加或修改库映像。 |
+> | 操作 | Microsoft.LabServices/labAccounts/GetPricingAndAvailability/action | 获取实验室帐户的大小、地理位置和操作系统组合的定价与可用性。 |
 > | 操作 | Microsoft.LabServices/labAccounts/GetRegionalAvailability/action | 获取实验室帐户下配置的每个大小类别的区域可用性信息 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/AddUsers/action | 将用户添加到实验室 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/delete | 删除实验室。 |
@@ -3338,7 +3490,6 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/ResetPassword/action | 在环境中重置用户密码 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Start/action | 通过启动环境内的所有资源来启动环境。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/Stop/action | 通过停止环境内的所有资源来停止环境。 |
-> | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/environments/write | 添加或修改环境。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/Publish/action | 基于实验室/环境设置的当前状态设置/取消设置环境设置的所需资源。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/read | 读取环境设置。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/ResetPassword/action | 重置模板虚拟机上的密码。 |
@@ -3349,6 +3500,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/Start/action | 通过启动模板内的所有资源来启动模板。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | 通过停止模板内的所有资源来停止模板。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/environmentSettings/write | 添加或修改环境设置。 |
+> | 操作 | Microsoft.LabServices/labAccounts/labs/GetLabPricingAndAvailability/action | 获取此实验室的每个实验室单位的定价，以及指示此实验室是否可纵向扩展的可用性。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/read | 读取实验室。 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/SendEmail/action | 发送包含实验室注册链接的电子邮件 |
 > | 操作 | Microsoft.LabServices/labAccounts/labs/users/delete | 删除用户。 |
@@ -3392,6 +3544,9 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Logic/integrationAccounts/certificates/read | 读取集成帐户中的证书。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/certificates/write | 创建或更新集成帐户中的证书。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/delete | 删除集成帐户。 |
+> | 操作 | Microsoft.Logic/integrationAccounts/groups/delete | 删除集成帐户中的组。 |
+> | 操作 | Microsoft.Logic/integrationAccounts/groups/read | 读取集成帐户中的组。 |
+> | 操作 | Microsoft.Logic/integrationAccounts/groups/write | 创建或更新集成帐户中的组。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/join/action | 加入集成帐户。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/listCallbackUrl/action | 获取集成帐户的回调 URL。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/listKeyVaultKeys/action | 获取密钥保管库中的密钥。 |
@@ -3415,7 +3570,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Logic/integrationAccounts/schemas/read | 读取集成帐户中的架构。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/schemas/write | 创建或更新集成帐户中的架构。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/sessions/delete | 删除集成帐户中的会话。 |
-> | 操作 | Microsoft.Logic/integrationAccounts/sessions/read | 读取集成帐户中的批配置。 |
+> | 操作 | Microsoft.Logic/integrationAccounts/sessions/read | 读取集成帐户中的会话。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/sessions/write | 创建或更新集成帐户中的会话。 |
 > | 操作 | Microsoft.Logic/integrationAccounts/write | 创建或更新集成帐户。 |
 > | 操作 | Microsoft.Logic/integrationServiceEnvironments/availableManagedApis/read | 读取集成服务环境可用的托管 API。 |
@@ -3526,13 +3681,16 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/delete | 删除机器学习服务工作区中已注册的数据集 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read | 获取机器学习服务工作区中已注册数据集的数据集预览 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | 获取机器学习服务工作区中已注册数据集的数据集配置文件 |
-> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/write | 在机器学习服务工作区中创建或更新数据集配置文件 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/write | 创建或更新机器学习服务工作区中已注册数据集的数据集配置文件 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/read | 获取机器学习服务工作区中已注册的数据集 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read | 获取机器学习服务工作区中已注册数据集的数据集架构 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/registered/write | 在机器学习服务工作区中创建或更新注册的数据集 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/delete | 删除机器学习服务工作区中已取消注册的数据集 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/preview/read | 获取机器学习服务工作区中已取消注册数据集的数据集预览 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/read | 获取机器学习服务工作区中已取消注册数据集的数据集配置文件 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/profile/write | 创建或更新机器学习服务工作区中已取消注册数据集的数据集配置文件 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/read | 获取机器学习服务工作区中已取消注册的数据集 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/schema/read | 获取机器学习服务工作区中已取消注册数据集的数据集架构 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datasets/unregistered/write | 在机器学习服务工作区中创建或更新取消注册的数据集 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datastores/delete | 删除机器学习服务工作区中的数据存储 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/datastores/read | 获取机器学习服务工作区中的数据存储 |
@@ -3555,6 +3713,9 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/delete | 删除机器学习服务工作区中的项目 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/read | 获取机器学习服务工作区中的项目 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/artifacts/write | 在机器学习服务工作区中创建或更新项目 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/secrets/delete | 删除机器学习服务工作区中的机密 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/secrets/read | 获取机器学习服务工作区中的机密 |
+> | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/secrets/write | 在机器学习服务工作区中创建或更新机密 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/delete | 删除机器学习服务工作区中的快照 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/read | 获取机器学习服务工作区中的快照 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/metadata/snapshots/write | 在机器学习服务工作区中创建或更新快照 |
@@ -3568,6 +3729,15 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/delete | 删除机器学习服务工作区中的管道草稿 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/read | 获取机器学习服务工作区中的管道草稿 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write | 在机器学习服务工作区中创建或更新管道草稿 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/delete | 删除到 Microsoft.Network 提供程序的专用终结点资源的连接代理 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/read | 查看到 Microsoft.Network 提供程序的专用终结点资源的连接代理状态 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/validate/action | 验证到 Microsoft.Network 提供程序的专用终结点资源的连接代理 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnectionProxies/write | 更改到 Microsoft.Network 提供程序的专用终结点资源的连接代理状态 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnections/delete | 删除到 Microsoft.Network 提供程序的专用终结点资源的连接 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnections/read | 查看到 Microsoft.Network 提供程序的专用终结点资源的连接状态 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateEndpointConnections/write | 更改到 Microsoft.Network 提供程序的专用终结点资源的连接状态 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/PrivateEndpointConnectionsApproval/action | 批准或拒绝到 Microsoft.Network 提供程序的专用终结点资源的连接 |
+> | 操作 | Microsoft.MachineLearningServices/workspaces/privateLinkResources/read | 获取机器学习服务工作区的指定实例的可用专用链接资源 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/read | 获取机器学习服务工作区 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/services/aci/delete | 删除机器学习服务工作区中的 ACI 服务 |
 > | DataAction | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/action | 列出机器学习服务工作区中 ACI 服务的密钥 |
@@ -3819,6 +3989,14 @@ ms.locfileid: "75623838"
 > | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MixedReality/register/action | 注册混合现实资源提供程序的订阅。 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/convert/action | 启动资产转换 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/convert/delete | 停止资产转换 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/convert/read | 获取资产转换属性 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/diagnostic/read | 连接到远程渲染检查器 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action | 启动会话 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/delete | 停止会话 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/read | 获取会话属性 |
+> | DataAction | Microsoft.MixedReality/RemoteRenderingAccounts/render/read | 连接到会话 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | 创建空间定位点 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | 删除空间定位点 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | 发现附近的空间定位点 |
@@ -3839,11 +4017,15 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.NetApp/locations/checknameavailability/action | 检查资源名称是否可用 |
 > | 操作 | Microsoft.NetApp/locations/operationresults/read | 读取操作结果资源。 |
 > | 操作 | Microsoft.NetApp/locations/read | 读取可用性检查资源。 |
+> | 操作 | Microsoft.NetApp/netAppAccounts/accountBackups/delete |  |
+> | 操作 | Microsoft.NetApp/netAppAccounts/accountBackups/read |  |
+> | 操作 | Microsoft.NetApp/netAppAccounts/accountBackups/write |  |
 > | 操作 | Microsoft.NetApp/netAppAccounts/backupPolicies/delete | 删除备份策略资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/backupPolicies/read | 读取备份策略资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/backupPolicies/write | 写入备份策略资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/delete | 删除池资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/read | 读取池资源。 |
+> | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/AuthorizeReplication/action | 授权源卷复制 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/delete | 删除备份资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/read | 读取备份资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write | 写入备份资源。 |
@@ -3852,6 +4034,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/mountTargets/read | 读取装入目标资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read | 读取卷资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/action | 读取卷复制的状态。 |
+> | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ResyncReplication/action | 重新同步目标卷的复制 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/revert/action | 将卷还原到特定快照 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete | 删除快照资源。 |
 > | 操作 | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | 读取快照资源。 |
@@ -4038,6 +4221,8 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Network/ipGroups/delete | 删除 IpGroup |
 > | 操作 | Microsoft.Network/ipGroups/join/action | 联接 IpGroup。 不可发出警报。 |
 > | 操作 | Microsoft.Network/ipGroups/read | 获取 IpGroup |
+> | 操作 | Microsoft.Network/ipGroups/updateReferences/action | 更新 IpGroup 中的引用 |
+> | 操作 | Microsoft.Network/ipGroups/validate/action | 验证 IpGroup |
 > | 操作 | Microsoft.Network/ipGroups/write | 创建 IpGroup 或更新现有的 IpGroup |
 > | 操作 | Microsoft.Network/loadBalancers/backendAddressPools/join/action | 加入负载均衡器后端地址池。 不可发出警报。 |
 > | 操作 | Microsoft.Network/loadBalancers/backendAddressPools/read | 获取负载均衡器的后端地址池定义 |
@@ -4391,8 +4576,16 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OffAzure/HyperVSites/runasaccounts/read | 获取作为帐户运行的 Hyper-V 的属性 |
 > | 操作 | Microsoft.OffAzure/HyperVSites/usage/read | 获取 Hyper-V 的使用情况 |
 > | 操作 | Microsoft.OffAzure/HyperVSites/write | 创建或更新 Hyper-V 站点 |
+> | 操作 | Microsoft.OffAzure/ImportSites/delete | 删除导入站点 |
+> | 操作 | Microsoft.OffAzure/ImportSites/importuri/action | 获取用于导入计算机 CSV 文件的 SAS URI。 |
+> | 操作 | Microsoft.OffAzure/ImportSites/jobs/read | 获取导入作业的属性 |
+> | 操作 | Microsoft.OffAzure/ImportSites/machines/delete | 删除导入计算机 |
+> | 操作 | Microsoft.OffAzure/ImportSites/machines/read | 获取导入计算机的属性 |
+> | 操作 | Microsoft.OffAzure/ImportSites/read | 获取导入站点的属性 |
+> | 操作 | Microsoft.OffAzure/ImportSites/write | 创建或更新导入站点 |
 > | 操作 | Microsoft.OffAzure/Operations/read | 读取公开的操作 |
 > | 操作 | Microsoft.OffAzure/register/action | 使用 Microsoft.OffAzure 资源提供程序注册订阅 |
+> | 操作 | Microsoft.OffAzure/ServerSites/delete | 删除服务器站点 |
 > | 操作 | Microsoft.OffAzure/ServerSites/jobs/read | 获取服务器作业的属性 |
 > | 操作 | Microsoft.OffAzure/ServerSites/machines/read | 获取服务器计算机的属性 |
 > | 操作 | Microsoft.OffAzure/ServerSites/machines/write | 写入服务器计算机的属性 |
@@ -4402,9 +4595,15 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OffAzure/ServerSites/runasaccounts/read | 获取作为帐户运行的服务器的属性 |
 > | 操作 | Microsoft.OffAzure/ServerSites/usage/read | 获取服务器站点的使用情况 |
 > | 操作 | Microsoft.OffAzure/ServerSites/write | 创建或更新服务器站点 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/clientGroupMembers/action | 列出所选客户端组的客户端组成员。 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/delete | 删除 VMware 站点 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/exportapplications/action | 将 VMware 应用程序和角色数据导出到 xls |
+> | 操作 | Microsoft.OffAzure/VMwareSites/generateCoarseMap/action | 生成计算机列表的粗略地图 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/generateDetailedMap/action | 生成详细的 VMware 粗略地图 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/getApplications/action | 获取所选计算机的应用程序列表信息 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/healthsummary/read | 获取 VMware 资源的运行状况摘要 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/jobs/read | 获取 VMware 作业的属性 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/machines/applications/read | 获取 VMware 计算机应用程序的属性 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/machines/read | 获取 VMware 计算机的属性 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/machines/start/action | 启动 VMware 计算机 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/machines/stop/action | 停止 VMware 计算机 |
@@ -4412,6 +4611,8 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OffAzure/VMwareSites/read | 获取 VMware 站点的属性 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/refresh/action | 刷新 VMware 站点中的对象 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/runasaccounts/read | 获取作为帐户运行的 VMware 的属性 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/serverGroupMembers/action | 列出所选服务器组的服务器组成员。 |
+> | 操作 | Microsoft.OffAzure/VMwareSites/updateProperties/action | 更新站点中计算机的属性 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/usage/read | 获取 VMware 的使用情况 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/vcenters/read | 获取 VMware vCenter 的属性 |
 > | 操作 | Microsoft.OffAzure/VMwareSites/vcenters/write | 创建或更新 VMware vCenter |
@@ -4482,12 +4683,14 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AmlComputeJobEvent/read | 从 AmlComputeJobEvent 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ApiManagementGatewayLogs/read | 从 ApiManagementGatewayLogs 表中读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | 从 AppCenterError 表读取数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | 从 ApplicationInsights 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppPlatformLogsforSpring/read | 从 AppPlatformLogsforSpring 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppPlatformSystemLogs/read | 从 AppPlatformSystemLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppServiceAppLogs/read | 从 AppServiceAppLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppServiceAuditLogs/read | 从 AppServiceAuditLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppServiceConsoleLogs/read | 从 AppServiceConsoleLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppServiceEnvironmentPlatformLogs/read | 从 AppServiceEnvironmentPlatformLogs 表读取数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/AppServiceFileAuditLogs/read | 从 AppServiceFileAuditLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppServiceHTTPLogs/read | 从 AppServiceHTTPLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | 从 AuditLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AutoscaleEvaluationsLog/read | 读取 AutoscaleEvaluationsLog 表中的数据 |
@@ -4525,6 +4728,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/DatabricksSSH/read | 从 DatabricksSSH 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/DatabricksTables/read | 从 DatabricksTables 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/DatabricksWorkspace/read | 从 DatabricksWorkspace 表读取数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/dependencies/read | 从 dependencies 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/DeviceAppCrash/read | 从 DeviceAppCrash 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/DeviceAppLaunch/read | 从 DeviceAppLaunch 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/DeviceCalendar/read | 从 DeviceCalendar 表读取数据 |
@@ -4562,6 +4766,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/IntuneAuditLogs/read | 从 IntuneAuditLogs 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/IntuneDeviceComplianceOrg/read | 从 IntuneDeviceComplianceOrg 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/IntuneOperationalLogs/read | 从 IntuneOperationalLogs 表读取数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/IoTHubDistributedTracing/read | 从 IoTHubDistributedTracing 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | 从 KubeEvents 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/KubeHealth/read | 从 KubeHealth 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/KubeMonAgentEvents/read | 从 KubeMonAgentEvents 表读取数据 |
@@ -4638,6 +4843,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/Perf/read | 从 Perf 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | 从 ProtectionStatus 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/read | 对工作区中的数据运行查询 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/requests/read | 从 requests 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ReservedCommonFields/read | 从 ReservedCommonFields 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | 从 SCCMAssessmentRecommendation 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/SCOMAssessmentRecommendation/read | 从 SCOMAssessmentRecommendation 表读取数据 |
@@ -4670,6 +4876,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/SysmonEvent/read | 从 SysmonEvent 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read | 从任何自定义日志读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ThreatIntelligenceIndicator/read | 读取 ThreatIntelligenceIndicator 表中的数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/traces/read | 从 traces 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/UAApp/read | 从 UAApp 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/UAComputer/read | 从 UAComputer 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/UAComputerRank/read | 从 UAComputerRank 表读取数据 |
@@ -4776,10 +4983,16 @@ ms.locfileid: "75623838"
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
+> | 操作 | Microsoft.Portal/consoles/delete | 删除 Cloud Shell 实例。 |
+> | 操作 | Microsoft.Portal/consoles/read | 读取 Cloud Shell 实例。 |
+> | 操作 | Microsoft.Portal/consoles/write | 创建或更新 Cloud Shell 实例。 |
 > | 操作 | Microsoft.Portal/dashboards/delete | 从订阅删除仪表板。 |
 > | 操作 | Microsoft.Portal/dashboards/read | 读取订阅的仪表板。 |
 > | 操作 | Microsoft.Portal/dashboards/write | 向订阅添加仪表板或修改仪表板。 |
 > | 操作 | Microsoft.Portal/register/action | 注册到门户 |
+> | 操作 | Microsoft.Portal/usersettings/delete | 删除 Cloud Shell 用户设置。 |
+> | 操作 | Microsoft.Portal/usersettings/read | 读取 Cloud Shell 用户设置。 |
+> | 操作 | Microsoft.Portal/usersettings/write | 创建或更新 Cloud Shell 用户设置。 |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
@@ -4806,65 +5019,65 @@ ms.locfileid: "75623838"
 > | --- | --- | --- |
 > | 操作 | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服务使用的内部操作 |
 > | 操作 | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服务使用的内部操作 |
-> | 操作 | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
-> | 操作 | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | 创建备份受保护项 |
-> | 操作 | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | 返回所有受保护项的列表。 |
-> | 操作 | Microsoft.RecoveryServices/Locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
-> | 操作 | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 验证功能 |
+> | 操作 | microsoft.recoveryservices/Locations/backupPreValidateProtection/action |  |
+> | 操作 | microsoft.recoveryservices/Locations/backupProtectedItem/write | 创建备份受保护项 |
+> | 操作 | microsoft.recoveryservices/Locations/backupProtectedItems/read | 返回所有受保护项的列表。 |
+> | 操作 | microsoft.recoveryservices/Locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
+> | 操作 | microsoft.recoveryservices/Locations/backupValidateFeatures/action | 验证功能 |
 > | 操作 | Microsoft.RecoveryServices/locations/checkNameAvailability/action | “检查资源名称性”是一个 API，用于检查资源名称是否可用 |
 > | 操作 | Microsoft.RecoveryServices/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | 操作 | Microsoft.RecoveryServices/operations/read | 操作返回资源提供程序的操作列表 |
 > | 操作 | Microsoft.RecoveryServices/register/action | 注册给定资源提供程序的订阅 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupconfig/read | 返回恢复服务保管库的配置。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupconfig/write | 更新恢复服务保管库的配置。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/read | 获取备份资源加密配置。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/write | 更新备份资源加密配置 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | 删除备份保护意向 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/operationsStatus/read | 返回操作状态 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | 删除已注册的容器 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | 在容器内进行工作负载的查询 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | 获取容器中的所有项 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 获取对保护容器执行的操作的结果。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 获取对保护容器执行的操作的状态。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对受保护的项执行备份。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 删除受保护的项 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项执行的操作的结果。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 预配受保护项的即时项恢复 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项的恢复点。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 创建已注册的容器 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | 取消作业 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupJobs/operationsStatus/read | 返回作业操作的状态。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupJobs/read | 返回所有作业对象 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 导出作业 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 删除保护策略 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 返回所有保护策略 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 创建保护策略 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | 返回所有可保护项的列表。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 返回所有受保护项的列表。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 返回属于订阅的所有容器 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | 返回恢复服务保管库的安全 PIN 信息。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | 返回恢复服务保管库的存储配置。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | 更新恢复服务保管库的存储配置。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupconfig/read | 返回恢复服务保管库的配置。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupconfig/write | 更新恢复服务保管库的配置。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/read | 获取备份资源加密配置。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/write | 更新备份资源加密配置 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupEngines/read | 返回使用保管库注册的所有备份管理服务器。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/delete | 删除备份保护意向 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/read | 获取备份保护意向 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/write | 创建备份保护意向 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/operationResults/read | 返回操作状态 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/operationsStatus/read | 返回操作状态 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectableContainers/read | 获取所有可保护的容器 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/delete | 删除已注册的容器 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/inquire/action | 在容器内进行工作负载的查询 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/items/read | 获取容器中的所有项 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationResults/read | 获取对保护容器执行的操作的结果。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 获取对保护容器执行的操作的状态。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 对受保护的项执行备份。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 删除受保护的项 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 获取对受保护项执行的操作的结果。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 预配受保护项的即时项恢复 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项的恢复点。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 创建备份受保护项 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/read | 返回所有已注册的容器 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/write | 创建已注册的容器 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupFabrics/refreshContainers/action | 刷新容器列表 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupJobs/cancel/action | 取消作业 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupJobs/operationResults/read | 返回作业操作的结果。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupJobs/operationsStatus/read | 返回作业操作的状态。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupJobs/read | 返回所有作业对象 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupJobsExport/action | 导出作业 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupOperationResults/read | 返回恢复服务保管库的备份操作结果。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupOperations/read | 返回恢复服务保管库的备份操作状态。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupPolicies/delete | 删除保护策略 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupPolicies/operationResults/read | 获取策略操作的结果。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupPolicies/operations/read | 获取策略操作的状态。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupPolicies/read | 返回所有保护策略 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupPolicies/write | 创建保护策略 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupProtectableItems/read | 返回所有可保护项的列表。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupProtectedItems/read | 返回所有受保护项的列表。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupProtectionContainers/read | 返回属于订阅的所有容器 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupSecurityPIN/action | 返回恢复服务保管库的安全 PIN 信息。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupstorageconfig/read | 返回恢复服务保管库的存储配置。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupstorageconfig/write | 更新恢复服务保管库的存储配置。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupUsageSummaries/read | 返回恢复服务的受保护项和受保护服务器的摘要。 |
+> | 操作 | microsoft.recoveryservices/Vaults/backupValidateOperation/action | 验证对受保护项的操作 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/certificates/write | “更新资源证书”操作更新资源/保管库凭据证书。 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/delete | “删除保管库”操作删除“vault”类型的指定 Azure 资源 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/extendedInformation/delete | “获取扩展信息”操作获取表示“vault”类型的 Azure 资源的对象扩展信息 |
@@ -4905,6 +5118,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/migrationRecoveryPoints/read | 读取任何迁移恢复点 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/operationresults/read | 跟踪对资源“迁移项”执行的异步操作的结果 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/read | 读取任何迁移项 |
+> | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/resync/action | 重新同步 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrate/action | 测试迁移 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/testMigrateCleanup/action | 测试迁移清理 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/write | 创建或更新任何迁移项 |
@@ -4989,8 +5203,8 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationVaultSettings/read | 读取任何内容  |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationVaultSettings/write | 创建或更新任何  |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationvCenters/read | 读取任何 vCenter |
+> | 操作 | microsoft.recoveryservices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | 操作 | Microsoft.RecoveryServices/vaults/usages/read | 读取任何保管库使用情况 |
-> | 操作 | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/write | “创建保管库”操作创建“vault”类型的 Azure 资源 |
 
@@ -5027,6 +5241,9 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Relay/namespaces/HybridConnections/write | 创建或更新 HybridConnection 属性。 |
 > | 操作 | Microsoft.Relay/namespaces/messagingPlan/read | 获取命名空间的消息传递计划。<br>已弃用此 API。<br>在以后的 API 版本中，通过 MessagingPlan 资源公开的属性将移动到（父）命名空间资源。<br>不支持对 API 版本 2017-04-01 执行此操作。 |
 > | 操作 | Microsoft.Relay/namespaces/messagingPlan/write | 更新命名空间的消息传递计划。<br>已弃用此 API。<br>在以后的 API 版本中，通过 MessagingPlan 资源公开的属性将移动到（父）命名空间资源。<br>不支持对 API 版本 2017-04-01 执行此操作。 |
+> | 操作 | Microsoft.Relay/namespaces/networkrulesets/delete | 删除 VNET 规则资源 |
+> | 操作 | Microsoft.Relay/namespaces/networkrulesets/read | 获取 NetworkRuleSet 资源 |
+> | 操作 | Microsoft.Relay/namespaces/networkrulesets/write | 创建 VNET 规则资源 |
 > | 操作 | Microsoft.Relay/namespaces/operationresults/read | 获取命名空间操作的状态 |
 > | 操作 | Microsoft.Relay/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 获取命名空间诊断设置资源说明列表 |
 > | 操作 | Microsoft.Relay/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 获取命名空间诊断设置资源说明列表 |
@@ -5493,6 +5710,8 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Sql/locations/privateEndpointConnectionProxyAzureAsyncOperation/read | 获取专用终结点连接代理操作的结果 |
 > | 操作 | Microsoft.Sql/locations/privateEndpointConnectionProxyOperationResults/read | 获取专用终结点连接代理操作的结果 |
 > | 操作 | Microsoft.Sql/locations/read | 获取给定订阅的可用位置 |
+> | 操作 | Microsoft.Sql/locations/serverAdministratorAzureAsyncOperation/read | 服务器 Azure Active Directory 管理员异步操作结果 |
+> | 操作 | Microsoft.Sql/locations/serverAdministratorOperationResults/read | 服务器 Azure Active Directory 管理员操作结果 |
 > | 操作 | Microsoft.Sql/locations/serverKeyAzureAsyncOperation/read | 获取正在对透明数据加密服务器密钥进行的操作 |
 > | 操作 | Microsoft.Sql/locations/serverKeyOperationResults/read | 获取正在对透明数据加密服务器密钥进行的操作 |
 > | 操作 | Microsoft.Sql/locations/shortTermRetentionPolicyOperationResults/read | 获取短期保留策略操作状态 |
@@ -5577,6 +5796,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Sql/operations/read | 获取可用的 REST 操作 |
 > | 操作 | Microsoft.Sql/privateEndpointConnectionsApproval/action | 确定是否允许用户批准专用终结点连接 |
 > | 操作 | Microsoft.Sql/register/action | 注册 Microsoft SQL 数据库资源提供程序的订阅，并启用 Microsoft SQL 数据库的创建。 |
+> | 操作 | Microsoft.Sql/servers/administratorOperationResults/read | 获取正在对服务器管理员进行的操作 |
 > | 操作 | Microsoft.Sql/servers/administrators/delete | 删除特定的 Azure Active Directory 管理员对象 |
 > | 操作 | Microsoft.Sql/servers/administrators/read | 获取特定的 Azure Active Directory 管理员对象 |
 > | 操作 | Microsoft.Sql/servers/administrators/write | 添加或更新特定的 Azure Active Directory 管理员对象 |
@@ -5632,6 +5852,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Sql/servers/databases/export/action | 导出 Azure SQL 数据库 |
 > | 操作 | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | 检索在给定的数据库上配置的扩展 blob 审核策略的详细信息 |
 > | 操作 | Microsoft.Sql/servers/databases/extendedAuditingSettings/write | 更改给定数据库的扩展 blob 审核策略 |
+> | 操作 | Microsoft.Sql/servers/databases/extensions/importExtensionOperationResults/read | 获取正在进行的导入操作 |
 > | 操作 | Microsoft.Sql/servers/databases/extensions/read | 获取数据库的扩展集合。 |
 > | 操作 | Microsoft.Sql/servers/databases/extensions/write | 更改给定数据库的扩展 |
 > | 操作 | Microsoft.Sql/servers/databases/failover/action | 客户发起了数据库故障转移。 |
@@ -5858,6 +6079,9 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 返回删除 blob 的结果 |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action | 返回删除 Blob 版本的结果 |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action | 返回具有匹配标记筛选器的帐户下的 blob 列表 |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/manageOwnership/action | 更改 Blob 的所有权 |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/modifyPermissions/action | 修改 Blob 的权限 |
+> | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | 将 Blob 从一个路径移到另一个路径 |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 blob 或 blob 列表 |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/runAsSuperUser/action | 返回 blob 命令的结果 |
 > | DataAction | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read | 返回读取 blob 标记的结果 |
@@ -5880,6 +6104,10 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Storage/storageAccounts/blobServices/read |  |
 > | 操作 | Microsoft.Storage/storageAccounts/blobServices/read | 返回 blob 服务属性或统计信息 |
 > | 操作 | Microsoft.Storage/storageAccounts/blobServices/write | 返回放置 blob 服务属性的结果 |
+> | 操作 | Microsoft.Storage/storageAccounts/dataSharePolicies/delete |  |
+> | 操作 | Microsoft.Storage/storageAccounts/dataSharePolicies/read |  |
+> | 操作 | Microsoft.Storage/storageAccounts/dataSharePolicies/read |  |
+> | 操作 | Microsoft.Storage/storageAccounts/dataSharePolicies/write |  |
 > | 操作 | Microsoft.Storage/storageAccounts/delete | 删除现有的存储帐户。 |
 > | 操作 | Microsoft.Storage/storageAccounts/encryptionScopes/read |  |
 > | 操作 | Microsoft.Storage/storageAccounts/encryptionScopes/read |  |
@@ -5893,6 +6121,7 @@ ms.locfileid: "75623838"
 > | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | 返回写入文件或创建文件夹的结果 |
 > | 操作 | Microsoft.Storage/storageAccounts/fileServices/read |  |
 > | 操作 | Microsoft.Storage/storageAccounts/fileServices/read | 获取文件服务属性 |
+> | 操作 | Microsoft.Storage/storageAccounts/fileServices/shares/action |  |
 > | 操作 | Microsoft.Storage/storageAccounts/fileServices/shares/delete |  |
 > | 操作 | Microsoft.Storage/storageAccounts/fileServices/shares/read |  |
 > | 操作 | Microsoft.Storage/storageAccounts/fileServices/shares/read |  |
@@ -5905,6 +6134,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Storage/storageAccounts/managementPolicies/read | 获取存储管理帐户策略 |
 > | 操作 | Microsoft.Storage/storageAccounts/managementPolicies/write | 放置存储帐户管理策略 |
 > | 操作 | Microsoft.Storage/storageAccounts/objectReplicationPolicies/delete |  |
+> | 操作 | Microsoft.Storage/storageAccounts/objectReplicationPolicies/read |  |
 > | 操作 | Microsoft.Storage/storageAccounts/objectReplicationPolicies/read |  |
 > | 操作 | Microsoft.Storage/storageAccounts/objectReplicationPolicies/write |  |
 > | 操作 | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | 删除专用终结点连接代理 |
@@ -6131,7 +6361,7 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.StorSimple/managers/listPublicEncryptionKey/action | 列出 StorSimple Device Manager 的加密公钥。 |
 > | 操作 | Microsoft.StorSimple/managers/metrics/read | 列出或获取指标 |
 > | 操作 | Microsoft.StorSimple/managers/metricsDefinitions/read | 列出或获取指标定义 |
-> | 操作 | Microsoft.StorSimple/managers/migrateClassicToResourceManager/action | 将管理器从经典模型迁移到资源管理器模型 |
+> | 操作 | Microsoft.StorSimple/managers/migrateClassicToResourceManager/action | 从经典模型迁移到 Resource Manager 模型 |
 > | 操作 | Microsoft.StorSimple/managers/migrationSourceConfigurations/read | 列出迁移源配置（仅限 8000 系列） |
 > | 操作 | Microsoft.StorSimple/managers/operationResults/read | 列出或获取操作结果 |
 > | 操作 | Microsoft.StorSimple/managers/provisionCloudAppliance/action | 创建新的云设备。 |
@@ -6210,9 +6440,17 @@ ms.locfileid: "75623838"
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | 操作 | 说明 |
 > | --- | --- | --- |
-> | 操作 | Microsoft.Support/register/action | 注册到支持资源提供程序 |
-> | 操作 | Microsoft.Support/supportTickets/read | 获取支持票证详细信息（包括状态、严重性、联系详细信息和通信），或获取各个订阅中的支持票证列表。 |
-> | 操作 | Microsoft.Support/supportTickets/write | 创建或更新支持票证。 可以针对技术、计费、配额或订阅管理相关问题创建支持票证。 可以更新现有支持票证的严重性、联系详细信息和通信。 |
+> | 操作 | Microsoft.Support/checkNameAvailability/action | 检查该名称是否有效且未用于资源类型 |
+> | 操作 | Microsoft.Support/operationresults/read | 获取操作结果 |
+> | 操作 | Microsoft.Support/operations/read | 列出可对 Microsoft.Support 资源提供程序执行的操作 |
+> | 操作 | Microsoft.Support/operationsstatus/read | 获取操作状态 |
+> | 操作 | Microsoft.Support/register/action | 注册 Support 资源提供程序 |
+> | 操作 | Microsoft.Support/services/problemClassifications/read | 获取可用于 Azure 服务的问题分类列表 |
+> | 操作 | Microsoft.Support/services/read | 获取可用于支持的 Azure 服务列表 |
+> | 操作 | Microsoft.Support/supportTickets/communications/read | 获取支持票证通信的列表 |
+> | 操作 | Microsoft.Support/supportTickets/communications/write | 创建支持票证通信 |
+> | 操作 | Microsoft.Support/supportTickets/read | 获取支持票证的列表。 |
+> | 操作 | Microsoft.Support/supportTickets/write | 异步创建支持票证或更新支持票证。 可以针对技术、计费、配额或订阅管理相关问题创建支持票证。 可以更新现有支持票证的严重性和联系详细信息。 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -6313,6 +6551,9 @@ ms.locfileid: "75623838"
 > | 操作 | Microsoft.Web/hostingEnvironments/Delete | 删除应用服务环境 |
 > | 操作 | microsoft.web/hostingenvironments/detectors/read | 获取宿主环境检测器。 |
 > | 操作 | microsoft.web/hostingenvironments/diagnostics/read | 获取宿主环境诊断。 |
+> | 操作 | Microsoft.Web/hostingEnvironments/eventGridFilters/delete | 删除宿主环境的事件网格筛选器。 |
+> | 操作 | Microsoft.Web/hostingEnvironments/eventGridFilters/read | 获取宿主环境的事件网格筛选器。 |
+> | 操作 | Microsoft.Web/hostingEnvironments/eventGridFilters/write | 放置宿主环境的事件网格筛选器。 |
 > | 操作 | microsoft.web/hostingenvironments/inboundnetworkdependenciesendpoints/read | 获取所有入站依赖项的网络终结点。 |
 > | 操作 | Microsoft.Web/hostingEnvironments/Join/Action | 加入应用服务环境 |
 > | 操作 | microsoft.web/hostingenvironments/metricdefinitions/read | 获取宿主环境的指标定义。 |
@@ -6696,7 +6937,7 @@ ms.locfileid: "75623838"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将资源提供程序与服务匹配](../azure-resource-manager/azure-services-resource-providers.md)
+- [将资源提供程序与服务匹配](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Azure 资源的自定义角色](custom-roles.md)
 - [Azure 资源的内置角色](built-in-roles.md)
 

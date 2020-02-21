@@ -1,6 +1,7 @@
 ---
-title: Azure SQL 数据库导入/导出服务需要很长时间来导入或导出数据库 | Microsoft Docs
+title: 导入/导出服务花费时间长
 description: Azure SQL 数据库导入/导出服务需要很长时间来导入或导出数据库
+ms.custom: seo-lt-2019
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
@@ -8,13 +9,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 09/27/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 4e3143e3d54c239c95914560ad9648bac2798eab
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 02/17/2020
+ms.openlocfilehash: a5227d17a15e708ce152408b1143ba02959ac2fc
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041366"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155727"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL 数据库导入/导出服务需要很长时间来导入或导出数据库
 
@@ -22,7 +23,7 @@ ms.locfileid: "73041366"
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL 数据库导入/导出服务
 
-Azure SQL 数据库导入/导出服务是一项在每个 Azure 数据中心运行的基于 REST 的 Web 服务。 在 Azure 门户中使用[导入数据库](/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal)或[导出](/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal)选项移动 SQL 数据库时，会调用该服务。 此服务提供免费的请求排队和计算服务在 Azure SQL 数据库和 Azure Blob 存储之间执行导入和导出操作。
+Azure SQL 数据库导入/导出服务是一项在每个 Azure 数据中心运行的基于 REST 的 Web 服务。 在 Azure 门户中使用[导入数据库](sql-database-import.md#using-azure-portal)或[导出](/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal)选项移动 SQL 数据库时，会调用该服务。 此服务提供免费的请求排队和计算服务在 Azure SQL 数据库和 Azure Blob 存储之间执行导入和导出操作。
 
 这些导入和导出操作不代表传统的物理数据库备份，而是代表对使用特殊 BACPAC 格式的数据库进行的逻辑备份。 有了 BACPAC 格式，就不必使用在 Microsoft SQL Server 版本和 Azure SQL 数据库版本之间可能存在差异的物理格式。 因此，可以使用它将数据库安全地还原为 SQL Server 数据库和 SQL 数据库。
 

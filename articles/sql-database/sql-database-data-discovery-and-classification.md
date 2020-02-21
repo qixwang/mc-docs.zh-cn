@@ -12,19 +12,19 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 08/22/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 7b61d717a6fd3de4f059f228a3c50d6eebc9a7d4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 02b434f6d970aa28dd97c4df383b54a89f1696bb
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336069"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155634"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
-数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。    
+数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和报告数据库中的敏感数据。    
 
-发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
@@ -57,9 +57,9 @@ ms.locfileid: "75336069"
 
 ## <a id="subheading-2"></a>发现、分类和标记敏感列
 
-以下部分介绍有关发现、分类和标记含数据库中的敏感数据的列的步骤，以及查看数据库当前分类状态和导出报告的步骤。
+以下部分介绍如何在数据库中发现包含敏感数据的列并对其进行分类和标记、如何查看数据库的当前分类状态，以及如何导出报表。
 
-分类包含两个元数据属性：
+分类包含两种元数据属性：
 
 - 标签 - 主要分类属性，用于定义列中存储数据的敏感度级别。  
 - 信息类型 - 为列中存储数据的类型提供其他粒度。
@@ -100,7 +100,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
       ![对数据进行分类](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
-   - 查看建议列表 - 要接受特定列的建议，请选中相关行左侧列中的复选框。 还可以通过选中建议表格表头中的复选框，将所有建议标记为“已接受”  。
+   - 查看建议列表 - 要接受特定列的建议，请选中相关行左侧列中的复选框。 还可以选中建议表标头中的复选框，将所有建议标记为“接受”  。
 
        ![查看建议列表](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
@@ -108,17 +108,17 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
       ![应用建议](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
 
-7. 此处，还可选择手动分类列表，或者根据建议进行分类  ：
+7. 此外，还可以手动对列进行分类，或基于建议分类： 
 
    - 单击窗口顶部菜单中的“添加分类”  。
 
       ![手动添加分类](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
-   - 在打开的“上下文”窗口中，选择“架构”>“表格”>“想要分类的列”，以及“信息类型”和“敏感度标签”。 然后单击“上下文”窗口底部的蓝色“添加分类”按钮  。
+   - 在打开的上下文窗口中，选择要分类的“架构”>“表”>“列”，并选择信息类型和敏感度标签。 然后单击上下文窗口底部的蓝色“添加分类”按钮  。
 
       ![选择要进行分类的列](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. 要完成分类并使用新的分类元数据永久标记数据库的列，请在窗口顶部菜单中单击“保存”  。
+8. 要完成分类，并永久地使用新分类元数据标记数据库列，请在窗口顶部菜单中单击“保存”  。
 
    ![保存](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
@@ -138,7 +138,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 ## <a id="subheading-5"></a>管理分类
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 可以使用 T-SQL 添加/删除列分类，以及检索整个数据库的所有分类。
 
 > [!NOTE]
@@ -148,8 +148,8 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Rest API](#tab/azure-rest-api)
-此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
+# <a name="rest-apis"></a>[Rest API](#tab/azure-rest-api)
+可以使用 REST API 通过编程方式管理分类和建议。 已发布的 REST API 支持以下操作：
 
 - [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
@@ -157,11 +157,10 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - [启用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) - 对给定列启用敏感度建议（默认情况下，对所有列启用建议）
 - [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
-
 - [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的建议敏感度标签
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
-可以使用 PowerShell 获取 Azure SQL 数据库和托管实例中所有建议的列。
+# <a name="powershell-cmdlet"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
+可以使用 PowerShell 管理 Azure SQL 数据库和托管实例的分类和建议。
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet
 - [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)

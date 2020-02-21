@@ -1,27 +1,19 @@
 ---
 title: 教程 - 通过 Azure PowerShell 使用规模集中的自定义 VM 映像
 description: 了解如何使用 Azure PowerShell 来创建可用于部署虚拟机规模集的自定义 VM 映像
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 3e95ac307e913d57601de5f80f3e0d3ab90b84ba
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 2f8a1e2586892c2d42237ad3211821fc99857a02
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116937"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128865"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
 
@@ -181,4 +173,4 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [将应用程序部署到规模集](tutorial-install-apps-powershell.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: update metedata properties -->

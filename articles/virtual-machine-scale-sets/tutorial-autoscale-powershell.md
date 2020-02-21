@@ -1,28 +1,19 @@
 ---
-title: 教程 - 使用 Azure PowerShell 自动缩放规模集 | Microsoft Docs
+title: 教程 - 使用 Azure PowerShell 自动缩放规模集
 description: 了解如何使用 Azure PowerShell 随 CPU 需求的增减自动缩放虚拟机规模集
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 03/27/2018
-ms.date: 09/04/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: a8b9332f15a734a844679373766ddd3c6467c793
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.openlocfilehash: 2291abee03e6beb3ae538a3c0e8974924beb95b6
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310838"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128844"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
 
@@ -67,7 +58,7 @@ New-AzureRmVmss `
 创建和配置所有的规模集资源和 VM 需要几分钟时间。
 
 ## <a name="create-a-rule-to-autoscale-out"></a>创建规则，以便自动横向扩展
-如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例及部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
 
 平均 CPU 负载大于 70% 持续了 5 分多钟时，请使用 [New-AzureRmAutoscaleRule](https://docs.microsoft.com/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 创建规则增加规模集中的 VM 实例数。 触发规则时，VM 实例数增加 3。
 
@@ -82,7 +73,7 @@ New-AzureRmVmss `
 | *-Operator*             | 用于比较指标数据和阈值的运算符。                                                     | 大于   |
 | *-Threshold*            | 使自动缩放规则触发操作的值。                                                      | 70%            |
 | *-ScaleActionDirection* | 定义应用规则时，规模集应扩展还是缩减。                                             | 增加       |
-|  -ScaleActionScaleType | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数   |
+| *-ScaleActionScaleType* | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数   |
 | *-ScaleActionValue*     | 规则触发时，应更改 VM 实例的百分比。                                            | 3              |
 | *-ScaleActionCooldown*  | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟      |
 
@@ -248,7 +239,7 @@ MYRESOURCEGROUP   myScaleSet_6   chinanorth Standard_DS2                   6    
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+若要删除规模集和其他资源，请使用 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell
 Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -269,4 +260,4 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [适用于 Azure PowerShell 的规模集脚本示例](powershell-samples.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->

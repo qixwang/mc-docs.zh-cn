@@ -11,14 +11,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 09/25/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 0d86a3f02e22d7242cdddeb866c4ad2c9abd2604
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 6c90291dbc9d3d44bbba21235f512186d6d394a1
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776740"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192438"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -40,10 +40,10 @@ ms.locfileid: "75776740"
 
 * [完成迁移前](../cosmos-db/mongodb-pre-migration.md)步骤，例如估计吞吐量、选择分区键和索引策略。
 * [创建 Azure Cosmos DB 的用于 MongoDB 的 API 帐户](https://portal.azure.cn/#create/Microsoft.DocumentDB)。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，该网络将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 提供与本地源服务器的站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在设置 VNet 期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > 在设置虚拟网络期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
     >
     > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > * 存储终结点
@@ -51,7 +51,7 @@ ms.locfileid: "75776740"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 请确保 VNet 网络安全组 (NSG) 规则未阻止以下通信端口：53、443、445、9354 以及 10000-20000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
+* 确保虚拟网络的网络安全组 (NSG) 规则未阻止以下通信端口：53、443、445、9354 以及 10000-20000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MongoDB 服务器（默认情况下为 TCP 端口 27017）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
@@ -83,11 +83,11 @@ ms.locfileid: "75776740"
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。 
 
-5. 选择现有的 VNet，或新建一个 VNet。
+5. 选择现有虚拟网络或新建一个。
 
-    VNet 为 Azure 数据库迁移服务提供了对源 MongoDB 实例和目标 Azure Cosmos DB 帐户的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供了对源 MongoDB 实例和目标 Azure Cosmos DB 帐户的访问权限。
 
-    若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
 6. 选择定价层。
 

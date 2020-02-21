@@ -12,13 +12,13 @@ ms.author: v-jay
 ms.reviewer: sashan, carlrab
 manager: digimobile
 origin.date: 08/27/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 05c3438b454cc1ad044566c18e622e23348e1e26
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 02/17/2020
+ms.openlocfilehash: 259c338be65bedbba0f9df5257b19b83bf964de5
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624127"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155717"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -32,17 +32,18 @@ ms.locfileid: "75624127"
   > [!NOTE]
   > - 在学习本教程时，请确保使用[为托管实例设置故障转移组的先决条件](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)来配置资源。 
   > - 创建托管实例可能需要花费很长时间。 因此，本教程可能需要几个小时才能完成。 有关预配时间的详细信息，请参阅[托管实例管理操作](sql-database-managed-instance.md#managed-instance-management-operations)。 
+  > - 参与故障转移组的托管实例需要 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或两个连接的 VPN 网关。 本教程提供创建和连接 VPN 网关的步骤。 如果已配置 ExpressRoute，请跳过这些步骤。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
 
 - 一个 Azure 订阅。如果你没有 Azure 订阅，请[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要完成本教程，请确保准备好以下各项：
 
 - Azure 订阅。 如果你没有帐户，请[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -55,7 +56,7 @@ ms.locfileid: "75624127"
 此步骤将使用 Azure 门户或 PowerShell 为故障转移组创建资源组和主托管实例。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 使用 Azure 门户创建资源组和主托管实例。 
 1. 选择“创建”启动 **SQL 托管实例**创建页。  
@@ -69,12 +70,12 @@ ms.locfileid: "75624127"
 1. 将剩余设置保留默认值，然后选择“查看 + 创建”检查托管实例设置。  
 1. 选择“创建”以创建主托管实例。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建资源组和主托管实例。 
 
    ```powershell
-   # Connect-AzAccount
+   # Connect-AzAccount -Environment AzureChinaCloud
    # The SubscriptionId in which to create these objects
    $SubscriptionId = '<Subscription-ID>'
    # Create a random identifier to use as subscript for the different resource names
@@ -151,8 +152,8 @@ ms.locfileid: "75624127"
    # Suppress networking breaking changes warning (https://aka.ms/azps-changewarnings
    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
    
-   # Set subscription�context
-   Set-AzContext -SubscriptionId $subscriptionId�
+   # Set subscription context
+   Set-AzContext -SubscriptionId $subscriptionId
    
    # Create a resource group
    Write-host "Creating resource group..."
@@ -399,7 +400,7 @@ ms.locfileid: "75624127"
 ## <a name="2---create-secondary-virtual-network"></a>2 - 创建辅助虚拟网络
 如果使用 Azure 门户创建托管实例，则需要单独创建虚拟网络，因为主托管实例和辅助托管实例的子网不得使用重叠的范围。 如果使用 PowerShell 配置托管实例，请直接跳到步骤 3。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 若要验证主虚拟网络的子网范围，请执行以下步骤：
 1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的资源组，并选择主实例的虚拟网络。 
 1. 在“设置”下选择“子网”，并记下“地址范围”。    辅助托管实例的虚拟网络的子网地址范围不能与此重叠。 
@@ -427,7 +428,7 @@ ms.locfileid: "75624127"
 
     ![辅助虚拟网络值](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 仅当使用 Azure 门户部署托管实例时，才需要执行此步骤。 如果使用 PowerShell，请直接跳到步骤 3。 
 
@@ -440,7 +441,7 @@ ms.locfileid: "75624127"
 - 是空的。 
 - 与主托管实例的子网和 IP 范围不同。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 使用 Azure 门户创建辅助托管实例。 
 
@@ -472,7 +473,7 @@ ms.locfileid: "75624127"
 1. 选择“查看 + 创建”以检查辅助托管实例的设置。  
 1. 选择“创建”以创建辅助托管实例。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建辅助托管实例。 
 
@@ -719,10 +720,12 @@ ms.locfileid: "75624127"
 ---
 
 ## <a name="4---create-primary-gateway"></a>4 - 创建主网关 
-对于要参与故障转移组的两个托管实例，必须在这两个托管实例的虚拟网络之间配置一个网关，以便能够进行网络通信。 可以使用 Azure 门户为主托管实例创建网关。 
+对于要参与故障转移组的两个托管实例，必须在这两个托管实例的虚拟网络之间配置 ExpressRoute 或网关，以便能够进行网络通信。 如果选择配置 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 而不是连接两个 VPN 网关，请跳到[步骤 7](#7---create-a-failover-group)。  
+
+本文提供了创建两个 VPN 网关并将它们连接起来的步骤，但如果你已配置 ExpressRoute，则可以改为创建故障转移组。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户为主托管实例的虚拟网络创建网关。 
 
@@ -761,7 +764,7 @@ ms.locfileid: "75624127"
 1. 选择“创建”以创建新的虚拟网络网关。  
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 为主托管实例的虚拟网络创建网关。 
 
@@ -816,7 +819,7 @@ ms.locfileid: "75624127"
 此步骤使用 Azure 门户为辅助托管实例的虚拟网络创建网关。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必填字段，为辅助托管实例配置网关。 
 
@@ -839,7 +842,7 @@ ms.locfileid: "75624127"
    ![辅助网关设置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 为辅助托管实例的虚拟网络创建网关。 
 
@@ -896,7 +899,7 @@ ms.locfileid: "75624127"
 此步骤在两个虚拟网络的两个网关之间创建双向连接。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户连接两个网关。 
 
@@ -921,7 +924,7 @@ ms.locfileid: "75624127"
 1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。   
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 连接两个网关。 
 
@@ -955,7 +958,7 @@ ms.locfileid: "75624127"
 此步骤将创建故障转移组，并将两个托管实例添加到其中。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户创建故障转移组。 
 
 
@@ -972,7 +975,7 @@ ms.locfileid: "75624127"
 1. 故障转移组部署完成后，你将返回到“故障转移组”页。  
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建故障转移组。 
 
    ```powershell
@@ -998,7 +1001,7 @@ ms.locfileid: "75624127"
 此步骤将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户测试故障转移。 
 
 
@@ -1015,7 +1018,7 @@ ms.locfileid: "75624127"
 1. 再次选择“故障转移”，将主实例故障回复为主角色。  
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 测试故障转移。 
 
    ```powershell
@@ -1064,14 +1067,14 @@ ms.locfileid: "75624127"
 ## <a name="clean-up-resources"></a>清理资源
 若要清理资源，请依次删除托管实例、虚拟群集、所有剩余资源和资源组。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的资源组。 
 1. 选择托管实例，然后选择“删除”。  在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。  此过程将在后台完成，这可能需要一段时间，在此之前，无法删除虚拟群集或任何其他相关资源。  在“活动”选项卡中监视删除过程，以确认托管实例已删除。 
 1. 删除托管实例后，请删除虚拟群集，方法是在资源组中将其选中，然后选择“删除”。   在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。  
 1. 删除任何剩余资源。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。  
 1. 删除资源组：选择“删除资源组”，键入资源组的名称 `myResourceGroup`，然后选择“删除”。   
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 需要删除资源组两次。 第一次删除资源组将删除托管实例和虚拟群集，但随后会失败，并显示错误消息 `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`。 再次运行 Remove-AzResourceGroup 命令，删除所有残留资源以及资源组。
 
@@ -1092,7 +1095,7 @@ Write-host "Removing residual resources and resouce group..."
 
 ## <a name="full-script"></a>完整脚本
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 <#
@@ -1107,7 +1110,7 @@ the previously-assigned value.
 #>
 
 
-# Connect-AzAccount
+# Connect-AzAccount -Environment AzureChinaCloud
 # The SubscriptionId in which to create these objects
 $SubscriptionId = '<Subscription-ID>'
 # Create a random identifier to use as subscript for the different resource names
@@ -1790,7 +1793,7 @@ Write-host "Failover group name is" $failoverGroupName
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | 执行托管实例故障转移组的故障转移。 | 
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组。 | 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 没有适用于 Azure 门户的脚本。
 

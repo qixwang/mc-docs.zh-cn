@@ -11,17 +11,17 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 08/27/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 8736fef930ba23cd9fcda4fc6ba58ba52b52c3e8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 378a6fbf104862b89c98c5d94fd759885fbde269
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336285"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155697"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 
-使用 Azure 门户为 Azure SQL 数据库弹性池配置故障转移组并测试故障转移。  在本教程中，将了解如何：
+使用 Azure 门户为 Azure SQL 数据库弹性池配置故障转移组并测试故障转移。  在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建 Azure SQL 数据库单一数据库。
@@ -29,7 +29,7 @@ ms.locfileid: "75336285"
 > - 在两个逻辑 SQL 服务器之间创建两个弹性池的[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保做好以下准备： 
 
@@ -44,7 +44,7 @@ ms.locfileid: "75336285"
 在此步骤中，我们将创建一个弹性池并向其添加单一数据库。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户创建弹性池。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "75336285"
 1. 选择“查看 + 创建”以检查弹性池设置，然后选择“创建”以创建弹性池。   
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建弹性池和辅助服务器。 
 
    ```powershell
@@ -127,7 +127,7 @@ ms.locfileid: "75336285"
 此步骤在现有的 Azure SQL 服务器与另一区域中的新 Azure SQL 服务器之间创建一个[故障转移组](sql-database-auto-failover-group.md)。 然后，将弹性池添加到该故障转移组。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户创建故障转移组。 
 
@@ -161,7 +161,7 @@ ms.locfileid: "75336285"
 1. 选择“选择”以将弹性池设置应用到故障转移组，然后选择“创建”以创建故障转移组。   将弹性池添加到故障转移组的操作会自动启动异地复制过程。
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建故障转移组。 
 
@@ -250,7 +250,7 @@ ms.locfileid: "75336285"
 此步骤将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户中](https://portal.azure.cn)导航到你的“SQL 服务器”服务器。  
 
@@ -268,7 +268,7 @@ ms.locfileid: "75336285"
 1. 再次选择“故障转移”，将故障转移组故障回复到原始设置。  
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。 
 
@@ -349,7 +349,7 @@ ms.locfileid: "75336285"
 通过删除资源组来清理资源。 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 
 1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的资源组。
@@ -357,7 +357,7 @@ ms.locfileid: "75336285"
 1. 在文本框中键入资源组的名称 `myResourceGroup`，然后选择“删除”以删除该资源组。  
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 清理资源。 
 
@@ -370,7 +370,6 @@ ms.locfileid: "75336285"
    Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
    Write-host "Resource group removed =" $resourceGroupName
    ```
----
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
@@ -378,11 +377,14 @@ ms.locfileid: "75336285"
 |---|---|
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+---
+
+> [!IMPORTANT]
+> 若要保留资源组但删除辅助数据库，请先将其从故障转移组中移除，然后再将其删除。 如果在从故障转移组中移除辅助数据库之前将其删除，则可能会导致不可预知的行为。 
 
 ## <a name="full-script"></a>完整脚本
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 # Set variables for your server and database
@@ -574,7 +576,7 @@ Write-host "Failover group failed over to" $serverName
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 没有适用于 Azure 门户的脚本。
 
 ---

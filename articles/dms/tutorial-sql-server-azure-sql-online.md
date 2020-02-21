@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务从 SQL Server 联机迁移到 Azure SQL 数据库中的单一/共用数据库 | Microsoft Docs
+title: 教程：将 SQL Server 联机迁移到 SQL 单一数据库
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 services: dms
 author: WenJason
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 09/22/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: d27fb8368454a87ddf11b3fd2666b9ef075ece1c
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+origin.date: 01/21/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 9d83fab97f62fc1dd37f9756fcfff2a4efae2626
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416228"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192458"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
@@ -43,7 +44,7 @@ ms.locfileid: "73416228"
 
 本文介绍如何从 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。 有关脱机迁移，请参阅[使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -55,24 +56,24 @@ ms.locfileid: "73416228"
     > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](/dms/how-to-migrate-ssis-packages)。
 
 - 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 或更高版本。
-- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在设置 VNet 期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+    > 在设置虚拟网络期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
     > - 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > - 存储终结点
     > - 服务总线终结点
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-- 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
+- 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关 Azure 虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 - 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
 - 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-- 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNet 子网范围。
+- 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 - 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
-- 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库的 CONTROL DATABASE 权限。
+- 确保用于连接到目标 Azure SQL 数据库实例的凭据具有目标 Azure SQL 数据库实例的 CONTROL DATABASE 权限。
 - 源 SQL Server 版本必须至少为 SQL Server 2005。 若要确定 SQL Server 实例正在运行的版本，请参阅[如何确定 SQL Server 及其组件的版本、版本类别和更新级别](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)一文。
 - 一个或多个数据库必须处于大容量日志恢复模式或完整恢复模式。 若要确定为 SQL Server 实例配置的恢复模式，请参阅[查看或更改数据库的恢复模式 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017) 一文。
 - 确保为数据库执行完整数据库备份。 若要创建完整数据库备份，请参阅文章[如何：创建完整数据库备份 (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105))。
@@ -229,11 +230,11 @@ ms.locfileid: "73416228"
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。 
 
-5. 选择现有的 VNet，或新建一个 VNet。
+5. 选择现有虚拟网络或新建一个。
 
-    VNet 为 Azure 数据库迁移服务提供了对源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供了对源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
 
-    若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
 6. 选择定价层。
 
@@ -241,7 +242,7 @@ ms.locfileid: "73416228"
 
     ![配置 Azure 数据库迁移服务实例设置](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
-7. 选择“创建”以创建服务  。
+7. 选择“创建”  来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 
@@ -342,7 +343,6 @@ ms.locfileid: "73416228"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 数据迁移服务 (DMS) 进行 SQL 迁移](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587)练习实验室。
 - 若要了解联机迁移到 Azure SQL 数据库时的已知问题和限制，请参阅 [Azure SQL 数据库联机迁移的已知问题和解决方法](known-issues-azure-sql-online.md)一文。
 - 若要了解 Azure 数据库迁移服务，请参阅[什么是 Azure 数据库迁移服务？](/dms/dms-overview)一文。
 - 若要了解 Azure SQL 数据库，请参阅[什么是 Azure SQL 数据库服务？](/sql-database/sql-database-technical-overview)一文。

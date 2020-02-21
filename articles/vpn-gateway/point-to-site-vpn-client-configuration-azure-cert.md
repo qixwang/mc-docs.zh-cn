@@ -1,19 +1,20 @@
 ---
-title: 创建并安装用于 Azure 证书身份验证的 P2S VPN 客户端配置文件：Azure
+title: 创建并安装 P2S VPN 客户端配置文件：证书身份验证
+titleSuffix: Azure VPN Gateway
 description: 为 P2S 证书身份验证配置创建并安装 Windows、Linux、Linux (strongSwan) 和 Mac OS X VPN 客户端配置文件。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
-origin.date: 09/12/2019
-ms.date: 09/30/2019
+origin.date: 01/15/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 8aeef86d457c0d4fe7944580095bc460132269b8
-ms.sourcegitcommit: 9495256a549d25ffddc4f42f3e12a607530409d0
+ms.openlocfilehash: f245f29473a8ba359b26aa337da374deb051ccef
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71333650"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156782"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -21,7 +22,8 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 客户端配置文件特定于 VNet 的 VPN 配置。 如果在生成 VPN 客户端配置文件后，点到站点 VPN 配置（例如 VPN 协议类型或身份验证类型）发生变化，请务必为用户设备生成新的 VPN 客户端配置文件。 
 
-有关点到站点连接的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
+* 有关点到站点连接的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
+* 有关 OpenVPN 说明，请参阅[为 P2S 配置 OpenVPN](vpn-gateway-howto-openvpn.md) 和[配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md)。
 
 >[!IMPORTANT]
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
@@ -98,9 +100,14 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 4. 从 **Generic** 文件夹中的 **VpnSettings.xml** 文件复制 **VpnServer** 标记值。 将该值粘贴到配置文件的“服务器地址”和“远程 ID”字段中。  
 
    ![服务器信息](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. 单击“身份验证设置”  ，选择“证书”  。 
+5. 单击“身份验证设置”  ，选择“证书”  。 对于 Catalina，请单击“无”，然后单击“证书”   
 
    ![身份验证设置](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * 对于 Catalina，请选择“无”，然后选择“证书”。   **选择**正确的证书：
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. 单击“选择…”  选择要用于身份验证的客户端证书。 这是你在步骤 2 中安装的证书。
 
    ![证书](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

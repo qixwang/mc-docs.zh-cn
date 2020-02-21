@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 10/25/2019
+ms.date: 02/17/2019
 ms.author: v-tawe
-ms.openlocfilehash: 75a858dcaef747dd9fc2b2c29d5e542b004e186a
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 33c1ca54b5fe4ff55114dc815f3240bb751f254b
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425899"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112176"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -42,10 +42,10 @@ ms.locfileid: "73425899"
 以下说明对应于上图中绿色字母代表的步骤。
 
 1. 上图中，通过在密钥保管库中创建密钥，应用程序可从内部开始创建证书。
-2. Key Vault 向 CA 发送 SSL 证书请求。
+2. Key Vault 向 CA 发送 TLS/SSL 证书请求。
 3. 应用程序会在循环和等待过程中轮询 Key Vault 至证书完成。 当 Key Vault 通过 x509 证书收到 CA 的响应时，证书创建完成。
-4. CA 通过 X509 SSL 证书对 Key Vault 的 SSL 证书请求进行响应。
-5. 与 CA 的 X509 证书合并以后，新证书的创建过程即告完成。
+4. CA 通过 TLS/SSL X.509 证书对 Key Vault 的 TLS/SSL 证书请求进行响应。
+5. 与 CA 的 TLS/SSL X.509 证书合并以后，新证书的创建过程即告完成。
 
 ## <a name="asynchronous-process"></a>异步过程
 KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返回一个 http 状态代码“202 (已接受)”。 可以通过轮询此操作创建的挂起对象来跟踪请求的状态。 挂起对象的完整 URI 返回在 LOCATION 标头中。  

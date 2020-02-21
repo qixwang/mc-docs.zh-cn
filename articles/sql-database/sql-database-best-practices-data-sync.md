@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据同步最佳做法 | Microsoft Docs
+title: 数据同步最佳做法
 description: 了解有关配置和运行 Azure SQL 数据同步的最佳做法。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-manager: digimobile
 origin.date: 12/20/2018
-ms.date: 08/19/2019
-ms.openlocfilehash: e9f8c60c899c2203f847f6d3af8d5e10a068bb7b
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 02/17/2020
+ms.openlocfilehash: e042246d56ed960d5ec6674caf0fd22964789db2
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544397"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155730"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -27,7 +26,7 @@ ms.locfileid: "69544397"
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
 
 ## <a name="security-and-reliability"></a>安全性和可靠性
 
@@ -219,6 +218,14 @@ SQL 数据同步自动预配的限制如下：
 而是首先从同步组中删除数据库。 然后，部署更改并等待取消预配完成。 取消预配完成后，可以编辑同步组并部署更改。
 
 如果你尝试先删除数据库，然后编辑同步组而不先部署其中一个更改，则一个或另一个操作会失败。 门户界面可能会出现不一致状态。 如果出现此情况，请刷新页面以还原正确的状态。
+
+### <a name="avoid-schema-refresh-timeout"></a>避免架构刷新超时
+
+在要同步复杂架构的情况下，如果同步元数据数据库的 SKU 较低（例如为“基本”），则可能会在架构刷新过程中遇到“操作超时”错误。 
+
+#### <a name="solution"></a>解决方案
+
+若要缓解此问题，请将同步元数据数据库纵向扩展到更高的 SKU，例如 S3。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 SQL 数据同步的详细信息，请参阅：

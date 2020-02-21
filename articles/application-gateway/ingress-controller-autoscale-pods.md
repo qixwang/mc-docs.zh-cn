@@ -5,15 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: da8022da200720c3cef77e34c0430afbc8beb5a4
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 8c7e17c80908976a26c81aba1757da6c0e842141
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328427"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155530"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>根据应用程序网关指标 (Beta) 自动缩放 AKS Pod
 
@@ -24,7 +23,7 @@ ms.locfileid: "74328427"
 我们将使用以下两个组件：
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) - 我们将使用指标适配器通过指标服务器公开应用程序网关指标。 Azure Kubernetes 指标适配器是 Azure 下的一个开源项目，类似于应用程序网关入口控制器。 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) - 我们将通过 HPA 来使用应用程序网关指标，并以用于缩放的部署为目标。
+* [`Horizontal Pod Autoscaler`](/aks/concepts-scale#horizontal-pod-autoscaler) - 我们将通过 HPA 来使用应用程序网关指标，并以用于缩放的部署为目标。
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>设置 Azure Kubernetes 指标适配器
 
@@ -93,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>使用新指标纵向扩展部署
 
-能够通过指标服务器公开 `appgw-request-count-metric` 以后，即可使用 [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) 纵向扩展目标部署。
+能够通过指标服务器公开 `appgw-request-count-metric` 以后，即可使用 [`Horizontal Pod Autoscaler`](/aks/concepts-scale#horizontal-pod-autoscaler) 纵向扩展目标部署。
 
 在以下示例中，我们将以示例部署 `aspnet` 为目标。 当每个 Pod 的 `appgw-request-count-metric` > 200 时，我们会纵向扩展 Pod，Pod 数上限为 `10`。
 
@@ -125,3 +124,4 @@ ab -n10000 http://<applicaiton-gateway-ip-address>/
 ## <a name="next-steps"></a>后续步骤
 - [**排查入口控制器问题**](ingress-controller-troubleshoot.md)：排查入口控制器的任何问题。
 
+<!-- Update_Description: link update -->

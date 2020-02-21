@@ -1,13 +1,25 @@
-可以按照 [Azure Resource Manager 文档](../articles/azure-resource-manager/resource-group-template-deploy.md)部署上述模板。
+---
+author: mayanknayar
+ms.service: virtual-machine-scale-sets
+ms.topic: include
+ms.date: 02/11/2020
+ms.author: v-junlch
+ms.openlocfilehash: 34b6088dfc59f44d07c9882a586022a9208dd575
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128875"
+---
+可以按照 [Azure Resource Manager 文档](../articles/azure-resource-manager/templates/deploy-powershell.md)部署上述模板。
 
-若要阅读这一系列的教程，可先阅读[最小可行规模集模板文章](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)。
+若要阅读这一系列的教程，可先阅读[基本规模集模板文章](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)。
 
-可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以便[将规模集部署到现有的虚拟网络](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md)。
+可以了解如何修改[基本规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以便[将规模集部署到现有的虚拟网络](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md)。
 
-可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，并[使用自定义映像部署规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md)。
+可以了解如何修改[基本规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，并[使用自定义映像部署规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-custom-image.md)。
 
-你可以了解如何修改[最小可行规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以[使用基于来宾的自动缩放部署 Linux 规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)。
+你可以了解如何修改[基本规模集模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)，以[使用基于来宾的自动缩放部署 Linux 规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)。
 
-有关规模集的更多常规信息，请参阅[规模集概述页](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+有关规模集的更多信息，请参阅[规模集概述页](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
-<!-- ms.date: 12/20/2018 -->

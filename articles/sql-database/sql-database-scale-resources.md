@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 06/25/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 344d34d9758c76eacea591035754b081a086dad3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: fc1d9019879f00e9b87869612b757aaf8cb79429
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335960"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155691"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
@@ -56,14 +56,15 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 - [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
 - [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
-以任何风格启动纵向扩展或缩减操作将会重启数据库引擎进程，并根据需要将其移到另一虚拟机。 将数据库引擎进程移到新虚拟机是一个**在线过程**，在该过程进行时，你可以继续使用现有的 Azure SQL 数据库服务。 目标数据库引擎完全启动并做好处理查询的准备以后，连接会[从源数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size)。
+以任何风格启动纵向扩展或缩减操作将会重启数据库引擎进程，并根据需要将其移到另一虚拟机。 将数据库引擎进程移到新虚拟机是一个**在线过程**，在该过程进行时，你可以继续使用现有的 Azure SQL 数据库服务。 目标数据库引擎完全启动并做好处理查询的准备以后，连接会[从源数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact)。 
+
 
 > [!NOTE]
 > 当放大/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 
-在不更改数据库或应用程序代码的情况下，缩放资源是提升数据库性能的最简单和最有效的方法。 在某些情况下，即使是最高的服务层级、计算大小和性能优化，也可能无法以成功和经济高效的方式处理工作负荷。 在该情况下，可选择其他选项对数据库进行缩放：
+在不更改数据库或应用程序代码的情况下，缩放资源是提升数据库性能的最简单和最有效的方法。 在某些情况下，即使是最高的服务层级、计算大小和性能优化，也可能无法以成功和经济高效的方式处理工作负载。 在该情况下，可选择其他选项对数据库进行缩放：
 
 - [读取扩展](sql-database-read-scale-out.md)是一项在获取数据的一个只读副本时可用的功能，可在该副本中执行要求的只读查询，如报表。 只读副本将处理只读工作负荷，而不会影响主数据库上的资源使用情况。
 - [数据库分片](sql-database-elastic-scale-introduction.md)是一组技术，可用于将数据拆分为多个数据库，并单独对这些数据库进行缩放。

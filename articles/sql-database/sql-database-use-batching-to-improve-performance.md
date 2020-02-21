@@ -1,5 +1,5 @@
 ---
-title: 如何使用批处理来改善 Azure SQL 数据库应用程序的性能
+title: 如何使用批处理来改善应用程序的性能
 description: 本主题提供有关数据库批处理操作大幅改善 Azure SQL 数据库应用程序速度和缩放性的证据。 尽管这些批处理方法适用于任何 SQL Server 数据库，但本文重点放在 Azure 上。
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: genemi
-manager: digimobile
 origin.date: 01/25/2019
-ms.date: 04/08/2019
-ms.openlocfilehash: cc8b4b8594311e6f088d6974de9a35512b62d9f8
-ms.sourcegitcommit: b418463868dac6b3c82b292f70d4a17bc5e01e95
+ms.date: 02/17/2020
+ms.openlocfilehash: eb9a483e2ac9f56df27af4e8d5ae094f74d8579d
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69578544"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155698"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 
@@ -93,7 +92,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](https://msdn.microsoft.com/library/ms186259.aspx)的文档中所述，在事务提交时将日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，你正在为写入服务器的事务日志启用批处理。
+事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文档中所述，在事务提交时将日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，你正在为写入服务器的事务日志启用批处理。
 
 下表显示一些即席测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Azure 中的数据库远程运行的。 第二组测试是从位于同一 Azure 数据中心（中国北部）的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
 

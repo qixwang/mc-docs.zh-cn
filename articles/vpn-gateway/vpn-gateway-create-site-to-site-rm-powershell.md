@@ -1,19 +1,20 @@
 ---
-title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：PowerShell | Microsoft Docs
+title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：PowerShell
 description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤可帮助使用 PowerShell 创建跨界站点到站点 VPN 网关连接。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 07/31/2019
-ms.date: 09/02/2019
+origin.date: 01/15/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: e84b3f0f31db38b16b94794a4dd0e53a7f002314
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: 610c21588655df183ba47a071eaed699f71dca65
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131735"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156792"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 
@@ -33,21 +34,15 @@ ms.locfileid: "70131735"
 
 ## <a name="before"></a>准备工作
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-在开始配置之前，请验证你是否符合以下条件：
+在开始配置之前，请验证是否符合以下条件：
 
 * 确保有一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
 
-### <a name="running-powershell-locally"></a>在本地运行 PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-如果选择在本地安装和使用 PowerShell，请安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 PowerShell cmdlet 经常会更新，因此，你通常需要更新 PowerShell cmdlet 才能获得最新功能。 如果未更新 PowerShell cmdlet，指定的值可能无法使用。 
-
-若要查找所使用的版本，请运行“Get-Module -ListAvailable Az”。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
-如果在本地运行 PowerShell，则还需运行“Connect-AzAccount -Environment AzureChinaCloud”以创建与 Azure 的连接。
-
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example"></a>示例值
 
@@ -164,7 +159,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'China North'
 
 ## <a name="PublicIP"></a>3.请求公共 IP 地址
 
-VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 
+VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，并在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 
 
 VPN 网关当前仅支持动态  公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
@@ -206,7 +201,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
-- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
+- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的密钥来使用。
 - 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要使用 PowerShell 查找虚拟网关的公共 IP 地址，请使用以下示例。 在此示例中，VNet1GWPIP 是在前面步骤中创建的公共 IP 地址资源的名称。
 
   ```azurepowershell
@@ -255,6 +250,15 @@ VPN 连接有几种不同的验证方式。
 ## <a name="modifygwipaddress"></a>修改本地网关的 IP 地址
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+
+## <a name="deleteconnection"></a>删除网关连接
+
+如果不知道连接的名称，可以使用“Get-AzVirtualNetworkGatewayConnection”cmdlet 找到它。
+
+```azurepowershell
+Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+-ResourceGroupName TestRG1
+```
 
 ## <a name="next-steps"></a>后续步骤
 

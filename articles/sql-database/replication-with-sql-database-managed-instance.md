@@ -1,6 +1,6 @@
 ---
-title: 在 Azure SQL 数据库托管实例数据库中配置复制 | Microsoft Docs
-description: 了解如何在 Azure SQL 数据库托管实例数据库中配置事务复制
+title: 在托管实例数据库中配置复制
+description: 了解如何在 Azure SQL 数据库托管实例发布服务器/分发服务器和托管实例订阅服务器之间配置事务复制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,17 +11,21 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma
 origin.date: 02/07/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 7f84dd372ddd7a72ec5d604e06bae5aff9d21921
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 02/17/2020
+ms.openlocfilehash: 43647b9ced305c51ba3b7761afe33e82840447a5
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041166"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155688"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
 使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。 
+
+本文介绍如何在托管实例发布服务器/分发服务器和托管实例订阅服务器之间配置复制。 
+
+![在两个托管实例之间复制](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 还可以使用事务复制将 Azure SQL 数据库托管实例中实例数据库发生的更改推送到：
 
@@ -32,7 +36,8 @@ ms.locfileid: "73041166"
 事务复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
 
   > [!NOTE]
-  > 本文旨在从头到尾地引导用户配置 Azure 数据库托管实例的复制，并从创建资源组开始讲起。 如果已部署托管实例，请跳到[步骤 4](#4---create-a-publisher-database) 以创建发布服务器数据库；如果你已有一个发布服务器数据库和订阅服务器数据库，并已准备好开始配置复制，请跳到[步骤 6](#6---configure-distribution)。  
+  > - 本文旨在从头到尾地引导用户配置 Azure 数据库托管实例的复制，并从创建资源组开始讲起。 如果已部署托管实例，请跳到[步骤 4](#4---create-a-publisher-database) 以创建发布服务器数据库；如果你已有一个发布服务器数据库和订阅服务器数据库，并已准备好开始配置复制，请跳到[步骤 6](#6---configure-distribution)。  
+  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 
 
 ## <a name="requirements"></a>要求
 
@@ -68,10 +73,10 @@ Azure SQL 数据库中的托管实例不支持以下功能：
 
 ## <a name="2---create-managed-instances"></a>2 - 创建托管实例
 
-使用 [Azure 门户](https://portal.azure.cn)在同一个虚拟网络和子网中创建两个[托管实例](sql-database-managed-instance-create-tutorial-portal.md)。 这两个托管实例应命名为：
+使用 [Azure 门户](https://portal.azure.cn)在同一个虚拟网络和子网中创建两个[托管实例](sql-database-managed-instance-create-tutorial-portal.md)。 例如，将两个托管实例命名为：
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub`（以及一些用于随机化的字符）
+- `sql-mi-sub`（以及一些用于随机化的字符）
 
 还需要[将 Azure VM 配置为连接](sql-database-managed-instance-configure-vm.md)到 Azure SQL 数据库托管实例。 
 
@@ -79,11 +84,15 @@ Azure SQL 数据库中的托管实例不支持以下功能：
 
 为工作目录[创建一个 Azure 存储帐户](/storage/common/storage-create-storage-account#create-a-storage-account)，然后在该存储帐户中创建一个[文件共享](../storage/files/storage-how-to-create-file-share.md)。 
 
-复制采用 `\\storage-account-name.file.core.chinacloudapi.cn\file-share-name` 格式的文件共享路径
+按以下格式复制文件共享路径：`\\storage-account-name.file.core.chinacloudapi.cn\file-share-name`
+
+示例： `\\replstorage.file.core.chinacloudapi.cn\replshare`
 
 复制采用 `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.chinacloudapi.cn` 格式的存储访问密钥
 
- 有关详细信息，请参阅 [查看和复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys)。 
+示例： `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.chinacloudapi.cn`
+
+有关详细信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。 
 
 ## <a name="4---create-a-publisher-database"></a>4 - 创建发布服务器数据库
 
@@ -161,8 +170,9 @@ GO
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.chinacloudapi.cn\file-share-name"
+-- example: file_storage "\\replstorage.file.core.chinacloudapi.cn\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.chinacloudapi.cn"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.chinacloudapi.cn"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -174,6 +184,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > 请确保对 file_storage 参数仅使用反斜杠 (`\`)。 在连接到文件共享时使用正斜杠（`/`）可能会导致错误。 
 
 此脚本将在托管实例上配置一个本地发布服务器，添加链接服务器，并为 SQL Server 代理创建一组作业。 
 
@@ -323,7 +336,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-可以通过[从资源组中删除托管实例资源](../azure-resource-manager/manage-resources-portal.md#delete-resources)，然后删除资源组 `SQLMI-Repl`，来清理 Azure 资源。 
+可以通过[从资源组中删除托管实例资源](../azure-resource-manager/management/manage-resources-portal.md#delete-resources)，然后删除资源组 `SQLMI-Repl`，来清理 Azure 资源。 
 
    
 ## <a name="see-also"></a>另请参阅

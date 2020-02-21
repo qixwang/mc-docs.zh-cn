@@ -1,5 +1,5 @@
 ---
-title: 活动异地复制 - Azure SQL 数据库 | Microsoft Docs
+title: 活动异地复制
 description: 使用活动异地复制在相同的或不同的数据中心（区域）创建各个数据库的可读辅助数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
 origin.date: 07/09/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 70e9866e2fd32ea20805937669841d3bc0b697a4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: baf6a825db9ba28634fe3ba5bd99d690227a1b56
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336143"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155597"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -91,9 +91,6 @@ ms.locfileid: "75336143"
 - **多个可读的辅助数据库**
 
   可以为每个主要数据库创建最多 4 个辅助数据库。 如果只有一个辅助数据库，一旦它发生故障，应用程序就会遭受更高的风险，直到创建了新的辅助数据库。 如果存在多个辅助数据库，即使其中一个辅助数据库发生故障，应用程序仍会受到保护。 也可使用其他辅助数据库来横向扩展只读工作负荷。
-
-  > [!NOTE]
-  > 如果使用活动异地复制生成全球分布的应用程序，并需要在四个以上的区域中提供数据只读访问，则可以创建辅助数据库的辅助数据库（此过程称为链接）。 采用这种方式几乎可以实现数据库复制的无限制缩放。 此外，链接减少了从主数据库进行复制的开销。 随之而来的弊端是增加了大多数辅助数据库上的复制延迟。
 
 - **在弹性池中异地复制数据库**
 
@@ -211,7 +208,7 @@ ms.locfileid: "75336143"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 示例脚本请参阅：
+- 有关示例脚本，请参阅：
   - [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [配置共用数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - SQL 数据库还支持自动故障转移组。 有关详细信息，请参阅[自动故障转移组](sql-database-auto-failover-group.md)。

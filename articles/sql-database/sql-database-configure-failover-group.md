@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 08/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: e810fcb998f4bc58d2395fab94d3a6c748cd4bf5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: e7e6d8e38986587179993eb6665ad11043b78d2d
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336440"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155673"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 
@@ -26,7 +26,7 @@ ms.locfileid: "75336440"
 ## <a name="single-database"></a>单一数据库
 使用 Azure 门户或 PowerShell 创建故障转移组，并将单一数据库添加到其中。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 请注意以下先决条件：
 
@@ -34,7 +34,7 @@ ms.locfileid: "75336440"
 
 ### <a name="create-failover-group"></a>创建故障转移组
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户创建故障转移组，并将单一数据库添加到其中。
 
 1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
@@ -53,7 +53,7 @@ ms.locfileid: "75336440"
         
     ![将 SQL 数据库添加到故障转移组](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建故障转移组，并将单一数据库添加到其中。 
 
    ```powershell
@@ -107,7 +107,7 @@ ms.locfileid: "75336440"
 
 使用 Azure 门户或 PowerShell 测试故障转移组的故障转移。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户测试故障转移组的故障转移。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "75336440"
 1. 查看哪个服务器现在是主服务器，哪个服务器是辅助服务器。 如果故障转移成功，这两个服务器的角色应会交换。 
 1. 再次选择“故障转移”以将服务器故障回复到其初始角色。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。  
 
@@ -184,10 +184,13 @@ ms.locfileid: "75336440"
 
 ---
 
+> [!IMPORTANT]
+> 如果需要删除辅助数据库，请先将其从故障转移组中移除，然后再将其删除。 如果在从故障转移组中移除辅助数据库之前将其删除，则可能会导致不可预知的行为。 
+
 ## <a name="elastic-pool"></a>弹性池
 使用 Azure 门户或 PowerShell 创建故障转移组，并将弹性池添加到其中。  
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 请注意以下先决条件：
 
@@ -197,7 +200,7 @@ ms.locfileid: "75336440"
 
 使用 Azure 门户或 PowerShell 为弹性池创建故障转移组。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户创建故障转移组，并将弹性池添加到其中。
 
 1. 在 [Azure 门户](https://portal.azure.cn)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
@@ -218,7 +221,7 @@ ms.locfileid: "75336440"
         
 1. 选择“选择”以将弹性池设置应用到故障转移组，然后选择“创建”以创建故障转移组。   将弹性池添加到故障转移组的操作会自动启动异地复制过程。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建故障转移组，并将弹性池添加到其中。 
 
@@ -268,7 +271,7 @@ ms.locfileid: "75336440"
 
 使用 Azure 门户或 PowerShell 测试弹性池的故障转移。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
@@ -290,7 +293,7 @@ ms.locfileid: "75336440"
 1. 查看哪个服务器是主服务器，哪个服务器是辅助服务器。 如果故障转移成功，这两个服务器的角色应会交换。 
 1. 再次选择“故障转移”，将故障转移组故障回复到原始设置。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。
 
@@ -329,13 +332,16 @@ ms.locfileid: "75336440"
 
 ---
 
+> [!IMPORTANT]
+> 如果需要删除辅助数据库，请先将其从故障转移组中移除，然后再将其删除。 如果在从故障转移组中移除辅助数据库之前将其删除，则可能会导致不可预知的行为。 
+
 ## <a name="managed-instance"></a>托管实例
 
 使用 Azure 门户或 PowerShell 在两个托管实例之间创建故障转移组。 
 
-需要为每个托管实例的虚拟网络创建一个网关，连接两个网关，然后创建故障转移组。
+需要配置 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或为每个托管实例的虚拟网络创建一个网关，连接两个网关，然后创建故障转移组。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 请注意以下先决条件：
 
 - 辅助托管实例必须为空。
@@ -345,9 +351,9 @@ ms.locfileid: "75336440"
 
 ### <a name="create-primary-virtual-network-gateway"></a>创建主虚拟网络网关 
 
-使用 Azure 门户或 PowerShell 创建主虚拟网络网关。 
+如果尚未配置 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，则可使用 Azure 门户或 PowerShell 创建主虚拟网关。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户创建主虚拟网络网关。 
 
@@ -384,7 +390,7 @@ ms.locfileid: "75336440"
 
 1. 选择“创建”以创建新的虚拟网络网关。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建主虚拟网络网关。 
 
@@ -420,7 +426,7 @@ ms.locfileid: "75336440"
 
 使用 Azure 门户或 PowerShell 创建辅助虚拟网络网关。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必填字段，为辅助托管实例配置网关。 
 
    下表显示了辅助托管实例的网关所需的值：
@@ -441,7 +447,7 @@ ms.locfileid: "75336440"
 
    ![辅助网关设置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建辅助虚拟网络网关。 
 
@@ -482,7 +488,7 @@ ms.locfileid: "75336440"
 
 对两个连接使用的共享密钥应该相同。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户在两个网关之间创建连接。 
 
 1. 在 [Azure 门户](https://portal.azure.cn)中选择“创建资源”。 
@@ -504,7 +510,7 @@ ms.locfileid: "75336440"
 
 1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。   
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 在两个网关之间创建连接。 
 
@@ -540,7 +546,7 @@ ms.locfileid: "75336440"
 ### <a name="create-the-failover-group"></a>创建故障转移组 
 使用 Azure 门户或 PowerShell 为托管实例创建故障转移组。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户为托管实例创建故障转移组。 
 
@@ -556,7 +562,7 @@ ms.locfileid: "75336440"
 
 1. 故障转移组部署完成后，你将返回到“故障转移组”页。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 为托管实例创建故障转移组。 
 
@@ -582,7 +588,7 @@ ms.locfileid: "75336440"
 
 使用 Azure 门户或 PowerShell 测试故障转移组的故障转移。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户测试故障转移组的故障转移。 
 
@@ -598,7 +604,7 @@ ms.locfileid: "75336440"
 
 1. 再次选择“故障转移”，将主实例故障回复为主角色。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。 
 

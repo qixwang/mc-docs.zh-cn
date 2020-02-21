@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 10/01/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: 0ef0ab5ca6cf62de88edbe2f4733ed1361b4de6e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: c680485e0aa8816afd75c31a19f6f8bfeb812b66
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336128"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155713"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 
@@ -27,9 +27,9 @@ ms.locfileid: "75336128"
 
 | 数据源 | 关于数据 | 关于文件 |
 |---|---|---|
-| [美国政府数据](https://www.census.gov/data.html) | 超过 190,000 个数据集，涵盖了美国的农业、气候、消费者、生态系统、教育、能源、金融、保健、地方政府、制造业、海运、海洋、公共安全和科研方面的数据。 | 各种大小的文件，采用 HTML、XML、CSV、JSON、Excel 等格式。 可按文件格式筛选可用数据集。 |
+| [美国政府数据](https://catalog.data.gov/dataset) | 超过 250,000 个数据集，涵盖了美国的农业、气候、消费者、生态系统、教育、能源、金融、保健、地方政府、制造业、海运、海洋、公共安全和科研方面的数据。 | 各种大小的文件，采用 HTML、XML、CSV、JSON、Excel 等格式。 可按文件格式筛选可用数据集。 |
 | [美国人口普查数据](https://www.census.gov/data.html) | 美国人口的统计数据 | 数据集采用各种格式。 |
-| [来自 NASA 的地球科学数据](https://earthdata.nasa.gov/) | 32,000 多个数据集，涵盖了农业、大气、生物圈、气候、低温层、人文领域、水圈、地表、海洋、太阳与地球相互作用等方面的数据。 | 各种格式的数据集。 |
+| [来自 NASA 的地球科学数据](https://earthdata.nasa.gov/) | 32,000 多个数据集，涵盖了农业、大气、生物圈、气候、低温层、人文领域、水圈、地表、海洋、太阳与地球相互作用等方面的数据。 | 数据集采用各种格式。 |
 | [航班延迟和其他交通数据](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | “美国运输部 (DOT) 运输统计局 (BTS) 对大型航空公司运营的国内航班的准时情况进行了跟踪。 可在此网站发布的汇总表中了解准时的、延迟的和取消的航班及转机航班数的汇总信息。” | 文件为 CSV 格式。 |
 | [交通死亡事故 - 美国事故分析报告系统 (FARS)](https://www.nhtsa.gov/FARS) | “FARS 是全国性的普查，可提供 NHTSA、国会和美国公众就机动车辆交通事故造成的致命事故公开的年度数据。” | “使用 FARS 查询系统自己创建在线运行的死亡数据。 或从 FTP 站点下载自 1975 起的所有 FARS 数据。” |
 | [有毒化学物质数据 - EPA 毒性预测 (ToxCast™) 数据](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | “EPA 可公开提供最近更新的数千种化学品的高通量毒性数据。 该数据由 EPA 的 ToxCast 研究得出。” | 存在各种格式的数据集，包括电子表格、R 包和 MySQL 数据库文件。 |

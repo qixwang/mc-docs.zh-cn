@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab, vanto
 origin.date: 07/02/2019
-ms.date: 12/26/2019
-ms.openlocfilehash: eec4e94902377b27f8c23d9984731bed6b5f4183
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 26522d6fbf9af6f049c0bf0786826dc84ca89740
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336072"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155646"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
@@ -46,7 +46,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 
 - **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关来代理，导致延迟增大和吞吐量降低。 若要通过连接来使用此模式，客户端需满足以下条件：允许在端口 1433 上通过客户端与 Azure SQL 数据库网关 IP 地址进行入站和出站通信。
 
-- **默认：** 除非显式将连接策略更改为 `Proxy` 或 `Redirect`，否则，在创建后，此连接策略将在所有服务器上生效。 对于所有源自 Azure 内部的客户端连接（例如，源自 Azure 虚拟机的连接），默认策略为 `Redirect`；对于所有源自内部的客户端连接（例如，源自本地工作站的连接），默认策略为 `Proxy`
+- 默认值：  除非显式将连接策略更改为 `Proxy` 或 `Redirect`，否则，在创建后，此连接策略将在所有服务器上生效。 对于所有源自 Azure 内部的客户端连接（例如，源自 Azure 虚拟机的连接），默认策略为 `Redirect`；对于所有源自外部的客户端连接（例如，源自本地工作站的连接），默认策略为 `Proxy`。
 
  我们强烈建议使用 `Redirect` 连接策略而不要使用 `Proxy` 连接策略，以最大程度地降低延迟和提高吞吐量。但是，若要允许上述网络流量，需满足额外要求。 如果客户端为 Azure 虚拟机，则可将网络安全组 (NSG) 与[服务标记](../virtual-network/security-overview.md#service-tags)配合使用来实现它。 如果客户端从本地工作站进行连接，则可能需要联系网络管理员，让其允许网络流量通过公司防火墙。
 

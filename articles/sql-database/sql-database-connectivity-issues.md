@@ -9,18 +9,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
+manager: digimobile
 ms.author: v-jay
-ms.reviewer: carlrab
-origin.date: 11/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: ec124be6b2b628f9d131066b7eec770d4362a975
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.reviewer: carlrab, vanto
+origin.date: 01/14/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 8112a189041bd8a0acb57ee808c599da86bd6064
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336071"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155641"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>处理 SQL 数据库连接问题和暂时性错误
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>排查 SQL 数据库的暂时性连接错误
 
 本文介绍如何防止、排查、诊断和减少客户端应用程序在与 Azure SQL 数据库交互时发生的连接错误和暂时性错误。 了解如何配置重试逻辑、生成连接字符串以及调整其他连接设置。
 
@@ -444,7 +445,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关其他常见 SQL 数据库连接问题的故障排除信息，请参阅[排查 Azure SQL 数据库的连接问题](sql-database-troubleshoot-common-connection-issues.md)。
 - [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
 - [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [*重试*是 Apache 2.0 授权的通用重试库，它以 Python](https://pypi.python.org/pypi/retrying) 编写，可以简化向几乎任何程序添加重试行为的任务。

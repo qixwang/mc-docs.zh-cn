@@ -11,15 +11,15 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 12/19/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: ff14c653ebbefa098fdc64530188675d45b4288a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 82c02e2f2b103ed6752641a6eb08502ea52c62d0
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336062"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155604"
 ---
-# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除（预览）
 
 使用 Azure SQL 数据库智能见解可以了解 SQL 数据库和托管实例数据库的性能情况。
 
@@ -167,4 +167,4 @@ Intelligent Insights 日志输出出错请求计数。 它会指示性能降低�
 
 - 了解如何[使用 Intelligent Insights 排查 SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 - 使用 [Intelligent Insights SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
-- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/platform-logs-overview.md)。

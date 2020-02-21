@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 11/05/2019
 ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 79540933bd2e11d521210fae3dbb7dd6901ec52e
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 54336090781c42fe60c134d79b08cd31e19ead42
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123205"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179328"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
@@ -102,7 +102,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 若要部署模板，请执行以下操作：
 
-1. 从以下代码块中选择“试用”  ，然后按照说明登录 Azure Cloud shell。
+1. 登录到 Azure PowerShell。
 
    ```azurepowershell
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"

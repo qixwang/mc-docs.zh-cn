@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 origin.date: 05/14/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: fb750078e943c21e27b4d7969a9237a125105f01
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1be3f89fe69f6a64e4c32fd5e7d3a348dd3fb8ef
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335800"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155726"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>用于管理 Azure SQL 数据库 DNS 别名的 PowerShell
 
@@ -35,11 +35,11 @@ ms.locfileid: "75335800"
 
    `<yourServer>.database.chinacloudapi.cn`
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果想要运行演示这篇文章中提供的 PowerShell 脚本，适用以下先决条件：
 
-- Azure 订阅和帐户。如需 1 元试用版，请单击 [https://www.azure.cn/pricing/1rmb-trial/ ][https://www.azure.cn/pricing/1rmb-trial/ ]。
+- Azure 订阅和帐户。如需 1 元试用版，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)
 - 两个 Azure SQL 数据库服务器
 
 ## <a name="example"></a>示例
@@ -48,7 +48,7 @@ ms.locfileid: "75335800"
 
 若要运行此代码，请编辑占位符值，使之与系统中的实际值匹配。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用的 cmdlet 如下：
 
@@ -94,7 +94,7 @@ Remove-AzSqlServerDnsAlias -ResourceGroupName $resourceGroupName2 -ServerName $s
     -Name $sqlServerDnsAliasName;
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用的命令如下：
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库的安全控制
+title: 安全控件
 description: 用于评估 Azure SQL 数据库的安全控制的清单
 services: sql-database
 author: WenJason
@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: load-balancer
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 09/30/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: bbb340c6d736b13e8dc63afdd93fa4d559631c70
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.openlocfilehash: 5153edfb246b0faa5eb9d666ca3ee9b52d5b53cc
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263064"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155690"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL 数据库的安全控制
 
@@ -37,7 +37,7 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
-| Azure 监视支持，如 Log Analytics 或 Application Insights| 是 | SecureSphere 是 Imperva 的 SIEM 解决方案，也通过 [Azure 存储](/storage/)集成（通过 [SQL 审核](sql-database-auditing.md)）获得支持。 |
+| Azure 监视支持，如 Log Analytics 或 Application Insights| 是 | SecureSphere 是 Imperva 的 SIEM 解决方案，也通过 [Azure 事件中心](../event-hubs/index.yml)集成（通过 [SQL 审核](sql-database-auditing.md)）获得支持。 |
 | 控制平面和管理平面日志记录和审核| 是 | 仅对某些事件为“是” |
 | 数据平面日志记录和审核 | 是 | 通过 [SQL 审核](sql-database-auditing.md) |
 

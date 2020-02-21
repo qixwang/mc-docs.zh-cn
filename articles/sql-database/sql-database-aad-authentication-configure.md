@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
-origin.date: 11/06/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f6dad2db29bc5841db12fbea6f9122e11eb7193a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/07/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 0acbf3492cd75a92111bfaa1085d1497479fd3a0
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336146"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155608"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
@@ -139,7 +139,7 @@ ms.locfileid: "75336146"
 
    “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 请参阅 [Azure AD 功能和限制](sql-database-aad-authentication.md#azure-ad-features-and-limitations)中受支持的管理员列表。 基于角色的访问控制 (RBAC) 仅适用于 Azure 门户，不会传播到 SQL Server。
 
-    ![添加管理员](./media/sql-database-aad-authentication/add-admin.png)
+    ![添加 Azure Active Directory 管理员](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. 在“Active Directory 管理员”页顶部，选择“保存”  。
 
@@ -176,7 +176,7 @@ ms.locfileid: "75336146"
 
 ### <a name="powershell-for-sql-managed-instance"></a>用于 SQL 的 PowerShell 托管实例
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -214,7 +214,7 @@ Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup0
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 也可通过调用以下 CLI 命令来预配 SQL 托管实例的 Azure AD 管理员：
 
@@ -238,11 +238,13 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 [Azure 门户](https://portal.azure.cn/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）![选择-AD][8]
+1. 在 [Azure 门户](https://portal.azure.cn/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）
 
-2. 在左侧横幅中选择“所有服务”  ，然后在筛选器中键入“SQL Server”  。 选择“SQL 服务器”  。
+    ![选择-AD][8]
 
-    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
+2. 搜索并选择“SQL 服务器”  。
+
+    ![搜索并选择“SQL 服务器”](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > 在此页面上，在选择“SQL 服务器”  前，可选择名称旁边的星号标记  以收藏  该类别，并将“SQL 服务器”  添加到左侧导航栏。
@@ -251,17 +253,17 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 4. 在“Active Directory 管理员”  页中，选择“设置管理员”  。
 
-    ![选择 active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+    ![SQL Server 的“设置 Active Directory 管理员”](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
 5. 在“添加管理员”  页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”  。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表  。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
 
-    ![选择管理员](./media/sql-database-aad-authentication/select-admin.png)  
+    ![选择 Azure Active Directory 管理员](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
 6. 在“Active Directory 管理员”  页顶部，选择“保存”  。
 
     ![保存管理员](./media/sql-database-aad-authentication/save-admin.png)
 
-更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”  框中。
+更改管理员的过程可能需要几分钟时间。 然后，新管理员出现在“Active Directory 管理员”  框中。
 
    > [!NOTE]
    > 设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能已作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 如果存在，Azure AD 管理员设置将失败；将回滚其创建，并指示此管理员（名称）已存在。 由于这种 SQL Server 身份验证用户不是 Azure AD 的一部分，因此使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。
@@ -270,7 +272,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 ### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>用于 Azure SQL 数据库和 Azure SQL 数据仓库的 PowerShell
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 若要预配 Azure AD 管理员，请执行以下 Azure PowerShell 命令：
 
@@ -320,7 +322,7 @@ Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 可以通过调用以下 CLI 命令来预配 Azure AD 管理员：
 
@@ -328,7 +330,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 | --- | --- |
 |[az sql server ad-admin create](/cli/sql/server/ad-admin#az-sql-server-ad-admin-create) |为 Azure SQL Server 或 Azure SQL 数据仓库预配 Azure Active Directory 管理员。 （必须来自当前订阅。） |
 |[az sql server ad-admin delete](/cli//sql/server/ad-admin#az-sql-server-ad-admin-delete) |删除 Azure SQL Server 或 Azure SQL 数据仓库的 Azure Active Directory 管理员。 |
-|[az sql server ad-admin list](/cli/sql/server/ad-admin#az-sql-server-ad-admin-list) |返回有关为 Azure SQL Server 或 Azure SQL 数据仓库配置的当前 Azure Active Directory 管理员的信息。 |
+|[az sql server ad-admin list](/cli/sql/server/ad-admin#az-sql-server-ad-admin-list) |返回有关当前为 Azure SQL Server 或 Azure SQL 数据仓库配置的 Azure Active Directory 管理员的信息。 |
 |[az sql server ad-admin update](/cli/sql/server/ad-admin#az-sql-server-ad-admin-update) |为 Azure SQL Server 或 Azure SQL 数据仓库更新 Azure Active Directory 管理员。 |
 
 有关 CLI 命令的详细信息，请参阅 [az sql server](/cli/sql/server)。
@@ -343,14 +345,17 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 在所有客户端计算机上，如果应用程序或用户从中使用 Azure AD 标识连接到 Azure SQL 数据库或 Azure SQL 数据仓库，则必须安装以下软件：
 
 - .NET Framework 4.6 或更高版本（在 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) 上提供）。
-- 用于 SQL Server 的 Azure Active Directory 身份验证库 (*ADALSQL.DLL*)，提供多个语言版本（x86 和 amd64），可从下载中心中的[用于 Microsoft SQL Server 的 Microsoft Active Directory 身份验证库](https://www.microsoft.com/download/details.aspx?id=48742)下载。
+- 适用于 SQL Server 的 Azure Active Directory 身份验证库 (*ADAL.DLL*)。 下面是下载链接，用于安装包含 *ADAL.DLL* 库的最新 SSMS、ODBC 和 OLE DB 驱动程序。
+    1. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 可以通过以下操作来满足这些要求：
 
-- 安装 [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 或 [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) 符合 .NET Framework 4.6 要求。
-- SSMS 安装 *ADALSQL.DLL*的 x86 版本。
-- SSDT 安装 *ADALSQL.DLL*的 amd64 版本。
-- [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs) 提供的最新 Visual Studio 符合 .NET Framework 4.6 要求，但并未安装必需的 amd64 版本的 *ADALSQL.DLL*。
+- 安装最新版 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) 符合 .NET Framework 4.6 要求。
+    - SSMS 安装 *ADAL.DLL* 的 x86 版本。
+    - SSDT 安装 *ADAL.DLL* 的 amd64 版本。
+    - [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)提供的最新 Visual Studio 符合 .NET Framework 4.6 要求，但并未安装必需的 amd64 版 *ADAL.DLL*。
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>在映射到 Azure AD 标识的数据库中创建包含的数据库用户
 
@@ -396,7 +401,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > 此命令要求 SQL 代表已登录用户访问 Azure AD（“外部提供程序”）。 有时候，会出现导致 Azure AD 将异常返回给 SQL 的情况。 在这些情况下，用户会看到 SQL 错误 33134，其中会包含特定于 AAD 的错误消息。 大多数情况下，错误会指出访问被拒绝、用户必须注册 MFA 才能访问资源，或者在第一方应用程序之间进行的访问必须通过预授权进行处理。 如果是前面的两种情况，则问题通常是由在用户的 AAD 租户中设置的条件访问策略引起的：这些策略阻止用户访问外部提供程序。 更新 CA 策略以允许访问应用程序“00000002-0000-0000-c000-000000000000”（AAD 图形 API 的应用程序 ID）应该就能解决此问题。 如果错误指出在第一方应用程序之间进行的访问必须通过预授权进行处理，则出现问题是因为用户以服务主体的身份登录。 如果改由用户执行命令，则命名应该会成功。
 
 > [!TIP]
-> 除了与 Azure 订阅关联的 Azure Active Directory 以外，无法从 Azure Active Directory 直接创建用户。 但是，可将关联的 Active Directory 中导入的用户（称为外部用户）的其他 Active Directory 成员添加到租户 Active Directory 中的 Active Directory 组。 通过为该 AD 组创建包含的数据库用户，外部 Active Directory 中的用户可以获取对 SQL 数据库的访问权限。
+> 除了与 Azure 订阅关联的 Azure Active Directory 以外，无法从 Azure Active Directory 直接创建用户。 但是，可将关联的 Active Directory 中导入的用户（称为外部用户）的其他 Active Directory 成员添加到租户 Active Directory 中的 Active Directory 组。 通过创建该 AD 组的包含数据库用户，来自外部 Active Directory 的用户可以访问 SQL 数据库。
 
 有关基于 Azure Active Directory 标识创建包含的数据库用户的详细信息，请参阅 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)。
 

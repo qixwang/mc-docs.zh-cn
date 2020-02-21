@@ -5,15 +5,15 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 08/15/2019
-ms.date: 09/02/2019
+origin.date: 01/09/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 93d4b7cfdae9df56ff6e92e6113c1962f8a1a627
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: 8b3b93e7c02882c6a61870b1777712ae25e5059e
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131698"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156800"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -36,7 +36,7 @@ ms.locfileid: "70131698"
 
 在开始配置之前，请验证是否符合以下条件：
 
-* 确认是否需要使用经典部署模型。 如果要使用资源管理器部署模型，请参阅[创建站点到站点连接（资源管理器）](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 我们建议在可能的情况下使用资源管理器部署模型。
+* 确认要使用经典部署模型。 如果要使用资源管理器部署模型，请参阅[创建站点到站点连接（资源管理器）](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 我们建议在可能的情况下使用资源管理器部署模型。
 * 确保有一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
@@ -53,7 +53,7 @@ ms.locfileid: "70131698"
 * **子网：**
   * FrontEnd：10.11.0.0/24
   * BackEnd：10.12.0.0/24（对于本练习来说是可选的）
-* **GatewaySubnet：** 10.11.255.0/27
+* **网关子网：** 10.11.255.0/27
 * **资源组：** TestRG1
 * **位置：** 中国北部
 * **DNS 服务器：** 10.11.0.3（对于本练习来说是可选的）
@@ -75,9 +75,9 @@ ms.locfileid: "70131698"
 3. 单击“(更改为经典)”，然后单击“创建”。  
 4. 在“创建虚拟网络(经典)”  页上，配置 VNet 设置。 在此页上，添加第一个地址空间和单个子网地址范围。 完成创建 VNet 之后，可以返回并添加其他子网和地址空间。
 
-   ![“创建虚拟网络”页](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "“创建虚拟网络”页")
+   ![“创建虚拟网络”页](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "创建虚拟网络页")
 5. 验证“订阅”  是否正确。 可以使用下拉列表更改订阅。
-6. 单击“资源组”  ，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
+6. 单击“资源组”  ，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure Resource Manager 概述](../azure-resource-manager/management/overview.md#resource-groups)。
 7. 接下来，选择 VNet 的“位置”  设置。 该位置确定要部署到此 VNet 的资源所在的位置。
 8. 单击“创建”以创建 VNet。 
 9. 单击“创建”后，仪表板上会出现一个磁贴，反映 VNet 的进度。 创建 VNet 时，该磁贴会更改。
@@ -146,7 +146,7 @@ ms.locfileid: "70131698"
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
-- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
+- 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的密钥来使用。
 - 虚拟网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。
 
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
@@ -209,7 +209,7 @@ azure config mode asm
 
 ## <a name="reset"></a>如何重置 VPN 网关
 
-如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md#resetclassic)。
+如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 Azure VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md#resetclassic)。
 
 ## <a name="changesku"></a>如何更改网关 SKU
 

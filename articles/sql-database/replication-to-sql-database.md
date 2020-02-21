@@ -1,24 +1,23 @@
 ---
-title: 复制到 Azure SQL 数据库 | Microsoft Docs
+title: 复制
 description: 了解如何对 Azure SQL 数据库的单个数据库和弹性池中的数据库使用 SQL Server 复制
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma
-manager: digimobile
 origin.date: 01/25/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: 897f1ba2f25baca0d3698af023bff658e7e343c4
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 02/17/2020
+ms.openlocfilehash: 44c712c9942b260b2b2d00c49c65479e5944c3f2
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544415"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155736"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
@@ -30,18 +29,21 @@ ms.locfileid: "69544415"
 - Azure SQL 数据库必须是 SQL Server 发布服务器的推送订阅者。  
 - 不能将分发数据库和复制代理置于一个 Azure SQL 数据库上。  
 - 支持快照和单向事务复制。 不支持对等事务复制和合并复制。
-- Azure SQL 数据库托管实例上的公共预览版可以使用复制。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关详细信息，请参阅[通过 SQL 数据库托管实例进行复制](replication-with-sql-database-managed-instance.md)。
+- 复制适用于 Azure SQL 数据库托管实例上的公共预览版。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关详细信息，请参阅[通过 SQL 数据库托管实例进行复制](replication-with-sql-database-managed-instance.md)。
 
 ## <a name="versions"></a>版本  
 
-- 发布服务器和分发服务器必须至少使用以下版本之一：  
-- SQL Server 2017 (14.x)
-- SQL Server 2016 (13.x)
-- SQL Server 2014 (12.x) SP1 CU3
-- SQL Server 2014 (12.x) RTM CU10
-- SQL Server 2012 (11.x) SP2 CU8 或 SP3
-- 尝试使用旧版来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQL_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败）。  
-- 若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
+本地 SQL Server 发布服务器和分发服务器必须至少使用以下版本之一：  
+
+- SQL Server 2016 及更高版本
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) 或 [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) 或 [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> 尝试使用不受支持的版本来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQL_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败）。  
+
+若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
+
   
 ## <a name="remarks"></a>备注
 

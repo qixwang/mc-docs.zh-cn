@@ -1,5 +1,5 @@
 ---
-title: 连接和使用 Azure SQL 数据库时出现问题
+title: 排查 SQL 数据库的常见连接问题
 description: 提供步骤来排查 Azure SQL 数据库连接问题，并解决其他的 SQL 数据库特定问题
 services: sql-database
 ms.service: sql-database
@@ -7,74 +7,26 @@ ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019
 author: WenJason
 ms.author: v-jay
-ms.reviewer: carlrab
-origin.date: 11/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 03b311e97e3b8391584a600e01e401da0daa5040
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.reviewer: carlrab,vanto
+origin.date: 01/14/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 4be560f966446f13a1ab2d345b496f9a838e1204
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335139"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155687"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database"></a>排查 Azure SQL 数据库的连接问题和其他问题
 
-与 Azure SQL 数据库连接失败时，会出现错误消息。 连接问题可能是 Azure SQL 数据库重新配置、防火墙设置、连接超时或不正确的登录信息造成的。 此外，如果达到了某些 Azure SQL 数据库资源的最大限制，则无法连接到 Azure SQL 数据库。
+与 Azure SQL 数据库连接失败时，会出现错误消息。 连接问题可能由以下原因导致：Azure SQL 数据库重新配置、防火墙设置、连接超时、登录信息不正确，或无法在[应用程序设计] (sql-database-develop-overview.md)过程中应用最佳做法和设计准则。 此外，如果达到了某些 Azure SQL 数据库资源的最大限制，则无法连接到 Azure SQL 数据库。
 
-## <a name="transient-fault-error-messages"></a>暂时性故障错误消息
+## <a name="transient-fault-error-messages-40197-40613-and-others"></a>暂时性故障错误消息（40197、40613 等）
 
-Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动态地重新配置服务器。  此动态行为可能会导致客户端程序失去其与 SQL 数据库的连接。 此类错误情况称为 *暂时性故障*。 强烈建议客户端程序包含重试逻辑，以便它可以提供一段时间来让暂时性故障纠正自身，并尝试重建连接。  我们建议在第一次重试前延迟 5 秒钟。 如果在少于 5 秒的延迟后重试，云服务有超载的风险。 对于后续的每次重试，延迟应以指数级增大，最大值为 60 秒。
-
-有关重试逻辑的代码示例，请参阅：
-
-* [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
-* [修复 SQL 数据库中的连接错误和暂时性错误的操作](sql-database-connectivity-issues.md)
-
-> [!TIP]
-> 若要解决以下部分讨论的问题，请尝试执行[解决常见连接问题的步骤](#steps-to-fix-common-connection-issues)部分所述的步骤（按所述顺序执行）。
-
-### <a name="error-40613-database--x--on-server--y--is-not-currently-available"></a>错误 40613：服务器 < y > 上的数据库 < x > 当前不可用
-
-``40613: Database <DBname> on server < server name > is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of '< Tracing ID >'.``
-
-若要解决此问题，请执行以下操作：
-
-1. 检查 Azure [服务仪表板](https://status.azure.com/zh-cn/status)以查看是否存在任何已知的服务中断。 
-2. 如果未出现已知的服务中断，请转到 [Azure 支持网站](https://support.azure.cn/zh-cn/support/contact/)提出支持案例。
-
-有关详细信息，请参阅[排查“服务器上的数据库当前不可用”错误](/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors)。
-
-### <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>与 SQL 数据库服务器建立连接时，出现网络相关或特定于实例的错误
-
-如果应用程序无法连接到服务器，则会出现此问题。
-
-若要解决此问题，请尝试执行[解决常见连接问题的步骤](#steps-to-fix-common-connection-issues)部分所述的步骤（按所述顺序执行）。
-
-### <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>找不到或无法访问服务器/实例（错误 26、40、10053）
-
-#### <a name="error-26-error-locating-server-specified"></a>错误 26：查找指定的服务器时出错
-
-``System.Data.SqlClient.SqlException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.(provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)``
-
-#### <a name="error-40-could-not-open-a-connection-to-the-server"></a>错误 40：无法与服务器建立连接
-
-``A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)``
-
-#### <a name="error-10053-a-transport-level-error-has-occurred-when-receiving-results-from-the-server"></a>错误 10053：在接收来自服务器的结果时发生传输级错误
-
-``10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)``
-
-#### <a name="cannot-connect-to-a-secondary-database"></a>无法连接到辅助数据库
-
-到辅助数据库的连接尝试失败，因为该数据库正处于重新配置过程中，并且当在主数据库上进行活动的事务时，它正忙于应用新页。
-
-#### <a name="adonet-and-blocking-period"></a>ADO.NET 和阻塞期
-
-[SQL Server 连接池 (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx) 中提供了有关使用 ADO.NET 的客户端的*阻塞期*的说明。
+Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动态地重新配置服务器。  此动态行为可能会导致客户端程序失去其与 SQL 数据库的连接。 此类错误情况称为 *暂时性故障*。 之所以会发生数据库重新配置事件是因为，有计划内事件（例如，软件升级）或计划外事件（例如，进程故障或负载均衡）。 大多数重新配置事件的生存期通常较短，应在最多 60 秒内完成。 但是，这些事件偶尔可能需要更长时间才能完成，例如当大型事务导致长时间运行的恢复时。 下表列出了在连接到 SQL 数据库时应用程序可能会收到的各种暂时性错误
 
 ### <a name="list-of-transient-fault-error-codes"></a>暂时性故障错误代码的列表
 
-以下错误为暂时性错误，并且应在应用程序逻辑中重试：
 
 | 错误代码 | 严重性 | 说明 |
 | ---:| ---:|:--- |
@@ -86,6 +38,50 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | 49919 |16 |无法处理创建或更新请求。 订阅“%ld”有太多创建或更新操作正在进行。<br/><br/>服务正忙于为订阅或服务器处理多个创建或更新请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) 以了解挂起的操作。 请等到挂起的创建或更新请求完成后，或删除其中一个挂起的请求，再重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
 | 49920 |16 |无法处理请求。 订阅“%ld”有太多操作正在进行。<br/><br/>服务正忙于为此订阅处理多个请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) 以了解操作状态。 请等到挂起的请求完成，或删除其中一个挂起的请求，然后重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
 | 4221 |16 |由于等待“HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING”的时间过长，登录以读取次要副本失败。 副本不可用于登录，因为回收副本时缺少正在进行中的事务的行版本。 可以通过回滚或提交主要副本上的活动事务来解决此问题。 通过避免在主要副本上长时间写入事务，可以将此状况的发生次数降到最低。 |
+
+
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>解决暂时性连接问题的步骤
+
+1. 检查 [Azure 服务仪表板](https://status.azure.com/zh-cn/status)在由应用程序报告错误期间是否发生任何已知的服务中断。
+2. 连接到云服务的应用程序（如 Azure SQL 数据库）应期望定期重新配置事件并实施重试逻辑来处理这些错误，而不是将它们作为应用程序错误展现给用户。 
+3. 由于数据库即将达到其资源限制，因此错误看起来像是暂时性连接问题。 请参阅[资源限制](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached)。
+4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 [Azure 支持](https://support.azure.cn/zh-cn/support/contact/)网站上选择“**获取支持**”提出 Azure 支持请求。
+
+#### <a name="implementing-retry-logic"></a>实现重试逻辑
+强烈建议客户端程序包含重试逻辑，以便它可以提供一段时间来让暂时性故障纠正自身，并尝试重建连接。  我们建议在第一次重试前延迟 5 秒钟。 如果在少于 5 秒的延迟后重试，云服务有超载的风险。 对于后续的每次重试，延迟应以指数级增大，最大值为 60 秒。
+
+有关重试逻辑的代码示例，请参阅：
+- [Connect resiliently to SQL with ADO.NET（使用 ADO.NET 弹性连接到 SQL）](https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
+- [使用 PHP 弹性连接到 SQL](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+
+有关在应用程序评审中处理暂时性错误的其他信息，请参阅下文：
+* [排查 SQL 数据库的暂时性连接错误](sql-database-connectivity-issues.md)
+
+[SQL Server 连接池 (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx) 中提供了有关使用 ADO.NET 的客户端的*阻塞期*的说明。
+
+## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>与 SQL 数据库服务器建立连接时，出现网络相关或特定于实例的错误
+
+如果应用程序无法连接到服务器，则会出现此问题。
+
+若要解决此问题，请尝试执行[解决常见连接问题的步骤](#steps-to-fix-common-connection-issues)部分所述的步骤（按所述顺序执行）。
+
+## <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>找不到或无法访问服务器/实例（错误 26、40、10053）
+
+#### <a name="error-26-error-locating-server-specified"></a>错误 26：查找指定的服务器时出错
+
+``System.Data.SqlClient.SqlException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.(provider: SQL Network Interfaces, error: 26 – Error Locating Server/Instance Specified)``
+
+#### <a name="error-40-could-not-open-a-connection-to-the-server"></a>错误 40：无法与服务器建立连接
+
+``A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)``
+
+#### <a name="error-10053-a-transport-level-error-has-occurred-when-receiving-results-from-the-server"></a>错误 10053：在接收来自服务器的结果时发生传输级错误
+
+``10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)``
+
+如果应用程序无法连接到服务器，则会出现这些问题。
+
+若要解决这些问题，请尝试执行[解决常见连接问题的步骤](#steps-to-fix-common-connection-issues)部分所述的步骤（按所述顺序执行）。
 
 ## <a name="cannot-connect-to-server-due-to-firewall-issues"></a>由于防火墙问题而无法连接到服务器
 
@@ -177,18 +173,6 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 这些异常可能是连接或查询问题造成的。 若要确认此错误是否由连接问题造成，请参阅[确认错误是否由连接问题造成](#confirm-whether-an-error-is-caused-by-a-connectivity-issue)。
 
 发生连接超时的原因是应用程序无法连接到服务器。 若要解决此问题，请尝试执行[解决常见连接问题的步骤](#steps-to-fix-common-connection-issues)部分所述的步骤（按所述顺序执行）。
-
-## <a name="transient-errors-errors-40197-40545"></a>暂时性错误（错误 40197、40545）
-
-### <a name="error-40197-the-service-has-encountered-an-error-processing-your-request-please-try-again-error-code--code-"></a>错误 40197：该服务在处理你的请求时遇到错误。 请重试。 错误代码 <代码>
-
-出现此问题的原因是在后端重新配置或故障转移期间遇到了暂时性的错误。
-
-若要解决此问题，请等待片刻时间，然后重试。 除非此问题持续出现，否则不需要提出支持案例。
-
-最佳做法是确保实施重试逻辑。 有关重试逻辑的详细信息，请参阅[排查 SQL 数据库的暂时性故障和连接错误](/sql-database/sql-database-connectivity-issues)。
-
-
 
 ## <a name="elastic-pool-errors"></a>弹性池错误
 

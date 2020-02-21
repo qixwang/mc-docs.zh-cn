@@ -1,6 +1,7 @@
 ---
-title: 将 SQL Server Integration Services 包迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
-description: 了解如何将 SQL Server Integration Services 包迁移到 Azure SQL 数据库托管实例。
+title: 将 SSIS 包迁移到 SQL 托管实例
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure 数据库迁移服务或数据迁移助手将 SQL Server Integration Services (SSIS) 包和项目迁移到 Azure SQL 数据库托管实例。
 services: database-migration
 author: WenJason
 ms.author: v-jay
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 06/08/2019
-ms.date: 08/12/2019
-ms.openlocfilehash: 355a2bf91a6bc5285b9084be7fdeb52dd432ce2a
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: 11b5a6f9a13fde1045108595856ded0bfd15d91e
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952154"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192459"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>将 SQL Server Integration Services 包迁移到 Azure SQL 数据库托管实例
 如果使用 SQL Server Integration Services (SSIS) 并想将 SSIS 项目/包从 SQL Sever 托管的源 SSISDB 迁移到 Azure SQL 数据库托管实例托管的目标 SSISDB，可以使用 Azure 数据库迁移服务。
@@ -33,12 +34,12 @@ ms.locfileid: "68952154"
 > * 评估源 SSIS 项目/包。
 > * 将 SSIS 项目/包迁移到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成这些步骤，需满足以下条件：
 
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](/dms/resource-network-topologies)一文。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
-* 确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-network-vnet-plan-design-arm)一文。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](/dms/resource-network-topologies)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -79,11 +80,11 @@ ms.locfileid: "68952154"
 
 4. 选择要在其中创建 DMS 实例的位置。
 
-5. 选择一个现有 VNet，或者创建一个。
+5. 选择现有的虚拟网络或创建一个虚拟网络。
 
-    VNet 为 Azure 数据库迁移服务提供源 SQL Server 和目标 Azure SQL 数据库托管实例的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供源 SQL Server 和目标 Azure SQL 数据库托管实例的访问权限。
 
-    有关如何在 Azure 门户中创建 VNet 的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
     有关更多详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](/dms/resource-network-topologies)一文。
 
@@ -126,7 +127,7 @@ ms.locfileid: "68952154"
 
    ![源详细信息](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 
-3. 选择“保存”。 
+3. 选择“保存”  。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 

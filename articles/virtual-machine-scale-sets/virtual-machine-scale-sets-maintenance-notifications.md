@@ -1,25 +1,19 @@
 ---
-title: Azure 中虚拟机规模集的维护通知 | Microsoft Docs
+title: Azure 中虚拟机规模集的维护通知
 description: 查看 Azure 中虚拟机规模集的维护通知并开始自助式维护。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shants123
-editor: ''
 tags: azure-service-management,azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2020
+ms.topic: conceptual
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: e8cf86c004a535e76119e8522388831c8d10c74d
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 2e730ea76bb35dcd4905a967490051812ebd4231
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116930"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128876"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -223,4 +217,4 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 了解如何使用[计划事件](../virtual-machines/windows/scheduled-events.md)从 VM 内注册维护事件。
 
-<!-- Update_Description: link update -->
+<!-- Update_Description: update metedata properties -->

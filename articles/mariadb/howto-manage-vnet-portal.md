@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 服务终结点和规则 | Microsoft Docs
+title: 管理 VNet 终结点 - Azure 门户 - Azure Database for MariaDB
 description: 使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 服务终结点和规则
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 02/26/2019
-ms.date: 09/16/2019
-ms.openlocfilehash: c4293f969a8f1dcc7c42592d4d79a1f424e43e22
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+origin.date: 12/02/2019
+ms.date: 02/17/2020
+ms.openlocfilehash: 4776f86f8bf98f66393cc67dc8a451cf63d2f580
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857122"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192464"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 服务终结点和 VNet 规则
 
@@ -61,4 +61,4 @@ ms.locfileid: "70857122"
 - 类似地，你可以编写脚本，以[使用 Azure CLI 为 Azure Database for MariaDB 启用 VNet 服务终结点并创建 VNET 规则](howto-manage-vnet-cli.md)。
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

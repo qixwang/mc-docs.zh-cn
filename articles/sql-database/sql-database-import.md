@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 06/20/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 1dd350a8460f826ad01932d1a2682f861ede391c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 1da3f4ba3a7d4b14cfc25c9a84fee7d1c2dbd02f
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336277"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155729"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 
@@ -40,19 +40,19 @@ ms.locfileid: "75336277"
 
 1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”  。  
 
-   ![数据库 import1](./media/sql-database-import/import1.png)
+   ![数据库 import1](./media/sql-database-import/sql-server-import-database.png)
 
 1. 选择存储帐户和 BACPAC 文件的容器，然后选择要从中导入的 BACPAC 文件。
 
 1. 指定新数据库大小（通常与源数据库相同）并提供目标 SQL Server 凭据。 如需新 Azure SQL 数据库的可能值的列表，请参阅[创建数据库](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)。
 
-   ![数据库 import2](./media/sql-database-import/import2.png)
+   ![数据库 import2](./media/sql-database-import/sql-server-import-database-settings.png)
 
 1. 单击 **“确定”** 。
 
 1. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”  下，选择“导入/导出历史记录”  。 成功导入后，状态为“已完成”  。
 
-   ![数据库导入状态](./media/sql-database-import/import-status.png)
+   ![数据库导入状态](./media/sql-database-import/sql-server-import-database-history.png)
 
 1. 若要验证数据库在数据库服务器上是否处于活动状态，请选择“SQL 数据库”  并验证新数据库是否为“联机”  。
 
@@ -85,7 +85,7 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现“磁盘空间不足”错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
@@ -120,7 +120,7 @@ while ($importStatus.Status -eq "InProgress") {
 $importStatus
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用 [az-sql-db-import](/cli/sql/db#az-sql-db-import) 命令向 Azure SQL 数据库服务提交导入数据库请求。 根据数据库大小，导入操作可能需要一些时间才能完成。
 

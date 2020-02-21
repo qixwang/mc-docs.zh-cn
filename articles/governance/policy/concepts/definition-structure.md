@@ -3,14 +3,14 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.author: v-tawe
 origin.date: 11/26/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: edcd4f5fe9ab0a0b6cc6282bf88df34558661e5b
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 925a9bb51f838ad786d796bc39ea3efe8d156cda
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123362"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179327"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -78,7 +78,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 大多数情况下，建议将“mode”设置为  `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外  。 在资源组上强制执行位置或标记的策略应将“mode”  设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外  。 在资源组上强制执行位置或标记的策略应将“mode”  设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
 
 <!-- ### <a name="resource-provider-modes" />Resource Provider modes (preview) -->
 
@@ -167,6 +167,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 ## <a name="display-name-and-description"></a>显示名称和说明
 
 请使用“displayName”和“description”来标识策略定义，并提供其使用上下文   。 **displayName** 的最大长度为 128  个字符，**description** 的最大长度为 512  个字符。
+
+> [!NOTE]
+> 在创建或更新策略定义期间，**id**、**类型**和**名称**由 JSON 外部的属性定义，在 JSON 文件中不是必需的。 通过 SDK 获取策略定义会返回 **id**、**类型**和**名称**属性作为 JSON 的一部分，但每个属性都是与策略定义相关的只读信息。
 
 ## <a name="policy-rule"></a>策略规则
 
@@ -366,9 +369,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-上面的示例策略规则使用 [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) 将 **name** 的前三个字符与 **abc** 进行比较。 如果 **name** 短于三个字符，`substring()` 函数会导致出错。 此错误导致策略成为一种 **deny**（拒绝）效果。
+上面的示例策略规则使用 [substring()](../../../azure-resource-manager/templates/template-functions-string.md#substring) 将 **name** 的前三个字符与 **abc** 进行比较。 如果 **name** 短于三个字符，`substring()` 函数会导致出错。 此错误导致策略成为一种 **deny**（拒绝）效果。
 
-改用 [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) 函数来检查 **name** 的前三个字符是否等于 **abc**，同时避免短于三个字符的 **name** 导致出错：
+改用 [if()](../../../azure-resource-manager/templates/template-functions-logical.md#if) 函数来检查 **name** 的前三个字符是否等于 **abc**，同时避免短于三个字符的 **name** 导致出错：
 
 ```json
 {

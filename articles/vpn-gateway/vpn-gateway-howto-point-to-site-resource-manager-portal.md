@@ -1,19 +1,20 @@
 ---
-title: 使用点到站点 VPN 和本机 Azure 证书身份验证从计算机连接到 Azure 虚拟网络：Azure 门户 | Microsoft Docs
+title: 使用 P2S VPN 和证书身份验证连接到 VNet：门户
+titleSuffix: Azure VPN Gateway
 description: 使用 P2S 和自签名证书或 CA 颁发的证书将 Windows、Mac OS X 和 Linux 客户端安全地连接到 Azure 虚拟网络。 本文使用 Azure 门户。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 09/24/2019
-ms.date: 01/20/2020
+origin.date: 01/10/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 34de9a59ea4f5798ab5efe8c7caaeda258f38f77
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: a525ee5b3e3f3752f6eca1d3f176211d3a85be32
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939761"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156812"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
@@ -98,7 +99,7 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 ## <a name="tunneltype"></a>5.配置隧道类型
 
-可以选择隧道类型。 两个隧道选项是 SSTP 和 IKEv2。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 可以选择启用其中之一或启用两者。 选择解决方案需要的复选框。
+可以选择隧道类型。 隧道选项为 OpenVPN、SSTP 和 IKEv2。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 OSX 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
 
 ![隧道类型](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 

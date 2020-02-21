@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 中选择适当的部署选项 | Microsoft Docs
+title: 选择适当的部署选项
 description: 了解如何在 Azure SQL 中的 Azure SQL 数据库、SQL 托管实例与 Azure 虚拟机上的 SQL Server 之间选择部署选项。
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 08/22/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: c28d570bd61494e2ef992158a07d578253ae71d8
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.date: 02/17/2020
+ms.openlocfilehash: 3d05b89b4ea17f50ecb9f8ba7a1f86f067800915
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262931"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155714"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>在 Azure SQL 中选择适当的部署选项
 
@@ -46,7 +46,7 @@ ms.locfileid: "71262931"
   - [***弹性池***](sql-database-elastic-pool.md)：一个数据库集合，具有通过数据库服务器管理的共享资源集。 可以将单一数据库移入或移出弹性池。 此选项已针对新式应用程序开发进行优化，可用于使用多租户 SaaS 应用程序模式开发新型的云原生应用程序。 弹性池提供经济高效的解决方案用于管理使用模式可变的多个数据库的性能。
   - [***数据库服务器***](sql-database-servers.md)：用于管理单一数据库和弹性池的组。 数据库服务器用作多个单一数据库或共用数据库的中心管理点，包括[登录名](sql-database-manage-logins.md)、[防火墙规则](sql-database-firewall-configure.md)、[审核规则](sql-database-auditing.md)、[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-auto-failover-group.md)。
 
-- [**SQL 托管实例**](sql-database-managed-instance.md)：最适合用于大部分云迁移方案。 托管实例是系统和用户数据库的集合，其中包含一组随时可直接迁移的共享资源。 最适合用于需要使用最新的 SQL Server 稳定功能，并且在进行极少量更改的情况下迁移到云中的新应用程序或现有本地应用程序。 托管实例类似于 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview)的实例，为数据库和实例范围内的其他功能提供共享的资源。 托管实例支持从本地迁移数据库，只要求对数据库进行极少量的更改，甚至根本不需要更改。 此选项提供 Azure SQL 数据库的所有 PaaS 优势，但同时也添加了以前只在 SQL VM 中提供的功能。 这包括本机虚拟网络 (VNet)，以及与本地 SQL Server 的接近 100% 的兼容性。 托管实例提供完全的 SQL Server 访问和功能兼容性，可用于将 SQL Server 迁移到 Azure。
+- [**SQL 托管实例**](sql-database-managed-instance.md)：最适合用于大部分云迁移方案。 托管实例是系统和用户数据库的集合，其中包含一组随时可直接迁移的共享资源。 最适合用于需要使用最新的 SQL Server 稳定功能，并且在进行极少量更改的情况下迁移到云中的新应用程序或现有本地应用程序。 托管实例类似于 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/database-engine/sql-server-database-engine-overview)的实例，为数据库和实例范围内的其他功能提供共享的资源。 托管实例支持从本地迁移数据库，所需的数据库更改极少或没有。 此选项提供 Azure SQL 数据库的所有 PaaS 优势，但同时也添加了以前只在 SQL VM 中提供的功能。 这包括本机虚拟网络 (VNet)，以及与本地 SQL Server 的接近 100% 的兼容性。 托管实例提供完全的 SQL Server 访问和功能兼容性，可用于将 SQL Server 迁移到 Azure。
 
 
 - [**SQL 虚拟机**](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)：最适合用于需要 OS 级别访问的迁移和应用程序。 SQL 虚拟机随时可直接迁移，适用于需要快速迁移到云中且只需进行极少量更改甚至不需要任何更改的现有应用程序。 SQL 虚拟机针对要迁移到 Azure 的 SQL Server 实例和底层 OS 提供全面的管理控制度。 想要快速完成开发和测试方案，但又不想购买本地 SQL Server 非生产硬件。 SQL 虚拟机属于“基础结构即服务 (IaaS)”行业类别，可让你在 Azure 云中的完全托管式虚拟机 (VM) 上运行 SQL Server。  SQL 虚拟机也在 Microsoft 所拥有、托管及维护的标准化硬件上运行。 使用 SQL 虚拟机时，可以提前支付 SQL Server 映像中已包含的 SQL Server 许可证费用，或者轻松使用现有的许可证。 还可以根据需要停止或恢复 VM。 在云中安装和托管的 SQL Server 将在 Azure 上运行的 Windows Server 或 Linux 虚拟机上运行，也称为基础结构即服务 (IaaS)。 SQL 虚拟机非常适合用于迁移本地 SQL Server 数据库和应用程序，无需进行任何数据库更改。 所有当前 SQL Server 版本都可安装在 IaaS 虚拟机中。 与 SQL 数据库和 SQL 托管实例之间的最重要差别在于，SQL Server VM 允许完全控制数据库引擎。 可以选择维护/修补开始时间、将恢复模式更改为简单模式或批量记录模式、根据需要暂停或启动服务，并且可以完全自定义 SQL Server 数据库引擎。 控制度的提高也意味着在管理虚拟机方面需要承担更大的责任。
@@ -87,7 +87,7 @@ ms.locfileid: "71262931"
 
 - 使用 SQL 数据库时，可根据需求选择各种价格的服务层级，基本层级的起价为 32.33 元/月。
 - 你可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享资源，以降低成本和应对使用高峰期。
-- 使用 SQL 托管实例时，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.cn/pricing/license-mobility/)，或使用 [Azure 混合权益计算器](https://www.azure.cn/en-us/pricing/hybrid-benefit/)来了解如何将成本**最高节省 30%** 。
+- 使用 SQL 托管实例时，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.cn/pricing/license-mobility/)，或使用 [Azure 混合权益计算器](https://www.azure.cn/pricing/hybrid-benefit/)来了解如何将成本**最高节省 30%** 。
 
 此外，需要对固定的 [数据传输速率](https://azure.cn/pricing/details/data-transfers/)的 Internet 传出流量付费。 可以动态调整服务层级和计算大小，以满足应用程序的不同吞吐量需求。
 

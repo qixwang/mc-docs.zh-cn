@@ -11,16 +11,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 04/29/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: dda253a82ef6d679f54abbb8acce255d94a6643b
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: c148e054a4271fca047613d0551a50c589691e3f
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776636"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192467"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 和 Azure 数据库迁移服务将 SQL Server 迁移到 SQL 数据库托管实例
+
 在本文中，我们将使用 Azure PowerShell 将还原为 SQL Server 2005 或更高版本的本地实例的 **Adventureworks2016** 数据库迁移到 Azure SQL 数据库托管实例。 可以使用 Azure PowerShell 中的 `Az.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库托管实例。
 
 在本文中，学习如何：
@@ -46,7 +47,7 @@ ms.locfileid: "75776636"
 * Azure 订阅。 如果没有订阅，请在开始之前[创建 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 * Azure SQL 数据库托管实例。 可根据[创建 Azure SQL 数据库托管实例](/sql-database/sql-database-managed-instance-get-started)一文中的详述创建 Azure SQL 数据库托管实例。
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
 * 已使用[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的数据迁移助手完成对本地数据库和架构迁移的评估。
 * 使用 [Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) 从 PowerShell 库下载并安装 `Az.DataMigration` 模块（0.7.2 或更高版本）。
 * 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。

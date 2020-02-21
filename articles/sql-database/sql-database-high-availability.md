@@ -12,16 +12,16 @@ ms.author: v-jay
 ms.reviewer: carlrab, sashan
 origin.date: 10/14/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 3b52b44197afaa064b1ec86e062aecb882b48a34
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 13d2ae1c40729f6ec231fffe2bffebfbe39de5f9
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336237"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155681"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
-Azure SQL 数据库中的高可用性体系结构的目标是保证数据库在 99.99% 的时间内可正常运行，无需让用户担心维护操作所造成的影响和服务中断。 Azure 会自动处理关键的维护任务（例如修补、备份、Windows 和 SQL 升级），以及底层硬件、软件或网络故障等计划外的事件。  修补或故障转移底层 SQL 实例时，如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则停机不会产生明显影响。 即使出现最严重的问题，Azure SQL 数据库也能快速恢复，确保数据始终可用。
+Azure SQL 数据库中的高可用性体系结构的目标是保证数据库在至少 99.99% 的时间内可正常运行（若要详细了解不同层级的特定 SLA，请参阅 [Azure SQL 数据库的 SLA](https://www.azure.cn/support/sla/sql-data/index.html)），无需让用户担心维护操作所造成的影响和服务中断。 Azure 会自动处理关键的维护任务（例如修补、备份、Windows 和 SQL 升级），以及底层硬件、软件或网络故障等计划外的事件。  修补或故障转移底层 SQL 实例时，如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则停机不会产生明显影响。 即使出现最严重的问题，Azure SQL 数据库也能快速恢复，确保数据始终可用。
 
 高可用性解决方案旨在确保提交的数据永远不会由于故障而丢失，维护操作不会影响工作负荷，且数据库不会成为软件体系结构中的单一故障点。 在升级或维护数据库期间，维护或停机时段都不需要停止工作负荷。 
 

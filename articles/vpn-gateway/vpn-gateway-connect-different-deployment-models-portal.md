@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 09/24/2019
-ms.date: 11/11/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 0bf334716dca7a541af335f15dadc082ad06a00e
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: 6774ded32befa0585af73ab6afce37d2e84e6d68
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742292"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156801"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>使用门户从不同的部署模型连接虚拟网络
 
@@ -100,8 +100,8 @@ SKU = VpnGw1 <br>
 ### 2.<a name="local"></a>配置本地站点
 
 1. 导航到“所有资源”  并在列表中找到“ClassicVNet”。 
-2. 在“概述”  页面的“VPN 连接”  部分中，单击“网关”  ，创建网关。
-  ![配置 VPN 网关](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "C配置 VPN 网关)
+2. 在菜单的“设置”部分单击“网关”，然后单击横幅以创建网关。  
+  ![配置 VPN 网关](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "配置 VPN 网关")
 3. 在“新建 VPN 连接”  页面上，对于“连接类型”，  选择“站点到站点”  。
 4. 对于“本地站点”  ，请单击“配置所需设置”  。 这会打开“本地站点”页面。 
 5. 在“本地站点”  页面上，创建一个表示资源管理器 VNet 的名称。 例如，RMVNetLocal。

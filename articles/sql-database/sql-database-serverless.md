@@ -4,20 +4,20 @@ description: 本文介绍新的无服务器计算层，并将它与现有的预�
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: db3fcc4425f647184f0a19187197c673e822a8ef
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 12/03/2019
+ms.date: 02/17/2020
+ms.openlocfilehash: 4244b1f8e6710667cb8342aaf04709aba3d34d58
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336169"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155721"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -178,26 +178,27 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>在无服务器计算层中创建新数据库 
 
+以下示例在无服务器计算层中创建新数据库。 这些示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+
 #### <a name="use-azure-portal"></a>使用 Azure 门户
 
 请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
 
+
 #### <a name="use-powershell"></a>使用 PowerShell
 
-以下示例在无服务器计算层中创建新数据库。  此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
-
 ```powershell
-New-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -ComputeModel Serverless `
-  -Edition GeneralPurpose `
-  -ComputeGeneration Gen5 `
-  -MinVcore 0.5 `
-  -MaxVcore 2 `
-  -AutoPauseDelayInMinutes 720
+New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
+  -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>使用 Azure CLI
+
+```azurecli
+az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
+  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+```
+
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
@@ -212,26 +213,28 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
+以下示例将某个数据库从预配的计算层中移入无服务器计算层。 这些示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+
 #### <a name="use-powershell"></a>使用 PowerShell
 
-以下示例将某个数据库从预配的计算层中移入无服务器计算层。 此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
 
 ```powershell
-Set-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -Edition GeneralPurpose `
-  -ComputeModel Serverless `
-  -ComputeGeneration Gen5 `
-  -MinVcore 1 `
-  -MaxVcore 4 `
-  -AutoPauseDelayInMinutes 1440
+Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
+  -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-azure-cli"></a>使用 Azure CLI
+
+```azurecli
+az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
+  --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
+```
+
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-以下示例将某个数据库从预配的计算层中移入无服务器计算层。 
+以下示例将某个数据库从预配的计算层中移入无服务器计算层。
 
 ```sql
 ALTER DATABASE testdb 
@@ -246,23 +249,14 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ## <a name="modifying-serverless-configuration"></a>修改无服务器配置
 
-### <a name="maximum-vcores"></a>最大 vCore 数
+### <a name="use-powershell"></a>使用 PowerShell
 
-#### <a name="use-powershell"></a>使用 PowerShell
+在 PowerShell 中结合 `MaxVcore`、`MinVcore` 和 `AutoPauseDelayInMinutes` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改最大或最小 vCore 数和自动暂停延迟。
 
-在 PowerShell 中结合 `MaxVcore` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改最大 vCore 数。
+### <a name="use-azure-cli"></a>使用 Azure CLI
 
-### <a name="minimum-vcores"></a>最小 vCore 数
+在 Azure CLI 中结合 `capacity`、`min-capacity` 和 `auto-pause-delay` 参数使用 [az sql db update](/cli/sql/db#az-sql-db-update) 命令修改最大或最小 vCore 数和自动暂停延迟。
 
-#### <a name="use-powershell"></a>使用 PowerShell
-
-在 PowerShell 中结合 `MinVcore` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改最小 vCore 数。
-
-### <a name="autopause-delay"></a>自动暂停延迟
-
-#### <a name="use-powershell"></a>使用 PowerShell
-
-在 PowerShell 中结合 `AutoPauseDelayInMinutes` 参数使用 [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) 命令修改自动暂停延迟。
 
 ## <a name="monitoring"></a>监视
 
@@ -297,15 +291,21 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 在 Azure 门户中，服务器的概述窗格列出了它所包含的数据库的状态。 数据库状态还显示在该数据库的概述窗格中。
 
-使用以下 PowerShell 命令查询数据库的暂停和恢复状态：
+使用以下命令查询数据库的暂停和恢复状态：
+
+#### <a name="use-powershell"></a>使用 PowerShell
 
 ```powershell
-Get-AzSqlDatabase `
-  -ResourceGroupName $resourcegroupname `
-  -ServerName $servername `
-  -DatabaseName $databasename `
+Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
+
+#### <a name="use-azure-cli"></a>使用 Azure CLI
+
+```azurecli
+az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
+```
+
 
 ## <a name="resource-limits"></a>资源限制
 
@@ -345,11 +345,15 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 假设计算单位的价格为 0.000544 CNY/vCore/秒。 那么，此 24 小时时段内的计算费用是计算单位价格和计费 vCore 秒数的积：0.000544/vCore/秒 * 50400 vCore 秒 = 27.4176 元
 
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure 混合权益和预留容量
+
+Azure 混合权益 (AHB) 和预留容量折扣不适用于无服务器计算层。
+
 ## <a name="available-regions"></a>可用区域
 
 无服务器计算层在除以下区域之外的所有区域均可使用：中国东部、中国北部
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
+- 若要入门，请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](sql-database-single-database-get-started.md)。
 - 有关资源限制的信息，请参阅[无服务器计算层资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, genemi
 origin.date: 11/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 921b3a96f2203c1604697a1217bcaa4a61f54d60
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: fa1c432225cf4bea5655fa21b8e051070d3705c4
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334603"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155696"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -111,7 +111,7 @@ Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连�
 
 PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据仓库中。 如果正从 Azure 存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure SQL 数据仓库，若要启用 PolyBase 导入和导出方案，请执行如下所示的步骤：
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 - 按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
 - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
@@ -225,7 +225,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 - [虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须有一个子网已经使用特定的虚拟网络服务终结点类型名称进行标记，且该名称必须与 Azure SQL 数据库相关。 
 
@@ -238,7 +238,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 1. 登录到 [Azure 门户][http-azure-portal-link-ref-477t]。
 
-2. 然后在门户中导航到“SQL 服务”  &gt;“防火墙/虚拟网络”  。
+2. 搜索并选择“SQL Server”，然后选择你的服务器  。 在“安全性”下，选择“防火墙和虚拟网络”   。
 
 3. 将“允许访问 Azure 服务”控件设置为“禁用”。 
 
@@ -290,7 +290,7 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md

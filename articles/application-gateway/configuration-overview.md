@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: d02bfa59d74a03ade3d6108a18bec12d9773f91e
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 82edadec7980e1a078705e2282b3afc6525fa4f0
+ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116923"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155540"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -53,7 +53,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 - 不能阻止出站 Internet 连接。 NSG 中的默认出站规则允许 Internet 连接。 建议：
 
   - 不要删除默认出站规则。
-  - 不要创建拒绝出站 Internet 连接的其他出站规则。
+  - 不要创建拒绝任何出站连接的其他出站规则。
 
 - 必须允许来自 **AzureLoadBalancer** 标记的流量。
 

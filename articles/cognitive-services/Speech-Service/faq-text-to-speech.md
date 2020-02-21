@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 07/05/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3a5ba5ab84762c5a67cabac7b620535448e1fe36
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: 95bb624fa60ac2826293bd3cf63f360b942a9c58
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966506"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77179335"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文本转语音常见问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "76966506"
 
 **问：如果想要使用标准语音模型，应从何处开始？**
 
-**答**：通过 HTTP 请求可以使用超过 10 种语言的 80 多种标准语音模型。 首先，获取[订阅密钥](https://docs.azure.cn/cognitive-services/speech-service/get-started)。 若要对预部署的语音模型进行 REST 调用，请参阅 [REST API](https://docs.azure.cn/cognitive-services/speech-service/rest-apis)。
+**答**：通过 HTTP 请求可以使用超过 10 种语言的 50 多种标准语音模型。 首先，获取[订阅密钥](https://docs.azure.cn/cognitive-services/speech-service/get-started)。 若要对预部署的语音模型进行 REST 调用，请参阅 [REST API](https://docs.azure.cn/cognitive-services/speech-service/rest-apis)。
 
 <!-- **Q: If I want to use a customized voice model, is the API the same as the one that's used for standard voices?** -->
 

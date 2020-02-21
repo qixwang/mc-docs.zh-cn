@@ -1,41 +1,33 @@
 ---
-title: 了解虚拟机规模集模板 | Microsoft Docs
-description: 了解如何创建虚拟机规模集的基本规模集模板
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: 了解虚拟机规模集模板
+description: 了解如何通过几个简单的步骤为 Azure 虚拟机规模集创建基本规模集模板。
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 04/26/2019
-ms.date: 05/16/2019
+ms.topic: conceptual
+ms.date: 02/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3c5b6734fb008de3687109a6773f162b78e2759e
-ms.sourcegitcommit: 10a858569fbfde321e71b649701ca3862bbc0178
+ms.openlocfilehash: 038239af6558209785769286643a32a193500d37
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917456"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128874"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虚拟机规模集模板
-[Azure Resource Manager 模板](/azure-resource-manager/resource-group-overview#template-deployment)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
+[Azure Resource Manager 模板](/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署成组的相关资源的好办法。 本系列教程演示如何创建基本规模集模板，以及如何修改此模板以满足各种场景。 所有示例都来自此 [GitHub 存储库](https://github.com/gatneil/mvss)。
 
 此模板简单易用。 有关更完整的规模集模板的示例，请参阅 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)，并搜索包含字符串 `vmss` 的文件夹。
 
 如果已能够熟练创建模板，可以跳到“后续步骤”部分，查看如何修改此模板。
 
 ## <a name="define-schema-and-contentversion"></a>定义 $schema 和 contentVersion
-首先，定义模板中的 `$schema` 和 `contentVersion`。 `$schema` 元素定义模板语言的版本，用于 Visual Studio 语法突出显示和类似的验证功能。 Azure 不使用 `contentVersion` 元素。 而是帮助跟踪模板版本。
+首先，定义模板中的 `$schema` 和 `contentVersion`。 `$schema` 元素定义模板语言的版本，用于 Visual Studio 语法突出显示和类似的验证功能。 Azure 不使用 `contentVersion` 元素。 但是，该元素可帮助你跟踪模板版本。
 
 ```json
 {
-  "$schema": "https://schema.management.chinacloudapi.cn/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
 
@@ -76,7 +68,7 @@ Resource Manager 模板还可用于定义稍后要在模板中使用的变量。
 ```
 
 ## <a name="specify-location"></a>指定位置
-若要指定虚拟网络的位置，请使用[资源管理器模板函数](../azure-resource-manager/resource-group-template-functions.md)。 必须将此函数括在引号和方括号中，如下所示：`"[<template-function>]"`。 在本例中，使用 `resourceGroup` 函数。 该函数不使用任何参数，返回 JSON 对象以及有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后此值会通过 `.location` 编入到该 JSON 对象的索引中，以便从该 JSON 对象中获取位置。
+若要指定虚拟网络的位置，请使用[资源管理器模板函数](../azure-resource-manager/templates/template-functions.md)。 必须将此函数括在引号和方括号中，如下所示：`"[<template-function>]"`。 在本例中，使用 `resourceGroup` 函数。 该函数不使用任何参数，返回 JSON 对象以及有关要将部署部署到的资源组的元数据。 资源组在部署时由用户进行设置。 然后此值会通过 `.location` 编入到该 JSON 对象的索引中，以便从该 JSON 对象中获取位置。
 
 ```json
        "location": "[resourceGroup().location]",
@@ -209,4 +201,4 @@ Resource Manager 模板还可用于定义稍后要在模板中使用的变量。
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

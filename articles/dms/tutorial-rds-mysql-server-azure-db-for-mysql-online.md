@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 RDS MySQL 联机迁移到 Azure Database for MySQL | Microsoft Docs
+title: 教程：将 RDS MySQL 联机迁移到 Azure Database for MySQL
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 RDS MySQL 到 Azure Database for MySQL 的联机迁移。
 services: dms
 author: WenJason
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 10/28/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 8d4d1659a8fd558feb443412095078152a8ff254
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+origin.date: 01/08/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: e13fd2f95153232c1f00ed18c8ea9d7f52586c64
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831304"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192470"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
@@ -42,7 +43,7 @@ ms.locfileid: "73831304"
 
 本文介绍如何从 RDS MySQL 实例联机迁移到 Azure Database for MySQL。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -56,8 +57,8 @@ ms.locfileid: "73831304"
 
 * 下载并安装 [MySQL **Employees** 示例数据库](https://dev.mysql.com/doc/employee/en/employees-installation.html)。
 * 创建 [Azure Database for MySQL](/mysql/quickstart-create-mysql-server-database-using-azure-portal) 的实例。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
-* 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-networks-nsg)一文。
 * 配置 [Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)（或 Linux 防火墙）以允许数据库引擎访问。 对于 MySQL 服务器，允许端口 3306 进行连接。
 
 > [!NOTE]
@@ -161,11 +162,11 @@ ms.locfileid: "73831304"
 
 4. 选择要在其中创建 Azure 数据库迁移服务实例的位置。
 
-5. 选择现有的 VNet，或新建一个 VNet。
+5. 选择现有虚拟网络或新建一个。
 
-    VNet 为 Azure 数据库迁移服务提供源 MySQL 实例和目标 Azure Database for MySQL 实例的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供源 MySQL 实例和目标 Azure Database for MySQL 实例的访问权限。
 
-    若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
 6. 选择定价层；对于此联机迁移，请务必选择“高级:4vCores”定价层。
 

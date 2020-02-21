@@ -1,28 +1,19 @@
 ---
-title: 教程 - 使用 Azure PowerShell 在规模集中安装应用程序 | Microsoft Docs
+title: 教程 - 使用 Azure PowerShell 在规模集中安装应用程序
 description: 了解如何使用自定义脚本扩展通过 Azure PowerShell 将应用程序安装到虚拟机规模集中
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 11/08/2018
-ms.date: 09/23/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 9eab97a7aeb92c0bfaf58ae9a264dde8de6eb074
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.openlocfilehash: 50d532ea29282e6e48609d3e350a062375719942
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673600"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128834"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>教程：使用 Azure PowerShell 在虚拟机规模集中安装应用程序
 
@@ -157,7 +148,7 @@ Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 
 ![IIS 中的基本网页](./media/tutorial-install-apps-powershell/running-iis.png)
 
-将 Web 浏览器保持打开，以便在下一步骤中可以看到更新的版本。
+让 Web 浏览器保持打开状态，以便在下一步骤中可以看到更新的版本。
 
 
 ## <a name="update-app-deployment"></a>更新应用部署
@@ -193,7 +184,7 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+若要删除规模集和其他资源，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -213,4 +204,4 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 > [!div class="nextstepaction"]
 > [自动缩放规模集](tutorial-autoscale-powershell.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: update metedata properties -->

@@ -1,24 +1,23 @@
 ---
-title: 使用 Transact-SQL (T-SQL) 创建和管理 Azure SQL 弹性数据库作业 | Microsoft Docs
+title: 使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 description: 使用 Transact-SQL (T-SQL) 通过弹性数据库作业跨多个数据库运行脚本。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 ms.author: v-jay
 author: WenJason
 ms.reviewer: sstein
-manager: digimobile
 origin.date: 01/25/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: d2ecdbe3182c198882a9b5e43f0a239bb690a12d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: e0d6dbad6db7ef9e9db6cc12a9c1a648c64ff4ac
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336463"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155711"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -476,7 +475,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 可以停止执行作业的日期。 schedule_end_time 为 DATETIME2，默认值为 9999-12-31 11:59:59.0000000。 
 
 [ **\@job_id =** ] job_id OUTPUT  
-分配给已成功创建的作业的作业标识号。 job_id 是类型为 uniqueidentifier 的输出变量。
+成功创建作业后分配给作业的作业标识号。 job_id 是类型为 uniqueidentifier 的输出变量。
 
 #### <a name="return-code-values"></a>返回代码值
 
@@ -624,7 +623,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 #### <a name="arguments"></a>参数
 
 [ **\@job_name =** ] 'job_name'  
-要向其添加步骤的作业的名称。 job_name 为 nvarchar(128)。
+要添加步骤的作业的名称。 job_name 为 nvarchar(128)。
 
 [ **\@step_id =** ] step_id  
 作业步骤的序列标识号。 步骤标识号从 1 开始连续递增。 如果某个现有的步骤已经有此 ID，则该步骤以及所有后续步骤的 ID 都会递增，于是这个新步骤就可以插入到序列中。 在未指定的情况下，step_id 会自动分配给步骤序列中的最后一个项。 step_id 为 int。
@@ -748,7 +747,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 #### <a name="arguments"></a>参数
 [ **\@job_name =** ] 'job_name'  
-步骤所属作业的名称。 job_name 为 nvarchar(128)。
+步骤所属的作业的名称。 job_name 为 nvarchar(128)。
 
 [ **\@step_id =** ] step_id  
 要修改的作业步骤的标识号。 必须指定 step_id 或 step_name。 step_id 为 int。
@@ -855,7 +854,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 #### <a name="arguments"></a>参数
 [ **\@job_name =** ] 'job_name'  
-要从其中删除步骤的作业的名称。 job_name 为 nvarchar(128)，没有默认值。
+从中删除步骤的作业的名称。 job_name 为 nvarchar(128)，没有默认值。
 
 [ **\@step_id =** ] step_id  
 要删除的作业步骤的标识号。 必须指定 step_id 或 step_name。 step_id 为 int。
@@ -899,7 +898,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 #### <a name="arguments"></a>参数
 [ **\@job_name =** ] 'job_name'  
-要从其中删除步骤的作业的名称。 job_name 为 nvarchar(128)，没有默认值。
+从中删除步骤的作业的名称。 job_name 为 nvarchar(128)，没有默认值。
 
 [ **\@job_execution_id =** ] job_execution_id OUTPUT  
 一个输出参数，将会为其分配作业执行操作的 ID。job_version 为 uniqueidentifier。
@@ -1162,10 +1161,10 @@ GO
 要删除其历史记录的作业的名称。 job_name 为 nvarchar(128)，默认值为 NULL。 必须指定 job_id 或 job_name，但不得二者同时指定。
 
 [ **\@job_id =** ] job_id  
- 要删除其记录的作业的作业标识号。 job_id 为 uniqueidentifier，默认值为 NULL。 必须指定 job_id 或 job_name，但不得二者同时指定。
+ 要删除其记录的作业的标识号。 job_id 为 uniqueidentifier，默认值为 NULL。 必须指定 job_id 或 job_name，但不得二者同时指定。
 
 [ **\@oldest_date =** ] oldest_date  
- 要保留在历史记录中的最旧记录。 oldest_date 为 DATETIME2，默认值为 NULL。 指定 oldest_date 后，sp_purge_jobhistory 仅删除比指定值更早的记录。
+ 历史记录中保留的最早记录。 oldest_date 为 DATETIME2，默认值为 NULL。 指定 oldest_date 后，sp_purge_jobhistory 仅删除比指定值更早的记录。
 
 #### <a name="return-code-values"></a>返回代码值
 0（成功）或 1（失败） 备注 可以通过目标组轻松地将作业的目标确定为数据库集合。
@@ -1202,7 +1201,7 @@ GO
 |[jobsteps](#jobsteps-view)     |     显示每项作业的当前版本中的所有步骤。    |
 |[jobstep_versions](#jobstep_versions-view)     |     显示每项作业的所有版本中的所有步骤。    |
 |[target_groups](#target_groups-view)     |      显示所有目标组。   |
-|[target_group_members](#target_groups_members-view)     |   显示所有目标组的所有成员。      |
+|[target_group_members](#target_group_members-view)     |   显示所有目标组的所有成员。      |
 
 
 ### <a name="job_executions-view"></a>job_executions 视图
@@ -1217,8 +1216,8 @@ GO
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
 |**job_id** |uniqueidentifier|  作业的唯一 ID。
-|**job_version**    |int    |作业的版本（每次修改作业时自动更新）。
-|**step_id**    |int|   步骤的唯一（就此作业来说）标识符。 NULL 指示这是父作业执行操作。
+|**job_version**    |int    |作业的版本（每次修改作业时都自动对其进行更新）。
+|**step_id**    |int|   步骤的唯一（是针对该作业的）标识符。 NULL 指示这是父作业执行操作。
 |**is_active**| bit |指示信息是处于活动状态还是非活动状态。 1 指示作业处于活动状态，0 指示作业处于非活动状态。
 |**lifecycle**|nvarchar(50)|指示作业状态的值：'Created'、'In Progress'、'Failed'、'Succeeded'、'Skipped'、'SucceededWithSkipped'|
 |**create_time**|   datetime2(7)|   作业的创建日期和时间。
@@ -1244,8 +1243,8 @@ GO
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
-|**job_version**    |int    |作业的版本（每次修改作业时自动更新）。|
-|description     |nvarchar(512)| 作业的说明。 enabled 为 bit    指示作业是已启用还是已禁用。 1 指示作业已启用，0 指示作业已禁用。|
+|**job_version**    |int    |作业的版本（每次修改作业时都自动对其进行更新）。|
+|description     |nvarchar(512)| 对作业的说明。 enabled 为 bit    指示作业是已启用还是已禁用。 1 指示作业已启用，0 指示作业已禁用。|
 |**schedule_interval_type** |nvarchar(50)   |指示何时执行作业的值：'Once'、'Minutes'、'Hours'、'Days'、'Weeks'、'Months'
 |**schedule_interval_count**|   int|    每次执行作业时，其间会出现的 schedule_interval_type 期间数。|
 |**schedule_start_time**    |datetime2(7)|  作业上次开始执行的日期和时间。|
@@ -1262,7 +1261,7 @@ GO
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
-|**job_version**    |int    |作业的版本（每次修改作业时自动更新）。|
+|**job_version**    |int    |作业的版本（每次修改作业时都自动对其进行更新）。|
 
 
 ### <a name="jobsteps-view"></a>jobsteps 视图
@@ -1275,8 +1274,8 @@ GO
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
-|**job_version**|   int|    作业的版本（每次修改作业时自动更新）。|
-|**step_id**    |int    |步骤的唯一（就此作业来说）标识符。|
+|**job_version**|   int|    作业的版本（每次修改作业时都自动对其进行更新）。|
+|**step_id**    |int    |步骤的唯一（是针对该作业的）标识符。|
 |**step_name**  |nvarchar(128)  |步骤的唯一（就此作业来说）名称。|
 |**command_type**   |nvarchar(50)   |要在作业步骤中执行的命令的类型。 就 v1 来说，值必须等于 'TSql'（默认设置）。|
 |**command_source** |nvarchar(50)|  命令的位置。 就 v1 来说，'Inline' 是默认值，也是唯一接受的值。|
@@ -1287,8 +1286,8 @@ GO
 |**initial_retry_interval_seconds**|    int |首次重试尝试之前的延迟。 默认值为 1。|
 |**maximum_retry_interval_seconds** |int|   重试尝试之间的最大延迟。 如果重试之间的延迟大于此值，则会将其削减到此值。 默认值为 120。|
 |**retry_interval_backoff_multiplier**  |real|  将要应用到重试延迟的乘数，前提是多个作业步骤执行尝试失败。 默认值为 2.0。|
-|**retry_attempts** |int|   在步骤失败的情况下可以使用的重试尝试次数。 默认值为 0，表示不允许重试尝试。|
-|**step_timeout_seconds**   |int|   两次重试尝试之间的时间（以分钟为单位）。 默认值为 0，表示时间间隔为 0 分钟。|
+|**retry_attempts** |int|   该步骤失败时要进行的重试次数。 默认值为 0，表示不允许重试尝试。|
+|**step_timeout_seconds**   |int|   两次重试之间的间隔时间（分钟）。 默认值为 0，表示时间间隔为 0 分钟。|
 |**output_type**    |nvarchar(11)|  命令的位置。 在当前的预览版中，'Inline' 是默认值，也是唯一接受的值。|
 |**output_credential_name**|    nvarchar(128)   |需要存储结果集时，用于连接到目标服务器的凭据的名称。|
 |**output_subscription_id**|    uniqueidentifier|   执行查询后，所得结果集的目标服务器\数据库的订阅的唯一 ID。|
@@ -1317,9 +1316,9 @@ GO
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
 
-### <a name="target_groups_members-view"></a>target_groups_members 视图
+### <a name="target_group_members-view"></a>target_group_members 视图
 
-[jobs].[target_groups_members]
+[jobs].[target_group_members]
 
 显示所有目标组的所有成员。
 
@@ -1333,7 +1332,7 @@ GO
 |**refresh_credential_name**    |nvarchar(128)  |用于连接到目标组成员的数据库范围的凭据的名称。|
 |subscription_id     |uniqueidentifier|  订阅的唯一 ID。|
 |**resource_group_name**    |nvarchar(128)| 目标组成员所在资源组的名称。|
-|**server_name**    |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 'SqlServer' 时指定。 |
+|server_name     |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 'SqlServer' 时指定。 |
 |**database_name**  |nvarchar(128)  |包含在目标组中的数据库的名称。 仅当 target_type 为 'SqlDatabase' 时指定。|
 |**elastic_pool_name**  |nvarchar(128)| 包含在目标组中的弹性池的名称。 仅当 target_type 为 'SqlElasticPool' 时指定。|
 |**shard_map_name** |nvarchar(128)| 包含在目标组中的分片映射的名称。 仅当 target_type 为 'SqlShardMap' 时指定。|

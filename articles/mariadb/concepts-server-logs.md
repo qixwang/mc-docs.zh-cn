@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 12/17/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 3067a48647eb5365a5d363154db7f5c7196cd59a
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+origin.date: 01/28/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: a6f335f06163766ddfaafc23730a91b9245a2c88
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776757"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192472"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的慢查询日志
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
@@ -44,13 +44,14 @@ ms.locfileid: "75776757"
 - **log_throttle_queries_not_using_indexes**：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
 - **log_output**：如果设置为“文件”，则允许将慢查询日志写入本地服务器存储和 Azure Monitor 诊断日志。 如果设置为“无”，则仅将慢查询日志写入 Azure Monitor 诊断日志。 
 
+> [!IMPORTANT]
+> 如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 ON 可能会影响 MariaDB 性能，因为对这些非索引表运行的所有查询都将写入到慢速查询日志。<br><br>
+> 如果计划在较长一段时间内记录慢速查询，建议将 `log_output` 设置为“None”。 如果设置为“File”，则这些日志将写入到本地服务器存储，并且可能会影响 MariaDB 性能。 
+
 有关慢查询日志参数的完整说明，请参阅 MariaDB [慢查询日志文档](https://mariadb.com/kb/en/library/slow-query-log-overview/)。
 
 ## <a name="diagnostic-logs"></a>诊断日志
-Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/resource-logs-overview.md)中的操作说明部分。
-
-> [!IMPORTANT]
-> 服务器日志的此诊断功能仅适用于“常规用途”和“内存优化”的[定价层](concepts-pricing-tiers.md)。
+Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/platform-logs-overview.md)中的操作说明部分。
 
 下表介绍了每个日志中的内容。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
@@ -82,5 +83,61 @@ Azure Database for MariaDB 集成了 Azure Monitor 诊断日志。 在 MariaDB �
 | `thread_id_s` | 线程 ID |
 | `\_ResourceId` | 资源 URI |
 
+## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的日志
+
+通过诊断日志将慢速查询日志传输到 Azure Monitor 日志后，可以进一步分析慢速查询。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
+
+- 特定服务器上超过 10 秒的查询
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```
+
+- 列出特定服务器上最长的 5 个查询
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | order by query_time_d desc
+    | take 5
+    ```
+
+- 按最小、最大、平均和标准偏差查询时间汇总特定服务器上的慢速查询
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
+    ```
+
+- 绘制特定服务器上的慢速查询的分布图
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- 显示启用了诊断日志的所有 MariaDB 服务器上超过 10 秒的查询
+
+    ```Kusto
+    AzureDiagnostics
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```    
+    
 ## <a name="next-steps"></a>后续步骤
-- [如何通过 Azure 门户配置和访问服务器日志](howto-configure-server-logs-portal.md)。
+- [如何通过 Azure 门户配置慢速查询日志](howto-configure-server-logs-portal.md)
+- [如何通过 Azure CLI 配置慢速查询日志](howto-configure-server-logs-cli.md)

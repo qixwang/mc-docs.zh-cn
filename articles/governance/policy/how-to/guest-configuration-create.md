@@ -3,14 +3,14 @@ title: 如何创建 Guest Configuration 策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux VM 的 Azure Policy Guest Configuration 策略。
 ms.author: v-tawe
 origin.date: 12/16/2019
-ms.date: 01/17/2020
+ms.date: 02/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 52f785b2178b55485f1b775b0ee803ce59c30968
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 9f122fbfdf8a6fd31ce9d98ba7d179ccd880fb0b
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123153"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112171"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建 Guest Configuration 策略
 
@@ -26,6 +26,9 @@ Guest Configuration 使用 [Desired State Configuration](https://docs.microsoft.
 ## <a name="add-the-guestconfiguration-resource-module"></a>添加 GuestConfiguration 资源模块
 
 若要创建 Guest Configuration 策略，必须添加资源模块。 此资源模块可以与本地安装的 PowerShell 一起使用，也可以与 [Azure PowerShell Core Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell-core)一起使用。
+
+> [!NOTE]
+> 尽管 **GuestConfiguration** 模块在上述环境中工作，但用于编译 DSC 配置的步骤必须在 Windows PowerShell 5.1 中完成。
 
 ### <a name="base-requirements"></a>基本要求
 
@@ -61,6 +64,12 @@ Guest Configuration 使用 **GuestConfiguration** 资源模块创建 DSC 配置�
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Guest Configuration 自定义资源的要求
 
 当 Guest Configuration 审核某个计算机时，它首先会运行 `Test-TargetResource` 来确定该计算机是否处于正常状态。 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。 如果配置中任一资源的布尔值为 `$false`，则提供程序将运行 `Get-TargetResource`。 如果布尔值为 `$true`，则不调用 `Get-TargetResource`。
+
+#### <a name="configuration-requirements"></a>配置要求
+
+来宾配置使用自定义配置的唯一要求是，配置名称在所使用的地方保持一致。 此名称要求包括：内容包的 .zip 文件的名称、内容包内存储的 MOF 文件中的配置名称，以及在资源管理器模板中用作来宾分配名称的配置名称。
+
+#### <a name="get-targetresource-requirements"></a>Get-TargetResource 要求
 
 函数 `Get-TargetResource` 对 Guest Configuration 提出了特殊的要求，而 Windows Desired State Configuration 并不需要满足这些要求。
 
@@ -169,42 +178,6 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 完成的包必须存储在可由托管虚拟机访问的位置。 例如，存储在 GitHub 存储库、Azure 存储库或 Azure 存储中。 如果你不希望公开该包，可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 还可以针对专用网络中的计算机实施[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，不过，这种配置仅适用于访问包，而不适用于与服务之间的通信。
-
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>处理 Guest Configuration 包中的机密
-
-在 Azure Policy Guest Configuration 中，管理运行时使用的机密的最佳方式是将其存储在 Azure Key Vault 中。 此设计将在自定义 DSC 资源中实施。
-
-1. 首先，在 Azure 中创建用户分配的托管标识。
-
-   计算机将使用该标识来访问 Key Vault 中存储的机密。 有关详细步骤，请参阅[使用 Azure PowerShell 创建、列出或删除用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。
-
-1. 创建 Key Vault 实例。
-
-   有关详细步骤，请参阅[设置和检索机密 - PowerShell](../../../key-vault/quick-create-powershell.md)。
-   分配对该实例的权限，使用户分配的标识能够访问 Key Vault 中存储的机密。 有关详细步骤，请参阅[设置和检索机密 - .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)。
-
-1. 将用户分配的标识分配到计算机。
-
-   有关详细步骤，请参阅[使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)。
-   使用 Azure 资源管理器通过 Azure Policy 大规模分配此标识。 有关详细步骤，请参阅[使用模板在 Azure VM 上配置 Azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)。
-
-1. 最后，在自定义资源中，使用前面生成的客户端 ID 通过计算机提供的令牌访问 Key Vault。
-
-   可将 Key Vault 实例的 `client_id` 和 URL 作为[属性](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递给资源，这样，就不需要为多个环境更新资源，也不需要因为更改了值而更新资源。
-
-可在自定义资源中使用以下代码示例，以使用用户分配的标识从 Key Vault 检索机密。 从请求返回到 Key Vault 的值为纯文本格式。 最佳做法是将其存储在某个 credential 对象中。
-
-```powershell
-# the following values should be input as properties
-$client_id = 'e3a78c9b-4dd2-46e1-8bfa-88c0574697ce'
-$keyvault_url = 'https://keyvaultname.vault.azure.cn/secrets/mysecret'
-
-$access_token = ((Invoke-WebRequest -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=$client_id&resource=https%3A%2F%2Fvault.azure.cn" -Method GET -Headers @{Metadata='true'}).Content | ConvertFrom-Json).access_token
-
-$value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Method GET -Headers @{Authorization="Bearer $access_token"}).content | convertfrom-json).value |  ConvertTo-SecureString -asplaintext -force
-
-$credential = New-Object System.Management.Automation.PSCredential('secret',$value)
-```
 
 ## <a name="test-a-guest-configuration-package"></a>测试 Guest Configuration 包
 

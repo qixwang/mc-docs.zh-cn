@@ -6,22 +6,22 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
+ms.author: memildin
 author: WenJason
-ms.author: v-jay
 manager: digimobile
 ms.reviewer: vanto
 origin.date: 03/31/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: eb48d7c5c807790bede1eebb513f295d4415557d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: cf29fd9559e2bcc5fcab24b6250021f79ac8844d
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336447"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155590"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
-高级数据安全是高级 SQL 安全功能的统一程序包。 它包括用于发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个转到位置。
+高级数据安全是高级 SQL 安全功能的统一包。 它包括用于发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个转到位置。
 
 ## <a name="overview"></a>概述
 

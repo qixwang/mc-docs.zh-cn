@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure CLI 创建和管理 Azure Database for MariaDB VNet 服务终结点和规则 | Microsoft Docs
+title: 管理 VNet 终结点 - Azure CLI - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for MariaDB VNet 服务终结点和规则。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-origin.date: 02/26/2019
-ms.date: 09/16/2019
-ms.openlocfilehash: 16715ce7c6fb798c508dc8f714bddea7793d487e
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+origin.date: 12/02/2019
+ms.date: 02/17/2020
+ms.openlocfilehash: 041ab7f818c3bf3894dc24a5bdd48c2373b02179
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857302"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192469"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MariaDB VNet 服务终结点
 
 虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MariaDB 服务器。 使用便捷的 Azure 命令行接口 (CLI) 命令，可创建、更新、删除、列出和显示 VNet 服务终结点和规则，用于管理服务器。 若要概览 Azure Database for MariaDB VNet 服务终结点（包括限制），请参阅 [Azure Database for MariaDB 服务器 VNet 服务终结点](concepts-data-access-security-vnet.md)。 在 Azure Database for MariaDB 的所有支持区域中，VNet 服务终结点均可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - 安装 [Azure CLI](/cli/install-azure-cli)，或在浏览器中使用 Azure Cloud Shell。
 - [Azure Database for MariaDB 服务器和数据库](quickstart-create-mariadb-server-database-using-azure-cli.md)。
@@ -133,4 +133,4 @@ az group delete --name myresourcegroup
 -->
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

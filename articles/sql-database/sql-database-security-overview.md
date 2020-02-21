@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab, emlisa
 origin.date: 05/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: e758c820c849cc3b3bac5e6342630c2b3b0f3d60
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/17/2020
+ms.openlocfilehash: 27ad3469e8eaf36ec222dd26e6fc2744cde2ea95
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336023"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155723"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -74,7 +74,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 ### <a name="row-level-security"></a>行级别安全性
 
-行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 行级别安全性也可用于实现基于自定义标签的安全概念。 有关详细信息，请参阅[行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)。
+行级别安全性使客户可以基于执行查询的用户的特性（例如，组成员身份或执行上下文）来控制对数据库表进行的访问。 行级别安全性也可用于实现基于自定义标签的安全概念。 有关详细信息，请参阅[行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
@@ -82,7 +82,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 SQL 数据库通过提供审核和威胁检测功能来保护客户数据。
 
-### <a name="sql-auditing"></a>SQL 审核
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Azure Monitor 日志和事件中心中的 SQL 审核
 
 SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到客户所有的 Azure 存储帐户中的审核日志，帮助用户保持符合安全标准。 用户可以通过审核监视正在进行的数据库活动，以及分析和调查历史活动，以标识潜在威胁或可疑的滥用行为和安全违规。 有关详细信息，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。  
 
@@ -139,7 +139,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ### <a name="data-discovery--classification"></a>数据发现和分类
 
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、个人数据等）并进行分类，可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 发现最敏感的数据（业务/财务、医疗保健、个人数据等）并进行分类，可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
 
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 - 控制对包含高度敏感数据的数据库的访问并增强其安全性。

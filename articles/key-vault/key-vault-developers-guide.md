@@ -7,14 +7,14 @@ manager: rkarlin
 ms.service: key-vault
 ms.topic: conceptual
 origin.date: 02/11/2019
-ms.date: 10/30/2019
+ms.date: 02/17/2019
 ms.author: v-tawe
-ms.openlocfilehash: 34c6f032186887410e115fced7aa22103f00c638
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 1d09c68e340f672647789c525a32d7bb5079e48e
+ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426042"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112168"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "73426042"
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
 - 自 2016 年 9 月版本的 Key Vault 发布起，应用程序现在可以管理 Key Vault 证书。 有关详细信息，请参阅 [About keys, secrets, and certificates](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)（关于密钥、机密和证书）。
 
-有关 Azure 密钥保管库的更多常规信息，请参阅[什么是密钥保管库](key-vault-overview.md)。
+有关 Azure Key Vault 的更多常规信息，请参阅[什么是 Key Vault](key-vault-overview.md)。
 
 ## <a name="public-previews"></a>公共预览版
 
@@ -85,7 +85,7 @@ ms.locfileid: "73426042"
 
 [适用于 Key Vault 的 Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault)
 
-### <a name="quick-start-guides"></a>快速入门指南
+### <a name="quickstart-guides"></a>快速入门指南
 
 - [Create Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)（创建 Key Vault）
 - [Getting started with Key Vault in Node.js](https://github.com/Azure-Samples/key-vault-node-getting-started)（Node.js 中的 Key Vault 入门）
@@ -99,13 +99,13 @@ ms.locfileid: "73426042"
 
 ## <a name="how-tos"></a>操作方法
 
-以下文章和方案提供了特定于任务的指导，以便使用 Azure Key Vault：
+以下文章和方案提供了特定于任务的指导，方便用户使用 Azure Key Vault：
 
 - [订阅移动后更改密钥保管库租户 ID](key-vault-subscription-move-fix.md) - 将 Azure 订阅从租户 A 移到租户 B 时，租户 B.中的主体（用户和应用程序）无法访问现有的密钥保管库。使用本指南解决此问题。
 - [访问防火墙后面的密钥保管库](key-vault-access-behind-firewall.md) - 若要访问密钥保管库，密钥保管库客户端应用程序需要能够访问多个终结点才能使用各种功能。
-- [如何在部署期间传递安全值（如密码）](../azure-resource-manager/resource-manager-keyvault-parameter.md) - 需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure Key Vault 中的机密，并在其他资源管理模板中引用该值。
+- [如何在部署期间传递安全值（如密码）](../azure-resource-manager/templates/key-vault-parameter.md) - 需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure Key Vault 中的机密，并在其他资源管理模板中引用该值。
 - [如何使用 Key Vault，以便通过 SQL Server 进行可扩展的密钥管理](https://msdn.microsoft.com/library/dn198405.aspx) - 适用于 Azure Key Vault 的 SQL Server 连接器允许 SQL Server 和 VM 中的 SQL 将 Azure Key Vault 服务用作可扩展密钥管理 (EKM) 提供程序，以便保护其针对应用程序链接的加密密钥；透明数据加密、备份加密和列级加密。
-- [如何将证书从密钥保管库部署到虚拟机](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - 在 Azure 虚拟机上运行的云应用程序需要证书。 现在，要如何将此证书部署到此 VM 中呢？
+- [如何将 Key Vault 中的证书部署到 VM](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - 在 Azure 上的 VM 中运行的云应用程序需要一个证书。 现在，如何将此证书部署到此 VM 中？
 - [如何使用端到端密钥轮换和审核设置 Key Vault](key-vault-key-rotation-log-monitoring.md) - 逐步介绍如何设置 Azure Key Vault 的密钥轮换和审核。
 - [通过 Key Vault 部署 Azure Web 应用证书]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)提供有关部署作为[应用服务证书](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)产品的一部分存储在 Key Vault 中的证书的分步说明。
 - [向多个应用程序授予 Key Vault 的访问权限](key-vault-group-permissions-for-apps.md) Key Vault 访问控制策略最多支持 1024 个条目。 但是，可以创建一个 Azure Active Directory 安全组。 将所有关联的服务主体添加到此安全组，并为此安全组授予密钥保管库的访问权限。

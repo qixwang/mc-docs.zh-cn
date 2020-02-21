@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: bcf7e5957229b35eaacceec187145a40417d2aa0
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 15f5c5d896298c18d272f1b1f3b34d78f38b7b57
+ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884885"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77128867"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
-Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
 
 本文介绍如何添加或更改共同管理员和服务管理员角色，以及如何查看帐户管理员。
 
@@ -53,6 +53,8 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
     ![添加协同管理员的屏幕截图](./media/classic-administrators/add-coadmin.png)
 
 ## <a name="add-a-guest-user-as-a-co-administrator"></a>将来宾用户添加为共同管理员
+
+### <a name="differences-for-guest-users"></a>来宾用户的差异
 
 与具有“共同管理员”角色的成员用户相比，已分配“共同管理员”角色的来宾用户可能会看到一些差异。 假设出现了下面这种情景：
 
@@ -91,29 +93,11 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 只有帐户管理员可以更改订阅的服务管理员。 默认情况下，当你注册 Azure 订阅时，服务管理员即是帐户管理员。 具有帐户管理员角色的用户无权访问 Azure 门户。 具有服务管理员角色的用户拥有 Azure 门户的完全访问权限。 如果帐户管理员和服务管理员是同一个用户，而你将服务管理员更改为其他用户，则帐户管理员会失去 Azure 门户的访问权限。 但是，帐户管理员可始终使用帐户中心将服务管理员重新更改为自己。
 
-可通过两种方式更改服务管理员。 可以在 **Azure 门户**或**帐户中心**内进行更改。
-
-### <a name="azure-portal"></a>Azure 门户
-
-1. 请查看服务管理员变更限制，确保自己的方案受支持。
-
-1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.cn)。
-
-1. 打开[订阅](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
-
-1. 单击“属性”。 
-
-    ![显示帐户管理员的屏幕截图](./media/classic-administrators/account-admin.png)
-
-1. 在顶部单击“服务管理员”打开“服务管理”窗格。 
-
-    如果“服务管理员”按钮已禁用，则表示你没有相应的权限。 只有充当帐户管理员的用户可以更改服务管理员。
-
-1. 选择新的服务管理员，然后单击“保存”。 
+请按照这些步骤在“帐户中心”  更改服务管理员。
 
 ### <a name="account-center"></a>帐户中心
 
-1. 请查看服务管理员变更限制，确保自己的方案受支持。
+1. 请查看[服务管理员变更限制](#limitations-for-changing-the-service-administrator)，确保自己的方案受支持。
 
 1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.cn/subscriptions)。
 

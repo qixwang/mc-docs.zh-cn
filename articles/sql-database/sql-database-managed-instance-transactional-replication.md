@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库的事务复制 | Microsoft Docs
+title: 事务复制
 description: 了解如何对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库使用 SQL Server 事务复制。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 02/08/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: 5aeaf7579ebf2fab4f8626feb3232cec40859b37
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.date: 02/17/2020
+ms.openlocfilehash: dd7a8fbfcc0af47c84aaece62ce478e57d71ad2b
+ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70372966"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155702"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
@@ -81,13 +81,14 @@ ms.locfileid: "70372966"
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>实例数据库和本地系统的可支持性矩阵
   实例数据库的复制可支持性矩阵与本地 SQL Server 的相同。 
   
-  | **发布者**   | **分发服务器** | **订阅服务器** |
+| **发布者**   | **分发服务器** | **订阅服务器** |
 | :------------   | :-------------- | :------------- |
-| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
-| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
-| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
-| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
-| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
+| SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2019 <br/>SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2019 <br/> SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |  SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>要求
@@ -96,11 +97,13 @@ ms.locfileid: "70372966"
 - 复制功能使用的工作目录的 Azure 存储帐户共享。 
 - 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
 - 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。
+- 所有类型的复制参与者（发布服务器、分发服务器、拉取订阅服务器和推送订阅服务器）都可以放置在托管实例上，但发布服务器和分发服务器必须同时在云中或同时在本地。
+- 如果发布服务器、分发服务器和/或订阅服务器位于不同的虚拟网络中，则必须在每个实体之间建立 VPN 对等互连，使发布服务器与分发服务器之间存在 VPN 对等互连，并且/或者分发服务器与订阅服务器之间存在 VPN 对等互连。 
 
 
 >[!NOTE]
 > - 当分发服务器为实例数据库且订阅服务器位于本地时，如果阻止出站网络安全组 (NSG) 端口 445，则会在连接到 Azure 存储文件时遇到错误 53。 [更新 vNet NSG](/storage/files/storage-troubleshoot-windows-file-connection-problems) 以解决此问题。 
-> - 如果托管实例上的发布服务器和分发服务器数据库使用[自动故障转移组](sql-database-auto-failover-group.md)，则托管实例管理员必须[删除旧主节点上的所有发布内容，并在故障转移后在新的主节点上重新配置发布内容](sql-database-managed-instance-transact-sql-information.md#replication)。
+
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
 
@@ -138,13 +141,52 @@ ms.locfileid: "70372966"
  
 在此配置中，Azure SQL 数据库（单一数据库、共用数据库和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于单一数据库或共用数据库上，则它必须处于推送模式。  
 
+## <a name="with-failover-groups"></a>使用故障转移组
+
+如果对[故障转移组](sql-database-auto-failover-group.md)中的**发布服务器**或**分发服务器**实例启用了异地复制，则托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移后，在新的主节点上重新配置这些发布内容。 在此方案中，需要执行以下活动：
+
+1. 停止数据库上运行的所有复制作业（如果有）。
+2. 通过在发布服务器数据库上运行以下脚本，删除发布服务器中的订阅元数据：
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. 删除订阅服务器中的订阅元数据。 对订阅服务器实例上的订阅数据库运行以下脚本：
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.chinacloudapi.cn>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. 通过在已发布的数据库中运行以下脚本，强制删除发布服务器中的所有复制对象：
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. 强制删除原始主实例中的旧分发服务器（如果故障回复到曾经具有分发服务器的旧主实例）。 在旧的分发服务器托管实例中的 master 数据库上运行以下脚本：
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
+
+如果对故障转移组中的**订阅服务器**实例启用了异地复制，则应将发布配置为连接到订阅服务器托管实例的故障转移组侦听器终结点。 发生故障转移时，托管实例管理员执行的后续操作取决于发生的故障转移类型： 
+
+- 如果在不丢失数据的情况下进行故障转移，则故障转移后复制将继续工作。 
+- 如果在丢失数据的情况下进行故障转移，复制也能正常工作。 它会再次复制丢失的更改。 
+- 如果在丢失数据的情况下进行故障转移，但数据丢失发生在分发数据库保留期以外，则托管实例管理员需要重新初始化订阅数据库。 
 
 ## <a name="next-steps"></a>后续步骤
 
-1. [配置两个托管实例之间的复制](replication-with-sql-database-managed-instance.md)。 
-1. [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
-1. 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.chinacloudapi.cn`）并使用 Azure SQL 数据库名称作为目标数据库（例如 **Adventureworks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
-1. 了解[托管实例的事务复制限制](sql-database-managed-instance-transact-sql-information.md#replication)
+- [配置 MI 发布服务器与订阅服务器之间的复制](replication-with-sql-database-managed-instance.md)
+- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
+- 使用 Azure SQL 数据库服务器名称作为订阅服务器（例如 `N'azuresqldbdns.database.chinacloudapi.cn`）并使用 Azure SQL 数据库名称作为目标数据库（例如 **Adventureworks**）来[创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
+
+
+有关配置事务复制的详细信息，请参阅以下教程：
 
 
 

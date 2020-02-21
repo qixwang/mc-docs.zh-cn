@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 Oracle 联机迁移到 Azure Database for PostgreSQL | Microsoft Docs
+title: 教程：将 Oracle 联机迁移到 Azure Database for PostgreSQL
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务将本地或虚拟机中的 Oracle 联机迁移到 Azure Database for PostgreSQL。
 services: dms
 author: WenJason
@@ -8,16 +9,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 09/10/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 7fecdcd93a35ea9a0e13256b14c703429cf2c928
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+origin.date: 01/24/2020
+ms.date: 02/17/2020
+ms.openlocfilehash: f5b5b6edb90a1b3b55d8883fb00b37b9759df6d9
+ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831431"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192471"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 
@@ -43,30 +44,31 @@ ms.locfileid: "73831431"
 
 本文介绍如何从 Oracle 联机迁移到 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
 * 下载并安装 [Oracle 11g 发行版 2（Standard Edition、Standard Edition One 或 Enterprise Edition）](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)。
 * 从[此处](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)下载示例 **HR** 数据库。
-* 在 [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) 或 [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf) 中下载并安装 ora2pg。
+* 下载 ora2pg 并[将其安装在 Windows 或 Linux 上](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)。
 * [在 Azure Database for PostgreSQL 中创建实例](/postgresql/quickstart-create-server-database-portal)。
 * 参考[此文档](/postgresql/tutorial-design-database-using-azure-portal)中的说明连接到该实例并创建数据库。
-* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络 (VNet)，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建 VNet 的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](/expressroute/expressroute-introduction) 或 [VPN](/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
   > [!NOTE]
-  > 在设置 VNet 期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+  > 在设置虚拟网络期间，如果将 ExpressRoute 与 Azure 的网络对等互连一起使用，请将以下服务[终结点](/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网：
+  >
   > * 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
   > * 存储终结点
   > * 服务总线终结点
   >
   > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 请确保 VNet 网络安全组规则 (NSG) 未阻止 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-network-vnet-plan-design-arm)一文。
+* 确保虚拟网络网络安全组 (NSG) 规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 Oracle 服务器（默认使用 TCP 端口 1521）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNet 子网范围。
+* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 启用对源 Oracle 数据库的访问。
 
   > [!NOTE]
@@ -173,7 +175,7 @@ ms.locfileid: "73831431"
 
 大多数客户会花费相当多的时间来审阅评估报告以及考虑自动和手动转换工作量。
 
-若要配置并运行 ora2pg 来创建评估报告，请参阅  [有关从 Oracle 迁移到 Azure Database for PostgreSQL 的 Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)中的“迁移前：评估”部分。 [此处](http://ora2pg.darold.net/report.html)提供了一份示例 ora2pg 评估报告用于参考。
+若要配置并运行 ora2pg 来创建评估报告，请参阅  [有关从 Oracle 迁移到 Azure Database for PostgreSQL 的 Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)中的“迁移前：评估”部分。 [此处](https://ora2pg.darold.net/report.html)提供了一份示例 ora2pg 评估报告用于参考。
 
 ## <a name="export-the-oracle-schema"></a>导出 Oracle 架构
 
@@ -197,7 +199,7 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 在 Azure 数据库迁移服务中开始迁移管道之前，可以选择转换 Oracle 表架构、存储过程、包和其他数据库对象，通过使用 ora2pg 使它们与 Postgres 兼容。 有关如何使用 ora2pg 的详细说明，请参阅以下链接：
 
-* [在 Windows 上安装 ora2pg](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [在 Windows 上安装 ora2pg](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
 * [Oracle 到 Azure PostgreSQL 迁移指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
 Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访问已连接 Oracle 源中的表架构，并在 Azure Database for PostgreSQL 中创建一个兼容的表架构。 请确保在 Azure 数据库迁移服务完成创建架构和移动数据的操作后，在 Azure Database for PostgreSQL 中验证和检查架构格式。
@@ -271,11 +273,11 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
   
 3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称  。
 
-4. 选择现有的 VNet，或新建一个 VNet。
+4. 选择现有虚拟网络或新建一个。
 
-    VNet 为 Azure 数据库迁移服务提供源 Oracle 和目标 Azure Database for PostgreSQL 实例的访问权限。
+    虚拟网络为 Azure 数据库迁移服务提供源 Oracle 和目标 Azure Database for PostgreSQL 实例的访问权限。
 
-    若要详细了解如何在 Azure 门户中创建 VNet，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+    有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
 
 5. 选择定价层。
 
