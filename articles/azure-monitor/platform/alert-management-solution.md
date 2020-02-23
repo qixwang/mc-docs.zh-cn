@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 origin.date: 01/19/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0b697a0407ce3f6a79ef3da6ee2e5503e4705a08
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: a520a93448332aae2e50fb3c190531287be60784
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730044"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497465"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "73730044"
 
 警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../../azure-monitor/platform/alerts-overview.md)或是[从 Nagios 或 Zabbix 导入](../../azure-monitor/learn/quick-collect-linux-computer.md)的源。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 解决方案处理 Log Analytics 存储库中具有 Alert  类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
 - 对于 Log Analytics 警报，[创建警报规则](../../azure-monitor/platform/alerts-overview.md)以直接在存储库中创建警报记录。
@@ -42,6 +42,7 @@ ms.locfileid: "73730044"
 
 * Azure System Center Advisor 警报管理 (Microsoft.IntelligencePacks.AlertManagement)
 
+
 ## <a name="data-collection"></a>数据收集
 ### <a name="agents"></a>代理
 下表介绍了该解决方案支持的连接的源。
@@ -50,6 +51,7 @@ ms.locfileid: "73730044"
 |:--- |:--- |:--- |
 | [Windows 代理](agent-windows.md) | 否 |直接 Windows 代理不会生成警报。  可以通过从 Windows 代理收集的事件和性能数据来创建 Log Analytics 警报。 |
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
+| System Center Operations Manager 管理组 |是 |Operations Manager 代理上生成的警报传送到管理组，并转发给 Log Analytics。<br><br>不需要从 Operations Manager 代理直接连接到 Log Analytics。 警报数据从管理组转发到 Log Analytics 存储库。 |
 
 
 ### <a name="collection-frequency"></a>收集频率

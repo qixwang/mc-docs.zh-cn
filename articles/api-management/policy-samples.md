@@ -12,28 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: sample
 origin.date: 10/31/2017
-ms.date: 07/16/2018
+ms.date: 02/24/2020
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: 4ec623b24a567ad22c8ad61535bdb26f396f0985
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 4902942d3516765c5e24cc2b931c1355154c14e4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652722"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428065"
 ---
 # <a name="api-management-policy-samples"></a>API 管理策略示例
 
 [策略](api-management-howto-policies.md)是一项强大的系统功能，可让发布者通过配置更改 API 的行为。 策略是一组语句，在请求或响应 API 时按顺序执行。 下表包含示例链接，并提供每个示例的简要说明。
 
 |||
-|---|---|
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |**入站策略**||
 |[添加 Forwarded 标头，使后端 API 能够构造正确的 URL](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) |演示如何在入站请求中添加 Forwarded 标头，使后端 API 能够构造正确的 URL。|
 |[添加包含相关 ID 的标头](./policies/add-correlation-id.md?toc=api-management/toc.json) |演示如何将包含相关 ID 的标头添加到入站请求。|
 |[将功能添加到后端服务并缓存响应](./policies/cache-response.md?toc=api-management/toc.json) |演示如何将功能添加到后端服务。 例如，接受位置的名称而不是天气预报 API 中的纬度和经度。|
 |[基于 JWT 声明授权访问权限](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json) |演示如何基于 JWT 声明授予对 API 中特定 HTTP 方法的访问权限。|
 | [使用外部授权者授权请求](./policies/authorize-request-using-external-authorizer.md)                                                   | 演示如何使用外部授权者保护 API 访问。                                                                                                                                                               |
+| [使用 Google OAuth 令牌授予访问权限](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | 演示如何使用 Google 作为 OAuth 令牌提供程序授予对终结点的访问权限。                                                                                                                                    |
 |[生成共享访问签名并将请求转发到 Azure 存储](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |演示如何使用表达式生成[共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)并使用 rewrite-uri 策略将请求转发到 Azure 存储。 |
 |[从 AAD 获取 OAuth2 访问令牌并将其转发到后端](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json) |提供一个示例用于演示如何使用 OAuth2 在网关与后端之间授权。 该示例演示如何从 AAD 获取访问令牌并将其转发到后端。|
 |[使用发送请求策略从 SAP 网关获取 X-CSRF 令牌](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json) |演示如何实现许多 API 所用的 X-CSRF 模式。 此示例特定于 SAP 网关。 |

@@ -1,25 +1,16 @@
 ---
 title: 在 Azure 中使用 Visual Studio 创建你的第一个函数
 description: 使用 Visual Studio 创建并发布一个 HTTP 触发的 Azure 函数。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: gwallace
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
-origin.date: 07/19/2019
-ms.date: 09/06/2019
-ms.author: v-junlch
+ms.date: 02/18/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: db1676450338ea7d8056a8c8bdf0e0c50a9ced02
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.openlocfilehash: aaae95b5802b5046d9b7c9a33545727fd2780a84
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70805741"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494521"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
@@ -29,7 +20,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须先安装 [Visual Studio 2019](/downloads/)。 确保还安装了 **Azure 开发**工作负荷。
 
@@ -41,7 +32,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样本代码的类。 方法中的 `FunctionName` 属性设置函数的名称，默认情况下为 `HttpTrigger`。 `HttpTrigger` 属性指定该函数将由某个 HTTP 请求触发。 样本代码发送 HTTP 响应，其中包含请求正文或查询字符串中的值。
+Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样本代码的类。 方法中的 `FunctionName` 属性设置函数的名称，默认情况下为 `Function1`。 `HttpTrigger` 属性指定该函数将由某个 HTTP 请求触发。 样本代码发送 HTTP 响应，其中包含请求正文或查询字符串中的值。
 
 通过将适当的属性应用于方法，可以使用输入和输出绑定来扩展函数的功能。 有关详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)的[触发器和绑定](functions-dotnet-class-library.md#triggers-and-bindings)部分。
 

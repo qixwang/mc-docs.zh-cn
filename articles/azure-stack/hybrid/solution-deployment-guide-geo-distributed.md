@@ -2,23 +2,20 @@
 title: 使用 Azure 和 Azure Stack Hub 通过异地分布式应用定向流量
 description: 了解如何使用 Azure 和 Azure Stack Hub 创建异地分布式应用解决方案，以将流量定向到特定的终结点。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: e901c8b610165d1ddfcbdc2d59e20a438b0f28b4
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 6928c5bcf744803362f8979a5a5e4352a6e55a0f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624218"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540692"
 ---
 # <a name="create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 创建异地分布式应用解决方案用于定向流量
-
-*适用于：Azure Stack Hub 集成系统和 Azure Stack Hub 开发工具包*
 
 了解如何根据各种指标，使用异地分布式应用模式将流量定向到特定的终结点。 使用基于地理位置的路由和终结点配置创建流量管理器配置文件可确保根据区域要求、企业与国际法规和数据需求将信息路由到终结点。
 
@@ -80,7 +77,7 @@ ms.locfileid: "75624218"
 > - 将应用生成指向多个云目标。
 > - 管理和配置 CD 过程。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 需要 Azure 订阅并安装 Azure Stack Hub。
 
@@ -252,7 +249,7 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 
 若要将实时站点及其 DNS 域名迁移到应用服务，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](/app-service/manage-custom-dns-migrate-domain)。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 若要完成此解决方案：
 
@@ -360,7 +357,10 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 > - 为应用实施 HTTPS。
 > - 使用脚本自动执行 SSL 证书绑定。
 
-### <a name="prerequisites"></a>先决条件
+> [!Note]  
+> 如果需要，请在 Azure 门户中获取客户 SSL 证书并将其绑定到 Web 应用。 有关详细信息，请参阅[应用服务证书教程](/app-service/configure-ssl-certificate)。
+
+### <a name="prerequisites"></a>必备条件
 
 若要完成此解决方案：
 

@@ -9,12 +9,12 @@ origin.date: 09/24/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 4297bfa1816f7db43579eb5a8fb3887c6becdc64
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: da5765383fd4c25870c58ddc0847a02a880dc061
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838916"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497418"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 
@@ -78,7 +78,7 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
     } 
     ``` 
 
-2. 在命令提示符窗口中，发布指标数据： 
+1. 在命令提示符窗口中，发布指标数据： 
    - **azureRegion**。 必须与你要为其发布指标的资源的部署区域相匹配。 
    - **resourceID**。  你要跟踪其指标的 Azure 资源的资源 ID。  
    - **AccessToken**。 粘贴你之前获取的令牌。
@@ -86,8 +86,8 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.cn/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-3. 更改 JSON 文件中的时间戳和值。 
-4. 多次重复前两个步骤，以便获得几分钟的数据。
+1. 更改 JSON 文件中的时间戳和值。 
+1. 多次重复前两个步骤，以便获得几分钟的数据。
 
 ## <a name="troubleshooting"></a>故障排除 
 如果在过程的某个部分中收到错误消息，请考虑使用以下故障排除信息：

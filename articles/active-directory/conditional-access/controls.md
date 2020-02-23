@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64b7a5b2e001e0a7f5b62832ecb9a098ad2f7d05
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 9f20dacf2aacb0408e61a3d41770c5142adcc8b5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859295"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540043"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
@@ -72,7 +72,7 @@ ms.locfileid: "75859295"
 由于员工使用移动设备执行个人和工作任务，因此可能需要能够保护设备访问的公司数据，即使这些设备不受你管理，也不例外。
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据，而不受任何移动设备管理 (MDM) 解决方案的影响。
 
-使用应用保护策略时，可以限制对那些已经向 Azure AD 报告已经收到 [Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)的客户端应用程序的访问。 例如，可以限制为只有设置了 Intune 应用保护策略的 Outlook 应用才能访问 Exchange Outlook。 需要应用保护策略的条件访问策略亦称为[基于应用保护的条件访问策略](app-protection-based-conditional-access.md)。 
+使用应用保护策略时，可以限制对那些已经向 Azure AD 报告已经收到 [Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)的客户端应用程序的访问。 例如，可以限制为只有设置了 Intune 应用保护策略的 Outlook 应用才能访问 Exchange Outlook。 
 
 你的设备必须先注册到 Azure AD，然后才能将应用程序标记为受策略保护。
 

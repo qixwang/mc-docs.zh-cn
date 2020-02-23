@@ -9,19 +9,21 @@ ms.topic: conceptual
 origin.date: 01/28/2018
 ms.date: 9/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: eec717778137692d651612923159f4d3627de517
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: bf2bb68981892f3491cebf5b1a4980b3b2b715e8
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599908"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497609"
 ---
 # <a name="overview-of-alerts-in-21vianet-azure"></a>世纪互联 Azure 中的警报概述 
 
 本文介绍什么是警报及其优点，以及如何开始使用警报。  
 
 
-## <a name="what-are-alerts-in-21vianet-azure"></a>什么是世纪互联 Azure 中的警报？
+
+
+## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 在监视数据中发现重要情况时，警报会以主动的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
 本文讨论 Azure Monitor 中的统一警报体验，其包括以前由 Log Analytics 和 Application Insights 管理的警报。 [以前的警报体验](alerts-classic.overview.md)和警报类型称为“经典警报”。  选择警报页顶部的“查看经典警报”即可查看这个较旧的体验和较旧的警报类型。  

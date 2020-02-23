@@ -2,23 +2,20 @@
 title: 将高度可用的 MongoDB 解决方案部署到 Azure 和 Azure Stack Hub
 description: 了解如何将高度可用的 MongoDB 解决方案部署到 Azure 和 Azure Stack Hub
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
-ms.author: bryanla
+ms.date: 02/24/2020
+ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 3a70f82e75766ccacdaa45858c7e3ce0f8cd6f6f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 9fe6d7cae4236262d19f29c99b19eb11ec361038
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020325"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540646"
 ---
 # <a name="deploy-a-highly-available-mongodb-solution-to-azure-and-azure-stack-hub"></a>将高度可用的 MongoDB 解决方案部署到 Azure 和 Azure Stack Hub
-
-*适用于：Azure Stack Hub 集成系统*
 
 本文详细介绍如何跨两个 Azure Stack Hub 环境通过灾难恢复 (DR) 站点来自动部署基本的高度可用 (HA) MongoDB 群集。 若要详细了解 MongoDB 和高可用性，请参阅 [Replica Set Members](https://docs.mongodb.com/manual/core/replica-set-members/)（副本集成员）。
 

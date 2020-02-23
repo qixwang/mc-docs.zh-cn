@@ -1,21 +1,16 @@
 ---
 title: 有关 .NET 中的持久实体的开发人员指南 - Azure Functions
 description: 如何通过 Azure Functions 的 Durable Functions 扩展使用 .NET 中的持久实体。
-services: functions
 author: sebastianburckhardt
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 10/06/2019
-ms.date: 11/18/2019
+ms.date: 02/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0ce614e1fa367c38f32d1e6ebc6012d6a78d0f73
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 838294f35c6559d3861b8f8e7ea3d73dcc2bab6c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178992"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494033"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>有关 .NET 中的持久实体的开发人员指南
 
@@ -368,7 +363,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
     {
         ctx.SetState(...);
     }
-    ctx.DispatchAsync<Counter>();
+    return ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -376,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 与普通函数不同，实体类方法不能直接访问输入和输出绑定。 必须在入口点函数声明中捕获绑定数据，然后将其传递给 `DispatchAsync<T>` 方法。 传递给 `DispatchAsync<T>` 的任何对象将作为参数自动传入实体类构造函数。
 
-以下示例演示如何将 [Blob 输入绑定](../functions-bindings-storage-blob.md#input)中的 `CloudBlobContainer` 引用提供给基于类的实体使用。
+以下示例演示如何将 [Blob 输入绑定](../functions-bindings-storage-blob-input.md)中的 `CloudBlobContainer` 引用提供给基于类的实体使用。
 
 ```csharp
 public class BlobBackedEntity
@@ -517,4 +512,4 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 > [!div class="nextstepaction"]
 > [了解实体的概念](durable-functions-entities.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

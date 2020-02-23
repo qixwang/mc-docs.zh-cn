@@ -2,23 +2,20 @@
 title: 部署使用本地数据的应用程序，并使用 Azure 和 Azure Stack Hub 进行跨云缩放
 description: 了解如何部署使用本地数据的应用程序，并使用 Azure 和 Azure Stack Hub 进行跨云缩放。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 12/02/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 81a3df9b9f0792413703df561f66f33cc3d05c10
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: f657e7acc85b905be1589f70b02ce908e81824f5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655448"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540093"
 ---
 # <a name="deploy-an-app-that-uses-on-premises-data-and-scales-cross-cloud-using-azure-and-azure-stack-hub"></a>部署使用本地数据的应用程序，并使用 Azure 和 Azure Stack Hub 进行跨云缩放
-
-*适用于：Azure Stack Hub 集成系统和 Azure Stack Hub 开发工具包*
 
 本解决方案指南介绍如何部署跨越 Azure 和 Azure Stack Hub 的混合应用程序，并使用单个本地数据源。
 
@@ -55,7 +52,7 @@ ms.locfileid: "74655448"
 
 本教程还假设你有一个 Azure 订阅。 如果没有订阅，可在开始之前[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始此解决方案之前，请确保符合以下要求：
 

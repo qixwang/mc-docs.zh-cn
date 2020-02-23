@@ -1,21 +1,15 @@
 ---
 title: Durable Functions 的子业务流程 - Azure
 description: 如何从 Azure Functions 的 Durable Functions 扩展中的业务流程中调用业务流程。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/03/2019
-ms.date: 11/18/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 60b0d4836e3887efae27c62a1e5fe1cc6e1106ac
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: cd9ad8c767979d2f9ea6bb57101278710a761044
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178981"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428056"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
 
@@ -28,7 +22,7 @@ ms.locfileid: "74178981"
 
 以下示例说明了一个需要预配多台设备的 IoT（物联网）方案。 以下函数表示需要为每个设备执行的预配工作流：
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -49,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -70,11 +64,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` (.NET) 或 `callSubOrchestrator` (JavaScript) API 调度 `DeviceProvisioningOrchestration` 的实例。
 
 下面是一个示例，它展示了如何并行运行多个业务流程协调程序函数。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -100,7 +96,7 @@ public static async Task ProvisionNewDevices(
 > [!NOTE]
 > 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -123,6 +119,8 @@ module.exports = df.orchestrator(function*(context) {
     // ...
 });
 ```
+
+---
 
 > [!NOTE]
 > 子业务流程必须在与父业务流程相同的函数应用中定义。 如果需要在另一个函数应用中调用并等待业务流程，请考虑使用对 HTTP API 和 HTTP 202 轮询使用者模式的内置支持。 有关详细信息，请参阅 [HTTP 功能](durable-functions-http-features.md)主题。

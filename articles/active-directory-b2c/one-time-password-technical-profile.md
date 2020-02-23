@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f830188884a193ecbc2aa2c4304cf9d55f9a7496
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: afb40dc4e212a29190b4ef011a75d9d83a44c5af
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624422"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531323"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -77,6 +77,7 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 | CodeLength | 否 | 代码的长度。 默认值为 `6`。 |
 | CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z`。 默认值为 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值为 `5`。 |
+| 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode` 或 `VerifyCode`。 |
 | ReuseSameCode | 否 | 给定代码未过期且仍然有效时，是否应提供重复的代码而不生成新代码。 默认值为 `false`。 |
 
 ### <a name="returning-error-message"></a>返回错误消息
@@ -167,4 +168,7 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
     </InputClaims>
 </TechnicalProfile>
 ```
+
+<!-- Update_Description: wording update -->
+
 

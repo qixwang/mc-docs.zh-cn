@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 05/19/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 600ea4623f62d20452a9e03f8525f281ebde2b9f
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: a99dbb502516f474487e13250a053e9fa7787758
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600141"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497463"
 ---
 # <a name="what-are-classic-alerts-in-21vianet-azure"></a>什么是世纪互联 Azure 中的经典警报？
 
@@ -95,7 +95,7 @@ Webhook 可实现自动化和修复，例如使用：
 * 配置[经典指标警报 PowerShell](alerts-classic-portal.md)
 * 配置[经典指标警报命令行接口 (CLI)](alerts-classic-portal.md)
 * 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* 详细了解[活动日志](activity-logs-overview.md)
+* 详细了解[活动日志](platform-logs-overview.md)
 * [通过 Azure 门户配置活动日志警报](activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](alerts-activity-log.md)
 * 查看[活动日志警报 webhook 架构](activity-log-alerts-webhook.md)

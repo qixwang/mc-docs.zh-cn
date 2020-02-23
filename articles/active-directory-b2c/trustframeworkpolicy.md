@@ -7,16 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 9d09bbb51736f6775063d990e4f3ce256c3ef036
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: f3bad4ba8997bd48759ee44e108f1f7a20e73b2a
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847134"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531325"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -46,7 +45,7 @@ ms.locfileid: "72847134"
 | TenantId | 是 | 此策略所属的租户的唯一标识符。 |
 | `PolicyId` | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
-| DeploymentMode | 否 | 可能的值：`Production`、`Debugging` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 |
+| DeploymentMode | 否 | 可能的值：`Production` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。  |
 
 以下示例演示如何指定 **TrustFrameworkPolicy** 元素：
 

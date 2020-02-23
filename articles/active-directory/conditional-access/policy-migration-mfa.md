@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df4d9904af78261e8d24bc5ccc6211f0db57fd1
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 2cfbf2a5d97cab941a3f935aa2ee4f8b5e5c0f19
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859431"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540038"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 门户中迁移经典策略
 
@@ -72,5 +72,4 @@ ms.locfileid: "75859431"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关经典策略迁移的详细信息，请参阅[在 Azure 门户中迁移经典策略](policy-migration.md)。
-- [在仅限报告模式下进行条件访问来确定新策略决定的影响。](concept-conditional-access-report-only.md)
 

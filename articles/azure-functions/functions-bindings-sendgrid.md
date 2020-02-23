@@ -2,15 +2,15 @@
 title: Azure Functions SendGrid 绑定
 description: Azure Functions SendGrid 绑定参考。
 author: craigshoemaker
-ms.topic: conceptual
-ms.date: 12/30/2019
+ms.topic: reference
+ms.date: 02/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: c71e6d4d35ef4b86e0fd66862f83516959b15bd8
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 2c0c345a25d566877395f0b5d898cebfab7a841d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624285"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428215"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -28,14 +28,11 @@ ms.locfileid: "75624285"
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
-> [!NOTE]
-> 版本 2.x 及更高版本不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 这些版本基于 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)，但不处理队列管理。
-
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>示例
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示使用服务总线队列触发器和 SendGrid 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。
 
@@ -95,7 +92,7 @@ public class OutgoingEmail
 
 如果在应用设置中指定了名为“AzureWebJobsSendGridApiKey”的 API 密钥，则可以不设置特性的 `ApiKey` 属性。
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
@@ -154,7 +151,7 @@ public class Message
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
@@ -196,7 +193,7 @@ module.exports = function (context, input) {
 };
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以下示例使用 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
 
@@ -252,7 +249,7 @@ public class HttpTriggerSendGrid {
 
 ## <a name="attributes-and-annotations"></a>特性和注释
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
 
@@ -270,15 +267,15 @@ public static void Run(
 
 有关完整示例，请参阅 [C# 示例](#example)。
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 使用 [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java) 注释，可以通过提供配置值以声明方式配置 SendGrid 绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
 
@@ -290,9 +287,9 @@ JavaScript 不支持特性。
 
 | function.json 属性  | 特性/注释属性 | 说明 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
-| type || 必须设置为 `sendGrid`。| 否 |
-| direction || 必须设置为 `out`。| 否 |
-| name || 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
+| type |不适用| 必须设置为 `sendGrid`。| 否 |
+| direction |不适用| 必须设置为 `out`。| 否 |
+| name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
 | apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”  。| 否 |
 | to| 如果 | 收件人的电子邮件地址。 | 是 |
 | from| 从 | 发件人的电子邮件地址。 |  是 |

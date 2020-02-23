@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 中的永久业务流程 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展实现永久业务流程。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1f419736896d25d448f2849988574cdd4f7a06b6
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: f9f8f0cd277d1b0db40f0e929eb882f07e78a9fb
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178989"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428033"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -38,7 +33,7 @@ ms.locfileid: "74178989"
 
 永久业务流程的一个用例是需要无限期执行定期工作的代码。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -58,7 +53,7 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -75,6 +70,8 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 此示例与计时器触发的函数之间的区别是此处的清理触发时间不基于计划。 例如，每小时执行某个函数的 CRON 计划将在 1:00、2:00 和 3:00 等时间执行，并且可能会遇到重叠问题。 不过，在此示例中，如果清理花费 30 分钟，则它将计划在 1:00、2:30、4:00 等时间执行，因此不可能重叠。
 
 ## <a name="starting-an-eternal-orchestration"></a>启动永久业务流程
@@ -83,6 +80,8 @@ module.exports = df.orchestrator(function*(context) {
 
 > [!NOTE]
 > 如果需要确保单一永久业务流程实例正在运行，则在启动业务流程时维护相同的实例 `id` 非常重要。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -99,6 +98,25 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 
 > [!NOTE]
 > 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context, req) {
+    const client = df.getClient(context);
+    const instanceId = "StaticId";
+    
+    // null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
+    await client.startNew("Periodic_Cleanup_Loop", instanceId, null);
+
+    context.log(`Started orchestration with ID = '${instanceId}'.`);
+    return client.createCheckStatusResponse(context.bindingData.req, instanceId);
+};
+```
+
+---
 
 ## <a name="exit-from-an-eternal-orchestration"></a>从永久业务流程退出
 

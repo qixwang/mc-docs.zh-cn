@@ -8,12 +8,12 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 03/31/2017
 ms.date: 6/4/2019
-ms.openlocfilehash: 9ac23f1dc988b559eeae1af7c44d1a53aae36a16
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: eebfbcbba06de869800b6ad07adf189686257007
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545358"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497498"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -32,7 +32,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 ## <a name="payload-schema"></a>负载架构
 根据有效负载的 data.context.activityLog.eventSource 字段，POST 操作中包含的 JSON 有效负载会有所不同。
 
-### <a name="common"></a>常见
+### <a name="common"></a>通用
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -284,12 +284,12 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | operationName |操作的名称。 |
 | properties |事件的属性。 |
 | 状态 |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
-| subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504）。 |
+| subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503)”和“网关超时(HTTP 状态代码: 504）。 |
 
-有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
+有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](../../azure-monitor/platform/activity-logs-overview.md)。
+* [了解有关活动日志的更多信息](../../azure-monitor/platform/platform-logs-overview.md)。
 * [对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/14/2019
 ms.date: 04/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 224b83b9b7e68a3dc38cea4f61a73d2ba3680f44
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 69bef952657d8370e305683971238c89a824dfe4
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528422"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497451"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 

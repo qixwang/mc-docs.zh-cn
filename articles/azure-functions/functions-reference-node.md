@@ -3,13 +3,13 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 01/13/2020
-ms.openlocfilehash: 671079908bf8d770c114958bf9e6defe5258e710
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.date: 02/13/2020
+ms.openlocfilehash: 21456955aa4370b6edda00716b3acb47cbb05006
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116844"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428503"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-返回包含触发器元数据和函数调用数据（`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`）的命名对象。 有关触发器元数据的示例，请参阅此[事件中心示例](functions-bindings-event-hubs.md#trigger---javascript-example)。
+返回包含触发器元数据和函数调用数据（`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`）的命名对象。 有关触发器元数据的示例，请参阅此[事件中心示例](functions-bindings-event-hubs.md#trigger)。
 
 ### <a name="contextdone-method"></a>context.done 方法
 
@@ -700,4 +700,4 @@ module.exports = async function (context) {
 
 [`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

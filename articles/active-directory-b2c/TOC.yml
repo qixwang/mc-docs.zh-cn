@@ -88,7 +88,7 @@
               href: user-flow-self-service-password-reset.md
         - name: UX 自定义
           items:
-            - name: 用户界面自定义
+            - name: 自定义 UI
               href: customize-ui-overview.md
             - name: JavaScript 和页面布局
               href: user-flow-javascript-overview.md
@@ -138,8 +138,6 @@
               displayName: kmsi
         - name: UX 自定义
           items:
-            - name: 页面布局
-              href: page-layout.md
             - name: 启用 JavaScript
               href: javascript-samples.md
         - name: 令牌和会话管理
@@ -245,6 +243,9 @@
           displayName: 'migrate, b2clogin, owin'
     - name: 自动化
       items:
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events'
         - name: 帐户管理
           href: manage-user-accounts-graph-api.md
     - name: 管理用户 - Azure 门户
@@ -271,6 +272,8 @@
       href: custom-policy-developer-notes.md
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+    - name: 页面布局版本
+      href: page-layout.md
     - name: Cookie 定义
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
@@ -287,8 +290,6 @@
       href: user-flow-versions.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 常见问题
       href: faq.md
     - name: 获取帮助
@@ -297,8 +298,6 @@
       href: 'https://www.azure.cn/pricing/details/active-directory-b2c/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解决方案和培训
       href: solution-articles.md
     - name: Stack Overflow
@@ -306,5 +305,3 @@
     - name: 支持
       href: support-options.md
       displayName: technical
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

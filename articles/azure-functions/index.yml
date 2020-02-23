@@ -8,14 +8,13 @@ metadata:
   ms.topic: landing-page
   author: ggailey777
   ms.author: v-junlch
-  origin.date: 09/17/2019
-  ms.date: 10/28/2019
-  ms.openlocfilehash: 5782975d3d4d604f896622b7834f943ca04f8a29
-  ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+  ms.date: 02/18/2020
+  ms.openlocfilehash: 5c76c91ce65570d49b9ea110506d3568a7115160
+  ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73034367"
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77494511"
 landingContent:
 - title: 关于 Azure Functions
   linkLists:
@@ -36,7 +35,9 @@ landingContent:
     - text: 创建第一个函数 (Java)
       url: functions-create-first-java-maven.md
     - text: 创建第一个函数 (JavaScript)
-      url: functions-create-first-function-vs-code.md
+      url: functions-create-first-function-vs-code.md?pivots=programming-language-javascript
+    - text: 创建第一个函数 (PowerShell)
+      url: functions-create-first-function-vs-code.md?pivots=programming-language-powershell
 - title: 开发函数
   linkLists:
   - linkListType: concept

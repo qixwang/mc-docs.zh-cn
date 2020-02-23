@@ -3,15 +3,15 @@ title: 使用 Azure CLI 创建无服务器函数应用
 description: 使用 Azure CLI 在 Azure 中创建可无服务器执行的函数应用
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
-ms.date: 12/05/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: c352c4c0447ee8ba8621a7528e54713942ea637b
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: d9e0dba41f7028642d5087a768473d7341e30b95
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884913"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428683"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>创建适合无服务器代码执行的函数应用 
 
@@ -23,7 +23,7 @@ ms.locfileid: "74884913"
 
 ## <a name="sample-script"></a>示例脚本
 
-此脚本使用[消耗计划](../functions-scale.md#consumption-plan)创建 Azure Function app。
+此脚本使用[消耗计划](../functions-scale.md#consumption-plan)创建 Azure 函数应用。
 
 ```cli
 #!/bin/bash

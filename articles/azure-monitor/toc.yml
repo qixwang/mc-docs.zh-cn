@@ -113,9 +113,6 @@
       href: platform/partners.md
     - name: 常见问题
       items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
         - name: Application Insights
           displayName: FAQ
           href: app/troubleshoot-faq.md
@@ -550,7 +547,7 @@
             - name: 活动日志
               items:
                 - name: 概述
-                  href: platform/activity-logs-overview.md
+                  href: platform/platform-logs-overview.md
                 - name: 查看和检索
                   href: platform/activity-log-view.md
                 - name: 收集和分析
@@ -562,7 +559,7 @@
             - name: 诊断日志
               items:
                 - name: 概述
-                  href: platform/resource-logs-overview.md
+                  href: platform/platform-logs-overview.md
                 - name: 在日志中收集
                   href: platform/resource-logs-collect-workspace.md
                 - name: 从 Azure 存储中收集

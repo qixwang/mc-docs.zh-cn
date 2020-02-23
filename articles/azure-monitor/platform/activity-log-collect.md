@@ -9,15 +9,15 @@ ms.topic: conceptual
 origin.date: 09/30/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7bcb72bfc254f21ee667bbba89b3213ef5cbec3d
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: e502a50a09ada6dda72a1ad1225ce751c70eb62b
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155538"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497424"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志
-[Azure 活动日志](activity-logs-overview.md)方便用户深入了解 Azure 订阅中发生的订阅级别事件。 本文介绍如何将活动日志收集到 Log Analytics 工作区，以及如何使用 Activity Log Analytics [监视解决方案](../insights/solutions.md)提供适用于分析此数据的日志查询和视图。 
+[Azure 活动日志](platform-logs-overview.md)方便用户深入了解 Azure 订阅中发生的订阅级别事件。 本文介绍如何将活动日志收集到 Log Analytics 工作区，以及如何使用 Activity Log Analytics [监视解决方案](../insights/solutions.md)提供适用于分析此数据的日志查询和视图。 
 
 将活动日志连接到 Log Analytics 工作区有以下好处：
 
@@ -42,7 +42,7 @@ ms.locfileid: "77155538"
     ![连接工作区](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>在 Log Analytics 工作区中进行分析
-将活动日志连接到 Log Analytics 工作区时，条目会写入到工作区的名为 **AzureActivity** 的表中，该表可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 该表的结构因[日志条目类别](activity-logs-overview.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。
+将活动日志连接到 Log Analytics 工作区时，条目会写入到工作区的名为 **AzureActivity** 的表中，该表可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 该表的结构因[日志条目类别](platform-logs-overview.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。
@@ -69,6 +69,6 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[活动日志](activity-logs-overview.md)。
+- 详细了解[活动日志](platform-logs-overview.md)。
 - 详细了解 [Azure Monitor 数据平台](data-platform.md)。
 - 使用[日志查询](../log-query/log-query-overview.md)查看活动日志中的详细信息。

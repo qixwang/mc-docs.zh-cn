@@ -9,18 +9,18 @@ origin.date: 11/27/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: ed372a1414625019a512983abe6c195964da9674
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: f50edb971e7b779964b35033a9105b9746f20505
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599911"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497394"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-许多团队需要严格管制对监视数据与设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文说明如何在 Azure 中快速将内置监视 RBAC 角色应用到用户，或针对需要有限监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
+许多团队需要严格管制对监视数据与设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文说明如何在 Azure 中快速将内置监视 RBAC 角色应用到用户，或针对需要有限监视权限的用户构建自己的自定义角色。 然后，本文介绍 Azure 监视器相关资源的安全注意事项，以及如何限制对这些资源中的数据的访问。
 
 ## <a name="built-in-monitoring-roles"></a>内置监视角色
 Azure 监视器的内置角色旨在帮助限制对订阅中资源的访问，同时仍然允许负责监视基础结构的人员获取和配置他们所需的数据。 Azure Monitor 提供两个现成的角色：“监视读者”和“监视参与者”。
@@ -31,9 +31,9 @@ Azure 监视器的内置角色旨在帮助限制对订阅中资源的访问，�
 * 在门户中查看监视仪表板，以及创建自己的专用监视仪表板。
 * 查看 [Azure 警报](alerts-overview.md)中定义的预警规则
 * 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
-* 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
-* 查看资源的[诊断设置](resource-logs-overview.md)。
-* 查看订阅的[日志配置文件](activity-log-export.md)。
+* 使用门户、Azure 监视器 REST API、PowerShell cmdlets 或跨平台 CLI 查询活动日志。
+* 查看资源的 [诊断设置](diagnostic-settings.md) 。
+* 查看订阅的 [日志配置文件](activity-log-export.md) 。
 * 查看自动缩放设置。
 * 查看警报活动和设置。
 * 访问 Application Insights 数据，查看 AI Analytics 中的数据。
@@ -53,7 +53,7 @@ Azure 监视器的内置角色旨在帮助限制对订阅中资源的访问，�
 拥有“监视参与者”角色的人员可以查看订阅中的所有监视数据，以及创建或修改监视设置，但无法修改其他任何资源。 此角色是“监视读取者”角色的超集，适用于组织中的监视团队成员或托管服务提供商，这些人员除了上述权限外，还必须能够：
 
 * 将监视仪表板发布为共享仪表板。
-* 设置资源的[诊断设置](resource-logs-overview.md)。\*
+* 设置资源的[诊断设置](diagnostic-settings.md)。\*
 * 设置订阅的[日志配置文件](activity-log-export.md)。\*
 * 通过 [Azure 警报](alerts-overview.md)设置预警规则活动和设置。
 * 创建 Application Insights Web 测试和组件。
@@ -78,7 +78,7 @@ Azure 监视器的内置角色旨在帮助限制对订阅中资源的访问，�
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |读取/写入/删除活动日志警报。 |
 | Microsoft.Insights/AlertRules/[Read, Write, Delete] |（从经典警报）读取/写入/删除警报规则。 |
 | Microsoft.Insights/AlertRules/Incidents/Read |列出警报规则的事件（触发警报规则的历史记录）。 仅适用于门户。 |
-| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |读取/写入/删除自动调整规模设置。 |
+| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |读取/写入/删除自动缩放设置。 |
 | Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |读取/写入/删除诊断设置。 |
 | Microsoft.Insights/EventCategories/Read |枚举活动日志中所有可能的类别。 由 Azure 门户使用。 |
 | Microsoft.Insights/eventtypes/digestevents/Read |此权限对于需要通过门户访问活动日志的用户是必需的。 |
@@ -99,7 +99,7 @@ Azure 监视器的内置角色旨在帮助限制对订阅中资源的访问，�
 > 
 > 
 
-例如，使用上面的表格可以为“Activity Log Reader”创建如下的自定义 RBAC 角色：
+例如，可以使用上表，针对“活动日志读取者”创建类似于下面的自定义 RBAC 角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -125,10 +125,10 @@ New-AzRoleDefinition -Role $role
 * 使用单个、专用存储帐户来监视数据。 如果需要将监视数据划分到多个存储帐户，那么请勿在监视数据和非监视数据之间共享存储帐户的使用，因为这可能会无意中给予那些仅需要访问监视数据（例如第三方 SIEM）的人访问非监控数据的权限。
 * 为所有诊断设置专门使用一个服务总线或事件中心命名空间，原因同上。
 * 通过将监视相关的存储帐户或事件中心保留在不同的资源组中来限制对它们的访问，并对监视角色 [使用范围](../../role-based-access-control/overview.md#scope) ，将访问权限限定于该资源组。
-* 当用户只需访问监视数据时，请勿授予订阅范围内的存储帐户或事件中心的 ListKeys 权限。 取而代之的是给予用户资源或资源组（如果有专用的监视资源组）范围的权限。
+* 如果用户只需访问监视数据，切勿在订阅范围向其授予对存储帐户或事件中心的 ListKeys 权限。 取而代之的是给予用户资源或资源组（如果有专用的监视资源组）范围的权限。
 
-### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>限制对监视相关的存储帐户的访问权限
-当用户或应用程序需要访问存储帐户中的监视数据时，应使用 blob 存储的服务级别的只读访问权限在包含监视数据的存储帐户上[生成帐户 SAS](https://msdn.microsoft.com/library/azure/mt584140.aspx)。 在 PowerShell 中，相应的命令如下所示：
+### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>限制对监控相关的存储帐户的访问
+当用户或应用程序需要访问存储帐户中的监视数据时，应该在包含监视数据、对 Blob 存储具有服务级只读访问权限的存储帐户中 [生成帐户 SAS](https://msdn.microsoft.com/library/azure/mt584140.aspx) 。 在 PowerShell 中，相应的命令如下所示：
 
 ```powershell
 $context = New-AzStorageContext -Environment AzureChinaCloud -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -137,7 +137,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 可将令牌提供给需要读取该存储帐户的实体，该实体即可列出和读取该存储帐户的所有 Blob 中的数据。
 
-或者，如果需要使用 RBAC 控制此权限，可以向该实体授予对该特定存储帐户的 Microsoft.Storage/storageAccounts/listkeys/action 权限。 需要指定诊断设置或要设置可存档到存储帐户的日志配置文件的用户必须拥有此权限。 例如，可以为只需读取一个存储帐户的用户或应用程序创建以下自定义 RBAC 角色：
+或者，如果需要使用 RBAC 控制此权限，可以向该实体授予对该特定存储帐户的 Microsoft.Storage/storageAccounts/listkeys/action 权限。 需要指定诊断设置或要设置可存档到存储帐户的日志配置文件的用户必须拥有此权限。 例如，对于只需读取一个存储帐户的用户或应用程序，可以创建以下自定义 RBAC 角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -157,10 +157,10 @@ New-AzRoleDefinition -Role $role
 > 
 > 
 
-### <a name="limiting-access-to-monitoring-related-event-hubs"></a>限制对监视相关的事件中心的访问权限
+### <a name="limiting-access-to-monitoring-related-event-hubs"></a>限制对监控相关的事件中心的访问
 可对事件中心采用类似的模式，但首先需要创建专用的侦听授权规则。 如果想要将访问权限授予只需侦听与监视相关的事件中心的应用程序，请执行以下操作：
 
-1. 为事件中心创建共享访问策略，该事件中心是为传输仅包含侦听声明的监视数据而创建的。 可以在门户中完成此操作。 例如，可以称它为“monitoringReadOnly”。 如果可能，可以直接将该密钥提供给使用者，并跳过下一步骤。
+1. 为事件中心创建共享访问策略，该事件中心是为传输仅包含侦听声明的监视数据而创建的。 可以在门户中完成此操作。 例如，可以将此策略称为“monitoringReadOnly”。 如果可能，可以直接将该密钥提供给使用者，并跳过下一步骤。
 2. 如果使用者必须能够临时获取密钥，请向用户授予对该事件中心执行 ListKeys 操作的权限。 需要指定诊断设置或者要设置可流式传输到事件中心的日志配置文件的用户必须拥有此权限。 例如，可以创建一条 RBAC 规则：
    
    ```powershell
@@ -189,6 +189,6 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 有关详细信息，请参阅[网络安全性和 Azure 存储](../../storage/common/storage-network-security.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../../role-based-access-control/overview.md)
+* [了解 Resource Manager 中的 RBAC 和权限](../../role-based-access-control/overview.md)
 * [阅读 Azure 中的监视概述](../../azure-monitor/overview.md)
 

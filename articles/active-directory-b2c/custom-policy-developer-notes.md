@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 30e30455dd96864f942f74b6cc91bad023552626
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: e21d0f1154a04c7ccda5a0f32577a3d5ecb00ca3
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028232"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531294"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -70,7 +70,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 | 信赖方 OAUTH1 |  |  |  | 不支持。 |
 | 信赖方 OAUTH2 |  |  | X |  |
 | 信赖方 OIDC |  |  | X |  |
-| 信赖方 SAML | X |  |  |  |
+| 信赖方 SAML |  |X  |  |  |
 | 信赖方 WSFED | X |  |  |  |
 | 使用基本和证书身份验证的 REST API |  |  | X | 例如 Azure 逻辑应用。 |
 
@@ -83,7 +83,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 | 用于电子邮件验证的 Azure 电子邮件子系统 |  |  | X |  |
 | 多语言支持|  |  | X |  |
 | 谓词验证 |  |  | X | 例如，密码复杂性。 |
-| 使用第三方电子邮件服务提供程序 | X |  |  |  |
+| 使用第三方电子邮件服务提供程序 |  |X  |  |  |
 
 ### <a name="content-definition"></a>内容定义
 
@@ -139,3 +139,4 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 详细了解[自定义策略及其与用户流的差异](custom-policy-overview.md)。
 
+<!-- Update_Description: wording update -->

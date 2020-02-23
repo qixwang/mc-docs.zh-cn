@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: Azure Active Directory Identity Governance 文档
+summary: 借助 Azure Active Directory (Azure AD) Identity Governance，能够保护、监视和审核对关键资产的访问，同时确保员工的工作效率。
+metadata:
+  author: msaburnley
+  description: 了解如何保护、监视和审核对关键资产的访问，同时确保员工的工作效率。
+  manager: daveba
+  ms.author: v-junlch
+  ms.collection: na
+  ms.date: 02/11/2020
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 5326ecfae6abae345896e62a0e94496ae5814038
+  ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/18/2020
+  ms.locfileid: "77429891"
+landingContent:
+- title: 关于 Identity Governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Identity Governance？
+      url: identity-governance-overview.md
+- title: 再次验证对组、应用和特权角色的访问权限
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD 访问评审是什么？
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建访问评审以确保用户不会保留过多的访问权限
+      url: create-access-review.md
+    - text: 评审对组或应用的访问权限
+      url: perform-access-review.md
+- title: 使用户有资格获得特权角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Privileged Identity Management？
+      url: ../privileged-identity-management/pim-configure.md

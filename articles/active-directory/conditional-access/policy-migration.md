@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b2a2c0c1984c97d571082da4cb514bf7fc22de7
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: e4362a09b1a9bc07bc9078198fe11da1c3413dda
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859427"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540041"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件访问经典策略迁移
 
@@ -116,7 +116,6 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在仅限报告模式下进行条件访问来确定新策略决定的影响。](concept-conditional-access-report-only.md)
 - 若要了解如何配置条件访问策略，请参阅[条件访问常见策略](concept-conditional-access-policy-common.md)。
 - 如果已准备好针对环境配置条件访问策略，请参阅 [如何：规划 Azure Active Directory 中的条件访问部署](plan-conditional-access.md)一文。 
 

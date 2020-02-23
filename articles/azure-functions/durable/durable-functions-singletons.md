@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 的单一实例 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展中的单一实例。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/03/2019
-ms.date: 11/18/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 75cc669e70d8c00c60f99649bc113af14446bfa9
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 88868543fd64795cee238256c051c2af5baf0d4e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178982"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428816"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions 中的单一实例业务流程协调程序 (Azure Functions)
 
@@ -25,7 +20,7 @@ ms.locfileid: "74178982"
 
 以下示例显示了一个 HTTP 触发器函数，该函数创建一个单一实例后台作业业务流程。 该代码可确保只存在一个具有指定实例 ID 的实例。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -57,11 +52,12 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-function.json 文件如下所示：
+**function.json**
+
 ```json
 {
   "bindings": [
@@ -87,7 +83,8 @@ function.json 文件如下所示：
 }
 ```
 
-JavaScript 代码如下所示：
+**index.js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -114,6 +111,8 @@ module.exports = async function(context, req) {
     }
 };
 ```
+
+---
 
 默认情况下，实例 ID 是随机生成的 GUID。 但是，在前面的示例中，实例 ID 通过 URL 在路由数据中传递。 该代码调用 `GetStatusAsync` (C#) 或 `getStatus` (JavaScript) 检查具有指定 ID 的实例是否已在运行。 如果没有此类实例正在运行，将使用该 ID 创建一个新实例。
 

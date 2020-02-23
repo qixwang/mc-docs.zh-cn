@@ -3,14 +3,14 @@ title: Azure Functions 最佳做法
 description: 了解 Azure Functions 的最佳做法和模式。
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 924f67910517bd08e0a1c2ab80b97f5e709c7ba3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: dec53aed58280ca10762c8ed8ac9772a7f0b436e
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624106"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494470"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -74,7 +74,9 @@ ms.locfileid: "75624106"
 
 ### <a name="avoid-sharing-storage-accounts"></a>避免共享存储帐户
 
-创建函数应用时，必须将其与存储帐户相关联。 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中维护。 若要最大程度地提高性能，请对每个函数应用使用单独的存储帐户。 如果有 Durable Functions 或事件中心触发的函数，则请注意，这两种函数都会产生大量存储事务，这一点特别重要。 当应用程序逻辑与 Azure 存储交互时，无论是直接（使用存储 SDK）交互还是通过某个存储绑定进行交互，都应使用专用存储帐户。 例如，如果有事件中心触发的函数将一些数据写入 blob 存储，请使用两个存储帐户&mdash;一个用于函数应用，另一个用于由函数存储的 blob。
+创建函数应用时，必须将其与存储帐户相关联。 存储帐户连接在 [AzureWebJobsStorage 应用程序设置](./functions-app-settings.md#azurewebjobsstorage)中维护。 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>请勿在同一函数应用中混合测试和生产代码
 
@@ -110,7 +112,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 
 使用函数应用中的 `host.json` 文件可以配置主机运行时和触发器行为。  除了批处理行为以外，还可以管理大量触发器的并发性。 调整这些选项中的值往往有助于每个实例根据被调用函数的需求适当缩放。
 
-host.json 文件中的设置应用于应用中的所有函数，以及函数的单个实例。  例如，如果有包含两个 HTTP 函数的函数应用，并且 [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) 请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  如果该函数应用扩展到 10 个实例，则两个函数会有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。 
+host.json 文件中的设置应用于应用中的所有函数，以及函数的单个实例。  例如，如果有包含两个 HTTP 函数的函数应用，并且 [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  如果该函数应用扩展到 10 个实例，则两个函数会有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。 
 
 可在 [host.json 配置文章](functions-host-json.md)在找到其他主机配置选项。
 
@@ -121,4 +123,4 @@ host.json 文件中的设置应用于应用中的所有函数，以及函数的�
 * [如何在 Azure Functions 中管理连接](manage-connections.md)
 * [Azure 应用服务最佳实践](../app-service/app-service-best-practices.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

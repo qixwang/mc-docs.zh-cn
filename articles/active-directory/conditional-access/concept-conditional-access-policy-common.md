@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ae039ce2877d0820159d935aa207803319aae2
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 1d7b8e9cd0b7568580d522757e29c8de6eb0e9be
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067546"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540050"
 ---
 # <a name="common-conditional-access-policies"></a>常用条件访问策略
 
@@ -37,13 +37,11 @@ ms.locfileid: "77067546"
 * [要求对所有用户进行 MFA](howto-conditional-access-policy-all-users-mfa.md)\*
 * [阻止旧式身份验证](howto-conditional-access-policy-block-legacy.md)\*
 * 基于风险的条件访问（需要 Azure AD Premium P2）
-* [要求在进行 MFA 注册时处于受信任的位置](howto-conditional-access-policy-registration.md)
 * [按位置阻止访问](howto-conditional-access-policy-location.md)
 * [需要兼容设备](howto-conditional-access-policy-compliant-device.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用条件访问 What If 工具模拟登录行为。](troubleshoot-conditional-access-what-if.md)
-- [对条件访问使用仅限报告模式来确定新策略决定的影响。](concept-conditional-access-report-only.md)
 
 <!-- Update_Description: wording update -->

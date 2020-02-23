@@ -1,21 +1,15 @@
 ---
 title: 在 Durable Functions 中处理外部事件 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理外部事件。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 51457405a8350c402c582c2c431d8aa5fea3afa8
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 5792489360fc32917cec157d3c1f793d63721595
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178987"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428026"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -28,7 +22,7 @@ ms.locfileid: "74178987"
 
 业务流程协调程序函数使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `WaitForExternalEvent` (.NET) 和 `waitForExternalEvent` (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -50,7 +44,7 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -65,11 +59,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 前面的示例侦听特定单个事件，并在收到该事件时执行操作。
 
 可以同时侦听多个事件，像以下示例中一样，以下示例等待三个可能的事件通知之一。
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -99,7 +95,7 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -120,9 +116,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 前面的示例侦听多个事件中的“任何一个”。  还可以等待“所有”事件。 
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -145,7 +143,9 @@ public static async Task Run(
 > [!NOTE]
 > 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+在 .NET 中，如果事件负载无法转换为预期类型 `T`，将会引发异常。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -164,12 +164,12 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 `WaitForExternalEvent` 无限期地等待一些输入。  在等待时，可以安全地卸载函数应用。 对于此业务流程实例，如果某个事件到达，则会自动唤醒并立即处理该事件。
 
 > [!NOTE]
 > 如果函数应用使用消耗计划，当业务流程协调程序函数等待来自 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 的任务时，无论它等待多久，都不会产生账单费用。
-
-在 .NET 中，如果事件负载无法转换为预期类型 `T`，将会引发异常。
 
 ## <a name="send-events"></a>发送事件
 
@@ -177,7 +177,7 @@ module.exports = df.orchestrator(function*(context) {
 
 下面是一个示例队列触发的函数，它将“Approval”事件发送到一个业务流程协调程序函数实例。 业务流程实例 ID 来自队列消息的正文。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -190,9 +190,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -202,6 +202,8 @@ module.exports = async function(context, instanceId) {
     await client.raiseEvent(instanceId, "Approval", true);
 };
 ```
+
+---
 
 在内部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 将正在等待的业务流程协调程序函数选取的消息排入队列。 如果实例没有在等待指定的事件名，则将事件消息添加到内存中队列  。 如果业务流程实例稍后开始侦听该事件名称，  它将检查队列中的事件消息。
 

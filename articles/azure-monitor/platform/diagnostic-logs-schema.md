@@ -8,19 +8,19 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 10/22/2019
 ms.date: 12/31/2019
-ms.openlocfilehash: 5935e9bce666a904c08e66bb1d5d0e3fd7001953
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 4e4261829142bc4740836e7337f6af9fffb536c7
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599925"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497513"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
 > [!NOTE]
 > 资源日志以前称为诊断日志。
 
-[Azure Monitor 资源日志](../../azure-monitor/platform/resource-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
+[Azure Monitor 资源日志](../../azure-monitor/platform/platform-logs-overview.md)是 Azure 服务发出的日志，用于描述这些服务或资源的操作。 通过 Azure Monitor 提供的所有资源日志共享公共顶级架构，且每个服务都能灵活地为其事件发出唯一属性。
 
 资源类型（为 `resourceId` 属性时可用）和 `category` 的组合唯一标识架构。 本文介绍了资源日志的顶级架构以及每个服务的架构链接。
 
@@ -261,7 +261,7 @@ ms.locfileid: "75599925"
 |Microsoft.Sql/servers/databases|ExecRequests|Exec 请求|
 |Microsoft.Sql/servers/databases|RequestSteps|请求步骤|
 |Microsoft.Sql/servers/databases|SqlRequests|Sql 请求|
-|Microsoft.Sql/servers/databases|Waits|等待|
+|Microsoft.Sql/servers/databases|等待|等待|
 |Microsoft.Sql/managedInstances|ResourceUsageStats|资源使用情况统计信息|
 |Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL 安全审核事件|
 |Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
@@ -298,7 +298,7 @@ ms.locfileid: "75599925"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解资源日志](../../azure-monitor/platform/resource-logs-overview.md)
+* [详细了解资源日志](../../azure-monitor/platform/platform-logs-overview.md)
 * [将资源日志流式传输到**事件中心**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源日志诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../../azure-monitor/platform/collect-azure-metrics-logs.md)

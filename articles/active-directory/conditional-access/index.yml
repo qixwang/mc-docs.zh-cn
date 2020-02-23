@@ -12,12 +12,12 @@ metadata:
   ms.author: v-junlch
   ms.date: 01/09/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: e22a6bb92e32868d8a67833e93791c2121c08b01
-  ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+  ms.openlocfilehash: 62e69f76acf2b2fb9599154387a70ee232d39907
+  ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/10/2020
-  ms.locfileid: "75859271"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77540042"
 landingContent:
 - title: 关于条件访问
   linkLists:
@@ -61,8 +61,6 @@ landingContent:
       url: howto-conditional-access-policy-azure-management.md
     - text: 阻止传统身份验证
       url: howto-conditional-access-policy-block-legacy.md
-    - text: 要求在进行 MFA 注册时处于受信任的位置
-      url: howto-conditional-access-policy-registration.md
     - text: 按位置阻止访问
       url: howto-conditional-access-policy-location.md
     - text: 需要兼容设备

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 829450fda6198615e776fcd7c3c6cc7f53887c70
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 689bdbf3a296683b3d3c192cf706af91814cca69
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859362"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540044"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
 
@@ -108,7 +108,6 @@ ms.locfileid: "75859362"
 
 要求执行 MFA 的常见用例包括：
 
-- [管理员的访问](concept-baseline-protection.md)
 - [访问特定的应用](app-based-mfa.md) 
 - [从你不信任的网络位置访问](untrusted-networks.md)。
 

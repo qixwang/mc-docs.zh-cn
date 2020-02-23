@@ -7,14 +7,14 @@ manager: rkarlin
 ms.service: api-management
 ms.topic: conceptual
 origin.date: 09/23/2019
-ms.date: 11/04/2019
+ms.date: 02/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 953b4bf0025fe34e8975da234d4b72ecbb8efdb4
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 9eea49e927dd6324b235b0203927d9ee69a8a01a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913248"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428616"
 ---
 # <a name="security-controls-for-api-management"></a>API 管理的安全控制
 
@@ -36,7 +36,8 @@ ms.locfileid: "72913248"
 | 安全控制 | Yes/No | 注释| 文档 |
 |---|---|--|--|
 | Azure 监视支持（Log Analytics、App Insights 等）| 是 | | |
-| 控制和管理平面日志记录和审核| 是 | [Azure Monitor 活动日志](../azure-monitor/platform/activity-logs-overview.md) | |
+| 控制和管理平面日志记录和审核| 是 | [Azure Monitor 活动日志](../azure-monitor/platform/platform-logs-overview.md) | |
+| 数据平面日志记录和审核| 是 | [Azure Monitor 诊断日志](../azure-monitor/platform/platform-logs-overview.md)和（可选）[Azure Application Insights](../azure-monitor/app/app-insights-overview.md)。  | |
 
 
 ## <a name="identity"></a>标识

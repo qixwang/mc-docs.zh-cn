@@ -2,23 +2,20 @@
 title: 使用 Azure 和 Azure Stack Hub 配置混合云连接
 description: 了解如何使用 Azure 和 Azure Stack Hub 配置混合云连接。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: cd3cb214c4e0a7feb2691d0039850b00856f2ee2
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: c492e9e36397fb13786b75000e6bdef491fcc0bd
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020550"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540227"
 ---
 # <a name="configure-hybrid-cloud-connectivity-using-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 配置混合云连接
-
-*适用于：Azure Stack Hub 集成系统和 Azure Stack Hub 开发工具包*
 
 可以使用混合连接模式在 Azure 和 Azure Stack Hub 中安全地访问资源。
 
@@ -35,7 +32,7 @@ ms.locfileid: "74020550"
 > [混合应用程序的设计注意事项](overview-app-design-considerations.md)一文回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用设计，从而最大限度地减少生产环境中的难题。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 生成混合连接部署需要一些组件。 这其中的某些组件需要时间来准备，因此请进行相应的计划。
 
@@ -91,7 +88,7 @@ Azure Stack Hub 操作员必须部署应用服务、创建计划和套餐、创�
 
 网络和子网 IP 地址：
 
-| Azure/Azure Stack Hub 连接 | Name | 子网 | IP 地址 |
+| Azure/Azure Stack Hub 连接 | 名称 | 子网 | IP 地址 |
 |-------------------------------------|---------------------------------------------|---------------------------------------|-----------------------------|
 | Azure vNet | ApplicationvNet<br>10.100.102.9/23 | ApplicationSubnet<br>10.100.102.0/24 |  |
 |  |  | GatewaySubnet<br>10.100.103.0/24 |  |
@@ -194,7 +191,7 @@ Azure Stack Hub 操作员必须部署应用服务、创建计划和套餐、创�
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 配置的 VPN 设备称为“连接”。 若要配置连接，需提供：
 
-- 共享密钥。 此密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
+- 共享密钥。 此密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的密钥来使用。
 - 虚拟网关的公共 IP 地址。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要使用 Azure 门户查找 VPN 网关的公共 IP 地址，请导航到“虚拟网关”，然后选择网关的名称。
 
 执行以下步骤，在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。

@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/09/2019
-ms.date: 11/21/2019
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0e919fbb06a3bd46aeb090553341700ae9b6c1f4
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 7386f7db1faaf61a24ff04c29fc92e617870d3f5
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326473"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494523"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -52,7 +51,7 @@ ms.locfileid: "74326473"
 > 每个实例目前支持大约 10 个容量单位。
 > 计算单位可处理的请求数取决于多种条件，例如 TLS 证书密钥大小、密钥交换算法、标头重写次数以及 WAF 传入请求大小。 我们建议执行应用程序测试，以确定每个计算单位的请求速率。 在开始计费之前，我们会以指标的形式提供容量单位和计算单位。
 
-有关详细定价信息，请参阅[定价页](https://www.azure.cn/pricing/details/application-gateway/)。 我们已安排在 2019 年 7 月 1 日开始计费。
+有关详细定价信息，请参阅[定价页](https://www.azure.cn/pricing/details/application-gateway/)。 
 
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>缩放应用程序网关和 WAF v2
@@ -116,4 +115,3 @@ PowerShell 库中提供了一个 Azure PowerShell 脚本，以帮助你从 v1 �
 - 了解有关[应用程序网关](overview.md)的详细信息。
 - 了解有关 [Azure 防火墙](../firewall/overview.md)的详细信息。
 
-<!-- Update_Description: wording update -->

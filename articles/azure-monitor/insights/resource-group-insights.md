@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 09/19/2018
 ms.date: 09/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2edc5f95f876256eb0f84c1f12a6aba574aa05b9
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 65e43ffbabe61f6c1aa816a65292ddf3312c5c33
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970977"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497556"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -49,7 +49,7 @@ ms.locfileid: "72970977"
    | ---------------- |:-----|
    | [**警报**](../../azure-monitor/platform/alerts-overview.md)      |  查看、创建和管理警报。 |
    | [**指标**](../../azure-monitor/platform/data-platform.md) | 可视化并浏览基于指标的数据。    |
-   | [**活动日志**](../../azure-monitor/platform/activity-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
+   | [**活动日志**](../../azure-monitor/platform/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
    | [**应用程序映射**](/azure-monitor/app/app-map) | 浏览分布式应用程序的拓扑，以识别性能瓶颈或故障作用点。 |
 
 ## <a name="failures-and-performance"></a>故障和性能

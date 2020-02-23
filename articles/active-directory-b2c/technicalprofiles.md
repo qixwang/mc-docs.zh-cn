@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f5316d33733d0005e5c29991907de3094dfddbf8
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 9350341387d528a20abf325a7c3bd9eb714389f0
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028122"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531326"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,7 +84,7 @@ ms.locfileid: "77028122"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | 域 | 0:1 | 技术配置文件的域名。  |
-| DisplayName | 0:1 | 可向用户显示的技术配置文件名称。 |
+| DisplayName | 1:1 | 可向用户显示的技术配置文件名称。 |
 | 说明 | 0:1 | 可向用户显示的技术配置文件说明。 |
 | 协议 | 0:1 | 用来与另一方通信的协议。 |
 | Metadata | 0:1 | 在事务处理过程中，协议用来与终结点通信的键/值对集合。 |

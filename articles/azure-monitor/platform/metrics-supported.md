@@ -9,12 +9,12 @@ origin.date: 12/18/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: d965b61cd8306fd9fd47a92c304544109e4dcf36
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: f6bfaff2b235a171def9fdf3f76087f8094e6c68
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854249"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497494"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 Azure 监视器提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure 监视器的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -2316,6 +2316,6 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 ## <a name="next-steps"></a>后续步骤
 * [了解 Azure 监视器中的指标](data-platform.md)
 * [针对指标创建警报](alerts-overview.md)
-* [将指标导出到存储、事件中心或 Log Analytics](resource-logs-overview.md)
+* [将指标导出到存储、事件中心或 Log Analytics](platform-logs-overview.md)
 
 

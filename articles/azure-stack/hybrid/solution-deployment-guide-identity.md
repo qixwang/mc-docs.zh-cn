@@ -2,23 +2,20 @@
 title: 为 Azure 和 Azure Stack Hub 应用配置混合云标识
 description: 了解如何为 Azure 和 Azure Stack Hub 应用配置混合云标识。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 2a4ea70a99b2a843c605eec289ea960d4e597b66
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: ac04623584e51597797264dc41ca38c9694c2093
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020533"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540640"
 ---
 # <a name="configure-hybrid-cloud-identity-for-azure-and-azure-stack-hub-applications"></a>为 Azure 和 Azure Stack Hub 应用程序配置混合云标识
-
-*适用于：Azure Stack Hub 集成系统和 Azure Stack Hub 开发工具包*
 
 了解如何为 Azure 和 Azure Stack Hub 应用配置混合云标识。
 
@@ -60,7 +57,7 @@ ms.locfileid: "74020533"
 
 [在 Azure Stack Hub 中使用 PowerShell 启动并运行](../operator/azure-stack-powershell-install.md)快速入门演练了安装 Azure PowerShell 并连接到 Azure Stack Hub 安装所要执行的步骤。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 需要一个通过你可以访问的订阅连接到 Azure Active Directory 的 Azure Stack Hub 安装。 如果没有 Azure Stack Hub 安装，可以使用这些说明来安装 [Azure Stack Hub 开发工具包](../asdk/asdk-install.md)。
 

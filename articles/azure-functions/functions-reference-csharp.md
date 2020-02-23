@@ -3,14 +3,14 @@ title: Azure Functions C# 脚本开发人员参考
 description: '了解如何使用 C # 脚本开发 Azure Functions。'
 author: craigshoemaker
 ms.topic: reference
-ms.date: 12/31/2019
+ms.date: 02/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: a62400a886dee6cdfb7a91b976068b49f970eb43
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 9e94ecc2b1ecb8dcd46084892d010b9ae34ffa28
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624090"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494512"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -89,7 +89,7 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
-每个绑定都具有其自己支持的类型；例如，Blob 触发器可以与字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持类型之一配合使用。 [适用于 Blob 绑定的绑定参考文章](functions-bindings-storage-blob.md#trigger---usage)列出了适用于 Blob 触发器的所有受支持参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
+每个绑定都具有其自己支持的类型；例如，Blob 触发器可以与字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持类型之一配合使用。 [适用于 Blob 绑定的绑定参考文章](functions-bindings-storage-blob-trigger.md#usage)列出了适用于 Blob 触发器的所有受支持参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -460,7 +460,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 
 ### <a name="single-attribute-example"></a>单属性示例
 
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，然后将字符串写入此 blob。
+下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob-output.md)，然后将字符串写入此 blob。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -522,4 +522,4 @@ public static async Task Run(string input, Binder binder)
 > [!div class="nextstepaction"]
 > [详细了解有关 Azure Functions 的最佳做法](functions-best-practices.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

@@ -1,21 +1,16 @@
 ---
 title: 注册 Azure Functions 绑定扩展
 description: 了解如何根据你的环境注册 Azure Functions 绑定扩展。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
-origin.date: 07/08/2019
-ms.date: 11/18/2019
+ms.date: 02/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: 22dd712a7643edc40b5389dd3a03b0f16d6c5e2d
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 6ae3de80fcdb440f40ae7edac10eec2f778c5238
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178965"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428216"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
@@ -67,9 +62,6 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 如果使用 `Install-Package` 来引用绑定，则无需使用[扩展捆绑](#extension-bundles)。 此方法特定于在 Visual Studio 中生成的类库。
 
 ## <a name="vs-code"></a> 使用 Visual Studio Code 的 C# 类库
-
-> [!NOTE]
-> 我们建议使用[扩展捆绑](#extension-bundles)来让 Functions 自动安装一组兼容的绑定扩展包。 
 
 在 **Visual Studio Code** 中，请使用 .NET Core CLI 中的 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令通过命令提示符安装 C# 类库项目的包。 以下示例演示如何添加绑定：
 

@@ -3,14 +3,14 @@ title: 持久业务流程 - Azure Functions
 description: Azure Durable Functions 的业务流程功能简介。
 author: cgillum
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1414c4b6b0f5cc9b6df4239e34ebb704d05338e0
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: c9d7c6b30e5f94b11fb89d5e634cb43d54f9b8d5
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884991"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428013"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -41,7 +41,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ## <a name="reliability"></a>可靠性
 
-业务流程协调程序函数使用事件溯源设计模式可靠维护其执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”整个运行时状态相比，仅限追加的存储具有很多优点。 优势包括提升性能、可伸缩性和响应能力。 此外，还可以确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
+业务流程协调程序函数使用事件溯源设计模式可靠维护其执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，仅限追加的存储具有诸多优势。 优势包括提升性能、可伸缩性和响应能力。 此外，还可以确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
 
 Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。
 
@@ -55,7 +55,9 @@ Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程�
 
 ## <a name="orchestration-history"></a>业务流程历史记录
 
-Durable Task Framework 的事件溯源行为与编写的业务流程协调程序函数代码密切相关。 假设你有一个类似于以下 C# 业务流程协调程序函数的活动链接业务流程协调程序函数：
+Durable Task Framework 的事件溯源行为与编写的业务流程协调程序函数代码密切相关。 假设你有一个活动链接业务流程协调程序函数，如以下业务流程协调程序函数：
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-如果在 JavaScript 中编写代码，该活动链接业务流程协调程序函数可能类似于以下示例代码：
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,6 +90,8 @@ module.exports = df.orchestrator(function*(context) {
     return output;
 });
 ```
+
+---
 
 执行到每条 `await` (C#) 或 `yield` (JavaScript) 语句时，Durable Task Framework 会在某个持久存储后端（通常是 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。 
 
@@ -106,7 +110,7 @@ module.exports = df.orchestrator(function*(context) {
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下表所示（为方便演示，此处采用了缩写）：
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | Name             | 结果                                                    | 状态 |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | 名称             | 结果                                                    | 状态 |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
@@ -139,8 +143,8 @@ module.exports = df.orchestrator(function*(context) {
   * **OrchestratorCompleted**：处于等待状态的业务流程协调程序函数。
   * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
   * **ExecutionCompleted**：业务流程协调程序函数已运行并已完成（或失败）。 该函数的输出或错误详细信息存储在 `Result` 列中。
-* **Timestamp**：历史记录事件的 UTC 时间戳。
-* **Name**：调用的函数的名称。
+* **时间戳**：历史记录事件的 UTC 时间戳。
+* **名称**：调用的函数的名称。
 * **输入**：函数的 JSON 格式的输入。
 * **Result**：函数的输出，即其返回值。
 
@@ -155,13 +159,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="sub-orchestrations"></a>子业务流程
 
-业务流程协调程序函数可以调用活动函数，但也可以调用其他业务流程协调程序函数。 例如，可以基于业务流程协调程序函数库构建更大的业务流程。 或者，你可以并行运行某个业务流程协调程序函数的多个实例。
+业务流程协调程序函数可以调用活动函数，但也可以调用其他业务流程协调程序函数。 例如，可以基于业务流程协调程序函数库构建更大的业务流程。 或者，可以并行运行某个业务流程协调程序函数的多个实例。
 
 有关详细信息和示例，请参阅[子业务流程](durable-functions-sub-orchestrations.md)一文。
 
 ### <a name="durable-timers"></a>持久计时器
 
-业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。  请在业务流程协调程序函数中使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。  在业务流程协调程序函数中应使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
 有关详细信息和示例，请参阅[持久计时器](durable-functions-timers.md)一文。
 
@@ -182,7 +186,7 @@ module.exports = df.orchestrator(function*(context) {
 
 有关详细信息和示例，请参阅[错误处理](durable-functions-error-handling.md)一文。
 
-### <a name="critical-sections-durable-functions-2x"></a>关键节 (Durable Functions 2.x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>关键节（Durable Functions 2.x，当前仅限 .NET）
 
 业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。 
 
@@ -212,7 +216,9 @@ public static async Task Synchronize(
 
 根据[协调程序函数代码约束](durable-functions-code-constraints.md)中所述，不允许业务流程协调程序函数执行 I/O。 此项限制的典型解决方法是将任何需要执行 I/O 的代码包装在某个活动函数中。 与外部系统交互的业务流程经常使用活动函数发出 HTTP 调用，并将结果返回给业务流程。
 
-若要简化这种常见模式，业务流程协调程序函数可以使用 .NET 中的 `CallHttpAsync` 方法直接调用 HTTP API。 除了支持基本请求/响应模式外，`CallHttpAsync` 还支持自动处理常见的异步 HTTP 202 轮询模式，并支持使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)对外部服务进行身份验证。
+# <a name="c"></a>[C#](#tab/csharp)
+
+若要简化这种常见模式，业务流程协调程序函数可以使用 `CallHttpAsync` 方法直接调用 HTTP API。
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+除了支持基本请求/响应模式外，该方法还支持自动处理常见的异步 HTTP 202 轮询模式，并支持使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)通过外部服务进行身份验证。
+
 有关详细信息和示例，请参阅 [HTTP 功能](durable-functions-http-features.md)一文。
 
 > [!NOTE]
@@ -251,9 +263,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="passing-multiple-parameters"></a>传递多个参数
 
-无法直接将多个参数传递给一个活动函数。 建议传入对象数组，或者在 .NET 中使用 [ValueTuples](https://https://docs.microsoft.com/dotnet/csharp/tuples) 对象。
+无法直接将多个参数传递给一个活动函数。 建议传入对象或复合对象的数组。
 
-以下示例使用了 [C# 7](https://https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
+# <a name="c"></a>[C#](#tab/csharp)
+
+在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -289,6 +303,36 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
     };
 }
 ```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>业务流程协调程序
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>活动
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

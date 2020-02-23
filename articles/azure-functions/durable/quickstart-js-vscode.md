@@ -1,23 +1,16 @@
 ---
 title: 使用 JavaScript 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio Code 创建并发布 Azure 持久函数。
-services: functions
-documentationcenter: na
 author: ColbyTresness
-manager: jeconnoc
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
-ms.service: azure-functions
 ms.topic: quickstart
-origin.date: 11/07/2018
-ms.date: 11/19/2019
-ms.author: v-junlch
+ms.date: 02/18/2020
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: ea515a72b97cbaf38cf7b88e0a862205b3ea6dc8
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: a280c4714856490a84afc1152f029846a06fcb94
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178974"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494572"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -29,7 +22,7 @@ ms.locfileid: "74178974"
 
 ![在 Azure 中运行持久函数](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -45,7 +38,31 @@ ms.locfileid: "74178974"
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>创建本地项目 
+
+在本部分，你将使用 Visual Studio Code 创建一个本地 Azure Functions 项目。 
+
+1. 在 Visual Studio Code 中，按 F1 键打开命令面板。 在命令面板中，搜索并选择 `Azure Functions: Create new project...`。
+
+1. 为项目工作区选择目录位置，然后选择“选择”  。
+
+    > [!NOTE]
+    > 这些步骤已设计为在工作区之外完成。 在这种情况下，请不要选择属于工作区内的项目文件夹。
+
+1. 按照提示提供所需语言的以下信息：
+
+    | Prompt | Value | 说明 |
+    | ------ | ----- | ----------- |
+    | 选择函数应用项目的语言 | Javascript | 创建本地 Node.js Functions 项目。 |
+    | 选择版本 | Azure Functions v2 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
+    | 为项目的第一个函数选择模板 | HTTP 触发器 | 在新的函数应用中创建一个 HTTP 触发的函数。 |
+    | 提供函数名称 | HttpTrigger | 按 Enter 以使用默认名称。 |
+    | 授权级别 | 函数 | `function` 授权级别要求在调用函数的 HTTP 终结点时提供访问密钥。 这样，就更难以访问不安全的终结点。 有关详细信息，请参阅[授权密钥](../functions-bindings-http-webhook-trigger.md#authorization-keys)。  |
+    | 选择打开项目的方式 | 添加到工作区 | 在当前工作区中创建函数应用。 |
+
+Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在新工作区中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 配置文件。 它还会创建一个 HttpExample 文件夹，其中包含 [function.json 定义文件](../functions-reference-node.md#folder-structure)和 [index.js 文件](../functions-reference-node.md#exporting-a-function)（包含函数代码的 Node.js 文件）
+
+此外，还会在根文件夹中创建 package.json 文件。
 
 ## <a name="install-the-durable-functions-npm-package"></a>安装 Durable Functions npm 包
 
@@ -167,4 +184,4 @@ ms.locfileid: "74178974"
 > [!div class="nextstepaction"]
 > [了解常见的持久函数模式](durable-functions-overview.md#application-patterns)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

@@ -2,15 +2,14 @@
 title: 使用连接的存储创建函数应用 - Azure CLI
 description: Azure CLI 脚本示例 - 创建用于连接到 Azure 存储的 Azure Function
 ms.topic: sample
-ms.date: 12/05/2019
+ms.date: 02/14/2020
 ms.custom: mvc
-ms.author: v-junlch
-ms.openlocfilehash: 20eca13b75134f9c45d913da5bedfc7a1ee1e69b
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 58bcc2e44c2878e7cea3ac336d50617050ad3dea
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884921"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428685"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>创建具有命名存储帐户连接的函数应用 
 

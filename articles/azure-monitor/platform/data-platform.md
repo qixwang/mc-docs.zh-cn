@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 origin.date: 03/26/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: edc253a1032ba4a69eeb64ac13cde6d9df166af1
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: f2d61078cf5fea77e3c27b61587f13ef01e3f8b9
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600137"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497525"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
 
@@ -49,7 +49,7 @@ Azure Monitor 中的指标存储在时序数据库中，该数据库经过优化
 Azure Monitor 中的日志存储在基于 [Azure 数据资源管理器](/data-explorer/)的 Log Analytics 工作区中。数据资源管理器提供强大的分析引擎和[丰富查询语言](https://docs.microsoft.com/azure/kusto/query/)。 日志通常提供足够的信息来给出所要识别的问题的完整上下文，在识别问题的根本原因时很有价值。
 
 > [!NOTE]
-> 必须将 Azure Monitor 日志与 Azure 中的日志数据源区分开来。 例如，Azure 中的订阅级事件将写入到可以通过 Azure Monitor 菜单查看的[活动日志](activity-logs-overview.md)。 大多数资源会将操作信息写入可转发到不同位置的[诊断日志](resource-logs-overview.md)。 Azure Monitor 日志是一个日志数据平台，它可以收集活动日志和诊断日志以及其他监视数据，以针对整个资源集提供深入分析。
+> 必须将 Azure Monitor 日志与 Azure 中的日志数据源区分开来。 例如，Azure 中的订阅级事件将写入到可以通过 Azure Monitor 菜单查看的[活动日志](platform-logs-overview.md)。 大多数资源会将操作信息写入可转发到不同位置的[诊断日志](platform-logs-overview.md)。 Azure Monitor 日志是一个日志数据平台，它可以收集活动日志和诊断日志以及其他监视数据，以针对整个资源集提供深入分析。
 
 
  可以在 Azure 门户中通过 Log Analytics 以交互方式使用[日志查询](../log-query/log-query-overview.md)，或者将结果添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果。 还可以创建[日志警报](alerts-log.md)，以根据计划查询的结果触发警报。
@@ -84,7 +84,7 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 
 ## <a name="stream-data-to-external-systems"></a>将数据流式传输到外部系统
-除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](/event-hubs/)直接从受监视资源完成的。 可将某些源配置为直接向事件中心发送数据，同时，可以使用另一个进程（例如逻辑应用）来检索所需的数据。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](stream-monitoring-data-event-hubs.md)。
+除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](/azure/event-hubs/)直接从受监视资源完成的。 可将某些源配置为直接向事件中心发送数据，同时，可以使用另一个进程（例如逻辑应用）来检索所需的数据。 有关详细信息，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](stream-monitoring-data-event-hubs.md)。
 
 
 

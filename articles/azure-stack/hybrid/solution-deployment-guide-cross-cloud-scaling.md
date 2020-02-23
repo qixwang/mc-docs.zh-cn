@@ -2,23 +2,20 @@
 title: 使用 Azure 和 Azure Stack Hub 部署可跨云缩放的应用
 description: 了解如何使用 Azure 和 Azure Stack Hub 部署可跨云缩放的应用。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 12d5bac3dbae2e60ef59321df4ee8959a0493cc7
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 337a2fb30b480f363736e0f0b177e3fa427849d1
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020358"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541064"
 ---
 # <a name="deploy-an-app-that-scales-cross-cloud-using-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 部署可跨云缩放的应用
-
-*适用于：Azure Stack Hub 集成系统和 Azure Stack Hub 开发工具包*
 
 了解如何创建可提供手动触发过程的跨云解决方案，以通过流量管理器使用自动缩放功能从 Azure Stack Hub 托管的 Web 应用切换到 Azure 托管的 Web 应用。 此过程确保云实用工具在承受负载时保持灵活性和可伸缩性。
 
@@ -35,11 +32,11 @@ ms.locfileid: "74020358"
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Azure Stack Hub 是 Azure 的扩展。 Azure Stack Hub 将云计算的灵活性和创新性带入本地环境，并支持唯一的混合云，支持在任何地方生成和部署混合应用。  
+> Azure Stack Hub 是 Azure 的扩展。 Azure Stack Hub 将云计算的灵活性和创新性带入你的本地环境，并支持唯一的混合云，以允许你在任何地方构建和部署混合应用。  
 > 
 > [混合应用程序的设计注意事项](overview-app-design-considerations.md)一文回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用设计，从而最大限度地减少生产环境中的难题。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 -   Azure 订阅。 如果需要，请在开始之前先创建 [1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -60,7 +57,7 @@ ms.locfileid: "74020358"
 
 -   需要装有 .NET 3.5 的 Windows Server 2016 VM。 将在 Azure Stack Hub 上的租户订阅中构建此 VM 作为专用生成代理。
 
--   Azure Stack Hub 市场中提供了[包含 SQL 2017 VM 映像的 Windows Server 2016](../operator/azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal)。 如果此映像不可用，请与 Azure Stack Hub 操作员协作，以确保将此映像添加到环境中。
+-   Azure Stack Hub 市场中提供了[包含 SQL 2017 VM 映像的 Windows Server 2016](../operator/azure-stack-add-vm-image.md)。 如果此映像不可用，请与 Azure Stack Hub 操作员协作，以确保将此映像添加到环境中。
 
 ## <a name="issues-and-considerations"></a>问题和注意事项
 

@@ -6,12 +6,12 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 09/12/2019
 ms.date: 11/30/2019
-ms.openlocfilehash: f0ed44947477ae900bb98f7e4eef9513d6a589fe
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 654963aca741f6889e02ee2c26b6887e4a7b1748
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599934"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497420"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -21,8 +21,8 @@ ms.locfileid: "75599934"
 
 * Azure CLI
 * Terraform
-* [使用 Azure Monitor](#enable-from-azure-monitor-in-the-portal)，或者在 Azure 门户中[直接使用 AKS 群集](#enable-directly-from-aks-cluster-in-the-portal) 
-* 通过 Azure PowerShell cmdlet `New-AzResourceGroupDeployment` 来使用[提供的 Azure 资源管理器模板](#enable-using-an-azure-resource-manager-template)，或者使用 Azure CLI。 
+* [使用 Azure Monitor](#enable-from-azure-monitor-in-the-portal)，或者在 Azure 门户中[直接使用 AKS 群集](#enable-directly-from-aks-cluster-in-the-portal)
+* 通过 Azure PowerShell cmdlet `New-AzResourceGroupDeployment` 来使用[提供的 Azure 资源管理器模板](#enable-using-an-azure-resource-manager-template)，或者使用 Azure CLI。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -68,14 +68,14 @@ provisioningState       : Succeeded
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. 以下示例以默认 JSON 格式显示订阅中的工作区列表。 
+3. 以下示例以默认 JSON 格式显示订阅中的工作区列表。
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
     在输出中，找到工作区名称，然后在字段 **id** 下复制该 Log Analytics 工作区的完整资源 ID。
- 
+
 4. 运行以下命令以启用监视加载项，并替换 `--workspace-resource-id` 参数的值。 字符串值必须在双引号内：
 
     ```azurecli
@@ -103,11 +103,11 @@ provisioningState       : Succeeded
 
 2. 按照 Terraform 文档中的步骤添加 [ azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)。
 
-## <a name="enable-from-azure-monitor-in-the-portal"></a>在门户中通过 Azure Monitor 来启用 
+## <a name="enable-from-azure-monitor-in-the-portal"></a>在门户中通过 Azure Monitor 来启用
 
 要启用 Azure Monitor 对 Azure 门户中的 AKS 群集的监视，请执行以下操作：
 
-1. 在 Azure 门户中选择“监视”。  
+1. 在 Azure 门户中选择“监视”。 
 
 2. 从列表中选择容器  。
 
@@ -116,22 +116,22 @@ provisioningState       : Succeeded
 4. 从非监视群集的列表中找到容器，然后单击“启用”  。   
 
 5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
-    列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。 
+    列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器见解监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。 
- 
-启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。 
+    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。
+
+启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
 ## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>在门户中直接使用 AKS 群集来启用
 
 若要在 Azure 门户中直接使用某个 AKS 群集来启用监视，请执行以下操作：
 
-1. 在 Azure 门户中，选择“所有服务”。  
+1. 在 Azure 门户中，选择“所有服务”。 
 
-2. 在资源列表中，开始键入“Containers”  。  列表会根据输入的内容进行筛选。 
+2. 在资源列表中，开始键入“Containers”  。  列表会根据输入的内容进行筛选。
 
 3. 选择“Kubernetes 服务”  。  
 
@@ -142,20 +142,20 @@ provisioningState       : Succeeded
 5. 在容器概述页面中，选择“监视容器”  。  
 
 6. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
-    列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。 
+    列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器运行状况监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。 
- 
-启用监视后，可能需要约 15 分钟才能查看群集的运行数据。 
+    >如果想要创建新的 Log Analytics 工作区用于存储来自群集的监视数据，请按照[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的说明进行操作。 确保在部署 AKS 容器的同一订阅中创建工作区。
+
+启用监视后，可能需要约 15 分钟才能查看群集的运行数据。
 
 ## <a name="enable-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板来启用
 
 此方法包含两个 JSON 模板。 一个模板指定用于启用监视的配置，另一个模板包含参数值，通过配置这些参数值可指定：
 
-* AKS 容器资源 ID。 
+* AKS 容器资源 ID。
 * 在其中部署群集的资源组。
 
 >[!NOTE]
@@ -165,14 +165,16 @@ provisioningState       : Succeeded
 必须创建 Log Analytics 工作区，然后才能使用 Azure PowerShell 或 CLI 来启用监视。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
-* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
+
+* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
 ### <a name="create-and-execute-a-template"></a>创建和执行模板
 
-1. 将以下 JSON 语法复制并粘贴到文件中：
+1. 将以下 JSON 语法复制并粘贴到该文件中：
 
     ```json
     {
@@ -257,20 +259,20 @@ provisioningState       : Succeeded
     }
     ```
 
-4. 使用 AKS 群集的“AKS 概述”页面中的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值  。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
+4. 使用 AKS 群集的“AKS 概述”页面中的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值  。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。
 
     编辑 **aksResourceTagValues** 的值，以匹配为 AKS 群集指定的现有标记值。
 
 5. 将此文件以“existingClusterParam.json”文件名保存到本地文件夹  。
 
-6. 已做好部署此模板的准备。 
+6. 已做好部署此模板的准备。
 
    * 若要使用 Azure PowerShell 进行部署，请在包含模板的文件夹中使用以下命令：
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
        ```
-       
+
        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
        ```powershell
@@ -278,7 +280,7 @@ provisioningState       : Succeeded
        ```
 
    * 若要使用 Azure CLI 进行部署，请运行下列命令：
-    
+
        ```azurecli
        az cloud set --name AzureChinaCloud
        az login
@@ -291,8 +293,8 @@ provisioningState       : Succeeded
        ```azurecli
        provisioningState       : Succeeded
        ```
-     
-       启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。 
+
+       启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。
 
 ## <a name="verify-agent-and-solution-deployment"></a>验证代理和解决方案部署
 
@@ -300,7 +302,7 @@ provisioningState       : Succeeded
 
 ### <a name="agent-version-06072018-or-later"></a>06072018 版或更高版本的代理
 
-运行以下命令，验证代理是否已成功部署。 
+运行以下命令，验证代理是否已成功部署。
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -309,7 +311,7 @@ kubectl get ds omsagent --namespace=kube-system
 输出应如下所示，指明其已正确部署：
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -323,7 +325,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 输出应如下所示，指明其已正确部署：
 
 ```
-User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
@@ -339,7 +341,7 @@ kubectl get ds omsagent --namespace=kube-system
 输出应如下所示，指明其已正确部署：  
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  

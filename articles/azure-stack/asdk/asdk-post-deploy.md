@@ -17,12 +17,12 @@ ms.date: 01/13/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: e64bd658c4ae6335d01126b8b1b05a149f369449
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 8f55de49d18a61a116e37eaf25f1ffb089b3c8b1
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540547"
 ---
 # <a name="post-deployment-configurations-for-asdk"></a>ASDK 的部署后配置
 
@@ -43,7 +43,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 无论是否与 ASDK 主机建立了 Internet 连接，都可以安装最新 Azure Stack PowerShell 模块：
 
 > [!IMPORTANT]
-> 在安装所需版本之前，请务必[卸载任何现有 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)。
+> 在安装所需版本之前，请务必[卸载任何现有 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules)。
 
 - 已从 ASDK 主计算机**建立 Internet 连接**：运行以下 PowerShell 脚本，以在 ASDK 安装中安装以下模块：
 

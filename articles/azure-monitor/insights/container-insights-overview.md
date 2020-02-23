@@ -1,19 +1,17 @@
 ---
 title: 用于容器的 Azure Monitor 概述 | Azure Docs
 description: 本文介绍用于容器的 Azure Monitor，它通过监视 AKS 群集和 Azure 中容器实例的运行状况监视 AKS 容器见解解决方案及其提供的值。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
 ms.author: v-lingwu
-origin.date: 11/18/2019
-ms.date: 12/04/2019
-ms.openlocfilehash: 48eeec760f8b110076cf7abe48c45259312b4b05
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+origin.date: 01/07/2020
+ms.date: 2/18/2020
+ms.openlocfilehash: 9a412fb127d1ac7f0b1c1754e34b442d1efc4fbf
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116939"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497613"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 

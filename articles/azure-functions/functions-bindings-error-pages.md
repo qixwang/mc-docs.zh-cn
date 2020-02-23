@@ -1,23 +1,16 @@
 ---
 title: Azure Functions 错误处理指南
 description: 了解如何处理 Azure Functions 中的错误，并提供指向特定绑定错误的链接。
-services: functions
-cloud: ''
-documentationcenter: ''
 author: craigshoemaker
-manager: gwallace
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 09/11/2019
-ms.date: 10/28/2019
+ms.date: 02/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3cab2b7e92b04cdd4d6ad27870d179065e9ff13f
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 31f40d3d804203f8bae7f34080cc52459776347f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034424"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494484"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理
 
@@ -35,7 +28,7 @@ ms.locfileid: "73034424"
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
-+ [Blob 存储](functions-bindings-storage-blob.md#exceptions-and-return-codes)
++ [Blob 存储](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
 + [事件中心](functions-bindings-event-hubs.md#exceptions-and-return-codes)
 
@@ -47,4 +40,4 @@ ms.locfileid: "73034424"
 
 + [表存储](functions-bindings-storage-table.md#exceptions-and-return-codes)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

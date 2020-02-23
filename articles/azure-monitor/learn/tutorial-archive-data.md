@@ -10,19 +10,19 @@ ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: b654525cde547da0a368ab74d8a1aac168f20fb4
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: d8b52127171ea5b6ca225c8e9955b3f5f8123d6f
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599771"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497641"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>使用 Azure 存储将 Azure 指标和日志数据存档
 
-Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和指标数据。 在数据超过保留期之后，你可能需要执行此操作，在不可搜索的低成本存储空间中保留某时间段内监视数据的历史记录。 
+Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和指标数据。 在数据超过保留期之后，你可能需要执行此操作，在不可搜索的低成本存储空间中保留某时间段内监视数据的历史记录。
 
-- Azure Monitor 平台指标可保留 93 天。 
-- 资源诊断日志仅在路由到 Log Analytics 时才显示，这些日志在 Log Analytics 中具有至少 30 天的可配置保留期。 
+- Azure Monitor 平台指标可保留 93 天。
+- 资源诊断日志仅在路由到 Log Analytics 时才显示，这些日志在 Log Analytics 中具有至少 30 天的可配置保留期。
 - 活动日志条目可存储 90 天。  
 
 本教程逐步介绍如何配置 Azure 环境以将数据存档到存储帐户。
@@ -47,7 +47,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>将订阅日志路由到存储帐户
 
-现可开始设置 Azure 环境，以便将监视数据路由到存储帐户。 首先配置要路由到存储帐户的订阅级数据（包含在 Azure 活动日志中）。 [**Azure 活动日志**](../../azure-monitor/platform/activity-logs-overview.md)提供 Azure 中的订阅级事件的历史记录。 可在 Azure 门户中浏览该日志来确定由谁在何时创建、更新或删除了哪些资源    。
+现可开始设置 Azure 环境，以便将监视数据路由到存储帐户。 首先配置要路由到存储帐户的订阅级数据（包含在 Azure 活动日志中）。 [**Azure 活动日志**](../../azure-monitor/platform/platform-logs-overview.md)提供 Azure 中的订阅级事件的历史记录。 可在 Azure 门户中浏览该日志来确定由谁在何时创建、更新或删除了哪些资源    。
 
 1. 单击左侧导航列表中的“监视器”按钮，然后单击“活动日志”   。
 

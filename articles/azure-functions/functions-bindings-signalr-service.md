@@ -3,14 +3,14 @@ title: Azure Functions SignalR 服务绑定
 description: 了解如何将 Azure Functions 与 SignalR 服务绑定配合使用。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/13/2020
+ms.date: 02/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: fc74ec8eab0bfff54b1a8c1754098776842a6e14
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: ebf9f456673690b02af5bbee6e4bb689de8e10fe
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116901"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428206"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
 
@@ -44,7 +44,7 @@ ms.locfileid: "76116901"
 
 若要详细了解如何使用此绑定来创建一个可以由 SignalR 客户端 SDK 使用的“协商”函数，请参阅 SignalR 服务概念文档中的[“Azure Functions 开发和配置”一文](../azure-signalr/signalr-concept-serverless-development-config.md)。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示了一个 [C# 函数](functions-dotnet-class-library.md)，该函数使用输入绑定获取 SignalR 连接信息，并通过 HTTP 将其返回。
 
@@ -58,7 +58,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 function.json  文件中的一个 SignalR 连接信息输入绑定，以及使用该绑定来返回连接信息的 [C# Script 函数](functions-reference-csharp.md)。
 
@@ -88,7 +88,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 SignalR 连接信息输入绑定，以及使用该绑定来返回连接信息的 [JavaScript 函数](functions-reference-node.md)。
 
@@ -114,7 +114,7 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以下示例演示了一个 [Java 函数](functions-reference-java.md)，该函数使用输入绑定获取 SignalR 连接信息，并通过 HTTP 将其返回。
 
@@ -140,7 +140,7 @@ public SignalRConnectionInfo negotiate(
 
 应用服务身份验证会设置名为 `x-ms-client-principal-id` 和 `x-ms-client-principal-name`（分别包含经身份验证的用户的客户端主体 ID 和名称）的 HTTP 标头。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `UserId` 属性设置为任一标头中的值。
 
@@ -157,7 +157,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
@@ -188,7 +188,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
@@ -216,7 +216,7 @@ module.exports = async function (context, req, connectionInfo) {
 ```
 
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
@@ -247,7 +247,7 @@ public SignalRConnectionInfo negotiate(
 
 以下示例演示使用输出绑定将一条消息发送给所有连接的客户端的函数。 target 是需要在每个客户端上调用的方法的名称  。 Arguments 是一个数组，其中包含要传递给客户端方法的零个或更多对象  。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -264,7 +264,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -299,7 +299,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -326,7 +326,7 @@ module.exports = async function (context, req) {
 };
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 @FunctionName("sendMessage")
@@ -350,7 +350,7 @@ public SignalRMessage sendMessage(
 
 可以设置 SignalR 消息的用户 ID，以便将消息只发送给已针对某个用户进行身份验证的连接  。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -369,7 +369,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 示例 function.json：
 
@@ -404,7 +404,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 示例 function.json：
 
@@ -431,7 +431,7 @@ module.exports = async function (context, req) {
 };
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 @FunctionName("sendMessage")
@@ -456,7 +456,7 @@ public SignalRMessage sendMessage(
 
 可以设置 SignalR 消息的组名称，以便将消息只发送给已添加到某个组的连接  。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -475,7 +475,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 示例 function.json：
 
@@ -510,7 +510,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 示例 function.json：
 
@@ -537,7 +537,7 @@ module.exports = async function (context, req) {
 };
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 @FunctionName("sendMessage")
@@ -562,7 +562,7 @@ public SignalRMessage sendMessage(
 
 SignalR 服务允许将用户添加到组。 然后即可将消息发送到组。 可以使用 `SignalR` 输出绑定来管理用户的组成员身份。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 #### <a name="add-user-to-a-group"></a>将用户添加到组
 
@@ -613,7 +613,7 @@ public static Task RemoveFromGroup(
 > [!NOTE]
 > 若要正确绑定 `ClaimsPrincipal`，必须已经在 Azure Functions 中配置身份验证设置。
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 #### <a name="add-user-to-a-group"></a>将用户添加到组
 
@@ -694,7 +694,7 @@ public static Task Run(
 > [!NOTE]
 > 若要正确绑定 `ClaimsPrincipal`，必须已经在 Azure Functions 中配置身份验证设置。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="add-user-to-a-group"></a>将用户添加到组
 
@@ -752,7 +752,7 @@ module.exports = async function (context, req) {
 };
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 #### <a name="add-user-to-a-group"></a>将用户添加到组
 
@@ -808,9 +808,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**|| 必须设置为 `signalRConnectionInfo`。|
-|**direction**|| 必须设置为 `in`。|
-|**name**|| 变量名称，在连接信息对象的函数代码中使用。 |
+|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|**direction**| 不适用 | 必须设置为 `in`。|
+|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**userId**|**UserId**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
@@ -821,9 +821,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**|| 必须设置为 `signalR`。|
-|**direction**|| 必须设置为 `out`。|
-|**name**|| 变量名称，在连接信息对象的函数代码中使用。 |
+|**type**| 不适用 | 必须设置为 `signalR`。|
+|**direction**| 不适用 | 必须设置为 `out`。|
+|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 

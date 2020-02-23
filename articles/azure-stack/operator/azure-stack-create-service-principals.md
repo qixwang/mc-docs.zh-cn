@@ -3,21 +3,18 @@ title: 使用应用标识访问资源
 description: 了解如何管理 Azure Stack Hub 服务主体。 可与基于角色的访问控制配合使用的、用于登录和访问资源的服务主体。
 author: WenJason
 ms.author: v-jay
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 11/11/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: e71ae3eaf1235adcb98266b110d5bc09b8f2de55
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 5cabb054866d91ae5694869a816b0c2d2c883e4e
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737851"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540877"
 ---
 # <a name="use-an-app-identity-to-access-azure-stack-hub-resources"></a>使用应用标识访问 Azure Stack Hub 资源
-
-*适用于：Azure Stack Hub 集成系统和 Azure Stack Hub 开发工具包 (ASDK)*
 
 需要通过 Azure 资源管理器部署或配置资源的应用程序必须以服务主体来表示。 如同用户以用户主体来表示，服务主体是一种代表应用的安全主体。 服务主体为应用提供标识，可让你只对该服务主体委托必要的权限。  
 

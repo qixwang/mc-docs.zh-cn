@@ -9,12 +9,12 @@ origin.date: 04/23/2019
 ms.date: 06/20/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 1142ff3045e6d5c1148eb117a8959006faf9fa23
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 035ffbb36892035d8dee93d8cad4f30e8bdc4466
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838918"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497479"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -38,7 +38,7 @@ ms.locfileid: "74838918"
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>未为你的订阅注册 Microsoft.Insights 资源提供程序
 
-需要在订阅中注册 *Microsoft.Insights* 资源提供程序才能浏览指标。 在许多情况下，该资源提供程序会自动注册（即，配置警报规则、自定义任何资源的诊断设置或配置自动缩放规则之后）。 如果未注册 Microsoft.Insights 资源提供程序，必须遵循 [Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)中所述的步骤手动将其注册。
+需要在订阅中注册 *Microsoft.Insights* 资源提供程序才能浏览指标。 在许多情况下，该资源提供程序会自动注册（即，配置警报规则、自定义任何资源的诊断设置或配置自动缩放规则之后）。 如果未注册 Microsoft.Insights 资源提供程序，必须遵循 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)中所述的步骤手动将其注册。
 
 **解决方案：** 打开“订阅”>“资源提供程序”选项卡，检查是否为订阅注册了 *Microsoft.Insights*。  
 

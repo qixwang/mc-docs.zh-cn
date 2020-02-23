@@ -25,16 +25,12 @@
       href: location-condition.md
     - name: 控制
       href: controls.md
-    - name: “仅报表”模式
-      href: concept-conditional-access-report-only.md
     - name: 服务依赖项
       href: service-dependencies.md
     - name: 假设分析工具
       href: what-if-tool.md
     - name: 经典策略迁移
       href: policy-migration.md
-    - name: 基线保护策略
-      href: concept-baseline-protection.md
 - name: 操作指南
   expanded: true
   items:
@@ -52,8 +48,6 @@
           href: howto-conditional-access-policy-all-users-mfa.md
         - name: 阻止传统身份验证
           href: howto-conditional-access-policy-block-legacy.md
-        - name: 要求在进行 MFA 注册时处于受信任的位置
-          href: howto-conditional-access-policy-registration.md
         - name: 按位置阻止访问
           href: howto-conditional-access-policy-location.md
         - name: 要求符合的设备
@@ -62,12 +56,8 @@
       href: block-legacy-authentication.md
     - name: 需要已批准的客户端应用
       href: app-based-conditional-access.md
-    - name: 需要应用保护策略
-      href: app-protection-based-conditional-access.md
     - name: 要求对来自不受信任网络的访问尝试执行 MFA
       href: untrusted-networks.md
-    - name: 登录频率和浏览器持久性控制
-      href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md
     - name: 故障排除

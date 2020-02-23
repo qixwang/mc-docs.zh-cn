@@ -13,14 +13,14 @@ ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 06/15/2018
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: apimpm
-ms.openlocfilehash: ec25daeae753585beaefd53cea07e80207cf8138
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 79d7a11d9e94f44a0adabdd1d4acf36eb124036b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859498"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428626"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "75859498"
 
 API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状态和运行状况。 下面汇总了一些可用指标：
 
-* 容量（预览版）：帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
+* 容量：帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
 * 网关请求总数：期间内的 API 请求数。 
 * 成功的网关请求数：接收成功的 HTTP 响应代码（包括 304、307 以及任何小于 301 的代码，例如 200）的 API 请求数。
 * 失败的网关请求数：接收错误的 HTTP 响应代码（包括 400 以及任何大于 500 的代码）的 API 请求数。

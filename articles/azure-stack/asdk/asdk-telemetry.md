@@ -13,25 +13,22 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: e868170c8cc6bc12dfb24308059cf30ad9cb72b5
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: e483101c1367d4ab3cb4a9fe7ed82f7f2e4f3830
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578508"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540965"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack 遥测
 
 Azure Stack 系统数据或遥测数据通过互连用户体验自动上传到 Azure。 Azure 团队主要使用从 Azure Stack 遥测收集的数据来改善客户体验。 此数据还用于安全性、运行状况、质量和性能分析。
 
 遥测可为 Azure Stack 操作员提供宝贵的见解来让他们洞察企业部署，并提供有助于构思 Azure Stack 新版本的看法。
-
-> [!NOTE]
-> Azure Stack 还可以配置为将用量信息转发到 Azure 进行计费。 选择即用即付计费模式的多节点 Azure Stack 客户一定要这样做。 用量报告通过遥测单独进行控制，选择容量模式的多节点 Azure Stack 客户或 Azure Stack 开发工具包 (ASDK) 用户无需使用此功能。 对于上述方案，可以[使用注册脚本](../operator/azure-stack-usage-reporting.md)来关闭用量报告。
 
 Azure Stack 遥测基于 Windows Server 2016 互连用户体验与遥测组件，该组件使用 [Windows 事件跟踪 (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) 跟踪日志记录技术来收集和存储遥测事件与数据。  Azure Stack 组件使用相同的日志记录技术，发布使用公共操作系统事件日志记录和跟踪 API 收集的事件与数据。 Azure Stack 组件的示例包括网络资源提供程序、存储资源提供程序、监视资源提供程序和更新资源提供程序。 互连用户体验与遥测组件使用 SSL 加密数据，并使用证书关联通过 HTTPS 将遥测数据传输到 Microsoft 数据管理服务。
 

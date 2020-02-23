@@ -10,16 +10,16 @@ origin.date: 12/07/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 1687604337124b6e63384e200174762f6e2e96f9
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: 178966e8a9fa1b19db2a73be8ae971a4fe57b179
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155545"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497471"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 
-[Azure 活动日志](activity-logs-overview.md) 可以方便用户深入了解 Azure 中发生的订阅级别事件。 本文详细介绍了如何使用不同的方法来查看和检索活动日志事件。
+[Azure 活动日志](platform-logs-overview.md) 可以方便用户深入了解 Azure 中发生的订阅级别事件。 本文详细介绍了如何使用不同的方法来查看和检索活动日志事件。
 
 ## <a name="azure-portal"></a>Azure 门户
 在 Azure 门户的“监视器”菜单中查看所有资源的活动日志。  在该资源的菜单的“活动日志”选项中查看特定资源的活动日志。 
@@ -29,7 +29,7 @@ ms.locfileid: "77155545"
 可以按以下字段筛选活动日志事件：
 
 * **时间跨度**：事件的开始时间和结束时间。
-* **类别**：[活动日志中的类别](activity-logs-overview.md#categories-in-the-activity-log)中所述的事件类别。
+* **类别**：[活动日志中的类别](activity-log-view.md#categories-in-the-activity-log)中所述的事件类别。
 * **订阅**：一个或多个 Azure 订阅名称。
 * **资源组**：所选订阅中的一个或多个资源组。
 * **资源(名称)** - 特定资源的名称。
@@ -52,6 +52,7 @@ ms.locfileid: "77155545"
 | 建议 | 包含 Azure 顾问提供的建议事件。 |
 | 安全性 | 包含 Azure 安全中心生成的任何警报的记录。 安全事件的一个示例是“执行了可疑的双扩展名文件”。  |
 | 策略 | 包含 Azure Policy 执行的所有效果操作的记录。 策略事件的示例包括审核  和拒绝  。 Policy 执行的每个操作建模为对资源执行的操作。 |
+<!-- View change history -->
 
 ## <a name="powershell"></a>PowerShell
 使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet 从 PowerShell 检索活动日志。 下面是一些常见示例。

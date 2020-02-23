@@ -2,15 +2,14 @@
 title: 创建连接到 Azure Cosmos DB 的函数应用 - Azure CLI
 description: Azure CLI 脚本示例 - 创建用于连接到 Azure Cosmos DB 的 Azure Function
 ms.topic: sample
-ms.date: 12/05/2019
+ms.date: 02/14/2020
 ms.custom: mvc
-ms.author: v-junlch
-ms.openlocfilehash: dd2852d0085c576bab18e41df6c1bddafd1f4e7e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: f47eb42d2da7506d0fa8603154f204ef0ec51319
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884943"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428687"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>创建用于连接到 Azure Cosmos DB 的 Azure Function
 

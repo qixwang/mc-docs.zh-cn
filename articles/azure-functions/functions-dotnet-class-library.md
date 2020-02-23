@@ -2,13 +2,13 @@
 title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: reference
-ms.date: 12/31/2019
-ms.openlocfilehash: 2636cd01f139111bdf079578a1b1ab311bde81d1
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 02/18/2020
+ms.openlocfilehash: 23fb7c15a0b913e55781dd74fb9ee6e1c2e8b9fd
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624119"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494517"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -204,7 +204,7 @@ Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
-每个绑定都具有其自己支持的类型；例如，blob 触发器属性可以应用于字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持的类型之一。 [适用于 blob 绑定的绑定参考文章](functions-bindings-storage-blob.md#trigger---usage)列出了所有受支持的参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
+每个绑定都具有其自己支持的类型；例如，blob 触发器属性可以应用于字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持的类型之一。 [适用于 blob 绑定的绑定参考文章](functions-bindings-storage-blob-trigger.md#usage)列出了所有受支持的参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -351,7 +351,7 @@ public static class EnvironmentVariablesExample
 
 ### <a name="single-attribute-example"></a>单属性示例
 
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，然后将字符串写入此 blob。
+下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob-output.md)，然后将字符串写入此 blob。
 
 ```cs
 public static class IBinderExample

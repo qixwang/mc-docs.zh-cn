@@ -9,15 +9,15 @@ origin.date: 12/04/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: b5ee0ec162d817c7286406e97f62ccc6055b6bb5
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: fcd1721a6bd2184f7f8060620f2836aedcd42bfa
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599862"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497468"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-[Azure 活动日志](activity-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
+[Azure 活动日志](platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
 
 以下示例显示了从门户、PowerShell、CLI 和 REST API 访问活动日志时的架构。 [将活动日志流式传输到存储或事件中心](resource-logs-stream-event-hubs.md)时，架构是不同的。 本文末尾提供了这些属性到[资源日志架构](diagnostic-logs-schema.md)的映射。
 
@@ -756,7 +756,7 @@ ms.locfileid: "75599862"
 | eventName | “BeginRequest”或“EndRequest”。 “BeginRequest”用于延迟的 auditIfNotExists 和 deployIfNotExists 评估，并且在 deployIfNotExists 效果启动模板部署时使用。 所有其他操作返回“EndRequest”。 |
 | category | 将活动日志事件声明为属于“Policy”。 |
 | eventTimestamp | 处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
-| id | 特定资源中的事件的唯一标识符。 |
+| ID | 特定资源中的事件的唯一标识符。 |
 | level | 事件的级别。 审核使用“警告”，拒绝使用“错误”。 auditIfNotExists 或 deployIfNotExists 错误可以根据严重性生成“警告”或“错误”。 所有其他 Policy 事件使用“信息”。 |
 | operationId | 在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName | 操作的名称，与策略效果直接相关。 |
@@ -866,6 +866,6 @@ ms.locfileid: "75599862"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](activity-logs-overview.md)
+* [了解有关活动日志的更多信息](platform-logs-overview.md)
 * [将活动日志导出到 Azure 存储或事件中心](activity-log-export.md)
 
