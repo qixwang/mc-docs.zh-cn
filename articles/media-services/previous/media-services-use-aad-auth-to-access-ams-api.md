@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: e24caca64abf992503004f2368ed862ecea27af6
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 6f72711e84dd116a297be23cd8df536ede8b9ea0
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124664"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494503"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API  
 
@@ -48,7 +48,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 将 Azure AD 身份验证与 Azure 媒体服务结合使用时，可以选择下列两个身份验证选项：
 
 - **用户身份验证**。 验证使用应用程序与媒体服务资源进行交互的用户。 交互式应用程序应先提示用户输入用户凭据。 例如，授权用户用来监视编码作业或实时传送视频流的管理控制台应用程序。 
-- **服务主体身份验证**。 验证服务。 常常使用这种身份验证方法的应用程序是运行守护程序服务、中间层服务或计划作业的应用程序。 例如，Web 应用程序、函数应用程序、逻辑应用程序、API 和微服务。
+- **服务主体身份验证**。 对服务进行身份验证。 常常使用这种身份验证方法的应用程序是运行守护程序服务、中间层服务或计划作业的应用程序。 例如，Web 应用程序、函数应用程序、逻辑应用程序、API 和微服务。
 
 ### <a name="user-authentication"></a>用户身份验证 
 
@@ -96,7 +96,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 若要了解如何通过 Azure AD 身份验证使用媒体服务 .NET 客户端 SDK 与 REST 请求进行通信，请参阅[通过 Azure AD 身份验证使用 .NET 访问媒体服务 API](media-services-dotnet-get-started-with-aad.md)。 
 
-如果未使用媒体服务 .NET 客户端 SDK，必须使用第 2 步所述参数，手动创建 Azure AD 访问令牌请求。 有关详细信息，请参阅[如何使用 Azure AD 身份验证库获取 Azure AD 令牌](../../active-directory/develop/active-directory-authentication-libraries.md)。
+如果未使用媒体服务 .NET 客户端 SDK，必须使用第 2 步所述参数，手动创建 Azure AD 访问令牌请求。 有关详细信息，请参阅[如何使用 Azure AD 身份验证库获取 Azure AD 令牌](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
 
@@ -138,7 +138,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 若要详细了解如何通过 Azure AD 身份验证使用媒体服务 .NET 客户端 SDK 与 REST 请求进行通信，请参阅[通过 Azure AD 身份验证使用 .NET 访问 Azure 媒体服务 API](media-services-dotnet-get-started-with-aad.md)。 
 
-如果未使用媒体服务 .NET 客户端 SDK，必须使用第 1 步所述参数，手动创建 Azure AD 访问令牌请求。 有关详细信息，请参阅[如何使用 Azure AD 身份验证库获取 Azure AD 令牌](../../active-directory/develop/active-directory-authentication-libraries.md)。
+如果未使用媒体服务 .NET 客户端 SDK，必须使用第 1 步所述参数，手动创建 Azure AD 访问令牌请求。 有关详细信息，请参阅[如何使用 Azure AD 身份验证库获取 Azure AD 令牌](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 

@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 09/03/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 45159a42da6c4f774d9594363b2a6af95f5726ce
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: ab2f1c4372f95ca7781f76ee16383c63923c94c7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964999"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428313"
 ---
+<!--Verified successfully-->
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
 在正常操作容器实例期间，你可能认为有必要更新[容器组](container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新映像版本、更改 DNS 名称、更新环境变量，或刷新其应用程序已崩溃的容器的状态。

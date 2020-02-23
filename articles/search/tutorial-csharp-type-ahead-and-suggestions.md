@@ -3,18 +3,18 @@ title: 有关自动完成功能和建议的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程演示使用下拉列表收集用户的搜索词输入时的自动完成功能和建议。 它基于现有的酒店项目。
 manager: nitinme
-author: PeterTurcan
+author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: db31232bf9e6d29a0466a20853de1db267f6f1a0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 93d1c70595208a505ca16f57b32da8d8c47f7617
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335854"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501439"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# 教程：添加自动完成功能和建议 - Azure 认知搜索
 
@@ -27,7 +27,7 @@ ms.locfileid: "75335854"
 > * 添加自动完成功能
 > * 结合使用自动完成功能和建议
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 

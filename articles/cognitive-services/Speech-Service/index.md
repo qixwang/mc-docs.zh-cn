@@ -6,12 +6,12 @@ ms.author: v-tawe
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
-ms.openlocfilehash: e00b542528428d612f3188e65785f5abbb2adeb5
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 28dbf3cc16507efb9cf138b5ec079b2699ed8bb0
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028103"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494548"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -381,7 +381,7 @@ ms.locfileid: "77028103"
                         <a href="#deploy-architecture">承载</a>
                         <ul id="deploy-architecture" class="cardsC">
                             <li>
-                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure">
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -400,7 +400,7 @@ ms.locfileid: "77028103"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/sovereign-clouds">
+                                <a href="https://docs.azure.cn/cognitive-services/speech-service/sovereign-clouds">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

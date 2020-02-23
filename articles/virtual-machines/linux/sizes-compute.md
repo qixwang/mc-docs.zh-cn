@@ -1,5 +1,5 @@
 ---
-title: 计算优化虚拟机大小 | Azure
+title: 计算优化虚拟机大小
 description: 列出 Azure 中适用于 Linux 虚拟机的各种计算优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 07/06/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: e41b9d079d9f04012228a5f0023714e2853c6e7e
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: c02c331e96dbbe9fb8c7413fdc50823c79a560c2
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272846"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428377"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 

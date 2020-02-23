@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 从快照创建 VM | Azure
+title: 使用 PowerShell 从快照创建虚拟机
 description: Azure PowerShell 脚本示例 - 从快照创建 VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 05/10/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9d43102744a432c70e5e757f690739a81b461df1
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 8b7e342b7ca91160fe472720648bba99512d6f33
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272014"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428744"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>使用 PowerShell 从快照创建虚拟机
 

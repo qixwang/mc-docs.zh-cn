@@ -6,14 +6,14 @@ author: WenJason
 ms.service: dns
 ms.topic: article
 origin.date: 06/15/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 52f57d4d6fbc3925ce43f69b2cf954882288b66a
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.openlocfilehash: 433c3a8a53c2f250113192346a056dafeaf0b721
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777457"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428752"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -127,7 +127,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 移动 DNS 区域不会影响 DNS 查询。 分配给区域的名称服务器将保持不变。 DNS 查询将以正常的吞吐量进行处理。
 
-有关如何移动 DNS 区域的详细信息和说明，请参阅[将资源移动至新资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+有关如何移动 DNS 区域的详细信息和说明，请参阅[将资源移动至新资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>DNS 更改多久生效？
 

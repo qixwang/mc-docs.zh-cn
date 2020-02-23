@@ -6,16 +6,16 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 01/28/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 72443ff93c19475e3bbece001e904e84453690aa
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ebd3fbaffe7746d0394089971ffac018027af805
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334980"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540076"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -78,13 +78,11 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 
 所有事件与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。
 
-## <a name="pci-soc-and-iso-compliant"></a>符合 PCI、SOC 和 ISO 标准
+## <a name="compliance-certifications"></a>符合性认证
 
-Azure 防火墙符合支付卡行业 (PCI)、服务组织控制 (SOC) 和国际标准化组织 (ISO) 标准。 它目前支持 SOC 1 类型 2、SOC 2 类型 2、SOC 3、PCI DSS 和 ISO 27001、27018、20000-1、22301、9001、27017。
+Azure 防火墙符合支付卡行业 (PCI)、服务组织控制 (SOC) 和国际标准化组织 (ISO) 标准。
 
-有关详细信息，请参阅 [Azure 合规性指南](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)。
-
-<!--MOONCAKE: CORRECT ON [Azure Compliance Guide]-->
+<!--Not Available on [Azure Firewall compliance certifications](compliance-certifications.md)-->
 
 ## <a name="known-issues"></a>已知问题
 
@@ -92,11 +90,10 @@ Azure 防火墙存在以下已知问题：
 
 |问题  |说明  |缓解措施  |
 |---------|---------|---------|
-针对非 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](/load-balancer/load-balancer-standard-overview#limitations) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。|
+针对非 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](/load-balancer/load-balancer-overview) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。|
 |缺少对 ICMP 的 PowerShell 和 CLI 支持|Azure PowerShell 和 CLI 不支持使用 ICMP 作为网络规则中的有效协议。|仍然可以通过门户和 REST API 使用 ICMP 作为协议。 我们正在致力于在不久之后在 PowerShell 和 CLI 中添加 ICMP。|
 |FQDN 标记要求设置 protocol: port|带有 FQDN 标记的应用程序规则需要 port:protocol 定义。|可以将 **https** 用作 port: protocol 值。 我们正在致力于使此字段在使用了 FQDN 标记时可选。|
 |不支持将防火墙移动到不同的资源组或订阅|不支持将防火墙移动到不同的资源组或订阅。|我们已计划提供此功能的支持。 若要将防火墙移动到不同的资源组或订阅，必须删除当前实例并在新的资源组或订阅中重新创建它。|
-|网络和应用程序规则的端口范围|端口限制为 64,000，因为高端口是为管理和运行状况探测保留的。 |我们正在努力放宽此限制。|
 |威胁智能警报可能会被屏蔽|配置为仅警报模式时，目标为 80/443 的用于出站筛选的网络规则会屏蔽威胁智能警报。|使用应用程序规则为 80/443 创建出站筛选。 或者，将威胁智能模式更改为“提醒和拒绝”  。|
 |Azure 防火墙只将 Azure DNS 用于名称解析|Azure 防火墙只使用 Azure DNS 来解析 FQDN。 不支持自定义 DNS 服务器。 对其他子网上的 DNS 解析没有影响。|我们正在努力放宽此限制。|
 |Azure 防火墙 SNAT/DNAT 不适用于专用 IP 目标|Azure 防火墙 SNAT/DNAT 支持仅限于 Internet 出口/入口。 SNAT/DNAT 目前不适用于专用 IP 目标。 例如，分支到分支。|这是当前的一项限制。|
@@ -104,6 +101,7 @@ Azure 防火墙存在以下已知问题：
 |对入站连接的 SNAT|除了 DNAT 以外，通过防火墙公共 IP 地址（入站）建立的连接将通过 SNAT 转换为某个防火墙专用 IP。 当前提出此项要求（也适用于主动/主动 NVA）的目的是确保对称路由。|若要保留 HTTP/S 的原始源，请考虑使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 标头。 
 |仅在代理模式下支持 SQL FQDN 筛选（端口 1433）|对于 Azure SQL 数据库、Azure SQL 数据仓库和 Azure SQL 托管实例：<br /><br />在预览期间，仅在代理模式下支持 SQL FQDN 筛选（端口 1433）。<br /><br />对于 Azure SQL IaaS：<br /><br />如果使用的是非标准端口，则可以在应用程序规则中指定这些端口。|对于采用重定向模式的 SQL（这是从 Azure 内连接时采用的默认设置），可以通过将 SQL 服务标记用作 Azure 防火墙网络规则的一部分来改为对访问进行筛选。
 |不允许 TCP 端口 25 上的出站流量| 将阻止使用 TCP 端口 25 的出站 SMTP 连接。 端口 25 主要用于未经身份验证的电子邮件传递。 这是虚拟机的默认平台行为。 有关详细信息，请参阅[排查 Azure 中的出站 SMTP 连接问题](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。 但是，与虚拟机不同，目前无法在 Azure 防火墙上启用此功能。|按照“SMTP 故障排除”一文中所述的推荐方法发送电子邮件。 或者，从到防火墙的默认路由中排除需要出站 SMTP 访问的虚拟机，改为配置直接到 Internet 的出站访问。
+|不支持主动 FTP|在 Azure 防火墙上禁用主动 FTP，防范使用 FTP PORT 命令进行的 FTP 弹跳攻击。|可以改用被动 FTP。 仍需在防火墙上显式打开 TCP 端口 20 和 21。
 
 <!--Not Available on Line 93 on Availability Zones-->
 <!--Not Available on Line 94 SNAT on inbound connection [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend)-->

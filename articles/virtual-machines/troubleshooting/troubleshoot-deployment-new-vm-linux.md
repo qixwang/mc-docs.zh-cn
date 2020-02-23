@@ -1,5 +1,5 @@
 ---
-title: 排查在 Azure 中创建新 Linux 虚拟机时遇到的资源管理器部署问题 | Azure
+title: 排查在 Azure 中创建新 Linux 虚拟机时遇到的 Resource Manager 部署问题
 description: 排查在 Azure 中创建新 Linux 虚拟机时遇到的 Resource Manager 部署问题
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 origin.date: 09/09/2016
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ba127b88737137a5728b0851919971efc0446260
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 3a586ea4af1ecb21eb67b769c06854dbd949290f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272021"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428850"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中创建新 Linux 虚拟机时遇到的 Resource Manager 部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "72272021"
 ## <a name="collect-activity-logs"></a>收集活动日志
 若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关要遵循的过程的详细信息。
 
-[查看部署操作](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
 [通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
 
@@ -90,3 +90,5 @@ ms.locfileid: "72272021"
 
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中启动已停止的 Linux VM 或调整现有 Linux VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动或调整现有 Linux 虚拟机大小时遇到的 Resource Manager 部署问题](../linux/restart-resize-error-troubleshooting.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

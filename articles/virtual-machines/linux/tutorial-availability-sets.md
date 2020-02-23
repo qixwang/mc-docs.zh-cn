@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure CLI 创建和部署高度可用的虚拟机 | Azure
+title: 教程 - Azure 中 Linux VM 的高可用性
 description: 本教程介绍了如何使用 Azure CLI 在可用性集中部署高度可用的虚拟机
 documentationcenter: ''
 services: virtual-machines-linux
@@ -12,16 +12,16 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
-origin.date: 08/24/2018
-ms.date: 11/11/2019
+origin.date: 01/17/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: c553c7ab81fcf2b324d62dec49f15f55c6d28f64
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 743de47bdb30b870db7e325b99d5672592194f38
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831350"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428005"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和部署高度可用的虚拟机
 
@@ -38,20 +38,11 @@ ms.locfileid: "73831350"
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="high-availability-in-azure-overview"></a>Azure 中的高可用性概述
-可以通过多种不同的方式创建 Azure 中的高可用性。 一种选择是可用性集。 通过使用可用性集，你的 VM 将受到保护，从而免受数据中心内可能发生的故障的影响。 这包括硬件故障和 Azure 软件故障。 
-
-<!--Not Available on By using availability zones, your VMs will be placed on physically separate infrastructure with no shared resources, and will therefore be protected from entire datacenter failures.-->
-
-在 Azure 中部署基于 VM 的可靠解决方案时，使用可用性集。
-
-### <a name="availability-set-overview"></a>可用性集概述
+## <a name="overview"></a>概述
 
 可用性集是一种逻辑分组功能，在 Azure 中使用它可以确保将 VM 资源部署在 Azure 数据中心后，这些资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果出现硬件或 Azure 软件故障，只有一部分 VM 会受到影响，整体应用程序仍会保持运行，可供客户使用。 如果想要构建可靠的云解决方案，可用性集是一项关键功能。
 
 假设某个基于 VM 的典型解决方案包含四个前端 Web 服务器，并使用两个托管数据库的后端 VM。 在 Azure 中，需要在部署 VM 之前先定义两个可用性集：一个可用性集用于“Web”层，另一个可用性集用于“数据库”层。 创建新的 VM 时，可在 az vm create 命令中指定可用性集作为参数，Azure 会自动确保在可用性集中创建的 VM 在多个物理硬件资源之间保持独立。 如果运行某个 Web 服务器或数据库服务器的物理硬件有问题，可以确信 Web 服务器和数据库 VM 的其他实例会保持运行状态，因为它们位于不同的硬件上。
-
-<!--Not Available on ### Availability zone overview-->
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 

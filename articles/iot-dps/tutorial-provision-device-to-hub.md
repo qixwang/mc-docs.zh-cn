@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure IoT 中心设备预配服务预配设备 | Microsoft Docs
-description: 使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心
+title: 教程 - 使用 Azure IoT 中心设备预配服务预配设备
+description: 本教程介绍如何使用 Azure IoT 中心设备预配服务 (DPS) 将设备预配到单个 IoT 中心
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/12/2018
-ms.date: 07/15/2019
+ms.author: v-tawe
+origin.date: 11/12/2019
+ms.date: 03/02/2020
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9b33706cfa0e819191e5439714cc2b34b124a726
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: e2b36a3c286183b13c8dcf72494c118bf0aa33dd
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389585"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494379"
 ---
-# <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
 前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何通过此服务使用自动预配和 **_注册列表_** 将设备预配到单一 IoT 中心。 本教程演示如何：
 
@@ -26,7 +25,7 @@ ms.locfileid: "74389585"
 > * 启动设备
 > * 验证设备已注册
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 继续之前，请确保已按[使用 Azure IoT 中心设备预配服务设置要预配的设备](./tutorial-set-up-device.md)教程所述配置设备。
 

@@ -2,19 +2,19 @@
 title: 使用 Azure 门户创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 此门户快速入门介绍如何使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 6efcac86a847ce4cbb2756e00a1721c72ca923e0
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: a6315736110ad399113b5d58b89a2c0eb10e1f34
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179337"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501425"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -138,6 +138,9 @@ ms.locfileid: "77179337"
 我们继续。现在应已创建了一个可以使用内置[**搜索资源管理器**](search-explorer.md)查询页查询的搜索索引。 该页提供了一个搜索框，用于测试任意查询字符串。
 
 **搜索浏览器**仅用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)，但它接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作中使用的所有搜索参数。
+
+<!-- > [!TIP] -->
+<!-- > The following steps are demonstrated at 6m08s into the [Azure Cognitive Search Overview video](https://channel9.msdn.com/Events/Connect/2016/138). -->
 
 1. 单击命令栏上的“搜索浏览器”  。
 

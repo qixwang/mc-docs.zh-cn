@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 01/30/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 74813368a6fdb31141832f83dd1f0dc222910230
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 58c8cd36074477d255924aa7839d582483b89961
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029303"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430163"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -57,10 +57,10 @@ python quickstart.py
 ```python
 import azure.cognitiveservices.speech as speechsdk
 
-# Creates an instance of a speech config with specified subscription key and service region.
+# Creates an instance of a speech config with specified host and subscription key.
 # Replace with your own subscription key and service region (e.g., "chinaeast2").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
+speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
 
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.

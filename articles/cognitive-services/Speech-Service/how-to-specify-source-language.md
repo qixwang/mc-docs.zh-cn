@@ -12,12 +12,12 @@ origin.date: 01/07/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: fa72ef428c9d50dcc615892b46812fc70320a71f
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 476a59c89cd5c82cfa6bf1324362deeb14245459
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028177"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428773"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 
@@ -30,6 +30,7 @@ ms.locfileid: "77028177"
 在此示例中，使用 `SpeechRecognizer` 构造将源语言显式作为参数提供。
 
 ```csharp
+var speechConfig = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
@@ -60,6 +61,7 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 在此示例中，源语言是使用 `FromConfig` 方法作为参数显式提供的。
 
 ```C++
+auto speechConfig = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
@@ -89,6 +91,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 在此示例中，源语言是在创建新的 `SpeechRecognizer` 时显式提供的。
 
 ```Java
+SpeechConfig speechConfig = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
@@ -118,8 +121,8 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 第一步是创建 `speech_config`：
 
 ```Python
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
+speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
 ```
 
 接下来，使用 `speech_recognition_language` 指定音频的源语言：
@@ -143,7 +146,7 @@ speech_config.endpoint_id = "The Endpoint ID for your custom model."
 第一步是创建 `SpeechConfig`：
 
 ```Javascript
-var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionkey", "YourRegion");
+var speechConfig = sdk.SpeechConfig.fromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 ```
 
 接下来，使用 `speechRecognitionLanguage` 指定音频的源语言：
@@ -163,7 +166,7 @@ speechConfig.endpointId = "The Endpoint ID for your custom model.";
 第一步是创建 `speechConfig`：
 
 ```Objective-C
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
+SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:@"wss://YourServiceRegion.stt.speech.azure.cn/" subscription:@"YourSubscriptionKey"];
 ```
 
 接下来，使用 `speechRecognitionLanguage` 指定音频的源语言：

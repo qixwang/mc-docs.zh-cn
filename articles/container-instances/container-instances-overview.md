@@ -6,12 +6,12 @@ origin.date: 04/25/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 69b879fea785a9b3844215a19d07368552a25cf7
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 209371fa8d0f4280f70ca2da7565fbde6ca63a7b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068084"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428891"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -55,7 +55,9 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 * 每个容器组多个容器
 * 卷装载（[Azure 文件存储](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[机密](container-instances-volume-secret.md)）
 * Azure Monitor 的[资源使用情况指标](container-instances-monitor.md)
-* [虚拟网络部署](container-instances-vnet.md)
+
+    <!--Not Available on * [Virtual network deployment](container-instances-vnet.md)-->
+    
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
 对于 Windows 容器部署，请基于常用 [Windows 基础映像](container-instances-faq.md#what-windows-base-os-images-are-supported)使用映像。
@@ -67,9 +69,11 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 
 Azure 容器实例支持对共享主机、本地网络、存储和生命周期的[多容器组](container-instances-container-groups.md)进行计划。 这样即可将主要应用程序容器与其他配角容器（例如日志记录分支）结合使用。
 
-## <a name="virtual-network-deployment"></a>虚拟网络部署
+<!--Pending for Verified from PM-->
 
-Azure 容器实例的此功能目前可用于一部分 Azure 区域中的生产工作负荷，它支持[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
+<!--Not Available on ## Virtual network deployment-->
+
+<!--Not Available on Currently available for production workloads in a subset of Azure regions, this feature of Azure Container Instances enables [deployment of container instances into an Azure virtual network](container-instances-vnet.md). By deploying container instances into a subnet within your virtual network, they can communicate securely with other resources in the virtual network, including those that are on premises (through [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or [ExpressRoute](../expressroute/expressroute-introduction.md)).-->
 
 ## <a name="next-steps"></a>后续步骤
 

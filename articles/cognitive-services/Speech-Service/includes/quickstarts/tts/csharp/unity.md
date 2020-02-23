@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 787b2062964c88ac1527a47290761432bc275190
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: cc3c1bf347bd90555c3d27571ab826528c85c50c
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123514"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430074"
 ---
 > [!NOTE]
 > Unity 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）。
@@ -153,9 +153,9 @@ ms.locfileid: "76123514"
                 message = "Click button to synthesize speech";
                 speakButton.onClick.AddListener(ButtonClick);
     
-                // Creates an instance of a speech config with specified subscription key and service region.
+                // Creates an instance of a speech config with specified host and subscription key.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+                speechConfig = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
     
                 // The default format is Riff16Khz16BitMonoPcm.
                 // We are playing the audio in memory as audio clip, which doesn't require riff header.

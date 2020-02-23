@@ -1,24 +1,22 @@
 ---
-title: 将 Windows 虚拟机从非托管磁盘转换为托管磁盘 | Azure
+title: 将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 description: 如何在资源管理器部署模型中使用 PowerShell 将 Windows VM 从非托管磁盘转换为托管磁盘
 author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 origin.date: 07/12/2018
-ms.date: 09/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7e3c50dfec966171b316feb2100ec228d94acd1f
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.openlocfilehash: e3fb701fcbe8676f52d2a2c2868e54b3247cd0f8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921133"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428763"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
 如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程会同时转换 OS 磁盘和任何附加的数据磁盘。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>准备阶段
 

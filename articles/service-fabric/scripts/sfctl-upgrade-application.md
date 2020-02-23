@@ -1,5 +1,5 @@
 ---
-title: Service Fabric CLI 脚本示例 - 更新群集上的应用程序
+title: 更新 sfctl 中群集上的应用程序
 description: Service Fabric CLI 脚本示例 - 使用新版本更新应用程序。 此示例还使用新位升级已部署的应用程序。
 services: service-fabric
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 12/06/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: c41cce2a041da7786f2ed3b3966c9eb7bcc05286
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 7ee6b78f38daf6281810a07acb8957971f227eb1
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742360"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540706"
 ---
 # <a name="update-an-application-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 更新应用程序
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 从快照创建托管磁盘 | Azure
+title: 使用 CLI 从快照创建托管磁盘
 description: Azure CLI 脚本示例 - 从快照创建托管磁盘
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,15 +14,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 05/19/2017
-ms.date: 04/01/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: e915b2546c7221309ff04fa6d3e197d4fb98b5ea
-ms.sourcegitcommit: 9324f87df6b9b7ea31596b423d33b6cb5fd41aad
+ms.openlocfilehash: f715ef2db954c81bc827f51991d7ed704485da50
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72749602"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428153"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>使用 CLI 从快照创建托管磁盘
 
@@ -71,14 +71,13 @@ az disk create --resource-group $resourceGroupName --name $diskName --sku $stora
 
 | 命令 | 注释 |
 |---|---|
-| [az snapshot show](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-show) | 使用快照的名称和资源组属性获取快照的所有属性。 使用 ID 属性创建托管磁盘。  |
-| [az disk create](https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-create) | 使用托管快照的快照 ID 创建托管磁盘 |
+| [az snapshot show](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-show) | 使用快照的名称和资源组属性获取该快照的所有属性。 使用 ID 属性创建托管磁盘。  |
+| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 使用托管快照的快照 ID 创建托管磁盘 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/zh-cn/cli/index?view=azure-cli-latest)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 
 可以在 [Azure Windows VM 文档](../windows/cli-samples.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
 
-<!-- Update_Description: update meta properties, udpate powershell az cmdlet -->
-<!-- ms.date: 04/01/2018 -->
+<!-- Update_Description: update meta properties, wording update, update link -->

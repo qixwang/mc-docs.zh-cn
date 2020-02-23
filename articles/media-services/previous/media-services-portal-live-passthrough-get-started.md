@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 5bfd9a5435b398e5120278cd63f2dcd86a86ac38
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 974cd715baeb8a4ed415cfc58f915762643a6c3f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124631"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494276"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>在 Azure 门户中使用本地编码器实时传送流
 > [!div class="op_single_selector"]
@@ -35,12 +35,12 @@ ms.locfileid: "71124631"
 
 本教程指导你完成相关步骤，使用 Azure 门户创建经配置后可直通传递的“通道”  。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。 
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
-* 网络摄像机。 例如， [Telestream Wirecast 编码器](https://www.telestream.net/wirecast/overview.htm)。
+* 网络摄像机。 例如， [Telestream Wirecast 编码器](media-services-configure-wirecast-live-encoder.md)。 
 
 强烈建议阅读以下文章：
 
@@ -96,7 +96,7 @@ ms.locfileid: "71124631"
 
 不应重复使用现有的直播活动。 与之相反，应针对每个事件创建并启动新事件。
 
-在准备好开始流式传输和存档时，启动事件。 在要停止对事件进行流式传输和存档时，停止节目。 
+在准备好开始流式传输和存档时，启动事件。 要停止对事件进行流式传输和存档时，停止节目。 
 
 如果要删除存档的内容，请停止并删除事件，并删除关联的资产。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 

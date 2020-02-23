@@ -3,19 +3,19 @@ title: 快速入门：使用 REST API 在 PowerShell 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 在此 REST API 快速入门中，了解如何使用 PowerShell 的 Invoke-RestMethod 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
 manager: nitinme
-author: heidisteen
+author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: ca689f933431f8eac774a7bacd7191a6d3222d49
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: d75fe156dc75f5058e77449f2c982255b926c8ee
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335336"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501423"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST API 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "75335336"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要以下服务和工具。 
 
@@ -92,7 +92,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 此索引名为“hotels-quickstart”，使用下面所示的字段定义。 它是其他演练中使用的一个更大 [Hotels 索引](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON)的子集。 为简明起见，本快速入门已对其进行修整。
 
-1. 请将此示例粘贴到 PowerShell 中，以创建包含索引架构的 **$body** 对象。
+1. 将此示例粘贴到 PowerShell，以创建包含索引架构的 **$body** 对象。
 
     ```powershell
     $body = @"
@@ -282,7 +282,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    结果应如以下示例所示。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
+    结果应类似于以下示例。 应会看到[状态代码 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)。
 
     ```
     {
@@ -330,7 +330,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
-1. 运行将 **$url** 发送到服务的命令。
+1. 运行该命令以将 **$url** 发送到服务。
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json

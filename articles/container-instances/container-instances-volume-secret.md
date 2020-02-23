@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 07/19/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca9cfa4aa07c8f353a873d6f6461694cb2c52a8b
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 20967709192eeae3e4567aa93e3619233fcc3497
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965100"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428289"
 ---
+<!--Verified successfully-->
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
 
 可以使用机密  卷向容器组中的容器提供敏感信息。 机密  卷将机密存储在该卷内的文件中，然后容器组中的容器可以访问这些机密。 将机密存储在机密  卷中，可以避免将敏感数据（例如，SSH 密钥或数据库凭据）添加到应用程序代码中。

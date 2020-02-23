@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: a22a7dad8eb1c16fb62b3a809d49871ef66555a7
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 21660806fa254b7814720c755a47085875fcf940
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123508"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430168"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -52,11 +52,11 @@ ms.locfileid: "76123508"
        public static void translationWithMicrophoneAsync() throws InterruptedException, ExecutionException, IOException
        {
            // Creates an instance of a speech translation config with specified
-           // subscription key and service region. Replace with your own subscription key
+           // host and subscription key. Replace with your own subscription key
            // and service region (e.g., "chinaeast2").
 
            int exitCode = 1;
-           SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey",  "YourServiceRegion");
+           SpeechTranslationConfig config = SpeechTranslationConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
            assert(config != null);
 
            // Sets source and target languages.

@@ -1,5 +1,5 @@
 ---
-title: 详细故障排除步骤：针对到 Azure 中 Windows VM 的远程桌面连接问题 | Azure
+title: 详细故障排除步骤：针对 Azure 中到 Windows VM 的远程桌面连接问题
 description: 查看详细的疑难解答步骤，了解如何处理无法在 Azure 中连接到 Windows 虚拟机的远程桌面问题
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 10/31/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 47ed2a97af62ef2ca8dc60c7c8f7f2a5fc72d281
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 613b092e0b53450bd4b7f7513b242afdd01736dd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116908"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428777"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>详细故障排除步骤：针对 Azure 中到 Windows VM 的远程桌面连接问题
 本文提供详细的故障排除步骤，用于为基于 Windows 的 Azure 虚拟机诊断和修复复杂的远程桌面错误。
@@ -30,8 +30,6 @@ ms.locfileid: "74116908"
 > 若要消除更常见的远程桌面错误，请务必先阅读[远程桌面的基本故障排除文章](troubleshoot-rdp-connection.md)，然后再继续。
 
 你可能遇到不像[基本远程桌面故障排除指南](troubleshoot-rdp-connection.md)中所述的任何特定错误消息的远程桌面错误消息。 请遵循以下步骤来确定远程桌面 (RDP) 客户端为何无法连接到 Azure VM 上的 RDP 服务。
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题解答](https://www.azure.cn/support/faq/)。
 
@@ -132,7 +130,7 @@ ms.locfileid: "74116908"
 * Windows 防火墙或其他本地防火墙使用阻止远程桌面通信的出站规则。
 * Azure 虚拟机上运行的入侵检测或网络监视软件阻止远程桌面连接。
 
-对于使用经典部署模型创建的 VM，可以使用与 Azure 虚拟机的远程 Azure PowerShell 会话。 首先，需要安装虚拟机托管云服务的证书。 转到[为 Azure 虚拟机配置安全远程 PowerShell 访问](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)，将 **InstallWinRMCertAzureVM.ps1** 脚本文件下载到本地计算机。
+对于使用经典部署模型创建的 VM，可以使用与 Azure 虚拟机的远程 Azure PowerShell 会话。 首先，需要安装虚拟机托管云服务的证书。 转到[为 Azure 虚拟机配置安全远程 PowerShell 访问](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)，并将 **InstallWinRMCertAzureVM.ps1** 脚本文件下载到本地计算机。
 
 接下来，安装 Azure PowerShell（如果尚未安装）。 请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -149,7 +147,7 @@ $vmName="<Name of the target virtual machine>"
 
 可以从 **Get-AzureSubscription** 命令显示的 *SubscriptionName* 属性获取正确的订阅名称。 可以从 **Get-AzureVM** 命令显示的 *ServiceName* 列中获取虚拟机的云服务名称。
 
-检查是否有新证书。 打开当前用户的“证书”管理单元，然后在“受信任的根证书颁发机构\证书”文件夹中查找。  应会看到在“颁发给”列中具有你的云服务的 DNS 名称的证书（示例：cloudservice4testing.chinacloudapp.cn）。
+检查是否有新的证书。 打开当前用户的“证书”管理单元，然后在“受信任的根证书颁发机构\证书”文件夹中查找。  应会看到在“颁发给”列中具有你的云服务的 DNS 名称的证书（示例：cloudservice4testing.chinacloudapp.cn）。
 
 接下来，使用以下命令启动远程 Azure PowerShell 会话。
 

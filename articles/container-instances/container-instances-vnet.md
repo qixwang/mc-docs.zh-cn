@@ -5,13 +5,16 @@ ms.topic: article
 origin.date: 01/06/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: c62645d29da4aa3cd5f5be48b1e59cbb977b1b16
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 4dadf9a6d2a5f2d0011468955f284c5d93a32256
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965095"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428306"
 ---
+<!--NOT AVAILABLE ON MOONCAKE-->
+<!--ERROR DESCRIPTION BELOW ON LINE 120-->
+<!--The service name Microsoft.ContainerInstance/containerGroups specified on delegation /subscriptions/6b479dfe-e71e-4e56-8619-f8a682fd11e8/resourceGroups/chenyerg/providers/Microsoft.Network/virtualNetworks/aci-vnet/subnets/aci-subnet/delegations/Microsoft.ContainerInstance/containerGroups is not valid.-->
 <!--There are GA in China East 2 currently-->
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 

@@ -1,5 +1,5 @@
 ---
-title: 内存优化虚拟机大小 | Azure
+title: 内存优化虚拟机大小
 description: 列出 Azure 中适用于 Linux 虚拟机的各种内存优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-origin.date: 08/08/2019
-ms.date: 11/11/2019
+origin.date: 11/06/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0c2f885890f09c5af4c7e1db50efa11c864179f6
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 91b7f780ed4e66769d096a4108da1834b9788b7d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831465"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428372"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小
 

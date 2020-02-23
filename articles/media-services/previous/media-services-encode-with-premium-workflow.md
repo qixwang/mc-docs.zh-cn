@@ -1,6 +1,6 @@
 ---
 title: 通过媒体编码器高级工作流进行高级编码 | Microsoft Docs
-description: 了解如何使用媒体编码器高级工作流进行编码。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
+description: 了解如何使用 Media Encoder Premium Workflow 进行编码。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: dc20ab8bfa8156e319e09914392691faad52b2ef
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.openlocfilehash: e6e7607747eab9242072f64195a2780b726c4658
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116244"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494311"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用 Media Encoder Premium Workflow 进行高级编码
 
@@ -33,7 +33,7 @@ Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器�
 
 本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码  。
 
-**媒体编码器高级工作流** 的编码任务需要一个名为“工作流文件”的独立配置文件。 这些文件的扩展名为 .workflow，由[工作流设计器](media-services-workflow-designer.md)工具创建。
+**媒体编码器高级工作流** 的编码任务需要一个名为“工作流文件”的独立配置文件。 这些文件的扩展名为 .workflow，是使用 [工作流设计器](media-services-workflow-designer.md) 工具创建的。
 
 也可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认的工作流文件。 该文件夹还包含这些文件的相关说明。
 
@@ -45,7 +45,7 @@ Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器�
 
 ## <a name="encoding-example"></a>编码示例
 
-以下示例演示了如何使用**媒体编码器高级工作流**进行编码。
+以下示例演示了如何使用 **媒体编码器高级工作流**进行编码。
 
 执行以下步骤：
 
@@ -226,7 +226,9 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
+## <a name="need-help"></a>需要帮助？
+
+可以通过导航到[新建支持请求](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

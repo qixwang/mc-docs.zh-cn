@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 中标记 Linux 虚拟机 | Azure
+title: 如何在 Azure 中标记 Linux 虚拟机
 description: 了解如何标记使用 Resource Manager 部署模型在 Azure 中创建的 Azure Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 02/28/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a14b8bdd101638c026ebaf64b4a7361f6f80dbf6
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 1284d3c814951245f3c3d542db1949f910ca94f3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831232"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428366"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>如何在 Azure 中标记 Linux 虚拟机
 本文介绍在 Azure 中通过 Resource Manager 部署模型标记 Linux 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 15 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。
@@ -65,11 +65,11 @@ az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNe
 <!-- Not Available on [Gain insights into your Azure resource consumption][Gain insights into your Azure resource consumption] -->
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
-[Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md
-[Using Tags to organize your Azure Resources]: ../../azure-resource-manager/resource-group-using-tags.md
+[Azure Resource Manager Overview]: ../../azure-resource-manager/management/overview.md
+[Using Tags to organize your Azure Resources]: ../../azure-resource-manager/management/tag-resources.md
 [Understanding your Azure Bill]: ../../billing-understand-your-bill.md
 
 <!-- Notice correct : [Understanding your Azure Bill]: ../../billing-understand-your-bill.md -->
-<!-- Not Available on [Gain insights into your Azure resource consumption]: ../../billing/billing-usage-rate-card-overview.md-->
+<!-- Not Available on [Gain insights into your Azure resource consumption]: ../../cost-management-billing/manage/usage-rate-card-overview.md-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

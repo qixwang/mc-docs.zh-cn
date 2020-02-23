@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 12/04/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0848b328134587bc1a91e154c14037c978a3c389
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: e69325d282c6ae6b45bbaeeebd4ec2bf73d7da79
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028173"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540869"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -97,7 +97,7 @@ ms.locfileid: "77028173"
 
 - 部署模型的区域；
 - 已部署模型的终结点 ID：
-  - 转到[自定义语音门户](https://chinaeast2.cris.azure.cn/Home/CustomSpeech)；
+  - 转到[自定义语音门户](https://speech.azure.cn/customspeech)；
   - 视需要登录；
   - 选择项目和部署；
   - 选择需要增加其并发性的终结点；

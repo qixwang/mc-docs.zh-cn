@@ -7,13 +7,14 @@ origin.date: 12/30/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 93ade2f3d396d8de129d4578c00d43812ca50dde
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 6584062992369140b40f5bd967d0344bc9392c71
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068150"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428307"
 ---
+<!--Verified successfully-->
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
 [Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何将存储在 Azure 容器注册表中的容器映像部署到 Azure 容器实例。
@@ -141,25 +142,8 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 
 有关在资源管理器模板中引用 Azure Key Vault 机密的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
 
-## <a name="deploy-with-azure-portal"></a>使用 Azure 门户仅部署
-
-如果在 Azure 容器注册表中维护容器映像，可通过 Azure 门户在 Azure 容器实例中轻松创建容器。 使用门户从容器注册表部署容器实例时，必须启用注册表的[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)。 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 
-
-1. 在 Azure 门户中，导航到容器注册表。
-
-1. 若要确保启用管理员帐户，请选择“访问密钥”，然后在“管理员用户”下选择“启用”    。
-
-1. 选择“存储库”，然后选择想要从中进行部署的存储库，右键单击想要部署的容器映像的标记，然后选择“运行实例”   。
-
-    ![Azure 门户中 Azure 容器注册表中的“运行实例”][acr-runinstance-contextmenu]
-
-1. 输入容器和资源组的名称。 也可根据需要更改默认值。
-
-    ![Azure 容器实例的创建菜单][acr-create-deeplink]
-
-1. 部署完成后，可从通知窗格导航至容器组，查找其 IP 地址和其他属性。
-
-    ![Azure 容器实例容器组的详细信息视图][aci-detailsview]
+<!--Not Available on ## Deploy with Azure portal-->
+<!--The Run Instance submenu is uneable -->
 
 ## <a name="next-steps"></a>后续步骤
 

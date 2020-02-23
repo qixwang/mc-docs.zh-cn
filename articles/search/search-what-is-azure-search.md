@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: efd04fd2a3d69346c7c473af1b86402df2974283
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/06/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 105d61b6fff54f7c1b0ccf4cf90a5f811db42fc0
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336028"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501346"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -65,7 +65,7 @@ Azure 认知搜索非常适合以下应用方案：
 |-------------------|----------|
 | 用于原型制作和检查的工具 | 在门户中，可以使用[**导入数据向导**](search-import-data-portal.md)来配置索引器、索引设计器以建立索引，并可以使用[**搜索浏览器**](search-explorer.md)来测试查询并优化评分配置文件。 还可以打开任何索引来查看其架构。 |
 | 监视和诊断 | [启用监视功能  ](search-monitor-usage.md)可查看除门户中始终可见的一目了然指标外的其他指标。 门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。|
-| 服务器端加密 | [Microsoft 托管的静态加密  ](search-security-overview.md#encrypted-transmission-and-storage)内置在内部存储层中，它是不可撤消的。 （可选）你可以使用[**客户管理的加密密钥（预览版）** ](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 认知搜索中的索引和同义词映射。 |
+| 服务器端加密 | [Microsoft 托管的静态加密  ](search-security-overview.md#encrypted-transmission-and-storage)内置在内部存储层中，它是不可撤消的。 可以视需要使用[客户托管的加密密钥  ](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 认知搜索中的索引和同义词映射。 |
 | 基础结构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确缩放后，[Azure 认知搜索可提供 99.9% SLA](https://www.azure.cn/support/legal/sla/)。<br/><br/> 作为一种**完全托管且可缩放的**端到端解决方案，Azure 认知搜索绝对不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>如何使用 Azure 认知搜索
@@ -145,3 +145,6 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 
    + [如何使用 .NET SDK](search-howto-dotnet-sdk.md) 演示了托管代码中的主要工作流。  
    + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。 还可以使用本快速入门从 Postman 或 Fiddler 调用 REST API：[探索 Azure 认知搜索 REST API](search-get-started-postman.md)。
+
+<!-- ## Watch this video -->
+

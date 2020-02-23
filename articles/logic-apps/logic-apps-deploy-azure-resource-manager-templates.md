@@ -9,13 +9,13 @@ ms.author: v-yiso
 ms.reviewer: klam, LADocs
 ms.topic: article
 origin.date: 08/01/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: 7dd41cc6bf4ea37d33e154932260ede131e41252
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 02/24/2020
+ms.openlocfilehash: d9a75b62af60cdb56445228a9769fddb7a92ff29
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174572"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428887"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
@@ -25,7 +25,7 @@ ms.locfileid: "70174572"
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
-* [Azure Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure DevOps Azure Pipelines](#azure-pipelines)
 
 <a name="portal"></a>
@@ -48,7 +48,7 @@ ms.locfileid: "70174572"
 有关详细信息，请参阅以下主题：
 
 * [概述：使用 Azure 资源管理器模板自动完成逻辑应用的部署](logic-apps-azure-resource-manager-templates-overview.md)
-* [使用 Azure 资源管理器模板和 Azure 门户部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [使用 Azure 资源管理器模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 
 <a name="visual-studio"></a>
 
@@ -83,7 +83,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 有关详细信息，请参阅以下主题：
 
-* [使用 Resource Manager 模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [使用 Resource Manager 模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md) 
 * [`az group deployment create`](/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -94,8 +94,8 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 若要详细了解如何使用 Azure Pipelines 进行与 Azure 资源管理器模板相对应的持续集成和持续部署 (CI/CD)，请参阅以下主题和示例：
 
-* [将资源管理器模板与 Azure Pipelines 集成](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [教程：使用 Azure Pipelines 进行与 Azure 资源管理器模板相对应的持续集成](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [将资源管理器模板与 Azure Pipelines 集成](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
+* [教程：使用 Azure Pipelines 进行与 Azure 资源管理器模板相对应的持续集成](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
 * [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：为 Azure 逻辑应用设置函数应用操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -132,4 +132,4 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [监视逻辑应用](../logic-apps/monitor-logic-apps.md)

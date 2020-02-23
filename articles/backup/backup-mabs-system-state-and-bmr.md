@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 05/15/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: a6454643219738e6cb18cff0f86f061b4081cb38
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 064a2683b0d66004ca2234d1695cb86d2fef9721
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838891"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497414"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态，并将计算机还原成裸机
 
@@ -29,18 +29,18 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 |Backup|问题|从 Azure 备份服务器备份恢复|从系统状态备份恢复|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 | 文件数据<br /><br />常规数据备份<br /><br />BMR/系统状态备份|丢失文件数据|Y|N|N|
-| 文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
+| 文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
 | 文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失服务器（数据卷完整）|N|N|Y|
 | 文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失服务器（数据卷丢失）|Y|否|是（BMR，随后对已备份文件数据进行常规恢复）|
 | SharePoint 数据：<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失站点、列表、列表项、文档|Y|N|N|
-|**SharePoint 数据**：<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
+| SharePoint 数据：<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
 | SharePoint 数据：<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|
 |Windows Server 2012 R2 Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 VM|Y|N|N|
-|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
-|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 Hyper-V 主机（VM 完整）|N|N|Y|
-|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 Hyper-V 主机（VM 丢失）|N|N|Y<br /><br />BMR，随后进行常规 Azure 备份服务器恢复|
+|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
+|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 Hyper-V 主机（VM 完整）|N|N|Y|
+|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 Hyper-V 主机（VM 丢失）|N|N|Y<br /><br />BMR，随后进行常规 Azure 备份服务器恢复|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|丢失应用数据|Y|N|N|
-|SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|y|Y|
+|SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|丢失或损坏操作系统|N|y|Y|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|服务器丢失（数据库/事务日志完整）|N|N|Y|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|服务器丢失（数据库/事务日志丢失）|N|N|Y<br /><br />BMR 恢复，随后进行常规 Azure 备份服务器恢复|
 
@@ -67,27 +67,27 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
--   运行 Windows Server 2003 或客户端操作系统的计算机不支持 BMR。
+* 运行 Windows Server 2003 或客户端操作系统的计算机不支持 BMR。
 
--   不能在不同保护组中对同一计算机实施 BMR 和系统状态保护。
+* 不能在不同保护组中对同一计算机实施 BMR 和系统状态保护。
 
--   备份服务器计算机不能在 BMR 时进行自我保护。
+* 备份服务器计算机不能在 BMR 时进行自我保护。
 
--   BMR 时，不支持通过备份到磁带（磁盘到磁带，简称 D2T）进行短期保护。 支持长期存储到磁带（磁盘到磁盘再到磁带，简称 D2D2T）。
+* BMR 时，不支持通过备份到磁带（磁盘到磁带，简称 D2T）进行短期保护。 支持长期存储到磁带（磁盘到磁盘再到磁带，简称 D2D2T）。
 
--   若要进行 BMR 保护，必须将 Windows Server 备份安装在受保护计算机上。
+* 若要进行 BMR 保护，必须将 Windows Server 备份安装在受保护计算机上。
 
--   进行 BMR 保护时，备份服务器对受保护计算机没有任何空间要求，这一点与进行系统状态保护不同。 Windows Server 备份直接将备份传输到备份服务器计算机。 备份传输作业不显示在备份服务器的“作业”视图中。 
+* 进行 BMR 保护时，备份服务器对受保护计算机没有任何空间要求，这一点与进行系统状态保护不同。 Windows Server 备份直接将备份传输到备份服务器计算机。 备份传输作业不显示在备份服务器的“作业”视图中。 
 
--   备份服务器在 BMR 的副本卷上保留 30 GB 的空间。 可以在“修改保护组”向导的“磁盘分配”页中更改此设置，也可以通过 Get-DatasourceDiskAllocation 和 Set-DatasourceDiskAllocation PowerShell cmdlet 来进行。  在恢复点卷上，BMR 保护需要大约 6 GB 的空间对内容保留五天的时间。
-    * 请注意，不能将副本卷大小降到 15 GB 以下。
-    * 备份服务器不计算 BMR 数据源的大小， 而是对所有服务器都假定一个 30 GB 的大小。 请根据环境中预期会进行的 BMR 备份的大小更改此值。 粗略进行计算的话，BMR 备份的大小就是所有关键卷上已使用空间之和。 关键卷 = 启动卷 + 系统卷 + 托管系统状态数据的卷，例如 Active Directory。
+* 备份服务器在 BMR 的副本卷上保留 30 GB 的空间。 可以在“修改保护组”向导的“磁盘分配”页中更改此设置，也可以通过 Get-DatasourceDiskAllocation 和 Set-DatasourceDiskAllocation PowerShell cmdlet 来进行。  在恢复点卷上，BMR 保护需要大约 6 GB 的空间对内容保留五天的时间。
+  * 请注意，不能将副本卷大小降到 15 GB 以下。
+  * 备份服务器不计算 BMR 数据源的大小， 而是对所有服务器都假定一个 30 GB 的大小。 请根据环境中预期会进行的 BMR 备份的大小更改此值。 粗略进行计算的话，BMR 备份的大小就是所有关键卷上已使用空间之和。 关键卷 = 启动卷 + 系统卷 + 托管系统状态数据的卷，例如 Active Directory。
 
--   如果从系统状态保护更改为 BMR 保护，则 BMR 保护在恢复点卷上需要较少的空间，  但系统不会回收该卷上的多余空间。 可以在“修改保护组”向导的“修改磁盘分配”页中手动缩减卷大小，也可以通过 Get-DatasourceDiskAllocation 和 Set-DatasourceDiskAllocation PowerShell cmdlet 来进行。 
+* 如果从系统状态保护更改为 BMR 保护，则 BMR 保护在恢复点卷上需要较少的空间，  但系统不会回收该卷上的多余空间。 可以在“修改保护组”向导的“修改磁盘分配”页中手动缩减卷大小，也可以通过 Get-DatasourceDiskAllocation 和 Set-DatasourceDiskAllocation PowerShell cmdlet 来进行。 
 
     如果从系统状态保护更改为 BMR 保护，则 BMR 保护在副本卷上需要较多的空间，  系统会自动扩展该卷。 若要更改默认的空间分配，请使用 Modify-DiskAllocation PowerShell cmdlet。
 
--   如果从 BMR 保护更改为系统状态保护，则需要恢复点卷上有较多的空间。 备份服务器可能会尝试自动增大卷。 如果存储池中没有足够的空间，就会出错。
+* 如果从 BMR 保护更改为系统状态保护，则需要恢复点卷上有较多的空间。 备份服务器可能会尝试自动增大卷。 如果存储池中没有足够的空间，就会出错。
 
     如果从 BMR 保护更改为系统状态保护，则需要受保护计算机上有空间。 这是因为，系统状态保护首先将副本写入本地计算机，然后再将它传输到备份服务器计算机。
 

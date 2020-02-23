@@ -1,5 +1,5 @@
 ---
-title: 前几代虚拟机大小 | Azure
+title: 前几代虚拟机大小
 description: 列出 Azure 中适用于 Linux 虚拟机的前几代大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 04/11/2019
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ad4b852baaabd51e1c6f05078b0c2ba11e0eebe3
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: bf3e9494349bea6d310bd68a83a1ec9cb5399044
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272578"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428369"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 

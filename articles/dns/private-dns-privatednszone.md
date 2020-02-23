@@ -6,14 +6,14 @@ author: WenJason
 ms.service: dns
 ms.topic: article
 origin.date: 9/24/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: df72d905602ec3490493b6b082ca2ebe3c79372b
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.openlocfilehash: 98ebb4857d5cc932dfe29f90ebf7d95b95bea8b6
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777479"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428682"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>什么是专用 Azure DNS 区域
 
@@ -26,7 +26,7 @@ Azure 专用 DNS 提供可靠、安全的 DNS 服务来管理和解析虚拟网�
 
 ## <a name="limits"></a>限制
 
-如下了解可以在订阅中创建的专用 DNS 区域数量以及专用 DNS 区域中支持的记录集数量，请参阅 [Azure DNS 限制](/azure-subscription-service-limits#azure-dns-limits)
+如下了解可以在订阅中创建的专用 DNS 区域数量以及专用 DNS 区域中支持的记录集数量，请参阅 [Azure DNS 限制](/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="restrictions"></a>限制
 

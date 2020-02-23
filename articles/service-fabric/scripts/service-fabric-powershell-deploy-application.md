@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用程序部署到群集 | Azure
+title: 将应用程序部署到 Powershell 中的群集
 description: Azure PowerShell 脚本示例 - 将应用程序部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 01/18/2018
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 8ec49b78d99351809cd9334481cfa5db63e5de66
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: a1aaf0f19640605634eccea7657de357a571be0c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174059"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540707"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>将应用程序部署到 Service Fabric 群集
 
@@ -58,7 +58,7 @@ New-ServiceFabricApplication -ApplicationName fabric:/MyApplication -Application
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用[删除应用程序](service-fabric-powershell-remove-application.md)中的脚本删除应用程序实例，取消注册应用程序类型，并从映像存储中删除应用程序包。
+运行脚本示例后，可以使用[删除应用程序](service-fabric-powershell-remove-application.md)中的脚本删除应用程序实例，注销应用程序类型，并从映像存储区中删除应用程序包。
 
 ## <a name="script-explanation"></a>脚本说明
 

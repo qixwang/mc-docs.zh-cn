@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 打开 Linux VM 的端口 | Azure
+title: 使用 Azure CLI 打开 Linux VM 的端口和终结点
 description: 了解如何使用 Azure Resource Manager 部署模型和 Azure CLI 为 Linux VM 打开端口/创建终结点
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 12/13/2017
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 92885a4b7b55033e02a4f66bbd3b74fa99f24044
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: 840041593fd5b4bb8be14ff0db9f1beff8eb74de
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912811"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428571"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 打开 Linux VM 的端口和终结点
 
@@ -91,7 +91,7 @@ az network vnet subnet update \
 ## <a name="next-steps"></a>后续步骤
 在本示例中，创建了简单的规则来允许 HTTP 流量。 下列文章更介绍了有关创建更详细环境的信息：
 
-* [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
 * [什么是网络安全组 (NSG)？](../../virtual-network/security-overview.md)
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

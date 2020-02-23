@@ -1,24 +1,23 @@
 ---
-title: 使用 Azure IoT 中心设备预配服务预配设备 (.NET) | Microsoft Docs
-description: 使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心 (.NET)
+title: 教程 - 使用 Azure IoT 中心设备预配服务预配设备 (.NET)
+description: 本教程介绍如何使用 .NET 通过 Azure IoT 中心设备预配服务 (DPS) 将设备预配到单个 IoT 中心。
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 09/05/2017
-ms.date: 07/15/2019
+ms.author: v-tawe
+origin.date: 11/12/2019
+ms.date: 03/02/2020
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 64db8350117c0f204460ac830ebfbf34408feb67
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 808c5bc146cb8ac0d92c156d35c41a09c76c9179
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389586"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494381"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 
 前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何使用此服务通过 **_单独登记_** 和 **_登记组_** 将设备预配到单个 IoT 中心。 本教程演示如何：
 
@@ -27,7 +26,7 @@ ms.locfileid: "74389586"
 > * 启动设备
 > * 验证设备已注册
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 继续之前，请确保已配置设备及其“硬件安全模块”（按[使用 Azure IoT 中心设备预配服务设置设备以进行预配](./tutorial-set-up-device.md)教程所述）  。
 
@@ -49,7 +48,7 @@ ms.locfileid: "74389586"
 
 - 对于基于 X.509 的设备：
     - [颁发给设备的 X.509 证书](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，采用 *.pem* 或 *.cer* 文件格式。 对于单独登记，需要对 X.509 系统使用叶证书；对于登记组，需要使用根证书或同等的签名人证书    。
-    - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](/azure/iot-dps/concepts-device)。
+    - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](https://docs.azure.cn/iot-dps/concepts-device)。
 
 可通过两种方法向设备预配服务注册设备：
 

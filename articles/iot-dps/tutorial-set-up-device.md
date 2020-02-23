@@ -2,20 +2,20 @@
 title: 教程 - 针对 Azure IoT 中心设备预配服务设置设备
 description: 本教程介绍如何在设备制造过程中通过 IoT 中心设备预配服务 (DPS) 设置设备以进行预配
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/12/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3a5b492c5296a860a2ed25a77808e6e44c47a7a9
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 101f5a5f5ba6541fd8bb78db2f6eaea0ade89622
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859752"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494378"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
@@ -37,10 +37,11 @@ ms.locfileid: "75859752"
 
 ## <a name="prerequisites"></a>必备条件
 
+以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
+
 * [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
-
-
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>生成特定于平台的 SDK 版本
 
@@ -50,6 +51,8 @@ ms.locfileid: "75859752"
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
+2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
+
 3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
@@ -57,6 +60,7 @@ ms.locfileid: "75859752"
     cd azure-iot-sdk-c
     git submodule update --init
     ```
+
     应该预料到此操作需要几分钟才能完成。
 
 4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
@@ -66,7 +70,7 @@ ms.locfileid: "75859752"
     cd cmake
     ```
 
-1. 基于你将使用的认证机制构建适用于你的开发平台的 SDK。 使用下列命令之一（另请注意，每个命令有两个尾随的句点字符）。 在完成后，CMake 会使用特定于设备的内容生成 `/cmake` 子目录：
+5. 基于你将使用的认证机制构建适用于你的开发平台的 SDK。 使用下列命令之一（另请注意，每个命令有两个尾随的句点字符）。 在完成后，CMake 会使用特定于设备的内容生成 `/cmake` 子目录：
  
     - 对于使用 TPM 模拟器进行证明的设备：
 
@@ -97,8 +101,9 @@ ms.locfileid: "75859752"
 
 - 对于 X.509 设备，你需要获取为设备颁发的证书。 预配服务公开了两种类型的注册条目，它们使用 X.509 认证机制控制对设备的访问。 所需的证书取决于你将使用的注册类型。
 
-    1. 单独注册：针对特定的单个设备的注册。 此类型的注册条目需要[最终实体、“叶”、证书](concepts-security.md#end-entity-leaf-certificate)。
-    1. 注册组：此类型的注册条目需要中间或根证书。 有关详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
+    - 单独注册：针对特定的单个设备的注册。 此类型的注册条目需要[最终实体、“叶”、证书](concepts-security.md#end-entity-leaf-certificate)。
+    
+    - 注册组：此类型的注册条目需要中间或根证书。 有关详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
 ### <a name="simulated-devices"></a>模拟设备
 
@@ -213,4 +218,3 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 
 > [!div class="nextstepaction"]
 > [将设备预配到 IoT 中心](tutorial-provision-device-to-hub.md)
-

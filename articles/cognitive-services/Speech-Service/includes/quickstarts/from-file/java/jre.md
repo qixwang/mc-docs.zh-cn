@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 01/14/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3dac6523692bff7826ad3a28d3f487386bc9c114
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: c1a6c31dbe76ebd7f2226ade6d0d817e536df5f8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029160"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430097"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -49,13 +49,12 @@ ms.locfileid: "77029160"
            try {
                // Replace below with your own subscription key
                String speechSubscriptionKey = "YourSubscriptionKey";
-               // Replace below with your own service region (e.g., "chinaeast2").
-               String serviceRegion = "YourServiceRegion";
                // Replace below with your own filename.
                String audioFileName = "whatstheweatherlike.wav";
 
                int exitCode = 1;
-               SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
+               // Replace below with your own service region (e.g., "chinaeast2").
+               SpeechConfig config = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), speechSubscriptionKey);
                assert(config != null);
 
                AudioConfig audioInput = AudioConfig.fromWavFileInput(audioFileName);

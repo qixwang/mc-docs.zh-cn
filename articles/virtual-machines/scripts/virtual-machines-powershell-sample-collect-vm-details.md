@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 收集订阅中所有 VM 的详细信息 | Azure
+title: 使用 PowerShell 收集订阅中所有 VM 的详细信息
 description: 使用 PowerShell 收集订阅中所有 VM 的详细信息
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -9,19 +9,19 @@ editor: v-miegge
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 07/01/2019
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 1dd3a4612ed36528ca723d417d3ccc35c2153189
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 7f889dad5bc612b2356db3c2b292b90f4e7867ce
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272856"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428168"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集订阅中所有 VM 的详细信息
 
@@ -84,5 +84,4 @@ $report | Export-CSV "$home/$reportName"
 
 可以在 [Azure Windows VM 文档](/virtual-machines/windows/powershell-samples?toc=/virtual-machines/windows/toc.json)中找到其他虚拟机 PowerShell 脚本示例。
 
-<!-- Update_Description: new articles on collection vm details with powershell -->
-<!--ms.date: 08/12/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

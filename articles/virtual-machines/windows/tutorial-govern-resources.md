@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure PowerShell 管理 Azure 虚拟机 | Azure
+title: 教程：了解如何使用 Azure PowerShell 管理 Windows 虚拟机
 description: 本教程介绍如何通过使用 Azure PowerShell 应用 RBAC、策略、锁和标记管理 Azure 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 origin.date: 12/05/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: cd4457e9034dd514f6e211a3b05ada3d0538672e
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 3fb034742bf77705e8e526b38590d0e3c43c2403
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116856"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428667"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教程：了解如何使用 Azure PowerShell 管理 Windows 虚拟机
 
@@ -140,7 +140,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 ## <a name="lock-resources"></a>锁定资源
 
-[资源锁](../../azure-resource-manager/resource-group-lock-resources.md)可以防止组织中的用户意外删除或修改重要资源。 与基于角色的访问控制不同，资源锁对所有用户和角色应用限制。 可以将锁定级别设置为 *CanNotDelete* 或 *ReadOnly*。
+[资源锁](../../azure-resource-manager/management/lock-resources.md)可以防止组织中的用户意外删除或修改重要资源。 与基于角色的访问控制不同，资源锁对所有用户和角色应用限制。 可以将锁定级别设置为 *CanNotDelete* 或 *ReadOnly*。
 
 若要锁定虚拟机和网络安全组，请使用 [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) 命令：
 
@@ -170,7 +170,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="tag-resources"></a>标记资源
 
-可以将[标记](../../azure-resource-manager/resource-group-using-tags.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+可以将[标记](../../azure-resource-manager/management/tag-resources.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 

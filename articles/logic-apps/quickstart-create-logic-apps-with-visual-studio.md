@@ -1,6 +1,6 @@
 ---
-title: 使用 Visual Studio 创建自动化工作流 - Azure 逻辑应用
-description: 使用 Azure 逻辑应用和 Visual Studio 将有关企业集成的任务、业务流程与工作流自动化
+title: 在 Visual Studio 中自动化任务工作流
+description: 使用 Azure 逻辑应用和 Visual Studio 创建、计划和运行用于企业集成的重复执行工作流
 services: logic-apps
 ms.service: logic-apps
 ms.workload: azure-vs
@@ -9,17 +9,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-origin.date: 04/25/2019
+origin.date: 11/08/2019
 ms.author: v-yiso
-ms.date: 11/11/2019
-ms.openlocfilehash: d96d50e0eebd0a68386484b9d55c07b8c03cc2a5
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 02/24/2020
+ms.openlocfilehash: 84dc2455e44b9e376a459e2216ed5e5dc99f7086
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425777"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428450"
 ---
-# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>快速入门：使用 Azure 逻辑应用和 Visual Studio 自动执行任务、流程和工作流
+# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
 可以通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio 创建工作流，以便自动完成用于跨企业和组织集成应用、数据、系统和服务的任务和流程。 本快速入门展示了如何通过在 Visual Studio 中创建逻辑应用并将这些应用部署到 Azure 来设计和构建这些工作流。 尽管可以在 Azure 门户中执行这些任务，但在需要将逻辑应用添加到源代码管理、发布不同的版本，以及为不同的部署环境创建 Azure 资源管理器模板时，也可以使用 Visual Studio。
 
@@ -31,7 +31,7 @@ ms.locfileid: "73425777"
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://www.azure.cn/pricing/1rmb-trial/" target="_blank">注册一个 Azure 试用帐户</a>。
 
@@ -48,7 +48,7 @@ ms.locfileid: "73425777"
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * 适用于 Visual Studio 所需版本的 Azure 逻辑应用工具：
+  * 适用于所需版本的 Visual Studio 扩展的最新 Azure 逻辑应用工具：
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
@@ -120,11 +120,11 @@ ms.locfileid: "73425777"
    ![选择 Azure 订阅、资源组和资源位置](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
    |      设置       |                 示例值                  |                                         说明                                          |
-   |--------------------|------------------------------------------------|----------------------------------------------------------------------------------------------|
-   | 用户配置文件列表  |     Contoso <br> jamalhartnett@contoso.com     |                       默认为曾经用来登录的帐户                       |
-   |  **订阅**  | 即用即付 <br> (jamalhartnett@contoso.com) |                 Azure 订阅的名称以及关联的帐户                  |
+   | ------- | ------------- | ----------- |
+   | 用户帐户 | Fabrikam <br> sophia-owen@fabrikam.com | 登录 Visual Studio 时使用的帐户 |
+   | **订阅** | 即用即付 <br> (sophia-owen@fabrikam.com) | Azure 订阅的名称以及关联的帐户 |
    | **资源组** |        MyLogicApp-RG <br> （中国北部）        | 用于存储和部署逻辑应用资源的 Azure 资源组和位置 |
-   |    **Location**    |        MyLogicApp-RG2 <br> （中国东部）        |          在不希望使用资源组位置的情况下可以使用的其他位置           |
+   |    **位置**    |        MyLogicApp-RG2 <br> （中国东部）        |          在不希望使用资源组位置的情况下可以使用的其他位置           |
    |                    |                                                |                                                                                              |
 
 1. 逻辑应用设计器会打开一个页面，其中显示了介绍视频和常用的触发器。 向下滚动，越过视频和触发器，找到“模板”  ，然后选择“空白逻辑应用”  。
@@ -189,11 +189,11 @@ ms.locfileid: "73425777"
 
 1. 在“视图”菜单中，选择“其他窗口” > “JSON 大纲”。   
 
-1. 若要将资源添加到模板文件，请在“JSON 大纲”窗口顶部选择“添加资源”  。 或者在“JSON 大纲”窗口中，右键单击“资源”  ，并选择“添加新资源”  。
+1. 若要将资源添加到模板文件，请在“JSON 大纲”窗口顶部选择“添加资源”  。 或者在“JSON 大纲”窗口中，打开“资源”快捷菜单，并选择“添加新资源”   。
 
    ![在“JSON 大纲”窗口中，添加新资源](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
-1. 在“添加资源”  对话框中，找到并选择“逻辑应用”  。 为逻辑应用命名，并选择“添加”  。
+1. 在“添加资源”对话框中，在搜索框中，找到 `logic app` 并选择“逻辑应用”   。 为逻辑应用命名，并选择“添加”  。
 
    ![向项目中添加新的逻辑应用资源](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 

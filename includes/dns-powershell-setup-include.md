@@ -6,15 +6,15 @@ author: WenJason
 ms.service: dns
 ms.topic: include file for PowerShell for Azure DNS
 origin.date: 03/21/2018
-ms.date: 08/26/2019
+ms.date: 02/17/2020
 ms.author: v-jay
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 761784cf8dcb131587399091db057b4f2c51d986
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 841d7bda82fb26471396a0f0f09c63c50917e64e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014717"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428748"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure PowerShell
 
@@ -26,6 +26,30 @@ ms.locfileid: "70014717"
 
 * Azure 订阅。 如果还没有 Azure 订阅，可在开始前创建一个 [1 元人民币的试用](https://www.azure.cn/pricing/1rmb-trial/)帐户。
 * 需安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
+
+此外，若要使用专用区域（公共预览版），需确保具有以下 PowerShell 模块和版本。 
+* AzureRM.Dns - [版本 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) 或更高版本
+* AzureRM.Network - [版本 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) 或更高版本
+
+```powershell 
+Find-Module -Name AzureRM.Dns 
+``` 
+ 
+```powershell 
+Find-Module -Name AzureRM.Network 
+``` 
+ 
+上述命令的输出需要显示 AzureRM.Dns 的版本为 4.1.0 或以上，AzureRM.Network 的版本为 5.4.0 或以上。  
+
+如果系统中包含更低的版本，可以安装最新版本的 Azure PowerShell，或者使用“模块版本”旁边的链接，从 PowerShell 库下载并安装上述模块。 然后，可以使用以下命令安装这些模块。 这两个模块都是必需的，它们完全可向后兼容。 
+
+```powershell
+Install-Module -Name AzureRM.Dns -Force
+```
+
+```powershell
+Install-Module -Name AzureRM.Network -Force
+```
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 

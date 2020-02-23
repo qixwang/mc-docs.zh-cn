@@ -1,18 +1,18 @@
 ---
-title: 教程：安装 Service Fabric 独立客户端 - Azure Service Fabric
+title: 安装 Service Fabric 独立客户端
 description: 本教程介绍如何在上一教程文章中创建的群集上安装 Service Fabric 独立客户端。
 author: rockboyfor
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: dbf6bc1854a513b86dc1940b827b615639c66586
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 602801cdc3f1a72c7c4539758ea53331d7928618
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741973"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540117"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教程：安装并创建 Service Fabric 群集
 

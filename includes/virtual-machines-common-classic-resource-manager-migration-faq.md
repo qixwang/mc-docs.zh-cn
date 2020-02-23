@@ -6,25 +6,23 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 05/18/2018
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 93faca5424659b83e396aa0799773c51dbeb7579
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: 4cac2c79f385092ebbd2fed905e4563a322f2e07
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68913014"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428593"
 ---
-# <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
-
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
 否。 VM（经典）是公开上市的完全受支持的服务。 可以继续使用这些资源来拓展你在 Azure 上的足迹。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会出现什么情况？ 
 
-我们近期不会淘汰现有的经典 API 和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 强烈建议查看 Resource Manager 下 IaaS 包含的[一些改进](../articles/azure-resource-manager/resource-manager-deployment-model.md)。
+我们近期不会淘汰现有的经典 API 和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 强烈建议查看 Resource Manager 下 IaaS 包含的[一些改进](../articles/azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>对于我现有的工具而言，此迁移计划有何意义？ 
 
@@ -92,3 +90,5 @@ ms.locfileid: "68913014"
 ## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>我收到消息，指出 *“VM 报告总体代理状态为‘未就绪’。因此，此 VM 无法迁移。请确保 VM 代理报告总体代理状态为‘就绪’”* 或 *“VM 包含未报告其状态的扩展。因此，此 VM 无法迁移。”*
 
 当 VM 未建立到 Internet 的出站连接时，会收到此消息。 VM 代理使用出站连接访问 Azure 存储帐户，每隔五分钟更新一次代理状态。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

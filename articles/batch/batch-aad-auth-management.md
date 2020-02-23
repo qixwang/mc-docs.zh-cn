@@ -15,12 +15,12 @@ ms.workload: big-compute
 origin.date: 04/27/2017
 ms.date: 09/07/2018
 ms.author: v-junlch
-ms.openlocfilehash: 0f4a8b9d2ca15936b91b99b1b117742534dbbb8b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: c6b040af3bc490b4273ac19b69758a9b9c275689
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028974"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497536"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 
@@ -46,7 +46,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 ## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure Resource Manager API 授予应用程序访问权限
 
-接下来，需要将应用程序的访问权限委派给 Azure Resource Manager API。 Resource Manager API 的 Azure AD 标识符为 **Azure Service Management API**。
+接下来，需要将应用程序的访问权限委派给 Azure Resource Manager API。 Resource Manager API 的 Azure AD 标识符为 **Windows Azure Service Management API**。
 
 在 Azure 门户中执行以下步骤：
 
@@ -57,7 +57,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 3. 此时会显示“设置”边栏选项卡。  在“API 访问”部分中，选择“所需的权限”。  
 4. 单击“添加”添加新的所需权限。  
-5. 在步骤 1 中输入 **Azure Service Management API**，从结果列表中选择该 API，并单击“选择”按钮。 
+5. 在步骤 1 中输入 **Windows Azure Service Management API**，从结果列表中选择该 API，并单击“选择”按钮。 
 6. 在步骤 2 中，选中“以组织用户的身份访问 Azure 经典部署模型”旁边的复选框，并单击“选择”按钮。  
 7. 单击“完成”按钮。 
 

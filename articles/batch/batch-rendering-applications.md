@@ -1,6 +1,6 @@
 ---
 title: 渲染应用程序 - Azure Batch
-description: 预安装的 Batch 渲染应用程序
+description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 services: batch
 author: lingliw
 manager: digimobile
@@ -8,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 09/19/2019
 ms.date: 10/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38e8af75434fa52d33b119aff37f2b353d86dfac
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: d96349ab6fcad2dddaca3410ada3756143ded146
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041118"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497381"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序
 
@@ -86,7 +86,6 @@ ms.locfileid: "73041118"
 * Chaos Group V-Ray for Maya 2019（版本 3.52.03）
 * Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）
 * Blender (2.79)
-
 
 > [!NOTE]
 > Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）引入了对 V-ray 的中断性变更。 若要使用以前版本（版本 3.60.02），请使用 Windows Server 2016 版本 1.3.2（渲染节点）。

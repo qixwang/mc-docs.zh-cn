@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/03/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8331409348ee089cc3592e37d6eb1da9720e49c2
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 1880ffc9542d7970203b4196320ec217eeb3419e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965122"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428932"
 ---
+<!--Verified successfully-->
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>在容器组中启用 SSL 终结点
 
 本文介绍如何使用一个应用程序容器以及一个运行 SSL 提供程序的挎斗容器创建[容器组](container-instances-container-groups.md)。 使用单独的 SSL 终结点设置容器组，可为应用程序启用 SSL 连接，而无需更改应用程序代码。

@@ -1,17 +1,17 @@
 ---
-title: 升级独立 Azure Service Fabric 群集的配置
+title: 升级独立群集的配置
 description: 了解如何升级运行独立 Service Fabric 群集的配置。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/09/2018
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d3a83609eccaa8e8200b838c65746531525735f2
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 5b8941e6f97368bba759cfba28423907f378fa57
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742365"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539999"
 ---
 <!--Verify Successfully-->
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 

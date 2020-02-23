@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: dfbe78e4e0b015e318c7c9b08655058aa243828c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a8704f0235277cad890f098a6b8f293c7775344a
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124519"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494438"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>如何使用 .NET 通过本地编码器执行实时传送视频流
 > [!div class="op_single_selector"]
@@ -34,14 +34,14 @@ ms.locfileid: "71124519"
 
 本教程逐步演示如何使用 Azure 媒体服务 .NET SDK 创建为实现直通传送而配置的 **频道** 。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态  。 
 * 设置开发环境。 有关详细信息，请参阅[设置环境](media-services-set-up-computer.md)。
-* 网络摄像机。 例如， [Telestream Wirecast 编码器](https://www.telestream.net/wirecast/overview.htm)。
+* 网络摄像机。 例如， [Telestream Wirecast 编码器](media-services-configure-wirecast-live-encoder.md)。
 
 建议阅读以下文章：
 
@@ -57,7 +57,7 @@ ms.locfileid: "71124519"
 下面的代码示例演示如何完成以下任务：
 
 * 连接到媒体服务
-* 创建通道
+* 创建频道
 * 更新频道
 * 检索频道的输入终结点。 应向本地实时编码器提供输入终结点。 实时编码器将相机的信号转换为流，以便发送到通道的输入（插入）终结点。
 * 检索频道的预览终结点

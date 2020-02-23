@@ -3,18 +3,18 @@ title: 通过模块使用 IoT Edge 设备本地存储 - Azure IoT Edge | Microso
 description: 使用环境变量和创建选项来启用对 IoT Edge 设备本地存储的模块访问。
 author: kgremban
 manager: philmea
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/18/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 338260cc8324651f4fa75d44ee8f1403700f5385
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: ce55de93396ee74f3e64204a50b953aa2ed2f462
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859724"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494357"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>向模块授予对设备本地存储的访问权限
 

@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 origin.date: 12/06/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 0397d907d8f6a73619e0c2cf4fb005e57828f260
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/24/2020
+ms.openlocfilehash: eaf129f0741143d7f95e531218a9d6afdcedcee8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631303"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428730"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -54,8 +54,8 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ### <a name="scenarios"></a>方案
 
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [使用 Apache Mahout 生成影片推荐](hadoop/apache-hadoop-mahout-linux-mac.md)
 * [Apache Hive 和 Azure 机器学习](../machine-learning/team-data-science-process/create-features-hive.md)
 * [Apache Hive 和 Azure 机器学习端到端教程](../machine-learning/team-data-science-process/hive-walkthrough.md)
@@ -64,5 +64,3 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 ### <a name="deep-learning-resources"></a>深度学习资源
 
 * [将 Microsoft 认知工具包深度学习模型与 Azure HDInsight Spark 群集配合使用](spark/apache-spark-microsoft-cognitive-toolkit.md)
-* [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](spark/apache-spark-deep-learning-caffe.md)
-* [Data Science Virtual Machine (DSVM) 上的深度学习和人工智能框架](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)

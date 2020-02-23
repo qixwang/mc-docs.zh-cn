@@ -12,18 +12,18 @@ ms.workload: big-compute
 origin.date: 05/22/2017
 ms.date: 09/07/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 456c0e39325014cff1d8dc64fd0be455147ff68e
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 97ca18bead5a9101ee34650c7c8e72d3e15cdb5b
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583779"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497636"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的 Batch SDK 入门
 
 了解使用 [Azure Batch Node.js SDK](https://docs.microsoft.com/javascript/api/overview/azure/batch) 在 Node.js 中生成 Batch 客户端的基础知识。 我们采用分步方式来了解一个 Batch 应用程序的方案，然后通过 Node.js 客户端设置该方案。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设你有 Node.js 的实践知识并熟悉 Linux， 同时还假设你已设置 Azure 帐户并具有创建 Batch 和存储服务所需的访问权限。
 
 我们建议你在完成本文概述的步骤之前，先阅读 [Azure Batch 技术概述](batch-technical-overview.md)。
@@ -261,7 +261,7 @@ Azure Batch 作业是包含相似任务的逻辑组。 在我们的方案中，�
 这些任务会并行运行，并且跨多个节点部署，由 Azure Batch 服务进行协调。
 
 > [!Tip]
-> 可以使用 [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 属性指定能够在单个节点上同时运行的最大任务数。
+> 可以使用 [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 属性指定能够在单个节点上同时运行的最大任务数。
 >
 >
 
@@ -274,20 +274,20 @@ Azure Batch 作业是包含相似任务的逻辑组。 在我们的方案中，�
 可以将脚本上传到 Azure 存储帐户，并生成用于访问脚本的 SAS URI。 还可使用 Azure 存储 Node.js SDK 自动执行此过程。
 
 > [!Tip]
-> 作业的准备任务仅在需要运行特定任务的 VM 节点上运行。 如果需要在所有节点上安装必备组件，而不管在其上运行的任务是什么，则可在添加池时使用 [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 属性。 可以使用以下准备任务定义作为参考。
+> 作业的准备任务仅在需要运行特定任务的 VM 节点上运行。 如果需要在所有节点上安装必备组件，而不管在其上运行的任务是什么，则可在添加池时使用 [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) 属性。 可以使用以下准备任务定义作为参考。
 >
 >
 
 准备任务在提交 Azure Batch 作业时指定。 以下是准备任务配置参数：
 
-- **ID**：准备任务的唯一标识符
-- **commandLine**：用于执行任务可执行文件的命令行
-- **resourceFiles**：对象数组，提供运行此任务时需下载的文件的详细信息。  下面是其选项
+* **ID**：准备任务的唯一标识符
+* **commandLine**：用于执行任务可执行文件的命令行
+* **resourceFiles**：对象数组，提供运行此任务时需下载的文件的详细信息。  下面是其选项
     - blobSource：文件的 SAS URI
     - filePath：下载并保存文件所需的本地路径
     - fileMode：仅适用于 Linux 节点。fileMode 采用八进制格式，默认值为 0770
-- **waitForSuccess**：如果设置为 true，该任务不会在准备任务失败的情况下运行
-- **runElevated**：如果需要提升权限才能运行该任务，则设置为 true。
+* **waitForSuccess**：如果设置为 true，该任务不会在准备任务失败的情况下运行
+* **runElevated**：如果需要提升权限才能运行该任务，则设置为 true。
 
 以下代码片段显示了准备任务脚本配置示例：
 
@@ -318,8 +318,8 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 
 如果我们查看 [Python 脚本](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)，可以看到它接受两个参数：
 
-- 容器名称：要从其中下载文件的存储容器
-- 模式：文件名称模式的可选参数
+* 容器名称：要从其中下载文件的存储容器
+* 模式：文件名称模式的可选参数
 
 假设我们有四个容器，分别为“con1”、“con2”、“con3”、“con4”。以下代码显示了如何将任务提交到我们此前创建的 Azure Batch 作业“process csv”。
 
@@ -350,7 +350,7 @@ var container_list = ["con1","con2","con3","con4"]
 
 该代码将多个任务添加到池。 每个任务在所创建的 VM 池中的一个节点上执行。 如果任务数超出池中的 VM 数或 maxTasksPerNode 属性，则任务会等待节点可用。 此业务流程由 Azure Batch 自动处理。
 
-门户提供了有关任务和作业状态的详细视图。 也可使用列表，获取 Azure Node SDK 中的函数。 文档[链接](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)中提供了详细信息。
+门户提供了有关任务和作业状态的详细视图。 也可使用列表，获取 Azure Node SDK 中的函数。 文档[链接](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)中提供了详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

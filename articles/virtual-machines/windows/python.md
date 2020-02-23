@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 06/22/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2585e102d8b8de19d9f87be0d175dfe1310f0af4
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 8a73260eda1c3a7f3dfe11baaefccae871077d2d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272537"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427946"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -49,11 +49,11 @@ ms.locfileid: "72272537"
 2. 在“添加虚拟环境”屏幕上，接受默认名称“env”  ，确保已选择“Python 3.6（64 位）”  作为基础解释器，然后单击“创建”  。
 3. 右键单击所创建的 env  环境，然后单击“安装 Python 包”  ，并在搜索框中输入“azure”  ，然后按 Enter 键。
 
-会在输出窗口中看见 Azure 包已成功安装。 
+应在输出窗口中看到 azure 包已成功安装。 
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保拥有 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
+在开始此步骤前，请确保具有 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
 
 1. 打开创建的 myPythonProject.py  文件，然后添加此代码，使应用程序运行：
 
@@ -131,7 +131,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>创建 VM 和支持资源
 
-必须在[资源组](../../azure-resource-manager/resource-group-overview.md)中包含所有资源。
+必须在[资源组](../../azure-resource-manager/management/overview.md)中包含所有资源。
 
 1. 若要创建资源组，请在 .py 文件中的变量后添加此函数：
 
@@ -354,7 +354,7 @@ compute_client = ComputeManagementClient(
     ```
 
     > [!NOTE]
-    > 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅 [Navigate and select Azure virtual machine images with Windows PowerShell and the Azure CLI](../linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像）。
+    > 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
     > 
     > 
 
@@ -467,7 +467,7 @@ compute_client = ComputeManagementClient(
         compute_client.virtual_machines.start(GROUP_NAME, VM_NAME)
     ```
 
-2. 若要调用先前添加的函数，请将此代码添加在 .py 文件末尾的 if  语句下：
+2. 若要调用之前添加的函数，请在 .py 文件末尾处的 if  语句下添加此代码：
 
     ```python
     start_vm(compute_client)
@@ -580,4 +580,4 @@ compute_client = ComputeManagementClient(
 - 如果部署出现问题，请查看[使用 Azure 门户对资源组部署进行故障排除](../../resource-manager-troubleshoot-deployments-portal.md)
 - 了解有关 [Azure Python 库](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)的详细信息
 
-<!--Update_Description: update meta properties, update storage links-->
+<!-- Update_Description: update meta properties, wording update, update link -->

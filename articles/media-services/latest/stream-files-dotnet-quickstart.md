@@ -14,12 +14,12 @@ ms.custom: mvc
 origin.date: 08/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 4dc36a757cce7b355c80215584362800732bac47
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: c907d63c3d56e25ba3ae4321a95fb78ec9955ef6
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124376"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494507"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
@@ -32,7 +32,7 @@ ms.locfileid: "71124376"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
@@ -57,7 +57,7 @@ ms.locfileid: "71124376"
 3. 创建基于 HTTPS URL 的**作业**输入。
 4. 使用先前创建的输入和输出提交编码**作业**。
 5. 检查作业的状态。
-6. 创建**流式处理定位符**。
+6. 创建**流定位符**。
 7. 生成流式处理 URL。
 
 有关示例代码中的每个功能的内容介绍，请在[此源文件](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中查看相关代码和注释。

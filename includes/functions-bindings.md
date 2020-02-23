@@ -2,14 +2,15 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/31/2019
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 99d0b29496b4c9ba0213ca088c25c35467a88185
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 762de072753f48e6c7b3e827c5523f2890016409
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624108"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494516"
 ---
 下表显示了 Azure Functions 运行时的主版本支持的绑定：
 
@@ -18,7 +19,7 @@ ms.locfileid: "75624108"
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob 存储](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
-| [事件网格](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |
+| [事件网格](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [事件中心](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
 | [HTTP 和 Webhook](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
 | [IoT 中心](../articles/azure-functions/functions-bindings-event-iot.md)             |✔|✔|✔| |✔|

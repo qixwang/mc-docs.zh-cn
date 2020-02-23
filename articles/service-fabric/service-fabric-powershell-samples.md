@@ -1,17 +1,17 @@
 ---
 title: Azure PowerShell 示例 - Service Fabric
-description: Azure PowerShell 示例 - Service Fabric
+description: 了解如何使用 Powershell 创建和管理 Azure Service Fabric 群集、应用和服务。
 ms.topic: sample
 origin.date: 11/29/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: fa1957c74827052a38fdfcedca43751ab12aa052
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 2042ba41071bce4b0ae36797e45b97300fc0183b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742484"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540987"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell 示例
 

@@ -5,17 +5,18 @@ services: private-link
 author: rockboyfor
 ms.service: private-link
 ms.topic: overview
-origin.date: 11/04/2019
-ms.date: 01/13/2020
+origin.date: 01/09/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 674866c0665b5a3048f70c29d577126f67ac4f4d
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 6751cf954a5155da62f306fa8a1860b6ac1cc5f8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859187"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540543"
 ---
-# <a name="what-is-azure-private-link-preview"></a>什么是 Azure 专用链接？ （预览版）
+# <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储、Azure Cosmos DB 和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Azure 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络 (VNet) 中创建自己的[专用链接服务](private-link-service-overview.md)，并将其专门提供给自己的客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
 
 > [!IMPORTANT]
@@ -42,14 +43,18 @@ Azure 专用链接提供以下优势：
 |:---------|:-------------------|:-----------------|:--------|
 |客户自有服务的专用链接|标准负载均衡器后面的专用链接服务 | 中国东部 2  | 预览  |
 |Azure PaaS 服务的专用链接   | Azure 存储        |  中国东部 2      | 预览 <br/> [了解详细信息](/storage/common/storage-private-endpoints)。  |
-|  | Azure Data Lake Storage Gen2        |  中国东部 2      | 预览 <br/> [了解详细信息](/storage/common/storage-private-endpoints)。  |
 |  |  Azure SQL 数据库         | 中国东部 2      |   预览      |
 ||Azure SQL 数据仓库| 中国东部 2 |预览|
 ||Azure Cosmos DB| 中国东部 2 |预览|
+|  |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      |   预览      |
+|  |  Azure Database for MySQL         | 中国东部 2      |   预览      |
+|  |  Azure Database for MariaDB         | 中国东部 2      |   预览      |
+|  |  Azure Key Vault         | 中国东部 2      |   预览      |
 
 有关最新通知，请查看 [Azure 虚拟网络更新页](https://azure.microsoft.com/updates/?product=virtual-network)。
 
 <!--URL correct on https://azure.microsoft.com/updates/?product=virtual-network-->
+<!--Not Available on |  | Azure Data Lake Storage Gen2    -->
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -67,7 +72,7 @@ Azure 专用链接与 Azure Monitor 集成，使你能够在存储帐户中存�
 有关常见问题解答，请参阅 [Azure 专用链接常见问题解答](private-link-faq.md)。
 
 ## <a name="limits"></a>限制  
-有关限制，请参阅 [Azure 专用链接的限制](../azure-subscription-service-limits.md#private-link-limits)。
+有关限制，请参阅 [Azure 专用链接的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)

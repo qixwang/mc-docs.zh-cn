@@ -3,19 +3,19 @@ title: 快速入门：通过 .NET 在 C# 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 此 C# 快速入门介绍如何使用 Azure 认知搜索 .NET SDK 创建索引、加载数据以及运行查询。
 manager: nitinme
-author: HeidiSteen
+author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 70b86f66884411d1604d7ca07b1c3a9a88ef250d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 669270580bda35f9969a8f618f64e2dbd1574ead
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335853"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501426"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "75335853"
 > [!NOTE]
 > 为简单起见，本文中的演示代码使用 Azure 认知搜索 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要以下服务和工具。
 
@@ -57,7 +57,7 @@ ms.locfileid: "75335853"
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 首先，打开 Visual Studio，并新建能在 .NET Core 上运行的控制台应用项目。
 
@@ -88,7 +88,7 @@ ms.locfileid: "75335853"
 
 1. 将文件添加到输出目录。 右键单击 appsettings.json 并选择“属性”  。 在“复制到输出目录”中，选择“如果较新则复制”   。
 
-1. 将以下 JSON 复制到新 JSON 文件中。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理员 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效值。 如果服务终结点是 `https://mydemo.search.chinacloudapi.cn`，则服务名称为“mydemo”。
+1. 将以下 JSON 复制到新 JSON 文件中。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效的值。 如果服务终结点是 `https://mydemo.search.chinacloudapi.cn`，则服务名称为“mydemo”。
 
 ```json
 {

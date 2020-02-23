@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: quickstart
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0849303d9f4e1bf5e176818286a59a6ae33dc383
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: ef9d7b87f223c28835b46679302bcaf9e47deb19
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631305"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540525"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -35,7 +35,7 @@ ms.locfileid: "75631305"
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
 1. 在“创建虚拟网络”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16  。 |
@@ -80,7 +80,7 @@ ms.locfileid: "75631305"
 
 1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。 |
@@ -121,8 +121,8 @@ ms.locfileid: "75631305"
 
 7. 选择“确定”  。 
 8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
-9. 当看到 验证通过的 消息时，选择“创建”  。 
-10. 看到“验证通过”消息时选择“创建”。 
+9. 当看到“验证通过”消息时，选择“创建”  。 
+10. 当看到“验证通过”消息时，选择“创建”。 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
@@ -159,7 +159,7 @@ ms.locfileid: "75631305"
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。  |
-    | 子网 | 选择“mySubnet”。 ** |
+    | 子网 | 选择“mySubnet”  。 |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。  |
     |专用 DNS 区域 |选择“(New)privatelink.database.chinacloudapi.cn”  |
@@ -195,9 +195,9 @@ ms.locfileid: "75631305"
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
-2. 输入  `nslookup myserver.database.chinacloudapi.cn`。 
+2. 输入 `nslookup myserver.database.chinacloudapi.cn`。 
 
     将收到类似于下面的消息：
     ```azurepowershell
@@ -223,11 +223,11 @@ ms.locfileid: "75631305"
 1. 选择“连接”  。
 2. 浏览左侧菜单中的数据库。
 3. （可选）创建或查询 mydatabase 中的信息。
-4. 关闭与  *myVm* 建立的远程桌面连接。 
+4. 关闭与 *myVm* 的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 用完专用终结点、SQL 服务器和 VM 之后，请删除资源组及其包含的所有资源： 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。   **   
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。 
 2. 选择“删除资源组”  。 
 3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”   。
 

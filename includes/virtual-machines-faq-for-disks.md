@@ -9,12 +9,12 @@ origin.date: 05/13/2019
 ms.date: 12/25/2019
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 5e492815b0c2ec08a1202c88f027b6673885d44f
-ms.sourcegitcommit: ca2186fe1fc3f0e9d5d95003bd0b9e1c61963aac
+ms.openlocfilehash: f477b0c834dd3b6f70123271a0923bb097fbcdff
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75490268"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428127"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -32,7 +32,7 @@ ms.locfileid: "75490268"
 
 是的。 我们针对每个事务进行收费。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/storage/)。
 
-对于标准托管磁盘，是对磁盘上的数据实际大小收费还是对磁盘的预配容量收费？ 
+**对于标准托管磁盘，是对磁盘上的数据实际大小收费还是对磁盘的预配容量收费？**
 
 我们根据磁盘的预配容量收费。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/storage/)。
 
@@ -44,31 +44,31 @@ ms.locfileid: "75490268"
 
 是的。 可以使用 Azure 门户、PowerShell 或 Azure CLI 更改托管磁盘的存储帐户类型。
 
-是否可以使用 Azure 存储帐户中的 VHD 文件以不同的订阅创建托管磁盘？ 
+ 是否可以使用 Azure 存储帐户中的 VHD 文件以不同的订阅创建托管磁盘？
 
 是的。
 
-是否可以使用 Azure 存储帐户中的 VHD 文件在不同的区域中创建托管磁盘？ 
+**是否可以使用 Azure 存储帐户中的 VHD 文件在不同的区域中创建托管磁盘？**
 
-不是。
+否。
 
  客户使用托管磁盘是否存在任何规模限制？
 
 托管磁盘取消了与存储帐户相关的限制。 但是，订阅的最大限制为每个区域、每个磁盘类型 50,000 个托管磁盘。
 
-是否可以生成托管磁盘的增量快照？ 
+**是否可以创建托管磁盘的增量快照？**
 
-不是。 当前的快照功能可提供托管磁盘的完整副本。
+否。 当前的快照功能可提供托管磁盘的完整副本。
 
-可用性集中的 VM 是否可以同时包含托管和非托管磁盘？ 
+ 可用性集中的 VM 是否可以同时包含托管和非托管磁盘？
 
-不是。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
+否。 可用性集中的 VM 必须全部使用托管磁盘或全部使用非托管磁盘。 创建可用性集时，可以选择要使用的磁盘类型。
 
-托管磁盘是否是 Azure 门户中的默认选项？ 
+**托管磁盘是否是 Azure 门户中的默认选项？**
 
 是的。
 
-是否可以创建一个空托管磁盘？ 
+**是否可以创建一个空托管磁盘？**
 
 是的。 可创建空磁盘。 可独立于 VM 创建托管磁盘，例如，不需要将磁盘附加到 VM。
 
@@ -80,7 +80,7 @@ ms.locfileid: "75490268"
 
 设置 VM 诊断的专用存储帐户。
 
-托管磁盘支持哪类基于角色的访问控制？ 
+ 托管磁盘支持哪类基于角色的访问控制？
 
 托管磁盘支持三个密钥默认角色：
 
@@ -96,7 +96,7 @@ ms.locfileid: "75490268"
 
 客户可以生成托管磁盘的快照，并使用快照创建另一个托管磁盘。
 
-是否仍支持非托管磁盘？ 
+ 是否仍支持非托管磁盘？
 
 是的，非托管磁盘和托管磁盘均受支持。 建议对新的工作负荷使用托管磁盘，并将当前的工作负荷迁移到托管磁盘。
 
@@ -114,15 +114,15 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
  是否可以收缩或缩小托管磁盘？
 
-不是。 目前，不支持此功能。
+否。 目前，不支持此功能。
 
 是否可以在磁盘上中断租用？ 
 
-不可以。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
+否。 目前不支持此功能，因为租用的作用是防止磁盘在使用时被意外删除。
 
-当使用专用（未使用系统准备工具创建或未通用化）操作系统磁盘预配 VM 时，是否可以更改计算机名称属性？ 
+ 当使用专用（未使用系统准备工具创建或未通用化）操作系统磁盘预配 VM 时，是否可以更改计算机名称属性？
 
-不可以。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
+否。 无法更新计算机名称属性。 新 VM 从创建操作系统磁盘时所用的父 VM 继承该属性。 
 
  在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
 * [List of templates using Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)（使用托管磁盘的模板列表）
@@ -239,7 +239,7 @@ Azure 标准 SSD 盘是什么？
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？ 
 
-不可以。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
+否。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
 是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？ 
 
@@ -271,11 +271,11 @@ Azure 标准 SSD 盘是什么？
 
  是否可以为托管磁盘禁用存储服务加密？
 
-不可以。
+否。
 
  存储服务加密是否仅适用于特定区域？
 
-不可以。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域。 这也适用于中国，但仅适用于 21Vianet 托管密钥，不适用于客户托管密钥。
+否。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域。 这也适用于中国，但仅适用于 21Vianet 托管密钥，不适用于客户托管密钥。
 
 <!--Not Available on And German-->
 
@@ -290,17 +290,17 @@ Azure 标准 SSD 盘是什么？
 * [使用 Azure CLI 复制托管磁盘](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 * [使用 PowerShell 复制托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-是否已加密托管快照和映像？ 
+**托管快照和映像是否加密？**
 
 是的。 2017 年 6 月 9 日之后创建的所有托管快照和映像均会自动加密。 
 
-是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？ 
+ 是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？
 
 是
 
-是否同时会加密从托管磁盘或快照导出的 VHD？ 
+ 是否会同时加密从托管磁盘或快照导出的 VHD？
 
-不可以。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
+否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
@@ -314,7 +314,7 @@ Azure 标准 SSD 盘是什么？
 
 否。 只可以将标准数据磁盘附加到不使用支持高级 SSD 盘的大小系列的 VM。
 
-如果从现有的 VHD (80 GB) 创建高级数据磁盘，需要多少费用？ 
+ 如果从现有的 VHD (80 GB) 创建高级数据磁盘，需要多少费用？
 
 从 80 GB VHD 创建的高级数据磁盘被视为下一个可用的高级磁盘大小（P10 磁盘）。 我们按 P10 磁盘定价收费。
 
@@ -335,6 +335,8 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
  在高级磁盘上使用 TRIM 是否有任何影响？
 
 在高级或标准磁盘的 Azure 磁盘上使用 TRIM 没有负面影响。
+
+<a name="new-disk-sizes-managed-and-unmanaged"></a>
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>新磁盘大小：托管和非托管
 

@@ -1,17 +1,17 @@
 ---
-title: 通过 CI/CD 将容器应用程序部署到 Azure Service Fabric 群集
+title: 使用 CI/CD 部署容器应用程序
 description: 本教程介绍了如何使用 Visual Studio Azure DevOps 为 Azure Service Fabric 容器应用程序设置持续集成和部署。
 ms.topic: tutorial
 origin.date: 08/29/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 31be0a1c7459c3cee32897fa7ccf2878356e034f
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: cbd36f5c4ef4d8e6b02fda7ebfb8b15bd108cc16
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742043"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540577"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
@@ -172,17 +172,8 @@ Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工�
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>后续步骤
-
-在本教程中，你已学习了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 向项目中添加源代码管理
-> * 创建生成定义
-> * 创建发布定义
-> * 自动部署和升级应用程序
-
-
+<!--Not Available on  ## Next steps-->
+<!--Not Available on  > [!div class="checklist"]-->
 <!--Not Available on  [monitoring for your container](service-fabric-tutorial-monitoring-wincontainers.md)-->
 
 <!-- Image References -->

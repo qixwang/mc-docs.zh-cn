@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 374ff8fb4582fd857318a07e536c5a32d0171bdc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9fb4fd1e176e54b6ccfc822b351380e521ace9c6
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336032"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501420"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接 Azure SQL 数据库并为其内容编制索引
 
@@ -50,10 +50,11 @@ ms.locfileid: "75336032"
 
 | 条件 | 详细信息 |
 |----------|---------|
-| 数据来自单个表或视图 | 如果数据分散在多个表中，可以创建数据的单一视图。 但是，如果使用视图，则无法使用 SQL Server 集成的更改检测来使用增量更改刷新索引。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
+| 数据来自单个表或视图 | 如果数据分散在多个表中，可以创建数据的单一视图。 但是，如果使用视图，则无法使用 SQL Server 集成的更改检测来使用增量更改刷新索引。 |
 | 数据类型是兼容的 | Azure 认知搜索索引中支持大多数但并非全部 SQL 类型。 有关列表，请参阅[映射数据类型](#TypeMapping)。 |
 | 不需要进行实时数据同步 | 索引器最多每五分钟可以为表重新编制索引。 如果数据频繁更改并且所做更改需要在数秒或数分钟内反映在索引中，建议使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) 或 [.NET SDK](search-import-data-dotnet.md) 来直接推送更新的行。 |
-| 可以进行增量索引编制 | 如果具有大型数据集并打算按计划运行索引器，则 Azure 认知搜索必须能够有效地标识新的、更改的或删除的行。 只有按需（而非按计划）编制索引时或者为少于 100,000 行的数据编制索引时，才允许非增量索引编制。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
+
+<!-- | Incremental indexing is possible | If you have a large data set and plan to run the indexer on a schedule, Azure Cognitive Search must be able to efficiently identify new, changed, or deleted rows. Non-incremental indexing is only allowed if you're indexing on demand (not on schedule), or indexing fewer than 100,000 rows. For more information, see [Capturing Changed and Deleted Rows](#CaptureChangedRows) below. | -->
 
 <!-- > [!NOTE]  -->
 <!-- > Azure Cognitive Search supports SQL Server authentication only. If you require support for Azure Active Directory Password authentication, please vote for this [UserVoice suggestion](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica). -->
@@ -157,15 +158,15 @@ ms.locfileid: "75336032"
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
+**间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为： `P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 
 若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
-<a name="CaptureChangedRows"></a>
+<!-- <a name="CaptureChangedRows"></a> -->
 
-## <a name="capture-new-changed-and-deleted-rows"></a>捕获新的、更改的和删除的行
+<!-- ## Capture new, changed, and deleted rows -->
 
-Azure 认知搜索使用  “增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 认知搜索提供了两个更改检测策略来支持增量索引编制。 
+<!-- Azure Cognitive Search uses **incremental indexing** to avoid having to reindex the entire table or view every time an indexer runs. Azure Cognitive Search provides two change detection policies to support incremental indexing.  -->
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
 如果 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 认知搜索标识删除的行，无需向表中添加显式“软删除”列。
@@ -327,7 +328,7 @@ SQL 索引器公开多个配置设置：
 
 视情况而定。 对于表或视图的完整索引编制，可以使用辅助副本。 
 
-对于增量索引编制，Azure 认知搜索支持两个更改检测策略：SQL 集成的更改跟踪策略和高使用标记策略。
+<!-- For incremental indexing, Azure Cognitive Search supports two change detection policies: SQL integrated change tracking and High Water Mark. -->
 
 在只读副本上，SQL 数据库不支持集成的更改跟踪。 因此，必须使用高使用标记策略。 
 

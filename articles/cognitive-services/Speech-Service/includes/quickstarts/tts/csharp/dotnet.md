@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1f93688b620c1d2f38f12e275eb460bc66657ba8
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 6a265f4f12fdf09bfe584a8a441aa93855efafd8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123487"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430037"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -42,10 +42,10 @@ ms.locfileid: "76123487"
         {
             public static async Task SynthesisToSpeakerAsync()
             {
-                // Creates an instance of a speech config with specified subscription key and service region.
+                // Creates an instance of a speech config with specified host and subscription key.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
                 // The default language is "en-us".
-                var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+                var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
     
                 // Creates a speech synthesizer using the default speaker as audio output.
                 using (var synthesizer = new SpeechSynthesizer(config))

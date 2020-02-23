@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell 脚本示例 - 创建 Service Fabric 群集 | Azure
-description: Azure PowerShell 脚本示例 - 创建使用 X.509 证书保护的 Service Fabric 群集。
+title: 在 Powershell 中创建 Service Fabric 群集
+description: Azure PowerShell 脚本示例 - 创建使用 x.509 证书保护的 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
 author: rockboyfor
@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 01/19/2018
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 85d700d5c932511eda1764888f267d09e91c1d76
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: e9f7035cd7a9831b72313df45b98f924694b4ec4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741889"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540516"
 ---
 # <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 

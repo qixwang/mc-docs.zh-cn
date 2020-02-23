@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 08/15/2019
 ms.date: 10/21/2019
-ms.openlocfilehash: 7181a6005fbb8589b7e5b5b9ef0bdcbf8d200ea9
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 7728c09c2ac4b5ff179555a698d65d1173daf7ab
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389405"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428700"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或作业失败问题
 
@@ -93,7 +93,7 @@ HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟
 #### <a name="check-azure-service-usage-limits"></a>检查 Azure 服务使用限制
 
 在启动大型群集或同时启动多个群集时，如果超出 Azure 服务限制，则群集可能发生故障。 服务限制因 Azure 订阅而异。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-subscription-service-limits)。
-可以使用[资源管理器提高核心配额请求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)，向 Microsoft 请求增加可用 HDInsight 资源（例如 VM 核心和 VM 实例）的数量。
+可以使用[资源管理器提高核心配额请求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)，向 Microsoft 请求增加可用 HDInsight 资源（例如 VM 核心和 VM 实例）的数量。
 
 #### <a name="check-the-release-version"></a>检查发行版本
 

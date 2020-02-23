@@ -2,15 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 11/27/2018
-ms.date: 09/05/2019
+ms.date: 02/13/2020
 ms.author: v-junlch
-ms.openlocfilehash: fd63636a4af0ea1b5c668aa9a4fad21d257dbcc4
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.openlocfilehash: c400e3ecc4b8059992a6cf3f84697a57c2a451bd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70805750"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428758"
 ---
 ## <a name="install-the-azure-functions-extension"></a>安装 Azure Functions 扩展
 
@@ -22,7 +21,7 @@ ms.locfileid: "70805750"
 
     ![安装适用于 Azure Functions 的扩展](./media/functions-install-vs-code-extension/vscode-install-extension.png)
 
-1. 重新启动 Visual Studio Code，然后选择“活动”栏上的 Azure 图标。 此时侧边栏中应显示 Azure Functions 区域。
+1. 安装后，在活动栏上选择 Azure 图标。 此时侧边栏中应显示 Azure Functions 区域。
 
     ![侧边栏中的 Azure Functions 区域](./media/functions-install-vs-code-extension/azure-functions-window-vscode.png)
 

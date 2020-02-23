@@ -12,15 +12,15 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/01/2018
-ms.date: 08/19/2019
+origin.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7892d31afd5791319a58b17695b4ff8fd6b12ac9
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: 67fe8495841c0b18bbda62f8f812372fbf73d020
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878758"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563399"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>通过 Apache Kafka on HDInsight 实现数据的高可用性
 
@@ -30,7 +30,7 @@ ms.locfileid: "68878758"
 
 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
-每个 Azure 区域都有特定数量的容错域。 如需域的列表及其所含容错域的数目，请参阅[可用性集](../../virtual-machines/windows/regions-and-availability.md#availability-sets)文档。
+每个 Azure 区域都有特定数量的容错域。 如需域的列表及其所含容错域的数目，请参阅[可用性集](../../virtual-machines/windows/availability.md#availability-sets)文档。
 
 > [!IMPORTANT]
 > Kafka 不识别容错域。 在 Kafka 中创建主题时，可能会将所有分区副本存储在同一容错域中。 为了解决此问题，HDInsight 提供了 [Kafka 分区重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)。

@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/11/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 8ed8ce8f8cde4e475ee632d732f07297271420e2
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.date: 03/02/2020
+ms.openlocfilehash: 7ac4dc4dc0a7dd7caac5376d18f5f0e05e415e89
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123416"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501464"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>在 Azure 认知搜索中实现搜索流量分析
 

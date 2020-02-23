@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 950072e2bf43ab2da6c6479eeaecfba322a6f14d
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: c82c97ee9b7ca403e34dbc1eef8e3fe54877bb4b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123474"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428852"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 合成语音
 
@@ -104,15 +104,15 @@ ms.locfileid: "76123474"
         
         var inputText: String!
         
+        var host: String!
         var sub: String!
-        var region: String!
         
         override func viewDidLoad() {
             super.viewDidLoad()
             
             // load subscription information
+            host = "https://YourServiceRegion.tts.speech.azure.cn/"
             sub = "YourSubscriptionKey"
-            region = "YourServiceRegion"
             
             textField = UITextField(frame: CGRect(x: 100, y:250, width: 200, height: 50))
             textField.textColor = UIColor.black
@@ -148,7 +148,7 @@ ms.locfileid: "76123474"
         func synthesisToSpeaker() {
             var speechConfig: SPXSpeechConfiguration?
             do {
-                try speechConfig = SPXSpeechConfiguration(subscription: sub, region: region)
+                try speechConfig = SPXSpeechConfiguration(host: host, subscription: sub)
             } catch {
                 print("error \(error) happened")
                 speechConfig = nil

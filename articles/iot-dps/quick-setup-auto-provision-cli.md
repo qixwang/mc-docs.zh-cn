@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure CLI 设置设备预配服务 | Microsoft Docs
-description: Azure 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
+title: 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
+description: 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e51b1f5f529c0631787de3c17162813e70e94e40
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 3692d057e2102a0d495f05a50a64936a3a5c6ab1
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657878"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494386"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>使用 Azure CLI 设置 IoT 中心设备预配服务
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 IoT 中心设备预配服务
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门详述了如何使用 Azure CLI 创建 IoT 中心和 IoT 中心设备预配服务并将两个服务链接到一起。 
 
@@ -31,7 +30,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [az group create](/cli/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在 *chinaeast* 位置创建名为 *my-sample-resource-group* 的资源组。
 
@@ -68,10 +67,9 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 > 此示例在“美国西部”位置创建预配服务。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
 >
 
-
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>获取 IoT 中心的连接字符串
 
-需要提供 IoT 中心的连接字符串才能将其与设备预配服务链接到一起。 使用 [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) 命令获取连接字符串，并使用其输出设置一个变量。链接这两个资源时，需要用到该变量。 
+需要提供 IoT 中心的连接字符串才能将其与设备预配服务链接到一起。 使用 [az iot hub show-connection-string](/cli/iot/hub#az-iot-hub-show-connection-string) 命令获取连接字符串，并使用其输出设置一个变量。链接这两个资源时，需要用到该变量。 
 
 以下示例将 hubConnectionString 变量设置为中心的 iothubowner 策略的主键连接字符串值（可以使用 `--policy-name` 参数指定其他策略）   。 用“my-sample-hub”替换先前选择的唯一 IoT 中心名称  。 此命令使用 Azure CLI [查询](/cli/query-azure-cli)和[输出](/cli/format-output-azure-cli#tsv-output-format)选项从命令输出提取连接字符串。
 

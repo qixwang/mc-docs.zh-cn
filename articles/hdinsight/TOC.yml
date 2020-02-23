@@ -17,8 +17,6 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: 管理 HDInsight 群集 - Powershell
           href: ./hdinsight-administer-use-powershell.md
-        - name: 构建 ETL 管道
-          href: ./hdinsight-sales-insights-etl.md
     - name: 示例
       items:
         - name: Azure CLI 示例
@@ -49,8 +47,6 @@
           href: ./hdinsight-capacity-planning.md
         - name: 可用性和可靠性
           href: ./hdinsight-high-availability-linux.md
-        - name: 比较存储选项
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: 了解托管标识
           href: ./hdinsight-managed-identities.md
     - name: 如何
@@ -75,8 +71,6 @@
               href: hdinsight-hadoop-use-blob-storage.md
             - name: 使用 Azure Data Lake Storage Gen2
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: 使用 Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
         - name: 扩展群集
           items:
             - name: 安装 HDInsight 应用
@@ -99,8 +93,6 @@
                   href: hdinsight-apps-install-custom-applications.md
                 - name: 使用 REST 安装应用
                   href: 'https://msdn.microsoft.com/library/mt706515.aspx'
-                - name: 将 HDInsight 应用发布到 Azure 市场
-                  href: hdinsight-apps-publish-applications.md
         - name: 安全
           items:
             - name: 将 SSH 与 HDInsight 配合使用
@@ -109,8 +101,6 @@
               href: hdinsight-linux-ambari-ssh-tunnel.md
             - name: 限制数据访问
               href: hdinsight-storage-sharedaccesssignature-permissions.md
-            - name: 授权用户访问 Apache Ambari 视图
-              href: hdinsight-authorize-users-to-ambari.md
         - name: 迁移
           items:
             - name: 动机和权益
@@ -137,8 +127,6 @@
               href: ./hdinsight-delete-cluster.md
             - name: 手动缩放群集
               href: ./hdinsight-scaling-best-practices.md
-            - name: 自动缩放群集
-              href: ./hdinsight-autoscale-clusters.md
             - name: 使用外部元数据存储
               href: ./hdinsight-use-external-metadata-stores.md
             - name: 管理 HDInsight 群集的日志
@@ -147,8 +135,6 @@
               href: ./hdinsight-hadoop-add-storage.md
             - name: 上传 Apache Hadoop 作业的数据
               href: ./hdinsight-upload-data.md
-            - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
-              href: ./hdinsight-multiple-clusters-data-lake-store.md
             - name: 将 .NET 迁移到 Linux
               href: ./hdinsight-hadoop-migrate-dotnet-to-linux.md
             - name: 使用 Apache Sqoop 导入和导出数据
@@ -187,10 +173,6 @@
               href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: 监视
           items:
-            - name: 使用 Azure Monitor 日志
-              href: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-            - name: 将查询与 Azure Monitor 日志配合使用
-              href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: 监视群集性能
               href: ./hdinsight-key-scenarios-to-monitor.md
             - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
@@ -303,7 +285,7 @@
               items:
                 - name: 流式处理概述
                   href: ./spark/apache-spark-streaming-overview.md
-                - name: 结构化流概述
+                - name: 结构化流式处理概述
                   href: ./spark/apache-spark-structured-streaming-overview.md
                 - name: 在 Apache Hadoop YARN 中创建高度可用的 Apache Spark 流作业
                   href: ./spark/apache-spark-streaming-high-availability.md
@@ -325,8 +307,6 @@
               items:
                 - name: 使用 Apache Spark 读取和写入 Apache HBase 数据
                   href: ./hdinsight-using-spark-query-hbase.md
-                - name: 分析 Application Insights 遥测日志
-                  href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: 管理
           items:
             - name: 管理群集资源
@@ -349,8 +329,6 @@
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: 与其他 Azure 服务配合使用
               items:
-                - name: 与 Data Lake Storage 配合使用
-                  href: ./spark/apache-spark-use-with-data-lake-store.md
                 - name: 连接到 Azure SQL 数据库
                   href: ./spark/apache-spark-connect-to-sql-database.md
                 - name: 使用 Apache Spark 和 Cosmos DB 实现 lambda 体系结构
@@ -454,8 +432,6 @@
                   href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
                 - name: 使用 Apache Hive JDBC 驱动程序进行连接
                   href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: 分析存储的推文
-                  href: ./hdinsight-analyze-twitter-data-linux.md
                 - name: 使用 Apache Mahout 生成建议
                   href: ./hadoop/apache-hadoop-mahout-linux-mac.md
                 - name: 适用于 HDInsight 的高级分析
@@ -557,8 +533,6 @@
               href: ./kafka/apache-kafka-connect-vpn-gateway.md
             - name: 复制 Apache Kafka 数据
               href: ./kafka/apache-kafka-mirroring.md
-            - name: 分析 Apache Kafka 日志
-              href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: 自带密钥
               href: ./kafka/apache-kafka-byok.md
             - name: SSL 加密和身份验证
@@ -727,10 +701,6 @@
       items:
         - name: 在 HDInsight 中创建 Apache Storm 拓扑
           href: ./storm/apache-storm-quickstart.md
-    - name: 教程
-      items:
-        - name: 使用 Apache Storm 写入到存储
-          href: ./storm/apache-storm-write-data-lake-store.md
     - name: 如何
       items:
         - name: 开发

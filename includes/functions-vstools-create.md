@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 5ffbf0904fe8c24656b19ee146a72f30b9178045
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 3b8fa2e96f9129d4088c2e2d1b80e670a9224856
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116881"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494520"
 ---
 Visual Studio 中的 Azure Functions 项目模板创建一个项目，该项目可发布到 Azure 中的函数应用。 可使用函数应用将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
@@ -35,10 +35,10 @@ Visual Studio 中的 Azure Functions 项目模板创建一个项目，该项目�
     | **Functions 运行时** | **Azure Functions 2.x <br />(.NET Core)** | 此设置创建使用 Azure Functions 运行时版本 2.x（支持 .NET Core）的函数项目。 Azure Functions 1.x 支持 .NET Framework。 有关详细信息，请参阅[面向 Azure Functions 运行时版本](../articles/azure-functions/functions-versions.md)。   |
     | **函数模板** | **HTTP 触发器** | 此设置创建由 HTTP 请求触发的函数。 |
     | **存储帐户**  | **存储模拟器** | HTTP 触发器不使用 Azure 存储帐户连接。 所有其他触发器类型需要有效的存储帐户连接字符串。 由于 Functions 需要存储帐户，因此在将项目发布到 Azure 时会分配或创建一个存储帐户。 |
-    | **授权级别** | **匿名** | 在未提供密钥的情况下，任何客户端都可以触发创建的函数。 通过此授权设置可以轻松测试新函数。 有关密钥和授权的详细信息，请参阅 [HTTP 和 Webhook 绑定](../articles/azure-functions/functions-bindings-http-webhook.md)中的[授权密钥](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys)。 |
+    | **授权级别** | **匿名** | 在未提供密钥的情况下，任何客户端都可以触发创建的函数。 通过此授权设置可以轻松测试新函数。 有关密钥和授权的详细信息，请参阅 [HTTP 和 Webhook 绑定](../articles/azure-functions/functions-bindings-http-webhook.md)中的[授权密钥](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)。 |
     
     > [!NOTE]
-    > 请确保将**授权级别**设置为 `Anonymous`。 如果选择默认级别为 `Function`，需要在请求中提供[函数密钥](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys)才能访问函数终结点。
+    > 请确保将**授权级别**设置为 `Anonymous`。 如果选择默认级别为 `Function`，需要在请求中提供[函数密钥](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)才能访问函数终结点。
     
 4. 选择“创建”以创建函数项目和 HTTP 触发的函数  。
 

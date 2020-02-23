@@ -7,14 +7,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 10/30/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 71fbb2dc3a1904583d1f46f7a310132e8d5d2ad9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: afa9a99a356dd85294c9892d2c50230c9aaf8cb9
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335929"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563432"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流
 
@@ -27,7 +27,7 @@ ms.locfileid: "75335929"
 
 还可以使用 Oozie 来计划特定于某系统的作业，例如 Java 程序或 shell 脚本
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -223,7 +223,7 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 ## <a name="create-a-table"></a>创建表
 
 > [!NOTE]  
-> 有多种方法可连接到 SQL 数据库以创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](https://www.freetds.org/)。
+> 有多种方法可连接到 SQL 数据库以创建表。 以下步骤从 HDInsight 群集使用 [FreeTDS](https://www.freetds.org/) 。
 
 
 1. 使用以下命令在 HDInsight 群集上安装 FreeTDS：
@@ -399,10 +399,10 @@ Oozie 工作流定义以 Hadoop 过程定义语言（缩写为 hPDL，一种 XML
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.chinacloudapp.cn:11000/oozie</value>
     ```
 
-    `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn:11000/oozie` 部分是要配合 Oozie 命令使用的 URL。
+    `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.chinacloudapp.cn:11000/oozie` 部分是要配合 Oozie 命令使用的 URL。
 
 2. 编辑代码，将 URL 替换为前面收到的 URL。 若要创建 URL 的环境变量，请使用以下命令，这样就不需要为每个命令输入该 URL：
 
@@ -668,7 +668,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**原因**：**job.xml** 文件中使用的 Azure Blob 存储地址不包含存储容器或存储帐户名。 Blob 存储地址格式必须是 `wasbs://containername@storageaccountname.blob.core.chinacloudapi.cn`。
+**原因：** **job.xml** 文件中使用的 Azure Blob 存储地址不包含存储容器或存储帐户名。 Blob 存储地址格式必须是 `wasbs://containername@storageaccountname.blob.core.chinacloudapi.cn`。
 
 **解决方法**：更改作业使用的 Blob 存储地址。
 
@@ -678,7 +678,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**原因**：当前的权限设置不允许 Oozie 模拟指定的用户帐户。
+**原因：** 当前的权限设置不允许 Oozie 模拟指定的用户帐户。
 
 **解决方法**：允许 Oozie 模拟“用户”  组中的用户。 使用 `groups USERNAME` 查看用户帐户所属的组。 如果该用户不是**用户**组的成员，请使用以下命令将该用户添加到该组：
 
@@ -693,7 +693,7 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**原因**：Sqoop 无法加载访问数据库时所需的数据库驱动程序。
+**原因：** Sqoop 无法加载访问数据库时所需的数据库驱动程序。
 
 **解决方法**：从 Oozie 作业使用 Sqoop 时，必须同时包含数据库驱动程序和作业使用的其他资源（例如 workflow.xml）。 此外，通过 workflow.xml 的 `<sqoop>...</sqoop>` 节引用包含数据库驱动程序的存档。
 
@@ -718,7 +718,6 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 * [在 HDInsight 中上传 Apache Hadoop 作业的数据][hdinsight-upload-data]
 * [在 HDInsight 中将 Apache Sqoop 与 Apache Hadoop 配合使用][hdinsight-use-sqoop]
 * [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用][hdinsight-use-hive]
-* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用][hdinsight-use-pig]
 * [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563

@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 02/27/2018
-ms.date: 10/21/2019
+origin.date: 01/02/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: e0df3c9e9b0b50fe47e946685f7f375cac36ba79
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 131a19d6531f28e7fd82e3b4de6ceaf5ecbb0fbd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292628"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428808"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -90,12 +90,7 @@ ms.locfileid: "72292628"
 
 若要修改服务配置，请使用以下步骤：
 
-1. 打开群集的 Ambari Web UI。 该 URL 为 https://YOURCLUSTERNAME.azurehdinsight.cn 。
-
-    出现提示时，在该站点中使用群集的 HTTP 帐户名（默认为 admin）和密码进行身份验证。
-
-   > [!NOTE]  
-   > Ambari 可能会再次提示输入用户名和密码。 如果是这样，请输入相同的帐户名和密码。
+1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
 2. 使用左侧的列表，选择你想要修改的服务区。 例如， **HDFS**。 在中心区域，选择 **“配置”** 选项卡。
 

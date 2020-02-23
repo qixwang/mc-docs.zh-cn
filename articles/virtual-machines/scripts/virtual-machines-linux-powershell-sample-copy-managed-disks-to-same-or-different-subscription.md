@@ -1,6 +1,6 @@
 ---
-title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘 | Azure
-description: Azure PowerShell 脚本示例 - 将托管磁盘复制（移动）到相同或不同的订阅
+title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘
+description: Azure PowerShell 脚本示例 - 将托管磁盘复制（或移动）到同一或不同订阅
 services: virtual-machines-linux
 documentationcenter: storage
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/06/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3df77ad7ec47300ae1e2125aee89676459d3a441
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 2bb2e873d919b9aed99e7ec26640173487d78639
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272871"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428222"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>在相同或不同订阅中通过 PowerShell 复制托管磁盘
 
@@ -86,5 +86,4 @@ New-AzDisk -Disk $diskConfig -DiskName $managedDiskName -ResourceGroupName $targ
 
 可以在 [Azure Linux VM 文档](../linux/powershell-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 PowerShell 脚本示例。
 
-<!-- Update_Description: new articles of powershell cmdlet -->
-<!-- ms.date: 04/01/2018 -->
+<!-- Update_Description: update meta properties, wording update, update link -->

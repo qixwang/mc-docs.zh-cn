@@ -1,8 +1,7 @@
 ---
-title: 教程 - 使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机 | Azure
+title: 教程 - 使用 Azure DevOps Services 通过 Jenkins 实现到 Azure VM 的 CI/CD
 description: 本教程介绍如何从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM
 author: rockboyfor
-manager: digimobile
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -10,15 +9,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 origin.date: 07/31/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: jenkins
-ms.openlocfilehash: 24bdffb055a7f4417112dd6520621a5b280e78a6
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 4519c7cb5a31eb5eddde0b8e7db402c9387ca99a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831351"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428001"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -51,9 +50,9 @@ ms.locfileid: "73831351"
     > [!NOTE]
     > 有关详细信息，请参阅[连接到 Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts)。
 
-*  部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](/virtual-machines/linux/tutorial-manage-vm)。
+* 部署目标需用到 Linux 虚拟机。  有关详细信息，请参阅[使用 Azure CLI 创建和管理 Linux VM](/virtual-machines/linux/tutorial-manage-vm)。
 
-*  为虚拟机开启入站端口 80。 有关详细信息，请参阅[使用 Azure 门户创建网络安全组](/virtual-network/tutorial-filter-network-traffic)。
+* 为虚拟机开启入站端口 80。 有关详细信息，请参阅[使用 Azure 门户创建网络安全组](/virtual-network/tutorial-filter-network-traffic)。
 
 ## <a name="get-the-sample-app"></a>获取示例应用
 
@@ -184,11 +183,8 @@ ms.locfileid: "73831351"
 > * 在 Jenkins 中生成应用。
 > * 为 Azure DevOps Services 集成配置 Jenkins。
 > * 为 Azure 虚拟机创建部署组。
-> * 创建用于配置 VM 和部署应用的发布管道。
+> * 创建配置 VM 并部署应用的 Azure Pipelines。
 
-若要了解如何部署 LAMP（Linux、Apache、MySQL 和 PHP）堆栈，请继续学习下一个教程。
-
-> [!div class="nextstepaction"]
-> [部署 LAMP 堆栈](tutorial-lamp-stack.md)
+<!--Not Avaialble on [CI/CD using Azure Pipelines](tutorial-build-deploy-azure-pipelines.md)-->
 
 <!--Update_Description: update meta properties, wording update -->

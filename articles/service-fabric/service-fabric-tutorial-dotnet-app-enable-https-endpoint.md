@@ -1,17 +1,17 @@
 ---
-title: 使用 Kestrel 将 HTTPS 终结点添加到 Azure 中的 Service Fabric 应用
+title: 使用 Kestrel 添加 HTTPS 终结点
 description: 本教程介绍如何使用 Kestrel 向 ASP.NET Core 前端 Web 服务添加 HTTPS 终结点，以及如何将应用程序部署到群集。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 11b4fd18db0ba74e2ebf15e2020c1357663e9ec5
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: bc9ec9d2e91947f105d4de1cdb18499f25ab9def
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742037"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540564"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -277,6 +277,7 @@ if ($cert -eq $null)
         return $true;
     }
 }
+
 ```
 
 修改 *SetCertAccess.ps1* 文件属性，将“复制到输出目录”设置为“如果较新则复制”。 

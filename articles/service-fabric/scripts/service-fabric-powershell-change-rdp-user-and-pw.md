@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 更新 RDP 用户名和密码 | Azure
+title: 在 Powershell 中更新 RDP 用户名和密码
 description: Azure PowerShell 脚本示例 - 更新特定节点类型的所有 Service Fabric 群集节点的 RDP 用户名和密码。
 services: service-fabric
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 03/19/2018
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: e376372ca4e62f558a335eb85cac86f8bfabab71
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: f9865de4c6170398fc288ec1091e95d56abf1d49
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174063"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540711"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>更新群集中 VM 的管理员用户名和密码
 
@@ -33,7 +33,7 @@ Service Fabric 群集中的每个[节点类型](../service-fabric-cluster-nodety
 ## <a name="sample-script"></a>示例脚本
 
 ```powershell
-Login-AzAccount -EnvironmentName AzureChinaCloud
+Connect-AzAccount -Environment AzureChinaCloud
 Get-AzSubscription
 Set-AzContext -SubscriptionId 'yourSubscriptionID'
 

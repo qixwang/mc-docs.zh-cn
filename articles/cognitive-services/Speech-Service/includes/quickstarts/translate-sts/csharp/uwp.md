@@ -11,12 +11,12 @@ origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.topic: include
-ms.openlocfilehash: e52b2415df750fbbcc12eac7da0b5a44d09f9178
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 97becb6970efc83f291b5764397d0c4e577ebe5c
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123495"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430059"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -103,9 +103,9 @@ ms.locfileid: "76123495"
     
             private async void SpeechTranslationFromMicrophone_ButtonClicked(object sender, RoutedEventArgs e)
             {
-                // Creates an instance of a speech config with specified subscription key and service region.
+                // Creates an instance of a speech config with specified host and subscription key.
                 // Replace with your own subscription key and service region (e.g., "chinaeast2").
-                var config = SpeechTranslationConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+                var config = SpeechTranslationConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
     
                 // Sets source and target languages.
                 string fromLanguage = "en-US";

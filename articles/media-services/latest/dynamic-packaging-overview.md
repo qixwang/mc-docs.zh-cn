@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-origin.date: 10/17/2019
-ms.date: 01/20/2020
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f95d6cb52c86530105f15f42239a8ed8bb7c4061
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 82f0ea0487f09245b020aa2fa81f4de007b708b9
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939811"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494496"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
@@ -33,18 +33,7 @@ Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通�
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>准备源文件供传输
 
-若要利用动态打包，需将夹层（源）文件[编码](encoding-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过以下流媒体协议传送视频：
-
-|协议|示例|
-|---|---|
-|HLS V4 |`https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-DASH CSF| `https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|平滑流| `https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
-
-如果计划使用媒体服务动态加密来保护内容，请参阅[流式处理协议和加密类型](content-protection-overview.md#streaming-protocols-and-encryption-types)。
+若要利用动态打包，需将夹层（源）文件[编码](encoding-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过下述流媒体协议传送视频。
 
 > [!TIP]
 > 获取 MP4 和流式处理配置文件的一种方式是[使用媒体服务对夹层文件进行编码](#encode-to-adaptive-bitrate-mp4s)。 
@@ -52,6 +41,36 @@ Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通�
 要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
 
 因此，用户只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
+
+如果计划使用媒体服务动态加密来保护内容，请参阅[流式处理协议和加密类型](content-protection-overview.md#streaming-protocols-and-encryption-types)。
+
+### <a name="hls-protocol"></a>HLS 协议
+
+流式处理客户端可以指定以下 HLS 格式：
+
+|协议|示例|
+|---|---|
+|HLS V4 |`https://amsv3account-cne21.streaming.media.chinacloudapp.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
+|HLS V3 |`https://amsv3account-cne21.streaming.media.chinacloudapp.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
+|HLS CMAF| `https://amsv3account-cne21.streaming.media.chinacloudapp.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+### <a name="mpeg-dash-protocol"></a>MPEG-DASH 协议
+
+流式处理客户端可以指定以下 MPEG-DASH 格式：
+
+|协议|示例|
+|---|---|
+|MPEG-DASH CSF| `https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
+|MPEG-DASH CMAF|`https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+
+### <a name="smooth-streaming-protocol"></a>平滑流式处理协议
+
+流式处理客户端可以指定以下平滑流式处理格式：
+
+|协议|说明/示例| 
+|---|---|
+|平滑流| `https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|平滑流式处理 2.0（旧清单）|默认情况下，平滑流式处理清单格式包含重复标记（r 标记）。 但是，一些播放器不支持 `r-tag`。 使用这些播放器的客户端可以使用禁用 r 标记的格式：<br/><br/>`https://amsv3account-cne21.streaming.media.chinacloudapi.cn/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 ## <a name="on-demand-streaming-workflow"></a>按需流式处理工作流
 

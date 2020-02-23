@@ -7,12 +7,12 @@ origin.date: 08/25/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 2d27587fd00be39aa8c38a215a06d91e2888259f
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: f693464baafffbe6d3f306301515f1b60d7fc6ef
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858538"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497543"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -52,7 +52,7 @@ ms.locfileid: "75858538"
 
 ## <a name="download-recovery-services-agent"></a>下载恢复服务代理
 
-Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保管库之间创建关联。 以下过程介绍如何将代理下载到服务器。
+Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保管库之间创建关联。 以下过程介绍如何将代理下载到服务器。
 
 1. 在恢复服务保管库列表中，选择“myRecoveryServicesVault”以打开其仪表板  。
 
@@ -97,9 +97,9 @@ Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保管库之�
 
 ## <a name="configure-backup-and-retention"></a>配置备份和保留期
 
-使用 Azure 恢复服务代理规划何时将 Windows Server 备份到 Azure。 在代理下载到的服务器上执行以下步骤。
+使用 Microsoft Azure 恢复服务代理规划何时将 Windows Server 备份到 Azure。 在代理下载到的服务器上执行以下步骤。
 
-1. 打开 Azure 恢复服务代理。 可以通过在计算机中搜索“Azure 备份”找到该代理。 
+1. 打开 Microsoft Azure 恢复服务代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
 
 2. 在恢复服务代理控制台中，单击“操作”窗格中的“计划备份”   。
 

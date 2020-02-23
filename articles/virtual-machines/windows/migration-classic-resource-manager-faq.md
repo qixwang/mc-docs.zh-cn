@@ -1,5 +1,5 @@
 ---
-title: 有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题 | Azure
+title: 有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
 description: 有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 04/01/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: aa2c7fe9a2adb45a721378406f22bbda2594bef1
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 4ba90a41bf5cc046c4226749cfdf6855bbb32143
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272561"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428909"
 ---
+# <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
+
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤

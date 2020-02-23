@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 10/17/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: ec3639873b1bfba8c195e13501bab883abba8250
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 4b2badd741183e04d4ab426ff8caa64639914e14
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965007"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428890"
 ---
+<!--Verified successfully-->
 # <a name="configure-readiness-probes"></a>配置就绪情况探测
 
 对于为流量提供服务的容器化应用程序，你可能想要验证容器是否已准备好处理传入的请求。 Azure 容器实例支持采用就绪情况探测来包括各种配置，使容器在某些情况下无法访问。 就绪情况探测的行为类似于 [Kubernetes 就绪情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)。 例如，容器应用可能需要在启动过程中加载大型数据集，并且你不希望在这段时间内接收请求。

@@ -1,23 +1,22 @@
 ---
-title: 在门户中针对 Azure IoT 中心设备预配服务设置云 | Microsoft Docs
-description: Azure 门户中的 IoT 中心自动设备预配
-author: sethmanheim
-ms.author: sethm
-origin.date: 07/15/2019
-ms.date: 07/15/2019
+title: 教程 - 在门户中针对 Azure IoT 中心设备预配服务设置云
+description: 本教程介绍如何通过 IoT 中心设备预配服务 (DPS) 在 [Azure 门户](https://portal.azure.cn)中设置云资源以进行设备预配
+author: wesmc7777
+ms.author: v-tawe
+origin.date: 11/12/2019
+ms.date: 03/02/2020
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e26e90e3b674286c461a27075c96f78b5f86ff5e
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 6166c6fc5e95d3d310da6c68a7da38e0a9fe20ff
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657908"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494380"
 ---
-# <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教程：通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
 本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行下列操作：
 
@@ -48,9 +47,9 @@ ms.locfileid: "74657908"
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **名称** | 任何唯一名称 | -- | 
-   | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | MyResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
-   | **Location** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |   
+   | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.azure.cn/Subscriptions)。 |
+   | **资源组** | MyResourceGroup | 有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://www.azure.cn/home/features/products-by-region/)。 |   
 
    ![在门户中输入有关设备预配服务的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 

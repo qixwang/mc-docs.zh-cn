@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/24/2019
-ms.date: 10/28/2019
+origin.date: 01/03/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: a644e5b12dac640c815431a9b53ae8944a0e30c0
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 1b8a454ff7655d561e3235aee19435476970eff3
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583914"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563510"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>将 Apache Mahout 与 HDInsight 中的 Apache Hadoop 配合使用生成电影推荐 (SSH)
 
@@ -32,11 +32,9 @@ ms.locfileid: "72583914"
 
 Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
-
-* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout 版本控制
 
@@ -70,7 +68,13 @@ user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` �
 
 ## <a name="run-the-analysis"></a>运行分析
 
-通过 SSH 到群集的连接，使用以下命令运行推荐作业：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```
+
+1. 使用以下命令来运行推荐作业：
 
 ```bash
 mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
@@ -87,12 +91,14 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
     hdfs dfs -text /example/data/mahoutout/part-r-00000
     ```
 
-    输出如下所示：
+    输出将如下所示：
 
-        1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
-        2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
-        3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
-        4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```output
+    1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
+    2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
+    3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
+    4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```
 
     第一列是 `userID`。 “[”和“]”中包含的值为 `movieId`:`recommendationScore`。
 
@@ -183,17 +189,17 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
      此命令的输出类似于以下文本：
 
-     ```
-     Seven Years in Tibet (1997), score=5.0
-     Indiana Jones and the Last Crusade (1989), score=5.0
-     Jaws (1975), score=5.0
-     Sense and Sensibility (1995), score=5.0
-     Independence Day (ID4) (1996), score=5.0
-     My Best Friend's Wedding (1997), score=5.0
-     Jerry Maguire (1996), score=5.0
-     Scream 2 (1997), score=5.0
-     Time to Kill, A (1996), score=5.0
-     ```
+        ```output
+        Seven Years in Tibet (1997), score=5.0
+        Indiana Jones and the Last Crusade (1989), score=5.0
+        Jaws (1975), score=5.0
+        Sense and Sensibility (1995), score=5.0
+        Independence Day (ID4) (1996), score=5.0
+        My Best Friend's Wedding (1997), score=5.0
+        Jerry Maguire (1996), score=5.0
+        Scream 2 (1997), score=5.0
+        Time to Kill, A (1996), score=5.0
+        ```
 
 ## <a name="delete-temporary-data"></a>删除临时数据
 
@@ -214,7 +220,6 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 既已学习如何使用 Mahout，可探索在 HDInsight 上处理数据的其他方式：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [MapReduce 和 HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
 [build]: https://mahout.apache.org/developers/buildingmahout.html

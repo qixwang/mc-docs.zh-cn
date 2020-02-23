@@ -6,15 +6,15 @@ ms.service: virtual-machines-windows
 ms.workload: storage
 ms.topic: conceptual
 origin.date: 08/15/2019
-ms.date: 12/25/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 93586540ec92e7c7c5340e63c2a82edb82d15a38
-ms.sourcegitcommit: ca2186fe1fc3f0e9d5d95003bd0b9e1c61963aac
+ms.openlocfilehash: 7b4017c2c333b5d84e87492312249e3cface5b10
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75490267"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428126"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 

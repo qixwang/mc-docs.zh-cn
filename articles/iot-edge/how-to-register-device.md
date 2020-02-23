@@ -3,19 +3,19 @@ title: 注册新 Azure IoT Edge 设备 | Microsoft Docs
 description: 使用适用于 Azure CLI 的 IoT 扩展注册新的 IoT Edge 设备并检索连接字符串
 author: kgremban
 manager: philmea
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 01/08/2020
-ms.date: 01/27/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 20c4a011b1ac2164863514f5c0df64326074aaa7
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: d887f289d6a658a5b087ee82ab0de46ef3f2e735
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966552"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494067"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>注册 Azure IoT Edge 设备
 

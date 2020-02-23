@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure 虚拟机（资源管理器）的自动备份 v2 | Azure
+title: 适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 description: 介绍适用于 Azure 中运行的 SQL Server 2016/2017 VM 的自动备份功能。 本文仅适用于使用 Resource Manager 的 VM。
 services: virtual-machines-windows
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/03/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 5e8e1c253ba7211c9acfb0aba915a3408da97625
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 8aa77d822aa6f0b27d1cd398d7b442428249f12d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116921"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428113"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -32,7 +32,7 @@ ms.locfileid: "74116921"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要使用自动备份 v2，请查看以下先决条件：
 
 **操作系统**：
@@ -84,7 +84,7 @@ ms.locfileid: "74116921"
 ## <a name="understanding-full-backup-frequency"></a>了解完整备份频率
 必须了解每日与每周完整备份之间的差别。 请考虑以下两个示例解决方案。
 
-### <a name="scenario-1-weekly-backups"></a>方案 1：每周备份
+### <a name="scenario-1-weekly-backups"></a>应用场景 1：每周备份
 某个 SQL Server VM 包含多个大型数据库。
 
 在星期一，用户使用以下设置启用了自动备份 v2：
@@ -102,7 +102,7 @@ ms.locfileid: "74116921"
 
 此方案表明，自动备份仅在指定的时段内运行，且每个数据库每周备份一次。 另外，如果在一天内无法完成所有备份，备份可能会跨越好几天。
 
-### <a name="scenario-2-daily-backups"></a>方案 2：每日备份
+### <a name="scenario-2-daily-backups"></a>应用场景 2：每日备份
 某个 SQL Server VM 包含多个大型数据库。
 
 在星期一，用户使用以下设置启用了自动备份 v2：
@@ -154,7 +154,7 @@ ms.locfileid: "74116921"
 
 首次启用自动备份时，Azure 会在后台配置 SQL Server IaaS 代理。 在此期间，Azure 门户可能不会显示自动备份已配置。 请等待几分钟，以便安装和配置代理。 之后，Azure 门户将反映出新设置。
 
-## <a name="configure-with-powershell"></a>使用 PowerShell 进行配置
+## <a name="configure-with-powershell"></a>使用 PowerShell 配置
 
 可以使用 PowerShell 来配置自动备份 v2。 开始之前，必须：
 
@@ -181,7 +181,7 @@ $resourcegroupname = "resourcegroupname"
 $region = "chinanorth"
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region 
+    -Version "2.0" -Location $region 
 ```
 
 <a name="verifysettings"></a>
@@ -299,7 +299,7 @@ $logbackupfrequency = "30"
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 

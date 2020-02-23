@@ -13,12 +13,12 @@ ms.topic: article
 origin.date: 08/19/2019
 ms.date: 12/09/2019
 ms.author: v-jay
-ms.openlocfilehash: 1ecc6903ccd9eff097ea1db6253901110a49c171
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 276e1a89eed743110a231d6835928a7d3b74d5d9
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807655"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494464"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
@@ -79,7 +79,7 @@ ms.locfileid: "74807655"
 
 ## <a name="jobs"></a>作业
 
-**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 **作业**指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
+**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息  。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>来自 HTTPS 的作业输入
 

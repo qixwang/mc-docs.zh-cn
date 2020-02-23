@@ -1,5 +1,5 @@
 ---
-title: 平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移 | Azure
+title: 平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移概述
 description: 本文逐步讲解如何对资源进行平台支持的从经典部署模型到 Azure Resource Manager 的迁移
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 10/10/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4018e9670d7bff887b7081227eb484db9a705986
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 8274d1aed25ceb18b29058a19653ff2f73b96936
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272589"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428589"
 ---
+# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移
+
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]
 
 ## <a name="next-steps"></a>后续步骤
@@ -34,4 +36,4 @@ ms.locfileid: "72272589"
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
 * [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
 
-<!--Update_Description: update meta properties-->
+<!-- Update_Description: update meta properties, wording update -->

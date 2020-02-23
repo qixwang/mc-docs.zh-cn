@@ -56,11 +56,13 @@
     - name: SSH 故障排除
       href: troubleshoot-ssh-connection.md
     - name: 排查文件系统错误
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: 排查与内核相关的启动问题
       href: 'https://support.microsoft.com/help/4091524'
+    - name: 恢复配置了 LVM 且无法引导的 VM
+      href: chroot-logical-volume-manager.md
     - name: 排查 fstab 错误
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: 详细的 SSH 故障排除
       href: detailed-troubleshoot-ssh-connection.md
 - name: 常见错误消息
@@ -131,11 +133,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: Azure 门户
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: 启动错误
+- name: 启动错误 Linux
+  href: boot-error-troubleshoot-linux.md
+  items:
+    - name: Grub 救援
+      href: troubleshoot-vm-boot-error.md
+- name: 启动错误 Windows
   href: boot-error-troubleshoot.md
   items:
-    - name: Azure 虚拟机启动错误
-      href: troubleshoot-vm-boot-error.md
     - name: 启动诊断
       href: boot-diagnostics.md
     - name: BitLocker 错误
@@ -150,6 +155,8 @@
       href: troubleshoot-critical-service-failed-boot-error.md
     - name: 重启循环
       href: troubleshoot-reboot-loop.md
+    - name: 重启、关闭或停止服务
+      href: boot-error-troubleshoot-windows.md
     - name: 在更新 Windows 时停滞
       href: troubleshoot-stuck-updating-boot-error.md
 - name: 限制错误

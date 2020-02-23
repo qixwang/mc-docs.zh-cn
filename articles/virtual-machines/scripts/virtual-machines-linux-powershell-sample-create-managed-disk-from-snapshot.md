@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 从快照创建托管磁盘 | Azure
+title: 使用 PowerShell 从快照创建托管磁盘
 description: Azure PowerShell 脚本示例 - 从快照创建托管磁盘
 services: virtual-machines-linux
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/05/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: fbb3f3d900fe3652011855255f41460a6ff65130
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 7d5042e21ad7e30be2682f843c43d214e9f93a5a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116911"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428343"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>使用 PowerShell 从快照创建托管磁盘
 

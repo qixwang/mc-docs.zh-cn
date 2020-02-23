@@ -8,13 +8,13 @@ ms.author: v-yiso
 ms.reviewer: jasonh
 ms.topic: howto
 origin.date: 10/23/2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 71c84c05563ebafa4e38db15037ec807a1e9a1c6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/24/2020
+ms.openlocfilehash: 88be4fb1a371fd8f2fe200f611ce8f5858676204
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335933"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428701"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量（预览）
 
@@ -178,7 +178,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
 
-若要了解 Azure 防火墙的缩放限制以及如何提高请求，请参阅[此文档](../azure-subscription-service-limits.md#azure-firewall-limits)或参阅[常见问题解答](../firewall/firewall-faq.md)。
+若要了解 Azure 防火墙的缩放限制以及如何提高请求，请参阅[此文档](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)或参阅[常见问题解答](../firewall/firewall-faq.md)。
 
 ## <a name="access-to-the-cluster"></a>访问群集
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 32297eba2b4b8e7eab916edb51342e7c4d1a9ef6
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 4fca4cf0c51b8766d9db66c77d48af0833de777c
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123300"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428857"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -110,13 +110,13 @@ ms.locfileid: "76123300"
     }
     
     - (void)buttonPressed:(NSButton *)button {
-        // Creates an instance of a speech config with specified subscription key and service region.
+        // Creates an instance of a speech config with specified host and subscription key.
         // Replace with your own subscription key // and service region (e.g., "chinaeast2").
+        NSString *speechHost = @"wss://YourServiceRegion.stt.speech.azure.cn/";
         NSString *speechKey = @"YourSubscriptionKey";
-        NSString *serviceRegion = @"YourServiceRegion";
     
         SPXAudioConfiguration *audioConfig = [[SPXAudioConfiguration alloc] initWithMicrophone:nil];
-        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:speechKey region:serviceRegion];
+        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:speechHost subscription:speechKey];
         SPXSpeechRecognizer *speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig audioConfiguration:audioConfig];
     
         NSLog(@"Say something...");

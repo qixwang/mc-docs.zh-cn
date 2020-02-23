@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 从自定义磁盘创建 Linux VM | Azure
+title: 使用 Azure CLI 从自定义磁盘创建 Linux VM
 description: 使用资源管理器部署模型和 Azure CLI 上传或复制自定义的虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: article
 origin.date: 10/10/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
-ms.openlocfilehash: 6154faa67d66a36231a74cc8f94662eedc237a25
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 2614eb25b71ab097323607c37761b1384983d1b4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831430"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428892"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -35,23 +35,12 @@ ms.locfileid: "73831430"
 * 上传 VHD
 * 复制现有的 Azure VM
 
-## <a name="quick-commands"></a>快速命令
-
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
-使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 从自定义或专用的磁盘创建新 VM 时，请**附加**该磁盘 (--attach-os-disk)，而不要指定自定义映像或市场映像 (--image)。 以下示例使用从自定义 VHD 创建的、名为 *myManagedDisk* 的托管磁盘，创建名为 *myVM* 的 VM：
-
-```azurecli
-az vm create --resource-group myResourceGroup --location chinaeast --name myVM \
-   --os-type linux --attach-os-disk myManagedDisk
-```
-
 ## <a name="requirements"></a>要求
 若要完成以下步骤，需要：
 
 - 已准备好在 Azure 中使用的 Linux 虚拟机。 本文的[准备 VM](#prepare-the-vm) 部分介绍了如何查找有关安装 Azure Linux 代理 (waagent) 的特定于分发版的信息，通过 SSH 连接到 VM 时需要用到该代理。
 - 用于将 [Azure 认可的 Linux 分发版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（或参阅[关于未认可分发版的信息](create-upload-generic.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)）安装到采用 VHD 格式的虚拟磁盘的 VHD 文件。 可使用多种工具创建 VM 和 VHD：
-    - 安装并配置 [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) 或 [KVM](https://www.linux-kvm.org/page/RunningKVM)，并注意使用 VHD 作为映像格式。 如果需要，可以使用 `qemu-img convert` [转换映像](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)。
+    - 安装并配置 [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) 或 [KVM](https://www.linux-kvm.org/page/RunningKVM)，并注意使用 VHD 作为映像格式。 如果需要，可以使用 `qemu-img convert`[转换映像](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)。
     - 也可以在 [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) 或 [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) 上使用 Hyper-V。
 
     > [!NOTE]
@@ -147,6 +136,6 @@ az vm create \
 现在，应该可以使用凭据通过 SSH 从源 VM 连接到该 VM。 
 
 ## <a name="next-steps"></a>后续步骤
-准备好并上传自定义虚拟磁盘之后，可以阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/resource-group-overview.md)的详细信息。 可能还需要向新 VM [添加数据磁盘](add-disk.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。 如果需要访问在 VM 上运行的应用程序，请务必[打开端口和终结点](nsg-quickstart.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+准备好并上传自定义虚拟磁盘之后，可以阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/management/overview.md)的详细信息。 可能还需要向新 VM [添加数据磁盘](add-disk.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。 如果需要访问在 VM 上运行的应用程序，请务必[打开端口和终结点](nsg-quickstart.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
 <!-- Update_Description: wording update, update meta properties, update link -->

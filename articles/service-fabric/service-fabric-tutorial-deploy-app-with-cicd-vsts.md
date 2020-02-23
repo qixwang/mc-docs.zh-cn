@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 中通过持续集成和 Azure Pipelines 部署 Service Fabric 应用
+title: 使用 CI 和 Azure Pipelines 部署应用
 description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric 应用程序设置持续集成和部署。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5030ec89fed9cef582993fcd0063797dc336554c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 3aaaa1b96183600bb629154b04fe113381e0b4ba
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742044"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540581"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -172,16 +172,8 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>后续步骤
-
-在本教程中，你已学习了如何执行以下操作：
-
-> [!div class="checklist"]
-> * 向项目中添加源代码管理
-> * 创建生成管道
-> * 创建发布管道
-> * 自动部署和升级应用程序
-
+<!--Not Available on ## Next steps-->
+<!--Not Available on > [!div class="checklist"]-->
 <!--Not Available on Advance to the next tutorial:-->
 <!--Not Available on > [Set up monitoring and diagnostics for the application](service-fabric-tutorial-monitoring-aspnet.md)-->
 

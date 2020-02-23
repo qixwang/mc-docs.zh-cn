@@ -1,22 +1,21 @@
 ---
-title: 使用 Java 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
+title: 快速入门 - 使用 Java 将模拟的 TPM 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 651c87e64d8b93679bd68f0fcd9284ad92a1a2c0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 7447b038294ea5fbe8be04c69ad10b47da3237a8
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336327"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494424"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -36,7 +35,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
 
 1. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 

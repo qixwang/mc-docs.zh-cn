@@ -1,21 +1,20 @@
 ---
-title: 使用 C# 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
+title: 快速入门 - 使用 C# 将模拟的 TPM 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C# 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62d13ac822ce5ca42254012b47010fbef578cb79
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8355c626b2526fe3048329740e33ea53a2fae182
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336291"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494419"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -28,6 +27,7 @@ ms.locfileid: "75336291"
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
+
 - [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
 - [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
@@ -43,7 +43,7 @@ Azure IoT 设备预配服务支持两类注册：
 1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括  Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
 1. 打开命令提示符或 Git Bash。 克隆用于 C# GitHub 存储库的 Azure IoT 示例：
-    
+
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
@@ -76,7 +76,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 在 Azure 门户中的“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮。   
 
-1. 在“添加注册”面板中  ，输入以下信息：
+1. 在“添加注册”面板中，输入以下信息  ：
    - 选择“TPM”  作为标识证明*机制*。
    - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥”   。
    - 选择与预配服务链接的 IoT 中心。

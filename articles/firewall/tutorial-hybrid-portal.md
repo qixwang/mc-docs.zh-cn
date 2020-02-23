@@ -5,16 +5,16 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: tutorial
-origin.date: 11/02/2019
-ms.date: 12/09/2019
+origin.date: 01/18/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 83403f9c71cbd45608715282c07ba48348bad5d0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: bd3fd4526dd91ed017e0bea224504eacdefbc3b7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336339"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540078"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -46,16 +46,17 @@ ms.locfileid: "75336339"
 
 如果要使用 Azure PowerShell 完成此过程，请参阅[使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙](tutorial-hybrid-ps.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要正常开展此方案，必须符合三项关键要求：
+混合网络使用中心辐射型网络体系结构模型在 Azure VNet 与本地网络之间路由流量。 中心辐射型网络体系结构具有以下要求：
 
-- 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由 (UDR)。 必须在此路由表中**禁用** BGP 路由传播。
-- 中心网关子网中的 UDR 必须指向用作分支网络下一跃点的防火墙 IP 地址。
+- 将 VNet-Hub 对等互连到 VNet-Spoke 时设置 **AllowGatewayTransit**。 在中心辐射型网络体系结构中，辐射虚拟网络可以通过网关传输共享中心的 VPN 网关，不必在每个辐射虚拟网络中部署 VPN 网关。 
 
-    无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
-    
-- 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
+   此外，通往网关连接的虚拟网络或本地网络的路由会通过网关传输自动传播到对等互连的虚拟网络的路由表。 有关详细信息，请参阅[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
+
+- 将 VNet-Spoke 对等互连到 VNet-Hub 时设置 **UseRemoteGateways**。 如果设置了 **UseRemoteGateways** 并且还在远程对等互连上设置了 **AllowGatewayTransit**，则辐射虚拟网络使用远程虚拟网络的网关进行传输。
+- 若要通过中心防火墙对中心子网流量进行路由，你需要有一个用户定义的路由 (UDR) 且该路由应指向设置了“禁用 BGP 路由传播”  选项的防火墙。 “禁用 BGP 路由传播”  选项会阻止到辐射子网的路由通信。 这可以防止获知的路由与你的 UDR 冲突。
+- 请在中心网关子网上配置一个指向防火墙 IP 地址的 UDR，将其作为通向辐射网络的下一跃点。 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 
 请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。
 
@@ -86,10 +87,7 @@ ms.locfileid: "75336339"
 > [!NOTE]
 > AzureFirewallSubnet 子网的大小为 /26。 有关子网大小的详细信息，请参阅 [Azure 防火墙常见问题解答](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在“网络”下，选择“虚拟网络”。  
 4. 对于“名称”，请键入 **VNet-hub**。 
 5. 对于“地址空间”，请键入 **10.5.0.0/16**。 
@@ -115,10 +113,7 @@ ms.locfileid: "75336339"
 
 ## <a name="create-the-on-premises-virtual-network"></a>创建本地虚拟网络
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在“网络”下，选择“虚拟网络”。  
 4. 对于“名称”，请键入 **VNet-OnPrem**。 
 5. 对于“地址空间”，请键入 **192.168.0.0/16**。 
@@ -141,10 +136,7 @@ ms.locfileid: "75336339"
 
 这是用于本地网关的公共 IP 地址。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在搜索文本框中，键入“公共 IP 地址”并按 **Enter**。 
 3. 依次选择“公共 IP 地址”、“创建”。  
 4. 对于“名称”，请键入 **VNet-Onprem-GW-pip**。
@@ -156,16 +148,13 @@ ms.locfileid: "75336339"
 
 现在，将防火墙部署到防火墙中心虚拟网络中。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在左列中选择“网络”，然后选择“防火墙”。  
 4. 在“创建防火墙”页上，使用下表配置防火墙： 
 
     |设置  |Value  |
     |---------|---------|
-    |订阅     |\<用户的订阅\>|
+    |订阅     |\<订阅\>|
     |资源组     |**FW-Hybrid-Test** |
     |名称     |**AzFW01**|
     |位置     |选择前面使用的同一位置|
@@ -215,10 +204,7 @@ ms.locfileid: "75336339"
 
 现在，为中心虚拟网络创建 VPN 网关。 网络到网络配置需要 RouteBased VpnType。 创建 VPN 网关通常需要 45 分钟或更长时间，具体取决于所选 VPN 网关的 SKU。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在搜索文本框中，键入“虚拟网络网关”并按 **Enter**。 
 3. 依次选择“虚拟网络网关”、“创建”。  
 4. 对于“名称”，请键入 **GW-hub**。 
@@ -235,10 +221,7 @@ ms.locfileid: "75336339"
 
 现在，为本地虚拟网络创建 VPN 网关。 网络到网络配置需要 RouteBased VpnType。 创建 VPN 网关通常需要 45 分钟或更长时间，具体取决于所选 VPN 网关的 SKU。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在搜索文本框中，键入“虚拟网络网关”并按 **Enter**。 
 3. 依次选择“虚拟网络网关”、“创建”。  
 4. 对于“名称”，请键入 **GW-Onprem**。 
@@ -313,10 +296,7 @@ ms.locfileid: "75336339"
 - 通过防火墙 IP 地址从中心网关子网连接到分支子网的路由
 - 通过防火墙 IP 地址从分支子网连接的默认路由
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在搜索文本框中，键入“路由表”并按 **Enter**。 
 3. 选择“路由表”。 
 4. 选择“创建”  。
@@ -379,17 +359,14 @@ ms.locfileid: "75336339"
 
 在分支虚拟网络中，创建运行 IIS 且不使用公共 IP 地址的虚拟机。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在“常用”下，选择“Windows Server 2016 Datacenter”。  
 3. 输入虚拟机的以下值：
     - **资源组** - 选择“FW-Hybrid-Test”。 
     - **虚拟机名称**：*VM-Spoke-01*。
     - **区域** - 前面使用的同一区域。
     - **用户名**：*azureuser*。
-    - **密码**：*Azure123456!*
+    - **密码**：*Azure123456!* -
 4. 选择“下一步:磁盘”  。
 5. 接受默认设置，然后选择“下一步:  网络”。
 6. 选择“VNet-Spoke”作为虚拟网络；子网为“SN-Workload”。  
@@ -420,10 +397,7 @@ ms.locfileid: "75336339"
 
 你将使用此虚拟机通过远程桌面连接到公共 IP 地址。 然后，请在该虚拟机中通过防火墙连接到本地服务器。
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
-    
-    <!--Not Available on Home page for Azure China Cloud-->
-    
+1. 在 Azure 门户主页上，选择“创建资源”。 
 2. 在“常用”下，选择“Windows Server 2016 Datacenter”。  
 3. 输入虚拟机的以下值：
     - **资源组** - 选择现有资源组，然后选择“FW-Hybrid-Test”。 

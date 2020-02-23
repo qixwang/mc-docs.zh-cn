@@ -10,12 +10,12 @@ ms.topic: include
 origin.date: 01/14/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: d7ac6a2c42332bb18ac18fae2c5ae27795e19f73
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: bf87eaa91e3f630c35799480e36005b3d2206409
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029146"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430045"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -34,9 +34,9 @@ ms.locfileid: "77029146"
 
    ````C++
 
-    // Creates an instance of a speech config with specified subscription key and service region.
+    // Creates an instance of a speech config with specified host and subscription key.
     // Replace with your own subscription key and service region (e.g., "chinaeast2").
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
 
     // Creates a speech recognizer using a WAV file. The default language is "en-us".
     // Replace with your own audio file name.

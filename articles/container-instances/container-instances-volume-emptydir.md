@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 02/08/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6dd390af9fbd86950d89bd23198fd71f2e80d133
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 36a0c650b704e75d0836c848454d7220ab8b648e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965068"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428297"
 ---
+<!--Verified successfully-->
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 emptyDir 卷
 
 了解如何在 Azure 容器实例中装载 *emptyDir* 卷以在容器组中的容器之间共享数据。 使用 emptyDir  卷作为容器化工作负荷的临时缓存。

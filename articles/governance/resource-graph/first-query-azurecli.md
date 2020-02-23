@@ -2,18 +2,16 @@
 title: 快速入门：第一个 Azure CLI 查询
 description: 本快速入门介绍为 Azure CLI 启用 Resource Graph 扩展并运行第一个查询的步骤。
 author: DCtheGeek
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/21/2019
-ms.date: 12/16/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: a9a3bf74c95799960a33fd5272f1d07fdfde4230
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: a64caff798e99b2de92ad3214a16e73b4d4cf39c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884661"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494011"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
@@ -21,7 +19,7 @@ ms.locfileid: "74884661"
 
 在此过程结束时，你已将该扩展添加到所选的 Azure CLI 安装中，并将运行你的第一个 Resource Graph 查询。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -29,7 +27,7 @@ ms.locfileid: "74884661"
 
 若要使 Azure CLI 能够查询 Azure Resource Graph，则必须添加该扩展。 此扩展适用于可以使用 Azure CLI 的任何位置，包括 [Windows 10 上的 bash](/windows/wsl/install-win10)、[Azure CLI Docker 映像](https://hub.docker.com/r/microsoft/azure-cli/)或在本地安装。
 
-1. 请确保安装最新的 Azure CLI（至少为 **2.0.45**）。 若尚未安装，请遵循[这些说明](/cli/install-azure-cli-windows?view=azure-cli-latest)。
+1. 请确保安装最新的 Azure CLI（至少为 2.0.76）  。 若尚未安装，请遵循[这些说明](/cli/install-azure-cli-windows?view=azure-cli-latest)。
 
 1. 在所选的 Azure CLI 环境中，使用以下命令导入该扩展：
 
@@ -94,9 +92,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取有关[查询语言](./concepts/query-language.md)的详细信息
-- 了解如何[浏览资源](./concepts/explore-resources.md)
-- 在 [Azure PowerShell](first-query-powershell.md) 中运行你的第一个查询。
-- 查看[初学者查询](./samples/starter.md)的示例
-- 查看[高级查询](./samples/advanced.md)的示例
-- 在 [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) 上提供反馈
+本快速入门介绍了如何将 Resource Graph 扩展添加到 Azure CLI 环境并运行第一个查询。 若要详细了解 Resource Graph 语言，请继续阅读查询语言详细信息页。
+
+> [!div class="nextstepaction"]
+> [获取有关查询语言的详细信息](./concepts/query-language.md)

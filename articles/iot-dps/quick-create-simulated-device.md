@@ -1,21 +1,21 @@
 ---
-title: 使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: 本快速入门使用单独注册。 在本快速入门中，请使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 TPM 设备。
+title: 快速入门：使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心
+description: 本快速入门使用单独注册。 本快速入门使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C 设备 SDK 创建和预配模拟的 TPM 设备。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 16a56b08a766847cd2c1e83dc183696f9ed95806
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 566941fa31c63b54fb64820c92f29ce6be4961e6
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859601"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494405"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -41,7 +41,6 @@ Azure IoT 设备预配服务支持两类注册：
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
-
 <a id="setupdevbox"></a>
 
 ## <a name="prepare-a-development-environment-for-the-azure-iot-c-sdk"></a>为 Azure IoT C SDK 准备开发环境
@@ -61,6 +60,7 @@ Azure IoT 设备预配服务支持两类注册：
     cd azure-iot-sdk-c
     git submodule update --init
     ```
+
     应该预料到此操作需要几分钟才能完成。
 
 4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
@@ -207,14 +207,14 @@ Azure IoT 设备预配服务支持两类注册：
     test-docs-hub.azure-devices.net, deviceId: test-docs-device
     ```
 
-8. 预配服务将模拟设备预配到 IoT 中心后，中心的“IoT 设备”中会显示设备 ID。  
+8. 预配服务将模拟设备预配到 IoT 中心后，中心的“IoT 设备”中会显示设备 ID  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 2. 关闭计算机上的 TPM 模拟器窗口。
@@ -227,4 +227,3 @@ Azure IoT 设备预配服务支持两类注册：
 
 > [!div class="nextstepaction"]
 > [Azure 快速入门 - 将 TPM 设备注册到 Azure IoT 中心设备预配服务](quick-enroll-device-tpm-java.md)
-

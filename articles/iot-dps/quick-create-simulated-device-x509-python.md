@@ -1,22 +1,21 @@
 ---
-title: 使用 Python 将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
+title: 使用 Python 将模拟的 X.509 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) 的 Python 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 029cc7e97b00e79ede2d3e429f921ad5858db7cc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 01d3260b423c6df8075eb8241dc663edbf99c2a1
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336431"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494091"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备
 
@@ -143,7 +142,7 @@ Azure IoT 设备预配服务支持两类注册：
     PROTOCOL = ProvisioningTransportProvider.HTTP
     ```
 
-6. 运行示例。 
+6. 运行该示例。 
 
     ```cmd/sh
     python provisioning_device_client_sample.py
@@ -163,7 +162,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 2. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 

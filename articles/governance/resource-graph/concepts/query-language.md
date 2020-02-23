@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7773c9801f0b659a9e05317dbc8e7b5e4083a661
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 315b98a493e8514c404eebe508860463b77e4928
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859520"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494017"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
-Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算符和函数的工作原理和操作方式基于 [Kusto 查询语言 (KQL)](https://docs.microsoft.com/en-us/azure/kusto/query/index)。 若要了解 Resource Graph 使用的查询语言，请从 [KQL 教程](https://docs.microsoft.com/en-us/azure/kusto/query/tutorial)着手。
+Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算符和函数的工作原理和操作方式基于 [Kusto 查询语言 (KQL)](https://docs.microsoft.com/azure/kusto/query/index)。 若要了解 Resource Graph 使用的查询语言，请从 [KQL 教程](https://docs.microsoft.com/azure/kusto/query/tutorial)着手。
 
 本文介绍 Resource Graph 支持的语言组件：
 
@@ -65,7 +65,7 @@ Resources
 
 ## <a name="supported-kql-language-elements"></a>支持的 KQL 语言元素
 
-Resource Graph 支持所有 KQL [数据类型](https://docs.microsoft.com/en-us/azure/kusto/query/scalar-data-types/)、[标量函数](https://docs.microsoft.com/en-us/azure/kusto/query/scalarfunctions)、[标量运算符](https://docs.microsoft.com/en-us/azure/kusto/query/binoperators)和[聚合函数](https://docs.microsoft.com/en-us/azure/kusto/query/any-aggfunction)。 特定的[表格运算符](https://docs.microsoft.com/en-us/azure/kusto/query/queries)受 Resource Graph 的支持，其中的一部分有不同的行为。
+Resource Graph 支持所有 KQL [数据类型](https://docs.microsoft.com/azure/kusto/query/scalar-data-types/)、[标量函数](https://docs.microsoft.com/azure/kusto/query/scalarfunctions)、[标量运算符](https://docs.microsoft.com/azure/kusto/query/binoperators)和[聚合函数](https://docs.microsoft.com/azure/kusto/query/any-aggfunction)。 特定的[表格运算符](https://docs.microsoft.com/azure/kusto/query/queries)受 Resource Graph 的支持，其中的一部分有不同的行为。
 
 ### <a name="supported-tabulartop-level-operators"></a>支持的表格/顶级运算符
 
@@ -73,22 +73,22 @@ Resource Graph 支持所有 KQL [数据类型](https://docs.microsoft.com/en-us/
 
 |KQL |Resource Graph 示例查询 |注释 |
 |---|---|---|
-|[count](https://docs.microsoft.com/en-us/azure/kusto/query/countoperator) |[对密钥保管库计数](../samples/starter.md#count-keyvaults) | |
-|[distinct](https://docs.microsoft.com/en-us/azure/kusto/query/distinctoperator) |[显示特定别名的非重复值](../samples/starter.md#distinct-alias-values) | |
-|[extend](https://docs.microsoft.com/en-us/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
-|[join](https://docs.microsoft.com/en-us/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接风格：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中存在 3 个 `join` 的限制。 不允许自定义联接策略，例如广播联接。 可以用在单个表中，也可以用在 _Resources_ 表和 _ResourceContainers_ 表之间。 |
-|[limit](https://docs.microsoft.com/en-us/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`take` 的同义词 |
-|[mvexpand](https://docs.microsoft.com/en-us/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 _RowLimit_ 最大值：400。 默认值为 128。 |
-|[mv-expand](https://docs.microsoft.com/en-us/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ 最大值：400 |
-|[order](https://docs.microsoft.com/en-us/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
-|[project](https://docs.microsoft.com/en-us/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
-|[project-away](https://docs.microsoft.com/en-us/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
-|[sort](https://docs.microsoft.com/en-us/azure/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`order` 的同义词 |
-|[summarize](https://docs.microsoft.com/en-us/azure/kusto/query/summarizeoperator) |[对 Azure 资源进行计数](../samples/starter.md#count-resources) |仅限简化的第一页 |
-|[take](https://docs.microsoft.com/en-us/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`limit` 的同义词 |
-|[返回页首](https://docs.microsoft.com/en-us/azure/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
-|[union](https://docs.microsoft.com/en-us/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许的单个表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_。 单个查询中存在 3 个 `union` 支线的限制。 不允许对 `union` 支线表进行模糊解析。 可以用在单个表中，也可以用在 _Resources_ 表和 _ResourceContainers_ 表之间。 |
-|[where](https://docs.microsoft.com/en-us/azure/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
+|[count](https://docs.microsoft.com/azure/kusto/query/countoperator) |[对密钥保管库计数](../samples/starter.md#count-keyvaults) | |
+|[distinct](https://docs.microsoft.com/azure/kusto/query/distinctoperator) |[显示特定别名的非重复值](../samples/starter.md#distinct-alias-values) | |
+|[extend](https://docs.microsoft.com/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
+|[join](https://docs.microsoft.com/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接风格：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中存在 3 个 `join` 的限制。 不允许自定义联接策略，例如广播联接。 可以用在单个表中，也可以用在 _Resources_ 表和 _ResourceContainers_ 表之间。 |
+|[limit](https://docs.microsoft.com/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`take` 的同义词 |
+|[mvexpand](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 _RowLimit_ 最大值：400。 默认值为 128。 |
+|[mv-expand](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ 最大值：400 |
+|[order](https://docs.microsoft.com/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
+|[project](https://docs.microsoft.com/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
+|[project-away](https://docs.microsoft.com/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
+|[sort](https://docs.microsoft.com/azure/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`order` 的同义词 |
+|[summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) |[对 Azure 资源进行计数](../samples/starter.md#count-resources) |仅限简化的第一页 |
+|[take](https://docs.microsoft.com/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |`limit` 的同义词 |
+|[返回页首](https://docs.microsoft.com/azure/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
+|[union](https://docs.microsoft.com/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许的单个表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_。 单个查询中存在 3 个 `union` 支线的限制。 不允许对 `union` 支线表进行模糊解析。 可以用在单个表中，也可以用在 _Resources_ 表和 _ResourceContainers_ 表之间。 |
+|[where](https://docs.microsoft.com/azure/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>转义字符
 

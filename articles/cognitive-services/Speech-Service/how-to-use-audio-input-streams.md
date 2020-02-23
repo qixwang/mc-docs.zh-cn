@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 15bd5a7aaee69fe4c8951d46bd7916945c66555c
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: f8fcbb24bc093803356b456d3f49af5fbc6ef9d8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631047"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428774"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介
 
@@ -65,7 +65,7 @@ ms.locfileid: "75631047"
   ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
 
-  var speechConfig = SpeechConfig.FromSubscription(...);
+  var speechConfig = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
   var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
   // run stream through recognizer

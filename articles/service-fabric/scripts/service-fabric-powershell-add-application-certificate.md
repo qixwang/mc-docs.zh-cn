@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 将应用程序证书添加到群集 | Azure
+title: 将应用程序证书添加到 Powershell 中的群集
 description: Azure PowerShell 脚本示例 - 将应用程序证书添加到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 origin.date: 01/18/2018
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0f59fe1604067f98b1141e3808684b70ab830a80
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d32dd3d3798d0ba1e0b0a3cbef248201ecee0886
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335714"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540717"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
 
@@ -66,7 +66,7 @@ $content = [System.Convert]::ToBase64String($contentbytes)
 $SecretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
 
 # Upload the certificate to the key vault as a secret
-$Secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
+$Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
 
 ```
 

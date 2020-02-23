@@ -6,18 +6,16 @@ author: rockboyfor
 ms.service: storage
 ms.topic: include
 origin.date: 06/05/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 34b5e62963d57067abf5d176378b4ecadcdd3e3a
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 9ddb37e53e9663da4f2ec22d569cbaafd48a7a63
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831395"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428810"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
-
 本文介绍如何规划 Azure 中的 IaaS 虚拟机 (VM) 和磁盘的备份与灾难恢复 (DR)。 本文档涉及托管磁盘和非托管磁盘。
 
 首先介绍 Azure 平台内置的容错功能，此功能有助于预防本地故障的发生。 然后介绍内置功能未全面涵盖的灾难恢复方案。 此外，本文档演示了几个工作负荷方案示例，它们的备份和 DR 注意事项各不相同。 最后，介绍适用于 IaaS 磁盘 DR 的可行解决方案。
@@ -72,7 +70,7 @@ DR 注意事项可能包括以下方面：
 
 让我们来看几个典型的应用程序工作负荷方案示例，以及规划灾难恢复时的注意事项。
 
-### <a name="scenario-1-major-database-solutions"></a>方案 1：主要数据库解决方案
+### <a name="scenario-1-major-database-solutions"></a>应用场景 1：主要数据库解决方案
 
 假设为 SQL Server 或 Oracle 等生产数据库服务器，可以支持高可用性。 关键生产应用程序和用户依赖此类数据库。 此系统的灾难恢复计划可能需要满足以下要求：
 
@@ -83,11 +81,11 @@ DR 注意事项可能包括以下方面：
 
 为了实现冗余，MongoDB 等 NoSQL 数据库也支持[副本](https://docs.mongodb.com/manual/replication/)。 可以使用实现高可用性的副本。
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>方案 2：冗余 VM 群集
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>应用场景 2：冗余 VM 群集
 
 假设由提供冗余和负载均衡的 VM 群集处理工作负荷。 例如，在区域中部署的 Cassandra 群集。 此类体系结构已在相应区域提供了高水平冗余。 不过，为了保护工作负荷免受区域级故障影响，应考虑在两个区域分布群集，或定期备份到另一个区域。
 
-### <a name="scenario-3-iaas-application-workload"></a>方案 3：IaaS 应用程序工作负荷
+### <a name="scenario-3-iaas-application-workload"></a>应用场景 3：IaaS 应用程序工作负荷
 
 让我们探讨一下 IaaS 应用程序工作负荷。 例如，该应用程序可能是 Azure VM 上运行的典型生产工作负荷。 它可能是保存内容和其他站点资源的 Web 服务器或文件服务器。 也可能是在 VM 上运行的专门定制的商业应用程序，将数据、资源和应用程序状态存储到 VM 磁盘上。 在这种情况下，请务必定期进行备份。 应根据 VM 工作负荷的性质确定备份频率。 例如，如果应用程序每天都运行，并且修改数据，那么应每小时备份一次。
 
@@ -154,8 +152,6 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 1. 配置备份策略，再从同一 UI 中选择 VM。
 
 1. 确保在 VM 上安装了备份代理。 如果 VM 是使用 Azure 库映像创建而成，表明备份代理已安装。 否则（即使用的是自定义映像），请根据相关说明[在虚拟机中安装 VM 代理](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
-
-1. 确保 VM 允许备份服务的网络连接功能正常运行。 遵循[网络连接](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)的说明。
 
 1. 完成上述步骤后，会按备份策略中指定的时间间隔定期进行备份。 如有必要，可以在 Azure 门户的保管库仪表板中手动触发首个备份。
 

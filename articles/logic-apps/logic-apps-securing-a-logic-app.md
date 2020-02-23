@@ -9,13 +9,13 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 origin.date: 10/11/2019
 ms.author: v-yiso
-ms.date: 12/23/2019
-ms.openlocfilehash: b5df1d282178252914601d0fade33ad3069e4c2a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/24/2020
+ms.openlocfilehash: 0cb4c47f393d7e7f2f7c23059bd577764c2c5818
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336535"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428252"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -110,7 +110,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”    。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”    。
 
 1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围  。
 
@@ -178,7 +178,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)：允许读取、启用和禁用逻辑应用，但不允许编辑或更新它们。
 
-要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)。 此功能可以防止他人更改或删除生产资源。
+要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/management/lock-resources.md)。 此功能可以防止他人更改或删除生产资源。
 
 <a name="secure-run-history"></a>
 
@@ -210,7 +210,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在逻辑应用的菜单中，在“设置”  下，选择“工作流设置”  。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，请选择“特定 IP 范围”    。
+1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”    。
 
 1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围  。 有效的 IP 范围使用这些格式：x.x.x.x/x 或 x.x.x.x-x.x.x.x   
 
@@ -370,11 +370,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 * [保护工作流定义中的参数](#secure-parameters-workflow)
 * [使用模糊处理隐藏运行历史记录中的数据](#obfuscate)
 
-如果[使用资源管理器模板自动化逻辑应用的部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，则可以使用 `securestring` 和 `secureobject` 类型定义在部署时评估的受保护[模板参数](../azure-resource-manager/template-parameters.md)。 若要定义模板参数，请使用模板的顶级 `parameters` 节，该节不同于工作流定义的 `parameters` 节。 若要提供模板参数的值，请使用单独的[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)。
+如果[使用资源管理器模板自动化逻辑应用的部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，则可以使用 `securestring` 和 `secureobject` 类型定义在部署时评估的受保护[模板参数](../azure-resource-manager/templates/template-parameters.md)。 若要定义模板参数，请使用模板的顶级 `parameters` 节，该节不同于工作流定义的 `parameters` 节。 若要提供模板参数的值，请使用单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)。
 
 例如，如果使用机密，则可以定义并使用可在部署时从 [Azure Key Vault](../key-vault/key-vault-overview.md) 检索这些机密的受保护模板参数。 然后，可以在参数文件中引用 Key Vault 和机密。 有关详细信息，请参阅以下主题：
 
-* [在部署时使用 Azure Key Vault 传递敏感值](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [在部署时使用 Azure Key Vault 传递敏感值](../azure-resource-manager/templates/key-vault-parameter.md)
 * 本主题稍后的[保护 Azure 资源管理器模板中的参数](#secure-parameters-deployment-template)。
 
 <a name="secure-parameters-workflow"></a>
@@ -427,11 +427,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>保护 Azure 资源管理器模板中的参数
 
-逻辑应用的[资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)包含多个 `parameters` 节。 若要保护密码、密钥、机密和其他敏感信息，请使用 `securestring` 或 `secureobject` 类型在模板级别和工作流定义级别定义受保护参数。 然后，可将这些值存储在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中，并使用[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)来引用 Key Vault 和机密。 模板在部署时将检索该信息。 有关详细信息，请参阅[在部署时使用 Azure Key Vault 传递敏感值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
+逻辑应用的[资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)包含多个 `parameters` 节。 若要保护密码、密钥、机密和其他敏感信息，请使用 `securestring` 或 `secureobject` 类型在模板级别和工作流定义级别定义受保护参数。 然后，可将这些值存储在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中，并使用[参数文件](../azure-resource-manager/templates/parameter-files.md)来引用 Key Vault 和机密。 模板在部署时将检索该信息。 有关详细信息，请参阅[在部署时使用 Azure Key Vault 传递敏感值](../azure-resource-manager/templates/key-vault-parameter.md)。
 
 下面是有关这些 `parameters` 节的详细信息：
 
-* 在模板的最高级别，`parameters` 节定义了模板在部署时使用的值的参数。  例如，这些值可能包含特定部署环境的连接字符串。 然后，你可将这些值存储在单独的[参数文件](../azure-resource-manager/resource-manager-parameter-files.md)中，以方便更改这些值。
+* 在模板的最高级别，`parameters` 节定义了模板在部署时使用的值的参数。  例如，这些值可能包含特定部署环境的连接字符串。 然后，你可将这些值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中，以方便更改这些值。
 
 * 在逻辑应用的资源定义内部、工作流定义外部，`parameters` 节指定了工作流定义参数的值。 在此节中，可以使用引用模板参数的模板表达式来分配这些值。 这些表达式将在部署时计算。
 
@@ -622,7 +622,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 ### <a name="basic-authentication"></a>基本身份验证
 
-如果[基本](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md)选项可用，请指定以下属性值：
+如果[基本](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md)选项可用，请指定以下属性值：
 
 | 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
@@ -684,7 +684,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 * [使用 Azure API 管理中的客户端证书身份验证保护 API](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [使用 Azure API 管理中的客户端证书身份验证保护后端服务](../api-management/api-management-howto-mutual-certificates.md)
-* [使用客户端证书保护 RESTful 服务](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [使用客户端证书保护 RESTful 服务](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [用于应用程序身份验证的证书凭据](../active-directory/develop/active-directory-certificate-credentials.md)
 * [在 Azure 应用服务的应用程序代码中使用 SSL 证书](../app-service/configure-ssl-certificate-in-code.md)
 

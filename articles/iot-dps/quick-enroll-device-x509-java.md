@@ -1,21 +1,21 @@
 ---
-title: 本快速入门展示了如何使用 Java 将 X.509 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: 本快速入门使用组注册和单独注册。 在本快速入门中，需使用 Java 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
+title: 使用 Java 将 X.509 设备注册到 Azure 设备预配服务
+description: 本快速入门使用组注册和单独注册。 在本快速入门中，需使用 Java 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/20/2017
+origin.date: 11/08/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 24f313bcb86505af02a9569cdbccf25834cab205
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: de6988cef65cea5f3d7dca37442e29be8b13e1fd
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389549"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494392"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -29,9 +29,9 @@ ms.locfileid: "74389549"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+* 安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
 * 安装 [Maven 3](https://maven.apache.org/download.cgi)。 可以通过运行以下命令来验证当前的 Maven 版本：
 
     ```cmd/sh
@@ -77,37 +77,37 @@ ms.locfileid: "74389549"
         1. 在命令窗口中，导航到文件夹 **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** 。
         2. 通过运行以下命令来生成工具：
 
-          ```cmd\sh
-          mvn clean install
-          ```
+                ```cmd\sh
+                mvn clean install
+                ```
 
         4. 使用以下命令来运行工具：
 
-          ```cmd\sh
-          cd target
-          java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
-          ```
+                ```cmd\sh
+                cd target
+                java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
+                ```
 
         5. 出现提示时，可以选择性地为证书输入“公用名称”  。
         6. 此工具在本地生成“客户端证书”、“客户端证书私钥”和“根证书”。   
         7. 复制“根证书”，  包括 **_-----BEGIN CERTIFICATE-----_** 行和 **_-----END CERTIFICATE-----_** 行。 
         8. 将“根证书”的值指定给  参数 **PUBLIC_KEY_CERTIFICATE_STRING**，如下所示：
 
-          ```Java
-          private static final String PUBLIC_KEY_CERTIFICATE_STRING =
-                  "-----BEGIN CERTIFICATE-----\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                  "-----END CERTIFICATE-----\n";
-          ```
+                ```Java
+                private static final String PUBLIC_KEY_CERTIFICATE_STRING =
+                        "-----BEGIN CERTIFICATE-----\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+                        "-----END CERTIFICATE-----\n";
+                ```
 
         9. 关闭命令窗口，或者在系统提示输入“验证码”时输入   。 
  
@@ -203,11 +203,11 @@ ms.locfileid: "74389549"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果打算学习 Java 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算学习 Java 服务示例，请勿清理本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的 Java 示例输出窗口。
 1. 关闭计算机上的“X509 证书生成器”  窗口。
-1. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“注册组”选项卡。    选择通过本快速入门注册的 X.509 设备的“组名称”，然后单击边栏选项卡顶部的“删除”按钮。   
+1. 在 Azure 门户中导航到设备预配服务，选择“管理注册”，然后选择“注册组”选项卡   。选中通过本快速入门注册的 X.509 设备的“组名称”旁边的复选框，然后按窗格顶部的“删除”按钮   。  
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你将模拟的 X.509 设备组注册到了设备预配服务。 若要深入了解设备预配，请继续学习本教程有关如何在 Azure 门户中进行设备预配服务设置的内容。 

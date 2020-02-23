@@ -1,17 +1,17 @@
 ---
-title: 教程：为 Azure VM 上的 Service Fabric 群集创建基础结构 - Azure Service Fabric
+title: 在 Azure VM 上创建群集的基础结构
 description: 本教程介绍如何设置 Azure VM 基础结构来运行 Service Fabric 群集。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: ee19cb690d71adb47cdee0144557f09093ae22dd
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 87f2629de0a13e7058d45d5c9702f5f1aa03eea4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741984"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540558"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 Azure VM 基础结构

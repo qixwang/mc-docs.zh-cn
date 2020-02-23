@@ -3,17 +3,18 @@ title: 适用于 Windows 的 Azure Key Vault VM 扩展
 description: 部署一个代理，该代理使用虚拟机扩展在虚拟机上执行 Key Vault 密钥自动刷新操作。
 services: virtual-machines-windows
 author: rockboyfor
+tags: keyvault
 ms.service: virtual-machines-windows
 ms.topic: article
-origin.date: 09/23/2018
-ms.date: 12/16/2019
+origin.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 449b26d88ae4052975a428136aa0a5aa61900992
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: da27e68f5619f76c914480081e27c6edaea99fb7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348547"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428657"
 ---
 <!--Verify the extension name exists-->
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
@@ -48,7 +49,7 @@ ms.locfileid: "75348547"
         "autoUpgradeMinorVersion": true,
         "settings": {
             "secretsManagementSettings": {
-                "pollingIntervalInS": <polling interval in seconds>,
+            "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
                 "certificateStoreName": <certificate store name, e.g.: "MY">,
                 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
                 "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
@@ -101,7 +102,7 @@ ms.locfileid: "75348547"
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-                "pollingIntervalInS": <polling interval in seconds>,
+                "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
                 "certificateStoreName": <certificate store name, e.g.: "MY">,
                 "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
                 "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.cn/secrets/mycertificate"
@@ -206,7 +207,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 扩展执行输出将记录到以下文件：
 
 ```
-%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.Edp.KeyVaultForWindows\<version>\akvvm_service_<date>.log
+%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
 ```
 
 ### <a name="support"></a>支持

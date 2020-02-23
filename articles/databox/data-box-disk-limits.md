@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 12/02/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: d7356cc55fa32f553c209cef62aca563e4b08e8a
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: ccff638ff67811f81db84ac30ddf921e1db2edc9
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530617"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428736"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -60,7 +60,7 @@ ms.locfileid: "74530617"
 
 ## <a name="azure-storage-account-size-limits"></a>Azure 存储帐户大小限制
 
-下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请转到 [Azure blob 存储规模目标](/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets)和 [Azure 文件规模目标](/storage/common/storage-scalability-targets#azure-files-scale-targets)。
+下面是对复制到存储帐户的数据的大小限制。 请确保上传的数据符合这些限制。 有关这些限制的最新信息，请转到 [Azure blob 存储规模目标](/storage/blobs/scalability-targets#scale-targets-for-blob-storage)和 [Azure 文件规模目标](/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)。
 
 | 复制到 Azure 存储帐户的数据的大小                      | 默认限制          |
 |---------------------------------------------------------------------|------------------------|

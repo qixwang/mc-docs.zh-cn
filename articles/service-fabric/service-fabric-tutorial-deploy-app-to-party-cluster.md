@@ -1,18 +1,18 @@
 ---
 title: 将 Service Fabric 应用部署到 Azure 中的群集
-description: 了解如何将应用程序从 Visual Studio 部署到群集。
+description: 了解如何从 Visual Studio 将现有应用程序部署到新创建的 Azure Service Fabric 群集。
 author: rockboyfor
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 3035899d7b400aa785ee5d2eeec1bd12c9740303
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 99d5221cc937902393dfb4519ac6d84c1aa3bb86
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742039"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540574"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 

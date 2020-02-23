@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 origin.date: 07/05/2019
 ms.date: 09/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 59fd0b56f9ec3a3bcc89198c982f41010f4ac21a
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 36a3381c31a8c9ed41cec191205b704483d566ab
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858283"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497631"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -91,7 +91,6 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks - VMSnapshot 扩展操作失败
 
@@ -115,7 +114,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 **原因 5：备份服务因资源组锁定而无权删除旧的还原点** <br>
-**原因 6：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize - Azure 备份当前不支持配置的磁盘大小。
 
@@ -143,16 +142,6 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 如果计划备份操作花费时间长且与下一个备份配置冲突，请查看[最佳做法](backup-azure-vms-introduction.md#best-practices)、[备份性能](backup-azure-vms-introduction.md#backup-performance)和[还原注意事项](backup-azure-vms-introduction.md#backup-and-restore-considerations)。
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
-
-<a name="the-vm-has-no-internet-access"></a>
-### <a name="the-vm-doesnt-have-internet-access"></a>VM 无法访问 Internet
-VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 Azure 基础结构。
-
-若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 扩展将命令发送到 Azure 存储终结点 (HTTPS URL)，以管理 VM 快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
-
-#### <a name="solution"></a>解决方案
-
-若要解决网络问题，请参阅[建立网络连接](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
 

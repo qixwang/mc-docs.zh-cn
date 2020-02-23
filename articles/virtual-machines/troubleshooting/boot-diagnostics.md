@@ -1,5 +1,5 @@
 ---
-title: 如何使用启动诊断功能来排查 Azure 中虚拟机的问题 | Azure Doc
+title: 如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 description: Azure 中虚拟机的两个调试功能的概述
 services: virtual-machines
 author: rockboyfor
@@ -9,14 +9,14 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 origin.date: 10/31/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ff8cddf07e2b69458bfb5d86b574b3e30df3fd07
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 2b33fe4b13ae320fdd976d50c825b4a76ba1ab9d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116952"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428743"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 
@@ -80,7 +80,7 @@ ms.locfileid: "74116952"
 }
 ```
 
-有关使用模板部署资源的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)。
+有关使用模板部署资源的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在现有的虚拟机上启用启动诊断 
 

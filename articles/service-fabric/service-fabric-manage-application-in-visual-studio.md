@@ -1,17 +1,17 @@
 ---
-title: 在 Visual Studio 中管理 Azure Service Fabric 应用程序
+title: 在 Visual Studio 中管理应用程序
 description: 使用 Visual Studio 来创建、开发、打包、部署和调试 Azure Service Fabric 应用程序和服务。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/26/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d37d8996b17aa13e29bdabbe3c20a99ffaf3d6ef
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: cb798664f307a32b9439ff496b95be215e2d3f28
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742498"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540672"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。

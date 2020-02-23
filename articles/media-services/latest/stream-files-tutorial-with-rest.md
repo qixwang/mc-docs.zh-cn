@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务基于 URL 对远程文件进行编码并流式传输 - REST | Microsoft Docs
+title: 使用 Azure 媒体服务 v3 对远程文件进行编码和流式传输
 description: 按照本教程的步骤，使用 REST 通过 Azure 媒体服务基于 URL 对文件进行编码并流式传输内容。
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 11/05/2019
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: da82e890f14d0e9894f5429fcab17668d272ca16
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 78903bd9a184709001411fa264ac41955613f260
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807549"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494467"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -41,7 +41,7 @@ ms.locfileid: "74807549"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。
 
@@ -277,7 +277,7 @@ ms.locfileid: "74807549"
     * 将会发送以下 **PUT** 操作。
 
         ```
-        https://management.chinacloudapi.cn/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.chinacloudapi.cn/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * 该操作具有以下正文：
 

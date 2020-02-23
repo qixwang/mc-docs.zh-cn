@@ -6,13 +6,13 @@ ms.author: v-yeche
 ms.service: security
 ms.topic: quickstart
 origin.date: 05/17/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 91fe86ddc28ffcca7bca89129e5a068b74612841
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.date: 02/10/2020
+ms.openlocfilehash: 4b0bfe3660d926bd3f43a9a2bb790f6f8c8d56c1
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730631"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428876"
 ---
 <!--Verfied successfully-->
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Linux VM

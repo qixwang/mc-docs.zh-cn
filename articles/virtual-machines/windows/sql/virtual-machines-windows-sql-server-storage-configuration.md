@@ -11,15 +11,15 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-origin.date: 12/05/2017
-ms.date: 11/11/2019
+origin.date: 12/26/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2b008b585456aa73ef1f86ace30c8538b6bfb1dd
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: acb685929590864013bc04711d5274d38d4b0e8e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116916"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428070"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -29,12 +29,12 @@ ms.locfileid: "74116916"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用自动存储配置设置，虚拟机需有以下特征：
 
 * 已使用 [SQL Server 库映像](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)预配。
-* 使用 [Resource Manager 部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。
+* 使用 [Resource Manager 部署模型](../../../azure-resource-manager/management/deployment-models.md)。
 * 使用[高级 SSD](../disks-types.md)。
 
 ## <a name="new-vms"></a>新的 VM

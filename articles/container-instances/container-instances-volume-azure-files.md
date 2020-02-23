@@ -6,13 +6,14 @@ origin.date: 12/30/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: f20558c1e6af556afd5ab0126dbf7a4f6c867f25
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 6c835a370b143884105194ee87889a9fa21eb5db
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965110"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428301"
 ---
+<!--Verified successfully-->
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
 
 默认情况下，Azure 容器实例是无状态的。 如果容器崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 如本文中所示，Azure 容器实例可以装载使用 [Azure 文件](../storage/files/storage-files-introduction.md)创建的 Azure 文件共享。 Azure 文件提供了承载在 Azure 存储中的完全托管的文件共享，这些共享项可通过行业标准的服务器消息块 (SMB) 协议进行访问。 将 Azure 文件共享与 Azure 容器实例配合使用可以提供文件共享功能，类似于将 Azure 文件共享与 Azure 虚拟机配合使用。

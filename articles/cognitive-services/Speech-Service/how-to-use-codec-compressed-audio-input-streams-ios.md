@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: d67a8eff1420a71dae4a2473defc6d1022277cb3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 5e782602cd22ee37f8710b4c26ce1160fa9090d5
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630900"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494537"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>如何：在 iOS 上的语音 SDK 中使用编解码器压缩的音频输入
 
@@ -33,7 +33,7 @@ ms.locfileid: "75630900"
 - wav 容器中的 ALAW
 - wav 容器中的 MULAW
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，这些函数不能随附在 SDK 中，但应用程序开发人员需构建包含这些函数的包装器库，并将其随使用 SDK 的应用一起发送。
 
@@ -87,6 +87,23 @@ if (nil == compressedStream)
     audioConfig = nil;
     return;
 }
+
+// init speechConfig
+SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:@"wss://YourServiceRegion.stt.speech.azure.cn/" subscription:@"YourSubscriptionKey"];
+if (!speechConfig) {
+    NSLog(@"Could not load speech config");
+    NSLog(@"Speech Config Error");
+    return;
+}
+
+// init speechRecognizer
+SPXSpeechRecognizer *speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig audioConfiguration:audioConfig];
+if (!speechRecognizer) {
+    NSLog(@"Could not create speech recognizer");
+    NSLog(@"Speech Recognition Error");
+    return;
+}
+
 
 // start recognizing
 [self updateRecognitionStatusText:(@"Recognizing from push stream...")];

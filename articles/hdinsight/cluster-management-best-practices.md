@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: eaca952a598753f6ad9347825188ecbe53f0474a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 03/02/2020
+ms.openlocfilehash: d1b5646c049e78299f1900c3a66b0af2a19bff33
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631300"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563361"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight 群集管理最佳做法
 
@@ -59,10 +59,8 @@ ms.locfileid: "75631300"
 
 | 选项 | 文档 |
 |---|---|
-| 自动缩放 | [自动缩放 Azure HDInsight 群集](./hdinsight-autoscale-clusters.md) |
 | 手动缩放 | [缩放 Azure HDInsight 群集](./hdinsight-scaling-best-practices.md) |
 | 使用 Ambari 进行监视| [在 Azure HDInsight 中监视群集性能](./hdinsight-key-scenarios-to-monitor.md) |
-| 使用 Azure Monitor 日志进行监视 | [使用 Azure Monitor 日志监视 HDInsight 群集](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>如何检查已删除的 HDInsight 群集？
 

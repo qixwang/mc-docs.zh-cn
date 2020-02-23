@@ -1,5 +1,5 @@
 ---
-title: 虚拟机 vCPU 配额 | Azure
+title: 虚拟机 vCPU 配额
 description: 了解 Azure 的 vCPU 配额。
 keywords: ''
 services: virtual-machines-linux
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 05/31/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0602aad5231aa8559eee52e8b6a1b437b92bc835
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 16f19239df0bbe019b78b536ea5dd27bca763b02
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272820"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428438"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虚拟机 vCPU 配额
 
@@ -64,6 +64,6 @@ Premium Storage Managed Disks                  5    10000
 
 ## <a name="next-steps"></a>后续步骤
 
-有关计费和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-subscription-service-limits)。
+有关计费和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

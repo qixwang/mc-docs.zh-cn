@@ -1,5 +1,5 @@
 ---
-title: 教程 - 监视 Azure 中的 Linux 虚拟机 | Azure
+title: 教程 - 监视 Azure 中的 Linux 虚拟机
 description: 在本教程中，你将学习如何监视 Linux 虚拟机上运行的性能和发现的应用程序组件。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 09/30/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: eff671869e109f5190b1ba32fcb061c365f8954e
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 1cbb7334ac0769fae6f05aede362b1bc1209aebf
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730729"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427986"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Linux 虚拟机
 
@@ -39,8 +39,6 @@ Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据�
 <!--Not Available on > * View VM performance metrics-->
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
-
- 
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 

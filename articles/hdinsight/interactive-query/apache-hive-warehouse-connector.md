@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 10/08/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: b55754dce0192ddefc38c39bfa9443b58dba947d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 03/02/2020
+ms.openlocfilehash: e197c538976396b37590d012303d5f974c2496e7
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631082"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563428"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>将 Apache Spark 和 Apache Hive 与 Hive 仓库连接器相集成
 
@@ -59,11 +59,11 @@ Hive 仓库连接器支持的部分操作如下：
 
 1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “高级 hive-site” > **hive.zookeeper.quorum**，然后记下该值。 该值可能类似于 `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`。
 
-1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “常规” > **hive.metastore.uris**，然后记下该值。 该值可能类似于 `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`。
+1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “常规” > **hive.metastore.uris**，然后记下该值。 该值可能类似于 `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:9083`。
 
 #### <a name="from-your-apache-spark-cluster"></a>在 Apache Spark 群集中
 
-1. 使用 `https://SPARKCLUSTERNAME.azurehdinsight.net` 导航到群集的 Apache Ambari 主页，其中的 `SPARKCLUSTERNAME` 是 Apache Spark 群集的名称。
+1. 使用 `https://SPARKCLUSTERNAME.azurehdinsight.cn` 导航到群集的 Apache Ambari 主页，其中的 `SPARKCLUSTERNAME` 是 Apache Spark 群集的名称。
 
 1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “高级 hive-interactive-site” > **hive.llap.daemon.service.hosts**，然后记下该值。 该值可能类似于 `@llap0`。
 

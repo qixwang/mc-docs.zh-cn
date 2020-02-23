@@ -1,17 +1,18 @@
 ---
-title: 在 Azure 中监视和诊断 Service Fabric 上的 ASP.NET Core 服务
+title: 监视和诊断 ASP.NET Core 服务
 description: 在本教程中，你会学习如何为 Azure Service Fabric ASP.NET Core 应用程序设置监视和诊断。
 author: rockboyfor
 ms.topic: tutorial
-ms.date: 01/13/2020
+origin.date: 07/10/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 7e7c75624f123f5515c4a09bb403ca4301e4759e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 9b6d454a8a2b061bce9e746347c56590e8c656fb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742014"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540135"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 

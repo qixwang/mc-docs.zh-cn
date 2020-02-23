@@ -2,18 +2,16 @@
 title: 快速入门：第一个门户查询
 description: 本快速入门介绍在 Azure 门户中使用 Azure Resource Graph 资源管理器运行第一个查询的步骤。
 author: DCtheGeek
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/21/2019
-ms.date: 12/16/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: f1ee6e3e0d31e49c0abf9bbf8a9503923ddb03c9
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: ca4a82f61b805966eb245f91ef7b81b27f310eb4
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885001"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494015"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
@@ -21,9 +19,9 @@ ms.locfileid: "74885001"
 
 在本快速入门结束时，你已使用 Azure 门户和 Resource Graph Explorer 运行第一个 Resource Graph 查询，并已将结果固定到仪表板。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-tiral/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
@@ -49,7 +47,10 @@ ms.locfileid: "74885001"
 
 ### <a name="schema-browser"></a>架构浏览器
 
-架构浏览器位于 Resource Graph Explorer 的左窗格中。 此资源列表显示 Azure 资源的所有资源类型，这些类型受 Azure Resource Graph 的支持，并且存在于你有权访问的租户中。  展开资源类型或附属属性会显示可用于创建 Resource Graph 查询的子属性。 选择资源类型会将 `where type =="<resource type>"` 放入查询框中。 选择一个子属性会将 `where <propertyName> == "INSERT_VALUE_HERE"` 添加到查询框中。 在架构浏览器中，可以十分方便地发现可在查询中使用的属性。 请确保将 _INSERT\_VALUE\_HERE_ 替换为自己的值，并调整包含条件、运算符和函数的查询，以获得预期结果。
+架构浏览器位于 Resource Graph Explorer 的左窗格中。 此资源列表显示 Azure 资源的所有资源类型，这些类型受 Azure Resource Graph 的支持，并且存在于你有权访问的租户中。  展开资源类型或附属属性会显示可用于创建 Resource Graph 查询的子属性。
+
+选择资源类型会将 `where type =="<resource type>"` 放入查询框中。 选择一个子属性会将 `where <propertyName> == "INSERT_VALUE_HERE"` 添加到查询框中。
+在架构浏览器中，可以十分方便地发现可在查询中使用的属性。 请确保将 _INSERT\_VALUE\_HERE_ 替换为自己的值，并调整包含条件、运算符和函数的查询，以获得预期结果。
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>基于 Resource Graph 查询创建图表
 

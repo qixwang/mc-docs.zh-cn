@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 - 备份虚拟机
       href: tutorial-backup-vms.md
-    - name: 10 - 控制 VM
+    - name: 10 - 管理 VM
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
     - name: 11 - 监视 VM
@@ -128,7 +128,7 @@
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
         - name: 安全
           items:
-            - name: 对 VM 和数据磁盘进行加密
+            - name: 加密 VM 和数据磁盘
               href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
             - name: 监视
               items:
@@ -136,8 +136,8 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: 概念
   items:
-    - name: Azure 资源管理器
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
       href: regions.md
     - name: 可用性和性能
@@ -145,10 +145,12 @@
         - name: 可用性
           href: availability.md
         - name: 网络性能
-          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: VM 类型和大小
-      href: sizes.md
+      href: null
       items:
+        - name: 大小系列
+          href: sizes.md
         - name: 第 2 代 VM
           href: generation-2.md
         - name: 常规用途
@@ -170,7 +172,7 @@
           items:
             - name: GPU 优化
               href: sizes-gpu.md
-            - name: 安装 GPU 驱动程序
+            - name: 安装 NVIDIA GPU 驱动程序
               href: n-series-driver-setup.md
         - name: 前几代
           href: sizes-previous-gen.md
@@ -182,14 +184,14 @@
         - name: vCPU 配额
           href: quotas.md
     - name: 维护和更新
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 磁盘存储
       items:
         - name: 托管磁盘简介
           href: managed-disks-overview.md
         - name: 选择适用于 IaaS VM 的磁盘类型
           href: disks-types.md
-        - name: 加密
+        - name: Encryption
           href: disk-encryption.md
         - name: 为实现高性能而设计
           href: premium-storage-performance.md
@@ -205,7 +207,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
     - name: 基础结构自动化
       href: infrastructure-automation.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全和策略
           href: security-policy.md
@@ -281,7 +283,7 @@
         - name: 使用 WinRM
           href: winrm.md
         - name: 使用访问控制
-          href: ../../role-based-access-control/overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 使用策略
           href: policy.md
         - name: 创建密钥保管库
@@ -289,25 +291,25 @@
     - name: 保护 VM
       items:
         - name: 备份 VM
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
           items:
             - name: 备份单个 VM
-              href: ../../backup/quick-backup-vm-cli.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/quick-backup-vm-cli.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 备份多个 VM
-              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 还原磁盘
-              href: ../../backup/tutorial-restore-disk.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-restore-disk.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 还原单个文件
-              href: ../../backup/tutorial-restore-files.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-restore-files.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 为 VM 设置灾难恢复
-          href: ../../site-recovery/site-recovery-overview.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/site-recovery-overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
           items:
             - name: 为 VM 启用灾难恢复
-              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 为 VM 运行灾难恢复演练
-              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 将 VM 故障转移到另一个区域
-              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 管理 VM
       items:
         - name: 常见 PowerShell 任务
@@ -335,18 +337,28 @@
           href: download-template.md
         - name: Azure VM 代理
           href: ../extensions/agent-windows.md
-        - name: 计划内维护
-          href: maintenance-notifications.md
         - name: 缓解推理执行
           href: mitigate-se.md
-        - name: 计划事件
-          href: scheduled-events.md
-        - name: 监视计划事件
-          href: scheduled-event-service.md
         - name: 监视元数据
           href: instance-metadata-service.md
         - name: 启用嵌套虚拟化
           href: nested-virtualization.md
+    - name: 平台维护
+      items:
+        - name: 维护通知
+          items:
+            - name: 概述
+              href: ../maintenance-notifications.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: CLI
+              href: ../maintenance-notifications-cli.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: 门户
+              href: ../maintenance-notifications-portal.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+        - name: 计划事件
+          href: scheduled-events.md
+        - name: Windows 计划事件服务
+          href: scheduled-event-service.md
     - name: 使用映像
       items:
         - name: 共享映像
@@ -355,9 +367,11 @@
               href: shared-image-galleries.md
             - name: PowerShell
               href: shared-images.md
+            - name: 门户
+              href: shared-images-portal.md
             - name: CLI
-              href: ../linux/shared-images.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
-            - name: 在租户间共享映像
+              href: ../linux/shared-images.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: 用于共享的应用注册
               href: share-images-across-tenants.md
             - name: 排查共享映像问题
               href: troubleshooting-shared-images.md
@@ -376,7 +390,7 @@
     - name: 可用性和规模
       items:
         - name: 虚拟机规模集
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 高可用性
           href: manage-availability.md
     - name: 使用自动化工具
@@ -452,7 +466,7 @@
       href: ps-common-network-ref.md
       items:
         - name: 创建虚拟网络
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 打开 VM 的端口
           items:
             - name: Azure 门户
@@ -460,15 +474,15 @@
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
         - name: 分配公共 IP 地址
-          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 使用多个 NIC
           href: multiple-nics.md
         - name: 使用加速网络
-          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 分配公用 DNS 名称
           href: portal-create-fqdn.md
         - name: DNS 解析
-          href: ../../dns/dns-for-azure-services.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../dns/dns-for-azure-services.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 配置托管标识
       items:
         - name: 门户
@@ -477,7 +491,7 @@
           href: /active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: PowerShell
           href: /active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: /active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
           href: /active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
@@ -490,7 +504,7 @@
         - name: 更改订阅或资源组
           href: move-vm.md
         - name: 移动区域
-          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 迁移 AWS 和本地 VM
           href: on-prem-to-azure.md
           items:
@@ -499,21 +513,21 @@
             - name: 从 Amazon Web Services (AWS)
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 从经典部署迁移到 Azure 资源管理器部署
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+        - name: 从经典部署迁移到 Azure Resource Manager 部署
           href: migration-classic-resource-manager-overview.md
           items:
             - name: 深入了解迁移
               href: migration-classic-resource-manager-deep-dive.md
             - name: 规划迁移
               href: migration-classic-resource-manager-plan.md
-            - name: 使用 PowerShell 迁移
+            - name: 使用 PowerShell 进行迁移
               href: migration-classic-resource-manager-ps.md
             - name: 常见的迁移错误
               href: migration-classic-resource-manager-errors.md
             - name: 用于迁移的社区工具
               href: migration-classic-resource-manager-community-tools.md
-            - name: 常见问题解答
+            - name: 常见问题
               href: migration-classic-resource-manager-faq.md
 - name: 故障排除
   href: ../troubleshooting/index.md
@@ -538,12 +552,12 @@
 - name: 资源
   items:
     - name: 创作模板
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/templates/template-syntax.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/virtual-machines/'
     - name: 区域可用性
       href: 'https://status.azure.com/status/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

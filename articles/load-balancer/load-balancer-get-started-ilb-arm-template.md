@@ -1,6 +1,6 @@
 ---
 title: 创建内部负载均衡器 - Azure 模板
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何在 Resource Manager 中使用模板创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2017
-ms.date: 03/04/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 0dc772fd308a455a2288addb3ece6c4f1e81613e
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+ms.openlocfilehash: d886ae2dedd89c618383a478d4aca3c05d37e259
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "65835771"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540976"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
 
@@ -37,7 +37,7 @@ ms.locfileid: "65835771"
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 如果要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 如果要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”  ，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
 
@@ -58,7 +58,7 @@ ms.locfileid: "65835771"
 
 若要使用 Azure CLI 部署模板，请执行以下步骤。
 
-1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅 [Install and Configure the Azure CLI](../cli-install-nodejs.md)（安装和配置 Azure CLI），并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令以切换到 Resource Manager 模式，如下所示。
 
     ```azurecli
@@ -82,4 +82,4 @@ ms.locfileid: "65835771"
 
 [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
 
-<!-- Update_Description:  wording update -->
+有关模板中负载均衡器的 JSON 语法和属性，请参阅 [Microsoft.Network/loadBalancers](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers)。

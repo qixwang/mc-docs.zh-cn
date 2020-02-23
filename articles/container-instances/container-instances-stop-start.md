@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/15/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9965bbe34ea228aac2d03213b6239e0c1eb4ddd8
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 7b152f79a22d08390171cc76575e6b476567eedc
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965000"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428937"
 ---
+<!--Verified successfully-->
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>手动停止或启动 Azure 容器实例中的容器
 
 容器组的[重启策略](container-instances-restart-policy.md)设置确定默认情况下容器实例如何启动或停止。 可以通过手动停止或启动容器组来替代默认设置。

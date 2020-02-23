@@ -1,22 +1,21 @@
 ---
 title: 使用 Node.js 将模拟的 X.509 设备预配到 Azure IoT 中心
-description: 使用适用于 Azure IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 X.509 设备。本快速入门使用单个注册。
+description: 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Node.js 设备 SDK 创建和预配模拟的 X.509 设备。本快速入门使用单个注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 0fdb2fde8504ce604ebf39cacbcfbc5e669ff399
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: e2459985745b85f990b35ebe1d2f02aac21c6f0f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336432"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494492"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配 X.509 模拟设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -117,8 +116,8 @@ Azure IoT 设备预配服务支持两类注册：
 
 4. 编辑 **register\_x509.js** 文件。 进行下述更改，然后保存文件。
     - 将 `provisioning host` 替换为在上面的“步骤 1”中注明的“全局设备终结点”。  
-    - 将 `id scope` 替换为在上面的“步骤 1”中注明的“ID 范围”。   
-    - 将 `registration id` 替换为在上一部分中记下的 **_注册 ID_** 。
+    - 将 `id scope` 替换为在上面的“步骤 1”中记下的“ID 范围”。   
+    - 将 `registration id` 替换为在上一部分中记下的“注册 ID”  。
     - 将 `cert filename` 和 `key filename` 替换为在上面的“步骤 2”中复制的文件。  
 
 5. 执行脚本，验证该设备是否已成功预配。
@@ -127,7 +126,7 @@ Azure IoT 设备预配服务支持两类注册：
     node register_x509.js
     ```   
 
-6. 在门户中导航到已链接到预配服务的 IoT 中心，然后打开“IoT 设备”边栏选项卡。  将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”    。 如果在运行示例设备应用程序之前已打开边栏选项卡，则可能需要按顶部的“刷新”按钮。  
+6. 在门户中导航到已链接到预配服务的 IoT 中心，然后打开“IoT 设备”边栏选项卡。  将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”    。 如果在运行示例设备应用程序之前已打开边栏选项卡，则可能需要按顶部的“刷新”按钮  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device-x509-node/hubregistration.png) 
 
@@ -136,7 +135,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 2. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 

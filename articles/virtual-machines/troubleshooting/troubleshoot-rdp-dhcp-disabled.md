@@ -1,5 +1,5 @@
 ---
-title: 因 DHCP 客户端服务已禁用而无法通过 RDP 连接到 Azure 虚拟机 | Azure
+title: 因 DHCP 客户端服务已禁用而无法通过 RDP 连接到 Azure 虚拟机
 description: 了解如何排查由于 DHCP 客户端服务在 Azure 中被禁用而导致的 RDP 问题。| Azure
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,20 +11,18 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/13/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: b0ee828950bed6bc6631adf38bb6dea42debe518
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.openlocfilehash: 456bb2466268a7e42d935b5b2f5b22e18a4343ea
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74594203"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428725"
 ---
 # <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>因 DHCP 客户端服务已禁用而无法通过 RDP 连接到 Azure 虚拟机
 
 本文介绍了在 Azure Windows 虚拟机 (VM) 中禁用 DHCP 客户端服务后无法通过远程桌面连接到该 VM 的问题。
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>症状
 无法在 Azure 中与 VM 建立 RDP 连接，因为 DHCP 客户端服务在 VM 中被禁用。 在 Azure 门户中的[“启动诊断”](../troubleshooting/boot-diagnostics.md)中检查屏幕截图时，你看到 VM 正常启动并且在登录屏幕中等待凭据。 在使用事件查看器远程查看 VM 中的事件日志时， 发现 DHCP 客户端服务未启动或无法启动。 下面是示例日志：
@@ -90,4 +88,4 @@ DHCP 客户端服务未在 VM 上运行。
 
 如果仍需帮助，请[联系支持人员](https://support.azure.cn/support/support-azure/)以快速解决问题。
 
-<!-- Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

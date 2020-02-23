@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 07/05/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: f699587c05bbff295403566b604009795114c44c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a03af4714b00a63676a1f29fc2013dbc7f995fdf
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125563"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494457"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>管理 Azure 媒体服务 v2 帐户
 
@@ -25,7 +25,7 @@ ms.locfileid: "71125563"
 
 ## <a name="moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户 
 
-如果需要将媒体服务帐户移到新订阅，需要先将包含媒体服务帐户的整个资源组移到新订阅。 必须移动所有附加资源：Azure 存储帐户等。有关详细信息，请参阅[将资源移到新资源组或订阅](../../azure-resource-manager/resource-group-move-resources.md)。 与 Azure 中的任何资源一样，资源组移动可能需要一些时间才能完成。
+如果需要将媒体服务帐户移到新订阅，需要先将包含媒体服务帐户的整个资源组移到新订阅。 必须移动所有附加资源：Azure 存储帐户等。有关详细信息，请参阅[将资源移到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 与 Azure 中的任何资源一样，资源组移动可能需要一些时间才能完成。
 
 媒体服务 v2 不支持多租户模型。 如果需要将媒体服务帐户移到新租户中的订阅，请在新租户中创建新的 Azure Active Directory (Azure AD) 应用程序。 然后，将帐户移到新租户中的订阅。 租户移动完成后，可以开始使用新租户中的 Azure AD 应用程序通过 v2 API 访问媒体服务帐户。 
 

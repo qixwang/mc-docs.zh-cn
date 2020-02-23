@@ -1,21 +1,20 @@
 ---
 title: 快速入门 - 使用 Node.js 将模拟的 TPM 设备预配到 Azure IoT 中心
-description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 39f8bd90f1212b4641dad0c40a02271a41881d9c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 22aa5ea66706e50f599aba92dbd2bd097d73275e
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336393"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494411"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -48,19 +47,19 @@ Azure IoT 设备预配服务支持两类注册：
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-2. 导航到 GitHub 根文件夹，运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；本快速入门指南自始至终都需让该模拟器保持运行状态： 
+1. 导航到 GitHub 根文件夹，运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；本快速入门指南自始至终都需让该模拟器保持运行状态： 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
     ```
 
-3. 新建名为 **registerdevice** 的空文件夹。 在 **registerdevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。 确保回答 `npm` 提问的所有问题，或者接受默认设置（如果适合）：
+1. 新建名为 **registerdevice** 的空文件夹。 在 **registerdevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。 确保回答 `npm` 提问的所有问题，或者接受默认设置（如果适合）：
    
     ```cmd/sh
     npm init
     ```
 
-4. 安装以下前提包：
+1. 安装以下前提包：
 
     ```cmd/sh
     npm install node-gyp -g
@@ -71,7 +70,7 @@ Azure IoT 设备预配服务支持两类注册：
     > 安装上述包时存在一些已知问题。 若要解决这些问题，请使用命令提示符在“以管理员身份运行”模式下运行 `npm install --global --production windows-build-tools`，  在将路径替换为已安装版本后运行 `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140`，然后重新运行上述安装命令。
     >
 
-5. 安装以下包，其中包含在注册过程中使用过的组件：
+1. 安装以下包，其中包含在注册过程中使用过的组件：
 
    - 适用于 TPM 的安全客户端：`azure-iot-security-tpm`
    - 设备的传输，用于连接到设备预配服务：`azure-iot-provisioning-device-http` 或 `azure-iot-provisioning-device-amqp`
@@ -93,9 +92,9 @@ Azure IoT 设备预配服务支持两类注册：
        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
        ```
 
-6. 在 **registerdevice** 文件夹中，使用文本编辑器创建新的 **ExtractDevice.js** 文件。
+1. 在 **registerdevice** 文件夹中，使用文本编辑器创建新的 **ExtractDevice.js** 文件。
 
-7. 在 **ExtractDevice.js** 文件的开头添加以下 `require` 语句：
+1. 在 **ExtractDevice.js** 文件的开头添加以下 `require` 语句：
    
     ```
     'use strict';
@@ -106,7 +105,7 @@ Azure IoT 设备预配服务支持两类注册：
     var myTpm = new tpmSecurity.TpmSecurityClient(undefined, new tssJs.Tpm(true));
     ```
 
-8. 添加以下函数以实现该方法：
+1. 添加以下函数以实现该方法：
    
     ```
     myTpm.getEndorsementKey(function(err, endorsementKey) {
@@ -126,13 +125,13 @@ Azure IoT 设备预配服务支持两类注册：
     });
     ```
 
-9. 保存并关闭 **ExtractDevice.js** 文件。 运行示例：
+1. 保存并关闭 **ExtractDevice.js** 文件。 运行示例：
 
     ```cmd/sh
     node ExtractDevice.js
     ```
 
-1. 输出窗口会显示进行设备注册所需的“认可密钥”  和“注册 ID”  。 记下这些值。 
+1. 输出窗口会显示进行设备注册所需的“认可密钥”和“注册 ID”   。 记下这些值。 
 
 
 ## <a name="create-a-device-entry"></a>创建设备条目
@@ -236,7 +235,7 @@ Azure IoT 设备预配服务支持两类注册：
     node RegisterDevice.js
     ```
 
-1. 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上。  
+1. 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -245,7 +244,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。

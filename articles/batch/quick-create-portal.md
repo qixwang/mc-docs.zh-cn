@@ -1,6 +1,6 @@
 ---
 title: Azure 快速入门 - 运行 Batch 作业 - 门户
-description: 快速了解如何使用 Azure 门户运行 Batch 作业。
+description: 了解如何使用 Azure 门户创建 Batch 帐户、计算节点池以及在池中运行基本任务的作业。
 services: batch
 author: lingliw
 manager: digimobile
@@ -10,12 +10,12 @@ origin.date: 07/03/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 8a7ae354e17eade17c4260d5c30e599d2c2b87cb
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: e9f9ec828e8c9e2edcc8f1bd104d8000fb45de4c
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330399"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497364"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 
@@ -103,7 +103,7 @@ Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 �
 
 若要创建第一个任务，请执行以下操作：
 
-1. 选择“设置”  （应用程序对象和服务主体对象）。
+1. 选择“添加”   。
 
 2. 输入名为“mytask”的**任务 ID**。  
 

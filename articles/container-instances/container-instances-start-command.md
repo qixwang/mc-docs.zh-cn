@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/15/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5a9eee501d6d7149ade54b18a2f71dd3e782eadd
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: e8808f1631437c04a7ad8bc1890e95c5a248beb5
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965002"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428051"
 ---
+<!--Verified successfully-->
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行来替代默认的命令行操作
 
 创建容器实例时，可以指定一个命令来替代已植入到容器映像中的默认命令行指令。 此行为类似于在 `--entrypoint` 命令行中指定参数 `docker run`。

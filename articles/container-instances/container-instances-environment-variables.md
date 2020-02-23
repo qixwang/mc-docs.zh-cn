@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/17/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 509c5597c4f555f4fc74c1beb470a42680898bdf
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 87dedf232be697bf5f9fc798c16f52fd56795e39
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965058"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428745"
 ---
+<!--Verified successfully-->
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 
 通过在容器实例中设置环境变量，可为容器运行的应用程序或脚本提供动态配置。 这类似于在 `--env` 命令行中指定参数 `docker run`。 

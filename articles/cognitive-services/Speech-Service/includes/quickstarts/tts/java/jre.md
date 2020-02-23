@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: babd78444a6df180f620fe9416258f63dfa1c7a5
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 88a3d1f8117246967b28637e51f58587afc90333
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123547"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430180"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -56,11 +56,10 @@ ms.locfileid: "76123547"
             try {
                 // Replace below with your own subscription key
                 String speechSubscriptionKey = "YourSubscriptionKey";
-                // Replace below with your own service region (e.g., "chinaeast2").
-                String serviceRegion = "YourServiceRegion";
     
                 int exitCode = 1;
-                SpeechConfig config = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
+                // Replace below with your own service region (e.g., "chinaeast2").
+                SpeechConfig config = SpeechConfig.fromHost(new URI("https://YourServiceRegion.tts.speech.azure.cn/"), speechSubscriptionKey);
                 assert(config != null);
     
                 SpeechSynthesizer synth = new SpeechSynthesizer(config);

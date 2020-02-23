@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/07/2019
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 304caae3652bf3b9aef034e70285cb6d50a36910
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 9a9a5ee3b89c381a0b57c4a140d6b9d9912f916e
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964924"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540975"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -107,15 +107,15 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 对于 VM NIC（Azure 托管），请键入以下命令：
 
-    netsh interface ipv4 set interface �interfacename� weakhostreceive=enabled
+    netsh interface ipv4 set interface "interfacename" weakhostreceive=enabled
    （将 interfacename 替换为此接口的名称）
 
 对于添加的每个环回接口，重复以下命令：
 
-    netsh interface ipv4 set interface �interfacename� weakhostreceive=enabled 
+    netsh interface ipv4 set interface "interfacename" weakhostreceive=enabled 
    （将 interfacename 替换为此环回接口的名称）
      
-    netsh interface ipv4 set interface �interfacename� weakhostsend=enabled 
+    netsh interface ipv4 set interface "interfacename" weakhostsend=enabled 
    （将 interfacename 替换为此环回接口的名称）
 
 > [!IMPORTANT]
@@ -154,7 +154,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 * 只有 IaaS VM 支持多个前端配置。
 * 使用浮动 IP 规则时，应用程序必须对出站 SNAT 流使用主要 IP 配置。 如果应用程序绑定到来宾 OS 中环回接口上配置的前端 IP 地址，则无法使用 Azure 的出站 SNAT 来重写出站流，此时流处理会失败。  查看[出站方案](load-balancer-outbound-connections.md)。
 * 公共 IP 地址会影响计费。 有关详细信息，请参阅 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)
-* 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-subscription-service-limits.md#networking-limits)。
+* 订阅有所限制。 有关详细信息，请参阅[服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,12 +12,12 @@ origin.date: 11/05/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 3d78db2015b2bd4da6e952c1c995e73cbc6a1d0c
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 94d97d09567ef22c7d470122435f75add582b0b2
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123297"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428393"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "76123297"
 
 ## <a name="speech-sdk"></a>语音 SDK
 
-在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromSubscription` 的参数）。
+在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromHost` 的参数）。
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>语音转文本、文本转语音和翻译
 

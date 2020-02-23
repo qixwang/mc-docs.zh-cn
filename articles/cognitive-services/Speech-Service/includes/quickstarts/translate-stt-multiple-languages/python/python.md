@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 407f7147363d4be9784d96374afead9e5cb84092
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 9b354f3969f6a560dfd2316e14424c8f916837d5
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123546"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430062"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -38,9 +38,10 @@ ms.locfileid: "76123546"
 
     def translate_speech_to_text():
 
-        # Creates an instance of a speech translation config with specified subscription key and service region.
+        # Creates an instance of a speech translation config with specified host and subscription key.
         # Replace with your own subscription key and service region (e.g., "chinaeast2").
-        translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=speech_key, region=service_region)
+        speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
+        translation_config = speechsdk.translation.SpeechTranslationConfig(host=speech_host, subscription=speech_key)
 
         # Sets source and target languages.
         # Replace with the languages of your choice, from list found here: https://docs.azure.cn/cognitive-services/speech-service/language-support#speech-translation

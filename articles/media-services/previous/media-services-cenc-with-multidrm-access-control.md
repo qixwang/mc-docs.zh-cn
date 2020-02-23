@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 8dddcd22c2d705b4e7f58a28203855991859488f
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 6adbc175ff318b07c4b9c2f0b101c3b55d8ac074
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125562"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494458"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -215,7 +215,7 @@ DRM 子系统可能包含以下组件：
 
 有关 Azure AD 的信息：
 
-* 可以在 [Azure Active Directory 开发人员指南](../../active-directory/develop/v1-overview.md)中找到面向开发人员的信息。
+* 可以在 [Azure Active Directory 开发人员指南](../../active-directory/azuread-dev/v1-overview.md)中找到面向开发人员的信息。
 * 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-administer.md)中找到面向管理员的信息。
 
 ### <a name="some-issues-in-implementation"></a>实现中的一些问题
@@ -277,7 +277,7 @@ DRM 子系统可能包含以下组件：
 
 Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对此令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且来自 Azure AD，应用程序验证令牌的签名。 应用程序可以使用由 Azure AD 公开且包含在租户联合元数据文档中的公钥。 此公钥以及衍生它的签名密钥是由 Azure AD 中所有租户使用的同一个密钥。
 
-有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](/active-directory/develop/active-directory-signing-key-rollover)。
+有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](../../active-directory/active-directory-signing-key-rollover.md)。
 
 在[公钥-私钥对](https://login.partner.microsoftonline.cn/common/discovery/keys/)之间：
 
@@ -302,15 +302,15 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 由于密钥可能在任何时间滚动更新，联合元数据文档中始终有多个有效公钥可用。 媒体服务许可证传送可以使用文档中指定的任何密钥。 因为一个密钥可能很快就被轮换为另一个密钥。
 
 ### <a name="where-is-the-access-token"></a>访问令牌位于何处？
-如果在[带有 OAuth 2.0 客户端凭据授予的应用程序标识](../../active-directory/develop/web-api.md)下，Web 应用调用 API 应用，身份验证流如下：
+如果在[带有 OAuth 2.0 客户端凭据授予的应用程序标识](../../active-directory/azuread-dev/web-api.md)下，Web 应用调用 API 应用，身份验证流如下：
 
-* 用户在 Web 应用程序中登录到 Azure AD。 有关详细信息，请参阅 [Web 浏览器到 Web 应用程序](../../active-directory/develop/web-app.md)。
+* 用户在 Web 应用程序中登录到 Azure AD。 有关详细信息，请参阅 [Web 浏览器到 Web 应用程序](../../active-directory/azuread-dev/web-app.md)。
 * Azure AD 许可证终结点使用授权代码将用户代理重定向回到客户端应用程序。 用户代理将授权代码返回给客户端应用程序的重定向 URI。
 * Web 应用程序需要获取访问令牌，以便通过 Web API 进行身份验证并检索所需的资源。 它向 Azure AD 的令牌终结点发出一个请求，在其中提供凭据、客户端 ID 以及 Web API 的应用程序 ID URI。 它将提供授权代码来证明已获得用户许可。
 * Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
 * 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的“Authorization”标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 进行验证。 如果验证成功，则返回所需的资源。
 
-在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](/active-directory/develop/v1-protocols-oauth-code)描绘了授权代码授予流的工作原理。
+在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](/active-directory/active-directory-protocols-oauth-code)描绘了授权代码授予流的工作原理。
 
 在具有令牌限制的许可证获取中，遵循相同的受信任子系统模式。 媒体服务中的许可证传送服务是 Web API 资源，即 Web 应用程序需要访问的“后端资源”。 那么，访问令牌位于何处？
 
@@ -443,6 +443,7 @@ Windows 10 上的 Microsoft Edge 和 Internet Explorer 11 中的 EME 允许在�
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
 ## <a name="summary"></a>摘要
+
 本文档讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、媒体服务和媒体播放器。
 
 * 文中提供了一个参考设计，其中包含 DRM/CENC 子系统中的所有必要组件。

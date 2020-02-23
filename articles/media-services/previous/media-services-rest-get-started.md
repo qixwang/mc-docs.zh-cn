@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: ce27b33efae6ec4ce0bfeafed127a91cf21559a6
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: cb82c7f6bfbe21073b93fa4a687006734b3c6cec
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124678"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494225"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容  
 
@@ -37,7 +37,7 @@ ms.locfileid: "71124678"
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下是开始使用媒体服务和 REST API 进行开发所要满足的先决条件。
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。 
@@ -47,7 +47,7 @@ ms.locfileid: "71124678"
 
 本快速入门教程中说明了以下任务。
 
-1. 启动流式处理终结点（使用 Azure 门户）
+1. 启动流式处理终结点（使用 Azure 门户）。
 2. 使用 REST API 连接到媒体服务帐户。
 3. 使用 REST API 创建新资产并上传视频文件。
 4. 使用 REST API 将源文件编码为一组自适应比特率 MP4 文件。
@@ -110,7 +110,7 @@ ms.locfileid: "71124678"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 45
@@ -120,7 +120,7 @@ ms.locfileid: "71124678"
 
 **HTTP 响应**
 
-如果成功，将返回以下响应：
+如果成功，返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -164,7 +164,7 @@ ms.locfileid: "71124678"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 164
 
@@ -226,7 +226,7 @@ ms.locfileid: "71124678"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 74
 
@@ -285,7 +285,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 178
 
@@ -299,7 +299,7 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，将返回以下响应：
+如果成功，返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -330,7 +330,7 @@ SAS URL 采用以下格式：
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>将文件上传到 Blob 存储容器
-设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure Blob 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
+设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure Blob 存储容器。 必须将文件作为块 blob 上传。 页 blob 不受 Azure 媒体服务支持。  
 
 > [!NOTE]
 > 必须将要上传的文件的文件名添加到上一部分中收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.chinacloudapi.cn/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`。
@@ -347,7 +347,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
     {  
@@ -375,7 +375,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
 
@@ -394,7 +394,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
 **HTTP 响应**
@@ -425,7 +425,7 @@ SAS URL 采用以下格式：
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
 
@@ -472,7 +472,7 @@ SAS URL 采用以下格式：
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 482
 
@@ -594,7 +594,7 @@ SAS URL 采用以下格式：
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 0
@@ -631,7 +631,7 @@ SAS URL 采用以下格式：
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.2
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
@@ -655,7 +655,7 @@ SAS URL 采用以下格式：
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
 
@@ -732,7 +732,7 @@ MPEG DASH 的流 URL 采用以下格式：
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 74
@@ -755,7 +755,7 @@ MPEG DASH 的流 URL 采用以下格式：
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 182
@@ -846,7 +846,7 @@ MPEG DASH 的流 URL 采用以下格式：
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.chinacloudapp.cn
     Content-Length: 182

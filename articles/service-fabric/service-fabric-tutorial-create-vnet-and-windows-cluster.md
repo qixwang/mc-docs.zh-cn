@@ -3,15 +3,15 @@ title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 623e348d700afde33a76370fced0ed5125f50ee5
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 670d8fa6e405f3d144ca882bd545ca58295039c2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742071"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540569"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
@@ -188,7 +188,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户](../active-directory/develop/quickstart-create-new-tenant.md)。
 
-为了简化涉及到配置 Azure AD 与 Service Fabric 群集的步骤，我们创建了一组 Windows PowerShell 脚本。 [将脚本下载](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)到计算机。
+为了简化涉及到配置 Azure AD 与 Service Fabric 群集的步骤，我们创建了一组 Windows PowerShell 脚本。 [将脚本下载](https://github.com/Azure-Samples/service-fabric-aad-helpers)到计算机。
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>创建 Azure AD 应用程序并为用户分配角色
 创建两个 Azure AD 应用程序来控制对群集的访问权限：一个 Web 应用程序和一个本机应用程序。 创建用于表示群集的应用程序后，请将用户分配到 [Service Fabric 支持的角色](service-fabric-cluster-security-roles.md)：只读和管理员。

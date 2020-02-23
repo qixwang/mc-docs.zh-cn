@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: vjay
-ms.openlocfilehash: 6f9f53130b439c3ee3931e4dee43be4ce3a3f96a
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.reviewer: willzhan; johndeu
+ms.openlocfilehash: fcb087b5e1eedc4fd19ac6ff90fef1e5bae73165
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124573"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494253"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
 
@@ -47,7 +48,7 @@ ms.locfileid: "71124573"
 > [!IMPORTANT]
 > 目前，媒体服务支持 Azure 访问控制服务身份验证模型。 不过，访问控制身份验证将于 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
@@ -83,7 +84,7 @@ ms.locfileid: "71124573"
 5. 选择现有的 **Azure AD 应用程序**，或者创建一个新的（如下所示）。
 
     > [!NOTE]
-    > 尝试访问媒体服务帐户时，调用用户的角色必须是**参与者**或**所有者**，这样 Azure 媒体 REST 请求才会成功。 如果出现“远程服务器返回错误:(401)未授权”的异常，请参阅[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
+    > 尝试访问媒体服务帐户时，调用用户的角色必须是**参与者**或**所有者**，这样 Azure 媒体 REST 请求才会成功。 如果收到异常，指示“远程服务器返回了一个错误:(401)未授权”的异常，请参阅[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
 
     如需创建新的 AD 应用，请执行以下步骤：
     
@@ -124,7 +125,7 @@ ms.locfileid: "71124573"
 
 ## <a name="get-the-access-token-using-postman"></a>使用 Postman 获取访问令牌
 
-本部分演示如何使用 Postman 执行返回 JWT 持有者令牌（访问令牌）的 REST API  。 若要调用任何媒体服务 REST API，需要将“授权”标头添加到这些调用，并将“持有者 your_access_token”的值添加到每个调用（如本教程的下一部分中所示）  。
+此部分介绍如何使用 **Postman** 执行可返回 JWT 持有者令牌（访问令牌）的 REST API。 若要调用任何媒体服务 REST API，需要将“授权”标头添加到这些调用，并将“持有者 your_access_token”的值添加到每个调用（如本教程的下一部分中所示）  。
 
 1. 打开 **Postman**。
 2. 选择“POST”  。
@@ -182,7 +183,7 @@ ms.locfileid: "71124573"
 5. 单击 Postman 窗口右侧的“批量编辑”链接。 
 6. 粘贴以下标头：
 
-        x-ms-version:2.15
+        x-ms-version:2.19
         Accept:application/json
         Content-Type:application/json
         DataServiceVersion:3.0

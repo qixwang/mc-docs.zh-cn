@@ -12,14 +12,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2017
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 110fffcbd62a8ea68188f47fb154221412045196
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 74ee73264bf59083fa8cdd3cdd63cf2dcf144761
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964920"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540978"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建内部负载均衡器
 
@@ -49,7 +49,7 @@ ms.locfileid: "75964920"
 * 探测配置：虚拟机的运行状况探测。
 * 入站 NAT 规则：直接访问虚拟机时的端口规则。
 
-有关负载均衡器组件的详细信息，请参阅 [Azure 负载均衡器组件](load-balancer-overview.md#load-balancer-components)。
+有关负载均衡器组件的详细信息，请参阅 [Azure 负载均衡器组件](concepts-limitations.md#load-balancer-components)。
 
 以下步骤介绍如何配置两个虚拟机之间的负载均衡器。
 

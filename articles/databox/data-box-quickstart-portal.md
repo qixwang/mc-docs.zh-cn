@@ -10,24 +10,14 @@ origin.date: 09/03/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 7dc3c17623ae47e21ca49f2b4e3608f084aa544f
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: d9b8863b2b60f991497c83c827c032981486f361
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884038"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428871"
 ---
-::: zone target="docs"
-
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box
-
-::: zone-end
-
-::: zone target="chromeless"
-
 # <a name="get-started-with-azure-data-box"></a>Azure Data Box 入门 
-
-::: zone-end
 
 ::: zone target="docs"
 
@@ -45,7 +35,7 @@ ms.locfileid: "74884038"
 
 ::: zone target="docs"
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
@@ -69,7 +59,7 @@ ms.locfileid: "74884038"
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -90,7 +80,7 @@ ms.locfileid: "74884038"
 
 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
-## <a name="order"></a>顺序
+## <a name="order"></a>订单
 
 此步骤大约需要 5 分钟。
 

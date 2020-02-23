@@ -1,17 +1,17 @@
 ---
-title: Azure Service Fabric - 使用 Azure Monitor 日志进行性能监视
+title: 使用 Azure Monitor 日志进行性能监视
 description: 了解如何设置 Log Analytics 代理以监视 Azure Service Fabric 群集的容器和性能计数器。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/16/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 271904e149ab95099a7a511de3a1c57aded15a7b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: a626bf733b0214b1251c8128631a13060baf0edf
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742419"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539972"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
 

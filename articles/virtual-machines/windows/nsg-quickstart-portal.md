@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 门户打开虚拟机端口 | Azure
+title: 如何使用 Azure 门户打开虚拟机端口
 description: 了解如何在 Azure 门户中使用 Resource Manager 部署模型为 Windows VM 打开端口/创建终结点
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 09/27/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 39054f089a81fc64e0d2a81efaca99ccb8ce07e8
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 10cd8b46c3ffc99d983547806fabab866176f789
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272553"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428933"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -85,7 +85,7 @@ ms.locfileid: "72272553"
 在本文中，已经创建了网络安全组、创建了允许端口 80 上的 HTTP 流量的入站规则，并将该规则与子网进行了关联。 
 
 下列文章更介绍了有关创建更详细环境的信息：
-- [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)
+- [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
 - [安全组](../../virtual-network/security-overview.md)
 
 <!-- Update_Description: update meta properties， wording update, update link -->

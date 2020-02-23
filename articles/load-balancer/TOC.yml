@@ -2,32 +2,16 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是负载均衡器？
+    - name: 什么是 Azure 负载均衡器？
       href: load-balancer-overview.md
-    - name: 什么是标准负载均衡器？
-      href: load-balancer-standard-overview.md
 - name: 快速入门
   items:
-    - name: 创建标准负载均衡器
-      items:
-        - name: 门户
-          href: quickstart-load-balancer-standard-public-portal.md
-        - name: Azure CLI
-          href: quickstart-load-balancer-standard-public-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-standard-load-balancer-powershell.md
-    - name: 创建基本负载均衡器
-      items:
-        - name: 门户
-          href: quickstart-create-basic-load-balancer-portal.md
-        - name: Azure CLI
-          href: quickstart-create-basic-load-balancer-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-basic-load-balancer-powershell.md
-        - name: 模板
-          href: load-balancer-get-started-internet-arm-template.md
-        - name: REST API
-          href: create-load-balancer-rest-api.md
+    - name: 门户
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+    - name: Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
 - name: 教程
   items:
     - name: 对传入 VM 的 Internet 流量进行负载均衡
@@ -44,10 +28,16 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 组件和限制
+      href: concepts-limitations.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
           href: load-balancer-custom-probe-overview.md
+        - name: 标准负载均衡器指标和诊断
+          href: load-balancer-standard-diagnostics.md
+        - name: 使用 REST 获取负载均衡器指标
+          href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性端口
       href: load-balancer-ha-ports-overview.md
     - name: 多个前端
@@ -62,12 +52,22 @@
       href: load-balancer-security-controls.md
 - name: 如何
   items:
+    - name: 将基本公共负载均衡器升级到标准公共负载均衡器
+      href: upgrade-basic-standard.md
     - name: 配置出站规则
       items:
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
         - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
+    - name: 使用 IPv6 创建公共负载均衡器
+      items:
+        - name: Azure CLI
+          href: /virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli
+        - name: Azure PowerShell
+          href: /virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell
+        - name: 模板
+          href: /virtual-network/ipv6-configure-standard-load-balancer-template-json
     - name: 配置内部负载均衡器
       items:
         - name: Azure CLI

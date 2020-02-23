@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用 | Azure
-description: 本教程介绍如何通过 Azure CLI 使用虚拟机规模集在 Linux VM 上创建和部署高度可用的应用程序
+title: 教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
+description: 了解如何通过 Azure CLI 使用虚拟机规模集在 Linux VM 上创建和部署高度可用的应用程序
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rockboyfor
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: tutorial
 origin.date: 06/01/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: ee148d0fe6b0162e44f56b902443149a90ac9409
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 2e7cb81a81e5438319aeb0bec234a1459954b41a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831383"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427998"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
 
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在本教程中，将在 Azure 中部署虚拟机规模集。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 cloud-init 创建用于缩放的应用
+> * 使用 cloud-init 创建可缩放的应用
 > * 创建虚拟机规模集
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
@@ -137,7 +137,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-## <a name="test-your-app"></a>测试应用
+## <a name="test-your-app"></a>测试应用程序
 若要在 Web 上查看 Node.js 应用，请使用 [az network public-ip show](https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”  的 IP 地址：
 
 ```azurecli

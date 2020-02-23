@@ -3,29 +3,26 @@ title: 根据限制检查 Azure 资源使用情况 | Azure
 description: 了解如何根据 Azure 订阅限制检查 Azure 资源使用情况。
 services: networking
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: ''
+author: KumudD
+ms.author: v-tawe
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/05/2018
-ms.date: 10/17/2019
-ms.author: v-tawe
-ms.openlocfilehash: c6ea3aef0a57f98dc931c4ae4f58e3c2de281beb
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.date: 03/02/2020
+ms.openlocfilehash: ebda11d5b4ac249e9288079c578f9aa440a85ba9
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72584060"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501446"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 
-本文介绍如何查看已在订阅中部署的每种网络资源类型的数量，以及[订阅限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)是什么。 根据限制查看资源使用情况的功能有助于跟踪当前使用情况，并为将来使用做出计划。 可以使用 [Azure 门户](#azure-portal)、[PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 跟踪使用情况。
+本文介绍如何查看已在订阅中部署的每种网络资源类型的数量，以及[订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)是什么。 根据限制查看资源使用情况的功能有助于跟踪当前使用情况，并为将来使用做出计划。 可以使用 [Azure 门户](#azure-portal)、[PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 跟踪使用情况。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -44,7 +41,7 @@ ms.locfileid: "72584060"
 
        ![查看使用情况数据](./media/check-usage-against-limits/view-usage.png)
 
-     可以通过选择列标题来对列进行排序。 显示的限制是订阅的限制。 如果需要增加默认限制，请选择“请求增加”  ，然后完成并提交支持请求。 所有资源都具有 Azure [限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)中列出的最大限制。 如果当前限制已达到最大数量，则不能增加限制。
+     可以通过选择列标题来对列进行排序。 显示的限制是订阅的限制。 如果需要增加默认限制，请选择“请求增加”  ，然后完成并提交支持请求。 所有资源都具有 Azure [限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)中列出的最大限制。 如果当前限制已达到最大数量，则不能增加限制。
 
 ## <a name="powershell"></a>PowerShell
 

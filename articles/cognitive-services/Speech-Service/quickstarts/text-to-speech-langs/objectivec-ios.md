@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4704bb581a80de4d32877051a43a91478f4aabfd
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 0be7aef7b4fdb5be348ef287c8ba5946595e6e7a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123494"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428854"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -129,8 +129,8 @@ ms.locfileid: "76123494"
         [super viewDidLoad];
         
         inputText = @"";
+        speechHost = @"https://YourServiceRegion.tts.speech.azure.cn/";
         speechKey = @"YourSubscriptionKey";
-        serviceRegion = @"YourServiceRegion";
         
         [self.view setBackgroundColor:[UIColor whiteColor]];
         
@@ -163,7 +163,7 @@ ms.locfileid: "76123494"
     }
     
     - (void)synthesis {
-        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:speechKey region:serviceRegion];
+        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:speechHost subscription:speechKey];
         [speechConfig setSpeechSynthesisOutputFormat:SPXSpeechSynthesisOutputFormat_Audio16Khz32KBitRateMonoMp3];
         SPXSpeechSynthesizer *speechSynthesizer = [[SPXSpeechSynthesizer alloc] initWithSpeechConfiguration:speechConfig audioConfiguration:nil];
         

@@ -2,20 +2,20 @@
 title: 快速入门：使用 REST API 在 Postman 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 在本 REST API 快速入门中，了解如何使用 Postman 调用 Azure 认知搜索 REST API 并了解示例数据和定义。
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 341af9441c2dd8f593f1d9d889d334f74b21af2f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 26da376d342ebcf93c1a9dc67c35291f28f81be7
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336466"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501424"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "75336466"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要以下服务和工具。 
 
@@ -256,7 +256,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
  ![使用 URL 上的搜索字符串 GET](media/search-get-started-postman/postman-query.png "使用 URL 上的搜索字符串 GET")
 
-请尝试其他几个查询示例，以大致了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
+请尝试其他几个查询示例，以大致了解语法。 可以执行字符串搜索、原义 $filter 查询、限制结果集、将搜索范围限定为特定的字段，等待。
 
 将当前 URL 替换为以下 URL，并每次单击“发送”以查看结果  。
 

@@ -6,13 +6,14 @@ origin.date: 12/30/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 66ee5b63c89ecf5fb8da93ffbed4c5768a0932e1
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 68a6ec83b2fe69a41f441ea1d31d264f92395791
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965018"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428740"
 ---
+<!--Verified successfully-->
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>在 Azure 容器实例中检索容器日志和事件
 
 在 Azure 容器实例中，如果容器的行为错误，应首先使用 [az container logs][az-container-logs] 查看其日志，然后使用 [az container attach][az-container-attach] 流式传输其标准输出和标准错误。 还可以在 Azure 门户中查看容器实例的日志和事件，或将容器组的日志和事件数据发送到 [Azure Monitor 日志](container-instances-log-analytics.md)。

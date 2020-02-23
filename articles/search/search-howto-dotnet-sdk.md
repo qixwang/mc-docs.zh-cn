@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 15f1c72c125943c208ae15d04fbaec8e0c33f861
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: e7cfd7212090cb925ef95e5045bbbde2f140deb1
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335030"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501413"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何通过 .NET 应用程序使用 Azure 认知搜索
 
@@ -679,7 +679,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-在本例中，我们将在任何可搜索字段中搜索“motel”一词的整个索引，并且我们只检索 `Select` 参数指定的酒店名称。 下面是结果：
+在本例中，我们将在任何可搜索字段中搜索“motel”一词的整个索引，并且我们只检索 `Select` 参数指定的酒店名称。 结果如下：
 
     Name: Secret Point Motel
 
@@ -728,7 +728,7 @@ WriteDocuments(results);
 
 在此示例中，我们再次使用 OData 语法来指定 `OrderBy` 参数作为 `lastRenovationDate desc`。 我们还将 `Top` 设置为 2 以确保仅获取前两个文档。 与以前一样，我们设置 `Select` 以指定应返回的字段。
 
-下面是结果：
+结果如下：
 
     Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
     Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00

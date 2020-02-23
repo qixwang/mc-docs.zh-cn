@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: f0d444e03daa78ed06db8477652c5095171e423c
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 6135a2931cd4683bfbcd8b44464d82b4653a8534
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123301"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428858"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -154,8 +154,8 @@ ms.locfileid: "76123301"
     #import <MicrosoftCognitiveServicesSpeech/SPXSpeechApi.h>
     
     @interface ViewController () {
+        NSString *speechHost;
         NSString *speechKey;
-        NSString *serviceRegion;
     }
     
     @property (weak, nonatomic) IBOutlet UIButton *recognizeFromFileButton;
@@ -168,8 +168,8 @@ ms.locfileid: "76123301"
     @implementation ViewController
     
     - (void)viewDidLoad {
+        speechHost = @"wss://YourServiceRegion.stt.speech.azure.cn/";
         speechKey = @"YourSubscriptionKey";
-        serviceRegion = @"YourServiceRegion";
     }
     
     - (IBAction)recognizeFromFileButtonTapped:(UIButton *)sender {
@@ -201,7 +201,7 @@ ms.locfileid: "76123301"
             return;
         }
     
-        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:speechKey region:serviceRegion];
+        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:speechHost subscription:speechKey];
         if (!speechConfig) {
             NSLog(@"Could not load speech config");
             [self updateRecognitionErrorText:(@"Speech Config Error")];
@@ -232,7 +232,7 @@ ms.locfileid: "76123301"
     }
     
     - (void)recognizeFromMicrophone {
-        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:speechKey region:serviceRegion];
+        SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithHost:speechHost subscription:speechKey];
         if (!speechConfig) {
             NSLog(@"Could not load speech config");
             [self updateRecognitionErrorText:(@"Speech Config Error")];

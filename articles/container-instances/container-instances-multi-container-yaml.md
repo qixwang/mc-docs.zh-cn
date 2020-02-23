@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/03/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3e62b61d2adbbdd8dc183c76880da75697be883e
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: d1afed8a8d9be422513c23557526cc866c6c2334
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965056"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428824"
 ---
+<!--Verified successfully-->
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>教程：使用 YAML 文件部署多容器组
 
 > [!div class="op_single_selector"]

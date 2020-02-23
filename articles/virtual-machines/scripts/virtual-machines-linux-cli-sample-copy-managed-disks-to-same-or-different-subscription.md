@@ -1,6 +1,6 @@
 ---
 title: 使用 CLI 将托管磁盘复制到相同或不同的订阅 | Azure
-description: Azure CLI 脚本示例 - 将托管磁盘复制（移动）到相同或不同的订阅
+description: Azure CLI 脚本示例 - 将托管磁盘复制（或移动）到同一或不同订阅
 services: virtual-machines-linux
 documentationcenter: storage
 author: rockboyfor
@@ -14,15 +14,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 05/19/2017
-ms.date: 02/18/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0ff661d4f2ab93bcd70a2d882d5a301df65f0be6
-ms.sourcegitcommit: 9324f87df6b9b7ea31596b423d33b6cb5fd41aad
+ms.openlocfilehash: 7a093e8361af54a6ca5ca7200135123519ac1959
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72749598"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428899"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘复制到相同或不同的订阅
 
@@ -73,15 +73,15 @@ az disk create --resource-group $targetResourceGroupName --name $managedDiskName
 
 | 命令 | 注释 |
 |---|---|
-| [az disk show](https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-show) | 使用托管磁盘的名称和资源组属性获取该托管磁盘的所有属性。 使用 ID 属性将托管磁盘复制到其他订阅。  |
-| [az disk create](https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-create) | 通过使用父托管磁盘的 ID 和名称在不同订阅中创建新的托管磁盘来复制该托管磁盘。  |
+| [az disk show](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-show) | 使用托管磁盘的名称和资源组属性获取该托管磁盘的所有属性。 使用 ID 属性将托管磁盘复制到其他订阅。  |
+| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 通过使用父托管磁盘的 ID 和名称在不同订阅中创建新的托管磁盘来复制该托管磁盘。  |
 
 ## <a name="next-steps"></a>后续步骤
 
-[基于托管磁盘创建虚拟机](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md)
+[从托管磁盘创建虚拟机](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md)
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/zh-cn/cli/index?view=azure-cli-latest)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

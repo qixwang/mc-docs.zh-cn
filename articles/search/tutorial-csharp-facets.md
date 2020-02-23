@@ -3,18 +3,18 @@ title: 有关使用分面辅助导航的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程是在“搜索结果分页 - Azure 认知搜索”项目的基础上编写的，目的是添加分面导航。 了解如何使用分面来轻松缩小搜索范围。
 manager: nitinme
-author: PeterTurcan
+author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: adceeb939a09d276b90463ce851378493c8dedc3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 346176535106e1abdd32ba327c3b2d3cda0ea24e
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336465"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501457"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# 教程：使用分面辅助导航 - Azure 认知搜索
 
@@ -27,7 +27,7 @@ ms.locfileid: "75336465"
 > * 将模型属性设置为 _IsFacetable_
 > * 将分面导航添加到应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 

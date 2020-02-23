@@ -14,17 +14,17 @@ ms.tgt_pltfrm: command-line-interface
 ms.devlang: na
 ms.topic: article
 origin.date: 04/18/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6e0426ae318576f0c0cde8f95578c3d829d667f3
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 7fba641c9b584124b9c895f6f482edf5b48d5d6b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116772"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428927"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
-本文提供常用于在 Azure Resource Manager 部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示稍微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/resource-group-overview.md)。  
+本文提供常用于在 Azure Resource Manager 部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示稍微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/management/overview.md)。  
 
 > [!NOTE]
 > 本文介绍了 Azure CLI（有时亦称为“Azure 经典 CLI”）中的资源管理器模式命令。 若要使用 Resource Manager 模型，还可试用下一代多平台 CLI，即 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)。
@@ -320,7 +320,7 @@ ms.locfileid: "74116772"
 **用于管理虚拟网络的命令**
 
     network vnet create [options] <resource-group> <name> <location>
-创建虚拟网络。 在以下示例中，我们将为华北区域的资源组 myresourcegroup 创建名为 newvnet 的虚拟网络。
+创建虚拟网络。 在以下示例中，我们将为中国北部区域的资源组 myresourcegroup 创建名为 newvnet 的虚拟网络。
 
     azure network vnet create myresourcegroup newvnet "China North"
     info:    Executing command network vnet create
@@ -1751,7 +1751,7 @@ ms.locfileid: "74116772"
 
     vm get-instance-view [options] <resource-group> <name>
 
-**可重置虚拟机上的远程桌面访问或 SSH 设置，以及重置具有管理员或 sudo 权限的帐户的密码**
+**可让你重置虚拟机上的远程桌面访问或 SSH 设置，以及重置具有管理员或 sudo 权限的帐户的密码**
 
     vm reset-access [options] <resource-group> <name>
 
@@ -1780,4 +1780,5 @@ ms.locfileid: "74116772"
     vm image list-offers [options] <location> <publisher>
     vm image list-skus [options] <location> <publisher> <offer>
     vm image list [options] <location> <publisher> [offer] [sku]
+
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8d3cf689a87780e8f8fc8499f20996aa997abede
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 41c4b97cffdfcb2aada57f136bc1b886583dc8f3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630902"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428509"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>如何：在 Android 上的语音 SDK 中使用编解码器压缩的音频输入
 
@@ -145,7 +145,7 @@ import com.microsoft.cognitiveservices.speech.audio.AudioStreamFormat;
 import com.microsoft.cognitiveservices.speech.audio.PullAudioInputStream;
 import com.microsoft.cognitiveservices.speech.internal.AudioStreamContainerFormat;
 
-SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+SpeechConfig speechConfig = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 
 // Create an audio config specifying the compressed audio format and the instance of your input stream class.
 AudioStreamFormat audioFormat = AudioStreamFormat.getCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);

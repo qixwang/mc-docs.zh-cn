@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/20/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f80b2230b9300bc12021190fd851cefc0f54917a
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: fd87d4e59b3ad44b5aac5ab5bfc012b4cedd5e87
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116931"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428848"
 ---
 <!--Verify successfully-->
 # <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因为没有在 NSG 中启用 RDP 端口而无法远程连接到 VM
@@ -26,7 +26,7 @@ ms.locfileid: "74116931"
 本文解释了如何解决因为没有在网络安全组 (NSG) 中启用远程桌面协议 (RDP) 端口而无法连接到 Azure Windows 虚拟机 (VM) 的问题。
 
 > [!NOTE] 
-> Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 对于新部署，建议你使用资源管理器部署模型而非经典部署模型。 
+> Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 对于新部署，建议你使用资源管理器部署模型而非经典部署模型。 
 
 ## <a name="symptom"></a>症状
 

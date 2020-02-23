@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 11/28/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7e824c27f77d7e56bd24729a2fec14322255453f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 8b78405976ec34f0bc64f6e4284b18cbf708b231
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631098"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428829"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -84,7 +84,7 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 
     此命令返回类似于下面的名称：
 
-        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.chinacloudapp.cn
+        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.chinacloudapp.cn
 
     这是 Hue 网站所在的主头节点的主机名。
 4. 使用浏览器打开 Hue 门户 ( http://HOSTNAME:8888 )。 将 HOSTNAME 替换为在上一步骤中获取的名称。
@@ -116,7 +116,7 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 3. 右键单击某个文件或文件夹，以查看可用的操作。 使用右侧的“上传”  按钮，将文件上传到当前目录。 使用“新建”  按钮创建新的文件或目录。
 
 > [!NOTE]
-> Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。 与群集关联的任何其他存储帐户/容器将无法使用文件浏览器访问。 不过，与群集关联的其他容器始终可供 Hive 作业访问。 例如，如果在 Hive 编辑器中输入 `dfs -ls wasb://newcontainer@mystore.blob.core.chinacloudapi.cn` 命令，也可以看到其他容器的内容。 在此命令中， **newcontainer** 不是与群集关联的默认容器。
+> Hue 文件浏览器只能显示与 HDInsight 群集关联的默认容器的内容。 与群集关联的任何其他存储帐户/容器无法使用文件浏览器访问。 不过，与群集关联的其他容器始终可供 Hive 作业访问。 例如，如果在 Hive 编辑器中输入 `dfs -ls wasb://newcontainer@mystore.blob.core.chinacloudapi.cn` 命令，也可以看到其他容器的内容。 在此命令中， **newcontainer** 不是与群集关联的默认容器。
 >
 >
 

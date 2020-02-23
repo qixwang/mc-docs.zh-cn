@@ -1,22 +1,21 @@
 ---
 title: 使用 Python 将 X.509 设备注册到 Azure 设备预配服务
-description: 本快速入门使用组注册。 在本快速入门中，将使用 Python 将 X.509 设备注册到 Azure IoT 中心设备预配服务
+description: 本快速入门使用组注册。 本快速入门将使用 Python 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: dcfb23e24c31244be69d01c197e157360f913301
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 267574f764bb63ba0edce31da6ccf6c0216070ae
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859593"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494388"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入门：使用 Python 将 X.509 设备注册到设备预配服务
 
@@ -34,14 +33,11 @@ ms.locfileid: "75859593"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="prerequisites"></a>必备条件
 
 - 安装 [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。
 - [安装或升级 Python 程序包管理系统 *pip*](https://pip.pypa.io/en/stable/installing/)。
 - 安装 [Git](https://git-scm.com/download/)。
-
-
 
 ## <a name="prepare-test-certificates"></a>准备测试证书
 
@@ -61,12 +57,11 @@ ms.locfileid: "75859593"
     git submodule update --init
     ```
 
-   应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
-   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。    
+   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。
 
-2. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
-
+3. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
 
 ## <a name="modify-the-python-sample-code"></a>修改 Python 示例代码
 
@@ -146,7 +141,7 @@ ms.locfileid: "75859593"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果打算学习 Java 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算学习 Java 服务示例，请勿清理本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的 Java 示例输出窗口。
 1. 关闭计算机上的“X509 证书生成器”  窗口。

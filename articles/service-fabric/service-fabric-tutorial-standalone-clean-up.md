@@ -1,18 +1,18 @@
 ---
-title: 教程：清理 Service Fabric 独立群集 - Azure Service Fabric
-description: 本教程介绍如何清理独立群集
+title: 清理独立群集
+description: 本教程介绍如何清理独立 Service Fabric 群集中的 AWS 或 Azure 资源。
 author: rockboyfor
 ms.topic: tutorial
 origin.date: 07/22/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 437c3d316d966ec2f42f7b6f625fc41540e43385
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: e9f4918baa06d140c9c961d193d21ab04666e8d8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741978"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540122"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>教程：清理独立群集
 

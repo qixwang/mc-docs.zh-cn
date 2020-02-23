@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: bd5f7c9c6d9d5bd28b00ed34f5e43066f2162632
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: beb7763dbca413ba75aaa4294a9508a2e914ba4a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123492"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430038"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -44,9 +44,9 @@ ms.locfileid: "76123492"
 
    void TranslateSpeechToSpeech()
    {
-       // Creates an instance of a speech translation config with specified subscription key and service region.
+       // Creates an instance of a speech translation config with specified host and subscription key.
        // Replace with your own subscription key and service region (e.g., "chinaeast2").
-       auto config = SpeechTranslationConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+       auto config = SpeechConfig::FromHost("wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey");
 
        // Sets source and target languages.
        // Replace with the languages of your choice, from list found here: https://docs.azure.cn/cognitive-services/speech-service/language-support#speech-translation

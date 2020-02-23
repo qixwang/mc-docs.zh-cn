@@ -12,14 +12,14 @@ ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 origin.date: 11/08/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 59989714e9326884cda4fa7f182e6aedcdad46da
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 24ac0f78de9389e323e1de4c6d75c7fa1eeb60c2
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657952"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563476"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
@@ -61,7 +61,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 
 在 ZooKeeper 节点中运行 [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) 脚本即可导出再导入数据。 需将该脚本更新为正确的 Hortonworks 数据平台 (HDP) 版本。 （我们正努力使这些脚本在 HDInsight 中通用化。 可以通过群集上的任何节点运行通用脚本，而无需用户进行修改。）
 
-导出命令会将元数据写入所设置位置中的 Apache Hadoop 分布式文件系统 (HDFS) 路径（在 Azure Blob 存储中）。
+导出命令会将元数据写入所设置位置中的 Apache Hadoop 分布式文件系统 (HDFS) 路径（在 Azure Blob 存储或 Azure Data Lake Storage 中）。
 
 ### <a name="examples"></a>示例
 

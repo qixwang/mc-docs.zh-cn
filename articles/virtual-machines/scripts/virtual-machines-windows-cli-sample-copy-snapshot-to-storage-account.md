@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 将快照导出/复制到不同区域中的存储帐户 | Azure
+title: 使用 CLI 将快照导出/复制到不同区域中的存储帐户
 description: Azure CLI 脚本示例 - 将快照作为 VHD 导出/复制到相同或不同区域中的存储帐户。
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,15 +14,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 05/19/2017
-ms.date: 04/01/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 24aab8c063f4c5dfd0f2c4f2f756252a171887ae
-ms.sourcegitcommit: 9324f87df6b9b7ea31596b423d33b6cb5fd41aad
+ms.openlocfilehash: 63b0861f5373166936c7fbb7773f965b7005c2c4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72749593"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428151"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>使用 CLI 将快照导出/复制到不同区域中的存储帐户
 
@@ -74,16 +74,15 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 | 命令 | 注释 |
 |---|---|
-| [az snapshot grant-access](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-grant-access) | 生成只读 SAS，用于将基础 VHD 文件复制到存储帐户或将其下载到本地  |
-| [az storage blob copy start](https://docs.azure.cn/zh-cn/cli/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start) | 以异步方式将 blob 从一个存储帐户复制到另一个存储帐户 |
+| [az snapshot grant-access](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-grant-access) | 生成只读 SAS，用于将基础 VHD 文件复制到存储帐户或将其下载到本地  |
+| [az storage blob copy start](https://docs.azure.cn/cli/storage/blob/copy?view=azure-cli-latest#az-storage-blob-copy-start) | 以异步方式将 blob 从一个存储帐户复制到另一个存储帐户 |
 
 ## <a name="next-steps"></a>后续步骤
 
 [从 VHD 创建托管磁盘](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/zh-cn/cli/index?view=azure-cli-latest)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 
 可以在 [Azure Windows VM 文档](../windows/cli-samples.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
 
-<!-- Update_Description: update meta properties, udpate powershell az cmdlet -->
-<!-- ms.date: 04/01/2018 -->
+<!-- Update_Description: update meta properties, wording update, update link -->

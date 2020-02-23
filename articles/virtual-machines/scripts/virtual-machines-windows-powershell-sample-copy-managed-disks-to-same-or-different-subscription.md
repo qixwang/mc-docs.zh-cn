@@ -1,6 +1,6 @@
 ---
-title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘 | Azure
-description: Azure PowerShell 脚本示例 - 将托管磁盘复制（移动）到相同或不同的订阅
+title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘
+description: Azure PowerShell 脚本示例 - 将托管磁盘复制或移动到同一或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 06/06/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 56ce1e9e9be50840871fcd48773940ca4e34d13e
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: be695bbd64406717f7a80744dc152be93e0da5e4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272726"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428791"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>在相同或不同订阅中通过 PowerShell 复制托管磁盘
 

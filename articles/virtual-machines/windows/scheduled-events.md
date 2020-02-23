@@ -1,5 +1,5 @@
 ---
-title: Azure 元数据服务 - 适用于 Windows VM 的计划事件 | Azure
+title: Azure 元数据服务：适用于 Windows VM 的计划事件
 description: Windows 虚拟机上使用 Azure 元数据服务的计划事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c83420f90d0a2cd4ab69368d6bbe6098bcf8c9a1
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: a114e322356ad37ccd0b2c1deaf84e868472c549
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272694"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428800"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -48,7 +48,8 @@ ms.locfileid: "72272694"
 - [平台启动的维护](/virtual-machines/windows/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
 - 降级的硬件
 - 用户启动的维护（例如，用户重启或重新部署 VM）
-- 规模集内的[低优先级 VM 逐出](https://azure.microsoft.com/blog/low-priority-scale-sets)
+
+    <!--Not Available on - [Spot VM](spot-vms.md) and [Spot scale set](../../virtual-machine-scale-sets/use-spot.md) instance evictions-->
 
 ## <a name="the-basics"></a>基础知识  
 
@@ -57,14 +58,14 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
 如果不是在虚拟网络中创建虚拟机（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
 ### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-11-01`。
 
-| 版本 | 发布类型 | Regions | 发行说明 | 
+| 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
 | 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br /><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | 全部 |<li>初始版本

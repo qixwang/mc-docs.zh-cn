@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/01/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 02fe2a7a30c9a110e442d2fa8eb8ec05781ab572
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 6505c9ce6bfa01fd7b3a325e431ffb949a676bb3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116878"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428678"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 
@@ -30,7 +30,7 @@ ms.locfileid: "74116878"
 [Azure 高级 SSD](../disks-types.md) 是提供低延迟和高吞吐量 IO 的下一代存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://www.azure.cn/home/features/virtual-machines/)上的 SQL Server。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Azure 建议大多数新部署使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Azure 建议大多数新部署使用 Resource Manager 模型。
 
 本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。 这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。 要全面了解端到端迁移，熟知如何将迁移较大 VM 以通过 PowerShell 利用改进的本地 SSD 存储，请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例。
 
@@ -499,7 +499,7 @@ $vmConfigsl2 | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet
 
 ##### <a name="points-of-downtime"></a>停机时间点
 
-将应用程序和用户转移到新的 Always On 侦听器时，会出现停机时间。 停机时间取决于：
+将应用程序和用户转移到新的 AlwaysOn 侦听器时会出现停机。 停机时间取决于：
 
 * 将最后一个事务日志备份还原到新服务器上的数据库时所用的时间。
 * 更新客户端应用程序以使用新的 AlwaysOn 侦听器所用的时间。
@@ -595,7 +595,7 @@ $vmConfigsl2 | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet
 ##### <a name="disadvantages"></a>缺点
 
 * 根据客户端对 SQL Server 的访问权限，当 SQL Server 在应用程序的备用 DC 中运行时，延迟时间可能会增加。
-* VHD 到高级存储的复制时间可能会很长。 这可能会影响是否要在可用性组中保留节点的决策。 请在确定何时需要在迁移期间运行日志密集型工作负荷时考虑这一点，因为主节点必须将未复制的事务保留在事务日志中。 因此，此日志可能会显著增长。
+* 将 VHD 复制到高级存储的时间可能会很长。 这可能会影响是否要在可用性组中保留节点的决策。 请在确定何时需要在迁移期间运行日志密集型工作负荷时考虑这一点，因为主节点必须将未复制的事务保留在事务日志中。 因此，此日志可能会显著增长。
 * 此方案会使用 Azure **Start-AzureStorageBlobCopy** commandlet，它是异步的。 完成后没有 SLA。 复制所用的时间不同，而这取决于在队列中的等待情况，还取决于要传输的数据量。 因此，在第 2 个数据中心中只有一个节点，应该采取缓解措施，以防实际复制时间长于测试。 这些迁移步骤包括以下方面：
     * 在以商定的停机时间进行迁移之前，添加临时的第 2 个 SQL 节点以实现 HA。
     * 在 Azure 计划的维护时间之外运行迁移。

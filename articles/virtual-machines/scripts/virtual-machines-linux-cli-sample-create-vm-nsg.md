@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM | Azure
-description: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
+title: 使用 NSG 保护虚拟机之间的网络流量
+description: 使用 Azure CLI 创建两个带有内部和外部 NSG 的 VM，以保护网络流量。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
@@ -14,17 +14,17 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 02/27/2017
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: d2dfe936888633ce3b2418703290ccbcfbd9876b
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.openlocfilehash: 360efebd7277769357cb59f1821609fa1daecdba
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69539046"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428718"
 ---
-# <a name="secure-network-traffic-between-virtual-machines"></a>保护虚拟机之间的网络流量
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>使用 NSG 保护虚拟机之间的网络流量
 
 此脚本创建两个虚拟机，并保护这两个虚拟机的传入流量。 一个虚拟机可在 Internet 上访问，其网络安全组 (NSG) 配置为允许端口 22 和端口 80 上的流量。 第二个虚拟机无法在 Internet 上访问，其 NSG 配置为仅允许来自第一个虚拟机的流量。
 
@@ -104,10 +104,12 @@ az group delete --name myResourceGroup
 | [az network nsg rule update](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-update) | 更新 NSG 规则。 在本例中，将更新后端规则，仅从前端子网传递流量。 |
 | [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
+<!--CORRECT ON [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)-->
+
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 
-<!--Update_Description: update meta properties, update cmdlet  -->
+<!--Update_Description: update meta properties  -->

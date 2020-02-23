@@ -15,12 +15,12 @@ origin.date: 07/24/2018
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b4c65c74e17aa5dd33ba66216565adb0a08659d
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 58b2348d533706488c90a668e306e985c1cbc0a9
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330210"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497401"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -85,7 +85,7 @@ az login
 
 可以使用两个选项对 Batch 帐户进行身份验证：
 
-- **使用 Azure Active Directory (Azure AD) 身份验证。** 
+- **使用 Azure Active Directory (Azure AD) 身份验证** 
 
     将 Azure CLI 与 Batch 配合使用时，通过 Azure AD 进行身份验证是默认设置，建议用于大多数方案。 
     
@@ -99,7 +99,7 @@ az login
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **使用“共享密钥”身份验证。**
+- **使用“共享密钥”身份验证**
 
     [“共享密钥”身份验证](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)通过帐户访问密钥对适用于 Batch 服务的 Azure CLI 命令进行身份验证。
 

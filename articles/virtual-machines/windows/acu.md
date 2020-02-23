@@ -1,26 +1,23 @@
 ---
-title: Azure 计算单元 (ACU) | Azure
+title: Azure 计算单元 (ACU)
 description: 适用于 Windows 的 Azure 计算单元概念的概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
 services: virtual-machines-windows
-documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 12/21/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9a185aaec273359660ee7c0e56552a0c388c639e
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 00f05e200588b518dc226d9beb7638648e9ef4f7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272651"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428834"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 

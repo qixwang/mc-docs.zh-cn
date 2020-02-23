@@ -1,22 +1,21 @@
 ---
-title: 使用 Node.js 将 TPM 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: Azure 快速入门 - 使用 Node.js 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
+title: 使用 Node.js 将 TPM 设备注册到 Azure 设备预配
+description: 快速入门 - 使用 Node.js 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 4b6df64058883ac6832bef902d75afdba0551e71
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4cc037d8db8b7571b5cecba8a7cf3e54f39d97cb
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336425"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494401"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>快速入门：使用 Node.js 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -25,11 +24,11 @@ ms.locfileid: "75336425"
 
 以下步骤演示了如何使用 [Node.js 服务 SDK](https://github.com/Azure/azure-iot-sdk-node) 和示例 Node.js 应用程序，在 Azure IoT 中心设备预配服务中以编程方式为 TPM 设备创建单个注册。 可以通过该单个注册项，选择性地将模拟的 TPM 设备注册到预配服务。 虽然这些步骤在 Windows 和 Linux 计算机上均适用，但在本文中，我们将使用 Windows 开发计算机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 在继续操作之前，请确保完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 -  请确保已在计算机上安装 [Node.js v4.0 或更高版本](https://nodejs.org)。
-- 如需在本快速入门教程末尾注册模拟的设备，请执行[创建和预配模拟的设备](quick-create-simulated-device.md)中的步骤，一直到获取设备的认可密钥那一步。 请记下认可密钥，本快速入门教程后面会用到它。 **请勿执行通过 Azure 门户创建单个注册的步骤。**
+- 如需在本快速入门教程末尾注册模拟设备，请执行[创建和预配模拟设备](quick-create-simulated-device.md)中的步骤，一直到获取设备的认可密钥那一步。 请记下认可密钥，本快速入门教程后面会用到它。 **请勿执行通过 Azure 门户创建单个注册的步骤。**
  
 ## <a name="create-the-individual-enrollment-sample"></a>创建单个注册示例 
 
@@ -101,7 +100,7 @@ ms.locfileid: "75336425"
 为 TPM 设备创建单个注册以后，如果需要注册模拟的设备，则可继续执行[创建和预配模拟的设备](quick-create-simulated-device.md)中的剩余步骤。 请确保跳过该快速入门中通过 Azure 门户创建单个注册的步骤。
 
 ## <a name="clean-up-resources"></a>清理资源
-如果打算学习 Node.js 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算学习 Node.js 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的 Node.js 示例输出窗口。
 1. 如果已创建模拟的 TPM 设备，请关闭 TPM 模拟器窗口。

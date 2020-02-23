@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 11/14/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 2bbd837b5f85fa091e270cf204d98e4684ee00fa
-ms.sourcegitcommit: 9ad55db07ab590d666157d18a81e7b34cf706ec6
+ms.openlocfilehash: 6808651f62f73056cbd9258a5728fc489e10e7e2
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913216"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427990"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 

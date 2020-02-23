@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
-origin.date: 07/31/2018
+origin.date: 02/24/2020
 ms.author: v-yiso
 ms.date: 09/09/2019
-ms.openlocfilehash: 59b8afe9cb91627ada9d9f87f09fd253091cb344
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: cf57ac8672d6f7bed731f0f47f81e0040d10af4f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174091"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428886"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
@@ -79,15 +79,15 @@ ms.locfileid: "70174091"
 * [使用循环重复执行步骤或处理数组和集合中的项](../logic-apps/logic-apps-control-flow-loops.md)
 * [工作流中的授权错误和异常处理](../logic-apps/logic-apps-exception-handling.md)
 * [用例：医疗保健公司如何将逻辑应用异常处理用于 HL7 FHIR 工作流](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/monitor-logic-apps.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>部署和管理逻辑应用
 
 可以使用 Visual Studio、Azure DevOps，或任何其他源代码管理和自动生成工具充分开发和部署逻辑应用。 为了支持资源模板中工作流和从属连接的部署，逻辑应用使用 Azure 资源部署模板。 Visual Studio 工具会自动生成这些模板，可以在源代码管理中签入这些模板以进行版本控制。
 
 * [使用 Visual Studio 创建和部署逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [创建自动部署模板](../logic-apps/logic-apps-create-deploy-template.md)
+* [在现有的逻辑应用上启用监视、日志记录和警报](../logic-apps/monitor-logic-apps.md)
+* [自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>运行中的内容类型转换和变换
 

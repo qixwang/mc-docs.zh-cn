@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
-ms.openlocfilehash: 915d59816e1af5c716e83469b5d2f2574e0e92ca
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 825298c904f99795fca6f2192fa1da65bb734c9b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630929"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428772"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
@@ -34,7 +34,7 @@ ms.locfileid: "75630929"
 - wav 容器中的 ALAW
 - wav 容器中的 MULAW
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 由于许可原因，GStreamer 二进制文件没有编译并与语音 SDK 链接。 因此，应用程序开发人员需要在 18.04、16.04 和 Debian 9 上安装以下项才能使用压缩输入音频。
 
@@ -52,7 +52,7 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var speechConfig = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 
 // Create an audio config specifying the compressed audio format and the instance of your input stream class.
 var audioFormat = AudioStreamFormat.GetCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);

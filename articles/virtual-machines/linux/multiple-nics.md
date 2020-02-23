@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机 | Azure
+title: 如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 description: 了解如何使用 Azure CLI 或 Resource Manager 模板创建附有多个 NIC 的 Linux VM。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/07/2018
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6c047062644946331e053df9bf89f56a19c8b933
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: 69ba626778dbf21839f5c96b7568c59147abf69d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912964"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428581"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -164,7 +164,7 @@ az vm start --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>使用 Resource Manager 模板创建多个 NIC
-Azure 资源管理器模板使用声明性 JSON 文件来定义环境。 可以阅读 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。 Resource Manager 模板可让你在部署期间创建资源的多个实例，例如，创建多个 NIC。 使用 *copy* 指定要创建的实例数：
+Azure Resource Manager 模板使用声明性 JSON 文件来定义环境。 可以阅读 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。 Resource Manager 模板可让你在部署期间创建资源的多个实例，例如，创建多个 NIC。 使用 *copy* 指定要创建的实例数：
 
 ```json
 "copy": {
@@ -254,6 +254,6 @@ ping bing.com -c 4 -I eth1
 ## <a name="next-steps"></a>后续步骤
 尝试创建具有多个 NIC 的 VM 时，请查看 [Lnux VM 大小](sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。
 
-<!--Not Available on [Manage virtual machine access using just in time](../../security-center/security-center-just-in-time.md)-->
+若要进一步保护 VM，请使用适时 VM 访问。 此功能会视需要打开针对 SSH 流量的网络安全组规则，并根据定义的时间段保持打开。 有关详细信息，请参阅[使用恰时功能管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
 
 <!--Update_Description: wording update, update meta properties -->

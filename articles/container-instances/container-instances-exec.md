@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 03/30/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: ac1b9e9c8fd22117d002efc00f9f3814cccd5cd3
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 4df00eddd23f104a17d513fea11b895dcbfc0cd9
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965016"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428742"
 ---
+<!--Verified successfully-->
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>在运行的 Azure 容器实例中执行命令
 
 Azure 容器实例支持在运行的容器中执行命令。 在应用程序开发和故障排除期间，在已启动的容器中运行命令特别有用。 此功能的最常见用途是启动交互式 shell，以便能够在运行的容器中调试问题。
@@ -42,33 +43,9 @@ exit
 Bye.
 ```
 
-在此示例中，命令提示符已在运行的 Nanoserver 容器中启动：
+<!--Not Available on WINDOWS CONTAINER-->
 
-```console
-$ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
-Microsoft Windows [Version 10.0.14393]
-(c) 2016 Microsoft Corporation. All rights reserved.
 
-C:\>dir
- Volume in drive C has no label.
- Volume Serial Number is 76E0-C852
-
- Directory of C:\
-
-03/23/2018  09:13 PM    <DIR>          inetpub
-11/20/2016  11:32 AM             1,894 License.txt
-03/23/2018  09:13 PM    <DIR>          Program Files
-07/16/2016  12:09 PM    <DIR>          Program Files (x86)
-03/13/2018  08:50 PM           171,616 ServiceMonitor.exe
-03/23/2018  09:13 PM    <DIR>          Users
-03/23/2018  09:12 PM    <DIR>          var
-03/23/2018  09:22 PM    <DIR>          Windows
-               2 File(s)        173,510 bytes
-               6 Dir(s)  21,171,609,600 bytes free
-
-C:\>exit
-Bye.
-```
 
 ## <a name="multi-container-groups"></a>多容器组
 

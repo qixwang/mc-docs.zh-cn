@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Windows 虚拟机的大小 | Azure
+title: Azure 中 Windows 虚拟机的大小
 description: 列出 Azure 中 Windows 虚拟机的不同可用大小。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-origin.date: 08/08/2019
-ms.date: 10/14/2019
+origin.date: 11/06/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 32596be08db8cff2034d90d7fb0145ec61a0c734
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 951dd878293fd6788e37596a4fab7634eb8b8213
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272168"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428797"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 
@@ -33,15 +33,16 @@ ms.locfileid: "72272168"
 | [内存优化](sizes-memory.md)         | Esv3、Ev3、M、DSv2、Dv2  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 | [GPU](sizes-gpu.md)            | NCv3           | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。       |
 
-<!-- Not Available DC series -->
-<!-- Not Available [Storage optimized](../virtual-machines-windows-sizes-storage.md)        | Lsv2, Ls  -->
-<!-- Not Available [GPU](sizes-gpu.md)            | NV, NVv2, NC, NCv2, ND, NDv2 (Preview)   -->
-<!-- Not Available [High performance compute](sizes-hpc.md) | H -->
+<!-- Not Available  Dasv4, Dav4, DC series -->
+<!-- Not Available  Easv4, Eav4, Mv2, -->
+<!-- Not Available [Storage optimized](../virtual-machines-windows-sizes-storage.md)        | Lsv2 -->
+<!-- Not Available [GPU](sizes-gpu.md)            | NC, NVv2, ND, NDv2 (Preview), NV, NVv3, NVv4 (Preview)   -->
+<!-- Not Available [High performance compute](sizes-hpc.md) | HB, HC,  H-->
 
 <br /> 
 
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/)。 
-- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
+- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 存储成本根据存储帐户中的已使用页数进行单独计算。 有关详细信息，请参阅 [Azure 存储定价](https://www.azure.cn/pricing/details/storage/)。
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 

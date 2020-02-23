@@ -1,19 +1,19 @@
 ---
-title: 将 Linux 虚拟机从非托管磁盘转换为托管磁盘 | Azure
+title: 将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 description: 如何在资源管理器部署模型中使用 Azure CLI 将 Linux VM 从非托管磁盘转换为托管磁盘
 author: rockboyfor
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 origin.date: 12/15/2017
-ms.date: 09/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 52c9f2661b93d6fde45c66d7c98c62764f71b918
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.openlocfilehash: 35191e3cf2c4dfad70610db12f47739abb205758
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921225"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428739"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 

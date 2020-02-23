@@ -4,15 +4,15 @@ description: 在本快速入门中，请使用 Service Fabric Reliable Services 
 author: rockboyfor
 ms.topic: quickstart
 origin.date: 06/26/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: cdb0652cdcad6cd217a6158c48307e9ac238c733
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: d4c2aa5cf579f31e6c0859f5c01ab9705e5279a5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742478"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540178"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -52,6 +52,8 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 > 在创建群集时运行 Docker 是为了创建启用了容器功能的群集。 如果未运行 Docker，则需要重新创建群集以启用容器功能。
 > 尽管这在此特定快速入门中并非必要，但在创建群集时运行 Docker 是一种最佳做法。
 > 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
+>
+> [为容器设置 Windows 10 或 Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. 以管理员身份打开权限提升的新 PowerShell 窗口。
 2. 运行以下 PowerShell 命令创建开发群集：

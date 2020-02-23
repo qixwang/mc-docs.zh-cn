@@ -1,6 +1,6 @@
 ---
 title: 使用 Media Encoder Standard 自动生成比特率阶梯 - Azure | Microsoft Docs
-description: 本主题介绍如何使用 Media Encoder Standard (MES) 根据输入分辨率和比特率自动生成比特率阶梯。 不会超过输入分辨率和比特率。 例如，如果输入在 3Mbps 时为 720p，则输出最多会保持 720p，并且会以低于 3Mbps 的速率开始。
+description: 本主题介绍如何使用 Media Encoder Standard (MES) 根据输入分辨率和比特率自动生成比特率阶梯。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 03/14/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: e238a9970aa5460e832ced38bdffb886ba206085
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 3b6bb5b77b2990594bf56223c3f0281841f98e3b
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124410"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494455"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Media Encoder Standard 自动生成比特率阶梯  
 

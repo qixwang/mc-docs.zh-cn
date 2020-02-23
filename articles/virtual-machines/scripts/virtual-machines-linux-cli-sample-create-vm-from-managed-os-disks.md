@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 通过将托管磁盘附加为 OS 磁盘创建 VM | Azure
+title: 通过 CLI 使用现有托管 OS 磁盘创建虚拟机
 description: Azure CLI 脚本示例 - 通过将托管磁盘附加为 OS 磁盘创建 VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,15 +14,15 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 05/10/2017
-ms.date: 02/18/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: b405c406c5034edf3bb8dc866fa1f4bfd053e936
-ms.sourcegitcommit: dd6cee8483c02c18fd46417d5d3bcc2cfdaf7db4
+ms.openlocfilehash: c8629893ccd6e5b410b859adafee097bc00c68dd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56666318"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428896"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>通过 CLI 使用现有托管 OS 磁盘创建虚拟机
 
@@ -78,11 +78,11 @@ az group delete --name myResourceGroup
 
 | 命令 | 注释 |
 |---|---|
-| [az disk show](https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-show) | 使用磁盘名称和资源组名称获取托管磁盘属性。 Id 属性用来将托管磁盘附加到新 VM |
-| [az vm create](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-create) | 使用托管 OS 磁盘创建 VM |
+| [az disk show](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-show) | 使用磁盘名称和资源组名称获取托管磁盘属性。 Id 属性用来将托管磁盘附加到新 VM |
+| [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 使用托管 OS 磁盘创建 VM |
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/zh-cn/cli/index?view=azure-cli-latest)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。
 

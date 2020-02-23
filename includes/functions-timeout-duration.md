@@ -5,15 +5,15 @@ services: functions
 author: nzthiago
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 68f876843d8ed7cf32dbe09838f58cafb5ff06b3
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 7e730d914e89a83f418a2943ccab02f00434617f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116831"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494187"
 ---
 ## <a name="timeout"></a>函数应用超时持续时间 
 
@@ -24,6 +24,9 @@ ms.locfileid: "76116831"
 | 消耗 | 1.x | 5 | 10 个 |
 | 消耗 | 2.x | 5 | 10 个 |
 | 消耗 | 3.x | 5 | 10 个 |
+| 高级 | 1.x | 30 | 无限制 |
+| 高级 | 2.x | 30 | 无限制 |
+| 高级 | 3.x | 30 | 无限制 |
 | 应用服务 | 1.x | 无限制 | 无限制 |
 | 应用服务 | 2.x | 30 | 无限制 |
 | 应用服务 | 3.x | 30 | 无限制 |

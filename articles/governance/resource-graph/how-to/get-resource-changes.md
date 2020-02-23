@@ -1,20 +1,17 @@
 ---
 title: 获取资源更改
 description: 了解如何查找资源更改时间、获取已更改属性的列表以及评估差异。
-services: resource-graph
 author: DCtheGeek
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 10/09/2019
-ms.date: 12/16/2019
-ms.topic: conceptual
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: af88c88cd8cf98b1bb74f15a3e10beb53e7ff4d7
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.date: 03/02/2020
+ms.topic: how-to
+ms.openlocfilehash: c59cae2a6bf9ede980773a82df8b847972522ecc
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884999"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494559"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 

@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/24/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: e9e54e4a6e2cba6368e9b798f3ea4fbcafd54543
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: e8d4329b2c24dc0fabd76e71fcbb30361729db05
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965114"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428825"
 ---
+<!--Verified successfully-->
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
 [Azure Monitor][azure-monitoring] 可以洞察容器实例使用的计算资源。 此资源使用情况数据有助于确定容器组的最佳资源设置。 Azure Monitor 还提供用于在容器实例中跟踪网络活动的指标。

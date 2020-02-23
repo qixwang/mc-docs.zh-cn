@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure AD 身份验证通过 .NET 访问Azure 媒体服务 API | Microsoft Docs
-description: 本主题介绍了如何使用 Azure Active Directory (Azure AD) 身份验证访问 Azure 媒体服务 API。
+description: 本主题介绍如何使用 Azure Active Directory (Azure AD) 身份验证通过 .NET 访问 Azure 媒体服务 (AMS) API。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: d51f7e4c196de896ddcabf3be44371a052c1b5b9
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 3393b8d50dbfe7ca627e29f47aa65dae8fafea87
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124521"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540552"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证通过 .NET 访问 Azure 媒体服务 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "71124521"
 
 从 windowsazure.mediaservices 4.0.0.4 开始，Azure 媒体服务支持基于 Azure Active Directory (Azure AD) 的身份验证。 本主题介绍如何使用 Azure AD 身份验证通过 Microsoft .NET 访问 Azure 媒体服务 API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/)。 
 - 一个媒体服务帐户。 有关详细信息，请参阅[通过使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
@@ -48,8 +48,6 @@ ms.locfileid: "71124521"
 要通过 Azure AD 身份验证连接到 Azure 媒体服务 API，客户端应用程序需要请求 Azure AD 访问令牌。 使用媒体服务 .NET 客户端 SDK 时，有关如何获取 Azure AD 访问令牌的诸多详细信息将在 [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) 和 [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) 类中进行包装和简化。 
 
 例如，无需提供 Azure AD 主管机构、媒体服务资源 URI 或本机 Azure AD 应用程序详细信息。 这些是已由 Azure AD 访问令牌提供程序类配置的已知值。 
-
-如果不使用 Azure 媒体服务 .NET SDK，我们建议使用 [Azure AD 身份验证库](../../active-directory/develop/active-directory-authentication-libraries.md)。 要获取用于 Azure AD 身份验证库所需的参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)。
 
 还可以选择将 **AzureAdTokenProvider** 的默认实现方式替换为自己的实现方式。
 

@@ -14,19 +14,19 @@ ms.custom: vs-azure
 ms.topic: article
 origin.date: 06/20/2019
 ms.author: v-yiso
-ms.date: 08/26/2019
-ms.openlocfilehash: a33819184d2961479dec11edcb8acc911517f804
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.date: 02/24/2020
+ms.openlocfilehash: f3606cfc841bc9824177931c0a3faf38ebebbfbd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69538745"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428250"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
 
 可以使用 Azure 中的无服务器工具和功能（例如 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)与 [Azure Functions](../azure-functions/functions-overview.md)）快速开发和部署云应用。 本文介绍如何在 Visual Studio 中开始生成一个使用逻辑应用来调用 Azure 函数的无服务器应用。 若要详细了解 Azure 中的无服务器解决方案，请参阅[将 Azure Serverless 与 Functions 和逻辑应用配合使用](../logic-apps/logic-apps-serverless-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要在 Visual Studio 中生成无服务器应用，需要准备好以下各项：
 
@@ -66,7 +66,7 @@ ms.locfileid: "69538745"
 
 ## <a name="create-a-resource-group-project"></a>创建资源组项目
 
-若要开始，请为无服务器应用创建一个 [Azure 资源组项目](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。 在 Azure 中的资源组内创建资源。资源组是一个逻辑集合，用于将整个应用的资源作为单个资产进行组织、管理和部署。  对于 Azure 中的无服务器应用，你的资源组包含 Azure 逻辑应用和 Azure Functions 的资源。 详细了解 [Azure 资源组和资源](../azure-resource-manager/resource-group-overview.md)。
+若要开始，请为无服务器应用创建一个 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。 在 Azure 中的资源组内创建资源。资源组是一个逻辑集合，用于将整个应用的资源作为单个资产进行组织、管理和部署。  对于 Azure 中的无服务器应用，你的资源组包含 Azure 逻辑应用和 Azure Functions 的资源。 详细了解 [Azure 资源组和资源](../azure-resource-manager/management/overview.md)。
 
 1. 启动 Visual Studio，然后使用 Azure 帐户登录。
 

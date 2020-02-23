@@ -5,19 +5,20 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 12/31/2019
-ms.author: kgremban
+origin.date: 12/31/2019
+ms.date: 03/02/2020
+ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 5bb3b5f80f5cc021d11ce71f12082f4f024d961d
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: 02fff10d2b2b5d3d6e7b8bb0e725518e33de4d13
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966464"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494565"
 ---
 Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edge 设备。 **IoT Edge 模块**是以容器形式实现的可执行程序包。 在本部分中，你将直接从 Azure IoT 中心的 [Azure 市场的 IoT Edge 模块部分](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)部署一个预建的模块。
 
-在本部分中部署的模块模拟一个传感器并发送生成的数据。 开始使用 IoT Edge 时，此模块是非常有用的代码段，因为你可以使用模拟的数据进行开发和测试。 如果要确切了解此模块的功能，则可以查看[模拟的温度传感器源代码](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)。 
+在本部分中部署的模块模拟一个传感器并发送生成的数据。 开始使用 IoT Edge 时，此模块是非常有用的代码段，因为你可以使用模拟的数据进行开发和测试。 如果要确切了解此模块的功能，则可以查看[模拟的温度传感器源代码](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)。
 
 若要从 Azure 市场部署你的第一个模块，请使用以下步骤：
 
@@ -51,11 +52,11 @@ Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edg
 
    在完成时选择“下一步:  查看 + 创建”以继续执行向导的下一步。
 
-5. 在向导的“查看 + 创建”选项卡中，可以预览定义部署到 IoT Edge 设备的所有模块的 JSON 文件  。 请注意，包括 **SimulatedTemperatureSensor** 模块以及名为 **edgeAgent** 和 **edgeHub** 的两个其他系统模块。 查看完毕后，选择“创建”  。
+1. 在向导的“查看 + 创建”选项卡中，可以预览定义部署到 IoT Edge 设备的所有模块的 JSON 文件  。 请注意，包括 **SimulatedTemperatureSensor** 模块以及名为 **edgeAgent** 和 **edgeHub** 的两个其他系统模块。 查看完毕后，选择“创建”  。
 
    在将新部署提交到 IoT Edge 设备时，不会向设备推送任何内容。 相反，设备会定期对 IoT 中心进行查询以获取任何新指令。 如果设备找到了更新的部署清单，则它会使用关于新部署的信息来从云中拉取模块映像，然后开始在本地运行模块。 此过程可能需要几分钟时间。
 
-6. 创建模块部署详细信息后，向导将引导你返回到 IoT 中心的“IoT Edge”页  。 从 IoT Edge 设备列表中选择设备，以查看其详细信息。
+1. 创建模块部署详细信息后，向导将引导你返回到 IoT 中心的“IoT Edge”页  。 从 IoT Edge 设备列表中选择设备，以查看其详细信息。
 
 1. 在设备详细信息页上，向下滚动至“模块”选项卡  。应有三个模块列出：$edgeAgent、$edgeHub 和 SimulatedTemperatureSensor。 如果列出了部署中指定的一个或多个模块，但设备未报告这些模块，则意味着 IoT Edge 设备仍在启动它们。 请稍等片刻，然后选择页面顶部的“刷新”  。
 

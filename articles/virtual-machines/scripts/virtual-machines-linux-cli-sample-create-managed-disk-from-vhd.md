@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘 | Azure
+title: 使用 CLI 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘
 description: Azure CLI 脚本示例 - 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,19 +14,19 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 05/19/2017
-ms.date: 02/18/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 4ec2ab5c7ba9ceb1bd87d4f53c698d006eaa4b9c
-ms.sourcegitcommit: dd6cee8483c02c18fd46417d5d3bcc2cfdaf7db4
+ms.openlocfilehash: c675556b3e3679cea70b6cc8e029cb399c85896b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56666138"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428897"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>使用 CLI 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘
 
-此脚本在相同订阅的存储帐户中从 VHD 文件创建托管磁盘。 使用此脚本将专用（未经过通用化/sysprep 处理）的 VHD 导入到托管 OS 磁盘以创建虚拟机。 或使用它将数据 VHD 导入到托管数据磁盘。 
+此脚本在相同订阅的存储帐户中从 VHD 文件创建托管磁盘。 使用此脚本将专用 VHD（未通用化/未进行 sysprep）导入到托管 OS 磁盘以创建虚拟机。 或使用它将数据 VHD 导入到托管数据磁盘。 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -76,13 +76,13 @@ az disk create --resource-group $resourceGroupName --name $diskName --sku $stora
 
 | 命令 | 注释 |
 |---|---|
-| [az disk create](https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-create) | 在相同订阅的存储帐户中使用 VHD 的 URI 创建托管磁盘 |
+| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 在相同订阅的存储帐户中使用 VHD 的 URI 创建托管磁盘 |
 
 ## <a name="next-steps"></a>后续步骤
 
 [通过将托管磁盘附加为 OS 磁盘来创建虚拟机](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/zh-cn/cli/index?view=azure-cli-latest)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.azure.cn/cli/index?view=azure-cli-latest)。
 
 可以在 [Azure Linux VM 文档](../linux/cli-samples.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机和托管磁盘 CLI 脚本示例。
 

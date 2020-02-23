@@ -1,21 +1,21 @@
 ---
 title: 快速入门 - 通过 C 使用对称密钥将模拟设备预配到 Azure IoT 中心
-description: 在本快速入门中，你将使用 C 设备 SDK 创建一个将对称密钥和 Azure IoT 中心设备预配服务结合使用的模拟设备
+description: 本快速入门将使用 C 设备 SDK 创建一个将对称密钥与 Azure IoT 中心设备预配服务 (DPS) 结合使用的模拟设备
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 11/08/2019
-ms.date: 01/27/2020
+ms.author: v-tawe
+origin.date: 01/14/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e431f8d3361852c0876d1c07ed99b1bfa6a8eb13
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: 4b1549ed99c6e27c075045b45d71e545b9da3f0b
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966507"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494480"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
@@ -41,7 +41,6 @@ ms.locfileid: "76966507"
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
-
 <a id="setupdevbox"></a>
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>准备 Azure IoT C SDK 开发环境
@@ -65,6 +64,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     cd azure-iot-sdk-c
     git submodule update --init
     ```
+
     应该预料到此操作需要几分钟才能完成。
 
 4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
@@ -74,7 +74,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     cd cmake
     ```
 
-4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
+5. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -98,11 +98,9 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>在门户中创建设备注册项
 
-1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 [Azure 门户](https://portal.azure.cn)，选择左侧菜单上的“所有资源”  按钮，然后打开“设备预配”服务。
 
 2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 

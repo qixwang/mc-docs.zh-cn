@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure PowerShell 管理 Azure 磁盘 | Azure
+title: 教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure PowerShel 为虚拟机创建和管理 Azure 磁盘
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 66b10aa3eaeb54ea0609b36526658f31acc2ba8f
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 655c87fcc67169af2ac3a3b403f049c37042bb2a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269951"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428665"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 
@@ -45,7 +45,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 创建 Azure 虚拟机后，将自动向此虚拟机附加两个磁盘。 
 
-**操作系统磁盘** - 操作系统磁盘大小最大可达 4 TB，并可托管 VM 操作系统。  OS 磁盘默认分配有一个 C:  驱动器号。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 OS 磁盘不得  承载应用程序或数据。 对于应用程序和数据，请使用数据磁盘，详情请参见本文稍后部分。
+**操作系统磁盘** - 操作系统磁盘大小最大可达 4 TB，并可托管 VM 操作系统。 如果从 [Azure 市场](https://market.azure.cn/marketplace/)映像创建新的虚拟机 (VM)，通常为 127 GB（但某些映像的 OS 磁盘更小）。 OS 磁盘默认分配有一个 C:  驱动器号。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 OS 磁盘不得  承载应用程序或数据。 对于应用程序和数据，请使用数据磁盘，详情请参见本文稍后部分。
 
 临时磁盘  - 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 [VM 大小](sizes.md)决定。 临时磁盘默认分配有一个 D:  驱动器号。
 

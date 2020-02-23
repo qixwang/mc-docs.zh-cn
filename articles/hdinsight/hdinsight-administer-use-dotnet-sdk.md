@@ -13,14 +13,14 @@ ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 05/14/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: b7067505615e0174985311ba11c33343d0e3738d
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: c8c3c2e3fda12f2e45bc89556e3bc1d46e81b60a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878630"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428734"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -115,11 +115,9 @@ using Microsoft.Rest.Azure.Authentication;
 
 运行此程序时，会看到提示。  若不想看到提示，请参阅[创建非交互式身份验证 .NET HDInsight 应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md)。
 
-## <a name="create-clusters"></a>创建群集
-请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
-<a name="list-clusters"></a>
 ## <a name="list-clusters"></a>列出群集
+
 以下代码片段列出了群集和一些属性：
 
 ```csharp
@@ -133,7 +131,7 @@ foreach (var name in results.Clusters) {
 ```
 
 ## <a name="delete-clusters"></a>删除群集
-使用以下代码段以同步或异步方式删除群集： 
+使用以下代码片段以同步或异步方式删除群集： 
 
 ```csharp
 _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
@@ -144,7 +142,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。
 
 > [!NOTE]
-> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页面。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
+> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页面。  请参阅 [列出并显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
 > 
 > 
 

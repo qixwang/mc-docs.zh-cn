@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/18/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e1de9ff194ec227cd59906fe6bdbfb8a1f052717
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 1501a6ccf3eb173291d8a34f5296c15f3fd362f3
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839039"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497358"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -31,8 +31,9 @@ ms.locfileid: "74839039"
 - 如果为每个保管库配置同一存储帐户，可以跨保管库和订阅查看报表。 所选存储帐户必须位于恢复服务保管库所在的区域。
 - 在 Power BI 中，报表按计划每 24 小时刷新一次。 也可在 Power BI 中按需刷新报表。 在这种情况下，会使用客户存储帐户中的最新数据来呈现报表。
 
-## <a name="prerequisites"></a>先决条件
-- 创建 [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)，以便为报表配置此帐户。 此存储帐户用于存储与报表相关的数据。
+## <a name="prerequisites"></a>必备条件
+
+- 创建 [Azure 存储帐户](../storage/common/storage-account-create.md)，以便为报表配置此帐户。 此存储帐户用于存储与报表相关的数据。
 - [创建 Power BI 帐户](https://powerbi.microsoft.com/landing/signin/)，以便可以使用 Power BI 门户查看、自定义并创建自己的报表。
 - 注册资源提供程序 Microsoft.insights  （如果尚未注册）。 将订阅用于存储帐户和恢复服务保管库，以便报表数据可以流向存储帐户。 要执行此步骤，请转到 Azure 门户，选择“订阅”   > “资源提供程序”  ，并找到此提供程序以进行注册。
 

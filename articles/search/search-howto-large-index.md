@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 22f530e93ff38bdf1ecc5e04b761fcee4a0ff66e
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.date: 03/02/2020
+ms.openlocfilehash: eab5b738e7e62b67b7880496192d342c3f16409f
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123311"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501416"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 

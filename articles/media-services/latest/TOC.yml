@@ -40,6 +40,8 @@
     - name: 媒体服务示例
       displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
+    - name: 媒体服务 v3 REST 示例
+      href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
 - name: 概念
   items:
     - name: 概述
@@ -75,8 +77,8 @@
         - name: 自动生成自适应比特率阶梯
           href: autogen-bitrate-ladder.md
         - name: 内容感知型编码
-          href: cae-experimental.md
-    - name: 媒体分析
+          href: content-aware-encoding.md
+    - name: 分析内容
       items:
         - name: 概述
           href: analyzing-video-audio-files-concept.md
@@ -88,7 +90,7 @@
     - name: 打包和交付
       items:
         - name: 动态打包
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
           href: dynamic-packaging-overview.md
         - name: 动态清单
           href: filters-dynamic-manifest-overview.md
@@ -140,6 +142,12 @@
           href: live-event-states-billing.md
         - name: 延迟
           href: live-event-latency.md
+    - name: 监视
+      items:
+        - name: 指标和诊断日志
+          href: media-services-metrics-diagnostic-logs.md
+        - name: 诊断日志架构
+          href: media-services-diagnostic-logs-schema.md
     - name: 播放器客户端
       items:
         - name: Azure Media Player
@@ -239,6 +247,12 @@
             - name: 使用 REST
               href: subclip-video-rest-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
+    - name: 使用 Azure Monitor
+      items:
+        - name: 监控指标
+          href: media-services-metrics-howto.md
+        - name: 监视诊断日志
+          href: media-services-diagnostic-logs-howto.md
     - name: 保护内容
       items:
         - name: 获取内容密钥策略 - .NET

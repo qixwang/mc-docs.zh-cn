@@ -1,5 +1,5 @@
 ---
-title: Azure 的 vCPU 配额 | Azure
+title: 虚拟机 vCPU 配额
 description: 了解 Azure 的 vCPU 配额。
 keywords: ''
 services: virtual-machines-windows
@@ -13,20 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 05/31/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c5bae03fe3869cd8c32c415272cc50f689c7b07b
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 526464d38731a8b5c51cd0458b03bf1c19fadacd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272533"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428548"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虚拟机 vCPU 配额
 
 虚拟机和虚拟机规模集的 vCPU 配额已根据每个区域中的每个订阅划分成两层。 第一层是区域的 vCPU 总数，第二层是各种 VM 大小系列核心（如 D 系列 vCPU）。 每当部署新 VM 时，VM 的 vCPU 数不能超过 VM 大小系列的 vCPU 配额或区域 vCPU 配额总数。 如果超过了上述任一配额，将不允许部署 VM。 此外，区域中的虚拟机总数也有一个配额。 可以在 [Azure 门户](https://portal.azure.cn)的“订阅”页的“用量 + 配额”部分中查看其中每项配额的详细信息，或者，可以使用 PowerShell 查询这些值。  
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)] 
 
 ## <a name="check-usage"></a>检查使用情况
 
@@ -78,6 +76,6 @@ Premium Storage Managed Disks                1 10000 Count
 
 ## <a name="next-steps"></a>后续步骤
 
-有关计费和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-subscription-service-limits?toc=/billing/TOC.json)。
+有关计费和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits?toc=/billing/TOC.json)。
 
 <!--Update_Description: update meta properties, wording update-->

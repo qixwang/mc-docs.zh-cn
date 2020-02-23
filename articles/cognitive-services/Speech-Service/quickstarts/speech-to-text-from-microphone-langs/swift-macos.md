@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 12/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: ad1d7d4db0ed594007bdec6a5570b6e28748a291
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 8767f5cb6c538f6361e12a4c6ecd62c1530a6afe
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123299"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428855"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -87,8 +87,8 @@ ms.locfileid: "76123299"
         var label: NSTextField!
         var fromMicButton: NSButton!
     
+        var host: String!
         var sub: String!
-        var region: String!
     
         @IBOutlet weak var window: NSWindow!
     
@@ -96,8 +96,8 @@ ms.locfileid: "76123299"
             print("loading")
             // load subscription information
 
+            host = "wss://YourServiceRegion.stt.speech.azure.cn/"
             sub = "YourSubscriptionKey"
-            region = "YourServiceRegion"
     
             label = NSTextField(frame: NSRect(x: 100, y: 50, width: 200, height: 200))
             label.textColor = NSColor.black
@@ -124,7 +124,7 @@ ms.locfileid: "76123299"
         func recognizeFromMic() {
             var speechConfig: SPXSpeechConfiguration?
             do {
-                try speechConfig = SPXSpeechConfiguration(subscription: sub, region: region)
+                try speechConfig = SPXSpeechConfiguration(host: host, subscription: sub)
             } catch {
                 print("error \(error) happened")
                 speechConfig = nil

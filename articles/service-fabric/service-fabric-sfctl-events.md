@@ -3,15 +3,15 @@ title: Azure Service Fabric CLI - sfctl events
 description: 介绍 Service Fabric CLI sfctl events 命令。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ebbeda02a3d818765062af85a7c8faacdf2d7be4
-ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
+ms.openlocfilehash: 858681c06ce8e7f8f2f9f07b7bd945ecf446910a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508764"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540600"
 ---
 # <a name="sfctl-events"></a>sfctl events
 从事件存储中检索事件（如果已安装 EventStore 服务）。

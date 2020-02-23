@@ -11,12 +11,12 @@ ms.topic: overview
 origin.date: 11/05/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8768c456bab7ab11e0f8cb5159e3c7706ec97f1e
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 1e85a3c11f81ad925c4f748bc991e44dd0c547c4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028227"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540868"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -80,7 +80,7 @@ GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方
 
 | 语音服务 | 平台 | 说明 |
 | -------------- | -------- | ----------- |
-| 语音转文本 | [自定义语音](https://chinaeast2.cris.azure.cn/Home/CustomSpeech) | 根据需要和可用数据自定义语音识别模型。 克服语音识别障碍，如说话风格、词汇和背景噪音。 |
+| 语音转文本 | [自定义语音](https://speech.azure.cn/customspeech) | 根据需要和可用数据自定义语音识别模型。 克服语音识别障碍，如说话风格、词汇和背景噪音。 |
 
 ## <a name="reference-docs"></a>参考文档
 

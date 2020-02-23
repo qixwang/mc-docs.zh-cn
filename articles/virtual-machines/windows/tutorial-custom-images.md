@@ -1,27 +1,24 @@
 ---
-title: 教程 - 使用 Azure PowerShell 创建 Azure VM 的自定义映像 | Azure
+title: 教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像
 description: 本教程介绍如何使用 Azure PowerShell 在 Azure 中创建自定义虚拟机映像
-services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/30/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 923a6d2989629f6a11dd56bd81bdff3dde217502
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 734dd8391e44f5503840a0adc7e684c54a4c5197
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116855"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428669"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像
 
@@ -36,17 +33,16 @@ ms.locfileid: "74116855"
 
 <!--Not Available on [Azure VM Image Builder](/virtual-machines/windows/image-builder-overview)-->
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 下列步骤详细说明了如何将现有 VM 转换为可重用自定义映像，用于创建新的 VM 实例。
 
-若要完成本教程中的示例，必须具备现有虚拟机。 如果需要，此[脚本示例](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)可为你创建一个虚拟机。 按照教程进行操作时，请根据需要替换资源组和 VM 名称。
+若要完成本教程中的示例，必须现有一个虚拟机。 如果需要，此[脚本示例](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)可为你创建一个虚拟机。 按照教程进行操作时，请根据需要替换资源组和 VM 名称。
 
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prepare-vm"></a>准备 VM
 
@@ -115,7 +111,7 @@ New-AzImage `
 
 ## <a name="create-vms-from-the-image"></a>从映像创建 VM
 
-在已有映像之后，可以从该映像创建一个或多个新 VM。 从自定义映像创建 VM 与使用市场映像创建 VM 很相似。 如果使用市场映像，需提供有关映像、映像提供程序、产品/服务、SKU 和版本的信息。 使用为 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 设置的简化参数时，如果自定义映像位于同一资源组中，则只需提供该映像的名称。 
+现在，你已有了一个映像，可以从该映像创建一个或多个新 VM。 从自定义映像创建 VM 与使用市场映像创建 VM 很相似。 如果使用市场映像，需提供有关映像、映像提供程序、产品/服务、SKU 和版本的信息。 使用为 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 设置的简化参数时，如果自定义映像位于同一资源组中，则只需提供该映像的名称。 
 
 本示例从“myResourceGroup”  中的“myImage”  映像创建名为“myVMfromImage”  的 VM。
 

@@ -1,5 +1,5 @@
 ---
-title: 尝试通过远程桌面连接到 Azure VM 时发生内部错误 | Azure
+title: 尝试通过远程桌面连接到 Azure VM 时发生内部错误
 description: 了解如何排查 Azure 中的 RDP 内部错误 | Azure
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/22/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: fe0bca5586e6f319f90cecac71cd55d7d4924c43
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 5c83af7d01c3611db533eaf91c633f9fb3124231
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116934"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428724"
 ---
 # <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 

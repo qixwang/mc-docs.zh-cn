@@ -63,6 +63,8 @@
       href: samples-powershell.md
 - name: 概念
   items:
+    - name: 传输层安全 (TLS) (Transport Layer Security) (TLS)
+      href: notification-hubs-tls12.md
     - name: 企业推送体系结构指南
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: 设备注册数

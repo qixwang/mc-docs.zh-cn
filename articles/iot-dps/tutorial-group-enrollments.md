@@ -1,23 +1,23 @@
 ---
-title: 使用 Java 和登记组将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 教程 - 使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与登记组来创建和预配模拟的 X.509 设备
+title: 教程 - 使用 Java 和注册组将模拟的 X.509 设备预配到 Azure IoT 中心
+description: 本教程使用适用于 IoT 中心设备预配服务 (DPS) 的 Java 设备和服务 SDK 与注册组来创建和预配模拟的 X.509 设备
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/04/2018
+origin.date: 11/12/2019
+ms.date: 03/02/2020
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: d8db8cea392d5be0cd10f0ed1e36f21d94e77a2f
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 4eeef1dfad81936c43506531bd87bc0c769c58ba
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389587"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494383"
 ---
-# <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>教程：使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 
 以下步骤说明如何在运行 Windows OS 的开发计算机上模拟 X.509 设备，以及如何使用代码示例通过登记组将模拟设备连接到设备预配服务和 IoT 中心。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "74389587"
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
 
 1. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "74389587"
 1. 使用以下[证书概述](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)创建测试证书。
 
     > [!NOTE]
-    > 此步骤需要 [OpenSSL](https://www.openssl.org/)，可以通过源代码生成并安装此工具，也可以通过[第三方软件](https://wiki.openssl.org/index.php/Binaries)（例如[此软件](https://sourceforge.net/projects/openssl/)）下载并安装此工具。 如果已创建根证书、中间证书和设备证书，则可以跳过此步骤。   
+    > 此步骤需要 [OpenSSL](https://www.openssl.org/)，可以通过源代码生成并安装此工具，也可以通过[第三方](https://wiki.openssl.org/index.php/Binaries)（例如[此处](https://sourceforge.net/projects/openssl/)）下载并安装此工具。 如果已创建根证书、中间证书和设备证书，则可以跳过此步骤。   
     >
 
     1. 运行头两个步骤即可创建根证书和中间证书。  
@@ -91,7 +91,7 @@ ms.locfileid: "74389587"
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    1. 在文本编辑器中打开在中间签名证书文件。 使用中间签名证书的值更新 `PUBLIC_KEY_CERTIFICATE_STRING` 值。
+    1. 在文本编辑器中打开中间签名证书文件。 使用中间签名证书的值更新 `PUBLIC_KEY_CERTIFICATE_STRING` 值。
 
         如果是使用 Bash shell 生成的设备证书，则 ./certs/azure-iot-test-only.intermediate.cert.pem  包含中间证书密钥。 如果是使用 PowerShell 生成的证书，则 ./Intermediate1.pem  会是中间证书文件。
 
@@ -160,7 +160,7 @@ ms.locfileid: "74389587"
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-X509-sample
     ```
 
-1. 编辑 `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`，使之包括前面提到的“ID 范围”和“预配服务全局终结点”。  
+1. 编辑 `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`，使之包括前面记下的“ID 范围”和“预配服务全局终结点”。  
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -175,7 +175,7 @@ ms.locfileid: "74389587"
 
     如果是使用 PowerShell 生成的设备证书，则文件 mydevice* 包含设备的公钥、私钥和 PFX。
 
-    如果是使用 Bash shell 生成的设备证书，则 ./certs/new-device.cert.pem 包含公钥。 设备的私钥处于 ./private/new-device.key.pem 文件中。
+    如果是使用 Bash shell 生成的设备证书，则 ./certs/new-device.cert.pem 包含公钥。 设备的私钥位于 ./private/new-device.key.pem 文件中。
 
     打开公钥文件并使用该值更新 `leafPublicPem` 变量。 复制从 -----BEGIN PRIVATE KEY-----  到 -----END PRIVATE KEY-----  的文本。
 
@@ -201,7 +201,7 @@ ms.locfileid: "74389587"
         "-----END RSA PRIVATE KEY-----\n";
     ```
 
-1. 就在 `leafPrivateKey` 下方为中间证书添加新变量。 此新变量命名为 `intermediateKey`。 向它提供中间签名证书的值。
+1. 就在 `leafPrivateKey` 下方为中间证书添加新变量。 将此新变量命名为 `intermediateKey`。 向它提供中间签名证书的值。
 
     如果是使用 Bash shell 生成的设备证书，则 ./certs/azure-iot-test-only.intermediate.cert.pem  包含中间证书密钥。 如果是使用 PowerShell 生成的证书，则 ./Intermediate1.pem  会是中间证书文件。
 

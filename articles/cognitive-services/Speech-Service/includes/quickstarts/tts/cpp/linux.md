@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1ccc247362ab885e74232329965151b24a192be7
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 6850d021b5ebf7f1fa94d845d90ad28a0c67201f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123490"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430179"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -40,9 +40,9 @@ ms.locfileid: "76123490"
     
     void synthesizeSpeech()
     {
-        // Creates an instance of a speech config with specified subscription key and service region.
+        // Creates an instance of a speech config with specified host and subscription key.
         // Replace with your own subscription key and service region (e.g., "chinaeast2").
-        auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        auto config = SpeechConfig::FromHost("https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey");
     
         // Creates a speech synthesizer using the default speaker as audio output. The default spoken language is "en-us".
         auto synthesizer = SpeechSynthesizer::FromConfig(config);

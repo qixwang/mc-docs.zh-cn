@@ -4,20 +4,20 @@ description: 本文介绍了如何将 Azure API 管理用作 Service Fabric 应�
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/22/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1cd02c2f6f76de9060071e30ed3bfe2bb3b315c8
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: e3047202460cb4349b8d9e27c82cdba9e48fd992
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741894"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540507"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
 
 云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 在 Service Fabric 中，网关可以是任意无状态服务（如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（如[事件中心](/event-hubs/)、[IoT 中心](/iot-hub/)或 [Azure API 管理](/api-management/)）。
 
-本文介绍了如何将 Azure API 管理用作 Service Fabric 应用程序的网关。 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。 
+本文介绍了如何将 Azure API 管理用作 Service Fabric 应用程序的网关。 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。
 
 ## <a name="availability"></a>可用性
 
@@ -48,7 +48,8 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 最简单的情况是将流量转发到无状态服务实例。 为此，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于将请求映射到 Service Fabric 后端中的特定无状态服务实例。 发送到该服务的请求将发送到该服务的随机实例。
 
-#### <a name="example"></a>示例
+**示例**
+
 在以下方案中，Service Fabric 应用程序包含名为“`fabric:/app/fooservice`”的无状态服务，用于公开内部 HTTP API。 服务实例名称已知，并可直接在 API 管理入站处理策略中进行硬编码。 
 
 ![有关 Service Fabric 与 Azure API 管理的概述 - 拓扑][sf-apim-static-stateless]
@@ -57,7 +58,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 与无状态服务方案类似，流量可以转发到有状态服务实例。 在此示例中，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于将请求映射到特定有状态服务实例  的特定分区。 每个请求映射到的分区是通过 lambda 方法并根据传入 HTTP 请求中的一些输入（如 URL 路径中的值）计算得出。 可以将策略配置为仅将请求发送到主要副本，也可以配置为发送到读取操作的随机副本。
 
-#### <a name="example"></a>示例
+**示例**
 
 在以下方案中，Service Fabric 应用程序包含名为 `fabric:/app/userservice` 的已分区有状态服务，用于公开内部 HTTP API。 服务实例名称已知，并可直接在 API 管理入站处理策略中进行硬编码。  
 
@@ -67,11 +68,11 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 ## <a name="send-traffic-to-multiple-stateless-services"></a>将流量发送到多个无状态服务
 
-在更高级方案中，可以定义 API 管理操作，将请求映射到多个服务实例。 在此方案中，每个操作均包含一个策略，用于根据传入 HTTP 请求中的值（如 URL 路径或查询字符串），将请求映射到特定服务实例（如果是有状态服务，则将请求映射到服务实例中的分区）。 
+在更高级方案中，可以定义 API 管理操作，将请求映射到多个服务实例。 在此方案中，每个操作均包含一个策略，用于根据传入 HTTP 请求中的值（如 URL 路径或查询字符串），将请求映射到特定服务实例（如果是有状态服务，则将请求映射到服务实例中的分区）。
 
 为此，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于根据从传入 HTTP 请求中检索到的值，将请求映射到 Service Fabric 后端中的无状态服务实例。 对服务的请求将发送到该服务的随机实例。
 
-#### <a name="example"></a>示例
+**示例**
 
 在此示例中，使用以下公式为应用的每个用户新建一个无状态服务实例，名称动态生成：
 
@@ -90,7 +91,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 为此，API 管理操作包含使用 Service Fabric 后端的入站处理策略，用于根据从传入 HTTP 请求中检索到的值，将请求映射到 Service Fabric 后端中的有状态服务实例。 除了可以映射到特定服务实例外，还可以将请求映射到服务实例中的特定分区，并视需要映射到分区内的主要副本或随机次要副本。
 
-#### <a name="example"></a>示例
+**示例**
 
 在此示例中，使用以下公式为应用的每个用户新建一个有状态服务实例，名称动态生成：
 

@@ -1,6 +1,5 @@
 ---
 title: Apache Hadoop 组件和版本 - Azure HDInsight
-description: 了解 HDInsight 中的 Apache Hadoop 组件和版本，以及 Hortonworks 数据平台的此云分发版中可用的服务级别。
 keywords: hadoop 版本,hadoop 生态系统组件,hadoop 组件,如何检查 hadoop 版本
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,15 +9,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
-origin.date: 11/21/2019
-ms.date: 01/13/2020
+origin.date: 02/02/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 99a80320482798b221a74d4a8c1e241f328bed81
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 0fc734378b8a3ecbfa2ace10f9d62d2f91bbf4f3
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630803"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563370"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -41,7 +40,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 | Apache Hive            | 3.1.0         | 2.1.0、1.2.1                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache HBase           | 2.0.2         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
@@ -60,7 +59,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>检查当前的 Hadoop 组件版本信息
 
-与 HDInsight 群集版本关联的组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档][ambari-docs]。
+与 HDInsight 群集版本关联的 Hadoop 生态系统组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档][ambari-docs]。
 
 ### <a name="release-notes"></a>发行说明
 
@@ -110,6 +109,8 @@ Spark 2.1、2.2 和 Kafka 1.0 支持将于 2020 年 6月 30 日到期。
 
 - Hadoop（仅限 HDInsight 3.6）
 - Spark
+- Kafka
+- HBase
 - 交互式查询
 
 ### <a name="support-for-azure-data-lake-storage"></a>支持 Azure Data Lake Storage
@@ -130,10 +131,6 @@ Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和�
 
 _停用日期_是指在此后不能在 HDInsight 上创建此群集版本的日期。 从 2017 年 7 月 31 日开始，无法在停用日期后调整 HDInsight 群集的大小。 
 
-> [!NOTE]
-> HDInsight Windows 群集（包括版本 2.1、3.0、3.1, 3.2 和 3.3）在 Azure 来宾 OS 系列版本 4 上运行，该版本使用 64 位版本的 Windows Server 2012 R2。 Azure 来宾 OS 系列版本 4 支持 .NET Framework 版本 4.0、4.5、4.5.1 和 4.5.2。
->
->
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>与 HDInsight 版本相关的 Hortonworks 发行说明
 

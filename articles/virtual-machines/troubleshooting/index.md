@@ -6,18 +6,17 @@ services: virtual-machines
 author: rockboyfor
 manager: digimobile
 ms.assetid: ''
-ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.topic: landing-page
 origin.date: 10/03/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 065f4d14beedec44d5b6ce9b7e5c9c9f3ea17c04
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 960ec4b36dfd2e674a899e5f2849db7b56be8821
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116948"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427945"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>排查 Azure 虚拟问题
 
@@ -48,7 +47,7 @@ ms.locfileid: "74116948"
 
 **VM 启动错误**
 
-* [BitLocker 启动错误](troubleshoot-bitlocker-boot-error.md) 
+* [BitLocker 启动错误](troubleshoot-bitlocker-boot-error.md)
 * [Windows 在启动过程中显示“正在检查文件系统”](troubleshoot-check-disk-boot-error.md)
 * [蓝屏错误](troubleshoot-common-blue-screen-error.md)
 * [VM 启动时停滞，显示消息“正在准备 Windows](troubleshoot-vm-boot-configure-update.md)

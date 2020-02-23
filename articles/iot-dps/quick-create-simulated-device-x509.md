@@ -1,21 +1,20 @@
 ---
 title: 使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心
-description: 本快速入门使用单独注册。 在本快速入门中，我们将使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 X.509 设备。
+description: 本快速入门使用单独注册。 本快速入门使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C 设备 SDK 创建和预配模拟的 X.509 设备。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 46f83c78719d9325262c78f947126ade81fa702d
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 9e28e5943b693449c76ea53f604c1757ec4f7152
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859628"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494086"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 
@@ -23,22 +22,22 @@ ms.locfileid: "75859628"
 
 本快速入门介绍如何在 Windows 开发计算机上创建和运行 X.509 设备模拟器。 你将使用设备预配服务实例的注册，将此模拟设备配置为分配到 IoT 中心。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的示例代码来模拟设备的启动序列。 将根据预配服务的注册来识别该设备，然后将其分配到 IoT 中心。
 
-如果不熟悉自动预配过程，请查看[自动预配的概念](concepts-auto-provisioning.md)。 另外，在继续学习本快速入门之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+如果不熟悉自动预配过程，请查看[自动预配的概念](concepts-auto-provisioning.md)。 另外，在继续学习本快速入门之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
-- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+* [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+* [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
 本文将演示单个注册。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="prerequisites"></a>必备条件
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -74,8 +73,8 @@ Azure IoT 设备预配服务支持两类注册：
     ```cmd
     cmake -Duse_prov_client:BOOL=ON ..
     ```
-    
-    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。 
+
+    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。
 
     生成成功后，最后的几个输出行如下所示：
 
@@ -92,10 +91,6 @@ Azure IoT 设备预配服务支持两类注册：
     -- Build files have been written to: C:/code/azure-iot-sdk-c/cmake
     ```
 
-
-
-<a id="portalenroll"></a>
-
 ## <a name="create-a-self-signed-x509-device-certificate"></a>创建自签名的 X.509 设备证书
 
 本部分将使用自签名的 X.509 证书，请务必记住以下几点：
@@ -109,14 +104,13 @@ Azure IoT 设备预配服务支持两类注册：
 
 2. 在 Visual Studio 菜单中，选择“生成” > “生成解决方案”以生成解决方案中的所有项目。  
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Tools** 文件夹。  右键单击“dice\_device\_enrollment”项目，然后选择“设置为启动项目”。   
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Tools** 文件夹。  右键单击“dice\_device\_enrollment”项目，然后选择“设置为启动项目”。  
 
-4. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在输出窗口中，当系统提示时输入 **i** 完成单个注册。 
+4. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在输出窗口中，当系统提示时输入 **i** 完成单个注册。
 
     输出窗口会显示在本地为模拟设备生成的自签名 X.509 证书。 将输出复制到剪贴板，从 **-----BEGIN CERTIFICATE-----** 开始，到第一个 **-----END CERTIFICATE-----** 结束，确保将这两行也包括进去。 只需要输出窗口中的第一个证书。
- 
-5. 使用文本编辑器将证书保存到名为 **_X509testcert.pem_** 的新文件中。 
 
+5. 使用文本编辑器将证书保存到名为 **_X509testcert.pem_** 的新文件中。
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>在门户中创建设备注册项
 
@@ -126,9 +120,9 @@ Azure IoT 设备预配服务支持两类注册：
 
 3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
-    - **机制：** 选择“X.509”  作为标识证明机制  。
-    - **主要证书 .pem 或 .cer 文件：** 选择“选择文件”，以选择前面创建的证书文件 X509testcert.pem  。
-    - **IoT 中心设备 ID：** 输入 test-docs-cert-device 作为设备的 ID  。
+    * **机制：** 选择“X.509”  作为标识证明机制  。
+    * **主要证书 .pem 或 .cer 文件：** 选择“选择文件”，以选择前面创建的证书文件 X509testcert.pem  。
+    * **IoT 中心设备 ID：** 输入 test-docs-cert-device 作为设备的 ID  。
 
       [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
@@ -137,8 +131,6 @@ Azure IoT 设备预配服务支持两类注册：
 ## <a name="simulate-first-boot-sequence-for-the-device"></a>模拟设备的首次启动顺序
 
 在本部分更新向设备预配服务实例发送设备启动序列的示例代码。 此启动序列使得设备可被识别并分配到与设备预配服务实例链接的 IoT 中心。
-
-
 
 1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值   。
 
@@ -160,7 +152,7 @@ Azure IoT 设备预配服务支持两类注册：
     hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-5. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
+5. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。 
 
 6. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
 
@@ -175,14 +167,13 @@ Azure IoT 设备预配服务支持两类注册：
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
 
-    Registration Information received from service: 
-    test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
+    Registration Information received from service:
+    test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device
     ```
 
 7. 在门户中导航到已链接到预配服务的 IoT 中心，然后选择“IoT 设备”选项卡  。将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”    。 你可能需要按顶部的“刷新”按钮  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

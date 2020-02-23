@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 10/28/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 41819afe58269de39924d317d5e9472e55f92680
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: f588ab334f7d1a8a7d0e5681aa230e334d5cc9e7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028229"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430171"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -66,7 +66,7 @@ namespace helloworld
 在初始化 `SpeechSynthesizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `SynthesisToAudioFileAsync()` 方法。
 
 ````C#
-var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
 ````
 
 ## <a name="create-an-audio-configuration"></a>创建音频配置
@@ -144,8 +144,7 @@ namespace helloworld
     {
         public static async Task SynthesisToAudioFileAsync()
         {
-            var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
+            var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
             var fileName = "helloworld.wav";
             using (var fileOutput = AudioConfig.FromWavFileOutput(fileName))
             {

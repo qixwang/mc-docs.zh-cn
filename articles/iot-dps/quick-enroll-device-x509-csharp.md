@@ -1,22 +1,21 @@
 ---
 title: 使用 C# 将 X.509 设备注册到 Azure 设备预配服务
-description: 本快速入门使用组注册。 本快速入门介绍如何使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
+description: 本快速入门使用组注册。 本快速入门使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 845bb2d951a43970448e6e0765153aadf784598f
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 26b1383e449bed059efb741b04a998625b684c15
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859596"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494397"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入门：使用 C# 将 X.509 设备注册到设备预配服务
 
@@ -30,18 +29,15 @@ ms.locfileid: "75859596"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="prerequisites"></a>必备条件
 
 * 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/)。
 * 安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
 * 安装 [Git](https://git-scm.com/download/)。
 
-
-
 ## <a name="prepare-test-certificates"></a>准备测试证书
 
-对于本快速入门，必须具有一个包含中间或根 CA X.509 证书的公共部分的 .pem 或.cer 文件。 此证书必须上传到预配服务，并由该服务进行验证。 
+对于本快速入门，必须具有一个包含中间或根 CA X.509 证书的公共部分的 .pem 或.cer 文件。 此证书必须上传到预配服务，并由该服务进行验证。
 
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的测试工具可以帮助你创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。
 
@@ -64,14 +60,13 @@ ms.locfileid: "75859596"
     git submodule update --init
     ```
 
-   应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
-   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。    
+   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。
 
-2. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
+3. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。
 
 除了使用 C SDK 中的工具之外，*用于 .NET 的 Microsoft Azure IoT SDK* 中的[组证书验证示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)演示了如何使用现有的 X.509 中间或根 CA 证书采用 C# 执行所有权证明操作。
-
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>获取适用于预配服务的连接字符串
 
@@ -85,7 +80,7 @@ ms.locfileid: "75859596"
 
 ## <a name="create-the-enrollment-group-sample"></a>创建注册组示例 
 
-本部分介绍如何创建一个 .NET Core 控制台应用，用于将注册组添加到预配服务。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 控制台应用，以便添加注册组。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core developer documentation](https://docs.microsoft.com/windows/iot-core/)（Windows IoT Core 开发人员文档）。
+本部分介绍如何创建一个 .NET Core 控制台应用，用于将注册组添加到预配服务。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/windows/iot) 控制台应用，以便添加注册组。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core developer documentation](https://docs.microsoft.com/windows/iot-core/)（Windows IoT Core 开发人员文档）。
 
 1. 打开 Visual Studio 并选择“创建新项目”  。 在“创建新项目”中，为 C# 项目模板选择“控制台应用(.NET Core)”，然后选择“下一步”。   
 
@@ -102,7 +97,7 @@ ms.locfileid: "75859596"
    此步骤会下载、安装 [Azure IoT 预配服务客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
 
 1. 在 `Program.cs` 顶部的其他 `using` 语句之后添加以下 `using` 语句：
-   
+
    ```csharp
    using System.Security.Cryptography.X509Certificates;
    using System.Threading.Tasks;
@@ -196,7 +191,8 @@ ms.locfileid: "75859596"
 1. 在 Azure 门户上的设备预配服务中选择“证书”，选择为本快速入门上传的证书，然后按“证书详细信息”顶部的“删除”    。  
 
 ## <a name="next-steps"></a>后续步骤
-本快速入门介绍了如何使用 Azure IoT 中心设备预配服务为 X.509 中间或根 CA 证书创建注册组。 若要深入了解设备预配，请继续学习本教程有关如何在 Azure 门户中进行设备预配服务设置的内容。 
- 
+
+在本快速入门中，你已使用 Azure IoT 中心设备预配服务为 X.509 中间或根 CA 证书创建了一个注册组。 若要深入了解设备预配，请继续学习本教程有关如何在 Azure 门户中进行设备预配服务设置的内容。
+
 > [!div class="nextstepaction"]
 > [Azure IoT 中心设备预配服务教程](./tutorial-set-up-cloud.md)

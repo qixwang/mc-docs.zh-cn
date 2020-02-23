@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 06/08/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3c27bde03716b338a2901729cc4d76387c951ff4
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: cb90ede1ba3e43004de4ea6d0d64e966aabe7f47
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965025"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428931"
 ---
+<!--Verified successfully-->
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 
 容器化应用程序可能会运行较长时间，从而导致进入可能需要通过重启容器来修复的损坏状态。 Azure 容器实例支持运行情况探测，以便你可以将容器组中的容器配置为在关键功能未正常工作时重启。 该运行情况探测的行为类似于 [Kubernetes 运行情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)。

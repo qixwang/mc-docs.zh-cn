@@ -1,5 +1,5 @@
 ---
-title: 在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 | Azure
+title: 在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 description: 如何为 Azure 中运行 Windows Server 或 Windows 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
 services: virtual-machines-windows
 author: rockboyfor
@@ -12,15 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 09/24/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b21774535ff9f76736cdfb6d0801e7206110c80
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 36b02cc8affa813b2d60fcecbdeada049ed0f1e6
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831384"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428323"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 
 

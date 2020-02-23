@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 01/10/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 90e1962533270e8d2f7aefb78b09fe14376ffe1c
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 1fc9e01f200eeaba8179591937c1398e7686ed5b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965057"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428608"
 ---
+<!--Verified successfully-->
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
 在云中运行 Azure 容器实例 (ACI) 资源时，ACI 服务将收集并保存与容器相关的数据。 将此数据保存在云中时，ACI 会自动对其进行加密。 这种加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 ACI 还提供相应的选项让你使用自己的密钥来加密数据，使你可以更好地控制与 ACI 部署相关的数据。

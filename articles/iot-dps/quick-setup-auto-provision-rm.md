@@ -2,20 +2,19 @@
 title: 使用 Azure 资源管理器模板设置 Azure IoT 中心设备预配
 description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 64bbd9714be109a344dcb2bb67994e93a3dcd5ea
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 24ed32d9c7a153447bebfb4003f9ec769cd02697
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859706"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494384"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
@@ -25,7 +24,7 @@ ms.locfileid: "75859706"
 ## <a name="prerequisites"></a>必备条件
 
 - 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
-- 本快速入门要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+- 本快速入门要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>登录到 Azure 并创建资源组
@@ -302,7 +301,7 @@ ms.locfileid: "75859706"
 
 请使用以下 Azure CLI 命令来部署模板和验证部署。
 
-1. 若要部署模板，请导航到包含模板和参数文件的文件夹，然后运行以下[部署命令](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
+1. 若要部署模板，请导航到包含模板和参数文件的文件夹，然后运行以下[部署命令](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -313,7 +312,7 @@ ms.locfileid: "75859706"
    ![预配输出](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. 若要验证部署，请运行下述[用于列出资源的命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list)，然后在输出中查找新预配服务和 IoT 中心：
+2. 若要验证部署，请运行下述[用于列出资源的命令](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-list)，然后在输出中查找新预配服务和 IoT 中心：
 
     ```azurecli
      az resource list -g {your resource group name}
@@ -353,13 +352,13 @@ az group delete --name {your resource group name}
 
 <!-- Links -->
 [lnk-free-trial]: https://www.azure.cn/pricing/1rmb-trial
-[lnk-CLI-install]: https://docs.microsoft.com/cli/azure/install-az-cli2
-[lnk-login-command]: https://docs.microsoft.com/cli/azure/get-started-with-az-cli2
-[lnk-az-account-command]: https://docs.microsoft.com/cli/azure/account
-[lnk-az-register-command]: https://docs.microsoft.com/cli/azure/provider
-[lnk-az-addcomponent-command]: https://docs.microsoft.com/cli/azure/component
-[lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
-[lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
-[lnk-iot-pricing]: www.azure.cn/pricing/details/iot-hub/
+[lnk-CLI-install]: https://docs.azure.cn/cli/install-az-cli2
+[lnk-login-command]: https://docs.azure.cn/cli/get-started-with-az-cli2
+[lnk-az-account-command]: https://docs.azure.cn/cli/account
+[lnk-az-register-command]: https://docs.azure.cn/cli/provider
+[lnk-az-addcomponent-command]: https://docs.azure.cn/cli/component
+[lnk-az-resource-command]: https://docs.azure.cn/cli/resource
+[lnk-az-iot-command]: https://docs.azure.cn/cli/iot
+[lnk-iot-pricing]: https://www.azure.cn/pricing/details/iot-hub/
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-portal]: iot-hub-create-through-portal.md 

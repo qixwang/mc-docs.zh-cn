@@ -11,12 +11,12 @@ ms.topic: include
 origin.date: 12/09/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
-ms.openlocfilehash: a5a155586a15eca8b3049c2f73a6d5b23fc509b1
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 79ce53a56bb7bb7e293f7f6160d763daa73479b3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123528"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430046"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -124,8 +124,6 @@ ms.locfileid: "76123528"
     
         // Replace below with your own subscription key
         private static String speechSubscriptionKey = "YourSubscriptionKey";
-        // Replace below with your own service region (e.g., "chinaeast2").
-        private static String serviceRegion = "YourServiceRegion";
     
         private SpeechConfig speechConfig;
         private SpeechSynthesizer synthesizer;
@@ -140,7 +138,8 @@ ms.locfileid: "76123528"
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{INTERNET}, requestCode);
     
             // Initialize speech synthesizer and its dependencies
-            speechConfig = SpeechConfig.fromSubscription(speechSubscriptionKey, serviceRegion);
+            // Replace below with your own service region (e.g., "chinaeast2").
+            speechConfig = SpeechConfig.fromHost(new URI("https://YourServiceRegion.tts.speech.azure.cn/"), speechSubscriptionKey);
             assert(speechConfig != null);
     
             synthesizer = new SpeechSynthesizer(speechConfig);

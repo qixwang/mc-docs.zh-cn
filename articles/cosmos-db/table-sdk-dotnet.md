@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 origin.date: 08/17/2018
 ms.date: 02/10/2020
-ms.openlocfilehash: 6a661054b760287d2612d89b251818bc556270b4
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 86cd9d35686eb0e8dc50f2681401fa19cbc20295
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068359"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540082"
 ---
 <!--Verify sucessfully-->
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
@@ -35,7 +35,7 @@ ms.locfileid: "77068359"
 
 > [!IMPORTANT]
 > .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) 目前处于维护模式，不久将被弃用。 请升级到新的 .NET Standard 库 [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 来继续获取表 API 支持的最新功能。
-
+>
 > 如果已在预览期间创建表 API 帐户，请[新建表 API 帐户](create-table-dotnet.md#create-a-database-account)，这样才能使用正式版表 API SDK。
 >
 

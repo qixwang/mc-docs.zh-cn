@@ -2,20 +2,20 @@
 title: 快速入门：使用 REST API 在 Python 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 介绍如何使用 Python、Jupyter Notebook 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
-author: heidisteen
+author: tchristiani
 manager: nitinme
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 4a07ddc3b7f7928697479ded2a361f0f39e93bfb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 703a11f314379fb351bd703c30c2c4aaf2b3a28a
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334979"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501422"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -31,7 +31,7 @@ ms.locfileid: "75334979"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要以下服务和工具。 
 
@@ -93,7 +93,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 
-除非使用门户，服务中必须预先存在一个索引才能加载数据。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 向服务推送索引架构。
+除非使用门户，否则在加载数据之前，服务中必须存在一个索引。 此步骤使用[创建索引 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) 向服务推送索引架构。
 
 索引的所需元素包括名称、字段集合和键。 字段集合定义文档的结构。  每个字段具有一个确定其用法的名称、类型和属性（例如，该字段在搜索结果是否可全文搜索、可筛选或可检索）。 在索引中，必须将一个 `Edm.String` 类型的字段指定为文档标识的键。 
 
@@ -149,7 +149,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 文档源自 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
+若要推送文档，请向索引的 URL 终结点发出 HTTP POST 请求。 REST API 为[添加、更新或删除文档](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 文档源自于 GitHub 上的 [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON)。
 
 1. 在新单元格中，提供符合索引架构的四个文档。 指定每个文档的上传操作。
 

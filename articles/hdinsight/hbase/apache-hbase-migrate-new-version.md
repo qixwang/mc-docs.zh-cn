@@ -12,29 +12,28 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-origin.date: 12/05/2019
+origin.date: 01/02/2020
 ms.author: ashishth
-ms.date: 01/13/2020
-ms.openlocfilehash: f08ab226d0bd20058eeca01cb56371ebc0d7b345
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 03/02/2020
+ms.openlocfilehash: 158b79f01b93e859880f4b5abc62c04d67008759
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631107"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563389"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
 本文介绍如何通过必要步骤将 Azure HDInsight 上的 Apache HBase 群集更新为新版本。
 
-> [!NOTE]
-> 升级造成的停机时间应该很短，以分钟计。 停机是执行刷新所有内存中数据的步骤，然后在新群集上配置和重启服务造成的。 根据节点数目、数据量和其他变数，结果会有所不同。
+升级造成的停机时间应该很短，以分钟计。 停机是执行刷新所有内存中数据的步骤，然后在新群集上配置和重启服务造成的。 根据节点数目、数据量和其他变数，结果会有所不同。
 
 ## <a name="review-apache-hbase-compatibility"></a>检查 Apache HBase 兼容性
 
 在升级 Apache HBase 之前，请确保源群集和目标群集上的 HBase 版本兼容。 有关详细信息，请参阅 [HDInsight 提供的 Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)。
 
-> [!NOTE]
-> 我们强烈建议查看 [HBase 书册](https://hbase.apache.org/book.html#upgrading)中的版本兼容性矩阵。
+> [!NOTE]  
+> 我们强烈建议查看 [HBase 书册](https://hbase.apache.org/book.html#upgrading)中的版本兼容性矩阵。 HBase 版本发行说明中应会阐述任何重大的不兼容性。
 
 下面是一个示例性的版本兼容性对照表。 Y 表示兼容，N 表示可能不兼容：
 
@@ -51,9 +50,6 @@ ms.locfileid: "75631107"
 | 不稳定 | N | N | N |
 | 依赖项兼容性 | N | Y | Y |
 | 操作兼容性 | N | N | Y |
-
-> [!NOTE]
-> HBase 版本发行说明中应会阐述任何重大的不兼容性。
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>使用相同的 Apache HBase 主版本升级
 

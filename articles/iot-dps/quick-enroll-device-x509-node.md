@@ -1,22 +1,21 @@
 ---
 title: 使用 Node.js 将 X.509 设备注册到 Azure 设备预配服务
-description: 本快速入门使用组注册。 在本快速入门中，将使用 Node.js 服务 SDK 将 X.509 设备注册到 Azure IoT 中心设备预配服务
+description: 本快速入门使用组注册。 本快速入门将使用 Node.js 服务 SDK 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6a65ce33a47aed48dbf8565fff39c9c989aa9ffa
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 7c1a6245469ed7a1ba7d63cbe6393dda7ab3b1f1
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859594"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494389"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>快速入门：使用 Node.js 将 X.509 设备注册到设备预配服务
 
@@ -43,7 +42,7 @@ ms.locfileid: "75859594"
 
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的测试工具可以帮助你创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。 根据设计，使用 SDK 工具创建的证书只能用于**开发测试**。 这些证书**不得在生产环境中使用**。 它们包含硬编码的密码（“1234”），在 30 天后过期。 若要了解如何获取适用于生产用途的证书，请参阅 Azure IoT 中心文档中的[如何获取 X.509 CA 证书](/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
 
-若要使用此测试工具来生成证书，请执行以下步骤： 
+若要使用此测试工具来生成证书，请执行以下步骤：
  
 1. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的标记名称。
 
@@ -55,11 +54,11 @@ ms.locfileid: "75859594"
     git submodule update --init
     ```
 
-   应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
-   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。    
+   测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。
 
-2. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
+3. 根据[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。 
 
 
 
@@ -149,7 +148,10 @@ ms.locfileid: "75859594"
 3. 在 Azure 门户的设备预配服务中选择“证书”，然后选择为本快速入门上传的证书，再按“证书详细信息”窗口顶部的“删除”按钮。     
  
 ## <a name="next-steps"></a>后续步骤
+
 本快速入门介绍了如何使用 Azure IoT 中心设备预配服务为 X.509 中间或根 CA 证书创建组注册。 若要深入了解设备预配，请继续学习本教程有关如何在 Azure 门户中进行设备预配服务设置的内容。 
+
+另请参阅 [Node.js 设备预配示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples)。
  
 > [!div class="nextstepaction"]
 > [Azure IoT 中心设备预配服务教程](./tutorial-set-up-cloud.md)

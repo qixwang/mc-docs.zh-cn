@@ -1,6 +1,6 @@
 ---
 title: 使用 .REST 配置 Azure 媒体服务遥测 | Microsoft Docs
-description: 本文介绍如何通过 REST API 使用 Azure 媒体服务遥测。
+description: 本文介绍如何通过 REST API 使用 Azure 媒体服务遥测...
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: e65e5a9ff55ae677950aeb137ffa3243afeba4fd
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: ef910e1af7dfdefef9f156c783d5a2db1ff49bbe
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124671"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494211"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 配置 Azure 媒体服务遥测
 
@@ -50,7 +50,7 @@ ms.locfileid: "71124671"
 ### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.chinacloudapp.cn/api/StorageAccounts HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -78,7 +78,7 @@ ms.locfileid: "71124671"
 ### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.chinacloudapp.cn/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -111,7 +111,7 @@ ms.locfileid: "71124671"
 ### <a name="request"></a>请求
 
     POST https://wamsbnp1clus001rest-hs.chinacloudapp.cn/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -153,7 +153,7 @@ ms.locfileid: "71124671"
 ### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.chinacloudapp.cn/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -183,7 +183,7 @@ ms.locfileid: "71124671"
 ### <a name="request"></a>请求
 
     POST https://wamsbnp1clus001rest-hs.chinacloudapp.cn/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -226,7 +226,7 @@ ms.locfileid: "71124671"
 ### <a name="request"></a>请求
 
     DELETE https://wamsbnp1clus001rest-hs.chinacloudapp.cn/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -236,7 +236,7 @@ ms.locfileid: "71124671"
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
-有关使用遥测信息的信息，请参阅[此](media-services-telemetry-overview.md)主题。
+有关使用遥测信息的信息，请参阅 [此主题](media-services-telemetry-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

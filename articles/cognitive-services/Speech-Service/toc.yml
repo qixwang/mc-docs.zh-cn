@@ -27,6 +27,8 @@
       items:
         - name: 更改语音识别源语言
           href: how-to-specify-source-language.md
+        - name: 使用自定义语音提高准确性
+          href: how-to-custom-speech.md
         - name: 使用短语列表提高准确性
           href: how-to-phrase-lists.md
         - name: 选择特定的麦克风输入设备
@@ -174,6 +176,27 @@
       items:
         - name: 语音翻译常见问题解答
           href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: 自定义
+  expanded: false
+  items:
+    - name: 语音转文本
+      items:
+        - name: 自定义语音门户
+          items:
+            - name: 自定义语音入门
+              href: how-to-custom-speech.md
+            - name: 准备数据
+              href: how-to-custom-speech-test-data.md
+            - name: 检查数据
+              href: how-to-custom-speech-inspect-data.md
+            - name: 评估准确度
+              href: how-to-custom-speech-evaluate-data.md
+            - name: 训练自定义模型
+              href: how-to-custom-speech-train-model.md
+            - name: 部署自定义模型
+              href: how-to-custom-speech-deploy-model.md
+            - name: 创建用户标记的听录内容
+              href: how-to-custom-speech-human-labeled-transcriptions.md
 - name: 语音服务
   expanded: false
   items:
@@ -291,7 +314,7 @@
       href: regions.md
     - name: 主权云
       href: sovereign-clouds.md
-      displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
+      displayName: 'mooncake,compliant,secret,compliance,dod,china'
     - name: 定价和限制
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: 合规性

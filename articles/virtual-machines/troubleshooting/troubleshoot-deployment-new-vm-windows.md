@@ -1,5 +1,5 @@
 ---
-title: 排查在 Azure 中新建 Windows VM 时遇到的部署问题 | Azure
+title: 排查在 Azure 中新建 Windows VM 时遇到的部署问题
 description: 排查在 Azure 中新建 Windows 虚拟机时遇到的 Resource Manager 部署问题
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 06/15/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4efdad069bfc06c0e9251e863e0bced0dba9391d
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: cc630c05e4dc0b96c4d7c0287fc9194b75900fae
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272018"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428727"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "72272018"
 ## <a name="collect-activity-logs"></a>收集活动日志
 若要开始故障排除，请收集活动日志，以识别与问题相关的错误。 以下链接包含有关要遵循的过程的详细信息。
 
-[查看部署操作](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)
 
 [通过查看活动日志管理 Azure 资源](../../resource-group-audit.md)
 
@@ -92,4 +92,4 @@ ms.locfileid: "72272018"
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中启动已停止的 Windows VM 或调整现有 Windows VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动现有 Windows 虚拟机或调整其大小时遇到的 Resource Manager 部署问题](restart-resize-error-troubleshooting.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

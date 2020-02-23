@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 06/15/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6d290017dd1c47fb9130822cab80fb1fe70b8851
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 5d9bc646bf080f1f8df1ad1a98085cd7a002258d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965092"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428292"
 ---
+<!--Verified successfully-->
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 gitRepo 卷
 
 了解如何在容器实例中装载 *gitRepo* 卷以克隆 Git 存储库。

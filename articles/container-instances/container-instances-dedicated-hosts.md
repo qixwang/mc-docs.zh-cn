@@ -5,13 +5,15 @@ ms.topic: article
 origin.date: 01/10/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 80f7403ed515607f3bc538113dcaced41a22b006
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 7b4bdd2df11c39871b7d57e0114898e5b09a0fca
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965093"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428604"
 ---
+<!--not available on DEDICATED HOSTS-->
+<!-- API must be 2019-12-01 while 2018-10-01 ON MOONCAKE-->
 # <a name="deploy-on-dedicated-hosts"></a>在专用主机上部署
 
 “专用”是指一个 Azure 容器实例 (ACI) SKU，它为安全运行的容器提供独立且专用的计算环境。 使用专用 SKU 会使每个容器组在 Azure 数据中心拥有专用的物理服务器，确保工作负载完全隔离，有助于满足组织的安全性和符合性要求。 
@@ -119,7 +121,7 @@ az group create --name myResourceGroup --location chinaeast2
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-将在几秒钟内收到来自 Azure 的初始响应。 部署完成后，所有与之相关且通过 ACI 保留的数据都将使用你提供的密钥进行加密。
+将在几秒钟内收到来自 Azure 的初始响应。 部署完成后，所有与之相关且由 ACI 服务保存的数据将使用提供的密钥进行加密。
 
 <!-- LINKS - Internal -->
 

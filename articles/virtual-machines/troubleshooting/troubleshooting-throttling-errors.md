@@ -11,23 +11,23 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 origin.date: 09/18/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: da33ea53be6b661d74fe291d2ba3035bf72069cd
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 688cdee3b3f96fcf79466a3bf1b29366d5e662fc
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272877"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428838"
 ---
-# <a name="troubleshooting-api-throttling-errors"></a>排查 API 限制错误 
+# <a name="troubleshooting-api-throttling-errors"></a>故障排除 API 限制错误 
 
 Azure 计算请求可能会根据订阅和区域进行限制，以便优化服务的总体性能。 我们会确保对 Azure 计算资源提供程序（CRP，用于管理 Microsoft.Compute 命名空间中的资源）的所有调用不超出允许的最大 API 请求速率。 本文档介绍 API 限制、有关如何排查限制问题的详细信息，以及如何避免受限的最佳做法。  
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure 资源管理器限制与资源提供程序限制  
 
-作为 Azure 的“前门”，Azure 资源管理器会对所有传入的 API 请求进行身份验证、第一级验证和限制。 [此处](/azure-resource-manager/resource-manager-request-limits)介绍了 Azure 资源管理器调用速率限制和相关的诊断响应 HTTP 标头。
+作为 Azure 的“前门”，Azure 资源管理器会对所有传入的 API 请求进行身份验证、第一级验证和限制。 [此处](/azure-resource-manager/management/request-limits-and-throttling)介绍了 Azure 资源管理器调用速率限制和相关的诊断响应 HTTP 标头。
 
 当 Azure API 客户端收到限制错误时，HTTP 状态为“429 请求过多”。 若要了解请求限制是由 Azure 资源管理器施加的还是由基础资源提供程序（例如 CRP）施加的，请检查 `x-ms-ratelimit-remaining-subscription-reads`（针对 GET 请求）和 `x-ms-ratelimit-remaining-subscription-writes` 响应标头（针对非 GET 请求）。 如果剩余调用计数接近 0，则表明已达到订阅的常规调用限制（由 Azure 资源管理器定义）。 所有订阅客户端的活动会一起计数。 否则，限制由目标资源提供程序（请求 URL 的 `/providers/<RP>` 段所指的提供程序）施加。 
 

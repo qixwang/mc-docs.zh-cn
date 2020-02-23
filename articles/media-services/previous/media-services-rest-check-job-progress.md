@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: c40f00daeb68980157b856dd4d8c7dd4a5a583c9
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 9b36990dfbcf1d0a6f8984e83d7431c3c1497f44
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124585"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494257"
 ---
 # <a name="how-to-check-job-progress"></a>如何：检查作业进度
 
@@ -43,7 +43,7 @@ ms.locfileid: "71124585"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.chinacloudapi.cn
 
 响应：

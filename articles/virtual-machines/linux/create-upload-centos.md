@@ -1,26 +1,23 @@
 ---
-title: 为 Azure 准备基于 CentOS 的虚拟机 | Azure
+title: 在 Azure 中创建和上传基于 CentOS 的 Linux VHD
 description: 了解如何创建和上传包含基于 CentOS 的 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 0e518e92-e981-43f4-b12c-9cba1064c4bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 05/04/2018
-ms.date: 11/11/2019
+origin.date: 11/25/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a7157e03f1f903c3fb7512d2f791919b8f49858b
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 91ec5e67dca7033843aaf08f910ecda59c305633
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831277"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428673"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 
@@ -29,7 +26,7 @@ ms.locfileid: "73831277"
 * [为 Azure 准备 CentOS 6.x 虚拟机](#centos-6x)
 * [为 Azure 准备 CentOS 7.0+ 虚拟机](#centos-70)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设已在虚拟硬盘中安装 CentOS（或类似的衍生产品）Linux 操作系统。 可使用多种工具创建 .vhd 文件，如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -50,7 +47,7 @@ ms.locfileid: "73831277"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”打开该虚拟机的控制台窗口。 
+2. 单击“连接”  以打开该虚拟机的控制台窗口。
 
 3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
 
@@ -235,7 +232,7 @@ ms.locfileid: "73831277"
 
 **CentOS 7（和类似衍生产品）中的更改**
 
-为 Azure 准备 CentOS 7 虚拟机非常类似于 CentOS 6，但有几个值得注意的重要区别：
+为 Azure 准备 CentOS 7 虚拟机与 CentOS 6 非常类似，但有几个值得注意的重要区别：
 
 * NetworkManager 包不再与 Azure Linux 代理冲突。 默认会安装此包，建议不要删除。
 * GRUB2 现在用作默认引导加载程序，因此编辑内核参数的过程已更改（见下文）。
@@ -357,7 +354,7 @@ ms.locfileid: "73831277"
     编辑 `/etc/dracut.conf`，添加内容：
 
     ```console
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
     ```
 
     重新生成 initramfs：

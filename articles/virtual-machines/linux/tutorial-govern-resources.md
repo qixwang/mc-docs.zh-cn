@@ -1,6 +1,6 @@
 ---
-title: 教程 - 了解如何使用 Azure CLI 管理 Linux 虚拟机 | Azure
-description: 本教程介绍了如何在 Azure CLI 上应用 RBAC、策略、锁和标记来管理 Azure 虚拟机
+title: 教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
+description: 本教程介绍如何使用 Azure CLI 通过应用 RBAC、策略、锁和标记来管理 Azure 虚拟机。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
@@ -11,17 +11,17 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
 origin.date: 09/30/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: a5a0833aa4b495718a1f38f572af51d05ab28c15
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 7e1e2e2d65e41aa97debedaefaf39e0f07b2e55f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831341"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427999"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -141,7 +141,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 ## <a name="lock-resources"></a>锁定资源
 
-[资源锁](../../azure-resource-manager/resource-group-lock-resources.md)可以防止组织中的用户意外删除或修改重要资源。 与基于角色的访问控制不同，资源锁对所有用户和角色应用限制。 可以将锁定级别设置为 *CanNotDelete* 或 *ReadOnly*。
+[资源锁](../../azure-resource-manager/management/lock-resources.md)可以防止组织中的用户意外删除或修改重要资源。 与基于角色的访问控制不同，资源锁对所有用户和角色应用限制。 可以将锁定级别设置为 *CanNotDelete* 或 *ReadOnly*。
 
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。  
 
@@ -173,11 +173,11 @@ az group delete --name myResourceGroup
 
 ## <a name="tag-resources"></a>标记资源
 
-可以将[标记](../../azure-resource-manager/resource-group-using-tags.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+可以将[标记](../../azure-resource-manager/management/tag-resources.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-若要将标记应用于虚拟机，请使用 [az resource tag](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-tag) 命令。 资源上的任何现有标记都不会保留。
+若要将标记应用于虚拟机，请使用 [az resource tag](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-list) 命令。 资源上的任何现有标记都不会保留。
 
 ```azurecli
 az resource tag -n myVM \

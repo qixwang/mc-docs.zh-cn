@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 0414e5e138d082663b8229fbcb96fa78e402097a
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 41a80a7a6e38e2af944611dccaf07aca2b4d16c1
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124577"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494258"
 ---
 # <a name="configuring-asset-delivery-policies"></a>配置资产传送策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "71124577"
 >
 > 此外，若要使用动态打包和动态加密，用户的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
-可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流式处理，将 AES 信封加密应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何传送策略，则情况不是这样。 此时，将允许所有明文形式的协议。
+可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流式处理，将 AES 信封加密应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何传送策略，则情况不是这样。 此时，所有协议都可以通过。
 
 如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输用户的内容。 例如，若要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为“DynamicEnvelopeEncryption”  。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设置为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
 
@@ -90,7 +90,7 @@ MPEG DASH
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 4651882c-d7ad-4d5e-86ab-f07f47dcb41e
     Host: media.chinacloudapi.cn
 
@@ -137,7 +137,7 @@ MPEG DASH
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 56d2763f-6e72-419d-ba3c-685f6db97e81
     Host: media.chinacloudapi.cn
 
@@ -165,7 +165,7 @@ MPEG DASH
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 569d4b7c-a446-4edc-b77c-9fb686083dd8
     Host: media.chinacloudapi.cn
     Content-Length: 21
@@ -205,7 +205,7 @@ MPEG DASH
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.chinacloudapi.cn
 
@@ -256,7 +256,7 @@ MPEG DASH
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
     Host: media.chinacloudapi.cn
 
@@ -270,7 +270,7 @@ MPEG DASH
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
-以下枚举说明可以为资产传递协议设置的值。
+以下枚举说明可以为资产传送协议设置的值。
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -338,7 +338,7 @@ MPEG DASH
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
 
-以下枚举说明可用于配置到客户端的内容密钥传递方法的值。
+以下枚举说明可用于配置将内容密钥传送到客户端的方法的值。
     
     public enum ContentKeyDeliveryType
     {
@@ -365,7 +365,7 @@ MPEG DASH
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
 
-以下枚举说明为配置用于获取资产传递策略的特定配置的密钥可以设置的值。
+以下枚举说明为配置用于获取资产传送策略的特定配置的密钥可以设置的值。
 
     public enum AssetDeliveryPolicyConfigurationKey
     {

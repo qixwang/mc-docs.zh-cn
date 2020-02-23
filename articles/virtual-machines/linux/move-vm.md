@@ -1,5 +1,5 @@
 ---
-title: 将 Linux VM 移到其他订阅或资源组 | Azure
+title: 将 Linux VM 移到其他订阅或资源组
 description: 在 Resource Manager 部署模型中将 Linux VM 移到其他 Azure 订阅或资源组。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 09/12/2018
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: dc2f21967d010b804b25df3ca426318959ce28c2
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: 15db813a8c4d3c29c20dd08afc40e17f9ad7bce1
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912965"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428582"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
 本文逐步说明如何在资源组或订阅之间移动 Linux 虚拟机 (VM)。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
 
 > [!IMPORTANT]
->目前无法移动 Azure 托管磁盘。 
+> 目前无法移动 Azure 托管磁盘。
 >
->在移动过程中会创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
+> 在移动过程中会创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。 
 > 
 > 
 
@@ -74,6 +74,6 @@ az resource move \
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>后续步骤
-可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../resource-group-move-resources.md)。
+可以在资源组和订阅之间移动许多不同类型的资源。 有关详细信息，请参阅[将资源移到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

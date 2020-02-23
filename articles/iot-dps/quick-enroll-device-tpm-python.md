@@ -1,22 +1,21 @@
 ---
-title: 使用 Python 将 TPM 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: Azure 快速入门 - 使用 Python 预配服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
+title: 使用 Python 将 TPM 设备注册到 Azure 设备预配服务
+description: 快速入门 - 使用 Python 预配服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6df595ccb31d80a15c1239552331bbee8a85a7fd
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: dd234486c8bf67d2ac30e49290d7d7915e2edb60
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336422"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494395"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入门：使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -110,7 +109,7 @@ ms.locfileid: "75336422"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果打算学习 Java 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算学习 Java 服务示例，请勿清理本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的 Python 示例输出窗口。
 1. 如果已创建模拟的 TPM 设备，请关闭 TPM 模拟器窗口。

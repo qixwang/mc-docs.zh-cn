@@ -3,18 +3,18 @@ title: 有关搜索结果分页的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程演示如何对搜索结果进行分页。 它基于现有的酒店项目，通过第一个、下一个、前一个、最后一个和编号按钮进行分页。 第二个分页系统使用无限滚动，它通过将垂直滚动条移到其下限进行触发。
 manager: nitinme
-author: PeterTurcan
+author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 1473b2f59022bbf3b524f8f5fe4547b5dee02cd5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 268264eca4fc79c12b2917fe460078e384e504b6
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335116"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501443"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教程：搜索结果分页 - Azure 认知搜索
 
@@ -25,11 +25,11 @@ ms.locfileid: "75335116"
 > * 使用带编号的分页来扩展应用
 > * 使用无限滚动来扩展应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
-启动并运行 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+启动并运行 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ## <a name="extend-your-app-with-numbered-paging"></a>使用带编号的分页来扩展应用
 
@@ -393,7 +393,7 @@ ms.locfileid: "75335116"
 
 这里重要的一点是，不会替换正在显示的页面，而是新结果追加到该页面上。 用户可始终滚回到搜索的第一批结果。
 
-要实现无限滚动，首先要在添加任何页码滚动元素之前处理项目。 因此，如果需要此滚动，请从 GitHub 再创建一个基本搜索页的副本：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+要实现无限滚动，首先要在添加任何页码滚动元素之前处理项目。 因此，如果需要此滚动，请从 GitHub 再创建一个基本搜索页的副本：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ### <a name="add-paging-fields-to-the-model"></a>向模型添加分页字段
 

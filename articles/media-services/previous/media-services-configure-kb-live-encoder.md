@@ -12,19 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-origin.date: 02/08/2019
-ms.date: 03/04/2019
+origin.date: 03/14/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 2ada98f4f25814e264695252e9df813fdc77224c
-ms.sourcegitcommit: 7b93bc945ba49490ea392476a8e9ba1a273098e3
+ms.openlocfilehash: 2897332f2976501e9779e6ee5706690d5b4e6122
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833386"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494454"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Haivision KB 实时编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
@@ -33,10 +32,10 @@ ms.locfileid: "56833386"
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 *   访问运行 SW v5.01 或更高版本的 Haivision KB 编码器。
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
-* 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+* 确保运行流式处理终结点。 有关详细信息，请参阅 [在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 启动该工具并连接到 AMS 帐户。
 
@@ -46,10 +45,10 @@ ms.locfileid: "56833386"
 * 使用基于软件的编码器时，请关闭任何不需要的程序。
 
 ## <a name="create-a-channel"></a>创建频道
-1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道...”。
+1. 在 AMSE 工具中，导航到“实时”  选项卡，并右键单击频道区域。 从菜单中选择“创建频道…”  。
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. 指定频道名称，说明字段为选填字段。 在“频道设置”下针对“实时编码”选项选择“标准”，将“输入协议”设置为“RTMP”。 所有其他设置可保留原样。 确保选中“立即启动新频道”  。
-3. 单击“创建频道” 。
+2. 指定频道名称，说明字段为选填字段。 在“频道设置”下针对“实时编码”选项选择“标准”  ，将“输入协议”设置为“RTMP”  。 所有其他设置可保留原样。 确保选中“立即启动新频道”  。
+3. 单击“创建频道”  。
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
 > [!NOTE]
@@ -72,20 +71,20 @@ ms.locfileid: "56833386"
 
 ## <a name="configuration-steps"></a>配置步骤
 1.  登录到 Haivision KB 用户界面。
-2.  单击频道控制中心的“菜单按钮”，然后选择“添加频道”  
+2.  单击频道控制中心的“菜单按钮”，然后选择“添加频道”    
     ![2017-08-14 上午 9:15:09 屏幕截图](./media/media-services-configure-kb-live-encoder/step2.png)
-3.  在“名称”字段中键入“频道名”，然后单击“下一步”。  
+3.  在“名称”字段中键入“频道名”，然后单击“下一步”  。  
     ![2017-08-14 上午 9:19:07 屏幕截图](./media/media-services-configure-kb-live-encoder/step3.png)
-4.  从“输入源”下拉列表中选择“频道输入源”，然后单击“下一步”。
+4.  从“输入源”下拉列表中选择“频道输入源”，然后单击“下一步”   。
     ![2017-08-14 上午 9:20:44 屏幕截图](./media/media-services-configure-kb-live-encoder/step4.png)
-5.  从“编码器模板”下拉列表中选择“H264-720-AAC-192”，然后单击“下一步”。
+5.  从“编码器模板”下拉列表中选择“H264-720-AAC-192”，然后单击“下一步”   。
     ![2017-08-14 上午 9:23:15 屏幕截图](./media/media-services-configure-kb-live-encoder/step5.png)
-6.  从“选择新输出”下拉列表中选择“RTMP”，然后单击“下一步”。  
+6.  从“选择新输出”下拉列表中选择“RTMP”，然后单击“下一步”   。  
     ![2017-08-14 上午 9:27:51 屏幕截图](./media/media-services-configure-kb-live-encoder/step6.png)
-7.  在“频道输出”窗口，填充 Azure 流信息。 粘贴“服务器”区域中初始频道设置中的 RTMP 链接。 在“输出名”区域键入频道名。 在“流名称模板”区域中，使用模板 RTMPStreamName_％video_bitrate％ 命名流。
+7.  在“频道输出”  窗口，填充 Azure 流信息。 粘贴“服务器”区域中初始频道设置中的 RTMP 链接   。 在“输出名”  区域键入频道名。 在“流名称模板”区域中，使用模板 RTMPStreamName_％video_bitrate％ 命名流。
     ![2017-08-14 上午 9:33:17 屏幕截图](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  单击“下一步”，然后单击“完成”。
-9.  单击“播放按钮”启动编码器频道。  
+9.  单击“播放按钮”启动编码器频道  。  
     ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>测试播放

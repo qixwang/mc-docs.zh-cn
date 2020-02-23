@@ -3,22 +3,22 @@ title: 快速入门：在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
 description: 本门户快速入门介绍如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
-author: HeidiSteen
+author: tchristiani
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: a8fb94f0142f3e34b63865f74635907987ed2644
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/10/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 0b2e3e3fd6e165994e4b550b93c869e6f8410129
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335481"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501431"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
-Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资源。 虽然 Azure 认知搜索可以与其他 Azure 服务轻松集成，但它也可以作为单独的组件使用，或与网络服务器上的应用或在其他云平台上运行的软件集成。
+Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资源。 Azure 认知搜索可与其他 Azure 服务、网络服务器上的应用或其他云平台上运行的软件轻松集成。
 
 本文介绍如何在 [Azure 门户](https://portal.azure.cn/)中创建资源。
 
@@ -46,18 +46,18 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="set-a-resource-group"></a>设置资源组
 
-资源组是必需的，它用于全方面地管理所有资源，包括成本。 一个资源组可以包含一个服务，也可以包含同时使用的多个服务。 例如，如果使用 Azure 认知搜索为 Azure Cosmos DB 数据库编制索引，则可以将这两个服务纳入同一个资源组进行管理。 
+资源组是用于保存 Azure 解决方案相关资源的容器。 它对于搜索服务而言是必需的。 它还可用于统一管理资源（包括成本）。 一个资源组可以包含一个服务，也可以包含同时使用的多个服务。 例如，如果使用 Azure 认知搜索为 Azure Cosmos DB 数据库编制索引，则可以将这两个服务纳入同一个资源组进行管理。 
 
 若不将资源合并到单个组中，或现有资源组中包含的资源用于不相关的解决方案，请新建一个仅用于 Azure 认知搜索资源的资源组。 
 
 ![创建新的资源组](./media/search-create-service-portal/new-resource-group.png "创建新的资源组")
 
-经过一段时间以后，可以跟踪当前成本和预计的汇总成本（如屏幕截图中所示），或者向下滚动以查看各个资源的费用。 以下屏幕截图显示了在将多个资源合并到一个组时，最终可以看到的成本信息的种类。
+随着时间的变化，你可以统一跟踪当前成本和预计成本，或者查看单个资源的费用。 以下屏幕截图显示了在将多个资源合并到一个组时，可以看到的成本信息的种类。
 
 ![在资源组级别管理成本](./media/search-create-service-portal/resource-group-cost-management.png "在资源组级别管理成本")
 
 > [!TIP]
-> 资源组可以简化清理，因为删除组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
+> 资源组可以简化清理，因为删除某个组会删除其中的所有服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
 
 ## <a name="name-the-service"></a>为服务命名
 
@@ -66,10 +66,10 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 服务名称要求：
 
 * 它在 search.chinacloudapi.cn 命名空间中必须唯一
-* 2 到 60 个字符长度
-* 使用小写字母、数字或短划线（“-”）
-* 前两个字符或最后一个字符不能为短划线（“-”）
-* 任何位置都不能有连续的短划线（“--”）
+* 它的长度必须为 2 到 60 个字符。
+* 必须使用小写字母、数字或短划线（“-”）
+* 前 2 个字符或最后一个字符不能为短划线（“-”）
+* 不能在任何位置使用连续的短划线（“--”）
 
 > [!TIP]
 > 如果你认为今后会用到多个服务，我们建议根据命名约定在服务名称中包含区域（或位置）。 同一区域中的服务可以免费交换数据，因此，如果 Azure 认知搜索位于中国东部，而你在中国东部还有其他服务，则在决定如何合并或附加资源时，使用类似于 `mysearchservice-chinaeast` 的名称就无需导航到属性页。
@@ -91,7 +91,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 “基本”和“标准”是生产工作负荷的最常用选项，但大多数客户会从“免费”服务开始。 各个层之间的主要差别在于分区大小和速度，以及可创建的对象数限制。
 
-请记住，创建服务后无法更改定价层。 如果以后需要更高或较低的层，则需要重新创建该服务。
+请记住，创建服务后无法更改定价层。 如果需要更高或较低的层，必须重新创建该服务。
 
 ## <a name="create-your-service"></a>创建服务
 
@@ -99,7 +99,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ![查看并创建服务](./media/search-create-service-portal/new-service3.png "查看并创建服务")
 
-服务将在几分钟内部署，你可以通过 Azure 通知对其进行监视。 考虑将该服务固定到仪表板，以方便将来访问。
+服务在几分钟内即可部署。 可以通过 Azure 通知监视进度。 考虑将该服务固定到仪表板，以方便将来访问。
 
 ![监视和固定服务](./media/search-create-service-portal/monitor-notifications.png "监视和固定服务")
 
@@ -123,7 +123,9 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ***副本***允许服务处理负载更高的搜索查询。
 
-添加资源会增加每月账单费用。 可以通过[定价计算器](https://www.azure.cn/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。
+添加资源会增加每月账单费用。 可以通过[定价计算器](https://www.azure.cn/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。 
+
+<!-- For example, you might increase resources to create a full initial index, and then reduce resources later to a level more appropriate for incremental indexing. -->
 
 > [!Important]
 > 一个服务必须具有[2 个用于只读 SLA 的副本和 3 个用于读/写 SLA 的副本](https://www.azure.cn/support/legal/sla/)。

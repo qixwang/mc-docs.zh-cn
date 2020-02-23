@@ -1,22 +1,21 @@
 ---
-title: 使用 C# 将 TPM 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: Azure 快速入门 - 使用 C# 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。本快速入门使用单个注册。
+title: 使用 C# 将 TPM 设备注册到 Azure 设备预配服务
+description: 快速入门 - 使用 C# 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 522830f8d9af8d8f6f18d75318d76f4edf051c43
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d707122c430411b4c71df935f78e73febd697d9a
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336429"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494404"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>快速入门：使用 C# 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -49,7 +48,7 @@ ms.locfileid: "75336429"
 
 ## <a name="create-the-individual-enrollment-sample"></a>创建单个注册示例
 
-本部分介绍如何创建一个 .NET Core 控制台应用，以便向预配服务添加 TPM 设备的单个注册。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 控制台应用，以便添加单个注册。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core 开发人员文档](https://docs.microsoft.com/windows/iot-core/)。
+本部分介绍如何创建一个 .NET Core 控制台应用，以便向预配服务添加 TPM 设备的单个注册。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/windows/iot) 控制台应用，以便添加单个注册。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core 开发人员文档](https://docs.microsoft.com/windows/iot-core/)。
 
 1. 打开 Visual Studio 并选择“创建新项目”  。 在“创建新项目”中，为 C# 项目模板选择“控制台应用(.NET Core)”，然后选择“下一步”。   
 
@@ -61,7 +60,7 @@ ms.locfileid: "75336429"
 
 1. 在“NuGet 包管理器”中选择“浏览”，搜索并选择“Microsoft.Azure.Devices.Provisioning.Service”，然后按“安装”     。
 
-    ![“NuGet 包管理器”窗口](media//quick-enroll-device-tpm-csharp/add-nuget.png)
+   ![“NuGet 包管理器”窗口](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
    此步骤会下载、安装 [Azure IoT 预配服务客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
 
@@ -174,4 +173,3 @@ ms.locfileid: "75336429"
 
 > [!div class="nextstepaction"]
 > [Azure IoT 中心设备预配服务教程](./tutorial-set-up-cloud.md)
-

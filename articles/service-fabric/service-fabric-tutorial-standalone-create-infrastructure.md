@@ -4,15 +4,15 @@ description: 本教程介绍如何设置 AWS 基础结构来运行 Service Fabri
 author: rockboyfor
 ms.topic: tutorial
 origin.date: 05/11/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: bb2f82827e131c42e2e467f7b6a51a3e292e6327
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 6495b6f32038dc2b198fc0b8ae33ea6fb68f0fdb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741982"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540128"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 AWS 基础结构
 

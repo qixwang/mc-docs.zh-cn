@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/07/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 98016691927d850532b5c828026b9460b5e9a078
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 503943c65850110b81e77c4884a723174f518e0f
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857720"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497637"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
@@ -24,7 +24,7 @@ ms.locfileid: "75857720"
 使用“即时还原”功能可将可写入的恢复点快照作为恢复卷装载。 然后，可以浏览恢复卷，并将文件复制到本地计算机，从而选择性地还原文件。
 
 > [!NOTE]
-> 若要使用“即时还原”还原数据，必须安装 [2017 年 1 月 Azure 备份更新](https://support.microsoft.com/help/3216528?preview) 。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [2017 年 1 月 Azure 备份更新](https://support.microsoft.com/help/3216528?preview) ，获取支持“即时还原”的区域的最新列表。
+> 若要使用“即时还原”还原数据，必须安装 [2017 年 1 月 Azure 备份更新](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) 。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [2017 年 1 月 Azure 备份更新](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) ，获取支持“即时还原”的区域的最新列表。
 >
 
 在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用“即时还原”，请下载 MARS 更新，并按照提及“即时还原”的过程进行操作。

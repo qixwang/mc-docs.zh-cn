@@ -5,13 +5,14 @@ ms.topic: article
 origin.date: 04/15/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 980f1d4549e4aa3a2613b5d18ad94e17362ac1f2
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: cb012e2c9aa8a90a4385db6c5386bc617b5f8d15
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965006"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428939"
 ---
+<!--Verified successfully-->
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
 在 Azure 容器实例中部署容器的简便性和速度，使该服务成了可用于执行一次性任务（例如，在容器实例中生成、测试渲染作业并制作其映像）的引人注目的平台。
@@ -93,13 +94,17 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
+此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](container-instances-volume-azure-files.md)。
+
+<!--CORRECT ON container-instances-volume-azure-files.md-->
 
 ## <a name="next-steps"></a>后续步骤
 
 基于任务的方案（例如，使用多个容器批量处理大型数据集）可以在运行时利用自定义的[环境变量](container-instances-environment-variables.md)或[命令行](container-instances-start-command.md)。
 
-有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
+有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-volume-azure-files.md)。
+
+<!--CORRECT ON container-instances-volume-azure-files.md-->
 
 <!-- LINKS - External -->
 

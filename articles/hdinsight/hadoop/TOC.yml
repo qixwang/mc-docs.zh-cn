@@ -229,8 +229,6 @@
           href: ../hdinsight-delete-cluster.md?toc=/hdinsight/hadoop/toc.json&bc=/hdinsight/hadoop/breadcrumb/toc.json
         - name: 手动缩放群集
           href: ../hdinsight-scaling-best-practices.md?toc=/hdinsight/hadoop/toc.json&bc=/hdinsight/hadoop/breadcrumb/toc.json
-        - name: 自动缩放群集
-          href: ../hdinsight-autoscale-clusters.md?toc=/hdinsight/hadoop/toc.json&bc=/hdinsight/hadoop/breadcrumb/toc.json
         - name: 使用外部元数据存储
           href: ../hdinsight-use-external-metadata-stores.md?toc=/hdinsight/hadoop/toc.json&bc=/hdinsight/hadoop/breadcrumb/toc.json
           maintainContext: true

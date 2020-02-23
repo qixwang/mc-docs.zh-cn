@@ -6,14 +6,14 @@ author: WenJason
 ms.service: dns
 ms.topic: quickstart
 origin.date: 10/05/2019
-ms.date: 01/13/2020
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 71135adec2942159d43e3b944f1d185d200d1e34
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.openlocfilehash: 296aa9a709a76adaf3ae173b37ad55e1cb23898d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777490"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428484"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 专用 DNS 区域
 
@@ -89,7 +89,7 @@ az vm create \
  -n myVM01 \
  --admin-username AzureAdmin \
  -g MyAzureResourceGroup \
- -l eastus \
+ -l chinaeast2 \
  --subnet backendSubnet \
  --vnet-name myAzureVnet \
  --nsg NSG01 \
@@ -100,7 +100,7 @@ az vm create \
  -n myVM02 \
  --admin-username AzureAdmin \
  -g MyAzureResourceGroup \
- -l eastus \
+ -l chinaeast2 \
  --subnet backendSubnet \
  --vnet-name myAzureVnet \
  --nsg NSG01 \

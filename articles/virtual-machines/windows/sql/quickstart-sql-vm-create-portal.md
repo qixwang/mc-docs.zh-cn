@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机 | Azure
+title: 快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 description: 本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。
 services: virtual-machines-windows
 documentationcenter: na
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 origin.date: 07/11/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: ee042d68fd794b2b80eefbb3a635b18161a8c5a2
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.openlocfilehash: e3a0762034fb7e1db335c094aaeb5674b23d3457
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74594648"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428796"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -43,6 +43,8 @@ ms.locfileid: "74594648"
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.cn)。
 
+    <!--Not Available on AZURE SQL-->
+    
 1. 在 Azure 门户中，选择“+创建资源”。  
 
 1. 在“新建”页的搜索字段中，键入 `SQL Server 2017 Developer on Windows Server 2016`，然后按 ENTER。
@@ -98,7 +100,7 @@ ms.locfileid: "74594648"
     ![入站端口](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
 
     > [!NOTE]
-    > 可以选择“MS SQL (1433)”  端口以远程访问 SQL Server。 但是，这不必要，因为 **SQL Server 设置**步骤也提供此选项。 如果在此步骤中选择了端口 1433，则无论在 **SQL Server 设置**步骤中选择了哪一项，都会打开该端口。
+    > 可以选择“MS SQL (1433)”  端口以远程访问 SQL Server。 但是，这不必要，因为 **SQL Server 设置**步骤也提供此选项。 如果在此步骤中选择了端口 1433，则无论在“SQL Server 设置”  步骤中选择了哪一项，都会打开该端口。
 
 1. 单击“确定”  保存所做的更改并继续。
 
@@ -159,7 +161,7 @@ ms.locfileid: "74594648"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要让 SQL VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 也可以永久删除与该虚拟机关联的所有资源，在门户中删除其关联的资源组即可。 请小心使用此命令，因为它也会永久删除该虚拟机。 有关详细信息，请参阅[通过门户管理 Azure 资源](../../../azure-resource-manager/manage-resource-groups-portal.md)。
+如果不需要让 SQL VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 也可以永久删除与该虚拟机关联的所有资源，在门户中删除其关联的资源组即可。 请小心使用此命令，因为它也会永久删除该虚拟机。 有关详细信息，请参阅[通过门户管理 Azure 资源](../../../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

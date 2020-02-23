@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中使用 SSL 证书保护 Windows Web 服务器 | Azure
+title: 教程：在 Azure 中使用 Key Vault 中存储的 SSL 证书保护 Windows 虚拟机上的 Web 服务器
 description: 本教程介绍如何通过 Azure PowerShell 使用 Azure Key Vault 中存储的 SSL 证书来保护运行 IIS Web 服务器的 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,17 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 02/09/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: e7497d545c2b4a6c0be58db80eea6806de975e97
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 4bb6ea4e7e14a60f34bebebb89191681b772f67d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116851"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428666"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 SSL 证书保护 Windows 虚拟机上的 Web 服务器
+
+> [!NOTE]
+> 目前，此文档仅适用于通用化映像。 如果使用专用磁盘尝试此教程，则将收到错误。 
 
 若要保护 Web 服务器，可以使用安全套接字层 (SSL) 证书来加密 Web 流量。 这些 SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Windows 虚拟机 (VM)。 本教程介绍如何执行下列操作：
 
@@ -57,8 +60,6 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
 接下来，使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) 创建一个密钥保管库。 每个 Key Vault 均需具备唯一名称且全部小写。 将下例中的 `mykeyvault` 替换为自己唯一的 Key Vault 名称：
-
-<!--MOONCAKE: CORRECT ON [New-AzKeyVault]-->
 
 ```powershell
 $keyvaultName="mykeyvault"

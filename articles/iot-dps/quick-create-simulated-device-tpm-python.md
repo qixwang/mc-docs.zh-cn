@@ -1,22 +1,21 @@
 ---
-title: 使用 Python 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备。本快速入门使用单个注册。
+title: 快速入门 - 使用 Python 将模拟的 TPM 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) 的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 05/21/2018
-ms.date: 10/08/2019
+ms.author: v-tawe
+origin.date: 11/08/2018
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 67f1deccdb9c48ed9bc8218aba15156aea180e07
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 807aa80e7d049d6fb0c29844193dcc3f6b7727f5
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336394"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494413"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -113,13 +112,13 @@ Azure IoT 设备预配服务支持两类注册：
    > [!NOTE]
    > 如果使用 `pip`，请确保也安装 `azure-iot-provisioning-device-client` 包。 请注意，发布的 PIP 包使用真实的 TPM 而非模拟器。 若要使用模拟器，需使用 `--use-tpm-simulator` 标志从源进行编译。
 
-3. 导航到示例文件夹。
+1. 导航到示例文件夹。
 
     ```cmd/sh
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-4. 使用 Python IDE，编辑名为 **provisioning\_device\_client\_sample.py** 的 Python 脚本。 将 *GLOBAL\_PROV\_URI* 和 *ID\_SCOPE* 变量修改先前记下的值。 此外，请确保 *SECURITY\_DEVICE\_TYPE* 设置为 `ProvisioningSecurityDeviceType.TPM`
+1. 使用 Python IDE，编辑名为 **provisioning\_device\_client\_sample.py** 的 Python 脚本。 将 *GLOBAL\_PROV\_URI* 和 *ID\_SCOPE* 变量修改先前记下的值。 此外，请确保 *SECURITY\_DEVICE\_TYPE* 设置为 `ProvisioningSecurityDeviceType.TPM`
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -130,17 +129,17 @@ Azure IoT 设备预配服务支持两类注册：
 
     ![服务信息](./media/python-quick-create-simulated-device/extract-dps-endpoints.png)
 
-5. 运行示例。 
+1. 运行该示例。 
 
     ```cmd/sh
     python provisioning_device_client_sample.py
     ```
 
-6. 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 
+1. 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 
 
     ![注册成功](./media/python-quick-create-simulated-device/registration-success.png)
 
-7. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“Device Explorer”边栏选项卡上。 
+1. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上  。
 
     ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device/hubregistration.png) 
 
@@ -149,7 +148,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。

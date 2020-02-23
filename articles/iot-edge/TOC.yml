@@ -165,6 +165,10 @@
           href: how-to-store-data-blob.md
         - name: 部署 blob 存储模块
           href: how-to-deploy-blob.md
+    - name: 使用 DevOps 工具进行管理
+      items:
+        - name: Azure DevOps
+          href: how-to-ci-cd.md
     - name: 故障排除
       href: troubleshoot.md
 - name: 相关内容
@@ -175,13 +179,13 @@
           href: /iot-hub
         - name: IoT 中心设备预配服务
           href: /iot-dps
-        - name: 服务 SDK
+        - name: IoT 服务 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 时序见解
           href: /time-series-insights
-    - name: IoT Edge
+    - name: Edge 解决方案
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /iot-edge
         - name: IoT 设备 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
@@ -215,5 +219,9 @@
       href: 'https://www.azure.cn/pricing/details/iot-hub/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://updates.azure.cn/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-edge'
     - name: 技术案例研究
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

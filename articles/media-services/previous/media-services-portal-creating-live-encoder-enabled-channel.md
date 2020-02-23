@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: adaf4b70df2df612185e756057fce344fa7b58cc
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 2836c69db80f0e55fac4b1b92611bef9d5ba6e4b
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124638"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494277"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.locfileid: "71124638"
 
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
-    如果你无法访问摄像机，则可以使用 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 等工具从视频文件生成实时源。
+    如果你无法访问摄像机，则可以使用 [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) 等工具从视频文件生成实时源。
 1. 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
 
     此步骤也可以在创建频道后执行。
@@ -59,10 +59,10 @@ ms.locfileid: "71124638"
 1. 发布事件（这将为关联的资产创建点播定位符）。    
 1. 在准备好开始流式传输和存档时，启动事件。
 1. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
-1. 要停止流式传输并存档事件时，停止事件。
+1. 要停止流式传输和归档事件时，停止事件。
 1. 删除事件（并选择性地删除资产）。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 以下是完成本教程所需具备的条件。
 
@@ -100,7 +100,7 @@ ms.locfileid: "71124638"
 6. 在“预览”  选项卡上，应用针对预览的 IP 限制。
 7. 在“编码”  选项卡上，指定编码预设。 
 
-    目前，唯一可以选择的系统预设是“默认 720p”  。 若要指定自定义预设，请开具 Microsoft 支持票证。 输入创建的预设名称。 
+    目前，唯一可以选择的系统预设是“默认 720p”  。 若要指定自定义预设，请开具 Microsoft 支持票证。 然后，输入为用户创建的预设的名称。 
 
 > [!NOTE]
 > 目前，通道启动可能最多需要 30 分钟。 通道重置可能最多需要 5 分钟。
@@ -131,7 +131,7 @@ ms.locfileid: "71124638"
 
 可开始流式传输和存档后，启动事件/节目。 要停止流式传输和归档事件时，停止事件。 
 
-要删除存档的内容，请停止并删除事件，并删除关联的资产。 资产由某事件使用时不可删除；必须先删除该事件。 
+如果要删除存档的内容，请停止并删除事件，并删除关联的资产。 资产由某事件使用时不可删除；必须先删除该事件。 
 
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。
 
