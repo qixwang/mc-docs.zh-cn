@@ -7,19 +7,18 @@ ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 11/06/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1a25c5e3114d061e871240ac143c0dcd0d335c81
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 7fdb68cb5462c0d9ba4ca87a31be6b46cf030232
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838982"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497369"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
 本文介绍如何删除 Microsoft [Azure 备份](backup-overview.md)恢复服务 (MARS) 保管库。 其中分别说明了如何删除依赖项，以及如何删除保管库。
 
-
-## 开始之前 <a name="before-you-start"></a>
+## <a name="before-you-start"></a>开始之前
 
 无法删除具有依赖项（例如，与保管库关联的受保护服务器或备份管理服务器）的恢复服务保管库。
 

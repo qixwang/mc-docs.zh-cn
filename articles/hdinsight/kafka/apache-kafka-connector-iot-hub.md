@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 11/26/2019
-ms.date: 01/13/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 084006e47ac79cac19202c59077e3b45bc3e59e4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 42787ecfa14150a49e77c46b41f0b8ac82b0a96c
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631080"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563495"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -32,7 +32,7 @@ ms.locfileid: "75631080"
 
 有关 Connect API 的详细信息，请参阅 [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Apache Kafka 群集。 有关详细信息，请参阅 [Kafka on HDInsight 快速入门](apache-kafka-get-started.md)文档。
 
@@ -229,7 +229,7 @@ ms.locfileid: "75631080"
     |`IotHub.EventHubCompatibleName=PLACEHOLDER`|将 `PLACEHOLDER` 替换为与事件中心兼容的名称。|
     |`IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`|将 `PLACEHOLDER` 替换为与事件中心兼容的终结点。|
     |`IotHub.AccessKeyName=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service`。|
-    |`IotHub.AccessKeyValue=PLACEHOLDER`|将 `service` 替换为 `service` 策略的主密钥。|
+    |`IotHub.AccessKeyValue=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service` 策略的主密钥。|
     |`IotHub.Partitions=PLACEHOLDER`|将 `PLACEHOLDER` 替换为在上一步骤中获取的分区数。|
     |`IotHub.StartTime=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 UTC 日期。 此日期是连接器开始检查消息的时间。 日期格式为 `yyyy-mm-ddThh:mm:ssZ`。|
     |`BatchSize=100`|将 `100` 替换为 `5`。 做出此项更改后，如果 IoT 中心出现五条新消息，则连接器会将消息读入 Kafka。|
@@ -261,7 +261,7 @@ ms.locfileid: "75631080"
     |当前值 |编辑|
     |---|---|
     |`topics=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。|
-    |`IotHub.ConnectionString=PLACEHOLDER`|将 `service` 替换为 `service` 策略的连接字符串。|
+    |`IotHub.ConnectionString=PLACEHOLDER`|将 `service` 替换为  策略的连接字符串。|
 
      有关示例配置，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
