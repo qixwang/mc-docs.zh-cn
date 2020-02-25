@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 01/14/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9830c1ee5bb76512e04c056113b6eb11c13d11cd
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: f7b050106a2c6b780ebd514c3d5b051484da0962
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028362"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540127"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>将语音服务与主权云配合使用
 
@@ -26,9 +26,9 @@ ms.locfileid: "77028362"
 - 区域：中国东部 2（上海）
 - SpeechSDK 中的 SR：*config.FromHost("wss://chinaeast2.stt.speech.azure.cn", "\<your-key\>");*
 - SpeechSDK 中的 TTS：*config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
-- 身份验证令牌：https[]()://chinaeast2.api.cognitive.microsoft.cn/sts/v1.0/issueToken
+- 身份验证令牌：https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure 门户： https://portal.azure.cn
-- 自定义语音识别门户： https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- “自定义语音识别”门户： https://speech.azure.cn/customspeech
 - 可用的 SKU：S0
 - 支持的功能：
   - 语音转文本
@@ -44,7 +44,7 @@ ms.locfileid: "77028362"
   - 英语 (en-*)
   - 法语 (fr-*)
   - 德语 (de-*)
-  - 印地语
+  - Hindi
   - 朝鲜语
   - 俄语
   - 西班牙语 (es-*)
