@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 origin.date: 12/13/2019
 ms.author: v-yiso
-ms.date: 01/20/2020
-ms.openlocfilehash: 14e718390866ff06cec5ed8a093816ea86311226
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.date: 02/25/2020
+ms.openlocfilehash: 45a7e26831ed526cebd02aa0d79ef623a125d6c8
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859584"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590284"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -61,32 +61,36 @@ ExpressRoute 支持 [三种路由域](expressroute-circuit-peerings.md) ，适�
 
 如果对 Azure Microsoft 对等互连启用了 ExpressRoute 线路，则可以通过该线路访问 Azure 中使用的[公共 IP 地址范围](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。 Azure Microsoft 对等互连可访问当前托管在 Azure 上的服务（存在地理限制，具体取决于线路的 SKU）。 若要验证特定服务的可用性，可以查看该服务的文档，确定是否存在针对该服务发布的保留范围。 然后，查找目标服务的 IP 范围，再与 [Azure IP 范围和服务标记 - 公有云 XML 文件](https://www.microsoft.com/download/details.aspx?id=56519)中列出的范围进行比较。 或者，可以为相应服务开具支持票证以便说明。
 
+<!--Pay attention to the supported/unsupported services here-->
+
 支持  ：
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Power BI - 通过 Azure 区域社区提供，有关如何查找 Power BI 租户的区域，请参阅[此处](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)。
-* Azure Active Directory
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。
 
 不支持  ：
+
+    * Office 365
+    * PBI
     * CDN
-    * Azure Front Door
+
     * 多重身份验证服务器（旧版）
     * 流量管理器
 
 ### <a name="public-peering"></a>公共对等互连
 
->[!NOTE]
->在新的 ExpressRoute 线路上已禁用公共对等互连。 Azure 服务在 Microsoft 对等互连上可用。
->
+支持  ：
 
-* Power BI
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br><br>
-  **不支持以下服务**：
+
+不支持  ：
+
+    * Office 365
+    * PBI
     * CDN
     * 多重身份验证
     * 流量管理器
+
+<!-- End attention here-->
 
 ### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>在配置 Microsoft 对等互连时，为什么会看到“播发公共前缀”状态为“需要验证”？
 
@@ -307,7 +311,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>现有 ExpressRoute 线路能否支持连接到 Office 365 服务和 Dynamics 365？
 
-是的。 可以将现有 ExpressRoute 线路配置为支持连接到 Office 365 服务。 确保容量足以连接到 Office 365 服务，并确保已启用高级版外接程序。 [针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)可帮助规划连接需求。 另外，请参阅[创建和修改 ExpressRoute 线路](expressroute-howto-circuit-classic.md)。
+是的。 可以将现有 ExpressRoute 线路配置为支持连接到 Office 365 服务。 确保容量足以连接到 Office 365 服务，并确保已启用高级版外接程序。 [针对 Office 365 的网络规划和性能优化](https://aka.ms/tune/)可帮助规划连接需求。 另外，请参阅[创建和修改 ExpressRoute 线路](expressroute-howto-circuit-classic.md)。
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>通过 ExpressRoute 连接可以访问哪些 Office 365 服务？
 

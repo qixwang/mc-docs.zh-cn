@@ -6,15 +6,15 @@ author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 10/28/2019
-ms.date: 11/04/2019
+origin.date: 01/14/2020
+ms.date: 02/19/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a18e64fbb7adf1f7996fd7980e6ec53347d3c57f
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: b99282bd73dd8cccb5aaa2c715b914d702383c4d
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599895"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497519"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
 
@@ -25,7 +25,7 @@ ms.locfileid: "75599895"
 当你删除 Log Analytics 工作区时，系统会执行软删除操作，目的是让你能够在 14 天内恢复工作区（包括其数据和连接的代理），不管该删除是意外删除还是有意删除。 软删除期过后，工作区资源及其数据将不可恢复 - 其数据会排队等待永久删除，并在 30 天内完全清除。 工作区名称“已发布”，可供用于创建新的工作区。
 
 > [!NOTE]
-> 无法关闭软删除行为。 稍后，我们将添加一个选项，以在删除操作中使用“force”标记时替代软删除。
+> 如果希望替代软删除行为并永久删除你的工作区，请执行[永久删除工作区](#permanent-workspace-delete)中的步骤。
 
 删除工作区时需谨慎，因为其中的重要数据和配置在删除后可能会对服务操作产生不利影响。 请了解那些将数据存储在 Log Analytics 中的代理、解决方案以及其他 Azure 服务和源，例如：
 
@@ -57,8 +57,32 @@ ms.locfileid: "75599895"
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>永久删除工作区
+在某些情况下（例如开发和测试），你需要使用相同的设置和工作区名称重复某个部署，软删除方法可能不适合。 在这种情况下，你可以永久删除你的工作区，并“替代”软删除期间。 永久删除工作区操作将释放工作区名称，并且你可以使用相同的名称创建新的工作区。
+
+
+> [!IMPORTANT]
+> 使用永久删除工作区操作时要格外小心，因为它不可逆并且无法恢复工作区及其数据。
+
+当前可以通过 REST API 来执行永久删除工作区。
+
+> [!NOTE]
+> 任何 API 请求都必须在请求标头中包括一个 Bearer 授权令牌。
+>
+> 可以使用以下方式来获取令牌：
+> - [应用注册](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - 在浏览器中使用开发者的控制台 (F12) 导航到 Azure 门户。 在其中一个 **batch?** 实例中在**请求标头**下查找身份验证字符串。 它将采用模式 *authorization:Bearer <token>* 。 如示例中所示，将此复制并添加到你的 API 调用。
+> - 导航到 Azure REST 文档站点。 按任何 API 上的“试用”  ，复制持有者令牌，并将其添加到你的 API 调用。
+若要永久删除你的工作区，请使用[工作区 - 删除 REST]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) API 调用和 force 标记：
+>
+> ```rst
+> DELETE https://management.chinacloudapi.cn/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
+其中，“eyJ0eXAiOiJKV1Qi…” 表示完整的授权令牌。
 
 ## <a name="recover-workspace"></a>恢复工作区
 
@@ -70,6 +94,12 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceG
 * 资源组名称
 * 工作区名称
 * 区域
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
+PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"
+```
 
 执行恢复操作后，工作区及其所有数据就会恢复。 删除工作区时，会将其中的解决方案和关联的服务永久删除，因此应重新配置它们，使工作区回到以前配置的状态。 工作区恢复以后，某些数据可能不能用于查询，必须等到重新安装关联的解决方案并将其架构添加到工作区为止。
 
