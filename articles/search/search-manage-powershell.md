@@ -8,14 +8,14 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: b3b069be946280905cf3e7eccd255ad8e0f9493a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/11/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: b523883236acb45ed29a9ae2695422b903cf8739
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336512"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501450"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -28,22 +28,16 @@ ms.locfileid: "75336512"
 可以在 Windows、Linux 上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search** 模块扩展了 Azure PowerShell，并且完全可与 [Azure 认知搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) 搭配使用。 使用 Azure PowerShell 和 **Az.Search** 可执行以下任务：
 
 > [!div class="checklist"]
-> * [列出订阅中的所有搜索服务](#list-search-services)
-> * [获取有关特定搜索服务的信息](#get-search-service-information)
+> * [列出订阅中的搜索服务](#list-search-services)
+> * [返回服务信息](#get-search-service-information)
 > * [创建或删除服务](#create-or-delete-a-service)
 > * [重新生成管理 API 密钥](#regenerate-admin-keys)
 > * [创建或删除查询 API 密钥](#create-or-delete-query-keys)
-> * [通过增加或减少副本与分区来缩放服务](#scale-replicas-and-partitions)
+> * [使用副本和分区进行纵向缩放](#scale-replicas-and-partitions)
 
-无法使用 PowerShell 更改服务的名称、区域或层级。 创建服务时，会分配专用资源。 更改底层硬件（位置或节点类型）需要新的服务。 没有任何工具或 API 可将一个服务中的内容传输到另一个服务。 所有内容管理都是通过 [REST](https://docs.microsoft.com/rest/api/searchservice/) 或 [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API 进行的，若要移动索引，需要在新的服务中重新创建并重新加载这些索引。 
+偶尔，系统会询问有关任务未  在上述列表中出现的问题。 目前，不能使用 **Az.Search** 模块或管理 REST API 来更改服务器名称、区域或层。 创建服务时，会分配专用资源。 因此，更改底层硬件（位置或节点类型）需要新的服务。 类似地，没有任何工具或 API 可将一个服务中的内容（例如索引）传输到另一个服务。
 
-尽管没有专用的 PowerShell 命令可用于内容管理，但你可以编写 PowerShell 脚本来调用 REST 或 .NET 以创建并加载索引。 **Az.Search** 模块本身不提供这些操作。
-
-不支持通过 PowerShell 或任何其他 API（仅限门户）完成的其他任务包括：
-
-<!-- + [Attach a cognitive services resource](cognitive-search-attach-cognitive-services.md) for [AI-enriched indexing](cognitive-search-concept-intro.md). A cognitive service is attached to a skillset, not a subscription or service. -->
-
-+ 用于监视 Azure 认知搜索的[附加监视解决方案](search-monitor-usage.md#add-on-monitoring-solutions)。
+在服务中，内容创建和管理通过[搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) 完成。 尽管没有专用的 PowerShell 命令可用于内容，但可以编写 PowerShell 脚本来调用 REST 或 .NET API 以创建并加载索引。
 
 <a name="check-versions-and-load"></a>
 
@@ -95,7 +89,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>列出订阅中的所有 Azure 认知搜索服务
+## <a name="list-services-in-a-subscription"></a>列出订阅中的服务
 
 以下命令摘自 [**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)，它会返回有关订阅中已预配的现有资源和服务的信息。 如果你不知道已经创建了多少个搜索服务，则这些命令会返回该信息，省得要在门户中查找。
 
@@ -254,7 +248,6 @@ PartitionCount    : 6
 HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-chinaeast/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

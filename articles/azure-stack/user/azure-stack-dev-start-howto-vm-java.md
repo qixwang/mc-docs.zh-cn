@@ -1,29 +1,27 @@
 ---
-title: 将 Java WAR 部署到 Azure Stack 中的虚拟机 | Microsoft Docs
-description: 将 Java WAR 部署到 Azure Stack 中的虚拟机。
-services: azure-stack
+title: 将 Java WAR 部署到 Azure Stack Hub 中的虚拟机
+description: 将 Java WAR 部署到 Azure Stack Hub 中的虚拟机。
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 04/24/2019
-ms.date: 07/29/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: d17f0539772dd6a28e3c8d0008b36db3c52af5fb
-ms.sourcegitcommit: 3aff96c317600eec69c4bf3b8853e9d4e44210b7
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 74595b4d568db305269880be95b55d2de03e2643
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69670979"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540828"
 ---
-# <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack"></a>将 Java Web 应用部署到 Azure Stack 中的 VM
+# <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack-hub"></a>将 Java Web 应用部署到 Azure Stack Hub 中的 VM
 
-可以创建一个虚拟机 (VM) 来托管 Azure Stack 中的 Python Web 应用。 在本文中，你将在 Azure Stack 中的 Linux VM 上安装并配置一个 Apache Tomcat 服务器。 然后，将 Java Web 应用程序资源 (WAR) 文件加载到该服务器。 WAR 文件用于分发 Java 存档 (JAR) 文件，以及包含 Java 资源（例如类、文本、图像、XML 和 HTML）其他用于交付 Web 应用程序的资源的压缩文件。
+可以创建一个虚拟机 (VM) 来托管 Azure Stack Hub 中的 Python Web 应用。 在本文中，我们将在 Azure Stack Hub 中的 Linux VM 上安装并配置一个 Apache Tomcat 服务器。 然后，将 Java Web 应用程序资源 (WAR) 文件加载到该服务器。 WAR 文件用于分发 Java 存档 (JAR) 文件，以及包含 Java 资源（例如类、文本、图像、XML 和 HTML）其他用于交付 Web 应用程序的资源的压缩文件。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-1. 按照[部署 Linux VM 以在 Azure Stack 中托管 Web 应用](azure-stack-dev-start-howto-deploy-linux.md)中的说明，在 Azure Stack 中设置 VM。
+1. 按照[部署 Linux VM 以在 Azure Stack Hub 中托管 Web 应用](azure-stack-dev-start-howto-deploy-linux.md)中的说明，在 Azure Stack Hub 中设置 VM。
 
 2. 在“VM 网络”窗格中，确保可以访问以下端口：
 
@@ -175,11 +173,11 @@ ms.locfileid: "69670979"
         sudo ufw allow 8080
     ```
 
-    如果尚未为 Azure Stack VM 添加*入站端口规则*，现在请添加这些规则。 有关详细信息，请参阅[创建 VM](#create-a-vm)。
+    如果尚未为 Azure Stack Hub VM 添加*入站端口规则*，现在请添加这些规则。 有关详细信息，请参阅[创建 VM](#create-a-vm)。
 
-1. 在 Azure Stack 所在的同一网络中打开浏览器，然后打开服务器 *yourmachine.local.cloudapp.azurestack.external:8080*。
+1. 在 Azure Stack Hub 所在的同一网络中打开浏览器，然后打开服务器 *yourmachine.local.cloudapp.azurestack.external:8080*。
 
-    ![Azure Stack VM 上的 Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
+    ![Azure Stack Hub VM 上的 Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
 
     此时会加载服务器上的 Apache Tomcat 页。 接下来，将服务器配置为允许你访问服务器状态、管理器应用和主机管理器。
 
@@ -218,7 +216,7 @@ ms.locfileid: "69670979"
 
     c. 保存并关闭该文件。
 
-1. Tomcat 会将“管理器”和“主机管理器”应用的访问权限限制为来自服务器的连接。   由于你要在 Azure Stack 中的 VM 上安装 Tomcat，因此需要解除此限制。 通过编辑相应的 *context.xml* 文件来更改对这些应用的 IP 地址限制。
+1. Tomcat 会将“管理器”和“主机管理器”应用的访问权限限制为来自服务器的连接。   由于你要在 Azure Stack Hub 中的 VM 上安装 Tomcat，因此需要解除此限制。 通过编辑相应的 *context.xml* 文件来更改对这些应用的 IP 地址限制。
 
     a. 在管理器应用中更新 *context.xml*：
 
@@ -251,13 +249,13 @@ ms.locfileid: "69670979"
         sudo systemctl restart tomcat
     ```
 
-1. 在 Azure Stack 所在的同一网络中打开浏览器，然后打开服务器：*yourmachine.local.cloudapp.azurestack.external:8080*。
+1. 在 Azure Stack Hub 所在的同一网络中打开浏览器，然后打开服务器 *yourmachine.local.cloudapp.azurestack.external:8080*。
 
     a. 若要查看 Tomcat 服务器的状态并验证你是否有访问权限，请选择“服务器状态”。 
 
     b. 使用 Tomcat 凭据登录。
 
-    ![Azure Stack VM 上的 Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
+    ![Azure Stack Hub VM 上的 Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
 
 ## <a name="create-an-app"></a>创建应用
 
@@ -275,7 +273,7 @@ ms.locfileid: "69670979"
         sudo systemctl stop tomcat
     ```
 
-1. 若要写入 webapps 文件夹，请将 FTP 用户添加到 Tomcat 组。 该 FTP 用户是在 Azure Stack 中创建 VM 时定义的用户。
+1. 若要写入 webapps 文件夹，请将 FTP 用户添加到 Tomcat 组。 该 FTP 用户是在 Azure Stack Hub 中创建 VM 时定义的用户。
 
     ```bash  
         sudo usermod -a -G tomcat <VM-user>
@@ -295,6 +293,6 @@ ms.locfileid: "69670979"
     
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[针对 Azure Stack 进行开发](azure-stack-dev-start.md)。
-- 了解[用作 IaaS 的 Azure Stack 的常见部署](azure-stack-dev-start-deploy-app.md)。
+- 详细了解如何[针对 Azure Stack Hub 进行开发](azure-stack-dev-start.md)。
+- 了解[用作 IaaS 的 Azure Stack Hub 的常见部署](azure-stack-dev-start-deploy-app.md)。
 - 若要了解 Java 编程语言并查找适用于 Java 的其他资源，请参阅 [Java.com](https://www.java.com)。

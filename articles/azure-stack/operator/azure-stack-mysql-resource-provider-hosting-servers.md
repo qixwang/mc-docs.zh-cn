@@ -1,31 +1,23 @@
 ---
-title: 在 Azure Stack 中添加 MySQL 宿主服务器 | Microsoft Docs
+title: 在 Azure Stack Hub 中添加 MySQL 宿主服务器
 description: 了解如何添加 MySQL 宿主服务器以通过 MySQL 适配器资源提供程序进行预配。
-services: azure-stack
-documentationCenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 11/06/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
-ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 2ebcd8579e9d2717cb1785a5ab073606ec3a4e34
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.lastreviewed: 11/06/2019
+ms.openlocfilehash: 9277f7aeb9719a2b021c6beca58f42f0eea73039
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737914"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540401"
 ---
-# <a name="add-mysql-hosting-servers-in-azure-stack"></a>在 Azure Stack 中添加 MySQL 宿主服务器
+# <a name="add-mysql-hosting-servers-in-azure-stack-hub"></a>在 Azure Stack Hub 中添加 MySQL 宿主服务器
 
-可以在 [Azure Stack](azure-stack-overview.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上托管 MySQL 宿主服务器实例，前提是 MySQL 资源提供程序能够连接到该实例。
+可以在 [Azure Stack Hub](azure-stack-overview.md) 中的虚拟机 (VM) 上或者在 Azure Stack Hub 环境外部的 VM 上托管 MySQL 宿主服务器实例，前提是 MySQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
 > MySQL 资源提供程序应在默认提供程序订阅中创建，而 MySQL 宿主服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
@@ -34,9 +26,14 @@ ms.locfileid: "75737914"
 
 ## <a name="connect-to-a-mysql-hosting-server"></a>连接到 MySQL 宿主服务器
 
-确保已准备好拥有管理特权的帐户的凭据。 若要添加宿主服务器，请执行以下步骤：
+确保已准备好拥有管理特权的帐户的凭据。
 
-1. 以服务管理员身份登录到 Azure Stack 管理员门户。
+> [!NOTE]
+> 对于 MySQL 8.0 及更高版本，默认情况下不启用远程访问。 需要创建新的用户帐户，并授予对此用户帐户的远程访问权限，然后才能将其添加为宿主服务器。
+
+若要添加宿主服务器，请执行以下步骤：
+
+1. 以服务管理员身份登录到 Azure Stack Hub 管理员门户。
 2. 选择“所有服务”  。
 3. 在“管理资源”  类别下，选择“MySQL 宿主服务器”   > “+添加”  。 此时会打开“添加 MySQL 宿主服务器”对话框，如以下屏幕捕获所示。 
 
@@ -45,7 +42,7 @@ ms.locfileid: "75737914"
 4. 提供 MySQL 服务器实例的连接详细信息。
 
    * 对于“MySQL 宿主服务器名称”，  请提供完全限定域名 (FQDN) 或有效的 IPv4 地址。 请勿使用短 VM 名称。
-   * Azure Stack 市场中提供的 Bitnami MySQL 映像的默认管理员**用户名**为 *root*。
+   * Azure Stack Hub 市场中提供的 Bitnami MySQL 映像的默认管理员**用户名**为 *root*。
    * 如果不知道 root 的**密码**，请参阅 [Bitnami 文档](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials)，了解如何获取它。
    * 未提供默认的 MySQL 实例，因此需指定“宿主服务器的大小(GB)”。  输入接近数据库服务器容量的大小。
    * 保留“订阅”的默认设置。 
@@ -78,7 +75,7 @@ ms.locfileid: "75737914"
 
 ## <a name="increase-backend-database-capacity"></a>提高后端数据库容量
 
-可以在 Azure Stack 门户中部署更多的 MySQL 服务器，以便提高后端数据库容量。 将这些服务器添加到新的或现有的 SKU。 如果向现有的 SKU 添加服务器，请确保该服务器的特征与 SKU 中其他服务器的特征相同。
+可以在 Azure Stack Hub 门户中部署更多的 MySQL 服务器，以便提高后端数据库容量。 将这些服务器添加到新的或现有的 SKU。 如果向现有的 SKU 添加服务器，请确保该服务器的特征与 SKU 中其他服务器的特征相同。
 
 ## <a name="sku-notes"></a>SKU 说明
 使用可以描述 SKU 中服务器容量（例如容量和性能）的 SKU 名称。 名称可以协助用户将其数据库部署到相应的 SKU。 例如，可以使用 SKU 名称通过以下特征来区分服务产品/服务：

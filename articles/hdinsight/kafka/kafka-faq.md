@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 08/14/2019
-ms.date: 09/23/2019
-ms.openlocfilehash: 76ab3256f9ca29b0f0cbb69ab4deede6f4edb9c6
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.date: 03/02/2020
+ms.openlocfilehash: 85537b38621f82603c0e90b878cfb135ae32a019
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921347"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563519"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>有关 Azure HDInsight 中的 Apache Kafka 的常见问题解答
 
@@ -39,7 +39,7 @@ HDInsight Kafka 群集包含以下资源：
 
 ## <a name="do-apache-kafka-apis-work-with-hdinsight"></a>Apache Kafka API 是否适用于 HDInsight？
 
-是，HDInsight 使用本机 Kafka API。 无需更改客户端应用程序代码。 有关分步说明，请参阅[教程：使用 Apache Kafka 生成者和使用者 API](./apache-kafka-producer-consumer-api.md) 来了解如何对群集使用基于 Java 的生成者/使用者 API。
+是，HDInsight 使用本机 Kafka API。 无需更改客户端应用程序代码。 请参阅[教程：使用 Apache Kafka 生成者和使用者 API](./apache-kafka-producer-consumer-api.md) 来了解如何对群集使用基于 Java 的生成者/使用者 API。
 
 ## <a name="can-i-change-cluster-configurations"></a>是否可以更改群集配置？
 
@@ -48,7 +48,7 @@ HDInsight Kafka 群集包含以下资源：
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>我的数据是否已加密？ 是否可以使用我自己的密钥？
 
-托管磁盘上的所有 Kafka 消息都已通过 [Azure 存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行加密。 传输中的数据（例如，在客户端与代理之间来回传输的数据）默认不会加密。 可以通过[自行设置 SSL](./apache-kafka-ssl-encryption-authentication.md) 来加密此类流量。 此外，HDInsight 允许管理其自身的密钥来加密静态数据。 
+托管磁盘上的所有 Kafka 消息都已通过 [Azure 存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行加密。 传输中的数据（例如，在客户端与代理之间来回传输的数据）默认不会加密。 可以通过[自行设置 SSL](./apache-kafka-ssl-encryption-authentication.md) 来加密此类流量。 此外，HDInsight 允许管理其自身的密钥来加密静态数据。 有关详细信息，请参阅[自带 Apache Kafka on Azure HDInsight 密钥](apache-kafka-byok.md)。
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>如何将客户端连接到群集？
 
@@ -63,6 +63,10 @@ HDInsight Kafka 群集包含以下资源：
 ## <a name="can-i-add-more-disk-space-on-an-existing-cluster"></a>是否可在现有群集中添加更多的磁盘空间？
 
 若要增加 Kafka 消息可用的空间量，可以增大节点数目。 目前不支持将更多磁盘添加到现有群集。
+
+## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka 群集是否可与 Databricks 配合使用？ 
+
+是的，Kafka 群集可以与 Databricks 配合使用，但前提是它们位于同一 VNet 中。 若要将 Kafka 群集与 Databricks 配合使用，请创建一个包含 HDInsight Kafka 群集的 VNet，然后在创建 Databricks 工作区并使用 VNet 注入时指定该 VNet。 有关详细信息，请参阅[在 Azure 虚拟网络（VNet 注入）中部署 Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。 创建 Databricks 工作区时，需要提供 Kafka 群集的启动代理名称。 若要了解如何检索 Kafka 代理名称，请参阅[获取 Apache Zookeeper 主机和代理主机信息](/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)。
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>如何获得最大的数据持久性？
 

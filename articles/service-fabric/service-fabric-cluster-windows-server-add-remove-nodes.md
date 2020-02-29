@@ -4,32 +4,52 @@ description: 了解如何向运行 Windows Server 的本地或任意云中物理
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/02/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: dd78f93bf7f1866dab87d21a9591c2717fd5678d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 0e8f09fb1f2cc92f315677c7d6d45101f0bb0743
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742315"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540464"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>向在 Windows Server 上运行的独立 Service Fabric 群集添加或删除节点
 [在 Windows Server 计算机上创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)之后，（业务）需求可能发生变化，因此需要向群集添加或删除节点。 本文提供了实现此目标的详细步骤。 请注意，在本地开发群集中不支持添加/删除节点的功能。
+
 ## <a name="add-nodes-to-your-cluster"></a>向群集添加节点
 
-1. 按照[计划和准备 Service Fabric 群集部署](service-fabric-cluster-creation-for-windows-server.md)中概述的步骤，使要向其添加群集的VM/计算机准备就绪。
+1. 按照[计划和准备 Service Fabric 群集部署](service-fabric-cluster-standalone-deployment-preparation.md)中概述的步骤，使要向其添加群集的VM/计算机准备就绪。
+
 2. 确定要向哪些容错域和升级域添加此 VM/计算机。
-3. 通过远程桌面 (RDP) 方式进入需要向群集添加的 VM/计算机
-4. 向此 VM/计算机复制或[下载适用于 Windows Server 的 Service Fabric 独立包](https://go.microsoft.com/fwlink/?LinkId=730690)，并解压该包
-5. 使用提升的权限运行 Powershell，并导航到解压缩包所在的位置。
-6. 使用描述要添加的新节点的参数运行 *AddNode.ps1* 脚本。 以下示例将名为 VM5、类型为 NodeType0 且 IP 地址为 182.17.34.52 的新节点添加到 UD1 和 fd:/dc1/r0 中。 *ExistingClusterConnectionEndPoint* 是现有群集中已有节点的连接终结点，可以是群集中任意节点的 IP 地址。 
 
-    ```
-    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
-    ```
-    运行完脚本后，可以通过运行 [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 来检查是否已添加新节点。
+   如果使用证书来保护群集，则应将证书安装在本地证书存储中，为节点加入群集做准备。 使用其他形式的安全性时，模拟适用。
 
-7. 若要确保群集中不同节点的一致性，请务必启动配置升级。 运行 [Get ServiceFabricClusterConfiguration](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) 获取最新配置文件并将新添加的节点添加到“Nodes”节。 如果需要使用相同配置重新部署群集，也建议始终使用最新的群集配置。
+3. 通过远程桌面 (RDP) 方式进入需要向群集添加的 VM/计算机。
+
+4. 向此 VM/计算机复制或[下载适用于 Windows Server 的 Service Fabric 独立包](https://go.microsoft.com/fwlink/?LinkId=730690)，并解压该包。
+
+5. 使用提升的权限运行 PowerShell，然后转到解压缩包所在的位置。
+
+6. 使用描述要添加的新节点的参数运行 *AddNode.ps1* 脚本。 以下示例将名为 VM5、类型为 NodeType0 且 IP 地址为 182.17.34.52 的新节点添加到 UD1 和 fd:/dc1/r0 中。 `ExistingClusterConnectionEndPoint` 是现有群集中已有节点的连接终结点，可以是群集中任意节点的 IP 地址。  
+
+   不安全（原型制作）：
+
+   ```
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
+   ```
+
+   安全（基于证书）：
+
+   ```  
+   $CertThumbprint= "***********************"
+
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -X509Credential -ServerCertThumbprint $CertThumbprint  -AcceptEULA
+
+   ```
+
+   运行完脚本后，可以通过运行 [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet 来检查是否已添加新节点。
+
+7. 若要确保群集中不同节点的一致性，请务必启动配置升级。 运行 [Get ServiceFabricClusterConfiguration](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) 获取最新配置文件并将新添加的节点添加到“Nodes”节。 如果需要重新部署使用相同配置的群集，也建议始终使用最新的群集配置。
 
     ```
     {
@@ -40,6 +60,7 @@ ms.locfileid: "75742315"
         "upgradeDomain": "UD1"
     }
     ```
+
 8. 运行 [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) 开始升级。
 
     ```
@@ -104,7 +125,7 @@ ms.locfileid: "75742315"
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
     ```
-    可在 Service Fabric Explorer 中监视升级进度。 或者，也可运行 [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+    可在 Service Fabric Explorer 中监视升级进度。 或者，也可运行 [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
 
 > [!NOTE]
 > 删除可能启动多个升级的节点。 某些节点标有 `IsSeedNode="true"` 标记，可使用 `Get-ServiceFabricClusterManifest` 通过查询群集清单进行标识。 在此类方案中，因为种子节点需要移动，因此删除此类节点相比其他节点需要较长时间。 群集必须至少维护 3 个主节点类型的节点。

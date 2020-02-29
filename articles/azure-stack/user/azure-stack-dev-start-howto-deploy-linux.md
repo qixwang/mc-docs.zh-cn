@@ -1,23 +1,21 @@
 ---
-title: 将 Linux VM 部署到 Azure Stack | Microsoft Docs
-description: 将应用部署到 Azure Stack。
-services: azure-stack
+title: 将 Linux VM 部署到 Azure Stack Hub
+description: 将应用部署到 Azure Stack Hub。
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 04/24/2019
-ms.date: 07/29/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: af82e4176858c0e471bcc9d1ea822b10f8beefdb
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 19d4bac8f06507552b0ca5452c116ea61f6e5629
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513325"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540834"
 ---
-# <a name="deploy-a-linux-vm-to-host-a-web-app-in-azure-stack"></a>在 Azure Stack 中部署用于托管 Web 应用的 Linux VM
+# <a name="deploy-a-linux-vm-to-host-a-web-app-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署用于托管 Web 应用的 Linux VM
 
 可以使用 Azure 市场中的 Ubunutu 映像创建和部署基本 Linux 虚拟机 (VM)，以托管使用 Web 框架创建的 Web 应用。 
 
@@ -28,17 +26,17 @@ ms.locfileid: "68513325"
 - **Ruby**：将 Ruby on Rails 设置为交付 Ruby Web 应用的框架。 
 - **Java**：使用 Java 开发要发布到 Apache Tomcat 服务器的 Web 应用。 可将 Tomcat 安装在 Linux 上，然后将 Java WAR 文件直接部署到服务器。 
 
-根据本文中的说明，通过任何 Web 应用、框架和使用 Linux OS 的后端技术来启动并运行。 然后可以使用 Azure Stack 来管理基础结构，并使用技术内部的管理工具来处理应用的维护任务。
+根据本文中的说明，通过任何 Web 应用、框架和使用 Linux OS 的后端技术来启动并运行。 然后可以使用 Azure Stack Hub 来管理基础结构，并使用技术内部的管理工具来处理应用的维护任务。
 
 ## <a name="deploy-a-linux-vm-for-a-web-app"></a>部署适用于 Web 应用的 Linux VM
 
-在此过程中，你将创建机密密钥，使用 Linux VM 的基础映像，指定 VM 的特定属性，然后创建 VM。 创建 VM 后，打开运行该 VM 所需的端口，并在该 VM 上托管你的应用。 接下来，创建 DNS 名称。 最后，连接到该 VM 并使用 apt-get 实用工具更新计算机。 完成此过程后，Azure Stack 实例中已有一个准备好托管 Web 应用的 VM。
+在此过程中，你将创建机密密钥，使用 Linux VM 的基础映像，指定 VM 的特定属性，然后创建 VM。 创建 VM 后，打开运行该 VM 所需的端口，并在该 VM 上托管你的应用。 接下来，创建 DNS 名称。 最后，连接到该 VM 并使用 apt-get 实用工具更新计算机。 完成此过程后，Azure Stack Hub 实例中已有一个准备好托管 Web 应用的 VM。
 
 在开始之前，请确保一切已准备就绪。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 一个有权访问 Ubuntu Server 16.04 LTS 映像的 Azure Stack 订阅。 可以使用更高版本的映像，但请注意，本文中的说明是根据 16.04 LTS 编写的。 如果没有此映像，请联系云运营商，以将映像放入 Azure Stack 市场。
+- 一个有权访问 Ubuntu Server 16.04 LTS 映像的 Azure Stack Hub 订阅。 可以使用更高版本的映像，但请注意，本文中的说明是根据 16.04 LTS 编写的。 如果没有此映像，请联系云运营商，以将映像放入 Azure Stack Hub 市场。
 
 ## <a name="deploy-the-vm-by-using-the-portal"></a>使用门户部署 VM
 
@@ -47,9 +45,9 @@ ms.locfileid: "68513325"
 ### <a name="create-your-vm"></a>创建 VM
 
 1. 为服务器创建安全外壳 (SSH) 公钥。 有关详细信息，请参阅[如何使用 SSH 公钥](azure-stack-dev-start-howto-ssh-public-key.md)。
-1. 在 Azure Stack 门户中，选择“创建资源” > “计算” > “Ubuntu Server 16.04 LTS”。   
+1. 在 Azure Stack Hub 门户中，选择“创建资源” > “计算” > “Ubuntu Server 16.04 LTS”。   
 
-    ![将 Web 应用部署到 Azure Stack VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
+    ![将 Web 应用部署到 Azure Stack Hub VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
 
 4. 在“创建虚拟机”窗格中，对于“1.   配置基本设置”：
 
@@ -70,13 +68,13 @@ ms.locfileid: "68513325"
     ---- END SSH2 PUBLIC KEY ----
     ```
 
-    f. 选择 Azure Stack 实例的订阅。
+    f. 选择 Azure Stack Hub 实例的订阅。
 
     g. 根据要为应用组织资源的方式，创建新的资源组或使用现有的资源组。
 
-    h.如果该值不存在，请单击“添加行”。 选择你的位置。 Azure Stack 开发工具包 (ASDK) 通常位于本地区域。  具体的位置取决于 Azure Stack 实例。
+    h.如果该值不存在，请单击“添加行”。 选择你的位置。 Azure Stack 开发工具包 (ASDK) 通常位于本地区域。  具体的位置取决于 Azure Stack Hub 实例。
 1. 对于“2.  大小”，请键入：
-    - 针对可在 Azure Stack 实例中使用的 VM，选择数据大小和 RAM。
+    - 针对可在 Azure Stack Hub 实例中使用的 VM，选择数据大小和 RAM。
     - 可以浏览列表，或根据“计算类型”、“CPU”和“存储空间”筛选 VM 的大小。   
     
     > [!NOTE]
@@ -124,7 +122,7 @@ ms.locfileid: "68513325"
 
 可以修改预定义服务（例如 RDP 或 SSH）的目标协议和端口范围，或提供自定义端口范围。 例如，你可能想要使用 Web 框架的端口范围。 GO，例如在端口 3000 上通信。
 
-1. 打开租户的 Azure Stack 门户。
+1. 打开租户的 Azure Stack Hub 门户。
 
 1. 搜索你的 VM。 你可能已将 VM 固定到仪表板；或者，可以在“搜索资源”框中搜索该 VM。 
 
@@ -146,13 +144,13 @@ ms.locfileid: "68513325"
 
 1. 输入**名称**和**说明**，以帮助记住打开端口的原因。
 
-1. 选择“设置”  （应用程序对象和服务主体对象）。
+1. 选择“添加”   。
 
 #### <a name="add-a-dns-name-for-your-server"></a>添加服务器的 DNS 名称
 
 此外，可以创建服务器的 DNS 名称，使用户能够使用 URL 连接到你的网站。
 
-1. 打开租户的 Azure Stack 门户。
+1. 打开租户的 Azure Stack Hub 门户。
 
 1. 搜索你的 VM。 你可能已将 VM 固定到仪表板；或者，可以在“搜索资源”框中搜索该 VM。 
 
@@ -166,7 +164,7 @@ ms.locfileid: "68513325"
 
 ### <a name="connect-via-ssh-to-update-your-vm"></a>通过 SSH 进行连接以更新 VM
 
-1. 在 Azure Stack 实例所在的同一网络中打开 SSH 客户端。 有关详细信息，请参阅[使用 SSH 公钥](azure-stack-dev-start-howto-ssh-public-key.md)。
+1. 在 Azure Stack Hub 实例所在的同一网络中打开 SSH 客户端。 有关详细信息，请参阅[使用 SSH 公钥](azure-stack-dev-start-howto-ssh-public-key.md)。
 
 1. 输入以下命令：
 
@@ -177,4 +175,4 @@ ms.locfileid: "68513325"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[设置 Azure Stack 中的开发环境](azure-stack-dev-start.md)。
+了解如何[设置 Azure Stack Hub 中的开发环境](azure-stack-dev-start.md)。

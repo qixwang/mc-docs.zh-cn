@@ -1,44 +1,39 @@
 ---
-title: 在 Azure Stack 中订阅套餐
-description: 在 Azure Stack 中创建套餐的订阅
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中创建套餐的订阅。
+titleSuffix: Azure Stack
+description: 了解如何在 Azure Stack Hub 中创建套餐的订阅。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
 ms.topic: conceptual
 origin.date: 10/05/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: 6da842d10b81434092fb25c41b9df46f109f67e2
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: b6ea465803816e2fb35c7209953919b44f285c9a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020308"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540277"
 ---
-# <a name="create-subscriptions-to-offers-in-azure-stack"></a>在 Azure Stack 中创建套餐的订阅
+# <a name="create-subscriptions-to-offers-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建套餐的订阅
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+[创建某个套餐](azure-stack-create-offer.md)后，用户需要订阅此套餐才能使用此套餐。 用户可通过两种方式订阅套餐：
 
-[创建某个套餐](azure-stack-create-offer.md)后，用户需要订阅此套餐才能使用此套餐。 用户订阅套餐有两种方式：
-
-- 在管理员门户中以云操作员身份为用户创建订阅。 创建的订阅可用于公共和专用套餐。
+- 云操作员可以从管理员门户内部为用户创建订阅。 创建的订阅可用于公共和专用套餐。
 - 租户用户可以在使用用户门户时订阅公共套餐。  
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>以云操作员的身份创建订阅
 
 云操作员使用管理员门户为用户创建套餐订阅。 你可以为自己的目录租户成员创建订阅。 如果已启用[多租户](azure-stack-enable-multitenancy.md)，则还可以为其他目录租户中的用户创建订阅。
 
-如果不希望租户创建他们自己的订阅，请将所有套餐设置为私有，然后为租户创建订阅。 将 Azure Stack 与外部计帐系统或服务目录系统集成时，通常会使用此方法。
+如果不希望租户创建他们自己的订阅，请将所有套餐设置为私有，然后为租户创建订阅。 将 Azure Stack Hub 与外部计帐系统或服务目录系统集成时，通常会使用此方法。
 
 为某个用户创建订阅后，该用户可以登录到用户门户，然后会发现他（她）已订阅套餐。  
 
 ### <a name="to-create-a-subscription-for-a-user"></a>为用户创建订阅
 
-1. 在管理门户中，转到“用户订阅”。 
-2. 选择“设置”  （应用程序对象和服务主体对象）。 在“新建用户订阅”下，输入以下信息：   
+1. 在管理员门户中，转到“用户订阅”。 
+2. 选择“添加”   。 在“新建用户订阅”下，输入以下信息：   
 
    - **显示名称** – 用于标识订阅的友好名称，显示为“用户订阅名称”。 
    - **用户** – 从此订阅的可用目录租户中指定一个用户。 用户名显示为“所有者”。   用户名的格式取决于标识解决方案。 例如：
@@ -68,17 +63,17 @@ ms.locfileid: "74020308"
 以用户身份登录到用户门户，查找并订阅目录租户（组织）的公共套餐和附加计划。
 
 >[!NOTE]
->如果 Azure Stack 环境支持[多租户](azure-stack-enable-multitenancy.md)，则也可以从远程目录租户订阅套餐。
+>如果 Azure Stack Hub 环境支持[多租户](azure-stack-enable-multitenancy.md)，则也可以从远程目录租户订阅套餐。
 
 ### <a name="to-subscribe-to-an-offer"></a>订阅套餐
 
-1. [登录](../asdk/asdk-connect.md)到 [Azure Stack 用户门户](https://portal.local.azurestack.external)，选择“获取订阅”。 
+1. 登录到 Azure Stack Hub 用户门户，选择“获取订阅”。 
 
-   ![获取订阅](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![在 Azure Stack Hub 用户门户中获取订阅](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
 2. 在“获取订阅”下的“显示名称”中输入订阅的友好名称。   选择“套餐”，然后在“选择套餐”下选择套餐。   选择“创建”以创建订阅。 
 
-   ![创建产品](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![在 Azure Stack Hub 用户门户中选择套餐](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. 订阅套餐之后，请刷新门户以查看哪些服务是新订阅的一部分。
 
@@ -96,5 +91,6 @@ ms.locfileid: "74020308"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解用户现在如何将资源部署到其订阅： 
-  - [几个用户快速入门](../user/azure-stack-quick-windows-portal.md)演示如何使用 PowerShell、Azure CLI 和用户门户预配 Windows 和 Linux 虚拟机。 
+详细了解用户现在如何将资源部署到其订阅：
+
+- [几个用户快速入门](../user/azure-stack-quick-windows-portal.md)演示如何使用 PowerShell、Azure CLI 和用户门户预配 Windows 和 Linux 虚拟机。

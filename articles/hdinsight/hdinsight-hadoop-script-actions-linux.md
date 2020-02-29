@@ -1,21 +1,20 @@
 ---
-title: 使用基于 Linux 的 HDInsight 进行脚本操作开发 - Azure | Azure
-description: 了解如何使用 Bash 脚本自定义基于 Linux 的 HDInsight 群集。 利用 HDInsight 的脚本操作功能，可在群集创建期间或之后运行脚本。 脚本可用于更改群集配置设置或安装其他软件。
-services: hdinsight
-author: jasonwhowell
+title: 开发脚本操作以自定义 Azure HDInsight 群集
+description: 了解如何使用 Bash 脚本自定义 HDInsight 群集。 脚本操作用于在创建群集期间或之后运行脚本，以更改群集配置设置或安装其他软件。
+author: hrasheed-msft
+ms.author: v-yiso
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 04/22/2019
-ms.date: 07/22/2019
-ms.author: v-yiso
-ms.openlocfilehash: 5d82dc8cec92cbeec608c93b7c59f2c89001da1f
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+origin.date: 11/28/2019
+ms.date: 02/24/2020
+ms.openlocfilehash: 334f622a6007e84d64255994420887cfc0cc0c0e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845436"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428707"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -57,11 +56,11 @@ ms.locfileid: "67845436"
 
 ### <a name="bPS1"></a>选择目标 Apache Hadoop 版本
 
-不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。 如果脚本需要特定版本的服务或组件，你应该只在包含所需组件的 HDInsight 版本中使用该脚本。 可以使用 [HDInsight 组件版本控制](hdinsight-component-versioning.md)文档来查找 HDInsight 随附组件版本的相关信息。
+不同版本的 HDInsight 有不同版本的 Hadoop 服务和已安装的组件。 如果脚本需要特定版本的服务或组件，应该只在包含所需组件的 HDInsight 版本中使用该脚本。 可以使用 [HDInsight 组件版本控制](hdinsight-component-versioning.md)文档来查找 HDInsight 随附组件版本的相关信息。
 
 ### <a name="checking-the-operating-system-version"></a>检查操作系统版本
 
-不同版本的 HDInsight 依赖于特定版本的 Ubuntu。 不同 OS 版本之间存在不同，必须在脚本中检查。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
+不同版本的 HDInsight 依赖于特定版本的 Ubuntu。 脚本必须查看的 OS 版本之间可能存在差异。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
 
 若要检查 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
 
@@ -78,7 +77,7 @@ fi
 
 ### <a name="bps10"></a> 确定针对的操作系统版本
 
-基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发版。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更低版本基于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 采用不同的命令，因此，编写的脚本应能与这两者配合使用。
+HDInsight 取决于 Ubuntu Linux 发行版。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更低版本基于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 采用不同的命令，因此，编写的脚本应能与这两者配合使用。
 
 HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在能够指向 Java 8。 以下代码演示如何确定脚本是在 Ubuntu 14 还是 16 上运行：
 
@@ -140,7 +139,7 @@ fi
 
 ### <a name="bPS5"></a>确保群集体系结构的高可用性
 
-基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只有一个头节点，请不要在两个头节点上安装组件。
+基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只应使用一个头节点，请不要在两个头节点上安装组件。
 
 > [!IMPORTANT]
 > 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间进行故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
@@ -325,10 +324,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 ## <a name="sampleScripts"></a>自定义脚本示例
 
-Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅以下链接，了解更多示例脚本操作。
-
-* [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)
-* [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
+Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参阅可充当示例脚本操作的[在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md) 一文。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -336,7 +332,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 
  错误：`$'\r': command not found`。 有时后面会接着出现“ `syntax error: unexpected end of file`”。
 
-*原因*：此错误的原因是脚本中以 CRLF 作为行尾。 Unix 系统只允许使用 LF 作为行尾。
+*原因：* 此错误的原因是脚本中以 CRLF 作为行尾。 Unix 系统只允许使用 LF 作为行尾。
 
 此问题最常出现于 Windows 环境中编写的脚本，因为 CRLF 是 Windows 上许多文本编辑器中常见的行尾符号。
 
@@ -354,7 +350,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 
  错误：`line 1: #!/usr/bin/env: No such file or directory`。
 
-*原因*：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
+*原因：* 将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
 
 *解决方法*：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。 也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的文件：
 

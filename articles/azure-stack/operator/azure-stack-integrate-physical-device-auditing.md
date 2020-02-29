@@ -1,39 +1,35 @@
 ---
-title: 将物理设备审核与 Azure Stack 数据中心集成 | Microsoft Docs
-description: 了解如何将物理设备访问审核与 Azure Stack 数据中心集成。
-services: azure-stack
+title: 将物理设备审核与 Azure Stack Hub 数据中心集成
+description: 了解如何将物理设备访问审核与 Azure Stack Hub 数据中心集成。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
 ms.topic: article
 origin.date: 06/10/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 06/10/2019
-keywords: ''
-ms.openlocfilehash: f2fb85b61839014c28a87bd7bd01d3fdee427c87
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 93446d4398b49ffa09f3739c14db0facf144a217
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020225"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540915"
 ---
-# <a name="integrate-physical-device-auditing-with-your-azure-stack-datacenter"></a>将物理设备审核与 Azure Stack 数据中心集成
+# <a name="integrate-physical-device-auditing-with-your-azure-stack-hub-datacenter"></a>将物理设备审核与 Azure Stack Hub 数据中心集成
 
-Azure Stack 中的所有物理设备（例如基板管理控制器 (BMC) 和网络交换机）都会发出审核日志。 可以将审核日志集成到整体审核解决方案中。 由于设备因不同的 Azure Stack OEM 硬件供应商而异，所以请联系你的供应商来获取有关审核集成的文档。 以下各部分提供了有关 Azure Stack 中的物理设备审核的一些常规信息。  
+Azure Stack Hub 中的所有物理设备（例如基板管理控制器 (BMC) 和网络交换机）都会发出审核日志。 可以将审核日志集成到整体审核解决方案中。 由于设备因不同的 Azure Stack Hub OEM 硬件供应商而异，所以请联系你的供应商来获取有关审核集成的文档。 以下各部分提供了有关 Azure Stack Hub 中的物理设备审核的一些常规信息。  
 
 ## <a name="physical-device-access-auditing"></a>物理设备访问审核
 
-Azure Stack 中的所有物理设备都支持使用 TACACS 或 RADIUS。 支持包括访问基板管理控制器 (BMC) 和网络交换机。
+Azure Stack Hub 中的所有物理设备都支持使用 TACACS 或 RADIUS。 支持包括访问基板管理控制器 (BMC) 和网络交换机。
 
-Azure Stack 解决方案在推出时并未内置 RADIUS 或 TACACS。 但是，经验证，这些解决方案支持使用市面上现有的 RADIUS 或 TACACS 解决方案。
+Azure Stack Hub 解决方案在推出时并未内置 RADIUS 或 TACACS。 但是，经验证，这些解决方案支持使用市面上现有的 RADIUS 或 TACACS 解决方案。
 
-对于 RADIUS，只有 MSCHAPv2 经过了验证。 它代表使用 RADIUS 的最安全实现。 请咨询 OEM 硬件供应商，在 Azure Stack 解决方案包含的设备中启用 TACAS 或 RADIUS。
+对于 RADIUS，只有 MSCHAPv2 经过了验证。 它代表使用 RADIUS 的最安全实现。 请咨询 OEM 硬件供应商，在 Azure Stack Hub 解决方案包含的设备中启用 TACAS 或 RADIUS。
 
 ## <a name="syslog-forwarding-for-network-devices"></a>网络设备的 Syslog 转发
 
-Azure Stack 中的所有物理网络设备都支持 syslog 消息。 Azure Stack 解决方案未随 syslog 服务器一起提供。 但是，经验证，这些设备支持将消息发送到市面上现有的 syslog 解决方案。
+Azure Stack Hub 中的所有物理网络设备都支持 syslog 消息。 Azure Stack Hub 解决方案未随 syslog 服务器一起提供。 但是，经验证，这些设备支持将消息发送到市面上现有的 syslog 解决方案。
 
 Syslog 目标地址是针对部署所收集的可选参数，但也可以在部署后添加此参数。 要在网络设备上配置 syslog 转发，请咨询你的 OEM 硬件供应商。
 

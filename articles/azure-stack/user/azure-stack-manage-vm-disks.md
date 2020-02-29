@@ -1,39 +1,29 @@
 ---
-title: 在 Azure Stack 中创建 VM 磁盘存储 | Microsoft Docs
-description: 在 Azure Stack 中为虚拟机创建磁盘。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中创建 VM 磁盘存储
+description: 在 Azure Stack Hub 中为虚拟机创建磁盘。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 12/03/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 0415a272f7d9f00593ddbf641306b02b51697db2
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: e92597fa8e5094a9aa9cf251fb3a1c282a080c34
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737888"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540789"
 ---
-# <a name="create-vm-disk-storage-in-azure-stack"></a>在 Azure Stack 中创建 VM 磁盘存储
+# <a name="create-vm-disk-storage-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建 VM 磁盘存储
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-本文介绍如何使用 Azure Stack 门户或 PowerShell 创建虚拟机 (VM) 磁盘存储。
+本文介绍如何使用 Azure Stack Hub 门户或 PowerShell 创建虚拟机 (VM) 磁盘存储。
 
 ## <a name="overview"></a>概述
 
-从版本 1808 开始，Azure Stack 支持在 VM 上使用托管磁盘和非托管磁盘，作为操作系统 (OS) 磁盘和数据磁盘。 在版本 1808 之前，仅支持非托管磁盘。
+从版本 1808 开始，Azure Stack Hub 支持在 VM 上使用托管磁盘和非托管磁盘，作为操作系统 (OS) 磁盘和数据磁盘。 在版本 1808 之前，仅支持非托管磁盘。
 
-[托管磁盘](/virtual-machines/windows/managed-disks-overview)通过管理与 VM 磁盘关联的存储帐户简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的磁盘大小，Azure Stack 即可为你创建和管理磁盘。
+[托管磁盘](/virtual-machines/windows/managed-disks-overview)通过管理与 VM 磁盘关联的存储帐户简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的磁盘大小，Azure Stack Hub 即可为你创建和管理磁盘。
 
 非托管磁盘要求创建存储帐户用于存储磁盘。 你创建的磁盘称为 VM 磁盘并且存储在存储帐户中的容器中。
 
@@ -53,7 +43,7 @@ ms.locfileid: "75737888"
 
 | 方法 | 选项
 |-|-|
-|用户门户|- 向现有 VM 添加新的数据磁盘。 新磁盘由 Azure Stack 创建。 </br> </br> - 将现有的磁盘 (.vhd) 文件添加到以前创建的 VM。 若要执行此操作，必须准备 .vhd，然后将该文件上传到 Azure Stack。 |
+|用户门户|- 向现有 VM 添加新的数据磁盘。 新磁盘由 Azure Stack Hub 创建。 </br> </br> - 将现有的磁盘 (.vhd) 文件添加到以前创建的 VM。 若要执行此操作，必须准备 .vhd，然后将该文件上传到 Azure Stack Hub。 |
 |[PowerShell](#use-powershell-to-add-multiple-disks-to-a-vm) | - 使用 OS 磁盘创建新的 VM，同时向该 VM 添加一个或多个数据磁盘。 |
 
 ## <a name="use-the-portal-to-add-disks-to-a-vm"></a>使用门户向 VM 添加磁盘
@@ -114,15 +104,15 @@ ms.locfileid: "75737888"
 
      标准磁盘的费用随着磁盘大小的增大而提高。 高级磁盘的费用和性能随着磁盘大小的增大而提高。 有关详细信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/managed-disks/)。
 
-   * 选择“创建”  。 Azure Stack 将创建并验证托管磁盘。
+   * 选择“创建”  。 Azure Stack Hub 将创建并验证托管磁盘。
 
-6. 在 Azure Stack 创建磁盘并将磁盘附加到 VM 之后，新磁盘列在“数据磁盘”  下的 VM 磁盘设置中。
+6. 在 Azure Stack Hub 创建磁盘并将磁盘附加到 VM 之后，新磁盘列在“数据磁盘”  下的 VM 磁盘设置中。
 
    ![示例：查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>从存储帐户添加数据磁盘
 
-有关如何在 Azure Stack 中使用存储帐户的详细信息，请参阅 [Azure Stack 存储简介](azure-stack-storage-overview.md)。
+有关如何在 Azure Stack Hub 中使用存储帐户的详细信息，请参阅 [Azure Stack Hub 存储简介](azure-stack-storage-overview.md)。
 
 1. 选择要使用的**存储帐户**。
 2. 选择要在其中放置数据磁盘的**容器**。 在“容器”边栏选项卡中，可根据需要创建新的容器。  然后，可以将新磁盘的位置更改为其自己的容器。 为每个磁盘使用单独的容器时，数据磁盘的位置是分散的，这样可以改进性能。
@@ -163,7 +153,7 @@ ms.locfileid: "75737888"
 
     ![示例：附加 VHD 文件](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
-8. 在 Azure Stack 创建磁盘并将磁盘附加到 VM 之后，新磁盘列在“数据磁盘”  下的 VM 磁盘设置中。
+8. 在 Azure Stack Hub 创建磁盘并将磁盘附加到 VM 之后，新磁盘列在“数据磁盘”  下的 VM 磁盘设置中。
 
     ![示例：完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
@@ -400,4 +390,4 @@ Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Stack VM，请参阅 [Azure Stack 中虚拟机的注意事项](azure-stack-vm-considerations.md)。
+若要详细了解 Azure Stack Hub VM，请参阅 [Azure Stack Hub 中虚拟机的注意事项](azure-stack-vm-considerations.md)。

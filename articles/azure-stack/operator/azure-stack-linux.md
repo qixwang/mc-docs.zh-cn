@@ -1,49 +1,39 @@
 ---
-title: 将 Linux 映像添加到 Azure Stack 市场 | Microsoft Docs
-description: 了解如何将 Linux 映像添加到 Azure Stack 市场。
-services: azure-stack
-documentationcenter: ''
+title: 将 Linux 映像添加到 Azure Stack Hub 市场
+description: 了解如何将 Linux 映像添加到 Azure Stack Hub 市场。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 01/13/2020
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: f323d3d3b294cb84d4dc033771da12d2c958d95b
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 1fb1b23b7b4a9f38e627f8e5cb0e7457fef8bef7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737955"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540928"
 ---
-# <a name="add-linux-images-to-azure-stack-marketplace"></a>将 Linux 映像添加到 Azure Stack 市场
+# <a name="add-linux-images-to-the-azure-stack-hub-marketplace"></a>将 Linux 映像添加到 Azure Stack Hub 市场
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-可以通过将基于 Linux 的映像添加到 Azure Stack 市场，在 Azure Stack 上部署 Linux 虚拟机 (VM)。 将 Linux 映像添加到 Azure Stack 的最简单方法是通过市场管理。 这些映像已准备好，并已针对与 Azure Stack 的兼容性进行测试。
+可以通过将基于 Linux 的映像添加到 Azure Stack Hub 市场，在 Azure Stack Hub 上部署 Linux 虚拟机 (VM)。 将 Linux 映像添加到 Azure Stack Hub 的最简单方法是通过市场管理。 这些映像已准备好，并已针对与 Azure Stack Hub 的兼容性进行测试。
 
 ## <a name="marketplace-management"></a>市场管理
 
-若要从 Azure 市场下载 Linux 映像，请参阅[将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)。 选择要在 Azure Stack 上提供给用户的 Linux 映像。
+若要从 Azure 市场下载 Linux 映像，请参阅[将市场项从 Azure 下载到 Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)。 选择要在 Azure Stack Hub 上提供给用户的 Linux 映像。
 
 这些映像频繁更新，因此请经常查看“市场管理”以保持最新。
 
 ## <a name="prepare-your-own-image"></a>准备自己的映像
 
-请尽可能通过“市场管理”下载可用的映像。 这些映像已针对 Azure Stack 进行了准备和测试。
+请尽可能通过“市场管理”下载可用的映像。 这些映像已针对 Azure Stack Hub 进行了准备和测试。
 
 ### <a name="azure-linux-agent"></a>Azure Linux 代理
 
-Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必需的，并非所有代理版本都可以在 Azure Stack 上正常工作。 Azure Stack 不支持 2.2.21 和 2.2.34（含）之间的版本。 若要使用 2.2.35 以上的最新代理版本，请应用 1901 修补程序/1902 修补程序，或者将 Azure Stack 更新到 1903 版（或更高版本）。 请注意，超过 1910 的 Azure Stack 版本支持 [cloud-init](https://cloud-init.io/)。
+Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必需的，并非所有代理版本都可以在 Azure Stack Hub 上正常工作。 Azure Stack Hub 不支持 2.2.21 和 2.2.34（含）之间的版本。 若要使用 2.2.35 以上的最新代理版本，请应用 1901 修补程序/1902 修补程序，或者将 Azure Stack Hub 更新到 1903 版（或更高版本）。 请注意，超过 1910 的 Azure Stack Hub 版本支持 [cloud-init](https://cloud-init.io/)。
 
-| Azure Stack 内部版本 | Azure Linux 代理内部版本 |
+| Azure Stack Hub 内部版本 | Azure Linux 代理内部版本 |
 | ------------- | ------------- |
 | 1.1901.0.99 或更低版本 | 2.2.20 |
 | 1.1902.0.69  | 2.2.20  |
@@ -64,7 +54,7 @@ Azure Linux 代理（通常称为 **WALinuxAgent** 或 **walinuxagent**）是必
 
 ## <a name="cloud-init"></a>Cloud-init
 
-超过 1910 的 Azure Stack 版本支持 [cloud-init](https://cloud-init.io/)。 若要使用 cloud init 自定义 Linux VM，可以使用以下 PowerShell 说明： 
+超过 1910 的 Azure Stack Hub 版本支持 [cloud-init](https://cloud-init.io/)。 若要使用 cloud init 自定义 Linux VM，可以使用以下 PowerShell 说明。
 
 ### <a name="step-1-create-a-cloud-inittxt-file-with-your-cloud-config"></a>步骤 1：使用你的 cloud-config 创建 cloud-init.txt 文件
 
@@ -114,8 +104,8 @@ runcmd:
   
 ### <a name="step-2-reference-the-cloud-inittxt-during-the-linux-vm-deployment"></a>步骤 2：在 Linux VM 部署期间引用 cloud-init.txt
 
-将该文件上传到 Azure 存储帐户、Azure Stack 存储帐户，或者 Azure Stack Linux VM 可访问的 GitHub 存储库。
-目前，仅在 REST、Powershell 和 CLI 上支持使用 cloud-init 进行 VM 部署，并且在 Azure Stack 上没有关联的门户 UI。
+将该文件上传到 Azure 存储帐户、Azure Stack Hub 存储帐户，或者 Azure Stack Hub Linux VM 可访问的 GitHub 存储库。
+目前，仅在 REST、Powershell 和 CLI 上支持使用 cloud-init 进行 VM 部署，并且在 Azure Stack Hub 上没有关联的门户 UI。
 
 可以按照[这些](../user/azure-stack-quick-create-vm-linux-powershell.md)说明使用 powershell 创建 Linux VM，但请确保引用 cloud-init.txt 作为 `-CustomData` 标记的一部分：
 
@@ -134,5 +124,5 @@ $VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)
-* [Azure Stack 市场概述](azure-stack-marketplace.md)
+* [将市场项从 Azure 下载到 Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
+* [Azure Stack Hub 市场概述](azure-stack-marketplace.md)

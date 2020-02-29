@@ -1,25 +1,25 @@
 ---
-title: 如何跨多个 Azure Stack 订阅复制资源 | Microsoft Docs
-description: 了解如何使用 Azure Stack 订阅复制器脚本集复制资源。
-services: azure-stack
+title: 如何跨多个 Azure Stack Hub 订阅复制资源
+description: 了解如何使用 Azure Stack Hub 订阅复制器脚本集复制资源。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
-origin.date: 10/30/2019
-ms.date: 11/18/2019
+origin.date: 11/07/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: 405bed2645853ed7ca8e409203223c3fd0fa06f2
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 072ace92cd463262438cd2d437fb45bbd07373f7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020636"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540756"
 ---
-# <a name="how-to-replicate-resources-using-the-azure-stack-subscription-replicator"></a>如何使用 Azure Stack 订阅复制器复制资源
+# <a name="replicate-resources-using-the-azure-stack-hub-subscription-replicator"></a>使用 Azure Stack Hub 订阅复制器复制资源
 
-可以使用 Azure Stack 订阅复制器 PowerShell 脚本，在 Azure Stack 订阅之间、跨 Azure Stack 阵列或者在 Azure Stack 与 Azure 之间复制资源。 复制器脚本从不同的 Azure 和 Azure Stack 订阅读取和重建 Azure 资源管理器资源。 本文将介绍脚本的工作原理及其用法，并提供脚本操作的参考信息。
+可以使用 Azure Stack Hub 订阅复制器 PowerShell 脚本，在 Azure Stack Hub 订阅之间、跨 Azure Stack Hub 阵列或者在 Azure Stack Hub 与 Azure 之间复制资源。 复制器脚本从不同的 Azure 和 Azure Stack Hub 订阅读取和重建 Azure 资源管理器资源。 本文将介绍脚本的工作原理及其用法，并提供脚本操作的参考信息。
+
+可以在 [Azure 智能边缘模式](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub 存储库中找到本文中使用的脚本。 脚本位于[订阅复制器](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/subscription%20replicator)文件夹中。
 
 ## <a name="subscription-replicator-overview"></a>订阅复制器概述
 
@@ -82,7 +82,7 @@ Azure 订阅复制器采用模块化设计。 此工具使用核心处理器来�
 脚本运行完成后，会出现三个新文件夹：**Deployment_Files**、**Parameter_Files** 和 **Custom_ARM_Templates**。
 
  > [!Note]  
- > 在运行任何已生成的脚本之前，必须先设置正确的环境并登录到目标订阅（例如，在新的 Azure Stack 中），然后将工作目录设置为 **Deployment_Files** 文件夹。
+ > 在运行任何已生成的脚本之前，必须先设置正确的环境并登录到目标订阅（例如，在新的 Azure Stack Hub 中），然后将工作目录设置为 **Deployment_Files** 文件夹。
 
 Deployment_Files 包含两个文件：**DeployResourceGroups.ps1** 和 **DeployResources.ps1**。 执行 DeployResourceGroups.ps1 会部署资源组。 执行 DeployResources.ps1 会部署所有已处理的资源。 如果在使用 **All** 或 **Microsoft.Compute/virtualMachines** 作为资源类型的情况下运行该工具，DeployResources.ps1 将提示用户输入虚拟机管理员密码，以用于创建所有虚拟机。
 
@@ -180,10 +180,10 @@ Azure 订阅复制器 (v3) 目前可以复制以下资源类型：
 
 为确保复制成功，请确保目标订阅的资源提供程序版本与源订阅的资源提供程序版本相匹配。
 
-在从商用 Azure 复制到商用 Azure 或者从 Azure Stack 内部的一个订阅复制到同一 Azure Stack 内部的另一个订阅过程中，复制存储帐户时会出现问题。 原因是存储帐户命名要求规定，所有存储帐户名称在所有商用 Azure 中或 Azure Stack 区域/实例的所有订阅中必须唯一。 跨不同的 Azure Stack 实例复制存储帐户将会成功，因为 Azure Stack 是独立的区域/实例。
+在从商用 Azure 复制到商用 Azure 或者从 Azure Stack Hub 内部的一个订阅复制到同一 Azure Stack Hub 内部的另一个订阅过程中，复制存储帐户时会出现问题。 原因是存储帐户命名要求规定，所有存储帐户名称在所有商用 Azure 中或 Azure Stack Hub 区域/实例的所有订阅中必须唯一。 跨不同的 Azure Stack Hub 实例复制存储帐户将会成功，因为 Azure Stack 是独立的区域/实例。
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  

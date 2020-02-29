@@ -1,34 +1,23 @@
 ---
-title: 针对 Azure Stack 中的应用服务服务器角色的容量计划 | Microsoft Docs
-description: 了解针对 Azure Stack 中的应用服务服务器角色的容量计划。
-services: azure-stack
-documentationcenter: ''
+title: 针对 Azure Stack Hub 中的应用服务服务器角色的容量计划
+description: 了解针对 Azure Stack Hub 中的应用服务服务器角色的容量计划。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 03/13/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: ea410314db9b7b83c0ef90861b4cce670e728b75
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: bfc044c7cda2420a9ff7c61c0f31dfafe269fac7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578494"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540961"
 ---
-# <a name="capacity-planning-for-app-service-server-roles-in-azure-stack"></a>针对 Azure Stack 中的应用服务服务器角色的容量计划
+# <a name="capacity-planning-for-app-service-server-roles-in-azure-stack-hub"></a>针对 Azure Stack Hub 中的应用服务服务器角色的容量计划
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-若要在 Azure Stack 上设置 Azure 应用服务的生产就绪部署，必须计划你期望系统支持的容量。  
+若要在 Azure Stack Hub 上设置 Azure 应用服务的生产就绪部署，必须计划你期望系统支持的容量。  
 
 本文提供了有关应当为任何生产部署使用的最少计算实例和计算 SKU 数量的指南。
 
@@ -83,7 +72,7 @@ Azure 应用经典部署模型角色负责管理应用服务 Azure 资源管理�
 决定要使用的共享 Web 辅助角色数量时，请查看以下注意事项：
 
 - **内存**：内存是对 Web 辅助角色最重要的资源。 从磁盘交换虚拟内存时，内存不足会影响网站性能。 每台服务器的操作系统需要大约 1.2 GB 的 RAM。 可以使用高于此阈值的 RAM 来运行网站。
-- **活动网站的百分比**：通常，在 Azure Stack 部署中，Azure 应用服务中大约有 5% 的应用处于活动状态。 但是，在任意给定时刻处于活动状态的应用所占百分比可能更高或更低。 活动应用所占百分比为 5% 时，在 Azure Stack 部署中，要放置在 Azure 应用服务中的最大应用数应当小于活动网站数的 20 倍 (5 x 20 = 100)。
+- **活动网站的百分比**：通常，在 Azure Stack Hub 部署中，Azure 应用服务中大约有 5% 的应用处于活动状态。 但是，在任意给定时刻处于活动状态的应用所占百分比可能更高或更低。 活动应用所占百分比为 5% 时，在 Azure Stack Hub 部署中，要放置在 Azure 应用服务中的最大应用数应当小于活动网站数的 20 倍 (5 x 20 = 100)。
 - **平均内存占用**：在生产环境中观察到的应用平均内存占用大约为 70 MB。 使用此占用，按以下方式计算在所有 Web 辅助角色的计算机或 VM 中分配的内存：
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
@@ -96,11 +85,11 @@ Azure 应用经典部署模型角色负责管理应用服务 Azure 资源管理�
 
 ### <a name="additional-considerations-for-dedicated-workers-during-upgrade-and-maintenance"></a>专用辅助角色在升级和维护期间的其他注意事项
 
-在升级和维护辅助角色期间，Azure Stack 上的 Azure 应用服务一次针对每个辅助角色层的 20% 的资源执行维护。  因此，云管理员始终必须为每个辅助角色层保持 20% 的未分配辅助角色池，以确保其租户不会在升级和维护期间遇到服务中断的情况。  例如，如果辅助角色层包含 10 个辅助角色，则应确保其中有 2 个辅助角色尚未分配，以便进行升级和维护。 如果 10 个辅助角色全都分配出去，则应扩展辅助角色层，以维护包含未分配辅助角色的池。 
+在升级和维护辅助角色期间，Azure Stack Hub 上的 Azure 应用服务一次针对每个辅助角色层的 20% 的资源执行维护。  因此，云管理员始终必须为每个辅助角色层保持 20% 的未分配辅助角色池，以确保其租户不会在升级和维护期间遇到服务中断的情况。  例如，如果辅助角色层包含 10 个辅助角色，则应确保其中有 2 个辅助角色尚未分配，以便进行升级和维护。 如果 10 个辅助角色全都分配出去，则应扩展辅助角色层，以维护包含未分配辅助角色的池。 
 
 在升级和维护期间，Azure 应用服务会将工作负荷转移到未分配的辅助角色，确保工作负荷继续正常运行。 但是，如果升级期间没有可用的未分配辅助角色，则租户工作负荷可能会停机。 对于共享的辅助角色，客户无需预配额外的辅助角色，因为服务会自动在可用辅助角色内分配租户应用。 若要确保高可用性，此层中至少要有两个辅助角色。
 
-云管理员可以在 Azure Stack 管理员门户的“应用服务管理”区域中监视其辅助角色层分配。 导航到“应用服务”，然后在左窗格中选择“辅助角色层”。 “辅助角色层”表会显示辅助角色层的名称、大小、使用的映像、可用辅助角色数目（未分配）、每层中的辅助角色总数，以及辅助角色层的整体状态。
+云管理员可以在 Azure Stack Hub 管理员门户的“应用服务管理”区域中监视其辅助角色层分配。 导航到“应用服务”，然后在左窗格中选择“辅助角色层”。 “辅助角色层”表会显示辅助角色层的名称、大小、使用的映像、可用辅助角色数目（未分配）、每层中的辅助角色总数，以及辅助角色层的整体状态。
 
 ![应用服务管理 - 辅助角色层][1]
 
@@ -120,7 +109,7 @@ Azure 应用经典部署模型角色负责管理应用服务 Azure 资源管理�
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)
+[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

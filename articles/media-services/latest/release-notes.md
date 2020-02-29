@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-origin.date: 12/13/2019
-ms.date: 01/20/2020
+origin.date: 02/03/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 0c1ec05d24a5f89210d4336dfe462803027519fe
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 74668d19f24785aae37aba75f8617cbc2972977b
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939805"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494197"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -36,10 +36,14 @@ ms.locfileid: "75939805"
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
+ 
+## <a name="january-2020"></a>2020 年 1 月
 
-## <a name="november-2019"></a>2019 年 11 月
+### <a name="improvements-in-media-processors"></a>媒体处理器中的改进
 
-### <a name="live-transcription-preview"></a>实时听录预览版
+- 改进对视频分析中的隔行扫描源的支持 – 在发送到推理引擎之前，此类内容现在已正确取消隔行扫描。
+- 使用“最佳”模式生成缩略图时，编码器现在会搜索超过 30 秒的时间，以选择不是单色的帧。
+
 
 ### <a name="content-protection"></a>内容保护
 
@@ -55,6 +59,7 @@ ms.locfileid: "75939805"
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
+
 - 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
 - 改善了 Media Encoder Standard 中大小重设器的性能和多线程处理。 在特定情况下，客户会看到 5-40% 的 VOD 编码性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
@@ -73,7 +78,7 @@ ms.locfileid: "75939805"
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将于 2020 年 3 月 31 日停用。
+我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此[旧组件](../previous/legacy-components.md)主题。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder) 和[将 AME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder)。
  
@@ -92,6 +97,15 @@ ms.locfileid: "75939805"
 
 ## <a name="may-2019"></a>2019 年 5 月
 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>针对媒体服务诊断日志和指标的 Azure Monitor 支持
+
+现在可以使用 Azure Monitor 查看媒体服务发出的遥测数据。
+
+* 使用 Azure Monitor 诊断日志来监视媒体服务密钥传送终结点发送的请求。 
+* 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
+
+有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频轨道支持 
 
 使用多种编解码器和语言流式处理具有多个音频轨道的资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出（版本 4 或更高版本）的多个音频轨道。
@@ -108,7 +122,7 @@ ms.locfileid: "75939805"
 ### <a name="new-presets"></a>新增预设
 
 * 向内置分析器预设添加了 [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)。
-* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](cae-experimental.md)。 
+* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 

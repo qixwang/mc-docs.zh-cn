@@ -1,41 +1,30 @@
 ---
-title: 按需收集 Azure Stack 诊断日志 | Microsoft Docs
-description: 了解如何使用“帮助和支持”或特权终结点 (PEP) 在 Azure Stack 中按需收集诊断日志。
-services: azure-stack
-documentationcenter: ''
+title: 按需收集 Azure Stack Hub 诊断日志
+description: 了解如何使用“帮助和支持”或特权终结点 (PEP) 在 Azure Stack Hub 中按需收集诊断日志。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 11/07/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: shisab
-ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: ae0463fb5bc562f424e2f52a0ee90aa68f5fe7a1
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.lastreviewed: 01/16/2020
+ms.openlocfilehash: 891217e8d9ec0f951d128bffd13b13cb6161dddf
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737878"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540944"
 ---
-# <a name="collect-azure-stack-diagnostic-logs-on-demand"></a>按需收集 Azure Stack 诊断日志
+# <a name="collect-azure-stack-hub-diagnostic-logs-on-demand"></a>按需收集 Azure Stack Hub 诊断日志
 
-*适用于：Azure Stack 集成系统*
-
-在故障排除过程中，Azure 客户支持服务 (CSS) 可能需要分析诊断日志。 从 1907 版开始，Azure Stack 操作员可以通过“帮助和支持”将诊断日志上传到 Azure 中的 Blob 容器。  相对于以前使用 PowerShell 的方法，建议使用“帮助和支持”  ，因为它更简单。 但是，如果门户不可用，操作员可以继续使用 **Get-AzureStackLog** 通过特权终结点 (PEP) 收集日志，就像在以前的版本中一样。 本主题介绍如何通过这两种方法按需收集诊断日志。
+在故障排除过程中，Azure 客户支持服务 (CSS) 可能需要分析诊断日志。 从 1907 版开始，Azure Stack Hub 操作员可以通过“帮助和支持”将诊断日志上传到 Azure 中的 Blob 容器。  相对于以前使用 PowerShell 的方法，建议使用“帮助和支持”  ，因为它更简单。 但是，如果门户不可用，操作员可以继续使用 **Get-AzureStackLog** 通过特权终结点 (PEP) 收集日志，就像在以前的版本中一样。 本主题介绍如何通过这两种方法按需收集诊断日志。
 
 >[!Note]
 >作为按需收集日志的备用方案，可以通过启用[诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)功能来简化故障排除过程。 如果需要调查系统运行状况，请自动上传日志供 CSS 分析。 
 
 ## <a name="use-help-and-support-to-collect-diagnostic-logs-on-demand"></a>使用“帮助和支持”按需收集诊断日志
 
-为了排查问题，CSS 可能会请求 Azure Stack 操作员根据需要收集上周特定时间范围的诊断日志。 在这种情况下，CSS 会为操作员提供一个 SAS URL 来上传收集的内容。 使用以下步骤，通过 CSS 提供的 SAS URL 配置按需日志收集：
+为了排查问题，CSS 可能会请求 Azure Stack Hub 操作员根据需要收集上周特定时间范围的诊断日志。 在这种情况下，CSS 会为操作员提供一个 SAS URL 来上传收集的内容。 使用以下步骤，通过 CSS 提供的 SAS URL 配置按需日志收集：
 
 1. 打开“帮助和支持概览”，单击“立即收集日志”。   
 1. 从过去七天选择 1-4 小时滑动窗口。 
@@ -53,7 +42,7 @@ ms.locfileid: "75737878"
 
 
 
-### <a name="run-get-azurestacklog-on-azure-stack-integrated-systems"></a>在 Azure Stack 集成系统上运行 Get-AzureStackLog
+### <a name="run-get-azurestacklog-on-azure-stack-hub-integrated-systems"></a>在 Azure Stack Hub 集成系统上运行 Get-AzureStackLog
 
 若要在集成系统上运行 Get-AzureStackLog，需访问特权终结点 (PEP)。 下面是一个可以通过 PEP 来运行的示例脚本，用于在集成系统上收集日志：
 
@@ -124,7 +113,7 @@ if ($session) {
   ```
 
   > [!NOTE]
-  > 此过程用于上传日志。 即使没有可以访问的 SMB 共享，或者无法访问 Internet，也可在 Azure Stack 上创建一个 Blob 存储帐户来传输日志，然后使用客户端检索这些日志。  
+  > 此过程用于上传日志。 即使没有可以访问的 SMB 共享，或者无法访问 Internet，也可在 Azure Stack Hub 上创建一个 Blob 存储帐户来传输日志，然后使用客户端检索这些日志。  
 
   若要为存储帐户生成 SAS 令牌，需要以下权限：
 
@@ -191,7 +180,7 @@ if ($session) {
 
 ### <a name="additional-considerations-on-diagnostic-logs"></a>有关诊断日志的其他注意事项
 
-* 此命令需要一些时间来运行，具体取决于日志收集的角色。 影响因素还包括指定用于日志收集的时限，以及 Azure Stack 环境中的节点数。
+* 此命令需要一些时间来运行，具体取决于日志收集的角色。 影响因素还包括指定用于日志收集的时限，以及 Azure Stack Hub 环境中的节点数。
 * 当日志收集运行时，请查看在 **OutputSharePath** 参数（在命令中指定）中创建的新文件夹。
 * 每个角色的日志位于单个 zip 文件中。 根据所收集日志的大小，一个角色的日志可能会拆分成多个 zip 文件。 对于此类角色，如果需要将所有日志文件解压缩到单个文件夹中，请使用可以批量解压缩的工具。 选择角色的所有压缩文件，然后选择“解压缩到此处”。  该角色的所有日志文件会解压缩到单个合并的文件夹中。
 * 在压缩的日志文件所在的文件夹中，还会创建名为 **Get-AzureStackLog_Output.log** 的文件。 此文件是一个命令输出日志，可以用来排查日志收集过程中的问题。 有时，日志文件包含 `PS>TerminatingError` 条目，除非运行日志收集后缺少预期的日志文件，否则可以放心忽略这些条目。
@@ -243,25 +232,25 @@ if ($session) {
 
 ### <a name="how-diagnostic-log-collection-using-the-pep-works"></a>使用 PEP 收集诊断日志的工作原理
 
-可以通过 Azure Stack 诊断工具轻松高效地进行日志收集。 下图显示了诊断工具的工作原理：
+可以通过 Azure Stack Hub 诊断工具轻松高效地进行日志收集。 下图显示了诊断工具的工作原理：
 
-![Azure Stack 诊断工具工作流图](media/azure-stack-diagnostics/get-azslogs.png)
+![Azure Stack Hub 诊断工具工作流图](media/azure-stack-diagnostics/get-azslogs.png)
 
 
 #### <a name="trace-collector"></a>跟踪收集器
 
-跟踪收集器默认启用，可以在后台持续运行，以便从 Azure Stack 组件服务收集所有 Windows 事件跟踪 (ETW) 日志。 ETW 日志存储在一个常用的本地共享中，其时间限制为五天。 一旦达到此限制，就会在创建新文件时删除最旧的文件。 每个文件默认允许的最大大小为 200 MB。 每 2 分钟进行一次大小检查，如果当前文件 >= 200 MB，则会保存该文件并生成新文件。 按事件会话生成的文件的总大小也存在 8 GB 的限制。
+跟踪收集器默认启用，可以在后台持续运行，以便从 Azure Stack Hub 组件服务收集所有 Windows 事件跟踪 (ETW) 日志。 ETW 日志存储在一个常用的本地共享中，其时间限制为五天。 一旦达到此限制，就会在创建新文件时删除最旧的文件。 每个文件默认允许的最大大小为 200 MB。 每 2 分钟进行一次大小检查，如果当前文件 >= 200 MB，则会保存该文件并生成新文件。 按事件会话生成的文件的总大小也存在 8 GB 的限制。
 
 #### <a name="get-azurestacklog"></a>Get-AzureStackLog
 
-可以使用 PowerShell cmdlet Get-AzureStackLog 从 Azure Stack 环境中的所有组件收集日志。 此工具将日志以 zip 文件形式保存在用户定义的位置。 如果 Azure Stack 技术支持团队需要日志来排查问题，他们可能要求你运行 Get-AzureStackLog。
+可以使用 PowerShell cmdlet Get-AzureStackLog 从 Azure Stack Hub 环境中的所有组件收集日志。 此工具将日志以 zip 文件形式保存在用户定义的位置。 如果 Azure Stack Hub 技术支持团队需要日志来排查问题，他们可能要求你运行 Get-AzureStackLog。
 
 > [!CAUTION]
 > 这些日志文件可能包含个人身份信息 (PII)。 在公开发布任何日志文件之前，请考虑到这一因素。
 
 下面是一些收集的示例日志类型：
 
-* **Azure Stack 部署日志**
+* **Azure Stack Hub 部署日志**
 * **Windows 事件日志**
 * **Panther 日志**
 * **群集日志**

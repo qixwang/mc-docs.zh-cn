@@ -1,23 +1,21 @@
 ---
-title: 如何使用 Azure IoT 中心设备预配服务中的自定义分配策略 | Microsoft Docs
-description: 如何使用 Azure IoT 中心设备预配服务中的自定义分配策略
+title: Azure IoT 中心设备预配服务中的自定义分配策略
+description: 如何使用 Azure IoT 中心设备预配服务 (DPS) 中的自定义分配策略
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/14/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: c39dd8f0842cae53d8be852358222c141270b910
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 6036d224e59a8b4b71fc60f7ae1f8233a9b0c76b
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859608"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494515"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
-
 
 自定义分配策略让你能够对设备分配到 IoT 中心的方式进行更多地控制。 它是通过使用 [Azure 函数](../azure-functions/functions-overview.md)中的自定义代码将设备分配到 IoT 中心来实现的。 设备预配服务将调用 Azure 函数代码，提供有关设备和注册的所有相关信息。 将执行函数代码并返回用于预配设备的 IoT 中心信息。
 
@@ -25,13 +23,12 @@ ms.locfileid: "75859608"
 
 例如，你可能想要检查设备在预配过程中所使用的证书，并根据证书属性将该设备分配到 IoT 中心。 或者，你可能在数据库中存储了设备的信息，并需要查询数据库以确定应将该设备分配到哪个 IoT 中心。
 
-
 本文演示使用 C# 编写的 Azure 函数的自定义分配策略。 创建了两个新的 IoT 中心，分别表示 Contoso 烤箱分区  和 Contoso 热泵分区  。 请求预配的设备必须具有含以下后缀之一的注册 ID 才能被接受进行预配：
 
-- **-contoso-tstrsd-007**：Contoso 烤箱分区
-- **-contoso-hpsd-088**：Contoso 热泵分区
+* **-contoso-tstrsd-007**：Contoso 烤箱分区
+* **-contoso-hpsd-088**：Contoso 热泵分区
 
-将基于注册 ID 上这些所需的后缀之一对设备进行预配。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中包含的预配示例对这些设备进行模拟。 
+将基于注册 ID 上这些所需的后缀之一对设备进行预配。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中包含的预配示例对这些设备进行模拟。
 
 你将在本文中执行以下步骤：
 
@@ -40,7 +37,6 @@ ms.locfileid: "75859608"
 * 为两个设备模拟创建设备密钥。
 * 为 Azure IoT C SDK 设置开发环境
 * 模拟设备，以验证其是否根据自定义分配策略的示例代码进行预配。
-
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -58,14 +54,14 @@ ms.locfileid: "75859608"
 在本部分，你将创建一个预配服务，以及分别表示“Contoso 烤箱部门”和“Contoso 热泵部门”的两个 IoT 中心。  
 
 > [!TIP]
-> 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://status.azure.com/status)页，在其中搜索“设备预配服务”。 在命令中，可以使用单字或多字格式指定位置。 该值不区分大小写。 如果使用多字格式指定位置，请将值括在引号中。
+> 本文中使用的命令将在“中国东部”位置创建预配服务和其他资源。 我们建议在与你最靠近的区域中创建支持设备预配服务的资源。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：chinaeast、China East、CHINA EAST，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "China East"`。
 >
 
-1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+1. 在 Azure CLI 中，使用 [az group create](/cli/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
     以下示例在 *chinaeast* 区域创建名为 *contoso-us-resource-group* 的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
 
-    ```azurecli-interactive 
+    ```azurecli 
     az group create --name contoso-us-resource-group --location chinaeast
     ```
 
@@ -76,20 +72,20 @@ ms.locfileid: "75859608"
     ```azurecli 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location chinaeast
     ```
-    
+
     此命令可能需要花费几分钟时间完成。
 
-3. 使用 [az iot hub create](/cli/iot/hub#az-iot-hub-create) 命令创建“Contoso 烤箱部门”IoT 中心。  IoT 中心将被添加到 contoso-us-resource-group  。
+3. 在 Azure CLI 中，使用 [az iot hub create](/cli/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区  IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
 
     以下示例在 *chinaeast* 位置创建名为 *contoso-toasters-hub-1098* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
 
     ```azurecli 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location chinaeast --sku S1
     ```
-    
+
     此命令可能需要花费几分钟时间完成。
 
-4. 使用 [az iot hub create](/cli/iot/hub#az-iot-hub-create) 命令创建“Contoso 热泵部门”IoT 中心。  此 IoT 中心也将被添加到 contoso-us-resource-group  。
+4. 在 Azure CLI 中，使用 [az iot hub create](/cli/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区  IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
 
     以下示例在 *chinaeast* 位置创建名为 *contoso-heatpumps-hub-1098* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
 
@@ -349,8 +345,8 @@ ms.locfileid: "75859608"
 
 对于本文中的示例，使用以下两个设备注册 ID 并计算这两个设备的设备密钥。 这两个注册 ID 都具有有效的后缀，以与自定义分配策略的示例代码结合使用：
 
-- breakroom499-contoso-tstrsd-007 
-- mainbuilding167-contoso-hpsd-088 
+* breakroom499-contoso-tstrsd-007 
+* mainbuilding167-contoso-hpsd-088 
 
 ### <a name="linux-workstations"></a>Linux 工作站
 
@@ -382,7 +378,7 @@ ms.locfileid: "75859608"
 
 1. 将“键”  值替换为前面记录的“主键”  。
 
-    ```PowerShell
+    ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
     $REG_ID1='breakroom499-contoso-tstrsd-007'
@@ -398,16 +394,12 @@ ms.locfileid: "75859608"
     echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
     ```
 
-    ```PowerShell
+    ```powershell
     breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
-
 模拟设备将使用含有每个注册 ID 的派生的设备密钥，以执行对称密钥证明。
-
-
-
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>准备 Azure IoT C SDK 开发环境
 
@@ -428,8 +420,8 @@ ms.locfileid: "75859608"
     cd azure-iot-sdk-c
     git submodule update --init
     ```
-    应该预料到此操作需要几分钟才能完成。
 
+    应该预料到此操作需要几分钟才能完成。
 
 4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
 
@@ -438,7 +430,7 @@ ms.locfileid: "75859608"
     cd cmake
     ```
 
-4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
+5. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -462,9 +454,6 @@ ms.locfileid: "75859608"
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
-
 ## <a name="simulate-the-devices"></a>模拟设备
 
 在本部分，你将更新前面设置的、位于 Azure IoT C SDK 中的名为 **prov\_dev\_client\_sample** 的预配示例。
@@ -478,7 +467,7 @@ ms.locfileid: "75859608"
 2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln  解决方案文件。 解决方案文件应位于以下位置：
 
     ```
-    \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
+    azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
 3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
@@ -498,7 +487,7 @@ ms.locfileid: "75859608"
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
+6. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。 
 
 ### <a name="simulate-the-contoso-toaster-device"></a>模拟 Contoso 烤箱设备
 
@@ -515,7 +504,7 @@ ms.locfileid: "75859608"
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
-   
+
     保存文件。
 
 2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
@@ -544,7 +533,7 @@ ms.locfileid: "75859608"
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
-   
+
     保存文件。
 
 2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目  。
@@ -564,7 +553,6 @@ ms.locfileid: "75859608"
 
     Press enter key to exit:
     ```
-
 
 ## <a name="troubleshooting-custom-allocation-policies"></a>自定义分配策略疑难解答
 
@@ -586,7 +574,7 @@ ms.locfileid: "75859608"
 此处的步骤假定你按照名为 contoso-us-resource-group  的同一资源组的指示创建了本文中的所有资源。
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
+> 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
 >
 
 若要按名称删除资源组：
@@ -601,16 +589,5 @@ ms.locfileid: "75859608"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
-- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
-
-
-
-
-
-
-
-
-
-
-
+* 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 

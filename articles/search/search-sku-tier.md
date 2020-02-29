@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/17/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 6b9b57df8fb7e53116c286924927901930cdc813
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+origin.date: 01/30/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 509e29b38655fc5ab8b8e16d314d9b6db275812d
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123246"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501463"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -22,15 +22,20 @@ ms.locfileid: "76123246"
 
 大多数客户从“免费”层着手，以便能够评估该服务。 评估后，他们往往会在某个更高的层上创建另一个服务用于开发和生产部署。
 
-尽管所有层（包括“免费”层）通常会提供功能奇偶一致性，但较大的工作负荷可以要求使用较高的层。
+## <a name="feature-availability-by-tier"></a>按层划分的功能可用性
 
-> [!NOTE] 
-> 功能奇偶一致性的例外情况是[索引器](search-indexer-overview.md)，它们不可用于 S3 HD。
->
+几乎每个功能都可在每个层（包括免费层）上使用，但如果不为其提供足够的容量，则资源密集型功能或工作流可能无法正常工作。
 
-## <a name="available-tiers"></a>可用的层
+下表描述了与层相关的功能约束。
 
-层反映托管服务（而不是功能）的硬件的特征，并按以下标准进行区分：
+| 功能 | 限制 |
+|---------|-------------|
+| [索引器](search-indexer-overview.md) | 索引器在 S3 HD 上不可用。 |
+| [客户托管的加密密钥](search-security-manage-encryption-keys.md) | 在免费层上不可用。 |
+
+## <a name="tiers-skus"></a>层 (SKU)
+
+可以通过以下方式区分层：
 
 + 可创建的索引和索引器数量
 + 分区（物理存储）的大小和速度
@@ -53,7 +58,7 @@ ms.locfileid: "76123246"
 
 + 采用最低配置的服务的基本成本（创建服务）
 + 纵向扩展时的增量成本（添加副本或分区）
-+ 带宽费用（出站数据传输）
++ 带宽费用（出站数据传输） 
 
 <!-- + Cognitive search (attach Cognitive Services for AI enrichment, Azure storage for knowledge store) -->
 
@@ -90,9 +95,9 @@ SU 是服务使用的副本数和分区数的乘积：   **(R x P = SU)** 。
 
 大多数客户只是联机使用一部分总容量，将剩余的容器保持预留状态。 在计费方面，支付的每小时费用取决于联机的分区和副本数量（使用 SU 公式计算）。
 
-## <a name="how-to-manage-and-reduce-costs"></a>如何管理和降低成本
+## <a name="how-to-manage-costs"></a>如何管理成本
 
-除参考以下建议外，另请访问[计费和成本管理](https://docs.azure.cn/billing/billing-getting-started)。
+以下建议可帮助你至少保持成本：
 
 - 在同一区域或者在尽可能少的区域中创建所有资源，以最大程度地减少甚至消除带宽费用。
 
@@ -102,7 +107,9 @@ SU 是服务使用的副本数和分区数的乘积：   **(R x P = SU)** 。
 
 - 针对索引编制等资源密集型操作纵向扩展，然后针对常规查询工作负荷向下重新调整。 首先对 Azure 认知搜索使用最低的配置（由一个分区和一个副本组成的一个 SU），然后监视用户活动，以识别指示需要更多容量的使用模式。 如果有可预测的模式，也许可以使用活动来同步规模（需要编写代码来自动化此过程）。
 
-无法通过关闭搜索服务来减少费用。 专用资源始终运行，是在服务的生存期内专门分配给你使用的。 就服务本身而言，降低费用的唯一方法是将副本和分区数减少到一个较低的水平，但仍能提供可接受的性能并[遵从 SLA](https://www.azure.cn/support/legal/sla/)；或者在较低的层创建一个服务（S1 的每小时费率低于 S2 或 S3 的费率）。 假设你预配了一个面向低端负载预测的服务。若要扩充该服务，可以创建另一个具有较大层的服务，在该服务上重建索引，然后删除第一个服务。
+不可能临时关闭搜索服务。 专用资源始终运行，是在服务的生存期内专门分配给你使用的。 删除服务这项操作是永久性的，也会删除其关联的数据。
+
+就服务本身而言，降低费用的唯一方法是将副本和分区数减少到一个较低的水平，但仍能提供可接受的性能并[遵从 SLA](https://www.azure.cn/support/legal/sla/)；或者在较低的层创建一个服务（S1 的每小时费率低于 S2 或 S3 的费率）。 假设你预配了一个面向低端负载预测的服务。若要扩充该服务，可以创建另一个具有较大层的服务，在该服务上重建索引，然后删除第一个服务。
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>如何评估容量要求
 

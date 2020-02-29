@@ -1,46 +1,37 @@
 ---
-title: 使用 Azure Stack 用户门户 | Microsoft Docs
-description: 了解如何访问和使用 Azure Stack 中的用户门户。
-services: azure-stack
-documentationcenter: ''
+title: 使用 Azure Stack Hub 用户门户
+description: 了解如何访问和使用 Azure Stack Hub 中的用户门户。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 06/13/2019
-ms.date: 10/21/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a1466e71e1e22632f7b24d15d2157ca8c8dd0f38
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 3e71ac63d4ae2314af7814933c1adc6bc8102519
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578293"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541009"
 ---
-# <a name="use-the-azure-stack-user-portal"></a>使用 Azure Stack 用户门户
+# <a name="use-the-azure-stack-hub-user-portal"></a>使用 Azure Stack Hub 用户门户
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-使用 Azure Stack 门户订阅公共套餐，并使用这些套餐提供的服务。 如果你以前用过全球 Azure 门户，则应当已经熟悉了该站点的工作原理。
+使用 Azure Stack Hub 门户订阅公共套餐，并使用这些套餐提供的服务。 如果你以前用过全球 Azure 门户，则应当已经熟悉了该站点的工作原理。
 
 ## <a name="access-the-portal"></a>访问门户
 
-Azure Stack 操作员（服务提供商或组织中的管理员）将会告知用于访问门户的正确 URL。
+Azure Stack Hub 操作员（服务提供商或组织中的管理员）将会告知用于访问门户的正确 URL。
 
 - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt ;*region*&gt;.&lt;*FQDN*&gt; 。
 - 如果使用的是 Azure Stack 开发工具包 (ASDK)，则门户地址为 https://portal.local.azurestack.external 。
-- 所有 Azure Stack 部署的默认时区都设置为协调世界时 (UTC)。 在安装 Azure Stack 时，你可以选择时区，但是，在安装期间，它将自动还原为默认设置 UTC。
+- 所有 Azure Stack Hub 部署的默认时区都设置为协调世界时 (UTC)。 在安装 Azure Stack Hub 时，你可以选择时区，但是，在安装期间，它将自动还原为默认设置 UTC。
 
 ## <a name="customize-the-dashboard"></a>自定义仪表板
 
 仪表板包含一组默认磁贴。 可以选择“编辑仪表板”  来修改默认仪表板，或者选择“新建仪表板”来创建自定义仪表板。  通过添加或删除磁贴来轻松自定义仪表板。 例如，若要添加“计算”磁贴，请选择“+ 创建资源”  。 右键单击“计算”，然后选择“固定到仪表板”。  
 
-![Azure Stack 用户门户的屏幕截图](media/azure-stack-use-portal/userportal.png)
+![Azure Stack Hub 用户门户的屏幕截图](media/azure-stack-use-portal/userportal.png)
 
 若要将仪表板还原成原始设置，请执行以下操作：
 1.  选择“编辑仪表板”  。 
@@ -60,14 +51,14 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 - 你的组织或服务提供商可能提供了其自己的文档，如果他们提供了自定义的服务或应用，则通常是这种情况。
 - 第三方应用提供自身的文档。
-- 为保持服务的 Azure 一致性，我们强烈建议先查看 Azure Stack 文档。 若要访问 Azure Stack 用户文档，请选择“帮助”图标 ( **?** )，然后选择“帮助 + 支持”  。
+- 为保持服务的 Azure 一致性，我们强烈建议先查看 Azure Stack Hub 文档。 若要访问 Azure Stack Hub 用户文档，请选择“帮助”图标 ( **?** )，然后选择“帮助 + 支持”  。
 
     ![UI 中“帮助 + 支持”选项](media/azure-stack-use-portal/HelpAndSupport.png)
 
     具体而言，我们建议查看以下入门文章：
 
-    - [重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack 的应用](azure-stack-considerations.md)。
-    - 在文档的**使用服务**部分中，有一篇针对每个服务的注意事项文章。 “注意事项”页面描述了 Azure 中提供的服务与 Azure Stack 中提供的相同服务之间的差异。 有关示例，请参阅 [VM 注意事项](azure-stack-vm-considerations.md)。 “使用服务”部分中可能包含特定于 Azure Stack 的其他信息。 
+    - [重要注意事项：使用 Azure Stack Hub 的服务或构建适用于 Azure Stack 的应用](azure-stack-considerations.md)。
+    - 在文档的**使用服务**部分中，有一篇针对每个服务的注意事项文章。 “注意事项”页面描述了 Azure 中提供的服务与 Azure Stack Hub 中提供的相同服务之间的差异。 有关示例，请参阅 [VM 注意事项](azure-stack-vm-considerations.md)。 “使用服务”部分中可能包含特定于 Azure Stack Hub 的其他信息。 
 
       可以使用 Azure 文档来大致了解服务，但必须注意这些差异。 请注意，“快速入门教程”磁贴中的文档链接指向 Azure 文档。 
 
@@ -75,10 +66,10 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 如果需要支持，请联系你的组织或服务提供商以获取帮助。
 
-如果使用 Azure Stack 开发工具包 (ASDK)，则只能通过 [Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)获取支持。
+如果使用 Azure Stack Hub 开发工具包 (ASDK)，则只能通过 [Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)获取支持。
 
 ## <a name="next-steps"></a>后续步骤
 
-[重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack 的应用](azure-stack-considerations.md)
+[重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack Hub 的应用](azure-stack-considerations.md)
 
 <!-- Update_Description: wording update -->

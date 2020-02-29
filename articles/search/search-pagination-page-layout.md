@@ -7,21 +7,26 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 19a363c5c775109ea733f76a8d8592dc80013918
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/24/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: f2474fcd55a59eb9065ce82053286290369a1508
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336508"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501341"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 认知搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
 
 在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
-多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.azurewebsites.net/)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+若要快速为客户端生成搜索页面，请浏览以下选项：
+
++ 使用门户中的[应用程序生成器](search-create-app-portal.md)，通过搜索栏、分面导航和结果区域创建 HTML 页面。
++ 按照[在 C# 中创建你的第一个应用程序](tutorial-csharp-create-first-app.md)教程操作，创建正常运行的客户端。
+
+多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市工作岗位演示应用](https://azjobsdemo.azurewebsites.net/)、[使用实时演示站点的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)
 
 > [!NOTE]
 > 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)。
@@ -88,6 +93,22 @@ ms.locfileid: "75336508"
 > [!NOTE]
 > 虽然默认计分足以处理许多方案，但我们建议使用基于相关性的自定义计分配置文件。 通过自定义计分配置文件，可以增强对业务更有益的项。 有关详细信息，请参阅[添加计分配置文件](index-add-scoring-profiles.md)。
 >
+
+## <a name="hit-highlighting"></a>突出显示
+
+可以在搜索结果中将格式设置应用于匹配的字词，这样就可以轻松找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中词突出显示说明。 
+
+格式设置应用于整个字词查询。 对于在引擎中导致查询扩展的部分字词（如模糊搜索或通配符搜索）的查询，不能使用命中词突出显示。
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
 
 ## <a name="faceted-navigation"></a>多面导航
 

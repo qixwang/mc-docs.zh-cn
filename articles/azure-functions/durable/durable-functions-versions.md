@@ -3,14 +3,14 @@ title: Durable Functions 版本概述 - Azure Functions
 description: 了解 Durable Functions 版本。
 author: cgillum
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 02/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9e35ce6e57bb650415fe996ebcb7bc8a09849510
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 4a0d283bd5d01683fe9839fe0a6d90e505e840e1
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623658"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494540"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
@@ -59,6 +59,10 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 * 适用于事件网格通知配置的 `"notifications"`（和 `"eventGrid"` 子节）。
 
 有关详细信息，请参阅 [Durable Functions host.json 参考文档](durable-functions-bindings.md#durable-functions-2-0-host-json)。
+
+#### <a name="default-taskhub-name-changes"></a>默认的任务中心名称更改
+
+在版本 1.x 中，如果未在 host.json 中指定任务中心名称，则该名称默认为“DurableFunctionsHub”。 在版本 2.x 中，默认的任务中心名称现在派生自函数应用的名称。 因此，如果在升级到 2.x 时未指定任务中心名称，则代码会使用新的任务中心进行操作，并且所有正在进行的业务流程将不再有处理它们的应用程序。 若要解决此情况，可以显式将任务中心名称设置为 v1.x 默认值“DurableFunctionsHub”，也可以参阅我们的[零停机部署指南](durable-functions-zero-downtime-deployment.md)，详细了解如何处理正在进行的业务流程的中断性变更。
 
 #### <a name="public-interface-changes-net-only"></a>公共接口更改（仅 .NET）
 

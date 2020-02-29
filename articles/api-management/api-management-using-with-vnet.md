@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 origin.date: 11/13/2019
 ms.author: v-yiso
-ms.date: 12/09/2019
-ms.openlocfilehash: 10211e4f477479d0a653f2207aab2fb0aef61e69
-ms.sourcegitcommit: 3be64cd198700989de265f91ceb3af8a19ceb05a
+ms.date: 02/24/2020
+ms.openlocfilehash: a43a26c03bfd34c7efe87b9a0caa22d7dbb7d6d7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941205"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428623"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -33,7 +33,7 @@ ms.locfileid: "74941205"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -47,9 +47,12 @@ ms.locfileid: "74941205"
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>使用 Azure 门户启用 VNET 连接
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中导航到自己的 APIM 实例。
-2. 选择“虚拟网络”  。
-3. 配置要在虚拟网络内部署的 API 管理实例。
+1. 转到 [Azure 门户](https://portal.azure.cn)，查找 API 管理实例。 搜索并选择“API 管理服务”  。
+
+2. 选择你的 API 管理实例。
+
+3. 选择“虚拟网络”  。
+4. 配置要在虚拟网络内部署的 API 管理实例。
 
     ![API 管理的虚拟网络菜单][api-management-using-vnet-menu]
 
@@ -65,16 +68,16 @@ ms.locfileid: "74941205"
 
      ![专用对等互连][api-management-vnet-private]
 
-     此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
+6. 如果选择了“外部”或“内部”，则会看到一个列表，其中包含预配了 API 管理服务的所有区域。   选择一个**位置**，然后选取其**虚拟网络**和**子网**。 虚拟网络列表中填充了所配置区域中设置的 Azure 订阅中可用的经典虚拟网络和资源管理器虚拟网络。
 
-     > [!IMPORTANT]
-     > 将 Azure API 管理实例部署到 资源管理器 VNET 时，该服务必须位于一个除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的资源管理器 VNET 子网，则部署会失败。
-     >
+    > [!IMPORTANT]
+    > 将 Azure API 管理实例部署到 资源管理器 VNET 时，该服务必须位于一个除了 Azure API 管理实例之外不包含其他资源的专用子网中。 如果尝试将 Azure API 管理实例部署到包含其他资源的资源管理器 VNET 子网，则部署会失败。
+
+    然后，选择“应用”  。 API 管理实例的“虚拟网络”  页通过新的虚拟网络和子网选项进行更新。
 
      ![选择 VPN][api-management-setup-vpn-select]
 
-5. 单击顶部导航栏中的“保存”  。
-6. 单击顶部导航栏中的“应用网络配置”。 
+7. 在顶部导航栏中选择“保存”  ，然后选择“应用网络配置”  。
 
 > [!NOTE]
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。  
@@ -179,7 +182,7 @@ ms.locfileid: "74941205"
 
 * **资源导航链接**：部署到资源管理器样式的 VNET 子网中时，API 管理会通过创建一个资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将**失败**。 类似地，将 API 管理服务移动到其他子网中或删除它时，将会删除该资源导航链接。
 
-## <a name="subnet-size"></a>子网大小要求
+## <a name="subnet-size"> </a> 子网大小要求
 Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
 除了 Azure VNET 基础结构使用的 IP 地址外，子网中的每个 Api 管理实例还会针对开发人员 SKU 使用每个高级 SKU 单位两个 IP 地址和一个单 IP 地址。 每个实例为外部负载均衡器保留一个附加的 IP 地址。 部署到内部 vnet 时，它需要对内部负载均衡器使用额外的 IP 地址。
@@ -191,7 +194,7 @@ Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址�
 + 将使用子网 IP 范围中的一个 IP 地址 (DIP) 来访问 vnet 中的资源，并使用一个公共 IP 地址 (VIP) 来访问 vnet 外部的资源。
 + 可以在 Azure 门户中的“概述/概要”边栏选项卡上找到负载均衡公共 IP 地址。
 
-## <a name="limitations"></a>限制
+## <a name="limitations"> </a>限制
 * 包含 API 管理实例的子网不能包含任何其他 Azure 资源类型。
 * 子网和 API 管理服务必须在同一个订阅中。
 * 包含 API 管理实例的子网不能在订阅之间移动。

@@ -1,34 +1,27 @@
 ---
-title: Azure Stack 服务、计划、套餐和订阅概述 | Microsoft Docs
-description: Azure Stack 服务、计划、套餐和订阅的概述。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 服务、计划、套餐和订阅概述
+description: Azure Stack Hub 服务、计划、套餐和订阅的概述。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
 ms.topic: conceptual
-origin.date: 08/29/2019
-ms.date: 11/18/2019
+origin.date: 12/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 10/01/2019
-ms.openlocfilehash: b8bb2883a53a23b16a833229f2f75502f62a333f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 5b8e7cb0357d8759f56126c87ca775d4ac830a65
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020517"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540867"
 ---
-# <a name="azure-stack-services-plans-offers-subscriptions-overview"></a>Azure Stack 服务、计划、套餐和订阅概述
+# <a name="azure-stack-hub-services-plans-offers-subscriptions-overview"></a>Azure Stack Hub 服务、计划、套餐和订阅概述
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-[Azure Stack](azure-stack-overview.md) 是一种混合云平台，通过它可从数据中心提供服务。 服务包括虚拟机 (VM)、SQL Server 数据库、SharePoint、Exchange，甚至 [Azure 市场项](azure-stack-marketplace-azure-items.md)。 作为服务提供商，可以向租户提供服务。 在企业或政府机构中，你可以向员工提供本地服务。
+[Azure Stack Hub](azure-stack-overview.md) 是一种混合云平台，通过它可从数据中心提供服务。 服务包括虚拟机 (VM)、SQL Server 数据库、SharePoint、Exchange，甚至 [Azure 市场项](azure-stack-marketplace-azure-items.md)。 作为服务提供商，可以向租户提供服务。 在企业或政府机构中，你可以向员工提供本地服务。
 
 ## <a name="overview"></a>概述
 
-Azure Stack 操作员可以使用套餐、计划和订阅来配置及交付服务。 套餐包含一个或多个计划，而每个计划包含一个或多个配置有配额的服务。 通过创建计划并将其组合成不同的套餐，用户可以订阅该套餐和部署资源。 此结构可让你管理：
+Azure Stack Hub 操作员可以使用套餐、计划和订阅来配置及交付服务。 套餐包含一个或多个计划，而每个计划包含一个或多个配置有配额的服务。 通过创建计划并将其组合成不同的套餐，用户可以订阅该套餐和部署资源。 此结构可让你管理：
 
 - 用户可以访问的服务和资源。
 - 用户可以使用的资源量。
@@ -39,7 +32,7 @@ Azure Stack 操作员可以使用套餐、计划和订阅来配置及交付服�
 1. 使用以下服务规划服务套餐：
 
    - 基础服务，例如计算、存储、网络或 Key Vault。
-   - 附加服务，例如应用服务、SQL Server 或 MySQL Server。
+   - 增值服务，例如应用服务、SQL Server 或 MySQL Server。
 
 2. 创建包含一个或多个服务的计划。 创建计划时，需选择或创建配额，用于定义计划中每个服务的资源限制。
 3. 创建包含一个或多个计划的套餐。 套餐可以包含基本计划和可选的附加计划。
@@ -50,9 +43,9 @@ Azure Stack 操作员可以使用套餐、计划和订阅来配置及交付服�
 
 ## <a name="services"></a>服务
 
-你可以提供[基础结构即服务](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) 服务，使用户能够构建按需计算基础结构，并通过 Azure Stack 用户门户进行预配和管理。
+你可以提供[基础结构即服务](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) 服务，使用户能够构建按需计算基础结构，并通过 Azure Stack Hub 用户门户进行预配和管理。
 
-还可以通过 Microsoft 和其他第三方提供商为 Azure Stack 部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 服务。 可以提供的 PaaS 服务包括但不限于：
+还可以通过 Microsoft 和其他第三方提供商为 Azure Stack Hub 部署[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 服务。 可以提供的 PaaS 服务包括但不限于：
 
 - [应用服务](azure-stack-app-service-overview.md)
 - [SQL Server](azure-stack-sql-resource-provider-deploy.md)
@@ -72,11 +65,11 @@ Azure Stack 操作员可以使用套餐、计划和订阅来配置及交付服�
 >[!NOTE]
 >在 Azure Stack 开发工具包 (ASDK) 中，只有一个区域（名为 *local*）可用。
 
-详细了解 [Azure Stack 中的配额类型](azure-stack-quota-types.md)。
+详细了解 [Azure Stack Hub 中的配额类型](azure-stack-quota-types.md)。
 
 ## <a name="plans"></a>计划
 
-计划是对一个或多个服务的分组。 Azure Stack 操作员可以[创建计划](azure-stack-create-plan.md)并将其提供给用户。 反过来，用户可以订阅套餐，以便使用其所包括的计划和服务。 创建计划时，请务必设置配额、定义基本计划，并考虑包含可选的附加计划。
+计划是对一个或多个服务的分组。 Azure Stack Hub 操作员可以[创建计划](azure-stack-create-plan.md)并将其提供给用户。 反过来，用户可以订阅套餐，以便使用其所包括的计划和服务。 创建计划时，请务必设置配额、定义基本计划，并考虑包含可选的附加计划。
 
 ### <a name="base-plan"></a>基本计划
 
@@ -102,13 +95,13 @@ Azure Stack 操作员可以使用套餐、计划和订阅来配置及交付服�
 
 ## <a name="subscriptions"></a>订阅
 
-用户可以通过订阅访问套餐。 如果你是服务提供商的 Azure Stack 操作员，则用户（租户）可通过订阅你的套餐来购买你的服务。 如果你是组织的 Azure Stack 操作员，则用户（员工）可以订阅你提供的服务，而无需付费。
+用户可以通过订阅访问套餐。 如果你是服务提供商的 Azure Stack Hub 操作员，则用户（租户）可通过订阅你的套餐来购买你的服务。 如果你是组织的 Azure Stack Hub 操作员，则用户（员工）可以订阅你提供的服务，而无需付费。
 
-用户可以在登录到 Azure Stack 后，创建新的订阅并获取现有订阅的访问权限。 每个订阅代表与单个套餐之间的关联。 分配给一个订阅的套餐（及其计划和配额）无法与其他订阅共享。 用户创建的每个资源都与一个订阅相关联。
+用户可以在登录到 Azure Stack Hub 后，创建新的订阅并获取现有订阅的访问权限。 每个订阅代表与单个套餐之间的关联。 分配给一个订阅的套餐（及其计划和配额）无法与其他订阅共享。 用户创建的每个资源都与一个订阅相关联。
 
 ### <a name="default-provider-subscription"></a>默认提供商订阅
 
-部署 ASDK 时，系统会自动创建默认提供商订阅。 此订阅可用于管理 Azure Stack、部署其他资源提供程序，以及为用户创建计划和套餐。 出于安全和许可的原因，不应使用此订阅来运行客户工作负荷和应用。 无法更改默认提供程序订阅的配额。
+部署 ASDK 时，系统会自动创建默认提供商订阅。 此订阅可用于管理 Azure Stack Hub、部署其他资源提供程序，以及为用户创建计划和套餐。 出于安全和许可的原因，不应使用此订阅来运行客户工作负荷和应用。 无法更改默认提供程序订阅的配额。
 
 ## <a name="next-steps"></a>后续步骤
 

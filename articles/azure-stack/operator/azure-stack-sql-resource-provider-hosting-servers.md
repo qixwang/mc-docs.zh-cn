@@ -1,32 +1,24 @@
 ---
 title: 为 SQL 资源提供程序添加托管服务器
-titleSuffix: Azure Stack
+titleSuffix: Azure Stack Hub
 description: 了解如何添加宿主服务器以通过 SQL 资源提供程序适配器进行预配。
-services: azure-stack
-documentationCenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 72d24cc815e1dbb8dd326c808da99fa46224c424
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: e4de942f04fc6abdf2b9c2cdb4a776e11fd37374
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737750"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540304"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
-可以在 [Azure Stack](azure-stack-overview.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上创建 SQL Server 数据库宿主服务器，前提是 SQL 资源提供程序能够连接到该实例。
+可以在 [Azure Stack Hub](azure-stack-overview.md) 中的虚拟机 (VM) 上或者在 Azure Stack Hub 环境外部的 VM 上创建 SQL Server 数据库宿主服务器，前提是 SQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
 > SQL 资源提供程序应在默认提供程序订阅中创建，而 SQL 托管服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
@@ -38,7 +30,7 @@ ms.locfileid: "75737750"
 ### <a name="mandatory-requirements"></a>强制要求
 
 * 在 SQL Server 实例上启用 SQL 身份验证。 由于 SQL 资源提供程序 VM 未加入域，它只能使用 SQL 身份验证连接到宿主服务器。
-* 将 Azure Stack 上安装的 SQL 实例的 IP 地址配置为“公共”。 资源提供程序和用户（例如 Web 应用）通过用户网络通信，因此需要连接到此网络上的 SQL 实例。
+* 将 Azure Stack Hub 上安装的 SQL 实例的 IP 地址配置为“公共”。 资源提供程序和用户（例如 Web 应用）通过用户网络通信，因此需要连接到此网络上的 SQL 实例。
 
 ### <a name="general-requirements"></a>一般要求
 
@@ -55,10 +47,10 @@ ms.locfileid: "75737750"
 > [!NOTE]
 > 对于市场上 Windows 映像中的所有 SQL，SQL IaaS 扩展都是_必需_的；如果没有下载该扩展，则 VM 将无法部署。 该扩展不用于基于 Linux 的 SQL VM 映像。
 
-可以使用其他选项部署 SQL VM，包括 [Azure Stack 快速入门库](https://github.com/Azure/AzureStack-QuickStart-Templates)中的模板。
+可以使用其他选项部署 SQL VM，包括 [Azure Stack Hub 快速入门库](https://github.com/Azure/AzureStack-QuickStart-Templates)中的模板。
 
 > [!NOTE]
-> 必须通过用户订阅而不是默认的提供程序订阅创建安装在多节点 Azure Stack 上的任何宿主服务器。 必须通过用户门户或者使用相应的登录名通过 PowerShell 会话来创建这些服务器。 所有宿主服务器都是可计费的 VM，并且必须具有相应的 SQL 许可证。 服务管理员可以是订阅的所有者。 
+> 必须通过用户订阅而不是默认的提供程序订阅创建安装在多节点 Azure Stack Hub 上的任何宿主服务器。 必须通过用户门户或者使用相应的登录名通过 PowerShell 会话来创建这些服务器。 所有宿主服务器都是可计费的 VM，并且必须具有相应的 SQL 许可证。 服务管理员可以是订阅的所有者。 
 
 ### <a name="required-privileges"></a>所需的特权
 
@@ -73,7 +65,7 @@ ms.locfileid: "75737750"
 
 以下信息提供了其他安全指导：
 
-* 使用 BitLocker 加密所有 Azure Stack 存储，因此 Azure Stack 上的任何 SQL 实例都将使用加密的 Blob 存储。
+* 使用 BitLocker 加密所有 Azure Stack Hub 存储，因此 Azure Stack Hub 上的任何 SQL 实例都将使用加密的 Blob 存储。
 * SQL 资源提供程序完全支持 TLS 1.2。 确保通过 SQL RP 管理的任何 SQL Server 仅针对 TLS 1.2 进行配置，并且 RP 默认使用该配置。  SQL Server 的所有支持版本都支持 TLS 1.2。 有关详细信息，请参阅[针对 Microsoft SQL Server 的 TLS 1.2 支持](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
 * 使用 SQL Server 配置管理器设置 **ForceEncryption** 选项，确保与 SQL Server 之间的所有通信始终经过加密。 有关详细信息，请参阅[将服务器配置为强制加密连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections)。
 * 确保任何客户端应用也通过加密的连接进行通信。
@@ -85,19 +77,19 @@ ms.locfileid: "75737750"
 
 若要添加已设置的独立宿主服务器，请遵循以下步骤：
 
-1. 以服务管理员身份登录到 Azure Stack 管理员门户。
+1. 以服务管理员身份登录到 Azure Stack Hub 管理员门户。
 
 2. 选择“所有服务”  &gt;“管理资源”  &gt;“SQL 宿主服务器”  。
 
-   ![Azure Stack 管理员门户中的 SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+   ![Azure Stack Hub 管理员门户中的 SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
    在“SQL 宿主服务器”下，可将 SQL 资源提供程序连接到将充当资源提供程序后端的 SQL Server 实例。 
 
-   ![Azure Stack 管理员门户中的 SQL 适配器仪表板](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
+   ![Azure Stack Hub 管理员门户中的 SQL 适配器仪表板](./media/azure-stack-sql-rp-deploy/sql-rp-hosting-server.png)
 
 3. 单击“添加”  ，然后在“添加 SQL 宿主服务器”  边栏选项卡上提供 SQL Server 实例的连接详细信息。
 
-   ![在 Azure Stack 管理员门户中添加 SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![在 Azure Stack Hub 管理员门户中添加 SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sql-rp-new-hosting-server.png)
 
     （可选）提供实例名称；如果实例未分配到默认端口 1433，请指定端口号。
 
@@ -109,7 +101,7 @@ ms.locfileid: "75737750"
    * 若要使用现有 SKU，请选择可用的 SKU，然后选择“创建”。 
    * 若要创建 SKU，请选择“+ 创建新 SKU”。  在“创建 SKU”中输入所需的信息，然后选择“确定”。  
 
-     ![在 Azure Stack 管理员门户中创建 SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+     ![在 Azure Stack Hub 管理员门户中创建 SKU](./media/azure-stack-sql-rp-deploy/sqlrp-new-sku.png)
 
 ## <a name="provide-high-availability-using-sql-always-on-availability-groups"></a>使用 SQL Always On 可用性组提供高可用性
 
@@ -158,7 +150,7 @@ ms.locfileid: "75737750"
 
 ### <a name="to-add-sql-always-on-hosting-servers"></a>添加 SQL Always On 宿主服务器
 
-1. 以服务管理员身份登录到 Azure Stack 管理员门户。
+1. 以服务管理员身份登录到 Azure Stack Hub 管理员门户。
 
 2. 选择“浏览”&gt;“管理资源”&gt;“SQL 宿主服务器”&gt;“+添加”。    
 
@@ -168,7 +160,7 @@ ms.locfileid: "75737750"
 
 4. 选中“Always On 可用性组”框，启用 SQL Always On 可用性组实例的支持。
 
-   ![在 Azure Stack 管理员门户中启用 Always On 可用性组](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+   ![在 Azure Stack Hub 管理员门户中启用 Always On 可用性组](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
 5. 将 SQL Always On 实例添加到 SKU。
 

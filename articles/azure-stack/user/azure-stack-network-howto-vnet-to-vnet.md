@@ -1,35 +1,33 @@
 ---
-title: 如何通过 VNET 对等互连连接两个 Azure Stack | Microsoft Docs
-description: 了解如何通过 VNET 对等互连连接两个 Azure Stack。
-services: azure-stack
+title: 如何通过 VNET 对等互连连接两个 Azure Stack Hub
+description: 了解如何通过 VNET 对等互连连接两个 Azure Stack Hub。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
-origin.date: 10/03/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: f39fb2b34a137bdbbf46b5ad2a01dce933b4e727
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: dce690aa743773d8474faad266533f9d97265355
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624255"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540039"
 ---
-# <a name="how-to-connect-two-vnets-through-peering"></a>如何通过对等互连连接两个 VNET
+# <a name="connect-two-vnets-through-peering"></a>通过对等互连连接两个 VNET
 
-本文介绍如何在同一环境中的两个虚拟网络之间创建连接。 在设置连接过程中，读者可以了解 Azure Stack 中 VPN 网关的工作方式。 使用 Fortinet FortiGate 在同一 Azure Stack 环境中连接两个 VNET。 此过程在资源组中部署两个具有 FortiGate NVA 的 VNET，每个 VNET 位于单独的资源组中，并且都有一个网络虚拟设备。 此外，其中详细说明了在这两个 VNET 之间设置 IPSec VPN 所要做出的更改。 请对每个 VNET 部署重复本文中的步骤。
+本文介绍如何在同一环境中的两个虚拟网络之间创建连接。 在设置连接过程中，读者可以了解 Azure Stack Hub 中 VPN 网关的工作方式。 使用 Fortinet FortiGate 在同一 Azure Stack Hub 环境中连接两个 VNET。 此过程在资源组中部署两个具有 FortiGate NVA 的 VNET，每个 VNET 位于单独的资源组中，并且都有一个网络虚拟设备。 此外，其中详细说明了在这两个 VNET 之间设置 IPSec VPN 所要做出的更改。 请对每个 VNET 部署重复本文中的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
--   有权访问可提供足够容量用于部署此解决方案所需的计算、网络和资源的 Azure Stack 集成系统或 ASDK。
+- 有权访问可提供足够容量用于部署此解决方案所需的计算、网络和资源的系统。
 
--  已下载网络虚拟设备 （NVA） 解决方案并将其发布到 Azure Stack 市场。 NVA 控制从外围网络到其他网络或子网的网络流量。 此过程使用 [Fortinet FortiGate 下一代防火墙单一 VM 解决方案](https://market.azure.cn/zh-cn/marketplace/apps/fortinet-cn.fortinet_fortigate-vm_v6_0?tab=Overview)。
+- 已下载网络虚拟设备 (NVA) 解决方案并将其发布到 Azure Stack Hub 市场。 NVA 控制从外围网络到其他网络或子网的网络流量。 此过程使用 [Fortinet FortiGate 下一代防火墙单一 VM 解决方案](https://market.azure.cn/zh-cn/marketplace/apps/fortinet-cn.fortinet_fortigate-vm_v6_0?tab=Overview)。
 
--  至少有两个可用于激活 FortiGate NVA 的 FortiGate 许可证文件。 有关如何获取这些许可证的信息，请参阅 Fortinet 文档库文章[注册和下载许可证](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license)。
+- 至少有两个可用于激活 FortiGate NVA 的 FortiGate 许可证文件。 有关如何获取这些许可证的信息，请参阅 Fortinet 文档库文章[注册和下载许可证](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license)。
 
-    此过程使用[单一 FortiGate-VM 部署](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment)。 其中提供了在本地网络中将 FortiGate NVA 连接到 Azure Stack VNET 的步骤。
+    此过程使用[单一 FortiGate-VM 部署](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment)。 其中提供了在本地网络中将 FortiGate NVA 连接到 Azure Stack Hub VNET 的步骤。
 
     有关如何在主动-被动 (HA) 设置中部署 FortiGate 解决方案的详细信息，请参阅 Fortinet 文档库文章 [Azure 上的 FortiGate-VM 的 HA](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure) 中的详细信息。
 
@@ -72,11 +70,11 @@ ms.locfileid: "75624255"
 | 公共 IP 地址类型 | 静态 |
 
 > [!Note]
-> \* 如果上述设置与本地网络环境存在任何重叠情况（包括任一 Azure Stack 的 VIP 池），请选择一组不同的地址空间和子网前缀。 另请确保地址范围不相互重叠。
+> \* 如果上述设置与本地网络环境存在任何重叠情况（包括任一 Azure Stack Hub 的 VIP 池），请选择一组不同的地址空间和子网前缀。 另请确保地址范围不相互重叠。
 
 ## <a name="deploy-the-fortigate-ngfw"></a>部署 FortiGate NGFW
 
-1.  打开 Azure Stack 用户门户。
+1.  打开 Azure Stack Hub 用户门户。
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
@@ -113,7 +111,7 @@ ms.locfileid: "75624255"
 
 对 forti1-rg1 和 forti2-rg1 这两个部署执行以下步骤。
 
-1. 打开 Azure Stack 用户门户。
+1. 打开 Azure Stack Hub 用户门户。
 
 2. 选择资源组。 在筛选器中键入 `forti1-rg1`，然后双击“forti1-rg1”资源组。
 
@@ -240,9 +238,9 @@ ms.locfileid: "75624255"
 
 ## <a name="test-and-validate-connectivity"></a>测试并验证连接
 
-现在，应该可以通过 FortiGate NVA 在每个 VNET 之间进行路由。 若要验证连接，请在每个 VNET 的 InsideSubnet 中创建一个 Azure Stack VM。 可以通过门户、CLI 或 PowerShell 创建 Azure Stack VM。 创建 VM 时：
+现在，应该可以通过 FortiGate NVA 在每个 VNET 之间进行路由。 若要验证连接，请在每个 VNET 的 InsideSubnet 中创建一个 Azure Stack Hub VM。 可以通过门户、CLI 或 PowerShell 创建 Azure Stack Hub VM。 创建 VM 时：
 
--   Azure Stack VM 放在每个 VNET 的 **InsideSubnet** 上。
+-   Azure Stack Hub VM 放在每个 VNET 的 **InsideSubnet** 上。
 
 -   创建 VM 时，请**不要**将任何 NSG 应用到该 VM（即，如果从门户创建 VM，请删除默认添加的 NSG）。
 
@@ -250,5 +248,5 @@ ms.locfileid: "75624255"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
-[使用 Fortinet FortiGate 在 Azure Stack 中提供网络解决方案](../operator/azure-stack-network-solutions-enable.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  
+[使用 Fortinet FortiGate 在 Azure Stack Hub 中提供网络解决方案](../operator/azure-stack-network-solutions-enable.md)  

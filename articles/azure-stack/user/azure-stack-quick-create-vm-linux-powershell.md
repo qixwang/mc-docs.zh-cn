@@ -1,51 +1,40 @@
 ---
-title: 在 Azure Stack 中使用 PowerShell 创建 Linux VM | Microsoft Docs
-description: 在 Azure Stack 中使用 PowerShell 创建 Linux VM。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM
+description: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-origin.date: 03/11/2019
-ms.date: 07/29/2019
+origin.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.custom: mvc
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 15f8ab7db1742b501b4446210c01e2cd52d4f88e
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 46cf3beb65b89c85757cfc1dd87995a8bca49259
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513246"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541041"
 ---
-# <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Linux 服务器 VM
+# <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 PowerShell 创建 Linux 服务器 VM
 
-*适用于：* Azure Stack 集成系统和 Azure Stack 开发工具包
-
-可以使用 Azure Stack PowerShell 创建 Ubuntu Server 16.04 LTS 虚拟机 (VM)。 在本文中，我们将创建和使用虚拟机。 本文还介绍以下操作：
+可以使用 Azure Stack Hub PowerShell 创建 Ubuntu Server 16.04 LTS 虚拟机 (VM)。 在本文中，我们将创建和使用虚拟机。 本文还介绍以下操作：
 
 * 通过远程客户端连接到 VM。
 * 安装 NGINX Web 服务器并查看默认主页。
 * 清理未使用的资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure Stack 市场中的 Linux 映像。 默认情况下，Azure Stack 市场中没有 Linux 映像。 让 Azure Stack 操作员提供你需要的 Ubuntu Server 16.04 LTS 映像。 操作员可以使用[将市场项从 Azure 下载到 Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md) 中的说明。
+* Azure Stack Hub 市场中的 Linux 映像。 默认情况下，Azure Stack Hub 市场中没有 Linux 映像。 让 Azure Stack Hub 操作员提供你需要的 Ubuntu Server 16.04 LTS 映像。 操作员可以使用[将市场项从 Azure 下载到 Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md) 中的说明。
 
-* Azure Stack 需要使用特定版本的 Azure CLI 来创建和管理其资源。 
-  * 如果未针对 Azure Stack 配置 PowerShell，请参阅[安装用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md)。 
-  * 设置 Azure Stack PowerShell 后，需连接到 Azure Stack 环境。 有关说明，请参阅[以用户身份使用 PowerShell 连接到 Azure Stack](azure-stack-powershell-configure-user.md)。
+* Azure Stack Hub 需要使用特定版本的 Azure CLI 来创建和管理其资源。 
+  * 如果未针对 Azure Stack Hub 配置 PowerShell，请参阅[安装用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。 
+  * 设置 Azure Stack Hub PowerShell 后，需连接到 Azure Stack Hub 环境。 有关说明，请参阅[以用户身份使用 PowerShell 连接到 Azure Stack Hub](azure-stack-powershell-configure-user.md)。
 
 * Windows 用户配置文件的 *.ssh* 目录中保存的名为 *id_rsa.pub* 的安全外壳 (SSH) 公钥。 有关如何创建 SSH 密钥的详细信息，请参阅[使用 SSH 公钥](azure-stack-dev-start-howto-ssh-public-key.md)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack 资源。 若要创建资源组，请在 Azure Stack 开发工具包 (ASDK) 或 Azure Stack 集成系统中，运行以下代码块： 
+资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack Hub 资源。 若要创建资源组，请运行以下代码块： 
 
 > [!NOTE]
 > 我们在以下代码示例中为所有变量分配了值。 但是，你可以分配自己的值。
@@ -62,7 +51,7 @@ New-AzureRmResourceGroup `
 
 ## <a name="create-storage-resources"></a>创建存储资源
 
-创建一个存储帐户，然后创建 Ubuntu Server 16.04 LTS 映像的存储容器。
+创建用于存储启动诊断输出的存储帐户。
 
 ```powershell  
 # Create variables to store the storage account name and the storage account SKU information
@@ -213,7 +202,7 @@ New-AzureRmVM `
 ## Create a resource group
 
 <#
-A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Though we've assigned values for all the variables in this article, you can use these values or assign new ones.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your development kit or the Azure Stack Hub integrated system, run the following code block to create a resource group. Though we've assigned values for all the variables in this article, you can use these values or assign new ones.
 #>
 
 # Edit your variables, if required
@@ -419,4 +408,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已部署了一台基本的 Linux 服务器 VM。 若要了解 Azure Stack VM 的详细信息，请访问 [Azure Stack 中 VM 的注意事项](azure-stack-vm-considerations.md)。
+在本快速入门中，你已部署了一台基本的 Linux 服务器 VM。 若要了解 Azure Stack Hub VM 的详细信息，请访问 [Azure Stack Hub 中 VM 的注意事项](azure-stack-vm-considerations.md)。

@@ -9,13 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 5ecac70119a6ba1eb7599969bd9f09436e79677f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: 908a8c004120cb55b0279589789557abc7e7dba8
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348579"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501409"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>为 Azure Data Lake Storage Gen2 中的文档编制索引
 
@@ -42,10 +42,17 @@ ms.locfileid: "75348579"
 
 可以使用 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 来为 Data Lake Storage Gen2 中的内容和元数据编制索引。 目前不支持门户或 .NET SDK。
 
-为 Data Lake Storage Gen2 中的内容编制索引，与为 Azure Blob 存储中的内容编制索引相同。 若要了解如何设置 Data Lake Storage Gen2 数据源、索引和索引器，请参阅[如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)。 “Blob 存储”一文还提供了支持的文档格式、提取的 Blob 元数据属性等相关信息。 此信息同样适用于 Data Lake Storage Gen2。
+为 Data Lake Storage Gen2 中的内容编制索引，与为 Azure Blob 存储中的内容编制索引相同。 若要了解如何设置 Data Lake Storage Gen2 数据源、索引和索引器，请参阅[如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)。 “Blob 存储”一文还提供了支持的文档格式、提取的 Blob 元数据属性、增量索引等相关信息。 此信息同样适用于 Data Lake Storage Gen2。
 
 ## <a name="access-control"></a>访问控制
 
 Azure Data Lake Storage Gen2 实现了一个[访问控制模型](https://docs.azure.cn/storage/blobs/data-lake-storage-access-control)，该模型支持 Azure 基于角色的访问控制 (RBAC) 和类似于 POSIX 的访问控制列表 (ACL)。 为 Data Lake Storage Gen2 中的内容编制索引时，Azure 认知搜索不会从内容中提取 RBAC 和 ACL 信息。 因此，此信息不会包含在 Azure 认知搜索索引中。
 
 如果对索引中的每个文档保持访问控制非常重要，则应由应用程序开发人员需要负责实施[安全修整](https://docs.azure.cn/search/search-security-trimming-for-azure-search)。
+
+## <a name="change-detection"></a>更改检测
+
+Data Lake Storage Gen2 索引器支持更改检测。 这意味着，当索引器运行时，它只根据 Blob 的 `LastModified` 时间戳为更改的 Blob 重新编制索引。
+
+> [!NOTE] 
+> Data Lake Storage Gen2 允许重命名目录。 重命名目录时，该目录中的 blob 的时间戳不会更新。 因此，索引器不会重新索引这些 blob。 如果需要在目录重命名之后重新编制索引目录中的 blob（因为它们现在有新的 URL），则需更新目录中所有 blob 的 `LastModified` 时间戳，使索引器知道在以后运行时将其重新编制索引。

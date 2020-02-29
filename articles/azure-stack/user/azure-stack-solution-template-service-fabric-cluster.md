@@ -1,35 +1,27 @@
 ---
-title: 在 Azure Stack 中部署受保护的 Service Fabric 群集 | Microsoft Docs
-description: 了解如何在 Azure Stack 中部署受保护的 Service Fabric 群集
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中部署受保护的 Service Fabric 群集
+description: 了解如何在 Azure Stack Hub 中部署受保护的 Service Fabric 群集
 author: WenJason
-manager: digimbile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 10/02/2019
-ms.date: 01/13/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: shnatara
 ms.lastreviewed: 09/25/2019
-ms.openlocfilehash: 5b6ee799d74e4b068c6627ddaf421d40fc8c286a
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 48e0304b120e2639d718addc6d6c9431512e0580
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737909"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541019"
 ---
-# <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
+# <a name="deploy-a-service-fabric-cluster-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署 Service Fabric 群集
 
-使用 Azure 市场中的“Service Fabric 群集”项在 Azure Stack 中部署受保护的 Service Fabric 群集。  
+使用 Azure 市场中的“Service Fabric 群集”项在 Azure Stack Hub 中部署受保护的 Service Fabric 群集。  
 
 有关使用 Service Fabric 的详细信息，请参阅 Azure 文档中的 [Azure Service Fabric 概述](/service-fabric/service-fabric-overview)和 [Service Fabric 群集安全方案](/service-fabric/service-fabric-cluster-security)。
 
-Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是一个虚拟机规模集，具有使用 [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) 的预安装软件。
+Azure Stack Hub 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack Hub 中，Service Fabric 群集是一个虚拟机规模集，具有使用 [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview) 的预安装软件。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -46,7 +38,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 1. **管理员客户端证书**  
    这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](/service-fabric/service-fabric-cluster-security)。
 
-1. **必须在 Azure Stack 市场中提供以下各项：**
+1. **必须在 Azure Stack Hub 市场中提供以下各项：**
     - **Windows Server 2016** - 模板使用 Windows Server 2016 映像来创建群集。  
     - **自定义脚本扩展** - Microsoft 提供的虚拟机扩展。  
     - **PowerShell Desired Stage Configuration** - Microsoft 提供的虚拟机扩展。
@@ -121,7 +113,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
    ``` 
 
 
-有关详细信息，请参阅[使用 PowerShell 管理 Azure Stack 上的 Key Vault](azure-stack-key-vault-manage-powershell.md)。
+有关详细信息，请参阅[使用 PowerShell 管理 Azure Stack Hub 上的 Key Vault](azure-stack-key-vault-manage-powershell.md)。
 
 ## <a name="deploy-the-marketplace-item"></a>部署市场项
 
@@ -131,13 +123,13 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 
 2. 填写每个页（例如“基本信息”）中的部署窗体。  如果不确定要指定哪个值，请使用默认值。
 
-    若要部署到断开连接的 Azure Stack 或部署另一个版本的 Service Fabric，请下载 Service Fabric 部署包及其相应的运行时包，并将其托管在 Azure Stack blob 上。 向“Service Fabric 部署包 URL”  和“Service Fabric 运行时包 URL”  字段提供这些值。
+    若要部署到断开连接的 Azure Stack Hub 或部署另一个版本的 Service Fabric，请下载 Service Fabric 部署包及其相应的运行时包，并将其托管在 Azure Stack Hub blob 上。 向“Service Fabric 部署包 URL”  和“Service Fabric 运行时包 URL”  字段提供这些值。
     > [!NOTE]  
     > 最新版本的 Service Fabric 及其相应的 SDK 之间存在兼容性问题。 在解决该问题之前，请向部署包 URL 和运行时包 URL 提供以下参数。 否则，部署将失败。
     > - Service Fabric 部署包 URL：<https://download.microsoft.com/download/8/3/6/836E3E99-A300-4714-8278-96BC3E8B5528/6.5.641.9590/Microsoft.Azure.ServiceFabric.WindowsServer.6.5.641.9590.zip>
     > - Service Fabric 运行时包 URL：<https://download.microsoft.com/download/B/0/B/B0BCCAC5-65AA-4BE3-AB13-D5FF5890F4B5/6.5.641.9590/MicrosoftAzureServiceFabric.6.5.641.9590.cab>
     >
-    > 对于断开连接的部署，请从指定位置下载这些包并将其托管在本地 Azure Stack Blob 上。
+    > 对于断开连接的部署，请从指定位置下载这些包并将其托管在本地 Azure Stack Hub Blob 上。
 
    ![基础知识](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 

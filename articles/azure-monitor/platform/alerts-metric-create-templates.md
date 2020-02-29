@@ -5,16 +5,16 @@ author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-origin.date: 12/5/2019
-ms.date: 12/31/2019
+origin.date: 1/14/2020
+ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 69ccddc7678bf4724cffd815bc9eb45a76e4eb14
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 7a1facce0aa92d682a95063a429367667f77f8f8
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599909"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497449"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -28,8 +28,8 @@ ms.locfileid: "75599909"
 基本步骤如下所示：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
-2. 编辑相应的参数文件并将其用作 JSON 来自定义警报
-3. 使用[任意部署方法](../../azure-resource-manager/resource-group-template-deploy.md)部署模板。
+2. 编辑相应的参数文件并将其用作 JSON 来自定义警报。
+4. 使用[任意部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
 
@@ -107,8 +107,8 @@ ms.locfileid: "75599909"
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -379,6 +379,13 @@ az group deployment create \
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -456,6 +463,7 @@ az group deployment create \
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -512,6 +520,9 @@ az group deployment create \
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -556,7 +567,12 @@ az group deployment create \
 
 较新的指标警报支持根据多维指标发出警报，且支持多个标准。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
 
-请注意，当警报规则包含多个条件时，维度的使用仅限每个条件内每个维度一个值。
+在包含多个条件的警报规则中使用维度时，请注意以下约束：
+- 在每个条件中，只能为每个维度选择一个值。
+- 不能使用“\*”作为维度值。
+- 如果在不同标准中配置的度量值支持同一维度，则必须以相同方式为所有这些指标（在相关标准中）显式设置配置的维度值。
+    - 在下面的示例中，因为 **Transactions** 和 **SuccessE2ELatency** 指标都有 **ApiName** 维度，因此 *criterion1* 为 **ApiName** 维度指定 *"GetBlob"* 值，然后 *criterion2* 还必须为 **ApiName** 维度指定 *"GetBlob"* 值。
+
 
 为进行本次演练，请将下面的 json 保存为 advancedstaticmetricalert.json。
 
@@ -786,9 +802,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> 警报规则包含多个条件时，维度的使用仅限于每个条件内的每个维度的一个值。
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>用于监视多个维度的静态指标警报的模板
 
@@ -1170,7 +1183,7 @@ az group deployment create \
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -1179,12 +1192,12 @@ az group deployment create \
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -1195,7 +1208,7 @@ az group deployment create \
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -1204,7 +1217,7 @@ az group deployment create \
 ```
 
 
-可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报
+可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报。
 
 使用 Azure PowerShell
 ```powershell
@@ -1566,9 +1579,10 @@ az group deployment create \
             "type": "string",
             "allowedValues": [
 
-                "chinanorth",
-                "ChinaEast"
-
+                "ChinaEast",
+                "ChinaNorth",
+                "ChinaEast2",
+                "ChinaNorth2",
             ],
             "metadata": {
                 "description": "Azure region in which target resources to be monitored are in (without spaces). For example: ChinaEast"
@@ -1604,8 +1618,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2170,8 +2184,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2211,6 +2225,7 @@ az group deployment create \
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",
@@ -2729,8 +2744,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "string",
-            "defaultValue": "0",
+            "type": "double",
+            "defaultValue": 0,
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

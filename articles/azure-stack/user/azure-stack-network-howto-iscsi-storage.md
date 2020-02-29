@@ -1,40 +1,36 @@
 ---
-title: 如何使用 Azure Stack 连接到 iSCSI 存储 | Microsoft Docs
-description: 了解如何使用 Azure Stack 连接到 iSCSI 存储。
-services: azure-stack
+title: 如何使用 Azure Stack Hub 连接到 iSCSI 存储
+description: 了解如何使用 Azure Stack Hub 连接到 iSCSI 存储。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 10/28/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
-ms.openlocfilehash: a3b2d745f1e2d0483f36e0075394331283e0613e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 07823a434c71d88d5414be8e14933d858080591b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020391"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540032"
 ---
-# <a name="how-to-connect-to-iscsi-storage-with-azure-stack"></a>如何使用 Azure Stack 连接到 iSCSI 存储
+# <a name="connect-to-iscsi-storage-with-azure-stack-hub"></a>使用 Azure Stack Hub 连接到 iSCSI 存储
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+可以使用本文中的模板，将 Azure Stack Hub 虚拟机 (VM) 连接到本地 iSCSI 目标，并将 VM 设置为使用托管在 Azure Stack Hub 外部和数据中心其他位置的存储。 本文介绍如何将 Windows 计算机用作 iSCSI 目标。
 
-可以使用本文中的模板，将 Azure Stack 虚拟机 (VM) 连接到本地 iSCSI 目标，并将 VM 设置为使用托管在 Azure Stack 外部和数据中心其他位置的存储。 本文介绍如何将 Windows 计算机用作 iSCSI 目标。
-
-可以在 [Azure 智能边缘模式](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub 存储库的 **lucidqdreams** 分支中找到该模板。 该模板位于 **storage-iSCSI** 文件夹中。 该模板旨在用于设置 Azure Stack 端所需的基础结构，以便连接到 iSCSI 目标。 此配置包括用作 iSCSI 发起程序的虚拟机，及其随附的 VNet、NSG、PIP 和存储。 部署该模板之后，需要运行两个 PowerShell 脚本来完成配置。 其中一个脚本在本地 VM（目标）上运行，另一个在 Azure Stack VM（发起端）上运行。 这些操作完成后，本地存储即会添加到 Azure Stack VM。 
+可以在 [Azure 智能边缘模式](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub 存储库的 **lucidqdreams** 分支中找到该模板。 该模板位于 **storage-iSCSI** 文件夹中。 该模板旨在用于设置 Azure Stack Hub 端所需的基础结构，以便连接到 iSCSI 目标。 此配置包括用作 iSCSI 发起程序的虚拟机，及其随附的 VNet、NSG、PIP 和存储。 部署该模板之后，需要运行两个 PowerShell 脚本来完成配置。 其中一个脚本在本地 VM（目标）上运行，另一个在 Azure Stack Hub VM（发起端）上运行。 这些操作完成后，本地存储即会添加到 Azure Stack Hub VM。 
 
 ## <a name="overview"></a>概述
 
-下图显示了托管在 Azure Stack 上的 VM，其中包含从本地 Windows 计算机（物理或虚拟机）装载的 iSCSI 磁盘，它允许通过 iSCSI 协议将 Azure Stack 外部的存储装载到 Azure Stack 托管的 VM 内部。
+下图显示了托管在 Azure Stack Hub 上的 VM，其中包含从本地 Windows 计算机（物理或虚拟机）装载的 iSCSI 磁盘，它允许通过 iSCSI 协议将 Azure Stack Hub 外部的存储装载到 Azure Stack Hub 托管的 VM 内部。
 
 ![替换文字](./media/azure-stack-network-howto-iscsi-storage/overview.png)
 
 ### <a name="requirements"></a>要求
 
 - 运行 Windows Server 2016 Datacenter 或 Windows Server 2019 Datacenter 的本地计算机（物理或虚拟机）。
-- 所需的 Azure Stack 市场项：
+- 所需的 Azure Stack Hub 市场项：
     -  Windows Server 2016 Datacenter 或 Windows Server 2019 Datacenter（建议使用最新内部版本）。
     -  PowerShell DSC 扩展。
     -  自定义脚本扩展。
@@ -66,10 +62,10 @@ ms.locfileid: "74020391"
 
 ### <a name="the-deployment-process"></a>部署过程
 
-资源组模板生成输出作为下一步骤的输入。 它着重于发出 iSCSI 流量的服务器名称和 Azure Stack 公共 IP 地址。 对于此示例：
+资源组模板生成输出作为下一步骤的输入。 它着重于发出 iSCSI 流量的服务器名称和 Azure Stack Hub 公共 IP 地址。 对于此示例：
 
 1. 部署基础结构模板。
-2. 将 Azure Stack VM 部署到托管在数据中心其他位置的 VM。 
+2. 将 Azure Stack Hub VM 部署到托管在数据中心其他位置的 VM。 
 3. 使用模板输出的 IP 地址和服务器名称作为 iSCSI 目标（可以是虚拟机或物理服务器）上脚本的输入输出参数，来运行 `Create-iSCSITarget.ps1`。
 4. 使用 iSCSI 目标服务器的外部 IP 地址作为输入来运行 `Connect-toiSCSITarget.ps1` 脚本。 
 
@@ -144,4 +140,4 @@ ms.locfileid: "74020391"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  

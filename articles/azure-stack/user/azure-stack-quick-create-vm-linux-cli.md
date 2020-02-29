@@ -1,31 +1,20 @@
 ---
-title: 在 Azure Stack 中使用 Azure CLI 创建 Linux 虚拟机 | Microsoft Docs
-description: 在 Azure Stack 中使用 Azure CLI 创建 Linux 虚拟机。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中使用 Azure CLI 创建 Linux 虚拟机
+description: 在 Azure Stack Hub 中使用 Azure CLI 创建 Linux 虚拟机。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-origin.date: 05/16/2019
-ms.date: 07/29/2019
-ms.author: v-jay
-ms.custom: mvc
+origin.date: 1/22/2020
+ms.date: 02/24/2020
+ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3405f136af228afcd723a2d74a766e8ca19ed8ed
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: d6341faae162f39631eae53271fa91b6bb7a1496
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142132"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541042"
 ---
-# <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-cli-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 Azure CLI 创建 Linux 服务器 VM
-
-*适用于：* Azure Stack 集成系统和 Azure Stack 开发工具包
+# <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-cli-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 Azure CLI 创建 Linux 服务器 VM
 
 可以使用 Azure CLI 创建 Ubuntu Server 16.04 LTS 虚拟机 (VM)。 在本文中，我们将创建和使用虚拟机。 本文还介绍以下操作：
 
@@ -33,19 +22,19 @@ ms.locfileid: "73142132"
 * 安装 NGINX Web 服务器并查看默认主页。
 * 清理未使用的资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure Stack 市场中的 Linux 映像
+* Azure Stack Hub 市场中的 Linux 映像
 
-   默认情况下，Azure Stack 市场不包含 Linux 映像。 让 Azure Stack 操作员提供你需要的 Ubuntu Server 16.04 LTS 映像。 操作员可以使用[将市场项从 Azure 下载到 Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md) 中的说明。
+   默认情况下，Azure Stack Hub 市场不包含 Linux 映像。 让 Azure Stack Hub 操作员提供你需要的 Ubuntu Server 16.04 LTS 映像。 操作员可以使用[将市场项从 Azure 下载到 Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md) 中的说明。
 
-* Azure Stack 需要使用特定版本的 Azure CLI 来创建和管理其资源。 如果尚未针对 Azure Stack 配置 Azure CLI，请登录到 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)（或登录到基于 Windows 的外部客户端，前提是[已通过 VPN 建立了连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)），按照说明[安装并配置 Azure CLI](azure-stack-version-profiles-azurecli2.md)。
+* Azure Stack Hub 需要使用特定版本的 Azure CLI 来创建和管理其资源。 如果尚未针对 Azure Stack Hub 配置 Azure CLI，请登录到 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)（或登录到基于 Windows 的外部客户端，前提是[已通过 VPN 建立了连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)），按照说明[安装并配置 Azure CLI](azure-stack-version-profiles-azurecli2.md)。
 
 * Windows 用户配置文件的 *.ssh* 目录中保存的名为 *id_rsa.pub* 的安全外壳 (SSH) 公钥。 有关如何创建 SSH 密钥的详细信息，请参阅[使用 SSH 公钥](azure-stack-dev-start-howto-ssh-public-key.md)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack 资源。 在开发工具包或 Azure Stack 集成系统中，运行 [az group create](/cli/group#az-group-create) 命令创建资源组。
+资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack Hub 资源。 在开发工具包或 Azure Stack Hub 集成系统中，运行 [az group create](/cli/group#az-group-create) 命令创建资源组。
 
 > [!NOTE]
 > 我们在以下代码示例中为所有变量分配了值。 但是，你可以分配自己的值。
@@ -118,5 +107,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已部署了一个带有 Web 服务器的基本 Linux 服务器虚拟机。 若要详细了解 Azure Stack 虚拟机，请参阅 [Azure Stack 中虚拟机的注意事项](azure-stack-vm-considerations.md)。
-
+在本快速入门中，你已部署了一个带有 Web 服务器的基本 Linux 服务器虚拟机。 若要详细了解 Azure Stack Hub 虚拟机，请参阅 [Azure Stack Hub 中虚拟机的注意事项](azure-stack-vm-considerations.md)。

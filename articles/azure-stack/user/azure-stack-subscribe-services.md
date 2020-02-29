@@ -1,38 +1,28 @@
 ---
-title: 在 Azure Stack 中创建包含套餐的订阅 | Microsoft Docs
-description: 了解如何在 Azure Stack 中创建包含套餐的新订阅，然后使用测试 VM 测试该套餐。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中创建包含套餐的订阅
+description: 了解如何在 Azure Stack Hub 中创建包含套餐的新订阅，然后使用测试 VM 测试该套餐。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
 origin.date: 06/04/2019
-ms.date: 09/16/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 59b6955941919e1b44904d4ea52b13e3d6e13725
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 7e732773bda53682d87d30cc007cf907889756dc
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857317"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541014"
 ---
-# <a name="tutorial-create-and-test-a-subscription-in-azure-stack"></a>教程：在 Azure Stack 中创建和测试订阅
+# <a name="tutorial-create-and-test-a-subscription-in-azure-stack-hub"></a>教程：在 Azure Stack Hub 中创建和测试订阅
 
-本教程介绍如何创建包含套餐的订阅，然后如何对其进行测试。 测试时，需要以云管理员身份登录到 Azure Stack 用户门户，订阅套餐，然后创建虚拟机 (VM)。
+本教程介绍如何创建包含套餐的订阅，然后如何对其进行测试。 测试时，需要以云管理员身份登录到 Azure Stack Hub 用户门户，订阅套餐，然后创建虚拟机 (VM)。
 
 > [!TIP]
 > 若要获得更高级的评估体验，可[为特定用户创建订阅](../operator/azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)，然后在用户门户中以该用户的身份登录。
 
-本教程介绍如何订阅 Azure Stack 套餐。
+本教程介绍如何订阅 Azure Stack Hub 套餐。
 
 学习内容：
 
@@ -42,7 +32,7 @@ ms.locfileid: "70857317"
 
 ## <a name="subscribe-to-an-offer"></a>订阅产品
 
-若要以用户身份订阅套餐，请登录 Azure Stack 用户门户以查看 Azure Stack 运营商提供的可用服务。
+若要以用户身份订阅套餐，请登录 Azure Stack Hub 用户门户以查看 Azure Stack Hub 运营商提供的可用服务。
 
 1. 登录到用户门户，并选择“获取订阅”。 
 
@@ -61,10 +51,10 @@ ms.locfileid: "70857317"
 
 ## <a name="test-the-offer"></a>测试产品/服务
 
-登录到用户门户后，可以使用新订阅功能预配虚拟机 (VM)，以测试套餐。
+登录到用户门户后，可以使用新订阅功能预配 VM，以测试套餐。
 
 > [!NOTE]
-> 此项测试需要先将 Windows Server 2016 Datacenter VM 添加到 Azure Stack 市场。
+> 此项测试需要先将 Windows Server 2016 Datacenter VM 添加到 Azure Stack Hub 市场。
 
 1. 登录到用户门户。
 

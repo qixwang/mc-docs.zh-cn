@@ -11,16 +11,17 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-origin.date: 05/04/2018
-ms.date: 11/11/2019
+origin.date: 11/07/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: ed3e333e7844cda0c233a931f5ec1ae71eddfc36
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ea48dcea1a43a577cbbf10eec62d6998bd35ad3d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116968"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428910"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -42,17 +43,17 @@ ms.locfileid: "74116968"
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 在 Azure 门户中，单击“创建资源”  。 该门户会打开“新建”窗口。 
+1. 在 Azure 门户中，选择“创建资源”。  该门户会打开“新建”窗口。 
 
     <!--MOONCAKE CUSTOMZIE: Virtual Machines-->
 
-1. 在“新建”  窗口中，单击“虚拟机”  ，然后单击“全部查看”  。
+1. 在“新建”  窗口中，选择“虚拟机”  ，然后选择“全部查看”  。
 
     ![“新建计算”窗口](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
 
 1. 在搜索字段中，键入“SQL Server 2017”  ，然后按 Enter。
 
-    <!--Not Available on 1. Then click the **Filter** icon.-->
+    <!--Not Available on 1. Then select the **Filter** icon.-->
 
 1. 勾选“Microsoft”作为发布者。 
 
@@ -109,14 +110,14 @@ ms.locfileid: "74116968"
 
 * 如果有多个订阅，验证该订阅是否是新 VM 的正确订阅。
 
-* 在“资源组”框中，键入新资源组的名称。   此外，若要使用现有的资源组，请单击“使用现有项”。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。
+* 在“资源组”框中，键入新资源组的名称。   此外，若要使用现有的资源组，请选择“使用现有项”。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。
 
     > [!NOTE]
     > 如果只是测试或了解 Azure 中的 SQL Server 部署，使用新的资源组很有帮助。 测试完成后，删除资源组会自动删除 VM 和与该资源组相关联的所有资源。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../../azure-resource-manager/resource-group-overview.md)。
 
 * 针对 Azure 区域选择用于托管该部署的“位置”。 
 
-* 单击“确定”  保存设置。
+* 选择“确定”以保存设置。 
 
     ![SQL 基本信息窗口](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
@@ -134,7 +135,7 @@ ms.locfileid: "74116968"
 > [!NOTE]
 > 有关虚拟机大小的详细信息，请参阅[虚拟机大小](../sizes.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-选择计算机大小，并单击“选择”  。
+选择计算机大小，并选择“选择”  。
 
 ## <a name="3-configure-optional-features"></a>3.配置可选功能
 
@@ -158,7 +159,7 @@ ms.locfileid: "74116968"
 
 * 对于本演示，可以在“可用性集”下保留默认设置“无”。   如果计划设置 SQL AlwaysOn 可用性组，可以对可用性进行配置，避免重新创建虚拟机。  有关详细信息，请参阅 [管理虚拟机的可用性](../manage-availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-配置完这些设置后，请单击“确定”。 
+配置完这些设置后，请选择“确定”。 
 
 ## <a name="4-configure-sql-server-settings"></a>4.配置 SQL Server 设置
 
@@ -194,7 +195,7 @@ ms.locfileid: "74116968"
 
 ### <a name="authentication"></a>身份验证
 
-如果需要 SQL Server 身份验证，请在“ **启用** under **启用**。
+如果需要 SQL Server 身份验证，请在“SQL 身份验证”下选择“启用”。  
 
 ![SQL Server 身份验证](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-authentication.png)
 
@@ -208,7 +209,7 @@ ms.locfileid: "74116968"
 
 ### <a name="storage-configuration"></a>存储配置
 
-单击“存储配置”  以便指定存储要求。
+选择“存储配置”  ，指定存储要求。
 
 
 
@@ -220,7 +221,7 @@ ms.locfileid: "74116968"
 
 可以将要求指定为每秒输入/输出操作数 (IOPs)、吞吐量（MB/秒）以及总存储大小。 可使用可调缩放性配置这些值。 可根据工作负荷更改这些存储设置。 门户会根据这些要求自动计算要附加和配置的磁盘数。
 
-在“ **存储优化目标**”下，选择以下选项之一：
+在“存储优化目标”  下，选择以下选项之一：
 
 * **常规** ：默认设置，支持大多数工作负荷。
 * **事务处理** ：针对传统数据库 OLTP 工作负荷优化存储。
@@ -229,7 +230,7 @@ ms.locfileid: "74116968"
 ![SQL 存储配置](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-storage.png)
 ### <a name="automated-patching"></a>自动修补
 
-**自动修补** ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 指定进行维护的具体日期（星期几）、时间和时长。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。 如果不希望 Azure 自动修补 SQL Server 和操作系统，请单击“禁用”  。  
+**自动修补** ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 指定进行维护的具体日期（星期几）、时间和时长。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。 如果不希望 Azure 自动修补 SQL Server 和操作系统，请选择“禁用”  。  
 
 ![SQL 自动修补](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
@@ -247,7 +248,7 @@ ms.locfileid: "74116968"
 * 备份系统数据库
 * 配置备份计划
 
-若要加密备份，请单击“ **启用**”。 然后指定“密码”  。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。
+若要加密备份，请选择“启用”。  然后指定**密码**。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。
 
 ![SQL 自动备份](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup2.png)
 
@@ -255,7 +256,7 @@ ms.locfileid: "74116968"
 
 ### <a name="azure-key-vault-integration"></a>Azure Key Vault 集成
 
-如果要将安全密码存储在 Azure 中进行加密，请先单击“Azure 密钥保管库集成”，并单击“启用”。  
+如果要将安全密码存储在 Azure 中进行加密，请先选择“Azure 密钥保管库集成”，并选择“启用”。  
 
 ![SQL Azure 密钥保管库集成](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-akv.png)
 
@@ -272,15 +273,15 @@ ms.locfileid: "74116968"
 
 ### <a name="sql-server-machine-learning-services"></a>SQL Server 机器学习服务
 
-可以选择启用 [SQL Server 机器学习服务](https://msdn.microsoft.com/library/mt604845.aspx)。 使用此选项，可使用 SQL Server 2017 的高级分析功能。 在“SQL Server 设置”窗口中单击“启用”。  
+可以选择启用 [SQL Server 机器学习服务](https://msdn.microsoft.com/library/mt604845.aspx)。 使用此选项，可使用 SQL Server 2017 的高级分析功能。 在“SQL Server 设置”窗口中选择“启用”。  
 
 ![启用 SQL Server 机器学习服务](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
-配置完 SQL Server 设置后，单击“确定”  。
+配置完 SQL Server 设置后，选择“确定”  。
 
 ## <a name="5-review-the-summary"></a>5.查看摘要
 
-在“摘要”窗口上查看摘要，并单击“确定”以创建为此 VM 指定的 SQL Server、资源组和资源。  
+在“摘要”窗口上查看摘要，并选择“确定”以创建为此 VM 指定的 SQL Server、资源组和资源。  
 
 <!--MOONCAKE: CUSTOMIZE ON FROM FROM 75 TO 276-->
 <!--MOONCAKE: DO NOT UPDATE BEFORE CONFIRM-->

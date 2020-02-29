@@ -1,48 +1,39 @@
 ---
-title: 在 Azure Stack 中添加缩放单元节点 | Microsoft Docs
-description: 了解如何将缩放单元节点添加到 Azure Stack 中的缩放单元。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中添加缩放单元节点
+description: 了解如何将缩放单元节点添加到 Azure Stack Hub 中的缩放单元。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 06/13/2019
-ms.date: 10/21/2019
+origin.date: 1/16/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: f4a9c24bc79b5494dc573d0eb44748200a08fad9
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 1f162ad13717101ab27093e867c1e9346442e4ad
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578502"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540967"
 ---
-# <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加更多的缩放单元节点
+# <a name="add-additional-scale-unit-nodes-in-azure-stack-hub"></a>在 Azure Stack Hub 中添加更多的缩放单元节点
 
-Azure Stack 操作员可以通过添加更多的物理计算机来提高现有缩放单元的总容量。 物理计算机也称为缩放单元节点。 添加的每个新缩放单元节点在 CPU 类型、内存以及磁盘数目和大小方面必须与缩放单元中现有的节点相同。
+Azure Stack Hub 操作员可以通过添加更多的物理计算机来提高现有缩放单元的总容量。 物理计算机也称为缩放单元节点。 添加的每个新缩放单元节点在 CPU 类型、内存以及磁盘数目和大小方面必须与缩放单元中现有的节点相同。
 
-若要添加某个缩放单元节点，请在 Azure Stack 中操作并运行硬件设备制造商 (OEM) 提供的工具。 OEM 工具在硬件生命周期主机 (HLH) 上运行，目的是确保新的物理计算机与现有节点的固件级别匹配。
+若要添加某个缩放单元节点，请在 Azure Stack Hub 中操作并运行硬件设备制造商 (OEM) 提供的工具。 OEM 工具在硬件生命周期主机 (HLH) 上运行，目的是确保新的物理计算机与现有节点的固件级别匹配。
 
 以下流程图显示添加缩放单元节点的一般过程：
 
 ![添加缩放单元流](media/azure-stack-add-scale-node/add-node-flow.png)
 <br> *OEM 硬件供应商是否制定物理服务器机架放置规则和更新固件因支持合同而异。*
 
-添加新节点的操作可能需要数小时或数天才能完成。
+添加新节点的操作可能需要数小时或数天才能完成。 添加其他缩放单元节点时，对系统上运行的工作负载没有影响。
 
 > [!Note]  
 > 在添加缩放单元节点的操作已在进行时，请勿尝试任何下述操作：
 >
->  - 更新 Azure Stack
+>  - 更新 Azure Stack Hub
 >  - 轮换证书
->  - 停止 Azure Stack
+>  - 停止 Azure Stack Hub
 >  - 修复缩放单元节点
 
 
@@ -54,16 +45,16 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 2. 启用物理交换机端口，并根据情况调整访问控制列表 (ACL)。
 3. 根据 OEM 提供的文档，在基础板管理控制器 (BMC) 中配置正确的 IP 地址，并应用所有 BIOS 设置。
 4. 使用硬件制造商提供的在 HLH 上运行的工具，将当前的固件基线应用于所有组件。
-5. 在 Azure Stack 管理员门户中运行“添加节点”操作。
+5. 在 Azure Stack Hub 管理员门户中运行“添加节点”操作。
 6. 验证“添加节点”操作是否成功。 为此，请查看[缩放单元的“状态”  ](#monitor-add-node-operations)。 
 
 ## <a name="add-the-node"></a>添加节点
 
-可以使用管理员门户或 PowerShell 来添加新节点。 “添加节点”操作首先将新的缩放单元节点添加为可用计算容量，然后自动扩展存储容量。 容量之所以可以自动扩展，是因为 Azure Stack 是一个超聚合的系统，其中的计算和存储是一起缩放的。  
+可以使用管理员门户或 PowerShell 来添加新节点。 “添加节点”操作首先将新的缩放单元节点添加为可用计算容量，然后自动扩展存储容量。 容量之所以可以自动扩展，是因为 Azure Stack Hub 是一个超聚合的系统，其中的计算和存储是一起缩放的。  
 
 ### <a name="use-the-administrator-portal"></a>使用管理员门户
 
-1. 以 Azure Stack 操作员身份登录到 Azure Stack 管理员门户。
+1. 以 Azure Stack Hub 操作员身份登录到 Azure Stack Hub 管理员门户。
 2. 导航到“+ 创建资源”   > “容量”   > “缩放单元节点”  。
    ![缩放单元节点](media/azure-stack-add-scale-node/select-node1.png)
 3. 在“添加节点”窗格中选择“区域”，然后选择要向其添加节点的“缩放单元”。    另请指定要添加的缩放单元节点的“BMC IP 地址”。  一次只能添加一个节点。
@@ -74,7 +65,7 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 
 使用 **New-AzsScaleUnitNodeObject** cmdlet 添加一个节点。  
 
-在使用下述某个示例 PowerShell 脚本之前，请将 *node names* 和 *IP addresses* 的值替换为你的 Azure Stack 环境的值。
+在使用下述某个示例 PowerShell 脚本之前，请将 *node names* 和 *IP addresses* 的值替换为你的 Azure Stack Hub 环境的值。
 
   > [!Note]  
   > 为节点命名时，必须确保名称的长度不到 15 个字符。 另外，不能使用包含空格或下述任何字符的名称：`\`、`/`、`:`、`*`、`?`、`"`、`<`、`>`、`|`、`\`、`~`、`!`、`@`、`#`、`$`、`%`、`^`、`&`、`(`、`)`、`{`、`}`、`_`。

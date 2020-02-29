@@ -1,20 +1,19 @@
 ---
-title: 如何在 Azure IoT 中心设备预配服务中预配多租户的设备 | Microsoft 文档
-description: 如何使用你的设备预配服务实例来预配多租户的设备
+title: 如何在 Azure IoT 中心设备预配服务中预配多租户的设备
+description: 如何使用你的设备预配服务 (DPS) 实例来预配多租户的设备
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 04/10/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 3280308cd8054665dac236165b1a821c28057328
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: f962fcf9077f77be67d910e2623adde098e26225
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859727"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494128"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -46,32 +45,32 @@ ms.locfileid: "75859727"
 
 ## <a name="create-two-regional-iot-hubs"></a>创建两个区域 IoT 中心
 
-在这一部分，你将使用 Azure Cloud Shell 在美国西部  和美国东部  区域为租户创建两个新的区域 IoT 中心。
+在这一部分，你将使用 Azure CLI 在“美国西部”  和“美国东部”  区域为租户创建两个新的区域 IoT 中心。
 
 
-1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+1. 在 Azure CLI 中，使用 [az group create](/cli/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
     以下示例在“eastus”  区域创建名为“contoso-us-resource-group”  的资源组。 建议对本文中创建的所有资源使用该组。 这将便于在完成学习后更为轻松地清理创建的资源。
 
-    ```azurecli-interactive 
+    ```azurecli 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令在“eastus”  区域中创建 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
+2. 在 Azure CLI 中，使用 [az iot hub create](/cli/iot/hub#az-iot-hub-create) 命令在“eastus”  区域中创建 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group  。
 
     以下示例在“eastus”  位置创建名为“contoso-east-hub”  的 IoT 中心。 你必须使用自己的唯一中心名称来替代 contoso-east-hub  。
 
-    ```azurecli-interactive 
+    ```azurecli 
     az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
     
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令在“westus”  区域中创建 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
+3. 在 Azure CLI 中，使用 [az iot hub create](/cli/iot/hub#az-iot-hub-create) 命令在“westus”  区域中创建 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group  。
 
     以下示例在“westus”  位置创建名为“contoso-west-hub”  的 IoT 中心。 你必须使用自己的唯一中心名称来替代 contoso-west-hub  。
 
-    ```azurecli-interactive 
+    ```azurecli 
     az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
     ```
 
@@ -127,7 +126,7 @@ ms.locfileid: "75859727"
 
 为了更易清理资源，这些 VM 将被添加到包含创建的 IoT 中心的同一资源组 contoso-us-resource-group  。 但是，VM 将在不同区域中运行（美国西部  和美国东部  ）。
 
-1. 在 Azure Cloud Shell 中，在命令中更改以下参数后，执行该命令以创建美国东部  区域 VM：
+1. 在 Azure CLI 中，在命令中更改以下参数后，执行该命令以创建美国东部  区域 VM：
 
     **--name**：为“美国东部”  区域设备 VM 输入一个唯一名称。 
 
@@ -135,7 +134,7 @@ ms.locfileid: "75859727"
 
     **--admin-password**：使用你自己的管理员密码。
 
-    ```azurecli-interactive
+    ```azurecli
     az vm create \
     --resource-group contoso-us-resource-group \
     --name ContosoSimDeviceEast \
@@ -148,7 +147,7 @@ ms.locfileid: "75859727"
 
     此命令需要花费几分钟时间完成。 完成该命令后，请记下美国东部区域 VM 的 publicIpAddress  值。
 
-1. 在 Azure Cloud Shell 中，在命令中更改以下参数后，执行该命令以创建美国西部  区域 VM：
+1. 在 Azure CLI 的命令中更改以下参数后，执行该命令以创建“美国西部”  区域 VM：
 
     **--name**：为“美国西部”  区域设备 VM 输入一个唯一名称。 
 
@@ -156,7 +155,7 @@ ms.locfileid: "75859727"
 
     **--admin-password**：使用你自己的管理员密码。
 
-    ```azurecli-interactive
+    ```azurecli
     az vm create \
     --resource-group contoso-us-resource-group \
     --name ContosoSimDeviceWest \
@@ -191,8 +190,7 @@ ms.locfileid: "75859727"
 
 在这一部分，你将克隆每个 VM 上的 Azure IoT C SDK。 SDK 包含将从每个区域模拟租户的设备预配的示例。
 
-
-1. 对于每个 VM，使用以下命令安装 Cmake  、g++  、gcc  和 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)：
+1. 对于每个 VM，使用以下命令安装 CMake  、g++  、gcc  和 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)：
 
     ```bash
     sudo apt-get update

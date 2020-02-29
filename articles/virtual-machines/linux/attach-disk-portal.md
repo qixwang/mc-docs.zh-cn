@@ -1,5 +1,5 @@
 ---
-title: 使用门户将数据磁盘附加到 Linux VM | Azure
+title: 将数据磁盘附加到 Linux VM
 description: 使用门户将新的或现有数据磁盘附加到 Linux VM。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 07/12/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 06f00ff4fe9bb248c689172e75299f0c9f65725a
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 32d1733470c21e15f722a69b83ee51e5283ab83f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272534"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428815"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -33,10 +33,9 @@ ms.locfileid: "72272534"
 * 附加磁盘后，需要[连接到 Linux VM 以装载新磁盘](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 ## <a name="find-the-virtual-machine"></a>查找虚拟机
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-2. 单击左侧菜单中的“虚拟机”  。
-3. 从列表中选择虚拟机。
-4. 在“虚拟机”页的“概要”中，单击“磁盘”   。
+1. 若要查找 VM，请转到 [Azure 门户](https://portal.azure.cn/)。 搜索并选择“虚拟机”  。
+2. 从列表中选择 VM。
+3. 在“虚拟机”页面边栏的“设置”下，选择“磁盘”  。  
 
     ![打开磁盘设置](./media/attach-disk-portal/find-disk-settings.png)
 
@@ -184,6 +183,14 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>使用 parted 的替代方法
+fdisk 实用程序需要交互式输入，因此不适合在自动化脚本中使用。 不过，[parted](https://www.gnu.org/software/parted/) 实用程序可以编写脚本，因此在自动化方案中更适合。 parted 实用程序可用于对数据磁盘进行分区和格式化。 在下面的演练中，我们将使用新的数据磁盘 /dev/sdc，并使用 [XFS](https://xfs.wiki.kernel.org/) 文件系统将其格式化。
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+如上所示，我们使用 [partprobe](https://linux.die.net/man/8/partprobe) 实用程序来确保内核即时了解新的分区和文件系统。 无法使用 partprobe 可能导致 blkid 或 lslbk 命令不即时返回新文件系统的 UUID。
 
 ### <a name="mount-the-disk"></a>装载磁盘
 使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 */datadrive* 处创建一个目录：

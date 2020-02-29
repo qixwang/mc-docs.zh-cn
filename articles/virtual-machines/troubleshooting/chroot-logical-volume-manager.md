@@ -13,16 +13,16 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 11/24/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a124eb101e623e9c24388f5026b1ccee63938471
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5dcfd4d30286d429ac1a5d0bf61a6959979b9a1e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348472"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428781"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当磁盘布局使用 LVM（逻辑卷管理器）时对 Linux VM 进行故障排除
+# <a name="troubleshooting-a-linux-vm-when-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当磁盘布局使用 LVM（逻辑卷管理器）时对 Linux VM 进行故障排除
 
 <!--Not Avaialble on no access to the Azure serial console and-->
 
@@ -208,6 +208,28 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 <!--Not Available on ### Example 3 - enable Serial Console-->
 <!--Not Available on Serial Console-->
 
+### <a name="example-3---kernel-loading-with-problematic-lvm-swap-volume"></a>示例 3 - LVM 交换卷出问题的内核加载
+
+VM 可能无法完全启动，因此会进入 **dracut** 提示。
+有关故障的更多详细信息，可从 Azure 串行控制台查找，也可导航到 Azure 门户 -> 启动诊断 -> 串行日志进行查找
+
+可能出现类似于下面的错误：
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+在此示例中配置了 grub.cfg，以加载名为 **rd.lvm.lv=VG/SwapVol** 的 LV，VM 无法找到此项。 此行显示了如何加载引用 LV SwapVol 的内核
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ 从 /etc/default/grub 配置中删除有问题的 LV 并重新生成 grub2.cfg
+
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>退出 chroot 并交换 OS 磁盘
 
 修复问题后，请继续从救援 VM 中卸载并分离磁盘，使其能够与受影响的 VM OS 磁盘交换。
@@ -244,4 +266,4 @@ umount /rescue
 <!--Not Available on [Azure Serial Console]( https://docs.azure.cn/virtual-machines/troubleshooting/serial-console-linux)-->
 
 <!-- Update_Description: new article about chroot logical volume manager -->
-<!--NEW.date: 12/09/2019-->
+<!--NEW.date: 02/13/2020-->

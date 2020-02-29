@@ -1,49 +1,39 @@
 ---
-title: Azure Stack 上的应用服务 Update 5 发行说明 | Microsoft Docs
-description: 了解 Azure Stack 上的应用服务 Update 5 中的改进、修复和已知问题。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 上的应用服务 Update 5 发行说明
+description: 了解 Azure Stack Hub 上的应用服务 Update 5 中的改进、修复和已知问题。
 author: WenJason
 manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: d6a8046efba03137f600e5353f161eb928a402ad
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: ad1ae8aa9721723c8cb985bf8cb3475508d264cd
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655451"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540959"
 ---
-# <a name="app-service-on-azure-stack-update-5-release-notes"></a>Azure Stack 上的应用服务 Update 5 发行说明
+# <a name="app-service-on-azure-stack-hub-update-5-release-notes"></a>Azure Stack Hub 上的应用服务 Update 5 发行说明
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-这些发行说明介绍 Azure Stack 上的 Azure 应用服务 Update 5 中的改进、修复和已知问题。 已知问题分为三个部分：与部署直接相关的问题、更新过程问题，以及内部版本（安装后）的问题。
+这些发行说明介绍 Azure Stack Hub 上的 Azure 应用服务 Update 5 中的改进、修复和已知问题。 已知问题分为三个部分：与部署直接相关的问题、更新过程问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
-> 请将 1901 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.5。
+> 请将 1901 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.5。
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 上的应用服务 Update 5 的内部版本号为 **80.0.2.15**。
+Azure Stack Hub 上的应用服务 Update 5 的内部版本号为 **80.0.2.15**。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-在开始部署之前，请参阅[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
+在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 
-开始将 Azure Stack 上的 Azure 应用服务升级到 1.5 之前：
+开始将 Azure Stack Hub 上的 Azure 应用服务升级到 1.5 之前：
 
-- 确保所有角色在 Azure Stack 管理员门户的 Azure应用服务管理中处于“就绪”状态。
+- 确保所有角色在 Azure Stack Hub 管理员门户的 Azure应用服务管理中处于“就绪”状态。
 
 - 备份应用服务和 master 数据库：
   - AppService_Hosting；
@@ -56,13 +46,13 @@ Azure Stack 上的应用服务 Update 5 的内部版本号为 **80.0.2.15**。
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 
-Azure Stack 上的 Azure 应用服务 Update 5 包含以下改进和修复：
+Azure Stack Hub 上的 Azure 应用服务 Update 5 包含以下改进和修复：
 
-- 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
+- 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack Hub 门户 SDK 版本一致。
 
 - 将 **Azure Functions 运行时**更新到 **v1.0.12205**。
 
-- 更新到 **Kudu 工具**即可解决操作**断开连接的** Azure Stack 的客户的样式设置和功能方面的问题。 
+- 更新到 **Kudu 工具**即可解决操作**断开连接的** Azure Stack Hub 的客户的样式设置和功能方面的问题。 
 
 - 针对核心服务的更新，用于提高可靠性和错误消息传递，以便更轻松地诊断常见问题。
 
@@ -82,10 +72,10 @@ Azure Stack 上的 Azure 应用服务 Update 5 包含以下改进和修复：
 
 ### <a name="post-update-steps"></a>更新后步骤
 
-对于希望为基于 Azure Stack 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack 的 Azure 应用服务 1.5 更新后执行以下步骤：
+对于希望为基于 Azure Stack Hub 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack Hub 的 Azure 应用服务 1.5 更新后执行以下步骤：
 
 > [!IMPORTANT]
-> 迁移过程大约需要花费 5-10 分钟。 该过程涉及终止现有的数据库登录会话。 计划停机时间来进行迁移，并在迁移后验证 Azure Stack 上的 Azure 应用服务。 如果在更新到 Azure Stack 上的 Azure 应用服务 1.3 之后已完成这些步骤，则无需再次执行这些步骤。
+> 迁移过程大约需要花费 5-10 分钟。 该过程涉及终止现有的数据库登录会话。 计划停机时间来进行迁移，并在迁移后验证 Azure Stack Hub 上的 Azure 应用服务。 如果在更新到 Azure Stack Hub 上的 Azure 应用服务 1.3 之后已完成这些步骤，则无需再次执行这些步骤。
 
 1. [将 AppService 数据库（appservice_hosting 和 appservice_metering）添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)。
 
@@ -184,7 +174,7 @@ Azure Stack 上的 Azure 应用服务 Update 5 包含以下改进和修复：
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 
-- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。 在 Azure Stack 部署文档的 Azure 应用服务中也提到了此问题。
+- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。 在 Azure Stack Hub 部署文档的 Azure 应用服务中也提到了此问题。
 
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 转到管理员门户中的 WorkersNsg 并添加包含以下属性的出站安全规则：
 
@@ -198,11 +188,11 @@ Azure Stack 上的 Azure 应用服务 Update 5 包含以下改进和修复：
  * 优先级：700
  * 姓名：Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 
-请参阅 [Azure Stack 1809 发行说明](azure-stack-update-1903.md)中的文档。
+请参阅 [Azure Stack Hub 1809 发行说明](azure-stack-update-1903.md)中的文档。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure 应用服务的概述，请参阅[基于 Azure Stack 的 Azure 应用服务概述](azure-stack-app-service-overview.md)。
-- 若要详细了解如何完成基于 Azure Stack 的应用服务的部署准备，请参阅[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
+- 有关 Azure 应用服务的概述，请参阅[基于 Azure Stack Hub 的 Azure 应用服务概述](azure-stack-app-service-overview.md)。
+- 若要详细了解如何完成基于 Azure Stack Hub 的应用服务的部署准备，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。

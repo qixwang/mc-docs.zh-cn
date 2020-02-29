@@ -1,40 +1,31 @@
 ---
-title: 向 Azure Stack 发出 API 请求 | Microsoft Docs
-description: 了解如何从 Azure 检索身份验证令牌，以向 Azure Stack 发出 API 请求。
-services: azure-stack
-documentationcenter: ''
+title: 向 Azure Stack Hub 发出 API 请求
+description: 了解如何从 Azure 检索身份验证令牌，以向 Azure Stack Hub 发出 API 请求。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a6aed2c4844f2acd9b1d4a31a866e771f556d608
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: ac48327159730eb86868e58aed367781d2acef53
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020300"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541016"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# <a name="make-api-requests-to-azure-stack"></a>向 Azure Stack 发出 API 请求
+# <a name="make-api-requests-to-azure-stack-hub"></a>向 Azure Stack Hub 发出 API 请求
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+可以使用 Azure Stack Hub REST API 自动执行操作，例如将虚拟机 (VM) 添加到 Azure Stack Hub 云。
 
-可以使用 Azure Stack REST API 自动执行操作，例如将虚拟机 (VM) 添加到 Azure Stack 云。
+这些 API 要求客户端向 Azure 登录终结点进行身份验证。 该终结点将返回一个要在发送到 Azure Stack Hub API 的每个请求的标头中使用的令牌。 Azure 使用 Oauth 2.0。
 
-这些 API 要求客户端向 Azure 登录终结点进行身份验证。 该终结点将返回一个要在发送到 Azure Stack API 的每个请求的标头中使用的令牌。 Azure 使用 Oauth 2.0。
+本文提供了使用 **cURL** 实用工具创建 Azure Stack Hub 请求的示例。 cURL 是一个命令行工具，它有一个用于传输数据的库。 这些示例演练了检索令牌以访问 Azure Stack Hub API 的过程。 大多数编程语言都提供了 Oauth 2.0 库，这些库提供可靠的令牌管理，并可以处理刷新令牌等任务。
 
-本文提供了使用 **cURL** 实用工具创建 Azure Stack 请求的示例。 cURL 是一个命令行工具，它有一个用于传输数据的库。 这些示例演练了检索令牌以访问 Azure Stack API 的过程。 大多数编程语言都提供了 Oauth 2.0 库，这些库提供可靠的令牌管理，并可以处理刷新令牌等任务。
-
-查看配合常规 REST 客户端（例如 **cURL**）使用 Azure Stack REST API 的整个过程有助于了解基础请求，以及应可在响应有效负载中收到的内容。
+查看配合常规 REST 客户端（例如 **cURL**）使用 Azure Stack Hub REST API 的整个过程有助于了解基础请求，以及应可在响应有效负载中收到的内容。
 
 本文并未探索可用于检索令牌的所有选项，例如交互式登录或创建专用应用 ID。 若要获取有关这些主题的信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
 
@@ -71,16 +62,16 @@ grant_type=password
    要使用的身份验证方案类型。 在此示例中，值为 `password`。
 
 - **资源**：  
-   令牌访问的资源。 可以通过查询 Azure Stack 管理元数据终结点找到该资源。 查看“受众”  部分。
+   令牌访问的资源。 可以通过查询 Azure Stack Hub 管理元数据终结点找到该资源。 查看“受众”  部分。
 
-- **Azure Stack 管理终结点**：
+- **Azure Stack Hub 管理终结点**：
 
    ```bash
-   https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+   https://management.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-01
    ```
 
   > [!NOTE]  
-  > 如果你是尝试访问租户 API 的管理员，请确保使用租户终结点，例如 `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`。
+  > 如果你是尝试访问租户 API 的管理员，请确保使用租户终结点，例如 `https://adminmanagement.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-011`。
 
   例如，使用 Azure Stack 开发工具包作为终结点：
 
@@ -128,7 +119,7 @@ grant_type=password
 
 - **username**
 
-  例如 Azure Stack Azure AD 帐户：
+  例如 Azure Stack Hub Azure AD 帐户：
 
   ```bash
   azurestackadmin@fabrikam.partner.onmschina.cn
@@ -136,7 +127,7 @@ grant_type=password
 
 - **password**
 
-  Azure Stack Azure AD 管理员密码。
+  Azure Stack Hub Azure AD 管理员密码。
 
 ### <a name="example"></a>示例
 
@@ -202,7 +193,7 @@ URI 指示用于发送请求的协议。 例如 `http` 或 `https`。
 - **查询字符串**：  
 该字符串提供其他简单参数，例如 API 版本或资源选择条件。
 
-## <a name="azure-stack-request-uri-construct"></a>Azure Stack 请求 URI 构造
+## <a name="azure-stack-hub-request-uri-construct"></a>Azure Stack Hub 请求 URI 构造
 
 ```bash
 {URI-scheme} :// {URI-host} / {subscription id} / {resource group} / {provider} / {resource-path} ? {OPTIONAL: filter-expression} {MANDATORY: api-version}
@@ -223,5 +214,3 @@ https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-40
 ## <a name="next-steps"></a>后续步骤
 
 有关使用 Azure REST 终结点的详细信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
-
-<!-- Update_Description: wording update -->

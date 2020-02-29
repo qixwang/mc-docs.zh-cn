@@ -1,35 +1,26 @@
 ---
-title: 在不同 ASDK 环境中的两个虚拟网络之间创建站点到站点 VPN 连接 | Microsoft Docs
+title: 在不同 ASDK 环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 description: 向云操作员介绍如何在两个单节点 Azure Stack 开发工具包 (ASDK) 环境之间创建站点到站点 VPN 连接的教程。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 07/16/2019
-ms.date: 11/18/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.reviewer: tbd
-ms.lastreviewed: 09/12/2018
+ms.reviewer: misainat
+ms.lastreviewed: 01/22/2020
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9127e070d56b216817b1c2ba6ab6e157b278a1f3
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: d74d2b8681a7629c913b72cbac549cd57db24014
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020254"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540937"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-asdk-environments"></a>在不同 ASDK 环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 
 ## <a name="overview"></a>概述
 
-本文介绍如何在两个单独的 Azure Stack 开发工具包 (ASDK) 环境中的两个虚拟网络之间创建站点到站点 VPN 连接。 在配置连接过程中，读者可以了解 Azure Stack 中 VPN 网关的工作方式。
+本文介绍如何在两个单独的 Azure Stack 开发工具包 (ASDK) 环境中的两个虚拟网络之间创建站点到站点 VPN 连接。 在配置连接过程中，读者可以了解 Azure Stack Hub 中 VPN 网关的工作方式。
 
 ### <a name="connection"></a>连接
 
@@ -53,7 +44,7 @@ ms.locfileid: "74020254"
 
 ## <a name="prepare-an-offer-on-poc1-and-poc2"></a>在 POC1 和 POC2 中准备产品
 
-在 POC1 和 POC2 中准备一个产品，使用户能够订阅该产品并部署虚拟机 (VM)。 有关如何创建产品的信息，请参阅[向 Azure Stack 用户提供 VM](azure-stack-tutorial-tenant-vm.md)。
+在 POC1 和 POC2 中准备一个产品，使用户能够订阅该产品并部署虚拟机 (VM)。 有关如何创建产品的信息，请参阅[向 Azure Stack Hub 用户提供 VM](azure-stack-tutorial-tenant-vm.md)。
 
 ## <a name="review-and-complete-the-network-configuration-table"></a>查看并填写网络配置表
 
@@ -75,27 +66,19 @@ ms.locfileid: "74020254"
 
 ### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>获取 NAT VM 的外部适配器的 IP 地址
 
-1. 登录到 POC1 的 Azure Stack 物理机。
-2. 编辑以下 PowerShell 代码以添加管理员密码，然后在 POC 主机上运行该代码：
+1. 登录到 POC1 的 Azure Stack Hub 物理机。
+2. 以管理员身份打开 PowerShell 并运行以下 cmdlet：
 
    ```powershell
-   cd \AzureStack-Tools-master\connect
-   Import-Module .\AzureStack.Connect.psm1
-   $Password = ConvertTo-SecureString "<your administrator password>" `
-    -AsPlainText `
-    -Force
-   Get-AzureStackNatServerAddress `
-    -HostComputer "AzS-bgpnat01" `
-    -Password $Password
+   Get-NetNatExternalAddress
    ```
 
 3. 将 IP 地址添加到上一部分中的网络配置表。
-
 4. 在 POC2 上重复运行此过程。
 
 ## <a name="create-the-network-resources-in-poc1"></a>在 POC1 中创建网络资源
 
-现在，可以创建设置网关所需的 POC1 网络资源。 以下说明介绍如何使用 Azure Stack 用户门户创建资源。 也可以使用 PowerShell 代码来创建资源。
+现在，可以创建设置网关所需的 POC1 网络资源。 以下说明介绍如何使用 Azure Stack Hub 用户门户创建资源。 也可以使用 PowerShell 代码来创建资源。
 
 ![用于创建资源的工作流](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
@@ -142,15 +125,15 @@ ms.locfileid: "74020254"
 
 ### <a name="create-the-local-network-gateway"></a>创建本地网关
 
-在此 Azure Stack 评估部署中实现*本地网关* 稍微不同于实际 Azure 部署中的情况。
+在此 Azure Stack Hub 评估部署中实现本地网关  稍微不同于实际 Azure 部署中的情况。
 
-在 Azure 部署中，本地网络网关代表用于连接到 Azure 中的虚拟网络网关的本地（租户位置）物理设备。 在此 Azure Stack 评估部署中，连接的两端都是虚拟网络网关。
+在 Azure 部署中，本地网络网关代表用于连接到 Azure 中的虚拟网络网关的本地（租户位置）物理设备。 在此 Azure Stack Hub 评估部署中，连接的两端都是虚拟网络网关。
 
 从更通用的角度来看，存在本地网关资源通常意味着在连接的另一端存在远程网关。 由于ASDK 的设计方式，必须提供另一个 ASDK 的网络地址转换 (NAT) VM 上的外部网络适配器 IP 地址作为局域网络网关的公共 IP 地址。 然后需要在 NAT VM 上创建 NAT 映射，确保正确连接两端。
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 
-1. 登录到 POC1 的 Azure Stack 物理机。
+1. 登录到 POC1 的 Azure Stack Hub 物理机。
 2. 在用户门户中，选择“+ 创建资源”。 
 3. 转到**市场**，然后选择“网络”。 
 4. 从资源列表中选择“本地网络网关”。 
@@ -285,7 +268,7 @@ ms.locfileid: "74020254"
 
    ![内部 IP 地址](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 
-2. 登录到 POC1 的 Azure Stack 物理机。
+2. 登录到 POC1 的 Azure Stack Hub 物理机。
 3. 复制并编辑以下 PowerShell 脚本。 若要在每个 ASDK 中配置 NAT，请在权限提升的 Windows PowerShell ISE 中运行该脚本。 在该脚本中，将值添加到 `External BGPNAT address` 和 `Internal IP address` 占位符：
 
    ```powershell
@@ -338,7 +321,7 @@ ms.locfileid: "74020254"
 
 ### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>登录到 POC1 中的租户 VM
 
-1. 登录 POC1 的 Azure Stack 物理机，然后使用租户帐户登录到用户门户。
+1. 登录 POC1 的 Azure Stack Hub 物理机，然后使用租户帐户登录到用户门户。
 2. 在左导航栏中，选择“计算”。 
 3. 在 VM 列表中，找到前面创建的 **VM01**，并选择它。
 4. 在虚拟机的边栏选项卡上，单击“连接”，然后打开 VM01.rdp 文件。 
@@ -359,7 +342,7 @@ ms.locfileid: "74020254"
 
 ### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>登录到 POC2 中的租户 VM
 
-1. 登录 POC2 的 Azure Stack 物理机，然后使用租户帐户登录到用户门户。
+1. 登录 POC2 的 Azure Stack Hub 物理机，然后使用租户帐户登录到用户门户。
 2. 在左侧导航栏中，单击“计算”  。
 3. 在 VM 列表中，找到前面创建的 **VM02**，并选择它。
 4. 在 VM 的边栏选项卡上，单击“连接”  。

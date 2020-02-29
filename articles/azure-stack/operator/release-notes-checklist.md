@@ -1,49 +1,38 @@
 ---
-title: Azure Stack Hub 更新活动清单 | Microsoft Docs
+title: Azure Stack Hub 更新活动清单
 description: 为系统准备最新 Azure Stack Hub 更新的清单。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 12/10/2019
-ms.date: 01/13/2020
+origin.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ppacent
-ms.lastreviewed: 12/10/2019
-ms.openlocfilehash: 04e4cdfa6ea975ded21773d577aac3a5034340ec
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.lastreviewed: 01/14/2020
+ms.openlocfilehash: 8f15f78f839194c3b4c52c46f1eca03e9a9d1689
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737901"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541050"
 ---
 # <a name="azure-stack-hub-update-activity-checklist"></a>Azure Stack Hub 更新活动清单
-
-*适用于：Azure Stack Hub 集成系统*
 
 查看此清单，以便准备 Azure Stack Hub 更新。 本文包含 Azure Stack Hub 操作员的更新相关活动的清单。
 
 ## <a name="prepare-for-azure-stack-hub-update"></a>准备 Azure Stack Hub 更新
 
-| 活动                     | 详细信息                                                   |
+| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 活动 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                   | 详细信息                                                   |
 |------------------------------|-----------------------------------------------------------|
 | 查看已知问题     | [已知问题列表](known-issues.md)。                |
 | 查看安全更新 | [安全更新列表](release-notes-security-updates.md)。      |
 | 应用最新的 OEM 包 | 请与 OEM 联系，以确保你的系统满足系统要更新到的 Azure Stack Hub 版本的最低 OEM 包要求。 确保 OEM 包与要更新到的 Azure Stack Hub 版本兼容。 如果 OEM 包与要更新到的 Azure Stack Hub 版本不兼容，则必须在运行 Azure Stack Hub 更新之前，先执行 OEM 包更新。 有关说明，请参阅“应用 Azure Stack Hub 原始设备制造商 (OEM) 更新”。 |
 | 可选：配置日志自动收集 | 建议在 Azure Stack Hub 环境的基础上配置日志自动收集，以便在需要开具支持票证时简化收集系统日志的过程。 若要配置日志自动收集，请参阅[配置 Azure Stack Hub 诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)中的说明。 |
-| 应用最新修补程序 | 应用适用于当前安装版本的最新修补程序。 有关最新修补程序的列表，请参阅发行说明中的“修补程序”部分。 |
+| 应用最新修补程序 | 应用适用于当前安装版本的最新修补程序。 有关最新修补程序的列表，请参阅[发行说明中的“修补程序”](release-notes.md)部分。 |
 | 运行 Capacity Planner 工具 | 请确保使用最新版本的 [Azure Stack Hub Capacity Planner 工具](azure-stack-capacity-planning-overview.md)来执行工作负荷规划和大小调整。 最新版本包含 bug 修复，并提供与每个 Azure Stack Hub 更新一起发布的新功能。 |
-| 运行 Test-AzureStack | 运行 `Test-AzureStack -Group UpdateReadiness` 确定操作问题。 可通过特权终结点会话 (PEP) 访问 Cmdlet。 有关详细信息，请参阅[验证 Azure Stack Hub 系统状态](azure-stack-diagnostic-test.md)。 |
+| 运行 **Test-AzureStack** | 运行 `Test-AzureStack -Group UpdateReadiness` 确定操作问题。 可通过特权终结点会话 (PEP) 访问 Cmdlet。 有关详细信息，请参阅[验证 Azure Stack Hub 系统状态](azure-stack-diagnostic-test.md)。 |
 | 解决问题 | 解决 `Test-AzureStack` 确定的任何操作问题。 |
 | 可用更新 | 只有在联网场景中，Azure Stack Hub 部署才会定期检查安全的终结点，并在已发布云更新的情况下自动通知你。 断开连接的客户可以根据[此处所述的过程](azure-stack-apply-updates.md)下载和导入新包。 |
-| 通知用户 | 应向用户通知任何维护操作，并尽可能将正常维护时段安排在非工作时间。 维护操作可能会同时影响租户工作负荷和门户操作。 |
+| 计划维护时段并通知用户 | 应向用户通知任何维护操作，并尽可能将正常维护时段安排在非工作时间。 维护操作可能会影响现有的租户工作负载，并导致新的租户操作（例如，创建、重新配置或删除 VM）失败，无论操作是从门户启动还是以编程方式从 Azure 资源管理器API 启动。 其他操作（例如备份）在更新完成之前也可能不可用。 对于 Azure Stack Hub 快速更新和完整更新，可以查看[发行说明](release-notes.md)，预测一下要应用的版本进行更新所需的时间。 |
 
 ## <a name="during-azure-stack-hub-update"></a>在 Azure Stack Hub 更新期间
 

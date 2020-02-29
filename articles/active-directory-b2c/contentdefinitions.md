@@ -1,5 +1,6 @@
 ---
-title: ContentDefinitions - Azure Active Directory B2C | Microsoft Docs
+title: ContentDefinitions
+titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ContentDefinitions 元素。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 8248c54121a1e18e0d1e755277ad448e43c5a60a
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 4488a2f0070c504b4d561eccd74c410f12a22317
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028080"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531298"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -56,7 +57,6 @@ ms.locfileid: "77028080"
   ...
 ```
 
-
 ## <a name="contentdefinition"></a>ContentDefinition
 
 **ContentDefinition** 元素包含以下属性：
@@ -72,22 +72,82 @@ ms.locfileid: "77028080"
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
 | RecoveryUri | 0:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
 | DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |
-| Metadata | 1:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
+| Metadata | 0:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
 | LocalizedResourcesReferences | 0:1 | 本地化的资源引用集合。 使用此元素可以自定义用户界面和声明属性的本地化。 |
 
 ### <a name="datauri"></a>DataUri
 
-**DataUri** 元素用于指定页面标识符。 Azure AD B2C 使用页面标识符来加载和启动 UI 元素与客户端 JavaScript。 值的格式为 `urn:com:microsoft:aad:b2c:elements:page-name:version`。  下表列出了可以使用的页面标识符。
+**DataUri** 元素用于指定页面标识符。 Azure AD B2C 使用页面标识符来加载和启动 UI 元素与客户端 JavaScript。 值的格式为 `urn:com:microsoft:aad:b2c:elements:page-name:version`。 下表列出了可以使用的页面标识符。
 
-| Value |   说明 |
+| 页面标识符 | 说明 |
 | ----- | ----------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 遇到异常或错误时显示错误页面。 |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | 列出可供用户在登录期间选择的标识提供者。 |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | 在注册或登录期间使用短信或语音来验证电话号码。 |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | 显示一个窗体，让用户创建或更新其个人资料。 |
+| `globalexception` | 遇到异常或错误时显示错误页面。 |
+| `providerselection`, `idpselection` | 列出可供用户在登录期间选择的标识提供者。  |
+| `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
+| `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
+| `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
+| `selfasserted` | 显示一个窗体，让用户创建或更新其个人资料。 |
 
+### <a name="select-a-page-layout"></a>选择页面布局
+
+在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-samples.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version`。
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+`DataUri` 的 [version](page-layout.md) 部分指定内容包，其中包含的 HTML、CSS 和 JavaScript 适用于策略中的用户界面元素。 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也仍然需要为页面指定页面布局版本。
+
+以下示例显示版本 `1.2.0` 的 **DataUri** 为 `selfasserted`：
+
+```xml
+<ContentDefinition Id="api.localaccountpasswordreset">
+<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+<Metadata>
+    <Item Key="DisplayName">Local account change password page</Item>
+</Metadata>
+</ContentDefinition>
+```
+
+#### <a name="migrating-to-page-layout"></a>迁移到页面布局
+
+值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 若要在使用旧 **DataUri** 值的自定义策略中指定页面布局，请根据下表迁移到新格式。
+
+| 旧 DataUri 值 | 新 DataUri 值 |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+
+
+### <a name="metadata"></a>Metadata
+
+**Metadata** 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| 项目 | 0:n | 与内容定义相关的元数据。 |
+
+**Metadata** 元素的 **Item** 元素包含以下属性：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| 键 | 是 | 元数据密钥。  |
+
+#### <a name="metadata-keys"></a>元数据键
+
+内容定义支持以下元数据项： 
+
+| 键 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| DisplayName | 否 | 一个包含内容定义名称的字符串。 |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -97,25 +157,12 @@ ms.locfileid: "77028080"
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 内容定义的本地化资源引用列表。 |
 
-**LocalizedResourcesReferences** 元素包含以下属性：
+**LocalizedResourcesReference** 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
-
-以下示例演示注册或登录内容定义：
-
-```XML
-<ContentDefinition Id="api.signuporsignin">
-  <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Signin and Signup</Item>
-  </Metadata>
-</ContentDefinition>
-```
 
 以下示例演示包含对英语、法语和西班牙语本地化的引用的注册或登录内容定义：
 

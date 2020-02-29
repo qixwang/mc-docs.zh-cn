@@ -1,16 +1,16 @@
 ---
-title: 为 Service Fabric 客户端身份验证设置 Azure Active Directory
+title: 为客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
 ms.topic: conceptual
 origin.date: 06/28/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: bf3f117813ac7d66617212048bd21fae528573dc
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f3b76561608e6c8e8d59393c8a3315802168d8a2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742363"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540193"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -108,9 +108,19 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”  列表中。
 
 #### <a name="solution"></a>解决方案
-在 AAD 页中选择“应用注册”，然后选择群集应用程序，最后选择“回复 URL”按钮。  在“回复 URL”页中，将 Service Fabric Explorer 的 URL 添加到列表，或者替换列表中的某个项。 完成后，保存所做的更改。
+在 Azure AD 页上依次选择“应用注册”、你的群集应用程序、“回复 URL”。   在“回复 URL”窗格中，将 Service Fabric Explorer URL 添加到列表，或者替换列表中的某个项。  保存所做更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>登录时，通过 PowerShell 使用 Azure AD 身份验证连接到群集会生成错误：“AADSTS50011”
+#### <a name="problem"></a>问题
+尝试通过 PowerShell 使用 Azure AD 连接到 Service Fabric 群集时，登录页会返回故障：“AADSTS50011：在请求中指定的回复 URL 与为应用程序 &lt;guid&gt; 配置的回复 URL 不匹配。”
+
+#### <a name="reason"></a>Reason
+与前面的问题类似，PowerShell 尝试针对 Azure AD 进行身份验证，而 Azure AD 提供 Azure AD 应用程序的“回复 URL”  列表中未列出的重定向 URL。  
+
+#### <a name="solution"></a>解决方案
+使用与上述问题相同的过程，但 URL 必须设置为 `urn:ietf:wg:oauth:2.0:oob`，这是命令行身份验证的特殊重定向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>使用 Azure AD 身份验证通过 PowerShell 连接群集
 若要连接 Service Fabric 群集，请使用以下 PowerShell 命令示例：

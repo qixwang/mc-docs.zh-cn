@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的虚拟机扩展和功能 | Azure
+title: 适用于 Windows 的 Azure VM 扩展和功能
 description: 了解可为 Azure 虚拟机提供的扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 03/30/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b23e6444b3597cd26836ddc5bd9d2765004b4826
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: e93ebf2c53fca7d11cb06b8cc9f2ea05d43e8d97
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831392"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428490"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -42,7 +42,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 
 除了进程特定的扩展外，自定义脚本扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Windows 的自定义脚本扩展允许在 VM 上运行任何 PowerShell 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Windows VM 自定义脚本扩展](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要处理 VM 上的扩展，需要安装 Azure Windows 代理。 有些单独的扩展附带先决条件，例如，有权访问资源或依赖项。
 
@@ -256,6 +256,10 @@ VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过�
 }
 ```
 
+在使用扩展的 Azure IaaS VM 上的证书平台中，可能会看到所有者为“Windows Azure CRP 证书生成器”  的证书。 在经典 RDFE VM 上，这些证书的使用者名称为 **_Windows Azure Service Management for Extensions_** 。
+
+这些证书保护了在传输扩展所使用的受保护设置（密码和其他凭据）期间 VM 与其主机之间的通信。 证书由 Azure 结构控制器生成并传递给 VM 代理。 如果每天都停止并启动 VM，则结构控制器可能会创建新证书。 此证书存储在计算机的“个人”证书存储中。 可以删除这些证书。 VM 代理会根据需要重新创建证书。
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>如何更新代理和扩展？
 
 代理和扩展使用相同的更新机制。 某些更新不需要附加的防火墙规则。
@@ -288,13 +292,13 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 Windows 来宾代理仅包含扩展处理代码，Windows 预配代码需要单独获取。   可以卸载 Windows 来宾代理。 无法禁用 Windows 来宾代理自动更新。
 
-扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展。  更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能。 
+扩展处理代码负责与 Azure 结构通信，并处理各种 VM 扩展操作，例如安装、报告状态、更新单个扩展，以及删除扩展  。 更新包含扩展处理代码的安全修复程序、bug 修复程序和增强功能  。
 
 若要检查运行的是哪个版本，请参阅[检测安装的 Windows 来宾代理](agent-windows.md#detect-the-vm-agent)。
 
 #### <a name="extension-updates"></a>扩展更新
 
-有扩展更新可用时，Windows 来宾代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供。   预配扩展时，可以选择安装或不安装扩展的次要版本更新  。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本  ：
+有扩展更新可用时，Windows 来宾代理会下载并升级扩展。 自动扩展更新以次要版本或修补程序的形式提供   。 预配扩展时，可以选择安装或不安装扩展的次要版本更新  。 以下示例演示如何在资源管理器模板中使用 autoUpgradeMinorVersion": true,' 自动升级次要版本  ：
 
 ```json
 "properties": {

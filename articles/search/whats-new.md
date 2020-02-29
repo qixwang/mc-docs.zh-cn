@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 662a70123dd711ba454387f4e26486ced36338dc
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+origin.date: 01/30/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 1be50bb661651f4fa59cd52234bc5d888a9767ee
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123314"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501437"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -22,17 +22,27 @@ ms.locfileid: "76123314"
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Azure 搜索的新服务名称
+## <a name="new-service-name"></a>新服务名称
 
-Azure 搜索现已重命名为 **Azure 认知搜索**，这样可以反映认知技能的扩展用途以及在核心操作中进行的 AI 处理。 虽然认知技能添加了新功能，但使用 AI 是完全可选的。 可以继续在没有 AI 的情况下使用 Azure 认知搜索，以便在你在云中创建并管理的索引中针对专用的、异源的、基于文本的内容构建丰富的全文搜索解决方案。 
-
-API 版本、Nuget 包、命名空间和终结点未更改。 现有的搜索解决方案不受服务名称更改的影响。
+Azure 搜索现已重命名为 **Azure 认知搜索**，这样可以反映认知技能的扩展（仍为可选）使用以及在核心操作中进行的 AI 处理。 API 版本、NuGet 包、命名空间和终结点未更改。 新的和现有的搜索解决方案不受服务名称更改的影响。
 
 ## <a name="feature-announcements"></a>功能公告
+
+<!-- ### February 2020 -->
+
+### <a name="january-2020"></a>2020 年 1 月
+
++ [客户托管的加密密钥](search-security-manage-encryption-keys.md)现已正式发布。 如果使用 REST，则可使用 `api-version=2019-05-06` 访问该功能。 对于托管代码，正确的包仍为 [.NET SDK 8.0-preview 版](search-dotnet-sdk-migration-version-9.md)，即使该功能不是预览版。 
+
++ 可以通过两种机制（当前均为预览版）提供对搜索服务的专用访问权限：
+
+  + 可以使用管理 REST API `api-version=2019-10-01-Preview` 来创建服务，限制对特定 IP 地址的访问。 预览版 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) 中有新的 **IpRule** 和 **NetworkRuleSet** 属性。 此预览功能在所选区域中提供。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 ### <a name="december-2019"></a>2019 年 12 月
 
 + [创建应用（预览版）](search-create-app-portal.md)是门户中用于生成可下载 HTML 文件的新向导。 该文件附带嵌入式脚本，此脚本呈现可运行的“localhost”样式 Web 应用（已绑定到搜索服务中的索引）。 页面在向导中可配置，并且可以包含搜索栏、结果区域、边栏导航和自动提示查询支持。 可以脱机修改 HTML，以便扩展或自定义工作流或外观。
+
+<!-- + [Create a private endpoint for secure connections (preview)](service-create-private-endpoint.md) explains how to set up a Private Link for secure connections to your search service. This preview feature is available upon request and uses [Azure Private Link](../private-link/private-link-overview.md) and [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) as part of the solution. -->
 
 ### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite 大会
 
@@ -49,10 +59,10 @@ API 版本、Nuget 包、命名空间和终结点未更改。 现有的搜索解
 
 + 索引器现在支持 [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API（预览版）](search-howto-index-cosmosdb.md)和 [Cosmos DB Cassandra API（预览版）](search-howto-index-cosmosdb.md)。 可以使用[此窗体](https://aka.ms/azure-cognitive-search/indexer-preview)登录。 获允加入预览计划以后，你会收到确认电子邮件。
 
-### <a name="july-2019"></a>2019 年 7 月
+<!-- ### July 2019 -->
 
-+ 已在 [Azure 政府云](https://docs.microsoft.com/azure/azure-government/documentation-government-services-webandmobile#azure-cognitive-search)中正式提供。
+<!-- + Generally available in [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-services-webandmobile#azure-cognitive-search). -->
 
 ## <a name="service-updates"></a>服务更新
 
-Azure 认知搜索的[服务更新公告](https://azure.microsoft.com/updates/?product=search&status=all)可以在 Azure 网站上找到。
+Azure 认知搜索的[服务更新公告](https://updates.azure.cn)可以在 Azure 网站上找到。

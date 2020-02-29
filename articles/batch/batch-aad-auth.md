@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 对 Azure Batch 服务解决方案进行身份验证 | Azure
-description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。
+title: 使用 Azure Active Directory 对 Azure Batch 服务进行身份验证
+description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了解如何通过两种方式之一进行身份验证。
 services: batch
 documentationcenter: .net
 author: lingliw
@@ -15,12 +15,12 @@ ms.workload: big-compute
 origin.date: 08/15/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1dc833bec68d3f3d9449349689995944e1eaeb23
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 242990de94c8aeb3ecf8bcc0b6ccd69bd2a6618a
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839048"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497535"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -144,6 +144,67 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 现在，应用程序应出现在访问控制设置中，同时已分配有 RBAC 角色。
 
 ![向应用程序分配 RBAC 角色](./media/batch-aad-auth/app-rbac-role.png)
+
+### <a name="assign-a-custom-role"></a>分配自定义角色
+
+自定义角色向用户授予用于提交作业、任务等的精细权限。 这可以防止用户执行影响成本的操作，例如创建池或修改节点。
+
+可以使用自定义角色向 Azure AD 用户、组或服务主体授予以下 RBAC 操作的权限：
+
+- Microsoft.Batch/batchAccounts/pools/write
+- Microsoft.Batch/batchAccounts/pools/delete
+- Microsoft.Batch/batchAccounts/pools/read
+- Microsoft.Batch/batchAccounts/jobSchedules/write
+- Microsoft.Batch/batchAccounts/jobSchedules/delete
+- Microsoft.Batch/batchAccounts/jobSchedules/read
+- Microsoft.Batch/batchAccounts/jobs/write
+- Microsoft.Batch/batchAccounts/jobs/delete
+- Microsoft.Batch/batchAccounts/jobs/read
+- Microsoft.Batch/batchAccounts/certificates/write
+- Microsoft.Batch/batchAccounts/certificates/delete
+- Microsoft.Batch/batchAccounts/certificates/read
+- Microsoft.Batch/batchAccounts/read（适用于任何读取操作）
+- Microsoft.Batch/batchAccounts/listKeys/action（适用于任何操作）
+
+自定义角色适用于通过 Azure AD 而不是 Batch 帐户凭据（共享密钥）进行身份验证的用户。 请注意，Batch 帐户凭据将为 Batch 帐户授予完全权限。 另请注意，使用 Autopool 的作业需要池级别权限。
+
+下面是自定义角色定义的示例：
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+有关如何创建自定义角色的更多常规信息，请参阅 [Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>获取 Azure Active Directory 的租户 ID
 
