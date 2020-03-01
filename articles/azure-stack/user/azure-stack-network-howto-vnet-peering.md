@@ -1,29 +1,25 @@
 ---
-title: 如何通过 VNET 对等互连连接两个 Azure Stack | Microsoft Docs
-description: 了解如何通过 VNET 对等互连连接两个 Azure Stack。
-services: azure-stack
+title: 如何通过 VNET 对等互连连接两个 Azure Stack Hub
+description: 了解如何通过 VNET 对等互连连接两个 Azure Stack Hub。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
-origin.date: 10/03/2019
-ms.date: 01/13/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: 3675fd87c985e2bfc4a5ed8fe3a0ccce5a95e7d2
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 3f95155bb9ce51fbf31137e060fddff71a644943
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737952"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540749"
 ---
-# <a name="vnet-peering-in-azure-stack-with-vms"></a>VM 所在的 Azure Stack 中的 VNET 对等互连
+# <a name="vnet-peering-in-azure-stack-hub-with-vms"></a>VM 所在的 Azure Stack Hub 中的 VNET 对等互连
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+可以在同一 Azure Stack Hub 环境中将两个 Azure Stack Hub VNet 互相连接。 目前无法使用内置[虚拟网关](/azure-stack/user/azure-stack-network-differences)连接 Azure Stack Hub VNet。 必须使用 NVA 设备在两个 Azure Stack Hub VNet 之间创建 VPN 隧道。 在本文的模板引用中，部署了两个安装了 RRAS 的 Windows Server 2016 VM。 这两个 RRAS 服务器经过配置，可以在两个 VNET 之间实现 S2SVPN IKEv2 隧道。 创建适当的 NSG 和 UDR 规则以允许在指定为“内部”  的每个 VNET 上的子网之间进行路由。 
 
-可以在同一 Azure Stack 环境中将两个 Azure Stack VNet 互相连接。 目前无法使用内置[虚拟网关](/azure-stack/user/azure-stack-network-differences)连接 Azure Stack VNet。 必须使用 NVA 设备在两个 Azure Stack VNet 之间创建 VPN 隧道。 在本文的模板引用中，部署了两个安装了 RRAS 的 Windows Server 2016 VM。 这两个 RRAS 服务器经过配置，可以在两个 VNET 之间实现 S2SVPN IKEv2 隧道。 创建适当的 NSG 和 UDR 规则以允许在指定为“内部”  的每个 VNET 上的子网之间进行路由。 
-
-此部署模式是一个基础，它使得 VPN 隧道不仅可以在 Azure Stack 实例内部创建，而且还可以在 Azure Stack 实例之间创建，以及创建到本地网络等其他资源（通过使用 Windows RRAS S2S VPN 隧道）。 
+此部署模式是一个基础，它使得 VPN 隧道不仅可以在 Azure Stack Hub 实例内部创建，而且还可以在 Azure Stack Hub 实例之间创建，以及创建到本地网络等其他资源（通过使用 Windows RRAS S2S VPN 隧道）。 
 
 可以在 [Azure 智能边缘模式](https://github.com/Azure-Samples/azure-intelligent-edge-patterns
 ) GitHub 存储库中找到这些模板。 该模板位于 **S2SVPNTunnel** 文件夹中。
@@ -32,8 +28,8 @@ ms.locfileid: "75737952"
 
 ## <a name="requirements"></a>要求
 
-- 已应用最新更新的 ASDK 或 Azure Stack 集成系统。 
-- 所需的 Azure Stack 市场项：
+- 应用了最新更新的部署。 
+- 所需的 Azure Stack Hub 市场项：
     -  Windows Server 2016 Datacenter（建议使用最新内部版本）
     -  自定义脚本扩展
 
@@ -60,4 +56,4 @@ ms.locfileid: "75737952"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  

@@ -1,7 +1,7 @@
 ---
 title: 快速入门：创建应用 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 使用预生成的域 `HomeAutomation` 创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
+description: 本快速入门演示如何创建使用预生成域 `HomeAutomation` 打开和关闭灯光和设备的 LUIS 应用。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 services: cognitive-services
 author: lingliw
 ms.custom: seodec18
@@ -12,12 +12,12 @@ ms.topic: quickstart
 origin.date: 12/17/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: f078231bdbc9b72c1466e4156ad93845eb9e00a8
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: f85e7ffa8e9dbe3b6ad8912b8642f078f57abf38
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858016"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154559"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 

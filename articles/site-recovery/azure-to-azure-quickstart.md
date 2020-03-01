@@ -1,22 +1,22 @@
 ---
-title: 为 Azure IaaS VM 设置到 Azure 次要区域的灾难恢复
-description: 本快速入门提供了使用 Azure Site Recovery 服务在 Azure 区域之间对 Azure IaaS VM 进行灾难恢复所需的步骤。
+title: 使用 Azure Site Recovery 设置到次要区域的 Azure VM 灾难恢复
+description: 使用 Azure Site Recovery 服务快速为 Azure VM 设置到其他 Azure 区域的灾难恢复。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: quickstart
-origin.date: 08/28/2019
-ms.date: 09/30/2019
+origin.date: 01/08/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: b0d14d68679da7aa8538a4e1e9c23b0d30b5c843
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: e930c7781c87e071cfaeb4b80286deb809306f04
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340816"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611292"
 ---
-# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复        
+# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
@@ -25,19 +25,19 @@ ms.locfileid: "71340816"
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 > [!NOTE]
-> 本文是针对新用户的快速演练。 它使用带有默认选项和最小自定义的最简单路径。  有关更完整的演练，请查看[我们的教程](azure-to-azure-tutorial-enable-replication.md)。
+> 本文是针对新用户的快速演练。 它使用带有默认选项和最小自定义的最简单路径。 有关完整演练，请参阅教程[启用复制](azure-to-azure-tutorial-enable-replication.md)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.cn 登录到 Azure 门户。
+登录到 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="enable-replication-for-the-azure-vm"></a>为 Azure VM 启用复制
 
-1. 在 Azure 门户中，单击“虚拟机”  ，并选择要复制的 VM。
-2. 在“操作”  中，单击“灾难恢复”  。
+1. 在“Azure 门户”菜单中，选择“虚拟机”，或在任何页面上搜索并选择“虚拟机”   。 选择要复制的 VM。
+2. 在“操作”中，选择“灾难恢复”   。
 3. 在“配置灾难恢复”   > “目标区域”  中，选择要复制到的目标区域。
 4. 在本快速入门中，接受其他默认设置。
-5. 单击“启用复制”。  这将启动用于为 VM 启用复制的作业。
+5. 选择“查看 + 开始复制”  。 选择“开始复制”，启动为 VM 启用复制的作业  。
 
     ![启用复制](media/azure-to-azure-quickstart/enable-replication1.png)
 
@@ -45,8 +45,10 @@ ms.locfileid: "71340816"
 
 复制作业完成后，可以检查复制状态、修改复制设置和测试部署。
 
-1. 在“操作”  中，单击“灾难恢复”  。
-2. 可以验证复制运行状况、已创建的恢复点以及映射中的源和目标区域。
+1. 在“Azure 门户”菜单中，选择“虚拟机”，或在任何页面上搜索并选择“虚拟机”   。 选择要验证的 VM。
+2. 在“操作”中，选择“灾难恢复”   。
+
+    可以验证复制运行状况、已创建的恢复点以及映射中的源和目标区域。
 
     ![复制状态](media/azure-to-azure-quickstart/replication-status.png)
 
@@ -54,13 +56,13 @@ ms.locfileid: "71340816"
 
 对主要区域中的 VM 禁用复制时，该 VM 会停止复制：
 
-- 将自动清除源复制设置。 在复制过程中安装在 VM 上的 Site Recovery 扩展不会被删除，必须手动删除。 
+- 将自动清除源复制设置。 在复制过程中安装在 VM 上的 Site Recovery 扩展不会被删除，必须手动删除。
 - 对 VM 的 Site Recovery 计费会停止。
 
-按如下所述停止复制
+请按如下所述停止复制：
 
-1. 选择 VM。
-2. 在“灾难恢复”  中，单击“禁用复制”  。
+1. 在“Azure 门户”菜单中，选择“虚拟机”，或在任何页面上搜索并选择“虚拟机”   。 选择要修改的 VM。
+2. 在“灾难恢复”中，选择“禁用复制”   。
 
     ![禁用复制](media/azure-to-azure-quickstart/disable2-replication.png)
 
@@ -69,7 +71,6 @@ ms.locfileid: "71340816"
 在本快速入门中，将单个 VM 复制到了次要区域。 现在，请尝试使用恢复计划复制多个 Azure VM。
 
 > [!div class="nextstepaction"]
-> [为 Azure VM 配置灾难恢复](azure-to-azure-tutorial-enable-replication.md)
+> [为 Azure VM 设置灾难恢复](azure-to-azure-tutorial-enable-replication.md)
 
-<!-- Update_Description: update meta properties, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

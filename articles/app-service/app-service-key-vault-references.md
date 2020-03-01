@@ -4,15 +4,15 @@ description: 了解如何使用 Key Vault 引用设置 Azure 应用服务和 Azu
 author: mattchenderson
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: d3a95da9ea312442278b97378f8cc79c8e51e006
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: dc652e5ce3f8429e47f0483dd29d67a9d2af21c6
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600524"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566655"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 

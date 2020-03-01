@@ -6,14 +6,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: overview
 author: j-martens
-ms.author: jmartens
-ms.date: 10/29/2019
-ms.openlocfilehash: 81e37f15978636be4b648f9950d9796095b5c1fb
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.author: v-yiso
+origin.date: 10/29/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 04aa4d1be20c1ee898b9c228951b5049a6e087c1
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599101"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155104"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Azure 机器学习与机器学习工作室（经典）有何不同
 
@@ -29,7 +30,7 @@ ms.locfileid: "75599101"
 Azure 机器学习设计器提供与工作室（经典版）类似的拖放体验。 但是，不像工作室（经典版）的专用计算平台，此设计器使用你自己的计算资源，可缩放，并且已完全集成到 Azure 机器学习中。  
 
 > [!TIP]
-> 鼓励当前正在使用或评估机器学习工作室（经典版）的客户尝试 [Azure 机器学习设计器](/machine-learning/service/ui-concept-visual-interface)（预览版），它提供拖放 ML 模块以及  可伸缩性、版本控制和企业安全性。
+> 鼓励当前正在使用或评估机器学习工作室（经典版）的客户尝试 [Azure 机器学习设计器](/machine-learning/concept-designer)（预览版），它提供拖放 ML 模块以及  可伸缩性、版本控制和企业安全性。
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>比较：Azure 机器学习与机器学习工作室（经典版）
 

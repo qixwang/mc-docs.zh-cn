@@ -1,23 +1,22 @@
 ---
-title: Azure 数据工厂的角色和权限 | Microsoft Docs
+title: Azure 数据工厂的角色和权限
 description: 介绍创建数据工厂并使用子资源所需的角色和权限。
 origin.date: 11/5/2018
-ms.date: 10/14/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: e3c5be9193ec78bb9bb6664669e94d22f24e8606
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: f40c84527eb2b8d2f9f404636031c23db4249dc3
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275530"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653256"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -30,8 +29,6 @@ ms.locfileid: "72275530"
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 - 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的**数据工厂参与者**角色。
 - 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的**参与者**角色已足够。
-
-有关如何将用户添加到角色的示例说明，请参阅[添加角色](/billing/billing-add-change-azure-subscription-administrator)一文。
 
 ## <a name="set-up-permissions"></a>设置权限
 
@@ -50,8 +47,6 @@ ms.locfileid: "72275530"
 ### <a name="resource-manager-template-deployment"></a>资源管理器模板部署
 
 资源组级别或更高级别的“数据工厂参与者”  角色允许用户部署资源管理器模板。 因此，此角色的成员可以使用资源管理器模板来部署数据工厂及其子资源，包括数据集、链接服务、管道、触发器和集成运行时。 不过，此角色的成员身份不允许用户创建其他资源。
-
-GitHub 上的权限独立于数据工厂权限。 因此，具有存储库权限但只具有读者角色的用户可以编辑数据工厂子资源并向存储库提交更改，但不能发布这些更改。
 
 > [!IMPORTANT]
 > 使用“数据工厂参与者”角色进行资源管理器模板部署不会提升你的权限。  例如，如果你部署一个可以创建 Azure 虚拟机的模板，而你没有创建虚拟机的权限，则部署会失败并出现授权错误。

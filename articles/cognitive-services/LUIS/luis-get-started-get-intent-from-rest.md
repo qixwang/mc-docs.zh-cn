@@ -1,28 +1,23 @@
 ---
 title: 快速入门：使用 REST API 获取意向 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 此 REST API 快速入门使用可用的公共 LUIS 应用从对话文本中确定用户的意向。
-services: cognitive-services
 author: lingliw
 manager: digimobile
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-origin.date: 10/17/2019
-ms.date: 12/04/2019
+origin.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: v-lingwu
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5ce4cc8f477da6153e4556ab2b20018d69663e32
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: 3cdadcf8f9d6bdffe7beabc8ac4fb4cb1072bbc9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500359"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154563"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>快速入门：使用 REST API 获取意向
 
-本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。 在终结点处，LUIS 应用公共应用的模型来分析自然语言文本的含义，确定总体意向并提取与应用的主题域相关的数据。 
+本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。 在终结点处，LUIS 应用公共应用的模型来分析自然语言文本的含义，确定总体意向并提取与应用的主题域相关的数据。
 
 本快速入门使用终结点 REST API。 有关详细信息，请参阅[终结点 API 文档](https://chinaeast.dev.cognitive.azure.cn/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)。
 

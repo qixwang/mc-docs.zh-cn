@@ -1,25 +1,25 @@
 ---
 title: Visual Studio 中的 Azure 流分析 Edge 作业
 description: 本文介绍如何使用适用于 Visual Studio 的流分析工具在 IoT Edge 作业上创作、调试和创建流分析。
-author: rockboyfor
-ms.author: v-yeche
+author: lingliw
+ms.author: v-lingwu
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 11/19/2019
-ms.openlocfilehash: 1ccd423b527feafcda12f09ca526ef6704fbbd83
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 5dbecfea3618065ec4f7b9d4337d4f17dfffebe6
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854662"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154597"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
 本教程介绍如何使用适用于 Visual Studio 的流分析工具。 了解如何创作、调试和创建流分析 Edge 作业。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -98,7 +98,7 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>将作业提交到 Azure
 
-1. 在将作业提交到 Azure 之前，必须连接到 Azure 订阅。 打开“服务器资源管理器”，右键单击“Azure”并选择“连接到 Azure 订阅”，然后登录到 Azure 订阅。    >    
+1. 在将作业提交到 Azure 之前，必须连接到 Azure 订阅。 打开 **服务器资源管理器** ，右键单击 **Azure** > **并选择“连接到 Microsoft Azure 订阅** ，其后登录到 Azure 订阅。  
 
 2. 若要将作业提交到 Azure，请导航到查询编辑器并选择 **提交到 Azure**。  
 

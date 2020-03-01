@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: query
 origin.date: 01/06/2020
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fd43b321b050298226f7b140dd8ea7fabbf17a4
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 407edf40c5f5961c99a825d5618e4c68b9e0731e
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964921"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154407"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库支持的系统视图
 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
@@ -42,8 +42,8 @@ ms.locfileid: "75964921"
 * [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql)
 * [sys.pdw_table_distribution_properties](https://msdn.microsoft.com/library/mt203896.aspx)
 * [sys.pdw_table_mappings](https://msdn.microsoft.com/library/mt203876.aspx)
-* [sys.workload_management_workload_classifier_details](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql)（预览版）
-* [sys.workload_management_workload_classifiers](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)（预览版）
+* [sys.workload_management_workload_classifier_details](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql)
+* [sys.workload_management_workload_classifiers](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>SQL 数据仓库动态管理视图 (DMV)
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)

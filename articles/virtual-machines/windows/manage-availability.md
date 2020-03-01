@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 03/27/2018
-ms.date: 10/14/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18f27e16fdbc3d9abb2c49913d5c36760b6e1b54
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 65c4b8086f70057ad150ef4b83ce151bc98c7ccb
+ms.sourcegitcommit: 67be241cebe8ef015d4cad9e7bd58656ed3ba9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272825"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566944"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>在 Azure 中管理 Windows 虚拟机的可用性 
 
-了解如何设置和管理多个虚拟机，以确保 Windows 应用程序在 Azure 中的高可用性。 也可以[管理 Linux 虚拟机的可用性](../linux/manage-availability.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+了解如何设置和管理多个虚拟机，以确保 Azure 中 Windows 应用程序的高可用性。 也可以[管理 Linux 虚拟机的可用性](../linux/manage-availability.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
 有关在使用经典部署模型时创建和使用可用性集的说明，请参阅[如何配置可用性集](classic/configure-availability-classic.md?toc=%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 

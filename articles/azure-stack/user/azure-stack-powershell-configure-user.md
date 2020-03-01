@@ -1,33 +1,23 @@
 ---
-title: 以用户身份使用 PowerShell 连接到 Azure Stack | Microsoft Docs
-description: 了解如何使用 PowerShell 连接到 Azure Stack。
-services: azure-stack
-documentationcenter: ''
+title: 以用户身份使用 PowerShell 连接到 Azure Stack Hub
+description: 了解如何使用 PowerShell 连接到 Azure Stack Hub。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 04/26/2019
-ms.date: 07/29/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 60eb231347c60b2ee29dfee4e408642162720456
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 7381ab24774ed6aab60866e78f40a90a30866118
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513260"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541045"
 ---
-# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>以用户身份使用 PowerShell 连接到 Azure Stack
+# <a name="connect-to-azure-stack-hub-with-powershell-as-a-user"></a>以用户身份使用 PowerShell 连接到 Azure Stack Hub
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-可以使用 PowerShell 连接到 Azure Stack 以管理 Azure Stack 资源。 例如，可以使用 PowerShell 来订阅产品/服务、创建虚拟机 (VM) 和部署 Azure 资源管理器模板。
+可以使用 PowerShell 连接到 Azure Stack Hub 以管理 Azure Stack Hub 资源。 例如，可以使用 PowerShell 来订阅产品/服务、创建虚拟机 (VM) 和部署 Azure 资源管理器模板。
 
 若要进行设置，请执行以下操作：
   - 确保满足要求。
@@ -39,17 +29,17 @@ ms.locfileid: "68513260"
 
 如果已[通过 VPN 建立连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)，请通过[开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)或基于 Windows 的外部客户端配置这些先决条件：
 
-* 安装 [Azure Stack 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
-* 下载[使用 Azure Stack 所需的工具](../operator/azure-stack-powershell-download.md)。
+* 安装 [Azure Stack Hub 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
+* 下载[使用 Azure Stack Hub 所需的工具](../operator/azure-stack-powershell-download.md)。
 
-确保将以下脚本变量替换为 Azure Stack 配置中的值：
+确保将以下脚本变量替换为 Azure Stack Hub 配置中的值：
 
 - **Azure AD 租户名称**  
-  用于管理 Azure Stack 的 Azure AD 租户名称。 例如，yourdirectory.partner.onmschina.cn。
+  用于管理 Azure Stack Hub 的 Azure AD 租户名称。 例如，yourdirectory.partner.onmschina.cn。
 - **Azure 资源管理器终结点**  
-  对于 Azure Stack 开发工具包，此值设置为 https://management.local.azurestack.external 。 若要为 Azure Stack 集成系统获取此值，请与服务提供商联系。
+  对于 Azure Stack 开发工具包，此值设置为 https://management.local.azurestack.external 。 若要为 Azure Stack Hub 集成系统获取此值，请与服务提供商联系。
 
-## <a name="connect-to-azure-stack-with-azure-ad"></a>使用 Azure AD 连接到 Azure Stack
+## <a name="connect-to-azure-stack-hub-with-azure-ad"></a>使用 Azure AD 连接到 Azure Stack Hub
 
 ```powershell  
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
@@ -58,15 +48,15 @@ ms.locfileid: "68513260"
     $AADTenantName = "<myDirectoryTenantName>.partner.onmschina.cn"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
-    # After signing in to your environment, Azure Stack cmdlets
-    # can be easily targeted at your Azure Stack instance.
+    # After signing in to your environment, Azure Stack Hub cmdlets
+    # can be easily targeted at your Azure Stack Hub instance.
     Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 
-## <a name="connect-to-azure-stack-with-ad-fs"></a>使用 AD FS 连接到 Azure Stack
+## <a name="connect-to-azure-stack-hub-with-ad-fs"></a>使用 AD FS 连接到 Azure Stack Hub
 
   ```powershell  
-  # Register an Azure Resource Manager environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance
   Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
   # Sign in to your environment
@@ -87,7 +77,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
 
 ## <a name="test-the-connectivity"></a>测试连接
 
-完成所有设置后，请通过使用 PowerShell 在 Azure Stack 中创建资源来测试连接。 作为测试，为应用程序创建资源组并添加 VM。 运行以下命令创建名为“MyResourceGroup”的资源组：
+完成所有设置后，请通过使用 PowerShell 在 Azure Stack Hub 中创建资源来测试连接。 作为测试，为应用程序创建资源组并添加 VM。 运行以下命令创建名为“MyResourceGroup”的资源组：
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -95,7 +85,7 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 Azure Stack 开发模板](azure-stack-develop-templates.md)
+- [为 Azure Stack Hub 开发模板](azure-stack-develop-templates.md)
 - [通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
-- [Azure Stack PowerShell 模块参考](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
-- 若要为云操作员环境设置 PowerShell，请参阅[配置 Azure Stack 操作员的 PowerShell 环境](../operator/azure-stack-powershell-configure-admin.md)一文。
+- [Azure Stack Hub PowerShell 模块参考](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
+- 若要为云操作员环境设置 PowerShell，请参阅[配置 Azure Stack Hub 操作员的 PowerShell 环境](../operator/azure-stack-powershell-configure-admin.md)一文。

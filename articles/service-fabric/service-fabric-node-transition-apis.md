@@ -1,17 +1,17 @@
 ---
-title: 启动和停止群集节点以测试 Azure Service Fabric 应用
+title: 启动和停止群集节点
 description: 通过启动和停止集群节点，了解如何使用错误注入来测试 Service Fabric 应用程序。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/12/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: e8ab7149a7ccf7ea665251bd7dcbedd56533f5d0
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c9c2e95fb3815f0a743637afba1ada8b500c1910
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742490"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540654"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>将启动节点 API 和停止节点 API 替换为节点转换 API
 
@@ -276,4 +276,4 @@ ms.locfileid: "75742490"
 [snt]: https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet
 [gntp]: https://docs.azure.cn/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

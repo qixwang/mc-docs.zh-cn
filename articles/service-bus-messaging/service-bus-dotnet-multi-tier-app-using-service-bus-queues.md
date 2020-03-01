@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 3d20b4c8ad6b6f73eb7ef258a38cebe7f1243fde
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 680c2d23494ab16986d22973df8e707cb4185069
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330329"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154468"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -31,7 +31,7 @@ ms.locfileid: "71330329"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-本教程涉及生成多层应用程序并在 Azure 云服务中运行它。 前端是 ASP.NET MVC Web 角色，后端是使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
+本教程涉及生成多层应用程序并在 Azure 云服务中运行它。 前端是 ASP.NET MVC Web 角色，后端是使用服务总线队列的辅助角色。 可创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
 
 以下屏幕截图显示了已完成的应用程序。
 
@@ -40,9 +40,9 @@ ms.locfileid: "71330329"
 ## <a name="scenario-overview-inter-role-communication"></a>方案概述：角色间通信
 若要提交处理命令，以 Web 角色运行的前端 UI 组件必须与以辅助角色运行的中间层逻辑进行交互。 此示例使用服务总线消息传送在各层之间进行通信。
 
-在 Web 层和中间层之间使用服务总线消息传送将分离这两个组件。 与直接消息传送（即 TCP 或 HTTP）不同，Web 层不会直接连接到中间层，而是将工作单元作为消息推送到服务总线，服务总线将以可靠方式保留这些工作单元，直到中间层准备好使用和处理它们。
+在 Web 层和中间层之间使用服务总线消息传送会分离这两个组件。 与直接消息传送（即 TCP 或 HTTP）不同，Web 层不会直接连接到中间层，而是将工作单元作为消息推送到服务总线，服务总线将以可靠方式保留这些工作单元，直到中间层准备好使用和处理它们。
 
-服务总线提供了两个实体以支持中转消息传送：队列和主题。 通过队列，发送到队列的每个消息均由一个接收方使用。 主题支持发布/订阅模式，在该模式下，会为注册到主题中的订阅提供每个已发布消息。 每个订阅都以逻辑方式保留自己的消息队列。 此外，还可以使用筛选规则配置订阅，这些规则可将传递给订阅队列的消息集限制为符合筛选条件的消息集。 以下示例使用服务总线队列。
+服务总线提供了两个实体以支持中转消息传送：队列和主题。 通过队列，发送到队列的每个消息均由一个接收方使用。 主题支持发布/订阅模式，在该模式下，会为注册到主题中的订阅提供每个已发布消息。 每个订阅都会以逻辑方式保留其自己的消息队列。 此外，还可以使用筛选规则配置订阅，这些规则可将传递给订阅队列的消息集限制为符合筛选条件的消息集。 以下示例使用服务总线队列。
 
 ![][1]
 
@@ -200,7 +200,7 @@ ms.locfileid: "71330329"
 
 1. 在“解决方案资源管理器”  中，右键单击“FrontendWebRole”  （右键单击项目而不是角色）。 单击“添加”  ，并单击“类”  。
 2. 将类命名为 **QueueConnector.cs**。 单击“添加”  以创建类。
-3. 现在，将添加可封装连接信息并初始化服务总线队列连接的代码。 将 QueueConnector.cs 的全部内容替换为下面的代码，并输入 `your Service Bus namespace`（命名空间名称）和 `yourKey`（之前从 Azure 门户中获取的**主要密钥**）的值。
+3. 现在，添加可封装连接信息并初始化服务总线队列连接的代码。 将 QueueConnector.cs 的全部内容替换为下面的代码，并输入 `your Service Bus namespace`（命名空间名称）和 `yourKey`（之前从 Azure 门户中获取的**主要密钥**）的值。
 
    ```csharp
    using System;
@@ -331,7 +331,7 @@ ms.locfileid: "71330329"
 
 7.  在“解决方案资源管理器”  中，右键单击你在步骤 5 中创建的“OrderProcessingRole”  （确保右键单击“角色”  下的“OrderProcessingRole”  而不是类）。 然后单击“属性”  。
 
-8.  在“属性”  对话框的“设置”  选项卡中，在“Microsoft.ServiceBus.ConnectionString”  的“值”  框内单击，并粘贴在步骤 6 中复制的终结点值。
+8.  在“属性”  对话框的“设置”  选项卡中，在“Microsoft.ServiceBus.ConnectionString”  的“值”  框内单击，并粘贴用户在步骤 6 中复制的终结点值。
 
     ![][25]
 
@@ -362,14 +362,13 @@ ms.locfileid: "71330329"
     receivedMessage.Complete();
     ```
 
-14. 已完成此应用程序。 可以测试整个应用程序，方法是右键单击“解决方案资源管理器”中的 MultiTierApp 项目，选择“设置为启动项目”  ，然后按 F5。 请注意，消息计数不会递增，因为辅助角色会处理队列中的项并将其标记为完成。 可以通过查看 Azure 计算模拟器 UI 来查看辅助角色的跟踪输出。 可通过右击任务栏的通知区域中的模拟器图标并选择“显示计算模拟器 UI”  来执行此操作。
+14. 已完成此应用程序。 用户可以测试整个应用程序，方法是右键单击“解决方案资源管理器”中的 MultiTierApp 项目，选择“设置为启动项目”  ，并按 F5。 请注意，消息计数不会递增，因为辅助角色会处理队列中的项并将其标记为完成。 可以通过查看 Azure 计算模拟器 UI 来查看辅助角色的跟踪输出。 可通过右击任务栏的通知区域中的模拟器图标并选择“显示计算模拟器 UI”  来执行此操作。
 
     ![][19]
 
     ![][20]
 
-## <a name="next-steps"></a>后续步骤  
-
+## <a name="next-steps"></a>后续步骤
 若要了解有关服务总线的详细信息，请参阅以下资源：  
 
 * [服务总线队列入门][sbacomqhowto]

@@ -19,8 +19,6 @@
       items:
         - name: 在图像中检测人脸
           items:
-            - name: 'C#'
-              href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
             - name: Go

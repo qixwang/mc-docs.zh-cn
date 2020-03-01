@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 07/05/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7cb1bce95b5ab57d4c32a31de04153743a01aecc
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 2bbecd61e938cb0fed71b2e875b0051c6efca88b
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430182"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590252"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 语音服务的 Azure 订阅密钥。 [获取一个试用版](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * [Python 3.5 或更高版本](https://www.python.org/downloads/)。
@@ -80,8 +80,8 @@ python quickstart.py
 
 import azure.cognitiveservices.speech as speechsdk
 
-# Creates an instance of a speech config with specified host and subscription key.
-# Replace with your own subscription key and service region (e.g., "chinaeast2").
+# Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
+# from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
 speech_host, speech_key = "https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey"
 speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
 

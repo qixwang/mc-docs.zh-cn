@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 01/28/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 69c832a213d37ed04d5b54019d97d84505c16d82
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: 2237b4ee73698f9bec49e0b5791a80283d529e0d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884074"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540969"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>对 Azure 负载均衡器进行故障排除
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+本页提供了有关基本和标准 Azure 负载均衡器常见问题的故障排除信息。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](/load-balancer/load-balancer-standard-diagnostics)。
 
-此页介绍有关 Azure 负载均衡器常见问题的疑难解答信息。 负载均衡器连接不可用时，最常见的症状如下： 
+负载均衡器连接不可用时，最常见的症状如下： 
+
 - 负载均衡器后端的 VM 不响应运行状况探测 
 - 负载均衡器后端的 VM 不响应已配置端口上的流量
 
@@ -124,9 +125,13 @@ ms.locfileid: "74884074"
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>原因 4：从参与的负载均衡器后端池 VM 访问 Internet 负载均衡器前端
 
-如果在 VNet 中配置了内部负载均衡器，并且某个参与的后端 VM 正在尝试访问内部负载均衡器前端，则当将流映射到原始 VM 时会发生故障。 此方案不受支持。 有关详细讨讨论，请参阅[限制](load-balancer-overview.md#limitations)。
+如果在 VNet 中配置了内部负载均衡器，并且某个参与的后端 VM 正在尝试访问内部负载均衡器前端，则当将流映射到原始 VM 时会发生故障。 不支持这种情况。 有关详细讨讨论，请参阅[限制](concepts-limitations.md#limitations)。
 
 解决方案：有几种方法来取消阻止此方案，包括使用代理  。 评估应用程序网关或其他第三方代理服务器（例如 nginx 或 haproxy）。 有关应用程序网关的详细信息，请参阅[应用程序网关概述](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>症状：对于已在后端池中部署 VM 规模集的负载均衡器，无法根据其现有 LB 规则更改后端端口。 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因：对于 VM 规模集参考的负载均衡器，不能根据其运行状况探测所用的负载均衡规则修改后端端口。
+**解决方案** 为了更改端口，可以通过更新 VM 规模集来删除运行状况探测，更新端口，然后重新配置运行状况探测。
 
 ## <a name="additional-network-captures"></a>附加网络捕获
 如果决定打开支持案例，请收集下列信息，以更快获得解决方案。 选择单个后端 VM 执行下列测试：

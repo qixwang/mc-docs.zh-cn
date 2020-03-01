@@ -2,28 +2,23 @@
 title: 创建 Azure Active Directory 租户 | Microsoft Docs
 description: 了解如何创建用于注册和生成应用程序的 Azure AD 租户。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-origin.date: 02/05/2019
-ms.date: 11/07/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06e39f3993372474b225d460139d73c0c9cb938
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: dd8430622991299f585920e4105ae0d0a416cfa5
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830955"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653424"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -62,7 +57,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ### <a name="create-a-new-azure-ad-tenant"></a>创建新的 Azure AD 租户
 
-如果还没有 Azure AD 租户或想要为开发创建新租户，请遵循[目录创建体验](https://portal.azure.cn/#create/Microsoft.AzureActiveDirectory)。 必须提供以下信息才能创建新租户：
+如果还没有 Azure AD 租户或想要创建用于开发的新租户，请参阅[快速入门](../fundamentals/active-directory-access-create-new-tenant.md)，或者只需按照[目录创建体验](https://portal.azure.cn/#create/Microsoft.AzureActiveDirectory)进行操作。 必须提供以下信息才能创建新租户：
 
 -  组织名称
 - **初始域** - 这将是 *.partner.onmschina.cn 的一部分。 稍后你可以更详细地自定义域。

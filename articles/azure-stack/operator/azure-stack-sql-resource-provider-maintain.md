@@ -1,28 +1,20 @@
 ---
 title: SQL 资源提供程序维护操作
-titleSuffix: Azure Stack
-description: 了解 Azure Stack 上的 SQL 资源提供程序维护操作。
-services: azure-stack
-documentationCenter: ''
+titleSuffix: Azure Stack Hub
+description: 了解 Azure Stack Hub 上的 SQL 资源提供程序维护操作。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 10/02/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 3ad21a2ee8612111ae6ed5660b126de96eb8715a
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: ac7cdfe188aa740d0dbc4b7a71baa0b8568265d3
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737746"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540297"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL 资源提供程序维护操作
 
@@ -30,7 +22,7 @@ SQL 资源提供程序在锁定的虚拟机 (VM) 上运行。 若要启用维护
 
 ## <a name="patching-and-updating"></a>修补和更新
 
-不能将 SQL 资源提供程序作为 Azure Stack 的一部分进行维护，因为它是一个加载项组件。 Microsoft 会根据需要为 SQL 资源提供程序提供更新。 发布更新的 SQL 适配器后，会提供一个脚本来应用更新。 此脚本创建新的资源提供程序 VM，并将旧提供程序 VM 的状态迁移到新 VM。 有关详细信息，请参阅[更新 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。
+不能将 SQL 资源提供程序作为 Azure Stack Hub 的一部分进行维护，因为它是一个加载项组件。 Microsoft 会根据需要为 SQL 资源提供程序提供更新。 发布更新的 SQL 适配器后，会提供一个脚本来应用更新。 此脚本创建新的资源提供程序 VM，并将旧提供程序 VM 的状态迁移到新 VM。 有关详细信息，请参阅[更新 SQL 资源提供程序](azure-stack-sql-resource-provider-update.md)。
 
 ### <a name="provider-vm"></a>提供程序 VM
 
@@ -38,17 +30,17 @@ SQL 资源提供程序在锁定的虚拟机 (VM) 上运行。 若要启用维护
 
 ## <a name="updating-sql-credentials"></a>更新 SQL 凭据
 
-你需要负责在 SQL 服务器上创建和维护 sysadmin 帐户。 资源提供程序需要拥有这些特权的帐户才能代表用户管理数据库，但无需访问用户的数据。 如果需要更新 SQL 服务器上的 sysadmin 密码，可以使用资源提供程序的管理员界面来更改存储的密码。 这些密码存储在 Azure Stack 实例上的 Key Vault 中。
+你需要负责在 SQL 服务器上创建和维护 sysadmin 帐户。 资源提供程序需要拥有这些特权的帐户才能代表用户管理数据库，但无需访问用户的数据。 如果需要更新 SQL 服务器上的 sysadmin 密码，可以使用资源提供程序的管理员界面来更改存储的密码。 这些密码将存储在 Azure Stack Hub 实例上的 Key Vault 中。
 
 若要修改设置，请选择“浏览”&gt;“管理资源”&gt;“SQL 宿主服务器”&gt;“SQL 登录”并选择用户名。     必须先在 SQL 实例上（必要时还需要在任何副本上）进行更改。在“设置”下，选择“密码”。  
 
-![更新 SQL 管理员密码](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
+![更新 SQL 管理员密码](./media/azure-stack-sql-rp-deploy/sql-rp-update-password.png)
 
 ## <a name="secrets-rotation"></a>机密轮换
 
-*这些说明仅适用于 Azure Stack 集成系统。*
+*这些说明仅适用于 Azure Stack Hub 集成系统。*
 
-在 Azure Stack 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
+在 Azure Stack Hub 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack Hub 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
 
 - [部署期间提供的](azure-stack-pki-certs.md)外部 SSL 证书。
 - 部署期间提供的资源提供程序 VM 本地管理员帐户密码。
@@ -104,8 +96,8 @@ SQL 资源提供程序在锁定的虚拟机 (VM) 上运行。 若要启用维护
 
 |参数|说明|
 |-----|-----|
-|AzCredential|Azure Stack 服务管理员帐户凭据。|
-|CloudAdminCredential|Azure Stack 云管理域帐户凭据。|
+|AzCredential|Azure Stack Hub 服务管理员帐户凭据。|
+|CloudAdminCredential|Azure Stack Hub 云管理域帐户凭据。|
 |PrivilegedEndpoint|用于访问 Get-AzureStackStampInformation 的特权终结点。|
 |DiagnosticsUserPassword|诊断用户帐户密码。|
 |VMLocalCredential|MySQLAdapter VM 上的本地管理员帐户。|

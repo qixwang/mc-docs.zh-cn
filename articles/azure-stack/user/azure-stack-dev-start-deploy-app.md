@@ -1,33 +1,31 @@
 ---
-title: 将应用部署到 Azure Stack | Microsoft Docs
-description: 将应用部署到 Azure Stack。
-services: azure-stack
+title: 将应用部署到 Azure Stack Hub
+description: 将应用部署到 Azure Stack Hub。
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 04/24/2019
-ms.date: 07/29/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 6b049b5d2e3f6e851f4d42a152def78609b91fe2
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: c49aaa8bfb5d2e690f84704fda3b6733563452ed
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513324"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540836"
 ---
-# <a name="common-deployments-for-azure-stack"></a>适用于 Azure Stack 的常见部署
+# <a name="common-deployments-for-azure-stack-hub"></a>适用于 Azure Stack Hub 的常见部署
 
-Azure Stack 同时支持基础结构即服务 (IaaS) 和平台即服务 (PaaS)。 本文列出了用于设置虚拟机 (VM) 然后将其部署到 Azure Stack 的资源。
+Azure Stack Hub 同时支持基础结构即服务 (IaaS) 和平台即服务 (PaaS)。 本文列出了用于设置虚拟机 (VM) 然后将其部署到 Azure Stack Hubk 的资源。
 
 ## <a name="before-you-begin"></a>准备阶段
 
-在开始将应用部署到 Azure Stack 之前，请设置开发计算机。 有关准备作为开发人员使用 Azure Stack 的说明，请参阅[在 Azure Stack 中设置开发环境](azure-stack-dev-start.md)。
+在开始将应用部署到 Azure Stack Hub 之前，请设置开发计算机。 有关准备作为开发人员使用 Azure Stack Hub 的说明，请参阅[在 Azure Stack Hub 中设置开发环境](azure-stack-dev-start.md)。
 
 ## <a name="deploy-an-app-to-a-vm"></a>将应用部署到 VM
 
-在下面的操作方法文章中，将在 Azure Stack 中设置一个虚拟机 (VM)，然后将应用从开发工作站部署到 Azure Stack。
+在下面的操作方法文章中，将在 Azure Stack Hub 中设置一个虚拟机 (VM)，然后将应用从开发工作站部署到 Azure Stack Hub。
 
 - [.NET Core (C#)](azure-stack-dev-start-howto-vm-dotnet.md)
 - [Java](azure-stack-dev-start-howto-vm-java.md)
@@ -38,4 +36,4 @@ Azure Stack 同时支持基础结构即服务 (IaaS) 和平台即服务 (PaaS)�
 
 ## <a name="next-steps"></a>后续步骤
 
-设置 [Azure Stack 中的开发环境](azure-stack-dev-start.md)。
+[在 Azure Stack Hub 中设置开发环境](azure-stack-dev-start.md)。

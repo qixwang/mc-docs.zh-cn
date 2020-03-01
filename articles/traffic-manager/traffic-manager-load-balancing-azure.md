@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/27/2016
-ms.date: 04/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 61387fc2d6f51b4c67b5f044d60b5c653724ad52
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 6181de383fb8d872f960219cc4246ea78b283cab
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857162"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653213"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 
@@ -34,7 +34,7 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
     * 性能路由 - 根据延迟将请求者发送到最近的终结点。
     * 优先级路由 - 将所有流量定向到一个终结点，其他终结点作为备份。
     * 加权轮循机制路由 - 根据分配给每个终结点的权重进行流量分布。
-        <!--Not Available on Geography-based routing-->
+    * 基于地理位置的路由 - 根据用户的地理位置将流量分布到应用程序终结点。
     * 基于子网的路由 - 根据用户的子网（IP 地址范围）将流量分布到应用程序终结点。
     * 多值路由 - 允许你在单个 DNS 响应中发送多个应用程序终结点的 IP 地址。
 
@@ -76,7 +76,7 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
     * **路由方法**：选择流量路由方法策略。 有关这些方法的详细信息，请参阅[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)。
     * **订阅**：选择包含配置文件的订阅。
     * **资源组**：选择包含配置文件的资源组。 可以是新的或现有的资源组。
-    * **资源组位置**：流量管理器服务是全局服务，不绑定到某个位置。 但是，用户必须指定组的区域，其中驻留了与流量管理器配置文件关联的元数据。 此位置对配置文件的运行时可用性没有任何影响。
+    * **资源组位置**：流量管理器服务是全局服务，不绑定到某个位置。 但是，用户必须指定组的区域，其中驻留了与流量管理器配置文件关联的元数据。 此位置不影响配置文件的运行时可用性。
 
 3. 单击“创建”  ，生成流量管理器配置文件。
 
@@ -150,7 +150,7 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
 
     * **类型**：选择要进行负载均衡的终结点的类型。 在此方案中，请选择“Azure 终结点”，因为我们会将其连接到以前配置的应用程序网关实例。 
     * **名称**：输入终结点的名称。
-    * **目标资源类型**：选择“公用 IP 地址”，并在“目标资源”下选择以前配置的应用程序网关的公用 IP   。
+    * **目标资源类型**：选择“公共 IP 地址”，然后在“目标资源”下选择以前配置的应用程序网关的公共 IP。  
 
     ![流量管理器的“添加终结点”](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 

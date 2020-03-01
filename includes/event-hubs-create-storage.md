@@ -6,48 +6,50 @@ author: spelluru
 ms.service: event-hubs
 ms.topic: include
 origin.date: 10/16/2018
-ms.date: 12/10/2018
-ms.author: v-biyu
+ms.date: 03/09/2020
+ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: c7e368910f4a273bc5a11cc0b2f998546b5a8a2d
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: 409845d62f9b3d2c7a126f36efb9e2e63a021639
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72872987"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154756"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>为事件处理程序主机创建存储帐户
 事件处理程序主机是一个智能代理，它通过管理持久性检查点和并行接收操作，来简化从事件中心接收事件的过程。 对于检查点，事件处理程序主机需要一个存储帐户。 以下示例演示如何创建存储帐户，以及如何获取其密钥以进行访问：
 
-1. 在 Azure 门户中，选择屏幕左上角的“创建资源”。 
+1. 在 Azure 门户菜单中，选择“创建资源”  。
 
-2. 选择“存储”，然后选择“存储帐户 - Blob、文件、表、队列”   。
+    ![创建资源菜单项，Microsoft Azure 门户](./media/event-hubs-create-storage/create-resource.png)
+
+2. 选择“存储” > “存储帐户”   。
    
-    ![选择存储帐户](./media/event-hubs-create-storage/create-storage1.png)
+    ![选择存储帐户，Microsoft Azure 门户](./media/event-hubs-create-storage/select-storage-account.png)
 
 3. 在“创建存储帐户”页中执行以下步骤：  
 
-   1. 输入存储帐户的名称。 
-   2. 选择包含事件中心的 Azure 订阅。
-   3. 选择包含事件中心的资源组。
-   4. 选择可在其中创建资源的位置。 
-   5. 然后单击“查看 + 创建”  。
+   1. 输入“存储帐户名称”  。
+   2. 选择包含事件中心的 Azure 订阅。 
+   3. 选择或创建包含事件中心的“资源组”。 
+   4. 选择要在其中创建资源的“位置”。  
+   5. 选择“查看 + 创建”  。
    
-      ![创建存储帐户 - 页面](./media/event-hubs-create-storage/create-storage2.png)
+        ![查看 + 创建、创建存储帐户，Microsoft Azure 门户](./media/event-hubs-create-storage/review-create.png)
 
 4. 在“查看 + 创建”  页上查看值，然后选择“创建”。  
 
-    ![查看存储帐户设置，然后执行创建操作](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. 看到“部署成功”  消息后，选择页面顶部的“访问资源”  。 还可以通过从资源列表中选择存储帐户来启动“存储帐户”页。  
+    ![查看存储帐户设置并创建，Microsoft Azure 门户](./media/event-hubs-create-storage/create-storage-account.png)
+5. 在通知中看到“部署已成功”消息后，选择“前往资源”以打开“存储帐户”页   。 或者，可以展开“部署详细信息”，然后从资源列表中选择新资源  。  
 
-    ![从部署中选择存储帐户](./media/event-hubs-create-storage/select-storage-deployment.png) 
-6. 在“概要”  窗口中选择“Blob”  。 
+    ![前往资源、存储帐户部署，Microsoft Azure 门户](./media/event-hubs-create-storage/go-to-resource.png) 
+6. 选择“容器”  。
 
-    ![选择 Blob 服务](./media/event-hubs-create-storage/select-blobs-service.png)
-7. 选择顶部的“+ 容器”  ，为容器输入**名称**，然后选择“确定”  。 
+    ![选择“Blob 容器服务”、“存储帐户”，Microsoft Azure 门户](./media/event-hubs-create-storage/select-blob-container-service.png)
+7. 选择顶部的“+ 容器”  ，为容器输入“名称”  ，然后选择“确定”  。 
 
-    ![创建 Blob 容器](./media/event-hubs-create-storage/create-blob-container.png)
-8. 在左侧菜单中选择”访问密钥”  ，然后复制 **key1** 的值。 
+    ![创建新的 Blob 容器、存储帐户，Microsoft Azure 门户](./media/event-hubs-create-storage/create-new-blob-container.png)
+8. 从“存储帐户”页菜单中选择“访问密钥”，并复制“key1”的值    。
 
     将以下值保存到记事本或其他某个临时位置。
     - 存储帐户的名称

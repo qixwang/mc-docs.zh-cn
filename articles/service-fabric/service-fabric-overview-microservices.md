@@ -2,17 +2,18 @@
 title: Azure 微服务简介
 description: 概述了为何使用微服务方法生成云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台来实现此目的。
 ms.topic: conceptual
-origin.date: 06/18/2019
-ms.date: 01/13/2020
+origin.date: 01/07/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1565799ce6bcd65c29f22395e62050d4aee7c388
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.custom: sfrev
+ms.openlocfilehash: 1f7d6e295d6cacf7cd8adcadfd2d1eabf32aeb09
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742488"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540651"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>为何要使用微服务方法构建应用程序？
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>为何使用微服务方法构建应用程序？
 
 对于软件开发人员而言，将应用程序分解成多个组成部分可谓司空见惯。 通常采用一种分层方法，其中包括后端存储、中间层业务逻辑和前端用户界面 (UI)。 过去几年来的变化是开发人员开始为云构建分布式应用程序  。
 
@@ -188,8 +189,6 @@ Service Fabric 允许重用现有代码，可以通过新的微服务对现有�
 也许。 随着 Azure 中越来越多团队开始出于业务理由而以云为目标构建应用程序，许多团队已认识到采用类似微服务的方法所带来的优点。 例如，多年以来，必应一直在使用微服务。 微服务方法对于其他团队而言相当新颖。 团队发现需要解决一些疑难问题，但这并非他们的强项。 这就是为什么 Service Fabric 受到重视而成为构建服务的适当技术。
 
 Service Fabric 的目标是将构建微服务应用程序的复杂性降低，使你不需要经历许多耗费成本的重新设计工作。 从小规模开始，按需缩放，淘汰旧服务，添加新服务，并随着客户用量的增加而改进。 我们也知道，还需要解决许多其他问题，才能让微服务更易为大部分开发人员所接受。 容器和执行组件编程模型都是朝此目标前进的一小步。 我们确信将涌现出更多的创新，使微服务方法变得更简单。
-
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="next-steps"></a>后续步骤
 

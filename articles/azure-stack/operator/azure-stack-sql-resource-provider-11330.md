@@ -1,49 +1,38 @@
 ---
-title: Azure Stack SQL 资源提供程序 1.1.33.0 发行说明
-titleSuffix: Azure Stack
-description: 查看 Azure Stack SQL 资源提供程序 1.1.33.0 更新的发行说明。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub SQL 资源提供程序 1.1.33.0 发行说明
+titleSuffix: Azure Stack Hub
+description: 查看 Azure Stack Hub SQL 资源提供程序 1.1.33.0 更新的发行说明。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 01/13/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 8b778b4dd85819fb194ddeed127929df801b2905
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 37d62b92d14af5e662690b160c7e2e8df72e97ec
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737753"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540309"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>SQL 资源提供程序 1.1.33.0 发行说明
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 本发行说明介绍 SQL 资源提供程序 1.1.33.0 版中的改进和已知问题。
 
 ## <a name="build-reference"></a>内部版本参考
-下载 SQL 资源提供程序二进制文件，然后运行自解压程序，将内容解压缩到一个临时目录。 资源提供程序有一个相应的 Azure Stack 最低内部版本。 下面列出了安装此 SQL 资源提供程序版本所需的最低 Azure Stack 发行版：
+下载 SQL 资源提供程序二进制文件，然后运行自解压程序，将内容解压缩到一个临时目录。 资源提供程序具有相应的最低 Azure Stack Hub 版本。 下面列出了安装此 SQL 资源提供程序版本所需的最低 Azure Stack Hub 发行版：
 
-> |最低 Azure Stack 版本|SQL 资源提供程序版本|
+> |最低 Azure Stack Hub 版本|SQL 资源提供程序版本|
 > |-----|-----|
 > |版本 1808 (1.1808.0.97)|[SQL RP 版本 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
 > |     |     |
 
 > [!IMPORTANT]
-> 在部署最新版本的 SQL 资源提供程序之前，请先将支持的最低 Azure Stack 更新版应用到 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)。
+> 在部署最新版本的 SQL 资源提供程序之前，请先将支持的最低 Azure Stack Hub 更新应用到 Azure Stack Hub 集成系统。
 
 ## <a name="new-features-and-fixes"></a>新功能和修复
-此 Azure Stack SQL 资源提供程序版本包含以下改进和修复：
+此 Azure Stack Hub SQL 资源提供程序版本包含以下改进和修复：
 
 ### <a name="fixes"></a>修复项
 
@@ -73,8 +62,8 @@ ms.locfileid: "75737753"
 
     **解决方法**：确保 DNS 正常运行，以便将侦听器 IP 解析为侦听器主机名。
 
-### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>云管理员操作 Azure Stack 时的已知问题
-请参阅 [Azure Stack 发行说明](azure-stack-servicing-policy.md)中的文档。
+### <a name="known-issues-for-cloud-admins-operating-azure-stack-hub"></a>云管理员操作 Azure Stack Hub 时的已知问题
+请参阅 [Azure Stack Hub 发行说明](azure-stack-servicing-policy.md)中的文档。
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 SQL 资源提供程序](azure-stack-sql-resource-provider.md)。

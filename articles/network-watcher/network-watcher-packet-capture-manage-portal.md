@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/10/2018
 ms.date: 09/30/2018
-ms.author: v-yeche
-ms.openlocfilehash: 0c8769a1f04c637ed4a5d54dd1e91082d6c041f0
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.author: v-lingwu
+ms.openlocfilehash: de13ac5d5d2e6c7cf3d56a8d4658d0e92953e1f6
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028471"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154915"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 

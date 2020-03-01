@@ -1,39 +1,27 @@
 ---
-title: Azure Stack 日志自动收集的最佳做法 | Microsoft Docs
-description: 在 Azure Stack“帮助 + 支持”中进行日志自动收集的最佳做法
-services: azure-stack
-documentationcenter: ''
+title: 有关 Azure Stack Hub 日志自动收集的最佳做法
+description: 在 Azure Stack Hub“帮助 + 支持”中进行自动日志收集的最佳做法
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 07/25/2019
-ms.date: 09/16/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: f66f9e53d74d237aa8eb40c4e229ea86d934ab39
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: a951228717496b1d59d88699327fa979bc984003
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857359"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540949"
 ---
-# <a name="best-practices-for-automatic-azure-stack-log-collection"></a>Azure Stack 日志自动收集的最佳做法 
+# <a name="best-practices-for-automatic-azure-stack-hub-log-collection"></a>有关 Azure Stack Hub 日志自动收集的最佳做法 
 
-*适用于：Azure Stack 集成系统*
+本主题介绍为 Azure Stack Hub 管理诊断日志自动收集的最佳做法。 
 
+## <a name="collecting-logs-from-multiple-azure-stack-hub-systems"></a>从多个 Azure Stack Hub 系统收集日志
 
-本主题介绍为 Azure Stack 管理诊断日志自动收集的最佳做法。 
-
-## <a name="collecting-logs-from-multiple-azure-stack-systems"></a>从多个 Azure Stack 系统收集日志
-
-为每个需要从其收集日志的 Azure Stack 缩放单元设置一个 Blob 容器。 若要详细了解如何配置 Blob 容器，请参阅[配置 Azure Stack 诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)。 最佳做法是将同一 Azure Stack 缩放单元中的诊断日志保存到单个 Blob 容器中。 
+为每个需要从其收集日志的 Azure Stack Hub 缩放单元设置一个 Blob 容器。 若要详细了解如何配置 Blob 容器，请参阅[配置 Azure Stack Hub 诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)。 最佳做法是仅将同一 Azure Stack Hub 缩放单元中的诊断日志保存到单个 Blob 容器中。 
 
 ## <a name="retention-policy"></a>保留策略
 
@@ -73,9 +61,9 @@ ms.locfileid: "70857359"
 
 Azure [Blob 存储费用](https://azure.cn/pricing/details/storage/blobs/)取决于每月保存的数据量以及其他因素，例如数据冗余。 如果没有现有的存储帐户，可以登录到 Azure 门户，单击“存储帐户”，  然后按步骤[创建 Azure Blob 容器 SAS URL](azure-stack-configure-automatic-diagnostic-log-collection.md)。
 
-最佳做法是创建 Azure Blob 存储[生命周期管理策略](/storage/blobs/storage-lifecycle-management-concepts)，尽量降低持续产生的存储成本。 若要详细了解如何设置存储帐户，请参阅[配置 Azure Stack 诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)
+最佳做法是创建 Azure Blob 存储[生命周期管理策略](/storage/blobs/storage-lifecycle-management-concepts)，尽量降低持续产生的存储成本。 若要详细了解如何设置存储帐户，请参阅[配置 Azure Stack Hub 诊断日志自动收集](azure-stack-configure-automatic-diagnostic-log-collection.md)
 
 ## <a name="see-also"></a>另请参阅
 
-[配置 Azure Stack 日志自动收集](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
+[配置 Azure Stack Hub 日志自动收集](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 

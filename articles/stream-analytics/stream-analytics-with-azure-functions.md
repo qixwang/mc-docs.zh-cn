@@ -7,14 +7,14 @@ ms.author: v-lingwu
 manager: digimobile
 ms.service: stream-analytics
 ms.topic: tutorial
-origin.date: 06/05/2019
-ms.date: 08/09/2019
-ms.openlocfilehash: a8c7580d5ddaa36cace4af8c9a061914766abb4e
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+origin.date: 01/27/2020
+ms.date: 02/27/2020
+ms.openlocfilehash: 69ba88582d08d865a97ec49897d65b606ab2b497
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068298"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154595"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
@@ -52,7 +52,7 @@ ms.locfileid: "77068298"
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>在 Azure Functions 中创建可将数据写入到用于 Redis 的 Azure 缓存的函数
 
-1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 该小节演示了如何通过使用 CSharp 语言，[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
+1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 本部分演示如何使用 CSharp 语言[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
 
 2. 浏览到 run.csx  函数。 将其更新为以下代码。 将“\<在此处放置用于 Redis 的 Azure 缓存连接字符串\>”  替换为上一节中检索到的用于 Redis 的 Azure 缓存主连接字符串。 
 
@@ -138,8 +138,6 @@ ms.locfileid: "77068298"
 
    ![应用服务编辑器的屏幕截图](./media/stream-analytics-with-azure-functions/image4.png)
 
- 
-
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>更新流分析作业，以函数作为输出
 
 1. 在 Azure 门户中打开流分析作业。  
@@ -152,7 +150,7 @@ ms.locfileid: "77068298"
    |导入选项| 可使用当前订阅中的函数；如果函数位于其他订阅中，也可手动提供设置。 |
    |Function App| Functions 应用的名称 |
    |函数| Functions 应用中函数的名称（run.csx 函数的名称）。|
-   |最大批大小|设置每个输出批的最大大小（以字节为单位），此值将发送到你的函数。 默认情况下，此值设置为 262,144 字节 (256 KB)。|
+   |最大批大小|设置发送到函数的每个输出批的最大大小（以字节为单位）。 默认情况下，此值设置为 262,144 字节 (256 KB)。|
    |最大批数|指定发送给函数的每个批次中的最大事件数。 默认值为 100。 此属性是可选的。|
    |键|可以使用其他订阅中的函数。 提供用于访问你的函数的键值。 此属性是可选的。|
 

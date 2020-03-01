@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/26/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: 4bce9e7c22f0d69915d6141bdde1100d86c5ef16
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 36f1a4c3d8ca0ed17caa392f3a32e92ece64c201
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514224"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653490"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -65,11 +65,11 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 |默认                |多个                               |虚拟网络服务终结点|仅为其启用服务终结点的子网。|
 
 * **虚拟网络 (VNet) 对等互连**：在两个虚拟网络之间创建虚拟网络对等互连时，会为每个虚拟网络（已为其创建对等互连）的地址空间中的每个地址范围添加一个路由。 详细了解[虚拟网络对等互连](virtual-network-peering-overview.md)。<br />
-* **虚拟网络网关**：向虚拟网络添加虚拟网关时，会添加一个或多个将“虚拟网络网关”列为下一跃点类型的路由。  源也是“虚拟网关”，因为网关向子网添加路由。  如果本地网关与 Azure 虚拟网关交换了边界网关协议 ([BGP](#border-gateway-protocol)) 路由，则会为每个从本地网关传播的路由添加一个路由。 建议尽可能汇总最大地址范围的本地路由，尽量减少传播到 Azure 虚拟网关的路由数。 传播到 Azure 虚拟网关的路由存在数量限制。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)。<br />
+* **虚拟网络网关**：向虚拟网络添加虚拟网关时，会添加一个或多个将“虚拟网络网关”列为下一跃点类型的路由。  源也是“虚拟网关”，因为网关向子网添加路由。  如果本地网关与 Azure 虚拟网关交换了边界网关协议 ([BGP](#border-gateway-protocol)) 路由，则会为每个从本地网关传播的路由添加一个路由。 建议尽可能汇总最大地址范围的本地路由，尽量减少传播到 Azure 虚拟网关的路由数。 传播到 Azure 虚拟网关的路由存在数量限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)。<br />
 * **虚拟网络服务终结点**：启用特定服务的服务终结点时，Azure 会将该服务的公共 IP 地址添加到路由表。 服务终结点是为虚拟网络中的单个子网启用的，因此仅将路由添加到为其启用了服务终结点的子网的路由表。 Azure 服务的公共 IP 地址定期更改。 当地址更改时，Azure 自动管理路由表中的地址。 详细了解[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md)，以及可以为其创建服务终结点的服务。<br />
 
     > [!NOTE]
-    > “VNet 对等互连”  和“VirtualNetworkServiceEndpoint”  下一跃点类型仅添加到通过 Azure 资源管理器部署模型创建的虚拟网络中子网的路由表。 下一跃点类型不添加到通过经典部署模型与虚拟网络子网关联的路由表。 详细了解 Azure [部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fvirtual-network%2ftoc.json)。
+    > “VNet 对等互连”  和“虚拟网络服务终结点”  下一跃点类型仅添加到通过 Azure 资源管理器部署模型创建的虚拟网络中子网的路由表。 下一跃点类型不添加到通过经典部署模型与虚拟网络子网关联的路由表。 详细了解 Azure [部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fvirtual-network%2ftoc.json)。
 
 ## <a name="custom-routes"></a>自定义路由
 
@@ -77,7 +77,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 ### <a name="user-defined"></a>用户定义
 
-可以在 Azure 中创建自定义或用户定义路由，以便替代 Azure 的默认系统路由，或者向子网的路由表添加其他路由。 可以在 Azure 中创建一个路由表，然后将该路由表关联到零个或零个以上的虚拟网络子网。 每个子网可以有一个与之关联的路由表，也可以没有。 若要了解可以添加到路由表的最大路由数，以及可以为每个 Azure 订阅创建的最大用户定义路由表数，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)。 如果创建一个路由表并将其关联到子网，则其中的路由会与 Azure 默认情况下添加到子网的默认路由组合在一起，或者将其替代。
+可以在 Azure 中创建自定义或用户定义路由，以便替代 Azure 的默认系统路由，或者向子网的路由表添加其他路由。 可以在 Azure 中创建一个路由表，然后将该路由表关联到零个或零个以上的虚拟网络子网。 每个子网可以有一个与之关联的路由表，也可以没有。 若要了解可以添加到路由表的最大路由数，以及可以为每个 Azure 订阅创建的最大用户定义路由表数，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)。 如果创建一个路由表并将其关联到子网，则其中的路由会与 Azure 默认情况下添加到子网的默认路由组合在一起，或者将其替代。
 
 可以在创建用户定义路由时指定下面的下一跃点类型：
 
@@ -101,7 +101,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 ## <a name="next-hop-types-across-azure-tools"></a>各个 Azure 工具中的下一跃点类型
 
-下一跃点类型的显示和引用名称在 Azure 门户和命令行工具以及 Azure 资源管理器部署模型和经典部署模型中并不相同。 下表列出了在不同的工具和[部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fvirtual-network%2ftoc.json)中引用每个下一跃点类型时所使用的名称：
+下一跃点类型的显示和引用名称在 Azure 门户和命令行工具以及 Azure 资源管理器部署模型和经典部署模型中并不相同。 下表列出了在不同的工具和[部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fvirtual-network%2ftoc.json)中引用每个下一跃点类型时所使用的名称：
 
 |下一跃点类型                   |Azure CLI 和 PowerShell（资源管理器） |Azure 经典 CLI 和 PowerShell（经典）|
 |-------------                   |---------                                       |-----|
@@ -119,6 +119,9 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 本地网关可以通过边界网关协议 (BGP) 与 Azure 虚拟网关交换路由。 将 BGP 与 Azure 虚拟网关配合使用的前提是在创建网关时选择了适当的类型。 如果选择的类型是：
 
 * **ExpressRoute**：必须使用 BGP 将本地路由播发到 Azure Edge 路由器。 如果将虚拟网络网关部署为 ExpressRoute 类型，则不能通过创建用户定义路由来强制流量到达ExpressRoute 虚拟网络网关。 例如，可以使用用户定义的路由来强制来自 Express Route 的流量到达网络虚拟设备。<br />
+
+    <!-- CORRECT ON Azure Edge router -->
+
 * **VPN**：可以选择性地使用 BGP。 有关详细信息，请参阅 [BGP 与站点到站点 VPN 连接配合使用](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fvirtual-network%2ftoc.json)。
 
 使用 BGP 与 Azure 交换路由时，系统会针对每个播发的前缀，将一个单独的路由添加到包含虚拟网络中所有子网的路由表。 添加路由时，会将*虚拟网关*列为源和下一跃点类型。 

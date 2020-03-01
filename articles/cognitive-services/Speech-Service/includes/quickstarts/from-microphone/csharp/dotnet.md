@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: cb14bf6f62fd3e2d8ac8201b887f355b00531f1c
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: e7618e17a9f0e327b0caf8cbf4f9697553ad9e64
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156210"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590272"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
@@ -25,6 +25,7 @@ ms.locfileid: "77156210"
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -62,14 +63,14 @@ namespace helloworld
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
+在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置（从[区域](https://docs.azure.cn/cognitive-services/speech-service/regions)中选择“语音 SDK 参数”）。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
 > 此示例使用 `FromHost()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
-
-```csharp
-var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey")
-```
+> ```csharp
+> var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey")
+> ```
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
 

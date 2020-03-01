@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 02/20/2019
-ms.date: 11/25/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 892a7f69778bc2bc6de2292aacc17aec30dae64e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 961868627344affda295a9226e111a2479409448
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389949"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590757"
 ---
 1. 启动 Eclipse。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74389949"
 
    ![包资源管理器的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. 此时将显示“新建 POM”窗口。  在“组 ID”  字段中输入 *com.microsoft.cognitiveservices.speech.samples*，然后在“项目 ID”  字段中输入 *quickstart*。 然后选择“完成”。 
+1. 此时将显示“新建 POM”窗口。  在“组 ID”  字段中输入 *com.microsoft.cognitiveservices.speech.samples*，然后在“项目 ID”  字段中输入 *quickstart*。 然后选择“完成”  。
 
    ![“新建 POM”窗口的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "74389949"
     </repositories>
     ```
 
-   * 还添加 `dependencies` 元素（使用语音 SDK 版本 1.7.0 作为依赖项）：
+   * 还添加 `dependencies` 元素（使用语音 SDK 版本 1.9.0 作为依赖项）：
 
     ```xml
     <dependencies>

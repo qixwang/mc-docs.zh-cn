@@ -1,17 +1,17 @@
 ---
-title: 升级 Azure Service Fabric 独立群集版本
+title: 升级独立群集的版本
 description: 升级运行独立 Service Fabric 群集的 Azure Service Fabric 代码。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/09/2018
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3f095ecf281af6f3006a63f2408d3982d7d7fb5d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 2add356f55dd74aea2a612bf86a1b2f06fcb2082
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742318"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540467"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升级群集上运行的 Service Fabric 版本 
 

@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Service Fabric Linux 群集上设置加密证书并对机密进行加密
+title: 在 Linux 群集上设置加密证书
 description: 了解如何在 Linux 群集上设置加密证书并对机密进行加密。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/04/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 064301126255f7ba5d947dfeec55199ec5544069
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: ec8259e47a95763761d4aa4f457ee319410081f5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742282"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540690"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>在 Linux 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[在 Windows 群集上设置加密证书并对机密进行加密][secret-management-windows-specific-link]。

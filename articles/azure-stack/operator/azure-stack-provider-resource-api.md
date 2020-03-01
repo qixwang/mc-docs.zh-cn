@@ -1,32 +1,23 @@
 ---
-title: 提供者资源使用情况 API | Microsoft Docs
-titleSuffix: Azure Stack
-description: 资源使用情况 API 的参考，该 API 用于检索 Azure Stack 使用情况信息。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 提供程序资源使用情况 API
+description: 资源使用情况 API（用于检索 Azure Stack Hub 使用情况信息）的参考。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 07/16/2019
-ms.date: 01/13/2020
+origin.date: 01/07/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 688aadd0b1e10373081dd3e40b7ce7f170b93fa3
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 3393bd36848a00eac39b955e06c113deee47ebc4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737883"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540362"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 
-“提供者”  一词适用于服务管理员和任何委派的提供者。 Azure Stack 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如下图所示，P0 可以调用提供者 API，以获取 P1 和 P2 的直接使用情况信息；而 P1 可以通过调用来获取 P3 和 P4 的使用情况信息。
+“提供者”  一词适用于服务管理员和任何委派的提供者。 Azure Stack Hub 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如下图所示，P0 可以调用提供者 API，以获取 P1 和 P2 的直接使用情况信息；而 P1 可以通过调用来获取 P3 和 P4 的使用情况信息。
 
 ![提供者层次结构的概念模型](media/azure-stack-provider-resource-api/image1.png)
 
@@ -46,7 +37,7 @@ ms.locfileid: "75737883"
 
 | 参数 | 说明 |
 | --- | --- |
-| `armendpoint` |Azure Stack 环境的 Azure 资源管理器终结点。 按 Azure Stack 约定，Azure 资源管理器终结点名称的格式为 `https://adminmanagement.{domain-name}`。 例如，对于 Azure Stack 开发工具包 (ASDK)，如果域名为“local.azurestack.external”  ，则资源管理器终结点为 `https://adminmanagement.local.azurestack.external`。 |
+| `armendpoint` |Azure Stack Hub 环境的 Azure 资源管理器终结点。 按 Azure Stack Hub 约定，Azure 资源管理器终结点名称的格式为 `https://adminmanagement.{domain-name}`。 例如，对于 Azure Stack 开发工具包 (ASDK)，如果域名为“local.azurestack.external”  ，则资源管理器终结点为 `https://adminmanagement.local.azurestack.external`。 |
 | `subId` |进行调用的用户的订阅 ID。 |
 | `reportedStartTime` |查询的开始时间。 `DateTime` 的值应为以协调世界时 (UTC) 和小时开始时的时间呈现，例如 13:00。 对于每日聚合，请将此值设置为 UTC 午夜。 格式是转义的 ISO 8601，例如 `2015-06-16T18%3a53%3a11%2b00%3a00Z`，其中冒号转义为 `%3a`，而加号转义为 `%2b`，使其符合 URI 规范。 |
 | `reportedEndTime` |查询的结束时间。 适用于 `reportedStartTime` 的约束也适用于此参数。 `reportedEndTime` 的值不得为未来或当前的日期。 如果是，结果会设为“处理未完成”。 |
@@ -95,7 +86,7 @@ meterID1",
 |`id` |使用情况聚合的唯一 ID。 |
 |`name` |使用情况聚合的名称。 |
 |`type` |资源定义。 |
-|`subscriptionId` |Azure Stack 用户的订阅标识符。 |
+|`subscriptionId` |Azure Stack Hub 用户的订阅标识符。 |
 |`usageStartTime`|此使用情况聚合所属的使用情况存储桶 UTC 开始时间。|
 |`usageEndTime`|此使用情况聚合所属的使用情况存储桶 UTC 结束时间。 |
 |`instanceData` |实例详细信息的键/值对（采用新格式）：<br> `resourceUri`：完全限定的资源 ID，其中包括资源组和实例名称。 <br> `location`：运行此服务的区域。 <br> `tags`：用户所指定的资源标记。 <br> `additionalInfo`：更多关于所消耗资源的详细信息（例如 OS 版本或映像类型）。 |
@@ -106,10 +97,10 @@ meterID1",
 
 ### <a name="powershell"></a>PowerShell
 
-若要生成使用情况数据，你应该有正在运行且主动使用系统的资源，例如，活动的虚拟机 (VM) 或包含某些数据的存储帐户。 如果不确定你是否有任何资源在 Azure Stack 市场中运行，请部署一个 VM，并验证“VM 监视”边栏选项卡以确保它正在运行。 使用以下 PowerShell cmdlet 来查看使用情况数据：
+若要生成使用情况数据，你应该有正在运行且主动使用系统的资源，例如，活动的虚拟机 (VM) 或包含某些数据的存储帐户。 如果不确定你是否有任何资源在 Azure Stack Hub 市场中运行，请部署一个 VM，并验证“VM 监视”边栏选项卡以确保它正在运行。 使用以下 PowerShell cmdlet 来查看使用情况数据：
 
-1. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
-2. [配置 Azure Stack 用户](../user/azure-stack-powershell-configure-user.md)或 [Azure Stack 操作员](azure-stack-powershell-configure-admin.md) PowerShell 环境。
+1. [安装适用于 Azure Stack Hub 的 PowerShell](azure-stack-powershell-install.md)。
+2. [配置 Azure Stack Hub 用户](../user/azure-stack-powershell-configure-user.md)或 [Azure Stack Hub 操作员](azure-stack-powershell-configure-admin.md) PowerShell 环境。
 3. 若要检索使用情况数据，请调用 [Get-AzsSubscriberUsage](https://docs.microsoft.com/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet：
 
    ```powershell
@@ -118,7 +109,7 @@ meterID1",
 
 ### <a name="rest-api"></a>REST API
 
-可以通过调用 Microsoft.Commerce.Admin 服务来收集已删除订阅的使用信息。
+可以通过调用 **Microsoft.Commerce.Admin** 服务来收集已删除订阅的使用情况信息。
 
 #### <a name="return-all-tenant-usage-for-deleted-for-active-users"></a>为活动用户返回已删除的所有租户使用情况
 
@@ -136,5 +127,3 @@ meterID1",
 
 - [租户资源使用情况 API 参考](azure-stack-tenant-resource-usage-api.md)
 - [有关使用情况的常见问题解答](azure-stack-usage-related-faq.md)
-
-<!-- Update_Description: wording update -->

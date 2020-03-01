@@ -1,17 +1,17 @@
 ---
 title: 模拟 Azure Service Fabric 应用中的故障
-description: 如何针对常规/非常规故障强化服务。
+description: 了解如何针对常规/非常规故障强化 Azure Service Fabric 服务。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/15/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 61130ef8c9289e93f261fb91e7a8354b31a3b3c5
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 80176606416a7a095037ba324bd7bfe9cd32cca7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742116"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540566"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>在服务工作负荷期间模拟故障
 Azure Service Fabric 中的可测试性方案可让开发人员不用再担心如何处理单个故障。 然而也存在一些方案，可能需要客户端工作负荷与故障有明显的交错。 客户端工作负荷与故障的交错确保在发生故障时，服务实际在执行某些操作。 考虑到可测试性功能提供的控制等级，这些交错应该在精确的工作负荷执行点进行。 这种在应用程序的不同状态下引入故障可以找出 bug 并提高质量。

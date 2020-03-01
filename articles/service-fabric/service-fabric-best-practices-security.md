@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 安全性最佳做法
-description: Azure Service Fabric 安全性最佳做法。
+description: 确保 Azure Service Fabric 群集和应用程序安全的最佳做法和设计注意事项。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/23/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ed5043b63bafa1cd22ecc16dff21963efc88d1c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 91842eabb1c7e76a5b9d9c214c4b46e033f2327b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742275"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540200"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -216,8 +216,10 @@ cosmos_db_password=$(curl 'https://management.chinacloudapi.cn/subscriptions/<YO
 <!--Not Avaible on [Deploy Azure Firewall using a template](/firewall/deploy-template)-->
 
 - *download.microsoft.com
-- *servicefabric.azure.com
+- *servicefabric.cloudapp.chinacloudapi.cn
 - *.core.chinacloudapi.cn
+
+<!--CORRECT ON servicefabric.cloudapp.chinacloudapi.cn-->
 
 这些防火墙规则是对允许的出站网络安全组的补充，此类安全组将包括 ServiceFabric 和存储，作为来自虚拟网络的允许目标。
 

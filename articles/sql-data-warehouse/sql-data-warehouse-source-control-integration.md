@@ -11,12 +11,12 @@ origin.date: 08/23/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: b277eb05294631cd107ffc0fae31cf40d5ddfa42
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 85437f83d6e70e8a56ef62548bf6767d50b3a020
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74808079"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154413"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的源代码管理集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "74808079"
 
    ![管理连接](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "管理连接")
 
-   ![连接](media/sql-data-warehouse-source-control-integration/3-connect.png "连接")
+   ![“连接”](media/sql-data-warehouse-source-control-integration/3-connect.png "连接")
 
 3. 将项目中的 Azure Repo 存储库克隆到本地计算机
 
@@ -83,13 +83,3 @@ ms.locfileid: "74808079"
 ## <a name="next-steps"></a>后续步骤
 
 - [针对 Azure SQL 数据仓库进行开发](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-

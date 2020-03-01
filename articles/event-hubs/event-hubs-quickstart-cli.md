@@ -2,21 +2,21 @@
 title: 使用 Azure CLI 创建事件中心 - Azure 事件中心 | Azure
 description: 本快速入门介绍如何使用 Azure CLI 创建事件中心，然后使用 Java 发送和接收事件。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: seodec18
-origin.date: 12/06/2018
-ms.date: 09/16/2019
+origin.date: 02/11/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 99159f401f8bdc01fdb4e67174c5d55f3d1886e7
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: 2b18782746c80967a6ad24b99dd9f57de7a0dcda
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72872921"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155116"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 
@@ -77,16 +77,15 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 
 在本文中，你已创建一个资源组、一个事件中心命名空间和一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ： 
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)
 
 [创建一个试用帐户]: https://www.azure.cn/pricing/1rmb-trial/
-[Install Azure CLI 2.0]: /cli/install-azure-cli?view=azure-cli-latest
-[az group create]: /cli/group?view=azure-cli-latest#az-group-create
+[Install the Azure CLI]: /cli/install-azure-cli?view=azure-cli-latest
+[az group create]: /cli/azure/group#az_group_create
 [fully qualified domain name]: https://en.wikipedia.org/wiki/Fully_qualified_domain_name

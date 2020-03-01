@@ -2,20 +2,22 @@
 title: 应用程序方案和设计
 description: Service Fabric 中云应用程序的类别概述。 介绍使用有状态服务和无状态服务的应用程序设计。
 ms.topic: conceptual
-origin.date: 04/24/2019
+origin.date: 01/08/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: e737793a48cd78585a4a38b38cc2a11f5d3f027b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.custom: sfrev
+ms.openlocfilehash: 5a37c5c6162d488ae36cbec71d3b193bd4311f44
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742283"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540696"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
-Azure Service Fabric 提供了一个可靠而灵活的平台，可用于编写和运行多种类型的商业应用程序和服务。 这些应用程序和微服务可以无状态也可以有状态，它们在各虚拟机间资源平衡，可最大限度提高工作效率。 
 
-Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 可根据不断变化的资源要求轻松向上或向下缩放应用程序（其实是扩展或缩减）。
+Azure Service Fabric 提供了一个可靠而灵活的平台，可用于编写和运行多种类型的商业应用程序和服务。 这些应用程序和微服务可以无状态也可以有状态，它们在各虚拟机间资源平衡，可最大限度提高工作效率。
+
+Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 可根据不断变化的资源要求轻松缩小或扩展应用程序。
 
 有关构建应用程序的设计指导，请参阅[有关使用 Service Fabric 设计应用程序的最佳做法](service-fabric-best-practices-applications.md)。
 
@@ -37,7 +39,7 @@ Service Fabric 的独特体系结构使你可以在应用程序中执行近实�
 
 * **数据计算**：使用 Service Fabric 可以构建有状态应用程序来执行密集的数据计算。 Service Fabric 允许在应用程序中共置处理（计算）和数据。 
 
-    一般情况下，当应用程序需要访问数据时，与外部数据缓存或存储层相关的网络延迟会限制计算时间。 使用 Service Fabric 有状态服务可消除这种延迟，使读取和写入得到进一步的优化。 
+    一般情况下，当应用程序需要访问数据时，与外部数据缓存或存储层相关的网络延迟会限制计算时间。 使用 Service Fabric 有状态服务可消除这种延迟，使读取和写入得到进一步的优化。
 
     例如，假设某个应用程序要为客户执行准实时的建议选择，且要求往返时间小于 100 毫秒。 与必须从远程存储中提取所需数据的标准实现模型相比，Service Fabric 服务的延迟和性能特征向用户提供一种响应体验。 系统的响应能力更强，因为建议选择计算与数据和规则共置。
 
@@ -48,16 +50,18 @@ Service Fabric 的独特体系结构使你可以在应用程序中执行近实�
 * **可缩放的服务**：可对单独的服务进行分区，以允许在群集范围内扩大状态。 此外，还可动态创建和删除各项服务。 可将少量节点上的少量实例中的服务横向扩展为许多节点上的数千个实例，以后可根据需要再次缩减。 可以使用 Service Fabric 生成这些服务并管理其整个生命周期。
 
 ## <a name="application-design-case-studies"></a>应用程序设计案例研究
-[客户案例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/)和 [Azure 中的微服务](https://azure.microsoft.com/solutions/microservice-applications/)站点上发布了介绍如何使用 Service Fabric 设计应用程序的案例研究。
+
+[客户案例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc)和 [Azure 中的微服务](https://azure.microsoft.com/solutions/microservice-applications/)站点上发布了介绍如何使用 Service Fabric 设计应用程序的案例研究。
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>设计由无状态和有状态微服务组成的应用程序
-构建使用 Azure 云服务辅助角色的应用程序是无状态服务的一个示例。 相比之下，有状态微服务不仅维护请求及其响应，还维护其权威状态。 此功能在复制支持下提供交易保证的简单 API，从而提供状态的高可用性和一致性。 
+
+构建使用 Azure 云服务辅助角色的应用程序是无状态服务的一个示例。 相比之下，有状态微服务不仅维护请求及其响应，还维护其权威状态。 此功能在复制支持下提供交易保证的简单 API，从而提供状态的高可用性和一致性。
 
 Service Fabric 中的有状态服务可让所有类型的应用程序（而不仅仅是数据库和其他数据存储）实现高可用性。 这是一种自然的进步。 为实现高可用性，应用程序已从使用单纯的关系数据库发展到 NoSQL 数据库。 现在，应用程序可在自身内部管理其“热”状态和数据，以便进一步提高性能，而无需损失可靠性、一致性或可用性。
 
 构建包含微服务的应用程序时，通常有一个无状态 Web 应用（例如 ASP.NET 和 Node.js）组合调用应用于无状态和有状态业务中间层服务。 这些应用和服务全部通过 Service Fabric 部署命令部署到同一个 Service Fabric 群集。 在规模、可靠性和资源使用方面，其中的每个服务都是独立的。 这种独立性大大提高了开发和生命周期管理的敏捷性与灵活性。
 
-有状态微服务可简化应用程序设计，因为它们不再需要传统上需要用来处理纯无状态应用程序的可用性和延迟需求的附加队列和缓存。 由于有状态服务具有高度可用和低延迟的特点，要在应用程序中管理的详细信息更少。 
+有状态微服务可简化应用程序设计，因为它们不再需要传统上需要用来处理纯无状态应用程序的可用性和延迟需求的附加队列和缓存。 由于有状态服务具有高度可用和低延迟的特点，要在应用程序中管理的详细信息更少。
 
 下图演示了设计有状态应用程序与无状态应用程序之间的差异。 通过利用 [Reliable Services](service-fabric-reliable-services-introduction.md) 和 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 编程模型，有状态服务降低了应用程序的复杂性，同时实现了高吞吐量和低延迟。
 
@@ -71,20 +75,18 @@ Service Fabric 中的有状态服务可让所有类型的应用程序（而不�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[模式和方案](service-fabric-patterns-and-scenarios.md)。
-
 * 使用 Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) 和 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型开始构建无状态和有状态服务。
     
     <!--Not Available on * [building microservices on Azure](https://docs.microsoft.com/azure/architecture/microservices/)-->
 
 * 有关应用程序设计指导，请参阅 [Azure Service Fabric 应用程序和群集最佳做法](service-fabric-best-practices-overview.md)。
 
-* 此外，请参阅以下主题：
-    * [介绍微服务](service-fabric-overview-microservices.md)
+* 另请参阅：
+    * [了解微服务](service-fabric-overview-microservices.md)
     * [定义和管理服务状态](service-fabric-concepts-state.md)
-    * [Service Fabric 服务的可用性](service-fabric-availability-services.md)
-    * [缩放 Service Fabric 服务](service-fabric-concepts-scalability.md)
-    * [Service Fabric 服务分区](service-fabric-concepts-partitioning.md)
+    * [服务的可用性](service-fabric-availability-services.md)
+    * [缩放服务](service-fabric-concepts-scalability.md)
+    * [分区服务](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

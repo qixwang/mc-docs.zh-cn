@@ -2,29 +2,23 @@
 title: 如何与 Azure Active Directory 集成 | Microsoft Docs
 description: 了解将你的应用程序与 Azure Active Directory 进行集成的优势，并获取诸如简化登录、标识管理、多重身份验证和访问控制等功能的资源。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/08/2019
-ms.date: 11/05/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
-ms.reviewer: bryanla
+ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd57fd4e16faec17e68c66ba893604bbe9a33c27
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 29f6133f1e629fc643652290858a6c42296827b2
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653309"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 
@@ -38,7 +32,7 @@ ms.locfileid: "73830999"
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>支持使用 Azure AD 作为登录应用程序的方式
 
-**减少登录问题并降低支持成本。** 如果使用 Azure AD 登录应用程序，用户不需要记住更多的名称和密码。 作为开发人员，可以减少要存储和保护的密码。 无需重置忘记的密码，单凭这一点就能节省不少的精力。 使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Azure。 Azure AD 包含了来自数百万家组织的几亿个用户，用户很可能已经登录到了 Azure AD。 深入了解如何[添加 Azure AD 登录支持](v1-authentication-scenarios.md)。
+**减少登录问题并降低支持成本。** 如果使用 Azure AD 登录应用程序，用户不需要记住更多的名称和密码。 作为开发人员，可以减少要存储和保护的密码。 无需重置忘记的密码，单凭这一点就能节省不少的精力。 使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Azure。 Azure AD 包含了来自数百万家组织的几亿个用户，用户很可能已经登录到了 Azure AD。 深入了解如何[添加 Azure AD 登录支持](authentication-scenarios.md)。
 
 **简化应用程序注册。**  在注册应用程序期间，Azure AD 可以发送有关用户的基本信息，以便可以预先填写注册表单，或者完全清除表单。 用户可以使用其 Azure AD 帐户，通过社交媒体和移动应用程序中常见的许可体验注册应用程序。 任何用户在不需要 IT 人员的情况下都可以注册和登录与 Azure AD 集成的应用程序。 深入了解如何[注册应用程序进行 Azure AD 帐户登录](../../app-service/configure-authentication-provider-aad.md)。
 
@@ -78,7 +72,7 @@ ms.locfileid: "73830999"
 
 ### <a name="advanced-security-features"></a>高级安全功能
 
-**多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 深入了解[多重身份验证](/multi-factor-authentication/)。
+**多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 了解有关 [多重身份验证](/multi-factor-authentication/)的详细信息。
 
 **异常登录检测。**  Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。 通过支持 Azure AD 登录，你的应用程序可以从这种保护中受益。 深入了解如何[查看 Azure Active Directory 访问报告](/active-directory/reports-monitoring/overview-reports)。
 
@@ -96,6 +90,6 @@ ms.locfileid: "73830999"
 
 [开始编写代码](v2-overview.md#getting-started)。
 
-[使用 Microsoft 标识平台将用户登录](v1-authentication-scenarios.md)
+[使用 Microsoft 标识平台将用户登录](authentication-scenarios.md)
 
 <!-- Update_Description: link update -->

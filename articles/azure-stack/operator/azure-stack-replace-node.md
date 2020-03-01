@@ -1,37 +1,27 @@
 ---
-title: 更换 Azure Stack 集成系统上的缩放单元节点
-titleSuffix: Azure Stack
-description: 了解如何更换 Azure Stack 集成系统上的物理缩放单元节点。
-services: azure-stack
-documentationcenter: ''
+title: 更换 Azure Stack Hub 集成系统上的缩放单元节点
+titleSuffix: Azure Stack Hub
+description: 了解如何更换 Azure Stack Hub 集成系统上的物理缩放单元节点。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 11/11/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: cb319d57f5df4e6a73a9618f3da77369bdbb6a42
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: dbfb3cf973dba3dec4492feec2d2add116b913fc
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737792"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540341"
 ---
-# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>更换 Azure Stack 集成系统上的缩放单元节点
+# <a name="replace-a-scale-unit-node-on-an-azure-stack-hub-integrated-system"></a>更换 Azure Stack Hub 集成系统上的缩放单元节点
 
-*适用于：Azure Stack 集成系统*
-
-本文介绍更换 Azure Stack 集成系统上的物理计算机（也称为缩放单元节点）的一般过程。 实际的缩放单元节点更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
+本文介绍更换 Azure Stack Hub 集成系统上的物理计算机（也称为缩放单元节点）的一般过程。 实际的缩放单元节点更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
 
 > [!CAUTION]  
-> 固件分级对于本文中所述的操作的成功至关重要。 缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或阻止 Azure Stack 自动化部署操作系统。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。 有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
+> 固件分级对于本文中所述的操作的成功至关重要。 缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或阻止 Azure Stack Hub 自动化部署操作系统。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack Hub 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。 有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
 
 以下流程图显示更换整个缩放单元节点的一般 FRU 过程。
 
@@ -40,7 +30,7 @@ ms.locfileid: "75737792"
 *根据硬件的物理条件，可能不需要此操作。
 
 > [!Note]  
-> 如果关闭操作确实失败，则建议先执行清空操作，再执行停止操作。 有关详细信息，请参阅 [Azure Stack 中的缩放单元节点操作](/azure-stack/operator/azure-stack-node-actions)。
+> 如果关闭操作确实失败，则建议先执行清空操作，再执行停止操作。 有关详细信息，请参阅 [Azure Stack Hub 中的缩放单元节点操作](/azure-stack/operator/azure-stack-node-actions)。
 
 ## <a name="review-alert-information"></a>查看警报信息
 

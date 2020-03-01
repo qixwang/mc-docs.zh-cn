@@ -1,16 +1,16 @@
 ---
-title: Azure Service Fabric 有状态服务中的可靠集合简介
+title: 可靠集合简介
 description: Service Fabric 有状态服务提供可靠集合让你编写高度可用、可缩放且低延迟的云应用程序。
 ms.topic: conceptual
 origin.date: 01/03/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 351066a1b46c9618b37d469fd017f929b72eeebd
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 5a5f291ab23217cf8febd9aa24ca1e29b24dc712
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742384"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541059"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 

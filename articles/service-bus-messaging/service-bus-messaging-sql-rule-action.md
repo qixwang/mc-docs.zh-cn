@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 09/05/2018
-ms.date: 09/23/2019
+origin.date: 01/24/2020
+ms.date: 02/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9f84215787f7161278a8069eadfb59aeff206bbc
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 634800bc38d5d4ab3189891b0679074be7b32806
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068010"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154465"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
 

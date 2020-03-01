@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 09/05/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0a5e1d42589351755036b141cc197420976854c7
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 10d7371c693ab52ae2066e586cd434b0e0d9e14d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884957"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154862"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
 本文展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
@@ -49,7 +49,7 @@ ms.locfileid: "74884957"
 
 理想情况下，以下陈述应当会解析为预生成实体 HomeAutomation.Device  ：
 
-|#|陈述|标识的实体|score|
+|#|话语|标识的实体|score|
 |--|--|--|--|
 |1|turn on the ac（打开空调）|HomeAutomation.Device -“ac（空调）”|0.8748562|
 |2|turn up the heat（打开供热）|HomeAutomation.Device -“heat（供热）”|0.784990132|
@@ -74,6 +74,8 @@ HomeAutomation.Device 实体非常适用于数量较少的设备或几乎没有�
 |hotter（升温）|
 |cold（冷）|
 |colder（降温）|
+
+如果 LUIS 需要经常确定新可选名称，最好使用[短语列表](luis-concept-feature.md#how-to-use-phrase-lists)。
 
 ## <a name="create-a-list-entity"></a>创建列表实体
 创建 Node.js 文件，并将下面的代码复制到其中。 更改 authoringKey、appId、versionId 和 region 值。
@@ -161,7 +163,7 @@ npm install && node add-entity-list.js
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-the-model"></a>定型模型
 定型 LUIS，让新列表能够影响查询结果。 定型过程分为两部分，然后在定型完成后检查状态。 有多个模型的应用可能需要一段时间才能完成定型。 下面的代码先定型应用，然后等到定型成功完成。 此代码使用等待并重试策略，以免发生 429“请求次数过多”错误。 
 
 创建 Node.js 文件，并将下面的代码复制到其中。 更改 authoringKey、appId、versionId 和 region 值。
@@ -473,7 +475,7 @@ node train.js
 
 尝试其他两个陈述，看看它们是否也作为“恒温调节器”返回。 
 
-|#|陈述|实体|type|value|
+|#|话语|实体|type|value|
 |--|--|--|--|--|
 |1|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
 |2|turn up the heat（打开供热）|heat（供热）| DevicesList |恒温调节器|

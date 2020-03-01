@@ -5,14 +5,14 @@ author: wanl
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2b785e3eb5633dd13495f6564e67e115a544fffe
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 656cfe738056d76f2826005baa6031d6d5d16f07
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600623"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77567194"
 ---
 # <a name="diagnostic-logs-for-azure-signalr-service"></a>Azure SignalR 服务的诊断日志
 
@@ -51,7 +51,7 @@ ms.locfileid: "75600623"
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中  。
 
-有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)。
+有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ### <a name="diagnostic-logs-categories"></a>诊断日志类别
 

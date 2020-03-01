@@ -13,12 +13,12 @@ ms.topic: conceptual
 origin.date: 08/12/2019
 ms.date: 10/14/2019
 ms.author: v-jay
-ms.openlocfilehash: ae1c256a311bae5b93c32d9a76134893cd8ad695
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: f22d60db28eb3616c6dcb295ba190ad07251ab55
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275483"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653525"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 
@@ -52,11 +52,11 @@ ms.locfileid: "72275483"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：MongoDb  |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
-| 端口 |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
+| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
 | authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许值包括：基本和匿名   。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
@@ -64,7 +64,7 @@ MongoDB 链接的服务支持以下属性：
 | authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |否。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
 | enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -95,7 +95,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MongoDbCollection  | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -126,7 +126,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MongoDbSource** | 是 |
 | 查询 |使用自定义 SQL-92 查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“collectionName”） |
@@ -215,7 +215,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | _id | 客户名称 | 服务级别 |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
-| 2222 |XYZ |金牌服务 |
+| 2222 |XYZ |Gold |
 
 下表显示在示例中表示原始数组的虚拟表。 这些表包含以下项：
 
@@ -241,4 +241,4 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | 2222 |1 |2 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

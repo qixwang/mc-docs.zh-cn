@@ -1,40 +1,35 @@
 ---
 title: 新增功能 - 语言理解 (LUIS)
-titleSuffix: Azure Cognitive Services
 description: 本文会经常更新有关 Azure 认知服务语言理解 API 的新闻。
-author: diberry
+author: lingliw
 manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-origin.date: 11/07/2019
-ms.date: 12/05/2019
+origin.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: ef82819b36a7dee4b83e8e21d38ee747185b3e4e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: f2e0e12eb05847353621f6ae1ff1ace244b7d307
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884679"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155044"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
-了解该服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。  
+了解该服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。
 
-## <a name="release-notes"></a>发行说明 
+## <a name="release-notes"></a>发行说明
 
 ### <a name="november-4-2019---ignite"></a>2019 年 11 月 4 日 - Ignite
 
 * 提高开发人员工作效率
-    * [预测终结点 V3](luis-migration-api-v3.md) 公开发布。 
-    * 能够使用 .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 格式导入和导出应用。 这样就可以有效地进行 CI/CD 处理。 
+    * [预测终结点 V3](luis-migration-api-v3.md) 公开发布。
+    * 能够使用 .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 格式导入和导出应用。 这样就可以有效地进行 CI/CD 处理。
 * 语言扩展
     * [阿拉伯语和印地语](luis-language-support.md)为公共预览版。
 * 预生成的模型
     * [预生成的域](luis-reference-prebuilt-domains.md)现在已为正式版 (GA)
-* 高级语言理解功能 - [构建复杂的语言模型](luis-concept-entity-types.md)更为轻松。 
+* 高级语言理解功能 - [构建复杂的语言模型](luis-concept-entity-types.md)更为轻松。
 * 在模型级别定义机器学习功能，使模型能够用作其他模型的信号，例如，将实体用作意向和其他实体的功能。
 * 新的扩展的[限制](luis-boundaries.md) - 提高了短语列表和短语总数的限制，使用新模型作为功能限制。
 * 从深层次体系结构格式文本中提取信息，使聊天应用程序的功能更强大。

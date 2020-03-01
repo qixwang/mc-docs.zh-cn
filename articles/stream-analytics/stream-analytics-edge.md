@@ -7,14 +7,14 @@ ms.author: v-lingwu
 manager: digimobile
 ms.reviewer: jasonh
 ms.topic: conceptual
-origin.date: 07/01/2019
-ms.date: 07/12/2019
-ms.openlocfilehash: f5181a06991b223cc87f3d47f6cdaf5bc209c1d2
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+origin.date: 02/14/2020
+ms.date: 02/27/2020
+ms.openlocfilehash: 0dce8fe5ea6e3a8905440b6d2439fa5e18649611
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856961"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155130"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
  
@@ -67,7 +67,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 
 #### <a name="create-an-asa-edge-job"></a>创建 ASA Edge 作业
 > [!Note]
-> 本教程重点介绍如何使用 Azure 门户创建 ASA 作业。 也可以使用 Visual Studio 插件创建 ASA Edge 作业
+> 本教程重点介绍如何使用 Azure 门户创建 ASA 作业。
 
 <!--Not Available on [use Visual Studio plugin to create an ASA Edge job](/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)-->
 
@@ -124,12 +124,13 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 
 ```json
 {
-"routes": {                                              
-    "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
-    "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream", 
-    "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")" 
+    "routes": {
+        "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
+        "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream",
+        "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")"
+    }
 }
-}   
+
 ```
 此示例演示下图中所述的方案的路由。 它包含名为“ASA”  的边缘作业，以及名为“temperature”的输入和  和名为“alert”  的输出。
 ![消息路由关系图示例](media/stream-analytics-edge/edge-message-routing-example.png)
@@ -145,7 +146,7 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 但是，以下功能尚不支持 Edge 作业：
 * JavaScript 中的用户定义函数 (UDF)。 [用于 IoT Edge 作业的 C#](/stream-analytics/stream-analytics-edge-csharp-udf)（预览版）中提供了 UDF。
 * 用户定义聚合 (UDA)。
-* Azure ML 函数
+* Azure ML 函数。
 * 在单个步骤中使用超过 14 个聚合。
 * 用于输入/输出的 AVRO 格式。 目前仅支持 CSV 和 JSON。
 * 以下 SQL 运算符：
@@ -203,19 +204,19 @@ IoT Edge 上的参考数据更新将由部署触发。 在触发后，ASA 模块
 
 此版本信息上次更新时间为 2019-06-27：
 
-- 映像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+- 映像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
    - 基础映像：microsoft/dotnet:2.1.6-runtime-alpine3.7
    - 平台：
       - 体系结构：amd64
       - os：linux
   
-- 映像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+- 映像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
    - 基础映像：microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
    - 平台：
       - 体系结构：arm
       - os：linux
   
-- 映像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+- 映像：`asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
    - 基础映像：microsoft/dotnet:2.1.6-runtime-nanoserver-1809
    - 平台：
       - 体系结构：amd64

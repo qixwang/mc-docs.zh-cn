@@ -3,15 +3,15 @@ title: Azure Service Fabric CLI 入门
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何连接到群集以及如何管理应用程序。
 author: rockboyfor
 ms.topic: conceptual
-origin.date: 09/17/2019
-ms.date: 01/06/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: c891fd3a01071288026f46ec0dd2c728fcce3c43
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 27615a877ac1c109b2332a6c510b2301f814c192
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741861"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540198"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -31,7 +31,8 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新 (~=8)  | 最新 (~=6.5)            |
+| 最新 (~=9)  | 最新版（不等于 7）              |
+| 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |

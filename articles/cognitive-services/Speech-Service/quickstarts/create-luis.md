@@ -3,24 +3,24 @@ title: 快速入门：创建 LUIS 密钥
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何创建 LUIS 应用程序和获取密钥。
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-origin.date: 11/04/2019
-ms.date: 01/27/2020
+origin.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: e7890329fda3f510de6106b943463431c60a9e94
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: ceec9ae25a553a43ba74b3fbb5d6cf7d01db7596
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123129"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590247"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入门：获取 LUIS 终结点密钥
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始阅读本教程之前，请务必准备好以下各项：
 
@@ -38,7 +38,7 @@ LUIS 使用三种密钥：
 |初学者|仅允许使用纯文本测试 LUIS 应用程序|
 |终结点 |授权访问特定的 LUIS 应用|
 
-对于本教程，需要使用终结点密钥类型。 本教程使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
+对于本教程，需要使用终结点密钥类型。 本教程使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](https://docs.azure.cn/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
 
 当你创建 LUIS 应用时，LUIS 会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不会启用语音服务集成，因此不适用于本教程。 在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 在本教程中，可以使用试用订阅层。
 

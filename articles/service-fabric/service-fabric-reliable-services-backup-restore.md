@@ -1,17 +1,17 @@
 ---
 title: Service Fabric 备份和还原
-description: Service Fabric 备份和还原的概念文档
+description: Service Fabric 备份和还原的概念性文档，该服务用于配置可靠有状态服务和 Reliable Actors 的备份。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/29/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8934cea63bd65b189b2fc873bd22a14ca53608bc
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c3573399eb81a4c8b8075505c0562a349b9d189b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741863"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540143"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
 Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的内置冗余对某些情况来说可能已经足够使用，但在特定情况下，仍需要服务备份数据（到外部存储）。
@@ -64,7 +64,7 @@ Azure Service Fabric 是一个高可用性平台，用于复制多个节点中�
 
 ```csharp
 
-BackupDescription myBackupDescription = new BackupDescription(backupOption.Incremental,this.BackupCallbackAsync);
+BackupDescription myBackupDescription = new BackupDescription(BackupOption.Incremental,this.BackupCallbackAsync);
 
 await this.BackupAsync(myBackupDescription);
 

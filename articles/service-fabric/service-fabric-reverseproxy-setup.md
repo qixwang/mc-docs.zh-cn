@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric 设置反向代理
-description: 了解如何设置和配置 Service Fabric 的反向代理。
+description: 了解如何为 Azure Service Fabric 应用程序设置和配置反向代理服务。
 ms.topic: conceptual
 origin.date: 11/13/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f1c82a50984e872ef4603f67164f5de8626baec4
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 0fb25f73e8b866dcbf2d07ae38c22a60e6d3bf30
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741893"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540099"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 

@@ -1,31 +1,21 @@
 ---
-title: Azure Stack 中的缩放单元节点操作 | Microsoft Docs
-description: 了解缩放单元节点操作，包括开机、关机、禁用、恢复以及如何在 Azure Stack 集成系统中查看节点状态。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 中的缩放单元节点操作
+description: 了解缩放单元节点操作，包括开机、关机、禁用、恢复以及如何在 Azure Stack Hub 集成系统中查看节点状态。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: article
-origin.date: 07/18/2019
-ms.date: 11/18/2019
+origin.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 3909f8cf716d02e476a9fb0bc49064a66f3c218e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: b7e723e1d07399b4bcad414e6976b2744b415727
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020167"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540384"
 ---
-# <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack 中的缩放单元节点操作
-
-*适用于：Azure Stack 集成系统*
+# <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub 中的缩放单元节点操作
 
 本文介绍如何查看缩放单元的状态。 可以查看单元的节点。 可以运行开机、关机、关闭、清空、恢复和修复等节点操作。 通常，在现场更换组件期间或者在帮助恢复节点时，会使用这些节点操作。
 
@@ -77,7 +67,7 @@ ms.locfileid: "74020167"
 
 节点的工作状态确定了哪些选项可用。
 
-需要安装 Azure Stack PowerShell 模块。 这些 cmdlet 位于 **Azs.Fabric.Admin** 模块中。 若要安装或验证适用于 Azure Stack 的 PowerShell 的安装，请参阅[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
+需要安装 Azure Stack Hub PowerShell 模块。 这些 cmdlet 位于 **Azs.Fabric.Admin** 模块中。 若要安装或验证适用于 Azure Stack Hub 的 PowerShell 的安装，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](azure-stack-powershell-install.md)。
 
 ## <a name="stop"></a>停止
 
@@ -141,14 +131,14 @@ ms.locfileid: "74020167"
 ## <a name="repair"></a>修复
 
 > [!CAUTION]  
-> 固件分级对于本文中所述的操作的成功至关重要。 当 Azure Stack 自动化部署操作系统时，缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或失败。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。<br><br>
+> 固件分级对于本文中所述的操作的成功至关重要。 当 Azure Stack Hub 自动化部署操作系统时，缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或失败。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack Hub 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。<br><br>
 有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
 
 | 硬件合作伙伴 | 区域 | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | 全部 | [适用于 Azure Stack 的 Cisco 集成系统操作指南](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[适用于 Microsoft Azure Stack 的 Cisco 集成系统的发行说明](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | 全部 | [Cloud for Azure Stack 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| HPE | 全部 | [HPE ProLiant for Azure Stack](http://www.hpe.com/info/MASupdates) |
+| Cisco | 全部 | [适用于 Azure Stack Hub 的 Cisco 集成系统操作指南](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[适用于 Azure Stack Hub 的 Cisco 集成系统的发行说明](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | 全部 | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| HPE | 全部 | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | 全部 | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
 
 “修复”操作可修复节点。  请只在出现以下情况时才使用此操作：
@@ -183,4 +173,4 @@ ms.locfileid: "74020167"
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解 Azure Stack Fabric 操作员模块](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)。
+[了解 Azure Stack Hub Fabric 操作员模块](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)。

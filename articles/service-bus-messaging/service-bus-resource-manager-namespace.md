@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 06/21/2019
 ms.date: 09/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8976992aeeac00e62a51d9be68254f6d68ba20af
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: bd55eb0542c07ba6742e147cc792fe413b7651c7
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068286"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154990"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
@@ -141,9 +141,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 在本教程中，请使用 Azure PowerShell 来部署模板。 如需其他模板部署方法，请参阅：
 
-* [使用 Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)。
-* [使用 Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)。
-* [使用 REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)。
+* [使用 Azure 门户](../azure-resource-manager/templates/deploy-portal.md)。
+* [使用 Azure CLI](../azure-resource-manager/templates/deploy-cli.md)。
+* [使用 REST API](../azure-resource-manager/templates/deploy-rest.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 反向代理安全通信
-description: 配置反向代理以启用安全的端到端通信。
+description: 在 Azure Service Fabric 应用程序中配置反向代理以启用安全的端到端通信。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/10/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 568965be88cbea2d950d7e06aa2b6ff7191aa0fe
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 9715d58c0aeffec9edd7abd1bd45a33bf7318f27
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742434"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540096"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 

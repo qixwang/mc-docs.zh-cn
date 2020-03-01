@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 08/06/2019
 ms.date: 01/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 0483d1c416ce9cc43c9788d4ffae1ce4d2a453eb
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: cf9b7fca9de52d6fa6db96cb3730de4eb52458b1
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624225"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653526"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 IBM Informix 数据存储复制数据
 
@@ -49,7 +49,7 @@ ms.locfileid: "75624225"
 
 Informix 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Informix** | 是 |
 | connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 <br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。| 是 |
@@ -89,7 +89,7 @@ Informix 链接服务支持以下属性：
 
 从 Informix 复制数据时，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**InformixTable** | 是 |
 | tableName | Informix 中表的名称。 | 源为否（如果指定了活动源中的“query”）；<br/>接收器为是 |
@@ -120,7 +120,7 @@ Informix 链接服务支持以下属性：
 
 从 Informix 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**InformixSource** | 是 |
 | 查询 | 使用自定义查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -163,4 +163,4 @@ Informix 链接服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

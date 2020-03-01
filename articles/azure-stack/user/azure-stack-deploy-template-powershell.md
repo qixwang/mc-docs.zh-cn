@@ -1,40 +1,30 @@
 ---
-title: 在 Azure Stack 中使用 PowerShell 部署模板 | Microsoft Docs
-description: 在 Azure Stack 中使用 PowerShell 部署模板。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中使用 PowerShell 部署模板
+description: 在 Azure Stack Hub 中使用 PowerShell 部署模板。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/07/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: 4970c130e34c746c22219cf97b62d82da4b6eec3
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: ac2f537a94be297d69019fa88e1922e9f8bb0853
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020016"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540839"
 ---
-# <a name="deploy-a-template-using-powershell-in-azure-stack"></a>在 Azure Stack 中使用 Powershell 部署模板
+# <a name="deploy-a-template-using-powershell-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 Powershell 部署模板
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-可以使用 PowerShell 将 Azure 资源管理器模板部署到 Azure Stack。 本文介绍如何使用 PowerShell 部署模板。
+可以使用 PowerShell 将 Azure 资源管理器模板部署到 Azure Stack Hub。 本文介绍如何使用 PowerShell 部署模板。
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>运行 AzureRM PowerShell cmdlet
 
 此示例使用 **AzureRM** PowerShell cmdlet 和存储在 GitHub 上的模板。 此模板创建 Windows Server 2012 R2 Datacenter 虚拟机。
 
 >[!NOTE]
-> 在尝试此示例之前，请确保已为 Azure Stack 用户[配置了 PowerShell](azure-stack-powershell-configure-user.md)。
+> 在尝试此示例之前，请确保已为 Azure Stack Hub 用户[配置了 PowerShell](azure-stack-powershell-configure-user.md)。
 
 1. 浏览 [AzureStack-QuickStart-Templates 存储库](https://aka.ms/AzureStackGitHub)，找到 **101-simple-windows-vm** 模板。 将模板保存到此位置：`C:\templates\azuredeploy-101-simple-windows-vm.json`。
 2. 打开权限提升的 PowerShell 命令提示符。
@@ -61,7 +51,7 @@ ms.locfileid: "74020016"
     >[!IMPORTANT]
     > 每次运行此脚本时，都应递增 `$myNum` 参数的值，以避免覆盖你的部署。
 
-4. 打开 Azure Stack 门户，选择“浏览”  ，然后选择“虚拟机”  以查找新虚拟机 (**myDeployment001**)。
+4. 打开 Azure Stack Hub 门户，选择“浏览”  ，然后选择“虚拟机”  以查找新虚拟机 (**myDeployment001**)。
 
 ## <a name="cancel-a-running-template-deployment"></a>取消正在运行的模板部署
 

@@ -1,23 +1,18 @@
 ---
 title: 数据更改 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
-services: cognitive-services
 author: lingliw
 manager: digimobile
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-origin.date: 11/19/2019
-ms.date: 12/04/2019
+origin.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 1aac1bd908e34b8ff2eb0fabdb743e98ec6618ab
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 0f169ecd492a0f2bee362901fd9cad8e99db2edf
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858448"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154830"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
 LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法包括修复拼写，以及修复预生成 datetimeV2 的时区问题。 
@@ -36,7 +31,7 @@ LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法�
 
 [必应拼写检查 API V7](https://www.azure.cn/home/features/cognitive-services/spell-check/) 检测到错误时，将一并从终结点返回原始陈述、已更正陈述和预测。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -50,7 +45,7 @@ LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
  
 ```JSON
 {
@@ -86,7 +81,7 @@ LUIS 应用使用预生成的 datetimeV2 实体时，可以在预测响应中返
 ### <a name="daylight-savings-example"></a>夏令时示例
 如果需要返回的预生成 datetimeV2 来调整夏令时，则对于该[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)查询应使用值为正数/负数（以分钟为单位）的 `timezoneOffset` querystring 参数。
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 预测终结点请求](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 预测终结点请求](#tab/V2)
 
 增加 60 分钟： 
 
@@ -96,7 +91,7 @@ https://{region}.api.cognitive.azure.cn/luis/v2.0/apps/{appId}?q=Turn the lights
 
 https://{region}.api.cognitive.azure.cn/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 预测终结点请求](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 预测终结点请求](#tab/V3)
 
 增加 60 分钟：
 

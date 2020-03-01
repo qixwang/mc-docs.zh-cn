@@ -1,7 +1,6 @@
 ---
 title: 在 Azure 流分析中使用机器学习终结点
 description: 本文介绍如何在 Azure 流分析中使用机器语言用户定义的函数。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/11/2019
 ms.date: 07/12/2019
-ms.openlocfilehash: d764dce27e2273b028556b53fc4b757035018a62
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 5d8ab94b8052736f36fe9de17ab6b620013e65e4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528103"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155049"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>流分析中的 Azure 机器学习工作室（经典）集成（预览）
 流分析支持调用 Azure 机器学习工作室（经典）终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了对此功能的 REST API 支持。 本文提供在流分析中成功实现此功能所需的补充信息。 也可在 [此处](stream-analytics-machine-learning-integration-tutorial.md)获取已发布的教程。
@@ -40,7 +39,7 @@ Microsoft Azure 机器学习工作室（经典）提供一个协作型拖放式�
 2. 定义输入
 3. 定义输出
 4. 创建用户定义函数 (UDF)
-5. 编写用于调用 UDF 的流分析转换
+5. 编写调用 UDF 的流分析转换
 6. 启动作业
 
 ## <a name="creating-a-udf-with-basic-properties"></a>使用基本属性创建 UDF
@@ -71,7 +70,7 @@ Microsoft Azure 机器学习工作室（经典）提供一个协作型拖放式�
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>调用默认 UDF 的 RetrieveDefaultDefinition 终结点
-创建主干 UDF 后，需要 UDF 的完整定义。 RetreiveDefaultDefinition 终结点可帮助获取绑定到 Azure 机器学习工作室（经典）终结点的标量函数的默认定义。 下面的有效负载要求获取绑定到 Azure 机器学习终结点的标量函数的默认 UDF 定义。 它不指定实际的终结点，因为已在 PUT 请求期间提供终结点。 流分析会调用请求中提供的终结点（如果它已显式提供）。 否则，会使用原来引用的终结点。 此处 UDF 采用单个字符串参数（一个句子），并返回类型字符串的单个输出以指示该句子的“情绪”标签。
+创建主干 UDF 后，需要 UDF 的完整定义。 RetreiveDefaultDefinition 终结点可帮助获取绑定到 Azure 机器学习工作室（经典）终结点的标量函数的默认定义。 下面的有效负载要求获取绑定到 Azure 机器学习终结点的标量函数的默认 UDF 定义。 它不指定实际的终结点，因为已在 PUT 请求期间提供终结点。 流分析会调用请求中提供的终结点（如果已显式提供。 否则，会使用原来引用的终结点。 此处 UDF 采用单个字符串参数（一个句子），并返回类型字符串的单个输出以指示该句子的“情绪”标签。
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
@@ -130,7 +129,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 ```
 
 ## <a name="patch-udf-with-the-response"></a>使用响应修补 UDF
-现在，必须根据先前的响应修补 UDF，如下所示。
+现在，必须使用之前的响应修补 UDF，如下所示。
 
 ```
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>

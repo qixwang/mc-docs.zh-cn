@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI- sfctl rpm
-description: 介绍 Service Fabric CLI sfctl rpm 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于修复管理器服务的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: e57ed2be30918feffd5f517e060a6aa3e067e97b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: cdb27b5c0d9c4a64efb60806fd7ba02653eddffe
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742200"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540580"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 查询并向修复管理器服务发送命令。
@@ -78,7 +78,7 @@ ms.locfileid: "75742200"
 |参数|说明|
 | --- | --- |
 | --executor-filter | 应在列表中包含其声明任务的修复执行程序的名称。 |
-| --state-filter | 以下值的按位 OR 运算，指定应在结果列表中包含哪些任务状态。 <br /> 1 - 已创建 <br />2 - 已声明  <br />4 - 正在准备  <br />8 - 已批准  <br />16 - 正在执行  <br />32 - 正在还原  <br />64 - 已完成 |
+| --state-filter | 以下值的按位 OR 运算，指定应在结果列表中包含哪些任务状态。 <ul><li>1 - 已创建</li><li>2 - 已声明</li><li>4 - 正在准备</li><li>8 - 已批准</li><li>16 - 正在执行</li><li>32 - 正在还原</li><li>64 - 已完成</li></ul>
 | --task-id-filter | 要匹配的修复任务 ID 前缀。 |
 
 ### <a name="global-arguments"></a>全局参数

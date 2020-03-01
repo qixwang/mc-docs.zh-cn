@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中使用 C# 保护服务远程处理通信
+title: 使用 C# 保护服务远程处理通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 C# Reliable Services 的基于服务远程处理的通信。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/20/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d0ae298478c02fb9b06cb1012674e99554ca0e00
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 138a9704e6bca60f80f9cd50695e754694984cfa
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742423"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541055"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
 > [!div class="op_single_selector"]

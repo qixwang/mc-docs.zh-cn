@@ -1,16 +1,16 @@
 ---
 title: 打包 Azure Service Fabric 应用
-description: 如何打包 Service Fabric 应用程序后将其部署到群集。
+description: 了解如何打包 Azure Service Fabric 应用程序以及如何准备部署到群集。
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f04d994ca75fbe5d93285b1bddaefa3b958cdc45
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: b170e6edcc2a9868e6965816da8e21d4ee6701cb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742486"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540163"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
@@ -58,9 +58,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
 
-如果使用 Visual Studio 2015 创建应用程序，可以使用 Package 命令自动创建符合上述布局的包。
+如果已使用 Visual Studio 创建应用程序，则可以使用 Package  命令自动创建匹配上述布局的包。
 
-若要创建包，请在解决方案资源管理器中右键单击应用程序项目，并选择 Package 命令，如下所示：
+若要创建包，请在解决方案资源管理器中右键单击应用程序项目，选择 **Package** 命令  ：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 

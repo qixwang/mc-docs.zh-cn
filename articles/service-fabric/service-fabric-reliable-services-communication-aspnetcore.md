@@ -1,17 +1,17 @@
 ---
 title: 使用 ASP.NET Core 与服务通信
-description: 了解如何在无状态和有状态 Reliable Services 中使用 ASP.NET Core。
+description: 了解如何在无状态和有状态 Azure Service Fabric Reliable Services 应用程序中使用 ASP.NET Core。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/12/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 88d7073f8c53610c193a1c723a77ce6b85789648
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 9514411a4f5c3a314a4ebb9249faf853824ca909
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741864"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540145"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
 

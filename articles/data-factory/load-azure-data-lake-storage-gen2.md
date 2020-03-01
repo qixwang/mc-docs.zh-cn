@@ -1,23 +1,24 @@
 ---
-title: 使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
+title: 将数据加载到 Azure Data Lake Storage Gen2 中
 description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen2 中
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 02/15/2019
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: a366cf1ca022cfe424894ee30278430b2af3f679
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.custom: seo-lt-2019
+origin.date: 05/13/2019
+ms.date: 03/02/2020
+ms.openlocfilehash: 19e1f961d2ef37f93649fbc44d29640034c0715b
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570314"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653068"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
@@ -47,7 +48,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADLSDemo\" 不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
     * **版本**：选择“V2”  。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
 

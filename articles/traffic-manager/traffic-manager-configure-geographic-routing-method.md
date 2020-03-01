@@ -1,31 +1,32 @@
 ---
 title: 使用 Azure 流量管理器配置地理流量路由方法
-description: 本文介绍如何使用 Azure 流量管理器配置地理流量路由方法
+description: 本教程介绍如何使用 Azure 流量管理器配置地理流量路由方法
 services: traffic-manager
 author: rockboyfor
 manager: digimobile
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/22/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 897d57e28b43dfc6b5412fbb7bfecffe7ce75aa0
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 76707ba3c9a5e1f28da730dbecb0c461db8e8782
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857077"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653232"
 ---
-# <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>使用流量管理器配置地理流量路由方法
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>教程：使用流量管理器配置地理流量路由方法
 
 使用地理流量路由方法，可基于请求源自的地理位置将流量定向到特定终结点。 本教程说明如何使用此路由方法创建流量管理器配置文件，并配置终结点以从特定地理区域接收流量。
 
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.cn)。 如果还没有帐户，可注册 [1 个月期限的试用版](https://www.azure.cn/pricing/1rmb-trial/)。
+
 2. 单击“创建资源”   > “网络”   > “全部查看”   > “流量管理器配置文件”   > “创建”  。
 
     <!--MOONCAKE: CORRECT ON **Networking** >  **See All** -->

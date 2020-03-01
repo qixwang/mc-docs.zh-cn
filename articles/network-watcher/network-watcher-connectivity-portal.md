@@ -6,7 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 08/03/2017
 ms.date: 10/19/2018
 ms.author: v-lingwu
-ms.openlocfilehash: a3f547fae8434ba2496d958dff022972688a4d73
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: d41ad4b31a0edaea01afc386cb05797a5c3af2a1
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028489"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154971"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>通过 Azure 门户使用 Azure 网络观察程序排查连接问题
 

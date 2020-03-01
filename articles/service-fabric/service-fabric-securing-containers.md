@@ -1,16 +1,16 @@
 ---
-title: 将证书导入到 Azure Service Fabric 上运行的容器
+title: 将证书导入到容器中
 description: 了解如何将证书文件导入到 Service Fabric 容器服务。
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2d9b819743645ca76f04e5a2a158bd3c3ee02928
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c6938e7c79832df2d1b8c26148bc008060edffcd
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742420"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540094"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>将证书文件导入到 Service Fabric 上运行的容器
 

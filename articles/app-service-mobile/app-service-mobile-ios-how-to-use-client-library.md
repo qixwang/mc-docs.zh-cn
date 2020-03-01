@@ -6,21 +6,21 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+ms.date: 03/09/2019
 ms.author: v-tawe
-ms.openlocfilehash: c1dc5e23efb9effde21f53c1fc7007b76d378b20
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 1d9983c51b758ccb801d122fdaa25ff8f7b93899
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600547"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77567192"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
 >
 > 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
@@ -248,11 +248,11 @@ query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 
 在 Azure 移动应用中，页面大小控制每次从后端表提取的记录数。 `pull` 数据的调用稍后会基于此页面大小对数据进行批量处理，直到没有更多要提取的记录。
 
-可使用 **MSPullSettings** 配置页面大小，如下所示。 默认页面大小为 50，以下示例中则改为 3。
+可使用 **MSPullSettings** 配置页面大小，如下所示。 默认的页面大小为 50，下面的示例将其更改为 3。
 
 可以配置不同的页面大小，以提高性能。 如果有大量小型数据记录，增大页面大小可减少服务器往返次数。
 
-此设置仅控制客户端侧的页面大小。 如果客户端所需的页面大小大于移动应用后端支持的页面大小，则页面大小的上限为后端配置所支持的最大大小。
+此设置仅控制客户端侧的页面大小。 如果客户端请求的页面大小超过移动应用后端支持的大小，则页面大小受限于后端配置为支持的最大值。
 
 此设置也是数据记录的数目  ，而不是字节大小  。
 
@@ -552,11 +552,10 @@ if (error.code == MSErrorPreconditionFailed) {
 1. 根据 [How to configure App Service for Active Directory login][7] （如何为 Active Directory 登录配置应用服务）教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，建议重定向 URI 采用 `<app-scheme>://<bundle-id>` 格式。 有关详细信息，请参阅 [ADAL iOS 快速入门][8]。
 2. 使用 Cocoapods 安装 ADAL。 编辑 Podfile 以包含以下定义，将 **YOUR-PROJECT** 替换为 Xcode 项目的名称：
 
-    ```
-    source 'https://github.com/CocoaPods/Specs.git'
-    link_with ['YOUR-PROJECT']
-    xcodeproj 'YOUR-PROJECT'
-    ```
+        source 'https://github.com/CocoaPods/Specs.git'
+        link_with ['YOUR-PROJECT']
+        xcodeproj 'YOUR-PROJECT'
+
    Pod：
 
         pod 'ADALiOS'
@@ -564,9 +563,9 @@ if (error.code == MSErrorPreconditionFailed) {
 3. 使用终端，从包含项目的目录运行 `pod install`，然后打开生成的 Xcode 工作区（而不是项目）。
 4. 根据使用的语言，将以下代码添加到应用程序。 在每个应用程序中，进行以下替换：
 
-    * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.chinacloudapi.cn/contoso.onmicrosoft.com 。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
-    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”  下面的“高级”  选项卡获取此客户端 ID。
-    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.chinacloudapi.cn/contoso.onmicrosoft.com 。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
+   * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”  下面的“高级”  选项卡获取此客户端 ID。
+   * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
    * 将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点（使用 HTTPS 方案）。 此值应类似于 *https://contoso.chinacloudsites.cn/.auth/login/done* 。
 
 **Objective-C**：
@@ -632,6 +631,14 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
         }
 }
 ```
+
+<!-- ## <a name="facebook-sdk"></a>How to: Authenticate users with the Facebook SDK for iOS -->
+
+<!-- ## <a name="twitter-fabric"></a>How to: Authenticate users with Twitter Fabric for iOS -->
+
+
+<!-- ## <a name="google-sdk"></a>How to: Authenticate users with the Google Sign-In SDK for iOS -->
+
 <!-- Anchors. -->
 
 [What is Mobile Services]: #what-is
@@ -681,4 +688,4 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 [5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
 [7]: ../app-service/configure-authentication-provider-aad.md
-[8]:../active-directory/develop/quickstart-v1-ios.md
+[8]:../active-directory/develop/quickstart-v2-ios.md

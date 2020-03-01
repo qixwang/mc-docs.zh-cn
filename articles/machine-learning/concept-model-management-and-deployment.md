@@ -8,15 +8,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
-ms.author: jordane
-ms.date: 11/22/2019
+ms.author: v-yiso
+origin.date: 11/22/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: a766b4c5c110cd3d2fcd116fb875d0fe7136bb64
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 91da8e591cc30ebb3d74ae5215901b6c9df8da16
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599061"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154569"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署和监视
 
@@ -35,9 +36,9 @@ Azure 机器学习提供以下 MLOps 功能：
 
 使用 Azure 机器学习中的 ML 管道，将模型训练过程涉及的所有步骤汇聚到一起。
 
-ML 管道可以包含从数据准备、到特征提取、到超参数优化、再到模型评估的所有步骤。 有关详细信息，请参阅 [ML 管道](service/concept-ml-pipelines.md)。
+ML 管道可以包含从数据准备、到特征提取、到超参数优化、再到模型评估的所有步骤。 有关详细信息，请参阅 [ML 管道](concept-ml-pipelines.md)。
 
-如果使用[设计器](service/concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。   克隆管道可以迭代管道设计，而不会丢失旧版本。  
+如果使用[设计器](concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。   克隆管道可以迭代管道设计，而不会丢失旧版本。  
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>从任意位置注册、打包和部署模型
 
@@ -89,8 +90,8 @@ Azure 机器学习可以使用分析功能来确定在部署模型时要使用�
 
 创建映像时，还会添加 Azure 机器学习所需的组件。 例如，运行 Web 服务以及与 IoT Edge 交互所需的资产。
 
-#### <a name="batch-scoring"></a>批处理评分
-支持通过 ML 管道进行批量评分。 有关详细信息，请参阅[针对大数据的批量预测](how-to-run-batch-predictions.md)。
+#### <a name="batch-scoring"></a>批评分
+支持通过 ML 管道进行批量评分。 有关详细信息，请参阅[针对大数据的批量预测](how-to-use-parallel-run-step.md)。
 
 #### <a name="real-time-web-services"></a>实时 Web 服务
 

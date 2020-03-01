@@ -8,16 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd7e9240dd15a303f000c21e5559027a2b3c127
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 167b8e2ebea1c1f1e2f932cfba7c151b61669cb1
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777054"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653183"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -50,7 +49,7 @@ ms.locfileid: "75777054"
 >      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。  
 >      - 选择“注册”  以创建应用程序。
 > 1. 在应用的页面列表中，选择“身份验证”。 
-> 1. 在“重定向 URI”   | “建议用于公共客户端(移动、桌面)的重定向 URI”  部分中，选中 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
+> 1. 在“重定向 URI”   | “建议用于公共客户端(移动、桌面)的重定向 URI”  部分中，使用 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
 > 1. 选择“保存”  。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -113,6 +112,7 @@ using Microsoft.Identity.Client;
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApplicationBuilder.Create(ClientId)
+                .WithRedirectUri("https://login.partner.microsoftonline.cn/common/oauth2/nativeclient")
                 .WithAuthority(AzureCloudInstance.AzureChina, Tenant)
                 .Build();
 ```
@@ -169,4 +169,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 > [调用 Graph API 教程](tutorial-v2-windows-desktop.md)
 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: code update -->

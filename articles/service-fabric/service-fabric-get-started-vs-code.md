@@ -4,14 +4,14 @@ description: 本文概述如何使用 Visual Studio Code 创建 Service Fabric �
 author: rockboyfor
 ms.topic: article
 origin.date: 06/29/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f5baf9ce632dd0e006a02adca6fd18ce721b6610
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 626f64da8ba02b38f0b7097d2962427f051605c2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742374"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540427"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -70,7 +70,7 @@ ms.locfileid: "75742374"
 
 “Service Fabric:  创建应用程序”命令在当前工作区中创建新的 Service Fabric 应用程序。 根据开发计算机上安装的 yeoman 生成器，可以创建多种类型的 Service Fabric 应用程序，包括 Java、C#、容器和来宾项目。 
 
-1. 选择“Service Fabric:  添加服务”命令
+1. 选择“Service Fabric:  创建应用程序”命令
 2. 选择新 Service Fabric 应用程序的类型。 
 3. 输入要创建的应用程序的名称
 3. 选择要添加到 Service Fabric 应用程序的服务的类型。 

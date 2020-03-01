@@ -1,45 +1,34 @@
 ---
-title: 使用基于角色的访问控制来管理 Azure Stack 中的资源访问 | Microsoft Docs
-description: 了解如何在 Azure Stack 中作为管理员或租户管理基于角色的访问控制 (RBAC) 权限。
-services: azure-stack
-documentationcenter: ''
+title: 使用基于角色的访问控制管理 Azure Stack Hub 中的资源访问
+description: 了解如何在 Azure Stack Hub 中作为管理员或租户管理基于角色的访问控制 (RBAC) 权限。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 09/13/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: b3c400611e5f7db5c9b679de0eea4aff4086766b
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 217266bc358059066e484cf42775c39f0977c342
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578312"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540775"
 ---
-# <a name="manage-access-to-resources-in-azure-stack-with-role-based-access-control"></a>使用基于角色的访问控制来管理 Azure Stack 中的资源访问
+# <a name="manage-access-to-resources-in-azure-stack-hub-with-role-based-access-control"></a>使用基于角色的访问控制管理 Azure Stack Hub 中的资源访问
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-Azure Stack 支持基于角色的访问控制 (RBAC)，这与 Azure 使用的[用于访问控制的安全模型](/role-based-access-control/overview)相同。 可以使用 RBAC 来管理用户、组或应用对订阅、资源和服务的访问权限。
+Azure Stack Hub 支持基于角色的访问控制 (RBAC)，这与 Azure 使用的[用于访问控制的安全模型](/role-based-access-control/overview)相同。 可以使用 RBAC 来管理用户、组或应用对订阅、资源和服务的访问权限。
 
 ## <a name="basics-of-access-management"></a>访问管理基础知识
 
 基于角色的访问控制 (RBAC) 提供了精细的访问控制，可以用来保护环境安全。 通过在特定范围内分配 RBAC 角色，可以为用户授予他们所需的确切权限。 角色分配的范围可以是订阅、资源组或单个资源。 有关访问管理的更多详细信息，请参阅 [Azure 门户中基于角色的访问控制](/role-based-access-control/overview)一文。
 
 > [!NOTE]
-> 使用 Active Directory 联合身份验证服务作为标识提供者部署 Azure Stack 时，RBAC 方案仅支持通用组。
+> 使用 Active Directory 联合身份验证服务作为标识提供者部署 Azure Stack Hub 时，RBAC 方案仅支持通用组。
 
 ### <a name="built-in-roles"></a>内置角色
 
-Azure Stack 有三个可应用于所有资源类型的基本角色：
+Azure Stack Hub 有三个可应用于所有资源类型的基本角色：
 
 * **所有者**：可以管理所有内容，包括对资源的访问权限。
 * **参与者**：可以管理除资源访问权限以外的所有内容。
@@ -47,7 +36,7 @@ Azure Stack 有三个可应用于所有资源类型的基本角色：
 
 ### <a name="resource-hierarchy-and-inheritance"></a>资源层次结构和继承
 
-Azure Stack 具有以下资源层次结构：
+Azure Stack Hub 具有以下资源层次结构：
 
 * 每个订阅属于一个目录。
 * 每个资源组属于一个订阅。
@@ -82,7 +71,7 @@ Azure [角色分配](/role-based-access-control/role-assignments-portal)一文�
    * 从“将访问权限分配到”下拉列表中选择要分配的资源。 
    * 在你的目录中选择要向其授予访问权限的用户、组或应用。 可以通过显示名称、电子邮件地址和对象标识符搜索该目录。
 
-7. 选择**保存**。
+7. 选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 

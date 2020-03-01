@@ -1,27 +1,23 @@
 ---
-title: 如何在 Azure Stack 中设置多个站点到站点 VPN 隧道 | Microsoft Docs
-description: 了解如何在 Azure Stack 中设置多个站点到站点 VPN 隧道。
-services: azure-stack
+title: 如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道
+description: 了解如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 09/19/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
-ms.openlocfilehash: 9bd57604a9e72201e0897898efbda756097cc013
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: d2ebd93312473e39c98bd17492daa87ada8c77a8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020405"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540037"
 ---
-# <a name="how-to-set-up-a-multiple-site-to-site-vpn-tunnel-in-azure-stack"></a>如何在 Azure Stack 中设置多个站点到站点 VPN 隧道
+# <a name="how-to-set-up-a-multiple-site-to-site-vpn-tunnel-in-azure-stack-hub"></a>如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-本文介绍如何使用 Azure Stack 资源管理器模板部署解决方案。 该解决方案使用关联的虚拟网络创建多个资源组，并演示如何连接这些系统。
+本文介绍如何使用 Azure Stack Hub 资源管理器模板部署解决方案。 该解决方案使用关联的虚拟网络创建多个资源组，并演示如何连接这些系统。
 
 可以在 [Azure 智能边缘模式](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub 存储库中找到这些模板。 该模板位于 **rras-gre-vnet-vnet** 文件夹中。 
 
@@ -35,7 +31,7 @@ ms.locfileid: "74020405"
 
 -  部署三层式应用程序：Web 层、应用层和数据库层。
 
--  将前两个模板部署在独立的 Azure Stack 实例上。
+-  将前两个模板部署在单独的 Azure Stack Hub 实例上。
 
 -  **WebTier** 部署在 PPE1 上，**AppTier** 部署在 PPE2 上。
 
@@ -45,15 +41,15 @@ ms.locfileid: "74020405"
 
 ## <a name="steps-to-deploy-multiple-vpns"></a>部署多个 VPN 的步骤
 
-此过程包括多个步骤。 对于本解决方案，你将使用 Azure Stack 门户。 但是，也可以使用 PowerShell、Azure CLI 或其他基础结构即代码工具链来捕获输出并将其用作输入。
+此过程包括多个步骤。 对于此解决方案，你将使用 Azure Stack Hub 门户。 但是，也可以使用 PowerShell、Azure CLI 或其他基础结构即代码工具链来捕获输出并将其用作输入。
 
 ![替换文字](./media/azure-stack-network-howto-vpn-tunnel/image2.png)
 
 ## <a name="walkthrough"></a>演练
 
-### <a name="deploy-web-tier-to-azure-stack-instances-ppe1"></a>将 Web 层部署到 Azure Stack 实例 PPE1
+### <a name="deploy-web-tier-to-azure-stack-hub-instances-ppe1"></a>将 Web 层部署到 Azure Stack Hub 实例 PPE1
 
-1.  打开 Azure Stack 用户门户，选择“创建资源”。 
+1.  打开 Azure Stack Hub 用户门户，选择“创建资源”。 
 
 2.  选择“模板部署”。 
 
@@ -70,7 +66,7 @@ ms.locfileid: "74020405"
 
     ![](./media/azure-stack-network-howto-vpn-tunnel/image5.png)
 
-### <a name="deploy-app-tier-to-the-second-azure-stack-instances"></a>将应用层部署到第二个 Azure Stack 实例
+### <a name="deploy-app-tier-to-the-second-azure-stack-hub-instances"></a>将应用层部署到第二个 Azure Stack Hub 实例
 
 可以使用与 **WebTier** 相同的过程，但要使用不同的参数，如下所示：
 
@@ -97,7 +93,7 @@ ms.locfileid: "74020405"
 
 ### <a name="create-tunnel-from-web-tier-to-app-tier"></a>创建从 Web 层到应用层的隧道
 
-1.  打开 Azure Stack 用户门户，选择“创建资源”。 
+1.  打开 Azure Stack Hub 用户门户，选择“创建资源”。 
 
 2.  选择“模板部署”。 
 
@@ -109,7 +105,7 @@ ms.locfileid: "74020405"
 
 ### <a name="create-tunnel-from-app-tier-to-web-tier"></a>创建从应用层到 Web 层的隧道
 
-1.  打开 Azure Stack 用户门户，选择“创建资源”。 
+1.  打开 Azure Stack Hub 用户门户，选择“创建资源”。 
 
 2.  选择“模板部署”  。
 
@@ -164,7 +160,7 @@ ms.locfileid: "74020405"
 
 ### <a name="configure-app-tier-to-db-tier"></a>配置应用层到数据库层的隧道
 
-1.  打开 Azure Stack 用户门户，选择“创建资源”。 
+1.  打开 Azure Stack Hub 用户门户，选择“创建资源”。 
 
 2.  选择“模板部署”  。
 
@@ -202,7 +198,7 @@ ms.locfileid: "74020405"
     > 可以测试从第一台计算机到第二台计算机的 RDP 连接，或反之。
 
     > [!Note]  
-    > 若要在本地环境中实施此解决方案，需要将 Azure Stack 远程网络的路由部署到交换基础结构，最起码要部署到特定的 VM
+    > 若要在本地实施此解决方案，需要将到 Azure Stack Hub 远程网络的路由部署到交换基础结构中，或至少部署到特定 VM 上
 
 ### <a name="deploying-a-gre-tunnel"></a>部署 GRE 隧道
 
@@ -214,6 +210,6 @@ ms.locfileid: "74020405"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  
 [如何使用 GRE 创建 VPN 隧道](network-howto-vpn-tunnel-gre.md)  
 [如何使用 IPSEC 创建 VPN 隧道](network-howto-vpn-tunnel-ipsec.md)

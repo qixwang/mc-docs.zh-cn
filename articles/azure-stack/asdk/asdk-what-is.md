@@ -1,31 +1,21 @@
 ---
-title: 什么是 Azure Stack Hub 开发工具包 (ASDK)？ | Microsoft Docs
-description: 了解 Azure Stack Hub 开发工具包以及如何使用它来评估 Azure Stack Hub。
-services: azure-stack
-documentationcenter: ''
+title: 什么是 Azure Stack 开发工具包 (ASDK)？ | Microsoft Docs
+description: 了解 Azure Stack 开发工具包以及如何使用它来评估 Azure Stack Hub。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
 origin.date: 11/27/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
-ms.openlocfilehash: c963f10639342131e28b5234933ba9ed0e5c804e
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 147ccb71d0857eee19857e8a80a42817438bd7e8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737881"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540964"
 ---
-# <a name="what-is-the-azure-stack-hub-development-kit-asdk"></a>什么是 Azure Stack Hub 开发工具包 (ASDK)？
+# <a name="what-is-the-azure-stack-development-kit-asdk"></a>什么是 Azure Stack 开发工具包 (ASDK)？
 [Azure Stack Hub 集成系统](../operator/azure-stack-overview.md)的大小范围为 4 到 16 个节点，由硬件合作伙伴和 Azure 共同提供支持。 使用 Azure Stack Hub 集成系统可为生产工作负荷启用新方案。 如果你是 Azure Stack Hub 操作员，想要管理集成系统基础结构并提供服务，请参阅我们的[操作员文档](/azure-stack/operator)。
 
 ASDK 用于对 Azure Stack Hub 进行单节点部署，可以**免费**下载和使用。 所有 ASDK 组件都安装在单个主计算机上运行的虚拟机 (VM) 中，该计算机必须满足或超过[最低硬件要求](asdk-deploy-considerations.md#hardware)。 ASDK 旨在提供一个环境，你可以在其中评估 Azure Stack Hub，并在非生产  环境中使用与 Azure 一致的 API 和工具开发新型应用。 

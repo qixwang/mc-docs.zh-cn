@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 网络最佳做法
-description: 用于管理 Service Fabric 网络的最佳做法。
+description: 使用 Azure Service Fabric 管理网络连接的最佳做法和设计注意事项。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/23/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 92e3b0042eff25244c8e5209d7a31a8e6e71c7b7
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 49b343e31726015873f6cd1c582fe2ad0b10c10a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742440"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540209"
 ---
 # <a name="networking"></a>网络
 

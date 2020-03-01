@@ -3,26 +3,24 @@ title: 错误和异常 (MSAL)
 titleSuffix: Microsoft identity platform
 description: 了解如何处理 MSAL 应用程序中的错误和异常以及声明质询。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
-ms.reviewer: saeeda
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4242ec568763d59c83ea9f77036ecc85dbaeb373
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 94c882fe43ef9235b69ec02d700227d8e277d49d
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335311"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653444"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>处理 MSAL 异常和错误
 
@@ -38,7 +36,7 @@ Microsoft 身份验证库 (MSAL) 中的异常旨在帮助应用开发人员进�
 
 有关应用错误处理的更多详细信息，请参阅以下与你所用语言匹配的部分。
 
-## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 处理 .NET 异常时，可以使用异常类型本身和 `ErrorCode` 成员来区分不同的异常。 `ErrorCode` 值是 [MsalError](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet) 类型的常量。
 
@@ -140,11 +138,11 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 }
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 MSAL.js 提供用于抽象化和分类各种常见错误的错误对象。 它还提供用于访问具体错误详细信息的接口，例如，方便适当处理错误的错误消息。
 
-### <a name="error-object"></a>Error 对象
+### <a name="error-object"></a>错误对象
 
 ```javascript
 export class AuthError extends Error {
@@ -233,7 +231,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 });
 ```
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 在 MSAL for Python 中，大多数错误都作为 API 调用的返回值传达。 此错误以字典形式表示，其中包含来自 Microsoft 标识平台的 JSON 响应。
 
@@ -244,7 +242,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 
 在 MSAL for Python 中，异常很罕见，因为系统对大多数错误的处理方式是返回错误值。 只有在特定情况下（例如在 API 参数格式不正确的情况下）尝试使用库的方式出现问题时，才会引发 `ValueError` 异常。
 
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 在 Java MSAL 中，有三种类型的异常：`MsalClientException`、`MsalServiceException` 和 `MsalInteractionRequiredException`；所有这些异常继承自 `MsalException`。
 
@@ -270,7 +268,7 @@ MSAL 公开一个 `reason` 字段，使用它可以提供更好的用户体验�
 |---------|-----------|-----------------------------|
 | `BasicAction` | 在交互式身份验证流期间，可通过用户交互来解决状况 | 结合交互式参数调用 `acquireToken` |
 | `AdditionalAction` | 在交互式身份验证流以外，可以通过与系统进行附加的补救交互来解决状况。 | 结合交互式参数调用 `acquireToken` 可显示一条解释补救措施的消息。 如果用户不太可能完成补救措施，调用方应用可以选择隐藏需要额外措施的流。 |
-| `MessageOnly` | 目前无法解决状况。 启动交互式身份验证流可显示一条解释该状况的消息。 | 结合交互式参数调用 `acquireToken` 可显示一条解释状况的消息。 在用户读取消息并关闭窗口后，`acquireToken` 将返回 `UserCanceled` 错误。 如果该消息不太可能会为用户带来帮助，该应用可以选择隐藏生成消息的流。 |
+| `MessageOnly` | 目前无法解决条件。 启动交互式身份验证流可显示一条解释该状况的消息。 | 结合交互式参数调用 `acquireToken` 可显示一条解释状况的消息。 在用户读取消息并关闭窗口后，`acquireToken` 将返回 `UserCanceled` 错误。 如果该消息不太可能会为用户带来帮助，该应用可以选择隐藏生成消息的流。 |
 | `ConsentRequired`| 用户许可缺失或已撤销。 |结合交互式参数调用 `acquireToken`，使用户能够授予许可。 |
 | `UserPasswordExpired` | 用户的密码已过期。 | 结合交互式参数调用 `acquireToken`，使用户能够重置其密码 |
 | `None` |  将提供更多详细信息。 在交互式身份验证流期间，可通过用户交互来解决状况。 | 结合交互式参数调用 `acquireToken` |
@@ -300,7 +298,7 @@ MSAL 公开一个 `reason` 字段，使用它可以提供更好的用户体验�
         }
 ```
 
-## <a name="iosmacostabiosmacos"></a>[iOS/macOS](#tab/iosmacos)
+## <a name="iosmacos"></a>[iOS/macOS](#tab/iosmacos)
 
 [MSALError 枚举](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中列出了适用于 iOS 和 macOS 的 MSAL 错误的完整列表。
 
@@ -555,4 +553,4 @@ do
 } while (retry);
 ```
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->

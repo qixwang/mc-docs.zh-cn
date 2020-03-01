@@ -1,29 +1,23 @@
 ---
-title: 修改注册到 Microsoft 标识平台的应用程序支持的帐户 | Azure
+title: 修改 Microsoft 标识平台应用帐户 | Azure
 description: 配置注册到 Microsoft 标识平台的应用程序，更改能够访问应用程序的人或具体帐户。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/08/2019
-ms.date: 06/25/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92aacb8a70356d3e4d877945ca2eea5b0369a88c
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: 7f0326a1b7201d308ec2ccaca18c73794b6065de
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568738"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653420"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
 
@@ -68,7 +62,7 @@ ms.locfileid: "67568738"
 
 通常将单页应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。 对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 Web API 的调用的令牌。
 
-用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权的详细信息，并确定其是否适合应用程序方案，请了解 Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) 和 [v2.0](v2-oauth2-implicit-grant-flow.md) 中的 OAuth 2.0 隐式授权流。
+用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权的详细信息，并确定其是否适合应用程序方案，请了解 Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) 和 [v2.0](v2-oauth2-implicit-grant-flow.md) 中的 OAuth 2.0 隐式授权流。
 
 默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。 可以执行下述步骤，为应用程序启用 OAuth 2.0 隐式授权。
 
@@ -84,12 +78,12 @@ ms.locfileid: "67568738"
 了解下述其他相关的应用管理快速入门：
 
 * [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md)
-* [将应用程序配置为公开 Web API](quickstart-configure-app-expose-web-apis.md)
+* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
+* [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
 * [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
 
-了解有关表示已注册应用程序和它们之间的关系的两个 Azure AD 对象的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
+了解有关表示已注册应用程序的两个 Azure AD 对象及它们之间的关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

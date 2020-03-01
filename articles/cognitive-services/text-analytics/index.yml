@@ -48,10 +48,6 @@ sections:
         style: icon48
         items:
           - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            href: quickstarts/csharp.md
-          - image:
               src: media/index/logo_java.svg
             text: Java
             href: quickstarts/java.md

@@ -1,20 +1,20 @@
 ---
-title: 准备用于将 VMware VM 灾难恢复到 Azure 的本地 VMware 服务器 | Azure
+title: 使用 Azure Site Recovery 准备 VMware VM 灾难恢复
 description: 了解如何准备本地 VMware 服务器使用 Azure Site Recovery 服务灾难恢复到 Azure。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: tutorial
-origin.date: 08/22/2019
-ms.date: 09/30/2019
+origin.date: 11/12/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: MVC
-ms.openlocfilehash: 960cb63b545a73668f1fdf44c55343580edbea74
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: b9cb94b1dacf90d7b9896133efeb60ee4f5c9926
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340964"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611278"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -55,7 +55,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 **Task** | **角色/权限** | **详细信息**
 --- | --- | ---
 **VM 发现** | 至少一个只读用户<br/><br/> 数据中心对象 –> 传播到子对象，角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）   。
-**完全复制、故障转移、故障回复** |  创建一个拥有所需权限的角色 (Azure_Site_Recovery)，然后将该角色分配到 VMware 用户或组<br/><br/> 数据中心对象 –> 传播到子对象，角色=Azure_Site_Recovery<br/><br/> 数据存储 -> 分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）   。
+**完全复制、故障转移、故障回复** |  创建一个拥有所需权限的角色 (Azure_Site_Recovery)，然后将该角色分配到 VMware 用户或组<br/><br/> 数据中心对象 –> 传播到子对象，角色=Azure_Site_Recovery<br/><br/> 数据存储 -> 分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移已关机的 VM、迁移已开机的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）   。
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>准备一个帐户用于安装移动服务
 
@@ -94,7 +94,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
     - 应在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP    。
     - 检查操作系统的 SAN 策略是否已设置为 OnlineAll  。 [了解详细信息](https://support.microsoft.com/kb/3031135)。
 - 触发故障转移时，VM 上不应存在待处理的 Windows 更新。 如果存在，则在更新完成之前无法登录到虚拟机。
-- 在 Windows Azure VM 上执行故障转移后，请选中“启动诊断”，查看 VM 的屏幕截图  。 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除技巧](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 在 Windows Azure VM 上执行故障转移后，请选中“启动诊断”，查看 VM 的屏幕截图  。 如果无法连接，请检查 VM 是否正在运行，并查看这些[疑难解答提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 若要在故障转移后使用 SSH 连接到 Linux VM，请执行以下操作：
 
@@ -105,13 +105,13 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 - 可选中“启动诊断”查看 VM 的屏幕截图  。
 
 ## <a name="failback-requirements"></a>故障回复要求
-如果计划故障回复到本地站点，则有多个[故障回复先决条件](vmware-azure-reprotect.md##before-you-begin)。 现在可以准备这些先决条件，但不需要。 可以在故障转移到 Azure 后准备。
+如果计划故障回复到本地站点，则有多个[故障回复先决条件](vmware-azure-reprotect.md#before-you-begin)。 现在可以准备这些先决条件，但不需要。 可以在故障转移到 Azure 后准备。
 
 ## <a name="next-steps"></a>后续步骤
 
 设置灾难恢复。 如果要复制多个 VM，请规划容量。
 > [!div class="nextstepaction"]
 > [针对 VMware VM 设置到 Azure 的灾难恢复](vmware-azure-tutorial.md)
-> [执行容量规划](site-recovery-deployment-planner.md)
+> [执行容量规划](site-recovery-deployment-planner.md)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

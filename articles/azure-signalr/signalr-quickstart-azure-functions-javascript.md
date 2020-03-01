@@ -1,35 +1,36 @@
 ---
-title: Azure SignalR 服务无服务器快速入门 - JavaScript
+title: 通过 JavaScript 使用 Azure Functions 和 SignalR 服务创建聊天室
 description: 使用 Azure SignalR 服务和 Azure Functions 创建聊天室的快速入门。
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
 origin.date: 12/14/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: e80dc77ff5934a6ddf0b714ebec54a2074aad52b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 373796366526518d787d1d1bffa283f01bc043d2
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600585"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77567196"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>快速入门：使用 Azure Functions 和 SignalR 服务通过 JavaScript 创建聊天室
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 JavaScript 使用 Azure Functions 和 SignalR 服务创建聊天室
 
-使用 Azure SignalR 服务可以轻松地将实时功能添加到应用程序。 Azure Functions 是一个无服务器平台，可让你在不管理任何基础结构的情况下运行代码。 本快速入门介绍了如何使用 SignalR 服务和 Functions 构建无服务器的实时聊天应用程序。
+Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Azure Functions 是一个无服务器平台，可让你无需管理任何基础结构即可运行代码。 在本快速入门中，你将通过 JavaScript 使用 SignalR 服务和 Functions 构建一个无服务器的实时聊天应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门可以在 macOS、Windows 或 Linux 上运行。
+- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/)
+- 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) 版本 2 或更高版本。 用于在本地运行 Azure Functions 应用。
+- [Node.js](https://nodejs.org/en/download/) 版本 10.x
 
-确保已安装了代码编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
+   > [!NOTE]
+   > 这些示例应使用其他版本的 Node.js，有关详细信息，请参阅 [Azure Functions 运行时版本文档](../azure-functions/functions-versions.md#languages)。
 
-安装 [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)（版本 2 或更高版本），以便在本地运行 Azure Functions 应用。
-
-此快速入门使用 [Node.js](https://nodejs.org/en/download/) 10.x，但应使用其他版本。 有关支持的 Node.js 版本的详细信息，请参阅 [Azure Functions 运行时版本文档](../azure-functions/functions-versions.md#languages)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> [!NOTE]
+> 本快速入门可以在 macOS、Windows 或 Linux 上运行。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 

@@ -1,5 +1,5 @@
 ---
-title: 网络安全组事件和规则计数器 Azure 诊断日志
+title: 网络安全组的诊断日志记录
 titlesuffix: Azure Virtual Network
 description: 了解如何为 Azure 网络安全组启用事件和规则计数器诊断日志。
 services: virtual-network
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/04/2018
-ms.date: 11/25/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: b93f9fab6ce8bcc37880936efdf8e23d7eb18724
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 084ba81c5e9d1a5526acb3d7e62044f6355f63f3
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658041"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653478"
 ---
 <!--NOT SUITABLE TO AZURE CHINA CLOUD-->
 <!--UPDATE CAREFULLY-->

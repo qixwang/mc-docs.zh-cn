@@ -11,12 +11,12 @@ ms.topic: overview
 origin.date: 12/19/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 858e38ed20940d5c525dd5f5294dc790bfc447ec
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 7171e7f53d98505501bc8c89ae258d6f5f96db74
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028183"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154643"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -36,7 +36,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[语音服务](https://docs.azure.cn/cognitive-services/speech-service/ "语音服务")|语音服务将语音支持功能添加到应用程序。|
 
 > [!NOTE]
-> 正在查找 [Azure 认知搜索](https://docs.azure.cn/search/)？ 尽管它对某些任务使用认知服务，但它是支持其他方案的另一种搜索技术。
+> 正在查找 [Azure 认知搜索](https://docs.microsoft.com/azure/search/)？ 尽管它对某些任务使用认知服务，但它是一项支持其他方案的不同搜索技术。
 
 
 ## <a name="language-apis"></a>语言 API
@@ -82,7 +82,6 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 <!-- ## Securing resources -->
 <!-- ## Container support -->
 
-<!-- Cognitive Services provides containers for deployment in the Azure cloud or on-premises. Learn more about [Cognitive Services Containers](cognitive-services-container-support.md). -->
 
 ## <a name="certifications-and-compliance"></a>认证和符合性
 

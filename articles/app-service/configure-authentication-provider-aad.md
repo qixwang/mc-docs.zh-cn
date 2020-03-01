@@ -7,12 +7,12 @@ origin.date: 09/03/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf4a905472fa1ade9ddefce7b53d69a6935a2e7e
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 71387bfcea8b9add13438b42eae0dad7e087a736
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979343"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154991"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>将应用服务应用配置为使用 Azure AD 登录
 
@@ -26,26 +26,7 @@ ms.locfileid: "76979343"
 - 为每个应用服务应用配置其自身的注册。
 - 避免通过对不同的部署槽使用不同的应用注册，在环境之间共享权限。 测试新代码时，这种做法有助于防止问题影响到生产应用。
 
-## <a name="express"> </a>使用快速设置进行配置
-
-1. 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。
-2. 从左侧导航栏选择“身份验证/授权”   >   “启用”。
-3. 选择“Azure Active Directory” > “快速”。  
-
-   若要改为选择现有的应用注册：
-
-   1. 选择“选择现有 AD 应用”，然后单击“Azure AD 应用”。  
-   2. 选择现有的应用注册，然后单击“确定”。 
-
-3. 选择“确定”，在 Azure Active Directory 中注册应用服务应用  。 随即会创建一个新的应用注册。
-   
-    ![Azure Active Directory 中的快速设置](./media/configure-authentication-provider-aad/express-settings.png)
-   
-4. （可选）默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的授权访问。 必须在应用代码中为用户授权。 若只允许经 Azure Active Directory 身份验证的用户访问应用，请将“请求未经身份验证时需执行的操作”  设置为“使用 Azure Active Directory 登录”  。 设置此功能时，应用会要求对所有请求进行身份验证。 它还将所有未经身份验证的用户重定向到 Azure Active Directory 进行身份验证。
-
-    > [!CAUTION]
-    > 以这种方式限制访问适用于对应用的所有调用，对于主页公开可用的应用程序来说，这可能是不可取的，就像在许多单页应用程序中一样。 对于此类应用程序，“允许匿名请求(无操作)”  可能是首选，应用本身手动启动登录。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
-5. 选择“保存”  。
+<!-- ## <a name="express"> </a>Configure with express settings -->
 
 ## <a name="advanced"> </a>使用高级设置进行配置
 

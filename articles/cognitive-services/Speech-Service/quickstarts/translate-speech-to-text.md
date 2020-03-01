@@ -3,21 +3,21 @@ title: 快速入门：将语音翻译为文本 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，我们将使用语音 SDK 以交互方式将一种语言的语音翻译为另一种语言的语音。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 01/27/2020
+origin.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f3564aee76641623b9d7977c445957767f679ebc
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: f4314c03f8a7a4c5d72b1dbb78bc93c4bca76671
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123462"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590215"
 ---
 # <a name="quickstart-translate-speech-to-text"></a>快速入门：将语音翻译为文本
 

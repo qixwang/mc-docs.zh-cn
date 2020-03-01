@@ -1,21 +1,21 @@
 ---
-title: 通过 Azure IoT 中心设置和使用指标和诊断日志 | Microsoft Docs
-description: 通过 Azure IoT 中心设置和使用指标和诊断日志
+title: 通过 Azure IoT 中心设置和使用指标和诊断日志
+description: 了解如何通过 Azure IoT 中心设置和使用指标和诊断日志。 这将提供数据以进行分析，从而帮助诊断中心可能存在的问题。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 origin.date: 03/13/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 5ce97e84ff063e781d5e2d27026ce36fc07aec85
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: 01931001acf702302d427b44bf428e8e9f7da6da
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966504"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154681"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -36,7 +36,7 @@ ms.locfileid: "76966504"
 > * 运行该应用，直至警报开始触发。 
 > * 查看指标结果并检查诊断日志。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -44,6 +44,7 @@ ms.locfileid: "76966504"
 
 - 一个能够接收邮件的电子邮件帐户。
 
+- 确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="set-up-resources"></a>设置资源
 
@@ -51,7 +52,7 @@ ms.locfileid: "76966504"
 
 下面是所要执行的步骤。
 
-1. 创建[资源组](../azure-resource-manager/resource-group-overview.md)。 
+1. 创建[资源组](../azure-resource-manager/management/overview.md)。 
 
 2. 创建 IoT 中心。
 

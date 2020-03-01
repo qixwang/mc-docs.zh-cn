@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/24/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.reviewer: annahar
-ms.openlocfilehash: 0452dc2b2a9a94bec47064a52c2522626e49ce56
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 8317838a80d33ee9117fef907dc5ecec44f3250c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514251"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653480"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -123,7 +123,7 @@ ms.locfileid: "68514251"
     向 NIC 分配多个 IP 配置时，必须将一个配置指定为 Primary  。
 
     > [!NOTE]
-    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/reserved-ip-addresses/)页。 可在一个订阅中使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
+    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)页。 可在一个订阅中使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
 
 7. 定义 NIC 的辅助 IP 配置。 可以根据需要添加或删除配置。 每个 IP 配置必须分配有专用 IP 地址。 每个配置可选择性分配有一个公共 IP 地址。
 
@@ -215,26 +215,32 @@ ms.locfileid: "68514251"
     ```powershell
     Get-AzNetworkInterface | Format-Table Name, ResourceGroupName, Location
     ```
+
 3. 键入以下命令创建变量，并将它设置为现有的 NIC：
 
     ```powershell
     $MyNIC = Get-AzNetworkInterface -Name $NicName -ResourceGroupName $RgName
     ```
+
 4. 在以下命令中，请将 MyVNet  和 MySubnet  更改为 NIC 连接到的 VNet 和子网的名称。 输入以下命令，检索 NIC 连接到的 VNet 和子网对象：
 
     ```powershell
     $MyVNet = Get-AzVirtualnetwork -Name MyVNet -ResourceGroupName $RgName
     $Subnet = $MyVnet.Subnets | Where-Object { $_.Name -eq "MySubnet" }
     ```
+
     如果不知道 NIC 所连接到的 VNet 或子网名称，请输入以下命令：
+
     ```powershell
     $MyNIC.IpConfigurations
     ```
+
     在输出中查找类似于如下示例输出的文本：
 
     ```
     "Id": "/subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVNet/subnets/MySubnet"
     ```
+
     在此输出中，MyVnet  是 NIC 连接到的 VNet，MySubnet  是其连接到的子网。
 
 5. 根据要求完成以下部分之一中的步骤：
@@ -247,21 +253,22 @@ ms.locfileid: "68514251"
     Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
     $MyNIC -Subnet $Subnet -PrivateIpAddress 10.0.0.7
     ```
+
     使用唯一的配置名称和专用 IP 地址创建任意数目的配置（适用于具有静态 IP 地址的配置）。
 
     将专用 IP 地址添加到 VM 操作系统，只需完成本文 [将 IP 地址添加到 VM 操作系统](#os-config) 部分针对操作系统的步骤即可。
 
     **添加公共 IP 地址**
 
-    将公共 IP 地址资源关联到新 IP 配置或现有 IP 配置即可添加公共 IP 地址。 根据需要完成以下部分之一中的步骤。
+    将公共 IP 地址资源关联到新 IP 配置或现有 IP 配置即可添加公共 IP 地址。 根据需要，完成以下任一部分中的步骤。
 
     > [!NOTE]
-    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/reserved-ip-addresses/)页。 可在一个订阅中使用的公共 IP 地址数有限制。 若要了解有关限制的详细信息，请阅读 [Azure 限制](../azure-subscription-service-limits.md#networking-limits) 一文。
+    > 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)页。 可在一个订阅中使用的公共 IP 地址数有限制。 若要了解有关限制的详细信息，请阅读 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) 一文。
     >
 
     **将公共 IP 地址资源关联到新 IP 配置**
 
-    每当在新 IP 配置中添加公共 IP 地址时，还必须添加一个专用 IP 地址，因为所有 IP 配置都必须有专用 IP 地址。 可添加现有公共 IP 地址资源，也可创建新的公共 IP 地址资源。 若要新建此类资源，请输入以下命令：
+    每次在新 IP 配置中添加公共 IP 地址时，还必须添加专用 IP 地址，因为所有 IP 配置都必须具有专用 IP 地址。 可添加现有公共 IP 地址资源，也可创建新的公共 IP 地址资源。 若要新建此类资源，请输入以下命令：
 
     ```powershell
     $myPublicIp3 = New-AzPublicIpAddress `

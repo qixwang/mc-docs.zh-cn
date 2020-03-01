@@ -1,6 +1,7 @@
 ---
 title: 使用 CI/CD npm 包部署 Azure 流分析作业
 description: 本文介绍如何使用 Azure 流分析 CI/CD npm 包设置持续集成和部署过程。
+services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -9,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 01/28/2020
 ms.date: 2/6/2020
-ms.openlocfilehash: d680af782a4f93c6599fb5f3f045f8be7c4f127a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 7358157bac634ecf877a2b4a6c4c6cf56779c45d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068215"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154620"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 包部署 Azure 流分析作业 
 

@@ -1,32 +1,21 @@
 ---
-title: 适用于 Azure Stack 的 Azure 市场项 | Microsoft Docs
-description: 了解哪些 Azure 市场项可以用在 Azure Stack 中。
-services: azure-stack
-documentationcenter: ''
+title: 可用于 Azure Stack Hub 的 Azure 市场项
+description: 了解哪些 Azure 市场项可以在 Azure Stack Hub 中使用。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 12/26/2019
-ms.date: 01/13/2020
+origin.date: 01/21/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
-ms.lastreviewed: 12/26/2019
-ms.openlocfilehash: f27164f2a7da89c447c68116a4b0f91521c2b568
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.lastreviewed: 01/21/2020
+ms.openlocfilehash: 0751b6ac317d9a854367c5dc02060d8c0a0558a5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737885"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540921"
 ---
-# <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包。*
+# <a name="azure-marketplace-items-available-for-azure-stack-hub"></a>可用于 Azure Stack Hub 的 Azure 市场项
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
@@ -45,11 +34,13 @@ ms.locfileid: "75737885"
 
 ## <a name="virtual-machine-images-and-solution-templates"></a>虚拟机映像和解决方案模板
 
-Azure Stack 支持下述 Azure 市场 VM 和解决方案模板。 请根据说明单独下载任何依赖项。 SQL Server 和 Machine Learning Server 之类的应用需要适当的许可，除非已标记为“免费”或“试用”。
+Azure Stack Hub 支持下述 Azure 市场 VM 和解决方案模板。 请根据说明单独下载任何依赖项。 SQL Server 和 Machine Learning Server 之类的应用需要适当的许可，除非已标记为“免费”或“试用”。
 
 |  | 项名称 | 说明 | 发布者 |
 | --- | --- | --- | --- |
 | ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.WindowsServer?tab=Overview) | 企业级解决方案，部署简单，经济高效，以应用和用户为中心。 这些映像会定期更新，发布最新修补程序。 **重要信息：必须删除 2018 年 1 月 18 日之前下载的映像并将其替换为最新版本。** | Microsoft |
+| ![SharePoint Server 2013 试用版](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 试用版](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsharepoint.microsoftsharepointserver?tab=Overview) | Windows Server 2012 Datacenter 和 Visual Studio 2019 社区版上的 Microsoft SharePoint Server 2013 试用版。 | Microsoft |
+| ![SharePoint Server 2016 试用版](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 试用版](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsharepoint.microsoftsharepointserver?tab=Overview) | Windows Server 2016 Datacenter 上的 Microsoft SharePoint Server 2016 试用版。 | Microsoft |
 | ![Windows Server 2012 R2 上的 SQL Server 2014 SP3](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 上的 SQL Server 2014 SP3](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.SQLServer2012SP3?tab=Overview) | SQL Server 2014 Service Pack 2。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Developer](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Developer](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2016sp1-ws2016?tab=Overview) | SQL Server 2016 SP1 的免费开发人员版，适用于事务处理、数据仓库、商业智能和分析型工作负荷。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |
 | ![免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Express](media/azure-stack-marketplace-azure-items/sql.png) | [免费许可证：Windows Server 2016 上的 SQL Server 2016 SP1 Express](https://market.azure.cn/zh-cn/marketplace/apps/microsoftsqlserver.sql2016sp1-ws2016?tab=PlansAndPrice) | SQL Server 2016 SP1 的免费 Express 版本。 **所需的下载：** SQL IaaS 扩展。 | Microsoft |

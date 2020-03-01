@@ -1,26 +1,26 @@
 ---
-title: '使用 Azure 数据工厂批量复制数据 '
+title: 使用 Azure 门户批量复制数据
 description: 了解如何使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 06/22/2018
-ms.date: 11/28/2019
-ms.author: v-jay
-ms.openlocfilehash: d8772b6f21d7c0673adbb8c06282044aa8f9542d
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.date: 03/02/2020
+ms.openlocfilehash: 2dfbe881c2a5ba097f07eff88cd5e0af9f2ada84
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655457"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653579"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
+
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 > [!NOTE]
@@ -86,9 +86,9 @@ ms.locfileid: "74655457"
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。    
          
-     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 选择“V2”  作为“版本”  。
-1. 选择数据工厂的**位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+1. 选择数据工厂的**位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 1. 单击**创建**。
 1. 创建完成后，会显示“数据工厂”页。 
    
@@ -123,7 +123,7 @@ ms.locfileid: "74655457"
 
     f. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。 
   
-    g. 单击“继续”。 
+    g. 单击 **“继续”** 。
 
 
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>创建接收器 Azure SQL 数据仓库链接服务
@@ -144,7 +144,7 @@ ms.locfileid: "74655457"
      
     f. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。 
      
-    g. 单击“继续”。 
+    g. 单击 **“继续”** 。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>创建过渡 Azure 存储链接服务
 本教程使用 Azure Blob 存储作为临时过渡区域，以利用 PolyBase 来实现更好的复制性能。
@@ -157,7 +157,7 @@ ms.locfileid: "74655457"
     
     b. 对于“存储帐户名称”，请选择 **Azure 存储帐户**。 
     
-    c. 单击“继续”。 
+    c. 单击 **“继续”** 。
 
 
 ## <a name="create-datasets"></a>创建数据集
@@ -284,8 +284,8 @@ ms.locfileid: "74655457"
 1. 切换到“设置”选项卡，然后执行以下步骤： 
 
     1. 选择 **AzureSqlDatabaseDataset** 作为**源数据集**。 
-    1. 对于“使用查询”，请选择“查询”。   
-    1. 对于“查询”，请输入以下 SQL 查询。 
+    1. 为“使用查询”选择“查询”。   
+    1. 为“查询”输入以下 SQL 查询。 
 
         ```sql
         SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'SalesLT' and TABLE_NAME <> 'ProductModel'

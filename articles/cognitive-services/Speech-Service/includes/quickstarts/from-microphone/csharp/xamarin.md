@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/28/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 70db6396005e3592cf4eae3dccae2a6bc224b2d4
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: 83f906f00d02f9f050c93fe118655809b3f19e66
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112334"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590279"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
@@ -165,7 +165,7 @@ ms.locfileid: "77112334"
 1. 在源文件的 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourSubscriptionKey` 并将其替换为订阅密钥。
 
 
-1. 在 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 （例如，将 `chinaeast2` 用于试用订阅。）
+1. 在 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourServiceregion`，并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)中的“语音 SDK 参数”。 （例如，将 `chinaeast2` 用于试用订阅。）
 
 1. 接下来，需要创建一项 [Xamarin 服务](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，用于从不同的平台项目（例如 UWP、Android 和 iOS）查询麦克风权限。 为此，请在 helloworld 项目下添加名为 *Services* 的新文件夹，然后在其下创建新的 C# 源文件。 可以右键单击 *Services* 文件夹，然后选择“添加” > “新建项” > “代码文件”。    将文件重命名为 `IMicrophoneService.cs`，然后将以下代码片段中的所有代码置于该文件中：
 
@@ -186,7 +186,7 @@ ms.locfileid: "77112334"
     }
 ```
 
-#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
+#### <a name="android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>添加 `helloworld.Android` 项目的示例代码
 
 现在添加 C# 代码，用于定义应用程序的特定于 Android 的部分。
@@ -330,7 +330,7 @@ ms.locfileid: "77112334"
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
-#### <a name="iostabios"></a>[iOS](#tab/ios)
+#### <a name="ios"></a>[iOS](#tab/ios)
 ## <a name="add-sample-code-for-the-helloworldios-project"></a>添加 `helloworld.iOS` 项目的示例代码
 
 现在添加 C# 代码，用于定义应用程序的特定于 iOS 的部分。 另外，在 helloworld.iOS 项目中创建 Apple 设备特定的配置。
@@ -435,7 +435,7 @@ ms.locfileid: "77112334"
 
 1. 如果在 Windows 电脑上生成，则与 Mac 设备建立连接，通过“工具” > “iOS” > “与 Mac 配对”进行生成。    按照 Visual Studio 提供的说明向导的要求操作，与 Mac 设备建立连接。
 
-#### <a name="uwptabhelloworlduwp"></a>[UWP](#tab/helloworlduwp)
+#### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>添加 `helloworld.UWP` 项目的示例代码
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>添加 helloworld.UWP 项目的示例代码

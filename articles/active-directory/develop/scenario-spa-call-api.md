@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdb8fb8a7892c8a67d555db73fb611b11605095b
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 84a68bc6d6c6555abbb13f3a275c9a2fe8640252
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776932"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653153"
 ---
 # <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 Web API
 
@@ -28,7 +27,7 @@ ms.locfileid: "75776932"
 
 ## <a name="call-a-web-api"></a>调用 Web API
 
-### <a name="javascript"></a>Javascript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 在 HTTP 请求中使用获得的访问令牌作为持有者令牌来调用任何 Web API，例如 Microsoft Graph API。 例如：
 
@@ -48,9 +47,11 @@ ms.locfileid: "75776932"
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
 MSAL Angular 包装器器利用 HTTP 拦截器自动以无提示方式获取访问令牌并将其附加到对 API 的 HTTP 请求中。 有关详细信息，请参阅[获取令牌以调用 API](scenario-spa-acquire-token.md)。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

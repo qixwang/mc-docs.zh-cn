@@ -10,12 +10,12 @@ ms.topic: overview
 origin.date: 07/03/2019
 ms.date: 07/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: 696c5816c07630424a2849ff5c00e87913be9690
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 430d6c955541aea2bf4eb0bb7ee955a75544de10
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844656"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155091"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
 
@@ -54,7 +54,7 @@ Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸
 
 ## <a name="face-grouping"></a>人脸分组
 
-组 API 会基于相似性将未知人脸的集合分为几组。 每个组是原始人脸集合的互不相交真子集。 一个组中的所有人脸可能属于同一人。 一个人可能有多个不同的组。 组按其他因素（例如表情）区分。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[分组 API](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) 参考文档。
+组 API 会基于相似性将未知人脸的集合分为几组。 每个组是原始人脸集合的互不相交真子集。 一个组中的所有人脸可能属于同一人。 一个人可能有多个不同的组。 组按其他因素（例如表情）区分。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[组 API](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) 参考文档。
 
 ## <a name="person-identification"></a>人员识别
 
@@ -78,12 +78,5 @@ Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸
 ## <a name="data-privacy-and-security"></a>数据隐私和安全性
 
 与所有认知服务资源一样，使用人脸服务的开发人员必须了解 Microsoft 针对客户数据的政策。 有关详细信息，请参阅 Microsoft 信任中心内的[“认知服务”页](https://www.trustcenter.cn)。
-
-## <a name="next-steps"></a>后续步骤
-
-遵循以下快速入门在代码中实现人脸检测方案：
-
-- [快速入门：使用 .NET SDK 和 C# 检测图像中的人脸](quickstarts/csharp.md)。 此外还有其他语言的相关教程。
-
 
 <!-- Update_Description: wording update -->

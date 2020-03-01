@@ -1,16 +1,16 @@
 ---
-title: Azure Service Fabric 容器和服务的资源治理
+title: 容器和服务的资源调控
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
 ms.topic: conceptual
 origin.date: 08/09/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f6918ecada36256dbaf23790d17e4fd476f5ed24
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: a44406c47eb2576695a65844b870beb90ecbfe8d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742436"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540098"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -68,15 +68,15 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 </Section>
 ```
 
-如果需要完全手动设置节点容量，可以使用常规机制来描述群集中的节点。 下面的示例展示了如何设置有四个内核和 2GB 内存的节点：
+对于大多数客户和方案，建议配置为自动检测 CPU 和内存的节点容量（默认情况下自动检测已启用）。 但是，如果需要完全手动设置节点容量，则可以使用用于描述群集中节点的机制按节点类型进行配置。 下面的示例展示了如何设置具有四个核心和 2GB 内存的节点类型：
 
 ```xml
-<NodeType Name="MyNodeType">
-  <Capacities>
-    <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-    <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-  </Capacities>
-</NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 如果已启用自动检测可用资源，并在群集清单中手动定义了节点容量，Service Fabric 会检查节点中的资源是否足以支持用户定义的容量：

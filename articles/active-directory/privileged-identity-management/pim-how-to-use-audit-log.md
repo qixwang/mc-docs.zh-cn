@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/08/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f55d83d26112cc9669ad83a39e90ddfe36c6e5e3
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: beee9136a6e6385d2a6b3296e1e574aeb27f8bb8
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777072"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653069"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中查看 Azure AD 角色的审核历史记录
 
@@ -34,7 +34,41 @@ ms.locfileid: "75777072"
 
     ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
-# <a name="previous-versiontabprevious"></a>[先前版本](#tab/previous)
+# <a name="new-version"></a>[新版本](#tab/new)
+
+按以下步骤查看 Azure AD 角色的审核历史记录。
+
+## <a name="view-resource-audit-history"></a>查看资源审核历史记录
+
+可以通过资源审核查看与 Azure AD 角色关联的所有活动。
+
+1. 打开“Azure AD Privileged Identity Management”。 
+
+1. 选择“Azure AD 角色”  。
+
+1. 选择“资源审核”  。
+
+1. 可以使用预定义的日期或自定义范围筛选历史记录。
+
+    ![带筛选器的资源审核列表](./media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+## <a name="view-my-audit"></a>查看我的审核
+
+使用“我的审核”，可以查看你的个人角色活动。
+
+1. 打开“Azure AD Privileged Identity Management”。 
+
+1. 选择“Azure AD 角色”  。
+
+1. 选择要查看其审核历史记录的资源。
+
+1. 选择“我的审核”  。
+
+1. 可以使用预定义的日期或自定义范围筛选历史记录。
+
+    ![当前用户的审核列表](./media/azure-pim-resource-rbac/my-audit-time.png)
+
+# <a name="previous-version"></a>[先前版本](#tab/previous)
 
 ## <a name="view-audit-history"></a>查看审核历史记录
 
@@ -79,40 +113,6 @@ ms.locfileid: "75777072"
     ![“更新图表参数”窗格](./media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
 1. 选择“完成”，查看已筛选的审核历史记录。 
-
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
-
-按以下步骤查看 Azure AD 角色的审核历史记录。
-
-## <a name="view-resource-audit-history"></a>查看资源审核历史记录
-
-可以通过资源审核查看与 Azure AD 角色关联的所有活动。
-
-1. 打开“Azure AD Privileged Identity Management”。 
-
-1. 选择“Azure AD 角色”  。
-
-1. 选择“资源审核”  。
-
-1. 可以使用预定义的日期或自定义范围筛选历史记录。
-
-    ![带筛选器的资源审核列表](./media/azure-pim-resource-rbac/rbac-resource-audit.png)
-
-## <a name="view-my-audit"></a>查看我的审核
-
-使用“我的审核”，可以查看你的个人角色活动。
-
-1. 打开“Azure AD Privileged Identity Management”。 
-
-1. 选择“Azure AD 角色”  。
-
-1. 选择要查看其审核历史记录的资源。
-
-1. 选择“我的审核”  。
-
-1. 可以使用预定义的日期或自定义范围筛选历史记录。
-
-    ![当前用户的审核列表](./media/azure-pim-resource-rbac/my-audit-time.png)
 
 ---
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d21792fd285adc31f8d6df94fd659d6ac092d68
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: f8b2572b3c9f2c08974e5d26f6ee216c47eaf9fb
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067530"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653330"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -24,14 +24,14 @@ ms.locfileid: "77067530"
 
 Microsoft 建议你至少要求对以下角色进行 MFA：
 
-* 全局管理员
-* SharePoint 管理员
-* Exchange 管理员
+* 计费管理员
 * 条件访问管理员
-* 安全管理员
+* Exchange 管理员
+* 全局管理员
 * 支持（密码）管理员
 * 密码管理员
-* 计费管理员
+* 安全管理员
+* SharePoint 管理员
 * 用户管理员
 
 组织可以根据情况选择包括或排除角色。
@@ -55,14 +55,14 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“目录角色(预览)”，   然后至少选择以下角色：
-      * 全局管理员
-      * SharePoint 管理员
-      * Exchange 管理员
+      * 计费管理员
       * 条件访问管理员
-      * 安全管理员
+      * Exchange 管理员
+      * 全局管理员
       * 支持管理员
       * 密码管理员
-      * 计费管理员
+      * 安全管理员
+      * SharePoint 管理员
       * 用户管理员
    1. 在“排除”下  选择“用户和组”  ，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”  。

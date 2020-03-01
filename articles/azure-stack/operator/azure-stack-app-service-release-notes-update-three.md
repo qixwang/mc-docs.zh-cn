@@ -1,59 +1,49 @@
 ---
-title: Azure Stack 上的应用服务 Update 3 发行说明 | Microsoft Docs
-description: 了解 Azure Stack 上的应用服务 Update 3 中的改进、修复和已知问题。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 上的应用服务 Update 3 发行说明
+description: 了解 Azure Stack Hub 上的应用服务 Update 3 中的改进、修复和已知问题。
 author: WenJason
 manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 6962b3574dcf13417b7c60d2644746c8c55d77c8
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 8a54ed73415caf1ff8f6d47f84b2eb43127c47d8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020314"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540956"
 ---
-# <a name="app-service-on-azure-stack-update-3-release-notes"></a>Azure Stack 上的应用服务 Update 3 发行说明
+# <a name="app-service-on-azure-stack-hub-update-3-release-notes"></a>Azure Stack Hub 上的应用服务 Update 3 发行说明
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-这些发行说明介绍 Azure Stack 上的 Azure 应用服务 Update 3 中的改进、修复和已知问题。 已知问题分为三个部分：与部署直接相关的问题、更新过程问题，以及内部版本（安装后）的问题。
+这些发行说明介绍 Azure Stack Hub 上的 Azure 应用服务 Update 3 中的改进、修复和已知问题。 已知问题分为三个部分：与部署直接相关的问题、更新过程问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
-> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.3。
+> 请将 1807 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.3。
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 上的应用服务 Update 3 的内部版本号为 **74.0.13698.31**。
+Azure Stack Hub 上的应用服务 Update 3 的内部版本号为 **74.0.13698.31**。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-在开始部署之前，请参阅[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
+在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 
-在开始将基于 Azure Stack 的 Azure 应用服务升级到 1.3 之前，请在 Azure Stack 管理员门户中的“Azure 应用服务管理”中确保所有角色都已准备就绪。
+在开始将基于 Azure Stack Hub 的 Azure 应用服务升级到 1.3 之前，请在 Azure Stack Hub 管理员门户中的“Azure 应用服务管理”中确保所有角色都已准备就绪。
 
 ![应用服务角色状态](media/azure-stack-app-service-release-notes-update-three/image01.png)
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 
-基于 Azure Stack 的 Azure 应用服务 Update 3 包含以下改进和修复：
+Azure Stack Hub 上的 Azure 应用服务 Update 3 包含以下改进和修复：
 
 - 支持对 Azure 应用服务资源提供程序数据库使用 SQL Server Always On。
 
 - 为 Create-AADIdentityApp 帮助程序脚本添加了新的环境参数来帮助确定作为目标的不同 Azure AD 区域。
 
-- 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
+- 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack Hub 门户 SDK 版本一致。
 
 - 将 **Azure Functions 运行时**更新到 **v1.0.11820**。
 
@@ -79,10 +69,10 @@ Azure Stack 上的应用服务 Update 3 的内部版本号为 **74.0.13698.31**�
 
 ### <a name="post-update-steps-optional"></a>更新后步骤（可选）
 
-对于希望为基于 Azure Stack 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack 的 Azure 应用服务 1.3 更新后执行以下步骤：
+对于希望为基于 Azure Stack Hub 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack Hub 的 Azure 应用服务 1.3 更新后执行以下步骤：
 
 > [!IMPORTANT]
-> 此过程大约需要花费 5-10 分钟。 此过程涉及终止现有的数据库登录会话。 计划停机时间来进行迁移，并在迁移后验证基于 Azure Stack 的 Azure 应用服务
+> 此过程大约需要花费 5-10 分钟。 此过程涉及终止现有的数据库登录会话。 计划迁移所需停机时间，并在迁移后验证基于 Azure Stack Hub 的 Azure 应用服务
 >
 >
 
@@ -183,7 +173,7 @@ Azure Stack 上的应用服务 Update 3 的内部版本号为 **74.0.13698.31**�
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 
-- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。 在 Azure Stack 部署文档的 Azure 应用服务中也提到了此问题。
+- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。 基于 Azure Stack Hub 的 Azure 应用服务部署文档中也提到了此问题。
 
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 转到管理员门户中的 WorkersNsg 并添加包含以下属性的出站安全规则：
 
@@ -197,11 +187,11 @@ Azure Stack 上的应用服务 Update 3 的内部版本号为 **74.0.13698.31**�
  * 优先级：700
  * 姓名：Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 
-请参阅 Azure Stack 1807 发行说明中的文档。
+请参阅“Azure Stack Hub 1807 发行说明”中的文档。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure 应用服务的概述，请参阅[基于 Azure Stack 的 Azure 应用服务概述](azure-stack-app-service-overview.md)。
-- 若要详细了解如何完成基于 Azure Stack 的应用服务的部署准备，请参阅[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
+- 有关 Azure 应用服务的概述，请参阅[基于 Azure Stack Hub 的 Azure 应用服务概述](azure-stack-app-service-overview.md)。
+- 若要详细了解如何完成基于 Azure Stack Hub 的应用服务的部署准备，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。

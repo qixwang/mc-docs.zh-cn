@@ -5,15 +5,15 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: conceptual
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 01/29/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 36c306746a796897856ac7440fa477312c018d44
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 27d578f2847158a1cd3702ce2b4a605034305c58
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335014"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540234"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -41,7 +41,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>如何安装 Azure 防火墙？
 
-可以使用 Azure 门户、PowerShell、REST API 或使用模板设置 Azure 防火墙。 有关分步说明，请参阅[教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)。
+可以使用 Azure 门户、PowerShell、REST API 或使用模板设置 Azure 防火墙。 请参阅[教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)。
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>有哪些 Azure 防火墙概念？
 
@@ -55,7 +55,7 @@ Azure 防火墙支持规则和规则集合。 规则集合是一组共享相同�
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火墙是否支持入站流量筛选？
 
-Azure 防火墙支持入站和出站筛选。 入站保护适用于非 HTTP/S 协议。 例如 RDP、SSH 和 FTP 协议。
+Azure 防火墙支持入站和出站筛选。 入站保护通常用于非 HTTP/S 协议。 例如 RDP、SSH 和 FTP 协议。 为了获得最佳入站 HTTP/S 保护，请使用 Web 应用程序防火墙，例如 [Azure 应用程序网关上的 Azure Web 应用程序防火墙](../web-application-firewall/ag/ag-overview.md)。
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure 防火墙支持哪些日志记录和分析服务？
 
@@ -114,7 +114,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>有哪些已知的服务限制？
 
-有关 Azure 防火墙服务限制，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md#azure-firewall-limits)。
+有关 Azure 防火墙服务限制，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)。
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
 

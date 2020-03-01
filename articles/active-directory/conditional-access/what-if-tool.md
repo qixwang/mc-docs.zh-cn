@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4129b3ff33a20b43bc60443ee627e7cdd26d0a59
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 2c7bd46d30d32100e0ad4fed3b65bae893005999
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859395"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653316"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
@@ -72,11 +72,11 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ### <a name="device-platforms"></a>设备平台
 
-此设置模拟[设备平台条件](conditions.md#device-platforms)及表示所有平台（包括不受支持的平台）  的等效项。 
+此设置模拟[设备平台条件](concept-conditional-access-conditions.md#device-platforms)及表示所有平台（包括不受支持的平台）  的等效项。 
 
 ### <a name="client-apps"></a>客户端应用
 
-此设置模拟[客户端应用条件](conditions.md#client-apps)。
+此设置模拟[客户端应用条件](concept-conditional-access-conditions.md#client-apps-preview)。
 默认情况下，此设置会导致对同时选中“浏览器”  和“移动应用和桌面客户端”  或其中之一的所有策略进行评估。 此外，此设置还检测强制实施“Exchange ActiveSync (EAS)”  的策略。 可以通过选择以下内容缩小此设置的范围：
 
 - 浏览器  ：评估至少选择了“浏览器”  的所有策略。 
@@ -84,7 +84,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ### <a name="sign-in-risk"></a>登录风险
 
-此设置模拟[登录风险条件](conditions.md#sign-in-risk)。   
+此设置模拟[登录风险条件](concept-conditional-access-conditions.md#sign-in-risk)。   
 
 ## <a name="evaluation"></a>计算 
 
@@ -108,3 +108,4 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 - 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
 - 如果想要迁移经典策略，请参阅[在 Azure 门户中迁移经典策略](policy-migration.md)  
 
+<!-- Update_Description: wording update -->

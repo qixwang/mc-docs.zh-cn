@@ -1,17 +1,17 @@
 ---
 title: Service Fabric 服务的可用性
-description: 介绍服务的故障检测、故障转移和恢复
+description: 介绍如何在 Azure Service Fabric 应用程序中对服务进行故障检测、故障转移和恢复。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/18/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1386bcadbff8593c32889b01805b1f4e133ff32b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: d1d870bcd910d28abcef1e8b39c3d4f8b8a30780
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742276"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540218"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric 服务的可用性
 本文概述 Azure Service Fabric 服务如何保持服务的可用性。

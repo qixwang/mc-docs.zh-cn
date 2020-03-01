@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-origin.date: 04/16/2019
-ms.date: 05/15/2019
-ms.author: v-junlch
-ms.openlocfilehash: b5b571d44d6976bbf31348d8b14e40ce1a7f3399
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+origin.date: 12/17/2019
+ms.date: 02/25/2020
+ms.author: v-lingwu
+ms.openlocfilehash: b76d27b173afb29fce8e1714ff1d8597e97d4d24
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65668905"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154543"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Go 调用文本分析认知服务 
 <a name="HOLTop"></a>
 
-本文展示了如何将 [文本分析 API](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 与 Go 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
+本文展示了如何将 [文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 与 Go 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
 
-有关 API 的技术文档，请参阅 [API 定义](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)。
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
+
 
 <a name="Detect"></a>
 
@@ -39,8 +39,7 @@ ms.locfileid: "65668905"
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析 API 密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 从根文件夹中安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build detect.go`。
@@ -53,27 +52,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the chinanorth region, replace 
-    "chinaeast2" in the URI below with "chinanorth".
-
-    */
-    const uriBase =    "https://chinaeast2.api.cognitive.azure.cn"
+    
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
     const uriPath = "/text/analytics/v2.1/languages"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "text": "This is a document written in English."},
@@ -180,8 +172,7 @@ func main() {
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 从根文件夹中安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build sentiment.go`。
@@ -194,27 +185,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the chinanorth region, replace 
-    "chinaeast2" in the URI below with "chinanorth".
-
-    */
-    const uriBase =    "https://chinaeast2.api.cognitive.azure.cn"
     const uriPath = "/text/analytics/v2.1/sentiment"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -296,8 +280,7 @@ func main() {
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
+1. 将文本分析密钥和终结点复制到代码中。
 1. 使用“.go”扩展名保存文件。
 1. 在安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build key-phrases.go`。
@@ -310,27 +293,20 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the chinanorth region, replace 
-    "chinaeast2" in the URI below with "chinanorth".
-
-    */
-    const uriBase =    "https://chinaeast2.api.cognitive.azure.cn"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    
     const uriPath = "/text/analytics/v2.1/keyPhrases"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -432,8 +408,6 @@ func main() {
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
-1. 将 `uriBase` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 1. 使用“.go”扩展名保存文件。
 1. 在安装了 Go 的计算机上打开命令提示符。
 1. 生成文件，例如：`go build entities.go`。
@@ -446,30 +420,24 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the chinanorth region, replace 
-    "chinaeast2" in the URI below with "chinanorth".
-
-    */
-    const uriBase =    "https://chinaeast2.api.cognitive.azure.cn"
+    var subscriptionKey string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+    
     const uriPath = "/text/analytics/v2.1/entities"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
-        {"id": "1", "language": "en", "text": "Microsoft is an It company."}
+        {"id": "1", "language": "en", "text": "Microsoft is an It company."},
     }
 
     documents, err := json.Marshal(&data)

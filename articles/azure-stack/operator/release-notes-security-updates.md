@@ -1,28 +1,19 @@
 ---
-title: Azure Stack Hub 发行说明 - 1910 安全更新 | Microsoft Docs
+title: Azure Stack Hub 发行说明 - 1910 安全更新
 description: 了解 Azure Stack Hub 的 1910 安全更新。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 11/21/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: 975158a48fb3c3619087a4c7216a92288ac3c4e3
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 8b84f35e93cf756629c19f77385ebf49c26c2386
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737921"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541049"
 ---
 # <a name="azure-stack-hub-security-updates"></a>Azure Stack Hub 安全更新
 
@@ -244,13 +235,13 @@ Azure Stack Hub 的此更新不包括托管 Azure Stack Hub 的基础操作系�
 ::: moniker range="azs-1907"
 ## <a name="1907-update"></a>1907 更新
 
-Azure Stack 的此更新不包括托管 Azure Stack 的底层操作系统的安全更新。
+Azure Stack Hub 的此更新不包括托管 Azure Stack Hub 的基础操作系统的安全更新。
 ::: moniker-end
 
 ::: moniker range="azs-1906"
 ## <a name="1906-update"></a>1906 更新
 
-Azure Stack 的此更新不包括托管 Azure Stack 的底层操作系统的安全更新。
+Azure Stack Hub 的此更新不包括托管 Azure Stack Hub 的基础操作系统的安全更新。
 ::: moniker-end
 
 ## <a name="next-steps"></a>后续步骤

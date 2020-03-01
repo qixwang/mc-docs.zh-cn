@@ -9,19 +9,19 @@ editor: ''
 ms.service: service-bus-messaging
 ms.topic: overview
 origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 02/25/2020
 ms.custom: mvc
 ms.author: v-lingwu
-ms.openlocfilehash: 39ba423c866fb60d20df86fbe6835677a1aced32
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 6065f7c49f9fe1554b8ecdaf866e27a93df1d8c0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067974"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154474"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
-Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站。 服务总线可以分离应用程序和服务。 服务总线为异步数据和状态转移提供可靠且安全的平台。
+Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站。 服务总线可以分离应用程序和服务。 服务总线为异步传输数据和状态提供可靠且安全的平台。
 
 一些常见的消息传送方案包括：
 

@@ -5,16 +5,16 @@ services: azure-portal
 author: mgblythe
 ms.author: v-tawe
 origin.date: 01/21/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d88883418d04ef043eac7c36550d3e7ed86400b3
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 3513a0ce04a2f8b6c4b7463bbe47191eb204e181
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028360"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77567203"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>在 Azure 门户中恢复删除的仪表板
 

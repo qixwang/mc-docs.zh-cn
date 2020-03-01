@@ -1,54 +1,44 @@
 ---
-title: Azure Stack 上的应用服务 Update 2 发行说明 | Microsoft Docs
-description: 了解 Azure Stack 上的应用服务 Update 2 中的改进、修复和已知问题。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 上的应用服务 Update 2 发行说明
+description: 了解 Azure Stack Hub 上的应用服务 Update 2 中的改进、修复和已知问题。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+manager: stefsch
 ms.topic: article
 origin.date: 03/25/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 6311f5699a4de0b1f315ce51050ce5c8fef69929
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 36044da278863ab7bb11d68ef793f19ec522910b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578486"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540890"
 ---
-# <a name="app-service-on-azure-stack-update-2-release-notes"></a>Azure Stack 上的应用服务 Update 2 发行说明
+# <a name="app-service-on-azure-stack-hub-update-2-release-notes"></a>Azure Stack Hub 上的应用服务 Update 2 发行说明
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-这些发行说明介绍 Azure Stack 上的 Azure 应用服务 Update 2 中的改进、修复和已知问题。 已知问题分为三个部分：与部署直接相关的问题、更新过程问题，以及内部版本（安装后）的问题。
+这些发行说明介绍 Azure Stack Hub 上的 Azure 应用服务 Update 2 中的改进、修复和已知问题。 已知问题分为三个部分：与部署直接相关的问题、更新过程问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
-> 请将 1804 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.2。
+> 请将 1804 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.2。
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 上的应用服务 Update 2 的内部版本号为 **72.0.13698.10**。
+Azure Stack Hub 上的应用服务 Update 2 的内部版本号为 **72.0.13698.10**。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 > [!IMPORTANT]
-> 基于 Azure Stack 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
+> 基于 Azure Stack Hub 的 Azure 应用服务的新部署现在要求提供[三使用者通配型证书](azure-stack-app-service-before-you-get-started.md#get-certificates)，因为在 Azure 应用服务中处理适用于 Kudu 的 SSO 的方式已改进。 新的使用者是 **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 
-在开始部署之前，请参阅[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
+在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 
-基于 Azure Stack 的 Azure 应用服务 Update 2 包含以下改进和修复：
+Azure Stack Hub 上的 Azure 应用服务 Update 2 包含以下改进和修复：
 
-- 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
+- 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack Hub 门户 SDK 版本一致。
 
 - 将 **Azure Functions 运行时**更新到 **v1.0.11612**。
 
@@ -94,11 +84,11 @@ Azure Stack 上的应用服务 Update 2 的内部版本号为 **72.0.13698.10**�
 * 优先级：700
 * 姓名：Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 
-请参阅 [Azure Stack 1804 发行说明](azure-stack-update-1903.md)中的文档
+请参阅 [Azure Stack Hub 1804 发行说明](azure-stack-update-1903.md)中的文档
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure 应用服务的概述，请参阅[基于 Azure Stack 的 Azure 应用服务概述](azure-stack-app-service-overview.md)。
-- 若要详细了解如何完成基于 Azure Stack 的应用服务的部署准备，请参阅[在 Azure Stack 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
+- 有关 Azure 应用服务的概述，请参阅[基于 Azure Stack Hub 的 Azure 应用服务概述](azure-stack-app-service-overview.md)。
+- 若要详细了解如何完成基于 Azure Stack Hub 的应用服务的部署准备，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。

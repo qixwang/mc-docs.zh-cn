@@ -1,17 +1,17 @@
 ---
-title: 使用 Jenkins 持续生成和集成 Azure Service Fabric Linux 应用程序
+title: 使用 Jenkins 持续生成 Linux 应用程序
 description: 使用 Jenkins 针对 Service Fabric Linux 应用程序进行持续生成和集成
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 07/31/2018
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 7341b4f0623804a87ffcb5cce951ac1cb2d22fb1
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: b3db576424a29f859d8380d251953f1da792b12f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742294"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540004"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>使用 Jenkins 生成和部署 Linux 应用程序
 Jenkins 是流行的应用持续集成和部署工具。 本文介绍如何使用 Jenkins 生成和部署 Azure Service Fabric 应用程序。

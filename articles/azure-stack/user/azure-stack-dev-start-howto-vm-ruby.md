@@ -1,31 +1,29 @@
 ---
-title: 将 Ruby 应用部署到 Azure Stack 中的虚拟机 | Microsoft Docs
-description: 将 Ruby 应用部署到 Azure Stack 中的虚拟机。
-services: azure-stack
+title: 将 Ruby 应用部署到 Azure Stack Hub 中的虚拟机
+description: 将 Ruby 应用部署到 Azure Stack Hub 中的虚拟机。
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 04/24/2019
-ms.date: 10/21/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: d4a1ef557142ef335546fdf9e37a537c36b77b6a
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 592cd4e6151eff703f983f6f801f767c974ea7be
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578313"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540815"
 ---
-# <a name="deploy-a-ruby-web-app-to-a-vm-in-azure-stack"></a>将 Ruby Web 应用部署到 Azure Stack 中的 VM
+# <a name="deploy-a-ruby-web-app-to-a-vm-in-azure-stack-hub"></a>将 Ruby Web 应用部署到 Azure Stack Hub 中的 VM
 
-可以创建一个 VM 来托管 Azure Stack 中的 Ruby Web 应用。 在本文中，我们需设置一个服务器，将该服务器配置为托管 Ruby Web 应用，然后将该应用部署到 Azure Stack。
+可以创建一个 VM 来托管 Azure Stack Hub 中的 Ruby Web 应用。 在本文中，你将设置一个服务器，将该服务器配置为托管 Ruby Web 应用，然后将该应用部署到 Azure Stack Hub。
 
 本文使用 Ruby 以及 Ruby on Rails Web 框架。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-1. 在 Azure Stack 中设置 VM。 有关说明，请参阅[部署 Linux VM 以在 Azure Stack 中托管 Web 应用](azure-stack-dev-start-howto-deploy-linux.md)。
+1. 在 Azure Stack Hub 中设置 VM。 有关说明，请参阅[部署 Linux VM 以在 Azure Stack Hub 中托管 Web 应用](azure-stack-dev-start-howto-deploy-linux.md)。
 
 2. 在“VM 网络”窗格中，确保可以访问以下端口：
 
@@ -101,6 +99,6 @@ ms.locfileid: "72578313"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[针对 Azure Stack 进行开发](azure-stack-dev-start.md)。
-- 了解[用作 IaaS 的 Azure Stack 的常见部署](azure-stack-dev-start-deploy-app.md)。
+- 详细了解如何[针对 Azure Stack Hub 进行开发](azure-stack-dev-start.md)。
+- 了解[用作 IaaS 的 Azure Stack Hub 的常见部署](azure-stack-dev-start-deploy-app.md)。
 - 若要了解 Ruby 编程语言并找到适用于 Ruby 的其他资源，请参阅 [Ruby-lang.org](https://www.ruby-lang.org)。

@@ -1,31 +1,20 @@
 ---
-title: 使用 Azure CLI 在 Azure Stack 中创建 Windows 虚拟机 | Microsoft Docs
-description: 使用 Azure CLI 在 Azure Stack 中创建 Windows 虚拟机
-services: azure-stack
-documentationcenter: ''
+title: 使用 Azure CLI 在 Azure Stack Hub 中创建 Windows 虚拟机
+description: 使用 Azure CLI 在 Azure Stack Hub 中创建 Windows 虚拟机
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-origin.date: 05/16/2019
-ms.date: 07/29/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 180c01e69aa67dba16da19654b1686f89933dd9f
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 75837476dc05fb1530438c304c3d6c28ec6847a2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857326"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541029"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-using-azure-cli-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 Azure CLI 创建 Windows Server 虚拟机
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="quickstart-create-a-windows-server-virtual-machine-using-azure-cli-in-azure-stack-hub"></a>快速入门：使用 Azure CLI 在 Azure Stack Hub 中 创建 Windows Server 虚拟机
 
 可以使用 Azure CLI 创建 Windows Server 2016 虚拟机。 请按照本文中的步骤创建和使用虚拟机。 本文还提供了以下步骤：
 
@@ -33,15 +22,15 @@ ms.locfileid: "70857326"
 * 安装 IIS Web 服务器并查看默认主页。
 * 清理资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 确保 Azure Stack 操作员已将 **Windows Server 2016** 映像添加到 Azure Stack 市场。
+* 确保 Azure Stack Hub 操作员已将“Windows Server 2016”  映像添加到 Azure Stack Hub 市场。
 
-* Azure Stack 需要使用特定版本的 Azure CLI 来创建和管理资源。 如果未针对 Azure Stack 配置 Azure CLI，请遵循[安装和配置 Azure CLI](azure-stack-version-profiles-azurecli2.md) 的步骤。
+* Azure Stack Hub 需要使用特定版本的 Azure CLI 来创建和管理资源。 如果尚未为 Azure Stack Hub 配置 Azure CLI，请按照[安装和配置 Azure CLI](azure-stack-version-profiles-azurecli2.md) 的步骤进行操作。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack 资源。 从 Azure Stack 环境中，运行 [az group create](/cli/group#az-group-create) 命令来创建资源组。
+资源组是一个逻辑容器，可以在其中部署和管理 Azure Stack Hub 资源。 在 Azure Stack Hub 环境中，运行 [az group create](/cli/group#az-group-create) 命令以创建资源组。
 
 > [!NOTE]
 >  代码示例中为所有变量都分配了值。 但是，如果愿意，也可以分配新值。
@@ -66,7 +55,7 @@ az vm create \
   --location local
 ```
 
-创建 VM 时，输出中的 **PublicIPAddress** 参数包含虚拟机的公用 IP 地址。 记下此地址，因为需要使用它来访问虚拟机。
+创建 VM 时，输出中的 **PublicIPAddress** 参数包含虚拟机的公共 IP 地址。 记下此地址，因为需要使用它来访问虚拟机。
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80
 
@@ -110,6 +99,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已部署了一台基本的 Windows Server 虚拟机。 有关 Azure Stack 虚拟机的详细信息，请转到 [Azure Stack 中虚拟机的注意事项](azure-stack-vm-considerations.md)。
-
-<!-- Update_Description: wording update -->
+在本快速入门中，你已部署了一台基本的 Windows Server 虚拟机。 若要详细了解 Azure Stack Hub 虚拟机，请继续阅读[有关 Azure Stack Hub 中虚拟机的注意事项](azure-stack-vm-considerations.md)。

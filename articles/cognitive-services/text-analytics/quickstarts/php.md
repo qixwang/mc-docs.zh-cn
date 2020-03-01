@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 04/15/2019
 ms.date: 05/15/2019
 ms.author: v-junlch
-ms.openlocfilehash: 8612324449c1931ac9ae0f129b3a1f435b52d9f9
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.openlocfilehash: d9588d268b473f89dae1d6edde6565aedcd9e0d9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65668902"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154807"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 PHP 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -29,8 +29,6 @@ ms.locfileid: "65668902"
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
-
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>检测语言
@@ -38,8 +36,8 @@ ms.locfileid: "65668902"
 语言检测 API 使用[检测语言方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+2. 添加以下提供的代码。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 
@@ -155,8 +153,8 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 情绪分析 API 使用 [Sentiment 方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+2. 添加以下提供的代码。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 
@@ -245,8 +243,8 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 关键短语提取 API 使用[关键短语方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+2. 添加以下提供的代码。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 
@@ -357,8 +355,8 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 实体 API 使用[实体方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)识别文本文档中的已知实体。 以下示例识别英文文档的实体。
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
-2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+2. 添加以下提供的代码。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `host` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 

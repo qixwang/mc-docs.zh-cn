@@ -1,34 +1,24 @@
 ---
-title: Azure Stack 上的 Azure Monitor 支持的指标 | Microsoft Docs
-description: 了解 Azure Stack 上的 Azure Monitor 支持的指标。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 上的 Azure Monitor 支持的指标
+description: 了解 Azure Stack Hub 上的 Azure Monitor 支持的指标。
 author: WenJason
-manager: digimobile
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 03/11/2019
-ms.date: 07/29/2019
+origin.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: 6122c1e00957285a929ffcaad004553e536d02a7
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 6b144a655faa98fee1580ba7aa96c640620e188f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857327"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540751"
 ---
-# <a name="supported-metrics-for-azure-monitor-on-azure-stack"></a>Azure Stack 上的 Azure Monitor 支持的指标
+# <a name="supported-metrics-for-azure-monitor-on-azure-stack-hub"></a>Azure Stack Hub 上的 Azure Monitor 支持的指标
 
-*适用于：Azure Stack 集成系统*
+可以从 Azure Stack Hub 上的 Azure Monitor 检索指标，其方式与在 Azure 中的方式相同。 可以在门户中创建度量值，从 REST API 获取度量值，或者使用 PowerShell 或 CLI 查询度量值。
 
-可以从 Azure Stack 上的 Azure Monitor 检索指标，其方式与在 Azure 中的方式相同。 可以在门户中创建度量值，从 REST API 获取度量值，或者使用 PowerShell 或 CLI 查询度量值。
-
-下表列出了 Azure Stack 上的 Azure Monitor 指标管道所提供的指标。 若要查询和访问这些指标，请使用 API 配置文件的 **2018-01-01** api-version 版本。 有关 API 配置文件和 Azure Stack 的详细信息，请参阅[管理 Azure Stack 中的 API 版本配置文件](azure-stack-version-profiles.md)。
+下表列出了 Azure Stack Hub 上的 Azure Monitor 指标管道所提供的指标。 若要查询和访问这些指标，请使用 API 配置文件的 **2018-01-01** api-version 版本。 有关 API 配置文件和 Azure Stack Hub 的详细信息，请参阅[管理 Azure Stack Hub 中的 API 版本配置文件](azure-stack-version-profiles.md)。
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -92,4 +82,4 @@ ms.locfileid: "70857327"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [Azure Stack 上的 Azure Monitor](azure-stack-metrics-azure-data.md)。
+详细了解 [Azure Stack Hub 上的 Azure Monitor](azure-stack-metrics-azure-data.md)。

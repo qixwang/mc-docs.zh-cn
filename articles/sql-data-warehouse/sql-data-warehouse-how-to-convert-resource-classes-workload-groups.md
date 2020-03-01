@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
 origin.date: 11/4/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fcad83d5a09d856c75c79d30786145773183c8be
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c69b7f53e703359c8e61161fbfdaa7c1eb80c1b9
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334701"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154403"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 工作负荷组提供用于隔离和遏制系统资源的机制。  此外，工作负荷组允许针对其中运行的请求设置执行规则。  使用查询超时执行规则可以取消失控的查询，而无需用户的干预。  本文介绍如何根据现有的资源类创建一个采用类似配置的工作负荷组。  此外，将添加一个可选的查询超时规则。
@@ -37,7 +37,7 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 由于工作负荷组基于总体系统资源百分比运行，因此，在纵向扩展和缩减的过程中，分配给静态资源类的、相对于总体系统资源的资源百分比会发生变化。  例如，DW1000c 上的 staticrc40 会分配 9.6% 的总体系统资源。  在 DW2000c 上，则会分配 19.2%。  无论是纵向扩展以提高并发度，还是为每个请求分配更多的资源，此模型都是类似的。   
 
 ## <a name="create-workload-group"></a>创建工作负荷组
-在 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 已知的情况下，可以使用 CREATE WORKLOAD GROUP 语法来创建工作负荷组。  可以选择性地指定一个大于零的 `MIN_PERCENTAGE_RESOURCE` 以隔离工作负荷组的资源。  此外，可以选择性地指定小于 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作负荷组可以消耗的资源量。  
+在 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 已知的情况下，可以使用 CREATE WORKLOAD GROUP <link> 语法来创建工作负荷组。  可以选择性地指定一个大于零的 `MIN_PERCENTAGE_RESOURCE` 以隔离工作负荷组的资源。  此外，可以选择性地指定小于 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作负荷组可以消耗的资源量。  
 
 以下示例将 `MIN_PERCENTAGE_RESOURCE` 设置为提供 9.6% 的系统资源专供 `wgDataLoads` 使用，并保证一个查询始终都能够运行。  此外，`CAP_PERCENTAGE_RESOURCE` 设置为 38.4%，并将此工作负荷组限制为四个并发请求。  `QUERY_EXECUTION_TIMEOUT_SEC` 参数设置为 3600，这样，运行超过 1 小时的任何查询将自动取消。
 

@@ -1,21 +1,21 @@
 ---
 title: 将数据从 IoT 中心引入到 Azure 数据资源管理器
 description: 本文介绍如何将数据从 IoT 中心引入（加载）到 Azure 数据资源管理器中。
-author: oflipman
+author: orspod
 ms.author: v-tawe
-ms.reviewer: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 08/27/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: e1fa97e5192413bb02cc68dcdf79229cdf57d2d4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 01/08/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 5c570ed56f52fa65743022585f15bd4c5904f210
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630951"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590259"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>将数据从 IoT 中心引入到 Azure 数据资源管理器（预览）
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>将数据从 IoT 中心引入到 Azure 数据资源管理器 
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -104,6 +104,8 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     > [!NOTE]
     > * 选择“我的数据包含路由信息”  以使用动态路由，其中你的数据包含必要的路由信息，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)注释中所示。 如果同时设置了静态和动态属性，则动态属性将覆盖静态属性。 
     > * 只有创建数据连接后进入队列的事件才会被引入。
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="generate-sample-data-for-testing"></a>生成用于测试的示例数据
 

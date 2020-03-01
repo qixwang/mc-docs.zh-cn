@@ -5,7 +5,6 @@ services: service-bus-messaging
 documentationCenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: na
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-yiso
-ms.openlocfilehash: e97447723ff045dbf11124c668d91b0f7e2db2cb
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 5e149f10ef2df870cf07fe6031b78d3ddf651b3d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068023"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154477"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 

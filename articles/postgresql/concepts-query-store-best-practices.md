@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 5/6/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: df7473cdd8699aa7fec1476906a923b943ea3ebb
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.date: 03/02/2020
+ms.openlocfilehash: f8e0d6f6139b9a0c3fc8f73775d986d3aaff573f
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307876"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154392"
 ---
 # <a name="best-practices-for-query-store"></a>查询存储的最佳做法
 
@@ -41,6 +41,10 @@ ms.locfileid: "71307876"
 
 ## <a name="set-the-frequency-of-wait-stats-sampling"></a>设置等待统计信息采样频率 
 该 pgms_wait_sampling.history_period 参数指定等待事件的采样频率（以毫秒为单位）  。 周期越短，采样越频繁。 可检索到更多信息，但这会导致更多资源消耗。 若服务器负载不足或不需要粒度，请增加此时间段
+
+
+## <a name="get-quick-insights-into-query-store"></a>快速了解查询存储
+可使用 Azure 门户中的 [Query Performance Insight](concepts-query-performance-insight.md) 来快速了解查询存储的数据。 可视化显示运行时间最长的查询和最长的等待事件。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 获取或设置参数。

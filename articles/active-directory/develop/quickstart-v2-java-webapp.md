@@ -8,19 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 3a07062fc5aad84fd406918450e2e290974ca2c6
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: c4a6caba999e76a6e8c0831fc422751d2666cbde
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116795"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653415"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 本快速入门介绍如何将 Java Web 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
 
@@ -28,7 +26,7 @@ ms.locfileid: "76116795"
 
 ![显示本快速入门生成的示例应用的工作原理](./media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要运行此示例，需要：
 
@@ -61,7 +59,7 @@ ms.locfileid: "76116795"
 >    - 暂时将“重定向 URI”留空，并选择“注册”。  
 > 1. 在“概述”页上，找到应用程序的“应用程序(客户端) ID”和“目录(租户) ID”值。    复制这些值供稍后使用。
 > 1. 从菜单中选择“身份验证”，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。 
+>    - 在“重定向 URI”中添加 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me`。 
 >    - 选择“保存”  。
 > 1. 从菜单中选择“证书和机密”  ，并在“客户端密码”  部分中，单击“新建客户端密码”  ：
 >
@@ -75,7 +73,7 @@ ms.locfileid: "76116795"
 >
 > 若要正常运行本快速入门中的代码示例，需要：
 >
-> 1. 添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me` 作为回复 URL。
+> 1. 添加 `https://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/me` 作为回复 URL。
 > 1. 创建客户端机密。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
@@ -91,23 +89,36 @@ ms.locfileid: "76116795"
 
  1. 将 zip 文件解压缩到某个本地文件夹。
  1. 如果使用集成开发环境，请在偏好的 IDE 中打开示例（可选）。
-
  1. 打开 src/main/resources/ 文件夹中的 application.properties 文件，将 *aad.clientId*、*aad.authority* 和 *aad.secretKey* 字段的值分别替换为“应用程序 ID”、“租户 ID”和“客户端机密”的值，如下所示：   
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.partner.microsoftonline.cn/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> 其中：
->
-> - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
-> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
-> - `Enter_the_Tenant_Info_Here` - 是注册的应用程序的目录（租户）ID 值  。
+    > [!div renderon="docs"]
+    > 其中：
+    >
+    > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
+    > - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
+    > - `Enter_the_Tenant_Info_Here` - 是注册的应用程序的目录（租户）ID 值  。
+
+ 1. 若要将 https 与 localhost 一起使用，请填写 server.ssl.key 属性。 若要生成自签名证书，请使用 keytool 实用工具（包含在 JRE 中）。
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   将生成的 keystore 文件放在“resources”文件夹中。
 
 #### <a name="step-4-run-the-code-sample"></a>步骤 4：运行代码示例
 
@@ -117,11 +128,11 @@ ms.locfileid: "76116795"
 
 ##### <a name="running-from-ide"></a>从 IDE 运行
 
-如果从 IDE 运行 Web 应用程序，请单击“运行”，然后导航到项目的主页。 对于此示例，标准主页 URL 为 http://localhost:8080
+如果从 IDE 运行 Web 应用程序，请单击“运行”，然后导航到项目的主页。 对于本示例，标准主页 URL 为 https://localhost:8080 。
 
 1. 在首页上，选择“登录”按钮重定向到 Azure Active Directory 并提示用户输入其凭据。 
 
-1. 用户完成身份验证后，将重定向到 *http://localhost:8080/msal4jsample/secure/aad* 。 他们现已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
+1. 用户完成身份验证后，将重定向到 *https://localhost:8080/msal4jsample/secure/aad* 。 他们现已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
     - *注销*：将当前用户从应用程序中注销，并将其重定向到主页。
     - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含令牌的请求调用 Microsoft Graph，这会返回有关已登录用户的基本信息。
 

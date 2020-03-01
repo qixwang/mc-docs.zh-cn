@@ -1,28 +1,28 @@
 ---
 title: 在 C# 中创建第一个 Service Fabric 应用程序
 description: 介绍如何创建包含无状态服务和有状态服务的 Azure Service Fabric 应用程序。
-author: rockboyfor
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f8760fc3c10987b263ec28c16e14966522eb012d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.custom: sfrev
+ms.openlocfilehash: 0ef9454ac247bc47c1e9a7c3c634409a680c24eb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742387"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541065"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
+
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
 
 Azure Service Fabric 应用程序包含运行代码的一个或多个服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md) 同时创建无状态与有状态的 Service Fabric 应用程序。  
 
 ## <a name="basic-concepts"></a>基本概念
+
 了解几个基本概念，即可开始使用 Reliable Services：
 
 * **服务类型**：这是你的服务实现。 它由编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
@@ -31,6 +31,7 @@ Azure Service Fabric 应用程序包含运行代码的一个或多个服务。 �
 * **服务注册**：通过注册可将所有对象融合在一起。 只有在服务宿主中将服务类型注册 Service Fabric 运行时，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
+
 无状态服务目前是云应用程序的常规服务类型。 服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），才能实现高可用性和可靠性。
 
 以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019，并新建一个名为 HelloWorld  的 Service Fabric 应用程序项目：
@@ -47,6 +48,7 @@ Azure Service Fabric 应用程序包含运行代码的一个或多个服务。 �
 * *HelloWorldStateless*。 这是服务项目。 其中包含无状态服务实现。
 
 ## <a name="implement-the-service"></a>实现服务
+
 打开服务项目中的 **HelloWorldStateless.cs** 文件。 在 Service Fabric 中，服务可以运行任一业务逻辑。 服务 API 为代码提供两个入口点：
 
 * 名为 *RunAsync* 的开放式入口点方法，可在其中开始执行任何工作负荷，包括长时间运行的计算工作负荷。
@@ -71,11 +73,10 @@ Azure Service Fabric 应用程序包含运行代码的一个或多个服务。 �
 项目模板包括 `RunAsync()` 的示例实现，该实现递增滚动计数。
 
 > [!NOTE]
-> 有关如何使用通信堆栈的详细信息，请参阅 [Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)
-> 
-> 
+> 有关如何使用通信堆栈的详细信息，请参阅[使用 ASP.NET Core 与服务通信](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ### <a name="runasync"></a>RunAsync
+
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
@@ -111,6 +112,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 在此无状态服务示例中，计数存储在本地变量中。 不过，由于这是无状态服务，因此，所存储的值仅在其所在服务实例的当前生命周期中存在。 当服务移动或重新启动时，值就会丢失。
 
 ## <a name="create-a-stateful-service"></a>创建有状态服务
+
 Service Fabric 引入了一种新的有状态服务。 有状态服务能够可靠地在服务本身内部保持状态，并与使用它的代码共置。 Service Fabric 无需将状态保存到外部存储，便可实现状态的高可用性。
 
 要将计数器值从无状态转换为即使在服务移动或重新启动时仍高度可用并持久存在，你需要有状态服务。
@@ -160,9 +162,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
+
 `RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表用户执行额外的工作，再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>可靠集合与可靠状态管理器
+
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
@@ -179,6 +183,7 @@ var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<str
 可靠状态管理器会代为管理可靠集合。 在服务中，可随时随地向可靠状态管理器按名称请求可靠集合。 可靠状态管理器可确保能取回引用。 不建议将对可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中始终将引用设置为某个实例。 可靠状态管理器会代为处理此工作，且已针对重复访问对其进行优化。
 
 ### <a name="transactional-and-asynchronous-operations"></a>事务和异步操作
+
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
@@ -190,7 +195,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-可靠集合具有许多与其 `System.Collections.Generic` 和 `System.Collections.Concurrent` 对应项相同的操作，LINQ 除外。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
+可靠集合具有与其 `System.Collections.Generic` 和 `System.Collections.Concurrent` 对应项相同的许多操作，但语言集成查询 (LINQ) 除外。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
 可靠集合操作是 *事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 事务被视为基本操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并将该项保留在队列中待处理。
 

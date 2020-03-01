@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 01/23/2019
-ms.date: 2/6/2020
+origin.date: 01/24/2020
+ms.date: 2/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 2730872ae346d0a080fa2855ebcf466ce4cd918a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: b8e201a953065cb3a30066c3509e529eb47245dc
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068271"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155000"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 

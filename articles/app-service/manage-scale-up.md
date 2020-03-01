@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中纵向扩展应用。 获取�
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 origin.date: 08/19/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 501f6a4e54882ec27659f00fdf0eaa43567cc726
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 1b6fc3c06d3ab3146208606fbf58dc99c1f610bc
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600445"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566616"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用
 

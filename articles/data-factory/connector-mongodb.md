@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 08/12/2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 60fa33efab253c188474053380bfd23b69520826
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: a916a9097808a269d571c301560c052290710c73
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624223"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653523"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 
@@ -47,7 +47,7 @@ ms.locfileid: "75624223"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：MongoDbV2  |是 |
 | connectionString |指定 MongoDB 连接字符串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 请参阅 [MongoDB 连接字符串手册](https://docs.mongodb.com/manual/reference/connection-string/)获取详细信息。 <br/><br /> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -77,7 +77,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MongoDbV2Collection  | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -109,7 +109,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：MongoDbV2Source  | 是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
@@ -162,11 +162,11 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="export-json-documents-as-is"></a>按原样导出 JSON 文档
 
-可以使用此 MongoDB 连接器将 JSON 文档按原样从 MongoDB 集合导出到各种基于文件的存储或 Azure Cosmos DB。 若要实现此类“架构不可知”复制，请跳过数据集中的“结构”（也称为“架构”）部分和复制活动中的架构映射  。
+可以使用此 MongoDB 连接器将 JSON 文档按原样从 MongoDB 集合导出到各种基于文件的存储或 Azure Cosmos DB。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
 
 ## <a name="schema-mapping"></a>架构映射
 
 若要将数据从 MongoDB 复制到表格接收器，请参阅[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

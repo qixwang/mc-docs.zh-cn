@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 在 Visual Studio Code 中创建 Azure 流分析云作业
+title: 快速入门 - 在 Visual Studio Code 中创建 Azure 流分析作业
 description: 本快速入门介绍如何开始使用 Visual Studio Code 创建流分析作业、配置输入和输出，以及定义查询。
 ms.service: stream-analytics
 author: lingliw
@@ -7,13 +7,14 @@ ms.author: v-lingwu
 manager: digimobile
 ms.topic: quickstart
 origin.date: 01/18/2020
-ms.date: 2/6/2020
-ms.openlocfilehash: 5daf18f2af66cbc3b6b10358518e8c42aa1dde0b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 2/27/2020
+ms.custom: mvc
+ms.openlocfilehash: 3b5f5db5c1ced1339807c7b17d946ca2264cf5a6
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068240"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154638"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）
 
@@ -138,7 +139,7 @@ ms.locfileid: "77068240"
 
 有关更多详细信息，请按照“使用示例数据在本地测试查询”中的说明进行操作。
 
- ![在 VS Code 中使用示例数据进行测试](./media/vscode-local-run/localrun-localinput.gif)
+ ![在 Visual Studio Code 中使用示例数据进行测试](./media/vscode-local-run/localrun-localinput.gif)
 
 ## <a name="define-a-live-input"></a>定义实时输入
 

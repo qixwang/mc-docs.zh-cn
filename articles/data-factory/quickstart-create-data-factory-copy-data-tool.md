@@ -4,20 +4,20 @@ description: 创建一个 Azure 数据工厂，然后使用“复制数据”工
 services: data-factory
 documentationcenter: ''
 author: WenJason
-manager: digiomobile
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 origin.date: 06/20/2018
-ms.date: 01/06/2020
-ms.author: v-jay
-ms.openlocfilehash: 715f7476fa285cdca31c8eecea8c6cd547fda333
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/02/2020
+ms.openlocfilehash: e98467e137a7e61540a3aba0d9bc6226e0ae8a62
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624199"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653587"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -48,7 +48,7 @@ ms.locfileid: "75624199"
    - 选择“使用现有”，并从列表中选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。    
          
-   若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+   若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 对于“版本”，选择“V2”。  
 1. 对于“位置”，请选择数据工厂所在的位置。 
 

@@ -1,7 +1,7 @@
 ---
 title: Azure 流分析中的数据驱动调试
 description: 本文介绍如何使用 Azure 门户中的作业关系图和指标对 Azure 流分析作业进行故障排除。
-author: rockboyfor
+author: lingliw
 ms.author: v-lingwu
 manager: digimobile
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/01/2017
 ms.date: 06/18/2018
-ms.openlocfilehash: 8cf1e1b2a969e7e6e113434e1101f5330c1a8769
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: d0742643dec5539e901e5d67d1da322669c15d39
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856883"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154616"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
 

@@ -1,34 +1,23 @@
 ---
-title: 管理 Azure Stack 中的物理内存容量 | Microsoft Docs
-description: 了解如何监视和管理 Azure Stack 中的物理内存和容量。
-services: azure-stack
-documentationcenter: ''
+title: 管理 Azure Stack Hub 中的物理内存容量
+description: 了解如何监视和管理 Azure Stack Hub 中的物理内存和容量。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 84518E90-75E1-4037-8D4E-497EAC72AAA1
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e74d5aa41674c4220f00583709808de71f545621
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 09d2c3bafb462d2d49ac47df5682e0a79ce1dd61
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020193"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540912"
 ---
-# <a name="manage-physical-memory-capacity-in-azure-stack"></a>管理 Azure Stack 中的物理内存容量
+# <a name="manage-physical-memory-capacity-in-azure-stack-hub"></a>管理 Azure Stack Hub 中的物理内存容量
 
-*适用于：Azure Stack 集成系统*
-
-若要增加 Azure Stack 中的总可用内存容量，可以添加更多内存。 在 Azure Stack 中，物理服务器也称为*缩放单元节点*。 所有属于单一缩放单元的缩放单元节点都必须具有相同的内存量。
+若要增加 Azure Stack Hub 中的总可用内存容量，可以添加更多内存。 在 Azure Stack Hub 中，物理服务器也称为“缩放单元节点”  。 所有属于单一缩放单元的缩放单元节点都必须具有相同的内存量。
 
 > [!note]  
 > 继续之前，请参阅硬件制造商文档，了解制造商是否支持物理内存升级。 OEM 硬件供应商支持合同可能会要求供应商进行物理服务器机架放置和设备固件更新。
@@ -46,11 +35,11 @@ ms.locfileid: "74020193"
 > [!Warning]
 > 由于不支持滚动内存升级，因此必须关闭整个缩放单元。
 
-1. 按照[启动和停止 Azure Stack](azure-stack-start-and-stop.md) 一文中所述的步骤，停止 Azure Stack。
+1. 按照[启动和停止 Azure Stack Hub](azure-stack-start-and-stop.md) 一文中所述的步骤，停止 Azure Stack Hub。
 2. 使用硬件制造商的文档升级每台物理计算机上的内存。
-3. 按照[启动和停止 Azure Stack](azure-stack-start-and-stop.md) 一文中的步骤，启动 Azure Stack。
+3. 按照[启动和停止 Azure Stack Hub](azure-stack-start-and-stop.md) 一文中的步骤，启动 Azure Stack Hub。
 
 ## <a name="next-steps"></a>后续步骤
 
- - 若要了解如何管理 Azure Stack 中的存储帐户，请参阅[管理 Azure Stack 中的存储帐户](azure-stack-manage-storage-accounts.md)。
- - 若要了解如何监视和管理 Azure Stack 部署的存储容量，请参阅[管理 Azure Stack 的存储容量](azure-stack-manage-storage-shares.md)。
+ - 若要了解如何管理 Azure Stack Hub 中的存储帐户，请参阅[管理 Azure Stack Hub 中的存储帐户](azure-stack-manage-storage-accounts.md)。
+ - 若要了解如何监视和管理 Azure Stack Hub 部署的存储容量，请参阅[管理 Azure Stack Hub 的存储容量](azure-stack-manage-storage-shares.md)。

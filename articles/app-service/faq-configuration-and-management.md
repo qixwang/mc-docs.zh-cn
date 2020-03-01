@@ -7,14 +7,14 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/30/2018
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7498f7d743f4ff6839271245becb342944227236
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: 90cdfb01b53c406ca06af4d40f46f451916b7c62
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179339"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566649"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -265,7 +265,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 如果你的应用服务证书在 24 小时后继续显示此消息，请运行以下 PowerShell 脚本。 该脚本会联系[证书提供商](https://www.godaddy.com/)直接解决问题。
 
-```
+```powershell
 Connect-AzAccount -Environment AzureChinaCloud
 Set-AzContext -SubscriptionId <subId>
 $actionProperties = @{

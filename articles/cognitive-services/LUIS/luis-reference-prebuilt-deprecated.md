@@ -10,14 +10,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 origin.date: 07/29/2019
-ms.date: 09/23/2019
+ms.date: 02/25/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 4f19e216630747eeaabcfc2432f5117285ab626a
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 1de5652639213da322e22256d10bcf79afea3eba
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330376"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154546"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
@@ -28,13 +28,6 @@ ms.locfileid: "71330376"
 
 ## <a name="geography-culture"></a>Geography 语言区域
 **Geography** 仅在 `en-us` 区域设置中可用。
-
-#### <a name="3-geography-subtypes"></a>3 个 Geography 子类型
-
-预构建实体   |   示例陈述   |   JSON
-------|------|------|
-`builtin.geography.country`|  `china`    |`{ "type": "builtin.geography.country", "entity": "china" }`|
-
 
 ## <a name="encyclopedia-culture"></a>Encyclopedia 语言区域
 **Encyclopedia** 仅在 `en-US` 区域设置中可用。
@@ -62,7 +55,7 @@ Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyc
  ```
 
 
-预构建实体   |   预构建实体（子类型）   |   示例陈述
+预生成实体   |   预构建实体（子类型）   |   示例陈述
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |

@@ -4,16 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: 认知服务提供两个自然语言处理服务：语言理解和 QnA Maker，每个服务的用途不同。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 author: lingliw
 manager: digimobile
+ms.topic: conceptual
 ms.service: cognitive-services
 origin.date: 11/04/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2e6bcc419f2f6e45e62b20c462bd2787d0e92c87
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 429e4c09548125ce4d604ffa8aac762d5ef4838c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335120"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154955"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>使用包含自然语言处理 (NLP) 的认知服务来扩充机器人聊天
 

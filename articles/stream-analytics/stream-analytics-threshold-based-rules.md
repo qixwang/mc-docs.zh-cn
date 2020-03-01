@@ -1,19 +1,19 @@
 ---
 title: Azure 流分析中基于可配置阈值的规则
 description: 本文介绍如何使用参考数据实现在 Azure 流分析中拥有基于可配置阈值的规则的警报解决方案。
-author: rockboyfor
-ms.author: v-yeche
+author: lingliw
+ms.author: v-lingwu
 manager: digimobile
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/30/2018
 ms.date: 08/20/2018
-ms.openlocfilehash: eb85d5519f5e76c4651801232a2dd5b01c966e23
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 69ab9e16061df69d3652ce7a3f2b88f8b8b9ecd9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854538"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155134"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>处理 Azure 流分析中基于可配置阈值的规则
 本文介绍如何使用参考数据实现在 Azure 流分析中使用基于可配置阈值的规则的警报解决方案。

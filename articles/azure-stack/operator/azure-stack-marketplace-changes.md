@@ -1,37 +1,29 @@
 ---
-title: Azure Stack 市场中的新增功能 | Microsoft Docs
-description: Azure Stack 市场中的更改和更新。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 市场中的新增内容
+description: Azure Stack Hub 市场中的更改和更新。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
-ms.openlocfilehash: 4858d8add5a8add446c03d4b19b6c2f6516f139e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 451595b08930ce597d6dcef12ac08a3af753e247
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020190"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540910"
 ---
-# <a name="azure-stack-marketplace-changes"></a>Azure Stack 市场更改
+# <a name="azure-stack-hub-marketplace-changes"></a>Azure Stack Hub 市场更改
 
-本文介绍近 3 个月来 [Azure Stack 市场项](azure-stack-marketplace-azure-items.md)的最新添加、更新、更改和删除。 此部分中的信息经常更新，因此请经常回来查看是否有更改。
+本文介绍近 3 个月来最新添加、更新、更改和删除的 [Azure Stack Hub 市场项](azure-stack-marketplace-azure-items.md)。 此部分中的信息经常更新，因此请经常回来查看是否有更改。
 
-[Azure Stack 市场项](azure-stack-marketplace-azure-items.md)一文始终包含可用 Azure Stack 市场项的最新列表。
+[Azure Stack Hub 市场项](azure-stack-marketplace-azure-items.md)一文始终包含可用 Azure Stack Hub 市场项的最新列表。
 
 ## <a name="new-marketplace-items"></a>新增市场项
 
-- 06/27/2019： Veeam 备份和复制
+- 06/27/2019：Veeam 备份和复制
 
 ## <a name="deprecated-marketplace-items"></a>弃用市场项
 
@@ -57,8 +49,8 @@ ms.locfileid: "74020190"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Stack 市场的详细信息，请参阅以下文章：
+有关 Azure Stack Hub 市场的详细信息，请参阅以下文章：
 
 - [Azure 市场概述](azure-stack-marketplace.md)
-- [可供 Azure Stack 使用的 Azure 市场项](azure-stack-marketplace-azure-items.md)
-- [创建并发布 Azure Stack 市场项](azure-stack-create-and-publish-marketplace-item.md)
+- [可用于 Azure Stack Hub 的 Azure 市场项](azure-stack-marketplace-azure-items.md)
+- [创建并发布 Azure Stack Hub 市场项](azure-stack-create-and-publish-marketplace-item.md)

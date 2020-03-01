@@ -1,48 +1,38 @@
 ---
-title: 在 Azure Stack 中监视运行状况和警报 | Microsoft Docs
-description: 了解如何在 Azure Stack 中监视运行状况和警报。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中监视运行状况和警报
+description: 了解如何在 Azure Stack Hub 中监视运行状况和警报。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/2/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 8dce98e6d990de045079ccaa4e526f9182c87771
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 2073e2a742f021ed53fc12596c8ad60a7f617412
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020189"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540911"
 ---
-# <a name="monitor-health-and-alerts-in-azure-stack"></a>在 Azure Stack 中监视运行状况和警报
+# <a name="monitor-health-and-alerts-in-azure-stack-hub"></a>在 Azure Stack Hub 中监视运行状况和警报
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+Azure Stack Hub 包含基础结构监视功能，有助于查看 Azure Stack Hub 区域的运行状况和警报。 “区域管理”磁贴列出了 Azure Stack Hub 的所有已部署区域。  它默认固定在默认提供商订阅的管理员门户上。 该磁贴除了显示每个区域的活动严重警报和警告警报数目以外， 也是 Azure Stack Hub 运行状况和警报功能的入口点。
 
-Azure Stack 包含基础结构监视功能，有助于查看 Azure Stack 区域的运行状况和警报。 “区域管理”磁贴列出了 Azure Stack 的所有已部署区域。  它默认固定在默认提供商订阅的管理员门户上。 该磁贴除了显示每个区域的活动严重警报和警告警报数目以外， 也是 Azure Stack 运行状况和警报功能的入口点。
+![Azure Stack Hub 管理员门户中的“区域管理”磁贴](media/azure-stack-monitor-health/image1.png)
 
-![Azure Stack 管理员门户中的“区域管理”磁贴](media/azure-stack-monitor-health/image1.png)
+## <a name="understand-health-in-azure-stack-hub"></a>了解 Azure Stack Hub 中的运行状况
 
-## <a name="understand-health-in-azure-stack"></a>了解 Azure Stack 中的运行状况
-
-运行状况资源提供程序管理运行状况和警报。 在 Azure Stack 部署和配置期间，Azure Stack 基础结构组件将注册到运行状况资源提供程序。 注册后，可以显示每个组件的运行状况和警报。 Azure Stack 中的“运行状况”是个简单的概念。 如果组件的已注册实例存在警报，该组件的运行状况会反映最不利的活动警报的严重性：警告或严重。
+运行状况资源提供程序管理运行状况和警报。 在 Azure Stack Hub 部署和配置期间，Azure Stack Hub 基础结构组件将注册到运行状况资源提供程序。 注册后，可以显示每个组件的运行状况和警报。 Azure Stack Hub 中的“运行状况”是个简单的概念。 如果组件的已注册实例存在警报，该组件的运行状况会反映最不利的活动警报的严重性：警告或严重。
 
 ## <a name="alert-severity-definition"></a>警报严重性定义
 
-Azure Stack 引发的警报只有两个严重级别：**警告**和**严重**。
+Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重**。
 
 - **警告**  
   操作员可以按计划方式处理警告警报。 该警报通常不会影响用户工作负荷。
 
 - **严重**  
-  操作员应紧急处理严重警报。 这些警报指示目前影响或将很快影响 Azure Stack 用户的问题。
+  操作员应紧急处理严重警报。 这些警报指示目前影响或将很快影响 Azure Stack Hub 用户的问题。
 
 
 ## <a name="view-and-manage-component-health-state"></a>查看和管理组件运行状况

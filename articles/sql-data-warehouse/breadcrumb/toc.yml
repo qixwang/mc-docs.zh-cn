@@ -10,13 +10,6 @@
   topicHref: /index
   items:
     - name: Synapse Analytics
-      tocHref: /sql-data-warehouse/
-      topicHref: /sql-data-warehouse/index
-- name: Azure
-  tocHref: 'https://docs.azure.cn/'
-  topicHref: /index
-  items:
-    - name: Synapse Analytics
       tocHref: /data-factory/
       topicHref: /sql-data-warehouse/index
 - name: Azure

@@ -1,36 +1,25 @@
 ---
-title: 备份 Azure Stack | Microsoft Docs
-description: 了解如何在 Azure Stack 上执行按需备份。
-services: azure-stack
-documentationcenter: ''
+title: 备份 Azure Stack Hub
+description: 了解如何在 Azure Stack Hub 上执行按需备份。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 9565DDFB-2CDB-40CD-8964-697DA2FFF70A
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 294464d934465da987ba64e1284f2ccf9b4db764
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 335ebdaf96488a5beab442e800e3fcad85ee0d0c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578476"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540951"
 ---
-# <a name="back-up-azure-stack"></a>备份 Azure Stack
+# <a name="back-up-azure-stack-hub"></a>备份 Azure Stack Hub
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+本文说明如何在 Azure Stack Hub 上执行按需备份。 有关配置 PowerShell 环境的说明，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](azure-stack-powershell-install.md)。 若要登录到 Azure Stack Hub，请参阅[在 Azure Stack Hub 中使用管理员门户](azure-stack-manage-portals.md)。
 
-本文说明如何在 Azure Stack 上执行按需备份。 有关配置 PowerShell 环境的说明，请参阅[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。 若要登录到 Azure Stack，请参阅[在 Azure Stack 中使用管理员门户](azure-stack-manage-portals.md)。
-
-## <a name="start-azure-stack-backup"></a>启动 Azure Stack 备份
+## <a name="start-azure-stack-hub-backup"></a>启动 Azure Stack Hub 备份
 
 ### <a name="start-a-new-backup-without-job-progress-tracking"></a>启动新备份，而不进行作业进度跟踪
 使用 Start-AzSBackup 立即启动新备份，而不进行作业进度跟踪。
@@ -39,7 +28,7 @@ ms.locfileid: "72578476"
    Start-AzsBackup -Force
 ```
 
-### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>启动 Azure Stack 备份，并进行作业进度跟踪
+### <a name="start-azure-stack-hub-backup-with-job-progress-tracking"></a>启动 Azure Stack Hub 备份，并跟踪作业进度
 使用带 **-AsJob** 参数的 Start-AzSBackup 启动新备份，并将其另存为变量以跟踪备份作业进度。
 
 > [!NOTE]
@@ -113,9 +102,9 @@ ms.locfileid: "72578476"
 ```
 
 ### <a name="confirm-backup-has-completed-in-the-administrator-portal"></a>在管理员门户中确认备份已完成
-使用 Azure Stack 管理员门户按照以下步骤验证备份是否已成功完成：
+使用 Azure Stack Hub 管理员门户按照以下步骤验证备份是否已成功完成：
 
-1. 打开 [Azure Stack 管理员门户](azure-stack-manage-portals.md)。
+1. 打开 [Azure Stack Hub 管理员门户](azure-stack-manage-portals.md)。
 2. 选择“所有服务”  ，然后在“管理”  类别下选择“基础结构备份”  。 在“基础结构备份”  边栏选项卡中选择“配置”  。
 3. 在“可用备份”  列表中查找备份的**名称**和**完成日期**。
 4. 验证**状态**是否为“成功”  。

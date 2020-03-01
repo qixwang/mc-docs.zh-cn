@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.topic: overview
 origin.date: 11/13/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 15664bb5dc44b154d47cc2c5107ce4087c9be60c
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: c4169dfcc4cbd242b6c760eda6cffcf5052de515
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600580"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77567191"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 

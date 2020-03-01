@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/20/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6df1b5b23b87ac2633014c96d77b036ba742416e
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 9c4b441934bb6e67608dbfd55281cc8d32f099af
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857152"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653226"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>配置性能流量路由方法
 
@@ -51,6 +51,7 @@ ms.locfileid: "70857152"
 - 了解如何[测试流量管理器设置](traffic-manager-testing-settings.md)。
 
 <!--Image references-->
+
 [1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png
 
 <!-- Update_Description: wording update, update link -->

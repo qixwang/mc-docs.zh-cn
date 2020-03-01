@@ -1,45 +1,35 @@
 ---
-title: 使用 Key Vault 中存储的密码部署 Azure Stack VM | Microsoft Docs
-description: 了解如何使用 Azure Stack 密钥保管库中存储的密码部署 VM。
-services: azure-stack
-documentationcenter: ''
+title: 使用 Key Vault 中存储的密码部署 Azure Stack Hub VM
+description: 了解如何使用 Azure Stack Hub 密钥保管库中存储的密码部署 VM。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 06/13/2019
-ms.date: 09/16/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 09d6bf89299a75645573264d49fb19034310863e
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: e75296228f62cecf25cc44f08d0c6033ff53dc3d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857307"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540798"
 ---
-# <a name="deploy-an-azure-stack-vm-using-a-password-stored-in-key-vault"></a>使用 Key Vault 中存储的密码部署 Azure Stack VM
+# <a name="deploy-an-azure-stack-hub-vm-using-a-password-stored-in-key-vault"></a>使用 Key Vault 中存储的密码部署 Azure Stack Hub VM
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-本文介绍如何使用 Azure Stack 密钥保管库中存储的密码部署 Windows Server 虚拟机 (VM)。 使用密钥保管库密码比传递纯文本密码更安全。
+本文介绍如何使用 Azure Stack Hub 密钥保管库中存储的密码部署 Windows Server 虚拟机 (VM)。 使用密钥保管库密码比传递纯文本密码更安全。
 
 ## <a name="overview"></a>概述
 
-可以将密码等值作为机密存储在 Azure Stack 密钥保管库中。 创建机密后，可以在 Azure 资源管理器模板中引用它。 通过资源管理器使用机密提供以下好处：
+可以将密码等值作为机密存储在 Azure Stack Hub 密钥保管库中。 创建机密后，可以在 Azure 资源管理器模板中引用它。 通过资源管理器使用机密提供以下好处：
 
 * 每次部署资源时不必手动输入机密。
 * 可以指定哪些用户或服务主体可以访问机密。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 必须订阅包含 Key Vault 服务的产品/服务。
-* [安装适用于 Azure Stack 的 PowerShell。](../operator/azure-stack-powershell-install.md)
+* [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。
 * [配置 PowerShell 环境。](azure-stack-powershell-configure-user.md)
 
 以下步骤说明通过检索 Key Vault 中存储的密码创建 VM 所需的过程：
@@ -97,14 +87,14 @@ Set-AzureKeyVaultSecret `
        "adminUsername":  {
          "value":  "demouser"
           },
-         "adminPassword":  {
-           "reference":  {
-              "keyVault":  {
-                "id":  "/subscriptions/xxxxxx/resourceGroups/RgKvPwd/providers/Microsoft.KeyVault/vaults/KvPwd"
-                },
-              "secretName":  "MySecret"
-           }
-         },
+       "adminPassword":  {
+         "reference":  {
+            "keyVault":  {
+              "id":  "/subscriptions/xxxxxx/resourceGroups/RgKvPwd/providers/Microsoft.KeyVault/vaults/KvPwd"
+              },
+            "secretName":  "MySecret"
+         }
+       },
        "dnsLabelPrefix":  {
           "value":  "mydns123456"
         },

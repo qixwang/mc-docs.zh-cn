@@ -7,21 +7,21 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
-ms.date: 01/08/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67485c5ff0795a690b8e30574854a556f6b88e53
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: eb9ba7b16030ebeda855d6f5de1cfed6bda1f475
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777090"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653476"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中批准或拒绝 Azure AD 角色的请求
 
@@ -38,55 +38,7 @@ ms.locfileid: "75777090"
 
 按照本文中的步骤，批准或拒绝 Azure AD 角色的请求。
 
-# <a name="previous-versiontabprevious"></a>[先前版本](#tab/previous)
-
-## <a name="view-pending-requests"></a>查看待处理请求
-
-有 Azure AD 角色请求正在等待审批时，委托的审批者将收到电子邮件通知。 可以在 Privileged Identity Management 中查看这些挂起的请求。
-
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-
-1. 打开“Azure AD Privileged Identity Management”。 
-
-1. 单击“Azure AD 角色”。 
-
-1. 单击“审批请求”  。
-
-    ![Azure AD 角色 - 审批请求](./media/azure-ad-pim-approval-workflow/approve-requests.png)
-
-    将看到待审批的请求列表。
-
-## <a name="approve-requests"></a>审批请求
-
-1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格  。
-
-    ![突出显示了“批准”选项的“审批请求”列表](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
-
-1. 在“审批原因”框中，键入原因  。
-
-    ![包含“批准原因”的“批准所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
-
-1. 单击“批准”  。
-
-    状态符号将随审批操作更新。
-
-    ![单击“批准”按钮后的“批准所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
-
-## <a name="deny-requests"></a>拒绝请求
-
-1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格  。
-
-    ![突出显示了“拒绝”选项的“审批请求”列表](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
-
-1. 在“拒绝原因”框中，键入原因  。
-
-    ![包含“拒绝原因”的“拒绝所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
-
-1. 单击“拒绝”  。
-
-    状态符号将随拒绝操作更新。
-
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 ## <a name="view-pending-requests"></a>查看待处理请求
 
@@ -135,6 +87,54 @@ ms.locfileid: "75777090"
 
 >[!NOTE]
 >如果资源管理员认为获批准的用户不应被激活，则可在 Privileged Identity Management 中删除已激活的角色分配。 尽管资源管理员不会收到待处理请求的通知（除非他们是审批者），但他们可通过在 Privileged Identity Management 中查看待处理请求，来查看和取消所有用户的待处理请求。
+
+# <a name="previous-version"></a>[先前版本](#tab/previous)
+
+## <a name="view-pending-requests"></a>查看待处理请求
+
+有 Azure AD 角色请求正在等待审批时，委托的审批者将收到电子邮件通知。 可以在 Privileged Identity Management 中查看这些挂起的请求。
+
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+
+1. 打开“Azure AD Privileged Identity Management”。 
+
+1. 单击“Azure AD 角色”。 
+
+1. 单击“审批请求”  。
+
+    ![Azure AD 角色 - 审批请求](./media/azure-ad-pim-approval-workflow/approve-requests.png)
+
+    将看到待审批的请求列表。
+
+## <a name="approve-requests"></a>审批请求
+
+1. 选中要审批的请求，然后单击“审批”以打开审批所选请求窗格  。
+
+    ![突出显示了“批准”选项的“审批请求”列表](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+
+1. 在“审批原因”框中，键入原因  。
+
+    ![包含“批准原因”的“批准所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+
+1. 单击“批准”  。
+
+    状态符号将随审批操作更新。
+
+    ![单击“批准”按钮后的“批准所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+
+## <a name="deny-requests"></a>拒绝请求
+
+1. 选中要拒绝的请求，然后单击“拒绝”以打开拒绝所选请求窗格  。
+
+    ![突出显示了“拒绝”选项的“审批请求”列表](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+
+1. 在“拒绝原因”框中，键入原因  。
+
+    ![包含“拒绝原因”的“拒绝所选请求”窗格](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+
+1. 单击“拒绝”  。
+
+    状态符号将随拒绝操作更新。
 
 ---
 

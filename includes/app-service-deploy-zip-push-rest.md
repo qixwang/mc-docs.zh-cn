@@ -3,14 +3,14 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 08/12/2019
-ms.date: 09/10/2019
+ms.date: 03/20/2020
 ms.author: v-tawe
-ms.openlocfilehash: e5d127b1d8e2bcb60631b234924b3b0a1a0e6be2
-ms.sourcegitcommit: 0529a2aa102e058636d726b4a4f25208e1e60597
+ms.openlocfilehash: bbe461bded517eebc05882e4d542522384e0dede
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059575"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155521"
 ---
 ## <a name="rest"></a>使用 REST API 部署 ZIP 文件 
 
@@ -20,7 +20,7 @@ ms.locfileid: "71059575"
 
 ### <a name="with-curl"></a>使用 cURL
 
-以下示例使用 cURL 工具部署 .zip 文件。 替换占位符 `<username>`、`<password>`、`<zip_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
+以下示例使用 cURL 工具部署 .zip 文件。 替换占位符 `<deployment_user>`、`<zip_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.chinacloudsites.cn/api/zipdeploy
@@ -34,9 +34,9 @@ curl -u <deployment_user> https://<app_name>.scm.chinacloudsites.cn/api/deployme
 
 ### <a name="with-powershell"></a>使用 PowerShell
 
-下面的示例使用 [Publish-AzWebapp](https://docs.microsoft.com/powershell/module/az.websites/publish-azwebapp?view=azps-2.6.0) 上传 .zip 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
+下面的示例使用 [Publish-AzWebapp](https://docs.microsoft.com/powershell/module/az.websites/publish-azwebapp) 上传 .zip 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
 
-```PowerShell
+```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
 ```
 

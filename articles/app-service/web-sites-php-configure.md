@@ -6,15 +6,15 @@ ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
 origin.date: 04/11/2018
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: edfddc4fe92cb5fe12f9928a14382a01efe8b64f
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 1a7b4ae9c58e2eabdf8913401060ee0baf5151f8
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600215"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566626"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure 应用服务中配置 PHP
 
@@ -36,27 +36,14 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 3. 单击“常规设置”边栏选项卡顶部的“保存”按钮。  
 
-### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-1. 打开 Azure PowerShell 并登录到帐户：
-
-        PS C:\> Connect-AzAccount -EnvironmentName AzureChinaCloud
-2. 设置应用的 PHP 版本。
-
-        PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
-3. 现已设置 PHP 版本。 可以确认这些设置：
-
-        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
-
 ### <a name="azure-cli"></a>Azure CLI 
 
 必须在计算机上[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)，才能使用 Azure 命令行接口。
 
 1. 打开终端，并登录到帐户。
 
-    az cloud set -n AzureChinaCloud      az login
+        az cloud set -n AzureChinaCloud
+        az login
 
 1. 检查受支持运行时的列表。
 
@@ -171,7 +158,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
+有关详细信息，请参阅 [PHP 开发人员中心](https://docs.azure.cn/develop/php/)。
 
 [free trial]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php

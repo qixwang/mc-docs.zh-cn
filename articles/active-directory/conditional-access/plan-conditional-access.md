@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689bdbf3a296683b3d3c192cf706af91814cca69
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 7e0791aa4a6a06b94151bfc76389874daa01a0a7
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540044"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653323"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
 
@@ -53,7 +53,7 @@ ms.locfileid: "77540044"
 |尝试访问：<br>- 访问云应用<br>- 由用户和组 <br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 |尝试访问：<br>- 访问云应用<br>- 由用户和组 <br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 
-“发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。    如果需要，还可以包含访问尝试是“如何”执行的。  在条件访问中，定义“谁”、“什么”和“如何”的要素称为条件。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的条件是什么？](conditions.md) 
+“发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。    如果需要，还可以包含访问尝试是“如何”执行的。  在条件访问中，定义“谁”、“什么”和“如何”的要素称为条件。 有关详细信息，请参阅 [Azure Active Directory 条件访问中的条件是什么？](concept-conditional-access-conditions.md) 
 
 对于“这样做”，请定义策略对访问条件做出的响应。  在响应中，可以使用附加的要求（例如，多重身份验证 (MFA)）阻止或授予访问权限。 有关完整概述，请参阅 [Azure Active Directory 条件访问中的访问控制是什么？](controls.md)  
 
@@ -108,6 +108,7 @@ ms.locfileid: "77540044"
 
 要求执行 MFA 的常见用例包括：
 
+- [管理员的访问](howto-baseline-protect-administrators.md)
 - [访问特定的应用](app-based-mfa.md) 
 - [从你不信任的网络位置访问](untrusted-networks.md)。
 
@@ -217,3 +218,4 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 查看 [Azure AD 条件访问文档](index.yml)以获取可用的概述信息。
 
+<!-- Update_Description: wording update -->

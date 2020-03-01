@@ -1,32 +1,23 @@
 ---
-title: 更改 Azure Stack 用户订阅的计费所有者 | Microsoft Docs
-description: 了解如何更改 Azure Stack 用户订阅的计费所有者。
-services: azure-stack
-documentationcenter: ''
+title: 更改 Azure Stack Hub 用户订阅的计费所有者
+description: 了解如何更改 Azure Stack Hub 用户订阅的计费所有者。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: conceptual
 origin.date: 09/17/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
-ms.openlocfilehash: 3c1fcd7b9f969d559ae26d21019ee86b59f28e81
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 2fe90019a8bbb9fe9f138306d44e0f1ef9798a15
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020311"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540880"
 ---
-# <a name="change-the-billing-owner-for-an-azure-stack-user-subscription"></a>更改 Azure Stack 用户订阅的计费所有者
+# <a name="change-the-billing-owner-for-an-azure-stack-hub-user-subscription"></a>更改 Azure Stack Hub 用户订阅的计费所有者
 
-Azure Stack 操作员可以使用 PowerShell 更改用户订阅的计费所有者。 例如，更改所有者的一个原因是替换已离职的用户。
+Azure Stack Hub 操作员可以使用 PowerShell 更改用户订阅的计费所有者。 例如，更改所有者的一个原因是替换已离职的用户。
 
 会将两种类型的所有者分配到订阅： 
 
@@ -40,7 +31,7 @@ Azure Stack 操作员可以使用 PowerShell 更改用户订阅的计费所有�
 
 ## <a name="change-the-billing-owner"></a>更改计费所有者
 
-运行以下脚本更改用户订阅的计费所有者。 用于运行该脚本的计算机必须连接到 Azure Stack 并运行 Azure Stack PowerShell 模块 1.3.0 或更高版本。 有关详细信息，请参阅[安装 Azure Stack PowerShell](azure-stack-powershell-install.md)。
+运行以下脚本更改用户订阅的计费所有者。 用于运行该脚本的计算机必须连接到 Azure Stack Hub 并运行 Azure Stack Hub PowerShell 模块 1.3.0 或更高版本。 有关详细信息，请参阅[安装 Azure Stack Hub PowerShell](azure-stack-powershell-install.md)。
 
 运行脚本之前，请替换脚本中的以下值：
 
@@ -50,7 +41,7 @@ Azure Stack 操作员可以使用 PowerShell 更改用户订阅的计费所有�
 - **$OwnerUpn**：要添加为新账单所有者的帐户，例如 **user\@example.com**。
 
 ```powershell
-# Set up Azure Stack admin environment
+# Set up Azure Stack Hub admin environment
 Add-AzureRmEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
 Add-AzureRmAccount -Environment AzureStack-admin -TenantId $TenantId
 

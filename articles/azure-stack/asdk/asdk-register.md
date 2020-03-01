@@ -1,27 +1,19 @@
 ---
-title: 将 ASDK 注册到 Azure | Microsoft Docs
+title: 将 ASDK 注册到 Azure
 description: 了解如何将 Azure Stack 开发工具包 (ASDK) 注册到 Azure，以实现市场联合并报告使用情况。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 06/14/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: fd59fe97e1330252c718a5c11fa3389528d77061
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 811208875720a2a8e951b3c8fed3b6c88c4833e2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578289"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540968"
 ---
 # <a name="register-the-asdk-with-azure"></a>将 ASDK 注册到 Azure
 
@@ -29,7 +21,7 @@ ms.locfileid: "72578289"
 
 如果未注册 ASDK，你可能会看到“需要激活”  警告警报，其中建议注册 ASDK。 这是预期的行为。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在按这些说明将 ASDK 注册到 Azure 之前，请确保已安装 Azure Stack PowerShell，并已下载[部署后配置](asdk-post-deploy.md)一文中所述的 Azure Stack 工具。
 
@@ -232,4 +224,4 @@ $ExecutionContext.SessionState.LanguageMode
 
 ## <a name="next-steps"></a>后续步骤
 
-- [添加 Azure Stack 市场项](../operator/azure-stack-marketplace.md)
+- [添加 Azure Stack Hub 市场项](../operator/azure-stack-marketplace.md)

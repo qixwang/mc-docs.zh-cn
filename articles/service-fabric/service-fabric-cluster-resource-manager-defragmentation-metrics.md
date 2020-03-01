@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 中的指标碎片整理
-description: 概述如何对 Service Fabric 中的指标使用碎片整理或打包作为策略
+description: 了解如何对 Service Fabric 中的指标使用碎片整理或打包作为策略。 此技术对于大型服务很有用。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/18/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: a4a04fc693e823cfab687743894e890ea6e86176
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: e6bea5df76d028de5d8d4ba33560b3f9bb13907f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742334"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540478"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric 中指标和负载的碎片整理
 Service Fabric 群集资源管理器用于管理群集中的负载指标的默认策略是分散负载。 确保均匀地使用节点，避免出现导致争用和浪费资源的热点和冷点。 若要幸免于故障，让工作负荷分布在群集中还是最安全的方法，因为它可确保某个故障不会导致给定的工作负荷大部分失效。 

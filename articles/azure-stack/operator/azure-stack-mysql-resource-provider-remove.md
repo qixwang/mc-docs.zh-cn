@@ -1,29 +1,21 @@
 ---
-title: 在 Azure Stack 中删除 MySQL 资源提供程序 | Microsoft Docs
-description: 了解如何从 Azure Stack 部署中删除 MySQL 资源提供程序。
-services: azure-stack
-documentationCenter: ''
+title: 在 Azure Stack Hub 中删除 MySQL 资源提供程序
+description: 了解如何从 Azure Stack Hub 部署中删除 MySQL 资源提供程序。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: cc8e7c00c7497dbfe803958cb2781da66d31ea5c
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 8b32aeb447075b9c4855f70a3a257a8c92be6d61
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74019999"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540393"
 ---
-# <a name="remove-the-mysql-resource-provider-in-azure-stack"></a>在 Azure Stack 中删除 MySQL 资源提供程序
+# <a name="remove-the-mysql-resource-provider-in-azure-stack-hub"></a>在 Azure Stack Hub 中删除 MySQL 资源提供程序
 
 删除 MySQL 资源提供程序之前，必须删除该提供程序的所有依赖项。 你还需要用来安装资源提供程序的部署包的副本。
 
@@ -36,7 +28,7 @@ ms.locfileid: "74019999"
 
 在运行 DeployMySqlProvider.ps1 脚本来删除资源提供程序之前，需要执行几个清理任务：
 
-Azure Stack 操作员负责执行以下清理任务：
+Azure Stack Hub 操作员负责执行以下清理任务：
 
 * 删除引用了 MySQL 适配器的所有计划。
 * 删除与 MySQL 适配器关联的所有配额。
@@ -53,10 +45,10 @@ Azure Stack 操作员负责执行以下清理任务：
 4. 使用以下参数运行 DeployMySqlProvider.ps1 脚本：
     - **Uninstall**：删除资源提供程序和所有关联的资源。
     - **PrivilegedEndpoint**：特权终结点的 IP 地址或 DNS 名称。
-    - **AzureEnvironment**：用于部署 Azure Stack 的 Azure 环境。 仅对于 Azure AD 部署是必需的。
+    - **AzureEnvironment**：用于部署 Azure Stack Hub 的 Azure 环境。 仅对于 Azure AD 部署是必需的。
     - **CloudAdminCredential**：访问特权终结点时所需的云管理员凭据。
     - **DirectoryTenantID**
-    - **AzCredential**：Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。
+    - **AzCredential**：Azure Stack Hub 服务管理员帐户的凭据。 使用部署 Azure Stack Hub 时所用的相同凭据。
 
 ## <a name="next-steps"></a>后续步骤
 

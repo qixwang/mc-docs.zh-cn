@@ -1,17 +1,17 @@
 ---
-title: 更改 Azure Service Fabric 执行组件中的 ReliableDictionaryActorStateProvider 设置
+title: 更改 ReliableDictionaryActorStateProvider 设置
 description: 了解如何配置 ReliableDictionaryActorStateProvider 类型的 Azure Service Fabric 有状态执行组件。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/02/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2da12004bc04331bc535fe4b2f2a91c0a6e91de9
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f2f5e643a9a8ba3fa496f35a7e7e45b000c4a3c0
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742426"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540144"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>配置 Reliable Actors - ReliableDictionaryActorStateProvider
 通过更改 Visual Studio 包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 ReliableDictionaryActorStateProvider 的默认配置。

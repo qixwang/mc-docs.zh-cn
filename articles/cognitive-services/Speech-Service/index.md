@@ -6,12 +6,12 @@ ms.author: v-tawe
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
-ms.openlocfilehash: 28dbf3cc16507efb9cf138b5ec079b2699ed8bb0
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 66c3f0d882fa9d317e337e17d548e6f2b000a81f
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494548"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042310"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -541,11 +541,11 @@ ms.locfileid: "77494548"
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#customization">自定义</a>
+            <!-- <li>
+                <a href="#customization">Customization</a>
                 <ul id="customization">
                     <li>
-                        <a href="#speech-to-text-customization">语音转文本</a>
+                        <a href="#speech-to-text-customization">Speech-to-text</a>
                         <ul id="speech-to-text-customization" class="cardsC">
                             <li>
                                 <a href="https://docs.azure.cn/cognitive-services/speech-service/how-to-phrase-lists">
@@ -558,8 +558,8 @@ ms.locfileid: "77494548"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>使用短语列表提高准确性</h3>
-                                                    <p>使用语音 SDK 中的短语列表来提高识别准确性。</p>
+                                                    <h3>Improve accuracy with Phrase Lists</h3>
+                                                    <p>Use Phrase Lists in the Speech SDK to improve recognition accuracy.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -577,8 +577,8 @@ ms.locfileid: "77494548"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>语言支持</h3>
-                                                    <p>详细了解自定义语音的编程和口语支持。</p>
+                                                    <h3>Language support</h3>
+                                                    <p>Learn more about programming and spoken language support for Custom Speech.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -596,8 +596,8 @@ ms.locfileid: "77494548"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>定价</h3>
-                                                    <p>详细了解与自定义语音相关的成本。
+                                                    <h3>Pricing</h3>
+                                                    <p>Learn more about the costs associated with Custom Speech.
                                                     </p>
                                                 </div>
                                             </div>
@@ -608,7 +608,7 @@ ms.locfileid: "77494548"
                         </ul>
                     </li>
                     <li>
-                        <a href="#text-to-speech-customization">文本转语音</a>
+                        <a href="#text-to-speech-customization">Text-to-speech</a>
                         <ul id="text-to-speech-customization" class="cardsC">
                             <li>
                                 <a href="https://docs.azure.cn/cognitive-services/speech-service/speech-synthesis-markup">
@@ -621,8 +621,8 @@ ms.locfileid: "77494548"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>通过 SSML 改进合成</h3>
-                                                    <p>使用语音合成标记语言来微调音频输出的音调、韵律和说话速率。
+                                                    <h3>Improve synthesis with SSML</h3>
+                                                    <p>Use Speech Synthesis Markup Language to fine tune pitch, prosody, and speaking rate of your audio output.
                                                     </p>
                                                 </div>
                                             </div>
@@ -641,8 +641,8 @@ ms.locfileid: "77494548"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>语言支持</h3>
-                                                    <p>详细了解自定义语音的编程和口语支持。</p>
+                                                    <h3>Language support</h3>
+                                                    <p>Learn more about programming and spoken language support for Custom Voice.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -660,8 +660,8 @@ ms.locfileid: "77494548"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>定价</h3>
-                                                    <p>详细了解与自定义语音相关的成本。
+                                                    <h3>Pricing</h3>
+                                                    <p>Learn more about the costs associated with Custom Voice.
                                                     </p>
                                                 </div>
                                             </div>
@@ -672,7 +672,7 @@ ms.locfileid: "77494548"
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

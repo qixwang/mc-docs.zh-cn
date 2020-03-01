@@ -1,25 +1,25 @@
 ---
-title: 在 Azure 虚拟网络中使用 Hive 转换数据 | Microsoft Docs
+title: 通过 Azure 门户在 Azure 虚拟网络中使用 Hive 转换数据
 description: 本教程提供有关在 Azure 数据工厂中使用 Hive 活动转换数据的分步说明。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-origin.date: 01/04/2018
-ms.date: 10/14/2019
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: e829e291bbb73b67e555627bb8a0a123416ee1ea
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+origin.date: 01/04/2018
+ms.date: 03/02/2020
+ms.openlocfilehash: d2a4603fa65d9776032b9ab1f2d36baa2ec41da2
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275188"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653563"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
+
 本教程使用 Azure 门户创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
 
 > [!div class="checklist"]
@@ -89,7 +89,7 @@ ms.locfileid: "72275188"
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。    
          
-     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 4. 选择“V2”  作为“版本”  。
 5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
 6. 选择“固定到仪表板”  。     
@@ -201,8 +201,8 @@ ms.locfileid: "72275188"
 
 请注意以下几点：
 
-- **scriptPath** 指向用于 MyStorageLinkedService 的 Azure 存储帐户中的 Hive 脚本路径。 该路径区分大小写。
-- **Output** 是 Hive 脚本中使用的参数。 使用 `wasbs://<Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/` 格式指向 Azure 存储中的现有文件夹。 该路径区分大小写。 
+- **scriptPath** 指向用于 MyStorageLinkedService 的 Azure 存储帐户中的 Hive 脚本路径。 此路径区分大小写。
+- **Output** 是 Hive 脚本中使用的参数。 使用 `wasbs://<Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/` 格式指向 Azure 存储中的现有文件夹。 此路径区分大小写。 
 
 1. 在数据工厂 UI 中，单击左窗格中的“+”（加号），然后单击“管道”。   
 

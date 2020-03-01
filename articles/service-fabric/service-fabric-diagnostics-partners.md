@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 监视合作伙伴
-description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric
+description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric 应用程序、群集和基础结构。
 author: rockboyfor
 ms.topic: article
 origin.date: 10/16/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 18085d30563a9868a1f5c9540f035633a17453fc
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 1dd7debf4784e324c26ffcdf8ca12eb00d56907c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742397"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540430"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 
@@ -38,7 +38,7 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 
 ## <a name="humio"></a>Humio
 
-Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观测性，Humio 还提供现代的分析和可视化功能，用于查看和收集诊断中的见解。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
+Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观测性外，Humio 还提供了最先进的分析和可视化功能，用于查看和收集诊断信息。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
 
 ## <a name="next-steps"></a>后续步骤
 

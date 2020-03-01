@@ -1,29 +1,27 @@
 ---
-title: 将 Node.js 应用部署到 Azure Stack 中的虚拟机 | Microsoft Docs
-description: 将 Node.js 应用部署到 Azure Stack。
-services: azure-stack
+title: 将 Node.js 应用部署到 Azure Stack Hub 中的虚拟机
+description: 将 Node.js 应用部署到 Azure Stack Hub。
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 04/24/2019
-ms.date: 07/29/2019
-ms.author: v-jay
+origin.date: 1/22/2020
+ms.date: 02/24/2020
+ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 77ebecbf88091ad6cfcb273ab9e7ea302f317e7d
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 0bbcfde7c39dfd7488f2c63e68ede46d1637f648
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513309"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540821"
 ---
-# <a name="deploy-a-nodejs-web-app-to-a-vm-in-azure-stack"></a>将 Node.js Web 应用部署到 Azure Stack 中的 VM
+# <a name="deploy-a-nodejs-web-app-to-a-vm-in-azure-stack-hub"></a>将 Node.js Web 应用部署到 Azure Stack Hub 中的 VM
 
-可以创建一个虚拟机 (VM) 来托管 Azure Stack 中的 Node.js Web 应用。 在本文中，你将设置一个服务器，将该服务器配置为托管 Node.js Web 应用，然后将该应用部署到 Azure Stack。
+可以创建一个虚拟机 (VM) 来托管 Azure Stack Hub 中的 Node.js Web 应用。 在本文中，你将设置一个服务器，将该服务器配置为托管 Node.js Web 应用，然后将该应用部署到 Azure Stack Hub。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-1. 按照[部署 Linux VM 以在 Azure Stack 中托管 Web 应用](azure-stack-dev-start-howto-deploy-linux.md)中的说明，在 Azure Stack 中设置 VM。
+1. 按照[部署 Linux VM 以在 Azure Stack Hub 中托管 Web 应用](azure-stack-dev-start-howto-deploy-linux.md)中的说明，在 Azure Stack Hub 中设置 VM。
 
 2. 在“VM 网络”窗格中，确保可以访问以下端口：
 
@@ -48,7 +46,7 @@ ms.locfileid: "68513309"
 2. [安装 NPM](https://www.npmjs.com/)（Node.js 包或模块的包管理器）。 仍在 SSH 会话中连接到 VM 时，输入以下命令：
 
     ```bash  
-       go version
+       node --version
     ```
 
 3. [安装 Git](https://git-scm.com)（一种广泛分布的版本控制和源代码管理 (SCM) 系统）。 仍在 SSH 会话中连接到 VM 时，输入以下命令：
@@ -88,6 +86,6 @@ ms.locfileid: "68513309"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[针对 Azure Stack 进行开发](azure-stack-dev-start.md)。
-- 了解[用作 IaaS 的 Azure Stack 的常见部署](azure-stack-dev-start-deploy-app.md)。
+- 详细了解如何[针对 Azure Stack Hub 进行开发](azure-stack-dev-start.md)。
+- 了解[用作 IaaS 的 Azure Stack Hub 的常见部署](azure-stack-dev-start-deploy-app.md)。
 - 若要了解 Node 编程语言并找到适用于 Node 的其他资源，请参阅 [Nodejs.org](https://nodejs.org)。

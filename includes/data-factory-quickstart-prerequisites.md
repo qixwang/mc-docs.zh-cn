@@ -6,15 +6,15 @@ author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 06/27/2019
-ms.date: 01/06/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 9663b3dfe83caf4fe2a38c7201b6743c51270a7e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 2e64cded515784acfa4deb3e6625994e3aae6464
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624193"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653583"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "75624193"
 - [Azure 数据工厂的角色和权限](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。   如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)创建一个。 
+在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。   如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-account-create.md)创建一个。 
 
 #### <a name="get-the-storage-account-name"></a>获取存储帐户名称
 在本快速入门中，将需要 Azure 存储帐户的名称。 以下过程提供的步骤用于获取存储帐户的名称： 

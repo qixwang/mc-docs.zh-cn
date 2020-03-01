@@ -1,30 +1,23 @@
 ---
-title: Azure Stack 中的配置文件支持的资源提供程序 API 版本 | Microsoft Docs
-description: 了解 Azure Stack 中的配置文件支持的 Azure 资源管理器 API 版本。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 中的配置文件支持的资源提供程序 API 版本
+description: 了解 Azure Stack Hub 中的配置文件支持的 Azure 资源管理器 API 版本。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 08/12/2019
-ms.date: 09/16/2019
+origin.date: 01/07/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 71c5cca82b5dc162da8c28058e3ca8322858096a
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 94c59242d084e9184bdf52e8d793d4546749493a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857325"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541043"
 ---
-# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
+# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack-hub"></a>Azure Stack Hub 中的配置文件支持的资源提供程序 API 版本
 
-可以在本文中找到 Azure Stack 使用的每个 API 配置文件的资源提供程序和版本号。 本文中的表格列出了每个资源提供程序支持的版本以及配置文件的 API 版本。 每个资源提供程序包含一组资源类型和特定的版本号。
+可以在本文中找到 Azure Stack Hub 使用的每个 API 配置文件的资源提供程序和版本号。 本文中的表格列出了每个资源提供程序支持的版本以及配置文件的 API 版本。 每个资源提供程序包含一组资源类型和特定的版本号。
 
 API 配置文件使用三个命名约定：
 
@@ -32,7 +25,7 @@ API 配置文件使用三个命名约定：
 - **yyyy-mm-dd-hybrid**
 - **yyyy-mm-dd-profile**
 
-有关 Azure Stack 的 API 配置文件和版本发布频率的说明，请参阅[在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles.md)。
+有关 Azure Stack Hub 的 API 配置文件和版本发布频率的说明，请参阅[在 Azure Stack Hub 中管理 API 版本配置文件](azure-stack-version-profiles.md)。
 
 > [!NOTE]
 > **最新** API 配置文件包含最新版资源提供程序 API，未在本文中列出。
@@ -200,7 +193,5 @@ API 配置文件使用三个命名约定：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [安装适用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md)
-* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)  
-
-<!-- Update_Description: wording update -->
+- [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)
+- [配置 Azure Stack Hub PowerShell 环境](azure-stack-powershell-configure-user.md)  

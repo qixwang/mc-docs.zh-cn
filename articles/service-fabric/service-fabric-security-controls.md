@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 的安全控制
-description: 用于评估 Azure Service Fabric 的安全控制的清单
+description: 了解 Azure Service Fabric 的安全控制。 包含内置安全控制清单。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: e47806bbbd8bb8f5cad06d694ccd2cad2351516e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 06d07df2d317514461f623e72bbed5020de64236
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742421"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540103"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Azure Service Fabric 的安全控制
 

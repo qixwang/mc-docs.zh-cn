@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 11/13/2019
-ms.date: 01/27/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: c6b2fecfda6d955ce61f66775e8d6a478c9c10d2
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 5e5b8df5dda129b48cde5d9fca4145342ef3fe38
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123446"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590266"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>快速入门：在 Windows 上运行语音设备 SDK 示例应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "76123446"
 
 [示例应用程序](https://aka.ms/sdsdk-download-JRE)的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
@@ -40,7 +40,7 @@ ms.locfileid: "76123446"
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 * 下载用于 Java 的[语音设备 SDK](https://aka.ms/sdsdk-download-JRE) 的最新版本，并将 .zip 提取到工作目录。
    > [!NOTE]
-   > JRE-Sample-Release.zip 文件包含 JRE 示例应用，本快速入门假设该应用提取到 C:\SDSDK\JRE-Sample-Release
+   > 本快速入门假设应用已解压缩到 C:\SDSDK\JRE-Sample-Release
 
 <!-- Conversation Transcription is currently only available for "en-US" and "zh-CN", in the “chinaeast2” region. You must have a speech key in one of those regions to use Conversation Transcription. -->
 
@@ -82,7 +82,7 @@ ms.locfileid: "76123446"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -100,9 +100,9 @@ ms.locfileid: "76123446"
    ```java
     // Subscription
     private static String SpeechSubscriptionKey = "<enter your subscription info here>";
-    private static String SpeechRegion = "chinaeast2";
+    private static String SpeechRegion = "chinaeast2"; // You can change this if your speech region is different.
     private static String LuisSubscriptionKey = "<enter your subscription info here>";
-    private static String LuisRegion = "chinaeast2";
+    private static String LuisRegion = "chinaeast2"; // you can change this, if you want to test the intent, and your LUIS region is different.
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 

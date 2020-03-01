@@ -1,32 +1,30 @@
 ---
-title: 快速入门：列出“文本转语音”语音，Python - 语音服务
+title: 列出“文本转语音”语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用 Python 获取某个区域/终结点的标准语音的完整列表。 列表以 JSON 形式返回，语音可用性因区域而异。
+description: 本文介绍如何使用 Python 获取某个区域/终结点的标准语音和神经语音的完整列表。 列表以 JSON 形式返回，语音可用性因区域而异。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+ms.topic: how-to
+origin.date: 02/10/2020
+ms.date: 03/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 78489cef813ece558dc784a7bed6160de1701351
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: e5490488f5c8b8a824b1ceafe57c21daa22f839d
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269955"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042308"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>快速入门：使用 Python 获取“文本转语音”语音的列表
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
 
-本快速入门介绍如何使用 Python 获取某个区域/终结点的标准语音的完整列表。 列表以 JSON 形式返回，语音可用性因区域而异。 有关受支持的区域的列表，请参阅[区域](regions.md)。
+本文介绍如何使用 Python 获取某个区域/终结点的标准语音和神经语音的完整列表。 列表以 JSON 形式返回，语音可用性因区域而异。 有关受支持的区域的列表，请参阅[区域](regions.md)。
 
-此快速入门需要包含语音服务资源的 [Azure 认知服务帐户](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[试用帐户](get-started.md)获取订阅密钥。
+在本文中，需要使用一个包含语音服务资源的 [Azure 认知服务](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)帐户。 如果没有帐户，可以使用[试用帐户](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备条件
-
-本快速入门需要：
+## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器

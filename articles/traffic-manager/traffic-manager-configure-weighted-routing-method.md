@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure 流量管理器配置加权轮循机制流量路由方法 | Azure
-description: 本文介绍如何在流量管理器中使用轮循机制方法加载均衡流量
+title: 教程 - 使用 Azure 流量管理器配置加权轮询机制流量路由
+description: 本教程介绍如何在流量管理器中使用轮询机制方法对流量进行负载均衡
 services: traffic-manager
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/20/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: b8ed48d7688291d72696cad7e4da1795dc6a7bbd
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 6711f72b15e27e4c742a0791031afd9409d0205b
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857200"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653217"
 ---
-# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>在流量管理器中配置加权流量路由方法
+# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>教程：在流量管理器中配置加权流量路由方法
 
 一种常见的流量路由方法模式是提供一组相同的终结点（包括云服务和网站），并均匀地向每个终结点发送流量。 以下步骤概述如何配置这种类型的流量路由方法。
 
@@ -50,10 +50,11 @@ ms.locfileid: "70857200"
 
 - 了解[优先级流量路由方法](traffic-manager-configure-priority-routing-method.md)。
 - 了解[性能流量路由方法](traffic-manager-configure-performance-routing-method.md)。
-    <!-- Not Available on - Learn about [geographic routing method](traffic-manager-configure-geographic-routing-method.md)-->
+- 了解[地理路由方法](traffic-manager-configure-geographic-routing-method.md)。
 - 了解如何[测试流量管理器设置](traffic-manager-testing-settings.md)。
 
 <!--Image references-->
+
 [1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

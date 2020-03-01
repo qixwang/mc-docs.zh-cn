@@ -4,16 +4,16 @@ description: 本快速入门展示了如何开始使用 Visual Studio 创建流�
 services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
-origin.date: 12/20/2018
-ms.date: 8/28/2019
+origin.date: 06/11/2019
+ms.date: 02/27/2020
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: db306610e021b495845af9789f752b418dd3ce71
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 979f0cc14e51004725b25d6237e14cf381cdc767
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75855626"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154632"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
 
@@ -25,7 +25,7 @@ ms.locfileid: "75855626"
 
 * 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-* 安装 Visual Studio 2017、Visual Studio 2015 或 Visual Studio 2013 Update 4。 支持 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支持 Express 版本。
+* 安装 Visual Studio 2019、Visual Studio 2015 或 Visual Studio 2013 Update 4。 支持 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支持 Express 版本。
 
 * 按照[安装说明](/stream-analytics/stream-analytics-tools-for-visual-studio-install)安装用于 Visual Studio 的流分析工具。
 
@@ -101,7 +101,7 @@ ms.locfileid: "75855626"
 
 1. 在 Visual Studio 中，在“视图”菜单中选择“服务器资源管理器”   。
 
-2. 右键单击“Azure”，选择“连接到世纪互联 Azure 订阅”，然后使用你的 Azure 帐户进行登录。  
+2. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅”，然后使用你的 Azure 帐户进行登录。  
 
 ## <a name="define-input"></a>定义输入
 

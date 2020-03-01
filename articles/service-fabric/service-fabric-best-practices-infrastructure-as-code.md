@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 基础结构即代码最佳做法
-description: 用于管理 Service Fabric 基础结构即代码的最佳做法。
+description: 以基础结构即代码方式管理 Azure Service Fabric 的最佳做法和设计注意事项。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/23/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9ea768f027d88e7a4c84b1f8d49ad6bcbe95a8ea
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 4ac9bb4767a9bb6a3317f8c78f93a932cff4a1f5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742441"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540212"
 ---
 <!--Verify successfully-->
 # <a name="infrastructure-as-code"></a>基础结构即代码
@@ -61,7 +61,7 @@ $ResourceGroupName="sfclustergroup"
 $Location="chinanorth"
 $Template="azuredeploy.json"
 $Parameters="azuredeploy.parameters.json"
-$DeploymentName="yourdeploymentname"
+$DeploymentName="<yourdeploymentname>"
 
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 New-AzResourceGroupDeployment -Name $DeploymentName -ResourceGroupName $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters

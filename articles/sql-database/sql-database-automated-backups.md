@@ -13,12 +13,12 @@ ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 origin.date: 12/13/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: da71b23cbc1939d7681838aa02bb485b67c0e0c0
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: 490ac4ad96e6f9b8386f738c61dee0317f980710
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155733"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154476"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -73,7 +73,7 @@ PITR 备份是异地冗余的，受 [Azure 存储跨区域复制](../storage/com
 ## <a name="backup-storage-consumption"></a>备份存储消耗量 
 
 对于单一数据库，备份存储总用量的计算方式如下：   
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) � database size`。
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) - database size`。
 
 对于弹性池，备份存储总大小将在池级别聚合，计算方式如下：   
 `Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`。 

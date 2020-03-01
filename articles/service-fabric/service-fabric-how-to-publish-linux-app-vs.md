@@ -1,17 +1,17 @@
 ---
-title: 了解如何创建 .NET Core 应用程序并将其发布到远程 Azure Service Fabric Linux 群集
+title: 创建 .Net Core 应用并将其发布到远程 Linux 群集
 description: 在 Visual Studio 中创建 .NET Core 应用并将其发布到远程 Linux 群集
 author: rockboyfor
 ms.topic: troubleshooting
 origin.date: 05/20/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: afa2453129cf45cbfbeb03556ac6c5182f0dcc33
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f72370cab8f9e21f5a239e80a075ab5c1922bc79
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742507"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540418"
 ---
 <!--Verify successfully-->
 <!--Need Reopen the Visual Studio project and refresh certification after about half an hour-->
@@ -73,11 +73,11 @@ ms.locfileid: "75742507"
 
 <!--Image references-->
 
-[create-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
-[create-service]:./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
-[build-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
-[edit-csproj]:./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
-[publish-application]:./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
+[create-application]: ./media/service-fabric-how-to-vs-remote-linux-cluster/create-application-remote-linux.png
+[create-service]: ./media/service-fabric-how-to-vs-remote-linux-cluster/create-service-remote-linux.png
+[build-application]: ./media/service-fabric-how-to-vs-remote-linux-cluster/build-application-remote-linux.png
+[edit-csproj]: ./media/service-fabric-how-to-vs-remote-linux-cluster/edit-csproj-remote-linux.png
+[publish-application]: ./media/service-fabric-how-to-vs-remote-linux-cluster/publish-remote-linux.png
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Service Fabric 入门（使用 .NET Core）](https://azure.microsoft.com/resources/samples/service-fabric-dotnet-core-getting-started/)

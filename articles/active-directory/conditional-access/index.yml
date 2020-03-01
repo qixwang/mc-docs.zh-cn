@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: MicrosoftGuyJFlo
   ms.author: v-junlch
-  ms.date: 01/09/2020
+  ms.date: 02/25/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 62e69f76acf2b2fb9599154387a70ee232d39907
-  ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+  ms.openlocfilehash: a163490655930da445d3eb2a58ccdd4f0ea3c118
+  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/21/2020
-  ms.locfileid: "77540042"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77653322"
 landingContent:
 - title: 关于条件访问
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 什么是条件？
-      url: conditions.md
+      url: concept-conditional-access-conditions.md
     - text: 如何定义位置？
       url: location-condition.md
     - text: 什么是控制？

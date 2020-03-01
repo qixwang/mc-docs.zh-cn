@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI - sfctl node
-description: 介绍 Service Fabric CLI sfctl node 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理群集节点的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 257483bcdcd334ea0141904a49e3dde631db9593
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c631f36770660c496e79e0f679a3f8438b9b3d42
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742224"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540593"
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理构成群集的节点。
@@ -20,17 +20,44 @@ ms.locfileid: "75742224"
 
 |命令|说明|
 | --- | --- |
+| add-configuration-parameter-overrides | 在指定节点上添加替代配置列表。 |
 | disable | 根据指定的停用意图停用 Service Fabric 群集节点。 |
 | enable | 激活当前已停用的 Service Fabric 群集节点。 |
+| get-configuration-overrides | 获取指定节点上的替代配置列表。 |
 | health | 获取 Service Fabric 节点的运行状况。 |
 | info | 获取有关 Service Fabric 群集中特定节点的信息。 |
 | list | 获取 Service Fabric 群集中的节点的列表。 |
 | load | 获取 Service Fabric 节点的负载信息。 |
+| remove-configuration-overrides | 删除指定节点上的替代配置。 |
 | remove-state | 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。 |
 | report-health | 发送有关 Service Fabric 节点的运行状况报告。 |
 | restart | 重启 Service Fabric 群集节点。 |
 | transition | 启动或停止群集节点。 |
 | transition-status | 获取使用 StartNodeTransition 启动的操作的进度。 |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl node add-configuration-parameter-overrides
+在指定节点上添加替代配置列表。
+
+此 api 允许添加指定节点上的所有现有替代配置。
+
+### <a name="arguments"></a>参数
+
+|参数|说明|
+| --- | --- |
+| --config-parameter-override-list [必需] | 添加替代配置列表的说明。 |
+| --node-name [必需] | 节点的名称。 |
+| --force | 在指定节点上强制添加替代配置。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
+
+### <a name="global-arguments"></a>全局参数
+
+|参数|说明|
+| --- | --- |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
+| --help -h | 显示此帮助消息并退出。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
+| --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-node-disable"></a>sfctl node disable
 根据指定的停用意图停用 Service Fabric 群集节点。
@@ -59,6 +86,28 @@ ms.locfileid: "75742224"
 激活当前已停用的 Service Fabric 群集节点。
 
 激活当前已停用的 Service Fabric 群集节点。 激活后，该节点再次成为可放置新副本的有效目标，该节点上剩余的所有已停用副本会重新激活。
+
+### <a name="arguments"></a>参数
+
+|参数|说明|
+| --- | --- |
+| --node-name [必需] | 节点的名称。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
+
+### <a name="global-arguments"></a>全局参数
+
+|参数|说明|
+| --- | --- |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
+| --help -h | 显示此帮助消息并退出。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
+| --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl node get-configuration-overrides
+获取指定节点上的替代配置列表。
+
+此 api 允许获取指定节点上的所有现有替代配置。
 
 ### <a name="arguments"></a>参数
 
@@ -150,6 +199,28 @@ ms.locfileid: "75742224"
 获取 Service Fabric 节点的负载信息。
 
 在 Service Fabric 节点的负载信息中检索已定义负载或容量的所有指标。
+
+### <a name="arguments"></a>参数
+
+|参数|说明|
+| --- | --- |
+| --node-name [必需] | 节点的名称。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
+
+### <a name="global-arguments"></a>全局参数
+
+|参数|说明|
+| --- | --- |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
+| --help -h | 显示此帮助消息并退出。 |
+| --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
+| --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
+
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl node remove-configuration-overrides
+删除指定节点上的替代配置。
+
+此 api 允许删除指定节点上的所有现有替代配置。
 
 ### <a name="arguments"></a>参数
 

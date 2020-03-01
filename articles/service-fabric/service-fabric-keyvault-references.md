@@ -3,14 +3,14 @@ title: Azure Service Fabric - 使用 Service Fabric 应用程序 KeyVault 引用
 description: 本文介绍如何使用应用程序机密的 Service Fabric KeyVaultReference 支持。
 ms.topic: article
 origin.date: 09/20/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: eae31e9335d6ecf2ac83eabc4001fdf6c85b7e49
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: d6cc57d9459d589111e27ee2530b7780788cd640
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742499"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540411"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "75742499"
 
 - 中心机密存储 (CSS)。
 
-    中心机密存储 (CSS) 是 Service Fabric 的已加密本地机密缓存，一旦提取 KeyVaultReference，就会将其缓存在 CSS 中。
+    中心机密存储 (CSS) 是 Service Fabric 的已加密本地机密缓存。 CSS 是一个本地机密存储缓存，用于保存敏感数据，例如，已在内存中加密的密码、令牌和密钥。 KeyVaultReference 在提取后会缓存在 CSS 中。
 
     将以下内容添加到群集配置中的 `fabricSettings` 下，即可为 KeyVaultReference 支持启用所需的所有功能。
 
@@ -70,7 +70,18 @@ ms.locfileid: "75742499"
         "value": "<EncryptionCertificateThumbprint for CSS>"
     }
     ```
-
+    若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，forceRestart 是基本设置；请对其余设置使用你的现有值。
+    ```json
+    "upgradeDescription": {
+        "forceRestart": true,
+        "healthCheckRetryTimeout": "00:45:00",
+        "healthCheckStableDuration": "00:05:00",
+        "healthCheckWaitDuration": "00:05:00",
+        "upgradeDomainTimeout": "02:00:00",
+        "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+        "upgradeTimeout": "12:00:00"
+    }
+    ```
 - 向应用程序的托管标识授予对 keyvault 的访问权限
 
     参考[此文档](how-to-grant-access-other-resources.md)来了解如何向托管标识授予对 keyvault 的访问权限。 另请注意，如果使用系统分配的托管标识，则只会在部署应用程序之后才创建托管标识。
@@ -153,5 +164,4 @@ KeyVaultReference 是容器 RepositoryCredentials 支持的类型。以下示例
 
 * [Azure KeyVault 文档](/key-vault/)
 
-<!-- Update_Description: new article about service fabric keyvault references -->
-<!--NEW.date: 12/09/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

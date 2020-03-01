@@ -1,33 +1,30 @@
 ---
 title: 更新 Windows Defender 防病毒
-titleSuffix: Azure Stack
-description: 了解如何在 Azure Stack 上更新 Windows Defender 防病毒
-services: azure-stack
+titleSuffix: Azure Stack Hub
+description: 了解如何在 Azure Stack Hub 上更新 Windows Defender 防病毒
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
 ms.topic: article
 origin.date: 12/04/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 4f4224f5023a62aecec450f6c280989b9b827245
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 077fe78c6cdda5e7dcac133f33fe8e1bc37c94db
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737779"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540342"
 ---
 # <a name="update-windows-defender-antivirus-on-azure-stack-hub"></a>在 Azure Stack Hub 上更新 Windows Defender 防病毒
 
-[Windows Defender 防病毒](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)是一种反恶意软件解决方案，可提供安全性和病毒防护功能。 每个 Azure Stack 基础结构组件（Hyper-V 主机和虚拟机）均受到 Windows Defender 防病毒的保护。 为了获得最新的保护，需要定期更新 Windows Defender 防病毒定义、引擎和平台。 如何应用更新取决于配置。
+[Windows Defender 防病毒](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)是一种反恶意软件解决方案，可提供安全性和病毒防护功能。 每个 Azure Stack Hub 基础结构组件（Hyper-V 主机和虚拟机）均受到 Windows Defender 防病毒的保护。 为了获得最新的保护，需要定期更新 Windows Defender 防病毒定义、引擎和平台。 如何应用更新取决于配置。
 
 ## <a name="connected-scenario"></a>联网场景
 
-Azure Stack Hub 的[更新资源提供程序](azure-stack-updates.md#the-update-resource-provider)每天多次下载反恶意软件定义和引擎更新。 每个 Azure Stack 基础结构组件都会从更新资源提供程序获取更新并自动应用更新。
+Azure Stack Hub 的[更新资源提供程序](azure-stack-updates.md#the-update-resource-provider)每天多次下载反恶意软件定义和引擎更新。 每个 Azure Stack Hub 基础结构组件都会从更新资源提供程序获取更新并自动应用更新。
 
-对于连接到公共 Internet 的 Azure Stack Hub 部署，请应用[每月 Azure Stack 更新](azure-stack-apply-updates.md)。 每月的 Azure Stack Hub 更新包括该月的 Windows Defender 防病毒平台更新。
+对于连接到公共 Internet 的 Azure Stack Hub 部署，请应用[每月 Azure Stack Hub 更新](azure-stack-apply-updates.md)。 每月的 Azure Stack Hub 更新包括该月的 Windows Defender 防病毒平台更新。
 
 ## <a name="disconnected-scenario"></a>离线场景
 

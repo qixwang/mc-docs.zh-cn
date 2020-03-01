@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure 数据资源管理器中不使用任何代码引入监视数据
+title: 教程：不使用代码引入监视数据 - Azure 数据资源管理器
 description: 本教程介绍如何在不使用任何代码和查询数据的情况下将监视数据引入到 Azure 数据资源管理器。
 author: orspod
 ms.author: v-tawe
@@ -7,13 +7,13 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 origin.date: 01/29/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 34c8eed24309bcb8f68020f1f3f370798490703a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.date: 03/09/2020
+ms.openlocfilehash: 506bf6d817c4be7b7c047c90954cd553823ad70a
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037931"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590293"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 
@@ -31,7 +31,7 @@ ms.locfileid: "77037931"
 > [!NOTE]
 > 在同一 Azure 位置或区域中创建所有资源。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)。 在本教程中，数据库名为 TestDatabase  。
@@ -44,7 +44,7 @@ ms.locfileid: "77037931"
 
 Azure 诊断指标和日志以及活动日志是由 Azure 服务发出的，用于提供与该服务的操作相关的数据。 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
 #### <a name="example"></a>示例
 
 诊断指标以 1 分钟的时间粒度聚合。 下面是有关查询持续时间的 Azure 数据资源管理器指标事件架构示例：
@@ -78,7 +78,7 @@ Azure 诊断指标和日志以及活动日志是由 Azure 服务发出的，用�
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
 #### <a name="example"></a>示例
 
 下面是 Azure 数据资源管理器[诊断引入日志](using-diagnostic-logs.md#diagnostic-logs-schema)的示例：
@@ -134,7 +134,7 @@ Azure 诊断指标和日志以及活动日志是由 Azure 服务发出的，用�
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 #### <a name="example"></a>示例
 
 Azure 活动日志是订阅级日志，提供对订阅中的资源执行的操作的深入见解。 下面是用于检查访问权限的活动日志事件示例：
@@ -211,7 +211,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 使用 Azure 数据资源管理器 Web UI 在 Azure 数据资源管理器数据库中创建目标表。
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>创建诊断指标表
 
 1. 在 *TestDatabase* 数据库中，创建名为 *DiagnosticMetrics* 的表来存储诊断指标记录。 使用以下 `.create table` 控制命令：
@@ -236,7 +236,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>创建诊断日志表 
 
 1. 在 *TestDatabase* 数据库中，创建名为 *DiagnosticLogs* 的表来存储诊断日志记录。 使用以下 `.create table` 控制命令：
@@ -259,7 +259,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>创建活动日志表 
 
 1. 在 *TestDatabase* 数据库中，创建名为 *ActivityLogs* 的表来接收活动日志记录。 若要创建该表，请运行以下 Azure 数据资源管理器查询：
@@ -285,7 +285,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
  由于数据格式为 `json`，因此需要数据映射。 `json` 映射将每个 JSON 路径映射到表列名。
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[诊断指标/诊断日志](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[诊断指标/诊断日志](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>将诊断指标和日志映射到表
 
 若要将诊断指标和日志数据映射到表，请使用以下查询：
@@ -294,7 +294,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>将活动日志映射到表
 
 若要将活动日志数据映射到表，请使用以下查询：
@@ -306,7 +306,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>为指标和日志数据创建更新策略
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>为诊断指标创建数据更新策略
 
 1. 创建一个[函数](https://docs.microsoft.com/azure/kusto/management/functions)来扩展诊断指标记录集合，使集合中的每个值收到一个单独的行。 使用 [`mv-expand`](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator) 运算符：
@@ -334,7 +334,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>为诊断日志创建数据更新策略
 
 1. 创建一个[函数](https://docs.microsoft.com/azure/kusto/management/functions)来扩展诊断日志记录集合，使集合中的每个值收到一个单独的行。 你将在 Azure 数据资源管理器群集上启用引入日志，并使用[引入日志架构](/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)。 你将为成功和失败的引入创建一个表，对于成功的引入，某些字段将为空（例如，ErrorCode）。 使用 [`mv-expand`](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator) 运算符：
@@ -367,7 +367,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>为活动日志创建数据更新策略
 
 1. 创建一个[函数](https://docs.microsoft.com/azure/kusto/management/functions)用于扩展活动日志记录集合，使集合中的每个值收到一个单独的行。 使用 [`mv-expand`](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator) 运算符：
@@ -394,7 +394,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 2. 将[更新策略](https://docs.microsoft.com/azure/kusto/concepts/updatepolicy)添加到目标表。 此策略将针对 *ActivityLogsRawRecords* 中间数据表中任何新引入的数据自动运行查询，并将查询结果引入到 *ActivityLogs* 表中：
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -426,7 +426,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 现在需要将诊断指标和日志以及活动日志连接到事件中心。
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[诊断指标/诊断日志](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[诊断指标/诊断日志](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>将诊断指标和日志连接到事件中心
 
 选择要从其中导出指标的资源。 支持导出诊断数据的资源类型有多种，包括事件中心命名空间、Azure Key Vault、Azure IoT 中心和 Azure 数据资源管理器群集。 在本教程中，我们将使用 Azure 数据资源管理器群集作为资源，并查看查询性能指标和引入结果日志。
@@ -453,7 +453,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 1. 选择“保存”  。
 
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>将活动日志连接到事件中心
 
 1. 在 Azure 门户的左侧菜单中，选择“活动日志”  。
@@ -502,7 +502,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
     ![事件中心数据连接](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[诊断指标/诊断日志](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[诊断指标/诊断日志](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. 在“数据连接”窗口中使用以下设置  ：
 
@@ -529,7 +529,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 1. 选择“创建”  。  
 
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 
 1. 在“数据连接”窗口中使用以下设置  ：
 
@@ -561,7 +561,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 现已创建用于流送数据的管道。 默认情况下，通过群集引入数据需要 5 分钟，因此，请先让数据流动几分钟，然后再开始查询。
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[诊断指标](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>查询诊断指标表
 
 以下查询分析 Azure 数据资源管理器诊断指标记录中的查询持续时间数据：
@@ -580,7 +580,7 @@ DiagnosticMetrics
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[诊断日志](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>查询诊断日志表
 
 此管道通过事件中心生成引入。 你将查看这些引入的结果。
@@ -600,7 +600,7 @@ DiagnosticLogs
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.chinacloudapi.cn/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[活动日志](#tab/activity-logs)
+# <a name="activity-logs"></a>[活动日志](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>查询活动日志表
 
 以下查询分析 Azure 数据资源管理器活动日志记录中的数据：

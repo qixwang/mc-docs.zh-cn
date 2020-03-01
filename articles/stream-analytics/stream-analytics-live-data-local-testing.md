@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
-ms.openlocfilehash: d465a1fc8a32957a30b65dc40df4c0e33dd4e825
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 7be60ce76ff223f28800a6d13f290919d99e5ff5
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856846"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154617"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览版）
 
@@ -38,7 +38,6 @@ ms.locfileid: "75856846"
 2. 若要测试实时数据，请从下拉框中选择“使用云输入”  。
 
    ![Azure 流分析 Visual Studio 实时云输入](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. 设置**开始时间**以定义作业何时开始处理输入数据。 作业可能需要提前读取输入数据来确保结果准确。 默认时间设置为当前时间之前的 30 分钟。
 

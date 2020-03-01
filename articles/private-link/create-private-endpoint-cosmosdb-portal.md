@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3d4a5b32e823306ad277f39f37371bccd47bd1f4
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: fc78ba760d7585e1f0697642ea8bd07d3a92443d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859234"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540530"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure Cosmos 帐户
 
@@ -143,7 +143,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
     10.1.255.14 mycosmosaccount-chinaeast2.documents.azure.cn
 
-1. 在  *myVM* 的远程桌面中，安装 [Azure 存储资源管理器](/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
+1. 在 myVM  的远程桌面中，安装 [Azure 存储资源管理器](/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
 
 1. 通过右键单击选择“Cosmos DB 帐户（预览版）”  。
 
@@ -161,23 +161,23 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. （可选）向 *mycosmosaccount* 中添加新项。
 
-1. 关闭与  *myVM* 建立的远程桌面连接。
+1. 关闭与 *myVM* 的远程桌面连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 用完专用终结点、Azure Cosmos 帐户和 VM 之后，请删除资源组及其包含的所有资源： 
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。   **  
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。
 
 1. 选择“删除资源组”  。
 
-1. 对于“键入资源组名称”，请输入  *myResourceGroup* ，然后选择“删除”。  
+1. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”    。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你在虚拟网络上创建了一个 VM、一个 Azure Cosmos 帐户和一个专用终结点。 你从 Internet 连接到了该 VM，并使用专用链接安全地与 Azure Cosmos 帐户进行通信。
 
-* 若要详细了解专用终结点，请参阅 [什么是 Azure 专用终结点？](private-endpoint-overview.md)。
+* 若要详细了解专用终结点，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。
 
     <!--Not Available on [Azure Private Link with Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md)-->
 

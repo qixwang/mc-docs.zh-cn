@@ -1,25 +1,23 @@
 ---
-title: 如何获取 Azure Stack Hub 的身份验证信息 | Microsoft Docs
+title: 如何获取 Azure Stack Hub 的身份验证信息
 description: 了解如何获取 Azure Stack Hub 的身份验证信息
-services: azure-stack
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 12/13/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
-ms.openlocfilehash: 2766debf65f82ecf9100eebf0c3614d51a38326e
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 2c8feafc36a5d5b0fdfc7d6c32434a94335ff65d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737984"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540863"
 ---
-# <a name="how-to-get-authentication-information-for-azure-stack-hub"></a>如何获取 Azure Stack Hub 的身份验证信息
+# <a name="get-authentication-information-for-azure-stack-hub"></a>获取 Azure Stack Hub 的身份验证信息
 
-若要对 Azure Stack Hub 进行身份验证，需要提供订阅 ID、租户 ID 和位置以及 Azure Stack Hub 资源管理器终结点。 可以从 [Azure Stack Hub 资源管理器终结点](/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1910#the-azure-stack-resource-manager-endpoint)为 Azure Stack Hub 获取这些值。 或者，可以使用本文中的步骤获取它们。
+若要对 Azure Stack Hub 进行身份验证，需要提供订阅 ID、租户 ID 和位置以及 Azure Stack Hub 资源管理器终结点。 可以从 [Azure Stack Hub 资源管理器终结点](/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1910#the-azure-stack-hub-resource-manager-endpoint)为 Azure Stack Hub 获取这些值。 或者，可以使用本文中的步骤获取它们。
 
 ## <a name="values-needed-to-authenticate"></a>进行身份验证所需的值
 
@@ -27,7 +25,7 @@ ms.locfileid: "75737984"
 
 -   **订阅 ID**  
 
-    使用订阅 ID 访问 Azure Stack 中的套餐。
+    使用订阅 ID 访问 Azure Stack Hub 中的套餐。
 
 -   **租户 ID**
 
@@ -77,4 +75,4 @@ Azure 资源管理器终结点是用于 Azure Stack Hub 的部署和管理服务
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何将 [Azure Stack 资源管理器](/azure-stack/user/azure-stack-version-profiles?view=azs-1910) 与 Azure Stack Hub 配合使用。
+详细了解如何在 Azure Stack Hub 中使用 [Azure Stack Hub 资源管理器](/azure-stack/user/azure-stack-version-profiles?view=azs-1910)。

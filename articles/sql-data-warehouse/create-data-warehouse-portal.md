@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: development
 origin.date: 05/28/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d8b709a6a5f4f61128b102848aacceb8688e5de
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: a981710663504c679fed1f9fe1993e8225434224
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964892"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154397"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库
 
@@ -38,7 +38,7 @@ ms.locfileid: "75964892"
 
 ## <a name="create-a-data-warehouse"></a>创建数据仓库
 
-使用一组定义好的[计算资源](memory-concurrency-limits.md)创建 Azure SQL 数据仓库。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-logical-servers.md)中创建。 
+使用一组定义好的[计算资源](memory-concurrency-limits.md)创建 Azure SQL 数据仓库。 数据库在 [Azure 资源组](../azure-resource-manager/management/overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-logical-servers.md)中创建。 
 
 按照这些步骤创建包含 AdventureWorksDW 示例数据的 SQL 数据仓库。 
 
@@ -52,10 +52,9 @@ ms.locfileid: "75964892"
 
     | 设置 | 建议的值 | 说明 |
     | :------ | :-------------- | :---------- |
-    | **数据库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 请注意，数据仓库是一种数据库。|
     | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.cn/Subscriptions)。 |
     | **资源组** | MyResourceGroup | 有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-    | **选择源** | 空白数据库 | 创建空数据库。 请注意，数据仓库是一种数据库。 |
+    | **数据仓库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 请注意，数据仓库是一种数据库。|
     ||||
 
     ![创建数据仓库](media/create-data-warehouse-portal/select-sample.png)

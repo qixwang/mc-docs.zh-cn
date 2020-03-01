@@ -1,27 +1,19 @@
 ---
-title: Azure Stack 云解决方案提供商的使用情况和计费注册错误代码 | Microsoft Docs
-description: Azure Stack 使用情况和注册错误代码。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 云解决方案提供商的使用情况和计费注册错误代码
+description: Azure Stack Hub 使用情况和注册错误代码。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/04/2019
-ms.date: 11/18/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: 68fc563e45f8c02413f5d1554b7e54573e889f01
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: e8c267337d34e15130bd974cd1905fc6cdfc1974
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020285"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540351"
 ---
 # <a name="usage-and-billing-registration-error-codes"></a>使用情况和计费注册错误代码
 
@@ -31,8 +23,8 @@ ms.locfileid: "74020285"
 
 | 错误                           | 详细信息                                                                                                                                                                                                                                                                                                                           | 注释                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **RegistrationNotFound**            | 提供的注册未找到。 确保正确提供以下信息：<br>1.订阅标识符（提供的值：订阅标识符  ）；<br>2.资源组（提供的值：资源组  ）；<br>3.注册名称（提供的值：注册名称  ）。                             | 当指向初始注册的信息不正确时，通常会发生此错误。 如需验证注册的资源组和名称，可以通过列出所有资源的方式在 Azure 门户中找到它。 如果找到多个注册资源，请查看属性中的 **CloudDeploymentID**，然后选择其 **CloudDeploymentID** 与云的 CloudDeploymentID 匹配的注册。 若要查找 **CloudDeploymentID**，可以在 Azure Stack 上使用以下 PowerShell 命令：<br>`$azureStackStampInfo = Invoke-Command -Session $session -ScriptBlock { Get-AzureStackStampInformation }` |
-| **BadCustomerSubscriptionId**       | 提供的客户订阅标识符  和注册名称  订阅标识符不是由同一 Azure 云服务提供商拥有。 检查客户订阅标识符是否正确。 如果问题仍然存在，请联系支持部门。 | 如果客户订阅为 CSP 订阅，但它汇总到 CSP 合作伙伴时，该合作伙伴不同于在初始注册中使用的订阅所汇总到的合作伙伴，则会发生此错误。 进行该检查是为了防止出现特定的情况，该情况会导致对与所使用的 Azure Stack 无关的 CSP 合作伙伴收费。                                                                                                                                                                                                                                                                          |
+| **RegistrationNotFound**            | 提供的注册未找到。 确保正确提供以下信息：<br>1.订阅标识符（提供的值：订阅标识符  ）；<br>2.资源组（提供的值：资源组  ）；<br>3.注册名称（提供的值：注册名称  ）。                             | 当指向初始注册的信息不正确时，通常会发生此错误。 如需验证注册的资源组和名称，可以通过列出所有资源的方式在 Azure 门户中找到它。 如果找到多个注册资源，请查看属性中的 **CloudDeploymentID**，然后选择其 **CloudDeploymentID** 与云的 CloudDeploymentID 匹配的注册。 若要查找 **CloudDeploymentID**，可以在 Azure Stack Hub 上使用以下 PowerShell 命令：<br>`$azureStackStampInfo = Invoke-Command -Session $session -ScriptBlock { Get-AzureStackStampInformation }` |
+| **BadCustomerSubscriptionId**       | 提供的客户订阅标识符  和注册名称  订阅标识符不是由同一 Microsoft 云解决方案提供商拥有。 检查客户订阅标识符是否正确。 如果问题仍然存在，请联系支持部门。 | 如果客户订阅为 CSP 订阅，但它汇总到 CSP 合作伙伴时，该合作伙伴不同于在初始注册中使用的订阅所汇总到的合作伙伴，则会发生此错误。 进行此检查是为了防止会导致向不对所用的 Azure Stack Hub 负责的云解决方案提供商合作伙伴计费的情况。                                                                                                                                                                                                                                                                          |
 | **InvalidCustomerSubscriptionId**   | **客户订阅标识符**无效。 确保提供有效的 Azure 订阅。                                                                                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | **CustomerSubscriptionNotFound**    | 在**注册名称**下找不到**客户订阅标识符**。 确保使用有效的 Azure 订阅，并已使用 PUT 操作将订阅 ID 添加到注册。                                                   | 尝试验证是否已向订阅添加租户但却找不到与注册关联的客户订阅时，会发生此错误。 尚未将客户添加到订阅，或者订阅 ID 写入错误。                                                                                                                                                                                                                                                                                                                                |
 | **UnauthorizedCspRegistration**     | 提供的注册名称  尚未获批使用多租户。                                                                                    | 注册需要获得 Azure 的批准，在允许使用多租户后，才能开始向其添加租户。                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -43,4 +35,4 @@ ms.locfileid: "74020285"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[适用于云解决方案提供商的使用情况报告基础结构](azure-stack-csp-ref-infrastructure.md)。
-- 若要详细了解如何从 Azure Stack 检索资源使用情况信息，请参阅 [Azure Stack 中的使用情况和计费](azure-stack-billing-and-chargeback.md)。
+- 若要详细了解如何从 Azure Stack Hub 检索资源使用情况信息，请参阅 [Azure Stack Hub 中的使用情况和计费](azure-stack-billing-and-chargeback.md)。

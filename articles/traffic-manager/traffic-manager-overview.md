@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/05/2019
-ms.date: 07/22/2019
+origin.date: 11/23/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1e267317b6cf33f425cba88953e9317a06f9d610
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 8599851d636e16bc7e2e04204ba46e2f10adae79
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514287"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653207"
 ---
 # <a name="what-is-traffic-manager"></a>什么是流量管理器？
 Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全球 Azure 区域内以最佳方式向服务分发流量，同时提供高可用性和响应性。

@@ -8,14 +8,14 @@ manager: digimobile
 ms.topic: article
 ms.service: traffic-manager
 origin.date: 09/18/2019
-ms.date: 12/16/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3d779de0cea0c6664b0fd00cbc915eb0f1afc932
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: e48dba7a0df1b0038ef1772bae26071207449dcb
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348499"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653197"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代
 
@@ -117,5 +117,4 @@ ms.locfileid: "75348499"
 
 了解[子网流量路由方法](/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
 
-<!-- Update_Description: new article about traffic manager subnet override powershell -->
-<!--NEW.date: 12/09/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/29/2017
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1382c3e5453a74ca2addfa4f7ef79b760875a318
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 0766d24edcc119faa08ac8b9279c9563c7b8c818
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306800"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653216"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 

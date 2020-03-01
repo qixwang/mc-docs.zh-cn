@@ -1,5 +1,5 @@
 ---
-title: 有关访问和创建新租户的快速入门 - Azure Active Directory | Microsoft Docs
+title: 快速入门 - 访问和创建新租户 - Azure AD
 description: 介绍如何查找 Azure Active Directory，以及如何为组织创建新的租户。
 services: active-directory
 author: msaburnley
@@ -8,17 +8,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: quickstart
-origin.date: 09/10/2018
-ms.date: 11/28/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee24af4d2a3abeed6c0d7b2866d76bec598a5885
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: b4b6c94e62f2abad53202000523cb3ecb63a2275
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655393"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653101"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
 可以使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
@@ -32,7 +31,7 @@ ms.locfileid: "74655393"
 
 ### <a name="to-create-a-new-tenant"></a>创建新的租户
 
-1. 使用全局管理员帐户登录到组织的 [Azure 门户](https://portal.azure.cn/)。
+1. 登录到你组织的 [Azure 门户](https://portal.azure.cn/)。
 
 1. 在 Azure 门户菜单中，选择“创建资源”  。  
 
@@ -59,6 +58,7 @@ ms.locfileid: "74655393"
 ## <a name="clean-up-resources"></a>清理资源
 如果不打算继续使用此应用程序，可按以下步骤删除此租户：
 
+- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”  筛选器删除的目录，并根据需要切换到目标目录。
 - 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”    。
 
     这会删除此租户及其关联的信息。
@@ -76,3 +76,4 @@ ms.locfileid: "74655393"
 
 - 了解 Azure AD，包括[基本许可信息、术语和关联的功能](active-directory-whatis.md)。
 
+<!-- Update_Description: wording update -->

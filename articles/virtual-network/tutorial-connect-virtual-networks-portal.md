@@ -1,29 +1,25 @@
 ---
-title: 使用虚拟网络对等互连连接虚拟网络 - 教程 - Azure 门户 | Azure
+title: 使用 VNet 对等互连连接虚拟网络 - 教程 - Azure 门户
 description: 本教程介绍如何使用 Azure 门户通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: rockboyfor
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-origin.date: 08/16/2018
-ms.date: 11/25/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 2138c1e52f7d83f6af9065b6fe17582ec0404e2a
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 665b99265ad035e9799589504353d8d7ae459fb4
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658062"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653270"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -39,22 +35,22 @@ ms.locfileid: "74658062"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="log-in-to-azure"></a>登录 Azure 
+## <a name="log-in-to-azure"></a>登录 Azure
 
 在 https://portal.azure.cn 登录 Azure 门户。
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
+1. 在 Azure 门户中，选择“创建资源”。 
 2. 选择“网络”，然后选择“虚拟网络”   。
 
-    <!--MOONCAKE: CUSTOMIZED till on 11/29/2019-->
+    <!--MOONCAKE: CUSTOMIZED till on 02/26/2020-->
     
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myVirtualNetwork1|
+    |名称|myVirtualNetwork1|
     |地址空间|10.0.0.0/16|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
@@ -66,14 +62,15 @@ ms.locfileid: "74658062"
 
 4. 再次完成步骤 1-3，并做出以下更改：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myVirtualNetwork2|
+    |名称|myVirtualNetwork2|
     |地址空间|10.1.0.0/16|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”   。|
+    |子网名称 | Subnet2|
     |子网地址范围|10.1.0.0/24|
     
-    <!--MOONCAKE: CUSTOMIZED till on 11/29/2019-->
+    <!--MOONCAKE: CUSTOMIZED till on 02/26/2020-->
 
 ## <a name="peer-virtual-networks"></a>将虚拟网络对等互连
 
@@ -124,7 +121,7 @@ ms.locfileid: "74658062"
 
 <!--MOONCAKE: CUSTOMIZED till on 11/29/2019-->
 
-1. 选择 Azure 门户左上角的“+ 创建资源”  。
+1. 在 Azure 门户中，选择“创建资源”。 
 2. 选择“虚拟机”，然后选择“Windows Server 2016 Datacenter”。   可以选择不同的操作系统，但剩余步骤假定你选择了“Windows Server 2016 Datacenter”。  
     
     <!--Correct on Virtual Machines-->
@@ -135,7 +132,7 @@ ms.locfileid: "74658062"
     |设置|Value|
     |---|---|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”   。|
-    |Name|myVM1|
+    |名称|myVM1|
     |位置| 选择“中国东部”。 |
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
@@ -143,12 +140,10 @@ ms.locfileid: "74658062"
 4. 为“大小”  选项选择 VM 大小。
 5. 在“网络”  下选择以下值：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |虚拟网络| myVirtualNetwork1 - 如果尚未选择它，请选择“虚拟网络”，然后选择“myVirtualNetwork1”。  |
     |子网| Subnet1 - 如果尚未选择它，请选择“子网”  ，然后选择“Subnet1”  。|
-
-    ![虚拟机设置](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
 
 6. 选择“网络”  。 为“公共入站端口”  选项选择“允许选定端口”  。 为此下面的“选择入站端口”  选项选择 **RDP**。 
 
@@ -158,9 +153,9 @@ ms.locfileid: "74658062"
 
 再次完成步骤 1-6，并做出以下更改：
 
-|设置|值|
+|设置|Value|
 |---|---|
-|Name | myVm2|
+|名称 | myVm2|
 |虚拟网络 | myVirtualNetwork2|
 
 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
@@ -202,7 +197,7 @@ ms.locfileid: "74658062"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除： 
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

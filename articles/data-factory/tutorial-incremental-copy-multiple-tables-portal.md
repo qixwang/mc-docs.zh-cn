@@ -1,25 +1,26 @@
 ---
-title: 使用 Azure 数据工厂以增量方式复制多个表 | Microsoft Docs
+title: 使用 Azure 门户以增量方式复制多个表
 description: 在本教程中，请创建一个 Azure 数据工厂管道，将增量数据以增量方式从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
 services: data-factory
-documentationcenter: ''
+ms.author: v-jay
 author: WenJason
-manager: digiomobile
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/20/2018
-ms.date: 11/11/2019
-ms.author: v-jay
-ms.openlocfilehash: 5a217ce8d260fc1bb6c5f0de2f98794e674df6ad
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.date: 03/02/2020
+ms.openlocfilehash: ec5c87e6fb875af69f8dfb8e5e7b02506a627a9b
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648782"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653565"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
+
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
 
 在本教程中执行以下步骤：
@@ -246,7 +247,7 @@ END
      
     - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
     - 选择“新建”，并输入资源组的名称。    
-    若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+    若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”  作为“版本”  。
 7. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 8. 单击**创建**。      
@@ -467,7 +468,7 @@ END
     1. 选择“导入参数”  。 
     1. 指定以下参数值： 
 
-        | Name | 类型 | Value | 
+        | 名称 | 类型 | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

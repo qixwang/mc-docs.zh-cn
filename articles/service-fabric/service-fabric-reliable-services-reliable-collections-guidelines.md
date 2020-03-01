@@ -1,16 +1,16 @@
 ---
-title: Azure Service Fabric 中可靠集合的相关指导原则和建议
-description: 有关使用 Service Fabric Reliable Collections 的指导原则和建议
+title: 有关可靠集合的指导原则
+description: 在 Azure Service Fabric 应用程序中使用 Service Fabric 可靠集合的相关指导原则和建议。
 ms.topic: conceptual
 origin.date: 12/10/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ccd358a220e404e94afec81399a9f714debcca3b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 153eb6377ab1c600a5c5108dd58867d58ee69a5c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742386"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541062"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本部分提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见错误。

@@ -1,23 +1,22 @@
 ---
-title: 使用资源管理器模板创建 Azure 数据工厂 | Microsoft Docs
+title: 使用资源管理器模板创建 Azure 数据工厂
 description: 本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 origin.date: 02/20/2019
-ms.date: 10/14/2019
+ms.date: 03/02/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: fc1848faf22d37d6946f3d8c78dfe08269f907db
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 26f29104be711d4cb27d2d9bfb2ae6dec2d0b4fb
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275288"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653581"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 
@@ -36,7 +35,7 @@ ms.locfileid: "72275288"
 
 ## <a name="resource-manager-templates"></a>Resource Manager 模板
 
-若要了解 Azure 资源管理器模板的一般信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+若要了解 Azure 资源管理器模板的一般信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。
 
 以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
 
@@ -466,7 +465,7 @@ JSON 模板中定义了以下数据工厂实体：
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 
-AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 已根据先决条件创建了一个容器并将数据上传到该存储帐户。 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息。请参阅 [Azure Storage linked service](connector-azure-blob-storage.md#linked-service-properties)（Azure 存储链接服务）。
+AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 已根据先决条件创建了一个容器并将数据上传到该存储帐户。 在本部分中指定 Azure 存储帐户的名称和密钥。 有关用于定义 Azure 存储链接服务的 JSON 属性的详细信息，请参阅 [Azure 存储链接服务](connector-azure-blob-storage.md#linked-service-properties) 。
 
 ```json
 {  

@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/14/2019
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 6ebc683522e15cb40cbd2b702b6bafc71482bdb5
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: f48d233da4d953f97a6acef314f99ac90ff5c7c6
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884083"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540974"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics"></a>使用指标进行的标准负载均衡器诊断
 
@@ -26,11 +26,11 @@ Azure 标准负载均衡器公开了以下诊断功能：
 
 * **多维指标**：通过 [Azure Monitor](/azure-monitor/overview) 针对标准负载均衡器配置提供新的多维诊断功能。 可以监视、管理和排查标准负载均衡器资源问题。
 
-本文概要介绍这些功能，以及如何对标准负载均衡器使用这些功能。
+本文概要介绍这些功能，以及如何对标准负载均衡器使用这些功能。 
 
 ## <a name = "MultiDimensionalMetrics"></a>多维指标
 
-Azure 负载均衡器通过 Azure 门户中的新 Azure 指标来提供新的多维指标，帮助你实时洞察负载均衡器资源的诊断信息。 
+Azure 负载均衡器通过 Azure 门户中的 Azure 指标来提供多维指标，帮助你获取负载均衡器资源的实时诊断见解。 
 
 各种标准负载均衡器配置提供以下指标：
 
@@ -40,7 +40,9 @@ Azure 负载均衡器通过 Azure 门户中的新 Azure 指标来提供新的多
 | 运行状况探测状态（DIP 可用性） | 公共和内部负载均衡器 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。 可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。 |  平均值 |
 | SYN（同步）数据包 | 公共和内部负载均衡器 | 标准负载均衡器不会终止传输控制协议 (TCP) 连接，也不会与 TCP 或 UDP 数据包流交互。 流及其握手始终位于源和 VM 实例之间。 若要更好地排查 TCP 协议方案的问题，可以使用 SYN 数据包计数器了解进行了多少次 TCP 连接尝试。 该指标将报告接收到的 TCP SYN 数据包数目。| 平均值 |
 | SNAT 连接 | 公共负载均衡器 |标准负载均衡器报告公共 IP 地址前端上伪装的出站流数。 源网络地址转换 (SNAT) 端口是消耗性资源。 此指标可以指出应用程序依赖于 SNAT 获取出站发起流的程度有多高。 将报告成功和失败的出站 SNAT 流的计数器，可使用这些计数器排查和了解出站流的运行状况。| 平均值 |
-| 字节计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据。| 平均值 |
+| 已分配的 SNAT 端口数 | 公共负载均衡器 | 标准负载均衡器报告每个后端实例分配的 SNAT 端口数 | 平均值。 |
+| 已用 SNAT 端口数 | 公共负载均衡器 | 标准负载均衡器报告每个后端实例使用的 SNAT 端口数。 | 平均值 | 
+| 字节计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据。 你可能会注意到，这些字节并没有均匀地分布在后端实例中。 这是正常的，因为 Azure 的负载均衡器算法基于流 | 平均值 |
 | 数据包计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据包。| 平均值 |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>在 Azure 门户中查看负载均衡器指标
@@ -54,11 +56,11 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 
     ![标准负载均衡器的指标](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
-    图：  标准负载均衡器的“数据路径可用性”指标
+    *图：* 标准负载均衡器的“数据路径可用性”指标
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>通过 API 以编程方式检索多维指标
 
-有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)。
+有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)。 这些指标只能通过“所有指标”选项写入存储帐户。 
 
 ### <a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
@@ -77,7 +79,7 @@ VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的
 
 ![VIP 探测](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-图：  负载均衡器前端探测详细信息
+*图：* 负载均衡器前端探测详细信息
 
 将会根据活动的带内度量值生成该指标。 区域中的探测服务根据此测量值发起流量， 使用公共前端创建部署后，此服务会立即激活，并一直运行到删除了前端为止。 
 
@@ -157,7 +159,7 @@ VIP 可用性探测会出于原因而失败：
 
 ![组合使用“数据路径可用性”和“运行状况探测状态”指标](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
-图：  组合使用“数据路径可用性”和“运行状况探测状态”指标
+*图：* 组合使用“数据路径可用性”和“运行状况探测状态”指标
 
 此图表显示以下信息：
 - 承载 VM 的基础结构在过去不可用，在图表开始处显示为 0%。 稍后，基础结构正常，VM 可访问，多个 VM 置于后端。 数据路径可用性（VIP 可用性）的蓝色轨迹（稍后显示为 100%）指示了此信息。 

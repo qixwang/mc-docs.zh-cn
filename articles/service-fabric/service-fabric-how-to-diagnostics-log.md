@@ -1,17 +1,17 @@
 ---
-title: 从 Azure 或独立群集中的 .NET Service Fabric 应用生成日志事件
+title: 从 .NET 应用生成日志事件
 description: 了解如何向 Azure 群集或独立群集中托管的 .NET Service Fabric 应用程序添加日志记录。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/27/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: c440bd9a3ed18f9eca51db109c1dc2c034c3657e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 32c5a02d34dfe07007e1e3b5620f09927e3d5ed5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742509"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540670"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
 
@@ -113,6 +113,8 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 
 5. 开始检测方法中的代码。 下面提供了几个示例：
 
+    <!--CORRECT ON Microsoft.Logging-->
+    
     ```csharp
     _logger.LogDebug("Debug-level event from Microsoft.Logging");
     _logger.LogInformation("Informational-level event from Microsoft.Logging");

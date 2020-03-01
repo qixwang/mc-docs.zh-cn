@@ -1,33 +1,23 @@
 ---
-title: 使用 Powershell 在 Azure Stack 中监视更新 | Microsoft Docs
-description: 了解如何使用 Powershell 在 Azure Stack 中监视更新
-services: azure-stack
-documentationcenter: ''
+title: 使用 Powershell 在 Azure Stack Hub 中监视更新
+description: 了解如何使用 Powershell 在 Azure Stack Hub 中监视更新
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 08/23/2019
-ms.date: 01/13/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 404d2a76e6c4144f696705e75df76b892f2bf284
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: e26eda62054e1b90565200d01d314c1bae1ccb9e
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737738"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540269"
 ---
-# <a name="monitor-updates-in-azure-stack-using-powershell"></a>使用 Powershell 在 Azure Stack 中监视更新
+# <a name="monitor-updates-in-azure-stack-hub-using-powershell"></a>使用 Powershell 在 Azure Stack Hub 中监视更新
 
-*适用于：Azure Stack 集成系统*
-
-可以使用 Azure Stack 管理终结点来监视和管理更新。 它们可通过 PowerShell 进行访问。 有关在 Azure Stack 上使用 PowerShell 进行设置的说明，请参阅[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
+可以使用 Azure Stack Hub 管理终结点来监视和管理更新。 它们可通过 PowerShell 进行访问。 有关在 Azure Stack Hub 上使用 PowerShell 进行设置的说明，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](azure-stack-powershell-install.md)。
 
 可以使用以下 PowerShell cmdlet 来管理更新：
 
@@ -57,4 +47,4 @@ Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsof
 
 ## <a name="next-steps"></a>后续步骤
 
--   [在 Azure Stack 中管理更新](/azure-stack/operator/azure-stack-updates)
+-   [在 Azure Stack Hub 中管理更新](/azure-stack/operator/azure-stack-updates)

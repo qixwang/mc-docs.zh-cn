@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 11/13/2019
-ms.date: 01/27/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: f43c7a0511346b780e56ed3f218730c94dd5710d
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 33b09bd7f4de1873f8fbb567ffa43edc3f677b66
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123272"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590191"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 

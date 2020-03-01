@@ -5,15 +5,15 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: article
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f50a2734df35b5c6490f343cb82c1a8f00ccff24
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5005bf920e4e999f390403705f87bb245973db75
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334991"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540240"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
 
@@ -41,7 +41,7 @@ ms.locfileid: "75334991"
 
 ![网络规则日志数据]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallNetworkRule”   。 包含详细信息的数据将存储在 msg_s 字段中。以下查询提取这两个类别的信息。
+AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallNetworkRule”   。 包含详细信息的数据存储在 msg_s 字段中。 以下查询提取两种类别的信息。
 
 <!--Not Available on [parse](/kusto/query/parseoperator)-->
 <!--Not Available on  Using the parse operator we can extract the various interesting properties from the msg_s field.-->
@@ -169,6 +169,16 @@ AzureDiagnostics
 | extend Protocol = case(Protocol == "", Protocol2, Protocol),SourceIP = case(SourceIP == "", SourceIP2, SourceIP),TargetIP = case(TargetIP == "", TargetIP2, TargetIP),SourcePort = case(SourcePort == "", "N/A", SourcePort),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
+
+## <a name="sample-logs"></a>示例日志
+
+以下日志示例显示了日志条目中包含的数据。
+
+![日志条目](media/log-analytics-samples/log1.png)
+
+![日志条目](media/log-analytics-samples/log2.png)
+
+![日志条目](media/log-analytics-samples/log3.png)
 
 ## <a name="next-steps"></a>后续步骤
 

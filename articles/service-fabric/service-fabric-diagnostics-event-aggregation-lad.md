@@ -1,17 +1,17 @@
 ---
-title: 使用 Linux Azure 诊断聚合 Azure Service Fabric 事件
+title: 使用 Linux Azure 诊断聚合事件
 description: 了解如何使用 LAD 聚合和收集事件，以便对 Azure Service Fabric 群集进行监视和诊断。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/25/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3083575fd645b46dbe11e4d460c71095b2ae73b6
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 27008c0085ec66869448004cca51912e6fb0b26f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742416"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540445"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 诊断聚合和收集事件
 > [!div class="op_single_selector"]

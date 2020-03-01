@@ -1,16 +1,16 @@
 ---
-title: 更新 Azure Service Fabric 群集以使用证书公用名称
+title: 更新群集以使用证书公用名称
 description: 了解如何将 Service Fabric 群集从使用证书指纹切换为使用证书公用名称。
 ms.topic: conceptual
 origin.date: 09/06/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 0c3ea272f7a074a1cb5034b502c7ee6c731c4522
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 88b0442545a1d3bf28e9b53e265c740d8dbb5d0c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742368"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540194"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>将群集从证书指纹更改为公用名称
 两个证书不能具有相同的指纹，具有相同的指纹会使群集证书滚动更新或管理变得困难。 但是，多个证书可以具有相同的公用名称或使用者。  将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。 本文介绍了如何将正在运行的 Service Fabric 群集更新为使用证书公用名称而非证书指纹。

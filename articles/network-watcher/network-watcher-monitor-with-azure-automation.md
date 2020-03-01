@@ -4,23 +4,22 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 自动化和网络观察程序诊断本地连接
 services: network-watcher
 documentationcenter: na
-author: rockboyfor
+author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 11/13/2017
-ms.author: v-yeche
-ms.openlocfilehash: a190ded76a2c8358a7721a22db09efb1d710f4d3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 02/27/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 0c9f411838596a44ce80252339bc4f345ac52d7e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335717"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154500"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 

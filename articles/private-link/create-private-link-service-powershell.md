@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f584129c067f3bdd7070840595c7722a6dd4f78c
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: fb17521f7d7daee3c02d5ee729021acd2043791b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631426"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540053"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 本文介绍了如何使用 Azure PowerShell 在 Azure 中创建专用链接服务。
@@ -109,7 +109,7 @@ $privateLinkService = New-AzPrivateLinkService `
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示了如何使用 PowerShell 创建专用链接服务。  我们尚未配置负载均衡器后端池，也未在后端池上配置任何应用程序来侦听流量。 如果你想查看端到端流量流，则强烈建议你在标准负载均衡器后面配置应用程序。 
+在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示了如何使用 PowerShell 创建专用链接服务。  我们尚未配置负载均衡器后端池，也未在后端池上配置任何应用程序来侦听流量。 如果你想查看端到端通信流，强烈建议你在标准负载均衡器后面配置应用程序。 
 
 接下来，我们将演示如何使用 PowerShell 将此服务映射到不同 VNet 中的专用终结点。 同样，示例仅限于创建专用终结点并连接到上面创建的专用链接服务。 你可以在虚拟网络中创建虚拟机，来为用于构建你的方案的专用终结点发送/接收流量。 
 

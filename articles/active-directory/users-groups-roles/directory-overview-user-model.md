@@ -1,13 +1,12 @@
 ---
-title: 用户、组、许可和角色概述 - Azure Active Directory | Microsoft Docs
+title: 用户、组、许可和角色概述 - Azure AD | Microsoft Docs
 description: Azure Active Directory 中分配的用户和许可证、管理员角色与组成员身份之间的关系
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: v-junlch
 ms.reviewer: vincesm
-origin.date: 01/28/2019
-ms.date: 10/25/2019
+ms.date: 02/26/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -15,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c351ad12313d880e436798610b8a864c9ac837
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.openlocfilehash: daf26c152c712567c093969fb0c18529c2f277e6
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912790"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653464"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 
@@ -32,7 +31,7 @@ ms.locfileid: "72912790"
 
 ## <a name="assign-users-to-groups"></a>将用户分配到组
 
-可以使用 Azure AD 中的组将许可证分配给大量用户，或者为用户分配已部署企业应用的访问权限。 可以使用组在 Azure AD 中分配管理员角色，或者，可以授予对外部资源（例如 SaaS 应用程序或 SharePoint 站点）的访问权限。
+可以使用 Azure AD 中的组将许可证分配给大量用户，或者为用户分配已部署企业应用的访问权限。 可以在 Azure AD 中使用组分配除全局管理员以外的所有管理员角色，也可以授予对外部资源（例如 SaaS 应用程序或 SharePoint 站点）的访问权限。
 
 ## <a name="assign-licenses-to-groups"></a>将许可证分配到组
 
@@ -75,3 +74,4 @@ ms.locfileid: "72912790"
 
 或者，可以开始[创建组](/active-directory/fundamentals/active-directory-groups-create-azure-portal)、[分配许可证](/active-directory/fundamentals/license-users-groups)、[分配应用访问权限](/active-directory/manage-apps/methods-for-assigning-users-and-groups)或[分配管理员角色](directory-assign-admin-roles.md)。
 
+<!-- Update_Description: wording update -->

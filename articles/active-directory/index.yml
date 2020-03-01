@@ -12,12 +12,12 @@ metadata:
   ms.author: v-junlch
   manager: daveba
   ms.date: 10/28/2019
-  ms.openlocfilehash: 09db2b54586455c77d26f1f52af2718697ecfa05
-  ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+  ms.openlocfilehash: fb424c3148c144ed6774b51b694b14c81a071240
+  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73068922"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77653465"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -36,18 +36,18 @@ conceptualContent:
   items:
   - title: 身份验证
     links:
-    - url: ./authentication/concept-mfa-howitworks.md
+    - url: ./authentication/overview-authentication.md
       itemType: concept
-      text: 工作原理：Azure MFA
-    - url: ./authentication/concept-sspr-howitworks.md
-      itemType: concept
-      text: Azure AD 自助密码重置
+      text: 什么是 Azure AD 身份验证？
+    - url: ./authentication/tutorial-enable-sspr.md
+      itemType: tutorial
+      text: 启用自助式密码重置
     footerLink:
       url: ./authentication/index.yml
       text: 查看更多
   - title: 企业对客户 (B2C)
     links:
-    - url: ../active-directory-b2c/active-directory-b2c-overview.md
+    - url: ../active-directory-b2c/overview.md
       itemType: overview
       text: 什么是 Azure AD B2C？
     - url: ../active-directory-b2c/tutorial-create-tenant.md

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: c794bd5fb52e33c656d527240efa2e926f01f8fc
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 6af91ff702c0eac172b7e31fb09ce5fbe4b150bd
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630995"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590779"
 ---
 本指南介绍如何安装用于 Python 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "75630995"
         ```
 
 - 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 请注意，首次安装它时，可能需要重启 Windows 才能继续使用本指南。
-- 最后，需要 [Python 3.5 或更高版本](https://www.python.org/downloads/)。 若要检查安装，请打开命令提示符并键入命令 `python --version`，然后检查结果。 如果安装正确，将会收到“Python 3.5.1”或类似的响应。
+- 最后，需要 [Python 3.5、3.6 或 3.7](https://www.python.org/downloads/)。 若要检查安装，请打开命令提示符并键入命令 `python --version`，然后检查结果。 如果安装正确，将会收到“Python 3.5.1”或类似的响应。
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>使用 Visual Studio Code 安装语音 SDK
 

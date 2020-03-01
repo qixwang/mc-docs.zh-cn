@@ -1,17 +1,17 @@
 ---
-title: 如何在 Azure Service Fabric 中使用参数指定服务的端口号
+title: 使用参数指定服务的端口号
 description: 演示如何在 Service Fabric 中使用参数来指定应用程序的端口
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 12/06/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6466d33f7556177309c9df0044f06609936139e7
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: eb13140a7fb7aca1930285a51a751ee44efffc43
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742503"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540668"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>如何在 Service Fabric 中使用参数来指定服务的端口号
 

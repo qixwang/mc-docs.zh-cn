@@ -5,15 +5,15 @@ services: private-link
 author: rockboyfor
 ms.service: private-link
 ms.topic: conceptual
-origin.date: 09/16/2019
-ms.date: 01/13/2020
+origin.date: 01/09/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 450adedff74a0e3f4aa48d8938154b601d98287d
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 99c65c0cd773c4a8b0d8ee8d8386be85d009dd5b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859188"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540649"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -43,7 +43,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 
 - 可以使用同一个专用链接资源创建多个专用终结点。 对于使用常见 DNS 服务器配置的单个网络，建议的做法是对给定的专用链接资源使用单个专用终结点，以避免出现重复条目或 DNS 解析冲突。 
 
-- 可以在同一虚拟网络中的相同或不同子网上创建多个专用终结点。 在一个订阅中可以创建的专用终结点数量有限制。 有关详细信息，请参阅  [Azure 限制](/azure-subscription-service-limits#networking-limits)。
+- 可以在同一虚拟网络中的相同或不同子网上创建多个专用终结点。 在一个订阅中可以创建的专用终结点数量有限制。 有关详细信息，请参阅  [Azure 限制](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 ## <a name="private-link-resource"></a>专用链接资源 
 专用链接资源是给定专用终结点的目标。 下面是可用的专用链接资源类型列表： 
@@ -52,10 +52,14 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |---------|---------|---------|
 |**专用链接服务**（你自己的服务）   |  Microsoft.Network/privateLinkServices       | empty |
 |**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
-|**Azure SQL 数据仓库** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
 |**Azure 存储** | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<br /> 表（table、table_secondary）<br /> 队列（queue、queue_secondary）<br /> 文件（file、file_secondary）<br /> Web（web、web_secondary）        |
-|**Azure Data Lake Storage Gen2** | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）       |
+|**Azure Data Lake Storage Gen2** | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<br /> Data Lake File System Gen2（dfs、dfs_secondary）       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | SQL、MongoDB、Cassandra、Gremlin、表|
+|**Azure Database for PostgreSQL - 单一服务器** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure 密钥保管库** | Microsoft.KeyVault/vaults    | 保管库 |
 
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全性 
 使用 Azure 服务的专用终结点时，流量将受到特定专用链接资源的保护。 平台会执行访问控制，以验证网络连接是否仅抵达指定的专用链接资源。 若要访问同一 Azure 服务中的其他资源，需要附加的专用终结点。 
@@ -104,12 +108,17 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |存储帐户 (Microsoft.Storage/storageAccounts)    |    队列（queue、queue_secondary）     |   privatelink.queue.core.chinacloudapi.cn       |
 |存储帐户 (Microsoft.Storage/storageAccounts)   |    文件（file、file_secondary）      |    privatelink.file.core.chinacloudapi.cn      |
 |存储帐户 (Microsoft.Storage/storageAccounts)     |  Web（web、web_secondary）        |    privatelink.web.core.chinacloudapi.cn      |
-|Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2（dfs、dfs_secondary）        |     privatelink.dfs.core.chinacloudapi.cn     |
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.cn|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.cn|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.cn|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.cn|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|表|privatelink.table.cosmos.azure.cn|
+|Azure Database for PostgreSQL - 单一服务器 (Microsoft.DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.chinacloudapi.cn|
+|Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.chinacloudapi.cn|
+|Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.chinacloudapi.cn|
+|Azure Key Vault (Microsoft.KeyVault/vaults)|保管库|privatelink.vaultcore.chinacloudapi.cn|
+
+<!--Not Available on |Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.chinacloudapi.cn     |-->
 
 Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析重定向到建议的域名。 可以使用专用终结点的专用 IP 地址替代解析。 
 
@@ -121,9 +130,7 @@ Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析�
 
 |限制 |说明 |缓解措施  |
 |---------|---------|---------|
-|网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由        |
-|  仅包含专用终结点的对等互连虚拟网络不受支持   |   不支持连接到不包含任何其他工作负荷的对等互连虚拟网络上的专用终结点       | 在对等互连的虚拟网络上部署单个 VM，以启用连接 |
-|专用工作负荷无法访问专用终结点    |   部署到虚拟网络中的以下服务无法使用专用终结点访问任何专用链接资源：<br />应用服务计划<br />Azure 容器实例<br />Azure NetApp 文件<br />Azure 专用 HSM<br />       |   预览版中未提供任何缓解措施。       |
+|网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息        |
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)
@@ -134,6 +141,10 @@ Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析�
     <!--Not Available on - [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)-->
     
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
+
+    <!--Not Available on PostgreSQL-->
+    <!--Not Available on MySQL-->
+    <!--Not Available on MariaDB-->
 
 <!-- Update_Description: new article about private endpoint overview -->
 <!--NEW.date: 01/06/2020-->

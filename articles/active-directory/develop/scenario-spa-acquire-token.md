@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c2b0b3980a57f6935442aff384b2a21cf3c64a7
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: f702114ece8eb24713ba0bd0938b0b715d2407f5
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777040"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653154"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>单页应用程序：获取用于调用 API 的令牌
 
@@ -43,7 +42,7 @@ ms.locfileid: "75777040"
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>通过弹出窗口获取令牌
 
-### <a name="javascript"></a>Javascript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下代码将前面描述的模式与弹出体验的方法结合起来：
 
@@ -70,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
 MSAL Angular 包装器提供 HTTP 侦听器，后者会自动以无提示方式获取访问令牌并将其附加到针对 API 的 HTTP 请求。
 
@@ -114,9 +113,11 @@ ngOnDestroy() {
 
 另外，也可通过显式方式使用获取令牌方法来获取令牌，如核心 MSAL.js 库中所述。
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>通过重定向获取令牌
 
-### <a name="javascript"></a>Javascript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下模式如前文所述，但显示的是如何使用重定向方法以交互方式获取令牌。 你需注册重定向回叫，如前文所述。
 
@@ -145,6 +146,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>请求可选声明
+
 可以使用可选声明来实现以下目的：
 
 - 在应用程序的令牌中包括其他声明。
@@ -153,7 +155,6 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 若要请求 `IdToken` 中的可选声明，可以将一个字符串化声明对象发送到 `AuthenticationParameters.ts` 类的 `claimsRequest` 字段。
 
-### <a name="javascript"></a>Javascript
 ```javascript
 "optionalClaims":  
    {
@@ -171,12 +172,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 如需了解详细信息，请参阅[可选声明](active-directory-optional-claims.md)。
 
-
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
 此代码与前文所述相同。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

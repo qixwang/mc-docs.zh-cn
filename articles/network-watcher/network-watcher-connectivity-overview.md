@@ -5,7 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.workload: infrastructure-services
 origin.date: 07/11/2017
 ms.date: 04/30/2018
 ms.author: v-lingwu
-ms.openlocfilehash: ce6e6028a0f2539c879dbc9f0760b9786174f363
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 2225c40e435cbf202f01f834fbe56dd89cbc5c2c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028490"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154970"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
 

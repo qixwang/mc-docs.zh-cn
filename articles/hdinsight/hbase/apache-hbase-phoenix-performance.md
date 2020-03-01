@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/22/2018
-ms.date: 01/14/2019
+origin.date: 12/27/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: ec271f3349fb22e677ca5ee6df5d069fd68dc887
-ms.sourcegitcommit: 1456ace86f950acc6908f4f5a9c773b93a4d6acc
+ms.openlocfilehash: e7f9f40073357bea461fbb715d2140b07dc43894
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54029184"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563372"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 性能最佳做法
 
@@ -71,7 +71,7 @@ Phoenix 使用此新主键生成的行键是：
 
 现在，此行键存储了数据的重复副本。 请考虑要包含在主键中的列大小和数目，因为此值将与基础 HBase 表中的每个单元格包含在一起。
 
-此外，如果主键包含单调递增的值，则应使用盐桶创建表，以帮助避免产生写入热点 - 请参阅[将分区数据](#partition-data)。
+此外，如果主键包含单调递增的值，则应使用盐桶创建表，以帮助避免产生写入热点 - 请参阅[将分区数据](#partition-data)。 
 
 ### <a name="column-family-design"></a>列系列设计
 
@@ -81,7 +81,7 @@ Phoenix 使用此新主键生成的行键是：
 
 ### <a name="column-design"></a>列设计
 
-* 由于大型列的 I/O 开销较大，请将 VARCHAR 列保持为大约 1 MB 以下。 处理查询时，HBase 会将单元格作为一个整体具体化，然后将其发送到客户端。客户端会作为一个整体接收这些单元格，然后将其转交到应用程序代码。
+* 由于大型列的 I/O 开销较大，请将 VARCHAR 列保持在大约 1 MB 以下。 处理查询时，HBase 会将单元格作为一个整体具体化，然后将其发送到客户端。客户端会作为一个整体接收这些单元格，然后将其转交到应用程序代码。
 * 使用 protobuf、Avro、msgpack 或 BSON 等紧凑格式存储列值。 不建议使用 JSON，因为它比较庞大。
 * 在存储之前考虑压缩数据，以降低延迟和 I/O 开销。
 

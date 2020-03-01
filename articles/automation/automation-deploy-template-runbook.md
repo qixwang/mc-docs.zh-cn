@@ -2,21 +2,17 @@
 title: 在 Azure 自动化 Runbook 中部署 Azure 资源管理器模板
 description: 如何通过 Runbook 部署 Azure 存储中存储的 Azure 资源管理器模板
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
 origin.date: 03/16/2018
-ms.date: 04/15/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
-manager: digimobile
 keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: a74234a92ab8f1fce519ed877819b24b35507c29
-ms.sourcegitcommit: cf8ad305433d47f9a6760f7a91ee361dc01573db
+ms.openlocfilehash: 6aaf6c09cccf53cd3bb77e857734f0695bf11451
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502586"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653549"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
 
@@ -52,7 +48,6 @@ ms.locfileid: "59502586"
       "allowedValues": [
         "Standard_LRS",
         "Standard_GRS",
-        "Standard_ZRS",
         "Premium_LRS"
       ],
       "metadata": {
@@ -245,7 +240,7 @@ Get-AzureRmStorageAccount
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关资源管理器模板的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)
+* 若要了解有关资源管理器模板的详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)
 * 若要开始使用 Azure 存储，请参阅 [Azure 存储简介](../storage/common/storage-introduction.md)。
 * 若要查找其他有用的资源管理器模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 

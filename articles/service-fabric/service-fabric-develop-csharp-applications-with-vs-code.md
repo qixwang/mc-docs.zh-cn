@@ -1,17 +1,17 @@
 ---
-title: 使用 Visual Studio Code 开发 .NET Core Azure Service Fabric 应用程序
+title: 使用 Visual Studio Code 开发 .NET Core 应用程序
 description: 本文介绍如何使用 Visual Studio Code 生成、部署和调试 .NET Core Service Fabric 应用程序。
 author: rockboyfor
 ms.topic: article
 origin.date: 06/29/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68a45f6581ece615f6324b0063929214fb7e48ed
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f04479ceaa0fb22a49179d57c0d61699368e3b12
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741865"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540460"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 C# Service Fabric 应用程序
 

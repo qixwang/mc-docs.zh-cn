@@ -3,17 +3,18 @@ title: Apache Kafka HDInsight 群集的性能优化
 description: 提供 Azure HDInsight 上的 Apache Kafka 工作负荷的优化方法概述。
 services: hdinsight
 author: hrasheed-msft
-ms.author: hrasheed
+ms.author: v-yiso
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: da3c53a819e369f7f12afdf516b94c89c68d745d
-ms.sourcegitcommit: 3b05a8982213653ee498806dc9d0eb8be7e70562
+origin.date: 12/19/2019
+ms.date: 03/02/2020
+ms.openlocfilehash: cc7acf58af846eda7b31e1b6ca86e7b36ba4d70a
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59004212"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563387"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight 群集的性能优化
 
@@ -51,7 +52,7 @@ Apache Kafka 生成者将作为一个单元发送的消息组（称为批）汇�
 
 可将 Kafka 生成者配置为先压缩消息，然后再将消息发送到代理。 `compression.type` 设置指定要使用的压缩编解码器。 支持的压缩编解码器为“gzip”、“snappy”和“lz4”。 如果磁盘容量存在限制，则压缩是有利的做法，应予以考虑。
 
-在 `gzip` 和 `snappy` 这两个常用的压缩编解码器中，`gzip` 的压缩率更高，它可以降低磁盘用量，但代价是使 CPU 负载升高。 `snappy` 编解码器的压缩率更低，但造成的 CPU 开销更低。 可以根据代理磁盘或生成者的 CPU 限制来决定使用哪个编解码器。 `gzip` 其数据压缩率比 `snappy` 高 5 倍。
+在 `gzip` 和 `snappy` 这两个常用的压缩编解码器中，`gzip` 的压缩率更高，它可以降低磁盘用量，但代价是使 CPU 负载升高。 `snappy` 编解码器的压缩率更低，但造成的 CPU 开销更低。 可以根据代理磁盘或生成者的 CPU 限制来决定使用哪个编解码器。 `gzip` 可以以比 `snappy` 高五倍的速率压缩数据。
 
 使用数据压缩会增加磁盘中可存储的记录数。 如果生成者与代理使用的压缩格式不匹配，则数据压缩也会增大 CPU 开销。 因为数据在发送之前必须经过压缩，并在处理之前经过解压缩。
 
@@ -66,7 +67,7 @@ Apache Kafka 生成者将作为一个单元发送的消息组（称为批）汇�
 
 ### <a name="number-of-topics-and-partitions"></a>主题和分区的数目
 
-Kafka 生成者将写入主题。 Kafka 使用者读取主题。 主题与日志相关联，该日志是磁盘上的数据结构。 Kafka 将生成者中的记录追加到主题日志的末尾。 主题日志包括分散在多个文件之间的多个分区。 而这些文件又分散在多个 Kafka 群集节点之间。 使用者按自身的步调读取 Kafka 主题，可在主题日志中选取自身的位置（偏移量）。
+Kafka 生成者将写入主题。 Kafka 使用者读取主题。 主题与日志相关联，该日志是磁盘上的数据结构。 Kafka 将生成者中的记录追加到主题日志的末尾。 主题日志包括分散在多个文件之间的多个分区。 而这些文件又分散在多个 Kafka 群集节点之间。 使用者按自己的步调读取 Kafka 主题，并可在主题日志中选取其位置（偏移量）。
 
 每个 Kafka 分区是在系统上的一个日志文件，生成者线程可以同时写入到多个日志。 同样，由于每个使用者线程从一个分区读取消息，因此也能并行处理从多个分区使用消息的操作。
 
@@ -84,5 +85,5 @@ Kafka 生成者将写入主题。 Kafka 使用者读取主题。 主题与日志
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 上的 Apache kafka 每天处理数万亿个事件](https://azure.microsoft.com/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/)
+* [Processing trillions of events per day with Apache Kafka on Azure](https://azure.microsoft.com/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/)（使用 Azure 上的 Apache kafka 每天处理数万亿个事件）
 * [什么是 Apache Kafka on HDInsight？](apache-kafka-introduction.md)

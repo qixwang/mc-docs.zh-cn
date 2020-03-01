@@ -3,16 +3,16 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 01/14/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: c1a6c31dbe76ebd7f2226ade6d0d817e536df5f8
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 9e294b755c3928a3ef7eb422ea28cad263a1a0e6
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430097"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590290"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
@@ -53,7 +53,8 @@ ms.locfileid: "77430097"
                String audioFileName = "whatstheweatherlike.wav";
 
                int exitCode = 1;
-               // Replace below with your own service region (e.g., "chinaeast2").
+               // Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
+           // from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
                SpeechConfig config = SpeechConfig.fromHost(new URI("wss://YourServiceRegion.stt.speech.azure.cn/"), speechSubscriptionKey);
                assert(config != null);
 

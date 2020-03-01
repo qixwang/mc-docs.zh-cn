@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 为实现应用程序的高可用性路由流量 | Azure
+title: 为实现应用程序的高可用性路由流量 - Azure PowerShell - 流量管理器
 description: Azure PowerShell 脚本示例 - 为实现应用程序的高可用性路由流量
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 origin.date: 04/26/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb16bb5e40b4360368f0a79d952ae4dacdef51a4
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: adf68118f5216389c24798a9a1b324f55ce28114
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514200"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653242"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>使用 Azure PowerShell 为实现应用程序的高可用性路由流量
 

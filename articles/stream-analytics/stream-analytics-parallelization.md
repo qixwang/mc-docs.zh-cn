@@ -4,24 +4,24 @@ description: 本文介绍如何通过配置输入分区、优化查询定义和�
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/07/2018
 ms.date: 06/21/2019
-ms.openlocfilehash: 7aeac7fc2ae895413b8297f03ac1330b62f1286f
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 74ccc5483dc3e5b593a810e41e0c3d6ebb2442ba
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856192"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154610"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
 作为先决条件，建议先熟悉[了解并调整流式处理单位](stream-analytics-streaming-unit-consumption.md)中所述的流式处理单位的概念。
 
 ## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>流分析作业的组成部分有哪些？
-流分析作业定义包括输入、查询和输出。 输入是作业读取数据流的地方。 查询是用于转换数据输入流的一种方式，而输出则是作业将作业结果发送到的地方。  
+流分析作业定义包括输入、查询和输出。 输入是作业读取数据流的地方。 查询是用于转换数据输入流的一种方式，而输出则是作业将作业结果发送到的地方。
 
 若要对数据进行流式处理，作业需要至少一个输入源。 可将数据流输入源存储在 Azure 事件中心或 Azure Blob 存储中。 有关详细信息，请参阅 [Azure 流分析简介](stream-analytics-introduction.md)和[开始使用 Azure 流分析](stream-analytics-real-time-fraud-detection.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "75856192"
 ### <a name="outputs"></a>Outputs
 
 处理流分析时，可利用输出中的分区：
--   Azure Data Lake 存储
+-   Azure Data Lake Storage
 -   Azure Functions
 -   Azure 表
 -   Blob 存储（可显式设置分区键）

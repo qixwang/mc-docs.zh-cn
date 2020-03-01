@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 反向代理诊断
-description: 了解如何监视和诊断在反向代理处处理的请求。
+description: 了解如何监视和诊断在 Azure Service Fabric 应用程序的反向代理中处理的请求。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/08/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2dc0dda0e5dc389368bbf1926b65696ea24cf005
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 6436f8b2dd39629f58c0a5417dcfd10e3e761a81
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742435"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540097"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>了解如何监视和诊断在反向代理处处理的请求
 

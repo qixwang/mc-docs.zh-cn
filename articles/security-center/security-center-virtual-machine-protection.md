@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 安全中心保护计算机和应用程序 | Azure Docs
+title: 保护计算机和应用程序
 description: 本文档介绍 Azure 安全中心内提供的，可帮助保护虚拟机和计算机以及 Web 应用和应用服务环境的建议。
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 03/20/2019
 ms.date: 11/19/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0d27bf39b4ec7884426725d3f285ced4a50a1cdf
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: abfd48addbd0131b5e69fa6d622d00dd2bed0916
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858090"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155008"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
 在 Azure 安全中心识别出潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
@@ -67,7 +67,6 @@ ms.locfileid: "75858090"
 ![Azure 资源管理器 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Azure 资源管理器 VM。
 
 ![Azure 经典 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Azure 经典 VM。
-
 
 ![从工作区中识别的 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 只能通过工作区（属于所查看的订阅）标识的 VM。 其中包括其他订阅中向此订阅中的工作区报告的 VM，以及使用 Operations Manager 直接代理安装的 VM（没有资源 ID）。
 

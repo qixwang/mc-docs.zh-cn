@@ -13,48 +13,54 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/15/2017
-ms.date: 12/17/2018
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca5be793402ebd9f96596f9644e53c322a1c33ad
-ms.sourcegitcommit: 1b6a310ba636b6dd32d7810821bcb79250393499
+ms.openlocfilehash: e95688a5de645194b227e46ba95a1c7abef82af7
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53389398"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653260"
 ---
-# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
+# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机的网络吞吐量
 
 Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量进行优化。 本文介绍如何优化 Azure Windows 和 Linux VM（包括 Ubuntu 和 CentOS 等主要发行版）的网络吞吐量。
+
 <!-- Not Avaiable on Red Hat -->
 
 ## <a name="windows-vm"></a>Windows VM
 
-如果 Windows VM 支持[加速网络](create-vm-accelerated-networking-powershell.md)，则启用该功能会是吞吐量的最佳配置。 对于所有其他 Windows VM，与不使用 RSS 的 VM 相比，使用接收方缩放 (RSS) 可达到更高的最大吞吐量。 默认情况下，RSS 在 Windows VM 中已禁用。 完成以下步骤以确定是否启用了 RSS 并在处于禁用状态时启用：
+如果 Windows VM 支持[加速网络](create-vm-accelerated-networking-powershell.md)，则启用该功能会是吞吐量的最佳配置。 对于所有其他 Windows VM，与不使用 RSS 的 VM 相比，使用接收方缩放 (RSS) 可达到更高的最大吞吐量。 RSS 在 Windows VM 中默认已禁用。 完成以下步骤以确定是否启用了 RSS 并在处于禁用状态时启用：
 
-1. 使用 `Get-NetAdapterRss` PowerShell 命令以查看是否为网络适配器启用了 RSS。 在以下从 `Get-NetAdapterRss` 返回的示例输出中，RSS 未启用。
+1. 使用 `Get-NetAdapterRss` PowerShell 命令查看是否为网络适配器启用了 RSS。 从 `Get-NetAdapterRss`返回的以下示例输出中可以看出，RSS 未启用。
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
-2. 输入以下命令以启用 RSS：
+    
+    <!--CORRECT ON Microsoft Hyper-V Network Adapter-->
+    
+2. 若要启用 RSS，请输入以下命令：
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    前一个命令没有输出。 该命令更改了 NIC 设置，导致暂时连接丢失大约一分钟。 连接断开期间会显示“重新连接”对话框。 通常在第三次尝试后，连接会还原。
-3. 再次输入 `Get-NetAdapterRss` 命令，确认 RSS 在 VM 中已启用。 如果成功，将返回以下示例输出：
+    前一个命令没有输出。 该命令更改了 NIC 设置，导致出现暂时性连接断开大约一分钟。 连接断开期间会显示“重新连接”对话框。 通常在第三次尝试后，连接会恢复。
+3. 再次输入 `Get-NetAdapterRss` 命令，确认 RSS 是否在 VM 中启用。 如果成功，则返回以下示例输出：
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                  : True
     ```
+    
+    <!--CORRECT ON Microsoft Hyper-V Network Adapter-->
 
 ## <a name="linux-vm"></a>Linux VM
 
-默认情况下，RSS 在 Azure Linux VM 中始终已启用。 自 2017 年 12 月以后发布的 Linux 内核均包含新的网络优化选项，可使 Linux VM 实现更高的网络吞吐量。
+默认情况下，RSS 在 Azure Linux VM 中始终启用。 自 2017 年 12 月以后发布的 Linux 内核均包含新的网络优化选项，可使 Linux VM 实现更高的网络吞吐量。
 
 ### <a name="ubuntu-for-new-deployments"></a>用于新部署的 Ubuntu
 
@@ -101,7 +107,7 @@ uname -r
 #4.13.0-1007-azure
 ```
 
-如果 VM 没有 Azure 内核，版本号将通常以“4.4”开头。 如果 VM 没有 Azure 内核，请使用根权限运行以下命令：
+如果 VM 没有 Azure 内核，版本号将通常以“4.4”开头。 如果 VM 没有 Azure 内核，请以 root 身份运行以下命令：
 
 ```bash
 #run as root or preface with sudo

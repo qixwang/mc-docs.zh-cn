@@ -1,36 +1,39 @@
 ---
 title: 了解 Azure Service Fabric 术语
-description: Service Fabric 的术语概述。 讨论本文档其余部分所用的重要术语概念和术语。
+description: 了解文档其余部分中使用的关键 Service Fabric 术语和概念。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 09/17/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 168ff7907b67b572c5b8e82b3377e25f7cc78354
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.custom: sfrev
+ms.openlocfilehash: 4ce9e8d150aa91aadda33ef7fff05b288aee4606
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742153"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540000"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
+
 Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
 
 <!--Not Available on [Azure Service Fabric Mesh](/service-fabric-mesh)-->
 
 ## <a name="infrastructure-concepts"></a>基础结构概念
+
 **群集**：一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。  群集可以扩展到成千上万台计算机。
 
-**节点**：属于群集一部分的计算机或 VM 称为节点  。 需为每个节点分配节点名称（字符串）。 节点具有各种特征，如放置属性。 每个计算机或 VM 都有一个自动启动 Windows 服务 `FabricHost.exe`，此服务在引导时开始运行，并启动两个可执行文件：`Fabric.exe` 和 `FabricGateway.exe`。 这两个可执行文件构成了节点。 在测试方案中，可以通过运行 `Fabric.exe` 和 `FabricGateway.exe` 的多个实例，在单台计算机或 VM 上托管多个节点。
+**节点**：属于群集一部分的计算机或 VM 称为节点  。 每个节点都分配有一个节点名称（字符串）。 节点具有各种特征，如放置属性。 每个计算机或 VM 都有一个自动启动 Windows 服务 `FabricHost.exe`，此服务在引导时开始运行，并启动两个可执行文件：`Fabric.exe` 和 `FabricGateway.exe`。 这两个可执行文件构成了节点。 在测试方案中，可以通过运行 `Fabric.exe` 和 `FabricGateway.exe` 的多个实例，在单台计算机或 VM 上托管多个节点。
 
 ## <a name="application-and-service-concepts"></a>应用程序和服务概念
-
-<!--Not Available on **Service Fabric Mesh Application**: -->
 
 **Service Fabric 本机应用程序**：Service Fabric 本机应用程序由本机应用程序模型（基于 XML 的应用程序和服务清单）描述。 
 
 <!--Not Avaialble on Service Fabric Native Applications cannot run in Service Fabric Mesh-->
-<!--Not Available on ### Service Fabric Mesh Application concepts-->
+
+<!--Not Available on ### Service Fabric Mesh Application concepts -->
+
 
 ### <a name="service-fabric-native-application-concepts"></a>Service Fabric 本机应用程序概念
 
@@ -70,15 +73,16 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
  数据包：一个磁盘目录，其中包含服务类型的静态只读数据文件，通常是照片、音频和视频文件。 服务类型的 `ServiceManifest.xml` 文件引用数据包目录中的文件。 创建命名服务后，会将数据包复制到选定来运行命名服务的一个或多个节点。 代码开始运行，现在即可访问数据文件。
 
- 配置包：一个磁盘目录，其中包含服务类型的静态只读配置文件，通常是文本文件。 服务类型的 `ServiceManifest.xml` 文件引用配置包目录中的文件。 创建命名服务后，会将配置包中的文件复制到选定运行命名服务的一个或多个节点。 然后，代码开始运行，现在即可访问配置文件。
+ 配置包：一个磁盘目录，其中包含服务类型的静态只读配置文件，通常是文本文件。 服务类型的 `ServiceManifest.xml` 文件引用配置包目录中的文件。 创建命名服务时，配置包中的文件将复制到一个或多个选定用于运行命名服务的节点。 然后，代码开始运行，现在即可访问配置文件。
 
-**容器**：默认情况下，Service Fabric 以进程形式部署和激活服务。 Service Fabric 还可在容器映像中部署服务。 容器是在应用程序中将基础操作系统虚拟化的一种虚拟化技术。 应用程序及其运行时、依赖项和系统库在一个容器内运行。 容器对自己的操作系统构造隔离视图具有全部专有访问权限。 Service Fabric 支持 Linux 和 Windows Server 容器上的 Docker 容器。 有关详细信息，请参阅 [Service Fabric 和容器](service-fabric-containers-overview.md)。
+**容器**：默认情况下，Service Fabric 以进程形式部署和激活服务。 Service Fabric 还可在容器映像中部署服务。 容器是一种虚拟化技术，可将底层操作系统从应用程序中抽象出来。 应用程序及其运行时、依赖项和系统库在一个容器内运行。 容器对自己的操作系统构造隔离视图具有全部专有访问权限。 Service Fabric在 Linux 上支持 Windows Server 容器和 Docker 容器。 有关详细信息，请参阅 [Service Fabric 和容器](service-fabric-containers-overview.md)。
 
  分区方案：创建命名服务时，需要指定一个分区方案。 包含大量状态的服务跨分区拆分数据，将状态分散在群集的节点上。 通过在分区之间拆分数据，可以扩展命名服务的状态。 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供可用性。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自身的副本集，以便状态保持同步。如果某个副本失败，Service Fabric 将从现有副本创建新副本。
 
 有关详细信息，请阅读 [Service Fabric Reliable Services 分区](service-fabric-concepts-partitioning.md)一文。
 
 ## <a name="system-services"></a>系统服务
+
 系统在每个群集中创建了一些系统服务，用于提供 Service Fabric 的平台功能。
 
  命名服务：每个 Service Fabric 群集均有一个命名服务，该服务将服务名称解析到群集中的某个位置。 使用类似于管理群集的 Internet 域名系统 (DNS) 的方式管理服务名称和属性。 客户端可以使用命名服务安全地与群集中的任何节点进行通信，以解析服务名称及其位置。 应用程序在群集内移动。 例如，原因可以是故障、资源平衡或重设群集大小。 可开发解析当前网络位置的服务和客户端。 客户端会获得实际计算机 IP 地址及其当前运行位置所在的端口。
@@ -92,15 +96,17 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 有关将应用程序部署到映像存储服务的详细信息，请阅读[部署应用程序](service-fabric-deploy-remove-applications.md)一文。
 
 **故障转移管理器服务**：每个 Service Fabric 群集都具有一个故障转移管理器服务，负责执行以下操作：
-   - 执行与服务的高可用性和一致性相关的功能。
-   - 协调应用程序和群集升级。
-   - 与其他系统组件交互。
+
+ - 执行与服务的高可用性和一致性相关的功能。
+ - 协调应用程序和群集升级。
+ - 与其他系统组件交互。
 
 **修复管理器服务**：这是一项可选的系统服务，可在集群上实现自动、透明、安全的修复操作。 修复管理器可用于：
-   - 在[白银和黄金持久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric 集群上执行 Azure 维护修复。
-   - 实施面向[修补业务流程应用](service-fabric-patch-orchestration-application.md)的修复操作
 
-## <a name="deployment-and-application-models"></a>部署和应用程序模型 
+ - 在[白银和黄金持久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric 集群上执行 Azure 维护修复。
+ - 实施面向[修补业务流程应用](service-fabric-patch-orchestration-application.md)的修复操作
+
+## <a name="deployment-and-application-models"></a>部署和应用程序模型
 
 若要部署服务，需要描述服务的运行方式。 Service Fabric 支持 3 种不同的部署模型：
 
@@ -112,6 +118,7 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 <!-- Not Available on [Introduction to the Service Fabric Resource Model](/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)-->
 
 ### <a name="native-model"></a>本机模块
+
 本机应用程序模型为应用程序提供对 Service Fabric 的完整低级别访问权限。 应用程序和服务被定义为 XML 清单文件中的已注册类型。
 
 本机模型支持 Reliable Services 框架和 Reliable Actors 框架，该框架提供对 C# 和 Java 中 Service Fabric 运行时 API 和群集管理 API 的访问权限。 本机模型还支持任意容器和可执行文件。
@@ -131,6 +138,7 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 有关详细信息，请阅读[为服务选择编程模型](service-fabric-choose-framework.md)一文。
 
 ### <a name="docker-compose"></a>Docker Compose 
+
 [Docker Compose](https://docs.docker.com/compose/) 是 Docker 项目的一部分。 Service Fabric 对[使用 Docker Compose 模型部署应用程序](service-fabric-docker-compose.md)提供了有限支持。
 
 ## <a name="environments"></a>环境
@@ -144,7 +152,8 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 - **Service Fabric 开发群集**：在 Windows、Linux 或 Mac 上提供本地开发经验，用于开发 Service Fabric 应用程序。
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>环境、框架和部署模型支持矩阵
-不同的环境对框架和部署模型提供不同级别的支持。 下表介绍了支持的框架和部署模型组合。
+
+不同的环境为框架和部署模型提供不同级别的支持。 下表介绍了支持的框架和部署模型组合。
 
 | 应用程序类型 | 介绍依据 | Azure Service Fabric 群集（任意 OS）| 本地群集 | 独立群集 |
 |---|---|---|---|---|
@@ -162,6 +171,7 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="next-steps"></a>后续步骤
+
 了解有关 Service Fabric 的详细信息：
 
 * [Service Fabric 概述](service-fabric-overview.md)

@@ -1,26 +1,26 @@
 ---
 title: 以编程方式监视和管理 Azure 流分析作业
 description: 本文说明如何以编程方式监视通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业。
-author: rockboyfor
-ms.author: v-yeche
+author: lingliw
+ms.author: v-lingwu
 manager: digimobile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/20/2017
-ms.date: 05/07/2018
-ms.openlocfilehash: c34e9bf49c1e24e707e78c74e9edef20ab22ca52
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.date: 02/27/2020
+ms.openlocfilehash: d0b42895e519e48dc3fc560e719403e88ab4a115
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856262"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155128"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
 本文说明如何对流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动执行此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始执行此过程之前，必须具备以下先决条件：
 
@@ -58,7 +58,8 @@ ms.locfileid: "75856262"
     将 *SubscriptionId* 和 *ActiveDirectoryTenantId* 的值替换为 Azure 订阅 ID 和租户 ID。 可以通过运行以下 PowerShell cmdlet 来获取这些值：
 
     ```
-    Get-AzureAccount
+    Login-AzAccount -Environment AzureChinaCloud
+    Get-AzSubscription
     ```
 4. 将以下 using 语句添加到项目中的源文件 (Program.cs)。
    

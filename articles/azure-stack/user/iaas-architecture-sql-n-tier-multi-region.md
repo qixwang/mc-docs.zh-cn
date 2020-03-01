@@ -1,25 +1,23 @@
 ---
-title: 在多个 Azure Stack 区域中运行 N 层应用程序以确保高可用性 | Microsoft Docs
-description: 了解如何在多个 Azure Stack 区域中运行 N 层应用程序以确保高可用性。
-services: azure-stack
+title: 在多个 Azure Stack Hub 区域中运行 N 层应用程序以实现高可用性
+description: 了解如何在多个 Azure Stack Hub 区域中运行 N 层应用程序以实现高可用性。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 11/01/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
-ms.openlocfilehash: a3ba2536b66ad277eb44a625450b93612db35e5c
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 80e768e76b069978eabd84bcab0fb02a57dd885f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020542"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540925"
 ---
-# <a name="run-an-n-tier-application-in-multiple-azure-stack-regions-for-high-availability"></a>在多个 Azure Stack 区域中运行 N 层应用程序以确保高可用性
+# <a name="run-an-n-tier-application-in-multiple-azure-stack-hub-regions-for-high-availability"></a>在多个 Azure Stack Hub 区域中运行 N 层应用程序以实现高可用性
 
-此参考体系结构展示了在多个 Azure Stack 区域中运行 N 层应用程序以实现可用性和强健的灾难恢复基础结构的一组经过实践检验的做法。 在本文档中，流量管理器用于实现高可用性，但如果流量管理器在环境中不是首选项，则也可使用一对高度可用的负载均衡器来代替。
+此参考体系结构展示了在多个 Azure Stack Hub 区域中运行 N 层应用程序以实现可用性和可靠的灾难恢复基础结构的一组经过实践检验的做法。 在本文档中，流量管理器用于实现高可用性，但如果流量管理器在环境中不是首选项，则也可使用一对高度可用的负载均衡器来代替。
 
 > [!Note]  
 > 请注意，在下面的体系结构中使用的流量管理器需要在 Azure 中进行配置，用于配置流量管理器配置文件的终结点需要是可以公开路由的 IP。
@@ -40,7 +38,7 @@ ms.locfileid: "74020542"
 
 -   **SQL Server Always On 可用性组**。 如果使用的是 SQL Server，建议使用 [SQL Always On 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)以实现高可用性。 创建同时包含两个区域中的 SQL Server 实例的单个可用性组。
 
--   **VNET 到 VNET VPN 连接**。 由于 VNET 对等互连尚不能在 Azure Stack 上使用，因此请使用 VNET 到 VNET VPN 连接来连接两个 VNET。 有关详细信息，请参阅 [Azure Stack 中的 VNET 到 VNET](/azure-stack/user/azure-stack-network-howto-vnet-to-vnet?view=azs-1908)。
+-   **VNET 到 VNET VPN 连接**。 由于 VNET 对等互连尚不可在 Azure Stack Hub 上使用，因此请使用 VNET 到 VNET VPN 连接来连接两个 VNET。 有关详细信息，请参阅 [Azure Stack Hub 中的 VNET 到 VNET](/azure-stack/user/azure-stack-network-howto-vnet-to-vnet?view=azs-1908)。
 
 ## <a name="recommendations"></a>建议
 

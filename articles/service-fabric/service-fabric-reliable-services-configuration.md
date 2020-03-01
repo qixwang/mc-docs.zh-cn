@@ -1,17 +1,17 @@
 ---
 title: 配置 Azure Service Fabric Reliable Services
-description: 了解如何在 Azure Service Fabric 中配置有状态 Reliable Services。
+description: 了解如何在 Azure Service Fabric 应用程序中全局配置以及针对单个服务配置有状态可靠服务。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/02/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0ed3efd1153f3d55277eb0aa79bb6b9f75f06195
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: d62f00100cf5d4f1be16a3b5c96700fcf511f471
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742410"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540133"
 ---
 # <a name="configure-stateful-reliable-services"></a>配置有状态 Reliable Services
 有两组配置设置可供 Reliable Services 使用。 一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Service。

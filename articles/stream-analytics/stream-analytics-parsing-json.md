@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 01/29/2020
 ms.date: 2/6/2020
-ms.openlocfilehash: b20a91c20f9e7734fecd34c97551a42a4c601665
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: ca7a7dac0266a2540d6db2aee191d65fc1854a5f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068302"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155132"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
@@ -47,7 +47,6 @@ Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 J
     }
 }
 ```
-
 
 ### <a name="access-nested-fields-in-known-schema"></a>访问已知架构中的嵌套字段
 使用点表示法 (.) 可以轻松地直接从查询访问嵌套字段。 例如，此查询选择上述 JSON 数据中 Location 属性下的纬度和经度坐标。 点表示法可用于浏览多个级别，如下所示。
@@ -125,7 +124,7 @@ WHERE
 
 |DeviceID|SensorName|AlertMessage|
 |-|-|-|
-|12345|Humidity|Alert :Sensor above threshold|
+|12345|湿度|Alert :Sensor above threshold|
 
 ### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
 
@@ -146,8 +145,8 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 |DeviceID|SensorName|AlertMessage|
 |-|-|-|
-|12345|Temperature|80|
-|12345|Humidity|70|
+|12345|温度|80|
+|12345|湿度|70|
 |12345|CustomSensor01|5|
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[object Object]|
@@ -263,8 +262,8 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
 
 |DeviceId|smKey|smValue|
 |-|-|-|
-|12345|Manufacturer|ABC|
-|12345|Version|1.2.45|
+|12345|制造商|ABC|
+|12345|版本|1.2.45|
 
 如果提取的字段需要显示在列中，则除了 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作外，还可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
 

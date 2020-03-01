@@ -1,17 +1,17 @@
 ---
 title: Reliable Services 通知
-description: Service Fabric Reliable Services 通知的概念文档
+description: 针对可靠状态管理器和可靠字典的 Service Fabric Reliable Services 通知的概念性文档
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/29/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4bb25b8c36dc936a2bd1b5c9274779591c54cd13
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 9b28f8c93916140ed364aef88286ed80c629f894
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742405"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541066"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 有两种类型的对象支持通知：可靠状态管理器  和可靠字典  。

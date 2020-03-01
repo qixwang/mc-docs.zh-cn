@@ -1,31 +1,21 @@
 ---
-title: 删除配额、计划、套餐和订阅 | Microsoft Docs
-description: 了解如何删除 Azure Stack 配额、计划、套餐和订阅。
-services: azure-stack
-documentationcenter: ''
+title: 删除配额、计划、套餐和订阅
+description: 了解如何删除 Azure Stack Hub 配额、计划、套餐和订阅。
 author: WenJason
-manager: digimobile
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 08/13/2019
-ms.date: 09/16/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 04/25/2019
-ms.openlocfilehash: cfebf6ea1f5c00d24bd69192776d8d20502eb59d
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: e526523f15c6e5de6b8ac97a81ee54376032a966
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857033"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540918"
 ---
 # <a name="delete-quotas-plans-offers-and-subscriptions"></a>删除配额、计划、套餐和订阅
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 本文介绍如何删除不再需要的配额、计划、套餐和订阅。 一般原则是只能删除不使用的项。 例如，只能删除没有附属订阅的套餐。
 

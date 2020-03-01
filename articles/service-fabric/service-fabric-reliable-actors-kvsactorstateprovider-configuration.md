@@ -1,17 +1,17 @@
 ---
-title: 更改 Azure Service Fabric 执行组件中的 KVSActorStateProvider 设置
+title: 更改 KVSActorStateProvider 设置
 description: 了解有关配置类型为 KVSActorStateProvider 的 Azure Service Fabric 有状态执行组件的信息
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/02/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 674015dd5d82bb9ffb7b8b2c3e57dd350abfba4d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c4082ad47fa805a5c31a10cb89992d64e4b3f9bb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742433"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540151"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>配置 Reliable Actors - KVSActorStateProvider
 通过更改 Microsoft Visual Studio 程序包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 KVSActorStateProvider 的默认配置。

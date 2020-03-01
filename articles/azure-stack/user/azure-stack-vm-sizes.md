@@ -1,34 +1,25 @@
 ---
-title: Azure Stack 中支持的 VM 大小 | Microsoft Docs
-description: Azure Stack 中支持的 VM 大小参考。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 中支持的 VM 大小
+description: Azure Stack Hub 中支持的 VM 大小参考。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 04/02/2019
-ms.date: 07/29/2019
+ms.topic: reference
+origin.date: 12/3/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 55cbcd533d0e88de76d07a5fef3a45e937c601a2
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 12/3/2019
+ms.openlocfilehash: 89d6349b12ae4539b90ed8fc25b3b702325a7cbf
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513193"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540735"
 ---
-# <a name="vm-sizes-supported-in-azure-stack"></a>Azure Stack 中支持的 VM 大小
+# <a name="vm-sizes-supported-in-azure-stack-hub"></a>Azure Stack Hub 中支持的 VM 大小
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+本文列出了 Azure Stack Hub 中可用的虚拟机 (VM) 大小。 可以使用本文帮助你选择支持 Azure Stack Hub 解决方案的 VM。
 
-本文列出了 Azure Stack 中可用的虚拟机 (VM) 大小。
-
-Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大小相关的函数，与磁盘类型无关。 这意味着，对于 Standard_Fs 系列 VM，不管你选择 SSD 还是 HDD 作为磁盘类型，单个额外的数据磁盘的 IOPS 限制都是 2300。 施加的 IOPS 限制是一种上限（最大可能值），目的是防止邻域干扰。 它不是你会在特定 VM 大小上获得的 IOPS 的保证。
+Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大小（而不是磁盘类型）的函数。 这意味着，对于 Standard_Fs 系列 VM，不管你选择 SSD 还是 HDD 作为磁盘类型，单个额外的数据磁盘的 IOPS 限制都是 2300。 施加的 IOPS 限制是一种上限（最大可能值），目的是防止邻域干扰。 它不是你会在特定 VM 大小上获得的 IOPS 的保证。
 
 ## <a name="vm-general-purpose"></a>VM 常规用途
 
@@ -60,13 +51,13 @@ Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大�
 |**Standard_A7** |8 |56    |605 |500 |500 |16x500 |4 |
 
 ### <a name="av2-series"></a>Av2 系列
-*需要 Azure Stack 1804 或更高版本*
+*需要 Azure Stack Hub 1804 或更高版本*
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |-----------------|----|----|-----|-----|------|--------------|---------|
 |**Standard_A1_v2**  |1   |2   |10 个   |500 |1000  |2/2x500   |2 |
 |**Standard_A2_v2**  |2   |4   |20 个   |500 |2000  |4/4x500   |2 |
-|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8/8x500   |4 |
+|**Standard_A4_v2**  |4   |8   |40   |500 |4000  |8/8x500   |4 |
 |**Standard_A8_v2**  |8   |16  |80   |500 |8000  |16/16x500 |8 |
 |**Standard_A2m_v2** |2   |16  |20 个   |500 |2000  |4/4x500   |2 |
 |**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8/8x500   |4 |
@@ -110,7 +101,7 @@ Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大�
 
 ## <a name="compute-optimized"></a>计算优化
 ### <a name="f-series"></a>F 系列
-*需要 Azure Stack 1804 或更高版本*
+*需要 Azure Stack Hub 1804 或更高版本*
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |-----------------|----|----|-----|----|------|------------|---------|
@@ -122,7 +113,7 @@ Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大�
 
 
 ### <a name="fs-series"></a>Fs 系列
-*需要 Azure Stack 1804 或更高版本*  
+*需要 Azure Stack Hub 1804 或更高版本*  
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |------------------|----|----|----|-----|------|-------------|---------|
@@ -134,7 +125,7 @@ Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大�
 
 
 ### <a name="fsv2-series"></a>Fsv2 系列
-*需要 Azure Stack 1804 或更高版本* 
+*需要 Azure Stack Hub 1804 或更高版本* 
 
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
@@ -186,6 +177,4 @@ Azure Stack 上的磁盘 IOPS（每秒输入/输出操作次数）是与 VM 大�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack VM 功能](azure-stack-vm-considerations.md)
-
-<!-- Update_Description: wording update -->
+[Azure Stack Hub VM 功能](azure-stack-vm-considerations.md)

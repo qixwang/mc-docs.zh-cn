@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 11/29/2019
-ms.date: 01/13/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: add2164365b678d34f0bc90ba82b22c32bbe7465
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 73692e424e42def766dc86ae7c7fe90e6ef1ecc3
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631046"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563404"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -59,7 +59,7 @@ ms.locfileid: "75631046"
     * **域名**：如果未在 Kafka 群集上配置 IP 地址播发，则群集必须能够使用完全限定的域名 (FQDN) 相互连接。 这需要在每个网络中设置一台域名系统 (DNS) 服务器，并将其配置为向其他网络转发请求。 创建 Azure 虚拟网络时，请不要使用网络提供的自动 DNS，必须指定一台自定义 DNS 服务器以及该服务器的 IP 地址。 创建虚拟网络后，必须创建使用该 IP 地址的 Azure 虚拟机，并在该虚拟机上安装并配置 DNS 软件。
 
     > [!WARNING]  
-    > 在将 HDInsight 安装到虚拟网络之前，需先创建和配置自定义 DNS 服务器。 无需对 HDInsight 进行其他配置即可使用针对虚拟网络配置的 DNS 服务器。
+    > 请先创建并配置自定义 DNS 服务器，此后再将 HDInsight 安装到虚拟网络中。 无需对 HDInsight 进行其他配置即可使用针对虚拟网络配置的 DNS 服务器。
 
 有关连接两个 Azure 虚拟网络的详细信息，请参阅[配置 VNet 到 VNet 的连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 
@@ -94,10 +94,13 @@ ms.locfileid: "75631046"
 
         ![添加 VNet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. 配置 IP 播发：
-    1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
-    1. 选择“服务” > “Kafka”。   单击“配置”选项卡  。
-    1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”  。
+### <a name="configure-ip-advertising"></a>配置 IP 播发
+
+配置 IP 播发，使客户端可以使用中转站 IP 地址而不是域名进行连接。
+
+1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
+1. 选择“服务” > “Kafka”。   单击“配置”选项卡  。
+1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”  。
 
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
@@ -114,12 +117,12 @@ ms.locfileid: "75631046"
 
         ![重启 Kafka 节点](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-1. 将 Kafka 配置为侦听所有网络接口。
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>将 Kafka 配置为侦听所有网络接口。
     1. 不要关闭“服务” > “Kafka”下的“配置”选项卡。    在“Kafka 代理”部分，将“侦听器”属性设置为 `PLAINTEXT://0.0.0.0:9092`。  
     1. 选择“保存”  。
     1. 依次选择“重启”、“确认全部重启”。  
 
-1. 记下主要群集的代理 IP 地址和 Zookeeper 地址。
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>记下主要群集的代理 IP 地址和 Zookeeper 地址。
     1. 在 Ambari 仪表板上选择“主机”。 
     1. 记下代理和 Zookeeper 的 IP 地址。 代理节点主机名的前两个字母为 **wn**，Zookeeper 节点主机名的前两个字母为 **zk**。
 

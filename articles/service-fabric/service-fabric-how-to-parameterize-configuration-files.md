@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Service Fabric 中参数化配置文件
-description: 了解如何在 Service Fabric 中参数化配置文件。
+description: 了解如何在 Service Fabric 中参数化配置文件，这是管理多个环境时的一项有用技术。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 10/09/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: eca24a50711b8a750d125aa3185941520eeffc4c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 1cbb43d7723bc1dcea954aab4621afad771b9e85
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742508"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540420"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 

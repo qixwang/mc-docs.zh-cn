@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 此页概述了网络观察程序资源故障排除功能
 services: network-watcher
 documentationcenter: na
-author: rockboyfor
+author: lingliw
 manager: digimobile
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2017
 ms.date: 04/30/2018
-ms.author: v-yeche
-ms.openlocfilehash: 1a30b395ffd033746e507de0e3667907d2fb52d1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.author: v-lingwu
+ms.openlocfilehash: 80801b14cb84475fb9cd3644280822ef0bd37a37
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028983"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154567"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 

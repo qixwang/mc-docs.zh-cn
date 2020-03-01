@@ -1,23 +1,22 @@
 ---
-title: 在 Azure 数据工厂中使用 Spark 转换数据 | Microsoft Docs
+title: '在 Azure 数据工厂中使用 Spark 转换数据 '
 description: 本教程提供有关在 Azure 数据工厂中使用 Spark 活动转换数据的分步说明。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 origin.date: 01/10/2018
-ms.date: 10/14/2019
+ms.date: 03/02/2020
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 674c04782a2abe5beab713c2130e7c0cfd1a8bd3
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 12c0b758aa9f2f39cfaea4374c1ce0023213c414
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275172"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653560"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure 门户创建 Azure 数据工厂管道。 该管道使用 Spark 活动和按需 Azure HDInsight 链接服务转换数据。 
@@ -101,7 +100,7 @@ ms.locfileid: "72275172"
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。    
          
-   本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+   本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 对于“版本”，选择“V2”。  
 1. 对于“位置”，请选择数据工厂所在的位置。  
 
@@ -160,7 +159,7 @@ ms.locfileid: "72275172"
    
    g. 至于“资源组”，请选择创建数据工厂时使用的资源组。  将在此资源组中创建 Spark 群集。 
    
-   h. 展开“OS 类型”。 
+   h.如果该值不存在，请单击“添加行”。 展开“OS 类型”。 
    
    i. 输入名称作为**群集用户名**。 
    

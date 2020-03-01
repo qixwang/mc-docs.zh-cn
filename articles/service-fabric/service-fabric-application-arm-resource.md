@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure 资源管理器部署和升级应用程序及服务
+title: 使用 Azure 资源管理器部署和升级
 description: 了解如何使用 Azure 资源管理器模板，将应用程序和服务部署到 Service Fabric 群集。
 ms.topic: conceptual
 origin.date: 12/06/2017
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: f4c3168cee07a7a57e0b1be6652817004d887c7f
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 3381af4c10fb90fddcaa930d119475903c8113cc
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742468"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540702"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 

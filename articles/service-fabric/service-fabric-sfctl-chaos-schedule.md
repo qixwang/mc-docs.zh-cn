@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI - sfctl chaos schedule
-description: 介绍 Service Fabric CLI sfctl chaos schedule 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于混沌测试计划的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ae80d0ee7061e03e8a03c7de12e915792b9ab8ee
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f384547925b2259aab9de9d4230eb0a2ed04ee3f
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742263"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540009"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 获取和设置 Chaos Schedule。
@@ -72,9 +72,10 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
 
 ### <a name="examples"></a>示例
 
-以下命令设置一个计划（假定当前计划的版本为 0），该计划于 2016 年 1 月 1 日开始，于 2038 年 1 月 1 日过期，每周 7 天、每天 24 小时运行 Chaos。 Chaos 将被计划于该时间内在群集上运行。
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+以下命令设置一个计划（假定当前计划的版本为 0），该计划于 2016 年 1 月 1 日开始，于 2038 年 1 月 1 日过期，每周 7 天、每天 24 小时运行 Chaos。
+Chaos 将被计划于该时间内在群集上运行。
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -135,6 +136,7 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
         ]
     }
     ]
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

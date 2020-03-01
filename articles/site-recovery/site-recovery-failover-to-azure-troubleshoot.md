@@ -7,15 +7,15 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-origin.date: 03/04/2019
-ms.date: 06/10/2019
+origin.date: 01/08/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9c8de33ac6d247fb5bedd093c531930293d9a105
-ms.sourcegitcommit: 440d53bb61dbed39f2a24cc232023fc831671837
+ms.openlocfilehash: 8f746c775c42352e3e243b51136fe848ae6cc1f8
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390798"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611236"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -25,7 +25,7 @@ ms.locfileid: "66390798"
 
 Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中一个原因也可能导致此情况的发生：
 
-* 没有足够的配额可用于创建虚拟机：可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://support.azure.cn/zh-cn/support/support-azure/) 来增加此配额。
+* 没有足够的配额可用于创建虚拟机：可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://support.azure.cn/support/support-azure/) 来增加此配额。
 
 * 尝试在同一个可用性集中故障转移不同大小系列的虚拟机。 确保在同一个可用性集中选择相同大小系列的所有虚拟机。 可以转到虚拟机的“计算和网络”设置来更改大小，然后重试故障转移。
 
@@ -33,7 +33,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中�
 
 ## <a name="failover-failed-with-error-id-28092"></a>故障转移失败，错误 ID 为 28092
 
-Site Recovery 无法为故障转移的虚拟机创建网络接口。 请确保订阅中有足够的配额来创建网络接口。 可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://support.azure.cn/zh-cn/support/support-azure/) 来增加此配额。 如果你拥有足够的配额，则这可能是一个间歇性的问题，请重试该操作。 如果即使在重试后问题仍然存在，请在本文档结尾处留下注释。  
+Site Recovery 无法为故障转移的虚拟机创建网络接口。 请确保订阅中有足够的配额来创建网络接口。 可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://support.azure.cn/support/support-azure/) 来增加此配额。 如果你拥有足够的配额，则这可能是一个间歇性的问题，请重试该操作。 如果即使在重试后问题仍然存在，请在本文档结尾处留下注释。  
 
 ## <a name="failover-failed-with-error-id-70038"></a>故障转移失败，错误 ID 为 70038
 
@@ -107,6 +107,8 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 >[!Note]
 >启用除“启动诊断”以外的任何设置，都需要在故障转移之前在虚拟机中安装 Azure VM 代理
 
+<!--Not Available on ## Unable to open serial console after failover of a UEFI based machine into Azure-->
+
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>意外的关闭消息（事件 ID 6008）
 
 在故障转移后启动 Windows VM 时，如果在恢复后的 VM 上收到意外的关闭消息，则表明在用于故障转移的恢复点中未捕获 VM 关闭状态。 当恢复到 VM 未完全关闭的时间点时会发生此情况。
@@ -163,6 +165,6 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 - 对[到 Windows VM 的 RDP 连接](../virtual-machines/windows/troubleshoot-rdp-connection.md)进行故障排除
 - 对[到 Linux VM 的 SSH 连接](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)进行故障排除
 
-如需更多帮助，请在 [Site Recovery 论坛](https://www.azure.cn/support/contact/)提出疑问。 我们的活动社区应能够为你提供帮助。
+如需更多帮助，请在 [Site Recovery 论坛](https://support.azure.cn/support/contact/)提出疑问。 我们的活动社区应能够为你提供帮助。
 
-<!--Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

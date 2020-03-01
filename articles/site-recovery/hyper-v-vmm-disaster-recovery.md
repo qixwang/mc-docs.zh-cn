@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 为本地站点之间的 Hyper-V VM 设置灾难恢复
+title: 使用 Azure Site Recovery 设置到辅助站点的 Hyper-V 灾难恢复
 description: 了解如何使用 Azure Site Recovery 为本地站点之间的 Hyper-V VM 设置灾难恢复。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: tutorial
-origin.date: 09/09/2019
-ms.date: 09/30/2019
+origin.date: 11/14/2019
+ms.date: 03/02/2020
 ms.author: v-yeche
 ms.custom: MVC
-ms.openlocfilehash: 4e6d96f630541938db0c3a420430fda0919e0eff
-ms.sourcegitcommit: 8f810b0a4edb3343a694c72a221867763f20472d
+ms.openlocfilehash: 4ecabdc7a07bc03d71a797d45736716864524673
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72524840"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611287"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -87,7 +87,7 @@ ms.locfileid: "72524840"
 1. 在每个 VMM 服务器上运行提供程序安装文件。 如果 VMM 部署在群集中，请如下进行首次安装：
     - 在活动节点上安装提供程序，并完成安装以在保管库中注册 VMM 服务器。
     - 然后在其他节点上安装该提供程序。 所有群集节点应运行相同版本的提供程序。
-2. 安装程序运行几项先决条件检查，并请求停止 VMM 服务的权限。 VMM 服务会在安装程序完成时自动重启。 如果在 VMM 群集上进行安装，系统会提示停止群集角色。
+2. 安装程序运行几项先决条件检查，并请求停止 VMM 服务的权限。 VMM 服务会在安装程序完成时自动重新启动。 如果在 VMM 群集上进行安装，系统会提示停止群集角色。
 3. 在“Microsoft 更新”  中，可选择指定根据 Azure 更新策略安装提供程序更新。
 
     <!--MOONCAKE: CORRECT ON with your Azure Update policy-->
@@ -125,7 +125,7 @@ ms.locfileid: "72524840"
 2. 在“创建和关联策略”  中指定策略名称。 源和目标类型应为 Hyper-V  。
 3. 在“Hyper-V 主机版本”中，选择主机上运行的操作系统。 
 4. 在“身份验证类型”和“身份验证端口”中，指定如何对主 Hyper-V 主机服务器和恢复 Hyper-V 主机服务器之间的流量进行身份验证。  
-    - 除非有正常运行的 Kerberos 环境，否则请选择“证书”。  Azure Site Recovery 将为 HTTPS 身份验证自动配置证书。 无需手动执行任何操作。
+    - 除非有正常运行的 Kerberos 环境，否则请选择“证书”  。 Azure Site Recovery 将为 HTTPS 身份验证自动配置证书。 无需手动执行任何操作。
     - 默认情况下，端口 8083 和 8084（用于证书）在 Hyper-V 主机服务器上的 Windows 防火墙中将处于打开状态。
     - 如果你选择了“Kerberos”  ，则会使用 Kerberos 票证执行主机服务器的相互身份验证。 Kerberos 仅适用于在 Windows Server 2012 R2 或更高版本上运行的 Hyper-V 主机服务器。
 1. 在“复制频率”  中，指定要在初始复制后复制增量数据的频率（每隔 30 秒、5 或 15 分钟）。

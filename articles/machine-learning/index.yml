@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 289c3a293c6c576c4a3c4195a66fc131b0d133e2
-  ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+  ms.openlocfilehash: b253a16b1d64a4de919fd554ac1e591c621ab4d1
+  ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/02/2020
-  ms.locfileid: "75598736"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "78154849"
 landingContent:
 - title: Azure ML 入门
   linkLists:
@@ -39,7 +39,7 @@ landingContent:
       url: service/concept-azure-machine-learning-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: 设置环境
+    - text: 设置你的环境
       url: service/how-to-configure-environment.md
     - text: 设置训练计算目标
       url: service/how-to-set-up-training-targets.md
@@ -97,8 +97,6 @@ landingContent:
       url: service/how-to-setup-authentication.md
     - text: 实时预测
       url: service/how-to-consume-web-service.md
-    - text: 成批预测
-      url: service/how-to-run-batch-predictions.md
     - text: 端到端示例 (GitHub)
       url: https://github.com/microsoft/MLOps
 - title: 转到参考文档

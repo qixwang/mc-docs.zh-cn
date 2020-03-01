@@ -28,6 +28,8 @@
       href: tutorial-traffic-manager-subnet-routing.md
 - name: 示例
   items:
+    - name: Azure CLl
+      href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
 - name: 概念
@@ -108,7 +110,7 @@
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务限制
-      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
     - name: 服务更新
       href: 'https://www.azure.cn/what-is-new/'
     - name: SLA

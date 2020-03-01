@@ -1,6 +1,6 @@
 ---
 title: Azure 中的出站连接
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本文介绍 Azure 如何使 VM 与公共 Internet 服务通信。
 services: load-balancer
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/07/2019
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 4e7c14d4d50c2963f8727a5e53444c0130002ab8
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 25625086334a6b3eaba0574112d32b44151759a7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993367"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540971"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -28,7 +28,7 @@ Azure 通过多种不同的机制为客户部署提供出站连接。 本文介�
 >[!NOTE] 
 >本文仅涵盖了资源管理器部署。 有关 Azure 中的所有经典部署方案，请查看[出站连接（经典）](load-balancer-outbound-connections-classic.md)。
 
-Azure 中的部署可与 Azure 外部的公用 IP 地址空间中的终结点进行通信。 当实例启动到公共 IP 地址空间中的目标的出站流时，Azure 会动态将专用 IP 地址映射到公共 IP 地址。 创建此映射后，此出站发起流的返回流量还可以抵达发起流的专用 IP 地址。
+Azure 中的部署可与 Azure 外部的公共 IP 地址空间中的终结点进行通信。 当实例启动到公共 IP 地址空间中的目标的出站流时，Azure 会动态将专用 IP 地址映射到公共 IP 地址。 创建此映射后，此出站发起流的返回流量还可以抵达发起流的专用 IP 地址。
 
 Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 IP 地址伪装成单个公共 IP 地址时，Azure 将使用[端口地址转换 (PAT)](#pat) 来伪装专用 IP 地址。 临时端口用于 PAT，是基于池大小[预先分配](#preallocatedports)的。
 
@@ -44,7 +44,7 @@ Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](/azure-res
 | SKU | 方案 | 方法 | IP 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | 标准、基本 | [1.具有公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 在使用标准负载均衡器时，应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接 |
-| 标准、基本 | [2.与 VM 关联的公共负载均衡器（实例上没有公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
+| 标准、基本 | [1.具有实例级公共 IP 地址的 VM（有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 使用标准负载均衡器时，如果向虚拟机分配了公共 IP，则不支持[出站规则](load-balancer-outbound-rules-overview.md) |
 | 无或基本 | [3.独立 VM（无负载均衡器，无公共 IP 地址）](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
 
 如果不希望 VM 与 Azure 外部的公共 IP 地址空间中的终结点通信，则可以根据需要使用网络安全组 (NSG) 来阻止访问。 [阻止出站连接](#preventoutbound)部分详细介绍了 NSG。 本文不会介绍有关在无任何出站访问权限的情况下，如何设计和管理虚拟网络的设计和实施指导。
@@ -238,7 +238,7 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 
 ### <a name="idletimeout"></a>保持 keepalive 重置出站空闲超时
 
-出站连接有 4 分钟的空闲超时。 此超时不可调整。 但是，可以根据需要使用传输（例如 TCP keepalive）或应用层 keepalive 来刷新空闲流和重置此空闲超时。  
+出站连接有 4 分钟的空闲超时。 此超时可通过[出站规则](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout)进行调整。 还可以使用传输（例如，TCP Keepalives）或应用程序层 Keepalives 刷新空闲流，并在必要时重置此空闲超时。  
 
 使用 TCP keepalive 时，在连接的一端启用它们就足够了。 例如，若要重置流的空闲计时器，在服务器端启用它们就足够了，没有必要在两端都启动 TCP keepalive。  应用程序层（包括数据库客户端-服务器配置）也存在类似的概念。  检查服务器端对于特定于应用程序的 keepalive 存在哪些选项。
 

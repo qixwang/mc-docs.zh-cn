@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: a9021815127e6c467dd907af692337721857e528
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 03/09/2020
+ms.openlocfilehash: 3bc3a729f6bb0254a2ab343c91db88a38ae2664d
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020828"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590292"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>使用 Jupyter Notebook 和 Kqlmagic 扩展分析 Azure 数据资源管理器中的数据
 
@@ -169,7 +169,7 @@ df.head(10)
     ```
 
 > [!TIP]
-> 若要接收有关所有可用配置的信息，请使用 `%config KQLmagic`。 若要排查和捕获 Kusto 错误（例如连接问题和不正确的查询），请使用 `%config Kqlmagic.short_errors=False`
+> 若要接收有关所有可用配置的信息，请使用 `%config Kqlmagic`。 若要排查和捕获 Kusto 错误（例如连接问题和不正确的查询），请使用 `%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>后续步骤
 

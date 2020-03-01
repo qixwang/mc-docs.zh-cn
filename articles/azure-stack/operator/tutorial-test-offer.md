@@ -1,20 +1,19 @@
 ---
-title: 测试 Azure Stack 服务套餐。
+title: 测试 Azure Stack Hub 服务产品。
 description: 了解如何通过创建订阅并部署资源来测试服务套餐。
 author: WenJason
 ms.author: v-jay
-ms.service: azure-stack
 ms.topic: tutorial
 origin.date: 10/13/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/06/2019
-ms.openlocfilehash: e8588e6a6baa961566caff33c197f5388e49bf74
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 31dfdc0b48a2126defc043f55db2181cd59aa8c9
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020504"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540865"
 ---
 # <a name="tutorial-test-a-service-offering"></a>教程：测试服务套餐
 
@@ -26,13 +25,13 @@ ms.locfileid: "74020504"
 > * 创建订阅
 > * 创建并部署资源
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前，必须满意以下先决条件：
 
 - 完成[向用户提供服务](tutorial-offer-services.md)教程。 此教程介绍了如何创建本教程所用的套餐。
 
-- 使用本教程中订阅的套餐可以部署虚拟机 (VM) 资源。 若要测试 VM 部署，必须先从 Azure 市场下载 VM 映像，并在 Azure Stack 市场中提供该映像。 有关说明，请参阅[将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)。 
+- 使用本教程中订阅的套餐可以部署虚拟机 (VM) 资源。 若要测试 VM 部署，必须先从 Azure 市场下载 VM 映像，并在 Azure Stack Hub 市场中提供该映像。 有关说明，请参阅[将市场项从 Azure 下载到 Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)。 
 
 ## <a name="subscribe-to-the-offer"></a>订阅套餐
 
@@ -140,8 +139,8 @@ ms.locfileid: "74020504"
 > * 创建订阅
 > * 创建并部署资源 
 
-接下来，请了解如何为附加服务部署资源提供程序。 使用这些资源提供程序可为计划中的用户提供更多的服务：
+接下来，请了解如何为增值服务部署资源提供程序。 使用这些资源提供程序可为计划中的用户提供更多的服务：
 
-- [在 Azure Stack 上提供 SQL](azure-stack-sql-resource-provider.md)
-- [在 Azure Stack 上提供 MySQL](azure-stack-mysql-resource-provider.md)
-- [在 Azure Stack 上提供应用服务](azure-stack-app-service-overview.md)
+- [在 Azure Stack Hub 上提供 SQL](azure-stack-sql-resource-provider.md)
+- [在 Azure Stack Hub 上提供 MySQL](azure-stack-mysql-resource-provider.md)
+- [在 Azure Stack Hub 上提供应用服务](azure-stack-app-service-overview.md)

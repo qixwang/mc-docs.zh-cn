@@ -1,36 +1,28 @@
 ---
-title: 准备用于部署或轮换的 Azure Stack PKI 证书 | Microsoft Docs
-titleSuffix: Azure Stack
-description: 了解如何准备 PKI 证书，以便完成 Azure Stack 集成系统部署，或在现有 Azure Stack 环境中轮换机密。
-services: azure-stack
-documentationcenter: ''
+title: 准备用于部署或轮换的 Azure Stack Hub PKI 证书
+titleSuffix: Azure Stack Hub
+description: 了解如何准备 PKI 证书，以便完成 Azure Stack Hub 集成系统部署，或在现有 Azure Stack Hub 环境中轮换机密。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
-ms.openlocfilehash: 30b097fb77ae365598bc112ac5520e66a59be5e2
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: a24b0f3d73cd47772f4495062486c7780a836ddb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737892"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540369"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment-or-rotation"></a>准备用于部署或轮换的 Azure Stack PKI 证书
+# <a name="prepare-azure-stack-hub-pki-certificates-for-deployment-or-rotation"></a>准备用于部署或轮换的 Azure Stack Hub PKI 证书
 
-必须使用与 Azure Stack的证书要求匹配的属性导入和导出[从所选证书颁发机构 (CA) 获取](azure-stack-get-pki-certs.md)的证书文件。
+必须使用与 Azure Stack Hub 的证书要求匹配的属性导入和导出[从所选证书颁发机构 (CA) 获取](azure-stack-get-pki-certs.md)的证书文件。
 
 ## <a name="prepare-certificates-for-deployment"></a>为部署准备证书
 
-使用以下步骤来准备和验证 Azure Stack PKI 证书，此类证书将用于部署新的 Azure Stack 环境，或者用于在现有的 Azure Stack 环境中轮换机密。
+使用以下步骤来准备和验证 Azure Stack Hub PKI 证书，此类证书将用于部署新的 Azure Stack Hub 环境，或者用于在现有的 Azure Stack Hub 环境中轮换机密。
 
 ### <a name="import-the-certificate"></a>导入证书
 
@@ -55,7 +47,7 @@ ms.locfileid: "75737892"
 1. 选择“完成”以完成导入。 
 
 > [!NOTE]
-> 导入 Azure Stack 的证书后，证书的私钥将作为 PKCS 12 文件 (PFX) 存储在群集存储上。
+> 导入 Azure Stack Hub 的证书后，证书的私钥将作为 PKCS 12 文件 (PFX) 存储在群集存储上。
 
 ### <a name="export-the-certificate"></a>导出证书
 
@@ -76,7 +68,7 @@ ms.locfileid: "75737892"
 5. 从证书管理员控制台任务栏中，选择“操作”   > “所有任务”   > “导出”  。 选择“**下一步**”。
 
    > [!NOTE]
-   > 根据你拥有 Azure Stack 证书的数量，可能需要多次完成此过程。
+   > 根据你拥有 Azure Stack Hub 证书的数量，可能需要多次完成此过程。
 
 6. 选择“是，导出私钥”  ，并单击“下一步”  。
 
@@ -105,5 +97,3 @@ ms.locfileid: "75737892"
 ## <a name="next-steps"></a>后续步骤
 
 [验证 PKI 证书](azure-stack-validate-pki-certs.md)
-
-<!-- Update_Description: wording update -->

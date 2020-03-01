@@ -1,38 +1,28 @@
 ---
-title: Azure Stack 存储简介 | Microsoft Docs
-description: 了解 Azure Stack 存储服务。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 存储简介
+description: 了解 Azure Stack Hub 存储服务。
 author: WenJason
-manager: digimobile
-ms.assetid: 092aba28-04bc-44c0-90e1-e79d82f4ff42
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 06/13/2019
-ms.date: 09/16/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: ba01e44731f59f5072371e64f1b61a2d2ac48fc4
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 3825de0ab41ae5eb3c1f31593065385af327f778
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857318"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541013"
 ---
-# <a name="introduction-to-azure-stack-storage"></a>Azure Stack 存储简介
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="introduction-to-azure-stack-hub-storage"></a>Azure Stack Hub 存储简介
 
 ## <a name="overview"></a>概述
 
-Azure Stack 存储是一组云存储服务，这些服务与 Azure 存储提供的服务一致。 这些服务包括 Blob、表和队列。
+Azure Stack Hub 存储是一组与 Azure 存储提供的服务一致的云存储服务。 这些服务包括 Blob、表和队列。
 
-## <a name="azure-stack-storage-services"></a>Azure Stack 存储服务
+## <a name="azure-stack-hub-storage-services"></a>Azure Stack Hub 存储服务
 
-Azure Stack 存储提供以下三个服务：
+Azure Stack Hub 存储提供以下三个服务：
 
 - **Blob 存储**
 
@@ -46,9 +36,9 @@ Azure Stack 存储提供以下三个服务：
 
     队列存储为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
 
-Azure Stack 存储帐户是可让你访问 Azure Stack 存储服务的安全帐户。 存储帐户为存储资源提供唯一的命名空间。 下图显示了存储帐户中 Azure Stack 存储资源之间的关系：
+Azure Stack Hub 存储帐户是可让你访问 Azure Stack Hub 存储的安全帐户。 存储帐户为存储资源提供唯一的命名空间。 下图显示了存储帐户中 Azure Stack Hub 存储资源之间的关系：
 
-![Azure Stack 存储概述](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
+![Azure Stack Hub 存储概述](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
 
 ### <a name="blob-storage"></a>Blob 存储
 
@@ -75,7 +65,7 @@ Blob 存储提供三种类型的 blob：
 
 - **页 blob**
 
-    页 Blob 已针对表示 IaaS 磁盘和支持随机写入进行优化，且大小可以高达 1 TB。 Azure Stack 虚拟机连接的 IaaS 磁盘是以页 Blob 方式存储的 VHD。
+    页 Blob 已针对表示 IaaS 磁盘和支持随机写入进行优化，且大小可以高达 1 TB。 Azure Stack Hub 虚拟机连接的 IaaS 磁盘是以页 blob 方式存储的 VHD。
 
 ### <a name="table-storage"></a>表存储
 

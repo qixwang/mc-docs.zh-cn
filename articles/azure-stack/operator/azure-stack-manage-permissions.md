@@ -1,33 +1,23 @@
 ---
-title: 使用基于角色的访问控制设置访问权限 | Microsoft Docs
-description: 了解如何在 Azure Stack 中使用基于角色的访问控制 (RBAC) 设置访问权限。
-services: azure-stack
-documentationcenter: ''
+title: 使用基于角色的访问控制设置访问权限
+description: 了解如何在 Azure Stack Hub 中使用基于角色的访问控制 (RBAC) 设置访问权限。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 05/16/2019
-ms.date: 11/18/2019
+origin.date: 12/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 13391afee1e1c2851c187533475026875567ab0b
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.lastreviewed: 12/23/2019
+ms.openlocfilehash: d27ec0465d9d56afe6f5ef5f0b4fc83931397b0b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737954"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540926"
 ---
 # <a name="set-access-permissions-using-role-based-access-control"></a>使用基于角色的访问控制设置访问权限
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的读者、所有者或参与者。 例如，用户 A 可能对订阅 1 具有读者权限，但对虚拟机 7 则具有所有者权限。
+Azure Stack Hub 中的用户可以是订阅、资源组或服务的每个实例的读者、所有者或参与者。 例如，用户 A 可能对订阅 1 具有读者权限，但对虚拟机 7 则具有所有者权限。
 
  - 读者：用户可以查看所有内容，但不能进行任何更改。
  - 参与者：用户可以管理所有内容（对资源的访问权限除外）。
@@ -55,4 +45,4 @@ Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的�
 
 ## <a name="next-steps"></a>后续步骤
 
-[添加 Azure Stack 租户](azure-stack-add-new-user-aad.md)
+[添加 Azure Stack Hub 租户](azure-stack-add-new-user-aad.md)

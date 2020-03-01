@@ -16,7 +16,7 @@ metadata:
   ms.date: 07/09/2019
   ms.author: justinha
 abstract:
-  description: Azure Stack Hub 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 了解如何管理 Azure Stack Hub 集成系统基础结构以及如何使用我们的快速入门和教程提供服务。<br/><br/>如果你是使用 Azure Stack Hub 服务或为 Azure Stack Hub 生成应用的 Azure Stack Hub 用户，请参阅我们的<a href="/azure-stack/user">用户文档</a>。<br/><br/>如果你是对 Azure Stack Hub 开发工具包 (ASDK)、Azure Stack Hub（可以免费下载和使用）的单节点部署感兴趣的 Azure Stack Hub 操作员，请参阅我们的 <a href="/azure-stack/asdk">ASDK 文档</a>。
+  description: Azure Stack Hub 是一种混合云平台，通过它可从数据中心提供 Azure 服务。 了解如何管理 Azure Stack Hub 集成系统基础结构以及如何使用我们的快速入门和教程提供服务。<br/><br/>如果你是使用 Azure Stack Hub 服务或为 Azure Stack Hub 生成应用的 Azure Stack Hub 用户，请参阅我们的<a href="/azure-stack/user">用户文档</a>。<br/><br/>如果你是对 Azure Stack 开发工具包 (ASDK)（可以免费下载和使用的 Azure Stack Hub 的单节点部署）感兴趣的 Azure Stack Hub 操作员，请参阅我们的 <a href="/azure-stack/asdk">ASDK 文档</a>。
 sections:
   - title: Azure Stack Hub 入门
     items:
@@ -32,7 +32,7 @@ sections:
           - html: |-
               <a href="/azure-stack/operator/azure-stack-powershell-install">
               <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Azure Stack PowerShell</b></a>
+              <br><b>Azure Stack Hub PowerShell</b></a>
               <p>通过 PowerShell 轻松管理 Azure Stack Hub 资源。</p>
           - html: |-
               <a href="/azure-stack/operator/azure-stack-capacity-planning-overview">

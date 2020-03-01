@@ -1,46 +1,35 @@
 ---
-title: 允许应用访问 Azure Stack Key Vault 机密 | Microsoft Docs
-description: 了解如何运行从 Azure Stack 中的密钥保管库检索密钥和机密的示例应用。
-services: azure-stack
-documentationcenter: ''
+title: 允许应用访问 Azure Stack Hub Key Vault 机密
+description: 了解如何运行从 Azure Stack Hub 中的密钥保管库检索密钥和机密的示例应用。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/08/2019
-ms.date: 07/29/2019
+origin.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 203a5abc41d61d6e902ac9d1d91fa9b47ce88b0d
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.openlocfilehash: b212e4a48c5c280b7ce9dff88873813569925b11
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513288"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540782"
 ---
-# <a name="allow-apps-to-access-azure-stack-key-vault-secrets"></a>允许应用访问 Azure Stack Key Vault 机密
+# <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>允许应用访问 Azure Stack Hub Key Vault 机密
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+按照本文中的步骤运行示例应用 **HelloKeyVault**，从 Azure Stack Hub 中的密钥保管库检索密钥和机密。
 
-按照本文中的步骤运行示例应用 **HelloKeyVault**，从 Azure Stack 中的密钥保管库检索密钥和机密。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果已[通过 VPN 建立连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)，可以从 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)或从基于 Windows 的外部客户端安装以下必备组件：
 
-* 安装 [Azure Stack 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
-* 下载[使用 Azure Stack 所需的工具](../operator/azure-stack-powershell-download.md)。
+* 安装 [Azure Stack Hub 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
+* 下载[使用 Azure Stack Hub 所需的工具](../operator/azure-stack-powershell-download.md)。
 
 ## <a name="create-a-key-vault-and-register-an-app"></a>创建密钥保管库并注册应用
 
 若要准备示例应用程序，请执行以下操作：
 
-* 在 Azure Stack 中创建密钥保管库。
+* 在 Azure Stack Hub 中创建密钥保管库。
 * 在 Azure Active Directory (Azure AD) 中注册应用。
 
 使用 Azure 门户或 PowerShell 来准备示例应用。
@@ -68,12 +57,12 @@ Function GenerateSymmetricKey()
     return [System.Convert]::ToBase64String($key)
 }
 
-Write-Host 'Please log into your Azure Stack user environment' -foregroundcolor Green
+Write-Host 'Please log into your Azure Stack Hub user environment' -foregroundcolor Green
 
 $tenantARM = "https://management.local.azurestack.external"
 $aadTenantName = "FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.partner.onmschina.cn"
 
-# Configure the Azure Stack operator's PowerShell environment.
+# Configure the Azure Stack Hub operator's PowerShell environment.
 Add-AzureRMEnvironment `
   -Name "AzureStackUser" `
   -ArmEndpoint $tenantARM
@@ -162,7 +151,7 @@ Write-Host
 
 ## <a name="run-the-app"></a>运行应用程序
 
-运行 **HelloKeyVault** 时，应用会登录到 Azure AD，然后使用 `AuthClientSecret` 令牌向 Azure Stack 中的密钥保管库进行身份验证。
+运行 **HelloKeyVault** 时，应用会登录到 Azure AD，然后使用 `AuthClientSecret` 令牌向 Azure Stack Hub 中的密钥保管库进行身份验证。
 
 可以使用 **HelloKeyVault** 示例执行以下操作：
 

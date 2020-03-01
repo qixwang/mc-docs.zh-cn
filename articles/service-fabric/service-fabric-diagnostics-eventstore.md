@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 事件存储
-description: 了解 Azure Service Fabric 的 EventStore
+description: 了解 Azure Service Fabric 的 EventStore，通过它可以随时了解和监视群集或工作负荷的状态。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/06/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d981aecfeb64a16975dff8b2a43d52fd4bb7521a
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: fff6fb8af9cd19177a557e2a75437a27d0b33520
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742312"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540435"
 ---
 # <a name="eventstore-overview"></a>EventStore 概述
 

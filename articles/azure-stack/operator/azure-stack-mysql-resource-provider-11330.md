@@ -1,48 +1,37 @@
 ---
-title: Azure Stack MySQL 资源提供程序 1.1.33.0 发行说明 | Microsoft Docs
-description: 查看发行说明以了解 Azure Stack MySQL 资源提供程序 1.1.33.0 更新中的新增功能。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub MySQL 资源提供程序 1.1.33.0 发行说明
+description: 查看发行说明以了解 Azure Stack Hub MySQL 资源提供程序 1.1.33.0 更新中的新增功能。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 0b7336bac2100544b22a948467e9e7b2c8244476
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 82570db09819774526cbd96993064304a6dddb09
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74019998"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540904"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL 资源提供程序 1.1.33.0 发行说明
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 本发行说明描述 MySQL 资源提供程序 1.1.33.0 版中的改进和已知问题。
 
 ## <a name="build-reference"></a>内部版本参考
-下载 MySQL 资源提供程序二进制文件，然后运行自解压程序，将内容解压缩到一个临时目录。 资源提供程序有一个相应的 Azure Stack 最低内部版本。 下面列出了安装此 MySQL 资源提供程序版本所需的最低 Azure Stack 发行版：
+下载 MySQL 资源提供程序二进制文件，然后运行自解压程序，将内容解压缩到一个临时目录。 资源提供程序具有相应的最低 Azure Stack Hub 版本。 下面列出了安装此 MySQL 资源提供程序版本所需的最低 Azure Stack Hub 发行版：
 
-> |最低 Azure Stack 版本|MySQL 资源提供程序版本|
+> |最低 Azure Stack Hub 版本|MySQL 资源提供程序版本|
 > |-----|-----|
 > |版本 1808 (1.1808.0.97)|[MySQL RP 版本 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
 > |     |     |
 
 > [!IMPORTANT]
-> 在部署最新版本的 MySQL 资源提供程序之前，请先将支持的最低 Azure Stack 更新版应用到 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)。
+> 在部署最新版本的 MySQL 资源提供程序之前，请先将支持的最低 Azure Stack Hub 更新版应用到 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)。
 
 ## <a name="new-features-and-fixes"></a>新功能和修复
-此 Azure Stack MySQL 资源提供程序版本包含以下改进和修复：
+此 Azure Stack Hub MySQL 资源提供程序版本包含以下改进和修复：
 
 ### <a name="fixes"></a>修复项
 
@@ -69,8 +58,8 @@ ms.locfileid: "74019998"
     **解决方法**：在同一订阅下始终对不同的数据库使用不同的登录名。
 
 
-### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>云管理员操作 Azure Stack 时的已知问题
-请参阅 [Azure Stack 发行说明](azure-stack-servicing-policy.md)中的文档。
+### <a name="known-issues-for-cloud-admins-operating-azure-stack-hub"></a>云管理员操作 Azure Stack Hub 时的已知问题
+请参阅 [Azure Stack Hub 发行说明](azure-stack-servicing-policy.md)中的文档。
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 MySQL 资源提供程序](azure-stack-mysql-resource-provider.md)。

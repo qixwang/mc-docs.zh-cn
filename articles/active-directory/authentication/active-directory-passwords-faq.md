@@ -5,19 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 07/11/2018
-ms.date: 10/08/2019
+ms.date: 02/26/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dafd9b0d2827986477b375c890e1c4688e48d68
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: cfbc9935d8df51c83d2cf7968018d6b413175f66
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292023"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653406"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -37,7 +36,7 @@ ms.locfileid: "72292023"
 
 * **问：用户是否可以注册其自己的密码重置数据？**
 
-  > **答:** 是的。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://account.activedirectory.windowsazure.cn/PasswordReset/Register.aspx?regref=ssprsetup) 来注册其身份验证信息。 
+  > **答:** 是的。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://account.activedirectory.windowsazure.cn/PasswordReset/Register.aspx?regref=ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板 (https://account.activedirectory.windowsazure.cn/r#/applications) 来注册。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。  
   >
   >
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
@@ -115,7 +114,7 @@ ms.locfileid: "72292023"
   >
 * **问：如何告知用户可在何处重置密码？**
 
-  > **答:** 请尝试 [SSPR 部署](howto-sspr-deployment.md#communications-plan)一文中的一些建议。
+  > **答:** 请尝试 [SSPR 部署](howto-sspr-deployment.md#plan-communications)一文中的一些建议。
   >
   >
 * **问：能否在移动设备上使用此页面？**

@@ -13,18 +13,18 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/17/2019
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: f88e21451aa5767b731b24739401ebd8b91dd260
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: e102a26aba7a240ef084d6e9f8ec7a62462ffbc3
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540024"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
-在 Azure 负载均衡器中使用负载均衡规则时，需要指定一个运行状况探测，使负载均衡器能够检测后端终结点状态。  运行状况探测的配置和探测响应确定哪个后端池实例要接收新流。 可以使用运行状况探测来检测后端终结点上应用程序的故障。 还可以对运行状况探测生成自定义响应，并使用用于控制流的运行状况探测来管理负载或计划内停机。 运行状况探测失败时，负载均衡器停止向各个不正常的实例发送新流。 出站连接不受影响，仅入站连接受到影响。
+在 Azure 负载均衡器中使用负载均衡规则时，需要指定运行状况探测，使负载均衡器能够检测后端终结点状态。  运行状况探测的配置和探测响应确定哪个后端池实例要接收新流。 可以使用运行状况探测来检测后端终结点上应用程序的故障。 还可以对运行状况探测生成自定义响应，并使用用于控制流的运行状况探测来管理负载或计划内停机。 运行状况探测失败时，负载均衡器停止向各个不正常的实例发送新流。 出站连接不受影响，仅入站连接受到影响。
 
 运行状况探测支持多个协议。 可用的具体运行状况探测协议因负载均衡器 SKU 而异。  此外，服务的行为也因负载均衡器 SKU 而异，如下表所述：
 
@@ -129,7 +129,7 @@ HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路
 
 如果出现以下情况，HTTP/HTTPS 探测将会失败：
 * 探测终结点返回非 200 的 HTTP 响应代码（例如，403、404 或 500）。 这会立即标记运行状况探测停止。 
-* 在 31 秒超时期限内，探测终结点根本未做出响应。 在探测标记为未运行并且达到所有超时间隔的总和之前，多个探测请求可能无应答。
+* 探测终结点在最小探测间隔和 30 秒超时时间内根本不响应。 在探测标记为未运行并且达到所有超时间隔的总和之前，多个探测请求可能无应答。
 * 探测终结点通过 TCP 重置关闭连接。
 
 下面演示了如何在资源管理器模板中表达此类探测配置：
@@ -201,7 +201,7 @@ HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路
 
 UDP 数据报将传送到正常的后端终结点。
 
-UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果后端终结点的任何运行状况探测失败，现有的 UDP 流可以转移到后端池中的另一个正常实例。
+UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果任何后端终结点的运行状况探测失败，则现有的 UDP 流将移到后端池中的另一个运行正常的实例。
 
 如果后端池中所有实例的所有探测都失败，则基本和标准负载均衡器的现有 UDP 流将会终止。
 
@@ -256,5 +256,5 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[标准负载均衡器](load-balancer-standard-overview.md)
-- [使用 PowerShell 在资源管理器中开始创建公共负载均衡器](load-balancer-get-started-internet-arm-ps.md)
+- [使用 PowerShell 在资源管理器中开始创建公共负载均衡器](quickstart-create-standard-load-balancer-powershell.md)
 - [运行状况探测的 REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)

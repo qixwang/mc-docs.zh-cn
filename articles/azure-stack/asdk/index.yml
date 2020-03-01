@@ -1,10 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack Hub 开发工具包文档
+title: Azure Stack 开发工具包文档
 metadata:
-  document_id: null
-  title: Azure Stack Hub 开发工具包文档 - 教程和 API 参考
-  description: 了解如何部署和使用 Azure Stack Hub 开发工具包。
+  title: Azure Stack 开发工具包文档 - 教程和 API 参考
+  description: 了解如何部署和使用 Azure Stack 开发工具包。
   services: azure-stack
   author: WenJason
   manager: digimobile
@@ -13,10 +12,10 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
 origin.date: 04/13/2018
-ms.date: 10/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 abstract:
-  description: Azure Stack Hub 开发工具包 (ASDK) 用于对 Azure Stack 进行单节点部署，可以免费下载和使用。 ASDK 旨在提供一个特定的环境，方便你在其中评估 Azure Stack 并开发现代应用程序，所使用的 API 和工具与非生产环境中的 Azure 一致。 <br/><br/>如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅<a href="/azure-stack/operator">操作员文档</a>。<br/><br/>如果你是使用 Azure Stack 或为 Azure Stack 开发应用的用户，请参阅我们的<a href="/azure-stack/user">用户文档</a>。
+  description: Azure Stack 开发工具包 (ASDK) 用于对 Azure Stack 进行单节点部署，可以免费下载和使用。 ASDK 旨在提供一个特定的环境，方便你在其中评估 Azure Stack 并开发现代应用程序，所使用的 API 和工具与非生产环境中的 Azure 一致。 <br/><br/>如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅<a href="/azure-stack/operator">操作员文档</a>。<br/><br/>如果你是使用 Azure Stack 或为 Azure Stack 开发应用的用户，请参阅我们的<a href="/azure-stack/user">用户文档</a>。
 sections:
   - title: 分步教程
     items:
@@ -26,7 +25,7 @@ sections:
         style: ordered
         items:
           - html: <a href="/azure-stack/asdk/asdk-install">部署 ASDK</a>
-          - html: <a href="/azure-stack/operator/azure-stack-create-and-publish-marketplace-item">添加 Azure Stack 市场项</a>
+          - html: <a href="/azure-stack/operator/azure-stack-create-and-publish-marketplace-item">添加 Azure Stack Hub 市场项</a>
           - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">提供 IaaS 服务</a>
           - html: <a href="/azure-stack/user/azure-stack-subscribe-services">订阅套餐</a>
           - html: <a href="/azure-stack/operator/create-add-on-plan">更新套餐和计划</a>

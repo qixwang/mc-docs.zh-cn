@@ -5,15 +5,15 @@ author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: ed5950b0b9813a97170fdcef4debb489c1d5071a
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ed8a0c6ca3ae5d9ac73bd1a10ab1d5eb1988388f
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600516"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566613"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -23,6 +23,7 @@ ms.locfileid: "75600516"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -49,7 +50,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```bash
 cd html-docs-hello-world
 
-az webapp up --location chinaeast --name <app_name>
+az webapp up --location chinaeast --name <app_name> --html
 ```
 
 `az webapp up` 命令执行以下操作：
@@ -101,7 +102,7 @@ az webapp up --location chinaeast --name <app_name>
 现在，需使用同一 `az webapp up` 命令重新部署应用。
 
 ```bash
-az webapp up --location chinaeast --name <app_name>
+az webapp up --location chinaeast --name <app_name> --html
 ```
 
 完成部署后，切换回“**浏览到应用**”步骤中打开的浏览器窗口，然后刷新页面。

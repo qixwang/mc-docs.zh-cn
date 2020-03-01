@@ -1,29 +1,21 @@
 ---
-title: Azure Stack 中的 MySQL 资源提供程序维护操作 | Microsoft Docs
-description: 了解如何在 Azure Stack 中维护 MySQL 资源提供程序服务。
-services: azure-stack
-documentationCenter: ''
+title: Azure Stack Hub 中的 MySQL 资源提供程序维护操作
+description: 了解如何在 Azure Stack Hub 中维护 MySQL 资源提供程序服务。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
-ms.date: 01/13/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: dbb596d2e4678d6b1d580af55e4287ebb299666a
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: a8c6543753fbf1697097cd2c8f29a5dcce579586
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737915"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540398"
 ---
-# <a name="mysql-resource-provider-maintenance-operations-in-azure-stack"></a>Azure Stack 中的 MySQL 资源提供程序维护操作
+# <a name="mysql-resource-provider-maintenance-operations-in-azure-stack-hub"></a>Azure Stack Hub 中的 MySQL 资源提供程序维护操作
 
 MySQL 资源提供程序在锁定的虚拟机 (VM) 上运行。 若要启用维护操作，需要更新 VM 的安全性。 若要使用“最低特权”原则 (POLP) 执行此操作，可以使用 PowerShell Just Enough Administration (JEA) 终结点 DBAdapterMaintenance。 资源提供程序安装包包含此操作的脚本。
 
@@ -94,9 +86,9 @@ $session | Remove-PSSession
 
 ## <a name="secrets-rotation"></a>机密轮换
 
-*这些说明仅适用于 Azure Stack 集成系统。*
+*这些说明仅适用于 Azure Stack Hub 集成系统。*
 
-在 Azure Stack 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
+在 Azure Stack Hub 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack Hub 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
 
 - [部署期间提供的](azure-stack-pki-certs.md)外部 SSL 证书。
 - 部署期间提供的资源提供程序 VM 本地管理员帐户密码。
@@ -156,8 +148,8 @@ $session | Remove-PSSession
 
 |参数|说明|
 |-----|-----|
-|AzCredential|Azure Stack 服务管理员帐户凭据。|
-|CloudAdminCredential|Azure Stack 云管理域帐户凭据。|
+|AzCredential|Azure Stack Hub 服务管理员帐户凭据。|
+|CloudAdminCredential|Azure Stack Hub 云管理域帐户凭据。|
 |PrivilegedEndpoint|用于访问 Get-AzureStackStampInformation 的特权终结点。|
 |DiagnosticsUserPassword|诊断用户帐户密码。|
 |VMLocalCredential|MySQLAdapter VM 上的本地管理员帐户。|

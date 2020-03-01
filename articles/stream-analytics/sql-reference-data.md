@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 01/29/2019
-ms.date: 01/29/2019
-ms.openlocfilehash: 0ec400309264c87902500046e1364f3eee46e9cb
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.date: 02/27/2020
+ms.openlocfilehash: 3ef10018da07a146d947fa8cfd5c3aa6b86e5dda
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857141"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155054"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>将 SQL 数据库中的参考数据用于 Azure 流分析作业
 

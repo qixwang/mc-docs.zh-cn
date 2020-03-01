@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 8ae45a72892122126a2cec5111f6678d832f4442
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 3ac030c0f5e8ad2f6f8220c87a27f750e30d21dc
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334555"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155026"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
@@ -171,6 +171,7 @@ ms.locfileid: "75334555"
 * 提供的门户通知：否
 * 诊断日志级别：信息
 * 影响：将会根据作业配置的“事件排序”部分中的“处理其他事件”设置来处理延期输入事件。
+* 日志详细信息
    * 应用程序时间和抵达时间。 
    * 最大若干 KB 的实际有效负载。
 

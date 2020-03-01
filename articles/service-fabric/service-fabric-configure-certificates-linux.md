@@ -1,16 +1,16 @@
 ---
-title: 在 Linux 上配置 Azure Service Fabric 应用程序的证书
+title: 为 Linux 上的应用程序配置证书
 description: 在 Linux 群集上使用 Service Fabric 运行时配置应用的证书
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 80e5ef66e942e8ca67065372d01b3c17235d789c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 5bde52f58343829de3d239253987a0503a821f8a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742277"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540454"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
 

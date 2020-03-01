@@ -3,20 +3,20 @@ title: 关于语音 SDK - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音软件开发工具包 (SDK)，应用程序可以本机访问语音服务的功能，这使得软件开发工作更为容易。 本文提供了有关适用于 Windows、Linux 和 Android 的 SDK 的其他详细信息。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/10/2019
-ms.date: 02/17/2020
+origin.date: 02/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: ecac09c0fd1a3cc9f04682fc7149f071a1a7f5bd
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 801dcb1f4b31bd6e87b19333259056e94a6e6947
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028185"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590263"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -32,7 +32,7 @@ ms.locfileid: "77028185"
 
 ## <a name="get-the-sdk"></a>获取 SDK
 
-### <a name="windows"></a>Windows
+# <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > 语音 SDK 支持 Windows 10 或更高版本。 **不支持**更早的 Windows 版本。
@@ -43,7 +43,7 @@ ms.locfileid: "77028185"
 
 * Java:可以引用和使用语音 SDK Maven 包的最新版本，该包仅支持 Windows x64。 在 Maven 项目中，将 `https://csspeechstorage.blob.core.windows.net/maven/` 添加为附加存储库，并将 `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` 引用为一个依赖项。
 
-### <a name="linux"></a>Linux
+# <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
 > 目前，我们在以下目标体系结构上仅支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9：
@@ -87,7 +87,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   要创建应用程序，请将必需的二进制文件（以及库）复制到开发环境中。 在生成过程中根据需要添加它们。
 
-### <a name="android"></a>Android
+# <a name="android"></a>[Android](#tab/android)
 
 将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
 
@@ -106,6 +106,8 @@ sudo apt-get install libssl1.0.2 libasound2
   ```
 
 Java SDK 也是[语音设备 SDK](speech-devices-sdk.md) 的一部分。
+
+---
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 

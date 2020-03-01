@@ -8,15 +8,15 @@ ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
 origin.date: 11/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 5fa8e024c34bdce4afe8c4c86c75274fc37f096f
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: d1a191754bafc96b74aa16ca01e670e4eecae31d
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884778"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154356"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什么是 Azure Synapse Analytics（以前称为 SQL DW）？
 
@@ -32,7 +32,7 @@ Azure Synapse 包含四个组件：
 
 ## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>Azure Synapse 中的 SQL Analytics 和 SQL 池
 
-SQL Analytics 是 Azure Synapse 中正式发布的企业数据仓库功能。 
+SQL Analytics 是指 Azure Synapse 中正式发布的企业数据仓库功能。 
 
 SQL 池表示使用 SQL Analytics 时预配的分析资源集合。 SQL 池的大小由数据仓库单位 (DWU) 决定。
 
@@ -52,25 +52,6 @@ SQL Analytics 通过按列存储将数据存储到关系表中。 此格式可�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览 [Azure Synapse 体系结构](/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- 浏览 [Azure Synapse 体系结构](massively-parallel-processing-mpp-architecture.md)
 - 快速[创建 SQL 池](create-data-warehouse-portal.md)
-- [加载示例数据][load sample data]
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[SLA for Azure Synapse Analytics]: https://www.azure.cn/support/sla/sql-data-warehouse/
-[Service Level Agreements]: https://www.azure.cn/support/legal/sla/
-
-<!--Update_Description: update meta properties, wording update, update link -->
+- [加载示例数据](sql-data-warehouse-load-sample-databases.md)

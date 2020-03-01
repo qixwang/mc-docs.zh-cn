@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 origin.date: 12/20/2018
 ms.date: 06/21/2019
-ms.openlocfilehash: 9979a9ff4d28addf24098716cb747a6059d7b71e
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 66106d70cdfd925036bd91f0196c962df73ad7ea
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75855625"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154594"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -57,7 +57,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
-$location = "chinanorth"
+$location = "China North"
 New-AzResourceGroup `
    -Name $resourceGroup `
    -Location $location 
@@ -151,7 +151,7 @@ New-AzResourceGroup `
 
 ```json
 {    
-   "location":"ChinaNorth",  
+   "location":"China North",  
    "properties":{    
       "sku":{    
          "name":"standard"  

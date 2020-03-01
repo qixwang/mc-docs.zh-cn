@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2960efb0f2bea0afc07508c4140a3a4777314c74
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: ffcc14a218ddcfa0f7892c1a715a7c186bae577e
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112318"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590274"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
@@ -231,7 +231,7 @@ ms.locfileid: "77112318"
 
 1. 找到字符串 `YourSubscriptionKey` 并将其替换为你的语音服务订阅密钥。
 
-1. 找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，如果使用试用版，区域是 `chinaeast2`。
+1. 找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)中的“语音 SDK 参数”。 例如，如果使用试用版，区域是 `chinaeast2`。
 
 1. 保存对脚本所做的更改。
 

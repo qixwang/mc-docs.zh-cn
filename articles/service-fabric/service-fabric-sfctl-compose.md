@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI- sfctl compose
-description: 介绍 Service Fabric CLI sfctl compose 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于 Docker Compose 应用程序的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4bfe0a18c3a2624639bc510f0d67373723e133aa
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: fdd8d3044fa5f44872c8b21eb158bc194bb57572
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742233"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540006"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 应用程序。

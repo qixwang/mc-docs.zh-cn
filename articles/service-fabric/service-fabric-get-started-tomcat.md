@@ -1,16 +1,16 @@
 ---
-title: 在 Linux 上为 Apache Tomcat 服务器创建 Azure Service Fabric 容器
+title: 为 Linux 上的 Apache Tomcat 创建容器
 description: 创建 Linux 容器，以在 Azure Service Fabric 上公开 Apache Tomcat 服务器上运行的应用程序。 生成包含应用程序和 Apache Tomcat 服务器的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
 ms.topic: conceptual
 origin.date: 06/08/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: c8a08868f5c66ba495532aed26e850aead28ae8d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 328ca3141098de6508fe6ae0dbcbabe1f5e1a9d7
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742375"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540432"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
 Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 本文介绍如何使用 Apache Tomcat 和简单的 Web 应用程序生成容器，然后将该容器部署到运行 Linux 的 Service Fabric 群集并连接到 Web 应用程序。  

@@ -1,5 +1,5 @@
 ---
-title: 用户定义的还原点 | Microsoft Docs
+title: 用户定义的还原点
 description: 如何创建还原点 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: WenJason
@@ -8,15 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 origin.date: 07/03/2019
-ms.date: 09/02/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 3c39bcf19ce331f18d0f833b110c6b1fbf8c5271
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 07394a53c857362130226268c6922dcfab447322
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70132742"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154346"
 ---
 # <a name="user-defined-restore-points"></a>用户定义的还原点
 
@@ -24,9 +25,9 @@ ms.locfileid: "70132742"
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>通过 PowerShell 创建用户定义的还原点
 
-若要创建用户定义的还原点，请使用 [New-AzSqlDatabaseRestorePoint][New-AzSqlDatabaseRestorePoint] PowerShell cmdlet。
+若要创建用户定义的还原点，请使用 [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint?view=azps-2.4.0) PowerShell cmdlet。
 
-1. 开始之前，请确保[安装 Azure PowerShell][Install Azure PowerShell]。
+1. 开始之前，请确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 2. 打开 PowerShell。
 3. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 4. 选择包含要还原的数据库的订阅。
@@ -60,7 +61,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 还可以通过 Azure 门户创建用户定义的还原点。
 
-1. 登录到 [Azure 门户][Azure portal]帐户。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)帐户。
 
 2. 导航到要为其创建还原点的 SQL 数据仓库。
 
@@ -74,27 +75,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原现有数据仓库][Restore an existing data warehouse]
-- [还原已删除的数据仓库][Restore a deleted data warehouse]
-- [从异地备份数据仓库还原][Restore from a geo-backup data warehouse]
+- [还原现有数据仓库](sql-data-warehouse-restore-active-paused-dw.md)
+- [还原已删除的数据仓库](sql-data-warehouse-restore-deleted-dw.md)
+- [从异地备份数据仓库还原](sql-data-warehouse-restore-from-geo-backup.md)
 
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[PowerShelldoc]:./sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-powershell
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-<!--MSDN references-->
-[New-AzSqlDatabaseRestorePoint]: https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint?view=azps-2.4.0
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.cn/

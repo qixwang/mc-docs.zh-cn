@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 数据工厂向 Azure SQL 数据仓库加载数据 | Microsoft Docs
+title: 将数据载入 Azure SQL 数据仓库
 description: 使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 06/22/2018
-ms.date: 07/08/2019
-ms.author: v-jay
-ms.openlocfilehash: 2377a0eaa95f8081b6f5ce960436fbf3848de643
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 03/02/2020
+ms.openlocfilehash: 1e0dafd1499f22a838253b35fd43a1c0acb11807
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570317"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653592"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据仓库加载数据
 
@@ -41,28 +41,28 @@ ms.locfileid: "67570317"
 
 * Azure 订阅：如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/en-us/pricing/1rmb-trial-full/?form-type=identityauth)。
 * Azure SQL 数据仓库：此数据仓库保存从 SQL 数据库复制的数据。 如果没有 Azure SQL 数据仓库，请参阅[创建 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)中的说明。
-* Azure SQL 数据库：本教程使用 Adventure Works LT 示例数据从 Azure SQL 数据库复制数据。 可以遵照[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的说明创建 SQL 数据库。 
-* Azure 存储帐户：Azure 存储用作大容量复制操作中的暂存 blob  。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)中的说明。
+* Azure SQL 数据库：本教程使用 Adventure Works LT 示例数据从 Azure SQL 数据库复制数据。 可以遵照[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的说明创建 SQL 数据库。
+* Azure 存储帐户：Azure 存储用作大容量复制操作中的暂存 blob  。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“创建资源”   > “数据 + 分析”   > “数据工厂”  ： 
-   
+1. 在左侧菜单中，选择“创建资源”   > “数据 + 分析”   > “数据工厂”  ：
+
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值  ：
-      
+
    ![“新建数据工厂”页](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
- 
+
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadSQLDWDemo\" 不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
     * **版本**：选择“V2”  。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure 存储、Azure SQL 数据库，等等。
 
 3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”  主页，如下图所示：
-   
+
    ![数据工厂主页](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
    选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序  。
@@ -87,14 +87,14 @@ ms.locfileid: "67570317"
     ![选择 Azure SQL DB](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
     c. 在“新建链接服务”页上，从下拉列表中选择服务器名称和 DB 名称，指定用户名和密码  。 单击“测试连接”以验证设置，然后选择“完成”   。
-   
+
     ![配置 Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. 选择新创建的链接服务作为源，然后单击“下一步”。 
 
     ![选择源链接服务](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
-1. 在“选择要从中复制数据的表或使用自定义查询”页中，输入 **SalesLT** 以筛选表。  选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”：   
+1. 在“选择要从中复制数据的表或使用自定义查询”页中，输入 **SalesLT** 以筛选表。  选中“(全选)”复选框以便对副本使用所有表，然后选择“下一步”：  
 
     ![选择源表](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
@@ -109,14 +109,14 @@ ms.locfileid: "67570317"
     ![选择 Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. 在“新建链接服务”页上，从下拉列表中选择服务器名称和 DB 名称，指定用户名和密码  。 单击“测试连接”以验证设置，然后选择“完成”   。
-   
+
     ![配置 Azure SQL DW](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. 选择新创建的链接服务作为接收器，然后单击“下一步”  。
 
     ![选择接收器链接服务](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
-1. 在“表映射”页中查看内容并选择“下一步”。   此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下 Azure 数据工厂将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。 
+1. 在“表映射”页中查看内容并选择“下一步”。   此时会显示智能表映射。 源表已根据表名映射到目标表。 如果目标中不存在表，则默认情况下 Azure 数据工厂将创建一个具有相同名称的目标表。 还可以将源表映射到现有目标表。
 
    > [!NOTE]
    > 当 SQL Server 或 Azure SQL 数据库为源时，将应用 SQL 数据仓库接收器的自动表创建。 若从其他源数据存储复制数据，则在执行数据复制前，需先在接收器 Azure SQL 数据仓库中预创建架构。
@@ -129,12 +129,12 @@ ms.locfileid: "67570317"
 
 1. 在“设置”页上，完成以下步骤  ：
 
-    a. 在“暂存设置”部分，单击“+ 新建”，新建临时存储   。 该存储用于在使用 PolyBase 将数据加载至 SQL 数据仓库前暂存数据。 复制完成后，会自动清除 Azure 存储中的临时数据。 
+    a. 在“暂存设置”部分，单击“+ 新建”，新建临时存储   。 该存储用于在使用 PolyBase 将数据加载至 SQL 数据仓库前暂存数据。 复制完成后，会自动清除 Azure 存储中的临时数据。
 
     ![配置暂存](./media/load-azure-sql-data-warehouse/configure-staging.png)
 
     b. 在“新链接服务”页上，选择存储帐户，然后选择“完成”   。
-   
+
     ![配置 Azure 存储](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
 
     c. 在“高级设置”部分，取消选择“使用默认类型”选项，然后选择“下一步”    。
@@ -147,10 +147,10 @@ ms.locfileid: "67570317"
 1. 在“部署”页中，选择“监视”可以监视管道（任务）   ：
 
     ![“部署”页](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. 请注意，界面中已自动选择左侧的“监视”选项卡。  “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接  ： 
+1. 请注意，界面中已自动选择左侧的“监视”选项卡。  “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接  ：
 
     ![监视管道运行](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。   若要切换回到管道运行视图，请选择顶部的“管道”链接  。 选择“刷新”可刷新列表。  
+1. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。   若要切换回到管道运行视图，请选择顶部的“管道”链接  。 选择“刷新”可刷新列表。 
 
     ![监视活动运行](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "67570317"
 
 ## <a name="next-steps"></a>后续步骤
 
-请转至下列文章，了解有关 Azure SQL 数据仓库支持的相关信息： 
+请转至下列文章，了解有关 Azure SQL 数据仓库支持的相关信息：
 
 > [!div class="nextstepaction"]
 >[Azure SQL 数据仓库连接器](connector-azure-sql-data-warehouse.md)

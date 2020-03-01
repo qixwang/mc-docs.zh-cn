@@ -4,20 +4,21 @@ description: 如何在流量管理器显示为降级状态时对流量管理器�
 services: traffic-manager
 documentationcenter: ''
 author: rockboyfor
+manager: digimobile
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/03/2017
-ms.date: 09/09/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: fc2b04c0851aedd012782d012d47f4dbd7e61158
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: fd0b058da802ad163acb14d127c7066b264c6054
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254665"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653193"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 

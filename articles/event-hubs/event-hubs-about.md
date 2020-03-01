@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.topic: overview
 ms.custom: seodec18
 origin.date: 12/06/2018
-ms.date: 09/11/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2897255ae4131fd4d113550bf307d5c6f9478148
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: 5fc8885923dbf631520ad27582ccd98143a17aa0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72873161"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155131"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -45,6 +45,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 ## <a name="fully-managed-paas"></a>完全托管的 PaaS
 
 事件中心是完全托管的平台即服务 (PaaS)，其配置或管理开销极低，因此你可以专注于业务解决方案。
+
 <!-- Not Available on  [Event Hubs for Apache Kafka ecosystems](event-hubs-for-kafka-ecosystem-overview.md)-->
 
 ## <a name="support-for-real-time-and-batch-processing"></a>支持实时处理和批处理
@@ -52,22 +53,22 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 实时引入、缓冲、存储和处理流，以获取可行的见解。 事件中心使用[分区的使用者模型](event-hubs-scalability.md#partitions)，可让多个应用程序同时处理流，并允许控制处理速度。
 
 在 [Azure Blob 存储](https://www.azure.cn/home/features/storage/) 中近乎实时地[捕获](event-hubs-capture-overview.md)数据，以便进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
+
 <!-- Not Available on [Azure Data Lake Store](https://www.azure.cn/home/features/data-lake-store/)-->
 
 Azure 事件中心还能与 [Azure Functions](/azure-functions/) 集成，以构成无服务器体系结构。
 
-## <a name="scalable"></a>可缩放 
+## <a name="scalable"></a>可缩放
 
-使用事件中心可以从 MB 量级的数据流着手，然后逐步扩展到 GB 甚至 TB 量级的处理。 [自动扩充](event-hubs-auto-inflate.md)功能是用于根据用量需求扩展吞吐量单位数的众多选项之一。 
+使用事件中心可以从 MB 量级的数据流着手，然后逐步扩展到 GB 甚至 TB 量级的处理。 [自动扩充](event-hubs-auto-inflate.md)功能是用于根据用量需求扩展吞吐量单位数的众多选项之一。
 
-<!-- Not Available on ## Rich ecosystem-->
+<!-- ## Rich ecosystem-->
 
 
 ## <a name="key-architecture-components"></a>重要的体系结构组件
 事件中心包含以下[关键组件](event-hubs-features.md)：
 
 - **事件生成者**：向事件中心发送数据的所有实体。 事件发布者可以使用 HTTPS 或 AMQP 1.0 发布事件。
-    <!-- Not Available on Apache Kafka (1.0 and above)-->
 - **分区**：每个使用者只读取消息流的特定子集或分区。
 - **使用者组**：整个事件中心的视图（状态、位置或偏移量）。 通过使用者组来使用应用程序时，每个应用程序都有事件流的单独视图。 使用者根据自身的步调和情况独立读取流。
 - **吞吐量单位**：预先购买的容量单位，控制事件中心的吞吐量容量。
@@ -82,14 +83,14 @@ Azure 事件中心还能与 [Azure Functions](/azure-functions/) 集成，以构
 
 要开始使用事件中心，请参阅“发送和接收事件”教程  ：
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)
+
 
 若要了解有关事件中心的详细信息，请参阅以下文章：
 

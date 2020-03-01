@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d7c56d086e089b69db78e9f0f3a3d55796da13e
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: a4ee213cdbf97925da8efac9b621e23d74acbd3e
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859327"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540052"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
 
@@ -52,7 +52,7 @@ ms.locfileid: "75859327"
 - 阶段 1： 
    - 收集详细信息：收集详细信息以确定已符合的策略。
    - 在此阶段，如果设备符合性是条件访问策略的一部分，用户可能会看到证书提示。 如果设备操作系统不是 Windows 10，浏览器应用可能会显示此提示。
-   - 针对所有已启用的策略和[仅限报告模式](concept-conditional-access-report-only.md)下的策略执行策略评估的第 1 阶段。
+   - 针对所有已启用的策略执行策略评估的第 1 阶段。
 - 阶段 2：
    - 强制实施：考虑到第 1 阶段收集的详细信息，要求用户满足尚未满足的任何其他要求。
    - 将结果应用于会话。 

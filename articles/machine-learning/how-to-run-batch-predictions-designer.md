@@ -11,19 +11,19 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 800eab45bc05f2540df427fbe7f628b30f0ee2ec
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 1f955c6d3e9f1ad64c03a78609a7ed1d9373e703
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598141"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154859"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本操作方法指南中，你将学习如何使用设计器训练模型并设置批量预测管道和 Web 服务。 通过批量预测可以对大型数据集上已训练的模型进行连续且按需评分，选择性地将其配置为可从任何 HTTP 库触发的 Web 服务。 
 
-有关使用 SDK 设置批量评分服务的说明，请参阅随附的[操作方法](how-to-run-batch-predictions.md)。
+
 
 在本操作指南中，你将学习如何执行以下任务：
 

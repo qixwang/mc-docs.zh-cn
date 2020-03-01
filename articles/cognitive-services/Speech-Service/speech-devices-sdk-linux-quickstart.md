@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 11/13/2019
-ms.date: 01/27/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 87bf03d641f2433833078ebe3087f7ff6ef4e62b
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: b7d24d1f4f7600363e0d535fc9fae7958a244f3d
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123448"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590267"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>快速入门：在 Linux 上运行语音设备 SDK 示例应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "76123448"
 
 [示例应用程序](https://aka.ms/sdsdk-download-JRE)的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
@@ -39,7 +39,7 @@ ms.locfileid: "76123448"
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 * 下载用于 Java 的[语音设备 SDK](https://aka.ms/sdsdk-download-JRE) 的最新版本，并将 .zip 提取到工作目录。
    > [!NOTE]
-   > JRE-Sample-Release.zip 文件包含 JRE 示例应用，本快速入门假设该应用提取到 /home/wcaltest/JRE-Sample-Release
+   > 本快速入门假设应用已解压缩到 /home/wcaltest/JRE-Sample-Release
 
 确保在启动 Eclipse 之前安装这些依赖项。
 
@@ -97,7 +97,7 @@ ms.locfileid: "76123448"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```
@@ -124,9 +124,9 @@ ms.locfileid: "76123448"
    ```java
     // Subscription
     private static String SpeechSubscriptionKey = "<enter your subscription info here>";
-    private static String SpeechRegion = "chinaeast2";
+    private static String SpeechRegion = "chinaeast2"; // You can change this if your speech region is different.
     private static String LuisSubscriptionKey = "<enter your subscription info here>";
-    private static String LuisRegion = "chinaeast2";
+    private static String LuisRegion = "chinaeast2"; // you can change this, if you want to test the intent, and your LUIS region is different.
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
@@ -149,7 +149,7 @@ ms.locfileid: "76123448"
 
 ## <a name="run-the-sample-application-from-eclipse"></a>从 Eclipse 运行示例应用程序
 
-1. 从 Eclipse 菜单栏中，依次选择“运行”   > “运行” 
+1. 从 Eclipse 菜单栏中，依次选择“运行”   > “运行”  
 
 1. 语音设备 SDK 示例应用程序将会启动，并显示以下选项：
 
@@ -161,10 +161,10 @@ ms.locfileid: "76123448"
 
 ## <a name="create-and-run-standalone-the-application"></a>创建并运行独立应用程序
 
-1. 在“包资源管理器”  中，右键单击你的项目。 选择“导出”  。
+1. 在“包资源管理器”  中，右键单击你的项目。 选择“导出”  。 
 1. 此时将显示“导出”  窗口。 展开“Java”  ，选择“可运行的 JAR 文件”  ，然后选择“下一步”  。
 
-   ![“导出”窗口的屏幕截图](media/speech-devices-sdk/eclipse-export-linux.png)
+   ![“导出”窗口的屏幕截图](media/speech-devices-sdk/eclipse-export-linux.png) 
 
 1. 此时将显示“可运行的 JAR 文件导出”  窗口。 为应用程序选择“导出目标”  ，然后选择“完成”  。
  

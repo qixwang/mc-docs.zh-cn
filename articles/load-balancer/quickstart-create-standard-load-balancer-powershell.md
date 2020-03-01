@@ -1,30 +1,30 @@
 ---
-title: 快速入门：创建标准负载均衡器 - Azure PowerShell
+title: 快速入门：创建负载均衡器 - Azure PowerShell
 titleSuffix: Azure Load Balancer
-description: 本快速入门介绍如何使用 Azure PowerShell 创建标准负载均衡器
+description: 本快速入门介绍如何使用 Azure PowerShell 创建负载均衡器
 services: load-balancer
 documentationcenter: na
 author: WenJason
 manager: digimobile
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 05/07/2019
-ms.date: 12/02/2019
+origin.date: 01/27/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms:custom: seodec18
-ms.openlocfilehash: 770c23c55dd36107adf82e027f22f398bdb1cfa4
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: c5c5d3f950f16891e573f2c95a528be6b94dce6a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530643"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540983"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建标准负载均衡器
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建负载均衡器
 
 本快速入门介绍如何使用 Azure PowerShell 创建标准负载均衡器。 为了测试负载均衡器，需要部署三台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。 若要了解有关标准负载均衡器的详细信息，请参阅[什么是标准负载均衡器](load-balancer-standard-overview.md)。
 
@@ -55,11 +55,13 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>创建标准负载均衡器
+使用 ```-SKU Basic``` 创建基本公共 IP。 Azure 建议将“标准”用于生产工作负荷。
+
+## <a name="create-load-balancer"></a>创建负载均衡器
 
 在本部分中，将为负载均衡器配置前端 IP 和后端地址池，然后创建标准负载均衡器。
 
-### <a name="create-front-end-ip"></a>创建前端 IP
+### <a name="create-frontend-ip"></a>创建前端 IP
 
 使用 [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 创建一个前端 IP。 以下示例创建名为 *myFrontEnd* 的前端 IP 配置并附加 *myPublicIP* 地址：
 
@@ -104,7 +106,7 @@ $rule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>创建 NAT 规则
 
-使用 [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) 创建 NAT 规则。 以下示例创建名为 *myLoadBalancerRDP1* 和 *myLoadBalancerRDP2* 的 NAT 规则，这样就可以通过端口 4221 和 4222 建立到后端服务器的 RDP 连接：
+使用 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) 创建 NAT 规则。 以下示例创建名为 *myLoadBalancerRDP1* 和 *myLoadBalancerRDP2* 的 NAT 规则，这样就可以通过端口 4221 和 4222 建立到后端服务器的 RDP 连接：
 
 ```powershell
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
@@ -144,6 +146,8 @@ $lb = New-AzLoadBalancer `
   -LoadBalancingRule $rule `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
+
+使用 ```-SKU Basic``` 创建基本负载均衡器。 Azure 建议将“标准”用于生产工作负荷。
 
 ## <a name="create-network-resources"></a>创建网络资源
 必须创建支持网络资源（虚拟网络和虚拟 NIC），才能部署某些 VM 并测试均衡器。 
@@ -194,6 +198,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+使用 ```-SKU Basic``` 创建基本公共 IP。 Azure 建议将“标准”用于生产工作负荷。
+
 ### <a name="create-network-security-group"></a>创建网络安全组
 创建网络安全组，以定义虚拟网络的入站连接。
 

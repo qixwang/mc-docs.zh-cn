@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 10/14/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5276a006866d40222cb9c62e737a5e3bb399ed48
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 6b40dcf601116ff3fe562c72cd9dd840a25a52cb
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884927"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154552"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号预生成实体
 序号是一个集合内的对象的数字表示形式：`first`、`second`、`third`。 此实体已定型，因此不需要将包含序号的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持序号实体。 
@@ -31,7 +31,7 @@ ms.locfileid: "74884927"
 
 `Order the second option`
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -42,7 +42,7 @@ ms.locfileid: "74884927"
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
@@ -68,7 +68,7 @@ ms.locfileid: "74884927"
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
+#### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
 以下示例展示了 **builtin.ordinal** 实体的解析。
 

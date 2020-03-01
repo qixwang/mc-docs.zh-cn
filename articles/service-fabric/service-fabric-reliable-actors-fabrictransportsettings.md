@@ -1,17 +1,17 @@
 ---
-title: 更改 Azure Service Fabric 执行组件中的 FabricTransport 设置
-description: 了解如何配置 Azure Service Fabric 执行组件通信设置。
+title: 更改 FabricTransport 设置
+description: 了解如何为不同执行组件配置配置 Azure Service Fabric 执行组件通信设置。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/20/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: b41606658ed48013cc0100b670bea6705b46a17e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 7a7ceb90d92041b71920aa78e52e2f29f8374e46
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742285"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540154"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>配置 Reliable Actors 的 FabricTransport 设置
 

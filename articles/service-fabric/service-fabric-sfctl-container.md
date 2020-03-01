@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI - sfctl container
-description: 介绍 Service Fabric CLI sfctl container 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于容器的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 882b22ab4c76260447a4194560d64168d87457e6
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 9ee515ceac460953be2101c036f04832bbfa04ef
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742234"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540005"
 ---
 # <a name="sfctl-container"></a>sfctl container
 在群集节点上运行与容器相关的命令。

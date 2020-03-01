@@ -8,17 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d33ed2fe30f50f1ef6d7f73b72ed389b14d98be
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 952a947f3e3941624d2437c157f032fa50773b01
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776883"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653313"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 标识平台的发展
 
@@ -68,6 +67,6 @@ Microsoft 标识平台 (v2.0) 终结点现已经过 OIDC 认证。 它适用于 
 深入了解 v1.0 和 v2.0。
 
 * [Microsoft 标识平台 (v2.0) 概述](v2-overview.md)
-* [适用于开发人员的 Azure Active Directory (v1.0) 概述](v1-overview.md)
+* [适用于开发人员的 Azure Active Directory (v1.0) 概述](../azuread-dev/v1-overview.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

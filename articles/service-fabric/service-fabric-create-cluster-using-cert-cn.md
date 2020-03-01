@@ -1,16 +1,16 @@
 ---
-title: 使用证书公用名称创建 Azure Service Fabric 群集
+title: 使用证书公用名称创建群集
 description: 了解如何基于模板创建使用证书公用名称的 Service Fabric 群集。
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 93a40119887374104e41e49e7c5055b18ec8b17d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: a3b9fbd1c076bde5dd4969edaf9c343d44376970
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741888"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540451"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>部署使用证书公用名称而非指纹的 Service Fabric 群集
 两个证书不能具有相同的指纹，具有相同的指纹会使群集证书滚动更新或管理变得困难。 但是，多个证书可以具有相同的公用名称或使用者。  使用证书公用名称会使群集的证书管理更加简单。 本文介绍了如何部署 Service Fabric 群集来使用证书公用名称而非证书指纹。

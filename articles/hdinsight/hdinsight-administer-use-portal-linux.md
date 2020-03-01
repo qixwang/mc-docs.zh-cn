@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 06/06/2019
-ms.date: 07/22/2019
+origin.date: 02/12/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 956f371c648a36ec25fb007a2bbabe6d955e7cf6
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.openlocfilehash: a6abc4fd7205a3ff3e8f91bfa8727fee784eaba1
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797628"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563400"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -23,15 +23,15 @@ ms.locfileid: "74797628"
 
 使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
 
-## <a name="prerequisites"></a>先决条件
-- Azure 订阅。 
-- HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
+## <a name="prerequisites"></a>必备条件
+
+HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="getting-started"></a>入门
 登录到 [https://portal.azure.cn](https://portal.azure.cn)。
 
 
-## <a name="list-and-show-clusters"></a> 列出并显示集群
+## <a name="list-and-show-clusters"></a> 列出并显示群集
 从“HDInsight 群集”页会列出现有的群集  。  在门户中：
 1. 在左侧菜单中，选择“所有服务”  。
 2. 在“ANALYTICS”下，选择“HDInsight 群集”   。
@@ -86,7 +86,7 @@ ms.locfileid: "74797628"
     |警报|管理警报和操作。|
     |指标|监视 Azure Monitor 日志中的群集指标。|
     |诊断设置|存储诊断指标的位置设置。|
-    |Operations Management Suite|监视 Azure Operations Management Suite (OMS) 和 Azure Monitor 日志中的群集。|
+    |Azure Monitor|在 Azure Monitor 中监视群集。|
 
   - **支持 + 故障排除菜单**
 
@@ -111,6 +111,7 @@ ms.locfileid: "74797628"
 |操作系统|“Windows”或“Linux”。  |
 |类型|Hadoop、HBase、Storm、Spark。|
 |版本|请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。|
+|最低 TLS 版本|TLS 版本。|
 |订阅|订阅名称。|
 |默认数据源|默认的群集文件系统。|
 |工作器节点大小|工作节点的所选 VM 大小。|
@@ -217,7 +218,7 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 字段 | Value |
    | --- | --- |
    | 脚本类型 | 从下拉列表中选择“- 自定义”。 |
-   | Name |“更改 ssh 密码” |
+   | 名称 |“更改 ssh 密码” |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
    | 节点类型：（头节点、辅助角色节点、Nimbus、监督程序、Zookeeper，等等。） |✓ 适用于所有列出的节点类型 |
    | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |

@@ -1,36 +1,25 @@
 ---
-title: 在 Azure Stack 中使用 Azure 资源管理器模板 | Microsoft Docs
-description: 了解如何在 Azure Stack 中使用 Azure 资源管理器模板来部署资源。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中使用 Azure 资源管理器模板
+description: 了解如何在 Azure Stack Hub 中使用 Azure 资源管理器模板预配资源。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/07/2019
-ms.date: 01/13/2020
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
-ms.openlocfilehash: 7f40f458c56668561ee2e35fa88c20adfb243e36
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 90754f6214c35c658a447f0d6aa93ff453a6bd7c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737887"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540859"
 ---
-# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>在 Azure Stack 中使用 Azure 资源管理器模板
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="use-azure-resource-manager-templates-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 Azure 资源管理器模板
 
 可使用 Azure 资源管理器 模板通过单个协调操作部署和预配应用程序的所有资源。 还可以重新部署模板，对资源组中的资源进行更改。
 
-可通过 Azure Stack 门户、PowerShell、命令行和 Visual Studio 部署这些模板。
+可通过 Azure Stack Hub 门户、PowerShell、命令行和 Visual Studio 部署这些模板。
 
 [GitHub 中提供了](https://aka.ms/azurestackgithub)以下快速入门模板：
 
@@ -74,7 +63,7 @@ ms.locfileid: "75737887"
 
 ## <a name="basic-virtual-machine"></a>基本虚拟机
 
-[部署一个包含虚拟网络（使用 DNS）、公共 IP 地址和网络接口的 Windows VM](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm)。
+[部署一个包含虚拟网络（使用 DNS）、公共 IP 地址和网络接口的 Windows VM](https://aka.ms/aa6zdzx)。
 
 ## <a name="cancel-a-running-template-deployment"></a>取消正在运行的模板部署
 

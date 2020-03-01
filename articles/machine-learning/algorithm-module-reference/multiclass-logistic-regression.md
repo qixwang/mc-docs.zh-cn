@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 2731997de5b9f7c8a02a60cc4a4baad331b2943b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: ec1cf39144f6790e83738c7d8e5432ab271acb5f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598426"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155032"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
@@ -60,9 +61,6 @@ Azure 机器学习还提供了[两类逻辑回归](./two-class-logistic-regressi
 
 9. 运行管道。
 
-## <a name="results"></a>结果
-
-训练完成后，你可以查看模型参数以及从训练学到的功能权重的摘要，请右键单击[训练模型](./train-model.md)模块的输出，然后选择“可视化”  。
 
 
 ## <a name="next-steps"></a>后续步骤

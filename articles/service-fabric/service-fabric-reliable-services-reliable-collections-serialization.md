@@ -1,16 +1,16 @@
 ---
-title: Azure Service Fabric 中的 Reliable Collection 对象序列化
-description: Azure Service Fabric Reliable Collections 对象序列化
+title: 可靠集合对象序列化
+description: 了解 Azure Service Fabric 可靠集合对象序列化，包括默认策略和如何定义自定义序列化。
 ms.topic: conceptual
 origin.date: 05/08/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 54fdf3f02c5fd36ca17384ea7887162ee060bbaa
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c32ad9a493d4b9c8ca8967de5f88b52b435b288c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742385"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541061"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
 Reliable Collections 通过复制和保留项目，确保这些项目在机器故障和电力中断时能够持久。

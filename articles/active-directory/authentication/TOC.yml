@@ -4,6 +4,13 @@
   items:
     - name: 什么是身份验证？
       href: overview-authentication.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 启用自助式密码重置
+      href: tutorial-enable-sspr.md
+    - name: 启用 SSPR 本地集成
+      href: tutorial-enable-writeback.md
 - name: 概念
   expanded: true
   items:
@@ -17,9 +24,19 @@
           href: multi-factor-authentication-faq.md
 - name: 操作指南
   items:
+    - name: 自助式密码重置
+      items:
+        - name: 部署指南
+          href: howto-sspr-deployment.md
+        - name: 预注册身份验证数据
+          href: howto-sspr-authenticationdata.md
+        - name: 启用密码写回
+          href: howto-sspr-writeback.md
+        - name: 用于 Windows 客户端的 SSPR
+          href: howto-sspr-windows.md
     - name: 基于云的 MFA
       items:
-        - name: 部署基于云的 MFA
+        - name: 部署指南
           href: howto-mfa-getstarted.md
         - name: 每用户 MFA
           href: howto-mfa-userstates.md

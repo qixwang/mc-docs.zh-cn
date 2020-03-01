@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric 应用程序模型
-description: 如何在 Service Fabric 中建模和描述应用程序。
+description: 如何使用应用程序和服务清单文件在 Azure Service Fabric 中对应用程序和服务进行建模和说明。
 ms.topic: conceptual
 origin.date: 02/23/2018
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: ab379216356ce681515759f72b9758864c87cba4
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c2d28c289a49f03bb7e3c452e9ba389dc119f451
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742295"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540704"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中对应用程序建模
 本文概述 Azure Service Fabric 应用程序模型以及如何通过清单文件定义应用程序和服务。

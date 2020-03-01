@@ -1,17 +1,17 @@
 ---
 title: 有关 Azure Service Fabric 应用程序设计的最佳做法
-description: 有关开发 Service Fabric 应用程序的最佳做法。
+description: 使用 Azure Service Fabric 开发应用程序和服务的最佳做法和设计注意事项。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 06/18/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8f96e5a607e2550fbe1a99e6d004522f3a9eca02
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: a5be9a93abda6b4a7c860b11daa37851b44fb7e5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742444"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540214"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>有关 Azure Service Fabric 应用程序设计的最佳做法
 

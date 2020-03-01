@@ -9,15 +9,14 @@ ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2d5c28530c3a1e412150f180666b107dde9fb74
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 58952fd1a7bee82ed7eb56bc4e81258cca8f5c8f
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776905"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653122"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务添加 Azure Active Directory
 
@@ -27,7 +26,7 @@ ms.locfileid: "75776905"
 
 目前，Active Directory 连接服务不支持 ASP.NET Core 应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 帐户：如果没有 Azure 帐户，可以[注册试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - **Visual Studio 2015** 或更高版本。 [立即下载 Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -75,6 +74,6 @@ ms.locfileid: "75776905"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

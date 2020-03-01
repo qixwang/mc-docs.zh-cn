@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure HDInsight 中的群集创建失败问题
-description: 了解如何排查 Azure HDInsight 中的群集创建问题。
+description: 了解如何排查 Azure HDInsight 的 Apache 群集创建问题。
 author: hrasheed-msft
 ms.author: v-yiso
 ms.reviewer: jasonh
@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 origin.date: 08/26/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 670be99f84829f738b60f240fa0f74a80f9f34ae
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.date: 03/02/2020
+ms.openlocfilehash: 69c18ff64ae8cb3a1ca29dbce89c7bfa9b71c409
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583895"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563407"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 中的群集创建失败问题
 
@@ -64,7 +64,7 @@ ms.locfileid: "72583895"
 
 ## <a name="resources-locks"></a>资源锁  
 
-确保[虚拟网络和资源组中没有锁](../../azure-resource-manager/resource-group-lock-resources.md)。  
+确保[虚拟网络和资源组中没有锁](../../azure-resource-manager/management/lock-resources.md)。 如果资源组被锁定，则无法创建或删除群集。 
 
 ## <a name="unsupported-component-versions"></a>不支持的组件版本
 
@@ -75,6 +75,10 @@ ms.locfileid: "72583895"
 存储帐户名称不能超过 24 个字符，且不能包含特殊字符。 这些限制也适用于存储帐户中的默认容器名称。
 
 其他命名限制也适用于群集创建。 有关详细信息，请参阅[群集名称限制](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)。
+
+## <a name="service-outages"></a>服务中断
+
+请检查 [Azure 状态](https://status.azure.com)是否存在任何潜在的中断或服务问题。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,19 @@
 ---
 title: 用于 Go 的 Azure HDInsight SDK
-description: 用于 Go 的 Azure HDInsight SDK 参考
-services: hdinsight
-author: tylerfox
+description: 有关使用用于 Go 的 Azure HDInsight SDK 和 Apache Hadoop 群集的参考资料
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 05/08/2019
+origin.date: 01/03/2020
 ms.author: v-yiso
-ms.date: 09/16/2019
-ms.openlocfilehash: bfe90ea5fd1789d4d9d8d096dc620a28059cca65
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.date: 03/02/2020
+ms.openlocfilehash: 134945b5ba9a8ae4e9c8a7a7f50241002aa6f960
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797569"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563343"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
 
@@ -23,9 +23,9 @@ ms.locfileid: "74797569"
 > [!NOTE]
 >还可以[从此处获得](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)适用于此 SDK 的GoDoc 参考资料。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 一个 Azure 帐户。 如果没有帐户，可[获取试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* [`go get` 工具](https://github.com/golang/go/wiki/GoGetTools)。
 * [Go](https://golang.org/dl/)。
 
 ## <a name="sdk-installation"></a>SDK 安装

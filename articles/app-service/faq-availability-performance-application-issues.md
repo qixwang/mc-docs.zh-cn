@@ -7,17 +7,20 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c51bc021193ac873b344f8e44b0148f265b67eee
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 9a4e893186ce267e2cd04f4716a9231850735dd9
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600470"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590192"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
+
+<!-- > [!NOTE] -->
+<!-- > Some of the below guidelines might only work on Windows or Linux App Services. For example, Linux App Services run in 64-bit mode by default. -->
 
 本文对 [Azure 应用服务 Web 应用功能](https://www.azure.cn/home/features/app-service/web-apps/)的应用程序性能常见问题 (FAQ) 进行了解答。
 
@@ -29,7 +32,7 @@ ms.locfileid: "75600470"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何解决 CPU 占用高的问题？
 
-在某些 CPU 占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 其他情况下，高 CPU 占用可能是由错误循环或编码实践导致的。 深入了解 CPU 占用升高的触发因素这一过程分为两部分。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[捕获和分析 Web 应用高 CPU 占用的转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
+在某些 CPU 占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 其他情况下，高 CPU 占用可能是由错误循环或编码实践导致的。 深入了解 CPU 占用升高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 有关详细信息，请参阅[捕获和分析 Web 应用高 CPU 占用的转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何解决内存占用高的问题？
 
@@ -51,7 +54,7 @@ ms.locfileid: "75600470"
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>如何捕获 Web 应用的用户模式内存转储？
 
-捕获 Web 应用的用户模式内存转储:
+若要捕获 Web 应用的用户模式内存转储，请执行以下操作：
 
 1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.chinacloudsites.cn)。
 2. 选择“进程资源管理器”  菜单。
@@ -82,7 +85,7 @@ ms.locfileid: "75600470"
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>可从何处了解有关各种应用服务计划的配额和限制的详细信息？
 
-有关配额和限制的信息，请参阅[应用服务限制](../azure-subscription-service-limits.md#app-service-limits)。 
+有关配额和限制的信息，请参阅[应用服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。 
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>如何缩短空闲时间后第一个请求的响应时间？
 
@@ -97,15 +100,15 @@ ms.locfileid: "75600470"
 若要打开失败的请求跟踪，请执行以下操作：
 
 1. 在 Azure 门户中，转到自己的 Web 应用。
-2. 选择“所有设置”   > “诊断日志”  。
-3. 对于“失败的请求跟踪”  ，选择“打开”  。
-4. 选择“保存”  。
-5. 在 Web 应用边栏选项卡，选择“工具”  。
-6. 选择“Visual Studio Online”  。
-7. 如果设置不是“打开”  ，则选择“打开”  。
-8. 选择“转到”  。
-9. 选择 **Web.config**。
-10. 在 system.webServer 中，添加此配置（以捕获特定的 URL）：
+3. 选择“所有设置”   > “诊断日志”  。
+4. 对于“失败的请求跟踪”  ，选择“打开”  。
+5. 选择“保存”  。
+6. 在 Web 应用边栏选项卡，选择“工具”  。
+7. 选择“Visual Studio Online”  。
+8. 如果设置不是“打开”  ，则选择“打开”  。
+9. 选择“转到”  。
+10. 选择“Web.config”  。
+11. 在 system.webServer 中，添加此配置（以捕获特定的 URL）：
 
     ```xml
     <system.webServer>
@@ -122,7 +125,7 @@ ms.locfileid: "75600470"
     </add> </traceFailedRequests>
     </tracing>
     ```
-11. 若要解决性能较低的问题，请添加此配置（如果捕获请求话费的时间超过 30 秒）：
+12. 若要解决性能较低的问题，请添加此配置（如果捕获请求话费的时间超过 30 秒）：
     ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
@@ -137,11 +140,11 @@ ms.locfileid: "75600470"
     </add> </traceFailedRequests>
     </tracing>
     ```
-12. 若要下载失败的请求跟踪，请在[门户](https://portal.azure.cn)中转到你的网站。
-13. 选择“工具”   > “Kudu”   > “转到”  。
-14. 在菜单中，选择“调试控制台”   > “CMD”  。
-15. 选择“LogFiles”  文件夹，然后选择名称以“W3SVC”  开头的文件夹。
-16. 若要查看 XML 文件，请选择铅笔图标。
+13. 若要下载失败的请求跟踪，请在[门户](https://portal.azure.cn)中转到你的网站。
+15. 选择“工具”   > “Kudu”   > “转到”  。
+18. 在菜单中，选择“调试控制台”   > “CMD”  。
+19. 选择“LogFiles”  文件夹，然后选择名称以“W3SVC”  开头的文件夹。
+20. 若要查看 XML 文件，请选择铅笔图标。
 
 ## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>看到消息“由于‘内存百分比’限制工作进程请求回收。” 如何解决此问题？
 

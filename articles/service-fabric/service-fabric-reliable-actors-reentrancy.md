@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 执行组件中的可重入性
-description: Service Fabric Reliable Actors 的可重入性简介。
+description: 介绍 Service Fabric Reliable Actors 的可重入性（该方法可以基于调用上下文在逻辑上避免阻止）。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/02/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: c4f7dbd61067227c6dc87e952fc3ad5077815b56
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: c7fff01599f0fef23077bb1da49995efed59e5ae
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742425"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540147"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 可重入性
 默认情况下，Reliable Actors 运行时允许基于逻辑调用上下文的可重入性。 因此执行组件在处于相同调用上下文链中时，可进行重入操作。 例如，如果执行组件 A 将消息发送给执行组件 B，而后者将消息发送给执行组件 C。在处理消息的过程中，如果执行组件 C 调用执行组件 A，这样的消息重入是允许的。 如果消息属于不同调用上下文，则会在执行组件 A 处受阻，直到处理完现有消息为止。

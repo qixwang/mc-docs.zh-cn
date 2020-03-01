@@ -1,17 +1,17 @@
 ---
 title: 删除 Azure Service Fabric 执行组件
-description: 了解如何手动删除 Service Fabric Reliable Actors 及其状态。
+description: 了解如何在 Azure Service Fabric 应用程序中手动完全删除 Reliable Actors 及其状态。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 03/19/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6f9adbf66efd96d875202d985def66c5c9c73588
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: bac0bbd188b753bebc4ae2cd3315140835401bc8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742289"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540110"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>删除 Reliable Actors 及其状态
 对已停用的执行组件进行垃圾回收只会清除该执行组件对象，但是存储在执行组件的状态管理器中的数据不会被删除。 重新激活执行组件后，可通过状态管理器再次使用其数据。 如果执行组件将数据存储在状态管理器，并且已停用且始终不激活该执行组件，那么可能需要清理其数据。

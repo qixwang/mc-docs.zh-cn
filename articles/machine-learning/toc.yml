@@ -58,7 +58,7 @@
       href: tutorial-train-deploy-model-cli.md
 - name: 示例
   items:
-    - name: Jupyter 笔记本
+    - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: Azure 开放数据集
@@ -135,7 +135,7 @@
         - name: 使用 Resource Manager 模板
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: 设置环境
+    - name: 设置你的环境
       items:
         - name: 设置开发环境
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
@@ -149,9 +149,6 @@
         - name: 设置输入和输出目录
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: 使用 VS Code 扩展
-          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
-          href: how-to-vscode-tools.md
         - name: 交互式调试
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
@@ -308,15 +305,9 @@
         - name: 实时使用
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: 运行批量预测
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: 设计器批量预测
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: 调试批量预测并排查其问题
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: 监视模型
       items:
         - name: 收集和评估模型数据

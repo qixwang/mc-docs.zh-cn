@@ -2,17 +2,17 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 08/21/2019
-ms.date: 09/24/2019
+origin.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: c9c082a7a7270dc49b59f5fd86f6a804fbb7e3ba
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 92b3baf9903c850c9fab25165bb53d4d421336e7
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389958"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590724"
 ---
-若要创建 Visual Studio 项目以用于 C++ 桌面开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，然后安装语音 SDK。 
+若要创建 Visual Studio 项目以用于 C++ 桌面开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，然后安装语音 SDK。
 
 ### <a name="set-up-visual-studio-development-options"></a>设置 Visual Studio 开发选项
 
@@ -20,7 +20,7 @@ ms.locfileid: "74389958"
 
 1. 打开 Visual Studio 2019 以显示“开始”  窗口。
 
-   ![启动窗口 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
+   ![启动窗口 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. 选择“继续但无需代码”  ，转到 Visual Studio IDE。
 
@@ -78,4 +78,4 @@ ms.locfileid: "74389958"
 
 1. 在“预览更改”  对话框中，选择“确定”  。
 
-1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`。 
+1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`。

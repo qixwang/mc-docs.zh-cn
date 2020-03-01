@@ -1,33 +1,25 @@
 ---
-title: Microsoft 标识平台 ASP.NET Web 服务器快速入门 | Azure
+title: 向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能 | Azure
 description: 了解如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/11/2019
-ms.date: 11/07/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da2c06998669caac153ed85d1f784a373f2476c
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: b3a69915b9ca4fa760f5c4c26a05c84054f8e91c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830944"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653418"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 在本快速入门中，你将使 ASP.NET Web 应用从任何 Azure Active Directory (Azure AD) 实例登录工作和学校帐户。
 
@@ -167,7 +159,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> 对本快速入门来说，设置 `ValidateIssuer = false` 是一种简化。 在实际应用程序中，需验证颁发者。
+> 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中，需验证颁发者。
 > 查看示例，了解如何执行该操作。
 
 ### <a name="initiate-an-authentication-challenge"></a>启动身份验证质询

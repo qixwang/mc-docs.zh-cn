@@ -1,41 +1,30 @@
 ---
-title: Azure Stack 上的应用服务恢复 | Microsoft Docs
-description: 了解如何对 Azure Stack 上的应用服务进行灾难恢复。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 上的应用服务恢复
+description: 了解如何对 Azure Stack Hub 上的应用服务进行灾难恢复。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 03/21/2019
-ms.date: 09/16/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: ade53dfbdc8f85ed4bd6e1b841c07410856d6b2e
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 3094d26c4781566246566bef9ce0f5233aea1647
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857138"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540627"
 ---
-# <a name="app-service-recovery-on-azure-stack"></a>Azure Stack 上的应用服务恢复
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*  
+# <a name="app-service-recovery-on-azure-stack-hub"></a>Azure Stack Hub 上的应用服务恢复
 
 本主题提供有关应用服务灾难恢复应采取的操作的说明。
 
-若要从备份恢复 Azure Stack 上的应用服务，必须执行以下操作：
+若要从备份恢复 Azure Stack Hub 上的应用服务，必须执行以下操作：
 1. 还原应用服务数据库。
 2. 还原文件服务器共享内容。
 3. 还原应用服务角色和服务。
 
-如果使用 Azure Stack 存储来存储函数应用，则还必须执行还原函数应用的步骤。
+如果使用 Azure Stack Hub 存储来存储函数应用，则还必须执行还原函数应用的步骤。
 
 ## <a name="restore-the-app-service-databases"></a>还原应用服务数据库
 应用服务 SQL Server 数据库应在生产就绪的 SQL Server 实例上还原。 
@@ -106,9 +95,9 @@ net use $source /delete
 > 强烈建议在命令完成时关闭此 PowerShell 会话。
 
 ## <a name="restore-function-apps"></a>还原函数应用 
-适用于 Azure Stack 的应用服务不支持还原租户用户应用，或者除文件共享内容以外的数据。 必须在应用服务备份和还原操作之外备份和恢复所有其他数据。 如果使用 Azure Stack 存储来存储函数应用，则应执行以下步骤来恢复丢失的数据：
+适用于 Azure Stack Hub 的应用服务不支持还原租户用户应用，或者除文件共享内容以外的数据。 必须在应用服务备份和还原操作之外备份和恢复所有其他数据。 如果使用 Azure Stack Hub 存储来存储函数应用，则应执行以下步骤来恢复丢失的数据：
 
-1. 创建函数应用使用的新存储帐户。 此存储可以是 Azure Stack 存储、Azure 存储或任何兼容的存储。
+1. 创建函数应用使用的新存储帐户。 此存储可以是 Azure Stack Hub 存储、Azure 存储或任何兼容的存储。
 2. 检索存储的连接字符串。
 3. 打开函数门户，并浏览到该函数应用。
 4. 浏览到“平台功能”选项卡，然后单击“应用程序设置”。  
@@ -117,4 +106,4 @@ net use $source /delete
 7. 重新启动应用。 可能需要多次尝试才能清除所有错误。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Stack 中的应用服务概述](azure-stack-app-service-overview.md)
+[Azure Stack Hub 上的应用服务概述](azure-stack-app-service-overview.md)

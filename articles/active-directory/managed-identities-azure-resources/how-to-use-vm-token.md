@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e54f4ae1b6b734047de42583f8fb75a0633b8c1c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 65d08f0b2ce1a2a96c8f2186ebe15a27b0c9b1df
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335606"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653411"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -45,7 +45,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="overview"></a>概述
 
-客户端应用程序可以请求 Azure 资源的托管标识的[仅限应用的访问令牌](../develop/developer-glossary.md#access-token)用于访问给定的资源。 令牌[基于 Azure 资源的托管标识服务主体](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/v1-oauth2-client-creds-grant-flow.md)中用作持有者令牌。
+客户端应用程序可以请求 Azure 资源的托管标识的[仅限应用的访问令牌](../develop/developer-glossary.md#access-token)用于访问给定的资源。 令牌[基于 Azure 资源的托管标识服务主体](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 因此，客户端无需注册自身即可使用自己的服务主体获取访问令牌。 该令牌适合在[需要客户端凭据的服务到服务调用](../develop/v2-oauth2-client-creds-grant-flow.md)中用作持有者令牌。
 
 |  |  |
 | -------------- | -------------------- |

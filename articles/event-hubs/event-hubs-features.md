@@ -12,14 +12,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/06/2018
-ms.date: 09/16/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: f1f5794c36d33d65e8b344bbe2e98611cedcb27d
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.openlocfilehash: 7d40729f6f807215295b342a92425bfb3826601e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72872986"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154749"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -40,7 +40,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 可以通过 AMQP 1.0 或 HTTPS 发布事件。 服务总线提供了[客户端库和类](event-hubs-dotnet-framework-api-overview.md)，用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”  （如下一部分所述）或其标识。
 
-是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 AMQP 在初始化会话时的网络成本更高，而 HTTPS 则每次请求都需要额外的 SSL 开销。 对于活动频繁的发布者，AMQP 的性能更高。
+是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 SSL 开销。 对于活动频繁的发布者，AMQP 的性能更高。
 
 ![事件中心](./media/event-hubs-features/partition_keys.png)
 
@@ -48,7 +48,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ### <a name="publisher-policy"></a>发布者策略
 
-事件中心可让你通过发布者策略对事件发布者进行精细控制  。 发布者策略是运行时功能，旨在为大量的独立事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符：
+使用事件中心可以通过*发布者策略*对事件发布者进行精细控制。 发布者策略是运行时功能，旨在为大量的独立事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符：
 
 ```http
 //[my namespace].servicebus.chinacloudapi.cn/[event hub name]/publishers/[my publisher name]
@@ -70,7 +70,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ## <a name="event-consumers"></a>事件使用者
 
-从事件中心读取事件数据的任何实体称为“事件使用者”。  所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。 客户端不需要轮询数据可用性。
+从事件中心读取事件数据的任何实体称为“事件使用者”。  所有事件中心使用者都通过 AMQP 1.0 会话进行连接，事件会在可用时通过该会话传送。 客户端不需要轮询数据可用性。
 
 ### <a name="consumer-groups"></a>使用者组
 
@@ -114,7 +114,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 #### <a name="read-events"></a>读取事件
 
-为特定分区建立 AMQP 1.0 会话和链接后，事件中心服务会将事件传送到 AMQP 1.0 客户端。 与 HTTP GET 等基于提取的机制相比，此传送机制可以实现更高的吞吐量和更低的延迟。 将事件发送到客户端时，每个事件数据实例将包含重要的元数据，例如，用于简化对事件序列执行的检查点操作的偏移量和序列号。
+为特定分区建立 AMQP 1.0 会话和链接后，事件中心服务会将事件传送到 AMQP 1.0 客户端。 与 HTTP GET 等基于提取的机制相比，此传送机制可以实现更高的吞吐量和更低的延迟。 将事件发送到客户端时，每个事件数据实例包含重要的元数据，例如，用于简化对事件序列执行的检查点操作的偏移量和序列号。
 
 事件数据：
 * Offset
@@ -129,7 +129,11 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 有关事件中心的详细信息，请访问以下链接：
 
-* 开始使用[事件中心教程][Event Hubs tutorial]
+- 事件中心入门
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题](event-hubs-faq.md)

@@ -2,20 +2,16 @@
 title: 使用 Chocolatey 进行 Azure Automation State Configuration 持续部署
 description: 使用 Azure Automation State Configuration、DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON 资源管理器模板和 PowerShell 源代码的示例。
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: WenJason
-ms.author: v-jay
 origin.date: 08/08/2018
-ms.date: 11/18/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 76928b063fdc6241a7e59b39348a38aee78a58da
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.openlocfilehash: 23668f0ee042cc69baf6a0b5d425b926d3485606
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116237"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653550"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用情况示例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -45,7 +41,7 @@ Azure Automation State Configuration 扩展了此自动化功能，包含 PowerS
 DSC 资源是具有特定功能的代码模块，例如管理网络、Active Directory 或 SQL Server。 Chocolatey DSC 资源知道如何访问 NuGet 服务器（以及其他组件）、下载包、安装包，等等。 [PowerShell 库](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)中有其他许多 DSC 资源。
 这些模块已安装到 Azure Automation State Configuration 拉取服务器（由你安装）以供配置使用。
 
-Resource Manager 模板以声明方式生成基础结构，例如网络、子网、网络安全性和路由、负载均衡器、NIC、VM，等等。 这篇[文章](../azure-resource-manager/resource-manager-deployment-model.md)比较资源管理器部署模型（声明性）和 Azure 服务管理（ASM 或经典）部署模型（命令性），并讨论核心资源提供程序、计算、存储和网络。
+Resource Manager 模板以声明方式生成基础结构，例如网络、子网、网络安全性和路由、负载均衡器、NIC、VM，等等。 这篇[文章](../azure-resource-manager/management/deployment-models.md)比较资源管理器部署模型（声明性）和 Azure 服务管理（ASM 或经典）部署模型（命令性），并讨论核心资源提供程序、计算、存储和网络。
 
 Resource Manager 模板的一项主要功能是能够在预配时将 VM 扩展安装到 VM 中。 VM 扩展模块具有特定功能，例如运行自定义脚本、安装防病毒软件或运行 DSC 配置脚本。 有许多其他类型的 VM 扩展。
 
@@ -182,21 +178,21 @@ Get-AzureRmAutomationDscCompilationJob `
 本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。 用户可以从任何存储的映像开始，并使用 DSC 配置对其进行调整。
 不过，更改已刻入映像的配置要比使用 DSC 动态更新配置难得多。
 
-将此技巧运用于 VM 时，不需要使用资源管理器模板和 VM 扩展。 即使 VM 不在 Azure 上，也能由 CD 管理。 只需在 VM 上安装 Chocolatey 并配置 LCM，以使其知道“拉”服务器的所在位置即可。
+将此技巧运用于 VM 时，不需要使用资源管理器模板和 VM 扩展。 即使 VM 不在 Azure 上，也能由 CD 管理。 只需在 VM 上安装 Chocolatey 并配置 LCM，以使其知道请求服务器的所在位置即可。
 
 当然，在生产环境中的 VM 上更新包时，在安装更新的过程中，需要将 VM 从轮转列表中排除。 具体的操作根据情况而有很大的差异。 例如，如果 VM 在 Azure 负载均衡器后面，则可以添加自定义探测。 更新 VM 时，让探测终结点返回 400。 可在配置中进行所需的调整来造成这种更改，但更新完成时，调整将切换为返回 200。
 
 GitHub 上的 [此 Visual Studio 项目](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) 中提供了本用例的完整源代码。
 
 ## <a name="related-articles"></a>相关文章
-* [Azure 自动化 DSC 概述](automation-dsc-overview.md)
+* [Azure Automation DSC 概述](automation-dsc-overview.md)
 * [Azure Automation DSC cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
 * [Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关概述，请参阅 [Azure Automation State Configuration](automation-dsc-overview.md)
-- 若要开始使用，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation/#automation)
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.cn/pricing/details/automation/)

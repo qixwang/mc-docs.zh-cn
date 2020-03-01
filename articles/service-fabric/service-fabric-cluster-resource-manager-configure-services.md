@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Service Fabric 中指定指标和放置设置
+title: 指定指标和放置设置
 description: 了解如何通过指定指标、放置约束和其他放置策略描述 Service Fabric 服务。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/18/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: a30835b9e18037db10b91b78a4775e0f7e494a95
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: faf7e43258fd49464527098525097cc366f22d1d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742335"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540477"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>配置 Service Fabric 服务的群集资源管理器设置
 Service Fabric 群集资源管理器允许精细地控制用于管控每个独立命名服务的规则。 每个命名服务均可为它在群集中的分配方式指定规则。 每个命名的服务还可以定义需要报告的一组指标，包括其对该服务的重要性。 配置服务的过程划分为三个不同的任务：

@@ -7,15 +7,15 @@ documentationcenter: ''
 author: spelluru
 manager: ''
 ms.topic: conceptual
-origin.date: 08/22/2019
-ms.date: 02/17/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3c7d2024ab859df04d7671ce3b15b2364cce018d
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: aeea2d89fbd75c4eaf093a6b2571335159fa4e69
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067743"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154769"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
 Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -79,7 +79,8 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 3. 为 Web 应用启用**标识**。 
 4. 将此标识分配给命名空间级别或事件中心级别的“事件中心数据所有者”  角色。 
 5. 运行 Web 应用程序，输入命名空间名称和事件中心名称，输入一条消息，然后选择“发送”  。 若要接收事件，请选择“接收”。  
-#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure.Messaging.EventHubs（最新）](#tab/latest)
+
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure.Messaging.EventHubs（最新）](#tab/latest)
 现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
 
 安装 [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) 中的最新包，开始使用 **EventHubProducerClient** 向事件中心发送事件，使用 **EventHubConsumerClient** 接收事件。  
@@ -127,7 +128,7 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft.Azure.EventHubs（旧版）](#tab/old)
+#### <a name="microsoftazureeventhubs-legacy"></a>[Microsoft.Azure.EventHubs（旧版）](#tab/old)
 现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
 
 从 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 安装最新包，并开始使用 EventHubClient 通过事件中心发送和接收数据，如以下代码所示： 
@@ -137,6 +138,7 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 ```
 ---
 
+<!-- ## Event Hubs for Kafka -->
 ## <a name="next-steps"></a>后续步骤
 - 请参阅下文，了解 Azure 资源的托管标识：[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 - 请参阅以下相关文章：

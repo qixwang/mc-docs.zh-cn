@@ -3,7 +3,7 @@ title: 在 Azure 网络观察程序管理网络安全组流日志的存储 blob 
 description: 本文介绍了如何在 Azure 网络观察程序中删除超过了其保留策略期限的网络安全组流日志存储 blob。
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: lingliw
 manager: ''
 editor: ''
 ms.service: network-watcher
@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2019
-ms.author: damendo
-ms.openlocfilehash: 7e47d363b2223170e8f0cb320240cf1f8f3c14b7
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+origin.date: 08/16/2019
+ms.date: 2/27/2020
+ms.author: v-lingwu
+ms.openlocfilehash: c31d73b093fb657120fce4290e3a6c7a0d6df681
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029356"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154966"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 

@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: jordane
+ms.author: v-yiso
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: c5d888f1247d94626162c2c5f711c0c2c36f351f
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 12/27/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: c4b63a6992011dfb7b39685105af01f273e3c66c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599409"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155061"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,9 +32,9 @@ ms.locfileid: "75599409"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-- 工作区中已注册的机器学习模型。 如果尚未注册模型，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+- 工作区中注册的机器学习模型。 如果尚未注册模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 - 本文中的 Python 代码片段假设设置了以下变量  ：
 
@@ -41,13 +42,13 @@ ms.locfileid: "75599409"
     * `model` - 设置为注册的模型。
     * `inference_config` - 设置为模型的推理配置。
 
-    有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+    有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档  。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档  。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
-要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置  。 例如，核心数和内存。 此外，还需要一个推理配置，用于描述托管模型和 Web 服务所需的环境  。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+要将模型部署到 Azure 容器实例，请创建一个描述所需计算资源的部署配置  。 例如，核心数和内存。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境  。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
@@ -77,11 +78,11 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-有关详细信息，请参阅 [az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)参考文档。 
+有关详细信息，请参阅 [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。 
 
 ## <a name="using-vs-code"></a>使用 VS Code
 
-请参阅[使用 VS Code 部署模型](how-to-vscode-tools.md#deploy-and-manage-models)。
+请参阅[使用 VS Code 部署模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
 > [!IMPORTANT]
 > 无需事先创建 ACI 容器即可进行测试。 将据需要创建 ACI 容器。
@@ -93,7 +94,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
-* [排除部署故障](how-to-troubleshoot-deployment.md)
+* [部署疑难解答](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

@@ -12,12 +12,12 @@ ms.topic: tutorial
 origin.date: 12/17/2019
 ms.date: 1/2/2020
 ms.author: diberry
-ms.openlocfilehash: 3050a5b197f7955833ff693aab5d0c289939a9f1
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: c98db916e7581ae51a4abca6e7acce7262a71ba7
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854625"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155080"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
@@ -77,7 +77,8 @@ ms.locfileid: "75854625"
     |将 Steve Standish 从圣地亚哥调至贝尔维尤 |
     |将 Tanner Thompson 从堪萨斯城派往芝加哥|
 
-    [![LUIS 的屏幕截图，在 MoveEmployee 意向中有新陈述](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![LUIS 的屏幕截图，在 MoveEmployee 意向中有新言语](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>添加预生成实体 geographyV2
 
@@ -87,22 +88,36 @@ ms.locfileid: "75854625"
 
 1. 选择“添加预生成实体”，然后在搜索栏中选择 `geo` 来筛选预生成实体。  
 
-    ![将 geographyV2 预生成实体添加到应用](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![将 geographyV2 预生成实体添加到应用](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. 选中该复选框，然后选择“完成”。 
-1. 在“实体”列表中，选择“geographyV2”打开新实体。   
-1. 添加两个角色：`Origin` 和 `Destination`。 
+1. 在“实体”列表中，选择“geographyV2”打开新实体。  
+1. 添加两个角色：`Origin` 和 `Destination`。
 
-    ![将角色添加到预生成实体](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![将角色添加到预生成实体](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
+
 1. 在左侧导航栏中选择“意向”，然后选择“MoveEmployeeToCity”意向。   请注意，城市名称标有预生成实体 **geographyV2**。
-1. 在列表的第一个言语中，选择来源位置。 此时会显示一个下拉菜单。 在列表中选择“geographyV2”，然后在弹出的菜单中选择“来源”。  
-1. 使用上一步骤中所述的方法来标记所有言语中位置的所有角色。 
+1. 在上下文工具栏中，选择“实体调色板”  。
+
+    > [!div class="mx-imgBorder"]
+    > ![从内容工具栏选择实体调色板](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. 选择预生成的实体 **geographyV2**，然后选择“实体检查器”。 
+1. 在**实体检查器**中，选择一个角色：**目标**。 这会更改鼠标光标。 使用光标在所有属于目标位置的言语中标记文本。
+
+    > [!div class="mx-imgBorder"]
+    > ![选择实体调色板中的角色](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
+1. 返回到**实体检查器**，将角色更改为**源**。 使用光标在所有属于源位置的言语中标记文本。
+
+## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +167,9 @@ ms.locfileid: "75854625"
       ]
     }
     ```
-    
+
     预测了正确的意向，并且实体数组在对应的 **entities** 属性中同时具有来源和目标角色。
-    
+
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]

@@ -1,45 +1,37 @@
 ---
-title: 在 Azure Stack Key Vault 中存储服务主体凭据 | Microsoft Docs
-description: 了解 Key Vault 如何存储 Azure Stack 上的服务主体凭据
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub Key Vault 中存储服务主体凭据
+description: 了解 Key Vault 如何存储 Azure Stack Hub 上的服务主体凭据
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/24/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: dac810fbd2f1363c732ae7760cdd6e868ad73bae
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 63260fb9468bea3a797bb51b7cc304f6fcc6325c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020177"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540778"
 ---
-# <a name="store-service-principal-credentials-in-azure-stack-key-vault"></a>在 Azure Stack Key Vault 中存储服务主体凭据
+# <a name="store-service-principal-credentials-in-azure-stack-hub-key-vault"></a>在 Azure Stack Hub Key Vault 中存储服务主体凭据
 
-在 Azure Stack 上开发应用通常需要创建服务主体，并在部署之前使用这些凭据进行身份验证。 但是，有时会丢失服务主体的存储凭据。 本文介绍如何创建服务主体，并将值存储在 Azure Key Vault 中以供日后检索。
+在 Azure Stack Hub 上开发应用通常需要创建服务主体，并在部署之前使用这些凭据进行身份验证。 但是，有时会丢失服务主体的存储凭据。 本文介绍如何创建服务主体，并将值存储在 Azure Key Vault 中以供日后检索。
 
-有关 Key Vault 的详细信息，请参阅 [Azure Stack 中的 Key Vault 简介](azure-stack-key-vault-intro.md)。
+有关 Key Vault 的详细信息，请参阅 [Azure Stack Hub 中的 Key Vault 简介](azure-stack-key-vault-intro.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 包含 Azure Key Vault 服务的产品/服务的订阅。
-- PowerShell 已安装并配置为用于 Azure Stack。
+- PowerShell 已安装并配置为用于 Azure Stack Hub。
 
-## <a name="key-vault-in-azure-stack"></a>Azure Stack 中的 Key Vault
+## <a name="key-vault-in-azure-stack-hub"></a>Azure Stack Hub 中的 Key Vault
 
-Azure Stack 中的 Key Vault 可帮助保护云应用和服务使用的加密密钥和机密。 使用 Key Vault 可以加密密钥和机密。
+Azure Stack Hub 中的 Key Vault 可帮助保护云应用和服务使用的加密密钥和机密。 使用 Key Vault 可以加密密钥和机密。
 
 若要创建 Key Vault，请执行以下步骤：
 
-1. 登录到 Azure Stack 门户。
+1. 登录到 Azure Stack Hub 门户。
 
 2. 在仪表板中，依次选择“+ 创建资源”、“安全 + 标识”、“Key Vault”。   
 
@@ -81,7 +73,7 @@ Azure Stack 中的 Key Vault 可帮助保护云应用和服务使用的加密密
 
 ## <a name="store-the-service-principal-inside-key-vault"></a>在 Key Vault 中存储服务主体
 
-1. 登录 Azure Stack 的用户门户，选择前面创建的 Key Vault，然后选择“机密”磁贴。 
+1. 登录 Azure Stack Hub 用户门户，选择前面创建的密钥保管库，然后选择“机密”磁贴。 
 
 2. 在“机密”窗格中，选择“生成/导入”。  
 
@@ -102,5 +94,5 @@ Azure Stack 中的 Key Vault 可帮助保护云应用和服务使用的加密密
 ## <a name="next-steps"></a>后续步骤
 
 - [使用服务主体](azure-stack-create-service-principals.md)
-- [通过门户管理 Azure Stack 中的 Key Vault](azure-stack-key-vault-manage-portal.md)  
-- [使用 PowerShell 管理 Azure Stack 中的 Key Vault](azure-stack-key-vault-manage-powershell.md)
+- [通过门户管理 Azure Stack Hub 中的 Key Vault](azure-stack-key-vault-manage-portal.md)  
+- [使用 PowerShell 管理 Azure Stack Hub 中的 Key Vault](azure-stack-key-vault-manage-powershell.md)

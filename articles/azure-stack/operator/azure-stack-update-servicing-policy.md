@@ -1,41 +1,31 @@
 ---
-title: 对 Azure Stack 应用原始设备制造商 (OEM) 更新 | Microsoft Docs
-description: 了解如何对 Azure Stack 应用原始设备制造商 (OEM) 更新。
-services: azure-stack
-documentationcenter: ''
+title: 对 Azure Stack Hub 应用原始设备制造商 (OEM) 更新
+description: 了解如何对 Azure Stack Hub 应用原始设备制造商 (OEM) 更新。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 09/10/2019
-ms.date: 11/18/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: a9df8678e79fac23b18aa1989ce8735818681c1b
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 3add0b325a3e65f774d26b61fe157b0a1bda969d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020020"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540262"
 ---
-# <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
+# <a name="azure-stack-hub-servicing-policy"></a>Azure Stack Hub 服务策略
 
-*适用于：Azure Stack 集成系统*
-
-本文描述了 Azure Stack 集成系统的服务策略，你必须做什么才能使系统保持受支持的状态，以及如何获得支持。
+本文介绍了 Azure Stack Hub 集成系统的服务策略、使系统保持受支持状态所必须执行的操作以及如何获得支持。
 
 ## <a name="keep-your-system-under-support"></a>保持系统受支持
 
-若要继续获得支持，必须保持 Azure Stack 上的更新为最新。
+若要继续获得支持，必须使 Azure Stack Hub 上的更新保持最新。
 
-为了使 Azure Stack 实例保持受支持的状态，该实例必须运行最新发布的更新版本或运行之前的两个更新版本之一。
+要使 Azure Stack Hub 系统保持受支持状态，实例必须运行最新发布的更新版本或运行前面两个更新版本之一。
 
-修补程序不属于主要更新版本。 如果 Azure Stack 实例落后*两个以上的更新*，则认为它不符合。 必须至少更新到最低支持版本才能获得支持。
+修补程序不属于主要更新版本。 如果 Azure Stack Hub 系统落后两个以上的更新  ，则将其视为不合规。 必须至少更新到最低支持版本才能获得支持。
 
 例如，如果最新发布的更新版本为 1904，在此之前的两个更新包为版本 1903 和 1902，则 1902 和 1903 仍受支持， 但 1901 不受支持。 即使最近一到两个月没有发布任何版本，此策略也有效。 例如，如果最新版本为 1807，但没有版本 1806，则此前的两个更新包（1805 和 1804）仍受支持。
 
@@ -43,8 +33,8 @@ Microsoft 软件更新包是非累积性的，其先决条件是需要前一个�
 
 ## <a name="get-support"></a>获取支持
 
-Azure Stack 遵循与 Azure 相同的支持过程。 企业客户可以[创建 Azure 支持请求](https://support.azure.cn/zh-cn/support/support-azure/)。 如果你是云解决方案提供商 (CSP) 的客户，请联系 CSP 获得支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.cn/support/faq/)。
+Azure Stack Hub 遵循与 Azure 相同的支持流程。 企业客户可以[创建 Azure 支持请求](https://support.azure.cn/zh-cn/support/support-azure/)。 如果你是云解决方案提供商 (CSP) 的客户，请联系 CSP 获得支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.cn/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack 中管理更新](azure-stack-updates.md)
+[在 Azure Stack Hub 中管理更新](azure-stack-updates.md)

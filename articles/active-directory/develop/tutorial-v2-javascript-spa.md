@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2.0 JavaScript 单页面应用程序 (SPA) 设置向导 | Microsoft Docs
+title: JavaScript 单页应用教程 - Microsoft 标识平台 | Azure
 description: JavaScript SPA 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 03/20/2019
-ms.date: 10/09/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81fb09a4e9ceb15394dc8aea68ee39947197cae1
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: 8ca2f71b4605f416da9446b363d51795a363f27d
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292052"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653137"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -52,8 +50,8 @@ ms.locfileid: "72292052"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript 的 Microsoft 身份验证库预览|
 
 > [!NOTE]
-> *Msal.js* 面向 Microsoft 标识平台终结点，学校和工作帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](azure-ad-endpoint-comparison.md#limitations)。
-> 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](azure-ad-endpoint-comparison.md)。
+> *Msal.js* 面向 Microsoft 标识平台终结点，学校和工作帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
+> 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 <!--end-collapse-->
 
@@ -341,7 +339,7 @@ function callMSGraph(theUrl, accessToken, callback) {
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”  。
 1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框     。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
-1. 选择**保存**。
+1. 选择“保存”  。
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>设置 Node.js 的重定向 URL
 > 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 30662，但你可以使用任何其他可用端口。

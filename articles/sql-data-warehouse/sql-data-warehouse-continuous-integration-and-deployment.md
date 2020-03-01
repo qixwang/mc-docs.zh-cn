@@ -8,15 +8,15 @@ ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
 origin.date: 08/28/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 0e5eeb11d27a4a23e86842322771b1c0da50a654
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 4ac654a3f01530698321e93ff890b69488d042e9
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964891"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154340"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据仓库的持续集成和部署
 
@@ -31,11 +31,11 @@ ms.locfileid: "75964891"
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>使用 Visual Studio 生成实现持续集成
 
-1. 导航到 Azure Pipelines 并创建新的生成管道
+1. 导航到 Azure Pipelines 并创建新的生成管道。
 
       ![新建管道](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "新建管道")
 
-2. 选择源代码存储库 (Azure Repos Git)，然后选择 .NET Desktop 应用模板
+2. 选择源代码存储库 (Azure Repos Git)，然后选择 .NET Desktop 应用模板。
 
       ![管道设置](media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "管道设置") 
 
@@ -62,27 +62,6 @@ ms.locfileid: "75964891"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 探索 [Azure SQL 数据仓库体系结构](/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
-- 快速[创建 SQL 数据仓库][create a SQL Data Warehouse]
-- [加载示例数据][load sample data]
-
-
-
-<!--Image references-->
-
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[SLA for SQL Data Warehouse]: https://www.azure.cn/zh-cn/support/sla/sql-data-warehouse/
-[Service Level Agreements]: https://www.azure.cn/zh-cn/support/legal/
+- 探索 [Azure SQL 数据仓库体系结构](massively-parallel-processing-mpp-architecture.md)
+- 快速[创建 SQL 数据仓库](create-data-warehouse-portal.md)
+- [加载示例数据](sql-data-warehouse-load-sample-databases.md)

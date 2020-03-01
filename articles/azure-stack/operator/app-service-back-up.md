@@ -1,39 +1,28 @@
 ---
-title: 备份 Azure Stack 上的应用服务 | Microsoft Docs
-description: 了解如何备份 Azure Stack 上的应用程序服务。
-services: azure-stack
-documentationcenter: ''
+title: 备份 Azure Stack Hub 上的应用服务
+description: 了解如何备份 Azure Stack Hub 上的应用服务。
 author: WenJason
-manager: digiomobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 04/23/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 147e702d1e99dc8cc1464ec4825ece3813704699
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 94889c4df188a2275c06b6a6084f2329ddc50c49
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578506"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540636"
 ---
-# <a name="back-up-app-service-on-azure-stack"></a>备份 Azure Stack 上的应用服务
+# <a name="back-up-app-service-on-azure-stack-hub"></a>备份 Azure Stack Hub 上的应用服务
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*  
-
-此文档提供有关如何备份 Azure Stack 上的应用服务的说明。
+本文档说明如何备份 Azure Stack Hub 上的应用服务。
 
 > [!IMPORTANT]
-> Azure Stack 上的应用服务不会作为 [Azure Stack 基础结构备份](azure-stack-backup-infrastructure-backup.md)的一部分进行备份。 在必要的情况下，Azure Stack 操作员必须执行相应的步骤来确保应用服务可成功恢复。
+> Azure Stack Hub 上的应用服务不会作为 [Azure Stack Hub 基础结构备份](azure-stack-backup-infrastructure-backup.md)的一部分进行备份。 在必要的情况下，Azure Stack Hub 操作员必须执行相应的步骤来确保应用服务可成功恢复。
 
-规划灾难恢复时，需要考虑到 Azure Stack 上的 Azure 应用服务的四个主要组件：
+规划灾难恢复时，需要考虑到 Azure Stack Hub 上的 Azure 应用服务的四个主要组件：
 1. 资源提供程序基础结构、服务器角色、辅助角色层等。 
 2. 应用服务机密。
 3. 应用服务SQL Server 托管和计量数据库。
@@ -44,17 +33,17 @@ ms.locfileid: "72578506"
 
 请遵循以下步骤，使用管理门户备份应用服务机密： 
 
-1. 以服务管理员身份登录到 Azure Stack 管理员门户。
+1. 以服务管理员身份登录到 Azure Stack Hub 管理员门户。
 
 2. 浏览到“应用服务” -> “机密”。   
 
 3. 选择“下载机密”。 
 
-   ![在 Azure Stack 管理员门户中下载机密](./media/app-service-back-up/download-secrets.png)
+   ![在 Azure Stack Hub 管理员门户中下载机密](./media/app-service-back-up/download-secrets.png)
 
 4. 准备好下载机密时，单击“保存”，并将应用服务机密 (**SystemSecrets.JSON**) 文件存储到安全位置。  
 
-   ![在 Azure Stack 管理员门户中保存机密](./media/app-service-back-up/save-secrets.png)
+   ![在 Azure Stack Hub 管理员门户中保存机密](./media/app-service-back-up/save-secrets.png)
 
 > [!NOTE]
 > 每次轮换应用服务机密时都需要重复这些步骤。
@@ -93,4 +82,4 @@ net use $destination /delete
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[还原 Azure Stack 上的应用服务](app-service-recover.md)
+[还原 Azure Stack Hub 上的应用服务](app-service-recover.md)

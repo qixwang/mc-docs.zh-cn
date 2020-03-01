@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-origin.date: 12/17/2019
-ms.date: 01/13/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 39a896fd111b633422e6b27bd73a28f750e1ef77
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 7170be9e484ae63c172d9bdd6e118a332703b2bb
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123293"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590269"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "76123293"
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始使用语音设备 SDK 之前，需要：
 
@@ -35,7 +35,7 @@ ms.locfileid: "76123293"
 - 下载[语音设备 SDK](https://aka.ms/sdsdk-download) 的最新版本，并将 .zip 提取到工作目录。
 
   > [!NOTE]
-  > Android-Sample-Release.zip 文件包含 Android 示例应用，本快速入门假设该应用提取到 C:\SDSDK\Android-Sample-Release
+  > 本快速入门假设应用已解压缩到 C:\SDSDK\Android-Sample-Release
 
 - 获取[语音服务的 Azure 订阅密钥](get-started.md)
 
@@ -84,22 +84,45 @@ ms.locfileid: "76123293"
 
 1. 转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。 
 
-1. 将语音订阅密钥添加到源代码。 
+1. 配置 Gradle 以引用语音 SDK。 可以在 Android Studio 的 **Gradle Scripts** 下找到以下文件。
+
+    通过添加 maven 行更新 **build.gradle(Project:example)** ，allprojects 块应该与下面匹配。
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
+1. 将语音订阅密钥添加到源代码。
 
    对于语音和 LUIS，你的信息会进入 MainActivity.java：
 
    ```java
     // Subscription
     private static String SpeechSubscriptionKey = "<enter your subscription info here>";
-    private static String SpeechRegion = "chinaeast2";
+    private static String SpeechRegion = "chinaeast2"; // You can change this if your speech region is different.
     private static String LuisSubscriptionKey = "<enter your subscription info here>";
-    private static String LuisRegion = "chinaeast2"; / you can change this, if your LUIS region is different.
+    private static String LuisRegion = "chinaeast2"; // you can change this, if you want to test the intent, and your LUIS region is different.
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
    <!-- If you are using conversation transcription, your speech key and region information are also needed in conversation.java: -->
 
-<!-- 1. The default keyword is "Computer". You can also try one of the other provided keywords, like "Machine" or "Assistant". The resource files for these alternate keywords are in the Speech Devices SDK, in the keyword folder. For example, C:\SDSDK\Android-Sample-Release\keyword\Computer contains the files used for the keyword "Computer". -->
+    <!-- 1. The default keyword is "Computer". You can also try one of the other provided keywords, like "Machine" or "Assistant". The resource files for these alternate keywords are in the Speech Devices SDK, in the keyword folder. For example, C:\SDSDK\Android-Sample-Release\keyword\Computer contains the files used for the keyword "Computer". -->
 
 1. 更新包含麦克风阵列几何设置的以下行：
 
@@ -129,9 +152,9 @@ ms.locfileid: "76123293"
 
    ![示例语音设备 SDK 的示例应用程序和选项](media/speech-devices-sdk/qsg-8.png)
 
-<!-- 1. Try the new Conversation Transcription demo. Start transcribing with 'Start Session'. By default everyone is a guest. However, if you have participant’s voice signatures they can be put into a file `/video/participants.properties` on the device. To generate the voice signature, look at [Transcribe conversations (SDK)](how-to-use-conversation-transcription-service.md). -->
+    <!-- 1. Try the new Conversation Transcription demo. Start transcribing with 'Start Session'. By default everyone is a guest. However, if you have participant’s voice signatures they can be put into a file `/video/participants.properties` on the device. To generate the voice signature, look at [Transcribe conversations (SDK)](how-to-use-conversation-transcription-service.md). -->
 
-   <!-- ![Demo Conversation Transcription application](media/speech-devices-sdk/qsg-15.png) -->
+    <!-- ![Demo Conversation Transcription application](media/speech-devices-sdk/qsg-15.png) -->
 
 1. 尽情体验吧！
 

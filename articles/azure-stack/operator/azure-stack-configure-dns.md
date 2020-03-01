@@ -1,34 +1,27 @@
 ---
-title: 在 Azure Stack 中更新 DNS 转发器 | Microsoft Docs
-description: 了解如何在 Azure Stack 中更新 DNS 转发器。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中更新 DNS 转发器
+description: 了解如何在 Azure Stack Hub 中更新 DNS 转发器。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 11/21/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: 0ae0f815d4402a8421f2fd0bc2677a0c87308673
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: a5009df5995146e51b20f72dc7a037578d4a5443
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737978"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541004"
 ---
-# <a name="update-the-dns-forwarder-in-azure-stack"></a>在 Azure Stack 中更新 DNS 转发器
+# <a name="update-the-dns-forwarder-in-azure-stack-hub"></a>在 Azure Stack Hub 中更新 DNS 转发器
 
-Azure Stack 基础结构至少需要一个可访问的 DNS 转发器来解析外部名称。 必须提供 DNS 转发器才能部署 Azure Stack。 该输入在 Azure Stack 内部 DNS 服务器中用作转发器，并为身份验证、市场管理或使用情况等服务启用外部名称解析。
+Azure Stack Hub 基础结构至少需要一个可访问的 DNS 转发器来解析外部名称。 必须提供 DNS 转发器才能部署 Azure Stack Hub。 该输入在 Azure Stack Hub 内部 DNS 服务器中用作转发器，并为身份验证、市场管理或使用情况等服务启用外部名称解析。
 
-DNS 是一项可更改的关键数据中心基础结构服务，如果 DNS 更改，则必须更新 Azure Stack。
+DNS 是一项可更改的关键数据中心基础结构服务，如果 DNS 更改，则必须更新 Azure Stack Hub。
 
-本文介绍如何使用特权终结点 (PEP) 在 Azure Stack 中更新 DNS 转发器。 建议使用两个可靠的 DNS 转发器 IP 地址。
+本文介绍如何使用特权终结点 (PEP) 在 Azure Stack Hub 中更新 DNS 转发器。 建议使用两个可靠的 DNS 转发器 IP 地址。
 
 1. 连接到[特权终结点](azure-stack-privileged-endpoint.md)。 请注意，不必通过打开支持票证来解锁特权终结点。
 
@@ -38,7 +31,7 @@ DNS 是一项可更改的关键数据中心基础结构服务，如果 DNS 更�
    Get-AzsDnsForwarder
    ```
 
-3. 运行以下命令更新 Azure Stack，以使用新的 DNS 转发器：
+3. 运行以下命令更新 Azure Stack Hub，以使用新的 DNS 转发器：
 
    ```powershell
     Set-AzsDnsForwarder -IPAddress "IPAddress 1","IPAddress 2"

@@ -13,17 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b02b4e7c90a462430ad1f1f9dc719d9051e466
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 4e3639cf684672ed21040f048885d4c08a7ac0db
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777056"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653182"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 标识平台身份验证库
 
@@ -32,7 +31,7 @@ ms.locfileid: "75777056"
 建议使用协议领域的专家根据安全开发生命周期 (SDL) 方法编写的库。 此类方法包括 [Microsoft 遵循的方法][Microsoft-SDL]。 如果手动编写协议代码，应遵循 Microsoft SDL 之类的方法。 请认真对待每个协议的标准规范中的安全注意事项。
 
 > [!NOTE]
-> 想要使用 Azure Active Directory 身份验证库 (ADAL)？ 请查看 [ADAL 库指南](active-directory-authentication-libraries.md)。
+> 想要使用 Azure Active Directory 身份验证库 (ADAL)？ 请查看 [ADAL 库指南](../azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="types-of-libraries"></a>库的类型
 
@@ -149,4 +148,4 @@ Microsoft 标识平台终结点使用两种类型的库：
 [ServerLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
 [ServerLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad/
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

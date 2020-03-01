@@ -3,23 +3,24 @@ title: 快速入门：使用 REST API 获取意向 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 此 REST API 快速入门使用可用的公共 LUIS 应用从对话文本中确定用户的意向。
 services: cognitive-services
-author: diberry
-manager: nitinme
+author: lingliw
+manager: digimobile
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/18/2019
-ms.author: diberry
+origin.date: 02/14/2020
+ms.date: 02/20/2020
+ms.author: v-lingwu
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0602cbe30f875a8650ae8a2bf31c0a71abd42c98
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 46f4d53fca7b99501124468a2140412709f9849c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885098"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154672"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>快速入门：使用 REST API 获取意向
+# <a name="quickstart-change-model-with-rest-apis"></a>快速入门：使用 REST API 更改模型
 
 此快速入门会将示例话语添加到旅行社应用并训练该应用。 示例话语是映射到意向的对话式用户文本。 通过提供意向的示例话语，可以教 LUIS 识别用户提供的文本类型属于哪种意向。
 

@@ -1,37 +1,26 @@
 ---
-title: 使用安全地存放在 Azure Stack 上的证书部署 VM | Microsoft Docs
-description: 了解如何在 Azure Stack 中部署虚拟机，并使用密钥保管库将证书推送到该虚拟机
-services: azure-stack
-documentationcenter: ''
+title: 使用安全地存放在 Azure Stack Hub 上的证书部署 VM
+description: 了解如何在 Azure Stack Hub 中部署虚拟机，并使用密钥保管库将证书推送到该虚拟机
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/03/2019
-ms.date: 11/18/2019
+origin.date: 01/24/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 6ce21bd6e0ef9737291352e4395c0a58f4358e13
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: b8d4eb12688bad242db3f6c5943eed3f86aceaf9
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020179"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540783"
 ---
-# <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack"></a>使用安全地存放在 Azure Stack 上的证书部署 VM 
+# <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack-hub"></a>使用安全地存放在 Azure Stack Hub 上的证书部署 VM
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-本文介绍如何部署一个安装了密钥保管库证书的 Azure Stack 虚拟机 (VM)。
+本文介绍如何部署一个安装了密钥保管库证书的 Azure Stack Hub 虚拟机 (VM)。
 
 ## <a name="overview"></a>概述
 
-在许多情况下都会使用证书，例如向 Active Directory 进行身份验证或加密 Web 流量。 可以安全地将证书作为机密存储在 Azure Stack 密钥保管库中。 使用 Azure Stack 密钥保管库的好处是：
+在许多情况下都会使用证书，例如向 Active Directory 进行身份验证或加密 Web 流量。 可以安全地将证书作为机密存储在 Azure Stack Hub 密钥保管库中。 使用 Azure Stack Hub 密钥保管库的好处是：
 
 * 证书不会在脚本、命令行历史记录或模板中公开。
 * 简化了证书管理流程。
@@ -48,11 +37,11 @@ ms.locfileid: "74020179"
 > [!NOTE]
 > 可以通过 Azure Stack 开发工具包 (ASDK) 或者外部客户端（如果已通过 VPN 建立连接）执行这些步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 必须订阅包含 Key Vault 服务的产品/服务。
-* [安装适用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md)。
-* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)。
+* [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。
+* [配置 Azure Stack Hub 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)。
 
 ## <a name="create-a-key-vault-secret"></a>创建密钥保管库机密
 
@@ -178,7 +167,7 @@ New-AzureRmResourceGroupDeployment `
 
 ![模板部署结果](media/azure-stack-key-vault-push-secret-into-vm/deployment-output.png)
 
-在部署期间，Azure Stack 会将证书推送到 VM。 证书位置取决于 VM 的操作系统：
+在部署期间，Azure Stack Hub 会将证书推送到 VM。 证书位置取决于 VM 的操作系统：
 
 * 在 Windows 中，系统会利用用户提供的证书存储，将证书添加到 **LocalMachine** 证书位置。
 * 在 Linux 中，证书会置于 **/var/lib/waagent** 目录下，其中 x509 证书文件的文件名为 **UppercaseThumbprint.crt**，私钥的文件名为 **UppercaseThumbprint.prv**。

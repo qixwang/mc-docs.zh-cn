@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI - sfctl replica
-description: 介绍 Service Fabric CLI sfctl replica 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理副本的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: fe4d6ba6896bbfe8a3b611b8c4369e724ca1471e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: a52825f135730e3fee2cca8372089ec6768ff3f4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742210"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540585"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。

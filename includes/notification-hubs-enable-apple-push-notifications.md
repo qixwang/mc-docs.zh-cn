@@ -5,16 +5,16 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-origin.date: 11/21/2019
-ms.date: 12/09/2019
+origin.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: e87976ea13e4fb395e1e2559435a0c4d2b8bef20
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 28fe684abc5659d9a8419f0d26b893a6c73121b3
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884555"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155409"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
 
@@ -27,6 +27,9 @@ Apple Push Notification 服务 (APNs) 使用证书对推送通知进行身份验
 1. 选择“Keychain Access”，展开“Certificate Assistant”（证书助理），然后选择“Request a Certificate from a Certificate Authority”（从证书颁发机构请求证书）。   
 
     ![使用 Keychain Access 请求新证书](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+
+   > [!NOTE]
+   > 默认情况下，Keychain Access 选择列表中的第一项。 如果你位于“Certificates”（证书）  类别中，并且“Apple Worldwide Developer Relations Certification Authority”（Apple 全球开发者关系证书颁发机构）  不是列表中的第一项，这可能会是个问题。 在生成 CSR（证书签名请求）之前，请确保已有非密钥项，或者已选择“Apple Worldwide Developer Relations Certification Authority”（Apple 全球开发者关系证书颁发机构）  密钥。
 
 1. 选择“User Email Address”（用户电子邮件地址），输入“Common Name”（公用名）值，确保指定“Saved to disk”（保存到磁盘），然后选择“Continue”（继续）。     将“CA Email Address”（CA 电子邮件地址）留空，因为它不是必填字段  。
 

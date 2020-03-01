@@ -2,17 +2,17 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 08/06/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: dfe1445aa3b6b9caec6b422c9fe0636f4eec63e5
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 7f5a556946ad331b81f7a43703f3d790db389756
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430070"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590251"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
@@ -49,11 +49,13 @@ ms.locfileid: "77430070"
                String speechSubscriptionKey = "YourSubscriptionKey";
                // Replace below with your own filename.
                String audioFileName = "helloworld.wav";
+
                // Replace below with your own filename.
                String text = "Hello world!";
 
                int exitCode = 1;
-               // Replace below with your own service region (e.g., "chinaeast2").
+               // Replace below with your own service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
+               // from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
                SpeechConfig config = SpeechConfig.fromHost(new URI("https://YourServiceRegion.tts.speech.azure.cn/"), speechSubscriptionKey);
                assert(config != null);
 

@@ -3,18 +3,18 @@ title: Microsoft 标识平台（以前称为面向开发人员的 Azure Active D
 summary: Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 它是一个全功能的平台，包含 OAuth 2.0 以及符合 OpenID Connect 标准的身份验证服务、开源库、应用程序注册和配置、可靠的概念和参考文档、快速入门示例、代码示例、教程以及操作方法指南。
 metadata:
   ms.topic: landing-page
-  ms.date: 02/06/2020
+  ms.date: 02/25/2020
   author: CelesteDG
   ms.author: v-junlch
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: b842d05fdbae06011693030088b68b3cfe189100
-  ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+  ms.openlocfilehash: 56c97f261faaac73f3f9b1aaf78988af6c0e022e
+  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/07/2020
-  ms.locfileid: "77067577"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77653280"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     - text: Microsoft 标识平台 (v2.0)
       url: v2-overview.md
     - text: 面向开发人员的 Azure Active Directory (v1.0)
-      url: v1-overview.md
+      url: ../azuread-dev/v1-overview.md
   - linkListType: concept
     links:
     - text: 身份验证基础知识

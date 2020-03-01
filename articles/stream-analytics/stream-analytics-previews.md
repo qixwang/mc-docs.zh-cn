@@ -7,14 +7,14 @@ ms.author: v-lingwu
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 10/30/2019
-ms.date: 1/6/2020
-ms.openlocfilehash: 2d5e97bf4642bbc2cf56b4c70f5b6a7b5a6adde9
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+origin.date: 2/1/2020
+ms.date: 02/27/2020
+ms.openlocfilehash: b146f8d30aa720b20668b3be70051b6f579dda5a
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75855663"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154604"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -55,10 +55,6 @@ Azure 流分析的机器学习模型除了支持双向、慢正和慢负趋势�
 
 可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](/stream-analytics/quick-create-vs-code)。
 
-
-### <a name="anomaly-detection"></a>异常检测
-
-Azure 流分析引入了新的机器学习模型，除了支持双向、慢正和慢负趋势检测外，还支持“峰值”和“低值”检测   。 
 
 ### <a name="integration-with-azure-machine-learning"></a>与 Azure 机器学习集成
 

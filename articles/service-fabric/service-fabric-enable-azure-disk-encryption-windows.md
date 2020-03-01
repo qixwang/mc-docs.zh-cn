@@ -1,15 +1,16 @@
 ---
-title: 为 Azure Service Fabric Windows 群集启用磁盘加密
+title: 为 Windows 群集启用磁盘加密
 description: 本文介绍如何在 Azure 资源管理器中使用 Azure Key Vault 为 Azure Service Fabric 群集节点启用磁盘加密。
 ms.topic: article
-ms.date: 01/13/2020
+origin.date: 03/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 37f0f0838eccd9838319cf42871ae3b83004e03e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: fcea17a7684b588d6a02f7487a7044f466a27337
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742391"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540433"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>为 Windows 中的 Azure Service Fabric 群集节点启用磁盘加密 
 > [!div class="op_single_selector"]

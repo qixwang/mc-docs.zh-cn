@@ -1,17 +1,17 @@
 ---
-title: Azure Service Fabric 独立群集部署准备
+title: 独立群集部署准备
 description: 在部署专用于处理生产工作负荷的群集之前要考虑的与准备环境和创建群集配置相关的文档。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 09/11/2018
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 93d09d2dc3a98117e88507f82ed5e358ccd9979b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: cb1beb2aee8240c32c886d20c124d5939b4afd28
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742322"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540468"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -158,8 +158,8 @@ Passed                     : True
 
 > [!NOTE]
 > 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](/service-fabric/service-fabric-support)告知我们。
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 * [创建在 Windows Server 上运行的独立群集](service-fabric-cluster-creation-for-windows-server.md)

@@ -1,30 +1,25 @@
 ---
-title: 在 Azure Stack 上部署 Ethereum 区块链网络 | Microsoft Docs
-description: 教程：使用自定义解决方案模板在 Azure Stack 上部署和配置联盟 Ethereum 区块链网络。
-services: azure-stack
-keywords: ''
+title: 在 Azure Stack Hub 上部署 Ethereum 区块链网络
+description: 教程：使用自定义解决方案模板在 Azure Stack Hub 上部署和配置联盟 Ethereum 区块链网络。
 author: WenJason
 ms.author: v-jay
 origin.date: 06/03/2019
-ms.date: 09/16/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
-ms.service: azure-stack
 ms.reviewer: seyadava
-ms.custom: mvc
-manager: digimobile
 ms.lastreviewed: 06/03/2019
-ms.openlocfilehash: 563cabbef0368a8d034d98de0adf8996100b7ac0
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 9dee601401c4a20fd4b4fbc8039cdee45821fce5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028502"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540809"
 ---
-# <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>在 Azure Stack 上部署 Ethereum 区块链网络
+# <a name="deploy-an-ethereum-blockchain-network-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署 Ethereum 区块链网络
 
 Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使多成员联盟 Ethereum 区块链网络的部署和配置变得更加轻松快捷。
 
-凭借少量的用户输入以及 Azure Stack 租户门户中的一键式部署，每个成员就能预配他们的网络足迹。 每个成员的网络足迹由三部分组成：
+凭借少量的用户输入以及 Azure Stack Hub 租户门户中的一键式部署，每个成员都能预配其内存占用情况。 每个成员的网络足迹由三部分组成：
 
 1. 一组负载均衡的事务节点，应用或用户可与这些节点进行交互以提交事务。
 2. 一组用于记录事务的挖掘节点。
@@ -56,15 +51,15 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 此模板可以通过多种方式为领导者和成员部署 Ethereum 联盟。 下面是我们已测试过的内容：
 
-- 在具有 Azure AD 或 AD FS 的多节点 Azure Stack 上，使用相同或不同的订阅部署领导者和成员。
-- 在单节点 Azure Stack（具有 Azure AD）上，使用相同的订阅部署领导者和成员。
+- 在具有 Azure AD 或 AD FS 的多节点 Azure Stack Hub 上，使用相同或不同的订阅部署领导者和成员。
+- 在单节点 Azure Stack Hub（具有 Azure AD）上，使用相同的订阅部署领导者和成员。
 
 ### <a name="standalone-and-consortium-leader-deployment"></a>独立和联盟领导者部署
 
 联盟领导者模板在网络中配置第一个成员的足迹。 
 
-1. [从 GitHub 下载领导者模板](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)。
-2. 在 Azure Stack 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
+1. [从 GitHub 下载领导者模板](https://aka.ms/aa6z619)。
+2. 在 Azure Stack Hub 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
 3. 选择“编辑模板”以编辑新的自定义模板。 
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
     
@@ -118,8 +113,8 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 ### <a name="joining-consortium-member-deployment"></a>加入联盟成员部署
 
-1. [从 GitHub 下载联盟成员模板](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)。
-2. 在 Azure Stack 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
+1. [从 GitHub 下载联盟成员模板](https://aka.ms/aa6zkua)。
+2. 在 Azure Stack Hub 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
 3. 选择“编辑模板”以编辑新的自定义模板。 
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
 5. 选择“保存”  。
@@ -170,8 +165,8 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 此模板创建从领导者到远程成员的连接。 
 
-1. [从 GitHub 下载连接成员和领导者的模板](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)。
-2. 在 Azure Stack 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
+1. [从 GitHub 下载连接成员和领导者的模板](https://aka.ms/aa6zdyt)。
+2. 在 Azure Stack Hub 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
 3. 选择“编辑模板”以编辑新的自定义模板。 
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
     
@@ -190,7 +185,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     CONNECTIONSHAREDKEY | 联盟网络中正在建立连接的成员之间预先建立的机密。  | |
     REMOTEMEMBERNVAPUBLICIP | 成员的 NVA IP 地址。 可在成员的部署输出中找到此值。 | |
     MEMBERNVAPRIVATEIP | 领导者的专用 NVA IP 地址。 可在领导者的部署输出中找到此值。 | |
-    LOCATION | Azure Stack 环境的位置。 | | local
+    LOCATION | Azure Stack Hub 环境的位置。 | | local
     BASEURL | 模板的基 URL。 | 除非想要自定义部署模板，否则请使用默认值。 | 
 
 7. 选择“确定”  。

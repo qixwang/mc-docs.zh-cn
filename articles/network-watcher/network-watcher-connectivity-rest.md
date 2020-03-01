@@ -6,7 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 08/02/2017
 ms.date: 10/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 01c97e415da67f490fc4a28e372457e00761dc46
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: a5bfe70716e751bdc35813e01b2bb7a81143bc89
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028488"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154532"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序排查连接问题
 

@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f63a0dc312697fbc2f9300abe96b5bc207ba5344
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: ccc5e46099d2eea29728108fca9fe9335051da34
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777038"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653152"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -48,7 +47,7 @@ ms.locfileid: "75777038"
 
 ## <a name="sign-in-with-a-pop-up-window"></a>通过弹出窗口登录
 
-### <a name="javascript"></a>Javascript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -64,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
 借助 MSAL Angular 包装器，可通过将 `MsalGuard` 添加到路由定义来确保应用程序中特定路由的安全。 访问该路由时，此防护会调用用于登录的方法。
 
@@ -90,10 +89,11 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
             })]
          })
 ```
+---
 
 ## <a name="sign-in-with-redirect"></a>使用重定向登录
 
-### <a name="javascript"></a>Javascript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 重定向方法不会返回承诺，因为已从主应用离开。 若要处理并访问返回的令牌，需要在调用重定向方法之前注册成功和错误回叫。
 
@@ -111,12 +111,14 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
 此处的代码与本部分之前所述关于使用弹出窗口登录的代码相同。 默认流为重定向。
 
 > [!NOTE]
 > ID 令牌不包含许可的作用域，仅代表经身份验证的用户。 许可的作用域在访问令牌中返回，该令牌会在下一步获取。
+
+---
 
 ## <a name="sign-out"></a>注销
 
@@ -124,7 +126,7 @@ MSAL 库提供 `logout` 方法，该方法会清除浏览器存储中的缓存�
 
 可以通过设置 `postLogoutRedirectUri` 来配置此 URI（在注销后应该重定向到此 URI）。 还应该在应用程序注册中将此 URI 注册为“注销 URI”。
 
-### <a name="javascript"></a>Javascript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -141,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -155,6 +157,8 @@ userAgentApplication.logout();
 // In app.component.ts
 this.authService.logout();
 ```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

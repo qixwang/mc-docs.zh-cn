@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: f6999e282a895084227ef4e9a5e9aca1eed6b92a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 2720b266343c1a24527bb209e400685524e6aa9d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598432"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155033"
 ---
 # <a name="multiclass-decision-forest-module"></a>多类决策林模块
 
@@ -45,7 +46,7 @@ Azure 机器学习中的决策林分类器由决策树的系综构成。 一般�
 
 3. 对于重新采样方法，请选择用于创建单个树的方法  。  可以选择装袋或复制。
 
-    + **装袋**：装袋也称为启动聚合  。 在此方法中，每个树都在新示例的基础上发展。新示例的创建方法是，对原始数据集进行随机采样并替换，直到得到与原始数据集相同大小的数据集。 通过投票（一种聚合形式）组合模型的输出  。 有关详细信息，请参阅关于启动聚合的维基百科条目。
+    + **装袋**：装袋也称为“启动聚合”  。 在此方法中，每个树都在新示例的基础上发展。新示例的创建方法是，对原始数据集进行随机采样并替换，直到得到与原始数据集相同大小的数据集。 通过投票（一种聚合形式）组合模型的输出  。 有关详细信息，请参阅关于启动聚合的维基百科条目。
 
     + **复制**：在复制中，每个树都用完全相同的输入数据进行训练。 确定每个树节点使用哪个拆分谓词仍然是随机的，从而创建了不同的树。
 
@@ -76,12 +77,6 @@ Azure 机器学习中的决策林分类器由决策树的系综构成。 一般�
 
 11. 运行管道。
 
-## <a name="results"></a>结果
-
-在训练完成后：
-
-+ 若要查看在每次迭代中创建的树，请右键单击[训练模型](./train-model.md)模块的输出，并选择“可视化”  。
-+ 若要查看每个节点的规则，请单击每个树以向下钻取拆分。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,32 +1,30 @@
 ---
-title: 快速入门：将文本转换为语音，Python - 语音服务
+title: 将文本转换为语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的示例文本以语音合成标记语言 (SSML) 的形式构造。 这样你就可以选择语音响应的语音和语言。
+description: 本文介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的示例文本以语音合成标记语言 (SSML) 的形式构造。 这样你就可以选择语音响应的语音和语言。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+ms.topic: how-to
+origin.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2756f606562e884d61faa83774743cb77b9bc8a6
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 201b64a901593a9ebe3f8f52cdf98639f887d884
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269954"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590246"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>快速入门：使用 Python 将文本转换为语音
+# <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
 
-本快速入门介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的请求正文以[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 的形式构造，这样你就可以选择响应的语音和语言。
+本文介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的请求正文以[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 的形式构造，这样你就可以选择响应的语音和语言。
 
-此快速入门需要包含语音服务资源的 [Azure 认知服务帐户](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[试用帐户](get-started.md)获取订阅密钥。
+在本文中，需要使用一个包含语音服务资源的 [Azure 认知服务](https://docs.azure.cn/cognitive-services/cognitive-services-apis-create-account)帐户。 如果没有帐户，可以使用[试用帐户](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备条件
-
-本快速入门需要：
+## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器

@@ -1,25 +1,23 @@
 ---
-title: 将 C# ASP.NET Web 应用部署到 Azure Stack 中的虚拟机 | Microsoft Docs
-description: 将 C# ASP.NET Web 应用程序部署到 Azure Stack 中的 VM。
-services: azure-stack
+title: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的虚拟机
+description: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM。
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 08/09/2019
-ms.date: 09/16/2019
+origin.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 08/09/2019
-ms.openlocfilehash: 789ddd84d71851c31a81aec42ee1b58e2587f078
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: b0c975e16265af448eaa3400739610b9fdae3983
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020057"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540829"
 ---
-# <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack"></a>将 C# ASP.NET Web 应用程序部署到 Azure Stack 中的 VM。
+# <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM
 
-可以创建一个虚拟机 (VM) 来托管 Azure Stack 中的 C# ASP.NET Web 应用。 本文介绍在设置服务器、将服务器配置为托管 C# ASP.NET Web 应用，然后直接从 Visual Studio 部署应用时可以遵照的说明。
+可以创建一个虚拟机 (VM) 来托管 Azure Stack Hub 中的 C# ASP.NET Web 应用。 本文介绍在设置服务器、将服务器配置为托管 C# ASP.NET Web 应用，然后直接从 Visual Studio 部署应用时可以遵照的说明。
 
 本文使用一个 C# 6.0 应用，该应用使用在 Windows 2016 服务器上运行的 ASP.NET Core 2.2。
 
@@ -44,9 +42,9 @@ ms.locfileid: "74020057"
 
 1. 在服务器上安装 .NET Core 2.2 Hosting Bundle。 有关说明，请参阅 [.NET Core 安装程序](https://dotnet.microsoft.com/download/dotnet-core/2.2)。 确保在开发计算机和目标服务器上使用相同版本的 .NET Core。
 
-1. 在 Azure Stack 门户中，打开 VM 的网络设置中列出的端口。
+1. 在 Azure Stack Hub 门户中，打开 VM 的网络设置中列出的端口。
 
-    a. 打开租户的 Azure Stack 门户。
+    a. 打开租户的 Azure Stack Hub 门户。
 
     b. 搜索你的 VM。 你可能已将 VM 固定到仪表板；或者，可以在“搜索资源”框中搜索该 VM。 
 
@@ -82,11 +80,11 @@ ms.locfileid: "74020057"
 
     h.如果该值不存在，请单击“添加行”。 输入**名称**和**说明**，以帮助记住打开端口的原因。
 
-    i. 选择“设置”  （应用程序对象和服务主体对象）。
+    i. 选择“添加”   。
 
-1.  对于 Azure Stack 中的 VM，在“网络”设置中创建服务器的 DNS 名称。  用户可以使用 URL 连接到你的网站。
+1.  对于 Azure Stack Hub 中的 VM，在“网络”设置中创建服务器的 DNS 名称。  用户可以使用 URL 连接到你的网站。
 
-    a. 打开租户的 Azure Stack 门户。
+    a. 打开租户的 Azure Stack Hub 门户。
 
     b. 搜索你的 VM。 你可能已将 VM 固定到仪表板；或者，可以在“搜索资源”框中搜索该 VM。 
 
@@ -101,15 +99,15 @@ ms.locfileid: "74020057"
 ## <a name="create-an-app"></a>创建应用 
 
 可以使用你自己的 Web 应用，或使用[使用 Visual Studio 将 ASP.NET Core 应用发布到 Azure](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-) 中的示例。 本文将介绍如何使用 Visual Studio 2017 中的 Azure 虚拟机发布功能，创建一个 ASP.NET Web 应用并将其发布到 Azure 虚拟机。 安装应用并确保它在本地运行后，将发布目标更新为 Azure Stack 实例中的 Windows VM。
+) 中的示例。 本文将介绍如何使用 Visual Studio 2017 中的 Azure 虚拟机发布功能，创建一个 ASP.NET Web 应用并将其发布到 Azure 虚拟机。 安装应用并确保它在本地运行后，将发布目标更新为 Azure Stack Hub 实例中的 Windows VM。
 
 ## <a name="deploy-and-run-the-app"></a>部署和运行应用
 
-为 Azure Stack 中的 VM 创建发布目标。
+为 Azure Stack Hub 中的 VM 创建发布目标。
 
 1. 在“解决方案资源管理器”  中，右键单击项目，并选择“发布”  。
 
-    ![将 ASP.NET Web 应用部署到 Azure Stack 发布](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
+    ![将 ASP.NET Web 应用部署到 Azure Stack Hub 发布](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
 1. 在“发布”窗口中选择“新建配置文件”。  
 1. 选择“IIS”、“FTP”等  。
@@ -137,6 +135,6 @@ ms.locfileid: "74020057"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[设置 Azure Stack 中的开发环境](azure-stack-dev-start.md)。
-- 了解[用作 IaaS 的 Azure Stack 的常见部署](azure-stack-dev-start-deploy-app.md)。
+- 了解如何[在 Azure Stack Hub 中设置开发环境](azure-stack-dev-start.md)。
+- 了解[用作 IaaS 的 Azure Stack Hub 的常见部署](azure-stack-dev-start-deploy-app.md)。
 - 若要了解 C# 编程语言和查找有关 C# 的其他资源，请参阅 [C# 指南](https://docs.microsoft.com/dotnet/csharp/)

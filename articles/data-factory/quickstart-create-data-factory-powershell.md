@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂复制 Blob 存储中的数据 | Microsoft Docs
+title: 使用 Azure 数据工厂复制 Blob 存储中的数据
 description: 创建一个 Azure 数据工厂，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 origin.date: 01/22/2018
-ms.date: 10/14/2019
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: c83a88e53b62af4770210ef53fa2b701eba152e4
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 2f76c26d5356a3a13db08c9286310be526eb3f9a
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275275"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653585"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂
 
@@ -60,7 +60,7 @@ ms.locfileid: "72275275"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称，然后运行命令。 例如：`"ADFQuickStartRG"`。
+1. 为资源组名称定义一个变量，稍后会在 PowerShell 命令中使用该变量。 将以下命令文本复制到 PowerShell，在双引号中指定 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称，然后运行命令。 例如：`"ADFQuickStartRG"`。
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
@@ -102,7 +102,7 @@ ms.locfileid: "72275275"
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
 
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-a-linked-service"></a>创建链接服务
@@ -313,12 +313,12 @@ ms.locfileid: "72275275"
 
 运行 **Invoke-AzDataFactoryV2Pipeline** cmdlet 以创建一个管道运行。 此 cmdlet 返回管道运行 ID，用于将来的监视。
 
-    ```powershell
-    $RunId = Invoke-AzDataFactoryV2Pipeline `
-        -DataFactoryName $DataFactory.DataFactoryName `
-        -ResourceGroupName $ResGrp.ResourceGroupName `
-        -PipelineName $DFPipeLine.Name 
-    ```
+  ```powershell
+$RunId = Invoke-AzDataFactoryV2Pipeline `
+    -DataFactoryName $DataFactory.DataFactoryName `
+    -ResourceGroupName $ResGrp.ResourceGroupName `
+    -PipelineName $DFPipeLine.Name 
+```
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 

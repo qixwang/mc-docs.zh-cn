@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/30/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: be0024ce68ed048a3e3bc566e35f8c0d4caf6a89
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/09/2020
+ms.openlocfilehash: 8c09adc0a0fc29761896b0905f78bcbeb205179c
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336346"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590268"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览版）
 

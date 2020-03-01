@@ -1,19 +1,19 @@
 ---
-title: 在 Windows Server 和 Linux 上创建 Azure Service Fabric 群集
+title: 在 Windows Server 和 Linux 上创建群集
 description: Service Fabric 群集会在 Windows Server 或 Linux 上运行，这意味着你能够在可以运行 Windows Server 和 Linux 的任何位置部署和承载 Service Fabric 应用程序。
 services: service-fabric
 documentationcenter: .net
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/01/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 086ed7ca411a0fabaf5a2931a5558e25fd342088
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: f256d38b00882c1993d5736bbef3263708c4f6c6
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742278"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540488"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上 Service Fabric 群集的概述
 Service Fabric 群集是通过网络连接在一起的一组虚拟机或物理机，可在其中部署和管理微服务。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -90,7 +90,7 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 有关详细信息，请阅读[缩放 Azure 群集](service-fabric-cluster-scaling.md)。
 
 ## <a name="upgrading"></a>正在升级
-Azure Service Fabric 群集是你拥有的，但部分由世纪互联管理的资源。 Azure 负责修补基础 OS 并在群集上执行 Service Fabric 运行时升级。 当 Azure 发布新版本时，可以将群集设置为接收自动运行时升级，或选择所需的受支持运行时版本。 除了运行时升级，还可以更新群集配置（例如证书或应用程序端口）。
+Azure Service Fabric 群集是你拥有的，但部分由 Azure 管理的资源。 Azure 负责修补基础 OS 并在群集上执行 Service Fabric 运行时升级。 当 Azure 发布新版本时，可以将群集设置为接收自动运行时升级，或选择所需的受支持运行时版本。 除了运行时升级，还可以更新群集配置（例如证书或应用程序端口）。
 
 有关详细信息，请阅读[升级群集](service-fabric-cluster-upgrade.md)。
 

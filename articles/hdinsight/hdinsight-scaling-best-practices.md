@@ -1,21 +1,20 @@
 ---
 title: 缩放群集大小 - Azure HDInsight
-description: 根据工作负荷缩放 HDInsight 群集。
-services: hdinsight
+description: 弹性缩放 Apache Hadoop 群集，使其与 Azure HDInsight 中的工作负荷匹配
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 06/10/2019
-ms.date: 10/21/2019
+origin.date: 02/05/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9033666414d85809a74139bd4252c26a9aba993c
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 19e22893cd18d52b54f3d59fc4ade89ded43bf15
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292433"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563405"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
@@ -23,7 +22,7 @@ HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点�
 
 若要定期进行批处理，则可在该操作之前的几分钟纵向扩展 HDInsight 群集，使群集有足够的内存和 CPU 功率。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
 
-可以使用下述方法之一手动缩放群集，也可以使用[自动缩放](hdinsight-autoscale-clusters.md)选项，让系统根据 CPU、内存等指标自动进行纵向扩展和缩减。
+可以使用下述方法之一手动缩放群集。
 
 > [!NOTE]  
 > 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页面。
@@ -40,7 +39,7 @@ Microsoft 提供以下实用程序来缩放群集：
 |[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<目标实例计数> |
 |[Azure 门户](https://portal.azure.cn)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。 |  
 
-![缩放群集](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Azure 门户缩放群集选项](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 使用以下任一方法可在几分钟之内扩展或缩放 HDInsight 群集。
 
@@ -139,7 +138,7 @@ yarn application -kill "application_1499348398273_0003"
 
 纵向缩减群集时，HDInsight 使用 Apache Ambari 管理接口先解除额外的工作器节点，以将其 HDFS 块复制到其他联机工作器节点。 然后，HDInsight 安全地纵向缩减群集。 HDFS 在缩放操作期间进入安全模式，在完成缩放后会退出此模式。 但在某些情况下，HDFS 会在缩放操作期间停滞在安全模式下，因为文件块复制数量不足。
 
-默认情况下，在进行 HDFS 配置时，会将 `dfs.replication` 设置为 3，此项控制每个文件块有多少副本可用。 文件块的每个副本存储在群集的不同节点上。
+默认情况下，进行 HDFS 配置时，会将 `dfs.replication` 设置为 1，该项控制每个文件块的可用副本数。 文件块的每个副本存储在群集的不同节点上。
 
 HDFS 在检测到预期的块副本数不可用时，会进入安全模式，此时 Ambari 会生成警报。 如果 HDFS 进入安全模式进行缩放操作，但随后却因为检测不到进行复制所需的节点数目而无法退出安全模式，则群集可能会停滞在安全模式下。
 
@@ -150,10 +149,10 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 ```
 
 ```
-org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.chinacloudapp.cn:10001 [hn0-clustername.servername. internal.chinacloudapp.cn/1.1.1.1] failed: Connection refused
+org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.chinacloudapp.cn:10001 [active-headnode-name.servername. internal.chinacloudapp.cn/1.1.1.1] failed: Connection refused
 ```
 
-可以查看 `/var/log/hadoop/hdfs/` 文件夹中的名称节点日志，以了解缩放群集时群集进入安全模式的大致时间。 日志文件命名为 `Hadoop-hdfs-namenode-hn0-clustername.*`。
+可以查看 `/var/log/hadoop/hdfs/` 文件夹中的名称节点日志，以了解缩放群集时群集进入安全模式的大致时间。 日志文件命名为 `Hadoop-hdfs-namenode-<active-headnode-name>.*`。
 
 上述错误的根本原因是 Hive 在运行查询时依赖于 HDFS 中的临时文件。 当 HDFS 进入安全模式时，Hive 无法运行查询，因为它无法写入 HDFS。 HDFS 中的临时文件位于已装入到各个工作节点 VM 的本地驱动器上，并且在其他工作节点之间至少复制成三个副本。
 
@@ -197,7 +196,7 @@ org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.server
     下面是存在文件时的示例输出：
 
     ```output
-    sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
+    sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
     -rw-r--r--   3 hive hdfs         27 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info
@@ -219,6 +218,10 @@ org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.server
 如果群集在纵向缩减到三个以下的工作器节点时频繁停滞在安全模式下，且前面的步骤无效，则请保留至少三个工作器节点，这样可以完全避免群集进入安全模式。
 
 保留三个工作器节点的成本比纵向缩减到仅一个工作器节点的成本要高，但可防止群集停滞在安全模式下。
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>将 HDInsight 缩减到一个工作器节点
+
+即使群集缩减到 1 个节点，工作器节点 0 仍将继续存在。 永远不能停用工作器节点 0。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>运行命令来退出安全模式。
 

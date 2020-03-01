@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 11/15/2019
-ms.date: 12/23/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0218166bec3d46908b9c7a6b099de7f625785944
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: bfaf671ed55e6f0ef359339356b1d094ccb0e7a9
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335215"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563348"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
 
@@ -27,7 +27,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 每个应用程序可能包含多个 *应用程序尝试*。 如果应用程序失败，可能会重试进行新的尝试。 每次尝试都在容器中运行。 在某种意义上，容器提供了由 YARN 应用程序执行的基本工作单位的上下文。 在容器的上下文中完成的所有工作均在分配了容器的单个辅助角色节点上执行。 请参阅 [Hadoop：编写 YARN 应用程序](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)或 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 以获取更多参考信息。
 
-若要通过缩放群集来支持更高的处理吞吐量，可参阅[自动缩放](hdinsight-autoscale-clusters.md)或[使用一些不同的语言手动缩放群集](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)。
+若要通过缩放群集来支持更高的处理吞吐量，可按照[使用几种不同的语言手动缩放群集](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)进行操作。
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
@@ -46,7 +46,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 每个应用程序可能包含多个 *应用程序尝试*。 如果应用程序失败，可能会重试进行新的尝试。 每次尝试都在容器中运行。 在某种意义上，容器提供了由 YARN 应用程序执行的基本工作单位的上下文。 在容器的上下文中完成的所有工作均在分配了容器的单个辅助角色节点上执行。 请参阅 [Apache Hadoop YARN 的概念](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)，以获取更多参考信息。
 
-应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，用于使用[日志聚合](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)功能收集、聚合和存储应用程序日志。 日志聚合功能使访问应用程序日志更具确定性。 它聚合工作器节点上所有容器的日志，并将其存储为一个聚合日志文件（每个工作器节点）。 应用程序完成后，日志存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个工作器节点上运行的所有容器的日志始终聚合成单个文件。 因此，在每个辅助角色节点上，应用程序只使用 1 个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。 下面的路径是日志的 HDFS 路径：
+应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，用于使用[日志聚合](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)功能收集、聚合和存储应用程序日志。 日志聚合功能使访问应用程序日志更具确定性。 它聚合工作器节点上所有容器的日志，并将其存储为一个聚合日志文件（每个工作器节点）。 应用程序完成后，日志存储在默认文件系统上。 应用程序可能使用数百或数千个容器，但在单个工作器节点上运行的所有容器的日志始终聚合成单个文件。 因此，在每个辅助角色节点上，应用程序只使用 1 个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。 下面的路径是日志的 HDFS 路径：
 
     /app-logs/<user>/logs/<applicationId>
 
@@ -56,14 +56,73 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 ## <a name="yarn-cli-tools"></a>YARN CLI 工具
 
-若要使用 YARN CLI 工具，则必须首先使用 SSH 连接到 HDInsight 群集。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 使用 [ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
-可通过运行下列命令之一以纯文本格式查看这些日志：
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```
 
+1. 使用以下命令列出当前正在运行的 Yarn 应用程序的所有应用程序 ID：
+
+    ```bash
+    yarn top
+    ```
+
+    记下 `APPLICATIONID` 列中要下载其日志的应用程序 ID。
+
+    ```output
+    YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
+    NodeManager(s): 4 total, 4 active, 0 unhealthy, 0 decommissioned, 0 lost, 0 rebooted
+    Queue(s) Applications: 2 running, 10 submitted, 0 pending, 8 completed, 0 killed, 0 failed
+    Queue(s) Mem(GB): 97 available, 3 allocated, 0 pending, 0 reserved
+    Queue(s) VCores: 58 available, 2 allocated, 0 pending, 0 reserved
+    Queue(s) Containers: 2 allocated, 0 pending, 0 reserved
+    
+                      APPLICATIONID USER             TYPE      QUEUE   #CONT  #RCONT  VCORES RVCORES     MEM    RMEM  VCORESECS    MEMSECS %PROGR       TIME NAME
+     application_1490377567345_0007 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628407    2442611  10.00   18:20:20 Thrift JDBC/ODBC Server
+     application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
+    ```
+
+1. 可通过运行下列命令之一以纯文本格式查看这些日志：
+
+    ```bash
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+    ```
 
 运行这些命令时，请指定 &lt;applicationId>、&lt;user-who-started-the-application>、&lt;containerId> 和 &lt;worker-node-address> 信息。
+
+### <a name="other-sample-commands"></a>其他示例命令
+
+1. 使用以下命令下载所有应用程序主机的 Yarn 容器日志： 这会以文本格式创建名为 `amlogs.txt` 的日志文件。
+
+    ```bash
+    yarn logs -applicationId <application_id> -am ALL > amlogs.txt
+    ```
+
+1. 使用以下命令只会下载最新应用程序主机的 Yarn 容器日志：
+
+    ```bash
+    yarn logs -applicationId <application_id> -am -1 > latestamlogs.txt
+    ```
+
+1. 使用以下命令下载前两个应用程序主机的 YARN 容器日志：
+
+    ```bash
+    yarn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
+    ```
+
+1. 使用以下命令下载所有 Yarn 容器日志：
+
+    ```bash
+    yarn logs -applicationId <application_id> > logs.txt
+    ```
+
+1. 使用以下命令下载特定容器的 Yarn 容器日志：
+
+    ```bash
+    yarn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
+    ```
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
 

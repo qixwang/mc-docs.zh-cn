@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 3b219c708199538873becb573c6b87472d3234d6
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: e4e06f637e1a8e9cf8d61385cb010f7904536602
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599591"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154940"
 ---
 # <a name="linear-regression-module"></a>“线性回归”模块
 本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
@@ -88,9 +89,8 @@ ms.locfileid: "75599591"
 
 ## <a name="results-for-ordinary-least-squares-model"></a>普通最小二乘法模型的结果
 
-训练完成后：
+在训练完成后：
 
-+ 若要查看模型的参数，请右键单击训练器输出，并选择“可视化”。 
 
 + 若要做出预测，请将训练后的模型连同包含新值的数据集一起连接到[评分模型](./score-model.md)模块。 
 
@@ -143,4 +143,4 @@ ms.locfileid: "75599591"
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

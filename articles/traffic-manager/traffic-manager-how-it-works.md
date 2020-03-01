@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/05/2019
-ms.date: 09/09/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 401faff9217bc1bf1c25613c7344f1a6205f98dd
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: 8d14df2b6f9e528513628b9ccb8629e94dce4871
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254675"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653215"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -31,7 +31,7 @@ ms.locfileid: "70254675"
 
 当客户端尝试连接到某个服务时，必须先将该服务的 DNS 名称解析成 IP 地址。 然后，客户端就可以连接到该 IP 地址以访问相关服务。
 
-**需要了解的最重要一点是，流量管理器在 DNS 级别工作。**  流量管理器根据流量路由方法的规则，使用 DNS 将客户端导向到特定的服务终结点。 客户端 **直接**连接到选定的终结点。 流量管理器不是代理或网关。 流量管理器看不到流量在客户端与服务之间传递。
+**需要了解的最重要一点是，流量管理器在 DNS 级别工作。** 流量管理器根据流量路由方法的规则，使用 DNS 将客户端导向到特定的服务终结点。 客户端 **直接**连接到选定的终结点。 流量管理器不是代理或网关。 流量管理器看不到流量在客户端与服务之间传递。
 
 ## <a name="traffic-manager-example"></a>流量管理器示例
 

@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 09/13/2019
-ms.date: 11/25/2019
+ms.date: 03/09/2019
 ms.author: v-tawe
-ms.openlocfilehash: ef65e9c731028beeb786ca004ac29f047abf2535
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: b6ae42ba049a4036bcd34b0b5d14f6646006dab2
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389960"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590788"
 ---
 若要创建 Visual Studio 项目，以便使用 Xamarin 进行跨平台移动应用 .NET 开发，需要：
 - 设置 Visual Studio 开发选项。

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 09/22/2018
+origin.date: 12/20/2017
 ms.date: 09/26/2019
 ms.author: v-yiso
-ms.openlocfilehash: 5c8be5e3e6ed9889f2d1e59c12f96ed49dcb304f
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 346b04f80774ce074dc5181d49988e446b51b040
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329774"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154983"
 ---
 # <a name="azure-relay-exceptions"></a>Azure 中继异常
 

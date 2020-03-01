@@ -2,19 +2,18 @@
 title: 在 Azure 和 Azure Stack 上构建时的混合应用程序设计注意事项
 description: 为智能云和智能边缘构建混合应用程序时的注意事项。
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 0d21399c6c2191c2902f9acf48e5f055f67cc55e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: f27201672f995b575f05350bba29087925a2bbee
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020574"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540524"
 ---
 # <a name="hybrid-application-design-considerations"></a>混合应用程序设计注意事项 
 
@@ -144,7 +143,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 可用性是指系统正常运行的时间。 可用性以正常运行时间百分比来计量。 应用程序错误、基础结构问题和系统负载都会降低可用性。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的[可用性](https://docs.microsoft.com/azure/architecture/guide/pillars#availability)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的[可用性](https://docs.microsoft.com/azure/architecture/framework/)。 
 
 ### <a name="availability-checklist"></a>可用性核对清单
 
@@ -188,7 +187,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 在设计体系结构时，管理混合应用程序的方式是非常重要的考虑因素。 妥善管理的混合应用程序可提供代码形式的的基础结构，实现在通用开发管道中集成一致的应用程序代码。 通过对基础结构的更改实施一致的系统范围测试和单独测试，当更改通过测试时，可以确保集成的部署允许将这些更改合并到源代码中。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的[管理和 DevOps](https://docs.microsoft.com/azure/architecture/guide/pillars#management-and-devops)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的 [DevOps](https://docs.microsoft.com/azure/architecture/framework/#devops)。 
 
 ### <a name="manageability-checklist"></a>可管理性查检表
 

@@ -1,33 +1,24 @@
 ---
-title: 使用门户管理 Azure Stack 中的 Key Vault | Microsoft Docs
-description: 了解如何使用 Azure Stack 门户管理 Azure Stack 中的 Key Vault。
-services: azure-stack
-documentationcenter: ''
+title: 使用门户管理 Azure Stack Hub 中的 Key Vault
+description: 了解如何使用 Azure Stack Hub 门户管理 Azure Stack Hub 中的 Key Vault。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 06/11/2019
-ms.date: 09/16/2019
+origin.date: 01/10/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 2774055e30b15dd132780f66e539113b29dbc32f
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.lastreviewed: 1/10/2020
+ms.openlocfilehash: 928e0de3ecf44554b0320fa2165ed531e0d414bb
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857068"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540792"
 ---
-# <a name="manage-key-vault-in-azure-stack-using-the-portal"></a>使用门户管理 Azure Stack 中的 Key Vault
+# <a name="manage-key-vault-in-azure-stack-hub-using-the-portal"></a>使用门户管理 Azure Stack Hub 中的 Key Vault
 
-本文介绍如何使用 Azure Stack 门户在 Azure Stack 中创建和管理密钥保管库。
+本文介绍如何使用 Azure Stack Hub 门户在 Azure Stack Hub 中创建和管理密钥保管库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须订阅包含 Azure Key Vault 服务的产品/服务。
 
@@ -59,11 +50,11 @@ ms.locfileid: "70857068"
 
 ### <a name="create-a-key"></a>创建密钥
 
-1. 登录到[用户门户](https://portal.local.azurestack.external)。
+1. 登录到 Azure Stack Hub [用户门户](https://portal.local.azurestack.external)。
 
 2. 从仪表板中选择“所有资源”  ，选择先前创建的密钥保管库，然后选择“密钥”  磁贴。
 
-3. 在“密钥”  窗格中，选择“添加”  。
+3. 在“密钥”窗格中，选择“生成/导入”。  
 
 4. 在“创建密钥”  窗格中，从“选项”列表中  ，选择要用于创建密钥的方法。 可以**生成**新密钥、**上传**现有密钥，或使用“备份还原”  选择密钥的备份。
 

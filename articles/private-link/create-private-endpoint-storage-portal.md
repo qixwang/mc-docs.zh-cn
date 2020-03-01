@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: article
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8f55cc87c97fbcdca2a01ac2b1f3f79e4491cfe4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 6750f8f4a7312f75a52775a8d16bf63760992af5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631273"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540075"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 专用终结点以私密方式连接到存储帐户
 Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。
@@ -37,7 +37,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
 1. 在“创建虚拟网络”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16  。 |
@@ -55,7 +55,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -82,7 +82,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。 |
@@ -103,7 +103,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在“创建存储帐户 - 基本信息”中，输入或选择以下信息  ：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -121,17 +121,17 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 5. 在“创建存储帐户 - 网络”  中，选择“添加专用终结点”  。 
 6. 在“创建专用终结点”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
     |位置|选择“chinaeast2”  。|
-    |名称|输入  *myPrivateEndpoint*。  |
+    |名称|输入“myPrivateEndpoint”  。  |
     |存储子资源|保留默认值“Blob”  。 |
     | **网络** |  |
-    | 虚拟网络  | 从资源组“myResourceGroup”  中选择“MyVirtualNetwork” ** 。 |
-    | 子网 | 选择“mySubnet”。 ** |
+    | 虚拟网络  | 从资源组“myResourceGroup”  中选择“MyVirtualNetwork”  。 |
+    | 子网 | 选择“mySubnet”  。 |
     | **专用 DNS 集成**|  |
     | 与专用 DNS 区域集成  | 保留默认值“是”  。 |
     | 专用 DNS 区域  | 保留默认值“（新）privatelink.blob.core.chinacloudapi.cn”  。 |
@@ -172,8 +172,8 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 在本部分中，你将使用专用终结点私密地连接到存储帐户。
 
-1. 在  *myVM* 的远程桌面中打开 PowerShell。
-2. 输入  `nslookup mystorageaccount.blob.core.chinacloudapi.cn`。你将收到类似于以下内容的消息：
+1. 在 *myVM* 的远程桌面中，打开 PowerShell。
+2. 输入 `nslookup mystorageaccount.blob.core.chinacloudapi.cn`，你将收到类似于以下内容的消息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,21 +192,21 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 10. 选择“连接”  。
 11. 浏览 mystorageaccount 中的 Blob 容器 
 12. （可选）创建文件夹并/或将文件上传到 *mystorageaccount*。 
-13. 关闭与  *myVM* 建立的远程桌面连接。 
+13. 关闭与 *myVM* 的远程桌面连接。 
 
 用于访问存储帐户的其他选项：
 - Azure 存储资源管理器是 Azure 免费提供的独立应用，用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。 你可以安装应用程序来以私密方式浏览存储帐户内容。 
 
-- 若要按可编写脚本的方式高性能地传输 Azure 存储中的数据，还可使用 AzCopy 实用工具。 使用 AzCopy 将数据传输到 Blob、文件和表存储或将数据从其中传出。 
+- 若要以可编写脚本的方式高性能地传输 Azure 存储中的数据，还可使用 AzCopy 实用工具。 使用 AzCopy 将数据传输到 Blob、文件和表存储或将数据从其中传出。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 用完专用终结点、存储帐户和 VM 之后，请删除资源组及其包含的所有资源： 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。   **   
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。 
 2. 选择“删除资源组”  。 
-3. 对于“键入资源组名称”，请输入  *myResourceGroup* ，然后选择“删除”。   
+3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”    。 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，你在虚拟网络上创建了一个 VM、一个存储帐户和一个专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与存储帐户进行通信。 若要详细了解专用终结点，请参阅 [什么是 Azure 专用终结点？](private-endpoint-overview.md)。
+在本快速入门中，你在虚拟网络上创建了一个 VM、一个存储帐户和一个专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与存储帐户进行通信。 若要详细了解专用终结点，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。
 
 <!-- Update_Description: new article about create private endpoint storage portal -->
 <!--NEW.date: 01/06/2020-->

@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 04/16/2019
 ms.date: 05/15/2019
 ms.author: v-junlch
-ms.openlocfilehash: da03c9c609e20fea8a3b949799a8cc7845e2c107
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.openlocfilehash: 8fa9f33a88df4edea98deed4e39eb642787cab87
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65668903"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154813"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Node.js 调用文本分析认知服务  
 <a name="HOLTop"></a>
@@ -28,8 +28,6 @@ ms.locfileid: "65668903"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
 
 <a name="Detect"></a>
 

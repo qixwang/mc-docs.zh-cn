@@ -1,31 +1,29 @@
 ---
-title: 如何在 Azure Stack 中使用 SSH 公钥 | Microsoft Docs
+title: 如何在 Azure Stack Hub 中使用 SSH 公钥
 description: 如何使用 SSH 公钥
-services: azure-stack
 author: WenJason
-ms.service: azure-stack
 ms.topic: overview
-origin.date: 04/25/2019
-ms.date: 07/29/2019
+origin.date: 1/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: c84d0fe8ba2a3790c50c4176805bfd343f1a009f
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 716264530b9b2ac584c7b7c6d61081d679f8887b
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513333"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540837"
 ---
 # <a name="use-an-ssh-public-key"></a>使用 SSH 公钥
 
-若要使用从开发计算机到 Azure Stack 实例中服务器 VM（用于托管 Web 应用程序）的开放 SSH 连接，可能需要创建安全外壳 (SSH) 公钥和私钥对。 
+若要使用从开发计算机到 Azure Stack Hub 实例中服务器 VM（用于托管 Web 应用）的开放 SSH 连接，可能需要创建安全外壳 (SSH) 公钥和私钥对。 
 
 在本文中，你将创建密钥，然后使用它们连接到服务器。 可以使用 SSH 客户端在 Linux 服务器上获取 bash 提示符，或使用安全 FTP (SFTP) 客户端将文件移入和移出服务器。
 
 ## <a name="create-an-ssh-public-key-on-windows"></a>在 Windows 上创建 SSH 公钥
 
-在本部分，你将使用 PuTTY 的密钥生成器创建 SSH 公钥和私钥对，以便在 Azure Stack 实例中与 Linux 计算机建立安全连接时使用。 PuTTY 是免费的终端仿真器，可用于通过 SSH 和 Telnet 连接到服务器。
+在本部分中，你将使用 PuTTY 密钥生成器创建 SSH 公钥和私钥对，以便在 Azure Stack Hub 实例中与 Linux 计算机建立安全连接时使用。 PuTTY 是免费的终端仿真器，可用于通过 SSH 和 Telnet 连接到服务器。
 
 1. [下载并安装适用于你的计算机的 PuTTY。](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
@@ -67,14 +65,14 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
 ## <a name="connect-with-ssh-by-using-putty"></a>使用 PuTTY 通过 SSH 进行连接
 
-安装 PuTTY 时，你已获得 PuTTY 密钥生成器和 SSH 客户端。 在本部分，你将打开 SSH 客户端、PuTTY，并配置连接值和 SSH 密钥。 如果你在 Azure Stack 实例所在的同一网络中操作，请连接到 VM。
+安装 PuTTY 时，你已获得 PuTTY 密钥生成器和 SSH 客户端。 在本部分，你将打开 SSH 客户端、PuTTY，并配置连接值和 SSH 密钥。 如果你在 Azure Stack Hub 实例所在的同一网络中操作，请连接到 VM。
 
 连接之前，需要：
 - PuTTY
-- Azure Stack 实例中使用 SSH 公钥作为身份验证类型的 Linux 计算机的 IP 地址和用户名。
+- Azure Stack Hub 实例中使用 SSH 公钥作为身份验证类型的 Linux 计算机的 IP 地址和用户名。
 - 为计算机打开端口 22。
 - 创建该计算机时使用的 SSH 公钥。
-- 与 Azure Stack 实例位于同一网络中的、运行 PuTTY 的客户端计算机。
+- 运行 PuTTY 的客户端计算机与 Azure Stack Hub 实例位于同一网络上。
 
 1. 打开 PuTTY。
 
@@ -128,4 +126,4 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[设置 Azure Stack 中的开发环境](azure-stack-dev-start.md)。
+了解如何[在 Azure Stack Hub 中设置开发环境](azure-stack-dev-start.md)。

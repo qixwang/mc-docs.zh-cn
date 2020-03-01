@@ -1,43 +1,41 @@
 ---
-title: Azure SignalR 服务无服务器快速入门 - Java
+title: 通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
 description: 使用 Azure SignalR 服务和 Azure Functions 创建聊天室的快速入门。
 author: sffamily
 ms.service: signalr
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 03/04/2019
-ms.date: 11/25/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5c69b3eb948d004d9054e2cbaa01d1760b32b391
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: c88d56ffe901e20cdccc205b393989f4f6639cd5
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74179088"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77567195"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>快速入门：使用 Java 通过 Azure Functions 和 SignalR 服务创建聊天室
+# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
 
-使用 Azure SignalR 服务可以轻松地将实时功能添加到应用程序。 Azure Functions 是一个无服务器平台，可让你在不管理任何基础结构的情况下运行代码。 本快速入门介绍了如何使用 SignalR 服务和 Functions 构建无服务器的实时聊天应用程序。
+Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Azure Functions 是一个无服务器平台，可让你无需管理任何基础结构即可运行代码。 在本快速入门中，你将通过 Java 使用 SignalR 服务和 Functions 构建一个无服务器的实时聊天应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门可以在 macOS、Windows 或 Linux 上运行。
+- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/)
+- 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)。 用于在本地运行 Azure Functions 应用。
 
-确保已安装了代码编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
+   > [!NOTE]
+   > Java 中所需的 SignalR 服务绑定仅在 Azure Function Core Tools 版本2.4.419（主机版本 2.0.12332）或更高版本中受支持。
 
-安装 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)，以便在本地运行 Azure Functions 应用。
+   > [!NOTE]
+   > 若要安装扩展，Azure Functions Core Tools 需要安装 [.NET Core SDK](https://www.microsoft.com/net/download)。 但是，构建 JavaScript Azure Function 应用不需要了解 .NET。
+
+- [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)版本 8
+- [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
 
 > [!NOTE]
-> 若要在 Java 中使用 SignalR 服务绑定，请确保使用的是 Azure Functions Core Tools（主机版本 2.0.12332）2.4.419 版或更高版本。
-
-为了安装扩展，Azure Functions Core Tools 目前需要安装 [.NET Core SDK](https://www.microsoft.com/net/download)。 但是，构建 JavaScript Azure Function 应用不需要了解 .NET。
-
-若要通过 Java 开发函数应用，必须安装以下软件：
-
-* [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)，版本 8。
-* [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> 本快速入门可以在 macOS、Windows 或 Linux 上运行。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
