@@ -1,17 +1,17 @@
 ---
-title: 将使用 MongoDB 的 Node.js 应用程序部署到 Azure Service Fabric
+title: 部署使用 MongoDB 的 Node.js 应用程序
 description: 演练如何打包多个来宾可执行文件以部署到 Azure Service Fabric 群集
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 517250e7291b929cce84ff57482b7932a3fcb001
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: d8231e10938ba1c01686de02587b9703daa2c343
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742354"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539976"
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍如何打包多个来宾可执行文件并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。

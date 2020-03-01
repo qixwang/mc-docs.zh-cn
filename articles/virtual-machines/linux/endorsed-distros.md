@@ -1,5 +1,5 @@
 ---
-title: Azure 认可的 Linux 分发版 | Azure
+title: Azure 认可的 Linux 分发
 description: 了解 Azure 认可的分发中的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的指南。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 05/16/2019
-ms.date: 10/14/2019
+origin.date: 11/04/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1d2a3c5768e0d9217bec7926ccd2ac145cf52c79
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 01dfd4a797a6bcd18603427e9e9fa471a96eade9
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272718"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428464"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 合作伙伴在 Azure 市场中提供了 Linux 映像。 我们与各大 Linux 社区合作以便在认可的发行版列表中添加更多成员。 在此期间，对于市场未提供的分发，用户始终可以按照[创建并上传包含 Linux 操作系统的虚拟硬盘](/virtual-machines/linux/create-upload-generic)中的准则安装自己的 Linux。
@@ -36,16 +36,17 @@ Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的�
 
 | 分发 | 版本 | 驱动程序 | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+、7.0+ |CentOS 6.3：[LIS 下载](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+：在内核中 |包：在“WALinuxAgent”下的[存储库](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+、7.0+、8.0+ |CentOS 6.3：[LIS 下载](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+：在内核中 |包：在“WALinuxAgent”下的[存储库](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |在内核中 |源代码：[GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7.9+、8.2+ |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Debian |Debian 7.9+、8.2+、9、10 |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise |SLES/SLES for SAP<br />11 SP4<br />12 SP1+<br />15|在内核中 |包：<p> 对于 11，在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中<br />对于 12，包含在“公有云”模块中的“python-azure-agent”下<br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |在内核中 |包：在“python-azure-agent”下的 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |在内核中 |包：在“walinuxagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
 - **<sup>1</sup>** 对 Ubuntu 12.04 和 14.04 的扩展支持有关的信息可在此处找到：[Ubuntu 扩展安全维护](https://www.ubuntu.com/esm)。
 
-<!--Not Available on Oracle Linux, Red Hat Enterprise Linux -->
+<!--Not Available on Oracle Linux -->
+<!--Not Available on Red Hat Enterprise Linux -->
 
 ## <a name="image-update-cadence"></a>映像的更新节奏
 Azure 要求受认可 Linux 分发版的发布者在每个季度或以更快的节奏，定期使用最新修补程序和安全修复程序，更新其在 Azure 市场中的映像。 在 Azure 市场中更新的映像将自动以新版映像 SKU 的形式提供给客户使用。 有关如何查找 Linux 映像的详细信息：[在 Azure 市场中查找 Linux VM 映像](/virtual-machines/linux/cli-ps-findimage)。
@@ -93,4 +94,4 @@ Canonical 工程和开放社区监管对 Ubuntu 在客户端、服务器和云�
 
 借助其遍布全球的开发人员和工程中心，Canonical 在与硬件制造商、内容提供商和软件开发人员合作以将 Ubuntu 解决方案推向市场（从电脑到服务器和手持设备）方面拥有独特的优势。
 
-<!--Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

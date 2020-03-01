@@ -7,8 +7,8 @@ author: brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
+origin.date: 02/10/2020
+ms.date: 03/02/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 327c5888b28402a15a140ab8f0df0db1822250f0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d84e261056b3991fea44d07561bb813a24f4ae2d
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336100"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501435"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 
@@ -122,6 +122,17 @@ OData 中的常量是给定[实体数据模型](https://docs.microsoft.com/dotne
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>转义字符串常量中的特殊字符
+
+OData 中的字符串常量由单引号分隔。 如果需要使用本身可能包含单引号的字符串常量构造查询，则可以通过将嵌入的引号加倍来对其进行转义。
+
+例如，带有无格式撇号的短语（如“Alice's car”）将在 OData 中表示为字符串常量 `'Alice''s car'`。
+
+> [!IMPORTANT]
+> 以编程方式构建筛选器时，请记住转义来自用户输入的字符串常量，这一点很重要。 这是为了减少[注入攻击](https://wikipedia.org/wiki/SQL_injection)的可能性，特别是在使用筛选器实现[安全修整](search-security-trimming-for-azure-search.md)时。
+
+### <a name="constants-syntax"></a>常量语法
 
 以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义上表中所示的大多数常量的语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
 

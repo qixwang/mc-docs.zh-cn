@@ -1,6 +1,6 @@
 ---
 title: 如何结合使用通知中心与 Python
-description: 了解如何从 Python 后端使用 Azure 通知中心。
+description: 了解如何通过 Python 应用程序使用 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: python
 ms.devlang: php
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6b12bd7abf528ec2eefefaf8f026f167742eabe6
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 871dafdb0e4892b5d2aeb3e0079ef40dc95acad8
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884974"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501455"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -33,7 +33,7 @@ ms.locfileid: "74884974"
 > [!NOTE]
 > 这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。 该示例是使用 Python 3.4 创建的。
 
-本文介绍以下操作：
+本文介绍如何：
 
 - 以 Python 构建 REST 客户端以获取通知中心功能。
 - 使用 Python 接口发送通知到通知中心 REST API。

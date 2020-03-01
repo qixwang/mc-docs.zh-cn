@@ -11,18 +11,16 @@ ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 11/16/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3115bc7f489a02656a767e3cb880fe66763de75e
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 1f40454a141426ced7857739bb349981a466d07f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116944"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428930"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 本文介绍如何重置 Azure Windows VM 的网络接口，以便在执行以下操作后无法连接到 Azure Windows 虚拟机 (VM) 时解决问题：
 
@@ -69,7 +67,7 @@ ms.locfileid: "74116944"
     Test-AzureStaticVNetIP -VNetName $VNET -IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. 尝试通过 RDP 连接到计算机。  如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。
 
@@ -110,7 +108,7 @@ ms.locfileid: "74116944"
     Test-AzureStaticVNetIP -VNetName $VNET -IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. 尝试通过 RDP 连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
 

@@ -1,6 +1,7 @@
 ---
-title: Azure 云服务的配置和管理常见问题解答
-description: 本文列出有关 Microsoft Azure 云服务的配置和管理的常见问题。
+title: 配置和管理问题常见问题解答
+titleSuffix: Azure Cloud Services
+description: 本文列出了有关 Azure 云服务的配置和管理的常见问题解答。
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -11,21 +12,19 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 07/23/2018
-ms.author: v-yiso
-ms.date: 02/17/2020
-ms.openlocfilehash: af9db748f8d37d53924c079e4b2d7df993cec8e8
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 02/19/2020
+ms.author: v-junlch
+ms.openlocfilehash: 7495cbbd64937d6815581baab9dbdcbb514f5668
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068382"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494423"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
-本文包含有关 [Azure 云服务](/cloud-services/)的配置和管理的常见问题。 还可以参阅[云服务 VM 大小页面](./cloud-services-sizes-specs.md)，了解大小信息。
+本文包含有关 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)的配置和管理的常见问题。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -110,7 +109,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看此公告 [<https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731>]。
+此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此公告](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](./cloud-services-startup-tasks.md)
@@ -123,11 +122,11 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 即将推出为远程桌面协议 (RDP) 生成新证书的功能。 或者，可运行以下脚本：
 
 ```powershell
-$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My" -KeyLength 20 48 -KeySpec "KeyExchange"
+$cert = New-SelfSignedCertificate -DnsName yourdomain.chinacloudapp.cn -CertStoreLocation "cert:\LocalMachine\My" -KeyLength 20 48 -KeySpec "KeyExchange"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 [New-AzureDeployment](https://docs.microsoft.com/en-us/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0)，可以设置每个位置值。
+选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 [New-AzureDeployment](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0)，可以设置每个位置值。
 
 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
 
@@ -138,13 +137,12 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 提高本地资源的配额限制。
 
 有关详细信息，请参阅以下文档：
-* [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
 * [IIS 日志停止写入到云服务中](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
 可以通过以下选项启用 Windows Azure 诊断 (WAD) 日志记录：
 1. [从 Visual Studio 启用](/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [通过 .Net 代码启用](/cloud-services/cloud-services-dotnet-diagnostics)
+2. [通过 .NET 代码启用](/cloud-services/cloud-services-dotnet-diagnostics)
 3. [通过 Powershell 启用](/cloud-services/cloud-services-diagnostics-powershell)
 
 若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
@@ -175,11 +173,11 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>如何将静态 IP 地址关联到云服务？
 若要设置静态 IP 地址，需要创建保留 IP。 该保留 IP 可以关联到新的云服务或现有部署。 请参阅以下文档了解详细信息：
-* [如何创建保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [保留现有云服务的 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [将保留 IP 关联到新的云服务](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [将保留 IP 关联到正在运行的部署](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [使用服务配置文件将保留 IP 关联到云服务](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [如何创建保留 IP 地址](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [保留现有云服务的 IP 地址](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [将保留 IP 关联到新的云服务](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [将保留 IP 关联到正在运行的部署](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [使用服务配置文件将保留 IP 关联到云服务](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure 基本 IPS/IDS 和 DDOS 提供哪些特性和功能？
 Azure 在数据中心物理服务器上使用 IPS/IDS 来抵御威胁。 此外，客户可以部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测、防护系统 (IDS/IPS)，等等。 有关详细信息，请参阅[保护数据和资产并遵守全局安全标准](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)。
@@ -195,7 +193,9 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 3. 创建名为 **DuoEnabled** 的新 DWORD 值。
 4. 将其值设置为 1。
 5. 重启服务器。
-6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。   有关详细信息，请参阅：
+6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。   
+
+有关详细信息，请参阅：
 
 - [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2)（IIS 上的 HTTP/2） 可通过启动任务自动完成这些步骤，这样，每次创建新的 PaaS 实例后，都可以在系统注册表中执行上述更改。 有关详细信息，请参阅[如何配置和运行云服务的启动任务](cloud-services-startup-tasks.md)。
 
@@ -237,14 +237,11 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
-s
 
 有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
-有关如何为云服务启用 Application Insights 的详细信息，请参阅[适用于 Azure 云服务的 Application Insights](/azure-monitor/app/cloudservices
-)
 
-有关如何为云服务启用 Azure 诊断日志记录的详细信息，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/en-us/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+有关如何为云服务启用 Azure 诊断日志记录的详细信息，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
 ## <a name="generic"></a>泛型
 
@@ -310,9 +307,9 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 |Value|含义|
 ------|------
 |0|没有 SNI|
-|1|已启用 SNI |
-|2 |使用中心证书存储的非 SNI 绑定|
-|3|使用中心证书存储的 SNI 绑定 |
+|1|已启用 SNI|
+|2|使用中心证书存储的非 SNI 绑定|
+|3|使用中心证书存储的 SNI 绑定|
  
 **方法 2：使用代码**
 
@@ -337,7 +334,7 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 我们正努力在 Azure 门户中实现此功能。 在此同时，你可以使用以下 PowerShell 命令获取 SDK 版本：
 
-    Get-AzureService -ServiceName "<Cloud service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想要关闭云服务几个月。 如何在不丢失 IP 地址的情况下降低云服务的计费成本？
 
@@ -345,7 +342,8 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 下面是可以在不丢失服务 IP 地址的情况下节省费用的办法：
 
-1. 在删除部署之前[保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)。  这样，就只需支付此 IP 地址的费用。 
+1. 在删除部署之前[保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)。  这样，就只需支付此 IP 地址的费用。 有关 IP 地址计费的详细信息，请参阅 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)。
 2. 删除部署。 不要删除 xxx.chinacloudapp.cn，以备将来使用。
 3. 如果想要使用订阅中的相同保留 IP 来重新部署云服务，请参阅[云服务和虚拟机的保留 IP 地址](https://azure.microsoft.com/blog/reserved-ip-addresses/)。
 
+<!-- Update_Description: wording update -->

@@ -6,15 +6,15 @@ manager: digimobile
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-origin.date: 05/23/2019
-ms.date: 6/4/2019
+origin.date: 12/19/2019
+ms.date: 02/19/2020
 ms.author: v-lingwu
-ms.openlocfilehash: c4dc88eb49aad74d853305ce1ee6a430ea697854
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: cf48da9531b93851662d1be5f60fce5e7836f850
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599897"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497524"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
@@ -59,7 +59,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 ![Azure 订阅](media/data-sources/azure-subscription.png)
 
 ### <a name="azure-activity-log"></a>Azure 活动日志 
-[Azure 活动日志](activity-logs-overview.md)包含服务运行状况记录，以及对 Azure 订阅中的资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。 
+[Azure 活动日志](platform-logs-overview.md)包含服务运行状况记录，以及对 Azure 订阅中的资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。 
 
 | 目标 | 说明 | 参考 |
 |:---|:---|
@@ -73,7 +73,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| 活动日志<br>Azure Monitor 日志 | 服务运行状况记录存储在 Azure 活动日志中，因此，可以在 Azure 门户中查看这些记录，或者像处理活动日志时一样对这些记录执行任何其他活动。 | [使用 Azure 门户查看服务运行状况通知](/service-health/service-notifications) |
+| 活动日志<br>Azure Monitor 日志 | 服务运行状况记录存储在 Azure 活动日志中，因此，可以在 Azure 门户中查看这些记录，或者像处理活动日志时一样对这些记录执行任何其他活动。 | [使用 Azure 门户查看服务运行状况通知](service-notifications.md) |
 
 
 ## <a name="azure-resources"></a>Azure 资源
@@ -92,7 +92,7 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 | 事件中心 | 使用事件中心将指标流式传输到其他位置。 |[将 Azure 监视数据流式传输到事件中心以便外部工具使用](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="resource-logs"></a>资源日志
-[资源日志](resource-logs-overview.md)提供 Azure 资源的_内部_运行情况的见解。  资源日志是自动创建的，但你必须创建诊断设置以指定目标，从而可以针对各个资源收集这些日志。
+[资源日志](platform-logs-overview.md)提供 Azure 资源的_内部_运行情况的见解。  资源日志是自动创建的，但你必须创建诊断设置以指定目标，从而可以针对各个资源收集这些日志。
 
 资源日志的配置要求和内容因资源类型而异，然而并非所有服务都创建资源日志。 有关每个服务的详细信息和详细配置过程的链接，请参阅 [Azure 资源日志支持的服务、架构和类别](diagnostic-logs-schema.md)。 如果某个服务未在本文中列出，则该服务当前不会创建资源日志。
 
@@ -122,7 +122,8 @@ Azure 中的、其他云中的以及本地的计算资源都有要监视的来�
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| Azure Monitor 日志 | Log Analytics 代理可以直接连接到 Azure Monitor，也可以通过 System Center Operations Manager 进行连接，可用于从配置的数据源收集数据，或者从监视解决方案收集数据，以便提供在虚拟机上运行的应用程序的更多见解。 | [Azure Monitor 中的代理数据源](agent-data-sources.md)<br> |
+| Azure Monitor 日志 | Log Analytics 代理可以直接连接到 Azure Monitor，也可以通过 System Center Operations Manager 进行连接，可用于从配置的数据源收集数据，或者从监视解决方案收集数据，以便提供在虚拟机上运行的应用程序的更多见解。 | [Azure Monitor 中的代理数据源](agent-data-sources.md)<br>[将 Operations Manager 连接到 Azure Monitor](om-agents.md) |
+| VM 存储 | 用于 VM 的 Azure Monitor 使用 Log Analytics 代理将运行状况状态信息存储在自定义位置。 有关详细信息，请参阅下一部分。  |
 
 
 ### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 

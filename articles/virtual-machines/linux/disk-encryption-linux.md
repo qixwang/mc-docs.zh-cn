@@ -6,14 +6,14 @@ ms.service: security
 ms.topic: article
 ms.author: v-yeche
 origin.date: 08/06/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8845cbdeb9a0115e41c22b393a2b912a7fe4a36e
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: fa97461eaa569ed7dcafa0f22b4a98098c54fbc8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730626"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428483"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -43,7 +43,7 @@ Azure 磁盘加密使用 Linux 的 DM-Crypt 功能为 Azure 虚拟机 (VM) 的 O
 
 [Azure CLI 2.0](https://docs.azure.cn/cli/index?view=azure-cli-latest) 是用于管理 Azure 资源的命令行工具。 CLI 旨在提高数据查询灵活性、支持非阻塞进程形式的长时间操作，以及简化脚本编写。 可以按照[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 中的步骤在本地安装它。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 若要[使用 Azure CLI 登录 Azure 帐户](https://docs.azure.cn/cli/authenticate-azure-cli?view=azure-cli-latest)，请使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 命令。
 
@@ -67,7 +67,7 @@ az account set --subscription "<subscription name or ID>"
 有关详细信息，请参阅 [Azure CLI 2.0 入门](https://docs.azure.cn/cli/get-started-with-azure-cli?view=azure-cli-latest)。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)提供了一组使用 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)模型管理 Azure 资源的 cmdlet。 可以按照[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)中的说明在本地计算机上安装它。 
+[Azure PowerShell az 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)提供了一组使用 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)模型管理 Azure 资源的 cmdlet。 可以按照[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)中的说明在本地计算机上安装它。 
 
 <!--MOONCAKE: Not Available on  [Azure Cloud Shell](../../cloud-shell/overview.md)-->
 
@@ -211,7 +211,7 @@ Get-command *diskencryption*
 | KeyVaultName | 加密密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` 获取该名称。|
 | keyVaultResourceGroup | 包含 Key Vault 的资源组的名称。 |
 |  keyEncryptionKeyURL | 用于对加密密钥进行加密的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”  ，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”  ，则必须输入 _keyEncryptionKeyURL_ 值。 |
-| volumeType | 要对其执行加密操作的卷的类型。 有效值为 _OS_、_Data_ 和 _All_。 
+| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”  、“Data”  和“All”  。 
 | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
 | resizeOSDisk | 在拆分系统卷之前，是否应调整 OS 分区大小以占用整个 OS VHD。 |
 | location | 所有资源的位置。 |
@@ -240,7 +240,7 @@ Get-command *diskencryption*
 ### <a name="use-the-encryptformatall-parameter-with-azure-cli"></a>通过 Azure CLI 使用 EncryptFormatAll 参数
 使用 [az vm encryption enable](https://docs.azure.cn/cli/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) 命令在 Azure 中运行的虚拟机上启用加密。
 
--  **使用 EncryptFormatAll 加密正在运行的 VM：**
+- **使用 EncryptFormatAll 加密正在运行的 VM：**
 
     ```azurecli
     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --encrypt-format-all
@@ -322,7 +322,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 与 Powershell 语法相反，CLI 在启用加密时不要求用户提供唯一的序列版本。 CLI 自动生成并使用自己唯一的序列版本值。
 
--  **加密正在运行的 VM 的数据卷：**
+- **加密正在运行的 VM 的数据卷：**
 
     ```azurecli
     az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type "Data"
@@ -374,8 +374,8 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ## <a name="disable-encryption-for-linux-vms"></a>为 Linux VM 禁用加密
 可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 
 
->[!IMPORTANT]
->在 Linux VM 上，仅支持对数据卷禁用 Azure 磁盘加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。  
+> [!IMPORTANT]
+> 在 Linux VM 上，仅支持对数据卷禁用 Azure 磁盘加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。  
 
 - **使用 Azure PowerShell 禁用磁盘加密：** 若要禁用加密，请使用 [Disable-AzVMDiskEncryption](https://docs.microsoft.com/powershell/module/az.compute/disable-azvmdiskencryption) cmdlet。 
     ```powershell
@@ -404,6 +404,7 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 动态卷。
 - 临时 OS 磁盘。
 - 加密共享/分布式文件系统，包括但不限于：DFS、GFS、DRDB 和 CephFS。
+- 内核故障转储 (kdump)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -411,5 +412,4 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - [Azure 磁盘加密示例脚本](disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](disk-encryption-troubleshooting.md)
 
-<!-- Update_Description: new article about disk encryption linux -->
-<!--NEW.date: 11/11/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,6 +1,6 @@
 ---
-title: 通知中心 - 企业推送架构
-description: 有关在企业环境中使用 Azure 通知中心的指南
+title: 通知中心企业推送架构
+description: 了解如何在企业环境中使用 Azure 通知中心
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0842e2410deaf589e9b3a4eac3e5294f7ecec6b8
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 6a97a23b4e5c4be2ce8ad03d1ff7d0669b68d6bb
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884789"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501448"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 
@@ -59,7 +59,7 @@ ms.locfileid: "74884789"
 
 ## <a name="sample"></a>示例
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 完成以下教程，熟悉相关概念以及常见的创建和配置步骤：
 
@@ -293,5 +293,3 @@ ms.locfileid: "74884789"
 [Azure WebJob]: ../app-service/webjobs-create.md
 [通知中心 - Windows 通用教程]: https://docs.azure.cn/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification
 [Azure 门户]: https://portal.azure.cn/
-
-<!--Update_Description: wording update -->

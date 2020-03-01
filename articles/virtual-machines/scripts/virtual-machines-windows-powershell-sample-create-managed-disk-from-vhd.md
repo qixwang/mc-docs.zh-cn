@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘 | Azure
+title: 使用 PowerShell 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘
 description: Azure PowerShell 脚本示例 - 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 06/05/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6345330074be550ca8480c43367d1732a0ee7689
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: ad2acc635fbe27ab2a3120b5115238c868b8b254
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116909"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428694"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>使用 PowerShell 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘
 
@@ -97,4 +97,4 @@ New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $di
 
 可以在 [Azure Windows VM 文档](../windows/powershell-samples.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 PowerShell 脚本示例。
 
-<!--Update_Description: update meta properties, update cmdlet -->
+<!-- Update_Description: update meta properties, wording update -->

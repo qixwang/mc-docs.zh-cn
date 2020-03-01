@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务概念 | Microsoft Docs
-description: 本主题提供 Azure 媒体服务概念的概述
+description: 本文简要概述了 Azure 媒体服务的概念，并提供了指向其他文章的链接以方便你了解详细信息。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 0a9b4f12a7d0041c538451ef90623dc753b8e36d
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: b4925ac2e1007fd20e1a67893322627920494b3d
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124553"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494443"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
 
@@ -101,24 +101,24 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
 编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
 
-媒体服务所提供的动态打包，允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
+媒体服务所提供的动态打包允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
 
 要利用[动态打包](media-services-dynamic-packaging-overview.md)，需要将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流文件，并且至少有一个标准或高级流式处理终结点处于已启动状态。
 
-媒体服务支持本文中介绍的以下按需编码器：
+媒体服务支持在本文中介绍的以下按需编码器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [媒体编码器高级工作流](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-有关受支持的编码器的信息，请参阅[编码器](media-services-encode-asset.md)。
+有关受支持的编码器的信息，请参阅 [编码器](media-services-encode-asset.md)。
 
 ## <a name="live-streaming"></a>实时流式处理
 在 Azure 媒体服务中，频道表示用于处理实时流内容的管道。 频道通过以下两种方式之一接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到频道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision 和 Tricaster 编码器。 引入流会通过通道，但不会进行任何进一步的转码和编码操作。 收到请求时，媒体服务会将该流传送给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到频道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Live Encoder、[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)、Teradek、Haivision 和 Tricaster 编码器。 引入流会通过通道，但不会进行任何进一步的转码和编码操作。 收到请求时，媒体服务会将该流传送给客户。
 * 将单比特率流（采用以下某种格式：RTMP 或平滑流式处理（分片 MP4））发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传送给客户。
 
-### <a name="channel"></a>通道
+### <a name="channel"></a>频道
 在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），并将该终结点提供给实时转码器。 频道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 频道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
 
 可以在创建频道时获取引入 URL 和预览 URL。 若要获取这些 URL，频道不一定要处于已启动状态。 准备好开始将数据从实时转码器推送到频道时，频道必须已启动。 实时转码器开始引入数据后，可以预览流。
@@ -168,7 +168,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，并使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
-流式处理终结点代表一个流服务，它可以直接将内容分发给客户端播放器应用程序。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择**标准**流式处理终结点或者一个或多个**高级**流式处理终结点。 标准流式处理终结点适合用于大多数流式处理工作负荷。 
+流式处理终结点代表一个流服务，它可以直接将内容分发给客户端播放器应用程序。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点   。 标准流式处理终结点适用于最消耗流的工作负荷。 
 
 标准流式处理终结点适用于最消耗流的工作负荷。 标准流式处理终结点可以动态地将内容打包成 HLS、MPEG-DASH 和平滑流式处理，并针对 Microsoft PlayReady、Apple Fairplay 和 AES128 进行动态加密，从而灵活地将内容传送到几乎所有设备。 如果有高级工作负荷或者流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者希望控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单元（也称为高级流单元）。
 

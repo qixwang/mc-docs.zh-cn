@@ -1,20 +1,20 @@
 ---
 title: 诊断和排查 Azure IoT 中心 DPS 的连接断开问题
-description: 了解如何诊断和排查 Azure IoT 中心 DPS 设备连接的常见错误
+description: 了解如何诊断和排查 Azure IoT 中心设备预配服务 (DPS) 设备连接的常见错误
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 origin.date: 09/09/2019
-ms.date: 01/27/2020
-ms.author: v-yiso
-ms.openlocfilehash: 583bb94abac97569650b8b441223fadc15742886
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.date: 03/02/2020
+ms.author: v-tawe
+ms.openlocfilehash: 6eed4d5e23d5525cd0b9d9477505c1ea5b00d0fc
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966505"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494108"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务进行故障排除
 

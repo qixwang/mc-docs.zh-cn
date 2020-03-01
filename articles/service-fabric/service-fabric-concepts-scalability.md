@@ -1,17 +1,17 @@
 ---
 title: Service Fabric 服务的可伸缩性
-description: 介绍如何缩放 Service Fabric 服务
+description: 了解如何在 Azure Service Fabric 中进行缩放以及用于缩放应用程序的各种方法。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/26/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 672d1dbed19c82ac94df80661b2296b00732d121
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 18b1f290237642b92a1ef11f175e09cd2e5c97de
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742403"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539980"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
 Azure Service Fabric 通过管理服务、分区以及群集的节点上的副本，让生成可缩放的应用程序更简单。 在同一硬件上运行多个工作负荷不仅可实现最大资源使用率，还可提供在如何选择缩放工作负荷方面的灵活性。 

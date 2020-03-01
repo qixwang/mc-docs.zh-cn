@@ -1,19 +1,20 @@
 ---
 title: IoT 设备预配服务中的安全性终结点 | Microsoft Docs
-description: 概念 - 如何控制后端应用对 IoT 设备预配服务的访问权限。 包括安全令牌的相关信息。
+description: 概念 - 如何控制后端应用对 IoT 设备预配服务 (DPS) 的访问权限。 包括安全令牌的相关信息。
 author: wesmc7777
-manager: timlt
+manager: philmea
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/28/2017
-ms.author: wesmc
-ms.openlocfilehash: 25a03be6b04fdae50a9f0e5b48e6e70c75627de0
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+origin.date: 04/09/2019
+ms.date: 03/02/2020
+ms.author: v-tawe
+ms.openlocfilehash: dfa02ffd928226f9b03c0f74febfc8e013f90716
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389535"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494134"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -190,5 +191,5 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 [img-add-shared-access-policy]: ./media/how-to-control-access/how-to-add-shared-access-policy.PNG
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.cn
-[lnk-azure-resource-manager]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/

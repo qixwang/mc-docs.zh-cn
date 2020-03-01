@@ -1,83 +1,94 @@
 ---
-title: Azure 和 Linux | Azure
-description: 介绍 Linux 虚拟机上的 Azure 计算、存储和网络服务。
+title: Azure 中的 Linux 虚拟机
+description: Azure 中的 Linux 虚拟机概述。
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rockboyfor
 manager: digimobile
-editor: ''
-ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 11/29/2017
-ms.date: 10/14/2019
+origin.date: 11/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a3e317704886565f0cb1e2912290473a14925fe8
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.custom: mvc
+ms.openlocfilehash: f053567839af2079b6f7fd7eb38f1b595a6443cf
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203662"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428874"
 ---
-# <a name="azure-and-linux"></a>Azure 和 Linux
-Azure 是一个不断增长的集成公有云服务集合，包括分析、虚拟机、数据库、移动、网络、存储和 Web &mdash; 是托管解决方案的理想选择。  Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许你根据客户所需的任何规模，随时扩展和缩减解决方案。
+# <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虚拟机
 
-<!-- Not Available on  Azure vs AWS [definition mapping document](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)-->
+Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源之一。 通常情况下，如果需要以更大的力度（相对于其他控制选项）控制计算环境，则应选择 VM。 本文介绍创建 VM 之前的注意事项，以及 VM 的创建方法和管理方式。
 
-<!-- redirect https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/ to https://docs.microsoft.com/zh-cn/azure/architecture/aws-professional/services-->
+<!--Not Available on [on-demand, scalable computing resources](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree)-->
 
-## <a name="regions"></a>区域
-Azure 资源分布在中国各地的多个地理区域。  一个“区域”代表位于单个地理区域的多个数据中心。 Azure 目前（截至 2019 年 8 月）在中国正式推出了 4 个区域。 可在以下页面上找到现有区域和新宣布推出区域的更新列表：
+使用 Azure VM 可以灵活进行虚拟化，而无需购买和维护运行 VM 的物理硬件。 不过，仍然需要通过执行任务来维护 VM，例如，配置、修补和安装在 VM 上运行的软件。
+
+可通过多种方式使用 Azure 虚拟机。 下面是一些示例：
+
+* **开发和测试** – 在 Azure VM 上，可以快速轻松地创建具有特定配置的计算机来满足编程和应用程序测试的需要。
+* **云中的应用程序** – 由于应用程序的需求会不断变化，在 Azure 中的 VM 上运行应用程序可能会节省成本。 使用 VM 时，需要支付额外的费用；关闭 VM 时，则无需付费。
+* **扩展的数据中心** – Azure 虚拟网络中的虚拟机可以轻松连接到组织的网络。
+
+可以根据需要，将应用程序使用的 VM 纵向和横向扩展为任意数目。
+
+## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>在创建 VM 之前需要考虑哪些因素？
+在 Azure 中构建应用程序基础结构时，始终要考虑多个设计注意事项。 在开始之前，必须考虑到 VM 的以下重要方面：
+
+<!--Not Avaialable on [design considerations](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)
+
+* The names of your application resources
+* The location where the resources are stored
+* The size of the VM
+* The maximum number of VMs that can be created
+* The operating system that the VM runs
+* The configuration of the VM after it starts
+* The related resources that the VM needs
 
 <!--MOONCAKE: CUSTOMIZE ON CHINA-->
-<!--MOONCAKE: CUSTOMIZE 4 regions on August 2019->
 
-* [Azure China Regions](https://status.azure.com/status/)
+### <a name="locations"></a>位置
+在 Azure 中创建的所有资源分布在中国的多个[地理区域](https://status.azure.com/status/)。 创建 VM 时，区域通常称为 **位置** 。 位置指定 VM 虚拟硬盘的存储位置。
 
-## Availability
-Azure announced an industry leading single instance virtual machine Service Level Agreement of 99.9% provided you deploy the VM with premium storage for all disks.  In order for your deployment to qualify for the standard 99.95% VM Service Level Agreement, you still need to deploy two or more VMs running your workload inside of an availability set. An availability set ensures that your VMs are distributed across multiple fault domains in the Azure data centers as well as deployed onto hosts with different maintenance windows. The full [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) explains the guaranteed availability of Azure as a whole.
+<!--CHANGE the world TO China-->
 
-## Managed Disks
+下表显示了获取可用位置列表的一些方法。
 
-Managed Disks handles Azure Storage account creation and management in the background for you, and ensures that you do not have to worry about the scalability limits of the storage account. You specify the disk size and the performance tier (Standard or Premium), and Azure creates and manages the disk. As you add disks or scale the VM up and down, you don't have to worry about the storage being used. If you're creating new VMs, [use the Azure CLI](quick-create-cli.md) or the Azure portal to create VMs with Managed OS and data disks. If you have VMs with unmanaged disks, you can [convert your VMs to be backed with Managed Disks](convert-unmanaged-to-managed-disks.md).
+| 方法 | 说明 |
+| --- | --- |
+| Azure 门户 |创建 VM 时，可从列表中选择位置。 |
+| Azure PowerShell |使用 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) 命令。 |
+| REST API |使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions)操作。 |
+| Azure CLI |使用 [az account list-locations](https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-list-locations) 操作。 |
 
-You can also manage your custom images in one storage account per Azure region, and use them to create hundreds of VMs in the same subscription. For more information about Managed Disks, see the [Managed Disks Overview](../linux/managed-disks-overview.md).
+## <a name="availability"></a>可用性
+Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
-## Azure Virtual Machines & Instances
-Azure supports running a number of popular Linux distributions provided and maintained by a number of partners.  You can find distributions such as CentOS, SUSE Linux Enterprise, Debian, Ubuntu, CoreOS, FreeBSD, and more in the Azure Marketplace. Azure actively works with various Linux communities to add even more flavors to the [Azure endorsed Linux Distros](endorsed-distros.md) list.
+## <a name="vm-size"></a>VM 大小
+VM 的[大小](sizes.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
+
+Azure 根据 VM 的大小和操作系统[按小时进行收费](https://www.azure.cn/pricing/details/virtual-machines/)。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
+
+## <a name="vm-limits"></a>VM 限制
+订阅附带默认的[配额限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。 每个订阅的当前限制是每区域 20 个 VM。 可以[开具支持票证](https://support.azure.cn/support/support-azure/)来请求提高限制
+
+## <a name="managed-disks"></a>托管磁盘
+
+托管磁盘为用户在后台处理 Azure 存储帐户的创建和管理，确保用户无需担心存储帐户的可伸缩性限制。 只需指定磁盘大小和性能层（标准或高级），Azure 就会自动创建和管理磁盘。 在添加磁盘或者扩展和缩减 VM 时，无需考虑所用的存储。 如果要创建新的 VM，请[使用 Azure CLI](quick-create-cli.md) 或 Azure 门户，通过托管 OS 和数据磁盘创建 VM。 如果 VM 具有非托管磁盘，则可以[将 VM 转换为由托管磁盘支持](convert-unmanaged-to-managed-disks.md)。
+
+用户还可以按 Azure 区域在一个存储帐户中管理自定义映像，并使用这些映像在同一订阅中创建数百台 VM。 有关托管磁盘的详细信息，请参阅[托管磁盘概述](../linux/managed-disks-overview.md)。
+
+## <a name="distributions"></a>分发 
+Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure 市场中找到 CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS 和 FreeBSD 等分发版。 Azure 积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 发行版](endorsed-distros.md)列表添加更多成员。
 
 <!-- Not Available on Red Hat Enterprise and RancherOS -->
 
 如果首选的 Linux 分发版目前不在库中，可以通过[在 Azure 中创建和上传 Linux VHD](create-upload-generic.md) 来“自带 Linux”VM。
 
-借助 Azure 虚拟机，用户可以采用灵活的方式部署各种计算解决方案。 几乎可以在任何操作系统（Windows、Linux 或是由我们不断增长的合作伙伴自定义创建的操作系统）上部署几乎任何工作负荷和任何语言。 没有找到所需的映像？  别担心，也可以使用本地的自有映像。
-
-## <a name="vm-sizes"></a>VM 大小
-VM 的[大小](sizes.md)由所要运行的工作负荷决定。 然后，所选大小又会影响多个因素，例如处理能力、内存和存储容量。 Azure 提供各种大小来支持多种类型的用途。
-
-Azure 根据 VM 的大小和操作系统[按小时进行收费](https://www.azure.cn/pricing/details/virtual-machines/)。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
-
-## <a name="automation"></a>自动化
-若要实现适当的 DevOps 区域性，所有基础结构都必须是代码。  当所有基础结构都存在于代码中时，便可以轻松重新创建它（Phoenix 服务器）。  Azure 可与所有主要自动化工具（如 Ansible、Chef、SaltStack 和 Puppet）配合使用。  Azure 也有自己的自动化工具：
-
-* [Azure 模板](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
-
-Azure 正在支持它的大多数 Linux 发行版中推出 [cloud-init](https://cloud-init.io/) 支持。  目前，默认情况下 Canonical Ubuntu VM 在启用 cloud-init 的情况下进行部署。 CentOS 和 Fedora 支持 cloud-init。
-
-<!-- Not Available on Red Hat Familiy-->
-
-* [在 Azure Linux VM 上使用 cloud-init](using-cloud-init.md)
-
-## <a name="quotas"></a>配额
-每个 Azure 订阅都有默认的配额限制，此限制会在为项目部署大量 VM 时造成影响。 每个订阅的当前限制是每区域 20 个 VM。  若要快速轻松地提高配额限制，可以提交支持票证来请求提高限制。  有关配额限制的更多详细信息，请参阅：
-
-* [Azure 订阅服务限制](../../azure-subscription-service-limits.md)
-
-## <a name="partners"></a>合作伙伴
 Azure 与合作伙伴紧密合作，以确保及时更新可用映像并针对 Azure 运行时进行优化。  有关 Azure 合作伙伴的详细信息，请参阅以下链接：
 
 * Azure 上的 Linux - [认可的分发](endorsed-distros.md)
@@ -99,32 +110,29 @@ Azure 与合作伙伴紧密合作，以确保及时更新可用映像并针对 A
 <!-- Not Availalbe on 80-81 * Docker - [Azure Marketplace - Azure Container Service with Docker Swarm](https://market.azure.cn/marketplace/partners/microsoft/acsswarms/)-->
 <!-- Notice: URL is correct on [Azure Marketplace - Jenkins Platform](https://market.azure.cn/marketplace/apps?search=jenkins)-->
 
-## <a name="getting-started-with-linux-on-azure"></a>Azure 上的 Linux 入门
-若要开始使用 Azure，需要 Azure 帐户、已安装 Azure CLI 和一对 SSH 公钥和私钥。
+## <a name="vm-sizes"></a>VM 大小
+VM 的[大小](sizes.md)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
 
-### <a name="sign-up-for-an-account"></a>注册帐户
-使用 Azure 云的第一步是注册 Azure 帐户。  若要开始，请转到 [Azure 帐户注册](https://www.azure.cn/pricing/1rmb-trial/)页。
+Azure 根据 VM 的大小和操作系统[按小时进行收费](https://www.azure.cn/pricing/details/virtual-machines/)。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
 
-### <a name="install-the-cli"></a>安装 CLI
-使用新的 Azure 帐户，可以立即开始使用 Azure 门户（一个基于 Web 的管理面板）。  若要通过命令行管理 Azure 云，请安装 `azure-cli`。  在 Mac 或 Linux 工作站上安装 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+## <a name="cloud-init"></a>Cloud-init 
 
-### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
-现在已有 Azure 帐户、Azure Web 门户和 Azure CLI。  下一步是创建 SSH 密钥对，使用它可以通过 SSH 连接到 Linux 而无需使用密码。  [在 Linux 和 Mac 上创建 SSH 密钥](mac-create-ssh-keys.md)可启用无密码登录和更高的安全性。
+若要实现适当的 DevOps 区域性，所有基础结构都必须是代码。  当所有基础结构都存在于代码中时，便可以轻松重新创建它。  Azure 可与所有主要自动化工具（如 Ansible、SaltStack 和 Puppet）配合使用。  Azure 也有自己的自动化工具：
 
-### <a name="create-a-vm-using-the-cli"></a>使用 CLI 创建 VM
-使用 CLI 创建 Linux VM 是部署 VM 的一种快速方法，无需离开正在使用的终端。  所有可以在 Web 门户上指定的内容都可以通过命令行标志或开关提供。  
+<!--Not Available on  Chef -->
 
-* [使用 CLI 创建 Linux VM](quick-create-cli.md)
+* [Azure 模板](create-ssh-secured-vm-from-template.md)
+* [Azure VMAccess](using-vmaccess-extension.md)
 
-### <a name="create-a-vm-in-the-portal"></a>在门户中创建 VM
-通过在 Azure Web 门户上创建 Linux VM，可以轻松地指向和单击用于访问部署的各个选项。  你可以在布局良好的 Web 界面上查看各种选项和设置，不需要使用命令行标记或开关。  通过命令行接口提供的所有功能也都在门户中提供。
+Azure 在支持它的大多数 Linux 发行版中支持 [cloud-init](https://cloud-init.io/)。  我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。
 
-* [使用门户创建 Linux VM](quick-create-portal.md)
+* [在 Azure Linux VM 上使用 cloud-init](using-cloud-init.md)
 
-### <a name="log-in-using-ssh-without-a-password"></a>不使用密码通过 SSH 登录
-VM 现在正在 Azure 上运行，用户可以登录。  使用密码通过 SSH 登录既不安全耗时也长。  使用 SSH 密钥是最安全且最快捷的登录方式。  通过门户或 CLI 创建 Linux VM 时，有两种身份验证选择。  如果为 SSH 选择密码，则 Azure 将 VM 配置为允许通过密码登录。  如果选择使用 SSH 公钥，则 Azure 将 VM 配置为只允许通过 SSH 密钥登录，并禁止密码登录。 若要通过只允许 SSH 密钥登录来保护 Linux VM，请在门户或 CLI 中创建 VM 时使用 SSH 公钥选项。
+## <a name="quotas"></a>配额
+每个 Azure 订阅都有默认的配额限制，此限制会在为项目部署大量 VM 时造成影响。 每个订阅的当前限制是每区域 20 个 VM。  若要快速轻松地提高配额限制，可以提交支持票证来请求提高限制。  有关配额限制的更多详细信息，请参阅：
 
-## <a name="related-azure-components"></a>相关 Azure 组件
+* [Azure 订阅服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)
+
 ## <a name="storage"></a>存储
 * [Azure 存储简介](../../storage/common/storage-introduction.md)
 * [使用 azure-cli 将磁盘添加到 Linux VM](add-disk.md)
@@ -136,11 +144,12 @@ VM 现在正在 Azure 上运行，用户可以登录。  使用密码通过 SSH 
 * [在 Azure 中打开 Linux VM 的端口](nsg-quickstart.md)
 * [在 Azure 门户中创建完全限定的域名](portal-create-fqdn.md)
 
-<!-- Not Avaialble ## Containers-->
-
 ## <a name="next-steps"></a>后续步骤
-现在已了解 Azure 上的 Linux 概要。  下一步是深入研究，并创建一些 VM 组件！
 
-* [通过 Azure CLI 浏览不断增多的常见任务的示例脚本列表](cli-samples.md)
+创建第一个 VM！
 
-<!--Update_Description: update meta properties, wording update, update link -->
+- [Portal](quick-create-portal.md)
+- [Azure CLI](quick-create-cli.md)
+- [PowerShell](quick-create-powershell.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

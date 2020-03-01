@@ -1,5 +1,5 @@
 ---
-title: 有关未认可发行版的信息 | Azure
+title: 在 Azure 中创建和上传 Linux VHD
 description: 了解如何创建和上传包含 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,17 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 10/08/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b0bbc720b3c50748d57226ec538aaeb93480abe
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 183c85f2b51f6cd67919eb19cdd364b775770b2d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272628"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428672"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 仅当使用某个[认可的发行版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)时，Azure 平台 SLA 才适用于运行 Linux OS 的虚拟机。 对于这些认可的分发版，Azure 市场中提供了预配置的 Linux 映像。
 
@@ -49,13 +48,13 @@ Azure 上运行的所有分发版都要满足一些先决条件。 本文的内�
 
 ## <a name="general-linux-installation-notes"></a>常规 Linux 安装说明
 * Azure 不支持 Hyper-V 虚拟硬盘 (VHDX) 格式，仅支持固定大小的 VHD。   可使用 Hyper-V 管理器或 [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，请在创建磁盘时选择“固定大小”，而不要选择默认（动态分配的）大小。 
-* Azure 仅支持第 1 代虚拟机。 可将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅 [是否应在 HYPER-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Azure 支持 Gen1（BIOS 引导）和Gen2（UEFI 引导）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
 * 在安装 Linux 系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)，这是许多安装的默认设置。 使用标准分区可避免 LVM 名称与克隆的 VM 发生冲突，特别是在 OS 磁盘曾经连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](configure-lvm.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
 * 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置将使用附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须装载 UDF 文件系统才能读取其配置和预配 VM。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，在 Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) 中已解决。 运行版本低于 2.6.37 的自定义内核的系统，或者版本低于 2.6.32-504 的基于 RHEL 的内核必须在 grub.conf 中的内核命令行上设置启动参数 `numa=off`。 有关详细信息，请参阅 [Red Hat KB 436883](https://access.redhat.com/solutions/436883)。
 * 不要在 OS 磁盘上配置交换分区。 可根据以下步骤中所述配置 Linux 代理，并在临时资源磁盘上创建交换文件。
-* Azure 上的所有 VHD 必须已将虚拟大小调整为 1 MB。 从原始磁盘转换为 VHD 时，必须根据以下步骤中所述，确保在转换前原始磁盘大小是 1 MB 的倍数。
+* Azure 上所有 VHD 的虚拟大小必须已按 1 MB 对齐。 从原始磁盘转换为 VHD 时，必须根据以下步骤中所述，确保在转换前原始磁盘大小是 1 MB 的倍数。
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>安装无 Hyper-V 的内核模块
 Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要某些内核模块才能在 Azure 中运行。 如果具有在 Hyper-V 外部创建的虚拟机，Linux 安装程序可能无法在初始 ramdisk（initrd 或 initramfs）中包含 Hyper-V 驱动程序，除非 VM 检测到它正在 Hyper-V 环境中运行。 使用不同的虚拟化系统（例如 Virtualbox、KVM 等）来准备 Linux 映像时，可能需要重新生成 initrd，以便至少 hv_vmbus 和 hv_storvsc 内核模块可在初始 ramdisk 上使用。  在基于上游 Red Hat 分发版的系统上（可能还包括其他系统），这是一个已知问题。
@@ -102,7 +101,7 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下
     size=$(qemu-img info -f raw --output json "$rawdisk" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-    rounded_size=$((($size/$MB + 1)*$MB))
+    rounded_size=$(((($size+$MB-1)/$MB)*$MB))
 
     echo "Rounded Size = $rounded_size"
     ```
@@ -162,10 +161,10 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 ## <a name="the-azure-linux-agent"></a>Azure Linux 代理
 [Azure Linux 代理](../extensions/agent-linux.md) `waagent` 在 Azure 中预配 Linux 虚拟机。 可以在 [Linux 代理 GitHub 存储库](https://github.com/Azure/WALinuxAgent)中获取最新版本、文件问题或提交拉取请求。
 
-* Linux 代理根据 Apache 2.0 许可证发布。 许多分发版已经为该代理提供 RPM 或 deb 包，可以轻松安装和更新这些包。
+* Linux 代理根据 Apache 2.0 许可证发布。 许多发行版已经为该代理提供 RPM 或 .deb 包，可以轻松安装和更新这些包。
 * Azure Linux 代理需要 Python v2.6 以上版本。
 * 此外，该代理还需要 python-pyasn1 模块。 大多数分发版提供此模块作为可安装的单独包。
-* 在某些情况下，Azure Linux 代理可能与 NetworkManager 不兼容。 分发版提供的许多 RPM/Deb 包所配置的 NetworkManager 与 waagent 包相冲突。 在这种情况下，它会在你安装 Linux 代理包时卸载 NetworkManager。
+* 在某些情况下，Azure Linux 代理可能与 NetworkManager 不兼容。 发行版提供的许多 RPM/deb 包都将 NetworkManager 配置为与 waagent 包冲突。 在这种情况下，它会在你安装 Linux 代理包时卸载 NetworkManager。
 * Azure Linux 代理必须至少是[支持的最低版本](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 ## <a name="general-linux-system-requirements"></a>一般 Linux 系统要求
@@ -182,7 +181,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 
 1. 安装 Azure Linux 代理。
 
-    在 Azure 上预配 Linux 映像需要 Azure Linux 代理。  许多分发版将该代理提供为 RPM 或 Deb 包（该包通常称为 WALinuxAgent 或 walinuxagent）。  还可以按照 [Linux 代理指南](../extensions/agent-linux.md)中的步骤手动安装该代理。
+    在 Azure 上预配 Linux 映像需要 Azure Linux 代理。  许多发行版以 RPM 或 .deb 包的形式提供代理（该包通常称为 WALinuxAgent 或 walinuxagent）。  还可以按照 [Linux 代理指南](../extensions/agent-linux.md)中的步骤手动安装该代理。
 
 1. 确保已安装 SSH 服务器且已将其配置为在引导时启动。  此配置通常是默认值。
 

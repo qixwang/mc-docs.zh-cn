@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 67fdf94e1c25e1c856e86de14198101e1e01a6b1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: 4282e8d547ce16a5c8e3fd4413606729e3db9d69
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336487"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501438"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -44,13 +44,13 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 认知搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.azure.cn/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 认知搜索内部进行，证书和加密密钥由 Microsoft 进行内部管理，并得到了广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括免费层。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 使用客户管理的密钥进行加密是一项**预览版**功能，不适用于免费服务。 对于付费服务，该功能仅适用于在 2019 年 1 月或之后使用最新预览版 api-version (api-version=2019-05-06-Preview) 创建的搜索服务。<br><br>现在可以使用 Azure Key Vault 中的客户密钥托管密钥来静态加密 Azure 认知搜索索引和同义词映射。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
+| 静态加密 <br>客户管理的密钥 | 现在，2019 年 1 月或之后创建的搜索服务通常可以使用客户托管密钥进行加密。 免费（共享）服务不支持此功能。<br><br>现在可以使用 Azure Key Vault 中的客户密钥托管密钥来静态加密 Azure 认知搜索索引和同义词映射。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br><br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br><br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 
 我们在 Azure 范围内提供多种安全机制，因此，你创建的 Azure 认知搜索资源会自动获得这些安全机制。
 
-+ [订阅或资源级别的锁可防止删除](../azure-resource-manager/resource-group-lock-resources.md)
++ [订阅或资源级别的锁可防止删除](../azure-resource-manager/management/lock-resources.md)
 + [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../role-based-access-control/overview.md)
 
 所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，仅限“所有者”和“参与者”角色查看敏感数据（如管理密钥），而任何角色的成员都可以查看服务状态。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
@@ -115,6 +115,7 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 ## <a name="physical-security"></a>物理安全性
 
 Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标准和法规要求。
+
 
 ## <a name="see-also"></a>另请参阅
 

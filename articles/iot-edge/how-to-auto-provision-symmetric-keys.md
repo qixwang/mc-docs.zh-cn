@@ -1,26 +1,25 @@
 ---
-title: 使用对称密钥证明通过 DPS 自动预配设备 - Azure IoT Edge | Microsoft Docs
+title: 使用对称密钥证明预配设备 - Azure IoT Edge
 description: 使用对称密钥证明通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
 manager: philmea
-ms.author: kgremban
+ms.author: v-tawe
 ms.reviewer: mrohera
 origin.date: 10/04/2019
-ms.date: 11/04/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 73463ce623d77beaddfd6333b39ccc4fe45537ca
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 2ddc5ee5f24f96bf9c729d63f3a1001051a9e7d2
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914490"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494346"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
-可以使用[设备预配服务](/iot-dps/)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
 
 本文介绍如何通过以下步骤，在 IoT Edge 设备上使用对称密钥证明创建设备预配服务的单个注册：
 
@@ -30,7 +29,7 @@ ms.locfileid: "72914490"
 
 对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [X.509 证书](../iot-dps/concepts-security.md#x509-certificates)的设备证明更加安全，且应该用于更严格的安全要求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个有效的 IoT 中心
 * 一个物理设备或虚拟设备
@@ -45,11 +44,7 @@ ms.locfileid: "72914490"
 
 必须定义唯一注册 ID 来标识每个设备。 可以使用 MAC 地址、序列号或设备中的任何唯一信息。
 
-在此示例中，我们使用 MAC 地址和序列号的组合，构成以下注册 ID 字符串。
-
-```
-sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-```
+在此示例中，我们使用 MAC 地址和序列号的组合，构成以下注册 ID 字符串：`sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
 
 为设备创建一个唯一注册 ID。 有效字符为小写字母数字和短划线（“-”）。
 
@@ -188,7 +183,7 @@ provisioning:
       symmetric_key: "{symmetric_key}"
 ```
 
-请将 `{scope_id}`、`{registration_id}` 和 `{symmetric_key}` 的占位符值替换为前面收集的数据。
+请将 `{scope_id}`、`{registration_id}` 和 `{symmetric_key}` 的占位符值替换为前面收集的数据。 请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
 ### <a name="windows-device"></a>Windows 设备
 

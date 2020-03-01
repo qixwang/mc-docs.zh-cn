@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 11/22/2019
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 777825bb3f00b667905af018c6972af051dfe750
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: d6729b51456fb0123cf71d93a75c6135d0bdb98f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807543"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494460"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -36,7 +36,7 @@ ms.locfileid: "74807543"
  
 |媒体处理器名称|停用日期|附加说明|
 |---|---|
-|[Azure Media Indexer](media-services-index-content.md)|2020 年 10 月 1 日|
+|[Azure Media Indexer](media-services-index-content.md)|2023 年 3 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。|
 
 ## <a name="next-steps"></a>后续步骤
 

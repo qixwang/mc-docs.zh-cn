@@ -4,18 +4,18 @@ description: 使用 Visual Studio Code 的 IoT 扩展为 IoT Edge 设备组创�
 keywords: ''
 author: kgremban
 manager: philmea
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 01/08/2020
-ms.date: 01/27/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a7371840331dc4464ad75bb4d1ecf8e7ff826de7
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: fece79d1b374e4622bb49356882f15cd4826d9ba
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966557"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494314"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大规模部署 IoT Edge 模块
 
@@ -155,8 +155,8 @@ ms.locfileid: "76966557"
 * deviceId ='linuxprod1'
 * deviceId = 'linuxprod1' OR deviceId = 'linuxprod2' OR deviceId = 'linuxprod3'
 * tags.environment ='prod'
-* tags.environment = 'prod' AND tags.location = 'westus2'
-* tags.environment = 'prod' OR tags.location = 'westus2'
+* tags.environment = 'prod' AND tags.location = 'chinaeast2'
+* tags.environment = 'prod' OR tags.location = 'chinaeast2'
 * tags.operator = 'John' AND tags.environment = 'prod' AND NOT deviceId = 'linuxprod1'
 
 有关详细信息，请参阅[目标条件](module-deployment-monitoring.md#target-condition)。 有关设备孪生和标记的详细信息，请参阅[了解和使用 IoT 中心的设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。

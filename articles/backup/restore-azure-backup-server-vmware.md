@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 08/18/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ac90ebb52964b72c77957ac1471a980bb1cab43e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 068005bf16b6a7db0721f16bfa02088da886937b
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838659"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497617"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机
 
@@ -55,24 +55,28 @@ ms.locfileid: "74838659"
 
 可以从受保护 VM 的恢复点还原单个文件。 此功能仅适用于 Windows Server VM。 还原单个文件的步骤与还原整个 VM 类似，只是在启动恢复过程之前，需要浏览到 VMDK 并找到所需的文件。 若要从 Windows Server VM 恢复单个文件或选择文件：
 
+>[!NOTE]
+>从 VM 还原单个文件仅适用于 Windows VM 和磁盘恢复点。
+
 1. 在 MABS 管理员控制台中，单击“恢复”视图。 
 
 2. 使用“浏览”窗格进行浏览或筛选，以找到想要恢复的 VM。  选择 VM 或文件夹后，“以下对象的恢复点”窗格将显示可用的恢复点。
 
-    ![可用的恢复点](./media/restore-azure-backup-server-vmware/recovery-points.png)
+    ![可用的恢复点](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
 3. 在“以下对象的恢复点:”窗格中，使用日历选择包含所需恢复点的日期。  根据备份策略的配置方式，日期中可以包含多个恢复点。 选择恢复点的创建日期后，请确保选择正确的“恢复时间”。  如果所选日期包含多个恢复点，请在“恢复时间”下拉菜单中选择所需的恢复点。 选择恢复点后，可恢复的项列表将显示在“路径:”窗格中。 
 
 4. 若要查找想要恢复的文件，请在“路径”窗格中，双击“可恢复的项”列中的项以将其打开。   选择要恢复的文件或文件夹。 若要选择多个项，请在按住 **Ctrl** 键的同时选择每个项。 使用“路径”窗格搜索“可恢复的项”列中显示的文件或文件夹列表。   使用“搜索以下列表”不会在子文件夹中搜索。  若要在子文件夹中搜索，请双击该文件夹。 使用“向上”箭头按钮可从子文件夹切换到父文件夹。  可以选择多个项（文件和文件夹），但它们必须位于同一个父文件夹中。 不能在同一个恢复作业中恢复多个文件夹中的项。
 
+    ![复查恢复选择](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
+
 5. 选择要恢复的项后，在管理员控制台工具功能区中，单击“恢复”打开“恢复向导”。   在恢复向导中，“复查恢复选择”屏幕将显示要恢复的选定项。 
-    ![复查恢复选择](./media/restore-azure-backup-server-vmware/review-recovery.png)
 
 6. 在“指定恢复选项”屏幕上，若要启用网络带宽限制，请单击“修改”。   若要禁用网络限制，请单击“下一步”。  对于 VMware VM，此向导屏幕上没有其他可用选项。 如果选择修改网络带宽限制，请在“限制”对话框中，选择“启用网络带宽用量限制”，以启用此功能。  启用后，配置“设置”和“工作计划”。  
 7. 在“选择恢复类型”屏幕上，单击“下一步”。   只能将文件或文件夹恢复到网络文件夹。
 8. 在“指定目标”屏幕上，单击“浏览”找到用于保存文件或文件夹的网络位置。   MABS 将创建一个文件夹，所有已恢复的项将复制到其中。 该文件夹的名称前缀为 MABS_day-month-year。 选择恢复的文件或文件夹的保存位置时，系统会提供该位置的详细信息（目标、目标路径和可用空间）。
 
-       ![Specify location to recover files](./media/restore-azure-backup-server-vmware/specify-destination.png)
+    ![指定恢复文件的位置](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
 9. 在“指定恢复选项”屏幕上，选择要应用的安全设置。  可以选择修改网络带宽用量限制，但默认已禁用限制。 “SAN 恢复”和“通知”也未启用。  
 10. 在“摘要”屏幕上检查设置，然后单击“恢复”启动恢复过程。   “恢复状态”屏幕将显示恢复操作的进度。 

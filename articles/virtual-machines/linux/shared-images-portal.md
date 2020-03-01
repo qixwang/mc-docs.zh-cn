@@ -1,29 +1,28 @@
 ---
-title: 使用门户创建适用于 Linux 的共享 Azure 虚拟机映像
+title: 使用门户创建 Azure 共享映像库
 description: 了解如何使用 Azure 门户创建和共享虚拟机映像。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rockboyfor
 manager: digimobile
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 11/06/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: f0e20fe3cb43a11330be692f3ee132a739dacf64
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 396e1d44f35a52f3fda7d5e3ee21cc84b4b9c5c3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348476"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428827"
 ---
 <!--Verified the Shared Image Gallery exist-->
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>使用 Azure 门户创建共享映像库
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
@@ -91,5 +90,4 @@ ms.locfileid: "75348476"
 
 有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
 
-<!-- Update_Description: new article about shared images portal -->
-<!--NEW.date: 12/16/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

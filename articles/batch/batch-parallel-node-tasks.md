@@ -1,5 +1,5 @@
 ---
-title: 以并行方式运行任务以高效使用计算资源 - Azure Batch | Microsoft 文档
+title: 并行运行任务以优化计算资源 - Azure Batch
 description: 通过减少所用的计算节点数并在 Azure Batch 池的每个节点上运行并发任务，来提高效率并降低成本
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 origin.date: 04/17/2019
 ms.date: 09/17/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fdcc40cb79b9c99422dbc398df8e1635b112a757
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: dce3f0351d6bc4e7cc95cb1caff8b57d5dd6f70b
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330173"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497388"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点 
 
@@ -128,14 +128,14 @@ Duration: 00:08:48.2423500
 [Batch Explorer][batch_labs] 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 Batch Explorer 包含“热度地图”  功能，可提供任务执行的可视化效果。 执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热度地图”功能轻松直观显示每个节点上并行任务的执行。
 
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [batch_labs]: https://azure.github.io/BatchExplorer/
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[maxtasks_net]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
+[maxtasks_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
 [rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
 [poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 脚本示例 - 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户 | Azure
+title: 使用 PowerShell 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户
 description: Azure PowerShell 脚本示例 - 将托管磁盘的 VHD 导出/复制到相同或不同区域中的存储帐户
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 09/17/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 97ff6abfa18614be5f78abfb6cb453e5db600196
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: e4ec7f2a5d6621fca201ed5a2adc118ee78f82de
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272725"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428790"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell"></a>使用 PowerShell 将托管磁盘的 VHD 导出/复制到不同区域中的存储帐户
 
@@ -84,7 +84,9 @@ $destinationContext = New-AzStorageContext -StorageAccountName $storageAccountNa
 if($useAzCopy -eq 1)
 {
     $containerSASURI = New-AzStorageContainerSASToken -Context $destinationContext -ExpiryTime(get-date).AddSeconds($sasExpiryDuration) -FullUri -Name $storageContainerName -Permission rw
-    .\azcopy copy $sas.AccessSAS $containerSASURI
+    $containername,$sastokenkey = $containerSASURI -split "\?"
+    $containerSASURI = "$containername/$destinationVHDFileName`?$sastokenkey"
+    azcopy copy $sas.AccessSAS $containerSASURI
 
 }else{
 

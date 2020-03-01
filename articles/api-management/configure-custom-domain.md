@@ -9,26 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-origin.date: 08/12/2019
-ms.date: 12/09/2019
+origin.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0155c427783c1de940ab810adee094e8455a70f6
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: b3c290d8fd767dde4f6b55aa94cce38588672845
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657618"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428610"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
 
 创建 Azure API 管理服务实例时，Azure 会为其分配 azure-api.net 的子域（例如，`apim-service-name.azure-api.cn`）。 不过，你可以使用自己的自定义域名（例如 **contoso.com**）公开 API 管理终结点。 本教程演示了如何将现有的自定义 DNS 名称映射到 API 管理实例公开的终结点。
+
+> [!IMPORTANT]
+> API 管理仅接受[主机头](https://tools.ietf.org/html/rfc2616#section-14.23)值与默认域名或任何已配置的自定义域名匹配的请求。
 
 > [!WARNING]
 > 想要使用证书固定改进其应用程序安全性的客户必须使用自定义域名和他们管理的证书，而不是使用默认证书。 改为固定默认证书的客户将硬依赖于他们不控制的证书属性，建议不要这样做。
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中所述的步骤，必须具有：
 

@@ -1,18 +1,19 @@
 ---
-title: 客户数据请求功能
+title: Azure DPS 设备的客户数据请求功能
+description: 对于在 Azure 设备预配服务 (DPS) 中管理的个人设备，本文向管理员介绍如何导出或删除个人数据。
 author: dominicbetts
-ms.author: dobett
-manager: timlt
-ms.date: 05/16/2018
+ms.author: v-tawe
+origin.date: 05/16/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9534a86f4cc4e8707db96f7ec122506fbc288ce6
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.openlocfilehash: 68cc1b145cc5c8a9eed3d29ccd74cfb2420712f6
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988687"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494547"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -58,7 +59,7 @@ Azure IoT 中心设备预配服务是一项基于 REST API 的云服务，其目
 * 若要导出已预配的设备的相关信息，可以使用[注册状态 - 获取注册状态](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate)操作。
 
 > [!NOTE]
-> 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出设备预配服务的某些系统生成日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
+> 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出设备预配服务系统生成的某些日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 

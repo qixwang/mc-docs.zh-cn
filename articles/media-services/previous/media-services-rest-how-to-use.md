@@ -1,6 +1,6 @@
 ---
 title: 媒体服务操作 REST API 概述 | Microsoft 文档
-description: 媒体服务 REST API 概述
+description: 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、直播频道和其他资源。 本文提供了 Azure 媒体服务 v2 REST API 概述。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: johndeu
-ms.openlocfilehash: 6454b24fc737c03884190507cc499fb10f507062
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 4f3687fbebbaef23ccdbd469fc5174ffcb65b9f5
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124673"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494220"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
 
@@ -46,7 +46,7 @@ ms.locfileid: "71124673"
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.chinacloudapi.cn
   
@@ -103,7 +103,7 @@ ms.locfileid: "71124673"
 | GET |返回对象的当前值。 |
 | POST |根据提供的数据创建对象，或提交命令。 |
 | PUT |替换对象，或创建命名对象（如果适用）。 |
-| 删除 |删除对象。 |
+| DELETE |删除对象。 |
 | MERGE |使用命名的属性更改更新现有对象。 |
 | HEAD |为 GET 响应返回对象的元数据。 |
 

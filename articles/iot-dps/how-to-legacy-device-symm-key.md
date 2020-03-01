@@ -1,23 +1,22 @@
 ---
-title: 如何使用对称密钥通过 Azure IoT 中心设备预配服务预配旧设备 | Microsoft 文档
-description: 如何使用对称密钥通过设备预配服务实例预配旧设备
+title: 使用对称密钥预配旧设备 - Azure IoT 中心设备预配服务
+description: 如何使用对称密钥通过设备预配服务 (DPS) 实例预配旧设备
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 04/10/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 75fee1254df1154aef040bcb6db7cc7a2a3371fb
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+manager: philmea
+ms.openlocfilehash: 7107d349d4c0705a23b7cc6951285944622d0eef
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859730"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494140"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
-
 
 许多旧设备的常见问题是它们的标识通常由单段信息组成。 该信息通常为 MAC 地址或序列号。 旧设备可能没有证书、TPM 或可用于安全地识别设备的任何其他安全功能。 IoT 中心设备预配服务包含对称密钥证明。 对称密钥证明可以用于根据 MAC 地址或序列号等信息标识设备。
 
@@ -49,10 +48,9 @@ ms.locfileid: "75859730"
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
-
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>准备 Azure IoT C SDK 开发环境
 
@@ -73,6 +71,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     cd azure-iot-sdk-c
     git submodule update --init
     ```
+
     应该预料到此操作需要几分钟才能完成。
 
 4. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
@@ -82,7 +81,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     cd cmake
     ```
 
-4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
+5. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -181,7 +180,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 用注册 ID 替换 REG_ID 值  。
 
-```PowerShell
+```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
 $REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
 
@@ -192,7 +191,7 @@ $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
 ```
 
-```PowerShell
+```powershell
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 

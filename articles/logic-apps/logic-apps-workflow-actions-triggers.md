@@ -8,14 +8,14 @@ ms.author: v-yiso
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-origin.date: 06/19/2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 65471a5669a6f1566bab56e8f162f9d0e3f7c95b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/19/2020
+ms.date: 02/24/2020
+ms.openlocfilehash: 6a23a7c716c0235a94c5e2e499a4c6be98106321
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334566"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428936"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -147,7 +147,7 @@ ms.locfileid: "75334566"
 |-------|------|-------------| 
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
 | <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数。 例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
-| <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
+| <max-runs  > | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <splitOn-expression  > | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
 | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -237,7 +237,7 @@ ms.locfileid: "75334566"
 |-------|------|-------------| 
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
 | <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
-| <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
+| <max-runs  > | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <splitOn-expression  > | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
 | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -323,7 +323,7 @@ ms.locfileid: "75334566"
 | `body` | <body-content  > | JSON 对象 | 要作为有效负载与请求一同发送的消息内容 |
 | `authentication` | <*authentication-type-and-property-values*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
 | `retryPolicy` > `type` | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
-| `runs` | <max-runs  > | Integer | 默认情况下，工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 |
+| `runs` | <max-runs  > | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 |
 | `maximumWaitingRuns` | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 |
 | `operationOptions` | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 |
 |||||
@@ -418,7 +418,7 @@ ms.locfileid: "75334566"
 | <body-content  > | String | 要在订阅请求或取消订阅请求中发送的任何消息内容 | 
 | <*authentication-type*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
 | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
-| <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
+| <max-runs  > | Integer | 默认情况下，所有工作流实例都同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
@@ -507,12 +507,12 @@ ms.locfileid: "75334566"
 
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
-| <start-date-time-with-format-YYYY-MM-DDThh:mm:ss  > | String | 采用以下格式的启动日期和时间： <p>如果指定时区，则为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果不指定时区，则为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2:00，则指定“2017-09-18T14:00:00”并指定时区（如“太平洋标准时间”），或仅指定“2017-09-18T14:00:00Z”，而不指定时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未指定时区，则必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，启动时间即第一次循环；而对于复杂计划，触发器不会在启动时间之前执行。 有关启动日期和时间的详细信息，请参阅[创建和计划定期运行任务](../connectors/connectors-native-recurrence.md)。 | 
+| <start-date-time-with-format-YYYY-MM-DDThh:mm:ss  > | String | 采用以下格式的启动日期和时间： <p>如果指定时区，则为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果不指定时区，则为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2:00，则指定“2017-09-18T14:00:00”并指定时区（如“太平洋标准时间”），或仅指定“2017-09-18T14:00:00Z”，而不指定时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未指定时区，则必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 有关启动日期和时间的详细信息，请参阅[创建和计划定期运行任务](../connectors/connectors-native-recurrence.md)。 | 
 | <time-zone  > | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 指定要应用的时区。 | 
 | <one-or-more-hour-marks  > | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 23 范围内指定一个或多个整数（用逗号分隔），作为一天中要运行工作流的时间点。 <p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为小时标记。 | 
 | <one-or-more-minute-marks  > | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 59 范围内指定一个或多个整数（用逗号分隔），作为要运行工作流的分钟。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 | 
 | 工作日 | 字符串或字符串数组 | 如果 `frequency` 指定为“周”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日” | 
-| <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
+| <max-runs  > | Integer | 默认情况下，所有工作流实例都同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
@@ -619,7 +619,7 @@ ms.locfileid: "75334566"
 | <method-type  > | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” |
 | <relative-path-for-accepted-parameter  > | String | 终结点的 URL 可接受的参数的相对路径 | 
 | <required-properties  > | Array | 需要值的一个或多个属性 | 
-| <max-runs  > | Integer | 默认情况下，所有工作流实例同时或并行运行（不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
+| <max-runs  > | Integer | 默认情况下，所有工作流实例都同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
@@ -786,7 +786,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | <action-name  > | String | 操作的名称 | 
 | <action-type  > | String | 操作类型，例如“Http”或“ApiConnection”| 
 | <input-name  > | String | 定义操作行为的输入的名称 | 
-| <input-value  > | 各种 | 输入值，可为字符串、整数、JSON 对象等 | 
+| <input-value  > | 各种各样 | 输入值，可为字符串、整数、JSON 对象等 | 
 | <previous-trigger-or-action-status  > | JSON 对象 | 在此当前操作可以运行之前，必须立即运行的触发器或操作的名称和结果状态 | 
 |||| 
 
@@ -1480,7 +1480,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
 | <response-headers>  | JSON 对象 | 要包括在响应中的一个或多个标头 | 
-| <response-body>  | 各种 | 响应正文，可为字符串、JSON 对象甚至上一个操作的二进制内容 | 
+| <response-body>  | 各种各样 | 响应正文，可为字符串、JSON 对象甚至上一个操作的二进制内容 | 
 |||| 
 
 *示例*
@@ -1987,7 +1987,7 @@ ID,Product_Name
 
 | Value | 类型 | 说明 | 
 |-------|------|-------------| 
-| <*count*> | Integer | 默认情况下，“for each”循环迭代同时或并行（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）运行。 若要通过设置新的 <count> 值更改此限制，请参阅[更改“for each”循环并发](#change-for-each-concurrency)  。 | 
+| <*count*> | Integer | 默认情况下，“for each”循环迭代将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改“for each”循环并发](#change-for-each-concurrency)  。 | 
 | <operation-option  > | String | 若要按顺序而不是并行运行“for each”循环，请将 <operation-option> 设为 `Sequential` 或将 <count> 设为 `1`（仅二者之一）   。 有关详细信息，请参阅[按顺序运行“for each”循环](#sequential-for-each)。 | 
 |||| 
 
@@ -2310,7 +2310,7 @@ ID,Product_Name
 |-------|------|-------------| 
 | <action-name  > | String | 要在循环内运行的操作的名称 | 
 | <action-type  > | String | 要运行的操作类型 | 
-| <action-inputs>  | 各种 | 要运行的操作的输入 | 
+| <action-inputs>  | 各种各样 | 要运行的操作的输入 | 
 | <condition>  | String | 当循环中的所有操作都运行完成后要计算的条件或表达式 | 
 | <loop-count>  | Integer | 针对操作可运行的最大循环数的限制。 默认 `count` 值为 60。 | 
 | <loop-timeout>  | String | 针对循环可运行的最长时间的限制。 默认 `timeout` 值为 `PT1H`，即要求的 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)。 |

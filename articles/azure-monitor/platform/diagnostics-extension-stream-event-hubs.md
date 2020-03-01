@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 07/13/2017
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1cc51a716adc97c1c000c242fb177d11eb91576d
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 329eb19c8171258d3bfe01e3864e479921fdedf4
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527976"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497583"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
 Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](/event-hubs/)在数秒内传输热路径数据。
@@ -22,8 +22,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 
 * Windows 事件跟踪 (ETW) 事件
 * 性能计数器
-* Windows 事件日志
-* 应用程序日志
+* Windows 事件日志（包括 Windows 事件日志中的应用程序日志）
 * Azure 诊断基础结构日志
 
 本文说明如何使用事件中心从头到尾配置 Azure 诊断。 另针对以下常见方案提供指导：
@@ -33,7 +32,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 * 如何查看事件中心流数据
 * 如何排查连接问题  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 从 Azure SDK 2.9 和相应的 Azure Tools for Visual Studio 开始，云服务、VM、虚拟机规模集和 Service Fabric 将支持事件中心接收来自 Azure 诊断的数据。
 
 * Azure 诊断扩展 1.6（[Azure SDK for .NET 2.9 或更高版本](https://www.azure.cn/downloads/)默认以此为目标）
@@ -71,14 +70,14 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 
 事件中心 URL 在 [Azure 门户](https://go.microsoft.com/fwlink/?LinkID=213885)中的“事件中心”仪表板上显示。  
 
-“接收器”  名称可以设置为任何有效的字符串，前提是在整个配置文件中一致地使用相同的值。
+“接收器”  名称可以设置为任何有效的字符串，前提是整个配置文件中始终使用同一值。
 
 > [!NOTE]
 > 此节中可能配置了其他接收器，例如 *applicationInsights* 。 Azure 诊断允许定义一个或多个接收器，前提是每个接收器也已在 **PrivateConfig** 节中声明。  
 >
 >
 
-此外，必须在 *.wadcfgx* 配置文件的 **PrivateConfig** 部分中声明并定义事件中心接收器。
+此外，还必须在 **.wadcfgx** 配置文件的 *PrivateConfig* 节中声明并定义事件中心接收器。
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -201,13 +200,13 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 在此示例中，接收器已应用到日志，并且只筛选为错误级别跟踪。
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>部署和更新云服务应用程序与诊断配置
-Visual Studio 提供最简单的路径供你部署应用程序和事件中心接收器配置。 要查看和编辑文件，请在 Visual Studio 中打开 *.wadcfgx* 文件，然后编辑并保存它。 路径为“云服务项目”   > “角色”   > “(RoleName)”“   > diagnostics.wadcfgx”  。  
+Visual Studio 提供最简单的路径供你部署应用程序和事件中心接收器配置。 如果要查看和编辑文件，请在 Visual Studio 中打开 *.wadcfgx* 文件，进行编辑并保存。 路径为“云服务项目”   > “角色”   > “(RoleName)”“   > diagnostics.wadcfgx”  。  
 
-此时，Visual Studio、Visual Studio Team System 中的所有部署和部署更新操作，以及所有基于 MSBuild 并使用 **/t:publish** 目标的命令或脚本，都会在打包过程中纳入 *.wadcfgx*。 此外，部署和更新会使用 VM 上适当的 Azure 诊断代理扩展将文件部署到 Azure。
+目前，Visual Studio、Visual Studio Team System 中的所有部署和部署更新操作以及基于 MSBuild 并使用 `/t:publish` 目标的所有命令或脚本都在打包过程中添加“.wadcfgx”  。 此外，部署和更新会使用 VM 上适当的 Azure 诊断代理扩展将文件部署到 Azure。
 
 在部署应用程序与 Azure 诊断配置后，将立即在事件中心的仪表板中看到活动。 这意味着可以继续在侦听器客户端或选择的分析工具中查看热路径数据。  
 
-在下图中，事件中心仪表板显示从晚上 11 点之后开始发送到事件中心且状态良好的诊断数据发送操作。 也就是使用更新的 *.wadcfgx* 文件部署应用程序，而且正确配置接收器的时候。
+在下图中，事件中心仪表板显示从晚上 11 点之后开始发送到事件中心且状态良好的诊断数据发送操作。 此时，应用程序通过更新后的 *.wadcfgx* 文件进行部署且接收器配置正确。
 
 ![][0]  
 
@@ -217,13 +216,72 @@ Visual Studio 提供最简单的路径供你部署应用程序和事件中心接
 >
 
 ## <a name="view-hot-path-data"></a>查看热路径数据
-如前文所述，侦听和处理事件中心数据有许多用例。
+如前文所述，侦听和处理事件中心数据有许多用例。 一种简单的方法是创建小型测试控制台应用程序，用于侦听事件中心并打印输出流。 
 
-一种简单的方法是创建小型测试控制台应用程序，用于侦听事件中心并打印输出流。 可在控制台应用程序中插入以下代码（[事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)中已详细说明）。  
+#### <a name="net-sdk-latest-500-or-later"></a>[.NET SDK 最新版（5.0.0 或更高版本）](#tab/latest)
+可在控制台应用程序中插入以下代码（[事件中心入门](../../event-hubs/get-started-dotnet-standard-send-v2.md)中已详细说明）。
 
-请注意，控制台应用程序必须包含[事件处理器主机 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)。  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-请记住将 **Main** 函数中尖括号内的值替换为资源值。   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earlier"></a>[.NET SDK 旧版本（4.1.0 或更早版本）](#tab/legacy)
+
+可在控制台应用程序中插入以下代码（[事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)中已详细说明）。 请注意，控制台应用程序必须包含 [事件处理器主机 Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)。 请记住将 **Main** 函数中尖括号内的值替换为资源值。   
 
 ```csharp
 //Console application code for EventHub test client
@@ -305,14 +363,15 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>排查事件中心接收器问题
 * 事件中心不按预期显示传入或传出事件活动。
 
-    检查是否已成功预配事件中心。 *.wadcfgx* 中 **PrivateConfig** 部分的所有连接信息必须与门户中显示的资源值匹配。 请确保已在门户中定义 SAS 策略（本示例中为“SendRule”），并为其授予“发送”  权限。  
+    检查是否已成功预配事件中心。 **.wadcfgx** 中 *PrivateConfig* 节的所有连接信息必须与门户中显示的资源值匹配。 请确保已在门户中定义 SAS 策略（本示例中为“SendRule”），并为其授予“发送”  权限。  
 * 进行更新后，事件中心不再显示传入或传出事件活动。
 
-    首先，确保事件中心和配置信息如先前所述的那样准确无误。 有时，系统会在部署更新时重置 **PrivateConfig**。 建议的解决方法是在项目中对 *.wadcfgx* 进行所有更改，并推送完整的应用程序更新。 如果不可行，请确保诊断更新推送完整的 **PrivateConfig**，包括 SAS 密钥。  
+    首先，确保事件中心和配置信息正确，如前所述。 系统有时会在部署更新时重置 **PrivateConfig** 。 建议的解决方法是在项目中对 *.wadcfgx* 进行所有更改，并推送完整的应用程序更新。 如果不可行，请确保诊断更新推送带 SAS 密钥的完整 **PrivateConfig** ，。  
 * 我试过了上述建议，但事件中心仍无法正常运行。
 
     请尝试查看 Azure 存储表，其中包含日志和 Azure 诊断本身的错误：**WADDiagnosticInfrastructureLogsTable**。 可使用 [Azure 存储资源管理器](https://www.storageexplorer.com) 等工具连接到此存储帐户，查看此表，并添加过去 24 小时的时间戳查询。 可以使用此工具导出 .csv 文件，并在 Microsoft Excel 之类的应用程序中打开它。 Excel 可轻松搜索电话卡字符串（如 **EventHubs**），查看系统报告了哪些错误。  
@@ -509,7 +568,7 @@ namespace EventHubListener
 
 * [事件中心概述](../../event-hubs/event-hubs-about.md)
 * [创建事件中心](../../event-hubs/event-hubs-create.md)
-* [事件中心常见问题解答](../../event-hubs/event-hubs-faq.md)
+* [事件中心常见问题](../../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

@@ -1,5 +1,5 @@
 ---
-title: 详细步骤 - 创建和管理用于在 Azure 中对 Linux VM 进行身份验证的 SSH 密钥 | Azure
+title: 详细步骤 - Azure Linux VM 的 SSH 密钥对
 description: 了解创建和管理适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对的详细步骤。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 04/17/2018
-ms.date: 11/11/2019
+origin.date: 12/06/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 742fc57d13487102d8b2a12ec897df14b235da93
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: c2a351a00d8beb3ebf091d247a4be737fcc82c66
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831285"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428676"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理 Azure 中的 Linux VM 用于身份验证的 SSH 密钥 
 使用安全外壳 (SSH) 密钥对，可在 Azure 上创建默认使用 SSH 密钥进行身份验证的 Linux 虚拟机，从而无需密码即可登录。 使用 Azure 门户、Azure CLI、资源管理器模板或其他工具创建的 VM 可在部署中包含 SSH 公钥，为 SSH 连接设置 SSH 密钥身份验证。 
@@ -52,10 +52,10 @@ SSH 密钥默认保留在 `~/.ssh` 目录中。  如果没有 `~/.ssh` 目录，
 
 ### <a name="basic-example"></a>基本示例
 
-以下 `ssh-keygen` 命令默认在 `~/.ssh` 目录中生成 2048 位 SSH RSA 公钥和私钥文件。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
+以下 `ssh-keygen` 命令默认在 `~/.ssh` 目录中生成 4096 位 SSH RSA 公钥和私钥文件。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>详细示例
@@ -63,6 +63,7 @@ ssh-keygen -t rsa -b 2048
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -73,6 +74,8 @@ ssh-keygen \
 **命令解释**
 
 `ssh-keygen` = 用于创建密钥的程序
+
+`-m PEM` = 将密钥的格式设为 PEM
 
 `-t rsa` = 要创建的密钥类型，本例中为 RSA 格式
 
@@ -87,7 +90,7 @@ ssh-keygen \
 ### <a name="example-of-ssh-keygen"></a>ssh-keygen 的示例
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -95,19 +98,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>保存的密钥文件
@@ -217,7 +220,7 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-### <a name="example-configuration"></a>示例配置
+### <a name="example-configuration"></a>配置示例
 
 添加适用于主机 VM 的配置设置。
 

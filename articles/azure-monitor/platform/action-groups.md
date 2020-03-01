@@ -7,12 +7,12 @@ origin.date: 8/19/2019
 ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 85bd792fa5b2c4bf872ffe5d51b4be13c89cd92d
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: fa272cd83025210811600f5779b1e9e0d643acff
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599865"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497504"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -61,7 +61,7 @@ ms.locfileid: "75599865"
 
 ## <a name="manage-your-action-groups"></a>管理操作组
 
-创建操作组后，它会显示在“监视器”  边栏选项卡的“操作组”  部分中。 选择要管理的操作组：
+创建操作组后，可以通过从“监视器”  窗格中的“警报”  登陆页选择“管理操作”  来查看**操作组**。 选择要管理的操作组：
 
 * 添加、编辑或删除操作。
 * 删除操作组。

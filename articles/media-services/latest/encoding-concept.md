@@ -1,7 +1,7 @@
 ---
 title: 使用媒体服务编码视频和音频
 titleSuffix: Azure Media Services
-description: 了解如何使用 Azure 媒体服务来编码视频和音频。
+description: 本文介绍如何使用 Azure 媒体服务对视频和音频进行编码。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 09/10/2019
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: dd503825efb96e806f020a0705cb3c8bb85cbf3d
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 97e57056a8b00e7cd6c7838efe3c13928376d8b5
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807547"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494495"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒体服务编码视频和音频
 
@@ -96,7 +96,7 @@ ms.locfileid: "74807547"
 
 - **EncoderNamedPreset.AACGoodQualityAudio**：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
 - **EncoderNamedPreset.AdaptiveStreaming**（推荐）：有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
-- **EncoderNamedPreset.ContentAwareEncodingExperimental**：公开内容感知编码的试验性预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码的试验性预设](cae-experimental.md)。
+- **EncoderNamedPreset.ContentAwareEncodingExperimental**：公开内容感知编码的试验性预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码的试验性预设](content-aware-encoding.md)。
 - **EncoderNamedPreset.H264MultipleBitrate1080p**：生成一组 8 GOP 对齐的 MP4 文件（范围从 6000 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 1080p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrate720p**：生成一组 6 GOP 对齐的 MP4 文件（范围从 3400 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 720p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrateSD**：生成一组 5 GOP 对齐的 MP4 文件（范围从 1600 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 480p，之后下降到 360p。

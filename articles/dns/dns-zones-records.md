@@ -1,27 +1,21 @@
 ---
-title: DNS 区域和记录概述 - Azure DNS | Microsoft Docs
-description: 对在 Azure DNS 中托管 DNS 区域和记录的支持的概述。
-services: dns
-documentationcenter: na
+title: DNS 区域和记录概述 - Azure DNS
+description: 对在 Microsoft Azure DNS 中托管 DNS 区域和记录的支持的概述。
 author: WenJason
-manager: digimobile
-editor: ''
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 origin.date: 12/18/2017
-ms.date: 07/22/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: ca5808a93a29655101967df0ea23b617434ee69b
-ms.sourcegitcommit: 9495256a549d25ffddc4f42f3e12a607530409d0
+ms.openlocfilehash: 66e6c32cf3540f1d7098989b56548031f4708878
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71333654"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428866"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 
@@ -116,7 +110,7 @@ DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆
 
 ### <a name="tags"></a>Tags
 
-标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
+标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
 Azure DNS 支持使用 DNS 区域资源上的 Azure 资源管理器标记。  它不支持 DNS 记录集的标记，不过作为替代方法，在 DNS 记录集上支持“元数据”，如下所述。
 

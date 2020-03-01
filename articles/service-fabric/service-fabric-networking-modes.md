@@ -1,17 +1,17 @@
 ---
-title: 配置 Azure Service Fabric 容器服务的网络模式
+title: 配置容器服务的网络模式
 description: 了解如何设置 Azure Service Fabric 支持的不同网络模式。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/23/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ae5c7d076171f7948a5c02f61b2fa27bba465e79
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: cbdc506a4183ae64f7d9d330ba781d02c1d0f3b3
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742491"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539961"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -22,7 +22,7 @@ ms.locfileid: "75742491"
 容器服务重启或移动到群集中的另一个节点时，IP 地址会发生更改。 为此，不建议使用动态分配的 IP 地址来发现容器服务。 应仅使用 Service Fabric 命名服务或 DNS 服务来发现服务。 
 
 >[!WARNING]
->Azure 允许每个虚拟网络总共 65,356 个 IP。 因此，在一个虚拟网络中，节点数和容器服务实例数的总和（使用开放模式）不能超过 65,356 个 IP。 对于高密度方案，建议使用 nat 网络模式。 此外，其他依赖项（例如负载均衡器）也有要考虑的其他[限制](/azure-subscription-service-limits)。 当前，已测试了每个节点最多 50 个 IP 并且已证明了稳定性。 
+>Azure 允许每个虚拟网络总共 65,356 个 IP。 因此，在一个虚拟网络中，节点数和容器服务实例数的总和（使用开放模式）不能超过 65,356 个 IP。 对于高密度方案，建议使用 nat 网络模式。 此外，其他依赖项（例如负载均衡器）也有要考虑的其他[限制](/azure-resource-manager/management/azure-subscription-service-limits)。 当前，已测试了每个节点最多 50 个 IP 并且已证明了稳定性。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>设置开放网络模式

@@ -1,7 +1,7 @@
 ---
-title: 媒体服务中的实时事件和实时输出
+title: Azure 媒体服务 v3 中的直播活动和实时输出概念
 titleSuffix: Azure Media Services
-description: Azure 媒体服务 v3 中的实时事件和实时输出概述。
+description: 本主题概述 Azure 媒体服务 v3 中的直播活动和实时输出。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 09/30/2019
-ms.date: 12/09/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 4be6e43066f6f964b7775a77d9daa86eda15c81a
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 049e83065d386d81aa4bb26c06a79afe53047b75
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807614"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494487"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -37,7 +37,7 @@ ms.locfileid: "74807614"
 
 [实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：直通或实时编码。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
-* **LiveEventEncodingType.None**：本地实时编码器发送多比特率流。 引入的流通过直播活动传递，而不会经过任何进一步的处理。 
+* **LiveEventEncodingType.None**：本地实时编码器发送多比特率流。 引入的流通过直播活动传递，而不会经过任何进一步的处理。 也称为“直通模式”。
 * **LiveEventEncodingType.Standard**：本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对。
 * **LiveEventEncodingType.Premium1080p**：本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74807614"
 发送的贡献源的最高分辨率可为 4K，帧速率可为 60 帧/秒，采用 H.264/AVC 或 H.265/HEVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型的比较](live-event-types-comparison.md)。
 
 > [!NOTE]
-> 需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，可以使用直通这种最经济的方法来实时传送视频流。 请参阅[定价](https://azure.cn/pricing/details/media-services/)详细信息。
+> 当你要在很长一段时间内进行多个活动，并且已在本地编码器上进行投入时，使用直通方法是进行实时传送视频流的最经济方式。 请参阅[定价](https://azure.cn/pricing/details/media-services/)详细信息。
 >
 
 请参阅 [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126) 中的 .NET 代码示例。

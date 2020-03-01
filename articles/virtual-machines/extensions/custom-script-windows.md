@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的自定义脚本扩展 | Azure
+title: 适用于 Windows 的 Azure 自定义脚本扩展
 description: 使用自定义脚本扩展自动化 Windows VM 配置任务
 services: virtual-machines-windows
 manager: digimobile
@@ -9,14 +9,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 05/02/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ad279a708161a4001a2878b1e0aee8a3968b575
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 2d08e02cae18c5fd4d80993cf09db8d58681e941
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831373"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428923"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -24,7 +24,7 @@ ms.locfileid: "73831373"
 
 本文档详细说明了如何通过 Azure PowerShell 模块和 Azure Resource Manager 模板使用自定义脚本扩展，同时详细说明了 Windows 系统上的故障排除步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!NOTE]  
 > 不要在将同一 VM 作为参数的情况下使用自定义脚本扩展运行 Update-AzVM，因为它将等待它本身响应。  
@@ -82,7 +82,7 @@ ms.locfileid: "73831373"
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -94,11 +94,15 @@ ms.locfileid: "73831373"
             "commandToExecute": "myExecutionCommand",
             "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
+
+> [!NOTE]
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
 
 > [!NOTE]
 > 在某个时间点，只能在 VM 上安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
@@ -113,12 +117,13 @@ ms.locfileid: "73831373"
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | string |
 | type | CustomScriptExtension | string |
-| typeHandlerVersion | 1.9 | int |
+| typeHandlerVersion | 1.10 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
-| timestamp（示例） | 123456789 | 32 位整数 |
+| timestamp（示例） | 123456789 | 32-bit integer |
 | commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
 | storageAccountName（例如） | examplestorageacct | string |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (e.g) | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |
 
 >[!NOTE]
 >这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
@@ -130,6 +135,9 @@ ms.locfileid: "73831373"
 * `timestamp`（可选，32 位整数）仅当需要更改此字段的值来触发脚本的重新运行时，才使用此字段。  任何整数值都是可以接受的，前提是必须不同于以前的值。
 * `storageAccountName`：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 `fileUris` 都必须是 Azure Blob 的 URL。
 * `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
+* `managedIdentity`：（可选，json 对象）用于下载文件的[托管标识](/active-directory/managed-identities-azure-resources/overview)
+    * `clientId`：（可选，字符串）托管标识的客户端 ID
+    * `objectId`：（可选，字符串）托管标识的对象 ID
 
 可以在公共设置或受保护设置中设置以下值，但扩展会拒绝任何同时在公共设置和受保护设置中设置以下值的配置。
 
@@ -139,11 +147,51 @@ ms.locfileid: "73831373"
 
 公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
+#### <a name="property-managedidentity"></a>属性：managedIdentity
+
+CustomScript（1.10 版及更高版本）支持使用[托管标识](/active-directory/managed-identities-azure-resources/overview)从“fileUris”设置中提供的 URL 下载文件。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
+
+若要使用此功能，用户必须将[系统分配的](/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity)或[用户分配的](/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity)标识添加到需要运行 CustomScript 的 VM 或 VMSS，并[授予托管标识访问 Azure 存储容器或 Blob 的权限](/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+
+若要在目标 VM/VMSS 上使用系统分配的标识，请将“managedidentity”字段设置为空的 json 对象。 
+
+> 示例：
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.chinacloudapi.cn/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
+
+> 示例:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.chinacloudapi.cn/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.chinacloudapi.cn/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> managedIdentity 属性**不能**与 storageAccountName 或 storageAccountKey 属性结合使用
+
 ## <a name="template-deployment"></a>模板部署
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在部署过程中运行自定义脚本扩展。 以下示例显示如何使用自定义脚本扩展：
 
-* [教程：使用 Azure 资源管理器模板部署虚拟机扩展](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [教程：使用 Azure 资源管理器模板部署虚拟机扩展](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [在 Windows 和 Azure SQL DB 上部署双层应用程序](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
@@ -183,7 +231,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -201,7 +249,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
@@ -222,6 +270,9 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
+## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
+
+若要在规模集上部署自定义脚本扩展，请参阅 [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>经典 VM
 
@@ -300,4 +351,4 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 还可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

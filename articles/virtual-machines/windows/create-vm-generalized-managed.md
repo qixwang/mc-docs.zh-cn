@@ -1,5 +1,5 @@
 ---
-title: 从托管映像创建 VM | Azure
+title: 从托管映像创建 VM
 description: 在资源管理器部署模型中，使用 Azure PowerShell 或 Azure 门户从通用托管映像创建 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 09/17/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7a5057ba6959758f2007b1afde87cb071b36a694
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 8193223053907d2db573ec8f4ac36f67bc902af2
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272662"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428566"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>从托管映像创建 VM
 
@@ -29,8 +29,7 @@ ms.locfileid: "72272662"
 
 ## <a name="use-the-portal"></a>使用门户
 
-1. 打开 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧菜单上，选择“所有资源”  。 可以按“类型”对资源进行排序以方便查找映像  。
+1. 转到 [Azure 门户](https://portal.azure.cn)查找托管映像。 搜索并选择“映像”  。
 3. 从列表中选择需要使用的映像。 随即打开映像“概述”页  。
 4. 从菜单中选择“创建 VM”  。
 5. 输入虚拟机信息。 在此处输入的用户名和密码将用来登录到虚拟机。 完成后选择“确定”  。 可以在现有资源组中创建新的 VM，或者选择“新建”创建一个新的资源组用于存储 VM  。
@@ -41,8 +40,6 @@ ms.locfileid: "72272662"
 ## <a name="use-powershell"></a>使用 PowerShell
 
 可以使用 PowerShell 通过使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 的简化参数集来基于映像创建 VM。 该映像需要位于你要在其中创建 VM 的同一资源组中。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 的简化参数集仅要求提供名称、资源组和映像名称便可基于映像创建 VM。 New-AzVm 将使用 -Name 参数的值作为它自动创建的所有资源的名称  。 在此示例中，我们为每个资源提供更详细的名称，但让 cmdlet 自动创建这些资源。 你还可以提前创建资源（例如虚拟网络）并将名称传递给 cmdlet。 如果 New-AzVm 可以通过名称找到现有资源，就会使用现有资源。
 

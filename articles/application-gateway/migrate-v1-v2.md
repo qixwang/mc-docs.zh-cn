@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/04/2019
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8064b17ae4197e567a1af014b47dee08fed9352e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: af35a882cca272ec60d1d116c8625e106dc1560c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884868"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494469"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -102,7 +102,7 @@ ms.locfileid: "74884868"
    * **appgwName: [String]:Optional**。 这是指定用作新 Standard_v2 或 WAF_v2 网关的名称的字符串。 如果未提供此参数，则会使用现有 v1 网关的名称并在其后追加后缀 *_v2*。
    * **sslCertificates: [PSApplicationGatewaySslCertificate]:Optional**。  创建的 PSApplicationGatewaySslCertificate 对象的逗号分隔列表，表示 v1 网关中必须上传到新 v2 网关的 SSL 证书。 对于为 Standard v1 或 WAF v1 网关配置的每个 SSL 证书，可按如下所示通过 `New-AzApplicationGatewaySslCertificate` 命令创建新的 PSApplicationGatewaySslCertificate 对象。 需要 SSL 证书文件的路径和密码。
 
-       仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时，此参数才是可选的。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
+     仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时，此参数才是可选的。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ ms.locfileid: "74884868"
         -Password $password
       ```
 
-      在以上示例中，可以传入 `$mySslCert1, $mySslCert2`（逗号分隔）作为脚本中此参数的值。
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:Optional**。 创建的 PSApplicationGatewayTrustedRootCertificate 对象的逗号分隔列表，表示用于对 v2 网关中后端实例进行身份验证的[受信任根证书](ssl-overview.md)。  
+     在以上示例中，可以传入 `$mySslCert1, $mySslCert2`（逗号分隔）作为脚本中此参数的值。
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]:Optional**。 创建的 PSApplicationGatewayTrustedRootCertificate 对象的逗号分隔列表，表示用于对 v2 网关中后端实例进行身份验证的[受信任根证书](ssl-overview.md)。
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       若要创建 PSApplicationGatewayTrustedRootCertificate 对象列表，请参阅 [AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
    * **privateIpAddress: [String]:Optional**。 要关联到新 v2 网关的特定专用 IP 地址。  此地址必须来自为新 v2 网关分配的同一 VNet。 如果未指定，该脚本将为 v2 网关分配一个专用 IP 地址。
-    * **publicIpResourceId: [String]:Optional**。 订阅中要分配给新 v2 网关的公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了 *-IP* 的 v2 网关名称。
+   * **publicIpResourceId: [String]:Optional**。 订阅中要分配给新 v2 网关的现有公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了 *-IP* 的 v2 网关名称。
    * **validateMigration: [switch]:Optional**。 如果你希望在创建 v2 网关并复制配置后让脚本执行一些基本的配置比较验证，请使用此参数。 默认不会执行任何验证。
    * **enableAutoScale: [switch]:Optional**。 如果你希望在创建新的 v2 网关后让脚本启用自动缩放，请使用此参数。 默认会禁用自动缩放。 以后，始终可以在创建新的 v2 网关后手动启用自动缩放。
 
@@ -132,10 +137,10 @@ ms.locfileid: "74884868"
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 
@@ -196,4 +201,4 @@ ms.locfileid: "74884868"
 
 [了解应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: code update -->

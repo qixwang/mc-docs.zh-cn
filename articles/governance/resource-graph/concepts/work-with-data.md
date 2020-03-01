@@ -8,12 +8,12 @@ ms.date: 12/16/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: b1e76422407dc755be8f77d9a56ff1eb0c48ca8d
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: b22ef55108624f5fd4fa6ec93bee22487159f20e
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884674"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494003"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -23,7 +23,7 @@ Azure Resource Graph 旨在处理并获取 Azure 环境中资源的相关信息�
 
 ## <a name="data-set-result-size"></a>数据集结果大小
 
-默认情况下，Resource Graph 限制任何查询都只能返回 100  条记录。 这项控制措施可保护用户和服务不受会生成大型数据集的意外查询影响。 当客户尝试通过查询来按照能满足自己特定需求的方式查找和筛选资源时，这种情况最为常见。 这项控制措施不同于使用 [top](https://docs.microsoft.com/en-us/azure/kusto/query/topoperator) 或 [limit](https://docs.microsoft.com/en-us/azure/kusto/query/limitoperator) Azure 数据资源管理器语言运算符来限制结果。
+默认情况下，Resource Graph 限制任何查询都只能返回 100  条记录。 这项控制措施可保护用户和服务不受会生成大型数据集的意外查询影响。 当客户尝试通过查询来按照能满足自己特定需求的方式查找和筛选资源时，这种情况最为常见。 这项控制措施不同于使用 [top](https://docs.microsoft.com/azure/kusto/query/topoperator) 或 [limit](https://docs.microsoft.com/azure/kusto/query/limitoperator) Azure 数据资源管理器语言运算符来限制结果。
 
 > [!NOTE]
 > 使用 **First** 时，建议使用 `asc` 或 `desc` 按至少一个列对结果排序。 如果不排序，返回的结果将会是随机的，不可重复。
@@ -38,7 +38,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-在 [REST API](https://docs.microsoft.com/en-us/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，控制措施是 $top  ，它属于 QueryRequestOptions  。
+在 [REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，控制措施是 $top  ，它属于 QueryRequestOptions  。
 
 最具限制性  的控制措施将胜出。 例如，如果查询使用 top  或 limit  运算符，并生成多于 First  的记录，那么返回的记录数上限等于 First  。 同样，如果 top  或 limit  小于 First  ，那么返回的记录集小于 top  或 limit  配置的值。
 
@@ -61,11 +61,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-在 [REST API](https://docs.microsoft.com/en-us/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，控制措施是 $skip  ，它属于 QueryRequestOptions  。
+在 [REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，控制措施是 $skip  ，它属于 QueryRequestOptions  。
 
 ## <a name="paging-results"></a>分页结果
 
-如果有必要将结果集拆分为更小的记录集进行处理，或者结果集会超过允许的最大返回记录数（即 1000  ），请使用分页。 [REST API](https://docs.microsoft.com/en-us/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) QueryResponse  提供了指明结果集已被拆分的值：resultTruncated  和 $skipToken  。
+如果有必要将结果集拆分为更小的记录集进行处理，或者结果集会超过允许的最大返回记录数（即 1000  ），请使用分页。 [REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** 提供指示结果集已拆分的值：**resultTruncated** 和 **$skipToken**。
 resultTruncated  是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count  属性小于 totalRecords  属性，也可以确定此条件。 totalRecords  定义匹配查询的记录数。
 
 如果 resultTruncated  为 true  ，便会在响应中设置 $skipToken  属性。 此值与相同的查询值及订阅值一起使用，以获取与查询匹配的下一个记录集。
@@ -83,7 +83,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > 查询必须投射  ID  字段，这样分页才能生效。 如果查询中缺少 ID 字段，响应中不会包含 $skipToken  。
 
-有关示例，请参阅 REST API 文档中的[下一页查询](https://docs.microsoft.com/en-us/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query)。
+有关示例，请参阅 REST API 文档中的[下一页查询](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query)。
 
 ## <a name="formatting-results"></a>设置结果的格式
 

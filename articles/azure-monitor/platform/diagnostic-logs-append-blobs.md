@@ -9,12 +9,12 @@ origin.date: 07/06/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: cce417e775dcd0f0f99731d65e5d7fbd3d9d9f81
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 226b63f0967062175b77c35b18483d86e933de47
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599894"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497517"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备
 
@@ -33,7 +33,7 @@ Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送
 * 此更改将同时在所有公有云区域中发生。 Azure 中国、Azure 德国或 Azure 中国云中还不会进行此更改。
 * 此更改会影响以下数据类型：
   * [Azure 资源诊断日志](../../azure-monitor/platform/resource-logs-collect-storage.md) 
-  * [由诊断设置导出的 Azure 资源指标](../../azure-monitor/platform/resource-logs-overview.md)
+  * [由诊断设置导出的 Azure 资源指标](diagnostic-settings.md)
 * 此更改不会影响：
   * 网络流日志
   * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务资源日志、存储分析日志）
@@ -135,4 +135,4 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[将资源诊断日志存档到存储帐户](../../azure-monitor/platform/resource-logs-collect-storage.md)
+* 了解如何[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)

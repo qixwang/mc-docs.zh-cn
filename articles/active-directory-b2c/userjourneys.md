@@ -2,21 +2,20 @@
 title: UserJourneys | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 UserJourneys 元素。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 06/05/2019
+ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 19ab234e30a056e63b0c62b76cbb166c786a8c8f
-ms.sourcegitcommit: 26e99f63fe3c2ffbdcdcc17691199bbacabdd048
+ms.openlocfilehash: 1f5f3774c2dfb0832e297be20d8c65de9eda1f52
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687635"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531322"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -84,7 +83,7 @@ Preconditions  元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- | 
-| Precondition | 0:n | 具体取决于正在使用的技术配置文件，根据声明提供程序选择重定向客户端或对交换声明进行服务器调用。 | 
+| Precondition | 1:n | 具体取决于正在使用的技术配置文件，根据声明提供程序选择重定向客户端或对交换声明进行服务器调用。 | 
 
 
 #### <a name="precondition"></a>Precondition
@@ -162,11 +161,17 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 
 类型 `ClaimsProviderSelection` 或 `CombinedSignInAndSignUp` 的业务流程步骤可能包含用户可以登录的声明提供程序列表。 `ClaimsProviderSelections` 元素内的元素顺序控制提供给用户的标识提供程序的顺序。
 
-ClaimsProviderSelection  元素包含以下元素：
+**ClaimsProviderSelections** 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| ClaimsProviderSelection | 0:n | 提供可以选择的声明提供程序的列表。|
+| ClaimsProviderSelection | 1:n | 提供可以选择的声明提供程序的列表。|
+
+**ClaimsProviderSelections** 元素包含以下属性： 
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| DisplayOption| 否 | 控制单个声明提供程序选择可用时的行为。 可能的值： `DoNotShowSingleProvider` （默认值），用户将立即重定向到联合标识提供者。 或  `ShowSingleProvider` Azure AD B2C 会显示带有单一个标识提供者选择的登录页。 若要使用此属性，[内容定义版本](page-layout.md)必须为  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 及更高版本。| 
 
 ClaimsProviderSelection  元素包含以下属性： 
 
@@ -212,7 +217,7 @@ ClaimsExchanges  元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 0:n | 具体取决于正在使用的技术配置文件，根据所选的 ClaimsProviderSelection 重定向客户端，或对交换声明进行服务器调用。 | 
+| ClaimsExchange | 1:n | 具体取决于正在使用的技术配置文件，根据所选的 ClaimsProviderSelection 重定向客户端，或对交换声明进行服务器调用。 | 
 
 ClaimsExchange  元素包含以下属性：
 

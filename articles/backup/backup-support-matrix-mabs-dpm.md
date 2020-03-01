@@ -6,12 +6,12 @@ origin.date: 02/17/2019
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.author: v-lingwu
-ms.openlocfilehash: 24ecafc3a11ea043019a591d59b41f5d232405a9
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: d094f748ff48f84ca380b056a62d54f5debac83d
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854359"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497544"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -77,6 +77,9 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 **Azure VM 上的 DPM** | System Center 2012 R2 Update 3 或更高版本。<br/><br/> 符合 [System Center 要求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 操作系统。<br/><br/> 我们建议从市场中提供的映像着手。<br/><br/> 至少应使用具有两个核心、3.5 GB RAM 的 A2 标准大小。
 **本地 MABS** | 支持的 64 位操作系统：<br/><br/> MABS v3 和更高版本：Windows Server 2019（Standard、Datacenter、Essentials）。 <br/><br/> MABS v2 和更高版本：Windows Server 2016（Standard、Datacenter、Essentials）。<br/><br/> 所有 MABS 版本： Windows Server 2012 R2。<br/><br/>所有 MABS 版本：Windows Storage Server 2012 R2。
 **本地 DPM** | 物理服务器/Hyper-V VM：System Center 2012 SP1 或更高版本。<br/><br/> VMware VM：System Center 2012 R2 Update 5 或更高版本。
+
+>[!NOTE]
+>Windows Server Core 或 Microsoft Hyper-V Server 不支持安装 Azure 备份服务器。
 
 ## <a name="management-support"></a>管理支持
 

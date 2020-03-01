@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/17/2019
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 6275f845958434c86ab8d32f1d147d4c7ec7ac3d
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 0c0a8d4d3270d19bf7b12857e36cceb77c82505f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939794"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494486"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>从 Windows Azure 媒体编码器迁移到 Media Encoder Standard
 
-本文讨论了从旧版 Windows Azure 媒体编码器 (WAME) 媒体处理器（将于 2020 年 3 月 31 日停用）迁移到 Media Encoder Standard 媒体处理器的步骤。
+本文介绍了从旧 Windows Azure 媒体编码器 (WAME) 媒体处理器（即将停用）迁移到 Media Encoder Standard 媒体处理器的步骤。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 使用 WAME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 WAME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
 

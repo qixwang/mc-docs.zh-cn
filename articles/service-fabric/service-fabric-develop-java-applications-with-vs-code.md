@@ -1,17 +1,17 @@
 ---
-title: 使用 Visual Studio Code 开发 Java Azure Service Fabric 应用程序
+title: 使用 Visual Studio Code 开发 Java 应用程序
 description: 本文介绍如何使用 Visual Studio Code 生成、部署和调试 Java Service Fabric 应用程序。
 author: rockboyfor
 ms.topic: article
 origin.date: 06/29/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ff1b24e3de4252071ff0fcc0864e947b5181f4c8
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 4278d51d36af2a1e6b6fd0974a606d91b1637853
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742400"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539981"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 Java Service Fabric 应用程序
 

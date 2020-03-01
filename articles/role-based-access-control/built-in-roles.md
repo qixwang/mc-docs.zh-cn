@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/10/2020
+ms.date: 02/19/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ff3342c4128515d8262731ea07ab971eec00f84a
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: fd642299e22bdbe55242ffda831b53f3dd0217a9
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128872"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494034"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -152,9 +152,9 @@ ms.locfileid: "77128872"
 > | [存储 Blob 数据所有者](#storage-blob-data-owner) | 提供对 Azure 存储 blob 容器和数据的完全访问权限，包括分配 POSIX 访问控制。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [存储 Blob 数据读者](#storage-blob-data-reader) | 读取和列出 Azure 存储容器与 Blob。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [存储 Blob 代理](#storage-blob-delegator) | 获取用户委托密钥，该密钥随后可用来为通过 Azure AD 凭据签名的容器或 Blob 创建共享访问签名。 有关详细信息，请参阅[创建用户委托 SAS](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [存储文件数据 SMB 共享参与者](#storage-file-data-smb-share-contributor) | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入和删除访问 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [存储文件数据 SMB 共享的权限提升参与者](#storage-file-data-smb-share-elevated-contributor) | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入、删除和修改 NTFS 权限的访问 | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [存储文件数据 SMB 共享读取者](#storage-file-data-smb-share-reader) | 允许通过 SMB 对 Azure 文件共享进行读取访问 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [存储文件数据 SMB 共享参与者](#storage-file-data-smb-share-contributor) | 允许对 Azure 文件共享中的文件/目录进行读取、写入和删除访问。 此角色在 Windows 文件服务器上没有内置的等效角色。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [存储文件数据 SMB 共享的权限提升参与者](#storage-file-data-smb-share-elevated-contributor) | 允许读取、写入、删除和修改 Azure 文件共享中文件/目录上的 ACL。 此角色等效于 Windows 文件服务器上的文件共享更改 ACL。 | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [存储文件数据 SMB 共享读取者](#storage-file-data-smb-share-reader) | 允许对 Azure 文件共享中的文件/目录进行读取访问。 此角色等效于 Windows 文件服务器上的文件共享读取 ACL。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [存储队列数据参与者](#storage-queue-data-contributor) | 读取、写入和删除 Azure 存储队列与队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [存储队列数据消息处理者](#storage-queue-data-message-processor) | 在 Azure 存储队列中扫视、检索和删除消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [存储队列数据消息发送者](#storage-queue-data-message-sender) | 向 Azure 存储队列添加消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -422,7 +422,8 @@ ms.locfileid: "77128872"
 > | Id  | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
+> | Microsoft.Insights/alertRules/* | 创建和管理经典警报规则 |
+> | Microsoft.Insights/metricAlerts/* | 创建和管理新警报规则 |
 > | Microsoft.Insights/components/* | 创建和管理 Insights 组件 |
 > | Microsoft.Insights/webtests/* | 创建和管理 Web 测试 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -723,6 +724,92 @@ ms.locfileid: "77128872"
 > | *无* |  |
 > | **DataActions** |  |
 > | Microsoft.Maps/accounts/data/read | 授予对映射帐户的数据读权限。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-sentinel-contributor"></a>Azure Sentinel 参与者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | Azure Sentinel 参与者 |
+> | Id  | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | **操作** |  |
+> | Microsoft.SecurityInsights/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
+> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
+> | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
+> | Microsoft.OperationalInsights/workspaces/query/read | 对工作区中的数据运行查询 |
+> | Microsoft.OperationalInsights/workspaces/query/*/read |  |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | Microsoft.Insights/workbooks/* |  |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-sentinel-reader"></a>Azure Sentinel 读取者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | Azure Sentinel 读取者 |
+> | Id  | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | **操作** |  |
+> | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
+> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
+> | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
+> | Microsoft.OperationalInsights/workspaces/query/read | 对工作区中的数据运行查询 |
+> | Microsoft.OperationalInsights/workspaces/query/*/read |  |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | Microsoft.Insights/workbooks/read | 读取工作簿 |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="azure-sentinel-responder"></a>Azure Sentinel 响应方
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | Azure Sentinel 响应方 |
+> | Id  | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | **操作** |  |
+> | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/cases/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
+> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
+> | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
+> | Microsoft.OperationalInsights/workspaces/query/read | 对工作区中的数据运行查询 |
+> | Microsoft.OperationalInsights/workspaces/query/*/read |  |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | Microsoft.Insights/workbooks/read | 读取工作簿 |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -1515,6 +1602,24 @@ ms.locfileid: "77128872"
 > | Microsoft.DataLakeAnalytics/accounts/firewallRules/Delete | 删除防火墙规则。 |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | 创建或更新计算策略。 |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | 删除计算策略。 |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="data-purger"></a>数据清除程序
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可清除分析数据 |
+> | Id  | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | **操作** |  |
+> | Microsoft.Insights/components/*/read |  |
+> | Microsoft.Insights/components/purge/action | 从 Application Insights 清除数据 |
+> | Microsoft.OperationalInsights/workspaces/*/read |  |
+> | Microsoft.OperationalInsights/workspaces/purge/action | 从工作区中删除指定数据 |
+> | **不操作** |  |
+> | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -2810,7 +2915,7 @@ ms.locfileid: "77128872"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入和删除访问 |
+> | **说明** | 允许对 Azure 文件共享中的文件/目录进行读取、写入和删除访问。 此角色在 Windows 文件服务器上没有内置的等效角色。 |
 > | Id  | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | **操作** |  |
 > | *无* |  |
@@ -2827,7 +2932,7 @@ ms.locfileid: "77128872"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许通过 SMB 在 Azure 存储文件共享中进行读取、写入、删除和修改 NTFS 权限的访问 |
+> | **说明** | 允许读取、写入、删除和修改 Azure 文件共享中文件/目录上的 ACL。 此角色等效于 Windows 文件服务器上的文件共享更改 ACL。 |
 > | Id  | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **操作** |  |
 > | *无* |  |
@@ -2845,7 +2950,7 @@ ms.locfileid: "77128872"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许通过 SMB 对 Azure 文件共享进行读取访问 |
+> | **说明** | 允许对 Azure 文件共享中的文件/目录进行读取访问。 此角色等效于 Windows 文件服务器上的文件共享读取 ACL。 |
 > | Id  | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | **操作** |  |
 > | *无* |  |

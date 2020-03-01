@@ -11,15 +11,15 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 05/30/2019
+origin.date: 01/13/2020
 ms.author: v-yiso
-ms.date: 06/17/2019
-ms.openlocfilehash: 879e6fe648681f8e67fc2dfc770437bbc21a018b
-ms.sourcegitcommit: 1ebfbb6f29eda7ca7f03af92eee0242ea0b30953
+ms.date: 02/24/2020
+ms.openlocfilehash: 4190c02adb9a8eff41794c19514a1fa56b5179c9
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732499"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428632"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
@@ -28,7 +28,12 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 有关使用客户端证书保护对 API 后端服务的访问（即，API 管理到后端）的信息，请参阅[如何使用客户端证书身份验证保护后端服务](./api-management-howto-mutual-certificates.md)
 
 > [!IMPORTANT]
-> 若要在“消耗”层中接收并验证客户端证书，必须先在“自定义域”边栏选项卡上启用“请求客户端证书”设置，如下所示。
+> 若要在开发人员层、基本层、标准层或高级层中通过 HTTP/2 接收和验证客户端证书，必须在“自定义域”边栏选项卡上启用“协商客户端证书”设置，如下所示。
+
+![协商客户端证书](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+> [!IMPORTANT]
+> 若要在“消耗”层中接收并验证客户端证书，必须在“自定义域”边栏选项卡上启用“请求客户端证书”设置，如下所示。
 
 ![请求客户端证书](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
@@ -56,7 +61,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify() || context.Request.Certificate.Thumbprint != "desired-thumbprint")" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify() || context.Request.Certificate.Thumbprint != "DESIRED-THUMBPRINT-IN-UPPER-CASE")" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>

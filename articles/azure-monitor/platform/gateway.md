@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 12/24/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7edbb6a455eacea546dfb1b4853d0ae2f2607ed6
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: f8fbc0d5bad62a8294cd2186696a6f266f0082cd
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600123"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497441"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
@@ -59,7 +59,7 @@ Log Analytics 网关直接将数据从代理传输到服务。 它不会分析�
 指定为运行 Log Analytics 网关的计算机必须采用以下配置：
 
 * Windows 10、Windows 8.1 或 Windows 7
-* Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 或 Windows Server 2008
+* Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 或 Windows Server 2008
 * Microsoft .NET Framework 4.5
 * 4 核处理器，8 GB 内存（最低要求） 
 * 配置的[适用于 Windows 的 Log Analytics 代理](agent-windows.md)可以在代理通过网关通信时向同一工作区报告。
@@ -87,7 +87,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 ## <a name="download-the-log-analytics-gateway"></a>下载 Log Analytics 网关
 
-从  [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=54443)或 Azure 门户获取最新版本的 Log Analytics 网关安装程序文件。
+从 Microsoft 下载中心（[下载链接](https://go.microsoft.com/fwlink/?linkid=837444)）或 Azure 门户获取最新版本的 Log Analytics 网关安装程序文件。
 
 若要从 Azure 门户获取 Log Analytics 网关，请执行以下步骤：
 
@@ -191,7 +191,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 > 使用**基本 SKU** 配置 Azure 负载均衡器需要 Azure 虚拟机属于某个可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../virtual-machines/windows/manage-availability.md)。 若要将现有的虚拟机添加到可用性集，请参阅[设置 Azure 资源管理器 VM 可用性集](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)。
 > 
 
-创建负载均衡器后，需要创建一个后端池，以便将流量分发到一个或多个网关服务器。 请遵循该快速入门文章的[为负载均衡器创建资源](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer)部分所述的步骤。  
+创建负载均衡器后，需要创建一个后端池，以便将流量分发到一个或多个网关服务器。 请遵循该快速入门文章的[为负载均衡器创建资源](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)部分所述的步骤。  
 
 >[!NOTE]
 >配置运行状况探测时，应将它配置为使用网关服务器的 TCP 端口。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除网关服务器。 
@@ -307,7 +307,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 如果步骤 3 出错，则表示该模块未导入。 如果 PowerShell 找不到该模块，则可能会发生此错误。 可以在 OMS 网关安装路径中找到该模块：*C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*。
 
-| **Cmdlet** | **参数** | **说明** | **示例** |
+| **Cmdlet** | **Parameters** | **说明** | **示例** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |键 |获取服务的配置 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |密钥（必需） <br> Value |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  

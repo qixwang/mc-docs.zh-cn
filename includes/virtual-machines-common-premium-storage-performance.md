@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 07/08/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: fefcaf74d5651fc0ae60c2f0cc75db67dff960f5
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: e1834e209678bcb66adbed869988bc1978a25a7d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831354"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428770"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -58,7 +58,7 @@ IOPS，或每秒输入/输出操作，是指应用程序在一秒内发送到存
 - 从快照创建托管磁盘
 - 将非托管磁盘转换为托管磁盘
 
-# <a name="performance-application-checklist-for-disks"></a>磁盘性能应用程序清单
+## <a name="performance-application-checklist-for-disks"></a>磁盘性能应用程序清单
 
 设计在 Azure 高级存储上运行的高性能应用程序时，第一步是了解应用程序的性能要求。 收集性能要求后，即可优化应用程序，使性能得到最大优化。
 
@@ -129,7 +129,7 @@ PerfMon 计数器适用于处理器、内存以及服务器的每个逻辑磁盘
 | **IO 大小** |IO 大小越小，产生的 IOPS 越高。 |IO 大小越大，产生的吞吐量越大。 | &nbsp;|
 | **VM 大小** |使用所提供的 IOPS 超出应用程序要求的 VM 大小。 |使用 VM 大小时，应确保吞吐量限制超出应用程序要求。 |使用所提供的规模限制超出应用程序要求的 VM 大小。 |
 | **磁盘大小** |使用所提供的 IOPS 超出应用程序要求的磁盘大小。 |使用磁盘大小时，应确保吞吐量限制超出应用程序要求。 |使用所提供的规模限制超出应用程序要求的磁盘大小。 |
-| **VM 和磁盘规模限制** |所选 VM 大小的 IOPS 限制应大于已连接的高级存储磁盘所要求的总 IOPS。 |所选 VM 大小的吞吐量限制应大于已连接的高级存储磁盘所要求的总吞吐量。 |所选 VM 大小的规模限制必须大于已连接高级存储磁盘的总规模限制。 |
+| **VM 和磁盘规模限制** |所选 VM 大小的 IOPS 限制应大于连接到它的存储磁盘所驱动的总 IOPS。 |所选 VM 大小的吞吐量限制应大于已连接的高级存储磁盘所要求的总吞吐量。 |所选 VM 大小的规模限制必须大于已连接高级存储磁盘的总规模限制。 |
 | **磁盘缓存** |在需要进行大量读取操作的高级存储磁盘上启用 ReadOnly 缓存，以便提高读取 IOPS。 | &nbsp; |在需要进行大量读取操作的高级存储磁盘上启用 ReadOnly 缓存，以便尽量降低读取延迟。 |
 | **磁盘条带化** |使用多个磁盘并将其条带化，获得更高的 IOPS 和吞吐量组合限制。 单个 VM 的组合限制应高于所连接的高级磁盘的组合限制。 | &nbsp; | &nbsp; |
 | **条带大小** |较小的条带大小适用于随机小型 IO 模式，见于 OLTP 应用程序。 例如，SQL Server OLTP 应用程序使用 64 KB 的条带大小。 |较大的条带大小适用于顺序大型 IO 模式，见于数据仓库应用程序。 例如，SQL Server 数据仓库应用程序使用 256 KB 的条带大小。 | &nbsp; |
@@ -167,17 +167,17 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 要获取比单个高级存储磁盘的最大值还要高的 IOPS 和带宽，可将多个高级磁盘一起条带化。 例如，将两个 P30 磁盘条带化得到的组合 IOPS 为 10,000 IOPS，得到的组合吞吐量为 400 MB/秒。 如下一部分所述，必须使用支持磁盘 IOPS 和吞吐量组合的 VM 大小。
 
 > [!NOTE]
-> 增加 IOPS 或吞吐量这两个指标中的其中一个时，另一指标也将增加，因此增加任一指标时都请勿超过磁盘或 VM 的吞吐量或 IOPS 限制。
+> 增加 IOPS 或吞吐量这两个指标中的其中一个时，另一个指标也会增加，因此请确保在增加任何一个指标时不要超过磁盘或 VM 的吞吐量或 IOPS 限制。
 
 若要了解 IO 大小对应用程序性能的影响，可在 VM 和磁盘上运行基准测试工具。 创建多个测试运行并对每个运行使用不同的 IO 大小，即可观察相应的影响。 有关更多详细信息，请参阅最后链接的“基准测试”一文。
 
 ## <a name="high-scale-vm-sizes"></a>大型 VM 大小
 
-开始设计应用程序时，首要操作之一是选择用于承载应用程序的 VM。 高级存储提供高规格 VM 大小，可以运行需要更高计算能力和高的本地磁盘 I/O 性能的应用程序。 这些 VM 为本地磁盘提供更快的处理器、更高的内存内核比和固态驱动器 (SSD)。 DS 和 DSv2 VM 都是支持高级存储的高规格 VM 的例子。
+开始设计应用程序时，首要操作之一是选择用于承载应用程序的 VM。 高级存储提供高规格 VM 大小，可以运行需要更高计算能力和高的本地磁盘 I/O 性能的应用程序。 这些 VM 为本地磁盘提供更快的处理器、更高的内存内核比和固态驱动器 (SSD)。 DS VM 是支持高级存储的大规模 VM 的例子。
 
 <!-- Not Available on and GS series -->
 
-高规格 VM 提供不同的大小、不同数目的 CPU 内核、内存、OS 和临时磁盘大小。 每种 VM 大小还设置了可以连接到 VM 的最大数目的数据磁盘。 因此，所选 VM 大小会影响提供给应用程序的处理能力、内存大小和存储容量。 它还会影响计算和存储成本。 例如，以下是 DS 系列和 DSv2 系列中最大 VM 大小的规格：
+高规格 VM 提供不同的大小、不同数目的 CPU 内核、内存、OS 和临时磁盘大小。 每种 VM 大小还设置了可以连接到 VM 的最大数目的数据磁盘。 因此，所选 VM 大小会影响提供给应用程序的处理能力、内存大小和存储容量。 它还会影响计算和存储成本。 例如，以下是 DS 系列中最大 VM 的规格：
 
 <!-- Not Available on and GS series -->
 
@@ -219,7 +219,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 *Linux 发行版*  
 
-使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同级别的性能。 支持多种 Linux 发行版，可在[此处](../articles/virtual-machines/linux/endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版，所见性能级别会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
+使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同的性能级别。 支持多种 Linux 发行版，可在[此处](../articles/virtual-machines/linux/endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版，所见性能级别会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
 
 使用高级存储运行 Linux 时，请查看与所需驱动程序相关的最新更新，确保实现高性能。
 
@@ -273,7 +273,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 | ReadWrite |如果应用程序可以在需要时将缓存数据正确写入永久性磁盘，则可将 host-cache 配置为 ReadWrite。 |
 
 *ReadOnly*  
-在高级存储数据磁盘上配置 ReadOnly 缓存，可以为应用程序实现较低的读取延迟，并获得极高的读取 IOPS 和吞吐量。 这有两个原因。
+通过在高级存储数据磁盘上配置 ReadOnly 缓存，可以为应用程序实现较低的读取延迟，并获得极高的读取 IOPS 和吞吐量。 这有两个原因。
 
 1. 通过缓存执行的读取操作发生在 VM 内存和本地 SSD 上，其速度要大大快于从数据磁盘进行的读取操作，后者发生在 Azure Blob 存储上。  
 1. 高级存储不会将从缓存提供的读取操作计入磁盘 IOPS 和吞吐量。 因此，应用程序能够实现更高的总 IOPS 和吞吐量。
@@ -310,14 +310,14 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 | 分发 | 版本 | 支持的内核 | 详细信息 |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 或更高版本| 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 或更高版本| 3.13.0-44.73+  | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Ubuntu | 12.04 或更高版本| 3.2.0-75.110+ | &nbsp; |
+| Ubuntu | 14.04 或更高版本| 3.13.0-44.73+  | &nbsp; |
 | Debian | 7.x、8.x 或更高版本| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 或更高版本| 3.12.36-38.1+ | suse-sles-12-priority-v20150213 <br /> suse-sles-12-v20150213 |
+| SUSE | SLES 12 或更高版本| 3.12.36-38.1+ | &nbsp; |
 | SUSE | SLES 11 SP4 或更高版本| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ 或更高版本| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5、6.6、6.7、7.0 或更高版本| &nbsp; | [需要 LIS4](https://www.microsoft.com/download/details.aspx?id=51612) <br /> *请参阅下一部分中的注释* |
-| CentOS | 7.1+ 或更高版本| 3.10.0-229.1.2.el7+ | [建议使用 LIS4](https://www.microsoft.com/download/details.aspx?id=51612) <br /> *请参阅下一部分中的注释* |
+| CoreOS | 584.0.0+ 或更高版本| 3.18.4+ | &nbsp; |
+| CentOS | 6.5、6.6、6.7、7.0 或更高版本| &nbsp; | [需要 LIS4](https://www.microsoft.com/download/details.aspx?id=55106) <br /> *请参阅下一部分中的注释* |
+| CentOS | 7.1+ 或更高版本| 3.10.0-229.1.2.el7+ | [建议使用 LIS4](https://www.microsoft.com/download/details.aspx?id=55106) <br /> *请参阅下一部分中的注释* |
 
 <!--Not Available on | Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |-->
 <!--Not Available on | Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 or RHCK |-->
@@ -329,11 +329,12 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 运行 OpenLogic CentOS VM 时，请运行以下命令来安装最新的驱动程序：
 
 ```
-sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
+sudo reboot
 ```
 
-若要激活新驱动程序，请重启 VM。
+在某些情况下，上述命令还会升级内核。 如果需要内核更新，则可能需要在重新启动后再次运行上述命令以完全安装 microsoft-hyper-v 包。
 
 ## <a name="disk-striping"></a>磁盘条带化
 

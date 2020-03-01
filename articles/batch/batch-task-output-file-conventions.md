@@ -1,6 +1,6 @@
 ---
-title: 使用适用于 .NET 的文件约定库将作业和任务输出持久保存到 Azure 存储 - Azure Batch | Azure Docs
-description: 了解如何在 Azure 门户中使用适用于 .NET 的 Azure Batch 文件约定库将 Batch 任务和作业输出持久保存到 Azure 存储，并查看持久保存的输出。
+title: 使用 .NET 文件约定库将输出数据持久保存到 Azure 存储 - Azure Batch
+description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将 Batch 任务和作业输出持久保存到 Azure 存储，然后在 Azure 门户中查看该输出。
 services: batch
 documentationcenter: .net
 author: lingliw
@@ -15,12 +15,12 @@ origin.date: 11/14/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c2d176b1776aa5ac92f85f9cfcf52b10f9ef46c
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.openlocfilehash: 58da4cad970679781452466ef6c6c66294e24e69
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041112"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497356"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -38,7 +38,7 @@ ms.locfileid: "73041112"
 Azure Batch 提供多种持久保存任务输出的方式。 文件约定库最适合以下情形：
 
 - 可以轻松地修改任务正在运行的应用程序的代码，以便使用文件约定库来持久保存文件。
-- 希望在任务仍然运行时，将数据流式传输到 Azure 存储。
+- 需要在任务仍运行的情况下，将数据流式传输到 Azure 存储。
 - 需要在使用云服务配置或虚拟机配置创建的池中持久保存数据。
 - 客户端应用程序或作业中的其他任务需按 ID 或用途找出并下载任务输出文件。
 - 需在 Azure 门户中查看任务输出。
@@ -47,7 +47,7 @@ Azure Batch 提供多种持久保存任务输出的方式。 文件约定库最�
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Batch 文件约定标准是什么？
 
-[Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)为需将输出文件写入到其中的目标容器和 Blob 路径提供命名方案。 根据文件约定标准持久保存到 Azure 存储的文件可以自动在 Azure 门户中查看。 门户能感知命名约定，因此可以显示遵循该约定 的文件。
+[Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)为需将输出文件写入到其中的目标容器和 Blob 路径提供命名方案。 根据文件约定标准持久保存到 Azure 存储的文件可以自动在 Azure 门户中查看。 门户能感知命名约定，因此可以显示遵循该约定 的文件。
 
 适用于 .NET 的文件约定库会自动根据文件约定标准，为存储容器和任务输出文件命名。 文件约定库还提供方法，用于在 Azure 存储中按作业 ID、任务 ID 或用途查询输出文件。
 

@@ -1,5 +1,5 @@
 ---
-title: 在订阅、资源组或区域之间移动逻辑应用资源 - Azure 逻辑应用
+title: 跨订阅、资源组或区域移动逻辑应用
 description: 将逻辑应用或集成帐户迁移到其他 Azure 订阅、资源组或位置（区域）
 services: logic-apps
 ms.service: logic-apps
@@ -9,25 +9,25 @@ ms.author: v-yiso
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 origin.date: 07/31/2019
-ms.date: 09/09/2019
-ms.openlocfilehash: da89349d265bd65ddb29a257d3de3217c3778936
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.date: 02/24/2020
+ms.openlocfilehash: bc28034f9a2c574930ca9c126c7202f19294ac95
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174547"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428914"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>将逻辑应用资源迁移到其他 Azure 订阅、资源组或区域
+# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>将逻辑应用资源移到其他 Azure 订阅、资源组或区域
 
 若要将逻辑应用或相关资源移到另一个 Azure 订阅、资源组或区域，可以通过多种方式来完成这些任务，例如使用 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
 
-* 只能在 Azure 资源组或订阅之间移动[特定的逻辑应用资源类型](../azure-resource-manager/move-support-resources.md#microsoftlogic)。
+* 只能在 Azure 资源组或订阅之间移动[特定的逻辑应用资源类型](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)。
 
 * 检查可在 Azure 订阅中和每个 Azure 区域中使用的逻辑应用资源数[限制](../logic-apps/logic-apps-limits-and-config.md)。 当不同订阅或资源组所在的区域相同时，这些限制会影响到能否移动特定的资源类型。 例如，对于每个 Azure 区域中的每个 Azure 订阅，只能使用一个免费层集成帐户。
 
 * 移动资源时，Azure 将创建新的资源 ID。 因此，请确保改用新的 ID，并更新与所要移动的资源关联的任何脚本或工具。 在订阅、资源组或区域之间移动逻辑应用后，必须重新创建或重新授权任何基于 OAuth 的连接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 创建要移动的逻辑应用或集成帐户时所用的同一个 Azure 订阅
 
@@ -37,7 +37,7 @@ ms.locfileid: "70174547"
 
 ## <a name="move-resources-between-subscriptions"></a>在订阅之间移动资源
 
-若要将某个资源（例如逻辑应用或集成帐户）移到另一个 Azure 订阅，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+若要将某个资源（例如逻辑应用或集成帐户）移到另一个 Azure 订阅，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，找到并选择要移动的逻辑应用资源。
 
@@ -55,9 +55,9 @@ ms.locfileid: "70174547"
 
 ## <a name="move-resources-between-resource-groups"></a>在资源组之间移动资源
 
-若要将某个资源（例如逻辑应用或集成帐户）移到另一个 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+若要将某个资源（例如逻辑应用或集成帐户）移到另一个 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-在组之间实际移动资源之前，可以测试是否能够成功地将资源移到另一个组。 有关详细信息，请参阅[验证移动](../azure-resource-manager/resource-group-move-resources.md#validate-move)。
+在组之间实际移动资源之前，可以测试是否能够成功地将资源移到另一个组。 有关详细信息，请参阅[验证移动](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)。
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，找到并选择要移动的逻辑应用资源。
 
@@ -110,4 +110,4 @@ ms.locfileid: "70174547"
 
 ## <a name="next-steps"></a>后续步骤
 
-[将 Azure 资源移到新资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)
+[将 Azure 资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)

@@ -15,12 +15,12 @@ origin.date: 02/26/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87b4434724409c1a05e6c56e67d3713861c264e2
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: bc8d72f1cf418c25ebdf370019b3375b20af995d
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839049"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497545"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -118,6 +118,14 @@ ms.locfileid: "74839049"
 
 ![Azure Batch 的机密权限](./media/batch-account-create-portal/secret-permissions.png)
 
+
+> [!NOTE]
+> 确保在链接的**密钥保管库**资源的“访问策略”  下选中“用于部署的 Azure 虚拟机”  和“用于模板部署的 Azure 资源管理器”  复选框。
+> 
+> ![强制实施密钥保管库访问策略](./media/batch-account-create-portal/key-vault-access-policy.png)在 Azure 门户中创建 Batch 帐户时，这不是必需的。 此选项默认情况下已选中。
+
+
+
 ### <a name="configure-subscription-quotas"></a>配置订阅配额
 
 默认情况下，不在用户订阅 Batch 帐户上设置核心配额。 核心配额必须手动设置，因为标准 Batch 核心配额不适用于用户订阅模式下的帐户。
@@ -131,7 +139,7 @@ ms.locfileid: "74839049"
 ## <a name="other-batch-account-management-options"></a>其他 Batch 帐户管理选项
 除了使用 Azure 门户外，还可使用以下工具创建和管理 Batch 帐户：
 
-* [批处理 PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
+* [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md)
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 origin.date: 10/15/2019
 ms.date: 11/11/2019
-ms.openlocfilehash: b06a63c8c7a15bb5fdaf2efa249cb94e73b92e9e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: a6fc57e903c245f242c0f70a6436b3faa04c8b4c
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389404"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428731"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -49,7 +49,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 
 部署 HDInsight 群集之后，可以附加更多 Azure 存储帐户，或访问其他 Data Lake Storage。 所有存储帐户必须与群集位于同一位置。 Data Lake Storage 可以位于不同的位置，不过，这可能会造成某种程度的数据读/写延迟。
 
-Azure 存储具有一些[容量限制](../azure-subscription-service-limits.md#storage-limits)。
+Azure 存储具有某些[容量限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)，而 Data Lake Storage Gen1 几乎不受限制。
 
 群集可以访问不同存储帐户的组合。 典型示例包括：
 
@@ -70,13 +70,7 @@ Azure 存储具有一些[容量限制](../azure-subscription-service-limits.md#s
 
 若要确定应用程序的最佳群集大小，可以建立群集容量基准，并根据指示增加大小。 例如，可以使用模拟工作负荷或“canary 查询”。  使用模拟工作负荷时，可在不同大小的群集上运行预期的工作负荷，并逐渐增加大小，直到达到所需的性能。 可在其他生产查询中定期插入 canary 查询，以显示群集是否具有足够的资源。
 
-VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
-
-* CPU：VM 大小决定了核心数。 核心越多，每个节点可实现的并行计算度就越大。 此外，某些 VM 类型的核心更快。
-
-* RAM：VM 大小还决定了 VM 中可用的 RAM 量。 对于在内存中存储而不是从磁盘读取待处理数据的工作负荷，请确保工作节点能够提供足够的内存来容纳这些数据。
-
-* 网络：对于大多数群集类型，群集处理的数据并不在本地磁盘上，而是在 Data Lake Storage 或 Azure 存储之类的外部存储服务中。 考虑节点 VM 与存储服务之间的网络带宽和吞吐量。 通常，更大 VM 的可用网络带宽越高。 有关详细信息，请参阅 [VM 大小概述](/virtual-machines/linux/sizes)。
+有关如何为工作负荷选择正确的 VM 系列的详细信息，请参阅[为群集选择适当的 VM 大小](hdinsight-selecting-vm-size.md)。
 
 ## <a name="choose-the-cluster-scale"></a>选择群集规模
 
@@ -103,6 +97,16 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 如果需要请求增加配额，请执行以下操作：
 
+若要检查可用核心数，请执行以下步骤：
+
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+2. 导航到 HDInsight 群集的“概述”  页。 
+3. 在左侧菜单上，单击“配额限制”  。
+
+   该页将显示正在使用的核心数、可用核心数和核心总数。
+
+如果需要请求增加配额，请执行以下操作：
+
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 1. 选择页面左下方的“帮助 + 支持”  。
 1. 选择“新建支持请求”  。
@@ -121,7 +125,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 > [!NOTE]  
 > 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。
 
-可以[联系支持部门来请求提高配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
+可以[联系支持部门来请求提高配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 
 但是，存在一些固定的配额限制，例如，单个 Azure 订阅最多只能有 10,000 个核心。 有关这些限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-subscription-service-limits)。
 

@@ -1,5 +1,5 @@
 ---
-title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘的快照 | Azure
+title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘的快照
 description: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（移动）到相同或不同的订阅
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 02/28/2019
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 56d6ef61bdab0b9ea0d09cd9c8a6305281bf369a
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: a77125f82f4e1b4f698fa8ed40ac32ef949779a7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272574"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428789"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>在相同或不同订阅中通过 PowerShell 复制托管磁盘的快照
 
@@ -84,7 +84,7 @@ New-AzSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGr
 | 命令 | 注释 |
 |---|---|
 | [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | 创建用于创建快照的快照配置。 包括父快照的资源 ID 以及与父快照相同的位置。  |
-| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 使用快照配置、快照名称和作为参数传递的资源组名称创建快照。 |
+| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) | 使用快照配置、快照名称和作为参数传递的资源组名称创建快照。 |
 
 ## <a name="next-steps"></a>后续步骤
 

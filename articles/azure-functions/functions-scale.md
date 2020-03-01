@@ -3,14 +3,14 @@ title: Azure Functions 的缩放和托管
 description: 了解如何在 Azure Functions 消耗计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 35576f2badc07c92c2a55affa5cec2b50a6664dd
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 2393622bb6ad08fd76ea7eecce773d1de53cec22
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116834"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494186"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -24,7 +24,7 @@ ms.locfileid: "76116834"
 
 消耗计划在代码运行时自动添加计算能力。 应用在需要处理负载时会横向扩展，在代码停止运行时会缩小。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
 
-选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着，它永远不会缩减为零。 （要求启用 [Always On](#always-on)。）
+选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着，它永远不会缩小到零。 （要求启用 [Always On](#always-on)。）
 
 ## <a name="hosting-plan-support"></a>托管计划支持
 
@@ -125,7 +125,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 需要注意缩放行为的以下几个细节：
 
-* 单个函数应用最多只能纵向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
+* 单个函数应用最多只能横向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
 * 对于 HTTP 触发器，将最多每隔 1 秒分配一次新实例。
 * 对于非 HTTP 触发器，将最多每隔 30 秒分配一次新实例。
 
@@ -136,6 +136,8 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 
 函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
+
+有关在 Node.js 中进行缩放的其他信息，请参阅 [Azure Functions Node.js 开发人员指南 - 缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>计费模式
 

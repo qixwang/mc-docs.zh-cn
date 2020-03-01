@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机代理概述 | Azure
+title: Azure 虚拟机代理概述
 description: Azure 虚拟机代理概述
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 07/20/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 25d0a8ec930491c3f81fed49c57bfb87412abbc0
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 4039e499bbafff54dd20e3012585a9bf59042f5e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831447"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428926"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
 
-本文详细介绍如何安装、检测和删除 Azure 虚拟机代理。
+本文详细介绍如何安装和检测 Azure 虚拟机代理。
 
 ## <a name="install-the-vm-agent"></a>安装 VM 代理
 
@@ -62,14 +62,18 @@ Windows 来宾代理包分为两个部分：
 ### <a name="manual-installation"></a>手动安装
 可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建部署到 Azure 的自定义 VM 映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，[下载 VM 代理安装程序](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM 代理在 Windows Server 2008 R2 和更高版本上受支持。
 
-双击 Windows 安装程序文件即可安装 VM 代理。 若要以自动或无人参与方式安装 VM 代理，请运行以下命令：
+> [!NOTE]
+> 未启用 ProvisionVMAgent 的情况下，在从映像部署的 VM 上手动安装 VMAgent 之后，请务必更新 AllowExtensionOperations 选项。
 
-```cmd
-msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
+```powershell
+$vm.OSProfile.AllowExtensionOperations = $true
+$vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>先决条件
-Windows VM 代理至少需要 Windows Server 2008 R2（64 位）才能与 .NET Framework 4.0 一起运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+### <a name="prerequisites"></a>必备条件
+- Windows VM 代理至少需要 Windows Server 2008 R2（64 位）才能与 .NET Framework 4.0 一起运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+
+- 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](/virtual-network/what-is-ip-address-168-63-129-16)。
 
 ## <a name="detect-the-vm-agent"></a>检测 VM 代理
 
@@ -81,7 +85,7 @@ Windows VM 代理至少需要 Windows Server 2008 R2（64 位）才能与 .NET F
 Get-AzVM
 ```
 
-以下精简示例输出展示了嵌套在 *OSProfile* 内的 *ProvisionVMAgent* 属性。 可以使用该属性来确定 VM 代理是否已部署到 VM：
+以下浓缩版示例输出演示了嵌套在 *OSProfile* 中的 *ProvisionVMAgent* 属性。 此属性可以用来确定 VM 代理是否已部署到 VM：
 
 ```powershell
 OSProfile                  :

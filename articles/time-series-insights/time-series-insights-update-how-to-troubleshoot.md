@@ -2,21 +2,20 @@
 title: 对预览版环境进行诊断和故障排除 - Azure 时序见解 | Microsoft Docs
 description: 了解如何对 Azure 时序见解预览版环境进行诊断和故障排除。
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 12/13/2019
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 41f089cf0588ba98e8893c1fff56ddb54a877c1b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: f6319f5fc22d5b3b55f95d55fd2d61ecbca2221f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068063"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494546"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>对预览版环境进行诊断和故障排除
 
@@ -26,7 +25,7 @@ ms.locfileid: "77068063"
 
 如果无权访问时序见解环境，则可能会发生此问题。 用户需要读者级别访问角色才能查看其时序见解环境。 若要验证当前访问级别并授予其他访问权限，请在 [Azure 门户](https://portal.azure.cn/)中转到时序见解资源上的“数据访问策略”部分。 
 
-  [![验证数据访问策略。](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
+  [![验证数据访问策略。](./media/preview-troubleshoot/verify-data-access-policies.png)](./media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>问题：预览版资源管理器中未显示数据
 
@@ -36,7 +35,7 @@ ms.locfileid: "77068063"
 
     验证事件源（即事件中心或 IoT 中心）是否从标记或实例接收数据。 若要进行验证，请转到 Azure 门户中资源的概览页。
 
-    [![查看仪表板指标概述。](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
+    [![查看仪表板指标概述。](./media/preview-troubleshoot/verify-dashboard-metrics.png)](./media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - 事件源数据不是 JSON 格式。
 
@@ -46,13 +45,13 @@ ms.locfileid: "77068063"
 
   * 对于 IoT 中心，需提供具有“服务连接”  权限的密钥。
 
-    [![验证 IoT 中心权限。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
+    [![验证 IoT 中心权限。](./media/preview-troubleshoot/verify-correct-permissions.png)](./media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
     * “iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限    。
 
   * 对于事件中心，需提供具有“侦听”  权限的密钥。
   
-    [![查看事件中心权限。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
+    [![查看事件中心权限。](./media/preview-troubleshoot/verify-eh-permissions.png)](./media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
     * “读取”和“管理”策略均可使用，因为两者都具有“侦听”权限    。
 
@@ -68,8 +67,7 @@ ms.locfileid: "77068063"
 
 可能在发送数据时没有提供时序 ID。
 
-- 如果在发送事件时有效负载中没有时序 ID 字段，则可能会发生此问题。 有关详细信息，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
-
+- 如果在发送事件时有效负载中没有时序 ID 字段，则可能会发生此问题。 有关详细信息，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 - 可能因环境受限而发生此问题。
 
     > [!NOTE]
@@ -101,7 +99,7 @@ ms.locfileid: "77068063"
 
    时序模型仅在即用即付环境中受支持。 
 
-   [![环境中没有事件。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
+   [![环境中没有事件。](./media/preview-troubleshoot/troubleshoot-no-events.png)](./media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - 你可能无权查看和编辑此模型。
 
@@ -109,13 +107,15 @@ ms.locfileid: "77068063"
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>问题：预览版资源管理器中的所有实例都缺少父级
 
-如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请参阅[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
+如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请阅读[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
 
-  [![无父级实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
+  [![无父级实例将显示警告。](./media/preview-troubleshoot/unparented-instances.png)](./media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
 
 - 了解[支持的 JSON 形状](./how-to-shape-query-json.md)。
+
 - 查看 Azure 时序见解预览版中的[规划和限制](./time-series-insights-update-plan.md)。
+

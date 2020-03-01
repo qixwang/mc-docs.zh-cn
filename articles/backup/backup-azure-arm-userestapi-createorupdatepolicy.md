@@ -8,33 +8,18 @@ origin.date: 08/21/2018
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: eab5a3205cc6f469e7df110c97b071675c28590d
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: a9763384da3d6ab545be9cf48d4acef5c4c91503
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858539"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497553"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
-[策略 REST API 文档](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
+[策略 REST API 文档](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
 
-## <a name="backup-policy-essentials"></a>备份策略概要
-
-- 备份策略是按保管库创建的。
-- 可为以下工作负荷的备份创建备份策略
-  - Azure VM
-  - Azure VM 中的 SQL
-  - Azure 文件共享
-- 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
-- 策略由两个部分组成
-  - 计划：何时创建备份
-  - 保留期：每个备份应保留多长时间。
-- 可将计划定义为带有特定时间点的“每日”或“每周”计划。
-- 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
-- “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
-- “每月”、“每年”备份点的保留期称为“LongTermRetention”。
-- 创建保管库时，也会为 Azure VM 备份创建名为“DefaultPolicy”的策略，此策略可用于备份 Azure VM。
+## <a name="create-or-update-a-policy"></a>创建或更新策略
 
 若要创建或更新 Azure 备份策略，请使用以下 *PUT* 操作
 

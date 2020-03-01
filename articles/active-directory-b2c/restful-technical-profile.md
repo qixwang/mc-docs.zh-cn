@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: b1dd145d1628d190713d47579752fa98b78487f1
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 8cd8c16ff047245eef205013334e57678f44ab21
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028138"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531330"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -129,6 +129,7 @@ Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供�
 | ClaimsFormat | 否 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 |
 | ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明名称。 |
 | DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-error-message)部分。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

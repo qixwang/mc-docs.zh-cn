@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型 | Azure
+title: 使用 Azure CLI 将 VM 迁移到资源管理器
 description: 本文逐步讲解如何使用 Azure CLI 对资源进行平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 03/30/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ec14973fc05918f3cd27b9147b6d995db59bb82
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 432e0f9b71135035d60cc876894a6c35d2728ca4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272332"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428794"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型
 以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure Resource Manager 部署模型。 本文中的操作需要 [Azure 经典 CLI](../../cli-install-nodejs.md)。 由于 Azure CLI 仅适用于 Azure 资源管理器资源，因此它不能用于此迁移。
@@ -85,7 +85,7 @@ ms.locfileid: "72272332"
 azure config mode arm
 ```
 
-可以使用以下 CLI 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
+可以使用以下 CLI 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
 
 <!--MOONCAKE: CORRECT ON limits-and-the-azure-resource-manager  ADD the-->
 
@@ -134,7 +134,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
     azure service deployment commit-migration <serviceName> <deploymentName>
 
-## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
+## <a name="step-4-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
 选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，会收到验证错误消息。
 
 使用以下命令获取订阅中的所有虚拟网络。

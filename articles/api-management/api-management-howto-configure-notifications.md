@@ -11,26 +11,26 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/02/2018
+origin.date: 01/10/2020
 ms.author: v-yiso
-ms.date: 12/31/2018
-ms.openlocfilehash: 6a52c49824505b3e0c3aeedf4aacbe1d431985b4
-ms.sourcegitcommit: 77475d11bc3b6a1fa7ab8aa1421fcdf39c0cd370
+ms.date: 02/24/2020
+ms.openlocfilehash: b00d96d3f4271ce9fe3b2fc0e65e50e0f354f3b4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72323780"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428637"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中配置通知和电子邮件模板
 API 管理提供的功能为特定事件配置通知，以及配置用于与 API 管理实例的管理员及开发人员通信的电子邮件模板。 本文演示如何为可用事件配置通知，并提供配置用于这些事件的电子邮件模板的概述。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 API 管理服务实例，请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="publisher-notifications"></a>配置通知
+## <a name="publisher-notifications"> </a>配置通知
 
 1. 选择 **API 管理**实例。
 2. 单击“通知”  即可查看可用的通知。
@@ -47,6 +47,9 @@ API 管理提供的功能为特定事件配置通知，以及配置用于与 API
     * **关闭帐户消息** - 指定的电子邮件收件人和用户会在关闭帐户时收到电子邮件通知。
     * **接近订阅配额限制** - 以下电子邮件收件人和用户会在订阅使用量接近使用量配额时收到电子邮件通知。
     
+        > [!NOTE]
+        > 通知仅由[按订阅设置配额](api-management-access-restriction-policies.md#SetUsageQuota)策略触发。 [按密钥设置配额](api-management-access-restriction-policies.md#SetUsageQuotaByKey)策略不会生成通知。
+
     对于每个事件，可以指定电子邮件收件人（使用电子邮件地址文本框，或从列表中选择用户）。
 
 3. 要指定被通知的电子邮件地址，请在电子邮件地址文本框中输入。 如果有多个电子邮件地址，请使用逗号分隔。
@@ -54,7 +57,7 @@ API 管理提供的功能为特定事件配置通知，以及配置用于与 API
     ![通知收件人][api-management-email-addresses]
 4. 按“添加”  。
 
-## <a name="email-templates"></a>配置通知模板
+## <a name="email-templates"> </a>配置通知模板
 API 管理提供了在管理和使用服务的过程中发送的电子邮件的通知模板。 提供以下电子邮件模板。
 
 * 批准的应用程序库提交

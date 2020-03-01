@@ -2,21 +2,20 @@
 title: 时序模型 - Azure 时序见解 | Microsoft Docs
 description: 了解 Azure 时序见解预览版中的时序模型
 author: deepakpalled
-ms.author: dpalled
-ms.workload: big-data
+ms.author: v-junlch
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 12/20/2019
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 75d631b65459c7b46bb3141fd40a4aa4604aaaf8
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 53c568b0c4b21a80b9b2caca8ba30d9fe46c42c1
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068055"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494194"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
@@ -49,7 +48,7 @@ ms.locfileid: "77068055"
 
 时序模型为此虚构示例中出现的许多场景提供一个**便利的解决方案**：
 
-[![时序模型智能烤箱图表示例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
+[![时序模型智能烤箱图表示例](./media/v2-update-tsm/time-series-model-smart-oven.png)](./media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
 * 时序模型在查询和导航中起着至关重要的作用，因为它允许跨时间范围以及在传感器与设备类型之间绘制比较比较，因此可将数据上下文化。 (**A**) 
 * 数据之所以能够进一步上下文化，是因为时序模型中保存的数据将时序查询计算结果作为变量保留，并在查询时重新使用这些结果。
@@ -73,7 +72,7 @@ ms.locfileid: "77068055"
 
 组合这些组件可以指定时序模型以及组织 Azure 时序见解数据。
 
-[![时序模型概述图表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
+[![时序模型概述图表](./media/v2-update-tsm/time-series-model-overview.png)](./media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 可以通过[时序见解预览版](time-series-insights-update-how-to-tsm.md)界面来创建和管理时序模型。 可以通过[模型设置 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) 来管理时序模型设置。
 
@@ -91,7 +90,7 @@ ms.locfileid: "77068055"
 
 [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)提供了多个实时实例示例。
 
-[![时序模型实例示例](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
+[![时序模型实例示例](./media/v2-update-tsm/time-series-model-instance.png)](./media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>实例属性
 
@@ -101,6 +100,7 @@ ms.locfileid: "77068055"
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的 UUID。 |
 | typeId | 与实例关联的时序模型类型的 UUID。 默认情况下，所有已发现的新实例都会关联到默认类型。
+| name | **name** 属性可选，区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称，仍然可以在 well 中使用 **timeSeriesId**。 |
 | description | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
 | instanceFields | 实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
@@ -138,7 +138,7 @@ ms.locfileid: "77068055"
 
 [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)客户端界面显示了标准实例和类型层次结构。
 
-[![时序模型层次结构示例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
+[![时序模型层次结构示例](./media/v2-update-tsm/time-series-model-hierarchies.png)](./media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>层次结构定义
 
@@ -226,7 +226,7 @@ ms.locfileid: "77068055"
 
 [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)可视化了与相应实例关联的多个时序模型类型。
 
-[![时序模型类型示例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
+[![时序模型类型示例](./media/v2-update-tsm/time-series-model-types.png)](./media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > 有关时序见解实例 API 和 CRUD 支持，请阅读[数据查询](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)一文和[类型 API REST 文档](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
@@ -294,7 +294,7 @@ ms.locfileid: "77068055"
 
 下表显示了每个变量种类的相关属性。
 
-[![时序模型变量表](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
+[![时序模型变量表](./media/v2-update-tsm/time-series-model-variable-table.png)](./media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>数字变量
 
@@ -392,4 +392,6 @@ ms.locfileid: "77068055"
 - 阅读 [Azure 时序见解预览版存储和引入](./time-series-insights-update-storage-ingress.md)。
 
 - 在 [Azure 时序见解预览版中的数据建模](./time-series-insights-update-how-to-tsm.md)中了解常用的时序模型操作
+
 - 阅读新[时序模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)的参考文档。
+

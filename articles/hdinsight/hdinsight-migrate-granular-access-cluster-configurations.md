@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 08/22/2019
-ms.date: 10/21/2019
-ms.openlocfilehash: 59b48783e9f870e7672bb8f09e3527c034aa1f3c
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.date: 02/24/2020
+ms.openlocfilehash: f7121ae8990720115a97e49aa2c0478d36459416
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292420"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428482"
 ---
 # <a name="Migrate-to-granular-role-based-access-for-cluster-configurations"></a> 迁移到群集配置的基于角色的细化访问权限
 
-我们正在引入一些重要更改，以支持使用更细化的基于角色的访问来获取敏感信息。 在这些更改中，如果你正在使用某个[受影响的实体/方案](#am-i-affected-by-these-changes)，则**可能需要采取某种措施**。
+我们正在引入一些重要更改，以支持使用更细化的基于角色的访问来获取敏感信息。 在实施这些更改的过程中，如果你使用的是某个[受影响的实体/方案](#am-i-affected-by-these-changes)，则可能需要**在 2019 年 9 月 3 日之前**采取某种措施。
 
 ## <a name="What-is-changing"></a> 有什么变化？
 
@@ -30,8 +30,8 @@ ms.locfileid: "72292420"
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | 读取器                                | - 读取访问权限，包括机密                                                                   | - 读取访问权限，**不**包括机密 |           |   |   |
 | HDInsight 群集操作员<br>（新角色） | 不适用                                                                                              | - 读/写访问权限，包括机密         |   |   |
-| 参与者                           | - 读/写访问权限，包括机密<br>- 创建和管理所有类型的 Azure 资源。     | 无变化 |
-| 所有者                                 | - 读/写访问权限，包括机密<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人 | 无变化 |
+| 参与者                           | - 读/写访问权限，包括机密<br>- 创建和管理所有类型的 Azure 资源。     | 没有变化 |
+| 所有者                                 | - 读/写访问权限，包括机密<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人 | 没有变化 |
 
 了解如何向用户添加 HDInsight 群集操作员角色分配，以授予其对群集机密的读/写访问权限的信息，请参阅以下部分[将 HDInsight 群集操作员角色分配添加到用户](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。
 
@@ -132,8 +132,6 @@ ms.locfileid: "72292420"
 请更新到 HDInsight SDK for Java [版本 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) 将**不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
-    - 今后若要检索所有配置（包括敏感参数），请使用 [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable)。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。 
-    - 如果只要检索 HTTP 网关凭据，请使用 [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable)。
 - [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) 现已弃用，已由 [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) 取代。
 
 ### <a name="SDK-for-Go"></a> SDK For Go

@@ -1,17 +1,17 @@
 ---
-title: 在 Mac OS X 上设置开发环境以使用 Azure Service Fabric
-description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Mac OS X 上开始生成应用程序了。
+title: 在 macOS 上设置开发环境
+description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 macOS 上生成应用程序了。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 11/17/2017
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 45c3c82a01e3a0db6fe43f7d34296e16c068005b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: ccf4e02b88cf0daff319241601d330eb6f84d910
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742376"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539966"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]

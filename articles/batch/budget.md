@@ -1,6 +1,6 @@
 ---
 title: 成本分析和预算 - Azure Batch
-description: 了解如何获取成本分析并为 Batch 工作负荷设置预算。
+description: 了解如何进行成本分析并为用于运行 Batch 工作负荷的基础计算资源和软件许可设置预算。
 services: batch
 author: lingliw
 manager: digimobile
@@ -11,12 +11,12 @@ ms.workload: big-compute
 origin.date: 08/26/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f06a0dab822e7e13a5dcc753f4c7db3e9ad0d848
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 31f573cf6e82627fb8e361920253b4adb70b5596
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838621"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497642"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 的成本分析和预算
 

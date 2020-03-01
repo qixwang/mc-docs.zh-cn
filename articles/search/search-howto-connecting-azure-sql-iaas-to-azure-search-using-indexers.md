@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 981a42b28d666bda7d8644c0ee7249cf6abbd688
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: da930a89c5b0c4a3aa512cd2903b8cfa74a21e33
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336031"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501419"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接
 
@@ -73,8 +73,12 @@ ms.locfileid: "75336031"
 
 IP 寻址会产生一些挑战，如果了解问题和潜在解决方法，则可以轻松应对。 剩余部分提供了有关处理 ACL 中与 IP 地址相关的问题的建议。
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>限制对搜索服务 IP 地址的访问
-我们强烈建议限制对 ACL 中搜索服务 IP 地址的访问，而不是允许 SQL Azure VM 接受任何连接请求。 通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.chinacloudapi.cn`）进行 ping 操作，可轻松找到 IP 地址。
+#### <a name="restrict-access-to-the-azure-cognitive-search"></a>限制对 Azure 认知搜索的访问
+强烈建议你在 ACL 中限制对搜索服务的 IP 地址及 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围的访问，而不是使 SQL Azure VM 对所有连接请求开放。
+
+通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.chinacloudapi.cn`）进行 ping 操作，可找到 IP 地址。
+
+可以使用[可下载的 JSON 文件](https://docs.azure.cn/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](https://docs.azure.cn/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) 找到 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 
 #### <a name="managing-ip-address-fluctuations"></a>管理 IP 地址波动
 如果搜索服务只有一个搜索单位（即一个副本和一个分区），IP 地址会在例程服务重新启动期间发生更改，这会导致搜索服务的 IP 地址的现有 ACL 无效。

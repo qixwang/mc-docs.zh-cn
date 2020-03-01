@@ -3,15 +3,15 @@ title: 在 .NET Azure Functions 中使用依赖项注入
 description: 了解如何使用依赖项注入在 .NET 函数中注册和使用服务
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/13/2020
+ms.date: 02/13/2020
 ms.author: v-junlch
 ms.reviewer: jehollan
-ms.openlocfilehash: caf5a17ecb7561b9e50d932f52c6885b8221a625
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: dfcc15983c94ce2dc0c259379bbf2d42af427267
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116870"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428510"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -145,12 +145,22 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft
 
 可以将 `IConfiguration` 实例中的值提取为自定义类型。 将应用设置值复制为自定义类型以后，即可使这些值变得可注入，方便测试服务。 读取到配置实例的设置必须是简单的键/值对。
 
-考虑以下类，该类包含与应用设置一致的命名属性。
+请考虑以下类，其中包含一个命名与应用设置一致的属性：
 
 ```csharp
 public class MyOptions
 {
     public string MyCustomSetting { get; set; }
+}
+```
+
+还有一个 `local.settings.json` 文件，该文件可能按如下所示组织自定义设置：
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "MyOptions:MyCustomSetting": "Foobar"
+  }
 }
 ```
 
@@ -160,7 +170,7 @@ public class MyOptions
 builder.Services.AddOptions<MyOptions>()
                 .Configure<IConfiguration>((settings, configuration) =>
                                            {
-                                                configuration.Bind(settings);
+                                                configuration.GetSection("MyOptions").Bind(settings);
                                            });
 ```
 

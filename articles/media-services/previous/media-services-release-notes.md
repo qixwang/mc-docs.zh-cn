@@ -1,6 +1,6 @@
 ---
-title: 媒体服务发行说明 | Microsoft Docs
-description: 媒体服务发行说明
+title: Azure 媒体服务发行说明 | Microsoft Docs
+description: 本文讨论 Microsoft Azure 媒体服务 v2 发行说明。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 5353bdc9a389dc1a0ea84b7d8747594959816819
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 11c4bf1a7108fe5d56b1dd69b8a8c86e8ca9e5c2
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939771"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494259"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -54,7 +54,7 @@ ms.locfileid: "75939771"
 
 ### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器，这两个处理器将于 2020 年 3 月 31 日停用。
+我们宣布弃用 Windows Azure 媒体编码器  (WAME) 和 Azure 媒体编码器  (AME) 媒体处理器。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](/media-services/previous/migrate-windows-azure-media-encoder) 和[将 AME 迁移到 Media Encoder Standard](/media-services/previous/migrate-azure-media-encoder)。
 

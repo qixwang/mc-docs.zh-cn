@@ -1,22 +1,21 @@
 ---
-title: 使用 Java 将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备。本快速入门使用单个注册。
+title: 使用 Java 将模拟 X.509 设备预配到 Azure IoT 中心
+description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) 的 Java 设备 SDK 创建和预配模拟 X.509 设备。本快速入门使用单个注册。
 author: wesmc7777
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: eef8219daeb547534094d3ec773a1072526d4eb7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: b8b4415aced8543b59eaf8ffb852261d2c7e6070
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336434"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494410"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -33,7 +32,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
 
 2. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 
@@ -67,7 +66,7 @@ Azure IoT 设备预配服务支持两类注册：
 你将使用来自 [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
 
 
-1. 使用前面步骤中的命令提示符，导航到 `target` 文件夹，然后执行在上一步骤中创建的 jar 文件。
+1. 使用前面步骤中的命令提示符，导航到 `target` 文件夹，然后执行在上一步中创建的 .jar 文件。
 
     ```cmd/sh
     cd target
@@ -80,7 +79,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 3. 在 Windows 计算机上创建名为 **_X509individual.pem_** 的文件，在所选编辑器中将其打开，然后将剪贴板内容复制到该文件中。 保存该文件并关闭编辑器。
 
-4. 在命令提示符中，对于“是否需要输入验证码”  ，请输入 **N**，并让程序输出保持打开状态，以便在快速入门教程的后面部分进行引用。 稍后，你将复制 `Client Cert` 和 `Client Cert Private Key` 值，以在下一部分中使用。
+4. 在命令提示符中，对于“是否需要输入验证码”  ，请输入 **N**，并让程序输出保持打开状态，以便稍后在本快速入门中进行引用。 稍后，你将复制 `Client Cert` 和 `Client Cert Private Key` 值，以在下一部分中使用。
 
 5. 登录到 [Azure 门户](https://portal.azure.cn)，选择左侧菜单上的“所有资源”按钮，打开设备预配服务实例  。
 
@@ -170,7 +169,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，你已在 Windows 计算机上创建了一台模拟的 X.509 设备。 你在 Azure IoT 中心设备预配服务中配置了其注册，然后将设备自动预配到了 IoT 中心。 若要了解如何以编程方式注册 X.509 设备，请继续阅读快速入门中关于 X.509 设备的编程注册内容。 
+在本快速入门中，你在 Windows 计算机上创建了一个模拟 X.509 设备。 你在 Azure IoT 中心设备预配服务中配置了其注册，然后将设备自动预配到了 IoT 中心。 若要了解如何以编程方式注册 X.509 设备，请继续阅读快速入门中关于 X.509 设备的编程注册内容。 
 
 > [!div class="nextstepaction"]
 > [Azure 快速入门 - 将 X.509 设备注册到 Azure IoT 中心设备预配服务](quick-enroll-device-x509-java.md)

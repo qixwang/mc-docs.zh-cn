@@ -1,5 +1,5 @@
 ---
-title: 如何结合使用通知中心与 Java
+title: 如何通过 Java 使用 Azure 通知中心
 description: 了解如何从 Java 后端使用 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: java
 ms.devlang: java
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d633c49004404c54dead06a4804cd8182096b747
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: e16fdfdd3e60acbafcd3a63b1beb82524cfceb5b
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884989"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501347"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 
@@ -314,6 +314,14 @@ SDK 目前支持以下内容：
     ```java
     String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
     Notification n = Notification.createAppleNotification(alert);
+    hub.sendNotification(n);
+    ```
+
+* **Android**
+
+    ```java
+    String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+    Notification n = Notification.createBaiduNotification(message);
     hub.sendNotification(n);
     ```
 

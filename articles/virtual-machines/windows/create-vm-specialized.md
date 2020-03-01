@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 从专用磁盘创建 Windows VM | Azure
+title: 使用 PowerShell 从专用磁盘创建 Windows VM
 description: 使用资源管理器部署模型，通过将专用托管磁盘附加为 OS 磁盘来创建新的 Windows VM。
 services: virtual-machines-windows
 author: rockboyfor
@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 10/10/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 895348bc32b5a946f674cc00d93e8e990cf1dd72
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: aee98e4e4094a15b59705dcf5e01a7f4ca1c99f3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116919"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428760"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 

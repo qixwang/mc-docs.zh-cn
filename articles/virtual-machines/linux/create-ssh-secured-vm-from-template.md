@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 资源管理器模板创建 Linux 虚拟机 | Azure
+title: 使用模板在 Azure 中创建 Linux VM
 description: 如何使用 Azure CLI 基于资源管理器模板创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 03/22/2019
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6eb3a51da98de0abdc671eac60507ba2ea79585f
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: 43543a1b3b751299f4c81e8a172a4f6c33b65921
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912854"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428674"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "68912854"
 
 ## <a name="templates-overview"></a>模板概述
 
-Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方案的基础结构和配置。 使用模板可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)。
+Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方案的基础结构和配置。 使用模板可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解模板的格式以及如何构造模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 <!--MOONCAKE: Gloabl URL on [Define resources in Azure Resource Manager templates](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
 

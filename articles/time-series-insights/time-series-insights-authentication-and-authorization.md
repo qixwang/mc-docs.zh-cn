@@ -4,20 +4,20 @@ description: 本文介绍如何为调用 Azure 时序见解 API 的自定义应�
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/20/2020
+ms.date: 02/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0c004a83f1c46204d83146f505dfaaf03faed52
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 83e538c312045ef280c65c7c30c44c915a0a676b
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859542"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494542"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -64,15 +64,15 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 1. 对于时序见解环境，请选择“数据访问策略”，然后选择“添加”   。
 
-   [![将新的数据访问策略添加到时序见解环境](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![将新的数据访问策略添加到时序见解环境](./media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](./media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
 1. 在“选择用户”对话框中，粘贴 Azure Active Directory 应用注册部分显示的“应用程序名称”或“应用程序 ID”。   
 
-   [![在“选择用户”对话框中查找应用程序](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [![在“选择用户”对话框中查找应用程序](./media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](./media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
 1. 选择角色。 选择“读取者”以查询数据，或选择“参与者”以查询数据和更改参考数据。   选择“确定”  。
 
-   [![在“选择用户角色”对话框中选择“读取者”或“参与者”](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [![在“选择用户角色”对话框中选择“读取者”或“参与者”](./media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](./media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
 1. 选择“确定”以保存策略。 
 
@@ -87,7 +87,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    1. 使用 Azure Active Directory 应用注册部分显示的“应用程序 ID”和“客户端机密”（应用程序密钥）来代表应用程序获取令牌。  
 
-   1. 在 C# 中，以下代码可以代表应用程序获取令牌。 有关完整示例，请参阅[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
+   1. 在 C# 中，以下代码可以代表应用程序获取令牌。 有关完整示例，请阅读[使用 C# 查询数据](time-series-insights-query-data-csharp.md)。
 
     ```csharp
     // Enter your Active Directory tenant domain name
@@ -110,7 +110,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
 
-* 开发人员也可以选择使用 MSAL 进行身份验证。 请阅读[迁移到 MSAL](/active-directory/develop/msal-net-migration)，了解详细信息。 
+* 开发人员也可以选择使用 MSAL 进行身份验证。 阅读[迁移到 MSAL](/active-directory/develop/msal-net-migration)，并查看我们的[使用 C# 管理 Azure 时序见解环境的正式版参考数据](time-series-insights-manage-reference-data-csharp.md)以了解更多信息。 
 
 ## <a name="common-headers-and-parameters"></a>常用标头和参数
 
@@ -121,7 +121,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ### <a name="authentication"></a>身份验证
 
-若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
+若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
 
 > [!TIP]
 > 请参阅托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，以了解如何使用 [JavaScript 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 以及图表和图形以编程方式使用时序见解 API 进行身份验证。
@@ -178,10 +178,11 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关调用正式版时序见解 API 的示例代码，请参阅[使用 C# 查询数据](./time-series-insights-query-data-csharp.md)。
+- 有关调用正式版时序见解 API 的示例代码，请阅读[使用 C# 查询数据](./time-series-insights-query-data-csharp.md)。
 
-- 有关预览版时序见解 API 代码示例，请参阅[使用 C# 查询预览版数据](./time-series-insights-update-query-data-csharp.md)。
+- 有关预览版时序见解 API 代码示例，请阅读[使用 C# 查询预览版数据](./time-series-insights-update-query-data-csharp.md)。
 
-- 有关 API 参考信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
+- 有关 API 参考信息，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
 
 - 了解如何[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+

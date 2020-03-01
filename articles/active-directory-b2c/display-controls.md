@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 418c03bc2643b238bb76c4620a2c08406884f78b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: d83dec354457054a40d50bd35116221cd944a128
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624377"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531306"
 ---
 # <a name="display-controls"></a>显示控件
 
@@ -30,7 +30,7 @@ ms.locfileid: "75624377"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
  在[自断言技术配置文件](self-asserted-technical-profile.md)的[元数据](self-asserted-technical-profile.md#metadata)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
@@ -46,7 +46,7 @@ ms.locfileid: "75624377"
 
 **DisplayControl** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于显示控件的一个标识符。 可以对它进行[引用](#referencing-display-controls)。 |
 | UserInterfaceControlType | 是 | 显示控件的类型。 当前支持的是 [VerificationControl](display-control-verification.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "75624377"
 | InputClaims | 0:1 | **InputClaims** 用于预填充要从用户那里收集的声明的值。 |
 | DisplayClaims | 0:1 | **DisplayClaims** 用于表示要从用户那里收集的声明。 |
 | OutputClaims | 0:1 | **OutputClaims** 用于表示要暂时为此 **DisplayControl** 保存的声明。 |
-| Actions | 0:1 | **Actions** 用于列出要针对在前端发生的用户操作调用的验证技术配置文件。 |
+| 操作 | 0:1 | **Actions** 用于列出要针对在前端发生的用户操作调用的验证技术配置文件。 |
 
 ### <a name="input-claims"></a>输入声明
 
@@ -142,3 +142,4 @@ ms.locfileid: "75624377"
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
 
+<!-- Update_Description: wording update -->

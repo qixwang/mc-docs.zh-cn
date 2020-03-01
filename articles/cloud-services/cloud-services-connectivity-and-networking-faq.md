@@ -1,6 +1,7 @@
 ---
-title: Azure 云服务的常见连接和网络问题解答 | Azure
-description: 本文列出有关 Microsoft Azure 云服务的常见连接和网络问题。
+title: 连接和网络问题
+titleSuffix: Azure Cloud Services
+description: 本文列出了有关 Azure 云服务的连接和网络的常见问题解答。
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -11,21 +12,19 @@ ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 08/23/2018
-ms.author: v-yiso
-ms.date: 12/09/2019
-ms.openlocfilehash: c3c85f18cfd9d1a7dbffafc793ab54fbd60a4dce
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.date: 02/19/2020
+ms.author: v-junlch
+ms.openlocfilehash: c2a0a420394d3fe0441ff943b835c0037572babb
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658088"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494422"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的连接和网络问题：常见问题 (FAQ)
 
-本文包含 [Azure 云服务](/cloud-services/)的常见连接和网络问题。 有关大小信息，请参阅[云服务 VM 大小页](./cloud-services-sizes-specs.md)。
+本文包含 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)的常见连接和网络问题。 有关大小信息，请参阅[云服务 VM 大小页](cloud-services-sizes-specs.md)。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -64,16 +63,16 @@ Azure 实施多层网络安全性来防范其平台服务遭到分布式拒绝�
 
 使用的分发算法是将流量映射到可用服务器的 5 元组（源 IP、源端口、目标 IP、目标端口和协议类型）哈希。 它仅在传输会话内部提供粘性。 同一 TCP 或 UDP 会话中的数据包将被定向到经过负载均衡的终结点后面的同一数据中心 IP (DIP) 实例。 客户端从同一源 IP 关闭并重新打开连接或发起新会话时，源端口会更改，并导致流量定向到其他 DIP 终结点。
 
-## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>如何将发往云服务的默认 URL 的传入流量重定向到自定义 URL？ 
+## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>如何将发往云服务的默认 URL 的传入流量重定向到自定义 URL？
 
-可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.chinacloudapp.cn）的流量重定向到某个自定义名称/URL。 由于 URL 重写模块默认在 Web 角色上启用并且其规则是在应用程序的 web.config 中配置的，因此，无论是否重新启动/重置映像，它在 VM 上都始终可用。 有关详细信息，请参阅：
+可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.chinacloudapp.cn）的流量重定向到某个自定义名称/URL。 由于默认情况下，URL 重写模块在 Web 角色上已启用，并且其规则是在应用程序的 web.config 中配置的，因此无论重新启动/重置映像，URL 重写模块都始终在 VM 上可用。有关详细信息，请参阅：
 
 - [为 URL 重写模块创建重写规则](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [删除默认链接](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何阻止/禁用发往云服务的默认 URL 的传入流量？
 
-可以阻止发往云服务的默认 URL/名称（例如 \*.chinacloudapp.cn）的传入流量。 在云服务定义 (*.csdef) 文件中的站点绑定配置下将主机标头设置为自定义 DNS 名称（例如 www.MyCloudService.com）。 
+可以阻止发往云服务的默认 URL/名称（例如 \*.chinacloudapp.cn）的传入流量。 在云服务定义 (*.csdef) 文件中的站点绑定配置下将主机头设置为自定义 DNS 名称（例如 www\.MyCloudService.com），如下所示：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -96,20 +95,20 @@ Azure 实施多层网络安全性来防范其平台服务遭到分布式拒绝�
 </ServiceDefinition>
 ```
 
-因为通过 csdef 文件强制实施了此主机标头绑定，所以，只能通过自定义名称“www.MyCloudService.com”访问该服务。 发往“*.cloudapp.net”域的所有传入请求都将失败。 如果在服务中使用了自定义 SLB 探测或内部负载均衡器，则阻止服务的默认 URL/名称可能会干扰探测行为。 
+因为通过 csdef 文件强制实施了此主机标头绑定，所以，只能通过自定义名称“www.MyCloudService.com”访问该服务。 所有传入“*.chinacoudapp.cn”域的请求都始终会失败。 如果在服务中使用了自定义 SLB 探测或内部负载均衡器，则阻止服务的默认 URL/名称可能会干扰探测行为。
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>如何确保云服务面向公众的 IP 地址永不改变？
 
 为了将云服务的 IP 地址列入允许列表，建议将一个保留 IP 与服务进行关联，否则，如果删除了部署，则会从订阅解除分配由 Azure 提供的虚拟 IP（也称 VIP）。 否则，如果删除了部署，则会从订阅解除分配由 Azure 提供的虚拟 IP。 为使 VIP 交换操作成功，需要为生产槽和暂存槽设置单独的保留 IP。 如果缺少这些 IP，交换操作会失败。 请根据以下文章来保留 IP 地址并将其与云服务进行关联：
- 
-- [保留现有云服务的 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [使用服务配置文件将保留 IP 关联到云服务](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file) 
 
-只要有多个实例用于你的角色，将 RIP 与云服务进行关联就应该不会导致任何停机时间。 另外，还可以将 Azure 数据中心的 IP 范围添加到允许列表。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=41653)找到所有 Azure IP 范围。
+- [保留现有云服务的 IP 地址](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [使用服务配置文件将保留 IP 关联到云服务](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-此文件包含 Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。 
+只要有多个实例用于你的角色，将 RIP 与云服务进行关联就应该不会导致任何停机时间。 另外，还可以将 Azure 数据中心的 IP 范围添加到允许列表。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=42064)找到所有 Azure IP 范围。
 
-## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>如何将 Azure 资源管理器虚拟网络与云服务一起使用？ 
+此文件包含 Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。
+
+## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>如何将 Azure 资源管理器虚拟网络与云服务一起使用？
 
 不能将云服务置于 Azure 资源管理器虚拟网络中。 可以通过对等互连将 Azure 资源管理器虚拟网络与经典部署虚拟网络连接起来。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
@@ -130,3 +129,5 @@ foreach ($service in $services)
     "================================="
 }
 ```
+
+<!-- Update_Description: wording update -->

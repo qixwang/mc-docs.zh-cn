@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 09/20/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8e905f8ff958bab9bfe60b09466130b007133526
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: ce53533054f7f9766d4904dc1db7414ec4d57577
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599755"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497522"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -42,7 +42,7 @@ Log Analytics 工作区可提供：
 
 当今的 IT 组织会遵循集中式、分散式或介于两者之间的混合结构建模。 因此，经常使用以下工作区部署模型映射到其中一个组织结构：
 
-* **集中式**：所有日志存储在中心工作区并由单个团队进行管理，Azure Monitor 为每个团队提供差异访问权限。 在此方案中，可以轻松管理和搜索各个资源，以及交叉关联日志。 根据从订阅中的多个资源收集的数据量，工作区可能会明显增大，对不同的用户保持访问控制会增大管理开销。
+* **集中式**：所有日志存储在中心工作区并由单个团队进行管理，Azure Monitor 为每个团队提供差异访问权限。 在此方案中，可以轻松管理和搜索各个资源，以及交叉关联日志。 根据从订阅中的多个资源收集的数据量，工作区可能会明显增大，对不同的用户保持访问控制会增大管理开销。 此模型称为“中心和分支”。
 * **分散式**：每个团队在其拥有和管理的资源组中创建自己的工作区，日志数据按资源隔离。 在此方案中，工作区可以保持安全性，访问控制与资源访问权限保持一致，但难以交叉关联日志。 需要大范围查看多种资源的用户无法以有效的方式分析数据。
 * **混合**：安全审核合规性要求进一步使此方案变得复杂，因为许多组织同时实施这两种部署模型。 这通常会导致复杂、大开销且难以维护的配置，并使日志覆盖范围出现差异。
 

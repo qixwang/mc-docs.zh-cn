@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 2652182dab0da7842213a5cc5c7abed3118bce46
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: fd204fdabea1bdbd13d039dc06baa851c2c96ce1
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624392"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531337"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>定义 Azure AD B2C 中的电话号码声明转换
 
@@ -32,8 +32,9 @@ ms.locfileid: "75624392"
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | string | 要进行转换的字符串类型的声明。 |
-| OutputClaim | outputClaim | string | 此声明转换的结果。 |
+| InputClaim | phoneNumberString | string |  电话号码的字符串声明。 电话号码必须采用国际格式，带有前导“+”和国家/地区代码。 如果提供了输入声明 `country`，则电话号码为本地格式（不含国家/地区代码）。 |
+| InputClaim | country | string | [可选] 以 ISO3166 格式（两个字母的 ISO-3166 国家/地区代码）表示的电话号码国家/地区代码的字符串声明。 |
+| OutputClaim | outputClaim | phoneNumber | 此声明转换的结果。 |
 
 ConvertStringToPhoneNumberClaim 声明转换始终通过[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或[显示控制](display-controls.md)调用  。 UserMessageIfClaimsTransformationInvalidPhoneNumber 自断言技术配置文件元数据控制向用户显示的错误消息  。
 
@@ -44,7 +45,8 @@ ConvertStringToPhoneNumberClaim 声明转换始终通过[验证技术配置文�
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,11 +65,19 @@ ConvertStringToPhoneNumberClaim 声明转换始终通过[验证技术配置文�
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-1"></a>示例 1
 
 - 输入声明：
-  - inputClaim：+1 (123) 456-7890 
+  - **phoneNumberString**:045 456-7890
+  - **country**:DK
 - 输出声明：
+  - **outputClaim**: +450546148120
+
+### <a name="example-2"></a>示例 2
+
+- 输入声明：
+  - **phoneNumberString**: +1 (123) 456-7890
+- 输出声明： 
   - outputClaim：+11234567890 
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
@@ -140,3 +150,4 @@ ConvertStringToPhoneNumberClaim 声明转换始终通过[验证技术配置文�
   - nationalNumber  ：1234567890
   - countryCode：+49 
 
+<!-- Update_Description: wording update -->

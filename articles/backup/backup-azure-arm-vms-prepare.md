@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 04/03/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e4b304d37f33518b3c078c414efe359e2bc4b5f5
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 1fc62baea3079c958e104d17c6624f0d5789a328
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858535"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497557"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -39,7 +39,6 @@ ms.locfileid: "75858535"
 此外，在某些情况下，还需要完成几项操作：
 
 * **在 VM 上安装 VM 代理**：Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展来备份 Azure VM。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](#install-the-vm-agent)。
-* **显式允许出站访问**：一般情况下，无需显式允许 Azure VM 的出站网络访问即可让它与 Azure 备份进行通信。 但是，某些 VM 在尝试进行连接时可能会遇到连接问题并显示 **ExtensionSnapshotFailedNoNetwork** 错误。 如果发生这种情况，应该[显式允许出站访问](#explicitly-allow-outbound-access)，使 Azure 备份扩展能够与备份流量的 Azure 公共 IP 地址通信。
 
 ## <a name="create-a-vault"></a>创建保管库
 
@@ -48,7 +47,7 @@ ms.locfileid: "75858535"
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。 
 2. 在搜索框中键入“恢复服务”。  在“服务”下，单击“恢复服务保管库”   。
 
-     ![搜索恢复服务保管库](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
+     ![搜索恢复服务保管库](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
 3. 在“恢复服务保管库”菜单中，单击“+添加”   。
 
@@ -124,6 +123,7 @@ ms.locfileid: "75858535"
 * 运行备份时，请注意：
   * 正在运行的 VM 最有可能捕获应用程序一致的恢复点。
   * 但是，即使 VM 已关闭，也仍会将其备份。 此类 VM 称为脱机 VM。 在这种情况下，恢复点是崩溃一致的。
+* 不需要显式出站连接即可备份 Azure VM。
 
 ### <a name="create-a-custom-policy"></a>创建自定义策略
 
@@ -180,7 +180,7 @@ ms.locfileid: "75858535"
 现在，借助此功能，对于相同的 VM，两个备份可以并行运行，但是，无论处于哪个阶段（“快照”、“将数据传输到保管库”），都只能有一个子任务处于运行状态。 因此，对于进行中的备份作业导致了第二天备份失败的情况，就会通过此分离功能加以避免。 如果以前某天的备份作业处于正在进行的状态，那么当“将数据传输到保管库”  阶段已跳过时，次日的备份快照可以被完成。
 在保管库中创建的增量恢复点将从在该保管库中创建的最后一个恢复点捕获所有的改动。 不会对用户产生任何成本影响。
 
-## <a name="optional-steps-install-agentallow-outbound"></a>可选步骤（安装代理/允许出站访问）
+## <a name="optional-steps"></a>可选步骤
 
 ### <a name="install-the-vm-agent"></a>安装 VM 代理
 
@@ -191,105 +191,12 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 **Windows** | 1.[下载并安装](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理 MSI 文件。<br/><br/> 2.使用管理员权限在计算机上进行安装。<br/><br/> 3.验证安装。 在 VM 上的“C:\WindowsAzure\Packages”中，右键单击“WaAppAgent.exe” >  选择“属性”。    在“详细信息”选项卡上，“产品版本”应为 2.6.1198.718 或更高。  <br/><br/> 若要更新代理，请确保没有备份操作正在运行，并[重新安装代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
 **Linux** | 使用分发版包存储库中的 RPM 或 DEB 包安装代理。 这是安装和升级 Azure Linux 代理的首选方法。 所有 [认可的分发版提供商](/virtual-machines/linux/endorsed-distros) 会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 若要更新代理，请确保没有备份操作正在运行，并更新二进制文件。
 
-### <a name="explicitly-allow-outbound-access"></a>显式允许出站访问
-
-VM 上运行的备份扩展需要对 Azure 公共 IP 地址进行出站访问。
-
-* 一般情况下，无需显式允许 Azure VM 的出站网络访问即可让它与 Azure 备份进行通信。
-* 如果 VM 连接遇到问题，或者在尝试连接时出现 **ExtensionSnapshotFailedNoNetwork** 错误，应显式允许访问，使备份扩展能够与备份流量的 Azure 公共 IP 地址通信。 下表汇总了访问方法。
-
-**选项** | **操作** | **详细信息**
---- | --- | ---
-**设置 NSG 规则** | 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。<br/><br/> 可以添加一个允许使用[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)访问 Azure 备份服务的规则，而无需允许并管理每个地址范围。 | [详细了解](../virtual-network/security-overview.md#service-tags)服务标记。<br/><br/> 服务标记可以简化访问管理，且不会产生额外的费用。
-**部署代理** | 部署 HTTP 代理服务器来路由流量。 | 允许访问整个 Azure，而不只是存储。<br/><br/> 允许对存储 URL 进行精细控制。<br/><br/> 对 VM 进行单点 Internet 访问。<br/><br/> 代理不产生额外的成本。
-**设置 Azure 防火墙** | 使用 Azure 备份服务的 FQDN 标记允许流量通过 VM 上的 Azure 防火墙 | 如果在 VNet 子网中设置了 Azure 防火墙，则 FQDN 标记很容易使用。<br/><br/> 无法创建自己的 FQDN 标记，无法修改标记中的 FQDN。<br/><br/> 如果 Azure VM 包含托管磁盘，则你可能需要在防火墙上额外打开一个端口 (8443)。
-
-#### <a name="establish-network-connectivity"></a>建立网络连接
-
-通过代理或防火墙与 NSG 建立连接
-
-##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>设置一个 NSG 规则以允许对 Azure 进行出站访问
-
-如果对 VM 的访问由 NSG 管理，请允许通过所需的范围和端口对备份存储进行出站访问。
-
-1. 在 VM 属性 >“网络”中，选择“添加出站端口规则”。  
-2. 在“添加出站安全规则”中，选择“高级”。  
-3. 在“源”中，选择“VirtualNetwork”。  
-4. 在“源端口范围”中输入一个星号 (*)，以允许从任何端口进行出站访问。 
-5. 在“目标”中，选择“服务标记”。   从列表中选择“Storage.region”。  区域是保管库和要备份的 VM 所在的位置。
-6. 在“目标端口范围”中选择端口。 
-    * 使用未加密存储帐户中的非托管磁盘的 VM：80
-    * 使用非托管磁盘和加密存储帐户的 VM：443（默认设置）
-    * 使用托管磁盘的 VM：8443。
-7. 在“协议”中，选择“TCP”。  
-8. 在“优先级”中，为此规则指定一个优先级值，该值必须小于任何具有更高优先级的拒绝规则。 
-
-   如果某个规则拒绝访问，则新的允许规则的优先级必须更高。 例如，如果为 **Deny_All** 规则设置的优先级为 1000，则必须将新规则的优先级设置为 1000 以下。
-9. 提供规则的名称和说明，然后选择“确定”。 
-
-
-##### <a name="route-backup-traffic-through-a-proxy"></a>通过代理路由备份流量
-
-可以通过代理路由备份流量，然后允许代理访问所需的 Azure 区域。 将代理 VM 配置为允许以下操作：
-
-- Azure VM 应该通过代理路由所有发往公共 Internet 的 HTTP 流量。
-- 代理应该允许适用虚拟网络中的 VM 传入的流量。
-- NSG **NSF-lockdown** 需要使用一个规则允许来自代理 VM 的出站 Internet 流量。
-
-###### <a name="set-up-the-proxy"></a>设置代理
-
-如果你没有系统帐户代理，请按如下所述设置一个：
-
-1. 下载 [PsExec](https://technet.microsoft.com/sysinternals/bb897553)。
-2. 运行 **PsExec.exe -i -s cmd.exe**，以便在系统帐户下运行命令提示符。
-3. 在系统上下文中运行浏览器。 例如：对于 Internet Explorer，请使用 **%PROGRAMFILES%\Internet Explorer\iexplore.exe**。  
-4. 定义代理设置。
-   * 在 Linux 计算机上：
-     * 将以下代码行添加到 **/etc/environment** 文件：
-       * **http_proxy=http:\//代理 IP 地址:代理端口**
-     * 将以下代码行添加到 **/etc/waagent.conf** 文件：
-         * **HttpProxy.Host=proxy IP address**
-         * **HttpProxy.Port=proxy port**
-   * 在 Windows 计算机上的浏览器设置中，指定要使用代理。 如果当前在用户帐户中使用代理，则可以使用此脚本在系统帐户级别应用该设置。
-
-       ```powershell
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-
-       ```
-
-###### <a name="allow-incoming-connections-on-the-proxy"></a>在代理上允许传入连接
-
-在代理设置中允许传入连接。
-
-1. 在 Windows 防火墙中，打开“高级安全 Windows 防火墙”。 
-2. 右键单击“入站规则” > “新建规则”   。
-3. 在“规则类型”中，选择“自定义” > “下一步”。   
-4. 在“程序”中，选择“所有程序” > “下一步”。   
-5. 在“协议和端口”中： 
-   * 将类型设置为“TCP”。 
-   * 将“本地端口”设置为“特定端口”。  
-   * 将“远程端口”设置为“所有端口”。  
-
-6. 完成向导并指定规则名称。
-
-###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>为代理的 NSG 添加例外规则
-
-在 NSG **NSF-lockdown** 中，允许从 10.0.0.5 上的任何端口流向端口 80 (HTTP) 或 443 (HTTPS) 上的任何 Internet 地址的流量。
-
-下面是一个允许流量的 PowerShell 脚本示例。
-如果不想要允许对所有公共 Internet 地址进行出站访问，可以指定 IP 地址范围 (`-DestinationPortRange`)，或使用 storage.region 服务标记。
-
-```powershell
-Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
-Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
-```
-
-
+>[!NOTE]
+> **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
+>
+>如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
+>
+>**若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件**
 
 ## <a name="next-steps"></a>后续步骤
 

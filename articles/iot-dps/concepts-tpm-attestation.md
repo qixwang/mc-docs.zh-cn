@@ -1,19 +1,20 @@
 ---
 title: Azure IoT 中心设备预配服务 - TPM 证明
-description: 本文以概念的方式概述了使用 IoT 设备预配服务的 TPM 证明流。
+description: 本文以概念的方式概述了使用 IoT 设备预配服务 (DPS) 的 TPM 证明流。
 author: nberdy
-ms.author: nberdy
-ms.date: 04/23/2018
+ms.author: v-tawe
+origin.date: 04/04/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 842f3d3d692dbd1bf35e1fbf7c296f5be5d163e1
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.openlocfilehash: 6a0b78522fb5ea121ba6d098dc0ccbe02695de36
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988427"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494151"
 ---
 # <a name="tpm-attestation"></a>TPM 证明
 

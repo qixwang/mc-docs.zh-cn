@@ -1,21 +1,16 @@
 ---
 title: 在 Durable Functions 中管理实例 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中管理实例。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: b1c11edcf223084b0918ab650e6c98da77c5d44d
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: b23a90489a6bb684c60da01daefa0ddbf35fe039
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178988"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428020"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -44,7 +39,7 @@ ms.locfileid: "74178988"
 
 以下代码是一个示例函数，用于启动新的业务流程实例：
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -61,7 +56,40 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+<a name="javascript-function-json"></a>除非另外指定，否则本页上的示例通过以下 function.json 使用 HTTP 触发器。
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": ["post"]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> 此示例以 Durable Functions 2.x 版为目标。 在 1.x 版中，使用 `orchestrationClient` 而不是 `durableClient`。
+
+**index.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -73,6 +101,8 @@ module.exports = async function(context, input) {
     context.log(`Started orchestration with ID = ${instanceId}.`);
 };
 ```
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -116,16 +146,16 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 * **输出**：函数的输出，采用 JSON 值形式（如果该函数已完成）。 如果业务流程协调程序函数失败，则此属性包含失败详细信息。 如果业务流程协调程序函数已终止，则此属性包含终止原因（如果有）。
 * **RuntimeStatus**：以下值之一：
   * **Pending**：实例已计划但尚未开始运行。
-  * **Running**：实例已开始运行。
+  * **正在运行**：实例已开始运行。
   * **Completed**：实例已正常完成。
   * **ContinuedAsNew**：实例已重启自身并生成了新历史记录。 此状态是暂时性状态。
-  * **Failed**：实例失败并出错。
-  * **Terminated**：实例突然停止。
+  * **失败**：实例失败并出错。
+  * **已终止**：实例突然停止。
 * **History**：业务流程的执行历史记录。 仅当 `showHistory` 设置为 `true` 时，才填充此字段。
 
 如果实例不存在，此方法会返回 `null` (.NET) 或 `undefined` (JavaScript)。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetStatus")]
@@ -141,7 +171,7 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -153,6 +183,10 @@ module.exports = async function(context, instanceId) {
     // do something based on the current status.
 }
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -186,7 +220,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 可以使用 `GetStatusAsync` (.NET) 或 `getStatusAll` (JavaScript) 方法查询所有业务流程实例的状态。 在 .NET 中，如果要取消该查询，可以传递 `CancellationToken` 对象。 该方法返回具有与带参数的 `GetStatusAsync` 方法相同属性的对象。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
@@ -206,7 +240,7 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -220,6 +254,10 @@ module.exports = async function(context, req) {
     });
 };
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -240,7 +278,7 @@ func durable get-instances
 
 使用 `GetStatusAsync` (.NET) 或 `getStatusBy` (JavaScript) 方法获取匹配一组预定义筛选器的业务流程实例的列表。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryStatus")]
@@ -268,7 +306,7 @@ public static async Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -290,6 +328,10 @@ module.exports = async function(context, req) {
     });
 };
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -315,7 +357,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `TerminateAsync` (.NET) 或 `terminate` (JavaScript) 方法来终止实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。 终止的实例在达到下一个 `await` (.NET) 或 `yield` (JavaScript) 点时会立即停止运行，或者在已进入 `await` 或 `yield` 点时会立即终止。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -331,7 +373,7 @@ public static Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -343,6 +385,10 @@ module.exports = async function(context, instanceId) {
     return client.terminate(instanceId, reason);
 };
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 > [!NOTE]
 > 当前不会传播实例终止。 无论调用活动函数和子业务流程的业务流程实例是否已终止，活动函数和子业务流程都将运行至完成状态。
@@ -374,7 +420,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 * **EventName**：要发送的事件的名称。
 * **EventData**：要发送到实例的 JSON 可序列化有效负载。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEvent")]
@@ -390,7 +436,7 @@ public static Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -402,6 +448,10 @@ module.exports = async function(context, instanceId) {
     return client.raiseEvent(instanceId, "MyEvent", eventData);
 };
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 > [!NOTE]
 > 如果没有具有指定实例 ID 的业务流程实例，则会丢弃事件消息。 如果实例存在但尚未等待事件，则事件会以实例状态进行存储，直到它做好被接收和处理的准备。
@@ -432,6 +482,7 @@ func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 
 下面的 HTTP 触发型函数示例演示了如何使用此 API：
 
+# <a name="c"></a>[C#](#tab/csharp)
 ```C#
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
@@ -440,6 +491,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
@@ -454,12 +506,12 @@ namespace VSSample
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/wait")]
             HttpRequestMessage req,
-            [OrchestrationClient] DurableOrchestrationClientBase starter,
+            [DurableClient] IDurableOrchestrationClient starter,
             string functionName,
             ILogger log)
         {
             // Function input comes from the request content.
-            dynamic eventData = await req.Content.ReadAsAsync<object>();
+            object eventData = await req.Content.ReadAsAsync<object>();
             string instanceId = await starter.StartNewAsync(functionName, eventData);
 
             log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -487,6 +539,7 @@ namespace VSSample
     }
 }
 ```
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```Javascript
 const df = require("durable-functions");
@@ -517,6 +570,10 @@ function getTimeInSeconds (req, queryParameterName) {
         * 1000 : undefined;
 }
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 使用以下行调用该函数。 使用 2 秒作为超时，使用 0.5 秒作为重试间隔：
 
@@ -580,7 +637,7 @@ function getTimeInSeconds (req, queryParameterName) {
 
 函数可以将这些对象的实例发送到外部系统，以监视或引发相应业务流程中的事件，如以下示例所示：
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SendInstanceInfo")]
@@ -602,7 +659,7 @@ public static void SendInstanceInfo(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableActivityContext` 而不是 `IDurableActivityContext`，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -620,21 +677,25 @@ modules.exports = async function(context, ctx) {
 };
 ```
 
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
+
 ## <a name="rewind-instances-preview"></a>回退实例（预览）
 
 如果意外的原因导致业务流程失败，可以使用相应的 API 将实例回退到以前的正常状态。 
 
 > [!NOTE]
-> 此 API 不是为了替换正确的错误处理和重试策略。 而是仅用于业务流程实例意外失败的情况。 有关错误处理和重试策略的详细信息，请参阅[错误处理](durable-functions-error-handling.md)一文。
+> 此 API 并不旨在取代适当的错误处理和重试策略。 只能在业务流程实例出于意外的原因而失败时才使用此 API。 有关错误处理和重试策略的详细信息，请参阅[错误处理](durable-functions-error-handling.md)一文。
 
 请使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RewindAsync` (.NET) 或 `rewind` (JavaScript) 方法将业务流程恢复到 *Running* 状态。 此方法还会重新运行导致业务流程失败的活动或子业务流程执行失败操作。
 
-例如，假设某个工作流涉及到一系列[人工审批](durable-functions-overview.md#human)。 假设有一系列活动函数会通知某人做出审批并等待其实时响应。 在所有审批活动收到响应或超时后，假设另一活动因应用程序配置错误（例如数据库连接字符串无效）而失败。 于是，工作流中存在业务流程故障。 使用 `RewindAsync` (.NET) 或 `rewind` (JavaScript) API，应用程序管理员可以修复配置错误并将失败的业务流程回退到失败前的状态。 无需再次审批任何人工交互步骤，业务流程现可成功完成。
+例如，假设某个工作流涉及到一系列[人工审批](durable-functions-overview.md#human)。 假设有一系列活动函数会通知某人做出审批并等待其实时响应。 在所有审批活动收到响应或超时后，假设另一活动因应用程序配置错误（例如数据库连接字符串无效）而失败。 结果是业务流程在工作流的深入阶段发生失败。 使用 `RewindAsync` (.NET) 或 `rewind` (JavaScript) API，应用程序管理员可以修复配置错误并将失败的业务流程回退到失败前的状态。 无需再次审批任何人工交互步骤，业务流程现可成功完成。
 
 > [!NOTE]
 > 回退功能不支持回退使用持久计时器的业务流程实例。 
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RewindInstance")]
@@ -650,7 +711,7 @@ public static Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -662,6 +723,10 @@ module.exports = async function(context, instanceId) {
     return client.rewind(instanceId, reason);
 };
 ```
+
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
@@ -682,6 +747,8 @@ func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator
 
 此方法有两个重载。 第一个重载按业务流程实例的 ID 清除历史记录：
 
+# <a name="c"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -692,6 +759,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -701,7 +770,13 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
+
+---
+
 接下来的示例演示一个计时器触发的函数，该函数清除在指定的时间间隔后完成的所有业务流程实例的历史记录。 在本例中，该函数将删除 30 天或更长时间以前完成的所有实例的数据。 该函数计划为在每天的凌晨 12 点运行一次：
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -722,7 +797,49 @@ public static Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-**JavaScript** `purgeInstanceHistoryBy` 方法可以用来有条件地清除多个实例的实例历史记录。
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+`purgeInstanceHistoryBy` 方法可用于有条件地清除多个实例的实例历史记录。
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "schedule": "0 0 12 * * *",
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> 此示例以 Durable Functions 2.x 版为目标。 在 1.x 版中，使用 `orchestrationClient` 而不是 `durableClient`。
+
+**index.js**
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context, myTimer) {
+    const client = df.getClient(context);
+    const createdTimeFrom = new Date(0);
+    const createdTimeTo = new Date().setDate(today.getDate() - 30);
+    const runtimeStatuses = [ df.OrchestrationRuntimeStatus.Completed ];
+    return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
+};
+```
+
+---
 
 > [!NOTE]
 > 若要成功完成清除历史记录的操作，目标实例的运行时状态必须是 **Completed**、**Terminated** 或 **Failed**。

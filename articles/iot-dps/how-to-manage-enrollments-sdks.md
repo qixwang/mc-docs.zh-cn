@@ -1,32 +1,32 @@
 ---
-title: 使用 Azure 设备预配服务 SDK 管理设备注册 | Microsoft Docs
-description: 如何使用服务 SDK 管理 IoT 中心设备预配服务中的设备注册
-author: yzhong94
-ms.author: yizhon
-ms.date: 04/04/2018
+title: 使用 Azure DPS SDK 管理设备注册
+description: 如何使用服务 SDK 管理 IoT 中心设备预配服务 (DPS) 中的设备注册
+author: robinsh
+ms.author: v-tawe
+origin.date: 04/04/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
-ms.openlocfilehash: 0e140e5163aa546a2a5a5c6b0277159bd40c606e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: dd0475e3f8e6e02ed37b8cdb0e37b6993be0d6c0
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389523"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494126"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 设备预配服务 SDK 管理设备注册
 “设备注册”将创建单台设备或一组设备在某一时刻向设备预配服务进行注册的记录  。 注册记录包含注册过程中设备所需的初始配置及所需的 IoT 中心。 这篇文章演示如何使用 Azure IoT 预配服务 SDK 以编程方式管理预配服务的设备注册。  SDK 可从 GitHub 上与 Azure IoT SDK 相同的存储库中获取。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 从设备预配服务实例获取连接字符串。
 * 为所使用的[证明机制](concepts-security.md#attestation-mechanism)获取设备安全项目：
-    * [**受信任的平台模块 (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module)：
+    * [**受信任的平台模块 (TPM)** ](/iot-dps/concepts-security#trusted-platform-module)：
         * 单个注册：来自物理设备或 TPM 模拟器的注册 ID 和 TPM 认可密钥。
         * 注册组不适用于 TPM 证明。
-    * [**X.509**](/azure/iot-dps/concepts-security)：
-        * 单个注册：来自物理设备或 SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 仿真器的[叶证书](/azure/iot-dps/concepts-security)。
-        * 注册组：[CA/根证书](/azure/iot-dps/concepts-security#root-certificate)或[中间证书](/azure/iot-dps/concepts-security#intermediate-certificate)，用于在物理设备上生成设备证书。  它还可以通过 SDK DICE 仿真器生成。
+    * [**X.509**](/iot-dps/concepts-security)：
+        * 单个注册：来自物理设备或 SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 仿真器的[叶证书](/iot-dps/concepts-security)。
+        * 注册组：[CA/根证书](/iot-dps/concepts-security#root-certificate)或[中间证书](/iot-dps/concepts-security#intermediate-certificate)，用于在物理设备上生成设备证书。  它还可以通过 SDK DICE 仿真器生成。
 * 具体的 API 调用可能会因语言的不同而有所不同。 有关详细信息，请查看 GitHub 上提供的示例：
    * [Java 预配服务客户端示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
    * [Node.js 预配服务客户端示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)

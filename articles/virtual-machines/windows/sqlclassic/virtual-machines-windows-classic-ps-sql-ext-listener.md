@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中配置 Always On 可用性组的外部侦听器 | Azure
+title: 为 Azure SQL Server VM 上的可用性组配置外部侦听器
 description: 本教程逐步说明如何在 Azure 中创建一个可以使用关联云服务公共虚拟 IP 地址从外部访问的 AlwaysOn 可用性组侦听器。
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,16 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/31/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb98eae8408d6ef874120b23fc0c9079ff8a2649
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 273b1a9532d7ea88364ae82c61daca39c3e9f6bf
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272650"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428717"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>为 Azure SQL Server VM 上的可用性组配置外部侦听器
 > [!div class="op_single_selector"]
 > * [内部侦听器](../classic/ps-sql-int-listener.md)
 > * [外部侦听器](../classic/ps-sql-ext-listener.md)
@@ -32,7 +33,7 @@ ms.locfileid: "72272650"
 本主题说明如何为 AlwaysOn 可用性组配置一个可以通过 Internet 从外部访问的侦听器。 这通过将云服务的**公共虚拟 IP (VIP)** 地址与侦听器关联来实现。
 
 > [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Azure 建议大多数新部署使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Azure 建议大多数新部署使用 Resource Manager 模型。
 
 可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](../classic/portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
 

@@ -1,5 +1,5 @@
 ---
-title: 创建任务以在计算节点上准备作业并完成作业 - Azure Batch | Microsoft 文档
+title: 创建任务以在计算节点上准备并完成作业 - Azure Batch
 description: 使用作业级准备任务最大程度地减少 Azure Batch 计算节点的数据传输，在完成作业时执行释放任务来清理节点。
 services: batch
 documentationcenter: .net
@@ -15,12 +15,12 @@ origin.date: 02/27/2017
 ms.date: 06/29/2018
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: d658f454d717ad1b4e14573a39c369573ba0f0f6
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 97d12f1cde4bf3e95102ca61b3490df1ff08d9cd
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329815"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497499"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
 
@@ -59,7 +59,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 > 
 
 ## <a name="job-preparation-task"></a>作业准备任务
-在执行作业的任务之前，Batch 在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 服务等待作业准备任务完成，才在节点上运行计划执行的任务。 但可以将该服务配置为不要等待。 如果节点重新启动，则作业准备任务再次运行，但可以禁用此行为。
+在执行作业的任务之前，Batch 在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 服务等待作业准备任务完成，然后才在节点上运行计划执行的任务。 但可以将该服务配置为不要等待。 如果节点重新启动，则作业准备任务再次运行，但可以禁用此行为。
 
 作业准备任务只会在计划运行任务的节点上运行。 例如，这可以防止未分配任务的节点不必要地执行准备任务， 当作业的任务数小于池中的节点数时，可能会出现这种情况。 此外，这也适用于在任务计数小于可能的并行任务总数的情况下启用[并行任务执行](batch-parallel-node-tasks.md)，从而留出一些空闲节点的情况。 不在空闲节点上运行作业准备任务可以节省数据传输费用。
 
@@ -195,9 +195,9 @@ Sample complete, hit ENTER to exit...
 
 此文章的作者是一位 Azure Batch 团队成员，其中介绍了将应用程序和数据部署到计算节点时可以使用的的多种方法。
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [azure_storage]: https://www.azure.cn/home/features/storage/
 [portal]: https://portal.azure.cn
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease

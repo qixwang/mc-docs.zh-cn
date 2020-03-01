@@ -6,18 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 04/25/2019
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 4b0c4e7ce1f4e76b61064652d599df62ed3c5c73
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: dc3c74da1e39c19316963676897ba9475ad8944b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912720"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428590"
 ---
-# <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移
-本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure Resource Manager 功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
+本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure Resource Manager 功能和优点](../articles/azure-resource-manager/management/overview.md)的更多内容。 
 
 ## <a name="goal-for-migration"></a>迁移目标
 Resource Manager 除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入了访问管理和标记。 Azure Resource Manager 将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，重点介绍为了按默认启用安全性而要在虚拟网络中实施虚拟机的做法。
@@ -95,7 +94,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 目前不支持某些功能和配置；以下各节将围绕这些功能和配置介绍我们的建议。
 
 ### <a name="unsupported-features"></a>不支持的功能
-目前不支持以下功能。 可以选择删除这些设置、迁移 VM，然后在 Resource Manager 部署模型中重新启用这些设置。
+目前不支持以下功能。 用户可以选择删除这些设置、迁移 VM，并在 Resource Manager 部署模型中重新启用这些设置。
 
 | 资源提供程序 | 功能 | 建议 |
 | --- | --- | --- |
@@ -120,6 +119,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | 计算 | 云服务包含一个以上可用性集或多个可用性集。 |目前不支持。 在迁移之前，请将虚拟机移到同一可用性集中。 |
 | 计算 | 带 Azure 安全中心扩展的 VM | Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 若要迁移虚拟机，则禁用订阅上的安全中心策略，这将从虚拟机删除监视扩展的安全中心。 |
 | 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 当不支持迁移这些 VM 时，请按照[此处](/virtual-machines/windows/migration-classic-resource-manager-faq#vault)的指导，在迁移前保留备份。  |
+| 计算 | 具有 Azure Site Recovery 扩展的 VM | 这些扩展安装在配置了 Azure Site Recovery 服务的虚拟机上。 虽然可以与 Site Recovery 配合使用来迁移存储，但是当前复制将受到影响。 需要在存储迁移后禁用并启用 VM 复制。 |
 | 网络 |包含虚拟机和 Web 角色/辅助角色的虚拟网络 |目前不支持。 在迁移之前，请将 Web/辅助角色移动到其自己的虚拟网络。 一旦迁移经典虚拟网络，就可以将迁移的 Azure 资源管理器虚拟网络与经典虚拟网络对等，从而实现与以前类似的配置。|
 | 网络 | 经典 Express Route 线路 |目前不支持。 这些线路需要在开始迁移 IaaS 之前迁移到 Azure 资源管理器。 有关详细信息，请参阅[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](../articles/expressroute/expressroute-move.md)。|
 | Azure 应用服务 |包含应用服务环境的虚拟网络 |目前不支持。 |

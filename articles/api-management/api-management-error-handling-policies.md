@@ -12,15 +12,15 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/19/2018
+origin.date: 01/10/2020
 ms.author: v-yiso
-ms.date: 08/13/2018
-ms.openlocfilehash: c5c287149a90b708d8ca650ade718688c87ff541
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.date: 02/24/2020
+ms.openlocfilehash: f41a8106d6a5e00486de85d42b9a42e07d1801a4
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52675237"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428639"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
 
@@ -87,15 +87,15 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
 
  当发生错误且控制跳转到 `on-error` 策略节时，错误会存储在 [context.LastError](api-management-policy-expressions.md#ContextVariables) 属性中，该属性可以通过 `on-error` 节中的策略进行访问。 LastError 具有以下属性。  
   
-| Name     | 类型   | 说明                                                                                               | 必须 |
+| 名称     | 类型   | 说明                                                                                               | 必须 |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Source   | 字符串 | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。     | 是      |
-| Reason   | 字符串 | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
-| Message  | 字符串 | 用户可读的错误说明。                                                                         | 是      |
-| Scope    | 字符串 | 在其中发生错误的范围的名称，可以是以下值之一：“全局”、“产品”、“API”、“操作” | 否       |
-| Section  | 字符串 | 发生错误的节名称。 可能的值：“inbound”、“backend”、“outbound”或“on-error”。       | 否       |
-| `Path`     | 字符串 | 指定嵌套策略，例如“choose[3]/when[2]”。                                                        | 否       |
-| `PolicyId` | 字符串 | 在其中发生错误的策略的 `id` 属性（如果已由客户指定）的值             | 否       |
+| Source   | string | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。     | 是      |
+| Reason   | string | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
+| Message  | string | 用户可读的错误说明。                                                                         | 是      |
+| 作用域    | string | 在其中发生错误的范围的名称，可以是以下值之一：“全局”、“产品”、“API”、“操作” | 否       |
+| 部分  | string | 发生错误的节名称。 可能的值：“inbound”、“backend”、“outbound”或“on-error”。       | 否       |
+| `Path`     | string | 指定嵌套策略，例如“choose[3]/when[2]”。                                                        | 否       |
+| `PolicyId` | string | 在其中发生错误的策略的 `id` 属性（如果已由客户指定）的值             | 否       |
 
 > [!TIP]
 > 可以通过 context.Response.StatusCode 访问状态代码。  
@@ -104,16 +104,19 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
 >  所有策略都有一个可选的 `id` 属性，该属性可以添加到策略的根元素。 如果出现错误情况时该属性存在于策略中，则可使用 `context.LastError.PolicyId` 属性检索该属性的值。  
   
 ## <a name="predefined-errors-for-built-in-steps"></a>针对内置步骤的预定义错误  
- 以下错误为预定义错误，其所针对的错误情况可能发生在对内置处理步骤进行评估的时候。  
+ 针对评估内置处理步骤期间可能发生的错误情况，预定义了以下错误。  
   
 | Source        | 条件                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 配置 | URI 与任何 API 或操作均不匹配 | OperationNotFound       | 无法匹配操作的传入请求。                                                                      |
 | authorization | 未提供订阅密钥             | SubscriptionKeyNotFound | 由于缺少订阅密钥，访问被拒绝。 请确保在向此 API 发出请求时包括订阅密钥。 |
 | authorization | 订阅密钥值无效         | SubscriptionKeyInvalid  | 由于订阅密钥无效，访问被拒绝。 请确保提供活动订阅的有效密钥。            |
+| 多个 | 请求挂起时，客户端中止了下游连接（从客户端到 API 管理网关） | ClientConnectionFailure | 多个 |
+| 多个 | 上游连接（从 API 管理网关到后端服务）未建立或已被后端中止 | BackendConnectionFailure | 多个 |
+| 多个 | 在计算特定表达式期间发生运行时异常 | ExpressionValueEvaluationFailure | 多个 |
   
 ## <a name="predefined-errors-for-policies"></a>针对策略的预定义错误  
- 以下错误为预定义错误，其所针对的错误情况可能发生在策略评估期间。  
+ 针对策略评估期间可能发生的错误情况，预定义了以下错误。  
   
 | Source       | 条件                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
@@ -134,6 +137,7 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
 | validate-jwt | 令牌中缺少必需的声明                          | TokenClaimNotFound        | JWT 令牌缺少以下声明: <c1\>、<c2\>、… 访问被拒绝。                                                            |
 | validate-jwt | 声明值不匹配                                           | TokenClaimValueNotAllowed | 不允许声明 {claim-name} 的值 {claim-value}。 访问被拒绝。                                                             |
 | validate-jwt | 其他验证失败                                       | JwtInvalid                | <jwt 库中的消息\>                                                                                                          |
+| forward-request 或 send-request | 在配置的超时时间内，未从后端收到 HTTP 响应状态代码和标头 | 超时 | 多个 |
 
 ## <a name="example"></a>示例
 

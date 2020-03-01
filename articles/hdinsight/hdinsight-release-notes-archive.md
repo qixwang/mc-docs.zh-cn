@@ -1,21 +1,20 @@
 ---
-title: Azure HDInsight 发行说明
-description: Azure HDInsight 的最新发行说明。 获取 Hadoop、Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
-services: hdinsight
+title: Azure HDInsight 发行说明存档
+description: Azure HDInsight 的已存档发行说明。 获取 Hadoop、Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
 author: hrasheed-msft
 ms.author: v-yiso
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 12/17/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: b3c4c1de5dc979c9cdb4a35bde477caf76dbab14
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 01/08/2019
+ms.date: 02/24/2020
+ms.openlocfilehash: e750314d20b406dd29bc1eb0936ace8ac37d9299
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630727"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428703"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -25,6 +24,65 @@ ms.locfileid: "75630727"
 ## <a name="summary"></a>摘要
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
+
+## <a name="release-date-12172019"></a>发行日期：2019/12/17
+
+此发行版适用于 HDInsight 3.6 和 4.0。
+
+### <a name="new-features"></a>新增功能
+
+#### <a name="service-tags"></a>服务标记
+服务标记通过使你轻松限制 Azure 服务的网络访问，以此简化 Azure 虚拟机和 Azure 虚拟网络的安全性。 你可在网络安全组 (NSG) 规则中使用服务标记，允许或拒绝全局或每个 Azure 区域的特定 Azure 服务流量。 Azure 会对每个标记下面的 IP 地址进行维护。 网络安全组 (NSG) 的 HDInsight 服务标记是运行状况和管理服务的 IP 地址组。 这些组有助于尽量降低创建安全规则时的复杂性。 HDInsight 客户可通过 Azure 门户、PowerShell 和 REST API 启用服务标记。 有关详细信息，请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)。
+
+#### <a name="custom-ambari-db"></a>自定义 Ambari DB
+通过 HDInsight，你现在可将自己的 SQL DB 用于 Apache Ambari。 你可通过 Azure 门户或资源管理器模板配置此自定义 Ambari DB。  此功能可让你为处理和容量需求选择合适的 SQL DB。 你还可轻松升级以匹配业务增长需求。 有关详细信息，请参阅[使用自定义 Ambari 数据库设置 HDInsight 群集](hdinsight-custom-ambari-db.md)。
+
+![自定义 Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+
+### <a name="deprecation"></a>弃用
+此版本无弃用。 若要为即将到来的弃用做好准备，请参阅[即将推出的变更](#upcoming-changes)。
+
+### <a name="behavior-changes"></a>行为更改
+此版本无行为变更。 若要为即将到来的行为变更做好准备，请参阅[即将推出的变更](#upcoming-changes)。
+
+### <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将推出以下变更。 
+
+#### <a name="transport-layer-security-tls-12-enforcement"></a>传输层安全性 (TLS) 1.2 强制措施
+传输层安全性 (TLS) 和安全套接字层 (SSL) 是提供计算机网络通信安全的加密协议。 有关详细信息，请参阅[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)。 虽然 Azure HDInsight 群集接受公共 HTTPS 终结点上的 TLS 1.2 连接，但仍支持 TLS 1.1，以便实现与旧客户端的后向兼容性。
+
+从下一个版本开始，你将可以选择加入和配置新的 HDInsight 群集，以仅接受 TLS 1.2 连接。 
+
+今年晚些时候，预计从 2020/6/30 开始，Azure HDInsight 将为所有 HTTPS 连接强制实行 TLS 2.1 或更高版本。 我们建议你确保所有客户端都已准备好处理 TLS 1.2 或更高版本。
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 从 2020 年 2 月开始（将在稍后传达确切日期），HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解 [Azure 虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。
+
+#### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 群集节点大小变更 
+在即将推出的版本中：
+- 允许的最小 ESP Spark 群集节点大小将变更为 Standard_D13_V2。 
+- 将不再推荐使用 A 系列 VM 创建新 ESP 群集，因为 A 系列 VM 的 CPU 和内存容量相对较低，可能导致 ESP 群集问题。
+
+#### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
+在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
+
+### <a name="bug-fixes"></a>Bug 修复
+HDInsight 会持续改善群集的可靠性和性能。 
+
+### <a name="component-version-change"></a>组件版本更改
+我们已将 HDInsight 3.6 支持延长到 2020 年 12 月 31 日。 如需了解更多详情，请参阅[支持的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
+
+HDInsight 4.0 无组件版本变更。
+
+HDInsight 3.6 上的 Apache Zeppelin：0.7.0-->0.7.3. 
+
+可以在[此文档](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)中获取最新的组件版本。
+
+### <a name="new-regions"></a>新区域
+
+#### <a name="uae-north"></a>阿拉伯联合酋长国北部
+阿拉伯联合酋长国北部的管理 IP 为 `65.52.252.96` 和 `65.52.252.97`。
+
 
 ## <a name="release-date-11072019"></a>发行日期：11/07/2019
 
@@ -674,7 +732,7 @@ HDP 2.6.4 提供 Hadoop Common 2.7.3 和以下 Apache 修补程序：
 
 -   [*HIVE-18879*](https://issues.apache.org/jira/browse/HIVE-18879)：如果 xercesImpl.jar 在类路径中，需要能够禁止在 UDFXPathUtil 中使用嵌入式元素。
 
--   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944)：DPP 期间错误地设置分组集位置。
+-   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944)：DPP 期间错误地设置了分组集位置。
 
 #### <a name="kafka"></a>Kafka
 
@@ -854,7 +912,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 -   [SPARK-23434](https://issues.apache.org/jira/browse/SPARK-23434)：Spark 不应针对 HDFS 文件路径的\`元数据目录\`发出警告。
 
--   [SPARK-23436](https://issues.apache.org/jira/browse/SPARK-23436)：仅当分区可以强制转换为日期时，才推断分区。
+-   [SPARK-23436](https://issues.apache.org/jira/browse/SPARK-23436)：仅当分区可以强制转换为日期时才将其推断为日期。
 
 -   [SPARK-23457](https://issues.apache.org/jira/browse/SPARK-23457)：首先在 ParquetFileFormat 中注册任务完成侦听器。
 
@@ -1128,7 +1186,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 | BUG-95619              | [HIVE-18551](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | 矢量化：VectorMapOperator 尝试为 Hybrid Grace 写入过许多的矢量列                                                   |
 | BUG-97223              | [SPARK-23434](https://issues.apache.org/jira/browse/SPARK-23434)                                                                       | Spark 不应针对 HDFS 文件路径的\`元数据目录\`发出警告                                                                          |
 
-**性能**
+**“性能”**
 
 | **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                                                                                                                                                                                                              | **摘要**                                                                                                                         |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -1482,9 +1540,9 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 |**Apache 组件**|**Apache JIRA**|**摘要**|**详细信息**|
 |--|--|--|--|
 |**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |- 提供了“弃用”文档和“行为变更”指南： https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />- 对于 SQL 部分，提供了另一篇详细“迁移”指南（从 2.3 到 2.2）： https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景**：当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
+|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景：** 当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
 |**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景**：**INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错:失败:HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入特权\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
+|**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景：** **INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错:失败:HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入特权\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
 |**HDFS**|**不适用** |HDFS 应受多个 KMS RUI 的支持 |**以前的行为：** dfs.encryption.key.provider.uri 属性用于配置 KMS 提供程序路径。<br /><br />**新行为：** 现已弃用 dfs.encryption.key.provider.uri，改用 hadoop.security.key.provider.path 来配置 KMS 提供程序路径。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|用于禁用计划程序的选项 |**受影响的组件：** Zeppelin-Server<br /><br />**以前的行为：** 以前的 Zeppelin 版本未提供用于禁用计划程序的选项。<br /><br />**新行为：** 默认情况下，用户不再会看到计划程序，因为它默认已禁用。<br /><br />**解决方法/预期的客户操作：** 若要启用计划程序，需要通过 Ambari 在 Zeppelin 中的自定义 zeppelin 站点设置下添加值为 true 的 azeppelin.notebook.cron.enable。|
 

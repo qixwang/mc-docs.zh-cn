@@ -15,12 +15,12 @@ origin.date: 11/05/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: d4ed61c34cde5cebc3351a70ed5171daa91af97a
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 8d1cd3a3948015175a11bb95684b64d9c20a7075
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599821"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497585"
 ---
 # 通过 Azure Monitor 日志管理使用情况和成本 <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>
 
@@ -43,9 +43,6 @@ Log Analytics 的默认定价采用**即用即付**模型，该模型基于数�
   - 从每个受监视 VM 收集的数据类型 
   
 除了即用即付模型以外，Log Analytics 还提供了**产能预留**层，与即用即付价格相比，该模型最多可将成本节省 25%。 容量预留定价模型允许每天购买 100 GB 的初始预留容量。 超过预留级别的任何用量将按即用即付费率计费。 产能预留层具有 31 天的套餐周期。 在套餐周期内，你可以更改为更高级别的产能预留层（这将重启 31 天的套餐周期），但在套餐周期结束之前，你不能返回到即用即付或更低级别的产能预留层。 
-[详细了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 即用即付和产能预留定价。 
-
-另请注意，某些解决方案（例如 [Azure 安全中心](https://azure.microsoft.com/pricing/details/security-center/)和 [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)）具有其自己的定价模型。 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>估算环境的管理成本 
 
@@ -435,7 +432,7 @@ union withsource = $table Usage
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”  。
    - 将“搜索查询”  设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
-   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
+   - **警报逻辑**为**基于**“结果数”  且**条件**“大于”  **阈值**“0” 
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。    
 - **定义警报详细信息**指定以下项：
    - 将“名称”  设置为“24 小时内的数据量大于 100 GB” 
@@ -449,7 +446,7 @@ union withsource = $table Usage
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”  。
    - 将“搜索查询”  设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
+   - **警报逻辑**为**基于**“结果数”  且**条件**“大于”  **阈值**“0” 
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。    
 - **定义警报详细信息**指定以下项：
    - 将“名称”  设置为“预期 24 小时内的数据量大于 100 GB” 

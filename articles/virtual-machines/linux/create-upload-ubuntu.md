@@ -1,40 +1,34 @@
 ---
-title: 为 Azure 准备 Ubuntu 虚拟机 | Azure
+title: 在 Azure 中创建和上传 Ubuntu Linux VHD
 description: 了解如何创建和上传包含 Ubuntu Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
 author: rockboyfor
-manager: digimobile
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 06/24/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0d51640be1da16cee79c5c85c606b98828822589
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 107ac82ee2d8605879e8225fe316f446bf1c64bf
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831279"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428879"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>为 Azure 准备 Ubuntu 虚拟机
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>正式 Ubuntu 云映像
 Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) 下载。 如果需要为 Azure 构建自己专用的 Ubuntu 映像，而不是使用以下手动过程，则我们建议先使用这些已知良好的 VHD，并根据需要进行自定义。 始终可以在以下位置找到最新的映像版本：
 
 * Ubuntu 12.04/Precise：[ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty： [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial：[ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic：[bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.04/Bionic：[bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 * Ubuntu 18.10/Cosmic：[cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设已在虚拟硬盘中安装 Ubuntu Linux 操作系统。 可使用多种工具创建 .vhd 文件，如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **Ubuntu 安装说明**
@@ -55,7 +49,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 
 2. 单击“连接”  打开虚拟机窗口。
 
-3. 替换映像中的当前存储库，以使用 Ubuntu 的 Azure 存储库。 这些步骤可能会由于 Ubuntu 版本的不同而稍有差异。
+3. 替换映像中的当前存储库，以使用 Ubuntu 的 Azure 存储库。 根据 Ubuntu 版本，步骤可能略有不同。
 
     编辑 `/etc/apt/sources.list`前，建议进行备份：
 
@@ -104,6 +98,15 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 
         # sudo reboot
 
+    Ubuntu 18.04.04：
+
+        # sudo apt-get update
+        # sudo apt-get install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04
+        # sudo apt-get install --install-recommends linux-cloud-tools-generic-hwe-18.04
+        (recommended) sudo apt-get dist-upgrade
+
+        # sudo reboot
+
     **另请参阅：**
     - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
@@ -112,7 +115,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    保存并关闭此文件并运行 `sudo update-grub`。 这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 技术支持人员调试问题。
+    保存并关闭此文件并运行 `sudo update-grub`。 这还可确保将所有控制台消息发送到第一个串行端口，从而可以协助 Azure 技术支持人员调试问题。
 
 6. 请确保已安装 SSH 服务器且将其配置为在引导时启动。  这通常是默认设置。
 
@@ -124,7 +127,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
     > [!Note]
     >  安装 `walinuxagent` 包时会删除 `NetworkManager` 和 `NetworkManager-gnome` 包（如果已安装它们）。
 
-1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+1. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
         # sudo waagent -force -deprovision
         # export HISTSIZE=0

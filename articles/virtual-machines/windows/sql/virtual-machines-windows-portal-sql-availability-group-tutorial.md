@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure VM 中手动配置 Always On 可用性组 | Azure
+title: 教程：在 Azure SQL Server VM 上手动配置可用性组
 description: 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。
 services: virtual-machines
 documentationCenter: na
@@ -9,21 +9,21 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 08/30/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 131b3334bfa99bad678e5cac26ee848f5393b957
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: eaf93902838ce525972ce4d49ad4c535e451cf05
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272750"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428668"
 ---
-# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>教程：在 Azure VM 中手动配置 Always On 可用性组
+# <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教程：在 Azure SQL Server VM 上手动配置可用性组
 
 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。 整个教程会在两个 SQL Server 上创建包含数据库副本的可用性组。
 
@@ -33,7 +33,7 @@ ms.locfileid: "72272750"
 
 ![可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假设读者对 SQL Server Always On 可用性组有一个基本的了解。 如需更多信息，请参阅 [Always On 可用性组概述 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 
@@ -64,14 +64,14 @@ ms.locfileid: "72272750"
 1. 第一个 SQL Server 的 RDP 使用的是域账户，该域账户在 SQL Server 和见证服务器上都是管理员。
 
     >[!TIP]
-    >按[先决条件文档](virtual-machines-windows-portal-sql-availability-group-prereq.md)进行操作将创建一个名为 **CORP\Install** 的帐户。 请使用此帐户。
+    >按[先决条件文档](virtual-machines-windows-portal-sql-availability-group-prereq.md)进行操作会创建一个名为 **CORP\Install** 的帐户。 请使用此帐户。
 
 2. 在“服务器管理器”仪表板中，选择“工具”，并单击“故障转移群集管理器”。   
 3. 在左窗格中，右键单击“故障转移群集管理器”  ，并单击“创建群集”  。
     ![创建群集](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. 在“创建群集向导”中，使用下表中的设置完成向导的每个页面，创建一个单节点群集：
 
-    | 页 | 设置 |
+    | Page | 设置 |
     | --- | --- |
     | 开始之前 |使用默认值 |
     | 选择服务器 |在“输入服务器名称”  中键入第一个 SQL Server 的名称，并单击“添加”  。 |
@@ -79,6 +79,8 @@ ms.locfileid: "72272750"
     | 用于管理群集的访问点 |在“群集名称”  中键入群集名称，例如“SQLAGCluster1”  。|
     | 确认 |除非使用的是存储空间，否则请使用默认值。 请参阅此表后面的备注。 |
 
+    <!-- CORRECT ON Microsoft for this cluster -->
+    
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>设置 Windows Server 故障转移群集 IP 地址
 
 > [!NOTE]
@@ -94,7 +96,7 @@ ms.locfileid: "72272750"
 
 3. 选择“静态 IP 地址”，并指定虚拟机所在子网中的可用地址  。
 
-4. 在“群集核心资源”  部分中，右键单击群集名称，并单击“联机”  。 然后等待这两个资源都处于联机状态。 当该群集名称资源联机时，它会用新的 AD 计算机帐户更新 DC 服务器。 稍后使用此 AD 帐户来运行可用性组群集服务。
+4. 在“群集核心资源”  部分中，右键单击群集名称，并单击“联机”  。 然后等待两个资源都已联机。 当该群集名称资源联机时，它会用新的 AD 计算机帐户更新 DC 服务器。 稍后使用此 AD 帐户来运行可用性组群集服务。
 
 <a name="addNode"></a>
 ### <a name="add-the-other-sql-server-to-cluster"></a>将另一个 SQL Server 添加到群集
@@ -114,7 +116,7 @@ ms.locfileid: "72272750"
     ![添加节点确认](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/46-addnodeconfirmation.png)
 
     >[!WARNING]
-    >如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”  ，Windows 会在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘将不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间将多个磁盘集合到存储池中。 有关详细信息，请参阅[存储空间](https://technet.microsoft.com/library/hh831739)。
+    >如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”  ，Windows 将在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间会将多个磁盘分组到存储池。 有关详细信息，请参阅[存储空间](https://technet.microsoft.com/library/hh831739)。
 
 1. **“下一步”** 。
 
@@ -140,9 +142,9 @@ ms.locfileid: "72272750"
 
     使用“创建共享文件夹向导”  创建共享。
 
-1. 在“文件夹路径”  上，单击“浏览”  并找到或创建一个共享文件夹路径。 单击“下一步”。 
+1. 在“文件夹路径”  上，单击“浏览”  并找到或创建一个共享文件夹路径。 单击“下一步”  。
 
-1. 在“名称、说明和设置”  中核对共享名称和路径。 单击“下一步”。 
+1. 在“名称、说明和设置”  中核对共享名称和路径。 单击“下一步”  。
 
 1. 在“共享文件夹权限”  上设置“自定义权限  ”。 单击“自定义...”  。
 
@@ -152,7 +154,7 @@ ms.locfileid: "72272750"
 
     ![新建共享](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
-1. 单击“确定”  。
+1. 单击 **“确定”** 。
 
 1. 在“共享文件夹权限”  中单击“完成”  。 再次单击“完成”  。  
 
@@ -177,9 +179,9 @@ ms.locfileid: "72272750"
     >[!TIP]
     >Windows Server 2016 支持云见证。 如果选择此类见证，则不需要文件共享见证。 有关详细信息，请参阅 [Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)（为故障转移群集部署云见证）。 本教程使用早期操作系统也支持的文件共享见证。
 
-1. 在“配置文件共享见证”  上键入所创建的共享的路径。 单击“下一步”。 
+1. 在“配置文件共享见证”  上键入所创建的共享的路径。 单击“下一步”  。
 
-1. 在“确认”  上核对设置。 单击“下一步”。 
+1. 在“确认”  上核对设置。 单击“下一步”  。
 
 1. 单击“完成”  。
 
@@ -187,7 +189,7 @@ ms.locfileid: "72272750"
 
 ## <a name="enable-availability-groups"></a>启用可用性组
 
-下一步，启用“AlwaysOn 可用性组”  功能。 在两个 SQL Server 上均执行上述步骤。
+下一步，启用“AlwaysOn 可用性组”  功能。 在两个 SQL Server 上执行这些步骤。
 
 1. 从“开始”菜单启动“SQL Server 配置管理器”。  
 2. 在浏览器树中，单击“SQL Server 服务”，右键单击“SQL Server (MSSQLSERVER)”服务，并单击“属性”。   
@@ -199,7 +201,7 @@ ms.locfileid: "72272750"
 
 5. 重新启动 SQL Server 服务。
 
-在另一个 SQL Server 上重复上述步骤。
+对另一个 SQL Server 重复上述步骤。
 
 <!-----------------
 <a name="endpoint-firewall"></a>
@@ -244,9 +246,9 @@ Repeat these steps on the second SQL Server.
 
     使用“创建共享文件夹向导”  创建共享。
 
-1. 在“文件夹路径”  上，单击“浏览”  并找到或创建一个数据库备份共享文件夹路径。 单击“下一步”。 
+1. 在“文件夹路径”  上，单击“浏览”  并找到或创建一个数据库备份共享文件夹路径。 单击“下一步”  。
 
-1. 在“名称、说明和设置”  中核对共享名称和路径。 单击“下一步”。 
+1. 在“名称、说明和设置”  中核对共享名称和路径。 单击“下一步”  。
 
 1. 在“共享文件夹权限”  上设置“自定义权限  ”。 单击“自定义...”  。
 
@@ -256,13 +258,13 @@ Repeat these steps on the second SQL Server.
 
     ![新建共享](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
-1. 单击“确定”  。
+1. 单击 **“确定”** 。
 
 1. 在“共享文件夹权限”  中单击“完成”  。 再次单击“完成”  。  
 
 ### <a name="take-a-full-backup-of-the-database"></a>对数据库进行完整备份
 
-需要备份新数据库才能初始化日志链。 如果不对数据库进行备份，则可用性组中将不包含该数据库。
+需要备份新数据库才能初始化日志链。 如果不对数据库进行备份，则可用性组中不包含该数据库。
 
 1. 在“对象资源管理器”  中，右键单击数据库，点到“任务...”  ，并单击“备份”  。
 
@@ -273,7 +275,7 @@ Repeat these steps on the second SQL Server.
 
 * 在第一个 SQL Server 上创建数据库。
 * 获取数据库的完整备份和事务日志备份
-* 使用“NORECOVERY”  选项将完整备份和日志备份还原到第二个 SQL Server
+* 使用 **NORECOVERY** 选项将完整备份和日志备份还原到第二个 SQL Server
 * 通过同步提交、自动故障转移和可读辅助副本来创建可用性组 (“AG1”  )
 
 ### <a name="create-the-availability-group"></a>创建可用性组：
@@ -282,7 +284,7 @@ Repeat these steps on the second SQL Server.
 
     ![启动新建可用性组向导](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. 在“简介”页上，单击“下一步”。   在“指定可用性组名称”  页的“可用性组名称”  中，键入可用性组的名称，例如“AG1”  。 单击“下一步”。 
+2. 在“简介”页上，单击“下一步”。   在“指定可用性组名称”  页的“可用性组名称”  中，键入可用性组的名称，例如“AG1”  。 单击“下一步”  。
 
     ![新建可用性组向导，指定可用性组名称](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -294,7 +296,7 @@ Repeat these steps on the second SQL Server.
     ![新建可用性组向导，选择数据库](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/60-newagselectdatabase.png)
 4. 在“指定副本”页上，单击“添加副本”。  
 
-    ![新建可用性组向导，指定副本](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
+    ![新建 AG 向导，指定副本](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
 5. 此时会弹出“连接到服务器”对话框。  在“服务器名称”  中键入第二个服务器的名称。 单击“连接”  。
 
    返回到“指定副本”  页，此时应看到“可用性副本”  中列出了第二个服务器。 对副本进行如下配置。
@@ -336,7 +338,7 @@ Repeat these steps on the second SQL Server.
 
     可以查看副本、每个副本的故障转移模式以及同步状态。
 
-2. 在“故障转移群集管理器”  中，单击群集。 选择“角色”  。 所使用的可用性组名称应该是群集上的一个角色。 该可用性组不具有客户端连接的 IP 地址，因为未配置侦听器。 创建 Azure 负载均衡器后再配置该侦听器。
+2. 在“故障转移群集管理器”  中，单击群集。 选择“角色”  。 所使用的可用性组名称应该是群集上的一个角色。 可用性组未使用客户端连接的 IP 地址，因为尚未配置侦听器。 会在创建 Azure 负载均衡器后配置侦听器。
 
     ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
@@ -355,23 +357,23 @@ Repeat these steps on the second SQL Server.
 Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 标准负载均衡器的功能比基本负载均衡器的功能更多。 对于可用性组，如果使用可用性区域（而不是可用性集），则需要标准负载均衡器。 有关负载均衡器类型之间的差异的详细信息，请参阅[负载均衡器 SKU 比较](../../../load-balancer/load-balancer-overview.md#skus)。
 
 1. 在 Azure 门户中，转到 SQL Server 所在的资源组，然后单击“+ 添加”  。
-1. 搜索“负载均衡器”。  选择 Microsoft 发布的负载均衡器。
+1. 搜索“负载均衡器”  。 选择 Microsoft 发布的负载均衡器。
 
     ![故障转移群集管理器中的可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. 单击“创建”。 
+1. 单击**创建**。
 1. 配置负载均衡器的以下参数。
 
     | 设置 | 字段 |
     | --- | --- |
-    | 名称  |为负载均衡器使用文本名称，例如 **sqlLB**。 |
-    | 类型  |内部 |
+    | **名称** |为负载均衡器使用文本名称，例如 **sqlLB**。 |
+    | **类型** |内部 |
     | **虚拟网络** |使用虚拟网络的名称。 |
-    | 子网  |使用虚拟机所在的子网的名称。  |
+    | **子网** |使用虚拟机所在的子网的名称。  |
     | **IP 地址分配** |静态 |
     | **IP 地址** |使用子网中的可用地址。 将该地址用于可用性组侦听程序。 请注意，这不同于群集 IP 地址。  |
     | **订阅** |使用虚拟机所在的同一个订阅。 |
-    | 位置  |使用虚拟机所在的同一个位置。 |
+    | **位置** |使用虚拟机所在的同一个位置。 |
 
     Azure 门户边栏选项卡应如下所示：
 
@@ -379,11 +381,11 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
 1. 单击“创建”  以创建负载均衡器。
 
-若要配置负载均衡器，需要创建一个后端池，一个探测，并设置负载均衡规则。 在 Azure 门户中进行这些操作。
+若要配置负载均衡器，需要创建后端池、探测，并设置负载均衡规则。 在 Azure 门户中进行这些操作。
 
 ### <a name="add-backend-pool-for-the-availability-group-listener"></a>为可用性组侦听程序添加后端池
 
-1. 在 Azure 门户中，转到可用性组。 可能需要刷新视图以便查看新建的负载均衡器。
+1. 在 Azure 门户中，转到可用性组。 可能需要刷新视图才能看到新建的负载均衡器。
 
     ![在资源组中找到负载均衡器](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
@@ -393,7 +395,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
 1. 将该后端池与包含 VM 的可用性集进行关联。
 
-1. 在“目标网络 IP 配置”  下，选中“虚拟机”  并选择将托管可用性组副本的这两个虚拟机。 请勿包括文件共享见证服务器。
+1. 在“目标网络 IP 配置”  下，选中“虚拟机”  并选择将托管可用性组副本的这两个虚拟机。 不要包含文件共享见证服务器。
 
     >[!NOTE]
     >如果未指定这两个虚拟机，则仅与主要副本的连接会成功。
@@ -408,11 +410,11 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
     | 设置 | 说明 | 示例
     | --- | --- |---
-    | 名称  | 文本 | SQLAlwaysOnEndPointProbe |
-    | 协议  | 选择 TCP | TCP |
+    | **名称** | 文本 | SQLAlwaysOnEndPointProbe |
+    | **协议** | 选择 TCP | TCP |
     | **端口** | 任何未使用的端口 | 59999 |
-    | 间隔   | 尝试探测的间隔时间，以秒为单位 |5 |
-    | **不正常阈值** | 虚拟机不可避免且被视为不正常的连续探测失败次数  | 2 |
+    | **时间间隔**  | 尝试探测的间隔时间，以秒为单位 |5 |
+    | **不正常阈值** | 在将虚拟机视为不正常之前，探测必须连续失败的次数。  | 2 |
 
 1. 单击“确定”  以设置运行状况探测。
 
@@ -424,15 +426,15 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
     | 设置 | 说明 | 示例
     | --- | --- |---
-    | 名称  | 文本 | SQLAlwaysOnEndPointListener |
+    | **名称** | 文本 | SQLAlwaysOnEndPointListener |
     | **前端 IP 地址** | 选择地址 |使用创建负载均衡器时所创建的地址。 |
     | **协议** | 选择 TCP |TCP |
     | **端口** | 使用可用性组侦听程序的端口 | 1433 |
-    | **后端端口** | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1433 |
-    | 探测  |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
+    | **后端端口** | 如果为直接服务器返回设置了“浮动 IP”，不会使用此字段 | 1433 |
+    | **探测** |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
     | **会话持久性** | 下拉列表 | **无** |
-    | **空闲超时** | 使 TCP 连接保持打开所需的分钟数 | 4 |
-    | 浮动 IP (直接服务器返回)  | |已启用 |
+    | **空闲超时** | 将 TCP 连接保持打开的分钟数 | 4 |
+    | **浮动 IP (直接服务器返回)** | |Enabled |
 
     > [!WARNING]
     > 直接服务器返回是在创建过程中设置的， 无法进行更改。
@@ -451,11 +453,11 @@ WSFC IP 地址也必须在负载均衡器上。
 
     | 设置 | 说明 | 示例
     | --- | --- |---
-    | 名称  | 文本 | WSFCEndPointProbe |
+    | **名称** | 文本 | WSFCEndPointProbe |
     | **协议** | 选择 TCP | TCP |
     | **端口** | 任何未使用的端口 | 58888 |
     | **时间间隔**  | 尝试探测的间隔时间，以秒为单位 |5 |
-    | **不正常阈值** | 虚拟机不可避免且被视为不正常的连续探测失败次数  | 2 |
+    | **不正常阈值** | 在将虚拟机视为不正常之前，探测必须连续失败的次数。  | 2 |
 
 1. 单击“确定”  以设置运行状况探测。
 
@@ -465,15 +467,15 @@ WSFC IP 地址也必须在负载均衡器上。
 
     | 设置 | 说明 | 示例
     | --- | --- |---
-    | 名称  | 文本 | WSFCEndPoint |
+    | **名称** | 文本 | WSFCEndPoint |
     | **前端 IP 地址** | 选择地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
     | **协议** | 选择 TCP |TCP |
     | **端口** | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
     | **后端端口** | 如果为直接服务器返回设置了“浮动 IP”，不会使用此字段 | 58888 |
     | **探测** |为探测指定的名称 | WSFCEndPointProbe |
     | **会话持久性** | 下拉列表 | **无** |
-    | **空闲超时** | 使 TCP 连接保持打开所需的分钟数 | 4 |
-    | 浮动 IP (直接服务器返回)  | |已启用 |
+    | **空闲超时** | 将 TCP 连接保持打开的分钟数 | 4 |
+    | **浮动 IP (直接服务器返回)** | |Enabled |
 
     > [!WARNING]
     > 直接服务器返回是在创建过程中设置的， 无法进行更改。
@@ -524,10 +526,10 @@ WSFC IP 地址也必须在负载均衡器上。
     sqlcmd -S <listenerName>,1435 -E
     ```
 
-SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
+SQLCMD 连接自动连接到托管主副本的 SQL Server 实例。
 
 > [!TIP]
-> 确保指定的端口已在两个 SQL Server 的防火墙上打开。 这两个服务器需要所用 TCP 端口的入站规则。 有关详细信息，请参阅[添加或编辑防火墙规则](https://technet.microsoft.com/library/cc753558.aspx)。
+> 确保指定的端口已在两个 SQL Server 的防火墙上打开。 这两个服务器需要所用 TCP 端口的入站规则。 有关详细信息，请参阅 [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx)（添加或编辑防火墙规则）。
 
 ## <a name="next-steps"></a>后续步骤
 

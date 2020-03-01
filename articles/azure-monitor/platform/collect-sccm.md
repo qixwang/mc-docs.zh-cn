@@ -9,19 +9,19 @@ ms.topic: conceptual
 origin.date: 08/28/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 857c0dcb174dc52e1c785f8f21d735b6a0fc83e8
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: e91e0e94b01eda8508b1831bec0b188b60896c76
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730549"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497594"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
-可将 System Center Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
+可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-Azure Monitor 支持 System Center Configuration Manager 当前分支版本 1606 和更高版本。
+Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高版本）。
 
 
 ## <a name="configuration-overview"></a>配置概述
@@ -67,7 +67,7 @@ Azure Monitor 支持 System Center Configuration Manager 当前分支版本 1606
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>将 Configuration Manager 连接到 Log Analytics 工作区
 
 >[!NOTE]
-> 若要添加 Log Analytics 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point)。
+> 若要添加 Log Analytics 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point)。
 
 > [!NOTE]
 > 必须将层次结构中的顶层站点连接到 Azure Monitor。 如果先将独立主站点连接到 Azure Monitor，再将管理中心站点添加到你的环境，则必须在新层次结构中删除并重新创建连接。

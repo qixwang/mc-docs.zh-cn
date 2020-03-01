@@ -11,15 +11,15 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/20/2018
+origin.date: 01/08/2020
 ms.author: v-yiso
-ms.date: 01/20/2020
-ms.openlocfilehash: f2c7f4dcccf2dc02e4ca120ced8f5784456ea982
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.date: 02/24/2020
+ms.openlocfilehash: 969753d907900ef2f1cf876222357c5f219b636a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859500"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428631"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
@@ -27,13 +27,16 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"> </a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 在按照本文中的步骤操作之前，应该为后端服务配置客户端证书身份验证（[若要在 Azure 网站中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]）。 你需要访问证书和密码才能将其上传到 API 管理服务。
+本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 在执行本文中的步骤之前，应该先为客户端证书身份验证配置后端服务（[若要在 Azure 应用服务中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]）。 你需要访问证书和密码才能将其上传到 API 管理服务。
 
-## <a name="step1"></a>上传证书
+## <a name="step1"> </a>上传证书
+
+> [!NOTE]
+> 可以使用 [Azure 密钥保管库](/key-vault/)服务中存储的证书来代替上传的证书，如此[示例](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml)中所示。
 
 ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -60,7 +63,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 > 
 > 
 
-## <a name="step1a"></a>删除客户端证书
+## <a name="step1a"> </a>删除客户端证书
 
 若要删除证书，请单击上下文菜单“...”  并选择该证书旁边的“删除”  。
 
@@ -70,7 +73,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 ![删除客户端证书失败](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2"></a>将 API 配置为使用客户端证书进行网关身份验证
+## <a name="step2"> </a>将 API 配置为使用客户端证书进行网关身份验证
 
 1. 单击左侧“API 管理”  菜单中的“API”  ，然后导航至 API。  
 

@@ -1,10 +1,9 @@
 ---
-title: SQL Server Azure VM 的定价指南 | Azure
+title: Azure SQL Server VM 的定价指南
 description: 提供选择适当 SQL Server 虚拟机定价模型的最佳做法。
 services: virtual-machines-windows
 documentationcenter: na
 author: rockboyfor
-manager: digimobile
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 08/09/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 874329014a000230dec83c92c98080ff5c9a0d37
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0359b1b99ec6d1f0c0b8fdb795e127e5006f916a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116913"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428068"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM 的定价指南
 
 本文提供 Azure 中 [SQL Server 虚拟机](virtual-machines-windows-sql-server-iaas-overview.md)的定价指南。 有几个选项会影响成本，请务必选取适当的映像来平衡成本与业务需求。
 
@@ -63,7 +63,7 @@ ms.locfileid: "74116913"
 | SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| Standard | 中小型工作负荷 |
+| 标准 | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 <!--MOONCAKE: CORRECT ON Standard Pay-In-Advance Offer-->
@@ -84,7 +84,7 @@ ms.locfileid: "74116913"
 
 - **生存期或规模未知的工作负荷**。 例如，某应用可能在几个月内无需使用，或可能需要提高/降低计算能力（具体取决于需求）。
 
-若要使用上述某个预付费映像创建 SQL Server 2017 Azure VM，请参阅以下链接：
+若要使用这些标准预付费映像之一创建 SQL Server 2017 Azure VM，请参阅以下链接：
 
 | 平台 | 许可的映像 |
 |---|---|

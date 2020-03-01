@@ -13,38 +13,37 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anilmur
-ms.openlocfilehash: eeca2b2db1538bd01bd0d4e8b5fc970d653a5700
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 732467b740a8be01b7b33289ebe2210ab874d180
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124416"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494444"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
-本文说明了如何配置 [NewTek TriCaster](http://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。 有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
+本文说明了如何配置 [NewTek TriCaster](https://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。 有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-> [!NOTE]
-> 使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 频道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），直播活动可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
->
->
+使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 频道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），直播活动可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
 
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+>  请考虑迁移到 TLS 1.2（首选 TLS 版本）。
+
+## <a name="prerequisites"></a>必备条件
 
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
-* 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+* 确保运行流式处理终结点。 有关详细信息，请参阅 [在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 启动该工具并连接到 AMS 帐户。
 

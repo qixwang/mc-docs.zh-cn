@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 09/22/2019
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: johndeu
-ms.openlocfilehash: 58d83f0d2bd8a605ac584e49619e12dada58079b
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 2cb65c2424bf4a8deab15bc50cff3c9a886a5728
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939772"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494291"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
 
 > [!NOTE]
-> [Azure Media Indexer](media-services-index-content.md) 媒体处理器将于 2020 年 10 月 1 日停用。
+> [Azure Media Indexer](media-services-index-content.md) 媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。 可以只处理一个媒体文件，也可以一次处理多个媒体文件。  
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: cfba5a7641c01a9664e64aaee9c6d7b50a3ccbc1
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: ba601cbd87c5bab0017727269ccc84ee869e423e
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623609"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531307"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -113,6 +113,44 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
     - **inputClaim**: false
     - **valueToCompareTo**: true
 - 结果：引发错误
+
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩结果。 
+
+| 项目 | TransformationClaimType  | 数据类型  | 注释 |
+| ---- | ------------------------ | ---------- | ----- |
+| inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
+| InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
+| OutputClaim | inputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+
+
+以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等于 `true`，则声明转换返回 `true`，否则返回 `false`。
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputClaim**: false
+- 输入参数：
+    - **valueToCompareTo**: true
+- 输出声明：
+    - **compareResult**: false 
+
+
 
 ## <a name="notclaims"></a>NotClaims
 

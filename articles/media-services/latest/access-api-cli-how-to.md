@@ -1,6 +1,6 @@
 ---
 title: 访问 Azure 媒体服务 API - Azure CLI | Microsoft Docs
-description: 按照本操作说明的步骤访问 Azure 媒体服务 API。
+description: 按照此操作指南文章中的步骤访问 Azure 媒体服务 API。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.custom: mvc
 origin.date: 05/15/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 44ff6cba90aac0fb4bae69c09e075bbfe9ced718
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a644b9b89ecb521350d17dd2c25765b13b719048
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124356"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494575"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>使用 Azure CLI 访问 Azure 媒体服务 API
  
@@ -29,11 +29,12 @@ ms.locfileid: "71124356"
 * REST 媒体服务的资源 URI
 * Azure AD 应用程序值：客户端 ID 和客户端密码
 
-有关详细说明，请参阅[访问媒体服务 v3 API](media-services-apis-overview.md#accessing-the-azure-media-services-api)。
+> [!IMPORTANT]
+> 有关详细说明，请参阅[访问媒体服务 v3 API](media-services-apis-overview.md#accessing-the-azure-media-services-api)。
 
 本文介绍如何使用 Azure CLI 创建 Azure AD 应用程序和服务主体，以及获取访问 Azure 媒体服务资源所需的值。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 

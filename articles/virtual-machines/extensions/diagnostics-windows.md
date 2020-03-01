@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断 | Azure
+title: 在 Windows VM 上使用 Azure PowerShell 启用诊断
 services: virtual-machines-windows
 documentationcenter: ''
 description: 了解如何使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 12/15/2015
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c2934dd5cb41a34e1d421feac2c86f224c241c69
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: be6eb20dc9de15ff60fd25748cc55275be089268
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272787"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428922"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 
@@ -44,7 +44,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
 如果未在诊断配置中指定 **StorageAccount**，需要将 *StorageAccountName* 参数传递给 cmdlet。 如果指定了 *StorageAccountName* 参数，则 cmdlet 会始终使用该参数中指定的存储帐户，而不使用诊断配置文件中指定的存储帐户。
 
-如果诊断存储帐户与 VM 属于不同的订阅，则必须将 *StorageAccountName* 和 *StorageAccountKey* 参数显式传递给 cmdlet。 当诊断存储帐户属于同一订阅时，不需要 *StorageAccountKey* 参数，因为在启用诊断扩展的情况下，cmdlet 可以自动查询和设置密钥值。 但是，如果诊断存储帐户在不同的订阅中，则 cmdlet 可能无法自动获取密钥，需要通过 *StorageAccountKey* 参数显式指定该密钥。  
+如果诊断存储帐户与 VM 属于不同的订阅，则必须将 *StorageAccountName* 和 *StorageAccountKey* 参数显式传递给 cmdlet。 当诊断存储帐户在同一订阅中时，不需要 *StorageAccountKey* 参数，因为 cmdlet 可以在启用诊断扩展时自动查询和设置密钥值。 但是，如果诊断存储帐户在不同的订阅中，则 cmdlet 可能无法自动获取密钥，需要通过 *StorageAccountKey* 参数显式指定该密钥。  
 
     Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 

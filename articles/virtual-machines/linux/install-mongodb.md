@@ -1,5 +1,5 @@
 ---
-title: 如何在 Linux VM 上安装和配置 MongoDB | Azure
+title: 使用 Azure CLI 在 Linux VM 上安装 MongoDB
 description: 了解如何使用 Azure CLI 在 Linux 虚拟机上安装和配置 MongoDB
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 12/15/2017
-ms.date: 08/12/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: d45d3545d923a81763b44b932538f8f71d047039
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: 30f31ef46149af9d05d6970eb2901e1b0aed5451
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912726"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428806"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>如何在 Linux VM 上安装和配置 MongoDB
 
@@ -54,7 +54,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-使用你自己的用户名和上一步骤中的输出中列出的 `publicIpAddress` 以 SSH 方式登录到 VM：
+使用自己的用户名和上一步骤中的输出中列出的 `publicIpAddress` 以 SSH 方式登录到 VM：
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -221,8 +221,8 @@ az group deployment show \
 
 这些示例部署用于开发的核心 MongoDB 环境。 请为环境应用必需的安全配置选项。 有关详细信息，请参阅 [MongoDB 安全文档](https://docs.mongodb.com/manual/security/)。
 
-有关使用模板创建这些规则的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+有关使用模板创建这些规则的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
 
 Azure Resource Manager 模板使用自定义脚本扩展在 VM 上下载并执行脚本。 有关详细信息，请参阅[在 Linux 虚拟机上使用 Azure 自定义脚本扩展](extensions-customscript.md)。
 
-<!--Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

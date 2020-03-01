@@ -1,27 +1,26 @@
 ---
-title: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务客户端 SDK 配合使用
-description: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务客户端 SDK 配合使用
-author: yzhong94
-ms.author: v-yiso
+title: 将不同的证明机制与 Azure IoT 中心设备预配服务客户端 SDK 配合使用
+description: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务 (DPS) 客户端 SDK 配合使用
+author: robinsh
+ms.author: v-tawe
 origin.date: 03/30/2018
-ms.date: 07/15/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: 7b74eb18764e0b7e849a3fdba57a8454767a12c7
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.openlocfilehash: 07bdfc462f5352c6a0affa1a2b3f1b6c42f8fa5d
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173952"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494375"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用
 
 本文展示了如何将不同的[证明机制](concepts-security.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 预配服务支持下述两类证据机制的身份验证：X.509 和受信任的平台模块 (TPM)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 根据[创建和预配模拟设备](./quick-create-simulated-device.md)指南中“准备开发环境”部分的说明准备开发环境。
 
@@ -33,7 +32,7 @@ ms.locfileid: "70173952"
 
 - [X.509](https://cryptography.io/en/latest/x509/)：X.509 证书可以存储在称为[硬件安全模块 (HSM)](concepts-security.md#hardware-security-module) 的相对较新的芯片中。 Microsoft 内部也正开展基于 RIoT 或 DICE 芯片的工作，目的是实施 X.509 证书。 使用 X.509 芯片可以在门户中进行批量设备注册。 它还支持 Windows 以外的某些 OS，如 embedOS。 出于开发目的，设备预配服务客户端 SDK 支持 X.509 设备模拟器。 
 
-有关详细信息，请参阅 IoT 中心设备预配服务[安全性概念](concepts-security.md)和[自动预配概念](/azure/iot-dps/concepts-auto-provisioning)。
+有关详细信息，请参阅 IoT 中心设备预配服务[安全性概念](concepts-security.md)和[自动预配概念](/iot-dps/concepts-auto-provisioning)。
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>为受支持的证明机制启用身份验证
 
@@ -167,7 +166,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
     - 对于自定义 TPM：实现在 [HSM TPM API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api) 下定义的函数。  
     - 对于自定义 X.509：实现在 [HSM X509 API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api) 下定义的函数。 
 
-在库成功地自行生成以后，需要通过根据库进行链接来将其与设备预配服务客户端 SDK 进行集成。 :
+在库成功地自行生成以后，需要通过根据库进行链接来将其与设备预配服务客户端 SDK 进行集成。 解码的字符：
 
 1. 在下面的 `cmake` 命令中提供自定义 GitHub 存储库和库：
     ```cmd/sh

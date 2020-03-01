@@ -1,5 +1,5 @@
 ---
-title: 如何结合使用通知中心与 PHP
+title: 如何通过 PHP 使用 Azure 通知中心
 description: 了解如何从 PHP 后端使用 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: php
 ms.devlang: php
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c919206f46ad3a901ef2494cf16620437130274f
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: fa3c42e725ff23a12ed75a1b615deed7ef7c8594
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884987"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501342"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
 
@@ -142,7 +142,7 @@ ms.locfileid: "74884987"
         public $headers;
 
         function __construct($format, $payload) {
-            if (!in_array($format, ["template", "apple", "windows",  "windowsphone"])) {
+            if (!in_array($format, ["template", "apple", "windows", "baidu", "windowsphone"])) {
                 throw new Exception('Invalid format: ' . $format);
             }
 
@@ -170,7 +170,7 @@ ms.locfileid: "74884987"
         $uri = $this->endpoint . $this->hubPath . "/messages" . NotificationHub::API_VERSION;
         $ch = curl_init($uri);
 
-        if (in_array($notification->format, ["template", "apple"])) {
+        if (in_array($notification->format, ["template", "apple", "baidu"])) {
             $contentType = "application/json";
         } else {
             $contentType = "application/xml";
@@ -248,6 +248,13 @@ ms.locfileid: "74884987"
     $hub->sendNotification($notification, null);
     ```
 
+### <a name="android"></a>Android
+
+    ```php
+    $message = '{"data":{"msg":"Hello from PHP!"}}';
+    $notification = new Notification("baidu", $message);
+    $hub->sendNotification($notification, null);
+    ```
 
 ### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8.0 和 8.1 Silverlight
 

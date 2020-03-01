@@ -1,22 +1,21 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的日期声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的日期声明转换示例。
+title: 自定义策略的日期声明转换示例
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的日期声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 09/10/2018
-ms.date: 10/24/2019
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0ed00c702a8f5fa4b11b52c5da440d7b806c3ba7
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 0d1049a07730851356ffa7d3a4d98aa2e5a63ac4
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847109"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531300"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -32,8 +31,8 @@ ms.locfileid: "72847109"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | string | 第一个声明的类型，应晚于第二个声明。 |
 | InputClaim | rightOperand | string | 第二个声明的类型，应早于第一个声明。 |
-| InputParameter | AssertIfEqualTo | 布尔值 | 指定如果左操作数等于右操作数，是否应传递此断言。 |
-| InputParameter | AssertIfRightOperandIsNotPresent | 布尔值 | 指定如果缺少右操作数，是否应传递此断言。 |
+| InputParameter | AssertIfEqualTo | boolean | 指定如果左操作数等于右操作数，是否应传递此断言。 |
+| InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 指定将两个日期时间视为相等时允许两者之间相差的毫秒数（例如，用于说明时钟偏差）。 |
 
 AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 DateTimeGreaterThan  自断言技术配置文件元数据控制技术配置文件向用户呈现的错误消息。
@@ -115,6 +114,35 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 - 输出声明：
     - **outputClaim**：1559347200（2019 年 1 月 1 日上午 12:00:00）
 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+
+将 **DateTime** ClaimType 转换为 **Date** ClaimType。 声明转换会从日期中删除时间格式。
+
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | dateTime | 要转换的 ClaimType。 |
+| OutputClaim | outputClaim | date | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+
+以下示例演示如何将声明 `systemDateTime`（日期/时间数据类型）转换为另一个声明`systemDate`（日期数据类型）。
+
+```XML
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+  - **inputClaim**：1559347200（2019 年 1 月 1 日上午 12:00:00）
+- 输出声明：
+  - **outputClaim**：2019-06-01
+
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 获取当前 UTC 日期和时间，并将值添加到 ClaimType。
@@ -146,7 +174,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 | InputClaim | secondDateTime | dateTime | 第二个日期/时间，用于比较它是在第一个日期/时间之前还是之后。 NULL 值被视为当前日期/时间。 |
 | InputParameter | operator | string | 以下值之一：same、later than 或 earlier than。 |
 | InputParameter | timeSpanInSeconds | int | 向第一个日期/时间添加的时间范围。 |
-| OutputClaim | 结果 | 布尔值 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | result | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 使用此声明转换可确定两个 ClaimType 之间是相等、晚于还是早于。 例如，可能会存储用户接受服务条款 (TOS) 的上次时间。 3 个月后，可以要求用户再次访问 TOS。
 若要运行声明转换，首先需要获取当前日期/时间，以及用户接受 TOS 的上次时间。

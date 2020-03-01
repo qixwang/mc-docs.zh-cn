@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建通用化 VM 的托管映像 | Azure
+title: 在 Azure 中创建通用 VM 的托管映像
 description: 在 Azure 中创建通用 VM 或 VHD 的托管映像。 映像可用于创建多个使用托管磁盘的 VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,20 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 09/27/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 74e03137ff8e249cd893c3ccdf223b7fcaf037da
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 2ee3253a6f7080fccf3ce2be3b7bb09d3dc17b89
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116955"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428895"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
 可通过在存储帐户中存储为托管/非托管磁盘的通用虚拟机 (VM) 创建托管的映像资源。 然后可以使用该映像创建多个 VM。 有关托管映像如何计费的信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/)。 
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
 
@@ -71,9 +69,9 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-a-managed-image-in-the-portal"></a>在门户中创建托管映像 
 
-1. 打开 [Azure 门户](https://portal.azure.cn)。
+1. 转到 [Azure 门户](https://portal.azure.cn)以管理 VM 映像。 搜索并选择“虚拟机”  。
 
-2. 在左侧菜单中，选择“虚拟机”  ，然后从列表中选择 VM。
+2. 从列表中选择 VM。
 
 3. 在 VM 的“虚拟机”  页面的上方菜单中，选择“捕获”  。
 
@@ -81,19 +79,17 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 4. 对于“名称”  ，可以使用预填充的名称或输入想要为映像使用的名称。
 
-5. 对于“资源组”  ，选择“新建”  并输入名称，或选择“使用现有”  并从下拉列表中选择要使用的资源组。
+5. 对于“资源组”  ，选择“新建”  并输入名称，或者从下拉列表中选择要使用的资源组。
 
 6. 如果想要在创建映像后删除源 VM，选择“创建映像后自动删除此虚拟机”  。
 
     <!--Not Available on [availability zone](../../availability-zones/az-overview.md)-->
     
-7. 选择“创建”  以创建映像。
+8. 选择“创建”  以创建映像。
 
-8. 创建映像后，在资源组的资源列表中，你会看到它作为“映像”  资源而出现。
+创建映像后，在资源组的资源列表中，你会看到它作为“映像”  资源而出现。
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>使用 PowerShell 创建 VM 映像
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 直接从 VM 创建映像，可确保映像包含所有与该 VM 关联的磁盘，包括 OS 磁盘和任何数据磁盘。 本示例演示如何从使用托管磁盘的 VM 创建托管映像。
 

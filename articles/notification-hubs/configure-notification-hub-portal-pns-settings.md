@@ -13,12 +13,12 @@ ms.date: 12/09/2019
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 113f44ead13d2c06c5b7612d5564c6192dc2d3e9
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: dfd3a67a06a80f248b58934b0e09d5488f257dfb
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884995"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501461"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>使用 Azure 门户在通知中心设置推送通知
 
@@ -108,7 +108,7 @@ Azure 通知中心提供一个易于使用且可横向扩展的推送引擎。�
 
 若要详细了解如何将通知推送到各种平台，请参阅以下教程：
 
-<!-- - [Push notifications to Android devices by using Notification Hubs and Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md) -->
+[使用通知中心和 Baidu 向 Android 设备推送通知](notification-hubs-baidu-china-android-notifications-get-started.md)
 
 - [使用通知中心和 APNS 将通知推送到 iOS 设备](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 - [将通知推送到 Windows 设备上运行的 UWP 应用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)

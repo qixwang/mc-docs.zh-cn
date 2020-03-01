@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/17/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b2453a000bdf8e08e241c82e44cf8fdd12ef614a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 21ab91876113d35c6357475ffcac8a9487669b44
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028867"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497614"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -105,10 +105,8 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 是的，可以使用从非托管磁盘迁移到托管磁盘之前创建的备份。
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>如何将 VM 还原至将它迁移到托管磁盘之前的某个还原点？
-默认情况下，还原 VM 作业将使用非托管磁盘创建 VM。 若要使用托管磁盘创建 VM，请执行以下操作：
-1. [还原到非托管磁盘](tutorial-restore-disk.md#restore-a-vm-disk)。
-2. [将还原的磁盘转换为托管磁盘](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)。
-3. [使用托管磁盘创建 VM](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
+
+还原过程保持不变。 如果恢复点是 VM 具有非托管磁盘的时间点，则可以[将磁盘还原为非托管磁盘](tutorial-restore-disk.md#unmanaged-disks-restore)。 如果当时 VM 具有托管磁盘，则可以[将磁盘还原为托管磁盘](tutorial-restore-disk.md#managed-disk-restore)。 然后，可以[从这些磁盘创建 VM](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
 
 [详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中执行此操作。
 

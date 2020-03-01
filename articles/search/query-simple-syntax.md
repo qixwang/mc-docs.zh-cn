@@ -7,8 +7,8 @@ author: brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
+origin.date: 02/10/2020
+ms.date: 03/02/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,19 +20,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3f6cf9139a8d90b0e1dfba5b832261c6945d8d3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: e1fb407e47d66c24d233c378ab0d63150a1e64cb
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336101"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501436"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的简单查询语法
 
 Azure 认知搜索实现两种基于 Lucene 的查询语言：[简单查询分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)和 [Lucene 查询分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)。 在 Azure 认知搜索中，简单查询语法排除了模糊/贪婪选项。  
 
-> [!NOTE]  
->  Azure 认知搜索为更复杂的查询提供替代的 [Lucene 查询语法](query-lucene-syntax.md)。 若要详细了解查询分析体系结构和每种语法的好处，请参阅 [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
+> [!NOTE]
+> 简单查询语法用于在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 的**搜索**参数中传递的查询表达式，不要与用于该 API 的 [$filter](search-filters.md) 参数的 [OData 语法](query-odata-filter-orderby-syntax.md)相混淆。 这两个不同的语法有各自的用于构造查询、转义字符串等操作的规则。
+>
+> Azure 认知搜索提供了替代的[完整 Lucene 查询语法](query-lucene-syntax.md)，用于在**搜索**参数中输入更复杂查询。 若要详细了解查询分析体系结构和每种语法的好处，请参阅 [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
 
 ## <a name="how-to-invoke-simple-parsing"></a>如何调用简单分析
 

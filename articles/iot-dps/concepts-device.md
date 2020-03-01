@@ -1,20 +1,20 @@
 ---
 title: Azure 设备预配中的设备概念 | Microsoft Docs
-description: 介绍设备预配概念，特定于使用设备预配服务和 IoT 中心的设备
+description: 介绍设备预配概念，特定于使用设备预配服务 (DPS) 和 IoT 中心的设备
 author: nberdy
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 11/06/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 02f228d4e531cb917c40e964f24eb9dfc9d85f68
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 53846b67fe58541d92ccbab892e69ff6ce7fd26d
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334724"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494156"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT 中心设备预配服务设备概念
 

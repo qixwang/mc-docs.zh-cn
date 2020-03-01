@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 LiveEvent 类型 | Microsoft Docs
-description: 本文提供了对 LiveEvent 类型进行比较的一个详细表格。
+description: 在 Azure 媒体服务中，直播活动可以是以下两种类型之一：实时编码和直通。 本文显示了比较直播活动类型的详细表格。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 06/13/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: b047ee0e27e0d66e7c8d42e003185d4e662c4507
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: e5df7f878a43ebc8e84cd6a41127a708a446a7a4
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125575"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494063"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
+在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
 
 ## <a name="types-comparison"></a>类型比较 
 
 下表比较了实时事件类型的功能。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
-* **LiveEventEncodingType.None** - 本地实时编码器发送多比特率流。 引入的流通过实时事件传递，而不会经过任何进一步的处理。 
+* **LiveEventEncodingType.None** - 本地实时编码器发送多比特率流。 引入的流通过实时事件传递，而不会经过任何进一步的处理。 也称为“直通直播活动”。
 * **LiveEventEncodingType.Standard** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对（本文稍后会提供详细信息）。
 * **LiveEventEncodingType.Premium1080p** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集（本文稍后会提供详细信息）。 
 

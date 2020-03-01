@@ -4,20 +4,19 @@ description: 了解如何使用以 C# 编写的自定义应用从 Azure 时序�
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-origin.date: 01/31/2019
-ms.date: 02/17/2020
+ms.date: 02/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f7e92b06fbf2fa3b6f49546a23da38eb90e0d43
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: f32b94e5206debeba06739037e64119088acb664
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068151"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494545"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用 C# 查询 Azure 时序见解正式版环境中的数据
 
@@ -51,13 +50,9 @@ ms.locfileid: "77068151"
 在编译和运行示例代码之前，请完成以下步骤：
 
 1. [预配正式版 Azure 时序见解](/time-series-insights/time-series-insights-get-started)环境。
-
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。 
-
 1. 安装必需的项目依赖项。
-
 1. 编辑下面的示例代码，将每个 **#DUMMY#** 替换为相应的环境标识符。
-
 1. 在 Visual Studio 中执行代码。
 
 ## <a name="project-dependencies"></a>项目依赖项
@@ -71,7 +66,9 @@ ms.locfileid: "77068151"
 * [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -  3.13.9 包。
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 9.0.1 包。
 
-使用 [NuGet 2.12+](https://www.nuget.org/) 添加包：
+在 Visual Studio 2019 中，通过选择“生成”   > “生成解决方案”  选项来下载包。
+
+或者，使用 [NuGet 2.12+](https://www.nuget.org/) 添加这些包：
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
@@ -503,3 +500,4 @@ namespace TimeSeriesInsightsQuerySample
 - 若要详细了解查询，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
 
 - 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到时序见解](https://github.com/microsoft/tsiclient)。
+

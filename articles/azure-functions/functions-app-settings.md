@@ -2,13 +2,13 @@
 title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 57d37c48096ba340c0d63fa4440fcb75d0797bca
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.date: 02/12/2020
+ms.openlocfilehash: 97e416895e6aa6c6c07921f9d9daf06bc4c06076
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116906"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428861"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -24,11 +24,11 @@ ms.locfileid: "76116906"
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。  存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
+用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。  此设置仅对面向 Azure Functions 运行时版本 1.x 的应用有效。 存储帐户必须是支持 Blob、队列和表的通用帐户。 有关详细信息，请参阅[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
 |键|示例值|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key];EndpointSuffix=core.chinacloudapi.cn|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>;EndpointSuffix=core.chinacloudapi.cn|
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -68,7 +68,7 @@ ms.locfileid: "76116906"
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函数使用此存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
+Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函数使用此存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
 |键|示例值|
 |---|------------|

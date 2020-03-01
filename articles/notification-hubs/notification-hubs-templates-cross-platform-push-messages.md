@@ -1,6 +1,6 @@
 ---
-title: 模板
-description: 本主题介绍 Azure 通知中心的模板。
+title: Azure 通知中心模板
+description: 了解如何使用 Azure 通知中心模板。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 437e66f30710d38644b7f31b173106b76befeda5
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: ec29609cb4c6566995543f077643dac7dbbadd2b
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884970"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501452"
 ---
 # <a name="templates"></a>模板
 
@@ -171,3 +171,7 @@ Windows 应用商店客户端应用的相应模板为：
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+[了解 Azure 通知中心](notification-hubs-push-notification-overview.md)

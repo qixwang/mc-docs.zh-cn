@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 10/24/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 1db657cb8214b7f0ee2c616b895a9a8ad454ed52
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.openlocfilehash: f58176052eeb81409f8578f145fb7468bbfcee65
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116189"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494491"
 ---
 # <a name="live-event-states-and-billing"></a>直播活动状态和计费
 
-在 Azure 媒体服务中，一旦直播活动的状态转换为**正在运行**，就会开始计费。 若要停止对直播活动的计费，必须停止直播活动。
+在 Azure 媒体服务中，一旦直播活动的状态转换为**正在运行**，就会开始计费。 即使没有视频流经该服务，也会向你收费。 若要停止对直播活动的计费，必须停止直播活动。
 
 将[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)上的 **LiveEventEncodingType** 设置为 Standard 或 Premium1080p 后，媒体服务就会自动关闭在输入源丢失 12 小时后仍处于**正在运行**状态但却没有**实时输出**运行的直播活动。 但是，在直播活动处于**正在运行**状态的时间段内，仍会进行计费。
 

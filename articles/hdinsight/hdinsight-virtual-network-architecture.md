@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 03/26/2019
-ms.date: 10/21/2019
+origin.date: 10/31/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: c7e65e8d4596b1914ab388b214500b0845a2c31c
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 43a2f16d639a7d3866270dccd88631e110a39a8b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292559"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428695"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -32,6 +32,16 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 | 区域节点 | 对于 HBase 群集类型，区域节点（也称为数据节点）将运行区域服务器。 区域服务器为 HBase 管理的一部分数据提供服务，并对其进行管理。 可以在群集中添加或删除区域节点，以缩放计算能力和控制成本。|
 | Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点通过 Zookeeper 将任务分配给群集中的其他节点，Zookeeper 协调 Storm 拓扑的运行。 |
 | 监督器节点 | 对于 Storm 群集类型，监督器节点执行 Nimbus 节点所提供的、执行所需处理的指令。 |
+
+## <a name="resource-naming-conventions"></a>资源命名约定
+
+在对群集中的节点进行寻址时，请使用完全限定域名 (FQDN)。 可以使用 [Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md) 获取群集中各种节点类型的 FQDN。 
+
+这些 FQDN 的格式为 `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.chinacloudapp.cn`。
+
+对于头节点，`<node-type-prefix>` 为“hn”  ，对于工作节点为“wn”  ，对于 zookeeper 节点为“zn”  。
+
+如果只需要主机名，则仅使用 FQDN 的第一部分：`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>基本虚拟网络资源
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上安装和配置 PostgreSQL | Azure
+title: 在 Azure 上安装和配置 PostgreSQL
 description: 了解如何在 Azure 中的 Linux 虚拟机上安装和配置 PostgreSQL
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,21 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 02/01/2016
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: cedab26978d8fd9bb57a89fa067e74b09ba6fe9a
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: ed9c7606db754cba46f33e271aa2a54f7c143b9d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272580"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428877"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
 
 在本文中，你将了解如何在运行 Linux 的 Azure 虚拟机上安装和配置 PostgreSQL。
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>安装 PostgreSQL
 > [!NOTE]
@@ -67,7 +65,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
         # cd postgresql-9.3.5
 
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果希望生成所有能生成的内容，包括文档（HTML 和手册页）和其他模块 (contrib)，则改为运行以下命令：
+5. 如果希望生成所有能生成的内容，包括文档（HTML 和手册页）和其他模块 (`contrib`)，则改为运行以下命令：
 
         # gmake install-world
 

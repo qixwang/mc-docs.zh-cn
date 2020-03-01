@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘 | Azure
+title: 使用 PowerShell 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘
 description: Azure PowerShell 脚本示例 - 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘
 services: virtual-machines-linux
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/05/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6ab8deca2bc76b863229aeeddb2c87b03465332a
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 93db7cf38cc7ea5c9bb778bf3b89a7912a46c3ec
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116956"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428741"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>使用 PowerShell 在相同或不同订阅的存储帐户中从 VHD 文件创建托管磁盘
 

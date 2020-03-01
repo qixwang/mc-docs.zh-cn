@@ -1,6 +1,6 @@
 ---
-title: 在用户帐户下运行任务 - Azure Batch | Azure Docs
-description: 配置用于在 Azure Batch 中运行任务的用户帐户
+title: 在用户帐户下运行任务 - Azure Batch
+description: 如果能够配置要在其下运行任务的用户帐户，会很有帮助。 了解用户帐户的类型以及如何配置它们。
 services: batch
 author: lingliw
 manager: digimobile
@@ -15,12 +15,12 @@ origin.date: 11/18/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: d43222af2fe01fce52f33b17c349a7102bb5a961
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 40fb9e8a0c541775756046399cc5d00300e1980f
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838643"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497360"
 ---
 > [!NOTE] 
 > 出于安全原因，本文中所述的用户帐户与用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户不同。 
@@ -97,7 +97,7 @@ Azure Batch 提供两种类型的用户帐户来运行任务：
 
 以下代码片段演示如何配置自动用户规范。 这些示例将提升级别设置为 `Admin`，将范围设置为 `Task`。 任务范围是默认设置，但此处出于示范目的包含了此设置。
 
-#### <a name="batch-net"></a>批处理 .NET
+#### <a name="batch-net"></a>Batch .NET
 
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
@@ -113,7 +113,7 @@ taskToAdd.withId(taskId)
         .withCommandLine("cmd /c echo hello");                        
 ```
 
-#### <a name="batch-python"></a>批处理 Python
+#### <a name="batch-python"></a>Batch Python
 
 ```python
 user = batchmodels.UserIdentity(

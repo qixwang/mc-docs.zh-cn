@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 02/21/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2019
 ms.author: v-yiso
-ms.openlocfilehash: 33ffe2e9aff6c6a02be276330573afd835ae2285
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: 4e876db858f9c1c9cffb54249dd02be2634c6e0a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845441"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428643"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
 
@@ -227,8 +227,7 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 
 | 如何...使用基于资源管理器的 HDInsight SDK | 链接 |
 | --- | --- |
-| 使用 .NET SDK 创建 HDInsight 群集 |请参阅[使用 .NET SDK 创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
-| 配合使用脚本操作与 .NET SDK 自定义群集 |请参阅[使用脚本操作自定义 HDInsight Linux 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
+| 用于 .NET 的 Azure HDInsight SDK|请参阅[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
 | 配合使用 Azure Active Directory 与 .NET SDK 以交互方式对应用程序进行身份验证 |请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 本文中的代码片段使用交互式身份验证方法。 |
 | 配合使用 Azure Active Directory 与 .NET SDK 以非交互方式对应用程序进行身份验证 |请参阅[为 HDInsight 创建非交互式应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作业 |请参阅[提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

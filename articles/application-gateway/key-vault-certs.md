@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 04/25/2019
-ms.date: 11/21/2019
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: d7fcc2e45cf4a878c7bdc39025f05f6506ffb71f
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 5d11c9e2c098435e1a3e19b210167b60ecfdb8da
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327319"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494041"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>使用 Key Vault 证书实现 SSL 终止
 
@@ -34,6 +33,9 @@ ms.locfileid: "74327319"
 - 支持自动续订存储在密钥保管库中的证书。
 
 应用程序网关目前仅支持经软件验证的证书。 不支持硬件安全模块 (HSM) 验证的证书。 应用程序网关在配置为使用 Key Vault 证书以后，其实例会从 Key Vault 检索证书并将其安装到本地进行 SSL 终止。 实例还按 24 小时的时间间隔轮询 Key Vault，以便检索续订版的证书（如果存在）。 如果发现更新的证书，则目前与 HTTPS 侦听器关联的 SSL 证书会自动轮换。
+
+> [!NOTE]
+> Azure 门户仅支持 KeyVault 证书，而不支持机密。 应用程序网关仍支持从 KeyVault 引用机密，而只能通过 PowerShell、CLI、API、ARM 模板等非门户资源进行引用。 
 
 ## <a name="how-integration-works"></a>集成工作原理
 

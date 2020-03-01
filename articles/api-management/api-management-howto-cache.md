@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 origin.date: 11/27/2018
 ms.author: v-yiso
-ms.date: 09/16/2019
-ms.openlocfilehash: da699973f1012556addbc2e17847a4034b680292
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.date: 02/24/2020
+ms.openlocfilehash: 175eabf148c80ce0ab99937492b77c903b072996
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736728"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428636"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。
@@ -37,7 +37,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -68,10 +68,12 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 10. 在 **outbound** 元素中添加以下策略：
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
-    **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
+    **持续时间**指定缓存响应的到期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
+> [!TIP]
+> 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `caching-type` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
 
 ## <a name="test-operation"> </a>调用操作和测试缓存
 若要查看作用的缓存，请从开发人员门户调用操作。
@@ -83,10 +85,10 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 5. 单击右上方菜单中的“测试”选项卡。 
 6. 按“发送”。 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"> </a>后续步骤
 * 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
-
+* 有关使用外部 Azure Redis 缓存的详细信息，请参阅[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

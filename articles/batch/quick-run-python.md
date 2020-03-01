@@ -1,5 +1,5 @@
 ---
-title: 快速入门：运行 Azure Batch 作业 - Python API
+title: 使用 Python API 运行 Azure Batch 作业
 description: 使用 Batch Python 客户端库快速运行 Azure Batch 示例作业和任务。 了解 Batch 服务的关键概念。
 services: batch
 author: lingliw
@@ -13,30 +13,26 @@ ms.author: v-lingwu
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 5e5118f3100605e65fb052ef1e76fc3a959e42f0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: be264810251724f7ee872dd142b4d8a551f02e8b
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857778"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497397"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行你的第一个 Batch 作业
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
 
-本快速入门通过基于 Azure Batch Python API 生成的应用程序运行 Azure Batch 作业。  完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
+在本快速入门中，你将使用 Python API 从应用运行 Azure Batch 作业。 该应用将输入数据文件上传到 Azure 存储，并创建一个包含 Batch 计算节点（虚拟机）的池  。 然后，它创建一个作业  ，该作业运行任务  ，以使用基本命令在池中处理每个输入文件。
 
-此应用将多个输入数据文件上传到 Azure 存储，然后创建包含 Batch 计算节点（虚拟机）的*池*。 再然后，它创建一个示例*作业*，以便运行*任务*，在池中使用基本命令来处理每个输入文件。
- 
+在这里，你将了解 Batch 服务的关键概念，并准备好尝试使用 Batch 处理更大规模、更现实的工作负荷。
+
 ![Azure Batch 工作流概述](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>必备条件
 
-* [Python 2.7、3.3 或更高版本](https://www.python.org/downloads/)
-
-* [pip](https://pip.pypa.io/en/stable/installing/) 包管理器
-
-* Azure Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
+- 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+- 一个 **Azure Batch** 帐户和一个关联的 **Azure 存储**帐户。 使用 [Azure 门户](quick-create-portal.md)或 [CLI](quick-create-cli.md) 创建这些帐户。
+- [Python](https://python.org/downloads) 版本 2.7、3.3 或更高版本，包括 [pip](https://pip.pypa.io/en/stable/installing/) 包管理器
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

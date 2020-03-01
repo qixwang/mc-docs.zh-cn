@@ -4,16 +4,15 @@ description: 本文概述 Azure 应用程序网关基于 URL 的内容路由、U
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 09/10/2019
-ms.date: 09/18/2019
+ms.date: 02/17/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: 9332ba37dfccb05d88dfd97a686679c3a2b5cb5f
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.openlocfilehash: cb720c554a4dfaa3382be5f820e389769219751c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083259"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494490"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
@@ -28,7 +27,7 @@ ms.locfileid: "71083259"
 对 http\://contoso.com/video/* 的请求会路由到 VideoServerPool，对 http\://contoso.com/images/* 的请求会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
 > [!IMPORTANT]
-> 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
+> 对于 v1 SKU，规则按照它们在门户中列出的顺序进行处理。 如果基本侦听器先列出并且与传入请求匹配，则该侦听器将处理该请求。 对于 v2 SKU，完全匹配具有更高的优先级。 但是，我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。 这确保将流量路由到适当的后端。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 配置元素
 

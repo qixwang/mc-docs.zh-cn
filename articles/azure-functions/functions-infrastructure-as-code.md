@@ -1,30 +1,22 @@
 ---
-title: 为 Azure Functions 中的函数应用自动执行资源部署 | Microsoft Docs
+title: 自动将函数应用资源部署到 Azure
 description: 了解如何生成用于部署函数应用的 Azure 资源管理器模板。
-services: Functions
-documtationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: azure functions, functions 无服务体系结构, 基础结构即代码, azure resource manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
-ms.service: azure-functions
-ms.server: functions
 ms.topic: conceptual
-origin.date: 04/03/2019
-ms.date: 10/28/2019
-ms.author: v-junlch
-ms.openlocfilehash: 529871b25a350e85173082aa89ec108fb6e026ce
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.date: 02/13/2020
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8bb3721d76749abf797706f3c317bd29403eb315
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034444"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428693"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
 可以使用 Azure 资源管理器模板来部署函数应用。 本文概述了完成此操作所需的资源和参数。 可能还需要部署其他资源，具体取决于函数应用中的[触发器和绑定](functions-triggers-bindings.md)。
 
-有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。
 
 有关示例模板，请参阅：
 - [基于消耗计划的函数应用]
@@ -34,7 +26,7 @@ ms.locfileid: "73034444"
 
 Azure Functions 部署通常包括以下资源：
 
-| Resource                                                                           | 要求 | 语法和属性参考                                                         |   |
+| 资源                                                                           | 要求 | 语法和属性参考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
 | 函数应用                                                                     | 必须    | [Microsoft.Web/sites](https://docs.microsoft.com/azure/templates/microsoft.web/sites)                             |   |
 | [Azure 存储](../storage/index.yml)帐户                                   | 必须    | [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts) |   |
@@ -45,7 +37,7 @@ Azure Functions 部署通常包括以下资源：
 <a name="storage"></a>
 ### <a name="storage-account"></a>存储帐户
 
-函数应用需要 Azure 存储帐户。 你需要一个支持 blob、表、队列和文件的常规用途帐户。 有关详细信息，请参阅 [Azure Functions 存储帐户要求](functions-create-function-app-portal.md#storage-account-requirements)。
+函数应用需要 Azure 存储帐户。 你需要一个支持 blob、表、队列和文件的常规用途帐户。 有关详细信息，请参阅 [Azure Functions 存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
 ```json
 {
@@ -100,6 +92,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -145,7 +138,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ## <a name="deploy-on-consumption-plan"></a>在消耗计划上部署
 
-代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 你不需要为空闲的 VM 付费，也不需要提前保留容量。 若要了解详细信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
+消耗计划会在代码运行时自动分配计算能力，根据需要增加分配以处理负载，然后在代码未运行时相应减少分配。 你不需要为空闲的 VM 付费，也不需要提前保留容量。 若要了解详细信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
 
 有关 Azure 资源管理器模板示例，请参阅[基于消耗计划的函数应用]。
 
@@ -178,7 +171,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 > [!NOTE]
 > 不能显式为 Linux 定义消耗计划。 它将自动创建。
 
-如果你显式定义你的消耗计划，则需要在应用上设置 `serverFarmId` 属性，以使其指向计划的资源 ID。 你还应当确保函数应用有一个针对该计划的 `dependsOn` 设置。
+如果确实显式定义了消耗计划，则需要在应用上设置 `serverFarmId` 属性，使其指向计划的资源 ID。 你还应当确保函数应用有一个针对该计划的 `dependsOn` 设置。
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
@@ -230,7 +223,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 ```
 
 
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>在应用服务计划上部署
 
@@ -258,7 +251,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-### <a name="create-a-function-app"></a>创建函数应用 
+### <a name="create-a-function-app"></a>创建函数应用
 
 应用服务计划上的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。
 
@@ -299,14 +292,85 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
+## <a name="customizing-a-deployment"></a>自定义部署
+
+函数应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 还可以选择删除 **sourcecontrols** 子资源，改用另一个部署选项。
+
+> [!IMPORTANT]
+> 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** 之前  部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。
+
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[parameters('appName')]",
+  "type": "Microsoft.Web/sites",
+  "kind": "functionapp",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Web/serverfarms', parameters('appName'))]"
+  ],
+  "properties": {
+     "serverFarmId": "[variables('appServicePlanName')]",
+     "siteConfig": {
+        "alwaysOn": true,
+        "appSettings": [
+            {
+                "name": "FUNCTIONS_EXTENSION_VERSION",
+                "value": "~2"
+            },
+            {
+                "name": "Project",
+                "value": "src"
+            }
+        ]
+     }
+  },
+  "resources": [
+     {
+        "apiVersion": "2015-08-01",
+        "name": "appsettings",
+        "type": "config",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/Sites', parameters('appName'))]",
+          "[resourceId('Microsoft.Web/Sites/sourcecontrols', parameters('appName'), 'web')]",
+          "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+        ],
+        "properties": {
+          "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
+          "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
+          "FUNCTIONS_EXTENSION_VERSION": "~2",
+          "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+          "Project": "src"
+        }
+     },
+     {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites/', parameters('appName'))]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('sourceCodeRepositoryURL')]",
+            "branch": "[parameters('sourceCodeBranch')]",
+            "IsManualIntegration": "[parameters('sourceCodeManualIntegration')]"
+          }
+     }
+  ]
+}
+```
+> [!TIP]
+> 此模板使用 [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) 应用设置值，这将设置基本目录，Functions 部署引擎 (Kudu) 在此目录中查找可部署代码。 在存储库内，函数位于 **src** 文件夹的子文件夹中。 因此，在前一个示例中，将应用设置值设置为 `src`。 如果函数位于存储库的根目录中，或者不从源代码管理进行部署，则可删除此应用设置值。
+
 ## <a name="deploy-your-template"></a>部署模板
 
 可以使用以下任意方法部署模板：
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure 门户](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)
+* [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
 

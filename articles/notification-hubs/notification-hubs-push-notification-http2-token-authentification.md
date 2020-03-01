@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中心内针对 APNS 的基于令牌的 (HTTP/2) 身份验证 | Microsoft Docs
-description: 本主题介绍如何使用 APNS 的新令牌身份验证
+title: 在 Azure 通知中心针对 APNS 进行基于令牌的 (HTTP/2) 身份验证 | Microsoft Docs
+description: 本主题介绍如何将新的令牌身份验证用于 APNS。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -11,19 +11,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-origin.date: 02/13/2019
-ms.date: 12/09/2019
+origin.date: 11/14/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 3f892bd3a77061bcdc45c8e313c697f176f83b92
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: ea688b3bc8c935c59fc144a2b8a4c53af4971b29
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884984"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501350"
 ---
-# <a name="token-based-http2-authentication-for-apns"></a>针对 APNS 的基于令牌的 (HTTP/2) 身份验证
+# <a name="token-based-http2-authentication-for-apns"></a>针对 APNS 进行基于令牌的 (HTTP/2) 身份验证
 
 ## <a name="overview"></a>概述
 
@@ -33,7 +33,7 @@ ms.locfileid: "74884984"
 
 * 与生成证书相比，生成令牌相对较为简单
 * 不再有过期日期 – 用户可以控制身份验证令牌及其吊销
-* 有效负载现在最高可达 4 KB
+* 有效负载现在最大可以达到 4 KB
 * 同步反馈
 * 采用的是 Apple 的最新协议 - 证书仍然使用二进制协议（已标记为弃用）
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric 映像存储区连接字符串
-description: 了解映像存储区连接字符串
+description: 了解映像存储连接字符串，包括其用途和对 Service Fabric 群集的应用。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/27/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 911f7d0f2de9a1361d435ab173f247cda4f8cf97
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 2897dda8ba41fd5d893295b9ca1b13a786da7709
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742501"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539969"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>了解 ImageStoreConnectionString 设置
 

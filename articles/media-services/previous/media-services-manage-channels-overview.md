@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务实时传送视频流概述 | Microsoft Docs
-description: 本主题概述了如何使用 Azure 媒体服务实时传送视频流。
+description: 本文概述如何使用 Azure 媒体服务实时传送视频流。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 735a6ad00e15229eedfa9342029f6ac7a5efa5f9
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 48dfc8fb86308e742db47b606b1610f41825bfe5
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124460"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494288"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
@@ -56,13 +56,13 @@ Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和实时传�
 
 **通道** 表示用于处理实时流内容的管道。 通道可以通过以下方式接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（零碎的 MP4）发送到经配置可以进行直通传送的频道    。 直通传送是指引入的流将会直接通过频道，而不会经过任何进一步的处理   。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的通道，但不建议这样做。 收到请求时，媒体服务会将该流传送给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（零碎的 MP4）发送到经配置可以进行直通传送的频道    。 直通传送是指引入的流将会直接通过频道，而不会经过任何进一步的处理   。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Telestream Wirecast、Haivision、Teradek 和 Tricaster 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的通道，但不建议这样做。 收到请求时，媒体服务会将该流传送给客户。
 
   > [!NOTE]
   > 需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，可以使用直通这种最经济的方法来实时传送视频流。 请参阅[定价](https://www.azure.cn/pricing/details/media-services/)详细信息。
   > 
   > 
-* 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的频道：RTMP 或平滑流式处理（分片 MP4）。 已知下列具有 RTMP 输出的实时编码器可使用此类型的通道：Telestream Wirecast、FMLE。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传送给客户。
+* 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的频道：RTMP 或平滑流式处理（分片 MP4）。 已知下列具有 RTMP 输出的实时编码器可使用此类型的通道：Telestream Wirecast。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传送给客户。
 
 从媒体服务2.10 发行版开始，创建通道时，可以指定希望通道接收输入流的方式，以及是否希望通道对流执行实时编码。 可以使用两个选项：
 
@@ -89,11 +89,11 @@ Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和实时传�
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>使用从本地编码器（直通）接收多比特率实时流的频道
 
-下图显示的是**直通**工作流中涉及的 AMS 平台的主要组成部分。
+下图显示的是直通工作流中涉及的 AMS 平台的主要组成部分  。
 
 ![实时工作流](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
-有关详细信息，请参阅 [使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)。
+有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)。
 
 ## <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>使用能够通过 Azure 媒体服务执行实时编码的通道
 
@@ -116,7 +116,7 @@ Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和实时传�
 创建通道时，可以使用以下格式之一指定允许的 IP 地址：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
 
 ### <a name="program"></a>节目
-[节目](https://docs.microsoft.com/rest/api/media/operations/program) 用于控制实时流中片段的发布和存储。 频道管理节目。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
+[节目](https://docs.microsoft.com/rest/api/media/operations/program) 用于控制实时流中片段的发布和存储。 频道管理节目。 通道和节目的关系非常类似于传统媒体，通道具有恒定的内容流，而节目的范围限定为该通道上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的节目录制内容。 此值的设置范围是最短 5 分钟，最长 25 小时。
 
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时段长度后面的内容会全部被丢弃。 此属性的值还决定了客户端清单能够增加多长时间。
@@ -128,7 +128,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 ## <a name="billing-implications"></a>计费影响
 一旦通过 API 将频道的状态转换为“正在运行”，就会开始计费。  
 
-下表显示了频道状态如何映射到 API 和 Azure 门户中的计费状态。 请注意，API 与门户 UX 之间的状态略有不同。 一旦通过 API 将频道置于“正在运行”状态，或者在 Azure 门户中将其设置为“就绪”或“正在流式处理”状态，就会开始计费。
+下表显示了通道状态如何映射到 API 和 Azure 门户中的计费状态。 请注意，API 与门户 UX 之间的状态略有不同。 一旦通过 API 将频道置于“正在运行”状态，或者在 Azure 门户中将其设置为“就绪”或“正在流式处理”状态，就会开始计费。
 
 若要阻止通道进一步计费，必须通过 API 或 Azure 门户停止通道。
 使用完通道后，需要亲自停止通道。 不停止通道会导致持续计费。
@@ -145,7 +145,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 * **正在启动**。 通道正在启动。 此状态下不会发生计费。 此状态下不允许进行更新或流式传输。 如果发生错误，通道会返回到“已停止”状态。
 * **正在运行**。 通道能够处理实时流。 现在会计收使用费。 必须停止通道以防止进一步计费。
 * **正在停止**。 通道正在停止。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
-* **正在删除**。 频道正被删除。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
+* **正在删除**。 正在删除通道。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式传输。
 
 下表显示通道状态如何映射到计费模式。
 

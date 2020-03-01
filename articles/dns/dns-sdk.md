@@ -1,6 +1,7 @@
 ---
-title: 使用.NET SDK 在 Azure DNS 中创建 DNS 区域和记录集 | Microsoft Docs
-description: 如何使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
+title: 使用 .NET SDK 创建 DNS 区域和记录集
+titleSuffix: Azure DNS
+description: 在此学习路径中，开始使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
 services: dns
 documentationcenter: na
 author: WenJason
@@ -12,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/19/2016
-ms.date: 03/18/2019
+ms.date: 02/17/2020
 ms.author: v-jay
-ms.openlocfilehash: 8ec02d38cff54a0ac7aab842db1dfb0b378fe048
-ms.sourcegitcommit: 5b827b325a85e1c52b5819734ac890d2ed6fc273
+ms.openlocfilehash: 72fb75fb914b62c61dec0c16963774d7aa2871bc
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503655"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428867"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -30,7 +31,7 @@ ms.locfileid: "58503655"
 通常情况下，通过专用帐户（而不是自己的用户凭据）授予对 Azure 资源的编程访问权限。 将这些专用帐户称为“服务主体”帐户。 若要使用 Azure DNS SDK 示例项目，首先需要创建一个服务主体帐户并为其分配正确的权限。
 
 1. 请按照[这些说明](../active-directory/develop/howto-authenticate-service-principal-powershell.md)创建服务主体帐户（Azure DNS SDK 示例项目采用基于密码的身份验证。）
-2. 创建资源组（[此处提供了方法](../azure-resource-manager/resource-group-template-deploy-portal.md)）。
+2. 创建资源组（[此处提供了方法](../azure-resource-manager/templates/deploy-portal.md)）。
 3. 使用 Azure RBAC 将服务主体帐户的“DNS 区域参与者”权限授予资源组（[此处提供了方法](../role-based-access-control/role-assignments-portal.md)）。
 4. 如果使用 Azure DNS SDK 示例项目，请如下所示编辑 program.cs 文件：
 
@@ -43,8 +44,8 @@ ms.locfileid: "58503655"
 若要使用 Azure DNS .NET SDK，需要安装 **Azure DNS 管理库** NuGet 包和其他所需的 Azure 包。
 
 1. 在 **Visual Studio** 中，打开项目或新的项目。
-2. 转到“**工具**”**>**“**NuGet 包管理器**”**>“** **管理解决方案的 NuGet 包...**”。
-3. 单击“浏览”，启用“包括预发行版”复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
+2. 转到“工具” **>** “NuGet 包管理器” **>** “管理解决方案的 NuGet 包...”    。
+3. 单击“浏览”  ，启用“包括预发行版”  复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
 4. 选择此包，然后单击“**安装**”将其添加到 Visual Studio 项目中。
 5. 重复以上过程，还能安装以下包：**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 
@@ -72,7 +73,7 @@ dnsClient.BaseUri= new System.Uri("https://management.chinacloudapi.cn");
 
 ## <a name="create-or-update-a-dns-zone"></a>创建或更新 DNS 区域
 
-若要创建 DNS 区域，首先创建一个 "Zone" 对象来包含 DNS 区域参数。 因为 DNS 区域未链接到某一特定区域，此位置会被设置为 'global'。 在此示例中，还会将 [Azure 资源管理器“标记”](/azure-resource-manager/resource-group-using-tags)添加到此区域。
+若要创建 DNS 区域，首先创建一个 "Zone" 对象来包含 DNS 区域参数。 因为 DNS 区域未链接到某一特定区域，此位置会被设置为 'global'。 在此示例中，还会将 [Azure 资源管理器“标记”](/azure-resource-manager/management/tag-resources)添加到此区域。
 
 要实际创建或更新 Azure DNS 中的区域，会将包含区域参数的区域对象传递给 `DnsManagementClient.Zones.CreateOrUpdateAsyc` 方法。
 

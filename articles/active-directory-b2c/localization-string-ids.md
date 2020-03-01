@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 3317dd99f34dc963128e42edf136aaf8dce496fc
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 1027b098280263063b2ce3d210a4bad9c90ef74f
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028165"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531320"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -49,6 +49,10 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 | **social_intro** | 使用社交帐户登录 |
   **remember_me** |使我保持登录状态|
 | **unknown_error** | 登录时遇到问题。 请稍后重试。 |
+
+下面的示例演示如何在注册或登录页中使用某些用户界面元素：
+
+![注册或登录页面 UX 元素](./media/localization-string-ids/localization-susi.png)
 
 标识提供者的 ID 在用户旅程 ClaimsExchange  元素中配置。 若要本地化标识提供者的标题，请将 ElementType  设置为 `ClaimsProvider`，同时将 StringId  设置为 `ClaimsExchange` 的 ID。
 
@@ -203,7 +207,8 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 |verification_control_but_send_new_code |发送新代码 |
 |verification_control_but_verify_code |验证验证码 |
 
-### <a name="verification-display-control-error-messages"></a>验证显示控件错误消息
+## <a name="one-time-password-error-messages"></a>一次性密码错误消息
+以下是[一次性密码技术配置文件](one-time-password-technical-profile.md)错误消息的 ID
 
 | ID | 默认值 |
 | -- | ------------- |

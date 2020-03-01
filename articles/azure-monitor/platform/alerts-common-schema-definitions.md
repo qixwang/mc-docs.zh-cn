@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor 的通用警报架构定义
 description: 了解 Azure Monitor 的通用警报架构定义
-author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
+author: lingliw
 origin.date: 03/14/2019
 ms.date: 04/14/2019
 ms.author: anantr
-ms.openlocfilehash: c0aa4f9b7884f7480e343ace041c29a4b97efba3
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 2626f880bb464b75ecf5e515cb4404b40c925004
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982140"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497460"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -86,7 +86,7 @@ ms.locfileid: "74982140"
 | originAlertId | 警报实例的 ID，由生成它的监视服务生成。 |
 | firedDateTime | 触发警报实例时的协调世界时 (UTC) 日期和时间。 |
 | resolvedDateTime | 将警报实例的监视条件设置为“已解决”时的 UTC 日期和时间。  当前仅适用于指标警报。|
-| 说明 | 警报规则中定义的说明。 |
+| description | 警报规则中定义的说明。 |
 |essentialsVersion| 概要部分的版本号。|
 |alertContextVersion | `alertContext` 部分的版本号。 |
 
@@ -152,7 +152,7 @@ ms.locfileid: "74982140"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义 JSON 有效负载的日志警报，启用此通用架构会将有效负载架构恢复为下述架构。 启用通用架构的警报的大小上限为每个警报 256 KB。 如果搜索结果导致警报大小超出此阈值，则不会将搜索结果嵌入日志警报有效负载中。 可通过检查标记 `IncludedSearchResults` 来确定这一点。 在不包括搜索结果时，应将搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) 配合使用。 
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用通用架构会将电子邮件主题和/或有效负载架构还原为如下所述的架构。 启用通用架构的警报的大小上限为每个警报 256 KB。 如果搜索结果导致警报大小超出此阈值，则不会将搜索结果嵌入日志警报有效负载中。 可通过检查标记 `IncludedSearchResults` 来确定这一点。 在不包括搜索结果时，应将搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) 配合使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -367,7 +367,7 @@ ms.locfileid: "74982140"
       "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
       "oldInstancesCount": "9",
       "newInstancesCount": "10",
-      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"China East\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
     },
     "status": "Succeeded",

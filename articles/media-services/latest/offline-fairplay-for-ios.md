@@ -1,5 +1,5 @@
 ---
-title: 使用脱机 Apple FairPlay 保护 HLS 内容 - Azure | Microsoft Docs
+title: 适用于 iOS 的脱机 FairPlay 流式处理与 Azure 媒体服务 v3
 description: 本主题概括介绍并演示了如何使用 Azure 媒体服务以脱机模式通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), 脱机, iOS 10
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/08/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: b351760b50651baff40efc817e4487eeece0fe7c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 60eb7697483977a2a1157f86e7a9a01ae416dbfb
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125534"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494539"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
+# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
  Azure 媒体服务提供一套设计良好的[内容保护服务](content-protection-overview.md)，包括：
 
@@ -47,7 +47,7 @@ ms.locfileid: "71125534"
 > [!NOTE]
 > 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在 iOS 10+ 设备上为 FairPlay 实现 脱机 DRM 之前：
 

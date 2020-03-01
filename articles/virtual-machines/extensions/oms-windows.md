@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure Monitor 虚拟机扩展 | Azure
+title: 适用于 Windows 的 Azure Monitor 虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics 代理。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-origin.date: 08/12/2019
-ms.date: 11/11/2019
+origin.date: 01/30/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: e63d16407d63ee5c6c8dddfcf56f6ebf5a575381
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 7430de4103ea4cc75fedb8969fea4d52974a59b0
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831401"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428863"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -30,7 +30,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -41,8 +41,9 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 | Log Analytics Windows 代理捆绑包版本 | Azure Monitor Windows VM 扩展版本 | 发布日期 | 发行说明 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要 bug 修复和稳定性改进 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> MaxExpressionDepth 已增加到10000 </li></ul> |
-| 10.20.18001 | 1.0.18001 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能（支持 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|
+| 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能（支持 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019 年 3 月 | <ul><li>次要稳定性修复 </li></ul> |
 | 10.19.10006 | 不适用 | 2018 年 12 月 | <ul><li> 次要稳定性修复 </li></ul> | 
 | 8.0.11136 | 不适用 | 2018 年 9 月 |  <ul><li> 添加了对 VM 移动时检测资源 ID 更改的支持 </li><li> 添加了对使用非扩展安装时报告资源 ID 的支持 </li></ul>| 
@@ -60,7 +61,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥。 这些数据可在 Azure 门户的工作区设置中找到。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的设置配置中。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥。 这些数据可在 Azure 门户的工作区设置中找到。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的设置配置中。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -98,6 +99,8 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 \* workspaceId 在 Log Analytics API 中称为 consumerId。
 
+> [NOTE!] 有关其他属性，请参阅 Azure [将 Windows 计算连接到 Azure Monitor](/azure-monitor/platform/agent-windows)。
+
 ## <a name="template-deployment"></a>模板部署
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Log Analytics 代理扩展。 包含 Log Analytics 代理 VM 扩展的示例模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)中找到。 
@@ -105,7 +108,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 >[!NOTE]
 >需要将代理配置为向多个工作区报告时，此模板不支持指定多个工作区 ID 和工作区密钥。 若要将代理配置为向多个工作区报告，请参阅[添加或删除工作区](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)。  
 
-虚拟机扩展的 JSON 可以嵌套在虚拟机资源内，或放置在 Resource Manager JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/child-resource-name-type.md)。 
+虚拟机扩展的 JSON 可以嵌套在虚拟机资源内，或放置在 Resource Manager JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 以下示例假定 Azure Monitor 扩展嵌套在虚拟机资源内。 嵌套扩展资源时，JSON 放置在虚拟机的 `"resources": []` 对象中。
 
@@ -198,4 +201,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

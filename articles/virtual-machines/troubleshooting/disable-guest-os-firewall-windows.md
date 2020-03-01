@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/22/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 66e4ba3a37fe6ae2604b3808769b287cefd93de9
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 97963c76169c8661f315a22d0f4851ccf62e7501
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116949"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428776"
 ---
 <!-- Verify part successfully-->
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
@@ -29,7 +29,7 @@ ms.locfileid: "74116949"
 
 ## <a name="solution"></a>解决方案
 
-本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 它是一种启用 Windows 防火墙组件的 Azure 最佳做法。 如何配置防火墙规则取决于对 VM 所需的访问级别。
+本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 启用 Windows 防火墙组件是 Azure 最佳做法。 如何配置防火墙规则取决于对所需 VM 的访问级别。
 
 ### <a name="online-solutions"></a>联机解决方案 
 
@@ -134,7 +134,7 @@ ms.locfileid: "74116949"
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'

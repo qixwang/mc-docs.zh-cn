@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 140af2c0d7372ffb37d25b026aa85748589855fc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/14/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: b74d292f61cd2e6183c9ff7b1dd9470dcd6e50cb
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336483"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501465"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST 教程：在 Azure 认知搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据
 
@@ -28,7 +28,7 @@ Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引�
 > * 配置和运行索引器以读取容器和从 Azure blob 存储中提取可搜索内容
 > * 搜索刚刚创建的索引
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门使用以下服务、工具和数据。 
 
@@ -56,7 +56,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. [登录到 Azure 门户](https://portal.azure.cn)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”   。
 
-1. [创建一个 Blob 容器](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可以将“公共访问级别”设为任何有效值。
+1. [创建一个 Blob 容器](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可将“公共访问级别”设为任何有效值。
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。
 
@@ -127,7 +127,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="create-an-index"></a>创建索引
     
-第二次调用的是[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
+第二次调用的是[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
 
 此调用的 URL 为 `https://[service name].search.chinacloudapi.cn/indexes?api-version=2019-05-06`。 请将 `[service name]` 替换为搜索服务的名称。
 

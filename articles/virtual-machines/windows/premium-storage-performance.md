@@ -1,20 +1,22 @@
 ---
-title: Azure 高级存储：针对 Windows VM 的性能进行设计 | Azure
-description: 使用 Azure 高级存储设置高性能应用程序。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
+title: Azure 高级存储：高性能设计
+description: 使用 Azure 高级 SSD 托管磁盘设计高性能应用程序。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
 author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 origin.date: 06/27/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 6c63530f90ffb98639678d72a0f4145f70f5cab3
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 1c8a3b0c7d6e61fbee8b8161e40970dbd9222ea9
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272545"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428769"
 ---
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
+
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]
@@ -24,7 +26,7 @@ ms.locfileid: "72272545"
 >
 > 如果 VM 支持加速网络，则应确保它已启用。 如果未启用，则可以在 [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 上已部署的 VM 上启用它。
 
-如果不熟悉高级存储，请在开始之前首先阅读[为 IaaS VM 选择 Azure 磁盘类型](disks-types.md)和[存储帐户的 Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。
+如果不熟悉高级存储，请在开始之前先阅读[为 IaaS VM 选择 Azure 磁盘类型](disks-types.md)和[高级页 blob 存储帐户的可伸缩性目标](../../storage/blobs/scalability-targets-premium-page-blobs.md)。
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
 

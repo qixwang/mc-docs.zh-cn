@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机中 SQL Server 的自动修补（资源管理器）| Azure
+title: Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 description: 介绍 Azure 中运行的、使用 Resource Manager 的 SQL Server 虚拟机的自动修补功能。
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 03/07/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 2d49b31432cc1f832db1f327f3a7404036feee47
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 41ea80ea7ba10866570f579c55b43a071d5687ea
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272744"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428103"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -31,11 +31,11 @@ ms.locfileid: "72272744"
 自动修补为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
 
 > [!IMPORTANT]
-> 仅安装标记为“重要”的 Windows 更新  。 必须手动安装其他 SQL Server 更新，如累积更新。 
+> 仅安装标记为“重要”的 Windows 更新和 SQL Server 更新  。 必须手动安装其他 SQL Server 更新，如累积更新。 
 
 自动修补依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要使用自动修补，请考虑以下先决条件：
 
 **操作系统**：

@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 02/19/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9602030d08c877a9b7819a11ed4424cd86b23c08
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 8a6b0f6ad992e31e5f8773d0c52fea6dc4ee42ff
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028921"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497565"
 ---
 # Azure 备份体系结构和组件 <a name="architecture-built-in-azure-vm-backup"></a>
 
@@ -106,6 +106,22 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ![表键](./media/backup-architecture/table-key.png)
 
+## <a name="backup-policy-essentials"></a>备份策略概要
+
+- 备份策略是按保管库创建的。
+- 可为以下工作负荷的备份创建备份策略
+  - Azure VM
+  - Azure VM 中的 SQL
+- 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
+- 策略由两个部分组成
+  - 计划：何时创建备份
+  - 保留期：每个备份应保留多长时间。
+- 可将计划定义为带有特定时间点的“每日”或“每周”计划。
+- 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
+- “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
+- “每月”、“每年”备份点的保留期称为“LongTermRetention”。
+- 创建保管库时，也会为 Azure VM 备份创建名为“DefaultPolicy”的策略，此策略可用于备份 Azure VM。
+
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 
 1. 为 Azure VM 启用备份时，将会根据指定的计划运行备份。
@@ -178,7 +194,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 可以通过 Azure 备份来备份使用高级存储的 Azure VM：
 
 - 在备份使用高级存储的 VM 过程中，备份服务将在存储帐户中创建名为 *AzureBackup-* 的临时暂存位置。 暂存位置大小与恢复点快照大小相同。
-- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 [了解详细信息](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits)。 不要修改暂存位置。
+- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
 - 备份作业完成后，将删除暂存位置。
 - 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/windows/disks-types.md#billing)相一致。
 

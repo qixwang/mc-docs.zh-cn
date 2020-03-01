@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 设备预配服务 MQTT 支持 | Microsoft Docs
-description: 开发人员指南 - 设备使用 MQTT 协议连接到面向 Azure IoT 设备预配服务设备的终结点的支持。
+description: 开发人员指南 - 为使用 MQTT 协议连接到 Azure IoT 设备预配服务 (DPS) 面向设备的终结点的设备提供支持。
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 origin.date: 10/16/2019
-ms.date: 12/09/2019
-ms.author: v-yiso
-ms.openlocfilehash: ef325d614dc567dc79a8e78ed18180469213b0ce
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.date: 03/02/2020
+ms.author: v-tawe
+ms.openlocfilehash: 805167ddd58900ffd0304bbfc608cfaead256219
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658166"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494098"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
 

@@ -7,8 +7,8 @@ author: brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
+origin.date: 02/10/2020
+ms.date: 03/02/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,16 +20,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a96f925d240f87bd765a0beff0178d23a0b17641
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2106aacc33fd9991212ced66d145b4ad17bb95a6
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336103"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501433"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
 可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 认知搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 认知搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 认知搜索中完整实现](search-lucene-query-architecture.md)  。 
+
+> [!NOTE]
+> 完整 Lucene 语法用于在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents) API 的**搜索**参数中传递的查询表达式，不要与用于该 API 的 [$filter](search-filters.md) 参数的 [OData 语法](query-odata-filter-orderby-syntax.md)相混淆。 这两个不同的语法有各自的用于构造查询、转义字符串等操作的规则。
 
 ## <a name="how-to-invoke-full-parsing"></a>如何调用完整分析
 
@@ -124,7 +127,7 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
  Azure 认知搜索使用基于频率评分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
 ##  <a name="bkmk_fields"></a> 字段化搜索  
-可以使用 `fieldName:searchExpression` 语法定义字段化搜索操作，其中的搜索表达式可以是单个词，也可以是一个短语，或者是括号中的更复杂的表达式，可以选择使用布尔运算符。 一些示例包括以下内容：  
+可以使用 `fieldName:searchExpression` 语法定义字段化搜索操作，其中的搜索表达式可以是单个词，也可以是一个短语，或者是括号中的更复杂的表达式，可以选择使用布尔运算符。 下面是部分示例：  
 
 - 流派：爵士乐无历史记录  
 

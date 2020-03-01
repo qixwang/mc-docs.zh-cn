@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 08/12/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: a2004209025922dde195f1b7a5622492d8289f12
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 53a321270b8b8244264c7e3410683ced0326061e
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965116"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428889"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML 参考：Azure 容器实例
 
@@ -402,7 +402,9 @@ properties: # Properties of container group
 
 参阅教程[使用 YAML 文件部署多容器组](container-instances-multi-container-yaml.md)。
 
-参阅使用 YAML 文件在[虚拟网络](container-instances-vnet.md)中部署容器组或[装载外部卷](container-instances-volume-azure-files.md)的示例。
+参阅使用 YAML 文件在虚拟网络中部署容器组或[装载外部卷](container-instances-volume-azure-files.md)的示例。
+
+<!--Not Available on [虚拟网络](container-instances-vnet.md)-->
 
 <!-- LINKS - Internal -->
 

@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 11/13/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: d8c9457a15125fd46530b802b02c04227e291b9c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 37ffccf5cd450832bb61e3d8ef78ef8493b12a76
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839062"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497644"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器 
 <a name="install-and-upgrade-azure-backup-server"></a>
@@ -34,7 +34,7 @@ ms.locfileid: "74839062"
 部署在 Azure VM 中的 MABS 可以备份 Azure 中的 VM，但它们应位于同一域中以启用备份操作。 备份 Azure VM 的过程仍与在本地备份 VM 的过程相同，但在 Azure 中部署 MABS 有一些限制。 有关限制的详细信息，请参阅 [DPM 作为 Azure 虚拟机](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
+> Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/management/deployment-models.md)。 本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
 >
 >
 
@@ -69,6 +69,8 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 > * 作为 System Center Operations Manager 管理服务器的计算机
 > * 运行 Exchange Server 的计算机
 > * 作为群集节点的计算机
+>
+> Windows Server Core 或 Microsoft Hyper-V Server 不支持安装 Azure 备份服务器。
 
 请始终将 Azure 备份服务器加入域。 如果计划将服务器移到其他域，请先安装 Azure 备份服务器，然后将服务器加入到新域。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
@@ -89,8 +91,6 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
      ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
- 
-
 ## <a name="software-package"></a>软件包
 ### <a name="downloading-the-software-package"></a>下载软件包
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
@@ -101,13 +101,13 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
      ![创建恢复服务保管库步骤 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
-     此时会显示恢复服务保管库列表。
+     此时显示恢复服务保管库列表。
    * 在恢复服务保管库列表中选择一个保管库。
 
      此时会打开选定的保管库仪表板。
 
      ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. 默认情况下会打开“设置”  边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”  将它打开。
+3. 默认情况下会打开“设置”  边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”将它打开  。
 
     ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 4. 单击“备份”  打开“开始使用”向导。
@@ -141,7 +141,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    由于所有文件的下载大小合计超过了 3G，在 10Mbps 下载链路上可能需要 60 分钟才能完成下载。
+    由于所有文件的下载大小合计超过了 3G，在 10-Mbps 下载链接上可能最多需要 60 分钟才能完成下载。
 
 ### <a name="extracting-the-software-package"></a>解压缩软件包
 下载所有文件之后，单击 **MicrosoftAzureBackupInstaller.exe**。 这将启动“Azure 备份安装向导”，并将安装程序文件解压缩到指定的位置。  继续运行向导，然后单击“解压缩”  按钮开始解压缩过程。
@@ -180,10 +180,10 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
     使用自己的 SQL 2017 实例时，需要手动配置 SSRS。 配置 SSRS 后，请确保 SSRS 的 *IsInitialized* 属性设置为 *True*。 如果此属性设置为 True，MABS 将假设已配置 SSRS，因此会跳过 SSRS 配置。
 
     对 SSRS 配置使用以下值：
-    * 服务帐户：�使用内置帐户�应为网络服务
-    * Web 服务 URL：�虚拟目录� 应为 ReportServer_\<SQLInstanceName>
+    * 服务帐户：“使用内置帐户”应为“网络服务”
+    * Web 服务 URL：“虚拟目录”应为“ReportServer_\<SQLInstanceName>”
     * 数据库：DatabaseName 应为 ReportServer$\<SQLInstanceName>
-    * Web 门户 URL：�虚拟目录� 应为 Reports_\<SQLInstanceName>
+    * Web 门户 URL：“虚拟目录”应为“Reports_\<SQLInstanceName>”
 
     [详细了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
 
@@ -195,10 +195,10 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
-5. 为受限的本地用户帐户提供强密码，并单击“**下一步**”。
+5. 为受限的本地用户帐户提供强密码，然后单击“下一步”  。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. 选择是否要使用 *Microsoft 更新*来检查更新，并单击“**下一步**”。
+6. 选择是否要使用 *Microsoft 更新*来检查更新，然后单击“下一步”  。
 
    > [!NOTE]
    > 我们建议让 Windows 更新重定向到 Microsoft 更新，此网站为 Windows 和 Microsoft Azure 备份服务器等其他产品提供了安全更新与重要更新。
@@ -206,12 +206,12 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    >
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. 复查“*设置摘要*”，并单击“**安装**”。
+7. 复查“设置摘要”  ，然后单击“安装”  。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. 安装会分阶段进行。 第一个阶段，会在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果可以连接到 Internet，则可以继续安装，否则需要提供代理详细信息以连接到 Internet。
 
-    下一个步骤是配置 Microsoft Azure 恢复服务代理。 在配置过程中，必须提供保管库凭据，以向恢复服务保管库注册计算机。 还需要提供通行短语来加密/解密 Azure 与本地之间发送的数据。 可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
+    下一个步骤是配置 Microsoft Azure 恢复服务代理。 配置过程中，需要提供保管库凭据，用以将计算机注册到恢复服务保管库。 还需要提供通行短语来加密/解密 Azure 与本地之间发送的数据。 可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
 
     ![Azure 备份服务器先决条件 2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Microsoft Azure 备份服务器注册成功完成后，整个安装向导将继续安装和配置 SQL Server 及 Azure 备份服务器的组件。 SQL Server 组件安装完成后，会安装 Azure 备份服务器组件。
@@ -287,7 +287,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 已连接 |活动 |允许 |允许 |允许 |允许 |
-| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
+| 已连接 |Expired |已停止 |已停止 |允许 |允许 |
 | 已连接 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
@@ -308,7 +308,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 可以将 Azure 订阅从“已过期”  或“已取消预配”  状态更改为“活动”  状态。 但是，当状态不是“活动”  时，此操作对产品的行为会造成某些影响：
 
-* “已取消预配”  的订阅在取消预配的这段期间将失去功能。 切换为“*活动*”后，将恢复产品的备份/还原功能。 此外，只要以够长的保留期来保存本地磁盘上的备份数据，则还可以检索这些数据。 但是，一旦订阅进入“*已取消预配*”状态，Azure 中的备份数据便会丢失且不可检索。
+* “已取消预配”  的订阅在取消预配的这段期间将失去功能。 切换为“活动”  后，将恢复产品的备份/还原功能。 此外，只要以够长的保留期来保存本地磁盘上的备份数据，则还可以检索这些数据。 但是，一旦订阅进入“*已取消预配*”状态，Azure 中的备份数据便会丢失且不可检索。
 * “*已过期*”的订阅只会在恢复“*活动*”状态之前失去功能。 在订阅处于“*已过期*”期间计划的任何备份都不会运行。
 
 ## <a name="upgrade-mabs"></a>升级 MABS

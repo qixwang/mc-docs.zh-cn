@@ -2,21 +2,20 @@
 title: 塑造事件 - Azure 时序见解 | Microsoft Docs
 description: 了解最佳做法以及如何在 Azure 时序见解预览版中塑造用于查询的事件。
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 12/16/2019
-ms.date: 02/17/2020
+ms.date: 02/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1d16497da37c998e30f8322e37f54645f9cd160b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 429454a5f913dee068abb397d661e38ea3d4f86a
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068059"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494543"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
@@ -79,6 +78,7 @@ ms.locfileid: "77068059"
 ```
 
 ### <a name="time-series-instance"></a>时序实例 
+
 > [!NOTE]
 > 时序 ID 为 *deviceId*。
 
@@ -115,7 +115,7 @@ ms.locfileid: "77068059"
 ]
 ```
 
-时序见解预览版会在查询时联接一个表（平展后）。 此表包含其他列，例如“类型”。  以下示例演示如何才能[塑造](./time-series-insights-send-events.md#json)遥测数据。
+时序见解预览版会在查询时联接一个表（平展后）。 此表包含其他列，例如“类型”。  以下示例演示如何才能[塑造](./time-series-insights-send-events.md#supported-json-shapes)遥测数据。
 
 | deviceId  | 类型 | L1 | L2 | timestamp | series_Flow Rate ft3/s | series_Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -148,7 +148,7 @@ ms.locfileid: "77068059"
   "data_flow" : 1.76435072345733643
 }
 ```
-在上面的示例中，平展的 `data_flow` 属性会与 `data_flow` 属性造成命名冲突。 在这种情况下，最新的属性值会覆盖以前的值。  如果该行为会造成对业务方案的挑战，请联系 TSI 团队。
+在上面的示例中，平展的 `data_flow` 属性会与 `data_flow` 属性造成命名冲突。 在这种情况下，最新的属性值会覆盖以前的值。  如果此行为会造成对业务方案的挑战，请联系 TSI 团队。
 
 > [!WARNING] 
 > 如果因为平展或其他机制造成同一事件有效负载中出现重复的属性，则会存储最新属性值，覆盖任何以前的值。
@@ -157,3 +157,4 @@ ms.locfileid: "77068059"
 ## <a name="next-steps"></a>后续步骤
 
 若要将这些指导原则付诸实践，请阅读 [Azure 时序见解预览版查询语法](./time-series-insights-query-data-csharp.md)。 可以详细了解时序见解预览版数据访问 REST API 的查询语法。
+

@@ -6,14 +6,14 @@ author: WenJason
 ms.service: dns
 ms.topic: overview
 origin.date: 6/12/2019
-ms.date: 01/13/2020
+ms.date: 01/17/2020
 ms.author: v-jay
-ms.openlocfilehash: d0bfa2dab45461064ba1a27a98b43d1c55adbf48
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.openlocfilehash: 0b5f70a0541a97f14226523efa237aab7dd75361
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777487"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428901"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？
 
@@ -44,7 +44,7 @@ Azure 专用 DNS 具有以下优势：
 
 * **水平分割 DNS 支持**。 借助 Azure DNS，可以使用相同的名称创建在虚拟网络内与在公共 Internet 内分别解析为不同结果的区域。 水平分割 DNS 的典型方案是提供一个专用服务版本以在虚拟网络内部使用。
 
-* **在所有 Azure 区域中可用**。 Azure 公有云中的所有 Azure 区域均已推出 Azure DNS 专用区域功能。
+* **在所有 Azure 区域中可用**。 Azure DNS 专用区域功能在 Azure 云的所有 Azure 区域中都可用。
 
 ## <a name="capabilities"></a>功能
 
@@ -62,7 +62,7 @@ Azure DNS 具有以下限制：
 
 * 如果启用了自动注册 VM DNS 记录，则特定虚拟网络只能链接到一个专用区域。 但可以将多个虚拟网络链接到单个 DNS 区域。
 * 反向 DNS 仅适用于链接虚拟网络中的专用 IP 空间
-* 链接的虚拟网络的专用 IP 地址的反向 DNS 返回 internal.chinacloudsite.cn  ，作为虚拟机的默认后缀。 对于链接到启用了自动注册的专用区域的虚拟网络，专用 IP 地址的反向 DNS 返回两个 FQDN：一个具有默认后缀 internal.chinacloudsite.cn  ，另一个具有专用区域后缀。
+* 链接的虚拟网络的专用 IP 地址的反向 DNS 返回 internal.chinacloudapp.cn  ，作为虚拟机的默认后缀。 对于链接到启用了自动注册的专用区域的虚拟网络，专用 IP 地址的反向 DNS 返回两个 FQDN：一个具有默认后缀 internal.chinacloudapp.cn  ，另一个具有专用区域后缀。
 * 目前，条件转发不受本机支持。 在 Azure 和本地网络之间启用解析。 请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>定价

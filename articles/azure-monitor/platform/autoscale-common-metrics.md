@@ -4,17 +4,17 @@ description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的�
 author: lingliw
 ms.topic: conceptual
 origin.date: 12/6/2016
-ms.date: 12/6/2018
+ms.date: 02/19/2020
 ms.author: v-lingwu
 ms.subservice: autoscale
-ms.openlocfilehash: 2ecc06e5c5e5e1ef957eb146bfbbd84e4f06b0e7
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: ed5364c3b3d50b9e071c09d5aa11dd6f68f5fb00
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599904"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497604"
 ---
-# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
+# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor 自动缩放常用指标
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 - [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>基于 Resource Manager 的 Windows VM 的来宾 OS 指标
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows VM 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会启用诊断。 诊断扩展会发出一组从 VM 内部获取的指标。 这意味着可以自动缩放不是默认发出的指标。
 
 可以在 PowerShell 中使用以下命令生成指标列表。
@@ -52,7 +52,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 | 指标名称 | 计价单位 |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |百分比 |
+| \Processor(_Total)\% 处理器时间 |百分比 |
 | \Processor(_Total)\% Privileged Time |百分比 |
 | \Processor(_Total)\% User Time |百分比 |
 | \Processor Information(_Total)\Processor Frequency |计数 |
@@ -132,8 +132,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |计数 |
 | \NetworkInterface\TotalCollisions |计数 |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>常用的 Web（服务器场）指标
-也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名为 **HttpQueueLength**。  以下部分列出了可用的服务器场（Web 应用）指标。
+## <a name="commonly-used-app-service-server-farm-metrics"></a>常用的应用服务（服务器场）指标
+也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名称为 **HttpQueueLength**。  以下部分列出了可用的服务器场（应用服务）指标。
 
 ### <a name="web-apps-metrics"></a>Web 应用指标
 可以在 PowerShell 中使用以下命令生成 Web 应用指标列表。
@@ -162,8 +162,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 对于（非经典）存储帐户，metricTrigger 将包括：
@@ -180,12 +180,12 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```
 
 > [!NOTE]
-> 若使用服务总线，则不存在资源组这一概念，但 Azure 资源管理器会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-Chinanorth”、“Default-ServiceBus-Chinaeast”等。
+> 若使用服务总线，则不存在资源组这一概念，但 Azure Resource Manager 会为每个区域创建一个默认资源组。 此资源组通常采用“Default-ServiceBus-[region]”的格式。 例如，“Default-ServiceBus-Chinanorth”、“Default-ServiceBus-Chinaeast”等。
 >
 >

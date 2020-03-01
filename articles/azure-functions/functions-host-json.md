@@ -2,19 +2,19 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: cf422bae4c3961d650919f0eb9d7284ca2dee187
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.date: 02/18/2020
+ms.openlocfilehash: 4efaa0a86d3be6bcb0a8de8b73dcda6497b0b0a7
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116866"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494514"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-host-json-v1.md)
-> * [第 2 版](functions-host-json.md)
+> * [版本 2+](functions-host-json.md)
 
 *host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了从 Azure Functions 运行时 2.x 版开始可用的设置。  
 
@@ -27,7 +27,7 @@ ms.locfileid: "76116866"
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
-以下示例 host.json  文件指定了所有可能的选项（仅供内部使用的选项除外）。
+以下版本 2.x+ 的示例 host.json  文件指定了所有可能的选项（不包括仅供内部使用的任何选项）。
 
 ```json
 {
@@ -140,7 +140,7 @@ ms.locfileid: "76116866"
 
 ## <a name="http"></a>http
 
-可在 [http 触发器和绑定](functions-bindings-http-webhook.md#hostjson-settings)中查找配置设置。
+可在 [http 触发器和绑定](functions-bindings-http-webhook-output.md#hostjson-settings)中查找配置设置。
 
 
 ## <a name="manageddependency"></a>managedDependency
@@ -193,7 +193,7 @@ ms.locfileid: "76116866"
 
 ## <a name="version"></a>版本
 
-针对 v2 运行时的函数应用需要版本字符串 `"version": "2.0"`。
+此值指示 host.json 的架构版本。 面向 v2 运行时或更高版本的函数应用需要版本字符串 `"version": "2.0"`。 v2 和 v3 之间没有 host.json 架构更改。
 
 ## <a name="watchdirectories"></a>watchDirectories
 

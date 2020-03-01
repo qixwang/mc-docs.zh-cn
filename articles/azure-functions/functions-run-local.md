@@ -3,14 +3,14 @@ title: 使用 Azure Functions Core Tools
 description: 了解如何通过本地计算机上的命令提示符或终端编写和测试 Azure 函数，然后在 Azure Functions 中运行这些函数。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: b0a84fc64b58a4e02aa2128728325976a17456cd
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: bf749cf43c713be6b3e2a6c7530635a277191586
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116839"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494193"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 + **版本 1.x**：支持 1.x 版的 Azure Functions 运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
 
-+ [**版本 2.x/3.x**](#v2)：支持 [2.x 或 3.x 版的 Azure Functions 运行时](functions-versions.md)。 这些版本支持 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)，并使用特定于平台的包管理器或 npm 进行安装。
++ [**版本 2.x/3.x**](#v2)：支持 [2.x 或 3.x 版的 Azure Functions 运行时](functions-versions.md)。 这些版本支持 [Windows](/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure-functions/functions-run-local?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
 
 除非另有说明，否则本文中的示例适用于版本 3.x。
 
@@ -45,12 +45,12 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 ### <a name="v2"></a>版本 2.x 和 3.x
 
-2\.x/3.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 
+2\.x/3.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括 [Windows](/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure-functions/functions-run-local?tabs=macos#v2) 和 [Linux](/azure-functions/functions-run-local?tabs=linux#v2)）都支持此版本。 
 
 > [!IMPORTANT]
 > 可以使用[扩展捆绑包]绕过安装 .NET Core SDK 的要求。
 
-#### <a name="windows-npm"></a>Windows
+# <a name="windows"></a>[Windows](#tab/windows)
 
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
@@ -76,7 +76,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 1. 如果不打算使用[扩展捆绑包]，请安装[用于 Windows 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows)。
 
-#### <a name="brew"></a>带 Homebrew 的 MacOS
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
@@ -100,7 +100,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-#### <a name="linux"></a> 带 APT 的 Linux (Ubuntu/Debian)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
@@ -122,7 +122,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
    若要为 Debian 设置 APT 源列表，请运行以下命令：
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
 1. 查看 `/etc/apt/sources.list.d/dotnetdev.list` 文件以获取下面列出的相应 Linux 版本字符串之一：
@@ -289,9 +289,9 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 | 参数     | 说明                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （版本 2.x）生成版本 1.x 和门户所用的相同 C# 脚本 (.csx) 模板。 |
-| **`--language -l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项或选择与辅助角色运行时匹配的语言。 |
-| **`--name -n`** | 函数名称。 |
-| **`--template -t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
+| **`--language`** , **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本 2.x 中，请不要使用此选项或选择与辅助角色运行时匹配的语言。 |
+| **`--name`** , **`-n`** | 函数名称。 |
+| **`--template`** , **`-t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
 
 例如，若要在单个命令中创建 JavaScript HTTP 触发器，请运行：
 
@@ -349,12 +349,12 @@ func host start
 | **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
 | **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，为语言辅助角色启用调试。 仅限 2.x 版。 |
-| **`--nodeDebugPort -n`** | Node.js 调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限 1.x 版。 |
+| **`--nodeDebugPort`** , **`-n`** | Node.js 调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 仅限 1.x 版。 |
 | **`--password`** | 密码或包含 .pfx 文件密码的文件。 只能与 `--cert` 配合使用。 仅限 2.x 版。 |
-| **`--port -p`** | 要侦听的本地端口。 默认值：7071。 |
+| **`--port`** , **`-p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
-| **`--script-root --prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。  在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
-| **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
+| **`--script-root`** , **`--prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 `MyProject/bin/Debug/netstandard2.0`。  在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
+| **`--timeout`** , **`-t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
 | **`--useHttps`** | 绑定到 `https://localhost:{port}` ，而不是绑定到 `http://localhost:{port}` 。 默认情况下，此选项会在计算机上创建可信证书。|
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
@@ -368,7 +368,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->在本地运行时，不会对 HTTP 终结点强制执行授权操作。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook.md#authorization-keys)一文。
+>在本地运行时，不会对 HTTP 终结点强制执行授权操作。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook-trigger.md#authorization-keys)一文。
 
 ### <a name="passing-test-data-to-a-function"></a>将测试数据传递给函数
 
@@ -434,10 +434,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | 内联内容。 |
-| **`--debug -d`** | 运行函数前，将调试程序附加到主机进程。|
-| **`--timeout -t`** | 本地 Functions 主机准备就绪前的等待时间（以秒为单位）。|
-| **`--file -f`** | 要用作内容的文件名。|
+| **`--content`** , **`-c`** | 内联内容。 |
+| **`--debug`** , **`-d`** | 运行函数前，将调试程序附加到主机进程。|
+| **`--timeout`** , **`-t`** | 本地 Functions 主机准备就绪前的等待时间（以秒为单位）。|
+| **`--file`** , **`-f`** | 要用作内容的文件名。|
 | **`--no-interactive`** | 不提示输入。 适用于自动化方案。|
 
 例如，若要调用 HTTP 触发的函数并传递内容正文，请运行以下命令：
@@ -477,11 +477,11 @@ func azure functionapp publish <FunctionAppName>
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  仅发布设置，并跳过内容。 默认为提示。 |
+| **`--publish-settings-only`** , **`-o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
 | **`--list-included-files`** | 基于 .funcignore 文件显示发布的文件列表。 |
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
-| **`--build`**<br/>**`-b`** | 部署到 Linux 函数应用时执行生成操作。 接受：`remote` 和 `local`。 |
+| **`--build`** , **`-b`** | 部署到 Linux 函数应用时执行生成操作。 接受：`remote` 和 `local`。 |
 | **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |
@@ -521,4 +521,3 @@ func deploy
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [扩展捆绑包]: functions-bindings-register.md#extension-bundles
 
-<!-- Update_Description: wording update -->

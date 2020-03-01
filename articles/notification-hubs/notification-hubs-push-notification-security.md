@@ -1,6 +1,6 @@
 ---
-title: 通知中心安全性
-description: 本主题介绍 Azure 通知中心的安全性。
+title: 通知中心安全模型
+description: 了解 Azure 通知中心的安全模型。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 origin.date: 09/23/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: 0e8eb1b253570ec2ae7303c6f5926e8a4decacd3
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: e2f3b0cc430455dfb8ecd9cb5d433b9e2337220a
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884976"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501348"
 ---
 # <a name="notification-hubs-security"></a>通知中心安全性
 

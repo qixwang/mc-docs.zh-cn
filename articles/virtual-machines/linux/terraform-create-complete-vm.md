@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构 | Azure
+title: 在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
 description: 了解如何在 Azure 中使用 Terraform 创建和管理完整的 Linux 虚拟机环境
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,18 +13,25 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 09/20/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f20e55896b262eecc440aad7ba61b7a931077e30
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: b95c5700c49d211cc6b3937b36497494b4116e2a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831215"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428645"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
 
 使用 Terraform 可以在 Azure 中定义和创建完整的基础结构部署。 以用户可读格式生成 Terraform 模板，用于以一致且可重现的方式创建和配置 Azure 资源。 本文介绍了如何使用 Terraform 创建完整的 Linux 环境和支持资源。 另外，还可以了解如何[安装和配置 Terraform](terraform-install-configure.md)。
+
+> [!NOTE]
+> 若要获得特定于 Terraform 的支持，请使用其社区渠道之一直接联系 Terraform：
+>
+>   • 社区门户的 [Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用模式。
+>
+>   • 有关与提供程序相关的问题，请访问社区门户的 [Terraform 提供程序](https://discuss.hashicorp.com/c/terraform-providers)部分。
 
 ## <a name="create-azure-connection-and-resource-group"></a>创建 Azure 连接和资源组
 

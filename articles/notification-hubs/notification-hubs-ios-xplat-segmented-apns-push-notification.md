@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-origin.date: 07/28/2019
-ms.date: 12/09/2019
+origin.date: 11/07/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: aa4b12d5017593d21c62668cb64e10ec839d891f
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: c4524bf41b1a2ab33e6aae943394688e862db1b2
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884946"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501349"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
 
@@ -34,7 +34,7 @@ ms.locfileid: "74884946"
 
 在创建通知中心的注册时，通过加入一个或多个 *标记* 来启用广播方案。 将通知发送到标记时，已注册该标记的设备会接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
-在本教程中，会执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 向应用中添加类别选择
@@ -42,7 +42,7 @@ ms.locfileid: "74884946"
 > * 从设备发送通知
 > * 运行应用并生成通知
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心向 iOS 应用推送通知][get-started]。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心向 iOS 应用推送通知][get-started]。
 
@@ -327,7 +327,7 @@ ms.locfileid: "74884946"
         NSArray* categories = [NSArray arrayWithObjects: @"World", @"Politics", @"Business",
                                 @"Technology", @"Science", @"Sports", nil];
 
-        // Lets send the message as breaking news for each category to WNS and APNS
+        // Lets send the message as breaking news for each category to WNS, Baidu and APNS
         // using a template.
         for(NSString* category in categories)
         {

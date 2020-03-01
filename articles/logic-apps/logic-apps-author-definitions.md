@@ -11,18 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 origin.date: 01/01/2018
-ms.date: 10/08/2019
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: bfbeec10059b1c049376f528c731d161f4ea22fa
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 3f488b4179f274172ec4158f43d599e850e3e489
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340974"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428681"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用定义创建、编辑或扩展 JSON
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure 逻辑应用中为逻辑应用工作流定义创建、编辑或扩展 JSON
 
-在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用自动化工作流创建企业集成解决方案时，基础逻辑应用定义会将简单的声明性 JavaScript 对象表示法 (JSON) 以及[工作流定义语言 (WDL) 架构](../logic-apps/logic-apps-workflow-definition-language.md)用于说明和验证。 这些格式使得逻辑应用定义更易于阅读和理解，无需让用户详细了解代码。 若要自动创建和部署逻辑应用，可在 [Azure 资源管理器模板](../azure-resource-manager/template-deployment-overview.md)中将逻辑应用定义包含为 [Azure 资源](../azure-resource-manager/resource-group-overview.md)。 若要创建、管理和部署逻辑应用，可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 或 [Azure 逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/)。
+在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用自动化工作流创建企业集成解决方案时，基础逻辑应用定义会将简单的声明性 JavaScript 对象表示法 (JSON) 以及[工作流定义语言 (WDL) 架构](../logic-apps/logic-apps-workflow-definition-language.md)用于说明和验证。 这些格式使得逻辑应用定义更易于阅读和理解，无需让用户详细了解代码。
+若要自动创建和部署逻辑应用，可在 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)中将逻辑应用定义包含为 [Azure 资源](../azure-resource-manager/management/overview.md)。
+若要创建、管理和部署逻辑应用，可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 或 [Azure 逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/)。
 
 若要在 JSON 中处理逻辑应用定义，请在 Azure 门户中打开“代码视图”编辑器，或者在 Visual Studio 中将定义复制到任何所需的编辑器。 如果你不熟悉逻辑应用，请查看[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -45,9 +47,10 @@ ms.locfileid: "71340974"
 
 在 Visual Studio 中，可以打开以前直接通过 Azure 门户，或者在 Visual Studio 中作为 Azure 资源管理器项目创建和部署的逻辑应用。
 
-1. 打开包含逻辑应用的 Visual Studio 解决方案或 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)项目。
+1. 打开包含逻辑应用的 Visual Studio 解决方案或 [Azure 资源组](../azure-resource-manager/management/overview.md)项目。
 
-2. 找到并打开逻辑应用的定义，默认情况下，该定义显示在[资源管理器模板](../azure-resource-manager/template-deployment-overview.md)中，其名为 **LogicApp.json**。 可以使用并自定义此模板，以部署到不同的环境中。
+2. 找到并打开逻辑应用的定义，默认情况下，该定义显示在[资源管理器模板](../azure-resource-manager/templates/overview.md)中，其名为 **LogicApp.json**。
+可以使用并自定义此模板，以部署到不同的环境中。
 
 3. 打开逻辑应用定义和模板的快捷菜单。 选择“使用逻辑应用设计器打开”  。
 
@@ -64,7 +67,7 @@ ms.locfileid: "71340974"
 
 ## <a name="parameters"></a>parameters
 
-部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 如果有需要在逻辑应用中不进行硬编码就重用的值，或者该值会根据部署需求而变化，则请针对工作流定义创建一个 [Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)，这样就还可以自动完成逻辑应用部署。 
+部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 如果有需要在逻辑应用中不进行硬编码就重用的值，或者该值会根据部署需求而变化，则请针对工作流定义创建一个 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)，这样就还可以自动完成逻辑应用部署。
 
 请改为按这些常规步骤来参数化这些值，或者定义和使用其参数。  然后，可以在单独的参数文件中提供这些值，通过该文件将这些值传递给模板。 这样，无需更新和重新部署逻辑应用即可更轻松地更改这些值。 如需完整的详细信息，请参阅[概述：使用 Azure 资源管理器模板将逻辑应用部署自动化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
@@ -78,7 +81,7 @@ ms.locfileid: "71340974"
 
    针对工作流定义参数来指定值时，可以引用模板参数，方法是：使用位于工作流定义外部但仍在逻辑应用的资源定义内部的 parameters 节。 这样，便可以将模板参数值传入工作流定义参数。
 
-1. 请将参数的值存储在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中，在部署时包括该文件。
+1. 请将参数的值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中，在部署时包括该文件。
 
 ## <a name="process-strings-with-functions"></a>使用函数处理字符串
 

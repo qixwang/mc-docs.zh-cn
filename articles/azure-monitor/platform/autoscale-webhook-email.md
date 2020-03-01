@@ -7,12 +7,12 @@ origin.date: 04/03/2017
 ms.date: 04/03/2018
 ms.author: v-lingwu
 ms.subservice: autoscale
-ms.openlocfilehash: 50a17c1d46f4396b07119929d680a8c3b2edbe2f
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 91e05815e5c367acf876a6e6745e95295d8c0c59
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599898"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497599"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
@@ -23,8 +23,8 @@ ms.locfileid: "75599898"
 ## <a name="email"></a>Email
 电子邮件可以发送到任何有效电子邮件地址。 还将通知运行规则的订阅的管理员和共同管理员。
 
-## <a name="cloud-services-and-web-apps"></a>云服务和 Web 应用
-可以从 Azure 门户选择加入云服务和服务器场 (Web 应用)。
+## <a name="cloud-services-and-app-services"></a>云服务和应用服务
+可以从 Azure 门户选择加入云服务和服务器场（应用服务）。
 
 * 选择“缩放依据”  指标。
 

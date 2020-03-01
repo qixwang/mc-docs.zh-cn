@@ -1,21 +1,17 @@
 ---
 title: Azure 虚拟机规模集的安全控制
 description: 用于评估 Azure 虚拟机规模集的安全控制的清单
-services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
-documentationcenter: ''
 author: msmbaldwin
-manager: rkarlin
 ms.topic: conceptual
-origin.date: 09/05/2019
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3ac7c249acecc3fdc783d50ddfdc159b4f339f6e
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: 491eb238bee3cc07193b7e1332d62a503c6dd598
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142077"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494581"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的安全控制
 
@@ -55,7 +51,7 @@ ms.locfileid: "73142077"
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持 [ExpressRoute](/expressroute) 和 VNet 加密。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户托管密钥是受支持的 Azure 加密方案；请参阅[适用于虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)|
 | 列级加密（Azure 数据服务）| 不适用 | |
-| 加密的 API 调用| 是 | 通过 HTTPS 和 SSL。 |
+| 加密的 API 调用| 是 | 通过 HTTPS 和 TLS。 |
 
 ## <a name="configuration-management"></a>配置管理
 

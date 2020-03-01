@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: fd9ccdc2b53f4de629203806dbe03c9d72a6106c
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 1027fc8f10ac2e7ce22d230b7f4a4abb3ccf4f01
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76118109"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494955"
 ---
 | 资源 | 默认/最大限制 | 注意 |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "76118109"
 | HTTP 侦听器 |100<sup>1</sup> | |
 | HTTP 负载均衡规则 |100<sup>1</sup> | |
 | 后端 HTTP 设置 |100<sup>1</sup> | |
-| 每个网关的实例 |32 | |
+| 每个网关的实例 |V1 SKU - 32<br>V2 SKU - 125 | |
 | SSL 证书 |100<sup>1</sup> |每个 HTTP 侦听器 1 个 |
 | 最大 SSL 证书大小 |V1 SKU - 10 KB<br>V2 SKU - 16 KB| |
 | 身份验证证书 |100 | |
@@ -36,7 +36,7 @@ ms.locfileid: "76118109"
 | 最大 URL 长度|32KB| |
 | HTTP/2 的最大标头大小 |4KB| |
 | 最大文件上传大小：标准 |2 GB | |
-| 最大文件上传大小 WAF |v1 中型 WAF 网关，100 MB<br>v1 大型 WAF 网关，500 MB<br>v2 WAF，750 MB| |
+| 最大文件上传大小 WAF |V1 中型 WAF 网关，100 MB<br>V1 大型 WAF 网关，500 MB<br>V2 WAF，750 MB| |
 | WAF 正文大小限制，不带文件|128 KB||
 | 最大 WAF 自定义规则|100||
 | 最大 WAF 排除项数|100||

@@ -2,13 +2,13 @@
 title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开发和测试 Azure Functions。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 6dca2ea85318ae97b6a096b5823d31108c85af7e
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.date: 02/18/2020
+ms.openlocfilehash: 9b1ed4e37e2a7dea274da07787c915a47ff2ec8c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116884"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494524"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -63,17 +63,21 @@ Azure Functions 扩展提供以下优势：
 
 1. 选择函数应用项目所在的文件夹，然后**选择函数项目的语言**。
 
+1. 如果尚未安装 Core Tools，系统会要求你**选择要安装的 Core Tools 版本**。 选择版本 2.x 或更高版本。 
+
 1. 选择“HTTP 触发器”函数模板，或者可以选择“暂时跳过”以创建不带函数的项目。   以后始终可以[将函数添加到项目](#add-a-function-to-your-project)。
 
     ![选择 HTTP 触发器模板](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 键入 **HTTPTrigger** 作为函数名称，按 Enter，然后选择“函数”授权。  调用函数终结点时，此授权级别需要提供[函数密钥](functions-bindings-http-webhook.md#authorization-keys)。
+1. 键入“HttpExample”  作为函数名称，按 Enter，然后选择“函数”授权。  调用函数终结点时，此授权级别需要提供[函数密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     ![选择“函数”授权](./media/functions-develop-vs-code/create-function-auth.png)
 
     此时将使用 HTTP 触发的函数的模板，以所选语言创建函数。
 
     ![Visual Studio Code 中的 HTTP 触发的函数模板](./media/functions-develop-vs-code/new-function-full.png)
+
+### <a name="generated-project-files"></a>生成的项目文件
 
 项目模板将以所选语言创建一个项目，并安装所需的依赖项。 对于任何语言，新项目包含以下文件：
 
@@ -84,6 +88,18 @@ Azure Functions 扩展提供以下优势：
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此需要将其从项目源代码管理中排除。
 
+根据你的语言，将创建以下其他文件：
+
+# <a name="c"></a>[C\#](#tab/csharp)
+
+* 用于实现函数的 [HttpExample.cs 类库文件](functions-dotnet-class-library.md#functions-class-library-project)。
+
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
+
+* 根文件夹中的 package.json 文件。
+
+* 一个 HttpExample 文件夹，其中包含 [function.json 定义文件](functions-reference-node.md#folder-structure)和 [index.js 文件](functions-reference-node.md#exporting-a-function)、一个包含函数代码的 Node.js 文件。
+
 此时，可以通过[修改 function.json 文件](#add-a-function-to-your-project)，或者通过[将参数添加到 C# 类库函数](#add-a-function-to-your-project)，将输入和输出绑定添加到函数。
 
 还可以[将新函数添加到项目](#add-a-function-to-your-project)。
@@ -92,7 +108,7 @@ Azure Functions 扩展提供以下优势：
 
 绑定将在扩展包中实现，但 HTTP 和计时器触发器除外。 对于需要扩展包的触发器和绑定，必须安装这些包。 安装绑定扩展的过程取决于项目的语言。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 在终端窗口中运行 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令，在项目中安装所需的扩展包。 以下命令安装 Azure 存储扩展，用于实现 Blob、队列和表存储的绑定。
 
@@ -100,7 +116,7 @@ Azure Functions 扩展提供以下优势：
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -112,11 +128,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 此操作的结果取决于项目语言：
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 将新的 C# 类库 (.cs) 文件添加到项目。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 此时会在项目中创建一个新文件夹。 该文件夹包含新的 function.json 文件和新的 JavaScript 代码文件。
 
@@ -128,7 +144,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 以下示例连接到名为 `outqueue` 的存储队列，其中，存储帐户的连接字符串已在 local.settings.json 中的 `MyStorageConnection` 应用程序设置内进行设置。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 更新函数方法，将以下参数添加到 `Run` 方法定义：
 
@@ -144,9 +160,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 将一个或多个消息添加到集合。 函数完成后，这些消息将发送到队列。
 
-有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---c-example)文档。
+有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output)文档。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 function.json 文件。 若要创建绑定，请右键单击（在 macOS 上，请按住 Ctrl 并单击）function 文件夹中的 **function.json** 文件，然后选择“添加绑定”： 
 
@@ -182,11 +198,13 @@ Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 functi
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output---javascript-example)参考文章。
+有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output)参考文章。
 
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
@@ -243,7 +261,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 ## <a name="get-the-url-of-the-deployed-function"></a>获取已部署的函数的 URL
 
-为了能够调用 HTTP 触发的函数，需要获取函数在部署到函数应用时的 URL。 此 URL 包含全部所需的[函数密钥](functions-bindings-http-webhook.md#authorization-keys)。 可以使用扩展获取已部署的函数的这些 URL。
+为了能够调用 HTTP 触发的函数，需要获取函数在部署到函数应用时的 URL。 此 URL 包含全部所需的[函数密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。 可以使用扩展获取已部署的函数的这些 URL。
 
 1. 按 F1 打开命令面板，然后搜索并运行命令“Azure Functions:**Copy Function URL**。
 

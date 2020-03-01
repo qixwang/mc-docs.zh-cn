@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 创建和管理 Azure 虚拟机 | Azure
+title: 使用 Java 创建和管理 Azure 虚拟机
 description: 使用 Java 和 Azure 资源管理器部署虚拟机及其所有支持资源。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 07/17/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a91ba86642e0ecd7b8a3aea356323bfb67111631
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 466e4e827f25e9f5be9cbc11f80f8b714601fc02
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272827"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428647"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -117,7 +117,7 @@ ms.locfileid: "72272827"
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
+在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
@@ -189,7 +189,7 @@ ms.locfileid: "72272827"
 
 ### <a name="create-the-resource-group"></a>创建资源组
 
-必须在[资源组](../../azure-resource-manager/resource-group-overview.md)中包含所有资源。
+必须在[资源组](../../azure-resource-manager/management/overview.md)中包含所有资源。
 
 若要指定应用程序的值并创建资源组，请将此代码添加到 main 方法中的 try 块：
 
@@ -197,7 +197,7 @@ ms.locfileid: "72272827"
 System.out.println("Creating resource group...");
 ResourceGroup resourceGroup = azure.resourceGroups()
     .define("myResourceGroup")
-    .withRegion(Region.CHINA_EAST)
+    .withRegion(Region.CHINA_NORTH)
     .create();
 ```
 
@@ -211,7 +211,7 @@ ResourceGroup resourceGroup = azure.resourceGroups()
 System.out.println("Creating availability set...");
 AvailabilitySet availabilitySet = azure.availabilitySets()
     .define("myAvailabilitySet")
-    .withRegion(Region.CHINA_EAST)
+    .withRegion(Region.CHINA_NORTH)
     .withExistingResourceGroup("myResourceGroup")
     .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
@@ -226,7 +226,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 System.out.println("Creating public IP address...");
 PublicIPAddress publicIPAddress = azure.publicIPAddresses()
     .define("myPublicIP")
-    .withRegion(Region.CHINA_EAST)
+    .withRegion(Region.CHINA_NORTH)
     .withExistingResourceGroup("myResourceGroup")
     .withDynamicIP()
     .create();
@@ -242,7 +242,7 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
 System.out.println("Creating virtual network...");
 Network network = azure.networks()
     .define("myVN")
-    .withRegion(Region.CHINA_EAST)
+    .withRegion(Region.CHINA_NORTH)
     .withExistingResourceGroup("myResourceGroup")
     .withAddressSpace("10.0.0.0/16")
     .withSubnet("mySubnet","10.0.0.0/24")
@@ -259,7 +259,7 @@ Network network = azure.networks()
 System.out.println("Creating network interface...");
 NetworkInterface networkInterface = azure.networkInterfaces()
     .define("myNIC")
-    .withRegion(Region.CHINA_EAST)
+    .withRegion(Region.CHINA_NORTH)
     .withExistingResourceGroup("myResourceGroup")
     .withExistingPrimaryNetwork(network)
     .withSubnet("mySubnet")
@@ -278,7 +278,7 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 System.out.println("Creating virtual machine...");
 VirtualMachine virtualMachine = azure.virtualMachines()
     .define("myVM")
-    .withRegion(Region.CHINA_EAST)
+    .withRegion(Region.CHINA_NORTH)
     .withExistingResourceGroup("myResourceGroup")
     .withExistingPrimaryNetworkInterface(networkInterface)
     .withLatestWindowsImage("MicrosoftWindowsServer", "WindowsServer", "2012-R2-Datacenter")
@@ -301,23 +301,23 @@ input.nextLine();
 如果要使用现有磁盘而不是市场映像，请使用以下代码： 
 
 ```java
-ManagedDisk managedDisk = azure.disks.define("myosdisk") 
-    .withRegion(Region.CHINA_EAST) 
-    .withExistingResourceGroup("myResourceGroup") 
-    .withWindowsFromVhd("https://mystorage.blob.core.chinacloudapi.cn/vhds/myosdisk.vhd") 
-    .withSizeInGB(128) 
-    .withSku(DiskSkuTypes.PremiumLRS) 
-    .create(); 
+ManagedDisk managedDisk = azure.disks.define("myosdisk")
+    .withRegion(Region.CHINA_NORTH)
+    .withExistingResourceGroup("myResourceGroup")
+    .withWindowsFromVhd("https://mystorage.blob.core.chinacloudapi.cn/vhds/myosdisk.vhd")
+    .withSizeInGB(128)
+    .withSku(DiskSkuTypes.PremiumLRS)
+    .create();
 
-azure.virtualMachines.define("myVM") 
-    .withRegion(Region.CHINA_EAST) 
-    .withExistingResourceGroup("myResourceGroup") 
-    .withExistingPrimaryNetworkInterface(networkInterface) 
-    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows) 
-    .withExistingAvailabilitySet(availabilitySet) 
-    .withSize(VirtualMachineSizeTypes.StandardDS1) 
-    .create(); 
-``` 
+azure.virtualMachines.define("myVM")
+    .withRegion(Region.CHINA_NORTH)
+    .withExistingResourceGroup("myResourceGroup")
+    .withExistingPrimaryNetworkInterface(networkInterface)
+    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows)
+    .withExistingAvailabilitySet(availabilitySet)
+    .withSize(VirtualMachineSizeTypes.StandardDS1)
+    .create();
+```
 
 ## <a name="perform-management-tasks"></a>执行管理任务
 

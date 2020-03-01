@@ -1,5 +1,5 @@
 ---
-title: 通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除 | Azure
+title: 通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
 description: 了解如何通过 Azure PowerShell 将 OS 磁盘连接到恢复 VM，以便排查 Azure 中的 Windows VM 问题。
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 08/09/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: b90c294384d0330b86131fb69218f48edd8b97e8
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: fe920cb5f9517a0bac217a029f87b7fa499eeff3
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116928"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428843"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure PowerShell 将磁盘连接到另一个 Windows VM 来修复所有错误，然后修复原始 VM。 
@@ -41,7 +41,7 @@ ms.locfileid: "74116928"
 6. 从恢复 VM 卸载并分离磁盘。
 7. 更改受影响 VM 的 OS 磁盘。
 
-可以使用 VM 恢复脚本自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[资源管理器 VM 的 VM 恢复脚本](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)。
+可以使用 VM 修复命令自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[使用 Azure 虚拟机修复命令修复 Windows VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 确保已安装[最新 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 并登录到订阅：
 
@@ -258,6 +258,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

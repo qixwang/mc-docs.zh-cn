@@ -13,31 +13,33 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: ec1602185dbcf24df5a1f7223ec7c33f6e32f717
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 5e4fba35a740cc9ebbd1e6f26c68763a8f17e5a2
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124558"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494442"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
-本文说明了如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。  有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
+本文说明了如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。 有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> 使用 RTMPS 协议时，编码器必须支持 TLS 1.2。 由于 TLS 1.2 要求，请使用 Wirecast 版本 13.0.2 或更高版本。
+
+## <a name="prerequisites"></a>必备条件
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
-* 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+* 确保运行流式处理终结点。 有关详细信息，请参阅 [在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
 * 启动该工具并连接到 AMS 帐户。
 
@@ -49,7 +51,7 @@ ms.locfileid: "71124558"
 ## <a name="create-a-channel"></a>创建频道
 1. 在 AMSE 工具中，导航到“实时”  选项卡，并右键单击频道区域。 从菜单中选择“创建频道…”  。
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
 2. 指定频道名称，说明字段为选填字段。 在“频道设置”下针对“实时编码”选项选择“标准”  ，将“输入协议”设置为“RTMP”  。 所有其他设置可保留原样。
 

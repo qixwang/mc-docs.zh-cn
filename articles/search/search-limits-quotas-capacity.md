@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: d40d38df683a70bbc7c789ccf8b57c250d06daf7
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.date: 03/02/2020
+ms.openlocfilehash: 5f2b6ce810ba11539780e403d7bae17838ac57f4
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123134"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501440"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -116,7 +116,7 @@ ms.locfileid: "76123134"
 | 最小计划 | 5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 | 5 分钟 |
 | 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |24 小时 |24 小时 |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |256 |256 |
-| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |4&nbsp;百万 |4&nbsp;百万 |不适用 |4&nbsp;百万 |4&nbsp;百万 |
+| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |8&nbsp;百万 |1600 万&nbsp; |不适用 |4&nbsp;百万 |4&nbsp;百万 |
 
 <sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。
 

@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-origin.date: 05/01/2019
-ms.date: 01/20/2020
+origin.date: 10/02/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 2fad35a79e98c6bffae9a83b39590868c3850609
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 376749326e8adbb4dc313620c5ecb6db61fb6ca9
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939813"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494573"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -116,7 +116,7 @@ ms.locfileid: "75939813"
 * 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 * 需要在帐户中预配媒体预留单位 (MRU) 才能控制作业的并发和性能，特别是涉及到视频或音频分析的那些作业。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用[适用于媒体服务 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 门户](../previous/media-services-portal-scale-media-processing.md)或 [v2 API](../previous/media-services-dotnet-encoding-units.md) 来管理 MRU。 无论使用的是媒体服务 v2 还是 v3 API，都需要预配 MRU。
 * 无法使用 v2 API 来管理通过 v3 API 创建的媒体服务实体。  
-* 不建议使用 v3 API 来管理通过 v2 API 创建的实体。 下面是会导致两个版本中的实体不兼容的差异示例：   
+* 并非 V2 API 中的所有实体都自动出现在 V3 API 中。  以下是这两个版本中不兼容的实体的示例：  
     * 在 v2 中创建作业和任务不会在 v3 中显示，因为它们不与转换相关联。 建议切换到 v3 转换和作业。 在切换过程中，需要花费一段相对较短的时间来监视即时 v2 作业。
     * 无法持续使用 v3 来管理通过 v2 创建的频道和节目（映射到 v3 中的直播活动和实时输出）。 建议在方便停止频道时切换到 v3 直播活动和实时输出。<br/>目前，无法持续迁移正在运行的频道。  
 

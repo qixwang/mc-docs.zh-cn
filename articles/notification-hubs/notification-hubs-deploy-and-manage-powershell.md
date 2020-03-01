@@ -1,11 +1,11 @@
 ---
 title: 使用 PowerShell 部署和管理通知中心
-description: 如何使用自动化 PowerShell 创建和管理通知中心
+description: 如何使用 PowerShell 为自动化创建和管理通知中心
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,14 +13,16 @@ ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
 origin.date: 01/04/2019
-ms.date: 10/08/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5fa30d3d0a8010e93bd2ac4842fe6e384e92b27a
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 709db986af24c3e8cdf3fcdb9709c194d61ddcec
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657973"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501432"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
 
@@ -35,7 +37,7 @@ ms.locfileid: "74657973"
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。 在 PowerShell 中，最佳方法是引用 Microsoft.Azure.NotificationHubs.dll 程序集。 该程序集是随 [Microsoft Azure 通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)一起分发的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。 Azure 是基于订阅的平台。 若要详细了解如何获取订阅，请参阅 [1 元试用]。
 - 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [安装和配置 Azure PowerShell]。
@@ -55,7 +57,6 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 下面说明如何在 PowerShell 脚本中实现这些步骤：
 
 ``` powershell
-
 try
 {
     # WARNING: Make sure to reference the latest version of Microsoft.Azure.NotificationHubs.dll
@@ -150,7 +151,7 @@ else
 
 - [使用 PowerShell 管理服务总线](../service-bus-messaging/service-bus-manage-with-ps.md)
 - [如何使用 PowerShell 脚本创建 Service Bus 队列、主题和订阅](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
+- [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 一些现成的脚本也可供下载：
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 REST 管理媒体服务实体 | Microsoft Docs
-description: 了解如何使用 REST API 管理媒体服务实体。
+description: 本文演示如何使用 REST API 管理媒体服务实体。
 author: WenJason
 manager: digimobile
 editor: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 614edf38692ad83dac3282c81948c55563906695
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a3e37656d49e3badc95df46c621ae157a259b76c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124653"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494217"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>使用 REST 管理媒体服务实体  
 
@@ -55,7 +55,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.chinacloudapi.cn
     Content-Length: 74
@@ -72,7 +72,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.chinacloudapi.cn
 
@@ -83,7 +83,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.chinacloudapi.cn
 
@@ -92,7 +92,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.chinacloudapi.cn
 
@@ -103,7 +103,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.chinacloudapi.cn
 
@@ -114,7 +114,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.chinacloudapi.cn
 
@@ -133,7 +133,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.chinacloudapi.cn
 
@@ -147,7 +147,7 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.chinacloudapi.cn
     Content-Length: 21
@@ -158,14 +158,14 @@ Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服务。 可
 ## <a name="deleting-entities"></a>删除实体
 可以使用 DELETE HTTP 请求在媒体服务中删除实体。 删除实体的顺序可能很重要，具体视实体而定。 例如，资产等实体要求先撤消（或删除）引用该特定资产的所有定位符，然后再删除资产。
 
-下面的示例演示如何删除用于将文件上传到 blob 存储的定位符。
+以下示例演示如何删除用于将文件上传到 blob 存储的定位符。
 
     DELETE https://media.chinacloudapi.cn/API/Locators('nb:lid:UUID:76dcc8e8-4230-463d-97b0-ce25c41b5c8d') HTTP/1.1
     Content-Type: application/json;odata=verbose
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.chinacloudapi.cn
     Content-Length: 0

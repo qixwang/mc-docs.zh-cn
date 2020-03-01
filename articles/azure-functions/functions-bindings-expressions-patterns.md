@@ -3,14 +3,14 @@ title: Azure Functions 绑定表达式和模式
 description: 了解如何基于通用模式创建不同的 Azure Functions 绑定表达式。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/13/2020
+ms.date: 02/12/2020
 ms.author: v-junlch
-ms.openlocfilehash: d02d9ac04adc17edfcfe0a6e74ef7ed645cfe024
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 5146e5c5445e3f9d0953be2d7924cf7154027e39
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116902"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428737"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
@@ -131,7 +131,19 @@ public static void Run(
 
 ```
 
-还可为文件名的某些部分（例如扩展）创建表达式。 有关如何在 Blob 路径字符串中使用表达式和模式的详细信息，请参阅[存储 Blob 绑定参考](functions-bindings-storage-blob.md)。
+还可针对文件名的某些部分创建表达式。 在下面的示例中，仅对匹配以下模式的文件名触发函数：`anyname-anyfile.csv`
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+有关如何在 Blob 路径字符串中使用表达式和模式的详细信息，请参阅[存储 Blob 绑定参考](functions-bindings-storage-blob.md)。
 
 ## <a name="trigger-metadata"></a>触发器元数据
 

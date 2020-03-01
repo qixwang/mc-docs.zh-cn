@@ -1,24 +1,24 @@
 ---
-title: PowerShell 脚本：创建 Azure 通知中心 | Azure
-description: 此 PowerShell 脚本可创建 Azure 通知中心。
-services: notification-hubs
+title: 使用 PowerShell 创建 Azure 通知中心 | Azure
+description: 了解如何使用 PowerShell 脚本创建 Azure 通知中心。
 author: dimazaid
-manager: kpiteira
-editor: spelluru
+manager: femila
+services: notification-hubs
+editor: sethmanheim
 ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/14/2018
-ms.date: 03/11/2019
+origin.date: 01/14/2020
+ms.date: 03/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5af4c855739605854f138088b714509479f86cfb
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 2657862bec470ceb54a53632f647c2c37ff87125
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884994"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501449"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>使用 PowerShell 创建 Azure 通知中心
 
@@ -28,8 +28,9 @@ ms.locfileid: "74884994"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>先决条件
-- **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+## <a name="prerequisites"></a>必备条件
+
+* **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -64,7 +65,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令： 
+此脚本使用以下命令：
 
 | 命令 | 注释 |
 |---|---|

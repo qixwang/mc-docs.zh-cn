@@ -2,23 +2,24 @@
 title: 更改通知中心命名空间的定价层 | Azure
 description: 了解如何更改 Azure 通知中心命名空间的定价层。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 origin.date: 01/28/2019
-ms.date: 10/08/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3b1afd42b81455c27123b4e119b49711adb990e4
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.reviewer: jowargo
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 689b71fd548df5fc642c4568e5f6a59f08f65f4a
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657983"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501460"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>更改 Azure 通知中心命名空间的定价层
 通知中心分三个层提供：免费、基本和标准。    本文介绍如何更改 Azure 通知中心命名空间的定价层。 

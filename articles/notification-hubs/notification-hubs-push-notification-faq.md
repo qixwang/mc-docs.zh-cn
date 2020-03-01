@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中心：常见问题解答 (FAQ) | Azure
-description: 关于设计/实现有关通知中心的解决方案的常见问题
+title: Azure 通知中心常见问题解答 (FAQ) | Azure
+description: 有关设计和实现 Azure 通知中心相关解决方案的常见问题解答。
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 origin.date: 11/13/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: cee9647f5456cc95c30b24a7a870613545f172db
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 343ab5b3b61196be75d9ee86d1a088165bc8c93a
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884986"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501454"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -201,7 +201,7 @@ Azure 通知中心允许在 [Azure 门户]中查看遥测数据。 可以在[通
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
-> 成功的通知仅意味着推送通知已传递到外部 PNS（例如，iOS 和 macOS 的 APNS）。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
+> 通知成功仅意味着推送通知已传递到外部 PNS（例如，APNs（对于 iOS 和 macOS）或 Baidu（对于 Android 设备））。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。  
 
 [Azure 门户]: https://portal.azure.cn
 [通知中心定价]: https://www.azure.cn/pricing/details/notification-hubs/

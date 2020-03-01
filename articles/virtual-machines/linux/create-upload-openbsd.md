@@ -1,5 +1,5 @@
 ---
-title: 创建 OpenBSD 磁盘映像并将其上传到 Azure | Azure
+title: 创建 OpenBSD VM 映像并将其上传到 Azure
 description: 了解如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)，以便通过 Azure CLI 创建 Azure 虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 05/24/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c5d847b2e77219ed3af398f4dd3031c8323c52b2
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 3f053575acca2d29e8846a9af2a21cd097bee258
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272627"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428880"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并将其上传到 Azure
 本文介绍如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 上传后，可将其用作自己的映像，通过 Azure CLI 在 Azure 中创建虚拟机 (VM)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假定你拥有以下项目：
 
-* **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://www.azure.cn/support/legal/offer-rate-plans/)。 否则，请了解如何[创建试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
+* Azure 订阅  - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://www.azure.cn/support/legal/offer-rate-plans/)。 否则，请了解如何[创建试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
 * Azure CLI - 确保已安装了最新的 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 并已使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录到 Azure 帐户  。
-* **安装在 .vhd 文件中的 OpenBSD 操作系统** - 必须将受支持的 OpenBSD 操作系统（[6.2 版 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)）安装到虚拟硬盘中。 可使用多种工具创建 .vhd 文件。 例如，可使用 Hyper-V 等虚拟化解决方案创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 并创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+* **安装在 .vhd 文件中的 OpenBSD 操作系统** - 必须将受支持的 OpenBSD 操作系统（[6.6 版 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)）安装到虚拟硬盘中。 可使用多种工具创建 .vhd 文件。 例如，可使用 Hyper-V 等虚拟化解决方案创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 并创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ## <a name="prepare-openbsd-image-for-azure"></a>为 Azure 准备 OpenBSD 映像
 在安装了 OpenBSD 操作系统 6.1（已添加 Hyper-V 支持）的 VM上，完成以下步骤：

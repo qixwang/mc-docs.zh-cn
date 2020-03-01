@@ -1,6 +1,6 @@
 ---
-title: 高可用性和灾难恢复 - Azure Batch | Microsoft Docs
-description: 了解如何针对区域性中断问题设计 Batch 应用程序
+title: 高可用性和灾难恢复 - Azure Batch
+description: 了解如何针对区域性中断设计 Batch 应用程序。 工作负荷应该故障转移到另一个区域，或者在两个或更多个区域之间拆分。
 services: batch
 documentationcenter: ''
 author: lingliw
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2ce9e598a378eb49b49accc95d4807438256a27b
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 13788b5adfcc68b765fce34f8867b97a35b15be3
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329789"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497640"
 ---
 # <a name="design-your-application-for-high-availability"></a>针对高可用性设计应用程序
 

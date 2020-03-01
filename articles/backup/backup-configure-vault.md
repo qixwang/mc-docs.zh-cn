@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/04/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 097934e1be3fd11fe5add774a2fd94a83654cb92
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 44a16a6f637c5e30b3e1c56b59ad92e2dd2c23ff
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858245"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497600"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>使用 Azure 备份 MARS 代理备份 Windows 计算机
 
@@ -247,7 +247,6 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 5. 在数据中心，磁盘数据将复制到 Azure 存储帐户。
 6. Azure 备份将数据从存储帐户复制到保管库，并计划增量备份。
 
-[详细了解](backup-azure-backup-import-export.md)脱机种子设定。
 
 ### <a name="enable-network-throttling"></a>启用网络限制
 
@@ -266,16 +265,23 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 
-1. 在 MARS 代理中，单击“立即备份”。  随即会启动通过网络执行的初始复制。
+1. 在 MARS 代理中，单击“立即备份”。 
 
     ![立即备份 Windows Server](./media/backup-configure-vault/backup-now.png)
 
-2. 在“确认”中复查设置，然后单击“备份”。  
-3. 单击“**关闭**”以关闭向导。 如果在备份完成之前执行此操作，向导将继续在后台运行。
+2. 如果 MARS 代理版本为 2.0.9169.0 或更高版本，则可以设置自定义保留期。 在“保留备份截止日期”  部分中，从显示的日历中选择日期：
 
-完成初始备份后，备份控制台中显示“**作业已完成**”状态。
+   ![“保留备份”日历](./media/backup-configure-vault/mars-ondemand.png)
+
+3. 在“确认”中复查设置，然后单击“备份”。  
+4. 单击“**关闭**”以关闭向导。 如果在备份完成之前执行此操作，向导将继续在后台运行。
+5. 完成初始备份后，备份控制台中显示“**作业已完成**”状态。
 
 ## <a name="on-demand-backup-policy-retention-behavior"></a>按需备份策略保留行为
+
+>[!NOTE]
+>仅适用于 2.0.9169.0 以前的 MARS 代理版本
+>
 
 * 有关详细信息，请参阅[创建备份策略](backup-configure-vault.md#create-a-backup-policy)的步骤 8
 

@@ -9,14 +9,14 @@ origin.date: 01/29/2019
 ms.date: 08/29/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: 391b6cbd85403e2e2d6114b81086066307f7e00d
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: fb796abc6254e3e2bb3ed826b2c0546499a7ec2b
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982129"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497582"
 ---
-# <a name="metric-chart-samples"></a>指标图表示例
+# <a name="metric-chart-examples"></a>指标图表示例 
 
 Azure 平台提供了[一千多个指标](/azure-monitor/platform/metrics-supported)，其中许多指标具有维度。 通过使用[维度筛选器](/azure-monitor/platform/metrics-charts)、应用[拆分](/azure-monitor/platform/metrics-charts)、控制图表类型和调整图表设置，可以创建功能强大的诊断视图和仪表板，以深入了解基础结构和应用程序的运行状况。 本文介绍了一些可以使用[指标资源管理器](/azure-monitor/platform/metrics-charts)生成的图表示例，并说明了配置每个图表的必要步骤。
 

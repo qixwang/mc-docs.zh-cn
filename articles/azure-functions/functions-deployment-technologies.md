@@ -1,22 +1,17 @@
 ---
-title: Azure Functions 中的部署技术 | Microsoft Docs
+title: Azure Functions 中的部署技术
 description: 了解将代码部署到 Azure Functions 的不同方式。
-services: functions
-documentationcenter: .net
-author: ColbyTresness
-manager: dariac
-ms.service: azure-functions
+author: georgewallace
 ms.custom: vs-azure
 ms.topic: conceptual
-origin.date: 04/25/2019
-ms.date: 10/28/2019
+ms.date: 02/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8ce9bde080d1ce9f23b3f155e1e8634f0694a6aa
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 293a9b9145013d77660437591dac6906c3114380
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034410"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494518"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -55,7 +50,7 @@ Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作
 更改任何触发器时，Functions 基础结构必须意识到这些更改。 对于许多部署技术而言，同步会自动进行。 但在某些情况下，必须手动同步触发器。 通过引用外部包 URL、本地 Git、云同步或 FTP 部署更新时，必须手动同步触发器。 可通过以下三种方式之一来同步触发器：
 
 * 在 Azure 门户中重启函数应用
-* 使用[主密钥](functions-bindings-http-webhook.md#authorization-keys)将 HTTP POST 请求发送到 `https://{functionappname}.chinacloudsites.cn/admin/host/synctriggers?code=<API_KEY>`。
+* 使用[主密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)将 HTTP POST 请求发送到 `https://{functionappname}.chinacloudsites.cn/admin/host/synctriggers?code=<API_KEY>`。
 * 将 HTTP POST 请求发送到 `https://management.chinacloudapi.cn/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`。 请将占位符替换为你的订阅 ID、资源组名称和函数应用名称。
 
 ### <a name="remote-build"></a>远程生成
@@ -191,7 +186,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 | PowerShell（预览版） |✔|✔| |  |
 | TypeScript (Node.js) | | | |  |
 
-<sup>*</sup> 仅对 Linux 上使用专用计划的 Functions 的 HTTP 和计时器触发器启用门户编辑。
+<sup>*</sup> 仅对使用专用计划的 Linux 上的 Functions 的 HTTP 和计时器触发器启用门户编辑。
 
 ## <a name="deployment-slots"></a>部署槽
 

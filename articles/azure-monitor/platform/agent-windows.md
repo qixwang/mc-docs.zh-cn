@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 10/07/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 115e8361f580b05acfac0426a35c44c91785cf56
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 200dd335481ea972a77bb5dff3b64ce26f7d3ace
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527897"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497466"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
 
@@ -40,14 +40,18 @@ ms.locfileid: "74527897"
 ## <a name="obtain-workspace-id-and-key"></a>获取工作区 ID 和密钥
 在安装适用于 Windows 的 Log Analytics 代理前，需要先获得 Log Analytics 工作区的工作区 ID 和秘钥。  安装期间每种安装方法都需要此信息才能正确配置代理，并确保它能在 Azure 商业版和中国政府云中与 Azure Monitor 成功通信。 
 
-1. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”  。
+1. 在 Azure 门户中，搜索并选择“Log Analytics 工作区”  。
 2. 在 Log Analytics 工作区列表中，选择要将代理配置为向其报告的工作区。
 3. 选择“高级设置”  。<br><br> ![Log Analytics 高级设置](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. 选择“已连接的源”，然后选择“Windows 服务器”   。   
 5. 将**工作区 ID** 和**主密钥**复制并粘贴到常用编辑器。    
    
 ## <a name="configure-agent-to-use-tls-12"></a>将代理配置为使用 TLS 1.2
-若要为 Windows 代理与 Log Analytics 服务之间的通信使用 [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) 协议，可以在将代理安装在虚拟机上之前或之后执行以下步骤来启用该协议。   
+若要为 Windows 代理与 Log Analytics 服务之间的通信使用 [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) 协议，可以在将代理安装在虚拟机上之前或之后执行以下步骤来启用该协议。
+
+>[!NOTE]
+>若要将运行 Windows Server 2008 SP2 x64 的 VM 配置为使用 TLS 1.2，在执行以下步骤之前，需要先安装以下 [SHA-2 代码签名支持更新](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)。 
+>
 
 1. 找到以下注册表子项：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. 在 **Protocols** 下为 TLS 1.2 创建一个子项：**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
@@ -186,9 +190,9 @@ ms.locfileid: "74527897"
 
 还可在 Azure 门户中执行简单的日志查询。  
 
-1. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“Azure Monitor”  。 开始键入时，会根据输入筛选该列表。 选择“Azure Monitor”  。  
-2. 在菜单中选择“日志”  。 
-2. 在“日志”窗格的查询字段中键入：  
+1. 在 Azure 门户中，搜索并选择“监视器”  。
+1. 在菜单中选择“日志”  。
+1. 在“日志”  窗格的“查询”字段中键入：  
 
     ```
     Heartbeat 

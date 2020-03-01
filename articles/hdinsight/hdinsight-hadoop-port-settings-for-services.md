@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 10/15/2019
-ms.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6b913a702eea14707c64198aec56fa3ea49b1814
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 86722b557ae442bf1e63d0c8c9b19acc83d43914
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426056"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428709"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -48,7 +48,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 | Ambari |443 |HTTPS |Ambari Web UI。 请参阅[使用 Apache Ambari Web UI 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。 |
 | Ambari |443 |HTTPS |Ambari REST API。 请参阅[使用 Apache Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。 |
 | WebHCat |443 |HTTPS |HCatalog REST API。 请参阅[将 MapReduce 与 Curl 配合使用](hadoop/apache-hadoop-use-mapreduce-curl.md)。 |
-| HiveServer2 |443 |ODBC |使用 ODBC 连接到 Hive。 请参阅[使用 Microsoft ODBC 驱动程序将 Excel 连接到 HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。 |
+| HiveServer2 |443 |ODBC |使用 ODBC 连接到 Hive。 请参阅 [Connect Excel to HDInsight with the Microsoft ODBC driver](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft ODBC 驱动程序将 Excel 连接到 HDInsight）。 |
 | HiveServer2 |443 |JDBC |使用 JDBC 连接到 Apache Hive。 请参阅[使用 Hive JDBC 驱动程序连接到 HDInsight 上的 Apache Hive](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 以下各项适用于特定的群集类型：
@@ -59,6 +59,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 | Livy |443 |HTTPS |Spark |Spark REST API。 请参阅[使用 Apache Livy 远程提交 Apache Spark 作业](spark/apache-spark-livy-rest-interface.md)。 |
 | Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅[在 HDInsight 上将 Beeline 与 Apache Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md)。 |
 | Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md)。 |
+| Kafka Rest 代理 |443 |HTTPS |Kafka |Kafka REST API。 请参阅[使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集进行交互](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>身份验证
 
@@ -162,7 +163,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 | 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | 代理 |辅助角色节点 |9092 |[Kafka 线路协议](https://kafka.apache.org/protocol.html) |用于客户端通信 |
-| &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |
+| &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 ZooKeeper 的端口 |
 
 ### <a name="spark-ports"></a>Spark 端口
 

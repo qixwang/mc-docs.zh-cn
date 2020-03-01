@@ -1,5 +1,5 @@
 ---
-title: 使用 C# 创建和管理 Azure 虚拟机 | Azure
+title: 使用 C# 创建和管理 Azure 虚拟机
 description: 使用 C# 和 Azure Resource Manager 部署虚拟机及其所有支持资源。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 07/17/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 29f5c72f474bfffa21d317235c4dda695dfa9133
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: fd857c1a60f5b6e377932415751fce5abf1a3236
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272640"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428560"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>使用 C# 创建和管理 Azure 中的 Windows VM
 
@@ -56,11 +56,11 @@ ms.locfileid: "72272640"
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
+在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
-1. 在解决方案资源管理器中，右键单击“myDotnetProject” > “添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”      。 将文件命名为 azureauth.properties，然后单击“添加”   。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击** > 添加**新建项**，然后在**Visual C# 项**中选择*文本文件*。 将文件命名为 azureauth.properties，然后单击“添加”   。
 2. 添加这些授权属性：
 
     ```
@@ -112,7 +112,7 @@ ms.locfileid: "72272640"
 
 ### <a name="create-the-resource-group"></a>创建资源组
 
-必须在[资源组](../../azure-resource-manager/resource-group-overview.md)中包含所有资源。
+必须在[资源组](../../azure-resource-manager/management/overview.md)中包含所有资源。
 
 若要指定应用程序的值并创建资源组，请将以下代码添加到 Main 方法：
 
@@ -392,7 +392,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 1. 若要运行控制台应用程序，请单击“启动”  。
 
-2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
+2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证这些资源是否已创建。 单击部署状态以查看有关部署的信息。
 
 ## <a name="next-steps"></a>后续步骤
 * 参考[使用 C# 和 Resource Manager 模板部署 Azure 虚拟机](csharp-template.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)中的信息，利用模板创建虚拟机。

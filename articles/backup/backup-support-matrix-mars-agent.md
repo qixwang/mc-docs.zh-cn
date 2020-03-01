@@ -6,12 +6,12 @@ origin.date: 08/30/2019
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.author: v-lingwu
-ms.openlocfilehash: 6077f30ef84b92810474b4ae18a39410576a23a0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 1ccfa48a0d80b9339f840762e0d1d5f3469ad325
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854358"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497538"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -49,7 +49,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 --- | ---
 大小 |  缓存文件夹中的可用空间应至少为备份数据总大小的 5% 到 10%。
 位置 | 缓存文件夹必须存储在要备份的计算机本地，并且该计算机必须联机。 缓存文件夹不应位于网络共享、可移动媒体或脱机卷上。
-文件夹 | 缓存文件夹应已加密，位于已删除重复数据的卷中，或者位于压缩、稀疏或重分析点类型的文件夹中。
+文件夹 | 不应在已删除重复数据的卷、已压缩文件夹、稀疏文件夹或具有重分析点的文件夹中加密缓存文件夹。
 位置更改 | 可以通过停止备份引擎 (`net stop bengine`)，并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器有足够的空间。）然后，将 **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** 下的两个注册表项（**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**）更新为新位置，并重启引擎。
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
@@ -99,14 +99,14 @@ Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是 
 Windows Server 2016（Standard、Datacenter、Essentials） | 是 | 是 | - .NET 4.5 <br> - Windows PowerShell <br> - 最新兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0
 Windows Server 2012 R2（Standard、Datacenter、Foundation、Essentials） | 是 | 是 | - .NET 4.5 <br> - Windows PowerShell <br> - 最新兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0
 Windows Server 2012（Standard、Datacenter、Foundation） | 是 | 是 |- .NET 4.5 <br> -Windows PowerShell <br> - 最新兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0 <br> - 部署映像服务和管理 (DISM.exe)
-Windows Server 2008 R2（Standard、Enterprise、Datacenter、Foundation） | 是 | 是 | - .NET 3.5、.Net 4.5 <br> -Windows PowerShell <br> - 兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0 <br> - 部署映像服务和管理 (DISM.exe)
-Windows Server 2008 SP2（Standard、Datacenter、Foundation） | 是 | 否 | - .NET 3.5、.Net 4.5 <br> - Windows PowerShell <br> - 兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0 <br> - 部署映像服务和管理 (DISM.exe) <br> - Virtual Server 2005 base + KB KB948515
 Windows Storage Server 2016/2012 R2/2012（Standard、Workgroup） | 是 | 否 | - .NET 4.5 <br> - Windows PowerShell <br> - 最新兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0
 Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET 4.5 <br> - Windows PowerShell <br> - 最新兼容的 Microsoft VC++ 可再发行包 <br> - Microsoft 管理控制台 (MMC) 3.0
 
 有关详细信息，请参阅[支持的 MABS 和 DPM 操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
 ## <a name="backup-limits"></a>备份限制
+
+### <a name="size-limits"></a>大小限制
 
 Azure 备份会限制可备份的文件或文件夹数据源大小。 在单个卷中备份的项大小不能超过下表中汇总的大小：
 
@@ -117,6 +117,10 @@ Windows Server 2008 R2 SP1 |1,700 GB
 Windows Server 2008 SP2| 1,700 GB
 Windows 8 或更高版本| 54,400 GB
 Windows 7| 1,700 GB
+
+### <a name="other-limitations"></a>其他限制
+
+- MARS 不支持将多台同名计算机保护到单个保管库。
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 

@@ -1,31 +1,40 @@
 ---
 title: 了解 Azure 媒体服务建议的编码器 | Microsoft 文档
-description: 了解媒体服务建议的编码器
+description: 本文列出了 Azure 媒体服务建议的本地编码器。
 services: media-services
 keywords: 编码;编码器;媒体
 author: WenJason
 manager: digimobile
 ms.author: v-jay
 origin.date: 03/20/2019
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1690110d74e4893c287a7699f65cfa68f6938a35
-ms.sourcegitcommit: 3aff96c317600eec69c4bf3b8853e9d4e44210b7
+ms.openlocfilehash: 533719aefd9ddff6e5c5da66de4b8c51852150e0
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69670975"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494260"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
+
 使用 Azure 媒体服务实时传送视频流时，可以指定通道接收输入流的方式。 如果选择将本地编码器与实时编码通道结合使用，则编码器应推送高质量单比特率流作为输出。 如果选择将本地编码器与直通通道结合使用，则编码器应推送具备所有所需输出质量的多比特率流作为输出。 有关详细信息，请参阅[使用本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
 
+## <a name="encoder-requirements"></a>编码器要求
+
+使用 HTTPS 或 RTMPS 协议时，编码器必须支持 TLS 1.2。
+
+## <a name="live-encoders-that-output-rtmp"></a>输出 RTMP 的实时编码器 
+
 Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之一：
+
 - Adobe Flash 媒体实时编码器 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream Wirecast（由于 TLS 1.2 要求，版本为 13.0.2 或更高）
+
+  使用 RTMPS 协议时，编码器必须支持 TLS 1.2。
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -34,11 +43,16 @@ Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之�
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>输出分片 MP4 的实时编码器 
+
 Azure 媒体服务建议使用下列将多比特率分段 MP4（平滑流式处理）作为输出的实时编码器之一：
+
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco 数字媒体编码器 2200
-- Elemental Live
+- Elemental Live（由于 TLS 1.2 要求，版本为 2.14.15 及更高）
+
+  使用 HTTPS 协议时，编码器必须支持 TLS 1.2。
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -46,6 +60,7 @@ Azure 媒体服务建议使用下列将多比特率分段 MP4（平滑流式处�
 > 实时编码器可以将单比特率流发送到直通通道，但并不建议此配置，因为它不允许对客户端进行自适应比特率流式处理。
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>如何成为本地编码器合作伙伴
+
 作为 Azure 媒体服务本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来推广你的产品。 若要成为本地编码器合作伙伴，必须验证本地编码器与媒体服务的兼容性。 为此，请完成以下验证：
 
 直通通道验证

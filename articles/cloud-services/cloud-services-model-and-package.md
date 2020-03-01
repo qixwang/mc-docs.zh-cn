@@ -1,34 +1,25 @@
 ---
-title: 什么是云服务模型和包
+title: 什么是云服务模型和包 | Microsoft Docs
 description: 描述 Azure 中的云服务模型（.csdef、.cscfg）和包 (.cspkg)
 services: cloud-services
-documentationcenter: ''
-author: Thraka
-manager: timlt
-editor: ''
-ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
+author: tanmaygore
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 07/05/2017
-ms.author: v-yiso
-ms.date: 12/11/2017
-ms.openlocfilehash: b352e8cf1e992a73fb8ea014b4cf7b7489c2f71a
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.date: 02/19/2020
+ms.author: v-junlch
+ms.openlocfilehash: 3c514d0f154c6e39068770feee57483150cedcc0
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626682"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494488"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
-云服务由以下三个组件创建：服务定义 (.csdef)、服务配置 (.cscfg) 和服务包 (.cspkg)。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 ServicePackage.cspkg 和 ServiceConfig.cscfg 两者创建云服务。
+# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型，如何将其打包？
+云服务由以下三个组件创建：服务定义 (.csdef)、服务配置 (.cscfg) 和服务包 (.cspkg)    。 ServiceDefinition.csdef 和 ServiceConfig.cscfg 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型   。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 ServicePackage.cspkg 和 ServiceConfig.cscfg 两者创建云服务   。
 
 云服务在 Azure 中开始运行后，可以通 **ServiceConfig.cscfg** 文件重新进行配置，但不能更改定义。
 
 ## <a name="what-would-you-like-to-know-more-about"></a>想了解哪方面的详细信息？
-
 * 我想了解有关 [ServiceDefinition.csdef](#csdef) 和 [ServiceConfig.cscfg](#cscfg) 文件的详细信息。
 * 我知道了，请提供有关可配置内容的 [示例](#next-steps) 。
 * 我想要创建 [ServicePackage.cspkg](#cspkg)。
@@ -39,8 +30,9 @@ ms.locfileid: "58626682"
   * [通过远程桌面连接到云服务实例][remotedesktop]
 
 <a name="csdef"></a>
+
 ## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
-**ServiceDefinition.csdef** 文件指定 Azure 用于配置云服务的设置。 [Azure Service Definition Schema (.csdef File)](https://msdn.microsoft.com/zh-cn/library/azure/ee758711.aspx)（Azure 服务定义架构（.csdef 文件））为服务定义文件提供允许的格式。 以下示例显示了可为 Web 角色和辅助角色定义的设置：
+**ServiceDefinition.csdef** 文件指定 Azure 用于配置云服务的设置。 [Azure Service Definition Schema (.csdef File)](https://docs.microsoft.com/previous-versions/azure/reference/ee758711(v=azure.100))（Azure 服务定义架构（.csdef 文件））为服务定义文件提供允许的格式。 以下示例显示了可为 Web 角色和辅助角色定义的设置：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -91,7 +83,7 @@ ms.locfileid: "58626682"
 </ServiceDefinition>
 ```
 
-可以参考 [服务定义架构](https://msdn.microsoft.com/library/azure/ee758711.aspx) 更好地了解此处使用的 XML 架构，而以下是部分元素的快速说明：
+可以参考 [服务定义架构](https://docs.microsoft.com/previous-versions/azure/reference/ee758711(v=azure.100)) 更好地了解此处使用的 XML 架构，而以下是部分元素的快速说明：
 
 **Sites**  
 包含 IIS7 中承载的网站或 Web 应用程序的定义。
@@ -118,8 +110,9 @@ ms.locfileid: "58626682"
 包含在角色启动时运行的任务。 任务在 .cmd 文件或可执行文件中定义。
 
 <a name="cscfg"></a>
+
 ## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
-云服务设置配置由 **ServiceConfiguration.cscfg** 文件中的值确定。 指定要为此文件中每个角色部署的实例数。 在服务定义文件中定义的配置设置值已添加到服务配置文件中。 与云服务相关联的所有管理证书的指纹也会添加到该文件中。 [Azure Service Configuration Schema (.cscfg File)](https://msdn.microsoft.com/zh-cn/library/azure/ee758710.aspx)（Azure 服务配置架构（.cscfg 文件））为服务配置文件提供允许的格式。
+云服务设置配置由 **ServiceConfiguration.cscfg** 文件中的值确定。 指定要为此文件中每个角色部署的实例数。 在服务定义文件中定义的配置设置值会添加到服务配置文件。 与云服务相关联的所有管理证书的指纹也会添加到该文件。 [Azure Service Configuration Schema (.cscfg File)](https://docs.microsoft.com/previous-versions/azure/reference/ee758710(v=azure.100))（Azure 服务配置架构（.cscfg 文件））为服务配置文件提供允许的格式。
 
 服务配置文件不与应用程序一起打包，而是作为单独的文件上传到 Azure 并用于配置云服务。 无需重新部署云服务即可上传新的服务配置文件。 云服务正在运行时可以更改云服务的配置值。 以下示例显示了可为 Web 角色和辅助角色定义的配置设置：
 
@@ -141,7 +134,7 @@ ms.locfileid: "58626682"
 </ServiceConfiguration>
 ```
 
-可以参考 [服务配置架构](https://msdn.microsoft.com/zh-cn/library/azure/ee758710.aspx) 以更好了解此处使用的 XML 架构，而以下是元素的快速说明：
+可以参考 [服务配置架构](https://docs.microsoft.com/previous-versions/azure/reference/ee758710(v=azure.100)) 以更好了解此处使用的 XML 架构，而以下是元素的快速说明：
 
 **实例**  
 为角色配置运行角色实例数。 若要防止云服务在升级期间可能变得不可用，建议部署面向 web 角色的多个实例。 部署多个实例即表示遵守 [Azure 计算服务级别协议 (SLA)](https://www.azure.cn/support/legal/sla/) 中的准则，此协议可以保证在为一个服务部署了两个或多个角色实例时，面向 Internet 的角色拥有 99.95% 的外部连接。
@@ -155,7 +148,7 @@ ms.locfileid: "58626682"
 <p/>
 
 > [!NOTE]
-> 通过使用文本编辑器，可以将证书的指纹添加到配置文件中。 或者，可以在 Visual Studio 中角色的“属性”页的“证书”选项卡上添加值。
+> 通过使用文本编辑器，可以将证书的指纹添加到配置文件中。 或者，可以在 Visual Studio 中角色的“属性”  页的“证书”  选项卡上添加值。
 > 
 > 
 
@@ -186,7 +179,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
   </Site>
   <Site name="MailSite" packageDir="MailSite">
     <Bindings>
-      <Binding name="mail" endpointName="HttpIn" hostheader="mail.mysite.cloudapp.cn" />
+      <Binding name="mail" endpointName="HttpIn" hostHeader="mail.mysite.chinacloudapp.cn" />
     </Bindings>
     <VirtualDirectory name="artifacts" />
     <VirtualApplication name="storageproxy">
@@ -196,47 +189,56 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
 </WebRole>
 ```
 
+
 ## <a name="changing-the-configuration-of-a-role"></a>更改角色的配置
 当云服务在 Azure 中运行时，可以更新其配置而无需使服务处于脱机状态。 要更改配置信息，可以上传新的配置文件或就地编辑配置文件，并将其应用于正在运行的服务。 可对服务配置进行以下更改：
 
-- **更改配置设置的值**  
-当配置设置改变时，角色实例可以选择在实例处于联机状态时应用此更改，或选择正常回收实例并在实例处于脱机状态时应用此更改。
-
-- **更改角色实例的服务拓扑**  
-拓扑更改不会影响正在运行的实例，但正在删除实例的情况除外。 所有剩余的实例通常不需要回收；但可以选择回收角色实例以响应拓扑更改。
-
-- **更改证书指纹**  
-仅可在角色实例处于脱机状态时更新一个证书。 如果在角色实例处于联机状态时添加、删除或更改了某个证书，则 Azure 会使实例脱机以更新证书，并在更改完成后使其重新联机。
+* **更改配置设置的值**  
+  当配置设置改变时，角色实例可以选择在实例处于联机状态时应用此更改，或选择正常回收实例并在实例处于脱机状态时应用此更改。
+* **更改角色实例的服务拓扑**  
+  拓扑更改不会影响正在运行的实例，但正在删除实例的情况除外。 所有剩余的实例通常不需要回收；但可以选择回收角色实例以响应拓扑更改。
+* **更改证书指纹**  
+  仅可在角色实例处于脱机状态时更新一个证书。 如果在角色实例处于联机状态时添加、删除或更改了某个证书，则 Azure 会使实例脱机以更新证书，并在更改完成后使其重新联机。
 
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>使用服务运行时事件处理配置更改
-[Azure 运行时库](https://msdn.microsoft.com/zh-cn/library/azure/mt419365.aspx)包括 [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.aspx) 命名空间，它为与 Azure 环境（来自角色实例中运行的代码）的交互提供类。 [RoleEnvironment](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) 类定义在配置更改前后引发的以下事件：
+[Azure 运行时库](https://docs.microsoft.com/previous-versions/azure/reference/mt419365(v=azure.100))包括 [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) 命名空间，它提供类用于与来自角色的 Azure 环境进行交互。 [RoleEnvironment](https://docs.microsoft.com/previous-versions/azure/reference/ee773173(v=azure.100)) 类定义在配置更改前后引发的以下事件：
 
-- [Changing](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx) 事件  
+* [Changing](https://docs.microsoft.com/previous-versions/azure/reference/ee758134(v=azure.100)) 事件   
   此事件发生在配置更改应用于某个角色的指定实例之前，使你有机会记下角色实例（如有必要）。
-- [Changed](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx) 事件  
+* [Changed](https://docs.microsoft.com/previous-versions/azure/reference/ee758129(v=azure.100)) 事件   
   发生在配置更改已应用于某个角色的指定实例之后。
 
 > [!NOTE]
 > 由于证书更改始终使角色实例处于脱机状态，因此不会引发 RoleEnvironment.Changing 或 RoleEnvironment.Changed 事件。
+> 
+> 
 
 <a name="cspkg"></a>
+
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
-要将应用程序部署为 Azure 中的云服务，必须首先以适当的格式打包该应用程序。 可以使用 CSPack 命令行工具（与 [Azure SDK](https://www.azure.cn/downloads/) 一起安装）创建包文件，作为 Visual Studio 的替代。
+> [!NOTE]
+> 可部署的最大包大小为 600MB
 
-**CSPack** 使用服务定义文件和服务配置文件的内容来定义包的内容。 CSPack 生成可以使用 [Azure 门户](./cloud-services-how-to-create-deploy-portal.md#create-and-deploy) 上传到 Azure 的应用程序包文件 (.cspkg)。 默认情况下，该应用程序包名为 `[ServiceDefinitionFileName].cspkg`，但可以通过使用 CSPack 的 `/out` 选项指定不同的名称。
+要将应用程序部署为 Azure 中的云服务，必须首先以适当的格式打包该应用程序。 可以使用 CSPack 命令行工具（与 [Azure SDK](/downloads/) 一起安装）创建包文件，作为 Visual Studio 的替代  。
 
-CSPack 位于  
+**CSPack** 使用服务定义文件和服务配置文件的内容来定义包的内容。 CSPack 生成可以使用 [Azure 门户](cloud-services-how-to-create-deploy-portal.md#create-and-deploy) 上传到 Azure 的应用程序包文件 (.cspkg)  。 默认情况下，该应用程序包名为 `[ServiceDefinitionFileName].cspkg`，但可以通过使用 CSPack 的 `/out` 选项指定不同的名称  。
+
+CSPack 位于   
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> CSPack.exe（在 Windows 中）可通过运行随 SDK 一起安装的“Azure 命令提示符”快捷方式使用。  
+> CSPack.exe（在 Windows 中）可通过运行随 SDK 一起安装的“Azure 命令提示符”快捷方式使用  。  
 > 
 > 运行 CSPack.exe 程序本身来查看有关所有可能的开关和命令的文档。
+> 
+> 
 
 <p />
 
 > [!TIP]
-> 在 Azure 计算模拟器中本地运行云服务时，使用“/copyonly”选项。此选项将应用程序的二进制文件复制到目录布局，以便在计算模拟器中运行。
+> 在“Azure 计算模拟器”  中本地运行云服务时，使用 **/copyonly** 选项。 此选项将应用程序的二进制文件复制到目录布局，以便可以在计算模拟器中运行它们。
+> 
+> 
 
 ### <a name="example-command-to-package-a-cloud-service"></a>打包云服务的示例命令
 以下示例创建包含 Web 角色信息的应用程序包。 该命令指定待使用的服务定义文件、可以找到二进制文件的目录以及包文件名称。
@@ -260,7 +262,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 其中变量如下所示定义：
 
-| 变量 | 值 |
+| 变量 | Value |
 | --- | --- |
 | \[DirectoryName\] |包含 Azure 项目 .csdef 文件的根项目目录下的子目录。 |
 | \[ServiceDefinition\] |服务定义文件的名称。 默认情况下，此文件名为 ServiceDefinition.csdef。 |
@@ -272,7 +274,6 @@ cspack [DirectoryName]\[ServiceDefinition]
 | \[RoleAssemblyName\] |角色的二进制文件的名称。 |
 
 ## <a name="next-steps"></a>后续步骤
-
 我正在创建云服务包，并且我想要...
 
 * [为云服务实例设置远程桌面][remotedesktop]
@@ -291,3 +292,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
+
+
+
+

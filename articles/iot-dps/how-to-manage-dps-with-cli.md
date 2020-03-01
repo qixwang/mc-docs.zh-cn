@@ -1,23 +1,23 @@
 ---
-title: 如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务 | Microsoft Docs
-description: 了解如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
+title: 使用 Azure CLI 和 IoT 扩展管理 IoT 中心设备预配服务
+description: 了解如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务 (DPS)
 author: chrissie926
-ms.author: menchi
-ms.date: 01/17/2018
+ms.author: v-tawe
+origin.date: 01/17/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: c945bd98df23c3b55691731ad737bc99c08dbba8
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: a88cacc4f5d0bc78a1c4c25b631dd79f549f817f
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657980"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494138"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 适用于 Windows、Linux 和 MacOS。 使用 Azure CLI 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。
+[Azure CLI](https://docs.azure.cn/cli?view=azure-cli-latest) 是一个开源跨平台命令行工具，用于管理 IoT Edge 等 Azure 资源。 Azure CLI 适用于 Windows、Linux 和 MacOS。 使用 Azure CLI 可以管理 Azure IoT 中心资源、设备预配服务实例和现成的链接中心。
 
 IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edge 功能。
 
@@ -31,7 +31,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 ### <a name="step-2---install-the-azure-cli"></a>步骤 2 - 安装 Azure CLI
 
-按照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
+按照[安装说明](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
 
 ### <a name="step-3---install-iot-extension"></a>步骤 3 - 安装 IoT 扩展
 

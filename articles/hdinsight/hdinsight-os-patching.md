@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 07/01/2019
-ms.date: 08/19/2019
+origin.date: 01/21/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: c50cce219d79a6144f167241c5bb8b5e0c55d8eb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 55c128e82605f73cb1f9164eb001ecc0e70be5b0
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334842"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428644"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>为基于 Linux 的 HDInsight 群集配置 OS 修补计划 
 
@@ -35,6 +35,19 @@ HDInsight 为你提供支持，允许你在群集上执行常见任务，例如�
 
 > [!NOTE]  
 > 脚本操作不会自动应用所有未来更新周期的更新。 每次必须应用新更新以安装更新并重启 VM 时，请运行这些脚本。
+
+## <a name="preparation"></a>准备工作
+
+在部署到生产环境之前，在具有代表性的非生产环境中打补丁。 制定计划，以便在实际打补丁之前对系统进行充分测试。
+
+在与群集的 ssh 会话中，你可能会不时收到“可以升级”消息。 该消息可能如下所示：
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+打补丁是可选的，由你自行决定。
 
 ## <a name="restart-nodes"></a>重启节点
   

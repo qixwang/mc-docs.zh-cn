@@ -1,5 +1,5 @@
 ---
-title: SQL Server 2014 虚拟机的自动备份（资源管理器）| Azure
+title: SQL Server 2014 虚拟机的自动备份 (Resource Manager)
 description: 介绍适用于 Azure 中运行的 SQL Server 2014 VM 的自动备份功能。 本文仅适用于使用 Resource Manager 的 VM。
 services: virtual-machines-windows
 documentationcenter: na
@@ -12,17 +12,17 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/03/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: b24addc14847837c870e067319a625e88f5c24ca
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: d2246760919fef25c447791851d14e1e76d31825
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116918"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428102"
 ---
-# <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机 (Resource Manager) 的自动备份
+# <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机的自动备份 (Resource Manager)
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
@@ -32,7 +32,7 @@ ms.locfileid: "74116918"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要使用自动备份，请考虑以下先决条件：
 
 **操作系统**：
@@ -65,8 +65,8 @@ ms.locfileid: "74116918"
 | --- | --- | --- |
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
-| **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和计算机名称。 |
-| **加密** | 启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 `automaticbackup` 容器中的指定存储帐户内。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
+| **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 会在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和计算机名称。 |
+| **加密** | 启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书会使用相同的命名约定存放在同一 `automaticbackup` 容器中的指定存储帐户内。 如果密码发生更改，则使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** | 密码文本 | 加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |
 
 ## <a name="configure-in-the-portal"></a>在门户中配置
@@ -92,7 +92,7 @@ ms.locfileid: "74116918"
 
 ![现有 VM 的 SQL 自动备份](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
-完成后，单击“SQL Server 配置”设置底部的“确定”按钮保存更改   。
+完成后，选择“SQL Server 配置”设置底部的“确定”按钮保存更改   。
 
 <!--Not Available on virtual-machines-windows-sql-manage-portal.md-->
 <!--MOONCAKE: CUSTOMIZE ON 11/15/2019-->
@@ -103,7 +103,7 @@ ms.locfileid: "74116918"
 > [!NOTE]
 > 也可以使用模板来配置自动备份。 有关详细信息，请参阅 [Azure quickstart template for Automated Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update)（用于自动备份的 Azure 快速入门模板）。
 
-## <a name="configure-with-powershell"></a>使用 PowerShell 进行配置
+## <a name="configure-with-powershell"></a>使用 PowerShell 配置
 
 可使用 PowerShell 配置自动备份。 开始之前，必须：
 
@@ -172,7 +172,7 @@ LogBackupFrequency          :
 ### <a name="configure-automated-backup"></a>配置自动备份
 随时可以使用 PowerShell 来启用自动备份以及修改其配置和行为。
 
-首先，为备份文件选择或创建存储帐户。 以下脚本将选择一个存储帐户，或者创建一个存储帐户（如果不存在）。
+首先，为备份文件选择或创建存储帐户。 以下脚本选择一个存储帐户，或者创建一个存储帐户（如果不存在）。
 
 ```powershell
 $storage_accountname = "yourstorageaccount"
@@ -188,7 +188,7 @@ If (-Not $storage)
 > [!NOTE]
 > 自动备份不支持在高级存储中存储备份，但可以从使用高级存储的 VM 磁盘创建备份。
 
-然后，使用 **New-AzVMSqlServerAutoBackupConfig** 命令启用并配置自动备份设置，以便在 Azure 存储帐户中存储备份。 在本示例中，备份保留 10 天。 第二个命令 **Set-AzVMSqlServerExtension** 使用这些设置更新指定的 Azure VM。
+然后，使用 **New-AzVMSqlServerAutoBackupConfig** 命令启用并配置自动备份设置，以便在 Azure 存储帐户中存储备份。 在本示例中，备份保留 10 天。 第二个命令 Set-AzVMSqlServerExtension 使用这些设置更新指定的 Azure VM  。
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
@@ -248,7 +248,7 @@ $retentionperiod = 10
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 
@@ -288,7 +288,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 自动备份会在 Azure VM 上配置托管备份。 因此，请务必[查看有关 SQL Server 2014 托管备份的文档](https://msdn.microsoft.com/library/dn449497(v=sql.120).aspx)。
 
-可以在以下文章中找到针对 Azure VM 上的 SQL Server 的其他备份和还原指导：[Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。
+可以在以下文章中找到针对 Azure VM 上 SQL Server 的其他备份和还原指导：[Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。
 
 有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4774db2b0995de07bf7fff7ac4a8be6fc56b60e8
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: d0f758c33c7a2c68eb325010073bd23128ac8762
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155544"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494541"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -68,7 +68,9 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-Alive 超时和 TCP 空闲超时的设置是什么？
 
- 在应用程序网关 v1 SKU 中，Keep-Alive 超时为 120 秒。 v2 SKU 的 Keep-Alive 超时为 75 秒。 在应用程序网关的前端虚拟 IP (VIP) 中，TCP 空闲超时默认为 4 分钟。
+Keep-Alive 超时  控制应用程序网关在重新使用或关闭它之前将等待客户端在持久连接上发送另一个 HTTP 请求的时间。 TCP 空闲超时  控制在无活动的情况下 TCP 连接保持打开状态的时间。 
+
+应用程序网关 v1 SKU 中的 Keep-Alive 超时  为 120 秒，而在 v2 SKU 中为 75 秒。 在应用程序网关的 v1 和 v2 SKU 的前端虚拟 IP (VIP) 上，TCP 空闲超时  是默认的 4 分钟。 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在应用程序网关的生存期内，其 IP 或 DNS 名称是否会变化？
 
@@ -132,7 +134,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 
-是的。 Azure 跨更新域和容错域分配实例，确保实例不会全部同时发生故障。 为了支持缩放，应用程序网关可添加同一网关的多个实例来分担负载。
+是的。
 
 ## <a name="configuration"></a>配置
 
@@ -408,4 +410,4 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 若要详细了解应用程序网关，请参阅[什么是 Azure 应用程序网关？](overview.md)。
 
-<!--Update_Description: link update-->
+<!--Update_Description: wording update-->

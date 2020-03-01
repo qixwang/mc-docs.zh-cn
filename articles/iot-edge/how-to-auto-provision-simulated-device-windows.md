@@ -3,25 +3,24 @@ title: 使用 DPS 自动预配 Windows 设备 - Azure IoT Edge | Microsoft Docs
 description: 使用 Windows 计算机上的模拟设备通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
 manager: philmea
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 01/09/2019
-ms.date: 12/02/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: cdd1e1c643d8fd95b7ce8f35d52ff1f6d7172e59
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: f85a19c52a658d455294d9e072e474d20eaecb9c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389239"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494348"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
 
-DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明。 对于组注册，如果在对称密钥证明中将“是 IoT Edge 设备”选项选为 TRUE，则在该注册组下注册的所有设备都将标记为 IoT Edge 设备。 
+DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明。 对于组注册，如果在对称密钥证明中将“是 IoT Edge 设备”选项选为 TRUE，则在该注册组下注册的所有设备都将标记为 IoT Edge 设备。
 
 本文介绍如何使用以下步骤，在模拟 IoT Edge 设备上测试自动预配：
 
@@ -30,16 +29,16 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 * 为设备创建个人注册。
 * 安装 IoT Edge 运行时并将设备连接到 IoT 中心。
 
-> [!NOTE]
-> 将 TPM 证明与 DPS 一起使用时，TPM 2.0 是必需的，并且只能用于创建个人（而非组）注册。
-
 > [!TIP]
 > 本文介绍了如何通过在虚拟设备上使用 TPM 证明来测试自动预配，但是在使用物理 TPM 硬件时，它大部分也同样适用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一台 Windows 开发计算机。 本文使用 Windows 10。
 * 活动的 IoT 中心。
+
+> [!NOTE]
+> 将 TPM 证明与 DPS 一起使用时，TPM 2.0 是必需的，并且只能用于创建个人（而非组）注册。
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>设置 IoT 中心设备预配服务
 
@@ -119,7 +118,6 @@ Get-Service iotedge
 ```
 
 检查过去 5 分钟的服务日志。
-
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

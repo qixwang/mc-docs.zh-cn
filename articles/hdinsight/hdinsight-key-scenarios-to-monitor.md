@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 05/29/2019
-ms.date: 10/21/2019
+origin.date: 11/27/2019
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: effa5d94a4887c7b2418ebc8c0a8c61ef496c0a8
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: a0e7eaf383635e0a0d8fa7141e928c5515c9b65d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292597"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428704"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>在 Azure HDInsight 中监视群集性能
 
@@ -74,7 +74,7 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 ## <a name="storage-throttling"></a>存储限制
 
-群集的性能瓶颈可能发生于存储级别。 出现此类瓶颈的最常见原因为阻止  输入/输出 (IO) 操作，这发生在当正在运行的任务发送的 IO 超过了存储服务可以处理的 IO 数时。 这种阻止将创建等待处理完当前 IO 后再进行处理的 IO 请求队列。 发生此阻止的原因为存储限制  ，这并非物理限制，而是由存储服务通过服务级别协议 (SLA) 施加的限制。 此限制确保单个客户端或租户无法独占服务。 SLA 限制 Azure 存储的每秒 IO 数 (IOPS)。有关详细信息，请参阅 [Azure 存储可缩放性和性能目标](/storage/storage-scalability-targets)。
+群集的性能瓶颈可能发生于存储级别。 这种类型的瓶颈最常见的原因是阻止了  输入/输出 (IO) 操作，当正在运行的任务发送的 IO 超过存储服务可以处理的数量时，就会发生这种情况。 这种阻止将创建等待处理完当前 IO 后再进行处理的 IO 请求队列。 这些阻止是因为存储限制  ，这不是物理限制，而是存储服务通过服务级别协议 (SLA) 施加的限制。 此限制确保单个客户端或租户无法独占服务。 SLA 会限制 Azure 存储的每秒 IO 数 (IOPS) - 有关详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../storage/common/scalability-targets-standard-account.md)。
 
 如果使用 Azure 存储，有关监视与存储相关问题（包括限制）的信息，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](/storage/storage-monitoring-diagnosing-troubleshooting)。
 

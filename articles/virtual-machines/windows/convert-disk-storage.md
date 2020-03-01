@@ -1,19 +1,19 @@
 ---
-title: 更新托管磁盘的存储类型 | Azure
+title: 更新托管磁盘的存储类型
 description: 如何使用 Azure PowerShell 将 Azure 托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。
 author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 origin.date: 02/22/2019
-ms.date: 09/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: a68eb05f592042834a26e491cfe6b6a9f2279eb7
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.openlocfilehash: 0030effc3e1c758e90528a63ad9979c3ab59d471
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921049"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428894"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
@@ -26,7 +26,7 @@ Azure 托管磁盘有三种磁盘类型：高级 SSD、标准 SSD 和标准 HDD�
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 由于转换需要重启虚拟机 (VM)，因此请在预先存在的维护时段内计划磁盘存储迁移。
 * 对于非托管磁盘，请先[将其转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以在存储选项之间切换。
@@ -70,9 +70,8 @@ foreach ($disk in $vmDisks)
 {
     if ($disk.ManagedBy -eq $vm.Id)
     {
-        $diskUpdateConfig = New-AzDiskUpdateConfig -AccountType $storageType
-        Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
-        -DiskName $disk.Name
+        $disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+        $disk | Update-AzDisk
     }
 }
 
@@ -111,9 +110,8 @@ $vm.HardwareProfile.VmSize = $size
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 # Update the storage type
-$diskUpdateConfig = New-AzDiskUpdateConfig -AccountType $storageType -DiskSizeGB $disk.DiskSizeGB
-Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
--DiskName $disk.Name
+$disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+$disk | Update-AzDisk
 
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
@@ -133,7 +131,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 6. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”。   
 7. 单击“保存”并关闭磁盘窗格。 
 
-磁盘类型转换会瞬间完成。 转换后，可以重启 VM。
+磁盘类型转换会瞬间完成。 可以在转换后启动 VM。
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>在标准 HDD 与标准 SSD 之间切换托管磁盘 
 
@@ -160,9 +158,8 @@ Stop-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Nam
 $vm = Get-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Name 
 
 # Update the storage type
-$diskUpdateConfig = New-AzDiskUpdateConfig -AccountType $storageType -DiskSizeGB $disk.DiskSizeGB
-Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
--DiskName $disk.Name
+$disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
+$disk | Update-AzDisk
 
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```

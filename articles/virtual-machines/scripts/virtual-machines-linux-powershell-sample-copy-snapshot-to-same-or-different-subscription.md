@@ -1,6 +1,6 @@
 ---
-title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘的快照 | Azure
-description: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（移动）到相同或不同的订阅
+title: 在相同或不同订阅中通过 PowerShell 复制托管磁盘的快照
+description: Azure PowerShell 脚本示例 - 将托管磁盘的快照复制（或移动）到同一或不同订阅
 services: virtual-machines-linux
 documentationcenter: storage
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/06/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 88f7b95ce340dfb9181d13a8782e5b1d33da2fd4
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 3278b7f164010a367051b3172aca8b660c9c131f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272869"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428353"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>在相同或不同订阅中通过 PowerShell 复制托管磁盘的快照
 

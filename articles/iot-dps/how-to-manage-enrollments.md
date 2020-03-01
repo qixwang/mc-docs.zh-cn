@@ -1,19 +1,20 @@
 ---
-title: 通过 Azure 门户管理设备注册 | Microsoft Docs
-description: 如何在 Azure 门户中管理设备预配服务的设备注册
+title: 在 Azure 门户中管理 Azure IoT 中心设备预配服务的设备注册
+description: 如何在 Azure 门户中管理设备预配服务 (DPS) 的设备注册
 author: wesmc7777
-ms.author: wesmc
-ms.date: 04/05/2018
+ms.author: v-tawe
+origin.date: 04/05/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d9965bcbcc512f98cae8057d9cca0a36805f523b
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: c4609bba50961e45eec0479aa12a178cfe2f3bfb
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389525"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494129"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何通过 Azure 门户管理设备注册
 
@@ -29,8 +30,8 @@ ms.locfileid: "74389525"
     执行以下步骤可在门户中为一组设备创建注册组。
 
   1. 登录 Azure 门户，单击左侧菜单中的“所有资源”。   
-  2. 从资源列表中单击要向其注册设备的设备预配服务。  
-  3. 在预配服务中：  
+  1. 从资源列表中单击要向其注册设备的设备预配服务。  
+  1. 在预配服务中：  
      a. 单击“管理注册”，然后选择“注册组”选项卡   。  
      b. 单击顶部的“添加”按钮  。  
      c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。   

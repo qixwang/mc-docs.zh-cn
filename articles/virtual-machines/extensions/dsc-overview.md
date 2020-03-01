@@ -1,5 +1,5 @@
 ---
-title: Azure Desired State Configuration 扩展处理程序简介 | Azure
+title: 适用于 Azure 的 Desired State Configuration 概述
 description: 了解如何使用 PowerShell Desired State Configuration (DSC) 的 Azure 扩展处理程序。 本文包括先决条件、体系结构和 cmdlet。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 origin.date: 05/02/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: e197f9a441cd5e9c9391a8027aaaa75753043064
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 3845034d32d216cb49121c1a002fc7953a5ff62f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831457"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428719"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -37,7 +37,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 本文提供有关两种方案的信息：使用 DSC 扩展进行自动化加入，以及使用 DSC 扩展作为工具，通过 Azure SDK 将配置分配给 VM。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - **本地计算机**：若要与 Azure VM 扩展交互，必须使用 Azure 门户或 Azure PowerShell SDK。
 - **来宾代理**：使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/azuredscexthistory)。
@@ -60,7 +60,7 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 - 如果已指定 **wmfVersion** 属性，除非该 WMF 版本与 VM 的 OS 不兼容，否则将安装该版本。
 - 如果未指定 **wmfVersion** 属性，则安装 WMF 的最新适用版本。
 
-安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof 文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
+安装 WMF 需要重启。 重启后，扩展将下载 **modulesUrl** 属性中指定的 .zip 文件（若已提供）。 如果此位置在 Azure Blob 存储中，则可以在 **sasToken** 属性中指定 SAS 令牌来访问该文件。 下载并解压缩 .zip 之后，将运行 **configurationFunction** 中定义的配置函数以生成 .mof（[托管对象格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)）文件。 扩展然后通过使用生成的 .mof 文件来运行 `Start-DscConfiguration -Force`。 扩展将捕获输出并将其写入 Azure 状态通道。
 
 ### <a name="default-configuration-script"></a>默认配置脚本
 
@@ -107,7 +107,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 有关资源管理器 DSC 扩展 cmdlet 的重要信息：
 
-- Azure 资源管理器 cmdlet 是同步的。
+- Azure Resource Manager cmdlet 是同步的。
 - *ResourceGroupName*、*VMName*、*ArchiveStorageAccountName*、*Version* 和 *Location* 都是必需的参数。
 - *ArchiveResourceGroupName* 是可选参数。 如果用户的存储帐户所属的资源组与创建 VM 的资源组不同，用户可以指定此参数。
 - 使用 **AutoUpdate** 开关可在有最新版本可用时将扩展处理程序自动更新为最新版本。 当发布了新版本的 WMF 时，此参数可能会导致 VM 重启。
@@ -116,7 +116,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 Azure DSC 扩展可在部署过程中使用 DSC 配置文档直接配置 Azure VM。 此步骤不会将节点注册到自动化。 不会集中管理节点。 
 
-下面是一个简单的配置示例。 以 IisInstall.ps1 为名称将配置保存在本地。
+下面是一个简单的配置示例。 在本地将配置保存为 iisInstall.ps1。
 
 ```powershell
 configuration IISInstall
@@ -132,7 +132,7 @@ configuration IISInstall
 }
 ```
 
-以下命令将 IisInstall.ps1 脚本放在指定的 VM 上。 这些命令还会执行配置，然后报告状态。
+以下命令将 iisInstall.ps1 脚本放在指定的 VM 上。 这些命令还会执行配置，然后报告状态。
 
 ```powershell
 $resourceGroup = 'dscVmDemo'

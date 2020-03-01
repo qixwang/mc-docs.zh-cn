@@ -7,18 +7,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 12/16/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 433416642b376b9b9a3c097115ce350f1b30f42a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 02/24/2020
+ms.openlocfilehash: af03d664b69750538c30195fff281c6812f85778
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631114"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428702"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
 > [!Important]
-> 使用网络安全组的[服务标记](hdinsight-service-tags.md)功能。 将仅为服务标记添加新区域，并且最终将弃用静态 IP 地址。
+> 在大多数情况下，现在可以对网络安全组使用[服务标记](hdinsight-service-tags.md)功能，而不是手动添加 IP 地址。 将仅为服务标记添加新区域，并且最终将弃用静态 IP 地址。
 
 如果使用网络安全组 (NSG) 或用户定义的路由 (UDR) 来控制流向 HDInsight 群集的入站流量，则必须确保群集能够与关键的 Azure 运行状况和管理服务通信。  这些服务的有些 IP 地址特定于区域，而有些则适用于所有 Azure 区域。 如果使用的不是自定义 DNS，则可能还需要允许来自 Azure DNS 服务的流量。
 
@@ -78,6 +78,7 @@ ms.locfileid: "75631114"
 | &nbsp; | 美国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 入站 |
 | &nbsp; | 美国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 入站 |
 | &nbsp; | 美国西部 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | 入站 |
+| &nbsp; | 阿拉伯联合酋长国北部 | 65.52.252.96</br>65.52.252.97 | \*:443 | 入站 |
 
 若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。
 

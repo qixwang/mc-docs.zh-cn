@@ -1,28 +1,57 @@
 ---
-title: Azure Active Directory B2C 的 Identity Experience Framework 架构的常规声明转换示例
-description: Azure Active Directory B2C 的 Identity Experience Framework 架构的常规声明转换示例。
+title: 自定义策略的常规声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的常规声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-origin.date: 08/27/2019
-ms.date: 09/17/2019
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 9c73d89a285e3acef978291d32a922f7dfb7309b
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.openlocfilehash: 98ecf2f3d0e573a6415c216e5312cee9761ff248
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083231"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531297"
 ---
 # <a name="general-claims-transformations"></a>常规声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 本文提供了有关在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架构的常规声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+
+## <a name="copyclaim"></a>CopyClaim
+
+将声明的值复制到另一个声明。 这两个声明的类型必须相同。
+
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string, int | 要复制的声明类型。 |
+| OutputClaim | outputClaim | string, int | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+
+使用此声明转换可以将字符串或数值声明中的值复制到另一个声明。 以下示例将 externalEmail 声明值复制到电子邮件声明。
+
+```XML
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputClaim**: bob@contoso.com
+- 输出声明：
+    -  outputClaim: bob@contoso.com 
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -31,7 +60,7 @@ ms.locfileid: "71083231"
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |任意 | 需要验证是否存在的输入声明。 |
-| OutputClaim | outputClaim | 布尔值 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 使用此声明转换检查声明是否存在或是否包含任何值。 返回值是指示声明是否存在的布尔值。 以下示例检查电子邮件地址是否存在。
 
@@ -59,9 +88,9 @@ ms.locfileid: "71083231"
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 纯文本 | string | 要加密的输入声明 |
+| InputClaim | 明文 | string | 要加密的输入声明 |
 | InputClaim | 加密盐 | string | 加密盐参数。 可以使用 `CreateRandomString` 声明转换创建随机值。 |
-| InputParameter | randomizerSecret | string | 指向现有的 Azure AD B2C **策略密钥**。 若要创建新策略密钥，请执行以下操作：在 Azure AD B2C 租户的**管理**下，选择 **Identity Experience Framework**。 选择“策略密钥”，以查看租户中的可用密钥。  选择“设置”  （应用程序对象和服务主体对象）。 对于“选项”，请选择“手动”   。 提供名称（可能会自动添加前缀 B2C_1A_  ）。 在“机密”  文本框中，输入要使用的任何机密，如 1234567890。 对于“密钥用法”，请选择“签名”   。 选择“创建”  。 |
+| InputParameter | randomizerSecret | string | 指向现有的 Azure AD B2C **策略密钥**。 若要创建新策略密钥，请执行以下操作：在 Azure AD B2C 租户的**管理**下，选择 **Identity Experience Framework**。 选择“策略密钥”，以查看租户中的可用密钥。  选择“添加”   。 对于“选项”，请选择“手动”   。 提供名称（可能会自动添加前缀 B2C_1A_  ）。 在“机密”  文本框中，输入要使用的任何机密，如 1234567890。 对于“密钥用法”，请选择“签名”   。 选择“创建”  。 |
 | OutputClaim | hash | string | 调用此声明转换后生成的 ClaimType。 在 `plaintext` inputClaim 中配置的声明。 |
 
 ```XML

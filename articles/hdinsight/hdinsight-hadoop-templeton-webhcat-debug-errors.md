@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/16/2018
-ms.date: 12/23/2019
+origin.date: 01/01/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3e7731d823e16971abdb2cf22dfcdf2abe361183
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: aeec523d14e3bfc32e2c47e0e1a66bcea43d953a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336165"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428705"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>了解和解决从 HDInsight 上的 WebHCat 收到的错误
 
@@ -34,13 +34,7 @@ ms.locfileid: "75336165"
 
 ## <a name="modifying-configuration"></a>修改配置
 
-> [!IMPORTANT]
-> 本文档中列出的几大错误之所以发生，是因为超出了配置的最大值。 当解决步骤提到可以更改一个值时，必须使用下列选项之一来执行更改：
-
-* 对于 **Windows** 群集：使用脚本操作在群集创建过程中配置值。 有关详细信息，请参阅[开发脚本操作](hdinsight-hadoop-script-actions-linux.md)。
-
-* 对于 **Linux** 群集：使用 Apache Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
-
+本文档中列出的几大错误之所以发生，是因为超出了配置的最大值。 当解决步骤提到你可以更改某个值时，请使用 Apache Ambari（Web 或 REST API）来修改该值。 有关详细信息，请参阅[使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
 ### <a name="default-configuration"></a>默认配置
 

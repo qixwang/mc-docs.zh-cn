@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 10/11/2019
-ms.date: 11/4/2019
+ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9eab6fb4e691fb619ddc13561a89a26eea4a7026
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 3b3ffe7bf211c6782d1d7b3cb727861053593e24
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116944"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497444"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>为 Python 应用程序设置 Azure Monitor（预览版）
 
@@ -103,7 +103,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将 `SpanData` 发出到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将 `SpanData` 发出到 Azure Monitor。 将连接字符串直接传入导出程序，或者可以在环境变量 `APPLICATIONINSIGHTS_CONNECTION_STRING` 中指定连接字符串。 根据以下代码示例修改上一步中的代码：
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -132,7 +132,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 
 4. 现在当你运行 Python 脚本时，系统仍会提示你输入值，但只有此值输出到 shell 中。 创建的 `SpanData` 将发送到 Azure Monitor。 可以在 `dependencies` 下找到发出的 span 数据。
 
-5. 有关 OpenCensus 中采样的详细信息，请参阅 [OpenCensus 中的采样](/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python)。
+5. 有关 OpenCensus 中采样的详细信息，请参阅 [OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
 
 6. 有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus [遥测关联](/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
@@ -189,7 +189,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将指标数据发出到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将指标数据发出到 Azure Monitor。 将连接字符串直接传入导出程序，或者可以在环境变量 `APPLICATIONINSIGHTS_CONNECTION_STRING` 中指定连接字符串。 根据以下代码示例修改上一步中的代码：
 
     ```python
     from datetime import datetime
@@ -273,7 +273,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     90
     ```
 
-3. 虽然输入值有助于演示，但最终我们希望将日志数据发出到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然输入值有助于演示，但最终我们希望将日志数据发出到 Azure Monitor。 将连接字符串直接传入导出程序，或者可以在环境变量 `APPLICATIONINSIGHTS_CONNECTION_STRING` 中指定连接字符串。 根据以下代码示例修改上一步中的代码：
 
     ```python
     import logging
@@ -332,9 +332,9 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
         main()
     ```
 
-6. 还可以将自定义维度添加到日志中。 它们会显示为 Azure Monitor 的 `customDimensions` 中的键值对。
+6. 还可以在 extra  关键字参数中使用 custom_dimensions 字段向日志消息添加自定义属性。 它们会显示为 Azure Monitor 的 `customDimensions` 中的键值对。
 > [!NOTE]
-> 要使此功能生效，需要将字典作为参数传递给日志，任何其他数据结构都会被忽略。 若要保留字符串格式，请将其存储在字典中，并将其作为参数传递。
+> 要使此功能起作用，需要将字典传递给 custom_dimensions 字段。 如果传递任何其他类型的参数，记录器将忽略它们。
 
     ```python
     import logging
@@ -346,7 +346,17 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     logger.addHandler(AzureLogHandler(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+
+    # Use properties in exception logs
+    try:
+        result = 1 / 0  # generate a ZeroDivisionError
+    except Exception:
+    logger.exception('Captured an exception.', extra=properties)
     ```
 
 7. 有关如何使用跟踪上下文数据扩充日志的详细信息，请参阅 OpenCensus Python [日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。

@@ -1,6 +1,6 @@
 ---
-title: 使用模板端到端运行作业 - Azure Batch | Microsoft Docs
-description: 使用模板文件和 Azure CLI 创建 Batch 池、作业和任务。
+title: 使用模板端到端运行作业 - Azure Batch
+description: 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。
 services: batch
 author: lingliw
 manager: digimobile
@@ -11,12 +11,12 @@ ms.workload: big-compute
 origin.date: 12/07/2018
 ms.date: 09/24/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e76495f687a0cedee219fc0f220fda011d0cd1fc
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: ed8108f736c41d4cf4737d0fe333943f0a3af8b8
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730551"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497398"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 

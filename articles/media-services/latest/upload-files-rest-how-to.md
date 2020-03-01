@@ -1,5 +1,5 @@
 ---
-title: 使用 REST 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs
+title: 使用 REST 将文件上传到 Azure 媒体服务 v3 帐户 | Microsoft Docs
 description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
 services: media-services
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.topic: article
 origin.date: 02/10/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 77f9b32d96ffebe0f4d077d6824277a1386b22e5
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: ddae3837eef58b6aeeb7671bfbc8ef6b9c8989ac
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125542"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494463"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
+# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 将文件上传到媒体服务 v3 帐户
 
 在媒体服务中，可以将数字文件上传到与资产关联的 blob容器中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 将文件上传到资产的容器中后，相关内容即安全地存储在云中供后续处理和流式传输。
 
 本文介绍如何使用 REST 上传本地文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本主题中所述的步骤，必须：
 

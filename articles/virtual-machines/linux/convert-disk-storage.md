@@ -1,19 +1,19 @@
 ---
-title: 将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型 | Azure
+title: 在标准和高级 SSD 之间转换托管磁盘存储
 description: 如何使用 Azure CLI 将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型。
 author: rockboyfor
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 origin.date: 07/12/2018
-ms.date: 09/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 098a553bcc500f187bd52061eea9dac845377f28
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.openlocfilehash: 0d2c9401c515d9d7d1c3195e53d75d64c6768839
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921249"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428659"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型
 
@@ -24,7 +24,7 @@ Azure 托管磁盘有三种磁盘类型：高级 SSD、标准 SSD 和标准 HDD�
 
 非托管磁盘不支持此功能。 但是，可以轻松[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，然后即可切换磁盘类型。
 
-本文介绍如何使用 Azure CLI 将托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。 若要安装或升级 CLI 工具，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。
+本文介绍如何使用 Azure CLI 将托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。 若要安装或升级 CLI 工具，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 <!--Not Available on  You are not yet able to switch from or to an ultra SSD, you must deploy a new one.-->
 

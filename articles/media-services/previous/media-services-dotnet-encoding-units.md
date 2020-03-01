@@ -1,6 +1,6 @@
 ---
 title: 通过添加编码单元缩放媒体处理 - Azure |  Microsoft Docs
-description: 了解如何使用 .NET 添加编码单元
+description: 本文演示如何使用 Azure 媒体服务 .NET 添加编码单元。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: milangada
-ms.openlocfilehash: 78e20bec903f42c707b64e88f353c6a80c7a0f0c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: db5f51efaf7511510e25a3c02505fa387e21be86
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124389"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494440"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 缩放编码
 > [!div class="op_single_selector"]
@@ -50,6 +50,10 @@ ms.locfileid: "71124389"
     encodingS1ReservedUnit.Update();
 
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+
+## <a name="opening-a-support-ticket"></a>开具支持票证
+
+默认情况下，每个媒体服务帐户最多可缩放到 10 S2 或 S3 个媒体预留单位 (MRU) 或 25 S1 个 MRU 和 5 个按需流式处理预留单位。 可以通过开具支持票证申请更高的限制。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -9,15 +9,15 @@ manager: jeconnoc
 ms.author: v-yiso
 origin.date: 08/30/2019
 ms.topic: article
-ms.date: 12/23/2019
+ms.date: 02/24/2020
 ms.reviewer: klam, divswa, LADocs
 tags: connectors
-ms.openlocfilehash: cb55f2ff642dbca79942749ddde070c578552418
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ac9a38b53a9a1d880299134f6af59f2626954bb0
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336309"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428261"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -42,7 +42,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要按本文中的步骤操作，需准备好以下各项：
 
@@ -112,11 +112,11 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 1. 在搜索框中，输入“sap”作为筛选器。 在“操作”列表中选择“将消息发送到 SAP”。  
   
-   ![选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   ![选择“向 SAP 发送消息”操作](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
-   如果不执行搜索，可以选择“企业”选项卡，然后选择 SAP 操作。 
+   也可以选择“企业”选项卡，然后选择 SAP 操作。 
 
-   ![在“企业”选项卡中选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![从“企业”选项卡选择“向 SAP 发送消息”操作](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
 1. 如果连接已存在，请继续下一步，以便可以设置 SAP 操作。 但是，如果系统提示输入连接详细信息，请提供该信息，以便立即创建到本地 SAP 服务器的连接。
 
@@ -212,9 +212,11 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 1. 发送 HTTP 请求之后，等待逻辑应用返回响应。
 
    > [!NOTE]
-   > 如果未在[请求超时限制](./logic-apps-limits-and-config.md)所规定的时间内完成响应所需的所有步骤，逻辑应用可能会超时。 如果发生这种情况，请求可能会被阻止。 为了诊断问题，请了解如何[检查和监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)。
+   > 如果未在[请求超时限制](./logic-apps-limits-and-config.md)所规定的时间内完成响应所需的所有步骤，逻辑应用可能会超时。 如果发生这种情况，请求可能会被阻止。 为了诊断问题，请了解如何[检查和监视逻辑应用](../logic-apps/monitor-logic-apps.md)。
 
 现已创建一个可与 SAP 服务器通信的逻辑应用。 为逻辑应用设置 SAP 连接后，可以探索其他可用的 SAP 操作，例如 BAPI 和 RFC。
+
+<a name="receive-from-sap"></a>
 
 ## <a name="receive-message-from-sap"></a>从 SAP 接收消息
 

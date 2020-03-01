@@ -11,20 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 11/05/2019
+origin.date: 01/08/2020
 ms.author: v-yiso
-ms.date: 12/09/2019
-ms.openlocfilehash: 03b232b8f3fca3e28cd711b1b9a37e8c87941ccc
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.date: 02/24/2020
+ms.openlocfilehash: 391e265e241823fff39aff7a6ace14dd475d48b6
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657702"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428629"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或响应 API 时按顺序执行。 可以使用文字文本值、策略表达式和命名值构造策略语句。 
 
-每个 API 管理服务实例都有一个属性集合，其中包含对服务实例来说属于全局性的键值对（称为“命名值”）。 没有对集合中的项数施加限制。 命名值可以用来管理所有 API 配置和策略的常量字符串值。 每个命名值可能有以下属性：
+每个 API 管理服务实例都有一组键/值对（称为“命名值”），它们是服务实例的全局值。 没有对集合中的项数施加限制。 命名值可以用来管理所有 API 配置和策略的常量字符串值。 每个命名值可能有以下属性：
 
 | 属性      | 类型            | 说明                                                                                                                         |
 | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -37,11 +37,14 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 命名值可以包含文本字符串和[策略表达式](/api-management/api-management-policy-expressions)。 例如，`Expression` 的值是一个策略表达式，其返回的字符串包含当前日期和时间。 命名值 `Credential` 被标记为机密，因此默认情况下未显示其值。
 
-| Name       | Value                      | Secret | Tags          |
+| 名称       | Value                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Value      | 42                         | False  | vital-numbers |
 | 凭据 | ••••••••••••••••••••••     | True   | security      |
 | 表达式 | @(DateTime.Now.ToString()) | False  |               |
+
+> [!NOTE]
+> 可以使用 [Azure 密钥保管库](/key-vault/)服务中存储的值，而不是 API 管理服务中存储的命名值，如此[示例](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)所示。
 
 ## <a name="to-add-and-edit-a-named-value"></a>添加和编辑命名值
 

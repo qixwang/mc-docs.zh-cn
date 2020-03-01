@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/31/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7b0832b19b3a12baea62410fe428689bfee64f99
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 7b893b02c7ec734de2d0104cf338ad00e283f9c7
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272488"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428713"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>将本地 AlwaysOn 可用性组扩展到 Azure
 AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性。 在发生故障时，可以使用这些副本来故障转移数据库。 此外，它们还可用于卸载读取工作负荷或备份任务。
@@ -34,13 +34,13 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
 * 本地网络和 Azure 虚拟网络之间的连接。 有关创建此虚拟网络的详细信息，请参阅[使用 Azure 门户（经典）创建站点到站点连接](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)。
 
 > [!IMPORTANT] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Azure 建议大多数新部署使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Azure 建议大多数新部署使用 Resource Manager 模型。
 
 ## <a name="add-azure-replica-wizard"></a>添加 Azure 副本向导
 本部分演示如何使用“添加 Azure 副本向导”  来扩展 AlwaysOn 可用性组解决方案，使其包括 Azure 副本。
 
 > [!IMPORTANT]
-> “添加 Azure 副本向导”  仅支持使用经典部署模型创建的虚拟机。 新的 VM 部署应使用较新的 Resource Manager 模型。 如果将 VM 用于 Resource Manager，则必须使用 Transact-SQL 命令（此处未显示）手动添加辅助 Azure 副本。 此向导不适用于 Resource Manager 方案。
+> “添加 Azure 副本向导”  仅支持使用经典部署模型创建的虚拟机。 新的 VM 部署应使用较新的 Resource Manager 模型。 如果将 VM 用于资源管理器，则必须使用 Transact-SQL 命令（此处未显示）手动添加辅助 Azure 副本。 此向导不适用于 Resource Manager 方案。
 
 1. 在 SQL Server Management Studio 中，展开“AlwaysOn 高可用性”   > “可用性组”   > “[可用性组的名称]”  。
 2. 右键单击“可用性副本”  ，并单击“添加副本”  。
@@ -72,7 +72,7 @@ AlwaysOn 可用性组通过添加辅助副本为数据库组提供高可用性�
     
 8. 单击“确定”  验证部署设置。
 9. 接下来显示法律条款。 阅读这些条款，如果同意，请单击“确定”  。
-10. 此时会再次显示“指定副本”  页。 在“副本”  、“终结点”  和“备份首选项”  选项卡上验证新 Azure 副本的设置。 修改设置，使其符合业务需求。  有关这些选项卡包含的参数的详细信息，请参阅[“指定副本”页（新建可用性组向导/添加副本向导）](https://msdn.microsoft.com/library/hh213088.aspx)。请注意，对于包含 Azure 副本的可用性组，无法使用“侦听器”选项卡创建侦听器。 此外，如果侦听器在启动向导之前已经创建，将收到一条消息，指示 Azure 不支持此功能。 在“创建可用性组侦听器”  部分中，我们将探讨如何创建侦听器。
+10. 此时会再次显示“指定副本”  页。 在“副本”  、“终结点”  和“备份首选项”  选项卡上验证新 Azure 副本的设置。 修改设置，使其符合业务需求。  有关这些选项卡包含的参数的详细信息，请参阅[“指定副本”页（新建可用性组向导/添加副本向导）](https://msdn.microsoft.com/library/hh213088.aspx)。请注意，对于包含 Azure 副本的可用性组，无法使用“侦听器”选项卡创建侦听器。 此外，如果侦听器在启动向导之前已经创建，将收到一条消息，指示 Azure 不支持此功能。 在“创建可用性组侦听器”  部分中，我们探讨如何创建侦听器。
 
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. 单击“下一步”  。

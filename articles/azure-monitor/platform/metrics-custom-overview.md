@@ -9,12 +9,12 @@ origin.date: 09/09/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 6871832a51646bac4882ffcb3bbadb3455488ee5
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 70bf99b9cfe5dbcd2042b955d76ea47d58644969
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982126"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497632"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -58,9 +58,9 @@ ms.locfileid: "74982126"
 发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间
-命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，可以使用名为 **ContosoMemoryMetrics** 的命名空间来跟踪用于分析应用的内存用量指标， 并使用名为 **ContosoAppTransaction** 的另一个命名空间来跟踪有关应用程序中用户事务的所有指标。
+命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，可以使用名为 **contosomemorymetrics** 的命名空间来跟踪用于分析应用的内存用量指标， 并使用名为 **contosoapptransaction** 的另一个命名空间来跟踪有关应用程序中用户事务的所有指标。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名称
 “名称”是正在报告的指标的名称。  通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。 
 
 ### <a name="dimension-keys"></a>维度键

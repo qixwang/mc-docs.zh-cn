@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux 诊断扩展监视指标和日志 | Azure
+title: Azure 计算 - Linux 诊断扩展
 description: 如何配置 Azure Linux 诊断扩展 (LAD)，以收集 Azure 中运行的 Linux VM 的指标和日志事件。
 services: virtual-machines-linux
 author: rockboyfor
@@ -8,14 +8,14 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 12/13/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b4484c8630da71cf33b75d4a648790b5f3ba130
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: b0fedf659231727a7499b745e35293444fa28a19
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831449"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428924"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -31,7 +31,7 @@ Linux 诊断扩展可帮助用户监视 Azure 上运行的 Linux VM 的运行状
 * 从 VM 收集系统性能指标，并存储在指定存储帐户中的特定表中。
 * 从 syslog 检索日志事件，并存储在指定存储帐户中的特定表中。
 * 让用户能够自定义收集并上传的数据指标。
-* 让用户能够自定义要收集和上传的事件的 syslog 辅助参数和严重性级别。
+* 让用户能够自定义收集和上传的事件的 syslog 辅助参数和严重性级别。
 * 让用户能够将指定日志文件上传到指定的存储表。
 * 支持将指标和日志事件发送到指定存储帐户中的任意 EventHub 终结点和 JSON 格式的 blob。
 
@@ -48,9 +48,9 @@ Linux 诊断扩展可帮助用户监视 Azure 上运行的 Linux VM 的运行状
 * 捕获 LAD 2.3 允许的默认 syslog 收集；
 * 允许 Azure 门户体验，以便对 VM 指标进行制图以及就其发送警报。
 
-可下载配置只是一个示例；请对其进行修改以适应你的需求。
+可下载配置只是一个示例；请根据需要对其进行修改。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * Azure Linux 代理 2.2.0 版或更高版本  。 大部分 Azure VM Linux 库映像包含 2.2.7 或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 环境。
@@ -98,6 +98,85 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 
 示例配置的 URL 及其内容可能会有所更改。 下载门户设置 JSON 文件的副本，并根据需要进行自定义。 构造的任何模板或自动化应使用自己的副本，而不是每次下载该 URL。
 
+#### <a name="powershell-sample"></a>PowerShell 示例
+
+```Powershell
+// Set your Azure VM diagnostics variables correctly below - don't forget to replace the VMResourceID
+
+$SASKey = '<SASKeyForDiagStorageAccount>'
+
+$ladCfg = "{
+'diagnosticMonitorConfiguration': {
+'performanceCounters': {
+'sinks': 'WADMetricEventHub,WADMetricJsonBlob',
+'performanceCounterConfiguration': [
+{
+'unit': 'Percent',
+'type': 'builtin',
+'counter': 'PercentProcessorTime',
+'counterSpecifier': '/builtin/Processor/PercentProcessorTime',
+'annotation': [
+{
+'locale': 'en-us',
+'displayName': 'Aggregate CPU %utilization'
+}
+],
+'condition': 'IsAggregate=TRUE',
+'class': 'Processor'
+},
+{
+'unit': 'Bytes',
+'type': 'builtin',
+'counter': 'UsedSpace',
+'counterSpecifier': '/builtin/FileSystem/UsedSpace',
+'annotation': [
+{
+'locale': 'en-us',
+'displayName': 'Used disk space on /'
+}
+],
+'condition': 'Name='/'',
+'class': 'Filesystem'
+}
+]
+},
+'metrics': {
+'metricAggregation': [
+{
+'scheduledTransferPeriod': 'PT1H'
+},
+{
+'scheduledTransferPeriod': 'PT1M'
+}
+],
+'resourceId': '<VMResourceID>'
+},
+'eventVolume': 'Large',
+'syslogEvents': {
+'sinks': 'SyslogJsonBlob,LoggingEventHub',
+'syslogEventConfiguration': {
+'LOG_USER': 'LOG_INFO'
+}
+}
+}
+}"
+$ladCfg = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($ladCfg))
+$perfCfg = "[
+{
+'query': 'SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'',
+'table': 'LinuxCpu',
+'frequency': 60,
+'sinks': 'LinuxCpuJsonBlob'
+}
+]"
+
+// Get the VM Resource
+Get-AzureRmVM -ResourceGroupName <RGName> -VMName <VMName>
+
+// Finally tell Azure to install and enable the extension
+Set-AzureRmVMExtension -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -ResourceGroupName <RGName> -VMName <VMName> -Location <Location> -Name LinuxDiagnostic -Settings @{'StorageAccount'='<DiagStorageAccount>'; 'sampleRateInSeconds' = '15' ; 'ladCfg'=$ladCfg; 'perfCfg' = $perfCfg} -ProtectedSettings @{'storageAccountName' = '<DiagStorageAccount>'; 'storageAccountSasToken' = $SASKey } -TypeHandlerVersion 3.0
+```
+
 ### <a name="updating-the-extension-settings"></a>更新扩展设置
 
 更改“受保护”或“公开”设置后，通过运行相同的命令将其部署到 VM。 如果设置中有任何变化，更新的设置将发送到扩展。 LAD 将重载配置并自行重启。
@@ -134,7 +213,7 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 }
 ```
 
-Name | Value
+名称 | Value
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure 中国中的存储帐户，请使用 `https://core.chinacloudapi.cn` 相应地设置此值。
@@ -207,7 +286,7 @@ Linux 诊断扩展 3.0 版支持两种接收器类型：EventHub 和 JsonBlob。
 https://contosohub.servicebus.chinacloudapi.cn/syslogmsgs?sr=contosohub.servicebus.chinacloudapi.cn%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-有关为事件中心生成 SAS 令牌的详细情况，请参阅[此网页](../../event-hubs/event-hubs-authentication-and-security-model-overview.md)。
+有关为事件中心生成和检索 SAS 令牌信息的详细信息，请参阅[此网页](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob 接收器
 
@@ -324,9 +403,9 @@ type | 标识指标的实际提供程序。
 class | 与“counter”一起标识提供程序的命名空间中的特定指标。
 counter | 与“class”一起标识提供程序的命名空间中的特定指标。
 counterSpecifier | 标识 Azure Metrics 命名空间中的特定指标。
-条件 | （可选）选择指标适用对象的特定实例，或选择该对象所有实例的聚合。 有关详细信息，请参阅 `builtin` 指标定义。
+condition | （可选）选择指标适用对象的特定实例，或选择该对象所有实例的聚合。 有关详细信息，请参阅 `builtin` 指标定义。
 sampleRate | IS 8601 时间间隔，用于设置收集此指标原始样本的速率。 如果未设置，则收集时间间隔由 [sampleRateInSeconds](#ladcfg) 的值设置。 支持的最短采样率为 15 秒 (PT15S)。
-unit | 应为以下字符串之一：“Count”、“Bytes”、“Seconds”、“Percent”、“CountPerSecond”、“BytesPerSecond”、“Millisecond”。 定义指标的单位。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 将忽略此字段。
+unit | 应为以下字符串之一：“Count”、“Bytes”、“Seconds”、“Percent”、“CountPerSecond”、“BytesPerSecond”、“Millisecond”。 定义指标的单位。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 会忽略此字段。
 displayName | Azure Metrics 中要附加到此数据的标签（使用由相关区域设置指定的语言）。 LAD 会忽略此字段。
 
 counterSpecifier 是一个任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 counterSpecifier 作为标识指标或指标实例的“关键字”。 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 counterSpecifier 值。 如果要收集指标的特定实例，建议将该实例的标识符附加到 counterSpecifier 值。 下面是一些示例：
@@ -618,8 +697,8 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 ```json
 {
   "StorageAccount": "yourdiagstgacct",
-  "sampleRateInSeconds": 15,
   "ladCfg": {
+    "sampleRateInSeconds": 15,
     "diagnosticMonitorConfiguration": {
       "performanceCounters": {
         "sinks": "MyMetricEventHub,MyJsonMetricsBlob",
@@ -717,7 +796,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 ![图像](./media/diagnostics-linux/stg_explorer.png)
 
-请参阅相关 [ EventHubs 文档](../../event-hubs/event-hubs-what-is-event-hubs.md)，了解如何使用发布到 EventHubs 终结点的消息。
+请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-what-is-event-hubs.md)，了解如何使用发布到 EventHubs 终结点的消息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -725,4 +804,4 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 * 为指标创建[监控图表](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 * 了解如何使用指标[创建虚拟机规模集](../linux/tutorial-create-vmss.md)以控制自动缩放。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

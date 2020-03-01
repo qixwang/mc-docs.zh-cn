@@ -1,5 +1,5 @@
 ---
-title: Azure VM 上的 Windows 重启循环 | Azure
+title: Azure VM 上的 Windows 重启循环
 description: 了解如何对 Windows 重启循环进行故障排除 | Azure
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/15/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6da86eff91da85977c8665afdc30fcd643cc3b25
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 1c621857f0e3593905b46a30f8e659839fd580d2
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116930"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428847"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 上的 Windows 重启循环
 本文介绍在 Azure 中的 Windows 虚拟机 (VM) 上可能遇到的重启循环。
@@ -87,7 +87,7 @@ ms.locfileid: "74116930"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. 选择 BROKENSYSTEM 键，然后选择菜单中的“文件” > “加载配置单元”    。
+13. 选择 BROKENSYSTEM 项，然后从菜单中选择“文件” > “卸载配置单元”    。
 
 14. 从故障排除 VM 中分离 OS 磁盘。
 
@@ -115,4 +115,4 @@ ms.locfileid: "74116930"
 
 5. [从 OS 磁盘创建新的 VM](../windows/create-vm-specialized.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

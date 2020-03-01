@@ -1,21 +1,21 @@
 ---
 title: 搜索 Azure Cosmos DB 数据
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 认知搜索中抓取 Azure Cosmos DB 数据源并通过全文可搜索索引引入数据。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
+description: 将 Azure Cosmos DB 中的数据导入 Azure 认知搜索中的可搜索索引。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
 author: mgottein
 manager: nitinme
 ms.author: v-tawe
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 24d13df39dced5cc660850fe1ce416c98a640471
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+origin.date: 01/02/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: e3f726b3b7005e26b4c6d3ce699e65091ff67488
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123171"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501415"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 池创建事件 | Azure
-description: Batch 池创建事件参考。
+title: Azure Batch 池创建事件
+description: Batch 池创建事件（在池创建后发出）的参考。 日志内容会公开有关池的常规信息。
 services: batch
 author: lingliw
 manager: digimobile
@@ -12,12 +12,12 @@ ms.workload: big-compute
 origin.date: 04/20/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 14e1d3fcddc109d74fe72673d7cb97d878c2dc48
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: f8be652bed2c03fec2c0ac8ce5e777df1301dc2a
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839000"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497387"
 ---
 # <a name="pool-create-event"></a>池创建事件
 

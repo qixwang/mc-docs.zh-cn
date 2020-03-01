@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 02/05/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6b2c7520b6deabe9939e8a29f2f030960cfaecaf
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 782ec7dc9adc3eaf9368849b2973a18d88c99cbb
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730547"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497597"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
@@ -29,7 +29,7 @@ ms.locfileid: "73730547"
 | 日志查询 |创建将返回计算机列表的日志查询。 |
 | 日志搜索 API |使用日志搜索 API 基于日志查询结果以编程方式创建计算机组。 |
 | Active Directory |自动扫描属于 Active Directory 域成员的任何代理计算机的组成员身份，并在 Azure Monitor 中为每个安全组创建一个组。 （仅限 Windows 计算机）|
-| 配置管理器 | 从 System Center Configuration Manager 中导入集合并在 Azure Monitor 中为每个集合创建一个组。 |
+| 配置管理器 | 从 Microsoft Endpoint Configuration Manager 中导入集合并在 Azure Monitor 中为每个集合创建一个组。 |
 | Windows Server Update Services |为目标组自动扫描 WSUS 服务器或客户端，并在 Azure Monitor 中为每个组创建一个组。 |
 
 ### <a name="log-query"></a>日志查询
@@ -51,7 +51,7 @@ ms.locfileid: "73730547"
 
 | 属性 | 说明 |
 |:---|:---|
-| Name   | 要在门户中显示的查询名称。 |
+| 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
 | Category       | 用于在门户中对查询进行组织的类别。 |
 
@@ -77,7 +77,7 @@ ms.locfileid: "73730547"
 
 导入组后时，菜单将列出检测到组成员身份的计算机数以及导入的组数。  可以单击任一链接以返回包含此信息的 **ComputerGroup** 记录。
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
+### <a name="configuration-manager"></a>配置管理器
 当配置 Azure Monitor 来导入 Configuration Manager 集合成员身份时，它将为每个集合创建计算机组。  每隔 3 小时会检索一次集合成员身份信息，以使计算机组保持最新。 
 
 必须[将 Configuration Manager 连接到 Azure Monitor](collect-sccm.md) 才能导入 Configuration Manager 集合。  

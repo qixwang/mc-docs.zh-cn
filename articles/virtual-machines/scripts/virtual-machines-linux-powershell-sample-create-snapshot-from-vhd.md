@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 从 VHD 创建快照，在短时间内创建多个相同的托管磁盘 | Azure
-description: Azure PowerShell 脚本示例 - 从 VHD 创建快照，在短时间内创建多个相同的托管磁盘
+title: 使用 PowerShell 从 VHD 创建快照，在短时间内创建多个相同的托管磁盘
+description: Azure PowerShell 脚本示例 - 从 VHD 创建快照以在短时间内创建多个相同的托管磁盘
 services: virtual-machines-linux
 documentationcenter: storage
 author: rockboyfor
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/05/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 52a6aed4ff2c36e25f2009647f952e66337ace13
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 1f8b0a4ad4a4496a6ff82edb19418b7012a3f99c
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116912"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428862"
 ---
 # <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>使用 PowerShell 从 VHD 创建快照，在短时间内创建多个相同的托管磁盘
 

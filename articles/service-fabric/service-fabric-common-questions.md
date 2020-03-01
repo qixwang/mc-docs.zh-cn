@@ -1,16 +1,16 @@
 ---
 title: 有关 Azure Service Fabric 的常见问题
-description: 有关 Service Fabric 的常见问题及其回答
+description: 有关 Service Fabric 的常见问题解答，包括功能、用例和常见方案。
 ms.topic: troubleshooting
 origin.date: 08/18/2017
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 19b5e27ef3a2ed36ccc367723e24181c9903788f
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 81e951bb1aa1648ad117e1c23d8ae21d62db3850
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742353"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539982"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 常见问题
 
@@ -187,5 +187,4 @@ Reliable Services 通常已分区，因此，存储量仅受限于群集中的�
 
 了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)
 
-<!--REPEAT THE DUPILICATED CONTENT OF  URL and contents on global site-->
-<!--Update_Description: update meta properties, wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

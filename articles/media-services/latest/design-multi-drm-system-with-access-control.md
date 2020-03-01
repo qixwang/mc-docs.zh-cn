@@ -1,6 +1,6 @@
 ---
-title: 设计带访问控制的多 DRM 内容保护系统 - Azure 媒体服务 | Microsoft 文档
-description: 了解如何为 Microsoft 平滑流式处理客户端移植工具包授权。
+title: 多 DRM 内容保护系统 - Azure 媒体服务 v3
+description: 本文详细说明了如何使用 Azure 媒体服务设计多 DRM 内容保护系统。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 12/21/2018
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 91d446c90aa6f17da9e5eb84faee3ae7f0b623f1
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: b80d803ef798ce3eaccfd682693670889a505b10
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125615"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494504"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -213,7 +213,7 @@ DRM 子系统可能包含以下组件：
 
 有关 Azure AD 的信息：
 
-* 可以在 [Azure Active Directory 开发人员指南](../../active-directory/develop/v1-overview.md)中找到面向开发人员的信息。
+* 可以在 [Azure Active Directory 开发人员指南](../../active-directory/develop/v2-overview.md)中找到面向开发人员的信息。
 * 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-administer.md)中找到面向管理员的信息。
 
 ### <a name="some-issues-in-implementation"></a>实现中的一些问题

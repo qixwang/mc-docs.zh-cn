@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: b6eaad765bbd9badf30500abf92aac8d68e84a3d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: 789ca688d310223c3f65193903d344f0f33af173
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336521"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501444"
 ---
 # <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>教程：使用 Azure 认知搜索索引器以 C# 导入 Azure SQL 数据库
 
@@ -34,7 +34,7 @@ ms.locfileid: "75336521"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门使用以下服务、工具和数据。 
 
@@ -160,7 +160,7 @@ public string HotelName { get; set; }
 
 主程序包含用于创建客户端、索引、数据源和索引器的逻辑。 此代码检查是否存在同一名称的资源，如果存在则会将其删除，所依据的假设是此程序可能多次运行。
 
-数据源对象是使用特定于 Azure SQL 数据库资源的设置配置的，这些设置包括用来利用 Azure SQL 内置[更改检测功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)的[增量索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)。 Azure SQL 中的 hotels 演示数据库包含一个名为 **IsDeleted** 的“软删除”列。 如果在数据库中将此列设置为 true，则索引器会从 Azure 认知搜索索引中删除相应的文档。
+数据源对象配置了特定于 Azure SQL 数据库资源的设置，包括[部分索引](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以利用 Azure SQL 的内置[更改检测功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 Azure SQL 中的 hotels 演示数据库包含一个名为 **IsDeleted** 的“软删除”列。 如果在数据库中将此列设置为 true，则索引器会从 Azure 认知搜索索引中删除相应的文档。
 
   ```csharp
   Console.WriteLine("Creating data source...");

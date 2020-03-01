@@ -1,19 +1,17 @@
 ---
 title: 排查常见错误
-description: 了解如何排查使用 Azure Resource Graph 查询 Azure 资源时出现的问题
+description: 了解如何通过各种 SDK 排查使用 Azure Resource Graph 查询 Azure 资源时出现的问题。
 author: DCtheGeek
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 10/18/2019
-ms.date: 11/04/2019
+ms.date: 03/02/2020
 ms.topic: troubleshooting
-ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 0fbea1c804cce01f0afc3c8bcff9377018d17492
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: b15679807962612badf77376177d8ed86176b7fa
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914500"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494550"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>排查使用 Azure Resource Graph 时出现的错误
 
@@ -29,7 +27,7 @@ ms.locfileid: "72914500"
 
 #### <a name="issue"></a>问题
 
-有权访问 1000 个以上的订阅（包括具有 Azure Lighthouse 的跨租户订阅）的客户无法通过单次调用 Azure Resource Graph 来提取所有订阅中的数据。
+有权访问 1000 个以上订阅的客户无法通过单次调用 Azure Resource Graph 来提取所有订阅中的数据。
 
 #### <a name="cause"></a>原因
 
@@ -75,6 +73,7 @@ Azure Resource Graph REST API 仅支持 **application/json** 的 `Content-Type`�
 #### <a name="resolution"></a>解决方法
 
 验证用于查询 Azure Resource Graph 的工具或代理是否为 **application/json** 配置了 REST API 标头 `Content-Type`。
+
 ### <a name="rest-403"></a>场景：对列表中的所有订阅没有读取权限
 
 #### <a name="issue"></a>问题
@@ -93,5 +92,5 @@ Azure Resource Graph REST API 仅支持 **application/json** 的 `Content-Type`�
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-- 如需更多帮助，可以提交 Azure 支持事件。 转到 [Azure 支持站点](https://support.azure.cn/zh-cn/support/contact)。
+- 通过 [Azure 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs)获取 Azure 专家的解答。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/contact)并选择“与我们联系”  。

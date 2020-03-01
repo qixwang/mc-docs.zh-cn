@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 08/26/2019
-ms.date: 11/04/2019
+ms.date: 02/24/2020
 ms.author: apimpm
-ms.openlocfilehash: cd90b1d061cd17a583de568a4ef14d1aa05d3ca4
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 13338d4a8a212dfd032dd0dd5953c864bf87deb8
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913258"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428633"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -89,6 +89,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
   ...
 }
 ```
+
+API 管理对 VPN 外部的连接使用公共 IP 地址，对 VPN 内的连接使用专用 IP 地址。
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>“消耗”层 API 管理服务的 IP 地址
 

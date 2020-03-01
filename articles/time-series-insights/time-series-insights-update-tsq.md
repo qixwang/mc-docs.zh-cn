@@ -2,21 +2,20 @@
 title: 预览版数据查询 - Azure 时序见解 | Microsoft Docs
 description: Azure 时序见解预览版中的数据查询概念和 HTTP REST API 概述。
 author: deepakpalled
-ms.author: v-yiso
-ms.workload: big-data
+ms.author: v-junlch
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-origin.date: 12/16/2019
-ms.date: 01/20/2020
+ms.date: 02/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1001e4334a6c5b3533746d993a4770fcd222c1f6
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 656b4b23e93b6e3da97fa812eca49c7303a3ab32
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068051"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494435"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据查询
 
@@ -33,7 +32,7 @@ ms.locfileid: "77068051"
 
 支持以下核心 API。
 
-[![时序查询概述](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[![时序查询概述](./media/v2-update-tsq/tsq.png)](./media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>环境 API
 
@@ -75,7 +74,5 @@ ms.locfileid: "77068051"
 
 - 详细了解 Azure 时序见解预览版中的[存储和流入量](./time-series-insights-update-storage-ingress.md)。
 - 阅读 Azure 时序见解预览版[数据建模](./time-series-insights-update-tsm.md)一文。
-
 - 发现[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。
-<!-- Images -->
-[1]: media/v2-update-tsq/tsq.png
+

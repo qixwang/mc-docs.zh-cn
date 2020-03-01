@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/17/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 98c87cad917232e4663987c6a1f63f63af3abcdf
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 0170f2c0924cacf90fe848a60d746c515af584b4
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75853491"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497590"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 
@@ -31,7 +31,8 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 4. 在 Azure 数据中心，磁盘上的数据将复制到 Azure 存储帐户。
 5. Azure 备份将备份数据从存储帐户复制到恢复服务保管库，并计划增量备份。
 
-## <a name="supported-configurations"></a>支持的配置 
+## <a name="supported-configurations"></a>支持的配置
+
 以下 Azure 备份功能或工作负荷支持使用脱机备份。
 
 > [!div class="checklist"]
@@ -74,25 +75,34 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ![导入屏幕](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. 选择选项“使用我自己的磁盘传输”  。
+
+    >[!NOTE]
+    >我们建议使用“Azure Data Box”选项脱机传输初始备份数据。 此选项通过提供 Microsoft 专有、安全且防篡改的 Azure Data Box 设备（MARS 代理可以直接向其写入备份数据），节省了购买自己的 Azure 兼容磁盘所需的工作量。
+
+3. 单击“下一步”  并仔细填写输入内容：
+
+    ![输入磁盘详细信息](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    输入的说明如下：
 
     * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
     * **Azure 资源管理器存储帐户**：任一 Azure 订阅中的资源管理器类型存储帐户（常规用途 v1 或常规用途 v2）的名称。
     * **Azure 存储容器**：Azure 存储帐户中目标存储 Blob 的名称，在备份数据复制到恢复服务保管库之前将其导入该账户。
     * **Azure 订阅 ID**：在其中创建了 Azure 存储帐户的 Azure 订阅的 ID。
-    * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。 
+    * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。
   
    在屏幕上提供输入，然后单击“下一步”。  保存提供的“暂存位置”和“Azure 导入作业名称”值，因为准备磁盘时需要使用这些信息   。
 
-2. 根据提示登录到 Azure 订阅。 只有在登录后，Azure 备份才能创建 Azure Active Directory 应用程序，并提供所需的权限来访问 Azure 导入服务。
+4. 根据提示登录到 Azure 订阅。 只有在登录后，Azure 备份才能创建 Azure Active Directory 应用程序，并提供所需的权限来访问 Azure 导入服务。
 
-    ![立即备份](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![立即备份](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. 完成工作流，然后在 Azure 备份代理控制台中单击“立即备份”。 
+5. 完成工作流，然后在 Azure 备份代理控制台中单击“立即备份”。 
 
     ![立即备份](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. 在向导的“确认”页上，单击“备份”。  初始备份将写入到设置过程中指定的暂存区域。
+6. 在向导的“确认”页上，单击“备份”。  初始备份将写入到设置过程中指定的暂存区域。
 
    ![确认已准备好立即备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -103,17 +113,17 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>准备 SATA 驱动器并寄送到 Azure
 *AzureOfflineBackupDiskPrep* 实用工具会准备送到最近 Azure 数据中心的 SATA 驱动器。 Azure 备份代理安装目录中提供了此实用工具（路径如下）：
 
-   *\Microsoft Azure Recovery Services Agent\Utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. 请转到该目录，将 **AzureOfflineBackupDiskPrep** 目录复制到连接了 SATA 驱动器的另一台计算机上。 在连接了 SATA 驱动器的计算机上，请确保：
 
    * 副本计算机可使用在 **启动脱机备份** 工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
    * 已在副本计算机上启用 BitLocker。
    * Azure PowerShell 3.7.0 已安装。
-   * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。 
+   * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。
    * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
 
-     > [!IMPORTANT] 
+     > [!IMPORTANT]
      > 如果源计算机是虚拟机，则复制计算机必须是与源计算机不同的物理服务器或客户端计算机。
 
 2. 在副本计算机上打开提升的命令提示符，以 AzureOfflineBackupDiskPrep 实用工具的目录作为当前目录并运行以下命令  ：

@@ -1,6 +1,6 @@
 ---
-title: 使用 Batch 服务 API 将作业和任务输出持久保存到 Azure 存储 - Azure Batch | Docs
-description: 了解如何使用 Batch 服务 API 将 Batch 任务和作业输出持久保存到 Azure 存储。
+title: 使用 Batch 服务 API 将输出数据持久保存到 Azure 存储 - Azure Batch
+description: 了解如何使用 Batch 服务 API 将 Batch 任务和作业输出数据持久保存到 Azure 存储。
 services: batch
 author: lingliw
 manager: digimobile
@@ -12,12 +12,12 @@ ms.workload: big-compute
 origin.date: 03/05/2019
 ms.date: 09/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5b86aa247cace2158ab6c100aa8cf7c40c841e31
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 8850da1faca99c19ed6d794ad673ce53c03c88b1
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330351"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497363"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据持久保存到 Azure 存储
 
@@ -36,7 +36,7 @@ Azure Batch 提供多种持久保存任务输出的方式。 使用 Batch 服务
 - 需要将输出持久保存到使用任意名称的 Azure 存储容器。
 - 需要将输出持久保存到根据 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)命名的 Azure 存储容器。 
 
-如果你的情况与上面不同，可能需要考虑不同的方法。 例如，Batch 服务 API 目前不支持在任务正运行时将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需实现你自己的解决方案。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
+如果你的情形不同于上面列出的情形，则可能需要考虑其他方式。 例如，Batch 服务 API 目前不支持在任务正运行时将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需实现你自己的解决方案。 若要详细了解持久保存任务输出的其他选项，请参阅[将作业和任务输出持久保存到 Azure 存储](batch-task-output.md)。
 
 ## <a name="create-a-container-in-azure-storage"></a>在 Azure 存储中创建容器
 

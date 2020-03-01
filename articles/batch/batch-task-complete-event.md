@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 任务完成事件 | Microsoft Docs
-description: Batch 任务完成事件参考。
+title: Azure Batch 任务完成事件
+description: Batch 任务完成事件参考。 无论退出代码如何，任务完成后都会发出此事件。
 services: batch
 author: lingliw
 manager: digimobile
@@ -12,12 +12,12 @@ ms.workload: big-compute
 origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
-ms.openlocfilehash: cc8e54ef94aa64fe375e1d2b4282f5df3167b502
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e4ddc288927e04e329c0ca70601c4785cfb31586
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838989"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497374"
 ---
 # <a name="task-complete-event"></a>任务完成事件
 

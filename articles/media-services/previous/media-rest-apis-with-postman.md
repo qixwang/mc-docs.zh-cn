@@ -1,6 +1,6 @@
 ---
 title: 配置 Postman 以便进行 Azure 媒体服务 REST API 调用
-description: 了解如何为媒体服务 REST API 调用配置 Postman。
+description: 本文介绍如何为媒体服务 REST API 调用配置 Postman。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 267e641b5d597d800c3c745943294c8f9301525b
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 21866d8959370ca1e3a579b571e30b36adaa9422
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124417"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494459"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>配置 Postman 以进行媒体服务 v2 REST API 调用  
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -30,7 +30,7 @@ ms.locfileid: "71124417"
 
 在介绍如何使用 Azure 媒体服务 REST API 实现各种任务的文章中使用了此环境和集合。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 

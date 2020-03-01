@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 6cfcc8e29f0521e0f668f8f589a8368a65127e0f
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 9e10890dbd371f8faa590bf9a0696b11ba922131
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124679"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494238"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容 
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "71124679"
 
 也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。  
 
-本文说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 此外，还会示范如何生成渐进式下载 URL。
+本文说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 此外，还会演示如何生成渐进式下载 URL。
 
 [以下](#types) 部分显示了其值会在 REST 调用中使用的枚举类型。   
 
@@ -56,7 +56,7 @@ ms.locfileid: "71124679"
 2. 创建 OnDemand 流式处理定位符。
 3. 如果计划进行流式处理，请获取资产中的流式处理清单文件 (.ism)。 
    
-   如果想要渐进式下载，请获取资产中的 MP4 文件名。 
+   若计划进行渐进式下载，请获取资产中的 MP4 文件名。 
 4. 生成清单文件或 MP4 文件的 URL。 
 5. 无法使用包含写入或删除权限的 AccessPolicy 创建流式处理定位符。
 
@@ -74,7 +74,7 @@ ms.locfileid: "71124679"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 6bcfd511-a561-448d-a022-a319a89ecffa
     Host: media.chinacloudapp.cn
     Content-Length: 68
@@ -112,7 +112,7 @@ ms.locfileid: "71124679"
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ac159492-9a0c-40c3-aacc-551b1b4c5f62
     Host: media.chinacloudapp.cn
     Content-Length: 181
@@ -145,20 +145,20 @@ ms.locfileid: "71124679"
 
 示例：
 
-    http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
+    https://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
 HLS：路径 + 清单文件名 +“/manifest(format=m3u8-aapl)” 
 
 示例：
 
-    http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+    https://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
 DASH：路径 + 清单文件名 +“/manifest(format=mpd-time-csf)” 
 
 示例：
 
-    http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
+    https://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
 ### <a name="build-progressive-download-urls"></a>生成渐进式下载 URL
@@ -168,7 +168,7 @@ URL：路径 + 资产文件 mp4 名称
 
 示例：
 
-    http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+    https://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
 ## <a id="types"></a>枚举类型
     [Flags]

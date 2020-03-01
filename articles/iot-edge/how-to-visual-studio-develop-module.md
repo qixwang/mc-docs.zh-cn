@@ -1,21 +1,20 @@
 ---
 title: 在 Visual Studio 中开发和调试模块 - Azure IoT Edge | Microsoft Docs
-description: 使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
+description: 使用带有 Azure IoT Tools 的 Visual Studio 开发 C 或 C# IoT Edge 模块，并按照部署清单的配置将模块从 Azure IoT 中心推送到 IoT 设备。
 services: iot-edge
 author: shizn
 manager: philmea
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 07/22/2019
-ms.date: 12/23/2019
-ms.topic: article
+ms.date: 03/02/2020
+ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: a99e649bfa8bc68fa07c51bf5db29df235109330
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 9623b3bfc381a15e2894b3c60ae3f3e35d06b832
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336421"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494473"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 
@@ -30,9 +29,9 @@ ms.locfileid: "75336421"
 
 本文介绍如何使用适用于 Visual Studio 2019 的 Azure IoT Edge 工具开发 IoT Edge 模块。 你还将了解如何将项目部署到 Azure IoT Edge 设备。 目前，Visual Studio 2019 为用 C 和 C# 编写的模块提供支持。 支持的设备体系结构为 Windows X64 和 Linux X64 或 ARM32。 有关支持的操作系统、语言和体系结构的详细信息，请参阅[语言和体系结构支持](module-development.md#language-and-architecture-support)。
   
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。 
+本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。
 
 由于本文使用 Visual Studio 2019 作为主要开发工具，因此请安装 Visual Studio。 确保在 Visual Studio 2019 安装中包含“Azure 开发”和“使用 C++ 的桌面开发”工作负荷。   可以[修改 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) 以添加所需的工作负荷。
 
@@ -100,7 +99,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![创建新项目](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. 在“添加 IoT Edge 应用程序和模块”  窗口中，选择“C# 模块”  或“C 模块”  ，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名  。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：*\<注册表名称\>*.azurecr.io  。 仅替换字符串的**localhost:5000”** 部分，以使最终结果看起来像* *\<* 注册表名 *\>.azurecr.io/* \<模块名\>***。 默认的模块名称为 IoTEdgeModule1 
+1. 在“添加 IoT Edge 应用程序和模块”  窗口中，选择“C# 模块”  或“C 模块”  ，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名  。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于 **_\<注册表名称\>_ .azurecr.cn**。 仅替换字符串的 **localhost:5000** 部分，使最终结果看起来像 **\<*注册表名称*\>.azurecr.cn/ _\<模块名称\>_** 。 默认模块名称为“IotEdgeModule1” 
 
    ![添加应用程序和模块](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -110,7 +109,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 若要了解模拟温度传感器的工作原理，请查看 [SimulatedTemperatureSensor.csproj 源代码](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)。
 
-**IoTEdgeModule1** 项目是一个 .NET Core 2.1 控制台应用程序（如果它是 C# 模块）。 它包含 IoT Edge 设备通过 Windows 容器或 Linux 容器运行时所需的 Docker 文件。 `module.json` 文件描述模块的元数据。 在 `Program.cs` 或 `main.c` 文件中可以找到将 Azure IoT 设备 SDK 用作依赖项的实际模块代码。
+**IotEdgeModule1** 项目是一个 .NET Core 2.1 控制台应用程序（如果它是 C# 模块）。 它包含 IoT Edge 设备通过 Windows 容器或 Linux 容器运行时所需的 Docker 文件。 `module.json` 文件描述模块的元数据。 在 `Program.cs` 或 `main.c` 文件中可以找到将 Azure IoT 设备 SDK 用作依赖项的实际模块代码。
 
 ## <a name="develop-your-module"></a>开发模块
 
@@ -137,7 +136,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 通常，需要先测试和调试每个模块，然后再在具有多个模块的整个解决方案中运行此模块。
 
-1. 右键单击“IoTEdgeModule1”并从上下文菜单中选择“设为启动项目”   。
+1. 右键单击“IotEdgeModule1”并从上下文菜单中选择“设为启动项目”   。
 
    ![设置启动项目](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -168,9 +167,9 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 开发完单个模块之后，需要运行并调试具有多个模块的整个解决方案。
 
-1. 右键单击“AzureIoTEdgeApp1”并选择“添加” > “新 IoT Edge 模块”，向解决方案添加另一个模块    。 第二个模块的默认名称为 IoTEdgeModule2，用于充当另一个管道模块  。
+1. 右键单击“AzureIoTEdgeApp1”并选择“添加” > “新 IoT Edge 模块”，向解决方案添加另一个模块    。 第二个模块的默认名称为“IotEdgeModule2”，将充当另一个管道模块  。
 
-1. 打开文件 `deployment.template.json`，会看到 IoTEdgeModule2 已添加到“模块”部分中   。 将 routes 部分替换为以下内容  。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
+1. 打开文件 `deployment.template.json`，会看到 IotEdgeModule2 已添加到 **modules** 节中  。 将 routes 部分替换为以下内容  。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
 
     ```json
         "routes": {
@@ -212,7 +211,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
               "registry1": {
                 "username": "<username>",
                 "password": "<password>",
-                "address": "<registry name>.azurecr.io"
+                "address": "<registry name>.azurecr.cn"
               }
             }
           }

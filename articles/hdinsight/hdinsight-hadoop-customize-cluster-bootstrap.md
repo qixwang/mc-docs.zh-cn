@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/19/2019
-ms.date: 07/22/2019
+origin.date: 11/21/2019
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: c1a941242b39452147b87e836fed71649756bafb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 16c0628b5446e9a69b1108b9cf7bbacfddc9bffa
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336166"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428830"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -55,7 +55,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果使用 PowerShell，你将需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -116,7 +116,8 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 ```
 
 ## <a name="use-net-sdk"></a>使用 .NET SDK
-请参阅[使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap)。
+
+请参阅[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 可以在 Resource Manager 模板中使用 bootstrap：

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上优化 Linux VM | Azure
+title: 在 Azure 上优化 Linux VM
 description: 了解一些优化提示，以确保正确设置 Linux VM，从而在 Azure 上获得最佳性能
 keywords: linux 虚拟机,虚拟机 linux,ubuntu 虚拟机
 services: virtual-machines-linux
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 09/06/2016
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 3720b25a0fe3473ef405012c32b006c99482a6c5
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: f8f75718a1abaaa61408b8197aba44dfa0b65fe1
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272583"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428569"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本主题假设已有一个有效的 Azure 订阅（[注册试用版](https://www.azure.cn/pricing/1rmb-trial/)），并已在 Azure 订阅中预配 VM。 在[创建 VM](quick-create-cli.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 之前，请确保已安装最新的 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest) 并使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录到 Azure 订阅。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "72272583"
 在 Azure 中创建 Linux VM 后，它具有两个与之关联的磁盘。 **/dev/sda** 是 OS 磁盘， **/dev/sdb** 是临时磁盘。  请勿将主要 OS 磁盘 ( **/dev/sda**) 用于操作系统以外的用途，因为它已针对快速启动 VM 进行优化，无法为工作负荷提供良好的性能。 要获得持久且经过优化的数据存储，可以将一个或多个磁盘附加到 VM。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>添加磁盘以实现大小和性能目标
-根据 VM 大小，可以分别在 A 系列、D 系列计算机上额外附加最多 16 个、32 个磁盘，每个磁盘最大可为 1 TB。 可以根据空间和 IOps 要求以及自己的需要添加额外的磁盘。 标准存储的每个磁盘的性能目标为 500 IOps，高级存储的每个磁盘的性能目标最高为 5000 IOps。
+根据 VM 大小，可以分别在 A 系列、D 系列计算机上额外附加最多 16 个、32 个磁盘，每个磁盘最大可为 32 TB。 可以根据空间和 IOps 要求以及自己的需要添加额外的磁盘。 对于标准存储，每个磁盘的性能目标为 500 IOps；对于高级存储，每个磁盘的性能目标最高为 20,000 IOps。
 
 <!--Not Available 64 disks on G-Series -->
 

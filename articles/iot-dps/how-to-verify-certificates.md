@@ -1,19 +1,19 @@
 ---
-title: 如何使用 Azure IoT 中心设备预配服务执行 X.509 CA 证书的所有权证明 | Microsoft Docs
-description: 如何使用设备预配服务验证 X.509 CA 证书
+title: 使用 Azure IoT 中心设备预配服务验证 X.509 CA 证书
+description: 如何使用 Azure IoT 中心设备预配服务 (DPS) 进行 X.509 CA 证书的所有权证明
 author: wesmc7777
-ms.author: wesmc
-ms.date: 02/26/2018
+ms.author: v-tawe
+origin.date: 02/26/2018
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 60544498c02fff140c181cb9f63640947c6f2d67
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.openlocfilehash: 00253412cf8179105786e9915193e9088cfbd942
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988400"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494579"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
 
@@ -30,18 +30,18 @@ ms.locfileid: "57988400"
 
 若要将 CA 证书注册到预配服务并获取可在所有权证明期间使用的验证码，请遵循以下步骤。 
 
-1. 在 Azure 门户中导航到预配服务，从左侧菜单打开“证书”。 
-2. 单击“添加”以添加新证书。
-3. 输入证书的友好显示名称。 浏览到表示 X.509 证书公共部分的 .cer 或 .pem 文件。 单击“上传”。
-4. 收到已成功上传证书的通知后，单击“保存”。
+1. 在 Azure 门户中导航到预配服务，从左侧菜单打开“证书”。  
+2. 单击“添加”以添加新证书。 
+3. 输入证书的友好显示名称。 浏览到表示 X.509 证书公共部分的 .cer 或 .pem 文件。 单击“上传”。 
+4. 收到已成功上传证书的通知后，单击“保存”。 
 
     ![上传证书](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   该证书将显示在“证书资源管理器”列表中。 请注意，此证书的“状态”为“未验证”。
+   该证书将显示在“证书资源管理器”列表中。  请注意，此证书的“状态”为“未验证”。  
 
 5. 单击在上一步骤中添加的证书。
 
-6. 在“证书详细信息”中，单击“生成验证码”。
+6. 在“证书详细信息”中，单击“生成验证码”。  
 
 7. 预配服务会创建一个可用于验证证书所有权的**验证码**。 将此代码复制到剪贴板。 
 
@@ -64,9 +64,9 @@ Microsoft 提供了工具和示例来帮助你创建签名的验证证书：
 
 ## <a name="upload-the-signed-verification-certificate"></a>上传已签名的验证证书
 
-1. 在门户中将生成的签名作为验证证书上传到预配服务。 在 Azure 门户上的“证书详细信息”中，使用“验证证书 .pem 或 .cer 文件”字段旁边的“文件资源管理器”图标从系统上传已签名的验证证书。
+1. 在门户中将生成的签名作为验证证书上传到预配服务。 在 Azure 门户上的“证书详细信息”中，使用“验证证书 .pem 或 .cer 文件”字段旁边的“文件资源管理器”图标从系统上传已签名的验证证书。   
 
-2. 成功上传证书后，单击“验证”。 在“证书资源管理器”列表中，证书的“状态”会更改为“已验证”。 如果状态未自动更新，请单击“刷新”。
+2. 成功上传证书后，单击“验证”。  在“证书资源管理器”列表中，证书的“状态”会更改为“已验证”。    如果状态未自动更新，请单击“刷新”。 
 
    ![上传证书验证](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

@@ -2,19 +2,16 @@
 title: 浏览 Azure 资源
 description: 了解如何使用 Resource Graph 查询语言浏览资源并发现资源的连接方式。
 author: DCtheGeek
-ms.author: v-yiso
+ms.author: v-tawe
 origin.date: 10/18/2019
-ms.date: 11/04/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.service: resource-graph
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: b4842daabb9bd59a5e0053b83794cbff463bd887
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 8326719e48a4aaee1332ad3bcc0f67706dd848f8
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914468"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494022"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -29,7 +26,8 @@ Azure 中的一种常见资源是虚拟机。 作为资源类型，虚拟机具�
 让我们从一个简单的查询开始，从环境中获取一个 VM 并查看返回的属性。
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | limit 1
 ```
 
@@ -135,15 +133,11 @@ JSON 结果的结构类似于下面的示例：
 [
   {
     "count_": 386,
-    "location": "eastus"
+    "location": "chinaeast"
   },
   {
     "count_": 215,
-    "location": "southcentralus"
-  },
-  {
-    "count_": 59,
-    "location": "westus"
+    "location": "chinanorth"
   }
 ]
 ```
@@ -157,7 +151,7 @@ JSON 结果的结构类似于下面的示例：
 ```kusto
 Resources
 | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
-| project name, resourceGroup"
+| project name, resourceGroup
 ```
 
 ```azurecli
@@ -314,6 +308,6 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddr
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[查询语言](query-language.md)的详细信息
-- 参阅[初学者查询](../samples/starter.md)中使用的语言
-- 参阅[高级查询](../samples/advanced.md)中的高级使用
+- 详细了解[查询语言](query-language.md)。
+- 在[初学者查询](../samples/starter.md)中了解使用的语言。
+- 在[高级查询](../samples/advanced.md)中了解高级用法。

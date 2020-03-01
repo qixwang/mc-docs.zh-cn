@@ -2,19 +2,22 @@
 title: 如何在 Azure Functions 中禁用函数
 description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: adee280199ecf498a694cbf73147ba4714bc1d4e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 02/18/2020
+ms.openlocfilehash: 286e02c46f06035779f1297a193783ce62ed653c
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624362"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494172"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
 本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。  这样就可以在不停止整个函数应用的情况下阻止特定函数运行。
 
 若要禁用函数，建议的方式是使用格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/) 以及从 [Azure 门户](https://portal.azure.cn)中函数的“管理”  选项卡。 
+
+> [!NOTE]  
+> 如果使用本文中所述方法禁用 HTTP 触发的函数，则在本地计算机上运行时仍然可以访问终结点。  
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 

@@ -1,17 +1,17 @@
 ---
 title: 适用于 Eclipse 的 Azure Service Fabric 插件
-description: 适用于 Eclipse 的 Service Fabric 插件入门。
+description: 了解如何使用 Eclipse 和 Service Fabric 提供的插件在 Java 中开始使用 Azure Service Fabric。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 04/06/2018
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ef9ee53d656af165a0bb82e9c6deaa7e50424d1
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 260bd97058154b2c99690cdc19762c5a797fe7b8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742378"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539983"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
@@ -137,13 +137,13 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
         ```bash
         {
-         "ClusterConnectionParameters":
-         {
-            "ConnectionIPOrURL": "lnxxug0tlqm5.chinanorth.cloudapp.chinacloudapi.cn",
-            "ConnectionPort": "19080",
-            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
-            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
-         }
+             "ClusterConnectionParameters":
+             {
+                "ConnectionIPOrURL": "lnxxug0tlqm5.chinanorth.cloudapp.chinacloudapi.cn",
+                "ConnectionPort": "19080",
+                "ClientKey": "[path_to_your_pem_file_on_local_machine]",
+                "ClientCert": "[path_to_your_pem_file_on_local_machine]"
+             }
         }
         ```
 
