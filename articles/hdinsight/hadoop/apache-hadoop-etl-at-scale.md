@@ -12,15 +12,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-origin.date: 06/13/2019
-ms.date: 07/22/2019
+origin.date: 01/27/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 30d8cce34c0729345744d4e322e8627980016dc5
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: ad4971f2d87237ffa7e3556f37ce6bd0210b119f
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845360"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563511"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -44,8 +44,17 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。 Oozie 在 
 
 有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。 
 
-<!-- For a deep dive showing how to use Oozie to drive an end-to-end pipeline, see [Operationalize the Data Pipeline](hdinsight-operationalize-data-pipeline.md). -->
+### <a name="azure-data-factory"></a>Azure 数据工厂
 
+Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。
+
+使用 Azure 数据工厂可以：
+
+1. 创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。
+2. 使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Batch 和 Azure 机器学习）处理和转换数据。
+3. 将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
+
+有关 Azure 数据工厂的详细信息，请参阅[文档](../../data-factory/introduction.md)。
 
 ## <a name="ingest-file-storage-and-result-storage"></a>提取文件存储和结果存储
 
@@ -63,7 +72,7 @@ Azure 存储还为 Blob 存储提供一个 WebHDFS API 层。  HDInsight 中的�
 
 通常使用 PowerShell、Azure 存储 SDK 或 AZCopy 将数据引入 Azure 存储。
 
-### <a name="azure-data-lake-storage"></a>Azure Data Lake 存储
+### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
 Azure Data Lake Storage (ADLS) 是一个托管的超大规模存储库，用于分析与 HDFS 兼容的数据。  ADLS 使用类似于 HDFS 的设计范例，并在总容量及单个文件的大小方面提供无限可伸缩性。 ADLS 非常适合与大型文件配合运行，因为大型文件可以跨多个节点存储。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
 

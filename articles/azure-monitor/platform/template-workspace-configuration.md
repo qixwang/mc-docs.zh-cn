@@ -6,23 +6,23 @@ author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 10/22/2019
-ms.date: 11/05/2019
+origin.date: 01/09/2020
+ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 037d6f93f79ec8f85623489ae73d36e98cdbe3ac
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: 26b80b86c9609f494774ccbfdae49a0c19f16b59
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545362"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497393"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
-* 创建工作区，包括设置定价层 
+* 创建工作区，包括设置定价层和产能预留
 * 添加解决方案
 * 创建保存的搜索
 * 创建计算机组
@@ -49,7 +49,19 @@ ms.locfileid: "75545362"
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置（使用其他工作区参数的默认值，例如定价层和保留期）。  
+以下示例将使用本地计算机上的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，例如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留期和产能预留级别。
+
+对于产能预留，你可以通过指定 SKU `CapacityReservation` 并以 GB 为单位指定属性 `capacityReservationLevel` 的值来定义用于引入数据的选定产能预留。 以下列表详细说明了在配置该功能时支持的值和行为。
+
+- 设置预留限制后，在 31 天内你不能更改为其他 SKU。
+
+- 设置预留值后，在 31 天内你只能增大该值。
+
+- 只能将 `capacityReservationLevel` 的值设置为 100 的倍数，最大值为 50000。
+
+- 如果你增大了预留级别，则计时器将重置，并且在此更新后的 31 天内无法更改预留级别。  
+
+- 如果你修改了工作区的任何其他属性，但将预留限制保持为同一级别，则计时器不会重置。 
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
@@ -66,6 +78,21 @@ ms.locfileid: "75545362"
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -81,11 +108,18 @@ ms.locfileid: "75545362"
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -95,7 +129,7 @@ ms.locfileid: "75545362"
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
-4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。
+4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。 工作区名称在所有 Azure 订阅中必须全局唯一。
 
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
    
@@ -148,9 +182,9 @@ ms.locfileid: "75545362"
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -212,7 +246,7 @@ ms.locfileid: "75545362"
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",

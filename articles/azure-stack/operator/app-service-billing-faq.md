@@ -1,38 +1,28 @@
 ---
-title: Azure Stack 上的 Azure 应用服务计费概述和常见问题解答 | Microsoft Docs
-description: 有关 Azure Stack 上的 Azure 应用服务的计量和计费方式的详细信息。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 上的 Azure 应用服务计费概述和常见问题解答
+description: 有关 Azure Stack Hub 上的 Azure 应用服务的计量和计费方式的详细信息。
 author: WenJason
 manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 06/10/2019
-ms.date: 07/29/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 753b9a83ee0a426a0b79356cba464ce4a0b2bec4
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.openlocfilehash: 812b6cd2c0d28091a65efde4f2a4a6298d967aa1
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513578"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540633"
 ---
-# <a name="azure-app-service-on-azure-stack-billing-overview-and-faq"></a>Azure Stack 上的 Azure 应用服务计费概述和常见问题解答
+# <a name="azure-app-service-on-azure-stack-hub-billing-overview-and-faq"></a>Azure Stack Hub 上的 Azure 应用服务计费概述和常见问题解答
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-本文介绍 Azure 如何对提供 Azure Stack 上的 Azure 应用服务的云运营商计费，以及云运营商如何对租户收取其服务使用费。
+本文介绍 Azure 如何对提供 Azure Stack Hub 上的 Azure 应用服务的云运营商计费，以及云运营商如何对租户收取其服务使用费。
 
 ## <a name="billing-overview"></a>计费概述
 
-Azure Stack 云运营商选择将 Azure Stack 上的 Azure 应用服务部署在其 Azure Stack 阵列上，以便为其客户提供 Azure 应用服务和 Azure Functions 的租户功能。 Azure 应用服务资源提供程序包括多个可划分为基础结构层或辅助角色层的角色。
+Azure Stack Hub 云运营商选择将 Azure Stack Hub 上的 Azure 应用服务部署在其 Azure Stack Hub 阵列上，以便为其客户提供 Azure 应用服务和 Azure Functions 的租户功能。 Azure 应用服务资源提供程序包括多个可划分为基础结构层或辅助角色层的角色。
 
 基础结构角色对于服务的核心操作是不可或缺的，因此不会产生费用。 可根据需要横向扩展基础结构角色，以支持云运营商租户的需求。 基础结构角色包括：
 
@@ -41,7 +31,7 @@ Azure Stack 云运营商选择将 Azure Stack 上的 Azure 应用服务部署在
 - 发布者
 - 前端
 
-辅助角色层包括两种主要类型：共享和专用。 云运营商的辅助角色用量根据以下准则计费。
+辅助角色层包括两种主要类型：共享和专用。 辅助角色使用费将根据以下准则计入云运营商的默认提供商订阅帐户。
 
 ## <a name="shared-workers"></a>共享辅助角色
 
@@ -60,23 +50,23 @@ Azure Stack 云运营商选择将 Azure Stack 上的 Azure 应用服务部署在
 
 例如，假设你的小型辅助角色层中包含 20 个辅助角色。 随后有 5 个客户各创建了两个 S1 应用服务计划，且分别将应用服务计划扩展到两个实例，则你没有可用的辅助角色。 因此，任何现有客户或新客户也没有足够的容量可扩展或创建新的应用服务计划。 
 
-云运营商可以在 Azure Stack 管理界面的 Azure 应用服务配置中查看辅助角色层，以查看每个辅助角色层当前可用的辅助角色数目。
+云运营商可以在 Azure Stack Hub 管理界面的 Azure 应用服务配置中查看辅助角色层，以查看每个辅助角色层当前可用的辅助角色数目。
 
 ![应用服务 - 辅助角色层屏幕][1]
 
-## <a name="see-customer-usage-by-using-the-azure-stack-usage-service"></a>使用 Azure Stack 用量服务查看客户的用量
+## <a name="see-customer-usage-by-using-the-azure-stack-hub-usage-service"></a>使用 Azure Stack Hub 用量服务查看客户的用量
 
-云运营商可以查询 [Azure Stack 租户资源用量 API](azure-stack-tenant-resource-usage-api.md) 以检索客户的用量信息。 可以在[使用情况常见问题解答](azure-stack-usage-related-faq.md)中，找到应用服务发出的用于描述租户用量的每个指标。 然后，这些指标将用于计算每个客户订阅的用量，以计算费用。
+云运营商可以查询 [Azure Stack Hub 租户资源用量 API](azure-stack-tenant-resource-usage-api.md) 以检索客户的用量信息。 可以在[使用情况常见问题解答](azure-stack-usage-related-faq.md)中，找到应用服务发出的用于描述租户用量的每个指标。 然后，这些指标将用于计算每个客户订阅的用量，以计算费用。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-do-i-license-the-sql-server-and-file-server-infrastructure-required-in-the-prerequisites"></a>如何为先决条件中所需的 SQL Server 和文件服务器基础结构授权？
 
-Azure Stack 上的 Azure 应用服务[开始之前](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server)一文中介绍了如何为 Azure 应用服务资源提供程序所需的 SQL Server 和文件服务器基础结构授权。
+Azure Stack Hub 上的 Azure 应用服务[开始之前](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server)一文中介绍了如何为 Azure 应用服务资源提供程序所需的 SQL Server 和文件服务器基础结构授权。
 
 ### <a name="the-usage-faq-lists-the-tenant-meters-but-not-the-prices-for-those-meters-where-can-i-find-them"></a>“使用情况常见问题解答”列出了租户计量值，但未列出这些计量值的价格。 在哪里可以找到这些信息？
 
-云运营商可以任意对客户应用自己的定价模型。 使用情况服务将提供用量计量值。 你可以使用计量数量根据确定的定价模型向客户收费。 自行定价可让不同的 Azure Stack 运营商各自保留独特之处。
+云运营商可以任意对客户应用自己的定价模型。 使用情况服务将提供用量计量值。 你可以使用计量数量根据确定的定价模型向客户收费。 自行定价可让不同的 Azure Stack Hub 运营商各自保留独特之处。
 
 ### <a name="as-a-csp-how-can-i-offer-free-and-shared-skus-for-customers-to-try-out-the-service"></a>身为 CSP，我要如何提供免费和共享的 SKU 让客户试用服务？
 
@@ -88,17 +78,17 @@ Azure Stack 上的 Azure 应用服务[开始之前](azure-stack-app-service-befo
 
 ## <a name="sample-scripts-to-assist-with-billing"></a>用于帮助计费的脚本示例
 
-Azure 应用服务团队创建了 PowerShell 脚本示例，以帮助客户查询 Azure Stack 使用情况服务。 云运营商可以使用这些示例脚本为租户准备计费。 示例脚本位于 GitHub 上的 [Azure Stack 工具存储库](https://github.com/Azure/AzureStack-tools)中。 应用服务脚本位于 [Usage 下的 AppService 文件夹](https://github.com/Azure/AzureStack-Tools/tree/master/Usage/AppService)中。
+Azure 应用服务团队创建了 PowerShell 脚本示例，以帮助客户查询 Azure Stack Hub 使用情况服务。 云运营商可以使用这些示例脚本为租户准备计费。 示例脚本位于 GitHub 上的 [Azure Stack Hub 工具存储库](https://github.com/Azure/AzureStack-tools)中。 应用服务脚本位于 [Usage 下的 AppService 文件夹](https://aka.ms/aa6zku8)中。
 
 可用的脚本示例如下：
 
-- [Get-AppServiceBillingRecords](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceBillingRecords.ps1)：此示例从 Azure Stack 用量 API 提取 Azure Stack 上的 Azure 应用服务计费记录。
-- [Get-AppServiceSubscriptionUsage](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceSubscriptionUsage.ps1)：此示例计算每个订阅的 Azure Stack 上的 Azure 应用服务用量金额。 此脚本根据用量 API 中的数据和云运营商对每种计量所提供的价格，计算用量金额。
-- [Suspend-UserSubscriptions](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Suspend-UserSubscriptions.ps1)：此示例根据云运营商指定的用量限制来暂停或启用订阅。
+- [Get-AppServiceBillingRecords](https://aka.ms/aa6zku2)：此示例从 Azure Stack Hub 用量 API 提取 Azure Stack Hub 上的 Azure 应用服务计费记录。
+- [Get-AppServiceSubscriptionUsage](https://aka.ms/aa6zku6)：此示例计算每个订阅的 Azure Stack Hub 上的 Azure 应用服务用量金额。 此脚本根据用量 API 中的数据和云运营商对每种计量所提供的价格，计算用量金额。
+- [Suspend-UserSubscriptions](https://aka.ms/aa6zku7)：此示例根据云运营商指定的用量限制来暂停或启用订阅。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Stack 租户资源用量 API](azure-stack-tenant-resource-usage-api.md)
+- [Azure Stack Hub 租户资源用量 API](azure-stack-tenant-resource-usage-api.md)
 
 <!--Image references-->
 [1]: ./media/app-service-billing-faq/app-service-worker-tiers.png

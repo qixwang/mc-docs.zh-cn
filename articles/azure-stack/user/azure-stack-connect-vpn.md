@@ -1,40 +1,29 @@
 ---
-title: 使用 VPN 将 Azure Stack 连接到 Azure | Microsoft Docs
-description: 如何使用 VPN 将 Azure Stack 中的虚拟网络连接到 Azure 中的虚拟网络。
-services: azure-stack
-documentationcenter: ''
+title: 使用 VPN 将 Azure Stack Hub 连接到 Azure
+description: 如何使用 VPN 将 Azure Stack Hub 中的虚拟网络连接到 Azure 中的虚拟网络。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/04/2019
-ms.date: 11/18/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: fb02b216bbbccebbaf130d9185af9ef0ccf30243
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 16ef736aa68fccdf21baa837b7c0cd9371da9cb0
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020280"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540861"
 ---
-# <a name="connect-azure-stack-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack 连接到 Azure
+# <a name="connect-azure-stack-hub-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack Hub 连接到 Azure
 
-适用于：*Azure Stack 集成系统*
-
-本文介绍如何创建站点到站点 VPN，将 Azure Stack 中的虚拟网络连接到 Azure 中的虚拟网络。
+本文介绍如何创建站点到站点 VPN，将 Azure Stack Hub 中的虚拟网络连接到 Azure 中的虚拟网络。
 
 ## <a name="before-you-begin"></a>准备阶段
 
 若要完成连接配置，请确保在开始之前准备好以下各项：
 
-* 直接连接到 Internet 的 Azure Stack 集成系统（多节点）部署。 必须能够从公共 Internet 直接连接到外部公共 IP 地址范围。
+* 直接连接到 Internet 的 Azure Stack Hub 集成系统（多节点）部署。 必须能够从公共 Internet 直接连接到外部公共 IP 地址范围。
 * 有效的 Azure 订阅。 如果没有 Azure 订阅，可[在此处创建一个 1 元试用 Azure 帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ### <a name="vpn-connection-diagram"></a>VPN 连接关系图
@@ -47,7 +36,7 @@ ms.locfileid: "74020280"
 
 网络配置示例表显示本文中用于示例的值。 可以使用这些值或参考这些值，以更好地了解本文中的示例：
 
-|   |Azure Stack|Azure|
+|   |Azure Stack Hub|Azure|
 |---------|---------|---------|
 |虚拟网络名称     |Azs-VNet|AzureVNet |
 |虚拟网络地址空间 |10.1.0.0/16|10.100.0.0/16|
@@ -104,8 +93,8 @@ ms.locfileid: "74020280"
 2. 转到**市场**，然后选择“网络”。 
 3. 从资源列表中选择“本地网络网关”。 
 4. 在“名称”字段中，键入 **Azs-GW**。 
-5. 在“IP 地址”字段中，键入前面在网络配置表中列出的 Azure Stack 虚拟网关的公共 IP 地址。 
-6. 在 Azure Stack 的“地址空间”字段中，键入 **AzureVNet** 的 **10.1.0.0/24** 和 **10.1.1.0/24** 地址空间。 
+5. 在“IP 地址”字段中，键入前面在网络配置表中列出的 Azure Stack Hub 虚拟网关的公共 IP 地址。 
+6. 在 Azure Stack Hub 的“地址空间”字段中，键入 **AzureVNet** 的 **10.1.0.0/24** 和 **10.1.1.0/24** 地址空间。 
 7. 确认“订阅”、“资源组”和“位置”正确无误，然后选择“创建”。    
 
 ## <a name="create-the-connection"></a>创建连接
@@ -145,9 +134,9 @@ ms.locfileid: "74020280"
 
 9. 在“摘要”部分检查设置，然后选择“确定”   。
 
-## <a name="create-the-network-resources-in-azure-stack"></a>在 Azure Stack 中创建网络资源
+## <a name="create-the-network-resources-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建网络资源
 
-接下来，在 Azure Stack 中创建网络资源。
+接下来，在 Azure Stack Hub 中创建网络资源。
 
 ### <a name="sign-in-as-a-user"></a>以用户身份登录
 
@@ -183,7 +172,7 @@ ms.locfileid: "74020280"
 
 ### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
-1. 在 Azure Stack 门户中，选择“+ 创建资源”。 
+1. 在 Azure Stack Hub 门户中，选择“+ 创建资源”。 
 2. 转到**市场**，然后选择“网络”。 
 3. 从网络资源列表中选择“虚拟网络网关”。 
 4. 在“名称”中，键入 **Azs-GW**。 
@@ -191,25 +180,27 @@ ms.locfileid: "74020280"
 6. 选择“公共 IP 地址”菜单项。  当“选择公共 IP 地址”部分打开时，选择“新建”   。
 7. 在“名称”中键入 **Azs-GW-PiP**，然后选择“确定”。  
 8. 对于“VPN 类型”，默认选择“基于路由”。   保留“基于路由”VPN 类型。 
+
 9. 验证“订阅”和“位置”是否正确。   可将资源固定到仪表板。 选择“创建”  。
 
 ### <a name="create-the-local-network-gateway"></a>创建本地网关
 
-在 Azure Stack 中，“本地网关”的概念稍微不同于 Azure 部署。 
+在 Azure Stack Hub 中，“本地网关”的概念稍微不同于 Azure 部署。 
 
-在 Azure 部署中，本地网关代表一个本地（位于用户位置）物理设备，可连接到 Azure 中的虚拟网关。 但在 Azure Stack 中，连接的两端都是虚拟网关。
+在 Azure 部署中，本地网关代表一个本地（位于用户位置）物理设备，可连接到 Azure 中的虚拟网关。 但在 Azure Stack Hub 中，连接的两端都是虚拟网关。
 
 更通俗的解释是，存在本地网络网关资源往往意味着在连接的另一端存在远程网关。
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 
-1. 登录到 Azure Stack 门户。
+1. 登录到 Azure Stack Hub 门户。
 2. 在用户门户中，选择“+ 创建资源”。 
 3. 转到**市场**，然后选择“网络”。 
 4. 从资源列表中选择“本地网络网关”。 
 5. 在“名称”字段中，键入 **Azure-GW**。 
 6. 在“IP 地址”字段中，键入 Azure **Azure-GW-PiP** 中的虚拟网关公共 IP 地址。  此地址已显示在前面的网络配置表中。
 7. 在“地址空间”字段中键入 **10.100.0.0/24** 和 **10.100.1.0/24**，用作创建的 Azure VNET 的地址空间。 
+
 8. 确认“订阅”、“资源组”和“位置”值正确无误，然后选择“创建”。    
 
 ### <a name="create-the-connection"></a>创建连接
@@ -223,11 +214,12 @@ ms.locfileid: "74020280"
 7. 依次选择“本地网络网关”、“Azure-GW”。  
 8. 在“连接名称”中，键入 **Azs-Azure**。 
 9. 在“共享密钥(PSK)”中键入 **12345**，然后选择“确定”。  
+
 10. 在“摘要”部分，选择“确定”。  
 
 ### <a name="create-a-vm"></a>创建 VM
 
-若要检查 VPN 连接，请创建两个 VM：一个在 Azure 中，一个在 Azure Stack 中。 创建这些 VM 以后，即可使用它们通过 VPN 隧道发送和接收数据。
+若要检查 VPN 连接，请创建两个 VM：一个在 Azure 中，一个在 Azure Stack Hub 中。 创建这些 VM 以后，即可使用它们通过 VPN 隧道发送和接收数据。
 
 1. 在 Azure 门户中，选择“+ 创建资源”。 
 2. 转到“市场”，选择“计算”。  
@@ -237,21 +229,22 @@ ms.locfileid: "74020280"
 6. 提供“订阅”、“资源组”和“位置”，并选择“确定”。    
 7. 在“大小”部分，为此实例选择一种 VM 大小，然后选择“选择”。  
 8. 在“设置”部分接受默认值。  务必选择 **Azs-VNet** 虚拟网络。 确认子网已设置为 **10.1.0.0/24**。 然后选择“确定”。 
+
 9. 在“摘要”部分中，查看设置并选择“确定”   。
 
 ## <a name="test-the-connection"></a>测试连接
 
 建立站点到站点连接以后，应验证数据是否可以往两个方向流动。 若要测试连接，最容易的方式是进行 ping 测试：
 
-* 登录到在 Azure Stack 中创建的 VM，然后 ping Azure 中的 VM。
-* 登录到在 Azure 中创建的 VM，然后 ping Azure Stack 中的 VM。
+* 登录到在 Azure Stack Hub 中创建的 VM，然后 ping Azure 中的 VM。
+* 登录到在 Azure 中创建的 VM，然后 ping Azure Stack Hub 中的 VM。
 
 >[!NOTE]
 >为了确保发送的流量通过站点到站点连接，必须 ping 远程子网上 VM 的直接 IP (DIP) 地址，而不是 VIP。
 
-### <a name="sign-in-to-the-user-vm-in-azure-stack"></a>登录到 Azure Stack 中的用户 VM
+### <a name="sign-in-to-the-user-vm-in-azure-stack-hub"></a>登录到 Azure Stack Hub 中的用户 VM
 
-1. 登录到 Azure Stack 门户。
+1. 登录到 Azure Stack Hub 门户。
 2. 从左侧导航栏中选择“虚拟机”  。
 3. 在 VM 列表中，找到前面创建的 **Azs-VM**，并选择它。
 4. 在 VM 部分选择“连接”，然后打开 Azs-VM.rdp 文件。 
@@ -288,7 +281,7 @@ ms.locfileid: "74020280"
     -Protocol ICMPv4
    ```
 
-10. 在 Azure 上的 VM 中，通过隧道 ping Azure Stack 中的 VM。 为此，请 ping 从 Azs-VM 中记录的 DIP。 在示例环境中，该地址为 **10.1.0.4**，但请确保 ping 实验室中记下的地址。 会看到以下屏幕捕获所示的结果：
+10. 在 Azure 上的 VM 中，通过隧道 ping Azure Stack Hub 中的 VM。 为此，请 ping 从 Azs-VM 中记录的 DIP。 在示例环境中，该地址为 **10.1.0.4**，但请确保 ping 实验室中记下的地址。 会看到以下屏幕捕获所示的结果：
 
     ![ping 成功](media/azure-stack-connect-vpn/image19b.png)
 
@@ -300,7 +293,7 @@ ms.locfileid: "74020280"
 
 若要了解通过站点到站点连接传送的数据量，可在“连接”部分查看该信息。  也可利用此测试来验证刚发送的 ping 是否确实通过了 VPN 连接。
 
-1. 在已登录到 Azure Stack 中用户 VM 的情况下，使用用户帐户登录到用户门户。
+1. 在已登录到 Azure Stack Hub 中用户 VM 的情况下，使用用户帐户登录到用户门户。
 2. 转到“所有资源”，选择“Azs-Azure”连接。   此时会显示“连接”。 
 3. “连接”部分显示了“传入数据”和“传出数据”的统计信息。    在以下屏幕捕获中，较大的数字是附加的文件传输造成的。 应会看到其中有一些非零值。
 

@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 12/17/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7fddfaf716eb4aa3d0627e3be9b51ff025c89159
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 349b257aa7cf9585b0604733f1613e8672c9a672
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965099"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428054"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -47,7 +47,9 @@ ms.locfileid: "75965099"
 
 ## <a name="availability---virtual-network-deployment"></a>可用性 - 虚拟网络部署
 
-[Azure 虚拟网络](container-instances-vnet.md)中部署的容器组可以使用以下区域和资源。
+Azure 虚拟网络中部署的容器组可以使用以下区域和资源。
+
+<!--Not Available on [Azure 虚拟网络](container-instances-vnet.md)-->
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 

@@ -14,21 +14,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 07/24/2018
-ms.date: 07/22/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 40761403265b1c00e6222a482c9dbaf05df48939
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.openlocfilehash: 7b2e32f9d4fcb060f8a64ed44f344c64c527e654
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845444"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428053"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Apache Hadoop 群集
 
 [需要安全传输](../storage/common/storage-require-secure-transfer.md)功能强制提交到帐户的所有请求都通过安全连接来进行，从而增强 Azure 存储帐户的安全性。 仅 HDInsight 群集 3.6 或更高版本支持此功能和 wasbs 方案。 
 
-## <a name="prerequisites"></a>先决条件
+**在创建群集后启用安全存储传输可能会导致使用存储帐户时出错，因此不建议这样做。最好在启用该属性的情况下创建新群集。**
+
+## <a name="prerequisites"></a>必备条件
 在开始阅读本文前，必须具备：
 
 * **Azure 订阅**：若要创建一个月试用帐户，请浏览到 [https://www.azure.cn/pricing/1rmb-trial](https://www.azure.cn/pricing/1rmb-trial)。
@@ -43,7 +45,7 @@ ms.locfileid: "67845444"
 
 1. 单击以下映像以登录到 Azure，然后在 Azure 门户中打开 Resource Manager 模板。 
    
-    <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. 按说明遵循以下规范创建群集： 
 
@@ -74,7 +76,6 @@ ms.locfileid: "67845444"
 有关如何使用 HDInsight 分析数据的详细信息，请参阅以下文章：
 
 * 若要详细了解如何将 [Apache Hive](https://hive.apache.org/) 与 HDInsight 配合使用（包括如何从 Visual Studio 中执行 Hive 查询），请参阅[将 Apache Hive 与 HDInsight 配合使用][hdinsight-use-hive]。
-* 若要了解 [Apache Pig](https://pig.apache.org/)（一种用于转换数据的语言），请参阅[将 Apache Pig 与 HDInsight 配合使用][hdinsight-use-pig]。
 * 若要了解 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)（在 Hadoop 中处理数据的程序编写方式），请参阅[将 Apache Hadoop MapReduce 与 HDInsight 配合使用][hdinsight-use-mapreduce]。
 * 若要了解如何使用用于 Visual Studio 的 HDInsight 工具来分析 HDInsight 数据，请参阅[开始使用 HDInsight 的 Visual Studio Apache Hadoop 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 

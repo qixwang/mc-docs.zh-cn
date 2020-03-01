@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/13/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 505042241160ac6873e3d5006153b3c6e6b70f72
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: bf733687f85f7e84b42d7fe5b34752a5d23059f4
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630862"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563507"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -37,13 +37,13 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 
 |数据访问格式 |说明 |
 |---|---|
-|`wasb:///`|使用未加密通信访问默认存储。|
-|`wasbs:///`|使用加密通信访问默认存储。|
+|`wasb:///`|使用未加密的通信访问默认存储。|
+|`wasbs:///`|使用加密的通信访问默认存储。|
 |`wasb://<container-name>@<account-name>.blob.core.chinacloudapi.cn/`|与非默认存储帐户通信时使用。 |
 
 [标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)列出了 Azure 存储帐户的当前限制。 如果应用程序的需求超过单个存储帐户的伸缩性目标，则在构建时让应用程序使用多个存储帐户，并将数据对象分布到这些存储帐户中。
 
-[Azure 存储分析](../../storage/storage-analytics.md)  提供了所有存储服务的指标，可配置 Azure 门户来收集这些指标，以便通过图表直观显示。 可以创建警报，以便在达到存储资源指标的阈值时收到通知。
+[Azure 存储分析](../../storage/storage-analytics.md) 提供了所有存储服务的指标，可配置 Azure 门户来收集这些指标，以便通过图表直观显示。 可以创建警报，以便在达到存储资源指标的阈值时收到通知。
 
 Azure 存储现提供 [Blob 对象软删除](../../storage/blobs/storage-blob-soft-delete.md)，以便在应用程序或其他存储帐户用户意外修改或删除数据后恢复数据。
 
@@ -75,7 +75,8 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 有关详细信息，请参阅以下文章：
 
 - [将 Azure 存储与 Azure HDInsight 群集配合使用](../hdinsight-hadoop-use-blob-storage.md)
-- [Azure 存储伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)
+- [标准存储帐户的可伸缩性目标](../../storage/common/scalability-targets-standard-account.md)
+- [Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)
 - [Microsoft Azure 存储性能和可伸缩性清单](../../storage/common/storage-performance-checklist.md)
 - [监视、诊断和排查 Microsoft Azure 存储问题](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [在 Azure 门户中监视存储帐户](../../storage/common/storage-monitor-storage-account.md)
@@ -101,7 +102,7 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 - **使用 Blob 存储工具、框架和应用**：Data Lake Storage Gen2 可以继续使用目前适用于 Blob 存储的各种工具、框架和应用程序。
 
-- **已优化的驱动程序**：Azure Blob 文件系统驱动程序 (ABFS) 针对大数据分析进行了 [专门优化](../../storage/data-lake-storage/abfs-driver.md) 。 相应的 REST API 通过 dfs 终结点 dfs.core.chinacloudapi.cn 进行显示。
+- **优化的驱动程序**：Azure Blob 文件系统驱动程序 (ABFS) 针对大数据分析进行了 [专门优化](../../storage/data-lake-storage/abfs-driver.md) 。 相应的 REST API 通过 dfs 终结点 dfs.core.chinacloudapi.cn 进行显示。
 
 可以使用以下格式之一访问存储在 ADLS Gen2 中的数据：
 - `abfs:///`：访问群集的默认 Data Lake Storage。
@@ -191,7 +192,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 - [本地冗余存储 (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [异地冗余存储 (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [读取访问异地冗余存储 (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [读取访问异地冗余存储 (RA-GRS)](../../storage/common/storage-redundancy.md)
 
 
 有关详细信息，请参阅以下文章：

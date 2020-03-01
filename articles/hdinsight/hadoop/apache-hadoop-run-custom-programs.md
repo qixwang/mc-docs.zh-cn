@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 12/04/2017
-ms.date: 10/28/2019
+origin.date: 01/01/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5d0497a1bdb409840887ded40e125f338fa40aad
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 992ef18ef7559fcd9774e74f3b2a0e50a7fc360b
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583871"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563506"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
 
@@ -58,16 +58,16 @@ ms.locfileid: "72583871"
 
 1. 开发、编译和测试 MapReduce 程序之后，请使用 `scp` 命令将 jar 文件上传到头节点。
 
-    ```bash
-    scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```cmd
+    scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
-    将 **USERNAME** 替换为群集的 SSH 用户帐户。 将 **CLUSTERNAME** 替换为群集名称。 如果使用了密码保护 SSH 帐户，系统会提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
+    将 CLUSTERNAME 替换为群集名称。 如果使用了密码保护 SSH 帐户，系统会提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
 
-2. 使用 [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) 连接到群集。
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
-    ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
 3. 在 SSH 会话中，通过 YARN 执行 MapReduce 程序。

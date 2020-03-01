@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 准备 Debian VHD | Azure
+title: 在 Azure 中准备 Debian Linux VHD
 description: 了解如何创建 Debian VHD 映像，以便在 Azure 中进行部署。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 11/13/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9eab019db9323779c0de394ad4be203b8d42a7b5
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 83d8aba0f9175e32da3bdfc8608d64c34deafecd
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272720"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428384"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本部分假定你已经将从 [Debian 网站](https://www.debian.org/distrib/)下载的 .iso 文件中的 Debian Linux 操作系统安装到虚拟硬盘。 可以使用多种现有的工具来创建 .vhd 文件；Hyper-V 只是一个示例。 有关 Hyper-V 的使用说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ## <a name="installation-notes"></a>安装说明

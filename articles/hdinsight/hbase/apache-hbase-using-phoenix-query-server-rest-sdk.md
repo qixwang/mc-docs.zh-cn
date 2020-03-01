@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 12/04/2017
-ms.date: 01/14/2019
+origin.date: 01/01/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 33150c16cc88df87c3139ecdc238102fa8fde9cc
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: 436ca47d15a80e2671e00b604dc3811eb4a1f32e
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878737"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563492"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-phoenix-squirrel-linux.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
+[Apache Phoenix](https://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-query-with-phoenix.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
 
 本文介绍如何使用 PQS REST SDK 创建表、逐个或成批 upsert 行，以及使用 SQL 语句选择数据。 示例使用[适用于 Apache Phoenix 查询服务器的 Microsoft .NET 驱动程序](https://www.nuget.org/packages/Microsoft.Phoenix.Client)。 此 SDK 在 [Apache Calcite 的 Avatica](https://calcite.apache.org/avatica/) API 基础上构建，该 API 将协议缓冲区专用于序列化格式。
 
@@ -178,7 +178,7 @@ finally
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-表的 `StateProvince` 列值会用在后续的选择操作中。
+表的 `StateProvince` 列值会在后续的选择操作中使用。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -285,7 +285,7 @@ finally
 }
 ```
 
-执行插入语句的结构类似于创建新表。 请注意，在 `try` 块末尾，事务是显式提交的。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
+执行插入语句的结构类似于创建新表。 在 `try` 块末尾，事务将显式提交。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
 
 ## <a name="batch-insert-data"></a>批插入数据
 

@@ -1,38 +1,28 @@
 ---
-title: Azure Stack 支持的来宾操作系统 | Microsoft Docs
-description: 在 Azure Stack 上可以使用这些来宾操作系统。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 支持的来宾操作系统
+titleSuffix: Azure Stack
+description: 了解在 Azure Stack Hub 上可以使用哪些来宾操作系统。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 08/14/2019
-ms.date: 01/13/2020
+origin.date: 01/07/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
-ms.openlocfilehash: f2a45cdf99664e1e9d50ae2371ee996525d2631a
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: af9c87e740dafb0bc3475348db1b10f114de8309
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737733"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540274"
 ---
-# <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack 支持的来宾操作系统
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="guest-operating-systems-supported-on-azure-stack-hub"></a>Azure Stack Hub 支持的来宾操作系统
 
 ## <a name="windows"></a>Windows
 
-Azure Stack 支持下表中列出的 Windows 来宾操作系统：
+Azure Stack Hub 支持下表中列出的 Windows 来宾操作系统：
 
-| 操作系统 | 说明 | 在市场中可用 |
+| 操作系统 | 说明 | 在 Azure Stack Hub 市场中提供 |
 | --- | --- | --- |
 | Windows Server，版本 1709 | 64 位 | 包含容器的核心 |
 | Windows Server 2019 | 64 位 |  数据中心、数据中心核心、包含容器的数据中心 |
@@ -44,22 +34,22 @@ Azure Stack 支持下表中列出的 Windows 来宾操作系统：
 | Windows 10 *（请参见注释 1）* | 64 位，Pro 和 Enterprise | 自带映像 |
 
 > [!NOTE]
-> 若要在 Azure Stack 上部署 Windows 10 客户端操作系统，必须具备 [Windows 每用户授权](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx)，或者通过合格多租户托管商 ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) 购买。
+> 若要在 Azure Stack Hub 上部署 Windows 10 客户端操作系统，必须具备 [Windows 每用户授权](https://www.microsoft.com/licensing/product-licensing/windows10.aspx)，或者通过合格多租户托管商 ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) 购买。
 
-市场映像可用于预付费或 BYOL (EA/SPLA) 授权。 不支持在单个 Azure Stack 实例上同时使用这两者。 在部署期间，Azure Stack 会将适当版本的来宾代理注入到映像中。
+市场映像可用于预付费或 BYOL (EA/SPLA) 授权。 不支持在单个 Azure Stack Hub 实例上同时使用这两者。 在部署期间，Azure Stack Hub 会将适当版本的来宾代理注入到映像中。
 
-Datacenter 版本可在市场中下载；客户可以自带包含其他版本的服务器映像。 市场中未提供 Windows 客户端映像。
+Datacenter 版本可在 Azure Stack Hub 市场中下载；客户可以自带包含其他版本的服务器映像。 Azure Stack Hub 市场中未提供 Windows 客户端映像。
 
 ## <a name="linux"></a>Linux
 
-市场中列为可用的 Linux 发行版包括必要的 Windows Azure Linux 代理 (WALA)。 如果将自己的映像带到 Azure Stack，请遵循[将 Linux 映像添加到 Azure Stack](azure-stack-linux.md) 中的指导。
+Azure Stack Hub 市场中列为可用的 Linux 发行版包括必要的 Windows Azure Linux 代理 (WALA)。 如果将自己的映像带到 Azure Stack，请遵循[将 Linux 映像添加到 Azure Stack](azure-stack-linux.md) 中的指导。
 
 > [!NOTE]
-> 自定义映像应该使用最新的公共 WALA 版本（基于 1903 Azure Stack 及更高版本，或者包含 1901/1902 修补程序）或 2.2.20 版本生成。 2\.2.20 之前的版本以及介于 2.2.21 和 2.2.34（含）之间的版本在 Azure Stack 上可能无法正常运行。 在 Azure Stack 1910 版及更高版本中，所有 Azure WALA 代理版本都将使用 Azure Stack。
+> 自定义映像应该使用最新的公共 WALA 版本（基于 1903 Azure Stack Hub 及更高版本，或者包含 1901/1902 修补程序）或 2.2.20 版本生成。 2\.2.20 之前的版本以及介于 2.2.21 和 2.2.34（含）之间的版本在 Azure Stack Hub 上可能无法正常运行。 在 Azure Stack Hub 1910 版及更高版本中，所有 Azure WALA 代理版本都可与 Azure Stack Hub 一起使用。
 >
-> 目前，Azure Stack 1910 版及更高版本都支持 [cloud-init](https://cloud-init.io/)。
+> Azure Stack Hub 1910 及更高版本不支持 [cloud-init](https://cloud-init.io/)。
 
-| 分发 | 说明 | 发布者 | 市场 |
+| 分发 | 说明 | 发布者 | Azure Stack Hub 市场 |
 | --- | --- | --- | --- |
 | 基于 CentOS 的 6.9 | 64 位 | Rogue Wave | 是 |
 | 基于 CentOS 的 7.5 | 64 位 | Rogue Wave | 是 |
@@ -76,11 +66,11 @@ Datacenter 版本可在市场中下载；客户可以自带包含其他版本的
 | Ubuntu 16.04-LTS | 64 位 | Canonical | 是 |
 | Ubuntu 18.04-LTS | 64 位 | Canonical | 是 |
 
-有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack：常见问题解答](https://access.redhat.com/articles/3413531)。
+有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack Hub：常见问题解答](https://access.redhat.com/articles/3413531)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Stack 市场的详细信息，请参阅以下文章：
+有关 Azure Stack Hub 市场的详细信息，请参阅以下文章：
 
 - [下载市场项](azure-stack-download-azure-marketplace-item.md)  
 - [创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)

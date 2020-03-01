@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Linux 虚拟机的大小 | Azure
+title: Azure 中 Linux 虚拟机的大小
 description: 列出 Azure 中 Linux 虚拟机的不同可用大小。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-origin.date: 08/08/2019
-ms.date: 10/14/2019
+origin.date: 11/06/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 44bf6987c31f7d5b2c02dc9d04ea3f94ed20cfb4
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: a49f52729aa6fdb108042b77abea3ff0c5e996ef
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272577"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428356"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的大小
 本文介绍可用于运行 Linux 应用和工作负荷的 Azure 虚拟机的可用大小与选项。 此外，还提供在计划使用这些资源时要考虑的部署注意事项。 本文也适用于 [Windows 虚拟机](../windows/sizes.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
@@ -32,8 +32,8 @@ ms.locfileid: "72272577"
 | [内存优化](sizes-memory.md)         | Esv3、Ev3、M、DSv2、Dv2  | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 | [GPU](sizes-gpu.md)            |     NCv3           | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。       |
 
-<!--Not Available [General purpose](sizes-general.md) Dasv3, Dav3, DC-->
-<!--Not Available [Memory optimized](sizes-memory.md) Easv3, Eav3, Mv2-->
+<!--Not Available [General purpose](sizes-general.md) Dasv4, Dav4, DC-->
+<!--Not Available [Memory optimized](sizes-memory.md) Easv4, Eav4, Mv2-->
 <!--Not Available [Storage optimized](sizes-storage.md) Lsv2-->
 <!--Not Available NV, NVv2, NC, NCv2, ND, NDv2 (Preview)-->
 <!--Not Available [High performance compute](sizes-hpc.md) HB, HC, H -->
@@ -41,8 +41,8 @@ ms.locfileid: "72272577"
 <br />
 
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://www.azure.cn/pricing/details/virtual-machines/)。 
-- 有关各 Azure 区域中推出的 VM 大小，请查看[可用产品(按区域)](https://www.azure.cn/home/features/products-by-region)。
-- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
+- 如需了解 Azure 区域中各种 VM 大小的可用性，请参阅 [可用产品（按区域）](https://status.azure.com/status/)。
+- 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
 ## <a name="rest-api"></a>REST API
@@ -74,7 +74,7 @@ ms.locfileid: "72272577"
 
     <!--Not Available- [High performance compute](sizes-hpc.md)-->
     
-- 查看[上一代](sizes-previous-gen.md)页，了解 A Standard、Dv1（D1-4 和 D11-14 v1）系列。
+- 查看[上一代](sizes-previous-gen.md)页，了解 A Basic 和 Standard、D/DSv1（D1-4 和 D11-14 v1）以及 F/Fsv1 系列。
 
-<!--Not Available on A8-A11 series-->
+<!--Not Available on A8-A11, G/GS, Lsv1, and NVv2 series-->
 <!--Update_Description: update meta properties, wording update, update link -->

@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: v-yiso
-origin.date: 09/11/2019
-ms.date: 10/28/2019
-ms.openlocfilehash: 492587e988a4e9e8317c67572dc943e1b837f617
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+origin.date: 02/06/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: f8d24f81904bd005421c79308cd6e199bda2a72b
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389589"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563517"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 检测信号问题
 
@@ -82,6 +82,21 @@ Ambari 代理尚未启动，这会导致 Ambari UI 发出警报，即对于某�
     ```
 
     如果故障转移控制器服务未运行，则很可能是由于某个问题导致 hdinsight 代理无法启动故障转移控制器。 通过 `/var/log/hdinsight-agent/hdinsight-agent.out` 文件检查 hdinsight 代理日志。
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>方案：Ambari 的检测信号丢失
+
+### <a name="issue"></a>问题
+
+Ambari 检测信号代理已丢失。
+
+### <a name="cause"></a>原因
+
+OMS 日志导致 CPU 使用率高。
+
+### <a name="resolution"></a>解决方法
+
+* 使用 [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell cmdlet 禁用 Azure Monitor 日志记录。
+* 删除 `mdsd.warn` 日志文件
 
 ---
 

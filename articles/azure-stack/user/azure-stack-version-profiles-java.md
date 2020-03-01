@@ -1,38 +1,27 @@
 ---
-title: 在 Azure Stack 中将 API 版本配置文件与 Java 配合使用 | Microsoft Docs
-description: 了解如何在 Azure Stack 中将 API 版本配置文件与 Java 配合使用。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中将 API 版本配置文件与 Java 配合使用
+description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Java 配合使用。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 52dcbcbd12f349ee0285c2d3803857be8c703685
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 96b13a5e1597821fc54006ab8b5117423abf3ee8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020052"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540740"
 ---
-# <a name="use-api-version-profiles-with-java-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Java 配合使用
+# <a name="use-api-version-profiles-with-java-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Java 配合使用
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+用于 Azure Stack Hub 资源管理器的 Java SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了计算、网络、存储、应用服务和 [Key Vault](/key-vault/key-vault-whatis)。 
 
-用于 Azure Stack 资源管理器的 Java SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了计算、网络、存储、应用服务和 [Key Vault](/key-vault/key-vault-whatis)。 
+Java SDK 纳入了 API 配置文件，其方法是：在 Pom.xml 文件中包括依赖项，由后者加载 .java 文件中的正确模块   。 不过，可以添加多个作为依赖项的配置文件，例如，添加 **2019-03-01-hybrid** 或 **latest** 作为 Azure 配置文件。 使用这些依赖项来加载正确的模块，这样在创建资源类型时，就可以从这些配置文件中选择要使用的 API 版本。 这样就可以使用 Azure 中的最新版本，同时使用 Azure Stack Hub 的最新 API 版本进行开发。
 
-Java SDK 纳入了 API 配置文件，其方法是：在 Pom.xml 文件中包括依赖项，由后者加载 .java 文件中的正确模块   。 不过，可以添加多个作为依赖项的配置文件，例如，添加 **2019-03-01-hybrid** 或 **latest** 作为 Azure 配置文件。 使用这些依赖项来加载正确的模块，这样在创建资源类型时，就可以从这些配置文件中选择要使用的 API 版本。 这样就可以使用 Azure 中的最新版本，同时使用 Azure Stack 的最新 API 版本进行开发。
-
-使用 Java SDK 可以获得真正的混合云开发人员体验。 Java SDK 中的 API 配置文件可以用来在公有云 Azure 资源和 Azure Stack 中的资源之间进行切换，实现混合云开发。
+使用 Java SDK 可以获得真正的混合云开发人员体验。 Java SDK 中的 API 配置文件可以用来在公有云 Azure 资源和 Azure Stack Hub 中的资源之间进行切换，实现混合云开发。
 
 ## <a name="java-and-api-version-profiles"></a>Java 与 API 版本配置文件
 
@@ -42,7 +31,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
   - 若使用 latest 配置文件，则依赖项为 **com.microsoft.azure**。
 
-  - 若要使用 Azure Stack 中提供的最新支持的服务，请使用 **com.microsoft.azure.profile\_2019\_03\_01\_hybrid** 配置文件。
+  - 若要使用 Azure Stack Hub 中提供的最新支持的服务，请使用 **com.microsoft.azure.profile\_2019\_03\_01\_hybrid** 配置文件。
 
     - 在 Pom.xml 文件中将配置文件指定为依赖项，如果从下拉列表中选择了正确的类，则会自动加载模块（就像使用 .NET 一样）  。
 
@@ -84,26 +73,26 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
    - **com.microsoft.azure**
      - **latest**
 
-5. 如果不可用，请创建一个订阅，并保存订阅 ID 供以后使用。 有关如何创建订阅的说明，请参阅[在 Azure Stack 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)。
+5. 如果不可用，请创建一个订阅，并保存订阅 ID 供以后使用。 有关如何创建订阅的说明，请参阅[在 Azure Stack Hub 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)。
 
-6. 创建服务主体并保存客户端 ID 和客户端机密。 有关如何为 Azure Stack 创建服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。 创建服务主体时的客户端 ID 也称为应用程序 ID。
+6. 创建服务主体并保存客户端 ID 和客户端机密。 有关如何为 Azure Stack Hub 创建服务主体的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。 创建服务主体时的客户端 ID 也称为应用程序 ID。
 
-7. 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
+7. 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要将 Azure Java SDK 与 Azure Stack 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对操作系统的说明。
+若要将 Azure Java SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对操作系统的说明。
 
-| Value                     | 环境变量 | 说明                                                                                                                                                                                                          |
+| 值                     | 环境变量 | 说明                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 租户 ID                 | `AZURE_TENANT_ID`            | Azure Stack [租户 ID](../operator/azure-stack-identity-overview.md)。                                                          |
+| 租户 ID                 | `AZURE_TENANT_ID`            | Azure Stack Hub [租户 ID](../operator/azure-stack-identity-overview.md)。                                                          |
 | 客户端 ID                 | `AZURE_CLIENT_ID`             | 在上一部分中创建服务主体时保存的服务主体应用程序 ID。                                                                                              |
-| 订阅 ID           | `AZURE_SUBSCRIPTION_ID`      | 使用[订阅 ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) 访问 Azure Stack 中的套餐。                |
+| 订阅 ID           | `AZURE_SUBSCRIPTION_ID`      | 使用[订阅 ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) 访问 Azure Stack Hub 中的套餐。                |
 | 客户端机密             | `AZURE_CLIENT_SECRET`        | 创建服务主体时保存的服务主体应用程序机密。                                                                                                                                   |
-| 资源管理器终结点 | `ARM_ENDPOINT`              | 请参阅 [Azure Stack 资源管理器终结点](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)一文。 |
-| Location                  | `RESOURCE_LOCATION`    | 对于 Azure Stack 来说为 **Local**。                                                                                                                                                                                                |
+| 资源管理器终结点 | `ARM_ENDPOINT`              | 参阅 [Azure Stack Hub 资源管理器终结点](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint)一文。 |
+| 位置                  | `RESOURCE_LOCATION`    | 对于 Azure Stack Hub 来说为 **Local**。                                                                                                                                                                                                |
 
-若要查找你的 Azure Stack 的租户 ID，请参阅[此处](../operator/azure-stack-csp-ref-operations.md)的说明。 若要设置环境变量，请使用以下部分中的过程：
+若要查找你的 Azure Stack Hub 的租户 ID，请参阅[此处](../operator/azure-stack-csp-ref-operations.md)的说明。 若要设置环境变量，请使用以下部分中的过程：
 
 ### <a name="microsoft-windows"></a>Microsoft Windows
 
@@ -121,13 +110,13 @@ Set AZURE_TENANT_ID=<Your_Tenant_ID>
 Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
-### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
+### <a name="trust-the-azure-stack-hub-ca-root-certificate"></a>信任 Azure Stack Hub CA 根证书
 
-如果使用的是 Azure Stack 开发工具包 (ASDK)，则必须信任远程计算机上的 CA 根证书。 不需要信任 Azure Stack 集成系统的 CA 根证书。
+如果使用的是 Azure Stack 开发工具包 (ASDK)，则必须信任远程计算机上的 CA 根证书。 不需要信任 Azure Stack Hub 集成系统的 CA 根证书。
 
 #### <a name="windows"></a>Windows
 
-1. 将 Azure Stack 自签名证书导出到桌面。
+1. 将 Azure Stack Hub 自签名证书导出到桌面。
 
 1. 在命令提示符下，将目录更改为 `%JAVA_HOME%\bin`。
 
@@ -137,7 +126,7 @@ Export AZURE_TENANT_ID=<Your_Tenant_ID>
    .\keytool.exe -importcert -noprompt -file <location of the exported certificate here> -alias root -keystore %JAVA_HOME%\lib\security\cacerts -trustcacerts -storepass changeit
    ```
 
-### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack 资源管理器终结点
+### <a name="the-azure-stack-hub-resource-manager-endpoint"></a>Azure Stack Hub 资源管理器终结点
 
 Azure 资源管理器是一种管理框架，可供管理员用来部署、管理和监视 Azure 资源。 Azure 资源管理器可以通过单个操作以组任务而不是单个任务的形式处理这些任务。
 
@@ -147,7 +136,7 @@ Azure 资源管理器是一种管理框架，可供管理员用来部署、管�
 
 - ASDK 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`。
 
-- 集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`。
+- 集成系统中的 **ResourceManagerUrl** 为 `https://management.region.<fqdn>/`，其中 `<fqdn>` 是完全限定的域名。
 
 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`。
 
@@ -168,17 +157,17 @@ Azure 资源管理器是一种管理框架，可供管理员用来部署、管�
 
 ## <a name="existing-api-profiles"></a>现有 API 配置文件
 
-- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**：为 Azure Stack 生成的最新配置文件。 使用此配置文件可以使服务与版本 1904 或更高版本的 Azure Stack 最兼容。
+- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**：为 Azure Stack Hub 生成的最新配置文件。 使用此配置文件可以使服务与版本 1904 或更高版本的 Azure Stack Hub 最兼容。
 
-- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**：为 Azure Stack 生成的配置文件。 使用此配置文件可以使服务与版本 1808 或更高版本的 Azure Stack 兼容。
+- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**：为 Azure Stack Hub 生成的配置文件。 使用此配置文件可以使服务与版本 1808 或更高版本的 Azure Stack Hub 兼容。
 
 - **com.microsoft.azure**：包含所有服务的最新版本的配置文件。 使用所有服务的最新版本。
 
-有关 Azure Stack 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要](../user/azure-stack-version-profiles.md#summary-of-api-profiles)。
+有关 Azure Stack Hub 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要](../user/azure-stack-version-profiles.md#summary-of-api-profiles)。
 
 ## <a name="azure-java-sdk-api-profile-usage"></a>Azure Java SDK API 配置文件的使用
 
-以下代码用于在 Azure Stack 上对服务主体进行身份验证。 它使用租户 ID 和特定于 Azure Stack 的身份验证基准创建令牌：
+以下代码用于在 Azure Stack Hub 上对服务主体进行身份验证。 它使用租户 ID 和特定于 Azure Stack Hub 的身份验证基准创建令牌：
 
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
@@ -188,14 +177,14 @@ Azure azureStack = Azure.configure()
                     .authenticate(credentials, credentials.defaultSubscriptionID());
 ```
 
-此代码可让你使用 API 配置文件依赖项将应用成功部署到 Azure Stack。
+此代码可让你使用 API 配置文件依赖项将应用成功部署到 Azure Stack Hub。
 
-## <a name="define-azure-stack-environment-setting-functions"></a>定义 Azure Stack 环境设置函数
+## <a name="define-azure-stack-hub-environment-setting-functions"></a>定义 Azure Stack Hub 环境设置函数
 
-若要将 Azure Stack 云注册到正确的终结点，请使用以下代码：
+若要将 Azure Stack Hub 云注册到正确的终结点，请使用以下代码：
 
 ```java
-// Get Azure Stack cloud endpoints
+// Get Azure Stack Hub cloud endpoints
 final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
 
 AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>() {
@@ -260,7 +249,7 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 ## <a name="samples-using-api-profiles"></a>使用 API 配置文件的示例
 
-若要使用 .NET 和 Azure Stack API 配置文件来创建解决方案，可以将以下 GitHub 示例用作参考：
+若要使用 .NET 和 Azure Stack Hub API 配置文件来创建解决方案，可以将以下 GitHub 示例用作参考：
 
 - [管理资源组](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
@@ -293,19 +282,19 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
    - `export AZURE_CLIENT_ID={your client ID}`
    - `export AZURE_CLIENT_SECRET={your client secret}`
    - `export AZURE_SUBSCRIPTION_ID={your subscription ID}`
-   - `export ARM_ENDPOINT={your Azure Stack Resource Manager URL}`
-   - `export RESOURCE_LOCATION={location of Azure Stack}`
+   - `export ARM_ENDPOINT={your Azure Stack Hub Resource Manager URL}`
+   - `export RESOURCE_LOCATION={location of Azure Stack Hub}`
 
    在 Windows 中，请使用 **set** 而不是 **export**。
 
 5. 使用 `getActiveDirectorySettings` 函数检索 Azure 资源管理器元数据终结点。
 
     ```java
-    // Get Azure Stack cloud endpoints
+    // Get Azure Stack Hub cloud endpoints
     final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
     ```
 
-6. 在 Pom.xml 文件中，添加以下依赖项，以便将 **2019-03-01-hybrid** 配置文件用于 Azure Stack  。 此依赖项将为计算、网络、存储、Key Vault 和应用服务资源提供程序安装与此配置文件关联的模块：
+6. 在 **Pom.xml** 文件中，添加以下依赖项，以便将 **2019-03-01-hybrid** 配置文件用于 Azure Stack Hub。 此依赖项将为计算、网络、存储、Key Vault 和应用服务资源提供程序安装与此配置文件关联的模块：
 
    ```xml
    <dependency>
@@ -325,5 +314,5 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 有关 API 配置文件的详细信息，请参阅：
 
-- [Azure Stack 中的版本配置文件](azure-stack-version-profiles.md)
+- [Azure Stack Hub 中的版本配置文件](azure-stack-version-profiles.md)
 - [配置文件支持的资源提供程序 API 版本](azure-stack-profiles-azure-resource-manager-versions.md)

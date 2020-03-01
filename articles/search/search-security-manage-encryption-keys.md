@@ -1,36 +1,35 @@
 ---
-title: 使用客户管理的密钥进行静态加密（预览版）
+title: 使用客户管理的密钥进行静态加密
 titleSuffix: Azure Cognitive Search
-description: 通过在 Azure Key Vault 中创建和管理的密钥，来补充 Azure 认知搜索中基于索引和同义词映射的服务器端加密。 此功能目前处于公开预览状态。
+description: 使用在 Azure Key Vault 中创建和管理的密钥，来补充 Azure 认知搜索中基于索引和同义词映射的服务器端加密。
 manager: nitinme
 author: NatiNimni
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: c63ad88d3e068883028ad5e293d6e3b090bc0c19
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/08/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 9fb001dbe9951311e4d73fbee7ce8fa11f005287
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336488"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501340"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>使用 Azure Key Vault 中客户管理的密钥在 Azure 认知搜索中实现内容的静态加密
 
-> [!IMPORTANT] 
-> 静态加密支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> [REST API 版本 2019-05-06-Preview](search-api-preview.md) 和 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md) 提供此功能。 目前不提供门户支持。
-
-默认情况下，Azure 认知搜索使用服务托管的密钥静态加密用户内容。 可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个附加的加密层来补充默认加密。 本文将会讲解这些步骤。
+默认情况下，Azure 认知搜索使用服务托管的密钥静态加密已编制索引的内容。 可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个附加的加密层来补充默认加密。 本文将会讲解这些步骤。
 
 通过与 [Azure Key Vault](https://docs.azure.cn/key-vault/key-vault-overview) 的集成来支持服务器端加密。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault 还可以审核密钥用法。 
 
 使用客户托管密钥的加密级别是创建这些对象时在索引或同义词映射级别配置的，而不是在搜索服务级别配置的。 无法加密已存在的内容。 
 
-可以使用不同 Key Vault 中的不同密钥。 这意味着，单个搜索服务可以托管多个已加密的索引/同义词映射（可能已使用不同的客户托管密钥加密每个索引/同义词映射），以及未使用客户托管密钥加密的索引/同义词映射。 
+密钥不需要全部位于同一 Key Vault 中。 单个搜索服务可以托管多个已加密的索引或同义词映射，每个映射都可以分别使用存储在不同 Key Vault 中的客户管理的加密密钥进行加密。  还可以在同一服务中托管未使用客户管理的密钥加密的索引和同义词映射。 
 
-## <a name="prerequisites"></a>先决条件
+> [!IMPORTANT] 
+> 此功能在 [REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) 和 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md) 中可用。 当前不支持在 Azure 门户中配置客户管理的加密密钥。 搜索服务必须是在 2019 年 1 月之后创建的，且不能是免费（共享）服务。
+
+## <a name="prerequisites"></a>必备条件
 
 本示例使用以下服务： 
 
@@ -40,11 +39,14 @@ ms.locfileid: "75336488"
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli) 用于配置任务。
 
-+ [Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md) 和 [Azure 认知搜索 SDK](https://aka.ms/search-sdk-preview) 可用于调用预览版 REST API。 客户托管的加密目前不支持门户或 .NET SDK。
++ [Postman](search-get-started-postman.md)、[Azure PowerShell](search-create-index-rest-api.md) 和 [Azure 认知搜索 SDK](https://aka.ms/search-sdk-preview) 可用于调用 REST API。 门户目前不支持客户管理的加密。
+
+>[!Note]
+> 由于客户管理的密钥功能的加密本质，删除 Azure Key Vault 密钥后，Azure 认知搜索将无法检索你的数据。 为了防止意外删除 Key Vault 密钥造成数据丢失，你必须在 Key Vault 中启用“软删除”和“清除保护”，然后才能使用 Key Vault。  有关详细信息，请参阅 [Azure Key Vault 软删除](https://docs.azure.cn/key-vault/key-vault-ovw-soft-delete)。   
 
 ## <a name="1---enable-key-recovery"></a>1 - 启用密钥恢复
 
-此步骤是可选的，但强烈建议执行。 创建 Azure Key Vault 资源后，执行以下 PowerShell 或 Azure CLI 命令，在所选 Key Vault 中启用“软删除”和“清除保护”：     
+创建 Azure Key Vault 资源后，执行以下 PowerShell 或 Azure CLI 命令，在所选 Key Vault 中启用“软删除”和“清除保护”：     
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -59,9 +61,6 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```azurecli
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
-
->[!Note]
-> 由于客户管理的密钥功能的加密本质，删除 Azure Key Vault 密钥后，Azure 认知搜索将无法检索你的数据。 为了防止意外删除 Key Vault 密钥造成数据丢失，我们强烈建议在所选 Key Vault 中启用“软删除”和“清除保护”。 有关详细信息，请参阅 [Azure Key Vault 软删除](https://docs.azure.cn/key-vault/key-vault-ovw-soft-delete)。   
 
 ## <a name="2---create-a-new-key"></a>2 - 创建新密钥
 

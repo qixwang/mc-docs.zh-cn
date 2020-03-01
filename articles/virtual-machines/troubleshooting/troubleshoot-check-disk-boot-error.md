@@ -1,5 +1,5 @@
 ---
-title: Windows 在启动 Azure VM 时显示“正在检查文件系统”| Azure
+title: Windows 在启动 Azure VM 时显示“正在检查文件系统”
 description: 了解如何解决 VM 在启动时显示“正在检查文件系统”的问题 | Azure
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,21 +11,21 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 08/31/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f7a1a0fb58372d7dc509dc28b41db8eadd669da5
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: e894999c883d1cc4806c968a622a2a0a1cd944a1
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116938"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428278"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows 在启动 Azure VM 时显示“正在检查文件系统”
 
 本文介绍在 Azure 中启动 Windows 虚拟机 (VM) 时可能遇到的“正在检查文件系统”错误。
 
 > [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
 
 ## <a name="symptom"></a>症状 
 
@@ -48,4 +48,4 @@ Windows VM 不启动。 检查[启动诊断](boot-diagnostics.md)中的启动屏
         chkdsk E: /f
 4. “磁盘检查”完成后，从恢复 VM 分离该磁盘，然后将磁盘作为 OS 磁盘重新附加到受影响的 VM。 有关详细信息，请参阅[通过将 OS 磁盘附加到恢复 VM 来排查 Windows VM 相关问题](troubleshoot-recovery-disks-portal-windows.md)。
 
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

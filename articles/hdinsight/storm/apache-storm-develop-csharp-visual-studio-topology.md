@@ -14,15 +14,15 @@ ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 11/06/2019
-ms.date: 12/09/2019
+origin.date: 12/31/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 16af49cf18854374bd6d38db8be62bb21c33cdf9
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: c3bae8655cc8ca0a420c88e2d32ebf9926364984
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657962"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563490"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -30,20 +30,17 @@ ms.locfileid: "74657962"
 
 同时还说明了如何创建使用 C# 和 Java 组件的混合拓扑。
 
-> [!NOTE]
-> 虽然本文档中的步骤依赖于带 Visual Studio 的 Windows 开发环境，但是也可将编译的项目提交到基于 Linux 或 Windows 的 HDInsight 群集。 仅在 2016 年 10 月 28 日以后创建的基于 Linux 的群集支持 SCP.NET 拓扑。
-
-若要将 C# 拓扑与基于 Linux 的群集配合使用，必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到 0.10.0.6 或更高版本。 包的版本还必须与 HDInsight 上安装的 Storm 的主要版本相符。
+C# 拓扑使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 有关潜在不兼容性的信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。 若要使用 C# 拓扑，必须将项目使用的 `Microsoft.SCP.Net.SDK` NuGet 包更新到 0.10.0.6 或更高版本。 包的版本还必须与 HDInsight 上安装的 Storm 的主要版本相符。
 
 | HDInsight 版本 | Apache Storm 版本 | SCP.NET 版本 | 默认 Mono 版本 |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>（仅在基于 Windows 的 HDInsight 上） | 不可用 |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
-> [!IMPORTANT]  
-> 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 有关潜在不兼容性的信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
+## <a name="prerequisite"></a>先决条件
+
+HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
 ## <a name="install-visual-studio"></a>安装 Visual Studio
 
@@ -51,7 +48,7 @@ ms.locfileid: "74657962"
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>安装针对 Visual Studio 的 Data Lake 工具
 
-若要安装针对 Visual Studio 的 Data Lake 工具，请执行[针对 Visual Studio 的 Data Lake 工具使用入门](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)中的步骤。
+若要安装针对 Visual Studio 的 Data Lake 工具，请执行[针对 Visual Studio 的 Data Lake 工具使用入门](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)中的步骤。
 
 ## <a name="install-java"></a>安装 Java
 
@@ -419,12 +416,13 @@ return topologyBuilder;
 
 现已准备好将拓扑提交到 HDInsight 群集。
 
+1. 导航到“视图” > “服务器资源管理器”。  
+
+1. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。  
+
 1. 在“解决方案资源管理器”中右键单击项目，然后选择“提交到 Storm on HDInsight”。  
 
-    > [!NOTE]  
-    > 如果出现提示，请输入 Azure 订阅的凭据。 如果有多个订阅，请登录到包含 Storm on HDInsight 群集的订阅。
-
-2. 从“提交拓扑”对话框中的“Storm 群集”下拉列表内，选择你的 Storm on HDInsight 群集，然后选择“提交”。    可以查看“输出”窗口来检查提交是否成功。 
+1. 从“提交拓扑”对话框中的“Storm 群集”下拉列表内，选择你的 Storm on HDInsight 群集，然后选择“提交”。    可以查看“输出”窗口来检查提交是否成功。 
 
     成功提交拓扑后，应会出现群集的“Storm 拓扑视图”窗口。  从列表中选择“WordCount”拓扑，查看正在运行的拓扑的信息。 
 
@@ -442,7 +440,7 @@ return topologyBuilder;
 
 ## <a name="transactional-topology"></a>事务拓扑
 
-前面的拓扑是非事务性的拓扑中的组件不实现重播消息的功能。 拓扑中的组件不会实现重播消息的功能。 如需事务拓扑的示例，请创建一个项目，然后选择“Storm 示例”  作为项目类型。
+前面的拓扑是非事务性的拓扑中的组件不实现重播消息的功能。 针对示例事务拓扑，请创建一个项目，并选择“Storm 示例”作为项目类型。 如需事务拓扑的示例，请创建一个项目，然后选择“Storm 示例”  作为项目类型。
 
 事务拓扑会实现以下项来支持重播数据：
 
@@ -541,7 +539,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ## <a name="how-to-update-scpnet"></a>如何更新 SCP.NET
 
-最新版 SCP.NET 支持通过 NuGet 进行包升级。 有新的更新可用时，会收到升级通知。 若要手动检查升级，请执行以下步骤：
+最新版 SCP.NET 支持通过 NuGet 进行包升级。 有新的更新可用时，将收到升级通知。 若要手动检查升级，请执行以下步骤：
 
 1. 在“解决方案资源管理器”  中，右键单击项目，然后选择“管理 NuGet 包”  。
 
@@ -734,7 +732,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 如果将拓扑提交到 HDInsight 时遇到错误，可在 HDInsight 群集上找到处理拓扑提交的服务器端组件的日志。 若要下载这些日志，请从命令行运行以下命令：
 
-```shell
+```cmd
 scp sshuser@clustername-ssh.azurehdinsight.cn:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 

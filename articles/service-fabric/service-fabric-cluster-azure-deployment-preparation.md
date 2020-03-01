@@ -3,14 +3,14 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 origin.date: 03/20/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 095e1308a672dd274763c8803eac9058f363cd22
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 8ae4e5cd871eb12eae188935f421c6677fca5a09
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742369"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540195"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -39,9 +39,58 @@ ms.locfileid: "75742369"
 
 主节点类型的 VM 数目下限取决于选择的[可靠性层][reliability]。
 
-请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)的最低建议要求。 
+请参阅[主节点类型](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)、[非主节点类型上的有状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)和[非主节点类型上的无状态工作负荷](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)的最低建议要求。
 
 如果节点数目超过最小数目，应根据想要在此节点类型中运行的应用程序/服务的副本数目确定数目。  [Service Fabric 应用程序的容量规划](service-fabric-capacity-planning.md)可帮助你估算运行应用程序所需的资源。 以后始终可以纵向扩展或缩减群集，以根据不断变化的应用程序工作负荷做出调整。 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>将临时 OS 磁盘用于虚拟机规模集
+
+“临时 OS 磁盘”  是在本地虚拟机 (VM) 上创建的存储，不保存到远程 Azure 存储。 建议将它们用于所有 Service Fabric 节点类型（主要和次要），因为与传统的持久 OS 磁盘相比，临时 OS 磁盘：
+
+* 降低了到 OS 磁盘的读/写延迟
+* 可实现更快的重置/重置节点映像管理操作
+* 降低了总体成本（磁盘免费，不会产生额外的存储成本）
+
+临时 OS 磁盘不是特定的 Service Fabric 功能，而是映射到 Service Fabric 节点类型的 Azure“虚拟机规模集”  的功能。 将它们与 Service Fabric 一起使用需要在群集 Azure 资源管理器模板中执行以下操作：
+
+1. 确保你的节点类型为临时 OS 磁盘指定[支持的 Azure VM 大小](../virtual-machines/windows/ephemeral-os-disks.md)，并且 VM 大小有足够的缓存大小来支持其 OS 磁盘大小（请参阅下文中的*注释*。）例如：
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > 请确保选择缓存大小等于或大于 VM 本身 OS 磁盘大小的 VM 大小，否则，Azure 部署可能会导致错误（即使最初接受了该大小）。
+
+2. 将虚拟机规模集版本 (`vmssApiVersion`) 指定为 `2018-06-01` 或更高版本：
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. 在部署模板的虚拟机规模集部分中，为 `diffDiskSettings` 指定 `Local` 选项：
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+有关详细信息和更多配置选项，请参阅 [Azure VM 的临时 OS 磁盘](../virtual-machines/windows/ephemeral-os-disks.md) 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>选择群集的持续性和可靠性级别
 持久性层用于向系统指示 VM 对于基本 Azure 基础结构拥有的权限。 在主节点类型中，此权限可让 Service Fabric 暂停影响系统服务及有状态服务的仲裁要求的任何 VM 级别基础结构请求（例如，VM 重启、VM 重置映像或 VM 迁移）。 在非主节点类型中，此特权可让 Service Fabric 暂停影响其中运行的有状态服务的仲裁要求的任何 VM 级别基础结构请求，例如，VM 重新启动、VM 重置映像、VM 迁移，等等。  有关不同级别的优势、要使用哪种级别以及何时使用的建议，请参阅[群集的持久性特征][durability]。
@@ -69,4 +118,4 @@ ms.locfileid: "75742369"
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
 [reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
 
-<!--Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

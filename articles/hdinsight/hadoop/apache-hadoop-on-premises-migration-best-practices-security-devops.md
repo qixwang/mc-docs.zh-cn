@@ -7,15 +7,15 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 10/25/2018
-ms.date: 07/22/2019
+origin.date: 12/19/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 64ed0d048bdd382c1e41e6edf6174462d3736040
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.openlocfilehash: 97929e5393446e9cd210527f0cde3653c535ddb9
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878508"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563508"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -49,7 +49,7 @@ ms.locfileid: "68878508"
 - [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 - [Azure 网络安全组概述](../../virtual-network/security-overview.md)
 - [Azure 虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)
-- [Azure 存储安全指南](../../storage/common/storage-security-guide.md)
+- [Azure 存储安全指南](../../storage/blobs/security-recommendations.md)
 - [Azure 存储服务静态加密](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>使用监视和警报
@@ -67,7 +67,7 @@ ms.locfileid: "68878508"
 1. 根据需要修改作业、应用程序或工作负载。
 1. 备份所有存储在本地群集节点上的暂时性数据。
 1. 删除现有的群集。
-1. 使用与先前群集相同的默认数据和元存储，在同一 VNET 子网中创建最新 HDInsight 版本的群集。
+1. 使用与前一个群集相同的默认数据和元存储，在同一虚拟网络子网中创建最新 HDInsight 版本的群集。
 1. 导入任何已备份的临时数据。
 1. 使用新群集启动作业/继续处理。
 

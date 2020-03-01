@@ -1,41 +1,32 @@
 ---
-title: Azure Stack 托管磁盘；差异和注意事项 | Microsoft Docs
-description: 了解 Azure Stack 中托管磁盘和托管映像的差异与注意事项。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 托管磁盘：差异与注意事项
+description: 了解 Azure Stack Hub 中托管磁盘和托管映像的差异与注意事项。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/04/2019
-ms.date: 01/13/2020
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: fe4bfa14becc6721fa95267d3c7a8e644746c72f
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 4b04c19f227b967cfc928163ead81758e1ad1af4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737884"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540767"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘：差异与注意事项
+# <a name="azure-stack-hub-managed-disks-differences-and-considerations"></a>Azure Stack Hub 托管磁盘：差异与注意事项
 
-本文汇总了 [Azure Stack 中的托管磁盘](azure-stack-manage-vm-disks.md)与 [Azure 中的托管磁盘](/virtual-machines/windows/managed-disks-overview)之间的差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
+本文汇总了 [Azure Stack Hub 中的托管磁盘](azure-stack-manage-vm-disks.md)与 [Azure 中的托管磁盘](/virtual-machines/windows/managed-disks-overview)之间的差异。 有关 Azure Stack Hub 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
 
 托管磁盘通过管理与 VM 磁盘关联的[存储帐户](../operator/azure-stack-manage-storage-accounts.md)简化了 IaaS 虚拟机 (VM) 的磁盘管理。
 
 > [!NOTE]  
-> 从 1808 更新开始，推出了 Azure Stack 上的托管磁盘。 从 1811 更新开始，使用 Azure Stack 门户创建 VM 时，会默认启用该功能。
+> 从 1808 更新开始，推出了 Azure Stack Hub 上的托管磁盘。 从 1811 更新开始，使用 Azure Stack Hub 门户创建 VM 时，会默认启用该功能。
   
 ## <a name="cheat-sheet-managed-disk-differences"></a>速查表：托管磁盘的差异
 
-| 功能 | Azure（中国） | Azure Stack |
+| 功能 | Azure（中国） | Azure Stack Hub |
 | --- | --- | --- |
 |静态数据加密 |Azure 存储服务加密 (SSE)、Azure 磁盘加密 (ADE)。     |BitLocker 128 位 AES 加密      |
 |映像          | 托管自定义映像 |支持|
@@ -51,18 +42,18 @@ ms.locfileid: "75737884"
 |迁移      |提供从现有非托管 Azure 资源管理器 VM 迁移的工具，而无需重新创建 VM。  |尚不支持 |
 
 > [!NOTE]  
-> Azure Stack 中的托管磁盘 IOPs 和吞吐量是一个上限数字而非预配的数字，这可能会受在 Azure Stack 中运行的硬件和工作负荷影响。
+> Azure Stack Hub 中的托管磁盘 IOPs 和吞吐量是一个上限数字而非预配的数字，这可能会受在 Azure Stack Hub 中运行的硬件和工作负荷影响。
 
 ## <a name="metrics"></a>指标
 
 存储指标也有一些差异：
 
-- 使用 Azure Stack，存储指标中的事务数据不区分内部或外部网络带宽。
-- 存储指标中的 Azure Stack 事务数据不包含虚拟机对所装载磁盘的访问。
+- 使用 Azure Stack Hub，存储指标中的事务数据不区分内部或外部网络带宽。
+- 存储指标中的 Azure Stack Hub 事务数据不包含虚拟机对所装载磁盘的访问。
 
 ## <a name="api-versions"></a>API 版本
 
-Azure Stack 托管磁盘支持以下 API 版本：
+Azure Stack Hub 托管磁盘支持以下 API 版本：
 
 - 2017-03-30
 - 2017-12-01
@@ -70,7 +61,7 @@ Azure Stack 托管磁盘支持以下 API 版本：
 ## <a name="convert-to-managed-disks"></a>转换为托管磁盘
 
 > [!NOTE]  
-> 不能在 Azure Stack 中使用 Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** 将非托管磁盘转换为托管磁盘。 Azure Stack 目前不支持此 cmdlet。
+> 不能在 Azure Stack Hub 中使用 Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** 将非托管磁盘转换为托管磁盘。 Azure Stack Hub 目前不支持此 cmdlet。
 
 可以使用以下脚本将当前预配的 VM 从非托管磁盘转换为托管磁盘。 将占位符替换成自己的值：
 
@@ -93,7 +84,7 @@ $VhdUri = "https://rgmgddisks347.blob.local.azurestack.external/vhds/unmngdvm201
 # The storage type for the managed disk: PremiumLRS or StandardLRS.
 $AccountType = "StandardLRS"
 
-# The Azure Stack location where the managed disk will be located.
+# The Azure Stack Hub location where the managed disk will be located.
 # The location should be the same as the location of the storage account in which VHD file is stored.
 # Configure the new managed VM point to the old unmanaged VM configuration (network config, VM name, location).
 $Location = "local"
@@ -138,7 +129,7 @@ New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Locatio
 
 ## <a name="managed-images"></a>托管映像
 
-Azure Stack 支持托管映像，可让你在通用化 VM（非托管和托管的 VM）上创建托管映像对象，以后只能创建托管磁盘 VM。  托管映像可实现以下两种方案：
+Azure Stack Hub 支持托管映像，可让你在通用化 VM（非托管和托管的 VM）上创建托管映像对象，以后只能创建托管磁盘 VM。  托管映像可实现以下两种方案：
 
 - 你有通用化的非托管 VM，后来想要使用托管磁盘。
 - 你有通用化的托管 VM，并想要创建多个类似的托管 VM。
@@ -166,9 +157,9 @@ Azure Stack 支持托管映像，可让你在通用化 VM（非托管和托管�
 
 使用[使用 PowerShell 从托管磁盘创建映像](/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell)的脚本从现有托管磁盘 VM 创建映像之后，请使用以下示例脚本从现有映像对象创建类似的 Linux VM。
 
-Azure Stack PowerShell 模块 1.7.0 或更高版本：按[从托管映像创建 VM](/virtual-machines/windows/create-vm-generalized-managed) 中的说明操作。
+Azure Stack Hub PowerShell 模块 1.7.0 或更高版本：按[从托管映像创建 VM](/virtual-machines/windows/create-vm-generalized-managed) 中的说明操作。
 
-Azure Stack PowerShell 模块 1.6.0 或更低版本：
+Azure Stack Hub PowerShell 模块 1.6.0 或更低版本：
 
 ```powershell
 # Variables for common values
@@ -227,10 +218,10 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmC
 应用 1808 或更高版本的更新后，必须先进行以下配置更改，然后再使用托管磁盘：
 
 - 如果订阅是在应用 1808 更新之前创建的，请遵循以下步骤来更新订阅。 否则，在此订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器发生内部错误。”
-   1. 在 Azure Stack 用户门户中，转到“订阅”，找到相应订阅。  依次单击“资源提供程序”、“Microsoft.Compute”  、“重新注册”  。 
-   2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。  
-- 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[此文](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中出现内部错误。”
+   1. 在 Azure Stack Hub 用户门户中，转到“订阅”，找到相应订阅。  依次单击“资源提供程序”、“Microsoft.Compute”  、“重新注册”  。 
+   2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack Hub - 托管磁盘”是否已列出。  
+- 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[此文](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-hub-with-the-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中出现内部错误。”
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解 Azure Stack 虚拟机](azure-stack-compute-overview.md)
+- [了解 Azure Stack Hub 虚拟机](azure-stack-compute-overview.md)。

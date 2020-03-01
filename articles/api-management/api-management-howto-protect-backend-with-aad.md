@@ -1,5 +1,6 @@
 ---
-title: 结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API | Microsoft Docs
+title: 同时使用 OAuth 2.0 以及 AAD 和 API 管理来保护 API
+titleSuffix: Azure API Management
 description: 了解如何结合使用 Azure Active Directory 和 API 管理来保护 Web API 后端。
 services: api-management
 documentationcenter: ''
@@ -9,17 +10,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 05/21/2019
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5cae1d68834048e668f7153ca4e294eee718ef8e
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 972044eb7159abc36912dfe81619349dc8ab516a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859496"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428622"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -48,12 +48,12 @@ ms.locfileid: "75859496"
 
 若要使用 Azure AD 保护 API，首先需要在 Azure AD 中注册一个表示该 API 的应用程序。 
 
-1. 导航到 Azure 门户 - 应用注册页。 
+1. 转到 [Azure 门户](https://portal.azure.cn)来注册应用程序。 搜索并选择“API 注册”  。
 
-2. 选择“新注册”。  
+1. 选择“新注册”。  
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
-    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `backend-app`。 
+    - 在“名称”  部分中，输入一个将显示给应用用户的有意义的应用程序名称，例如 *backend-app*。 
     - 在“支持的帐户类型”部分，选择适合你的方案的选项。  
 
 1. 将“重定向 URI”部分留空。 
@@ -64,29 +64,29 @@ ms.locfileid: "75859496"
 
 1. 选择“公开 API”  ，并将“应用程序 ID URI”  设为默认值。 记下此值以备将来使用。
 
-1. 在“添加范围”页中，创建 API 支持的新范围，  （例如“读取”）。然后单击“添加范围”以创建范围。  重复此步骤以添加 API 支持的所有范围。
+1. 选择“添加作用域”  按钮以显示“添加作用域”  页面。 然后创建该 API 支持的一个新作用域（例如 `Files.Read`）。 最后，选择“添加作用域”  按钮来创建作用域。 重复此步骤以添加你的 API 支持的所有作用域。
 
-1. 创建范围后，请记下它，以便在后续步骤中使用。 
+1. 创建作用域后，请记下它们，以便在后续步骤中使用。 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>在 Azure AD 中注册另一个应用程序用于表示客户端应用程序
 
 需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在本示例中，客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
 
-1. 导航到 Azure 门户 - 应用注册页。 
+1. 转到 [Azure 门户](https://portal.azure.cn)来注册应用程序。 搜索并选择“API 注册”  。
 
 1. 选择“新注册”。 
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
-    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `client-app`。 
-    - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。   
+    - 在“名称”  部分中，输入一个将显示给应用用户的有意义的应用程序名称，例如 *client-app*。 
+    - 在“支持的帐户类型”部分中，选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”。   
 
-1. 在“重定向 URI”  部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.net/signin`
+1. 在“重定向 URI”  部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.cn/signin`。
 
 1. 选择“注册”  以创建应用程序。 
 
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。
 
-现在，请创建此应用程序的客户端机密，以便在后续步骤中使用。
+现在，请为此应用程序创建客户端机密，以便在后续步骤中使用。
 
 1. 从客户端应用的页面列表中，选择“证书和机密”  ，然后选择“新建客户端密码”  。
 
@@ -98,17 +98,17 @@ ms.locfileid: "75859496"
 
 注册用于表示 API 和开发人员控制台的两个应用程序之后，需要授予权限，使客户端应用能够调用后端应用。  
 
-1. 导航到“应用注册”。  
+1. 转到 [Azure 门户](https://portal.azure.cn)来向客户端应用程序授予权限。 搜索并选择“API 注册”  。
 
-1. 选择 `client-app`，然后在应用的页面列表中转到“API 权限”  。
+1. 选择你的客户端应用程序。 然后，在应用的页面列表中，选择“API 权限”。 
 
 1. 选择“添加权限”  。
 
-1. 在“选择 API”  下，找到并选择 `backend-app`。
+1. 在“选择 API”  下，选择“我的 API”  ，然后找到并选择你的 backend-app。
 
-1. 在“委托的权限”下，选择对 `backend-app` 的适当权限，然后单击“添加权限”。  
+1. 在“委托的权限”下，选择对 backend-app 的适当权限，然后选择“添加权限”。  
 
-1. （可选）在“API 权限”页上，单击页面底部的“授予对 <租户名称> 的管理员许可”，以授予代表此目录中所有用户的许可。   
+1. （可选）在“API 权限”页上，选择“授予对\<你的租户名称>的管理员许可”，以代表此目录中的所有用户授予许可。   
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>在开发人员门户中启用 OAuth 2.0 用户授权
 
@@ -116,7 +116,7 @@ ms.locfileid: "75859496"
 
 在本示例中，开发人员控制台是 client-app。 以下步骤说明如何在开发人员门户中启用 OAuth 2.0 用户授权 
 
-1. 在 Azure 门户中，浏览到你的 API 管理实例。
+1. 在 Azure 门户中，浏览找到你的 API 管理实例。
 
 1. 选择“OAuth 2.0” > “添加”。  
 
@@ -208,6 +208,8 @@ ms.locfileid: "75859496"
     </required-claims>
 </validate-jwt>
 ```
+> [!NOTE]
+> 此 `openid-config` URL 对应于 v1 终结点。 对于 v2 `openid-config`终结点，请使用 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`。
 
 ## <a name="build-an-application-to-call-the-api"></a>生成应用程序来调用 API
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动完成管理任务 | Azure
+title: 使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动完成管理任务
 description: 本文介绍如何管理可以自动执行特定 SQL Server 管理任务的 SQL Server IaaS 代理扩展。 这些任务包括自动备份、自动修补和 Azure Key Vault 集成。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,15 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 08/30/2019
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 0e7ef568ff362910cfd1a799ffe78b31b06481c0
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6a6818d3d44c6317437ccbb710802a96d35dc558
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272810"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428087"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展在 Azure 虚拟机上自动完成管理任务
 > [!div class="op_single_selector"]
@@ -49,7 +50,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 * 在 Azure 门户中虚拟机的“SQL Server”面板上，以及通过适用于 Azure 市场中 SQL Server 映像的 Azure PowerShell。
 * 通过手动安装的扩展的 Azure PowerShell。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 下面是在 VM 上使用 SQL Server IaaS 代理扩展所要满足的要求：
 
 **操作系统**：
@@ -68,6 +69,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 * SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017
+* SQL Server 2019
 
 **Azure PowerShell**：
 
@@ -85,19 +87,14 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 如果需要在其中一个 SQL Server VM 上重新手动安装扩展，请使用以下 PowerShell 命令：
 
 ```powershell
-Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "China East"
+Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" `
+-Location "<VMLocation>" -VMName "<VMName>" `
+-Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" `
+-ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
 ```
 
-> [!WARNING]
-> 如果尚未安装该扩展，安装该扩展将会重新启动 SQL Server 服务。 但是，更新 SQL IaaS 扩展不会重新启动 SQL Server 服务。 
-
 > [!NOTE]
-> 如果尚未安装该扩展，安装完整扩展将会重启 SQL Server 服务。
-> 
-> 更新 SQL Server IaaS 扩展不会重启 SQL Server 服务。 
-
-<!--Not Available on To avoid restarting the SQL Server service, install the lightweight mode with limited manageability instead.-->
-<!--Not Available on [changing the license type](virtual-machines-windows-sql-ahb.md)-->
+> 安装扩展会重启 SQL Server 服务。 
 
 ### <a name="install-on-a-vm-with-a-single-named-sql-server-instance"></a>在包含单个命名 SQL Server 实例的 VM 上安装
 如果卸载了默认实例并重新安装了 IaaS 扩展，则 SQL Server IaaS 扩展可与 SQL Server 上的命名实例一起使用。

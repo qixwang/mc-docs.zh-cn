@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 中的任务中心 - Azure
 description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何任务中心。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/03/2019
-ms.date: 11/19/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3baac788203eeb46406da78e8d39dffb50b2c5a5
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 1692d38ab8703266ba8364e699e5319f72ed218f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178979"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428057"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -101,9 +96,9 @@ ms.locfileid: "74178979"
 }
 ```
 
-以下代码是一个预编译的 C# 示例，说明如何编写一个特定函数，该函数使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心：
+以下代码演示如何编写使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心的函数：
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -126,7 +121,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `function.json` 文件中的任务中心属性通过应用设置进行设置：
 
@@ -138,6 +133,8 @@ public static async Task<HttpResponseMessage> Run(
     "direction": "in"
 }
 ```
+
+---
 
 任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则会使用默认的任务中心名称，如下表所示：
 

@@ -5,22 +5,22 @@ services: virtual-machines
 author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 04/02/2019
-ms.date: 08/12/2019
+origin.date: 11/04/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: f4042164e6edf917d47ac17ae238b4b0ad7543ab
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.openlocfilehash: a2460b32e0dec931b5117c56df1873236f64b85f
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68913002"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428376"
 ---
 <!-- F-series, Fs-series* -->
 
-计算优化的 VM 大小具有较高的 CPU 内存比，适用于中等流量 Web 服务器、网络设备、批处理进程和应用程序服务器。 本文针对此分组中每种大小提供有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。
+计算优化 VM 大小具有较高的 CPU 与内存之比。 这些大小适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。 本文提供了有关 vCPU、数据磁盘和 NIC 的数量的信息。 它还介绍了此分组中每个大小的存储吞吐量和网络带宽。
 
-Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器，它具有 3.4GHz 的持续全核 Turbo 时钟速度和 3.7 GHz 的最大单核超频。 Intel 可扩展处理器上全新的 Intel® AVX-512 指令对于单精度和双精度浮点运算可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。 
+Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
 
 凭借较低的每小时定价，Fsv2 系列在基于每个 vCPU 的 Azure 计算单位 (ACU) 的 Azure 产品组合中具有最高性价比。
 
@@ -41,12 +41,23 @@ ACU：195 - 210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | 8 / 14000              |
 | Standard_F48s_v2 | 48     | 96          | 384            | 32             | 96000/768 (768)        | 76800/1100             | 8/21000              |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | 80000 / 1100             | 8 / 28000              |
-| Standard_F72s_v2<sup>2, 3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | 80000 / 1100             | 8 / 30000              |
+| Standard_F72s_v2<sup>2，&nbsp;3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | 80000 / 1100             | 8 / 30000              |
 
-<sup>1</sup> Fsv2 系列 VM 的 Intel® 超线程技术功能
+<sup>1</sup> Fsv2 系列 VM 采用了 Intel® 超线程技术。
 
-<sup>2</sup> 超过 64 vCPU 的 VM 需要以下受支持的来宾 OS 之一：Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2 或 CentOS 7.3
-
-<!-- Not Available on Red Hat Enterprise Linux or Oracle Linux 7.3 with LIS 4.2.1-->
+<sup>2</sup> 使用超过 64 个 vCPU 需要以下受支持的来宾操作系统之一：
+- Windows Server 2016 或更高版本
+- Ubuntu 16.04 LTS 或更高版本，带 Azure 优化内核（4.15 内核或更高版本）
+- SLES 12 SP2 或更高版本
+- CentOS 版本 6.7 到 6.10，安装了 Microsoft 提供的 LIS 程序包 4.3.1（或更高版本）
+- CentOS 版本 7.3，安装了 Microsoft 提供的 LIS 程序包 4.2.1（或更高版本）
+- CentOS 版本 7.6 或更高版本
+    
+    <!--Not Avaialble on - Oracle Linux with UEK4 or later-->
+    
+- Debian 9，带有向后移植内核 Debian 10 或更高版本
+- 带有 4.14 内核或更高版本的 CoreOS
 
 <sup>3</sup> 实例与专用于单个客户的硬件隔离。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,34 +1,25 @@
 ---
-title: Start-AzsReadinessChecker cmdlet 参考 | Microsoft Docs
-description: Azure Stack 就绪性检查器模块的 PowerShell cmdlet 帮助。
-services: azure-stack
-documentationcenter: ''
+title: Start-AzsReadinessChecker cmdlet 参考
+description: Azure Stack Hub 就绪性检查器模块的 PowerShell cmdlet 帮助。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 08/13/2019
-ms.date: 11/18/2019
+origin.date: 01/07/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: abebd90dacc54b0f833ca16e0c208f8049689fd5
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: d950bdee271608d4d38c19e32187f1e39ad351f3
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020316"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540888"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet 参考
 
 模块：**Microsoft.AzureStack.ReadinessChecker**
 
-此模块只包含一个 cmdlet。 该 cmdlet 针对 Azure Stack 执行一个或多个部署前或服务前函数。
+此模块只包含一个 cmdlet。 该 cmdlet 针对 Azure Stack Hub 执行一个或多个部署前或服务前函数。
 
 ## <a name="syntax"></a>语法
 
@@ -167,7 +158,7 @@ Start-AzsReadinessChecker
 
 ## <a name="description"></a>说明
 
-**Start-AzsReadinessChecker** cmdlet 验证证书、Azure 帐户、Azure 订阅和 Azure Active Directory (Azure AD)。 在部署 Azure Stack 之前或在运行 Azure Stack 服务操作（例如机密轮换）之前运行验证。 该 cmdlet 还可用于生成基础结构证书的证书签名请求，以及 PaaS 证书（可选）。 最后，该 cmdlet 可以重新打包 PFX 证书，以解决常见的打包问题。
+**Start-AzsReadinessChecker** cmdlet 验证证书、Azure 帐户、Azure 订阅和 Azure Active Directory (Azure AD)。 在部署 Azure Stack Hub 之前或在运行 Azure Stack Hub 服务操作（例如机密轮换）之前运行验证。 该 cmdlet 还可用于生成基础结构证书的证书签名请求，以及 PaaS 证书（可选）。 最后，该 cmdlet 可以重新打包 PFX 证书，以解决常见的打包问题。
 
 ## <a name="examples"></a>示例
 
@@ -180,7 +171,7 @@ $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="
 Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subject $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
 ```
 
-在此示例中，`Start-AzsReadinessChecker` 针对区域名称为 **east**、外部 FQDN 为 **azurestack.contoso.com** 的 AD FS Azure Stack 部署所适用的证书生成多个证书签名请求 (CSR)
+在此示例中，`Start-AzsReadinessChecker` 针对区域名称为 **east**、外部 FQDN 为 **azurestack.contoso.com** 的 AD FS Azure Stack Hub 部署所适用的证书生成多个证书签名请求 (CSR)。
 
 ### <a name="example-validate-certificates"></a>示例：验证证书
 
@@ -258,7 +249,7 @@ $subscriptionID = "<subscription ID"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
-在此示例中，出于安全性需要输入订阅所有者凭据，然后，`Start-AzsReadinessChecker` 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack 注册。
+在此示例中，出于安全性需要输入订阅所有者凭据，然后，`Start-AzsReadinessChecker` 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack Hub 注册。
 
 ### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>示例：使用部署数据验证 Azure 注册（部署团队）
 
@@ -268,7 +259,7 @@ $subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-在此示例中，出于安全性需要输入订阅所有者凭据，然后，`Start-AzsReadinessChecker` 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack 注册（该注册的其他详细信息从针对部署生成的部署数据 JSON 文件中读取）。
+在此示例中，出于安全性需要输入订阅所有者凭据，然后，`Start-AzsReadinessChecker` 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack Hub 注册（该注册的其他详细信息从针对部署生成的部署数据 JSON 文件中读取）。
 
 ### <a name="example-importexport-pfx-package"></a>示例：导入/导出 PFX 包
 
@@ -299,36 +290,36 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 ### <a name="-regionname"></a>-RegionName
 
-指定 Azure Stack 部署的区域名称。
+指定 Azure Stack Hub 部署的区域名称。
 
 |  |  |
 |----------------------------|--------------|
-|键入：                       |String        |
-|位置：                   |名为         |
+|类型：                       |字符串        |
+|位置：                   |指定         |
 |默认值：              |无          |
 |接受管道输入：      |False         |
 |接受通配符： |False         |
 
 ### <a name="-fqdn"></a>-FQDN
 
-指定 Azure Stack 部署的外部 FQDN，也可以使用别名 **ExternalFQDN** 和 **ExternalDomainName**。
+指定 Azure Stack Hub 部署的外部 FQDN，也可以使用别名 **ExternalFQDN** 和 **ExternalDomainName**。
 
 |  |  |
 |----------------------------|--------------|
-|键入：                       |String        |
-|位置：                   |名为         |
+|类型：                       |String        |
+|位置：                   |指定         |
 |默认值：              |ExternalFQDN、ExternalDomainName |
 |接受管道输入：      |False         |
 |接受通配符： |False         |
 
 ### <a name="-identitysystem"></a>-IdentitySystem
 
-指定 Azure Stack 部署的标识系统有效值：AAD 或 ADFS（分别表示 Azure Active Directory 和 Active Directory 联合身份验证服务）。
+指定 Azure Stack Hub 部署的标识系统有效值：AAD 或 ADFS（分别表示 Azure Active Directory 和 Active Directory 联合身份验证服务）。
 
 |  |  |
 |----------------------------|--------------|
-|键入：                       |String        |
-|位置：                   |名为         |
+|类型：                       |String        |
+|位置：                   |指定         |
 |默认值：              |无          |
 |有效值：               |'AAD'、'ADFS'  |
 |接受管道输入：      |False         |
@@ -340,8 +331,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |SecureString |
-|位置：                   |名为    |
+|类型：                       |SecureString |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -352,20 +343,20 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |Hashtable |
-|位置：                   |名为    |
+|类型：                       |Hashtable |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
 ### <a name="-deploymentdatajsonpath"></a>-DeploymentDataJSONPath
 
-指定 Azure Stack 部署数据 JSON 配置文件。 此文件是针对部署生成的。
+指定 Azure Stack Hub 部署数据 JSON 配置文件。 此文件是针对部署生成的。
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -376,8 +367,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -388,8 +379,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -400,8 +391,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |OrderedDictionary   |
-|位置：                   |名为    |
+|类型：                       |OrderedDictionary   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -415,8 +406,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |有效值：               |'MultipleCSR'、'SingleCSR' |
 |接受管道输入：      |False    |
@@ -428,44 +419,44 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
 ### <a name="-aadserviceadministrator"></a>-AADServiceAdministrator
 
-指定要用于 Azure Stack 部署的 Azure AD 服务管理员。
+指定要用于 Azure Stack Hub 部署的 Azure AD 服务管理员。
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |PSCredential   |
-|位置：                   |名为    |
+|类型：                       |PSCredential   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
 ### <a name="-aaddirectorytenantname"></a>-AADDirectoryTenantName
 
-指定要用于 Azure Stack 部署的 Azure AD 名称。
+指定要用于 Azure Stack Hub 部署的 Azure AD 名称。
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
 ### <a name="-azureenvironment"></a>-AzureEnvironment
 
-指定用于 Azure Stack 部署和注册的帐户、目录和订阅所在的 Azure 服务实例。
+指定用于 Azure Stack Hub 部署和注册的帐户、目录和订阅所在的 Azure 服务实例。
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |有效值：               |“AzureChinaCloud” |
 |接受管道输入：      |False    |
@@ -473,24 +464,24 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 ### <a name="-registrationaccount"></a>-RegistrationAccount
 
-指定用于 Azure Stack 注册的注册帐户。
+指定用于 Azure Stack Hub 注册的注册帐户。
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
 ### <a name="-registrationsubscriptionid"></a>-RegistrationSubscriptionID
 
-指定用于 Azure Stack 注册的注册订阅 ID。
+指定用于 Azure Stack Hub 注册的注册订阅 ID。
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |Guid     |
-|位置：                   |名为    |
+|类型：                       |Guid     |
+|位置：                   |指定    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -501,8 +492,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |全部      |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -513,18 +504,18 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 指定只包含证书所需证书文件夹的路径。
 
-包含 Azure AD 标识系统的 Azure Stack 部署的所需文件夹为：
+包含 Azure AD 标识系统的 Azure Stack Hub 部署的所需文件夹为：
 
 - ACSBlob、ACSQueue、ACSTable、Admin Portal、ARM Admin、ARM Public、KeyVault、KeyVaultInternal、Public Portal
 
-包含 Active Directory 联合身份验证服务标识系统的 Azure Stack 部署的所需文件夹为：
+包含 Active Directory 联合身份验证服务标识系统的 Azure Stack Hub 部署的所需文件夹为：
 
 - ACSBlob、ACSQueue、ACSTable、ADFS、Admin Portal、ARM Admin、ARM Public、Graph、KeyVault、KeyVaultInternal、Public Portal
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |.\Certificates |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -535,8 +526,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|键入：                       |SwitchParameter   |
-|位置：                   |名为             |
+|类型：                       |SwitchParameter   |
+|位置：                   |指定             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -547,8 +538,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|键入：                       |String   |
-|位置：                   |名为    |
+|类型：                       |String   |
+|位置：                   |指定    |
 |默认值：              |全部      |
 |有效值：               |'Certificate'、'AzureRegistration'、'AzureIdentity'、'Jobs'、'All' |
 |接受管道输入：      |False    |
@@ -560,8 +551,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|键入：                       |SwitchParameter   |
-|位置：                   |名为             |
+|类型：                       |SwitchParameter   |
+|位置：                   |指定             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -572,9 +563,9 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|键入：                       |SwitchParameter   |
+|类型：                       |SwitchParameter   |
 |别名：                    |cf                |
-|位置：                   |名为             |
+|位置：                   |指定             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -585,8 +576,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|键入：                       |String            |
-|位置：                   |名为             |
+|类型：                       |String            |
+|位置：                   |指定             |
 |默认值：              |$ENV:TEMP\AzsReadinessChecker  |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -597,9 +588,9 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|键入：                       |SwitchParameter   |
+|类型：                       |SwitchParameter   |
 |别名：                    |cf                |
-|位置：                   |名为             |
+|位置：                   |指定             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -610,9 +601,9 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|键入：                       |SwitchParameter   |
+|类型：                       |SwitchParameter   |
 |别名：                    |wi                |
-|位置：                   |名为             |
+|位置：                   |指定             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |

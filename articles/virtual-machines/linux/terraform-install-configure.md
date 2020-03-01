@@ -1,5 +1,5 @@
 ---
-title: 安装并配置 Terraform 以预配 Azure 资源 | Azure
+title: 安装并配置 Terraform 以预配 Azure 资源
 description: 了解如何安装和配置用于创建 Azure 资源的 Terraform
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,22 +13,27 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 09/20/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: f934f242644f1488309207feed23e6914d946d44
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: e171d3fe2858665930288f7fdf470e0c8fa3f8d0
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831226"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428008"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>安装并配置 Terraform 以预配 Azure 资源
 
 借助 Terraform，可以轻松使用[简单模板语言](https://www.terraform.io/docs/configuration/syntax.html)来定义、预览和部署云基础结构。 本文介绍使用 Terraform 在 Azure 中预配资源的必要步骤。
 
-<!--Not Available on Cloud Shell -->
+> [!NOTE]
+> 若要获得特定于 Terraform 的支持，请使用其社区渠道之一直接联系 Terraform：
+>
+>   • 社区门户的 [Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用模式。
+>
+>   • 有关与提供程序相关的问题，请访问社区门户的 [Terraform 提供程序](https://discuss.hashicorp.com/c/terraform-providers)部分。
 
-如果选择在本地安装 Terraform，请完成下一步，否则请继续[设置 Terraform 对 Azure 的访问权限](#set-up-terraform-access-to-azure)。
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 <!--Not Available on [Cloud Shell](/terraform/terraform-cloud-shell)-->
 
@@ -61,7 +66,7 @@ az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)，并将“范围”设置为你的订阅，如下所示  ：
+现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)，并将*范围*设置为你的订阅，如下所示：
 
 ```azurecli
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"

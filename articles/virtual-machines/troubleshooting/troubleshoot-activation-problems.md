@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 11/15/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c3982ac5158551a3212cd4bfa80ed9aa7684a4a1
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 44c5684162ff983a261f67bc072b1016996a48aa
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116943"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428284"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "74116943"
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>了解用于对 Azure 虚拟机进行 Windows 产品激活的 Azure KMS 终结点
 
-Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的云区域。 使用本故障排除指南时，请使用适用于你所在区域的相应 KMS 终结点。
+Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体取决于 VM 所在的云区域。 使用本故障排除指南时，请使用适用于你所在区域的相应 KMS 终结点。
 
 <!--MOONCAKE: correct for public cloud on kms.core.windows.net:1688-->
 
@@ -102,7 +102,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
     ```
     \psping.exe kms.core.chinacloudapi.cn:1688
     ```
-
+    
     确保输出的倒数第二行显示以下内容：Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
     如果“Lost”大于 0（零），表示 VM 未连接到 KMS 服务器。 在这种情况下，如果 VM 位于虚拟网络中，并且指定了自定义 DNS 服务器，必须确保此 DNS 服务器能够解析 kms.core.chinacloudapi.cn。 或者，将 DNS 服务器更改为可以解析 kms.core.chinacloudapi.cn。

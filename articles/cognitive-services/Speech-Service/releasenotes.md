@@ -12,12 +12,12 @@ origin.date: 01/15/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6c0325e0bd379414682d25ef8d019d5ac3138dae
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 2077c35e37211a4580a5bd200a5bf3a523e18720
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028186"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77427958"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "77028186"
 - JavaScript：感谢 [orgads](https://github.com/orgads) 的贡献，我们现在可以采用 `NODE_TLS_REJECT_UNAUTHORIZED`。 请参阅[此处](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)的详细信息。
 
 
-**中断性变更**
+**重大更改**
 
 - `OpenSSL` 已更新到版本 1.1.1b，并静态链接到适用于 Linux 的语音 SDK 核心库。 如果未在系统上的 `/usr/lib/ssl` 目录中安装收件箱 `OpenSSL`，这可能会造成中断。 请查看语音 SDK 的[文档](how-to-configure-openssl-linux.md)来解决此问题。
 - 我们已将为 C# `WordLevelTimingResult.Offset` 返回的数据类型从 `int` 更改为 `long`，以便在语音数据超过 2 分钟时能够访问 `WordLevelTimingResults`。
@@ -67,7 +67,8 @@ ms.locfileid: "77028186"
 
 - 通过 Nuget 和 Unity 包在 Windows (UWP)、Android 和 iOS 上添加了 `KeywordRecognizer` 支持
 
-<!-- - Added a `FromHost()` API, to ease use with on-prem containers and sovereign clouds. -->
+- 添加了 `FromHost()` API，以便轻松与主权云配合使用。
+
 <!-- - Added Automatic Source Language Detection for Speech Recognition (in Java and C++) -->
 <!-- - Added `SourceLanguageConfig` object for Speech Recognition, used to specify expected source languages (in Java and C++) -->
 <!-- - Added Remote Conversation Java API to do Conversation Transcription in asynchronous batches. -->

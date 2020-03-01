@@ -1,45 +1,41 @@
 ---
-title: 设置 Azure Stack 的 VPN 网关 | Microsoft Docs
-description: 了解如何为 Azure Stack 设置 VPN 网关。
-services: azure-stack
+title: 为 Azure Stack Hub 设置 VPN 网关
+description: 了解如何为 Azure Stack Hub 设置 VPN 网关。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 10/03/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: f8544dfa661a9bf8156d42d176d2ac4c79aa33bd
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: ec43048b45177a5d1bc3d15888fe59dd51363d3c
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623983"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540759"
 ---
-# <a name="setup-vpn-gateway-for-azure-stack-using-fortigate-nva"></a>使用 FortiGate NVA 设置 Azure Stack 的 VPN 网关
+# <a name="set-up-vpn-gateway-for-azure-stack-hub-using-fortigate-nva"></a>使用 FortiGate NVA 为 Azure Stack Hub 设置 VPN 网关
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+本文介绍如何与 Azure Stack Hub 建立 VPN 连接。 VPN 网关是一种虚拟网络网关，可在 Azure Stack Hub 中的虚拟网络与远程 VPN 网关之间发送加密流量。 以下过程在资源组中部署一个具有 FortiGate NVA（网络虚拟设备）的 VNET。 此外，还提供在 FortiGate NVA 上设置 IPSec VPN 的步骤。
 
-本文介绍如何与 Azure Stack 建立 VPN 连接。 VPN 网关是一种虚拟网络网关，可在 Azure Stack 中的虚拟网络与远程 VPN 网关之间发送加密流量。 以下过程在资源组中部署一个具有 FortiGate NVA（网络虚拟设备）的 VNET。 此外，还提供在 FortiGate NVA 上设置 IPSec VPN 的步骤。
+## <a name="prerequisites"></a>必备条件
 
-## <a name="prerequisites"></a>先决条件
-
--  有权访问可提供足够容量用于部署此解决方案所需的计算、网络和资源的 Azure Stack 集成系统。 
+-  有权访问可提供足够容量用于部署此解决方案所需的计算、网络和资源的 Azure Stack Hub 集成系统。 
 
     > [!Note]  
     > 由于 ASDK 的网络限制，本文中的说明**不**适用于 Azure Stack 开发工具包 (ASDK)。 有关详细信息，请参阅 [ASDK 的要求和注意事项](/azure-stack/asdk/asdk-deploy-considerations)。
 
--  有权访问本地网络中的托管 Azure Stack 集成系统的 VPN 设备。 该设备需要根据[部署参数](#deployment-parameters)中所述的参数创建 IPSec 隧道。
+-  有权访问本地网络中的托管 Azure Stack Hub 集成系统的 VPN 设备。 该设备需要根据[部署参数](#deployment-parameters)中所述的参数创建 IPSec 隧道。
 
--  Azure Stack 市场中已提供网络虚拟设备 (NVA) 解决方案。 NVA 控制从外围网络到其他网络或子网的网络流量。 此过程使用 [Fortinet FortiGate 下一代防火墙单一 VM 解决方案](https://market.azure.cn/zh-cn/marketplace/apps/fortinet-cn.fortinet_fortigate-vm_v6_0?tab=Overview)。
+-  Azure Stack Hub 市场中已提供网络虚拟设备 (NVA) 解决方案。 NVA 控制从外围网络到其他网络或子网的网络流量。 此过程使用 [Fortinet FortiGate 下一代防火墙单一 VM 解决方案](https://market.azure.cn/zh-cn/marketplace/apps/fortinet-cn.fortinet_fortigate-vm_v6_0?tab=Overview)。
 
     > [!Note]  
-    > 如果 Azure Stack 市场中没有**适用于 Azure BYOL 的 Fortinet FortiGate-VM** 和 **FortiGate NGFW - 单一 VM 部署 (BYOL)** ，请联系云操作员。
+    > 如果 Azure Stack Hub 市场中没有**适用于 Azure BYOL 的 Fortinet FortiGate-VM** 和 **FortiGate NGFW - 单一 VM 部署 (BYOL)** ，请联系云操作员。
 
 -  若要激活 FortiGate NVA，至少需要一个可用的 FortiGate 许可证文件。 有关如何获取这些许可证的信息，请参阅 Fortinet 文档库文章[注册和下载许可证](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license)。
 
-    此过程使用[单一 FortiGate-VM 部署](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment)。 其中提供了在本地网络中将 FortiGate NVA 连接到 Azure Stack VNET 的步骤。
+    此过程使用[单一 FortiGate-VM 部署](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment)。 其中提供了在本地网络中将 FortiGate NVA 连接到 Azure Stack Hub VNET 的步骤。
 
     有关如何在主动-被动 (HA) 设置中部署 FortiGate 解决方案的详细信息，请参阅 Fortinet 文档库文章 [Azure 上的 FortiGate-VM 的 HA](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure) 中的详细信息。
 
@@ -64,11 +60,11 @@ ms.locfileid: "75623983"
 | 公共 IP 地址类型 | 静态 |
 
 > [!Note]
-> \* 如果 `172.16.0.0/16` 与本地网络或 Azure Stack VIP 池重叠，请选择不同的地址空间和子网前缀。
+> \* 如果 `172.16.0.0/16` 与本地网络或 Azure Stack Hub VIP 池重叠，请选择不同的地址空间和子网前缀。
 
 ## <a name="deploy-the-fortigate-ngfw-marketplace-items"></a>部署 FortiGate NGFW 市场项
 
-1. 打开 Azure Stack 用户门户。
+1. 打开 Azure Stack Hub 用户门户。
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
@@ -103,7 +99,7 @@ ms.locfileid: "75623983"
 
 ## <a name="configure-routes-udr-for-the-vnet"></a>为 VNET 配置路由 (UDR)
 
-1. 打开 Azure Stack 用户门户。
+1. 打开 Azure Stack Hub 用户门户。
 
 2. 选择资源组。 在筛选器中键入 `forti1-rg1`，然后双击“forti1-rg1”资源组。
 
@@ -141,9 +137,9 @@ ms.locfileid: "75623983"
 
 激活 NVA 之后，在 NVA 上创建 IPSec VPN 隧道。
 
-1. 打开 Azure Stack 用户门户。
+1. 打开 Azure Stack Hub 用户门户。
 
-2. 选择“资源组”。 在筛选器中输入 `forti1`，然后双击“forti1”资源组。
+2. 选择资源组。 在筛选器中输入 `forti1`，然后双击“forti1”资源组。
 
 3. 在资源组边栏选项卡上的资源类型列表中，双击“forti1”虚拟机。 
 
@@ -246,19 +242,19 @@ ms.locfileid: "75623983"
 
 若要验证连接：
 
-1. 在 Azure Stack VNET 和本地网络上的系统中创建 VM。 可根据以下文章中的说明创建 VM：[快速入门：使用 Azure Stack 门户创建 Windows 服务器 VM](/azure-stack/user/azure-stack-quick-windows-portal)。
+1. 在 Azure Stack Hub VNET 和本地网络上的系统中创建 VM。 可根据以下文章中的说明创建 VM：[快速入门：使用 Azure Stack Hub 门户创建 Windows 服务器 VM](/azure-stack/user/azure-stack-quick-windows-portal)。
 
-2. 创建 Azure Stack VM 和准备本地系统时，请检查：
+2. 创建 Azure Stack Hub VM 和准备本地系统时，请检查：
 
--  Azure Stack VM 放置在 VNET 的 **InsideSubnet** 上。
+-  Azure Stack Hub VM 放置在 VNET 的 **InsideSubnet** 上。
 
--  本地系统放置在 IPSec 配置中定义的 IP 范围内的本地网络上。 此外，请确保本地 VPN 设备的本地接口 IP 地址（例如 `172.16.0.0/16`）已提供给本地系统，作为可访问 Azure Stack VNET 网络的路由。
+-  本地系统放置在 IPSec 配置中定义的 IP 范围内的本地网络上。 此外，请确保本地 VPN 设备的本地接口 IP 地址（例如 `172.16.0.0/16`）已提供给本地系统，作为可访问 Azure Stack Hub VNET 网络的路由。
 
--  创建时，请**不要**将任何 NSG 应用到 Azure Stack VM。 如果从门户创建 VM，可能需要删除默认添加的 NSG。
+-  创建时，请**不要**将任何 NSG 应用到 Azure Stack Hub VM。 如果从门户创建 VM，可能需要删除默认添加的 NSG。
 
--  确保本地系统 OS 和 Azure Stack VM OS 中没有任何 OS 防火墙规则禁止用于测试连接的通信。 出于测试目的，建议在两个系统的操作系统中完全禁用防火墙。
+-  确保本地系统 OS 和 Azure Stack Hub VM OS 中没有任何 OS 防火墙规则禁止用于测试连接的通信。 出于测试目的，建议在两个系统的操作系统中完全禁用防火墙。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
-[使用 Fortinet FortiGate 在 Azure Stack 中提供网络解决方案](../operator/azure-stack-network-solutions-enable.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  
+[使用 Fortinet FortiGate 在 Azure Stack Hub 中提供网络解决方案](../operator/azure-stack-network-solutions-enable.md)  

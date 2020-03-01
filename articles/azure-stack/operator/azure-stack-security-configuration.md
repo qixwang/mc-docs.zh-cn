@@ -1,42 +1,38 @@
 ---
-title: 配置 Azure Stack 安全控制
-description: 了解如何在 Azure Stack 中配置安全控制
-services: azure-stack
+title: 配置 Azure Stack Hub 安全控制
+description: 了解如何在 Azure Stack Hub 中配置安全控制
 author: WenJason
-ms.service: azure-stack
 ms.topic: article
 origin.date: 06/17/2019
-ms.date: 07/29/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
-ms.openlocfilehash: f1a7aa00160d832e8deed3352602c055280130c7
-ms.sourcegitcommit: 4d34571d65d908124039b734ddc51091122fa2bf
+ms.openlocfilehash: 3f16cff29531e7070ef4757c0929a1e6daea5c15
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68513539"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540325"
 ---
-# <a name="configure-azure-stack-security-controls"></a>配置 Azure Stack 安全控制
+# <a name="configure-azure-stack-hub-security-controls"></a>配置 Azure Stack Hub 安全控制
 
-*适用于：Azure Stack 集成系统*
+本文介绍可在 Azure Stack Hub 中更改的安全控制，并强调如何在适当的情况下进行取舍。
 
-本文介绍可在 Azure Stack 中更改的安全控制，并强调如何在适当的情况下进行取舍。
-
-Azure Stack 体系结构构建在两大安全原则支柱之上：假想违规和默认强化。 有关 Azure Stack 安全性的详细信息，请参阅 [Azure Stack 基础结构安全局势](azure-stack-security-foundations.md)。 当 Azure Stack 的默认安全局势适合生产环境时，仍有一些部署方案需要额外的强化。
+Azure Stack Hub 体系结构构建在两大安全原则支柱之上：假想违规和默认强化。 有关 Azure Stack Hub 安全性的详细信息，请参阅 [Azure Stack Hub 基础结构安全局势](azure-stack-security-foundations.md)。 当 Azure Stack Hub 的默认安全局势适合生产环境时，仍有一些部署方案需要额外的强化。
 
 ## <a name="tls-version-policy"></a>TLS 版本策略
 
-传输层安全性 (TLS) 协议是广为采用的加密协议，可通过网络建立加密的通信。 TLS 的发展已有一段时间，并已发布多个版本。 Azure Stack 基础结构对其所有通信专门使用 TLS 1.2。 对于外部接口，Azure Stack 目前默认使用 TLS 1.2。 但是，为了实现后向兼容，它也支持向下协商到 TLS 1.1 和 1.0。 当 TLS 客户端请求通过 TLS 1.1 或 TLS 1.0 通信时，Azure Stack 将通过与更低的 TLS 版本协商来接受请求。 如果客户端请求 TLS 1.2，Azure Stack 将使用 TLS 1.2 建立 TLS 连接。
+传输层安全性 (TLS) 协议是广为采用的加密协议，可通过网络建立加密的通信。 TLS 的发展已有一段时间，并已发布多个版本。 Azure Stack Hub 基础结构对其所有通信专门使用 TLS 1.2。 对于外部接口，Azure Stack Hub 目前默认使用 TLS 1.2。 但是，为了实现后向兼容，它也支持向下协商到 TLS 1.1 和 1.0。 当 TLS 客户端请求通过 TLS 1.1 或 TLS 1.0 通信时，Azure Stack Hub 将通过与更低的 TLS 版本协商来接受请求。 如果客户端请求 TLS 1.2，Azure Stack Hub 将使用 TLS 1.2 建立 TLS 连接。
 
-由于 TLS 1.0 和 1.1 版正逐渐由于组织和合规性标准而淘汰或禁用，从 1906 更新开始，你可以在 Azure Stack 中配置 TLS 策略。 可以强制使用仅限 TLS 1.2 的策略，使用低于 1.2 的版本尝试建立任何 TLS 会话都将被禁止或拒绝。
+由于 TLS 1.0 和 1.1 版正逐渐由于组织和合规性标准而淘汰或禁用，从 1906 更新开始，你可以在 Azure Stack Hub 中配置 TLS 策略。 可以强制使用仅限 TLS 1.2 的策略，使用低于 1.2 的版本尝试建立任何 TLS 会话都将被禁止或拒绝。
 
 > [!IMPORTANT]
-> Azure 建议针对 Azure Stack 生产环境使用仅限 TLS 1.2 的策略。
+> Azure 建议针对 Azure Stack Hub 生产环境使用仅限 TLS 1.2 的策略。
 
 ## <a name="get-tls-policy"></a>获取 TLS 策略
 
-使用[特权终结点 (PEP)](azure-stack-privileged-endpoint.md) 查看所有 Azure Stack 终结点的 TLS 策略：
+使用[特权终结点 (PEP)](azure-stack-privileged-endpoint.md) 查看所有 Azure Stack Hub 终结点的 TLS 策略：
 
 ```powershell
 Get-TLSPolicy
@@ -48,7 +44,7 @@ Get-TLSPolicy
 
 ## <a name="set-tls-policy"></a>设置 TLS 策略
 
-使用[特权终结点 (PEP)](azure-stack-privileged-endpoint.md) 设置所有 Azure Stack 终结点的 TLS 策略：
+使用[特权终结点 (PEP)](azure-stack-privileged-endpoint.md) 设置所有 Azure Stack Hub 终结点的 TLS 策略：
 
 ```powershell
 Set-TLSPolicy -Version <String>
@@ -58,14 +54,14 @@ Set-TLSPolicy -Version <String>
 
 | 参数 | 说明 | 类型 | 必须 |
 |---------|---------|---------|---------|
-| *版本* | Azure Stack 中允许的 TLS 版本 | String | 是|
+| *版本* | Azure Stack Hub 中允许的 TLS 版本 | String | 是|
 
-使用以下值之一为所有 Azure Stack 终结点配置允许的 TLS 版本：
+使用以下值之一为所有 Azure Stack Hub 终结点配置允许的 TLS 版本：
 
 | 版本值 | 说明 |
 |---------|---------|
-| *TLS_All* | Azure Stack TLS 终结点支持 TLS 1.2，但可向下协商到 TLS 1.1 和 TLS 1.0。 |
-| *TLS_1.2* | Azure Stack TLS 终结点仅支持 TLS 1.2。 | 
+| *TLS_All* | Azure Stack Hub TLS 终结点支持 TLS 1.2，但可向下协商到 TLS 1.1 和 TLS 1.0。 |
+| *TLS_1.2* | Azure Stack Hub TLS 终结点仅支持 TLS 1.2。 | 
 
 完成 TLS 策略更新需要几分钟的时间。
 
@@ -121,6 +117,6 @@ Set-TLSPolicy -Version TLS_All
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure Stack 基础结构安全局势](azure-stack-security-foundations.md)
-- [了解如何在 Azure Stack 中轮换机密](azure-stack-rotate-secrets.md)
-- [在 Azure Stack上更新 Windows Defender 防病毒](azure-stack-security-av.md)
+- 了解 [Azure Stack Hub 基础结构安全局势](azure-stack-security-foundations.md)
+- [了解如何在 Azure Stack Hub 中轮换机密](azure-stack-rotate-secrets.md)
+- [在 Azure Stack Hub 上更新 Windows Defender 防病毒](azure-stack-security-av.md)

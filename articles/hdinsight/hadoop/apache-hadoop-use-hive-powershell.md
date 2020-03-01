@@ -9,33 +9,29 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 04/23/2018
-ms.date: 10/28/2019
+origin.date: 12/24/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: acb191af81524f07f0d50c7f52513a4d2b0f66ec
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: d31b6220092d5dac8651ecf72a885b45a11c99a7
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583870"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563502"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-本文档提供使用 Azure PowerShell 以 Azure 资源组模式在 Apache Hadoop on HDInsight 群集上运行 Hive 查询的示例。
+本文档举例说明如何使用 Azure PowerShell 在 Apache Hadoop on HDInsight 群集中运行 Apache Hive 查询。
 
 > [!NOTE]  
 > 本文档未详细描述示例中使用的 HiveQL 语句的作用。 有关此示例中使用的 HiveQL 的信息，请参阅[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-hive.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
-
-* 具有 Azure PowerShell 的客户端。
-
-[!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
+* 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
@@ -145,7 +141,7 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 Hive �
    > [!NOTE]
    > 对于较长的 HiveQL 查询，可以使用 Azure PowerShell **Here-Strings** cmdlet 或 HiveQL 脚本文件。 以下代码段显示了如何使用 `Invoke-Hive` cmdlet 来运行 HiveQL 脚本文件。 HiveQL 脚本文件必须上传到 wasb://。
    >
-   > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > 有关 **Here-Strings** 的详细信息，请参阅<a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">使用 Windows PowerShell Here-Strings</a>。
 
@@ -176,5 +172,4 @@ Get-AzHDInsightJobOutput `
 
 有关 HDInsight 上 Hadoop 的其他使用方法的信息：
 
-* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)

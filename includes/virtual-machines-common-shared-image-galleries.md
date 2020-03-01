@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 05/06/2019
-ms.date: 12/16/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 89f7d82cdcf875103ec25f54ad703cca2e5345f1
-ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
+ms.openlocfilehash: 0641e8f21a06cd3a6a2f3ee1c5d5f2f98b5b4087
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020990"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428383"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
@@ -69,7 +69,7 @@ ms.locfileid: "76020990"
 * Eula - 可用于指向特定于映像定义的最终用户许可协议。
 * 隐私声明和发行说明 - 在 Azure 存储中存储发行说明和隐私声明，并提供一个 URI 用于访问这些信息（作为映像定义的一部分）。
 * 生命周期结束日期 - 将生命周期结束日期附加到映像定义，以便能够使用自动化功能删除旧的映像定义。
-* 标记 - 创建映像定义时可以添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/resource-group-using-tags.md)。
+* 标记 - 创建映像定义时可以添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)。
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合用于标准 HDD 磁盘，请将此类磁盘添加到禁止列表。
 
@@ -105,6 +105,7 @@ ms.locfileid: "76020990"
 - 每个区域的每个订阅限制为 100 个共享映像库
 - 每个区域的每个订阅限制为 1,000 个映像定义
 - 每个区域的每个订阅限制为 10,000 个映像版本
+- 附加到映像的任何磁盘的大小都必须小于或等于 1TB
 
 有关详细信息，请参阅[根据限制检查资源用量](/networking/check-usage-against-limits)，其中提供了有关如何检查当前用量的示例。
 
@@ -227,9 +228,9 @@ ms.locfileid: "76020990"
 
 是的。 根据映像的类型，可能存在 3 种场景。
 
- 应用场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
+ 应用场景 1：如果你在 SIG 所在的订阅中有托管映像，则可以基于该映像创建映像定义和映像版本。
 
- 应用场景 2：如果你有非托管的映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
+ 应用场景 2：如果你在 SIG 所在的订阅中有非托管映像，可以基于该映像创建托管映像，然后基于该映像创建映像定义和映像版本。 
 
  应用场景 3：如果本地文件系统中包含 VHD，则需要将 VHD 上传到托管映像，然后可以从该映像创建映像定义和映像版本。
 
@@ -238,7 +239,7 @@ ms.locfileid: "76020990"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户（[Windows](../articles/virtual-machines/windows/shared-images-portal.md) 或 [Linux](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用化映像创建 VM。 预览版不提供 PowerShell 支持。
+是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户（[Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用化映像创建 VM。 预览版不提供 PowerShell 支持。
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可将它移到其他订阅？
 

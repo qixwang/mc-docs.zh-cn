@@ -2,13 +2,13 @@
 title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 1ecbe806ff25501cb09913fbb8feafa722893466
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.date: 02/14/2020
+ms.openlocfilehash: 70015012cb4c7551a24598c9e4a28f5a0aedbdb0
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116910"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428037"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -262,7 +262,7 @@ namespace LifeCycleEventSpike
 * **`id`** ：事件网格事件的唯一标识符。
 * **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **`data`** ：Durable Functions 特定的参数。
-  * **`hubName`** ：任务中心](durable-functions-task-hubs.md)名称。
+  * **`hubName`** ：[任务中心](durable-functions-task-hubs.md)名称。
   * **`functionName`** ：业务流程协调程序函数名称。
   * **`instanceId`** ：Durable Functions instanceId。
   * **`reason`** ：与跟踪事件关联的其他数据。 
@@ -275,7 +275,7 @@ namespace LifeCycleEventSpike
 
 ## <a name="how-to-test-locally"></a>如何在本地测试
 
-若要在本地测试，请使用 [ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok)。
+若要进行本地测试，请阅读 [Azure Functions 事件网格触发器本地调试](../functions-debug-event-grid-trigger-local.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

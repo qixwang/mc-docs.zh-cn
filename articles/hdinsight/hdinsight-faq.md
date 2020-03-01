@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 09/20/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: f9e50ffa995c6b01ff62713bceaef3dcd9b9230a
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+origin.date: 11/20/2019
+ms.date: 02/24/2020
+ms.openlocfilehash: a2efa0adf26ae597dcd3c94bb8e8dc20830c335a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426107"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428328"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -85,22 +85,9 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 - 在创建期间或之后使用脚本。 脚本可通过[脚本操作](/hdinsight/hdinsight-hadoop-customize-cluster-linux)调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用此配置选项。
 
-- 预配群集后使用 `sudo` 或其他方法。
-  
 - 使用 [HDInsight 应用程序平台](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)安装生态应用程序。
 
-但是，Microsoft 支持团队只能针对以下情况提供支持：
-
-- 加载脚本时出现的问题或错误。 执行自定义脚本过程中出现的任何错误超出了支持票证的范围。
-
-- 属于群集创建过程一部分的其他应用程序。 
-
 请参阅[在 HDInsight 中可以使用哪些 Apache Hadoop 组件和版本？](/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)了解受支持组件的列表
-
-对单个组件的支持也会因群集类型而有所不同。 例如，Kafka 群集不支持 Spark，反之亦然。
-
-对于不属于群集创建过程的应用程序和服务，请联系供应商或服务提供商获取支持。 还可以使用许多社区支持站点。 例如[有关 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [Stack Overflow](https://stackoverflow.com/)。 Apache 项目还在 [Apache 网站](https://apache.org/)上提供了项目站点， 例如 [Hadoop](https://hadoop.apache.org/)。 
-
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>是否可以升级预装在群集上的单个组件？
 
@@ -176,6 +163,11 @@ Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。大小
 - 边缘节点：可根据[在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)中所述，将另一个边缘节点添加到群集。
 
 - 独立节点：可将独立的虚拟机添加到同一子网，并使用专用终结点 `https://<CLUSTERNAME>-int.azurehdinsight.net` 从该虚拟机访问群集。 有关详细信息，请参阅[控制网络流量](hdinsight-plan-virtual-network-deployment.md#networktraffic)。
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>是否应该将数据存储在边缘节点的本地磁盘上？
+
+否，将数据存储在本地磁盘上不是一个好主意。 如果节点出现故障，本地存储的所有数据都将丢失。 我们建议将数据存储在 Azure Data Lake Storage Gen2 或 Azure Blob 存储中，或者通过装载 Azure 文件共享来存储数据。
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>是否可将现有的 HDInsight 群集添加到另一个虚拟网络？
 

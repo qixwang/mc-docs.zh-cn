@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 经典 CLI 创建 Hadoop 群集 - Azure HDInsight
-description: 了解如何使用跨平台 Azure 经典 CLI 创建 HDInsight 群集。
+title: 使用 Azure CLI 创建 Apache Hadoop 群集 - Azure HDInsight
+description: 了解如何使用跨平台 Azure CLI 创建 Azure HDInsight 群集。
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/10/2019
-ms.date: 06/10/2019
+origin.date: 02/03/2020
+ms.date: 03/02/2019
 ms.author: v-yiso
-ms.openlocfilehash: c708dc5c682d3822a86c508db6a29c0bdc5671dc
-ms.sourcegitcommit: 58df3823ad4977539aa7fd578b66e0f03ff6aaee
+ms.openlocfilehash: 5dc7654f584ecb87afb49e3ac3d480963329f5f3
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66424698"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563482"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -29,7 +29,7 @@ ms.locfileid: "66424698"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/install-azure-cli) 来了解步骤。
 
@@ -48,7 +48,7 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/ins
 
     |参数 | 说明 |
     |---|---|
-    |`--size`| 群集中的工作器节点数。 本文使用变量 `clusterSizeInNodes` 作为传递给 `--size` 的值。 |
+    |`--workernode-count`| 群集中的工作器节点数。 本文使用变量 `clusterSizeInNodes` 作为传递给 `--workernode-count` 的值。 |
     |`--version`| HDInsight 群集版本。 本文使用变量 `clusterVersion` 作为传递给 `--version` 的值。 另请参阅：[支持的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
     |`--type`| HDInsight 群集的类型，如：hadoop、interactivehive、hbase、Kafka、storm、spark、rserver、mlservices。  本文使用变量 `clusterType` 作为传递给 `--type` 的值。 另请参阅：[群集类型和配置](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。|
     |`--component-version`|各种 Hadoop 组件的版本，采用“component=version”格式的空格分隔版本。 本文使用变量 `componentVersion` 作为传递给 `--component-version` 的值。 另请参阅：[Hadoop 组件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
@@ -122,12 +122,12 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](/cli/ins
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -174,7 +174,6 @@ az group delete \
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集

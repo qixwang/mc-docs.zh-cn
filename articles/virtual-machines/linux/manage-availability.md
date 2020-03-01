@@ -1,5 +1,5 @@
 ---
-title: 管理 Linux 虚拟机的可用性 | Azure
+title: 在 Azure 中管理 Linux VM 的可用性
 description: 了解如何使用多个虚拟机来确保 Linux 应用程序在 Azure 中的高可用性
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 03/27/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 501825b73383f24605c487b9ab418c5a42eaafd9
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 73e09d46f254e03d3f0bfdb604d81151ba93708b
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272398"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428424"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虚拟机的可用性
 

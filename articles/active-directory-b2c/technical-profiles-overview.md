@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 8e64427b63700f2f52772442577a28d7143dedd6
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 4598679a0d0591aa1f0114323974a4feedeccb91
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028124"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531327"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -39,6 +39,7 @@ ms.locfileid: "77028124"
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
+- [一次性密码](one-time-password-technical-profile.md) - 为管理一次性密码的生成和验证提供支持。 
 
 ## <a name="technical-profile-flow"></a>技术配置文件流
 
@@ -46,21 +47,25 @@ ms.locfileid: "77028124"
 
 ![说明技术配置文件流的示意图](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. InputClaimsTransformation  - 从声明包中提取每个输入[声明转换](claimstransformations.md)的输入声明，并在执行后，将输出声明放回到声明包中。 输入声明转换的输出声明可以是后续输入声明转换的输入声明。
-2. InputClaims  - 声明从声明包中提取并用于技术配置文件。 例如，[自断言技术配置文件](self-asserted-technical-profile.md)使用输入声明来预填充用户提供的输出声明。 REST API 技术配置文件使用输入声明将输入参数发送到 REST API 终结点。 Azure Active Directory 使用输入声明作为读取、更新或删除帐户的唯一标识符。
-3. 技术配置文件执行  - 技术配置文件与已配置的参与方交换声明。 例如：
+1. **单一登录 (SSO) 会话管理**-使用 [SSO 会话管理](custom-policy-reference-sso.md)还原技术配置文件的会话状态。 
+1. **输入声明转换** - 从声明包中提取每个输入[声明转换](claimstransformations.md)的输入声明。  输入声明转换的输出声明可以是后续输入声明转换的输入声明。
+1. **输入声明** - 从声明包中提取声明并将其用于技术配置文件。 例如，[自断言技术配置文件](self-asserted-technical-profile.md)使用输入声明来预填充用户提供的输出声明。 REST API 技术配置文件使用输入声明将输入参数发送到 REST API 终结点。 Azure Active Directory 使用输入声明作为读取、更新或删除帐户的唯一标识符。
+1. 技术配置文件执行  - 技术配置文件与已配置的参与方交换声明。 例如：
     - 将用户重定向到标识提供者以完成登录。 成功登录后，用户返回并继续执行技术配置文件。
     - 在将参数作为 InputClaims 发送并将信息作为 OutputClaims 返回时调用 REST API。
     - 创建或更新用户帐户。
     - 发送并验证 MFA 文本信息。
-4. ValidationTechnicalProfiles  - 对于[自断言技术配置文件](self-asserted-technical-profile.md)，你可以调用输入[验证技术配置文件](validation-technical-profile.md)。 验证技术配置文件可验证用户分析的数据并返回错误消息或正常信息，包含或不包含输出声明。 例如，在 Azure AD B2C 创建新帐户之前，它会检查用户是否已存在于目录服务中。 你可以调用 REST API 技术配置文件来添加自己的业务逻辑。<p>验证技术配置文件的输出声明的范围仅限于在相同技术配置文件下调用验证技术配置文件和其他验证技术配置文件的技术配置文件。 如果要在下一个业务流程步骤中使用输出声明，则需要将输出声明添加到调用验证技术配置文件的技术配置文件中。
-5. OutputClaims  - 将声明返回到声明包中。 可以在下一个业务流程步骤或输出声明转换中使用这些声明。
-6. OutputClaimsTransformations  - 从声明包中提取每个输出[声明转换](claimstransformations.md)的输入声明。 先前步骤中的技术配置文件的输出声明可以是输出声明转换的输入声明。 执行后，输出声明将被放回到声明包中。 输出声明转换的输出声明也可以是后续输出声明转换的输入声明。
-7. 单一登录 (SSO) 会话管理   - [SSO 会话管理](custom-policy-reference-sso.md)控制与已经过身份验证的用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。
+1. **验证技术配置文件** - [自断言技术配置文件](self-asserted-technical-profile.md)可以调用[验证技术配置文件](validation-technical-profile.md)。 验证技术配置文件可验证用户分析的数据并返回错误消息或正常信息，包含或不包含输出声明。 例如，在 Azure AD B2C 创建新帐户之前，它会检查用户是否已存在于目录服务中。 你可以调用 REST API 技术配置文件来添加自己的业务逻辑。<p>验证技术配置文件的输出声明的范围仅限于调用验证技术配置文件的技术配置文件， 以及同一技术配置文件下的其他验证技术配置文件。 如果要在下一个业务流程步骤中使用输出声明，则需要将输出声明添加到调用验证技术配置文件的技术配置文件中。
+1. **输出声明** - 声明将返回到声明包中。 可以在下一个业务流程步骤或输出声明转换中使用这些声明。
+1. **输出声明转换** - 从声明包中提取每个输出[声明转换](claimstransformations.md)的输入声明。 先前步骤中的技术配置文件的输出声明可以是输出声明转换的输入声明。 执行后，输出声明将被放回到声明包中。 输出声明转换的输出声明也可以是后续输出声明转换的输入声明。
+1. **单一登录 (SSO) 会话管理** - 使用 [SSO 会话管理](custom-policy-reference-sso.md)将技术配置文件的数据持久保留在会话中。
 
-技术配置文件可以从其他技术配置文件继承，以更改设置或添加新功能。   IncludeTechnicalProfile 元素是对基本技术配置文件的引用，可从中派生技术配置文件。
 
-例如，  AAD-UserReadUsingAlternativeSecurityId-NoError 技术配置文件包括 AAD-UserReadUsingAlternativeSecurityId  。 此技术配置文件将  RaiseErrorIfClaimsPrincipalDoesNotExist 元数据项设置为 `true`，并且如果目录中不存在社交帐户，则会引发错误。 如果用户不存在，则  AAD-UserReadUsingAlternativeSecurityId-NoError 将覆盖此行为并禁用错误消息。
+## <a name="technical-profile-inclusion"></a>技术配置文件包含
+
+技术配置文件可以包括另一个技术配置文件，用以更改设置或添加新功能。  `IncludeTechnicalProfile` 元素是对基本技术配置文件的引用，可从中派生技术配置文件。 级别数没有限制。 
+
+例如，  AAD-UserReadUsingAlternativeSecurityId-NoError 技术配置文件包括 AAD-UserReadUsingAlternativeSecurityId  。 此技术配置文件将 `RaiseErrorIfClaimsPrincipalDoesNotExist` 元数据项设置为 `true`，并且如果目录中不存在社交帐户，则会引发错误。 **AAD-UserReadUsingAlternativeSecurityId-NoError** 将覆盖此行为并禁用错误消息。
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -95,7 +100,7 @@ ms.locfileid: "77028124"
 </TechnicalProfile>
 ```
 
- AAD-UserReadUsingAlternativeSecurityId-NoError 和 AAD-UserReadUsingAlternativeSecurityId  未指定所需的 Protocol  元素，因为在  AAD-Common 技术配置文件中指定了该元素。
+**AAD-UserReadUsingAlternativeSecurityId-NoError** 和 **AAD-UserReadUsingAlternativeSecurityId**未指定所需的 **Protocol** 元素，因为在 **AAD-Common** 技术配置文件中指定了该元素。
 
 ```XML
 <TechnicalProfile Id="AAD-Common">
@@ -105,16 +110,4 @@ ms.locfileid: "77028124"
 </TechnicalProfile>
 ```
 
-技术配置文件可以包括或继承另一个技术配置文件，该文件可以包括其他配置文件。 级别数没有限制。 根据业务要求，用户旅程可能会调用 AAD-UserReadUsingAlternativeSecurityId（如果用户社交帐户不存在，则会引发错误）或 AAD-UserReadUsingAlternativeSecurityId-NoError（不会引发错误）   。
-
-<!-- Update_Description: links update -->
-
-
-
-
-
-
-
-
-
-
+<!-- Update_Description: wording update -->

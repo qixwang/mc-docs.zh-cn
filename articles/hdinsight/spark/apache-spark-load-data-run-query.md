@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-origin.date: 05/16/2019
-ms.date: 06/10/2019
+origin.date: 02/12/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 7074c758b30c459958c470b47c5cf4f66dc444a4
-ms.sourcegitcommit: 58df3823ad4977539aa7fd578b66e0f03ff6aaee
+ms.openlocfilehash: b76507f65d0ac8a525b2bcb8fdbdf17c9608cb2c
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66424652"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563447"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 
@@ -26,7 +26,7 @@ ms.locfileid: "66424652"
 > * 从 csv 文件创建数据帧
 > * 对数据帧运行查询
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 HDInsight 上的 Apache Spark 群集。 请参阅[创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)。
 
@@ -38,7 +38,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 2. 从 Jupyter 网页中选择“新建” > “PySpark”，以创建笔记本   。 
 
-   ![创建 Jupyter Notebook 来运行交互式 Spark SQL 查询](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 来运行交互式 Spark SQL 查询")
+   ![创建 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 以运行交互式 Spark SQL 查询")
 
    新笔记本随即创建，并以名称 Untitled(`Untitled.ipynb`) 打开。
 
@@ -62,6 +62,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
     ![交互式 Spark SQL 查询的状态](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "交互式 Spark SQL 查询的状态")
 
+1. 记下返回的会话 ID。 在上图中，会话 ID 为 0。 若要检索会话详细信息，可以根据需要导航到 `https://CLUSTERNAME.azurehdinsight.cn/livy/sessions/ID/statements`，其中的 CLUSTERNAME 是 Spark 群集的名称，ID 是会话 ID 号。
 3. 运行以下代码，创建数据帧和临时表 (hvac)  。 
 
     ```python

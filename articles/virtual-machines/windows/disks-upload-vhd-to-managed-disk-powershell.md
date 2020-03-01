@@ -1,39 +1,39 @@
 ---
 title: 使用 Azure PowerShell 将 VHD 上传到 Azure
-description: 了解如何使用 Azure PowerShell 将 VHD 上传到 Azure 托管磁盘，以及跨区域复制托管磁盘。
+description: 了解如何通过直接上传将 VHD 上传到 Azure 托管磁盘，以及如何使用 Azure PowerShell 跨区域复制托管磁盘。
 author: rockboyfor
 ms.author: v-yeche
 origin.date: 05/06/2019
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 64def1cf35039e3c87c37521eebb568a64694f46
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: bdda64ce4d31b57790e3dff147b0efbada470aa1
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730722"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428130"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>使用 Azure PowerShell 将 VHD 上传到 Azure
 
-本文介绍如何将 VHD 从本地计算机上传到 Azure 托管磁盘。 以前，必须遵循一个更复杂的过程，包括将数据暂存到存储帐户中，并管理该存储帐户。 现在，不再需要管理存储帐户或将数据暂存到其中即可上传 VHD。 可以创建一个空的托管磁盘，并将 vhd 直接上传到其中。 这简化了将本地 VM 上传到 Azure 的过程，使你可以将最大 32 TiB 的 VHD 直接上传到大型托管磁盘中。
+本文介绍如何将 VHD 从本地计算机上传到 Azure 托管磁盘。 以前，必须遵循一个更复杂的过程，包括将数据暂存到存储帐户中，并管理该存储帐户。 现在，不再需要管理存储帐户或将数据暂存到其中即可上传 VHD。 可以创建一个空的托管磁盘，并将 VHD 直接上传到其中。 这简化了将本地 VM 上传到 Azure 的过程，使你可以将最大 32 TiB 的 VHD 直接上传到大型托管磁盘中。
 
 如果你要为 Azure 中的 IaaS VM 提供备份解决方案，我们建议使用直接上传方法，以将客户备份还原到托管磁盘。 如果从 Azure 外部的计算机上传 VHD，上传速度取决于本地带宽。 如果使用 Azure VM，则带宽与标准 HDD 的速度相同。
 
 目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 超级 SSD 尚不支持此功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 下载最新版本 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
-- 若要从本地上传 vhd：[已经为 Azure 准备好的](prepare-for-upload-vhd-image.md)、存储在本地的 VHD。
+- 若要从本地上传 VHD：[已为 Azure 准备](prepare-for-upload-vhd-image.md)了一个 VHD，存储在本地。
 - 若要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="create-an-empty-managed-disk"></a>创建空托管磁盘
 
-若将 vhd 上传到 Azure，需要创建一个针对此上传过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
+若将 VHD 上传到 Azure，需要创建一个针对此上传过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
 
 这种托管磁盘有两种独特的状态：
 
@@ -56,7 +56,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName' -Disk $di
 
 若要上传高级 SSD 或标准 SSD，请将 **Standard_LRS** 替换为 **Premium_LRS** 或 **StandardSSD_LRS**。 尚不支持超级 SSD。
 
-现已创建一个针对上传过程配置的空托管磁盘。 若要将 vhd 上传到磁盘，需要一个可写的 SAS，以便可将此磁盘作为上传目标引用。
+现已创建一个针对上传过程配置的空托管磁盘。 若要将 VHD 上传到磁盘，需要一个可写的 SAS，以便可将此磁盘作为上传目标引用。
 
 若要生成空托管磁盘的可写 SAS，请使用以下命令：
 
@@ -131,5 +131,4 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 若要了解如何将数据磁盘附加到 VM，请参阅有关此主题的文章：[使用 PowerShell 将数据磁盘附加到 Windows VM](attach-disk-ps.md)。 若要将磁盘用作 OS 磁盘，请参阅[从专用磁盘创建 Windows VM](create-vm-specialized.md#create-the-new-vm)。
 
-<!--Update_Description: new articles on disks upload vhd to managed disk powershell -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

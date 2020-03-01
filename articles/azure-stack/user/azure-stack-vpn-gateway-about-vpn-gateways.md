@@ -1,49 +1,38 @@
 ---
-title: 为 Azure Stack 创建 VPN 网关 | Microsoft Docs
-description: 为 Azure Stack 创建和配置 VPN 网关。
-services: azure-stack
-documentationcenter: ''
+title: 为 Azure Stack Hub 创建 VPN 网关
+description: 为 Azure Stack Hub 创建和配置 VPN 网关。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/24/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b3f0cbf3ac735089cc7546d7436aa5dac773df50
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 1226b7a80759df1dd777bb4372df63943512b237
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020292"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540734"
 ---
-# <a name="create-vpn-gateways-for-azure-stack"></a>为 Azure Stack 创建 VPN 网关
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="create-vpn-gateways-for-azure-stack-hub"></a>为 Azure Stack Hub 创建 VPN 网关
 
 必须先为虚拟网络创建虚拟网络 (VPN) 网关，然后才能发送 Azure 虚拟网络和本地站点之间的网络流量。
 
-VPN 网关是一种通过公共连接发送加密流量的虚拟网络网关。 可以使用 VPN 网关在 Azure Stack 中的虚拟网络和 Azure 中的虚拟网络之间安全地发送流量。 还可以在虚拟网络和连接到 VPN 设备的另一个网络之间安全地发送流量。
+VPN 网关是一种通过公共连接发送加密流量的虚拟网络网关。 可以使用 VPN 网关在 Azure Stack Hub 中的虚拟网络和 Azure 中的虚拟网络之间安全地发送流量。 还可以在虚拟网络和连接到 VPN 设备的另一个网络之间安全地发送流量。
 
-创建虚拟网络网关时，需指定要创建的网关类型。 Azure Stack 支持一种类型的虚拟网络网关：**Vpn** 类型。
+创建虚拟网络网关时，需指定要创建的网关类型。 Azure Stack Hub 支持一种类型的虚拟网络网关：**Vpn** 类型。
 
 每个虚拟网络可以拥有两个虚拟网络网关，但只能有一种类型。 根据所选设置，可以创建到单个 VPN 网关的多个连接。 此类设置的一个示例是多站点连接配置。
 
-在为 Azure Stack 创建和配置 VPN 网关之前，请查看 [Azure Stack 网络的注意事项](azure-stack-network-differences.md)，以了解 Azure Stack 的配置与 Azure 的不同之处。
+在为 Azure Stack Hub 创建和配置 VPN 网关之前，请查看 [Azure Stack Hub 网络的注意事项](azure-stack-network-differences.md)，以了解 Azure Stack Hub 的配置与 Azure 的不同之处。
 
 >[!NOTE]
->在 Azure 中，所选 VPN 网关 SKU 的带宽吞吐量必须分配给连接到网关的所有连接。 但在 Azure Stack 中，VPN 网关 SKU 的带宽值会应用于连接到网关的每个连接资源。
+>在 Azure 中，所选 VPN 网关 SKU 的带宽吞吐量必须分配给连接到网关的所有连接。 但在 Azure Stack Hub 中，VPN 网关 SKU 的带宽值会应用于连接到网关的每个连接资源。
 >
 > 例如：
 >
 > * 在 Azure 中，基本 VPN 网关 SKU 可以容纳大约 100 Mbps 的聚合吞吐量。 如果对该 VPN 网关创建两个连接，而且其中一个连接使用 50 Mbps 的带宽，则 50 Mbps 可供另一个连接使用。
-> * 在 Azure Stack 中，与基本 VPN 网关 SKU 的每个连接都分配了 100 Mbps 的吞吐量。
+> * 在 Azure Stack Hub 中，与基本 VPN 网关 SKU 的每个连接都分配了 100 Mbps 的吞吐量。
 
 ## <a name="configuring-a-vpn-gateway"></a>配置 VPN 网关
 
@@ -53,7 +42,7 @@ VPN 网关连接需依赖于多个具有特定设置的资源。 大多数资源
 
 为每个资源选择的设置对于创建成功的连接至关重要。
 
-有关 VPN 网关的各个资源和设置的信息，请参阅[关于 Azure Stack 的 VPN 网关设置](azure-stack-vpn-gateway-settings.md)。 本文可帮助你了解：
+有关 VPN 网关的各个资源和设置的信息，请参阅[关于 Azure Stack Hub 的 VPN 网关设置](azure-stack-vpn-gateway-settings.md)。 本文可帮助你了解：
 
 * 网关类型、VPN 类型和连接类型。
 * 网关子网、本地网络网关和可能需要考虑的其他资源设置。
@@ -88,7 +77,7 @@ VPN 网关连接可以使用不同的配置。 确定哪种配置最适合自己
 
 ## <a name="gateway-skus"></a>网关 SKU
 
-为 Azure Stack 创建虚拟网络网关时，需要指定要使用的网关 SKU。 支持以下 VPN 网关 SKU：
+为 Azure Stack Hub 创建虚拟网络网关时，需要指定要使用的网关 SKU。 支持以下 VPN 网关 SKU：
 
 * 基本
 * 标准
@@ -96,21 +85,21 @@ VPN 网关连接可以使用不同的配置。 确定哪种配置最适合自己
 
 当选择较高的网关 SKU 时（例如，“标准”高于“基本”，“高性能”高于“标准”或“基本”），会将更多 CPU 和网络带宽分配给网关。 如此一来，网关可以对虚拟网络支持更高的网络吞吐量。
 
-Azure Stack 不支持专门搭配 Express Route 使用的超性能网关 SKU。
+Azure Stack Hub 不支持专门搭配 Express Route 使用的超性能网关 SKU。
 
 选择 SKU 时请考虑以下事项：
 
-* Azure Stack 不支持基于策略的网关。
+* Azure Stack Hub 不支持基于策略的网关。
 * 基本 SKU 不支持边界网关协议 (BGP)。
-* Azure Stack 不支持 ExpressRoute-VPN 网关共存配置。
+* Azure Stack Hub 不支持 ExpressRoute-VPN 网关共存配置。
 
 ## <a name="gateway-availability"></a>网关可用性
 
-高可用性方案只能在**高性能网关**连接 SKU 上配置。 与同时通过主动/主动和主动/被动配置提供可用性的 Azure 不同，Azure Stack 仅支持主动/被动配置。
+高可用性方案只能在**高性能网关**连接 SKU 上配置。 与同时通过主动/主动和主动/被动配置提供可用性的 Azure 不同，Azure Stack Hub 仅支持主动/被动配置。
 
 ### <a name="failover"></a>故障转移
 
-Azure Stack 中有三个多租户网关基础结构 VM。 其中两个 VM 处于活动模式，第三个 VM 处于冗余模式。 活动 VM 支持在其上创建 VPN 连接，而冗余 VM 只在发生故障转移时才接受 VPN 连接。 如果活动网关 VM 变得不可用，VPN 连接在短时间（几秒）的连接丢失之后就会故障转移到冗余 VM。
+Azure Stack Hub 中有三个多租户网关基础结构 VM。 其中两个 VM 处于活动模式，第三个 VM 处于冗余模式。 活动 VM 支持在其上创建 VPN 连接，而冗余 VM 只在发生故障转移时才接受 VPN 连接。 如果活动网关 VM 变得不可用，VPN 连接在短时间（几秒）的连接丢失之后就会故障转移到冗余 VM。
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a>按 SKU 列出的估计聚合吞吐量
 
@@ -125,12 +114,12 @@ Azure Stack 中有三个多租户网关基础结构 VM。 其中两个 VM 处于
 ### <a name="table-notes"></a>表格注释
 
 **(1)** - VPN 吞吐量不是 Internet 上跨界连接的保证吞吐量。 这是可能的最大吞吐量度量。  
-**(2)** - 最大隧道数是所有订阅的每个 Azure Stack 部署的总数。  
+**(2)** - 最大隧道数是所有订阅的每个 Azure Stack Hub 部署的总数。  
 **(3)** - 基本 SKU 不支持 BGP 路由。
 
 >[!NOTE]
->在两个 Azure Stack 部署之间只能创建一个站点到站点 VPN 连接。 这是因为平台中的某个限制仅允许同一 IP 地址具有单个 VPN 连接。 由于 Azure Stack 利用多租户网关，该网关将单一公共 IP 用于 Azure Stack 系统中的所有 VPN 网关，因此两个 Azure Stack 系统之间只能有一个 VPN 连接。 此限制也适用于将多个站点到站点 VPN 连接连接到使用单一 IP 地址的任何 VPN 网关。 Azure Stack 不允许使用同一 IP 地址创建多个本地网络网关资源。
+>在两个 Azure Stack Hub 部署之间只能创建一个站点到站点 VPN 连接。 这是因为平台中的某个限制仅允许同一 IP 地址具有单个 VPN 连接。 由于 Azure Stack Hub 利用多租户网关，该网关将单一公共 IP 用于 Azure Stack Hub 系统中的所有 VPN 网关，因此两个 Azure Stack Hub 系统之间只能有一个 VPN 连接。 此限制也适用于将多个站点到站点 VPN 连接连接到使用单一 IP 地址的任何 VPN 网关。 Azure Stack Hub 不允许使用同一 IP 地址创建多个本地网络网关资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Stack 的 VPN 网关配置设置](azure-stack-vpn-gateway-settings.md)
+* [Azure Stack Hub 的 VPN 网关配置设置](azure-stack-vpn-gateway-settings.md)

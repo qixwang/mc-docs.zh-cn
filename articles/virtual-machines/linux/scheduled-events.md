@@ -1,5 +1,5 @@
 ---
-title: Azure 元数据服务 - 适用于 Linux VM 的计划事件 | Azure
+title: Azure 元数据服务 - 适用于 Linux VM 的计划事件
 description: 使用 Azure 元数据服务为 Linux 虚拟机计划事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -13,16 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2018
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: e4a3f25b52cfdd6a105955a88a6c31116368f077
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: 7399dbd3b385b0882cc6b3f9a4d8486f19866f29
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272526"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428183"
 ---
 <!--MOONCAKE: "Preempt" equal to low priority which not support on China-->
+
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
 计划事件是一个 Azure 元数据服务，可提供应用程序时间用于准备虚拟机 (VM) 维护。 它提供有关即将发生的维护事件的信息（例如重新启动），使应用程序可以为其准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 
@@ -51,7 +52,8 @@ ms.locfileid: "72272526"
 - 降级的硬件
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 
-    <!--Not Available on - [Low-Priority VM eviction](https://azure.microsoft.com/blog/low-priority-scale-sets) in scale sets-->
+<!--Not Available on [Spot VM](spot-vms.md) -->
+<!--Not Available on [Spot scale set](../../virtual-machine-scale-sets/use-spot.md)-->
 
 ## <a name="the-basics"></a>基础知识  
 
@@ -77,12 +79,12 @@ ms.locfileid: "72272526"
 ### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-11-01`。
 
-| 版本 | 发布类型 | Regions | 发行说明 | 
+| 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
 | 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br /><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | 全部 | <li>初始版本
 
-<!--Not Available on | 2017-11-01 | General Availability | All | <li> Added support for Low-priority VM eviction EventType 'Preempt'<br /> |-->
+<!--Not Available on | 2017-11-01 | General Availability | All | <li> Added support for Spot VM eviction EventType 'Preempt'<br /> |-->
 
 > [!NOTE] 
 > 支持的计划事件的前一预览版 {latest} 发布为 api-version。 此格式不再受支持，并且将在未来弃用。
@@ -184,20 +186,18 @@ curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-
 #!/usr/bin/python
 
 import json
-import urllib2
 import socket
-import sys
+import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01"
-headers = "{Metadata:true}"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01"
 this_host = socket.gethostname()
 
 def get_scheduled_events():
-   req = urllib2.Request(metadata_url)
-   req.add_header('Metadata', 'true')
-   resp = urllib2.urlopen(req)
-   data = json.loads(resp.read())
-   return data
+    req = urllib2.Request(metadata_url)
+    req.add_header('Metadata', 'true')
+    resp = urllib2.urlopen(req)
+    data = json.loads(resp.read())
+    return data
 
 def handle_scheduled_events(data):
     for evt in data['Events']:
@@ -206,18 +206,18 @@ def handle_scheduled_events(data):
         resources = evt['Resources']
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
-        notbefore = evt['NotBefore'].replace(" ","_")
+        notbefore = evt['NotBefore'].replace(" ", "_")
         if this_host in resources:
-            print "+ Scheduled Event. This host " + this_host + " is scheduled for " + eventtype + " not before " + notbefore
+            print("+ Scheduled Event. This host " + this_host +
+                " is scheduled for " + eventtype + " not before " + notbefore)
             # Add logic for handling events here
 
 def main():
-   data = get_scheduled_events()
-   handle_scheduled_events(data)
+    data = get_scheduled_events()
+    handle_scheduled_events(data)
 
 if __name__ == '__main__':
-  main()
-  sys.exit(0)
+    main()
 ```
 
 ## <a name="next-steps"></a>后续步骤 
@@ -228,4 +228,4 @@ if __name__ == '__main__':
 - 详细了解[实例元数据服务](instance-metadata-service.md)中提供的 API。
 - [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md)。
 
-<!-- Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

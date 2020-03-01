@@ -6,14 +6,14 @@ author: rockboyfor
 ms.service: private-link
 ms.topic: conceptual
 origin.date: 09/16/2019
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 29b9b7a6823294564ba076b358c578da36c672d2
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: d3cd30ffde9ee2452299c69661f227102972c195
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631310"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540023"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
@@ -56,6 +56,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 |负载均衡器前端 IP 配置 (loadBalancerFrontendIpConfigurations)    |    专用链接服务绑定到标准负载均衡器的前端 IP 地址。 发往服务的所有流量将抵达 SLB 的前端。 可以配置 SLB 规则，以将此流量定向到运行应用程序的相应后端池。 负载均衡器前端 IP 配置不同于 NAT IP 配置。      |
 |NAT IP 配置 (ipConfigurations)    |    此属性引用专用链接服务的 NAT（网络地址转换）IP 配置。 可以从服务提供商虚拟网络中的任何子网选择 NAT IP。 专用链接服务对专用链接流量执行目标端 NAT。 这可以确保源（使用者端）与目标（服务提供商）地址空间之间不会出现 IP 冲突。 在目标端（服务提供商端），NAT IP 地址将显示为服务收到的所有数据包的源 IP，并显示为服务发送的所有数据包的目标 IP。       |
 |专用终结点连接 (privateEndpointConnections)     |  此属性列出连接到专用链接服务的专用终结点。 多个专用终结点可以连接到同一个专用链接服务，服务提供商可以控制单个专用终结点的状态。        |
+|TCP 代理 V2 (EnableProxyProtocol)     |  此属性允许服务提供商使用 tcp 代理 v2 检索有关服务使用者的连接信息。 服务提供商负责设置接收方配置，以便能够分析代理协议 v2 标头。        |
 |||
 
 ### <a name="details"></a>详细信息
@@ -68,7 +69,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 - 可以从属于不同 VNet、订阅和/或 Active Directory 租户的多个专用终结点访问单个专用链接服务。 连接是通过连接工作流建立的。 
 
-- 可以使用不同的前端 IP 配置在同一个标准负载均衡器上创建多个专用链接服务。 可为每个标准负载均衡器和每个订阅创建的专用链接服务数量有限制。 有关详细信息，请参阅  [Azure 限制](/azure-subscription-service-limits#networking-limits)。
+- 可以使用不同的前端 IP 配置在同一个标准负载均衡器上创建多个专用链接服务。 可为每个标准负载均衡器和每个订阅创建的专用链接服务数量有限制。 有关详细信息，请参阅  [Azure 限制](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 - 可将多个 NAT IP 配置链接到专用链接服务。 选择多个 NAT IP 配置有助于服务提供商进行缩放。 目前，服务提供商最多可为每个专用链接服务分配八个 NAT IP 地址。 对于每个 NAT IP 地址，可为 TCP 连接分配更多的端口，从而进行横向扩展。将多个 NAT IP 地址添加到专用链接服务后，无法删除 NAT IP 地址。 这是为了确保在删除 NAT IP 地址时活动的连接不会受到影响。
 
@@ -94,14 +95,27 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 可以通过在专用链接服务中使用自动批准属性，自动完成批准连接的操作。 “自动批准”是为服务提供商提供的一项功能，它可以预先批准一组订阅，使它们能够访问服务提供商的服务。 客户需要脱机共享其订阅，才能让服务提供商将这些订阅添加到自动批准列表中。 自动批准是可见性数组的子集。 可见性控制公开设置，而自动批准则控制服务的批准设置。 如果客户从自动批准列表中的订阅请求连接，将自动批准该连接并建立连接。 服务提供商不再需要手动批准请求。 另一方面，如果客户从可见性数组而不是自动批准数组中的订阅请求连接，该请求将抵达服务提供商，但服务提供商必须手动批准连接。
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>使用 TCP 代理 v2 获取连接信息
+
+使用专用链接服务时，来自专用终结点的数据包的源 IP 地址是服务提供商端的网络地址转换 (NAT)，使用从提供商的虚拟网络分配的 NAT IP。 因此，应用程序将接收分配的 NAT IP 地址，而非接收服务使用者的实际源 IP 地址。 如果应用程序需要来自使用方的实际源 IP 地址，则你可以在服务上启用代理协议，并从代理协议标头中检索该信息。 除了源 IP 地址外，代理协议标头还携带专用终结点的 LinkID。 源 IP 地址和 LinkID 的组合可以帮助服务提供商唯一识别其使用者。 有关代理协议的详细信息，请访问此处。 
+
+此信息使用自定义的 Type-Length-Value (TLV) 向量进行编码，如下所示：
+
+自定义 TLV 详细信息：
+
+|字段 |长度（八进制）  |说明  |
+|---------|---------|----------|
+|Type  |1        |PP2_TYPE_AZURE (0xEE)|
+|Length  |2      |值的长度|
+|Value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|  |4        |UINT32（4个字节），表示专用终结点的 LINKID。 编码为 little endian 格式。|
+
 ## <a name="limitations"></a>限制
 
 下面是使用专用链接服务时存在的已知限制：
 - 仅在标准负载均衡器上受支持 
 - 仅支持 IPv4 流量
 - 仅支持 TCP 流量
-- 不支持 Azure 门户中的创建和管理体验
-- 使用代理协议的客户端连接信息对服务提供商不可用
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure PowerShell 创建专用链接服务](create-private-link-service-powershell.md)

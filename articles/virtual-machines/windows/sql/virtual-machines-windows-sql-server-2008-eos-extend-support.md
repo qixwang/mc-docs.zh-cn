@@ -1,6 +1,6 @@
 ---
 title: 借助 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
-description: 了解如何通过将 SQL Server 实例迁移到 Azure，或者购买扩展支持来保留本地实例，扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持。
+description: 通过将 SQL Server 实例迁移到 Azure，或者购买扩展支持以将实例保留在本地来扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持。
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 04/08/2019
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
-ms.openlocfilehash: 833af1c2409e1c00710fb474335cbefafcf20a0f
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 60f06d4df133f0573e1a4adb4f4cb5197323b22d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272738"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428085"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>借助 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
 
-SQL Server 2008 和 SQL Server 2008 R2 的[支持生命周期都即将结束 (EOS)](https://www.microsoft.com/sql-server/sql-server-2008)。 由于许多客户仍在使用这两个版本，我们提供了多个选项让这些客户继续获得支持。 你可以将本地 SQL Server 实例迁移到 Azure 虚拟机 (VM)、迁移到 Azure SQL 数据库，或者将其保留在本地，但这需要购买扩展的安全更新。
+SQL Server 2008 和 SQL Server 2008 R2 均已到达[其支持生命周期的终点 (EOS)](https://www.microsoft.com/sql-server/sql-server-2008)。 由于许多客户仍在使用这两个版本，我们提供了多个选项让这些客户继续获得支持。 你可以将本地 SQL Server 实例迁移到 Azure 虚拟机 (VM)、迁移到 Azure SQL 数据库，或者将其保留在本地，但这需要购买扩展的安全更新。
 
 与托管实例不同，迁移到 Azure VM 不需要重新认证应用程序。 此外，与保留本地实例不同，迁移到 Azure VM 可以获得免费的扩展安全修补程序。
 
 本文的余下内容提供有关将 SQL Server 实例迁移到 Azure VM 时的注意事项。
+
+若要详细了解支持终止选项，请参阅[支持终止](https://docs.microsoft.com/sql/sql-server/end-of-support/sql-server-end-of-life-overview)。
 
 ## <a name="provisioning"></a>设置
 
@@ -40,7 +43,7 @@ SQL Server 2008 客户需要自行安装或升级到 SQL Server 2008 R2。 同�
 > [!NOTE]
 > 尽管可以在 Azure 门户中的 SQL Server“创建”和“管理”边栏选项卡上处理 SQL Server 2008 R2 映像，但不支持以下功能：    自动备份、Azure Key Vault 集成、R Services 和存储配置。
 
-## <a name="licensing"></a>许可
+## <a name="licensing"></a>授权
 标准预付费套餐 SQL Server 2008 R2 部署可以转换为 [Azure 混合权益](https://www.azure.cn/pricing/hybrid-use-benefit/)。
 
 <!--Not Available on [resource provider](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)-->
@@ -64,10 +67,7 @@ SQL Server 需要使用应用一致的 Azure Site Recovery 快照来保证成功
 
 适用于 Azure VM 上的 EOS SQL Server 的灾难恢复解决方案如下：
 
-- **SQL Server 备份**：使用 Azure 备份来帮助防范 EOS SQL Server 遭受勒索软件的入侵、意外删除和损坏。 该解决方案目前为 EOS SQL Server 提供预览版，支持 Windows 2008 R2 SP1 上运行的 SQL Server 2008 和 2008 R2。
-
-    <!--Not Available on [this article](/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)-->
-
+- **SQL Server 备份**：使用 Azure 备份来帮助防范 EOS SQL Server 遭受勒索软件的入侵、意外删除和损坏。 该解决方案目前为 EOS SQL Server 提供预览版，支持 Windows 2008 R2 SP1 上运行的 SQL Server 2008 和 2008 R2。 有关详细信息，请参阅[此文](/backup/backup-azure-sql-database#scenario-support)。
 - **日志传送**：可以在提供连续还原功能的另一个局部区域或 Azure 区域中创建一个日志传送副本，以减小 RTO。 需要手动配置日志传送。
 - **Azure Site Recovery**：可以通过 Azure Site Recovery 在局部区域与区域之间复制 VM。 SQL Server 需要使用应用一致的快照来保证在发生灾难时成功恢复。 对于 EOS SQL Server 灾难恢复，Azure Site Recovery 提供最小 1 小时的 RPO，以及 2 小时（加上 SQL Server 恢复时间）的 RTO。
 
@@ -93,4 +93,8 @@ Azure 虚拟机上的 SQL Server 入门：
 
 * [有关 Azure 虚拟机上的 SQL Server 的常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)
 
-<!-- Update_Description: wording update -->
+详细了解支持终止选项以及扩展的安全更新：
+
+* [支持终止](https://docs.microsoft.com/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [扩展的安全更新](https://docs.microsoft.com/sql/sql-server/end-of-support/sql-server-extended-security-updates)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

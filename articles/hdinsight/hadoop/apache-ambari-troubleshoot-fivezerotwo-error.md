@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari UI 502 错误
-description: Azure HDInsight 中的 Apache Ambari UI 502 错误
+description: 尝试访问 Azure HDInsight 群集时，出现 Apache Ambari UI 502 错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 08/05/2019
-ms.date: 09/23/2019
-ms.openlocfilehash: 59e28f68fc7e82144102e87162b73fd7289668e3
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.date: 03/02/2020
+ms.openlocfilehash: d3fc90da58714b2778b35a3696e69715d51aa6f3
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921321"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563493"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari UI 502 错误
 
@@ -52,7 +52,7 @@ service ambari-server start
 在某些情况下，头节点会耗尽内存，此时，Linux oom-killer 将会启动，以选取要终止的进程。 可以通过搜索 AmbariServer 进程 ID（应该找不到它）来验证此情况。 然后查找 `/var/log/syslog`，并查看如下所示的内容：
 
 ```
-Jul 27 15:29:30 hn0-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
+Jul 27 15:29:30 xxx-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
 ```
 
 然后确定哪些进程占用了内存，并尝试进一步查找根本原因。

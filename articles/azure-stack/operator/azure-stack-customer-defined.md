@@ -1,44 +1,36 @@
 ---
-title: 修改 Azure Stack 交换机配置上的特定设置 | Microsoft Docs
-description: 了解可以在 Azure Stack 交换机配置上进行哪些自定义。 在原始设备制造商 (OEM) 创建配置以后，请勿在没有获得 OEM 或 Microsoft Azure Stack 工程团队同意的情况下更改它。
-services: azure-stack
-documentationcenter: ''
+title: 修改 Azure Stack Hub 交换机配置上的特定设置
+description: 了解可以在 Azure Stack Hub 交换机配置上进行哪些自定义。 在原始设备制造商 (OEM) 创建配置以后，请勿在没有获得 OEM 或 Microsoft Azure Stack Hub 工程团队同意的情况下更改它。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 11/11/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: dba6a8e1b371d862d18f2dd8f20f76b6e28fb5fe
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: b32158f38ad11c5a80a105e6e53e2e71663d8694
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737823"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540922"
 ---
-#  <a name="modify-specific-settings-on-your-azure-stack-switch-configuration"></a>修改 Azure Stack 交换机配置上的特定设置
+#  <a name="modify-specific-settings-on-your-azure-stack-hub-switch-configuration"></a>修改 Azure Stack Hub 交换机配置上的特定设置
 
-可以修改 Azure Stack 交换机配置的一些环境设置。 可以在原始设备制造商 (OEM) 创建的模板中确定哪些设置可以更改。 本文介绍每项这样的可自定义设置，以及所做的更改对 Azure Stack 的具体影响。 这些设置包括密码更新、Syslog 服务器、SNMP 监视、身份验证，以及访问控制列表。 
+可以修改 Azure Stack Hub 交换机配置的一些环境设置。 可以在原始设备制造商 (OEM) 创建的模板中确定哪些设置可以更改。 本文介绍每项这样的可自定义设置，以及所做的更改对 Azure Stack Hub 的具体影响。 这些设置包括密码更新、Syslog 服务器、SNMP 监视、身份验证，以及访问控制列表。 
 
-在部署 Azure Stack 解决方案期间，原始设备制造商 (OEM) 会为 TOR 和 BMC 创建并应用交换机配置。 OEM 使用 Azure Stack 自动化工具来验证所需的配置是否已在这些设备上正确设置。 配置基于 Azure Stack [部署工作表](azure-stack-deployment-worksheet.md)中的信息。 在 OEM 创建配置以后，**请勿**在没有获得 OEM 或 Azure Stack 工程团队同意的情况下更改配置。 更改网络设备配置可能会显著影响 Azure Stack 实例中网络问题的操作或排查。
+在部署 Azure Stack Hub 解决方案期间，原始设备制造商 (OEM) 会为 TOR 和 BMC 创建并应用交换机配置。 OEM 使用 Azure Stack Hub 自动化工具来验证所需的配置是否已在这些设备上正确设置。 配置基于 Azure Stack Hub [部署工作表](azure-stack-deployment-worksheet.md)中的信息。 在 OEM 创建配置以后，**请勿**在没有获得 OEM 或 Azure Stack Hub 工程团队同意的情况下更改配置。 更改网络设备配置可能会显著影响 Azure Stack Hub 实例中网络问题的操作或排查。
 
 但是，网络交换机的配置上的某些值是可以添加、删除或更改的。
 
 >[!Warning]  
-> **请勿**在没有获得 OEM 或 Azure Stack 工程团队同意的情况下更改配置。 更改网络设备配置可能会显著影响 Azure Stack 实例中网络问题的操作或排查。
+> **请勿**在没有获得 OEM 或 Azure Stack Hub 工程团队同意的情况下更改配置。 更改网络设备配置可能会显著影响 Azure Stack Hub 实例中网络问题的操作或排查。
 >
-> 若要详细了解网络设备上的这些功能以及如何进行这些更改，请联系 OEM 硬件提供商或 Azure 支持部门。 OEM 根据你的 Azure Stack 部署工作表通过自动化工具创建配置文件。 
+> 若要详细了解网络设备上的这些功能以及如何进行这些更改，请联系 OEM 硬件提供商或 Azure 支持部门。 OEM 根据你的 Azure Stack Hub 部署工作表通过自动化工具创建配置文件。 
 
 ## <a name="password-update"></a>密码更新
 
-操作员可以随时为网络交换机上的任何用户更新密码。 不需更改 Azure Stack 系统上的任何信息，也不需使用[在 Azure Stack 中轮换机密](azure-stack-rotate-secrets.md)所需的步骤。
+操作员可以随时为网络交换机上的任何用户更新密码。 不需更改 Azure Stack Hub 系统上的任何信息，也不需使用[在 Azure Stack Hub 中轮换机密](azure-stack-rotate-secrets.md)所需的步骤。
 
 ## <a name="syslog-server"></a>Syslog 服务器
 
@@ -55,10 +47,10 @@ ms.locfileid: "75737823"
 ## <a name="access-control-list-updates"></a>访问控制列表更新
 
 > [!NOTE]
-> 从 1910 版开始，部署工作表将为**允许的网络**添加一个新字段，取代允许从受信任的数据中心网络范围访问网络设备管理接口和硬件生命周期主机 (HLH) 所需的手动步骤。 有关此新功能的详细信息，请查看 [Azure Stack 的网络集成规划](azure-stack-network.md#permitted-networks)。
+> 从 1910 版开始，部署工作表将为**允许的网络**添加一个新字段，取代允许从受信任的数据中心网络范围访问网络设备管理接口和硬件生命周期主机 (HLH) 所需的手动步骤。 有关此新功能的详细信息，请查看 [Azure Stack Hub 的网络集成规划](azure-stack-network.md#permitted-networks)。
 
 操作员可以更改某些访问控制列表 (ACL)，允许从一系列受信任的数据中心网络访问网络设备管理接口和硬件生命周期主机 (HLH)。 操作员可以通过访问控制列表允许特定网络范围内的管理 jumpbox VM 访问交换机管理接口、HLH OS 和 HLH BMC。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 数据中心集成 - DNS](azure-stack-integrate-dns.md)
+[Azure Stack Hub 数据中心集成 - DNS](azure-stack-integrate-dns.md)

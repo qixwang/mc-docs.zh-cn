@@ -1,19 +1,19 @@
 ---
-title: 磁盘基准测试 | Azure
+title: 磁盘基准测试
 description: 了解在 Azure 上对应用程序进行基准测试的过程。
 author: rockboyfor
 ms.author: v-yeche
 origin.date: 01/11/2019
-ms.date: 09/16/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 88aa4f8165b52c4f3d551597e94a21b3a71abcd6
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.openlocfilehash: c2dea825fe8f28d0eb6a98b421847656700c00ca
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921094"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428142"
 ---
 # <a name="benchmarking-a-disk"></a>磁盘基准测试
 
@@ -27,7 +27,8 @@ ms.locfileid: "70921094"
 
 ## <a name="next-steps"></a>后续步骤
 
-继续按照“为实现高性能而设计”一文进行操作。 其中，你要创建一个类似于现有原型应用程序的清单。 使用各种能够用来模拟工作负荷并衡量原型应用程序性能的基准测试工具。 这样做可以确定哪些磁盘产品可以满足或超过你的应用程序性能要求。 然后可为生产应用程序实施相同准则。
+继续阅读有关[针对高性能进行设计](premium-storage-performance.md)的文章。
 
-> [!div class="nextstepaction"]
-> 请参阅[为实现高性能而设计](premium-storage-performance.md)一文。
+在该文中，你将为原型创建一个类似于现有应用程序的清单。 使用各种能够用来模拟工作负荷并衡量原型应用程序性能的基准测试工具。 这样做可以确定哪些磁盘产品可以满足或超过你的应用程序性能要求。 然后可为生产应用程序实施相同准则。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

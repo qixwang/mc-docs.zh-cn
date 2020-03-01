@@ -1,32 +1,23 @@
 ---
-title: Azure Stack 的标识体系结构 | Microsoft Docs
-description: 了解 Azure Stack 的标识体系结构，以及 Azure AD 和 AD FS 之间的差异。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 的标识体系结构
+description: 了解 Azure Stack Hub 的标识体系结构，以及 Azure AD 和 AD FS 之间的差异。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 05/09/2019
-ms.date: 11/18/2019
-ms.author: patricka
+ms.date: 02/24/2020
+ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 0c55d34ddee5abb024989832037348a286189cb9
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 7fa06cd76f06f211334a24f8f28c7d4aaa474fc2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020236"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540991"
 ---
-# <a name="identity-architecture-for-azure-stack"></a>Azure Stack 的标识体系结构
+# <a name="identity-architecture-for-azure-stack-hub"></a>Azure Stack Hub 的标识体系结构
 
-选择要与 Azure Stack 配合使用的标识提供者时，应了解 Azure Active Directory (Azure AD) 的选项与 Active Directory 联合身份验证服务 (AD FS) 的选项之间的重要区别。
+选择要与 Azure Stack Hub 配合使用的标识提供者时，应了解 Azure Active Directory (Azure AD) 的选项与 Active Directory 联合身份验证服务 (AD FS) 的选项之间的重要区别。
 
 ## <a name="capabilities-and-limitations"></a>功能和限制
 
@@ -51,30 +42,30 @@ ms.locfileid: "74020236"
 
 ### <a name="azure-ad-single-tenant-topology"></a>Azure AD：单租户拓扑
 
-默认情况下，当安装 Azure Stack 并使用 Azure AD 时，Azure Stack 使用单租户拓扑。
+默认情况下，当安装 Azure Stack Hub 并使用 Azure AD 时，Azure Stack Hub 使用单租户拓扑。
 
 单租户拓扑非常适用于下列情况：
 - 所有用户都属于同一租户。
-- 服务提供程序托管着组织的 Azure Stack 实例。
+- 服务提供程序托管着组织的 Azure Stack Hub 实例。
 
-![结合 Azure AD 的 Azure Stack 单租户拓扑](media/azure-stack-identity-architecture/single-tenant.png)
+![结合 Azure AD 的 Azure Stack Hub 单租户拓扑](media/azure-stack-identity-architecture/single-tenant.png)
 
 此拓扑具有以下特征：
 
-- Azure Stack 将所有应用和服务注册到同一 Azure AD 租户目录。
-- Azure Stack 仅对该目录中的用户和应用（包括令牌）进行身份验证。
+- Azure Stack Hub 将所有应用和服务注册到同一 Azure AD 租户目录。
+- Azure Stack Hub 仅对该目录中的用户和应用（包括令牌）进行身份验证。
 - 管理员（云操作员）和租户用户的标识位于同一目录租户中。
-- 若要使其他目录中的用户能够访问此 Azure Stack 环境，必须[将用户作为来宾邀请](azure-stack-identity-overview.md#guest-users)到该租户目录。
+- 若要使其他目录中的用户能够访问此 Azure Stack Hub 环境，必须[将用户作为来宾邀请](azure-stack-identity-overview.md#guest-users)到该租户目录。
 
 ### <a name="azure-ad-multi-tenant-topology"></a>Azure AD：多租户拓扑
 
-云操作员可以将 Azure Stack 配置为允许一个或多个组织中的租户访问应用。 用户通过 Azure Stack 用户门户访问应用。 在此配置中，管理员门户（由云操作员使用）仅限单个目录中的用户访问。
+云操作员可以将 Azure Stack Hub 配置为允许一个或多个组织中的租户访问应用。 用户通过 Azure Stack Hub 用户门户访问应用。 在此配置中，管理员门户（由云操作员使用）仅限单个目录中的用户访问。
 
 多租户拓扑非常适用于下列情况：
 
-- 服务提供商希望允许多个组织中的用户访问 Azure Stack。
+- 服务提供商希望允许多个组织中的用户访问 Azure Stack Hub。
 
-![结合 Azure AD 的 Azure Stack 多租户拓扑](media/azure-stack-identity-architecture/multi-tenant.png)
+![使用了 Azure AD 的 Azure Stack Hub 多租户拓扑](media/azure-stack-identity-architecture/multi-tenant.png)
 
 此拓扑具有以下特征：
 
@@ -86,15 +77,15 @@ ms.locfileid: "74020236"
 
 当以下任一情况属实时，需要使用 AD FS 拓扑：
 
-- Azure Stack 不会连接到 Internet。
-- Azure Stack 可以连接到 Internet，但你选择为标识提供者使用 AD FS。
+- Azure Stack Hub 不会连接到 Internet。
+- Azure Stack Hub 可以连接到 Internet，但你选择为标识提供者使用 AD FS。
   
-![使用 AD FS 的 Azure Stack 拓扑](media/azure-stack-identity-architecture/adfs.png)
+![使用 AD FS 的 Azure Stack Hub 拓扑](media/azure-stack-identity-architecture/adfs.png)
 
 此拓扑具有以下特征：
 
-- 为了支持在生产环境中使用此拓扑，必须通过联合信任将内置的 Azure Stack AD FS 实例与由 Active Directory 提供支持的现有 AD FS 实例进行集成。
-- 可将 Azure Stack 中的 Graph 服务与现有的 Active Directory 实例集成。 还可以使用基于 OData 的图形 API 服务，该服务支持与 Azure AD 图形 API 一致的 API。
+- 为了支持在生产环境中使用此拓扑，必须通过联合信任将内置的 Azure Stack Hub AD FS 实例与由 Active Directory 提供支持的现有 AD FS 实例进行集成。
+- 可将 Azure Stack Hub 中的 Graph 服务与现有的 Active Directory 实例集成。 还可以使用基于 OData 的图形 API 服务，该服务支持与 Azure AD 图形 API 一致的 API。
 
   若要与 Active Directory 实例交互，图形 API 要求使用 Active Directory 实例中拥有只读权限的用户凭据。
   - 内置的 AD FS 实例基于 Windows Server 2016。

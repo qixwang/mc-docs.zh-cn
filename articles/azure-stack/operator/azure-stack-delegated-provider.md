@@ -1,37 +1,27 @@
 ---
-title: 在 Azure Stack 中委托套餐 | Microsoft Docs
+title: 在 Azure Stack Hub 中委托套餐
 description: 了解如何委托任务（例如创建套餐和注册用户）。
-services: azure-stack
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 08/12/2019
-ms.date: 11/18/2019
+origin.date: 01/27/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 4119e0fdc4e26e17747ecef6143407d925205df8
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 8e9ddc04c894fa751bf3b9dffc52d2a8657febc4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020253"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541007"
 ---
-# <a name="delegate-offers-in-azure-stack"></a>在 Azure Stack 中委托套餐
+# <a name="delegate-offers-in-azure-stack-hub"></a>在 Azure Stack Hub 中委托套餐
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-作为 Azure Stack 操作员，你可能希望让其他人负责注册用户和创建订阅。 例如，服务提供商可能需要经销商来代表他们注册和管理客户。 或者，如果你是企业的中心 IT 小组的成员，则可能需要委托其他 IT 工作人员来注册用户。
+作为 Azure Stack Hub 操作员，你可能希望让其他人负责注册用户和创建订阅。 例如，服务提供商可能需要经销商来代表他们注册和管理客户。 或者，如果你是企业的中心 IT 小组的成员，则可能需要委托其他 IT 工作人员来注册用户。
 
 委托比你自己进行更容易联系和管理更多的用户，如下图所示：
 
-![Azure Stack 中的委托级别](media/azure-stack-delegated-provider/image1.png)
+![Azure Stack Hub 中的委托级别](media/azure-stack-delegated-provider/image1.png)
 
 借助委托，委托的提供商可以管理套餐（称为“委托套餐”  ），最终客户可获取该套餐中的订阅，而无需系统管理员介入。
 
@@ -39,9 +29,9 @@ ms.locfileid: "74020253"
 
 以下角色是委托的一部分：
 
-* Azure Stack 操作员管理 Azure Stack 基础结构和创建套餐模板。  操作员委托他人向其租户提供套餐。
+* Azure Stack Hub 操作员管理 Azure Stack Hub 基础结构并创建套餐模板。  操作员委托他人向其租户提供套餐。
 
-* 委托的 Azure Stack 操作员是名为“委托的提供商”的订阅中拥有“所有者”或“参与者”权限的用户。    他们可能属于其他组织，例如其他 Azure Active Directory (Azure AD) 租户。
+* 委托的 Azure Stack Hub 操作员是名为“委托的提供商”的订阅中拥有“所有者”或“参与者”权限的用户。    他们可能属于其他组织，例如其他 Azure Active Directory (Azure AD) 租户。
 
 *  用户可以注册并使用产品/服务来管理其工作负荷、创建 VM、存储数据，等等。
 
@@ -55,13 +45,13 @@ ms.locfileid: "74020253"
 
 下图显示设置委托的步骤：
 
-![在 Azure Stack 中创建委托的提供商并允许其注册用户的步骤](media/azure-stack-delegated-provider/image2.png)
+![在 Azure Stack Hub 中创建委托的提供商并允许其注册用户的步骤](media/azure-stack-delegated-provider/image2.png)
 
 ### <a name="delegated-provider-requirements"></a>委托的提供商要求
 
 若要充当委托的提供商，用户需要通过创建订阅来与主要提供商建立关系。 此订阅表明委托的提供商有权代表主提供商提供委托的套餐。
 
-建立这种关系后，Azure Stack 操作员就可以将套餐委托给受委托的提供商。 委托的提供商可以接受该套餐，将其重命名（但不更改其实质）并提供给客户。
+建立这种关系后，Azure Stack Hub 操作员就可以将套餐委托给受委托的提供商。 委托的提供商可以接受该套餐，将其重命名（但不更改其实质）并提供给客户。
 
 ## <a name="delegation-walkthrough"></a>委托演练
 
@@ -69,7 +59,7 @@ ms.locfileid: "74020253"
 
 ### <a name="set-up-roles"></a>设置角色
 
-若要使用此演练，除了 Azure Stack 操作员帐户以外，还需要两个 Azure AD 帐户。 如果没有这两个帐户，则必须创建这些帐户。 这些帐户可以属于任何 Azure AD 用户，称为委托的提供商和用户。
+若要使用此演练，除了 Azure Stack Hub 操作员帐户以外，还需要两个 Azure AD 帐户。 如果没有这两个帐户，则必须创建这些帐户。 这些帐户可以属于任何 Azure AD 用户，称为委托的提供商和用户。
 
 | **角色** | **组织权限** |
 | --- | --- |
@@ -77,11 +67,11 @@ ms.locfileid: "74020253"
 | User |User |
 
  > [!NOTE]
- > 对于 CSP 经销商，若要创建此委托的提供商，这些用户必须在租户目录（用户 Azure AD）中存在。 Azure Stack 操作员必须[先载入](azure-stack-enable-multitenancy.md)该租户 Azure AD，然后遵循[这些步骤](azure-stack-csp-howto-register-tenants.md)设置用量和计费。
+ > 对于 CSP 经销商，若要创建此委托的提供商，这些用户必须在租户目录（用户 Azure AD）中存在。 Azure Stack Hub 操作员必须[先载入](azure-stack-enable-multitenancy.md)该租户 Azure AD，然后遵循[这些步骤](azure-stack-csp-howto-register-tenants.md)设置用量和计费。
 
 ### <a name="identify-the-delegated-provider"></a>确定委托的提供商
 
-1. 以 Azure Stack 操作员身份登录到管理员门户。
+1. 以 Azure Stack Hub 操作员身份登录到管理员门户。
 
 1. 创建可让用户成为委托提供商的套餐：
 
@@ -92,16 +82,16 @@ ms.locfileid: "74020253"
 
    c.  依次选择“订阅”、“添加”、“新建租户订阅”，将委托的提供商作为订阅方添加到此套餐。   
 
-   ![在 Azure Stack 管理员门户中将委托的提供商添加为订户](media/azure-stack-delegated-provider/image3.png)
+   ![在 Azure Stack Hub 管理员门户中将委托的提供商添加为订户](media/azure-stack-delegated-provider/image3.png)
 
    > [!NOTE]
-   > 对于所有 Azure Stack 套餐，可以选择将其公开给用户注册，也可以选择不公开，让 Azure Stack 操作员管理注册。 委托的提供商通常是一个小的组。 需要控制其成员，因此大多数情况下不应公开此产品/服务。
+   > 对于所有 Azure Stack Hub 套餐，可以选择将其公开给用户注册，也可以选择不公开，让 Azure Stack Hub 操作员管理注册。 委托的提供商通常是一个小的组。 需要控制其成员，因此大多数情况下不应公开此产品/服务。
 
-### <a name="azure-stack-operator-creates-the-delegated-offer"></a>Azure Stack 操作员创建委托的套餐
+### <a name="azure-stack-hub-operator-creates-the-delegated-offer"></a>Azure Stack Hub 操作员创建委托的套餐
 
 下一步是创建要委托的可供用户使用的计划和套餐。 最好是将此套餐定义成想要用户看到的那种规格，因为委托的提供商不能更改该套餐中包括的计划和配额。
 
-1. 以 Azure Stack 操作员的身份[创建计划](azure-stack-create-plan.md)以及基于该计划的[套餐](azure-stack-create-offer.md)。 本文使用名为 **DelegatedOffer** 的套餐作为示例。
+1. 以 Azure Stack Hub 操作员的身份[创建计划](azure-stack-create-plan.md)以及基于该计划的[套餐](azure-stack-create-offer.md)。 本文使用名为 **DelegatedOffer** 的套餐作为示例。
 
    > [!NOTE]
    > 此套餐不必是公共套餐，但可将其设置为公共套餐。 但是，在大多数情况下，你只希望委托的提供商有权访问该套餐。 在你按照以下步骤中的说明委托专用产品/服务以后，委托的提供商即可对其进行访问。
@@ -110,7 +100,7 @@ ms.locfileid: "74020253"
 
 3. 从下拉列表中选择委托的提供商的订阅，然后选择“委托”。 
 
-   ![在 Azure Stack 管理员门户中添加委托的提供商](media/azure-stack-delegated-provider/image4.png)
+   ![在 Azure Stack Hub 管理员门户中添加委托的提供商](media/azure-stack-delegated-provider/image4.png)
 
 ### <a name="delegated-provider-customizes-the-offer"></a>委托的提供商自定义产品/服务
 
@@ -118,14 +108,14 @@ ms.locfileid: "74020253"
 
 1. 依次选择“+ 创建资源”、“租户套餐 + 计划”、“套餐”。   
 
-    ![在 Azure Stack 用户门户中创建新套餐](media/azure-stack-delegated-provider/image5.png)
+    ![在 Azure Stack Hub 用户门户中创建新套餐](media/azure-stack-delegated-provider/image5.png)
 
 2. 为产品/服务指定一个名称。 本示例使用 **ResellerOffer**。 选择委托的套餐作为模板，然后选择“创建”。 
 
-   ![在 Azure Stack 用户门户中分配名称](media/azure-stack-delegated-provider/image6.png)
+   ![在 Azure Stack Hub 用户门户中分配名称](media/azure-stack-delegated-provider/image6.png)
 
    >[!IMPORTANT]
-   >必须知道，委托的提供商只能选择委托给他们的套餐。 他们无法对这些套餐进行更改。 只有 Azure Stack 操作员能够更改这些套餐。 例如，只有操作员可以更改其计划和配额。 委托的提供商不会根据基础计划和附加计划来构造套餐。
+   >必须知道，委托的提供商只能选择委托给他们的套餐。 他们无法对这些套餐进行更改。 只有 Azure Stack Hub 操作员能够更改这些套餐。 例如，只有操作员可以更改其计划和配额。 委托的提供商不会根据基础计划和附加计划来构造套餐。
 
 3. 委托的提供商通过自己的门户 URL 公开这些套餐。 若要公开套餐，请依次选择“浏览”、“套餐”。   选择产品/服务，然后选择“更改状态”。 
 
@@ -135,7 +125,7 @@ ms.locfileid: "74020253"
 
     b.  将门户 URL 复制到单独的位置，例如记事本。
 
-    ![在 Azure Stack 用户门户中选择委托的提供商订阅](media/azure-stack-delegated-provider/dpportaluri.png)  
+    ![在 Azure Stack Hub 用户门户中选择委托的提供商订阅](media/azure-stack-delegated-provider/dpportaluri.png)  
 
    现已完成创建委托的套餐作为委托的提供商的过程。 以委托的提供商身份注销，并关闭浏览器窗口。
 
@@ -148,7 +138,7 @@ ms.locfileid: "74020253"
 
 1. 在仪表板中，选择“获取订阅”  。 可以看到，只向用户提供由委托的提供商创建的委托的套餐。
 
-   ![在 Azure Stack 用户门户中查看并选择套餐](media/azure-stack-delegated-provider/image8.png)
+   ![在 Azure Stack Hub 用户门户中查看并选择套餐](media/azure-stack-delegated-provider/image8.png)
 
 委托套餐的过程已完成。 现在，用户可以通过获取套餐订阅来注册此套餐。
 

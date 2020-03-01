@@ -1,5 +1,5 @@
 ---
-title: 如何更新 VM 上的 Azure Linux 代理 | Azure
+title: 从 GitHub 更新 Azure Linux 代理
 description: 了解如何为 Azure 中的 Linux VM 更新 Azure Linux 代理
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 origin.date: 08/02/2017
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2e00aacdbbeffc495190f13a5db0528a3343aa83
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.openlocfilehash: ce0838c88c43e702ec3d790c6f03975bd4fafeb2
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74592451"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428066"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
 
@@ -85,84 +85,14 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>重新启动 16.04 / 17.04 的代理
+#### <a name="restart-agent-for-1604--1704"></a>重新启动 16.04/17.04 的代理
 
 ```bash
 systemctl restart walinuxagent.service
 ```
 
-## <a name="debian"></a>Debian
-
-### <a name="debian-7-wheezy"></a>Debian 7 "Wheezy"
-
-#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
-
-```bash
-dpkg -l | grep waagent
-```
-
-#### <a name="update-package-cache"></a>更新程序包缓存
-
-```bash
-sudo apt-get -qq update
-```
-
-#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
-
-```bash
-sudo apt-get install waagent
-```
-
-#### <a name="enable-agent-auto-update"></a>启用代理自动更新
-由于此版本的 Debian 没有 >= 2.0.16 的版本，因此 AutoUpdate 对该版本不适用。 上述命令的输出将显示程序包是否为最新版。
-
-### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8“Jessie”/Debian 9“Stretch”
-
-#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
-
-```bash
-apt list --installed | grep waagent
-```
-
-#### <a name="update-package-cache"></a>更新程序包缓存
-
-```bash
-sudo apt-get -qq update
-```
-
-#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
-
-```bash
-sudo apt-get install waagent
-```
-#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
-
-首先，检查是否已启用自动更新：
-
-```bash
-cat /etc/waagent.conf
-```
-
-查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
-
-```bash
-# AutoUpdate.Enabled=y
-AutoUpdate.Enabled=y
-```
-
-若要允许运行：
-
-```bash
-sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-```
-
-### <a name="restart-the-waagent-service"></a>重新启动 waagent 服务
-
-```
-sudo systemctl restart walinuxagent.service
-```
-
 ## <a name="centos"></a>CentOS
+
 <!--Notice: Remove Red Hat-->
 
 ### <a name="centos-6"></a>CentOS 6
@@ -352,7 +282,76 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo systemctl restart waagent.service
 ```
 
-<!-- Not Available on ## Oracle 6 and 7 -->
+## <a name="debian"></a>Debian
+
+### <a name="debian-7-jesse-debian-7-stretch"></a>Debian 7 "Jesse"/ Debian 7 "Stretch"
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+dpkg -l | grep waagent
+```
+
+#### <a name="update-package-cache"></a>更新程序包缓存
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="enable-agent-auto-update"></a>启用代理自动更新
+由于此版本的 Debian 没有 >= 2.0.16 的版本，因此 AutoUpdate 对该版本不适用。 上述命令的输出将显示程序包是否为最新版。
+
+### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8“Jessie”/Debian 9“Stretch”
+
+#### <a name="check-your-current-package-version"></a>检查当前程序包的版本
+
+```bash
+apt list --installed | grep waagent
+```
+
+#### <a name="update-package-cache"></a>更新程序包缓存
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>安装最新版本的程序包
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="ensure-auto-update-is-enabled"></a>确保已启用自动更新 
+
+首先，检查是否已启用自动更新：
+
+```bash
+cat /etc/waagent.conf
+```
+
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+
+```bash
+AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+若要允许运行：
+
+```bash
+sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+Restart the waagent service
+sudo systemctl restart walinuxagent.service
+```
+
+
+<!-- Not Available on ## Oracle Linux 6 and Oracle Linux 7 -->
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>分发不存在代理程序包时，请更新 Linux 代理
 
@@ -402,7 +401,7 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -439,4 +438,4 @@ waagent -version
 
 有关 Azure Linux 代理的详细信息，请参阅 [Azure Linux 代理自述文件](https://github.com/Azure/WALinuxAgent)。
 
-<!-- Update_Description: wording update, update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

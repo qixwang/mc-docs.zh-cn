@@ -1,28 +1,29 @@
 ---
-title: 在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听程序 | Azure
-description: 本教程使用通过经典部署模型创建的资源，并使用内部负载均衡器在 Azure 中创建 AlwaysOn 可用性组侦听程序。
+title: 为 Azure SQL Server VM 上的可用性组配置 ILB 侦听器
+description: 本教程使用通过经典部署模型创建的资源，并在 Azure 中为使用内部负载均衡器的 Azure SQL Server VM 创建 Always On 可用性组侦听器。
 services: virtual-machines-windows
 documentationcenter: na
 author: rockboyfor
 manager: digimobile
 editor: ''
 tags: azure-service-management
-ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
+ms.assetid: 291288a0-740b-4cfa-af62-053218beba77j
 ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/02/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3af4bef05aff8fa2f11876c1e469531857e53985
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 85418b19ccf197ea280dc6f9332c009acb4bd07c
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272857"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428060"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听程序
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>为 Azure SQL Server VM 上的可用性组配置 ILB 侦听器
 > [!div class="op_single_selector"]
 > * [内部侦听程序](../classic/ps-sql-int-listener.md)
 > * [外部侦听程序](../classic/ps-sql-ext-listener.md)
@@ -32,7 +33,7 @@ ms.locfileid: "72272857"
 ## <a name="overview"></a>概述
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Azure 资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[Azure 资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
 
 若要在 Resource Manager 模型中配置 AlwaysOn 可用性组的侦听程序，请参阅[在 Azure 中配置 AlwaysOn 可用性组的负载均衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
 
@@ -117,7 +118,7 @@ ms.locfileid: "72272857"
 
 通过两个步骤创建可用性组侦听器。 首先，创建客户端接入点的群集资源，并配置依赖关系。 其次，在 PowerShell 中配置群集资源。
 
-### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>创建客户端接入点和配置群集依赖关系
+### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>创建客户端接入点并配置群集依赖关系
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
 ### <a name="configure-the-cluster-resources-in-powershell"></a>在 PowerShell 中配置群集资源

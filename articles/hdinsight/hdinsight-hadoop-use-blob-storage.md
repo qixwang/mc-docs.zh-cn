@@ -6,17 +6,17 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.devlang: na
 origin.date: 11/01/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 81bcfefb8e20b250aecb1003eaebe470becded1c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: a6876c0b0855b1d48b4c089505e4976e221eaf56
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336231"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563470"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -128,7 +128,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>从 Abmari 标识存储路径
+## <a name="identify-storage-path-from-ambari"></a>从 Ambari 标识存储路径
 
 * 若要标识已配置的默认存储的完整路径，请导航到
 
@@ -167,24 +167,17 @@ Microsoft 提供以下用于操作 Azure 存储的工具：
 > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 这样可以生成可缩放的长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
+本文已介绍如何将 HDFS 兼容的 Azure 存储与 HDInsight 配合使用。 这样，便可以构建可缩放的长期存档数据获取解决方案，并使用 HDInsight 来解锁存储的结构化和非结构化数据中的信息。
 
 有关详细信息，请参阅：
 
 * [Azure HDInsight 入门][hdinsight-get-started]
 * [将数据上传到 HDInsight][hdinsight-upload-data]
-* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
+* [将 Apache Hive 与 HDInsight 配合使用][hdinsight-use-hive]
+* [将 Apache Pig 与 HDInsight 配合使用][hdinsight-use-pig]
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据][hdinsight-use-sas]
 * [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)
-
-[hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
-[powershell-install]: https://docs.microsoft.com/powershell/azureps-cmdlets-docs
-[hdinsight-creation]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+* [教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md) [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md [powershell-install]: https://docs.microsoft.com/powershell/azureps-cmdlets-docs [hdinsight-creation]: hdinsight-hadoop-provision-linux-clusters.md [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md [hdinsight-upload-data]: hdinsight-upload-data.md [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
 
 [blob-storage-restAPI]: https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API
 [azure-storage-create]:../storage/common/storage-create-storage-account.md

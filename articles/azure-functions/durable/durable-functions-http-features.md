@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 02/14/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2e3b21350b5dd468812b53b37c8fafe5bbae037b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 8b08cf5b1031de2531053beeed70559a96c51d24
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623664"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428025"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -41,17 +41,15 @@ Durable Functions 扩展自动将一组 HTTP API 添加到 Azure Functions 宿�
 
 [业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)公开可以生成便捷 HTTP 响应有效负载的 API。 例如，它可以创建一个响应，其中包含特定业务流程实例的管理 API 的链接。 以下 HTTP 触发器函数示例演示如何对新的业务流程实例使用此 API：
 
-#### <a name="precompiled-c"></a>预编译 C#
-
+# <a name="c"></a>[C#](#tab/csharp)
 ```C#
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
@@ -62,12 +60,12 @@ namespace VSSample
         [FunctionName("HttpStart")]
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-            [OrchestrationClient] DurableOrchestrationClientBase starter,
+            [DurableClient] IDurableClient starter,
             string functionName,
             ILogger log)
         {
             // Function input comes from the request content.
-            dynamic eventData = await req.Content.ReadAsAsync<object>();
+            object eventData = await req.Content.ReadAsAsync<object>();
             string instanceId = await starter.StartNewAsync(functionName, eventData);
 
             log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
@@ -78,33 +76,9 @@ namespace VSSample
 }
 ```
 
-#### <a name="c-script"></a>C# 脚本
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-```C#
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-#r "Microsoft.Extensions.Logging"
-#r "Newtonsoft.Json"
-
-using System.Net;
-using System.Net.Http.Headers;
-
-public static async Task<HttpResponseMessage> Run(
-    HttpRequestMessage req,
-    DurableOrchestrationClient starter,
-    string functionName,
-    ILogger log)
-{
-    // Function input comes from the request content.
-    dynamic eventData = await req.Content.ReadAsAsync<object>();
-    string instanceId = await starter.StartNewAsync(functionName, eventData);
-    
-    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
-    
-    return starter.CreateCheckStatusResponse(req, instanceId);
-}
-```
-
-#### <a name="javascript-with-functions-20-or-later-only"></a>仅限使用 Functions 2.0 或更高版本的 JavaScript
+**index.js**
 
 ```JavaScript
 const df = require("durable-functions");
@@ -119,9 +93,10 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="functionjson"></a>Function.json
+**function.json**
 
 ```JavaScript
+
 {
   "bindings": [
     {
@@ -139,7 +114,7 @@ module.exports = async function (context, req) {
     },
     {
       "name": "starter",
-      "type": "orchestrationClient",
+      "type": "durableClient",
       "direction": "in"
     }
   ]
@@ -201,10 +176,9 @@ Retry-After: 10
 
 从 Durable Functions 2.0 开始，业务流程原生可以通过[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)来使用 HTTP API。
 
-> [!NOTE]
-> 在 JavaScript 中，目前无法直接从业务流程协调程序函数调用 HTTP 终结点。
+以下示例代码演示了一个发出出站 HTTP 请求的业务流程协调程序函数：
 
-以下示例代码演示了一个使用 **CallHttpAsync** .NET API 发出出站 HTTP 请求的 C# 业务流程协调程序函数：
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -223,6 +197,23 @@ public static async Task CheckSiteAvailable(
     }
 }
 ```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const url = context.df.getInput();
+    const response = context.df.callHttp("GET", url)
+
+    if (response.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
+---
 
 使用“调用 HTTP”操作可以在业务流程协调程序函数中执行以下操作：
 
@@ -245,6 +236,8 @@ Durable Functions 原生支持调用接受 Azure Active Directory (Azure AD) 授
 
 以下代码是 .NET 业务流程协调程序函数的一个示例。 该函数发出经过身份验证的调用来使用 Azure 资源管理器[虚拟机 REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines) 重启虚拟机。
 
+# <a name="c"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("RestartVm")]
 public static async Task RunOrchestrator(
@@ -253,6 +246,7 @@ public static async Task RunOrchestrator(
     string subscriptionId = "mySubId";
     string resourceGroup = "myRG";
     string vmName = "myVM";
+    string apiVersion = "2019-03-01";
     
     // Automatically fetches an Azure AD token for resource = https://management.core.chinacloudapi.cn
     // and attaches it to the outgoing Azure Resource Manager API call.
@@ -268,7 +262,33 @@ public static async Task RunOrchestrator(
 }
 ```
 
-在以上示例中，`tokenSource` 参数配置为获取 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)的 Azure AD 令牌。 该令牌由资源 URI `https://management.core.chinacloudapi.cn` 标识。 该示例假设当前函数应用在本地运行，或者已使用托管标识部署为函数应用。 假设本地标识或托管标识有权管理指定资源组 `myRG` 中的 VM。
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const subscriptionId = "mySubId";
+    const resourceGroup = "myRG";
+    const vmName = "myVM";
+    const apiVersion = "2019-03-01";
+    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.chinacloudapi.cn");
+
+    // get a list of the Azure subscriptions that I have access to
+    const restartResponse = yield context.df.callHttp(
+        "POST",
+        `https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/resourceGroups/${resourceGroup}/providers/Microsoft.Compute/virtualMachines/${vmName}/restart?api-version=${apiVersion}`,
+        undefined, // no request content
+        undefined, // no request headers (besides auth which is handled by the token source)
+        tokenSource);
+
+    return restartResponse;
+});
+```
+
+---
+
+在以上示例中，`tokenSource` 参数配置为获取 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的 Azure AD 令牌。 该令牌由资源 URI `https://management.core.chinacloudapi.cn` 标识。 该示例假设当前函数应用在本地运行，或者已使用托管标识部署为函数应用。 假设本地标识或托管标识有权管理指定资源组 `myRG` 中的 VM。
 
 在运行时，配置的令牌源会自动返回 OAuth 2.0 访问令牌。 然后，源会将该令牌作为持有者令牌添加到传出请求的 Authorization 标头中。 相比于将授权标头手动添加到 HTTP 请求，此模型是一种改进，原因如下：
 

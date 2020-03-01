@@ -1,8 +1,6 @@
 ---
-title: Hadoop 体系结构 - Azure HDInsight
-description: 介绍 HDInsight 群集上的 Hadoop 存储和处理。
-services: hdinsight
-documentationcenter: ''
+title: Apache Hadoop 体系结构 - Azure HDInsight
+description: 介绍 Azure HDInsight 群集上的 Apache Hadoop 存储和处理。
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
@@ -14,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 05/27/2019
+origin.date: 02/07/2020
 ms.author: v-yiso
-ms.date: 10/21/2019
-ms.openlocfilehash: 07b56375e5584b5c6484ebb58827570ddbacfb20
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.date: 03/02/2020
+ms.openlocfilehash: 41723c19bea1e15aa8c868e58cb0872756ff1a0e
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292473"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563486"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
@@ -55,6 +53,24 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 所有 HDInsight 群集类型都部署 YARN。 ResourceManager 在进行高可用性部署时会使用一个主实例和一个辅助实例，二者分别运行在群集的第一个头节点和第二个头节点上。 一次只有一个 ResourceManager 实例处于活动状态。 NodeManager 实例跨群集的可用工作节点运行。
 
 ![YARN on HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>软删除
+
+若要从存储帐户中取消删除文件，请参阅：
+
+### <a name="azure-storage"></a>Azure 存储
+
+* [Azure 存储 Blob 的软删除](../storage/blobs/storage-blob-soft-delete.md)
+* [取消删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Azure Data Lake Storage Gen2 的已知问题](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>垃圾清除
+
+“HDFS”   > “高级 core-site”  中的 `fs.trash.interval` 属性应保持默认值 `0`，因为不应在本地文件系统上存储任何数据。 此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,42 +11,44 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 05/16/2018
-ms.date: 01/14/2019
+origin.date: 01/15/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: eb09e112287e7bd7a90e5a020df0e7997bf5d489
-ms.sourcegitcommit: 1456ace86f950acc6908f4f5a9c773b93a4d6acc
+ms.openlocfilehash: 42cd262398a5ef6d4eaab84dcb6280551d3c6569
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54029238"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563503"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 MapReduce 作业
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-了解如何使用 HDInsight .NET SDK 提交 MapReduce 作业。 HDInsight 群集附带了一个 jar 文件，其中包含一些 MarReduce 示例。 该 jar 文件是 */example/jars/hadoop-mapreduce-examples.jar*。  其中一个示例是 *wordcount*。 开发 C# 控制台应用程序，提交 wordcount 作业。  作业会读取 /example/data/gutenberg/davinci.txt 文件，并将结果输出到 /example/data/davinciwordcount。  如果想要重新运行该应用程序，必须清理输出文件夹。
+了解如何使用 HDInsight .NET SDK 提交 MapReduce 作业。 HDInsight 群集附带了一个 jar 文件，其中包含一些 MarReduce 示例。 该 jar 文件是 */example/jars/hadoop-mapreduce-examples.jar*。  其中一个示例是 *wordcount*。 开发 C# 控制台应用程序，提交 wordcount 作业。  作业会读取 /example/data/gutenberg/davinci.txt 文件，并将结果输出到 /example/data/davinciwordcount   。  如果要重新运行该应用程序，必须清理输出文件夹。
 
 > [!NOTE]
 > 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端处理 Hive 的信息，请使用本文顶部显示的选项卡选择器。
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
-在开始阅读本文前，必须具有以下项：
+## <a name="prerequisites"></a>必备条件
 
-* **HDInsight 中的 Hadoop 群集**。 请参阅[开始在 HDInsight 中使用基于 Linux 的 Apache Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
-* **Visual Studio 2013/2015/2017**。
+* HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/)。
 
 ## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 提交 MapReduce 作业
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。 
 
-**提交作业**
+1. 启动 Visual Studio 并创建 C# 控制台应用程序。
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序。
-2. 通过 Nuget 包管理器控制台运行以下命令：
+1. 导航到“工具” > “NuGet 包管理器” > “包管理器控制台”，然后输入以下命令    ：
 
-        Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. 使用以下代码：
+    ```   
+    Install-Package Microsoft.Azure.Management.HDInsight.Job
+    ```
+
+1. 将以下代码复制到 **Program.cs** 中。 然后通过设置 `existingClusterName`、`existingClusterPassword`、`defaultStorageAccountName`、`defaultStorageAccountKey` 和 `defaultStorageContainerName` 的值来编辑代码。
 
     ```csharp
         using System.Collections.Generic;

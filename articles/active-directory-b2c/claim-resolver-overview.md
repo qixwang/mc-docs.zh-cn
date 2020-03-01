@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 5d1a5c2f3651a432cc96632ca8e03952f98d243a
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 0cc86da2048146d462f30c04fbce0d8944fcafe6
+ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028087"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77531295"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -104,13 +104,34 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 访问令牌。 | 不适用 |
 
-## <a name="how-to-use-claim-resolvers"></a>如何使用声明解析程序
+## <a name="using-claim-resolvers"></a>使用声明解析程序 
+
+可以将声明解析程序用于以下元素： 
+
+| 项目 | 元素 | 设置 |
+| ----- | ----------------------- | --------|
+|[Azure Active Directory](active-directory-technical-profile.md) 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|OAuth2 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md) 技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|声明转换技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful 提供程序](restful-technical-profile.md)技术配置文件| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md) 技术配置文件| `OutputClaim`| 1, 2|
+|[自断言](self-asserted-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile) 技术配置文件| `OutputClaim`| 2 |
+
+设置： 
+1. `IncludeClaimResolvingInClaimsHandling` 元数据必须设置为 `true`。
+1. 输入或输出声明属性 `AlwaysUseDefaultValue` 必须设置为 `true`。
+
+## <a name="claim-resolvers-samples"></a>声明解析程序示例
 
 ### <a name="restful-technical-profile"></a>RESTful 技术配置文件
 
 在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据这些声明，REST API 可以运行自定义业务逻辑，并提出已本地化的错误消息（如有必要）。
 
-以下示例演示了一个 RESTful 技术配置文件：
+以下示例演示了具有此方案的一个 RESTful 技术配置文件：
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -120,12 +141,13 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
     <Item Key="ServiceUrl">https://your-app.chinacloudsites.cn/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -137,9 +159,9 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便可以动态呈现页面内容。 例如，可以基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便动态呈现页面内容。 例如，这允许基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
-以下示例将名为 campaignId，且值为 `hawaii`，语言代码为 `en-US`，以及表示客户端 ID 的 app 的参数传入查询字符串    ：
+以下示例传入了名为 **campaignId** 且值为 `hawaii` 的查询字符串参数、**language** 代码 `en-US` 以及表示客户端 ID 的 **app**：
 
 ```XML
 <UserJourneyBehaviors>
@@ -155,6 +177,42 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>内容定义
+
+在 [ContentDefinition](contentdefinitions.md) `LoadUri` 中，可以发送声明解析程序来根据所使用的参数从不同的位置拉取内容。 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.chinacloudapi.cn/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
+```
+
+### <a name="relying-party-policy"></a>信赖方策略
+
+在[信赖方](relyingparty.md)策略技术配置文件中，你可能希望在 JWT 中将租户 ID 或相关 ID 发送给信赖方应用程序。 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```
 
 <!-- Update_Description: wording update -->

@@ -7,15 +7,15 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 10/25/2018
-ms.date: 04/01/2019
+origin.date: 12/06/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 43fdfc47dafaec362f68bdc49e1be3177a6824a1
-ms.sourcegitcommit: 41a1c699c77a9643db56c5acd84d0758143c8c2f
+ms.openlocfilehash: 18c353c2c2a03bff2c5439cac16ebcb9bf4c80f9
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58348684"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563509"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -38,13 +38,14 @@ Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可
 
 下表显示了可用于创建 HDInsight 群集的各种方法。
 
-|**工具**|**基于浏览器**|**命令行**|**REST API**|**SDK**|
+|工具|基于浏览器|命令行|REST API|SDK|
 |---|---|---|---|---|
 |[Azure 门户](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure 数据工厂](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI（版本 1.0）](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
+|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager 模板](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
@@ -57,6 +58,7 @@ HDInsight 群集可能长时间不被使用。 为了帮助节省资源成本，
 
 删除群集不会删除关联的存储帐户和外部元数据。 以后可以使用相同的存储帐户和元存储重新创建群集。
 
+可以使用 Azure 数据工厂来计划按需 HDInsight 群集的创建。 有关详细信息，请参阅[使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-adf.md)一文。
 
 ## <a name="decouple-storage-from-compute"></a>从计算资源解耦存储资源
 

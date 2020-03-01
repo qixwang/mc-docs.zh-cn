@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 03/19/2019
-ms.date: 10/21/2019
+origin.date: 02/05/2020
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 296645c87ed4459fe4aa5d867cd24f216073a4e0
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 97669525a3df19a0f31777bbe07e60ffe061c2e8
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292577"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563469"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
 
@@ -91,11 +91,23 @@ Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、�
 
 使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 在脚本操作日志中可以深入了解设置群集过程中发生的错误，以及可能影响群集性能和可用性的配置设置更改。  若要查看脚本操作的状态，请在 Ambari UI 中选择“操作”按钮，或访问默认存储帐户中的状态日志。  存储日志位于 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`。
 
+### <a name="view-ambari-alerts-status-logs"></a>查看 Ambari 警报状态日志
+
+Apache Ambari 会将警报状态更改写入 `ambari-alerts.log`。 完整路径为 `/var/log/ambari-server/ambari-alerts.log`。 若要为日志启用调试，请在 `/etc/ambari-server/conf/log4j.properties.` 中更改一个属性，然后更改 `# Log alert state changes` 下的条目，从：
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>步骤 3：管理群集作业执行日志文件
 
-下一步是查看各种服务的作业执行日志文件。  服务可能包括 Apache HBase、Apache Spark 等等。 Hadoop 群集生成大量的详细日志，因此，确定有用（以及无用）的日志可能很耗时。  了解日志记录系统对于有针对性的日志文件管理非常重要。  下面是一个示例日志文件。
+下一步是查看各种服务的作业执行日志文件。  服务可能包括 Apache HBase、Apache Spark 等等。 Hadoop 群集会生成大量的详细日志，因此，确定有用（以及无用）的日志可能很耗时。  了解日志记录系统对于有针对性的日志文件管理非常重要。  下图是一个示例日志文件。
 
-![HDInsight 日志文件示例](./media/hdinsight-log-management/hdi-log-file-example.png)
+![HDInsight 示例日志文件示例输出](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>访问 Hadoop 日志文件
 
@@ -148,7 +160,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 确定可以删除哪些日志文件后，可以调整许多 Hadoop 服务上的日志记录参数，以便在指定的时间段后自动删除日志文件。
 
-对于某些日志文件，可以使用价格较低的日志文件存档方法。 对于 Azure 资源管理器活动日志，可以浏览使用 Azure 门户来探索此方法。  在 Azure 门户中选择 HDInsight 实例对应的“活动日志”链接，设置 ARM 日志的存档。   在“活动日志”搜索页面顶部，选择“导出”菜单项打开“导出活动日志”窗格。    填写订阅、区域、是否导出到存储帐户，以及日志的保留天数。 在同一窗格中，还可以指定是否导出到事件中心。 
+对于某些日志文件，可以使用价格较低的日志文件存档方法。 对于 Azure 资源管理器活动日志，可以使用 Azure 门户来探索此方法。  通过在 Azure 门户中选择 HDInsight 实例对应的“活动日志”链接，设置资源管理器日志的存档。   在“活动日志”搜索页面顶部，选择“导出”菜单项打开“导出活动日志”窗格。    填写订阅、区域、是否导出到存储帐户，以及日志的保留天数。 在同一窗格中，还可以指定是否导出到事件中心。
 
 ![导出日志文件](./media/hdinsight-log-management/hdi-export-log-files.png)
 

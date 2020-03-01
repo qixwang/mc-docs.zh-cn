@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建并管理使用多个 NIC 的 Windows VM | Azure
+title: 在 Azure 中创建并管理使用多个 NIC 的 Windows VM
 description: 了解如何使用 Azure PowerShell 或资源管理器模板创建并管理附有多个 NIC 的 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,23 +12,21 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 09/26/2017
-ms.date: 10/14/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: a0c7b698a5dbc7412bbdd8e911fec2a174e771b0
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.openlocfilehash: ed82dca216932d7492fc49c62e9004e958351df6
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272556"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428322"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接设置不同的子网。 可以将 VM 上的多个 NIC 关联到多个子网，但这些子网必须全都位于同一个虚拟网络 (vNet) 中。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在以下示例中，请将示例参数名称替换成自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
-
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-vm-with-multiple-nics"></a>创建具有多个 NIC 的 VM
 首先创建一个资源组。 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
@@ -218,7 +216,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>使用模板创建多个 NIC
-使用 Azure 资源管理器模板可在部署期间创建资源的多个实例，例如，创建多个 NIC。 资源管理器模板使用声明性 JSON 文件来定义环境。 有关详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。 使用“copy”  指定要创建的实例数：
+使用 Azure 资源管理器模板可在部署期间创建资源的多个实例，例如，创建多个 NIC。 资源管理器模板使用声明性 JSON 文件来定义环境。 有关详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。 使用“copy”  指定要创建的实例数：
 
 ```json
 "copy": {
@@ -229,7 +227,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 
 有关详细信息，请参阅[使用“copy”创建多个实例](../../resource-group-create-multiple.md)  。 
 
-也可使用 `copyIndex()` 向资源名追加数字。 然后可创建“myNic1”、“MyNic2”等   。 以下代码显示了追加索引值的示例：
+还可以使用 `copyIndex()` 在资源名称后面追加一个数字。 然后可创建“myNic1”、“MyNic2”等   。 以下代码演示了追加索引值的示例：
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 

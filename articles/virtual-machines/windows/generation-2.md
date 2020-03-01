@@ -1,5 +1,5 @@
 ---
-title: 第 2 代 VM 的 Azure 支持（预览版）| Azure
+title: Azure 对第 2 代 VM 的支持
 description: 第 2 代 VM 的 Azure 支持概述
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,48 +11,52 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-origin.date: 10/29/2019
-ms.date: 11/11/2019
+origin.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: e814873989b997b273e77d902d329e3c0b6aa8dd
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.openlocfilehash: 6a6f0c54e3a2bf0c94fa24d40bf7d4e8bd60c756
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74592431"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428117"
 ---
 <!--Verify sucessfully-->
-# <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 上的第 2 代 VM 支持（预览版）
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
-> [!IMPORTANT]
-> 第 2 代 VM 的 Azure 支持目前以预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/subscription-agreement/)。
+Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
 
-Azure 中现已推出第 2 代虚拟机 (VM) 支持预览版。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。 
-
-第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 第 2 代 VM 还具有 Azure 中不支持的某些特性。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
+第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
 
 第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
-Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定 VM 系列提供第 2 代预览版支持：
+Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
+
+<!--Not Available on  (except for Mv2-series VMs)-->
 
 * [B 系列](/virtual-machines/windows/b-series-burstable)
+
+    <!--Not Available on * [DC-series](/virtual-machines/windows/sizes-general#dc-series)-->
+    
 * [Dsv2 系列](/virtual-machines/windows/sizes-general#dsv2-series)和 [Dsv3 系列](/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 系列](/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 系列](/virtual-machines/windows/sizes-compute#fsv2-series-1)
 
     <!--Not Available on * [GS-series](/virtual-machines/windows/sizes-previous-gen#gs-series)-->
+    <!--Not Available on * [HB-series](/virtual-machines/windows/sizes-hpc#hb-series)-->
+    <!--Not Available on * [HC-series](/virtual-machines/windows/sizes-hpc#hc-series)-->
     <!--Not Available on * [Ls-series](/virtual-machines/windows/sizes-previous-gen#ls-series)-->
     <!--Not Available on * [Lsv2-series](/virtual-machines/windows/sizes-storage#lsv2-series)-->
     <!--Not Available on * [Mv2-series](/virtual-machines/windows/sizes-memory#mv2-series)-->
+    <!--Not Available on * [NCv2-series](/virtual-machines/windows/sizes-gpu#ncv2-series)-->
     
 * [NCv3 系列](/virtual-machines/windows/sizes-gpu#ncv3-series)
 
-    <!--Not Available on * [NCv2-series](/virtual-machines/windows/sizes-gpu#ncv2-series)-->
+    
     <!--Not Available on * [ND-series](/virtual-machines/windows/sizes-gpu#nd-series)-->
+    <!--Not Available on * * [NVv3-series](/virtual-machines/windows/sizes-gpu#nvv3-series--1)-->
     
 <!--Not Available [!NOTE] due to Mv2 series not available on Azure China Cloud-->
 
@@ -60,18 +64,23 @@ Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定
 
 第 2 代 VM 支持以下市场映像：
 
-* Windows Server 2019 Datacenter
-* Windows Server 2016 Datacenter
-* Windows Server 2012 R2 Datacenter
-* Windows Server 2012 Datacenter
+* Windows Server 2019、2016、2012 R2、2012
 
-<!--MOONCAKE: CUSTOMIZE-->
+    <!--Not Available on * Windows 10 -->
+    <!--Not Available on * SUSE Linux Enterprise Server -->
+    
+* Ubuntu Server 16.04、18.04
+    
+    <!--Not Available on * Ubuntu Server 19.04, 19.10  -->
+    
+<!--MOONCAKE: Not Available on SUSE till on 09/30/2019-->
+<!--MOONCAKE: CUSTOMIZED-->
 
 > [!NOTE]
-> 可将 `(Gen2)` 后缀追加到映像说明，然后在市场中搜索相应的映像。<br />
-> 例如：`Windows Server 2019 Datacenter (Gen2)`
+> 可将 Windows Server 上的 `(Gen2)` 后缀或 Linux 的 `(Generation 2 VM)` 追加到映像说明，然后在市场中搜索相应的映像。<br />
+> 例如：`Windows Server 2019 Datacenter (Gen2)` 和 `Ubuntu Server 16.04 LTS (Generation 2 VM)`
 
-<!--MOONCAKE: CUSTOMIZE-->
+<!--MOONCAKE: CUSTOMIZED-->
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与Azure 第 2 代 VM
 
@@ -102,7 +111,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 | OS 磁盘 > 2 TB                    | :x:                | :heavy_check_mark: |
 | 自定义磁盘/映像/交换 OS         | :heavy_check_mark: | :heavy_check_mark: |
 | 虚拟机规模集支持 | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure 磁盘加密             | :heavy_check_mark: | :x:                |
@@ -136,6 +145,12 @@ Windows 和 SLES 的第 2 代映像包括在与第 1 代映像相同的服务器
 
 ```powershell
 Get-AzVMImageSku -Location chinanorth2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+或者，可以使用 Azure CLI 查看按 **Publisher** 列出的任何可用第 2 代映像。
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 如果要创建使用 Windows Server 2012 作为操作系统的 VM，则将选择第 1 代 (BIOS) 或第 2 代 (UEFI) VM SKU，如下所示：

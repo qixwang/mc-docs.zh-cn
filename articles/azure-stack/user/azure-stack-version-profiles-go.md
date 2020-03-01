@@ -1,39 +1,30 @@
 ---
-title: 在 Azure Stack 中将 API 版本配置文件与 GO 配合使用 | Microsoft Docs
-description: 了解如何在 Azure Stack 中将 API 版本配置文件与 GO 配合使用。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中将 API 版本配置文件与 GO 配合使用
+description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 GO 配合使用。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
-ms.openlocfilehash: 8a542f5cda44d5fd410e560bac18c7b0bf9d8b6f
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 1a88d415476debf81c3729a54b4d9c41bcdcef50
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623535"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540742"
 ---
-# <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="use-api-version-profiles-with-go-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 GO 配合使用
 
 ## <a name="go-and-version-profiles"></a>Go 和版本配置文件
 
 配置文件结合了不同服务的不同版本的不同资源类型。 使用配置文件有助于混合和匹配不同的资源类型。 配置文件提供以下优点：
 
 - 通过锁定到特定的 API 版本提供应用稳定性。
-- 提供应用与 Azure Stack 和区域性 Azure 数据中心的兼容性。
+- 提供应用与 Azure Stack Hub 和区域性 Azure 数据中心的兼容性。
 
-在 Go SDK 中，配置文件在配置文件路径下可用。 配置文件版本号以 **YYYY-MM-DD** 格式标记。 最新的 Azure Stack API 配置文件版本为 **2019-03-01**，适用于 Azure Stack 版本 1904 或更高版本。 若要从配置文件导入给定的服务，请从配置文件导入其相应的模块。 例如，若要从 **2019-03-01** 配置文件导入**计算**服务，请使用以下代码：
+在 Go SDK 中，配置文件在配置文件路径下可用。 配置文件版本号以 **YYYY-MM-DD** 格式标记。 最新的 Azure Stack Hub API 配置文件版本为 **2019-03-01**，适用于 Azure Stack Hub 版本 1904 或更高版本。 若要从配置文件导入给定的服务，请从配置文件导入其相应的模块。 例如，若要从 **2019-03-01** 配置文件导入**计算**服务，请使用以下代码：
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
@@ -60,9 +51,9 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compu
 
 Go SDK 依赖 Azure **Go-AutoRest** 模块将 REST 请求发送到 Azure 资源管理器终结点。 必须从 [GitHub 上的 Azure Go-AutoRest](https://github.com/Azure/go-autorest) 导入 Azure **Go-AutoRest** 模块依赖项。 可以在 **Install** 节中找到 install bash 命令。
 
-## <a name="how-to-use-go-sdk-profiles-on-azure-stack"></a>如何在 Azure Stack 上使用 Go SDK 配置文件
+## <a name="how-to-use-go-sdk-profiles-on-azure-stack-hub"></a>如何在 Azure Stack Hub 上使用 Go SDK 配置文件
 
-若要在 Azure Stack 上运行 Go 代码的示例，请遵循以下步骤：
+若要在 Azure Stack Hub 上运行 Go 代码的示例，请遵循以下步骤：
 
 1. 安装 Azure SDK for Go 及其依赖项。 有关说明，请参阅上一部分[安装 Azure SDK for Go](#install-the-azure-sdk-for-go)。
 2. 从资源管理器终结点获取元数据信息。 该终结点返回 JSON 文件，其中包含运行 Go 代码所需的信息。
@@ -85,11 +76,11 @@ Go SDK 依赖 Azure **Go-AutoRest** 模块将 REST 请求发送到 Azure 资源�
    }
    ```
 
-3. 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的信息，请参阅[在 Azure Stack 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)。
+3. 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的信息，请参阅[在 Azure Stack Hub 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)。
 
-4. 创建使用客户端密码、具有“订阅”范围和“所有者”角色的服务主体。   保存服务主体的 ID 和机密。 有关为 Azure Stack 创建服务主体的信息，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)。 现已设置 Azure Stack 环境。
+4. 创建使用客户端密码、具有“订阅”范围和“所有者”角色的服务主体。   保存服务主体的 ID 和机密。 有关为 Azure Stack Hub 创建服务主体的信息，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)。 现已设置 Azure Stack Hub 环境。
 
-5. 在代码中从 Go SDK 配置文件导入服务模块。 最新版本的 Azure Stack 配置文件为 **2019-03-01**。 例如，若要从 **2019-03-01** 配置文件类型导入网络模块，请使用以下代码：
+5. 在代码中从 Go SDK 配置文件导入服务模块。 最新版本的 Azure Stack Hub 配置文件为 **2019-03-01**。 例如，若要从 **2019-03-01** 配置文件类型导入网络模块，请使用以下代码：
 
    ```go
    package main
@@ -125,13 +116,13 @@ Go SDK 依赖 Azure **Go-AutoRest** 模块将 REST 请求发送到 Azure 资源�
    vnetClient .CreateOrUpdate( )
    ```
 
-有关使用 Go SDK 配置文件在 Azure Stack 中创建虚拟网络的完整示例，请参阅[示例](#example)。
+有关使用 Go SDK 配置文件在 Azure Stack Hub 中创建虚拟网络的完整示例，请参阅[示例](#example)。
 
 ## <a name="authentication"></a>身份验证
 
 若要使用 Go SDK 从 Azure Active Directory 获取 **Authorizer** 属性，请安装 **Go-AutoRest** 模块。 这些模块应该已通过“GO SDK”安装进行安装。 如果未安装，请[从 GitHub 安装身份验证包](https://github.com/Azure/go-autorest/tree/master/autorest/adal)。
 
-Authorizer 必须设置为资源客户端的授权者。 可通过不同的方式使用客户端凭据在 Azure Stack 上获取授权者令牌：
+Authorizer 必须设置为资源客户端的授权者。 可通过不同的方式使用客户端凭据在 Azure Stack Hub 上获取授权者令牌：
 
 1. 如果可以使用订阅中具有所有者角色的某个服务主体，请跳过此步骤。 否则，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)，了解有关如何创建使用客户端密码的服务主体的说明以及有关如何为其分配范围为订阅的“所有者”角色的帮助。 确保捕获服务主体应用程序 ID 和机密。
 
@@ -155,7 +146,7 @@ Authorizer 必须设置为资源客户端的授权者。 可通过不同的方�
    }
    ```
 
-   将 `<activeDirectoryEndpoint>` 设置为在本文上一部分中检索的 `ResourceManagerUrl` 元数据中的 `loginEndpoint` 属性值。 将 `<tenantID>` 值设置为 Azure Stack 租户 ID。
+   将 `<activeDirectoryEndpoint>` 设置为在本文上一部分中检索的 `ResourceManagerUrl` 元数据中的 `loginEndpoint` 属性值。 将 `<tenantID>` 值设置为你的 Azure Stack Hub 租户 ID。
 
 4. 最后，使用 `NewServicePrincipalToken` 方法从 **adal** 模块创建服务主体令牌：
 
@@ -181,12 +172,12 @@ Authorizer 必须设置为资源客户端的授权者。 可通过不同的方�
 
 ## <a name="example"></a>示例
 
-本示例演示用于在 Azure Stack 中创建虚拟网络的 Go 代码示例。 有关 Go SDK 的完整示例，请参阅 [Azure Go SDK 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-go-samples)。 可从该存储库的服务文件夹中的 hybrid 路径下获取 Azure Stack 示例。
+本示例演示用于在 Azure Stack Hub 中创建虚拟网络的 Go 代码示例。 有关 Go SDK 的完整示例，请参阅 [Azure Go SDK 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-go-samples)。 可从该存储库的服务文件夹中的 hybrid 路径下获取 Azure Stack Hub 示例。
 
 > [!NOTE]  
-> 若要运行此示例中的代码，请验证使用的订阅是否具有列为“已注册”的“网络”资源提供程序。   若要验证，请在 Azure Stack 门户中找到该订阅，然后选择“资源提供程序”。 
+> 若要运行此示例中的代码，请验证使用的订阅是否具有列为“已注册”的“网络”资源提供程序。   若要验证，请在 Azure Stack Hub 门户中找到该订阅，然后选择“资源提供程序”。 
 
-1. 在代码中导入所需的包。 使用 Azure Stack 上最新的可用配置文件来导入网络模块。
+1. 在代码中导入所需的包。 使用 Azure Stack Hub 上最新的可用配置文件来导入网络模块：
 
    ```go
    package main
@@ -301,13 +292,13 @@ Authorizer 必须设置为资源客户端的授权者。 可通过不同的方�
    }
    ```
 
-使用 Go SDK 可用于 Azure Stack 的一些代码示例如下：
+使用 Go SDK 可用于 Azure Stack Hub 的一些代码示例如下：
 
 - [创建虚拟机](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM)
 - [存储数据平面](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane)
-- [使用托管磁盘](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks)（使用 2019-03-01 配置文件的示例，该配置文件针对 Azure Stack 支持的最新 API 版本）
+- [使用托管磁盘](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks)（使用 2019-03-01 配置文件的示例，该配置文件针对 Azure Stack Hub 支持的最新 API 版本）
 
 ## <a name="next-steps"></a>后续步骤
 
-- [安装适用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md)
-- [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)
+- [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)
+- [配置 Azure Stack Hub 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)

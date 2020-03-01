@@ -7,40 +7,44 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 origin.date: 06/12/2019
-ms.date: 11/11/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0b4bc81af252b4fe8ac34724d453644daf54ce3f
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: e24a26ce0cf4f5348b90510015e446626f02c0aa
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425875"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563451"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Spark 群集
 
-了解如何在 Azure HDInsight 中创建 [Apache Spark](https://spark.apache.org/) 群集，以及如何对 [Apache Hive](https://hive.apache.org/) 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。
+在本快速入门中，你将使用 Azure 资源管理器模板在 Azure HDInsight 中创建一个 Apache Spark 群集。 然后你将创建一个 Jupyter 笔记本，并使用它来针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter 笔记本，可以与数据进行交互，将代码和 markdown 文本结合使用，以及执行简单的可视化效果。
 
-在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Spark 群集。 群集将 Azure 存储 Blob 用作群集存储。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter Notebook](https://jupyter.org/) | [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
+
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+
+## <a name="create-an-apache-spark-cluster"></a>创建 Apache Spark 群集
+
+使用 Azure 资源管理器模板在 HDInsight 中创建 Apache Spark 群集。 可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/) 中找到该模板。 有关群集的 JSON 语法和属性，请参阅 [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)。
+
+群集将 Azure 存储 Blob 用作群集存储。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
 > [!IMPORTANT]
 > HDInsight 群集是基于分钟按比例收费，而不管用户是否正在使用它们。 请务必在使用完之后删除群集。 有关详细信息，请参阅本文的[清理资源](#clean-up-resources)部分。
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-
-## <a name="create-an-hdinsight-spark-cluster"></a>创建 HDInsight Spark 群集
-
-使用 Azure 资源管理器模板创建 HDInsight Spark 群集。 可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/) 中找到该模板。 
-
-1. 选择以下链接在新的浏览器选项卡中打开 Azure 门户中的模板：         
+1. 选择以下链接在新的浏览器选项卡中打开 Azure 门户中的模板：
 
     <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank">部署到 Azure</a>
 
 2. 输入以下值：
 
-    | 属性 | 值 |
+    | 属性 | Value |
     |---|---|
     |**订阅**|选择用于创建此群集的 Azure 订阅。 用于此快速入门的订阅是 &lt;Azure subscription name>  。 |
-    | **资源组**|创建一个资源组或选择一个现有的资源组。 资源组用于管理项目的 Azure 资源。 用于此快速入门的新资源组名称为“myspark20180403rg”  。|
+    | **资源组**|创建一个资源组或选择一个现有的资源组。 使用资源组管理项目的 Azure 资源。 用于此快速入门的新资源组名称为“myspark20180403rg”  。|
     | **位置**|选择资源组的位置。 模板将此位置用于创建群集，以及用于默认群集存储。 用于此快速入门的位置为“美国东部 2”  。|
     | **ClusterName**|为要创建的 HDInsight 群集输入名称。 用于此快速入门的新群集名称为“myspark20180403”  。|
     | **群集登录名和密码**|默认登录名是“admin”。选择用于群集登录的密码。 用于此快速入门的登录名为“admin”  。|
@@ -113,7 +117,7 @@ SQL（结构化查询语言）是用于查询和转换数据的最常见、最�
 2. 请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 关闭 Notebook 会释放群集资源，包括 Spark 应用程序。
 
 ## <a name="clean-up-resources"></a>清理资源
-HDInsight 会将数据和 Jupyter Notebook 保存在 Azure 存储或 Azure Data Lake Store 中，以便在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 如果要立即开始[后续步骤](#next-steps)中所列的教程，可能需要保留群集。
+HDInsight 会将数据和 Jupyter Notebook 保存在 Azure 存储或 Azure Data Lake Store 中，以便在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用高于存储空间费用数倍，因此在不使用群集时将其删除可以节省费用。 如果要立即开始[后续步骤](#next-steps)中所列的教程，可能需要保留群集。
 
 切换回 Azure 门户，并选择“删除”  。
 

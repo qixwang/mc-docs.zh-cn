@@ -1,32 +1,23 @@
 ---
-title: 在 Azure Stack 中将 API 版本配置文件与 Python 配合使用 | Microsoft Docs
-description: 了解如何在 Azure Stack 中将 API 版本配置文件与 Python 配合使用。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中将 API 版本配置文件与 Python 配合使用
+description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Python 配合使用。
 author: WenJason
-manager: digimonbile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: efd3bf8a165c95bc0be7be8387f28121e6250c9d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 97f4094c90a554a26a454c0e8208cfcafa31f3cf
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336121"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541005"
 ---
-# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Python 配合使用
+# <a name="use-api-version-profiles-with-python-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Python 配合使用
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Stack 和 Azure）用作目标。 使用 API 配置文件为混合云创建解决方案。
+Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Stack Hub 和 Azure）用作目标。 使用 API 配置文件为混合云创建解决方案。
 
 本文中的说明要求 Azure 订阅。 如果没有该订阅，可以获取 [1 元人民币的试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -37,38 +28,38 @@ Python SDK 支持以下 API 配置文件：
 - **latest**  
     此配置文件以 Azure 平台中所有服务提供程序的最新 API 版本为目标。
 - **2019-03-01-hybrid**  
-    此配置文件针对版本 1904 或更高版本的 Azure Stack 平台中所有资源提供程序的最新 API 版本。
+    此配置文件针对版本 1904 或更高版本的 Azure Stack Hub 平台中所有资源提供程序的最新 API 版本。
 - **2018-03-01-hybrid**  
-    此配置文件针对 Azure Stack 平台中所有资源提供程序的最兼容 API 版本。
+    此配置文件针对 Azure Stack Hub 平台中所有资源提供程序的最兼容 API 版本。
 - **2017-03-09-profile**  
-    此配置文件以 Azure Stack 支持的资源提供程序的大多数兼容 API 版本为目标。
+    此配置文件以 Azure Stack Hub 支持的资源提供程序的大多数兼容 API 版本为目标。
 
-   有关 API 配置文件和 Azure Stack 的详细信息，请参阅[在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles.md)。
+   有关 API 配置文件和 Azure Stack Hub 的详细信息，请参阅[在 Azure Stack Hub 中管理 API 版本配置文件](azure-stack-version-profiles.md)。
 
 ## <a name="install-the-azure-python-sdk"></a>安装 Azure Python SDK
 
 1. 从[官方站点](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)安装 Git。
 2. 有关如何安装 Python SDK 的说明，请参阅[面向 Python 开发人员的 Azure](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python)。
-3. 如果此文不适用，请创建订阅，并保存订阅 ID 供以后使用。 有关创建订阅的说明，请参阅[在 Azure Stack 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)。
-4. 创建服务主体并保存其 ID 和机密。 有关如何为 Azure Stack 创建服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
-5. 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何为服务主体分配角色的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
+3. 如果此文不适用，请创建订阅，并保存订阅 ID 供以后使用。 有关创建订阅的说明，请参阅[在 Azure Stack Hub 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)。
+4. 创建服务主体并保存其 ID 和机密。 有关如何为 Azure Stack Hub 创建服务主体的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
+5. 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何为服务主体分配角色的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要将 Python Azure SDK 与 Azure Stack 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅下表后面针对特定操作系统的说明。
+若要将 Python Azure SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅下表后面针对特定操作系统的说明。
 
 | Value | 环境变量 | 说明 |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| 租户 ID | `AZURE_TENANT_ID` | Azure Stack [租户 ID](../operator/azure-stack-identity-overview.md)。 |
+| 租户 ID | `AZURE_TENANT_ID` | Azure Stack Hub [租户 ID](../operator/azure-stack-identity-overview.md)。 |
 | 客户端 ID | `AZURE_CLIENT_ID` | 在本文上一部分创建服务主体时保存的服务主体应用 ID。 |
-| 订阅 ID | `AZURE_SUBSCRIPTION_ID` | 使用[订阅 ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) 访问 Azure Stack 中的套餐。 |
+| 订阅 ID | `AZURE_SUBSCRIPTION_ID` | 使用[订阅 ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) 访问 Azure Stack Hub 中的套餐。 |
 | 客户端机密 | `AZURE_CLIENT_SECRET` | 创建服务主体时保存的服务主体应用机密。 |
-| 资源管理器终结点 | `ARM_ENDPOINT` | 请参阅 [Azure Stack 资源管理器终结点](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)一文。 |
-| 资源位置 | `AZURE_RESOURCE_LOCATION` | Azure Stack 环境的资源位置。
+| 资源管理器终结点 | `ARM_ENDPOINT` | 参阅 [Azure Stack Hub 资源管理器终结点](azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint)一文。 |
+| 资源位置 | `AZURE_RESOURCE_LOCATION` | Azure Stack Hub 环境的资源位置。
 
-### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
+### <a name="trust-the-azure-stack-hub-ca-root-certificate"></a>信任 Azure Stack Hub CA 根证书
 
-如果使用的是 ASDK，则必须显式信任远程计算机上的 CA 根证书。 不需要信任 Azure Stack 集成系统的 CA 根证书。
+如果使用的是 ASDK，则必须显式信任远程计算机上的 CA 根证书。 不需要信任 Azure Stack Hub 集成系统的 CA 根证书。
 
 #### <a name="windows"></a>Windows
 
@@ -80,7 +71,7 @@ Python SDK 支持以下 API 配置文件：
 
     记下证书存储位置，例如， **~/lib/python3.5/site-packages/certifi/cacert.pem**。 具体的路径取决于操作系统以及安装的 Python 版本。
 
-2. 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书：
+2. 若要信任 Azure Stack Hub CA 根书，请将它附加到现有的 Python 证书：
 
     ```powershell
     $pemFile = "<Fully qualified path to the PEM certificate; for ex: C:\Users\user1\Downloads\root.pem>"
@@ -108,23 +99,23 @@ Python SDK 支持以下 API 配置文件：
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Python35\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-    Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
 > [!NOTE]  
 > 如果通过 Python SDK 使用 **virtualenv** 进行开发（如下面的[运行 Python 示例](#run-the-python-sample)部分所述），则必须向虚拟环境证书存储添加上述证书。 路径看起来可能类似于：`..\mytestenv\Lib\site-packages\certifi\cacert.pem`。
 
-## <a name="python-samples-for-azure-stack"></a>适用于 Azure Stack 的 Python 示例
+## <a name="python-samples-for-azure-stack-hub"></a>适用于 Azure Stack Hub 的 Python 示例
 
-下面是一些适用于 Azure Stack 的、使用 Python SDK 的代码示例：
+下面是一些适用于 Azure Stack Hub 的、使用 Python SDK 的代码示例：
 
 - [管理资源和资源组](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
 - [管理存储帐户](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [管理虚拟机](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)：此示例使用 **2019-03-01-hybrid** 配置文件，该配置文件针对 Azure Stack 支持的最新 API 版本。
+- [管理虚拟机](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)：此示例使用 **2019-03-01-hybrid** 配置文件，该配置文件适用于 Azure Stack 支持的最新 API 版本。
 
 ## <a name="manage-virtual-machine-sample"></a>管理虚拟机示例
 
-使用以下 Python 代码示例对 Azure Stack 中的虚拟机 (VM) 执行常见管理任务。 该代码示例演示如何执行以下操作：
+使用以下 Python 代码示例对 Azure Stack Hub 中的虚拟机 (VM) 执行常见管理任务。 该代码示例演示如何执行以下操作：
 
 - 创建 VM：
   - 创建 Linux VM
@@ -174,7 +165,7 @@ Python SDK 支持以下 API 配置文件：
     pip install -r requirements.txt
     ```
 
-6. 创建要用于 Azure Stack 的[服务主体](../operator/azure-stack-create-service-principals.md)。 确保服务主体在订阅上具有[“参与者/所有者”角色](../operator/azure-stack-create-service-principals.md#assign-a-role)。
+6. 创建要用于 Azure Stack Hub 的[服务主体](../operator/azure-stack-create-service-principals.md)。 确保服务主体在订阅上具有[“参与者/所有者”角色](../operator/azure-stack-create-service-principals.md#assign-a-role)。
 
 7. 设置以下变量并将这些环境变量导出到当前 shell 中：
 
@@ -187,7 +178,7 @@ Python SDK 支持以下 API 配置文件：
     export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
-8. 若要运行此示例，Ubuntu 16.04-LTS 和 WindowsServer 2012-R2-DataCenter 映像必须存在于 Azure Stack 市场中。 可以[从 Azure 下载](../operator/azure-stack-download-azure-marketplace-item.md)这些映像或者将其添加到[平台映像存储库](../operator/azure-stack-add-vm-image.md)。
+8. 若要运行此示例，Ubuntu 16.04-LTS 和 WindowsServer 2012-R2-DataCenter 映像必须存在于 Azure Stack Hub 市场中。 可以[从 Azure 下载](../operator/azure-stack-download-azure-marketplace-item.md)这些映像或者将其添加到[平台映像存储库](../operator/azure-stack-add-vm-image.md)。
 
 9. 运行示例：
 

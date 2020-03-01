@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 origin.date: 10/28/2019
-ms.date: 12/23/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: c7f2a63b95c85e7ebf5b307d44987073e1028d98
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d1107ce87c5c87ef31057fa407c0e12150e1b993
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335211"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563471"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -35,7 +35,7 @@ HDInsight 群集中的节点是使用 Azure 虚拟机实现的。 以下部分�
 
 为确保 Hadoop 服务的高可用性，HDInsight 提供了两个头节点。 这两个头节点同时处于活动状态并在 HDInsight 群集中运行。 某些服务，例如 Apache HDFS 或 Apache Hadoop YARN，在任何给定的时间仅能在其中一个头节点上处于“活动”状态。 HiveServer2 或 Hive MetaStore 等其他服务同时在这两个头节点上处于活动状态。
 
-头节点（以及 HDInsight 中的其他节点）的主机名中包含一个数字值。 例如 `hn0-CLUSTERNAME` 或 `hn4-CLUSTERNAME`。
+若要获取群集中不同节点类型的主机名，请使用 [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)。
 
 > [!IMPORTANT]
 > 请勿将数字值与某个节点是主节点还是辅助节点相关联。 使用数字值是为了为每个节点提供唯一名称。
@@ -50,7 +50,7 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 ### <a name="worker-nodes"></a>辅助角色节点
 
-将作业提交到群集时，辅助角色节点执行实际的数据分析。 如果辅助角色节点发生故障，它执行的任务将提交到另一个辅助角色节点。 默认情况下，HDInsight 创建四个辅助角色节点。 可以在群集创建过程中以及之后根据需要更改此数字。
+将作业提交到群集时，辅助角色节点执行实际的数据分析。 如果辅助角色节点发生故障，它执行的任务会提交到另一个辅助角色节点。 默认情况下，HDInsight 创建四个辅助角色节点。 可以在群集创建过程中以及之后根据需要更改此数字。
 
 ### <a name="edge-node"></a>边缘节点
 
@@ -90,7 +90,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.cn/api/v1/clusters/
 该命令返回如下所示的值，其中包含要在 `oozie` 命令中使用的内部 URL：
 
 ```output
-"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.chinacloudapp.cn:11000/oozie"
+"oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.chinacloudapp.cn:11000/oozie"
 ```
 
 若要详细了解如何使用 Ambari REST API，请参阅[使用 Apache Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
@@ -196,7 +196,7 @@ curl -u admin:password https://mycluster.azurehdinsight.cn/api/v1/clusters/myclu
 
 ```json
 {
-    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.chinacloudapp.cn:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "href" : "http://mycluster.wutj3h4ic1zejluqhxzvckxq0g.cx.internal.chinacloudapp.cn:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
     "ServiceInfo" : {
     "cluster_name" : "mycluster",
     "service_name" : "HDFS",
@@ -205,25 +205,31 @@ curl -u admin:password https://mycluster.azurehdinsight.cn/api/v1/clusters/myclu
 }
 ```
 
-该 URL 表示，服务当前在名为 **hn0-CLUSTERNAME** 的头节点上运行。
+该 URL 指示，服务当前在名为 **mycluster.wutj3h4ic1zejluqhxzvckxq0g** 的头节点上运行。
 
 该状态表示，此服务目前正在运行，或“已启动”  。
 
 如果不知道有哪些服务安装在该群集上，可以使用以下命令检索列表：
 
+```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/services
+```
 
 若要详细了解如何使用 Ambari REST API，请参阅[使用 Apache Ambari REST API 监视和管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 #### <a name="service-components"></a>服务组件
 
-服务可能包含想要单独检查其状态的组件。 例如，HDFS 包含 NameNode 组件。 若要查看有关组件的信息，请使用以下命令：
+服务可能包含你想要单独检查状态的组件。 例如，HDFS 包含 NameNode 组件。 若要查看有关组件的信息，请使用以下命令：
 
+```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+```
 
 如果不知道服务提供了哪些组件，可以使用以下命令检索列表：
 
+```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+```
 
 ## <a name="how-to-access-log-files-on-the-head-nodes"></a>如何访问头节点上的日志文件
 
@@ -266,7 +272,7 @@ curl -u admin:password https://mycluster.azurehdinsight.cn/api/v1/clusters/myclu
 
 * **Azure 门户**：创建群集时，可以设置群集所用节点的大小：
 
-    ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure CLI**：使用 [az hdinsight create](/cli/hdinsight?view=azure-cli-latest#az-hdinsight-create) 命令时，可以使用 `--headnode-size`、`--workernode-size` 和 `--zookeepernode-size` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 
