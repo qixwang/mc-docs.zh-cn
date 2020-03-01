@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: larryfr
+ms.author: v-yiso
 author: Blackmist
-ms.date: 10/16/2019
+origin.date: 12/27/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: fda37fe7aa42a877c5bf957945394776c0ac8dfd
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: ae77640118e269b91c8f2ca33375fa6c0e2b4850
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599103"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154997"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -46,8 +47,7 @@ ms.locfileid: "75599103"
 
 +  使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 来与任何 Python 环境中的服务交互。
 + 使用[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) 来与任何 R 环境中的服务交互。
-+ 使用 [Azure 机器学习 CLI](/machine-learning/service/reference-azure-machine-learning-cli) 自动化机器学习活动。
-+ 使用 [Azure 机器学习 VS Code 扩展](how-to-vscode-tools.md)在 Visual Studio Code 中编写代码
++ 使用 [Azure 机器学习 CLI](/machine-learning/reference-azure-machine-learning-cli) 自动化机器学习活动。
 + 使用 [Azure 机器学习设计器（预览版）](concept-designer.md)执行工作流步骤且无需编写任何代码。
 
 
@@ -85,9 +85,6 @@ ms.locfileid: "75599103"
 
 ### <a name="compute-instance"></a>计算实例（预览版）
 
-> [!NOTE]
-> 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区   。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 **Azure 机器学习计算实例**（前称为 Notebook VM）是完全托管式的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 可将计算实例用作训练和推理作业的计算目标。 对于大型任务，具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选项。
 

@@ -2,24 +2,25 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 12/30/2019
-ms.author: kgremban
-ms.openlocfilehash: 519a9141c008eaddcfc301f19b2430626dddeda6
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+origin.date: 12/30/2019
+ms.date: 03/09/2020
+ms.author: v-tawe
+ms.openlocfilehash: 18c0a8f591d0f440dc392c4e66a64960579700d1
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966502"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155479"
 ---
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
 本教程将使用 Azure IoT Tools 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。
 
-可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。
+可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.azure.cn/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。
 
 如果还没有容器注册表，请执行以下步骤，以便在 Azure 中创建一个新的：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”   >   “容器” >   “容器注册表”。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”   >   “容器” >   “容器注册表”。
 
 2. 提供以下值，以便创建容器注册表：
 

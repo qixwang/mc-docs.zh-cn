@@ -6,15 +6,15 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 08/30/2019
-  ms.date: 12/02/2019
+  ms.date: 03/02/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: c5bc1b7a1a1f01a75a9b84500ec4d26c23ffdabb
-  ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+  ms.openlocfilehash: 16166cc9bdcd94f35f17df90025705324829eb53
+  ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/26/2019
-  ms.locfileid: "74530658"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "78154981"
 landingContent:
 - title: 关于 Azure Database for PostgreSQL
   linkLists:
@@ -46,6 +46,8 @@ landingContent:
       url: tutorial-design-database-using-azure-portal.md
     - text: 使用 Azure CLI 设计数据库
       url: tutorial-design-database-using-azure-cli.md
+    - text: 监视和优化服务
+      url: tutorial-monitor-and-tune.md
 - title: 连接到单一服务器
   linkLists:
   - linkListType: concept

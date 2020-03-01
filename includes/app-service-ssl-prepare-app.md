@@ -6,15 +6,15 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 10/15/2018
-ms.date: 11/25/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 4228755dcb932fafb0f63d4446fa293d88728acd
-ms.sourcegitcommit: 2a0e119227b4539553310267a70f552cfc116a04
+ms.openlocfilehash: f1e62c9c76a038755ac4898556349478c343cb1e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942444"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155418"
 ---
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
 
@@ -26,15 +26,15 @@ ms.locfileid: "74942444"
 
 ### <a name="navigate-to-your-web-app"></a>导航到 Web 应用
 
-搜索并选择“应用服务”  。
+搜索并选择“应用服务”。 
 
 ![选择应用服务](./media/app-service-ssl-prepare-app/app-services.png)
 
-在“应用服务”页上，选择 Azure 应用的名称  。
+在“应用服务”页上，选择 Web 应用的名称  。
 
 ![在门户中导航到 Azure 应用](./media/app-service-ssl-prepare-app/select-app.png)
 
-你已登录到了 Web 应用的管理页面。  
+你已登录到 Web 应用的管理页。  
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 

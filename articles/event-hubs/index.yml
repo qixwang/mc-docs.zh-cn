@@ -12,13 +12,13 @@ metadata:
   author: spelluru
   ms.author: v-tawe
   origin.date: 01/29/2020
-  ms.date: 02/17/2020
-  ms.openlocfilehash: 6aff1468ecbebcb4de80459c5ba5b4112735716e
-  ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+  ms.date: 03/09/2020
+  ms.openlocfilehash: 4c3bbe7d8026ed412314fee4f1944d5a7b72e53f
+  ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/07/2020
-  ms.locfileid: "77067725"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "78155107"
 landingContent:
 - title: 关于事件中心
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
       url: event-hubs-java-get-started-send.md
     - text: Python
       url: get-started-python-send-v2.md
-    - text: Node.js
+    - text: Javascript
       url: get-started-node-send-v2.md
     - text: Apache Storm（仅接收）
       url: event-hubs-storm-getstarted-receive.md

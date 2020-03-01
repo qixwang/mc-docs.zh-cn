@@ -6,21 +6,21 @@ author: sethmanheim
 ms.service: event-hubs
 ms.topic: include
 origin.date: 05/22/2019
-ms.date: 12/16/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 132241c5fe505e94a8e9e58c9decc5795102fb64
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 917aa62233f638b19ff527783cdda2da9a730535
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469659"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155494"
 ---
 下表提供了特定于 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://www.azure.cn/pricing/details/event-hubs/)。
 
 以下限制是基本层、标准层和专用层之间的通用限制。 
 
-| 限制 | 作用域 | 说明 | Value |
+| 限制 | 作用域 | 注释 | Value |
 | --- | --- | --- | --- |
 | 每个订阅的事件中心命名空间数 |订阅 |- |100 |
 | 每个命名空间的事件中心数 |命名空间 |创建新事件中心的后续请求会被拒绝。 |10 个 |

@@ -5,7 +5,6 @@ services: security-center
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: na
 origin.date: 02/24/2017
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2d937dc0b253965b4a96deab69fe23ac6c39d164
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 7f8526b89d83717178619d79bdbe7049f243ea6e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028942"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155004"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://www.azure.cn/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -38,7 +37,7 @@ ms.locfileid: "77028942"
 * 威胁检测
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 要开始使用 Azure 安全中心，需了解并考虑以下问题：
 
 * 必须订阅世纪互联 Azure。 请参阅[安全中心定价](https://www.azure.cn/pricing/details/security-center/)，了解有关安全中心免费层和标准层的详细信息。

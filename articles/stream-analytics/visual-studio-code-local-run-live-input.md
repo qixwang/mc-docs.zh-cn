@@ -3,22 +3,22 @@ title: 使用 Visual Studio Code 通过实时流输入在本地测试 Azure 流�
 description: 本文介绍了如何使用适用于 Visual Studio Code 的 Azure 流分析工具通过实时流输入在本地测试查询。
 ms.service: stream-analytics
 author: lingliw
-origin.date: 05/15/2019
+origin.date: 11/14/2019
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.topic: conceptual
-ms.openlocfilehash: cc069a28060e1167c9cf3f482a47978052d08d06
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: 9d263fb0bbd74b4081acf769e037e463323f3b42
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128869"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155121"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 通过实时流输入在本地测试流分析查询
 
 可以使用适用于 Visual Studio Code 的 Azure 流分析工具通过实时流输入在本地测试流分析作业。 输入可以来自诸如 Azure 事件中心或 Azure IoT 中心的源。 输出结果以 JSON 文件的形式发送到项目中名为 **LocalRunOutputs** 的文件夹。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 安装 [.NET Core SDK](https://dotnet.microsoft.com/download) 并重启 Visual Studio Code。
 

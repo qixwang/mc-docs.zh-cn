@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 11/02/2018
+ms.date: 02/13/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 3c869717729e7e42b9422bd3f0f2322afeaebb7a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 32f639d2b8fbfcfb28b2109d677fc357c3916428
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067967"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154503"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.cn)创建 IoT 中心。
 
@@ -27,7 +27,7 @@ ms.locfileid: "77067967"
 
    - **订阅**：选择要用于中心的订阅。
 
-   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](~/articles/azure-resource-manager/manage-resource-groups-portal.md)。
+   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
    - **区域**：选择中心所在的区域。 选择最靠近你的位置。
 
@@ -50,8 +50,14 @@ ms.locfileid: "77067967"
 
     - **高级设置** > **设备到云的分区**：此属性将设备到云消息与这些消息的同步读取器数目相关联。 大多数中心只需要 4 个分区。
 
-1. 对于本文，请接受默认选项，然后选择“查看 + 创建”以查看所做的选择。  会显示类似于以下的屏幕。
+1. 对于本文，请接受默认选择，然后选择“下一步:  标记”转到下一屏幕。
 
-   ![查看用于创建新中心的信息](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
+    标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../articles/azure-resource-manager/management/tag-resources.md)。
+
+   ![使用 Azure 门户为新的中心设置大小和规模](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+
+    在完成时选择“下一步:  查看+创建”可查看选择。 会显示类似于以下的屏幕。
+
+   ![查看用于创建新中心的信息](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
 1. 选择“创建”以创建新的中心  。 创建中心需要几分钟时间。

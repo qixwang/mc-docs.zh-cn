@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 8e4bbc3324355b3413161639cf326120850829c7
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 02/11/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: f4c0a2dbe076180f194b4347144a394dd6dd7805
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598402"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155029"
 ---
 # <a name="score-model-module"></a>“评分模型”模块
 
@@ -44,7 +45,7 @@ ms.locfileid: "75598402"
 
 - 对于分类模型，[分数模型](./score-model.md)输出类的预测值，以及预测值的概率。
 - 对于回归模型，[评分模型](./score-model.md)仅生成预测数值。
-- 对于图像分类模型，分数可以表示图像中的对象类，或指示是否找到了特定特征的布尔值。
+
 
 ## <a name="publish-scores-as-a-web-service"></a>将评分发布为 Web 服务
 

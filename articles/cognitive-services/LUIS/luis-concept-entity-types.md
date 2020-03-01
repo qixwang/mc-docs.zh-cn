@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 11/12/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 41e68f2e25e3b3fd54e9ff3ca348297feaf5eacd
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 79582c1ee65b3e339e44b881c3b68c95e9ed7ed6
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884493"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154826"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
 

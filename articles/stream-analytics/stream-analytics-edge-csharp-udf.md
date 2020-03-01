@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 origin.date: 12/06/2018
 ms.date: 08/06/2019
-ms.openlocfilehash: a89aa0b954909ae81b766381dca93ad4b79f4a67
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 826d4039fc53490c84af1bc47b3b7bfabff44733
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856979"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155051"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>教程：为 Azure 流分析作业编写 C# 用户定义函数（预览）
 
@@ -28,7 +28,7 @@ ms.locfileid: "75856979"
 > * 在本地测试流分析作业。
 > * 将作业发布到 Azure。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保已完成以下先决条件：
 
@@ -146,7 +146,7 @@ CodeBehind 文件是与单个 ASA 查询脚本关联的 C# 文件。 Visual Stud
 ![将流分析 Edge 作业从 Visual Studio 中提交到 Azure](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>部署到 IoT Edge 设备
-现已准备好将流分析作业部署为 IoT Edge 模块。 请按照 [IoT Edge 快速入门](/iot-edge/quickstart)创建 IoT 中心、注册 IoT Edge 设备并在设备上安装和启动 IoT Edge 运行时。 然后按照[部署作业](/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)教程进行操作，将流分析作业部署为 IoT Edge 模块。 
+如果选择构建流分析 Edge 作业，现可将其部署为 IoT Edge 模块。 请按照 [IoT Edge 快速入门](/iot-edge/quickstart)创建 IoT 中心、注册 IoT Edge 设备并在设备上安装和启动 IoT Edge 运行时。 然后按照[部署作业](/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)教程进行操作，将流分析作业部署为 IoT Edge 模块。 
 
 ## <a name="next-steps"></a>后续步骤
 

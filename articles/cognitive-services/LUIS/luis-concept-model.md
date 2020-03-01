@@ -5,18 +5,19 @@ description: 语言理解提供多种类型的模型。 某些模型可以通过
 services: cognitive-services
 author: lingliw
 manager: digimobile
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 origin.date: 10/25/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 43f7048401b2fe59e3371008fab53f3afa4f5756
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: eeb03fe3fe29ca0078a280b98cf1f11ae9896d77
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885068"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154818"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计 
 

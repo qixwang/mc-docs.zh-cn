@@ -4,7 +4,6 @@ description: 快速入门：使用 Azure Python SDK 演示事件中心捕获功�
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
@@ -14,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 01/15/2020
-ms.date: 02/07/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: d50ae02da22e7bb378c33ce0685039d8c66be3ee
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: d28fdf16b3e3591f5b6a6257c8dd5f54e275493b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179338"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154812"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入门：事件中心捕获演练：Python（azure-eventhub 版本 1）
 
@@ -40,7 +39,7 @@ ms.locfileid: "77179338"
 > * 使用 Python 脚本将数据发送到事件中心。
 > * 使用另一个 Python 脚本通过事件中心捕获功能读取并处理文件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Python 3.4 或更高版本，其中已安装并更新 `pip`。
   

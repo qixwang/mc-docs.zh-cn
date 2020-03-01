@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线队列入门 | Azure
-description: 编写一个 C# 控制台应用程序，以便使用服务总线消息传递队列。
+title: Azure 服务总线队列入门 | Microsoft Docs
+description: 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
 services: service-bus-messaging
 documentationcenter: .net
 author: lingliw
@@ -12,21 +12,21 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 11/27/2019
-ms.date: 1/16/2020
+origin.date: 01/24/2020
+ms.date: 2/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 70d68f73b8ff2428e81e2e784e4f51bb44b6be97
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 9acf2e8037adae36a22891322acfad0f472b303e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028935"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154460"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。

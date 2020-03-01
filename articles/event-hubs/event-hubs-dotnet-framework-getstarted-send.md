@@ -15,19 +15,19 @@ ms.topic: quickstart
 origin.date: 12/20/2019
 ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: ce3f3407bdbaaf352a6d310e471f800b0769f22b
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 31bf434a42fafed84dba469a92ad44bb16064bf5
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123287"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154772"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 将事件发送到 Azure 事件中心或从其接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程展示了如何在 C# 中创建 NET Framework 控制台应用程序，以便将事件发送到事件中心或从其接收事件。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要完成本教程，需要满足以下先决条件：
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com)。
@@ -116,7 +116,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
 1. 在解决方案资源管理器中，右键单击“Receiver”项目，并单击“为解决方案管理 NuGet 包”。  
-2. 单击“浏览”  选项卡，并搜索 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 单击“安装”  并接受使用条款。
+2. 单击“浏览”  选项卡，并搜索 `Azure Service Bus Event Hub - EventProcessorHost`。 单击“安装”  并接受使用条款。
    
     ![搜索事件处理器主机 NuGet 包](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    

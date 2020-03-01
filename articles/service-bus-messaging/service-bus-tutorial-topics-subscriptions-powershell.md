@@ -10,12 +10,12 @@ ms.date: 11/26/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 7b07c0b5b3c35a097f7d6d34b65bea94b013fc91
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 9d07bfed86fe4362333e7ba239d10a1334c074da
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528331"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154986"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>教程：使用 PowerShell 和主题/订阅更新库存
 
@@ -63,7 +63,7 @@ Azure 服务总线是一种多租户云消息传送服务，可以在应用程�
 2. 运行以下命令来登录到 Azure：
 
    ```PowerShell
-   Connect-AzAccount -Environment AzureChinaCloud
+   Login-AzAccount -Environment AzureChinaCloud
    ```
 
 4. 设置当前的订阅上下文，或者查看当前处于活动状态的订阅：
@@ -95,7 +95,7 @@ Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-nam
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以观察[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中的代码。
+创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart)中检查代码。
 
 若要运行此代码，请执行以下操作：
 

@@ -3,17 +3,18 @@ title: include 文件
 description: include 文件
 services: iot-dps
 author: msebolt
-ms.author: v-masebo
-ms.date: 02/22/2018
+origin.date: 02/22/2018
+ms.date: 03/09/2020
+ms.author: v-tawe
 ms.topic: include
 ms.service: iot-dps
 ms.custom: include file
-ms.openlocfilehash: e5f89e81ea0acbd658113090d554f1b1767f6c75
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.openlocfilehash: bd3edcbfb9b04eaf42d4bb54f64a28fa5ed8b700
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988604"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155515"
 ---
 > [!div class="op_single_selector"]
 > * [C](../articles/iot-dps/quick-create-simulated-device.md)

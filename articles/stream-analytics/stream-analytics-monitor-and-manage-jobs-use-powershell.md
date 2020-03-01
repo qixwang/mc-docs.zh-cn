@@ -1,7 +1,6 @@
 ---
 title: 使用 PowerShell 监视和管理 Azure 流分析作业
 description: 本文说明如何使用 Azure PowerShell 和 cmdlet 监视和管理 Azure 流分析作业。
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/12/2019
 ms.date: 1/6/2020
-ms.openlocfilehash: bbf2a413be3d339101143b4807b5895efea82b82
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 6e5bb3294e0812583202eb0026ddc6c319b49d5f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856383"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155129"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
@@ -28,8 +27,8 @@ ms.locfileid: "75856383"
 Azure PowerShell 0.9.8：  
 
 ```powershell
-        # Log in to your Azure account
-        Connect-AzAccount -Environment AzureChinaCloud
+# Log in to your Azure account
+Connect-AzAccount -Environment AzureChinaCloud
 
 # Select the Azure subscription you want to use to create the resource group if you have more han one subscription on your account.
 Select-AzureSubscription -SubscriptionName <subscription name>

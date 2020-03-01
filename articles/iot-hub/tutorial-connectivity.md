@@ -7,15 +7,15 @@ manager: timlt
 ms.author: v-yiso
 ms.custom: mvc
 origin.date: 02/22/2019
-ms.date: 06/03/2019
+ms.date: 03/09/2020
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 9470b1a6fc9efcaf38e13f77b103ce76f41632be
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: 1d30ce2d609f8877acc396162435b8a7e8c6c1b8
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66194954"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154708"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -41,7 +41,7 @@ az extension add --name azure-cli-iot-ext
 
 本教程中运行的设备模拟器应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
-可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
+可从 [nodejs.org](https://nodejs.org) 下载适用于多个平台的 Node.js。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 
@@ -50,6 +50,8 @@ node --version
 ```
 
 从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下载示例设备模拟器 Node.js 项目并提取 ZIP 存档。
+
+确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

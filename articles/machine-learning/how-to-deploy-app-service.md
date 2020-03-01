@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: aashishb
+ms.author: v-yiso
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/27/2019
-ms.openlocfilehash: 5563d8407c575975f72aa2f2201a5ee12e35b5d8
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 08/27/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: d72dc92539c390b2d8e59c743bb457d31bc82404
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599407"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155062"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure 应用服务（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,16 +41,16 @@ ms.locfileid: "75599407"
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
 * [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
-* 工作区中注册的已训练机器学习模型。 如果没有模型，请使用[映像分类教程：训练模型](tutorial-train-models-with-aml.md)来训练和注册模型。
+* 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](tutorial-train-models-with-aml.md)来训练和注册模型。
 
     > [!IMPORTANT]
-    > 本文中的代码片段假设已设置了以下变量：
+    > 本文中的代码片段假设你已设置以下变量：
     >
     > * `ws` - Azure 机器学习工作区。
     > * `model` - 将要部署的注册模型。
     > * `inference_config` - 用于模型的推理配置。
     >
-    > 有关设置这些变量的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+    > 有关设置这些变量的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
@@ -65,16 +66,16 @@ ms.locfileid: "75599407"
     > [!IMPORTANT]
     > Azure 机器学习 SDK 不为 Web 服务提供访问数据存储或数据集的方法。 如果需要部署的模型访问存储在部署外的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
     >
-    > 可能适用于该方案的另一种方法是[批量预测](how-to-run-batch-predictions.md)，它在评分时提供对数据存储的访问权限。
+    > 可能适用于该方案的另一种方法是[批量预测](how-to-use-parallel-run-step.md)，它在评分时提供对数据存储的访问权限。
 
-    有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+    有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 * 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包 
 
-这些入口封装到推理配置中  。 推理配置引用入口脚本和其他依赖项。
+这些实体被封装到推理配置中  。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure 应用服务的推理配置时，必须使用 [Environment](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure 应用服务的推理配置时，必须使用 [Environment](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -93,7 +94,7 @@ ms.locfileid: "75599407"
 
 有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
 
-有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 > [!IMPORTANT]
 > 部署到 Azure 应用服务时，无需创建部署配置  。
@@ -103,7 +104,7 @@ ms.locfileid: "75599407"
 若要创建部署到 Azure 应用服务的 Docker 映像，请使用 [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-)。 下面的代码片段演示如何从模型和推理配置生成新的映像：
 
 > [!NOTE]
-> 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+> 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ```python
 from azureml.core import Model
@@ -114,7 +115,7 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-当 `show_output=True` 时，将显示 Docker 生成过程的输出。 此过程完成后，即在 Azure 容器注册表中为工作区创建了映像。 构建映像后，将显示 Azure 容器注册表中的位置。 返回的位置采用 `<acrinstance>.azurecr.io/package:<imagename>` 格式。 例如，`myml08024f78fd10.azurecr.io/package:20190827151241`。
+当 `show_output=True` 时，将显示 Docker 生成过程的输出。 此过程完成后，即在 Azure 容器注册表中为工作区创建了映像。 映像生成后，会显示其在 Azure 容器注册表中的位置。 返回的位置采用 `<acrinstance>.azurecr.io/package:<imagename>` 格式。 例如，`myml08024f78fd10.azurecr.io/package:20190827151241`。
 
 > [!IMPORTANT]
 > 保存位置信息，因为会在部署映像时使用。

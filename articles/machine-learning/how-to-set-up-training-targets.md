@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aeeb72313a75f6de39496ae4fd6570c5f4aa3254
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b5fe09b43279341a5f06467a95387e68bca8d5ef
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598093"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154954"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -459,9 +459,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 有关详细信息，请参阅[资源管理](reference-azure-machine-learning-cli.md#resource-management)。
 
-## <a name="set-up-with-vs-code"></a>使用 VS Code 进行设置
 
-可以使用适用于 Azure 机器学习的 [VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)访问、创建和管理与工作区关联的计算目标。
 
 ## <a id="submit"></a>使用 Azure 机器学习 SDK 提交训练运行
 
@@ -530,7 +528,7 @@ run.wait_for_completion(show_output = True)
 
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
 * 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
-* 通过 [VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
+
 
 有关详细信息，请参阅 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 和 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 文档。
 

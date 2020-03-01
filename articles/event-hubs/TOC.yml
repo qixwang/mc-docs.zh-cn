@@ -26,11 +26,11 @@
       items:
         - name: .NET Core (Azure.Messaging.EventHubs)
           href: get-started-dotnet-standard-send-v2.md
-        - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
+        - name: Java (azure-messaging-eventhubs)
+          href: get-started-java-send-v2.md
         - name: Python（azure-eventhub 版本 5）
           href: get-started-python-send-v2.md
-        - name: Node.js（azure/event-hubs 版本 5）
+        - name: JavaScript（azure/event-hubs 版本 5）
           href: get-started-node-send-v2.md
         - name: Go
           href: event-hubs-go-get-started-send.md
@@ -38,14 +38,28 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm（仅接收）
           href: event-hubs-storm-getstarted-receive.md
+    - name: 发送和接收事件（旧版本/包）
+      items:
+        - name: .NET Core (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-standard-getstarted-send.md
+        - name: Java (azure-eventhubs)
+          href: event-hubs-java-get-started-send.md
+        - name: Python（azure-eventhub 版本 1）
+          href: event-hubs-python-get-started-send.md
+        - name: JavaScript（azure/event-hubs 版本 2）
+          href: event-hubs-node-get-started-send.md
+        - name: .NET Framework (Microsoft.Azure.EventHubs)
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 捕获事件
       items:
         - name: 使用 Azure 门户启用事件中心捕获
           href: event-hubs-capture-enable-through-portal.md
         - name: 使用资源管理器模板启用事件中心捕获
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: 使用 Python 捕获事件中心数据（azure-eventhub 版本 5）
+        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 5）
           href: get-started-capture-python-v2.md
+        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 1）
+          href: event-hubs-capture-python.md
 - name: 示例
   href: event-hubs-samples.md
 - name: 概念
@@ -95,24 +109,14 @@
           items:
             - name: .NET (Azure.Messaging.EventHubs)
               href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/README.md'
+            - name: Java (azure-messaging-eventhubs)
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
             - name: Python（azure-eventhub 版本 5）
               href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
             - name: JavaScript（azure/event-hubs 版本 5）
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
             - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
-        - name: 使用 Python 读取捕获的数据（azure-eventhub 版本 1）
-          href: event-hubs-capture-python.md
-        - name: 发送和接收事件（旧版本/包）
-          items:
-            - name: .NET Core (Microsoft.Azure.EventHubs)
-              href: event-hubs-dotnet-standard-getstarted-send.md
-            - name: Python（azure-eventhub 版本 1）
-              href: event-hubs-python-get-started-send.md
-            - name: Node.js（azure/event-hubs 版本 2）
-              href: event-hubs-node-get-started-send.md
-            - name: .NET Framework (Microsoft.Azure.EventHubs)
-              href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 管理和监视
       items:
         - name: 使用 Azure 监视来监视事件中心
@@ -153,7 +157,11 @@
       items:
         - name: 客户端库
           items:
-            - name: azure-eventhubs
+            - name: 从 azure-eventhubs 迁移到 azure-messaging-eventhubs
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md'
+            - name: azure-messaging-eventhubs（最新）
+              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-eventhubs/5.0.0-beta.6/index.html'
+            - name: azure-eventhubs（旧版）
               href: 'https://docs.microsoft.com/java/api/overview/azure/eventhubs/client?view=azure-java-stable'
         - name: 管理库
           href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable'
@@ -169,7 +177,7 @@
               href: 'https://docs.microsoft.com/python/api/azure-eventhub/?view=azure-python'
         - name: 管理库
           href: 'https://docs.microsoft.com/python/api/overview/azure/event-hub?view=azure-python'
-    - name: Node.js
+    - name: Javascript
       items:
         - name: 从 azure/eventhubs 版本 2 迁移到版本 5
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'

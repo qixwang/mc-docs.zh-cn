@@ -11,10 +11,6 @@
   items:
     - name: 构建预生成域应用
       href: luis-get-started-create-app.md
-    - name: 使用 .NET SDK
-      items:
-        - name: 查询预测终结点
-          href: sdk-csharp-quickstart-query-prediction-endpoint.md
 - name: 教程
   items:
     - name: 构建应用

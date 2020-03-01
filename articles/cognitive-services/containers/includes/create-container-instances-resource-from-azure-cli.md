@@ -7,14 +7,15 @@ author: lingliw
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
+origin.date: 01/06/2020
 ms.date: 2/3/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 7f448bb6885fca3ef409162a62d1090b9ecc693b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: f71d557ccd0f6084df70ebd159a97adbb6ea6d0b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028844"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155420"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>在 Azure CLI 中创建 Azure 容器实例资源
 

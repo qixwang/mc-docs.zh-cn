@@ -6,15 +6,15 @@ author: spelluru
 ms.service: notification-hubs
 ms.topic: include
 origin.date: 09/11/2019
-ms.date: 12/09/2019
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 62bacaa68bc03d8b82d487e016bb110b5b81280e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 01a3dd1751b94c3f1bd965bf3ee83037fe1c6fe2
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884875"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155412"
 ---
 ## <a name="create-the-webapi-project"></a>创建 WebAPI 项目
 
@@ -109,7 +109,7 @@ ms.locfileid: "74884875"
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -124,7 +124,7 @@ ms.locfileid: "74884875"
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;
@@ -171,7 +171,7 @@ ms.locfileid: "74884875"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. 将 `Notifications` 类定义替换为以下代码，并将两个占位符替换为通知中心的连接字符串（具有完全访问权限）和中心名称（可在 [Azure 门户](http://portal.azure.cn)中找到）：
+6. 将 `Notifications` 类定义替换为以下代码，并将两个占位符替换为通知中心的连接字符串（具有完全访问权限）和中心名称（可在 [Azure 门户](https://portal.azure.cn)中找到）：
 
     ```csharp
     public class Notifications

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0abdbd335ac7dc7389b402c6e768ba104e1f6794
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b9df67eca82746a0eb746b3cceb7518412244285
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598728"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155027"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + 了解 [Azure 机器学习的所有部署选项](how-to-deploy-and-where.md)。
 + 了解如何[创建 Web 服务的客户端](how-to-consume-web-service.md)。
-+  以异步方式[对大量数据进行预测](how-to-run-batch-predictions.md)。
+
 + 使用 [Application Insights](how-to-enable-app-insights.md) 监视 Azure 机器学习模型。
 + 尝试学习[自动算法选择](tutorial-auto-train-models.md)教程。 

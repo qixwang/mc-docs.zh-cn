@@ -11,12 +11,12 @@ ms.topic: overview
 origin.date: 11/22/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 77f78bd99462bc3322efad053732d3786c27c56e
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: ee2ab045c602f0bb89221f88d56a577c58c1e5a0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500361"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155045"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -148,7 +148,7 @@ LUIS 提供工具、版本控制以及与其他 LUIS 创建者的协作，以便
 
 使用 LUIS 的示例：
 * [对话 AI](https://github.com/Microsoft/AI) GitHub 存储库。
-* [语言理解](https://github.com/Azure-Samples/cognitive-services-language-understanding) Azure 示例
+* [机器人框架 - 机器人示例](https://github.com/microsoft/BotBuilder-Samples)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,18 +3,19 @@ title: 语言检测容器 docker 示例
 titleSuffix: Azure Cognitive Services
 description: 语言检测容器 docker 示例
 services: cognitive-services
-author: IEvangelist
+author: lingliw
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
-ms.author: dapine
-ms.openlocfilehash: 9dce2a9e3a6171884f690688f11fd0af05c133b6
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+origin.date: 09/19/2019
+ms.date: 02/25/2020
+ms.author: v-lingwu
+ms.openlocfilehash: f5613fb7c6fda520d6e61d4bf0ecefccf297046e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884942"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155465"
 ---
 ### <a name="language-detection-container-docker-examples"></a>语言检测容器 docker 示例
 
