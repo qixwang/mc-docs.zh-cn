@@ -2,23 +2,89 @@
 title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
-origin.date: 02/23/2018
+origin.date: 01/28/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: bbd04bba03e84facca438f03ff18dbec7248e7f8
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: a006d458d247557ff506a8bbebc8caadd8a7e5f0
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741857"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540223"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
-## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型
+
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型
+
 如果在升级过程中向已发布的应用程序添加新的服务类型，则该新的服务类型将添加到已部署的应用程序。 这样的升级不会影响已经是应用程序一部分的任何服务实例，但是，必须创建所添加的服务类型的实例，新的服务类型才会处于活动状态（请参阅 [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)）。
 
 类似地，在升级过程中还可以从应用程序中删除服务类型。 但是，必须删除待删除服务类型的所有服务实例，然后才能继续进行升级（请参阅 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)）。
 
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>在无状态服务的计划停机期间避免连接断开（预览版）
+
+在按计划将无状态实例停机时（例如，应用程序/群集升级或节点停用时），由于关闭该实例后会删除公开的终结点，因此可能会导致连接断开。
+
+为了避免这种情况，请通过在服务配置中添加一个副本“实例关闭延迟持续时间”，来配置 *RequestDrain*（预览版）功能。  这可以确保在启动关闭实例的延迟计时器之前，删除无状态实例播发的终结点。  此延迟可使现有请求在实例实际关闭之前正常排空。 客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。
+
+### <a name="service-configuration"></a>服务配置
+
+可通过多种方式在服务端配置延迟。
+
+ * **创建新服务时**指定 `-InstanceCloseDelayDuration`：
+
+    ```powershell
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    ```
+
+ * **在应用程序清单的 defaults 节中定义服务**时分配 `InstanceCloseDelayDurationSeconds` 属性：
+
+    ```xml
+          <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
+              <SingletonPartition />
+          </StatelessService>
+    ```
+
+ * **更新现有服务时**指定 `-InstanceCloseDelayDuration`：
+
+    ```powershell
+    Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+### <a name="client-configuration"></a>客户端配置
+
+若要在终结点发生更改时收到通知，客户端可以注册如下所示的回调 (`ServiceManager_ServiceNotificationFilterMatched`)： 
+
+```csharp
+    var filterDescription = new ServiceNotificationFilterDescription
+    {
+        Name = new Uri(serviceName),
+        MatchNamePrefix = true
+    };
+    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
+    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
+
+private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
+{
+      // Resolve service to get a new endpoint list
+}
+```
+
+更改通知指示终结点已更改，客户端应重新解析终结点，而不要使用不再播发的终结点，因为这些终结点即将关闭。
+
+### <a name="optional-upgrade-overrides"></a>可选的升级替代方法
+
+除了为每个服务设置默认延迟持续时间以外，还可以使用相同的 (`InstanceCloseDelayDurationSec`) 选项替代应用程序/群集升级期间的延迟：
+
+```powershell
+Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+
+Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+```
+
+延迟持续时间仅应用于调用的升级实例，而不会更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
+
 ## <a name="manual-upgrade-mode"></a>手动升级模式
+
 > [!NOTE]
 > 对于所有 Service Fabric 升级，建议使用 *Monitored* 升级模式。
 > 只有对于失败或暂停的升级，才应考虑使用 *UnmonitoredManual* 升级模式。 
@@ -32,6 +98,7 @@ ms.locfileid: "75741857"
 最后，*UnmonitoredAuto* 模式非常适用于在开发或或测试服务期间执行快速升级迭代，因为不需要提供用户输入并且不会评估应用程序运行状况策略。
 
 ## <a name="upgrade-with-a-diff-package"></a>使用差异包升级
+
 还可以通过预配仅包含更新后的代码/配置/数据包以及完整的应用程序清单和完整的服务清单的差异包（不需要预配完整的应用程序包）来执行升级。 只有首次将应用程序安装到群集时，才需要完整的应用程序包。 后续升级可以使用完整的应用程序包或差异包执行。  
 
 如果差异包的应用程序清单或服务清单中的任何引用无法在应用程序包中找到，则会自动将该引用替换为当前预配的版本。
@@ -115,7 +182,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
 ```
 
-## <a name="rolling-back-application-upgrades"></a>回滚应用程序升级
+## <a name="roll-back-application-upgrades"></a>回滚应用程序升级
 
 虽然升级可以通过三种模式之一（*Monitored*、*UnmonitoredAuto* 或 *UnmonitoredManual*）进行前滚，但它们只能在 *UnmonitoredAuto* 或 *UnmonitoredManual* 模式下进行回滚。 在 *UnmonitoredAuto* 模式下进行回滚与进行前滚时行为相同，唯一的例外是 *UpgradeReplicaSetCheckTimeout* 的默认值不同 - 请参阅[应用程序升级参数](service-fabric-application-upgrade-parameters.md)。 在 *UnmonitoredManual* 模式下进行回滚与进行前滚时行为相同 - 回滚在完成每个 UD 后会将其自己暂停，并且必须使用 [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 显式继续执行回滚。
 

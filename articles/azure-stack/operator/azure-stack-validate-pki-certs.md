@@ -1,38 +1,33 @@
 ---
-title: 验证用于 Azure Stack 集成系统部署的 Azure Stack 公钥基础结构证书 | Microsoft Docs
-description: 介绍如何验证 Azure Stack 集成系统的 Azure Stack PKI 证书。 介绍如何使用 Azure Stack 证书检查器工具。
+title: 验证 Azure Stack Hub PKI 证书
+titleSuffix: Azure Stack Hub
+description: 了解如何使用 Azure Stack Hub 就绪性检查器工具验证 Azure Stack Hub 集成系统的 PKI 证书。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 07/23/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: c65168837837090b99b491f61cc759c4a7ec08a8
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: fd8355192af5090260d1f0c56440a5bef17eafad
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737741"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540247"
 ---
-# <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
+# <a name="validate-azure-stack-hub-pki-certificates"></a>验证 Azure Stack Hub PKI 证书
 
-可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack 就绪性检查器工具。 使用该工具可以验证[生成的 PKI 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 请留出足够的时间来验证证书，以测试证书并在必要时重新颁发证书。
+可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack Hub 就绪性检查器工具。 使用该工具可以验证[生成的公钥基础结构 (PKI) 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 请留出足够的时间来验证证书，以测试证书并在必要时重新颁发证书。
 
 就绪性检查器工具执行以下证书验证：
 
 - **分析 PFX**  
-    检查 PFX 文件是否有效且密码正确，以及公开的信息是否受密码保护。 
+    检查 PFX 文件是否有效且密码正确，以及公开的信息是否受密码保护。
 - **到期日期**  
-    检查最短有效期是否为 7 天。 
+    检查最短有效期是否为 7 天。
 - **签名算法**  
     检查签名算法是否不是 SHA1。
 - **私钥**  
@@ -42,7 +37,7 @@ ms.locfileid: "75737741"
 - **DNS 名称**  
     检查 SAN 是否包含每个终结点的相关 DNS 名称，或支持性的通配符是否存在。
 - **密钥用法**  
-    检查密钥用法是否包含数字签名和密钥加密，增强型密钥用法是否包含服务器身份验证和客户端身份验证。
+    检查密钥用法是否包含数字签名和密钥加密，并检查增强型密钥用法是否包含服务器身份验证和客户端身份验证。
 - **密钥大小**  
     检查密钥大小是否为 2048 或更大。
 - **链序**  
@@ -55,16 +50,16 @@ ms.locfileid: "75737741"
 
 ## <a name="prerequisites"></a>必备条件
 
-在验证用于 Azure Stack 部署的 PKI 证书之前，系统应符合以下先决条件：
+在验证用于 Azure Stack Hub 部署的 PKI 证书之前，系统应符合以下先决条件：
 
-- Azure Stack 就绪性检查器
-- 遵照[准备说明](azure-stack-prepare-pki-certs.md)导出的 SSL 证书
-- DeploymentData.json
-- Windows 10 或 Windows Server 2016
+- Azure Stack Hub 就绪性检查器。
+- 按照[准备说明](azure-stack-prepare-pki-certs.md)导出的 SSL 证书。
+- DeploymentData.json。
+- Windows 10 或 Windows Server 2016。
 
 ## <a name="perform-core-services-certificate-validation"></a>执行核心服务证书验证
 
-使用以下步骤来准备和验证用于部署和机密轮换的 Azure Stack PKI 证书：
+使用以下步骤来准备和验证用于部署和机密轮换的 Azure Stack Hub PKI 证书：
 
 1. 在 PowerShell 提示符（5.1 或更高版本）下，运行以下 cmdlet 安装 **AzsReadinessChecker**：
 
@@ -95,14 +90,14 @@ ms.locfileid: "75737741"
         - `C:\Certificates\Deployment\Admin Portal\CustomerCertificate.pfx`
         - `C:\Certificates\Deployment\ARM Admin\CustomerCertificate.pfx`
 
-3. 在 PowerShell 窗口中，更改 **RegionName** 和 **FQDN** 的值以适用于 Azure Stack 环境，然后运行以下命令：
+3. 在 PowerShell 窗口中，更改 `RegionName` 和 `FQDN` 的值使其适合 Azure Stack Hub 环境，然后运行以下 cmdlet：
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
     Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
     ```
 
-4. 检查输出和所有证书是否通过所有测试。 例如：
+4. 检查输出，确保所有证书通过所有测试。 例如：
 
     ```powershell
     Invoke-AzsCertificateValidation v1.1912.1082.37 started.
@@ -149,7 +144,7 @@ ms.locfileid: "75737741"
     Invoke-AzsCertificateValidation Completed
     ```
 
-    若要验证其他 Azure Stack 服务的证书，请更改 ```-CertificateType``` 的值。 例如：
+    若要验证其他 Azure Stack Hub 服务的证书，请更改 ```-CertificateType``` 的值。 例如：
 
     ```powershell  
     # App Services
@@ -158,13 +153,13 @@ ms.locfileid: "75737741"
     # DBAdapter
     Invoke-AzsCertificateValidation -CertificateType DBAdapter -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
-    # EventHub
-    Invoke-AzsCertificateValidation -CertificateType EventHub -CertificatePath C:\Certificates\EventHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    # EventHubs
+    Invoke-AzsCertificateValidation -CertificateType EventHubs -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # IoTHub
     Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
     ```
-每个文件夹都应包含证书类型的单个 PFX 文件，如果证书类型有多证书要求，则每个单独的证书都应有嵌套文件夹且名称要敏感。  以下代码显示了所有证书类型的示例文件夹/证书结构，以及 ```-CertificateType``` 和 ```-CertificatePath``` 的相应值。
+    每个文件夹应包含一个与证书类型对应的 PFX 文件。 如果某个证书类型具有多证书要求，则预期每个证书都有一个嵌套的文件夹，这些文件夹的名称区分大小写。 以下代码显示了所有证书类型的示例文件夹/证书结构，以及 ```-CertificateType``` 和 ```-CertificatePath``` 的相应值。
     
     ```powershell  
     C:\>tree c:\SecretStore /A /F
@@ -201,14 +196,15 @@ ms.locfileid: "75737741"
                 |   \---Public Portal
                 |           portal.pfx
                 |
-                +---EventHub            # Invoke-AzsCertificateValidation `
-                |       eventhub.pfx    #   -CertificateType EventHub `
-                |                       #   -CertificatePath C:\Certificates\EventHub
+                +---EventHubs           # Invoke-AzsCertificateValidation `
+                |       eventhubs.pfx   #   -CertificateType EventHubs `
+                |                       #   -CertificatePath C:\Certificates\EventHubs
                 |
                 \---IoTHub              # Invoke-AzsCertificateValidation `
                         iothub.pfx      #   -CertificateType IoTHub `
                                         #   -CertificatePath C:\Certificates\IoTHub
     ```
+
 ### <a name="known-issues"></a>已知问题
 
 **症状**：跳过了测试
@@ -231,7 +227,6 @@ ms.locfileid: "75737741"
     Details:
     The certificate records '*.east.azurestack.contoso.com' do not contain a record that is valid for '*.blob.east.azurestack.contoso.com'. Please refer to the documentation for how to create the required certificate file.
     The Other Certificates check was skipped because Cert Chain and/or DNS Names failed. Follow the guidance to remediate those issues and recheck. 
-    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
     Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
     Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
@@ -244,28 +239,26 @@ ms.locfileid: "75737741"
 
 | Directory | 证书 |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\<region>_\<externalFQDN> |
-| ACSQueue  |  wildcard_queue_\<region>_\<externalFQDN> |
-| ACSTable  |  wildcard_table_\<region>_\<externalFQDN> |
-| 管理扩展主机  |  wildcard_adminhosting_\<region>_\<externalFQDN> |
-| 管理门户  |  adminportal_\<region>_\<externalFQDN> |
-| ARM Admin  |  adminmanagement_\<region>_\<externalFQDN> |
-| ARM Public  |  management_\<region>_\<externalFQDN> |
-| KeyVault  |  wildcard_vault_\<region>_\<externalFQDN> |
-| KeyVaultInternal  |  wildcard_adminvault_\<region>_\<externalFQDN> |
-| 公共扩展主机  |  wildcard_hosting_\<region>_\<externalFQDN> |
-| 公共门户  |  portal_\<region>_\<externalFQDN> |
+| acsBlob | `wildcard_blob_<region>_<externalFQDN>` |
+| ACSQueue  |  `wildcard_queue_<region>_<externalFQDN>` |
+| ACSTable  |  `wildcard_table_<region>_<externalFQDN>` |
+| 管理扩展主机  |  `wildcard_adminhosting_<region>_<externalFQDN>` |
+| 管理门户  |  `adminportal_<region>_<externalFQDN>` |
+| ARM Admin  |  `adminmanagement_<region>_<externalFQDN>` |
+| ARM Public  |  `management_<region>_<externalFQDN>` |
+| KeyVault  |  `wildcard_vault_<region>_<externalFQDN>` |
+| KeyVaultInternal  |  `wildcard_adminvault_<region>_<externalFQDN>` |
+| 公共扩展主机  |  `wildcard_hosting_<region>_<externalFQDN>` |
+| 公共门户  |  `portal_<region>_<externalFQDN>` |
 
 ## <a name="using-validated-certificates"></a>使用已验证的证书
 
-通过 AzsReadinessChecker 验证证书后，可在 Azure Stack 部署中使用这些证书，或者将其用于 Azure Stack 机密轮换。 
+AzsReadinessChecker 验证证书后，便可在 Azure Stack Hub 部署中使用这些证书，或者将其用于 Azure Stack Hub 机密轮换。
 
- - 对于部署，请根据 [Azure Stack PKI 要求文档](azure-stack-pki-certs.md)中的规定，安全地将证书传送给部署工程师，使他们能够将其复制到部署主机。
- - 对于机密轮换，可以遵循 [Azure Stack 机密轮换文档](azure-stack-rotate-secrets.md)，使用这些证书来更新 Azure Stack 环境公共基础结构终结点的旧证书。
- - 对于 PaaS 服务，可以按照[在 Azure Stack 中提供服务概述](service-plan-offer-subscription-overview.md)文档，使用证书在 Azure Stack 中安装 SQL、MySQL 和应用程序服务资源提供程序。
+ - 对于部署，请根据 [Azure Stack Hub PKI 要求文档](azure-stack-pki-certs.md)中的规定，安全地将证书传送给部署工程师，使他们能够将其复制到部署主机。
+ - 对于机密轮换，可以遵循 [Azure Stack Hub 机密轮换文档](azure-stack-rotate-secrets.md)，使用这些证书来更新 Azure Stack Hub 环境公共基础结构终结点的旧证书。
+ - 对于 PaaS 服务，可以按照[在 Azure Stack Hub 中提供服务概述](service-plan-offer-subscription-overview.md)文档，使用证书在 Azure Stack Hub 中安装 SQL、MySQL 和应用程序服务资源提供程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 [数据中心标识集成](azure-stack-integrate-identity.md)
-
-<!-- Update_Description: wording update -->

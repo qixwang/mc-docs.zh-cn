@@ -1,58 +1,47 @@
 ---
-title: 在 Azure Stack 中部署应用服务 | Microsoft Docs
-description: 了解如何在 Azure Stack 中部署应用服务。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中部署应用服务
+description: 了解如何在 Azure Stack Hub 中部署应用服务。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 08/29/2019
-ms.date: 10/21/2019
+origin.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: f0a3af2c768476232f4d1e006027542e1e2bfaba
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.lastreviewed: 01/13/2020
+ms.openlocfilehash: 15d638f945efdce41a076019cc568c877188d06a
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578495"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540895"
 ---
-# <a name="deploy-app-service-in-azure-stack"></a>在 Azure Stack 中部署应用服务
+# <a name="deploy-app-service-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署应用服务
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-本文介绍如何在 Azure Stack 中部署应用服务。
+本文介绍如何在 Azure Stack Hub 中部署应用服务。
 
 > [!IMPORTANT]
-> 请将 1907 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.7。
+> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack Hub 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
 
 可以让用户能够创建 Web 应用程序和 API 应用程序。 若要让用户创建这些应用，必须：
 
-- 执行本文所述步骤，将[应用服务资源提供程序](azure-stack-app-service-overview.md)添加到 Azure Stack 部署。
+- 执行本文所述步骤，将[应用服务资源提供程序](azure-stack-app-service-overview.md)添加到 Azure Stack Hub 部署。
 - 安装应用服务资源提供程序后，可以将其包括在套餐和计划中。 然后，用户可以通过订阅获取服务并开始创建应用。
 
 > [!IMPORTANT]
-> 在运行资源提供程序安装程序之前，请确保已按照[准备工作](azure-stack-app-service-before-you-get-started.md)中的指南进行操作，并已阅读版本 1.7 随附的[发行说明](azure-stack-app-service-release-notes-update-seven.md)。 阅读此内容可以了解新功能、修补程序以及任何可能影响部署的已知问题。
+> 在运行资源提供程序安装程序之前，请确保已按照[准备工作](azure-stack-app-service-before-you-get-started.md)中的指南进行操作，并已阅读版本 1.8 随附的[发行说明](azure-stack-app-service-release-notes-update-eight.md)。 阅读此内容可以了解新功能、修补程序以及任何可能影响部署的已知问题。
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>运行应用服务资源提供程序安装程序
 
 安装应用服务资源提供程序至少需要一小时。 所需时长取决于部署的角色实例数。 部署期间，安装程序运行以下任务：
 
-- 在指定的 Azure Stack 存储帐户中创建 blob 容器。
+- 在指定的 Azure Stack Hub 存储帐户中创建 Blob 容器。
 - 为应用服务中创建 DNS 区域和条目。
 - 注册应用服务资源提供程序。
 - 注册应用服务库项。
 
 若要部署应用服务资源提供程序，请执行以下步骤：
 
-1. 在可以访问“Azure Stack 管理”Azure 资源管理终结点的计算机上，以管理员身份运行 appservice.exe。
+1. 在可以访问“Azure Stack Hub 管理”Azure 资源管理终结点的计算机上，以管理员身份运行 appservice.exe。
 
 2. 选择“部署应用服务或升级到最新版本”。 
 
@@ -62,25 +51,27 @@ ms.locfileid: "72578495"
 
 4. 查看并接受第三方许可条款，然后选择“下一步”  。
 
-5. 请确保应用服务云配置信息正确无误。 如果在 ASDK 部署过程中使用了默认设置，则可接受默认值。 但是，如果在部署 ASDK 时自定义了选项，或者要部署到 Azure Stack 集成系统，则必须在此窗口中根据差异情况编辑相应的值。
+5. 请确保应用服务云配置信息正确无误。 如果在 ASDK 部署过程中使用了默认设置，则可接受默认值。 但是，如果在部署 ASDK 时自定义了选项，或者要部署到 Azure Stack Hub 集成系统，则必须在此窗口中根据差异情况编辑相应的值。
 
-   例如，如果使用域后缀 mycloud.com，则必须将“Azure Stack 租户”Azure 资源管理器终结点更改为 management.&lt;区域&gt;.mycloud.com。 查看这些设置，然后选择“下一步”以保存设置。 
+   例如，如果使用域后缀 mycloud.com，则必须将“Azure Stack Hub 租户”Azure 资源管理器终结点更改为 management.&lt;区域&gt;.mycloud.com。 查看这些设置，然后选择“下一步”以保存设置。 
 
    ![应用服务安装程序][2]
 
-6. 在下一“应用服务安装程序”页上，执行以下步骤：
+6. 在下一个应用服务安装程序页上，你将连接到 Azure Stack Hub：
 
-    a. 选择“Azure Stack 订阅”旁边的“连接”   。
+    1. 选择要使用的连接方法-“凭据”或“服务主体”  
+ 
+        - **凭据**
+            - 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack Hub 时提供的 Azure AD 管理员帐户和密码。 选择“连接”  。
+            - 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，然后选择“连接”  。
 
-   - 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack 时提供的 Azure AD 管理员帐户和密码。 选择“登录”  。
-   - 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，然后选择“登录”  。
+        - **服务主体**
+            - 使用的服务主体必须对“默认提供程序订阅”拥有“所有者”权限   
+            - 提供“服务主体 ID”、“证书文件”和“密码”，然后选择“连接”。    
 
-   b. 在“Azure Stack 订阅”中，选择“默认提供程序订阅”。  
+    1. 在“Azure Stack Hub 订阅”中，选择“默认提供程序订阅”。    Azure Stack Hub 上的 Azure 应用服务**必须**部署在**默认提供程序订阅**中。
 
-     > [!IMPORTANT]
-     > 应用服务**必须**部署到**默认提供程序订阅**。
-
-   c. 在“Azure Stack 位置”  中，选择要部署到的区域所对应的位置。 例如，若要部署到 ASDK，请选择“本地”。 
+    1. 在“Azure Stack Hub 位置”  中，选择要部署到的区域所对应的位置。 例如，若要部署到 ASDK，请选择“本地”。 
 
     ![应用服务安装程序][3]
 
@@ -137,7 +128,7 @@ ms.locfileid: "72578495"
 12. 查看角色实例和 SKU 选项。 默认设置中填充了 ASDK 部署中每个角色的最小实例数和最低 SKU 层级。 提供 vCPU 和内存要求摘要是为了帮助你规划部署。 进行选择后，请选择“下一步”。 
 
     >[!NOTE]
-    >对于生产部署，请按照 [Azure Stack 中 Azure 应用服务服务器角色的容量规划](azure-stack-app-service-capacity-planning.md)中的指南进行操作。
+    >对于生产部署，请按照 [Azure Stack Hub 中 Azure 应用服务服务器角色的容量规划](azure-stack-app-service-capacity-planning.md)中的指南进行操作。
 
     | 角色 | 最小实例数 | 最小 SKU | 注释 |
     | --- | --- | --- | --- |
@@ -150,7 +141,7 @@ ms.locfileid: "72578495"
     ![应用服务安装程序][13]
 
     >[!NOTE]
-    >**不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。**
+    >**不支持将 Windows Server 2016 Core 平台映像与 Azure Stack Hub 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。**
 
 13. 在“选择平台映像”  框中选择 Windows Server 2016 虚拟机 (VM) 部署映像，该映像是应用服务云的计算资源提供程序提供的映像之一。 选择“**下一步**”。
 
@@ -176,7 +167,7 @@ ms.locfileid: "72578495"
 
 16. 在下一“应用服务安装程序”页上，执行以下步骤：
 
-    a. 跟踪安装进度。 Azure Stack 上的应用服务大约需要 60 分钟才能完成基于默认选择的部署。
+    a. 跟踪安装进度。 部署 Azure Stack Hub 上的应用服务最长可能需要 240 分钟，具体取决于所做的默认选择，以及 Windows 2016 Datacenter 基础映像的期限。
 
     b. 安装程序成功完成后，请选择“退出”  。
 
@@ -199,29 +190,29 @@ ms.locfileid: "72578495"
 - 优先级：700
 - 姓名：Outbound_Allow_SMB445
 
-## <a name="validate-the-app-service-on-azure-stack-installation"></a>验证 Azure Stack 上的应用服务安装
+## <a name="validate-the-app-service-on-azure-stack-hub-installation"></a>验证 Azure Stack Hub 上的应用服务安装
 
-1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”  。
+1. 在 Azure Stack Hub 管理员门户中，转到“管理 - 应用服务”  。
 
 2. 在“概述”中，在“状态”下，检查“状态”  是否显示了“所有角色已就绪”  。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
-## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务
+## <a name="test-drive-app-service-on-azure-stack-hub"></a>体验 Azure Stack Hub 上的应用服务
 
 部署并注册应用服务资源提供程序后，对其进行测试以确保用户可以部署 Web 应用和 API 应用。
 
 >[!NOTE]
 >需要创建一个套餐，其中的计划包含 Microsoft.Web 命名空间。 此外还需订阅此套餐的租户订阅。 有关详细信息，请参阅[创建套餐](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
 >
-> 必须有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用。 服务管理员只能在管理员门户中完成的任务与资源提供程序对应用服务的管理相关。 这包括添加容量、配置部署源以及添加辅助角色层和 SKU。
+> 必须有租户订阅，才能创建使用 Azure Stack Hub 上的应用服务的应用。 服务管理员只能在管理员门户中完成的任务与资源提供程序对应用服务的管理相关。 这包括添加容量、配置部署源以及添加辅助角色层和 SKU。
 >
->若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用租户门户并具有租户订阅。
+>若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用用户门户并具有租户订阅。
 >
 
 若要创建测试性 Web 应用，请执行以下步骤：
 
-1. 在 Azure Stack 用户门户中，选择“+ 创建资源” > “Web + 移动” > “Web 应用”    。
+1. 在 Azure Stack Hub 用户门户中，选择“+ 创建资源” > “Web + 移动” > “Web 应用”    。
 
 2. 在“Web 应用”下的“Web 应用”中输入一个名称。  
 
@@ -239,7 +230,7 @@ ms.locfileid: "72578495"
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>部署 WordPress、DNN 或 Django 网站（可选）
 
-1. 在 Azure Stack 租户门户中选择“+”  ，转到 Azure 市场，部署 Django 网站，然后等待部署完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
+1. 在 Azure Stack Hub 用户门户中选择“+”  ，转到 Azure 市场，部署 Django 网站，然后等待部署完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
 
 2. 如果还部署了 MySQL 资源提供程序，则可从市场部署 WordPress 网站。 当系统提示输入数据库参数时，请输入用户名，其格式为 *User1\@Server1*（使用所选的用户名和服务器名称）。
 
@@ -247,7 +238,7 @@ ms.locfileid: "72578495"
 
 ## <a name="next-steps"></a>后续步骤
 
-准备 Azure Stack 上的应用服务的其他管理操作：
+准备 Azure Stack Hub 上的应用服务的其他管理操作：
 
 - [容量规划](azure-stack-app-service-capacity-planning.md)
 - [配置部署源](azure-stack-app-service-configure-deployment-sources.md)

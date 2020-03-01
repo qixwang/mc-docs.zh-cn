@@ -1,29 +1,25 @@
 ---
-title: 如何使用 Commvault 在 Azure Stack 上备份 VM | Microsoft Docs
-description: 了解如何使用 Commvault 在 Azure Stack 上备份 VM。
-services: azure-stack
+title: 如何使用 Commvault 在 Azure Stack Hub 上备份 VM
+description: 了解如何使用 Commvault 在 Azure Stack Hub 上备份 VM。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 10/30/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: e0ac692fc5d31932e69e45b717e032e5a4df39af
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 16fe55064ef96cc078f5161078acd60cadb370a8
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336124"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540768"
 ---
-# <a name="back-up-your-vm-on-azure-stack-with-commvault"></a>使用 Commvault 在 Azure Stack 上备份 VM
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="back-up-your-vm-on-azure-stack-hub-with-commvault"></a>使用 Commvault 在 Azure Stack Hub 上备份 VM
 
 ## <a name="overview-of-backing-up-a-vm-with-commvault"></a>有关使用 Commvault 备份 VM 的概述
 
-本文逐步讲解如何配置 Commvault Live Sync，以更新位于独立 Azure Stack 缩放单元上的恢复 VM。 本文将会详述如何配置常见的合作伙伴解决方案，以保护和恢复 Azure Stack 上部署的虚拟机的数据与系统状态。
+本文逐步讲解如何配置 Commvault Live Sync，以更新位于独立 Azure Stack Hub 缩放单元上的恢复 VM。 本文将会详述如何配置常见的合作伙伴解决方案，以保护和恢复 Azure Stack Hub 上部署的虚拟机的数据与系统状态。
 
 下图显示了使用 Commvault 备份 VM 时的总体解决方案。
 
@@ -31,15 +27,15 @@ ms.locfileid: "75336124"
 
 本文内容：
 
-1. 在源 Azure Stack 实例上创建运行 Commvault 软件的 VM。
+1. 在源 Azure Stack Hub 实例上创建运行 Commvault 软件的 VM。
 
-2. 在辅助位置中创建一个存储帐户。 本文假设在独立 Azure Stack 实例（目标）上的存储帐户中创建 Blob 容器，并且源 Azure Stack 可以访问目标 Azure Stack。
+2. 在辅助位置中创建一个存储帐户。 本文假设在独立 Azure Stack Hub 实例（目标）上的存储帐户中创建 Blob 容器，并且源 Azure Stack Hub 可以访问目标 Azure Stack Hub。
 
-3. 在源 Azure Stack 实例上配置 Commvault，并将源 Azure Stack 中的 VM 添加到 VM 组。
+3. 在源 Azure Stack Hub 实例上配置 Commvault，并将源 Azure Stack Hub 中的 VM 添加到 VM 组。
 
 4. 配置 Commvault 的 LifeSync。
 
-也可以下载并提供兼容的合作伙伴 VM 映像，以通过 Azure 云或另一个 Azure Stack 保护 Azure Stack VM。 本文将会演示如何使用 Commvault Live Sync 来保护 VM。
+也可以下载并提供兼容的合作伙伴 VM 映像，以通过 Azure 云或另一个 Azure Stack Hub 保护 Azure Stack Hub VM。 本文将会演示如何使用 Commvault Live Sync 来保护 VM。
 
 此方法的拓扑如下图所示：
 
@@ -47,7 +43,7 @@ ms.locfileid: "75336124"
 
 ## <a name="create-the-commvault-vm-form-the-commvault-marketplace-item"></a>从 Commvault 市场项创建 Commvault VM
 
-1. 打开 Azure Stack 用户门户。
+1. 打开 Azure Stack Hub 用户门户。
 
 2. 选择“创建资源” > “计算” > “Commvault”。   
 
@@ -72,7 +68,7 @@ ms.locfileid: "75336124"
     
     g. 选择一个**资源组**。
     
-    h.如果该值不存在，请单击“添加行”。 选择 Azure Stack 的**位置**。 如果使用的是 ASDK，请选择“本地”。 
+    h.如果该值不存在，请单击“添加行”。 选择 Azure Stack Hub 的**位置**。 如果使用的是 ASDK，请选择“本地”。 
     
     i. 选择“确定”  。
 
@@ -112,31 +108,31 @@ ms.locfileid: "75336124"
 
 ## <a name="get-your-service-principal"></a>获取服务主体
 
-需要知道标识管理器是 Azure AD 还是 AD DFS。 下表包含在 Azure Stack 中设置 Commvault 时所需的信息。
+需要知道标识管理器是 Azure AD 还是 AD DFS。 下表包含在 Azure Stack Hub 中设置 Commvault 时所需的信息。
 
 | 元素 | 说明 | Source |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure 资源管理器 URL | Azure Stack 资源管理器终结点。 | https://docs.azure.cn/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1908#the-azure-stack-resource-manager-endpoint |
+| Azure 资源管理器 URL | Azure Stack Hub 资源管理器终结点。 | https://docs.azure.cn/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1908#the-azure-stack-hub-resource-manager-endpoint |
 | 应用程序名称 |  |  |
 | 应用程序 ID | 在本文上一部分创建服务主体时保存的服务主体应用 ID。 | https://docs.azure.cn/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
-| 订阅 ID | 使用订阅 ID 访问 Azure Stack 中的套餐。 | https://docs.azure.cn/azure-stack/operator/service-plan-offer-subscription-overview?view=azs-1908#subscriptions |
-| 租户 ID（目录 ID） | Azure Stack 租户 ID。 | https://docs.azure.cn/azure-stack/operator/azure-stack-identity-overview?view=azs-1908 |
+| 订阅 ID | 使用订阅 ID 访问 Azure Stack Hub 中的套餐。 | https://docs.azure.cn/azure-stack/operator/service-plan-offer-subscription-overview?view=azs-1908#subscriptions |
+| 租户 ID（目录 ID） | Azure Stack Hub 租户 ID。 | https://docs.azure.cn/azure-stack/operator/azure-stack-identity-overview?view=azs-1908 |
 | 应用程序密码 | 创建服务主体时保存的服务主体应用机密。 | https://docs.azure.cn/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
 
 ## <a name="configure-backup-using-the-commvault-console"></a>使用 Commvault 控制台配置备份
 
-1. 打开 RDP 客户端，并连接到 Azure Stack 中的 Commavult VM。 输入凭据。
+1. 打开 RDP 客户端，并连接到 Azure Stack Hub 中的 Commavult VM。 输入凭据。
 
-2. 在 Commvault VM 上安装 Azure Stack PowerShell 和 Azure Stack 工具。
+2. 在 Commvault VM 上安装 Azure Stack Hub PowerShell 和 Azure Stack Hub 工具。
 
-    a. 有关安装 Azure Stack PowerShell 的说明，请参阅[安装适用于 Azure Stack 的 PowerShell](/azure-stack/operator/azure-stack-powershell-install)。  
-    b. 有关安装 Azure Stack 工具的说明，请参阅[从 GitHub 下载 Azure Stack 工具](/azure-stack/operator/azure-stack-powershell-download)。
+    a. 有关安装 Azure Stack Hub PowerShell 的说明，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](/azure-stack/operator/azure-stack-powershell-install)。  
+    b. 有关安装 Azure Stack Hub 工具的说明，请参阅[从 GitHub 下载 Azure Stack Hub 工具](/azure-stack/operator/azure-stack-powershell-download)。
 
 3. 在 Commvault 安装到 Commvault VM 后，打开 Commcell 控制台。 在“开始”中，选择“Commvault” > “Commvault Commcell 控制台”。  
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
 
-4. 在 Commvault Commcell 控制台中，将备份存储库配置为使用 Azure Stack 外部的存储。 在 CommCell 浏览器中，选择“存储资源”>“存储池”。 单击右键并选择“添加存储池”。  选择“云”。 
+4. 在 Commvault Commcell 控制台中，将备份存储库配置为使用 Azure Stack Hub 外部的存储。 在 CommCell 浏览器中，选择“存储资源”>“存储池”。 单击右键并选择“添加存储池”。  选择“云”。 
 
 5. 添加存储池的名称。 选择“**下一步**”。
 
@@ -144,7 +140,7 @@ ms.locfileid: "75336124"
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-storage-add-storage-device.png)
 
-7. 选择云服务提供商。 在此过程中，我们将使用位于不同位置的另一个 Azure Stack。 选择“Microsoft Azure 存储”。
+7. 选择云服务提供商。 在此过程中，我们将使用位于不同位置的另一个 Azure Stack Hub。 选择“Microsoft Azure 存储”。
 
 8. 选择你的 Commvault VM 作为 MediaAgent。
 
@@ -160,7 +156,7 @@ ms.locfileid: "75336124"
     
     -   **存储类**：保留为用户容器的默认存储类。
 
-10. 根据[创建 Azure Stack 客户端](https://documentation.commvault.com/commvault/v11_sp13/article?p=86495.htm)中的说明创建 Azure Stack 客户端
+10. 根据[创建 Azure Stack Hub 客户端](https://documentation.commvault.com/commvault/v11_sp13/article?p=86495.htm)中的说明创建 Azure Stack Hub 客户端
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-ceate-client.png)
 
@@ -174,13 +170,13 @@ ms.locfileid: "75336124"
 
 有两个选项可用。 可以选择将主要备份副本中的更改复制到恢复 VM，或者将次要副本中的更改复制到恢复 VM。 从备份集复制可避免对源计算机造成读取 IO 影响。
 
-1. 在配置 Live Sync 期间，需要提供源 Azure Stack（虚拟服务器代理）和目标 Azure Stack 的详细信息。
+1. 在配置 Live Sync 期间，需要提供源 Azure Stack Hub（虚拟服务器代理）和目标 Azure Stack Hub 的详细信息。
 
-2. 有关 Commvault Live Sync 的配置步骤，请参阅 [Azure Stack 的 Live Sync 复制](https://documentation.commvault.com/commvault/v11_sp13/article?p=94386.htm)。
+2. 有关 Commvault Live Sync 的配置步骤，请参阅 [Azure Stack Hub 的 Live Sync 复制](https://documentation.commvault.com/commvault/v11_sp13/article?p=94386.htm)。
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-1.png)
  
-3. 在配置 Live Sync 期间，需要提供目标 Azure Stack 和虚拟服务器代理的详细信息。
+3. 在配置 Live Sync 期间，需要提供目标 Azure Stack Hub 和虚拟服务器代理的详细信息。
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-2.png)
 
@@ -190,7 +186,7 @@ ms.locfileid: "75336124"
 
 5. 还可以选择每个 VM 旁边的“配置”，来更改 VM 大小和配置网络设置。 
 
-6. 设置复制到目标 Azure Stack 的频率
+6. 设置复制到目标 Azure Stack Hub 的频率
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-5.png)
 
@@ -199,11 +195,11 @@ ms.locfileid: "75336124"
 
 ## <a name="set-up-failover-behavior-using-live-sync"></a>使用 Live Sync 设置故障转移行为
 
-使用 Commvault Live Sync 可将计算机从一个 Azure Stack 故障转移到另一个 Azure Stack，并可以进行故障回复，以恢复原始 Azure Stack 上的操作。 该工作流会自动完成，并会记录日志。
+使用 Commvault Live Sync 可将计算机从一个 Azure Stack Hub 故障转移到另一个 Azure Stack Hub，并可以进行故障回复，以恢复原始 Azure Stack Hub 上的操作。 该工作流会自动完成，并会记录日志。
 
 ![](./media/azure-stack-network-howto-backup-commvault/back-up-live-sync-panel.png)
 
-选择要故障转移到恢复 Azure Stack 的 VM，然后选择计划性或非计划故障转移。 计划性故障转移适用于有时间正常关闭生产环境，然后在恢复站点中恢复操作的情况。 计划性故障转移会关闭生产 VM，将最终更改复制到恢复站点，使包含最新数据的恢复 VM 联机，并应用配置 Live Sync 期间指定的 VM 大小和网络配置。 非计划性故障转移会尝试关闭生产 VM，但如果生产环境不可用，则故障转移会继续进行。它只会使恢复 VM 联机，并对 VM 应用最后收到的复制数据集以及所选的大小和网络配置。 下图演示了非计划性故障转移，其中，Commvault Live Sync 已使恢复 VM 联机。
+选择要故障转移到恢复 Azure Stack Hub 的 VM，然后选择计划性或非计划故障转移。 计划性故障转移适用于有时间正常关闭生产环境，然后在恢复站点中恢复操作的情况。 计划性故障转移会关闭生产 VM，将最终更改复制到恢复站点，使包含最新数据的恢复 VM 联机，并应用配置 Live Sync 期间指定的 VM 大小和网络配置。 非计划性故障转移会尝试关闭生产 VM，但如果生产环境不可用，则故障转移会继续进行。它只会使恢复 VM 联机，并对 VM 应用最后收到的复制数据集以及所选的大小和网络配置。 下图演示了非计划性故障转移，其中，Commvault Live Sync 已使恢复 VM 联机。
 
 ![](./media/azure-stack-network-howto-backup-commvault/unplanned-failover.png)
 
@@ -213,4 +209,4 @@ ms.locfileid: "75336124"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md)  
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md)  

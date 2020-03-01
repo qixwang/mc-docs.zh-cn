@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: v-yiso
-origin.date: 08/05/2019
-ms.date: 09/23/2019
-ms.openlocfilehash: ef9874522d81e0273964d16b0d94f714bf95531b
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+origin.date: 01/22/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: 5c5b42fbcf793ba1f64ec4c9fd36c44934a68a6d
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921375"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563489"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
@@ -28,7 +28,7 @@ ms.locfileid: "70921375"
 
 ### <a name="cause"></a>原因
 
-此错误与某个自定义 DNS 配置问题相关。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名（有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)）。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。 只能从 Azure VM 访问此 IP。 因此，如果使用本地 DNS 服务器，或者 DNS 服务器是不属于群集 vNet 的 Azure VM，则此 IP 不起作用。
+此错误与某个自定义 DNS 配置问题相关。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名（有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)）。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。 只能从 Azure VM 访问此 IP。 因此，如果使用本地 DNS 服务器，或者 DNS 服务器是不属于群集虚拟网络的 Azure VM，则此 IP 不起作用。
 
 ### <a name="resolution"></a>解决方法
 
@@ -36,11 +36,11 @@ ms.locfileid: "70921375"
 
 1. 然后运行命令 `nslookup <host_fqdn>`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`）。 如果此命令将名称解析为 IP 地址，则表示 DNS 服务器工作正常。 在这种情况下，请提交有关 HDInsight 的支持案例，我们将调查你的问题。 请在支持案例中包含执行的故障排除步骤。 这有助于我们更快解决问题。
 
-1. 如果以上命令未返回 IP 地址，请运行 `nslookup <host_fqdn> 168.63.129.16`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能够解析 IP，则表示 DNS 服务器未将查询转发到 Azure 的 DNS，或者它不是与群集处于同一 vNet 中的 VM。
+1. 如果以上命令未返回 IP 地址，请运行 `nslookup <host_fqdn> 168.63.129.16`（例如 `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`）。 如果此命令能够解析 IP，则表示 DNS 服务器未将查询转发到 Azure 的 DNS，或者它不是与群集处于同一虚拟网络中的 VM。
 
-1. 如果你没有任何可充当群集 vNet 中的自定义 DNS 服务器的 Azure VM，则需要先添加此 VM。 在 vNet 中创建一个要配置为 DNS 转发器的 VM。
+1. 如果你没有任何可充当群集虚拟网络中的自定义 DNS 服务器的 Azure VM，则需要先添加此 VM。 在虚拟网络中创建一个要配置为 DNS 转发器的 VM。
 
-1. 在 vNet 中部署 VM 后，在此 VM 上配置 DNS 转发规则。 将所有 iDNS 名称解析请求转发到 168.63.129.16，将剩余的请求转发到 DNS 服务器。 [此处](../hdinsight-plan-virtual-network-deployment.md)提供了一个示例来演示如何为自定义 DNS 服务器完成此设置。
+1. 在虚拟网络中部署 VM 后，在此 VM 上配置 DNS 转发规则。 将所有 iDNS 名称解析请求转发到 168.63.129.16，将剩余的请求转发到 DNS 服务器。 [此处](../hdinsight-plan-virtual-network-deployment.md)提供了一个示例来演示如何为自定义 DNS 服务器完成此设置。
 
 1. 添加此 VM 的 IP 地址作为虚拟网络 DNS 配置的第一个 DNS 条目。
 
@@ -67,6 +67,73 @@ Azure 存储和 SQL 没有固定的 IP 地址，因此，我们需要允许与�
     转到 Azure 门户，并找到与其中部署了群集的子网关联的路由表。 找到子网的路由表后，检查其中的 **routes** 节。
 
     如果定义了路由，请确保部署了群集的区域的 IP 地址存在路由，并且每个路由的 **NextHopType** 是 **Internet**。 应该为上述文章中所述的每个所需 IP 地址定义一个路由。
+
+---
+
+## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>“虚拟网络配置不符合 HDInsight 要求”
+
+### <a name="issue"></a>问题
+
+错误说明中包含如下所示的消息：
+
+```
+ErrorCode: InvalidNetworkConfigurationErrorCode
+ErrorDescription: Virtual Network configuration is not compatible with HDInsight Requirement. Error: 'Failed to connect to Azure Storage Account; Failed to connect to Azure SQL; HostName Resolution failed', Please follow https://go.microsoft.com/fwlink/?linkid=853974 to fix it.
+```
+
+### <a name="cause"></a>原因
+
+自定义 DNS 设置可能有问题。
+
+### <a name="resolution"></a>解决方法
+
+验证 168.63.129.16 是否在自定义 DNS 链中。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名。 有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
+
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
+    ```
+
+1. 运行以下命令：
+
+    ```bash
+    cat /etc/resolv.conf | grep nameserver*
+    ```
+
+    应看到与下面类似的内容：
+
+    ```output
+    nameserver 168.63.129.16
+    nameserver 10.21.34.43
+    nameserver 10.21.34.44
+    ```
+
+    根据结果选择执行以下步骤之一：
+
+#### <a name="1686312916-is-not-in-this-list"></a>168.63.129.16 不在此列表中
+
+**选项 1**  
+使用[规划 Azure HDInsight 的虚拟网络](../hdinsight-plan-virtual-network-deployment.md)中所述的步骤，将 168.63.129.16 添加为虚拟网络的第一个自定义 DNS。 仅当自定义 DNS 服务器在 Linux 上运行时，这些步骤才适用。
+
+**方法 2**  
+为虚拟网络部署 DNS 服务器 VM。 这包括以下步骤：
+
+* 在虚拟网络中创建一个要配置为 DNS 转发器的 VM（可以是 Linux VM 或 Windows VM）。
+* 在此 VM 上配置 DNS 转发规则（将所有 iDNS 名称解析请求转发到 168.63.129.16，将剩余的请求转发到 DNS 服务器）。
+* 添加此 VM 的 IP 地址作为虚拟网络 DNS 配置的第一个 DNS 条目。
+
+#### <a name="1686312916-is-in-the-list"></a>168.63.129.16 在列表中
+
+在这种情况下，请创建有关 HDInsight 的支持案例，我们将调查你的问题。 在支持案例中包括以下命令的结果。 这可以帮助我们更快调查和解决问题。
+
+在头节点上的 SSH 会话中，编辑并运行以下命令：
+
+```bash
+hostname -f
+nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.chinacloudapp.cn)
+dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.chinacloudapp.cn)
+```
 
 ---
 

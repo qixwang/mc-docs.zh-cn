@@ -4,48 +4,52 @@ description: 如何将 IoT Edge 设备更新为运行最新版本的安全守护
 keywords: ''
 author: kgremban
 manager: philmea
-ms.author: v-yiso
-origin.date: 11/19/2019
-ms.date: 01/20/2020
+ms.author: v-tawe
+origin.date: 02/07/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: e16fc9180623a1323ce43eaf53cc7bd3a9d8f8f9
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 0ac3fd1b7e2d649a5fc132ff36995ff3605c4254
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859734"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494475"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
-当 IoT Edge 服务发布新版本时，可能需要更新 IoT Edge 设备，使其获得最新功能并改善安全性。 本文提供有关在新版本推出时如何更新 IoT Edge 设备的信息。 
+当 IoT Edge 服务发布新版本时，可能需要更新 IoT Edge 设备，使其获得最新功能并改善安全性。 本文提供有关在新版本推出时如何更新 IoT Edge 设备的信息。
 
-若要转移到较新的版本，需要更新 IoT Edge 设备的两个组件。 第一个组件是安全守护程序，它在设备上运行并在设备启动时启动运行时模块。 目前，只能从设备本身更新安全守护程序。 第二个组件是由 IoT Edge 中心和 IoT Edge 代理模块组成的运行时。 根据部署的构造方式，可以从设备或者远程更新运行时。 
+若要转移到较新的版本，需要更新 IoT Edge 设备的两个组件。 第一个组件是安全守护程序，它在设备上运行并在设备启动时启动运行时模块。 目前，只能从设备本身更新安全守护程序。 第二个组件是由 IoT Edge 中心和 IoT Edge 代理模块组成的运行时。 根据部署的构造方式，可以从设备或者远程更新运行时。
 
 若要查找最新版本的 Azure IoT Edge，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
 ## <a name="update-the-security-daemon"></a>更新安全守护程序
 
-IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备上的包管理器进行更新。 
+IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备上的包管理器进行更新。
 
-使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。 
+使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。
 
 ### <a name="linux-devices"></a>Linux 设备
 
-在 Linux x64 设备上，请使用 apt-get 或相应的包管理器来更新安全守护程序。 
+在 Linux x64 设备上，请使用 apt-get 或相应的包管理器将安全守护程序更新到最新版本。
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-在 Linux ARM32 设备上，使用[在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux-arm.md)中的步骤来安装最新版本的安全守护程序。 
+若要更新到安全守护程序的特定版本，请在 [IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)中查找目标版本。 在该版本中，找到设备的相应 **libiothsm-std** 和 **iotedge** 文件。 右键单击每个文件对应的链接，并复制链接地址。 使用链接地址安装这些组件的特定版本：
+
+```bash
+curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+```
 
 ### <a name="windows-devices"></a>Windows 设备
 
-在 Windows 设备上，请使用 PowerShell 脚本更新安全守护程序。 脚本会自动提取最新版本的安全守护程序。 
+在 Windows 设备上，请使用 PowerShell 脚本更新安全守护程序。 脚本会自动提取最新版本的安全守护程序。
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
@@ -53,37 +57,47 @@ apt-get install libiothsm iotedge
 
 运行 Update-IoTEdge 命令会从设备中删除并更新安全守护程序以及两个运行时容器映像。 config.yaml 文件以及 Moby 容器引擎中的数据会保留在设备上（如果使用 Windows 容器）。 保留配置信息意味着，在更新过程中，不需再次为设备提供连接字符串或设备预配服务信息。
 
-若要安装特定版本的安全守护程序，请从 [IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)下载相应的 Microsoft-Azure-IoTEdge.cab 文件。 然后，使用 `-OfflineInstallationPath` 参数指向文件位置。 有关详细信息，请参阅[脱机安装](how-to-install-iot-edge-windows.md#offline-installation)。
+若要更新到安全守护程序的特定版本，请在 [IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)中查找目标版本。 在该版本中，下载 **Microsoft-Azure-IoTEdge.cab** 文件。 然后，使用 `-OfflineInstallationPath` 参数指向本地文件位置。 例如：
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
+```
+
+>[!NOTE]
+>`-OfflineInstallationPath` 参数将在提供的目录中查找名为 **Microsoft-Azure-IoTEdge.cab** 的文件。 从 IoT Edge 版本 1.0.9-rc4 开始，可以使用两个 .cab 文件，一个用于 AMD64 设备，另一个用于 ARM32。 下载适用于设备的正确文件，然后重命名该文件以删除体系结构后缀。
+
+有关更新选项的详细信息，请使用命令 `Get-Help Update-IoTEdge -full`，或参考[所有安装参数](how-to-install-iot-edge-windows.md#all-installation-parameters)。
 
 ## <a name="update-the-runtime-containers"></a>更新运行时容器
 
-更新 IoT Edge 代理和 IoT Edge 中心容器的方式取决于在部署中使用的是滚动标记（如 1.0）还是特定标记（如 1.0.7）。 
+更新 IoT Edge 代理和 IoT Edge 中心容器的方式取决于在部署中使用的是滚动标记（如 1.0）还是特定标记（如 1.0.7）。
 
-使用 `iotedge logs edgeAgent` 或 `iotedge logs edgeHub` 命令检查设备上目前安装的 IoT Edge 代理和 IoT Edge 中心模块的版本。 
+使用 `iotedge logs edgeAgent` 或 `iotedge logs edgeHub` 命令检查设备上目前安装的 IoT Edge 代理和 IoT Edge 中心模块的版本。
 
   ![在日志中查找容器版本](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>了解 IoT Edge 标记
 
-IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进行标记。 可通过两种不同的方法对运行时映像使用标记： 
+IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进行标记。 可通过两种不同的方法对运行时映像使用标记：
 
-* **滚动更新标记** - 仅使用版本号的前两个值来获取匹配这些数字的最新映像。 例如，每当有新版本指向最新的 1.0.x 版时，就更新 1.0。 如果 IoT Edge 设备的容器运行时重新提取映像，则运行时模块会更新到最新版本。 建议在开发时使用此方法。 Azure 门户中的部署默认使用滚动更新标记。 
+* **滚动更新标记** - 仅使用版本号的前两个值来获取匹配这些数字的最新映像。 例如，每当有新版本指向最新的 1.0.x 版时，就更新 1.0。 如果 IoT Edge 设备的容器运行时重新提取映像，则运行时模块会更新到最新版本。 建议在开发时使用此方法。 Azure 门户中的部署默认使用滚动更新标记。
+
 * **特定标记** - 使用版本号的所有三个值，以显式设置映像版本。 例如，1.0.7 在其初始版本发布后不会更改。 准备好更新时，可以在部署清单中声明新的版本号。 建议在生产环境中使用此方法。
 
 ### <a name="update-a-rolling-tag-image"></a>更新滚动更新标记映像
 
-如果在部署中使用滚动更新标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0**），则需要在设备上强制实施容器运行时，以提取最新版本的映像。 
+如果在部署中使用滚动更新标记（例如 mcr.microsoft.com/azureiotedge-hub:**1.0**），则需要在设备上强制实施容器运行时，以提取最新版本的映像。
 
-从 IoT Edge 设备中删除本地版本的映像。 在 Windows 计算机上，卸载安全守护程序时也会删除运行时映像，因此不需再次执行此步骤。 
+从 IoT Edge 设备中删除本地版本的映像。 在 Windows 计算机上，卸载安全守护程序时也会删除运行时映像，因此不需再次执行此步骤。
 
 ```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
 
-可能需要使用 `-f`（强制）标志来删除映像。 
+可能需要使用 `-f`（强制）标志来删除映像。
 
-IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上将其重新启动。 
+IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上将其重新启动。
 
 ### <a name="update-a-specific-tag-image"></a>更新特定标记映像
 
@@ -109,17 +123,30 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 ## <a name="update-to-a-release-candidate-version"></a>更新到候选发布版本
 
-Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本之前，会有一个或多个候选发布 (RC) 版本。 RC 版本包括发布版的所有计划内功能，但仍然需要进行稳定版本所需的测试和验证。 若要早点测试某项新功能，可以安装 RC 版本，然后通过 GitHub 提供反馈。 
+Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本之前，会有一个或多个候选发布 (RC) 版本。 RC 版本包括发布版的所有计划内功能，但仍需进行测试和验证。 若要提前测试某项新功能，可以安装 RC 版本，然后通过 GitHub 提供反馈。
 
-候选发布版本遵循相同的版本编号约定，但会在末尾追加 **-rc** 和一个增量数字。 可以在与稳定版本相同的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)列表中查看候选发布版本。 例如，可以找到 **1.0.7-rc1** 和 **1.0.7-rc2** 这两个在 **1.0.7** 之前发布的候选发布版本。 还可以看到 RC 版本带有**预发行版**标签。 
+候选发布版本遵循相同的版本编号约定，但会在末尾追加 **-rc** 和一个增量数字。 可以在与稳定版本相同的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)列表中查看候选发布版本。 例如，可以找到 **1.0.7-rc1** 和 **1.0.7-rc2** 这两个在 **1.0.7** 之前发布的候选发布版本。 还可以看到 RC 版本带有**预发行版**标签。
 
-充当预览版的候选发布版本不会包括在常规安装程序所针对的最新版本中。 需要手动将要测试的 RC 版资产设为目标。 按照以下部分的要求将 IoT Edge 更新为特定版本，具体取决于 IoT Edge 设备操作系统：
+IoT Edge 代理和中心模块包含根据相同约定标记的 RC 版本。 例如 **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2**。
+
+充当预览版的候选发布版本不会包括在常规安装程序所针对的最新版本中。 需要手动将要测试的 RC 版资产设为目标。 大多数情况下，安装或更新到 RC 版本的过程与将目标设为任何其他特定版本的 IoT Edge 相同，但对于 Windows 设备，此过程有一项差异。 
+
+在候选发布版本中，用于在 Windows 设备上安装和管理 IoT Edge 安全守护程序的 PowerShell 脚本的功能可能不同于最新的正式版。 除了下载 RC 的 IoT Edge .cab 文件以外，另请下载 **IotEdgeSecurityDaemon.ps1** 脚本。 使用[点式寻源](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)在当前源中运行下载的脚本。 例如： 
+
+```powershell
+. <path>\IoTEdgeSecurityDaemon.ps1
+Update-IoTEdge -OfflineInstallationPath <path>
+```
+
+使用本文中的部分了解如何将 IoT Edge 设备更新到特定版本的安全守护程序或运行时模块。
+
+如果在新计算机上安装 IoT Edge，请使用以下链接了解如何根据设备操作系统安装特定的版本：
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
-* [Windows](how-to-install-iot-edge-windows.md#offline-installation)
+* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
 
 ## <a name="next-steps"></a>后续步骤
 
 查看最新的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-持续关注[物联网博客](https://azure.microsoft.com/blog/topics/internet-of-things/)中的最新更新和公告 
+持续关注[物联网博客](https://azure.microsoft.com/blog/topics/internet-of-things/)中的最新更新和公告

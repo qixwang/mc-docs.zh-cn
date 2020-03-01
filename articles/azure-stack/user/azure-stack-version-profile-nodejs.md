@@ -1,46 +1,37 @@
 ---
-title: 在 Azure Stack 中将 API 版本配置文件与 Node.js 配合使用 | Microsoft Docs
-description: 了解如何在 Azure Stack 中将 API 版本配置文件与 Node.js 配合使用。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 配合使用
+description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 配合使用。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 07/30/2019
-ms.date: 11/18/2019
+origin.date: 11/11/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 07/30/2019
-ms.openlocfilehash: 6e94243c65b818a23a7e57d1cea8be853f04f04e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 5aedd0c485c3b6e4966aa23b6d08105514f5a559
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020296"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541053"
 ---
-# <a name="use-api-version-profiles-with-nodejs-software-development-kit-sdk-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Node.js 软件开发工具包 (SDK) 配合使用
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="use-api-version-profiles-with-nodejs-software-development-kit-sdk-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Node.js 软件开发工具包 (SDK) 配合使用
 
 ## <a name="nodejs-and-api-version-profiles"></a>Node.js 与 API 版本配置文件
 
-可以使用 Node.js SDK 来帮助构建和管理应用的基础结构。 Node.js SDK 中的 API 配置文件可让你在 Azure 资源与 Azure Stack 资源之间切换，为开发混合云解决方案提供帮助。 只需编写代码一次，即可将目标限定于 Azure 和 Azure Stack。 
+可以使用 Node.js SDK 来帮助构建和管理应用的基础结构。 Node.js SDK 中的 API 配置文件可让你在 Azure 资源与 Azure Stack Hub 资源之间切换，为开发混合云解决方案提供帮助。 只需编写代码一次，即可将目标限定于 Azure 和 Azure Stack Hub。 
 
-在本文中，可以使用 [Visual Studio Code](https://code.visualstudio.com/) 作为开发工具。 Visual Studio Code 可以调试 Node.js SDK，并可让你运行应用并将其推送到 Azure Stack 实例。 可以通过 Visual Studio Code 或者在终端窗口中运行 `node <nodefile.js>` 命令进行调试。
+在本文中，可以使用 [Visual Studio Code](https://code.visualstudio.com/) 作为开发工具。 Visual Studio Code 可以调试 Node.js SDK，并可让你运行应用并将其推送到 Azure Stack Hub 实例。 可以通过 Visual Studio Code 或者在终端窗口中运行 `node <nodefile.js>` 命令进行调试。
 
 ## <a name="the-nodejs-sdk"></a>Node.js SDK
 
-Node.js SDK 提供 Azure Stack 资源管理器工具。 该 SDK 中的资源提供程序包括了计算、网络、存储、应用服务和 KeyVault。 可在 Node.js 应用程序中安装的资源提供程序客户端库有 10 个。 还可以下载指定要用于 **2018-03-01-hybrid** 或 **2019-03-01-profile** 的资源提供程序，以优化应用程序的内存。 每个模块包括资源提供程序、相应的 API 版本和 API 配置文件。 
+Node.js SDK 提供 Azure Stack Hub 资源管理器工具。 该 SDK 中的资源提供程序包括了计算、网络、存储、应用服务和 KeyVault。 可在 Node.js 应用程序中安装的资源提供程序客户端库有 10 个。 还可以下载指定要用于 **2018-03-01-hybrid** 或 **2019-03-01-profile** 的资源提供程序，以优化应用程序的内存。 每个模块包括资源提供程序、相应的 API 版本和 API 配置文件。 
 
 API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API 配置文件获取资源提供程序包中每个资源类型的最新且最稳定的版本。
 
   -   若要使用所有服务的最新版本，请使用包的 **latest** 配置文件。
 
-  -   若要使用与 Azure Stack 兼容的服务，请使用 **\@azure/arm-resources-profile-hybrid-2019-03-01** 或 **\@azure/arm-storage-profile-2019-03-01-hybrid**
+  -   若要使用与 Azure Stack Hub 兼容的服务，请使用 **\@azure/arm-resources-profile-hybrid-2019-03-01** 或 **\@azure/arm-storage-profile-2019-03-01-hybrid**
 
 ### <a name="packages-in-npm"></a>npm 中的包
 
@@ -76,29 +67,29 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
 3. 安装或升级 [Visual Studio Code](https://code.visualstudio.com/)，并安装适用于 Visual Studio Code 的 [Node.js 扩展](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)。
 
-2. 安装 Azure Stack 资源管理器的客户端包。 有关详细信息，请参阅[如何安装客户端库](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid)。
+2. 安装 Azure Stack Hub 资源管理器的客户端包。 有关详细信息，请参阅[如何安装客户端库](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid)。
 
 3. 需安装的包取决于要使用的配置文件版本。 可以在 [npm 中的包](#packages-in-npm)部分找到资源提供程序列表。
 
 4. 使用 npm 安装资源提供程序客户端库。 从命令行中运行：`npm install <package-name>`。 例如，可以运行 `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` 来安装授权资源提供程序库。
 
-5.  使用 SDK 时，请创建订阅并记下订阅 ID。 有关说明，请参阅[在 Azure Stack 中创建套餐的订阅](/azure-stack/azure-stack-subscribe-plan-provision-vm)。
+5.  使用 SDK 时，请创建订阅并记下订阅 ID。 有关说明，请参阅[在 Azure Stack Hub 中创建套餐的订阅](/azure-stack/azure-stack-subscribe-plan-provision-vm)。
 
-6.  创建服务主体并保存客户端 ID 和客户端机密。 创建服务主体时的客户端 ID 也称为应用程序 ID。 有关说明，请参阅[为应用程序提供对 Azure Stack 的访问权限](../operator/azure-stack-create-service-principals.md)。
+6.  创建服务主体并保存客户端 ID 和客户端机密。 创建服务主体时的客户端 ID 也称为应用程序 ID。 有关说明，请参阅[为应用程序提供对 Azure Stack Hub 的访问权限](../operator/azure-stack-create-service-principals.md)。
 
-7.  确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
+7.  确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
 
 ### <a name="nodejs-prerequisites"></a>Node.js 先决条件 
 
-若要将 Node.js Azure SDK 与 Azure Stack 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对操作系统的说明。
+若要将 Node.js Azure SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对操作系统的说明。
 
 | Value | 环境变量 | 说明 |
 | --- | --- | --- |
-| 租户 ID | TENANT\_ID | Azure Stack [租户 ID](/azure-stack/azure-stack-identity-overview) 的值。 |
+| 租户 ID | TENANT\_ID | Azure Stack Hub [租户 ID](/azure-stack/azure-stack-identity-overview) 的值。 |
 | 客户端 ID | CLIENT\_ID | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。  |
-| 订阅 ID | AZURE\_SUBSCRIPTION\_ID：[订阅 ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) 用于访问 Azure Stack 中的套餐。  |
+| 订阅 ID | AZURE\_SUBSCRIPTION\_ID：[订阅 ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) 用于访问 Azure Stack Hub 中的套餐。  |
 | 客户端机密 | APPLICATION\_SECRET | 创建服务主体时保存的服务主体应用程序机密。 |
-| 资源管理器终结点 | ARM\_ENDPOINT | 请参阅 [Azure Stack 资源管理器终结点](/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint)。 |
+| 资源管理器终结点 | ARM\_ENDPOINT | 参阅 [Azure Stack Hub 资源管理器终结点](/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint)。 |
 
 #### <a name="set-your-environmental-variables-for-nodejs"></a>设置 Node.js 的环境变量
 
@@ -116,14 +107,15 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
     `export Azure_Tenant_ID=<Your_Tenant_ID>`
 
-**Azure Stack 资源管理器终结点**
+**Azure Stack Hub 资源管理器终结点**
 
 Azure 资源管理器是一种管理框架，可供管理员用来部署、管理和监视 Azure 资源。 Azure 资源管理器可以通过单个操作以组任务而不是单个任务的形式处理这些任务。
 
 可以从资源管理器终结点获取元数据信息。 该终结点返回 JSON 文件，以及运行代码所需的信息。
 
 > [!Note]  
-> Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external`集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com` 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+> Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external` 集成系统中的 **ResourceManagerUrl** 为 `https://management.region.<fqdn>/`，其中 `<fqdn>` 是完全限定的域名。
+检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
 示例 JSON 文件：
 
@@ -150,17 +142,17 @@ Azure 资源管理器是一种管理框架，可供管理员用来部署、管�
 
 -  **\@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
 
-    为 Azure Stack 生成的最新配置文件。 请将此配置文件用于与 Azure Stack 最兼容的服务，前提是使用 1808 或更高的戳记。
+    为 Azure Stack Hub 生成的最新配置文件。 使用此配置文件可以使服务与阵列版本 1808 或更高版本的 Azure Stack Hub 最兼容。
 
 -  **\@azure-arm-resource**
 
     配置文件包含所有服务的最新版本。 使用 Azure 中所有服务的最新版本。
 
-有关 Azure Stack 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要](/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles)。
+有关 Azure Stack Hub 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要](/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles)。
 
 ### <a name="azure-nodejs-sdk-api-profile-usage"></a>Azure Node.js SDK API 配置文件的用法
 
-应该使用以下代码行来实例化配置文件客户端。 此参数只是 Azure Stack 或其他私有云所需要的。 默认情况下，全球 Azure 已有这些包含 @azure-arm-resource 或 @azure-arm-storage 的设置。
+应该使用以下代码行来实例化配置文件客户端。 此参数只是 Azure Stack Hub 或其他私有云所需要的。 默认情况下，全球 Azure 已有这些包含 @azure-arm-resource 或 @azure-arm-storage 的设置。
 
 ```Node.js  
 var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019-03-01').ResourceManagementClient;
@@ -168,7 +160,7 @@ var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019
 var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hybrid').StorageManagementClient;
 ````
 
-在 Azure Stack 上对服务主体进行身份验证需要以下代码。 它根据租户 ID 和特定于 Azure Stack 的身份验证基准创建令牌。
+在 Azure Stack Hub 上对服务主体进行身份验证需要以下代码。 它根据租户 ID 和特定于 Azure Stack Hub 的身份验证基准创建令牌：
 
 ```Node.js  
 var clientId = process.env['AZURE_CLIENT_ID'];
@@ -179,9 +171,9 @@ var base_url = process.env['ARM_ENDPOINT'];
 var resourceClient, storageClient;
 ```
 
-这样，便可以使用 API 配置文件客户端库将应用程序成功部署到 Azure Stack。
+这样，便可以使用 API 配置文件客户端库将应用程序成功部署到 Azure Stack Hub。
 
-以下代码片段使用为 Azure Stack 实例指定的 Azure 资源管理器终结点，收集如上所示的数据，例如库终结点、图形终结点、受众和门户终结点。
+以下代码片段使用为 Azure Stack Hub 实例指定的 Azure 资源管理器终结点，收集如上所示的数据，例如库终结点、图形终结点、受众和门户终结点。
 
 ```Node.js  
 var map = {};
@@ -190,7 +182,7 @@ const fetchUrl = base_url + 'metadata/endpoints?api-version=1.0'
 
 ## <a name="environment-settings"></a>环境设置
 
-若要通过 Azure Stack 环境对服务主体进行身份验证，请使用以下代码：使用此代码并在命令提示符中设置环境变量会自动为开发人员生成此映射。
+若要通过 Azure Stack Hub 环境对服务主体进行身份验证，请使用以下代码：使用此代码并在命令提示符中设置环境变量会自动为开发人员生成此映射。
 
 ```Node.js  
 function main() {
@@ -216,7 +208,7 @@ function main() {
 
 ## <a name="samples-using-api-profiles"></a>使用 API 配置文件的示例
 
-可以参考以下示例使用 Node.js 和 Azure Stack API 配置文件来创建解决方案。 可从 GitHub 上的以下存储库中获取示例：
+可以参考以下示例使用 Node.js 和 Azure Stack Hub API 配置文件来创建解决方案。 可从 GitHub 上的以下存储库中获取示例：
 
 - [存储节点资源提供程序入门](https://github.com/sijuman/storage-node-resource-provider-getting-started)
 - [计算节点管理](https://github.com/sijuman/compute-node-manage-vm)
@@ -237,7 +229,7 @@ function main() {
     - 客户端 ID
     - 客户端机密
     - Azure 订阅 ID
-    - Azure Stack 资源管理器终结点
+    - Azure Stack Hub 资源管理器终结点
 
 4.  使用命令提示符，根据从已创建的服务主体检索的信息设置以下环境变量：
 
@@ -246,7 +238,7 @@ function main() {
     export CLIENT_ID=<your client id>
     export APPLICATION_SECRET=<your client secret>K
     export AZURE_SUBSCRIPTION_ID=<your subscription id>
-    export ARM_ENDPOINT=<your Azure Stack Resource manager URL>
+    export ARM_ENDPOINT=<your Azure Stack Hub Resource manager URL>
     ```
 
     > [!Note]  
@@ -254,9 +246,9 @@ function main() {
 
 5.  打开示例应用程序的 `index.js` 文件。
 
-6.  将位置变量设置为你的 Azure Stack 位置。 例如，`LOCAL = "local"`。
+6.  将位置变量设置为你的 Azure Stack Hub 位置。 例如，`LOCAL = "local"`。
 
-7.  设置凭据，以便向 Azure Stack 进行身份验证。 此代码部分包含在本示例的 index.js 文件中。
+7.  设置凭据，以便向 Azure Stack Hub 进行身份验证。 此代码部分包含在本示例的 index.js 文件中。
 
     ```Node.js  
     var clientId = process.env['CLIENT_ID'];
@@ -280,7 +272,7 @@ function main() {
 
 10.  在命令提示符下，运行 `npm install` 命令安装所有 Node.js 模块。
 
-11.  运行示例。
+11.  运行该示例。
 
         ```Node.js  
         node index.js
@@ -410,5 +402,5 @@ return resourceClient.resourceGroups.deleteMethod(resourceGroupName, callback);
 
 有关 API 配置文件的详细信息，请参阅：
 
-- [在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles.md)
+- [管理 Azure Stack Hub 中的 API 版本配置文件](azure-stack-version-profiles.md)
 - [配置文件支持的资源提供程序 API 版本](azure-stack-profiles-azure-resource-manager-versions.md)

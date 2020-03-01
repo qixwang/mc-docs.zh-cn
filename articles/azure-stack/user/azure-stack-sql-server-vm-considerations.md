@@ -1,46 +1,39 @@
 ---
-title: 有关优化 Azure Stack 性能的 SQL Server 最佳做法 | Microsoft Docs
-description: 本文提供的 SQL Server 最佳做法有助于提高 Azure Stack VM 中 SQL Server 的性能并对其进行优化。
-services: azure-stack
-documentationcenter: ''
+title: 有关优化 Azure Stack Hub 性能的 SQL Server 最佳做法
+description: 本文提供的 SQL Server 最佳做法有助于提高 Azure Stack Hub VM 中 SQL Server 的性能并对其进行优化。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 04/02/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 81965ab4e7e61b537709619de0486842ce5a9794
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 27952342068b5c4c49db6a416c4546c4d1f9c859
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737908"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541015"
 ---
-# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>用于优化 Azure Stack 性能的 SQL Server 最佳做法
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack-hub"></a>有关优化 Azure Stack Hub 性能的 SQL Server 最佳做法
 
-本文提供的 SQL Server 最佳做法可优化 Azure Stack 虚拟机 (VM) 中的 SQL Server 并提高性能。 在 Azure Stack VM 中运行 SQL Server 时，请使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 Azure Stack 云中关系数据库的性能取决于许多因素，包括 VM 的系列大小和数据磁盘的配置。
+本文提供的 SQL Server 最佳做法可优化 Azure Stack Hub 虚拟机 (VM) 中的 SQL Server 并提高性能。 在 Azure Stack Hub VM 中运行 SQL Server 时，请使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 Azure Stack Hub 云中关系数据库的性能取决于许多因素，包括 VM 的系列大小和数据磁盘的配置。
 
-创建 SQL Server 映像时，[请考虑在 Azure Stack 门户中预配 VM](/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 从 Azure Stack 管理员门户中的“市场管理”下载 SQL IaaS 扩展，然后下载所选的 SQL Server VM 映像。 这些映像包括 SQL Server 2016 SP1、SQL Server 2016 SP2 和 SQL Server 2017。
+创建 SQL Server 映像时，[请考虑在 Azure Stack Hub 门户中预配 VM](/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 从 Azure Stack Hub 管理员门户中的“市场管理”下载 SQL IaaS 扩展，然后下载所选的 SQL Server VM 映像。 这些映像包括 SQL Server 2016 SP1、SQL Server 2016 SP2 和 SQL Server 2017。
 
 > [!NOTE]  
-> 虽然本文介绍的是如何使用全球 Azure 门户预配 SQL Server VM，但相关指南也适用于 Azure Stack，只是存在以下差异：SSD 不可用于操作系统磁盘，并且在存储配置上存在微小差异。
+> 虽然本文介绍的是如何使用全球 Azure 门户预配 SQL Server VM，但相关指南也适用于 Azure Stack Hub，只是存在以下差异：SSD 不可用于操作系统磁盘，并且在存储配置上存在微小差异。
 
-本文重点介绍如何在 Azure Stack VM 上获取 SQL Server 的最佳性能。  如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求和工作负荷模式。
+在 VM 映像中，对于 SQL Server，只能使用自带许可 (BYOL)。 对于 Windows Server，默认许可模式为预付。 有关 VM 中 Windows Server 许可模式的详细信息，请参阅 [Azure Stack Hub 市场中的 Windows Server 常见问题解答](/azure-stack/operator/azure-stack-windows-server-faq#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server)。  
+
+本文重点介绍如何在 Azure Stack Hub VM 上获取 SQL Server 的最佳性能。  如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求和工作负荷模式。
 
 > [!NOTE]  
 > 如需 Azure VM 中 SQL Server 的性能指南，请参阅[此文](/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)。
 
 ## <a name="checklist-for-sql-server-best-practices"></a>SQL Server 最佳做法清单
 
-以下清单适合优化 Azure Stack VM 中 SQL Server 的性能：
+以下清单适合优化 Azure Stack Hub VM 中 SQL Server 的性能：
 
 
 |区域|优化|
@@ -62,26 +55,26 @@ ms.locfileid: "75737908"
 
 - **SQL Server Standard 版本和 Web 版本：** DS2 或更高
 
-使用 Azure Stack 时，DS 和 DS_v2 VM 系列没有性能差异。
+使用 Azure Stack Hub 时，DS 和 DS_v2 VM 系列没有性能差异。
 
 ## <a name="storage-guidance"></a>存储指导原则
 
-在 Azure Stack 中，DS 系列（以及 DSv2 系列）VM 提供最大的操作系统磁盘和数据磁盘吞吐量 (IOPS)。 DS 或 DSv2 系列的 VM 为操作系统磁盘提供高达 1,000 的 IOPS，为数据磁盘提供高达 2,300 的 IOPS，不管所选磁盘的类型或大小如何。
+在 Azure Stack Hub 中，DS 系列（以及 DSv2 系列）VM 提供最大的操作系统磁盘和数据磁盘吞吐量 (IOPS)。 DS 或 DSv2 系列的 VM 为操作系统磁盘提供高达 1,000 的 IOPS，为数据磁盘提供高达 2,300 的 IOPS，不管所选磁盘的类型或大小如何。
 
 数据磁盘吞吐量只取决于 VM 系列。 若要确定 VM 系列的数据磁盘吞吐量，可[参阅此文](azure-stack-vm-sizes.md)。
 
 > [!NOTE]  
 > 至于生产型工作负荷，请选择可以在操作系统磁盘和数据磁盘上提供最大可能 IOPS 的 DS 系列或 DSv2 系列的 VM。
 
-在 Azure Stack 中创建存储帐户时，异地复制选项无效，因为此功能在 Azure Stack 中不可用。
+在 Azure Stack Hub 中创建存储帐户时，异地复制选项无效，因为此功能在 Azure Stack Hub 中不可用。
 
 ## <a name="disks-guidance"></a>磁盘指导原则
 
-Azure Stack VM 上有三种主要磁盘类型：
+Azure Stack Hub VM 上有三种主要磁盘类型：
 
-- **操作系统磁盘：** 创建 Azure Stack VM 时，该平台至少将一个磁盘（标记为 **C** 驱动器）附加到 VM 作为操作系统磁盘。 此磁盘是一个 VHD，在存储空间中存储为一个页 blob。
+- **操作系统磁盘：** 创建 Azure Stack Hub VM 时，该平台至少将一个磁盘（标记为 **C** 驱动器）附加到 VM 作为操作系统磁盘。 此磁盘是一个 VHD，在存储空间中存储为一个页 blob。
 
-- **临时磁盘：** Azure Stack VM 包含另一个称为临时磁盘的磁盘（标记为 **D** 驱动器）。 这是可用于暂存空间的节点上的一个磁盘。
+- **临时磁盘：** Azure Stack Hub VM 包含另一个称为临时磁盘的磁盘（标记为 **D** 驱动器）。 这是可用于暂存空间的节点上的一个磁盘。
 
 - **数据磁盘：** 可以将其他磁盘作为数据磁盘附加到 VM，这些磁盘在存储中存储为页 Blob。
 
@@ -99,12 +92,12 @@ Azure Stack VM 上有三种主要磁盘类型：
 
 ### <a name="data-disks"></a>数据磁盘数
 
-- **将数据磁盘用于数据和日志文件。** 如果不使用磁盘条带化，请使用支持高级存储的 VM 中的两个数据磁盘，一个磁盘包含日志文件，另一个包含数据和 TempDB 文件。 每个数据磁盘均提供可观的 IOPS，具体取决于 VM 系列，如 [Azure Stack 中支持的 VM 大小](azure-stack-vm-sizes.md)中所述。 如果使用磁盘条带化方法（例如存储空间），请将所有数据文件和日志文件（包括 TempDB）放在同一驱动器上。 此配置可以为你提供最大数目的 IOPS 供 SQL Server 使用，不管哪个文件在特定时刻需要它们。
+- **将数据磁盘用于数据和日志文件。** 如果不使用磁盘条带化，请使用支持高级存储的 VM 中的两个数据磁盘，一个磁盘包含日志文件，另一个包含数据和 TempDB 文件。 每个数据磁盘均提供可观的 IOPS，具体取决于 VM 系列，如 [Azure Stack Hub 中支持的 VM 大小](azure-stack-vm-sizes.md)中所述。 如果使用磁盘条带化方法（例如存储空间），请将所有数据文件和日志文件（包括 TempDB）放在同一驱动器上。 此配置可以为你提供最大数目的 IOPS 供 SQL Server 使用，不管哪个文件在特定时刻需要它们。
 
 > [!NOTE]  
-> 在门户中预配 SQL Server VM 时，你可以编辑存储配置。 Azure Stack 根据配置来配置一个或多个磁盘。 多个磁盘会组合成一个存储池。 数据文件和日志文件一起位于此配置中。
+> 在门户中预配 SQL Server VM 时，你可以编辑存储配置。 Azure Stack Hub 根据配置来配置一个或多个磁盘。 多个磁盘会组合成一个存储池。 数据文件和日志文件一起位于此配置中。
 
-- **磁盘条带化：** 为提高吞吐量，可以添加更多的数据磁盘，并使用磁盘条带化。 若要确定所需的数据磁盘数，请分析日志文件以及数据和 TempDB 文件所需的 IOPS 数。 请注意，IOPS 限制是按数据磁盘来设置的，取决于 VM 系列而不是 VM 大小。 但是，网络带宽限制取决于 VM 大小。 请参阅 [Azure Stack 中的 VM 大小](azure-stack-vm-sizes.md)中的表，了解更多详细信息。 遵循以下指南：
+- **磁盘条带化：** 为提高吞吐量，可以添加更多的数据磁盘，并使用磁盘条带化。 若要确定所需的数据磁盘数，请分析日志文件以及数据和 TempDB 文件所需的 IOPS 数。 请注意，IOPS 限制是按数据磁盘来设置的，取决于 VM 系列而不是 VM 大小。 但是，网络带宽限制取决于 VM 大小。 请参阅 [Azure Stack Hub 中的 VM 大小](azure-stack-vm-sizes.md)中的表，了解更多详细信息。 遵循以下指南：
 
   - 对于 Windows Server 2012 或更高版本，请按照以下指南使用[存储空间](https://technet.microsoft.com/library/hh831739.aspx)：
 
@@ -121,7 +114,7 @@ Azure Stack VM 上有三种主要磁盘类型：
        New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple -UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
        ```
 
-- 根据负载预期确定与你的存储池相关联的磁盘数。 请记住，不同的 VM 大小允许不同数量的附加数据磁盘。 有关详细信息，请参阅 [Azure Stack 中支持的 VM 大小](azure-stack-vm-sizes.md)。
+- 根据负载预期确定与你的存储池相关联的磁盘数。 请记住，不同的 VM 大小允许不同数量的附加数据磁盘。 有关详细信息，请参阅 [Azure Stack Hub 中支持的 VM 大小](azure-stack-vm-sizes.md)。
 - 若要获取针对数据磁盘的最大可能 IOPS，建议增加 [VM 大小](azure-stack-vm-sizes.md)支持的最大数量的数据磁盘并使用磁盘条带化。
 - **NTFS 分配单元大小：** 格式化数据磁盘时，我们建议对数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。
 - **磁盘管理做法：** 删除数据磁盘时，请在更改过程中停止 SQL Server 服务。 另外，请勿更改磁盘上的缓存设置，因为这样做不会改进性能。
@@ -140,26 +133,26 @@ Azure Stack VM 上有三种主要磁盘类型：
 
 - 建立锁定的页以减少 IO 和任何分页活动。 有关详细信息，请参阅 [Enable the Lock Pages in Memory Option (Windows)](https://msdn.microsoft.com/library/ms190730.aspx)（启用在内存中锁定页面的选项 (Windows)）。
 
-- 请考虑在传入/传出 Azure Stack 时压缩所有数据文件，包括备份。
+- 请考虑在传入/传出 Azure Stack Hub 时压缩所有数据文件，包括备份。
 
 ## <a name="feature-specific-guidance"></a>功能特定指南
 
 某些部署可以使用更高级的配置技术，获得更多的性能好处。 以下列表主要介绍可能有助于改进性能的一些 SQL Server 功能：
 
-- **备份到 Azure** **存储。** 为在 Azure Stack VM 中运行的 SQL Server 执行备份时，可以使用“SQL Server 备份到 URL”。 此功能从 SQL Server 2012 SP1 CU2 开始提供，建议在备份到附加数据磁盘时使用。
+- **备份到 Azure** **存储。** 为在 Azure Stack Hub VM 中运行的 SQL Server 执行备份时，可以使用“SQL Server 备份到 URL”。 此功能从 SQL Server 2012 SP1 CU2 开始提供，建议在备份到附加数据磁盘时使用。
 
     使用 Azure 存储进行备份或还原时，请按照 [SQL Server 备份到 URL 最佳做法和故障排除](https://msdn.microsoft.com/library/jj919149.aspx)和[从 Azure 中存储的备份还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)中提供的建议操作。 此外还可以使用 [Azure VM 中 SQL Server 的自动备份](/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)自动执行这些备份。
 
--   **备份到 Azure Stack 存储。** 可以备份到 Azure Stack 存储，所用方式类似于备份到 Azure 存储。 在 SQL Server Management Studio (SSMS) 中创建备份时，需手动输入配置信息。 不能使用 SSMS 创建存储容器或共享访问签名。 SSMS 仅连接到 Azure 订阅，不连接到 Azure Stack 订阅。 只需通过 Azure Stack 门户或 PowerShell 创建存储帐户、容器和共享访问签名。
+-   **备份到 Azure Stack Hub 存储。** 可以备份到 Azure Stack Hub 存储，所用方式类似于备份到 Azure 存储。 在 SQL Server Management Studio (SSMS) 中创建备份时，需手动输入配置信息。 不能使用 SSMS 创建存储容器或共享访问签名。 SSMS 仅连接到 Azure 订阅，不连接到 Azure Stack Hub 订阅。 只需通过 Azure Stack Hub 门户或 PowerShell 创建存储帐户、容器和共享访问签名。
 
 
     ![SQL Server 备份](./media/sql-server-vm-considerations/image3.png)
 
     > [!NOTE]  
-    > 共享访问签名是 Azure Stack 门户中的 SAS 令牌，在字符串中没有前导“?”。 如果使用门户中的复制功能，则需删除前导“?”，才能使令牌在 SQL Server 中正常工作。
+    > 共享访问签名是 Azure Stack Hub 门户中的 SAS 令牌，在字符串中没有前导“?”。 如果使用门户中的复制功能，则需删除前导“?”，才能使令牌在 SQL Server 中正常工作。
 
-    在 SQL Server 中设置并配置备份目标以后，即可备份到 Azure Stack Blob 存储。
+    在 SQL Server 中设置并配置备份目标以后，即可备份到 Azure Stack Hub Blob 存储。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用](azure-stack-considerations.md)
+[使用 Azure Stack Hub 的服务或构建适用于 Azure Stack Hub 的应用](azure-stack-considerations.md)

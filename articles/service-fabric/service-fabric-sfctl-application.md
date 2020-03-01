@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI- sfctl application
-description: 介绍 Service Fabric CLI sfctl application 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理应用程序的命令列表。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0b0980a24f6714adf8cbfbb148fb139d521fcd71
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: ef696f02f1f56f46f0c21298850555df4b7b24f9
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742264"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540010"
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
@@ -530,10 +530,13 @@ ms.locfileid: "75742264"
 
 |参数|说明|
 | --- | --- |
-| --path [必需] | 本地应用程序包的路径。 |
+| --path     [必需] | 本地应用程序包的路径。 |
+| --compress | 仅适用于 Service Fabric 应用程序包。 在默认位置或 compressed-location 参数指定的位置创建一个包含压缩的应用程序包的新文件夹，然后上传新建的文件夹。 <br /><br /> 如果 sfctl 已生成压缩文件，设置此标志时，将覆盖该文件。 如果目录不是应用程序包，将返回错误。 如果目录已经是压缩的应用程序包，将按原样复制文件夹。 默认情况下，在成功上传后，将删除新建的压缩应用程序包。 如果上传不成功，请根据需要手动清理压缩包。 如果 compressed-location 参数引用不存在的目录，则删除操作不会删除任何可能已创建的空目录。 |
+| --compressed-location | 要将压缩的应用程序包放到的位置。 <br /><br /> 如果未提供任何位置，压缩包将放在新建的名为 sfctl_compressed_temp 的文件夹下，而该文件夹位于 path 参数中指定的父目录下。 例如，如果 path 参数的值为 C\:/FolderA/AppPkg，则压缩包将添加到 C\:/FolderA/sfctl_compressed_temp/AppPkg。 |
 | --imagestore-string | 应用程序包上传到的目标映像存储区。  默认值\: fabric\:ImageStore。 <br /><br /> 若要上传到文件位置，请使用“file\:”启动此参数。 否则，该值应为映像存储连接字符串，例如默认值。 |
+| --keep-compressed | 成功完成上传后是否保留生成的压缩包。 <br /><br /> 如果未设置，则成功完成上传后，将删除压缩的应用包。 如果上传不成功，则应用程序包将始终保留在输出目录中，以便重新上传。 |
 | --show-progress | 显示大型包的文件上传进度。 |
-| --timeout -t | 总超时，以秒为单位。 超过上传超时持续时间后，上传将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时持续时间。  默认值为 \: 300。 |
+| --timeout -t | 总超时，以秒为单位。 超过上传超时持续时间后，上传将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时持续时间。 超时不包括压缩应用程序包所需的时间。  默认值为 \: 300。 |
 
 ### <a name="global-arguments"></a>全局参数
 

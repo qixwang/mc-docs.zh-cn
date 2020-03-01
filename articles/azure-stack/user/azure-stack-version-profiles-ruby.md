@@ -1,41 +1,30 @@
 ---
-title: 在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用 | Microsoft Docs
-description: 了解如何在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用
+description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: B82E4979-FB78-4522-B9A1-84222D4F854B
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 11/18/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 30628effe80187d1af1e924c6581af786ce57f92
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 74e8990161e63ddfeea5eacf2ddd0284287cd2c2
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020293"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541051"
 ---
-# <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+# <a name="use-api-version-profiles-with-ruby-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用
 
 ## <a name="ruby-and-api-version-profiles"></a>Ruby 与 API 版本配置文件
 
-用于 Azure Stack 资源管理器的 Ruby SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了采用 Ruby 语言的计算、虚拟网络和存储提供程序。 Ruby SDK 中的 API 配置文件可以用来在公有云 Azure 资源和 Azure Stack 上的资源之间进行切换，实现混合云开发。
+用于 Azure Stack Hub 资源管理器的 Ruby SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了采用 Ruby 语言的计算、虚拟网络和存储提供程序。 Ruby SDK 中的 API 配置文件可以用来在公有云 Azure 资源和 Azure Stack Hub 上的资源之间进行切换，实现混合云开发。
 
 API 配置文件是资源提供程序和服务版本的组合。 可以使用 API 配置文件来组合不同的资源类型。
 
 - 若要使用所有服务的最新版本，请使用 Azure SDK 汇总 gem 的**最新**配置文件。
-- 若要使用与 Azure Stack 兼容的服务，请使用 Azure SDK 汇总 gem 的 **V2019_03_01_Hybrid** 或 **V2018_03_01** 配置文件。
+- 若要使用与 Azure Stack Hub 兼容的服务，请使用 Azure SDK 汇总 gem 的 **V2019_03_01_Hybrid** 或 **V2018_03_01** 配置文件。
 - 若要使用某个服务的最新 **api-version**，请使用特定 gem 的**最新**配置文件。 例如，若要单独使用计算服务的最新 **api-version**，请使用**计算** gem 的**最新**配置文件。
 - 若要使用某个服务的特定 **api-version**，请使用在 gem 中定义的特定 API 版本。
 
@@ -54,8 +43,8 @@ API 配置文件是资源提供程序和服务版本的组合。 可以使用 AP
        Gem install bundler
        ```
 
-- 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的说明，请参阅[在 Azure Stack 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)一文。
-- 创建服务主体并保存其 ID 和机密。 有关为 Azure Stack 创建服务主体的说明，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)一文。
+- 如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的说明，请参阅[在 Azure Stack Hub 中创建套餐的订阅](../operator/azure-stack-subscribe-plan-provision-vm.md)一文。
+- 创建服务主体并保存其 ID 和机密。 有关为 Azure Stack Hub 创建服务主体的说明，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)一文。
 - 确保服务主体在订阅上分配有“参与者/所有者”角色。 有关如何将角色分配给服务主体的说明，请参阅[使用应用标识访问资源](../operator/azure-stack-create-service-principals.md)一文。
 
 ## <a name="install-the-rubygem-packages"></a>安装 RubyGem 包
@@ -82,7 +71,7 @@ Azure 资源管理器 Ruby SDK 为预览版，在即将推出的版本中可能�
 
 ## <a name="use-the-azure_sdk-gem"></a>使用 azure_sdk gem
 
-**azure_sdk** gem 汇总了 Ruby SDK 中所有受支持的 gem。 此 gem 包含的 **最新** 配置文件支持所有服务的最新版本。 它包括为 Azure Stack 生成的版本控制配置文件  **V2017_03_09** 和 **V2019_03_01_Hybrid**。
+**azure_sdk** gem 汇总了 Ruby SDK 中所有受支持的 gem。 此 gem 包含的 **最新** 配置文件支持所有服务的最新版本。 它包括为 Azure Stack Hub 生成的版本控制配置文件  **V2017_03_09** 和 **V2019_03_01_Hybrid**。
 
 可使用以下命令安装 azure_sdk 汇总 gem：  
 
@@ -90,26 +79,26 @@ Azure 资源管理器 Ruby SDK 为预览版，在即将推出的版本中可能�
 gem install 'azure_sdk'
 ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要将 Ruby Azure SDK 与 Azure Stack 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对特定操作系统的说明。
+若要将 Ruby Azure SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对特定操作系统的说明。
 
 | Value | 环境变量 | 说明 |
 | --- | --- | --- |
-| 租户 ID | `AZURE_TENANT_ID` | Azure Stack [租户 ID](../operator/azure-stack-identity-overview.md)。 |
+| 租户 ID | `AZURE_TENANT_ID` | Azure Stack Hub [租户 ID](../operator/azure-stack-identity-overview.md)。 |
 | 客户端 ID | `AZURE_CLIENT_ID` | 在本文上一部分创建服务主体时保存的服务主体应用 ID。  |
-| 订阅 ID | `AZURE_SUBSCRIPTION_ID` | 使用[订阅 ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) 访问 Azure Stack 中的套餐。 |
+| 订阅 ID | `AZURE_SUBSCRIPTION_ID` | 使用[订阅 ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) 访问 Azure Stack Hub 中的套餐。 |
 | 客户端机密 | `AZURE_CLIENT_SECRET` | 创建服务主体时保存的服务主体应用机密。 |
-| 资源管理器终结点 | `ARM_ENDPOINT` | 请参阅 [Azure Stack 资源管理器终结点](#the-azure-stack-resource-manager-endpoint)。  |
+| 资源管理器终结点 | `ARM_ENDPOINT` | 参阅 [Azure Stack Hub 资源管理器终结点](#the-azure-stack-hub-resource-manager-endpoint)。  |
 
-### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack 资源管理器终结点
+### <a name="the-azure-stack-hub-resource-manager-endpoint"></a>Azure Stack Hub 资源管理器终结点
 
 Azure 资源管理器是一种管理框架，可供管理员用来部署、管理和监视 Azure 资源。 Azure 资源管理器可以通过单个操作以组任务而不是单个任务的形式处理这些任务。
 
 可以从资源管理器终结点获取元数据信息。 该终结点返回 JSON 文件，其中包含运行代码所需的信息。
 
  > [!NOTE]  
- > Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+ > Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` 集成系统中的 **ResourceManagerUrl** 为 `https://management.region.<fqdn>/`，其中 `<fqdn>` 是完全限定的域名。  
  > 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
  示例 JSON 文件：
@@ -148,15 +137,15 @@ export AZURE_TENANT_ID=<YOUR_TENANT_ID>
 
 **Azure_sdk** 汇总 gem 包含以下 3 个配置文件：
 
-- **V2019_03_01_Hybrid**：为 Azure Stack 生成的配置文件。 将此配置文件用于 Azure Stack 版本 1904 或更高版本中提供的所有最新版服务。
-- **V2017_03_09**：为 Azure Stack 生成的配置文件。 使用此配置文件可以使服务与 Azure Stack 版本 1808 或更早版本最兼容。
+- **V2019_03_01_Hybrid**：为 Azure Stack Hub 生成的配置文件。 将此配置文件用于 Azure Stack Hub 版本 1904 或更高版本中提供的所有最新版服务。
+- **V2017_03_09**：为 Azure Stack Hub 生成的配置文件。 使用此配置文件可以使服务与 Azure Stack Hub 版本 1808 或更早版本最兼容。
 - **最新**：配置文件包含所有服务的最新版本。 使用所有服务的最新版本。
 
-有关 Azure Stack 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要](azure-stack-version-profiles.md#summary-of-api-profiles)。
+有关 Azure Stack Hub 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要](azure-stack-version-profiles.md#summary-of-api-profiles)。
 
 ## <a name="azure-ruby-sdk-api-profile-usage"></a>Azure Ruby SDK API 配置文件的使用
 
-使用以下代码实例化配置文件客户端。 此参数只是 Azure Stack 或其他私有云所需要的。 默认情况下，公有云 Azure 已经有这些设置。
+使用以下代码实例化配置文件客户端。 此参数只是 Azure Stack Hub 或其他私有云所需要的。 默认情况下，公有云 Azure 已经有这些设置。
 
 ```Ruby  
 active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
@@ -175,7 +164,7 @@ options = {
   base_url: ENV['ARM_ENDPOINT']
 }
 
-# Target profile built for Azure Stack
+# Target profile built for Azure Stack Hub
 client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(options)
 ```
 
@@ -193,9 +182,9 @@ purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 purchase_plan_obj = Azure::Profiles::V2019_03_01_Hybrid::Compute::Mgmt::Models::PurchasePlan.new
 ```
 
-## <a name="define-azure-stack-environment-setting-functions"></a>定义 Azure Stack 环境设置函数
+## <a name="define-azure-stack-hub-environment-setting-functions"></a>定义 Azure Stack Hub 环境设置函数
 
-若要通过 Azure Stack 环境进行服务主体身份验证，请使用 `get_active_directory_settings()` 来定义终结点 此方法使用之前设置的 **ARM_Endpoint** 环境变量：
+若要通过 Azure Stack Hub 环境进行服务主体身份验证，请使用 `get_active_directory_settings()` 来定义终结点 此方法使用之前设置的 **ARM_Endpoint** 环境变量：
 
 ```Ruby  
 # Get Authentication endpoints using Arm Metadata Endpoints
@@ -206,7 +195,7 @@ def get_active_directory_settings(armEndpoint)
   response_content = response.body
   unless status_code == "200"
     error_model = JSON.load(response_content)
-    fail MsRestAzure::AzureOperationError.new("Getting Azure Stack Metadata Endpoints", response, error_model)
+    fail MsRestAzure::AzureOperationError.new("Getting Azure Stack Hub Metadata Endpoints", response, error_model)
   end
   result = JSON.load(response_content)
   settings.authentication_endpoint = result['authentication']['loginEndpoint'] unless result['authentication']['loginEndpoint'].nil?
@@ -217,10 +206,10 @@ end
 
 ## <a name="samples-using-api-profiles"></a>使用 API 配置文件的示例
 
-参考 GitHub 上的以下示例，使用 Ruby 和 Azure Stack API 配置文件来创建解决方案：
+参考 GitHub 上的以下示例，使用 Ruby 和 Azure Stack Hub API 配置文件来创建解决方案：
 
 - [使用 Ruby 管理 Azure 资源和资源组](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)。
-- [使用 Ruby 管理虚拟机](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM)（使用 2019-03-01-hybrid 配置文件针对 Azure Stack 支持的最新 API 版本的示例）。
+- [使用 Ruby 管理虚拟机](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM)（使用 2019-03-01-hybrid 配置文件针对 Azure Stack Hub 支持的最新 API 版本的示例）。
 - [在 Ruby 中使用模板部署启用 SSH 的 VM](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment)。
 
 ### <a name="sample-resource-manager-and-groups"></a>示例资源管理器和组
@@ -261,20 +250,20 @@ end
    - `export AZURE_CLIENT_ID={your client ID}`
    - `export AZURE_CLIENT_SECRET={your client secret}`
    - `export AZURE_SUBSCRIPTION_ID={your subscription ID}`
-   - `export ARM_ENDPOINT={your Azure Stack Resource Manager URL}`
+   - `export ARM_ENDPOINT={your Azure Stack Hub Resource Manager URL}`
 
    > [!NOTE]  
    > 在 Windows 上，使用 `set` 而不是 `export`。
 
-4. 确保将位置变量设置为你的 Azure Stack 位置，例如 `LOCAL="local"`。
+4. 确保将位置变量设置为你的 Azure Stack Hub 位置，例如 `LOCAL="local"`。
 
-5. 若要定位正确的活动目录终结点，如果你使用的是 Azure Stack 或其他私有云，请添加以下代码行：
+5. 若要定位正确的活动目录终结点，如果你使用的是 Azure Stack Hub 或其他私有云，请添加以下代码行：
 
    ```Ruby  
    active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
    ```
 
-6. 在 `options` 变量中添加 Active Directory 设置和适用于 Azure Stack 的基 URL：
+6. 在 `options` 变量中添加 Active Directory 设置和适用于 Azure Stack Hub 的基 URL：
 
    ```ruby  
    options = {
@@ -285,13 +274,13 @@ end
    }
    ```
 
-7. 创建以 Azure Stack 配置文件为目标的配置文件客户端：
+7. 创建以 Azure Stack Hub 配置文件为目标的配置文件客户端：
 
    ```ruby  
    client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(options)
    ```
 
-8. 若要通过 Azure Stack 进行服务主体身份验证，应使用 **get_active_directory_settings()** 来定义终结点。 此方法使用之前设置的 **ARM_Endpoint** 环境变量：
+8. 若要通过 Azure Stack Hub 进行服务主体身份验证，应使用 **get_active_directory_settings()** 来定义终结点。 此方法使用之前设置的 **ARM_Endpoint** 环境变量：
 
    ```ruby  
    def get_active_directory_settings(armEndpoint)
@@ -301,7 +290,7 @@ end
      response_content = response.body
      unless status_code == "200"
        error_model = JSON.load(response_content)
-       fail MsRestAzure::AzureOperationError.new("Getting Azure Stack Metadata Endpoints", response, error_model)
+       fail MsRestAzure::AzureOperationError.new("Getting Azure Stack Hub Metadata Endpoints", response, error_model)
      end
      result = JSON.load(response_content)
      settings.authentication_endpoint = result['authentication']['loginEndpoint'] unless result['authentication']['loginEndpoint'].nil?
@@ -310,7 +299,7 @@ end
    end
    ```
 
-9. 运行示例。
+9. 运行该示例。
 
    ```Ruby
    bundle exec ruby example.rb
@@ -318,7 +307,5 @@ end
 
 ## <a name="next-steps"></a>后续步骤
 
-- [安装适用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md)
-- [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)  
-
-<!-- Update_Description: wording update -->
+- [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)
+- [配置 Azure Stack Hub 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)  

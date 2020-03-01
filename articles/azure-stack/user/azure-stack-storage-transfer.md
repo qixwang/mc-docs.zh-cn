@@ -1,32 +1,23 @@
 ---
-title: 在 Azure Stack 存储中使用数据传输工具 | Microsoft Docs
-description: 了解 Azure Stack 存储数据传送工具。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 存储中使用数据传输工具
+description: 了解 Azure Stack Hub 存储数据传输工具。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 11/06/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: b2beb4330c544a7a84db40b1ddcbca316342e612
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: b8d762e6315f2c3c59d8c3f6bac0a4c52a851856
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737896"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541011"
 ---
-# <a name="use-data-transfer-tools-in-azure-stack-storage"></a>在 Azure Stack 存储中使用数据传输工具
+# <a name="use-data-transfer-tools-in-azure-stack-hub-storage"></a>在 Azure Stack Hub 存储中使用数据传输工具
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-Azure Stack 提供了一组存储服务，适用于磁盘、Blob、表、队列以及帐户管理功能。 如果需要通过 Azure Stack 存储管理或移动数据，可以使用一些 Azure 存储工具。 本文概述了可用的工具。
+Azure Stack Hub 提供一组存储服务，适用于磁盘、Blob、表、队列以及帐户管理功能。 如果需要通过 Azure Stack Hub 存储管理或移动数据，可以使用一些 Azure 存储工具。 本文概述了可用的工具。
 
 你的需求决定了以下哪些工具最适合你：
 
@@ -40,7 +31,7 @@ Azure Stack 提供了一组存储服务，适用于磁盘、Blob、表、队列�
 
 * [Azure CLI](#azure-cli)
 
-    一种开源的跨平台工具，提供了一组适用于 Azure 和 Azure Stack 平台的命令。
+    一种开源的跨平台工具，提供了一组适用于 Azure 和 Azure Stack Hub 平台的命令。
 
 * [Microsoft 存储资源管理器](#microsoft-azure-storage-explorer)
 
@@ -50,7 +41,7 @@ Azure Stack 提供了一组存储服务，适用于磁盘、Blob、表、队列�
 
     一个适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。
 
-由于 Azure 和 Azure Stack 之间具有存储服务差异，因此，以下部分中描述的每个工具可能存在一些特定的要求。 若要了解 Azure Stack 存储和 Azure 存储之间的比较情况，请参阅 [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)。
+由于 Azure 和 Azure Stack Hub 之间具有存储服务差异，因此，以下部分中描述的每个工具可能存在一些特定的要求。 若要了解 Azure Stack Hub 存储和 Azure 存储之间的比较情况，请参阅 [Azure Stack Hub 存储：差异和注意事项](azure-stack-acs-differences.md)。
 
 ## <a name="azcopy"></a>AzCopy
 
@@ -68,8 +59,8 @@ AzCopy 是一个命令行实用程序，专用于通过简单的可以优化性�
 
 ### <a name="azcopy-101-configuration-and-limits"></a>AzCopy 10.1 配置和限制
 
-AzCopy 10.1 现在可以配置为使用旧版 API。 这样就可以为 Azure Stack 提供（有限的）支持。
-若要将 AzCopy 的 API 版本配置为支持 Azure Stack，请将 `AZCOPY_DEFAULT_SERVICE_API_VERSION` 环境变量设置为 `2017-11-09`。
+AzCopy 10.1 现在可以配置为使用旧版 API。 这样就可以为 Azure Stack Hub 提供（有限的）支持。
+若要将 AzCopy 的 API 版本配置为支持 Azure Stack Hub，请将 `AZCOPY_DEFAULT_SERVICE_API_VERSION` 环境变量设置为 `2017-11-09`。
 
 | 操作系统 | 命令  |
 |--------|-----------|
@@ -77,7 +68,7 @@ AzCopy 10.1 现在可以配置为使用旧版 API。 这样就可以为 Azure St
 | **Linux** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
 | **MacOS** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
 
-在 AzCopy 10.1 中，支持适用于 Azure Stack 的以下功能：
+在 AzCopy 10.1 中，支持适用于 Azure Stack Hub 的以下功能：
 
 | 功能 | 支持的操作 |
 | --- | --- |
@@ -89,12 +80,12 @@ AzCopy 10.1 现在可以配置为使用旧版 API。 这样就可以为 Azure St
 |同步文件|将容器同步到本地文件系统<br>将本地文件系统同步到容器
 
    > [!NOTE]
-   > * Azure Stack 不支持使用 Azure Active Directory (AD) 向 AzCopy 提供授权凭据。 必须使用共享访问签名 (SAS) 令牌访问 Azure Stack 上的存储对象。
-   > * Azure Stack 不支持在两个 Azure Stack Blob 位置之间以及 Azure 存储和 Azure Stack 之间进行同步数据传输。 不能直接在 AzCopy 10.1 中使用“azcopy cp”将数据从 Azure Stack 移到 Azure 存储（反之亦然）。
+   > * Azure Stack Hub 不支持使用 Azure Active Directory (AD) 向 AzCopy 提供授权凭据。 必须使用共享访问签名 (SAS) 令牌访问 Azure Stack Hub 上的存储对象。
+   > * Azure Stack Hub 不支持在两个 Azure Stack Hub Blob 位置之间以及 Azure 存储和 Azure Stack Hub 之间进行同步数据传输。 不能直接在 AzCopy 10.1 中使用“azcopy cp”将数据从 Azure Stack Hub 移到 Azure 存储（反之亦然）。
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>针对数据传输的 AzCopy 命令示例
 
-以下示例展示了将数据复制到 Azure Stack Blob 以及从这些位置复制数据的典型方案。 若要了解详细信息，请参阅 [AzCopy 入门](/storage/common/storage-use-azcopy-v10)。
+以下示例展示了将数据复制到 Azure Stack Hub Blob 以及从这些位置复制数据的典型方案。 若要了解详细信息，请参阅 [AzCopy 入门](/storage/common/storage-use-azcopy-v10)。
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>将所有 Blob 下载到本地磁盘
 
@@ -110,25 +101,25 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.chinacloudapi.cn/[con
 
 ### <a name="azcopy-known-issues"></a>AzCopy 已知问题
 
- - 在文件存储上执行的任何 AzCopy 操作都不可用，因为文件存储在 Azure Stack 中不可用。
- - 若要使用 AzCopy 10.1 在两个 Azure Stack Blob 位置之间或 Azure Stack 和 Azure 存储之间传输数据，需先将数据下载到本地位置，然后将数据重新上传到 Azure Stack 或 Azure 存储上的目标目录。 也可使用 AzCopy 7.1 通过 **/SyncCopy** 选项来指定传输，以便复制数据。  
+ - 在文件存储上执行的任何 AzCopy 操作都不可用，因为文件存储在 Azure Stack Hub 中不可用。
+ - 若要使用 AzCopy 10.1 在两个 Azure Stack Hub Blob 位置之间或 Azure Stack Hub 和 Azure 存储之间传输数据，需先将数据下载到本地位置，然后将数据重新上传到 Azure Stack Hub 或 Azure 存储上的目标目录。 也可使用 AzCopy 7.1 通过 **/SyncCopy** 选项来指定传输，以便复制数据。  
  - AzCopy 的 Linux 版本仅支持 1802 更新或更高版本，不支持表服务。
  - 如果要向/从 Azure 表存储服务复制数据，则[安装 AzCopy 版本 7.3.0](https://aka.ms/azcopyforazurestack20171109)
  
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell 是一个模块，它提供的 cmdlet 用于管理 Azure 和 Azure Stack 上的服务。 这是一种基于任务的命令行 Shell 和脚本语言，专为系统管理而设计。
+Azure PowerShell 是一个模块，它提供的 cmdlet 用于管理 Azure 和 Azure Stack Hub 上的服务。 这是一种基于任务的命令行 Shell 和脚本语言，专为系统管理而设计。
 
-### <a name="install-and-configure-powershell-for-azure-stack"></a>安装和配置适用于 Azure Stack 的 PowerShell
+### <a name="install-and-configure-powershell-for-azure-stack-hub"></a>安装和配置适用于 Azure Stack Hub 的 PowerShell
 
-需要安装与 Azure Stack 兼容的 Azure PowerShell 模块才能使用 Azure Stack。 有关详细信息，请参阅[安装适用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md) 和[配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)。
+需要安装与 Azure Stack Hub 兼容的 Azure PowerShell 模块才能使用 Azure Stack Hub。 有关详细信息，请参阅[安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md) 和[配置 Azure Stack Hub 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)。
 
-### <a name="powershell-sample-script-for-azure-stack"></a>适用于 Azure Stack 的 PowerShell 示例脚本 
+### <a name="powershell-sample-script-for-azure-stack-hub"></a>适用于 Azure Stack Hub 的 PowerShell 示例脚本 
 
-此示例假定你已成功[安装了适用于 Azure Stack 的 PowerShell](../operator/azure-stack-powershell-install.md)。 此脚本会帮助你完成配置，然后要求你提供 Azure Stack 租户凭据，以便将你的帐户添加到本地 PowerShell 环境。 然后，该脚本会设置默认的 Azure 订阅、在 Azure 中创建新的存储帐户、在此新的存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 在脚本列出该容器中的所有 Blob 后，它会在本地计算机中创建新的目标目录，并下载图像文件。
+此示例假定你已成功[安装了适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。 此脚本会帮助你完成配置，然后要求你提供 Azure Stack Hub 租户凭据，以便将你的帐户添加到本地 PowerShell 环境。 然后，该脚本会设置默认的 Azure 订阅、在 Azure 中创建新的存储帐户、在此新的存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 在脚本列出该容器中的所有 Blob 后，它会在本地计算机中创建新的目标目录，并下载图像文件。
 
-1. 安装 [Azure Stack 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
-2. 下载[使用 Azure Stack 所需的工具](../operator/azure-stack-powershell-download.md)。
+1. 安装 [Azure Stack Hub 兼容的 Azure PowerShell 模块](../operator/azure-stack-powershell-install.md)。
+2. 下载[使用 Azure Stack Hub 所需的工具](../operator/azure-stack-powershell-download.md)。
 3. 打开 **Windows PowerShell ISE**，选择“以管理员身份运行”，  然后单击“文件”   >   “新建”以创建新的脚本文件。
 4. 复制下面的脚本并将其粘贴到新的脚本文件。
 5. 根据配置设置更新脚本变量。
@@ -138,7 +129,7 @@ Azure PowerShell 是一个模块，它提供的 cmdlet 用于管理 Azure 和 Az
 ```powershell  
 # begin
 
-$ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
+$ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack Hub environment name
 $ARMEndPoint = "https://management.local.azurestack.external" 
 $GraphAudience = "https://graph.chinacloudapi.cn/" 
 $AADTenantName = "<myDirectoryTenantName>.partner.onmschina.cn" 
@@ -156,7 +147,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 Import-Module .\Connect\AzureStack.Connect.psm1
 
 # Configure the PowerShell environment
-# Register an AzureRM environment that targets your Azure Stack instance
+# Register an AzureRM environment that targets your Azure Stack Hub instance
 Add-AzureRmEnvironment -Name $ARMEvnName -ARMEndpoint $ARMEndPoint 
 
 # Login
@@ -199,7 +190,7 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 ### <a name="powershell-known-issues"></a>PowerShell 已知问题
 
-目前兼容的 Azure Stack 的 Azure PowerShell 模块版本为 1.2.11，用于用户操作。 它不同于最新版本的 Azure PowerShell。 这种差异以下述方式影响存储服务操作：
+目前兼容的 Azure Stack Hub 的 Azure PowerShell 模块版本为 1.2.11，用于用户操作。 它不同于最新版本的 Azure PowerShell。 这种差异以下述方式影响存储服务操作：
 
 在版本 1.2.11 中，`Get-AzureRmStorageAccountKey` 的返回值格式有两个属性：`Key1` 和 `Key2`，而当前的 Azure 版本返回的数组包含所有帐户密钥。
 
@@ -221,20 +212,20 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以将其安装在 macOS、Linux 和 Windows 上，然后从命令行运行。
 
-Azure CLI 经过优化，可用于从命令行管理 Azure 资源，以及生成可以针对 Azure 资源管理器运行的自动化脚本。 它提供 Azure Stack 门户所提供的许多功能，包括各种数据访问功能。
+Azure CLI 经过优化，可用于从命令行管理 Azure 资源，以及生成可以针对 Azure 资源管理器运行的自动化脚本。 它提供 Azure Stack Hub 门户所提供的许多功能，包括各种数据访问功能。
 
-Azure Stack 需要 Azure CLI 2.0 版或更高版本。 若要详细了解如何通过 Azure Stack 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)。 若要详细了解如何使用 Azure CLI 执行多个可利用 Azure Stack 存储帐户中资源的任务，请参阅[将 Azure CLI 与 Azure 存储配合使用](/storage/storage-azure-cli)
+Azure Stack Hub 需要 Azure CLI 2.0 版或更高版本。 若要详细了解如何通过 Azure Stack Hub 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack Hub CLI](azure-stack-version-profiles-azurecli2.md)。 若要详细了解如何使用 Azure CLI 执行多个可利用 Azure Stack Hub 存储帐户中资源的任务，请参阅[将 Azure CLI 与 Azure 存储配合使用](/storage/storage-azure-cli)
 
-### <a name="azure-cli-sample-script-for-azure-stack"></a>适用于 Azure Stack 的 Azure CLI 示例脚本
+### <a name="azure-cli-sample-script-for-azure-stack-hub"></a>适用于 Azure Stack Hub 的 Azure CLI 示例脚本
 
-完成 CLI 安装和配置后，可尝试以下步骤，使用一个小的 shell 示例脚本来与 Azure Stack 存储资源交互。 此脚本完成以下操作：
+完成 CLI 安装和配置后，可尝试以下步骤，使用一个小的 shell 示例脚本来与 Azure Stack Hub 存储资源交互。 此脚本完成以下操作：
 
 * 在存储帐户中创建一个新容器。
 * 将一个现有文件（作为 Blob）上传到该容器。
 * 列出该容器中的所有 Blob。
 * 将文件下载到本地计算机上的指定目标。
 
-运行此脚本之前，请确保可以成功连接并登录到目标 Azure Stack。
+运行此脚本之前，请确保可以成功连接并登录到目标 Azure Stack Hub。
 
 1. 打开偏好的文本编辑器，将前面的脚本复制并粘贴到编辑器中。
 2. 更新脚本的变量，使之反映配置设置。
@@ -244,7 +235,7 @@ Azure Stack 需要 Azure CLI 2.0 版或更高版本。 若要详细了解如何�
 
 ```azurecli
 #!/bin/bash
-# A simple Azure Stack storage example script
+# A simple Azure Stack Hub storage example script
 
 export AZURESTACK_RESOURCE_GROUP=<resource_group_name>
 export AZURESTACK_RG_LOCATION="local"
@@ -277,18 +268,18 @@ echo "Done"
 
 ## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 存储资源管理器
 
-Azure 存储资源管理器是 Microsoft 提供的独立应用， 它可用来在 Windows、macOS 和 Linux 计算机上轻松处理 Azure 存储和 Azure Stack 存储数据。 如果希望通过某种方式轻松管理 Azure Stack 存储数据，请考虑使用 Microsoft Azure 存储资源管理器。
+Azure 存储资源管理器是 Microsoft 提供的独立应用， 它可用来在 Windows、macOS 和 Linux 计算机上轻松处理 Azure 存储和 Azure Stack Hub 存储数据。 如果希望通过某种方式轻松管理 Azure Stack Hub 存储数据，请考虑使用 Microsoft Azure 存储资源管理器。
 
-* 若要详细了解如何配置 Azure 存储资源管理器，使之能够用于 Azure Stack，请参阅[将存储资源管理器连接到 Azure Stack 订阅](azure-stack-storage-connect-se.md)。
+* 若要详细了解如何配置 Azure 存储资源管理器，使之能够用于 Azure Stack Hub，请参阅[将存储资源管理器连接到 Azure Stack Hub 订阅](azure-stack-storage-connect-se.md)。
 * 若要详细了解 Microsoft Azure 存储资源管理器，请参阅[存储资源管理器入门](/vs-azure-tools-storage-manage-with-storage-explorer)
 
 ## <a name="blobfuse"></a>Blobfuse 
 
 [Blobfuse](https://github.com/Azure/azure-storage-fuse) 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用于通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Azure Blob 存储是一项对象存储服务，因此没有分层命名空间。 Blobfuse 使用虚拟目录方案提供这种命名空间，并使用正斜杠“`/`”作为分隔符。
 
-对于 Azure Stack，在配置存储帐户凭据时，除了 accountName、accountKey/sasToken、containerName 之外，还需要指定 *blobEndpoint*。
+对于 Azure Stack Hub，在配置存储帐户凭据时，除了 accountName、accountKey/sasToken、containerName 之外，还需要指定 *blobEndpoint*。
 
-在 Azure Stack 开发工具包 (ASDK) 中，*blobEndpoint* 应当为 `myaccount.blob.local.azurestack.external`。 在 Azure Stack 集成系统中，如果不确定你的终结点，请与云管理员联系。
+在 Azure Stack 开发工具包 (ASDK) 中，*blobEndpoint* 应当为 `myaccount.blob.local.azurestack.external`。 在 Azure Stack Hub 集成系统中，如果不确定你的终结点，请与云管理员联系。
 
 *accountKey* 和 *sasToken* 一次只能配置一个。 提供存储帐户密钥时，凭据配置文件采用以下格式：
 
@@ -310,7 +301,7 @@ blobEndpoint myaccount.blob.local.azurestack.external
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将存储资源管理器连接到 Azure Stack 订阅](azure-stack-storage-connect-se.md)
+* [将存储资源管理器连接到 Azure Stack Hub 订阅](azure-stack-storage-connect-se.md)
 * [存储资源管理器入门](/vs-azure-tools-storage-manage-with-storage-explorer)
 * [与 Azure 一致的存储：差异和注意事项](azure-stack-acs-differences.md)
 * [Microsoft Azure 存储简介](/storage/common/storage-introduction)

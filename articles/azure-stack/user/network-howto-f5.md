@@ -1,21 +1,19 @@
 ---
-title: 如何跨两个 Azure Stack Hub 实例部署 F5 | Microsoft Docs
+title: 如何跨两个 Azure Stack Hub 实例部署 F5
 description: 了解如何跨两个 Azure Stack Hub 实例部署 F5。
-services: azure-stack
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 11/06/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: ef7033cf98850bb37f46e8c6a3974edbe1bfd40b
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 0c045c4885856f039c2a036569ac28b8f9bb1f93
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737960"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540879"
 ---
 # <a name="how-to-deploy-f5-across-two-azure-stack-hub-instances"></a>如何跨两个 Azure Stack Hub 实例部署 F5
 
@@ -25,21 +23,21 @@ ms.locfileid: "75737960"
 
 ## <a name="overview-of-load-balancing-with-f5"></a>F5 负载均衡概述
 
-F5 硬件（负载均衡器）可能在 Azure Stack 外部，位于托管 Azure Stack 的数据中心内。 Azure Stack 没有用于跨两个单独的 Azure Stack 部署对工作负载进行负载均衡的本机功能。 F5 的 BIG-IP 虚拟版 (VE) 在两个平台上运行。 此设置通过复制支持应用程序服务来支持 Azure 和 Azure Stack 体系结构之间的奇偶校验。 你可在一个环境中开发应用，然后将其移至另一个环境。 你还可对整个生产就绪的 Azure Stack 执行镜像操作，包括相同的 BIG-IP 配置、策略和应用程序服务。 借助该方法，不再需要进行无数小时的应用程序重构和测试，并能够专注于编写代码。
+F5 硬件（负载均衡器）可能在 Azure Stack Hub 外部，位于托管 Azure Stack Hub 的数据中心内。 Azure Stack Hub 没有用于跨两个单独的 Azure Stack Hub 部署对工作负载进行负载均衡的本机功能。 F5 的 BIG-IP 虚拟版 (VE) 在两个平台上运行。 此设置通过复制支持应用程序服务来支持 Azure 和 Azure Stack Hub 体系结构之间的奇偶校验。 你可在一个环境中开发应用，然后将其移至另一个环境。 你还可对整个生产就绪的 Azure Stack Hub 执行镜像操作，包括相同的 BIG-IP 配置、策略和应用程序服务。 借助该方法，不再需要进行无数小时的应用程序重构和测试，并能够专注于编写代码。
 
-保护应用程序及其数据通常是开发人员在将应用移至公有云时要考虑的问题。 但不一定要这样做。 你可在 Azure Stack 环境中生成应用，而安全架构师则在 F5 的 Web 应用程序防火墙 (WAF) 上配置必要的设置。 因为知道应用程序将受到相同的行业领先 WAF 的保护，所以可在 Azure Stack 中复制整个堆栈。 使用相同的策略和规则集，就不会存在因使用不同的 WAF 而可能会产生的任何安全薄弱环节或漏洞。
+保护应用程序及其数据通常是开发人员在将应用移至公有云时要考虑的问题。 但不一定要这样做。 你可在 Azure Stack Hub 环境中生成应用，而安全架构师则在 F5 的 Web 应用程序防火墙 (WAF) 上配置必要的设置。 因为知道应用程序将受到相同的行业领先 WAF 的保护，所以可在 Azure Stack Hub 中复制整个堆栈。 使用相同的策略和规则集，就不会存在因使用不同的 WAF 而可能会产生的任何安全薄弱环节或漏洞。
 
-Azure Stack 具有独立于 Azure 的市场。 仅可添加特定项目。 在这种情况下，你可在每个 Azure Stack 上创建一个新的资源组并部署已经可用的 F5 虚拟设备。 在此处，你将看到需要提供**公共 IP** 地址用于允许两个 Azure Stack 实例之间的网络连接。 实质上，它们都是孤岛，而**公共 IP** 可让它们在两个位置之间进行通信。
+Azure Stack Hub 具有独立于 Azure 的市场。 仅可添加特定项目。 在这种情况下，你可在每个 Azure Stack Hub 上创建一个新的资源组并部署已经可用的 F5 虚拟设备。 在此处，你将看到需要提供**公共 IP** 地址用于允许两个 Azure Stack Hub 实例之间的网络连接。 实质上，它们都是孤岛，而**公共 IP** 可让它们在两个位置之间进行通信。
 
 ## <a name="prerequisites-for-big-ip-ve"></a>BIG-IP VE 先决条件
 
--  将 **F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)** 下载到每个 Azure Stack 市场中。 如果它们在门户中不可用，请联系云操作员。
+-  将 **F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)** 下载到每个 Azure Stack Hub 市场中。 如果它们在门户中不可用，请联系云操作员。
 
 -  可在以下 GitHub 存储库中找到 Azure 资源管理器模板： https://github.com/Mikej81/f5-azurestack-gslb 。
 
 ## <a name="deploy-f5-big-ip-ve-on-each-instance"></a>在每个实例上部署 F5 BIG-IP VE
 
-部署到 Azure Stack 实例 A 和实例 B。
+部署到 Azure Stack Hub 实例 A 和实例 B。
 
 1. 登录到 Azure Stack Hub 用户门户。
 
@@ -70,20 +68,20 @@ Azure Stack 具有独立于 Azure 的市场。 仅可添加特定项目。 在�
 
 ## <a name="configure-big-ip-appliances"></a>配置 BIG-IP 设备
 
-执行 Azure Stack A 和 B 需要完成的步骤。
+执行 Azure Stack Hub A 和 B 需要完成的步骤。
 
-1. 登录到 Azure Stack 实例 A 上的 Azure Stack Hub 用户门户，查看通过 BIG-IP 模板部署创建的资源。
+1. 登录到 Azure Stack Hub 实例 A 上的 Azure Stack Hub 用户门户，查看通过 BIG-IP 模板部署创建的资源。
 
     ![](./media/network-howto-f5/image18.png)
 
 2. 遵循 F5 上有关 [BIG-IP 配置项](https://clouddocs.f5.com/training/community/dns/html/class1/class1.html)的说明。 
 
-3. 配置 BIG-IP 宽泛 IP 列表以侦听部署到 Azure Stack 实例 A 和 B 的设备。有关说明，请参阅 [BIG-IP GTM 配置](https://techdocs.f5.com/kb/en-us/products/big-ip_gtm/manuals/product/gtm-concepts-11-5-0/4.html)。
+3. 配置 BIG-IP 宽泛 IP 列表以侦听部署到 Azure Stack Hub 实例 A 和 B 的设备。有关说明，请参阅 [BIG-IP GTM 配置](https://techdocs.f5.com/kb/en-us/products/big-ip_gtm/manuals/product/gtm-concepts-11-5-0/4.html)。
 
 
 4. 验证 BIG-IP 设备的故障转移。 在测试系统上，将 DNS 服务器配置为使用以下值：
-    - Azure Stack 实例 A = `f5stack1-ext` 公共 IP 地址
-    - Azure Stack 实例 B = `f5stack1-ext` 公共 IP 地址
+    - Azure Stack Hub 实例 A = `f5stack1-ext` 公共 IP 地址
+    - Azure Stack Hub 实例 B = `f5stack1-ext` 公共 IP 地址
 
 5. 浏览到 `www.contoso.com`，浏览器会加载 NGINX 默认页。
 
@@ -104,7 +102,7 @@ Azure Stack 具有独立于 Azure 的市场。 仅可添加特定项目。 在�
 
 ## <a name="post-install-configurations"></a>安装后配置
 
-安装后，需要配置 Azure Stack NSG 并锁定源 IP 地址。
+安装后，需要配置 Azure Stack Hub NSG 并锁定源 IP 地址。
 
 1. 建立信任后，禁用端口 22。
 
@@ -114,12 +112,12 @@ Azure Stack 具有独立于 Azure 的市场。 仅可添加特定项目。 在�
 
     ![](./media/network-howto-f5/image7.png)
 
-4. 在 Azure Stack 环境中部署基本 Web 应用程序工作负载，以在 BIG-IP 之后进行负载均衡。 可从[在 Docker 上部署 NGINX 和 NGINX Plus](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/) 中找到使用 NGNIX 服务器的示例。
+4. 在 Azure Stack Hub 环境中部署基本 Web 应用程序工作负荷，以在 BIG-IP 之后进行负载均衡。 可从[在 Docker 上部署 NGINX 和 NGINX Plus](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/) 中找到使用 NGNIX 服务器的示例。
 
     > [!Note]  
-    > 在 Azure Stack A 和 Azure Stack B 上部署 NGNIX 实例。
+    > 在 Azure Stack Hub A 和 Azure Stack Hub B 上部署 NGNIX 实例。
 
-5. 在每个 Azure Stack 实例中将 NGINX 部署到 Ubuntu VM 上的 Docker 容器中后，请验证是否可以访问服务器上的默认网页。
+5. 在每个 Azure Stack Hub 实例中将 NGINX 部署到 Ubuntu VM 上的 Docker 容器中后，请验证是否可以访问服务器上的默认网页。
 
     ![](./media/network-howto-f5/image8.png)
 
@@ -196,4 +194,4 @@ Azure Stack 具有独立于 Azure 的市场。 仅可添加特定项目。 在�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure Stack 网络的差异和注意事项](azure-stack-network-differences.md) 
+[Azure Stack Hub 网络的差异和注意事项](azure-stack-network-differences.md) 

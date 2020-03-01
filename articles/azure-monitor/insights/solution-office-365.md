@@ -7,22 +7,84 @@ ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 origin.date: 12/27/2019
-ms.date: 11/30/2019
+ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 85bc607c98f1051aaf6615a4ae223536fe6c2269
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 8b5cf4e2a36505d1aa0bac6a09b702603282f0b8
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600129"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497426"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
 ![Office 365 徽标](media/solution-office-365/icon.png)
 
 
-> [!NOTE]
-> Azure 政府云的用户必须按照本文中的步骤安装 Office 365，因为 Azure Sentinel 在政府云中尚不可用。
+> 
+> Azure Sentinel 是云中原生的安全信息和事件管理解决方案，它可以引入日志并提供附加的 SIEM 功能，包括检测、调查、搜寻和机器学习驱动的见解。 Azure Sentinel 现在可以提供 Office 365 SharePoint 活动和 Exchange 管理日志的引入功能。
+> 
+> 收集 Azure AD 日志需要按 Azure Monitor 定价付费。  有关详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
+
+> ## <a name="frequently-asked-questions"></a>常见问题
+> 
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>问：在当前时间与 4 月 30 日之间是否可以加入 Office 365 Azure Monitor 解决方案？
+> 不可以，Azure Monitor Office 365 解决方案加入脚本不再可用。 我们将在 4 月 30 日删除该解决方案。
+> 
+> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>问：表和架构是否会有更改？
+> **OfficeActivity** 表名称和架构将与当前解决方案相同。 可以继续在新解决方案中使用相同的查询，但不包括引用 Azure AD 数据的查询。
+> 
+> 以下示例将 **OfficeActivity** 中的查询转换为 **SigninLogs**：
+> 
+> **按用户查询失败的登录：**
+> 
+> ```Kusto
+> OfficeActivity
+> | where TimeGenerated >= ago(1d) 
+> | where OfficeWorkload == "AzureActiveDirectory"                      
+> | where Operation == 'UserLoginFailed'
+> | summarize count() by UserId 
+> ```
+> 
+> ```Kusto
+> SigninLogs
+> | where ConditionalAccessStatus == "failure" or ConditionalAccessStatus == "notApplied"
+> | summarize count() by UserDisplayName
+> ```
+> 
+> **查看 Azure AD 操作：**
+> 
+> ```Kusto
+> OfficeActivity
+> | where OfficeWorkload =~ "AzureActiveDirectory"
+> | sort by TimeGenerated desc
+> | summarize AggregatedValue = count() by Operation
+> ```
+> 
+> ```Kusto
+> AuditLogs
+> | summarize count() by OperationName
+> ```
+> 
+> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>问：如何加入 Azure Sentinel？
+> Azure Sentinel 是可以在新的或现有的 Log Analytics 工作区中启用的解决方案。 
+>
+
+> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>问：迁移到新的 Azure AD 报告和监视表时需要做出哪些更改？
+> 使用 Azure AD 数据的所有查询（包括警报、仪表板中的查询）以及使用 Office 365 Azure AD 数据创建的任何内容必须使用新表重新创建。
+>
+> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>问：如何使用 Azure Sentinel 现成的安全导向内容？
+> Azure Sentinel 基于 Office 365 和 Azure AD 日志提供现成的安全导向仪表板、自定义警报查询、搜寻查询、调查和自动响应功能。 请浏览 Azure Sentinel GitHub 和教程了解详细信息：
+>
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>问：4 月 30 日会发生什么情况？ 我是否需要提前卸载现有版本？
+> 
+> - 你将无法从 **Office365** 解决方案接收数据。 该解决方案将不再在市场中提供
+> - 对于 Azure Sentinel 客户，Log Analytics 工作区解决方案 **Office365** 将包含在 Azure Sentinel **SecurityInsights** 解决方案中。
+> - 如果不手动卸载现有解决方案，4 月 30 日数据将自动断开连接。
+> 
+> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>问：我的数据是否会传输到新解决方案？
+> 是的。 从工作区中删除 **Office 365** 解决方案时，其数据将暂时不可用，因为架构已删除。 在 Sentinel 中启用新的 **Office 365** 连接器后，架构将还原到工作区，任何已收集的数据将可用。 
+ 
 
 通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
 
@@ -32,345 +94,6 @@ ms.locfileid: "75600129"
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
 - 通过对组织的 Office 365 活动数据使用[日志查询](../log-query/log-query-overview.md)，执行操作故障排除。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-## <a name="prerequisites"></a>先决条件
-需要以下各项才能安装和配置此解决方案。
-
-- 组织的 Office 365 订阅。
-- 作为全局管理员的用户帐户的凭据。
-- 若要接收审核数据，必须在 Office 365 订阅中[配置审核](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)。  请注意，[邮箱审核](https://technet.microsoft.com/library/dn879651.aspx)单独配置。  若未配置审核，仍可安装解决方案和收集其他数据。
-
-## <a name="install-and-configure"></a>安装和配置
-首先，[将 Office 365 解决方案添加到你的订阅](solutions.md#install-a-monitoring-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
-
-### <a name="required-information"></a>必需的信息
-在开始此过程之前，收集以下信息。
-
-从 Log Analytics 工作区中：
-
-- 工作区名称：将在其中收集 Office 365 数据的工作区。
-- 资源组名称：包含工作区的资源组。
-- Azure 订阅 ID：包含工作区的订阅。
-
-从 Office 365 订阅中：
-
-- 用户名：管理帐户的电子邮件地址。
-- 租户 ID：Office 365 订阅的唯一 ID。
-- 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
-- 客户端密码：进行身份验证所需的已加密字符串。
-
-### <a name="create-an-office-365-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建一个 Office 365 应用程序
-第一步是在 Azure Active Directory 中创建管理解决方案将用来访问 Office 365 解决方案的应用程序。
-
-1. 通过 [https://portal.azure.cn](https://portal.azure.cn/) 登录到 Azure 门户。
-1. 依次选择“Azure Active Directory”和“应用注册”   。
-1. 单击“新建注册”  。
-
-    ![添加应用注册](media/solution-office-365/add-app-registration.png)
-1. 输入应用程序**名称**。 选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”  作为**支持的帐户类型**。
-    
-    ![创建应用程序](media/solution-office-365/create-application.png)
-1. 单击“注册”  并验证应用程序信息。
-
-    ![已注册的应用](media/solution-office-365/registered-app.png)
-
-### <a name="configure-application-for-office-365"></a>为 Office 365 配置应用程序
-
-1. 选择“身份验证”  ，并验证在“支持的帐户类型”  下是否选择了“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”  。
-
-    ![设置多租户](media/solution-office-365/settings-multitenant.png)
-
-1. 选择“API 权限”  ，然后选择“添加权限”  。
-1. 单击“Office 365 管理 API”  。 
-
-    ![选择 API](media/solution-office-365/select-api.png)
-
-1. 在“应用程序需要哪种类型的权限?”  下为**应用程序权限**和**委托的权限**选择以下选项：
-   - 读取组织的服务运行状况信息
-   - 读取组织的活动数据
-   - 读取组织的活动报表
-
-     ![选择 API](media/solution-office-365/select-permissions-01.png)![选择 API](media/solution-office-365/select-permissions-02.png)
-
-1. 单击“添加权限”。 
-1. 单击“授予管理员同意”，然后在要求确认时单击“是”   。
-
-
-### <a name="add-a-secret-for-the-application"></a>为应用程序添加机密
-
-1. 依次选择“证书和机密”、“新建客户端密码”。  
-
-    ![密钥](media/solution-office-365/secret.png)
- 
-1. 键入新密钥的说明和持续时间   。
-1. 单击“添加”  ，然后保存作为客户端密码生成的**值**，以及之前收集的其余信息。
-
-    ![密钥](media/solution-office-365/keys.png)
-
-### <a name="add-admin-consent"></a>添加管理员同意
-若要首次启用管理帐户，必须为应用程序提供管理同意。 可以使用 PowerShell 脚本执行此操作。 
-
-1. 将以下脚本保存为 office365_consent.ps1  。
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,     
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId
-    )
-
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -Environment AzureChinaCloud -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocation
-
-    Function AdminConsent{
-
-    $domain='login.partner.microsoftonline.cn'
-    switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
-           "China North"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
-           "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.partner.microsoftonline.cn'; break}
-           default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
-                    $domain='login.windows-ppe.net'; break} #Int
-        }
-
-        $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
-    }
-
-    AdminConsent -ErrorAction Stop
-    ```
-
-2. 使用以下命令运行该脚本。 系统将提示你两次输入凭据。 首先提供 Log Analytics 工作区的凭据，然后提供 Office 365 租户的全局管理员凭据。
-    ```
-    .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
-    ```
-    示例：
-
-    ```
-    .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
-    ```
-
-1. 将会显示类似于以下窗口的窗口。 单击“接受”  。
-    
-    ![管理员同意](media/solution-office-365/admin-consent.png)
-
-> [!NOTE]
-> 可能会重定向到不存在的页面。 将其视为成功。
-
-### <a name="subscribe-to-log-analytics-workspace"></a>订阅 Log Analytics 工作区
-
-最后一步是让应用程序订阅 Log Analytics 工作区。 也是使用 PowerShell 脚本执行此操作。
-
-1. 将以下脚本保存为 office365_subscription.ps1  。
-
-    ```powershell
-    param (
-        [Parameter(Mandatory=$True)][string]$WorkspaceName,
-        [Parameter(Mandatory=$True)][string]$ResourceGroupName,
-        [Parameter(Mandatory=$True)][string]$SubscriptionId,
-        [Parameter(Mandatory=$True)][string]$OfficeUsername,
-        [Parameter(Mandatory=$True)][string]$OfficeTennantId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientId,
-        [Parameter(Mandatory=$True)][string]$OfficeClientSecret
-    )
-    $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
-    $line
-    IF ($Subscription -eq $null)
-        {Login-AzAccount -Environment AzureChinaCloud -ErrorAction Stop}
-    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
-    $Subscription
-    $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
-    $Workspace
-    $WorkspaceLocation= $Workspace.Location
-    $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
-
-    # Client ID for Azure PowerShell
-    $clientId = "1950a258-227b-4e31-a9cf-717495945fc2"
-    # Set redirect URI for Azure PowerShell
-    $redirectUri = "urn:ietf:wg:oauth:2.0:oob"
-    $domain='login.partner.microsoftonline.cn'
-    $adTenant = $Subscription[0].Tenant.Id
-    $authority = "https://login.chinacloudapi.cn/$adTenant";
-    $ARMResource ="https://management.chinacloudapi.cn/";
-    $xms_client_tenant_Id ='55b65fb5-b825-43b5-8972-c8b6875867c1'
-
-    switch ($WorkspaceLocation) {
-           "USGov Virginia" { 
-                             $domain='login.partner.microsoftonline.cn';
-                              $authority = "https://login.chinacloudapi.cn/$adTenant";
-                              $ARMResource ="https://management.usgovcloudapi.net/"; break} # China Gov Virginia
-           default {
-                    $domain='login.partner.microsoftonline.cn'; 
-                    $authority = "https://login.chinacloudapi.cn/$adTenant";
-                    $ARMResource ="https://management.chinacloudapi.cn/";break} 
-                    }
-
-    Function RESTAPI-Auth { 
-    $global:SubscriptionID = $Subscription.Subscription.Id
-    # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource
-    # Authenticate and Acquire Token 
-    # Create Authentication Context tied to Azure AD Tenant
-    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
-    # Acquire token
-    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
-    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
-    $global:authResultARM.Wait()
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-
-    $authHeader
-    }
-    
-    Function Failure {
-    $line
-    $formatstring = "{0} : {1}`n{2}`n" +
-                    "    + CategoryInfo          : {3}`n" +
-                    "    + FullyQualifiedErrorId : {4}`n"
-    $fields = $_.InvocationInfo.MyCommand.Name,
-              $_.ErrorDetails.Message,
-              $_.InvocationInfo.PositionMessage,
-              $_.CategoryInfo.ToString(),
-              $_.FullyQualifiedErrorId
-    
-    $formatstring -f $fields
-    $_.Exception.Response
-    
-    $line
-    break
-    }
-    
-    Function Connection-API
-    {
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-    $ResourceName = "https://manage.office.com"
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    
-    $line
-    $connectionAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/connections/office365connection_' + $SubscriptionId + $OfficeTennantId + '?api-version=2017-04-26-preview'
-    $connectionAPIUrl
-    $line
-    
-    $xms_client_tenant_Id ='1da8f770-27f4-4351-8cb3-43ee54f14759'
-    
-    $BodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'clientId': '" + $OfficeClientId + "',
-                                    'clientSecret': '" + $OfficeClientSecret + "',
-                                    'Username': '" + $OfficeUsername   + "',
-                                    'Url': 'https://$($domain)/" + $OfficeTennantId + "/oauth2/token',
-                                  },
-                    'etag': '*',
-                    'kind': 'Connection',
-                    'solution': 'Connection',
-                   }"
-    
-    $params = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id #Prod-'1da8f770-27f4-4351-8cb3-43ee54f14759'
-        'Content-Type' = 'application/json'
-        }
-        Body = $BodyString
-        Method = 'Put'
-        URI = $connectionAPIUrl
-    }
-    $response = Invoke-WebRequest @params 
-    $response
-    $line
-    
-    }
-    
-    Function Office-Subscribe-Call{
-    try{
-    #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
-    $SubscriptionId   =  $Subscription[0].Subscription.Id
-    $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
-    
-    $OfficeBodyString = "{
-                    'properties': {
-                                    'AuthProvider':'Office365',
-                                    'office365TenantID': '" + $OfficeTennantId + "',
-                                    'connectionID': 'office365connection_" + $SubscriptionId + $OfficeTennantId + "',
-                                    'office365AdminUsername': '" + $OfficeUsername + "',
-                                    'contentTypes':'Audit.Exchange,Audit.AzureActiveDirectory,Audit.SharePoint'
-                                  },
-                    'etag': '*',
-                    'kind': 'Office365',
-                    'solution': 'Office365',
-                   }"
-    
-    $Officeparams = @{
-        ContentType = 'application/json'
-        Headers = @{
-        'Authorization'="$($authHeader)"
-        'x-ms-client-tenant-id'=$xms_client_tenant_Id
-        'Content-Type' = 'application/json'
-        }
-        Body = $OfficeBodyString
-        Method = 'Put'
-        URI = $OfficeAPIUrl
-      }
-    
-    $officeresponse = Invoke-WebRequest @Officeparams 
-    $officeresponse
-    }
-    catch{ Failure }
-    }
-    
-    #GetDetails 
-    RESTAPI-Auth -ErrorAction Stop
-    Connection-API -ErrorAction Stop
-    Office-Subscribe-Call -ErrorAction Stop
-    ```
-
-2. 使用以下命令运行该脚本：
-
-    ```
-    .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
-    ```
-
-    示例：
-
-    ```powershell
-    .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
-    ```
-
-### <a name="troubleshooting"></a>故障排除
-
-如果应用程序已订阅此工作区或者此租户已订阅另一个工作区，则可能会看到以下错误。
-
-```Output
-Invoke-WebRequest : {"Message":"An error has occurred."}
-At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
-+ $officeresponse = Invoke-WebRequest @Officeparams
-+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebException
-    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand 
-```
-
-如果提供了无效的参数值，则会出现以下错误。
-
-```Output
-Select-AzSubscription : Please provide a valid tenant or a valid subscription.
-At line:12 char:18
-+ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
-
-```
 
 ## <a name="uninstall"></a>卸载
 
@@ -386,11 +109,11 @@ At line:12 char:18
         [Parameter(Mandatory=$True)][string]$OfficeTennantId
     )
     $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
-
+    
     $line
     IF ($Subscription -eq $null)
-        {Login-AzAccount -Environment AzureChinaCloud -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
     $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
@@ -441,7 +164,7 @@ At line:12 char:18
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   = $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_'  + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
-
+    
     $Officeparams = @{
         ContentType = 'application/json'
         Headers = @{
@@ -452,12 +175,12 @@ At line:12 char:18
         Method = 'Delete'
         URI = $OfficeAPIUrl
       }
-
+    
     $officeresponse = Invoke-WebRequest @Officeparams 
     $officeresponse
-
+    
     }
-
+    
     #GetDetails 
     RESTAPI-Auth -ErrorAction Stop
     Office-UnSubscribe-Call -ErrorAction Stop
@@ -478,10 +201,7 @@ At line:12 char:18
 系统将提示你输入凭据。 提供 Log Analytics 工作区的凭据。
 
 ## <a name="data-collection"></a>数据收集
-### <a name="supported-agents"></a>支持的代理
-Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
 
-### <a name="collection-frequency"></a>收集频率
 初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Azure Monitor 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Azure Monitor 中。
 
 ## <a name="using-the-solution"></a>使用解决方案
@@ -511,22 +231,22 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。   OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive  。  RecordType 属性指定操作的类型  。  每种操作类型的属性都不同，详情请见下表。
 
-### <a name="common-properties"></a>通用属性
+### <a name="common-properties"></a>公共属性
 
 以下属性对于所有 Office 365 记录通用。
 
 | 属性 | 说明 |
 |:--- |:--- |
-| Type | OfficeActivity  |
+| 类型 | OfficeActivity  |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
 | OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Operation | 用户或管理员活动的名称。  |
+| 操作 | 用户或管理员活动的名称。  |
 | OrganizationId | 组织的 Office 365 租户的 GUID。 无论发生在哪种 Office 365 服务中，组织中的此值均保持不变。 |
 | RecordType | 所执行操作的类型。 |
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>Application<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
@@ -564,7 +284,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | 所执行操作（由 Operation 属性标识）针对的用户。 |
-| Actor | 执行操作的用户或服务主体。 |
+| 执行组件 | 执行操作的用户或服务主体。 |
 | ActorContextId | 参与者所属的组织的 GUID。 |
 | ActorIpAddress | 采用 IPV4 或 IPV6 地址格式的参与者 IP 地址。 |
 | InterSystemsId | 跨 Office 365 服务内的组件跟踪操作的 GUID。 |
@@ -604,6 +324,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
+
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -615,7 +336,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ClientMachineName | 托管 Outlook 客户端的计算机名称。 |
 | ClientProcessName | 用于访问邮箱的电子邮件客户端。 |
 | ClientVersion | 电子邮件客户端的版本。 |
-| InternalLogonType | 保留供内部使用。 |
+| InternalLogonType | 保留以供内部使用。 |
 | Logon_Type | 表示访问邮箱并执行所记录的操作的用户类型。 |
 | LogonUserDisplayName |    执行操作的用户的用户友好名称。 |
 | LogonUserSid | 执行操作的用户的 SID。 |
@@ -633,7 +354,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Item | 表示对其执行操作的项 | 
+| 项目 | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |
@@ -655,8 +376,8 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | DestMailboxOwnerSid | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定目标邮箱的 SID。 |
 | DestMailboxOwnerUPN | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定的目标邮箱所有者的 UPN。 |
 | DestFolder | 针对“移动”等操作的目标文件夹。 |
-| Folder | 一组项所在的文件夹。 |
-| Folders |     操作中涉及的源文件夹相关信息；例如如果文件夹已选中且随后删除。 |
+| 文件夹 | 一组项所在的文件夹。 |
+| 文件夹 |     操作中涉及的源文件夹相关信息；例如如果文件夹已选中且随后删除。 |
 
 
 ### <a name="sharepoint-base"></a>SharePoint Base
@@ -710,15 +431,15 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 
-## <a name="sample-log-searches"></a>示例日志搜索
-下表提供了此解决方案收集的更新记录的示例日志搜索。
+## <a name="sample-log-queries"></a>示例日志查询
+
+下表提供了此解决方案收集的更新记录的示例日志查询。
 
 | 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
-|文件访问操作数（按用户类型）|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
-|使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
+|文件访问操作数（按用户类型） | OfficeActivity &#124; summarize count() by UserType |
 |监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
 
 

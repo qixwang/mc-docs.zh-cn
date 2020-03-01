@@ -8,41 +8,65 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 62c6878d2949cb60efc3dc773d9f19220e55c7e4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: fbec53ebce418a2ba1a6929ba51042405edeebe2
+ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336518"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77501414"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器问题
 
 在将数据索引到 Azure 认知搜索中时，索引器可能会遇到许多问题。 故障的主要类别包括：
 
-* [连接到数据源](#data-source-connection-errors)
+* [连接到数据源或其他资源](#connection-errors)
 * [文档处理](#document-processing-errors)
 * [目标为索引的文档引入](#index-errors)
 
-## <a name="data-source-connection-errors"></a>数据源连接错误
+## <a name="connection-errors"></a>连接错误
 
-### <a name="blob-storage"></a>Blob 存储
+> [!NOTE]
+> 索引器对访问 Azure 网络安全机制保护的数据源和其他资源提供有限的支持。 目前，索引器只能通过相应的 IP 地址范围限制机制或 NSG 规则（如果适用）访问数据源。 在下面可以找到有关访问每个受支持数据源的详细信息。
+>
+> 可以通过 ping 搜索服务的完全限定的域名（例如 `<your-search-service-name>.search.chinacloudapi.cn`）来查找其 IP 地址。
+>
+> 可以使用[可下载的 JSON 文件](https://docs.azure.cn/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](https://docs.azure.cn/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) 找到 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 
-#### <a name="storage-account-firewall"></a>存储帐户防火墙
+### <a name="configure-firewall-rules"></a>配置防火墙规则
 
-Azure 存储提供可配置的防火墙。 默认情况下，防火墙处于禁用状态，因此 Azure 认知搜索可以连接到存储帐户。
+Azure 存储、CosmosDB 和 Azure SQL 提供可配置的防火墙。 防火墙启用后，没有具体的错误消息。 通常，防火墙错误是泛性的，类似于 `The remote server returned an error: (403) Forbidden` 或 `Credentials provided in the connection string are invalid or have expired`。
 
-防火墙启用后，没有具体的错误消息。 通常情况下，防火墙错误类似于：`The remote server returned an error: (403) Forbidden`。
+有 2 个选项可让索引器访问此类实例中的这些资源：
 
-可以在[门户](https://docs.azure.cn/storage/common/storage-network-security#azure-portal)中验证防火墙是否已启用。 唯一支持的解决方法是通过选择允许从[“所有网络”](https://docs.azure.cn/storage/common/storage-network-security#azure-portal)访问来禁用防火墙。
+* 通过允许从**所有网络**进行访问（如果可行）来禁用防火墙。
+* 或者，可以允许搜索服务的 IP 地址以及资源防火墙规则中 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围进行访问（IP 地址范围限制）。
 
-<!-- If your indexer does not have an attached skillset, you _may_ attempt to [add an exception](https://docs.azure.cn/storage/common/storage-network-security#managing-ip-network-rules) for the IP addresses of your search service. However, this scenario is not supported and is not guaranteed to work. -->
+在以下链接中可以找到有关对每种数据源类型配置 IP 地址范围限制的详细信息：
 
-可以通过 ping 搜索服务的 FQDN (`<your-search-service-name>.search.chinacloudapi.cn`) 来查找其 IP 地址。
+* [Azure 存储](https://docs.azure.cn/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-### <a name="cosmos-db"></a>Cosmos DB
+* [Cosmos DB](https://docs.azure.cn/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-#### <a name="indexing-isnt-enabled"></a>索引未启用
+* [Azure SQL](https://docs.azure.cn/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+
+**限制**：如 Azure 存储的以上文档中所述，仅当搜索服务和存储帐户位于不同的区域时，IP 地址范围限制才起作用。
+
+Azure Functions 还支持[IP 地址限制](https://docs.azure.cn/azure-functions/ip-addresses#ip-address-restrictions)。 要配置的 IP 地址列表是搜索服务的 IP 地址，以及 `AzureCognitiveSearch` 服务标记的 IP 地址范围。
+
+[此文](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)提供了有关访问 Azure VM 上 SQL 服务器中的数据的详细信息
+
+### <a name="configure-network-security-group-nsg-rules"></a>配置网络安全组 (NSG) 规则
+
+访问 SQL 托管实例中的数据时，客户无需考虑特定的 IP 地址。
+
+在这种情况下，可将 Azure VM 或 SQL 托管实例配置为驻留在虚拟网络中。 然后可以配置一个网络安全组，来筛选可流入和流出虚拟网络子网与网络接口的网络流量类型。
+
+可以在入站 [NSG](https://docs.azure.cn/virtual-network/manage-network-security-group#work-with-security-rules) 规则中直接使用 `AzureCognitiveSearch` 服务标记，而无需查找其 IP 地址范围。
+
+[此文](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)提供了有关访问 SQL 托管实例中的数据的更多详细信息
+
+### <a name="cosmosdb-indexing-isnt-enabled"></a>未启用 CosmosDB“索引编制”
 
 Azure 认知搜索对 Cosmos DB 索引存在隐式依赖。 如果在 Cosmos DB 中关闭自动索引，Azure 认知搜索会返回成功状态，但无法索引容器内容。 有关如何查看设置和启用索引功能的说明，请参阅[管理 Azure Cosmos DB 中的索引编制](https://docs.azure.cn/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal)。
 

@@ -1,46 +1,37 @@
 ---
-title: Azure Stack 的标识提供者概述 | Microsoft Docs
-description: 了解可与 Azure Stack 配合使用的标识提供者。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub 的标识提供者概述
+description: 了解可与 Azure Stack Hub 配合使用的标识提供者。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 06ec8f393f5b90294ac7678a5f86516c02dc26a7
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: f8366790732fe32cb9fbccca095710241bbaa67d
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020239"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540935"
 ---
-# <a name="overview-of-identity-providers-for-azure-stack"></a>Azure Stack 的标识提供者概述
+# <a name="overview-of-identity-providers-for-azure-stack-hub"></a>Azure Stack Hub 的标识提供者概述
 
-Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者。 提供者的选择是首次部署 Azure Stack 时做出的一次性决定。 本文中的概念和授权详细信息可帮助你选择适当的标识提供者。
+Azure Stack Hub 要求使用 Active Directory 所支持的 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者。 提供者的选择是首次部署 Azure Stack Hub 时做出的一次性决定。 本文中的概念和授权详细信息可帮助你选择适当的标识提供者。
 
-选择 Azure AD 还是 AD FS 取决于 Azure Stack 的部署模式：
+选择 Azure AD 还是 AD FS 取决于 Azure Stack Hub 的部署模式：
 
 - 在连接模式下部署时，可以使用 Azure AD 或 AD FS。
 - 在未建立 Internet 连接的离线模式下部署时，仅支持 AD FS。
 
-若要详细了解依赖于 Azure Stack 环境的选项，请参阅以下文章：
+若要详细了解依赖于 Azure Stack Hub 环境的选项，请参阅以下文章：
 
-- Azure Stack 部署工具包：[标识注意事项](azure-stack-datacenter-integration.md#identity-considerations)。
-- Azure Stack 集成系统：[Azure Stack 集成系统的部署规划决策](azure-stack-connection-models.md)。
+- Azure Stack Hub 部署工具包：[标识注意事项](azure-stack-datacenter-integration.md#identity-considerations)。
+- Azure Stack Hub 集成系统：[Azure Stack Hub 集成系统的部署规划决策](azure-stack-connection-models.md)。
 
 ## <a name="common-concepts-for-identity-providers"></a>标识提供者的一般概念
 
-后续部分介绍标识提供者的一般概念及其在 Azure Stack 中的用法。
+后续部分介绍标识提供者的一般概念及其在 Azure Stack Hub 中的用法。
 
 ![标识提供者的术语](media/azure-stack-identity-overview/terminology.png)
 
@@ -59,14 +50,14 @@ Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (A
 
 创建和管理用户与组的方式取决于所用的标识解决方案。
 
-在 Azure Stack 中，用户帐户：
+在 Azure Stack Hub 中，用户帐户：
 
 - 以 *username\@domain* 格式创建。 尽管 AD FS 可将用户帐户映射到 Active Directory 实例，但 AD FS 不支持使用 *\\\<域>\\\<别名>* 格式。
 - 可以设置为使用多重身份验证。
 - 限制为它们首先注册到的目录，即其组织的目录。
 - 可从本地目录导入。 如需详细信息，请参阅[将本地目录与 Azure Active Directory 集成](/active-directory/connect/active-directory-aadconnect)。 
 
-登录到组织的租户门户时，请使用 *https:\//portal.local.azurestack.external* URL。 从用于注册 Azure Stack 的域以外的域登录 Azure Stack 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack 已注册到 fabrikam.partner.onmschina.cn 并且登录的用户帐户为 admin@contoso.com，则用于登录用户门户的 URL 将为 https:\//portal.local.azurestack.external/fabrikam.partner.onmschina.cn。
+登录到组织的用户门户时，请使用 *https:\//portal.local.azurestack.external* URL。 从用于注册 Azure Stack Hub 的域以外的域登录 Azure Stack Hub 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack Hub 已注册到 fabrikam.partner.onmschina.cn 并且登录的用户帐户为 admin@contoso.com，则用于登录用户门户的 URL 将为 https:\//portal.local.azurestack.external/fabrikam.partner.onmschina.cn。
 
 ### <a name="guest-users"></a>来宾用户
 
@@ -106,7 +97,7 @@ Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (A
 
 ### <a name="service-principals"></a>服务主体
 
-服务主体是应用或服务的一组凭据，可授予 Azure Stack 中资源的访问权限。  使用服务主体可将应用权限与应用用户权限区分开来。
+服务主体是应用或服务的一组凭据，可授予 Azure Stack Hub 中资源的访问权限。  使用服务主体可将应用权限与应用用户权限区分开来。
 
 服务主体是在使用应用的每个租户中创建的。 服务主体建立的标识用于登录和访问受该租户保护的资源（例如用户）。
 
@@ -116,21 +107,21 @@ Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (A
 服务主体的凭据可以是通过 Azure 门户生成的密钥，也可以是证书。 证书的使用很适合自动化，因为证书被视为比密钥更安全。
 
 > [!NOTE]
-> 在 Azure Stack 中使用 AD FS 时，只有管理员可以创建服务主体。 使用 AD FS 时，服务主体需要证书，并需要通过特权终结点 (PEP) 来创建。 有关详细信息，请参阅[使用应用标识访问资源](azure-stack-create-service-principals.md)。
+> 在 Azure Stack Hub 中使用 AD FS 时，只有管理员可以创建服务主体。 使用 AD FS 时，服务主体需要证书，并需要通过特权终结点 (PEP) 来创建。 有关详细信息，请参阅[使用应用标识访问资源](azure-stack-create-service-principals.md)。
 
-若要了解 Azure Stack 的服务主体，请参阅[创建服务主体](azure-stack-create-service-principals.md)。
+若要了解 Azure Stack Hub 的服务主体，请参阅[创建服务主体](azure-stack-create-service-principals.md)。
 
 ### <a name="services"></a>服务
 
-Azure Stack 中与标识提供者交互的服务，标识提供者将其注册为应用。 如同应用，注册可让服务在标识系统中进行身份验证。
+Azure Stack Hub 中与标识提供者交互的服务将作为应用注册到标识提供者。 如同应用，注册可让服务在标识系统中进行身份验证。
 
 所有 Azure 服务都使用 [OpenID Connect](/active-directory/develop/active-directory-protocols-openid-connect-code) 协议和 [JSON Web 令牌](/active-directory/develop/active-directory-token-and-claims)来建立其标识。 由于 Azure AD 和 AD FS 使用的协议一致，因此可以使用 [Azure Active Directory 身份验证库](/active-directory/develop/active-directory-authentication-libraries) (ADAL) 在本地环境或 Azure 中进行身份验证（在联网场景中）。 还可以通过 ADAL 使用 Azure PowerShell 和 Azure CLI 等工具进行跨云的和本地的资源管理。 
 
 ### <a name="identities-and-your-identity-system"></a>标识和标识系统
 
-Azure Stack 的标识包括用户帐户、组和服务主体。
+Azure Stack Hub 的标识包括用户帐户、组和服务主体。
 
-当安装 Azure Stack 时，有多个内置应用和服务在目录租户中自动向标识提供者注册。 有些注册的服务用于管理。 还有些服务供用户使用。 默认注册提供核心服务标识，此类标识可彼此交互，以及与今后添加的标识交互。
+安装 Azure Stack Hub 时，有多个内置应用和服务在目录租户中自动向标识提供者注册。 有些注册的服务用于管理。 还有些服务供用户使用。 默认注册提供核心服务标识，此类标识可彼此交互，以及与今后添加的标识交互。
 
 如果设置采用多租户的 Azure AD，则有些应用会传播到新的目录。
 
@@ -138,16 +129,16 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 
 ### <a name="authentication-by-apps-and-users"></a>按应用和用户进行身份验证
 
-![Azure Stack 层之间的标识](media/azure-stack-identity-overview/identity-layers.png)
+![Azure Stack Hub 层之间的标识](media/azure-stack-identity-overview/identity-layers.png)
 
-对应用和用户而言，Azure Stack 的体系结构可以用四个层来描述。 各层之间的交互可以使用不同类型的身份验证。
+对应用和用户而言，Azure Stack Hub 的体系结构可以用四个层来描述。 各层之间的交互可以使用不同类型的身份验证。
 
 |层    |各层之间的身份验证  |
 |---------|---------|
-|工具与客户端，例如管理员门户     | 为了访问或修改 Azure Stack 中的资源，工具和客户端将使用 [JSON Web 令牌](/active-directory/develop/active-directory-token-and-claims)来调用 Azure 资源管理器。 <br>Azure 资源管理器验证 JSON Web 令牌并扫视所颁发令牌中的声明，以评估用户或服务主体在 Azure Stack 中的授权级别。  |
+|工具与客户端，例如管理员门户     | 为了访问或修改 Azure Stack Hub 中的资源，工具和客户端将使用 [JSON Web 令牌](/active-directory/develop/active-directory-token-and-claims)来调用 Azure 资源管理器。 <br>Azure 资源管理器验证 JSON Web 令牌并扫视所颁发令牌中的声明，以评估用户或服务主体在 Azure Stack Hub 中的授权级别。  |
 |Azure 资源管理器及其核心服务     |Azure 资源管理器与资源提供程序通信，以传输用户的通信。 <br> 传输通过 [Azure 资源管理器模板](/azure-stack/user/azure-stack-arm-templates)使用直接命令式调用或声明式调用。  |
 |资源提供程序     |传递给资源提供程序的调用通过基于证书的身份验证进行保护。 <br>随后，Azure 资源管理器和资源提供程序持续通过 API 通信。 对于从 Azure 资源管理器 收到的每个调用，资源提供程序使用该证书来验证调用。|
-|基础结构和业务逻辑     |资源提供程序使用所选的身份验证模式与业务逻辑和基础结构通信。 Azure Stack 随附的默认资源提供程序使用 Windows 身份验证来保护此通信。|
+|基础结构和业务逻辑     |资源提供程序使用所选的身份验证模式与业务逻辑和基础结构通信。 Azure Stack Hub 随附的默认资源提供程序使用 Windows 身份验证来保护此通信。|
 
 ![身份验证所需的信息](media/azure-stack-identity-overview/authentication.png)
 
@@ -156,7 +147,7 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 若要在标识提供者中进行身份验证并接收 JSON Web 令牌，必须提供以下信息：
 
 1. **标识系统（颁发机构）的 URL**：可用于访问标识提供者的 URL。 例如，*https:\//login.chinacloudapi.cn*。 
-2. **Azure 资源管理器的应用 ID URI**：已向标识提供者注册的 Azure 资源管理器的唯一标识符， 也是每个 Azure Stack 安装中的唯一标识符。
+2. **Azure 资源管理器的应用 ID URI**：已向标识提供者注册的 Azure 资源管理器的唯一标识符， 也是每个 Azure Stack Hub 安装中的唯一标识符。
 3. **凭据**：用于在标识提供者中进行身份验证的凭据。
 4. **Azure 资源管理器 的 URL**：该 URL 是 Azure 资源管理器服务的位置。 例如，*https:\//management.chinacloudapi.cn* 或 *https:\//management.local.azurestack.external*。
 
@@ -183,20 +174,20 @@ Azure Stack 的标识包括用户帐户、组和服务主体。
 
 ### <a name="use-role-based-access-control"></a>使用基于角色的访问控制
 
-Azure Stack 中基于角色的访问控制 (RBAC) 与 Azure 中的实现一致。 可以通过将相应的 RBAC 角色分配给用户、组和应用，来管理资源访问权限。 有关如何在 Azure Stack 中使用 RBAC 的信息，请参阅以下文章：
+Azure Stack Hub 中基于角色的访问控制 (RBAC) 与 Azure 中的实现一致。 可以通过将相应的 RBAC 角色分配给用户、组和应用，来管理资源访问权限。 有关如何在 Azure Stack Hub 中使用 RBAC 的信息，请参阅以下文章：
 
 - [Azure 门户中基于角色的访问控制入门](/role-based-access-control/overview)。
 - [使用基于角色的访问控制管理 Azure 订阅资源的访问权限](/role-based-access-control/role-assignments-portal)
 - [创建用于 Azure 基于角色的访问控制的自定义角色](/role-based-access-control/custom-roles)
-- 在 Azure Stack 中[管理基于角色的访问控制](azure-stack-manage-permissions.md)。
+- 在 Azure Stack Hub 中[管理基于角色的访问控制](azure-stack-manage-permissions.md)。
 
 ### <a name="authenticate-with-azure-powershell"></a>使用 Azure PowerShell 进行身份验证
 
-有关使用 Azure PowerShell 在 Azure Stack 中进行身份验证的详细信息，请参阅[配置 Azure Stack 用户的 PowerShell 环境](../user/azure-stack-powershell-configure-user.md)。
+有关使用 Azure PowerShell 在 Azure Stack Hub 中进行身份验证的详细信息，请参阅[配置 Azure Stack Hub 用户的 PowerShell 环境](../user/azure-stack-powershell-configure-user.md)。
 
 ### <a name="authenticate-with-azure-cli"></a>使用 Azure CLI 进行身份验证
 
-有关使用 Azure PowerShell 在 Azure Stack 中进行身份验证的信息，请参阅[安装和配置与 Azure Stack 配合使用的 Azure CLI](/azure-stack/user/azure-stack-version-profiles-azurecli2)。
+有关使用 Azure PowerShell 在 Azure Stack Hub 中进行身份验证的信息，请参阅[安装和配置与 Azure Stack Hub 配合使用的 Azure CLI](/azure-stack/user/azure-stack-version-profiles-azurecli2)。
 
 ## <a name="next-steps"></a>后续步骤
 

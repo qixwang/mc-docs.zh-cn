@@ -1,6 +1,6 @@
 ---
-title: 表达式中函数的参考指南 - Azure 逻辑应用
-description: Azure 逻辑应用和 Microsoft Flow 的表达式中的函数参考指南
+title: 表达式中函数的参考指南
+description: Azure 逻辑应用和 Power Automate 的表达式中的函数参考指南
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,21 +8,21 @@ author: ecfan
 ms.author: v-yiso
 ms.reviewer: klam, LADocs
 ms.topic: reference
-origin.date: 08/23/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 7974fc3ac395ff4d749dc926c15ba3632cbcf6dd
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+origin.date: 02/03/2020
+ms.date: 02/24/2020
+ms.openlocfilehash: 4d3732f6a3abf67905b3949815dedb306852cd5a
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425770"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428881"
 ---
-# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>使用 Azure 逻辑应用和 Microsoft Flow 的表达式中的函数的参考指南
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
-就 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) 中的工作流定义来说，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)获取的值来自运行时操作，而这些运行时操作在你的工作流开始运行时可能尚未存在。 若要在这些表达式中引用或处理这些值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数  。 
+对于 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Power Automate](https://docs.microsoft.com/flow/getting-started) 中的工作流定义，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)获取的值来自运行时操作，而这些运行时操作在工作流开始运行时可能尚不存在。 若要在这些表达式中引用或处理这些值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数  。 
 
 > [!NOTE]
-> 此引用页面适用于 Azure 逻辑应用和 Microsoft Flow，但会显示在 Azure 逻辑应用文档中。 虽然此页面专门引用逻辑应用，但这些函数适用于流和逻辑应用。 有关 Microsoft Flow 中函数和表达式的详细信息，请参阅[在条件中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
+> 本参考页适用于 Azure 逻辑应用和 Power Automate，但显示在 Azure 逻辑应用文档中。 虽然此页面专门引用逻辑应用，但这些函数适用于流和逻辑应用。 有关 Power Automate 中函数和表达式的详细信息，请参阅[在条件中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
 
 例如，在需要根据整数或浮点数求和时，可以使用数学函数（例如 [add() 函数](../logic-apps/workflow-definition-language-functions-reference.md#add)）来计算值。 下面是可以使用函数执行的其他示例任务：
 
@@ -82,6 +82,7 @@ ms.locfileid: "73425770"
 | --------------- | ---- | 
 | [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | 组合两个或更多字符串，并返回组合后的字符串。 | 
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | 检查字符串是否以指定的子字符串结尾。 | 
+| [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | 根据指定的格式以字符串形式返回一个数字 |
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 生成字符串形式的全局唯一标识符 (GUID)。 | 
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 返回子字符串的起始位置。 | 
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 返回最后一次出现的子字符串的起始位置。 | 
@@ -159,7 +160,7 @@ ms.locfileid: "73425770"
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | 返回输入值的浮点数。 | 
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | 返回字符串的整数版本。 | 
 | [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | 返回字符串或 XML 的 JavaScript 对象表示法 (JSON) 类型的值或对象。 | 
-| [字符串](../logic-apps/workflow-definition-language-functions-reference.md#string) | 返回输入值的字符串版本。 | 
+| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | 返回输入值的字符串版本。 | 
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | 通过将 URL 不安全字符替换为转义字符来返回输入值的 URI 编码版本。 | 
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | 返回 URI 编码字符串的二进制版本。 | 
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | 返回 URI 编码字符串的字符串版本。 | 
@@ -174,7 +175,7 @@ ms.locfileid: "73425770"
 
 | 数学函数 | 任务 | 
 | ------------- | ---- | 
-| [添加](../logic-apps/workflow-definition-language-functions-reference.md#add) | 返回两个数字相加的结果。 | 
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | 返回两个数字相加的结果。 | 
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | 返回两个数字相除的结果。 | 
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | 返回一组数字或数组中的最大值。 | 
 | [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | 返回一组数字或数组中的最小值。 | 
@@ -198,7 +199,7 @@ ms.locfileid: "73425770"
 | [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | 将小时数加到时间戳。 | 
 | [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | 将分钟数加到时间戳。 | 
 | [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | 将秒数加到时间戳。 |  
-| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | 将时间单位数加到时间戳。 另请参阅 [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime)。 | 
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | 将一定数目的时间单位加到时间戳。 另请参阅 [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime)。 | 
 | [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | 将时间戳从协调世界时 (UTC) 转换为目标时区。 | 
 | [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | 将时间戳从源时区转换为目标时区。 | 
 | [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | 将时间戳从源时区转换为协调世界时 (UTC)。 | 
@@ -208,10 +209,10 @@ ms.locfileid: "73425770"
 | [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | 返回时间戳中的日期。 | 
 | [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | 返回当前时间戳加上指定的时间单位。 另请参阅 [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime)。 | 
 | [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | 返回当前时间戳减去指定的时间单位。 另请参阅 [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime)。 | 
-| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | 返回时间戳的日期起始位置。 | 
-| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | 返回时间戳的小时起始位置。 | 
-| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | 返回时间戳的月份起始位置。 | 
-| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | 从时间戳中减去时间单位数。 另请参阅 [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime)。 | 
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | 返回时间戳中的天的开始时间。 | 
+| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | 返回时间戳中的小时的开始时间。 | 
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | 返回时间戳中的月份的开始时间。 | 
+| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | 从时间戳中减去一定数目的时间单位。 另请参阅 [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime)。 | 
 | [ticks](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | 返回指定时间戳的 `ticks` 属性值。 | 
 | [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | 返回字符串形式的当前时间戳。 | 
 ||| 
@@ -243,7 +244,7 @@ ms.locfileid: "73425770"
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | 返回调用某个触发器或操作的“回调 URL”。 | 
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 | 
 | [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 返回操作在运行时的输出。 |
-| [参数](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中描述的参数的值。 |
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中描述的参数的值。 |
 | [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | 返回指定的范围受限操作（例如 `For_each`、`Until` 和 `Scope`）中所有操作的输入和输出。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 | 
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 | 
@@ -252,7 +253,7 @@ ms.locfileid: "73425770"
 | [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | 创建一个数组，该数组的值与表单数据或表单编码触发器输出中某个键名匹配。   | 
 | [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的值。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 | 
 | [variables](../logic-apps/workflow-definition-language-functions-reference.md#variables) | 返回指定变量的值。 | 
-| [workflow](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | 返回有关运行时期间工作流本身的所有详细信息。 | 
+| [workflow](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | 返回运行期间有关工作流本身的所有详细信息。 | 
 ||| 
 
 <a name="uri-parsing-functions"></a>
@@ -464,7 +465,7 @@ actions('Get_user').outputs.body.status
 
 <a name="add"></a>
 
-### <a name="add"></a>添加
+### <a name="add"></a>add
 
 返回两个数字相加的结果。
 
@@ -804,7 +805,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 <a name="and"></a>
 
-### <a name="and"></a>和
+### <a name="and"></a>and
 
 检查所有表达式是否为 true。 当所有表达式均为 true 时返回 true，当至少一个表达式为 false 时返回 false。
 
@@ -1210,7 +1211,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | 参数 | 必须 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 | 
-| <*destinationTimeZone*> | 是 | String | 目标时区的名称。 有关时区名称的详细信息，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
+| <*destinationTimeZone*> | 是 | String | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 ||||| 
 
@@ -1252,8 +1253,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | 参数 | 必须 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 | 
-| <*sourceTimeZone*> | 是 | String | 源时区的名称。 有关时区名称的详细信息，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
-| <*destinationTimeZone*> | 是 | String | 目标时区的名称。 有关时区名称的详细信息，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
+| <*sourceTimeZone*> | 是 | String | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
+| <*destinationTimeZone*> | 是 | String | 目标时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 ||||| 
 
@@ -1295,7 +1296,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | 参数 | 必须 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | 是 | String | 包含时间戳的字符串 | 
-| <*sourceTimeZone*> | 是 | String | 源时区的名称。 有关时区名称的详细信息，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)。 |
+| <*sourceTimeZone*> | 是 | String | 源时区的名称。 有关时区名称，请参阅 [Microsoft 时区索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但你可能需要删除时区名称中的任何标点。 |
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 |
 ||||| 
 
@@ -1786,7 +1787,7 @@ equals('<object1>', '<object2>')
 
 | 参数 | 必须 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
-| <*object1*>, <*object2*> | 是 | 各种 | 要比较的值、表达式或对象 | 
+| <*object1*>, <*object2*> | 是 | 各种各样 | 要比较的值、表达式或对象 | 
 ||||| 
 
 | 返回值 | 类型 | 说明 | 
@@ -1967,6 +1968,60 @@ formDataValue('Send_an_email', 'Subject')
 
 并以字符串形式返回主题文本，例如：`"Hello world"`
 
+<a name="formatNumber"></a>
+
+### <a name="formatnumber"></a>formatNumber
+
+根据指定的格式以字符串形式返回一个数字。
+
+```text
+formatNumber(<number>, <format>, <locale>?)
+```
+
+| 参数 | 必须 | 类型 | 说明 |
+| --------- | -------- | ---- | ----------- |
+| <*number*> | 是 | 整数或双精度 | 要设置格式的值。 |
+| <*format*> | 是 | String | 一个复合格式字符串，指定要使用的格式。 有关支持的数字格式字符串，请参阅 `number.ToString(<format>, <locale>)` 支持的[标准数字格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings)。 |
+| <*locale*> | 否 | String | 要使用的受 `number.ToString(<format>, <locale>)` 支持的区域设置。 如果未指定，默认值为 `en-us`。 |
+|||||
+
+| 返回值 | 类型 | 说明 |
+| ------------ | ---- | ----------- |
+| <*formatted-number*> | String | 以字符串形式指定的数字，采用指定的格式。 可将此返回值强制转换为 `int` 或 `float`。 |
+||||
+
+*示例 1*
+
+假设你要设置数字 `1234567890` 的格式。 此示例将该数字的格式设置为字符串“1,234,567,890.00”。
+
+```
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
+```
+
+示例 2
+
+假设你要设置数字 `1234567890` 的格式。 此示例将该数字的格式设置为字符串“1.234.567.890,00”。
+
+```
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
+```
+
+*示例 3*
+
+假设你要设置数字 `17.35` 的格式。 此示例将该数字的格式设置为字符串“$17.35”。
+
+```
+formatNumber(17.36, 'C2')
+```
+
+*示例 4*
+
+假设你要设置数字 `17.35` 的格式。 此示例将该数字的格式设置为字符串“17,35 kr”。
+
+```
+formatNumber(17.36, 'C2', 'is-is')
+```
+
 <a name="getFutureTime"></a>
 
 ### <a name="getfuturetime"></a>getFutureTime
@@ -1979,7 +2034,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | 参数 | 必须 | 类型 | 说明 | 
 | --------- | -------- | ---- | ----------- | 
-| <*间隔*> | 是 | Integer | 要减去的指定时间单位数 | 
+| <*间隔*> | 是 | Integer | 要添加的指定时间单位数 |
 | <*timeUnit*> | 是 | String | 间隔  使用的时间单位：“秒”、“分钟”、“小时”、“日”、“周”、“月”、“年” | 
 | <*format*> | 否 | String | [单一格式的说明符](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式的模式](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 时间戳的默认格式为[“o”](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)(yyyy-MM-ddT:mm:ss:fffffffK)，这符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 标准并保留了时区信息。 | 
 ||||| 
@@ -3259,7 +3314,7 @@ removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "A
 
 <a name="result"></a>
 
-### <a name="result"></a>结果
+### <a name="result"></a>result
 
 返回指定的范围受限操作（例如 `For_each`、`Until` 或 `Scope` 操作）中所有操作的输入和输出。 此函数用于从失败的操作中返回结果，方便你诊断和处理异常。 有关详细信息，请参阅[获取失败的上下文和结果](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)。
 
@@ -3930,7 +3985,7 @@ toUpper('Hello World')
 
 <a name="trigger"></a>
 
-### <a name="trigger"></a>trigger
+### <a name="trigger"></a>触发器
 
 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的值，可以将其分配给表达式。 
 
@@ -4604,15 +4659,27 @@ xpath('<xml>', '<xpath>')
 
 *示例 3*
 
-对于此示例，两个表达式都查找与指定参数（其中通过命名空间包括了 XML）中的 `<location></location>` 节点匹配的节点。 表达式使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。
+对于此示例，两个表达式都查找与指定参数（其中通过命名空间包括了 XML）中的 `<location></location>` 节点匹配的节点。 
+
+> [!NOTE]
+>
+> 如果在代码视图中操作，请使用反斜杠字符 (\\) 来转义双引号 (")。 
+> 例如，将表达式序列化为 JSON 字符串时，需要使用转义符。 
+> 但是，如果在逻辑应用设计器或表达式编辑器中操作，则无需转义双引号，因为反斜杠字符会自动添加到基础定义，例如：
+> 
+> * 代码视图：`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+>
+> * 表达式编辑器：`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> 
+> 以下示例适用于在表达式编辑器中输入的表达式。
 
 * *表达式 1*
 
-  `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+  `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
 * *表达式 2* 
 
-  `xpath(xml(body('Http')), '/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]')`
+  `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
 
 下面是参数：
 
@@ -4624,9 +4691,9 @@ xpath('<xml>', '<xpath>')
 
 * 以下任一 XPath 表达式：
 
-  * `/*[name()=\"file\"]/*[name()=\"location\"]`
+  * `/*[name()="file"]/*[name()="location"]`
 
-  * `/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]`
+  * `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]`
 
 下面是与 `<location></location>` 节点匹配的结果节点：
 
@@ -4638,7 +4705,7 @@ xpath('<xml>', '<xpath>')
 
 在示例 3 的基础上，此示例在 `<location></location>` 节点中查找值： 
 
-`xpath(xml(body('Http')), 'string(/*[name()=\"file\"]/*[name()=\"location\"])')`
+`xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
 并返回以下结果：`"Paris"`
 

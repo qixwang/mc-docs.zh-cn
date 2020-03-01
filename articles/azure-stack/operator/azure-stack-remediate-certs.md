@@ -1,33 +1,24 @@
 ---
 title: 解决 PKI 证书的常见问题
-titleSuffix: Azure Stack
-description: 使用 Azure Stack 就绪性检查器解决 Azure Stack PKI 证书的常见问题。
-services: azure-stack
-documentationcenter: ''
+titleSuffix: Azure Stack Hub
+description: 使用 Azure Stack Hub 就绪性检查器解决 Azure Stack Hub PKI 证书的常见问题。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 10/03/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 87b576b1852005207e0ebebbc7995015b90e9727
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.openlocfilehash: 20cb014eaa94b35afa7bb8dbb972dd26f135e5de
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75737804"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540338"
 ---
-# <a name="fix-common-issues-with-azure-stack-pki-certificates"></a>解决 Azure Stack PKI 证书的常见问题
+# <a name="fix-common-issues-with-azure-stack-hub-pki-certificates"></a>解决 Azure Stack Hub PKI 证书的常见问题
 
-可以通过本文中的信息来了解并解决 Azure Stack PKI 证书的常见问题。 可以使用 Azure Stack 就绪性检查器工具来[验证 Azure Stack PKI 证书](azure-stack-validate-pki-certs.md)，以便发现问题。 该工具先检查证书是否满足 Azure Stack 部署和 Azure Stack 机密轮换的 PKI 要求，然后将结果记录到 [report.json 文件](azure-stack-validation-report.md)。  
+可以通过本文中的信息来了解并解决 Azure Stack Hub PKI 证书的常见问题。 使用 Azure Stack Hub 就绪性检查器工具[验证 Azure Stack Hub PKI 证书](azure-stack-validate-pki-certs.md)时，可以发现问题。 该工具先检查证书是否满足 Azure Stack Hub 部署和 Azure Stack Hub 机密轮换的 PKI 要求，然后将结果记录到 [report.json 文件](azure-stack-validation-report.md)。  
 
 ## <a name="pfx-encryption"></a>PFX 加密
 
@@ -43,55 +34,55 @@ ms.locfileid: "75737804"
 
 **问题** - PFX 文件无效。  
 
-**修复** - 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤重新导出证书。
+**修复** - 使用[准备用于部署的 Azure Stack Hub PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤重新导出证书。
 
 ## <a name="signature-algorithm"></a>签名算法
 
 **问题** - 签名算法为 SHA1。
 
-**修复** - 执行“生成 Azure Stack 证书签名请求”中的步骤，使用签名算法 SHA256 重新生成证书签名请求 (CSR)。 然后向证书颁发机构重新提交 CSR，要求其重新颁发证书。
+**修复** - 执行“生成 Azure Stack Hub 证书签名请求”中的步骤，使用签名算法 SHA256 重新生成证书签名请求 (CSR)。 然后向证书颁发机构重新提交 CSR，要求其重新颁发证书。
 
 ## <a name="private-key"></a>私钥
 
 **问题** - 私钥缺失或者不包含本地计算机属性。  
 
-**修复** - 在生成 CSR 的计算机中，使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书。 这些步骤包括从本地计算机证书存储进行导出。
+**修复** - 在生成 CSR 的计算机中，使用[准备用于部署的 Azure Stack Hub PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书。 这些步骤包括从本地计算机证书存储进行导出。
 
 ## <a name="certificate-chain"></a>证书链
 
 **问题** - 证书链不完整。  
 
-**修复** - 证书应包含完整的证书链。 按照[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤并选择“包括证书路径中的所有证书(如果可能)”选项重新导出证书。 
+**修复** - 证书应包含完整的证书链。 按照[准备用于部署的 Azure Stack Hub PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，选择“包括证书路径中的所有证书(如果可能)”选项。 
 
 ## <a name="dns-names"></a>DNS 名称
 
-**问题** - 证书上的 **DNSNameList** 不包含 Azure Stack 服务终结点名称或有效的通配符匹配项。 通配符匹配项仅适用于 DNS 名称最左侧的命名空间。 例如，`*.region.domain.com` 仅对 `portal.region.domain.com` 有效，而对 `*.table.region.domain.com` 无效。
+**问题** - 证书上的 **DNSNameList** 不包含 Azure Stack Hub 服务终结点名称或有效的通配符匹配项。 通配符匹配项仅适用于 DNS 名称最左侧的命名空间。 例如，`*.region.domain.com` 仅对 `portal.region.domain.com` 有效，而对 `*.table.region.domain.com` 无效。
 
-**修复** - 执行“生成 Azure Stack 证书签名请求”中的步骤，以便使用为 Azure Stack 终结点提供支持所需的正确 DNS 名称重新生成 CSR。 将 CSR 重新提交到证书颁发机构。 然后按照[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤，从生成 CSR 的计算机导出证书。  
+**修复** - 执行“生成 Azure Stack Hub 证书签名请求”中的步骤，以便使用为 Azure Stack Hub 终结点提供支持所需的正确 DNS 名称重新生成 CSR。 将 CSR 重新提交到证书颁发机构。 然后按照[准备用于部署的 Azure Stack Hub PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤，从生成 CSR 的计算机导出证书。  
 
 ## <a name="key-usage"></a>密钥使用情况
 
 **问题** - 密钥用法缺少数字签名或密钥加密，或者增强型密钥用法缺少服务器身份验证或客户端身份验证。  
 
-**修复** - 按照[生成 Azure Stack 证书签名请求](azure-stack-get-pki-certs.md)中的步骤，使用正确的密钥用法属性重新生成 CSR。 将 CSR 重新提交给证书颁发机构，并确认证书模板未覆盖请求中的密钥用法。
+**修复** - 按照[生成 Azure Stack Hub 证书签名请求](azure-stack-get-pki-certs.md)中的步骤，使用正确的密钥用法属性重新生成 CSR。 将 CSR 重新提交给证书颁发机构，并确认证书模板未覆盖请求中的密钥用法。
 
 ## <a name="key-size"></a>密钥大小
 
 **问题** - 密钥大小不到 2048。
 
-**修复** - 按照[生成 Azure Stack 证书签名请求](azure-stack-get-pki-certs.md)中的步骤，使用正确的密钥长度 (2048) 重新生成 CSR，然后将 CSR 重新提交给证书颁发机构。
+**修复** - 按照[生成 Azure Stack Hub 证书签名请求](azure-stack-get-pki-certs.md)中的步骤，使用正确的密钥长度 (2048) 重新生成 CSR，然后将 CSR 重新提交给证书颁发机构。
 
 ## <a name="chain-order"></a>链序
 
 **问题** - 证书链的顺序不正确。  
 
-**修复** - 按照[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，选择“包括证书路径中的所有证书(如果可能)”选项。  确保仅选择分支证书进行导出。
+**修复** - 按照[准备用于部署的 Azure Stack Hub PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，选择“包括证书路径中的所有证书(如果可能)”选项。  确保仅选择分支证书进行导出。
 
 ## <a name="other-certificates"></a>其他证书
 
 **问题** - PFX 包包含的证书不是分支证书，或者不是证书链的一部分。  
 
-**修复** - 按照[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，选择“包括证书路径中的所有证书(如果可能)”选项。  确保仅选择分支证书进行导出。
+**修复** - 按照[准备用于部署的 Azure Stack Hub PKI 证书](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)中的步骤重新导出证书，选择“包括证书路径中的所有证书(如果可能)”选项。  确保仅选择分支证书进行导出。
 
 ## <a name="fix-common-packaging-issues"></a>修复常见的打包问题
 
@@ -115,12 +106,12 @@ ms.locfileid: "75737804"
    $PSVersionTable.PSVersion
    ```
 
-- 配置[适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
-- 下载最新版本的 [Azure Stack 就绪性检查器](https://aka.ms/AzsReadinessChecker)工具。
+- 配置[适用于 Azure Stack Hub 的 PowerShell](azure-stack-powershell-install.md)。
+- 下载最新版本的 [Azure Stack Hub 就绪性检查器](https://aka.ms/AzsReadinessChecker)工具。
 
 ### <a name="import-and-export-an-existing-pfx-file"></a>导入和导出现有的 PFX 文件
 
-1. 在满足先决条件的计算机上，打开一个提升的 PowerShell 提示符，然后运行以下命令来安装 Azure Stack 就绪性检查器：
+1. 在满足先决条件的计算机上，打开一个提升的 PowerShell 提示符，然后运行以下命令来安装 Azure Stack Hub 就绪性检查器：
 
    ```powershell
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
@@ -145,7 +136,7 @@ ms.locfileid: "75737804"
 
    ```shell
    Repair-AzsPfxCertificate v1.1809.1005.1 started.
-   Starting Azure Stack Certificate Import/Export
+   Starting Azure Stack Hub Certificate Import/Export
    Importing PFX .\certificates\ssl.pfx into Local Machine Store
    Exporting certificate to .\certificates\ssl_new.pfx
    Export complete. Removing certificate from the local machine store.
@@ -156,4 +147,4 @@ ms.locfileid: "75737804"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解 Azure Stack 安全性](azure-stack-rotate-secrets.md)
+- [详细了解 Azure Stack Hub 安全性](azure-stack-rotate-secrets.md)

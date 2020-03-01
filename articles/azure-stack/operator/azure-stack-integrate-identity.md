@@ -1,47 +1,44 @@
 ---
-title: 将 AD FS 标识与 Azure Stack 数据中心集成 | Microsoft Docs
-description: 了解如何将 Azure Stack AD FS 标识提供者与数据中心 AD FS 集成。
-services: azure-stack
+title: 将 AD FS 标识与 Azure Stack Hub 数据中心集成
+description: 了解如何将 Azure Stack Hub AD FS 标识提供者与数据中心 AD FS 集成。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
 ms.topic: article
 origin.date: 05/10/2019
-ms.date: 11/18/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: 9623249f8a5f4d206628922337047b70bff65dc4
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: a5544263030188bbeab0b5a1e98464e0ac6d2ee5
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020229"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540988"
 ---
-# <a name="integrate-ad-fs-identity-with-your-azure-stack-datacenter"></a>将 AD FS 标识与 Azure Stack 数据中心集成
+# <a name="integrate-ad-fs-identity-with-your-azure-stack-hub-datacenter"></a>将 AD FS 标识与 Azure Stack Hub 数据中心集成
 
-可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 在连接的情况下，可以选择 Azure AD 或 AD FS。 在断开连接的情况下，只支持 AD FS。 本文介绍如何将 Azure Stack AD FS 与数据中心 AD FS 集成。
+可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack Hub。 必须在部署 Azure Stack Hub 之前做出选择。 在连接的情况下，可以选择 Azure AD 或 AD FS。 在断开连接的情况下，只支持 AD FS。 本文介绍如何将 Azure Stack Hub AD FS 与数据中心 AD FS 集成。
 
 > [!IMPORTANT]
-> 如果不重新部署整个 Azure Stack 解决方案，则无法切换标识提供者。
+> 如果不重新部署整个 Azure Stack Hub 解决方案，则无法切换标识提供者。
 
 ## <a name="active-directory-federation-services-and-graph"></a>Active Directory 联合身份验证服务和 Graph
 
-使用 AD FS 进行部署可让现有 Active Directory 林中的标识对 Azure Stack 中的资源进行身份验证。 此现有 Active Directory 林需要 AD FS 的部署，以便能够创建 AD FS 联合信任。
+使用 AD FS 进行部署可让现有 Active Directory 林中的标识对 Azure Stack Hub 中的资源进行身份验证。 此现有 Active Directory 林需要 AD FS 的部署，以便能够创建 AD FS 联合信任。
 
-身份验证是标识的一部分。 若要在 Azure Stack 中管理基于角色的访问控制 (RBAC)，必须配置 Graph 组件。 委托资源的访问权限后，Graph 组件使用 LDAP 协议来查找现有 Active Directory 林中的用户帐户。
+身份验证是标识的一部分。 若要在 Azure Stack Hub 中管理基于角色的访问控制 (RBAC)，必须配置 Graph 组件。 委托资源的访问权限后，Graph 组件使用 LDAP 协议来查找现有 Active Directory 林中的用户帐户。
 
-![Azure Stack AD FS 体系结构](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
+![Azure Stack Hub AD FS 体系结构](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
 
-现有 AD FS 是将声明发送到 Azure Stack AD FS（资源 STS）的帐户安全令牌服务 (STS)。 在 Azure Stack 中，自动化功能将与现有 AD FS 的元数据终结点建立声明提供程序信任关系。
+现有 AD FS 是将声明发送到 Azure Stack Hub AD FS（资源 STS）的帐户安全令牌服务 (STS)。 在 Azure Stack Hub 中，自动化功能将与现有 AD FS 的元数据终结点建立声明提供程序信任关系。
 
-在现有 AD FS 中，必须配置信赖方信任。 此步骤不是由自动化执行的，而必须由操作员配置。 可以使用 `https://adfs.<Region>.<ExternalFQDN>/` 模式创建适用于 AD FS 的 Azure Stack VIP 终结点。
+在现有 AD FS 中，必须配置信赖方信任。 此步骤不是由自动化执行的，而必须由操作员配置。 可以使用 `https://adfs.<Region>.<ExternalFQDN>/` 模式创建适用于 AD FS 的 Azure Stack Hub VIP 终结点。
 
 配置信赖方信任还需要配置 Azure 提供的声明转换规则。
 
 对于 Graph 配置，必须提供在现有 Active Directory 中拥有“读取”权限的服务帐户。 自动化需要使用此帐户作为输入来启用 RBAC 方案。
 
-在最后一个步骤中，将为默认提供商订阅配置新的所有者。 登录到 Azure Stack 管理员门户时，此帐户对所有资源拥有完全访问权限。
+在最后一个步骤中，将为默认提供商订阅配置新的所有者。 登录到 Azure Stack Hub 管理员门户时，此帐户对所有资源拥有完全访问权限。
 
 要求：
 
@@ -63,14 +60,14 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 ### <a name="configure-active-directory-sites"></a>配置 Active Directory 站点
 
-如果 Active Directory 部署包含多个站点，请配置最靠近 Azure Stack 部署的 Active Directory 站点。 这种配置可以避免让 Azure Stack Graph 服务使用全局目录服务器从远程站点解析查询。
+如果 Active Directory 部署包含多个站点，请配置最靠近 Azure Stack Hub 部署的 Active Directory 站点。 这种配置可以避免让 Azure Stack Hub Graph 服务使用全局目录服务器从远程站点解析查询。
 
-将 Azure Stack [公共 VIP 网络](azure-stack-network.md#public-vip-network)子网添加到最靠近 Azure Stack 的 Active Directory 站点。 例如，假设 Active Directory 包含两个站点：Seattle 和 Redmond。 如果 Azure Stack 部署在 Seattle 站点，则你可以将 Azure Stack 公共 VIP 网络子网添加到 Seattle 的 Active Directory 站点。
+将 Azure Stack Hub [公共 VIP 网络](azure-stack-network.md#public-vip-network)子网添加到最靠近 Azure Stack Hub 的 Active Directory 站点。 例如，假设 Active Directory 包含两个站点：Seattle 和 Redmond。 如果 Azure Stack Hub 部署在 Seattle 站点，则你可以将 Azure Stack Hub 公共 VIP 网络子网添加到 Seattle 的 Active Directory 站点。
 
 有关 Active Directory 站点的详细信息，请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
 
 > [!Note]  
-> 如果 Active Directory 只有一个站点，则可以跳过此步骤。 如果配置了全方位的子网，请验证 Azure Stack 公共 VIP 网络子网是否不属于该子网。
+> 如果 Active Directory 只有一个站点，则可以跳过此步骤。 如果配置了全方位的子网，请验证 Azure Stack Hub 公共 VIP 网络子网是否不属于该子网。
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>在现有 Active Directory 中创建用户帐户（可选）
 
@@ -84,7 +81,7 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 #### <a name="trigger-automation-to-configure-graph"></a>触发自动化来配置 Graph
 
-对于此过程，请使用能够与 Azure Stack 中的特权终结点通信的数据中心网络中的计算机。
+对于此过程，请使用能够与 Azure Stack Hub 中的特权终结点通信的数据中心网络中的计算机。
 
 1. 打开提升了权限的 Windows PowerShell 会话（以管理员身份运行），连接到特权终结点的 IP 地址。 使用 **CloudAdmin** 的凭据进行身份验证。
 
@@ -113,9 +110,9 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 #### <a name="graph-protocols-and-ports"></a>Graph 协议和端口
 
-Azure Stack 中的 Graph 服务使用以下协议和端口与可写入的全局编录服务器 (GC) 和密钥发行中心 (KDC) 进行通信，该中心可以处理目标 Active Directory 林中的登录请求。
+Azure Stack Hub 中的 Graph 服务使用以下协议和端口与可写入的全局编录服务器 (GC) 和密钥发行中心 (KDC) 进行通信，该中心可以处理目标 Active Directory 林中的登录请求。
 
-Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Directory 通信：
+Azure Stack Hub 中的 Graph 服务使用以下协议和端口来与目标 Active Directory 通信：
 
 |类型|端口|协议|
 |---------|---------|---------|
@@ -135,9 +132,9 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 |SigningCertificateRevocationCheck|不可用|用于跳过 CRL 检查的可选参数。|无|
 
 
-### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>触发自动化以便在 Azure Stack 中配置声明提供程序信任
+### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub"></a>触发自动化以便在 Azure Stack Hub 中配置声明提供程序信任
 
-对于此过程，请使用能够与 Azure Stack 中特权终结点通信的计算机。 Azure Stack 应会信任帐户 **STS AD FS** 使用的证书。
+对于此过程，请使用能够与 Azure Stack Hub 中特权终结点通信的计算机。 Azure Stack Hub 应会信任帐户 **STS AD FS** 使用的证书。
 
 1. 打开权限提升的 Windows PowerShell 会话并连接到特权终结点。
 
@@ -162,8 +159,8 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 从版本 1807 开始，如果符合以下任一条件，则可以使用此方法：
 
-- AD FS 的证书链不同于 Azure Stack 中的其他所有终结点。
-- 未在 Azure Stack 的 AD FS 实例与现有 AD FS 服务器之间建立网络连接。
+- AD FS 的证书链不同于 Azure Stack Hub 中的其他所有终结点。
+- 未在 Azure Stack Hub 的 AD FS 实例与现有 AD FS 服务器之间建立网络连接。
 
 以下信息是作为自动化参数的输入所必需的：
 
@@ -189,9 +186,9 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 2. 将元数据文件复制到可以与特权终结点通信的计算机。
 
-### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>触发自动化以便在 Azure Stack 中配置声明提供程序信任
+### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack-hub"></a>触发自动化以便在 Azure Stack Hub 中配置声明提供程序信任
 
-对于此过程，请使用可以与 Azure Stack 中的特权终结点进行通信的计算机，并且该计算机可以访问在上一步中创建的元数据文件。
+对于此过程，请使用可以与 Azure Stack Hub 中的特权终结点进行通信的计算机，并且该计算机可以访问在上一步中创建的元数据文件。
 
 1. 打开权限提升的 Windows PowerShell 会话并连接到特权终结点。
 
@@ -220,7 +217,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的脚本。 不一定要使用此脚本，也可以手动运行命令。
 
-可以从 GitHub 上的 [Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)下载帮助器脚本。
+可以从 GitHub 上的 [Azure Stack Hub 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)下载帮助器脚本。
 
 如果确定要手动运行命令，请遵循以下步骤：
 
@@ -283,7 +280,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    > [!IMPORTANT]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，必须使用 AD FS MMC 管理单元来配置颁发授权规则。
 
-4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
+4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack Hub 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
 
    > [!note]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，此步骤不适用。 在这种情况下，可以放心跳过此命令并继续集成。
@@ -296,9 +293,9 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 
 在许多情况下，需要使用服务主体名称 (SPN) 进行身份验证。 下面是一些示例：
 
-- 使用 CLI 在 Azure Stack 中部署 AD FS。
-- 使用 AD FS 部署时的 System Center Management Pack for Azure Stack。
-- 使用 AD FS 部署时 Azure Stack 中的资源提供程序。
+- 使用 CLI 在 Azure Stack Hub 中部署 AD FS。
+- 使用 AD FS 部署时的 System Center Management Pack for Azure Stack Hub。
+- 使用 AD FS 部署时 Azure Stack Hub 中的资源提供程序。
 - 各种应用。
 - 需要非交互式登录。
 

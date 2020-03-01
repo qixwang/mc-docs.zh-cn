@@ -1,61 +1,52 @@
 ---
-title: Azure Stack VM 功能 | Microsoft Docs
-description: 了解使用 Azure Stack 中的 VM 时的不同功能和注意事项。
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub VM 功能
+description: 了解使用 Azure Stack Hub 中的 VM 时的不同功能和注意事项。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 10/09/2019
-ms.date: 11/18/2019
+origin.date: 2/3/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 9e4c01ee06fee13832794b6e3cdecb65d38881de
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 428bf9feb62c2834e9c222eb4d048d12ae557655
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020075"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540737"
 ---
-# <a name="azure-stack-vm-features"></a>Azure Stack VM 功能
+# <a name="azure-stack-hub-vm-features"></a>Azure Stack Hub VM 功能
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-Azure Stack 虚拟机 (VM) 提供可按需缩放的计算资源。 在部署 VM 之前，应先了解 Azure Stack 与 Azure 所提供的 VM 功能有何差异。 本文将说明这些差异，并指明规划 VM 部署方面的重要注意事项。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
+Azure Stack Hub 虚拟机 (VM) 提供可按需缩放的计算资源。 在部署 VM 之前，应先了解 Azure Stack Hub 与 Azure 所提供的 VM 功能有何差异。 本文将说明这些差异，并指明规划 VM 部署方面的重要注意事项。 有关 Azure Stack Hub 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
 
 ## <a name="vm-differences"></a>VM 差异
 
-| 功能 | Azure（中国） | Azure Stack |
+| 功能 | Azure（中国） | Azure Stack Hub |
 | --- | --- | --- |
-| 虚拟机映像 | Azure 市场包含可用于创建 VM 的映像。 若要查看 Azure 市场中的可用映像列表，请参阅 [Azure 市场](https://market.azure.cn/zh-cn)页。 | Azure Stack 市场中默认不会提供任何映像。 Azure Stack 云管理员必须先将映像发布或下载到 Azure Stack 市场，然后用户才能使用这些映像。 |
-| 虚拟机大小 | Azure 支持各种不同的 VM 大小。 若要了解可用的大小和选项，请参阅 [Windows VM 大小](/virtual-machines/virtual-machines-windows-sizes)和 [Linux VM 大小](/virtual-machines/linux/sizes)主题。 | Azure Stack 支持一部分可在 Azure 中使用的 VM 大小。 若要查看支持的大小列表，请参阅本文的 [VM 大小](#vm-sizes)部分。 |
-| 虚拟机配额 | [配额限制](/azure-subscription-service-limits#service-specific-limits)由 Azure 设置 | Azure Stack 云管理员在提供 VM 给其用户之前，必须先分配配额。 |
-| 虚拟机扩展 |Azure 支持多种不同的 VM 扩展。 若要了解可用的扩展，请参阅 [VM 扩展和功能](/virtual-machines/windows/extensions-features)一文。| Azure Stack 支持一部分可在 Azure 中使用的扩展，每个扩展有特定的版本。 Azure Stack 云管理员可以选择要将哪些扩展提供给其用户使用。 若要查看支持的扩展列表，请参阅本文的 [VM 扩展](#vm-extensions)部分。 |
-| 虚拟机网络 | 分配给租户 VM 的公共 IP 地址可通过 Internet 访问。<br><br><br>Azure VM 具有固定的 DNS 名称。 | 只能在 Azure Stack 开发工具包环境中访问分配给租户 VM 的公共 IP 地址。 用户必须能够通过 [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) 或 [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) 访问 Azure Stack 开发工具包，才能连接到在 Azure Stack 中创建的 VM。<br><br>在特定 Azure Stack 实例中创建的 VM 的 DNS 名称基于云管理员配置的值。 |
-| 虚拟机存储 | 支持[托管磁盘](/virtual-machines/windows/managed-disks-overview)。 | 版本为 1808 及更高版本的 Azure Stack 支持托管磁盘。 |
-| 虚拟机磁盘性能 | 取决于磁盘类型和大小。 | 取决于磁盘所附加到的 VM 的大小。 有关详细信息，请参阅 [Azure Stack 中支持的 VM 大小](azure-stack-vm-sizes.md)一文。
-| API 版本 | Azure 始终提供所有 VM 功能的最新 API 版本。 | Azure Stack 支持特定的 Azure 服务以及这些服务的特定 API 版本。 若要查看支持的 API 版本列表，请参阅本文的 [API 版本](#api-versions)部分。 |
-| Azure 实例元数据服务 | Azure 实例元数据服务提供有关可用于管理和设置 VM 的正在运行的 VM 实例的信息。  | Azure Stack 不支持 Azure 实例元数据服务。 |
+| 虚拟机映像 | Azure 市场包含可用于创建 VM 的映像。 若要查看 Azure 市场中的可用映像列表，请参阅 [Azure 市场](https://market.azure.cn/zh-cn)页。 | Azure Stack Hub 市场中默认不会提供任何映像。 Azure Stack Hub 云管理员必须先将映像发布或下载到 Azure Stack Hub 市场，然后用户才能使用这些映像。 |
+| VHD 代系 | 第二代 VM 支持第一代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第二代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[对 Azure 上的第 2 代 VM 的支持](/virtual-machines/windows/generation-2)  | Azure Stack Hub 仅支持第一代 VM。 可以将第一代 VM 从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 无法更改 VM 的代次。 有关详细信息，请参阅[对 Azure 上的第 2 代 VM 的支持](/virtual-machines/windows/generation-2)。 |
+| 虚拟机大小 | Azure 支持各种不同的 VM 大小。 若要了解可用的大小和选项，请参阅 [Windows VM 大小](/virtual-machines/virtual-machines-windows-sizes)和 [Linux VM 大小](/virtual-machines/linux/sizes)主题。 | Azure Stack Hub 支持一部分可在 Azure 中使用的 VM 大小。 若要查看支持的大小列表，请参阅本文的 [VM 大小](#vm-sizes)部分。 |
+| 虚拟机配额 | [配额限制](/azure-subscription-service-limits#service-specific-limits)由 Azure 设置 | Azure Stack Hub 云管理员在提供 VM 给其用户之前，必须先分配配额。 |
+| 虚拟机扩展 |Azure 支持多种不同的 VM 扩展。 若要了解可用的扩展，请参阅 [VM 扩展和功能](/virtual-machines/windows/extensions-features)一文。| Azure Stack Hub 支持一部分可在 Azure 中使用的扩展，每个扩展有特定的版本。 Azure Stack Hub 云管理员可以选择要将哪些扩展提供给其用户使用。 若要查看支持的扩展列表，请参阅本文的 [VM 扩展](#vm-extensions)部分。 |
+| 虚拟机网络 | 分配给租户 VM 的公共 IP 地址可通过 Internet 访问。<br><br><br>Azure VM 具有固定的 DNS 名称。 | 只能在 Azure Stack 开发工具包环境中访问分配给租户 VM 的公共 IP 地址。 用户必须能够通过 [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) 或 [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) 访问 Azure Stack 开发工具包，才能连接到在 Azure Stack Hub 中创建的 VM。<br><br>在特定 Azure Stack Hub 实例中创建的 VM 的 DNS 名称基于云管理员配置的值。 |
+| 虚拟机存储 | 支持[托管磁盘](/virtual-machines/windows/managed-disks-overview)。 | 版本为 1808 及更高版本的 Azure Stack Hub 支持托管磁盘。 |
+| 虚拟机磁盘性能 | 取决于磁盘类型和大小。 | 取决于磁盘所附加到的 VM 的大小。 有关详细信息，请参阅 [Azure Stack Hub 中支持的 VM 大小](azure-stack-vm-sizes.md)一文。
+| API 版本 | Azure 始终提供所有 VM 功能的最新 API 版本。 | Azure Stack Hub 支持特定的 Azure 服务以及这些服务的特定 API 版本。 若要查看支持的 API 版本列表，请参阅本文的 [API 版本](#api-versions)部分。 |
+| Azure 实例元数据服务 | Azure 实例元数据服务提供有关可用于管理和设置 VM 的正在运行的 VM 实例的信息。  | Azure Stack Hub 不支持 Azure 实例元数据服务。 |
 | 虚拟机可用性集|多个容错域（每个区域 2 个或 3 个）。<br>多个更新域。|多个容错域（每个区域 2 个或 3 个）。<br>单个更新域，具有实时迁移功能，可在更新期间保护工作负荷。 支持 20 个更新域以实现模板兼容性。<br>VM 和可用性集应位于相同的位置和资源组中。|
 | 虚拟机规模集|支持自动缩放。|不支持自动缩放。<br><br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。 |
-| 云见证 | 从 Azure Stack 中提供的存储帐户属性中选择终结点。 | [云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)是一种故障转移群集仲裁见证，它使用 Azure 提供对群集仲裁的投票。<br>Azure 中的终结点与 Azure Stack 相比可能如下所示：<br>对于 Azure：<br>`https://mywitness.blob.core.chinacloudapi.cn/`<br>对于 Azure Stack：<br>`https://mywitness.blob.<region>.<FQDN>/`|
-| 虚拟机诊断 | 支持 Linux VM 诊断。 | Azure Stack 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。 |
+| 云见证 | 从 Azure Stack Hub 中提供的存储帐户属性中选择终结点。 | [云见证](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)是一种故障转移群集仲裁见证，它使用 Azure 提供对群集仲裁的投票。<br>Azure 中的终结点与 Azure Stack Hub 相比可能如下所示：<br>对于 Azure：<br>`https://mywitness.blob.core.chinacloudapi.cn/`<br>对于 Azure Stack Hub：<br>`https://mywitness.blob.<region>.<FQDN>/`|
+| 虚拟机诊断 | 支持 Linux VM 诊断。 | Azure Stack Hub 不支持 Linux VM 诊断。 在部署启用 VM 诊断的 Linux VM 时，部署会失败。 如果通过诊断设置启用 Linux VM 的基本指标，部署也会失败。 |
 
 ## <a name="vm-sizes"></a>VM 大小
 
-Azure Stack 施加了一些资源限制，以避免资源（服务器本地和服务级别）的过度消耗。这些限制降低了其他租户消耗资源所带来的影响，从而改进了租户体验。
+Azure Stack Hub 施加了一些资源限制，以避免资源（服务器本地和服务级别）的过度消耗。这些限制降低了其他租户消耗资源所带来的影响，从而改进了租户体验。
 
-- VM 的网络出口有带宽上限。 Azure Stack 中的上限与 Azure 中的上限相同。
-- 对于存储资源，Azure Stack 实施存储 IOPS（每秒输入/输出操作次数）限制，以避免租户因使用存储而造成资源过度消耗。
-- 对于 VM 磁盘，Azure Stack 上的磁盘 IOPS 取决于 VM 大小而不是磁盘类型。 这意味着，对于 Standard_Fs 系列 VM，不管你选择 SSD 还是 HDD 作为磁盘类型，第二个数据磁盘的 IOPS 限制都是 2300 IOPS。
+- VM 的网络出口有带宽上限。 Azure Stack Hub 中的上限与 Azure 中的上限相同。
+- 对于存储资源，Azure Stack Hub 实施存储 IOPS（每秒输入/输出操作次数）限制，以避免租户因使用存储而造成资源过度消耗。
+- 对于 VM 磁盘，Azure Stack Hub 上的磁盘 IOPS 取决于 VM 大小而不是磁盘类型。 这意味着，对于 Standard_Fs 系列 VM，不管你选择 SSD 还是 HDD 作为磁盘类型，第二个数据磁盘的 IOPS 限制都是 2300 IOPS。
 
-下表列出了 Azure Stack 支持的 VM 及其配置：
+下表列出了 Azure Stack Hub 支持的 VM 及其配置：
 
 | 类型            | 大小          | 支持的大小范围 |
 | ----------------| ------------- | ------------------------ |
@@ -74,13 +65,13 @@ Azure Stack 施加了一些资源限制，以避免资源（服务器本地和�
 |计算优化|Fs 系列      |[F1s - F16s](azure-stack-vm-sizes.md#fs-series)    |
 |计算优化|Fsv2 系列    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series)    |
 
-VM 大小及其关联的资源数量在 Azure Stack 与 Azure 之间是一致的。 这种一致性涉及到内存量、核心数，以及可创建的数据磁盘的数量/大小。 但是，大小相同的 VM 的性能取决于特定 Azure Stack 环境的基础特征。
+VM 大小及其关联的资源数量在 Azure Stack Hub 与 Azure 之间是一致的。 这种一致性涉及到内存量、核心数，以及可创建的数据磁盘的数量/大小。 但是，大小相同的 VM 的性能取决于特定 Azure Stack Hub 环境的基础特征。
 
 ## <a name="vm-extensions"></a>VM 扩展
 
-Azure Stack 包含少量的扩展。 可以通过市场联合来获取更新和其他扩展。
+Azure Stack Hub 包含少量的扩展。 可以通过市场联合来获取更新和其他扩展。
 
-使用以下 PowerShell 脚本可获取 Azure Stack 环境中可用的 VM 扩展的列表：
+使用以下 PowerShell 脚本可获取 Azure Stack Hub 环境中可用的 VM 扩展的列表：
 
 ```powershell
 Get-AzureRmVmImagePublisher -Location local | `
@@ -94,11 +85,11 @@ Get-AzureRmVmImagePublisher -Location local | `
 
 ## <a name="api-versions"></a>API 版本
 
-Azure Stack 中的 VM 功能支持以下 API 版本：
+Azure Stack Hub 中的 VM 功能支持以下 API 版本：
 
 "2017-12-01", "2017-03-30", "2016-03-30", "2015-06-15"
 
-可以使用以下 PowerShell 脚本来获取 Azure Stack 环境中可用的 VM 功能的 API 版本：
+可以使用以下 PowerShell 脚本来获取 Azure Stack Hub 环境中可用的 VM 功能的 API 版本：
 
 ```powershell
 Get-AzureRmResourceProvider | `
@@ -108,17 +99,17 @@ Get-AzureRmResourceProvider | `
   where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
 ```
 
-如果云运营商将 Azure Stack 环境更新为较新版本，则支持的资源类型和 API 版本列表可能有所不同。
+如果云运营商将 Azure Stack Hub 环境更新为较新版本，则支持的资源类型和 API 版本列表可能有所不同。
 
 ## <a name="windows-activation"></a>Windows 激活
 
-必须根据产品使用权利和 Microsoft 许可条款使用 Windows 产品。 Azure Stack 使用[自动 VM 激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) 来激活 Windows Server VM。
+必须根据产品使用权利和 Microsoft 许可条款使用 Windows 产品。 Azure Stack Hub 使用[自动 VM 激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) 来激活 Windows Server VM。
 
-- Azure Stack 主机使用 Windows Server 2016 的 AVMA 密钥激活 Windows。 运行 Windows Server 2012 R2 或更高版本的所有 VM 都将自动激活。
+- Azure Stack Hub 主机使用 Windows Server 2016 的 AVMA 密钥激活 Windows。 运行 Windows Server 2012 R2 或更高版本的所有 VM 都将自动激活。
 - 运行 Windows Server 2012 或更早版本的 VM 不会自动激活，必须使用 [MAK 激活](https://technet.microsoft.com/library/ff793438.aspx)进行激活。 若要使用 MAK 激活，必须提供自己的产品密钥。
 
-Azure 使用 KMS 激活来激活 Windows VM。 如果将 VM 从 Azure Stack 移动到 Azure 并且遇到了激活问题，请参阅[排查 Azure Windows VM 激活问题](/virtual-machines/windows/troubleshoot-activation-problems)。 可以在 Azure 支持团队博客文章 [Troubleshooting Windows activation failures on Azure VMs](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/)（排查 Azure VM 上的 Windows 激活故障）中找到其他信息。
+Azure 使用 KMS 激活来激活 Windows VM。 如果将 VM 从 Azure Stack Hub 移到 Azure 并且遇到了激活问题，请参阅[排查 Azure Windows VM 激活问题](/virtual-machines/windows/troubleshoot-activation-problems)。 可以在 Azure 支持团队博客文章 [Troubleshooting Windows activation failures on Azure VMs](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/)（排查 Azure VM 上的 Windows 激活故障）中找到其他信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack 中使用 PowerShell 创建 Windows VM](azure-stack-quick-create-vm-windows-powershell.md)
+[在 Azure Stack Hub 中使用 PowerShell 创建 Windows VM](azure-stack-quick-create-vm-windows-powershell.md)

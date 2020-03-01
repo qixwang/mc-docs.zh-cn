@@ -1,248 +1,250 @@
 ---
-title: 用于调试应用的扩展式 Spark History Server - Azure HDInsight
-description: 使用扩展的 Spark History Server 调试和诊断 Spark 应用程序 - Azure HDInsight。
+title: 使用 Apache Spark History Server 中的扩展功能调试应用 - Azure HDInsight
+description: 使用 Apache Spark History Server 中的扩展功能调试和诊断 Spark 应用程序 - Azure HDInsight。
 author: hrasheed-msft
 ms.author: v-yiso
 ms.reviewer: jasonh
 ms.topic: conceptual
 origin.date: 11/25/2019
-ms.date: 12/23/2019
-ms.openlocfilehash: a60c519e9ce8d22331337a4466d1eff65d15a678
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/02/2020
+ms.openlocfilehash: a73f6f7ae10fa80145fab65b6fd57156204038cd
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335882"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563473"
 ---
-# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
+# <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark History Server 的扩展功能调试和诊断 Spark 应用程序
 
-本文提供有关如何使用扩展的 Apache Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展包含数据选项卡、图形选项卡和诊断选项卡。在“数据”选项卡中，用户可以检查 Spark 作业的输入和输出数据。  在“图形”选项卡中，用户可以检查数据流和重播作业图形。  在“诊断”选项卡中，用户可以参阅“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。    
+本文介绍如何使用 Apache Spark History Server 的扩展功能来调试和诊断已完成的或正在运行的 Spark 应用程序。 扩展包括“数据”选项卡、“图形”选项卡和“诊断”选项卡。    在“数据”选项卡中，可以检查 Spark 作业的输入和输出数据。  在“图形”选项卡中，可以检查数据流和重放作业图形。  在“诊断”选项卡中，可以参考“数据倾斜”、“时间倾斜”和“执行程序使用情况分析”功能。    
 
-## <a name="get-access-to-apache-spark-history-server"></a>获取 Apache Spark History Server 的访问权限
+## <a name="get-access-to-the-spark-history-server"></a>访问 Spark History Server
 
-Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序的 Web UI。 
+Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI。 可以从 Azure 门户或 URL 打开它。
 
-### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>从 Azure 门户打开 Apache Spark History Server Web UI
+### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>从 Azure 门户打开 Spark History Server Web UI
 
 1. 从 [Azure 门户](https://portal.azure.cn/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 2. 在**群集仪表板**中选择“Spark History Server”。  出现提示时，输入 Spark 群集的管理员凭据。
 
-    ![在门户中启动 Spark History Server](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark History Server")
+    ![从 Azure 门户启动 Spark History Server。](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark History Server")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>通过 URL 打开 Spark History Server Web UI
 
 浏览到 `https://CLUSTERNAME.azurehdinsight.cn/sparkhistory`（其中 CLUSTERNAME 是 Spark 群集的名称），打开 Spark History Server。
 
-Spark History Server Web UI 可能类似于：
+Spark History Server Web UI 可能类似于下图：
 
-![HDInsight Spark History Server](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
+![Spark History Server 页。](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
+## <a name="use-the-data-tab-in-the-spark-history-server"></a>使用 Spark History Server 中的“数据”选项卡
 
-## <a name="data-tab-in-spark-history-server"></a>Spark History Server 中的“数据”选项卡
+选择作业 ID，然后选择工具菜单中的“数据”查看数据视图。 
 
-选择作业 ID，然后选择工具菜单中的“数据”获取数据视图。 
++ 选择“输入”、“输出”和“表操作”选项卡查看其中的信息。   
 
-+ 分别选择“输入”、“输出”和“表操作”选项卡，以查看其中的信息。   
-
-    ![Spark 应用程序选项卡的数据](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
+    ![“Spark 应用程序数据”页上的“数据”选项卡。](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + 选择“复制”按钮复制所有行。 
 
-    ![Spark 应用程序复制操作的数据](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
+    ![复制 Spark 应用程序页上的数据。](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
-+ 选择“csv”按钮将所有数据保存为 CSV 文件。 
++ 选择“csv”按钮将所有数据保存为 .CSV 文件。 
 
-    ![Spark 应用程序保存操作的数据](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
+    ![在“Spark 应用程序数据”页中将数据保存为 .CSV 文件。](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
-+ 在“搜索”字段中输入关键字进行搜索，搜索结果会立即显示。 
++ 在“搜索”字段中输入关键字来搜索数据。  搜索结果会立即显示。
 
-    ![Spark 应用程序搜索操作的数据](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
+    ![在“Spark 应用程序数据”页上搜索数据。](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
-+ 选择列标题将表排序，选择加号展开某行以显示更多详细信息，或选择减号折叠某行。
++ 选择列标题以将表排序。 选择加号图标可展开某行，以显示更多详细信息。 选择减号图标可折叠某行。
 
-    ![Spark 应用程序表的数据](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
+    ![“Spark 应用程序数据”页上的数据表。](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
-+ 选择右侧的“部分下载”按钮下载单个文件；选定的文件将下载到本地，如果该文件不再存在，则会打开一个显示错误消息的新选项卡。 
++ 选择右侧的“部分下载”按钮下载单个文件。  选定的文件将下载到本地。 如果该文件不存在，则打开一个新选项卡以显示错误消息。
 
-    ![Spark 应用程序下载行的数据](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
+    ![“Spark 应用程序数据”页上的数据下载行。](./media/apache-azure-spark-history-server/sparkui-data-download-row.png)
 
-+ 选择下载菜单中展开的“复制完整路径”或“复制相对路径”，来复制完整路径或相对路径。   对于 Azure Data Lake Storage 文件，选择“在 Azure 存储资源管理器中打开”会启动 Azure 存储资源管理器，并在登录时定位到相应的文件夹。 
++ 选择下载菜单中展开的“复制完整路径”或“复制相对路径”选项，来复制完整路径或相对路径。   对于 Azure Data Lake Storage 文件，请选择“在 Azure 存储资源管理器中打开”以启动 Azure 存储资源管理器，并在登录后定位到相应的文件夹。 
 
-    ![Spark 应用程序复制路径的数据](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
+    ![“Spark 应用程序数据”页上的“复制完整路径”和“复制相对路径”选项。](./media/apache-azure-spark-history-server/sparkui-data-copy-path.png)
 
-+ 如果一个页面中显示的行数过多，选择表下面的编号可以浏览不同的页面。
++ 如果一个页面中显示的行数过多，选择表底部的页码可以浏览不同的页面。
 
-    ![Spark 应用程序页面的数据](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
+    ![“Spark 应用程序数据”页上的页码。](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
-+ 将鼠标悬停在“数据”旁边的问号上以显示工具提示，或选择问号获取更多信息。
++ 如需查看更多信息，请将鼠标悬停在“Spark 应用程序数据”旁边的问号上以显示工具提示。 
 
-    ![Spark 应用程序更多信息的数据](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
+    ![从“Spark 应用程序数据”页获取更多信息。](./media/apache-azure-spark-history-server/sparkui-data-more-info.png)
 
-+ 单击“向我们提供反馈”发送问题反馈。 
++  若要发送有关问题的反馈，请选择“向我们提供反馈”。 
 
-    ![Spark 图形 -“向我们提供反馈”](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![从“Spark 应用程序数据”页提供反馈。](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
+## <a name="use-the-graph-tab-in-the-spark-history-server"></a>使用 Spark History Server 中的“图形”选项卡
 
-## <a name="graph-tab-in-apache-spark-history-server"></a>Apache Spark History Server 中的“图形”选项卡
-选择作业 ID，然后单击工具菜单中的“图形”获取作业图形视图。 
++ 选择作业 ID，然后选择工具菜单中的“图形”查看作业图形。  默认情况下，图形将显示所有作业。 使用“作业 ID”下拉菜单筛选结果。 
 
-+ 通过生成的作业图形查看作业概述。
+    ![“Spark 应用程序和作业图形”页上的“作业 ID”下拉菜单。](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
-+ 默认情况下，图形中会显示所有作业，可按“作业 ID”筛选作业。 
++ 默认已选择“进度”。  在“显示”下拉菜单中选择“已读取”或“已写入”来检查数据流。   
 
-    ![图形 - 作业 ID](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
+    ![在“Spark 应用程序和作业图形”页上检查数据流。](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
 
-+ 默认已选择“进度”，用户可以在“显示”下拉列表中选择“已读取/已写入”来检查数据流。   
++ 每个任务的背景色对应于一个热度地图。
 
-    ![图形 - 显示](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
+   ![“Spark 应用程序和作业图形”页上的热度地图。](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
-    彩色图形节点视图，其中显示了热度地图。
-
-    ![图形 - 热度地图](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
-
-+ 选择“播放”按钮可播放作业，选择“停止”按钮可随时停止播放。  彩色任务视图，其中显示了播放时的不同状态：
 
     |颜色 |说明 |
     |---|---|
     |绿色|作业已成功完成。|
-    |橙色|失败的任务实例，但不影响作业的最终结果。 这些任务具有稍后可能成功的重复实例或重试实例。|
+    |橙色|任务失败，但不影响作业的最终结果。 这些任务包括可能稍后会成功的重复或重试实例。|
     |蓝色|任务正在运行。|
     |白色|任务正在等待运行，或已跳过执行阶段。|
     |红色|任务已失败。|
 
-    ![图形颜色示例：正在运行](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
- 
-    跳过的阶段显示为白色。
-    ![图形颜色示例，跳过](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+     ![在“Spark 应用程序和作业图形”页上运行任务。](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
-    ![图形颜色示例：失败](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
- 
-    > [!NOTE]
-    > 允许播放每个作业。 不完整的作业不支持播放。
+     跳过的阶段以白色显示。
+    ![“Spark 应用程序和作业图形”页上已跳过的任务。](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
+    ![“Spark 应用程序和作业图形”页上失败的任务。](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
-+ 滚动鼠标滚轮以缩小/放大作业图形，或者单击“缩放到合适大小”使图形适合屏幕大小。 
- 
-    ![图形 - 缩放到合适大小](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
+     > [!NOTE]  
+     > 对于已完成的作业，可以使用播放。 选择“播放”按钮播放作业。  随时可以选择停止按钮来停止作业。 播放作业时，每个任务将以各种颜色显示其状态。 未完成的作业不支持播放。
 
-+ 如果存在失败的任务，将鼠标悬停在图形节点可查看工具提示；单击阶段可打开阶段页。
++ 滚动鼠标滚轮以放大或缩小作业图形，或者选择“缩放到合适大小”使图形适合屏幕大小。 
 
-    ![图形 - 工具提示](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+    ![在“Spark 应用程序和作业图形”页上选择“缩放到合适大小”。](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
 
-+ 在作业图形选项卡中，如果阶段的任务满足以下条件，则会显示该阶段的工具提示和小图标：
-  + 数据倾斜：数据读取大小 > 此阶段所有任务的平均数据读取大小 * 2 且数据读取大小 > 10 MB
-  + 时间倾斜：执行时间 > 此阶段所有任务的平均执行时间 * 2 且执行时间 > 2 分钟
++ 任务失败时，请将鼠标悬停在图形节点上以查看工具提示，然后选择阶段以在新页中将其打开。
 
-    ![图形倾斜图标](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
+    ![在“Spark 应用程序和作业图形”页上查看工具提示。](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
-+ 作业图形节点显示每个阶段的以下信息：
-  + ID。
-  + 名称或说明。
-  + 任务总数。
-  + 读取的数据：输入大小和随机读取大小之和。
-  + 写入的数据：输出大小和随机写入大小之和。
-  + 执行时间：第一次尝试的开始时间与最后一次尝试的完成时间的间隔时间。
-  + 行计数：输入记录数、输出记录数、随机读取记录数和随机写入记录数之和。
-  + 进度。
++ 在“Spark 应用程序和作业图形”页上，如果任务满足以下条件，则阶段会显示工具提示和小图标：
+  + 数据倾斜：数据读取大小 > 此阶段内所有任务的平均数据读取大小 * 2 且数据读取大小 > 10 MB。 
+  + 时间倾斜：执行时间 > 此阶段内所有任务的平均执行时间 * 2 且执行时间 > 2 分钟。 
 
-    > [!NOTE]
-    > 默认情况下，作业图形节点显示每个阶段的最后一次尝试的信息（阶段执行时间除外），但在播放期间，图形节点显示每次尝试的信息。
+    ![“Spark 应用程序和作业图形”页上的倾斜任务图标。](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
-    > [!NOTE]
++ 作业图形节点将显示有关每个阶段的以下信息：
+  + ID
+  + 名称或说明
+  + 任务总数
+  + 读取的数据：输入大小和随机读取大小之和
+  + 写入的数据：输出大小和随机写入大小之和
+  + 执行时间：从第一次尝试的开始时间到最后一次尝试的完成时间的时间和
+  + 行计数：输入记录、输出记录、随机读取记录和随机写入记录的总和
+  + 进度
+
+    > [!NOTE]  
+    > 默认情况下，作业图形节点显示每个阶段的最后一次尝试的信息（阶段执行时间除外）。 但在播放期间，作业图形节点将显示有关每次尝试的信息。
+
+    > [!NOTE]  
     > 对于读取和写入的数据大小，我们以 1 MB = 1000 KB = 1000 * 1000 字节为单位。
 
-+ 选择“向我们提供反馈”发送问题反馈。 
++ 选择“向我们提供反馈”发送有关问题的反馈。 
 
-    ![Spark 应用程序和作业图形反馈](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![“Spark 应用程序和作业图形”页上的反馈选项。](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
-## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Apache Spark History Server 中的“诊断”选项卡
+## <a name="use-the-diagnosis-tab-in-the-spark-history-server"></a>使用 Spark History Server 中的“诊断”选项卡
 
-选择作业 ID，然后选择工具菜单中的“诊断”以获取作业的“诊断”视图。  “诊断”选项卡包括“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。   
+选择作业 ID，然后选择工具菜单中的“诊断”查看作业诊断视图。  “诊断”选项卡包括“数据倾斜”、“时间倾斜”和“执行程序使用情况分析”。    
 
 + 通过选择相应的选项卡来查看“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。   
 
-    ![SparkUI - 诊断数据偏斜选项卡](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
+    ![“诊断”选项卡中的“数据倾斜”选项卡。](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
 
 ### <a name="data-skew"></a>数据倾斜
 
-选择“数据偏斜”选项卡，  系统会根据指定的参数显示相应的已偏斜任务。
+选择“数据倾斜”选项卡。  相应的倾斜任务根据指定的参数显示。
 
-+ **指定参数** - 第一部分显示用于检测数据偏斜的参数。 内置规则为：任务数据读取大于 3 倍任务数据读取平均值，且任务数据读取大于 10 MB。 如需针对倾斜的任务定义自己的规则，可以选择参数，然后“倾斜的阶段”和“倾斜字符型”部分会相应地进行刷新。  
+#### <a name="specify-parameters"></a>指定参数
 
-+ **偏斜的阶段** - 第二部分显示阶段，这些阶段的偏斜任务符合上面指定的条件。 如果某个阶段有多个偏斜的任务，则偏斜的阶段表仅显示最偏斜的任务（例如，数据偏斜对应的最大数据）。
+“指定参数”部分显示用于检测数据倾斜的参数。  默认规则为：任务数据读取大于 3 倍任务数据读取平均值，且任务数据读取大于 10 MB。 若要为倾斜任务定义自己的规则，可以选择参数。 “倾斜阶段”和“倾斜图表”部分会相应地更新。  
 
-    ![sparkui - 诊断数据偏斜选项卡](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+#### <a name="skewed-stage"></a>倾斜阶段
 
-+ **倾斜图表** - 当倾斜阶段表中的某一行处于选中状态时，倾斜图表会根据数据读取和执行时间显示更多任务分发详细信息。 倾斜的任务标记为红色，正常任务标记为蓝色。 出于性能考虑，此图表最多只显示 100 个示例任务。 任务详细信息显示在右下面板中。
+“倾斜阶段”部分显示存在符合指定条件的倾斜任务的阶段。  如果某个阶段有多个倾斜任务，则“倾斜阶段”部分仅显示最倾斜的任务（即，数据倾斜对应的最大数据）。 
 
-    ![sparkui - 阶段 10 的偏斜图表](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+![“诊断”选项卡中的“数据倾斜”选项卡的较大视图。](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+
+##### <a name="skew-chart"></a>倾斜图表
+
+在“倾斜阶段”表中选择某行时，“倾斜图表”会根据数据读取和执行时间显示更多任务分布详细信息。   倾斜任务标记为红色，普通任务标记为蓝色。 出于性能方面的考虑，图表最多显示 100 个示例任务。 任务详细信息显示在右下窗格中。
+
+![Spark UI 中“阶段 10”的倾斜图表。](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
 
 ### <a name="time-skew"></a>时间倾斜
 
-“时间倾斜”选项卡根据任务执行时间显示倾斜的任务。 
+“时间倾斜”  选项卡根据任务执行时间显示倾斜任务。
 
-+ **指定参数** - 第一部分显示用于检测时间偏斜的参数。 用于检测时间偏斜的默认条件是：任务执行时间长于平均执行时间的 3 倍，且任务执行时间长于 30 秒。 可以根据需要更改参数。 “倾斜的阶段”和“倾斜图表”显示相应的阶段和任务信息，就像上面的“数据倾斜”选项卡一样。   
+#### <a name="specify-parameters"></a>指定参数
 
-+ 选择“时间偏斜”  ，然后筛选的结果就会根据在“指定参数”部分设置的参数显示在“偏斜的阶段”部分。   选择“偏斜的阶段”部分的一个项目，然后相应的图表就会在第 3 部分绘制，任务详细信息显示在右下面板中。 
+“指定参数”部分显示用于检测时间倾斜的参数。  默认规则为：任务执行时间长于平均执行时间的 3 倍，且任务执行时间长于 30 秒。 可以按需更改相关参数。 与“数据倾斜”选项卡一样，“倾斜阶段”和“倾斜图表”显示相应的阶段和任务信息。   
 
-    ![sparkui - 诊断时间偏斜部分](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+如果选择“时间倾斜”，将会根据“指定参数”部分设置的参数，在“倾斜阶段”部分显示筛选的结果。    在“倾斜阶段”部分选择一项时，将在第三个部分绘制相应的图表，任务详细信息显示在右下窗格中。 
 
-### <a name="executor-usage-analysis"></a>执行程序使用情况分析
-执行程序使用图会可视化 Spark 作业实际执行程序分配和运行状态。  
+![“诊断”选项卡中的“时间倾斜”选项卡。](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
-+ 选择“执行程序使用情况分析”  ，然后系统就会绘制四种类型的有关执行程序使用情况的曲线，包括**已分配的执行程序**、**正在运行的执行程序**、**空闲执行程序**，以及**最大执行程序实例数**。 关于分配的执行程序，每个“执行程序已添加”或“执行程序已删除”事件都会增加或减少已分配执行程序数。如需详细的比较，可查看“作业”选项卡中的“事件时间线”。
+### <a name="executor-usage-analysis-graphs"></a>执行程序使用情况分析图形
 
-    ![“执行程序”选项卡](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+“执行程序使用情况图形”显示作业的实际执行程序分配和运行状态。   
 
-+ 选择彩色图标即可选中或取消选中所有草稿中的相应内容。
+选择“执行程序使用情况分析”时，会绘制有关执行程序使用情况的四条不同曲线：  “分配的执行程序”、“正在运行的执行程序”、“空闲执行程序”和“最大执行程序实例数目”。     每个“已添加执行程序”或“已删除执行程序”事件都将增加或减少分配的执行程序。   可以检查“作业”选项卡中的“事件时间线”进行更多比较。  
 
-    ![选择图表](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
+![“诊断”选项卡中的“执行程序使用情况分析”选项卡。](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
+选择彩色图标即可选中或取消选中所有草稿中的相应内容。
+
+ ![在“执行程序使用情况分析”选项卡中选择图表。](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 ## <a name="faq"></a>常见问题
 
-### <a name="1-revert-to-community-version"></a>1.还原到社区版本
+### <a name="how-do-i-revert-to-the-community-version"></a>如何还原到社区版？
 
-若要还原到社区版本，请执行以下步骤：
+若要还原到社区版，请执行以下步骤。
 
 1. 在 Ambari 中打开群集。
-1. 导航到“Spark2” > “配置” > “自定义 spark2-defaults”。   
-1. 选择“添加属性...”，添加 **spark.ui.enhancement.enabled=false** 并保存。 
+1. 导航到“Spark2”   > “配置”  。
+1. 选择“自定义 spark2-defaults”。 
+1. 选择“添加属性...”。 
+1. 添加 **spark.ui.enhancement.enabled=false** 并保存。
 1. 现在，该属性设置为 **false**。
 1. 选择“保存”  以保存配置。
 
-    ![功能关闭](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
+    ![在 Apache Ambari 中禁用功能。](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
-1. 在左侧面板中选择“Spark2”，在“摘要”选项卡下选择“Spark2 History Server”。   
+1. 在左侧面板中选择“Spark2”。  然后在“摘要”选项卡中选择“Spark2 History Server”。  
 
-    ![重启 server1](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
+    ![Apache Ambari 中的摘要视图。](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-1. 选择“重启 Spark2 History Server”以重启 History Server。  
+1. 若要重启 Spark History Server，请选择“Spark2 History Server”右侧的“已启动”按钮，然后从下拉菜单中选择“重启”。   
 
-    ![重启 server2](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
+    ![在 Apache Ambari 中重启 Spark History Server。](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
-9. 刷新 Spark History Server Web UI，该服务将还原到社区版本。
+1. 刷新 Spark History Server Web UI。 该服务将还原到社区版。
 
-### <a name="2-upload-history-server-event"></a>2.上传 History Server 事件
+### <a name="how-do-i-upload-a-spark-history-server-event-to-report-it-as-an-issue"></a>如何上传 Spark History Server 事件以将其报告为问题？
 
-如果遇到 History Server 错误，请执行以下步骤来提供事件：
+如果在 Spark History Server 中遇到错误，请执行以下步骤来报告事件。
 
-1. 在 History Server Web UI 中选择“下载”以下载事件。 
+1. 在 Spark History Server Web UI 中选择“下载”以下载事件。 
 
-    ![下载事件](./media/apache-azure-spark-history-server/sparkui-download-event.png)
+    ![在 Spark History Server UI 中下载事件。](./media/apache-azure-spark-history-server/sparkui-download-event.png)
 
-2. 在数据/图形选项卡中选择“向我们提供反馈”。 
+2. 在“Spark 应用程序和作业图形”页中选择“向我们提供反馈”。  
 
-    ![图形 - 反馈](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+    ![“Spark 应用程序和作业图形”页上的“向我们提供反馈”](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
-3. 提供遇到的错误的标题和说明，将 zip 文件拖放到编辑字段中，然后单击“提交新问题”。 
+3. 提供相关错误的标题和说明。 然后，将 .zip 文件拖放到编辑字段中，并选择“提交新问题”。 
 
-    ![提出问题](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
+    ![上传和提交新问题。](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
+### <a name="how-do-i-upgrade-a-jar-file-in-a-hotfix-scenario"></a>如何在修补方案中升级 .jar 文件？
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3.通过修补方案升级 jar 文件
-
-若要使用修补程序进行升级，请使用以下脚本，该脚本会升级 spark-enhancement.jar*。
+若要使用修补程序进行升级，请使用以下脚本，该脚本会升级 `spark-enhancement.jar*`。
 
 **upgrade_spark_enhancement.sh**：
 
@@ -291,17 +293,17 @@ Spark History Server Web UI 可能类似于：
     fi
    ```
 
-**使用情况**： 
+#### <a name="usage"></a>使用情况
 
 `upgrade_spark_enhancement.sh https://${jar_path}`
 
-**示例**：
+#### <a name="example"></a>示例
 
 `upgrade_spark_enhancement.sh https://${account_name}.blob.core.chinacloudapi.cn/packages/jars/spark-enhancement-${version}.jar` 
 
-**在 Azure 门户中使用 bash 文件**
+#### <a name="use-the-bash-file-from-the-azure-portal"></a>在 Azure 门户中使用 bash 文件
 
-1. 启动 [Azure 门户](https://ms.portal.azure.cn)，并选择自己的群集。
+1. 启动 [Azure 门户](https://ms.portal.azure.cn)，然后选择你的群集。
 2. 使用以下参数完成[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)：
 
     |属性 |Value |
@@ -316,16 +318,15 @@ Spark History Server Web UI 可能类似于：
 
 ## <a name="known-issues"></a>已知问题
 
-+ 目前，它仅适用于 Spark 2.3 和 2.4 群集。
++ 目前，Spark History Server 仅适用于 Spark 2.3 和2.4。
 
-+ 使用 RDD 的输入/输出数据不会显示在数据选项卡中。
++ 使用 RDD 的输入和输出数据不会显示在“数据”选项卡中。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [管理 HDInsight 上 Apache Spark 群集的资源](apache-spark-resource-manager.md)
-* [配置 Apache Spark 设置](apache-spark-settings.md)
++ [管理 HDInsight 上 Apache Spark 群集的资源](apache-spark-resource-manager.md)
++ [配置 Apache Spark 设置](apache-spark-settings.md)
 
-
-## <a name="contact-us"></a>联系我们
+## <a name="feedback"></a>反馈
 
 如有任何反馈，或使用此工具时遇到任何问题，请向 [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) 发送电子邮件。

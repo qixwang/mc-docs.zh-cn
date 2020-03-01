@@ -1,6 +1,7 @@
 ---
-title: Azure API 管理 API 导入中的限制和已知问题
-description: 有关使用 Open API、WSDL 或 WADL 格式导入到 Azure API 管理的已知问题和限制的详细信息。
+title: API 格式支持的限制和详细信息
+titleSuffix: Azure API Management
+description: 有关 Azure API 管理中 OpenAPI、WSDL 和 WADL 格式支持的已知问题和限制详细信息。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,27 +11,27 @@ ms.assetid: 7a5a63f0-3e72-49d3-a28c-1bb23ab495e2
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 11/06/2019
+origin.date: 01/02/2020
 ms.author: v-yiso
-ms.date: 12/09/2019
-ms.openlocfilehash: ef845ae805a0f49f6dba931100551dedf302a129
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.date: 02/24/2020
+ms.openlocfilehash: c895e73c065b4913b72f14fbd978dcd5c49f9cba
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657714"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497395"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 ## <a name="about-this-list"></a>关于此列表
-导入 API 时，可能会遇到一些限制或识别问题，需要对其进行纠正才能成功导入。 本文记录了这些限制或问题，并按照 API 的导入格式对其进行了组织。
 
-## <a name="open-api"> </a>OpenAPI/Swagger
+导入 API 时，可能会遇到一些限制或识别问题，需要对其进行纠正才能成功执行导入。 本文将阐述这些限制，内容按照 API 的导入格式进行组织。 本文还将介绍 OpenAPI 导出的工作原理。
+
+## <a name="open-api"> </a>OpenAPI/Swagger 导入限制
 
 如果在导入 OpenAPI 文档时收到错误，请确保事先已对其进行了验证。 可以使用 Azure 门户中的设计器（设计 - 前端 - OpenAPI 规范编辑器）或使用第三方工具（例如 <a href="https://editor.swagger.io">Swagger 编辑器</a>）进行验证。
 
-### <a name="open-api-general"> </a>常规
+### <a name="open-api-general"> </a>总则
 
 * 路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
 * **$ref** 指针不能引用外部文件。
@@ -51,7 +52,44 @@ ms.locfileid: "74657714"
 
 * 如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL  。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
 * 不支持“Examples”，但支持“example”   。
-* 不支持“Multipart/form-data”  。
+
+## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI 导入、更新和导出机制
+
+### <a name="add-new-api-via-openapi-import"></a>通过 OpenAPI 导入添加新的 API
+
+对于 OpenAPI 文档中所述的每个操作，将使用 Azure 资源名称和显示名称（分别设置为 `operationId` 和 `summary`）来创建新操作。 遵循下述规则规范化 `operationId` 值。 `summary` 值按原样导入，其长度限制为 300 个字符。
+
+如果未指定 `operationId`（即，不存在、为 `null` 或为空），将会通过合并 HTTP 方法和路径模板来生成 Azure 资源名称值，例如 `get-foo`。
+
+如果未指定 `summary`（即，不存在、为 `null` 或为空），`display name` 值将设置为 `operationId`。 如果未指定 `operationId`，将会通过合并 HTTP 方法和路径模板来生成显示名称值，例如 `Get - /foo`。
+
+### <a name="update-an-existing-api-via-openapi-import"></a>通过 OpenAPI 导入更新现有的 API
+
+在导入过程中，现有的 API 将会更改，以匹配 OpenAPI 文档中所述的 API。 对于 OpenAPI 文档中的每个操作，会通过将其 `operationId` 值与现有操作的 Azure 资源名称进行比较，将其与现有的操作进行匹配。
+
+如果找到匹配项，则现有操作的属性将“就地”更新。
+
+如果找不到匹配项，将使用前面部分中所述的规则创建新操作。 对于每个新操作，导入过程会尝试从具有相同 HTTP 方法和路径模板的现有操作复制策略。
+
+所有现有的不匹配操作将被删除。
+
+若要提高导入的可预测性，请遵循以下准则：
+
+- 确保为每个操作指定 `operationId` 属性。
+- 避免在完成初始导入后更改 `operationId`。
+- 切勿同时更改 `operationId` 和 HTTP 方法或路径模板。
+
+### <a name="export-api-as-openapi"></a>将 API 导出为 OpenAPI
+
+对于每个操作，其 Azure 资源名称将导出为 `operationId`，显示名称将导出为 `summary`。
+operationId 的规范化规则
+
+- 转换为小写字母。
+- 将非字母数字字符的每个序列替换为一条短划线，例如，`GET-/foo/{bar}?buzz={quix}` 将转换为 `get-foo-bar-buzz-quix-`。
+- 剪掉两侧的短划线，例如，`get-foo-bar-buzz-quix-` 将变成 `get-foo-bar-buzz-quix`
+- 截断为 76 个字符：比资源名称的最大长度限制少 4 个字符。
+- 如果需要，以 `-1, -2, ..., -999` 格式使用剩余的 4 个字符作为重复项删除后缀。
+
 
 ## <a name="wsdl"> </a>WSDL
 

@@ -7,14 +7,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 05/01/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5a85def2c770e746cc62cf363d6c993370af3e69
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 02ba6143465b59ae484ab693dc83a8dcaf17f418
+ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657731"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563520"
 ---
 # <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>为 Azure HDInsight 中的 Apache Kafka 设置安全套接字层 (SSL) 加密和身份验证
 
@@ -135,64 +135,153 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 
     ![在 Ambari 中编辑 kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 在**高级 kafka-env** 下，将以下行添加到“kafka-env template”  属性的末尾。
+1. 将新的配置属性添加到 server.properties 文件中。
 
-    ```config
-    # Needed to configure IP address advertising
-    ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
-    ssl.keystore.password=MyServerPassword123
-    ssl.key.password=MyServerPassword123
-    ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
-    ssl.truststore.password=MyServerPassword123
+    ```bash
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
+
+1. 转到 Ambari 配置 UI，确认新属性是否显示在“高级 kafka-env”和“kafka-env 模板”属性下。  
 
     ![在 Ambari 中编辑“kafka-env template”属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. 重启所有 Kafka 代理。
 1. 使用生成方和使用方选项启动管理客户端，以验证生成方和使用方是否在端口 9093 上运行。
 
+## <a name="client-setup-without-authentication"></a>客户端设置（不使用身份验证）
+
+如果不需要身份验证，仅设置 SSL 加密的步骤概括如下：
+
+1. 登录到 CA（活动头节点）。
+1. 将 CA 证书从 CA 计算机 (wn0) 复制到客户端计算机。
+1. 登录到客户端计算机 (hn1)，并导航到 `~/ssl` 文件夹。
+1. 将 CA 证书导入信任存储。
+1. 将 CA 证书导入密钥存储。
+
+以下代码片段中详细说明了这些步骤。
+
+1. 登录到 CA 节点。
+
+    ```bash
+    ssh sshuser@HeadNode0_Name
+    cd ssl
+    ```
+
+1. 将 CA 证书复制到客户端计算机
+
+    ```bash
+    scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
+    ```
+
+1. 登录到客户端计算机（待机头节点）。
+
+    ```bash
+    ssh sshuser@HeadNode1_Name
+    cd ssl
+    ```
+
+1. 将 CA 证书导入信任存储。
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. 将 CA 证书导入密钥存储。
+    
+    ```bash
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. 创建文件 `client-ssl-auth.properties`。 该文件应包含以下行：
+
+    ```config
+    security.protocol=SSL
+    ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
+    ssl.truststore.password=MyClientPassword123
+    ```
+
 ## <a name="client-setup-with-authentication"></a>客户端设置（使用身份验证）
 
 > [!Note]
-> 仅当同时设置了 SSL 加密**和**身份验证时，才需要执行以下步骤。 如果仅设置了加密，请转到[不使用身份验证的客户端设置](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)
+> 仅当同时设置了 SSL 加密**和**身份验证时，才需要执行以下步骤。 如果仅设置加密，请参阅[不使用身份验证的客户端设置](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)。
 
-遵循以下步骤完成客户端设置：
+以下四个步骤汇总了完成客户端安装所要执行的任务：
 
-1. 登录到客户端计算机 (hn1)。
+1. 登录到客户端计算机（待机头节点）。
 1. 创建 Java 密钥存储并获取代理的已签名证书。 然后将该证书复制到运行 CA 的 VM。
-1. 切换到 CA 计算机 (hn0)，为客户端证书签名。
-1. 转到客户端计算机 (hn1) 并导航到 `~/ssl` 文件夹。 将已签名的证书复制到客户端计算机。
+1. 切换到 CA 计算机（活动头节点），为客户端证书签名。
+1. 转到客户端计算机（待机头节点），并导航到 `~/ssl` 文件夹。 将已签名的证书复制到客户端计算机。
 
-```bash
-cd ssl
+下面提供了每个步骤的详细信息。
 
-# Create a java keystore and get a signed certificate for the broker. Then copy the certificate to the VM where the CA is running.
+1. 登录到客户端计算机（待机头节点）。
 
-keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
+    ```bash
+    ssh sshuser@HeadNode1_Name
+    ```
 
-keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123"
+1. 删除任何现有的 ssl 目录。
 
-# Copy the cert to the CA
-scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
+    ```bash
+    rm -R ~/ssl
+    mkdir ssl
+    cd ssl
+    ```
 
-# Switch to the CA machine (hn0) to sign the client certificate.
-cd ssl
-openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
+1. 创建 Java 密钥存储，并创建证书签名请求。 
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
-scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
+    ```bash
+    keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=HEADNODE1_FQDN" -storetype pkcs12
+    
+    keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -storepass "MyClientPassword123" -keypass "MyClientPassword123"
+    ```
 
-# Import CA cert to trust store
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+1. 将证书签名请求复制到 CA
 
-# Import CA cert to key store
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```bash
+    scp client-cert-sign-request sshuser@HeadNode0_Name:~/ssl/client-cert-sign-request
+    ```
 
-# Import signed client (cert client-cert-signed1) to keystore
-keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
-```
+1. 切换到 CA 计算机（活动头节点），并为客户端证书签名。
 
-最后，运行命令 `cat client-ssl-auth.properties`，以查看文件 `client-ssl-auth.properties`。 该文件应包含以下行：
+    ```bash
+    ssh sshuser@HeadNode0_Name
+    cd ssl
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in ~/ssl/client-cert-sign-request -out ~/ssl/client-cert-signed -days 365 -CAcreateserial -passin pass:MyClientPassword123
+    ```
+
+1. 将签名的客户端证书从 CA（活动头节点）复制到客户端计算机。
+
+    ```bash
+    scp client-cert-signed sshuser@HeadNode1_Name:~/ssl/client-signed-cert
+    ```
+
+1. 将 CA 证书复制到客户端计算机
+
+    ```bash
+    scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
+    ```
+
+1. 创建包含已签名证书的客户端存储，将 CA 证书导入密钥存储和信任存储：
+
+    ```bash
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ```
+
+1. 创建文件 `client-ssl-auth.properties`。 该文件应包含以下行：
 
 ```bash
 security.protocol=SSL
@@ -203,37 +292,50 @@ ssl.keystore.password=MyClientPassword123
 ssl.key.password=MyClientPassword123
 ```
 
-## <a name="client-setup-without-authentication"></a>客户端设置（不使用身份验证）
+## <a name="verification"></a>验证
 
-如果不需要身份验证，仅设置 SSL 加密的步骤如下：
+> [!Note]
+> 如果已安装 HDInsight 4.0 和 Kafka 2.1，可以使用控制台生成端/使用端来验证设置。 如果未安装，请在端口 9092 上运行 Kafka 生成端并向主题发送消息，然后在端口 9093 上运行使用 SSL 的 Kafka 使用端。
 
-1. 登录客户端计算机 (hn1)，并转到 `~/ssl` 文件夹
-1. 将已签名的证书从 CA 计算机 (wn0) 复制到客户端计算机。
-1. 将 CA 证书导入信任存储
-1. 将 CA 证书导入密钥存储
+### <a name="kafka-21-or-above"></a>Kafka 2.1 或更高版本
 
-下面的代码片段展示了这些步骤。
+1. 如果主题尚不存在，请创建一个主题。
 
-```bash
-cd ssl
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
+    ```
 
-# Copy signed cert to client machine
-scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert .
+1.  启动控制台生成端，并以配置文件的形式为生成端提供 `client-ssl-auth.properties` 的路径。
 
-# Import CA cert to truststore
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
+    ```
 
-# Import CA cert to keystore
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
-```
+1.  与客户端计算机建立另一个 SSH 连接，启动控制台使用端，并以配置文件的形式为使用端提供 `client-ssl-auth.properties` 的路径。
 
-最后，运行命令 `cat client-ssl-auth.properties`，以查看文件 `client-ssl-auth.properties`。 该文件应包含以下行：
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
+    ```
 
-```bash
-security.protocol=SSL
-ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=MyClientPassword123
-```
+### <a name="kafka-11"></a>Kafka 1.1
+
+1. 如果主题尚不存在，请创建一个主题。
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
+    ```
+
+1.  启动控制台生成端，并以配置文件的形式为生成端提供 client-ssl-auth.properties 的路径。
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
+    ```
+
+3.  与客户端计算机建立另一个 SSH 连接，启动控制台使用端，并以配置文件的形式为使用端提供 `client-ssl-auth.properties` 的路径。
+
+    ```bash
+    $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,31 +1,26 @@
 ---
-title: 用量 API 相关的常见问题解答 | Microsoft Docs
-description: Azure Stack 计量器列表、与 Azure 用量 API 的比较、使用时间和报告时间、错误代码。
+title: 用量 API 常见问题解答
+titleSuffix: Azure Stack Hub
+description: 有关 Azure Stack Hub 用量的常见问题列表，包括计量、与 Azure 用量 API 的比较、使用时间与报告时间，以及错误代码。
 services: azure-stack
 documentationcenter: ''
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 09/25/2019
-ms.date: 11/18/2019
+origin.date: 01/27/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: fb4dc2b63de273b6739bbb9c56c2b60098ad6338
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2a99978cd0b99dfeb278f6e97cbab51846506537
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336459"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540254"
 ---
-# <a name="frequently-asked-questions-about-azure-stack-usage"></a>有关 Azure Stack 使用情况的常见问题解答
+# <a name="frequently-asked-questions-about-azure-stack-hub-usage"></a>有关 Azure Stack Hub 用量的常见问题解答
 
-本文解答有关 Azure Stack 使用情况和 Azure Stack 使用情况 API 的一些常见问题。
+本文解答有关 Azure Stack Hub 用量和 Azure Stack Hub 用量 API 的一些常见问题。
 
 ## <a name="what-meter-ids-can-i-see"></a>可以查看哪些计量 ID？
 
@@ -82,7 +77,7 @@ ms.locfileid: "75336459"
   
 **计量 ID**：43DAF82B-4618-444A-B994-40C23F7CD438  
 **计量名称**：BlobTransactions  
-**单元**：请求计数（以万为单位）  
+**单元**：请求计数以万为单位  
 **注释**：Blob 服务请求数（以 10,000 计）。  
   
 **计量 ID**：9764F92C-E44A-498E-8DC1-AAD66587A810  
@@ -97,7 +92,7 @@ ms.locfileid: "75336459"
   
 **计量 ID**：EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
 **计量名称**：QueueTransactions  
-**单元**：请求计数（以万为单位）  
+**单元**：请求计数以万为单位  
 **注释**：队列服务请求数（以 10,000 计）。  
   
 **计量 ID**：E518E809-E369-4A45-9274-2017B29FFF25  
@@ -108,7 +103,7 @@ ms.locfileid: "75336459"
 **计量 ID**：DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2  
 **计量名称**：QueueDataTransOut  
 **单元**：传出数据 (GB)  
-**注释**：队列服务传出数据 (GB)  
+**注释**：队列服务传出数据 (GB)。
 
 ### <a name="compute"></a>计算
   
@@ -129,175 +124,78 @@ ms.locfileid: "75336459"
   
 ### <a name="managed-disks"></a>托管磁盘
 
-**计量 ID**：380874f9-300c-48e0-95a0-d2d9a21ade8f   
-**计量名称**：S4   
-**单元**：磁盘计数\*月   
-**注释**：标准托管磁盘 - 32 GB 
+**计量 ID**：380874f9-300c-48e0-95a0-d2d9a21ade8f **计量名称**：S4 **单位**：磁盘计数\*月 **备注**：标准托管磁盘 - 32 GB
 
-**计量 ID**：1b77d90f-427b-4435-b4f1-d78adec53222   
-**计量名称**：S6   
-**单元**：磁盘计数\*月   
-**注释**：标准托管磁盘 - 64 GB 
+**计量 ID**：1b77d90f-427b-4435-b4f1-d78adec53222 **计量名称**：S6 **单位**：磁盘计数\*月 **备注**：标准托管磁盘 - 64 GB
 
-**计量 ID**：d5f7731b-f639-404a-89d0-e46186e22c8d   
-**计量名称**：S10   
-**单元**：磁盘计数\*月   
-**注释**：标准托管磁盘 - 128 GB 
+**计量 ID**：d5f7731b-f639-404a-89d0-e46186e22c8d **计量名称**：S10 **单位**：磁盘计数\*月 **备注**：标准托管磁盘 - 128 GB
 
-**计量 ID**：ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
-**计量名称**：S15   
-**单元**：磁盘计数\*月   
-**注释**：标准托管磁盘 - 256 GB 
+**计量 ID**：ff85ef31-da5b-4eac-95dd-a69d6f97b18a **计量名称**：S15 **单位**：磁盘计数\*月 **备注**：标准托管磁盘 - 256 GB
 
-**计量 ID**：88ea9228-457a-4091-adc9-ad5194f30b6e   
-**计量名称**：S20   
-**单元**：磁盘计数\*月      
-**注释**：标准托管磁盘 - 512 GB 
+**计量 ID**：88ea9228-457a-4091-adc9-ad5194f30b6e **计量名称**：S20 **单位**：磁盘计数\*月 **备注**：标准托管磁盘 - 512 GB
 
-**计量 ID**：5b1db88a-8596-4002-8052-347947c26940   
-**计量名称**：S30   
-**单元**：磁盘计数\*月   
-**注释**：标准托管磁盘 - 1024 GB 
+**计量 ID**：5b1db88a-8596-4002-8052-347947c26940 **计量名称**：S30 **单位**：磁盘计数\*月 **备注**：标准托管磁盘 - 1024 GB
 
-**计量 ID**：7660b45b-b29d-49cb-b816-59f30fbab011   
-**计量名称**：P4   
-**单元**：磁盘计数\*月   
-**注释**：高级托管磁盘 - 32 GB 
+**计量 ID**：7660b45b-b29d-49cb-b816-59f30fbab011 **计量名称**：P4 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 32 GB
 
-**计量 ID**：817007fd-a077-477f-bc01-b876f27205fd   
-**计量名称**：P6   
-**单元**：磁盘计数\*月   
-**注释**：高级托管磁盘 - 64 GB 
+**计量 ID**：817007fd-a077-477f-bc01-b876f27205fd **计量名称**：P6 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 64 GB
 
-**计量 ID**：e554b6bc-96cd-4938-a5b5-0da990278519   
-**计量名称**：P10   
-**单元**：磁盘计数\*月   
-**注释**：高级托管磁盘 - 128 GB  
+**计量 ID**：e554b6bc-96cd-4938-a5b5-0da990278519 **计量名称**：P10 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 128 GB  
 
-**计量 ID**：cdc0f53a-62a9-4472-a06c-e99a23b02907   
-**计量名称**：P15  
-**单元**：磁盘计数\*月   
-**注释**：高级托管磁盘 - 256 GB 
+**计量 ID**：cdc0f53a-62a9-4472-a06c-e99a23b02907 **计量名称**：P15 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 256 GB
 
-**计量 ID**：b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
-**计量名称**：P20   
-**单元**：磁盘计数\*月   
-**注释**：高级托管磁盘 - 512 GB 
+**计量 ID**：b9cb2d1a-84c2-4275-aa8b-70d2145d59aa **计量名称**：P20 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 512 GB
 
-**计量 ID**：06bde724-9f94-43c0-84c3-d0fc54538369   
-**计量名称**：P30   
-**单元**：磁盘计数\*月   
-**注释**：高级托管磁盘 - 1024 GB 
+**计量 ID**：06bde724-9f94-43c0-84c3-d0fc54538369 **计量名称**：P30 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 1024 GB
 
-**计量 ID**：7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
-**计量名称**：ActualStandardDiskSize   
-**单元**：GB\*月      
-**注释**：标准托管磁盘的磁盘实际大小  
+**计量 ID**：7ba084ec-ef9c-4d64-a179-7732c6cb5e28 **计量名称**：ActualStandardDiskSize **单位**：GB\*月**说明**：标准托管磁盘的磁盘实际大小。
 
 **计量 ID**：daef389a-06e5-4684-a7f7-8813d9f792d5  
-**计量名称**：ActualPremiumDiskSize   
-**单元**：GB\*月      
-**注释**：高级托管磁盘的磁盘实际大小 
+**计量名称**：ActualPremiumDiskSize **单位**：GB\*月**说明**：高级托管磁盘的磁盘实际大小。
 
 **计量 ID**：108fa95b-be0d-4cd9-96e8-5b0d59505df1  
-**计量名称**：ActualStandardSnapshotSize   
-**单元**：GB\*月   
-**注释**：托管标准快照的磁盘实际大小。  
+**计量名称**：ActualStandardSnapshotSize **单位**：GB\*月**说明**：托管标准快照的磁盘实际大小。  
 
-**计量 ID**：578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
-**计量名称**：ActualPremiumSnapshotSize   
-**单元**：GB\*月   
-**注释**：高级托管磁盘的实际大小快照。   
+**计量 ID**：578ae51d-4ef9-42f9-85ae-42b52d3d83ac **计量名称**：ActualPremiumSnapshotSize **单位**：GB\*月**说明**：高级托管磁盘的实际大小快照。
 
-**计量 ID**：5d76e09f-4567-452a-94cc-7d1f097761f0   
-**计量名称**：S4   
-**单元**：磁盘计数\*小时   
-**注释**：标准托管磁盘 - 32 GB（已弃用） 
+**计量 ID**：5d76e09f-4567-452a-94cc-7d1f097761f0 **计量名称**：S4 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 32 GB（已弃用）
 
-**计量 ID**：dc9fc6a9-0782-432a-b8dc-978130457494   
-**计量名称**：S6   
-**单元**：磁盘计数\*小时   
-**注释**：标准托管磁盘 - 64 GB（已弃用） 
+**计量 ID**：dc9fc6a9-0782-432a-b8dc-978130457494 **计量名称**：S6 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 64 GB（已弃用）
 
-**计量 ID**：e5572fce-9f58-49d7-840c-b168c0f01fff   
-**计量名称**：S10   
-**单元**：磁盘计数\*小时   
-**注释**：标准托管磁盘 - 128 GB（已弃用） 
+**计量 ID**：e5572fce-9f58-49d7-840c-b168c0f01fff **计量名称**：S10 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 128 GB（已弃用）
 
-**计量 ID**：9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
-**计量名称**：S15   
-**单元**：磁盘计数\*小时   
-**注释**：标准托管磁盘 - 256 GB（已弃用） 
+**计量 ID**：9a8caedd-1195-4cd5-80b4-a4c22f9302b8 **计量名称**：S15 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 256 GB（已弃用）
 
-**计量 ID**：5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
-**计量名称**：S20   
-**单元**：磁盘计数\*小时      
-**注释**：标准托管磁盘 - 512 GB（已弃用） 
+**计量 ID**：5938f8da-0ecd-4c48-8d5a-c7c6c23546be **计量名称**：S20 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 512 GB（已弃用）
 
-**计量 ID**：7705a158-bd8b-4b2b-b4c2-0782343b81e6   
-**计量名称**：S30   
-**单元**：磁盘计数\*小时   
-**注释**：标准托管磁盘 - 1024 GB（已弃用） 
+**计量 ID**：7705a158-bd8b-4b2b-b4c2-0782343b81e6 **计量名称**：S30 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 1024 GB（已弃用）
 
-**计量 ID**：5c105f5f-cbdf-435c-b49b-3c7174856dcc   
-**计量名称**：P4   
-**单元**：磁盘计数\*小时   
-**注释**：高级托管磁盘 - 32 GB（已弃用） 
+**计量 ID**：5c105f5f-cbdf-435c-b49b-3c7174856dcc **计量名称**：P4 **单位**：磁盘计数\*小时 **备注**：高级托管磁盘 - 32 GB（已弃用）
 
-**计量 ID**：518b412b-1927-4f25-985f-4aea24e55c4f   
-**计量名称**：P6   
-**单元**：磁盘计数\*小时   
-**注释**：高级托管磁盘 - 64 GB（已弃用） 
+**计量 ID**：518b412b-1927-4f25-985f-4aea24e55c4f **计量名称**：P6 **单位**：磁盘计数\*小时 **备注**：高级托管磁盘 - 64 GB（已弃用）
 
-**计量 ID**：5cfb1fed-0902-49e3-8217-9add946fd624   
-**计量名称**：P10   
-**单元**：磁盘计数\*小时   
-**注释**：高级托管磁盘 - 128 GB（已弃用）  
+**计量 ID**：5cfb1fed-0902-49e3-8217-9add946fd624 **计量名称**：P10 **单位**：磁盘计数\*小时 **备注**：高级托管磁盘 - 128 GB（已弃用）  
 
-**计量 ID**：8de91c94-f740-4d9a-b665-bd5974fa08d4   
-**计量名称**：P15  
-**单元**：磁盘计数\*小时   
-**注释**：高级托管磁盘 - 256 GB（已弃用） 
+**计量 ID**：8de91c94-f740-4d9a-b665-bd5974fa08d4 **计量名称**：P15  
+**单元**：磁盘计数\*小时 **备注**：高级托管磁盘 - 256 GB（已弃用）
 
-**计量 ID**：c7e7839c-293b-4761-ae4c-848eda91130b   
-**计量名称**：P20   
-**单元**：磁盘计数\*小时   
-**注释**：高级托管磁盘 - 512 GB（已弃用） 
+**计量 ID**：c7e7839c-293b-4761-ae4c-848eda91130b **计量名称**：P20 **单位**：磁盘计数\*小时 **备注**：高级托管磁盘 - 512 GB（已弃用）
 
-**计量 ID**：9f502103-adf4-4488-b494-456c95d23a9f   
-**计量名称**：P30   
-**单元**：磁盘计数\*小时   
-**注释**：高级托管磁盘 - 1024 GB（已弃用） 
+**计量 ID**：9f502103-adf4-4488-b494-456c95d23a9f **计量名称**：P30 **单位**：磁盘计数\*小时 **备注**：高级托管磁盘 - 1024 GB（已弃用）
 
-**计量 ID**：8a409390-1913-40ae-917b-08d0f16f3c38   
-**计量名称**：ActualStandardDiskSize   
-**单元**：字节\*小时      
-**注释**：标准托管磁盘的磁盘实际大小（已弃用）  
+**计量 ID**：8a409390-1913-40ae-917b-08d0f16f3c38 **计量名称**：ActualStandardDiskSize **单位**：字节\*小时 **备注**：标准托管磁盘的磁盘实际大小（已弃用）。  
 
 **计量 ID**：1273b16f-8458-4c34-8ce2-a515de551ef6  
-**计量名称**：ActualPremiumDiskSize   
-**单元**：字节\*小时      
-**注释**：高级托管磁盘的磁盘实际大小（已弃用） 
+**计量名称**：ActualPremiumDiskSize **单位**：字节\*小时 **备注**：高级托管磁盘的磁盘实际大小（已弃用）。
 
 **计量 ID**：89009682-df7f-44fe-aeb1-63fba3ddbf4c  
-**计量名称**：ActualStandardSnapshotSize   
-**单元**：字节\*小时   
-**注释**：托管标准快照的磁盘实际大小（已弃用） 
+**计量名称**：ActualStandardSnapshotSize **单位**：字节\*小时 **备注**：托管标准快照的磁盘实际大小（已弃用）。
 
-**计量 ID**：95b0c03f-8a82-4524-8961-ccfbf575f536   
-**计量名称**：ActualPremiumSnapshotSize   
-**单元**：字节\*小时   
-**注释**：高级托管磁盘的实际大小（已弃用）快照 
+**计量 ID**：95b0c03f-8a82-4524-8961-ccfbf575f536 **计量名称**：ActualPremiumSnapshotSize **单位**：字节\*小时 **备注**：高级托管磁盘的实际大小（已弃用）快照。
 
-**计量 ID**：75d4b707-1027-4403-9986-6ec7c05579c8   
-**计量名称**：ActualStandardSnapshotSize   
-**单元**：GB\*月   
-**注释**：托管标准快照的磁盘实际大小（已弃用）  
+**计量 ID**：75d4b707-1027-4403-9986-6ec7c05579c8 **计量名称**：ActualStandardSnapshotSize **单位**：GB\*月**说明**：托管标准快照的磁盘实际大小（已弃用）。
 
-**计量 ID**：5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
-**计量名称**：ActualPremiumSnapshotSize   
-**单元**：GB\*月   
-**注释**：高级托管磁盘的实际大小（已弃用）快照  
+**计量 ID**：5ca1cbb9-6f14-4e76-8be8-1ca91547965e **计量名称**：ActualPremiumSnapshotSize **单位**：GB\*月**说明**：高级托管磁盘的实际大小（已弃用）快照。
 
 ### <a name="sql-rp"></a>Sql RP
   
@@ -306,30 +204,34 @@ ms.locfileid: "75336459"
 **单元**：MB\*小时  
 **注释**：创建时的总数据库容量。 如果以每日粒度调用用量 API，计量器会返回 MB 乘以小时数。  
   
-### <a name="mysql-rp"></a>MySql RP   
+### <a name="mysql-rp"></a>MySql RP
   
 **计量 ID**：E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
 **计量名称**：DatabaseSizeHourMySqlMeter  
 **单元**：MB\*小时  
-**注释**：创建时的总数据库容量。 如果以每日粒度调用用量 API，计量器会返回 MB 乘以小时数。    
-### <a name="key-vault"></a>密钥保管库   
+**注释**：创建时的总数据库容量。 如果以每日粒度调用用量 API，计量器会返回 MB 乘以小时数。
+
+### <a name="key-vault"></a>密钥保管库
   
 **计量 ID**：EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
 **计量名称**：Key Vault 事务  
-**单元**：请求计数（以万为单位）  
+**单元**：请求计数以万为单位  
 **注释**：Key Vault 数据平面接收的 REST API 请求数。  
   
 **计量 ID**：2C354225-B2FE-42E5-AD89-14F0EA302C87  
 **计量名称**：高级密钥事务  
 **单元**：10K 事务  
-**注释**：RSA 3K/4K，ECC 密钥事务。 （预览版）。  
+**注释**：RSA 3K/4K，ECC 密钥事务（预览版）。  
   
-### <a name="app-service"></a>应用服务   
+### <a name="app-service"></a>应用服务
   
 **计量 ID**：190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **计量名称**：应用服务  
 **单元**：虚拟核心小时数  
-**注释**：用于运行应用服务的虚拟核心数。 注意：Azure 使用此计量对基于 Azure Stack 的应用服务收费。 云解决方案提供商可能使用其他应用服务计量（如下所示）来计算其租户的使用情况。  
+**注释**：用于运行应用服务的虚拟核心数。
+
+>[!NOTE]
+>Azure 使用此计量对基于 Azure Stack Hub 的应用服务收费。 云解决方案提供商可能使用其他应用服务计量（如下所示）来计算其租户的使用情况。  
   
 **计量 ID**：67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **计量名称**：Functions 请求  
@@ -348,30 +250,25 @@ ms.locfileid: "75336459"
   
 **计量 ID**：539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
 **计量名称**：免费应用服务小时数  
-**单元**：1 小时  
-**注释**：免费应用服务计划的每小时使用情况。 计划按单个应用来计量。  
+**单元**：1 小时 **备注**：免费应用服务计划的每小时使用情况。 计划按单个应用来计量。  
   
 **计量 ID**：88039D51-A206-3A89-E9DE-C5117E2D10A6  
 **计量名称**：小型标准应用服务小时数  
-**单元**：1 小时  
-**注释**：根据大小与实例数进行计算。  
+**单元**：1 小时 **备注**：根据大小与实例数进行计算。  
   
 **计量 ID**：83A2A13E-4788-78DD-5D55-2831B68ED825  
 **计量名称**：中型标准应用服务小时数  
-**单元**：1 小时  
-**注释**：根据大小与实例数进行计算。  
+**单元**：1 小时 **备注**：根据大小与实例数进行计算。  
   
 **计量 ID**：1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
 **计量名称**：大型标准应用服务小时数  
-**单元**：1 小时  
-**注释**：根据大小与实例数进行计算。  
+**单元**：1 小时 **备注**：根据大小与实例数进行计算。  
   
-### <a name="custom-worker-tiers"></a>自定义辅助角色层   
+### <a name="custom-worker-tiers"></a>自定义辅助角色层
   
-**计量 ID**：  自定义辅助角色层  
+**计量 ID**：*自定义辅助角色层*
 **计量名称**：自定义辅助角色层  
-**单元**：小时  
-**注释**：确定性计量 ID 根据 SKU 和自定义辅助角色层名称来创建。 此计量 ID 对每个自定义辅助角色层来说都是唯一的。  
+**单元**：小时 **备注**：确定性计量 ID 根据 SKU 和自定义辅助角色层名称来创建。 此计量 ID 对每个自定义辅助角色层来说都是唯一的。  
   
 **计量 ID**：264ACB47-AD38-47F8-ADD3-47F01DC4F473  
 **计量名称**：SNI SSL  
@@ -379,14 +276,11 @@ ms.locfileid: "75336459"
 **注释**：应用服务支持两种类型的 SSL 连接：服务器名称指示 (SNI) SSL 连接和 IP 地址 SSL 连接。 基于 SNI 的 SSL 适用于现代浏览器，而基于 IP 的 SSL 适用于所有浏览器。  
   
 **计量 ID**：60B42D72-DC1C-472C-9895-6C516277EDB4  
-**计量名称**：IP SSL  
-**单元**：按基于 IP 的 SSL 绑定  
-**注释**：应用服务支持两种类型的 SSL 连接：服务器名称指示 (SNI) SSL 连接和 IP 地址 SSL 连接。 基于 SNI 的 SSL 适用于现代浏览器，而基于 IP 的 SSL 适用于所有浏览器。  
+**计量名称**：IP SSL **单位**：按基于 IP 的 SSL 绑定 **备注**：应用服务支持两种类型的 SSL 连接：服务器名称指示 (SNI) SSL 连接和 IP 地址 SSL 连接。 基于 SNI 的 SSL 适用于现代浏览器，而基于 IP 的 SSL 适用于所有浏览器。  
   
 **计量 ID**：73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
-**计量名称**：Web 进程  
-**单元**：  
-**注释**：按每小时每活动站点计算。  
+**计量名称**：Web 进程 **单位**：  
+**注释**：按每小时每活动站点计算。
   
 **计量 ID**：5887D39B-0253-4E12-83C7-03E1A93DFFD9  
 **计量名称**：外部出口带宽  
@@ -398,8 +292,8 @@ ms.locfileid: "75336459"
 
 用量数据报告包含两个主要时间值：
 
-* **报告时间**。 用量事件进入用量系统的时间
-* **使用时间**。 使用 Azure Stack 资源的时间
+* **报告时间**：用量事件进入用量系统的时间。
+* **使用时间**：使用 Azure Stack Hub 资源的时间。
 
 你可能会发现，特定用量事件的“使用时间”与“报告时间”值有差异。 在任何环境中，延迟可能长达数小时。
 
@@ -421,18 +315,18 @@ ms.locfileid: "75336459"
 
 正在运行的和已停止的 VM 会生成使用情况数据。 与 Azure 一致的是，必须解除分配才能停止使用情况数据的发出。 如果门户不可用，但计算资源提供程序仍在运行，则会发出使用情况数据。
 
-## <a name="how-do-i-extract-usage-data-from-the-azure-stack-usage-apis"></a>如何通过 Azure Stack 使用情况 API 提取使用情况数据？
+## <a name="how-do-i-extract-usage-data-from-the-azure-stack-hub-usage-apis"></a>如何通过 Azure Stack Hub 用量 API 提取用量数据？
 
-若要在 Azure Stack 上通过本地使用情况 API 提取使用情况数据，最简单的方法是使用 [GitHub 上的使用情况摘要脚本](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1)。 该脚本需要将开始日期和结束日期作为输入参数。
+若要在 Azure Stack Hub 上通过本地用量 API 提取用量数据，最简单的方法是使用 [GitHub 上的用量摘要脚本](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1)。 该脚本需要将开始日期和结束日期作为输入参数。
 
 或者，可以使用 REST API，如[提供程序资源使用情况 API](azure-stack-provider-resource-api.md) 和[租户资源使用情况 API](azure-stack-tenant-resource-usage-api.md) 文章中所述。
 
-## <a name="how-can-i-associate-usage-extracted-from-azure-usage-apis-to-a-specific-azure-stack-user-subscription"></a>如何将通过 Azure 使用情况 API 提取的使用情况与特定的 Azure Stack 用户订阅相关联？
+## <a name="how-can-i-associate-usage-extracted-from-azure-usage-apis-to-a-specific-azure-stack-hub-user-subscription"></a>如何将通过 Azure 用量 API 提取的用量与特定的 Azure Stack Hub 用户订阅相关联？
 
-使用情况记录包括名为 **additionalinfo** 的属性包，其中包括 Azure Stack 订阅 ID。 此订阅是发出相应使用情况记录的用户订阅。
+用量记录包含名为 **additionalinfo** 的属性包，其中包括 Azure Stack Hub 订阅 ID。 此 ID 是发出相应用量记录的用户订阅。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Stack 中的客户计费和退款](azure-stack-billing-and-chargeback.md)
+* [Azure Stack Hub 中的客户计费和退款](azure-stack-billing-and-chargeback.md)
 * [提供程序资源使用情况 API](azure-stack-provider-resource-api.md)
 * [租户资源使用情况 API](azure-stack-tenant-resource-usage-api.md)

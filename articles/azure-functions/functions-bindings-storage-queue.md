@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure 队列存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure 队列存储触发器和输出绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: dfebfce811650a83cf33d22eaa4f969a3857d637
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 306e12f3175f20079c365b12ae45e80f11a1bc31
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116900"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494431"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -21,7 +21,7 @@ ms.locfileid: "76116900"
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包版本 2.x 中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "76116900"
 
 ## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包 3.x 版中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包版本 3.x 中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -40,16 +40,7 @@ ms.locfileid: "76116900"
 
 在队列中收到新项时，可以使用队列触发器启动一个函数。 队列消息作为输入提供给该函数。
 
-## <a name="trigger---example"></a>触发器 - 示例
-
-参阅语言特定的示例：
-
-* [C#](#trigger---c-example)
-* [C# 脚本 (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
-
-### <a name="trigger---c-example"></a>触发器 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示可在每次处理某个队列项之后轮询 `myqueue-items` 队列并写入日志的 [C# 函数](functions-dotnet-class-library.md)。
 
@@ -66,7 +57,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
@@ -121,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 [用法](#trigger---usage)部分解释了 function.json 中的 `name` 属性命名的 `myQueueItem`。  [消息元数据部分](#trigger---message-metadata)解释了所有其他所示变量。
 
-### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个队列触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
@@ -166,7 +157,8 @@ module.exports = async function (context, message) {
 
 [用法](#trigger---usage)部分解释了 function.json 中的 `name` 属性命名的 `myQueueItem`。  [消息元数据部分](#trigger---message-metadata)解释了所有其他所示变量。
 
-### <a name="trigger---java-example"></a>触发器 - Java 示例
+
+# <a name="java"></a>[Java](#tab/java)
 
 以下 Java 示例显示了一个存储队列触发器函数，该函数用于记录放入队列 `myqueuename` 的触发消息。
 
@@ -182,11 +174,15 @@ module.exports = async function (context, message) {
  }
  ```
 
-## <a name="trigger---attributes"></a>触发器 - 特性
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>触发器 - 特性和注释
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)，请使用以下属性来配置队列触发器：
 
-- QueueTriggerAttribute
+* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
   该特性的构造函数采用要监视的队列的名称，如以下示例中所示：
 
@@ -200,7 +196,7 @@ module.exports = async function (context, message) {
   }
   ```
 
-  可以设置 `Connection` 属性来指定要使用的存储帐户，如以下示例中所示：
+  可以设置 `Connection` 属性来指定要使用的存储帐户连接字符串，如以下示例中所示：
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -212,7 +208,7 @@ module.exports = async function (context, message) {
   }
   ```
 
-  有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
+  有关完整示例，请参阅[触发器 - C# 示例](#trigger)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -238,6 +234,43 @@ module.exports = async function (context, message) {
 * 应用到类的 `StorageAccount` 特性。
 * “AzureWebJobsStorage”应用设置。
 
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+使用 `QueueTrigger` 注释可以访问触发函数的队列。 以下示例通过 `message` 参数向函数提供队列消息。
+
+```java
+package com.function;
+import com.microsoft.azure.functions.annotation.*;
+import java.util.Queue;
+import com.microsoft.azure.functions.*;
+
+public class QueueTriggerDemo {
+    @FunctionName("QueueTriggerDemo")
+    public void run(
+        @QueueTrigger(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Queue message: " + message);
+    }
+}
+```
+
+| 属性    | 说明 |
+|-------------|-----------------------------|
+|`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
+|`queueName`  | 在存储帐户中声明队列名称。 |
+|`connection` | 指向存储帐户连接字符串。 |
+
+---
+
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
 下表解释了在 function.json  文件和 `QueueTrigger` 特性中设置的绑定配置属性。
@@ -254,7 +287,9 @@ module.exports = async function (context, message) {
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-在 C# 和 C# 脚本中，可以使用 `string paramName` 等方法参数访问消息数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
+# <a name="c"></a>[C#](#tab/csharp)
+
+使用 `string paramName` 等方法参数访问消息数据。 可以绑定到以下任何类型：
 
 * 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
 * `string`
@@ -263,7 +298,26 @@ module.exports = async function (context, message) {
 
 如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-在 JavaScript 中，可以使用 `context.bindings.<name>` 访问队列项有效负载。 如果有效负载为 JSON，则会将它反序列化为对象。
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+使用 `string paramName` 等方法参数访问消息数据。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
+
+* 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+可通过 `context.bindings.<NAME>` 使用队列项有效负载，其中，`<NAME>` 与 *function.json* 中定义的名称相匹配。 如果有效负载为 JSON，该值将反序列化为对象。
+
+# <a name="java"></a>[Java](#tab/java)
+
+使用 [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) 注释可以访问触发函数的队列消息。
+
+---
 
 ## <a name="trigger---message-metadata"></a>触发器 - 消息元数据
 
@@ -316,21 +370,12 @@ module.exports = async function (context, message) {
 
 使用 Azure 队列存储输出绑定可将消息写入队列。
 
-## <a name="output---example"></a>输出 - 示例
-
-参阅语言特定的示例：
-
-* [C#](#output---c-example)
-* [C# 脚本 (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
-* [Java](#output---java-example)
-
-### <a name="output---c-example"></a>输出 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示针对收到的每个 HTTP 请求创建队列消息的[C# 函数](functions-dotnet-class-library.md)。
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
+[StorageAccount("MyStorageConnectionAppSetting")]
 public static class QueueFunctions
 {
     [FunctionName("QueueOutput")]
@@ -343,7 +388,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>输出 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项  。
 
@@ -361,7 +406,7 @@ function.json  文件如下所示：
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -404,7 +449,7 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>输出 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)  。 该函数针对收到的每个 HTTP 请求创建一个队列项。
 
@@ -422,7 +467,7 @@ function.json  文件如下所示：
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -454,28 +499,32 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>输出 - Java 示例
+
+# <a name="java"></a>[Java](#tab/java)
 
  以下示例演示一个 Java 函数，该函数在受到 HTTP 请求触发时创建一个队列消息。
 
 ```java
 @FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }
 ```
 
-在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将写入队列存储的参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是 POJO 的任何本机 Java 类型。
+在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将写入队列存储的参数使用 `@QueueOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 `T` 是 POJO 的任何本机 Java 类型。
 
+---
 
-## <a name="output---attributes"></a>输出 - 特性
+## <a name="output---attributes-and-annotations"></a>输出 - 特性和注释
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 `QueueAttribute`。
+# <a name="c"></a>[C#](#tab/csharp)
+
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs)。
 
 该特性将应用到 `out` 参数，或应用到函数的返回值。 该特性的构造函数采用队列的名称，如以下示例中所示：
 
@@ -499,9 +548,50 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output)。
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅“触发器 - 特性”。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+使用 `QueueOutput` 注释可以写入一条消息作为函数的输出。 以下示例演示一个用于创建队列消息的 HTTP 触发的函数。
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| 属性    | 说明 |
+|-------------|-----------------------------|
+|`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
+|`queueName`  | 在存储帐户中声明队列名称。 |
+|`connection` | 指向存储帐户连接字符串。 |
+
+与 `QueueOutput` 注释关联的参数类型化为 [OutputBinding\<T\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) 实例。
+
+---
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -519,7 +609,9 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 和 C# 脚本中，可以使用 `out T paramName` 等方法参数编写一条队列消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
+# <a name="c"></a>[C#](#tab/csharp)
+
+使用 `out T paramName` 等方法参数写入一条队列消息。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
 * 可序列化为 JSON 的对象
 * `string`
@@ -533,8 +625,35 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-在 JavaScript 函数中，可以使用 `context.bindings.<name>` 访问输出队列消息。 可对队列项有效负载使用字符串或 JSON 可序列化对象。
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
+使用 `out T paramName` 等方法参数写入一条队列消息。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
+
+* 可序列化为 JSON 的对象
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+
+在 C# 和 C# 脚本中，可使用以下类型之一编写多条队列消息： 
+
+* `ICollector<T>` 或 `IAsyncCollector<T>`
+* [CloudQueue](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+可通过 `context.bindings.<NAME>` 使用输出队列项，其中，`<NAME>` 与 *function.json* 中定义的名称相匹配。 可对队列项有效负载使用字符串或 JSON 可序列化对象。
+
+# <a name="java"></a>[Java](#tab/java)
+
+可通过两个选项使用 [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) 注释从函数输出事件中心消息：
+
+- **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为事件中心消息。
+
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
@@ -567,7 +686,6 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
     }
 }
 ```
-
 
 |属性  |默认 | 说明 |
 |---------|---------|---------|
