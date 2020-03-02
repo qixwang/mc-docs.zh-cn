@@ -4,17 +4,17 @@ description: 本文介绍如何在 Azure 流分析作业中更新输入和输出
 services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/07/2019
-ms.openlocfilehash: 7f49c5809013e492e2b2a68e1aeac4277a984573
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: bb487ccca946ecbd118146927f7cfe8cd46a69b8
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674802"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155047"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>轮转流分析作业的输入和输出的登录凭据
 

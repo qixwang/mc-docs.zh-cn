@@ -1,17 +1,17 @@
 ---
 title: Azure Service Fabric CLI- sfctl cluster
-description: 介绍 Service Fabric CLI sfctl cluster 命令。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含一系列用于管理群集的命令。
 author: rockboyfor
 ms.topic: reference
-origin.date: 09/17/2019
-ms.date: 01/13/2020
+origin.date: 01/16/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 84baa4b20e8a34546071aec3e43e042ea675b100
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.openlocfilehash: 175b6c58325679020a551358d0e30d2e4126f203
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742244"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540007"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
@@ -161,7 +161,7 @@ ms.locfileid: "75742244"
 
 |参数|说明|
 | --- | --- |
-| --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 - 65535 - 选择“All”- 1 - 选择“Running”- 2 - 选择“RollingBack”- 8 - 选择“Completed”- 16 - 选择“Faulted”- 32 - 选择“Canceled”- 64 - 选择“ForceCancelled”。  默认值\: 65535。 |
+| --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 - 65535 - 选择“All”- 1 - 选择“Running”- 2 - 选择“RollingBack”- 8 - 选择“Completed”- 16 - 选择“Faulted”- 32 - 选择“Cancelled”- 64 - 选择“ForceCancelled”。  默认值\: 65535。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 | --type-filter | 用于根据用户造成的操作的 OperationType 进行筛选。 - 65535 - 选择“All” - 1 - 选择“PartitionDataLoss”。 - 2 - 选择 PartitionQuorumLoss。 - 4 - 选择 PartitionRestart。 - 8 - 选择 NodeTransition。  默认值\: 65535。 |
 
@@ -236,7 +236,7 @@ ms.locfileid: "75742244"
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br /><br /> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br /><br /> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
 | --timeout -t | 默认值\: 60。 |
-| --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br /><br /> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端在转换时才报告，则可以将生存时间设置为无限。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
+| --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br /><br /> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端以非定期的方式报告，它们可以将生存时间设置为无限。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -251,7 +251,7 @@ ms.locfileid: "75742244"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 连接到 Service Fabric 群集终结点。
 
-如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  如果没有首先运行此命令，则没有到集群的连接，包括到 localhost 的连接。 但连接到本地群集时，不需要显式终结点。
+如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  如果没有首先运行此命令，则没有到集群的连接，包括到 localhost 的连接。 但连接到本地群集时，不需要显式终结点。  如果使用的是自签名证书，或不是由知名 CA 签署的其他证书，请传入--ca 参数以确保验证通过。 如果不在生产群集上，若要跳过客户端验证（对于自签名或不是知名的 CA 签名非常有用），请使用 --no-verify 选项。 不建议用于生产群集（尽管这是可能的）。 否则，可能会导致证书验证错误。
 
 ### <a name="arguments"></a>参数
 

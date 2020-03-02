@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 46b398588e5003acdcb8a654e7ca4af54b01db93
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 87b5993a6b8e1d7334dd7153eb030f0ee6e1a66b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599401"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155057"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>通过 Azure 机器学习使用现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "75599401"
 >
 > 有关此处使用的概念和术语的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
 >
-> 有关部署流程的一般信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+> 有关部署流程的一般信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,7 +69,7 @@ model = Model.register(model_path = "./models",
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
-有关详细信息，请参阅 [](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) 参考。
+有关详细信息，请参阅 [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) 参考。
 
 
 有关一般情况下模型注册的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
@@ -100,6 +100,7 @@ conda_dep.add_conda_package("scikit-learn")
 # You must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 conda_dep.add_pip_package("keras")
+conda_dep.add_pip_package("gensim")
 
 # Adds dependencies to PythonSection of myenv
 myenv.python.conda_dependencies=conda_dep
@@ -136,9 +137,10 @@ dependencies:
 - pip:
     - azureml-defaults
     - keras
+    - gensim
 ```
 
-有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ### <a name="entry-script"></a>入口脚本
 
@@ -223,11 +225,11 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ## <a name="define-deployment"></a>定义部署
 
-[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) 包中包含部署所用的类。 所用的类确定模型的部署位置。 例如，要在 Azure Kubernetes Service 上部署为 Web 服务，可使用 [AksWebService.deploy_configuration()](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-) 来创建部署配置。
+[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) 包中包含部署所用的类。 所用的类确定模型的部署位置。 例如，要在 Azure Kubernetes Service 上部署为 Web 服务，可使用 [AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 来创建部署配置。
 
 以下 Python 代码用于定义本地部署的部署配置。 此配置将模型作为 Web 服务部署到你的本地计算机中。
 
@@ -250,7 +252,7 @@ CLI 从 YAML 文件加载部署配置：
 }
 ```
 
-部署到不同的计算目标（如 Azure 云中的 Azure Kubernetes 服务）与更改部署配置一样简单。 有关详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+部署到不同的计算目标（如 Azure 云中的 Azure Kubernetes 服务）与更改部署配置一样简单。 有关详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -277,7 +279,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 有关详细信息，请参阅 [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 参考文档。
 
-有关部署的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+有关部署的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="request-response-consumption"></a>请求-响应的使用
 
@@ -304,5 +306,5 @@ print(response.json())
 
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
-* [部署模型的方式和位置](service/how-to-deploy-and-where.md)
+* [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [如何为已部署的模型创建客户端](how-to-consume-web-service.md)

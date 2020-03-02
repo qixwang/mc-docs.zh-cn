@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 10/22/2019
 ms.date: 11/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1ba2301d82b085abea1b0fa8e7a93c60d4197708
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: eb13b014b74ddf78a2a0442a4ca1dfcd8771bef1
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730358"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497635"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -228,14 +228,14 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 为用户授予对工作区的以下权限： 
 
-        * `Microsoft.OperationalInsights/workspaces/read` � 必须授予此权限才能让用户枚举工作区并打开 Azure 门户中的工作区边栏选项卡
-        * `Microsoft.OperationalInsights/workspaces/query/read` � 必须对可执行查询的每个用户授予此权限
+        * `Microsoft.OperationalInsights/workspaces/read` � 必需，以便用户可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
+        * `Microsoft.OperationalInsights/workspaces/query/read` � 对于每个可以执行查询的用户都是必需的
         * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` � 用于读取 Azure AD 登录日志
         * `Microsoft.OperationalInsights/workspaces/query/Update/read` � 用于读取更新管理解决方案日志
         * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` � 用于读取更新管理解决方案日志
         * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` � 用于读取更新管理日志
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` � 必须授予此权限才能使用更新管理解决方案
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` � 必须授予此权限才能使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` � 必需，以便能够使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` � 必需，以便能够使用更新管理解决方案
 
     * 为用户授予对其资源的以下权限：分配给“读取者”角色的 `*/read`，或 `Microsoft.Insights/logs/*/read`。 
 
@@ -243,13 +243,12 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 使用**表级 RBAC** 可以针对 Log Analytics 工作区中的数据定义更精细的控制，此外还能分配其他权限。 使用此控制措施可以定义仅供特定一组用户访问的特定数据类型。
 
-使用 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)实现表访问控制，以授予或拒绝对工作区中特定[表](../log-query/logs-structure.md)的访问权限。 无论用户的[访问模式](design-logs-deployment.md#access-mode)是什么，这些角色都会应用到使用工作区上下文或者资源上下文[访问控制模式](design-logs-deployment.md#access-control-mode)的工作区。
+使用 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)实现表访问控制，以授予对工作区中特定[表](../log-query/logs-structure.md)的访问权限。 无论用户的[访问模式](design-logs-deployment.md#access-mode)是什么，这些角色都会应用到使用工作区上下文或者资源上下文[访问控制模式](design-logs-deployment.md#access-control-mode)的工作区。
 
 使用以下操作创建[自定义角色](../../role-based-access-control/custom-roles.md)，以定义对表访问控制的访问权限。
 
-* 若要授予对某个表的访问权限，请将该表包含在角色定义的 **Actions** 节中。
-* 若要拒绝对某个表的访问权限，请将该表包含在角色定义的 **NotActions** 节中。
-* 使用 * 可指定所有表。
+* 若要授予对某个表的访问权限，请将该表包含在角色定义的 **Actions** 节中。 若要从允许的**操作**中减去访问权限，请将其包含在 **NotActions** 节中。
+* 使用“Microsoft.OperationalInsights/workspaces/query/*”指定所有表。
 
 例如，若要创建一个有权访问 _Heartbeat_ 和 _AzureActivity_ 表的角色，请使用以下操作创建自定义角色：
 
@@ -262,7 +261,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
   ],
 ```
 
-若要创建一个只有权访问 _SecurityBaseline_，而无权访问其他任何表的角色，请使用以下操作创建自定义角色：
+若要创建只能访问 _SecurityBaseline_ 表的角色，请使用以下操作创建自定义角色：
 
 ```
 "Actions":  [
@@ -270,16 +269,13 @@ Log Analytics 参与者角色包括以下 Azure 操作：
     "Microsoft.OperationalInsights/workspaces/query/read",
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
-"NotActions":  [
-    "Microsoft.OperationalInsights/workspaces/query/*/read"
-],
 ```
 
 ### <a name="custom-logs"></a>自定义日志
 
  自定义日志是基于自定义日志和 HTTP 数据收集器 API 等数据源创建的。 识别日志类型的最简单方法是查看[日志架构中的自定义日志](../log-query/get-started-portal.md#understand-the-schema)下所列的表。
 
- 目前无法授予或拒绝对单个自定义日志的访问权限，但可以授予或拒绝对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
+ 目前无法授予对单个自定义日志的访问权限，但可以授予对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
 
 ```
 "Actions":  [

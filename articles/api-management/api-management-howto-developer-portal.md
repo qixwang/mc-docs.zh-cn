@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 origin.date: 11/22/2019
-ms.date: 12/16/2019
+ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: f7a33f6a35f03bbd691957881ec949535d050013
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 5f72c89bc606d847ce32bbf6e1cbb0790bb7996d
+ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884731"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77428634"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "74884731"
 可通过两种方式构建开发人员门户：
 
 - **托管版本** - 通过编辑和自定义 API 管理实例中内置的、可通过 URL `<your-api-management-instance-name>.developer.azure-api.net` 访问的门户。 请参阅[此文档](api-management-howto-developer-portal-customize.md)了解如何访问和自定义托管门户。
-- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 使用此方法可以编辑门户的基代码并扩展所提供的核心功能。 还需要自行将门户升级到最新版本。 有关详细信息和说明，请参阅[包含门户源代码的 GitHub 存储库][1]。 [托管版本的教程](api-management-howto-developer-portal-customize.md)全面介绍了门户的管理面板（自承载版本中也有此面板）。
+- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 使用此方法可以编辑门户的基代码并扩展所提供的核心功能。 还需要自行将门户升级到最新版本。 有关详细信息和说明，请参阅[包含门户源代码的 GitHub 存储库][1]和[有关实现小组件的教程][4]。 [托管版本的教程](api-management-howto-developer-portal-customize.md)全面介绍了门户的管理面板（自承载版本中也有此面板）。
 
 ## <a name="portal-architectural-concepts"></a>门户体系结构概念
 
@@ -101,6 +101,10 @@ API 管理内容包括 API、操作、产品和订阅等实体。
 旧的开发人员和发布者门户现在属于旧版功能 - 它们只会接收安全更新。  新功能只会在新开发人员门户中实现。
 
 旧门户弃用时，我们会另行通告。 若有问题、疑虑或意见，请提出[相关的 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/121)。
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户不支持我需要的功能
+
+使用自承载版本并[实现自己的小组件][4]。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>如何自动部署门户？
 
@@ -210,12 +214,25 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 调用失败也可能是 SSL 证书引起的，该证书已分配到自定义域，且不受浏览器信任。 作为缓解措施，可以删除管理终结点自定义域 - API 管理将回退到包含受信任证书的默认终结点。
 
+### <a name="whats-the-browser-support-for-the-portal"></a>门户对浏览器的支持是什么？
+
+| 浏览者                     | 支持       |
+|-----------------------------|-----------------|
+| Apple Safari                | 是<sup>1</sup> |
+| Google Chrome               | 是<sup>1</sup> |
+| Microsoft Edge              | 是<sup>1</sup> |
+| Microsoft Internet Explorer | 否              |
+| Mozilla Firefox             | 是<sup>1</sup> |
+
+ <small><sup>1</sup> 在两个最新的生产版本中受支持。</small>
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解新开发人员门户：
 
 - [访问和自定义托管开发人员门户](api-management-howto-developer-portal-customize.md)
 - [设置自承载版本的门户][2]
+- [实现自己的小组件][4]
 
 浏览其他资源：
 
@@ -225,3 +242,4 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 origin.date: 07/22/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: ea45bbf37f91e0f5793b7b63402a884338b57ca8
-ms.sourcegitcommit: 855ac08e4d9518ea5fd3277b07a1bcdb0b3e46cc
+ms.date: 03/09/2020
+ms.openlocfilehash: 171ade5914bf6522e4cdf86362c6431faf8b6ec7
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230978"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590261"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>快速入门：创建 Azure 数据资源管理器群集和数据库
 

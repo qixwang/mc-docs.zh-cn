@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure CLI 创建流量管理器配置文件以实现应用程序的高可用性
+title: 快速入门：为应用程序 HA 创建配置文件 - Azure CLI - Azure 流量管理器的
 description: 本快速入门文章介绍如何创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
 services: traffic-manager
 author: rockboyfor
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 07/29/2019
-ms.date: 09/09/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: b194892c9455aad6176708a5cac5a3275d128ca3
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.openlocfilehash: ecc0fb6e9dea130eeb963493fd15bfcd16090d34
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70254969"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653066"
 ---
 <!--Verify sucessfully-->
 
@@ -26,7 +26,7 @@ ms.locfileid: "70254969"
 
 本快速入门介绍如何创建流量管理器配置文件，以便实现 Web 应用程序的高度可用性。
 
-在本快速入门中，我们将创建 Web 应用程序的两个实例。 每个实例在不同的 Azure 区域运行。 需根据[终结点优先级](traffic-manager-routing-methods.md#priority)创建流量管理器配置文件。 此配置文件将用户流量定向到运行 Web 应用程序的主站点。 流量管理器持续监视 Web 应用程序。 如果主站点不可用，它会提供目标为备份站点的自动故障转移。
+在本快速入门中，我们将创建 Web 应用程序的两个实例。 每个实例在不同的 Azure 区域运行。 需根据[终结点优先级](traffic-manager-routing-methods.md#priority-traffic-routing-method)创建流量管理器配置文件。 此配置文件将用户流量定向到运行 Web 应用程序的主站点。 流量管理器持续监视 Web 应用程序。 如果主站点不可用，它会提供目标为备份站点的自动故障转移。
 
 如果还没有 Azure 订阅，请现在就创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -188,10 +188,10 @@ az network traffic-manager profile show \
 
 ```
 
-复制 **RelativeDnsName** 值。 流量管理器配置文件的 DNS 名称为“http://<* relativednsname *>.trafficmanager.cn” ** 。 
+复制 **RelativeDnsName** 值。 流量管理器配置文件的 DNS 名称为“*http://<* relativednsname *>.trafficmanager.cn”* 。 
 
 ### <a name="view-traffic-manager-in-action"></a>查看正在运行的流量管理器
-1. 在 Web 浏览器中输入流量管理器配置文件的 DNS 名称 (http://<* relativednsname *>.trafficmanager.cn ** )，以查看 Web 应用的默认网站。
+1. 在 Web 浏览器中输入流量管理器配置文件的 DNS 名称 (*http://<* relativednsname *>.trafficmanager.cn*)，以查看 Web 应用的默认网站。
 
     > [!NOTE]
     > 在本快速入门方案中，所有请求都路由到主终结点。 它设置为“优先级 1”。 
@@ -208,7 +208,7 @@ az network traffic-manager profile show \
 
     ```
 
-3. 复制流量管理器配置文件的 DNS 名称 (http://<* relativednsname *>.trafficmanager.cn ** )，以在新的 Web 浏览器会话中查看该网站。
+3. 复制流量管理器配置文件的 DNS 名称 (*http://<* relativednsname *>.trafficmanager.cn*)，以在新的 Web 浏览器会话中查看该网站。
 4. 验证 Web 应用是否仍然可用。
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -229,5 +229,4 @@ az group delete \
 > [!div class="nextstepaction"]
 > [流量管理器教程](tutorial-traffic-manager-improve-website-response.md)
 
-<!--Update_Description: new articles on quickstart create traffic manager profile cli -->
-<!--ms.date: 09/07/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

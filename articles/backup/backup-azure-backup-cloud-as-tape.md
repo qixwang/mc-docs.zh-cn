@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 04/30/2017
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cb0e5824653484b735869d5bff0b7b86a587416e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b91fb95ea7b1fffcaac5cdd8295e1db0fedeec41
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838949"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497555"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>将长期存储从磁带移动到 Azure 云
 Azure 备份和 System Center Data Protection Manager 客户可以：
@@ -61,11 +61,13 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 >
 
 ## <a name="advanced-configuration"></a>高级配置
+
 通过单击上述屏幕中的“**修改**”，客户可以进一步灵活指定保留计划。
 
 ![修改](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 关于 Azure 备份的详细信息，请参阅：
 
 * [Azure 备份简介](backup-introduction-to-azure-backup.md)

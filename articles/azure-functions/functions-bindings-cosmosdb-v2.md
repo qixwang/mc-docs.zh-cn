@@ -3,14 +3,14 @@ title: 适用于 Functions 2.x 的 Azure Cosmos DB 绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 38aa267902d9b1998c3134e80d111026b5d3a1e3
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 4b6499c822db747105f2358d36fd38db331f1b24
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116905"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494085"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -41,18 +41,7 @@ ms.locfileid: "76116905"
 
 Azure Cosmos DB 触发器使用 [Azure Cosmos DB 更改源](../cosmos-db/change-feed.md)来侦听跨分区的插入和更新。 更改源发布插入和更新，不发布删除。
 
-## <a name="trigger---example"></a>触发器 - 示例
-
-参阅语言特定的示例：
-
-* [C#](#trigger---c-example)
-* [C# 脚本 (.csx)](#trigger---c-script-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-
-[跳过触发器示例](#trigger---c-attributes)
-
-### <a name="trigger---c-example"></a>触发器 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示了一个 [C# 函数](functions-dotnet-class-library.md)。当指定数据库和集合中存在插入或更新操作时，会调用该函数。
 
@@ -86,9 +75,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过触发器示例](#trigger---c-attributes)
-
-### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 添加或修改 Cosmos DB 记录时，该函数会写入日志消息。
 
@@ -124,9 +111,7 @@ C# 脚本代码如下所示：
     }
 ```
 
-[跳过触发器示例](#trigger---c-attributes)
-
-### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [JavaScript 脚本函数](functions-reference-node.md)。 添加或修改 Cosmos DB 记录时，该函数会写入日志消息。
 
@@ -155,26 +140,9 @@ JavaScript 代码如下所示：
     }
 ```
 
-[跳过触发器示例](#trigger---c-attributes)
+# <a name="java"></a>[Java](#tab/java)
 
-### <a name="trigger---java-example"></a>触发器 - Java 示例
-
-以下示例展示了 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [Java 函数](functions-reference-java.md)。 当指定数据库和集合中发生插入或更新操作时，会调用该函数。
-
-```json
-{
-    "type": "cosmosDBTrigger",
-    "name": "items",
-    "direction": "in",
-    "leaseCollectionName": "leases",
-    "connectionStringSetting": "AzureCosmosDBConnection",
-    "databaseName": "ToDoList",
-    "collectionName": "Items",
-    "createLeaseCollectionIfNotExists": false
-}
-```
-
-下面是 Java 代码：
+当指定数据库和集合中发生插入或更新操作时，会调用此函数。
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -191,14 +159,13 @@ JavaScript 代码如下所示：
 ```
 
 
-在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。
+在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的参数使用 `@CosmosDBTrigger` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
+---
 
-[跳过触发器示例](#trigger---c-attributes)
+## <a name="trigger---attributes-and-annotations"></a>触发器 - 特性和注释
 
-
-
-## <a name="trigger---c-attributes"></a>触发器 - C# 特性
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) 特性。
 
@@ -215,8 +182,21 @@ JavaScript 代码如下所示：
     }
 ```
 
-有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
+有关完整示例，请参阅[触发器](#trigger)。
 
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](https://docs.microsoft.com https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对从 Cosmos DB 读取数据的参数使用 `@CosmosDBInput` 注释。
+
+---
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
@@ -224,9 +204,9 @@ JavaScript 代码如下所示：
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** || 必须设置为 `cosmosDBTrigger`。 |
-|**direction** || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|**name** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|**type** | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
@@ -234,15 +214,15 @@ JavaScript 代码如下所示：
 |**leaseDatabaseName** |**LeaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
 |**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用该设置。 使用门户创建绑定时，将自动设置该参数。
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，此项向在此 Function 的“租用”集合中创建的租用添加一个前缀，实际上就是允许两个不同的 Azure Functions（使用不同的前缀）共享同一“租用”集合。
-|**feedPollDelay**| **FeedPollDelay**| （可选）设置后，此项以毫秒为单位定义在所有当前更改均耗尽后，源上新更改的分区轮询间的延迟。 默认为 5000（5 秒）。
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用此设置。 使用门户创建绑定时，将自动设置该参数。
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，该值将作为前缀添加到在此函数的租约集合中创建的租约。 使用前缀可让两个不同的 Azure 函数通过不同的前缀来共享同一个租约集合。
+|**feedPollDelay**| **FeedPollDelay**| （可选）在所有当前更改清空后，每两次在分区中轮询源上的新更改的延迟时间（以毫秒为单位）。 默认值为 5,000 毫秒（5 秒）。
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| （可选）设置后，此项以毫秒为单位定义启动一个计算任务的时间间隔（前提是分区在已知的主机实例中均匀分布）。 默认为 13000（13 秒）。
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| （可选）设置后，此项以毫秒为单位定义在表示分区的租用上进行租用的时间间隔。 如果在此时间间隔内不续订租用，则该租用会过期，分区的所有权会转移到另一个实例。 默认为 60000（60 秒）。
 |**leaseRenewInterval**| **LeaseRenewInterval**| （可选）设置后，此项以毫秒为单位定义当前由实例拥有的分区的所有租用的续订时间间隔。 默认为 17000（17 秒）。
 |**checkpointFrequency**| **CheckpointFrequency**| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在进行每个 Function 调用之后进行检查。
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| （可选）设置后，此属性会对每次 Function 调用收到的项目的最大数目进行设置。 如果受监视集合中的操作通过存储过程执行，则在从更改源读取项时，会保留[事务范围](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 结果就是收到的项的数量可能会高于指定值，因此通过同一事务更改的项会通过某个原子批处理操作返回。
-|**startFromBeginning**| **StartFromBeginning**| （可选）设置时，它会告诉触发器从集合历史记录的开头而不是当前时间开始读取更改。 这仅在触发器第一次启动时起作用，因为在后续运行中，已存储检查点。 如果已经创建租约，则将此值设置为 `true` 无效。
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| （可选）设置后，此属性会对每次函数调用收到的项目的最大数目进行设置。 如果受监视集合中的操作通过存储过程执行，则在从更改源读取项时，会保留[事务范围](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，收到的项数可能高于指定的值，通过同一事务更改的项会通过某个原子批处理操作返回。
+|**startFromBeginning**| **StartFromBeginning**| （可选）此选项告知触发器要从集合的更改历史记录开头位置读取更改，而不是从当前时间开始读取。 从开头位置读取仅在触发器首次启动时起作用，因为在后续运行中，已存储检查点。 如果已经创建租约，则将此选项设置为 `true` 将不起作用。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -263,19 +243,7 @@ Azure Cosmos DB 输入绑定会使用 SQL API 检索一个或多个 Azure Cosmos
 > 如果集合已[分区](../cosmos-db/partition-data.md#logical-partitions)，则查找操作还需指定分区键值。
 >
 
-## <a name="input---examples"></a>输入 - 示例
-
-请指定一个 ID 值，以便查看可以读取单个文档的特定于语言的示例：
-
-* [C#](#input---c-examples)
-* [C# 脚本 (.csx)](#input---c-script-examples)
-* [F#](#input---f-examples)
-* [Java](#input---java-examples)
-* [JavaScript](#input---javascript-examples)
-
-[跳过输入示例](#input---attributes)
-
-### <a name="input---c-examples"></a>输入 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 本部分包含以下示例：
 
@@ -300,9 +268,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-c"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-c"></a>队列触发器，从 JSON 查找 ID (C#)
+### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID 
 
 以下示例演示检索单个文档的 [C# 函数](functions-dotnet-class-library.md)。 该函数由包含 JSON 对象的队列消息触发。 队列触发器将 JSON 分析为 `ToDoItemLookup` 类型的对象，其中包含要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -353,9 +321,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP 触发器，从查询字符串查找 ID (C#)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
 
 以下示例演示检索单个文档的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -403,9 +371,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c"></a>HTTP 触发器，从路由数据查找 ID (C#)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
 以下示例演示检索单个文档的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -449,9 +417,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID (C#)
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID
 
 以下示例演示检索单个文档的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID。 该 ID 用于从指定的数据库和集合检索 `ToDoItem` 文档。
 
@@ -496,9 +464,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP 触发器，使用 SqlQuery 获取多个文档 (C#)
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 获取多个文档
 
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此查询在 `SqlQuery` 特性属性中指定。
 
@@ -539,9 +507,9 @@ namespace CosmosDBSamplesV2
 
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP 触发器，使用 DocumentClient 获取多个文档 (C#)
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP 触发器，使用 DocumentClient 获取多个文档
 
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
@@ -604,9 +572,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
-
-### <a name="input---c-script-examples"></a>输入 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 本部分包含以下示例：
 
@@ -630,9 +596,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="queue-trigger-look-up-id-from-string-c-script"></a>
 
-#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>队列触发器，从字符串查找 ID（C# 脚本）
+### <a name="queue-trigger-look-up-id-from-string"></a>队列触发器，从字符串查找 ID
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数读取单个文档，并更新文档的文本值。
 
@@ -664,9 +630,9 @@ C# 脚本代码如下所示：
     }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>队列触发器，使用 SqlQuery 获取多个文档（C# 脚本）
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
 
 以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输入绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用队列触发器自定义查询参数检索 SQL 查询指定的多个文档。
 
@@ -705,9 +671,9 @@ C# 脚本代码如下所示：
     }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP 触发器，从查询字符串查找 ID（C# 脚本）
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
 
 以下示例演示检索单个文档的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -768,9 +734,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP 触发器，从路由数据查找 ID（C# 脚本）
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
 以下示例演示检索单个文档的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -832,9 +798,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP 触发器，使用 SqlQuery 获取多个文档（C# 脚本）
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 获取多个文档
 
 以下示例演示检索文档列表的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发。 此查询在 `SqlQuery` 特性属性中指定。
 
@@ -890,9 +856,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 }
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP 触发器，使用 DocumentClient 获取多个文档（C# 脚本）
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP 触发器，使用 DocumentClient 获取多个文档
 
 以下示例演示检索文档列表的 [C# 脚本函数](functions-reference-csharp.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
@@ -969,9 +935,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-[跳过输入示例](#input---attributes)
-
-### <a name="input---javascript-examples"></a>输入 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 此部分包含的以下示例可以通过指定各种源提供的 ID 值来读取单个文档：
 
@@ -980,9 +944,9 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 * [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-javascript)
 * [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
-[跳过输入示例](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>队列触发器，从 JSON 查找 ID (JavaScript)
+### <a name="queue-trigger-look-up-id-from-json"></a>队列触发器，从 JSON 查找 ID
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数读取单个文档，并更新文档的文本值。
 
@@ -1010,6 +974,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
     "direction": "out"
 }
 ```
+
 [配置](#input---configuration)部分解释了这些属性。
 
 JavaScript 代码如下所示：
@@ -1023,9 +988,9 @@ JavaScript 代码如下所示：
     };
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP 触发器，从查询字符串查找 ID (JavaScript)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP 触发器，从查询字符串查找 ID
 
 以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -1082,9 +1047,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP 触发器，从路由数据查找 ID (JavaScript)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
 以下示例演示检索单个文档的 [JavaScript 函数](functions-reference-node.md)。 此函数由 HTTP 请求触发，该请求使用的路由数据用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索 `ToDoItem` 文档。
 
@@ -1142,9 +1107,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[跳过输入示例](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>队列触发器，使用 SqlQuery 获取多个文档 (JavaScript)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>队列触发器，使用 SqlQuery 获取多个文档
 
 以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输入绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用队列触发器自定义查询参数检索 SQL 查询指定的多个文档。
 
@@ -1179,55 +1144,8 @@ JavaScript 代码如下所示：
     };
 ```
 
-[跳过输入示例](#input---attributes)
 
-### <a name="input---f-examples"></a>输入 - F# 示例
-
-以下示例演示 *function.json* 文件中的一个 Cosmos DB 输入绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数读取单个文档，并更新文档的文本值。
-
-下面是 function.json  文件中的绑定数据：
-
-```json
-{
-    "name": "inputDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-}
-```
-
-[配置](#input---configuration)部分解释了这些属性。
-
-F# 代码如下所示：
-
-```fsharp
-    (* Change input document contents using Azure Cosmos DB input binding *)
-    open FSharp.Interop.Dynamic
-    let Run(myQueueItem: string, inputDocument: obj) =
-    inputDocument?text <- "This has changed."
-```
-
-此示例要求具有指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
-
-```json
-{
-    "frameworks": {
-        "net46": {
-            "dependencies": {
-                "Dynamitey": "1.0.2",
-                "FSharp.Interop.Dynamic": "3.0.0"
-            }
-        }
-    }
-}
-```
-
-若要添加 `project.json` 文件，请参阅 [F# 包管理](functions-reference-fsharp.md#package)。
-
-### <a name="input---java-examples"></a>输入 - Java 示例
+# <a name="java"></a>[Java](#tab/java)
 
 本部分包含以下示例：
 
@@ -1260,7 +1178,9 @@ public class ToDoItem {
 }
 ```
 
-#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>HTTP 触发器，从查询字符串查找 ID - 字符串参数 (Java)
+<a id="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string---string-parameter"></a>HTTP 触发器，从查询字符串查找 ID - 字符串参数
 
 以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于以字符串形式从指定的数据库和集合中检索文档。
 
@@ -1304,9 +1224,11 @@ public class DocByIdFromQueryString {
 }
  ```
 
-在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。
+在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将来自 Cosmos DB 的函数参数使用 `@CosmosDBInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
-#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP 触发器，从查询字符串查找 ID - POJO 参数 (Java)
+<a id="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter"></a>HTTP 触发器，从查询字符串查找 ID - POJO 参数
 
 以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的查询字符串用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档。 然后将该文档转换为先前创建的 ```ToDoItem``` POJO 实例，并作为参数传递给该函数。
 
@@ -1348,7 +1270,9 @@ public class DocByIdFromQueryStringPojo {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP 触发器，从路由数据查找 ID (Java)
+<a id="http-trigger-look-up-id-from-route-data-java"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP 触发器，从路由数据查找 ID
 
 以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用的路由参数用于指定要查找的 ID 和分区键值。 该 ID 和分区键值用于从指定的数据库和集合中检索文档，将它作为 ```Optional<String>``` 返回。
 
@@ -1393,7 +1317,9 @@ public class DocByIdFromRoute {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID (Java)
+ <a id="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据查找 ID
 
 以下示例展示了检索单个文档的 Java 函数。 此函数由 HTTP 请求触发，该请求使用路由参数指定要查找的 ID。 该 ID 用于从指定的数据库和集合中检索文档，将结果集转换为 ```ToDoItem[]```，因为可能会返回许多文档，具体取决于查询条件。
 
@@ -1439,7 +1365,9 @@ public class DocByIdFromRouteSqlQuery {
 }
  ```
 
-#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP 触发器，使用 SqlQuery 从路由数据获取多个文档 (Java)
+ <a id="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>
+
+### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP 触发器，使用 SqlQuery 从路由数据获取多个文档
 
 以下示例演示了检索多个文档的 Java 函数。 该函数由 HTTP 请求触发，该请求使用路由参数 ```desc``` 指定要在 ```description``` 字段中搜索的字符串。 搜索项用于从指定的数据库和集合中检索文档集合，将结果集转换为 ```ToDoItem[]``` 并将其作为参数传递给函数。
 
@@ -1481,11 +1409,29 @@ public class DocsFromRouteSqlQuery {
 }
  ```
 
-## <a name="input---attributes"></a>输入 - 特性
+ ---
+
+## <a name="input---attributes-and-annotations"></a>输入 - 特性和注释
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) 特性。
 
 该特性的构造函数采用数据库名称和集合名称。 有关这些设置以及可以配置的其他属性的信息，请参阅[下面的“配置”部分](#input---configuration)。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](https://docs.microsoft.com https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对写入 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。 注释参数类型应当为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
+
+---
 
 ## <a name="input---configuration"></a>输入 - 配置
 
@@ -1493,13 +1439,13 @@ public class DocsFromRouteSqlQuery {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     || 必须设置为 `cosmosDB`。        |
-|**direction**     || 必须设置为 `in`。         |
-|**name**     || 表示函数中的文档的绑定参数的名称。  |
+|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|**direction**     | 不适用 | 必须设置为 `in`。         |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
-|**id**    | Id  | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
-|**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。|
+|**id**    | Id  | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 `id` 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
+|**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 `id` 和 `sqlQuery` 属性。 如果上述两个属性都未设置，则会检索整个集合。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
 |**partitionKey**|**PartitionKey**|指定用于查找分区键值。 可以包含绑定参数。 它是在[分区的](../cosmos-db/partition-data.md#logical-partitions)集合中进行查询所需的。|
 
@@ -1507,34 +1453,34 @@ public class DocsFromRouteSqlQuery {
 
 ## <a name="input---usage"></a>输入 - 用法
 
-在 C# 函数和 F# 函数中，函数成功退出后，通过命名输入参数对输入文档所做的任何更改都会自动保存。
+# <a name="c"></a>[C#](#tab/csharp)
 
-在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 JavaScript 示例。
+函数成功退出时，通过命名输入参数对输入文档所做的任何更改都会自动保存。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+函数成功退出时，通过命名输入参数对输入文档所做的任何更改都会自动保存。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 JavaScript 示例。
+
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](https://docs.microsoft.com https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，[@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注释向函数公开 Cosmos DB 数据。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+
+---
 
 ## <a name="output"></a>输出
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
-## <a name="output---examples"></a>输出 - 示例
-
-请参阅语言特定的示例：
-
-* [C#](#output---c-examples)
-* [C# 脚本 (.csx)](#output---c-script-examples)
-* [F#](#output---f-examples)
-* [Java](#output---java-examples)
-* [JavaScript](#output---javascript-examples)
-
-另请参阅使用 `DocumentClient` 的[输入示例](#input---c-examples)。
-
-[跳过输出示例](#output---attributes)
-
-### <a name="output---c-examples"></a>输出 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 本部分包含以下示例：
 
-* 队列触发器，写入一个文档
-* 队列触发器，使用 IAsyncCollector 来写入文档
+* [队列触发器，写入一个文档](#queue-trigger-write-one-doc-c)
+* [队列触发器，使用 IAsyncCollector 写入文档](#queue-trigger-write-docs-using-iasynccollector-c)
 
 这些示例引用简单的 `ToDoItem` 类型：
 
@@ -1549,9 +1495,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输出示例](#output---attributes)
+<a id="queue-trigger-write-one-doc-c"></a>
 
-#### <a name="queue-trigger-write-one-doc-c"></a>队列触发器，写入一个文档 (C#)
+### <a name="queue-trigger-write-one-doc"></a>队列触发器，写入一个文档
 
 以下示例演示一个使用队列存储消息中提供的数据，将文档添加到数据库的 [C# 函数](functions-dotnet-class-library.md)。
 
@@ -1583,9 +1529,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输出示例](#output---attributes)
+<a id="queue-trigger-write-docs-using-iasynccollector-c"></a>
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>队列触发器，使用 IAsyncCollector 来写入文档 (C#)
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>队列触发器，使用 IAsyncCollector 来写入文档
 
 以下示例演示了一个 [C# 函数](functions-dotnet-class-library.md)，该函数使用以队列消息 JSON 格式提供的数据将文档集添加到数据库。
 
@@ -1621,18 +1567,17 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[跳过输出示例](#output---attributes)
-
-### <a name="output---c-script-examples"></a>输出 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 本部分包含以下示例：
 
-* 队列触发器，写入一个文档
-* 队列触发器，使用 IAsyncCollector 来写入文档
+* [队列触发器，写入一个文档](#queue-trigger-write-one-doc-c-script)
+* [队列触发器，使用 IAsyncCollector 写入文档](#queue-trigger-write-docs-using-iasynccollector-c-script)
 
-[跳过输出示例](#output---attributes)
 
-#### <a name="queue-trigger-write-one-doc-c-script"></a>队列触发器，写入一个文档（C# 脚本）
+<a id="queue-trigger-write-one-doc-c-script"></a>
+
+### <a name="queue-trigger-write-one-doc"></a>队列触发器，写入一个文档
 
 以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用一个用于某个队列的队列输入绑定，该队列以下列格式接收 JSON：
 
@@ -1695,7 +1640,9 @@ C# 脚本代码如下所示：
     }
 ```
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>队列触发器，使用 IAsyncCollector 来写入文档
+<a id="queue-trigger-write-docs-using-iasynccollector-c-script"></a>
+
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>队列触发器，使用 IAsyncCollector 来写入文档
 
 若要创建多个文档，可以绑定到 `ICollector<T>` 或 `IAsyncCollector<T>`，其中 `T` 是受支持的类型之一。
 
@@ -1755,9 +1702,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-[跳过输出示例](#output---attributes)
-
-### <a name="output---javascript-examples"></a>输出 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用一个用于某个队列的队列输入绑定，该队列以下列格式接收 JSON：
 
@@ -1812,80 +1757,8 @@ JavaScript 代码如下所示：
     };
 ```
 
-[跳过输出示例](#output---attributes)
 
-### <a name="output---f-examples"></a>输出 - F# 示例
-
-以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输出绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数使用一个用于某个队列的队列输入绑定，该队列以下列格式接收 JSON：
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-该函数按下列格式为每个记录创建 Azure Cosmos DB 文档：
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-下面是 function.json  文件中的绑定数据：
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-[配置](#output---configuration)部分解释了这些属性。
-
-F# 代码如下所示：
-
-```fsharp
-    open FSharp.Interop.Dynamic
-    open Newtonsoft.Json
-    open Microsoft.Extensions.Logging
-    let Run(myQueueItem: string, employeeDocument: byref<obj>, log: ILogger) =
-      log.LogInformation(sprintf "F# Queue trigger function processed: %s" myQueueItem)
-      let employee = JObject.Parse(myQueueItem)
-      employeeDocument <-
-        { id = sprintf "%s-%s" employee?name employee?employeeId
-          name = employee?name
-          employeeId = employee?employeeId
-          address = employee?address }
-```
-
-此示例要求具有指定 `FSharp.Interop.Dynamic` 和 `Dynamitey` NuGet 依赖关系的 `project.json` 文件：
-
-```json
-{
-    "frameworks": {
-        "net46": {
-          "dependencies": {
-            "Dynamitey": "1.0.2",
-            "FSharp.Interop.Dynamic": "3.0.0"
-           }
-        }
-    }
-}
-```
-
-若要添加 `project.json` 文件，请参阅 [F# 包管理](functions-reference-fsharp.md#package)。
-
-### <a name="output---java-examples"></a>输出 - Java 示例
+# <a name="java"></a>[Java](#tab/java)
 
 * [队列触发器，通过返回值将消息保存到数据库](#queue-trigger-save-message-to-database-via-return-value-java)
 * [HTTP 触发器，通过返回值将文件保存到数据库](#http-trigger-save-one-document-to-database-via-return-value-java)
@@ -1893,7 +1766,9 @@ F# 代码如下所示：
 * [HTTP 触发器，通过 OutputBinding 将多个文档保存到数据库](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
 
 
-#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>队列触发器，通过返回值将消息保存到数据库 (Java)
+<a id="queue-trigger-save-message-to-database-via-return-value-java"></a>
+
+### <a name="queue-trigger-save-message-to-database-via-return-value"></a>队列触发器，通过返回值将消息保存到数据库
 
 以下示例展示了一个 Java 函数，它向数据库中添加一个文档，该文档包含来自队列存储中消息的数据。
 
@@ -1912,8 +1787,9 @@ public String cosmosDbQueryById(
      return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
    }
 ```
+<a id="http-trigger-save-one-document-to-database-via-return-value-java"></a>
 
-#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>HTTP 触发器，通过返回值将文件保存到数据库 (Java)
+#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP 触发器，通过返回值将文件保存到数据库
 
 以下示例显示了 Java 函数，其签名使用 ```@CosmosDBOutput``` 注释，并且返回值类型为 ```String```。 该函数返回的 JSON 文档将自动写入相应的 CosmosDB 集合。
 
@@ -1950,9 +1826,11 @@ public String cosmosDbQueryById(
     }
 ```
 
-#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>HTTP 触发器，通过 OutputBinding 将一个文档保存到数据库 (Java)
+<a id="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 请注意，在此设置中，```outputItem``` 参数需要使用 ```@CosmosDBOutput``` 进行注释，而不是函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将一个文档保存到数据库
+
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，需要使用 ```@CosmosDBOutput``` 为 ```outputItem``` 参数提供注释，而不要使用函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -1994,9 +1872,11 @@ public String cosmosDbQueryById(
     }
 ```
 
-#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>HTTP 触发器，通过 OutputBinding 将多个文档保存到数据库 (Java)
+<a id="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 请注意，在此设置中，```outputItem``` 参数需要使用 ```@CosmosDBOutput``` 进行注释，而不是函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将多个文档保存到数据库
+
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，需使用 ```@CosmosDBOutput``` 为 ```outputItem``` 参数提供注释，而不要使用函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -2045,7 +1925,11 @@ public String cosmosDbQueryById(
 
 在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将写入到 Cosmos DB 的参数使用 `@CosmosDBOutput` 注释。  注释参数类型应当为 ```OutputBinding<T>```，其中 T 是本机 Java 类型或 POJO。
 
-## <a name="output---attributes"></a>输出 - 特性
+---
+
+## <a name="output---attributes-and-annotations"></a>输出 - 特性和注释
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 CosmosDB 特性。
 
@@ -2061,7 +1945,19 @@ public String cosmosDbQueryById(
     }
 ```
 
-有关完整示例，请参阅“输出 - C# 示例”。
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+`CosmosDBOutput` 注释可用于将数据写入 Cosmos DB。 可将注释应用到函数或单个函数参数。 在函数方法中使用时，函数的返回值就是写入 Cosmos DB 的值。 如果对参数使用注释，则必须将参数的类型声明为 `OutputBinding<T>`，其中 `T` 是本机 Java 类型或 POJO。
+
+---
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -2069,9 +1965,9 @@ public String cosmosDbQueryById(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     || 必须设置为 `cosmosDB`。        |
-|**direction**     || 必须设置为 `out`。         |
-|**name**     || 表示函数中的文档的绑定参数的名称。  |
+|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|**direction**     | 不适用 | 必须设置为 `out`。         |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)。  |

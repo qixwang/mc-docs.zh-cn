@@ -1,8 +1,7 @@
 ---
 title: 使用 Azure 流分析作业避免服务中断
 description: 本文介绍有关生成流分析作业升级复原力的指南。
-services: stream-analytics
-author: rockboyfor
+author: lingliw
 manager: digimobile
 ms.author: v-lingwu
 ms.reviewer: jasonh
@@ -10,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/18/2019
-ms.openlocfilehash: 5314e82194f6f4d18c52822786cbf528923e6477
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: d9e3e9a271bd0e6feca7aa7b741e501dbf9de9f9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674799"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155046"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服务更新期间保证流分析作业可靠性
 

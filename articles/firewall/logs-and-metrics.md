@@ -5,15 +5,15 @@ services: firewall
 author: rockboyfor
 ms.service: firewall
 ms.topic: article
-origin.date: 11/19/2019
-ms.date: 12/09/2019
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 96d2c916a67a63d515b86f5d44b26b90af04a196
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2dfbe8a4bd7595dfcad9864b32fc2afcf7e5dfb0
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334983"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540226"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -21,7 +21,7 @@ ms.locfileid: "75334983"
 
 可通过门户访问其中部分日志。 可将日志发送到 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Azure Monitor 日志或其他工具（例如 Excel 和 Power BI）对其进行分析。
 
-指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。 
+指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -40,13 +40,13 @@ ms.locfileid: "75334983"
 
     ```json
     {
-    "category": "AzureFirewallApplicationRule",
-    "time": "2018-04-16T23:45:04.8295030Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallApplicationRuleLog",
-    "properties": {
-        "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-    }
+        "category": "AzureFirewallApplicationRule",
+        "time": "2018-04-16T23:45:04.8295030Z",
+        "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+        "operationName": "AzureFirewallApplicationRuleLog",
+        "properties": {
+            "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
+        }
     }
     ```
 
@@ -63,13 +63,13 @@ ms.locfileid: "75334983"
 
     ```json
     {
-    "category": "AzureFirewallNetworkRule",
-    "time": "2018-06-14T23:44:11.0590400Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallNetworkRuleLog",
-    "properties": {
-        "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
-    }
+        "category": "AzureFirewallNetworkRule",
+        "time": "2018-06-14T23:44:11.0590400Z",
+        "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
+        "operationName": "AzureFirewallNetworkRuleLog",
+        "properties": {
+            "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
+        }
     }
 
     ```
@@ -84,7 +84,7 @@ ms.locfileid: "75334983"
 
 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 
-可以使用 [Azure 活动日志](../azure-resource-manager/resource-group-audit.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
+可以使用 [Azure 活动日志](../azure-resource-manager/management/view-activity-logs.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
 
 <!--Verify successfully-->
 
@@ -106,13 +106,19 @@ Azure Monitor 中的指标是数字值，用于描述系统某些方面在特定
 
     单位：字节
 
-- **防火墙运行状态** - 指示防火墙的运行状况。
+- **防火墙运行状况状态** - 基于 SNAT 端口可用性指示防火墙的运行状况。
 
     单位：百分比
 
     此指标有两个维度：
-    - **状态**：可能的值为“正常”、“已降级”和“不正常”。   
-    - **原因**：指示防火墙出现相应状态的原因。 例如，如果防火墙状态为“已降级”或“不正常”，则原因中可能指示“SNAT 端口”。 
+    - 状态：可能的值为“正常”、“已降级”和“不正常”。   
+    - 原因:指示防火墙出现相应状态的原因。 
+
+        如果已用 SNAT 端口数 > 95%，则视为该端口已用尽，并且运行状况为 50%，状态为“已降级”  ，原因为“SNAT 端口”  。 防火墙继续处理流量，并且现有连接不受影响。 但是，可能间歇性地无法建立新连接。
+
+        如果已用 SNAT 端口数 < 95%，则视为防火墙正常，并且运行状况显示为 100%。
+
+        如果未报告 SNAT 端口使用情况，则运行状况显示为 0%。 
 
 - **SNAT 端口利用率** - 防火墙利用的 SNAT 端口数百分比。
 
@@ -128,4 +134,4 @@ Azure Monitor 中的指标是数字值，用于描述系统某些方面在特定
 
 - 若要详细了解 Azure Monitor 中的指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

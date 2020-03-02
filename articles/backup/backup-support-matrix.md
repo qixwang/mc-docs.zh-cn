@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 02/17/2019
 ms.date: 11/06/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b5f867d465ca7ee760eb3252fdb33913f3237c3c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 194f02f9eea433eadebadc5b8cef1ffad4f88dcd
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838879"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497542"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -36,7 +36,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **保管库存储中的数据源** | 最多 54,400 GB。 Azure VM 备份没有限制。
 **保管库备份** | **Azure VM：** 每天 1 次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **直接使用 MARS 代理备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
-**移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。
+**移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。 但是，不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
 
@@ -44,7 +44,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 下面是在需要备份本地计算机的情况下的支持项目：
 
-**计算机** | **备份的内容** | **Location** | **功能**
+**计算机** | **备份的内容** | **位置** | **功能**
 --- | --- | --- | ---
 **使用 MARS 代理直接备份 Windows 计算机** | 文件、文件夹、系统状态 | 备份到恢复服务保管库。 | 一天备份三次<br/><br/> 无应用感知型备份<br/><br/> 还原文件、文件夹、卷
 **使用 MARS 代理直接备份 Linux 计算机** | 不支持备份
@@ -64,7 +64,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 下面是在需要备份 Azure VM 的情况下的支持项目：
 
-**计算机** | **备份的内容** | **Location** | **功能**
+**计算机** | **备份的内容** | **位置** | **功能**
 --- | --- | --- | ---
 **使用 VM 扩展的 Azure VM 备份** | 整个 VM | 备份到保管库。 | 为 VM 启用备份时安装的扩展。<br/><br/> 一天备份一次。<br/><br/> 应用感知型备份适用于 Windows VM；文件一致性备份适用于 Linux VM。 可以使用自定义脚本配置 Linux 计算机的应用一致性。<br/><br/> 还原 VM 或磁盘。<br/><br/> 不能将 Azure VM 备份到本地位置。
 **使用 MARS 代理的 Azure VM 备份** | 文件、文件夹、系统状态 | 备份到保管库。 | 一天备份三次。<br/><br/> 如果想要备份特定文件或文件夹，而不是备份整个 VM，MARS 代理可以随 VM 扩展运行。

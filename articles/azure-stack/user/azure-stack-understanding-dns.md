@@ -1,37 +1,27 @@
 ---
-title: 在 Azure Stack 中使用 iDNS | Microsoft Docs
-description: 了解如何在 Azure Stack 中使用 iDNS 的特性和功能。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中使用 iDNS
+description: 了解如何在 Azure Stack Hub 中使用 iDNS 的特性和功能。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 origin.date: 09/16/2019
-ms.date: 10/21/2019
-ms.author: v-jay
+ms.date: 02/24/2020
+ms.author: Justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 4035e2263633823aa9b8489f01297869d2dca72c
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: db6d063f53a64494ab3cc60b6c4e2a505ebdf4a9
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578302"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541010"
 ---
-# <a name="use-idns-in-azure-stack"></a>在 Azure Stack 中使用 iDNS 
+# <a name="use-idns-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 iDNS 
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-iDNS 是一种 Azure Stack 网络功能，可用于解析外部 DNS 名称（例如，https:\//www.bing.com）。它还可用于注册内部虚拟网络名称。 如此一来，就可按名称（而非 IP 地址）解析同一虚拟网络上的虚拟机 (VM)。 使用此方法，不再需要提供自定义 DNS 服务器条目。 有关 DNS 的详细信息，请参阅 [Azure DNS 概述](/dns/dns-overview)。
+iDNS 是一种 Azure Stack Hub 网络功能，可用于解析外部 DNS 名称（例如，https:\//www.bing.com）。它还可用于注册内部虚拟网络名称。 如此一来，就可按名称（而非 IP 地址）解析同一虚拟网络上的虚拟机 (VM)。 使用此方法，不再需要提供自定义 DNS 服务器条目。 有关 DNS 的详细信息，请参阅 [Azure DNS 概述](/dns/dns-overview)。
 
 ## <a name="what-does-idns-do"></a>iDNS 有什么作用？
 
-使用 Azure Stack 中的 iDNS 可以获得以下功能，而无需指定自定义 DNS 服务器条目：
+使用 Azure Stack Hub 中的 iDNS 可以获得以下功能，而无需指定自定义 DNS 服务器条目：
 
 - 适用于租户工作负荷的共享 DNS 名称解析服务。
 - 适用于租户虚拟网络内的名称解析和 DNS 注册的权威 DNS 服务。
@@ -49,7 +39,7 @@ iDNS 不允许针对可从虚拟网络外部解析的名称创建 DNS 记录。
 
 如上图所示，Azure 会在 DNS 中为 **chinanorth.chinacloudapp.cn** 区域下指定的 DNS 名称标签创建“A”记录。 前缀和后缀组合起来构成[完全限定域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN)，此域名可以从公共 Internet 上的任何位置解析。
 
-Azure Stack 仅支持将 iDNS 用于内部名称注册，因此它无法执行以下操作：
+Azure Stack Hub 仅支持将 iDNS 用于内部名称注册，因此它无法执行以下操作：
 
 - 在现有的托管 DNS 区域（例如，local.azurestack.external）下创建 DNS 记录。
 - 创建 DNS 区域（例如 Contoso.com）。
@@ -193,6 +183,4 @@ Address:  172.31.12.76
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure Stack 中的 DNS](azure-stack-dns.md)
-
-<!-- Update_Description: wording update -->
+[使用 Azure Stack Hub 中的 DNS](azure-stack-dns.md)

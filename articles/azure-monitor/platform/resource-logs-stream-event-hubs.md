@@ -9,15 +9,15 @@ origin.date: 12/15/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: 01bedab24214ae56bc2f4b473c3879afa9f7a412
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: fb1f1b574aa9732c4cd8d57faa8e14858f4eb6b9
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599912"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497541"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>将 Azure 平台日志流式传输到 Azure 事件中心
-Azure 中的[平台日志](resource-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志流式传输到事件中心，以便将数据发送到外部系统，例如第三方 SIEM 和其他日志分析解决方案。
+Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志流式传输到事件中心，以便将数据发送到外部系统，例如第三方 SIEM 和其他日志分析解决方案。
 
 
 ## <a name="what-you-can-do-with-platform-logs-sent-to-an-event-hub"></a>如何处理发送到事件中心的平台日志
@@ -41,8 +41,8 @@ Azure 中的[平台日志](resource-logs-overview.md)（包括 Azure 活动日�
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-## <a name="prerequisites"></a>先决条件
-需[创建事件中心](../../event-hubs/event-hubs-create.md)（如果还没有）。 如果先前已将资源日志流式传输到此事件中心命名空间，则会重用该事件中心。
+## <a name="prerequisites"></a>必备条件
+需[创建事件中心](../../event-hubs/event-hubs-create.md)（如果还没有）。 如果已使用此事件中心命名空间保存诊断设置，则该事件中心将重用。
 
 命名空间的共享访问策略定义流式处理机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 在 Azure 门户中事件中心命名空间的“配置”选项卡下，可以创建或修改共享访问策略。
 
@@ -136,6 +136,7 @@ Azure 中的[平台日志](resource-logs-overview.md)（包括 Azure 活动日�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解 Azure 资源日志](resource-logs-overview.md)。
+* [详细阅读资源日志](platform-logs-overview.md)。
+* [创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
 * [事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 

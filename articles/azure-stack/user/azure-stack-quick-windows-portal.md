@@ -1,73 +1,69 @@
 ---
-title: 使用 Azure Stack 门户创建 Windows VM | Microsoft Docs
-description: 了解如何使用 Azure Stack 门户创建 Windows Server 2016 虚拟机 (VM)。
-services: azure-stack
+title: 使用 Azure Stack Hub 门户创建 Windows VM
+description: 了解如何使用 Azure Stack Hub 门户创建 Windows Server 2016 虚拟机 (VM)。
 author: WenJason
-manager: digimobile
-ms.service: azure-stack
 ms.topic: quickstart
-origin.date: 05/16/2019
-ms.date: 07/29/2019
+.date: 1/10/2020
+ms.date: 02/24/2020
 ms.author: v-jay
-ms.custom: mvc
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: dffd9a7baf04cb248a57f30bbdcbb4b81e5a9b13
-ms.sourcegitcommit: 871688d27d7b1a7905af019e14e904fabef8b03d
+ms.lastreviewed: 1/10/2020
+ms.openlocfilehash: 565adf6423fc0e3500723c38db77ce2ca99ca3ba
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68908708"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77541020"
 ---
-# <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-portal"></a>快速入门：使用 Azure Stack 门户创建 Windows 服务器 VM
+# <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-hub-portal"></a>快速入门：使用 Azure Stack Hub 门户创建 Windows 服务器 VM
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
-了解如何使用 Azure Stack 门户创建 Windows Server 2016 虚拟机 (VM)。
+了解如何使用 Azure Stack Hub 门户创建 Windows Server 2016 虚拟机 (VM)。
 
 > [!NOTE]  
-> 本文中的屏幕截图已更新，以匹配 Azure Stack 版本 1808 中引入的用户界面。 除了非托管磁盘外，1808 版还添加了对使用*托管磁盘*的支持。 如果使用早期版本，则某些图像（如磁盘选择）将与本文中显示的不同。  
+> 本文中的屏幕截图已更新，以匹配 Azure Stack Hub 版本 1808 中引入的用户界面。 除了非托管磁盘外，1808 版还添加了对使用*托管磁盘*的支持。 如果使用早期版本，则某些图像（如磁盘选择）将与本文中显示的不同。  
 
 
-## <a name="sign-in-to-the-azure-stack-portal"></a>登录到 Azure Stack 门户
+## <a name="sign-in-to-the-azure-stack-hub-portal"></a>登录到 Azure Stack Hub 门户
 
-登录到 Azure Stack 门户。 Azure Stack 门户的地址取决于要连接到的 Azure Stack 产品：
+登录到 Azure Stack Hub 门户。 Azure Stack Hub 门户的地址取决于要连接到的 Azure Stack Hub 产品：
 
 * 对于 Azure Stack 开发工具包 (ASDK)，请转到 https://portal.local.azurestack.external 。
-* 对于 Azure Stack 集成系统，请转到 Azure Stack 运营商提供的 URL。
+* 对于 Azure Stack Hub 集成系统，请转到 Azure Stack Hub 操作员提供的 URL。
 
 ## <a name="create-a-vm"></a>创建 VM
 
-1. 单击“+ 创建资源”   > “计算”   > “Windows Server 2016 Datacenter - 预付费”   > “创建”  。 <br> 如果未看到“Windows Server 2016 Datacenter - 预付费”项，请联系 Azure Stack 运营商，  并根据[将 Windows Server 2016 VM 映像添加到 Azure Stack 市场](../operator/azure-stack-create-and-publish-marketplace-item.md)一文中所述，请求运营商将此映像添加到市场。
+1. 选择“创建资源”   > “计算”  。 搜索 ` Windows Server 2016 Datacenter`。
 
-    ![在门户中创建 Windows VM 的步骤](media/azure-stack-quick-windows-portal/image01.png)
+    ![Windows Server 2016 Datacenter 即用即付](./media/azure-stack-quick-windows-portal/image1.png)
 
-2. 在“基本信息”  下，键入**名称**、**用户名**和**密码**。 选择“订阅”  。 创建一个**资源组**或选择现有资源组，选择一个**位置**，然后单击“确定”。 
+1. 选择“创建”  。
 
-    ![配置基本设置](media/azure-stack-quick-windows-portal/image02.png)
+    ![创建资源](./media/azure-stack-quick-windows-portal/image2.png)
 
-3. 在“大小”  下选择“D1 标准”  ，然后单击“选择”  。  
+1. 在“基本信息”下，输入“名称”、“磁盘类型”、“用户名”和“密码”。      选择“订阅”  。 创建一个**资源组**或选择现有资源组，选择一个**位置**，然后选择“确定”。 
 
-    ![选择 VM 大小](media/azure-stack-quick-windows-portal/image03.png)
+    ![创建 VM - 基本信息](./media/azure-stack-quick-windows-portal/image3.png)
 
-4. 在“设置”  页上，对默认设置进行任何所需的更改。
-   - 从 Azure Stack 版本1808 开始，可以配置**存储**，可以在其中选择使用“托管磁盘”  。 在 1808 之前的版本中，只能使用非托管磁盘。  
+1. 在“大小”下，选择“D1_v2”，然后选择“选择”。   
 
-   ![配置 VM 设置](media/azure-stack-quick-windows-portal/image04.png)  
+    ![创建 VM - 大小](./media/azure-stack-quick-windows-portal/image4.png)
 
-   配置准备就绪后，选择“确定”  以继续。
+1. 在“设置”  页上，对默认设置进行任何所需的更改。 你必须从相关下拉框中配置所需的公共入站端口。 完成后，选择“确定”  。
 
-5. 在“摘要”下，单击“确定”创建 VM。  
-    ![查看摘要和创建 VM](media/azure-stack-quick-windows-portal/image05.png)
+    ![创建 VM - 设置](./media/azure-stack-quick-windows-portal/image5.png)
 
-6. 若要查看新 VM，请单击“所有资源”  ，搜索该 VM 名称，然后在搜索结果中将其选中。
+1. 在“摘要”下，选择“确定”以创建 VM。  
 
-    ![查看 VM](media/azure-stack-quick-windows-portal/image06.png)
+    ![创建 VM - 摘要](./media/azure-stack-quick-windows-portal/image6.png)
+
+1. 选择“虚拟机”来查看你的新 VM。  搜索 VM 名称，然后在搜索结果中选择该 VM。
+
+![创建 VM - 搜索 VM](./media/azure-stack-quick-windows-portal/image7.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-使用完 VM 后，请删除 VM 及其资源。 为此，请选择 VM 页上的资源组，然后单击“删除”。 
+使用完 VM 后，请删除 VM 及其资源。 为此，请选择 VM 页上的资源组，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已部署了一台基本的 Windows Server VM。 若要了解 Azure Stack VM 的详细信息，请继续阅读 [Azure Stack 中 VM 的注意事项](azure-stack-vm-considerations.md)。
+在本快速入门中，你已部署了一台基本的 Windows Server VM。 若要了解 Azure Stack VM Hub 的详细信息，请继续阅读 [Azure Stack Hub 中 VM 的注意事项](azure-stack-vm-considerations.md)。

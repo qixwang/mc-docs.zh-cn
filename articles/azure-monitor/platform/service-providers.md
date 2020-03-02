@@ -1,23 +1,24 @@
 ---
-title: 适用于服务提供商的 Azure Monitor | Azure Docs
-description: Azure Monitor 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
+title: 面向服务提供商的 Azure Monitor 日志 | Microsoft Docs
+description: Azure Monitor 日志可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
 ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 08/22/2019
-ms.date: 09/23/2019
+origin.date: 02/03/2020
+ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a7fe9083938074a44f73417b4280690b7da5e61c
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 708bea083c63d3c73dc05d1805af86c27ba84221
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730593"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497391"
 ---
-# <a name="azure-monitor-for-service-providers"></a>适用于服务提供商的 Azure Monitor
-Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 
+# <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志
+
+Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
 
 大型企业与服务提供商有许多相似之处，特别是当有一个集中式 IT 团队负责管理许多不同业务部门的 IT 时。 为了简单起见，本文档使用术语*服务提供商*，但同样的功能也可用于企业和其他客户。
 
@@ -28,32 +29,40 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 对于 Log Analytics 工作区，有三种可能的体系结构适用于服务提供商：
 
-### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1.分布式：日志存储在位于客户租户中的工作区内 
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1.分布式：日志存储在位于客户租户中的工作区内
 
-在此体系结构中，工作区部署在客户的租户中，此租户用于该客户的所有日志。 使用 [Azure Active Directory 来宾用户 (B2B)](/active-directory/b2b/what-is-b2b) 授予服务提供商管理员访问此工作区的权限。 服务提供商管理员必须在 Azure 门户中切换到其客户的目录才能访问这些工作区。
+在此体系结构中，工作区部署在客户的租户中，此租户用于该客户的所有日志。
 
-此体系结构的优点在于：
-* 客户可以使用自己的[基于角色的访问权限](/role-based-access-control/overview)来管理对日志的访问。
+服务提供商管理员可通过两种方式访问客户租户中的 Log Analytics 工作区：
+
+- 客户可将服务提供商的个人用户添加为 [Azure Active Directory 来宾用户 (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)。 服务提供商管理员必须在 Azure 门户中登录到每个客户的目录才能访问这些工作区。 这还需要客户管理每个服务提供商管理员的个人访问权限。
+- 为了提高可伸缩性和灵活性，服务提供商可以使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 的 [Azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)功能来访问客户的租户。 使用此方法时，服务提供商管理员将包含在服务提供商租户的 Azure AD 用户组中，在为每个客户执行加入的过程中，将为此组授予访问权限。 然后，这些管理员可在其自己的服务提供商租户内访问每个客户的工作区，而无需单独登录到每个客户的租户。 
+
+分布式体系结构的优势是：
+
+* 客户可以通过 [Azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)来确认特定级别的权限，或者使用自己的[基于角色的访问](/role-based-access-control/overview)来管理对日志的访问。
+* 可从所有类型的资源中收集日志，而不仅仅是从基于代理的 VM 数据收集。 例如，Azure 审核日志。
 * 每个客户都可以为其工作区设置不同的设置，例如保留期和数据上限。
 * 在客户之间进行隔离以遵守监管和合规要求。
 * 每个工作区的费用将计入客户的订阅中。
-* 可从所有类型的资源中收集日志，而不仅仅是基于代理的资源。 例如，Azure 审核日志。
 
-此体系结构的缺点在于：
-* 对服务提供商而言，一次性管理大量客户租户难度更大。
-* 必须在客户目录中预配服务提供商管理员。
-* 服务提供商无法跨不同客户分析数据。
+分布式体系结构的劣势是：
+
+* 使用 Azure Monitor Workbooks 之类的工具集中可视化和分析客户租户中的数据可能会导致体验变慢，尤其是分析 50 个以上的工作区的数据时。
+* 如果未为客户完成 Azure 委托资源管理的加入，则必须在客户目录中预配服务提供商管理员，而服务提供商难以同时管理大量的客户租户。
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2.集中式 - 日志存储在位于服务提供商租户中的工作区内
 
 在此体系结构中，日志不会存储在客户的租户中，而是仅存储在服务提供商的某个订阅内的中心位置。 客户 VM 上安装的代理配置为使用工作区 ID 和密钥将其日志发送到此工作区。
 
-此体系结构的优点在于：
+集中式体系结构的优势是：
+
 * 可轻松管理大量客户并将其集成到各种后端系统。
 * 服务提供商对日志和各种项目（例如函数和保存的查询）拥有完全所有权。
 * 服务提供商可以对其所有客户执行分析。
 
-此体系结构的缺点在于：
+集中式体系结构的劣势是：
+
 * 此体系结构仅适用于基于代理的 VM 数据，不涵盖 PaaS、SaaS 和 Azure 结构数据源。
 * 将客户合并到单个工作区时，可能很难分隔客户之间的数据。 唯一效果不错的方法是使用计算机的完全限定域名 (FQDN) 或通过 Azure 订阅 ID 进行分隔。 
 * 来自所有客户的全部数据都将存储在具有单独帐单和相同保留期及配置设置的同一区域中。

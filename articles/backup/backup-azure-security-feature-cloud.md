@@ -6,17 +6,23 @@ author: lingliw
 origin.date: 09/13/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9e45190437e5c1fd982581e58b28ac0ce70185e5
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 0cfff1c4a0518ce749398d2099fd78cc3c2a08bd
+ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857777"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77497633"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
-对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防范此类攻击，Azure 备份现提供可帮助保护备份数据（即使数据已删除）的安全功能。 其中功能之一是“软删除”。 在使用软删除的情况下，即使恶意行动者删除了 VM 的备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。
+对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防范此类攻击，Azure 备份现提供可帮助保护备份数据（即使数据已删除）的安全功能。
 
+其中的一项功能是软删除。 在使用软删除的情况下，即使恶意行动者删除了 VM 的备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。 Azure 还使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)来加密所有已备份的静态数据，以进一步保护数据。
+
+Azure 虚拟机的软删除保护功能已推出正式版。
+
+>[!NOTE]
+>针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除现已推出预览版。<br>
 > [!NOTE]
 > 软删除只是保护已删除的备份数据。 如果删除未备份的 VM，则软删除功能不会保留数据。 应使用 Azure 备份保护所有资源，以确保能够完全复原。
 >
@@ -89,7 +95,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 #### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>使用 Azure Powershell 撤销删除操作
 
-首先，获取处于软删除状态（即将删除）的相关备份项
+首先，获取处于软删除状态（即将删除）的相关备份项。
 
 ```powershell
 
@@ -164,7 +170,7 @@ SoftDeleteFeatureState : Disabled
 执行以下步骤：
 
 1. 按照步骤[禁用软删除](#disabling-soft-delete)。
-2. 在 Azure 门户中，请切换到保管库，转到“备份项”并选择已软删除的 VM 
+2. 在 Azure 门户中，请切换到保管库，转到“备份项”并选择已软删除的 VM。 
 
 ![选择已软删除的 VM](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -229,21 +235,35 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 如果在禁用软删除之前删除了项，则它们将处于已软删除状态。 若要立即删除它们，需要反转删除操作，然后再次执行。
 
 1. 首先，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)提到的步骤撤消删除操作。
-2. 然后，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述的 REST API 删除备份。
+2. 然后遵循[此处](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)所述的步骤，使用 REST API 禁用软删除功能。
+3. 然后，使用[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述的 REST API 删除备份。
 
-## <a name="other-security-features"></a>其他安全功能
+## <a name="encryption"></a>Encryption
 
-### <a name="storage-side-encryption"></a>存储端加密
+### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>使用 Microsoft 托管密钥加密备份数据
 
-Azure 存储在将数据保存到云时会自动加密数据。 加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 Azure 存储中的数据将使用 256 位 AES 加密法（可用的最强大块加密法之一）以透明方式进行加密和解密，并符合 FIPS 140-2 规范。 Azure 存储加密法类似于 Windows 上的 BitLocker 加密法。 Azure 备份会在存储数据之前自动加密数据。 Azure 存储会在检索数据之前解密数据。  
+备份数据将使用 Azure 存储加密自动加密。 加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 数据将使用 256 位 AES 加密法（可用的最强大块加密法之一）以透明方式进行加密和解密，并符合 FIPS 140-2 规范。 Azure 存储加密法类似于 Windows 上的 BitLocker 加密法。
 
 在 Azure 中，Azure 存储与保管库之间传输的数据受 HTTPS 保护。 此数据保留在 Azure 主干网络上。
 
-有关详细信息，请参阅[静态数据的 Azure 存储加密](/storage/common/storage-service-encryption)。
+有关详细信息，请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。 请参阅 [Azure 备份常见问题解答](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption)，其中解答了有关加密的任何问题。
 
-### <a name="vm-encryption"></a>VM 加密
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户管理的密钥加密备份数据
 
-可以使用 Azure 备份服务来备份和还原包含已加密磁盘的 Windows 或 Linux Azure 虚拟机 (VM)。 有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](/backup/backup-azure-vms-encryption)。
+备份 Azure 虚拟机时，还可以选择使用 Azure Key Vault 中存储的加密密钥来加密恢复服务保管库中的备份数据。
+
+>[!NOTE]
+>此功能目前已推出尝鲜版。 如果你想要使用客户管理的密钥加密备份数据，请填写[此调查表](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u)。 请注意，能否使用此功能取决于 Azure 备份服务的审批结果。
+
+### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>备份使用客户管理的密钥加密的托管磁盘 VM
+
+借助 Azure 备份可以备份包含使用客户管理密钥加密的磁盘的 Azure 虚拟机。 有关详细信息，请参阅[使用客户管理的密钥加密托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+
+### <a name="backup-of-encrypted-vms"></a>备份加密的 VM
+
+可以使用 Azure 备份服务来备份和还原包含已加密磁盘的 Windows 或 Linux Azure 虚拟机 (VM)。 有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。
+
+## <a name="other-security-features"></a>其他安全功能
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>保护 Azure 备份恢复点
 

@@ -1,36 +1,25 @@
 ---
-title: 在 Azure Stack 中从灾难性数据丢失中恢复 | Microsoft Docs
-description: 了解如何在发生灾难性数据丢失后恢复和还原 Azure Stack 中的基础结构数据。
-services: azure-stack
-documentationcenter: ''
+title: 在 Azure Stack Hub 中从灾难性数据丢失中恢复
+description: 了解如何在发生灾难性数据丢失后恢复和还原 Azure Stack Hub 中的基础结构数据。
 author: WenJason
-manager: digimobile
-editor: ''
-ms.assetid: 2ECE8580-0BDE-4D4A-9120-1F6771F2E815
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 10/21/2019
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 409ccb07d8bec603f5f3563427e625e84a1588e9
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.openlocfilehash: 111c06ece879cb1beba2968253219790158f2e72
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020303"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540886"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 
-*适用于：Azure Stack 集成系统。*
+Azure Stack Hub 在数据中心运行 Azure 服务，并且可以在如同安装在单个机架中的四个节点那样小的环境中运行。 同时，Azure 也可以在 40 多个地区中的多个数据中心内运行，并且每个地区中可以有多个区域。 用户资源可以跨多个服务器、机架、数据中心和地区。 目前，在使用 Azure Stack Hub 时只能选择将整个云部署到单个机架上。 此限制会使你的云面临数据中心发生灾难性事件或由于主要产品 bug 而发生故障的风险。 当灾难发生时，Azure Stack Hub 实例会进入脱机状态。 可能无法恢复所有数据。
 
-Azure Stack 在数据中心运行 Azure 服务，并且可以在安装在单个机架中的四个节点小的环境中运行。 同时，Azure 也可以在 40 多个地区中的多个数据中心内运行，并且每个地区中可以有多个区域。 用户资源可以跨多个服务器、机架、数据中心和地区。 使用 Azure Stack，目前只能选择将整个云部署到单个机架上。 此限制会使你的云面临数据中心发生灾难性事件或由于主要产品 bug 而发生故障的风险。 当灾难发生时，Azure Stack 实例会进入脱机状态。 可能无法恢复所有数据。
-
-根据数据丢失的根本原因，你可能需要修复单个基础结构服务或还原整个 Azure Stack 实例。 你甚至可能需要还原到同一位置或其他位置中的其他硬件。
+根据数据丢失的根本原因，可能需要修复单个基础结构服务或还原整个 Azure Stack Hub 实例。 你甚至可能需要还原到同一位置或其他位置中的其他硬件。
 
 此方案解决了在出现故障时恢复整个安装以及重新部署私有云的问题。
 
@@ -42,26 +31,26 @@ Azure Stack 在数据中心运行 Azure 服务，并且可以在安装在单个�
 
 保护 Azure Stack 的过程从分别备份基础结构和应用/租户数据开始。 本文档介绍了如何保护基础结构。 
 
-![Azure Stack 数据恢复工作流部署](media/azure-stack-backup/azure-stack-backup-workflow1.png)
+![Azure Stack Hub 数据恢复工作流 � 部署](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
-在所有数据均丢失的最差情形方案中，恢复 Azure Stack 是还原与 Azure Stack 部署相关的基础结构数据和所有用户数据的过程。 
+在所有数据均丢失的最差情况中，恢复 Azure Stack Hub 是还原与 Azure Stack Hub 的该部署相关的基础结构数据和所有用户数据的过程。 
 
-![Azure Stack 数据恢复工作流重新部署](media/azure-stack-backup/azure-stack-backup-workflow2.png)
+![Azure Stack Hub 数据恢复工作流 � 重新部署](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>还原
 
-如果发生灾难性数据丢失，但硬件仍然可以使用，则需要重新部署 Azure Stack。 在重新部署期间，可以指定存储位置和访问备份所需的凭据。 在此模式下，不需要指定需要还原的服务。 基础结构备份控制器将控制层状态插入为部署工作流的一部分。
+如果发生灾难性数据丢失，但硬件仍然可以使用，则需重新部署 Azure Stack Hub。 在重新部署期间，可以指定存储位置和访问备份所需的凭据。 在此模式下，不需要指定需要还原的服务。 基础结构备份控制器将控制层状态插入为部署工作流的一部分。
 
 如果发生导致硬件不可用的灾难，则只能在新硬件上重新部署。 因为要订购更换硬件并等待硬件到达数据中心，所以重新部署可能会花费数周时间。 可以在任何时间还原控制层数据。 但是，如果重新部署的实例的版本比上次备份中使用的版本高一个版本，则不支持还原。
 
 | 部署模式 | 起点 | 终点                                                                                                                                                                                                     |
 |-----------------|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 全新安装   | 基线版本 | OEM 部署 Azure Stack，并更新到最新的受支持版本。                                                                                                                                          |
-| 恢复模式   | 基线版本 | OEM 在恢复模式下部署 Azure Stack 并根据可用的最新备份来处理版本匹配要求。 OEM 通过更新到最新的受支持版本来完成部署。 |
+| 全新安装   | 基线版本 | OEM 部署 Azure Stack Hub，并将其更新到最新的受支持版本。                                                                                                                                          |
+| 恢复模式   | 基线版本 | OEM 在恢复模式下部署 Azure Stack Hub 并根据可用的最新备份来处理版本匹配要求。 OEM 通过更新到最新的受支持版本来完成部署。 |
 
 ## <a name="data-in-backups"></a>备份中的数据
 
-Azure Stack 支持称为云恢复模式的部署类型。 只有当灾难或产品 bug 导致解决方案不可恢复后，你选择恢复 Azure Stack 时才使用此模式。 此部署模式不会恢复解决方案中存储的任何用户数据。 此部署模式的作用域仅限于还原以下数据：
+Azure Stack Hub 支持称为云恢复模式的部署类型。 只有当灾难或产品 Bug 导致解决方案不可恢复后，你选择恢复 Azure Stack Hub 时才使用此模式。 此部署模式不会恢复解决方案中存储的任何用户数据。 此部署模式的作用域仅限于还原以下数据：
 
  - 部署输入
  - 内部标识服务数据（ADFS 部署）。

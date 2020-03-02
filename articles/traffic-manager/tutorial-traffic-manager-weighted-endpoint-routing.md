@@ -1,5 +1,5 @@
 ---
-title: 教程 - 将流量路由到加权终结点 - Azure 流量管理器
+title: 教程：将流量路由到加权终结点 - Azure 流量管理器
 description: 本教程文章介绍如何使用流量管理器将流量路由到加权终结点。
 services: traffic-manager
 author: rockboyfor
@@ -7,14 +7,14 @@ Customer intent: As an IT Admin, I want to distribute traffic based on the weigh
 ms.service: traffic-manager
 ms.topic: tutorial
 origin.date: 10/15/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f0f513c3b4066a2ac126017963898c11b331f723
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: be61b884b7299557ca87c8b8509aba4c2803c863
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857190"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653185"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
@@ -147,9 +147,9 @@ ms.locfileid: "70857190"
 
 2. 在“创建流量管理器配置文件”中，输入或选择以下信息  。 对于其他设置，请接受默认值，然后选择“创建”。 
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | 输入 trafficmanager.cn 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.cn，用于访问流量管理器配置文件。                                   |
+    | 名称                   | 输入 trafficmanager.cn 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.cn，用于访问流量管理器配置文件。                                   |
     | 路由方法          | 选择**权重**路由方法。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“使用现有”，然后选择“myResourceGroupTM1”   。 |
@@ -165,10 +165,10 @@ ms.locfileid: "70857190"
 2. 在“流量管理器配置文件”  的“设置”  部分，选择“终结点”   >   “添加”。
 3. 输入或选择以下信息。 对于其他设置，请接受默认值，然后选择“确定”。 
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 类型                    | 输入 Azure 终结点。                                   |
-    | Name           | 输入 **myChinaEastEndpoint**。                                        |
+    | 名称           | 输入 **myChinaEastEndpoint**。                                        |
     | 目标资源类型           | 选择“公共 IP 地址”。                           |
     | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为 **myIISVMChinaEast-ip** 的公共 IP 地址。  这是中国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  重量      | 输入 **100**。        |
@@ -207,9 +207,9 @@ ms.locfileid: "70857190"
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
 6. 在 VM myVMChinaEast 上的 Web 浏览器中，输入流量管理器配置文件的 DNS 名称，以查看网站。 系统会将你路由到托管在 IIS 服务器 myIISVMChinaEast 上的网站，因为为它分配的权重较高，为 **100**。 为 IIS 服务器 myIISVMChinaNorth 分配的终结点权重值较低，为 **25**。
 
-   ![测试流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+    ![测试流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-   <!--MOONCAKE: Correct on eastus-traffic-manager-test.png-->
+    <!--MOONCAKE: Correct on eastus-traffic-manager-test.png-->
    
 7. 对 VM myVMChinaNorth 重复步骤 1-6，查看加权网站的响应。
 

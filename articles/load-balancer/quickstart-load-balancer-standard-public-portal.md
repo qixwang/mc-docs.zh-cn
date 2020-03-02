@@ -1,31 +1,31 @@
 ---
-title: 快速入门：创建标准负载均衡器 - Azure 门户
+title: 快速入门：创建公共负载均衡器 - Azure 门户
 titleSuffix: Azure Load Balancer
-description: 本快速入门介绍如何使用 Azure 门户创建标准负载均衡器。
+description: 本快速入门介绍如何使用 Azure 门户创建负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: WenJason
 manager: digimobile
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/08/2020
-ms.date: 01/20/2020
+ms.date: 02/24/2020
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: cf089f2a6e7b2abcf8c5f3a24ec4698ab616e9d7
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 7a142e5e5bec32fd49e764693f196c12d89376b4
+ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964889"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77540979"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建标准负载均衡器以对 VM 进行负载均衡
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
 
-可以通过负载均衡将传入请求分布到多个虚拟机，从而提供更高级别的可用性和可伸缩性。 可以通过 Azure 门户创建负载均衡器，对虚拟机 (VM) 进行负载均衡。 本快速入门演示如何使用标准负载均衡器对 VM 进行负载均衡。
+可以通过负载均衡将传入请求分布到多个虚拟机，从而提供更高级别的可用性和可伸缩性。 可以通过 Azure 门户创建负载均衡器，对虚拟机 (VM) 进行负载均衡。 本快速入门演示如何使用公共负载均衡器对 VM 进行负载均衡。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
 
@@ -33,9 +33,9 @@ ms.locfileid: "75964889"
 
 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
-## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
+## <a name="create-a-load-balancer"></a>创建负载均衡器
 
-在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共标准负载均衡器或内部标准负载均衡器。 标准负载均衡器仅支持标准公共 IP 地址，不支持基本公共 IP 地址。 创建公共标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”  ）的新标准公共 IP 地址。 
+在本部分，你将创建一个负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共负载均衡器或内部负载均衡器。 创建公共负载均衡器时，还必须为该负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新公共 IP 地址。
 
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”    。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
@@ -47,8 +47,8 @@ ms.locfileid: "75964889"
     | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“中国北部”  。                                        |
     | 类型          | 选择“公共”。                                         |
-    | SKU           | 选择“标准”  。                          |
-    | 公共 IP 地址 | 选择“新建”。  |
+    | SKU           | 选择“标准”或“基本”。   Azure 建议将“标准”用于生产工作负荷。  |
+    | 公共 IP 地址 | 选择“新建”。  若要使用现有的公共 IP，请选择“使用现有项”  |
     | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |
 3. 在“查看 + 创建”选项卡中，选择“创建”。     
 
@@ -58,7 +58,7 @@ ms.locfileid: "75964889"
 
 在本部分中，我们将为后端地址池和运行状况探测配置负载均衡器设置，并指定均衡器规则。
 
-### <a name="create-a-backend-address-pool"></a>创建后端地址池
+### <a name="create-a-backend-pool"></a>创建后端池
 
 若要向 VM 分发流量，后端地址池需包含连接到负载均衡器的虚拟 NIC 的 IP 地址。 创建后端地址池 *myBackendPool* 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
@@ -122,7 +122,7 @@ ms.locfileid: "75964889"
 1. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
-标准负载均衡器仅支持在后端池中具有标准 IP 地址的 VM。 在本部分中，我们将创建具有标准公共 IP 地址的三个 VM（*myVM1*、*myVM2* 和 *myVM3*），这些 VM 稍后将添加到前面创建的标准负载均衡器后端池。
+公共 IP SKU 和负载均衡器 SKU 必须匹配。 对于标准负载均衡器，请使用后端池中具有标准 IP 地址的 VM。 在本部分中，你将创建具有标准公共 IP 地址的三个 VM（myVM1  、myVM2  和 myVM3  ），这些 VM 稍后将添加到前面创建的负载均衡器后端池。 如果选择了“基本”，请使用具有基本 IP 地址的 VM。
 
 1. 在门户左上角，选择“创建资源” > “计算” > “Windows Server 2019 Datacenter”。    
    
@@ -131,12 +131,12 @@ ms.locfileid: "75964889"
    - **实例详细信息** > **虚拟机名称**：键入 *myVM1*。
    - 在“实例详细信息” > “区域”中，选择“中国北部”。   
    - 管理员帐户 > 输入用户名、密码和确认密码信息     。
-   - 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
+   - 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。
   
 1. 在“网络”选项卡中，确保选中以下项  ：
    - **虚拟网络**：*myVnet*
    - **子网**：*myBackendSubnet*
-   - 在“公共 IP”中选择“新建”，接着在“创建公共 IP 地址”窗口中针对“SKU”选择“标准”，然后选择“确定”。      
+   - 在“公共 IP”中选择“新建”，接着在“创建公共 IP 地址”窗口中针对“SKU”选择“标准”，然后选择“确定”。       如果创建了基本负载均衡器，请选择“基本”。 Azure 建议将标准 SKU 用于生产工作负荷。
    - 若要创建新的网络安全组（简称 NSG，一种防火墙），请在“网络安全组”下选择“高级”。   
        1. 在“配置网络安全组”字段中，选择“新建”。   
        1. 键入 *myNetworkSecurityGroup*，然后选择“确定”。 
@@ -163,15 +163,20 @@ ms.locfileid: "75964889"
 1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“myResourceGroupSLB”资源组中的“myNetworkSecurityGroup”。    
 2. 在“设置”下，依次选择“入站安全规则”、“添加”。   
 3. 为名为 *myHTTPRule* 的入站安全规则输入以下值，以允许来自端口 80 的入站 HTTP 连接：
-    -  服务标记 - **源**。
-    - *Internet* - **源服务标记**
-    - *80* - **目标端口范围**
-    - *TCP* - **协议**
-    -  允许 - **操作**
-    - *100* - **优先级**
-    - *myHTTPRule* - 名称
-    -  允许 HTTP - 说明
+    - **源**：*服务标记*
+    -  **源服务标记**：*Internet*
+    - **目标端口范围**：*80*
+    - **协议**：*TCP*
+    - **操作**：*Allow*
+    - **优先级**：*100*
+    - **名称**：*myHTTPRule* 
+    - **说明**：“允许 HTTP”  
 4. 选择“添加”   。
+5. 如果需要，请使用以下不同值对入站 RDP 规则重复上述步骤：
+   - **目标端口范围**：键入“3389”  。
+   - **优先级**：键入“200”  。 
+   - **名称**：键入 *MyRDPRule*。 
+   - **说明**：键入“允许 RDP”  。 
  
 ### <a name="install-iis"></a>安装 IIS
 

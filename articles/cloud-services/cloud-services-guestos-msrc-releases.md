@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure 来宾 OS 的更新列表
+title: 适用于 Azure 来宾 OS 的更新列表 | Microsoft Docs
 description: 适用于来宾 OS 版本的更新列表
 services: cloud-services
 documentationcenter: na
@@ -7,19 +7,17 @@ author: raiye
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-origin.date: 11/15/2019
-ms.author: v-yiso
-ms.date: 12/09/2019
-ms.openlocfilehash: 8f5763f77f03eb50a894a173960b9ca9b523480b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 02/19/2020
+ms.author: v-junlch
+ms.openlocfilehash: d3cf9f4e7e1bdae6d6df7cfd5de60a6e4d524b88
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067859"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77494489"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
@@ -44,9 +42,9 @@ ms.locfileid: "77067859"
 |  Rel 20-01  |  [4494174]  |  微代码 v4  | [6.15] | 2019 年 8 月 29 日 |
 |  Rel 20-01  |  [4532947]  |  Windows 安全性  | [6.15] | 2020 年 1 月 14 日 |
 |  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 2020 年 1 月 14 日 |
-|  Rel 20-01  |  [4530734]  |  非安全性  | [2.94] | 2019 年 12 月 10 日 |
-|  Rel 20-01  |  [4530691]  |  非安全性   | [3.81] | 2019 年 12 月 10 日 |
-|  Rel 20-01  |  [4530702]  |  非安全性  | [4.74] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530734]  |  每月汇总  | [2.94] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530691]  |  每月汇总   | [3.81] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530702]  |  每月汇总  | [4.74] | 2019 年 12 月 10 日 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -1016,7 +1014,7 @@ ms.locfileid: "77067859"
 | Rel 17-05 | [4010323] |SHA1 公告 |2.62, 4.42, 5.7 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4022344] |Microsoft 安全公告 |5.7 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4022345] |Microsoft 安全公告 |5.7 | 2017 年 5 月 9 日 |
-| Rel 17-05 | [4021279] |.Net/ASP.Net Core 公告 |2.62, 3.49, 4.42, 5.7 | 2017 年 5 月 9 日 |
+| Rel 17-05 | [4021279] |.NET /ASP.NET Core 公告 |2.62, 3.49, 4.42, 5.7 | 2017 年 5 月 9 日 |
 | 不适用 | [4012864] |时区更新 |2.62, 3.49, 4.42 | 2017 年 5 月 9 日 |
 | 不适用 | [4014565] |4 月 .NET 非安全性汇总 |2.62 | 2017 年 4 月 11 日 |
 | 不适用 | [4014559] |4 月 .NET 非安全性汇总 |2.62 | 2017 年 4 月 11 日 |
@@ -2052,7 +2050,7 @@ ms.locfileid: "77067859"
 
 [MS15-034]: https://technet.microsoft.com/library/security/MS15-034
 
-[3042553]: https://support.microsoft.com/en-us/kb/3042553/
+[3042553]: https://support.microsoft.com/kb/3042553/
 
 [3034682]: https://support.microsoft.com/kb/3034682
 [3036220]: https://support.microsoft.com/kb/3036220
@@ -2126,8 +2124,9 @@ ms.locfileid: "77067859"
 [3062577]: https://support.microsoft.com/kb/3062577
 [3063858]: https://support.microsoft.com/kb/3063858
 
-[archive]: https://msdn.microsoft.com/zh-cn/library/azure/dn391773.aspx
-[family-explain]:./cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation
+
+[archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
+[family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation
 
 
 <!--Update_Description: update wording-->

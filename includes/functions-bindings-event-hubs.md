@@ -2,14 +2,14 @@
 author: craigshoemaker
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/14/2020
+ms.date: 02/17/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7d27ba711cb3feef23582824db1da69761cbe48d
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 43cb327ba7896fba7811d707ac594489f7ac2443
+ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76118065"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495527"
 ---
 ## <a name="trigger"></a>触发器
 
@@ -28,25 +28,15 @@ ms.locfileid: "76118065"
 
 * **不需要新的函数实例**：在 Functions 的缩放逻辑生效之前，`Function_0` 能够处理所有 1,000 个事件。 在这种情况下，所有 1,000 条消息都由 `Function_0` 处理。
 
-* **添加其他函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 的消息数超出了它的处理能力，则会创建新的函数应用实例 (`Function_1`)。 此新函数也有一个关联的 [EventProcessorHost](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.eventhubs.processor) 实例。 基础事件中心检测到新主机实例在尝试读取消息时，会在其主机实例之间对分区进行负载均衡。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
+* **添加其他函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 的消息数超出了它的处理能力，则会创建新的函数应用实例 (`Function_1`)。 此新函数也有一个关联的 [EventProcessorHost](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.eventhubs.processor) 实例。 基础事件中心检测到新主机实例在尝试读取消息时，会在主机实例之间对分区进行负载均衡。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
 
 * **额外添加 N 个函数实例**：如果 Functions 缩放逻辑确定 `Function_0` 和 `Function_1` 的消息数超出了它们的处理能力，则会创建新的 `Functions_N` 函数应用实例。  会一直创建应用，直到 `N` 大于事件中心分区数为止。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
 
-当 Functions 缩放时，`N` 实例是一个大于事件中心分区数的数字。 这样做是为了确保 [EventProcessorHost](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.eventhubs.processor) 实例可供用来在其他实例释放锁时在分区上获取锁。 你只需为执行函数实例时使用的资源付费。 换句话说，不需要为过度预配的资源付费。
+缩放时，`N` 实例是一个大于事件中心分区数的数字。 此模式用于确保 [EventProcessorHost](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.eventhubs.processor) 实例可供用来在其他实例释放锁时在分区上获取锁。 你只需为执行函数实例时使用的资源付费。 换句话说，不需要为过度预配的资源付费。
 
 当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 检查点设置成功后，永远不会再次检索所有 1,000 条消息。
 
-## <a name="trigger---example"></a>触发器 - 示例
-
-参阅语言特定的示例：
-
-* [C#](#trigger---c-example)
-* [C# 脚本 (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-
-### <a name="trigger---c-example"></a>触发器 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示用于记录事件中心触发器消息正文的 [C# 函数](../articles/azure-functions/functions-dotnet-class-library.md)。
 
@@ -98,7 +88,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数记录事件中心触发器的消息正文。
 
@@ -116,7 +106,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-#### <a name="version-1x"></a>版本 1.x
+### <a name="version-1x"></a>版本 1.x
 
 ```json
 {
@@ -179,44 +169,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-### <a name="trigger---f-example"></a>触发器 - F# 示例
-
-以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [F# 函数](../articles/azure-functions/functions-reference-fsharp.md)。 该函数记录事件中心触发器的消息正文。
-
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 
-
-#### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "myEventHubMessage",
-  "direction": "in",
-  "eventHubName": "MyEventHub",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
-
-#### <a name="version-1x"></a>版本 1.x
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "myEventHubMessage",
-  "direction": "in",
-  "path": "MyEventHub",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
-
-F# 代码如下所示：
-
-```fsharp
-let Run(myEventHubMessage: string, log: TraceWriter) =
-    log.Log(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
-```
-
-### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 此函数将读取[事件元数据](#trigger---event-metadata)并记录消息。
 
@@ -234,7 +187,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 }
 ```
 
-#### <a name="version-1x"></a>版本 1.x
+### <a name="version-1x"></a>版本 1.x
 
 ```json
 {
@@ -274,7 +227,7 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-#### <a name="version-1x"></a>版本 1.x
+### <a name="version-1x"></a>版本 1.x
 
 ```json
 {
@@ -304,19 +257,9 @@ module.exports = function (context, eventHubMessages) {
 };
 ```
 
-### <a name="trigger---java-example"></a>触发器 - Java 示例
+# <a name="java"></a>[Java](#tab/java)
 
-以下示例演示 function.json  文件中的一个事件中心触发器绑定以及使用该绑定的 [Java 函数](../articles/azure-functions/functions-reference-java.md)。 该函数记录事件中心触发器的消息正文。
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "msg",
-  "direction": "in",
-  "eventHubName": "myeventhubname",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
+以下示例演示了一个记录事件中心触发器消息正文的事件中心触发器绑定。
 
 ```java
 @FunctionName("ehprocessor")
@@ -330,9 +273,13 @@ public void eventHubProcessor(
  }
 ```
 
- 在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 `EventHubTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。
+ 在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 `EventHubTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
-## <a name="trigger---attributes"></a>触发器 - 特性
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>触发器 - 特性和注释
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](../articles/azure-functions/functions-dotnet-class-library.md)中，使用 [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) 特性。
 
@@ -346,7 +293,21 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
+有关完整示例，请参阅[触发器 - C# 示例](#trigger)。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+在 Java [函数运行时库](https://docs.microsoft.com https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) 注释。 带有这些注释的参数会导致函数在事件到达时运行。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+
+---
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
@@ -367,7 +328,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ## <a name="trigger---event-metadata"></a>触发器 - 事件元数据
 
-事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [EventData](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventdata) 类的属性。
+事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 元数据属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 属性来自 [EventData](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.eventdata) 类。
 
 |属性|类型|说明|
 |--------|----|-----------|
@@ -379,7 +340,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |`SequenceNumber`|`Int64`|事件的逻辑序列号。|
 |`SystemProperties`|`IDictionary<String,Object>`|系统属性，包括事件数据。|
 
-请参阅在本文的前面部分使用这些属性的[代码示例](#trigger---example)。
+请参阅在本文的前面部分使用这些属性的[代码示例](#trigger)。
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
@@ -393,17 +354,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 在尝试实现输出绑定之前，请确保所需的包引用已准备就绪。
 
-## <a name="output---example"></a>输出 - 示例
-
-参阅语言特定的示例：
-
-* [C#](#output---c-example)
-* [C# 脚本 (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-
-### <a name="output---c-example"></a>输出 - C# 示例
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示使用方法返回值作为输出将消息写入到事件中心的 [C# 函数](../articles/azure-functions/functions-dotnet-class-library.md)：
 
@@ -437,7 +388,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="output---c-script-example"></a>输出 - C# 脚本示例
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数将消息写入事件中心。
 
@@ -489,41 +440,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-### <a name="output---f-example"></a>输出 - F# 示例
-
-以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [F# 函数](../articles/azure-functions/functions-reference-fsharp.md)。 该函数将消息写入事件中心。
-
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x 及更高版本，第二个示例适用于 Functions 1.x。 
-
-```json
-{
-    "type": "eventHub",
-    "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
-    "connection": "MyEventHubSendAppSetting",
-    "direction": "out"
-}
-```
-```json
-{
-    "type": "eventHub",
-    "name": "outputEventHubMessage",
-    "path": "myeventhub",
-    "connection": "MyEventHubSendAppSetting",
-    "direction": "out"
-}
-```
-
-F# 代码如下所示：
-
-```fsharp
-let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) =
-    let msg = sprintf "TimerTriggerFSharp1 executed at: %s" DateTime.Now.ToString()
-    log.LogInformation(msg);
-    outputEventHubMessage <- msg;
-```
-
-### <a name="output---javascript-example"></a>输出 - JavaScript 示例
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 该函数将消息写入事件中心。
 
@@ -575,7 +492,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>输出 - Java 示例
+# <a name="java"></a>[Java](#tab/java)
 
 以下示例演示一个将包含当前时间的消息写入到事件中心的 Java 函数。
 
@@ -590,9 +507,13 @@ public String sendTime(
 
 在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 `@EventHubOutput` 注释。  此参数应为 `OutputBinding<T>` 类型，其中 T 是 POJO 或任何本机 Java 类型。
 
-## <a name="output---attributes"></a>输出 - 特性
+---
 
-对于 [C# 类库](../articles/azure-functions/functions-dotnet-class-library.md)，请使用 `EventHubAttribute` 特性。
+## <a name="output---attributes-and-annotations"></a>输出 - 特性和注释
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+对于 [C# 类库](../articles/azure-functions/functions-dotnet-class-library.md)，请使用 `EventHubAttribute`。
 
 该特性的构造函数使用事件中心的名称和包含连接字符串的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#output---configuration)。 下面是 `EventHub` 特性的示例：
 
@@ -605,7 +526,21 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output)。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+C# 脚本不支持特性。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="java"></a>[Java](#tab/java)
+
+在 [Java 函数运行时库](https://docs.microsoft.com https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释。 此参数应为 `OutputBinding<T>` 类型，其中 `T` 是 POJO 或任何本机 Java 类型。
+
+---
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -624,9 +559,27 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 和 C# 脚本中，可以使用 `out string paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+# <a name="c"></a>[C#](#tab/csharp)
 
-在 JavaScript 中，通过使用 `context.bindings.<name>` 访问输出事件。 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。
+使用 `out string paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+使用 `out string paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。
+
+# <a name="java"></a>[Java](#tab/java)
+
+可通过两个选项使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释从函数输出事件中心消息：
+
+- **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为事件中心消息。
+
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递某值会将该值持久保存为事件中心消息。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
@@ -660,7 +613,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 |属性  |默认 | 说明 |
 |---------|---------|---------|
-|maxBatchSize|64|每个接收循环收到的最大事件计数。|
-|prefetchCount|不适用|基础 EventProcessorHost 将要使用的默认 PrefetchCount。|
-|batchCheckpointFrequency|1|创建 EventHub 游标检查点之前要处理的事件批数。|
+|`maxBatchSize`|10 个|每个接收循环收到的最大事件计数。|
+|`prefetchCount`|300|基础 `EventProcessorHost` 使用的默认预提取计数。|
+|`batchCheckpointFrequency`|1|创建 EventHub 游标检查点之前要处理的事件批数。|
 

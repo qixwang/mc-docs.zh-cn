@@ -1,21 +1,20 @@
 ---
 title: 使用诊断日志对 Azure 流分析进行故障排除
 description: 本文介绍如何在 Azure 流分析中分析诊断日志。
-author: rockboyfor
-ms.author: jeanb
+author: lingliw
+ms.author: v-lingwu
 manager: digimobile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/19/2019
 ms.date: 1/6/2020
-ms.custom: v-lingwu
-ms.openlocfilehash: 483239f8f8169c7da08883a5020b43ac6e0cca38
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: bca54b23765fbbe5c81b6031e67c778001fe38f6
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856902"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155048"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -25,7 +24,7 @@ ms.locfileid: "75856902"
 
 ## <a name="log-types"></a>日志类型
 
-流分析提供两种类型的日志： 
+流分析提供两种类型的日志：
 * [活动日志](/monitoring-and-diagnostics/monitoring-overview-activity-logs)（始终可用）。 通过活动日志可深入了解对作业执行的操作。
 * [诊断日志](/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)（可配置）。 通过诊断日志可详细了解作业发生的所有情况。 诊断日志在创建作业时开始，并在删除作业时结束。 日志中包含了作业更新和运行期间的事件。
 
