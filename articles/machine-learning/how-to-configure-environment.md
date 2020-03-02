@@ -4,19 +4,20 @@ titleSuffix: Azure Machine Learning
 description: 了解如何配置 Azure 机器学习的开发环境。 使用 Conda 环境、创建配置文件，以及配置自己的基于云的 Notebook 服务器、Jupyter Notebook、Azure Databricks、IDE、代码编辑器和 Data Science Virtual Machine。
 services: machine-learning
 author: rastala
-ms.author: roastala
+ms.author: v-yiso
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/25/2019
+origin.date: 12/27/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03278b304f9488765fef9c64db0a4c9c1df07937
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: f51d84531191c015d878b7df3dbb2322306a618f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598832"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155018"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,10 +58,6 @@ Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure �
 ## <a id="compute-instance"></a>自己的基于云的计算实例
 
 Azure 机器学习[计算实例（预览版）](concept-compute-instance.md)是一个安全的基于云的 Azure 工作站，为数据科学家提供 Jupyter Notebook 服务器、JupyterLab 和一个准备妥当的 ML 环境。
-
-> [!NOTE]
-> 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区   。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。
 
 无需为计算实例安装或配置任何组件。  随时可从 Azure 机器学习工作区内部创建组件。 只需提供名称并指定 Azure VM 类型即可。 请参考以下文章尝试操作计算实例：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -259,14 +256,14 @@ Visual Studio Code 是一款非常流行的跨平台代码编辑器，它通过 
 
 1. 若要安装适用于 Visual Studio Code 的 Azure 机器学习扩展，请参阅 [Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)。
 
-    有关详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure 机器学习](how-to-vscode-tools.md)。
+    有关详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure 机器学习](tutorial-setup-vscode-extension.md)。
 
 1. 若要了解如何使用 Visual Studio Code 进行任何类型的 Python 开发，请参阅 [VSCode 中的 Python 入门](https://code.visualstudio.com/docs/python/python-tutorial)。
 
     - 若要选择包含 SDK 的 SDK Python 环境，请打开 VS Code，然后按 Ctrl+Shift+P（Linux 和 Windows）或 Command+Shift+P (Mac)。
         - 此时会打开“命令面板”。 
 
-    - 输入 __Python:Select Interpreter__，然后选择相应的环境
+    - 输入 Python:__Select Interpreter__，然后选择相应的环境
 
 1. 若要验证是否可以使用 SDK，请创建包含以下代码的新 Python 文件 (.py)：
 
@@ -296,7 +293,7 @@ Azure Databricks 如何使用 Azure 机器学习：
 | 设置 |适用于| Value |
 |----|---|---|
 | 群集名称 |通用| yourclustername |
-| Databricks 运行时 |通用|非 ML 运行时 6.0（scala 2.11、spark 2.4.3） |
+| Databricks Runtime |通用|非 ML 运行时 6.0（scala 2.11、spark 2.4.3） |
 | Python 版本 |通用| 3 |
 | 工作节点 |通用| 2 个或以上 |
 | 工作节点 VM 类型 <br>（确定最大并发迭代数） |自动化机器学习<br>（仅限）| 首选内存优化的 VM |
@@ -371,7 +368,7 @@ Azure Databricks 如何使用 Azure 机器学习：
 
 * **使用 [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** ：编写 *config.json* 文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
-* **下载文件**：在[Azure 门户](https://ms.portal.azure.cn)中，选择工作区的“概览”  部分中的“下载 config.json”  。
+* **下载文件**：在[Azure 门户](https://ms.portal.azure.cn)中，选择工作区的“概览”部分中的“**下载 config.json”** 。 
 
      ![Azure 门户](./media/how-to-configure-environment/configure.png)
 

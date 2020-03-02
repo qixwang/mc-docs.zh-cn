@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 流量管理器配置子网流量路由方法
-description: 本文介绍了如何配置流量管理器以将流量从用户子网路由到特定终结点。
+title: 教程 - 使用 Azure 流量管理器配置子网流量路由
+description: 本教程介绍如何配置流量管理器以将流量从用户子网路由到特定终结点。
 services: traffic-manager
 documentationcenter: ''
 author: rockboyfor
@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/24/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0449e898b9647ce783a1ae80fd954453b7513aa9
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 18266d77babbf9730d6c8394fc92661e75d198f3
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857189"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653186"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
 
 本文介绍如何配置子网流量路由方法。 借助子网流量路由方法，可以将一组 IP 地址范围映射到特定终结点，当流量管理器接收到请求后，它会检查请求的源 IP 并返回相关的终结点  。
 
@@ -48,7 +48,7 @@ ms.locfileid: "70857189"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.cn 登录到 Azure 门户。
+在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
 ### <a name="create-websites"></a>创建网站
 
@@ -146,7 +146,7 @@ ms.locfileid: "70857189"
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
    - “入站端口规则”   >   “选择入站端口”：在下拉框中选择“RDP”。 
 
-3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
+3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:** 网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
 6. 按步骤创建另一个 VM，其名称为“myVMChinaNorth”  ，其“资源组”名称为“myResourceGroupTM2”  ，其“位置”为“中国北部”，所有其他设置与 myVMChinaEast  相同。   
@@ -162,9 +162,9 @@ ms.locfileid: "70857189"
 
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
+    | 名称                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
     | 路由方法          | 选择“子网”路由方法  。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“现有”，然后输入 myResourceGroupTM1   。 |
@@ -181,10 +181,10 @@ ms.locfileid: "70857189"
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
-    | Name           | myInternalWebSiteEndpoint                                        |
+    | 名称           | myInternalWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMChinaEast-ip* 的公共 IP 地址。  这是中国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  子网路由设置    |   添加 myVMChinaEast 测试 VM 的 IP 地址  。 源自此 VM 的任何用户查询将转向 myInternalWebSiteEndpoint  。    |
@@ -232,7 +232,6 @@ ms.locfileid: "70857189"
 
 - 了解[加权流量路由方法](traffic-manager-configure-weighted-routing-method.md)。
 - 了解[优先级路由方法](traffic-manager-configure-priority-routing-method.md)。
+- 了解[地理路由方法](traffic-manager-configure-geographic-routing-method.md)。
 
-<!-- Not Available on - Learn about [geographic routing method](traffic-manager-configure-geographic-routing-method.md)-->
-
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

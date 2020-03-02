@@ -1,23 +1,23 @@
 ---
-title: 教程 - 使用 Azure 流量管理器路由流量以改善网站响应
+title: 教程 - 使用 Azure 流量管理器改善网站响应
 description: 本教程文章介绍如何创建流量管理器配置文件，以生成具有高响应能力的网站。
 services: traffic-manager
 author: rockboyfor
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 07/23/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: b5dae182c3908315b4952533a1fe4c506243e998
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 06581f27245baff899edf3560af3e1bd673c7576
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857300"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653192"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应
 
@@ -46,7 +46,7 @@ ms.locfileid: "70857300"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.cn 登录到 Azure 门户。
+在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
 ### <a name="create-websites"></a>创建网站
 
@@ -153,13 +153,13 @@ ms.locfileid: "70857300"
 
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                    | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
+    | 名称                    | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
     | 路由方法          | 选择“性能”  路由方法。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择资源组“myResourceGroupTM1”  。 |
-    | Location                | 选择“中国东部”。  此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
+    | 位置                | 选择“中国东部”。  此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
     |
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -172,10 +172,10 @@ ms.locfileid: "70857300"
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
-    | Name           | myChinaEastEndpoint                                        |
+    | 名称           | myChinaEastEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMChinaEast-ip* 的公共 IP 地址。  这是中国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |        |           |
