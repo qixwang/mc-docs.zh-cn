@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/31/2020
-ms.date: 02/17/2020
+ms.date: 03/01/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 05dde4499cb5eaffc6788556b1f4a7ff13fb7577
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 23d67c3353512c1bfe899f3786416d7def23ef35
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028187"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042307"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -25,14 +25,14 @@ ms.locfileid: "77028187"
 
 ## <a name="speech-to-text"></a>语音转文本
 
-Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 若要提高准确性，可通过上传音频和人为标记的听录内容或相关文本，为语言子集提供自定义：句子。  发音自定义目前仅适用于 `en-US` 和 `de-DE`。
+Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 若要提高准确性，可通过上传音频和人为标记的听录内容或相关文本，为语言子集提供自定义：句子。 发音自定义目前仅适用于 `en-US` 和 `de-DE`。 在[此处](how-to-custom-speech.md)详细了解自定义。
 
 <!--
 To get the AM and ML bits:
-https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+https://chinaeast2.cris.azure.cn/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
 
 To get pronunciation bits:
-https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+https://cris.azure.cn -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
  Locale | 语言 | 支持 | 自定义
@@ -66,10 +66,31 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区域设置标识的特定语言和方言。
 
 > [!IMPORTANT]
-> 定价因标准而异。 有关其他信息，请访问[定价](https://www.azure.cn/pricing/details/cognitive-services/)页。
+> 标准语音和神经语音的定价各不相同。 有关其他信息，请访问[定价](https://www.azure.cn/pricing/details/cognitive-services/)页。
 
-<!-- ### Neural voices -->
+### <a name="neural-voices-preview"></a>神经语音（预览版）
 
+> [!NOTE]
+> 目前，神经语音为预览版并且免费。
+
+神经文本到语音转换是由深度神经网络提供支持的新型语音合成。 使用神经语音时，几乎无法将合成的语音与人类录音区分开来。
+
+使用神经语音可使得与聊天机器人和语音助手的交互更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
+
+有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
+
+Locale | 语言 | 性别 | 完整服务名称映射 | 短语音名称
+--------|----------|--------|---------|------------
+`de-DE` | 德语（德国） | 女 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
+`en-US` | 英语(美国) | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
+`en-US` | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-US-JessaNeural"
+`it-IT` | 意大利语（意大利） | 女 |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-IT-ElsaNeural"
+`zh-CN` | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
+
+若要了解如何配置和调整神经声音，请参阅[语音合成标记语言](speech-synthesis-markup.md#adjust-speaking-styles)。
+
+> [!NOTE]
+> 可以在语音合成请求中使用完整服务名称映射或短语音名称。
 
 ### <a name="standard-voices"></a>标准语音
 

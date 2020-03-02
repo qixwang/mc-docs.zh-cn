@@ -9,26 +9,26 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/09/2019
-ms.date: 01/27/2020
+ms.date: 03/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8857669ce9c5c0c9ae270025e374fddacc660bb1
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: b3f348ea81f523cececfa4186f3ce1921c01a861
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269950"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042306"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
 语音服务可让你使用一组 REST API [将文本转换为合成语音](#convert-text-to-speech)，并[获取某个区域支持的语音列表](#get-a-list-of-voices)。 每个可用终结点都与一个区域相关联。 需要计划使用的终结点/区域的订阅密钥。
 
-文本转语音 REST API 支持标准“文本转语音”语音，每种语音均支持区域设置标识的特定语言和方言。
+文本转语音 REST API 支持神经和标准文本转语音，每种语音支持区域设置标识的特定语言和方言。
 
 * 有关语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 * 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 标准语音的费用各不相同。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
+> 标准语音和神经语音的费用各不相同（预览版免费）。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 使用此 API 之前，请了解：
 
@@ -186,7 +186,7 @@ Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='en-US-JessaRUS'>
-        Microsoft Speech service Text-to-Speech API
+        Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
 

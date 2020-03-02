@@ -9,18 +9,21 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/27/2020
+ms.date: 03/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8a6faf56fa165202d5a351e14cda84152c72275b
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: a85db5f897071712709dc1f929e58ac425b109ac
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966442"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042287"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
-语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 从标准语音中进行选择。 50 种以上的标准语音在 10 种以上的语言中提供，区域设置在一系列所选语言和区域中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。 从标准语音和神经语音中进行选择。 50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在一组精选的语言和区域设置中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+
+> [!NOTE]
+> 目前，神经语音为预览版并且免费。
 
 <!-- > [!NOTE] -->
 <!-- > Bing Speech was decommissioned on October 15, 2019. If your applications, tools, or products are using the Bing Speech APIs or Custom Speech, we've created guides to help you migrate to the Speech service. -->
@@ -28,13 +31,13 @@ ms.locfileid: "76966442"
 
 ## <a name="core-features"></a>核心功能 
 
-* 语音合成 - 使用[语音 SDK](quickstarts/text-to-speech-audio-file.md) 或 [REST API](rest-text-to-speech.md) 通过标准语音将文本转换为语音。
+* 语音合成 - 使用[语音 SDK](quickstarts/text-to-speech-audio-file.md) 或 [REST API](rest-text-to-speech.md) 通过标准语音和神经语音将文本转换为语音。
 
 <!-- * Asynchronous synthesis of long audio - Use the [Long Audio API](long-audio-api.md) to asynchronously synthesize text-to-speech files longer than 10 minutes (for example audio books or lectures). Unlike synthesis performed using the Speech SDK or speech-to-text REST API, responses aren't returned in real time. The expectation is that requests are sent asynchronously, responses are polled for, and that the synthesized audio is downloaded when made available from the service. Only neural voices are supported. -->
 
 * 标准语音 - 使用统计参数合成和/或串联合成技术创建。 这些语音的辨识度很高，且听起来非常自然。 你可以轻松地让应用程序使用多种语音选项以 10 种以上的语言讲述。 这些声音提供较高的发音准确度，支持缩写、缩略词扩展、日期/时间解释、多音字等。 有关标准语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
-<!-- * Neural voices - Deep neural networks are used to overcome the limits of traditional speech synthesis with regards to stress and intonation in spoken language. Prosody prediction and voice synthesis are performed simultaneously, which results in more fluid and natural-sounding outputs. Neural voices can be used to make interactions with chatbots and voice assistants more natural and engaging, convert digital texts such as e-books into audiobooks, and enhance in-car navigation systems. With the human-like natural prosody and clear articulation of words, neural voices significantly reduce listening fatigue when you interact with AI systems. For a full list of neural voices, see [supported languages](language-support.md#text-to-speech). -->
+* 神经语音（预览版）- 深层神经网络用于克服有关口语中的重读和语调的传统语音合成限制。 韵律预测和语音合成以同步方式执行，使输出听起来更流畅且自然。 使用神经语音可使得与聊天机器人和语音助手的交流更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 * 语音合成标记语言 (SSML) - 一种基于 XML 的标记语言，用于自定义语音转文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅 [SSML](speech-synthesis-markup.md)。
 

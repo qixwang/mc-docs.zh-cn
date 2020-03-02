@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 01/27/2020
+ms.date: 03/01/2020
 ms.author: v-tawe
-ms.openlocfilehash: efaca4e00a8d4c82b8904d5760b96ce8133e3c04
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: ac8a16af1e4a954646d803a06239289999850019
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966555"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042292"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
 
@@ -27,11 +27,14 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 > [!IMPORTANT]
 > 中文、日语和韩语字符按两个字符计费。 有关详细信息，请参阅[定价](https://www.azure.cn/pricing/details/cognitive-services/)。
 
-<!-- neural and custom voices not supported -->
+<!-- custom voices not supported -->
 
-## <a name="standard-voices"></a>标准语音
+## <a name="standard-and-neural-voices"></a>标准语音和神经语音
 
-从标准语音中进行选择，在 10 种以上的语言和区域设置中，有 50 种以上的标准语音可用。 有关支持的语言、区域设置和标准语音的完整列表，请参阅[语言支持](language-support.md)。
+> [!NOTE]
+> 目前，神经语音为预览版并且免费。
+
+请从标准语音和神经语音中进行选择，50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在 4 种语言和区域设置中提供。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
 若要详细了解标准语音，请参阅[文本转语音概述](text-to-speech.md)。
 
@@ -89,7 +92,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -109,19 +112,65 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         Good morning!
     </voice>
-    <voice name="en-US-Guy24kRUS">
+    <voice  name="en-US-Guy24kRUS">
         Good morning to you too Jessa!
     </voice>
 </speak>
 ```
 
-<!-- ## Adjust speaking styles -->
+## <a name="adjust-speaking-styles-preview"></a>调整讲话风格（预览版）
 
-<!-- > [!IMPORTANT] -->
-<!-- > This feature will only work with neural voices. -->
+> [!IMPORTANT]
+> 此功能仅适用于神经语音。
+
+默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音时，可以使用 `<mstts:express-as>` 元素调整讲话风格，以表达喜悦、同情或情绪。 这是语音服务特有的可选元素。
+
+目前，支持调整以下神经语音的讲话风格：
+* `en-US-JessaNeural`
+* `zh-CN-XiaoxiaoNeural`
+
+更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
+
+**语法**
+
+```xml
+<mstts:express-as type="string"></mstts:express-as>
+```
+
+**属性**
+
+| 属性 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| type | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供类型。 如果提供无效的值，将忽略此元素。 |
+
+参考下表来确定每种神经语音支持的讲话风格。
+
+| 语音 | 类型 | 说明 |
+|-------|------|-------------|
+| `en-US-JessaNeural` | type=`cheerful` | 表达积极和愉快的情感 |
+| | type=`empathy` | 表达关心和理解 |
+| | type=`chat` | 以一种随性、放松的音调讲话 |
+| | type=`newscast` | 以正式的音调表达，类似于新闻发布会 |
+| | type=`customerservice` | 作为客户服务以友好且耐心的方式讲话 |
+| `zh-CN-XiaoxiaoNeural` | type=`newscast` | 以正式的音调表达，类似于新闻发布会 |
+| | type=`sentiment` | 传达感人的祝词或经历 |
+
+**示例**
+
+此 SSML 代码片段演示如何使用 `<mstts:express-as>` 元素将讲话风格更改为 `cheerful`。
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+    <voice name="en-US-JessaNeural">
+        <mstts:express-as type="cheerful">
+            That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
 
 ## <a name="add-or-remove-a-breakpause"></a>添加或删除中断/暂停
 
@@ -158,7 +207,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -183,7 +232,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -219,7 +268,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
     </voice>
 </speak>
@@ -227,7 +276,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
@@ -250,7 +299,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | 音节 | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如 600Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul>上获取。 | 可选 |
-| contour | 调型以语音输出中位于指定时间处的目标数组形式表示语音内容的音节变化。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
+| contour | 神经语音不支持调型。 调型以语音输出中位于指定时间处的目标数组形式表示语音内容的音节变化。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
 | range  | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | rate  | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
 | duration  | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 | 可选 |
@@ -258,13 +307,13 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ### <a name="change-speaking-rate"></a>更改语速
 
-可以在单词或句子级别对标准语音应用语速。 
+可以在单词或句子级别对标准语音应用语速。 只能在句子级别对神经语音应用语速。
 
 **示例**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice  name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -274,13 +323,13 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ### <a name="change-volume"></a>更改音量
 
-可以在单词或句子级别对标准语音应用音量变化。
+可以在单词或句子级别对标准语音应用音量变化。 只能在句子级别对神经语音应用音量变化。
 
 **示例**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -290,13 +339,13 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ### <a name="change-pitch"></a>更改音高
 
-可以在单词或句子级别对标准语音应用音节变化。
+可以在单词或句子级别对标准语音应用音节变化。 只能在句子级别对神经语音应用音节变化。
 
 **示例**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice  name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -304,11 +353,14 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ### <a name="change-pitch-contour"></a>更改音高升降曲线
 
+> [!IMPORTANT]
+> 神经语音不支持音节调型变化。
+
 **示例**
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
@@ -359,7 +411,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
  
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+    <voice  name="en-US-Jessa24kRUS">
     <p>
     Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
     on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
