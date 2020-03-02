@@ -22544,6 +22544,61 @@
       "source_path": "articles/governance/policy/samples/use-managed-disk-vm.md",
       "redirect_url": "/governance/policy/samples/index",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-antimalware.md",
+      "redirect_url": "/security/fundamentals/antimalware",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-data-encryption-best-practices.md ",
+      "redirect_url": "/security/fundamentals/data-encryption-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-disk-encryption-overview.md",
+      "redirect_url": "/security/fundamentals/azure-disk-encryption-vms-vmss",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-disk-encryption-prerequisites.md",
+      "redirect_url": "/security/fundamentals/azure-disk-encryption-vms-vmss",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-management.md",
+      "redirect_url": "/security/fundamentals/management",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-network-security-best-practices.md",
+      "redirect_url": "/security/fundamentals/network-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-pen-testing.md",
+      "redirect_url": "/security/fundamentals/pen-testing",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/azure-security-services-technologies.md",
+      "redirect_url": "/security/fundamentals/services-technologies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/security-get-started-overview.md",
+      "redirect_url": "/security/fundamentals/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/security-network-overview.md",
+      "redirect_url": "/security/fundamentals/network-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/security/security-virtual-machines-overview.md",
+      "redirect_url": "/security/fundamentals/virtual-machines-overview",
+      "redirect_document_id": false
     }
   ]
 }
