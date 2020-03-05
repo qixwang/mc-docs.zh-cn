@@ -1,40 +1,35 @@
 ---
-title: Xamarin Android 系统浏览器注意事项（适用于 .NET 的 Microsoft 身份验证库）
+title: Xamarin Android 系统浏览器注意事项 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解使用 Xamarin Android 上的系统浏览器时以及使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时的具体注意事项。
+description: 了解将 Xamarin Android 上的系统浏览器与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/30/2019
-ms.date: 11/05/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4dc84a60adbd53d39cb0c91ba354cb8ec410f8
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: ac0ecf599616438646be2cdd73dd13542e5ddd45
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830963"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653438"
 ---
-#  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>使用 MSAL.NET 的 Xamarin Android 系统浏览器注意事项
+#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android 系统浏览器的 MSAL.NET 使用注意事项
 
-本文介绍将 Xamarin Android 上的系统浏览器与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的具体注意事项。
+本文介绍将 Xamarin Android 上的系统浏览器与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 
-从 MSAL.NET 2.4.0-preview 开始，MSAL.NET 支持 Chrome 之外的浏览器，不再要求在 Android 设备上安装 Chrome 进行身份验证。
+从 MSAL.NET 2.4.0 预览版开始，MSAL.NET 支持除 Chrome 之外的浏览器。 它不再要求在 Android 设备上安装 Chrome 进行身份验证。
 
-建议使用支持自定义标签页的浏览器，例如以下这些：
+建议使用支持自定义标签页的浏览器。 下面是这些浏览器的一些示例：
 
-| 支持自定义标签页的浏览器 | 包名称 |
+| 提供自定义标签页支持的浏览器 | 包名称 |
 |------| ------- |
 |Chrome | com.android.chrome|
 |Microsoft Edge | com.microsoft.emmx|
@@ -43,41 +38,41 @@ ms.locfileid: "73830963"
 |Kiwi | com.kiwibrowser.browser|
 |Brave | com.brave.browser|
 
-根据我们的测试，除了支持自定义标签页的浏览器，一些不支持自定义标签页的浏览器也适用于身份验证：Opera、Opera Mini、InBrowser 和 Maxthon。 有关详细信息，请阅读[测试结果表](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested)。
+除了标识提供自定义标签页支持的浏览器之外，我们的测试还表明，一些不支持自定义标签页的浏览器也适用于身份验证。 这些浏览器包括 Opera、Opera Mini、InBrowser 和 Maxthon。 
 
-## <a name="known-issues"></a>已知问题
+## <a name="tested-devices-and-browsers"></a>测试的设备和浏览器
+下表列出了经过身份验证兼容性测试的设备和浏览器。
 
-- 如果用户未在设备上启用浏览器，MSAL.NET 会引发 `AndroidActivityNotFound` 异常。 
-  - **缓解措施**：告知用户，他们应该在设备上启用浏览器（首选支持自定义标签页的浏览器）。
-
-- 如果身份验证失败（例如， 身份验证在启动时使用了 DuckDuckGo），MSAL.NET 会返回 `AuthenticationCanceled MsalClientException`。 
-  - **根本问题**：未在设备上启用支持自定义标签页的浏览器。 在启动身份验证时使用了其他浏览器，该浏览器无法完成身份验证。 
-  - **缓解措施**：告知用户，他们应该在设备上安装浏览器（首选支持自定义标签页的浏览器）。
-
-## <a name="devices-and-browsers-tested"></a>测试的设备和浏览器
-下表列出了经过测试的设备和浏览器。
-
-| | 浏览器&ast;     |  结果  | 
+| 设备 | 浏览者     |  结果  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/One+ | Chrome&ast; | 通过|
-| Huawei/One+ | Edge&ast; | 通过|
-| Huawei/One+ | Firefox&ast; | 通过|
-| Huawei/One+ | Brave&ast; | 通过|
-| One+ | Ecosia&ast; | 通过|
-| One+ | Kiwi&ast; | 通过|
+| Huawei/One+ | Chrome\* | 通过|
+| Huawei/One+ | Edge\* | 通过|
+| Huawei/One+ | Firefox\* | 通过|
+| Huawei/One+ | Brave\* | 通过|
+| One+ | Ecosia\* | 通过|
+| One+ | Kiwi\* | 通过|
 | Huawei/One+ | Opera | 通过|
 | Huawei | OperaMini | 通过|
 | Huawei/One+ | InBrowser | 通过|
 | One+ | Maxthon | 通过|
-| Huawei/One+ | DuckDuckGo | 用户取消的身份验证|
-| Huawei/One+ | UC 浏览器 | 用户取消的身份验证|
-| One+ | Dolphin | 用户取消的身份验证|
-| One+ | CM 浏览器 | 用户取消的身份验证|
-| Huawei/One+ | 未安装任何内容 | AndroidActivityNotFound ex|
+| Huawei/One+ | DuckDuckGo | 用户已取消身份验证|
+| Huawei/One+ | UC 浏览器 | 用户已取消身份验证|
+| One+ | Dolphin | 用户已取消身份验证|
+| One+ | CM 浏览器 | 用户已取消身份验证|
+| Huawei/One+ | 未安装任何内容 | AndroidActivityNotFound exception|
 
-&ast; 支持自定义标签页
+\* 支持自定义标签页
+
+## <a name="known-issues"></a>已知问题
+
+如果用户未在设备上启用浏览器，MSAL.NET 会引发 `AndroidActivityNotFound` 异常。  
+  - **缓解措施**：要求用户在其设备上启用浏览器。 建议使用支持自定义标签页的浏览器。
+
+如果身份验证失败（例如，如果身份验证在启动时使用了 DuckDuckGo），MSAL.NET 会返回 `AuthenticationCanceled MsalClientException`。 
+  - **根本问题**：未在设备上启用支持自定义标签页的浏览器。 使用无法完成身份验证的浏览器启动了身份验证。 
+  - **缓解措施**：要求用户在其设备上启用浏览器。 建议使用支持自定义标签页的浏览器。
 
 ## <a name="next-steps"></a>后续步骤
-如需代码片段并详细了解如何将系统浏览器与 Xamarin Android 配合使用，请阅读此[指南](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)。  
+有关详细信息和代码示例，请参阅[在 Xamarin Android 上的嵌入式 Web 浏览器与系统浏览器之间选择](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)和[嵌入式 Web UI 与系统 Web UI](msal-net-web-browsers.md#embedded-vs-system-web-ui)。  
 
 <!-- Update_Description: wording update -->

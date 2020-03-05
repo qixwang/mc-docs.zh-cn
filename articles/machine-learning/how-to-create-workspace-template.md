@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: larryfr
+ms.author: v-yiso
 author: Blackmist
-ms.date: 11/04/2019
+origin.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 23815dcae2000a1161fde55c8dc412f64793a34c
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 8dbcf6147008820eb0c1383e0ff432a9c5213037
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599617"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155011"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -34,6 +35,184 @@ ms.locfileid: "75599617"
 ## <a name="resource-manager-template"></a>Resource Manager 模板
 
 可使用以下资源管理器模板创建 Azure 机器学习工作区和关联的 Azure 资源：
+
+```Json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the name of the Azure Machine Learning service workspace."
+      }
+    },
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "australiaeast",
+        "brazilsouth",
+        "canadacentral",
+        "centralus",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "japaneast",
+        "koreacentral",
+        "northcentralus",
+        "northeurope",
+        "southeastasia",
+        "southcentralus",
+        "uksouth",
+        "westcentralus",
+        "westus",
+        "westus2",
+        "westeurope"
+      ],
+      "metadata": {
+        "description": "Specifies the location for all resources."
+      }
+    },
+    "sku":{
+      "type": "string",
+      "defaultValue": "basic",
+        "allowedValues": [
+          "basic",
+          "enterprise"
+        ],
+        "metadata": {
+          "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
+        }
+    }
+  },
+  "variables": {
+    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
+    "storageAccountType": "Standard_LRS",
+    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
+    "tenantId": "[subscription().tenantId]",
+    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[variables('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "encryption": {
+          "services": {
+            "blob": {
+              "enabled": true
+            },
+            "file": {
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2018-02-14",
+      "name": "[variables('keyVaultName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "tenantId": "[variables('tenantId')]",
+        "sku": {
+          "name": "standard",
+          "family": "A"
+        },
+        "accessPolicies": [
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2018-05-01-preview",
+      "name": "[variables('applicationInsightsName')]",
+      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
+      "kind": "web",
+      "properties": {
+        "Application_Type": "web"
+      }
+    },
+    {
+      "type": "Microsoft.MachineLearningServices/workspaces",
+      "apiVersion": "2019-11-01",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]"
+      ],
+      "identity": {
+        "type": "systemAssigned"
+      },
+      "sku": {
+        "tier": "[parameters('sku')]",
+        "name": "[parameters('sku')]"
+      },
+      "properties": {
+        "friendlyName": "[parameters('workspaceName')]",
+        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
+        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
+        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]"
+      }
+    }
+  ]
+}
+```
+
+此模板创建以下 Azure 服务：
+
+* Azure 资源组
+* Azure 存储帐户
+* Azure Key Vault
+* Azure Application Insights
+* Azure 容器注册表
+* Azure 机器学习工作区
+
+资源组是保存服务的容器。 Azure 机器学习工作区需要多种服务。
+
+示例模板包含两个参数：
+
+* **位置**：将在其中创建资源组和服务。
+
+    模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
+
+* **工作区名称**：Azure 机器学习工作区的友好名称。
+
+    > [!NOTE]
+    > 工作区名称不区分大小写。
+
+    其他服务的名称将随机生成。
+
+> [!TIP]
+> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 如果工作区中存在容器注册表，则执行需要容器注册表的操作时，会创建一个。 例如，训练或部署模型。
+>
+> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。
+
+有关模板的详细信息，请参阅以下文章：
+
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
+* [Microsoft.MachineLearningServices 资源类型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+
+### <a name="advanced-template"></a>高级模板
+
+以下示例模板演示如何创建具有三项设置的工作区：
+
+* 启用工作区的高保密性设置
+* 启用工作区加密
+* 使用现有 Azure Key Vault
 
 ```json
 {
@@ -62,13 +241,47 @@ ms.locfileid: "75599617"
     "sku":{
       "type": "string",
       "defaultValue": "basic",
-        "allowedValues": [
-          "basic",
-          "enterprise"
-        ],
-        "metadata": {
-          "description": "Specifies the sku, also referred as 'edition' of the Azure Machine Learning workspace."
-        }
+      "allowedValues": [
+        "basic",
+        "enterprise"
+      ],
+      "metadata": {
+        "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
+      }
+    },
+    "hbi_workspace":{
+      "type": "string",
+      "defaultValue": "false",
+      "allowedValues": [
+        "false",
+        "true"
+      ],
+      "metadata": {
+        "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
+      }
+    },
+    "encryption_status":{
+      "type": "string",
+      "defaultValue": "Disabled",
+      "allowedValues": [
+        "Enabled",
+        "Disabled"
+      ],
+      "metadata": {
+        "description": "Specifies if the Azure Machine Learning workspace should be encrypted with the customer managed key."
+      }
+    },
+    "cmk_keyvault":{
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the customer managed keyvault Resource Manager ID."
+      }
+    },
+    "resource_cmk_uri":{
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the customer managed keyvault key uri."
+      }
     }
   },
   "variables": {
@@ -142,7 +355,7 @@ ms.locfileid: "75599617"
     },
     {
       "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2019-11-01",
+      "apiVersion": "2020-01-01",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -163,44 +376,35 @@ ms.locfileid: "75599617"
         "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
         "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
         "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
-        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]"
+        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]",
+         "encryption": {
+                "status": "[parameters('encryption_status')]",
+                "keyVaultProperties": {
+                    "keyVaultArmId": "[parameters('cmk_keyvault')]",
+                    "keyIdentifier": "[parameters('resource_cmk_uri')]"
+                  }
+            },
+        "hbi_workspace": "[parameters('hbi_workspace')]"
       }
     }
   ]
 }
 ```
 
-此模板创建以下 Azure 服务：
+若要获取 Key Vault 的 ID 以及此模板所需的密钥 URI，可以使用 Azure CLI。 以下命令是使用 Azure CLI 获取 Key Vault 资源 ID 和 URI 的示例：
 
-* Azure 资源组
-* Azure 存储帐户
-* Azure Key Vault
-* Azure Application Insights
-* Azure 容器注册表
-* Azure 机器学习工作区
+```azurecli
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+```
 
-资源组是保存服务的容器。 Azure 机器学习工作区需要多种服务。
+此命令返回类似于以下文本的值。 第一个值为 ID，第二个值为 URI：
 
-示例模板包含两个参数：
-
-* **位置**：将在其中创建资源组和服务。
-
-    模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
-
-* **工作区名称**：Azure 机器学习工作区的友好名称。
-
-    其他服务的名称将随机生成。
-
-> [!TIP]
-> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 如果工作区中存在容器注册表，则执行需要容器注册表的操作时，会创建一个。 例如，训练或部署模型。
->
-> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。
-
-有关模板的详细信息，请参阅以下文章：
-
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
-* [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft.MachineLearningServices 资源类型](/templates/microsoft.machinelearningservices/allversions)
+```text
+[
+  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
+  "https://mykeyvault.vault.azure.cn/"
+]
+```
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -222,12 +426,12 @@ ms.locfileid: "75599617"
 New-AzResourceGroup -Name examplegroup -Location "East US"
 new-azresourcegroupdeployment -name exampledeployment `
   -resourcegroupname examplegroup -location "East US" `
-  -templatefile .\azuredeploy.json -workspaceName "exampleworkspace"
+  -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)和[使用 SAS 令牌和 Azure PowerShell 部署专用资源管理器模板](../azure-resource-manager/secure-template-with-sas-token.md)。
+有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)和[使用 SAS 令牌和 Azure PowerShell 部署专用资源管理器模板](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
-## <a name="use-azure-cli"></a>使用 Azure CLI
+## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
 此示例假设已将模板保存到当前目录中名为 `azuredeploy.json` 的文件：
 
@@ -237,12 +441,18 @@ az group deployment create \
   --name exampledeployment \
   --resource-group examplegroup \
   --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace location=chinaeast
+  --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../azure-resource-manager/secure-template-with-sas-token.md)。
+有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
-## <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 访问策略和 Azure 资源管理器模板
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="resource-provider-errors"></a>资源提供程序错误
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 访问策略和 Azure 资源管理器模板
 
 使用 Azure 资源管理器模板多次创建工作区和关联的资源（包括 Azure Key Vault）时。 例如，在持续集成和部署管道过程中，对同一参数多次使用模板。
 
@@ -251,11 +461,91 @@ az group deployment create \
 若要避免此问题，我们建议运用以下方法之一：
 
 * 请不要对同一个参数多次部署模板。 或是在使用模板重新创建之前删除现有资源。
-  
-* 检查 Key Vault 的访问策略，然后使用这些策略设置模板的 accessPolicies 属性。
-* 检查 Key Vault 资源是否已存在。 如果存在，请勿通过模板重新创建。 例如，添加参数，允许禁用对已存在的 Key Vault 资源的创建。
+
+* 检查 Key Vault 的访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。 若要查看访问策略，请使用以下 Azure CLI 命令：
+
+    ```azurecli
+    az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
+    ```
+
+    若要详细了解如何使用模板的 `accessPolicies` 部分，请参阅 [AccessPolicyEntry 对象参考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+
+* 检查 Key Vault 资源是否已存在。 如果存在，请勿通过模板重新创建。 例如，若要使用现有 Key Vault 而不是创建一个新的，请对模板进行以下更改：
+
+    * **添加**一个参数，该参数接受现有 Key Vault 资源的 ID：
+
+        ```json
+        "keyVaultId":{
+          "type": "string",
+          "metadata": {
+            "description": "Specify the existing Key Vault ID."
+          }
+        }
+      ```
+
+    * **删除**用于创建 Key Vault 资源的部分：
+
+        ```json
+        {
+          "type": "Microsoft.KeyVault/vaults",
+          "apiVersion": "2018-02-14",
+          "name": "[variables('keyVaultName')]",
+          "location": "[parameters('location')]",
+          "properties": {
+            "tenantId": "[variables('tenantId')]",
+            "sku": {
+              "name": "standard",
+              "family": "A"
+            },
+            "accessPolicies": [
+            ]
+          }
+        },
+        ```
+
+    * 从工作区的 `dependsOn` 部分**删除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 另请**更改**工作区的 `properties` 部分中的 `keyVault` 条目，使之引用 `keyVaultId` 参数：
+
+        ```json
+        {
+          "type": "Microsoft.MachineLearningServices/workspaces",
+          "apiVersion": "2019-11-01",
+          "name": "[parameters('workspaceName')]",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+            "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]"
+          ],
+          "identity": {
+            "type": "systemAssigned"
+          },
+          "sku": {
+            "tier": "[parameters('sku')]",
+            "name": "[parameters('sku')]"
+          },
+          "properties": {
+            "friendlyName": "[parameters('workspaceName')]",
+            "keyVault": "[parameters('keyVaultId')]",
+            "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
+            "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]"
+          }
+        }
+        ```
+
+    完成这些更改后，可以在运行模板时指定现有 Key Vault 资源的 ID。 然后，模板会通过将工作区的 `keyVault` 属性设置为其 ID 来重用 Key Vault。
+
+    若要获取 Key Vault 的 ID，可以引用原始模板运行的输出或使用 Azure CLI。 以下命令是使用 Azure CLI 获取 Key Vault 资源 ID 的示例：
+
+    ```azurecli-interactive
+    az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
+    ```
+
+    此命令返回类似于以下文本的值：
+
+    ```text
+    /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用资源管理器模板和资源管理器 REST API 部署资源](../azure-resource-manager/resource-group-template-deploy-rest.md)。
-* [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+* [使用资源管理器模板和资源管理器 REST API 部署资源](../azure-resource-manager/templates/deploy-rest.md)。
+* [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。

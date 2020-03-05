@@ -5,19 +5,19 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-origin.date: 11/12/2019
-ms.date: 01/20/2020
+origin.date: 1/14/2020
+ms.date: 03/02/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnick
 manager: digimobile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e2b3f1611cc62db7610bb5e676b679d64bd2d5e0
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: d539f4af8246dd2913bc7b5909464ec67c063333
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964890"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154345"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -32,6 +32,14 @@ ms.locfileid: "75964890"
 ![SQL 数据仓库版本](./media/release-notes/t47-1-version.png)
 
 使用标识的版本确认已将哪个版本应用到 Azure SQL 数据仓库。
+
+## <a name="january-2020"></a>2020 年 1 月
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+|**工作负载管理门户指标（预览）**|在这个过去的 10 月，随着预览版[工作负载隔离](/sql-data-warehouse/sql-data-warehouse-workload-isolation)的发布，用户可以创建自己的[工作负载组](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)来有效地管理系统资源并确保满足业务 SLA。  作为 Azure Synapse Analytics 的总体[工作负载管理](/sql-data-warehouse/sql-data-warehouse-workload-management)增强功能的一部分，新的[工作负载管理监视指标](/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor)现在可用。</br> </br> 监视工作负载功能现在通过以下指标提供更好的见解： </br> - 有效上限资源百分比  </br> - 有效最小资源百分比 </br> - 工作负载组活动查询 </br> - 按最大资源百分比列出的工作负载组分配 </br> - 按系统百分比列出的工作负载组分配 </br> - 工作负载组查询超时 </br> - 工作负载组排队查询 </br></br> 使用这些指标来确定[工作负载组瓶颈](/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck)或配置了[利用不足的工作负载隔离](/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)的工作负载组。  可在允许按工作负载组拆分的 Azure 门户中使用这些指标。  筛选最喜爱的图形并将其固定到仪表板，以便快速访问见解。|
+|**门户监视指标**| 以下指标已添加到门户，用于监视总体查询活动： </br> - 活动查询 </br> - 排队的查询 </br> </br>这些指标与[监视资源利用率和查询活动文档](/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)中的现有指标一起介绍。|
+|**产品名称**|到 2020 年 6 月时，通过 SELECT @@VERSION 返回的产品名称会从“Azure SQL 数据仓库”改为“Azure Synapse Analytics”。 我们会在发行说明中发布计划。 对于在应用程序代码中根据 SELECT @@VERSION 的结果分析产品名称的客户来说，此更改是相关的。 若要避免由于产品品牌重塑而导致应用程序代码更改，请使用以下命令在 SERVERPROPERTY 中查询数据库产品名称和版本。 </br> 若要返回 DW 版本号 XX.X.XXXXX.X（无产品名称），请使用以下命令：SELECT SERVERPROPERTY('ProductVersion') </br> 若要返回引擎版本，请使用以下命令返回与 Azure Synapse Analytics（以前称为 SQL 数据仓库）相对应的 6：SELECT SERVERPROPERTY('EngineEdition')|
 
 ## <a name="october-2019"></a>2019 年 10 月
 

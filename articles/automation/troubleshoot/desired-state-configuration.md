@@ -1,5 +1,5 @@
 ---
-title: Azure 自动化 Desired State Configuration (DSC) 问题疑难解答
+title: 排查 Azure 自动化 Desired State Configuration (DSC) 问题
 description: 本文提供有关 Desired State Configuration (DSC) 疑难解答的信息
 services: automation
 ms.service: automation
@@ -7,17 +7,17 @@ ms.subservice: ''
 author: WenJason
 ms.author: v-jay
 origin.date: 04/16/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: e2130b36c061d2e1ad2cac2b9df524d839692bd2
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: d882cd688b8a274e014391581fb21c09fd98cb50
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884045"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653059"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
+# <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>排查 Azure 自动化 Desired State Configuration (DSC) 问题
 
 本文提供有关 Desired State Configuration (DSC) 问题疑难解答的信息。
 
@@ -89,6 +89,68 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 #### <a name="resolution"></a>解决方法
 
 请验证计算机是否可以访问 Azure Automation DSC 的相应终结点，然后重试。 有关所需端口和地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>场景：状态报告返回响应代码“未授权”
+
+#### <a name="issue"></a>问题
+
+将某个节点注册到 State Configuration (DSC) 时，收到以下错误消息之一：
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>原因
+
+此问题由错误或过期的证书引起。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)。
+
+### <a name="resolution"></a>解决方法
+
+按照下面列出的步骤重新注册失败的 DSC 节点。
+
+首先，使用以下步骤取消注册该节点。
+
+1. 在 Azure 门户的“主页”   ->   “自动化帐户”-> {你的自动化帐户} ->  “State Configuration (DSC)”下
+2. 单击“节点”，然后单击有问题的节点。
+3. 单击“取消注册”，取消注册该节点。
+
+接着，从节点中卸载 DSC 扩展。
+
+1. 在 Azure 门户的“主页”   ->   “虚拟机”-> {故障节点} ->  “扩展”下
+2. 单击“Microsoft.Powershell.DSC”。
+3. 单击“卸载”，卸载 PowerShell DSC 扩展。
+
+然后，从节点中删除所有错误的或过期的证书。
+
+在故障节点上，从权限提升的 Powershell 提示符处运行以下命令：
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+最后，使用以下步骤取消注册故障节点。
+
+1. 在 Azure 门户的“主页”   ->   “自动化帐户”-> {你的自动化帐户} ->  “State Configuration (DSC)”下
+2. 单击“节点”。
+3. 单击“添加”按钮。
+4. 选择故障节点。
+5. 单击“连接”，然后选择所需的选项。
 
 ### <a name="failed-not-found"></a>场景：节点处于失败状态，出现“未找到”错误
 

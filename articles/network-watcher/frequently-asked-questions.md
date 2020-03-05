@@ -3,7 +3,7 @@ title: 有关 Azure 网络观察程序的常见问题解答 (FAQ) | Microsoft Do
 description: 本文解答有关 Azure 网络观察程序服务的常见问题。
 services: network-watcher
 documentationcenter: na
-author: damendo
+author: lingliw
 manager: ''
 editor: ''
 ms.service: network-watcher
@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2019
-ms.author: damendo
-ms.openlocfilehash: 39068b67bfefd03aa0adaec7a67e714dda7ce35d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+origin.date: 10/10/2019
+ms.date: 02/27/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 59bc21c24f845c132b122818240d448fc0df1558
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029368"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154775"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答 (FAQ)
 [Azure 网络观察程序](/network-watcher/network-watcher-monitoring-overview)服务提供一套工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。 本文解答有关该服务的常见问题。
@@ -54,6 +55,24 @@ ms.locfileid: "77029368"
 ### <a name="which-regions-is-network-watcher-available-in"></a>网络观察程序可在哪些区域使用？
 可以在 [Azure 服务可用性](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)页上查看最新的区域可用性
 
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>使用网络观察程序需要哪些权限？
+请查看[使用网络观察程序所需的 RBAC 权限](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)的列表。 若要部署资源，需要对 NetworkWatcherRG 的参与者权限（见下）。
+
+### <a name="how-do-i-enable-network-watcher"></a>如何启用网络观察程序？
+网络观察程序服务是为每个订阅[自动启用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)的。
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>网络观察程序部署模型是什么？
+网络观察程序父资源是使用每个区域中的唯一实例部署的。 命名格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus 是“美国中部”区域的网络观察程序资源。
+
+### <a name="what-is-the-networkwatcherrg"></a>NetworkWatcherRG 是什么？
+网络观察程序资源位于自动创建的、隐藏的 **NetworkWatcherRG** 资源组中。 例如，NSG 流日志资源是网络观察程序的子资源，在 NetworkWatcherRG 中启用。
+
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>为什么需要安装网络观察程序扩展？ 
+对于任何需要生成或拦截来自 VM 的流量的功能，网络观察程序扩展都是必需的。 
+
+### <a name="which-features-require-the-network-watcher-extension"></a>哪些功能需要网络观察程序扩展？
+数据包捕获、连接故障排除和连接监视器功能需要网络观察程序扩展。
+
 ### <a name="what-are-resource-limits-on-network-watcher"></a>网络观察程序的资源限制是怎样的？
 有关所有限制，请参阅[服务限制](/azure-subscription-service-limits#network-watcher-limits)页。  
 
@@ -65,47 +84,22 @@ ms.locfileid: "77029368"
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG 流日志有什么作用？
 可以通过[网络安全组 (NSG)](/virtual-network/security-overview) 来合并和管理 Azure 网络资源。 使用 NSG 流日志可以通过 NSG 记录有关所有流量的 5 元组流信息。 原始流日志将写入 Azure 存储帐户，在存储帐户中，可以根据需要进一步处理、分析、查询或导出这些日志。
 
-### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>使用 NSG 流日志时是否有任何注意事项？
-无需满足任何先决条件即可使用 NSG 流日志。 但存在两项限制
-- **VNET 中不得存在服务终结点**：NSG 流日志从 VM 上的代理发送到存储帐户。 但是，目前只能将日志直接发送到存储帐户，而不能使用 VNET 中添加的服务终结点。
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>当存储帐户位于防火墙后面时，如何使用 NSG 流日志？
 
-- **不得将存储帐户加入防火墙**：由于内部限制，必须可以通过公共 Internet 访问存储帐户，这样，NSG 流日志才能使用存储帐户。 流量在内部仍然通过 Azure 路由，并且不会产生额外的传出费用。
+若要使用防火墙后面的存储帐户，必须提供一个例外，以便受信任的 Microsoft 服务访问你的存储帐户：
 
-有关如何解决这些问题的说明，请参阅接下来的两个问题。 这两项限制预计会在 2020 年 1 月得到解决。
-
-### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>如何将 NSG 流日志与服务终结点配合使用？
-
-*选项 1：重新配置 NSG 流日志，在没有 VNET 终结点的情况下将其发送到 Azure 存储帐户*
-
-* 查找包含终结点的子网：
-
-    - 在 Azure 门户顶部的全局搜索框中搜索“资源组” 
-    - 导航到包含要使用的 NSG 的资源组
-    - 使用第二个下拉列表按类型进行筛选，然后选择“虚拟网络” 
-    - 单击包含服务终结点的虚拟网络
-    - 在左窗格中的“设置”下，选择“服务终结点”  
-    - 记下在其中启用了 **Microsoft.Storage** 的子网
-
-* 禁用服务终结点：
-
-    - 继续上面的操作，在左窗格中的“设置”下选择“子网”  
-    * 单击包含服务终结点的子网
-    - 在“服务终结点”  部分的“服务”下面，取消选中“Microsoft.Storage”  
+* 在门户或[“存储帐户”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)的全局搜索框中键入存储帐户的名称，导航到存储帐户
+* 在“设置”部分，选择“防火墙和虚拟网络”  
+* 在“允许的访问来源”中，选择“所选网络”。  然后，在“例外”  下，勾选“允许受信任的 Microsoft 服务访问此存储帐户”旁边的框  
+* 如果已选中，则不需进行更改。  
+* 在 [NSG 流日志概述页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上找到目标 NSG，并启用选择了上述存储帐户的 NSG 流日志。
 
 可以在数分钟后检查存储日志，应该会看到时间戳已更新，或者会看到新的 JSON 文件已创建。
 
-*选项 2：禁用 NSG 流日志*
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>当存储帐户位于服务终结点后面时，如何使用 NSG 流日志？
 
-如果 Microsoft.Storage 服务终结点是必需项，则需禁用 NSG 流日志。
+NSG 流日志与服务终结点兼容，无需任何额外的配置。 请参阅[有关如何在虚拟网络中启用服务终结点的教程](/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)。
 
-### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>如何在存储帐户上禁用防火墙？
-
-启用“所有网络”来访问存储帐户即可解决此问题：
-
-* 在 [NSG 流日志概览页](https://ms.portal.azure.cn/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上找到 NSG 即可找到存储帐户的名称
-* 在门户的全局搜索框中键入存储帐户的名称，导航到存储帐户
-* 在“设置”部分，选择“防火墙和虚拟网络”  
-* 选择“所有网络”，然后进行保存。  如果已选中，则不需进行更改。  
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流日志版本 1 和 2 有何区别？
 流日志版本 2 引入了“流状态”的概念，并会存储有关传输的字节和数据包的信息。  [了解详细信息](/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)。

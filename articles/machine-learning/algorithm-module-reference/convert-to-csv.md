@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 5bdaa82012c318ba6ae9c8a953dadf18fe7124b0
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 0b8cb6e4b68e7a1e6e622ec3b433b49ea6936918
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598769"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154948"
 ---
 # <a name="convert-to-csv-module"></a>“转换为 CSV”模块
 
@@ -30,14 +31,14 @@ CSV 格式（代表“逗号分隔值”）是许多外部机器学习工具使�
 
 + 下载 CSV 文件以使用 Excel 打开它，或将其导入到关系数据库中。  
 + 将 CSV 文件保存到云存储，并从 Power BI 连接到它以创建可视化效果。  
-+ 使用 CSV 格式准备要在 R 和 Python 中使用的数据。 只需右键单击模块的输出即可生成直接从 Python 或 Jupyter 笔记本访问数据所需的代码。 
++ 使用 CSV 格式准备要在 R 和 Python 中使用的数据。 
 
-将数据集转换为 CSV 时，该文件将保存在 Azure ML 工作区中。 你可以使用 Azure 存储实用工具直接打开并使用该文件，也可以右键单击模块输出并将 CSV 文件下载到你的计算机上，或在 R 或 Python 代码中使用它。  
+将数据集转换为 CSV 时，该 csv 保存在 Azure ML 工作区中。 可以使用 Azure 存储实用程序直接打开并使用该文件。 还可以选择“转换为 CSV”  模块来访问设计器中的 CSV，然后在右侧面板中的“输出”  选项卡下选择直方图图标来查看输出。 可以将 CSV 从 Results 文件夹下载到本地目录。  
 
 ## <a name="how-to-configure-convert-to-csv"></a>如何配置“转换为 CSV”
 
 
-1.  将[转换为 CSV](./convert-to-csv.md) 模块添加到管道。 可以在设计器中的**数据格式转换**组中找到此模块。 
+1.  将“转换为 CSV”模块添加到管道。 可以在设计器的“数据转换”  组中找到此模块。 
 
 2. 将它连接到可以输出数据集的任何模块。   
   
@@ -46,14 +47,11 @@ CSV 格式（代表“逗号分隔值”）是许多外部机器学习工具使�
 ### <a name="results"></a>结果
   
 
-双击[转换为 CSV](./convert-to-csv.md) 的输出，然后选择以下选项之一。  
+选择“转换为 CSV”  的右面板中的“输出”  选项卡，然后在“端口输出”  下的其中一个图标上进行选择。  
 
- + **结果数据集 -> 下载**：立即以 CSV 格式打开数据的副本，可以将该副本保存到本地文件夹。 如果未指定文件夹，则会应用默认文件名，并将 CSV 文件保存在本地**下载**库中。
++ **注册数据集**：选择图标，将 CSV 文件作为单独的数据集保存回 Azure ML 工作区。 可以在“我的数据集”部分下的模块树中找到作为模块的数据集。 
 
-
- + **结果数据集 -> 另存为数据集**：将 CSV 文件作为单独的数据集保存回 Azure ML 工作区。
-
- + **生成数据访问代码**：Azure ML 会生成两组代码，以便你使用 Python 或使用 R 访问数据。若要访问数据，请将代码片段复制到应用程序中。 （ *“生成数据访问代码”即将推出。* ）
+ + **查看输出**：选择眼睛图标，然后按照说明浏览 **Results_dataset** 文件夹，并下载 data.csv 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 origin.date: 07/17/2018
 ms.custom: H1Hack27Feb2017
-ms.date: 03/04/2019
+ms.date: 03/09/02020
 ms.author: v-yiso
-ms.openlocfilehash: 9bc929d454ccde5778dad17f37cd04417cdca6c8
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.openlocfilehash: 1faf93f506f4ebb2ec551470a115d7a486a07742
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665493"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154636"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。
@@ -23,11 +23,11 @@ ms.locfileid: "56665493"
 
 每个设备方法针对一个设备。 [在多个设备上计划作业](iot-hub-devguide-jobs.md)展示了一种方法，用于对多个设备调用直接方法，并为已断开连接的设备计划方法调用。
 
-只要拥有 IoT 中心的“服务连接”权限，任何人都可以调用设备上的方法。
+只要拥有 IoT 中心的“服务连接”  权限，任何人都可以调用设备上的方法。
 
 直接方法遵循请求-响应模式，适用于需要立即确认其结果的通信。 例如对设备的交互式控制，如打开风扇。
 
-如果在使用所需属性、直接方法或云到设备消息方面有任何疑问，请参阅 [云到设备通信指南][lnk-c2d-guidance] 。
+如果在使用所需属性、直接方法或云到设备消息方面有任何疑问，请参阅[云到设备通信指南][lnk-c2d-guidance]。
 
 ## <a name="method-lifecycle"></a>方法生命周期
 
@@ -52,14 +52,14 @@ ms.locfileid: "56665493"
 
 设备上的直接方法调用是 HTTPS 调用，它由以下项构成：
 
-* 特定于设备的请求 URI 以及 [API 版本](https://docs.microsoft.com/en-us/rest/api/iothub/service/invokedevicemethod)：
+* 特定于设备的请求 URI 以及 [API 版本](https://docs.microsoft.com/en-us/rest/api/iothub/service/invokedevicemethod)  ：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.cn/twins/{deviceId}/methods?api-version=2018-06-30
     ```
 
-* POST 方法
-* 标头，包含身份验证、请求 ID、内容类型和内容编码
+* POST 方法 
+* 标头  ，包含身份验证、请求 ID、内容类型和内容编码
 * 透明的 JSON *正文* ，采用以下格式：
 
     ```json
@@ -73,7 +73,9 @@ ms.locfileid: "56665493"
     }
     ```
 
-超时以秒为单位。 如果未设置超时，则默认为 30 秒。
+在请求中作为 `responseTimeoutInSeconds` 提供的值是 IoT 中心服务在设备上执行直接方法所需等待的时间。 将此超时设置为至少与设备的直接方法的预期执行时间一样长。 如果未提供超时，则使用默认值：30 秒。 `responseTimeoutInSeconds` 的最小值和最大值分别为 5 秒和 300 秒。
+
+在请求中作为 `connectTimeoutInSeconds` 提供的值是在调用直接方法后，IoT 中心服务等待断开连接的服务进入联机状态所需的时间。 默认值为 0，表示在调用直接方法时，设备必须已处于联机状态。 `connectTimeoutInSeconds` 的最大值为 300 秒。
 
 #### <a name="example"></a>示例
 
@@ -98,9 +100,14 @@ curl -X POST \
 
 后端应用接收响应，响应由以下项构成：
 
-* HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）
-* 标头，包含 ETag、请求 ID、内容类型和内容编码
-* 采用以下格式的 JSON 正文：
+* HTTP 状态代码  ：
+  * 200 表示成功执行直接方法；
+  * 404 表示设备 ID 无效，或者设备在调用直接方法后 `connectTimeoutInSeconds` 秒内未联机（请使用伴随的错误消息来了解根本原因）；
+  * 504 表示由于设备在 `responseTimeoutInSeconds` 秒内未响应直接方法调用而导致网关超时。
+
+* 标头  ，包含 ETag、请求 ID、内容类型和内容编码。
+
+* 采用以下格式的 JSON 正文  ：
 
     ```json
     {
@@ -170,11 +177,11 @@ AMQP 消息会到达表示方法请求的接收链接。 它包含以下部分�
 ## <a name="additional-reference-material"></a>其他参考资料
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-endpoints] ，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [IoT 中心终结点][lnk-endpoints]介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 * [限制和配额][lnk-quotas]介绍了适用的配额，以及使用 IoT 中心时预期会碰到的限制行为。
-* [Azure IoT 设备和服务 SDK][lnk-sdks]，列出了在开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
-* [用于设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
-* [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
+* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
+* [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何使用直接方法后，可根据兴趣参阅以下 IoT 中心开发人员指南文章：

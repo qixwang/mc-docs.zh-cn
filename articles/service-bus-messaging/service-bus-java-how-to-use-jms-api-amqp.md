@@ -1,5 +1,5 @@
 ---
-title: 如何将 AMQP 1.0 与 Java 服务总线 API 配合使用 | Azure Docs
+title: 将 AMQP 与 Java 消息服务 API 及 Azure 服务总线配合使用
 description: 了解如何将 Java 消息服务 (JMS) 用于 Azure 服务总线和高级消息队列协议 (AMQP) 1.0。
 services: service-bus-messaging
 documentationcenter: java
@@ -12,25 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 10/22/2019
+ms.date: 02/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 5c4a1782ee84f3c8a46ce50d29b17bc2f7f03e21
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 427b2e046c66262a2da0b4d8356dc6f73639661b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330306"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154463"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>将 Java 消息服务 (JMS) 用于 Azure 服务总线和 AMQP 1.0
 本文说明了如何通过采用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序使用 Azure 服务总线消息传送功能（队列和发布/订阅主题）。 此处的[随附文章](service-bus-amqp-dotnet.md)解释如何使用 Azure 服务总线 .NET API 来执行相同操作。 使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
 
 高级消息队列协议 (AMQP) 1.0 是一个高效、可靠的线级消息传送协议，可用于构建可靠的跨平台消息传送应用程序。
 
-在 Service Bus 中支持 AMQP 1.0 意味着可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
+Azure 服务总线支持 AMQP 1.0，这意味着，可以通过一系列使用有效二进制协议的平台来使用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 ## <a name="get-started-with-service-bus"></a>服务总线入门
-本指南假定你已具有包含名为 basicqueue  的队列的服务总线命名空间。 如果没有，则可以使用 [Azure 经典门户](https://portal.azure.cn)[创建命名空间和队列](service-bus-create-namespace-portal.md)。 有关如何创建服务总线命名空间和队列的详细信息，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。
+此指南假定已有包含名为 `basicqueue` 的队列的服务总线命名空间。 如果没有，则可以使用 [Azure 经典门户](https://portal.azure.cn)[创建命名空间和队列](service-bus-create-namespace-portal.md)。 有关如何创建服务总线命名空间和队列的详细信息，请参阅[服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)。
+
 > [!NOTE]
 > 分区队列和主题也支持 AMQP。 有关详细信息，请参阅[分区消息传送实体](service-bus-partitioning.md)。
 > 
@@ -72,7 +74,7 @@ queue.QUEUE = queue1
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
 ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
-
+        
 // set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
@@ -136,7 +138,7 @@ Context context = new InitialContext(hashtable);
 ### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>使用服务总线队列的简单 JMS 应用程序
 以下示例程序将 JMS TextMessages 发送到 JNDI 逻辑名称为 QUEUE 的 Service Bus 队列，并接收返回的消息。
 
-可以从 [Azure 服务总线示例 JMS 队列快速启动](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)中访问所有源代码和配置信息
+可以从 [Azure 服务总线示例 JMS 队列快速入门](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)中访问所有源代码和配置信息
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -348,7 +350,7 @@ Azure 服务总线主题将消息路由到已命名的、共享的、持久的�
 
 从订阅接收消息与从队列接收消息是相同的。 每个订阅都有一个关联的死信队列，并且可以将消息自动转发给其他队列或主题。 
 
-JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样就可以选择性地允许通过消息选择器来筛选消息。 服务总线不支持这些非共享的实体。 但是，服务总线的 SQL 筛选器规则语法非常类似于 JMS 支持的消息选择器语法。 
+JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样就可以选择性地允许通过消息选择器来筛选消息。 服务总线不支持这些非共享的实体。 但是，服务总线的 SQL 筛选器规则语法类似于 JMS 支持的消息选择器语法。 
 
 如此示例所示，JMS 主题发布者端兼容服务总线，但动态订阅者则不兼容。 不支持将下述与拓扑相关的 JMS API 与服务总线配合使用。 
 
@@ -357,8 +359,8 @@ JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样�
 
 * 每个会话只允许一个 MessageProducer 或 MessageConsumer。    如果需要在应用程序中创建多个 MessageProducers 或 MessageConsumers，请分别对其创建专用会话。   
 * 当前不支持易失性主题订阅。
-* **MessageSelectors** 。
-* 不支持事务处理会话和分布式事务。
+* 当前不支持 **MessageSelectors**。
+* 不支持分布式事务（但支持事务处理会话）。
 
 此外，Azure 服务总线将控制平面从数据平面拆分了出来，因此，不支持多个 JMS 的动态拓扑函数：
 

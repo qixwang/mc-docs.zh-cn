@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: laobri
+ms.author: v-yiso
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: f709df0cde7c560d2a5922ee2717eabb20116607
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/06/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 3ec9b680e461345da1e60e04d72bdd05e1a195d3
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599063"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154570"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -40,11 +41,11 @@ Azure 机器学习管道可用于在机器学习项目中创建工作流。 这�
 
 Azure 云提供多种其他管道，每种管道都有不同的用途。 下表列出了各种不同的管道及其用途：
 
-| 管道 | 作用 | 规范管道 |
-| ---- | ---- | ---- |
-| Azure 机器学习管道 | 定义可重用的机器学习工作流，这些工作流可用作机器学习方案的模板。 | 数据 -> 模型 |
-| [Azure 数据工厂管道](/data-factory/concepts-pipelines-activities) | 对执行任务所需的数据移动、转换和控制活动进行分组。  | 数据 -> 数据 |
-| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | 持续集成应用程序并交付到任何平台/任何云  | 代码 -> 应用/服务 |
+| 方案 | 主要角色 | Azure 产品/服务 | OSS 产品/服务 | 规范管道 | 优势 | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| 模型业务流程（机器学习） | 数据科学家 | Azure 机器学习管道 | Kubeflow 管道 | 数据 -> 模型 | 分布、缓存、代码优先、重用 | 
+| 数据业务流程（数据准备） | 数据工程师 | [Azure 数据工厂管道](/data-factory/concepts-pipelines-activities) | Apache Airflow | 数据 -> 数据 | 强类型移动。 以数据为中心的活动。 |
+| 代码和应用业务流程 (CI/CD) | 应用开发人员/Ops | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | 代码 + 模型 -> 应用/服务 | 最开放和灵活的活动支持、审批队列、门控相位 | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管道有哪些用途？
 
@@ -52,16 +53,16 @@ Azure 机器学习管道是整个机器学习任务的可独立执行的工作�
 
 + 数据准备，包括导入、验证、清理、修整、转换、规范化和暂存
 + 训练配置，包括参数化自变量、文件路径和日志记录/报告配置
-+ 反复有效地训练和验证，可能包括指定特定的数据子集、不同的硬件计算资源、分布式处理和进度监视
++ 反复有效地进行训练和验证。 可以通过指定特定的数据子集、不同的硬件计算资源、分布式处理和进度监视来提高有效性
 + 部署，包括版本控制、缩放、预配和访问控制 
 
 由于各个步骤相互独立，因此多个数据科学家可以同时处理同一个管道，且不会过度占用计算资源。 由于各个步骤相互分离，因此可以轻松地针对每个步骤使用不同的计算类型/大小。
 
 管道设计好以后，通常会有更多围绕着管道的训练循环进行的优化。 重新运行某个管道时，运行会跳到需要重新运行的步骤（例如，更新后的训练脚本）。 不需要重新运行的步骤则会跳过。 同一分析适用于未更改的用于完成此步骤的脚本。 这种重用功能有助于避免在基础数据未发生更改的情况下运行成本高昂且十分耗时的步骤，如数据引入和转换。
 
-借助 Azure 机器学习，可以针对管道中的每个步骤使用各种工具包和框架，例如 PyTorch 或 TensorFlow。 Azure 协调会你使用的各种[计算目标](service/concept-azure-machine-learning-architecture.md)，因此中间数据可与下游计算目标共享。
+借助 Azure 机器学习，可以针对管道中的每个步骤使用各种工具包和框架，例如 PyTorch 或 TensorFlow。 Azure 协调会你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)，因此中间数据可与下游计算目标共享。
 
-可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](/machine-learning/service/how-to-track-experiments)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
+可以直接在 Azure 门户中或在[工作区登陆页面（预览）](https://ml.azure.com)[跟踪管道试验的指标](/machine-learning/how-to-track-experiments)。 发布管道之后，可以配置 REST 终结点，这样就能够从任何平台或堆栈重新运行管道。
 
 简而言之，可以通过管道处理机器学习生命周期的所有复杂任务。 其他 Azure 管道技术也有各自的优势，例如 [Azure 数据工厂管道](/data-factory/concepts-pipelines-activities)适用于处理数据，[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 适用于持续集成和部署。 但如果关注点是机器学习，则 Azure 机器学习管道可能是满足工作流需求的最佳选择。 
 
@@ -109,7 +110,7 @@ Azure ML 管道按步骤顺序执行完整的逻辑工作流。 每个步骤都�
 
 在 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 中，管道是 `azureml.pipeline.core` 模块中定义的 Python 对象。 [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 对象包含一个或多个 [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) 对象的有序序列。 `PipelineStep` 类是抽象类，而实际步骤属于子类，如 [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py)、[PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py) 或 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)。 [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) 类包含一系列可重用的步骤，这些步骤可在管道之间共享。 `Pipeline` 作为 `Experiment` 的一部分运行。
 
-Azure ML 管道与 Azure 机器学习工作区相关联，而管道步骤与该工作区中提供的计算目标相关联。 有关详细信息，请参阅[在 Azure 门户中创建和管理 Azure 机器学习工作区](/machine-learning/service/how-to-manage-workspace)或[什么是 Azure 机器学习中的计算目标？](/machine-learning/service/concept-compute-target)。
+Azure ML 管道与 Azure 机器学习工作区相关联，而管道步骤与该工作区中提供的计算目标相关联。 有关详细信息，请参阅[在 Azure 门户中创建和管理 Azure 机器学习工作区](/machine-learning/how-to-manage-workspace)或[什么是 Azure 机器学习中的计算目标？](/machine-learning/concept-compute-target)。
 
 在 Azure 机器学习中，计算目标是 ML 阶段发生的环境。 软件环境可以是远程 VM、Azure 机器学习计算、Azure Databricks、Azure Batch 等。 硬件环境也可能会有很大差异，具体取决于 GPU 支持、内存、存储等。 你可以为每个步骤指定计算目标，这样可以精细地控制成本。 可以使用功能更强或功能更弱的资源来满足项目的特定操作、数据量和性能需求。 
 
@@ -167,6 +168,8 @@ pipeline_run.wait_for_completion()
 
 代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `output_data` 的对象。 数组 `steps` 保存一个元素，即：将使用数据对象并在 `compute_target` 上运行的 `PythonScriptStep`。 然后，代码将实例化 `Pipeline` 对象本身，并将其传入工作区和步骤数组。 对 `experiment.submit(pipeline)` 的调用开始 Azure ML 管道运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
 
+若要详细了解如何将管道连接到数据，请参阅[如何访问数据](how-to-access-data.md)和[如何注册数据集](how-to-create-register-datasets.md)这两篇文章。 
+
 ## <a name="best-practices-when-using-pipelines"></a>使用管道的最佳做法
 
 如你所见，创建 Azure ML 管道比启动脚本要复杂一些。 管道需要配置和创建一些 Python 对象。 
@@ -201,6 +204,20 @@ pipeline_run.wait_for_completion()
 |**跟踪和版本控制**|可以使用管道 SDK 显式对数据源、输入和输出进行命名和版本控制，而不是在循环访问时手动跟踪数据和结果路径。 还可以将脚本和数据分开管理以提高工作效率。|
 | **模块化** | 分离关注区域和隔离更改可加快软件开发速度并提高质量。 | 
 |**协作**|使用管道，数据科学家能够在机器学习设计过程的所有方面进行协作，同时能够并行处理管道步骤。|
+
+## <a name="modules"></a>模块
+
+虽然管道步骤允许重复使用以前的运行的结果，但在许多情况下，该步骤的构造假定所需的脚本和依赖文件必须在本地可用。 如果数据科学家希望在现有代码的基础上进行构建，则通常必须从单独的存储库克隆脚本和依赖项。
+
+模块在使用上与管道步骤相似，但提供通过工作区加速的版本控制，因此可以实现大规模协作和可重用性。 模块设计为在多个管道中重复使用，并且可以发展，使特定的计算适应不同的用例。 用户可以通过工作区执行以下任务，无需使用外部存储库：
+
+* 创建新模块并发布现有模块的新版本
+* 弃用现有版本
+* 将版本标为禁用可防止使用者使用该版本
+* 指定默认版本
+* 从工作区按版本检索模块，确保团队使用相同的代码
+
+请参阅[笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb)中的代码示例，了解如何在 Azure 机器学习管道中创建、连接和使用模块。
 
 ## <a name="next-steps"></a>后续步骤
 

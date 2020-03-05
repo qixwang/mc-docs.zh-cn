@@ -3,18 +3,20 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.author: v-tawe
 origin.date: 11/26/2019
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 925a9bb51f838ad786d796bc39ea3efe8d156cda
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: 374a8224bcbacbbbb65f0be0e757a9847519ea50
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179327"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042313"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
-Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述资源符合性，以及在资源不符合的情况下会产生什么影响。
+Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](#conditions)以及满足条件时会实现的效果。 条件将资源属性[字段](#fields)与所需值进行比较。 使用[别名](#aliases)访问资源属性字段。 资源属性字段是单值字段，或者是由多个值组成的[数组](#understanding-the--alias)。 数组上的条件计算有所不同。
+详细了解[条件](#conditions)。
+
 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
 策略定义架构可在此处找到：[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
@@ -75,6 +77,8 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 - `all`：评估资源组和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
+
+例如，资源 `Microsoft.Network/routeTables` 支持标记和位置，在两种模式下进行评估。 但是，资源 `Microsoft.Network/routeTables/routes` 无法标记，不在 `Indexed` 模式下评估。
 
 大多数情况下，建议将“mode”设置为  `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
@@ -243,8 +247,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 使用 like  和 notLike  条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
 
-当使用 match  和 notMatch  条件时，请提供 `#` 来匹配数字，提供 `?` 来匹配字母，提供 `.` 来匹配任何字符，并提供任何其他字符来匹配该实际字符。
-“match”和“notMatch”区分大小写   。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案   。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
+当使用 match  和 notMatch  条件时，请提供 `#` 来匹配数字，提供 `?` 来匹配字母，提供 `.` 来匹配任何字符，并提供任何其他字符来匹配该实际字符。 尽管 **match** 和 **notMatch** 区分大小写，但用于评估 _stringValue_ 的所有其他条件都不区分大小写。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案   。
+
+在 **\[\*\] alias** 数组字段值中，数组中的每个元素都使用元素之间的逻辑**与**进行计算。 有关详细信息，请参阅[评估 \[\*\] alias](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
 ### <a name="fields"></a>字段
 
@@ -258,7 +263,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - `kind`
 - `type`
 - `location`
-  - 对于不限位置的资源，请使用 **global**。 如需示例，请参阅[示例 - 允许的位置](../samples/allowed-locations.md)。
+  - 对于不限位置的资源，请使用 **global**。
 - `identity.type`
   - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`
@@ -391,7 +396,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 ### <a name="count"></a>计数
 
-可以使用 **计数** 表达式来构成条件，用于统计资源有效负载中有多少个数组成员满足条件表达式。 常见方案是检查是“至少有一个”、“正好有一个”、“所有”还是“没有”数组成员满足条件。 **count** 将根据条件表达式评估每个数组成员，并将 _true_ 结果求和，然后将其与表达式运算符进行比较。
+可以使用 **计数** 表达式来构成条件，用于统计资源有效负载中有多少个数组成员满足条件表达式。 常见方案是检查是“至少有一个”、“正好有一个”、“所有”还是“没有”数组成员满足条件。 **count** 将根据条件表达式评估每个 [\[\*\] alias](#understanding-the--alias) 数组成员，并将 _true_ 结果求和，然后将其与表达式运算符进行比较。
 
 **count** 表达式的结构为：
 
@@ -468,7 +473,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
             "equals": "description"
         }
     },
-    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+    "equals": "[length(field('Microsoft.Network/networkSecurityGroups/securityRules[*]'))]"
 }
 ```
 
@@ -533,6 +538,9 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 Azure Policy 支持以下类型的效果：
 
+<!-- - **EnforceOPAConstraint** (preview): configures the Open Policy Agent admissions controller with Gatekeeper v3 for self-managed Kubernetes clusters on Azure (preview) -->
+- **EnforceRegoPolicy**（预览版）：在 Azure Kubernetes 服务中为 Open Policy Agent 许可控制器配置 Gatekeeper v2 -->
+
 - **Append**：会将定义的字段集添加到请求
 - **Audit**：会在活动日志中生成一个警告事件，但不会使请求失败
 - **AuditIfNotExists**：如果相关资源不存在，则会在活动日志中生成一个警告事件
@@ -545,7 +553,7 @@ Azure Policy 支持以下类型的效果：
 
 ### <a name="policy-functions"></a>策略函数
 
-除以下函数和用户定义的函数外，所有[资源管理器模板函数](../../../azure-resource-manager/resource-group-template-functions.md)均可在策略规则中使用：
+除以下函数和用户定义的函数外，所有[资源管理器模板函数](../../../azure-resource-manager/templates/template-functions.md)均可在策略规则中使用：
 
 - copyIndex()
 - deployment()
@@ -590,6 +598,31 @@ Azure Policy 支持以下类型的效果：
 使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
 别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
+
+- 适用于 Visual Studio Code 的 Azure Policy 扩展（推荐）
+
+  使用[适用于 Visual Studio Code 的 Azure Policy 扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
+
+  ![适用于 Visual Studio Code 的 Azure Policy 扩展](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+
+- Azure Resource Graph
+
+  使用 `project` 运算符显示资源的 **别名**。
+
+  ```kusto
+  Resources
+  | where type=~'microsoft.storage/storageaccounts'
+  | limit 1
+  | project aliases
+  ```
+  
+  ```azurecli
+  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
+  
+  ```azurepowershell
+  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
 
 - Azure PowerShell
 
@@ -730,10 +763,7 @@ Azure Policy 支持以下类型的效果：
                 }
             }
         ]
-    },
-    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
-    "type": "Microsoft.Authorization/policySetDefinitions",
-    "name": "billingTagsPolicy"
+    }
 }
 ```
 

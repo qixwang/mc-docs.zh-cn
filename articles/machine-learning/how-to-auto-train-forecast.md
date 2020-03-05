@@ -4,18 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习通过自动化机器学习来训练时序预测回归模型。
 services: machine-learning
 author: trevorbye
-ms.author: trbye
+ms.author: v-yiso
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 942720e88dd4fb7de60ca048443c837e1aad36eb
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 9f236efd61065ab66243d630bed823b0f4cea569
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75597998"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154993"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,28 +112,28 @@ test_labels = test_data.pop(label).values
 * 创建基于时间的特征，以帮助学习季节性模式
 * 将分类变量编码为数值量
 
-`AutoMLConfig` 对象定义自动化机器学习任务所需的设置和数据。 与回归问题类似，需定义标准训练参数，如任务类型、迭代数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 下表阐释了每个参数及其用途。
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 对象定义自动化机器学习任务所需的设置和数据。 与回归问题类似，需定义标准训练参数，如任务类型、迭代数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 下表阐释了每个参数及其用途。
 
 | Param | 说明 | 必须 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义粒度，则假定数据集为一个时序。||
 |`max_horizon`|定义以时序频率为单位的最大理想预测时间范围。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
-|`target_lags`|基于数据频率使目标值滞后的行数。 这表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 例如，在尝试预测某个产品的需求时，任意月份的需求可能依赖于之前 3 个月内特定商品的价格。 在此示例中，可将目标（需求）的滞后负 3 个月，以便针对正确的关系训练模型。||
+|`target_lags`|基于数据频率使目标值滞后的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 例如，在尝试预测某个产品的需求时，任意月份的需求可能依赖于之前 3 个月内特定商品的价格。 在此示例中，可将目标（需求）的滞后负 3 个月，以便针对正确的关系训练模型。||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。||
 |`enable_dnn`|启用预测 DNN。||
 
 请参阅[参考文档](https://docs.microsoft.com/azure/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)以了解详细信息。
 
-将时序设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `grain_column_names` 参数以确保为数据创建两个单独的时序组  ，分别用于商店 A 和 B。最后，将 `max_horizon` 设置为 50 以便预测整个测试集。 使用 `target_rolling_window_size` 将预测时段设置为 10 个时段，并使用 `target_lags` 参数指定目标值滞后 2 个时段。
+将时序设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `grain_column_names` 参数以确保为数据创建两个单独的时序组  ，分别用于商店 A 和 B。最后，将 `max_horizon` 设置为 50 以便预测整个测试集。 使用 `target_rolling_window_size` 将预测时段设置为 10 个时段，并使用 `target_lags` 参数指定目标值滞后两个时段。 建议将 `max_horizon`、`target_rolling_window_size` 和 `target_lags` 设置为“auto”，然后就会自动检测这些值。 在下面的示例中，“auto”设置已用于这些参数。 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50,
-    "target_lags": 2,
-    "target_rolling_window_size": 10,
+    "max_horizon": "auto",
+    "target_lags": "auto",
+    "target_rolling_window_size": "auto",
     "preprocess": True,
 }
 ```
@@ -167,12 +168,13 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-请参阅[能源需求笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)，它包含以下高级预测配置的详细代码示例：
+请参阅[预测示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)，了解高级预测配置的详细代码示例，其中包括：
 
-* 假日检测和特征化
-* 滚动原点交叉验证
-* 可配置滞后
-* 滚动窗口聚合特征
+* [假日检测和特征化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [滚动原点交叉验证](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [可配置滞后](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
+* [滚动窗口聚合特征](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
+* [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>配置启用 DNN 的预测试验
 
@@ -225,7 +227,7 @@ label_fcst, data_trans = fitted_pipeline.forecast(
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
+rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 

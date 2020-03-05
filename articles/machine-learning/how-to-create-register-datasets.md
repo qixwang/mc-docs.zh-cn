@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
+ms.author: v-yiso
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 16da4930143c8e3fee0642d0e18dd98494d641b9
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 02/10/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 9a3b7b3fbad418bda026dff5642ac7b64ea85e2d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599620"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155015"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -49,7 +50,7 @@ ms.locfileid: "75599620"
 
 根据用户在训练中使用数据集的方式，存在两种数据集类型：
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 表示表格格式的、通过分析提供的文件或文件列表所创建的数据。 使用此类数据集可将数据具体化为 Pandas 或 Spark 数据帧。 可以从 .csv、.tsv 和 parquet 文件以及从 SQL 查询结果创建 `TabularDataset` 对象。 有关完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 表示表格格式的、通过分析提供的文件或文件列表所创建的数据。 使用此类数据集可将数据具体化为 Pandas 或 Spark 数据帧。 可以从 .csv、.tsv、.parquet、.jsonl 文件以及从 SQL 查询结果创建 `TabularDataset` 对象。 有关完整列表，请参阅 [TabularDatasetFactory 类](https://aka.ms/tabulardataset-api-reference)。
 
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) 类引用数据存储或公共 URL 中的单个或多个文件。 通过此方法可以下载文件或将其作为 FileDataset 对象装载到计算中。 文件可以采用任何格式，因此可以实现更广泛的机器学习方案，包括深度学习。
 
@@ -67,35 +68,32 @@ ms.locfileid: "75599620"
 
 1. 验证是否对已注册的 Azure 数据存储拥有 `contributor` 或 `owner` 访问权限。
 
-1. 通过引用数据存储中的路径创建数据集：
+2. 通过引用数据存储中的路径创建数据集。
+> [!Note]
+> 可以从多个数据存储中的多个路径创建数据集。 可以从其创建数据集的文件数量或数据大小没有硬性限制。 但是，对于每个数据路径，会将几个请求发送到存储服务，以检查它是否指向文件或文件夹。 此开销可能会导致性能下降或故障。 数据集引用内含 1000 个文件的文件夹的行为被视为引用一个数据路径。 为了获得最佳性能，建议创建在数据存储中引用不到 100 个路径的数据集。
 
-    ```Python
-    from azureml.core.workspace import Workspace
-    from azureml.core.datastore import Datastore
-    from azureml.core.dataset import Dataset
-    
-    datastore_name = 'your datastore name'
-    
-    # get existing workspace
-    workspace = Workspace.from_config()
-    
-    # retrieve an existing datastore in the workspace by name
-    datastore = Datastore.get(workspace, datastore_name)
-    ```
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
-可以通过 SDK 或使用 Azure 机器学习工作室创建 TabularDataset。 可以从数据中的列或者从数据所存储到的路径模式指定一个时间戳，以启用时序特征。 此规范允许按时间轻松有效地进行筛选。
+可以通过 SDK 或使用 Azure 机器学习工作室创建 TabularDataset。 
 
 使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。
 
 ```Python
-# create a TabularDataset from multiple paths in datastore
-datastore_paths = [
-                  (datastore, 'weather/2018/11.csv'),
-                  (datastore, 'weather/2018/12.csv'),
-                  (datastore, 'weather/2019/*.csv')
-                 ]
+from azureml.core import Workspace, Datastore, Dataset
+
+datastore_name = 'your datastore name'
+
+# get existing workspace
+workspace = Workspace.from_config()
+    
+# retrieve an existing datastore in the workspace by name
+datastore = Datastore.get(workspace, datastore_name)
+
+# create a TabularDataset from 3 paths in datastore
+datastore_paths = [(datastore, 'ather/2018/11.csv'),
+                   (datastore, 'weather/2018/12.csv'),
+                   (datastore, 'weather/2019/*.csv')]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
@@ -156,16 +154,12 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [
-                  (datastore, 'animals')
-                 ]
+datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
 
 # create a FileDataset from image and label files behind public web urls
-web_paths = [
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -179,12 +173,14 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 在左侧窗格的“资产”部分，选择“数据集”。   
 1. 选择“创建数据集”以选择数据集的源。  此源可以是本地文件、数据存储或公共 URL。
 1. 为“数据集类型”选择“表格”或“文件”。  
-1. 选择“下一步”查看“设置和预览”、“架构”和“确认详细信息”窗体；其中的信息已根据文件类型智能填充。     使用这些窗体检查所做的选择，并在创建数据集之前进一步对其进行配置。  
+1. 选择“下一步”，  打开“数据存储和文件选择”  窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。 
+1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。    
+1. 选择“下一步”，  查看“确认详细信息”  窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。 
 1. 选择“创建”以完成数据集的创建。 
 
 ## <a name="register-datasets"></a>注册数据集
 
-若要完成创建过程，请将数据集注册到工作区。 使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) 方法将数据集注册到工作区，以便与其他人共享，并在不同的试验中重复使用这些数据集：
+若要完成创建过程，请将数据集注册到工作区。 使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) 方法将数据集注册到工作区，以便与其他人共享，并在不同的试验中重复使用这些数据集：
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
@@ -203,16 +199,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 若要通过 SDK 使用 Azure 开放数据集创建数据集，请确保已使用 `pip install azureml-opendatasets` 安装相应的包。 每个离散数据集在 SDK 中由其自身的类表示，某些类作为 `TabularDataset` 和/或 `FileDataset` 提供。 有关完整的类列表，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)。
 
-大多数类继承自 `TabularDataset` 的实例并返回该实例。 这些类的示例包括 `PublicHolidays`、`BostonSafety` 和 `UsPopulationZip`。 若要从这些类类型创建 `TabularDataset`，请使用不带参数的构造函数。 注册从开放数据集创建的数据集时，不会立即下载数据，但以后可按请求（例如，在训练期间）从某个中心存储位置访问数据。 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-可以检索 `TabularDataset` 或 `FileDataset` 形式的某些类，这样就可以直接操控和/或下载文件。 其他类只能使用 `get_tabular_dataset()` 或 `get_file_dataset()` 函数获取数据集。 以下代码示例演示了上述类类型的几个例子：
+可以检索 `TabularDataset` 或 `FileDataset` 形式的某些类，这样就可以直接操控和/或下载文件。 其他类可以使用 `get_tabular_dataset()` 或 `get_file_dataset()` 函数之一，**只**获取数据集。 以下代码示例演示了上述类类型的几个例子。
 
 ```python
 from azureml.opendatasets import MNIST
@@ -226,6 +213,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+注册从开放数据集创建的数据集时，不会立即下载数据，但以后可按请求（例如，在训练期间）从某个中心存储位置访问数据。
 
 ### <a name="use-the-ui"></a>使用 UI
 
@@ -248,10 +237,8 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 可以通过创建新版本，以相同的名称注册新数据集。 数据集版本是为数据状态设置书签的一种方法，以便可以应用数据集的特定版本进行试验或者在将来重现该数据集。 详细了解[数据集版本](how-to-version-track-datasets.md)。
 ```Python
 # create a TabularDataset from Titanic training data
-web_paths = [
-            'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
-            'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]
+web_paths = ['https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
+             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv']
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

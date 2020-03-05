@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c6ac796477fc4225c3a26322e5c536bd7e6d18a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 5edaaa777f5b15efc85d19896ef5eabe43f81daf
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429900"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653088"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建对组和应用程序的访问评审
 
@@ -28,7 +28,7 @@ ms.locfileid: "77429900"
 
 本文介绍如何针对组成员或应用程序访问权限创建一个或多个访问评审。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure AD Premium P2
 - 全局管理员或用户管理员
@@ -128,6 +128,20 @@ ms.locfileid: "77429900"
 
 如果将来宾指定为评审者，但他们尚未接受邀请，则他们不会收到来自访问评审的电子邮件，因为在评审前必须先接受邀请。
 
+## <a name="access-review-status-table"></a>访问评审状态表
+
+| 状态 | 定义 |
+|--------|------------|
+|NotStarted | 已创建评审，用户发现正在等待启动。 |
+|正在初始化   | 正在进行用户发现，以标识属于评审的所有用户。 |
+|正在启动 | 正在启动评审。 如果启用电子邮件通知，则会将电子邮件发送给评审者。 |
+|正在进行 | 已开始评审。 如果启用电子邮件通知，则电子邮件已发送给评审者。 评审者可以在截止日期之前提交决定。 |
+|正在完成 | 评审正在完成，电子邮件将发送到评审所有者。 |
+|正在自动评审 | 评审处于系统评审阶段。 系统正在为未根据建议或预先配置的决定评审的用户记录决定。 |
+|已自动评审 | 系统已为未评审的所有用户记录了决定。 如果启用了“自动应用”，则评审可以进入“正在应用”阶段了  。 |
+|正在应用 | 对于已批准的用户，访问权限不会更改。 |
+|已应用 | 已经从源或目录删除拒绝的用户（如果有）。 |
+
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 
 也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
@@ -138,3 +152,4 @@ ms.locfileid: "77429900"
 - [评审自己对组或应用程序的访问权限](review-your-access.md)
 - [完成组或应用程序的访问评审](complete-access-review.md)
 
+<!-- Update_Description: wording update -->

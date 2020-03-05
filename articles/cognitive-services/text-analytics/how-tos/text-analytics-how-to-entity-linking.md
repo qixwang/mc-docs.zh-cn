@@ -1,36 +1,35 @@
 ---
 title: 结合使用实体识别和文本分析 API
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用文本分析 REST API 识别实体。
+description: 了解如何使用文本分析 REST API 识别和区分文本中找到的实体的标识。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-origin.date: 04/16/2019
-ms.date: 07/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: 3f765cd4b7989f67a8acffac2ebdba7c16a6413c
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+origin.date: 02/10/2020
+ms.date: 02/25/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 8d9c5dfe198d801ba27f2523439af2782c509647
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844593"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155090"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
-[命名实体识别 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 需要使用非结构化文本，并对每个 JSON 文档返回已消除歧义的实体列表，其中包含网上（维基百科和必应）详细信息的链接。 
-
-## <a name="entity-linking-and-named-entity-recognition"></a>实体链接和命名实体识别
-
-文本分析的 `entities` 终结点支持命名实体识别 (NER) 和实体链接。
+文本分析 API 允许你采用非结构化文本，并会返回一个已消歧实体的列表，其中包含指向 Web 上的详细信息的链接。 此 API 支持命名实体识别 (NER) 和实体链接。
 
 ### <a name="entity-linking"></a>实体链接
-实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定“Mars”是用作行星还是用作罗马战神）。 此过程需要用到已识别实体链接到的知识库 — Wikipedia 用作 `entities` 终结点文本分析的知识库。
+
+实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定 `Mars` 一词是指行星还是指罗马战神）。 此过程要求知识库采用适当的语言，以便链接文本中识别的实体。 实体链接使用[维基百科](https://www.wikipedia.org/)作为此知识库。
+
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
-命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类别的能力。 下面列出了受支持的实体类型。
+
+命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类或类型（例如：人员、位置、事件、产品和组织）的能力。  
 
 在文本分析[版本 2.1](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 中，实体链接和命名实体识别 (NER) 均可用于几种语言。 有关详细信息，请参阅[语言支持](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)一文。 
 
@@ -45,76 +44,61 @@ ms.locfileid: "67844593"
 | 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
 | 位置      | 暂无\*         | “Redmond, Washington”、“Paris”  |
 | 组织  | 暂无\*         | “Microsoft”   |
-| 数量      | Number        | “6”、“six”     | 
-| 数量      | 百分比    | “50%”、“fifty percent”| 
-| 数量      | Ordinal       | “2nd”、“second”     | 
-| 数量      | NumberRange   | “4 to 8”     | 
-| 数量      | Age           | “90 day old”、“30 years old”    | 
-| 数量      | 货币      | “$10.99”     | 
-| 数量      | 维度     | “10 miles”、“40 cm”     | 
+| 数量      | Number        | “6”、“six”     |
+| 数量      | 百分比    | “50%”、“fifty percent”|
+| 数量      | Ordinal       | “2nd”、“second”     |
+| 数量      | Age           | “90 day old”、“30 years old”    |
+| 数量      | 货币      | “$10.99”     |
+| 数量      | 维度     | “10 miles”、“40 cm”     |
 | 数量      | 温度   | “32 degrees”    |
-| DateTime      | 暂无\*         | “6:30PM February 4, 2012”      | 
-| DateTime      | Date          | “May 2nd, 2017”、“05/02/2017”   | 
-| DateTime      | 时间          | “8am”、“8:00”  | 
-| DateTime      | DateRange     | “May 2nd to May 5th”    | 
-| DateTime      | TimeRange     | “6pm to 7pm”     | 
-| DateTime      | 持续时间      | “1 minute and 45 seconds”   | 
-| DateTime      | 设置           | “every Tuesday”     | 
-| DateTime      | TimeZone      |    | 
+| DateTime      | 暂无\*         | “6:30PM February 4, 2012”      |
+| DateTime      | Date          | “May 2nd, 2017”、“05/02/2017”   |
+| DateTime      | 时间          | “8am”、“8:00”  |
+| DateTime      | DateRange     | “May 2nd to May 5th”    |
+| DateTime      | TimeRange     | “6pm to 7pm”     |
+| DateTime      | 持续时间      | “1 minute and 45 seconds”   |
+| DateTime      | 设置           | “every Tuesday”     |
 | URL           | 暂无\*         | "https:\//www.bing.com"    |
 | Email         | 暂无\*         | "support@contoso.com" |
 
 \*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有受支持的实体类型仅适用于英文、简体中文、法文、德文和西班牙文。
 
+### <a name="request-endpoints"></a>请求终结点
 
+命名实体识别 v2 将单个终结点用于 NER 和实体链接请求：
 
-## <a name="preparation"></a>准备工作
+`https://<your-custom-subdomain>.cognitiveservices.azure.cn/text/analytics/v2.1/entities`
 
-必须拥有以下格式的 JSON 文档：ID、文本、语言
+---
 
-有关当前支持的语言，请参阅[此列表](../text-analytics-supported-languages.md)。
+## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
 
-每个文档的大小必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交至实体链接端的内容。
+### <a name="preparation"></a>准备工作
 
-```
-{"documents": [{"id": "1",
-                "language": "en",
-                "text": "Jeff bought three dozen eggs because there was a 50% discount."
-                },
-               {"id": "2",
-                "language": "en",
-                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
-                }
-               ]
-}
-```    
-    
-## <a name="step-1-structure-the-request"></a>步骤 1：构造请求
+必须拥有以下格式的 JSON 文档：ID、文本、语言。
 
-有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
+每个文档必须少于 5,120 个字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。
 
-+ 创建 POST 请求  。 查看此请求的 API 文档：[实体链接 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+### <a name="structure-the-request"></a>构造请求
 
-+ 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.azure.cn/text/analytics/v2.1/entities`
+创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下链接中的“API 测试控制台”来快速构建并发送请求  。 
 
-+ 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
+> [!NOTE]
+> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”  页上的“资源管理”  下。 
 
-+ 在请求正文中，提供为此分析准备的 JSON 文档集合
+  
 
-> [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务  。
-
-## <a name="step-2-post-the-request"></a>步骤 2：发布请求
+## <a name="post-the-request"></a>发布请求
 
 在收到请求时执行分析。 有关每分钟和每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
-记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
+文本分析 API 是无状态的。 不会在帐户中存储数据，结果会立即在响应中返回。
 
-## <a name="step-3-view-results"></a>步骤 3：查看结果
+## <a name="view-results"></a>查看结果
 
-所有 POST 请求都将返回 JSON 格式的响应，其中包含 ID 和检测到的属性。
+所有 POST 请求都将返回 JSON 格式的响应，其中包含 ID 和检测到的实体属性。
 
-系统会立即返回输出。 你可以将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
 
 下面展示了实体链接的输出示例：
 
@@ -279,18 +263,13 @@ ms.locfileid: "67844593"
 
 在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 综上所述：
 
-+ [实体 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
-+ 请求正文中的 JSON 文档包括 ID、文本和语言代码。
-+ POST 请求的目标是 `/entities` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
-+ 响应输出由链接实体（包括每个文档 ID 的置信度分数、偏移量和 Web 链接）组成，可用于任何应用程序
+* 命名实体识别适用于选定的语言并提供两个版本。
+* 请求正文中的 JSON 文档包括 ID、文本和语言代码。
+* 会通过对订阅有效的个性化[访问密钥和终结点](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)将 POST 请求发送到一个或多个终结点。
+* 响应输出由链接实体（包括每个文档 ID 的置信度分数、偏移量和 Web 链接）组成，可用于任何应用程序
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [文本分析 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+* [文本分析概述](../overview.md)
+* [使用文本分析客户端库](../quickstarts/text-analytics-sdk.md)
 
-* [文本分析概述](../overview.md)  
-* [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
-* [文本分析产品页](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 
-
-<!-- Update_Description: wording update -->

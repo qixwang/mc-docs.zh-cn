@@ -5,18 +5,18 @@ author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
 origin.date: 01/11/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: b3216c0a9dbf69acb697dae87567008e844c4e46
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 43d0043e8006cb73fe35a86450457a20e7b876ff
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600217"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566648"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
-[Azure 应用服务](overview.md)针对 [Azure 门户](https://portal.azure.cn)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
+[Azure 应用服务](overview.md)针对 [Azure 门户](https://portal.azure.cn)中的 Web 应用、移动和 API 应用提供内置监视功能。
 
 在 Azure 门户中，可以查看应用和应用服务计划的配额和指标，还可以设置基于指标的警报和自动缩放。    
 
@@ -42,7 +42,7 @@ ms.locfileid: "75600217"
 
 适用于托管在“基本”、“标准”和“高级”层级中的应用的唯一配额是“文件系统”。   
 
-有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-subscription-service-limits.md#app-service-limits)。
+有关各种应用服务 SKU 的特定配额、限制和可用功能的详细信息，请参阅 [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。
 
 ### <a name="quota-enforcement"></a>配额强制执行
 
@@ -130,9 +130,9 @@ ms.locfileid: "75600217"
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
 应用和应用服务计划的指标由具有下列粒度和保留策略的服务进行记录和聚合：
 
-* “分钟”粒度级的指标将保留 30 小时。 
-* “小时”粒度级的指标将保留 30 天。 
-* “天”粒度级的指标将保留 30 天。 
+* “分钟”粒度级的指标保留 30 小时。 
+* “小时”粒度级的指标保留 30 天。 
+* “天”粒度级的指标保留 30 天。 
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标
 若要查看影响应用的各种配额和指标的状态，请转到 [Azure 门户](https://portal.azure.cn)。
@@ -145,19 +145,16 @@ ms.locfileid: "75600217"
 1. 配额的当前限制。
 1. 配额的当前值。
 
-![Azure 门户中的“指标”图表][metrics]可以直接从“资源”页访问指标。  自定义图表： 
-1. 选择该图表。
-1. 选择“编辑图表”。 
-1. 编辑“时间范围”。 
-1. 编辑“图表类型”。 
-1. 编辑要显示的指标。  
+![Azure 门户中的“指标”图表][metrics]可以直接从资源“概览”页访问指标。  在这里，会看到表示某些应用指标的图表。
+
+单击其中任何图表会转到指标视图，可以在该视图中创建自定义图表、查询不同的指标，等等。 
 
 若要详细了解指标，请参阅[监视服务指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
 可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
-托管在“基本”、“标准”或“高级”应用服务计划中的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。
+托管在“基本”或更高级别应用服务计划中的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。
 
 有关自动缩放的详细信息，请参阅[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及[有关 Azure Monitor 自动缩放的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
 
