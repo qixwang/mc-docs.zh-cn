@@ -6,22 +6,106 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: jmartens
+ms.author: v-yiso
 author: j-martens
-ms.date: 11/04/2019
+origin.date: 01/21/2020
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2b9f1da13320dd5fbe1ae3c71fba6088a7e22499
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b69e49e9272ed31909f782c8076c4ac766c763f9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599111"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155108"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**适用于 Python 的主要 SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-02-04"></a>2020-02-04
+
+### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>适用于 Python 的 Azure 机器学习 SDK v1.1.0rc0
+
++ **Bug 修复与改进**
+  + **azureml-automl-runtime**
+    + 提高了特征化的速度。
+    + 修复了评分期间的频率检查。现在，在预测任务中，我们不要求在训练集与测试集之间实施严格的频率均等性。
+  + **azureml-core**
+    + 现在，用户在为 Web 服务重新生成密钥时可为身份验证密钥指定值。
+  + **azureml-interpret**
+    + 更新了 azureml-interpret，使其依赖于 interpret-community 0.5.0
+  + **azureml-pipeline-core**
+    + 修复了以下 bug：即使更改参数列表，也可能会错误地重复使用 PythonScriptStep 结果
+  + **azureml-pipeline-steps**
+    + 添加了将数据集用作 PythonScriptStep 输入的文档示例
+  + **azureml-contrib-pipeline-steps**
+    + 现在，可以通过传递管道参数来覆盖 ParallelRunConfig 中传入的参数。 支持新的管道参数 aml_mini_batch_size、aml_error_threshold、aml_logging_level、aml_run_invocation_timeout（aml_node_count 和 aml_process_count_per_node 已包含在早期版本中）。
+  
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.85
+
++ **新功能**
+  + **azureml-core**
+    + 获取给定工作区和订阅中 AmlCompute 资源的当前核心用量和配额限制
+  
+  + **azureml-contrib-pipeline-steps**
+    + 使用户能够将上一步骤中的表格数据集作为中间结果传递给 parallelrunstep
+
++ **Bug 修复与改进**
+  + **azureml-automl-runtime**
+    + 取消了在向部署的预测服务发出的请求必须提供 y_query 列的要求。 
+    + “y_query”已从 Dominick Orange Juice 笔记本服务请求节中删除。
+    + 修复了阻止在部署的模型中进行预测，以及对包含日期时间列的数据集进行操作的 bug。
+    + 添加了 Matthews 相关系数作为分类指标，用于二元和多类分类。
+  + **azureml-contrib-interpret**
+    + 从 azureml-contrib-interpret 中删除了文本解释器，因为文本解释已转移到即将发布的 interpret-text 存储库。
+  + **azureml-core**
+    + 数据集：文件数据集的用法不再依赖于 numpy 和 pandas 即可安装在 python 环境中。
+    + 更改了 LocalWebservice.wait_for_deployment()，以便先检查本地 Docker 容器的状态，然后再尝试 ping 其运行状况终结点，这大幅减少了报告失败部署所需的时间。
+    + 修复了在使用 LocalWebservice() 构造函数从现有部署创建服务对象时，在 LocalWebservice.reload() 中使用的内部属性的初始化。
+    + 编辑了错误消息以澄清问题。
+    + 将名为 get_access_token() 的新方法添加到了 AksWebservice，该方法返回 AksServiceAccessToken 对象，而该对象包含访问令牌、刷新截止时间戳、时间戳中的过期时间，以及令牌类型。 
+    + AksWebservice 中已弃用现有的 get_token() 方法，因为此方法返回的所有信息可由新方法返回。
+    + 修改了 az ml service get-access-token 命令的输出。 已将 token 重命名为 accessToken，已将 refreshBy 重命名为 refreshAfter。 添加了 expiryOn 和 tokenType 属性。
+    + 修复了 get_active_runs
+  + **azureml-explain-model**
+    + 已将 shap 更新为 0.33.0，已将 interpret-community 更新为 0.4.*
+  + **azureml-interpret**
+    + 已将 shap 更新为 0.33.0，已将 interpret-community 更新为 0.4.*
+  + **azureml-train-automl-runtime**
+    + 添加了 Matthews 相关系数作为分类指标，用于二元和多类分类。
+    + 弃用了在代码中的预处理标志，并已将其替换为特征化 - 特征化默认已启用
+
+## <a name="2020-01-06"></a>2020-01-06
+
+### <a name="azure-machine-learning-sdk-for-python-v1083"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.83
+
++ **新功能**
+  + 数据集：添加了两个选项 `on_error` 和 `out_of_range_datetime`，以便在数据包含错误值时使 `to_pandas_dataframe` 失败，而不是用 `None` 来填充它们。
+  + 工作区：为包含敏感数据的工作区添加了 `hbi_workspace` 标志，以便启用进一步的加密，并对工作区禁用高级诊断。 我们还添加了为关联的 Cosmos DB 实例使用自己的密钥的支持，若要获得此项支持，可以在创建工作区时指定 `cmk_keyvault` 和 `resource_cmk_uri` 参数，以便在预配工作区时在订阅中创建 Cosmos DB 实例。 [在此处了解详细信息。](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
+
++ **Bug 修复与改进**
+  + **azureml-automl-runtime**
+    + 修复了在低于 3.5.4 的 Python 版中运行 AutoML 时导致引发 TypeError 的回归问题。
+  + **azureml-core**
+    + 修复了 `datastore.upload_files` 中的 bug：无法使用不是以 `./` 开头的相对路径。
+    + 针对所有 Image 类代码路径添加了弃用消息
+    + 修复了 Mooncake 区域的模型管理 URL 构造。
+    + 修复了以下问题：无法为 Azure Functions 打包使用 source_dir 的模型。    
+    + 将一个选项添加到了 [Environment.build_local()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)，以将映像推送到 AzureML 工作区容器注册表中
+    + 更新了 SDK，以通过后向兼容的方式在 Azure Synapse 中使用新的令牌库。
+  + **azureml-interpret**
+    + 修复了以下 bug：未提供下载说明时返回 None。 现在会引发异常，与其他位置的行为相匹配。
+  + **azureml-pipeline-steps**
+    + 在 `EstimatorStep` 中使用 `Estimator` 时，禁止将 `DatasetConsumptionConfig`s 传递给 `Estimator` 的 `inputs` 参数。
+  + **azureml-sdk**
+    + 将 AutoML 客户端添加到了 azureml-sdk 包，以便可以在不安装完整 AutoML 包的情况下提交远程 AutoML 运行。
+  + **azureml-train-automl-client**
+    + 更正了 automl 运行的控制台输出对齐方式
+    + 修复了以下 bug：可能在远程 amlcompute 上安装错误的 pandas 版本。
 
 ## <a name="2019-12-23"></a>2019-12-23
 
@@ -200,7 +284,7 @@ SDK 的主要功能包括：
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Azure 机器学习与事件网格的集成 
 
-Azure 机器学习现在是事件网格的资源提供程序，你可以通过 Azure 门户或 Azure CLI 配置机器学习事件。 用户可以针对运行完成状态、模型注册、模型部署以及检测到的数据偏移创建事件。 可将这些事件路由到事件网格支持的事件处理程序以供使用。 有关更多详细信息，请参阅机器学习事件的[架构](/event-grid/event-schema-machine-learning)、[概念](/machine-learning/service/concept-event-grid-integration)和[教程](/machine-learning/service/how-to-use-event-grid)文章。
+Azure 机器学习现在是事件网格的资源提供程序，你可以通过 Azure 门户或 Azure CLI 配置机器学习事件。 用户可以针对运行完成状态、模型注册、模型部署以及检测到的数据偏移创建事件。 可将这些事件路由到事件网格支持的事件处理程序以供使用。 有关更多详细信息，请参阅机器学习事件的[架构](/event-grid/event-schema-machine-learning)、[概念](/machine-learning/concept-event-grid-integration)和[教程](/machine-learning/how-to-use-event-grid)文章。
 
 ## <a name="2019-10-31"></a>2019-10-31
 
@@ -208,7 +292,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 + **新功能**
   + 通过 [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift) 包添加了数据集监视器，用于持续监视存在数据偏移的时序数据集或其他统计更改。 如果检测到偏移或符合针对数据的其他条件，则可以触发警报和事件。 有关详细信息，请参阅[我们的文档](https://aka.ms/datadrift)。
-  + 在 Azure 机器学习中宣布两个新版本（也称为 SKU）。 在此版本中，现在可以创建“基本”或“企业”Azure 机器学习工作区。 所有现有工作区默认为“基本”版本，随时可以转到 Azure 门户或工作室来升级工作区。 可以从 Azure 门户创建“基本”或“企业”工作区。 有关详细信息，请阅读[我们的文档](/machine-learning/service/how-to-manage-workspace)。 在 SDK 中，可以使用工作区对象的“sku”属性确定工作区的版本。
+  + 在 Azure 机器学习中宣布两个新版本（也称为 SKU）。 在此版本中，现在可以创建“基本”或“企业”Azure 机器学习工作区。 所有现有工作区默认为“基本”版本，随时可以转到 Azure 门户或工作室来升级工作区。 可以从 Azure 门户创建“基本”或“企业”工作区。 有关详细信息，请阅读[我们的文档](/machine-learning/how-to-manage-workspace)。 在 SDK 中，可以使用工作区对象的“sku”属性确定工作区的版本。
   + 我们还增强了 Azure 机器学习计算 - 现在，可以在 Azure Monitor 中查看群集的指标（例如节点总数、正在运行的节点、总核心配额），并可以查看用于调试的诊断日志。 此外，还可以查看群集上当前正在运行或已排队的运行，以及群集中各个节点的 IP 等详细信息。 可以在门户中查看这些信息，或者使用 SDK 或 CLI 中的相应函数来查看。
 
   + **预览功能**
@@ -1003,7 +1087,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
   + 自动化机器学习的新功能：
     + 用于预测的 STL 特征化器
     + 为功能扫描启用 K 平均聚集
-  + AmlCompute 配额审批速度更快！ 我们现已自动化在阈值范围内审批配额请求的过程。 有关配额工作原理的详细信息，请参阅[如何管理配额](/machine-learning/service/how-to-manage-quotas)。
+  + AmlCompute 配额审批速度更快！ 我们现已自动化在阈值范围内审批配额请求的过程。 有关配额工作原理的详细信息，请参阅[如何管理配额](/machine-learning/how-to-manage-quotas)。
 
 + **预览功能**
     + 通过 azureml-mlflow 包与 [MLflow](https://mlflow.org) 1.0.0 跟踪相集成（[示例笔记本](https://aka.ms/azureml-mlflow-examples)）。
@@ -1460,7 +1544,7 @@ Azure 机器学习现已推出正式版。
 + ML 管道
   + 全新的和更新的笔记本，适用于管道、批量范围确定和样式传输示例的入门： https://aka.ms/aml-pipeline-notebooks
   + 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)
-  + 了解如何[使用管道运行批量预测](how-to-run-batch-predictions.md)
+  + 了解如何[使用管道运行批量预测](how-to-use-parallel-run-step.md)
 + Azure 机器学习计算目标
   + [示例笔记本](https://aka.ms/aml-notebooks)现已更新，可以使用新的托管计算。
   + [了解此计算](how-to-set-up-training-targets.md#amlcompute)

@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: jordane
+ms.author: v-yiso
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+origin.date: 12/27/2019
+ms.date: 03/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 4e35878927712b99db325806953f8c011f1f68a1
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 718455f119790dd7c9e832eb2bfd420bdd3d4bb7
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599403"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155064"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,9 +37,9 @@ ms.locfileid: "75599403"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-- 模型。 如果没有已训练的模型，则可以使用](https://aka.ms/azml-deploy-cloud)此教程[中提供的模型和依赖项文件。
+- 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 ## <a name="connect-to-your-workspace"></a>连接到工作区
 
@@ -59,7 +60,7 @@ ms.locfileid: "75599403"
 
 + **使用 VS Code**
 
-   使用 VS Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 VS Code 扩展文档中的[部署和管理模型](how-to-vscode-tools.md#deploy-and-manage-models)。
+   使用 VS Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 VS Code 扩展文档中的[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
 ## <a id="registermodel"></a> 注册模型
 
@@ -79,7 +80,7 @@ ms.locfileid: "75599403"
 
 + **使用 SDK**
 
-  使用 SDK 训练模型时，可以接收 [Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) 对象或 [AutoMLRun](https://docs.microsoft.com/azure/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 对象，具体取决于模型的训练方式。 每个对象都可用于注册通过实验运行创建的模型。
+  使用 SDK 训练模型时，可以接收 [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) 对象或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 对象，具体取决于模型的训练方式。 每个对象都可用于注册通过实验运行创建的模型。
 
   + 通过 `azureml.core.Run` 对象注册模型：
  
@@ -88,7 +89,7 @@ ms.locfileid: "75599403"
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅 [Run.register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) 文档。
+    `model_path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅 [Run.register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 文档。
 
   + 通过 `azureml.train.automl.run.AutoMLRun` 对象注册模型：
 
@@ -101,7 +102,7 @@ ms.locfileid: "75599403"
 
     在此示例中，未指定 `metric` 和 `iteration` 参数，因此将注册具有最佳主要指标的迭代。 不会使用模型名称，而是使用从运行返回的 `model_id` 值。
 
-    有关详细信息，请参阅 [AutoMLRun.register_model]/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 文档。
+    有关详细信息，请参阅 [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 文档。
 
 + **使用 CLI**
 
@@ -115,7 +116,7 @@ ms.locfileid: "75599403"
 
 + **使用 VS Code**
 
-  通过使用 [VS Code](how-to-vscode-tools.md#deploy-and-manage-models) 扩展，可使用任何模型文件或文件夹注册模型。
+  通过使用 [VS Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) 扩展，可使用任何模型文件或文件夹注册模型。
 
 ### <a name="register-a-model-from-a-local-file"></a>通过本地文件注册模型
 
@@ -165,22 +166,29 @@ ms.locfileid: "75599403"
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
-## <a name="prepare-to-deploy"></a>准备部署
+## <a name="single-versus-multi-model-endpoints"></a>单模型与多模型终结点
+Azure ML 支持在单个终结点后部署单个或多个模型。
 
-要部署模型，需备齐以下项：
+多模型终结点使用共享容器来承载多个模型。 这有助于降低开销成本，提高利用率，并使你能够将各个模块链接为集成。 你在部署脚本中指定的模型将装载到服务容器的磁盘上并在其上可用 - 可以根据需要将它们加载到内存中，并根据在评分时请求的特定模型进行评分。
 
-* **入口脚本**。 此脚本接受请求、使用模型为请求评分并返回结果。
+有关展示了如何在单个容器化终结点后使用多个模型的 E2E 示例，请参阅[此示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
+
+## <a name="prepare-deployment-artifacts"></a>准备部署项目
+
+若要部署模型，需要具有以下项：
+
+* **入口脚本和源代码依赖项**。 此脚本接受请求、使用模型为请求评分并返回结果。
 
     > [!IMPORTANT]
     > * 入口脚本特定于你的模型。 它必须能够识别传入请求数据的格式、模型所需数据的格式以及返回给客户端的数据的格式。
     >
     >   如果请求数据的格式对模型不可用，则该脚本可以将其转换为可接受的格式。 在将响应返回给客户端之前，它还可以对响应进行转换。
     >
-    > * Web 服务或 IoT Edge 部署不会通过 Azure 机器学习 SDK 访问数据存储或数据集。 如果部署的模型需要访问存储在部署外的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
+    > * Web 服务和 IoT Edge 部署无法访问工作区数据存储或数据集。 如果部署的服务需要访问存储在部署外的数据，例如 Azure 存储帐户中的数据，则必须使用相关的 SDK 开发自定义代码解决方案。 例如，[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)。
     >
-    >   可能适用于该方案的另一种方法是[批量预测](how-to-run-batch-predictions.md)，它在评分期间提供对数据存储的访问。
+    >   可能适用于该方案的另一种方法是[批量预测](how-to-use-parallel-run-step.md)，它在评分期间提供对数据存储的访问。
 
-* 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包  。
+* **推理环境**。 其中包含运行模型所需的已安装包依赖项的基本映像。
 
 * 托管已部署模型的计算目标的部署配置  。 此配置描述运行模型所需的内存和 CPU 要求等因素。
 
@@ -213,17 +221,23 @@ AZUREML_MODEL_DIR 是在服务部署过程中创建的环境变量。 可以使�
 | 单个模型 | 包含模型的文件夹的路径。 |
 | 多个模型 | 包含所有模型的文件夹的路径。 各个模型按名称和版本放置在此文件夹中 (`$MODEL_NAME/$VERSION`) |
 
-若要获取某个模型中文件的路径，请将环境变量与要查找的文件名组合在一起。
-在注册和部署过程中会保留模型文件的文件名。 
+在模型注册和部署过程中，会将模型放置在 AZUREML_MODEL_DIR 路径中，并保留它们的原始文件名。
 
-**单个模型示例**
+若要在入口脚本中获取某个模型文件的路径，请将此环境变量与要查找的文件路径组合在一起。
+
+**单模型示例**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
-**多个模型示例**
+**多模型示例**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -383,7 +397,7 @@ def run(data):
 
 <a id="binary"></a>
 
-#### <a name="binary-data"></a>二进制数据
+#### <a name="binary-data"></a>Binary data
 
 如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 若要接受原始数据，请在入口脚本中使用 `AMLRequest` 类，并向 `run()` 函数添加 `@rawhttp` 修饰器。
 
@@ -472,7 +486,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2.定义 InferenceConfig
+### <a name="2-define-your-inference-environment"></a>2.定义推理环境
 
 推理配置描述如何配置模型以便进行预测。 此配置不属于入口脚本。 它引用入口脚本，并用于查找部署所需的所有资源。 此配置稍后在部署模型时使用。
 
@@ -510,7 +524,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 此实例中的配置指定以下设置：
 
 * 该模型需要使用 Python。
-* 入口脚本，用于处理发送到部署的服务的 Web 请求[](#script)。
+* [入口脚本](#script)，用于处理发送到部署的服务的 Web 请求。
 * 用于描述推理所需的 Python 包的 Conda 文件。
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
@@ -535,41 +549,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-#### <a name="profiling"></a>分析
-
-在将模型部署为服务之前，可能需要对其进行分析，以确定最佳的 CPU 和内存要求。 可以使用 SDK 或 CLI 来分析模型。 以下示例演示如何使用 SDK 分析模型。
-
-> [!IMPORTANT]
-> 在进行分析时，你提供的推理配置无法引用 Azure 机器学习环境。 而应改为使用 `InferenceConfig` 对象的 `conda_file` 参数定义软件依赖项。
-
-```python
-import json
-test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-此代码显示类似于以下输出的结果：
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-模型分析结果将作为 `Run` 对象发出。
-
-若要详细了解如何在 CLI 中使用分析功能，请参阅 [az ml 模型分析](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
-
-有关详细信息，请参阅以下文档：
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [推理配置文件架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)
-
 ## <a name="deploy-to-target"></a>部署到目标
 
 部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 AKS 的过程略有不同，因为必须提供对 AKS 群集的引用。
@@ -583,7 +562,7 @@ print(profiling_results)
 若要在本地部署模型，需要在本地计算机上安装 Docker。
 
 #### <a name="using-the-sdk"></a>使用 SDK
-zzs
+
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -607,6 +586,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 有关详细信息，请参阅 [az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)文档。
 
+### <a name="understanding-service-state"></a>了解服务状态
+
+在模型部署期间，当模型完全部署时，你可能会看到服务状态发生更改。
+
+下表描述了各种服务状态：
+
+| Webservice 状态 | 说明 | 最终状态？
+| ----- | ----- | ----- |
+| 正在转换 | 此服务正在进行部署。 | 否 |
+| 不正常 | 此服务已部署，但当前无法访问。  | 否 |
+| 不可安排 | 由于缺少资源，此时无法部署此服务。 | 否 |
+| 已失败 | 由于出现错误或崩溃，服务未能部署。 | 是 |
+| 正常 | 服务正常，终结点可用。 | 是 |
+
 ### <a id="notebookvm"></a> 计算实例 Web 服务（开发/测试）
 
 请参阅[将模型部署到 Azure 机器学习计算实例](how-to-deploy-local-container-notebook-vm.md)。
@@ -618,6 +611,9 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 ### <a id="aks"></a> Azure Kubernetes 服务（开发/测试和生产）
 
 请参阅[部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
+
+### <a name="ab-testing-controlled-rollout"></a>A/B 测试（受控推出）
+有关详细信息，请参阅 [ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 
@@ -1077,7 +1073,7 @@ docker kill mycontainer
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
-* [排除部署故障](how-to-troubleshoot-deployment.md)
+* [部署疑难解答](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

@@ -1,5 +1,6 @@
 ---
-title: 调用 Web API 的移动应用 - 应用的代码配置 | Microsoft 标识平台
+title: 注册调用 Web API 的移动应用 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的移动应用（应用的代码配置）
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,74 +12,86 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 08/26/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12414933b22b012648b4c9c75900c772d3512268
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: e9970e85efd55ab320803c698ed3d206d2ef75c8
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134263"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653162"
 ---
-# <a name="mobile-app-that-calls-web-apis---app-registration"></a>调用 Web API 的移动应用 - 应用注册
+# <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
 
-本文包含用于创建移动应用程序的应用注册说明。
+可以借助本文中的说明注册你正在创建的移动应用程序。
 
-## <a name="supported-accounts-types"></a>支持的帐户类型
+## <a name="supported-account-types"></a>支持的帐户类型
 
-在移动应用程序中支持的帐户类型取决于你想要启用的体验，以及要使用的流。
+移动应用程序支持的帐户类型取决于要启用的体验，以及要使用的流。
 
 ### <a name="audience-for-interactive-token-acquisition"></a>交互式令牌获取的受众
 
-大多数移动应用程序使用交互式身份验证。 如果情况是这样，则可通过任何[帐户类型](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)登录用户
+大多数移动应用程序使用交互式身份验证。 如果应用使用这种形式的身份验证，则你可以从任何[帐户类型](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)将用户登录。
 
-### <a name="audience-for-integrated-authentication-usernamepassword-and-b2c"></a>集成身份验证、用户名/密码以及 B2C 的受众
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Windows 集成身份验证、用户名-密码以及 B2C 的受众
 
-- 若要使用集成 Windows 身份验证（可能在 UWP 应用中）或用户名/密码，应用程序需在你自己的租户（LOB 开发人员）或 Azure Active Directory 组织（ISV 方案）中登录用户。
-- 如果使用传入 B2C 颁发机构和策略的社交标识来登录用户，则只能使用交互式和用户-密码身份验证。 用户名-密码目前仅在 Xamarin.iOS、Xamarin.Android 和 UWP 上受支持。
+如果你有通用 Windows 平台 (UWP) 应用，则可以使用 Windows 集成身份验证将用户登录。 若要使用 Windows 集成身份验证或用户名-密码身份验证，应用程序需在你自己的业务线 (LOB) 开发人员租户中将用户登录。 在独立软件供应商 (ISV) 方案中，应用程序可以在 Azure Active Directory 组织中将用户登录。 
 
-如需进行全面的了解，请参阅[方案和受支持的身份验证流](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)和[方案和受支持的平台和语言](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
+还可以使用传递 B2C 颁发机构和策略的社交标识将用户登录。 若要使用此方法，只能使用交互式身份验证和用户名-密码身份验证。 用户名-密码身份验证目前仅在 Xamarin.iOS、Xamarin.Android 和 UWP 上受支持。
+
+有关详细信息，请参阅[方案和支持的身份验证流](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)以及[方案和支持的平台与语言](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
 
 ## <a name="platform-configuration-and-redirect-uris"></a>平台配置和重定向 URI  
 
 ### <a name="interactive-authentication"></a>交互式身份验证
 
-使用交互式身份验证构建移动应用时，最关键的注册步骤是重定向 URI。 可以通过[“身份验证”边栏选项卡中的平台配置](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)对此进行设置。
+构建使用交互式身份验证的移动应用时，最关键的注册步骤是重定向 URI。 可以通过[“身份验证”边栏选项卡上的平台配置](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)来设置交互式身份验证。 
 
-请注意，在应用注册门户中有一个预览体验，可以让你计算 iOS 和 Android 应用程序的中转回复 URI：
+应用可以在此体验中通过 Microsoft Authenticator（以及 Android 上的 Intune 公司门户）实现单一登录 (SSO)。 它还支持设备管理策略。
 
-1. 在应用注册中选择“身份验证”，  然后选择“尝试新体验”  
-   ![图像](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+应用注册门户提供一个预览版体验来帮助你计算 iOS 和 Android 应用程序的中介回复 URI：
 
-2. 选择“添加平台”  
-   ![图像](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+1. 在应用注册门户中选择“身份验证” > “尝试新体验”。  
 
-3. 如果支持平台列表，请选择“iOS”  
-   ![图像](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+   ![“身份验证”边栏选项卡，可在其中选择新体验](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-4. 依请求输入捆绑 ID，然后按“注册”  
-   ![图像](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+2. 选择“添加平台”。 
 
-5. 此时会为你计算重定向 URI。
-   ![图像](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![添加平台](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-如果首选以手动方式配置重定向 URI，则可通过应用程序清单来这样做。 建议的格式如下：
+3. 如果支持平台列表，请选择“iOS”。 
 
-- ***iOS***：`msauth.<BUNDLE_ID>://auth`（例如，“msauth.com.yourcompany.appName://auth”）
-- ***Android***：`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - Android 签名哈希可以通过 KeyTool 命令使用释放键或调试键来生成。
+   ![选择移动应用程序](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-### <a name="username-password"></a>用户名/密码
+4. 输入捆绑 ID，然后选择“注册”。 
 
-如果应用仅使用用户名/密码，则不需为应用程序注册重定向 URI。 事实上，该流会往返 Microsoft 标识平台 v2.0 终结点，因此不会在任何特定 URI 上回调你的应用程序。 但是，你需要表达应用程序是公共客户端应用程序这一涵义。 实现此配置的方法是：转到应用程序的“身份验证”部分，  然后在“高级设置”子部分针对“将应用程序视为公共客户端”问题（位于“默认客户端类型”段落）选择“是”    
+   ![输入捆绑 ID](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+
+完成这些步骤后，系统将会计算重定向 URI，如下图所示。
+
+![生成的重定向 URI](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+
+如果你偏向于手动配置重定向 URI，可以通过应用程序清单进行配置。 下面是清单的建议格式：
+
+- **iOS**：`msauth.<BUNDLE_ID>://auth` 
+  - 例如，输入 `msauth.com.yourcompany.appName://auth`
+- **Android**：`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - 可以通过 KeyTool 命令使用发布密钥或调试密钥来生成 Android 签名哈希。
+
+### <a name="username-password-authentication"></a>用户名-密码身份验证
+
+如果应用仅使用用户名-密码身份验证，则无需为应用程序注册重定向 URI。 此流将往返访问 Microsoft 标识平台版本 2.0 终结点。 不会在任何特定 URI 上调用你的应用程序。 
+
+但是，需要将应用程序标识为公共客户端应用程序。 为此，请从应用程序的“身份验证”部分开始。  在“高级设置”子部分的“默认客户端类型”段落中，对于“将应用程序视为公共客户端”问题，请选择“是”。    
 
 ## <a name="api-permissions"></a>API 权限
 
-移动应用程序代表已登录用户调用 API。 应用需要请求委托的权限（也称为作用域）。 根据所需体验，这可以通过 Azure 门户静态完成，也可以在运行时动态完成。 静态注册权限方便管理员批准应用，值得推荐。
+移动应用程序代表已登录用户调用 API。 应用需要请求委托的权限。 这些权限也称为范围。 根据所需的体验，可以通过 Azure 门户以静态方式请求委托的权限。 或者，可以在运行时动态请求这些权限。 
+
+以静态方式注册权限可让管理员轻松审批应用。 建议使用静态注册。
 
 ## <a name="next-steps"></a>后续步骤
 

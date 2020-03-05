@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27ea0b2fba6e1202bcbdcba4b04fbe203d6fcad6
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 449cf9f122d5651c6f3d0bbb43ae2533860cd09d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598405"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155030"
 ---
 # <a name="remove-duplicate-rows-module"></a>“删除重复行”模块
 
@@ -26,11 +27,11 @@ ms.locfileid: "75598405"
 
 | PatientID | Initials| 性别|Age|入院时间|
 |----|----|----|----|----|
-|1|F.M.| M| 53| 1 月|
-|2| F.A.M.| M| 53| 1 月|
-|3| F.A.M.| M| 24| 1 月|
-|3| F.M.| M| 24| Feb|
-|4| F.M.| M| 23| Feb|
+|1|F.M.| M| 53| 一月|
+|2| F.A.M.| M| 53| 一月|
+|3| F.A.M.| M| 24| 一月|
+|3| F.M.| M| 24| 二月|
+|4| F.M.| M| 23| 二月|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| NaN| |
@@ -42,7 +43,7 @@ ms.locfileid: "75598405"
 
 + 或者，可以选择允许 ID 字段中存在重复项，而使用一些其他的文件组合来查找唯一记录，如名字、姓氏、年龄和性别。  
 
-若要设置用于判断行是否重复的条件，请将一列或一组列指定为键** **。 仅当两行的所有键列中的值相等时，才会将两行视为重复  。 如果任何行缺少键值，则不会将这些行视为重复行  。 例如，如果在上表中将“性别”和“年龄”设置为“键”，则第 6 行和第 7 行不是重复行，因为其缺少“年龄”值。
+若要设置用于判断行是否重复的条件，请将一列或一组列指定为键  。 仅当两行的所有键列中的值相等时，才会将两行视为重复  。 如果任何行缺少键值，则不会将这些行视为重复行  。 例如，如果在上表中将“性别”和“年龄”设置为“键”，则第 6 行和第 7 行不是重复行，因为其缺少“年龄”值。
 
 运行该模块时，它将创建一个候选数据集，并返回一组在指定列集中没有重复项的行。
 
@@ -57,7 +58,7 @@ ms.locfileid: "75598405"
 
 3. 在“属性”窗格的“键列选择筛选器表达式”下，单击“启动列选择器”，选择用于标识重复项的列    。
 
-    在此上下文中，“键”并不表示唯一标识符  。 使用“列选择器”选择的所有列都指定为“键列”** **。 所有未选定的列都被视为非键列。 所选择的作为键的列的组合确定了记录的唯一性。 （可将其想象成使用多个等值连接的 SQL 语句。）
+    在此上下文中，“键”并不表示唯一标识符  。 使用“列选择器”选择的所有列都指定为“键列”  。 所有未选定的列都被视为非键列。 所选择的作为键的列的组合确定了记录的唯一性。 （可将其想象成使用多个等值连接的 SQL 语句。）
 
     示例:
 
@@ -71,7 +72,7 @@ ms.locfileid: "75598405"
 
 5. 运行管道。
 
-6. 若要查看结果，请右键单击该模块，选择“结果数据集”，然后单击“可视化”   。 
+6. 若要查看结果，请右键单击模块，然后选择“可视化”  。 
 
 > [!TIP]
 > 如果结果难以理解，或者想要排除某些列，则可以使用[选择数据集中的列](./select-columns-in-dataset.md)模块来删除列。
