@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: conceptual
 origin.date: 06/28/2017
 ms.author: dobett
-ms.date: 09/30/2019
-ms.openlocfilehash: 9e2b360b40f4eda632df3cf4911ed3e03017a437
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.date: 03/09/2020
+ms.openlocfilehash: bc593a8e16e9d3b979276e2960e5954b71b1ef3f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155944"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155063"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中心将文件从设备上传到云 (Java)
 
@@ -32,7 +32,7 @@ ms.locfileid: "71155944"
 * 以高频率采样的振动数据
 * 某种形式的预处理数据。
 
-通常使用 [Hadoop](/hdinsight/) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](/hdinsight/) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 在本教程的最后，会运行两个 Java 控制台应用：
 
@@ -49,6 +49,8 @@ ms.locfileid: "71155944"
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户](http://www.azure.cn/pricing/1rmb-trial/)。）
+
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

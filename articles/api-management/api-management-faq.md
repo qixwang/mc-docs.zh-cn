@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 11/19/2017
 ms.author: v-yiso
 ms.date: 10/21/2019
-ms.openlocfilehash: 008af727398d00aa24bdabc1eb4ec99daf4e04b0
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 4efa3a0b9c8c02dba6f55f7c0b46b698e282b842
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292399"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155089"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题解答
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -65,7 +65,7 @@ ms.locfileid: "72292399"
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
-* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，网关的 IP 地址保持不变，但有几个[注意事项](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
+* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，网关的 IP 地址保持不变，但有几个注意事项。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
@@ -100,7 +100,7 @@ ms.locfileid: "72292399"
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保你处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](/api-management/api-management-policies)中的策略的用法部分。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
-若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 方法：
+若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项可用。 方法：
 
 * 在同一租户上托管不同的 API。
 * 在不同租户上托管相同的 API。

@@ -2,15 +2,15 @@
 title: 有关 Azure Site Recovery 服务的一般问题
 description: 本文讨论有关 Azure Site Recovery 常见的一般问题。
 ms.topic: conceptual
-origin.date: 11/14/2019
-ms.date: 01/13/2020
+origin.date: 01/24/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9ed1eda27e73ca9246516cca1251aaaf78418797
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.openlocfilehash: 510ecc4ec261663ceb400a8adfa9b83a676d56b1
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776719"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611266"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -98,6 +98,9 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正�
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery 是否将复制数据加密？
 在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](/storage/storage-service-encryption)。
 
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>如何在所有本地 Azure Site Recovery 组件上强制实施 TLS 1.2？
+复制项上安装的移动代理仅通过 TLS 1.2 与进程服务器通信。 但是，从配置服务器到 Azure 以及从进程服务器到 Azure 的通信可以通过 TLS 1.1 或 1.0 进行。 请按照[指南](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)，在你设置的所有配置服务器和进程服务器上强制实施 TLS 1.2。
+
 ## <a name="disaster-recovery"></a>灾难恢复
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery 可以保护哪些计算机？
@@ -134,7 +137,7 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量将进入 Azure 存储的公共终结点。 因此，只能使用 ExpressRoute（Azure 对等互连或现有的公共对等互连）通过公共 Internet 进行复制，VPN 不适用。
+复制到 Azure 时，复制流量将进入 Azure 存储的公共终结点。 因此，只能通过公共 Internet 或 ExpressRoute（Azure 对等互连或现有的公共对等互连）进行复制。
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>是否可以使用 Riverbed SteelHeads 进行复制？
 

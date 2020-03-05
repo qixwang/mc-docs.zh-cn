@@ -1,35 +1,33 @@
 ---
-title: 使用 Node.js 向/从 Azure 事件中心发送/接收事件（最新版）
-description: 本文演练如何创建一个可使用最新 azure/event-hubs 版本 5 包向/从 Azure 事件中心发送/接收事件的 Node.js 应用程序。
+title: 使用 JavaScript 向/从 Azure 事件中心发送/接收事件（最新版）
+description: 本文演练如何创建一个可使用最新 azure/event-hubs 版本 5 包向/从 Azure 事件中心发送/接收事件的 JavaScript 应用程序。
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/30/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2a47aa0bbdd6d80740c03fba20a0fcd87b3f0be3
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 82f0300d2687e62daae854541d929968d6f21cfd
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067785"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155110"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-nodejs--azureevent-hubs-version-5"></a>使用 Node.js（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
-
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。 有关详细信息，请参阅[事件中心概述](event-hubs-about.md)和[事件中心的功能](event-hubs-features.md)。
-
-本快速入门介绍如何创建可向/从事件中心发送/接收事件的 Node.js 应用程序。
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
+本快速入门介绍如何使用 **azure/event-hubs 版本 5** JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
 
 > [!IMPORTANT]
-> 本快速入门使用 Azure 事件中心 JavaScript SDK 版本 5。 有关使用 JavaScript SDK 版本 2 的快速入门，请参阅[此文](event-hubs-node-get-started-send.md)。 
+> 本快速入门使用最新的 azure/event-hubs 版本 5 包。 有关使用旧的 azure/event-hubs 版本 2 包的快速入门，请参阅[使用 azure/event-hubs 版本 2 发送和接收事件](event-hubs-node-get-started-send.md)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
 若要完成本快速入门，需要具备以下先决条件：
 
-- Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
+- **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有 Azure 帐户，可以注册 [1 元试用版](https://wd.azure.cn/pricing/1rmb-trial/)或[创建帐户](https://wd.azure.cn/pricing/pia/)。
 - Node.js 版本 8.x 或更高版本。 下载最新的[长期支持 (LTS) 版本](https://nodejs.org)。  
 - Visual Studio Code（推荐）或任何其他集成开发环境 (IDE)。  
 - 有效的事件中心命名空间和事件中心。 若要创建它们，请执行以下步骤： 
@@ -38,6 +36,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
    1. 若要创建命名空间和事件中心，请按照以下文章中的说明操作：[快速入门：使用 Azure 门户创建事件中心](event-hubs-create.md)。
    1. 按照本快速入门中的说明继续操作。 
    1. 若要获取事件中心命名空间的连接字符串，请按照[获取连接字符串 ](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)中的说明操作。 请记下该连接字符串，以便稍后在本快速入门中使用。
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
 
 ### <a name="install-the-npm-package"></a>安装 npm 包
 若要安装[适用于事件中心的 Node 包管理器 (npm) 包](https://www.npmjs.com/package/@azure/event-hubs)，请打开路径中包含 *npm* 的命令提示符，将目录切换到用于保存示例的文件夹，然后运行以下命令：
@@ -60,7 +59,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>发送事件
 
-在本部分，你将创建一个向事件中心发送事件的 Node.js 应用程序。
+在本部分中，你将创建一个可向事件中心发送事件的 JavaScript 应用程序。
 
 1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。
 1. 创建名为 *send.js* 的文件，然后将以下代码粘贴到其中：
@@ -110,7 +109,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 
 ## <a name="receive-events"></a>接收事件
-在本部分，你将在 Node.js 应用程序中使用 Azure Blob 存储检查点存储从事件中心接收事件。 该应用程序将在 Azure 存储 Blob 中定期针对收到的消息执行元数据检查点。 使用此方式可以很容易地在以后的某个时间从退出的位置继续接收消息。
+在本部分中，你将在 JavaScript 应用程序中使用 Azure Blob 存储检查点存储从事件中心接收事件。 该应用程序将在 Azure 存储 Blob 中定期针对收到的消息执行元数据检查点。 使用此方式可以很容易地在以后的某个时间从退出的位置继续接收消息。
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>创建 Azure 存储帐户和 Blob 容器
 若要创建 Azure 存储帐户并在其中创建 Blob 容器，请执行以下操作：

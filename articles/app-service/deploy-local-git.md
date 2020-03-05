@@ -4,16 +4,16 @@ description: 了解如何实现从本地 Git 部署到 Azure 应用服务。 从
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 origin.date: 06/18/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 19bd1e25547ff644c1ce32e23646a2d52bae991b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: ad76abba142d2d69e807bf627579356c7f404f91
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600493"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566639"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -35,6 +35,7 @@ ms.locfileid: "75600493"
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 ## <a name="deploy-with-kudu-build-server"></a>使用 Kudu 生成服务器进行部署
 
@@ -51,6 +52,9 @@ ms.locfileid: "75600493"
 ```azurecli
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> 如果使用的是 Linux 应用服务计划，则需要添加此参数：--runtime python|3.7
+
 
 或者，若要创建启用 Git 的新应用，请在 Azure CLI 中结合 `--deployment-local-git` 参数运行 [`az webapp create`](/cli/webapp?view=azure-cli-latest#az-webapp-create)。 请将 \<app-name>、\<group-name> 和 \<plan-name> 替换为新 Git 应用、其 Azure 资源组及其 Azure 应用服务计划的名称。
 
@@ -86,6 +90,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    
 1. 在 Azure 门户中浏览到你的应用以检查内容是否已部署。
 
+<!-- ## Deploy with Azure Pipelines builds -->
 
 ## <a name="troubleshoot-deployment"></a>排查部署问题
 
@@ -98,7 +103,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|在运行 `git push` 期间未指定分支，或者未在 `.gitconfig` 中设置 `push.default` 值。|再次运行 `git push`，并指定主分支：`git push azure master`。|
 |`src refspec [branchname] does not match any.`|你已尝试推送到“azure”远程实例上除主节点以外的分支。|再次运行 `git push`，并指定主分支：`git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果尝试通过 HTTPS 推送大型 Git 存储库，则可能出现此错误。|在本地计算机上更改 Git 配置，以增大 `postBuffer`。 例如：`git config --global http.postBuffer 524288000`。|
-|`Error - Changes committed to remote repository but your web app not updated.`|你已使用一个指定了其他所需模块的 _package.json_ 文件部署了 Node.js 应用。|检查发生此错误之前出现的 `npm ERR!` 错误消息，以了解有关失败的更多上下文。 下面是此错误的已知原因，以及相应的 `npm ERR!` 消息：<br /><br />**package.json 文件格式不当**：`npm ERR! Couldn't read dependencies.`<br /><br />**本机模块没有适用于 Windows 的二进制分发版**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\`|
+|`Error - Changes committed to remote repository but your web app not updated.`|你已使用一个指定了其他所需模块的 _package.json_ 文件部署了 Node.js 应用。|检查发生此错误之前出现的 `npm ERR!` 错误消息，以了解有关失败的更多上下文。 下面是此错误的已知原因，以及相应的 `npm ERR!` 消息：<br /><br />**package.json 文件格式不当**：`npm ERR! Couldn't read dependencies.`<br /><br />**本机模块没有适用于 Windows 的二进制分发版**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>其他资源
 

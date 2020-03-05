@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df283d07403b8132580fa389e22c73d87cfe9074
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: b9e553927efb716381c9a480bbe9a52c6338dd57
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067716"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653180"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 标识平台代码示例（v2.0 终结点）
 
@@ -34,7 +34,7 @@ ms.locfileid: "77067716"
 本文简要介绍了 Microsoft 标识平台终结点示例并提供了指向这些示例的链接。 这些示例将展示其工作原理，并提供可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 代码中的注释可帮助你理解关键部分。
 
 > [!NOTE]
-> 如果对 v1.0 示例感兴趣，请参阅 [Azure AD 代码示例（v1.0 终结点）](sample-v1-code.md)。
+> 如果对 v1.0 示例感兴趣，请参阅 [Azure AD 代码示例（v1.0 终结点）](../azuread-dev/sample-v1-code.md)。
 
 若要了解每种示例类型的基本方案，请参阅 [Microsoft 标识平台终结点的应用类型](v2-app-types.md)。
 
@@ -75,6 +75,7 @@ ms.locfileid: "77067716"
 | 桌面（控制台）   | ![此图显示了 .NET/C#（桌面）徽标](./media/sample-v2-code/logo_NET.png) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
 | 桌面（控制台）   | ![此图显示了 Java 徽标](./media/sample-v2-code/logo_java.png) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | 桌面（控制台）   | ![此图显示了 .NET/C#（桌面）徽标](./media/sample-v2-code/logo_NETcore.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
+| 使用 WAM 的桌面（控制台）  | ![此图显示了 .NET/C#（桌面）徽标](./media/sample-v2-code/logo_NETcore.png) | [与 WAM 交互](msal-authentication-flows.md#interactive) |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
 | 桌面（控制台）   | ![此图显示了 Java 徽标](./media/sample-v2-code/logo_java.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | 桌面（控制台）   | ![此图显示了 Python 徽标](./media/sample-v2-code/logo_python.png) | [用户名/密码](msal-authentication-flows.md#usernamepassword) |[ms-identity-python-desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
 | 移动（Android、iOS、UWP）   | ![此图显示了 .NET/C# (Xamarin) 徽标](./media/sample-v2-code/logo_xamarin.png) | [交互](msal-authentication-flows.md#interactive) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
@@ -131,8 +132,8 @@ ms.locfileid: "77067716"
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Active Directory (v1.0) 开发人员指南](v1-overview.md)
+- [Azure Active Directory (v1.0) 开发人员指南](../azuread-dev/v1-overview.md)
 - [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 - [Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

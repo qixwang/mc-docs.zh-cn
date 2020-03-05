@@ -1,20 +1,18 @@
 ---
-title: 在 Azure Site Recovery 中配置 Azure VM 复制 | Azure
-description: 本文介绍如何使用 Site Recovery 配置从一个 Azure 区域到另一个区域的 Azure VM 复制。
-services: site-recovery
+title: 在 Azure Site Recovery 中配置 Azure VM 复制
+description: 了解如何使用 Site Recovery 为 Azure VM 配置到其他区域的复制。
 author: rockboyfor
 manager: digimobile
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/29/2018
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 962bc9365f4a94884e8883df3c279b7e2cd9631e
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.openlocfilehash: 92b27ae70d990990682199ae4550253876cd8cbd
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519406"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611231"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -128,5 +126,4 @@ ms.locfileid: "72519406"
 
 [详细了解](site-recovery-test-failover-to-azure.md)如何运行测试故障转移。
 
-<!-- Update_Description: update meta properties, wording update -->
-
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd0b9e8841e1d5c44f0c782a6f76f6b016fd86c
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 1ae1b1514b7e7dce8716a97a3dcdce9b70324d62
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859341"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653332"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
@@ -32,15 +32,16 @@ ms.locfileid: "75859341"
 
 ### <a name="users-and-groups"></a>用户和组
 
-用户和组用于分配策略将包括或排除的对象。 该分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
+[用户和组](concept-conditional-access-users-groups.md)指定该策略将包含或排除的对象。 该分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
 
 ### <a name="cloud-apps-or-actions"></a>云应用或操作
 
-云应用或操作可以包括或排除将服从策略的云应用程序或用户操作。
+[云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除将受该策略约束的云应用程序或用户操作。
 
 ### <a name="conditions"></a>Conditions
 
-一个策略可以包含多个条件。
+一个策略可以包含多个[条件](concept-conditional-access-conditions.md)。
+
 
 #### <a name="device-platforms"></a>设备平台
 
@@ -68,6 +69,8 @@ ms.locfileid: "75859341"
 
 ### <a name="grant"></a>授予
 
+[授予](concept-conditional-access-grant.md)为管理员提供了一种策略强制实施方法，使他们可以阻止访问或授予访问权限。
+
 #### <a name="block-access"></a>阻止访问
 
 阻止访问只会阻止指定分配下的访问。 阻止控制的功能十分强大，应对其有一定了解后再使用。
@@ -89,7 +92,7 @@ ms.locfileid: "75859341"
 
 ### <a name="session"></a>会话
 
-会话控制可限制体验 
+[会话控制](concept-conditional-access-session.md)可以限制体验 
 
 - 使用应用所强制实施的限制
    - 目前仅适用于 Exchange Online 和 SharePoint Online。
@@ -117,13 +120,14 @@ ms.locfileid: "75859341"
 
 ![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+[常用条件访问策略](concept-conditional-access-policy-common.md)一文包含一些我们认为对大多数组织有用的策略。
+
 ## <a name="next-steps"></a>后续步骤
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
-
-[常用条件访问策略](concept-conditional-access-policy-common.md)
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
 [Microsoft Cloud App Security 和条件访问](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
+<!-- Update_Description: wording update -->

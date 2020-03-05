@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: jordane
+ms.author: v-yiso
 author: jpe316
-ms.date: 10/11/2019
-ms.openlocfilehash: a11380369017d82b8f6cdaf3621be1b3f734939c
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 10/11/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 4a9ce9bc5743e600d54bca576bbe934810af3906
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599056"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154658"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -39,6 +40,15 @@ ms.locfileid: "75599056"
 对于使用估计器、机器学习管道或脚本运行的运行，将发送此信息。
 
 如果训练文件不在开发环境的 git 存储库中，或者 `git` 命令不可用，则不会跟踪与 git 相关的信息。
+
+> [!TIP]
+> 若要检查 git 命令在开发环境中是否可用，请打开 shell 会话、命令提示符、PowerShell 或其他命令行接口，并键入以下命令：
+>
+> ```
+> git --version
+> ```
+>
+> 如果已安装且在路径中，则会收到类似于 `git version 2.4.1` 的响应。 有关在开发环境中安装 git 的详细信息，请参阅 [Git 网站](https://git-scm.com/)。
 
 ## <a name="view-the-logged-information"></a>查看记录的信息
 

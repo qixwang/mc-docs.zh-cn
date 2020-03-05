@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 249314990dd4f60ae8d491ca71b066559830758b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 03/02/2020
+ms.openlocfilehash: e5a88c2e56da3001ef49228fb8583e71210413a8
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067931"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154401"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
 
@@ -45,6 +45,7 @@ ms.locfileid: "77067931"
 | 备份和还原 | 自动创建[服务器备份](/mysql/concepts-backup#backups)并将其存储在用户配置的本地冗余或异地冗余存储中。 服务将创建完整备份、差异备份和事务日志备份 | 由客户管理 |
 | 监视数据库操作 | 可让客户针对数据库操作[设置警报](/mysql/concepts-monitoring)，并在即将达到阈值时采取措施。 | 由客户管理 |
 | 灾难恢复 | 将自动创建的备份存储在用户配置的[本地冗余存储或异地冗余存储](/mysql/howto-restore-server-portal)中。 备份还可以将服务器还原到某个时间点。 保留期为 7 到 35 天。 还原是使用 Azure 门户完成的。 | 完全由客户管理。 责任包括但不限于计划、测试、存档、存储和保留。 另一个选项是使用 Azure 恢复服务保管库备份 Azure VM 和 VM 上的数据库。 此选项目前为预览版。 |
+| 性能建议 | 根据系统生成的使用日志文件为客户提供[性能建议](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110)。 这些建议有助于优化工作负荷。 | 由客户管理 |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>选择 PaaS 或 IaaS 的业务动机
 

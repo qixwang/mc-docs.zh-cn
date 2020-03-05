@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
 origin.date: 11/27/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85ced847f87f30015464e1352b1e15978cfbb8eb
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 277da42fb8ef3854d26dcd4a18089220ffc34953
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964922"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154410"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL 数据仓库工作负荷组隔离（预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "75964922"
 
 工作负荷隔离意味着资源保留给工作负荷组专用。  实现工作负荷隔离的方式是在 [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) 语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零。  对于需要遵守严格 SLA 的连续执行工作负荷，隔离可确保资源始终可供工作负荷组使用。 
 
-配置工作负荷隔离会隐式定义有保证的并发度。 如果将 MIN_PERCENTAGE_RESOURCE 设置为 30% 并将 REQUEST_MIN_RESOURCE_GRANT_PERCENT 设置为 2%，则保证工作负荷组可以实现 15 的并发度。  假设使用以下方法来确定有保证的并发度：
+配置工作负荷隔离会隐式定义有保证的并发度。 例如，`MIN_PERCENTAGE_RESOURCE` 设置为 30% 且 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 设置为 2% 的工作负荷组可以保证并发度 15。  并发级别是有保证的，因为工作负荷组中始终保留 15-2% 的资源槽（无论如何配置 `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT`）。  如果 `REQUEST_MAX_RESOURCE_GRANT_PERCENT` 大于 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 且 `CAP_PERCENTAGE_RESOURCE` 大于 `MIN_PERCENTAGE_RESOURCE`，则每个请求都会添加其他资源。  如果 `REQUEST_MAX_RESOURCE_GRANT_PERCENT` 相等 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 且 `CAP_PERCENTAGE_RESOURCE` 大于 `MIN_PERCENTAGE_RESOURCE`，则可能发生其他并发。  假设使用以下方法来确定有保证的并发度：
 
 [有保证的并发度] = [`MIN_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
@@ -91,3 +91,4 @@ ms.locfileid: "75964922"
 - [快速入门：配置工作负荷隔离](quickstart-configure-workload-isolation-tsql.md)
 - [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [将资源类转换为工作负荷组](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)
+- [工作负荷管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  

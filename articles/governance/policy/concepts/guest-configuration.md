@@ -4,16 +4,14 @@ description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机�
 author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 12/16/2019
+ms.date: 03/09/2020
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a27e02fedf7c9949bd9da856fa7be9eeaff6976a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2bc994144c0dd2c6c1e7ddc3c3d029dfc2abd144
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335811"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042315"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -96,12 +94,8 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Guest Configuration 扩展网络要求
 
-若要与 Azure 中的 Guest Configuration 资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心拥有出站访问权限。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 Azure Policy Guest Configuration 目前不存在服务标记。
-
-如需 IP 地址列表，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 VM 的区域中的 IP 进行出站访问。
-
-> [!NOTE]
-> Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。 每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
+若要与 Azure 中的 Guest Configuration 资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心拥有出站访问权限。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。
+[服务标记](../../../virtual-network/service-tags-overview.md)“GuestAndHybridManagement”可用于引用来宾配置服务。
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
@@ -129,7 +123,7 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus  属性在“
 
 Azure Policy 中的某个计划提供根据 Microsoft“基线”审核虚拟机中的操作系统设置的功能。 定义“\[预览\]:  审核不匹配 Azure 安全基线设置的 Windows VM”包含一组完整的审核规则，这些规则基于 Active Directory 组策略中的设置。
 
-大多数设置以参数的形式提供。 使用此功能可以自定义要根据策略和组织要求审核的内容，或者将策略映射为行业法规标准等第三方信息。
+大多数设置以参数的形式提供。 使用此功能，可以自定义要审核的内容，以使策略与组织要求保持一致，或将策略映射到第三方信息（例如行业监管标准）。
 
 某些参数支持整数值范围。 例如，可以使用范围运算符设置“最长密码期限”参数，以便为计算机所有者提供灵活性。 可以审核生效的“组策略”设置是否要求用户在 70 天之内，但至少在一天之后更改其密码。 如参数的信息泡泡中所述，若要为此业务策略设置有效的审核值，请将值设置为“1,70”。
 
@@ -191,10 +185,11 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Guest Configuration 示例
 
-以下位置提供了 Policy Guest Configuration 的示例：
+以下位置提供了“策略来宾配置”内置计划的源：
 
-- [示例索引 - Guest Configuration](../samples/index.md#guest-configuration)
-- [GitHub 存储库中的 Azure Policy 示例](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [内置策略定义 - 来宾配置](../samples/built-in-policies.md#guest-configuration)
+- [内置计划 - 来宾配置](../samples/built-in-initiatives.md#guest-configuration)
+- [GitHub 存储库中的 Azure Policy 示例](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
 ## <a name="next-steps"></a>后续步骤
 

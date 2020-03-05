@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 08/22/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 29faf09f0650cccece1c8fd7e3d30bcc434c43c2
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: c06878e34b07a561582a5424f4cc0b573dbe3e30
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330326"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154478"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 
@@ -31,7 +31,7 @@ SAS 令牌既可由服务总线客户端直接生成，也可由某些颁发与�
 > 如果结合使用 Azure Active Directory 访问控制（又称为访问控制服务或 ACS）与服务总线，请注意当前提供给此方法的支持有限，应将应用程序迁移至使用 SAS。 有关详细信息，请参阅[此博客文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)和[此文章](service-bus-migrate-acs-sas.md)。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-服务总线资源的 Azure Active Directory (Azure AD) 集成提供了基于角色的访问控制 (RBAC)，用于对客户端�对资源的访问进行细粒度控制。 可以使用基于角色的访问控制 (RBAC) 授予对安全主体的权限，该服务主体可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 令牌可用于授权访问服务总线资源（队列、主题等）的请求。
+服务总线资源的 Azure Active Directory (Azure AD) 集成提供了基于角色的访问控制 (RBAC)，用于对客户端的资源访问进行细粒度控制。 可以使用基于角色的访问控制 (RBAC) 授予对安全主体的权限，该服务主体可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 令牌可用于授权访问服务总线资源（队列、主题等）的请求。
 
 有关使用 Azure AD 进行身份验证的详细信息，请参阅以下文章：
 

@@ -1,19 +1,19 @@
 ---
-title: 将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
+title: 通过 Azure Site Recovery 支持将 Hyper-V VM 灾难恢复到 Azure
 description: 汇总了使用 Azure Site Recovery 执行 Hyper-V VM 到 Azure 的灾难恢复时支持的组件和相关要求
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 09/10/2019
-ms.date: 09/30/2019
+origin.date: 01/27/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1cb60fb21f27c3f0faf7aa03702185ec97aadd1d
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: d9c9133c30af2cc9119a8e0a439c1eb3361fc056
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340932"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611288"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -23,15 +23,15 @@ ms.locfileid: "71340932"
 
 **方案** | **详细信息**
 --- | ---
-使用 Virtual Machine Manager 的 Hyper-V | 对于托管在 System Center Virtual Machine Manager 结构中的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。<br/><br/> 由 Virtual Machine Manager 托管 Hyper-V 主机时，也可以执行到辅助本地站点的灾难恢复。 若要了解有关此方案的详细信息，请阅读[此教程](hyper-v-vmm-disaster-recovery.md)。
+使用 Virtual Machine Manager 的 Hyper-V <br /> <br />| 对于托管在 System Center Virtual Machine Manager 结构中的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。<br/><br/> 由 Virtual Machine Manager 托管 Hyper-V 主机时，也可以执行到辅助本地站点的灾难恢复。 若要了解有关此方案的详细信息，请阅读[此教程](hyper-v-vmm-disaster-recovery.md)。
 不使用 Virtual Machine Manager 的 Hyper-V | 对于并非由 Virtual Machine Manager 托管的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
 
 ## <a name="on-premises-servers"></a>本地服务器
 
-**服务器** | **要求** | **详细信息**
+**Server** | **要求** | **详细信息**
 --- | --- | ---
 Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016 （包括服务器核心安装）、包含最新更新的 Windows Server 2012 R2 | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
-Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/>
+Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/> 注意：Windows Server 2019 主机不支持故障回复到备用位置。
 
 ## <a name="replicated-vms"></a>复制的 VM
 
@@ -46,8 +46,8 @@ VM 配置 | 复制到 Azure 的 VM 必须满足 [Azure 要求](#azure-vm-require
 
 **操作** | **详细信息**
 --- | ---
-调整复制的 Hyper-V VM 上的磁盘大小 | 不支持。 禁用复制，进行更改，然后为 VM 重新启用复制。
-在复制的 Hyper-V VM 上添加磁盘 | 不支持。 禁用复制，进行更改，然后为 VM 重新启用复制。
+调整复制的 Hyper-V VM 上的磁盘大小 | 不支持。 为 VM 禁用复制，进行更改，然后重新启用复制。
+在复制的 Hyper-V VM 上添加磁盘 | 不支持。 为 VM 禁用复制，进行更改，然后重新启用复制。
 
 ## <a name="hyper-v-network-configuration"></a>Hyper-V 网络配置
 
@@ -86,7 +86,7 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 NFS | 不可用 | 不可用
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
-多路径 (MPIO)。 测试时使用的对象：<br /> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | 是 | 是
+多路径 (MPIO)。 测试时使用的对象：<br /> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 来宾存储
 
@@ -95,7 +95,7 @@ SAN (ISCSI) | 是 | 是
 VMDK | 不可用 | 不可用
 VHD/VHDX | 是 | 是
 第 2 代 VM | 是 | 是
-EFI/UEFI| 是 | 是
+EFI/UEFI<br />Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 该 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应该最多有五个分区或更少，OS 磁盘的大小应该小于 300 GB。| 是 | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
 NFS | 不可用 | 不可用
@@ -122,9 +122,10 @@ RDM | 不可用 | 不可用
 热存储| 否 | 否
 块 Blob | 否 | 否
 静态加密 (SSE)| 是 | 是
+静态加密 (CMK) <br /> （仅用于故障转移到托管磁盘）| 是（通过 PowerShell Az 3.3.0 及更高版本模块） | 是（通过 PowerShell Az 3.3.0 及更高版本模块）
 高级存储 | 是 | 是
 导入/导出服务 | 否 | 否
-启用了防火墙的 Azure 存储帐户 | 否  | 是的。 适用于目标存储和缓存。
+启用了防火墙的 Azure 存储帐户 | 是的。 适用于目标存储和缓存。 | 是的。 适用于目标存储和缓存。
 修改存储帐户 | 否。 启用复制后，无法修改目标 Azure 存储帐户。 若要修改，请禁用然后重新启用灾难恢复。 | 否
 
 ## <a name="azure-compute-features"></a>Azure 计算功能
@@ -178,4 +179,4 @@ Azure 恢复服务代理 | 协调 Hyper-V VM 与 Azure 之间的复制<br/><br/>
 ## <a name="next-steps"></a>后续步骤
 了解如何为本地 Hyper-V VM 的灾难恢复[准备 Azure](tutorial-prepare-azure.md)。
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!-- Update_Description: update meta properties, wording update, update link -->

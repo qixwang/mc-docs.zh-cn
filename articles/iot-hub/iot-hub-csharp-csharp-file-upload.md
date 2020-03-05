@@ -7,14 +7,14 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 origin.date: 07/04/2017
-ms.date: 09/30/2019
+ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: ff58b1409b1d9f996a3c29b6de78bc0587c2a1a2
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: decce299d35dc44b1867fcec26885ae3dc3e9a56
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389489"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155096"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将文件从设备上传到云
 
@@ -32,7 +32,7 @@ ms.locfileid: "74389489"
 * 以高频率采样的振动数据
 * 某种形式的预处理数据
 
-通常使用 [Hadoop](/hdinsight/) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](/hdinsight/) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 在本教程结束时，会运行 2 个 .NET 控制台应用：
 
@@ -48,6 +48,7 @@ ms.locfileid: "74389489"
 
 * Visual Studio
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -171,7 +172,7 @@ ms.locfileid: "74389489"
 
 1. 在“常用属性”   >   “启动项目”中，选择“多个启动项目”，然后针对 **ReadFileUploadNotification** 和 **SimulatedDevice** 选择“启动”操作。   选择“确定”  保存更改。
 
-1. 按 **F5**。 这两个应用程序应该都会启动。 你将在其中一个控制台应用中看到上传已完成，同时还会看到另一个控制台应用收到的上传通知消息。 可使用 [Azure 门户](https://portal.azure.cn/)或 Visual Studio 服务器资源管理器检查 Azure 存储帐户中是否存在上传的文件。
+1. 按 **F5**。 这两个应用程序应该都会启动。 将在其中一个控制台应用中看到上传已完成，同时还会看到另一个控制台应用收到的上传通知消息。 可使用 [Azure 门户](https://portal.azure.cn/)或 Visual Studio 服务器资源管理器检查 Azure 存储帐户中是否存在上传的文件。
 
     ![显示输出屏幕的屏幕截图](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
 

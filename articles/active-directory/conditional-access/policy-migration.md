@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4362a09b1a9bc07bc9078198fe11da1c3413dda
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 2af5da2853173a3115f02c7d8c2ca21202ca32c5
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540041"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653321"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件访问经典策略迁移
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![条件访问条件](./media/policy-migration/16.png)
  
-Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端应用条件的[基于应用](technical-reference.md#approved-client-app-requirement)的经典策略允许**受支持**和**不受支持**的[设备平台](technical-reference.md#device-platform-condition)。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](technical-reference.md#device-platform-condition)。 
+Office 365 Exchange Online 的基于应用的经典策略（包括 **Exchange Active Sync** 作为客户端应用条件）允许**受支持**和**不受支持**的设备平台。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](concept-conditional-access-conditions.md#device-platforms)。 
 
 ![条件访问选择 Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -108,9 +108,9 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 
 ### <a name="device-platforms"></a>设备平台
 
-包含[基于应用的控制条件](technical-reference.md#approved-client-app-requirement)的经典策略中已预先将 iOS 和 Android 配置为[设备平台条件](technical-reference.md#device-platform-condition)。 
+包含基于应用的控制的经典策略已预先配置为将 iOS 和 Android 作为设备平台条件。 
 
-在新策略中，需要选择希望单独支持的[设备平台](technical-reference.md#device-platform-condition)。
+在新策略中，需要选择希望单独支持的[设备平台](concept-conditional-access-conditions.md#device-platforms)。
 
 ![条件访问设备平台选择](./media/policy-migration/41.png)
 
@@ -119,3 +119,4 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 - 若要了解如何配置条件访问策略，请参阅[条件访问常见策略](concept-conditional-access-policy-common.md)。
 - 如果已准备好针对环境配置条件访问策略，请参阅 [如何：规划 Azure Active Directory 中的条件访问部署](plan-conditional-access.md)一文。 
 
+<!-- Update_Description: wording update -->

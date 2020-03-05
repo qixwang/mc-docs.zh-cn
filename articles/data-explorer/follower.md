@@ -7,13 +7,13 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 5ce4d97614c56300fe4a4102461ab0604c49e88e
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.date: 03/09/2020
+ms.openlocfilehash: 270dce1538a520cf4877cf87ab9a7d811ef834cc
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179333"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590257"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "77179333"
 * 单个群集可以后继多个先导群集中的数据库。 
 * 一个群集可以同时包含后继数据库和先导数据库
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 1. 为先导和后继数据库[创建群集和数据库](/data-explorer/create-cluster-database-portal)。
@@ -62,7 +62,7 @@ var followerResourceGroupName = "followerResouceGroup";
 var leaderResourceGroup = "leaderResouceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationName = "adc";
+var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
 var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "China East 2";
@@ -114,7 +114,7 @@ follower_resource_group_name = "followerResouceGroup"
 leader_resouce_group_name = "leaderResouceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_Configuration_name = "adc"
+attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
 database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "China East"
@@ -181,7 +181,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     "variables": {},
     "resources": [
         {
-            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+            "name": "[parameters('attachedDatabaseConfigurationsName')]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
@@ -207,8 +207,8 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 |**设置**  |**说明**  |
 |---------|---------|
-|后继群集名称     |  后继群集的名称。  |
-|附加的数据库配置名称    |    附加的数据库配置对象的名称。 该名称必须在群集级别唯一。     |
+|后继群集名称     |  模板将部署到的后继群集的名称。  |
+|附加的数据库配置名称    |    附加的数据库配置对象的名称。 该名称可以是在群集级别唯一的任何字符串。     |
 |数据库名称     |      要后继的数据库的名称。 若要后继所有先导数据库，请使用“*”。   |
 |先导群集资源 ID    |   先导群集的资源 ID。      |
 |默认主体修改类型    |   默认的主体修改类型。 可以是 `Union`、`Replace` 或 `None`。 有关默认主体修改类型的详细信息，请参阅[主体修改类型控制命令](https://docs.microsoft.com/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)。      |
@@ -251,7 +251,7 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
 var followerResourceGroupName = "testrg";
 //The cluster and database that are created as part of the prerequisites
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationsName = "adc";
+var attachedDatabaseConfigurationsName = "uniqueName";
 
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
@@ -279,7 +279,7 @@ var followerClusterName = "follower";
 //The cluster and database that are created as part of the Prerequisites
 var followerDatabaseDefinition = new FollowerDatabaseDefinition()
     {
-        AttachedDatabaseConfigurationName = "adc",
+        AttachedDatabaseConfigurationName = "uniqueName",
         ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
     };
 
@@ -313,7 +313,7 @@ kusto_management_client = KustoManagementClient(credentials, follower_subscripti
 
 follower_resource_group_name = "followerResouceGroup"
 follower_cluster_name = "follower"
-attached_database_configurationName = "adc"
+attached_database_configurationName = "uniqueName"
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
@@ -349,7 +349,7 @@ follower_resource_group_name = "followerResourceGroup"
 leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_configuration_name = "adc"
+attached_database_configuration_name = "uniqueName"
 location = "China East"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 

@@ -1,6 +1,7 @@
 ---
-title: 使用 Microsoft 标识平台让用户在无浏览器设备上登录 | Azure
-description: 使用设备权限授予生成嵌入式无浏览器身份验证流。
+title: OAuth 2.0 设备代码流 | Azure
+titleSuffix: Microsoft identity platform
+description: 无需浏览器即可登录用户。 使用设备权限授予生成嵌入式无浏览器身份验证流。
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,21 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3672d35369efdec6f2375010da87835a4692530
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ff218fef6ca1d9d4df7bc81deaba04acdf653b74
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335256"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653127"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备权限授予流
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Microsoft 标识平台支持[设备权限授予](https://tools.ietf.org/html/rfc8628)，可让用户登录到智能电视、IoT 设备或打印机等输入受限设备。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
 

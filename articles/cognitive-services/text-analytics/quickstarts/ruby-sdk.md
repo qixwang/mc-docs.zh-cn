@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 05/08/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
-ms.openlocfilehash: 3e2914c69e314d0930b238f82ef31101b9128aa2
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: 471d34174d397933ae48c5fe05ac3586997fcaff
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830140"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154802"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>快速入门：使用 Ruby SDK 调用文本分析服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "66830140"
  
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
+还必须有在注册期间生成的终结点和访问密钥。 
 
 <a name="RubyProject"></a>
 

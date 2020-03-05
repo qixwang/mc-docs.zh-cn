@@ -1,28 +1,31 @@
 ---
-title: 重定向 URI/回复 URL 的局限性和限制 - Microsoft 标识平台
+title: 重定向 URI 和回复 URL 限制 - Microsoft 标识平台 | Azure
 description: 回复 URL/重定向 URI 的局限性和限制
 author: SureshJa
 ms.author: v-junlch
 manager: CelesteDG
-origin.date: 06/29/2019
-ms.date: 11/07/2019
+ms.date: 02/25/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3e8fb03cf6c1de9c32383e9e84c6f4a167adc4e
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 4ed677df13ebf35f4319e5470a0a67c2789b2f4a
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830935"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653173"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重定向 URI/答复 URL 限制和局限
 
 重定向 URI（或回复 URL）是在为应用成功授权并为其授予授权代码或访问令牌后，授权服务器将用户发送到的位置。 该代码或令牌包含在重定向 URI 或回复令牌中，因此在应用注册过程中注册正确的位置非常重要。
 
+ 以下限制适用于回复 URL：
+
+    * 回复 URL 必须以方案 `https` 开头。
+    * 回复 URL 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此如果重定向到大小写不匹配的 `.../ABC/response-oidc` URL，则可能会排除与 `.../abc/response-oidc` 关联的 Cookie。
+    
 ## <a name="maximum-number-of-redirect-uris"></a>最大重定向 URI 数
 
 下表显示了注册应用时可添加的最大重定向 URI 数。

@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 08/05/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: 313f2eca14d89087d9aa00f94027aafb70376a58
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: 3b1d51869b84fdda2966180acf5e3b6cb69ab502
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155725"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154847"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -37,11 +37,7 @@ ms.locfileid: "77155725"
 
 
 ## <a name="allow-azure-services"></a>允许 Azure 服务 
-[从 Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 期间，此设置将保持未选中状态。
-
- ![创建新服务器的屏幕截图][1]
-
-创建 Azure SQL Server 之后，也可以按如下所示通过“防火墙”窗格更改此设置。
+创建 Azure SQL Server 之后，可以按如下所示通过“防火墙”窗格更改此设置。
   
  ![管理服务器防火墙的屏幕截图][2]
 
@@ -50,7 +46,7 @@ ms.locfileid: "77155725"
 在许多情况下，“打开”设置的访问权限宽松度会超过大多数客户的需要。他们可能希望将此设置指定为“关闭”，并将其替换为限制性更强的 IP 防火墙规则或虚拟网络防火墙规则。   这样做会影响 Azure 中的 VM 上运行的以下功能，这些 VM 不在你的 VNet 中，因此会通过 Azure IP 地址连接到 SQL 数据库。
 
 ### <a name="import-export-service"></a>导入/导出服务
-当“允许 Azure 服务访问服务器”设置为“关闭”时，导入导出服务无法正常工作。  不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)。
+当“允许 Azure 服务访问服务器”设置为“关闭”时，导入导出服务无法正常工作。  不过，可通过以下方式解决此问题：[在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出](/sql-database/import-export-from-vm)。
 
 ### <a name="data-sync"></a>数据同步
 若要在“允许 Azure 服务访问服务器”设置为“关闭”的情况下使用数据同步功能，需要创建单个防火墙规则条目，以便为托管**中心**数据库的区域，从 **SQL 服务标记**[添加 IP 地址](sql-database-server-level-firewall-rule.md)。 

@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: dd3a5f6fffb014417034e13fc3181742a48b8b7d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 11/19/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 5a3268a0b0d71ab4a9d8df94f2a4d7b5dbf6b887
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598390"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154943"
 ---
 # <a name="train-clustering-model"></a>训练聚类模型
 
@@ -25,7 +26,7 @@ ms.locfileid: "75598390"
 此模块采用已使用 [K-Means 聚类分析](k-means-clustering.md)模块配置的未训练的聚类分析模型，并使用标记的或未标记的数据集来训练模型。 此模块既创建可用于预测的已训练模型，又为训练数据中的每个案例创建一组群集分配。
 
 > [!NOTE]
-> 聚类分析模型不能使用“训练模型”[](train-model.md)模块（用于训练机器学习模型的通用模块）进行训练， 因为[训练模型](train-model.md)仅适用于监督式学习算法。 K-means 和其他聚类分析算法允许非监督式学习，这意味着算法可以从非标记的数据进行学习。  
+> 聚类分析模型不能使用[训练模型](train-model.md)模块（用于训练机器学习模型的通用模块）进行训练， 因为[训练模型](train-model.md)仅适用于监督式学习算法。 K-means 和其他聚类分析算法允许非监督式学习，这意味着算法可以从非标记的数据进行学习。  
   
 ## <a name="how-to-use-train-clustering-model"></a>如何使用“训练聚类分析模型”  
 
@@ -49,12 +50,9 @@ ms.locfileid: "75598390"
 
 在训练完成后：
 
++ 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
 
-+  若要查看数据集中的值，请右键单击模块，选择“结果数据集”，然后单击“可视化”   。
-
-+ 若要保存训练的模型供以后重复使用，请右键单击模块，选择“训练的模型”，然后单击“另存为训练的模型”   。
-
-+ 若要从模型生成分数，请使用“将数据分配到群集”。[](assign-data-to-clusters.md)
++ 若要从模型生成分数，请使用[将数据分配到群集](assign-data-to-clusters.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

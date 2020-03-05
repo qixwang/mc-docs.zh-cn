@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/26/2019
-ms.date: 10/17/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ee7844ea5173efb459b6f9aef660359b70253a6
-ms.sourcegitcommit: 4ada17c1bcd36e755afd0a8bd6e353e35cbb228b
+ms.openlocfilehash: 9994ea6d1b6028c493ed961bc88dcee0b2ee4c43
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72562125"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653238"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -106,11 +106,9 @@ One of the metrics provided by Traffic Manager is the number of queries responde
 >[!NOTE]
 >在某些场景中，你可能同时需要性能和地理路由功能，对于这些场景，嵌套式配置文件可能是不错的选择。 
 
-<!-- Not Available on Traffice Manager geographic-->
-<!-- Not Available 
-### What are the regions that are supported by Traffic Manager for geographic routing? 
-The country/region hierarchy that is used by Traffic Manager can be found [here](traffic-manager-geographic-regions.md). While this page is kept up-to-date with any changes, you can also programmatically retrieve the same information by using the [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
--->
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>进行地理路由时，流量管理器支持哪些区域？
+
+可在[此处](traffic-manager-geographic-regions.md)查找流量管理器使用的国家/地区层次结构。 更改会在此页进行更新，不过，也可以通过 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式检索相同的信息。 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>流量管理器如何确定用户从何处进行查询？
 
@@ -275,7 +273,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 |传入的查询请求|    终结点类型|  提供的响应|
 |--|--|--|
-|任意 |  A/AAAA/CNAME |  目标终结点| 
+|ANY |  A/AAAA/CNAME |  目标终结点| 
 |A |    A/CNAME | 目标终结点|
 |A |    AAAA |  无数据 |
 |AAAA | AAAA/CNAME |  目标终结点|
@@ -287,7 +285,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 |传入的查询请求|    终结点类型 | 提供的响应|
 |--|--|--|
-|任意 |  混合 A 和 AAAA | 目标终结点|
+|ANY |  混合 A 和 AAAA | 目标终结点|
 |A |    混合 A 和 AAAA | 仅 A 类型的目标终结点|
 |AAAA   |混合 A 和 AAAA|     仅 AAAA 类型的目标终结点|
 |CNAME |    混合 A 和 AAAA | 无数据 |
@@ -306,7 +304,10 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 监视时，需要终结点发出的哪些特定响应？
 
-使用 TCP 监视时，流量管理器将通过在指定的端口上向终结点发送 SYN 请求来启动三次 TCP 握手。 然后，它会等待一段时间（在超时设置中指定），让终结点发出的响应。 如果终结点在监视设置中指定的超时期限内响应了 SYN 请求并提供了 SYN-ACK 响应，则将终结点视为正常。 如果收到 SYN-ACK 响应，流量管理器将通过发回包含 RST 的响应来重置连接。
+使用 TCP 监视时，流量管理器将通过在指定的端口上向终结点发送 SYN 请求来启动三次 TCP 握手。 然后，它会在一段时间（在超时设置中指定）内等待终结点的 SYN-ACK 响应。
+
+- 如果在监视设置中指定的超时期限内收到 SYN-ACK 响应，则认为该终结点正常。 FIN 或 FIN-ACK 是流量管理器定期终止套接字时的预期响应。
+- 如果在指定的超时后收到 SYN-ACK 响应，则流量管理器将以 RST 响应以重置连接。
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>流量管理器将用户从不正常终结点中移出的速度有多快？
 
@@ -350,7 +351,7 @@ One of the metrics provided by Traffic Manager is the health status of endpoints
 
 ### <a name="how-do-i-configure-nested-profiles"></a>如何配置嵌套式配置文件？
 
-可以使用 Azure 资源管理器、经典 Azure REST API、Azure PowerShell cmdlet 和跨平台 Azure CLI 命令配置嵌套式流量管理器配置文件。 也支持通过新 Azure 门户配置这些配置文件。
+可以使用 Azure Resource Manager、经典 Azure REST API、Azure PowerShell cmdlet 和跨平台 Azure CLI 命令配置嵌套式流量管理器配置文件。 也支持通过新 Azure 门户配置这些配置文件。
 
 ### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>流量管理器支持多少层嵌套？
 

@@ -1,31 +1,31 @@
 ---
-title: 条件访问策略中的客户端应用 - Azure Active Directory
-description: ''
+title: 条件访问策略中的云应用或操作 - Azure Active Directory
+description: 什么是 Azure AD 条件访问策略中的云应用或操作
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ea2dee67ff4a83973706712240bb760e7f1d4c
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: b084b104ed6adeac25adc82cc0789e8ee58da3f3
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067751"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653340"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>条件访问：云应用和操作
+# <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
-云应用或操作是条件性访问策略的重要组成部分。 使用条件访问策略，管理员可以分配对特定应用程序或操作的控制。 
+云应用或操作是条件访问策略中的关键信号。 使用条件访问策略，管理员可以分配对特定应用程序或操作的控制。
 
 - 管理员可以从包含内置 Microsoft 应用程序和任何 Azure AD 集成应用程序的应用程序列表中进行选择。
 - 管理员可以选择不基于云应用程序但基于用户操作来定义策略。 唯一受支持的操作是注册安全信息（预览版），允许条件访问围绕组合的安全信息注册体验来强制实施控制。
 
-![定义条件访问策略并指定云应用](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![定义条件访问策略并指定云应用](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="azure-cloud-applications"></a>Azure 云应用程序
 
@@ -113,7 +113,9 @@ Azure 管理应用程序包括多个基础服务。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [条件访问策略组件](concept-conditional-access-policies.md)
+- [条件访问：条件](concept-conditional-access-conditions.md)
+
+- [条件访问常见策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖项](service-dependencies.md)
 
-
+<!-- Update_Description: wording update -->

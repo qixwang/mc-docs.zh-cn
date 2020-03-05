@@ -9,21 +9,23 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 01/27/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 94d97d09567ef22c7d470122435f75add582b0b2
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: f282ebbc5b740dbdfc10e9f1cca66137d80eea91
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428393"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590195"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
 通过语音服务，应用程序可将音频转换为文本、执行语音翻译以及将文本转换为语音。 多个区域中均提供该服务，这些区域为语音 SDK 和 REST API 使用唯一终结点。
 
-请务必使用与订阅的区域匹配的终结点。
+此处提供了对所有区域的语音体验执行自定义配置的语音门户： https://speech.azure.cn
+
+对于语音服务的调用，请确保调用与订阅的区域匹配。
 
 ## <a name="speech-sdk"></a>语音 SDK
 
@@ -31,17 +33,17 @@ ms.locfileid: "77428393"
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>语音转文本、文本转语音和翻译
 
-可以在以下区域使用语音 SDK，以进行**语音识别**、**文本转语音**和**翻译**：
+语音自定义门户在此处提供： https://speech.azure.cn
 
-| 区域           | 语音 SDK 参数 | 语音自定义门户    |
-| ---------------- | -------------------- | ------------------------------ |
-| 中国东部 2          | `chinaeast2`             | https://chinaeast2.cris.azure.cn         |
+可以在以下区域使用语音服务，以进行**语音识别**、**文本转语音**和**翻译**：
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+如果使用[语音 SDK](speech-sdk.md)，则区域由**区域标识符**指定（例如，作为 `SpeechConfig.FromHost` 的参数）。 请确保该区域与订阅的区域匹配。
 
 <!-- ### Intent recognition -->
 
-
 <!-- ### Voice assistants -->
-
 
 ## <a name="rest-apis"></a>REST API
 
@@ -51,7 +53,18 @@ ms.locfileid: "77428393"
 
 有关语音转文本的参考文档，请参阅[语音转文本 REST API](rest-speech-to-text.md)。
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+REST API 的终结点具有以下格式：
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.azure.cn/speech/recognition/conversation/cognitiveservices/v1
+```
+
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“中国东部 2”终结点设置为美国英语的语言为：`https://chinaeast2.stt.speech.azure.cn/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
 ### <a name="text-to-speech"></a>文本转语音
 

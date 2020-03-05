@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery 中的 Azure 到 Azure 复制体系结构 | Azure
-description: 本文概述了使用 Azure Site Recovery 服务在 Azure 区域之间为 Azure VM 设置灾难恢复时使用的组件和体系结构。
+title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的灾难恢复体系结构
+description: 概述了使用 Azure Site Recovery 服务为 Azure VM 设置 Azure 区域之间的灾难恢复时使用的体系结构。
 services: site-recovery
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 09/03/2019
-ms.date: 09/23/2019
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6b142e02300584b94027e8ca84f59f1c37f050c9
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 1f01badc8b0f64e271265da1ec8a393028fcf25b
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306839"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611262"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -88,7 +88,7 @@ Site Recovery 按如下所述创建快照：
 
 ### <a name="consistency"></a>一致性
 
-下表描述了不同类型的一致性。
+下表解释了不同的一致性类型。
 
 ### <a name="crash-consistent"></a>崩溃一致性
 
@@ -142,8 +142,9 @@ Site Recovery 按如下所述创建快照：
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 存储。
-允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围。<br/><br/> 如果将来添加了 Azure AD 地址，则需要创建新的网络安全组 (NSG) 规则。  | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 存储
+允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围 | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub
 允许 HTTPS 出站通信：端口 443 | 允许访问对应于目标位置的 [Site Recovery 终结点](/site-recovery/azure-to-azure-about-networking#site-recovery-ip-in-china)。 
 
 <!--MOONCAKE: Not Available on .<region-name>-->
@@ -153,8 +154,9 @@ Site Recovery 按如下所述创建快照：
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于目标区域中存储帐户的范围。 | 存储。
-允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围。<br/><br/> 如果将来添加了 Azure AD 地址，则需要创建新的 NSG 规则。  | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许对应于目标区域中存储帐户的范围。 | 存储
+允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围| AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub
 允许 HTTPS 出站通信：端口 443 | 允许访问对应于源位置的 [Site Recovery 终结点](/site-recovery/azure-to-azure-about-networking#site-recovery-ip-in-china)。 
 
 <!--MOONCAKE: Not Available on .<region-name>-->

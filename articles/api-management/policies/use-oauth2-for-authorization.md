@@ -1,5 +1,6 @@
 ---
 title: Azure API 管理策略示例 - 使用 OAuth2 在网关和后端之间进行授权
+titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何使用 OAuth2 在网关和后端之间进行授权。 该示例演示如何从 AAD 获取访问令牌并将其转发到后端。
 services: api-management
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: article
 origin.date: 10/13/2017
 ms.date: 05/14/2018
 ms.author: v-yiso
-ms.openlocfilehash: 385212d96017739e2a174bc9ecea05a29b811603
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 776a589c2ad2d8604960ea4e8e07ac490970c1e9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52663863"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155041"
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>使用 OAuth2 在网关和后端之间进行授权
 
@@ -31,7 +32,7 @@ ms.locfileid: "52663863"
  
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policy defined in this file provides an example of using OAuth2 for authorization between the gateway and a backend. -->

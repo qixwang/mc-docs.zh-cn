@@ -1,9 +1,10 @@
 ---
-title: 在 macOS 和 iOS 上配置 SSO | Microsoft 标识平台
+title: 在 macOS 和 iOS 上配置 SSO
+titleSuffix: Microsoft identity platform
 description: 了解如何在 macOS 和 iOS 上配置单一登录 (SSO)。
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -12,18 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 08/28/2019
-ms.date: 11/01/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: ''
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f87d2eb0790b78886607666c0a49bd784b22fc1
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 33610444f22632c21e6bac67dca21ecb33b405c7
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831016"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653135"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
 
@@ -72,7 +71,9 @@ MSAL 支持通过 iOS 密钥链访问组进行 SSO 共享。
 
 Microsoft 标识平台根据应用的**重定向 URI** 来辨别使用相同应用程序 ID 的应用。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用都具有不同的重定向 URI。 例如：
 
-应用 1 的重定向 URI：`msauth.com.contoso.mytestapp1://auth`；应用 2 的重定向 URI：`msauth.com.contoso.mytestapp2://auth`；应用 3 的重定向 URI：`msauth.com.contoso.mytestapp3://auth`
+App1 重定向 URI： `msauth.com.contoso.mytestapp1://auth`  
+App2 重定向 URI： `msauth.com.contoso.mytestapp2://auth`  
+App3 重定向 URI： `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > 重定向 URI 的格式必须与 MSAL 支持的格式兼容，[MSAL 重定向 URI 格式要求](redirect-uris-ios.md#msal-redirect-uri-format-requirements)中阐述了此格式。
@@ -97,6 +98,18 @@ Microsoft 标识平台根据应用的**重定向 URI** 来辨别使用相同应�
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>添加新密钥链组
+
+向项目**功能**添加新密钥链组。 密钥链组应为：
+* iOS 上的 `com.microsoft.adalcache` 
+* macOS 上的 `com.microsoft.identity.universalstorage`。
+
+![密钥链示例](./media/single-sign-on-macos-ios/keychain-example.png)
+
+有关详细信息，请参阅[密钥链组](howto-v2-keychain-objc.md)。
+
+## <a name="configure-the-application-object"></a>配置应用程序对象
+
 在每个应用程序中启用密钥链权利并准备好使用 SSO 后，请按以下示例所示在 `MSALPublicClientApplication` 中配置密钥链访问组：
 
 Objective-C：
@@ -114,16 +127,14 @@ Swift：
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > 在应用程序之间共享密钥链之后，任何应用程序都可以删除用户，甚至可以删除整个应用程序的所有令牌。
@@ -207,8 +218,9 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
 
+<!-- Update_Description: wording update -->

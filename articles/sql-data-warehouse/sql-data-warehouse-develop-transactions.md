@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
 origin.date: 03/22/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9768e0c653295577612cce2e63532ccc295bd375
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: f4d6c6743d5130af10ca8567f9315a7b9bc4bc38
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807611"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154333"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的事务
 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
@@ -26,7 +26,7 @@ ms.locfileid: "74807611"
 如你所料，SQL 数据仓库支持支持事务作为数据仓库工作负荷的一部分。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文突出两者的差异，并列出其他信息。 
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
-SQL 数据仓库实现 ACID 事务。 但是，事务支持的隔离级别受限于 READ UNCOMMITTED；此级别不能更改。 如果考虑 READ UNCOMMITTED，可以实现许多编码方法，以避免脏读数据。 大多数流行方法使用 CTAS 和表分区切换（通常称为滑动窗口模式），以防止用户查询仍正准备的数据。 预先筛选数据的视图也是常用的方法。  
+SQL 数据仓库实现 ACID 事务。 事务支持的隔离级别默认为 READ UNCOMMITTED。  在连接到 master 数据库时，可以通过打开用户数据库的 READ_COMMITTED_SNAPSHOT 数据库选项，将其更改为 READ COMMITTED SNAPSHOT ISOLATION。  启用后，此数据库中的所有事务都将在 READ COMMITTED SNAPSHOT ISOLATION 下执行，并且将不接受在会话级别设置 READ UNCOMMITTED。 有关详细信息，请查看 [ALTER DATABASE SET 选项 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。
 
 ## <a name="transaction-size"></a>事务大小
 单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，通过将限制乘以分发数，可得总分配额。 要预计事务中的最大行数，请将分发上限除以每一行的总大小。 对于可变长度列，考虑采用平均的列长度而不使用最大大小。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39ec5fd10af2b4a4af7e2fe0d24a89579b411844
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 1273cee9d8584927b4cd410980836e309defc0d2
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857993"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155127"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 
@@ -25,11 +25,13 @@ ms.locfileid: "75857993"
 
 2.  检查输入数据。
 
-    若要验证输入数据是否流入事件中心，请使用[服务总线资源管理器](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)连接到 Azure 事件中心（如果使用了事件中心输入）。
+    1. 若要验证输入数据是否流入事件中心，请使用[服务总线资源管理器](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)连接到 Azure 事件中心（如果使用了事件中心输入）。
+        
+    1. 对每个输入使用[**示例数据**](stream-analytics-sample-data-input.md)按钮。 下载输入示例数据。
+        
+    1. 检查示例数据以了解数据的形状，即架构和[数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)。
 
-    使用每项输入对应的[“示例数据”  ](stream-analytics-sample-data-input.md)按钮，并下载输入示例数据。
-
-    检查示例数据，以了解数据的形式：架构和[数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)。
+3.  确保在输入预览中选择了时间范围。 选择“选择时间范围”  ，输入示例持续时间，然后测试查询。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正确的输入事件导致反序列化错误 
 当流分析作业的输入流包含格式不当的消息时，会导致反序列化问题。 例如，JSON 对象中缺少圆括号或大括号，或者时间字段中的时间戳格式不当，都可能导致消息格式不当。 

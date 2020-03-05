@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/19/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: 3495bc0f864481646b959fcb4ba63eebb5d748c8
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/02/2020
+ms.openlocfilehash: 21ec501e17b11da5a92d6625ce0c11b87b832156
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624204"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653591"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
@@ -114,6 +114,12 @@ ms.locfileid: "75624204"
 ![查看活动运行](media/monitor-visually/rerun-activities-image1.png)
 
 ![选择一个活动运行](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="rerun-from-failed-activity"></a>从失败的活动重新运行
+
+如果某个活动失败、超时或被取消，则可以通过选择“从失败的活动重新运行”  来从该失败的活动重新运行管道。
+
+![重新运行失败的活动](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>查看重新运行历史记录
 

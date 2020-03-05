@@ -8,17 +8,16 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 11/20/2019
-ms.date: 01/06/2020
+origin.date: 01/14/2020
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: 4102a855a5f3196e83fb1f0e8a49506f11f8cef2
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 47ba0df1944df90c61f7cec5f9f3b3ebef4ee3b2
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624232"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653535"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 
@@ -45,11 +44,6 @@ ms.locfileid: "75624232"
 * IBM DB2 for LUW 10.5
 * IBM DB2 for LUW 10.1
 
-> [!TIP]
-> 如果看到错误消息“找不到与 SQL 语句执行请求对应的包。 SQLSTATE=51002 SQLCODE=-805”，这是因为没有为此类 OS 上的普通用户创建所需的包。 请按照以下说明操作，具体视 DB2 服务器类型而异：
-> - 用于 i (AS400) 的 DB2：让 Power User 在使用复制活动前，先为登录用户创建集合。 命令：`create collection <username>`
-> - 用于 z/OS 或 LUW 的 DB2：使用高权限帐户（即拥有包权限和 BIND、BINDADD、GRANT EXECUTE TO PUBLIC 权限的超级用户或管理员）运行复制活动一次，然后所需的包便会在复制期间自动创建。 之后，可以切换回正常用户，继续运行后续复制。
-
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -66,7 +60,7 @@ ms.locfileid: "75624232"
 
 DB2 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Db2** | 是 |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
@@ -74,9 +68,12 @@ DB2 链接服务支持以下属性：
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：**基本**。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置 | 否 |
+| packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置。 | 否 |
 | certificateCommonName | 使用安全套接字层 (SSL) 或传输层安全性 (TLS) 加密时，必须为“证书公用名称”输入值。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+> [!TIP]
+> 如果收到一条提示 `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` 的错误消息，则原因是未为用户创建所需的包。 默认情况下，ADF 会尝试在 collection 下创建一个以用于连接到 DB2 的用户命名的包。 指定“package collection”属性，以指示在查询数据库时 ADF 在何处创建所需的包。
 
 **示例：**
 
@@ -109,11 +106,11 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**Db2Table** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -144,10 +141,10 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**Db2Source** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -221,4 +218,4 @@ DB2 链接服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

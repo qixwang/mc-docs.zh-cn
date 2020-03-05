@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 流量管理器中配置多值流量路由方法
+title: 配置多值流量路由 - Azure 流量管理器
 description: 本文介绍如何配置流量管理器以将流量路由到 A/AAAA 终结点。
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/10/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: e38dc83d590799b3c8ca87d0e0cf1b0776d03b4b
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 711cfa2800f41c991d2db43bcc2a4d8d937cf3a3
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857029"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653228"
 ---
 <!-- Verify sucessfully-->
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
@@ -46,13 +46,13 @@ ms.locfileid: "70857029"
 
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受其余设置的默认值，然后选择“创建”   ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
+    | 名称                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
     | 路由方法          | 选择“多值”路由方法  。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“myResourceGroupTM1”  。 |
-    | Location                | 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
+    | 位置                | 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
     |        |           | 
 
     ![创建流量管理器配置文件](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
@@ -65,10 +65,10 @@ ms.locfileid: "70857029"
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 类型                    | 外部终结点                                   |
-    | Name           | myEndpoint1                                        |
+    | 名称           | myEndpoint1                                        |
     | 完全限定的域名 (FQDN) 或 IP           | 键入要添加到此流量管理器配置文件的终结点的公共 IP 地址                         |
     |        |           |
 
@@ -82,6 +82,6 @@ ms.locfileid: "70857029"
 - 了解[加权流量路由方法](traffic-manager-configure-weighted-routing-method.md)。
 - 了解[优先级路由方法](traffic-manager-configure-priority-routing-method.md)。
 - 详细了解[性能路由方法](traffic-manager-configure-performance-routing-method.md)
+- 了解[地理路由方法](traffic-manager-configure-geographic-routing-method.md)。
 
-<!-- Not Available on [geographic routing method](traffic-manager-configure-geographic-routing-method.md)-->
-<!-- Update_Description: update meta properties -->
+<!-- Update_Description: update meta properties, wording update, update link -->

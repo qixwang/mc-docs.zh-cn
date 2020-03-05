@@ -9,13 +9,13 @@ ms.devlang: javascript
 ms.topic: conceptual
 origin.date: 06/16/2017
 ms.author: v-yiso
-ms.date: 09/30/2019
-ms.openlocfilehash: 5cbf38c35fbdb9c1c3b16d96b82ec4a6e48e940a
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.date: 03/09/2020
+ms.openlocfilehash: 006535cfbc04d979daa0ce3eb1c40fb99a43a5cc
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155928"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154493"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>使用 IoT 中心发送云到设备消息 (Node.js)
 
@@ -48,6 +48,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用上接收消息
 
@@ -98,7 +99,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```shell
     npm install azure-iothub --save
     ```
-3. 通过文本编辑器，在 **sendcloudtodevicemessage**文件夹中创建一个 **SendCloudToDeviceMessage.js** 文件。
+3. 通过文本编辑器，在 **sendcloudtodevicemessage** 文件夹中创建一个 **SendCloudToDeviceMessage.js** 文件。
 4. 在 **SendCloudToDeviceMessage.js** 文件的开头添加以下 `require` 语句：
    
     ```javascript

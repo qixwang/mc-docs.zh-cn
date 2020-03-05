@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure AD 支持的不同令牌和声明类型 | Microsoft Docs
+title: Azure AD 令牌和声明类型 | Microsoft Docs
 description: 本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。
 documentationcenter: na
 author: rwike77
@@ -10,21 +10,19 @@ ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 06/22/2018
-ms.date: 07/01/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d388e7d70cc73900ab39fbc3ea9f31605570f5
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: 166a0fcf50c7ad866c42fc8c2abdfc462ce9afaf
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568570"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653176"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
 
@@ -33,7 +31,7 @@ Azure Active Directory (Azure AD) 在处理每个身份验证流时会发出多�
 ## <a name="claims-in-saml-tokens"></a>SAML 令牌中的声明
 
 > [!div class="mx-codeBreakAll"]
-> | Name | 等效 JWT 声明 | 说明 | 示例 |
+> | 名称 | 等效 JWT 声明 | 说明 | 示例 |
 > | --- | --- | --- | ------------|
 > |目标受众 | `aud` |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何以其他受众为目标的令牌。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 身份验证即时 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -45,7 +43,7 @@ Azure Active Directory (Azure AD) 在处理每个身份验证流时会发出多�
 > |IssuedAt | `iat` |存储颁发令牌的时间。 通常用于度量令牌新鲜度。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |颁发者 | `iss` |标识构造并返回令牌的安全令牌服务 (STS)。 在 Azure AD 返回的令牌中，颁发者是 sts.chinacloudapi.cn。 颁发者声明值中的 GUID 是 Azure AD 目录的租户 ID。 租户 ID 是固定不变且可靠的目录标识符。 | `<Issuer>https://sts.chinacloudapi.cn/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |姓氏 | `family_name` |按照 Azure AD 用户对象中的定义，指定用户的姓氏。 | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Name | `unique_name` |提供一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，且仅供显示。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |名称 | `unique_name` |提供一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，且仅供显示。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |对象 ID | `oid` |包含 Azure AD 中对象的唯一标识符。 此值固定不变，无法重新分配或重复使用。 在对 Azure AD 进行的查询中，可使用对象 ID 来标识对象。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |角色 | `roles` |表示直接和间接通过组成员身份授予使用者的所有应用程序角色，可用于实施基于角色的访问控制。 可通过应用程序清单的 `appRoles` 属性，对每个应用程序定义应用程序角色。 每个应用程序角色的 `value` 属性是角色声明中显示的值。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |使用者 | `sub` |标识令牌断言信息的主体，例如应用程序的用户。 此值固定不变，无法重新分配或重复使用，因此可用于安全地执行授权检查。 因为使用者始终存在于 Azure AD 颁发的令牌中，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是一个声明。 它用于描述对令牌使用者的验证方式。 `Bearer` 表示通过对令牌的持有来确认使用者。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
@@ -160,4 +158,4 @@ Azure Active Directory (Azure AD) 在处理每个身份验证流时会发出多�
 * 请参阅 Azure AD Graph [策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)和[策略实体](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)以了解有关通过 Azure AD Graph API 管理令牌生存期策略的详细信息。
 * 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update metedata properties -->

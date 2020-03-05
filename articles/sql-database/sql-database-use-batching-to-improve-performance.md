@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: genemi
 origin.date: 01/25/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: eb9a483e2ac9f56df27af4e8d5ae094f74d8579d
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: 148c6a70e5951cd00d146d1eb2d5d57fc4cb7b49
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155698"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154842"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 
@@ -29,7 +29,7 @@ ms.locfileid: "77155698"
 
 在本文中，我们要比较各种 SQL 数据库批处理策略和情形。 尽管这些策略对于使用 SQL Server 的本地应用程序也很重要，但是将批处理用于 SQL 数据库主要是基于以下两个原因：
 
-* 在访问 SQL 数据库时可能有更长的网络延迟，特别是从同一 Microsoft Azure 数据中心外部访问 SQL 数据库 时。
+* 在访问 SQL 数据库时可能有更长的网络延迟，特别是从同一 Azure 数据中心外部访问 SQL 数据库时。
 * SQL 数据库的多租户特征意味着数据访问层的效率与数据库的总体缩放性关联。 SQL 数据库必须防止任何单个租户/用户独占数据库资源，从而对其他租户不利。 在使用量超过预定义的配额时，SQL 数据库可减小吞吐量或引发限制异常。 一些提高效率的措施（如批处理），允许你在达到这些配额前在 SQL 数据库上做更多的工作。 
 * 批处理对于使用多个数据库或联合的体系结构也很有效（分片）。 与每个数据库单位的交互效率仍是影响总体伸缩性的关键因素。 
 
@@ -117,7 +117,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 > [!NOTE]
 > 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 
-根据前面的测试结果，在事务中包装一个操作实际上会降低性能。 但是，当增加单个事务中的操作数时，性能提高将变得很明显。 当所有操作发生在 Microsoft Azure 数据中心内时，性能差异也更明显。 从 SQL 数据库数据中心外部使用 Microsoft Azure 增加的延迟时间将超过使用事务带来的性能提高。
+根据前面的测试结果，在事务中包装一个操作实际上会降低性能。 但是，当增加单个事务中的操作数时，性能提高将变得很明显。 当所有操作发生在 Azure 数据中心内时，性能差异也更明显。 从 Azure 数据中心外部使用 SQL 数据库增加的延迟超过了使用事务带来的性能提升。
 
 尽管使用事务可以提高性能，但还请继续[遵循事务和连接的最佳做法](https://msdn.microsoft.com/library/ms187484.aspx)。 使事务尽可能短，并在工作完成后关闭数据库连接。 前一个示例中的 using 语句可确保在后续代码阻塞完成时关闭连接。
 

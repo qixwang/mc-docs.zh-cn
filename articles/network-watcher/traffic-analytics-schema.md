@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 origin.date: 02/26/2019
-ms.date: 9/29/2019
+ms.date: 02/27/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 13b74ceb289f5913cb392a4dab76b6c3668d603f
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 4b318cb15e61690dc48b2b6df93784a3539de5a4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674872"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155092"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -143,7 +143,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | LocalNetworkGateway1_s | \<订阅 ID>/\<资源组名称>/\<本地网络网关名称> | 与流中的源 IP 关联的本地网络网关 |
 | LocalNetworkGateway2_s | \<订阅 ID>/\<资源组名称>/\<本地网络网关名称> | 与流中的目标 IP 关联的本地网络网关 |
 | ConnectionType_s | 可能的值为 VNetPeering、VpnGateway 和 ExpressRoute |    连接类型 |
-| ConnectionName_s | \<订阅 ID>/\<资源组名称>/\<连接名称> | 连接名称 |
+| ConnectionName_s | \<订阅 ID>/\<资源组名称>/\<连接名称> | 连接名称。 对于 flowtype P2S，此项的格式将设为 <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | 虚拟网络名称的空格分隔列表 | 对于中心辐射型拓扑，此处将会填充中心虚拟网络 |
 | Country_s | 双字母国家/地区代码 (ISO 3166-1 alpha-2) | 为流类型 ExternalPublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享同一个国家/地区代码 |
 | AzureRegion_s | Azure 区域位置 | 为流类型 AzurePublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享该 Azure 区域 |

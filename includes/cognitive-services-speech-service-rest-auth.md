@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/29/2019
-ms.date: 01/27/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 758ccf7599043d168dbf317ad735c19655e7ab66
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: b0766874d18e0308e6d62c94bc34b9bfe9de7aa2
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123295"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590281"
 ---
 ## <a name="authentication"></a>身份验证
 
@@ -33,9 +33,15 @@ ms.locfileid: "76123295"
 
 若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
 
-支持以下区域和终结点：
+`issueToken` 终结点具有以下格式：
 
-[!INCLUDE [](./cognitive-services-speech-service-endpoints-token-service.md)]
+```
+https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/sts/v1.0/issueToken
+```
+
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
+
+[!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
 使用这些示例创建访问令牌请求。
 

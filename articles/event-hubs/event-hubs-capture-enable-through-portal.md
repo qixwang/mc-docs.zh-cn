@@ -3,8 +3,7 @@ title: 事件中心 - 使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 12/20/2019
-ms.date: 02/17/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3154f991a1410a535bc1042036db7f66e9792d91
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: bd4ca61521bb33113e76ee87c6a6d0988f3cca68
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067742"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154999"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
@@ -35,7 +34,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心中的流
 
 有关详细信息，请参阅[事件中心捕获概述][capture-overview]。
 
-## <a name="capture-data-to-an-azure-storage-account"></a>将数据捕获到 Azure 存储帐户  
+## <a name="capture-data-to-azure-storage"></a>将数据捕获到 Azure 存储
 
 创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。   然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。   由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure Resource Manager，必须以字符串形式显式提供此 URI。
 

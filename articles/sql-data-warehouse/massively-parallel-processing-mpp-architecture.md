@@ -1,6 +1,6 @@
 ---
 title: Azure Synapse Analytics（以前称为 SQL DW）体系结构
-description: 了解 Azure Synapse Analytics（以前称为 SQL DW）如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。
+description: 了解 Azure Synapse Analytics（以前称为 SQL DW）如何将大规模并行处理 (MPP) 与 Azure 存储结合，以实现高性能和可伸缩性。
 services: sql-data-warehouse
 author: WenJason
 manager: digimobile
@@ -8,15 +8,15 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 origin.date: 11/04/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 920a81e70cf84f5d461074749be9dd7ebc09f2c8
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: f587cf9d5e4f284426659ff4df525163fbc85a03
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807650"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154385"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics（以前称为 SQL DW）体系结构 
 
@@ -29,9 +29,10 @@ Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大
 - Spark：深度集成的 Apache Spark（预览） 
 - 数据集成：混合数据集成（预览）
 - Studio：统一的用户体验。  （预览版）
+
 ## <a name="sql-analytics-mpp-architecture-components"></a>SQL Analytics MPP 体系结构组件
 
-[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) 利用向外扩展体系结构在多个节点间分布数据的计算处理。 缩放单位是计算能力（称为[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)）的抽象概念。 计算独立于存储，使用户能够独立于系统中的数据来缩放计算。
+[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) 利用横向扩展体系结构将数据的计算处理分布在多个节点上。 缩放单位是计算能力（称为[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)）的抽象概念。 计算独立于存储，使你能够独立于系统中的数据来缩放计算。
 
 ![SQL Analytics 体系结构](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
@@ -48,7 +49,7 @@ SQL Analytics 使用基于节点的体系结构。 应用程序将 T-SQL 命令�
 
 ### <a name="azure-storage"></a>Azure 存储
 
-SQL Analytics 利用 Azure 存储保护用户数据。  由于数据通过 Azure 存储进行存储和管理，因此会对存储消耗单独收费。 将数据本身分片到“分布区”中来优化系统性能  。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
+SQL Analytics 利用 Azure 存储来确保用户数据安全。  由于数据由 Azure 存储进行存储和管理，因此会针对存储使用量单独收费。 数据将分片到**分布区**，以优化系统性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
 
 * 哈希
 * 轮循机制
@@ -91,38 +92,18 @@ SQL Analytics 利用 Azure 存储保护用户数据。  由于数据通过 Azure
 ## <a name="round-robin-distributed-tables"></a>轮循分布表
 轮循机制表是最简单的表，在被用作负载临时表时，它可创造和提供高速性能。
 
-轮循机制分布表在表中均匀分布数据，但不会进行进一步优化。 首先随机选择一个分布区，然后将行的缓冲区按顺序分配给分布区。 将数据加载到轮循机制表速度很快，但就查询性能而言，哈希分布式表的性能更佳。 轮循机制表上的联接要求重新安排数据，因此这需要花费更多时间。
+轮循机制分布表在表中均匀分布数据，但不会进行进一步优化。 首先随机选择一个分布区，然后将行的缓冲区按顺序分配给分布区。 将数据加载到轮循机制表速度很快，但就查询性能而言，哈希分布式表的性能更佳。 联接循环表要求重新组织数据，因此这需要花费更多时间。
 
 
 ## <a name="replicated-tables"></a>复制表
 复制表为小型表提供最快查询性能。
 
-复制表在每个计算节点上缓存表的完整副本。 因此复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表尤为适用于小型表。 它需要额外存储并且在写入数据时会产生额外负载，因此不适用于大型表。  
+复制表在每个计算节点上缓存表的完整副本。 因此复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表尤为适用于小型表。 它需要额外存储并且在写入数据时会产生额外开销，因此不适用于大型表。  
 
 下图显示了在每个计算节点的第一个分布区上缓存的复制表。  
 
 ![复制表](media/sql-data-warehouse-distributed-data/replicated-table.png "复制表") 
 
 ## <a name="next-steps"></a>后续步骤
-对 Azure Synapse 有了初步的认识后，请学习如何快速[创建 SQL 池][create a SQL pool]和[加载示例数据][load sample data]。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表][Azure glossary] 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
+对 Azure Synapse 有了初步的认识后，请学习如何快速[创建 SQL 池](./sql-data-warehouse-get-started-provision.md)和[加载示例数据](./sql-data-warehouse-load-sample-databases.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../azure-glossary-cloud-terminology.md) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
 
-* [功能请求]
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[功能请求]: https://support.windowsazure.cn/support/support-azure
-
-[SLA for Azure Synapse]: https://www.azure.cn/support/sla/sql-data-warehouse/
-[Service Level Agreements]: https://www.azure.cn/support/legal/sla/

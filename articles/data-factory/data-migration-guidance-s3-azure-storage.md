@@ -1,24 +1,23 @@
 ---
-title: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储
+title: 将数据从 Amazon S3 迁移到 Azure 存储
 description: 使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储。
 services: data-factory
-documentationcenter: ''
-author: WenJason
 ms.author: v-jay
+author: WenJason
 ms.reviewer: ''
 manager: digimobile
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 origin.date: 8/04/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 00cd8f4cf0034560c02a25e691546cc6eb1517c0
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/02/2020
+ms.openlocfilehash: 30bbe97b18f68bb789ee181910e7c90f78d75d2c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624071"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653503"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -49,7 +48,7 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构，�
 
 在单个复制活动运行中，ADF 具有内置的重试机制，因此，它可以处理数据存储或底层网络中特定级别的暂时性故障。 
 
-执行从 S3 到 Blob 以及从 S3 到 ADLS Gen2 的二元复制时，ADF 会自动执行检查点设置。  如果某个复制活动运行失败或超时，在后续重试时（请确保将重试计数设置为 > 1），复制将从上一个失败点继续，而不是从头开始。 
+执行从 S3 到 Blob 以及从 S3 到 ADLS Gen2 的二元复制时，ADF 会自动执行检查点设置。  如果某个复制活动运行失败或超时，在后续重试时，复制将从上一个失败点继续，而不是从头开始。 
 
 ## <a name="network-security"></a>网络安全性 
 

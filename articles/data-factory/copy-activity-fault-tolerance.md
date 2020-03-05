@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中复制活动的容错 | Microsoft Docs
+title: Azure 数据工厂中复制活动的容错
 description: 了解如何通过跳过不兼容行向 Azure 数据工厂中的复制活动添加容错。
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,16 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 10/26/2018
-ms.date: 10/14/2019
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: 8718308ff4cd413684100a07e2a17842fa2f6785
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.openlocfilehash: 5686e85e039fba9f5d964ab44a8599b57ada56ae
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275414"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653513"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 
@@ -36,7 +35,7 @@ ms.locfileid: "72275414"
 
 - **源与接收器之间的列数不匹配**。
 
-    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含多于或少于六个列的 CSV 文件行会被检测为不兼容，并被跳过。
+    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含多于六列的 CSV 文件行将检测为不兼容，并被跳过。
 
 - 写入 SQL Server/Azure SQL 数据库/Azure Cosmos DB 时发生主键冲突  。
 

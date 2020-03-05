@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 416c5738664f4c78f519ccd6c971662a4bc4e509
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: f97493e8d2d9988f997e8a716cc2b833dd62a878
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599402"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155059"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 * [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 Internet 上访问的 [Azure 容器注册表](/container-registry)或其他 Docker 注册表。
-* 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分  。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的“准备部署”部分。
+* 本文档中的步骤假设你熟悉如何创建和使用“推理配置”对象作为模型部署的一部分  。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-deployment-artifacts)的“准备部署”部分。
 
 ## <a name="create-a-custom-base-image"></a>创建自定义基础映像
 
@@ -234,13 +234,12 @@ myenv.inferencing_stack_version = "latest"  # This will install the inference sp
 # Define the packages needed by the model and scripts
 from azureml.core.conda_dependencies import CondaDependencies
 conda_dep = CondaDependencies()
-# Unless you are using your own custom inference stack,
 # you must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-请注意，除非你还使用自己的自定义推理堆栈，否则必须添加版本为 1.0.45 或更高版本的 azureml-defaults 作为 pip 依赖项。 此包包含将模型作为 Web 服务托管所需的功能。
+必须添加版本 >= 1.0.45 的 azureml-defaults 作为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 还必须将环境的 inferencing_stack_version 属性设置为“latest”，这将安装 Web 服务所需的特定 apt 包。 
 
 定义环境后，将其与 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 对象一起使用，以定义模型和 Web 服务将在其中运行的推理环境。
 
@@ -262,7 +261,9 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+
+有关自定义 Python 环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。 
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>将映像与机器学习 CLI 结合使用
 
@@ -294,5 +295,5 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[部署位置和方式](service/how-to-deploy-and-where.md)。
+* 详细了解[部署位置和方式](how-to-deploy-and-where.md)。
 * 了解如何[使用 Azure Pipelines 训练和部署机器学习模型](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)。

@@ -4,15 +4,15 @@ description: 查找有关创建 Azure 资源管理器模板以预配和部署应
 author: tfitzmac
 ms.topic: article
 origin.date: 01/03/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: cda97027a09a6c38ef14de65f566054605cf12fb
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: e18642f2e46aa8d32ef73ee2c24f15116c7137b9
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179318"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566642"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -91,7 +91,7 @@ ms.locfileid: "77179318"
 
 1. 转到站点的 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)。
 2. 浏览到 D:\home\LogFiles\SiteExtensions\MSDeploy 上的文件夹。
-3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果不明白该错误，可将它发布到论坛上来寻求帮助。
+3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果不明白该错误，可将它发布到[论坛](https://docs.microsoft.com/answers/topics/azure-webapps.html)上来寻求帮助。
 
 ## <a name="choose-a-unique-web-app-name"></a>选择唯一的 Web 应用名称
 
@@ -135,3 +135,4 @@ Set-AzKeyVaultAccessPolicy `
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用模板部署 Web 应用的教程，请参阅[按可预见的方式在 Azure 中预配和部署微服务](deploy-complex-application-predictably.md)。
+* 若要了解模板中资源类型的 JSON 语法和属性，请参阅 [Azure 资源管理器模板参考](https://docs.microsoft.com/azure/templates/)。

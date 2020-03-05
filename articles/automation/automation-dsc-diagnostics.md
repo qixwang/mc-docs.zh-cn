@@ -7,15 +7,15 @@ ms.subservice: dsc
 author: WenJason
 ms.author: v-jay
 origin.date: 11/06/2018
-ms.date: 11/18/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 8333c250e6606ef19d484794c06294dbebe36ade
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.openlocfilehash: 1bee4525e9a1e7a7676b53fa85afed83fe296204
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116235"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653551"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志
 
@@ -37,109 +37,115 @@ Azure Automation State Configuration 会将节点状态数据保留 30 天。
 若要开始将 Automation State Configuration 报表发送到 Azure Monitor 日志，需要准备：
 
 - 2016 年 11 月或之后发布的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) (v2.3.0) 版本。
-- 一个 Azure 自动化帐户。 有关详细信息，请参阅 [Azure 自动化入门](automation-offering-get-started.md)
-- 具有“自动化和控制”  服务产品的 Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 日志入门](../azure-monitor/overview.md)。
-- 至少一个 Azure Automation State Configuration 节点。 有关详细信息，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
-- [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) 模块版本 2.7.0.0 或更高版本。 有关安装步骤，请参阅[查看节点上的 DSC 日志](./troubleshoot/desired-state-configuration.md#steps-to-troubleshoot-desired-state-configuration-dsc)。
+- 一个 Azure 自动化帐户。 有关详细信息，请参阅 [Azure 自动化简介](automation-intro.md)。
+- 具有“自动化和控制”服务产品的 Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](/azure-monitor/log-query/get-started-portal)。
+- 至少一个 Azure Automation State Configuration 节点。 有关详细信息，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)。
+- [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) 模块版本 2.7.0.0 或更高版本。 有关安装步骤，请参阅[排查 Azure 自动化 Desired State Configuration 问题](./troubleshoot/desired-state-configuration.md#steps-to-troubleshoot-desired-state-configuration-dsc)。
 
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>设置与 Azure Monitor 日志的集成
 
 若要开始将数据从 Azure Automation DSC 导入到 Azure Monitor 日志，请完成以下步骤：
 
-1. 通过 PowerShell 登录 Azure 帐户。 请参阅[使用 Azure PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)
-1. 通过运行以下 PowerShell 命令获取自动化帐户的 ResourceId  ：（如果具有多个自动化帐户，选择想要配置的帐户的 ResourceID  ）。
+1. 通过 PowerShell 登录 Azure 帐户。 请参阅[使用 Azure PowerShell 进行登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
+1. 通过运行以下 PowerShell cmdlet 获取你的自动化帐户的资源 ID。 如果你有多个自动化帐户，请选择你要配置的帐户的资源 ID。
 
    ```powershell
-   # Find the ResourceId for the Automation Account
+   # Find the ResourceId for the Automation account
    Get-AzResource -ResourceType 'Microsoft.Automation/automationAccounts'
    ```
 
-1. 通过运行以下 PowerShell 命令获取 Log Analytics 工作区的 ResourceId  ：（如果具有多个工作区，选择想要配置的工作区的 ResourceID  ）。
+1. 通过运行以下 PowerShell cmdlet 获取你的 Log Analytics 工作区的资源 ID。 如果你有多个工作区，请选择你要配置的工作区的资源 ID。
 
    ```powershell
    # Find the ResourceId for the Log Analytics workspace
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. 运行以下 PowerShell 命令，将 `<AutomationResourceId>` 和 `<WorkspaceResourceId>` 替换为前面每个步骤中的 ResourceId  值：
+1. 运行以下 PowerShell cmdlet，将 `<AutomationResourceId>` 和 `<WorkspaceResourceId>` 替换为前面每个步骤中的 *ResourceId* 值。
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
    ```
 
-若要停止将数据从 Azure Automation State Configuration 导入到 Azure Monitor 日志，请运行以下 PowerShell 命令：
+1. 若要停止将数据从 Azure Automation State Configuration 导入到 Azure Monitor 日志，请运行以下 PowerShell cmdlet。
 
-```powershell
-Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Category 'DscNodeStatus'
-```
+   ```powershell
+   Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Category 'DscNodeStatus'
+   ```
 
 ## <a name="view-the-state-configuration-logs"></a>查看 Automation State Configuration 日志
 
-为 Automation State Configuration 数据设置与 Azure Monitor 日志的集成后，“日志搜索”  按钮会出现在自动化帐户的“DSC 节点”  边栏选项卡上。 单击“日志搜索”  按钮，查看 DSC 节点数据的日志。
+为 Automation State Configuration 数据设置与 Azure Monitor 日志的集成后，可以通过在 State configuration (DSC) 页面左窗格的“监视”  部分中选择“日志”  来查看这些日志。
 
-![日志搜索按钮](media/automation-dsc-diagnostics/log-search-button.png)
+![日志](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
-“日志搜索”  边栏选项卡将打开，并且你会看到针对每个 State Configuration 节点的“DscNodeStatusData”  操作，以及针对在应用于该节点的节点配置中调用的每个 [DSC 资源](https://docs.microsoft.com/powershell/scripting/dsc/resources/resources)的“DscResourceStatusData”  操作。
+在打开时，“日志搜索”  窗格的查询区域将限定于你的自动化帐户资源。 可以通过搜索 Azure Monitor 日志在 State Configuration 日志中搜索 DSC 操作。 DSC 操作的记录存储在 AzureDiagnostics 表中。 例如，若要查找不符合的节点，请键入以下查询。
 
-“DscResourceStatusData”  操作包含针对失败的任何 DSC 资源的错误信息。
+```AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
+筛选详细信息：
 
-单击列表中的每个操作可查看该操作的数据。
+* 基于 *DscNodeStatusData* 进行筛选将返回每个 State Configuration 节点的操作。
+* 基于 *DscResourceStatusData* 进行筛选将返回在应用于该资源的节点配置中调用的每个 DSC 资源的操作。 
+* 基于 *DscResourceStatusData* 进行筛选将返回失败的任何 DSC 资源的错误信息。
 
-还可以通过在 Azure Monitor 日志中进行搜索来查看日志。
-请参阅[使用日志搜索查找数据](/azure-monitor/log-query/log-query-overview)。
-键入以下查询以查找 State Configuration 日志：`AzureDiagnostics | where ResourceProvider=='MICROSOFT.AUTOMATION' and Category=='DscNodeStatus'`
-
-还可以通过操作名称缩小查询范围。 例如： `AzureDiagnostics | where ResourceProvider=='MICROSOFT.AUTOMATION' and Category=='DscNodeStatus' and OperationName=='DscNodeStatusData'`
+若要详细了解如何构建日志查询来查找数据，请参阅 [Azure Monitor 中的日志查询概述](/azure-monitor/log-query/log-query-overview)。
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>State Configuration 符合性检查失败时发送一封电子邮件
 
 我们的一家重要客户提出的请求是，当 DSC 配置出现问题时能够发送电子邮件或短信。
 
-若要创建预警规则，需要首先针对应调用警报的 State Configuration 报表记录创建日志搜索。 单击“+ 新建警报规则”  按钮以创建并配置警报规则。
+若要创建警报规则，需要首先针对应调用警报的 State Configuration 报表记录创建日志搜索。 单击“+ 新建警报规则”  按钮以创建并配置警报规则。
 
 1. 在“Log Analytics 工作区概述”页中，单击“日志”  。
 1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`AzureDiagnostics | where Category=='DscNodeStatus' and NodeName_s=='DSCTEST1' and OperationName=='DscNodeStatusData' and ResultType=='Failed'`
 
-   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。
-   自动化帐户名称可能派生自 DscNodeStatusData 搜索中的 Resource 字段。
-1. 若要打开“创建规则”  屏幕，请单击页面顶部的“+ 新建警报规则”  。 有关警报配置选项的详细信息，请参阅[创建警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
+   如果已设置在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。 从 DscNodeStatusData 搜索中的资源字段派生自动化帐户名称。
+1. 若要打开“创建规则”  屏幕，请单击页面顶部的“+ 新建警报规则”  。 
+
+有关警报配置选项的详细信息，请参阅[创建警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>在所有节点中查找失败的 DSC 资源
 
 使用 Azure Monitor 日志的一个优点是，可以在节点中搜索失败的检查。
-若要查找失败的 DSC 资源的所有实例。
+若要查找失败的 DSC 资源的所有实例，请执行以下操作：
 
-1. 在“Log Analytics 工作区概述”页中，单击“日志”  。
+1. 在“Log Analytics 工作区概述”页面上，单击“日志”  。
 1. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`AzureDiagnostics | where Category=='DscNodeStatus' and OperationName=='DscResourceStatusData' and ResultType=='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>查看历史 DSC 节点状态
 
-最后，可能需要可视化不同时间段的 DSC 节点状态历史记录。
-可以使用此查询来搜索 DSC 节点状态在不同时间段的状态。
+若要可视化一段时间内的 DSC 节点状态历史记录，可以使用以下查询：
 
 `AzureDiagnostics | where ResourceProvider=="MICROSOFT.AUTOMATION" and Category=="DscNodeStatus" and ResultType!="started" | summarize count() by ResultType, bin(TimeGenerated, 1h)`
 
-这将显示不同时间段的节点状态的图表。
+此查询显示一段时间内的节点状态的图表。
 
 ## <a name="azure-monitor-logs-records"></a>Azure Monitor 日志记录
 
-来自 Azure 自动化的诊断将在 Azure Monitor 日志中创建两种类别的记录。
+Azure 自动化诊断在 Azure Monitor 日志中创建两种类别的记录：
+
+* 节点状态数据 (DscNodeStatusData)
+* 资源状态数据 (DscResourceStatusData)
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
 | 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
-| OperationName |DscNodeStatusData |
+| OperationName |DscNodeStatusData。 |
 | ResultType |节点是否符合。 |
 | NodeName_s |托管节点的名称。 |
 | NodeComplianceStatus_s |节点是否符合。 |
 | DscReportStatus |符合性检查是否已成功运行。 |
-| ConfigurationMode | 如何将配置应用到节点。 可能的值为“ApplyOnly”  、“ApplyandMonitior”  和“ApplyandAutoCorrect”  。 <ul><li>__ApplyOnly__：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 在 ApplyOnly  生效之前，DSC 将尝试应用配置，直到成功。 </li><li> __ApplyAndMonitor__：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 在 ApplyAndMonitor  生效之前，DSC 将尝试应用配置，直到成功。</li><li>__ApplyAndAutoCorrect__：DSC 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
+| ConfigurationMode | 如何将配置应用到节点。 可能的值包括： <ul><li>*ApplyOnly*：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 在 *ApplyOnly* 值生效之前，DSC 将尝试应用配置，直到成功。 </li><li>*ApplyAndMonitor*：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 在 *ApplyAndMonitor* 值生效之前，DSC 将尝试应用配置，直到成功。</li><li>*ApplyAndAutoCorrect*：DSC 将应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
 | HostName_s | 托管节点的名称。 |
 | IPAddress | 托管节点的 IPv4 地址。 |
-| Category | DscNodeStatus |
-| Resource | Azure 自动化帐户的名称。 |
+| Category | DscNodeStatus。 |
+| 资源 | Azure 自动化帐户的名称。 |
 | Tenant_g | 标识调用方的租户的 GUID。 |
 | NodeId_g |标识托管节点的 GUID。 |
 | DscReportId_g |标识报表的 GUID。 |
@@ -147,14 +153,14 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 | ReportStartTime_t |报表开始的日期和时间。 |
 | ReportEndTime_t |报表完成的日期和时间。 |
 | NumberOfResources_d |在应用于节点的配置中调用的 DSC 资源数。 |
-| SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 *Azure* 。 |
-| ResourceId |指定 Azure 自动化帐户。 |
+| SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为“Azure”。 |
+| ResourceId |Azure 自动化帐户的标识符。 |
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
 | resourceGroup | 自动化帐户的资源组名称。 |
-| ResourceProvider | MICROSOFT.AUTOMATION |
-| ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |用作相容性报告相关性 ID 的 GUID。 |
+| ResourceProvider | MICROSOFT.AUTOMATION。 |
+| ResourceType | AUTOMATIONACCOUNTS。 |
+| CorrelationId |作为合规性报告的相关性标识符的 GUID。 |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -164,8 +170,8 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 | OperationName |DscResourceStatusData|
 | ResultType |资源是否符合。 |
 | NodeName_s |托管节点的名称。 |
-| Category | DscNodeStatus |
-| Resource | Azure 自动化帐户的名称。 |
+| Category | DscNodeStatus。 |
+| 资源 | Azure 自动化帐户的名称。 |
 | Tenant_g | 标识调用方的租户的 GUID。 |
 | NodeId_g |标识托管节点的 GUID。 |
 | DscReportId_g |标识报表的 GUID。 |
@@ -183,9 +189,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
 | resourceGroup | 自动化帐户的资源组名称。 |
-| ResourceProvider | MICROSOFT.AUTOMATION |
-| ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |用作相容性报告相关性 ID 的 GUID。 |
+| ResourceProvider | MICROSOFT.AUTOMATION。 |
+| ResourceType | AUTOMATIONACCOUNTS。 |
+| CorrelationId |作为合规性报告相关性 ID 的 GUID。 |
 
 ## <a name="summary"></a>摘要
 
@@ -199,7 +205,7 @@ Azure Monitor 日志可以更直观地显示 Automation State Configuration 数�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关概述，请参阅 [Azure Automation State Configuration](automation-dsc-overview.md)
-- 若要开始使用，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation/#automation)
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.cn/pricing/details/automation/)

@@ -1,20 +1,20 @@
 ---
-title: 创建一个 Azure 虚拟 WAN 虚拟中心路由表以定向到 NVA | Azure
+title: 虚拟 WAN：创建到 NVA 的虚拟中心路由表：Azure PowerShell
 description: 虚拟 WAN 虚拟中心路由表，用于将流量引导到网络虚拟设备。
 services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
-origin.date: 01/09/2019
-ms.date: 09/23/2019
+origin.date: 11/12/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: ea8933a54f641e03a761a2b4d6e15ef0fc79a794
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 26bdddb700b2d9eb2aa9d02372ff9362e175095b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155900"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155019"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>创建一个虚拟中心路由表来将流量引导到网络虚拟设备。
 
@@ -123,11 +123,11 @@ $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 将更改提交到虚拟中心。
 
 ```powershell
-Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "chinanorthhub" -RouteTable $routeTable
+Update-AzVirtualHub -ResourceGroupName "testRG" -Name "chinanorthhub" -RouteTable $routeTable
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解虚拟 WAN，请参阅[虚拟 WAN 概述](virtual-wan-about.md)页。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

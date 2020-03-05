@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 将大量 VMware VM 或物理服务器设置为灾难恢复到 Azure | Azure
+title: 使用 Azure Site Recovery 缩放 VMware/物理灾难恢复
 description: 了解如何使用 Azure Site Recovery 将大量本地 VMware VM 或物理服务器设置为灾难恢复到 Azure。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 08/05/2019
-ms.date: 08/26/2019
+origin.date: 11/14/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5fda8da012b7039f13d4357f03d8f1111905f54d
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 3a0d425517eb8563c66887cb2f824a0d317554c1
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134475"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611228"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
 
@@ -125,7 +125,7 @@ ms.locfileid: "70134475"
 
 配置服务器容量受启用复制的计算机数目的影响，而不受数据变动率的影响。 若要确定是否需要更多的配置服务器，请参考定义的这些 VM 限制。
 
-**CPU** | 内存  | 缓存磁盘  | **复制的计算机限制**
+**CPU** | **内存** | 缓存磁盘  | **复制的计算机限制**
  --- | --- | --- | ---
 8 个 vCPU<br /> 2 个插槽 * 4 个核心 @ 2.5 GHz | 16 GB | 600 GB | 最多 550 台计算机<br /> 假设每台计算机有 3 个 100 GB 的磁盘。
 
@@ -150,7 +150,7 @@ ms.locfileid: "70134475"
 - 若要确定是否需要更多的服务器，请参考下表。
 - 我们建议添加最高规格的服务器。 
 
-**CPU** | 内存  | 缓存磁盘  | **变动率**
+**CPU** | **内存** | 缓存磁盘  | **变动率**
  --- | --- | --- | --- 
 12 个 vCPU<br /> 2 个插槽 * 6 个核心 @ 2.5 GHz | 24 GB | 1 GB | 每天最大 2 TB
 
@@ -215,5 +215,4 @@ ms.locfileid: "70134475"
 > [!div class="nextstepaction"]
 > [监视 Site Recovery](site-recovery-monitor-and-troubleshoot.md)
 
-<!-- Update_Description: new article about vmware physical large deployment -->
-<!--ms.date: 07/08/2018-->
+<!-- Update_Description: update meta properties, wording update, update link -->

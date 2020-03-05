@@ -1,24 +1,24 @@
 ---
-title: 创建 Azure 虚拟 WAN 虚拟中心路由表 - Azure 门户 | Azure
+title: 虚拟 WAN：创建到 NVA 的虚拟中心路由表：Azure 门户
 description: 使用门户创建用于将流量定向到网络虚拟设备的虚拟 WAN 虚拟中心路由表。
 services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
-origin.date: 03/27/2019
-ms.date: 06/28/2019
+origin.date: 11/12/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6cc54a8561cef46dcf54ebdd0fe31a6e9f87d66a
-ms.sourcegitcommit: 7ad1a199e9f81de27b9098b50062ef059099f765
+ms.openlocfilehash: d8443ad3781f2c2a1967845bfed288bd0d3974bc
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461872"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154536"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 NVA 的虚拟 WAN 中心路由表：Azure 门户
 
-本文介绍如何将流量从中心定向到网络虚拟设备 (NVA)。
+本文介绍如何通过网络虚拟设备 (NVA) 将流量从连接到虚拟 WAN 中心的分支（本地站点）引导到辐射 VNet。
 
 ![虚拟 WAN 示意图](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -26,14 +26,14 @@ ms.locfileid: "67461872"
 
 验证是否符合以下条件：
 
-*  已有一个网络虚拟设备 (NVA)。 网络虚拟设备是所选的第三方软件，它通常是通过虚拟网络中的 Azure 市场预配的。
+* 已有一个网络虚拟设备 (NVA)。 网络虚拟设备是所选的第三方软件，它通常是通过虚拟网络中的 Azure 市场预配的。
 
     * 必须向 NVA 网络接口分配一个专用 IP 地址。
 
     * 该 NVA 不是部署在虚拟中心内。 它必须部署在单独的 VNet 中。
 
-    *  可将一个或多个虚拟网络连接到 NVA VNet。 本文将 NVA VNet 称作“间接辐射 VNet”。 可以使用 VNet 对等互连将这些 VNet 连接到 NVA VNet。
-*  已创建 2 个 VNet。 这些 VNet 将用作辐射 VNet。
+    * 可将一个或多个虚拟网络连接到 NVA VNet。 本文将 NVA VNet 称作“间接辐射 VNet”。 可以使用 VNet 对等互连将这些 VNet 连接到 NVA VNet。 在上图中，Vnet 1、Vnet 2 和 NVA Vnet 之间的 Vnet 对等互连链路用黑色箭头表示。
+* 已创建 2 个 VNet。 这些 VNet 将用作辐射 VNet。
 
     * 在本练习中，VNet 辐射地址空间为：VNet1：10.0.2.0/24，VNet2：10.0.3.0/24。 有关如何创建 VNet 的信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。
 
@@ -72,7 +72,7 @@ ms.locfileid: "67461872"
 
 使用中心路由表更新中心。 对于本练习，可以使用以下值：
 
-* **间接辐射 VNet 地址空间：** （VNet1 和 VNet2）10.0.2.0/24 和 10.0.3.0/24
+* **辐射 VNet 地址空间：** （VNet1 和 VNet2）10.0.2.0/24 和 10.0.3.0/24
 * **外围网络 NVA 网络接口专用 IP 地址：** 10.0.4.5
 
 1. 导航到你的虚拟 WAN。
@@ -85,7 +85,7 @@ ms.locfileid: "67461872"
 <a name="connections"></a>
 ## <a name="5-create-the-vnet-connections"></a>5.创建 VNet 连接
 
-创建从每个间接辐射 VNet（VNet1 和 VNet2）到中心的连接。 然后，创建从 NVA VNet 到中心的连接。
+创建从每个间接辐射 VNet（VNet1 和 VNet2）到中心的 Vnet 连接。 这些 Vnet 连接在上图中用蓝色箭头表示。 然后，创建从 NVA VNet 到中心的 Vnet 连接（图中的黑色箭头）。 
 
  对于此步骤，可以使用以下值：
 
@@ -111,5 +111,4 @@ ms.locfileid: "67461872"
 
 若要详细了解虚拟 WAN，请参阅[虚拟 WAN 概述](virtual-wan-about.md)页。
 
-<!--Update_Description: new articles on virtual wan route table portal -->
-<!--ms.date: 07/01/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

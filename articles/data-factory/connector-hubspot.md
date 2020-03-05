@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂（预览版）从 HubSpot 复制数据| Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HubSpot 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,16 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 08/01/2018
-ms.date: 11/11/2019
+origin.date: 01/08/2020
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: aafb2b9e922c96aec462d52d697bfd9c40272ba1
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: dee3bc7ab73da6a35c1790252e0ad7ee695ac10c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648800"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653527"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 HubSpot 复制数据
 
@@ -49,12 +48,12 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 HubSpot 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Hubspot  | 是 |
-| clientId | 与 Hubspot 应用程序关联的客户端 ID。  | 是 |
-| clientSecret | 与 Hubspot 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| accessToken | 最初进行 OAuth 集成身份验证时获得的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| clientId | 与 HubSpot 应用程序关联的客户端 ID。 从[此处](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)了解如何在 HubSpot 中创建应用。 | 是 |
+| clientSecret | 与 HubSpot 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| accessToken | 最初进行 OAuth 集成身份验证时获得的访问令牌。 从[此处](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)了解如何使用客户端 ID 和机密获取访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 最初进行 OAuth 集成身份验证时获得的刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
@@ -64,7 +63,7 @@ HubSpot 链接服务支持以下属性：
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -92,22 +91,22 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将数据集的 type 属性设置为“HubspotObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：HubspotObject  | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
         "typeProperties": {},
         "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
         }
     }
@@ -122,10 +121,10 @@ HubSpot 链接服务支持以下属性：
 
 要从 HubSpot 复制数据，请将复制活动中的源类型设置为“HubspotSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：HubspotSource  | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：HubspotSource  | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -136,7 +135,7 @@ HubSpot 链接服务支持以下属性：
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],

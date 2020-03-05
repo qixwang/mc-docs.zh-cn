@@ -3,18 +3,19 @@ author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 12/13/2019
-ms.date: 01/06/2020
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: 1cb19f502ba16eecdef40cda929e2dce4b807668
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: ea3067b6ec31ef1dced188f805085fe0bbe00aac
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624312"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780765"
 ---
 | Category              | 数据存储                                                   | [Copy 活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [Lookup 活动](../articles/data-factory/control-flow-lookup-activity.md) | [Get Metadata 活动](../articles/data-factory/control-flow-get-metadata-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
 | **Azure**             | [Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
+| &nbsp;                | [Azure 认知搜索索引](../articles/data-factory/connector-azure-search.md) | −/✓                                                          |                                                              |                                                              |                                                              |
 | &nbsp;                | [Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure Cosmos DB 的 API for MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) | ✓/✓                                                          |                                                              |                                                              |                                                              |
 | &nbsp;                | [Azure 数据资源管理器](../articles/data-factory/connector-azure-data-explorer.md) | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
@@ -27,7 +28,7 @@ ms.locfileid: "75624312"
 | &nbsp;                | [Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure Synapse Analytics（以前称为 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
-| **数据库**          | [Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
+| **Database**          | [Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [DB2](../articles/data-factory/connector-db2.md)             | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Drill](../articles/data-factory/connector-drill.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Google BigQuery](../articles/data-factory/connector-google-bigquery.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
@@ -96,4 +97,4 @@ ms.locfileid: "75624312"
 | &nbsp;                | [Zoho（预览）](../articles/data-factory/connector-zoho.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
 
 > [!NOTE]
-> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。  若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://support.azure.cn/zh-cn/support/contact/)。
+> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。  若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://support.azure.cn/zh-cn/support/contact/)。

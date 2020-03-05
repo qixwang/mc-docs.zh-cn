@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 03/27/2018
-ms.date: 02/10/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 9e76f561f8abe9ae9d24f7265e8af76c86ef5f9a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: fee676d51d803df89e0bec0434cbf4f0780b404e
+ms.sourcegitcommit: 67be241cebe8ef015d4cad9e7bd58656ed3ba9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428425"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566943"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -66,8 +66,10 @@ ms.locfileid: "77428425"
 通过确保可用性集中的 VM 的磁盘彼此之间完全隔离以避免单点故障，[托管磁盘](../articles/virtual-machines/windows/managed-disks-overview.md)为可用性集提供了更佳的可靠性。 为此，会自动将磁盘放置在不同的存储容错域（存储群集）中，并使它们与 VM 容错域一致。 如果某个存储容错域因硬件或软件故障而失败，则只有其磁盘在该存储容错域上的 VM 实例会失败。
 ![托管磁盘 FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
+<!--CORRECT ON keep fixed by region currently in China -->
+
 > [!IMPORTANT]
-> 托管可用性集的容错域的数目因区域而异 - 每个区域两个。 您可以通过运行以下脚本来查看每个区域的容错域。
+> 托管可用性集的容错域数目前在中国按区域保持固定 - 每个区域两个。 您可以通过运行以下脚本来查看每个区域的容错域。
 
 <!--Not Available on or three per region-->
 
@@ -86,7 +88,6 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 > - 停止/解除分配第一个 VM
 > - 在这种情况下部署第二个 VM，可能会在与第一个 VM 相同的容错域中创建第二个 VM 的 OS 磁盘，因此第二个 VM 也将位于同一容错域中。 
 > 若要避免此问题，建议不要在两次部署之间停止/解除分配 VM。
-
 
 如果计划使用包含非托管磁盘的 VM，请按下述针对存储帐户的最佳做法进行操作。在这些存储帐户中，VM 的虚拟硬盘 (VHD) 以[页 Blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) 形式存储。
 

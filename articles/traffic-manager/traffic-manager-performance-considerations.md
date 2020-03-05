@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/16/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d3c9e6c4d6059a6383b233b6cb6042b3e54c52ef
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 0decf69a421325372a5e26040739be1780d52df6
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857192"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653208"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
@@ -37,9 +37,9 @@ ms.locfileid: "70857192"
 
 DNS 名称解析速度会加快，结果将被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果在 DNS 生存时间 (TTL) 期间内缓存。 流量管理器的默认 TTL 为 300 秒。
 
-流量不会通过流量管理器。 完成 DNS 查找后，客户端便获得了网站实例的 IP 地址。 客户端直接连接到该地址，而不通过流量管理器。 选择的流量管理器策略对 DNS 性能没有影响。 但是，“性能”路由方法可能会对应用程序体验产生负面影响。 例如，如果策略将来自中国北部的流量重定向到亚洲托管的实例，这些会话的网络延迟可能会造成性能问题。
+流量不会通过流量管理器。 完成 DNS 查找后，客户端便获得了网站实例的 IP 地址。 客户端直接连接到该地址，而不通过流量管理器。 选择的流量管理器策略对 DNS 性能没有影响。 但是，“性能”路由方法可能会对应用程序体验产生负面影响。 例如，如果策略将来自中国北部的流量重定向到中国东部托管的实例，这些会话的网络延迟可能会造成性能问题。
 
-<!--Notice: Currently is 中国北部-->
+<!--CORRECT ON if your policy redirects traffic from China North to an instance hosted in China East -->
 
 ## <a name="measuring-traffic-manager-performance"></a>测量流量管理器性能
 

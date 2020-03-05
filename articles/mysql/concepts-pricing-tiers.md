@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL 的定价层
+title: 定价层 - Azure Database for MySQL
 description: 了解 Azure Database for MySQL 的各种定价层，包括计算代系、存储类型、存储大小、vCore 数、内存和备份保留期。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 07/31/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 23fe99419b4597cca02636dcd18ddcbd7a5c6c20
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 12/02/2019
+ms.date: 03/02/2020
+ms.openlocfilehash: a5575eedd14de88604d7e146710924443b451778
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142092"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154349"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -27,7 +27,7 @@ ms.locfileid: "73142092"
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
-| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
+| 存储类型 | Azure 基本存储 | Azure 常规用途存储 | Azure 常规用途存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
 可以从下表着手来选择定价层。
@@ -50,7 +50,7 @@ ms.locfileid: "73142092"
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
+| 存储类型 | Azure 基本存储 | Azure 常规用途存储 | Azure 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |

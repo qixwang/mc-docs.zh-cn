@@ -12,17 +12,16 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 02/06/2019
-ms.date: 12/02/2019
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 63c1a22e5fcf651cb34632d70db64c935d6f32f4
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 1cd1d39a8b47e7575153733cb16564d7ceb148e0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658005"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155118"
 ---
-<!--Verify successfully-->
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
 本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的[事件中心](event-hubs-what-is-event-hubs.md)命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
@@ -36,6 +35,7 @@ ms.locfileid: "74658005"
 如需完整的模板，请单击以下 GitHub 链接：
 
 - [事件中心和启用“捕获到存储”模板][Event Hub and enable Capture to Storage template] 
+
 <!-- Not Available on [Event hub and enable Capture to Azure Data Lake Store template][Event Hub and enable Capture to Azure Data Lake Store template]-->
 
 > [!NOTE]
@@ -103,7 +103,7 @@ ms.locfileid: "74658005"
 
 ### <a name="partitioncount"></a>partitionCount
 
-事件中心内创建的分区数。
+要在事件中心内创建的分区数。
 
 ```json
 "partitionCount":{
@@ -339,14 +339,12 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.md)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
-[Azure Quickstart Templates]:  https://github.com/Azure/azure-quickstart-templates/?term=event+hubs
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
 
 <!-- Not Available on [Azure Resources naming conventions]: https://www.azure.cn/documentation/articles/guidance-naming-conventions/-->
 <!-- Not Available on [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls-->
 
-<!-- Update_Description: new articles on event hubs resource manager namespace event hub enbale capture -->
-<!--ms.date: 09/17/2018-->

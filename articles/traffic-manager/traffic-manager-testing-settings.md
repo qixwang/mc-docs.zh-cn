@@ -1,6 +1,6 @@
 ---
 title: 验证 Azure 流量管理器设置
-description: 本文帮助验证流量管理器设置。
+description: 本文介绍如何验证流量管理器设置和测试流量路由方法。
 services: traffic-manager
 author: rockboyfor
 ms.service: traffic-manager
@@ -9,14 +9,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/16/2017
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: efc8f611dc13fa1bbe911c37093d909c2c2d94fb
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: 41558e32e02698d767ddd755f62b9a5f3f154f7c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514210"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653195"
 ---
 # <a name="verify-traffic-manager-settings"></a>验证流量管理器设置
 

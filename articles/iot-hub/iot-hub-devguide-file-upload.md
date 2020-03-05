@@ -8,13 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 origin.date: 11/07/2017
 ms.author: v-yiso
-ms.date: 07/15/2019
-ms.openlocfilehash: 4d4c9e2d1a4ad3af28c1382b36c9dd46161b8498
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.date: 03/09/2020
+ms.openlocfilehash: 56dce13c6eb1297d792ef3063b05f2d2f9fab03e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569800"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154634"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -62,7 +62,7 @@ IoT 中心返回以下数据，供设备用来上传文件：
 
 ### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>已弃用：使用 GET 初始化文件上传
 > [!NOTE]
-> 本部分介绍已弃用的功能，这些功能用于从 IoT 中心接收 SAS URI。 使用前面所述的 POST 方法。
+> 本部分介绍已弃用的功能，该功能用于从 IoT 中心接收 SAS URI。 使用前面所述的 POST 方法。
 
 IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储的 SAS URI，另一个用于通知 IoT 中心已完成上传。 设备通过在 `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` 向 IoT 中心发送 GET 来启动文件上传过程。 IoT 中心返回：
 
@@ -125,6 +125,8 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |
 | **fileNotifications.lockDuration** |文件上传通知队列的锁定持续时间。 |5 到 300 秒（最小为 5 秒）。 默认值：60 秒。 |
 | **fileNotifications.maxDeliveryCount** |文件上传通知队列的最大传递计数。 |1 到 100。 默认值：100。 |
+
+可以使用 Azure 门户、Azure CLI 或 PowerShell 设置 IoT 中心的这些属性。 若要了解如何操作，请参阅[配置文件上传](iot-hub-configure-file-upload.md)下的主题。
 
 ## <a name="additional-reference-material"></a>其他参考资料
 

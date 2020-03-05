@@ -2,20 +2,16 @@
 title: 使用 webhook 启动 Azure 自动化 runbook
 description: 一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
-origin.date: 03/19/2019
-ms.date: 11/18/2019
+origin.date: 01/16/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 0ed3fe456528938b537a825ed598c27fa554085c
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.openlocfilehash: c662275fb05263974c46b7cf46291540aa5137f7
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116222"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653545"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>使用 webhook 启动 Azure 自动化 runbook
 
@@ -33,7 +29,7 @@ ms.locfileid: "74116222"
 
 | 属性 | 说明 |
 |:--- |:--- |
-| Name |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
+| 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | URL |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 |与证书一样，每个 Webhook 都有一个过期日期，到了过期日期 Webhook 不再可用。 创建 Webhook 后，只要它没有到期，就可以修改此到期日期。 |
 | Enabled |Webhook 在创建后默认启用。 如果将它设置为“已禁用”，则没有客户端可以使用它。 可以在创建 Webhook 时设置“已启用”  属性，也可以在创建后随时设置它。 |
@@ -96,7 +92,7 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 1. 在 Azure 门户的“Runbook”页  中，单击需要通过 Webhook 来启动以查看其详细信息页的 Runbook。 请确保 runbook **状态**为“已发布”  。
 2. 单击页面顶部的 **Webhook** 以打开“添加 Webhook”  页。
 3. 单击“新建 Webhook”  以打开“创建 Webhook”  页。
-4. 指定 Webhook 的**名称**、**到期日期**，以及是否应启用它。 有关这些属性的详细信息，请参阅 [Webhook 详细信息](#details-of-a-webhook)。
+4. 指定 Webhook 的**名称**、**到期日期**，以及是否应启用它。 若需这些属性的详细信息，请参阅 [Webhook 详细信息](#details-of-a-webhook) 。
 5. 单击复制图标，并按 Ctrl+C 以复制 Webhook 的 URL。 然后，将其记录在某个安全的位置。 **一旦创建 Webhook，就不能再次检索该 URL。**
 
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
@@ -131,7 +127,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 ## <a name="renew-webhook"></a>续订 Webhook
 
-Webhook 在创建后将具有一年的有效期。 一年后，Webhook 将自动到期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
+创建 Webhook 后，其有效期为 10 年。 该期限过后，Webhook 将自动过期。 Webhook 到期后将无法将其重新激活，必须将其删除并重新创建。 如果 Webhook 还未达到其到期时间，则可对其进行延期。
 
 若要扩展 Webhook，请导航到包含 Webhook 的 runbook。 选择“资源” ****下的“Webhook”**** 。 单击要延期的 Webhook，此操作将打开“Webhook”  页面。  选择新的到期日期和时间，然后单击“保存”  。
 

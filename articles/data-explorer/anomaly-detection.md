@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 数据资源管理器中进行时序异常情况检测和预测
+title: 时序异常情况检测和预测 - Azure 数据资源管理器
 description: 了解如何使用 Azure 数据资源管理器分析时序数据以检测和预测异常情况。
 author: orspod
-ms.author: v-tawe
+ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 84b92a1a665c2227eb679314fae3e69d5e8f558d
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.date: 03/09/2020
+ms.openlocfilehash: f09e9b943dd4320a204c2147f2a8ade1194060c3
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179334"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590262"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
 
@@ -21,7 +21,7 @@ Azure 数据资源管理器持续从云服务或 IoT 设备收集遥测数据。
 
 本文将详细介绍 Azure 数据资源管理器时序异常情况检测和预测功能。 适用的时序函数基于一个可靠的已知分解模型，其中的每个原始时序将分解成季节性组件、趋势组件和残余组件。 异常情况是根据残余组件上的离群值检测的，而预测则是通过推算季节性组件和趋势组件执行的。 Azure 数据资源管理器实现显著增强了基本分解模型，它可以自动检测季节性、可靠分析离群值，并使用矢量化实现在几秒钟内处理数千个时序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 有关时序功能的概述，请参阅 [Azure 数据资源管理器中的时序分析](https://docs.azure.cn/data-explorer/time-series-analysis)。
 
@@ -32,6 +32,7 @@ Azure 数据资源管理器持续从云服务或 IoT 设备收集遥测数据。
 
 例如，可以使用以下查询分解内部 Web 服务的流量：
 
+<!-- **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)**\]** -->
 
 ```kusto
 let min_t = datetime(2017-01-05);

@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器中的查询存储功能的使用方案
+title: 查询存储方案 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的查询存储功能的一些使用方案。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 5/6/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 2e96ff0d3d39a83429af8c5062b21545bcf063b8
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.date: 03/02/2020
+ms.openlocfilehash: 943693cf3e82412ad2dfa12a56b913076f8f7bc1
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71307875"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154400"
 ---
 # <a name="usage-scenarios-for-query-store"></a>查询存储的使用方案
 
@@ -27,13 +27,14 @@ ms.locfileid: "71307875"
 ## <a name="identify-and-tune-expensive-queries"></a>识别并优化消耗高的查询 
 
 ### <a name="identify-longest-running-queries"></a>识别运行时间最长的查询 
-这些查询往往占用大量资源。 优化运行时间最长的问题可以通过释放资源以供系统上运行的其他查询使用来提高性能。 
+使用 Azure 门户中的 [Query Performance Insight](concepts-query-performance-insight.md) 视图快速识别运行时间最长的查询。 这些查询往往占用大量资源。 优化运行时间最长的问题可以通过释放资源以供系统上运行的其他查询使用来提高性能。 
 
 ### <a name="target-queries-with-performance-deltas"></a>使用性能增量定位查询 
 查询存储将性能数据切分为多个时间窗口，使你可以跟踪查询的性能。 这有助于精确地确定哪些查询会增加花费的总时间。 从而，你可以对工作负载进行有针对性的故障排除。
 
 ### <a name="tuning-expensive-queries"></a>优化消耗资源的查询 
 发现查询的性能不佳时，采取的操作取决于问题的性质： 
+- 使用[性能建议](concepts-performance-recommendations.md)确定是否有任何建议的索引。 如果有，请创建索引，然后使用“查询存储”评估创建索引后的查询性能。 
 - 确保查询使用的基础表的统计信息是最新的。
 - 考虑重新编写消耗大量资源的查询。 例如，利用查询参数化并减少动态 SQL 的使用。 在读取数据时实现最佳逻辑，例如在数据库端（而非应用程序端）应用数据过滤。 
 

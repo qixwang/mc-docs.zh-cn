@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 门户中查看托管标识的服务主体
+title: 在 Azure 门户中查看托管标识的服务主体 - Azure AD
 description: 在 Azure 门户中查看托管标识的服务主体的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 11/29/2018
-ms.date: 11/13/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0290b82ddcb04409685534f04ca01fbd05b4cee0
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 04c9e48f117ab2b5da5cc7b76813ef3e9572fbeb
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653453"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>在 Azure 门户中查看托管标识的服务主体
 
@@ -43,7 +42,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 该过程演示如何查看启用了系统分配标识的 VM 的服务主体（相同的步骤也适用于应用程序）。
 
 1. 依次单击“Azure Active Directory”、“企业应用程序”   。
-2. 在“应用程序类型”下，选择“所有应用程序”   。
+2. 在“应用程序类型”  下，选择“所有应用程序”  ，然后单击“应用”  。
 3. 在搜索筛选器框中，键入已启用托管标识的 VM 或应用程序的名称，或从显示的列表中选择它。
 
    ![在门户中查看托管标识服务主体](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)

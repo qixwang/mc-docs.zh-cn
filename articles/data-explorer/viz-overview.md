@@ -4,17 +4,17 @@ description: 了解可视化 Azure 数据资源管理器数据的不同方式
 services: data-explorer
 author: orspod
 ms.author: v-tawe
-ms.reviewer: rkarlin
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 06/03/2019
-ms.date: 08/05/2019
-ms.openlocfilehash: fa137e8b0dfd2e64908d420d18d08f9cf32f0e8c
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+origin.date: 01/30/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 95e9d4c7930e63e87d5750a89c9b7972d08e34a6
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884054"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590190"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 数据资源管理器进行数据可视化 
 
@@ -38,7 +38,7 @@ Azure 数据资源管理器提供使用各种方法连接到 [Power BI](https://
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Azure 数据资源管理器提供使用内置本机 Excel 连接器连接到 [Microsoft Excel](https://products.office.com/excel) 的功能，也可以将查询从 Azure 数据资源管理器导入 Excel。
+Azure 数据资源管理器提供了使用[内置本机 Excel 连接器](excel-connector.md)连接到 [Microsoft Excel](https://products.office.com/excel)，或者从 Azure 数据资源管理器[导入查询](excel-blank-query.md)到 Excel 的功能。
 
 <!-- ## Grafana -->
 
@@ -60,3 +60,7 @@ Azure 数据资源管理器提供使用 [ODBC 连接器](/data-explorer/connect-
 ## <a name="sisense"></a>Sisense
 
 Azure 数据资源管理器提供使用 JDBC 连接器连接到 [Sisense](https://www.sisense.com) 的功能。 请[将 Azure 数据资源管理器设置为 Sisense 的数据源，然后将数据可视化](/data-explorer/sisense)。
+
+## <a name="redash"></a>Redash
+
+可以使用 [Redash](https://redash.io/) 来构建仪表板以及将数据可视化。 [将 Azure 数据资源管理器设置为 Redash 的数据源，然后将数据可视化](/data-explorer/redash)。

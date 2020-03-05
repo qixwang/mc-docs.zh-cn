@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d51d1d74048edc79d688f9a35b62e22b200cc8ca
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 803c4f20be8458d7758db7c66787e99d2f792669
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982155"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154553"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
@@ -75,27 +75,24 @@ ms.locfileid: "74982155"
 
 [意向](luis-concept-intent.md)表示用户想执行的任务或操作。 系指用户输入的内容中所表达的目的或目标，比如预订航班、支付帐单或查找新闻文章。 在 LUIS 中，意向预测基于整个话语。 而实体是话语片段。
 
-<a name="labeling"></a>
 ## <a name="labeling"></a>标记
 
 标记是将某个意向的[话语](#utterance)中的词或短语与[实体](#entity)（数据类型）相关联的过程。
 
-<a name="luis-app"></a>
 ## <a name="luis-app"></a>LUIS 应用
 
-LUIS 应用是经过训练的、用于自然语言处理（包括[意向](#intent)、[实体](#entity)和标记的[话语](#utterance)）的数据模型。
+LUIS 应用是用于自然语言处理的语言模型的集合，包括[意向](#intent)、[实体](#entity)和标记的[话语](#utterance)。
 
-<a name="owner"></a>
 ## <a name="owner"></a>所有者
 
 每个应用都有一个所有者，即创建应用的人。 所有者可以添加[协作者](#collaborator)。
 
-<a name="pattern"></a>
-## <a name="patterns"></a>模式
+## <a name="pattern"></a>模式
 之前的模式功能已替换为[模式](luis-concept-patterns.md)。 使用模式，通过提供较少的训练示例来提高预测准确性。
 
-<a name="prebuilt-domains"></a>
-## <a name="prebuilt-domain"></a>预生成域
+## <a name="phrase-list"></a>短语列表
+
+[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 可互换的列表被视为同义词。
 
 预生成域是为特定域配置的 LUIS 应用，例如家庭自动化 (HomeAutomation) 或餐厅订位 (RestaurantReservation)。 已为此域配置意向、话语和实体。
 
@@ -108,18 +105,15 @@ LUIS 应用是经过训练的、用于自然语言处理（包括[意向](#inten
 ## <a name="precision"></a>Precision
 在批处理测试中，精准率（也称为正预测值）是相关话语在检索到的话语中所占的比例。
 
-<a name="programmatic-key"></a>
 ## <a name="programmatic-key"></a>编程密钥
 
 已重命名为[创作密钥](#authoring-key)。
 
-<a name="publish"></a>
 ## <a name="publish"></a>发布
 
-发布指在暂存或生产[终结点](#endpoint)上提供一个 LUIS [活动版本](#active-version)。  
+发布指在暂存或生产[终结点](#endpoint)上提供一个 LUIS 活动版本。  
 
-<a name="quota"></a>
-## <a name="quota"></a>Quota
+## <a name="quota"></a>配额
 
 LUIS 配额是 [Azure 订阅层](https://www.azure.cn/zh-cn/pricing/details/cognitive-services)的限制。 可同时通过每秒请求数（HTTP 状态 429）和每月请求总数（HTTP 状态 403）来限制 LUIS 配额。
 
@@ -127,20 +121,16 @@ LUIS 配额是 [Azure 订阅层](https://www.azure.cn/zh-cn/pricing/details/cogn
 ## <a name="recall"></a>召回率
 在批处理测试中，召回率（也称为敏感度）是 LUIS 进行通用化的能力。
 
-<a name="semantic-dictionary"></a>
 ## <a name="semantic-dictionary"></a>语义字典
 可通过列表实体页以及短语列表页获取语义字典。 语义字典基于当前作用域提供字词建议。
 
-<a name="sentiment-analysis"></a>
 ## <a name="sentiment-analysis"></a>情绪分析
 情绪分析提供[文本分析](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/)所提供的话语的正值或负值。
 
-<a name="speech-priming"></a>
 ## <a name="speech-priming"></a>语音启动
 
 语音启动允许使用 LUIS 模型预先准备语音服务。
 
-<a name="spelling-correction"></a>
 ## <a name="spelling-correction"></a>拼写更正
 
 启用必应拼写检查器，在进行预测前更正话语中拼写错误的字词。
@@ -157,24 +147,22 @@ LUIS 配额是 [Azure 订阅层](https://www.azure.cn/zh-cn/pricing/details/cogn
 
 订阅密钥是与[你在 Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的**预测终结点**密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥  。 它是“subscription-key”名称/值对的值  。
 
-<a name="test"></a>
 ## <a name="test"></a>测试
 
 测试 LUIS 应用就是将一个话语传递至 LUIS 并查看 JSON 结果。
 
-<a name="timezoneoffset"></a>
-## <a name="timezone-offset"></a>时区偏移
+## <a name="timezoneoffset"></a>时区偏移
 
 包含 timezoneOffset 的终结点。 这是要从预生成的实体 datetimeV2 删除或向其添加的分钟数。 例如，如果话语为“现在几点了？”，则返回的 datetimeV2 是发出客户端请求时的当前时间。 如果客户端请求来自聊天机器人或其他不同于聊天机器人的用户的应用程序，则应传入机器人与该用户之间的时间偏差量。
 
 请参阅[更改预生成的 datetimeV2 实体的时区](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity)。
 
-<a name="token"></a>
-## <a name="token"></a>令牌
+## <a name="token"></a>标记
 标记是实体中可标记的最小单位。 词汇切分基于应用程序的[区域性](luis-language-support.md#tokenization)。
 
-<a name="train"></a>
-## <a name="train"></a>定型
+## <a name="train"></a>训练
+
+训练指让 LUIS 了解并习得自上次训练之后对活动版本所做的更改的过程。
 
 训练指让 LUIS 了解并习得自上次训练之后对[活动版本](#active-version)所做的更改的过程。
 
@@ -183,11 +171,6 @@ LUIS 配额是 [Azure 订阅层](https://www.azure.cn/zh-cn/pricing/details/cogn
 
 话语是一条自然语言短语，例如“订 2 张下周二到西雅图的票”。 将话语示例添加到意向。
 
-<a name="version"></a>
 ## <a name="version"></a>版本
 
 LUIS [版本](luis-how-to-manage-versions.md)是与 LUIS 应用 ID 和所发布的终结点关联的特定数据模型。 每个 LUIS 应用至少有一个版本。
-
-
-
-

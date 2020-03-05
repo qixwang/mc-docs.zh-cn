@@ -1,24 +1,22 @@
 ---
 title: 连接到 Azure AD 时对 WebAPI 项目所做的更改
 description: 介绍使用 Visual Studio 连接到 Azure AD 时，WebAPI 项目会发生什么情况
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
-origin.date: 03/12/2018
-ms.date: 09/03/2018
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 623d79e783aa4a7709621be51c3b13a644202985
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 3260e3bc1c47c83ce02c3571c8aed621adbff9e4
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52647256"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653098"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
@@ -45,7 +43,7 @@ ms.locfileid: "52647256"
 | .NET; NuGet | Owin |
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 
-选择了“读取目录数据”选项时的其他引用：
+选择了“读取目录数据”  选项时的其他引用：
 
 | 类型 | 参考 |
 | --- | --- |
@@ -70,7 +68,7 @@ ms.locfileid: "52647256"
 ## <a name="project-file-changes"></a>项目文件更改
 
 - 将属性 `IISExpressSSLPort` 设置为不同的数字。
-- 将属性 `WebProject_DirectoryAccessLevelKey` 设置为 0 或 1（如果选择了“读取目录数据”选项）。
+- 将属性 `WebProject_DirectoryAccessLevelKey` 设置为 0 或 1（如果选择了“读取目录数据”  选项）。
 - 将属性 `IISUrl` 设置为 `https://localhost:<port>/`，其中 `<port>` 匹配 `IISExpressSSLPort` 值。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config 或 app.config 发生更改
@@ -93,7 +91,7 @@ ms.locfileid: "52647256"
 
 - 在 `System.IdentityModel.Tokens.Jwt` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
 
-- 如果选择了“读取目录数据”选项，在 `<appSettings>` 下添加了以下配置条目：
+- 如果选择了“读取目录数据”  选项，在 `<appSettings>` 下添加了以下配置条目：
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -103,7 +101,7 @@ ms.locfileid: "52647256"
 
 - 向 `Controllers/ValueController.cs` 和任何其他现有控制器添加了 `[Authorize]` 属性。
 
-- 添加了身份验证启动类 `App_Start/Startup.Auth.cs`（其中包含 Azure AD 身份验证的启动逻辑）或相应地对其进行了修改。 如果选择了“读取目录数据”选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
+- 添加了身份验证启动类 `App_Start/Startup.Auth.cs`（其中包含 Azure AD 身份验证的启动逻辑）或相应地对其进行了修改。 如果选择了“读取目录数据”  选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
 
 - （仅限带 ASP.NET 4 应用的 Visual Studio 2015）删除了 `App_Start/IdentityConfig.cs`，并添加了 `Controllers/AccountController.cs`、`Models/IdentityModel.cs` 和 `Providers/ApplicationAuthProvider.cs`。
 
@@ -124,13 +122,13 @@ ms.locfileid: "52647256"
 ## <a name="changes-on-azure"></a>对 Azure 的更改
 
 - 在添加连接服务时选择的域中创建了 Azure AD 应用程序。
-- 更新了应用，以便在选择了“读取目录数据”选项时包含“读取目录数据”权限。
+- 更新了应用，以便在选择了“读取目录数据”选项时包含“读取目录数据”  权限。
 
 [详细了解 Azure Active Directory](https://www.azure.cn/home/features/active-directory/)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)
 
 <!-- Update_Description: link update -->

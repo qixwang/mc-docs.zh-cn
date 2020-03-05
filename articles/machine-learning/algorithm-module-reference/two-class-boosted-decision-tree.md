@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a415eec59b653b242b57752f9d7a66d8d980a20c
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 35cdf9386043fa2a88da01904f42b9efac988123
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598373"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155072"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>“双类提升决策树”模块
 
@@ -26,7 +27,7 @@ ms.locfileid: "75598373"
   
 通常，当配置正确时，提升决策树是可在各种机器学习任务中获得最佳性能的最简单方法。 但是，它们也是占用大量内存的学习器之一，并且当前实现将所有内容都保存在内存中。 因此，提升决策树模型可能无法处理某些线性学习器可以处理的大型数据集。
 
-## <a name="how-to-configure"></a>如何配置
+## <a name="how-to-configure"></a>配置方式
 
 此模块创建一个未训练的分类模型。 由于分类是一种监督式学习方法，所以，若要训练模型，你需要一个“带标记的数据集”  ，其中包含一个标签列，该列在所有行中都有一个值。
 
@@ -67,10 +68,11 @@ ms.locfileid: "75598373"
    
 ## <a name="results"></a>结果
 
-在模型训练完成后，右键单击[训练模型](./train-model.md)的输出来查看结果：
+在训练完成后：
 
-+ 若要查看在每次迭代时创建的树，请选择“可视化”  。 
-+ 若要向下钻取到拆分并查看每个节点的规则，请单击每个树。
++ 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
+
++ 若要使用模型进行评分，请向管道中添加**评分模型**模块。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,14 +3,14 @@ title: 如何创建 Guest Configuration 策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux VM 的 Azure Policy Guest Configuration 策略。
 ms.author: v-tawe
 origin.date: 12/16/2019
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 9f122fbfdf8a6fd31ce9d98ba7d179ccd880fb0b
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: 2bb741a72e283e52948b4360080d9ee733b8f8f3
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112171"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78042304"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建 Guest Configuration 策略
 
@@ -271,7 +271,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-对于 Linux 策略，请在配置中包含属性 **AttributesYmlContent** 并相应地覆盖值。 Guest Configuration 代理会自动创建供 InSpec 用来存储属性的 YaML 文件。 请参阅以下示例。
+对于 Linux 策略，请在配置中包含属性 **AttributesYmlContent** 并根据需要覆盖值。 来宾配置代理会自动创建 InSpec 用来存储属性的 YAML 文件。 请参阅以下示例。
 
 ```powershell
 Configuration FirewalldEnabled {
@@ -376,9 +376,9 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 GitHub 上的[生成新的 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)一文中全面介绍了如何创建可在 Linux 计算机上使用的 GPG 密钥。
 
-发布内容后，将名为 `GuestConfigPolicyCertificateValidation`、值为 `enabled` 的标记追加到需要代码签名的所有虚拟机。 可以使用 Azure Policy 大规模传送此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。 追加此标记后，使用 `New-GuestConfigurationPolicy` cmdlet 生成的策略定义可通过 Guest Configuration 扩展来满足要求。
+发布内容后，将名为 `GuestConfigPolicyCertificateValidation`、值为 `enabled` 的标记追加到需要代码签名的所有虚拟机。 请参阅[标记示例](../samples/built-in-policies.md#tags)，了解如何使用 Azure Policy 大规模传递标记。 追加此标记后，使用 `New-GuestConfigurationPolicy` cmdlet 生成的策略定义可通过 Guest Configuration 扩展来满足要求。
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[预览] 排查 Guest Configuration 策略分配问题
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>排查 Guest Configuration 策略分配问题（预览版）
 
 我们已提供一个预览版工具用于帮助排查 Azure Policy Guest Configuration 分配问题。 该工具目前为预览版，已发布到 PowerShell 库，其名称为 [Guest Configuration 故障排除工具](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)。
 

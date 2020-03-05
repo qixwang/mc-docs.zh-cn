@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/28/2019
 ms.date: 11/19/2019
-ms.openlocfilehash: 408ef9f32649415cd1057dfd21e2f8040f1376aa
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 5080f0364da0466231d631f11c6af5774322bee2
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854642"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155124"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -110,7 +110,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
 在本示例中，有可能显示了很多广告，但很少有人点击它们，并且需要保留该时间范围内的所有事件。 内存消耗量与时间范围大小和事件发生速率成比例。 
 
-若要修正此问题，请将事件发送到依据联接键（在此情况下为 ID）分区的事件中心，并通过允许系统使用 PARTITION BY  分别处理每个输入分区来横向扩展查询，如下所示：
+若要修正此问题，请将事件发送到按联接键（在本示例中为 ID）分区的事件中心，并通过允许系统使用 PARTITION BY  单独处理每个输入分区来横向扩展查询，如下所示：
 
    ```sql
    SELECT clicks.id

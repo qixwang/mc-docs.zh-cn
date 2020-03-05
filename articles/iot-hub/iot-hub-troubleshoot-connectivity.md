@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: 74f726275ed65e7dfecd03d89597a6a3ab1ccb8f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 906373ba32dc9d5a541a983b347d4021d6e3f2d9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068290"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154564"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>监视、诊断和排查 Azure IoT 中心的连接断开问题
 
@@ -101,6 +101,7 @@ ms.locfileid: "77068290"
 
 * 如果你有权以物理方式或远程访问（例如通过 SSH）有问题的设备，请遵循[设备端故障排除指南](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices)继续进行故障排除。
 * 在 Azure 门户 > IoT 中心 > IoT 设备中验证你的设备是否**已启用**。
+* 如果设备使用 MQTT 协议，请确认端口 8883 已打开。 有关详细信息，请参阅[连接到 IoT 中心 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 * 从 [Azure IoT 中心论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) 或 [Azure 支持](https://azure.microsoft.com/support/options/)获得帮助。
 
 如果本指南未能提供所需的帮助，请在下面的反馈部分中留言，以帮助我们改进文档。

@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MariaDB 中的查询存储
+title: 查询存储 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 中的查询存储功能，可以帮助你跟踪一段时间内的性能。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: 26458e4646f1115027e3949ed7a2bb929ffa9825
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+origin.date: 12/02/2019
+ms.date: 03/02/2020
+ms.openlocfilehash: bb525e3da7606dd69ec6ffa99086daea17646e5a
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530649"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154352"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
 
@@ -92,7 +92,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 |---|---|---|---|
 | query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果 performance_schema 为 OFF，则打开 query_store_capture_mode 会打开 performance_schema，以及此功能所需的一部分性能架构检测。 | ALL | NONE、ALL |
 | query_store_capture_interval | 查询存储捕获时间间隔，以分钟为单位。 允许指定聚合查询指标的时间间隔 | 15 | 5 - 60 |
-| query_store_capture_utility_queries | 打开或关闭捕获系统中正在执行的所有实用工具查询的功能。 | 否 | YES、NO |
+| query_store_capture_utility_queries | 打开或关闭捕获系统中正在执行的所有实用工具查询的功能。 | 是 | YES、NO |
 | query_store_retention_period_in_days | 在查询存储中保留数据的时限，以天为单位。 | 7 | 1 - 30 |
 
 以下选项专用于等待统计信息。
@@ -117,50 +117,50 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。
 
-| **名称** | 数据类型  | **IS_NULLABLE** | **说明** |
+| **名称** | **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
-| `schema_name`| varchar(64) | 否 | 架构名称 |
-| `query_id`| bigint(20) | 否| 为特定查询生成的唯一 ID，如果在不同的架构中执行同一个查询，将生成新的 ID |
-| `timestamp_id` | timestamp| 否| 执行查询时的时间戳。 此值基于 query_store_interval 配置|
-| `query_digest_text`| longtext| 否| 删除所有文本后的规范化查询文本|
-| `query_sample_text` | longtext| 否| 首次出现的包含文本的实际查询|
+| `schema_name`| varchar(64) | 是 | 架构名称 |
+| `query_id`| bigint(20) | 是| 为特定查询生成的唯一 ID，如果在不同的架构中执行同一个查询，将生成新的 ID |
+| `timestamp_id` | timestamp| 是| 执行查询时的时间戳。 此值基于 query_store_interval 配置|
+| `query_digest_text`| longtext| 是| 删除所有文本后的规范化查询文本|
+| `query_sample_text` | longtext| 是| 首次出现的包含文本的实际查询|
 | `query_digest_truncated` | bit| 是| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
-| `execution_count` | bigint(20)| 否| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
-| `warning_count` | bigint(20)| 否| 此查询在该时间间隔内生成的警告数|
-| `error_count` | bigint(20)| 否| 此查询在该时间间隔内生成的错误数|
+| `execution_count` | bigint(20)| 是| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
+| `warning_count` | bigint(20)| 是| 此查询在该时间间隔内生成的警告数|
+| `error_count` | bigint(20)| 是| 此查询在该时间间隔内生成的错误数|
 | `sum_timer_wait` | Double| 是| 此查询在该时间间隔内的总执行时间|
 | `avg_timer_wait` | Double| 是| 此查询在该时间间隔内的平均执行时间|
 | `min_timer_wait` | Double| 是| 此查询的最小执行时间|
 | `max_timer_wait` | Double| 是| 最大执行时间|
-| `sum_lock_time` | bigint(20)| 否| 在此时间范围内对此查询执行的所有锁花费的总时间|
-| `sum_rows_affected` | bigint(20)| 否| 受影响的行数|
-| `sum_rows_sent` | bigint(20)| 否| 发送到客户端的行数|
-| `sum_rows_examined` | bigint(20)| 否| 检查的行数|
-| `sum_select_full_join` | bigint(20)| 否| 完整联接的数目|
-| `sum_select_scan` | bigint(20)| 否| select 扫描数 |
-| `sum_sort_rows` | bigint(20)| 否| 排序的行数|
-| `sum_no_index_used` | bigint(20)| 否| 查询未使用任何索引的次数|
-| `sum_no_good_index_used` | bigint(20)| 否| 查询执行引擎未使用任何适当索引的次数|
-| `sum_created_tmp_tables` | bigint(20)| 否| 创建的临时表总数|
-| `sum_created_tmp_disk_tables` | bigint(20)| 否| 在磁盘中创建的临时表总数（生成 I/O）|
-| `first_seen` | timestamp| 否| 在聚合时段发生第一次查询的时间 (UTC)|
-| `last_seen` | timestamp| 否| 在此聚合时段发生最后一次查询的时间 (UTC)|
+| `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
+| `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
+| `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|
+| `sum_rows_examined` | bigint(20)| 是| 检查的行数|
+| `sum_select_full_join` | bigint(20)| 是| 完整联接的数目|
+| `sum_select_scan` | bigint(20)| 是| select 扫描数 |
+| `sum_sort_rows` | bigint(20)| 是| 排序的行数|
+| `sum_no_index_used` | bigint(20)| 是| 查询未使用任何索引的次数|
+| `sum_no_good_index_used` | bigint(20)| 是| 查询执行引擎未使用任何适当索引的次数|
+| `sum_created_tmp_tables` | bigint(20)| 是| 创建的临时表总数|
+| `sum_created_tmp_disk_tables` | bigint(20)| 是| 在磁盘中创建的临时表总数（生成 I/O）|
+| `first_seen` | timestamp| 是| 在聚合时段发生第一次查询的时间 (UTC)|
+| `last_seen` | timestamp| 是| 在此聚合时段发生最后一次查询的时间 (UTC)|
 
 ### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-| **名称**| 数据类型  | **IS_NULLABLE** | **说明** |
+| **名称**| **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
-| `interval_start` | timestamp | 否| 间隔开始时间（15 分钟增量）|
-| `interval_end` | timestamp | 否| 间隔结束时间（15 分钟增量）|
-| `query_id` | bigint(20) | 否| 针对规范化查询生成的唯一 ID（从查询存储）|
-| `query_digest_id` | varchar(32) | 否| 删除所有文本后的规范化查询文本（从查询存储） |
-| `query_digest_text` | longtext | 否| 首次出现的包含文本的实际查询（从查询存储） |
-| `event_type` | varchar(32) | 否| 等待事件的类别 |
-| `event_name` | varchar(128) | 否| 等待事件的名称 |
-| `count_star` | bigint(20) | 否| 在查询间隔内采样的等待事件数 |
-| `sum_timer_wait_ms` | Double | 否| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
+| `interval_start` | timestamp | 是| 间隔开始时间（15 分钟增量）|
+| `interval_end` | timestamp | 是| 间隔结束时间（15 分钟增量）|
+| `query_id` | bigint(20) | 是| 针对规范化查询生成的唯一 ID（从查询存储）|
+| `query_digest_id` | varchar(32) | 是| 删除所有文本后的规范化查询文本（从查询存储） |
+| `query_digest_text` | longtext | 是| 首次出现的包含文本的实际查询（从查询存储） |
+| `event_type` | varchar(32) | 是| 等待事件的类别 |
+| `event_name` | varchar(128) | 是| 等待事件的名称 |
+| `count_star` | bigint(20) | 是| 在查询间隔内采样的等待事件数 |
+| `sum_timer_wait_ms` | Double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
 
 ### <a name="functions"></a>函数
 
@@ -177,3 +177,6 @@ SELECT * FROM mysql.query_store_wait_stats;
 - 等待统计信息的保留期为 24 小时。
 - 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 修改频率。
 
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解 [Query Performance Insight](concepts-query-performance-insight.md)

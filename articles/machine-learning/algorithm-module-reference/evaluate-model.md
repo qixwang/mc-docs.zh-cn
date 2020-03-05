@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: 72d9dd04ea791f3aa359b5b4727122afd800197b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: keli19
+origin.date: 02/11/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 4a01466e2c16a1cfdbade34693ea15ca8c42445e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598695"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154944"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
 
@@ -61,14 +62,11 @@ ms.locfileid: "75598695"
 
 1. 将[评分模型](score-model.md)的“已评分数据集”输出连接到“评估模型”的输入。   
 2. 将第二个模型的“评分模型”模块的输出连接到“评估模型”右侧的输入。 
-3. 右键单击“评估模型”，并选择“运行所选项”来生成评分。  
+3. 运行管道。
 
 ## <a name="results"></a>结果
 
-运行“评估模型”后，右键单击该模块并选择“评估结果”来查看结果。   方法：
-
-+ 将结果另存为数据集，以方便使用其他工具进行分析
-+ 在设计器中生成可视化效果
+运行“评估模型”后，右键单击该模块并选择“将评估结果可视化”来查看结果。  
 
 如果将数据集连接到“评估模型”的两个输入，结果将包含两个数据集或两个模型的指标。 
 附加到左侧端口的模型或数据先显示在报告中，其后是附加到右侧端口的数据集或模型的指标。  
@@ -104,7 +102,7 @@ ms.locfileid: "75598695"
   
 - “训练对数损失”是表示分类器相比随机预测的优势的单个评分。  对数损失通过将模型输出的概率与标签中的已知值（真实值）进行比较，来度量模型的不确定性。 我们希望最大程度地减小整个模型的对数损失。
 
-##  <a name="bkmk_regression"></a> 回归模型的指标
+###  <a name="bkmk_regression"></a> 回归模型的指标
  
 针对回归模型返回的指标旨在估计误差量。  如果观测值与预测值之间的差很小，则认为模型能够很好地拟合数据。 不过，查看残差模式（任何一个预测点与其对应实际值之间的差）可以很好地判断模型中的潜在偏差。  
   
@@ -118,7 +116,7 @@ ms.locfileid: "75598695"
   
 - 类似地，“相对平方误差 (RSE)”除以实际值的总平方误差，以此规范化预测值的总平方误差。   
   
-- “平均 0-1 误差 (MZOE)”指示预测是否正确。   换言之：当 `x!=y` 时，`ZeroOneLoss(x,y) = 1`；否则 `0`。
+
   
 - “决定系数”（通常称为 R<sup>2</sup>）表示模型的预测能力，值为 0 到 1。  如果为 0，则模型是随机的（不解释任何信息）；1 表示完美拟合。 不过，在解释 R<sup>2</sup> 值时请小心，因为低值可能完全正常，而高值可能是可疑的。
   

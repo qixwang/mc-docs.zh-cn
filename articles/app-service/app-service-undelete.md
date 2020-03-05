@@ -4,19 +4,22 @@ description: 了解如何在 Azure 应用服务中还原已删除的应用。 �
 author: btardif
 ms.author: v-tawe
 origin.date: 09/23/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.topic: article
-ms.service: app-service
-ms.openlocfilehash: 80803175c2e467f03c07511c480455f52aa153da
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 065fbc811a0346b7da1050ce9132b138e0002bfd
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600521"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566651"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 
 如果意外删除了 Azure 应用服务中的应用，可以使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0)中的命令还原它。
+
+> [!NOTE]
+> 初始删除 30 天后，已删除的应用将从系统中清除。 应用一旦被清除，将无法恢复。
+>
 
 ## <a name="re-register-app-service-resource-provider"></a>重新注册应用服务资源提供程序
 有些客户可能会遇到这样的问题：检索已删除的应用的列表时失败。 若要解决此问题，请运行以下命令：

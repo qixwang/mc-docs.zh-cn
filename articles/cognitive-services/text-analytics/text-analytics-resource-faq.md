@@ -1,7 +1,7 @@
 ---
 title: 有关文本分析 API 的常见问题解答
 titleSuffix: Azure Cognitive Services
-description: 获取有关文本分析 API 的常见问题解答。
+description: 查找与 Azure 认知服务的文本分析 API 有关的概念、代码和方案相关的常见问题解答。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 02/13/2019
 ms.date: 03/01/2019
 ms.author: v-junlch
-ms.openlocfilehash: 542ebabd52567e72ec538aeac1cc0f04e222cb01
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.openlocfilehash: 5f9e3f555b4b8fbaa0971b67631294365b603ae5
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57204002"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154790"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>有关文本分析认知服务的常见问题解答 (FAQ)
 
@@ -46,4 +46,11 @@ ms.locfileid: "57204002"
 
 如果更改较大，则会宣布对模型和算法进行改进；如果更新很小，则会悄悄地将其整合到服务中。 随着时间的推移，你可能会发现相同的文本输入会产生不同的情绪分数或关键短语输出。 这是在云中使用托管机器学习资源的正常且有意的结果。
 
-<!-- Update_Description: update metedata properties -->
+## <a name="next-steps"></a>后续步骤
+
+问题是否与缺少功能相关？ 请考虑在我们的 [UserVoice 网站](https://cognitive.uservoice.com/forums/555922-text-analytics)上为其发起请求或投票。
+
+## <a name="see-also"></a>另请参阅
+
+ [StackOverflow：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow：认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

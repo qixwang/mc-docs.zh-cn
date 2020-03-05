@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 针对物理本地服务器设置到 Azure 的灾难恢复
+title: 使用 Azure Site Recovery 设置物理本地服务器的灾难恢复
 description: 了解如何使用 Azure Site Recovery 服务针对本地 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。
-services: site-recovery
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: article
-origin.date: 09/09/2019
-ms.date: 09/30/2019
+origin.date: 11/12/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 995f793b86f8b94737267787e6fa975f2ee8cde0
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 17587f57b6aa1b65ac03c35ab2b37993ab4dce7e
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611247"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -71,7 +70,7 @@ ms.locfileid: "71340863"
 
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
-设置 [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)。
+设置 [Azure 存储帐户](../storage/common/storage-account-create.md)。
 
 - Site Recovery 将本地计算机复制到 Azure 存储。 发生故障转移后，通过存储创建 Azure VM。
 - 存储帐户必须位于与恢复服务保管库相同的区域。
@@ -99,7 +98,7 @@ ms.locfileid: "71340863"
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-设置配置服务器，将它注册到保管库中，并且发现 VM。
+设置配置服务器，将它注册到保管库中，并发现 VM。
 
 1. 单击“Site Recovery”   > “准备基础结构”   > “源”  。
 2. 如果没有配置服务器，请单击“+配置服务器”  。
@@ -182,4 +181,4 @@ ms.locfileid: "71340863"
 
 [运行灾难恢复演练](tutorial-dr-drill-azure.md)。
 
-<!-- Update_Description: update link, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

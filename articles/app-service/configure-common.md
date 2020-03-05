@@ -5,15 +5,15 @@ keywords: azure 应用服务, web 应用, 应用设置, 环境变量
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 origin.date: 08/13/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: a82f17961d2172afa012f2b06b82aba1e173ec28
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 04d5ad44aa257080c688496853347ee4ae55df98
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600500"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566615"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -23,9 +23,11 @@ ms.locfileid: "75600500"
 
 <!-- For Linux apps and custom containers, App Service passes app settings to the container using the `--env` flag to set the environment variable in the container. -->
 
-在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 
 
-在 [Azure 门户]中，导航到应用的管理页。 在应用的左侧菜单中，单击“配置” > “应用程序设置”。  
+![搜索应用服务](./media/configure-common/search-for-app-services.png)
+
+在应用的左侧菜单中，选择“配置” > “应用程序设置”。  
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
@@ -77,7 +79,7 @@ ms.locfileid: "75600500"
 
 ## <a name="configure-connection-strings"></a>配置连接字符串
 
-在 [Azure 门户]中，导航到应用的管理页。 在应用的左侧菜单中，单击“配置” > “应用程序设置”。  
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 在应用的左侧菜单中，选择“配置” > “应用程序设置”。  
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
@@ -142,7 +144,7 @@ ms.locfileid: "75600500"
 
 ## <a name="configure-general-settings"></a>配置常规设置
 
-在 [Azure 门户]中，导航到应用的管理页。 在应用的左侧菜单中，单击“配置” > “应用程序设置”。  
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 在应用的左侧菜单中，选择“配置” > “常规设置”。  
 
 ![常规设置](./media/configure-common/open-general.png)
 
@@ -167,9 +169,9 @@ ms.locfileid: "75600500"
 
 此设置仅适用于 Windows 应用。
 
-在 [Azure 门户]中，导航到应用的管理页。 在应用的左侧菜单中，单击“配置” > “默认文档”。  
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 在应用的左侧菜单中，选择“配置” > “默认文档”。  
 
-![常规设置](./media/configure-common/open-documents.png)
+![默认文档](./media/configure-common/open-documents.png)
 
 默认文档是在网站的根 URL 中显示的网页。 使用列表中第一个匹配文件。 若要添加新的默认文档，请单击“新建文档”。  别忘了单击“保存”。 
 
@@ -177,9 +179,9 @@ ms.locfileid: "75600500"
 
 ## <a name="configure-path-mappings"></a>配置路径映射
 
-在 [Azure 门户]中，导航到应用的管理页。 在应用的左侧菜单中，单击“配置” > “路径映射”。  
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 在应用的左侧菜单中，选择“配置” > “路径映射”。  
 
-![常规设置](./media/configure-common/open-path.png)
+![路径映射](./media/configure-common/open-path.png)
 
 “路径映射”页根据 OS 类型显示不同的内容。 
 

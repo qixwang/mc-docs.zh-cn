@@ -5,18 +5,18 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.topic: overview
-origin.date: 07/31/2019
-ms.date: 11/13/2019
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce3458fd3562287354e577e815a30a37f2b99df2
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 133c07c1aa3a1ebb8d214dd6e862da44ca81d142
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084709"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653087"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
@@ -26,9 +26,9 @@ Azure Active Directory (Azure AD) is Microsoft’s cloud-based identity and acce
 
 Azure AD 适用于：
 
-- **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](/active-directory/)。
+- **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始使用，请注册 [30 天 Azure Active Directory Premium 试用版](/active-directory/)。
 
-- **应用开发人员。** 作为应用开发人员，你可以使用 Azure AD 作为一种基于标准的方法，将单一登录 (SSO) 添加到应用中，从而允许它使用用户预先存在的凭据。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分使用现有的组织数据。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](/active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
+- **应用开发人员。** 作为应用开发人员，你可以使用 Azure AD 作为一种基于标准的方法，将单一登录 (SSO) 添加到应用中，从而允许它使用用户预先存在的凭据。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分使用现有的组织数据。 若要开始使用，请注册 [30 天 Azure Active Directory Premium 试用版](/active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
 
 - **Microsoft 365、Office 365、Azure。** 作为订阅者，你已在使用 Azure AD。 每个 Microsoft 365、Office 365 和 Azure 租户都会自动成为 Azure AD 租户。 你可以立即开始管理用户对集成云应用的访问。
 
@@ -70,7 +70,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Azure）要求通过 Azure
 |帐户管理员|从概念上讲，此经典订阅管理员角色是订阅的账单所有者。 此角色可以访问 [Azure 帐户中心](https://account.windowsazure.cn/Subscriptions)，用于管理一个帐户中的所有订阅。 有关详细信息，请参阅[经典订阅管理员角色、Azure 基于角色的访问控制 (RBAC) 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |服务管理员|此经典订阅管理员角色用于管理所有 Azure 资源，包括访问权限。 此角色拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 有关详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |所有者|此角色有助于管理所有 Azure 资源，包括访问权限。 此角色在称为基于角色的访问控制 (RBAC) 的较新授权系统上构建，该系统可提供对 Azure 资源的精细访问管理。 有关详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
-|Azure AD 全局管理员|此管理员角色自动分配给创建 Azure AD 租户的人员。 全局管理员可以执行 Azure AD 以及与 Azure AD 联合的任意服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）的所有管理功能。 可以有多个全局管理员，但只有全局管理员才能向用户分配管理员角色（包括分配其他全局管理员）。<br><br>**注意**<br>此管理员角色在 Azure 门户中称为“全局管理员”，但在 Microsoft Graph API、Azure AD Graph API 和 Azure AD PowerShell 中称为“公司管理员”。 <br><br>有关各种管理员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。|
+|Azure AD 全局管理员|此管理员角色自动分配给创建 Azure AD 租户的人员。 全局管理员可以执行 Azure AD 以及与 Azure AD 联合的任意服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）的所有管理功能。 可以有多个全局管理员，但只有全局管理员才能向用户分配管理员角色（包括分配其他全局管理员）。<br><br>**注意**<br>此管理员角色在 Azure 门户中称为“全局管理员”，但在 Microsoft Graph API 和 Azure AD PowerShell 中称为“公司管理员”。 <br><br>有关各种管理员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。|
 
 ## <a name="next-steps"></a>后续步骤
 

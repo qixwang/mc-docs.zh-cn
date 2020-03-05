@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 12/9/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 34ee68b271115697cea0aff035b52c1dc946f238
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.date: 03/02/2020
+ms.openlocfilehash: 18b0b2a72b888d9a777a6f03fb6253be941157de
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776738"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154350"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 
@@ -42,6 +42,11 @@ ms.locfileid: "75776738"
 
 当连接数超出限制时，可能会收到以下错误：
 > 错误 1040 (08004)：连接过多
+
+> [!IMPORTANT]
+> 为了获得最佳体验，我们建议你使用 ProxySQL 之类的连接池程序来有效地管理连接。
+
+创建与 MySQL 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

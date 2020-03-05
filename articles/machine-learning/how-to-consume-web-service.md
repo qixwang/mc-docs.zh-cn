@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: aashishb
+ms.author: v-yiso
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/06/2019
+origin.date: 01/07/2020
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 05bc27e3bac3e25a6d31692eb78e0086361f4fc1
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 810bae985c718883612b28bdadd8ae9b7cc0e8ce
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598831"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155017"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,13 +74,22 @@ ms.locfileid: "75598831"
     print(service.swagger_uri)
     ```
 
+### <a name="secured-web-service"></a>受保护的 Web 服务
+
+如果已使用 SSL 证书保护部署的 Web 服务，则可以使用评分或 swagger URI 通过 [HTTPS](https://en.wikipedia.org/wiki/HTTPS) 连接到该服务。 HTTPS 对客户端和 Web 服务之间的通信进行加密来帮助保护两者之间的通信。 加密使用[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为安全套接字层 (SSL)，这是 TLS 的前身  。
+
+> [!IMPORTANT]
+> Azure 机器学习部署的 Web 服务仅支持 TLS 版本 1.2。 创建客户端应用程序时，请确保它支持此版本。
+
+有关详细信息，请参阅[使用 SSL 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)。
+
 ### <a name="authentication-for-services"></a>服务的身份验证
 
 Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 |身份验证方法|ACI|AKS|
 |---|---|---|
-|密钥|默认已禁用| 默认已启用|
+|键|默认已禁用| 默认已启用|
 |令牌| 不可用| 默认已禁用 |
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
@@ -162,7 +172,7 @@ REST API 预期请求正文是采用以下结构的 JSON 文档：
 
 Web 服务可以接受一个请求中的多个数据集。 它会返回包含响应数组的 JSON 文档。
 
-### <a name="binary-data"></a>二进制数据
+### <a name="binary-data"></a>Binary data
 
 有关如何在服务中启用对二进制数据的支持的信息，请参阅[二进制数据](how-to-deploy-and-where.md#binary)。
 
@@ -495,10 +505,10 @@ print(resp.text)
 
 Power BI 支持使用 Azure 机器学习 Web 服务，以通过预测来扩充 Power BI 中的数据。 
 
-若要生成支持在 Power BI 中使用的 Web 服务，架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](/machine-learning/service/how-to-deploy-and-where#example-entry-script)。
+若要生成支持在 Power BI 中使用的 Web 服务，架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](/machine-learning/how-to-deploy-and-where#example-entry-script)。
 
 在部署 Web 服务后，可通过 Power BI 数据流来使用它。 [了解如何通过 Power BI 使用 Azure 机器学习 Web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看 Python 和深度学习模型的实时评分的参考体系结构，请转至 [Azure 体系结构中心](/architecture/reference-architectures/ai/realtime-scoring-python)。
+若要查看 Python 和深度学习模型的实时评分的参考体系结构，请转至 [Azure 体系结构中心](https://docs.microsoft.com/architecture/reference-architectures/ai/realtime-scoring-python)。

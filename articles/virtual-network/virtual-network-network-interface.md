@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 07/24/2017
-ms.date: 01/13/2020
+origin.date: 01/22/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0d332e67e0f2cf9e46195c590e30a8c5c81fc75d
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: cb1d1b75744f3dd2b01a625f13cd45ea33f8b6d1
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859212"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653263"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -40,8 +40,6 @@ ms.locfileid: "75859212"
 - 如果使用 Azure 命令行界面 (CLI) 命令来完成本文中的任务，请从计算机运行 CLI。 本教程需要 Azure CLI 2.0.28 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
-
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="create-a-network-interface"></a>创建网络接口
 
@@ -97,7 +95,7 @@ ms.locfileid: "75859212"
     - **属性：** 显示有关网络接口的关键设置，包括其 MAC 地址（若网络接口未附加到虚拟机，则为空）及其所在的订阅。
     - **有效的安全规则：** 如果网络接口已附加到正在运行的虚拟机，且某 NSG 已关联到该接口和/或其分配到的子网，则会列出安全规则。 若要了解有关显示内容的详细信息，请参阅[查看有效的安全规则](#view-effective-security-rules)。 若要了解有关 NSG 的详细信息，请参阅[网络安全组](security-overview.md)。
     - **有效的路由：** 如果网络接口已附加到正在运行的虚拟机，则会列出路由。 路由是 Azure 默认路由、用户定义的任何路由以及网络接口分配到的子网可能存在的任何 BGP 路由的组合。 若要了解有关显示内容的详细信息，请参阅[查看有效的路由](#view-effective-routes)。 若要了解有关 Azure 默认路由和用户定义的路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
-    - **常见的 Azure 资源管理器设置：** 若要详细了解常见的 Azure 资源管理器设置，请参阅[活动日志](../azure-monitor/platform/activity-logs-overview.md)、[访问控制 (IAM)](../role-based-access-control/overview.md)、[标记](../azure-resource-manager/resource-group-using-tags.md?toc=%2fvirtual-network%2ftoc.json)、[锁定](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fvirtual-network%2ftoc.json)和[自动化脚本](../azure-resource-manager/templates/export-template-portal.md)。
+    - **常见的 Azure 资源管理器设置：** 若要详细了解常见的 Azure 资源管理器设置，请参阅[活动日志](../azure-monitor/platform/platform-logs-overview.md)、[访问控制 (IAM)](../role-based-access-control/overview.md)、[标记](../azure-resource-manager/management/tag-resources.md?toc=%2fvirtual-network%2ftoc.json)、[锁定](../azure-resource-manager/management/lock-resources.md?toc=%2fvirtual-network%2ftoc.json)和[自动化脚本](../azure-resource-manager/templates/export-template-portal.md)。
 
 <a name="view-settings-commands"></a>**命令**
 
@@ -179,7 +177,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 只有在网络接口连接到虚拟机的情况下，才可以使用门户将网络接口添加到应用程序安全组或从中删除。 无论网络接口是否连接到虚拟机，都可使用 PowerShell 或 Azure CLI 将网络接口添加到应用程序安全组或从中删除。 了解[应用程序安全组](security-overview.md#application-security-groups)以及如何[创建应用程序安全组](manage-network-security-group.md)。
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，键入虚拟机的名称，该虚拟机具有要添加到应用程序安全组或要从应用程序安全组中删除的网络接口  。 当 VM 名称显示在搜索结果中时，将其选中。
-2. 在“设置”下选择“网络”   。  选择“配置应用程序安全组”，选中要在其中添加网络接口的应用程序安全组，或取消选中要从中删除网络接口的应用程序安全组，然后选择“保存”   。 只有位于同一虚拟网络的网络接口才能添加到同一应用程序安全组。 应用程序安全组必须与网络接口位于同一位置。
+2. 在“设置”下选择“网络”   。  依次选择“应用程序安全组”  、“配置应用程序安全组”  ，选择要向其添加网络接口的应用程序安全组，或者取消选择要从中删除网络接口的应用程序安全组，然后选择“保存”  。 只有位于同一虚拟网络的网络接口才能添加到同一应用程序安全组。 应用程序安全组必须与网络接口位于同一位置。
 
  命令
 
@@ -208,8 +206,8 @@ IP 转发使网络接口附加到的虚拟机能够：
 只要网络接口未附加到虚拟机，即可删除此接口。 如果已将网络接口连接到虚拟机，必须先将虚拟机置于停止（解除分配）状态，然后才能将网络接口从虚拟机中拆离。 若要从虚拟机中分离网络接口，请完成[从虚拟机中分离网络接口](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm)中的步骤。 但是，如果这是连接到虚拟机的唯一网络接口，则无法从虚拟机中拆离网络接口。 虚拟机必须始终附加有至少一个网络接口。 删除虚拟机会分离其上附加的所有网络接口，但不会删除网络接口。
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。   当“网络接口”出现在搜索结果中时，请选择它。 
-2. 从网络接口列表中选择要删除的网络接口右侧的“...”  。
-3. 选择“删除”  。
+2. 在列表中选择要删除的网络接口。
+3. 在“概述”  下，选择“删除”  。
 4. 选择“是”确认删除该网络接口。 
 
 删除网络接口时，会释放已分配给它的所有 MAC 或 IP 地址。

@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
-ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: c4c24a5ea2c3bc0c533c8510cf9c3a92cc79eac4
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.author: v-yiso
+origin.date: 11/04/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: dde8c8ccb31d73b7b1457026631bd937c0c9a12c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599100"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155103"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -90,16 +91,16 @@ ms.locfileid: "75599100"
 | [MaxAbsScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |按特征的最大绝对值缩放每个特征 |
 | [RobustScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |按特征的分位数范围缩放特征 |
 | [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |使用数据的单值分解进行线性维度化简，以将其投影到低维空间 |
-| [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |此转换器通过截断的单值分解 (SVD) 执行线性维度化简。 与 PCA 相反，此估算器在计算单值分解之前不会将数据居中。 这意味着，它可以有效地处理 scipy.sparse 矩阵 |
+| [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |此转换器通过截断的单值分解 (SVD) 执行线性维度化简。 与 PCA 相反，此估算器在计算单值分解之前不会将数据居中，这意味着它可以有效地处理 scipy.sparse 矩阵 |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | 重新缩放至少包含一个非零成分的每个样本（即，数据矩阵的每个行），而不管其他样本如何，使其范数（l1 或 l2）等于 1 |
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>高级预处理：可选特征化
 
-还可以使用其他高级预处理和特征化，例如缺失值插补、编码和转换。 [详细了解包含哪些特征化](how-to-create-portal-experiments.md#preprocess)。 可通过以下方式启用此设置：
+还可以使用其他高级预处理和特征化，例如数据护栏、编码和转换。 [详细了解包含的功能化](how-to-create-portal-experiments.md#featurization)。 可通过以下方式启用此设置：
 
-+ Azure 机器学习工作室：[使用这些步骤](how-to-create-portal-experiments.md)在“配置运行”部分选择“查看特征化设置”。  
++ Azure 机器学习工作室：[通过以下步骤](how-to-create-portal-experiments.md#create-and-run-experiment)在“查看其他配置”  部分中启用“自动特征化”。 
 
-+ Python SDK：为 [`AutoMLConfig` 类](https://docs.microsoft.com/azure/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)指定 `"feauturization": auto' / 'off' / FeaturizationConfig`。
++ Python SDK：为 [`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
 
 ## <a name="prevent-over-fitting"></a>防止过度拟合
 
@@ -109,7 +110,7 @@ ms.locfileid: "75599100"
 
 * 使用更多训练数据，并消除统计偏差
 * 防止目标泄漏
-* 使用更少的特征
+* 使用较少的特征
 * **正则化和超参数优化**
 * **模型复杂性限制**
 * **交叉验证**
@@ -128,7 +129,7 @@ ms.locfileid: "75599100"
 
 正则化是最大程度地减小代价函数来惩罚复杂的过度拟合模型的过程。 有多种不同类型的正则化函数，但一般情况下，这些函数全都惩罚模型系数大小、差异和复杂性。 自动化 ML 结合用于控制过度拟合的不同模型超参数设置，使用 L1 (Lasso)、L2 (Ridge) 和 ElasticNet（同时包括 L1 和 L2）的不同组合。 简单而言，自动化 ML 会根据模型的调控程度而改变，并选择最佳结果。
 
-自动化 ML 还实施明确的模型复杂性限制来防止过度拟合。 在大多数情况下，具体是由决策树或林算法进行这种控制，其中每个树的最大深度会受到限制，林或系综技术中使用的树总数会受到限制。
+自动化 ML 还实施明确的模型复杂性限制来防止过度拟合。 大多数情况下，此实现专用于决策树或林算法，其中每个树的最大深度会受到限制，林或系综技术中使用的树总数会受到限制。
 
 交叉验证 (CV) 是提取整个训练数据的多个子集，并针对每个子集训练模型的过程。 其思路是，某个模型可能比较“幸运”，在预测一个子集时具有很高的准确度，但使用许多子集时，模型无法每次都实现这种高准确度。 执行 CV 时，需要提供一个验证维持数据集，指定 CV 折数（子集数），然后，自动化 ML 将训练模型并优化超参数，以尽量减少验证集的错误。 可能有一个 CV 折过度拟合，但如果使用许多的折，则可以减少最终模型过度拟合的可能性。 缺点是 CV 会导致训练时间变得更长，从而增大成本，因为模型不是训练一次，而是针对 *n* 个 CV 子集中的每个子集训练一次。
 
@@ -139,7 +140,7 @@ ms.locfileid: "75599100"
 
 考虑以下训练的模型及其相应的训练和测试准确度。
 
-| 型号 | 训练准确度 | 测试准确度 |
+| 模型 | 训练准确度 | 测试准确度 |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
@@ -149,7 +150,7 @@ ms.locfileid: "75599100"
 
 将模型 **A** 与 **B** 相比较时，模型 **A** 是更好的模型，因为它的测试准确度更高；尽管测试准确度略低于 95%，但这种差异并不明显，也并不意味着存在过度拟合。 不选择模型 **B** 的原因仅仅是训练和测试精度更为接近。
 
-模型 **C** 明确反映了过度拟合的情况；训练准确度极高，但测试准确度远远达不到较高的水平。 这种差别在某种程度上是主观性的，但需要根据对问题和数据的认知，以及可接受的错误程度来判断。 
+模型 **C** 明确反映了过度拟合的情况；训练准确度极高，但测试准确度远远达不到较高的水平。 这种差别是主观性的，但需要根据对问题和数据的认知，以及可接受的错误程度来判断。 
 
 ## <a name="time-series-forecasting"></a>时序预测
 
@@ -173,7 +174,7 @@ ms.locfileid: "75599100"
 * **投票**：根据预测类概率（对于分类任务）或预测回归目标（对于回归任务）的加权平均值进行预测。
 * **堆叠**：堆叠方法组合异构的模型，并根据各个模型的输出训练元模型。 当前的默认元模型是 LogisticRegression（对于分类任务）和 ElasticNet（对于回归/预测任务）。
 
-提供排序系综初始化的 [Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层面看，此算法使用最多 5 个个体评分最高的模型初始化系综，并验证这些模型是否在最佳评分的 5% 阈值范围内，以避免初始系综不佳。 然后，对于每个系综迭代，会将一个新模型添加到现有系综，并计算最终评分。 如果新模型改善了现有的系综评分，则会更新系综以包含新模型。
+提供排序系综初始化的 [Caruana 系综选择算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)用于决定要在系综中使用的模型。 从较高层面看，此算法使用个体评分最高的最多五个模型来初始化集成，并验证这些模型是否在最佳评分的 5% 阈值范围内，以避免初始系综不佳。 然后，对于每个系综迭代，会将一个新模型添加到现有系综，并计算最终评分。 如果新模型改善了现有的系综评分，则会更新系综以包含新模型。
 
 请参阅[操作指南](how-to-configure-auto-train.md#ensemble)来了解如何在自动化机器学习中更改默认系综设置。
 
@@ -183,7 +184,7 @@ ms.locfileid: "75599100"
 
 自动化 ML 的目标之一是简化机器学习工作流，其中的内置功能可帮助处理不平衡的数据，例如， 
 
-- **权重列**：自动化 ML 支持将加权列用作输入，以便能够增大或减小数据中的行的权重，使某个类的“重要性”更大或更小。 参阅此[笔记本示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/sample-weight/auto-ml-sample-weight.ipynb) 
+- **权重列**：自动化 ML 支持将加权列用作输入，以便能够增大或减小数据中的行的权重，使某个类的“重要性”更大或更小。
 
 - 自动化 ML 使用的算法可以正确处理最高 20:1 的不平衡比，这意味着，最常用类的数据中包含的行数可以比最不常用类多 20 倍。
 
@@ -209,24 +210,73 @@ ms.locfileid: "75599100"
 
 ## <a name="use-with-onnx-in-c-apps"></a>与 C# 应用中的 ONNX 配合使用
 
-借助 Azure 机器学习，可以使用自动化 ML 来生成 Python 模型并将其转换为 ONNX 格式。 ONNX 运行时支持 C#，因此，可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 在[此 Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-with-onnx/auto-ml-classification-with-onnx.ipynb) 中查看此流的示例。
+借助 Azure 机器学习，可以使用自动化 ML 来生成 Python 模型并将其转换为 ONNX 格式。 ONNX 运行时支持 C#，因此，可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 在[此 Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 中查看此流的示例。
 
-## <a name="automated-ml-across-microsoft"></a>自动化 ML 在不同 Microsoft 产品中的应用
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure 机器学习中的自动化 ML
 
-自动化 ML 也可以在其他 Microsoft 解决方案中使用，例如：
+Azure 机器学习提供了两种使用自动化 ML 的体验方式
 
-|集成|说明|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|在 .NET 应用中使用包含 ML.NET 自动化 ML 的 Visual Studio 和 Visual Studio Code 自动选择和训练模型（预览版功能）。|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|在 HDInsight 群集中的 Spark 上并行横向扩展自动化 ML 训练作业。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接在 Power BI 中调用机器学习模型（预览版功能）。|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|在 SQL Server 2019 大数据群集中基于数据创建新的机器学习模型。|
+* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* 对于编码经验有限或没有经验的客户，可以使用 [https://ml.azure.com](https://ml.azure.com/) 处的 Azure 机器学习工作室  
+
+下面汇总了每种体验中支持的概要自动化 ML 功能。
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>试验设置 
+
+以下设置允许你配置自动化 ML 试验。 
+
+| | Python SDK| 工作室
+----|:----:|:----:
+将数据拆分为训练/验证集| ✓|✓
+支持 ML 任务：分类、回归和预测| ✓| ✓
+基于主要指标进行优化| ✓| ✓
+支持将 AML 计算作为计算目标 | ✓|✓
+配置预测范围、目标滞后和滚动窗口|✓|✓
+设置退出条件 |✓|✓ 
+设置并发迭代数| ✓|✓
+删除列| ✓|✓
+块算法|✓|✓
+交叉验证 |✓|✓
+支持在 Azure Databricks 群集上训练| ✓|
+查看工程特征名称|✓|
+特征化摘要| ✓|
+假日特征化|✓|
+日志文件的详细级别| ✓|
+
+### <a name="model-settings"></a>模型设置
+
+这些设置可作为自动化 ML 试验的结果应用于最佳模型。
+
+||Python SDK|工作室
+----|:----:|:----:
+最佳模型注册| ✓|✓
+最佳模型部署| ✓| ✓
+最佳模型可说明性| ✓|✓
+启用投票集成和堆栈集成模型| ✓|✓
+显示基于非主要指标的最佳模型|✓|启用/禁用 ONNX 模型兼容性|✓|
+测试模型 | ✓| |
+
+### <a name="run-control-settings"></a>运行控制设置
+
+通过这些设置，你可以查看和控制实验运行及其子运行。 
+
+||Python SDK| 工作室
+----|:----:|:----:
+运行摘要表| ✓|✓
+取消运行| ✓|✓
+取消子运行| ✓| ✓
+获取护栏| ✓|✓
+暂停运行| ✓| 
+恢复运行| ✓| 
 
 ## <a name="next-steps"></a>后续步骤
 
 查看示例并了解如何使用自动化机器学习生成模型：
 
-+ 遵循[教程：使用 Azure 自动化机器学习自动训练回归模型](tutorial-auto-train-models.md)
++ 遵循[教程：使用 Azure 机器学习自动训练回归模型](tutorial-auto-train-models.md)
 
 + 配置自动训练试验的设置：
   + 在 Azure 机器学习工作室中[使用这些步骤](how-to-create-portal-experiments.md)。
@@ -235,3 +285,5 @@ ms.locfileid: "75599100"
 + 了解如何[使用这些步骤](how-to-auto-train-forecast.md)通过时序数据自动进行训练。
 
 + 查看[自动化机器学习的 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* 自动化 ML 也可以在其他 Microsoft 解决方案中使用，例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

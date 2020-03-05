@@ -1,20 +1,18 @@
 ---
-title: Azure 到 Azure 网络连接问题和错误的 Azure Site Recovery 故障排除 | Azure
-description: 排查复制 Azure 虚拟机进行灾难恢复时出现的错误和问题
-services: site-recovery
+title: 使用 Azure Site Recovery 对 Azure 到 Azure 灾难恢复的连接进行故障排除
+description: 排查 Azure VM 灾难恢复中的连接问题
 author: rockboyfor
 manager: digimobile
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 origin.date: 08/05/2019
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: a5d625d0d4d8dd40cc0cf9e9889cd73b7421c254
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: bdc554c81f78eadad510f47e4d15b02aed9a0700
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134513"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611203"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -77,7 +75,7 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
 
     <!--MOONCAKE: CUSTIMIZTION ON China North-->
     
-    **Location** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
+    **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
     --- | --- | ---
     中国北部 | 40.125.202.254  | 42.159.4.151 
 
@@ -97,7 +95,7 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
     
     <!--MOONCAKE: CUSTIMIZTION ON China East-->
     
-    **Location** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
+    **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
     --- | --- | ---
     中国东部 | 42.159.205.45 | 42.159.132.40
     
@@ -133,5 +131,4 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
 ## <a name="next-steps"></a>后续步骤
 [复制 Azure 虚拟机](site-recovery-replicate-azure-to-azure.md)
 
-<!-- Update_Description: new article about site recovery -->
-<!--ms.date: 09/02/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

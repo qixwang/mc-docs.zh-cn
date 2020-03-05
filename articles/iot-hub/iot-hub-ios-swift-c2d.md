@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 04/19/2018
-ms.date: 09/30/2019
+ms.date: 03/09/2020
 ms.author: v-yiso
-ms.openlocfilehash: ee17b8ca198433e5561dda81b15a351d4709533e
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 4d0bc71bd079148d6d0aac0aa10fce18e542c89d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155982"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155065"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -40,14 +40,13 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 > IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java、Python 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程的代码以及通常如何连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
 
 ## <a name="prerequisites"></a>先决条件
-要完成本教程，需要以下各项：
-
 - 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个 [试用帐户][lnk-free-trial]。）
 - Azure 中的活动 IoT 中心。 
 - [Azure 示例](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)中的代码示例。
 - 最新版本的 [XCode](https://developer.apple.com/xcode/)，运行最新版本的 iOS SDK。 本快速入门已使用 XCode 9.3 和 iOS 11.3 测试过。
 - 最新版 [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
 
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="simulate-an-iot-device"></a>模拟 IoT 设备
 在本部分，我们将模拟一个运行 Swift 应用程序的 iOS 设备，以从 IoT 中心接收云到设备的消息。 
@@ -132,7 +131,7 @@ pod install
 
 3. 展开“AzureIoTServiceSample”项目，然后展开同名的文件夹。   
 4. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
-5. 搜索 **connectionString** 变量，并使用前面复制的服务连接字符串更新其值。
+4. 搜索 **connectionString** 变量，并使用先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的服务连接字符串更新其值。
 6. 保存所做更改。 
 7. 在 Xcode 中，将模拟器设置更改为其他 iOS 设备，而不是用来运行 IoT 设备的 iOS 设备。 XCode 无法运行相同类型的多个模拟器。 
 

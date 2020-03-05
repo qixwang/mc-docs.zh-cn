@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
 origin.date: 05/10/2019
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 60f4f2415d5b25e3b4fb05e84e6c647a086d6935
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.openlocfilehash: f00986d067912cb181fdc58fd29091904ff2864b
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514233"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653265"
 ---
 <a name="os-config"></a>
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a>将 IP 地址添加到 VM 操作系统
@@ -36,7 +36,7 @@ ms.locfileid: "68514233"
         * **首选 DNS 服务器**：如果不使用自己的 DNS 服务器，请输入 168.63.129.16。 如果使用自己的 DNS 服务器，请输入服务器的 IP 地址。
     * 选择“高级”按钮，并添加其他 IP 地址。  将在前面的步骤中添加到 Azure 网络接口的每个辅助专用 IP 地址添加到分配有分配给 Azure 网络接口的主 IP 地址的 Windows 网络接口。
 
-        切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。 在操作系统中手动设置该 IP 地址时，请确保它与分配给 Azure [网络接口](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)设置。 绝不要在操作系统中分配 Azure 公用 IP 地址。
+        切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。 在操作系统中手动设置该 IP 地址时，请确保它与分配给 Azure [网络接口](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)设置。 绝不要在操作系统中分配 Azure 公共 IP 地址。
 
     * 单击“确定”关闭“TCP/IP 设置”，并再次单击“确定”关闭适配器设置。   将重新建立 RDP 连接。
 
@@ -51,9 +51,10 @@ ms.locfileid: "68514233"
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->对于辅助 IP 配置，仅当该配置存在关联的 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping 到 Internet。
+>对于辅助 IP 配置，仅当该配置具有与之关联的公共 IP 地址的情况下，才能 ping 到 Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping 到 Internet。
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
+
 我们建议你查看 Linux 发行版的最新文档。 
 
 1. 打开终端窗口。
@@ -113,6 +114,79 @@ ping -S 10.0.0.5 hotmail.com
 
     应会在列表中看到添加的 IP 地址。
 
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+
+Ubuntu 18.04 及更高版本已更改为 `netplan` 以进行 OS 网络管理。 我们建议你查看 Linux 发行版的最新文档。 
+
+1. 打开终端窗口。
+2. 请确保以 root 用户身份操作。 如果不是，请输入以下命令：
+
+    ```bash
+    sudo -i
+    ```
+
+3. 为第二个接口创建一个文件，并在文本编辑器中将其打开：
+
+    ```bash
+    vi /etc/netplan/60-static.yaml
+    ```
+
+4. 将以下行添加到该文件，并将 `10.0.0.6/24` 替换为你的 IP/网络掩码：
+
+    ```bash
+    network:
+        version: 2
+        ethernets:
+            eth0:
+                addresses:
+                    - 10.0.0.6/24
+    ```
+
+5. 使用以下命令保存该文件：
+
+    ```bash
+    :wq
+    ```
+
+6. 使用 [netplan try](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) 测试更改以确认语法：
+
+    ```bash
+    netplan try
+    ```
+
+    > [!NOTE]
+    > `netplan try` 将暂时应用更改，并在 120 秒后回退更改。 如果连接丢失，请等待 120 秒，然后重新连接。 到那时，更改将已回退。
+
+7. 假如 `netplan try` 没有问题，请应用配置更改：
+
+    ```bash
+    netplan apply
+    ```
+
+8. 使用以下命令验证 IP 地址是否已添加到网络接口：
+
+    ```bash
+    ip addr list eth0
+    ```
+
+    应会在列表中看到添加的 IP 地址。 示例：
+
+    ```bash
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+        valid_lft forever preferred_lft forever
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+        link/ether 00:0d:3a:8c:14:a5 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.0.6/24 brd 10.0.0.255 scope global eth0
+        valid_lft forever preferred_lft forever
+        inet 10.0.0.4/24 brd 10.0.0.255 scope global secondary eth0
+        valid_lft forever preferred_lft forever
+        inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
+        valid_lft forever preferred_lft forever
+    ```
 ### <a name="linux-centos-and-others"></a>Linux（CentOS 和其他操作系统）
 
 <!--Not Available on Red Hat-->
@@ -192,8 +266,11 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
+
 ```
 - 确保执行以下替换：
     - **10.0.0.5** 替换为有关联的公共 IP 地址的专用 IP 地址
     - **10.0.0.1** 替换为默认网关
     - **eth2** 替换为辅助 NIC 的名称
+
+<!-- Update_Description: update meta properties, wording update, update link -->

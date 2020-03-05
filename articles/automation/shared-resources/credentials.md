@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: WenJason
 ms.author: v-jay
-origin.date: 04/12/2019
-ms.date: 06/10/2019
+origin.date: 01/31/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 182e6a34f6e7bd347e44f5c43cad7da721bdb2fa
-ms.sourcegitcommit: 26e99f63fe3c2ffbdcdcc17691199bbacabdd048
+ms.openlocfilehash: 6cda91d1580e659ad641c0de227d71fa85ab52e0
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687648"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653055"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
@@ -23,17 +23,6 @@ ms.locfileid: "66687648"
 
 > [!NOTE]
 > Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
-
-## <a name="azure-classic-powershell-cmdlets"></a>Azure 经典 PowerShell cmdlet
-
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/overview)已随附了这些 cmdlet。
-
-| Cmdlet | 说明 |
-|:--- |:--- |
-| [Get-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationcredential) |检索有关凭据资产的信息。 只能从 **Get-AutomationPSCredential** 活动中检索凭据本身。 |
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential) |创建新的自动化凭据。 |
-| [Remove- AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential) |删除自动化凭据。 |
-| [Set- AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential) |设置现有自动化凭据的属性。 |
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 
@@ -73,8 +62,8 @@ ms.locfileid: "66687648"
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 门户新建凭据资产
 
 1. 从自动化帐户中，选择“共享资源”  下的“凭据”  。
-1. 单击“+ 添加凭据”  。
-1. 完成表单，并单击“创建”以保存新凭据  。
+1. 选择“添加凭据”  。
+1. 完成表单，并选择“创建”以保存新凭据  。
 
 > [!NOTE]
 > 不支持将使用多重身份验证的用户帐户用于 Azure 自动化。
@@ -126,7 +115,7 @@ Login-AzureRmAccount -Credential $myPsCred
 
 ![将凭据添加到画布](../media/credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后， **Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
+下图显示了在图形 Runbook 中使用凭据的示例。 在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后， **Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个 [管道链接](../automation-graphical-authoring-intro.md#links-and-workflow) ，因为 **Get-AutomationPSCredential** 要求是单个对象。  
 
 ![将凭据添加到画布](../media/credentials/get-credential.png)
 
@@ -151,7 +140,7 @@ print cred["password"]
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解图形创作中的链接，请参阅 [Links in graphical authoring](../automation-graphical-authoring-intro.md#links-and-workflow)
-* 若要了解使用自动化的不同身份验证方法，请参阅 [Azure 自动化安全性](../automation-security-overview.md)
+* 若要了解使用自动化的不同身份验证方法，请参阅 [Azure Automation Security](../automation-security-overview.md)
 * 若要开始使用图形 Runbook，请参阅 [My first graphical runbook](../automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅[我的第一个 PowerShell 工作流 Runbook](../automation-first-runbook-textual.md)
 * 若要开始使用 Python2 Runbook，请参阅[第一个 Python2 Runbook](../automation-first-runbook-textual-python2.md) 

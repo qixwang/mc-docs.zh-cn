@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 09/12/2019
 ms.date: 12/13/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 741c34c6d274f43b8673f06268c1d6d39224d8f7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 991d1dd820706d0e570995276c32fa4cebaff8ed
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334541"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154984"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务
 
@@ -56,7 +56,7 @@ ms.locfileid: "75334541"
 
 解决方案架构师开始使用云来轻松地处理缩放需求和降低运营成本。 在此过程中，他们发现希望用作其解决方案的构建基块的现有服务资产位于企业防火墙内，无法通过云解决方案轻松访问。 许多内部服务的构建或托管方式使得它们无法在企业网络边缘轻松公开。
 
-[Azure 中继](/service-bus/)的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委派给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 身份验证来保护这些服务，以阻止未经授权的访问。
+[Azure 中继](/service-bus/)可以利用现有的 WCF Web 服务，并使公司外部的解决方案可以安全地访问这些服务，而无需对企业网络基础结构进行侵入式更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委派给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 身份验证来保护这些服务，以阻止未经授权的访问。
 
 ## <a name="review-the-scenario"></a>查看方案
 在本教程中，请创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
@@ -450,8 +450,7 @@ ms.locfileid: "75334541"
 
 1. 关闭浏览器窗口，停止正在运行的应用程序。
 
-### <a name="set-productsportal-as-web-app"></a>将 ProductsPortal 设置为 Web 应用
-在云中运行应用程序之前，必须确保 **ProductsPortal** 从 Visual Studio 内以 Web 应用的形式启动。
+<a name="set-productsportal-as-web-app"></a>在云中运行应用程序之前，必须确保将 **ProductsPortal** 作为 Web 应用从 Visual Studio 中启动。
 
 1. 在 Visual Studio 中，右键单击“ProductsPortal”项目并选择“属性”   。
 1. 选择“Web”。  在“启动操作”下，选择“启动 URL”。   输入以前部署的 Web 应用的 URL，在本示例中为 `https://productsportal20190906122808.azurewebsites.net/`。

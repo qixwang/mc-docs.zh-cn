@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 49906ae555c7f63242d01c173f818fbaf59d5e75
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 3d445ef4b304a8830dba630c68afff15b50d6300
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653177"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77067666"
 
 目前没有计划。  请参阅下面的内容，了解已经进入或即将进入生产环境中的变更。 
 
-## <a name="february-2020"></a>2020 年 2 月： 
+## <a name="february-2020"></a>2020 年 2 月 
 
 ### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>会将空片段追加到来自登录终结点的每个 HTTP 重定向。 
 
@@ -156,7 +156,7 @@ ms.locfileid: "77067666"
 
 如果应用重复使用授权代码来获取多个资源的令牌，则我们建议使用该代码获取刷新令牌，然后使用该刷新令牌获取其他资源的其他令牌。 授权代码只能使用一次，但刷新令牌可对多个资源使用多次。 尝试在 OAuth 代码流期间重用身份验证代码的任何新应用都将收到 invalid_grant 错误。
 
-有关刷新令牌的详细信息，请参阅[刷新访问令牌](v1-protocols-oauth-code.md#refreshing-the-access-tokens)。  如果使用 ADAL 或 MSAL，则由库为你处理 - 将“AcquireTokenByAuthorizationCodeAsync”的第二个实例替换为“AcquireTokenSilentAsync”。 
+有关刷新令牌的详细信息，请参阅[刷新访问令牌](v2-oauth2-auth-code-flow.md#refresh-the-access-token)。  如果使用 ADAL 或 MSAL，则由库为你处理 - 将“AcquireTokenByAuthorizationCodeAsync”的第二个实例替换为“AcquireTokenSilentAsync”。 
 
 ## <a name="may-2018"></a>2018 年 5 月
 
@@ -166,7 +166,7 @@ ms.locfileid: "77067666"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：隐式流和 [OBO 流](v1-oauth2-on-behalf-of-flow.md)
+**受影响的协议**：隐式流和[代理流](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日之后，id_token 不能用作新应用程序的 OBO 流中的断言。 应改为使用访问令牌来保护 API，即使在同一应用程序的客户端和中间层之间也是如此。 在 2018 年 5 月 1 日之前注册的应用将继续有效，并能够使用 id_tokens 交换访问令牌；但是，此模式并不是最佳做法。
 
@@ -177,4 +177,4 @@ ms.locfileid: "77067666"
 1. 客户端应用程序通过 `response_type=id_token` 请求 id_token 时，还会请求上面创建的 Web API 的访问令牌 (`response_type=token`)。 因此，使用 v2.0 终结点时，`scope` 参数应与 `api://GUID/SCOPE` 类似。 在 v1.0 终结点上，`resource` 参数应为 Web API 应用 URI。
 1. 将此访问令牌传递到中间层，代替 id_token。  
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

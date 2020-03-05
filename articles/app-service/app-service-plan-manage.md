@@ -5,15 +5,15 @@ keywords: 应用服务, azure 应用服务, 缩放, 应用服务计划, 更改, 
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 origin.date: 10/24/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 266ef45da00fcee1b7b840b2930e31d352cb3fdb
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: b868972037043f13feae9cbb44567f8ae2bb7702
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600523"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566654"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -21,13 +21,20 @@ ms.locfileid: "75600523"
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
+<!-- > [!TIP] -->
+<!-- > If you have an App Service Environment, see [Create an App Service plan in an App Service Environment](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan). -->
+
 在创建应用时可以创建一个空的应用服务计划，也可以创建一个计划。
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择“新建”   > “Web + 移动”  ，然后选择“Web 应用”  或其他应用服务应用类型。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”  。
 
-   ![在 Azure 门户中创建应用。][createWebApp]
+   ![在 Azure 门户中创建资源。][createResource] 
 
-2. 在配置应用服务计划之前配置“实例详细信息”部分。  “发布”和“操作系统”之类的设置可以更改应用服务计划的可用定价层。   “区域”决定了在何处创建应用服务计划。 
+1. 选择“新建”   > “Web 应用”  或其他类型的应用服务应用。
+
+   ![在 Azure 门户中创建应用。][createWebApp] 
+
+2. 在配置应用服务计划之前配置“实例详细信息”部分。  “发布”和“操作系统”之类的设置可以更改应用服务计划的可用定价层。   “区域”决定了在何处创建应用服务计划。  
    
 3. 在“应用服务计划”  部分选择一个现有的计划，或者通过选择“新建”创建一个计划  。
 
@@ -44,10 +51,10 @@ ms.locfileid: "75600523"
 > [!NOTE]
 > Azure 会将每个新的应用服务计划部署到部署单元（在内部称为 Web 空间）中。 每个区域都可以有许多 Web 空间，但应用只能在相同 Web 空间中创建的计划之间移动。 应用服务环境是一个独立的 Web 空间，因此可以在相同应用服务环境中的计划之间移动应用，但无法在不同应用服务环境中的计划之间移动应用。
 >
-> 无法在创建计划时指定所需的 Web 空间，但可以确保在现有计划所在的 Web 空间中创建计划。 简而言之，使用同一资源组和区域组合创建的所有计划都部署到同一 Web 空间中。 例如，如果你在资源组 A 和区域 B 中创建了一个计划，那么你随后在资源组 A 和区域 B 中创建的任何计划都将部署到同一 Web 空间中。 请注意，计划在创建后无法移动 Web 空间，因此无法通过将计划移到另一个资源组来将其移到另一个计划所在的 Web 空间。
+> 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，使用同一资源组和区域组合创建的所有计划都部署到同一 Web 空间中。 例如，如果你在资源组 A 和区域 B 中创建了一个计划，那么你随后在资源组 A 和区域 B 中创建的任何计划都将部署到同一 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
 > 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，浏览到要移动的应用。
+1. 在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“应用服务”  ，然后选择要移动的应用。
 
 2. 从左菜单中选择“更改应用服务计划”  。
 
@@ -96,3 +103,4 @@ ms.locfileid: "75600523"
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

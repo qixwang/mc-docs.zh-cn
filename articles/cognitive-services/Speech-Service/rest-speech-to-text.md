@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/09/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5e224860153a76e750d59f10f87deb7c692384b1
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 873f81ed2c38021b8ebda28156f8ba4942cf9665
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630989"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590282"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -33,9 +33,18 @@ ms.locfileid: "75630989"
 
 ## <a name="regions-and-endpoints"></a>区域和终结点
 
-使用 REST API 的语音转文本听录支持以下区域。 请务必选择与订阅区域匹配的终结点。
+REST API 的终结点具有以下格式：
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
+```
+https://<REGION_IDENTIFIER>.stt.speech.azure.cn/speech/recognition/conversation/cognitiveservices/v1
+```
+
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“中国东部 2”终结点设置为美国英语的语言为：`https://chinaeast2.stt.speech.azure.cn/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
 ## <a name="query-parameters"></a>查询参数
 
@@ -44,8 +53,8 @@ ms.locfileid: "75630989"
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必须 |
-| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置是 `simple`。 | 可选 |
-| `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置是 `masked`。 | 可选 |
+| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
+| `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
 
 ## <a name="request-headers"></a>请求标头
 
@@ -70,7 +79,7 @@ ms.locfileid: "75630989"
 | OGG | OPUS | 16 位 | 16 kHz，单声道 |
 
 >[!NOTE]
->通过语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 目前仅支持使用 PCM 编解码器的 WAV 格式。
+>通过语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 当前支持使用 PCM 编解码器的 WAV 格式以及[其他格式](how-to-use-codec-compressed-audio-input-streams.md)。
 
 ## <a name="sample-request"></a>示例请求
 

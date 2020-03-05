@@ -1,5 +1,6 @@
 ---
 title: 为 Azure API 管理实例配置自定义域名
+titleSuffix: Azure API Management
 description: 本主题介绍了如何为 Azure API 管理实例配置自定义域名。
 services: api-management
 documentationcenter: ''
@@ -11,13 +12,13 @@ ms.workload: integration
 ms.topic: article
 origin.date: 01/13/2020
 ms.date: 02/24/2020
-ms.author: v-yiso
-ms.openlocfilehash: b3c290d8fd767dde4f6b55aa94cce38588672845
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.author: v-lingwu
+ms.openlocfilehash: fd8c9781ee4e297e53df575fa6657c5466cb6eb0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428610"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155099"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
 
@@ -31,11 +32,11 @@ ms.locfileid: "77428610"
 >
 >
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要执行本文中所述的步骤，必须具有：
 
-+ 一个有效的 Azure 订阅。
+-   一个有效的 Azure 订阅。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -56,7 +57,7 @@ ms.locfileid: "77428610"
    + **SCM**（默认值为：`<apim-service-name>.scm.azure-api.cn`）。
 
     > [!NOTE]
-    > 只有“网关”终结点适用于“消耗”层级中的配置。 
+    > 只有“网关”终结点可用于“消耗”层中的配置。 
     > 可以更新所有终结点或者更新其中的一部分。 通常，客户会更新“网关”（此 URL 用来调用通过 API 管理公开的 API）和“门户”（开发人员门户 URL）   。
     > “管理”和“SCM”终结点由 API 管理实例所有者在内部使用，因此很少会为其分配自定义域名   。
     > “高级”层级支持为“网关”终结点设置多个主机名。  
@@ -71,14 +72,14 @@ ms.locfileid: "77428610"
     > 我们建议使用 Azure Key Vault 来管理证书并将其设置为“自动轮换”。
     > 如果使用 Azure 密钥保管库来管理自定义域 SSL 证书，请确保该证书[作为证书  ](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)而不是机密  插入到密钥保管库中。
     >
-    > 若要提取 SSL 证书，API 管理必须使列表对包含证书的 Azure Key Vault 具有“获取机密”权限。 使用 Azure 门户时，所有必要的配置步骤都将自动完成。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的“托管标识”页确保已启用“托管标识”并记下该页上显示的主体 ID。 其次，在包含证书的 Azure Key Vault 上为此主体 ID 提供权限列表并获取机密权限。
+    > 若要提取 SSL 证书，API 管理必须对包含该证书的 Azure Key Vault 具有“列表”和“获取机密”权限。 使用 Azure 门户时，所有必要的配置步骤都将自动完成。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的“托管标识”页确保已启用“托管标识”并记下该页上显示的主体 ID。 其次，在包含证书的 Azure Key Vault 上为此主体 ID 提供权限列表并获取机密权限。
     >
     > 如果证书设置为“自动轮换”，API 管理将自动选取最新版本，而不会对服务造成任何停机（如果你的 API 管理层具有SLA - 即在除了开发人员层之外的所有层中）。
 
-5. 单击“应用”。
+1. 单击“应用”。
 
-    >[!NOTE]
-    >分配证书的过程可能需要 15 分钟或更久，这取决于部署规模。 开发人员 SKU 有故障时间，基本和更高版本的 SKU 没有故障时间。
+    > [!NOTE]
+    > 分配证书的过程可能需要 15 分钟或更久，这取决于部署规模。 开发人员 SKU 有停机时间，基本 SKU 和更高 SKU 没有停机时间。
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 

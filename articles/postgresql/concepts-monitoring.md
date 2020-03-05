@@ -1,20 +1,20 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器中的监视
-description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的监视功能。
+title: 监视和优化 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍了 Azure Database for PostgreSQL（单一服务器）中的监视和优化功能。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 06/19/2019
-ms.date: 08/05/2019
-ms.openlocfilehash: 76d2250690f441f1369c503a940b9b51685b232a
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.date: 03/02/2020
+ms.openlocfilehash: 982b0f271a7183e2b69ffdb9b817a9bce12bb6d2
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732369"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154391"
 ---
-# <a name="monitor-azure-database-for-postgresql---single-server"></a>监视 Azure Database for PostgreSQL - 单一服务器
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
 
 ## <a name="metrics"></a>指标
@@ -48,6 +48,16 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 ## <a name="query-store"></a>查询存储
 [查询存储](concepts-query-store.md)可以随着时间的推移跟踪查询性能，包括查询运行时统计信息和等待事件。 此功能将查询运行时性能信息保留在 query_store 架构下名为 azure_sys 的一个系统数据库中  。 你可以通过各种配置旋钮控制数据的收集和存储。
 
+## <a name="query-performance-insight"></a>Query Performance Insight
+[Query Performance Insight](concepts-query-performance-insight.md) 与查询存储协同工作以提供可以从 Azure 门户访问的可视化效果。 这些图表使你能够识别对性能造成影响的关键查询。 Query Performance Insight 可以从 Azure Database for PostgreSQL 服务器门户页的“支持 + 疑难解答”部分中进行访问  。
+
+## <a name="performance-recommendations"></a>性能建议
+[性能建议](concepts-performance-recommendations.md)功能可以确定提高工作负荷性能的机会。 性能建议为你提供了有关创建新索引的建议，这些索引可能会提高工作负荷的性能。 若要生成索引建议，该功能会考虑各种数据库特征，包括其架构以及如“查询存储”报告的工作负载。 实施任何性能建议后，客户应测试性能以评估这些更改的影响。 
+
+## <a name="service-health"></a>服务运行状况
+[Azure 服务运行状况](../service-health/overview.md)提供了你的订阅中所有服务运行状况通知的视图。 你可以设置服务运行状况警报，以便在发生可能影响你使用的 Azure 服务和区域的问题或更改时，通过首选通信通道通知你。
+
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
 - 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+- 阅读我们的博客，了解[监控服务器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)。

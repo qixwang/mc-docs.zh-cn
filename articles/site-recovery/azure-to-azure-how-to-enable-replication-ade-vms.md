@@ -1,30 +1,26 @@
 ---
-title: 在 Azure Site Recovery 中为启用了 Azure 磁盘加密的 VM 配置复制 | Azure
+title: 在 Azure Site Recovery 中为加密 Azure VM 启用复制
 description: 本文介绍如何使用 Site Recovery 对启用了 Azure 磁盘加密的 VM 配置从一个 Azure 区域到另一个区域的 Azure VM 复制。
-services: site-recovery
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 08/08/2019
-ms.date: 08/26/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1f534e006377454c3d75c07c05b9190beeec5658
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.openlocfilehash: 1e1f146e08c787b5e1faee3b7f6345cf9f0629d1
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134424"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611234"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域
 
-本文介绍如何将启用了 Azure 磁盘加密的 VM 从一个 Azure 区域复制到另一个 Azure 区域。
+本文介绍如何将启用了 Azure 磁盘加密 (ADE) 的 Azure VM 从一个 Azure 区域复制到另一个 Azure 区域。
 
 >[!NOTE]
->Azure Site Recovery 当前仅支持运行 Windows 操作系统且支持 Azure 磁盘加密的 VM。 仅当支持 Azure 磁盘加密的 VM 使用托管磁盘时，才支持不使用 Azure AD 应用的这些 VM。 不支持使用非托管磁盘的 VM。
-
->[!NOTE]
->如果从 ADE V1（使用 Azure AD 应用）切换到 ADE V2（不使用 Azure AD 应用），则需要在启用 ADE V2 后禁用复制再启用复制。
+> 对于运行 Windows 和 Linux 操作系统的 VM，Site Recovery 当前都支持 ADE（使用或不使用 Azure Active Directory (AAD)）。  对于运行 ADE 1.1（不使用 AAD）的计算机，VM 必须使用托管磁盘。 不支持使用非托管磁盘的 VM。 如果从 ADE 0.1（使用 AAD）切换到 1.1，则需要先为 VM 禁用复制并在启用 1.1 后启用复制。
 
 <a name="required-user-permissions"></a>
 ## <a name="required-user-permissions"></a>所需的用户权限

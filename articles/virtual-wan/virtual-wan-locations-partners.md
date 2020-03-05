@@ -1,20 +1,20 @@
 ---
-title: Azure 虚拟 WAN 合作伙伴位置 | Azure
+title: Azure 虚拟 WAN 合作伙伴和位置 | Azure
 description: 本文包含 Azure 虚拟 WAN 的合作伙伴和中心位置的列表。
 services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 09/23/2019
+origin.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: 7f54b54f3e2c6a1c24e476a65dd0e1665dee780e
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
+ms.openlocfilehash: 3b19304f6c58565a818bd1ef47d8cbcba7c1352e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155887"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155071"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -36,14 +36,14 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 * 自动下载 Azure 连接信息
 * 本地分支设备的配置 
 
-某些连接合作伙伴可以扩展自动化，包括创建 Azure 虚拟中心 VNet 和 VPN 网关。 若想了解有关自动化的详细信息，请参阅[配置自动化 - WAN 合作伙伴](virtual-wan-configure-automation-providers.md)。
+某些连接合作伙伴可以扩展自动化，包括创建 Azure 虚拟中心 VNet 和 VPN 网关。 若要了解有关自动化的详细信息，请参阅[适用于虚拟 WAN 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
 <a name="partners"></a>
 ## <a name="connectivity-through-partners"></a>通过合作伙伴建立连接
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-在不久的将来，我们的路线图中将列出以下合作伙伴：Arista、F5 Networks、Fortinet、Silver-Peak、Velocloud、Nuage Nokia。
+在不久的将来，我们的路线图中将列出以下合作伙伴：Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink 和 VMWare Velocloud。
 
 <a name="locations"></a>
 ## <a name="locations"></a>位置
@@ -54,6 +54,6 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 * 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 常见问题解答](virtual-wan-faq.md)。
 
-* 有关如何自动连接到 Azure 虚拟 WAN 的详细信息，请参阅[虚拟 WAN 合作伙伴 - 如何实现自动化](virtual-wan-configure-automation-providers.md)。
+* 有关如何自动连接到 Azure 虚拟 WAN 的详细信息，请参阅[适用于虚拟 WAN 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

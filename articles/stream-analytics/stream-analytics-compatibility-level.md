@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 流分析作业的兼容性级别
+title: Azure 流分析兼容性级别
 description: 了解如何设置 Azure 流分析作业的兼容性级别，并了解最新兼容性级别中的重大更改
 services: stream-analytics
 author: lingliw
@@ -7,14 +7,14 @@ ms.author: v-lingwu
 manager: digimobile
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 05/02/2019
-ms.date: 06/11/2019
-ms.openlocfilehash: df6f153bd39434c89bc0f1ee5606587ab4f451cf
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+origin.date: 02/14/2020
+ms.date: 02/27/2020
+ms.openlocfilehash: 89b8438708942fa26c90c278350015ca3e65a2a5
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674693"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154618"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -30,7 +30,7 @@ Azure 流分析目前支持三种兼容性级别：
 
 * 1.0 - 以前的行为
 * 1.1 - 默认行为
-* 1.2（预览版）- 最新的行为，提供最新的改进措施供评估
+* 1.2 - 最新行为和最新改进
 
 最初的 1.0 兼容性级别是多年前在正式推出 Azure 流分析期间引入的。
 
@@ -43,16 +43,16 @@ Azure 流分析目前支持三种兼容性级别：
 若要在 Azure 门户中更新作业的兼容性级别：
 
 1. 使用 [Azure 门户](https://portal.azure.cn)定位到你的流分析作业。
-2. **停止**该作业，然后更新兼容性级别。 如果作业处于正在运行状态，则无法更新兼容性级别。
+2. **停止**该作业，然后更新兼容性级别。 如果作业处于运行状态，则无法更新兼容性级别。
 3. 在“配置”标题下，选择“兼容性级别”。  
 4. 选择所需的兼容性级别值。
 5. 选择页面底部的“保存”  。
 
 ![Azure 门户中的流分析兼容性级别](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-在更新兼容性级别时，T-SQL 编译器会使用与所选兼容性级别相对应的语法来验证作业。 
+在更新兼容性级别时，T 编译器会使用与所选兼容性级别相对应的语法来验证作业。
 
-## <a name="compatibility-level-12-preview"></a>兼容性级别 1.2（预览版）
+## <a name="compatibility-level-12"></a>兼容性级别 1.2
 
 在兼容性级别 1.2 中引入了以下重大更改：
 
@@ -66,9 +66,9 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 更新的地理空间函数提供已知文本 (WKT) 地理空间格式的完整表达能力。 可以指定以前在 GeoJson 中所不支持的其他地理空间组件。
 
-有关详细信息，请参阅[更新到 Azure 流分析中的地理空间功能 - 云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
+有关详细信息，请参阅 [Azure 流分析中的地理空间功能更新 - 云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
 
-### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>针对使用多个分区的输入源的并行执行查询 
+### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>针对使用多个分区的输入源的并行执行查询
 
 **以前的级别：** Azure 流分析查询要求使用 PARTITION BY 子句在不同的输入源分区之间并行化查询处理。
 

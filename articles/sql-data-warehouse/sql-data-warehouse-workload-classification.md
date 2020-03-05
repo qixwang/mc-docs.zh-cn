@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据仓库分类 | Microsoft Docs
+title: 工作负荷分类
 description: 有关使用分类管理 Azure SQL 数据仓库中查询的并发性、重要性和计算资源的指导。
 services: sql-data-warehouse
 author: WenJason
@@ -7,16 +7,17 @@ manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-origin.date: 05/01/2019
-ms.date: 08/19/2019
+origin.date: 01/27/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: d5813f2832e23fae1fc1f00664f778b6be9df2ff
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ce4e5da51e5b65ce30fd048a77b5e0d32c5bacdc
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544228"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154411"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 数据仓库工作负荷分类
 
@@ -34,14 +35,24 @@ ms.locfileid: "69544228"
 
 ## <a name="classification-process"></a>分类过程
 
-目前，SQL 数据仓库中的分类是通过将用户分配到某个角色来实现的，该角色具有一个使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 分配的相应资源类。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) 语法来利用更丰富的分类方法。  SQL 数据仓库用户可以使用此语法向请求分配重要性和资源类。  
+目前，SQL 数据仓库中的分类是通过将用户分配到某个角色来实现的，该角色具有一个使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 分配的相应资源类。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) 语法来利用更丰富的分类方法。  使用此语法，SQL 数据仓库用户可以通过 `workload_group` 参数为请求分配重要性和系统资源数。 
 
 > [!NOTE]
 > 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。
 
-## <a name="classification-precedence"></a>分类过程
+## <a name="classification-weighting"></a>分类权重
 
-在分类过程中，将使用优先顺序来确定要分配哪个资源类。 基于数据库用户的分类优先于角色成员身份。 如果创建一个将 UserA 数据库用户映射到 mediumrc 资源类的分类器， 请将 RoleA 数据库角色（UserA 是其成员）映射到 largerc 资源类。 将数据库用户映射到 mediumrc 资源类的分类器优先于将 RoleA 数据库角色映射到 largerc 资源类的分类器。
+在分类过程中，将使用权重来确定分配哪个工作负荷组。  权重如下所示：
+
+|分类器参数 |重量   |
+|---------------------|---------|
+|MEMBERNAME:USER      |64       |
+|MEMBERNAME:ROLE      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+`membername` 参数是必需的。  但是，如果指定的 membername 是数据库用户而不是数据库角色，用户的权重更高，因此选择该分类器。
 
 如果某个用户是多个角色的成员，并且这些角色分配有不同的资源类或者在多个分类器中相匹配，则会为该用户分配最高的资源类。  此行为与现有的资源类分配行为保持一致。
 

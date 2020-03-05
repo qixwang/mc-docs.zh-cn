@@ -8,37 +8,35 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/15/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 65668d35a95b7c9a9f534f2ab9cb1ced8badd93e
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: bc0427d207be5b0b677085735b40ccca660353c0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067731"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155117"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入门：使用 Python（azure-eventhub 版本 1）向/从事件中心发送/接收事件
-
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备中的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细信息，请参阅 [Azure 事件中心](event-hubs-about.md)和 [Azure 事件中心的功能和术语](event-hubs-features.md)。
-
-本快速入门介绍了如何创建 Python 应用程序，以便将事件发送到事件中心以及从其接收事件。 
+本快速入门介绍如何使用 **azure-eventhub 版本 1** Python 包向事件中心发送事件以及从事件中心接收事件。 
 
 > [!WARNING]
-> 本快速入门适用于 Azure 事件中心 Python SDK 版本 1。 我们建议你将代码[迁移](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)到 [Python SDK 版本 5](get-started-python-send-v2.md)。
+> 本快速入门使用旧的 azure-eventhub 版本 1 包。 有关使用该包的最新**版本 5** 的快速入门，请参阅[使用 azure-eventhub 版本 5 发送和接收事件](get-started-python-send-v2.md)。 若要将应用程序从使用旧包迁移到使用新包，请参阅[从 azure-eventhub 版本 1 迁移到版本 5 的指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)。
+ 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
 若要完成本快速入门，需要具备以下先决条件：
 
-- Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
-- 按照以下文档中的说明创建的活动事件中心命名空间和事件中心：[快速入门：使用 Azure 门户创建事件中心](event-hubs-create.md)。 记下命名空间和事件中心名称，以便稍后在本演练中使用。 
-- 事件中心命名空间的共享访问密钥名称和主密钥值。 按[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)中的说明操作，获取访问密钥的名称和值。 默认访问密钥名称为 **RootManageSharedAccessKey**。 复制密钥名称和主密钥值，以便稍后在本演练中使用。 
+- **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有 Azure 帐户，可以注册 [1 元试用版](https://wd.azure.cn/pricing/1rmb-trial/)或[创建帐户](https://wd.azure.cn/pricing/pia/)。
 - Python 3.4 或更高版本，其中已安装并更新 `pip`。
 - 事件中心的 Python 包。 若要安装此包，请在路径中包含 Python 的命令提示符中运行以下命令： 
   
   ```cmd
   pip install azure-eventhub==1.3.*
   ```
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照文章中的以下说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 你将在本快速入门中稍后编写的代码中使用访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。 
 
 
 ## <a name="send-events"></a>发送事件

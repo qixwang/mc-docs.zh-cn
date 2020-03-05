@@ -2,20 +2,16 @@
 title: 在 Azure 自动化中执行 Runbook
 description: 详细介绍如何处理 Azure 自动化中的 Runbook。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
 origin.date: 04/04/2019
-ms.date: 12/02/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 693ac2b49956dd0267003172f698be73eedfb15e
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: f4704a179f8bc82aa595fe519c29e762534ec421
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530636"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653546"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -36,10 +32,10 @@ Azure 自动化中的 Runbook 可以在 Azure 中的沙盒上运行，也可以�
 |与 Azure 资源集成|Azure 沙盒|托管在 Azure 中，身份验证更为简单。 如果使用的是 Azure VM 上的混合 Runbook 辅助角色，则可使用 [Azure 资源的托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
 |管理 Azure 资源的最佳性能|Azure 沙盒|脚本在同一环境中运行，因此延迟更低|
 |最大程度减少运营成本|Azure 沙盒|没有计算开销，不需要 VM|
-|长期脚本|混合 Runbook 辅助角色|Azure 沙盒具有[对资源的限制](../azure-subscription-service-limits.md#automation-limits)|
+|长期脚本|混合 Runbook 辅助角色|Azure 沙盒具有[对资源的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |与本地服务进行交互|混合 Runbook 辅助角色|可以直接访问主机|
 |需要第三方软件和可执行文件|混合 Runbook 辅助角色|管理操作系统并且可以安装软件|
-|资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒具有[对资源的限制](../azure-subscription-service-limits.md#automation-limits)|
+|资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒具有[对资源的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |使用具有特定需求的模块| 混合 Runbook 辅助角色|下面是一些示例：</br> **WinSCP** - winscp.exe 上的依赖项 </br> **IISAdministration** - 需要启用 IIS|
 |安装需要安装程序的模块|混合 Runbook 辅助角色|沙盒的模块必须是可复制的|
 |使用需要不同于 4.7.2 版本的 .NET Framework 的 Runbook 或模块|混合 Runbook 辅助角色|自动化沙盒的 .NET Framework 4.7.2 无法进行升级|
@@ -73,7 +69,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>时间依赖脚本
+### <a name="time-dependent-scripts"></a>与时间相关的脚本
 
 创作 runbook 时，应仔细考虑。 如前所述，需要以某种方式编写 runbook，使其可靠并且能够处理可能导致 runbook 重启或失败的瞬态错误。 如果某个 Runbook 失败，将会重试该 Runbook。 如果 Runbook 在时间约束内正常运行，则应在 Runbook 中实现检查执行时间的逻辑，确保只在特定时间运行启动、关闭或横向扩展等操作。
 
@@ -319,7 +315,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 为了在云中的所有 Runbook 之间共享资源，Azure 自动化会暂时卸载或停止已运行三小时以上的所有作业。 [基于 PowerShell 的 Runbook](automation-runbook-types.md#powershell-runbooks) 和 [Python Runbook](automation-runbook-types.md#python-runbooks) 的作业将停止且不会重启，作业状态显示“已停止”。
 
-对于长期任务，建议使用[混合 Runbook 辅助角色](automation-hrw-run-runbooks.md#job-behavior)。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受 3 小时公平份额限制的限制，但应开发在混合 Runbook 辅助角色上运行的 runbook，以便在出现意外的本地基础结构问题时支持重启行为。
+对于长期任务，建议使用[混合 Runbook 辅助角色](automation-hrw-run-runbooks.md#job-behavior)。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受 3 小时公平份额限制的限制，但应开发在混合 Runbook 辅助角色上运行的 runbook，以便在出现意外的本地基础结构问题时支持重启行为。
 
 另一种选择是通过使用子 runbook 来优化 runbook。 如果 runbook 在多个资源上遍历同一函数，例如在多个数据库上执行某个数据库操作，可将该函数移到[子 runbook](automation-child-runbooks.md)，并使用 [Start-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 进行调用。 各个子 runbook 是在单独的进程中并行执行的。 此行为降低了完成父 runbook 所需的时间总量。 如果有在子 Runbook 完成后执行的操作，可使用 Runbook 中的 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) cmdlet 检查每个子 Runbook 的作业状态。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的 Web 活动 | Microsoft Docs
+title: Azure 数据工厂中的 Web 活动
 description: 了解如何使用 Web 活动（数据工厂支持的控制流活动之一）从管道调用 REST 终结点。
 services: data-factory
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/19/2018
-ms.date: 10/14/2019
-ms.openlocfilehash: fe52f59b8cb393f3b68c80a3f4b15c72523bdeb5
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.date: 03/02/2020
+ms.openlocfilehash: 66b9a6aa11284eca51b48d5be0a48f1c7ed886ee
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275415"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653515"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
@@ -91,10 +91,14 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 
 ## <a name="authentication"></a>身份验证
 
+下面是 Web 活动中支持的身份验证类型。
+
 ### <a name="none"></a>无
+
 如果不需要身份验证，请排除“身份验证”属性。
 
 ### <a name="basic"></a>基本
+
 指定用户名和密码以用于基本身份验证。
 
 ```json
@@ -106,6 +110,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 ```
 
 ### <a name="client-certificate"></a>客户端证书
+
 指定 base64 编码的 PFX 文件内容和密码。
 
 ```json

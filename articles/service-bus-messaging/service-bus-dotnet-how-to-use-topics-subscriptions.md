@@ -12,15 +12,15 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-origin.date: 01/23/2019
-ms.date: 09/23/2019
+origin.date: 11/27/2019
+ms.date: 02/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 0f5f66c0e7eb6d02de24b1cbae71243babd3d14a
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 237497952abc9daab9ded0cf6b9cf36738e2cd12
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330321"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154980"
 ---
 # <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
 
@@ -76,16 +76,10 @@ ms.locfileid: "71330321"
     static ITopicClient topicClient;
     ``` 
 
-3. 将 `Main()` 的默认内容替换为以下代码行：
+3. 将 `Main()` 方法替换为下面的 **async** `Main` 方法，该方法使用将在下一步中添加的 SendMessagesAsync 方法异步发送消息。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-   
-4. 在 `Main()` 之后直接添加以下异步 `MainAsync()` 方法，以调用“发送消息”方法：
-
-    ```csharp
-    static async Task MainAsync()
+    public static async Task Main(string[] args)
     {
         const int numberOfMessages = 10;
         topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
@@ -102,8 +96,7 @@ ms.locfileid: "71330321"
         await topicClient.CloseAsync();
     }
     ```
-
-5. 在 `MainAsync()` 方法后直接添加以下 `SendMessagesAsync()` 方法，以便执行发送 `numberOfMessagesToSend` 所指定的消息数（当前设置为 10）的工作：
+5. 在 `Main` 方法后直接添加以下 `SendMessagesAsync()` 方法，以便执行发送 `numberOfMessagesToSend` 所指定的消息数（当前设置为 10）的工作：
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -147,25 +140,20 @@ ms.locfileid: "71330321"
             const string TopicName = "<your_topic_name>";
             static ITopicClient topicClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
+            public static async Task Main(string[] args)
             {
                 const int numberOfMessages = 10;
                 topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
-
+    
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
-
+    
                 // Send messages.
                 await SendMessagesAsync(numberOfMessages);
-
+    
                 Console.ReadKey();
-
+    
                 await topicClient.CloseAsync();
             }
 
@@ -223,17 +211,11 @@ ms.locfileid: "71330321"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 将 `Main()` 的默认内容替换为以下代码行：
+3. 将 `Main()` 方法替换为以下 **async** `Main` 方法。 它调用将在下一步中添加的 `RegisterOnMessageHandlerAndReceiveMessages()` 方法。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-4. 在 `Main()` 之后直接添加以下异步 `MainAsync()` 方法，以调用 `RegisterOnMessageHandlerAndReceiveMessages()` 方法：
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
 
         Console.WriteLine("======================================================");
@@ -245,11 +227,10 @@ ms.locfileid: "71330321"
 
         Console.ReadKey();
 
-        await subscriptionClient.CloseAsync();
+        await subscriptionClient.CloseAsync();    
     }
-    ```
-
-5. 在 `MainAsync()` 方法后直接添加以下方法，以便注册消息处理程序并接收发件人应用程序发送的消息：
+   ```
+5. 在 `Main()` 方法后直接添加以下方法，以便注册消息处理程序并接收发件人应用程序发送的消息：
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -323,25 +304,20 @@ ms.locfileid: "71330321"
             const string SubscriptionName = "<your_subscription_name>";
             static ISubscriptionClient subscriptionClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
+            public static async Task Main(string[] args)
+            {    
                 subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
-
+        
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
                 Console.WriteLine("======================================================");
-
-                // Register subscription message handler and receive messages in a loop.
+        
+                // Register subscription message handler and receive messages in a loop
                 RegisterOnMessageHandlerAndReceiveMessages();
-
+        
                 Console.ReadKey();
-
-                await subscriptionClient.CloseAsync();
+        
+                await subscriptionClient.CloseAsync();    
             }
 
             static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -393,7 +369,7 @@ ms.locfileid: "71330321"
    
     ![主题长度][topic-message-receive]
 
-祝贺你！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
+祝贺！ 现已使用 .NET Standard 库创建主题和订阅，发送了 10 条消息，并接收到了这些消息。
 
 > [!NOTE]
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 

@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/25/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15be5510c0363dd88258a7e92567dd07d4ca01f
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: a993c14b967077dc42ed24a24e01ce3768de5dd3
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067605"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653451"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -124,7 +124,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 > [!NOTE]
 > 此功能目前以公共预览版提供。
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>同步临时密码和“下次登录时强制密码重置”的公共预览版功能
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步临时密码和“下次登录时强制更改密码”的公共预览版功能
 
 典型的做法是强制用户在首次登录时更改其密码，尤其是发生管理员密码重置后。  这种做法通常称为设置“临时”密码，它是通过对 Active Directory (AD) 中的用户对象选中“用户下次登录时必须更改密码”标志来完成的。
   

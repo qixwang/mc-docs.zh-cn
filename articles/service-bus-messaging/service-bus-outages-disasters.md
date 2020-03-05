@@ -1,20 +1,20 @@
 ---
 title: 使 Azure 服务总线应用程序免受服务中断和灾难影响
-description: 保护应用程序免受潜在服务总线故障影响的技术。
+description: 本文提供了用于保护应用程序免受潜在的 Azure 服务总线中断影响的技术。
 services: service-bus-messaging
 author: lingliw
 manager: digimobile
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 09/14/2018
+origin.date: 01/27/2020
 ms.date: 10/31/2018
 ms.author: v-lingwu
-ms.openlocfilehash: d2cef5a4bab58deca922f4ca5e80b64a072fa492
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 5f516530cf6048b2e1b0060d51905d0afd419222
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028578"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154976"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 

@@ -7,15 +7,15 @@ author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-origin.date: 10/15/2018
-ms.date: 03/11/2019
-ms.author: v-biyu
-ms.openlocfilehash: a68451ca4400fb05dfa5ceceaddab4622ab618f2
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+origin.date: 02/19/2019
+ms.date: 03/09/2020
+ms.author: v-tawe
+ms.openlocfilehash: ebc873cdfee7a7f7d749ea90020ea8384b05a4b4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72872982"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154739"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
@@ -68,11 +68,17 @@ Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummyname
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
+或者可以使用以下命令获取 EventHub 实体的连接字符串：
+
+```azurecli
+az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
+```
+
 有关事件中心 Azure CLI 命令的详细信息，请参阅[事件中心的 Azure CLI](https://docs.azure.cn/cli/eventhubs?view=azure-cli-latest)。
 
 ## <a name="next-steps"></a>后续步骤
 
 访问以下链接可以了解有关事件中心的详细信息：
 
-* [事件中心概述](event-hubs-about.md)
+* [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)

@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 12/20/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: ed17d0e60f354a736435fa927d6a9149eb783571
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+origin.date: 02/13/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: d6496eb53c3453f18fe538bac2410f93fdf11bf4
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776735"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154354"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展会如同内置功能一样运行。
@@ -205,22 +205,26 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-pg_stat_statements 扩展预加载在每个 Azure Database for PostgreSQL 服务器上，以便跟踪 SQL 语句的执行统计信息。
+[pg_stat_statements 扩展](https://www.postgresql.org/docs/current/pgstatstatements.html)已预加载到每个 Azure Database for PostgreSQL 服务器上，以便为你提供跟踪 SQL 语句执行统计信息的方法。
 设置 `pg_stat_statements.track`，它可以控制哪些语句由扩展计数，默认为 `top`，这意味着跟踪所有由客户端直接发布的语句。 另外两个跟踪级别为 `none` 和 `all`。 此设置可通过 [Azure 门户](/postgresql/howto-configure-server-parameters-using-portal)或 [Azure CLI](/postgresql/howto-configure-server-parameters-using-cli) 作为服务器参数进行配置。
 
 查询执行信息 pg_stat_statements 提供的权限与记录每个 SQL 语句时对服务器性能的影响之间存在权衡。 如果不经常使用 pg_stat_statements 扩展，则建议将 `pg_stat_statements.track` 设置为 `none`。 请注意，某些第三方监视服务可能依赖 pg_stat_statements 来提供查询性能见解，因此，请确认这是否适合你。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
-dblink 和 postgres_fdw 允许从一台 PostgreSQL 服务器连接到另一台服务器，或者连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 置于允许列表中。
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 允许你从一个 PostgreSQL 服务器连接到另一个 PostgreSQL 服务器，或者连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 置于允许列表中。
 
 目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到其他 Azure Database for PostgreSQL 服务器的情况除外。
 
 ## <a name="uuid"></a>uuid
-如果计划使用 uuid-ossp 扩展中的 `uuid_generate_v4()`，请考虑将其与 pgcrypto 扩展中的 `gen_random_uuid()` 进行比较，以了解性能优势。
-
+如果计划使用 [uuid-ossp 扩展](https://www.postgresql.org/docs/current/uuid-ossp.html)中的 `uuid_generate_v4()`，请考虑将其与 [pgcrypto 扩展](https://www.postgresql.org/docs/current/pgcrypto.html)中的 `gen_random_uuid()` 进行比较，以了解性能优势。
 
 ## <a name="pgaudit"></a>pgAudit
-pgAudit 扩展提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[“审核概念”一文](concepts-audit.md)。 
+[pgAudit 扩展](https://github.com/pgaudit/pgaudit/blob/master/README.md)提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[“审核概念”一文](concepts-audit.md)。 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+pg_prewarm 扩展可将关系数据加载到缓存中。 预热缓存意味着查询在重启后第一次运行时响应时间更短。 在 Postgres10 及更低版本中，使用 [prewarm 函数](https://www.postgresql.org/docs/10/pgprewarm.html)手动完成预热。
+
+在 Postgres 11 及更高版本中，可以将预热配置为[自动](https://www.postgresql.org/docs/current/pgprewarm.html)进行。 需要在 `shared_preload_libraries` 参数列表中包含 pg_prewarm，然后重启服务器以应用更改。 可以通过 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[CLI](howto-configure-server-parameters-using-cli.md)、REST API 或 ARM 模板设置参数。 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。

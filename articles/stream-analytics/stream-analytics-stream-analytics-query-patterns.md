@@ -1,6 +1,6 @@
 ---
 title: Azure 流分析中的常见查询模式
-description: 本文介绍了在 Azure 流分析作业中很有用的多个常见查询模式和设计。
+description: 本文介绍了在 Azure 流分析作业中很有用的几种常见查询模式和设计。
 services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/18/2019
 ms.date: 2/6/2020
-ms.openlocfilehash: 45da26cdcad93c97fcf1addc36a3ec95fd1bcccc
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 40f4a484f0adc10253a5fa184f7501c1fa354b4a
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068301"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154590"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
 
@@ -151,9 +151,9 @@ GROUP BY
     TumblingWindow(second, 10)
 ```
 
-**解释**：在“权重”字段中使用 **CAST** 语句来指定它的数据类型。  请参阅[数据类型（Azure 流分析）](https://msdn.microsoft.com/library/azure/dn835065.aspx)中支持的数据类型列表。
+使用 **CAST** 语句指定其数据类型。 请参阅[数据类型（Azure 流分析）](https://msdn.microsoft.com/library/azure/dn835065.aspx)上支持的数据类型列表。
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>查询示例：使用 LIKE/NOT LIKE 进行模式匹配
+
 ## <a name="string-matching-with-like-and-not-like"></a>使用 LIKE 和 NOT LIKE 进行字符串匹配
 
 可以使用 **LIKE** 和 **NOT LIKE** 来验证某个字段是否与特定的模式相匹配。 例如，可以创建一个筛选器，以仅返回以字母“A”开头、以数字 9 结尾的牌照。
@@ -340,7 +340,7 @@ GROUP BY
 
 **COUNT(DISTINCT Make)** 返回某个时间窗口内的“制造商”列的非重复值计数。 
 
-## <a name="query-example-determine-if-a-value-has-changed"></a>查询示例：确定某个值是否已更改
+
 ## <a name="calculation-over-past-events"></a>基于以往的事件进行计算
 
 **LAG** 函数可用于查看某个时间窗口内的以往事件，并将其与当前事件进行比较。 例如，如果当前汽车制造商与通过收费站的最后一辆汽车不同，则可以输出该制造商。
@@ -482,7 +482,7 @@ FROM
 
 查询的第一个步骤是查找 10 分钟窗口内的最大时间戳，即该窗口的最后一个事件的时间戳。 第二个步骤是将第一个查询的结果与原始流联接，查找每个窗口内与最后一个时间戳相匹配的事件。 
 
-查询中有两个步骤。 第一个步骤是在 10 分钟的时间范围内查找最新的时间戳。 第二个步骤是将第一个查询的结果与原始流联接，查找每个时间范围内与最后一个时间戳相匹配的事件。 
+**DATEDIFF** 是一个特定于日期的函数，用于比较并返回两个日期/时间字段之间的时差。有关详细信息，请参阅[日期函数](https://docs.microsoft.com/stream-analytics-query/date-and-time-functions-azure-stream-analytics)。
 
 ## <a name="correlate-events-in-a-stream"></a>关联流中的事件
 
@@ -520,7 +520,7 @@ WHERE
 
 **LAG** 函数可以查看一个事件之后的输入流，检索“制造商”值，并将该值与当前事件的“制造商”值进行比较。    满足条件后，可以在 **SELECT** 语句中使用 **LAG** 投影上一个事件中的数据。
 
-## <a name="query-example-detect-the-duration-between-events"></a>查询示例：检测事件之间的持续时间
+## <a name="detect-the-duration-between-events"></a>检测事件之间的持续时间
 收到 End 事件后，可以通过查看最后一个 Start 事件来计算事件的持续时间。 此查询可用于确定用户花费在某个页面或功能上的时间。
 
 **输入**：  
@@ -685,7 +685,7 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-**解释**：**TIMESTAMP OVER BY** 子句使用子流来单独查看每个设备时间线。 每个 *TollID* 的输出事件都是在计算时生成的，这意味着事件按照每个 *TollID* 的顺序排列，而不是像所有设备都在同一个时钟上那样重新排序。
+**TIMESTAMP OVER BY** 子句使用子流来单独查看每个设备时间线。 每个 *TollID* 的输出事件都是在计算时生成的，这意味着事件按照每个 *TollID* 的顺序排列，而不是像所有设备都在同一个时钟上那样重新排序。
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>查询示例：删除时间范围内的重复事件
 

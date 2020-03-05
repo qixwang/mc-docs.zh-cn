@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/18/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: 1ca412d5edce1e9679d7183d7fb87fc311bed8eb
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.date: 03/09/2020
+ms.openlocfilehash: 6605091653109bf6130c7015a36056b77d7691f6
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657776"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590270"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -119,7 +119,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 ## <a name="supported-data-formats"></a>受支持的数据格式
 
 对于“从查询引入”以外的所有引入方法，请设置适当的数据格式，使 Azure 数据资源管理器能够对其进行分析。 
-* 支持的数据格式包括：TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON（行分隔、多行）、Avro 和 Parquet。 
+* 支持的数据格式包括：TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON（行分隔、多行）、Avro、Orc 和 Parquet。 
 * 支持 ZIP 和 GZIP 压缩。
 
 > [!NOTE]

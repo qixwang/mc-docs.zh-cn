@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0835be44373b49cacae73708d4c056fec4fbb79b
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: a6e8f103e07b8e45b7cf3bee5b88927a22986a1f
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429898"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653092"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -39,6 +39,7 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 ## <a name="when-to-use-access-reviews"></a>何时使用访问评审？
 
 - **特权角色用户过多：** 建议检查多少用户具有管理访问权限，其中有多少用户是全局管理员，以及检查是否存在向其分配管理任务后未将其删除的受邀来宾和合作伙伴。 可以重新验证 [Azure AD 角色](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如全局管理员）或 [Azure 资源角色](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)（例如 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 体验中的用户访问权限管理员）中的角色分配用户。
+- **自动化不可行：** 可针对安全组或 Office 365 组中的动态成员身份创建规则，但如果人力资源数据不在 Azure AD 中或者如果用户在离开组后仍需访问权限来培训其接任者该怎么办？ 对于此类情况，可以对该组创建评审，确保仍需访问权限的用户能够继续获得访问权限。
 - **将组用于新用途：** 如果要将组同步到 Azure AD，或计划为所有销售团队组成员启用 Salesforce 应用程序，则要求组所有者在将组用于其他风险内容前评审组成员资格会非常有用。
 - **业务关键数据访问权限：** 对于特定资源，可能出于审核目的要求 IT 以外的人员定期注销并提供需要访问权限的正当理由。
 - **要维护策略的例外列表：** 在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 IT 管理员可以管理此任务、避免忽视策略例外情况，为审核员提供定期评审这些例外情况的证明。
@@ -57,9 +58,9 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 | Azure 资源角色 | 指定的审阅者</br>自我评审 | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure 门户 |
 
 
-## <a name="onboard-access-reviews"></a>载入访问评审
+## <a name="create-access-reviews"></a>创建访问评审
 
-若要载入访问评审，请执行以下步骤。
+若要创建访问评审，请执行以下步骤：
 
 1. 转到 [Azure 门户](https://portal.azure.cn)来管理访问评审并以全局管理员或用户管理员身份登录。
 
@@ -69,13 +70,11 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 1. 选择“标识监管”  。
 
-1. 单击“访问评审”  。
- 
-    ![访问评审启动页](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. 在“开始使用”页上，单击“创建访问评审”  按钮。
 
-1. 在页面上，单击“现在载入”按钮。 
-    
-      ![访问评审载入](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![访问评审启动页](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
+
+
 
 ## <a name="license-requirements"></a>许可要求
 
@@ -115,3 +114,4 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 - [评审组或应用程序的访问权限](perform-access-review.md)
 - [完成组或应用程序的访问评审](complete-access-review.md)
 
+<!-- Update_Description: wording update -->

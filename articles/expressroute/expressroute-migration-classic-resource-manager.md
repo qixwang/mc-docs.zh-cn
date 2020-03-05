@@ -1,27 +1,19 @@
 ---
-title: 将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到资源管理器部署模型：Azure：PowerShell | Azure
+title: Azure ExpressRoute：将经典 VNet 迁移到资源管理器
 description: 本页介绍如何在移动线路之后将 ExpressRoute 关联的虚拟网络迁移到 Resource Manager 部署模型。
-documentationcenter: na
 services: expressroute
-author: ganesr
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: cherylmc
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 06/13/2019
+ms.topic: conceptual
+origin.date: 02/06/2020
 ms.author: v-yiso
 ms.date: ''
-ms.openlocfilehash: b83afd47dff43b7109e296f26f9d04967c385177
-ms.sourcegitcommit: fcc768b955bab5c6cb7f898c913bc7ede6815743
+ms.openlocfilehash: 40719cacb28769597b33637e146462811da5b1d0
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68733529"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154659"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型
 
@@ -50,7 +42,7 @@ ms.locfileid: "68733529"
 * 可以在不停机的情况下，将同一订阅中的虚拟网络、网关，以及附加到 ExpressRoute 线路的虚拟网络中的关联部署迁移到 Resource Manager 环境。 可以按照后面描述的步骤来迁移各种资源，例如虚拟网络、网关以及部署在虚拟网络中的虚拟机。 必须确保虚拟网络配置正确，才能进行迁移。 
 * 若要完成虚拟网络、网关以及处于虚拟网络中但与 ExpressRoute 线路不属同一订阅的关联部署的迁移，则需停机一段时间。 文档最后一部分介绍了在迁移资源时必须执行的步骤。
 * 无法迁移使用 ExpressRoute 网关和 VPN 网关的虚拟网络。
-* 不支持 ExpressRoute 线路跨订阅迁移。 有关详细信息，请参阅 [Microsoft.Network 移动支持](../azure-resource-manager/move-support-resources.md#microsoftnetwork)。
+* 不支持 ExpressRoute 线路跨订阅迁移。 有关详细信息，请参阅 [Microsoft.Network 移动支持](../azure-resource-manager/management/move-support-resources.md#microsoftnetwork)。
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 必须先将 ExpressRoute 线路从经典环境转移到 Resource Manager 环境，才能尝试迁移附加到 ExpressRoute 线路的资源。 若要完成此任务，请参阅以下文章：
@@ -92,7 +84,7 @@ ms.locfileid: "68733529"
    ```
 
 ## <a name="next-steps"></a>后续步骤
-* [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 * [常见问题解答：平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [查看最常见的迁移错误和缓解措施](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

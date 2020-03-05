@@ -4,19 +4,20 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习在 Azure 机器学习远程目标上使用自动机器学习构建模型
 services: machine-learning
 author: cartacioS
-ms.author: sacartac
+ms.author: v-yiso
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 856949dc2671584b5d44b808203c457f9383ab6d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 1584c077492bd521f21e389589dc7d9e6127083b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598853"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154995"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -40,26 +41,43 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-如果尚无 AmlCompute 目标，请在工作区 (`ws`) 中创建 DSVM。
+在工作区 (`ws`) 中创建 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) 目标（如果它尚不存在）。
 
 **时间估计**：创建 AmlCompute 目标需要大约 5 分钟。
 
 ```python
 from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
+import os
 
-amlcompute_cluster_name = "automlcl"  # Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
-                                                            # for GPU, use "STANDARD_NC6"
-                                                            # vm_priority = 'lowpriority', # optional
-                                                            max_nodes=6)
-compute_target = ComputeTarget.create(
-    ws, amlcompute_cluster_name, provisioning_config)
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
-# Can poll for a minimum number of nodes and for a specific timeout.
-# If no min_node_count is provided, it will use the scale settings for the cluster.
-compute_target.wait_for_completion(
-    show_output=True, min_node_count=None, timeout_in_minutes=20)
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
+
+    # create the cluster
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 现在，可以使用 `compute_target` 对象作为远程计算目标。
@@ -70,9 +88,9 @@ compute_target.wait_for_completion(
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-定义 training_data 作为 `TabularDataset`和标签，在 AutoMLConfig 中将其传递到自动化 ML。 `from_delimited_files` 默认情况下将 `infer_column_types` 设置为 true，这将自动推断列类型。 
+将 training_data 定义为 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和标签，并将其传递给 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 中的自动 ML。 默认情况下，`TabularDataset` 方法 `from_delimited_files` 将 `infer_column_types` 设置为 true，这将自动推断列类型。 
 
-如果要手动设置列类型，可以将 `set_column_types` 参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
+如果确实希望手动设置列类型，可以设置 `set_column_types` 参数来手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
 ```python
 from sklearn import datasets
@@ -86,8 +104,8 @@ import os
 if not os.path.isdir('data'):
     os.mkdir('data')
     
-if not os.path.exists(project_folder):
-    os.makedirs(project_folder)
+if not os.path.exists('project_folder'):
+    os.makedirs('project_folder')
 
 X = pd.DataFrame(data_train.data[100:,:])
 y = pd.DataFrame(data_train.target[100:])

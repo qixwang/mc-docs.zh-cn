@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 1/15/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 21d49687b91586aa1c466d93b1bbe2a6de420413
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: a483d664eebf3707af8fd354ac7748745aac464c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857902"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155006"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>提高 Azure 安全中心的安全评分
 
@@ -29,15 +29,13 @@ ms.locfileid: "75857902"
 ## <a name="secure-score-calculation"></a>安全评分的计算
 
 安全中心模仿安全分析师的工作，审查安全建议并应用高级算法来确定每项建议的重要性。
-Azure 安全中心会不断检查活动建议并根据它们计算安全评分，建议的分数源自其严重性和对工作负荷安全性影响最大的最佳安全实践。
+Azure 安全中心会不断检查活动建议并根据它们计算安全分数，建议的分数源自其严重性和对工作负荷安全性影响最大的安全最佳做法。
 
 安全中心还提供**整体安全评分**。 
 
 **整体安全评分**是所有建议评分的累计评分。 可以查看订阅或管理组的整体安全评分，具体取决于所选择的内容。 分数将根据所选订阅和这些订阅上的活动建议而有所不同。
 
- 
 若要检查哪些建议对安全评分影响最大，可以在安全中心仪表板中查看最具影响力的前三个建议，或者可以使用“安全分数影响”列对建议列表边栏选项卡中的建议进行排序  。
-
 
 若要查看整体安全评分：
 

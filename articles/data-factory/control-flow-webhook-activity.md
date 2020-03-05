@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 03/25/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 089cf6c8a8fe1b0fd831d08a52980987dde3c0ea
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/02/2020
+ms.openlocfilehash: edd32d95a6be8f0a1b0ad61077fdae5820c29413
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624217"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653514"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
 可以使用 Webhook 活动通过自定义代码控制管道的执行。 使用 Webhook 活动，客户可以调用终结点并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
@@ -65,6 +65,49 @@ body | 表示要发送到终结点的有效负载。 | 有效 JSON（或 resultT
 authentication | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](/data-factory/control-flow-web-activity#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 否 |
 timeout | 活动将等待多长时间才能调用 &#39;callBackUri&#39;。 活动将等待多长时间才能调用“callBackUri”。 默认值为 10 分钟 (“00:10:00”)。 格式为 Timespan，即 d.hh:mm:ss | String | 否 |
 回调时报告状态 | 允许用户报告 Webhook 活动的失败状态，这会将活动标记为“失败” | 布尔 | 否 |
+
+## <a name="authentication"></a>身份验证
+
+下面是 Webhook 活动中支持的身份验证类型。
+
+### <a name="none"></a>无
+
+如果不需要身份验证，请排除“身份验证”属性。
+
+### <a name="basic"></a>基本
+
+指定用户名和密码以用于基本身份验证。
+
+```json
+"authentication":{
+   "type":"Basic",
+   "username":"****",
+   "password":"****"
+}
+```
+
+### <a name="client-certificate"></a>客户端证书
+
+指定 base64 编码的 PFX 文件内容和密码。
+
+```json
+"authentication":{
+   "type":"ClientCertificate",
+   "pfx":"****",
+   "password":"****"
+}
+```
+
+### <a name="managed-identity"></a>托管标识
+
+使用数据工厂的托管标识指定要为其请求访问令牌的资源 URI。 若要调用 Azure 资源管理 API，请使用 `https://management.chinacloudapi.cn/`。 有关如何托管标识工作原理的详细信息，请参阅 [Azure 资源概述页面的托管标识](/active-directory/managed-identities-azure-resources/overview)。
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
 
 ## <a name="additional-notes"></a>附加说明
 

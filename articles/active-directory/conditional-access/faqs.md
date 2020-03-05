@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ffdb02fcb38925c9e34d44eb49c03b1a3e8e4e
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 10ea9b8a4e4827402d7e35a4e3b4cf1b09bb852a
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859292"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653331"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>哪些应用程序使用条件访问策略？
 
-有关使用条件访问策略的应用程序的信息，请参阅[使用 Azure Active Directory 中条件访问规则的应用程序和浏览器](technical-reference.md)。
+有关使用条件访问策略的应用程序的信息，请参阅[使用 Azure Active Directory 中条件访问规则的应用程序和浏览器](concept-conditional-access-cloud-apps.md)。
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 策略是否也适用于 OneDrive for Business？
 
@@ -36,7 +36,7 @@ ms.locfileid: "75859292"
 
 条件访问策略适用于所有用户帐户， 其中包括用作服务帐户的用户帐户。 通常情况下，运行时无人参与的服务帐户无法满足条件访问策略的要求。 例如，可能需要多重身份验证。 可使用条件访问策略管理设置从策略中排除服务帐户。 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>图形 API 是否可用于配置条件访问策略？
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Microsoft Graph API 是否可用于配置条件访问策略？
 
 目前不可以。 
 
@@ -56,3 +56,4 @@ Microsoft Teams 还在 Azure Active Directory 条件访问策略中作为云应�
 
 - 若要为环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
 
+<!-- Update_Description: wording update -->

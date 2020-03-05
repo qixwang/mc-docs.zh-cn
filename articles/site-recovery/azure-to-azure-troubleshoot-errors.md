@@ -1,20 +1,19 @@
 ---
-title: 排查 Azure Site Recovery 中的 Azure 到 Azure 复制错误 | Azure
+title: 排查 Azure Site Recovery 中的 Azure VM 复制问题
 description: 排查复制 Azure 虚拟机进行灾难恢复时出现的错误。
-services: site-recovery
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 04/08/2019
-ms.date: 09/30/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: c4181243faa00b4fba54dcf836ea61642877e30e
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 32181645f0e2f685b49de24a78dd40526a877475
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340712"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611294"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -70,7 +69,7 @@ ms.locfileid: "71340712"
 
 按照 Linux 操作系统版本分发商提供的指导，在 VM 上获取最新的受信任根证书和最新的证书吊销列表。
 
-由于 SuSE Linux 使用*符号链接*来维护证书列表，因此请按照以下步骤进行操作：
+由于 SUSE Linux 使用*符号链接*来维护证书列表，因此请按照以下步骤进行操作：
 
 1. 以根用户身份登录。
 
@@ -460,11 +459,11 @@ Linux GRUB 配置文件（/boot/grub/menu.lst、/boot/grub/grub.cfg、/boot/grub
 
 - File /boot/grub2/grub.cfg
 
-  > linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts
+    > linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts
 
 - File: /boot/grub/menu.lst
 
-  > kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314
+    > kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314
 
 ### <a name="fix-the-problem"></a>解决问题
 
@@ -477,7 +476,7 @@ Linux GRUB 配置文件（/boot/grub/menu.lst、/boot/grub/grub.cfg、/boot/grub
     /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
     blkid /dev/sda2
     /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
-   ```
+    ```
 
 1. 将设备名称替换为其 UUID，格式为 **root=UUID**=*UUID* 和 **resume=UUID**=*UUID*。 例如，在替换后，/boot/grub/menu.lst 中的代码行（前面已讨论）如下所示：
 

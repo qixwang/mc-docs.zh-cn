@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 268ce758c3b0b89357918d8dcec1fc232523900d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 9e30eb0c604133f30efe1b975faf691c9a3f39c3
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598424"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154939"
 ---
 # <a name="multiclass-neural-network-module"></a>“多类神经网络”模块
 
@@ -86,10 +87,7 @@ ms.locfileid: "75598424"
 
 在训练完成后：
 
-- 要查看模型参数、通过训练获得的功能权重以及其他神经网络参数的摘要，请右键单击[训练模型](./train-model.md)的输出，然后选择“可视化”  。  
-
-- 要保存已训练模型的快照，请右键单击“已训练模型”输出，选择“另存为已训练模型”   。 此模型在连续运行相同管道时不会更新。
-
+- 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
 
 ## <a name="next-steps"></a>后续步骤
 

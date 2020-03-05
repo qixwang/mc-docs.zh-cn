@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/26/2020
 ms.author: v-junlch
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d322cf4bbd55a0bc2dc4236b64d6e2d1eeab23f
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 0afd3f2a92d92331126ff0ce8f6aed2fc5de6ad5
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067550"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653403"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -157,13 +157,13 @@ ms.locfileid: "77067550"
 在以下任意情况下，都*不会*写回密码：
 
 * **不支持的最终用户操作**
-   * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API 重置自己的密码
+   * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Microsoft Graph API 重置自己的密码
 * **不支持的管理员操作**
-   * 任何管理员发起的最终用户密码重置操作（使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API）
+   * 任何管理员从 PowerShell 版本 1、版本 2 或 Microsoft Graph API 发起的最终用户密码重置操作
    * 任何管理员发起的最终用户密码重置操作（使用 `Microsoft 365 admin center`）
 
 > [!WARNING]
-> 在本地 Active Directory 管理工具（如 Active Directory 用户和计算机或 Active Directory 管理中心）中使用“用户下次登录时必须更改密码”复选框已作为 Azure AD Connect 的预览功能受到支持。 有关详细信息，请参阅文章[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)。
+> 在本地 Active Directory 管理工具（如 Active Directory 用户和计算机或 Active Directory 管理中心）中使用“用户下次登录时必须更改密码”复选框已作为 Azure AD Connect 的预览功能受到支持。 有关详细信息，请参阅文章[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

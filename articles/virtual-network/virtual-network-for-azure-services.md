@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2017
-ms.date: 09/23/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: 24284765787b86b3e0b0dbc2d2b57b6c8daacd17
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 45a51d07afac86d7906bfc5db266affd27b990e2
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306475"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653483"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure 服务的虚拟网络集成
 
@@ -63,11 +63,11 @@ ms.locfileid: "71306475"
 | Web | [API 管理](../api-management/api-management-using-with-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>[应用服务环境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>|是 <br/> 是 <br/>
 |||
 
-¹ “专用”意味着只能将特定于服务的资源部署在此子网中，并且不能将其与客户 VM/VMSS 组合使用 <br/> ² 此为建议选项，但不是服务施加的强制要求。
+¹ “专用”意味着只能将特定于服务的资源部署在此子网中，并且不能将其与客户 VM/VMSS 组合使用 <br/> ² 建议的最佳做法是将这些服务放在专用子网中，但不是服务强加的强制性要求。
 
 <!-- Not Available on [Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fvirtual-network%2ftoc.json)-->
 <!-- Not Available on | Identity | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fvirtual-network%2ftoc.json)-->
-<!-- Not Available on | Containers | [Azure Container Instance (ACI)](http://www.aka.ms/acivnet)<br/>[Azure Container Service Engine](https://github.com/Azure/acs-engine) with Azure Virtual Network CNI [plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet)||-->
+<!-- Not Available on | Containers | [Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service Engine](https://github.com/Azure/acs-engine) with Azure Virtual Network CNI [plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet)||-->
 <!-- Not Available on [Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fvirtual-network%2ftoc.json)<br/>-->
 <!-- Not Available on | Hosted | [Azure Dedicated HSM](../dedicated-hsm/index.yml?toc=%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fvirtual-network%2ftoc.json)<br/>|Yes <br/> Yes <br/>-->
 

@@ -7,15 +7,15 @@ ms.subservice: ''
 author: WenJason
 ms.author: v-jay
 origin.date: 11/25/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: d5ad8a0581620100b7380ef0e0ec2ef1346d4e91
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 6ad3f00010b4806092e7781455cff4bca7d65671
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336181"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653054"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -23,29 +23,27 @@ ms.locfileid: "75336181"
 
 ## <a name="general"></a>常规
 
-混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理是适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）。 对于 Linux，它是适用于 Linux 的 Log Analytics 代理。
+混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理是适用于 Windows 的 Log Analytics 代理，也称为 Microsoft Monitoring Agent (MMA)。 对于 Linux，它是适用于 Linux 的 Log Analytics 代理。
 
 ### <a name="runbook-execution-fails"></a>场景：Runbook 执行失败
 
 #### <a name="issue"></a>问题
 
-Runbook 执行失败，你收到以下错误：
+Runbook 执行失败，你收到以下错误。
 
 ```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Runbook 在尝试执行三次后立刻暂停。 在某些情况下，Runbook 可能会中断，无法正常完成。 如果出现这种情况，收到的错误消息可能不会显示额外信息来解释相关原因。
+Runbook 在三次尝试执行后立刻暂停。 在某些情况下，Runbook 可能会中断，无法正常完成。 相关错误消息可能未包括任何其他信息。
 
 #### <a name="cause"></a>原因
 
-以下是可能的原因：
+下面是可能的原因：
 
-* runbook 无法使用本地资源进行身份验证
+* Runbook 无法使用本地资源进行身份验证。
 
-* 混合辅助角色在代理或防火墙后面
-
-* runbook 无法使用本地资源进行身份验证
+* 混合辅助角色在代理或防火墙后面。
 
 * 配置为运行混合 Runbook 辅助角色功能的计算机不满足最低硬件要求。
 
@@ -53,9 +51,9 @@ Runbook 在尝试执行三次后立刻暂停。 在某些情况下，Runbook 可
 
 确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
 
-运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能配置它托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统被过度利用，并造成 Runbook 作业延迟或超时。
+运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能配置它托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统被过度使用，并造成 Runbook 作业延迟或超时。
 
-确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 如果存在内存或 CPU 压力，这可能意味着需要升级资源。 也可以选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
+确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 如果存在内存或 CPU 压力，这可能意味着需要升级资源。 也可以选择其他支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
 
 检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295]  的相应事件。 此错误的原因是你尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 请查看 [Runbook 权限](../automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。
 
@@ -63,7 +61,7 @@ Runbook 在尝试执行三次后立刻暂停。 在某些情况下，Runbook 可
 
 #### <a name="issue"></a>问题
 
-混合 Runbook 辅助角色上运行的 runbook 失败并显示以下错误消息：
+混合 Runbook 辅助角色上运行的 runbook 失败并显示以下错误消息。
 
 ```error
 Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
@@ -73,20 +71,19 @@ At line:3 char:1
     + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
 ```
-
 #### <a name="cause"></a>原因
 
 尝试在混合 Runbook 辅助角色上运行的 Runbook 中使用[运行方式帐户](../manage-runas-account.md)时，如果运行方式帐户证书不存在，则会发生此错误。 默认情况下，混合 Runbook 辅助角色没有本地证书资产，而运行方式帐户需有证书才能正常运行。
 
 #### <a name="resolution"></a>解决方法
 
-如果混合 Runbook 辅助角色是 Azure VM，则可以使用 [Azure 资源的托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM 的托管标识而非运行方式帐户，向 Azure 资源进行身份验证，从而简化了身份验证过程。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请查看 [Export-runascertificatetohybridworker](../automation-hrw-run-runbooks.md#runas-script) runbook 的运行步骤。
+如果混合 Runbook 辅助角色是 Azure VM，则可以使用 [Azure 资源的托管标识](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。 此方案允许使用 Azure VM 的托管标识而非运行方式帐户向 Azure 资源进行身份验证，从而简化了身份验证过程。 如果混合 Runbook 辅助角色是本地计算机，需要在此计算机上安装运行方式帐户证书。 若要了解如何安装证书，请参阅[在混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md) 中的步骤来运行 PowerShell runbook Export-RunAsCertificateToHybridWorker。
 
 ## <a name="linux"></a>Linux
 
 Linux 混合 Runbook 辅助角色依靠[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
-### <a name="oms-agent-not-running"></a>场景：适用于 Linux 的 Log Analyics 代理未运行
+### <a name="oms-agent-not-running"></a>场景：适用于 Linux 的 Log Analytics 代理未运行
 
 #### <a name="issue"></a>问题
 
@@ -108,18 +105,17 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 以下列表显示针对 Linux 混合 Runbook 辅助角色启动的进程。 这些进程全都位于 `/var/opt/microsoft/omsagent/state/automationworker/` 目录中。
 
+* **oms.conf** - 辅助角色管理器进程。 它直接从 DSC 启动。
 
-* **oms.conf** - 此值是辅助角色管理器进程。 它直接从 DSC 启动。
+* **worker.conf** - 自动注册的混合辅助角色进程。 它由辅助角色管理器启动。 此进程由更新管理使用且对用户而言是透明的。 如果未在计算机上启用更新管理解决方案，则不会显示此进程。
 
-* **worker.conf** - 此进程是自动注册混合辅助角色进程，由辅助角色管理器启动。 此进程由更新管理使用且对用户而言是透明的。 如果未在计算机上启用更新管理解决方案，则不会显示此进程。
-
-* **diy/worker.conf**：此进程是 DIY 混合辅助角色进程。 DIY 混合辅助角色进程用于执行混合 Runbook 辅助角色的用户 Runbook。 它仅与使用不同配置的自动注册混合辅助角色进程在主要细节上有所不同。 如果禁用 Azure 自动化解决方案，并且 DIY Linux 混合辅助角色未注册，则不会显示此进程。
+* **diy/worker.conf** - DIY 混合辅助角色进程。 DIY 混合辅助角色进程用于执行混合 Runbook 辅助角色的用户 Runbook。 与自动注册的混合辅助角色进程相比，它在主要细节上的差别仅在于它使用不同的配置。 如果禁用 Azure 自动化解决方案，并且 DIY Linux 混合辅助角色未注册，则不会显示此进程。
 
 如果代理未运行，请运行以下命令启动该服务：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
 
 ### <a name="class-does-not-exist"></a>场景：指定的类不存在
 
-如果看到此错误：**指定的类不存在..** （在 `/var/opt/microsoft/omsconfig/omsconfig.log` 中），则需要更新适用于 Linux 的 Log Analytics 代理。 运行以下命令重新安装代理：
+如果看到错误“指定的类不存在。”  出现在 `/var/opt/microsoft/omsconfig/omsconfig.log` 中，则需要更新适用于 Linux 的 Log Analytics 代理。 运行以下命令重新安装代理：
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -143,11 +139,11 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 在 PowerShell 中输入以下命令，验证代理是否正在运行：`Get-Service healthservice`。 如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`Start-Service healthservice`。
 
-### <a name="event-4502"></a> Operations Manager 日志中的事件 4502
+### <a name="event-4502"></a>场景：Operations Manager 日志中的事件 4502
 
 #### <a name="issue"></a>问题
 
-在  “应用程序和服务日志\Operations Manager”事件日志中，你会看到事件 4502 和事件消息，其中包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 及以下描述：服务 \<wsid\>.oms.opinsights.azure.cn 提供的证书不是由用于 Azure 服务的证书颁发机构颁发的。  请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。
+在  “应用程序和服务日志\Operations Manager”事件日志中，你会看到事件 4502 和事件消息，其中包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 及以下描述：服务 \<wsid\>.oms.opinsights.azure.cn 提供的证书不是由用于 Azure 服务的证书颁发机构颁发的。*请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。*
 
 #### <a name="cause"></a>原因
 
@@ -155,11 +151,11 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="resolution"></a>解决方法
 
-日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以检查  “应用程序和服务日志\Microsoft-SMA\Operations”和  “应用程序和服务日志\Operations Manager”事件日志中是否有任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。 如果需要更多帮助来排查 Log Analytics 代理问题，请参阅[排查 Log Analytics Windows 代理问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
+日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以验证  “应用程序和服务日志\Microsoft-SMA\Operations”和  “应用程序和服务日志\Operations Manager”事件日志中是否有任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。 如果需要更多帮助来排查 Log Analytics 代理问题，请参阅[排查 Log Analytics Windows 代理问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)将从混合辅助角色发送到 Azure 自动化，就像在云中运行的 Runbook 作业一样。 就像在其他 Runbook 中一样，还可以启用详细流和进度流。
 
-### <a name="corrupt-cache"></a> 混合 Runbook 辅助角色未提供报告
+### <a name="corrupt-cache"></a>场景：混合 Runbook 辅助角色未提供报告
 
 #### <a name="issue"></a>问题
 
@@ -201,7 +197,7 @@ Machine is already registered
 
 #### <a name="cause"></a>原因
 
-如果计算机已注册到一个不同的自动化帐户，或者在将混合 Runbook 辅助角色从计算机中删除后尝试重新添加它，则可能会出现此消息。
+如果计算机已注册到一个不同的自动化帐户，或者在将混合 Runbook 辅助角色从计算机中删除后尝试重新添加它，则可能会出现此问题。
 
 #### <a name="resolution"></a>解决方法
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 origin.date: 01/10/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2015ae48440d9ddfb5f9ae24fb8ced6419a17759
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: f65b19e76d67d3f5476ca9f63230dc4ddadd2bab
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067736"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154754"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
@@ -195,11 +195,19 @@ Epoch 功能可让用户确保在任意时间点使用者组中只有一个接�
 - 如果创建了一个或多个不带 Epoch 的接收器，并且创建了使用 Epoch e1 的新接收器，那么，所有旧接收器将断开连接。
 
 
+> [!NOTE]
+> 我们建议对使用 epoch 的应用程序和不使用epoch 的应用程序使用不同的使用者组以避免出错。 
+
+
 ## <a name="next-steps"></a>后续步骤
 
 熟悉事件处理程序主机后，请参阅以下文章来详细了解事件中心：
 
-* 开始使用[事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
+- 事件中心入门
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题](event-hubs-faq.md)

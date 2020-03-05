@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: ce7f4da75bd46f2f5551a4bec1323f121032e767
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: cac4d6c33f3539cc888e34710e843d2cb2b23a56
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598414"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154941"
 ---
 # <a name="normalize-data-module"></a>“规范化数据”模型
 
@@ -98,11 +99,11 @@ ms.locfileid: "75598414"
 
 “规范化数据”模块会生成两个输出  ：
 
-- 若要查看已转换的值，右键单击模块，选择“已转换的数据集”，然后单击“可视化”   。
+- 若要查看已转换的值，请右键单击该模块，然后选择“可视化”  。
 
     默认情况下，值会立即转换。 若要将转换后的值与初始值进行比较，请使用[添加列](./add-columns.md)模块重组合数据集，然后并行查看列。
 
-- 若要保存转换以便可以将同一规范化方法应用到另一类似数据集，请右键单击模块，选择“转换函数”，然后单击“另存为转换”   。
+- 若要保存转换以便将同一规范化方法应用于另一个数据集，请选择该模块，然后在右侧面板的“输出”  选项卡下选择“注册数据集”  。
 
     然后，可以从左侧导航窗格的“转换”组中加载已保存的转换，然后使用 [./Apply 转换](apply-transformation.md)将其应用到具有相同架构的数据集  。  
 

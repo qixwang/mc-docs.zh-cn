@@ -7,16 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.author: sanpil
+ms.author: v-yiso
 author: sanpil
-ms.date: 12/05/2019
+origin.date: 12/05/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9dd350105f7f25d284724402ad9a7af7892cfb08
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 50f0617d63173333ef776baf410237f91c8a2930
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599614"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155013"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,11 +38,7 @@ ML 管道使用远程计算目标进行计算，以及存储与该管道关联�
 
 * 创建用于保存所有管道资源的 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [配置开发环境](service/how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装 SDK 的 [Azure 机器学习计算实例（预览版）](concept-compute-instance.md)。
-
-> [!NOTE]
-> 计算实例仅适用于区域为“美国中北部”或“英国南部”的工作区   。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装 SDK 的 [Azure 机器学习计算实例（预览版）](concept-compute-instance.md)。
 
 首先附加工作区：
 
@@ -92,6 +89,8 @@ def_blob_store.upload_files(
 
 一个管道包含一个或多个步骤。 步骤是在计算目标上运行的单元。 步骤可能会使用数据源，并生成“中间”数据。 步骤可以创建数据，例如模型、包含模型和依赖文件的目录，或临时数据。 然后，此数据可供管道中的其他后续步骤使用。
 
+若要详细了解如何将管道连接到数据，请参阅[如何访问数据](how-to-access-data.md)和[如何注册数据集](how-to-create-register-datasets.md)这两篇文章。 
+
 ### <a name="configure-data-reference"></a>配置数据引用
 
 你刚刚创建了一个可在管道中作为步骤输入引用的数据源。 管道中的数据源由 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) 对象表示。 `DataReference` 对象指向驻留在数据存储中的或者可从数据存储访问的数据。
@@ -130,7 +129,7 @@ iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 't
 
  使用 [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 创建 `FileDataset`。
 
- 可以在[添加和注册数据集](service/how-to-create-register-datasets.md)或[此示例笔记本](https://aka.ms/train-datasets)中详细了解如何处理数据集。
+ 可以在[添加和注册数据集](how-to-create-register-datasets.md)或[此示例笔记本](https://aka.ms/train-datasets)中详细了解如何处理数据集。
 
 ## <a name="set-up-compute-target"></a>设置计算目标
 
@@ -180,7 +179,7 @@ else:
 
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用作 Azure 机器学习管道的计算目标。
 
-请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](/azure-databricks/quickstart-create-databricks-workspace-portal)文档。
+请先创建 Azure Databricks 工作区，然后再使用该工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)文档。
 
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
@@ -233,13 +232,13 @@ except ComputeTargetException:
 
 Azure Data Lake Analytics 是 Azure 云中的大数据分析平台。 它可以用作 Azure 机器学习管道的计算目标。
 
-使用该平台之前，请先创建 Azure Data Lake Analytics 帐户。 若要创建此资源，请参阅 [Azure Data Lake Analytics 入门](/data-lake-analytics/data-lake-analytics-get-started-portal)文档。
+使用该平台之前，请先创建 Azure Data Lake Analytics 帐户。 若要创建此资源，请参阅 [Azure Data Lake Analytics 入门](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)文档。
 
 若要将 Data Lake Analytics 附加为计算目标，必须使用 Azure 机器学习 SDK 并提供以下信息：
 
 * __计算名称__：要分配给此计算资源的名称。
 * __资源组__：包含 Data Lake Analytics 帐户的资源组。
-* __帐户名__：Data Lake Analytics 帐户名。
+* __帐户名称__：Data Lake Analytics 帐户名。
 
 以下代码演示如何将 Data Lake Analytics 附加为计算目标：
 

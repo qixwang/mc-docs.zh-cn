@@ -1,32 +1,27 @@
 ---
 title: 发布区域和终结点 - LUIS
-titleSuffix: Azure Cognitive Services
 description: Azure 门户中指定的区域就是你将在其中发布 LUIS 应用的区域，并会为此同一区域生成一个终结点 URL。
-services: cognitive-services
 author: lingliw
 manager: digimobile
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 526bf7b519ee689a7d170f67c325688b568eb636
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 47b540dacd695e8afb32d0e47bc0ce422287f5a1
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884922"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154538"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
-相应的 LUIS 门户支持三个创作区域。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。 
+相应的 LUIS 门户支持三个创作区域。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。
 
 <a name="luis-website"></a>
 
 ## <a name="luis-authoring-regions"></a>LUIS 创作区域
-基于区域，有三个 LUIS 创作门户。 必须在同一区域中创建和发布应用。 
+基于区域，有三个 LUIS 创作门户。 必须在同一区域中创建和发布应用。
 
 |LUIS|创作区域|Azure 区域名称|
 |--|--|--|
@@ -42,16 +37,11 @@ ms.locfileid: "74884922"
 ## <a name="public-apps"></a>公共应用
 公共应用在所有区域中发布，以便有基于区域的 LUIS 资源密钥的用户可以在与其资源密钥关联的任何区域中访问该应用。
 
+<a name="publishing-regions"></a>
+
 ## <a name="publishing-regions-are-tied-to-authoring-regions"></a>发布区域绑定到创作区域
 
-创作区域中的应用仅可发布到对应的发布区域。 如果应用目前位于错误的创作区域中，请导出应用，然后将其导入发布区域对应的正确创作区域。 
-
-
-## <a name="publishing-to-china"></a>发布到中国 
-
-若要发布到中国区域，请仅在 https://luis.azure.cn 创建 LUIS 应用。 如果尝试使用中国区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://luis.azure.cn 。 在 [https://luis.azure.cn][luis.azure.cn] 中创建的 LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
-
-## 中国发布区域 <a name="publishing-to-china"></a>
+创作区域中的应用仅可发布到对应的发布区域。 如果应用目前位于错误的创作区域中，请导出应用，然后将其导入发布区域对应的正确创作区域。
 
  全球区域 | 创作 API 区域和创作网站| 发布和查询区域<br>`API region name`   |  终结点 URL 格式   |
 |-----|------|------|------|
@@ -70,20 +60,7 @@ ms.locfileid: "74884922"
 
 ## <a name="endpoints"></a>终结点
 
-LUIS 当前具有 2 个终结点：一个用于创作，一个用于查询预测分析。
-
-|目的|URL|
-|--|--|
-|创作|`https://{region}.api.cognitive.azure.cn/luis/api/v2.0/apps/{appID}/`|
-|文本分析（查询预测）|`https://{region}.api.cognitive.azure.cn/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
-
-下表说明了上表中用大括号 `{}` 表示的参数。
-
-|参数|目的|
-|--|--|
-|region|Azure 区域 - 创作和发布具有不同的区域|
-|appID|在 URL 路由中使用的 LUIS 应用 ID，可在应用仪表板上找到|
-|q|从客户端应用程序（如聊天机器人）发送的话语文本|
+详细了解[创作和预测终结点](developer-reference-resource.md)。
 
 ## <a name="failover-regions"></a>故障转移区域
 

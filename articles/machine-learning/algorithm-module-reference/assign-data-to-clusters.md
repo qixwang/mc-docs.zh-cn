@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: 6038525de2d9683bc140b94f5b8ff53c04153e2b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 11/19/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 5eaf0c194d4e75431acdae6fb7ac85ad8148475f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598589"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154951"
 ---
 # <a name="module-assign-data-to-clusters"></a>模块：将数据分配到聚类
 
@@ -47,5 +48,5 @@ ms.locfileid: "75598589"
   
 ### <a name="results"></a>结果
 
-+  若要查看数据集中的值，请右键单击模块，选择“结果数据集”，然后选择“可视化”   。
++  若要查看数据集中的值，请右键单击模块，然后选择“可视化”  。 或者选择模块并切换到右侧面板中的“输出”  选项卡，单击**端口输出**中的直方图图标以直观显示结果。
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 10/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: a18106f0cc5242c6a5dc90dea2866ab640269512
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: a5779ae8b0862b9081dabb38bf2c4f856f42eb38
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028473"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154917"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序管理数据包捕获
 
@@ -110,14 +110,6 @@ az vm extension show --resource-group resourceGroupName --vm-name virtualMachine
 
 ### <a name="step-1"></a>步骤 1
 
-下一步是检索网络观察程序实例。 在步骤 4 中，会将网络观察程序的名称传递给 `az network watcher show` cmdlet。
-
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
-```
-
-### <a name="step-2"></a>步骤 2
-
 检索存储帐户。 此存储帐户用于存储数据包捕获文件。
 
 ```azurecli
@@ -187,7 +179,7 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>获取数据包捕获
 
-运行 `az network watcher packet-capture show-status` cmdlet，检索当前正在运行的或已完成的数据包捕获的状态。
+运行 `az network watcher packet-capture show-status` 命令，检索当前正在运行的或已完成的数据包捕获的状态。
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
@@ -212,14 +204,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>停止数据包捕获
 
-运行 `az network watcher packet-capture stop` cmdlet 后，如果捕获会话正在进行，它将停止。
+运行 `az network watcher packet-capture stop` 命令后，如果捕获会话正在进行，它将停止。
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location chinaeast
 ```
 
 > [!NOTE]
-> 该 cmdlet 在当前正在运行的捕获会话或已停止的现有会话中运行时，将不返回任何响应。
+> 该命令在当前正在运行的捕获会话或已停止的现有会话中运行时，将不返回任何响应。
 
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 

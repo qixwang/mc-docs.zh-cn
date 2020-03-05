@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36aa1211156733fbac58489c11b6f48405db7398
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 3a6a7456b760dc5d2aac27b373dca063dfb92e8c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859353"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653345"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的客户端应用进行云应用访问 
 
@@ -36,18 +36,18 @@ ms.locfileid: "75859353"
 
 ![条件访问](./media/app-based-conditional-access/05.png)
 
-有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)。
+有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](concept-conditional-access-grant.md)。
 
 ## <a name="before-you-begin"></a>准备阶段
 
 本主题假定你熟悉以下内容：
 
-- [核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)技术参考。
+- [批准的客户端应用要求](concept-conditional-access-grant.md)。
 - [Azure Active Directory 中的条件访问](overview.md)的基本概念。
 - 如何[配置条件访问策略](app-based-mfa.md)。
 - [迁移条件访问策略](best-practices.md#policy-migration)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要创建基于应用的条件访问策略，必须先订阅企业移动性 + 安全性或 Azure Active Directory Premium，且用户必须获得 EMS 或 Azure AD 许可。 
 
@@ -266,3 +266,4 @@ ms.locfileid: "75859353"
 
 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
 
+<!-- Update_Description: wording update -->

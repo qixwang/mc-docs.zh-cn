@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: peterlu
-ms.date: 11/19/2019
-ms.openlocfilehash: 4da156257f612b2aa87747b308a04b1cd67f5b9a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: keli19
+origin.date: 11/19/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 22f5f502ee481eab09d9f33f58a4d4ef64598fa2
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599587"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154942"
 ---
 # <a name="join-data"></a>联接数据
 
@@ -62,10 +63,10 @@ ms.locfileid: "75599587"
     * 选择此选项可以查看两个输入表中的键。
     * 取消选择此选项将只返回左侧输入中的键列。
 
-1. 运行管道，或者选择“联接数据”模块，并选择“运行所选”  来执行联接。
+1. 运行管道。
 
-1. 若要查看结果，请右键单击“联接数据” > “结果数据集” > “可视化”。   
+1. 若要查看结果，请右键单击“联接数据”  ，然后选择“可视化”  。
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

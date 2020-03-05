@@ -1,23 +1,18 @@
 ---
 title: 数据提取 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 从包含意向和实体的话语文本中提取数据。 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据。
-services: cognitive-services
 author: lingliw
 manager: digimobile
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-origin.date: 09/27/2019
-ms.date: 10/31/2019
+origin.date: 01/23/2020
+ms.date: 2/25/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 511b05b9c7b58be9b6427fdc252cd6615abf1dfb
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 3b2d541ff8211b9388fd9101d913f430b38b02b4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884496"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154829"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -27,10 +22,10 @@ ms.locfileid: "74884496"
 ## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
 LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境  。
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 预测终结点请求](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 预测终结点请求](#tab/V2)
 `https://chinaeast2.api.cognitive.azure.cn/luis/v2.0//apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 预测终结点请求](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 预测终结点请求](#tab/V3)
 
 `https://chinaeast2.api.cognitive.azure.cn/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -45,7 +40,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ## <a name="data-from-intents"></a>意向中的数据
 主数据是评分最高的意向名称  。 终结点响应为：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -58,7 +53,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 ```JSON
 {
@@ -87,7 +82,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 如果聊天机器人或 LUIS 调用应用基于不止一个意向评分来进行决策，则返回所有意向的评分。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 设置 querystring 参数 `verbose=true`。 终结点响应为：
 
@@ -112,7 +107,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 设置 querystring 参数 `show-all-intents=true`。 终结点响应为：
 
@@ -149,7 +144,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 如果添加预构建的域，则意向名称指示该域，例如 `Utilties` 或 `Communication` 以及意向：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -175,7 +170,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 ```JSON
 {
@@ -217,7 +212,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 所有实体都返回在终结点响应中的“实体”数组中  ：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 "entities": [
@@ -240,7 +235,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 ```JSON
 "entities": {
@@ -253,9 +248,8 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 * * * 
 
 ## <a name="tokenized-entity-returned"></a>返回的切分后的实体
-几个[区域性](luis-language-support.md#tokenization)会返回 `entity` 值[已切分](luis-glossary.md#token)的实体对象。 在实体对象中由 LUIS 返回的 startIndex 和 endIndex 不会映射到已切分的新值，而是映射到原始查询，从而以编程方式提取原始实体。 
 
-例如，在德语中，单词 `das Bauernbrot` 会切分为 `das bauern brot`。 返回已切分的值 `das bauern brot`，并且能以编程方式从原始查询的 startIndex 和 endIndex 确定原始值，并提供 `das Bauernbrot`。
+查看 LUIS 中的[令牌支持](luis-language-support.md#tokenization)。
 
 ## <a name="simple-entity-data"></a>简单实体数据
 
@@ -274,7 +268,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 "entities": [
@@ -355,7 +349,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 不使用 querystring 参数 `verbose=true`：
 
@@ -534,7 +528,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
-* * * 
+* * *
 ## <a name="regular-expression-entity-data"></a>正则表达式实体数据
 
 [正则表达式实体](reference-entity-regular-expression.md)基于所提供的正则表达式模式提取实体。
@@ -544,7 +538,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>添加预构建的 PersonName 和 GeographyV2 实体
 
-[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 实体在某些[语言区域性](luis-reference-prebuilt-entities.md)中可用。 
+[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 实体在某些[语言区域性](luis-reference-prebuilt-entities.md)中可用。
 
 ### <a name="names-of-people"></a>人的姓名
 
@@ -563,7 +557,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 角色是实体间的上下文差别。
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 实体名称为 `Location`，具有两个角色 `Origin` 和 `Destination`。
 
@@ -596,9 +590,9 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
-在 V3 中，**角色名称**是对象的主要名称。 
+在 V3 中，**角色名称**是对象的主要名称。
 
 实体名称为 `Location`，具有两个角色 `Origin` 和 `Destination`。
 
@@ -686,7 +680,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ## <a name="patternany-entity-data"></a>Pattern.any 实体数据
 
-[Pattern.any](reference-entity-pattern-any.md) 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。  
+[Pattern.any](reference-entity-pattern-any.md) 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。
 
 ## <a name="sentiment-analysis"></a>情绪分析
 如果配置了情绪分析，LUIS json 响应会包含情绪分析内容。 请在[文本分析](/cognitive-services/text-analytics/)文档中详细了解情绪分析。
@@ -714,7 +708,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="key-phrase-extraction-entity-data"></a>关键短语提取实体数据
 关键短语提取实体返回陈述中的关键短语，由[文本分析](/cognitive-services/text-analytics/)提供。
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -749,7 +743,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
@@ -827,7 +821,7 @@ LUIS 返回在陈述中发现的所有实体。 因此，机器人可能需要�
 
 LUIS 终结点可以发现不同实体中的相同数据。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -953,7 +947,7 @@ LUIS 终结点可以发现不同实体中的相同数据。
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 不使用 `verbose=true` 作为 querystring 参数。
 
@@ -1138,9 +1132,9 @@ LUIS 终结点可以发现不同实体中的相同数据。
 
 如果一个单词或短语与多个列表实体匹配，则终结点查询会返回每个列表实体。
 
-对于查询 `when is the best time to go to red rock?`，且应用中的单词 `red` 出现在多个列表中，LUIS 会识别所有实体，并返回一组实体作为 JSON 终结点响应的一部分： 
+对于查询 `when is the best time to go to red rock?`，且应用中的单词 `red` 出现在多个列表中，LUIS 会识别所有实体，并返回一组实体作为 JSON 终结点响应的一部分：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -1178,7 +1172,7 @@ LUIS 终结点可以发现不同实体中的相同数据。
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 在查询字符串中不包含 `verbose=true`：
 

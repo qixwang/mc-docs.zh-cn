@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/25/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd6bc61c71b35711b8675c1b458fd5caf55eed2
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: 26e8ccf07e62cb4631276706d49cbd95049da7ca
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859278"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653324"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
 
@@ -32,7 +32,7 @@ ms.locfileid: "75859278"
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择“所有用户”。  
-   1. 在“排除”下  选择“用户和组”  ，然后选择任何必须保留使用旧式身份验证的功能的帐户。 
+   1. 在“排除”下  选择“用户和组”  ，然后选择任何必须保留使用旧式身份验证的功能的帐户。 必须排除至少一个帐户，以防止自己被锁定。如果不排除任何帐户，则将无法创建此策略。
    1. 选择“完成”  。
 1. 在“云应用或操作”下，选择“所有云应用”   。
    1. 选择“完成”  。
@@ -50,3 +50,4 @@ ms.locfileid: "75859278"
 
 [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
+<!-- Update_Description: wording update -->

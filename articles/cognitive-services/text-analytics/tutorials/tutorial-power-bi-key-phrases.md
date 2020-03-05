@@ -11,12 +11,12 @@ ms.topic: tutorial
 origin.date: 02/13/2019
 ms.date: 07/24/2019
 ms.author: v-junlch
-ms.openlocfilehash: a01d0cb040c2efbab0d0438eac0b92eb6e29a321
-ms.sourcegitcommit: 9a330fa5ee7445b98e4e157997e592a0d0f63f4c
+ms.openlocfilehash: 6961314eb47ef3f0f94c5030463548e4fadf4d42
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68439960"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154791"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -37,7 +37,7 @@ Power BI Desktop 是免费的应用程序，可让你连接、转换和可视化
 - Power BI Desktop。 [免费下载](https://powerbi.microsoft.com/get-started/)。
 - 一个 Azure 帐户。 [启动试用版](https://www.azure.cn/pricing/1rmb-trial/)或[登录](https://portal.azure.cn/)。
 - 包含文本分析 API 的认知服务 API 帐户。 如果没有帐户，可以[注册](../../cognitive-services-apis-create-account.md)并使用 5,000 个事务/月的免费层级（请参阅[定价详细信息](https://www.azure.cn/pricing/details/cognitive-services/)以完成本教程）。
-- 在注册期间生成的[文本分析访问密钥](../how-tos/text-analytics-how-to-access-key.md)。
+- 在注册期间为你生成的文本分析访问密钥。
 - 客户评论。 可以使用[我们的示例数据](https://aka.ms/cogsvc/ta)或你自己的数据。 本教程假定你使用我们的示例数据。
 
 ## <a name="load-customer-data"></a>加载客户数据
@@ -167,7 +167,7 @@ in  keyphrases
 
 ![[将身份验证设置为匿名]](../media/tutorials/power-bi/access-web-content.png)
 
-如果在选择匿名访问后仍看到“编辑凭据”横幅，则可能是因为忘记将文本分析访问密钥粘贴到 `KeyPhrases` [自定义函数](#CreateCustomFunction)的代码中。
+如果在选择匿名访问后仍看到“编辑凭据”横幅，则可能是忘记将文本分析访问密钥粘贴到 `KeyPhrases` [自定义函数](#CreateCustomFunction)的代码中。
 
 接下来可能会出现一个横幅，要求你提供有关数据源隐私的信息。 
 

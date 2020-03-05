@@ -1,29 +1,24 @@
 ---
-title: 适用于 .NET 的 Microsoft 身份验证库中的 AD FS 支持
+title: MSAL.NET 中的 AD FS 支持 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 中的 Active Directory 联合身份验证服务 (AD FS) 支持。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcdf88c62cfcde22b54680e3dc24367db2268a25
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 807110edf10e2d0a3ebbc27bb19dd22a2dde28f8
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334817"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653442"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET 中的 Active Directory 联合身份验证服务支持
 使用 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS) 可将基于 OpenID Connect 和 OAuth 2.0 的身份验证与授权添加到开发中的应用程序。 然后，这些应用程序可以根据 AD FS 直接对用户进行身份验证。 有关详细信息，请阅读[面向开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)。
@@ -59,6 +54,6 @@ MSAL.NET 支持连接到 AD FS 2019，后者符合 Open ID Connect 规范并了�
 - AD FS 16，因为它不支持 PKCE，仍在使用资源而不是范围
 - AD FS v2，因为它不符合 OIDC 规范。
 
- 如果需要支持直接连接 AD FS 2016 的方案，请使用最新版本的 [Azure Active Directory 身份验证库](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)。 将本地系统升级到 AD FS 2019 后，即可使用 MSAL.NET。
+ 如果需要支持直接连接 AD FS 2016 的方案，请使用最新版本的 [Azure Active Directory 身份验证库](../azuread-dev/active-directory-authentication-libraries.md#microsoft-supported-client-libraries)。 将本地系统升级到 AD FS 2019 后，即可使用 MSAL.NET。
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

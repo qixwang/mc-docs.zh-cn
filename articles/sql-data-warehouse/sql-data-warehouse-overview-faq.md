@@ -8,15 +8,15 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 origin.date: 11/04/2019
-ms.date: 01/20/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: d7ea02775b91ee44415250c3a43b25c03d3ce197
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 0be434e16a9953e75f0dbf98b9e9b89612660a22
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964918"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154376"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -28,7 +28,7 @@ A. Azure Synapse 是一种无限制的分析服务，它将数据仓库和大数
 
 问： Azure SQL 数据仓库有什么变化？
 
-A. Azure Synapse 是 Azure SQL 数据仓库 (SQL DW) 的演进。 我们的数据仓库依然行业领先，并且在性能和功能方面已发展到全新的水平。 现在，你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷，同时还能自动受益于预览版的新功能。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是 Azure SQL 数据仓库 (SQL DW) 的演进。 我们将同一个行业领先的数据仓库提升到了一个全新的性能和功能级别。 你可以继续使用 Azure Synapse 在生产环境中运行现有的数据仓库工作负荷，并自动从预览版的新功能中获益。 有关详细信息，请参阅[什么是 Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)。
 
 问： 什么是 SQL Analytics？
 
@@ -40,11 +40,11 @@ A. 可以从一个 [Azure 试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-
 
 问： Azure Synapse 提供哪些功能来确保数据安全性？
 
-A. Azure Synapse 提供多种解决方案来保护数据，例如 TDE 和审核。 有关详细信息，请参阅[安全性]。
+A. Azure Synapse 提供多种解决方案来保护数据，例如 TDE 和审核。 有关详细信息，请参阅[安全性](sql-data-warehouse-overview-manage-security.md)。
 
 问： 从何处可以查明 Azure Synapse 符合哪些法律或企业标准？
 
-A. 请访问 [Azure 合规性]页，按产品（如 SOC 和 ISO）了解各种合规性产品。 
+A. 请访问 [Azure 符合性](https://www.trustcenter.cn/zh-cn/cloudservices/azure.html)页，按产品（如 SOC 和 ISO）了解各种合规性产品。 
 
 问： 是否可以连接 Power BI？
 
@@ -52,42 +52,40 @@ A. 能！ 尽管 Power BI 支持使用 Azure Synapse 进行直接查询，但不
 
 问： SQL Analytics 容量有哪些限制？
 
-A. 请参阅当前[容量限制]页。 
+A. 请参阅当前[容量限制](sql-data-warehouse-service-capacity-limits.md)页。 
 
 问： 为什么缩放/暂停/恢复会花费很长时间？
 
-A. 多种因素可能会影响计算管理操作的时间。 一个常见的长时运行操作的例子是事务回退。 缩放或暂停操作启动时，会阻止所有传入会话和查询。 为了使系统处于稳定状态，必须在操作开始前回退事务。 事务数量越多，其日志大小越大，使系统恢复到稳定状态的操作耗时越久。
+A. 多种因素可能会影响计算管理操作的时间。 长时间运行的操作的常见例子是事务回退。 缩放或暂停操作启动时，会阻止所有传入会话和查询。 为了使系统处于稳定状态，必须在操作开始前回退事务。 事务数量越多，其日志大小越大，使系统恢复到稳定状态的操作耗时越久。
 
 ## <a name="user-support"></a>用户支持
-<!-- UserVoice not available in Azure.cn-->
 
 问： 该如何操作？
 
-A. 在使用 Azure Synapse 进行开发时如需帮助，可在 [Stack Overflow] 页面中提问。 
-<!--Support Tickets not available in Azure.cn-->
+A. 若要获得有关使用 Azure Synapse 开发的帮助，可在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) 页上提问。 
 
 ## <a name="sql-languagefeature-support"></a>SQL 语言/功能支持 
 
 问： 支持哪些数据类型？
 
-A. 请参阅[数据类型]。
+A. 请参阅[数据类型](sql-data-warehouse-tables-data-types.md)。
 
 问： 支持哪些表功能？
 
-A. 支持许多功能，但也有一些功能不受支持，具体请参阅[不支持的表功能]中的阐述。
+A. 支持许多功能。 不支持的功能可在[不支持的表功能](sql-data-warehouse-tables-data-types.md)中找到。
 
 ## <a name="tooling-and-administration"></a>工具和管理
 
 问： SQL Analytics 是否支持 REST API？
 
-A. 是的。 SQL Analytics 还提供可与 SQL 数据库搭配使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN] 中找到 API 信息。
+A. 是的。 SQL Analytics 还提供可与 SQL 数据库搭配使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx) 中找到 API 信息。
 
 
 ## <a name="loading"></a>加载
 
 问： 支持哪些客户端驱动程序？
 
-A. 可在[连接字符串]页找到 DW 驱动程序支持
+A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页上找到 SQL Analytics 驱动程序支持
 
 问：PolyBase 支持哪些文件格式？
 
@@ -95,7 +93,7 @@ A:Orc、RC、Parquet 和带分隔符的平面文本
 
 问：使用 PolyBase 可以连接到哪些数据源？ 
 
-A:[Azure 存储 Blob]
+A:[Azure 存储 Blob](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
 问：连接 Azure 存储 Blob 或 ADLS 时能否进行计算下推？ 
 
@@ -106,17 +104,4 @@ A:不能，PolyBase 仅与存储组件交互。
 A:HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，可以将该数据加载到 SQL DW。 但是，无法生成 HDI 实例的下推计算。 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure Synapse 的综合性详细信息，请参阅[概述]页。
-
-
-<!-- Article references -->
-[连接字符串]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[安全性]: ./sql-data-warehouse-overview-manage-security.md
-[Azure 合规性]: https://www.trustcenter.cn/zh-cn/cloudservices/azure.html
-[容量限制]: ./sql-data-warehouse-service-capacity-limits.md
-[数据类型]: ./sql-data-warehouse-tables-data-types.md
-[不支持的表功能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
-[Azure 存储 Blob]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
-[概述]: ./sql-data-warehouse-overview-faq.md
+有关 Azure Synapse 的综合性详细信息，请参阅[概述](sql-data-warehouse-overview-faq.md)页。

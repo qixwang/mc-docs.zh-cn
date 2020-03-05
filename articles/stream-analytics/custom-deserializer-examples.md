@@ -1,18 +1,19 @@
 ---
 title: 在 Azure 流分析中使用 .NET 自定义反序列化程序读取任何格式的输入
 description: 本文解释序列化格式，以及用来为 Azure 流分析云和边缘作业定义自定义 .NET 反序列化程序的接口。
-author: mamccrea
-ms.author: mamccrea
+author: lingliw
+ms.author: v-lingwu
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: cbf8ebb1554344aeb1a01760b22398b7919be36c
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+origin.date: 1/28/2020
+ms.date: 02/27/2020
+ms.openlocfilehash: 0e400f5ce3690d585b7348fa61784729a2513efb
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858429"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154525"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
 
@@ -80,7 +81,7 @@ Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取�
 
 ## <a name="deserializer-examples"></a>反序列化程序示例
 
-本部分介绍如何编写适用于 Protobuf 和 CSV 的自定义反序列化程序。 有关更多示例，请访问 [GitHub 上的 Azure 流分析](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
+本部分介绍如何编写适用于 Protobuf 和 CSV 的自定义反序列化程序。 有关其他示例（如事件中心捕获的 AVRO 格式），请访问 [GitHub 上的 Azure 流分析](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
 
 ### <a name="protocol-buffer-protobuf-format"></a>协议缓冲区 (Protobuf) 格式
 
@@ -221,7 +222,7 @@ namespace ExampleCustomCode.Serialization
 
 `serializationClassName` 应是实现 `StreamDeserializer<T>` 的类。 以下部分对此做了介绍。
 
-## <a name="region-support"></a>区域支持
+## 区域支持 <a name="region-support"></a>
 
 此功能已在以下区域推出：
 
@@ -234,8 +235,7 @@ namespace ExampleCustomCode.Serialization
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>此功能何时在所有 Azure 区域中推出？
 
-此功能目前已在 6 个区域中推出 (#region-support)。 如果你希望在其他区域使用此功能，可以[提交请求](https://aka.ms/ccodereqregion)。 此功能在所有 Azure 区域中的支持已在规划中。
-
+此功能已在 [1 个区域](#region-support)中推出。
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>是否可以从类似于 GetMetadataPropertyValue 函数的输入访问 MetadataPropertyValue？
 
 不支持此功能。 如果需要此功能，可以在 [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese) 上为此请求投票。

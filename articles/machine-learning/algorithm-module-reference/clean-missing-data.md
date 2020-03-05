@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 6a81288ef70b5c8d56a985620400db25e5819716
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 02/11/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: efa0a14d92d5b488e86d46e4fc471408857e05e4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598581"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154949"
 ---
 # <a name="clean-missing-data-module"></a>“清理缺失数据”模块
 
@@ -37,7 +38,7 @@ ms.locfileid: "75598581"
 
 ## <a name="how-to-use-clean-missing-data"></a>如何使用“清理缺失数据”
 
-在此模块中可以定义清理操作。 还可以保存清理操作，以便日后将其应用于新数据。 请参阅以下链接中有关如何创建和保存清理过程的说明： 
+在此模块中可以定义清理操作。 还可以保存清理操作，以便日后将其应用于新数据。 请参阅以下部分了解如何创建和保存清理过程： 
  
 + 替换缺失值
   
@@ -56,12 +57,9 @@ ms.locfileid: "75598581"
 
     例如，若要检查所有数字列中的缺失值：
 
-    1. 打开“列选择器”，然后选择“使用规则”。 
-    2. 对于“开头为”，请选择“无列”。  
+    1. 选择“清理缺失数据”  模块，然后单击该模块右侧面板中的“编辑列”  。
 
-        也可以从“所有列”开始，然后排除列。 最初，如果先单击“所有列”，则不会显示规则。但是，可以单击“无列”并再次单击“所有列”以从所有列开始，然后基于名称、数据类型或列索引筛选出（排除）列。   
-
-    3. 对于“包含”，请从下拉列表中选择“列类型”，然后选择“数字”或更具体的数字类型。    
+    3. 对于“包含”，请从下拉列表中选择“列类型”，然后选择“数值”。    
   
     所选的任何清理或替换方法必须适用于所选的**所有**列。 如果任一列中的数据与指定的操作不兼容，模块将返回错误并停止管道。
   
@@ -109,7 +107,7 @@ ms.locfileid: "75598581"
   
 6. 如果选择了选项“自定义替换值”，则选项“替换值”可用。   键入一个新值，用作列中所有缺失值的替换值。  
   
-    请注意，只能在“整数”、“双精度”、“布尔值”或“日期”数据类型的列中使用此选项。 对于日期列，也可以输入从 0001 年 1 月 1 日凌晨 12:00 开始算起的 100 纳秒时钟周期数作为替换值。  
+    请注意，只能在 Integer、Double、Boolean 或 String 数据类型的列中使用此选项。
   
 7. **生成缺失值指示器列**：若要输出某些信息来指示列中的值是否满足缺失值清理条件，请选择此选项。 设置新的清理操作并想要确保它按设计方式工作时，此选项特别有用。
   
@@ -145,4 +143,4 @@ ms.locfileid: "75598581"
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

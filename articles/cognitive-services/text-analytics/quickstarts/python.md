@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 06/28/2019
 ms.date: 07/12/2019
 ms.author: v-junlch
-ms.openlocfilehash: 0884a0eb497e28d92e680c36373cf0eae4ebe6c6
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 964323f64483d9d7bf630d85d9884957c968bac9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844768"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154833"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Python REST API 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -29,7 +29,7 @@ ms.locfileid: "67844768"
 
 * [Python 3.x](https://python.org)
 
-* 在注册期间为你生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
+* 在注册期间为你生成的终结点和访问密钥。
 
 * Python 请求库
     
@@ -44,7 +44,7 @@ ms.locfileid: "67844768"
 
 ## <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
-在最喜爱的编辑器或 IDE 中创建一个新的 Python 应用程序。 将以下导入内容添加到文件中。
+在你喜欢使用的编辑器或 IDE 中创建一个新的 Python 应用程序。 将以下导入内容添加到文件中。
 
 ```python
 import requests

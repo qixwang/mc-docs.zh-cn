@@ -1,29 +1,24 @@
 ---
-title: Azure Active Directory 许可框架
+title: Azure AD 同意框架
+titleSuffix: Microsoft identity platform
 description: 了解 Azure Active Directory 中的许可框架，以及如何使用它轻松开发多租户 Web 应用程序和本机客户端应用程序。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 11/30/2018
-ms.date: 08/23/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ae86025749be5593ea11b63deb7dc30903e7be4
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 8fd9d33eeb5573937d3b8e81547eb266b350a3f8
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993225"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653301"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
 
@@ -33,7 +28,7 @@ ms.locfileid: "69993225"
 
 同意框架使用公共或机密客户端，建立在 OAuth 2.0 及其各种流程的基础之上，例如，代码授权和客户端凭据授权。 通过使用 OAuth 2.0，Azure AD 可生成多种不同类型的客户端应用程序（例如手机、平板电脑、服务器上的客户端应用程序或 Web 应用程序），并获取对所需资源的访问权限。
 
-有关将许可框架与 OAuth2.0 授权配合使用的详细信息，请参阅[使用 OAuth 2.0 和 Azure AD 授权访问 Web 应用程序](v1-protocols-oauth-code.md)及 [Azure AD 的身份验证方案](authentication-scenarios.md)。 有关通过 Microsoft Graph 获取 Office 365 的授权访问权限的信息，请参阅[使用 Microsoft Graph 进行应用身份验证](https://developer.microsoft.com/graph/docs/authorization/auth_overview)。
+有关将许可框架与 OAuth2.0 授权配合使用的详细信息，请参阅[使用 OAuth 2.0 和 Azure AD 授权访问 Web 应用程序](v2-oauth2-auth-code-flow.md)及 [Azure AD 的身份验证方案](authentication-scenarios.md)。 有关通过 Microsoft Graph 获取 Office 365 的授权访问权限的信息，请参阅[使用 Microsoft Graph 进行应用身份验证](https://developer.microsoft.com/graph/docs/authorization/auth_overview)。
 
 ## <a name="consent-experience---an-example"></a>同意体验 - 示例
 
@@ -47,13 +42,13 @@ ms.locfileid: "69993225"
 
 1. 如果用户尚未经过身份验证，Azure AD 的 `/authorize` 终结点会提示用户登录。
 
-    ![用户或管理员登录到 Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![用户或管理员登录到 Azure AD](./media/consent-framework/usersignin.png)
 
 1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 根据该用户（或其组织的管理员）是否已授予应用程序许可而决定。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”  中选择的权限集相匹配。
 
-    ![显示“同意”对话框中显示的权限的示例](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![显示“同意”对话框中显示的权限的示例](./media/consent-framework/consent.png)
 
-1. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅 [Web API 应用类型](web-api.md)。
+1. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流的详细信息，请参阅 [OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
 1. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可通过具有管理员角色的用户在 [Azure 门户](https://portal.azure.cn)中执行。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
 

@@ -11,27 +11,30 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 01/30/2020
-ms.date: 02/17/2020
+origin.date: 02/11/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: c75b3c118297ec61498667d9892621147da28819
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 08bf0d5053b63f77e57b0304b9640ebc4ed8bf71
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067786"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155111"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 
-事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据收集到事件中心后，可以使用存储群集存储数据或处理事件。 例如，可以使用实时分析提供程序转换事件数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
-
-本教程介绍如何使用事件中心 .NET Core SDK 向/从事件中心发送/接收事件。 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 
+本快速入门介绍如何使用 **Azure.Messaging.EventHubs** .NET Core 库向事件中心发送事件以及从事件中心接收事件。 
 
 > [!IMPORTANT]
-> 本快速入门使用新的 **Azure.Messaging.EventHubs** 库。 有关使用旧的 **Microsoft.Azure.EventHubs** 库的快速入门，请参阅[此文](event-hubs-dotnet-standard-getstarted-send.md)。 
+> 本快速入门使用新的 **Azure.Messaging.EventHubs** 库。 有关使用旧的 **Microsoft.Azure.EventHubs** 库的快速入门，请参阅[使用 Microsoft.Azure.EventHubs 库发送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)。 
 
-## <a name="prerequisites"></a>必备条件
 
-- **Microsoft Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有 Azure 帐户，可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+
+## <a name="prerequisites"></a>先决条件
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
+
+若要完成本快速入门，需要具备以下先决条件：
+
+- **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有 Azure 帐户，可以注册 [1 元试用版](https://wd.azure.cn/pricing/1rmb-trial/)或[创建帐户](https://wd.azure.cn/pricing/pia/)。
 - **Microsoft Visual Studio 2019**。 Azure 事件中心客户端库利用 C# 8.0 中引入的新功能。  仍可以在旧版 C# 中使用该库，但该库的某些功能不可用。  若要启用这些功能，必须[将 .NET Core 3.0 用作目标](https://docs.microsoft.com/dotnet/standard/frameworks#how-to-specify-target-frameworks)，或指定要使用的[语言版本](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default)（8.0 或更高）。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与用于生成 C# 8.0 项目的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
 
@@ -119,7 +122,7 @@ ms.locfileid: "77067786"
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>创建 Azure 存储和 Blob 容器
 本快速入门使用 Azure 存储作为检查点存储。 按照以下步骤创建 Azure 存储帐户。 
 
-1. [创建 Azure 存储帐户](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
+1. [创建 Azure 存储帐户](/storage/common/storage-account-create?tabs=azure-portal)
 2. [创建一个 blob 容器](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [获取存储帐户的连接字符串](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
 
@@ -229,3 +232,4 @@ ms.locfileid: "77067786"
 
 - [GitHub 上的事件中心示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [GitHub 上的事件处理器示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
+- [基于角色的访问控制 (RBAC) 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

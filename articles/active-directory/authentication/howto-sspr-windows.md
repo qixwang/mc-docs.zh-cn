@@ -1,23 +1,22 @@
 ---
-title: 适用于 Windows 的 Azure AD 自助式密码重置 - Azure Active Directory
+title: 适用于 Windows 的自助式密码重置 - Azure Active Directory
 description: 如何使用 Windows 登录屏幕上的“忘记了密码”启用自助式密码重置
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-origin.date: 10/28/2019
-ms.date: 11/12/2019
+ms.date: 02/26/2020
 ms.author: v-junlch
-author: MicrosoftGuyJFlo
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63610c0b0e57b2cfd10936f90f2976066ec13dc
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 1f34021b62997e1f6353a2c68d983b5de713662c
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084456"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653398"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：从 Windows 登录屏幕启用密码重置
 
@@ -28,6 +27,8 @@ ms.locfileid: "74084456"
 ## <a name="general-limitations"></a>一般限制
 
 - 目前不支持从远程桌面或从 Hyper-V 增强的会话进行密码重置。
+- 已知某些第三方凭据提供程序会导致此功能出现问题。
+- 已知通过修改 [EnableLUA 注册表项](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)禁用 UAC 会导致问题。
 - 此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
 - 若要使用新密码并更新缓存的凭据，已加入混合 Azure AD 的计算机必须能够通过网络连接到域控制器。
 - 如果使用映像，请确保在运行 sysprep 之前先为内置 Administrator 清除 Web 缓存，再执行 CopyProfile 步骤。 有关此步骤的更多信息，可参阅支持文章：[使用自定义默认用户配置文件时性能较差](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
@@ -128,5 +129,9 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 现在，用户在尝试登录时，可以看到“重置密码”或“忘记了密码”链接，该链接用于在登录屏幕上打开自助式密码重置体验。   此功能允许用户重置其密码，不需使用其他设备来访问 Web 浏览器。
 
 用户可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md)中发现此功能的使用指南
+
+## <a name="next-steps"></a>后续步骤
+
+[配置 Windows 10](https://docs.microsoft.com/windows/configuration/)
 
 <!-- Update_Description: wording update -->

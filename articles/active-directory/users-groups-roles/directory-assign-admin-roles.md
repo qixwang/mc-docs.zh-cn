@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/07/2020
+ms.date: 02/26/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0d48b445328d6c149f01278bf998aa531f01b60
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 2a14536856b4f666d97817917feb2be4abff5633
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067718"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653469"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -47,7 +47,7 @@ ms.locfileid: "77067718"
 
 提供以下管理员角色：
 
-### <a name="application-administratorapplication-administrator-permissions"></a>[应用程序管理员](#application-administrator-permissions)
+### <a name="application-administrator"></a>[应用程序管理员](#application-administrator-permissions)
 
 充当此角色的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 请注意，在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
@@ -64,11 +64,11 @@ ms.locfileid: "77067718"
 > [!IMPORTANT]
 > 这种例外情况意味着，你仍可以许可对其他应用（例如，第三方应用或已注册的应用）的权限，但不能许可对 Azure AD 本身的权限。  仍可以在应用注册过程中请求这些权限，但授予（即许可）这些权限需要拥有 Azure AD 管理员权限。   这意味着，恶意用户无法轻松提升其权限，例如，通过创建并许可可写入整个目录的应用，然后通过该应用的权限将自己提升为全局管理员。
 
-### <a name="application-developerapplication-developer-permissions"></a>[应用程序开发人员](#application-developer-permissions)
+### <a name="application-developer"></a>[应用程序开发人员](#application-developer-permissions)
 
 在将设置“用户可以注册应用程序”设置为“否”时，充当此角色的用户可以创建应用程序注册。 当“用户可以同意应用代表他们访问公司数据”设置设为“否”时，此角色还能够代表自己授权同意。 在创建新应用程序注册或企业应用程序时，会将分配到此角色的用户添加为所有者。
 
-### <a name="authentication-administratorauthentication-administrator-permissions"></a>[身份验证管理员](#authentication-administrator-permissions)
+### <a name="authentication-administrator"></a>[身份验证管理员](#authentication-administrator-permissions)
 
 身份验证管理员角色目前以公共预览版提供。 具有此角色的用户可以设置或重置非密码凭据，并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）： 
 
@@ -87,43 +87,43 @@ ms.locfileid: "77067718"
 >- Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
 >- 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
+### <a name="azure-devops-administrator"></a>[Azure DevOps 管理员](#azure-devops-administrator-permissions)
 
 具有此角色的用户可以管理 Azure DevOps 策略，以便仅限一组可配置的用户或组创建新的 Azure DevOps 组织。 充当此角色的用户可以通过有公司 Azure AD 组织作为保障的 Azure DevOps 组织来管理此策略。
 
 充当此角色的用户可以管理所有企业 Azure DevOps 策略。
 
-### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure 信息保护管理员](#azure-information-protection-administrator-permissions)
+### <a name="azure-information-protection-administrator"></a>[Azure 信息保护管理员](#azure-information-protection-administrator-permissions)
 
 具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予标识保护中心、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
 
-### <a name="b2c-user-flow-administratorb2c-user-flow-administrator-permissions"></a>[B2C 用户流管理员](#b2c-user-flow-administrator-permissions)
+### <a name="b2c-user-flow-administrator"></a>[B2C 用户流管理员](#b2c-user-flow-administrator-permissions)
 
 具有此角色的用户可以在 Azure 门户中创建和管理 B2C 用户流（也称为“内置”策略）。 通过创建或编辑用户流，这些用户可以更改用户体验的 html/CSS/javascript 内容、更改每个用户流的 MFA 要求、更改令牌中的声明，以及调整租户中所有策略的会话设置。 但是，此角色无法查看用户数据，或者对租户架构中包含的属性进行更改。 对 Identity Experience Framework（也称为“自定义”）策略的更改超出了此角色的权限范围。
 
-### <a name="b2c-user-flow-attribute-administratorb2c-user-flow-attribute-administrator-permissions"></a>[B2C 用户流属性管理员](#b2c-user-flow-attribute-administrator-permissions)
+### <a name="b2c-user-flow-attribute-administrator"></a>[B2C 用户流属性管理员](#b2c-user-flow-attribute-administrator-permissions)
 
 具有此角色的用户可以添加或删除适用于租户中所有用户流的自定义属性。 因此，具有此角色的用户可以在最终用户架构中更改或新增元素，影响所有用户流的行为，间接导致更改可以请求最终用户提供的并最终作为声明发送到应用程序的数据。 此角色无法编辑用户流。
 
-### <a name="b2c-ief-keyset-administratorb2c-ief-keyset-administrator-permissions"></a>[B2C IEF 密钥集管理员](#b2c-ief-keyset-administrator-permissions)
+### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF 密钥集管理员](#b2c-ief-keyset-administrator-permissions)
 
 用户可以创建和管理策略密钥与机密用于令牌加密、令牌签名以及声明加密/解密。 通过将新密钥添加到现有密钥容器，此受限管理员可以根据需要滚动更新机密，而不会影响现有的应用程序。 即使是在创建这些机密之后，此用户也可以查看这些机密的完整内容及其过期日期。
 
 > [!IMPORTANT]
 > 这是一个敏感角色。 在生产前与生产期间，应该谨慎地审核和分配密钥集管理员角色。
 
-### <a name="b2c-ief-policy-administratorb2c-ief-policy-administrator-permissions"></a>[B2C IEF 策略管理员](#b2c-ief-policy-administrator-permissions)
+### <a name="b2c-ief-policy-administrator"></a>[B2C IEF 策略管理员](#b2c-ief-policy-administrator-permissions)
 
 充当此角色的用户可以在 Azure AD B2C 中创建、读取、更新和删除所有自定义策略，因此对相关 Azure AD B2C 租户中的 Identity Experience Framework 拥有完全控制权。 通过编辑策略，此用户可以直接与外部标识提供者建立联合、更改目录架构、更改所有面向用户的内容（HTML、CSS、JavaScript）、更改完成身份验证所要符合的要求、创建新用户、将用户数据发送到外部系统（包括完整迁移），以及编辑所有用户信息（包括密码和电话号码等敏感字段）。 相比之下，此角色无法更改加密密钥，或编辑租户中的联合身份验证使用的机密。
 
 > [!IMPORTANT]
 > B2 IEF 策略管理员是高度敏感的角色，在生产环境中应以极大的限制度将其分配给租户。 应该密切审核这些用户的活动，尤其是对于生产环境中的租户。
 
-### <a name="billing-administratorbilling-administrator-permissions"></a>[计费管理员](#billing-administrator-permissions)
+### <a name="billing-administrator"></a>[计费管理员](#billing-administrator-permissions)
 
 进行采购、管理订阅、管理支持票证，以及监视服务运行状况。
 
-### <a name="cloud-application-administratorcloud-application-administrator-permissions"></a>[云应用程序管理员](#cloud-application-administrator-permissions)
+### <a name="cloud-application-administrator"></a>[云应用程序管理员](#cloud-application-administrator-permissions)
 
 充当此角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
@@ -134,11 +134,11 @@ ms.locfileid: "77067718"
 
 如果应用程序分配给上面未提到的任何其他角色，则云应用程序管理员不能管理该应用程序的凭据。
 
-### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[云设备管理员](#cloud-device-administrator-permissions)
+### <a name="cloud-device-administrator"></a>[云设备管理员](#cloud-device-administrator-permissions)
 
 充当此角色的用户可以在 Azure AD 中启用、禁用和删除设备，并可以在 Azure 门户中读取 Windows 10 BitLocker 密钥（如果有）。 该角色不能授予设备上其他任何属性的管理权限。
 
-### <a name="compliance-administratorcompliance-administrator-permissions"></a>[合规性管理员](#compliance-administrator-permissions)
+### <a name="compliance-administrator"></a>[合规性管理员](#compliance-administrator-permissions)
 
 具有此角色的用户有权管理 Microsoft 365 合规中心、Microsoft 365 管理中心、Azure 和 Office 365 安全与合规中心中的合规性相关功能。 被分配者还可以管理 Exchange 管理中心、Teams 和 Skype for Business 管理中心内的所有功能，并可创建适用于 Azure 和 Microsoft 365 的支持票证。 [关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)中提供了详细信息。
 
@@ -150,7 +150,7 @@ In | 有权执行的操作
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 查看所有 Intune 审核数据
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 拥有只读权限，可以管理警报<br>可以创建和修改文件策略并允许执行文件管理操作<br>可以查看数据管理下的所有内置报表
 
-### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[合规性数据管理员](#compliance-data-administrator-permissions)
+### <a name="compliance-data-administrator"></a>[合规性数据管理员](#compliance-data-administrator-permissions)
 
 具有此角色的用户有权在 Microsoft 365 合规中心、Microsoft 365 管理中心和 Azure 中跟踪数据。 这些用户还可以在 Exchange 管理中心、Compliance Manager、Teams 和 Skype for Business 管理中心跟踪合规数据，并可创建适用于 Azure 和 Microsoft 365 的支持票证。
 
@@ -162,22 +162,22 @@ In | 有权执行的操作
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 查看所有 Intune 审核数据
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 拥有只读权限，可以管理警报<br>可以创建和修改文件策略并允许执行文件管理操作<br>可以查看数据管理下的所有内置报表
 
-### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[条件访问管理员](#conditional-access-administrator-permissions)
+### <a name="conditional-access-administrator"></a>[条件访问管理员](#conditional-access-administrator-permissions)
 
 具有此角色的用户能够管理 Azure Active Directory 条件访问设置。
 > [!NOTE]
 > 若要在 Azure 中部署 Exchange ActiveSync 条件访问策略，用户还必须是全局管理员。
 
-### <a name="customer-lockbox-access-approvercustomer-lockbox-access-approver-permissions"></a>[客户密码箱访问审批者](#customer-lockbox-access-approver-permissions)
+### <a name="customer-lockbox-access-approver"></a>[客户密码箱访问审批者](#customer-lockbox-access-approver-permissions)
 
 管理你的组织中的[客户密码箱请求](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests)。 他们接收客户密码箱请求的电子邮件通知，并且可以批准和拒绝来自 Microsoft 365 管理中心的请求。 他们还可以开启或关闭客户密码箱功能。 只有全局管理员可以重置分配到此角色的用户的密码。
 
-### <a name="desktop-analytics-administratordesktop-analytics-administrator-permissions"></a>[桌面分析管理员](#desktop-analytics-administrator-permissions)
+### <a name="desktop-analytics-administrator"></a>[桌面分析管理员](#desktop-analytics-administrator-permissions)
 
 
 充当此角色的用户可以管理 Desktop Analytics 以及 Office 自定义和策略服务。 对于 Desktop Analytics，此权限包括查看资产库存、创建部署计划、查看部署和运行状态。 对于 Office 自定义和策略服务，此角色可让用户管理 Office 策略。
 
-### <a name="directory-readersdirectory-readers-permissions"></a>[目录读取者](#directory-readers-permissions)
+### <a name="directory-readers"></a>[目录读取者](#directory-readers-permissions)
 
 充当此角色的用户可以读取基本的目录信息。 应将此角色用于：
 * 为特定的一组来宾用户授予读取访问权限，而不是将此权限授予所有来宾用户。
@@ -185,37 +185,37 @@ In | 有权执行的操作
 * 当“Directory.Read.All”不是可用选项时，为服务主体授予对目录的访问权限。
 
 
-### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Dynamics 365 管理员/CRM 管理员](#crm-service-administrator-permissions)
+### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理员/CRM 管理员](#crm-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Dynamics 365 Online 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Dynamics 365 管理员”。
 
-### <a name="exchange-administratorexchange-service-administrator-permissions"></a>[Exchange 管理员](#exchange-service-administrator-permissions)
+### <a name="exchange-administrator"></a>[Exchange 管理员](#exchange-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Exchange Online 内的全局权限（如果该服务存在）。 还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Exchange 管理员”。 它是 [Exchange 管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)内的“Exchange Online 管理员”。
 
-### <a name="external-identity-provider-administratorexternal-identity-provider-administrator-permissions"></a>[外部标识提供者管理员](#external-identity-provider-administrator-permissions)
+### <a name="external-identity-provider-administrator"></a>[外部标识提供者管理员](#external-identity-provider-administrator-permissions)
 
 此管理员可以管理 Azure Active Directory 租户与外部标识提供者之间的联合。 用户可以使用此角色添加新的标识提供者及配置所有可用设置（例如身份验证路径、服务 ID 和分配的密钥容器）。 此用户可让租户信任来自外部标识提供者的身份验证。 对最终用户体验造成的影响取决于租户类型：
 
 * 员工与合作伙伴的 Azure Active Directory 租户： 添加联合身份验证（例如使用 Gmail）会立即影响所有尚未兑换的来宾邀请。
 * Azure Active Directory B2C 租户：在将标识提供者添加为用户流（也称为内置策略）中的一个选项之前，添加联合身份验证（例如，使用另一个 Azure AD 组织）不会立即影响最终用户流。 若要更改用户流，需要使用受限角色“B2C 用户流管理员”。
 
-### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[全局管理员/公司管理员](#company-administrator-permissions)
+### <a name="global-administrator--company-administrator"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
-具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 只有全局管理员才能分配其他管理员角色。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
+具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“全局管理员”。
 >
 >
 
-### <a name="global-readerglobal-reader-permissions"></a>[全局读取者](#global-reader-permissions)
+### <a name="global-reader"></a>[全局读取者](#global-reader-permissions)
 
 充当此角色的用户可以跨 Microsoft 365 服务读取设置和管理信息，但无法执行管理操作。 全局读取者是对应于全局管理员的只读角色。 满足规划、审核或调查目的时，请分配全局读取者，而不要分配全局管理员。 将全局读取者与其他受限管理员角色（例如 Exchange 管理员）结合使用可以更轻松地完成工作，且无需分配全局管理员角色。 全局读取者可使用 Microsoft 365 管理中心、Exchange 管理中心、Teams 管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理管理中心。
 
@@ -235,11 +235,11 @@ In | 有权执行的操作
 > 这些功能目前正在开发中。
 >
 
-### <a name="guest-inviterguest-inviter-permissions"></a>[来宾邀请者](#guest-inviter-permissions)
+### <a name="guest-inviter"></a>[来宾邀请者](#guest-inviter-permissions)
 
 此角色的用户可在“成员可以邀请”用户设置设置为“否”时管理 Azure Active Directory B2B 来宾用户邀请。  它不包括任何其他权限。
 
-### <a name="helpdesk-administratorhelpdesk-administrator-permissions"></a>[支持管理员](#helpdesk-administrator-permissions)
+### <a name="helpdesk-administrator"></a>[支持管理员](#helpdesk-administrator-permissions)
 
 具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 对于非管理员或仅分配有以下角色的其他用户，支持管理员可以重置其密码，以及使其刷新令牌失效：
 
@@ -262,7 +262,7 @@ In | 有权执行的操作
 
 在 [Azure 门户](https://portal.azure.cn/)中，此角色以前称为“密码管理员”。 Azure AD 中的“支持管理员”名称现在与其在 Azure AD PowerShell、Azure AD 图形 API 和 Microsoft Graph API 中的名称匹配。
 
-### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune 管理员](#intune-service-administrator-permissions)
+### <a name="intune-administrator"></a>[Intune 管理员](#intune-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)。
 
@@ -271,23 +271,23 @@ In | 有权执行的操作
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Intune 管理员”。
 
-### <a name="kaizala-administratorkaizala-administrator-permissions"></a>[Kaizala 管理员](#kaizala-administrator-permissions)
+### <a name="kaizala-administrator"></a>[Kaizala 管理员](#kaizala-administrator-permissions)
 
 具有此角色的用户拥有在 Microsoft Kaizala 中管理设置的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 此外，该用户还可根据组织成员以及使用 Kaizala 操作生成的业务报告，来访问与 Kaizala 的采纳和使用相关的报告。
 
-### <a name="license-administratorlicense-administrator-permissions"></a>[许可证管理员](#license-administrator-permissions)
+### <a name="license-administrator"></a>[许可证管理员](#license-administrator-permissions)
 
 具有此角色的用户可以添加、删除和更新用户、组（使用基于组的许可）的许可分配，以及管理用户的使用位置。 该角色不授予在使用位置之外购买或管理订阅、创建或管理组，或者创建或管理用户的权限。 此角色无权查看、创建或管理支持票证。
 
-### <a name="message-center-privacy-readermessage-center-privacy-reader-permissions"></a>[消息中心隐私读取者](#message-center-privacy-reader-permissions)
+### <a name="message-center-privacy-reader"></a>[消息中心隐私读取者](#message-center-privacy-reader-permissions)
 
 充当此角色的用户可以监视消息中心内的所有通知，包括数据隐私消息。 消息中心隐私读取者会收到电子邮件通知（包括与数据隐私相关的通知），并可以使用邮件中心首选项取消订阅。 只有全局管理员和消息中心隐私读取者才能阅读数据隐私消息。 此外，此角色还能查看组、域和订阅。 此角色无权查看、创建或管理服务请求。
 
-### <a name="message-center-readermessage-center-reader-permissions"></a>[消息中心读取者](#message-center-reader-permissions)
+### <a name="message-center-reader"></a>[消息中心读取者](#message-center-reader-permissions)
 
 具有此角色的用户可以在其组织的 [Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)内，监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
 
-### <a name="password-administratorpassword-administrator-permissions"></a>[密码管理员](#password-administrator-permissions)
+### <a name="password-administrator"></a>[密码管理员](#password-administrator-permissions)
 
 具有此角色的用户可以管理密码，但权限受限。 此角色不会授予管理服务请求或监视服务运行状况的能力。 密码管理员只能重置其他非管理员用户的密码，或具有以下角色的成员的密码：
 
@@ -295,41 +295,41 @@ In | 有权执行的操作
 * 来宾邀请者
 * 密码管理员
 
-### <a name="power-bi-administratorpower-bi-service-administrator-permissions"></a>[Power BI 管理员](#power-bi-service-administrator-permissions)
+### <a name="power-bi-administrator"></a>[Power BI 管理员](#power-bi-service-administrator-permissions)
 
 具有此角色的用户具有 Power BI 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Power BI 管理员”。
 
-### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Power Platform 管理员](#power-platform-administrator-permissions)
+### <a name="power-platform-administrator"></a>[Power Platform 管理员](#power-platform-administrator-permissions)
 
 充当此角色的用户可以创建和管理环境、PowerApps、Flows、数据丢失防护策略的所有方面。 另外，具有此角色的用户可以管理支持票证并监视服务运行状况。
 
-### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[特权身份验证管理员](#privileged-authentication-administrator-permissions)
+### <a name="privileged-authentication-administrator"></a>[特权身份验证管理员](#privileged-authentication-administrator-permissions)
 
 具有此角色的用户可以设置或重置所有用户（包括全局管理员）的非密码凭据，并可以更新所有用户的密码。 特权身份验证管理员可以强制用户重新注册现有非密码凭据（例如 MFA、FIDO），以及撤销“在设备上记住 MFA”（所有用户下次登录时提示执行 MFA）。
 
-### <a name="privileged-role-administratorprivileged-role-administrator-permissions"></a>[特权角色管理员](#privileged-role-administrator-permissions)
+### <a name="privileged-role-administrator"></a>[特权角色管理员](#privileged-role-administrator-permissions)
 
 具有此角色的用户可以管理 Azure Active Directory 和 Azure AD Privileged Identity Management 中的角色分配。 此外，此角色允许管理 Privileged Identity Management 和管理单元的各个方面。
 
 > [!IMPORTANT]
 > 此角色授予管理所有 Azure AD 角色（包括全局管理员角色）的分配的能力。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外的特权。
 
-### <a name="reports-readerreports-reader-permissions"></a>[报告读取者](#reports-reader-permissions)
+### <a name="reports-reader"></a>[报告读取者](#reports-reader-permissions)
 
 具有此角色的用户可在 Microsoft 365 管理中心和 Power BI 中的采用上下文包内查看使用情况报告数据和报告仪表板。 此外，此角色还提供对 Azure AD 中的登录报告和活动以及 Microsoft Graph 报告 API 返回的数据的访问权限。 分配到“报告读者”角色的用户只能访问相关使用情况和采用指标。 它们没有任何管理员权限，无法配置设置或访问产品特定的管理中心（如 Exchange）。 此角色无权查看、创建或管理支持票证。
 
-### <a name="search-administratorsearch-administrator-permissions"></a>[搜索管理员](#search-administrator-permissions)
+### <a name="search-administrator"></a>[搜索管理员](#search-administrator-permissions)
 
 充当此角色的用户对 Microsoft 365 管理中心内的所有 Microsoft 搜索管理功能拥有完全访问权限。 搜索管理员可将搜索管理员和搜索编辑员角色委托给用户，并可以创建和管理内容，例如书签、问答和位置。 此外，这些用户可以查看消息中心、监视服务运行状况和创建服务请求。
 
-### <a name="search-editorsearch-editor-permissions"></a>[搜索编辑员](#search-editor-permissions)
+### <a name="search-editor"></a>[搜索编辑员](#search-editor-permissions)
 
 充当此角色的用户可以在 Microsoft 365 管理中心创建、管理和删除 Microsoft 搜索的内容，包括书签、问答和位置。
 
-### <a name="security-administratorsecurity-administrator-permissions"></a>[安全管理员](#security-administrator-permissions)
+### <a name="security-administrator"></a>[安全管理员](#security-administrator-permissions)
 
 具有此角色的用户有权管理 Microsoft 365 安全中心、Azure 信息保护和 Office 365 安全与合规中心中与安全相关的功能。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
@@ -345,7 +345,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 [Azure 安全中心](/role-based-access-control/built-in-roles) | 可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议
 [Office 365 服务运行状况](https://docs.microsoft.com/office365/enterprise/view-service-health) | 查看 Office 365 服务的运行状况
 
-### <a name="security-operatorsecurity-operator-permissions"></a>[安全操作员](#security-operator-permissions)
+### <a name="security-operator"></a>[安全操作员](#security-operator-permissions)
 
 具有此角色的用户可以管理警报，并对安全相关功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、Privileged Identity Management 以及 Office 365 安全与合规中心中的所有信息。 [Office 365 安全与合规中心](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center)提供了有关 Office 365 权限的详细信息。
 
@@ -360,7 +360,7 @@ Windows Defender ATP 和 EDR | 安全读取者角色的所有权限<br>查看、
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 安全读取者角色的所有权限
 [Office 365 服务运行状况](https://docs.microsoft.com/office365/enterprise/view-service-health) | 查看 Office 365 服务的运行状况
 
-### <a name="security-readersecurity-reader-permissions"></a>[安全读取者](#security-reader-permissions)
+### <a name="security-reader"></a>[安全读取者](#security-reader-permissions)
 
 具有此角色的用户对安全相关的功能具有全局只读访问权限，包括 Microsoft 365 安全中心、Azure Active Directory、Privileged Identity Management 中的所有信息，并且能够阅读 Azure Active Directory 登录报告和审核日志，还授予了对 Office 365 安全与合规中心的只读权限。 [Office 365 安全与合规中心](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)提供了有关 Office 365 权限的详细信息。
 
@@ -376,44 +376,44 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 [Azure 安全中心](/role-based-access-control/built-in-roles) | 可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改
 [Office 365 服务运行状况](https://docs.microsoft.com/office365/enterprise/view-service-health) | 查看 Office 365 服务的运行状况
 
-### <a name="service-support-administratorservice-support-administrator-permissions"></a>[服务支持管理员](#service-support-administrator-permissions)
+### <a name="service-support-administrator"></a>[服务支持管理员](#service-support-administrator-permissions)
 
 具有此角色的用户可以针对 Azure 和 Office 365 服务提出 Microsoft 支持请求，并可以在 [Azure 门户](https://portal.azure.cn)中查看服务仪表板和消息中心。 有关详细信息，请参阅[关于管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“服务支持管理员”。 此角色是 [Azure 门户](https://portal.azure.cn)中的“服务管理员”。
 
-### <a name="sharepoint-administratorsharepoint-service-administrator-permissions"></a>[SharePoint 管理员](#sharepoint-service-administrator-permissions)
+### <a name="sharepoint-administrator"></a>[SharePoint 管理员](#sharepoint-service-administrator-permissions)
 
 具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限，并且能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅[关于管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“SharePoint 管理员”。
 
-### <a name="skype-for-business--lync-administratorlync-service-administrator-permissions"></a>[Skype for Business/Lync 管理员](#lync-service-administrator-permissions)
+### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理员](#lync-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Skype for Business 中的全局权限，以及管理 Azure Active Directory 中的特定于 Skype 的用户属性。 此外，此角色可授予管理支持票证、监视服务运行状况以及访问 Teams 和 Skype for Business 管理中心的能力。 帐户必须获取 Teams 许可证，否则无法运行 Teams PowerShell cmdlet。 有关详细信息，请参阅[关于 Skype for Business 管理员角色](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)；有关 Teams 许可信息，请参阅 [Skype for Business 和 Microsoft Teams 附加许可](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn/)中的“Skype for Business 管理员”。
 
-### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Teams 通信管理员](#teams-communications-administrator-permissions)
+### <a name="teams-communications-administrator"></a>[Teams 通信管理员](#teams-communications-administrator-permissions)
 
 充当此角色的用户可以管理 Microsoft Teams 工作负荷的语音与电话相关方面。 这包括用于分配电话号码的管理工具、语音和会议策略，以及通话分析工具集的完全访问权限。
 
-### <a name="teams-communications-support-engineerteams-communications-support-engineer-permissions"></a>[Teams 通信支持工程师](#teams-communications-support-engineer-permissions)
+### <a name="teams-communications-support-engineer"></a>[Teams 通信支持工程师](#teams-communications-support-engineer-permissions)
 
 充当此角色的用户可以使用 Microsoft Teams 和 Skype for Business 管理中心的用户通话故障排除工具，来排查 Microsoft Teams 和 Skype for Business 中的通信问题。 充当此角色的用户可以查看所有参与方的完整通话记录信息。 此角色无权查看、创建或管理支持票证。
 
-### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[Teams 通信支持专家](#teams-communications-support-specialist-permissions)
+### <a name="teams-communications-support-specialist"></a>[Teams 通信支持专家](#teams-communications-support-specialist-permissions)
 
 充当此角色的用户可以使用 Microsoft Teams 和 Skype for Business 管理中心的用户通话故障排除工具，来排查 Microsoft Teams 和 Skype for Business 中的通信问题。 充当此角色的用户只能查看他们所查找的特定用户的通话中的用户详细信息。 此角色无权查看、创建或管理支持票证。
 
-### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Teams 服务管理员](#teams-service-administrator-permissions)
+### <a name="teams-service-administrator"></a>[Teams 服务管理员](#teams-service-administrator-permissions)
 
 充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 此外，此角色还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。
 
-### <a name="user-administratoruser-administrator-permissions"></a>[用户管理员](#user-administrator-permissions)
+### <a name="user-administrator"></a>[用户管理员](#user-administrator-permissions)
 
 具有此角色的用户可以创建用户、管理用户的所有方面（但存在一些限制，具体请参阅下文），以及更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
@@ -986,7 +986,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | microsoft.office365.webPortal/allEntities/standard/read   | 读取 microsoft.office365.webPortal 中所有资源的标准属性。 |
 
-### <a name="group-administrator-permissions"></a>组管理员权限
+### <a name="groups-administrator-permissions"></a>组管理员权限
 可以管理组和组设置的所有方面，如命名策略和过期策略。
 
 | **操作** | **说明** |

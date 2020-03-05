@@ -2,28 +2,23 @@
 title: Azure AD 应用开发人员的支持和帮助选项 | Microsoft Docs
 description: 了解在创建与 Microsoft 标识 (Azure Active Directory) 集成的应用程序时，如何获取所遇到的开发相关问题的帮助和支持
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/23/2019
-ms.date: 11/05/2019
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb42ffc268af659dca7e81cf0dbb9f70118aae9
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 43b9119fce956c9521c025dcc2509774631a6d0d
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830983"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653289"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -83,12 +78,12 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
-* [ADAL](active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)、[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)、[MSAL.Android](https://github.com/AzureAD/microsoft-authentication-library-for-android) 和 [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) 库和 GitHub 存储库
+* [Azure Active Directory 身份验证库 (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) 库和 GitHub 存储库
+* [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md) 库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 
-如果需要与某人交流，可以提出支持请求。 Azure 客户可以使用多个支持选项。 若要比较计划，请参阅[此页](https://www.azure.cn/support/plans/)。 开发人员支持也适用于 Azure 客户。 有关如何购买开发人员支持计划的信息，请参阅[此页](https://www.azure.cn/support/plans/)。
+如果需要与某人交流，可以提出支持请求。 Azure 客户可以使用多个支持选项。 若要比较计划，请参阅[此页](https://www.azure.cn/support/plans/)。 开发人员支持也适用于 Azure 客户。 有关如何购买开发人员支持计划的信息，请参阅[此页](https://www.azure.cn/support/plans/developer/)。
 
 * 如果已有 Azure 支持计划，请[在此处提出支持请求](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

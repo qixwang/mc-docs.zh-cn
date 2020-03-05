@@ -9,20 +9,20 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 origin.date: 06/11/2019
 ms.date: 10/21/2019
-ms.openlocfilehash: e0ba076514919136c51639562fc06762c6ea3e84
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 023459efafc216e199348cdbef227128c5026dc5
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292682"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155053"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
-Azure HDInsight 是面向企业的云中托管、全方位的开源分析服务。 可以使用开源框架，例如 Hadoop、Apache Spark、Apache Hive、LLAP、Apache Kafka、Apache Storm、R 等等。
+Azure HDInsight 是面向企业的云中托管、全方位的开源分析服务。 可以使用开源框架，例如 Hadoop、Apache Spark、Apache Hive、LLAP、Apache Kafka、Apache Storm 等等。
 
 ## <a name="what-is-hdinsight-and-the-hadoop-technology-stack"></a>什么是 HDInsight 和 Hadoop 技术堆栈？
 
-Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight 轻松、快速且经济有效地处理大量数据。 可以使用 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R 等最常用的开源框架。 可以通过这些框架启用各种各样的方案，例如提取、转换和加载 (ETL)；数据仓库操作；机器学习；IoT。
+Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight 轻松、快速且经济有效地处理大量数据。 可以使用 Hadoop、Spark、Hive、LLAP、Kafka、Storm 等最常用的开源框架。 可以通过这些框架启用各种各样的方案，例如提取、转换和加载 (ETL)；数据仓库操作；机器学习；IoT。
 
 若要查看 HDInsight 上的可用 Hadoop 技术堆栈组件，请参阅[可以与 HDInsight 配合使用的组件和版本](./hdinsight-component-versioning.md)。 若要详细了解 HDInsight 中的 Hadoop，请参阅 [Azure 上介绍了 HDInsight 功能的页面](https://azure.microsoft.com/services/hdinsight/)。
 

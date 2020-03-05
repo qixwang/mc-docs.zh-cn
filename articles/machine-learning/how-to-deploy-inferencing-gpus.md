@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 91d26ce512c67eda7cf4570f489aedecebea351e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 8789f050f1b8f4296ffa5057c9d7150b574b5d29
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599358"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155056"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,13 @@ ms.locfileid: "75599358"
 推理（模型评分）是使用部署的模型进行预测的阶段。 使用 GPU 代替 CPU 可为高度并行化的计算提供性能优势。
 
 > [!IMPORTANT]
-> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU  。 有关使用机器学习管道的详细信息，请参阅[运行批量预测](how-to-run-batch-predictions.md)。 
+> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU  。 有关使用机器学习管道的详细信息，请参阅[运行批量预测](how-to-use-parallel-run-step.md)。 
 
 > [!TIP]
-> 尽管本文中的代码片段使用 TensorFlow 模型，但这些信息适用于任何支持 GPU 的机器学习框架。
+> 尽管本文中的代码片段使用了 TensorFlow 模型，但你可以将这些信息应用于任何支持 GPU 的机器学习框架。
 
 > [!NOTE]
-> 本文中的信息基于[如何部署到 Azure Kubernetes 服务](service/how-to-deploy-azure-kubernetes-service.md)一文中的信息。 那篇文章总体上说的是在 AKS 上部署，本文介绍的是特定于 GPU 的部署。
+> 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 那篇文章总体上说的是在 AKS 上部署，本文介绍的是特定于 GPU 的部署。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "75599358"
 
     * 若要创建并注册此文档创建时所用的 Tensorflow 模型，请参阅[如何训练 TensorFlow 模型](how-to-train-tensorflow.md)。
 
-* 大致了解[如何以及在何处部署模型](service/how-to-deploy-and-where.md)。
+* 大致了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 
 ## <a name="connect-to-your-workspace"></a>连接到工作区
 
@@ -94,7 +94,7 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > 只要存在 AKS 群集，Azure 就会向你收费。 请务必在使用完 AKS 群集后将其删除。
 
-有关将 AKS 与 Azure 机器学习配合使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](service/how-to-deploy-azure-kubernetes-service.md)。
+有关将 AKS 与 Azure 机器学习配合使用的详细信息，请参阅[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
 ## <a name="write-the-entry-script"></a>编写入口脚本
 
@@ -135,7 +135,7 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-此文件的名称为 `score.py`。 有关入口脚本的详细信息，请参阅[如何以及在何处部署](service/how-to-deploy-and-where.md)。
+此文件的名称为 `score.py`。 有关入口脚本的详细信息，请参阅[如何以及在何处部署](how-to-deploy-and-where.md)。
 
 ## <a name="define-the-conda-environment"></a>定义 Conda 环境
 
@@ -172,7 +172,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-有关详细信息，请参阅 [AksService.deploy_configuration](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-) 的参考文档。
+有关详细信息，请参阅 [AksService.deploy_configuration](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
 
 ## <a name="define-the-inference-configuration"></a>定义推理配置
 
@@ -289,6 +289,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 FPGA 上部署模型](service/how-to-deploy-fpga-web-service.md)
+
 * [用 ONNX 部署模型](concept-onnx.md#deploy-onnx-models-in-azure)
 * [训练 Tensorflow DNN 模型](how-to-train-tensorflow.md)

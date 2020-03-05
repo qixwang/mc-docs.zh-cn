@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 307e229f0ebed6bf725dab2c7d498fdcd4c7a732
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: fd89f9322345d926524e66943eb30cbb5bb50269
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598420"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155031"
 ---
 # <a name="neural-network-regression-module"></a>神经网络回归模块
 
@@ -50,7 +51,7 @@ ms.locfileid: "75598420"
     
     如果你对神经网络已有一定程度的了解，最好选择此选项。 使用 Net# 语言定义网络体系结构。  
 
-##  <a name="bkmk_DefaultArchitecture">使用默认体系结构创建神经网络模型</a>
+##  <a name="bkmk_DefaultArchitecture"></a>使用默认体系结构创建神经网络模型
 
 1.  在设计器中将“神经网络回归”模块添加到管道  。 可以在“机器学习”、“初始化”下的“回归”类别中找到此模块    。 
   
@@ -91,10 +92,7 @@ ms.locfileid: "75598420"
 
 在训练完成后：
 
-+ 要查看模型参数、通过训练获得的功能权重以及其他神经网络参数的摘要，请右键单击[训练模型](./train-model.md)的输出，然后选择“可视化”  。  
-
-+ 要保存已训练模型的快照，请右键单击“已训练模型”输出，选择“另存为已训练模型”   。 此模型在连续运行相同管道时不会更新。
-
+- 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
 
 ## <a name="next-steps"></a>后续步骤
 

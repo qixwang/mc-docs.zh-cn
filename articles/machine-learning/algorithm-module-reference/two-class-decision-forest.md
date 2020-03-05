@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 70dffc31c09afdcfda024993c5b1354894610060
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 46494d67300eada48ee846ebb0233b4b20df7272
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598367"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154933"
 ---
 # <a name="two-class-decision-forest-module"></a>“双类决策林”模块
 
@@ -47,7 +48,7 @@ ms.locfileid: "75598367"
 
 有关详细信息，请参阅[决策林](https://go.microsoft.com/fwlink/?LinkId=403677)。  
 
-## <a name="how-to-configure"></a>如何配置
+## <a name="how-to-configure"></a>配置方式
   
 1.  在 Azure 机器学习中将**双类决策林**模块添加到你的管道，并打开模块的“属性”  窗格。 
 
@@ -87,17 +88,12 @@ ms.locfileid: "75598367"
 9. 附加一个带标签的数据集和[训练模块](module-reference.md)之一：  
   
     -   如果将“创建训练程序模式”设置为“单个参数”，请使用[训练模型](./train-model.md)模块   。  
-  
     
 ## <a name="results"></a>结果
 
 在训练完成后：
 
-+ 若要查看在每次迭代中创建的树，请右键单击[训练模型](./train-model.md)模块的输出，并选择“可视化”  。
-  
-    单击每个树以向下钻取拆分，并查看每个节点的规则。
-
-+ 若要保存模型的快照，请右键单击“已训练模型”输出，选择“保存模型”   。 已保存的模型在后续运行管道时不会更新。
++ 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
 
 + 若要使用模型进行评分，请向管道中添加**评分模型**模块。
 

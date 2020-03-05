@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for MariaDB 中进行监视
+title: 监视 - Azure Database for MariaDB
 description: 本文介绍了用于对 Azure Database for MariaDB 进行监视并发出警报的指标，包括 CPU、存储和连接统计信息。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/02/2019
-ms.openlocfilehash: a2ed4ec41374aa6317fad82e523b00b01dbc9cdd
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+origin.date: 12/02/2019
+ms.date: 03/02/2020
+ms.openlocfilehash: 5b5fe6f489156e78a21d9ce0eaed457a20b30e20
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530657"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154355"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MariaDB 提供了各种指标来帮助用户深入了解服务器的行为。
@@ -48,6 +48,14 @@ ms.locfileid: "74530657"
 ## <a name="query-store"></a>查询存储
 
 [查询存储](concepts-query-store.md)可以随着时间的推移跟踪查询性能，包括查询运行时统计信息和等待事件。 此功能将查询运行时性能信息保留在 **mysql** 架构中。 你可以通过各种配置旋钮控制数据的收集和存储。
+
+## <a name="query-performance-insight"></a>Query Performance Insight
+
+[Query Performance Insight](concepts-query-performance-insight.md) 与查询存储协同工作以提供可以从 Azure 门户访问的可视化效果。 这些图表使你能够识别对性能造成影响的关键查询。 可以在 Azure Database for MariaDB 服务器门户页的“智能性能”  部分中访问 Query Performance Insight。
+
+## <a name="performance-recommendations"></a>性能建议
+
+[性能建议](concepts-performance-recommendations.md)功能可以确定提高工作负荷性能的机会。 性能建议为你提供了有关创建新索引的建议，这些索引可能会提高工作负荷的性能。 若要生成索引建议，该功能会考虑各种数据库特征，包括其架构以及如“查询存储”报告的工作负载。 实施任何性能建议后，客户应测试性能以评估这些更改的影响。
 
 ## <a name="next-steps"></a>后续步骤
 

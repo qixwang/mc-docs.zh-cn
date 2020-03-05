@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 6186e9dab55f77cb44ecda8dc1592e37f59ed21d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 02/11/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 0453cf7aa53ea1b0092c1834d4a05cbd07652669
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598387"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155074"
 ---
-# <a name="train-model-module"></a>“训练模型”模块
+# <a name="train-model-module"></a>“定型模型”模块
 
 本文介绍了 Azure 机器学习设计器（预览版）中的一个模块。
 
@@ -39,7 +40,7 @@ ms.locfileid: "75598387"
 
 3. 在训练完成后，使用训练后的模型与[评分模型](./score-model.md)之一来基于新数据进行预测。
 
-## <a name="how-to-use-train-model"></a>如何使用**训练模型**  
+## <a name="how-to-use-train-model"></a>如何使用训练模型 
   
 1.  在 Azure 机器学习中，配置一个分类模型或回归模型。
     
@@ -49,7 +50,7 @@ ms.locfileid: "75598387"
 
     训练数据集必须包含一个标签列。 不带标签的任何行都将被忽略。
   
-4.  对于“标签列”  ，单击“启动列选择器”  ，然后选择包含模型可用于训练的结果的单个列。
+4.  对于“标签列”  ，单击模块右侧面板中的“编辑列”  ，然后选择包含模型可用于训练的结果的单个列。
   
     - 对于分类问题，标签列必须包含**分类**值或**离散**值。 可能的一些示例如下：“是/否”评级、疾病分类代码或名称，或收入组。  如果你选择了一个非分类列，则模块在训练期间将返回错误。
   
@@ -68,10 +69,9 @@ ms.locfileid: "75598387"
 
 在对模型进行训练后：
 
-+ 若要查看模型参数和特征权重，请右键单击输出，然后选择“可视化”  。
-+ 若要在其他管道中使用该模型，请右键单击该模型，然后选择“保存模型”  。 键入模型名称。 
 
-    这会将模型保存为一个快照，该快照在管道重复运行时不会更新。
++ 若要在其他管道中使用该模型，请选择该模块，然后在右侧面板的“输出”  选项卡下选择“注册数据集”  图标。 可以在“数据集”  下的模块调色板中访问已保存的模型。
+
 + 若要在预测新值时使用模型，请将其连接到[评分模型](./score-model.md)模块以及新的输入数据。
 
 

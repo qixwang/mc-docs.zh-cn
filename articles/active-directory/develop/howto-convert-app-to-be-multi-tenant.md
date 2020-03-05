@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/24/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b39607080a5ff927cc81acbd5069421017b67ad
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 87d4b205b9e3ae2512a966eb00c4cf627c826857
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776841"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653294"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -176,7 +175,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 ## <a name="related-content"></a>相关内容
 
-* [Multi-tenant application samples](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)（多租户应用程序示例）
+* [Multi-tenant application sample](https://github.com/mspnp/multitenant-saas-guidance)（多租户应用程序示例）
 * [适用于应用程序的品牌准则][AAD-App-Branding]
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
@@ -217,7 +216,7 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
-[AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
+[AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios.md/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]:access-tokens.md
 [AAD-V2-Dev-Guide]: v2-overview.md
 [AZURE-portal]: https://portal.azure.cn
@@ -231,4 +230,4 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

@@ -3,7 +3,7 @@ title: Azure 安全中心层级的定价
 description: Azure 安全中心具有两种层级 - 免费层和标准层。 此页面显示如何从“免费层”升级到“标准层”。
 services: security-center
 documentationcenter: na
-author: memildin
+author: lingliw
 manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/13/2019
 ms.date: 1/9/2020
-ms.author: v-mohabe
-ms.openlocfilehash: 82408f7ac78c62cdda1c6558ebde000fbddb536a
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.author: v-lingwu
+ms.openlocfilehash: a9df5a2e8c58a61c241658f148e1b712dfc38168
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116932"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155005"
 ---
-# <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>升级到安全中心的标准层以增强安全性
+# <a name="upgrade-to-standard-tier-for-enhanced-security"></a>升级到标准层以增强安全性
 Azure 安全中心为在 Azure、本地和其他云中运行的工作负载提供统一的安全管理。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络攻击的智能检测功能。
 
 ## <a name="pricing-tiers"></a>定价层

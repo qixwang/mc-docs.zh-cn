@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2f314d932f5a64b35ef7777c8dbd76954edc62a3
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 17387eb1213ba31699d167c508d7439bbe52ed2e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884499"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154832"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用： 
@@ -39,14 +39,13 @@ ms.locfileid: "74884499"
 
 |要|不要|
 |--|--|
-|[应定义不同的意向](#do-define-distinct-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents) |
+|[应定义不同的意向](#do-define-distinct-intents)<br>[将描述符添加到意向](#do-add-descriptors-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单实体](#dont-use-few-or-simple-entities) |
 |[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|
-|以迭代方式生成应用|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-| 在后续的迭代中添加短语列表和模式 |[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
-|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|创建包含所有可能值的短语列表|
+|[使用版本以迭代方式生成应用](#do-build-your-app-iteratively-with-versions)<br>[为模型分解生成实体](#do-build-for-model-decomposition)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[在后续迭代中添加模式](#do-add-patterns-in-later-iterations)|[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
+|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建描述符](#dont-create-descriptors-with-all-the-possible-values)|
 |[利用主动学习的建议功能](#do-leverage-the-suggest-feature-for-active-learning)|[添加的模式过多](#dont-add-many-patterns)|
-|[监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
-| 将版本用于每个应用迭代 ||
+|[通过批处理测试来监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>应定义不同的意向
 确保每个意向的词汇特定于该意向，而不会与其他意向的词汇重叠。 例如，如果要创建一款处理行程安排（例如航班和酒店）的应用，可以选择将这些主题领域视作彼此独立的意向或视为同一意向，其中包含话语中特定数据的实体。
@@ -68,7 +67,8 @@ ms.locfileid: "74884499"
 
 ## <a name="do-find-sweet-spot-for-intents"></a>请找到意向的平衡点
 使用 LUIS 中的预测数据来判定意向是否存在重叠的情况。 重叠的意向会困扰 LUIS。 结果是评分最高的意向会与另一个意向非常接近。 由于 LUIS 不会在每次训练的数据中使用完全相同的路径，所以重叠意向可能会在训练中排到第一或第二的位置。 各意向的话语分数应相互拉开差距以避免出现上述翻转情况。 更好地区分意向可以使得每次训练都得出预期的最高分意向。 
-
+ 
+<a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>使用版本以迭代方式生成应用
 

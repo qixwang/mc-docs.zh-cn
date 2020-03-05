@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: e7bf8ed852afb739db80f2bcec6fbba15eed6530
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 089b2d427e7d6ac1dfd2949c6905beb0c35d2f2a
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598363"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155028"
 ---
 # <a name="two-class-neural-network-module"></a>“双类神经网络”模块
 
@@ -30,13 +31,13 @@ ms.locfileid: "75598363"
 
 神经网络是一组互连的层。 输入是第一层，并通过由加权边缘和节点组成的无环图连接到一个输出层。
 
-在输入层和输出层之间，可以插入多个隐藏层。 大多数预测任务都可以仅使用一个或几个隐藏层轻松完成。 但是，最近的研究表明，具有许多个层的深度神经网络 (DNN) 在复杂任务（例如图像或语音识别）中可能比较有效。 后续层用于为不断增加的语义深度级别建模。
+在输入层和输出层之间，可以插入多个隐藏层。 大多数预测任务只需使用一个或几个隐藏层即可轻松完成。 但是，最近的研究表明，多层深度神经网络 (DNN) 可有效地完成复杂任务，如图像或语音识别。 后续层用于为不断增加的语义深度级别建模。
 
-输入与输出之间的关系是通过基于输入数据对神经网络进行训练来了解的。 图形的方向是从输入到隐藏层，再到输出层。 每一层中的所有节点都通过加权边缘连接到下一层中的节点。
+输入与输出之间的关系可通过基于输入数据对神经网络进行训练来了解。 图形的方向是从输入层到隐藏层，再到输出层。 每一层中的所有节点都通过加权边缘连接到下一层中的节点。
 
 为了针对特定输入计算网络的输出，会在隐藏层和输出层中的每个节点上计算一个值。 此值是通过计算上一层中节点的值的加权和来设置的。 然后会向该加权和应用一个激活函数。
   
-## <a name="how-to-configure"></a>如何配置
+## <a name="how-to-configure"></a>配置方式
 
 1.  向你的管道中添加**双类神经网络**模块。 可以在“机器学习”  、“初始化”  下的“分类”  类别中找到此模块。  
   
@@ -82,9 +83,9 @@ ms.locfileid: "75598363"
 
 在训练完成后：
 
-+ 若要查看模型参数以及从训练学到的特征权重的摘要，请右键单击[训练模型](./train-model.md)的输出，然后选择“可视化”  。  
++ 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
 
-+ 若要保存已训练模型的快照，请右键单击“已训练模型”输出，选择“另存为已训练模型”   。 此模型在后续运行相同管道时不会更新。
++ 若要使用模型进行评分，请向管道中添加**评分模型**模块。
 
 
 ## <a name="next-steps"></a>后续步骤

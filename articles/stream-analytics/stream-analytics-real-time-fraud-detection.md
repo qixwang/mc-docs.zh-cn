@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 12/26/2018
-ms.openlocfilehash: a9d18531a32e511c8ec9e9097ac7c61d9948da94
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: c6c3425f59fe9b8993d8fed8a233ccd0de369fa9
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75855627"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154608"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
@@ -31,7 +31,7 @@ ms.locfileid: "75855627"
 
 电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或针对特定号码关闭服务。 有一种 SIM 欺诈涉及在同一时间以同一身份发起但位于不同地理位置的多个呼叫。 若要检测此类欺诈，公司需要检查来电记录，并查找特定模式 - 在本例中，将查找在不同国家/地区同时发起的呼叫。 任何属于此类别的电话记录都将写入到存储中，以供后续分析。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程将通过使用生成示例电话呼叫元数据的客户端应用来模拟电话呼叫数据。 应用生成的某些记录看起来类似欺诈呼叫。 
 
@@ -55,26 +55,33 @@ ms.locfileid: "75855627"
 ### <a name="create-a-namespace-and-event-hub"></a>创建命名空间和事件中心
 在此过程中，首先创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
-1. 登录 Azure 门户，然后依次单击“创建资源” > “物联网” > “事件中心”    。 
+1. 登录到 Azure 门户，然后单击屏幕左上角的“创建资源”  。
 
-2. 在“创建命名空间”  窗格中，输入命名空间名称，例如 `<yourname>-eh-ns-demo`。 可以对命名空间使用任何名称，但该名称必须对 URL 有效，并且在 Azure 中必须唯一。 
+2. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择**星号 (`*`)** 。    确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。   
+
+   ![搜索事件中心](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. 选择左侧导航菜单中“收藏夹”下的“事件中心”，然后选择工具栏上的“添加”。   
+
+   ![“添加”按钮](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. 在“创建命名空间”  窗格中，输入命名空间名称，例如 `<yourname>-eh-ns-demo`。 可以对命名空间使用任何名称，但该名称必须对 URL 有效，并且在 Azure 中必须唯一。 
     
-3. 选择订阅并创建或选择一个资源组，然后单击“创建”  。
+5. 选择订阅并创建或选择一个资源组，然后单击“创建”  。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. 完成部署命名空间后，在 Azure 资源列表中找到事件中心命名空间。 
+6. 完成部署命名空间后，在 Azure 资源列表中找到事件中心命名空间。 
 
-5. 单击新的命名空间，然后在“命名空间”窗格中，单击“事件中心”  。
+7. 单击新的命名空间，然后在“命名空间”窗格中，单击“事件中心”  。
 
    ![用于创建新事件中心的“添加事件中心”按钮](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可以使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
+8. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可以使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. 单击**创建**。
+9. 单击**创建**。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 

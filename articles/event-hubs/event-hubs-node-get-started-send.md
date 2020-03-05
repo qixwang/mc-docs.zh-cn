@@ -1,37 +1,35 @@
 ---
-title: 使用 Node.js（旧版）向/从 Azure 事件中心发送/接收事件
-description: 本文提供了创建 Node.js 应用程序的演练，该应用程序使用旧的 azure/event-hubs 版本 2 包向/从 Azure 事件中心发送/接收事件。
+title: 使用 JavaScript（旧版）向/从 Azure 事件中心发送/接收事件
+description: 本文演练了如何创建一个可使用旧的 azure/event-hubs 版本 2 程序包向/从 Azure 事件中心发送/接收事件的 JavaScript 应用程序。
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/15/2020
-ms.date: 02/17/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0afa731dfa9edb833237bb9d2ce6d064ebe0af13
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: fe272d6effaa9edc147701fba670a0aa963b2adc
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067733"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155119"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>快速入门：使用 Node.js（@azure/event-hubs 版本 2）向/从 Azure 事件中心发送/接收事件
-
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
-
-本教程介绍了如何创建 Node.js 应用程序来将事件发送到事件中心或从其接收事件。
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>快速入门：使用 JavaScript（@azure/event-hubs 版本 2）向/从 Azure 事件中心发送/接收事件
+本快速入门介绍了如何使用 azure/event-hubs 版本 2 JavaScript 程序包创建 JavaScript 应用程序，向事件中心发送事件以及从事件中心接收事件。 
 
 > [!WARNING]
-> 本快速入门适用于 Azure 事件中心 Java Script SDK 版本 2。 我们建议你将代码[迁移](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)到 [Java Script SDK 版本 5](get-started-node-send-v2.md)。 
+> 本快速入门使用旧的 azure/event-hubs 版本 2 程序包。 有关使用该程序包的最新**版本 5** 的快速入门，请参阅[使用 azure/eventhubs 版本 5 发送和接收事件](get-started-node-send-v2.md)。 若要将应用程序从使用旧包迁移到使用新包，请参阅[从 azure/eventhubs 版本 1 迁移到版本 5 的指南](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)。 
 
 
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备条件
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
-若要完成本教程，需要满足以下先决条件：
+若要完成本快速入门，需要具备以下先决条件：
 
-- 有效的 Azure 帐户。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+- **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有 Azure 帐户，可以注册 [1 元试用版](https://wd.azure.cn/pricing/1rmb-trial/)或[创建帐户](https://wd.azure.cn/pricing/pia/)。
 - Node.js 版本 8.x 和更高版本。 从 [https://nodejs.org](https://nodejs.org) 下载最新的 LTS 版本。
 - Visual Studio Code（推荐使用）或任何其他 IDE
 - **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的程序进行操作，然后继续执行本教程的以下步骤。 然后，按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
@@ -52,7 +50,7 @@ npm install @azure/event-processor-host
 
 ## <a name="send-events"></a>发送事件
 
-本部分展示了如何创建 Node.js 应用程序来将事件发送到事件中心。 
+本部分介绍如何创建一个向事件中心发送事件的 JavaScript 应用程序。 
 
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
@@ -94,7 +92,7 @@ npm install @azure/event-processor-host
 
 ## <a name="receive-events"></a>接收事件
 
-本部分介绍如何创建 Node.js 应用程序，该应用程序从事件中心的默认使用者组的单个分区接收事件。 
+本部分介绍如何创建一个可从事件中心默认使用者组的单个分区接收事件的 JavaScript 应用程序。 
 
 1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
 2. 创建一个名为 `receive.js` 的文件，并将下面的代码粘贴到其中。
@@ -137,7 +135,7 @@ npm install @azure/event-processor-host
 
 ## <a name="receive-events-using-event-processor-host"></a>使用事件处理程序主机接收事件
 
-本部分展示了如何在 Node.js 应用程序中使用 Azure [EventProcessorHost](event-hubs-event-processor-host.md) 从事件中心接收事件。 EventProcessorHost (EPH) 通过在事件中心的使用者组中的所有分区中创建接收器，帮助你高效地从事件中心接收事件。 它定期在 Azure 存储 Blob 中为收到的消息的元数据创建检查点。 使用此方式，可以很容易地在以后的某个时间从离开的位置继续接收消息。
+本部分介绍如何在 JavaScript 应用程序中使用 Azure [EventProcessorHost](event-hubs-event-processor-host.md) 从事件中心接收事件。 EventProcessorHost (EPH) 通过在事件中心的使用者组中的所有分区中创建接收器，帮助你高效地从事件中心接收事件。 它定期在 Azure 存储 Blob 中为收到的消息的元数据创建检查点。 使用此方式，可以很容易地在以后的某个时间从离开的位置继续接收消息。
 
 1. 打开你常用的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com)。 
 2. 创建一个名为 `receiveAll.js` 的文件，并将下面的代码粘贴到其中。
@@ -196,4 +194,4 @@ npm install @azure/event-processor-host
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
 - [事件中心常见问题](event-hubs-faq.md)
-- 查看 GitHub 上[事件中心](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples)和[事件处理程序主机](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples)的其他 Node.js 示例
+- 在 GitHub 上查看有关[事件中心](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples)和[事件处理器主机](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples)的其他 JavaScript 示例

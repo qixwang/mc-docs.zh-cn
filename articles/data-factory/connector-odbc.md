@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 01/06/2020
+origin.date: 01/09/2020
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: e5d69cb0d6efa984707dd01d35a5de62c5c770bd
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 2abea7e67b8ab55b5feecc4c9472cce6a1ea1819
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624248"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653520"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
 
@@ -32,14 +32,14 @@ ms.locfileid: "75624248"
 
 可将数据从 ODBC 源复制到任何受支持的接收器数据存储，或者从任何受支持的源数据存储复制到 ODBC 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储  复制数据。
+具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储  复制数据。 需要 **64 位 ODBC 驱动程序**。
 
 ## <a name="prerequisites"></a>先决条件
 
 要使用此 ODBC 连接器，需要：
 
-- 设置自我托管集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
-- 在集成运行时计算机上安装数据存储的 ODBC 驱动程序。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
+- 在集成运行时计算机上安装数据存储的 64 位 ODBC 驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -51,7 +51,7 @@ ms.locfileid: "75624248"
 
 ODBC 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Odbc** | 是 |
 | connectionString | 不包括凭据部分的连接字符串。 可以使用类似 `"Driver={SQL Server};Server=Server.database.chinacloudapi.cn; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在 Integration Runtime 计算机上使用 `"DSN=<name of the DSN on IR machine>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。 有关更多详细信息，请参阅 [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md) 。| 是 |
@@ -114,7 +114,7 @@ ODBC 链接服务支持以下属性：
 
 若要从 ODBC 兼容的数据存储复制数据/将数据复制到 ODBC 兼容的数据存储，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**OdbcTable** | 是 |
 | tableName | ODBC 数据存储中表的名称。 | 源为否（如果指定了活动源中的“query”）；<br/>接收器为是 |
@@ -148,10 +148,10 @@ ODBC 链接服务支持以下属性：
 
 从 ODBC 兼容的数据存储复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**OdbcSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -191,7 +191,7 @@ ODBC 链接服务支持以下属性：
 
 要向与 ODBC 兼容的数据存储复制数据，请将复制活动中的接收器类型设置为“OdbcSink”  。 复制活动接收器部分中支持以下属性  ：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**OdbcSink** | 是 |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
@@ -287,4 +287,4 @@ ODBC 链接服务支持以下属性：
 5. 单击“测试连接”  以测试数据存储的连接。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

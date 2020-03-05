@@ -1,5 +1,6 @@
 ---
-title: 通过文本分析 REST API 检测语言 | Microsoft Docs
+title: 通过文本分析 REST API 检测语言
+titleSuffix: Azure Cognitive Services
 description: 通过 Azure 认知服务使用文本分析 REST API 检测语言。
 services: cognitive-services
 author: aahill
@@ -7,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-origin.date: 02/26/2019
-ms.date: 07/24/2019
-ms.author: v-junlch
-ms.openlocfilehash: 436b6c3385bf0f3c56ecec5e789d9f4b857aebe7
-ms.sourcegitcommit: 9a330fa5ee7445b98e4e157997e592a0d0f63f4c
+origin.date: 07/30/2019
+ms.date: 02/25/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 2f29478d952c6b3da8d8c5c09d71577c45a96af4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68439949"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154652"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言
 
-Azure 文本分析 REST API 的[语言检测](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)功能评估每个文档的文本输入，并返回带有指示分析强度的分数的语言标识符。
+Azure 文本分析 REST API 的[语言检测](https://chinaeast2.dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)功能评估每个文档的文本输入，并返回带有指示分析强度的分数的语言标识符。
 
 此功能对于用于收集语言未知的任意文本的内容存储非常有用。 可以解析此分析的结果，确定输入文档中使用的语言。 响应还返回一个分数，反映模型的置信度。 分数值介于 0 到 1 之间。
 
@@ -36,7 +37,7 @@ Azure 文本分析 REST API 的[语言检测](https://dev.cognitive.azure.cn/doc
 
 每个文档的大小必须少于 5,120 个字符， 每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例是可能提交用于语言检测的内容示例：
 
-   ```
+```json
     {
         "documents": [
             {
@@ -54,7 +55,7 @@ Azure 文本分析 REST API 的[语言检测](https://dev.cognitive.azure.cn/doc
             {
                 "id": "4",
                 "text": "本文件为英文"
-            },                
+            },
             {
                 "id": "5",
                 "text": "Этот документ на английском языке."
@@ -69,9 +70,9 @@ Azure 文本分析 REST API 的[语言检测](https://dev.cognitive.azure.cn/doc
 
 + 创建 POST 请求。 若要查看此请求的 API 文档，请参阅[语言检测 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)。
 
-+ 设置语言检测的 HTTP 终结点。 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)。 它必须包含 `/languages` 资源：`https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1/languages`。
++ 设置语言检测的 HTTP 终结点。 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)。 必须在 URL 中包括 `/text/analytics/v2.1/languages`。 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.cn/text/analytics/v2.1/languages`。
 
-+ 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
++ 设置请求头以包含文本分析操作的访问密钥。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合。
 
@@ -95,116 +96,172 @@ Azure 文本分析 REST API 的[语言检测](https://dev.cognitive.azure.cn/doc
 
 正分 1.0 表示分析可能达到的最高可信度。
 
-
-
-```
-{
-    "documents": [
-        {
-            "id": "1",
-            "detectedLanguages": [
-                {
-                    "name": "English",
-                    "iso6391Name": "en",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "detectedLanguages": [
-                {
-                    "name": "Spanish",
-                    "iso6391Name": "es",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "detectedLanguages": [
-                {
-                    "name": "French",
-                    "iso6391Name": "fr",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "4",
-            "detectedLanguages": [
-                {
-                    "name": "Chinese_Simplified",
-                    "iso6391Name": "zh_chs",
-                    "score": 1
-                }
-            ]
-        },
-        {
-            "id": "5",
-            "detectedLanguages": [
-                {
-                    "name": "Russian",
-                    "iso6391Name": "ru",
-                    "score": 1
-                }
-            ]
-        }
-    ],
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "detectedLanguages": [
+                    {
+                        "name": "English",
+                        "iso6391Name": "en",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "detectedLanguages": [
+                    {
+                        "name": "Spanish",
+                        "iso6391Name": "es",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "detectedLanguages": [
+                    {
+                        "name": "French",
+                        "iso6391Name": "fr",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "detectedLanguages": [
+                    {
+                        "name": "Chinese_Simplified",
+                        "iso6391Name": "zh_chs",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "5",
+                "detectedLanguages": [
+                    {
+                        "name": "Russian",
+                        "iso6391Name": "ru",
+                        "score": 1
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
 ```
 
 ### <a name="ambiguous-content"></a>不明确的内容
 
+在某些情况下，可能很难根据输入区分语言。 可以使用 `countryHint` 参数指定 2 个字母的国家/地区代码。 默认情况下，API 使用“US”作为默认的 countryHint，要删除此行为，可以通过将此值设置为空字符串 `countryHint = ""` 来重置此参数。
+
+例如，“Impossible”对于英语和法语都是通用的，如果在有限的背景下给出，则响应将基于“美国”国家/地区提示。 如果已知文本来源来自法国，可以将其作为提示给出。
+
+**输入**
+
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "text": "impossible"
+            },
+            {
+                "id": "2",
+                "text": "impossible",
+                "countryHint": "fr"
+            }
+        ]
+    }
+```
+
+现在，该服务提供了其他上下文来帮助做出更好的判断： 
+
+**输出**
+
+```json
+    {
+        "documents": [
+            {
+                "id": "1",
+                "detectedLanguages": [
+                    {
+                        "name": "English",
+                        "iso6391Name": "en",
+                        "score": 1
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "detectedLanguages": [
+                    {
+                        "name": "French",
+                        "iso6391Name": "fr",
+                        "score": 1
+                    }
+                ]
+            }
+        ],
+        "errors": []
+    }
+```
+
 如果分析器无法分析输入，则会返回 `(Unknown)`。 例如，如果提交的文本块仅包含阿拉伯数字，则会出现这种情况。
 
-```
+```json
     {
-      "id": "5",
-      "detectedLanguages": [
-        {
-          "name": "(Unknown)",
-          "iso6391Name": "(Unknown)",
-          "score": "NaN"
-        }
-      ]
+        "id": "5",
+        "detectedLanguages": [
+            {
+                "name": "(Unknown)",
+                "iso6391Name": "(Unknown)",
+                "score": "NaN"
+            }
+        ]
+    }
 ```
+
 ### <a name="mixed-language-content"></a>混合语言内容
 
 同一文档中的混合语言内容将返回内容中代表性最强但正评级较低的语言。 评级反映该评估的边界强度。 在以下示例中，输入是英语、西班牙语和法语的混合。 分析器对每个段中的字符进行计数，确定主要语言。
 
 **输入**
 
-```
-{
-  "documents": [
+```json
     {
-      "id": "1",
-      "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+      "documents": [
+        {
+          "id": "1",
+          "text": "Hello, I would like to take a class at your University. ¿Se ofrecen clases en español? Es mi primera lengua y más fácil para escribir. Que diriez-vous des cours en français?"
+        }
+      ]
     }
-  ]
-}
 ```
 
 **输出**
 
 生成的输出包含主要语言，分数低于 1.0，表示可信度较低。
 
-```
-{
-  "documents": [
+```json
     {
-      "id": "1",
-      "detectedLanguages": [
+      "documents": [
         {
-          "name": "Spanish",
-          "iso6391Name": "es",
-          "score": 0.9375
+          "id": "1",
+          "detectedLanguages": [
+            {
+              "name": "Spanish",
+              "iso6391Name": "es",
+              "score": 0.9375
+            }
+          ]
         }
-      ]
+      ],
+      "errors": []
     }
-  ],
-  "errors": []
-}
 ```
 
 ## <a name="summary"></a>摘要
@@ -213,13 +270,12 @@ Azure 文本分析 REST API 的[语言检测](https://dev.cognitive.azure.cn/doc
 
 + [语言检测](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)可用于多种语言、变体、方言和某些区域或文化语言。
 + 请求正文中的 JSON 文档包括 ID 和文本。
-+ POST 请求的目标是 `/languages` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
++ 通过使用对订阅有效的个性化访问密钥和终结点，将 POST 请求发送到 `/languages` 终结点。
 + 响应输出包含每个文档 ID 的语言标识符。 输出可以流式传输到接受 JSON 的任何应用。 示例应用包括 Excel 和 Power BI（仅举几例）。
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
- [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
+ [文本分析概述](../overview.md)[常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
  [文本分析产品页](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,6 @@
 ### YamlMime:Landing
 title: Azure Active Directory 身份验证文档
+summary: 了解如何管理和部署 Azure Active Directory 自助式密码重置、多重身份验证。
 metadata:
   title: Azure Active Directory 身份验证文档
   description: 了解如何管理和部署 Azure Active Directory 自助服务密码重置、多重身份验证、自定义禁止密码列表和智能锁定。
@@ -7,17 +8,16 @@ metadata:
   ms.service: active-directory
   ms.subservice: authentication
   ms.topic: landing-page
-  author: MicrosoftGuyJFlo
+  author: iainfoulds
   ms.author: v-junlch
-  origin.date: 08/20/2019
-  ms.date: 10/08/2019
+  ms.date: 02/26/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: ac6ba54be507e9d788a6fe65b211f1951a53bd8f
-  ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+  ms.openlocfilehash: 449a8e63f7926890e41dfc1a4eeac9f4b7c37dd3
+  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/12/2019
-  ms.locfileid: "72291940"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77653396"
 landingContent:
 - title: 关于身份验证
   linkLists:
@@ -33,16 +33,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: 密码写回
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: 自助式密码重置快速入门
-      url: quickstart-sspr.md
+    - text: 启用自助式密码重置
+      url: tutorial-enable-sspr.md
+    - text: 启用向本地进行密码写回
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: 部署 Azure AD 自助式密码重置
+    - text: 自助式密码重置部署指南
       url: howto-sspr-deployment.md
-    - text: 启用密码写回
-      url: howto-sspr-writeback.md
     - text: 从 Windows 登录屏幕启用密码重置
       url: howto-sspr-windows.md
 - title: 启用 Azure 多重身份验证
@@ -53,5 +53,5 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: deploy
     links:
-    - text: 部署 Azure 多重身份验证
+    - text: Azure 多重身份验证部署指南
       url: howto-mfa-getstarted.md

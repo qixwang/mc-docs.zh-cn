@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 origin.date: 04/25/2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 058bb7fb50b96d36c126199fc86207d72244008d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7343bfb7ac1361662070cad87cf57af514621558
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623637"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653261"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 
@@ -90,7 +90,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 可以使用以下任一工具或 SDK 创建链接服务：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
 
 ## <a name="data-store-linked-services"></a>数据存储链接的服务
-可以从[连接器概述](copy-activity-overview.md#supported-data-stores-and-formats)一文中找到数据工厂支持的存储数据列表。 单击数据存储以了解支持的连接属性。
+可以从[连接器概述](copy-activity-overview.md#supported-data-stores-and-formats)一文中找到数据工厂支持的数据存储列表。 单击数据存储以了解支持的连接属性。
 
 ## <a name="compute-linked-services"></a>计算链接服务
 有关可以从数据工厂连接到的不同计算环境以及不同配置的详细信息，请参考[支持的计算环境](compute-linked-services.md)。

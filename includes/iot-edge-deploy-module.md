@@ -6,17 +6,17 @@ author: kgremban
 ms.service: iot-edge
 ms.topic: include
 origin.date: 12/31/2019
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 02fff10d2b2b5d3d6e7b8bb0e725518e33de4d13
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: e9b01465e457e58793ef36b4f81a23d300dd4158
+ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494565"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77574790"
 ---
-Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edge 设备。 **IoT Edge 模块**是以容器形式实现的可执行程序包。 在本部分中，你将直接从 Azure IoT 中心的 [Azure 市场的 IoT Edge 模块部分](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)部署一个预建的模块。
+Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edge 设备。 **IoT Edge 模块**是以容器形式实现的可执行程序包。 在本部分中，你将直接从 Azure IoT 中心的 [Azure 市场的 IoT Edge 模块部分](https://market.azure.cn/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)部署一个预建的模块。
 
 在本部分中部署的模块模拟一个传感器并发送生成的数据。 开始使用 IoT Edge 时，此模块是非常有用的代码段，因为你可以使用模拟的数据进行开发和测试。 如果要确切了解此模块的功能，则可以查看[模拟的温度传感器源代码](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)。
 
@@ -30,17 +30,22 @@ Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edg
 
 1. 在上方栏中，选择“设置模块”  。
 
-1. 在页面的“IoT Edge 模块”部分中，单击“添加”   。
+1. 在页面的“IoT Edge 模块”部分，单击“添加”   。
 
-1. 从下拉菜单中选择“市场模块”  。
+    <!-- 1. From the drop-down menu, select **Marketplace Module**. -->
+    <!-- ![Simulated Temperature Sensor in Azure portal search](./media/iot-edge-deploy-module/search-for-temperature-sensor.png) -->
 
-   ![Azure 门户搜索中的模拟的温度传感器](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
+1. 从下拉菜单中选择“IoT Edge 模块”  。
 
-1. 在“IoT Edge 模块市场”中，搜索“模拟温度传感器”并选择该模块  。
+    ![Azure 门户搜索中的模拟的温度传感器](./media/iot-edge-deploy-module/select-iot-edge-module.png)
 
-1. 请注意，SimulatedTemperatureSensor 模块已自动填充。 在教程中，将使用此页向部署添加其他模块。 对于本快速入门，只需要部署这一个模块。 不需要任何凭据，因为它是公共的。
+1. 在“添加 IoT Edge 模块”  中，为“IoT Edge 模块名称”字段输入 `SimulatedTemperatureSensor`，为“映像 URI”字段输入 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`，其他设置保持不变，然后选择“添加”  。
 
-   ![在设备上设置模块](./media/iot-edge-deploy-module/set-modules-on-device.png)
+    ![Azure 门户搜索中的模拟的温度传感器](./media/iot-edge-deploy-module/create-temperature-sensor.png)
+
+1. 在教程中，将使用此页向部署添加其他模块。 对于本快速入门，只需要部署这一个模块。
+
+    ![在设备上设置模块](./media/iot-edge-deploy-module/set-modules-on-device.png)
 
    在完成时选择“下一步:  路由”以继续执行向导的下一步。
 

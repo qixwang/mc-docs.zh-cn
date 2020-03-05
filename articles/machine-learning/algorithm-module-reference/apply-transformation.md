@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 4231ba86a8f7a674d7705699b5979154d316a3e3
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+ms.date: 03/09/2020
+origin.date: 02/11/2020
+ms.openlocfilehash: d4d616962d461f5fc641dcb9ccd5ea3c23bc8628
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598586"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154952"
 ---
 # <a name="apply-transformation-module"></a>“应用转换”模块
 
@@ -32,9 +33,9 @@ Azure 机器学习为创建和应用多种不同类型的自定义转换提供�
 
 ## <a name="how-to-use-apply-transformation"></a>如何使用“应用转换”  
   
-1. 将“应用转换”  模块添加到管道。 可以在“分数”类别中的“机器学习”   下找到此模块。 
+1. 将“应用转换”  模块添加到管道。 可以在“模型评分和评估”类别中找到此模块  。 
   
-2. 找到要用作输入的现有转换。  以前保存的转换可在左侧导航窗格的“转换”组中找到。   
+2. 找到要用作输入的现有转换。 以前保存的转换可在左侧模块树中“数据集”  类别下的“我的数据集”  组中找到。  
   
    
   

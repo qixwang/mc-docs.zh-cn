@@ -5,7 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 6e94b9249094d1f2c9249bcc64e5eae4d0147c25
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 671dd9e6944d75ab162058332cbefe65e8da9340
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982174"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154969"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -54,7 +53,7 @@ az provider register -n Microsoft.Network
 
 ![创建网络观察程序](./media/network-watcher-create/figure1.png)
 
-使用门户启用网络观察程序时，网络观察程序实例的名称会自动设置为 *NetworkWatcher_region_name*，其中，*region_name* 对应于启用了该实例的 Azure 区域。 例如，在“中国北部”区域启用的网络观察程序的名称为 *NetworkWatcher_chinaeast*。
+使用门户启用网络观察程序时，网络观察程序实例的名称会自动设置为 *NetworkWatcher_region_name*，其中，*region_name* 对应于启用了该实例的 Azure 区域。 例如，在“中国东部 2”区域启用的网络观察程序名为“NetworkWatcher_chinaeast2”  。
 
 将自动在名为 *NetworkWatcherRG* 的资源组中创建网络观察程序实例。 如果该资源组尚不存在，则会创建该资源组。
 
@@ -65,7 +64,7 @@ az provider register -n Microsoft.Network
 若要创建网络观察程序的实例，请运行以下示例：
 
 ```powershell
-New-AzNetworkWatcher -Name "NetworkWatcher_chinaeast" -ResourceGroupName "NetworkWatcherRG" -Location "China North"
+New-AzNetworkWatcher -Name "NetworkWatcher_chinaeast2" -ResourceGroupName "NetworkWatcherRG" -Location "China East 2"
 ```
 
 ## <a name="create-a-network-watcher-with-the-azure-cli"></a>使用 Azure CLI 创建网络观察程序
@@ -95,11 +94,31 @@ $resourceGroupName = '<resource group name>'
 $apiversion = "2016-09-01"
 $requestBody = @"
 {
-'location': 'China North'
+'location': 'China East 2'
 }
 "@
 
 armclient put "https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
+```
+
+## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
+
+导航到“所有服务”   > “网络”   > “网络观察程序”  。
+
+选择“概述”选项卡（如果尚未在该选项卡上）。 使用下拉列表选择要在其中禁用网络观察程序的订阅。
+通过单击箭头，展开所选订阅的区域列表。 对于任何给定区域，使用右侧的 3 个点访问上下文菜单。
+单击“禁用网络观察程序”以开始禁用。 系统会要求你确认此步骤。 单击“是”以继续。
+在门户上，你必须对每个订阅中的每个区域分别执行此操作。
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>使用 PowerShell 删除网络观察程序
+
+若要删除网络观察程序的实例，请运行以下示例：
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location "China East 2"
+New-AzNetworkWatcher -Name NetworkWatcher_chinaeast2 -ResourceGroup NetworkWatcherRG -Location "China East 2"
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 ```
 
 ## <a name="next-steps"></a>后续步骤

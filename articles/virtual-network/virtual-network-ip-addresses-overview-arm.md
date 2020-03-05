@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/05/2019
-ms.date: 11/25/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ac9f4fe724e4345b7252efef8661edaead92d427
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 15dd47c47971338c3f24ca86f04136633af29ed6
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658044"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653262"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -31,10 +31,10 @@ ms.locfileid: "74658044"
 此外，通过公共 IP 前缀创建连续的静态公共 IP 地址范围。 [了解公共 IP 前缀。](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fvirtual-network%2ftoc.json)。  本文介绍如何使用 Resource Manager 部署模型。Azure 建议对大多数新的部署使用该模型，而不是使用[经典部署模型](virtual-network-ip-addresses-overview-classic.md)。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fvirtual-network%2ftoc.json)。  本文介绍如何使用 Resource Manager 部署模型。Azure 建议对大多数新的部署使用该模型，而不是使用[经典部署模型](virtual-network-ip-addresses-overview-classic.md)。
 > 
 
-如果熟悉经典部署模型，请参阅[经典部署与 Resource Manager 之间 IP 寻址的差异](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)。
+如果熟悉经典部署模型，请参阅[经典部署与 Resource Manager 之间 IP 寻址的差异](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments)。
 
 ## <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -46,12 +46,11 @@ ms.locfileid: "74658044"
 * 面向 Internet 的负载均衡器
 * VPN 网关
 * 应用程序网关
+* Azure 防火墙
 
 ### <a name="ip-address-version"></a>IP 地址版本
 
-公共 IP 地址是使用 IPv4 地址创建的。
-
-<!-- Not Available on IPv6 -->
+公共 IP 地址是使用 IPv4 或 IPv6 地址创建的。 
 
 <a name="SKU"></a>
 ### <a name="sku"></a>SKU
@@ -79,7 +78,7 @@ ms.locfileid: "74658044"
 - 始终使用静态分配方法。
 - 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
 - 默认情况下为安全的，并且对入站流量关闭。 必须使用[网络安全组](security-overview.md#network-security-groups)将允许的入站流量显式列入允许列表中。
-- 分配到网络接口、标准公共负载均衡器、应用程序网关或 VPN 网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fvirtual-network%2ftoc.json)。
+- 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fvirtual-network%2ftoc.json)。
 
 <!-- Not Available on [Availability zones overview](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
 <!-- Not Available on [Standard Load Balancer and Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fvirtual-network%2ftoc.json)-->
@@ -106,6 +105,8 @@ ms.locfileid: "74658044"
 * 对 DNS 名称进行解析时，如果更改了 IP 地址，则需更新 A 记录。
 * Azure 资源可与使用基于 IP 地址的安全模型的其他应用或服务通信。
 * 使用链接到 IP 地址的 SSL 证书。
+
+<!--CORRECT ON confirmation.aspx?id=57062 -->
 
 > [!NOTE]
 > Azure 会从每个 Azure 云中每个区域的唯一地址范围中分配公共 IP 地址。 可以下载 Azure [中国](https://www.microsoft.com/download/confirmation.aspx?id=57062)云的范围（前缀）列表。
@@ -195,7 +196,7 @@ ms.locfileid: "74658044"
 | 应用程序网关 |前端配置 |是 |是 |
 
 ## <a name="limits"></a>限制
-Azure 中的[网络限制](../azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)全面阐述了对 IP 寻址施加的限制。 这些限制根据区域和订阅设置。 可以[与支持人员联系](https://support.azure.cn/support/support-azure/)，根据业务需求将默认限制提高到最大限制。
+Azure 中的[网络限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#networking-limits)全面阐述了对 IP 寻址施加的限制。 这些限制根据区域和订阅设置。 可以[与支持人员联系](https://support.azure.cn/support/support-azure/)，根据业务需求将默认限制提高到最大限制。
 
 ## <a name="pricing"></a>定价
 公共 IP 地址可能会产生少许费用。 有关 Azure 中 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)页。

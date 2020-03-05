@@ -3,27 +3,28 @@ title: 创建自动化机器学习试验
 titleSuffix: Azure Machine Learning
 description: 自动化机器学习将为你选择一种算法，并生成随时可用于部署的模型。 了解可用于配置自动化机器学习试验的选项。
 author: cartacioS
-ms.author: sacartac
+ms.author: v-yiso
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+origin.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: a46013c7688bd91994b969a7319a1e59036a585d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: f3030941794be9fe741a346a0646fe857dc2b11c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598859"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154992"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本指南介绍如何通过 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 定义各种自动机器学习试验的配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
 
-若要查看自动化机器学习试验的示例，请参阅[教程：使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[使用云中的自动化机器学习训练模型](service/how-to-auto-train-remote.md)。
+若要查看自动化机器学习试验的示例，请参阅[教程：使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[使用云中的自动化机器学习训练模型](how-to-auto-train-remote.md)。
 
 自动化机器学习提供的配置选项：
 
@@ -84,10 +85,11 @@ automl_config = AutoMLConfig(task = "classification")
 * TabularDataset
   ```python
   from azureml.core.dataset import Dataset
+  from azureml.opendatasets import Diabetes
   
-  tabular_dataset = Dataset.Tabular.from_delimited_files("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv")
-  train_dataset, test_dataset = tabular_dataset.random_split(percentage = 0.1, seed = 42)
-  label = "Label"
+  tabular_dataset = Diabetes.get_tabular_dataset()
+  train_dataset, test_dataset = tabular_dataset.random_split(percentage=0.1, seed=42)
+  label = "Y"
   ```
 
 * Pandas 数据帧
@@ -96,9 +98,9 @@ automl_config = AutoMLConfig(task = "classification")
     import pandas as pd
     from sklearn.model_selection import train_test_split
 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    train_data, test_data = train_test_split(df, test_size = 0.1, random_state = 42)
-    label = "Label"
+    df = pd.read_csv("your-local-file.csv")
+    train_data, test_data = train_test_split(df, test_size=0.1, random_state=42)
+    label = "label-col-name"
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>在远程计算中提取用于运行试验的数据
@@ -132,11 +134,11 @@ automl_config = AutoMLConfig(task = "classification")
 *   本地台式机或便携式计算机等本地计算机  – 如果数据集较小，并且仍处于探索阶段，则通常使用此选项。
 *   云中的远程计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机群集上训练机器学习模型。
 
-有关包含本地和远程计算目标的示例 Notebook，请参阅 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)。
+    有关包含本地和远程计算目标的示例 Notebook，请参阅此 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)。
 
 *   Azure 订阅中的 Azure Databricks 群集。 可在此处找到更多详细信息 - [安装适用于自动化 ML 的 Azure Databricks 群集](how-to-configure-environment.md#azure-databricks)
 
-如需了解使用 Azure Databricks 的示例笔记本，请参阅 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
+    有关包含 Azure Databricks 的示例 Notebook，请参阅此 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)。
 
 <a name='configure-experiment'></a>
 
@@ -171,7 +173,9 @@ automl_config = AutoMLConfig(task = "classification")
         n_cross_validations=5)
     ```
 
-三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用类似的算法池作为 `regression` 任务）确定要应用的模型列表。 使用 `whitelist` 或 `blacklist` 参数进一步修改迭代，从而包含或排除可用模型。 可在 [SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)上找到受支持模型的列表。
+三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用类似的算法池作为 `regression` 任务）确定要应用的模型列表。 使用 `whitelist` 或 `blacklist` 参数进一步修改迭代，从而包含或排除可用模型。 可以在（[分类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[预测](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和[回归](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)）的 [SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)中找到支持的模型的列表。
+
+自动化 ML 的验证服务会要求将 `experiment_timeout_minutes` 设置为最低 15 分钟的超时，以帮助避免试验超时失败。
 
 ### <a name="primary-metric"></a>主要指标
 主要指标确定要在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
@@ -184,23 +188,29 @@ automl_config = AutoMLConfig(task = "classification")
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-如需了解上述内容的特定定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
+如需了解上述指标的具体定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
 
-### <a name="data-preprocessing--featurization"></a>数据预处理 & 功能化
+### <a name="data-featurization"></a>数据特征化
 
-在每个自动化机器学习试验中，数据会[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助灵敏应对对不同规模功能的特定算法  。  然而，还可以启用其他预处理/功能化，例如缺失值插补、编码和转换。 [详细了解包含的功能化](how-to-create-portal-experiments.md#preprocess)。
+在每个自动化机器学习试验中，数据会[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助灵敏应对对不同规模特征的特定算法  。  不过，你还可以启用其他特征化，例如缺失值插补、编码和转换。 [详细了解包含的特征化](how-to-create-portal-experiments.md#featurization)。
 
-若要启用此功能化，请为 [`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定 `"preprocess": True`。
+配置试验时，可以启用高级设置 `featurization`。 下表显示了 [`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中的特征化的可接受设置。
+
+|特征化配置 | 说明 |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| 指示应当使用自定义特征化步骤。 [了解如何自定义特征化](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|`"featurization": 'off'`| 指示不应当自动执行特征化步骤。|
+|`"featurization": 'auto'`| 指示在处理过程中自动执行[数据护栏和特征化步骤](how-to-create-portal-experiments.md#advanced-featurization-options)。|
 
 > [!NOTE]
-> 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
+> 自动化机器学习特征化步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为了基础模型的一部分。 使用模型进行预测时，将自动向输入数据应用在训练期间应用的相同特征化步骤。
 
 ### <a name="time-series-forecasting"></a>时序预测
 时序 `forecasting` 任务要求配置对象中包含其他参数：
 
 1. `time_column_name`：必需的参数，用于在包含有效时序的训练数据中定义列的名称。
 1. `max_horizon`：根据训练数据的周期定义要预测的时长。 例如，如果你有带有每日时间粒度的训练数据，则可以定义训练模型的时长（以天为单位）。
-1. `grain_column_names`：定义包含训练数据中的单个时序数据的列名称。 例如，如果按商店预测特定品牌的销售额，则可以将商店和品牌列定义为粒度列。 将为每个颗粒/分组创建单独的时序和预测。 
+1. `grain_column_names`：定义训练数据中包含各个时序数据的列名称。 例如，如果按商店预测特定品牌的销售额，则可以将商店和品牌列定义为粒度列。 将为每个颗粒/分组创建单独的时序和预测。 
 
 有关下面所用设置的示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)。
 
@@ -235,13 +245,13 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble"></a> 集成配置
 
-默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 当前支持的集成方法是投票和堆栈。 投票是使用加权平均值作为软投票实现的，堆栈实现使用 2 层实现，其中第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，并仅使用投票  。
+默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 当前支持的集成方法是投票和堆栈。 投票是使用加权平均值作为软投票实现的，堆栈实现使用两层实现，其中第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，并仅使用投票  。
 
 有多个默认参数可在 `AutoMLConfig` 对象中作为 `kwargs` 提供，以更改默认堆栈集成行为。
 
 * `stack_meta_learner_type`：元学习器是根据单个异构模型的输出进行训练的模型。 默认的元学习器为 `LogisticRegression`（如果启用了交叉验证，则为 `LogisticRegressionCV`）和 `ElasticNet`（如果启用了交叉验证，则为 `ElasticNetCV`），前者用于分类任务，后者用于回归/预测任务。 此参数可以是下列字符串之一：`LogisticRegression`、`LogisticRegressionCV`、`LightGBMClassifier`、`ElasticNet`、`ElasticNetCV`、`LightGBMRegressor` 或 `LinearRegression`。
 * `stack_meta_learner_train_percentage`：指定为训练元学习器而保留的训练集的比例（选择训练的训练和验证类型时）。 默认值为 `0.2`。
-* `stack_meta_learner_kwargs`：要传递给元学习器的初始值设定项的可选参数。 这些参数和参数类型从相应的模型构造函数中进行镜像，然后再转发到模型构造函数。
+* `stack_meta_learner_kwargs`：要传递给元学习器的初始值设定项的可选参数。 这些参数和参数类型对来自相应模型构造函数的参数和参数类型进行镜像，然后再转发到模型构造函数。
 
 以下代码演示在 `AutoMLConfig` 对象中指定自定义集成行为的示例。
 
@@ -323,7 +333,7 @@ run = experiment.submit(automl_config, show_output=True)
 ## <a name="understand-automated-ml-models"></a>了解自动化 ML 模型
 
 任何使用自动化 ML 生成的模型都包括以下步骤：
-+ 自动化特征工程（如果预处理为 True）
++ 自动化特征工程（如果 `"featurization": 'auto'`）
 + 缩放/规范化以及具有超参数值的算法
 
 我们让从自动化 ML 的 fitted_model 输出中获取此信息的操作变得透明。
@@ -336,10 +346,10 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>自动化特征工程
 
-请参阅 feauturization 设置为 auto 时的预处理和[自动化特征工程](concept-automated-ml.md#preprocess)列表。
+请参阅当 `"featurization": 'auto'` 时进行的预处理和[自动化特征工程](concept-automated-ml.md#preprocess)的列表。
 
 请看以下示例：
-+ 有 4 种输入特征：A（数值）、B（数值）、C（数值）、D（日期/时间）
++ 有四个输入功能：A（数值）、B（数值）、C（数值）、D（日期/时间）
 + 删除数值特征 C，因为它是一个 ID 列，具有所有唯一值
 + 数值特征 A 和 B 包含缺失值，因此使用平均值进行估算
 + 日期/时间特征 D 具有 11 个不同的工程特征
@@ -407,14 +417,14 @@ best_run, fitted_model = automl_run.get_output()
    |转换|应用于输入特征以生成工程特征的转换列表。|
    
 ### <a name="customize-feature-engineering"></a>自定义特征工程
-若要自定义特征工程，请指定  `"feauturization":FeaturizationConfig`。
+若要自定义特征工程，请指定  `"featurization": FeaturizationConfig`。
 
 支持的自定义项包括：
 
 |自定义|定义|
 |--|--|
 |列用途更新|替代指定列的特征类型。|
-|转换器参数更新 |更新指定转换器的参数。 目前支持 Imputer 和 HashOneHotEncoder。|
+|转换器参数更新 |更新指定转换器的参数。 当前支持 Imputer（平均值、最频繁和中值）和 HashOneHotEncoder。|
 |删除列 |要删除进行特征化的列。|
 |阻止转换器| 阻止用于特征化进程的转换器。|
 
@@ -463,7 +473,7 @@ def print_model(model, prefix=""):
 print_model(fitted_model)
 ```
 
-以下是使用特定算法（在本例中为带 RobustScalar 的 LogisticRegression）的管道输出示例。
+下面是使用特定算法（在本例中为带 RobustScalar 的 LogisticRegression）的管道的输出示例。
 
 ```
 RobustScaler
@@ -489,6 +499,19 @@ LogisticRegression
 'warm_start': False}
 ```
 
+### <a name="predict-class-probability"></a>预测类概率
+
+使用自动化 ML 生成的模型都具有包装器对象，这些对象对其开源来源类中的功能进行镜像。 自动化 ML 返回的大多数分类模型包装器对象都实现了 `predict_proba()` 函数，该函数接受特征（X 值）的数组式或稀疏矩阵数据样本，并返回每个样本的 n 维数组及其各自的类概率。
+
+假设你已使用上文中的相同调用检索了最佳运行和拟合的模型，则可以直接从拟合的模型调用 `predict_proba()`，并根据模型类型提供相应格式的 `X_test` 样本。
+
+```python
+best_run, fitted_model = automl_run.get_output()
+class_prob = fitted_model.predict_proba(X_test)
+```
+
+如果基础模型不支持 `predict_proba()` 函数或者格式不正确，则会引发特定于模型类的异常。\ 有关如何针对不同的模型类型实现此函数的示例，请参阅 [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) 和 [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) 参考文档。
+
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>模型可解释性
@@ -503,4 +526,4 @@ LogisticRegression
 
 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 
-详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](service/how-to-auto-train-remote.md)。
+详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何在远程资源上使用自动化机器学习进行训练](how-to-auto-train-remote.md)。

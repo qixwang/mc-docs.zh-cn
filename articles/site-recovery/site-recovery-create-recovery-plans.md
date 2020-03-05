@@ -1,23 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 创建和自定义灾难恢复的恢复计划
+title: 在 Azure Site Recovery 中创建/自定义恢复计划
 description: 了解如何使用 Azure Site Recovery 服务创建和自定义灾难恢复的恢复计划。
-author: rockboyfor
-manager: digimobile
-ms.service: site-recovery
-ms.topic: article
-origin.date: 09/09/2019
-ms.date: 09/30/2019
+ms.topic: how-to
+origin.date: 01/23/2020
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3c26d354fe40885bdbd0843cdaf4d32b78a7bff5
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 7491ab31b5358f6f1b402a6c180f8df21d2f9631
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340668"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611267"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
-本文介绍如何在 [Azure Site Recovery](site-recovery-overview.md) 中创建和自定义恢复计划。 在开始之前，请[详细了解](recovery-plan-overview.md)恢复计划。
+本文介绍如何在 [Azure Site Recovery](site-recovery-overview.md) 中为故障转移创建和自定义恢复计划。 在开始之前，请[详细了解](recovery-plan-overview.md)恢复计划。
 
 ## <a name="create-a-recovery-plan"></a>创建恢复计划
 
@@ -25,22 +22,25 @@ ms.locfileid: "71340668"
 2. 在“创建恢复计划”中，为计划指定一个名称。 
 3. 根据计划中的计算机选择一个源和目标，对于部署模型，选择“资源管理器”。  源位置必须具有已针对故障转移和恢复启用的计算机。 
 
-    **故障转移** | **Source** | **目标** 
+    **故障转移** | **Source** | **Target** 
     --- | --- | ---
-    Azure 到 Azure | Azure 区域 |Azure 区域
-    VMware 到 Azure | 配置服务器 | Azure
-    物理计算机到 Azure | 配置服务器 | Azure   
-    由 VMM 托管的 Hyper-V 到 Azure  | VMM 显示名称 | Azure
-    从不含 VMM 的 Hyper-V 到 Azure | Hyper-V 站点名称 | Azure
-    VMM 到 VMM |VMM 友好名称 | VMM 显示名称 
+    Azure 到 Azure | 选择 Azure 区域 | 选择 Azure 区域
+    VMware 到 Azure | 选择配置服务器 | 选择 Azure
+    物理计算机到 Azure | 选择配置服务器 | 选择 Azure   
+    Hyper-V 到 Azure | 选择 Hyper-V 站点名称 | 选择 Azure
+    Hyper-V（由 VMM 托管）到 Azure  | 选择 VMM 服务器 | 选择 Azure
 
-    > [!NOTE]
-    > 恢复计划可以包含具有相同源和目标的计算机。 VMware 和由 VMM 托管的 Hyper-V VM 不能出现在同一计划中。 VMware VM 和物理服务器可以出现在同一计划中，其中，源是配置服务器。
+    注意以下事项：
+    - 只能使用恢复计划从源位置故障转移到 Azure。 不能使用恢复计划从 Azure 进行故障回复。
+    - 源位置必须具有已针对故障转移和恢复启用的计算机。 
+    - 恢复计划可以包含具有相同源和目标的计算机。 
+    - 可以在同一计划中包括由 VMM 托管的 VMware VM 和 Hyper-V VM。
+    - VMware VM 和物理服务器可以在同一计划中。
 
-2. 在“选择项目虚拟机”  中，选择要添加到计划中的计算机（或复制组）。  。
+4. 在“选择项目虚拟机”  中，选择要添加到计划中的计算机（或复制组）。  。
     - 计算机将添加到计划中的默认组（组 1）。 在故障转移后，此组中的所有计算机将同时启动。
     - 你只能选择位于你指定的源和目标位置的计算机。 
-1. 单击“确定”  以创建计划。
+5. 单击“确定”  以创建计划。
 
 ## <a name="add-a-group-to-a-plan"></a>向计划中添加组
 
@@ -60,7 +60,7 @@ ms.locfileid: "71340668"
     
 - 如果要复制由 System Center VMM 托管的 Hyper-V VM，可以在本地 VMM 服务器上创建一个脚本，并将该脚本包括在恢复计划中。
 - 添加脚本时，为该组添加一组新的操作。 例如，使用以下名称创建了组 1 的一组预先步骤：“组 1：预先步骤”  。 该集中将列出所有预先步骤。 仅当已部署 VMM 服务器时，才能在主站点上添加脚本。
-- 如果添加了手动操作，当恢复计划运行时，它会在你插入了手动操作的点停止。 此时会显示一个对话框，提示指定该手动操作已完成。
+- 如果添加手动操作，当恢复计划运行时，它会在你插入了手动操作的点停止。 此时会显示一个对话框，提示指定该手动操作已完成。
 - 若要在 VMM 服务器上创建脚本，请遵循[此文章](hyper-v-vmm-recovery-script.md)中的说明。
 - 在故障转移到辅助站点期间，以及从辅助站点故障回复到主站点期间，都可以应用脚本。 支持取决于复制方案：
 
@@ -89,4 +89,4 @@ ms.locfileid: "71340668"
 
 详细了解如何[运行故障转移](site-recovery-failover.md)。
 
-<!--Update_Description: update meta properties -->
+<!--Update_Description: update meta properties, wording update -->

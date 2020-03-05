@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/11/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: 0a335c91095a21daad3cdff477b1c1b7825078d6
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/02/2020
+ms.openlocfilehash: 9e1525572005da47e999882e6396ac44ece28eae
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624202"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653588"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 发出警报和监视数据工厂
 
@@ -65,10 +65,10 @@ PUT
 https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>标头
+##### <a name="headers"></a>头文件
 
 * 将 `{api-version}` 替换为 `2016-09-01`。
-* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/manage-resource-groups-portal.md)。
+* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 * 将 `Content-Type` 标头设置为 `application/json`。
 * 将授权标头设置为从 Azure Active Directory (Azure AD) 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-scenarios.md)。
 
@@ -186,10 +186,10 @@ GET
 https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>标头
+##### <a name="headers"></a>头文件
 
 * 将 `{api-version}` 替换为 `2016-09-01`。
-* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/manage-resource-groups-portal.md)。
+* 将 `{resource-id}` 替换为要编辑其诊断设置的资源的 ID。 有关详细信息，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 * 将 `Content-Type` 标头设置为 `application/json`。
 * 将授权标头设置为从 Azure AD 获取的 JSON Web 令牌。 有关详细信息，请参阅[对请求进行身份验证](../active-directory/develop/authentication-scenarios.md)。
 
@@ -432,6 +432,9 @@ Azure 数据工厂版本 2 发出以下指标。
 | TriggerFailedRuns    | 失败的触发器运行数指标     | 计数    | 总计                | 在一分钟时段内失败的触发器运行总数。      |
 
 若要访问指标，请参阅 [Azure Monitor 数据平台](/monitoring-and-diagnostics/monitoring-overview-metrics)中的说明。
+
+> [!NOTE]
+> 仅发出已完成、已触发的活动和管道运行事件。 **不**会发出正在进行的运行和沙盒/调试运行。 
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>使用 Azure Monitor 监视数据工厂指标
 

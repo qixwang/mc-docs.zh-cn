@@ -1,19 +1,19 @@
 ---
-title: 使用 PowerShell 在 Azure Site Recovery 中设置 VMware VM 到 Azure 的灾难恢复 | Azure
+title: 使用 PowerShell 在 Azure Site Recovery 中设置 VMware 灾难恢复
 description: 了解如何使用 PowerShell 在 Azure Site Recovery 中设置复制和故障转移到 Azure 以进行 VMware VM 的灾难恢复。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
-origin.date: 06/30/2019
-ms.date: 08/05/2019
+origin.date: 01/10/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.author: v-yeche
-ms.openlocfilehash: 023ffc360c5a0ec7fbde1da9ad978a51758c77c1
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.openlocfilehash: 82a80183ccbf72da8c2fa6ddc492cc2398346475
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083182"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611273"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 
@@ -42,6 +42,8 @@ ms.locfileid: "71083182"
 ## <a name="log-into-azure"></a>登录到 Azure
 
 使用 Connect-AzAccount cmdlet 登录到 Azure 订阅：
+
+<!--CORRECT ON Connect-AzAccount-->
 
 ```azurepowershell
 Connect-AzAccount -Environment AzureChinaCloud
@@ -173,7 +175,7 @@ Import-AzRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2
     1     ConfigurationServer
     ```
 
-    在以上输出中，***$ProcessServers [0]*** 对应于 *ScaleOut ProcessServer* ***$ProcessServers [1]*** 对应于 *ConfigurationServer* 上的进程服务器角色
+    在上面的输出中，***$ProcessServers[0]*** 对应于 *ScaleOut ProcessServer*，***$ProcessServers[1]*** 对应于 *ConfigurationServer* 上的进程服务器角色
 
 3. 标识已在配置服务器上设置的帐户。
 
@@ -371,9 +373,13 @@ $PolicyMap  = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionCon
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
-# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0
+# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
 $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+# Alternatively, if the virtual machine CentOSVM1 has CMK enabled disks, enable replication using Az module 3.3.0 onwards as below
+# $diskID is the Disk Encryption Set ID to be used for all replica managed disks and target managed disks in the target region
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId -DiskEncryptionSetId $diskId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine Win2K12VM1
 $VM2 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"

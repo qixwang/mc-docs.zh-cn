@@ -5,15 +5,15 @@ author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 origin.date: 11/14/2019
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.author: v-yeche
-ms.openlocfilehash: 0ca13c0b0e31b9d874643f5c3228566728d1216d
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.openlocfilehash: d68cb223053aa415624f20dff6067a1f94c6ca3e
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776652"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611274"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -102,7 +102,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 
 - [推送安装](vmware-physical-mobility-service-overview.md#push-installation)
 - 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
-- 使用 [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署
+- 使用 [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署
 
 ## <a name="managed-disks"></a>托管磁盘
 

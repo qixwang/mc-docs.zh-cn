@@ -1,5 +1,5 @@
 ---
-title: 通过重新分区优化使用 Azure 流分析进行的处理
+title: 通过重新分区优化 Azure 流分析作业
 description: 本文介绍如何使用重新分区优化无法并行化的 Azure 流分析作业。
 ms.service: stream-analytics
 author: lingliw
@@ -7,14 +7,14 @@ ms.author: v-lingwu
 manager: digimobile
 ms.topic: conceptual
 origin.date: 08/09/2019
-ms.date: 07/12/2019
+ms.date: 02/27/2020
 ms.custom: mvc
-ms.openlocfilehash: 202e9547cc3c4ccae1430a92dd3aacac8b46bea5
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 915209a830dba3b80f810d45060604a3ab588f42
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857159"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155052"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>通过重新分区优化使用 Azure 流分析进行的处理
 

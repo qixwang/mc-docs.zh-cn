@@ -1,31 +1,24 @@
 ---
-title: 用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置 | Microsoft Docs
+title: 用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置
 description: 本文提供用于连接到 Azure VPN 网关的合作伙伴 VPN 设备配置的概述。
 services: vpn-gateway
-documentationcenter: na
-author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
+author: WenJason
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/20/2017
-ms.author: yushwang
-ms.openlocfilehash: 2303721ead80fb96765bdbd8ade7a069fcd30f24
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+origin.date: 06/20/2017
+ms.date: 02/24/2020
+ms.author: v-jay
+ms.openlocfilehash: 6d470b34c32730fa38ea4344b329956aec183339
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63844448"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154841"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
 本文提供有关配置用于连接到 Azure VPN 网关的本地 VPN 设备的概述。 示例 Azure 虚拟网络和 VPN 网关设置用于演示如何使用相同参数连接到不同的本地 VPN 设备配置。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>设备要求
 Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) VPN 隧道。 若要获取 Azure VPN 网关的 IPsec/IKE 参数和加密算法列表，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 还可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接指定确切的算法与密钥长度。
@@ -61,7 +54,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 
 $Sub1          = "Replace_With_Your_Subscription_Name"
 $RG1           = "TestRG1"
-$Location1     = "East US 2"
+$Location1     = "China East 2"
 $VNetName1     = "TestVNet1"
 $FESubName1    = "FrontEnd"
 $BESubName1    = "Backend"
@@ -87,7 +80,7 @@ $BGPPeerIP5    = "10.52.255.254"
 
 # Connect to your subscription and create a new resource group
 
-Connect-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 
@@ -123,14 +116,14 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 如果 VPN 设备不支持“任意到任意”流量选择器（例如基于路由或基于 VTI 的配置），请创建自定义 IPsec/IKE 策略并配置[“UsePolicyBasedTrafficSelectors”](vpn-gateway-connect-multiple-policybased-rm-ps.md)选项。
 
 > [!IMPORTANT]
-> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项。
+> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项  。
 
 
 示例脚本使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24
 * IPsec：AES256、SHA1、PFS24、SA 生存期 7,200 秒和 20,480,000 KB (20 GB)
 
-该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项。
+该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项  。
 
 ```powershell
 $ipsecpolicy5 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -150,7 +143,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* 在创建连接时，必须将“-EnableBGP”选项设置为 $True：
+* 在创建连接时，必须将“-EnableBGP”选项设置为 $True  ：
 
     ```powershell
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True

@@ -1,6 +1,6 @@
 ---
-title: 迭代应用设计
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 迭代应用设计 - LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
 services: cognitive-services
 author: lingliw
@@ -10,14 +10,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 origin.date: 11/20/2019
-ms.date: 12/04/2019
+ms.date: 12/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 3f4ce0cce563376c63f92f9759f5292cccb16fc7
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: 112c14e6793bdffb3ab4b9d27f7f921f722a85c2
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500355"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154858"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
 

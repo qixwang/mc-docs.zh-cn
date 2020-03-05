@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: af607df8ab181e7dbb4a88c23797e00eeefc75f5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: keli19
+origin.date: 11/19/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 2ae008ebe9c5a9d0b469ebf21b955a7cd88a9c05
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598490"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155035"
 ---
 # <a name="module-k-means-clustering"></a>模块：K 平均值聚类
 
@@ -115,9 +116,9 @@ K-means 是最简单、最常见的非监督式学习算法之一  。 可以将
 
 如果使用了[训练群集模型](train-clustering-model.md)模块：
 
-1. 右键单击“训练群集模型”模块  。
+1. 选择“训练群集模型”  模块并打开右侧面板。
 
-2. 选择“已训练模型”，然后选择“另存为已训练模型”   。
+2. 选择“输出”  选项卡。选择“注册数据集”  图标以保存已训练模型的副本。
 
 保存的模型表示保存模型时的训练数据。 如果以后更新了管道中使用的训练数据，已保存的模型不会更新。 
 
@@ -127,7 +128,7 @@ K-means 是最简单、最常见的非监督式学习算法之一  。 可以将
 
 1. 右键单击“训练群集模型”模块  。
 
-2. 选择“结果数据集”，然后选择“可视化”   。
+2. 选择“可视化”  。
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>有关如何生成最佳群集模型的提示  
 

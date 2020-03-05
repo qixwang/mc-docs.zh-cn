@@ -4,15 +4,15 @@ description: 了解如何在 TLS 上对客户端证书进行身份验证。 Azur
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: cf6b8644996491a907f60742791d1d38ef6b9214
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: d4e16299d69b99432bb9d0d71f4ccecffa4e1ced
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600518"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566637"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -212,6 +212,102 @@ export class AuthorizationHandler {
                 next(e);
             }
         }
+    }
+}
+```
+
+## <a name="java-sample"></a>Java 示例
+
+以下 Java 类将证书从 `X-ARR-ClientCert` 编码为 `X509Certificate` 实例。 `certificateIsValid()` 验证证书的指纹是否与构造函数中提供的指纹匹配，并且该证书尚未过期。
+
+
+```java
+import java.io.ByteArrayInputStream;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.*;
+import java.security.MessageDigest;
+
+import sun.security.provider.X509Factory;
+
+import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
+import java.util.Date;
+
+public class ClientCertValidator { 
+
+    private String thumbprint;
+    private X509Certificate certificate;
+
+    /**
+     * Constructor.
+     * @param certificate The certificate from the "X-ARR-ClientCert" HTTP header
+     * @param thumbprint The thumbprint to check against
+     * @throws CertificateException If the certificate factory cannot be created.
+     */
+    public ClientCertValidator(String certificate, String thumbprint) throws CertificateException {
+        certificate = certificate
+                .replaceAll(X509Factory.BEGIN_CERT, "")
+                .replaceAll(X509Factory.END_CERT, "");
+        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+        byte [] base64Bytes = Base64.getDecoder().decode(certificate);
+        X509Certificate X509cert =  (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(base64Bytes));
+
+        this.setCertificate(X509cert);
+        this.setThumbprint(thumbprint);
+    }
+
+    /**
+     * Check that the certificate's thumbprint matches the one given in the constructor, and that the
+     * certificate has not expired.
+     * @return True if the certificate's thumbprint matches and has not expired. False otherwise.
+     */
+    public boolean certificateIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        return certificateHasNotExpired() && thumbprintIsValid();
+    }
+
+    /**
+     * Check certificate's timestamp.
+     * @return Returns true if the certificate has not expired. Returns false if it has expired.
+     */
+    private boolean certificateHasNotExpired() {
+        Date currentTime = new java.util.Date();
+        try {
+            this.getCertificate().checkValidity(currentTime);
+        } catch (CertificateExpiredException | CertificateNotYetValidException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check the certificate's thumbprint matches the given one.
+     * @return Returns true if the thumbprints match. False otherwise.
+     */
+    private boolean thumbprintIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] der = this.getCertificate().getEncoded();
+        md.update(der);
+        byte[] digest = md.digest();
+        String digestHex = DatatypeConverter.printHexBinary(digest);
+        return digestHex.toLowerCase().equals(this.getThumbprint().toLowerCase());
+    }
+
+    // Getters and setters
+
+    public void setThumbprint(String thumbprint) {
+        this.thumbprint = thumbprint;
+    }
+
+    public String getThumbprint() {
+        return this.thumbprint;
+    }
+
+    public X509Certificate getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(X509Certificate certificate) {
+        this.certificate = certificate;
     }
 }
 ```

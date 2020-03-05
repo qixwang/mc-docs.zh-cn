@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 11/20/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 2e95eeacedf6880efd627dc0f70425b5d9d4ee86
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/02/2020
+ms.openlocfilehash: c5eff48d50646637e7871090302e802eceb6d02a
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624245"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653253"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "75624245"
 
 Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDbMongoDbApi**。 | 是 |
 | connectionString |指定 Azure Cosmos DB 的用于 MongoDB 的 API 的连接字符串。 可以在 Azure 门户 -> Cosmos DB 边栏选项卡 -> 主要或辅助连接字符串中找到该字符串，其模式为 `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.cn:10255/?ssl=true&replicaSet=globaldb`。 <br/><br />还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。|是 |
@@ -76,7 +76,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 Azure Cosmos DB 的用于 MongoDB 的 API 数据集支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **CosmosDbMongoDbApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 集合的名称。 |是 |
@@ -110,7 +110,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **CosmosDbMongoDbApiSource**。 |是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
@@ -165,7 +165,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbMongoDbApiSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
@@ -212,7 +212,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 使用此 Azure Cosmos DB 连接器，可以轻松地：
 
 * 在两个 Azure Cosmos DB 集合之间按原样复制文档。
-* 将各种源（包括 Azure Blob 存储和 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
+* 从各种源（包括 MongoDB、Azure Blob 存储和 Azure 数据工厂支持的其他基于文件的存储）将 JSON 文档导入 Azure Cosmos DB。
 * 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。
 
 若要实现“架构不可知”复制，请执行以下操作：
@@ -238,4 +238,4 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

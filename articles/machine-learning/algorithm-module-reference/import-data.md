@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 5b9140559093b69432a15875c0eb00722eb616ea
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 47add6c2ce302279fcc34a3824608eaab178ded2
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599590"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155037"
 ---
 # <a name="import-data-module"></a>“导入数据”模块
 
@@ -27,7 +28,7 @@ ms.locfileid: "75599590"
 > 注册数据集后，可以在设计器界面中的“数据集” -> “我的数据集”类别中找到它。   此模块是为工作室（经典版）用户保留的，以便为他们提供熟悉的体验。 
 >
 
-首先，选择要从中读取数据的源，并完成其他设置。 “导入数据”模块支持从以下源读取数据： 
+“导入数据”模块支持从以下源读取数据： 
 
 - 通过 HTTP 从 URL 读取
 - 通过[**数据存储**](../how-to-access-data.md))从 Azure 云存储
@@ -42,7 +43,7 @@ ms.locfileid: "75599590"
 
 定义所需的数据并连接到源后， **[导入数据](./import-data.md)** 将根据每个列包含的值推断该列的数据类型，并将数据载入设计器管道。 “导入数据”的输出是可在任何设计器管道中使用的数据集。 
 
-如果源数据发生更改，可以通过重新运行[导入数据](./import-data.md)来刷新数据集并添加新数据。 但是，如果你每次运行管道时不想要从源重新读取数据，请将“使用缓存的结果”选项设置为 TRUE。  选择此选项后，模块将检查管道以前是否已使用相同的源和相同的输入选项运行过。 如果找到了以前的运行，则会使用缓存中的数据，而不是从源重新加载数据。
+如果源数据发生更改，可以通过重新运行[导入数据](./import-data.md)来刷新数据集并添加新数据。
 
 ## <a name="how-to-configure-import-data"></a>如何配置“导入数据”
 
@@ -60,11 +61,7 @@ ms.locfileid: "75599590"
 
     ![import-data-preview](media/module/import-data.png)
 
-1. 若要缓存数据集以便在后续的运行中重复使用，请选择“使用缓存的结果”选项。 
 
-    假设未对模块参数进行其他更改，则管道只会在首次运行模块时才加载数据，并使用数据集的缓存版本。
-
-    如果需要在每次运行管道时重新加载数据，请取消选择此选项。
 
 1. 运行管道。
 
@@ -78,7 +75,7 @@ ms.locfileid: "75599590"
 
 导入完成后，请单击输出数据集，然后选择“可视化”查看是否已成功导入数据。 
 
-若要保存数据供重复使用，而不是在每次运行管道时都导入新的数据集，请右键单击输出并选择“另存为数据集”。  选择数据集的名称。 保存的数据集将保留单击保存时存在的数据；重新运行管道时，数据不会更新，即使管道中的数据集发生更改，也是如此。 这样就可以方便地创建数据的快照。
+如果希望保存数据以供重用，而不是每次运行管道时都导入一组新数据，请在模块右侧面板的“输出”  选项卡下选择“注册数据集”  图标。 选择数据集的名称。 保存的数据集将保留单击保存时存在的数据；重新运行管道时不会更新数据集，即使管道中的数据集发生更改，也是如此。 这有助于创建数据快照。
 
 导入数据后，可能需要对它进行一些额外的准备，才能将它用于建模和分析：
 
@@ -90,4 +87,4 @@ ms.locfileid: "75599590"
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

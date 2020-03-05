@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery - 在复制 Azure 虚拟机时使用 Azure PowerShell 排除磁盘 | Azure
+title: 使用 Azure Site Recovery 和 Azure PowerShell 复制时排除 Azure VM 磁盘
 description: 了解如何使用 Azure PowerShell 在 Azure Site Recovery 过程中排除 Azure 虚拟机的磁盘。
 author: rockboyfor
 manager: digimobile
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 02/18/2019
-ms.date: 09/30/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6067473963d669f7f20d246912e5dd0222fe76cb
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 514d68fff2fa33c7ad44f050d227f9a5d809f808
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340772"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611239"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>对 Azure VM 进行 PowerShell 复制时排除磁盘
 
@@ -29,6 +28,7 @@ ms.locfileid: "71340772"
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
 - 确保有 AzureRm PowerShell 的“Az”模块。 若要安装或更新 PowerShell，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 确保已经创建恢复服务保管库并对虚拟机进行了至少一次保护。 如果尚未做这些事，请按[使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复](azure-to-azure-powershell.md)中介绍的过程操作。
+- 若要查找有关将磁盘添加到已启用复制的 Azure VM 的信息，请[查看此文](azure-to-azure-enable-replication-added-disk.md)。
 
 ## <a name="why-exclude-disks-from-replication"></a>为什么要从复制中排除磁盘
 需要从复制中排除磁盘可能是因为：

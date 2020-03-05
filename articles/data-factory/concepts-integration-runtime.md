@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 05/31/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: b03e04728c57f157df9ea31c43f4bfad59de7631
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+origin.date: 01/28/2020
+ms.date: 03/02/2020
+ms.openlocfilehash: a83b3c137d917374b6fbbc4fa255b5b3eb1fb1c2
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623640"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653259"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -133,9 +133,9 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS IR 位置
 为你的 Azure-SSIS IR 选择正确的位置对在提取-转换-加载 (ETL) 工作流中实现高性能至关重要。
 
-- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但应与你自己的需要托管 SSISDB 的 Azure SQL 数据库/托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
-- 如果没有托管 SSISDB 的现有 Azure SQL 数据库/托管实例服务器，但有本地数据源/目标，则应在连接到本地网络的虚拟网络所在位置中创建新的 Azure SQL 数据库/托管实例服务器。  这样，即可使用新的 Azure SQL 数据库/托管实例服务器并加入该虚拟网络来创建 Azure-SSIS IR，从而将不同位置间的数据移动降至最低 - 所有操作在同一位置进行。
-- 如果托管 SSISDB 的现有 Azure SQL 数据库/托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请先使用现有 Azure SQL 数据库/托管实例服务器并在同一位置加入其他虚拟网络来创建 Azure-SSIS IR，然后配置不同位置之间的虚拟网络到虚拟网络连接。
+- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但应与你自己的要托管 SSISDB 的 Azure SQL 数据库或托管实例服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
+- 如果没有用于托管 SSISDB 的现有 Azure SQL 数据库或托管实例服务器，但有本地数据源/目标，则应在连接到本地网络的虚拟网络的同一位置创建新的 Azure SQL 数据库或托管实例服务器。  这样，即可使用新的 Azure SQL 数据库或托管实例服务器并加入该虚拟网络来创建 Azure-SSIS IR，所有操作都在同一位置进行，从而将不同位置间的数据移动降至最低。
+- 如果托管 SSISDB 的现有 Azure SQL 数据库或托管实例服务器的位置与连接到本地网络的虚拟网络的位置不同，请先使用现有 Azure SQL 数据库或托管实例服务器并在同一位置加入其他虚拟网络来创建 Azure-SSIS IR，然后配置不同位置之间的虚拟网络到虚拟网络连接。
 
 下图显示了数据工厂及其集成运行时的位置设置：
 
@@ -155,13 +155,9 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 查找和 GetMetadata 活动在关联到数据存储链接服务的集成运行时上执行。
 
-### <a name="transformation-activity"></a>转换活动
+### <a name="external-transformation-activity"></a>外部转换活动
 
-每个转换活动都有一个目标计算链接服务，该服务指向集成运行时。 该集成运行时实例是分派转换活动的实例。
-
-### <a name="data-flow-activity"></a>数据流活动
-
-数据流活动是在与其关联的集成运行时上执行的。 
+每个使用外部计算引擎的外部转换活动都有一个目标计算链接服务，该服务指向一个集成运行时。 此集成运行时实例确定外部手动编码转换活动的调度位置。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

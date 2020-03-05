@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: jordane
+ms.author: v-yiso
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 11/06/2019
-ms.openlocfilehash: 9117c51e60d91e04c379749dea55e49d3cfa24cc
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 01/16/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 009c5afd514d855950e358226e7a8223fb221388
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599396"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155060"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,9 +42,9 @@ ms.locfileid: "75599396"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-- 工作区中注册的机器学习模型。 如果尚未注册模型，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+- 工作区中注册的机器学习模型。 如果尚未注册模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](how-to-vscode-tools.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 - 本文中的 Python 代码片段假设设置了以下变量  ：
 
@@ -51,9 +52,9 @@ ms.locfileid: "75599396"
     * `model` - 设置为注册的模型。
     * `inference_config` - 设置为模型的推理配置。
 
-    有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+    有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档  。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档  。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 
@@ -109,13 +110,13 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-有关详细信息，请参阅 [az ml computetarget create ask](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget create aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) 参考文档。
 
 ## <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
 
 时间估计  ：大约 5 分钟。
 
-如果 Azure 订阅中已有 AKS 群集并且其版本低于版本 1.15，则可以使用该群集来部署映像。
+如果 Azure 订阅中已有 AKS 群集并且其版本为 1.17 或更低版本，则可以使用该群集来部署映像。
 
 > [!TIP]
 > 现有的 AKS 群集除了位于 Azure 机器学习工作区，还可位于 Azure 区域中。
@@ -187,7 +188,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
-要将模型部署到 Azure Kubernetes 服务，请创建一个描述所需计算资源的部署配置  。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境  。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](service/how-to-deploy-and-where.md)。
+要将模型部署到 Azure Kubernetes 服务，请创建一个描述所需计算资源的部署配置  。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境  。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
@@ -227,7 +228,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 ### <a name="using-vs-code"></a>使用 VS Code
 
-有关如何使用 VS Code 的信息，请参阅[通过 VS Code 扩展部署到 AKS](how-to-vscode-tools.md#deploy-and-manage-models)。
+有关如何使用 VS Code 的信息，请参阅[通过 VS Code 扩展部署到 AKS](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
 
 > [!IMPORTANT] 
 > 通过 VS Code 进行部署要求提前创建 AKS 群集或将其附加到工作区。
@@ -253,7 +254,7 @@ version_name= "versiona",
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = true, 
                                                               tags = {'sckitlearn':'demo'},
-                                                              decription = testing versions,
+                                                              description = "testing versions",
                                                               version_name = version_name,
                                                               traffic_percentile = 20)
  # deploy the model and endpoint

@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 41d499e51c39cc0fc53a047d9519109b6cdbb72a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: d418192aeb4a98b43a4bb6a7cfe2d7f756a16062
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598010"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155036"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
@@ -29,7 +30,7 @@ ms.locfileid: "75598010"
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-导出数据之前，首先需要在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[如何访问数据](../how-to-access-data.md)。
+导出数据之前，首先需要在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[访问 Azure 存储服务中的数据](../how-to-access-data.md)。
 
 ## <a name="how-to-configure-export-data"></a>如何配置“导出数据”
 
@@ -39,7 +40,7 @@ ms.locfileid: "75598010"
 
 1. 选择“导出数据”，打开“属性”窗格   。
 
-1. 对于“数据存储”，请从下拉列表中选择现有数据存储  。 还可以创建新的数据存储。 要查看执行方法，请访问 [how-to-access-data](../how-to-access-data.md)
+1. 对于“数据存储”，请从下拉列表中选择现有数据存储  。 还可以创建新的数据存储。 通过访问[访问 Azure 存储服务中的数据](../how-to-access-data.md)来查看方法。
 
 1. 定义数据存储中将数据写入其中的路径。 
 

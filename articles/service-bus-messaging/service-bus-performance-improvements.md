@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 01/16/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 116df5ea83c3aa60cc210140474989aafe9b5abe
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 89c832641bc8c1817ca86f3d48da74988ed5ceb4
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068003"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154974"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -139,7 +139,7 @@ Queue q = namespaceManager.CreateQueue(qd);
 
 ## <a name="multiple-queues"></a>多个队列
 
-如果预期的负载不能由单个分区的队列或主题处理，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
+如果预期的负载无法由单个队列或主题处理，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
 
 ## <a name="development-and-testing-features"></a>开发和测试功能
 

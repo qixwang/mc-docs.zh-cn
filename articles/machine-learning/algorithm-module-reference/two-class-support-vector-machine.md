@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 0d9ec65d2b66a051d160a70d1e4511b02445bf14
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: cc97e8ce8a9c48ea217b5e6e953895da976430bc
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598375"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154931"
 ---
 # <a name="two-class-support-vector-machine-module"></a>“双类支持向量机”模块
 
@@ -34,7 +35,7 @@ ms.locfileid: "75598375"
 
 对于预测，SVM 算法会将新示例分配到一个或另一个类别中，并将它们映射到该同一空间。 
 
-## <a name="how-to-configure"></a>如何配置 
+## <a name="how-to-configure"></a>配置方式 
 
 对于此模型类型，建议在使用数据集来训练分类器之前对数据集进行标准化。
   
@@ -66,16 +67,15 @@ ms.locfileid: "75598375"
   
     -   如果将“创建训练程序模式”设置为“单个参数”，请使用[训练模型](train-model.md)模块   。
   
-
 10. 运行管道。
 
 ## <a name="results"></a>结果
 
 在训练完成后：
 
-+ 若要查看模型参数以及从训练学到的特征权重的摘要，请右键单击[训练模型](./train-model.md)的输出并选择“可视化”  。
++ 若要保存已训练模型的快照，请选择“训练模型”  模块右侧面板中的“输出”  选项卡。 选择“注册数据集”  图标将模型保存为可重用模块。
 
-+ 若要使用训练后的模型进行预测，请将训练后的模型连接到[评分模型](score-model.md)模块。
++ 若要使用模型进行评分，请向管道中添加**评分模型**模块。
 
 
 ## <a name="next-steps"></a>后续步骤

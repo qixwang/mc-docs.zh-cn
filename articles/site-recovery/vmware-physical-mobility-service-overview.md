@@ -6,14 +6,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 03/25/2019
-ms.date: 09/30/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f3900b58f85838a31bc01fd071c9f782d4e9cb43
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 7e3008d5dbf53533f77439f234c375aff7d119d3
+ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340958"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611285"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "71340958"
 
 - [推送安装](#push-installation)：通过 Azure 门户启用保护时，Site Recovery 会在服务器上安装移动代理。
 - 手动安装：可以通过 [UI](#install-mobility-agent-through-ui) 或[命令提示符](#install-mobility-agent-through-command-prompt)在每台计算机上手动安装移动服务。
-- [自动部署](vmware-azure-mobility-install-configuration-mgr.md)：可以使用 System Center Configuration Manager 等软件部署工具自动完成安装。
+- [自动部署](vmware-azure-mobility-install-configuration-mgr.md)：可以使用 Configuration Manager 等软件部署工具自动完成安装。
 
 ## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
 
@@ -36,7 +36,7 @@ ms.locfileid: "71340958"
 
 推送安装工作流的详细信息在以下部分介绍。
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>从 [9.23 版](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)开始
+### <a name="from-923-version-onwards"></a>从 [9.23 版](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)开始
 
 在推送安装移动代理的过程中，执行以下步骤
 
@@ -196,4 +196,4 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 [设置移动服务的推送安装](vmware-azure-install-mobility-service.md)。
 
-<!--Update_Dscription: udpate meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

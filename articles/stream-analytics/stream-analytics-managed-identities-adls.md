@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证
+title: 向 Azure Data Lake Storage Gen1 进行 Azure 流分析身份验证
 description: 本文介绍如何使用托管标识在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证。
 services: stream-analytics
 author: lingliw
@@ -7,14 +7,14 @@ ms.author: v-lingwu
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 04/08/2019
-ms.date: 06/21/2019
+ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: cfab3c9f3e7f9ec0f90783d745a979690cf05237
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: 1e4cd11f7490fe3503e1092c7db7bf53b1330691
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674715"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154623"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用托管标识在 Azure Data Lake Storage Gen1 中对流分析进行身份验证
 
@@ -91,11 +91,11 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建带有托管标识的 *Microsoft.StreamAnalytics/streamingjobs* 资源：
 
-   ```json
-   "Identity": {
-   "Type": "SystemAssigned",
-   },
-   ```
+    ```json
+    "Identity": {
+      "Type": "SystemAssigned",
+    },
+    ```
 
    此属性告知 Azure 资源管理器为你的 Azure 流分析作业创建和管理标识。
 
@@ -184,8 +184,5 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 2.  **[用户分配标识](/active-directory/managed-identities-azure-resources/overview)** ：不受支持。这意味着用户不能输入自己的供流分析作业使用的服务主体。 服务主体由 Azure 流分析生成。 
 
 
-## <a name="next-steps"></a>后续步骤
-
-* [使用流分析创建 Data Lake Store 输出](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-stream-analytics)
 
 <!-- Update Description: Update meta properties-->

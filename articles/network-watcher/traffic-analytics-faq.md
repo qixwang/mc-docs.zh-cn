@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 origin.date: 03/08/2018
-ms.date: 9/29/2019
+ms.date: 02/27/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 12e7a6195825a327a47ec3a7f4a7b885f2eef2a3
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 889627930ec1253f49774afaa1ac1f27ff708d4b
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028979"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155093"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -217,6 +217,61 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
 - 使用[此处记录的架构](traffic-analytics-schema.md)编写查询 
 - 单击“新建警报规则”以创建警报
 - 请参阅[日志警报文档](/azure-monitor/platform/alerts-log)以创建警报
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何检查哪些 VM 接收的本地流量最多？
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  对于 IP：
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+对于时间，请使用格式：yyyy-mm-dd 00:00:00
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何查看 VM 从本地计算机接收的流量的标准偏差？
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+对于 IP：
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何使用 NSG 规则检查 IP 对之间哪些端口可以访问（或被阻止）？
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地图视图中使用键盘导航？
 

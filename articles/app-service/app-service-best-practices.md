@@ -5,15 +5,15 @@ author: dariagrigoriu
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
 ms.topic: article
 origin.date: 07/01/2016
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 01acb0b0bc8a4b5cc4f71691c92d53f0c6397932
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 7646285717f12e0217c0454a627ef72d5f2a7c8f
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600526"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566612"
 ---
 # <a name="best-practices-for-azure-app-service"></a>有关 Azure 应用服务的最佳实践
 本文汇总了有关使用 [Azure App Service](overview.md) 的最佳实践。 
@@ -32,6 +32,7 @@ ms.locfileid: "75600526"
 ## <a name="CPUresources"></a>当应用消耗的 CPU 超出预期时
 如果通过监视或者参考服务建议，发现应用消耗的 CPU 超出预期，或者反复出现 CPU 高峰，请考虑向上缩放或向外缩放应用服务计划。 如果应用程序是有状态的，则纵向扩展是唯一选项；如果应用程序是无状态的，则横向扩展提供更高的灵活性和更大的缩放潜力。 
 
+<!-- For more information about �stateful� vs �stateless� applications you can watch this video: [Planning a Scalable End-to-End Multi-Tier Application on Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). For more information about App Service scaling and autoscaling options, see [Scale a Web App in Azure App Service](manage-scale-up.md). -->
 
 ## <a name="socketresources"></a>当套接字资源耗尽时
 耗尽出站 TCP 连接的一个常见原因是使用的客户端库，未实施为重复使用 TCP 连接，或者使用了较高级别的协议（如 HTTP），因而未使用 Keep-Alive。 请查看应用服务计划中的应用引用的每个库，以确保在代码中配置或访问这些库时，能够有效地重复使用出站连接。 此外，请遵循有关正确执行创建和发布或清理操作的库指导文档，以避免连接泄漏。 在展开此类客户端库调查的过程中，可以通过向外扩展到多个实例来消除影响。
@@ -65,3 +66,4 @@ const request = https.request(options, function(response) {
 ## <a name="nodejs"></a>当新的 Node.js 应用部署到 Azure 应用服务时
 适用于 Node.js 应用的 Azure 应用服务默认配置旨在符合最常见应用的需求。 如果 Node.js 应用的配置可从个性化调整中受益，并提高性能或优化 CPU /内存/网络资源的资源使用情况，请参阅[有关 Azure 应用服务上节点应用程序的最佳做法和故障排除指南](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)。 本文介绍了可能需要为 Node.js 应用配置的 iisnode 设置，描述了应用可能面临的各种情况或问题，并说明了如何解决这些问题。
 
+<!-- ## Next Steps -->

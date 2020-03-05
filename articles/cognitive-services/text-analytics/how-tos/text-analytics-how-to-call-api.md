@@ -1,22 +1,22 @@
 ---
 title: 调用文本分析 API
-titlesuffix: Azure Cognitive Services
-description: 了解如何调用文本分析 REST API。
+titleSuffix: Azure Cognitive Services
+description: 本文说明如何调用 Azure 认知服务文本分析 REST API 和 Postman。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-origin.date: 02/26/2019
-ms.date: 07/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: a1751e3ece8a2ec94d4235722983cc6855d9b9d4
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+origin.date: 07/30/2019
+ms.date: 02/25/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 40dd9d8ad1ed0e9957ef8e7d4c7bb63ef2243671
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844950"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154495"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -26,12 +26,11 @@ ms.locfileid: "67844950"
 
 回想一下，文本分析是无状态的，因此，没有任何要管理的数据资产。 收到文本后将对其进行上传和分析，其结果会立即返回到调用应用程序。
 
-> [!Tip]
-> 对于一次性调用以了解 API 的工作原理，可以从内置 API 测试控制台  发送 POST 请求，可在任何 [API 文档页](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)上使用。 没有任何设置，且唯一要求是将访问密钥和 JSON 文档粘贴到该请求。 
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-必须有带有文本分析 API 的[认知服务 API 帐户](/cognitive-services/cognitive-services-apis-create-account)，以及在注册认知服务时生成的[终结点和访问密钥](text-analytics-how-to-access-key.md)。 
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="json-schema"></a>
 

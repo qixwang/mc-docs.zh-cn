@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: f39af45f1a57435d2009be8cec136d8f61cc6876
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 7cfd7b1d338fe3c45a60054d219a9abd3392ee34
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598745"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154947"
 ---
 # <a name="decision-forest-regression-module"></a>“决策林回归”模块
 
@@ -88,11 +89,7 @@ ms.locfileid: "75598745"
 
 在训练完成后：
 
-+ 若要查看在每次迭代中创建的树，请右键单击训练模块的输出，并选择“可视化”  。
-
-+ 若要查看每个节点的规则，请单击每个树并向下钻取到各个拆分。
-
-+ 若要保存已训练模型的快照，请右键单击训练模块的输出，并选择“另存为已训练模型”  。 模型的此副本在后续运行管道时不会更新。 
++ 若要保存已训练模型的快照，请选择训练模块，然后切换到右侧面板中的“输出”  选项卡。 单击“注册模型”  图标。  可以在模块树中找到已作为模块保存的模型。 
 
 ## <a name="next-steps"></a>后续步骤
 

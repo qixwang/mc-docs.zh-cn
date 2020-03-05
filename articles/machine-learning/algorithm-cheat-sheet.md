@@ -7,20 +7,23 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
-ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 57184c4ba95fc17cef508414cf9d30a532ab5976
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.author: v-yiso
+origin.date: 11/04/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: b9c7580e68ffec9be6acf807f4bd8df550db906e
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599428"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155040"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
 “Azure 机器学习算法备忘单”  可帮助为预测分析模型选择正确的算法。
 
 Azure 机器学习拥有一个大型算法库，包括***分类***、***推荐系统***、***聚类分析***、***异常检测***、***回归***和***文本分析***系列。 每一类算法都可用于解决一种类型的机器学习问题。
+
+有关其他指南，请参阅[如何选择算法](how-to-select-algorithms.md)
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下载：机器学习算法备忘单
 
@@ -32,7 +35,7 @@ Azure 机器学习拥有一个大型算法库，包括***分类***、***推荐�
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>如何使用机器学习算法备忘单
 
-此算法备忘单中提供的建议近似于经验法则。 一些可以不完全照做，一些可以大胆地违反。 它旨在建议一个起点。 不要担心几种算法之间对数据运行正面竞争。 每种算法的原理和生成数据的系统都需要了解，此外别无选择。
+此算法备忘单中提供的建议近似于经验法则。 一些可以不完全照做，一些可以大胆地违反。 此备忘单旨在提供一个起点。 不要担心几种算法之间对数据运行正面竞争。 每种算法的原理和生成数据的系统都需要了解，此外别无选择。
 
 每种机器学习算法都有自己的风格或归纳偏差。 对于特定问题，有多种算法可能都合适，但会有一种算法可能比其他算法更合适。 但并非总是可以预先知道哪种是最合适的。 在这些情况下，会在备忘单中列出几种算法。 适当的策略是尝试一种算法，如果结果尚不令人满意，则尝试其他算法。 
 
@@ -48,18 +51,18 @@ Azure 机器学习拥有一个大型算法库，包括***分类***、***推荐�
 
 ### <a name="unsupervised-learning"></a>非监督式学习
 
-在非监督式学习中，数据点没有与其关联的标签。 相反，非监督式学习算法的目的是以某种方式组织数据或者说明其结构。 这意味着将其分组到群集（如 K-means 所实现）或查找不同的方法来查看复杂数据以使其显示更简单。
+在非监督式学习中，数据点没有与其关联的标签。 相反，非监督式学习算法的目的是以某种方式组织数据或者说明其结构。 像 K-means 一样，非监督式学习将数据分组到群集中，或者找到不同的方法来查看复杂数据，使其看起来更简单。
 
 ### <a name="reinforcement-learning"></a>强化学习
 
-在强化学习中，算法需选择响应每个数据点的操作。 它是机器人学中的常见方法，在此技术中一个时间点的传感器读数集是数据点，并且算法必须选择机器人的下一个动作。 它也是物联网应用程序的理想选择。 学习算法还会在短时间后收到奖励信号，指示决策的优秀程度。 在此基础上，算法会修改其战略议获得最高奖励。 
+在强化学习中，算法需选择响应每个数据点的操作。 它是机器人学中的常见方法，在此技术中一个时间点的传感器读数集是数据点，并且算法必须选择机器人的下一个动作。 它也是物联网应用程序的理想选择。 学习算法还会在短时间后收到奖励信号，指示决策的优秀程度。 基于该信号，该算法会修改其策略以获得最高奖励。 
 
 ## <a name="next-steps"></a>后续步骤
 
+* 请参阅有关[如何选择算法](how-to-select-algorithms.md)的其他指南
+
 * [了解 Azure 机器学习中的工作室和 Azure 门户](overview-what-is-azure-ml.md)。
 
-* 请参阅[算法和模块参考](algorithm-module-reference/module-reference.md)中的算法和模块列表。
-
-* [教程：在 Azure 机器学习设计器中构建预测模型](service/ui-tutorial-automobile-price-train-score.md)。
+* [教程：在 Azure 机器学习设计器中构建预测模型](tutorial-designer-automobile-price-train-score.md)。
 
 * [了解深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)。

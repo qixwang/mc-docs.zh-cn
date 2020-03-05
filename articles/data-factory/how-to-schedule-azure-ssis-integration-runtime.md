@@ -1,5 +1,5 @@
 ---
-title: 如何计划 Azure-SSIS Integration Runtime | Microsoft Docs
+title: 如何计划 Azure-SSIS Integration Runtime
 description: 本文介绍如何使用 Azure 数据工厂计划 Azure-SSIS Integration Runtime 的启动和停止。
 services: data-factory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 origin.date: 8/2/2019
-ms.date: 11/11/2019
+ms.date: 03/02/2020
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: e870293913ec2b3131ef65b493676df62bf093cb
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.openlocfilehash: a9b4cac25af238e50a95a3b663dcf1b991abd935
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648760"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653502"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
 本文介绍如何使用 Azure 数据工厂 (ADF) 计划 Azure-SSIS Integration Runtime (IR) 的启动和停止。 Azure-SSIS IR 是专用于执行 SQL Server Integration Services (SSIS) 包的 ADF 计算资源。 运行 Azure-SSIS IR 会产生相关成本。 因此，通常只有在需要在 Azure 中运行 SSIS 包时才运行 IR，而不再需要该包时则停止 IR。 可以使用 ADF 用户界面 (UI)/应用或 Azure PowerShell [手动启动或停止 IR](manage-azure-ssis-integration-runtime.md)。
@@ -65,7 +65,7 @@ ms.locfileid: "73648760"
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入新资源组的名称。    
          
-   若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)一文。
+   若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)一文。
    
 6. 对于“版本”，选择“V2”   。
 7. 对于“位置”，从下拉列表中选择 ADF 创建支持的其中一个位置  。

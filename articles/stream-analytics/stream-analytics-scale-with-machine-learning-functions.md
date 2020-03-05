@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/09/2019
-ms.openlocfilehash: 84e3e3c5ac5ebf09991318a830af7deaf868d4c8
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 147be8b99b592e39c202111007a84fe3df0bb864
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75855520"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154592"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 
@@ -34,7 +34,7 @@ ms.locfileid: "75855520"
 
 若要确定适当的 SU 值，请决定是要优化流分析作业的延迟，还是优化每个 SU 的吞吐量。 可能会始终将 SU 添加到某个作业，以提高适当分区的流分析查询的吞吐量。 增加 SU 会增大运行作业的成本。
 
-确定流分析作业的延迟*容限*。 增加批大小会增大 Azure 机器学习服务请求的延迟，以及流分析作业的延迟。
+确定流分析作业的延迟*容限*。 增加批大小会增大 Azure 机器学习请求的延迟以及流分析作业的延迟。
 
 增加批大小可让流分析作业使用**相同数量**的机器学习 Web 服务请求来处理**更多的事件**。 机器学习 Web 服务延迟增大与批大小增大之间通常呈亚线性关系。 
 

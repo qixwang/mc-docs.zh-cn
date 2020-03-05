@@ -5,18 +5,22 @@ services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
-origin.date: 05/28/2019
-ms.date: 06/28/2019
+origin.date: 10/07/2019
+ms.date: 02/28/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 624eb4a92b67aa6311062d7589fd8b7b6cffa7d4
-ms.sourcegitcommit: ab87d30f4435c3b7c03f7edd33c9f374b7fe88c9
+ms.openlocfilehash: dcd8783e4c57f504666fc7fc35780c020408072f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540089"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154967"
 ---
-### <a name="initiator"></a>发起程序
+>[!NOTE]
+>使用默认策略时，Azure 可以在 IPsec 隧道设置过程中同时充当发起方和响应方。 不支持仅将 Azure 作为响应方。
+>
+
+### <a name="initiator"></a>Initiator
 
 以下部分列出了 Azure 作为隧道发起程序时支持的策略组合。
 

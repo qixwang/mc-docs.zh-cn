@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/06/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 1a1a80de5bb0c323e8578e3ce7ca90621b326f03
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.date: 03/09/2020
+ms.openlocfilehash: a815d16daefdbccf13e815298a122d6124aeca89
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067783"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590202"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>在 Azure 中保护 Azure 数据资源管理器群集
 
@@ -35,7 +35,7 @@ Azure 资源的 Azure Active Directory (Azure AD) 托管标识功能可以解决
 
 默认情况下，使用 Microsoft 管理的密钥对数据进行加密。 为了更进一步控制加密密钥，可以提供客户管理的密钥来用于对数据进行加密。 可以使用自己的密钥在存储级别管理数据的加密。 使用客户管理的密钥来保护和控制对根加密密钥（用于加密和解密所有数据）的访问。 使用客户管理的密钥可以更灵活地创建、轮换、禁用和撤销访问控制。 还可以审核用于保护数据的加密密钥。
 
-使用 Azure Key Vault 来存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 Azure 数据资源管理器群集和 Azure Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](/key-vault/key-vault-overview)。 有关客户管理的密钥的详细说明，请参阅[客户管理的密钥与 Azure Key Vault](/storage/common/storage-service-encryption)
+使用 Azure Key Vault 来存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 Azure 数据资源管理器群集和 Azure Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](/key-vault/key-vault-overview)。 有关客户管理的密钥的详细说明，请参阅[客户管理的密钥与 Azure Key Vault](/storage/common/storage-service-encryption)。 使用 [C#](/data-explorer/customer-managed-keys-csharp) 或 [Azure 资源管理器模板](/data-explorer/customer-managed-keys-resource-manager)在 Azure 数据资源管理器群集中配置客户管理的密钥
 
 > [!Note]
 > 客户托管密钥依赖于 Azure 资源的托管标识，后者是 Azure Active Directory (Azure AD) 的一项功能。 若要在 Azure 门户中配置客户管理的密钥，需要在群集中配置 **SystemAssigned** 托管标识。
@@ -61,8 +61,8 @@ Azure 资源的 Azure Active Directory (Azure AD) 托管标识功能可以解决
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置 Azure 数据资源管理器群集的托管标识](managed-identities.md)
 * 通过启用静态加密[保护 Azure 数据资源管理器中的群集 - 门户](manage-cluster-security.md)。
+* [配置 Azure 数据资源管理器群集的托管标识](managed-identities.md)
 * [使用 Azure 资源管理器模板配置客户管理的密钥](customer-managed-keys-resource-manager.md)
 * [使用 C# 配置客户管理的密钥](customer-managed-keys-csharp.md)
 

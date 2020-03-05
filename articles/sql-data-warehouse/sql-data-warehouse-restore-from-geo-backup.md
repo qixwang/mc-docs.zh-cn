@@ -1,5 +1,5 @@
 ---
-title: 从异地备份还原 Azure SQL 数据仓库 | Microsoft Docs
+title: 从异地备份还原数据仓库
 description: 用于异地还原 SQL 数据仓库的操作指南。
 services: sql-data-warehouse
 author: WenJason
@@ -8,15 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 origin.date: 07/12/2019
-ms.date: 09/02/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 93248e394df8eab20c1b86c674c20ac77b32525c
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 82de256579a5490c09b7a062354fb77a153e4510
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70132745"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154406"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>异地还原 Azure SQL 数据仓库
 
@@ -30,20 +31,20 @@ ms.locfileid: "70132745"
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>通过 PowerShell 从 Azure 地理区域还原
 
-若要从异地备份还原，请使用 [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] 和 [Restore-AzSqlDatabase][Restore-AzSqlDatabase] cmdlet。
+若要从异地备份还原，请使用 [Get-AzSqlDatabaseGeoBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasegeobackup) 和 [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) cmdlet。
 
 > [!NOTE]
 > 可以执行到第 2 代的异地还原！ 若要执行此操作，请将一个第 2 代 ServiceObjectiveName（例如 DW1000**c**）指定为可选参数。
 >
 
-1. 开始之前，请确保[安装 Azure PowerShell][Install Azure PowerShell]。
+1. 开始之前，请确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 2. 打开 PowerShell。
 2. 连接到 Azure 帐户，并列出与帐户关联的所有订阅。
 3. 选择包含要还原的数据仓库的订阅。
 4. 获取要恢复的数据仓库。
 5. 创建对数据仓库的恢复请求。
 6. 验证异地还原的数据仓库的状态。
-7. 若要在完成还原后配置数据仓库，请参阅[在恢复后配置数据库][Configure your database after recovery]。
+7. 若要在完成还原后配置数据仓库，请参阅[在恢复后配置数据库]( ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)。
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -76,7 +77,7 @@ $GeoRestoredDatabase.status
 
 按下面概述的步骤从异地备份还原 Azure SQL 数据仓库：
 
-1. 登录到 [Azure 门户][Azure portal]帐户。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)帐户。
 1. 单击“+ 创建资源”，搜索“SQL 数据仓库”，然后单击“创建”   。
 
     ![新建 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
@@ -89,29 +90,5 @@ $GeoRestoredDatabase.status
 2. 数据仓库还原后，请检查“状态”是否为“联机”  。
 
 ## <a name="next-steps"></a>后续步骤
-- [还原现有数据仓库][Restore an existing data warehouse]
-- [还原已删除的数据仓库][Restore a deleted data warehouse]
-
-<!--Image references-->
-
-<!--Article references-->
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: https://docs.microsoft.com/powershell/azureps-cmdlets-docs
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-[Get-AzSqlDatabaseGeoBackup]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasegeobackup
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.cn/
+- [还原现有数据仓库](sql-data-warehouse-restore-active-paused-dw.md)
+- [还原已删除的数据仓库](sql-data-warehouse-restore-deleted-dw.md)

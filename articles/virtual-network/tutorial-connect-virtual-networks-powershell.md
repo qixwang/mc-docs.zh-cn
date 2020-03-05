@@ -1,11 +1,9 @@
 ---
-title: 使用虚拟网络对等互连连接虚拟网络 - PowerShell | Azure
+title: 使用 VNet 对等互连连接虚拟网络 - Azure PowerShell
 description: 在本文中，你将学习如何使用 Azure PowerShell 通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: rockboyfor
-manager: digimobile
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
@@ -15,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 03/13/2018
-ms.date: 11/25/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 7193ba6702ee8135dd10c828788da7b0ab74ec09
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 890111f4f8e4584fbde5d218d64fe09b71b61be0
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658056"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653495"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>通过 PowerShell 使用虚拟网络对等互连连接虚拟网络
 

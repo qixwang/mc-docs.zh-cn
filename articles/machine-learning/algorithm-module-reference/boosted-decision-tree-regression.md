@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 1d221b4f3de764a29ca41b8e72c4c40edbd42322
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 822ee5febb6216cfb88a0bc43e3f1fbb6779e187
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598588"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154950"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>“提升决策树回归”模块
 
@@ -29,8 +30,6 @@ ms.locfileid: "75598588"
 
 定义模型后，使用[训练模型](./train-model.md)来训练该模型。
 
-> [!TIP]
-> 想要了解有关已创建的树的详细信息？ 训练模型后，右键单击[训练模型](./train-model.md)模块的输出，然后选择“可视化”来查看每个迭代中创建的树。  可以向下钻取到每个树的拆分，并查看每个节点的规则。  
   
 ## <a name="more-about-boosted-regression-trees"></a>有关提升回归树的详细信息  
 
@@ -89,16 +88,12 @@ ms.locfileid: "75598588"
   
 ## <a name="results"></a>结果
 
-训练完成后：
-
-+ 若要查看在每次迭代中创建的树，请右键单击[训练模型](train-model.md)模块的输出，并选择“可视化”  。
-  
-     单击每个树以向下钻取拆分，并查看每个节点的规则。  
+在训练完成后：
 
 + 若要使用模型进行评分，请将其连接到[评分模型](./score-model.md)，以预测新输入示例的值。
 
-+ 若要保存已训练模型的快照，请右键单击训练模块的“已训练模型”输出，并选择“另存为”   。 在管道的后续运行中，保存的已训练模型的副本不会更新。
++ 若要保存已训练模型的快照，请在**已训练模型**的右侧面板中选择“输出”  选项卡，然后单击“注册数据集”  图标。 已训练模型的副本将作为模块保存在模块树中，并且不会在后续运行管道时进行更新。
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

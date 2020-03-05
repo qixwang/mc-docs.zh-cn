@@ -9,13 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 origin.date: 08/20/2019
 ms.author: v-jamebr
-ms.date: 09/30/2019
-ms.openlocfilehash: 4f9bec2d1c8e1ecc1d49f777ff483a39486f3730
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 03/09/2020
+ms.openlocfilehash: a782045e289342fe0fdabfc823adf6cb2b0ebe3f
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067969"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155100"
 ---
 # <a name="get-started-with-device-management-net"></a>设备管理入门 (.NET)
 
@@ -33,10 +33,11 @@ ms.locfileid: "77067969"
 
 * **TriggerReboot**。 此应用在模拟设备应用中调用直接方法、显示响应以及显示更新的报告属性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio。
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

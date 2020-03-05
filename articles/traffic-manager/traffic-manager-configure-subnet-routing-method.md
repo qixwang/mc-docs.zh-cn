@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 流量管理器配置子网流量路由方法
+title: 配置子网流量路由 - Azure 流量管理器
 description: 本文介绍了如何配置流量管理器以从特定子网路由流量。
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/17/2018
-ms.date: 07/22/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d60ed20c80462895415fb7640fdd5b964d06914a
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.openlocfilehash: 4fb2ccd97976fee0061f8e6af7277a53dd72e0fb
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884870"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653225"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -51,15 +51,15 @@ ms.locfileid: "74884870"
 <!--MOONCAKE: CORRECT ON *myIISVMChinaEast* and *myIISVMChinaNorth*-->
 <!--MOONCAKE: WRONG ON *myEndpointVMChinaEast* and *myEndpointVMChinaNorth*-->
 
-1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 VM”    。
+1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 Datacenter”    。
     
     <!--MOONCAKE: CORRECT ON Virtual Machines-->
     
 2. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myIISVMChinaEast|
+    |名称|myIISVMChinaEast|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“新建”  ，然后键入 *myResourceGroupTM1*。|
@@ -69,7 +69,7 @@ ms.locfileid: "74884870"
 4. 在“选择大小”下选择 VM 大小  。
 5. 对于“设置”  选择以下值，然后选择“确定”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet1*，为“子网”输入 *mySubnet*。   |
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”     |
@@ -140,15 +140,15 @@ ms.locfileid: "74884870"
 
 在本部分中，将在每个 Azure 区域（“中国东部”和“中国北部”）创建一个 VM（myVMChinaEast  和 myVMChinaNorth  ）   。 稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
 
-1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 VM”    。
+1. 在 Azure 门户的左上角选择“创建资源” > “虚拟机” > “Windows Server 2016 Datacenter”    。
 
-    <!--MOONCAKE: CORRECT ON Virtual Machines-->
+    <!--MOONCAKE: CORRECT ON Virtual Machines -- Windows Server 2016 Datacenter-->
 
 2. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|myVMChinaEast|
+    |名称|myVMChinaEast|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“现有”，然后选择“myResourceGroupTM1”   。|
@@ -157,7 +157,7 @@ ms.locfileid: "74884870"
 4. 在“选择大小”下选择 VM 大小  。
 5. 对于“设置”  选择以下值，然后选择“确定”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 myVNet3，为“子网”输入 mySubnet3      。|
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”     |
@@ -186,9 +186,9 @@ ms.locfileid: "74884870"
 
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
-    | Name                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
+    | 名称                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
     | 路由方法          | 选择“子网”路由方法  。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“现有”，然后输入 myResourceGroupTM1   。 |
@@ -205,10 +205,10 @@ ms.locfileid: "74884870"
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
-    | Name           | myTestWebSiteEndpoint                                        |
+    | 名称           | myTestWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMChinaEast-ip* 的公共 IP 地址。  这是中国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  子网路由设置    |   添加 myVMChinaEast 测试 VM 的 IP 地址  。 源自此 VM 的任何用户查询都将定向到 myTestWebSiteEndpoint  。    |

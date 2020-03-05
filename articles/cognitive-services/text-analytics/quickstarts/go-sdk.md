@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用 Go SDK 调用文本分析服务
+title: 快速入门：适用于 Go 的文本分析客户端库 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: 获取信息和代码示例，帮助快速开始使用 Microsoft 认知服务中的文本分析 API。
+description: 在本快速入门中，使用 Azure 认知服务的 Go 文本分析客户端库来检测语言。
 services: cognitive-services
 author: laramume
 manager: assafi
@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 05/23/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
-ms.openlocfilehash: 395fb4fbccc7b9dfbd58dd29d1fe03ce80ce6f3f
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: f764f676f486c0d34fcf68379899294dc980eeed
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830142"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154509"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>快速入门：使用 Go SDK 调用文本分析服务 
 <a name="HOLTop"></a>
@@ -28,8 +28,6 @@ ms.locfileid: "66830142"
 * 文本分析 [SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。
 
 ## <a name="set-up-a-new-project"></a>设置新项目
 

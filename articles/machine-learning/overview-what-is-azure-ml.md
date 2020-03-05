@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 5aac1dbc197e849e46d1f544f0ce321e8c6a5870
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 48ba5ad5133ad99e1fd820b12b99d3c8d3b4f8bb
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598030"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154972"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -45,8 +45,6 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 + Jupyter 笔记本：使用我们的[示例笔记本](https://aka.ms/aml-notebooks)或创建自己的笔记本，以利用<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">适用于 Python 的 SDK</a> 示例进行机器学习。 
 
 + R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
-
-+ [Visual Studio Code 扩展](service/how-to-vscode-tools.md)
 
 + [机器学习 CLI](reference-azure-machine-learning-cli.md)
 
@@ -85,7 +83,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)、[Azure 机器学习工作室](https://ml.azure.com)或[机器学习 CLI](reference-azure-machine-learning-cli.md) 来管理已部署的模型。
 
-可以使用这些模型[实时](how-to-consume-web-service.md)返回预测，或者在有大量数据的情况下[异步](how-to-run-batch-predictions.md)返回预测。
+可以使用这些模型并[实时](how-to-consume-web-service.md)返回对大量数据的预测。
 
 使用高级[机器学习管道](concept-ml-pipelines.md)，可以在每一步（从数据准备、模型训练和评估一直到部署）进行协作。 使用 Pipelines 可以：
 
@@ -132,7 +130,7 @@ Basic 工作区允许继续使用 Azure 机器学习，并只为在机器学习�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过首选方法创建第一个试验：
+- 通过首选方法创建首个试验：
   + [使用 Python 笔记本训练和部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用 R Markdown 训练和部署 ML 模型](tutorial-1st-r-experiment.md) 
   + [使用自动化机器学习训练和部署 ML 模型](  service/tutorial-first-experiment-automated-ml.md) 

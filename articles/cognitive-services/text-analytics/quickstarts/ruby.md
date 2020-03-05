@@ -11,12 +11,12 @@ ms.topic: quickstart
 origin.date: 04/16/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
-ms.openlocfilehash: d77c79ef8194bd41de6c4cb6dd21160cd388c856
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: 5a21979e9d18843e0b1da0cea7a12f8cf7eecd13
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830135"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154795"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Ruby 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -29,7 +29,7 @@ ms.locfileid: "66830135"
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-还必须拥有在注册期间生成的[终结点和访问密钥](../How-tos/text-analytics-how-to-access-key.md)。 
+还必须有在注册期间生成的终结点和访问密钥。 
 
 <a name="Detect"></a>
 
@@ -37,9 +37,9 @@ ms.locfileid: "66830135"
 
 语言检测 API 使用[检测语言方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)检测文本文档的语言。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
+1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 
@@ -138,9 +138,9 @@ puts JSON::pretty_generate (JSON (response.body))
 
 情绪分析 API 使用 [Sentiment 方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)检测一组文本记录的情绪。 以下示例为两个文档打分，一个是英文文档，另一个是西班牙文文档。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
+1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 
@@ -210,11 +210,11 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="extract-key-phrases"></a>提取关键短语
 
-关键短语提取 API 使用[关键短语方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 下列示例为英文和西班牙文文档提取关键短语。
+关键短语提取 API 使用[关键短语方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)从文本文档中提取关键短语。 以下示例为英文和西班牙文文档提取关键短语。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
+1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 
@@ -307,9 +307,9 @@ puts JSON::pretty_generate (JSON (response.body))
 
 实体 API 使用[实体方法](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)提取文本文档中的实体。 以下示例识别英文文档的实体。
 
-1. 在最喜爱的 IDE 中新建 Ruby 项目。
+1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 将 `uri` 中的位置（当前为 `chinaeast2`）替换为进行注册的区域。
 5. 运行该程序。
 

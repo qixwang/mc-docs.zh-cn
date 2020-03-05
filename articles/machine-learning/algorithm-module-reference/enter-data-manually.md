@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: ec5d57399049aed18361deab880bd454806287b5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+author: likebupt
+ms.author: v-yiso
+origin.date: 10/22/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: e54a5943dac8f44072ff18d892b71e61fd70482d
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598791"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154945"
 ---
 # <a name="enter-data-manually-module"></a>“手动输入数据”模块
 
@@ -84,7 +85,7 @@ ms.locfileid: "75598791"
   
         运行[手动输入数据](./enter-data-manually.md)模块时，这些行将转换为列和索引值的数据集，如下所示：  
   
-        |Col1|Col2|Col3|Col4|Labels|  
+        |Col1|Col2|Col3|Col4|标签|  
         |-|-|-|-|-|  
         |0.00016|0.004|0.999961|0.00784|1|  
         |0|0.004|0.999955|0.008615|1|  
@@ -97,9 +98,9 @@ ms.locfileid: "75598791"
   
      如果创建包含缺失值的行，则稍后随时可以将其筛选出来。  
   
-5.  右键单击该模块，然后选择“运行所选”  以分析数据，并将其作为数据集加载到你的工作区中。  
+5.  将输出端口连接到其他模块，然后运行管道。  
   
-     若要查看数据集，请单击输出端口并选择“可视化”  。  
+     若要查看数据集，请右键单击模块并选择“可视化”  。  
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

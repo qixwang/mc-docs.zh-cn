@@ -7,15 +7,15 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 11/26/2019
-ms.date: 01/06/2020
+origin.date: 01/09/2020
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: 3de27af5d4ec5709c3f0f2e82ef1f77c6e05b711
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 19837a02875334dd3cbcefbae0c71cd450380c18
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624063"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653500"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中带分隔符的文本格式
 
@@ -27,7 +27,7 @@ ms.locfileid: "75624063"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供带分隔符的文本数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必选 |
+| 属性         | 说明                                                  | 必须 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的类型属性必须设置为 **DelimitedText**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。  | 是      |
@@ -76,7 +76,7 @@ ms.locfileid: "75624063"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性       | 说明                                                  | 必选 |
+| 属性       | 说明                                                  | 必须 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本读取设置”表。  | 否       |
@@ -84,16 +84,16 @@ ms.locfileid: "75624063"
 
 `formatSettings` 下支持的**带分隔符的文本读取设置**：
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | formatSettings 的类型必须设置为 **DelimitedTextReadSetting**。 | 是      |
-| skipLineCount | 指示从输入文件读取数据时要跳过的非空行数  。 <br>如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 | 否       |
+| type          | formatSettings 的类型必须设置为 **DelimitedTextReadSettings**。 | 是      |
+| skipLineCount | 指示从输入文件读取数据时要跳过的非空行数  。 <br>如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 | 否       |
 
 ### <a name="delimited-text-as-sink"></a>带分隔符的文本作为接收器
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| 属性       | 说明                                                  | 必选 |
+| 属性       | 说明                                                  | 必须 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本写入设置”表。  |          |
@@ -101,10 +101,10 @@ ms.locfileid: "75624063"
 
 `formatSettings` 下支持的**带分隔符的文本写入设置**：
 
-| 属性      | 说明                                                  | 必选                                              |
+| 属性      | 说明                                                  | 必须                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | formatSettings 的类型必须设置为 **DelimitedTextWriteSetting**。 | 是                                                   |
-| fileExtension | 用来为输出文件命名的扩展名，例如 `.csv`、`.txt`。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 | 未在输出数据集中指定文件名时为“是” |
+| type          | formatSettings 的类型必须设置为 **DelimitedTextWriteSettings**。 | 是                                                   |
+| fileExtension | 用来为输出文件命名的扩展名，例如 `.csv`、`.txt`。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 如果在输出数据集中配置了文件名，则它将其用作接收器文件名，并且将忽略文件扩展名设置。  | 未在输出数据集中指定文件名时为“是” |
 
 ## <a name="next-steps"></a>后续步骤
 

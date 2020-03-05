@@ -8,15 +8,15 @@ manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 01/11/2019
-ms.date: 01/03/2020
+origin.date: 02/2/2020
+ms.date: 02/27/2020
 ms.custom: v-lingwu
-ms.openlocfilehash: b6baaccf97db024a6a83690bae8570a8e998620b
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 149d840567612037e5a5b20da6bc315da7505a9c
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75857034"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154621"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 流分析可以针对 [Azure Cosmos DB](/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。
@@ -24,13 +24,13 @@ ms.locfileid: "75857034"
 <!-- Not Available on [Azure Cosmos DB's learning path](https://www.azure.cn/documentation/learning-paths/documentdb/)-->
 
 > [!Note]
-> 目前，Azure 流分析仅支持使用 **SQL API** 连接到 Azure Cosmos DB。
-> 尚不支持使用其他 Azure Cosmos DB API。 如果使用其他 API 将 Azure 流分析指向 创建的 Azure Cosmos DB 帐户，则可能无法正确存储数据。 
+> 目前，流分析仅支持通过 *SQL API* 连接到 Azure Cosmos DB。
+> 尚不支持使用其他 Azure Cosmos DB API。 如果使用其他 API 将流分析指向已创建的 Azure Cosmos DB 帐户，则可能无法正确存储数据。 
 
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>作为输出目标的 Azure Cosmos DB 基础知识
 使用流分析中的 Azure Cosmos DB 输出可以将流处理结果作为 JSON 输出写入到 Azure Cosmos DB 容器中。 
 
-流分析不会在数据库中创建容器。 而是需要预先创建它们。 然后，你可以控制 Azure Cosmos DB 容器的计费成本。 还可以使用 [](https://msdn.microsoft.com/library/azure/dn781481.aspx) 直接调整容器的性能、一致性和容量。
+流分析不会在数据库中创建容器。 而是需要预先创建它们。 然后，你可以控制 Azure Cosmos DB 容器的计费成本。 还可以使用 [Azure Cosmos DB APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) 直接调整容器的性能、一致性和容量。
 
 > [!Note]
 > 必须从 Azure Cosmos DB 防火墙中将 0.0.0.0 添加到允许的 IP 列表。
@@ -100,7 +100,7 @@ Azure Cosmos DB 会根据工作负载自动缩放分区。 因此，建议使用
 
 使用版本 1.2 时，流分析可以更智能地利用 Azure Cosmos DB 中 100% 的可用吞吐量，并且在发生节流限制或速率限制的情况下，只需重新提交极少的次数。 对于其他工作负荷（例如，同时针对容器运行的查询），这可以提供更好的体验。 如需了解 Azure Cosmos DB 作为接收器（每秒接收 1000 到 10000 条消息）如何横向扩展流分析，请尝试[此 Azure 示例项目](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)。
 
-Azure Cosmos DB 输出的吞吐量与版本 1.0 和 1.1 相同。 由于版本 1.2 目前并非默认版本，你可以使用门户或使用[创建流分析作业 REST API 调用](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)来为流分析作业[设置兼容性级别](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。 我们强烈建议使用与 Azure Cosmos DB 兼容的流分析 1.2 级别  。
+Azure Cosmos DB 输出的吞吐量与版本 1.0 和 1.1 相同。 我们强烈建议使用与 Azure Cosmos DB 兼容的流分析 1.2 级别  。
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>JSON 输出的 Azure Cosmos DB 设置
 

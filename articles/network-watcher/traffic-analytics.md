@@ -14,12 +14,12 @@ origin.date: 06/15/2018
 ms.date: 9/29/2019
 ms.author: v-lingwu
 ms.reviewer: yagup
-ms.openlocfilehash: 7ea3ec3d532c42aed1a1b1bcda22a62c0abd6ead
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: d80a470a7ee410e14bf3e678e8213a7ba426738a
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028988"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154551"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -67,7 +67,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 * 中国东部 2
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -103,7 +103,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 在启用 NSG 流日志记录之前，必须提供要记录其流的网络安全组。 如果没有网络安全组，请参阅[创建网络安全组](../virtual-network/manage-network-security-group.md#create-a-network-security-group)来创建一个。
 
-在 Azure 门户左侧选择“监视”，然后依次选择“网络观察程序”、“NSG 流日志”。    选择要为其启用 NSG 流日志的网络安全组，如下图所示：
+在 Azure 门户中，转到**网络观察程序**，然后选择“NSG 流日志”  。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
 
 ![选择需要启用 NSG 流日志的 NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -134,7 +134,7 @@ New-AzStorageAccount `
 
 1. 为“状态”选择“打开”  
 2. 为**流日志版本**选择“版本 2”  。 版本 2 包含流会话统计信息（字节和数据包）
-3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保存储没有将“Data Lake Storage Gen2 分层命名空间已启用”设置为 true。 此外，NSG 流日志不能存储在带有防火墙的存储帐户中。 
+3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保存储没有将“Data Lake Storage Gen2 分层命名空间已启用”设置为 true。
 4. 将“保留期”设置为存储数据的天数。 
     > [!IMPORTANT]
     > 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 

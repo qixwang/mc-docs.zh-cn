@@ -6,24 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: mnark
+ms.author: v-yiso
 author: MrudulaN
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: fcb27cbf5836bc16bee434919103b10676e234ac
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 10/25/2019
+ms.date: 03/09/2020
+ms.openlocfilehash: 6e29fdc79749e207ef21ae4ca05b0fb791f1a0ba
+ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599357"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155055"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
-> [!NOTE]
-> 计算实例（预览版）仅适用于区域为“美国中北部”或“英国南部”的工作区   。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。  可以使用本文中的步骤，将模型部署到计算实例或笔记本 VM。
 
 了解如何使用 Azure 机器学习将模型部署为 Azure 机器学习计算实例上的 Web 服务。 如果满足下列任一条件，请使用计算实例：
 
@@ -31,7 +28,7 @@ ms.locfileid: "75599357"
 - 正在测试一个开发中的模型。
 
 > [!TIP]
-> 将模型从计算实例上的 Jupyter Notebook 部署到同一 VM 上的 Web 服务是本地部署  。 在这种情况下，“本地”计算机是计算实例。 有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](service/how-to-deploy-and-where.md)。
+> 将模型从计算实例上的 Jupyter Notebook 部署到同一 VM 上的 Web 服务是本地部署  。 在这种情况下，“本地”计算机是计算实例。 有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,16 +60,33 @@ ms.locfileid: "75599357"
 
 若要将示例数据提交到正在运行的服务，请使用以下代码。 将 `service_url` 值替换为在上一步获取的 URL：
 
+> [!NOTE]
+> 对计算实例上的部署进行身份验证时，将使用 Azure Active Directory 进行身份验证。 对示例代码中 `interactive_auth.get_authentication_header()` 的调用将使用 AAD 对你进行身份验证，并返回一个标头，然后可使用该标头向计算实例上的服务进行身份验证。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#interactive-authentication)。
+>
+> 对 Azure Kubernetes 服务或 Azure 容器实例上的部署进行身份验证时，将使用不同的身份验证方法。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#web-service-authentication)。
+
 ```python
 import requests
 import json
+from azureml.core.authentication import InteractiveLoginAuthentication
+
+# Get a token to authenticate to the compute instance from remote
+interactive_auth = InteractiveLoginAuthentication()
+auth_header = interactive_auth.get_authentication_header()
+
+# Create and submit a request using the auth header
+headers = auth_header
+# Add content type header
+headers.update({'Content-Type':'application/json'})
+
+# Sample data to send to the service
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
 ]})
 test_sample = bytes(test_sample,encoding = 'utf8')
-access_token = "your bearer token"
-headers = {'Content-Type':'application/json', 'Authorization': 'Bearer ' + access_token}
+
+# Replace with the URL for your compute instance, as determined from the previous section
 service_url = "https://vm-name-6789.northcentralus.notebooks.azureml.net/score"
 # for a compute instance, the url would be https://vm-name-6789.northcentralus.instances.azureml.net/score
 resp = requests.post(service_url, test_sample, headers=headers)
@@ -81,7 +95,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何使用自定义 Docker 映像部署模型](service/how-to-deploy-custom-docker-image.md)
+* [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/06/2020
+ms.date: 03/02/2020
 ms.author: v-jay
-ms.openlocfilehash: 248ece808999a68f52bf0f9110dbbf9d3a7e65fe
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: f34576066fd95431c4d3fac798f68123aa8a547e
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623783"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653528"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -25,8 +25,8 @@ ms.locfileid: "75623783"
 
 此 HTTP 连接器、[REST 连接器](connector-rest.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
-- **REST 连接器**专门支持从 RESTful API 复制数据； 
-- **HTTP 连接器**是通用的，用于从任何 HTTP 终结点检索数据，例如下载文件。 在 REST 连接器可用之前，你可能偶然使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但与 REST 连接器相比功能较少。
+- **REST 连接器**专门支持从 RESTful API 复制数据。 
+- **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在 REST 连接器可用之前，你可能偶然使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但与 REST 连接器相比功能较少。
 - **Web 表连接器**用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -61,7 +61,7 @@ ms.locfileid: "75623783"
 
 HTTP 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 HttpServer   。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
@@ -171,7 +171,7 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
-| 属性    | 说明                                                  | 必选 |
+| 属性    | 说明                                                  | 必须 |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | 数据集中 `location` 下的 type 属性必须设置为 **HttpServerLocation**。 | 是      |
 | relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。   | 否       |
@@ -217,9 +217,9 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
 
-| 属性                 | 说明                                                  | 必选 |
+| 属性                 | 说明                                                  | 必须 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 属性必须设置为 **HttpReadSetting**。 | 是      |
+| type                     | `storeSettings` 下的 type 属性必须设置为 **HttpReadSettings**。 | 是      |
 | requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post   。 | 否       |
 | addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
 | requestBody              | HTTP 请求的正文。                               | 否       |
@@ -249,11 +249,11 @@ HTTP 链接的服务支持以下属性：
             "source": {
                 "type": "DelimitedTextSource",
                 "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
+                    "type": "DelimitedTextReadSettings",
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "HttpReadSetting",
+                    "type": "HttpReadSettings",
                     "requestMethod": "Post",
                     "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
                     "requestBody": "<body for POST HTTP request>"
@@ -274,11 +274,11 @@ HTTP 链接的服务支持以下属性：
 ## <a name="legacy-models"></a>旧模型
 
 >[!NOTE]
->仍按原样支持以下模型，以实现向后兼容性。 建议你继续使用前面部分中提到的新模型，ADF 创作 UI 已经切换到生成新模型。
+>仍按原样支持以下模型，以实现向后兼容性。 建议你以后使用前面部分中提到的新模型，ADF 创作 UI 已经切换到生成新模型。
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 HttpFile   。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
@@ -332,7 +332,7 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：HttpSource   。 | 是 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。  | 否 |

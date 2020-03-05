@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4b63898c6acf57b8e58e2854b6383cbd5770280b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: eca4f237f519170823474e51c6cfee8e0d20a132
+ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600221"
+ms.lasthandoff: 02/24/2020
+ms.locfileid: "77566652"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -250,27 +250,27 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
     Content root path: C:\WebJobsSDKSample\WebJobsSDKSample\bin\Debug\netcoreapp2.1\
    ```
 
-2. 关闭控制台窗口。
+1. 关闭控制台窗口。
 
-3. 在 Visual Studio 的“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。  
+1. 在 Visual Studio 的“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。  
 
-4. 选择“创建队列”。 
+1. 选择“创建队列”。 
 
-5. 输入 *queue* 作为队列名称，然后选择“确定”。 
+1. 输入 *queue* 作为队列名称，然后选择“确定”。 
 
    ![创建队列](./media/webjobs-sdk-get-started/create-queue.png)
 
-6. 右键单击新队列所在的节点，然后选择“查看队列”。 
+1. 右键单击新队列所在的节点，然后选择“查看队列”。 
 
-7. 选择“添加消息”图标。 
+1. 选择“添加消息”图标。 
 
    ![创建队列](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-8. 在“添加消息”对话框中，输入 *Hello World!*  作为**消息正文**，然后选择“确定”。  现在，队列中会出现一条消息。
+1. 在“添加消息”对话框中，输入 *Hello World!*  作为**消息正文**，然后选择“确定”。  现在，队列中会出现一条消息。
 
    ![创建队列](./media/webjobs-sdk-get-started/hello-world-text.png)
 
-9. 再次运行该项目。
+1. 再次运行该项目。
 
    由于在 `ProcessQueueMessage` 函数中使用了 `QueueTrigger` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
 
@@ -289,9 +289,9 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
           Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=2c319369-d381-43f3-aedf-ff538a4209b8)
    ```
 
-10. 关闭控制台窗口。 
+1. 关闭控制台窗口。 
 
-11. 返回“队列”窗口并刷新。 该消息已消失，因为本地运行的函数已对其进行处理。 
+1. 返回“队列”窗口并刷新。 该消息已消失，因为本地运行的函数已对其进行处理。 
 
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 
@@ -400,7 +400,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 在本部分，我们将再次在本地运行，以验证日志记录数据现在是否转到 Application Insights 和控制台。
 
-1. 像[前面](#trigger-the-function-in-azure)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights!   作为消息文本。
+1. 使用 Visual Studio 中的**服务器资源管理器**创建队列消息，就像你[之前](#test-locally)所做的那样，但这次输入“Hello App Insights!”  作为消息文本。
 
 1. 运行该项目。
 
@@ -408,13 +408,15 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 关闭控制台窗口。
 
-1. 打开 [Azure 门户](https://portal.azure.cn/)并转到 Application Insights 资源。
+1. 转到 [Azure 门户](https://portal.azure.cn/)以查看 Application Insights 资源。 搜索并选择“Application Insights”。 
+
+1. 选择 Application Insights 实例。
 
 1. 选择“搜索”。 
 
    ![选择“搜索”](./media/webjobs-sdk-get-started/select-search.png)
 
-1. 如果未看到“Hello App Insights!”  消息，请定期选择“刷新”几分钟。  （日志不会立即显示，因为 Application Insights 客户端需要花费片刻时间来刷新它处理的日志。）
+1. 如果未看到“Hello App Insights!”  消息，请定期选择“刷新”几分钟。  （日志不会立即显示，因为 Application Insights 客户端需要一段时间来刷新它处理的日志。）
 
    ![Application Insights 中的日志](./media/webjobs-sdk-get-started/logs-in-ai.png)
 

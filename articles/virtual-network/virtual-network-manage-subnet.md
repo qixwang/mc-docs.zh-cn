@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/09/2018
-ms.date: 11/25/2019
+ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9513fdcba644c6dace9b148574a68dd4f33ed285
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 2f8978ae007e9ce1e5bfa698cf0d3abb0cfa8aa7
+ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658046"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653479"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
@@ -39,8 +39,6 @@ ms.locfileid: "74658046"
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
-
 <a name="create-subnet"></a>
 ## <a name="add-a-subnet"></a>添加子网
 
@@ -57,9 +55,13 @@ ms.locfileid: "74658046"
         
         <!-- Not Available on [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fvirtual-network%2ftoc.json#what-are-paired-regions)-->
         <!-- Not Available on till 11/29/2019- **Subnet delegation:** -->
+        
         若要删除的服务终结点，请取消选择你想要删除的服务终结点的服务。 如需详细了解服务终结点以及可为其启用的服务，请参阅[虚拟网络服务终结点概述](virtual-network-service-endpoints-overview.md)。 一旦启用服务的服务终结点，还必须启用与服务创建的资源的子网的网络访问权限。 例如，如果启用的服务终结点*Microsoft.Storage*，还必须启用到你想要授予对网络访问权限的所有 Azure 存储帐户的网络访问权限。 有关如何启用到为启用服务终结点的子网的网络访问的详细信息，请参阅各个启用的服务终结点的服务的文档。
 
     要验证是否为某个子网启用了服务终结点，请查看[有效路由](diagnose-network-routing-problem.md)，获取该子网中的任何网络接口。 如果配置了终结点，将会看到服务地址前缀和 nextHopType 为“VirtualNetworkServiceEndpoint”的“默认”路由   。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
+    
+    <!--Not Available on - **Subnet delegation:** on 02/26/2020-->
+    
 6. 单击“确定”，将子网添加到所选的虚拟网络。 
 
  命令
@@ -79,7 +81,7 @@ ms.locfileid: "74658046"
     - **网络安全组**和**路由表**：请参阅[添加子网](#add-a-subnet)的步骤 5。
     - **服务终结点**：请参阅[添加子网](#add-a-subnet)的步骤 5 中的服务终结点。 如果为某个现有子网启用服务终结点，请确保该子网的任何资源上未运行任何关键任务。 服务终结点可将子网每个网络接口上的路由，从使用地址前缀为 0.0.0.0/0 且下一跃点类型为 Internet 的默认路由，切换到使用服务地址前缀且下一跃点类型为 VirtualNetworkServiceEndpoint 的新路由    。 切换过程中，可能会终止任何打开的 TCP 连接。 对于使用新路由更新的所有网络接口，除非流量流向服务，否则不会启用服务终结点。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
         
-        <!-- Not Available on till 11/29/2019 - **Subnet delegation:** -->
+    <!--Not Available on - **Subnet delegation:** on 02/26/2020-->
         
 5. 选择“保存”  。
 
@@ -101,14 +103,14 @@ ms.locfileid: "74658046"
 
  命令
 
-- Azure CLI：[az network vnet delete](https://docs.azure.cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-delete)
+- Azure CLI：[az network vnet subnet delete](https://docs.azure.cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-delete)
 - PowerShell：[Remove-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>权限
 
 若要在子网中执行任务，必须将帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或分配到下表中所列出的适当操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)角色：
 
-|操作                                                                   |   Name                                       |
+|操作                                                                   |   名称                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   读取虚拟网络子网              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   创建或更新虚拟网络子网  |

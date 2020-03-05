@@ -8,16 +8,16 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
 origin.date: 10/30/2019
-ms.date: 12/09/2019
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 58ec39f17a6fb6e1349ea111329f88b8e18727e8
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 47dc0f8f71a68574a9767697542ee56f96fd2db4
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74808095"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154409"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
 
@@ -55,3 +55,4 @@ SQL 数据仓库中的工作负荷管理包括三个高级概念：[工作负荷
 - 有关工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
 - 有关工作负荷隔离的详细信息，请参阅[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  
 - 有关工作负荷重要性的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)。  
+- 有关工作负荷管理监视的详细信息，请参阅[工作负荷管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/05/2019
-ms.date: 01/13/2020
+origin.date: 02/12/2020
+ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: b2e181f012a8164b5e21fdc20c39dae98942217d
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 10fa9c0f8a48257b11c2e7653a0161c517290a26
+ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123291"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590264"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 
@@ -28,17 +28,17 @@ ms.locfileid: "76123291"
 - 更轻松地将基于云的语音服务集成到设备中。
 - 为客户创建出色的用户体验。
 
-语音设备 SDK 使用[语音 SDK](speech-sdk.md)。 它使用语音 SDK 将我们的高级音频处理算法处理的音频从设备的麦克风阵列发送到[语音服务](overview.md)。 它使用多声道音频，通过噪声抑制、回音消除、波束赋形和残响消除来提供更准确的远场[语音识别](speech-to-text.md)。
+语音设备 SDK 使用[语音 SDK](speech-sdk.md)。 将我们的高级音频处理算法与设备的麦克风阵列配合使用，将音频发送到[语音服务](overview.md)。 它通过噪声抑制、回声消除、波束赋形和混响消减来提供准确的远场[语音识别](speech-to-text.md)。
 
-<!-- You can also use the Speech Devices SDK to build ambient devices that have your own [customized keyword](speech-devices-sdk-create-kws.md) so the cue that initiates a user interaction is unique to your brand. -->
+<!-- You can also use the Speech Devices SDK to build ambient devices that have your own [customized keyword](speech-devices-sdk-create-kws.md). A Custom Keyword provides a cue that starts a user interaction which is unique to your brand. -->
 
-<!-- The Speech Devices SDK facilitates a variety of voice-enabled scenarios, drive-thru ordering systems, [conversation transcription](conversation-transcription-service.md), and smart speakers. You can respond to users with text, speak back to them in a default or [custom voice](how-to-custom-voice-create-voice.md), provide search results, and more. We look forward to seeing what you build! -->
+<!-- The Speech Devices SDK enables a variety of voice-enabled scenarios, drive-thru ordering systems, [conversation transcription](conversation-transcription-service.md), and smart speakers. You can respond to users with text, speak back to them in a default or [custom voice](how-to-custom-voice-create-voice.md), provide search results, and more. We look forward to seeing what you build! -->
 
 ## <a name="get-the-speech-devices-sdk"></a>获取语音设备 SDK
 
 ### <a name="android"></a>Android
 
-对于 Android 设备，请下载最新版本的 [Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
+对于 Android，设备将下载最新版本的 [Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
 
 ### <a name="windows"></a>Windows
 
@@ -49,6 +49,8 @@ ms.locfileid: "76123291"
 
 对于 Linux，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+
+提供了其他二进制文件来支持即将推出的设备，例如 [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) 和 [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)。
 
 ## <a name="next-steps"></a>后续步骤
 

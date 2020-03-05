@@ -1,5 +1,5 @@
 ---
-title: 将现有 Azure SQL 数据仓库迁移到 Gen2 | Microsoft Docs
+title: 将数据仓库迁移到 Gen2
 description: 有关将现有数据仓库迁移到 Gen2 以及按区域迁移计划的说明。
 services: sql-data-warehouse
 author: WenJason
@@ -9,14 +9,15 @@ manager: digimobile
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-origin.date: 07/22/2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 014bad38b4ec2b850371a532e3da989f7bde648f
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+origin.date: 01/21/2020
+ms.date: 03/02/2020
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ed0364c2a814b03cfa977854ebb07376ee133480
+ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131877"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78154394"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
 
@@ -34,9 +35,7 @@ Azure 有助于降低运行数据仓库的入门级成本。  能够处理高要
 | **区域** | **较低的 Gen2 可用** | **自动升级开始时间** |
 |:--- |:--- |:--- |
 | 中国东部 |\* |\* |
-| 中国东部 2 |可用 |完成 |
 | 中国北部 |\* |\* |
-| 中国北部 2 |可用 |完成 |
 
 ## <a name="automatic-upgrade-process"></a>自动升级过程
 
@@ -76,47 +75,47 @@ Azure 有助于降低运行数据仓库的入门级成本。  能够处理高要
 
 **问：Gen2 的成本与 Gen1 相同吗？**
 
-- 答：是的。
+- A:是的。
 
 **问：升级将如何影响我的自动化脚本？**
 
-- 答：引用服务级别目标的任何自动化脚本都应更改为与 Gen2 等效项相对应。  详见[此处](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)。
+- A:引用服务级别目标的任何自动化脚本都应更改为与 Gen2 等效项相对应。  请参阅[此处](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)的详细信息。
 
 **问：自行升级通常需要多长时间？**
 
-- 答：可以就地升级或从还原点升级。  
+- A:可以就地升级或从还原点升级。  
    - 就地升级将导致数据仓库暂时暂停和继续。  数据仓库联机时，后台进程将继续。  
    - 如果要通过还原点进行升级，则需要更长时间，因为升级将完成整个还原过程。
 
 **问：自动升级需要多长时间？**
 
-- 答：升级的实际停机时间仅为暂停和恢复服务所需的时间，即 5 到 10 分钟。 在短暂的停机时间之后，后台进程将运行存储迁移。 后台进程的时间长度取决于数据仓库的大小。
+- A:升级的实际停机时间仅为暂停和恢复服务所需的时间，即 5 到 10 分钟。 在短暂的停机时间之后，后台进程将运行存储迁移。 后台进程的时间长度取决于数据仓库的大小。
 
 **问：这种自动升级何时进行？**
 
-- 答：在维护计划期间。 利用选择的维护计划可以最大限度地减少对业务的干扰。
+- A:在维护计划期间。 利用选择的维护计划可以最大限度地减少对业务的干扰。
 
 **问：如果我的后台升级过程似乎被卡住了该怎么办？**
 
- - 答：开始为列存储表重新编制索引。 请注意，在此操作期间，为表重新编制索引将处于脱机状态。
+ - A:开始为列存储表重新编制索引。 请注意，在此操作期间，为表重新编制索引将处于脱机状态。
 
 **问：如果 Gen2 没有 Gen1 上的服务级别目标怎么办？**
-- 答：如果在 Gen1 上运行 DW600 或 DW1200，建议分别使用 DW500c 或 DW1000c，因为 Gen2 提供的内存、资源和性能比 Gen1 更高。
+- A:如果在 Gen1 上运行 DW600 或 DW1200，建议分别使用 DW500c 或 DW1000c，因为 Gen2 提供的内存、资源和性能比 Gen1 更高。
 
 **问：我可以禁用异地备份吗？**
-- 答：否。 异地备份是一项企业功能，可在区域不可用时保留数据仓库的可用性。
+- A:否。 异地备份是一项企业功能，可在区域不可用时保留数据仓库的可用性。
 
 **问：Gen1 和 Gen2 之间的 T-SQL 语法有区别吗？**
 
-- 答：从 Gen1 到 Gen2 的 T-SQL 语言语法没有变化。
+- A:从 Gen1 到 Gen2 的 T-SQL 语言语法没有变化。
 
 **问：Gen2 是否支持维护时段？**
 
-- 答：是的。
+- A:是的。
 
 **问：在我的区域升级后，我能够创建新的 Gen1 实例吗？**
 
-- 答：否。 区域升级后，将禁用新 Gen1 实例的创建。
+- A:否。 区域升级后，将禁用新 Gen1 实例的创建。
 
 ## <a name="next-steps"></a>后续步骤
 
