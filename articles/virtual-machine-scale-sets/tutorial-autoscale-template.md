@@ -39,7 +39,7 @@ ms.locfileid: "56101601"
 
 
 ## <a name="define-an-autoscale-profile"></a>定义自动缩放配置文件
-请使用 *Microsoft.insights/autoscalesettings* 资源提供程序在 Azure 模板中定义一个自动缩放配置文件。 配置文件提供规模集容量以及任何关联规则的详细信息。 下面的示例定义一个名为 *Autoscale by percentage based on CPU usage* 的配置文件，并设置 *2* 个 VM 实例的默认值、最小值、容量和最大值 (*10*)：
+请使用 *Microsoft.insights/autoscalesettings* 资源提供程序在 Azure 模板中定义一个自动缩放配置文件。  配置文件提供规模集容量以及任何关联规则的详细信息。 下面的示例定义一个名为 *Autoscale by percentage based on CPU usage* 的配置文件，并设置 *2* 个 VM 实例的默认值、最小值、容量和最大值 (*10*)：
 
 ```json
 {
@@ -78,9 +78,9 @@ ms.locfileid: "56101601"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 5 分钟       |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| direction       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
+| direction        | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
 | *类型*            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
-| value           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
+| value            | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |
 
 以下规则将添加到上一部分中的 *Microsoft.insights/autoscalesettings* 资源提供程序的概要文件节：
@@ -114,7 +114,7 @@ ms.locfileid: "56101601"
 ## <a name="define-a-rule-to-autoscale-in"></a>定义规则，以便自动横向缩减
 在夜间或周末，应用程序需求可能会降低。 如果这种负载降低在一段时间内持续稳定，可以配置自动缩放规则来减少规模集中的 VM 实例数。 这种横向缩减操作可以减少运行规模集所需的成本，因为只运行满足当前需求所需的实例数。
 
-以下示例定义了一个规则，以便在平均 CPU 负载在 5 分钟内下降至 30% 以下时减少规模集中的 VM 实例数。 此规则将添加到自动缩放配置文件中用于自动横向扩展的前一个规则之后：
+以下示例定义了一个规则，以便在平均 CPU 负载在 5 分钟内下降至 30% 以下时横向缩减规模集中的 VM 实例数。 此规则将添加到自动缩放配置文件中用于自动横向扩展的前一个规则之后：
 
 ```json
 {
@@ -143,7 +143,7 @@ ms.locfileid: "56101601"
 ## <a name="create-an-autoscaling-scale-set"></a>创建自动缩放规模集
 让我们使用示例模板创建一个规模集并应用自动缩放规则。 可以[查看完整模板](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)，或者[参阅模板的 *Microsoft.insights/autoscalesettings* 资源提供程序节](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)。
 
-首先，使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组：
+首先，使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth
@@ -253,7 +253,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  chinanorth      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-当 **stress** 在初始 VM 实例上停止后，平均 CPU 负载会回到正常。 另一个 5 分钟后，自动缩放规则会缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
+当 **stress** 在初始 VM 实例上停止后，平均 CPU 负载会回到正常。 另一个 5 分钟后，自动缩放规则会横向缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
 
 ```bash
            6  True                  chinanorth      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336

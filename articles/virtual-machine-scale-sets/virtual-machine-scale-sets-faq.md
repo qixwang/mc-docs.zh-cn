@@ -329,7 +329,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 有关详细信息，请参阅 [Microsoft 信任中心](https://www.trustcenter.cn)。
 
-### <a name="does-managed-identities-for-azure-resourcesactive-directorymanaged-identities-azure-resourcesoverview-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](/active-directory/managed-identities-azure-resources/overview)用于虚拟机规模集？
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](/active-directory/managed-identities-azure-resources/overview)用于虚拟机规模集？
 
 是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 的“Azure 快速入门”模板中查看一些示例 MSI 模板。
 

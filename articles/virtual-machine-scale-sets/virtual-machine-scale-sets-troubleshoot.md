@@ -33,7 +33,7 @@ ms.locfileid: "58544731"
   上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它可以加载单个 vCPU。 如果正在使用比单 vCPU VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此加载过程。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/windows/sizes.md)检查 VM 中有多少个 vCPU
 * 虚拟机规模集中有多少个 VM，正在处理每个 VM 吗？
   
-    仅当规模集中所有 VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
+    仅当规模集中所有  VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
 * 是否遗漏任何缩放事件？
   
     检查 Azure 门户中的审核日志以查找缩放事件。 或许遗漏了一个纵向扩展事件和一个纵向缩减事件。 可以通过“缩放”进行筛选。
@@ -51,7 +51,7 @@ ms.locfileid: "58544731"
 
 * 诊断扩展运行正常且可发出性能数据吗？
   
-    **更新：** 已增强 Azure 自动缩放，以使用基于主机的指标管道，这将不再需要安装诊断扩展。 如果使用新管道创建自动缩放应用程序，则后续几个段落不再适用。 此处提供了一个已转换为使用主机管道的 Azure 模板的示例： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale。 
+    **更新：** 已增强 Azure 自动缩放，以使用基于主机的指标管道，这将不再需要安装诊断扩展。 如果使用新管道创建自动缩放应用程序，则后续几个段落不再适用。 此处提供了一个已转换为使用主机管道的 Azure 模板的示例： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale 。 
   
     使用基于主机的指标进行自动缩放比较好的原因如下：
   

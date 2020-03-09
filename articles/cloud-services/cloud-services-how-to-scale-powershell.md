@@ -60,7 +60,7 @@ Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 
 ## <a name="scale-out-the-role-by-adding-more-instances"></a>通过添加更多实例来扩展角色
 
-若要扩展角色，请将所需的实例数作为 Count 参数传递给 Set-AzureRole cmdlet：
+若要扩展角色，请将所需的实例数作为 Count 参数传递给 Set-AzureRole cmdlet   ：
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
@@ -74,9 +74,9 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ![角色实例增加成功](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例缩小角色
+## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例横向缩减角色
 
-同样，可通过删除实例缩小角色。 将 Set-AzureRole 中的 Count 参数设置为缩小操作完成后所需的实例数。
+同样，可通过删除实例横向缩减角色。 将 Set-AzureRole 中的 Count 参数设置为缩小操作完成后所需的实例数   。
 
 ## <a name="next-steps"></a>后续步骤
 
