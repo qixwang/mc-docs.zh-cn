@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志查询中的联接 | Azure Docs
 description: 本文包含的课程介绍了如何在 Azure Monitor 日志查询中使用联接。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 12bdb2f9815565c839cd7b1f91813f29423a96da
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 05731d5fdaa74826e89ac9fdab99fad99b369c37
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730457"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850274"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的联接
 

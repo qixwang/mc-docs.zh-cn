@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Application Insights 进行 OpenCensus Go 跟踪 | Azure Docs
 description: 提供有关将 OpenCensus Go 跟踪与本地转发器和 Application Insights 集成的说明
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 09/15/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bad0b827667e1e89915e7b1e3849bbd84f5b2b0d
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 9f2f33681d0704d8148ca9c7232b1f037e62a6bd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528257"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850401"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
@@ -34,7 +32,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 ## <a name="create-application-insights-resource"></a>创建 Application Insights 资源
 
-首先，你需要创建一个 Application Insights 资源，该资源将生成一个检测密钥 (ikey)。 然后使用 ikey 配置本地转发器，以将 OpenCensus 检测应用程序中的分布式跟踪发送到 Application Insights。   
+首先，你需要创建一个 Application Insights 资源，该资源将生成一个检测密钥 (ikey)。 然后使用 ikey 配置本地转发器，将 OpenCensus 检测应用程序中的分布式跟踪发送到 Application Insights。   
 
 1. 选择“创建资源”   > “开发人员工具”   > “Application Insights”  。
 
@@ -49,7 +47,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | **Location** | 中国北部| 选择离你近的位置或离托管应用的位置近的位置 |
+   | **位置** | 中国北部| 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 单击**创建**。
 

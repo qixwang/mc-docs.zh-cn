@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Functions 以分钟为单位优化异步�
 author: mattchenderson
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
-ms.date: 02/13/2020
+ms.date: 03/03/2020
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f351a0970101219e0ec0c2405b91e83f29131abe
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: b40c96aaf06096ef770c4a72ccc3024f0940d7f9
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428692"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266021"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介
 

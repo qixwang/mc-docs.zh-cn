@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: a71b1f40bd6a40c5bca3edcb67327640635a042f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: f929857070d7e4d249b5c348dd6541520c09f4c0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494167"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850226"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中心设备重新预配概念
 
@@ -83,7 +83,7 @@ ms.locfileid: "77494167"
 
 | REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
-| [2018-04-01 及更早版本](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 及更早版本](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 及更早版本](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 及更早版本](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 及更早版本](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 及更早版本](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
+| [2018-04-01 及更早版本](https://docs.microsoft.com/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 及更早版本](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 及更早版本](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 及更早版本](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 及更早版本](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 及更早版本](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
 > 这些值和链接可能会有所更改。 这只是占位符，尝试确定客户可以在何处确定版本以及预期的版本是什么。

@@ -15,12 +15,12 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60f06d4df133f0573e1a4adb4f4cb5197323b22d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: dbf0f2e385273696f3b2603e642b13682fc9da2b
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428085"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78237487"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>借助 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
 
@@ -44,7 +44,7 @@ SQL Server 2008 客户需要自行安装或升级到 SQL Server 2008 R2。 同�
 > 尽管可以在 Azure 门户中的 SQL Server“创建”和“管理”边栏选项卡上处理 SQL Server 2008 R2 映像，但不支持以下功能：    自动备份、Azure Key Vault 集成、R Services 和存储配置。
 
 ## <a name="licensing"></a>授权
-标准预付费套餐 SQL Server 2008 R2 部署可以转换为 [Azure 混合权益](https://www.azure.cn/pricing/hybrid-use-benefit/)。
+标准预付费套餐 SQL Server 2008 R2 部署可以转换为 [Azure 混合权益](https://www.azure.cn/pricing/hybrid-benefit/)。
 
 <!--Not Available on [resource provider](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)-->
 

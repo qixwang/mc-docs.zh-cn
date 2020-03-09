@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Application Insights 中创建自定义仪表板 | Azure Docs
 description: 使用 Azure Application Insights 创建自定义 KPI 仪表板的教程。
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lingliw
@@ -9,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 07/3/2019
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: ef741fd31088b211f906aaef8c4c5d64d059d08c
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 18b40bb0384d4aab9da6b202893964d0eb2c2a23
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730306"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850292"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -103,7 +102,7 @@ Azure Application Insights 日志（分析）提供了丰富的查询语言，�
     ```
 
 4. 单击“运行”  来验证查询的结果。
-5. 单击图钉图标 ![图钉图标](media/tutorial-app-dashboards/pushpin.png) 然后选择仪表板的名称。 此选项选择的仪表板与先前步骤中所选的仪表板不同（后者使用上一个仪表板）的原因是：日志（分析）控制台是一项独立服务，需要从所有可用的共享仪表板中进行选择。
+5. 单击右上角的图钉图标 ![图钉图标](media/tutorial-app-dashboards/pushpin.png) 然后选择仪表板的名称。 此选项选择的仪表板与先前步骤中所选的仪表板不同（后者使用上一个仪表板）的原因是：日志（分析）控制台是一项独立服务，需要从所有可用的共享仪表板中进行选择。
 
 5. 在返回仪表板之前，请添加其他查询，但这次将其呈现为图表，以便你可以看到在仪表板中直观显示日志查询的不同方法。 从以下查询开始，该查询总结了前 10 个最常出现异常的操作。
 

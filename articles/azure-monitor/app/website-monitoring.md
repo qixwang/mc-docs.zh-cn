@@ -1,44 +1,36 @@
 ---
-title: 使用 Azure Monitor Application Insights 监视网站
-description: 提供使用 Azure Monitor Application Insights 快速设置客户端/浏览器端网站监视的说明
-ms.service: azure-monitor
-ms.subservice: application-insights
+title: 快速入门：使用 Azure Monitor Application Insights 监视网站
+description: 提供了使用 Azure Monitor Application Insights 设置客户端/浏览器端网站监视的快速入门说明
 ms.topic: quickstart
 author: lingliw
 ms.author: v-lingwu
 origin.date: 07/15/2019
 ms.date: 8/4/2019
 ms.custom: mvc
-ms.openlocfilehash: febbdeeae823edaee7c906b43c7d08a0ae138ab1
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 2cd99af63d98988e8b1c1024e44df2fd78fb25ef
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600107"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850340"
 ---
-# <a name="start-monitoring-your-website"></a>开始监视网站
+# <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>快速入门：开始使用 Azure Monitor Application Insights 监视你的网站
 
-使用 Azure Monitor Application Insights，可轻松监视网站的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 Application Insights 提供服务器端监视和客户端/浏览器端监视功能。
+在本快速入门中，你将了解如何将开源 Application Insights JavaScript SDK 添加到你的网站。 你还将了解如何更好地了解你的网站访问者的客户端/浏览器体验。
 
-本快速入门介绍如何添加[开源 Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)，以便了解网站访客的客户端/浏览器端体验。
+使用 Azure Monitor Application Insights，可轻松监视网站的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 Application Insights 提供了服务器端监视和客户端/浏览器端监视功能。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门教程，需先执行以下操作：
-
-- 需要一个 Azure 订阅。
-
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
-
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-登录到 [Azure 门户](https://portal.azure.cn/)。
+* 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+* 可以将 Application Insights JavaScript SDK 添加到其中的网站。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，不管是在本地运行还是在云中运行。 按照以下步骤开始查看此数据。
 
-1. 选择“创建资源”   > “管理工具”   >   “Application Insights”。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+2. 选择“创建资源”   > “管理工具”   >   “Application Insights”。
 
    > [!NOTE]
    >如果这是你首次创建 Application Insights 资源，可以通过访问[创建 Application Insights 资源](/azure-monitor/app/create-new-resource)一文来了解更多信息。
@@ -48,10 +40,10 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     | 设置        | Value           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
+   | **资源组**     | MyResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
    | **位置** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击**创建**。
+3. 单击**创建**。
 
 ## <a name="create-an-html-file"></a>创建一个 HTML 文件
 
@@ -71,11 +63,11 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     </html>
     ```
 
-## <a name="configure-app-insights-sdk"></a>配置 App Insights SDK
+## <a name="configure-application-insights-sdk"></a>配置 Application Insights SDK
 
 1. 选择“概述”   > “概要”  > 复制应用程序的**检测密钥**。
 
-   ![“新建 App Insights 资源”窗体](media/website-monitoring/instrumentation-key-001.png)
+   ![“新建 Application Insights 资源”窗体](media/website-monitoring/instrumentation-key-001.png)
 
 2. 将以下脚本添加到 ``hello_world.html`` 的结束标记 ``</head>`` 之前：
 
@@ -91,13 +83,13 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 3. 编辑 ``hello_world.html``，添加检测密钥。
 
-4. 在本地浏览器会话中打开 ``hello_world.html``。 此时会创建单个页面视图。 可以刷新浏览器，生成多个测试性的页面视图。
+4. 在本地浏览器会话中打开 ``hello_world.html``。 此操作创建单个 pageview。 可以刷新浏览器，生成多个测试性的页面视图。
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
 
-1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”  页（已在其中检索到检测密钥），查看有关当前正在运行的应用程序的详细信息。 概览页上的四个默认图表局限于服务器端应用程序数据。 由于我们要检测客户端/浏览器端与 JavaScript SDK 的交互，因此该特定视图不会应用，除非我们也安装了服务器端 SDK。
+1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”  页，查看当前正在运行的应用程序的相关详细信息。 “概述”  页面是你检索你的检测密钥的位置。 概览页上的四个默认图表局限于服务器端应用程序数据。 由于我们要检测客户端/浏览器端与 JavaScript SDK 的交互，因此该特定视图不会应用，除非我们也安装了服务器端 SDK。
 
-2. 单击![“应用程序映射”图标](media/website-monitoring/006.png)  “Analytics”。  这将打开“Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 若要查看与客户端浏览器请求相关的数据，请运行以下查询：
+2. 单击![“应用程序映射”图标](media/website-monitoring/006.png)  “Analytics”。  此操作将打开“Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 若要查看与客户端浏览器请求相关的数据，请运行以下查询：
 
     ```kusto
     // average pageView duration by name
@@ -132,13 +124,13 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续学习后续的快速入门或相关教程，请不要清除在本快速入门中创建的资源。 否则，如果不打算继续，请在 Azure 门户中执行以下步骤，删除本快速入门创建的所有资源。
+如果打算继续学习其他快速入门或相关教程，请不要清理在本快速入门中创建的资源。 否则，如果不打算继续，请在 Azure 门户中执行以下步骤，删除本快速入门创建的所有资源。
 
 > [!NOTE]
 > 如果使用了现有资源组，以下说明将不起作用，只需删除单个 Application Insights 资源即可。 请记住，无论何时删除资源组，都将删除作为该组成员的所有底层资源。
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
-2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。
+2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，并单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

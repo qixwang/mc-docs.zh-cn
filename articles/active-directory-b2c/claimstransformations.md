@@ -2,20 +2,20 @@
 title: ClaimsTransformations - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C 标识体验框架架构中 ClaimsTransformations 元素的定义。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ae264256d5333e6ac8feb6645cb0940c38248492
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 2076252cd1d843370b1fd888008bb135c97eb44b
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028084"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265945"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -51,7 +51,7 @@ ClaimsTransformation  元素包含以下元素：
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -62,7 +62,7 @@ ClaimsTransformation  元素包含以下元素：
 | 元素 | 出现次数 | 说明 |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | InputClaim  元素列表，这些元素用于指定被看作声明转换输入的声明类型。 每个元素都包含对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
-| InputParameters | 0:1 | InputParameter  元素列表，这些元素作为声明转换输入提供。  
+| InputParameters | 0:1 | InputParameter  元素列表，这些元素作为声明转换输入提供。
 | OutputClaims | 0:1 | OutputClaim  元素列表，这些元素用于指定在调用 ClaimsTransformation 后生成的声明类型。 每个元素都包含对在 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 
 ### <a name="inputclaims"></a>InputClaims
@@ -106,7 +106,7 @@ OutputClaims  元素包含以下元素：
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 预期的输出声明类型。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 OutputClaim  元素包含以下属性：
 
@@ -114,7 +114,7 @@ OutputClaim  元素包含以下属性：
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | 是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。
 | TransformationClaimType | 是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
- 
+
 如果输入声明和输出声明具有相同的类型（字符串或布尔值），可以将相同的输入声明用作输出声明。 在这种情况下，声明转换更改具有输出值的输入声明。
 
 ## <a name="example"></a>示例

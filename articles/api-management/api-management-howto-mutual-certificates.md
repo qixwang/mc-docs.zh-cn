@@ -14,18 +14,18 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: 969753d907900ef2f1cf876222357c5f219b636a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 6204ec34651dbfe76dcab8c5abc22f33d62a4146
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428631"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213723"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
 API 管理允许你使用客户端证书保护对 API 后端服务的访问。 本指南介绍如何在 Azure 门户的 Azure API 管理服务实例中管理证书。 它还说明了如何配置 API 以使用证书来访问后端服务。
 
-有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
+有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
 
 ## <a name="prerequisites"> </a>先决条件
 

@@ -9,21 +9,20 @@ origin.date: 4/23/2019
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 291a4a828a99bfadb040a3dd85adcd50187ff28e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: e4648552946722d21b18fb0336e0321f5525f0c4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028462"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850447"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
 
 ## <a name="supported-features"></a>支持的功能
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
+| Azure Functions                       | V1                | V2 和 V3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | 2\.5.0        | **2.9.1**         |
 | | | | 
 | **自动集合**        |                 |                   |               
 | &bull; 请求                     | 是             | 是               | 

@@ -1,19 +1,18 @@
 ---
 title: 管理解决方案中的视图 | Azure Docs
 description: '管理解决方案通常包括一个或多个用来可视化数据的视图。  本文介绍如何导出视图设计器所创建的视图，并将其包含在管理解决方案中。 '
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: v-lingwu
 origin.date: 08/22/2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 6ee54ca6b74581830ad368bf9a1b8ffd9a466326
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: d3af42bfe922486538640b2fb960e8294b009425
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970885"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850309"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
 > [!NOTE]
@@ -99,7 +98,7 @@ ms.locfileid: "72970885"
 导出的视图文件中的视图资源会在 **properties** 属性中包含两个元素，名称分别为**仪表板**和 **OverviewTile**它们包含视图的详细配置。  将这两个元素及其内容复制解决方案文件中的视图资源的 **properties** 元素。
 
 ## <a name="example"></a>示例
-例如，下面的示例演示包含视图的简单解决方案文件。  由于空间原因，省略号 (...) 表示**仪表板**和 **OverviewTile** 内容。
+例如，下面的示例演示包含视图的简单解决方案文件。  由于空间原因，会显示省略号 (...) 以表示 **Dashboard** 和 **OverviewTile** 内容。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

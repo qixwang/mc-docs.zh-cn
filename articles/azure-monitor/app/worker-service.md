@@ -1,20 +1,18 @@
 ---
 title: 适用于辅助角色服务应用（非 HTTP 应用）的 Application Insights
 description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
-ms.subservice: application-insights
 ms.topic: conceptual
 origin.date: 12/16/2019
 ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 19abd23d3eae3f9fc5cad6da4abd55359c429f67
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 159a0f62838a7d95757fbf4d1c03beb2d1061960
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600106"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850455"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
@@ -364,7 +362,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 |EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（默认间隔为 15 分钟）发送名为“HeartBeatState”的自定义指标，其中包含有关运行时等的信息，例如 .NET 版本、Azure 环境信息（如果适用）等。 | 是
 |AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序 - 一个 TelemetryProcessor，在采样发生之前发送有关请求/依赖项的聚合前指标。 | 是
 
-有关最新列表，请参阅 [`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
+有关最新列表，请参阅 [`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
 ### <a name="sampling"></a>采样
 

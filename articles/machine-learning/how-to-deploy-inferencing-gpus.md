@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 8789f050f1b8f4296ffa5057c9d7150b574b5d29
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: bbc94c222fd1c3833d36b57f052acd2730b22ed9
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155056"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850235"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,7 +172,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-有关详细信息，请参阅 [AksService.deploy_configuration](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
+有关详细信息，请参阅 [AksService.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) 的参考文档。
 
 ## <a name="define-the-inference-configuration"></a>定义推理配置
 

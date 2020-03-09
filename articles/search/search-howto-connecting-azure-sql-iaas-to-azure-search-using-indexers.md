@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: da930a89c5b0c4a3aa512cd2903b8cfa74a21e33
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 28229335f5cfb7c0d3d2a62d80f2e709d557400c
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501419"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850230"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接
 
@@ -76,7 +76,7 @@ IP 寻址会产生一些挑战，如果了解问题和潜在解决方法，则�
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>限制对 Azure 认知搜索的访问
 强烈建议你在 ACL 中限制对搜索服务的 IP 地址及 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围的访问，而不是使 SQL Azure VM 对所有连接请求开放。
 
-通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.chinacloudapi.cn`）进行 ping 操作，可找到 IP 地址。
+通过对搜索服务的 FQDN（例如 `<your-search-service-name>.search.azure.cn`）进行 ping 操作，可找到 IP 地址。
 
 可以使用[可下载的 JSON 文件](https://docs.azure.cn/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)或通过[服务标记发现 API](https://docs.azure.cn/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) 找到 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags)的 IP 地址范围。 IP 地址范围每周更新一次。
 

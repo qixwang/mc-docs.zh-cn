@@ -1,8 +1,6 @@
 ---
 title: 升级 Azure Application Insights Snapshot Debugger
 description: 如何在 Azure 应用服务上或通过 Nuget 包将 Snapshot Debugger for .NET 应用升级到最新版本
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 03/28/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.reviewer: mbullwin
-ms.openlocfilehash: af4cecefd472e3cd4eb5478651d88f0a0f008774
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 4920468e410fa326166d21d69024d7261eb310b4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600112"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850373"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>升级 Snapshot Debugger
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 6b563f3b7842754ad4cc0b3c48e65110d90893fb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4b168d47d2b19a15417c4a4634fa4d8ac9c33763
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335507"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850559"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>将建议或自动完成添加到 Azure 认知搜索应用程序
 
@@ -161,7 +161,7 @@ $(function () {
 
 打开 Controllers 目录下的 **HomeController.cs** 文件。 
 
-首先会发现，名为 `InitSearch` 的类的顶部有一个方法。 此方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)。
+首先会发现，名为 `InitSearch` 的 类的顶部有一个方法。 此方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)。
 
 在第 41 行可以看到 Suggest 函数。 该函数基于 [DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)。
 
@@ -277,8 +277,8 @@ $(function () {
 REST 调用使用 URI 来指定发出的是[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)还是[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions) API 调用。 以下 URI 分别位于第 9 和第 10 行。
 
 ```javascript
-var suggestUri = "https://" + searchServiceName + ".search.chinacloudapi.cn/indexes/" + indexName + "/docs/suggest?api-version=" + apiVersion;
-var autocompleteUri = "https://" + searchServiceName + ".search.chinacloudapi.cn/indexes/" + indexName + "/docs/autocomplete?api-version=" + apiVersion;
+var suggestUri = "https://" + searchServiceName + ".search.azure.cn/indexes/" + indexName + "/docs/suggest?api-version=" + apiVersion;
+var autocompleteUri = "https://" + searchServiceName + ".search.azure.cn/indexes/" + indexName + "/docs/autocomplete?api-version=" + apiVersion;
 ```
 
 在 148 行，可以找到调用 `autocompleteUri` 的脚本。 对 `suggestUri` 的首次调用位于第 39 行。

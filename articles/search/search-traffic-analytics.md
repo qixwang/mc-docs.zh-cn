@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/11/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 7ac4dc4dc0a7dd7caac5376d18f5f0e05e415e89
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 7be6c940d60d1ae000ff8a6d91828a8621a6abb4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501464"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850611"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>在 Azure 认知搜索中实现搜索流量分析
 
@@ -85,7 +85,8 @@ ms.locfileid: "77501464"
 
     // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
 
-    var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+    var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>);
+    Client.SearchDnsSuffix = "search.azure.cn";
     var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
     var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
     IEnumerable<string> headerValues;
@@ -107,7 +108,7 @@ ms.locfileid: "77501464"
 **SearchServiceName**：(string) 搜索服务名称 **SearchId**：(guid) 搜索查询的唯一标识符（进入搜索响应） **IndexName**：(string) 要查询的搜索服务索引 **QueryTerms**：(string) 用户输入的搜索词 **ResultCount**：(int) 返回的文档数（进入搜索响应）**ScoringProfile**：(string) 所用计分概要文件的名称（如果有计分概要文件）
 
 > [!NOTE]
-> 请通过向搜索查询添加 $count=true 来请求用户生成查询的计数。 请在[此处](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)查看详细信息
+> 请通过向搜索查询添加 $count=true 来请求用户生成查询的计数。 请在[此处](https://docs.microsoft.com/rest/api/searchservice/search-documents#counttrue--false)查看详细信息。
 >
 
 > [!NOTE]

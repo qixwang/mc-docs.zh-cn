@@ -16,12 +16,12 @@ origin.date: 03/14/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anilmur
-ms.openlocfilehash: 732467b740a8be01b7b33289ebe2210ab874d180
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 882876f5cbd02ad16fbdd2bd9f467b230aaa57c1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494444"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850620"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "77494444"
 > [!NOTE]
 >  请考虑迁移到 TLS 1.2（首选 TLS 版本）。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保运行流式处理终结点。 有关详细信息，请参阅 [在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
@@ -140,7 +140,7 @@ ms.locfileid: "77494444"
 
 导航回 AMSE 工具，并右键单击要测试的频道。 在菜单中，将鼠标悬停在“播放预览”  上方，然后选择“使用 Azure Media Player”  。  
 
-    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
+![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
 
 如果流出现在播放器中，则编码器已正确配置，可以连接到 AMS。
 

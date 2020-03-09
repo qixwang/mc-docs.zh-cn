@@ -1,8 +1,6 @@
 ---
 title: 使用 Azure Application Insights 中的用户流分析用户导航模式 | Azure Docs
 description: 分析用户在 Web 应用的页面和功能之间导航的方式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 01/24/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 422a451bfb3ed0819b361904f9f5a53120e9ea8d
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: a348c27ab669f995546cc7c169641db464f70d9d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730488"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850352"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>使用 Application Insights 中的用户流分析用户导航模式
 

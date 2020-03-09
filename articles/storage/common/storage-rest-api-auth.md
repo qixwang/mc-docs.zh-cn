@@ -7,22 +7,22 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/01/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 25103ac19c687894c4511da870290d665bc0c5f2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 06e63565a8f4bfe8c2028460e1f27de4e38bc702
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028998"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412450"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
 本文介绍如何调用 Azure 存储 REST API，包括如何构建授权标头。 本文内容是从对 REST 无甚了解、而且也不知道如何进行 REST 调用的开发人员角度编写的。 了解如何调用 REST 操作后，即可利用这一知识使用任何其他的 Azure 存储 REST 操作。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 示例应用程序列出了存储帐户的 blob 容器。 若要尝试本文中的代码，需准备以下各项：
 
@@ -411,7 +411,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```

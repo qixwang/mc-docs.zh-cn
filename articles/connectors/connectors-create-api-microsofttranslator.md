@@ -17,12 +17,12 @@ ms.workload: na
 origin.date: 11/07/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: 18c9d8d7819fa581829dd6daa777324104405685
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 4e1ce34177c2a0f7b44c4eb5eefa289630d81f11
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52647158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304693"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Microsoft Translator 连接器入门
 连接到 Microsoft Translator，翻译文本、检测语言等。 通过 Microsoft Translator，可以： 
@@ -39,7 +39,7 @@ ms.locfileid: "52647158"
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/microsofttranslator/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/microsofttranslator/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

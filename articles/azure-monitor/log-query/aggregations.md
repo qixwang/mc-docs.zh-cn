@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志查询中的聚合 | Microsoft Docs
 description: 介绍 Azure Monitor 日志查询中的聚合函数，这些函数提供了有用的数据分析方式。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 48b6f544ab9560a2234897e35053f7dbcf06043c
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: f938784e300d47babaa29aa038bf6659c603fa32
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730466"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850282"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
 
@@ -27,7 +26,7 @@ ms.locfileid: "73730466"
 
 ## <a name="counts"></a>计数
 
-### <a name="count"></a>计数
+### <a name="count"></a>count
 在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数  。 结果将在名为“count_”的列中返回，除非为其指定特定名称  ：
 
 

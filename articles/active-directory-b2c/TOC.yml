@@ -68,6 +68,9 @@
         - name: 注册应用程序
           href: tutorial-register-applications.md
           displayName: 'SP, RP, service provider, connect'
+        - name: 注册 Graph 应用程序
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: 添加 Web API 应用程序
           href: add-web-application.md
         - name: 添加本机客户端应用程序
@@ -246,8 +249,12 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: 帐户管理
+        - name: 管理用户 - Microsoft Graph
           href: manage-user-accounts-graph-api.md
+          displayName: 'account, accounts'
+        - name: 使用 PowerShell 管理策略
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: 管理用户 - Azure 门户
       href: manage-users-portal.md
       displayName: 'create users, add users, delete users'
@@ -279,7 +286,9 @@
       displayName: 'cookies, SameSite'
     - name: 错误代码
       href: error-codes.md
-    - name: 启用计费
+    - name: Microsoft Graph API 操作
+      href: microsoft-graph-operations.md
+    - name: 计费模式
       href: billing.md
     - name: 威胁管理
       href: threat-management.md

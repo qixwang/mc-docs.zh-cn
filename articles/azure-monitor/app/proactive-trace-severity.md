@@ -1,19 +1,17 @@
 ---
 title: 跟踪严重性比下降 - Azure Application Insights
 description: 使用 Azure Application Insights 监视应用程序跟踪，以通过智能检测了解跟踪遥测中的异常模式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 11/27/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bc45e31c264a9d785b92046e8548cc40c252e918
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 7e2d7a90961737c6602fab26215ae4eed8d76535
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600115"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850380"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>跟踪严重性比下降（预览）
 

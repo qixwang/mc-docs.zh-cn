@@ -1,8 +1,6 @@
 ---
 title: 在 Azure Application Insights 中使用 Impact | Azure docs
 description: 分析不同的属性对应用部件的转换率造成的潜在影响。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 01/08/2019
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 5bdaeb4024bf5d8b483c0a36ae3645821a063469
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 07815286c552f3b99e2b9eac0cac1c941f4dfbfe
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730176"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850350"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -87,7 +85,7 @@ Impact 最终计算方式根据是按指标还是按维护分析而异。 使用
 - 若要启用使用体验，请首先发送[自定义事件](/azure-monitor/app/api-custom-events-metrics#trackevent)或[页面视图](/azure-monitor/app/api-custom-events-metrics#page-views)。
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [漏斗图](usage-funnels.md)
-    - [保留](usage-retention.md)
+    - [保留期](usage-retention.md)
     - [用户流](usage-flows.md)
     - [工作簿](../../azure-monitor/app/usage-workbooks.md)
     - [添加用户上下文](usage-send-user-context.md)

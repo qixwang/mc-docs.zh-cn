@@ -1,20 +1,18 @@
 ---
 title: Azure Monitor Application Insights NuGet 包
 description: 用于 ASP.NET、ASP.NET Core、Python 的 Azure Monitor Application Insights NuGet 包列表
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
 author: lingliw
 manager: digimobile
 origin.date: 10/16/2018
 ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f06b0a31a3d3202ad9652f4965e7b43f0566e01b
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 16dc2c278aee65e28ae9e4874f3db747dcc7f634
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600120"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850400"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 

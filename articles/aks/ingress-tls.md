@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 05/24/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
-ms.openlocfilehash: fb695a3ed2f62302cce698faa3118f0326193067
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: f5b56e422cf6b7c59896555d2d461f5d1d698ae4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500716"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304643"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -53,7 +53,7 @@ ms.locfileid: "70500716"
 > [!TIP]
 > 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For  下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，SSL 传递将不起作用。
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 ```console
 # Create a namespace for your ingress resources
@@ -65,10 +65,10 @@ helm install stable/nginx-ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 ```
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 在安装过程中，将为入口控制器创建一个 Azure 公共 IP 地址。 此公共 IP 地址在入口控制器的寿命期内是静态的。 如果你删除入口控制器，则公共 IP 地址分配会丢失。 如果你然后创建了另外的入口控制器，则会分配新的公共 IP 地址。 如果希望保持使用此公共 IP 地址，则可以改为[创建具有静态公共 IP 地址的入口控制器][aks-ingress-static-tls]。
 

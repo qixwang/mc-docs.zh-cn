@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Application Insights 监视 Node.js 服务 | Azure Docs
 description: 使用 Application Insights 监视 Node.js 服务的性能并诊断其问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 03/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fce5f331eee72bdf61ed9ed9cf0531d1215c11e4
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 3dd455acbbe740ac5cd6f432b5cd7297de12d166
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730530"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850402"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
@@ -208,7 +206,7 @@ server.on("listening", () => {
 <!--references-->
 
 [portal]: https://portal.azure.cn/
-[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
+[FAQ]: ../../azure-monitor/faq.md
 
 
 

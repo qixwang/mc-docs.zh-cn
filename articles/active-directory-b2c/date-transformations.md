@@ -2,20 +2,20 @@
 title: 自定义策略的日期声明转换示例
 description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的日期声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0d1049a07730851356ffa7d3a4d98aa2e5a63ac4
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 31aebb0b255dd3776380fcb27b612cf7d38eee7c
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531300"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265966"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -114,7 +114,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 - 输出声明：
     - **outputClaim**：1559347200（2019 年 1 月 1 日上午 12:00:00）
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 将 **DateTime** ClaimType 转换为 **Date** ClaimType。 声明转换会从日期中删除时间格式。
 
@@ -206,4 +206,3 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 - 输出声明：
     - 结果  ：true
 
-<!-- Update_Description: wording update -->

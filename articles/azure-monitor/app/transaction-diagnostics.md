@@ -1,8 +1,6 @@
 ---
 title: Azure Application Insights 事务诊断 | Azure Docs
 description: Application Insights 端到端事务诊断
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 01/19/2018
 ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: d1db4b151c01a3cc60f04d537a64ea0e36148284
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: c184fa779c07536bc4dab40f5de9dfe25a39e0e8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982136"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850355"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 

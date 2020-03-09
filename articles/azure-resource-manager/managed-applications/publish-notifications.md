@@ -6,12 +6,12 @@ author: rockboyfor
 origin.date: 11/01/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 295a4091ff71b3afa48a36b7225bfb16b65761f3
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: e8a427e9813c05cba7e548cb1b531a823305d879
+ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170739"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209156"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>提供通知的 Azure 托管应用程序
 
@@ -62,7 +62,8 @@ Azure 托管应用程序通知可让发布者根据托管应用程序实例的�
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>添加 Azure 市场托管应用程序通知
-有关详细信息，请参阅[创建 Azure 应用程序套餐](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md)。
+
+<!--Not Available on [Create an Azure application offer](../../marketplace/cloud-partner-portal/azure-applications/cpp-create-offer.md)-->
 
 ![Azure 门户中的 Azure 市场托管应用程序通知](./media/publish-notifications/marketplace-notifications.png)
 

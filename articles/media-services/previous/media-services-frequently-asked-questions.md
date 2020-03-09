@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 03/18/2019
 ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: b09db8a74b89ab210bef75b9cc4bf9dcf4e3d411
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 85237d4ba9ed64da2c36629253cdca588224a76d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494309"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850561"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>媒体服务 v2 常见问题解答
 
@@ -42,10 +42,6 @@ A:最常见的原因之一是，没有“正在运行”  状态下从其播放�
 问：我是否可以在实时流上进行合成操作？
 
 A:Azure 媒体服务当前不提供实时流上的合成操作，因此需要在计算机上进行预合成。
-
-问：我是否可以将 Azure CDN 与实时流式处理一起使用？
-
-A:媒体服务支持与 Azure CDN 集成（有关详细信息，请参阅[如何在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)）。  可以将实时传送视频流与 CDN 结合使用。 Azure 媒体服务提供平滑流式处理、HLS 和 MPEG-DASH 输出。 所有这些格式均使用 HTTP 来传输数据并从 HTTP 缓存中获益。 实时流式处理中，实际视频/音频数据被分为数个片段，并且单个片段缓存于 CDN 中。 唯一需要刷新的数据是清单数据。 CDN 定期刷新清单数据。
 
 问：Azure 媒体服务是否支持存储图像？
 

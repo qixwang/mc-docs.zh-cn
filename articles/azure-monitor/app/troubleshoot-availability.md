@@ -1,8 +1,6 @@
 ---
 title: 排查 Azure Application Insights 可用性测试问题 | Microsoft Docs
 description: 排查 Azure Application Insights 中的 Web 测试问题。 当网站不可用或响应速度缓慢时接收警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 09/19/2019
 ms.date: 09/20/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: e563213549921d2648d3d25d03fbcf367c5a60ad
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 634618c2e7cd2aceb760066243823f4e0cd17beb
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730492"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850353"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -94,7 +92,7 @@ ms.locfileid: "73730492"
 
 ### <a name="id-like-to-use-availability-tests-on-our-internal-server-that-runs-behind-a-firewall"></a>我希望在防火墙后面运行的内部服务器上使用可用性测试。
 
-   有两个可能的解决方案：
+   下面是两种可能的解决方案：
 
    * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](../../azure-monitor/app/ip-addresses.md)发出的传入请求。
    * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果将显示在“可用性 Web 测试”边栏选项卡中，但是与通过门户创建的测试相比，体验会略微简化。 自定义可用性测试还会在“分析”、“搜索”和“指标”中显示为可用性结果。

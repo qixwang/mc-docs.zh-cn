@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 05/24/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
-ms.openlocfilehash: 3d7c03bc40fedf0f3e8ac574c76f2e38fcf1f851
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 62dfbe4bdb89c8bf2ab24001159cdd2839fb69e1
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304637"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -50,7 +50,7 @@ ms.locfileid: "73068891"
 > [!TIP]
 > 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For  下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，SSL 传递将不起作用。
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 ```console
 # Create a namespace for your ingress resources
@@ -62,10 +62,10 @@ helm install stable/nginx-ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 ```
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 在安装过程中，将为入口控制器创建一个 Azure 公共 IP 地址。 此公共 IP 地址在入口控制器的寿命期内是静态的。 如果你删除入口控制器，则公共 IP 地址分配会丢失。 如果你然后创建了另外的入口控制器，则会分配新的公共 IP 地址。 如果希望保持使用此公共 IP 地址，则可以改为[创建具有静态公共 IP 地址的入口控制器][aks-ingress-static-tls]。
 

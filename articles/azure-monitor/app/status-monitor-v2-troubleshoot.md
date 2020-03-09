@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 代理故障排除和已知问题 | Microsoft Docs
 description: Application Insights 代理和故障排除已知问题的示例。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 04/23/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ad7a19061a3d9013e63040baa977a65de92dc949
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 4ba3a2ecc352a2d74ca2e6372ffec18ebf299fc0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730495"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850359"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 

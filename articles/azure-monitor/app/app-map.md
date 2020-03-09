@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 中的应用程序映射 | Azure 文档
 description: 使用应用程序映射监视复杂的应用程序拓扑
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 03/15/2019
 ms.date: 08/20/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: c054d64370250f42ca38599b968278cd9f2f7912
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 13d00be02f83341746340599f4251873329fd231
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028477"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850457"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 09/05/2017
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ec807c2b47de264e4b875c209029c5587d8ac015
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 4537ecefe3c9df08a5b7da14f3f959775b210b49
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028619"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412058"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -396,7 +396,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 | **BlobType** | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 BlockBlob 中包含追加 Blob。 |
 | **BlobTier** | Azure 存储提供了不同的访问层，允许以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**Hot**：热层</li> <li>**Cool**：冷层</li> <li>**存档**：存档层</li> <li>**Premium**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页 Blob 的层类型</li> <li>**标准**：标准页 Blob 的层类型</li> <li>**Untiered**：常规用途 v1 存储帐户的层类型</li> |
 | **GeoType** | 来自主要或辅助群集的事务。 可用值包括 **Primary** 和 **Secondary**。 从辅助租户读取对象时，该维度会应用到读取访问异地冗余存储 (RA-GRS)。 |
-| **ResponseType** | 事务响应类型。 可用的值包括： <br/> <li>**ClientOtherError**：除描述的错误以外的其他所有客户端错误。 </li> <li>**成功**：请求成功</li> |
+| **ResponseType** | 事务响应类型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：除描述的错误以外的其他所有服务器端错误 </li> <li>**AuthorizationError**：由于未经授权访问数据或者授权失败，经过身份验证的请求失败。 </li>  <li>**ClientOtherError**：除描述的错误以外的其他所有客户端错误。 </li> <li>**成功**：请求成功</li> |
 | **ApiName** | 操作的名称。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 有关所有操作名称，请参阅[文档](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
 | **身份验证** | 事务中所用的身份验证类型。 可用的值包括： <br/> <li>**AccountKey**：事务通过存储帐户密钥进行身份验证。</li> <li>**SAS**：事务通过共享访问签名进行身份验证。</li> <li>**OAuth**：事务通过 OAuth 访问令牌进行身份验证。</li> <li>**Anonymous**：事务以匿名方式请求。 不包括预检请求。</li> <li>**AnonymousPreflight**：事务为预检请求。</li> |
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 origin.date: 03/25/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: edd32d95a6be8f0a1b0ad61077fdae5820c29413
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 8a0478433ee987d639d90332f5e0fb68900f1a9a
+ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653514"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209161"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
 可以使用 Webhook 活动通过自定义代码控制管道的执行。 使用 Webhook 活动，客户可以调用终结点并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
@@ -105,7 +105,7 @@ timeout | 活动将等待多长时间才能调用 &#39;callBackUri&#39;。 活�
 ```json
 "authentication": {
     "type": "MSI",
-    "resource": "https://management.azure.com/"
+    "resource": "https://management.chinacloudapi.cn/"
 }
 ```
 

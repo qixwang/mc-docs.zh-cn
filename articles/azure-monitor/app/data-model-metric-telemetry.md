@@ -1,20 +1,18 @@
 ---
 title: 适用于指标遥测的数据模型 - Azure Application Insights
 description: 适用于指标遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 04/25/2017
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: 58447f9f2af4fa70a068de52c38fcb4fd8aafea2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 9e4c45dfa2725a586dcc6185baf70a9af0e79460
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028450"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850436"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 

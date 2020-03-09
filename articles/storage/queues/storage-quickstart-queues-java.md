@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 队列 Java v12 库创建队列并向队�
 author: WenJason
 ms.author: v-jay
 origin.date: 12/4/2019
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: d6e792c449667792bdd210a33341cb89a2d18d73
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 0a7962892ecd98c4b3adacc91ba7393e6aa88eee
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624441"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412594"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 
@@ -28,7 +28,7 @@ ms.locfileid: "75624441"
 * 接收和删除队列中的消息
 * 删除队列
 
-[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples)
+[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [示例](/storage/common/storage-samples-java?toc=%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>先决条件
 

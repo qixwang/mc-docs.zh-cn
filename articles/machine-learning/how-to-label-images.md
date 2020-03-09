@@ -3,20 +3,21 @@ title: 在标记项目中标记图像
 title.suffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习标记项目中使用数据标记工具。
 author: lobrien
-ms.author: laobri
+ms.author: v-yiso
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d5a285805986e42e0466e3f1dda004ea65e4cc04
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 059beb8986661275a2baac10d5caf53e2a892eda
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599629"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850217"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像
 
-项目管理员在 Azure 机器学习中[创建标记项目](/machine-learning/service/how-to-create-labeling-projects#create-a-labeling-project)后，你可以使用标记工具为机器学习项目快速准备数据。 本文介绍：
+项目管理员在 Azure 机器学习中[创建标记项目](/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)后，你可以使用标记工具为机器学习项目快速准备数据。 本文介绍：
 
 > [!div class="checklist"]
 > * 如何访问标签项目
@@ -114,5 +115,5 @@ ms.locfileid: "75599629"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[在 Azure 中训练图像分类模型](/machine-learning/service/tutorial-train-models-with-aml)
+* 了解[在 Azure 中训练图像分类模型](/machine-learning/tutorial-train-models-with-aml)
 * 了解如何[使用 Azure 和“快速 R-CNN”技术进行对象检测](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)

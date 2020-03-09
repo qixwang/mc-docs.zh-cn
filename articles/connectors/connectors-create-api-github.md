@@ -16,12 +16,12 @@ ms.workload: integration
 origin.date: 03/02/2018
 ms.author: v-yiso
 ms.date: 10/08/2018
-ms.openlocfilehash: c9453617aa1865fea612587c92cac777fc4539db
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.openlocfilehash: 5f10636862d1da804e182e55b0c598a981831487
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340986"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304694"
 ---
 # <a name="connect-to-github-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 GitHub
 
@@ -44,7 +44,7 @@ GitHub 是基于 Web 的 Git 存储库托管服务，它提供 Git 的所有分�
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看[连接器的参考页](/connectors/github/)。
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看[连接器的参考页](https://docs.microsoft.com/connectors/github/)。
 
 ## <a name="next-steps"></a>后续步骤
 

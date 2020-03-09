@@ -17,12 +17,12 @@ ms.workload: na
 origin.date: 11/07/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: 5384782595557567a2e21b3fb1c371910c0cd5a9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: ab5da515e9292e35da75393191c0acc973b35d0a
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52660758"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304697"
 ---
 # <a name="get-started-with-the-google-drive-connector"></a>Google Drive 连接器入门
 连接到 Google Drive，创建文件、获取行等。 通过 Google Drive，可以： 
@@ -43,7 +43,7 @@ ms.locfileid: "52660758"
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/googledrive/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/googledrive/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

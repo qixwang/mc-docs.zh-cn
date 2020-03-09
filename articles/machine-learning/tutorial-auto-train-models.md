@@ -9,13 +9,14 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 6bc5b1c4414be77073ec4a0bbb23f8c10b41e703
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 02/10/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: adcc49cc30cdb66dd611ce8e634cb193f3c017f8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598762"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850590"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +37,7 @@ ms.locfileid: "75598762"
 ## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 机器学习工作区或 Notebook 虚拟机，请完成[设置教程](tutorial-1st-experiment-sdk-setup.md)。
-* 完成设置教程后，使用同一 Notebook 服务器打开 **tutorials/regression-automated-ml.ipynb** Notebook。
+* 完成设置教程后，使用同一笔记本服务器打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb  笔记本。
 
 如果你想要在自己的[本地环境](how-to-configure-environment.md#local)中运行此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` 以获取所需的包。
 
@@ -894,7 +895,7 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_minutes` 参数。
 
-|属性| 本教程中的值 |Description|
+|属性| 本教程中的值 |说明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
 |**experiment_timeout_minutes**|20 个|在试验结束之前，所有合并的迭代所花费的最大时间量（以分钟为单位）。|

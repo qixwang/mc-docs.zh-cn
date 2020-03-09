@@ -14,12 +14,12 @@ origin.date: 11/16/2017
 ms.date: 03/11/2019
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: 78f1e7e3ecd61b2b63ba0d44833d3a42dacd7133
-ms.sourcegitcommit: 1224987f3ad1179177c72dfcbb0a30edf8871974
+ms.openlocfilehash: 7ce805b2d0d677b7d2092c987d0c08ce1f9a5cf6
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196614"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213710"
 ---
 # <a name="set-up-rate-limit-policy"></a>设置速率限制策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "57196614"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -68,7 +68,7 @@ Set-AzureRmApiManagementPolicy -Context $context  -Policy $productValid -Product
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组和所有相关资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/en-us//powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
+如果不再需要资源组和所有相关资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com//powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

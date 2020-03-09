@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 03/20/2019
 ms.date: 04/01/2019
 ms.author: v-jay
-ms.openlocfilehash: ac9b175ef44c1f82376493e5b40a8c59344704c8
-ms.sourcegitcommit: 3aff96c317600eec69c4bf3b8853e9d4e44210b7
+ms.openlocfilehash: a3f17ee52c176e31c6db3c79ca7946a0cd08f09d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69670977"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850538"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合 
 
@@ -5497,7 +5497,7 @@ ms.locfileid: "69670977"
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"Name\": \"test-streamingendpoint-1\",\n    \"Description\": \"\",\n    \"ScaleUnits\": 0,\n    \"CustomHostNames\": [],\n    \"AccessControl\": null,\n    \"CdnEnabled\": true,\n    \"CdnProfile\": \"AzureMediaStreamingPlatformCdnProfile-StandardVerizon\",\n    \"CdnProvider\": \"StandardVerizon\",\n    \"CacheControl\":{    \n      \"MaxAge\":\"1800\"  \n\t},  \n   \"CrossSiteAccessPolicies\":{    \n      \"ClientAccessPolicy\":\"<access-policy><cross-domain-access><policy><allow-from http-request-headers='*'><domain uri='http://*' /></allow-from><grant-to><resource path='/' include-subpaths='false' /></grant-to></policy></cross-domain-access></access-policy>\",  \n      \"CrossDomainPolicy\":\"<?xml version='1.0'?><!DOCTYPE cross-domain-policy SYSTEM 'https://www.macromedia.com/xml/dtds/cross-domain-policy.dtd'><cross-domain-policy><allow-access-from domain='*' /></cross-domain-policy>\"  \n   }  \n}"
+                            "raw": "{\n    \"Name\": \"test-streamingendpoint-1\",\n    \"Description\": \"\",\n    \"ScaleUnits\": 0,\n    \"CustomHostNames\": [],\n    \"AccessControl\": null,\n     \"CacheControl\":{    \n      \"MaxAge\":\"1800\"  \n\t},  \n   \"CrossSiteAccessPolicies\":{    \n      \"ClientAccessPolicy\":\"<access-policy><cross-domain-access><policy><allow-from http-request-headers='*'><domain uri='http://*' /></allow-from><grant-to><resource path='/' include-subpaths='false' /></grant-to></policy></cross-domain-access></access-policy>\",  \n      \"CrossDomainPolicy\":\"<?xml version='1.0'?><!DOCTYPE cross-domain-policy SYSTEM 'https://www.macromedia.com/xml/dtds/cross-domain-policy.dtd'><cross-domain-policy><allow-access-from domain='*' /></cross-domain-policy>\"  \n   }  \n}"
                         },
                         "url": {
                             "raw": "{{RESTAPIEndpoint}}/StreamingEndpoints",

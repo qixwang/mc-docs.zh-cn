@@ -12,12 +12,12 @@ manager: davete
 ms.reviewer: larryfr
 origin.date: 01/30/2020
 ms.date: 03/09/2020
-ms.openlocfilehash: 6a3b1fe71ca260ee19fce77391e178b74b46435f
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: a7884475139d22382ace0fbed88515404da37b90
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155339"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850624"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>数据引入管道的 DevOps
 
@@ -29,7 +29,7 @@ ms.locfileid: "78155339"
 
 ![data-ingestion-pipeline](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
 
-在此方法中，训练数据存储在 Azure Blob 存储中。 Azure 数据工厂管道从输入 Blob 容器提取数据，转换数据，然后将数据保存到输出 Blob 容器。 此容器充当 Azure 机器学习服务的[数据存储](https://docs.microsoft.com/azure/machine-learning/concept-data#access-data-in-storage)。 准备好数据后，数据工厂管道将调用训练机器学习管道来训练模型。 在此特定示例中，数据转换由 Azure Databricks 群集上运行的 Python 笔记本执行。 
+在此方法中，训练数据存储在 Azure Blob 存储中。 Azure 数据工厂管道从输入 Blob 容器提取数据，转换数据，然后将数据保存到输出 Blob 容器。 此容器充当 Azure 机器学习服务的[数据存储](/machine-learning/concept-data#access-data-in-storage)。 准备好数据后，数据工厂管道将调用训练机器学习管道来训练模型。 在此特定示例中，数据转换由 Azure Databricks 群集上运行的 Python 笔记本执行。 
 
 ## <a name="what-we-are-building"></a>生成的内容
 

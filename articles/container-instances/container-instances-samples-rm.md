@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 03/07/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: ffaf1f02d49d108b35cabcf69105e3f11b304538
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 53dffc9a9eb1f22115eeb6facf6cc46961e3a05e
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965003"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213742"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure 资源管理器模板
 
@@ -24,7 +24,6 @@ ms.locfileid: "75965003"
 |-|-|
 | **应用程序** ||
 | [WordPress][app-wp] | 在容器组中创建 WordPress 网站及其 MySQL 数据库。 WordPress 站点内容和 MySQL 数据库会保存到 Azure 文件共享中。 还创建一个应用程序网关，以公开对 WordPress 的公用网络访问。 |
-| [带有 SQL Server 和 IIS 的 MS NAV][app-nav] | 使用全功能自包含 Dynamics NAV/Dynamics 365 Business Central 环境部署单个 Windows 容器。 |
 | **卷** ||
 | [emptyDir][vol-emptydir] | 部署两个共享 emptyDir 卷的 Linux 容器。 |
 | [gitRepo][vol-gitrepo] | 部署一个克隆 GitHub 存储库的 Linux 容器并将其作为卷装入。 |
@@ -35,6 +34,9 @@ ms.locfileid: "75965003"
 | [使用虚拟网络部署容器组（预览版）][net-vnet] | 部署新的虚拟网络、子网、网络配置文件和容器组。 |
 | **Azure 资源** ||
 | [创建 Azure 存储帐户和文件共享][az-files] | 在容器实例中使用 Azure CLI 创建存储帐户和 Azure 文件共享。
+
+<!--Not Available on Windows container-->
+<!--Not Available on | [MS NAV with SQL Server and IIS][app-nav] | Deploys a single Windows container with a fully featured self-contained Dynamics NAV / Dynamics 365 Business Central environment. |-->
 
 ## <a name="deployment"></a>部署
 

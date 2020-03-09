@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Application Insights 诊断运行时异常 | Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 查找并诊断应用程序中的运行时异常。
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lingliw
@@ -10,12 +9,12 @@ ms.custom: mvc
 origin.date: 09/20/2017
 ms.date: 07/10/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d50a1798792ddac2523b317692ec53b84cc8e688
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 6f54e3f764dba38d1658328956370b9cd134bac0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730330"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850287"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 

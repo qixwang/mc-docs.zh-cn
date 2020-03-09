@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: container-instances
 ms.topic: include
 origin.date: 03/20/2018
-ms.date: 01/15/2020
+ms.date: 03/02/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0f1152bf37ad73d585cd991289c7727a4c8c846a
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 4f370149b2fb7d02549abc09b63a0a6c8e0ff5a7
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964990"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213842"
 ---
 必须满足以下要求才能完成本教程：
 

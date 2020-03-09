@@ -8,21 +8,22 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+origin.date: 08/26/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b9df67eca82746a0eb746b3cceb7518412244285
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 1fd3567ddc6d3e47a8360f3b9c876c623f002231
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155027"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78849869"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本教程是由两个部分构成的系列教程的第二部分  。 在[上一个教程](tutorial-train-models-with-aml.md)中，训练了机器学习模型，然后在云中的工作区内注册了模型。  
 
-现在，你已准备好在 [Azure 容器实例](/container-instances/)中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
+现在，你已准备好在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/)中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
 
 在教程的此部分中，你将使用 Azure 机器学习完成以下任务：
 
@@ -40,7 +41,7 @@ ms.locfileid: "78155027"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：训练映像分类模型](tutorial-train-models-with-aml.md)。   然后，在克隆的教程文件夹中打开 img-classification-part2-deploy.ipynb 笔记本   。
+若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：训练映像分类模型](tutorial-train-models-with-aml.md)。   然后，在克隆的 tutorials/image-classification-mnist-data 文件夹中打开 img-classification-part2-deploy.ipynb 笔记本   。
 
 如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。  请确保已在环境中安装了 `matplotlib` 和 `scikit-learn`。 
 
@@ -389,6 +390,6 @@ service.delete()
 
 + 了解 [Azure 机器学习的所有部署选项](how-to-deploy-and-where.md)。
 + 了解如何[创建 Web 服务的客户端](how-to-consume-web-service.md)。
-
++  以异步方式[对大量数据进行预测](how-to-use-parallel-run-step.md)。
 + 使用 [Application Insights](how-to-enable-app-insights.md) 监视 Azure 机器学习模型。
 + 尝试学习[自动算法选择](tutorial-auto-train-models.md)教程。 

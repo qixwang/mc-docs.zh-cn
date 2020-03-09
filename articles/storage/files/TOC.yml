@@ -23,26 +23,16 @@
   items:
     - name: 规划 Azure 文件部署
       href: storage-files-planning.md
+    - name: 关于直接访问的网络注意事项
+      href: storage-files-networking-overview.md
     - name: 关于存储帐户
       href: ../common/storage-account-options.md?toc=%2fstorage%2ffiles%2ftoc.json
-    - name: 冗余
-      items:
-        - name: Azure 存储复制
-          href: ../common/storage-redundancy.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: 本地冗余存储
-          href: ../common/storage-redundancy-lrs.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: 异地冗余存储
-          href: ../common/storage-redundancy-grs.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: Azure 文件共享快照
       href: storage-snapshots-files.md
     - name: 可伸缩性和性能目标
       href: storage-files-scale-targets.md
-    - name: 安全性
-      items:
-        - name: 授权
-          href: ../common/storage-auth.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: Azure 存储加密
-          href: ../common/storage-service-encryption.md?toc=%2fstorage%2ffiles%2ftoc.json
+    - name: 静态加密
+      href: ../common/storage-service-encryption.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 开发
       items:
         - name: 管理并发
@@ -61,16 +51,16 @@
           href: ../common/storage-metrics-migration.md?toc=%2fstorage%2ffiles%2ftoc.json
         - name: 存储分析指标（经典）
           href: ../common/storage-analytics-metrics.md?toc=%2fstorage%2ffiles%2ftoc.json
-    - name: 灾难恢复和故障转移
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 常见问题
       href: storage-files-faq.md
 - name: 操作指南
   items:
     - name: 创建
       items:
-        - name: 创建标准文件共享
+        - name: 创建文件共享
           href: storage-how-to-create-file-share.md
+        - name: 启用大型文件共享
+          href: storage-files-how-to-create-large-file-share.md
         - name: 创建高级文件共享
           href: storage-how-to-create-premium-fileshare.md
     - name: 部署
@@ -89,22 +79,12 @@
       items:
         - name: 管理 Azure 独立云中的存储
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fstorage%2ffiles%2ftoc.json
+        - name: 更改复制数据的方式
+          href: ../common/redundancy-migration.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 监视
       items: null
     - name: 迁移
-      items:
-        - name: 将数据移入和移出 Azure 存储
-          href: ../common/storage-moving-data.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: 使用 AzCopy 移动数据
-          items:
-            - name: 入门
-              href: ../common/storage-use-azcopy-v10.md?toc=%2fstorage%2ffiles%2ftoc.json
-            - name: 与文件配合使用
-              href: ../common/storage-use-azcopy-files.md?toc=%2fstorage%2ffiles%2ftoc.json
-            - name: 配置、优化、故障排除
-              href: ../common/storage-use-azcopy-configure.md?toc=%2fstorage%2ffiles%2ftoc.json
-            - name: 通过数据移动库传输数据
-              href: ../common/storage-use-data-movement-library.md?toc=%2fstorage%2ffiles%2ftoc.json
+      items: null
     - name: 开发
       items:
         - name: 配置连接字符串
@@ -119,6 +99,18 @@
           href: storage-python-how-to-use-file-storage.md
     - name: 安全
       items:
+        - name: 管理存储帐户的加密密钥
+          items:
+            - name: 检查帐户的加密密钥模型
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 配置客户管理的加密密钥
+              items:
+                - name: 门户
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 配置防火墙和虚拟网络
           href: ../common/storage-network-security.md?toc=%2fstorage%2ffiles%2ftoc.json
         - name: 需要安全传输
@@ -177,59 +169,11 @@
       href: 'https://azure.github.io/azure-storage-ios/'
     - name: Android
       href: 'https://azure.github.io/azure-storage-android'
-    - name: AzCopy v10
-      items:
-        - name: azcopy
-          href: ../common/storage-ref-azcopy.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy bench
-          href: ../common/storage-ref-azcopy-bench.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy copy
-          href: ../common/storage-ref-azcopy-copy.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy doc
-          href: ../common/storage-ref-azcopy-doc.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy env
-          href: ../common/storage-ref-azcopy-env.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs
-          href: ../common/storage-ref-azcopy-jobs.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs clean
-          href: ../common/storage-ref-azcopy-jobs-clean.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs list
-          href: ../common/storage-ref-azcopy-jobs-list.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs remove
-          href: ../common/storage-ref-azcopy-jobs-remove.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs resume
-          href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy jobs show
-          href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy list
-          href: ../common/storage-ref-azcopy-list.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy login
-          href: ../common/storage-ref-azcopy-login.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy logout
-          href: ../common/storage-ref-azcopy-logout.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy make
-          href: ../common/storage-ref-azcopy-make.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy remove
-          href: ../common/storage-ref-azcopy-remove.md?toc=%2fstorage%2ffiles%2ftoc.json
-        - name: azcopy sync
-          href: ../common/storage-ref-azcopy-sync.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: Resource Manager 模板
       displayName: arm
       href: 'https://docs.microsoft.com/azure/templates/microsoft.storage/allversions'
 - name: 资源
   items:
-    - name: Azure 存储资源管理器
-      items:
-        - name: 下载存储资源管理器
-          href: 'https://azure.microsoft.com/features/storage-explorer/'
-        - name: 存储资源管理器入门
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: 存储资源管理器发行说明
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: 排查存储资源管理器问题
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fstorage%2fblobs%2ftoc.json
-        - name: 存储资源管理器可访问性
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fstorage%2fblobs%2ftoc.json
     - name: Azure 存储的定价
       href: 'https://azure.cn/pricing/details/storage/'
     - name: Azure 定价计算器

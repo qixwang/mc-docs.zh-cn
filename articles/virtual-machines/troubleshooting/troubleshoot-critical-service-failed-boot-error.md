@@ -1,5 +1,5 @@
 ---
-title: 启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”| Azure
+title: 启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
 description: 了解如何解决在启动时出现的“0x0000005A-关键服务失败”错误 | Azure
 services: virtual-machines-windows
 documentationCenter: ''
@@ -11,20 +11,20 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/08/2018
-ms.date: 11/11/2019
+ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9372fbc0d66e784dbaff195324e4245dd9bb7458
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: fcb10ca5fcd087e134ed56b61d39e853a7bcb778
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116889"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850593"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
 本文介绍在 Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误， 并提供用于解决问题的故障排除步骤。 
 
 > [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
 
 ## <a name="symptom"></a>症状 
 

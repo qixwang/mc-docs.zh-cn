@@ -1,8 +1,6 @@
 ---
 title: 监视任何网站的可用性和响应能力 | Azure Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 09/16/2019
 ms.date: 09/20/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: 6e44f7db76a023a0ab709a6644ada2796b3bb798
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 25481489bc68643f8e5f05df20b733567f0b4c9b
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730532"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850403"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 

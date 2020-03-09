@@ -1,22 +1,19 @@
 ---
 title: 从 Azure 存储下载大量随机数据 | Microsoft Docs
 description: 了解如何使用 Azure SDK 从 Azure 存储帐户下载大量随机数据
-services: storage
 author: WenJason
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 02/20/2018
-ms.date: 04/08/2019
+ms.date: 03/09/2020
 ms.author: v-jay
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: f7bb9523d1e572c38b0eef977dc5c9cfc351a0fe
-ms.sourcegitcommit: b7cefb6ad34a995579a42b082dcd250eb79068a2
+ms.openlocfilehash: 8d17647685b263595a44dc6bdb9536eafb9ca953
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890163"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411391"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>从 Azure 存储下载大量随机数据
 
@@ -31,7 +28,7 @@ ms.locfileid: "58890163"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须先完成以前的“存储”教程：[将大量随机数据以并行方式上传到 Azure 存储][previous-tutorial]。
+若要完成本教程，必须先完成以前的“存储”教程：[将大量随机数据并行上传到 Azure 存储][previous-tutorial]。
 
 ## <a name="remote-into-your-virtual-machine"></a>远程登录到虚拟机
 
@@ -61,7 +58,7 @@ public static void Main(string[] args)
         UploadFilesAsync().GetAwaiter().GetResult();
 
         // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.azure.cn/storage/blobs/storage-blob-scaleable-app-download-files.
+        // initially to support the tutorial at https://docs.azure.cn/storage/blobs/storage-blob-scalable-app-download-files.
         // DownloadFilesAsync().GetAwaiter().GetResult();
     }
     catch (Exception ex)
@@ -72,7 +69,7 @@ public static void Main(string[] args)
     finally
     {
         // The following function will delete the container and all files contained in them.  This is commented out initially
-        // As the tutorial at https://docs.azure.cn/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
+        // As the tutorial at https://docs.azure.cn/storage/blobs/storage-blob-scalable-app-download-files has you upload only for one tutorial and download for the other. 
         if (!exception)
         {
             // DeleteExistingContainersAsync().GetAwaiter().GetResult();
@@ -99,10 +96,10 @@ dotnet build
 dotnet run
 ```
 
-应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器。 它使用容器中的 [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法每次循环访问 10 个 blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法将它们下载到本地计算机。
+应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器  。 它使用容器中的 [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法每次循环访问 10 个 blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法将它们下载到本地计算机。
 下表显示了每个 blob 下载完成后为其定义的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet)。
 
-|属性|值|说明|
+|属性|Value|说明|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| 是| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。 |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| 该属性确定是否计算和存储 MD5 哈希。   |

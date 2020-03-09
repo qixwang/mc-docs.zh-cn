@@ -8,13 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 142f8398e09a457858ce9e516a49dc910c28cfa5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: fa1cb0764169f8dc6f4228aa1b1290d50068033a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598727"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850193"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,11 +34,13 @@ ms.locfileid: "75598727"
 
 ## <a name="create-a-real-time-inference-pipeline"></a>创建实时推理管道
 
-若要部署管道，必须先将训练管道转换为实时推理管道。 此过程会删除训练模块，并为推理请求添加输入和输出。
+若要部署管道，必须先将训练管道转换为实时推理管道。 此过程会删除训练模块，并添加 Web 服务输入和输出以处理请求。
 
 ### <a name="create-a-real-time-inference-pipeline"></a>创建实时推理管道
 
 1. 在管道画布上方，选择“创建推理管道” > “实时推理管道”   。
+
+    ![显示“创建管道”按钮位置的屏幕截图](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
 
     管道现在应如下所示： 
 
@@ -48,17 +51,13 @@ ms.locfileid: "75598727"
     * 训练的模型在模块调色板中存储为“数据集”模块。  可以在“我的数据集”下找到它。 
     * 将删除“训练模型”和“拆分数据”等训练模块。  
     * 保存的训练模型已添加回管道中。
-    * 已添加“Web 服务输入”  和  “Web 服务输出”模块。 这些模块显示用户数据进入模型的位置，以及返回数据的位置。
+    * 已添加“Web 服务输入”  和  “Web 服务输出”模块。 这些模块显示用户数据进入管道的位置，以及返回数据的位置。
 
     > [!NOTE]
-    > *训练管道*保存在管道画布顶部的新选项卡下。 它也可作为已发布管道显示在设计器中。
+    > 默认情况下，“Web 服务输入”将需要与用于创建预测管道的训练数据相同的数据架构  。 在此方案中，价格包含在架构内。 但是，在预测过程中不会将价格用作因素。
     >
 
 1. 选择“运行”，并使用在第一部分使用过的相同计算目标和试验  。
-
-1. 选择“评分模型”模块。 
-
-1. 在属性窗格中选择“输出” > “可视化”，验证模型是否仍有效。   此时会显示原始数据，以及预测的价格（“评分标签”）。
 
 1. 选择“部署”。 
 

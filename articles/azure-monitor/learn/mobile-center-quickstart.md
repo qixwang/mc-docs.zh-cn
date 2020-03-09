@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Monitor Application Insights 监视移动应用
 description: 提供有关快速安装移动应用以使用 Azure Monitor Application Insights 和 App Center 进行监视的说明
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: lingliw
@@ -10,12 +9,12 @@ origin.date: 10/03/2018
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: cb3826e707bdffb01121d0ac88a23fb36d97afc4
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 8e86769c508ff8bf7ab1512006d7b64c75c01649
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599922"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850301"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 

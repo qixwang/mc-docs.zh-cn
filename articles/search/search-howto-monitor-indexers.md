@@ -9,13 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 6178c8b510240b7146b706f95d16e049c7548e96
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 0d2e116d0abdb1a2a1963da12db25648bd18d5f6
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336526"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850570"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何监视 Azure 认知搜索索引器的状态和结果
 
@@ -73,7 +73,7 @@ Azure 认知搜索提供有关每个索引器的当前和历史运行的状态�
 
    ![索引器详细信息和错误](media/search-monitor-indexers/indexer-execution-error.png "索引器详细信息和错误")
 
-警告经常会出现在某些类型的索引器上，不一定表示出现了问题。
+警告经常会出现在某些类型的索引器上，不一定表示出现了问题。 例如，当图像或 PDF 文件不包含任何有待处理的文本时，使用认知服务的索引器可能会报告警告。
 
 有关调查索引器错误和警告的详细信息，请参阅[排查 Azure 认知搜索中的常见索引器问题](search-indexer-troubleshooting.md)。
 
@@ -83,7 +83,7 @@ Azure 认知搜索提供有关每个索引器的当前和历史运行的状态�
 
 可以使用[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
-    GET https://[service name].search.chinacloudapi.cn/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.azure.cn/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
 响应包含总体索引器状态、最后一次（或正在进行的）索引器调用以及最近索引器调用的历史记录。

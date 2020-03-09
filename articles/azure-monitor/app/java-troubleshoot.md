@@ -1,20 +1,18 @@
 ---
 title: 在 Java Web 项目中排查 Application Insights 问题
 description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 03/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ba4071b921d930fc166f5d7ce9b14fecebd3f021
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 54f3a02a47b6dcfdf126b65f7a3c788fbb579d64
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600143"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850410"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -24,7 +22,7 @@ ms.locfileid: "75600143"
 
 * 如果依赖项 `<version>` 元素使用包含通配符字符的模式（例如(Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.0.+'`），则尝试改为指定特定版本，如 `2.0.1`。 请参阅最新版本的[发行说明](https://github.com/Microsoft/ApplicationInsights-Java/releases)。
 
-## <a name="no-data"></a>没有数据
+## <a name="no-data"></a>无数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
 
 * 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
@@ -76,7 +74,7 @@ ms.locfileid: "75600143"
     config.setTrackingIsDisabled(true);
 ```
 
-**或**
+**Or**
 
 更新 ApplicationInsights.xml（位于项目的 resources 文件夹中）。 在根节点下添加以下代码：
 

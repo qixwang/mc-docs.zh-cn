@@ -7,23 +7,24 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: laobri
-ms.author: copeters
+ms.author: v-yiso
 author: lostmygithubaccount
-ms.date: 11/12/2019
+origin.date: 11/12/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 864419b88c108c3cb8c56c5c5bfad5e13d5dfffb
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 3aef99ea8c76f8e86a974340f531cdb00fe43d66
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599648"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850595"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> Azure 机器学习监视 SDK 即将停用。 目前使用该 SDK 监视模型中数据偏移的开发人员仍适合使用该 SDK。 但对于新客户，我们建议使用简化的 [Application Insights 数据监视功能](/machine-learning/service/how-to-enable-app-insights)。
+> Azure 机器学习监视 SDK 即将停用。 目前使用该 SDK 监视模型中数据偏移的开发人员仍适合使用该 SDK。 但对于新客户，我们建议使用简化的 [Application Insights 数据监视功能](/machine-learning/how-to-enable-app-insights)。
 
 本文介绍如何从 Azure 机器学习收集输入模型数据。 此外，介绍如何将输入数据部署到 Azure Kubernetes 服务 (AKS) 群集，并将输出数据存储在 Azure Blob 存储中。
 
@@ -223,27 +224,3 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 开始基于模型数据生成自定义报表。
 
-### <a name="analyze-model-data-using-azure-databricks"></a>使用 Azure Databricks 分析模型数据
-
-1. 创建一个 [Azure Databricks 工作区](/azure-databricks/quickstart-create-databricks-workspace-portal)。
-
-1. 转到该 Databricks 工作区。
-
-1. 在 Databricks 工作区中，选择“上传数据”。 
-
-    [![选择 Databricks“上传数据”选项](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
-
-1. 选择“创建新表”，然后选择“其他数据源” > “Azure Blob 存储” > “在笔记本中创建表”。    
-
-    [![Databricks 表创建](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
-
-1. 更新数据的位置。 以下是示例：
-
-    ```
-    file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
-    file_type = "csv"
-    ```
-
-    [![Databricks 设置](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
-
-1. 遵循模板中的步骤查看和分析数据。

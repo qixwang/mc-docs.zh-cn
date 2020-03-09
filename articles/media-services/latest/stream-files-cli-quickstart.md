@@ -14,12 +14,12 @@ ms.custom: ''
 origin.date: 08/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 4d9531e774e448df2a0a754857c5d7e7d8200b38
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 9506d4666d420347db6128bd9f1eb01de60953a4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125547"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850191"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - CLI
 
@@ -97,9 +97,6 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 {
   "accessControl": null,
   "availabilitySetName": null,
-  "cdnEnabled": true,
-  "cdnProfile": "AzureMediaStreamingPlatformCdnProfile-StandardVerizon",
-  "cdnProvider": "StandardVerizon",
   "created": "2019-02-06T21:58:03.604954+00:00",
   "crossSiteAccessPolicies": null,
   "customHostNames": [],

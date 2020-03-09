@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/04/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: fe0765d137076584b4d5e8f41839e4416e5a2ad6
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: a1c979ce0846b07c55453cd414de687c9225e62d
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028889"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412261"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -28,7 +28,7 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 在使用 Azure 资源的托管标识对 VM 中 Blob 和队列的访问权限进行授权之前，必须首先在 VM 上启用针对 Azure 资源的托管标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
 
-- [Azure 门户](/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+- [Azure 门户](/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)

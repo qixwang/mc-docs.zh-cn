@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
-ms.openlocfilehash: ca971b89148a57ec0d26889a8cd8636f40fee92e
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 0926d2daaef95e61dec6bd0847bef50de29f8de1
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52644404"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213717"
 ---
 # <a name="generate-shared-access-signature"></a>生成共享访问签名
 
@@ -27,10 +27,10 @@ ms.locfileid: "52644404"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
-<!-- The policy defined in this file shows how to generate Shared Access Signature (https://docs.azure.cn/en-us/storage/common/storage-dotnet-shared-access-signature-part-1) using expressions. -->
+<!-- The policy defined in this file shows how to generate Shared Access Signature (https://docs.azure.cn/storage/common/storage-dotnet-shared-access-signature-part-1) using expressions. -->
 <!-- The snippet forwards the request to Azure storage with rewrite-uri policy. -->
 
 <!-- Copy the following snippet into the inbound section. -->
@@ -63,7 +63,7 @@ ms.locfileid: "52644404"
         </set-header>
 
         <!-- Beginning with version 2009-09-19, the Table service requires that all REST calls include the DataServiceVersion and MaxDataServiceVersion headers. -->
-        <!-- See https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/setting-the-odata-data-service-version-headers for more information. -->
+        <!-- See https://docs.microsoft.com/rest/api/storageservices/fileservices/setting-the-odata-data-service-version-headers for more information. -->
         <set-header name="MaxDataServiceVersion" exists-action="override">
             <value>3.0</value>
         </set-header>
@@ -84,7 +84,7 @@ ms.locfileid: "52644404"
             }" /-->
 
         <set-variable name="StringToSign" value="@{
-                // https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/authentication-for-the-azure-storage-services
+                // https://docs.microsoft.com/rest/api/storageservices/fileservices/authentication-for-the-azure-storage-services
                 // {VERB}\n{Content-MD5}\n{Content-Type}\n{Date}\n{CanonicalizedResource} e.g. "GET\n\n{0}\n{1}\n{2}",
                 return string.Format(
                 "GET\n\n{0}\n{1}\n{2}",
@@ -94,7 +94,7 @@ ms.locfileid: "52644404"
             }" />
 
         <set-variable name="SharedKey" value="@{
-                // https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/authentication-for-the-azure-storage-services
+                // https://docs.microsoft.com/rest/api/storageservices/fileservices/authentication-for-the-azure-storage-services
                 // Hash-based Message Authentication Code (HMAC) using SHA256 hash
                 System.Security.Cryptography.HMACSHA256 hasher = new System.Security.Cryptography.HMACSHA256(Convert.FromBase64String((string)context.Variables["accessKey"]));
                 return Convert.ToBase64String(hasher.ComputeHash(System.Text.Encoding.UTF8.GetBytes((string)context.Variables["StringToSign"])));

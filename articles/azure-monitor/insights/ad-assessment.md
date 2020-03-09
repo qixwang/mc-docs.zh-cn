@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Monitor 优化 Active Directory 环境 | Azure Docs
 description: 可以使用 Active Directory 运行状况检查解决方案定期评估环境的风险和运行状况。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 09/10/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1fc1cb178ab40115954aab92ab678336debdd382
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 2097fd62a8f8998e5d3d6ddb375036ce688acb12
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600105"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850335"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -65,7 +64,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 - Active Directory 服务接口 (ADSI)
 - Windows PowerShell
 - 文件数据
-- Windows Management Instrumentation (WMI)
+- Windows 管理规范 (WMI)
 - DCDIAG 工具 API
 - 文件复制服务 (NTFRS) API
 - 自定义 C# 代码

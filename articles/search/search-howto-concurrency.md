@@ -9,19 +9,19 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: b10c86d9694023910503323d1f4c4cc9025d4e82
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2206278c2fc332ecd9ec0fc5019f001619fb322d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334964"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850231"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 认知搜索中的并发
 
 管理索引和数据源等 Azure 认知搜索资源时，务必安全地更新资源，尤其是应用程序的不同组件并发访问资源的情况下。 当两个客户端在没有协调的情况下并发更新资源时，可能出现争用条件。 为防止此情况，Azure 认知搜索提供“乐观并发模型”。  对资源没有任何锁定。 相反，每个资源均带有一个 ETag 用于标识资源版本，便于创建避免意外覆盖的请求。
 
 > [!Tip]
-> [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 认知搜索中工作。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.chinacloudapi.cn`，服务名称是 `myservice`。
+> [示例 C# 解决方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念代码阐释了并发控制如何在 Azure 认知搜索中工作。 该代码会创建调用并发控制的条件。 对大多数开发人员而言，读取[以下代码片段](#samplecode)可能就已足够，但若想运行它，请编辑 appsettings.json，以添加服务名称和管理员 API 密钥。 假设服务 URL 为 `http://myservice.search.azure.cn`，服务名称是 `myservice`。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -45,123 +45,124 @@ ms.locfileid: "75334964"
 + 如果资源不复存在，则更新将失败
 + 如果资源版本更改，更新将失败
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>[DotNetETagsExplainer 程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的示例代码
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>[DotNetETagsExplainer 程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的示例代码
 
-```
-    class Program
+```csharp
+class Program
+{
+    // This sample shows how ETags work by performing conditional updates and deletes
+    // on an Azure Cognitive Search index.
+    static void Main(string[] args)
     {
-        // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Cognitive Search index.
-        static void Main(string[] args)
+        IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+        IConfigurationRoot configuration = builder.Build();
+
+        SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+
+        Console.WriteLine("Deleting index...\n");
+        DeleteTestIndexIfExists(serviceClient);
+
+        // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
+        // of the resource you're working on. When you first create a resource such as an index, its ETag is
+        // empty.
+        Index index = DefineTestIndex();
+        Console.WriteLine(
+            $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
+
+        // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
+        // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
+        // blank ETag.
+        Console.WriteLine("Creating index...\n");
+        index = serviceClient.Indexes.Create(index);
+        
+        Console.WriteLine($"Test index created; Its ETag should be populated. ETag: '{index.ETag}'");
+
+        // ETags let you do some useful things you couldn't do otherwise. For example, by using an If-Match
+        // condition, we can update an index using CreateOrUpdate and be guaranteed that the update will only
+        // succeed if the index already exists.
+        index.Fields.Add(new Field("name", AnalyzerName.EnMicrosoft));
+        index =
+            serviceClient.Indexes.CreateOrUpdate(
+                index,
+                accessCondition: AccessCondition.GenerateIfExistsCondition());
+
+        Console.WriteLine(
+            $"Test index updated; Its ETag should have changed since it was created. ETag: '{index.ETag}'");
+
+        // More importantly, ETags protect you from concurrent updates to the same resource. If another
+        // client tries to update the resource, it will fail as long as all clients are using the right
+        // access conditions.
+        Index indexForClient1 = index;
+        Index indexForClient2 = serviceClient.Indexes.Get("test");
+
+        Console.WriteLine("Simulating concurrent update. To start, both clients see the same ETag.");
+        Console.WriteLine($"Client 1 ETag: '{indexForClient1.ETag}' Client 2 ETag: '{indexForClient2.ETag}'");
+
+        // Client 1 successfully updates the index.
+        indexForClient1.Fields.Add(new Field("a", DataType.Int32));
+        indexForClient1 =
+            serviceClient.Indexes.CreateOrUpdate(
+                indexForClient1,
+                accessCondition: AccessCondition.IfNotChanged(indexForClient1));
+
+        Console.WriteLine($"Test index updated by client 1; ETag: '{indexForClient1.ETag}'");
+
+        // Client 2 tries to update the index, but fails, thanks to the ETag check.
+        try
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
-            IConfigurationRoot configuration = builder.Build();
+            indexForClient2.Fields.Add(new Field("b", DataType.Boolean));
+            serviceClient.Indexes.CreateOrUpdate(
+                indexForClient2,
+                accessCondition: AccessCondition.IfNotChanged(indexForClient2));
 
-            SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
-
-            Console.WriteLine("Deleting index...\n");
-            DeleteTestIndexIfExists(serviceClient);
-
-            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
-            // of the resource you're working on. When you first create a resource such as an index, its ETag is
-            // empty.
-            Index index = DefineTestIndex();
-            Console.WriteLine(
-                $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
-
-            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
-            // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
-            // blank ETag.
-            Console.WriteLine("Creating index...\n");
-            index = serviceClient.Indexes.Create(index);
-            
-            Console.WriteLine($"Test index created; Its ETag should be populated. ETag: '{index.ETag}'");
-
-            // ETags let you do some useful things you couldn't do otherwise. For example, by using an If-Match
-            // condition, we can update an index using CreateOrUpdate and be guaranteed that the update will only
-            // succeed if the index already exists.
-            index.Fields.Add(new Field("name", AnalyzerName.EnMicrosoft));
-            index =
-                serviceClient.Indexes.CreateOrUpdate(
-                    index,
-                    accessCondition: AccessCondition.GenerateIfExistsCondition());
-
-            Console.WriteLine(
-                $"Test index updated; Its ETag should have changed since it was created. ETag: '{index.ETag}'");
-
-            // More importantly, ETags protect you from concurrent updates to the same resource. If another
-            // client tries to update the resource, it will fail as long as all clients are using the right
-            // access conditions.
-            Index indexForClient1 = index;
-            Index indexForClient2 = serviceClient.Indexes.Get("test");
-
-            Console.WriteLine("Simulating concurrent update. To start, both clients see the same ETag.");
-            Console.WriteLine($"Client 1 ETag: '{indexForClient1.ETag}' Client 2 ETag: '{indexForClient2.ETag}'");
-
-            // Client 1 successfully updates the index.
-            indexForClient1.Fields.Add(new Field("a", DataType.Int32));
-            indexForClient1 =
-                serviceClient.Indexes.CreateOrUpdate(
-                    indexForClient1,
-                    accessCondition: AccessCondition.IfNotChanged(indexForClient1));
-
-            Console.WriteLine($"Test index updated by client 1; ETag: '{indexForClient1.ETag}'");
-
-            // Client 2 tries to update the index, but fails, thanks to the ETag check.
-            try
-            {
-                indexForClient2.Fields.Add(new Field("b", DataType.Boolean));
-                serviceClient.Indexes.CreateOrUpdate(
-                    indexForClient2,
-                    accessCondition: AccessCondition.IfNotChanged(indexForClient2));
-
-                Console.WriteLine("Whoops; This shouldn't happen");
-                Environment.Exit(1);
-            }
-            catch (CloudException e) when (e.IsAccessConditionFailed())
-            {
-                Console.WriteLine("Client 2 failed to update the index, as expected.");
-            }
-
-            // You can also use access conditions with Delete operations. For example, you can implement an
-            // atomic version of the DeleteTestIndexIfExists method from this sample like this:
-            Console.WriteLine("Deleting index...\n");
-            serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
-
-            // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
-            // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Cognitive Search is idempotent.
-
-            // And we're done! Bye!
-            Console.WriteLine("Complete.  Press any key to end application...\n");
-            Console.ReadKey();
+            Console.WriteLine("Whoops; This shouldn't happen");
+            Environment.Exit(1);
+        }
+        catch (CloudException e) when (e.IsAccessConditionFailed())
+        {
+            Console.WriteLine("Client 2 failed to update the index, as expected.");
         }
 
-        private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+        // You can also use access conditions with Delete operations. For example, you can implement an
+        // atomic version of the DeleteTestIndexIfExists method from this sample like this:
+        Console.WriteLine("Deleting index...\n");
+        serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
+
+        // This is slightly better than using the Exists method since it makes only one round trip to
+        // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
+        // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
+        // Azure Cognitive Search is idempotent.
+
+        // And we're done! Bye!
+        Console.WriteLine("Complete.  Press any key to end application...\n");
+        Console.ReadKey();
+    }
+
+    private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+    {
+        string searchServiceName = configuration["SearchServiceName"];
+        string adminApiKey = configuration["SearchServiceAdminApiKey"];
+
+        SearchServiceClient serviceClient =
+            new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+        serviceClient.SearchDnsSuffix = "search.azure.cn";
+        return serviceClient;
+    }
+
+    private static void DeleteTestIndexIfExists(SearchServiceClient serviceClient)
+    {
+        if (serviceClient.Indexes.Exists("test"))
         {
-            string searchServiceName = configuration["SearchServiceName"];
-            string adminApiKey = configuration["SearchServiceAdminApiKey"];
-
-            SearchServiceClient serviceClient =
-                new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
-            return serviceClient;
+            serviceClient.Indexes.Delete("test");
         }
+    }
 
-        private static void DeleteTestIndexIfExists(SearchServiceClient serviceClient)
+    private static Index DefineTestIndex() =>
+        new Index()
         {
-            if (serviceClient.Indexes.Exists("test"))
-            {
-                serviceClient.Indexes.Delete("test");
-            }
-        }
-
-        private static Index DefineTestIndex() =>
-            new Index()
-            {
-                Name = "test",
-                Fields = new[] { new Field("id", DataType.String) { IsKey = true } }
-            };
+            Name = "test",
+            Fields = new[] { new Field("id", DataType.String) { IsKey = true } }
+        };
     }
 }
 ```

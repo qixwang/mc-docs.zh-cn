@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Pipelines 和 Azure Application Insights 连续监视 DevOps 发布管道 | Microsoft Docs
 description: 提供使用 Application Insights 快速设置连续监视的说明
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 ms.author: v-lingwu
 originate.date: 07/16/2019
 ms.date: 6/4/2019
 manager: digimobile
-ms.openlocfilehash: cb1225cf229c12b9a539874cc9d2d94e82a0f901
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: e7cb330a4705ffc5004e93d08813b71b5d7ef913
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730300"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850443"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 

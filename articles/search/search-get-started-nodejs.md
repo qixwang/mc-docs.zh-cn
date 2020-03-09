@@ -8,14 +8,14 @@ ms.author: v-tawe
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 035b109daa382ab9a67cf5c475216a893b0a3ac8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/25/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 06bce5367014a4823eb8af6c827f20a4f57a6ccc
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336176"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850097"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -32,24 +32,29 @@ ms.locfileid: "75336176"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门使用以下服务、工具和数据。
+我们使用了以下软件和服务来构建和测试本快速入门：
 
-+ [Node.js](https://nodejs.org)。
-+ [NPM](https://www.npmjs.com) 应由 Node.js 安装。
-+ 本文或[存储库中的 **quickstart** 目录](https://github.com/Azure-Samples/azure-search-javascript-samples/)提供了示例索引结构和匹配的文档。
++ [Node.js](https://nodejs.org)
+
++ [NPM](https://www.npmjs.com) 应由 Node.js 安装
+
++ 本文提供了一个示例索引结构和与之匹配的文档，这些内容也可以从[存储库的**快速入门**目录](https://github.com/Azure-Samples/azure-search-javascript-samples/)中获得
+
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 建议：
 
-* [Visual Studio Code](https://code.visualstudio.com)。
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * VSCode 的 [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 和 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 扩展。
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>获取密钥和 URL
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取搜索服务的名称。  可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.chinacloudapi.cn`，则服务名称为 `mydemo`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取搜索服务的名称。  可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.azure.cn`，则服务名称为 `mydemo`。
 
 2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
@@ -59,7 +64,7 @@ ms.locfileid: "75336176"
 
 所有请求要求在发送到服务的每个请求的标头中指定 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 首先打开 Powershell 控制台或者安装了 Node.js 的其他环境。
 
@@ -109,16 +114,17 @@ ms.locfileid: "75336176"
       }
     }
     ```
-创建用于保存搜索服务数据的 **azure_search_config.json** 文件：
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. 创建用于保存搜索服务数据的 **azure_search_config.json** 文件：
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 请将 `[SERVICE_NAME]` 值替换为搜索服务的名称。 将 `[ADMIN_KEY]` 和 `[QUERY_KEY]` 替换为前面记下的密钥值。 
 
@@ -289,7 +295,7 @@ module.exports = AzureSearchClient;
 这些方法中的第一个方法将返回索引本身的 URL。 将以下方法添加到类正文中：
 
 ```javascript
-getIndexUrl() { return `https://${this.searchServiceName}.search.chinacloudapi.cn/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
+getIndexUrl() { return `https://${this.searchServiceName}.search.azure.cn/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
 
 ```
 
@@ -404,7 +410,7 @@ const AzureSearchClient = require('./AzureSearchClient.js');
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -434,7 +440,7 @@ function sleep(ms) {
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();
@@ -476,7 +482,7 @@ run();
 在 Azure 认知搜索中，文档这一数据结构既是索引输入，也是查询输出。 需要将此类数据发布到索引。 这会使用不同的终结点，而不是上一步骤中执行操作时使用的终结点。 打开 **AzureSearchClient.js**，并在 `getIndexUrl()` 后面添加以下方法：
 
 ```javascript
- getPostDataUrl() { return `https://${this.searchServiceName}.search.chinacloudapi.cn/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
+ getPostDataUrl() { return `https://${this.searchServiceName}.search.azure.cn/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
 ```
 
 与 `AzureSearchClient.createIndexAsync(definition)` 一样，需要使用一个调用 `AzureSearchClient.request()` 的函数，并传入酒店数据作为其正文。 在 **AzureSearchClient.js** 中的 `createIndexAsync(definition)` 后面添加 `postDataAsync(hotelsData)`：
@@ -533,7 +539,7 @@ async postDataAsync(hotelsData) {
         {
             "HotelId": "3",
             "HotelName": "Triple Landscape Hotel",
-            "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+            "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
             "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
             "Category": "Resort and Spa",
             "Tags": ["air conditioning", "bar", "continental breakfast"],
@@ -658,7 +664,7 @@ const run = async () => {
 若要实现 `AzureSearchClient.queryAsync(query)`，请编辑文件 **AzureSearchClient.js**。 搜索操作需要使用不同的终结点，搜索词将变为 URL 参数，因此，请结合已编写的 `getIndexUrl()` 和 `getPostDataUrl()` 方法一起添加函数 `getSearchUrl(searchTerm)`。
 
 ```javascript
-getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.chinacloudapi.cn/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
+getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.azure.cn/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
  ```
 
 `queryAsync(searchTerm)` 函数还会访问 **AzureSearchClient.js**，并遵循与 `postDataAsync(data)` 和其他查询函数相同的结构： 

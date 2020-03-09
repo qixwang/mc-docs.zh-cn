@@ -6,15 +6,15 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 12/19/2019
-  ms.date: 01/13/2020
+  ms.date: 03/09/2020
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: fb88c2edc10a78e7464ad920b930342ec66cafe1
-  ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+  ms.openlocfilehash: 9016f3181884911272a88d50e58fec65753b80a5
+  ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/09/2020
-  ms.locfileid: "75776632"
+  ms.lasthandoff: 03/03/2020
+  ms.locfileid: "78238522"
 landingContent:
 - title: 关于 Azure 数据库迁移服务
   linkLists:
@@ -36,37 +36,37 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 迁移到 SQL 数据库单一数据库 - 联机
+    - text: 迁移到 SQL DB 单一数据库 - 联机
       url: tutorial-sql-server-azure-sql-online.md
-    - text: 迁移到 SQL 数据库单一数据库 - 脱机
+    - text: 迁移到 SQL DB 单一数据库 - 脱机
       url: tutorial-sql-server-to-azure-sql.md
-    - text: 迁移到 SQL 数据库托管实例 - 联机
+    - text: 迁移到 SQL DB 托管实例 - 联机
       url: tutorial-sql-server-managed-instance-online.md
-    - text: 迁移到 SQL 数据库托管实例 - 脱机
+    - text: 迁移到 SQL DB 托管实例 - 脱机
       url: tutorial-sql-server-to-managed-instance.md
-    - text: 将 RDS SQL Server 迁移到 SQL 数据库单一数据库/托管实例 - 联机
+    - text: 将 RDS SQL Server 迁移到 SQL DB 单一数据库/托管实例 - 联机
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: 已知问题 - 联机迁移到 SQL 数据库单一数据库
+    - text: 已知问题 - 联机迁移到 SQL DB 单一数据库
       url: known-issues-azure-sql-online.md
-    - text: 已知问题 - 联机迁移到 SQL 数据库托管实例
+    - text: 已知问题 - 联机迁移到 SQL DB 托管实例
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: 用于 SQL 数据库托管实例迁移的网络拓扑
+    - text: 用于 SQL DB 托管实例迁移的网络拓扑
       url: resource-network-topologies.md
-    - text: 用于从 SQL Server 联机迁移到 SQL 数据库托管实例的自定义角色
+    - text: 用于从 SQL Server 联机迁移到 SQL DB 托管实例的自定义角色
       url: resource-custom-roles-sql-db-managed-instance.md
 - title: 将开源数据库迁移到 Azure
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 迁移到 Azure Database for PostgreSQL - 单一服务器 - 联机
+    - text: 通过 CLI 迁移到 Azure DB for PostgreSQL
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: 将 RDS PostgreSQL 迁移到 Azure Database for PostgreSQL - 单一服务器 - 联机
+    - text: 将 RDS PostgreSQL 迁移到 Azure DB for PostgreSQL
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - text: 迁移到 Azure Database for MySQL - 联机
+    - text: 迁移到 Azure DB for MySQL - 联机
       url: tutorial-mysql-azure-mysql-online.md
-    - text: 将 RDS MySQL 迁移到 Azure Database for MySQL - 联机
+    - text: 将 RDS MySQL 迁移到 Azure DB for MySQL - 联机
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
     - text: 迁移到 Azure Cosmos DB Mongo API - 联机
       url: tutorial-mongodb-cosmos-db-online.md
@@ -74,10 +74,12 @@ landingContent:
       url: tutorial-mongodb-cosmos-db.md
   - linkListType: reference
     links:
-    - text: 已知问题 - 联机迁移到 Azure Database for PostgreSQL - 单一服务器
+    - text: 已知问题 - 联机迁移到 Azure DB for PostgreSQL
       url: known-issues-azure-postgresql-online.md
-    - text: 已知问题 - 联机迁移到 Azure Database for MySQL
+    - text: 已知问题 - 联机迁移到 Azure DB for MySQL
       url: known-issues-azure-mysql-online.md
+    - text: 已知问题 - 从 MongoDB 迁移到 Azure Cosmos DB
+      url: known-issues-mongo-cosmos-db.md
 - title: 工具和指南
   linkLists:
   - linkListType: reference

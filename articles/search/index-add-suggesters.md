@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4149e90a35f207aee81f35c168d2fa32215fea76
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 751b5a75f4e96e664ec45bf6fe93df2676f95b47
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336148"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850516"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>将建议器添加到 Azure 认知搜索中的自动提示索引
 
@@ -133,7 +133,7 @@ Azure 认知搜索将分析字段内容，以支持对单个字词进行查询�
 以下对自动完成 REST API 的调用演示了 API 的用法。 此示例有两个要点。 首先，与所有查询一样，操作是针对索引的文档集合执行的。 其次，可以添加查询参数。 尽管这两个 API 具有许多通用的查询参数，但列表对于每个 API 是不同的。
 
 ```http
-GET https://[service name].search.chinacloudapi.cn/indexes/[index name]/docs/autocomplete?[query parameters]  
+GET https://[service name].search.azure.cn/indexes/[index name]/docs/autocomplete?[query parameters]  
 api-key: [admin or query key]
 ```
 

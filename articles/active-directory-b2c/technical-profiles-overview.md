@@ -3,20 +3,20 @@ title: 自定义策略中的技术配置文件概述
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 的自定义策略中使用技术配置文件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4598679a0d0591aa1f0114323974a4feedeccb91
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 1d5e18c6ee10739c46a2520dd876333a26845b88
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531327"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266008"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -39,7 +39,7 @@ ms.locfileid: "77531327"
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
-- [一次性密码](one-time-password-technical-profile.md) - 为管理一次性密码的生成和验证提供支持。 
+- [一次性密码](one-time-password-technical-profile.md) - 为管理一次性密码的生成和验证提供支持。
 
 ## <a name="technical-profile-flow"></a>技术配置文件流
 
@@ -47,7 +47,7 @@ ms.locfileid: "77531327"
 
 ![说明技术配置文件流的示意图](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **单一登录 (SSO) 会话管理**-使用 [SSO 会话管理](custom-policy-reference-sso.md)还原技术配置文件的会话状态。 
+1. **单一登录 (SSO) 会话管理**-使用 [SSO 会话管理](custom-policy-reference-sso.md)还原技术配置文件的会话状态。
 1. **输入声明转换** - 从声明包中提取每个输入[声明转换](claimstransformations.md)的输入声明。  输入声明转换的输出声明可以是后续输入声明转换的输入声明。
 1. **输入声明** - 从声明包中提取声明并将其用于技术配置文件。 例如，[自断言技术配置文件](self-asserted-technical-profile.md)使用输入声明来预填充用户提供的输出声明。 REST API 技术配置文件使用输入声明将输入参数发送到 REST API 终结点。 Azure Active Directory 使用输入声明作为读取、更新或删除帐户的唯一标识符。
 1. 技术配置文件执行  - 技术配置文件与已配置的参与方交换声明。 例如：
@@ -63,7 +63,7 @@ ms.locfileid: "77531327"
 
 ## <a name="technical-profile-inclusion"></a>技术配置文件包含
 
-技术配置文件可以包括另一个技术配置文件，用以更改设置或添加新功能。  `IncludeTechnicalProfile` 元素是对基本技术配置文件的引用，可从中派生技术配置文件。 级别数没有限制。 
+技术配置文件可以包括另一个技术配置文件，用以更改设置或添加新功能。  `IncludeTechnicalProfile` 元素是对基本技术配置文件的引用，可从中派生技术配置文件。 级别数没有限制。
 
 例如，  AAD-UserReadUsingAlternativeSecurityId-NoError 技术配置文件包括 AAD-UserReadUsingAlternativeSecurityId  。 此技术配置文件将 `RaiseErrorIfClaimsPrincipalDoesNotExist` 元数据项设置为 `true`，并且如果目录中不存在社交帐户，则会引发错误。 **AAD-UserReadUsingAlternativeSecurityId-NoError** 将覆盖此行为并禁用错误消息。
 

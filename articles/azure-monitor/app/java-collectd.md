@@ -1,20 +1,18 @@
 ---
 title: 监视 Linux 上 Java Web 应用的性能 - Azure | Azure Docs
 description: 通过 Application Insights 的 CollectD 插件监视 Java 网站的扩展应用程序性能。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 03/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 115c34f204abd59420bc274699e86c5d768a1870
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 6d19b416fb3da1f441f0310c4e82b75f6d9a4ba9
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730477"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850415"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
@@ -121,7 +119,7 @@ ms.locfileid: "73730477"
 
 Application Insights 写入插件与某些读取插件不兼容。 Application Insights 插件需要浮点数时，有些插件有时会发送“NaN”。
 
-故障描述：collectd 日志显示包括“AI: ...SyntaxError:意外的令牌 N”的错误。
+症状：collectd 日志显示包括“AI: ...SyntaxError:意外的令牌 N”的错误。
 
 解决方法：排除由问题写入插件收集的数据。 
 

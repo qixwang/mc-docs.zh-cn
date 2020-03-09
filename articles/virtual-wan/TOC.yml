@@ -4,6 +4,10 @@
   items:
     - name: 关于虚拟 WAN
       href: virtual-wan-about.md
+    - name: 体系结构
+      items:
+        - name: 全球传输网络体系结构
+          href: virtual-wan-global-transit-network-architecture.md
 - name: 教程
   items:
     - name: 创建站点到站点连接
@@ -11,23 +15,41 @@
 - name: 概念
   items:
     - name: 位置与合作伙伴
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: 中心位置和合作伙伴
+          href: virtual-wan-locations-partners.md
+        - name: 面向合作伙伴的自动化指南
+          href: virtual-wan-configure-automation-providers.md
     - name: IPsec 策略
       href: virtual-wan-ipsec.md
-    - name: 体系结构
-      items:
-        - name: 全球传输网络体系结构
-          href: virtual-wan-global-transit-network-architecture.md
 - name: 操作指南
   items:
-    - name: 将流量从虚拟中心路由到 NVA
+    - name: 配置全局 VNet 对等互连
+      href: global-peering-vnet.md
+    - name: 创建基于 ExpressRoute 的 VPN 连接
+      href: vpn-over-expressroute.md
+    - name: 升级虚拟 WAN SKU
+      href: upgrade-virtual-wan.md
+    - name: 为用户 VPN 配置 Azure AD 租户
+      href: openvpn-azure-ad-tenant.md
+    - name: 为用户 VPN 启用多重身份验证 (MFA)
+      href: openvpn-azure-ad-mfa.md
+    - name: 为用户 VPN 配置 Azure AD 身份验证
+      href: virtual-wan-point-to-site-azure-ad.md
+    - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证
+      href: openvpn-azure-ad-tenant-multi-app.md
+    - name: 下载全局 VPN 配置文件和基于中心的 VPN 配置文件
+      href: global-hub-profile.md
+    - name: 配置路由
       items:
-        - name: Azure 门户
-          href: virtual-wan-route-table-portal.md
-        - name: Azure PowerShell
-          href: virtual-wan-route-table.md
-    - name: 虚拟 WAN 合作伙伴 - 自动化
-      href: virtual-wan-configure-automation-providers.md
+        - name: 将流量从虚拟中心路由到 NVA
+          items:
+            - name: Azure 门户
+              href: virtual-wan-route-table-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table.md
+        - name: 查看虚拟中心有效路由
+          href: effective-routes-virtual-hub.md
 - name: 参考
   items:
     - name: Azure PowerShell
@@ -41,7 +63,7 @@
     - name: 常见问题
       href: virtual-wan-faq.md
     - name: 订阅和服务限制
-      href: ../azure-subscription-service-limits.md?toc=%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvpn-gateway%2ftoc.json
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/virtual-wan/'
     - name: 定价计算器

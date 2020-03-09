@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 669270580bda35f9969a8f618f64e2dbd1574ead
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 9a62cbbe069e897a280ec59d31b4bcfa870a3ad6
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501426"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850251"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "77501426"
 > [!NOTE]
 > 为简单起见，本文中的演示代码使用 Azure 认知搜索 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要以下服务和工具。
 
@@ -47,7 +47,7 @@ ms.locfileid: "77501426"
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.chinacloudapi.cn`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.azure.cn`。
 
 2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
@@ -88,7 +88,7 @@ ms.locfileid: "77501426"
 
 1. 将文件添加到输出目录。 右键单击 appsettings.json 并选择“属性”  。 在“复制到输出目录”中，选择“如果较新则复制”   。
 
-1. 将以下 JSON 复制到新 JSON 文件中。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效的值。 如果服务终结点是 `https://mydemo.search.chinacloudapi.cn`，则服务名称为“mydemo”。
+1. 将以下 JSON 复制到新 JSON 文件中。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效的值。 如果服务终结点是 `https://mydemo.search.azure.cn`，则服务名称为“mydemo”。
 
 ```json
 {
@@ -216,7 +216,7 @@ ms.locfileid: "77501426"
 
     namespace AzureSearchQuickstart
     {
-        class Program
+        class Program {
             // Demonstrates index delete, create, load, and query
             // Commented-out code is uncommented in later steps
             static void Main(string[] args)
@@ -254,6 +254,7 @@ ms.locfileid: "77501426"
                 string adminApiKey = configuration["SearchServiceAdminApiKey"];
 
                 SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+                serviceClient.SearchDnsSuffix = "search.azure.cn";
                 return serviceClient;
             }
 
@@ -363,7 +364,7 @@ ms.locfileid: "77501426"
                 {
                     HotelId = "3",
                     HotelName = "Triple Landscape Hotel",
-                    Description = "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+                    Description = "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
                     DescriptionFr = "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
                     Category = "Resort and Spa",
                     Tags = new[] { "air conditioning", "bar", "continental breakfast" },

@@ -1,19 +1,17 @@
 ---
 title: 在 Azure Application Insights 中使用搜索 | Azure Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 07/30/2019
 ms.date: 08/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6566a89cd853a9f0047b002dc429b82055652a10
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: a2e36abad0b8b461ab9275fb97a0b4a82acca18e
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500357"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850432"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
@@ -152,7 +150,7 @@ ms.locfileid: "75500357"
 * [在 Analytics 中编写复杂查询](../../azure-monitor/log-query/get-started-portal.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](../../azure-monitor/app/monitor-web-app-availability.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
+* [故障排除](../../azure-monitor/faq.md)
 
 
 

@@ -1,19 +1,18 @@
 ---
 title: 在 Azure Monitor 中设定监视解决方案的目标 | Microsoft Docs
 description: 设定监视解决方案的目标允许将监视解决方案限制用于特定的一组代理。  本文介绍了如何创建范围配置并将其应用于解决方案。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: v-lingwu
 origin.date: 04/27/2017
 ms.date: 04/12/2019
-ms.openlocfilehash: b00a58479f1bbfcaa6cd02028bd5fe878991b8ff
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 74d0445c7f72277e8e504652e428fc4b8dfd649b
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970899"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850316"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>在 Azure Monitor 中设定监视解决方案的目标（预览版）
 向订阅添加监视解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用“解决方案目标”  ，这是一种允许向解决方案界定一个范围的功能。
@@ -64,7 +63,7 @@ ms.locfileid: "72970899"
 - 解决方案目标仅适用于由 Microsoft 提供的解决方案。  它不适用于[由自己或合作伙伴创建的](solutions-creating.md)解决方案。
 - 只能筛选出直接连接到 Azure Monitor 的代理。  解决方案会自动部署到属于已连接的 Operations Manager 管理组的任何代理，无论它们是否包括在范围配置中。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 解决方案目标不能用于以下解决方案，尽管它们满足上述条件。
 
 - 代理运行状况评估

@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Log Analytics 警报对事件做出响应 | Microsoft Docs
 description: 本教程介绍如何通过 Log Analytics 中的警报来确定工作区中的重要信息，并主动将存在的问题通知给你，或者通过调用相关操作来尝试纠正问题。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: tutorial
 origin.date: 10/05/2018
 ms.date: 07/10/2019
 ms.author: v-lingwu
-ms.openlocfilehash: db97454d6c7b30e1bb533e1b85137171538ca609
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: fa1a1419e942723dec19ae168f9a481384c6b89a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730329"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850285"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>借助 Azure Monitor 警报对事件做出响应
 Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息。 它们由定期自动运行日志搜索的警报规则创建；如果日志搜索的结果符合特定条件，则创建一条警报记录，并可将此记录配置为执行自动响应。  本教程是[创建和共享 Log Analytics 数据的仪表板](tutorial-logs-dashboards.md)教程的延续。   

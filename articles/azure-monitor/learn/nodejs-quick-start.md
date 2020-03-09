@@ -9,12 +9,12 @@ ms.author: v-lingwu
 origin.date: 07/12/2019
 ms.date: 08/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a350a500276bcfda445f88116ec352a42ed7f2f0
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: c9e5445f5d3c059cfc8de1ed198d3bf791b77a12
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599920"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850300"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -91,7 +91,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![Application Insights 应用程序映射](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. 选择“应用分析”  图标 ![“应用程序映射”图标](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png)  “在 Analytics 中查看”。  这将打开“Application Insights Analytics”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 选择“应用分析”  图标 ![“应用程序映射”图标](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png)  “在 Analytics 中查看”。  此操作将打开“Application Insights Analytics”  ，该扩展提供丰富的查询语言，用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
    ![Application Insights Analytics 图形](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -129,7 +129,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
+完成测试后，即可删除资源组和所有相关资源。 为此，请执行以下步骤。
 
 1. 在 Azure 门户的左侧菜单中，选择“资源组”  ，然后选择“myResourceGroup”  。
 2. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。

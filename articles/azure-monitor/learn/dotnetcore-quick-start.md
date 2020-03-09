@@ -1,7 +1,6 @@
 ---
-title: Azure Application Insights 快速入门 | Azure docs
-description: 提供有关快速安装 ASP.NET Core Web 应用以使用 Application Insights 进行监视的说明
-ms.service: azure-monitor
+title: 快速入门 ASP.NET Core - Azure Monitor Application Insights
+description: 提供有关快速安装 ASP.NET Core Web 应用以使用 Azure Monitor Application Insights 进行监视的说明
 ms.subservice: application-insights
 ms.topic: quickstart
 author: lingliw
@@ -9,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 06/26/2019
 ms.date: 09/23/2019
 ms.custom: mvc
-ms.openlocfilehash: 8096d2441b77fe4616ee07652bf27c486336b90a
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 1fb8253111d81b1e89f7a67f65276bcbd20cbb79
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599926"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850302"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -104,7 +103,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，然后单击“myResourceGroup”  。
-2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，然后单击“删除”  。
+2. 在资源组页上单击“删除”  ，在文本框中键入 **myResourceGroup**，并单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

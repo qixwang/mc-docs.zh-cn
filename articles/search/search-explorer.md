@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: ec6eecd1eeaf3c9fd5a2d8359ba455e4a602f512
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 3a2be4dd93c61571a693d9835fead9063b9e8f32
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335439"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850637"
 ---
 # <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>使用 Azure 门户中的搜索浏览器在 Azure 认知搜索中查询文档 
 
@@ -119,7 +119,7 @@ Azure 认知搜索根据搜索级别返回前 50 个匹配项。 若要获取下
 
 ## <a name="how-to-start-search-explorer"></a>如何启动搜索资源管理器
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，从仪表板打开认知搜索页，或者在服务列表中[查找服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
+1. 在 [Azure 门户](https://portal.azure.cn)中，从仪表板打开搜索服务页，或者在服务列表中[查找服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 
 2. 在“服务概述”页上，单击“搜索资源管理器”。 
 

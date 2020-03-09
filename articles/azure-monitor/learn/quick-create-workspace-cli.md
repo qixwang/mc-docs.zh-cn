@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure CLI 创建 Log Analytics 工作区 | Azure Docs
 description: 了解如何使用 Azure CLI 创建 Log Analytics 工作区，以启用管理解决方案以及从云和本地环境进行的数据收集。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/12/2019
 ms.date: 08/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 86bd18ab54ebb4b533aaa605696de3afb42cfb78
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: fe83a76b9b4c46ddd603b686ebdb504666de0919
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028919"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850297"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 

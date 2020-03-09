@@ -1,19 +1,17 @@
 ---
 title: 异常卷的异常增加 - Azure Application Insights
 description: 使用 Azure Application Insights 中的智能检测监视应用程序异常，了解异常卷的异常模式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 12/08/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c740d0cda8709a1cfce4f74036248daead8cd7f7
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: bcf5ee108459a6504b5810c669eb9f4eeb32fe45
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600117"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850382"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>异常卷的异常增加（预览）
 

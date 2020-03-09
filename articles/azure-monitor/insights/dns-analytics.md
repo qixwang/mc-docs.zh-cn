@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 中的 DNS Analytics 解决方案 | Azure Docs
 description: 在 Azure Monitor 中设置并使用 DNS Analytics 解决方案，收集有关 DNS 基础结构安全性、性能和操作的见解。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/20/2018
 ms.date: 09/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 64a350d0c8aed57f6bc5284dd53e9efe0b39a536
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 6e04951eaae2a0d5a4e9301f2dc8e11c09ff8c2a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838966"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850330"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 

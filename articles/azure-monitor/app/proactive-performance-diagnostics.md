@@ -1,20 +1,18 @@
 ---
 title: 智能检测 - 性能异常 | Azure Docs
 description: Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 05/04/2017
 ms.date: 6/4/2019
 ms.reviewer: antonfr
 ms.author: v-lingwu
-ms.openlocfilehash: bcb6efd5d8b66445478e4a2aecd84c710e6116ba
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 578a7e0db8f6980972b244bf0ac0347e6f717180
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982077"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850386"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 

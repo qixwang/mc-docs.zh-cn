@@ -1,8 +1,6 @@
 ---
 title: 在 Azure 应用服务中为 .NET 应用启用 Snapshot Debugger | Microsoft Docs
 description: 在 Azure 应用服务中为 .NET 应用启用快照调试器
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
 author: lingliw
@@ -10,12 +8,12 @@ manager: digimobile
 origin.date: 03/07/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e05dff04a847b367934ae782dc4338507eeefcec
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 5598d7af79a79c0a3a58f0ec898fb8cbe9b2e47f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730374"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850374"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 

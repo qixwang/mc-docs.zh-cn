@@ -1,20 +1,18 @@
 ---
 title: 使用 Application Insights 监视 SharePoint site 站点
 description: 开始使用新检测密钥监视新应用程序
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 07/11/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 128cabe703ba7c6764d263ff926cb0600ac0ad02
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: b57edf8f4926199db1ba9b4e1854e3b718a70b93
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497566"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850375"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
 Azure Application Insights 监视应用的可用性、性能和使用情况。 下面介绍如何为 SharePoint 站点设置它。

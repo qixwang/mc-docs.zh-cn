@@ -28,6 +28,8 @@
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Visual Studio
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: 命令行
+          href: functions-add-output-binding-storage-queue-cli.md
         - name: Maven (Java)
           href: functions-add-output-binding-storage-queue-java.md
 - name: 教程
@@ -42,6 +44,18 @@
   items:
     - name: Azure 无服务器社区库
       href: 'https://www.serverlesslibrary.net/'
+    - name: Azure 示例
+      items:
+        - name: 'C#'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=csharp'
+        - name: Java
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=java'
+        - name: Javascript
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=javascript'
+        - name: PowerShell
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=azurepowershell'
+        - name: TypeScript
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=typescript'
     - name: Azure CLI
       href: functions-cli-samples.md
 - name: 概念
@@ -236,7 +250,7 @@
     - name: API 参考
       items:
         - name: Java
-          href: 'https://docs.microsoft.com/en-us/java/api/overview/azure/functions/runtime?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
     - name: 应用设置参考
       href: functions-app-settings.md
     - name: 触发器和绑定
@@ -257,8 +271,20 @@
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
             - name: Functions 2.x
-              href: functions-bindings-cosmosdb-v2.md
               displayName: Azure Cosmos DB
+              items:
+                - name: 概述
+                  href: functions-bindings-cosmosdb-v2.md
+                  displayName: Azure Cosmos DB
+                - name: 触发器
+                  href: functions-bindings-cosmosdb-v2-trigger.md
+                  displayName: Azure Cosmos DB
+                - name: 输入
+                  href: functions-bindings-cosmosdb-v2-input.md
+                  displayName: Azure Cosmos DB
+                - name: 输出
+                  href: functions-bindings-cosmosdb-v2-output.md
+                  displayName: Azure Cosmos DB
         - name: 事件网格
           items:
             - name: 概述
@@ -268,9 +294,27 @@
             - name: 输出
               href: functions-bindings-event-grid-output.md
         - name: 事件中心
-          href: functions-bindings-event-hubs.md
+          items:
+            - name: 概述
+              href: functions-bindings-event-hubs.md
+              displayName: Azure Event Hubs
+            - name: 触发器
+              href: functions-bindings-event-hubs-trigger.md
+              displayName: Azure Event Hubs
+            - name: 输出
+              href: functions-bindings-event-hubs-output.md
+              displayName: Azure Event Hubs
         - name: IoT 中心
-          href: functions-bindings-event-iot.md
+          items:
+            - name: 概述
+              href: functions-bindings-event-iot.md
+              displayName: Azure IoT Hubs
+            - name: 触发器
+              href: functions-bindings-event-iot-trigger.md
+              displayName: Azure IoT Hubs
+            - name: 输出
+              href: functions-bindings-event-iot-output.md
+              displayName: Azure IoT Hubs
         - name: HTTP 和 webhook
           items:
             - name: 概述
@@ -286,13 +330,34 @@
         - name: 通知中心
           href: functions-bindings-notification-hubs.md
         - name: 队列存储
-          href: functions-bindings-storage-queue.md
+          items:
+            - name: 概述
+              href: functions-bindings-storage-queue.md
+            - name: 触发器
+              href: functions-bindings-storage-queue-trigger.md
+            - name: 输出
+              href: functions-bindings-storage-queue-output.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服务总线
-          href: functions-bindings-service-bus.md
+          items:
+            - name: 概述
+              href: functions-bindings-service-bus.md
+            - name: 触发器
+              href: functions-bindings-service-bus-trigger.md
+            - name: 输出
+              href: functions-bindings-service-bus-output.md
         - name: SignalR 服务
-          href: functions-bindings-signalr-service.md
+          items:
+            - name: 概述
+              href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: 概述
+              href: functions-bindings-signalr-service-input.md
+              displayName: SignalR Service
+            - name: 概述
+              href: functions-bindings-signalr-service-output.md
+              displayName: SignalR Service
         - name: 表存储
           href: functions-bindings-storage-table.md
         - name: Timer
@@ -324,6 +389,6 @@
     - name: 提供产品反馈
       href: 'https://feedback.azure.com/forums/355860-azure-functions'
     - name: Azure Functions GitHub 存储库
-      href: 'https://github.com/Azure/Azure-Functions/'
+      href: 'https://github.com/azure-functions/'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

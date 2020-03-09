@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 08/18/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 64dbaddca655f1cf4461faf232093341cae1c085
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 696fccaff42e6ad3ac3a7055d65f85aa4b5df2ea
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838933"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850258"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -71,9 +71,9 @@ ms.locfileid: "74838933"
 
 这些步骤中使用的术语包括：
 
-* *源计算机* � 从中创建备份且当前不可用的原始计算机。
-* *目标计算机* � 要将数据恢复到的计算机。
-* *示例保管库* � *源计算机*和*目标计算机*将注册到的恢复服务保管库。 <br/>
+* *源计算机* – 从中创建备份并且当前不可用的原始计算机。
+* *目标计算机* – 要将数据恢复到的计算机。
+* *示例保管库* – *源计算机*和*目标计算机*注册到的恢复服务保管库。 <br/>
 
 > [!NOTE]
 > 从一台计算机创建的备份无法还原到运行更低版本操作系统的计算机。 例如，从 Windows Server 2016 计算机创建的备份不能还原到 Windows Server 2012 R2。 但是，可进行反向操作。 可使用 Windows Server 2012 R2 中的备份还原 Windows Server 2016。
@@ -93,7 +93,7 @@ ms.locfileid: "74838933"
 
     ![搜索](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. 在“选择卷和日期”窗格的日历中，选择一个恢复点  。 可从任意恢复时间点还原。 以**粗体**显示的日期指示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”下拉菜单中选择特定的恢复点  。
+8. 在“选择卷和日期”窗格的日历中，选择一个恢复点  。 可从任意恢复时间点还原。 以 **粗体** 显示的日期表示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”下拉菜单中选择特定的恢复点  。
 
     ![搜索项](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "74838933"
 
     ![Encryption](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-    “创建副本以便具有两个版本”选项将在现有系统状态文件存档中创建各个文件的副本，而不是创建整个系统状态存档的副本  。
+    “创建副本以便具有两个版本”选项将创建现有系统状态文件存档中各个文件的副本，而不是创建整个系统状态存档的副本  。
 
 11. 验证“确认”窗格中的恢复详细信息，并单击“恢复”  。
 
@@ -111,7 +111,7 @@ ms.locfileid: "74838933"
 
 12. 将 WindowsImageBackup 目录复制到服务器的非关键卷（如 D:\)）  。 通常，Windows OS 卷是关键卷。
 
-13. 若要完成恢复过程，请使用下面的 [对 Windows 服务器应用已恢复的系统状态文件](#apply-restored-system-state-on-a-windows-server)部分。
+13. 若要完成恢复过程，请使用下面的[对 Windows 服务器应用已恢复的系统状态文件](#apply-restored-system-state-on-a-windows-server)部分。
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>对 Windows Server 应用已恢复的系统状态
 
@@ -206,7 +206,7 @@ ms.locfileid: "74838933"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 恢复文件和文件夹后，可以[管理备份](backup-azure-manage-windows-server.md)。
+* 恢复文件和文件夹后，可 [管理备份](backup-azure-manage-windows-server.md)。
 
 
 <!-- Update_Description: update metedata properties -->

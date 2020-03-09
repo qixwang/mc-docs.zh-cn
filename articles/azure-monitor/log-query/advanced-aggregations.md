@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志查询中的高级聚合 | Microsoft Docs
 description: 介绍一些适用于 Azure Monitor 日志查询的较高级聚合选项。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/16/2018
 ms.date: 08/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6a86cd69f3beb1fb84660cf6993947a2ecc30566
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 588a6787f37fc380b2df45297f5791424d273a3d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730328"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850284"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的高级聚合
 

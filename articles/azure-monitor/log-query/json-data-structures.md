@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
 description: 本文提供了有关在 Azure 门户中使用 Azure Monitor Log Analytics 对 Azure Monitor 中的日志数据进行查询和分析的教程。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c2c3626482bf5da617ee80c10f8e8bfd7d9e5a9a
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 23fc061197993e09b897d24c1f545c365645b284
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838689"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850273"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
@@ -57,7 +56,7 @@ print hosts_report
 ```
 
 
-## <a name="working-with-objects"></a>结合使用对象
+## <a name="working-with-objects"></a>使用对象
 
 ### <a name="parsejson"></a>parsejson
 要访问 json 结构中的多个元素，将其作为动态对象进行访问更为简单。 使用 `parsejson` 将文本数据强制转换为动态对象。 转换为动态类型后，即可使用其他功能来分析数据。

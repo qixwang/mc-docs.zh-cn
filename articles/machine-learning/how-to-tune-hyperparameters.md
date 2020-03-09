@@ -2,21 +2,22 @@
 title: 优化模型的超参数
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 机器学习，有效地优化深度学习/机器学习模型的超参数。 本文将介绍如何定义参数搜索空间、指定要优化的主要指标，以及提前终止性能不佳的运行。
-ms.author: swatig
+ms.author: v-yiso
 author: swatig007
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+origin.date: 11/04/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf874a4974cf09d55d64b6b74eb44376cbb8281e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 23bc7e796b07fe34645f126618de0471d228bb69
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599467"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850201"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型的超参数
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -380,7 +381,7 @@ RunDetails(hyperdrive_run).show()
 
 ## <a name="find-the-best-model"></a>找到最佳模型
 
-完成所有超参数优化运行后，[识别性能最佳的配置](https://docs.microsoft.com/azure/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-)和对应的超参数值：
+完成所有超参数优化运行后，[识别性能最佳的配置](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-)和对应的超参数值：
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()

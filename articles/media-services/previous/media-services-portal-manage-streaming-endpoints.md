@@ -16,12 +16,12 @@ ms.topic: article
 origin.date: 03/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 78295621d0de0bdb5ce1ebd357da7c65dc186653
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 20b46dda702d9bfc2da8da2927dba55bea39afe8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124615"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850225"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
 
@@ -52,9 +52,6 @@ ms.locfileid: "71124615"
 若要使用 Azure 门户添加/删除流式处理终结点，请执行以下操作：
 
 1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”  。 
-
-    如果计划使用不同的 CDN 或者使用一个 CDN 和直接访问，则可能需要多个流式处理终结点。
-
 2. 若要删除流式处理终结点，请按“删除”  按钮。      
 3. 单击“启动”  按钮以启动流式处理终结点。
    
@@ -79,7 +76,7 @@ ms.locfileid: "71124615"
 
 ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
-1. 最大缓存策略：用于为资产配置通过此流式处理终结点提供的缓存生存期。 如果未设置任何值，则使用默认值。 也可直接在 Azure 存储中定义默认值。 如果为流式处理终结点启用了 Azure CDN，则不应设置小于 600 秒的缓存策略值。  
+1. 最大缓存策略：用于为资产配置通过此流式处理终结点提供的缓存生存期。 如果未设置任何值，则使用默认值。 也可直接在 Azure 存储中定义默认值。
 2. 允许的 IP 地址：用于指定允许连接到发布的流式处理终结点的 IP 地址。 如果未指定 IP 地址，则任何 IP 地址都可以连接。 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.255.0)”）。
 3. Akamai 签名标头身份验证的配置：用于指定如何配置 Akamai 服务器发出的签名标头身份验证请求。 到期日期以 UTC 时间表示。
 

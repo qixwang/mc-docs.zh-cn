@@ -7,15 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: copeters
+ms.author: v-yiso
 author: cody-dkdc
-ms.date: 11/04/2019
-ms.openlocfilehash: 913cd550898c3deea0fc96239639fb85abbbd0ea
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 2cc53e41b28e9936d0516a02dfb1b87138426b9c
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598162"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850218"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes 服务 (AKS) 的模型中检测数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -80,7 +81,7 @@ ms.locfileid: "75598162"
 ## <a name="configure-data-drift"></a>配置数据偏移
 若要配置试验的数据偏移，请导入以下 Python 示例中所示的依赖项。 
 
-此示例演示如何配置 [`DataDriftDetector`](https://docs.microsoft.com/azure/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) 对象：
+此示例演示如何配置 [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) 对象：
 
 ```python
 # Import Azure ML packages
@@ -189,7 +190,7 @@ datadrift.disable_schedule()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用数据偏移的完整示例，请参阅 [Azure ML 数据偏移笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb)。 此 Jupyter Notebook 演示如何使用 [Azure 开放数据集](/open-datasets/overview-what-are-open-datasets)来训练某个模型以预测天气，将模型部署到 AKS，并监视数据偏移。 
+* 有关使用数据偏移的完整示例，请参阅 [Azure ML 数据偏移笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb)。 此 Jupyter Notebook 演示如何使用 [Azure 开放数据集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)来训练某个模型以预测天气，将模型部署到 AKS，并监视数据偏移。 
 
 * 使用[数据集监视器](how-to-monitor-datasets.md)检测数据偏移。
 

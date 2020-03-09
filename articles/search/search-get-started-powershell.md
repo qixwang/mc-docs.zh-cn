@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: d75fe156dc75f5058e77449f2c982255b926c8ee
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: e176b9c3fe895bd1052e4c95a5a3ffdfa80566e0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850575"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST API 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "77501423"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要以下服务和工具。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77501423"
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.chinacloudapi.cn`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.azure.cn`。
 
 2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
@@ -64,7 +64,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 2. 创建一个 **$url** 对象，用于指定服务的索引集合。 将服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为有效的搜索服务。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes?api-version=2019-05-06&$select=name"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes?api-version=2019-05-06&$select=name"
     ```
 
 3. 运行 **Invoke-RestMethod** 将 GET 请求发送到服务，并验证连接。 添加 **ConvertTo-Json**，以便可以查看服务发回的响应。
@@ -77,7 +77,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ```
     {
-        "@odata.context":  "https://mydemo.search.chinacloudapi.cn/$metadata#indexes",
+        "@odata.context":  "https://mydemo.search.azure.cn/$metadata#indexes",
         "value":  [
 
                 ]
@@ -124,7 +124,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 2. 设置服务中的索引集合以及 *hotels-quickstart* 索引的 URI。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart?api-version=2019-05-06"
     ```
 
 3. 结合 **$url**、 **$headers** 和 **$body** 运行该命令，以在服务中创建索引。 
@@ -137,7 +137,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ```
     {
-        "@odata.context":  "https://mydemo.search.chinacloudapi.cn/$metadata#indexes/$entity",
+        "@odata.context":  "https://mydemo.search.azure.cn/$metadata#indexes/$entity",
         "@odata.etag":  "\"0x8D6EDE28CFEABDA\"",
         "name":  "hotels-quickstart",
         "defaultScoringProfile":  null,
@@ -274,7 +274,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 将终结点设置为 *hotels-quickstart* 文档集合，并包含索引操作 (indexes/hotels-quickstart/docs/index)。
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
 1. 结合 **$url**、 **$headers** 和 **$body** 运行该命令，以将文档载入 hotels-quickstart 索引。
@@ -286,7 +286,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ```
     {
-        "@odata.context":  "https://mydemo.search.chinacloudapi.cn/indexes(\u0027hotels-quickstart\u0027)/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
+        "@odata.context":  "https://mydemo.search.azure.cn/indexes(\u0027hotels-quickstart\u0027)/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
         "value":  [
                     {
                         "key":  "1",
@@ -327,7 +327,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    此字符串执行空搜索 (search=*)，返回任意文档的未排名列表 (search score  = 1.0)。 默认情况下，Azure 认知搜索每次返回 50 个匹配项。 由于已结构化，此查询将返回整个文档结构和值。 添加 **$count=true** 以获取结果中所有文档的计数。
 
     ```powershell
-    $url = 'https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
+    $url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
 1. 运行该命令以将 **$url** 发送到服务。
@@ -340,7 +340,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
     ```
     {
-    "@odata.context":  "https://mydemo.search.chinacloudapi.cn/indexes(\u0027hotels-quickstart\u0027)/$metadata#docs(*)",
+    "@odata.context":  "https://mydemo.search.azure.cn/indexes(\u0027hotels-quickstart\u0027)/$metadata#docs(*)",
     "@odata.count":  4,
     "value":  [
                   {
@@ -376,21 +376,21 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 # Query example 1
 # Search the entire index for the terms 'restaurant' and 'wifi'
 # Return only the HotelName, Description, and Tags fields
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
 # Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
 # Query example 3
 # Take the top two results, and show only HotelName and Category in the results
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
 
 # Query example 4
 # Sort by a specific field (Address/City) in ascending order
 
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
 ## <a name="clean-up-resources"></a>清理资源
 

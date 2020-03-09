@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: article
-origin.date: 01/06/2020
-ms.date: 02/10/2020
+origin.date: 02/25/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 7ae0b669d0ef38b99577b0b945c3c7b0757204c1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 87ab64305e552b8a9df5ba6a1130e3c9e329aa3e
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028902"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411959"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -136,7 +136,7 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 {
     CloudBlobDirectory dir;
     CloudBlob blob;
-    BlobContinuationToken continuationToken;
+    BlobContinuationToken continuationToken = null;
 
     try
     {

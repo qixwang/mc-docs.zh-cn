@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 8c8b4acb0dffb0b8c13522dce7c99b1a224c44e9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 4b0a1c09cda97f50ca02fcfade217e052a79df2f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336524"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850568"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何计划 Azure 认知搜索中的索引器
 
@@ -69,7 +69,7 @@ ms.locfileid: "75336524"
 
 可以使用 REST API 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。 以下示例演示了用于更新现有索引器的 PUT 请求：
 
-    PUT https://myservice.search.chinacloudapi.cn/indexers/myindexer?api-version=2019-05-06
+    PUT https://myservice.search.azure.cn/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -79,7 +79,7 @@ ms.locfileid: "75336524"
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
+**间隔**参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为： `P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 
 可选的 **startTime** 指示计划的执行何时开始。 如果省略，则使用当前 UTC 时间。 此时间可以是过去的时间，在此情况下，计划的第一次执行的运行方式如同索引器在原始 **startTime** 之后连续运行。
 

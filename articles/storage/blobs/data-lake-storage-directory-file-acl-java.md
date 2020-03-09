@@ -4,17 +4,17 @@ description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间
 author: WenJason
 ms.service: storage
 origin.date: 11/24/2019
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9b325065e3c895c1738f27d449d8c0c59d574bfa
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 4c895bda99e5ca183c98f958ed44f3ecd357615c
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028492"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412160"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Java 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
 
@@ -25,7 +25,7 @@ ms.locfileid: "77028492"
 
 [包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -260,8 +260,6 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
 首先，创建表示要下载的文件的一个 **DataLakeFileClient** 实例。 使用 **DataLakeFileClient.read** 方法读取该文件。 使用任何 .NET 文件处理 API 将来自流的字节保存到文件。 
 
-确保通过调用 **DataLakeFileClient.flush** 方法完成下载。
-
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     throws FileNotFoundException, java.io.IOException{
@@ -279,9 +277,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     fileClient.read(targetStream);
 
     targetStream.close();
-
-    fileClient.flush(file.length());
-        
+      
 }
 
 ```

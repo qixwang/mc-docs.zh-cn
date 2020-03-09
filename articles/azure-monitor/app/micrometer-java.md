@@ -1,20 +1,18 @@
 ---
-title: 如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用 | Azure Docs
-description: '有关对 Application Insights Spring Boot 和非 Spring Boot 应用程序使用 Micrometer 的分步指导。 '
-ms.service: azure-monitor
-ms.subservice: application-insights
+title: 如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
+description: 有关对 Application Insights Spring Boot 和非 Spring Boot 应用程序使用 Micrometer 的分步指导。
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 11/01/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5828609202c4cf7a280c7d34d18b6ff45132e1ab
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: bb91e83d6e167927503be4fe5b3e520da624f45a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730415"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850407"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。

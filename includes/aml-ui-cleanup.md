@@ -8,12 +8,12 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
-ms.openlocfilehash: 62252361dd93c45450fb58421193409cb0152de5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 06f346db7e22571ea3ac2eeb60cdab3c0f25e5a2
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598725"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850195"
 ---
 >[!IMPORTANT]
 >可以使用你创建的、用作其他 Azure 机器学习教程和操作指南文章的先决条件的资源。
@@ -42,7 +42,7 @@ ms.locfileid: "75598725"
 
 可以通过选择每个数据集并选择“注销”  ，从工作区中注销数据集。
 
-![取消注册数据集](./media/aml-ui-cleanup/unregister-dataset.png)
+![取消注册数据集](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
 若要删除数据集，请使用 Azure 门户或 Azure 存储资源管理器访问存储帐户，然后手动删除这些资产。
 

@@ -5,17 +5,18 @@ description: 使用 Azure 机器学习设计器生成一个多类逻辑回归分
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+ms.topic: sample
+author: likebupt
+ms.author: v-yiso
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: a65e05b17fc2128e3a3216130c3ebe5a1ea15c8f
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 02/11/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 1c21bc90783588fd966e3b05037b825f3a2d9c51
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599336"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850609"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器以预测公司类别。
 
@@ -39,7 +40,7 @@ ms.locfileid: "75599336"
 
    使用特征提取模块（例如特征哈希处理）将文本特征转换为数字功能，从文本数据中提取 n 元语法特征。
 
-1. 训练模型
+1. 定型模型
 
 1. 为数据集评分
 
@@ -63,7 +64,7 @@ ms.locfileid: "75599336"
 
 ## <a name="pre-process-the-text-data"></a>预处理文本数据
 
-我们将使用“预处理文本”模块对文本数据进行预处理，包括检测句子、切分句子，等等。  可以在[**预处理文本**](algorithm-module-reference/preprocess-text.md)一文中找到所有支持的选项。 预处理文本数据后，我们将使用“拆分数据”模块来随机分割输入数据，使训练数据集包含 50% 的原始数据，使测试数据集包含 50% 的原始数据。 
+我们将使用“预处理文本”模块对文本数据进行预处理，包括检测句子、切分句子，等等。  可以在[**预处理文本**](algorithm-module-reference/preprocess-text.md)一文中找到所有支持的选项。 对文本数据进行预处理后，我们使用“拆分数据”  模块对输入数据进行随机划分，使得训练数据集包含 50% 的原始数据，而测试数据集包含 50% 的原始数据。
 
 ## <a name="feature-engineering"></a>特征工程
 在此示例中，我们将使用两种方法来执行特征工程。
@@ -83,7 +84,7 @@ n 元语法是给定文本序列中 n 个字词的连续序列。 大小为 1 �
 
 将文本数据转换为数字特征向量后，将使用“选择列”模块从数据集中删除该文本数据。  
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-the-model"></a>定型模型
 
 选择哪个算法通常取决于用例的要求。 由于此管道的目标是预测公司的类别，因此多类分类器模型是适当的选择。 考虑到特征数目较大且这些特征是稀疏的，我们对此管道使用了“多类逻辑回归”模型。 
 
@@ -110,9 +111,9 @@ n 元语法是给定文本序列中 n 个字词的连续序列。 大小为 1 �
 ## <a name="next-steps"></a>后续步骤
 
 浏览可用于设计器的其他示例：
-- [示例 1 - 回归：预测汽车的价格](service/how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 2 - 回归：比较汽车价格预测的算法](service/how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [示例 3 - 通过特征选择进行分类：收入预测](service/how-to-designer-sample-classification-predict-income.md)
-- [示例 4 - 分类：预测信用风险（代价敏感）](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5 - 分类：预测流失率](service/how-to-designer-sample-classification-churn.md)
-- [示例 6 - 分类：预测航班延误](service/how-to-designer-sample-classification-flight-delay.md)
+- [示例 1 - 回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 2 - 回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [示例 3 - 通过特征选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
+- [示例 4 - 分类：预测信用风险（代价敏感）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5 - 分类：预测流失率](how-to-designer-sample-classification-churn.md)
+- [示例 6 - 分类：预测航班延误](how-to-designer-sample-classification-flight-delay.md)

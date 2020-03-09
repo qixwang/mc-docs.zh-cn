@@ -1,8 +1,6 @@
 ---
 title: 在 Visual Studio 中分析趋势 | Azure Docs
 description: 在 Visual Studio 中分析、可视化和浏览 Application Insights 遥测的趋势。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 03/17/2017
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 9056b3464a886ab5df83a38377f665db95372578
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 375cac0cf6c93e83cf906d150a0633689399c74d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730512"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850342"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势
 Application Insights 趋势工具以可视化方式呈现 Web 应用程序在各时间段的重要遥测事件变化，帮助快速识别问题和异常。 “趋势”提供更详细诊断信息的链接，可帮助改进应用程序性能、跟踪异常的原因，以及从自定义事件中找到见解。

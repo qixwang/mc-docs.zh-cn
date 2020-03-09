@@ -232,7 +232,7 @@
     - name: API 实现指南
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azureapimgmt'
     - name: 路线图
       href: 'https://aka.ms/apimroadmap'
     - name: 适用于 API 管理的 Power BI 解决方案模板

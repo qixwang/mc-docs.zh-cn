@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 中的资源、角色和访问控制 | Azure Docs
 description: 组织的见解的所有者、参与者和读者。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 02/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cd943ef64bef66e74330bd0166373ce2c58cc1f5
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 1a8294846e268f29a04d9179f9015f5ea8d1c686
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730379"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850378"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 

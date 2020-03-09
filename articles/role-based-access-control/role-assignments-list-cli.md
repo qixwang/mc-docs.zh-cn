@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: e3a9ccaa26c5ecae1ad28fa936d88e6a4ef6abf7
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: 993a0212711a551d72c4ecc2752dcf3d97f8ada5
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128830"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265912"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure CLI](/cli)
 
@@ -101,7 +101,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 
 ## <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
 
-若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)。
+若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/account/management-group#az-account-management-group-list)。
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>

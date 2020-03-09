@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: article
 origin.date: 05/22/2018
-ms.date: 11/25/2019
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 76acfe2e95881910a4aca37c66d135327049e3b6
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: b45de0a13865866422e6cee2d76c81473817f03f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328743"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411464"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
@@ -27,7 +27,7 @@ ms.locfileid: "74328743"
 - 在存储帐户中创建了具有所需配额的 Azure 文件共享。 有关如何创建文件共享的分步说明，请参阅[创建文件共享](storage-how-to-create-file-share.md)。
 
 ## <a name="transfer-data-into-azure-files"></a>将数据传输到 Azure 文件
-可能需要将现有文件共享（例如本地存储的文件共享）迁移到新的 Azure 文件共享。 本部分介绍如何通过[规划指南](storage-files-planning.md#data-transfer-method)中详述的几种常用方法将数据移动到 Azure 文件共享
+可能需要将现有文件共享（例如本地存储的文件共享）迁移到新的 Azure 文件共享。 本部分介绍如何通过[规划指南](storage-files-planning.md#migration)中详述的几种常用方法将数据移动到 Azure 文件共享
 
 ### <a name="azure-importexport"></a>Azure 导入/导出
 使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 有关此服务的更详细概述，请参阅[使用 Azure 导入/导出服务将数据传输到 Azure 存储](../common/storage-import-export-service.md?toc=%2fstorage%2ffiles%2ftoc.json)。

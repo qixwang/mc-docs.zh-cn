@@ -1,20 +1,18 @@
 ---
-title: Azure Application Insights 代理 API 参考：获取配置 | Microsoft Docs
+title: Azure Application Insights 代理 API 参考
 description: Application Insights 代理 API 参考。 Get-ApplicationInsightsMonitoringConfig。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 04/23/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6f40c5ac31f70404febad6ba695a2e1e78cd3cc2
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 3b9bbd918869403ec3028ea1eb76c55f78a644c3
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730500"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850363"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API：Get-ApplicationInsightsMonitoringConfig
 

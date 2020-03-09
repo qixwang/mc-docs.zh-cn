@@ -1,7 +1,6 @@
 ---
 title: 通过 Azure Monitor 日志查询创建图表和关系图 | Microsoft Docs
 description: 介绍在 Azure Monitor 中以不同的方式显示日志数据时的各种可视化效果。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/16/2018
 ms.date: 08/22/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 58205b872a85d38dabf775814b306bd7179802e8
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 1af3009317fa1b6f2ec7f956d0e6a947ac076897
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730465"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850280"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>通过 Azure Monitor 日志查询创建图表和关系图
 

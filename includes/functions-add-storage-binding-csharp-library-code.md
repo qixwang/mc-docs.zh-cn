@@ -2,15 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 07/05/2019
-ms.date: 09/05/2019
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 5462b8c7926b670ff3eb560a23fbc652aa522f63
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.openlocfilehash: 2e46d9d2dd4d857272b44d33ea8d5c5b12c1b1fc
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70805801"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266058"
 ---
 添加使用 `msg` 输出绑定对象来创建队列消息的代码。 请在方法返回之前添加此代码。
 
@@ -25,10 +24,11 @@ if (!string.IsNullOrEmpty(name))
 此时，你的函数应如下所示：
 
 ```cs
-[FunctionName("HttpTrigger")]
+[FunctionName("HttpExample")]
 public static async Task<IActionResult> Run(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
+    [Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, 
+    ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -48,4 +48,3 @@ public static async Task<IActionResult> Run(
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
 }
 ```
-

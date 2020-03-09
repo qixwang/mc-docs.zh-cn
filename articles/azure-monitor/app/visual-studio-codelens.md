@@ -1,8 +1,6 @@
 ---
 title: Visual Studio CodeLens 中的 Application Insights 遥测 | Azure Docs
 description: 借助 Visual Studio 中的 CodeLens，快速访问 Application Insights 请求和异常遥测。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 03/17/2017
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 95a3c6d370e230b73e4bc270cd4f2aacdbe27042
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 467ced10badf6f98427b6b91d3af9f028566d30c
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730513"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850341"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测
 使用有关运行时异常和请求响应时间的遥测，可以批注 Web 应用代码中的方法。 如果在应用程序中安装 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)，遥测会在 Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) 中显示，即每个函数顶端的备注，通常在此处查看有用的信息，例如引用函数的位置数量或最后编辑函数的人员。

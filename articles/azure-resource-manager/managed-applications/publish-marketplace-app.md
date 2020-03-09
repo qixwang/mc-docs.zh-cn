@@ -6,12 +6,12 @@ ms.topic: tutorial
 origin.date: 07/17/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: c5ae427b975a7e4e964677b0b680c4d1b6b1eae7
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: c7503cad7f6e4f281b1b2316cf1479ba9b8e12ed
+ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170745"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209155"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>市场中的 Azure 托管应用程序
 
@@ -35,7 +35,9 @@ ms.locfileid: "76170745"
 
 <!--CORRECT ON Microsoft Privacy Statement, and Microsoft Azure Certified Program Agreement.-->
 
-还必须拥有市场帐户。 若要创建帐户，请参阅[如何在合作伙伴中心创建商业市场帐户](../../marketplace/partner-center-portal/create-account.md)。
+还必须拥有市场帐户。
+
+<!--Not Available on [How to create a Commercial Marketplace account in Partner Center](../../marketplace/partner-center-portal/create-account.md)-->
 
 ## <a name="create-a-new-azure-application-offer"></a>创建新的 Azure 应用程序产品/服务
 

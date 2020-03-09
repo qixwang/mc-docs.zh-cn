@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 04/03/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1880ffc9542d7970203b4196320ec217eeb3419e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: db14ca87dbf1df8d213115cfb65efad5a3c13456
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428932"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213758"
 ---
 <!--Verified successfully-->
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>在容器组中启用 SSL 终结点
@@ -242,7 +242,7 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 
 尽管本文在挎斗中使用 Nginx，但你可以使用另一个 SSL 提供程序，例如 [Caddy](https://caddyserver.com/)。
 
-在容器组中启用 SSL 的另一种方法是在具有 [Azure 应用程序网关](../application-gateway/overview.md)的 [Azure 虚拟网络](container-instances-vnet.md)中部署组。 可将网关设置为 SSL 终结点。 参阅一个示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)，可对其进行改编，以便在网关上启用 SSL 终止。
+<!--Not Available on [Azure virtual network](container-instances-vnet.md)-->
 
 <!-- Update_Description: new article about container instances container group ssl -->
 <!--NEW.date: 01/15/2020-->

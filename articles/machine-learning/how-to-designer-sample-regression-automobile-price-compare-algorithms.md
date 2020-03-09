@@ -5,17 +5,18 @@ description: 使用 Azure 机器学习设计器构建并比较多个机器学习
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+ms.topic: sample
+author: likebupt
+ms.author: v-yiso
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 413e7c18ab4f708827e41a2cc981a982a54c5560
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 12/25/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 403520a4c0663f44af9beaf3d535e12cb69feafe
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599339"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850597"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器训练并比较多个回归模型来预测汽车价格
 
@@ -25,11 +26,11 @@ ms.locfileid: "75599339"
 
 了解如何使用设计器（预览版）在不编写代码的情况下构建机器学习管道。 此示例训练并比较多个回归模型，以基于其技术特征预测汽车的价格。 我们将提供在此管道中所做选择的基本原理，以便你可以解决自己的机器学习问题。
 
-如果你刚开始了解机器学习，请看一下此管道的[基本版本](service/how-to-designer-sample-regression-automobile-price-basic.md)。
+如果你刚开始了解机器学习，请看一下此管道的[基本版本](how-to-designer-sample-regression-automobile-price-basic.md)。
 
 下面是此管道的完整图形：
 
-[![管道的图形](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png)](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png#lightbox)
+[![管道图形](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png)](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +59,7 @@ ms.locfileid: "75599339"
 
 ![数据预处理](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/data-processing.png)
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-the-model"></a>定型模型
 
 机器学习问题各有不同。 常见的机器学习任务包括分类、聚类、回归和推荐器系统，每个系统可能需要不同的算法。 选择哪个算法通常取决于用例的要求。 选取算法后，你需要优化其参数，以训练更准确的模型。 然后，你需要基于指标（例如准确度、可理解性和效率）评估所有模型。
 
@@ -76,7 +77,7 @@ ms.locfileid: "75599339"
 
 
 
-下面是结果：
+结果如下：
 
 ![比较结果](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/result.png)
 
@@ -94,7 +95,7 @@ ms.locfileid: "75599339"
 
 - [示例 1 - 回归：预测汽车的价格](service/how-to-designer-sample-regression-automobile-price-basic.md)
 - [示例 3 - 通过特征选择进行分类：收入预测](service/how-to-designer-sample-classification-predict-income.md)
-- [示例 4 - 分类：预测信用风险（成本敏感）](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5 - 分类：预测变动率](service/how-to-designer-sample-classification-churn.md)
+- [示例 4 - 分类：预测信用风险（代价敏感）](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5 - 分类：预测流失率](service/how-to-designer-sample-classification-churn.md)
 - [示例 6 - 分类：预测航班延误](service/how-to-designer-sample-classification-flight-delay.md)
 - [示例 7 - 文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

@@ -1,20 +1,18 @@
 ---
 title: 使用 Powershell 在 Application Insights 中设置警报 | Azure Docs
 description: 自动配置 Application Insights，以获取有关指标更改的电子邮件。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 10/31/2016
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 18e6c8ab1d060e40bd637d288d7a531f05c8da8e
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: a2400849c1be79cb9258fc763ae2759cec74f9c6
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545361"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850392"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 
@@ -125,7 +123,7 @@ GUID 是订阅 ID（不是应用程序的检测密钥）。
 | 指标组 | 收集器模块 |
 | --- | --- |
 | basicExceptionBrowser、<br/>clientPerformance、<br/>view |[浏览器 JavaScript](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[性能](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| performanceCounter |[“性能”](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[依赖项](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request、<br/>requestFailed |[服务器请求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 

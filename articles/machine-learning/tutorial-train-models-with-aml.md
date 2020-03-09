@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 11/04/2019
+origin.date: 02/10/2020
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fc0f05e8867f8a62b713831ed4bd7e35e3b1539
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: d727fa48f09e5c2e7e1c48b89e33b50575babcc6
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598699"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78849877"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +47,7 @@ ms.locfileid: "75598699"
     * 将教程笔记本克隆到工作区中的文件夹。
     * 创建基于云的计算实例。
 
-* 在克隆的教程文件夹中打开 img-classification-part1-training.ipynb 笔记本   。 
+* 在克隆的 tutorials/image-classification-mnist-data  文件夹中，打开 img-classification-part1-training.ipynb 笔记本  。 
 
 
 如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程及其附带的 **utils.py** 文件，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以便安装本教程的依赖项。
@@ -105,7 +106,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>创建或附加现有的计算目标
 
-Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 如果工作区中尚无计算群集，以下代码将创建计算群集。
+Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 在本教程的后面部分，你将提交要在此 VM 上运行的 Python 代码。 
+
+如果工作区中尚无计算群集，以下代码将创建计算群集。
 
  **创建计算目标需要大约 5 分钟。** 如果计算资源已经在工作区中，则代码将使用它并跳过创建过程。
 
@@ -157,7 +160,7 @@ else:
 
 ### <a name="download-the-mnist-dataset"></a>下载 MNIST 数据集
 
-使用 Azure 开放数据集获取原始 MNIST 数据文件。 [Azure 开放数据集](/open-datasets/overview-what-are-open-datasets)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 每个数据集都有相应的类（此例中为 `MNIST`），以便以不同的方式检索数据。
+使用 Azure 开放数据集获取原始 MNIST 数据文件。 [Azure 开放数据集](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 每个数据集都有相应的类（此例中为 `MNIST`），以便以不同的方式检索数据。
 
 此代码将数据检索为 `FileDataset` 对象，该对象是 `Dataset` 的子类。 `FileDataset` 引用数据存储或公共 URL 中的任何格式的单个或多个文件。 该类可让你通过创建对数据源位置的引用来将文件下载或装载到计算。 此外，你将数据集注册到你的工作区，以便在训练期间轻松检索。
 
@@ -215,7 +218,7 @@ plt.show()
 
 ## <a name="train-on-a-remote-cluster"></a>在远程群集上定型
 
-对于此任务，将作业提交到之前设置的远程定型群集。  若要提交作业：
+在此任务中，你将提交作业以在前面设置的远程训练群集上运行。  若要提交作业：
 * 创建目录
 * 创建定型脚本
 * 创建估算器对象
@@ -361,7 +364,7 @@ run
 
 - **缩放**：如果远程群集需要比当前可用节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约五分钟  。
 
-- **Running**：在此阶段，必要的脚本和文件会发送到计算目标。 接着，装载或复制数据存储。 然后，运行 entry_script  。 运行作业时，stdout 和 ./logs 目录会流式传输到运行历史记录   。 可以使用这些日志监视运行进度。
+- **正在运行**：在此阶段，必要的脚本和文件会发送到计算目标。 接着，装载或复制数据存储。 然后，运行 entry_script  。 运行作业时，stdout 和 ./logs 目录会流式传输到运行历史记录   。 可以使用这些日志监视运行进度。
 
 - **后期处理**：运行的 ./outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果  。
 

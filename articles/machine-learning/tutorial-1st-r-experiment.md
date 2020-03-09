@@ -1,7 +1,7 @@
 ---
-title: 教程：通过 R 训练和部署你的第一个 ML 模型
+title: 教程：R 中的逻辑回归模型
 titleSuffix: Azure Machine Learning
-description: 本教程介绍 Azure 机器学习 (ML) 中的基础设计模式，并使用 R 包 azuremlsdk 和 caret 训练一个逻辑回归模型，以预测交通事故中的死亡几率。
+description: 在本教程中，我们使用 R 包 azuremlsdk 和 caret 创建一个逻辑回归模型，以预测交通事故中的死亡几率。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,27 +9,29 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 5634db7d56578647f70c4f0dd05232e3ba71611d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 02/07/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 93d7e8e431aad3dd986762344f6eb9aaf4158b9f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599159"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78849867"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>教程：使用 Azure 机器学习在 R 中训练和部署第一个模型
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>教程：通过 Azure 机器学习在 R 中创建逻辑回归模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本教程介绍 Azure 机器学习中的基础设计模式。  你将训练并部署一个 **caret** 模型，以预测交通事故中的死亡几率。 完成本教程后，你将获得 R SDK 的实践知识，继而可以开发更复杂的试验和工作流。
+在本教程中，我们将使用 R 和 Azure 机器学习创建逻辑回归模型，该模型预测交通事故中的死亡几率。 完成本教程后，我们将获得 Azure 机器学习 R SDK 的实践知识，继而可以开发更复杂的试验和工作流。
 
-本教程将介绍以下任务：
-
+将在本教程中执行以下任务：
 > [!div class="checklist"]
-> * 连接工作区
+> * 创建 Azure 机器学习工作区
+> * 将笔记本文件夹和运行本教程所需的文件克隆到工作区
+> * 从工作区打开 RStudio
 > * 加载数据并准备训练
 > * 将数据上传到数据存储，使之可用于远程训练
-> * 创建计算资源
-> * 训练 caret 模型以预测死亡几率
+> * 创建计算资源以远程训练模型
+> * 训练 `caret` 模型以预测死亡几率
 > * 部署预测终结点
 > * 在 R 中测试模型
 
@@ -50,7 +52,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ## <a name="azure"></a>克隆笔记本文件夹
 
-本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
+本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
 
 在 Azure 机器学习工作室中完成以下试验设置和运行步骤，该工作室是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。
 
@@ -60,19 +62,17 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择左侧的“笔记本”  。
 
-1. 打开“示例”文件夹  。
+1. 打开“Samples”文件夹  。
 
 1. 打开 **R** 文件夹。
 
 1. 打开包含版本号的文件夹。  此数字表示 R SDK 的当前版本。
 
-1. 打开 **vignettes** 文件夹。
-
-1. 选择 **train-and-deploy-to-aci** 文件夹右侧的“...”，然后选择“克隆”。  
+1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。  
 
     ![克隆文件夹](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“train-and-deploy-to-aci”文件夹克隆到其中的文件夹  。
+1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“vignettes”文件夹克隆到其中的文件夹  。
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">打开 RStudio
 
@@ -84,10 +84,10 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 计算运行后，使用 **RStudio** 链接打开 RStudio。
 
-1. 在 RStudio 中，**train-and--deploy-to-aci** 文件夹位于右下“文件”部分的“用户”下的几个层级下。    选择 **train-and-deploy-to-aci** 文件夹，查找本教程所需文件。
+1. 在 RStudio 中，“vignettes”文件夹位于右下位置“文件”部分中的“用户”下几级的位置    。  在 vignettes 下选择“train-and-deploy-to-aci”文件夹，找到本教程中所需的文件  。 
 
 > [!Important]
-> 本文的余下部分包含 **train-and-deploy-to-aci.Rmd** 文件中所示的相同内容。 如果你有 RMarkdown 方面的经验，可随意使用该文件中的代码。  或者，可将该文件或本文中的代码片段复制/粘贴到 R 脚本或命令行中。  
+> 本文的余下部分包含 *train-and-deploy-to-aci.Rmd* 文件中所示的相同内容。 如果你有 RMarkdown 方面的经验，可随意使用该文件中的代码。  或者，可将该文件或本文中的代码片段复制/粘贴到 R 脚本或命令行中。  
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
 本教程中的开发工作设置包括以下操作：
@@ -102,12 +102,6 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ```R
 library(azuremlsdk)
-```
-
-本教程使用 [**DAAG** 包](https://cran.r-project.org/package=DAAG)中的数据。 如果尚未安装该包，请安装。
-
-```R
-install.packages("DAAG")
 ```
 
 训练和评分脚本（`accidents.R` 和 `accident_predict.R`）有其他一些依赖项。 如果你打算在本地运行这些脚本，请确保同时安装了这些必需的包。
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>准备要训练的数据
-本教程使用 **DAAG** 包中的数据。 此数据集包括美国发生的 25,000 多次车祸的数据，以及可用于预测死亡几率的变量。 首先，将数据导入 R 中，将其转换为新的数据帧 `accidents` 用于分析，然后将其导出到 `Rdata` 文件。
+本教程使用美国[国内高速公路交通安全管理](https://cdan.nhtsa.gov/tsftables/tsfar.htm)中的数据（感谢 [Mary C. Meyer 和 Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm) 提供）。
+此数据集包括美国发生的 25,000 多次车祸的数据，以及可用于预测死亡几率的变量。 首先，将数据导入 R 中，将其转换为新的数据帧 `accidents` 用于分析，然后将其导出到 `Rdata` 文件。
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -394,5 +394,6 @@ delete_compute(compute)
 
 ## <a name="next-steps"></a>后续步骤
 
-在 R 中完成第一个 Azure 机器学习试验后，请详细了解[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/index.html)。
+* 在 R 中完成第一个 Azure 机器学习试验后，请详细了解[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/index.html)。
 
+* 通过其他 *vignettes* 文件夹中的示例，详细了解如何将 Azure 机器学习与 R 配合使用。

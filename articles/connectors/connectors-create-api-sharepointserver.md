@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 08/18/2016
 ms.author: v-yiso
 ms.date: 04/23/2018
-ms.openlocfilehash: 0590781c6f5e3ea828b631b595efe775ad8942f0
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 2caafe42695002c4272745b0ded602688434d9f3
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52662838"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304678"
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>SharePoint 连接器入门
 SharePoint 连接器提供在 SharePoint 上处理列表的方法。
@@ -43,8 +43,8 @@ SharePoint 连接器提供在 SharePoint 上处理列表的方法。
 
    ![配置 SharePoint][1]  
    
-2. 选择“SharePoint - 创建文件时”   
-3. 选择“登录到 SharePoint”：   
+2. 选择“SharePoint - 创建文件时”    
+3. 选择“登录到 SharePoint”  ：   
 
    ![配置 SharePoint][2]    
    
@@ -52,16 +52,16 @@ SharePoint 连接器提供在 SharePoint 上处理列表的方法。
    
    ![配置 SharePoint][3]     
    
-5. 完成身份验证后，将重定向到逻辑应用，通过配置 SharePoint 的“创建文件时”对话框完成它。          
+5. 完成身份验证后，将重定向到逻辑应用，通过配置 SharePoint 的“创建文件时”  对话框完成它。          
 
    ![配置 SharePoint][4]  
    
 6. 然后可以添加完成逻辑应用所需的其他触发器和操作。   
-7. 通过选择菜单（在顶部）中的“保存”保存工作。
+7. 通过选择菜单（在顶部）中的“保存”  保存工作。
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/sharepoint/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/sharepoint/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

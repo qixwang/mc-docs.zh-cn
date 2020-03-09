@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 101f5a5f5ba6541fd8bb78db2f6eaea0ade89622
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 92e3bb96c26a7fab753647e60eb26323ad978c60
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494378"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850591"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "77494378"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
@@ -156,7 +156,7 @@ ms.locfileid: "77494378"
 1. 将步骤 1 中获得的“ID 范围”值分配  给 `id_scope` 变量（删除左侧的 /`[` 和右侧的 /`]` 方括号）： 
 
     ```c
-    static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+    static const char* global_prov_uri = "global.azure-devices-provisioning.cn";
     static const char* id_scope = "[ID Scope]";
     ```
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 7c0c374c9464a5bde9b756fffb552ffd7bc59121
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: d34805b747e60fc29b6ab5bcfd30c850d78502b1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501434"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850641"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
 
@@ -42,7 +42,7 @@ Azure 认知搜索会定期发布功能更新。 这些更新有时（但并非�
 
 对于 REST API，每次调用都必须包括 `api-version`。 使用 `api-version` 使适配特定版本（如预览版 API）变得非常容易。 以下示例演示了如何指定 `api-version` 参数：
 
-    GET https://my-demo-app.search.chinacloudapi.cn/indexes/hotels?api-version=2019-05-06
+    GET https://my-demo-app.search.azure.cn/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
 > 尽管每个请求都带有 `api-version`，我们还是建议对所有 API 请求使用相同版本。 当新的 API 版本引入了以前版本无法识别的属性或操作时，尤其如此。 混用 API 版本可能产生意想不到的后果，应该避免混用。

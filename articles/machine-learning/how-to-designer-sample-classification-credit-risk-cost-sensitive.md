@@ -7,15 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: xiaoharper
-ms.author: zhanxia
+ms.author: v-yiso
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 22246e26c8aa5a465d56e606be6ccf332701b8dd
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 4adf05ab15dc1be40f88b5012e0ffdb87a3f66e6
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599355"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850602"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器并通过 Python 脚本预测信用风险
 
@@ -144,7 +145,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 若要查看管道的结果，可以右键单击最后一个“选择数据集中的列”模块的“可视化输出”。 
 
-![可视化输出](./media/how-to-designer-sample-classification-credit-risk-cost-sensitive/result.png)
+![可视化输出](media/how-to-designer-sample-classification-credit-risk-cost-sensitive/sample4-lastselect-1225.png)
 
 第一列列出用于生成模型的机器学习算法。
 
@@ -165,6 +166,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 - [示例 1 - 回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
 - [示例 2 - 回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
 - [示例 3 - 通过特征选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 5 - 分类：预测流失率](service/how-to-designer-sample-classification-churn.md)
+- [示例 5 - 分类：预测流失率](how-to-designer-sample-classification-churn.md)
 - [示例 6 - 分类：预测航班延误](how-to-designer-sample-classification-flight-delay.md)
 - [示例 7 - 文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

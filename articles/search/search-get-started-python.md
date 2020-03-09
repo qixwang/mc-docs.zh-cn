@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.devlang: rest-api
 origin.date: 02/10/2020
 ms.date: 03/02/2020
-ms.openlocfilehash: 703a11f314379fb351bd703c30c2c4aaf2b3a28a
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 58c6f21ebee5933e6c361f7acca55a4ff5ef0359
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501422"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850555"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -31,7 +31,7 @@ ms.locfileid: "77501422"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要以下服务和工具。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "77501422"
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.chinacloudapi.cn`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.azure.cn`。
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
@@ -68,7 +68,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在第二个单元格中，输入在每个请求时都用作常量的请求元素。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 和管理 API 密钥 (YOUR-ADMIN-API-KEY) 替换为有效的值。 
 
    ```python
-   endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/'
+   endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/'
    api_version = '?api-version=2019-05-06'
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
@@ -89,7 +89,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
    ![Jupyter notebook 中的 Python 脚本，其中包含对 Azure 认知搜索的 HTTP 请求](media/search-get-started-python/connect-azure-search.png "Jupyter notebook 中的 Python 脚本，其中包含对 Azure 认知搜索的 HTTP 请求")
 
-   相比之下，空索引集合返回以下响应：`{'@odata.context': 'https://mydemo.search.chinacloudapi.cn/$metadata#indexes(name)', 'value': []}`
+   相比之下，空索引集合返回以下响应：`{'@odata.context': 'https://mydemo.search.azure.cn/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 - 创建索引
 

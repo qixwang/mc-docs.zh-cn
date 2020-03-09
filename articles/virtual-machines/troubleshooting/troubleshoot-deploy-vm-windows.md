@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 origin.date: 11/01/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
-ms.openlocfilehash: 3c72828aa3eddc787ca84dca12f8861831963c01
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.openlocfilehash: 1b9b9d870f4fb5b8d8080129bd7f0e2c29c3c7b6
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116887"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78237488"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查 Azure 中的 Windows 虚拟机部署问题
 
@@ -67,7 +67,7 @@ ms.locfileid: "74116887"
 
 有关详细信息，请参阅以下资源：
 
- - [Azure 混合使用权益概述](https://www.azure.cn/pricing/hybrid-use-benefit/)
+ - [Azure 混合使用权益概述](https://www.azure.cn/pricing/hybrid-benefit/)
 
  - [可下载的常见问题解答](https://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
 
@@ -83,9 +83,9 @@ ms.locfileid: "74116887"
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 中找不到 GPU 实例
 
-若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，在部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 可获取 [Windows VM](../windows/n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 的驱动程序安装信息。
+若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，在部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 针对 [Windows VM](../windows/n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 提供了驱动程序安装信息。
 
-## <a name="is-n-series-vms-available-in-my-region"></a>我所在的区域是否支持 N 系列 VM？
+## <a name="is-n-series-vms-available-in-my-region"></a>我所在的地区是否提供 N 系列 VM？
 
 可以从[可用产品(按区域)](https://www.azure.cn/home/features/products-by-region) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines/)的定价来查看可用性。
 
@@ -106,9 +106,9 @@ ms.locfileid: "74116887"
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>在可用性集中部署时，列出的 VM 大小不受支持。
 
-请选择可用性集的群集支持的大小。 建议在创建可用性集时，选择所需要的最大 VM 大小，并将其作为到可用性集的第一次部署。
+请选择可用性集的群集支持的大小。 建议在创建可用性集时选择所需的最大 VM 大小，并将它率先部署到可用性集。
 
-## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>是否可以将现有的经典 VM 添加到可用性集？
+## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>能否将现有经典 VM 添加到可用性集？
 
 是的。 可以将现有经典 VM 添加到新的或现有的可用性集。 有关详细信息，请参阅[将现有虚拟机添加到可用性集](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
 

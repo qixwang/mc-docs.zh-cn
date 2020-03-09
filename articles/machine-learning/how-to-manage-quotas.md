@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
-ms.author: nigup
-ms.date: 11/04/2019
-ms.openlocfilehash: 6d24b3bcfa30ff3f2958fb41f339f8e8be26c8d4
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.author: v-yiso
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 39441b753f604f689aa68302a04f7cbb6ee5ef6c
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598190"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850223"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

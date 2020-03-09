@@ -11,12 +11,12 @@ ms.topic: article
 origin.date: 06/05/2015
 ms.date: 01/21/2016
 ms.author: v-junlch
-ms.openlocfilehash: f261ed71c7293b7de48094687e01eae19388a919
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.openlocfilehash: dd9f529bc8b2d9d8a93f3c82ba2d1964291f0838
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169527"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850517"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租户应用程序
 
@@ -89,5 +89,5 @@ Azure 提供许多方法来为应用程序预配新租户。 对于具有大量�
 
 <!--links-->
 
-[在 Azure 中托管多租户应用程序]: http://msdn.microsoft.com/zh-cn/library/hh534480.aspx
-[Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh689716
+[在 Azure 中托管多租户应用程序]: https://msdn.microsoft.com/library/hh534480.aspx
+[Designing Multitenant Applications on Azure]: https://msdn.microsoft.com/library/windowsazure/hh689716

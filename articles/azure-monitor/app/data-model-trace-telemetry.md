@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 数据模型 - 跟踪遥测
 description: 适用于跟踪遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 04/25/2017
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: 7b6faf9f1f1076341f19c1a1afb7c5b502bcdf9d
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 0e8c4e2725a252493b2d0b2a1676e27249b13aea
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599759"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850434"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>跟踪遥测：Application Insights 数据模型
 

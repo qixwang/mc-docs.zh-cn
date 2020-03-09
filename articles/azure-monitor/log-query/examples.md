@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志查询示例 | Microsoft Docs
 description: 使用 Kusto 查询语言在 Azure Monitor 中进行日志查询的示例。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
@@ -9,12 +8,12 @@ manager: digimobile
 origin.date: 10/01/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 653b3add9b4f1d1e155635c7ac27391a192329a8
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e6e5af38edd23f1c7a09589f35b22d66f5ef01fc
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839040"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850277"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
 本文包含使用 [Kusto 查询语言](https://docs.microsoft.com/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f8210c723a6edf0243f95d14013132a2976d69f9
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 4e80f01d173f31a0daceff649e5847b835bfe842
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494164"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850461"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -63,7 +63,7 @@ ms.locfileid: "77494164"
 [![设备的自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。 有关此顺序和其他要素的详细讨论，请观看[自动将设备注册到 Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) 视频（从 41:00 标记处开始）
+> （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。
 
 ## <a name="roles-and-azure-accounts"></a>角色和 Azure 帐户
 

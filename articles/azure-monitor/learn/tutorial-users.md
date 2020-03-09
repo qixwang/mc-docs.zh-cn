@@ -3,18 +3,17 @@ title: 在 Azure Application Insights 中了解客户 | Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 了解客户对应用程序的使用情况。
 author: lingliw
 manager: digimobile
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 origin.date: 09/20/2017
 ms.date: 07/10/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 2f6859b589b54defd2881ae964e13cde2b9f9ed4
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 550acf217f13224a604f4e733d7133a5260ea594
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730333"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850422"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>使用 Azure Application Insights 了解客户对应用程序的使用情况
 

@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Application Insights 监视 ASP.NET Web 应用 | Azure Docs
 description: 提供有关快速安装 ASP.NET Web 应用以使用 Application Insights 进行监视的说明
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: lingliw
@@ -9,12 +8,12 @@ ms.author: v-lingwu
 origin.date: 06/26/2019
 ms.date: 09/23/2019
 ms.custom: mvc
-ms.openlocfilehash: afdb040ef50b1bd15959533ed31f1a395587d6db
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: b2c59c7128b04bcdaea6d71eb89d96196919ffbd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730307"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850296"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
 

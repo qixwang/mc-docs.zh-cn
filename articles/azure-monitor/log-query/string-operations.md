@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Azure Docs
 description: 介绍如何在 Azure Monitor 日志查询中编辑、比较、搜索字符串以及对其执行其他各种操作。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 98f76282a2fe7387bd6bcc37354427825cc0b641
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 5240ad14982dffee862b644ef8589633691f5a48
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730320"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850265"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
@@ -98,7 +97,7 @@ countof(text, search [, kind])
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
 - `kind` - _normal_ | _regex_（默认值：normal）。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 
 搜索字符串可在容器中匹配的次数。 纯字符串匹配项可能重叠，而正则表达式匹配项则不会。
 
@@ -140,7 +139,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` - 要搜索的字符串。
 - `typeLiteral` - 可选的类型文本（例如 typeof(long)）。 （如果支持）提取的子字符串将转换成此类型。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 与指定捕获组 captureGroup 匹配的子字符串可转换为 typeLiteral（可选）。
 如果没有匹配项或类型转换失败，则返回 null。
 
@@ -246,7 +245,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` - 由匹配正则表达式匹配的任何匹配项的替换正则表达式。 使用 \0 引用整个匹配项，使用 \1 引用第一个捕获组，使用 \2 等引用后续捕获组。
 - `input_text` - 要在其中搜索的输入字符串。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 使用 rewrite 计算结果替换正则表达式的所有匹配项后面的文本。 匹配项不会重叠。
 
 ### <a name="examples"></a>示例

@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 中的遥测通道 | Microsoft Docs
 description: 如何自定义适用于 .NET 和 .NET Core 的 Azure Application Insights SDK 中的遥测通道。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 05/14/2019
 ms.date: 12/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d2c5c63002548c2097537d5278a8b152e6d61142
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: b95088b6d8ea80b6d22df02a6e2f29655b910b60
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600111"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850356"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 

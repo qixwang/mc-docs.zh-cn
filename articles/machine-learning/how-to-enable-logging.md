@@ -1,20 +1,21 @@
 ---
 title: 在 Azure 机器学习中启用日志记录
 description: 了解如何使用默认的 Python 日志记录包以及 SDK 特定的功能，在 Azure 机器学习中启用日志记录。
-ms.author: trbye
+ms.author: v-yiso
 author: trevorbye
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 07/12/2019
-ms.openlocfilehash: 5e8ba29a4317610166429cf590fa7a5d9d9df618
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 07/12/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 3680eebb3711f6676b85770f107ed37196d7986f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598211"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850594"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,22 +84,6 @@ compute_target = ComputeTarget.attach(
 compute.wait_for_completion(show_output=True)
 ```
 
-## <a name="logging-during-image-creation"></a>在创建映像期间进行日志记录
-
-在创建映像期间启用日志记录可在生成过程中看到任何错误。 在 `wait_for_deployment()` 函数中设置 `show_output` 参数。
-
-```python
-from azureml.core.webservice import Webservice
-
-service = Webservice.deploy_from_image(deployment_config=your_config,
-                                       image=image,
-                                       name="example-image",
-                                       workspace=ws
-                                       )
-
-service.wait_for_deployment(show_output=True)
-```
-
 ## <a name="logging-for-deployed-models"></a>对部署的模型进行日志记录
 
 若要从以前部署的 Web 服务检索日志，请加载该服务并使用 `get_logs()` 函数。 日志可以包含有关部署期间发生的任何错误的详细信息。
@@ -117,7 +102,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-有关如何在 Azure 机器学习工作室中使用 Application Insights 的详细信息，请参阅[操作指南](service/how-to-enable-app-insights.md)。
+有关如何在 Azure 机器学习工作室中使用 Application Insights 的详细信息，请参阅[操作指南](how-to-enable-app-insights.md)。
 
 ## <a name="python-native-logging-settings"></a>Python 本机日志记录设置
 

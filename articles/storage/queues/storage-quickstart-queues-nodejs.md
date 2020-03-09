@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure 队列存储库 v12 - JavaScript
-description: 了解如何使用 Azure 队列 JavaScript v12 库创建队列并向队列中添加消息。 接下来，介绍如何在队列中读取和删除消息。 你还将了解如何删除队列。
+description: 了解如何使用 Azure 队列 JavaScript v12 库创建队列并向队列中添加消息。 接下来，介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
 author: WenJason
 ms.author: v-jay
 origin.date: 12/13/2019
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9d66dcca4cec2d19f281fae40bade3d7b31f8275
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 14fba3148f805fc62ac5eb8cb091378718df53ab
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624397"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412297"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
 
@@ -29,7 +29,7 @@ ms.locfileid: "75624397"
 * 从队列中删除消息
 * 删除队列
 
-[API 参考文档](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-queue) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)
+[API 参考文档](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-queue) | [示例](/storage/common/storage-samples-javascript?toc=%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -119,7 +119,7 @@ npm install
 
 ## <a name="object-model"></a>对象模型
 
-Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供了三种类型的资源：
+Azure 队列存储是一个可存储大量消息的服务。 队列消息大小最大可为 64 KB。 一个队列可以包含数百万条消息，直至达到存储帐户的总容量限值。 队列通常用于创建要异步处理的积压工作 (backlog)。 队列存储提供三种类型的资源：
 
 * 存储帐户
 * 存储帐户中的队列
@@ -166,10 +166,10 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ### <a name="create-a-queue"></a>创建队列
 
-确定新队列的名称。 以下代码将 UUID 值追加到队列名称，确保其是唯一的。
+确定新队列的名称。 以下代码将 UUID 值追加到队列名称，从而确保其是唯一的。
 
 > [!IMPORTANT]
-> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅 [命名队列和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)。
+> 队列名称只能包含小写字母、数字和连字符，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。 名称的长度还必须介于 3 到 63 个字符之间。 有关命名队列的详细信息，请参阅[命名队列和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)。
 
 创建 [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient) 类的实例。 然后，调用 [create](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，以便在存储帐户中创建队列。
 

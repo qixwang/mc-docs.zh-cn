@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights | Azure Docs
 description: ''
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 08/08/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 5bbd9c69d5ece6a47af97cc4ec43515d9495e8ce
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: e47434be9440e35ece3037a305a33359c08bf048
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970918"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850442"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
@@ -24,7 +22,7 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 - 数据扩充或查找表：例如，在提供服务器名称的同时，补充提供服务器的所有者以及服务器所在的实验室位置 
 - 与非 Application Insights 数据源相关联：例如，将网店购买数据与购买履行服务的信息相关联，确定寄送时间估算的准确度如何 
-- 完全自定义数据：我们的许多客户喜欢支持 Application Insights 的 Azure Monitor 日志平台的查询语言和性能，希望使用它来查询与 Application Insights 根本不相关的数据。 例如，在进行智能家居安装的过程中根据[此处]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)所述跟踪太阳能板的性能。
+- 完全自定义数据：我们的许多客户喜欢支持 Application Insights 的 Azure Monitor 日志平台的查询语言和性能，希望使用它来查询与 Application Insights 根本不相关的数据。 例如，在进行智能家居安装的过程中根据[此处](https://www.catapultsystems.com/blogs/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)所述跟踪太阳能板的性能。
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>如何将自定义数据与 Application Insights 数据相关联 
 

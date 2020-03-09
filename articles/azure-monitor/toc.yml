@@ -111,11 +111,6 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-    - name: 常见问题
-      items:
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: 操作指南
   items:
     - name: 管理 Azure Monitor

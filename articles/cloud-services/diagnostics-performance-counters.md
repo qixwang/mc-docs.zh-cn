@@ -1,26 +1,19 @@
 ---
-title: 在 Azure 云服务中收集性能计数器
-description: 了解如何使用 Azure 诊断在云服务中发现、使用和创建性能计数器。
+title: 在 Azure 云服务中收集性能计数器 | Microsoft Docs
+description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
 services: cloud-services
 documentationcenter: .net
-author: thraka
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: tgore03
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 02/02/2018
-ms.date: 01/20/2020
-ms.author: v-yiso
-ms.openlocfilehash: 1533dba4e6e17fce412157a81b7bfc452a93b9c4
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.date: 03/04/2020
+ms.author: v-junlch
+ms.openlocfilehash: 86a4119f7310f2fced18e30822f1ec04972d1232
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859728"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266091"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -30,7 +23,7 @@ ms.locfileid: "75859728"
 
 性能计数器由两个部分组成：集名称（也称为类别），以及一个或多个计数器。 可以使用 PowerShell 获取可用性能计数器的列表：
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
 
 CounterSetName                                  Paths
@@ -57,7 +50,7 @@ Authorization Manager Applications              {\Authorization Manager Appl...
 
 若要获取某个集的所有计数器，请使用 `CounterSetName` 值并扩展 `Paths` 集合。 每个路径项是可以查询的计数器。 例如，若要获取 `Processor` 集相关的可用计数器，请扩展 `Paths` 集合：
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
 
 \Processor(*)\% Processor Time

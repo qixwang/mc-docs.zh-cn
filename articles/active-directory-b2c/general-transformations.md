@@ -3,20 +3,20 @@ title: 自定义策略的常规声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的常规声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 98ecf2f3d0e573a6415c216e5312cee9761ff248
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 13d1009a0f2af2f926cdd372c5640ab6390a934e
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531297"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265963"
 ---
 # <a name="general-claims-transformations"></a>常规声明转换
 
@@ -36,13 +36,13 @@ ms.locfileid: "77531297"
 使用此声明转换可以将字符串或数值声明中的值复制到另一个声明。 以下示例将 externalEmail 声明值复制到电子邮件声明。
 
 ```XML
-<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -51,7 +51,7 @@ ms.locfileid: "77531297"
 - 输入声明：
     - **inputClaim**: bob@contoso.com
 - 输出声明：
-    -  outputClaim: bob@contoso.com 
+    -  outputClaim: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -117,4 +117,3 @@ ms.locfileid: "77531297"
 - 输出声明：
   - **outputClaim**：CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
 
-<!-- Update_Description: wording update -->

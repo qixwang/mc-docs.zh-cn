@@ -1,7 +1,6 @@
 ---
 title: Azure 中的网络性能监视器解决方案 | Azure Docs
 description: Azure 中的网络性能监视器可以近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/20/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 491d66935be2d28bb6742809ab93a2a3545015b9
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 75462e73a829384879c1077fdb003b3f3c58ee8c
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600131"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850323"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -58,7 +57,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 * **服务连接监视器**：要监视节点到服务终结点的网络连接，需在每个此类节点上安装 Log Analytics 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Log Analytics 代理。 
 
-* **ExpressRoute 监视器**：在 Azure 虚拟网络中安装至少一个 Log Analytics 代理。 并在通过 ExpressRoute 专用对等互连连接的本地子网中安装至少一个代理。  
+* **ExpressRoute 监视器**：在 Azure 虚拟网络中安装至少一个 Log Analytics 代理。 并在通过 ExpressRoute 专用对等互连连接的本地子网中安装至少一个代理。  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>配置 Log Analytics 代理的监视功能 
 

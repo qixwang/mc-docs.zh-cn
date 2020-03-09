@@ -7,15 +7,15 @@ author: WenJason
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-origin.date: 02/14/2019
-ms.date: 01/06/2020
+origin.date: 02/26/2020
+ms.date: 03/09/2020
 ms.author: v-jay
-ms.openlocfilehash: 50334ff6797db45f9aec74ec64d225dbf23b8868
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 3a8050a0344c0fd3aea5e6cc8459da941125fc52
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624188"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411994"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入门：使用 PowerShell 上传、下载和列出 blob
 
@@ -98,16 +98,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>使用 AzCopy 传输数据
 
-若要按可编写脚本的方式高性能地传输 Azure 存储中的数据，还可使用 [AzCopy](../common/storage-use-azcopy.md?toc=%2fstorage%2fblobs%2ftoc.json) 实用工具。 使用 AzCopy 将数据传输到 Blob、文件和表存储或将数据从其中传出。
+AzCopy 命令行实用程序提供适用于 Azure 存储的高性能且可编写脚本的数据传输。 可使用 AzCopy 将数据传输到 Blob 存储和 Azure 文件存储，或将数据从其中传出。 有关 AzCopy v10（最新版 AzCopy）的详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md)。 若要了解如何将 AzCopy v10 与 Blob 存储配合使用，请参阅[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)。
 
-在以下快速示例中，AzCopy 命令用于将名为 myfile.txt 的文件从 PowerShell 窗口上传到 mystoragecontainer 容器   。
+以下示例使用 AzCopy 将本地文件上传到 blob。 请务必将示例值替换为你自己的值：
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.chinacloudapi.cn/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login --aad-endpoint https://login.partner.microsoftonline.cn
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

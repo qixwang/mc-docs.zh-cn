@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Azure Docs
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 08/26/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 84fab833920e12934cd34ca79f6288dcba42643d
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: b633bdee41161c9e1e7d9a1a7ffb3b454d57c0a7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730531"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850405"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -332,7 +330,7 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../../azure-monitor/faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md
 

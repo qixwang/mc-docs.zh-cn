@@ -13,12 +13,12 @@ ms.custom: mvc
 origin.date: 11/15/2017
 ms.date: 07/15/2019
 ms.author: v-yiso
-ms.openlocfilehash: 22c72db954134dc098481d62eccc834303bd4ec5
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: e022b0a1cd43a98f64aeda0cca9f6f7d741a6377
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569644"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213718"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>创建新的 Azure API 管理服务实例
 
@@ -34,12 +34,12 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 在 https://portal.azure.cn 登录 Azure 门户。
 
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/en-us//powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com//powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/en-us//powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [New-AzResourceGroup](https://docs.microsoft.com//powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location ChinaEast

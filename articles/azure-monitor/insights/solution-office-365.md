@@ -3,18 +3,17 @@ title: Azure 中的 Office 365 管理解决方案 | Azure Docs
 description: 本文详细介绍如何配置和使用 Azure 中的 Office 365 解决方案。  它还详细介绍了在 Azure Monitor 中创建的 Office 365 记录。
 author: lingliw
 manager: digimobile
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 origin.date: 12/27/2019
 ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 8b5cf4e2a36505d1aa0bac6a09b702603282f0b8
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 5909982fbd69643bb095e69b09d830e59990d422
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497426"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850318"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 

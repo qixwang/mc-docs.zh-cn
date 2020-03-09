@@ -1,20 +1,18 @@
 ---
 title: 使用 Application Insights 监视 Azure Kubernetes 服务 (AKS) 或其他 Kubernetes 托管应用程序 - Azure Monitor | Azure Docs
 description: Azure Monitor 使用 Kubernetes 群集上的服务网格技术 Istio 提供针对任何 Kubernetes 托管应用程序的监视。 这样，就可以收集传入和传出群集中运行的 pod 的请求的 Application Insights 相关遥测数据。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 04/25/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6c4d4e4ccb0314074d40ba70e03dd507519f5a2b
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: f86b2236955bdfeb123431207b6984fa304bf424
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730472"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850412"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 托管应用程序的零检测应用程序监视
 

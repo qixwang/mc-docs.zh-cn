@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 11/22/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: c07bc5d77ec8760e959a2245cef6a29ad434ac50
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: e41eab9d0ac800283609d193e05abddf1d08b655
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859865"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304635"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
 
@@ -133,10 +133,10 @@ Update Complete. ⎈ Happy Helming!⎈
 helm install my-nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 ```
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 以下精简示例输出显示了 Helm 图表创建的 Kubernetes 资源的部署状态：
 
@@ -144,7 +144,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
 $ helm install my-nginx-ingress stable/nginx-ingress \
 >     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
 >     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
->     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+>     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 
 NAME: my-nginx-ingress
 LAST DEPLOYED: Fri Nov 22 10:08:06 2019
@@ -159,7 +159,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 使用 `kubectl get services` 命令获取服务的 *EXTERNAL-IP*。 例如，下面的命令显示 *my-nginx-ingress-controller* 服务的 *EXTERNAL-IP*：
 
@@ -340,14 +340,14 @@ Update Complete.
 helm install stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 ```
 
 以下精简示例输出显示了 Helm 图表创建的 Kubernetes 资源的部署状态：
 
 ```
 $ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
->     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+>     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 
 NAME:   flailing-alpaca
 LAST DEPLOYED: Thu May 23 12:55:21 2019

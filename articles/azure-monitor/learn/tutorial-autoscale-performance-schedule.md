@@ -3,19 +3,18 @@ title: 基于性能数据或计划自动缩放 Azure 资源
 description: 使用指标数据和调度为应用服务计划创建自动缩放设置
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 origin.date: 12/11/2017
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: c8cbf529cac46373651638148f59545731053a5d
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: 3d0f086314e8e181a4604b03ad991819480d02c2
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737212"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850290"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>基于性能数据或调度为 Azure 资源创建自动缩放设置 | Microsoft 文档
 
@@ -56,7 +55,7 @@ ms.locfileid: "70737212"
 
    ![保存自动缩放设置](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
- ## <a name="configure-default-profile"></a>配置默认配置文件
+## <a name="configure-default-profile"></a>配置默认配置文件
 1. 输入自动缩放设置的“名称”  。
 2. 在默认配置文件中，确保已将“缩放模式”  设置为“缩放为具体实例数”。
 3. 将实例计数设置为 1  。 此设置将确保在没有其他配置文件处于活动状态或有效状态时，默认配置文件将实例计数返回到 1。

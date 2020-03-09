@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 02/10/2020
 ms.date: 03/02/2020
-ms.openlocfilehash: 631d90fc3bad747db0fc32967f8690d7ebcdb529
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 520181742fb7bd8f00b5bbbc13488c844ebb08eb
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501462"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850544"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# 教程：创建第一个应用 - Azure 认知搜索
 
@@ -45,7 +45,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 ![搜索“池”](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -475,6 +475,7 @@ Azure 认知搜索调用封装在 **RunQueryAsync** 方法中。
 
             // Create a service and index client.
             _serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(queryApiKey));
+            _serviceClient.SearchDnsSuffix = "search.azure.cn";
             _indexClient = _serviceClient.Indexes.GetClient("hotels");
         }
     ```

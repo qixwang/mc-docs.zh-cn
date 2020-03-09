@@ -1,19 +1,18 @@
 ---
 title: 从 Azure 资源收集资源日志并使用 Azure Monitor 进行分析
 description: 本教程介绍如何将诊断设置配置为将 Azure 资源中的资源日志收集到 Log Analytics 工作区中，以通过日志查询对这些这些日志进行分析。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: lingliw
 ms.author: v-lingwu
-origin.date: 04/10/2019
+origin.date: 12/15/2019
 ms.date: 02/19/2020
-ms.openlocfilehash: 0508e6138393ff503b33b02c021ffd123298dee2
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: d92e2d5ef19bb54f072230a93df3d57d44088856
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500923"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850286"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教程：从 Azure 资源收集和分析资源日志
 
@@ -27,7 +26,7 @@ ms.locfileid: "77500923"
 > * 创建简单的日志查询以分析日志
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要一个要监控的 Azure 资源。 你可以使用 Azure 订阅中支持诊断设置的任何资源。 要确定资源是否支持诊断设置，请在 Azure 门户中前往其菜单，并验证菜单的“监视”部分是否有“诊断设置”选项   。
 

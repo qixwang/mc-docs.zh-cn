@@ -1,20 +1,18 @@
 ---
 title: Azure Monitor Application Insights 依赖关系数据模型
 description: 适用于依赖项遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 04/17/2017
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: 8e99efffe59dabb5ea93d28038c49bac4241c61e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: f452095dc4a7249b33474ecd37def37b885f63dd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028449"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850439"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 

@@ -1,8 +1,6 @@
 ---
 title: 使用 Azure Monitor 工作簿创建交互式报表 | Azure docs
 description: 使用预先构建的自定义参数化工作簿简化复杂的报表
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 09/19/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: b757f8ccea3fd04bfd5c2cd99843c1de77ee33af
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: f8d2e4a75d645b98017f41fff9f2aa9ad77bf025
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730517"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850347"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿创建交互式报表
 
@@ -259,7 +257,7 @@ customEvents
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [用户、会话、事件](../../azure-monitor/app/usage-segmentation.md)
     - [漏斗图](../../azure-monitor/app/usage-funnels.md)
-    - [保留](../../azure-monitor/app/usage-retention.md)
+    - [保留期](../../azure-monitor/app/usage-retention.md)
     - [用户流](../../azure-monitor/app/usage-flows.md)
     - [添加用户上下文](../../azure-monitor/app/usage-send-user-context.md)
 

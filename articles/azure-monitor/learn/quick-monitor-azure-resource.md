@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure Monitor 监视 Azure 资源
 description: 了解如何在 Azure Monitor 中收集和分析 Azure 资源的数据。
-ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: lingliw
 ms.author: v-lingwu
 origin.date: 12/15/2019
 ms.date: 02/19/2020
-ms.openlocfilehash: 79c629923d83426ceeb52eeddf8c33e2860da9d7
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: d9346a072498ec7947987cbb6e50787834d091af
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500924"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850294"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>快速入门：使用 Azure Monitor 监视 Azure 资源
 创建 Azure 资源后，[Azure Monitor](../overview.md) 即会开始从这些资源中收集数据。 本快速入门中简单演练了为资源自动收集的数据以及如何在 Azure 门户中查看特定资源的数据。 之后，你可以添加配置来收集其他数据，并可以转到 Azure Monitor 菜单中使用相同工具访问为订阅中所有资源收集的数据。

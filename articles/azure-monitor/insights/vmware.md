@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 中的 VMware 监视解决方案 | Microsoft Docs
 description: 了解 VMware 监视解决方案如何帮助管理日志和监视 ESXi 主机。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/04/2018
 ms.date: 07/02/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8d14f57ba8dc629d800f274beb2cb4ae36b207bd
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 251f7cff5746fd9f20e490191465bc7833e784f4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73729963"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850307"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -84,7 +83,7 @@ VMware 监视解决方案使用已启用的适用于 Linux 的 Log Analytics 代
 
 下表显示了由 VMware 监视解决方案所收集的数据字段示例：
 
-| 字段名称 | 说明 |
+| 字段名称 | description |
 | --- | --- |
 | Device_s |VMware 存储设备 |
 | ESXIFailure_s |失败类型 |

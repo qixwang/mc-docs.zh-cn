@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 17475f3ee318637175a9f35e8ac4d177a7518b6f
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 7791d065c29cd07172c19f87e2613d8476be3490
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155043"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411392"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
@@ -78,7 +78,7 @@ ms.locfileid: "78155043"
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -100,8 +100,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

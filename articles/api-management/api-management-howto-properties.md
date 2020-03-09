@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: 391e265e241823fff39aff7a6ace14dd475d48b6
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 126305cc86276ddcce7226191c9495ac16627c4b
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428629"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213719"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或响应 API 时按顺序执行。 可以使用文字文本值、策略表达式和命名值构造策略语句。 
@@ -60,7 +60,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 创建命名值后，可以通过单击该值对其进行编辑。 如果更改了命名值的名称，则会自动更新引用了该命名值的策略，让其使用新名称。
 
-若要了解如何使用 REST API 编辑命名值，请参阅[使用 REST API 编辑命名值](https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/property?patch)。
+若要了解如何使用 REST API 编辑命名值，请参阅[使用 REST API 编辑命名值](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property?patch)。
 
 ## <a name="to-delete-a-named-value"></a>删除命名值
 
@@ -69,7 +69,7 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 > [!IMPORTANT]
 > 如果有策略引用了该命名值，则无法成功地将它删除，除非将它从所有使用它的策略中删除。
 
-若要了解如何使用 REST API 删除命名值，请参阅[使用 REST API 删除命名值](https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/property/delete)。
+若要了解如何使用 REST API 删除命名值，请参阅[使用 REST API 删除命名值](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property/delete)。
 
 ## <a name="to-search-and-filter-named-values"></a>搜索和筛选命名值
 

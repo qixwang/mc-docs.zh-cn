@@ -9,26 +9,26 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 15c9a9faa85c00f99b272c43a1c9e2109cf0e0c7
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.date: 02/04/2020
+ms.openlocfilehash: 114b64181f47051b6aad93dd1a30619447d075b7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598714"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78849890"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 本教程介绍如何在不编写任何代码行的情况下，通过 Azure 机器学习工作室创建第一个自动化机器学习试验。 本示例将创建一个分类模型来预测某家金融机构的客户是否会认购定期存款产品。
 
-利用自动化机器学习，可以自动完成耗时的任务。 自动化机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
+利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
 本教程介绍如何执行以下任务：
 
 > [!div class="checklist"]
 > * 创建 Azure 机器学习工作区。
-> * 运行自动化机器学习试验。
+> * 运行自动机器学习试验。
 > * 查看试验详细信息。
 > * 部署模型。
 
@@ -69,11 +69,15 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 通过从“+ 创建数据集”  下拉菜单选择“从本地文件”  ，创建新的数据集。 
 
+    1. 在“基本信息”  窗体上，为数据集指定一个名称，并提供可选说明。 Azure 机器学习工作室中的自动化 ML 当前仅支持表格数据集，因此，数据集类型应当默认设置为“表格”。
+
+    1. 在左下角选择“下一步” 
+
+    1. 在“数据存储和文件选择”  窗体上，选择在创建工作区期间自动设置的默认数据存储“workspaceblobstore(Azure Blob 存储)”  。 你可以在此数据存储中上传数据文件，使其可用于你的工作区。
+
     1. 选择“浏览”  。
     
     1. 选择本地计算机上的 bankmarketing_train.csv 文件  。 这是作为[必备组件](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)下载的文件。
-
-    1. 选择“表格”  作为数据集类型。 
 
     1. 为数据集指定唯一名称，并提供可选说明。 
 
@@ -88,10 +92,10 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         文件格式|定义文件中存储的数据的布局和类型。| 带分隔符
         分隔符|一个或多个字符，用于指定纯文本或其他数据流中不同的独立区域之间的边界。&nbsp; |逗号
         编码|指定字符架构表中用于读取数据集的位。| UTF-8
-        列标题| 指示如何处理数据集的标题（如果有）。| 所有文件都具有相同的标题
+        列标题| 指示如何处理数据集的标头（如果有）。| 所有文件都具有相同的标题
         跳过行 | 指示要跳过数据集中的多少行（如果有）。| 无
 
-    1. 通过“架构”窗体，可以进一步为此试验配置数据。  对于本示例，为 day_of_week 特征选择切换开关，以便在此试验中不包含它  。 选择“**下一步**”。
+    1. 通过“架构”窗体，可以进一步为此试验配置数据。  对于本示例，为 day_of_week 特征选择切换开关，以便在此试验中不包含在内  。 选择“**下一步**”。
 
         ![“预览”选项卡中的配置](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -136,18 +140,18 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         阻止的算法 | 要从训练作业中排除的算法| 无
         退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业时间（小时）：&nbsp;&nbsp;1 <br> 指标分数阈值：&nbsp;&nbsp;无
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：2
-        并发| 执行并行迭代的最大次数和每次迭代使用的最大内核数。| 最大并发迭代次数：&nbsp;&nbsp;5<br> 最大内核数/迭代：&nbsp;&nbsp;&nbsp;无
+        并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;5
         
-        Select **OK**.
+        选择“保存”  。
 
-1. 选择“创建”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并显示“运行状态”  。
+1. 选择“完成”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并且会在顶部显示“运行状态”  。
 
 >[!IMPORTANT]
 > 准备试验运行时，准备需要 **10-15 分钟**。
 > 运行以后，**每个迭代还需要 2-3 分钟**。  
 > 定期选择“刷新”  ，以查看实验过程中运行的状态。
 >
-> 在生产环境中，你可能会走开一段时间。 但在本教程中，建议你开始浏览“模型”选项卡上的已测试算法，因为当其他模型仍在运行的时候，这些模型已经完成。 
+> 在生产环境中，你可能会走开一段时间。 但在本教程中，建议你开始浏览“模型”选项卡上的已测试算法，因为当其他模型仍在运行的时候，这些模型已经完成。  
 
 ##  <a name="explore-models"></a>浏览模型
 
@@ -165,7 +169,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 对于本试验，部署到 Web 服务意味着金融机构现已获得一个迭代和可缩放的 Web 解决方案，用于识别潜在的定期存款客户。 
 
-运行完成后，导航回“运行详细信息”  页，然后选择“模型”  选项卡。选择“刷新”  。 
+运行完成后，导航回“运行详细信息”  页，然后选择“模型”  选项卡。
 
 在此试验上下文中，根据 **AUC_weighted** 指标，**VotingEnsemble** 被视为最佳模型。  我们将部署此模型，但请注意，部署需要大约 20 分钟才能完成。 部署过程需要几个步骤，包括注册模型、生成资源和为 Web 服务配置资源。
 
@@ -193,7 +197,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-部署文件比数据文件和试验文件更大，因此它们的存储成本也更大。 当你想要最大程度地降低帐户成本，或者想要保留工作区和试验文件时，请仅删除部署文件。 否则，如果你不打算使用任何文件，请删除整个资源组。  
+部署文件比数据文件和试验文件更大，因此它们的存储成本也更大。 仅当你想要最大程度地降低帐户成本，或者想要保留工作区和试验文件时，才删除部署文件。 否则，如果你不打算使用任何文件，请删除整个资源组。  
 
 ### <a name="delete-the-deployment-instance"></a>删除部署实例
 
@@ -216,11 +220,11 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 > [!div class="nextstepaction"]
 > [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ 详细了解[预处理](how-to-create-portal-experiments.md#preprocess)。
++ 详细了解[特征化](how-to-create-portal-experiments.md#featurization)。
 + 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
 
 >[!NOTE]
-> 此银行营销数据集是根据 [Creative Commons (CCO:Public Domain) 许可条款](https://creativecommons.org/publicdomain/zero/1.0/)提供的。 数据库各项内容中的任何权利是根据[数据库内容许可条款](https://creativecommons.org/publicdomain/zero/1.0/)在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上授予的。 此数据集最初在 [UCI 机器学习数据库](https://archive.ics.uci.edu/ml/datasets/bank+marketing)中可用。<br><br>
+> 此银行营销数据集是根据 [Creative Commons (CCO:Public Domain) 许可条款](https://creativecommons.org/publicdomain/zero/1.0/)提供的。 数据库各项内容中的任何权利是根据[数据库内容许可条款](https://creativecommons.org/publicdomain/zero/1.0/)在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上授予的。 此数据集最初在 [UCI 机器学习数据库](https://archive.ics.uci.edu/ml/datasets/bank+marketing)中提供。<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014.

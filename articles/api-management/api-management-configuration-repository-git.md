@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 03/12/2019
 ms.author: v-yiso
 ms.date: 04/22/2019
-ms.openlocfilehash: 39f76ed44ad0fca0be7b707c239a27f27a1b630b
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.openlocfilehash: 70346bb12ec53a2c447451f6cab74d5e89882453
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569661"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213722"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -58,7 +58,7 @@ ms.locfileid: "67569661"
 >
 >
 
-有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](https://docs.microsoft.com/en-us/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)。
+有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>将服务配置保存到 Git 存储库
 

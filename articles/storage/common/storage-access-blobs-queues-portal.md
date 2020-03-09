@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 01/10/2020
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 55d21ca5079d216829dda64128d8b1684eeb02b5
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 86c9966fa1bf21a7da485d88e6b2e57341a7e859
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028939"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412263"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 Blob 或队列数据
 

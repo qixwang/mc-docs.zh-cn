@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure PowerShell 创建 Log Analytics 工作区 | Azure Docs
 description: 了解如何使用 Azure PowerShell 创建 Log Analytics 工作区，以启用管理解决方案以及从云和本地环境进行的数据收集。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/12/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f9b954f30d80598b5743303ca140ae5ad6781e95
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 810fa9d8259cbb7e5b896fea15b1d7d8e76678de
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028887"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850298"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>使用 Azure PowerShell 创建 Log Analytics 工作区
 
@@ -113,7 +112,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。   
-4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令：
+4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示你输入工作区名称时，请提供在所有 Azure 订阅中全局唯一的名称。
 
     ```powershell
         New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json

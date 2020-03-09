@@ -33,6 +33,10 @@
       href: ../common/storage-samples-dotnet.md?toc=%2fstorage%2fqueues%2ftoc.json
     - name: Java
       href: ../common/storage-samples-java.md?toc=%2fstorage%2fqueues%2ftoc.json
+    - name: Python
+      href: ../common/storage-samples-python.md?toc=%2fstorage%2fqueues%2ftoc.json
+    - name: Javascript
+      href: ../common/storage-samples-javascript.md?toc=%2fstorage%2fqueues%2ftoc.json
 - name: 概念
   items:
     - name: 存储帐户
@@ -56,17 +60,14 @@
           href: ../common/authorization-resource-provider.md?toc=%2fstorage%2fqueues%2ftoc.json
         - name: 内置安全控件
           href: ../common/storage-security-controls.md?toc=%2fstorage%2fqueues%2ftoc.json
-    - name: 数据冗余
-      href: ../common/storage-redundancy.md?toc=%2fstorage%2fqueues%2ftoc.json
-      items:
-        - name: 本地冗余存储
-          href: ../common/storage-redundancy-lrs.md?toc=%2fstorage%2fqueues%2ftoc.json
-        - name: 异地冗余存储
-          href: ../common/storage-redundancy-grs.md?toc=%2fstorage%2fqueues%2ftoc.json
-        - name: 灾难恢复和故障转移
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fstorage%2fqueues%2ftoc.json
-        - name: 使用 RA-GRS 设计 HA 应用
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fstorage%2fqueues%2ftoc.json
+        - name: 数据冗余
+          items:
+            - name: 数据冗余
+              href: ../common/storage-redundancy.md?toc=%2fstorage%2fqueues%2ftoc.json
+            - name: 灾难恢复和故障转移
+              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fstorage%2fqueues%2ftoc.json
+            - name: 设计具有高可用性的应用程序
+              href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fstorage%2fqueues%2ftoc.json
     - name: 性能和可伸缩性清单
       href: storage-performance-checklist.md
     - name: 并发
@@ -111,7 +112,7 @@
                 - name: PowerShell
                   href: ../common/authorize-active-directory-powershell.md?toc=%2fstorage%2fqueues%2ftoc.json
                 - name: Azure CLI
-                  href: ../common/authorize-active-directory-cli.md?toc=%2fstorage%2fqueues%2ftoc.json
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fstorage%2fqueues%2ftoc.json
             - name: 使用 RBAC 管理访问权限
               items:
                 - name: 门户
@@ -162,6 +163,12 @@
               href: ../common/storage-require-secure-transfer.md?toc=%2fstorage%2fqueues%2ftoc.json
             - name: 启用传输层安全性
               href: ../common/storage-security-tls.md?toc=%2fstorage%2fqueues%2ftoc.json
+    - name: 更改复制数据的方式
+      href: ../common/redundancy-migration.md?toc=%2fstorage%2fqueues%2ftoc.json
+    - name: 灾难恢复
+      items:
+        - name: 检查“上次同步时间”属性
+          href: ../common/last-sync-time-get.md?toc=%2fstorage%2fqueues%2ftoc.json
     - name: 使用存储模拟器
       items:
         - name: 使用 Azurite 开放源代码模拟器

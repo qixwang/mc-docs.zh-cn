@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 404ef6208db27b6598c1a24a1742607ab726c599
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 73c86e10b900fa79d0feec2169a9bdbec5389da7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598329"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850209"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练并注册 Chainer 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "75598329"
 
 - Azure 机器学习计算实例 - 无需下载或安装
 
-    - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
+    - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，在 **how-to-use-azureml > ml-frameworks > chainer > deployment > train-hyperparameter-tune-deploy-with-chainer** 文件夹中找到已完成的笔记本和文件。  笔记本包含扩展部分，其中涵盖智能超参数优化、模型部署和笔记本小组件。
 
 - 你自己的 Jupyter 笔记本服务器
@@ -46,7 +46,7 @@ ms.locfileid: "75598329"
 
 ## <a name="set-up-the-experiment"></a>设置试验
 
-本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传训练数据和训练脚本来设置训练试验。
+本部分将准备训练实验，包括加载所需 python 包、初始化工作区、创建实验以及上传训练数据和训练脚本。
 
 ### <a name="import-packages"></a>导入程序包
 
@@ -164,7 +164,7 @@ estimator = Chainer(source_directory=project_folder,
 
 ## <a name="submit-a-run"></a>提交运行
 
-[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和完成后提供运行历史记录的接口。
+[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
 run = exp.submit(est)
@@ -173,11 +173,11 @@ run.wait_for_completion(show_output=True)
 
 执行运行时，会经历以下阶段：
 
-- **准备**：根据 Chainer 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 此外，还会将日志流式传输到运行历史记录，还可以查看日志以监视进度。
+- **准备**：根据 Chainer 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
 
-- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试增加节点。
+- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试纵向扩展。
 
-- **运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，并可将其用于监视运行。
+- **正在运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，可将其用于监视运行。
 
 - **后期处理**：将运行的 ./outputs 文件夹复制到运行历史记录。
 
@@ -216,4 +216,4 @@ for f in run.get_file_names():
 
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 
-* [查看 Azure 中分布式深度学习训练的参考体系结构](/architecture/reference-architectures/ai/training-deep-learning)
+* [查看 Azure 中分布式深度学习训练的参考体系结构](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/training-deep-learning)

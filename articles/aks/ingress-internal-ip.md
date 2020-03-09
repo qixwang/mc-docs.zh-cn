@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 05/24/2019
 ms.date: 07/29/2019
 ms.author: v-yeche
-ms.openlocfilehash: cf73120ffad20e43e1ff1844ff4bdfa1b77dcce9
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: c4719d3915cb3ba79a5acb0ce215947677c144d4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500692"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304638"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -60,7 +60,7 @@ controller:
 > [!TIP]
 > 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For  下的请求头中。 使用启用了客户端源 IP 保留的入口控制器时，SSL 传递将不起作用。
 
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 ```console
 # Create a namespace for your ingress resources
@@ -73,7 +73,7 @@ helm install stable/nginx-ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 ```
 
 <!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->

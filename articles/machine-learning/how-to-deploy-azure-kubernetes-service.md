@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 origin.date: 01/16/2020
 ms.date: 03/09/2020
-ms.openlocfilehash: 009c5afd514d855950e358226e7a8223fb221388
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 0c54d1074c18e2e9ba8aecf876f0ad5b8e298741
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155060"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850459"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -100,7 +100,7 @@ aks_target.wait_for_completion(show_output = True)
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
-* [AksCompute.provisioning_configuration](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.provisioning_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [ComputeTarget.create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)
 * [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#wait-for-completion-show-output-false-)
 
@@ -160,7 +160,7 @@ aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
-* [AksCompute.attach_configuration()](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
 * [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py)
 * [AksCompute.attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py#attach-workspace--name--attach-configuration-)
 

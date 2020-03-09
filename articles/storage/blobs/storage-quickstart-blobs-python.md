@@ -4,24 +4,24 @@ description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob �
 author: WenJason
 ms.author: v-jay
 origin.date: 01/24/2020
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d32c4f0ce31a4e9a22c6c31ed86605b087cb2d4
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: de7857c3bfcc6f9bbf11edd0f6251fd8ac9d2330
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028891"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411991"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
 本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
-[API 参考文档](https://docs.microsoft.com/python/api/azure-storage-blob) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-blob/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+[API 参考文档](https://docs.microsoft.com/python/api/azure-storage-blob) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-blob/) | [示例](/storage/common/storage-samples-python?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 - 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。

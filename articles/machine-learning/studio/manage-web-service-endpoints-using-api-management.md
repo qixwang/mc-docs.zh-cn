@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: ae30cb6d4d7fe3e8ba992097d49d58e4193c2ee7
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 81d22543d2b9f49d34a7a5ad87798479cfde9d15
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598788"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850629"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室（经典版）Web 服务
 ## <a name="overview"></a>概述
@@ -51,7 +51,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 
 ## <a name="create-the-api"></a>创建 API
-创建服务实例后，下一步是创建 API。 API 包含一组可以从客户端应用程序调用的操作。 API 操作代理到现有的 web 服务。 本指南创建成为现有 AzureML RRS 和 BES Web 服务代理的 API。
+创建服务实例后，下一步是创建 API。 API 包含一组可以从客户端应用程序调用的操作。 API 操作将代理到现有的 Web 服务。 本指南创建成为现有 AzureML RRS 和 BES Web 服务代理的 API。
 
 创建 API：
 
@@ -156,7 +156,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. 单击“发送”  。
+5. 单击“Send”  。
 
    ![发送](./media/manage-web-service-endpoints-using-api-management/send.png)
 
@@ -214,7 +214,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>测试 Web 服务
-AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的示例 Python 源测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅：[如何安装 Python](https://docs.microsoft.com/azure/python/python-sdk-azure-install)）。
+AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的示例 Python 源测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅：[如何安装 Python](https://docs.microsoft.com/python/python-sdk-azure-install)）。
 
 还需要下面源示例实验的“工作区”  、“服务”  和“api_key”  。 在 Web 服务仪表板中单击实验的“请求/响应”  或“批处理执行”  ，查找工作区和服务。
 

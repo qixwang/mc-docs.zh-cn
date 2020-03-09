@@ -1,7 +1,6 @@
 ---
 title: Log Analytics 智能分析示例 | Azure Docs
 description: 使用 Log Analytics 中的智能分析函数执行用户活动分析的示例。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
@@ -9,12 +8,12 @@ manager: digimobile
 origin.date: 01/15/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1e896f1d57f38ae5bd38fc80125622ce76b3affc
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 579564be80b9b2e3aef18eb264d7a7d73601b43d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599893"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850266"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智能分析示例
 本文包含使用 Log Analytics 中的智能分析函数执行用户活动分析的示例。 可以使用这些示例来分析你自己的由 Application Insights 监视的应用程序，或者使用这些查询中的概念来对其他数据进行类似的分析。 

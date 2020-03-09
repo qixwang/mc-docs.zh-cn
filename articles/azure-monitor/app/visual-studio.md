@@ -1,8 +1,6 @@
 ---
 title: 在 Visual Studio 中使用 Azure Application Insights 进行调试
 description: 调试期间和生产环境中的 Web 应用性能分析和诊断。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 08/22/2019
 ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: eac9b2cfe7e867fb869a8492cd52287a92a5f655
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 6b90ffacd22ed52b3491d17ecdb196a555e915c1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600108"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850343"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
 在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。

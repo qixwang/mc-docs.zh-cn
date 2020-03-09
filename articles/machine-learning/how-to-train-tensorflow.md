@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: maxluk
+ms.author: v-yiso
 author: maxluk
-ms.date: 08/20/2019
+origin.date: 08/20/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c8cb2615dac58a2916388a03f47386c6d20248
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: a13f4620f2ee055c7d3dab54a6a9590882c0df0d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598775"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850211"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +33,7 @@ ms.locfileid: "75598775"
 
  - Azure 机器学习计算实例 - 无需下载或安装
 
-     - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
+     - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，导航到以下目录，查找已完成且已展开的笔记本：**how-to-use-azureml > ml-frameworks > tensorflow > deployment > train-hyperparameter-tune-deploy-with-tensorflow** 文件夹。 
  
  - 你自己的 Jupyter 笔记本服务器
@@ -41,7 +42,7 @@ ms.locfileid: "75598775"
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` 和 `utils.py`
      
-    此外，还可以在 GitHub 示例页上找到本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)。 笔记本包含扩展部分，其中涵盖智能超参数优化、模型部署和笔记本小组件。
+    此外，还可以在 GitHub 示例页上找到本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)。 该笔记本包含扩展部分，其中涵盖智能超参数优化、模型部署和笔记本小组件。
 
 ## <a name="set-up-the-experiment"></a>设置试验
 
@@ -62,6 +63,7 @@ from azureml.core import Workspace, Run
 
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
+from azureml.train.dnn import TensorFlow
 ```
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
@@ -87,7 +89,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>创建文件数据集
 
-`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](/machine-learning/service/how-to-create-register-datasets)指南。
+`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](/machine-learning/how-to-create-register-datasets)指南。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -157,15 +159,17 @@ est = TensorFlow(source_directory=script_folder,
                  script_params=script_params,
                  compute_target=compute_target,
                  use_gpu=True,
-                 pip_packages=['azureml-dataprep[pandas,fuse]')
+                 pip_packages=['azureml-dataprep[pandas,fuse]'])
 ```
 
 > [!TIP]
 > Tensorflow 估算器类中添加了对 **Tensorflow 2.0** 的支持。 有关详细信息，请参阅此[博客文章](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/)。
 
+有关自定义 Python 环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。 
+
 ## <a name="submit-a-run"></a>提交运行
 
-[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和完成后提供运行历史记录的接口。
+[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
 run = exp.submit(est)
@@ -174,11 +178,11 @@ run.wait_for_completion(show_output=True)
 
 执行运行时，会经历以下阶段：
 
-- **准备**：根据 TensorFlow 估计器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 此外，还会将日志流式传输到运行历史记录，还可以查看日志以监视进度。
+- **准备**：根据 TensorFlow 估计器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
 
-- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试增加节点。
+- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试纵向扩展。
 
-- **运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，并可将其用于监视运行。
+- **正在运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，可将其用于监视运行。
 
 - **后期处理**：将运行的 ./outputs 文件夹复制到运行历史记录。
 
@@ -239,7 +243,7 @@ estimator= TensorFlow(source_directory=project_folder,
                       distributed_training=MpiConfiguration(),
                       framework_version='1.13',
                       use_gpu=True,
-                      pip_packages=['azureml-dataprep[pandas,fuse]')
+                      pip_packages=['azureml-dataprep[pandas,fuse]'])
 ```
 
 ### <a name="parameter-server"></a>参数服务器
@@ -255,7 +259,7 @@ distributed_training = TensorflowConfiguration()
 distributed_training.worker_count = 2
 
 # Tensorflow constructor
-estimator= TensorFlow(source_directory=project_folder,
+tf_est= TensorFlow(source_directory=project_folder,
                       compute_target=compute_target,
                       script_params=script_params,
                       entry_script='script.py',
@@ -263,7 +267,7 @@ estimator= TensorFlow(source_directory=project_folder,
                       process_count_per_node=1,
                       distributed_training=distributed_training,
                       use_gpu=True,
-                      pip_packages=['azureml-dataprep[pandas,fuse]')
+                      pip_packages=['azureml-dataprep[pandas,fuse]'])
 
 # submit the TensorFlow job
 run = exp.submit(tf_est)
@@ -322,4 +326,4 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
-* [Azure 中分布式深度学习训练的参考体系结构](/architecture/reference-architectures/ai/training-deep-learning)
+* [Azure 中分布式深度学习训练的参考体系结构](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/training-deep-learning)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: dcc63de3a5dcfb55315cbbcb2c5ed956fb801bf6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: ae38f80ed80ae1c702e73bebda71ad45ebe1722a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336478"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850613"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词
 
@@ -31,7 +31,7 @@ ms.locfileid: "75336478"
 可以创建多个同义词映射，将其发布为在服务范围内可供任何索引使用的资源，然后引用要在字段级别使用的资源。 在查询时，除了搜索索引，Azure 认知搜索还会查看同义词映射（如果在查询所用的字段上指定了该映射）。
 
 > [!NOTE]
-> 可以通过编程方式创建同义词，但不能在门户中进行。
+> 可以通过编程方式创建同义词，但不能在门户中进行。 如果 Azure 门户支持同义词将对你很有用，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供反馈
 
 ## <a name="prerequisites"></a>先决条件
 

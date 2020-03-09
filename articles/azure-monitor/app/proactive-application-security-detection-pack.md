@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure Application Insights 的安全检测包
 description: 使用 Azure Application Insights 和智能检测监视应用程序，以发现潜在的安全问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 12/12/2017
 ms.date: 08/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 29333103c18e640d52cb0a5c3805c73cd064d6a2
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 0d09e2665723296b235edf5c1d2a24af89aefcf0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116928"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850390"
 ---
 # <a name="application-security-detection-pack-preview"></a>应用程序安全检测包（预览版）
 

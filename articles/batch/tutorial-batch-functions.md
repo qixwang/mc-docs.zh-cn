@@ -1,10 +1,8 @@
 ---
 title: 使用 Azure Functions 触发批处理作业
 description: 教程 - 在扫描文档添加到存储 Blob 时将 OCR 应用于这些文档
-services: batch
 author: lingliw
 manager: digimobile
-ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
@@ -12,18 +10,18 @@ origin.date: 05/30/2019
 ms.date: 08/30/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 185f4cee70f9788e027768173aa071f0402769f2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: f02f679a36ed5386287d65e6cde908109b5270f1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028596"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850190"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教程：使用 Azure Functions 触发批处理作业
 
 在本教程中，将学习如何使用 Azure Functions 触发批处理作业。 我们将通过一个示例说明如何利用 Azure Batch 向添加到 Azure 存储 Blob 容器的文档应用光学字符识别 (OCR)。 若要简化 OCR 处理，我们可以配置一个 Azure 函数，该函数在每次将文件添加到 Blob 容器时运行批处理 OCR 作业。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * Azure Batch 帐户和关联的 Azure 存储帐户。 有关如何创建和链接帐户的详细信息，请参阅[创建批处理帐户](quick-create-portal.md#create-a-batch-account)。

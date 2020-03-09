@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 05/29/2019
 ms.date: 06/17/2019
 ms.author: v-yiso
-ms.openlocfilehash: 4fe597961322f9c8045cc7768a1bd24e14f5f5e4
-ms.sourcegitcommit: 1ebfbb6f29eda7ca7f03af92eee0242ea0b30953
+ms.openlocfilehash: 0b51f7b7d3fe862c78cf41b677f3ecaaa5c203c8
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732496"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213721"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>在 Azure API 管理中管理协议和密码
 
@@ -44,4 +44,4 @@ Azure API 管理支持同时用于客户端和后端的多个 TLS 协议版本�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [TLS (传输层安全性)](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls)。
+* 详细了解 [TLS (传输层安全性)](https://docs.microsoft.com/dotnet/framework/network-programming/tls)。

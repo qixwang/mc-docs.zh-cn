@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 队列 Python v12 库创建队列并向队
 author: WenJason
 ms.author: v-jay
 origin.date: 12/10/2019
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 517110eee2be48144d151a6322a472c552a85740
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 909882d839f729861e9176c3b05c9e5ef46cb838
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624391"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412295"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure 队列存储客户端库 v12
 
@@ -29,7 +29,7 @@ ms.locfileid: "75624391"
 * 从队列中删除消息
 * 删除队列
 
-[API 参考文档](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-queue/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+[API 参考文档](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-queue/) | [示例](/storage/common/storage-samples-python?toc=%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -16,12 +16,12 @@ ms.workload: integration
 origin.date: 07/19/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: fc0967902b7ca85483b595b767ed430d3584f2db
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: dab9af0aeff6b25f266b3c5c35ce6dedcf920ae4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528415"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304668"
 ---
 # <a name="get-started-with-the-sharepoint-online-connector"></a>SharePoint Online 连接器入门
 使用 SharePoint Online 连接器管理 SharePoint 列表。  
@@ -49,7 +49,7 @@ An action is an operation carried out by the workflow defined in a logic app. [L
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/sharepoint/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/sharepoint/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="next-steps"></a>后续步骤
 [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)

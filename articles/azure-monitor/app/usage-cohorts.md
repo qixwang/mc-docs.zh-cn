@@ -1,8 +1,6 @@
 ---
 title: Azure Application Insights 使用队列 | Azure Docs
 description: 分析具有某种共性的不同集、用户、会话、事件或操作
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 04/10/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: c3b5dc8f006c4d61daa39e0a202b051ed60e4e71
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: 7c4de57987f37a3063bd3da6b67200f5d76f0493
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500358"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850354"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 

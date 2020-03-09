@@ -15,12 +15,12 @@ origin.date: 12/07/2018
 ms.date: 08/07/2019
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: e60a3095e87f65b2d36b934b87bc98c5a925cd78
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 4bd34ffa2b0cda8b260e2e6b7587a2ba6001ce3d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329837"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850623"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
 
@@ -81,7 +81,7 @@ select 字符串用于限制为每个项返回的属性值。 可以指定属性
 * 此示例性的 select 字符串指定每个任务只应返回三项属性值： `id, state, stateTransitionTime`。
 
 ### <a name="expand"></a>展开
-expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 expand 字符串时，单次 API 调用可以获取每个项目的更多信息。 不必首先获取实体的列表，然后请求列表中每个项目的信息。可以使用 expand 字符串通过单次 API 调用获取相同的信息。 API 调用数较少意味着性能较高。
+expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 expand 字符串时，单次 API 调用可以获取每个项目的更多信息。 不必先获取实体的列表，然后请求列表中每个项目的信息。用户可以使用 expand 字符串通过单次 API 调用获取相同的信息。 API 调用数较少意味着性能较高。
 
 * 与 select 字符串类似，expand 字符串用于控制是否允许某些数据包括在列表查询结果中。
 * expand 字符串在列出作业、作业计划、任务和池中使用时才受支持。 目前仅支持统计信息。
@@ -89,7 +89,7 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * 此示例性 expand 字符串指定列表中的每个项都应返回统计信息：`stats`。
 
 > [!NOTE]
-> 构造这三种查询字符串类型（filter、select 和 expand）中的任意一种类型时，必须确保属性名称和大小写与其 REST API 元素的对应项相匹配。 例如，在使用 .NET [CloudTask](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.batch.cloudtask?view=azure-dotnet#microsoft_azure_batch_cloudtask) 类时，必须指定 **state** 而非 **State**，即使 .NET 属性为 [CloudTask.State](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.batch.cloudtask?view=azure-dotnet#microsoft_azure_batch_cloudtask.state)。 请参阅下表中 .NET 和 REST API 之间的属性映射。
+> 构造这三种查询字符串类型（filter、select 和 expand）中的任意一种类型时，必须确保属性名称和大小写与其 REST API 元素的对应项相匹配。 例如，在使用 .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 类时，必须指定 **state** 而非 **State**，即使 .NET 属性为 [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State)。 请参阅下表中 .NET 和 REST API 之间的属性映射。
 > 
 > 
 

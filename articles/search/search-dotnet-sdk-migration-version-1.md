@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 1770ff689091b496b6912a8500000bf58da8e829
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 177df3ab804235c26f89d5da3149f162a107a7a9
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335472"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850188"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
 
@@ -281,13 +281,13 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
     var client =
         new SearchServiceClient(
             new SearchCredentials("abc123"),
-            new Uri("http://myservice.search.chinacloudapi.cn"));
+            new Uri("http://myservice.search.azure.cn"));
 
 若要修复任何生成错误，可以更改为如下所示的代码：
 
     var client =
         new SearchServiceClient(
-            new Uri("http://myservice.search.chinacloudapi.cn"),
+            new Uri("http://myservice.search.azure.cn"),
             new SearchCredentials("abc123"));
 
 另请注意，凭据参数的类型已更改为 `ServiceClientCredentials`。 由于 `SearchCredentials` 派生自 `ServiceClientCredentials`，所以这不太可能影响代码。

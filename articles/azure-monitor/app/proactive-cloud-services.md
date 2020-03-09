@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报 | Azure Docs
 description: 使用 Azure Application Insights 监视 Azure 云服务中的问题，例如启动故障、崩溃和角色回收循环
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 06/07/2018
 ms.date: 6/4/2019
 ms.reviewer: harelbr
 ms.author: v-lingwu
-ms.openlocfilehash: 7ced48f571bafa4d60482fdea3195fc5e937fed0
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: b4411fea25a7233fac00f50950a8d9a46d1ffcda
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730407"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850388"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报
 

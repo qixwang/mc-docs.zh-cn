@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Application Insights 数据自动化自定义报表
 description: 使用 Azure Application Insights 数据自动化自定义每日/每周/每月报表
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 05/20/2019
 ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: 3b80be57ab5a12a1334534d89a5dd516f123a688
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 59ca21a9035f54fd9004eeacdf5d54a282584ddf
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839009"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850449"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 

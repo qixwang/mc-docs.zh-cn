@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: peterlu
+ms.author: v-yiso
 author: peterclu
 ms.reviewer: peterlu
-ms.date: 08/01/2019
+origin.date: 08/01/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 60c0d6974b3d5951feb22c50c5f6f1da395844af
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: debcd068c5fdb2a38fc0fcb6aaafe77b259e2148
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598774"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850207"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Pytorch 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +36,7 @@ ms.locfileid: "75598774"
 
 - Azure 机器学习计算实例 - 无需下载或安装
 
-    - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
+    - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，导航到以下目录，查找已完成且已展开的笔记本：**how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-pytorch** 文件夹。 
  
  - 你自己的 Jupyter 笔记本服务器
@@ -44,11 +45,11 @@ ms.locfileid: "75598774"
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/deployment/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
      
-    此外还可以在 GitHub 示例页上查找本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/deployment/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb)。 笔记本包含扩展部分，其中涵盖智能超参数优化、模型部署和笔记本小组件。
+    此外还可以在 GitHub 示例页上查找本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/deployment/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb)。 该笔记本包含扩展部分，其中涵盖智能超参数优化、模型部署和笔记本小组件。
 
 ## <a name="set-up-the-experiment"></a>设置试验
 
-本部分通过加载所需的 python 包、初始化工作区、创建试验以及上传训练数据和训练脚本来设置训练试验。
+本部分将准备训练实验，包括加载所需 python 包、初始化工作区、创建实验以及上传训练数据和训练脚本。
 
 ### <a name="import-packages"></a>导入程序包
 
@@ -132,7 +133,7 @@ except ComputeTargetException:
 
 PyTorch 估算器是通过泛型 [`estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 类实现的，可用于支持任何框架。 有关使用泛型估算器训练模型的详细信息，请参阅[通过估算器使用 Azure 机器学习训练模型](how-to-train-ml-models.md)
 
-如果你的训练脚本需要额外的 pip 或 conda 包才能运行，则可以通过使用 `pip_packages` 和 `conda_packages` 参数传递其名称在生成的 docker 映像中安装这些包。
+如果你的训练脚本需要额外的 pip 或 conda 包才能运行，则可以通过使用 `pip_packages` 和 `conda_packages` 参数传递其名称在生成的 Docker 映像中安装这些包。
 
 ```Python
 script_params = {
@@ -148,9 +149,11 @@ estimator = PyTorch(source_directory=project_folder,
                     pip_packages=['pillow==5.4.1'])
 ```
 
+有关自定义 Python 环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
+
 ## <a name="submit-a-run"></a>提交运行
 
-[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和完成后提供运行历史记录的接口。
+[运行对象](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
 run = experiment.submit(estimator)
@@ -159,11 +162,11 @@ run.wait_for_completion(show_output=True)
 
 执行运行时，会经历以下阶段：
 
-- **准备**：根据 PyTorch 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 此外，还会将日志流式传输到运行历史记录，还可以查看日志以监视进度。
+- **准备**：根据 PyTorch 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
 
-- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试增加节点。
+- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试纵向扩展。
 
-- **运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，并可将其用于监视运行。
+- **正在运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，可将其用于监视运行。
 
 - **后期处理**：将运行的 ./outputs 文件夹复制到运行历史记录。
 
@@ -176,7 +179,7 @@ model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 ```
 
 > [!TIP]
-> 无论使用哪种估算器进行训练，你刚才注册的模型的部署方式与 Azure 机器学习中其他任何已注册模型的部署方式完全相同。 部署指南包含有关模型注册的部分，但由于你已有一个已注册的模型，因而可以直接跳到[创建计算目标](how-to-deploy-and-where.md#choose-a-compute-target)进行部署。
+> 无论使用哪种估计器进行训练，刚注册的模型的部署方式都与 Azure 机器学习中其他任何已注册模型完全相同。 部署指南包含有关模型注册的部分，但由于你已有一个已注册的模型，因而可以直接跳到[创建计算目标](how-to-deploy-and-where.md#choose-a-compute-target)进行部署。
 
 此外，还可以使用“运行”对象下载模型的本地副本。 在训练脚本 `pytorch_train.py` 中，一个 PyTorch“保存”对象将模型保存到本地文件夹（计算目标的本地）。 可以使用“运行”对象下载副本。
 
@@ -233,4 +236,4 @@ import horovod
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
-* [Azure 中分布式深度学习训练的参考体系结构](/architecture/reference-architectures/ai/training-deep-learning)
+* [Azure 中分布式深度学习训练的参考体系结构](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/training-deep-learning)

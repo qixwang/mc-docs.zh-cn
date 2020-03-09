@@ -1,7 +1,6 @@
 ---
 title: 网络性能监视器解决方案服务连接性 - Azure Log Analytics
 description: 可以使用网络性能监视器中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/20/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: db82730ca46f7ca3ae50058ccd9f8aa873e13f79
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 05ecd3319368a58a51deda03c9035f42935a5149
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116934"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850324"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 

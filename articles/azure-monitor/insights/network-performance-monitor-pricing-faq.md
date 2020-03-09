@@ -1,20 +1,19 @@
 ---
 title: Azure 网络性能监视器的定价常见问题解答 | Azure Docs
 description: 常见问题解答 - Azure 网络性能监视器
-author: agummadi
+author: lingliw
 manager: digimobile
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-ms.author: v-lingwu
 origin.date: 04/02/2018
 ms.date: 04/12/2019
-ms.openlocfilehash: bd17fae62112697961d910fa278f80bce05ba1b0
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.author: v-lingwu
+ms.openlocfilehash: 80aaf19caeef6756a7f59189716e38a724b3c0fc
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730400"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850325"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
@@ -22,7 +21,7 @@ ms.locfileid: "73730400"
 
 以下各部分介绍了 NPM 组件的定价变化。
 
-## <a name="performance-monitor"></a>性能监视
+## <a name="performance-monitor"></a>性能监视器
 
 **在旧模型中如何计收性能监视器的使用费？**
 

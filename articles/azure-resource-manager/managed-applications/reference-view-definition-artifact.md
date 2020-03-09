@@ -6,12 +6,12 @@ author: rockboyfor
 origin.date: 07/11/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 09858692bb4c0b8ffed8ef3ee572ddaf91926920
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 0c97953f67fe718866c289b938c4f1bc5a9f03e3
+ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170720"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209153"
 ---
 # <a name="reference-view-definition-artifact"></a>参考：视图定义项目
 
@@ -88,7 +88,8 @@ ms.locfileid: "76170720"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建包含自定义操作和资源的托管应用程序](tutorial-create-managed-app-with-custom-provider.md)
+<!--Not Available on - [Tutorial: Create managed application with custom actions and resources](tutorial-create-managed-app-with-custom-provider.md)-->
+
 - [参考：用户界面元素项目](reference-createuidefinition-artifact.md)
 - [参考：部署模板项目](reference-main-template-artifact.md)
 

@@ -5,14 +5,14 @@ ms.reviewer: sogup
 ms.topic: conceptual
 author: lingliw
 origin.date: 04/08/2019
-ms.date: 12/04/2019
+ms.date: 03/06/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 7c0e7ec39d293abbcd2af4b050fe2b70cf0281b5
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: e72ad39ad788b7879c2702eb5ef889fba30ae7f7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982113"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850260"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 

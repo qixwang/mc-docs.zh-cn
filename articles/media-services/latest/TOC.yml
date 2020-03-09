@@ -97,7 +97,7 @@
         - name: 筛选器
           href: filters-concept.md
         - name: 流式处理终结点
-          displayName: 'origin, packager, cdn'
+          displayName: 'origin, packager'
           href: streaming-endpoint-concept.md
         - name: 流式处理定位符
           displayName: URLs

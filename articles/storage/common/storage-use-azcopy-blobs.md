@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ed29e1f3149d1da94370a539b7386c71f5725200
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 17946b60093f6ab9354e1528cd09b1819c424050
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028860"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412241"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -174,7 +174,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 |--------|-----------|
 | **语法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.chinacloudapi.cn/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **示例** | `azcopy copy 'https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
-| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.chinacloudapi.cn/mycontainer/myBlobDirectory 'C:\myDirectory'  --recursive` |
+| **示例**（分层命名空间） | `azcopy copy 'https://mystorageaccount.dfs.core.chinacloudapi.cn/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
 此示例将生成名为 `C:\myDirectory\myBlobDirectory` 的目录，其中包含所有已下载的文件。
 

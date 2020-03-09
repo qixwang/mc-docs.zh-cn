@@ -10,16 +10,16 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: b139830c6a22f307ea86fd574eb2e55ae8fdf792
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 44f3bbcd092f199382b5a17bc73790a8ab3be00a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598035"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850632"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
-了解 Azure Monitor 从 Azure 机器学习工作区收集的数据和资源。 有关收集和分析监视数据的详细信息，请参阅[监视 Azure 机器学习](service/monitor-azure-machine-learning.md)。
+了解 Azure Monitor 从 Azure 机器学习工作区收集的数据和资源。 有关收集和分析监视数据的详细信息，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
 ## <a name="resource-logs"></a>资源日志
 
@@ -128,7 +128,7 @@ ms.locfileid: "75598035"
 
 **Model**
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
 | 模型部署失败 | 计数 | 失败的模型部署数。 |
 | 模型部署开始 | 计数 | 开始的模型部署数。 |
@@ -140,7 +140,7 @@ ms.locfileid: "75598035"
 
 配额信息仅用于 Azure 机器学习计算。
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
 | 活动核心数 | 计数 | 活动计算核心的数量。 |
 | 活动节点数 | 计数 | 活动节点的数量。 |
@@ -168,7 +168,7 @@ ms.locfileid: "75598035"
 
 有关训练运行的信息。
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
 | 已完成的运行数 | 计数 | 已完成运行的数量。 |
 | 失败运行数 | 计数 | 失败运行的数量。 |
@@ -194,5 +194,5 @@ RunType 维度的有效值为：
 
 ## <a name="see-also"></a>另请参阅
 
-- 有关监视 Azure 机器学习的说明，请参阅[监视 Azure 机器学习](service/monitor-azure-machine-learning.md)。
+- 有关监视 Azure 机器学习的说明，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 - 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](/azure-monitor/insights/monitor-azure-resource)。

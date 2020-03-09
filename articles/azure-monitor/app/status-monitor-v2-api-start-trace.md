@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 代理 API 参考
 description: Application Insights 代理 API 参考。 Start-Trace。 从状态监视器和 Application Insights SDK 收集 ETW 日志。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 04/23/2019
 ms.date: 06/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 21fefdb9cc39bbb5a11912a7d39819d4364dc722
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: a5172ba61f08e58b042c1c33c50ea2b85a9ad6fe
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838594"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850361"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights 代理 API：Start-ApplicationInsightsMonitoringTrace
 

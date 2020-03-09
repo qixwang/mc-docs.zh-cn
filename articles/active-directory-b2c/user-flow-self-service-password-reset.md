@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的自助服务密码重置 | Microsoft Docs
 description: 演示了如何在 Azure Active Directory B2C 中为客户设置自助密码重置
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0efa64ae4b9150058c8f94ea1f491c4ff2efdfc8
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 19d01a8cc377d872a78913f9202168e32f3b95b4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028264"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266083"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>为客户设置自助密码重置
 
@@ -23,15 +23,15 @@ ms.locfileid: "77028264"
 
 > [!NOTE]
 > 本文适用于在 V1 登录  用户流的上下文中使用的自助服务密码重置，它将本地帐户登录  用作标识提供者。 如果需要从应用程序调用完全可自定义的密码重置用户流，请参阅[本文](user-flow-overview.md)。
-> 
-> 
+>
+>
 
 默认情况下，目录未开启自助密码重置功能。 使用以下步骤启用该功能：
 
 1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.cn/)。 这是在创建目录时使用的同一工作或学校帐户。
 2. 打开 **Azure Active Directory**（在左侧的导航栏中）。
 3. 向下滚动“选项”边栏选项卡，并选择“密码重置”  。
-4. 将“已启用自助服务密码重置”设置为“全部”。   
+4. 将“已启用自助服务密码重置”设置为“全部”。  
 5. 单击页顶部的“保存”。  大功告成！
 
 若要进行测试，请对任何具有作为标识提供者的本地帐户的登录用户流使用“立即运行”功能。 在本地帐户登录页上（可在其中输入电子邮件地址和密码，或用户名和密码），单击“无法访问帐户？”  以验证客户体验。

@@ -1,8 +1,6 @@
 ---
 title: Azure Application Insights 漏斗图
 description: 了解如何使用漏斗图来发现客户与你的应用程序的交互方式。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 07/17/2017
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: 7feea70bac001a3601472b8a2b0922f32c458b0d
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 695d6e04ad605c93f0f66551123f2953d0b01813
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730487"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850351"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 

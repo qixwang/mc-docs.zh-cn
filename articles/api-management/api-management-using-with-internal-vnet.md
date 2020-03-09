@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 07/31/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: c8b3cfc91a189fef1fb3ef73367485901b083228
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: fd4cbc8c3c1783d4117fd2bf04df4a880e1f87c6
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428618"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213720"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -39,7 +39,7 @@ ms.locfileid: "77428618"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -76,9 +76,9 @@ ms.locfileid: "77428618"
 
 也可以使用 PowerShell cmdlet 启用虚拟网络连接。
 
-* 在虚拟网络中创建 API 管理服务：使用 cmdlet [New-AzApiManagement](https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagement) 在虚拟网络中创建 Azure API 管理服务，并将其配置为使用内部虚拟网络类型。
+* 在虚拟网络中创建 API 管理服务：使用 cmdlet [New-AzApiManagement](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagement) 在虚拟网络中创建 Azure API 管理服务，并将其配置为使用内部虚拟网络类型。
 
-* 在虚拟网络中更新 API 管理服务的现有部署：使用 cmdlet [Update-AzApiManagementRegion](https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
+* 在虚拟网络中更新 API 管理服务的现有部署：使用 cmdlet [Update-AzApiManagementRegion](https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
 
 ## <a name="apim-dns-configuration"></a>DNS 配置
 如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须管理自己的路由。
@@ -133,7 +133,7 @@ ms.locfileid: "77428618"
 要了解更多信息，请参阅下列文章：
 * [在虚拟网络中设置 Azure API 管理时常见的网络配置问题][Common network configuration problems]
 * [虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)
-* [在 DNS 中创建记录](https://msdn.microsoft.com/en-us/library/bb727018.aspx)
+* [在 DNS 中创建记录](https://msdn.microsoft.com/library/bb727018.aspx)
 
 [api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png

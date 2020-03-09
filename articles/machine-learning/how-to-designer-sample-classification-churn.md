@@ -5,17 +5,18 @@ description: 按照此分类示例使用 Azure 机器学习设计器和提升决
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+ms.topic: sample
+author: likebupt
+ms.author: v-yiso
 ms.reviewer: sgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: 33b6a8a05789983ef8e9ffbae79bd8d186994d08
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 12/25/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: b0e9a83f1c1cbcbda794f925f9ea5dd2303dabf8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599356"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850604"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>通过 Azure 机器学习设计器使用提升决策树来预测客户流失
 
@@ -51,11 +52,11 @@ ms.locfileid: "75599356"
 
 - 原始数据集有许多缺失值。 使用**清理缺失数据**模块将缺失值替换为 0。
 
-    ![清理数据集](./media/how-to-designer-sample-classification-churn/cleaned-dataset.png)
+    ![清理数据集](media/how-to-designer-sample-classification-churn/sample5-dataset-1225.png)
 
 - 特征和对应的客户流失位于不同的数据集中。 使用**添加列**模块将标签列追加到特征列。 第一个列 **Col1** 是标签列。 从可视化效果结果中，我们可以看到数据集不平衡。 负示例 (-1) 比正示例 (+1) 要多。 稍后我们将使用 **SMOTE** 模块来增加未被充分代表的案例。
 
-    ![添加列数据集](./media/how-to-designer-sample-classification-churn/added-column1.png)
+    ![添加列数据集](./media/how-to-designer-sample-classification-churn/sample5-addcol-1225.png)
 
 
 
@@ -69,7 +70,7 @@ ms.locfileid: "75599356"
 
 将**评估模型**模块的输出可视化来查看基于测试集时的模型性能。 
 
-![评估结果](./media/how-to-designer-sample-classification-churn/evaluate-result.png)
+![评估结果](./media/how-to-designer-sample-classification-churn/sample5-evaluate-1225.png)
 
  你可以移动**阈值**滑块并查看二元分类任务的指标更改。 
 

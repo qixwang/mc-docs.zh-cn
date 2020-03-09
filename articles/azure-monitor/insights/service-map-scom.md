@@ -1,19 +1,18 @@
 ---
 title: 将用于 VM 的 Azure Monitor 的映射功能与 Operations Manager 集成 | Microsoft Docs
 description: 用于 VM 的 Azure Monitor 可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文介绍如何使用映射功能在 Operations Manager 中自动创建分布式应用程序关系图。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
 origin.date: 07/12/2019
 ms.date: 11/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9e5a6bcaa1ac6389fc6b44d467cf150eae7c61d7
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: d8a3ce44b900b543e232c7b574bd16f1e3849bee
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600128"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850320"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
 
@@ -119,7 +118,7 @@ ms.locfileid: "75600128"
 
 ![Operations Manager 的“重写属性”窗口](media/service-map-scom/scom-overrides.png)
 
-* **启用**：启用或禁用自动更新。
+* **已启用**：启用或禁用自动更新。
 * **IntervalMinutes**：指定更新间隔时间。 默认间隔为 1 小时。 若要更频繁地同步映射，可以更改此值。
 * **TimeoutSeconds**：指定请求超时前的时长。
 * **TimeWindowMinutes**：指定查询数据的时间范围。 默认为 60 分钟，这是允许的最大时间间隔。

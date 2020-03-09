@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Monitor 监视 Active Directory 复制状态 | Azure Docs
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/24/2018
 ms.date: 11/30/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 88d3a2b2b57ab833bd8f7983fbbf794e767ea338
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: fed43cb8c9f7f0b02f283c74d163a65f82f5b7cf
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600104"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850336"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -122,32 +121,32 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 ## <a name="ad-replication-status-faq"></a>AD 复制状态常见问题
 **问：AD 复制状态数据多长时间更新一次？**
-答：信息每 5 天更新一次。
+A:信息每 5 天更新一次。
 
 **问：是否有方法来配置此数据的更新频率？**
-答：目前没有。
+A:目前没有。
 
 **问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
-答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
+A:不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
 
 **问：我不想将任何域控制器添加到我的 Log Analytics 工作区。是否仍可以使用 AD 复制状态解决方案？**
 
-答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
+A:是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
 
 **问：执行数据收集的进程的名称是什么？**
-答：AdvisorAssessment.exe
+A:AdvisorAssessment.exe
 
 **问：收集数据需要多长时间？**
-答：数据收集时间取决于 Active Directory 环境的大小，但通常不会超过 15 分钟。
+A:数据收集时间取决于 Active Directory 环境的大小，但通常不会超过 15 分钟。
 
 **问：收集的数据类型是什么？**
-答：通过 LDAP 收集复制信息。
+A:通过 LDAP 收集复制信息。
 
 **问：是否有某种方法来配置收集数据的时间？**
-答：目前没有。
+A:目前没有。
 
 **问：需要哪些权限才能收集数据？**
-答：针对 Active Directory 的普通用户权限就足够了。
+A:针对 Active Directory 的普通用户权限就足够了。
 
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
 为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 Log Analytics 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”  。

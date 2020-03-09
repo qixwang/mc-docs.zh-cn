@@ -1,20 +1,18 @@
 ---
 title: 智能检测 - Application Insights 中的失败异常 | Azure Docs
 description: 将针对到 Web 应用的失败请求速率的异常变化向用户发出警报，并提供诊断分析。 无需进行配置。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 12/18/2018
 ms.date: 6/4/2019
-ms.reviewer: yossiy
+ms.reviewer: yalavi
 ms.author: v-lingwu
-ms.openlocfilehash: 697c5ee951a24876b4e35b4021744d20a6842ece
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 6e5028725ffb946ce2913af1e4011a28f2c7dd21
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116749"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850384"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 会几乎实时地自动向你发出警报。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败请求的响应代码通常为 400 或更大的数字。 为了帮助会审和诊断问题，警报详细信息中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -325,7 +323,7 @@ ms.locfileid: "76116749"
 
 *通知是否表示肯定存在问题？*
 
-* 我们尝试针对应用中断或降级发出警报，但只有你可以完全了解语义以及对应用或用户的影响。
+* 我们尝试针对应用中断或降级发出警报，但只有可以完全了解语义以及对应用或用户的影响。
 
 *那么，你在查看我的应用程序数据吗？*
 

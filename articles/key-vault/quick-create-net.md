@@ -7,12 +7,12 @@ origin.date: 05/20/2019
 ms.date: 02/17/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: af46502543ca2c0cdc6b5d69dad35f2d0e472158
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: b908b3b324642d148918c650880d6fc877cc1f37
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112196"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412000"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 
@@ -29,7 +29,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 [API 参考文档](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。
 * [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
@@ -168,8 +168,10 @@ using Azure.Security.KeyVault.Secrets;
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
 var kvUri = "https://" + keyVaultName + ".vault.azure.cn";
+var credentialOption = new DefaultAzureCredentialOptions();
+credentialOption.AuthorityHost = new Uri("https://login.partner.microsoftonline.cn");
 
-var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential(credentialOption));
 ```
 
 ### <a name="save-a-secret"></a>保存机密
@@ -239,8 +241,10 @@ namespace key_vault_console_app
 
             string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
             var kvUri = "https://" + keyVaultName + ".vault.azure.cn";
+            var credentialOption = new DefaultAzureCredentialOptions();
+            credentialOption.AuthorityHost = new Uri("https://login.partner.microsoftonline.cn");
 
-            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential(credentialOption));
 
             Console.Write("Input the value of your secret > ");
             string secretValue = Console.ReadLine();

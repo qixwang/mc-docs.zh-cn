@@ -10,14 +10,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: e7cf4cd8cb01f27c25a1669f06b3257b0f57917a
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+origin.date: 02/20/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: ff61aa71f1a94234c44bc5ab1de9a858deafff93
+ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192460"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78238540"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -47,7 +47,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.cn/pricing/details/database-migration/)页。
 
 **问：Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具（例如数据库迁移助手 (DMA) 或 SQL Server 迁移助手 (SSMA)）有何差别？**
-Azure 数据库迁移服务是将数据库大规模迁移到 Azure 的首选方法。 有关 Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具的差别，以及对各种方案使用不同服务的建议，请参阅博客文章 [Differentiating Microsoft’s Database Migration Tools and Services](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)（Microsoft 数据库迁移工具和服务的差别）。
+Azure 数据库迁移服务是将数据库大规模迁移到 Azure 的首选方法。 有关 Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具的差别，以及对各种方案使用不同服务的建议，请参阅博客文章 [Differentiating Microsoft’s Database Migration Tools and Services](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)（Microsoft 数据库迁移工具和服务的差别）。
 
 **问：Azure 数据库迁移服务与 Azure 迁移产品/服务有何差别？**
 Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估是否适合迁移以及需要根据性能进行哪些大小调整，并提供在 Azure 中运行本地虚拟机的成本估算。 Azure Migrate 适合用于将基于本地 VM 的工作负荷直接迁移到 Azure IaaS VM。 但是，与 Azure 数据库迁移服务不同，Azure Migrate 不是适用于 Azure SQL 数据库或 Azure SQL 数据库托管实例等 Azure PaaS 关系数据库平台的专用数据库迁移服务产品。

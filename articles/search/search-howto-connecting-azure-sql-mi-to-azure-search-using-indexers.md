@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 388580b45c67ebbe1c116d4804a1d5b34e8baf6f
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 4f5546061b4d0e488c676a622a729ca52b95745a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501418"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850512"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
 
@@ -41,7 +41,7 @@ ms.locfileid: "77501418"
 >
 > * 允许从 `AzureCognitiveSearch` [服务标记](https://docs.azure.cn/virtual-network/service-tags-overview#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`) 进行的入站访问
 >
-> * 允许来自搜索服务的 IP 地址的入站访问，该 IP 地址可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.chinacloudapi.cn`）来获取。 ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
+> * 允许来自搜索服务的 IP 地址的入站访问，该 IP 地址可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.azure.cn`）来获取。 ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
 >
 > 对于这两个规则中的每一个，请设置 "PORT" = `3342`, "PROTOCOL" = `TCP`, "DESTINATION" = `Any`, "ACTION" = `Allow`
 

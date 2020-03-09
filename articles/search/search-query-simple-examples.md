@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: d9a28a2bd18df3d22e7201e190d50d210beac409
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f80dd105be77b533b4b2eedc8228aad6f4fbbef7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336495"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850246"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
 
@@ -48,7 +48,7 @@ ms.locfileid: "75336495"
 
 URL 组合具备以下元素：
 
-+ `https://azs-playground.search.chinacloudapi.cn/` 是由 Azure 认知搜索开发团队维护的沙盒搜索服务  。 
++ `https://azs-playground.search.azure.cn/` 是由 Azure 认知搜索开发团队维护的沙盒搜索服务  。 
 + `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引  。 请求中需同时具备服务名称和索引。
 + `docs` 是包含所有可搜索内容的文档集合  。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
 + `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）  。
@@ -61,7 +61,7 @@ URL 组合具备以下元素：
 将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
 
   ```http
-  https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
+  https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效  。 它的用处不大，但却是你能执行的最简单的搜索。
@@ -93,7 +93,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 ### <a name="full-url"></a>完整 URL
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
 此查询的响应应与以下屏幕截图类似。
@@ -109,13 +109,13 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 所有文档都有一个唯一标识符。 要在查找查询中试用此语法，请先返回一个文档 ID 列表，以便找到要使用的文档。 对于纽约工作岗位，标识符存储在 `id` 字段中。
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
 下面的示例是基于 `id`“9E1E3AF9-0660-4E00-AF51-9B654925A2D5”返回特定文档的查找查询，最早出现在前面的响应中。 以下查询返回整个文档，而不仅是所选字段。 
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
 ## <a name="example-3-filter-queries"></a>示例 3：筛选器查询
@@ -139,13 +139,13 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
 若要使用 GET 在 Postman 中尝试此查询，可以粘贴以下字符串：
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
 另一种合并筛选器和搜索的有效方法是通过筛选表达式中的 **`search.ismatch*()`** ，在其中可以使用筛选器中的搜索查询。 此筛选表达式使用计划中的通配符来选择包含字词 plan、planner、planning 等的 business_title。 
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
 有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](https://docs.azure.cn/search/search-query-odata-full-text-search-functions#examples)。
@@ -187,11 +187,11 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
 也可以使用 GET 在 Postman 中尝试这些查询：
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
 ```
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
 ```
 
 > [!NOTE]
@@ -217,7 +217,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
 也可以使用 GET 在 Postman 中尝试此查询：
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
 ## <a name="example-6-search-precision"></a>示例 6：搜索精度
@@ -227,19 +227,19 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 示例 1：`&search=fire` 返回 150 个结果，即整个文档中包含“fire”一词的所有匹配项  。
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
 示例 2：`&search=fire department` 返回 2002 个结果  。 针对此文档返回了包含“fire”或“department”的匹配项。
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
 示例 3：`&search="fire department"` 返回 82 个结果  。 将该字符串用引号引起来，构成对这两个词的逐字搜索，在索引中包含该组合词的已标记化的字词中查找匹配项。 这就解释了为何诸如 `search=+fire +department` 之类的搜索是不等效的  。 需具备两个字词，但独立扫描它们。 
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
 ## <a name="example-7-booleans-with-searchmode"></a>示例 7：使用 searchMode 的布尔值
@@ -249,7 +249,7 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 使用默认的 searchMode (any) 时，返回了 2800 个文档：其中有包含多部分字词“fire department”的文档，以及所有不带有字词“Metrotech Center”的文档。
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
   ![搜索模式 - any](media/search-query-simple-examples/searchmodeany.png)
@@ -257,7 +257,7 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 若将 searchMode 更改为 `all`，会强制累积条件并返回一个较小的结果集，它只有 21 个文档，其文档数是包含完整短语“fire department”的文档减去 Metrotech Center 工作岗位数之差。
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
   ![搜索模式 - all](media/search-query-simple-examples/searchmodeall.png)
 
@@ -266,24 +266,24 @@ https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=
 有多个参数控制着搜索结果中包括哪些字段、每批返回多少文档以及排列顺序。 此示例重新设置了上述几个示例，使用 $select 语句和逐字搜索条件将结果限制为仅包含特定字段，返回了 82 个匹配项  
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
 将此改动追加到上一示例，即可按职位排序。 这种排序是可行的，因为在该索引中 civil_service_title 是可排序的  。
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
 使用 $top 参数可实现结果分页，本例中返回了前 5 个文档  ：
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
 要获取后续 5 个文档，请跳过第一批：
 
 ```http
-https://azs-playground.search.chinacloudapi.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+https://azs-playground.search.azure.cn/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>后续步骤

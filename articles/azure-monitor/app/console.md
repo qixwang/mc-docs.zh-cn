@@ -1,20 +1,18 @@
 ---
 title: 适用于控制台应用程序的 Azure Application Insights | Azure Docs
 description: 监视 Web 应用程序的可用性、性能和使用情况。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 11/19/2019
 ms.date: 12/4/2019
 ms.reviewer: lmolkova
 ms.author: v-lingwu
-ms.openlocfilehash: 2fef5f30210a5f223a0099d9495ef024f6fc3c8b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: ec70d6f1fa5d2a6c4a1d7ea106ed39bfbe0f21d8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028435"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850444"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。

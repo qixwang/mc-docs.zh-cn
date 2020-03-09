@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 origin.date: 04/22/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 154a3c13387cdc91ffed1af7d198117a64afc225
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 1402a71c1908ae74744a28807329167a834890eb
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428109"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78237485"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
-对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://www.azure.cn/pricing/hybrid-use-benefit/)。
+对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://www.azure.cn/pricing/hybrid-benefit/)。
 
 > [!Important]
 > 每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
@@ -215,9 +215,9 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 还可以详细了解如何[修改虚拟机规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)，了解更多更新规模集的方法。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[如何使用 Azure 混合权益节省资金](https://www.azure.cn/pricing/hybrid-use-benefit/)
+- 详细了解[如何使用 Azure 混合权益节省资金](https://www.azure.cn/pricing/hybrid-benefit/)
     
-    <!--Not Available on [Frequently asked questions for Azure Hybrid Benefit](https://www.azure.cn/pricing/hybrid-use-benefit/faq/)-->
+    <!--Not Available on [Frequently asked questions for Azure Hybrid Benefit](https://www.azure.cn/pricing/hybrid-benefit/faq/)-->
     
 - 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)

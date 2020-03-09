@@ -11,12 +11,12 @@ ms.reviewer: trbye
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 9f236efd61065ab66243d630bed823b0f4cea569
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 09f7100ebea32c4c5fb2bc5e27839bdfa8ce6668
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154993"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850254"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "78154993"
 本文介绍如何使用 Azure 机器学习中的自动化机器学习来训练时序预测回归模型。 配置预测模型类似于使用自动化机器学习设置标准回归模型，但存在某些用于处理时序数据的配置选项和预处理步骤。 以下示例介绍如何：
 
 * 准备用于时序建模的数据
-* 在 [`AutoMLConfig`](https://docs.microsoft.com/azure/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中配置特定的时序参数
+* 在 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中配置特定的时序参数
 * 使用时序数据运行预测
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -123,7 +123,7 @@ test_labels = test_data.pop(label).values
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。||
 |`enable_dnn`|启用预测 DNN。||
 
-请参阅[参考文档](https://docs.microsoft.com/azure/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)以了解详细信息。
+请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)以了解详细信息。
 
 将时序设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `grain_column_names` 参数以确保为数据创建两个单独的时序组  ，分别用于商店 A 和 B。最后，将 `max_horizon` 设置为 50 以便预测整个测试集。 使用 `target_rolling_window_size` 将预测时段设置为 10 个时段，并使用 `target_lags` 参数指定目标值滞后两个时段。 建议将 `max_horizon`、`target_rolling_window_size` 和 `target_lags` 设置为“auto”，然后就会自动检测这些值。 在下面的示例中，“auto”设置已用于这些参数。 
 

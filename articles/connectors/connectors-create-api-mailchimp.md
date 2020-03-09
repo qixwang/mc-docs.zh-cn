@@ -16,12 +16,12 @@ ms.workload: integration
 origin.date: 08/18/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: 0ff986ee25aa971613ed7b001f3fd45339022937
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 0170358bf4fe53da0d9fe054a1668a72ab78f61a
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52647883"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304695"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>MailChimp 连接器入门
 MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营销活动，包括发送市场营销电子邮件、自动化消息和有针对性的市场活动。
@@ -41,7 +41,7 @@ MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营�
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/mailchimp/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/mailchimp/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

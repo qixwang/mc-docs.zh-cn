@@ -5,12 +5,13 @@ author: lingliw
 origin.date: 08/20/2019
 ms.date: 10/18/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9f08352666d8456747b66903b29211eaedfb55f6
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.topic: troubleshooting
+ms.openlocfilehash: 491c62a699a5dec154db0e3b93cf836d314a6603
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838793"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850252"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>排查 Azure 文件共享备份问题
 可参考下表中所列信息，排查使用 Azure 文件共享备份时遇到的问题和错误。

@@ -16,12 +16,12 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0359b1b99ec6d1f0c0b8fdb795e127e5006f916a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 168696d66dde5e5410bd58b389d41b4a70035104
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428068"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78237489"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM 的定价指南
 
@@ -126,7 +126,7 @@ ms.locfileid: "77428068"
 
 | BYOL 权益 | 说明 |
 |-----|-----|
-| 节省费用  | [Azure 混合权益](https://www.azure.cn/pricing/hybrid-use-benefit/)可节省高达 55% 的成本。 |
+| 节省费用  | [Azure 混合权益](https://www.azure.cn/pricing/hybrid-benefit/)可节省高达 55% 的成本。 |
 | 免费的被动辅助副本  | 自带许可证的另一项好处是每个 SQL Server 免费许可 1 个被动辅助副本以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
 
 <!-- URL is invalid on [free licensing for one passive secondary replica](https://www.azure.cn/pricing/licensing-faq/)-->

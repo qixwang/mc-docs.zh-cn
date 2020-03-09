@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET SDK 管理流式处理终结点。 | Microsoft Docs
+title: 使用 .NET SDK 管理流式处理终结点 | Microsoft Docs
 description: 本文说明如何使用 Azure 门户管理流式处理终结点。
 services: media-services
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: article
 origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: f42f2278ff04395214df4035ed5791a1c62d6d04
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 58360b70cf7d6a70be640d9485609f2aea7c0b92
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124503"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850563"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点  
 
@@ -32,8 +32,6 @@ ms.locfileid: "71124503"
 
 - 检查默认的流式处理终结点。
 - 创建/添加新的流式处理终结点。
-
-    如果计划使用不同的 CDN 或者使用一个 CDN 和直接访问，则可能需要多个流式处理终结点。
 
     > [!NOTE]
     > 仅当流式处理终结点处于运行状态时才进行计费。
@@ -106,9 +104,7 @@ namespace AMSStreamingEndpoint
             Console.WriteLine(streamingEndpoint.StreamingEndpointVersion);
             Console.WriteLine(streamingEndpoint.FreeTrialEndTime);
             Console.WriteLine(streamingEndpoint.ScaleUnits);
-            Console.WriteLine(streamingEndpoint.CdnProvider);
-            Console.WriteLine(streamingEndpoint.CdnProfile);
-            Console.WriteLine(streamingEndpoint.CdnEnabled);
+
         }
 
         static public IStreamingEndpoint AddStreamingEndpoint()
@@ -116,10 +112,7 @@ namespace AMSStreamingEndpoint
             var name = "StreamingEndpoint" + DateTime.UtcNow.ToString("hhmmss");
             var option = new StreamingEndpointCreationOptions(name, 1)
             {
-                StreamingEndpointVersion = new Version("2.0"),
-                CdnEnabled = true,
-                CdnProfile = "CdnProfile",
-                CdnProvider = CdnProviderType.PremiumVerizon
+                StreamingEndpointVersion = new Version("2.0")
             };
 
             var streamingEndpoint = _context.StreamingEndpoints.Create(option);
@@ -132,7 +125,6 @@ namespace AMSStreamingEndpoint
             if (streamingEndpoint.StreamingEndpointVersion == "1.0")
                 streamingEndpoint.StreamingEndpointVersion = "2.0";
 
-            streamingEndpoint.CdnEnabled = false;
             streamingEndpoint.Update();
         }
 

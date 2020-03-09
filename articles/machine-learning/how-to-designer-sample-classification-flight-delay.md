@@ -5,17 +5,18 @@ description: 通过 Azure 机器学习设计器，生成分类器并使用自定
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+ms.topic: sample
+author: likebupt
+ms.author: v-yiso
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 9eb43eee71ac361605624f52d4d4aab0ef7a40d0
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 12/25/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 9373bfe2e1c40542efc4ffc5fbdcb193331ef0d0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75597999"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850600"
 ---
 # <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>通过 Azure 机器学习设计器生成分类器并使用 R 预测航班延误
 
@@ -114,7 +115,7 @@ ms.locfileid: "75597999"
 ## <a name="evaluate"></a>评估
 在测试集上，逻辑回归模型的 AUC 为 0.631。
 
- ![评估](./media/how-to-designer-sample-classification-flight-delay/evaluate.png)
+ ![评估](media/how-to-designer-sample-classification-flight-delay/sample6-evaluate-1225.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -123,6 +124,6 @@ ms.locfileid: "75597999"
 - [示例 1 - 回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
 - [示例 2 - 回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
 - [示例 3 - 通过特征选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 4 - 分类：预测信用风险（成本敏感）](service/how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5 - 分类：预测变动率](service/how-to-designer-sample-classification-churn.md)
+- [示例 4 - 分类：预测信用风险（代价敏感）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5 - 分类：预测变动率](how-to-designer-sample-classification-churn.md)
 - [示例 7 - 文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

@@ -6,24 +6,24 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 12/04/2019
-ms.date: 02/10/2020
+origin.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 616a6ff5962c7e608dc8ac5be91353a0252b61ca
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: ee9dd17b7a0d0295ecd619bfde02e6435f0823e6
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154635"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411953"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
 本教程是一个系列中的第一部分。 本教程介绍如何在 Azure 中实现应用程序数据的高可用性。
 
-完成本教程后，将会生成一个控制台应用程序，用于上传 Blob 并从[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 存储帐户检索它。
+完成本教程后，将会生成一个控制台应用程序，用于上传 Blob 并从[读取访问异地冗余](../common/storage-redundancy.md) (RA-GRS) 存储帐户检索它。
 
 RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复制过程可确保次要区域中的数据最终一致。 应用程序使用[断路器](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)模式来确定要连接到的终结点，在模拟故障和恢复时在终结点之间自动切换。
 

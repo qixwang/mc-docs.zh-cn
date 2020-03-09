@@ -16,12 +16,12 @@ ms.workload: integration
 origin.date: 08/18/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
-ms.openlocfilehash: 0eafb186c0a83a689760626884b8ddecdf9b3aaf
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 404984bc7a1ef605d19cfc95f696c63720261519
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52651641"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304696"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 用户连接器入门
 连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，可以：
@@ -42,7 +42,7 @@ ms.locfileid: "52651641"
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/officeusers/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/officeusers/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。

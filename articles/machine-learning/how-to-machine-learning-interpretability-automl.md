@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: mesameki
+ms.author: v-yiso
 author: mesameki
 ms.reviewer: trbye
-ms.date: 10/25/2019
-ms.openlocfilehash: 605c81dc8872dc06e79081f406a72ee4da52efcf
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 10/25/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 2fffc65914efb1f644f8d8907fbe942f541b3eab
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598208"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850228"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自动化机器学习中的模型可解释性
 
@@ -71,7 +72,7 @@ automl_run, fitted_model = local_run.get_output(metric='r2_score')
 `automl_explainer_setup_obj` 包含上述列表中的所有结构。
 
 ```python
-from azureml.train.automl.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
 
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
                                                              X_test=X_test, y=y_train, 
@@ -89,10 +90,11 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 MimicWrapper 还采用 `automl_run` 对象，原始特征和工程特征的解释将上传到该对象。
 
 ```python
-from azureml.interpret.mimic.models.lightgbm_model import LGBMExplainableModel
-from azureml.interpret.mimic_wrapper import MimicWrapper
+from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
+from azureml.explain.model.mimic_wrapper import MimicWrapper
 
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
+# Initialize the Mimic Explainer
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
                          features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],

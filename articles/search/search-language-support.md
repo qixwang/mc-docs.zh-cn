@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: d186406160addd94e2278c8957e7291733ed392c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 9d28ad176553d711801cabaf1fd2ba6b7fa815a7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336515"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850237"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为多种语言创建索引
 
@@ -45,7 +45,7 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
 
 如果已知发出查询的代理的语言，可使用 **searchFields** 查询参数，将搜索请求的范围限制为特定字段。 以下查询将仅针对波兰文描述发出：
 
-`https://[service name].search.chinacloudapi.cn/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.azure.cn/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
 
 使用[**搜索资源管理器**](search-explorer.md)粘贴类似上述内容的查询，可以从门户查询索引。
 
@@ -62,7 +62,7 @@ Azure 认知搜索提供了大量来自 Lucene 和 Microsoft 的语言分析器�
       }
     ]
 
-`https://[service name].search.chinacloudapi.cn/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.azure.cn/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
 ## <a name="next-steps"></a>后续步骤
 

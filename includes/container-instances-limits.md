@@ -2,15 +2,14 @@
 author: rockboyfor
 ms.service: container-instances
 ms.topic: include
-origin.date: 02/13/2019
-ms.date: 01/15/2020
+ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8b875600e69f3cd1f062d4ad4871ce9a3d450850
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 70948ff68fad4581fd7ac3e5a896c5f64fcbe308
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964900"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213837"
 ---
 | 资源 | 默认限制 |
 | --- | :--- |

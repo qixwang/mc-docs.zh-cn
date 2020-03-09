@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.devlang: rest-api
 origin.date: 02/10/2020
 ms.date: 03/02/2020
-ms.openlocfilehash: 26da376d342ebcf93c1a9dc67c35291f28f81be7
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 03eef616143f0d8e5441b1a73ee3767fb2482328
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501424"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850576"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "77501424"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要以下服务和工具。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "77501424"
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.chinacloudapi.cn`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.azure.cn`。
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
@@ -58,7 +58,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 使用任一工具都需要选择一个命令（GET、POST、PUT 等）并提供 URL 终结点；对于某些任务，需要在请求正文中提供 JSON。 将搜索服务名称 (YOUR-SEARCH-SERVICE-NAME) 替换为一个有效值。 添加 `$select=name` 以便仅返回每个索引的名称。 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes?api-version=2019-05-06&$select=name
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes?api-version=2019-05-06&$select=name
 
 请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2019-05-06`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
@@ -81,7 +81,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为“PUT”。 
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quickstart?api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart?api-version=2019-05-06`。
 
 3. 在请求正文中提供索引定义（下方提供了可直接复制的代码）。
 
@@ -135,7 +135,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为  POST。
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`。
 
 3. 在请求的正文中提供 JSON 文档（复制就绪代码如下）。
 
@@ -248,7 +248,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. 将谓词更改为 **GET**。
 
-2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`。
+2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`。
 
 3. 单击“Send”  。
 
@@ -263,24 +263,24 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 ```
 # Query example 1 - Search on restaurant and wifi
 # Return only the HotelName, Description, and Tags fields
-https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
 
 # Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match
-https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
 
 # Query example 3 - Take the top two results, and show only HotelName and Category in the results
-https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
 
 # Query example 4 - Sort by a specific field (Address/City) in ascending order
-https://<YOUR-SEARCH-SERVICE>.search.chinacloudapi.cn/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE>.search.azure.cn/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
 ```
 
 ## <a name="get-index-properties"></a>获取索引属性
 还可以使用[获取统计信息](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)来查询文档计数和索引大小： 
 
 ```
-https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quickstart/stats?api-version=2019-05-06
+https://<YOUR-SEARCH-SERVICE-NAME>.search.azure.cn/indexes/hotels-quickstart/stats?api-version=2019-05-06
 ```
 
 向 URL 添加 `/stats` 会返回索引信息。 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
@@ -299,7 +299,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.chinacloudapi.cn/indexes/hotels-quicks
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何执行核心任务，你可以继续使用其他 REST API 调用来执行更多高级功能。 在下一步中，我们建议你访问以下链接：
+现在你已了解如何执行核心任务，你可以继续使用其他 REST API 调用来获得更高级的功能，例如索引器或[设置认知搜索管道](cognitive-search-tutorial-blob.md)。 在下一步中，我们建议你访问以下链接：
 
 > [!div class="nextstepaction"]
 > [REST 教程：在 Azure 认知搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据](search-semi-structured-data.md)

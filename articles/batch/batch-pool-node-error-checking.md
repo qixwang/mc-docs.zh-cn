@@ -9,12 +9,12 @@ ms.author: v-lingwu
 origin.date: 08/23/2019
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: fe0c68cbcd130e02ce468cd1602e70648853a034
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 16402b05c6d99d23af187b1f532d93c393f1d6b9
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028941"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850621"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -106,7 +106,7 @@ Azure Batch 可能出于多种原因将[节点状态](https://docs.microsoft.com
 
 - 由于基础结构故障或低级别升级而移动了 VM。 Batch 将恢复节点。
 
-- VM 映像已部署在不支持它的硬件上。 例如，尝试在 [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM 上运行 CentOS HPC 映像。
+- VM 映像已部署在不支持它的硬件上。 
 
 - VM 位于 [Azure 虚拟网络](batch-virtual-network.md)中，并且流量已被阻止，无法发送到关键端口。
 

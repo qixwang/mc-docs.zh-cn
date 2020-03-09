@@ -27,11 +27,11 @@
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: backup-rm-template-samples.md
 - name: 概念
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       items:
         - name: 恢复服务保管库常见问题解答
           href: backup-azure-backup-faq.md
@@ -123,12 +123,6 @@
               href: backup-azure-vms-encryption.md
             - name: 还原已加密 VM 的密钥和机密
               href: backup-azure-restore-key-secret.md
-    - name: 配置 Azure 备份报表
-      items:
-        - name: 配置 Azure 备份报表
-          href: backup-azure-configure-reports.md
-        - name: Azure 备份的 Log Analytics 数据模型
-          href: backup-azure-log-analytics-data-model.md
     - name: 数据保护管理器
       items:
         - name: 在 Azure 门户中准备 DPM 工作负荷

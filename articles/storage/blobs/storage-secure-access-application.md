@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2c422a82e1a139d69e6f2caee2c37386702d9e3f
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 97581e6528cad1646769a0624de0679f72a086e2
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623996"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411992"
 ---
 # <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
@@ -45,8 +45,9 @@ blobStorageAccount=<blob_storage_account>
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
 
-az storage container set-permission \ --account-name $blobStorageAccount \ --account-key $blobStorageAccountKey \ --name thumbnails  \
---public-access off
+az storage container set-permission \ 
+--account-name $blobStorageAccount --account-key $blobStorageAccountKey \ 
+--name thumbnails --public-access off
 ``` 
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>为缩略图配置 SAS 令牌

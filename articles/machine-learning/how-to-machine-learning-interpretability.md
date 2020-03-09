@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: mesameki
+ms.author: v-yiso
 author: mesameki
 ms.reviewer: trbye
-ms.date: 10/25/2019
-ms.openlocfilehash: d76c768bb7aa91f3185368c6f8e801cfc21f816d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 10/25/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 3a94729e3bb28ff1256513594d5b90eebd9ebfdd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598192"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850224"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure 机器学习中的模型可解释性
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +78,7 @@ ms.locfileid: "75598192"
 * **模拟解释器**：模拟解释器基于训练[全局代理模型](https://christophm.github.io/interpretable-ml-book/global.html)来模拟黑盒模型的思路。 全局代理模型是内在地具有可解释性的模型，经训练后可以尽量准确地给出黑盒模型的预测近似值。 数据科学家可以解释代理模型，以得出有关黑盒模型的结论。 可以使用以下可解释模型之一作为代理模型：LightGBM (LGBMExplainableModel)、线性回归 (LinearExplainableModel)、随机梯度下降可解释模型 (SGDExplainableModel) 和决策树 (DecisionTreeExplainableModel)。
 
 
-* **排列特征重要性解释器**：排列特征重要性是用于解释分类和回归模型的技术，该技术是受 [Breiman 的随机林论文](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf)（参阅第 10 部分）的启发开发出来的。 从较高层面看，其工作原理是对整个数据集以每次一个特征的形式随机排布数据，并计算相关性能指标的变化程度。 变化越大，该特征越重要。
+* **排列特征重要性解释器**：排列特征重要性是用于解释分类和回归模型的技术，该技术是受 [Breiman 的随机林论文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)（参阅第 10 部分）的启发开发出来的。 从较高层面看，其工作原理是对整个数据集以每次一个特征的形式随机排布数据，并计算相关性能指标的变化程度。 变化越大，该特征越重要。
 
 * **LIME 解释器** (`contrib`)：LIME 解释器基于 [LIME](https://github.com/marcotcr/lime)，使用先进的本地可解释的、模型不可知的解释 (LIME) 算法来创建本地代理模型。 与全局代理模型不同，LIME 侧重训练本地代理模型来解释各项预测。
 * **HAN 文本解释器** (`contrib`)：HAN 文本解释器 使用分层注意力网络从给定黑盒文本模型的文本数据获取模型解释。 它基于给定黑盒模型的预测输出训练 HAN 代理模型。 全局训练整个文本集后，它会针对特定的文档添加一个微调步骤，以提高解释的准确度。 HAN 使用包含两个注意力层的双向 RNN 来关注句子和单词。 DNN 在黑盒模型中训练并针对特定的文档微调之后，用户可以从注意力层提取单词重要性。 经测试表明，在训练文本数据时，HAN 的准确度高于 LIME 或 SHAP，但训练时间造成的开销也更大。 此技术已得到改善，可让用户使用 GloVe 单词嵌入初始化网络，以缩短训练时间。 在远程 Azure GPU VM 上运行 HAN 可以显著改善训练时间。 [Hierarchical Attention Networks for Document Classification (Yang et al., 2016)](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)（用于文档分类的分层注意力网络（2016 年由“杨”等人合著））中介绍了 HAN 的实现。
@@ -114,4 +115,4 @@ ms.locfileid: "75598192"
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅[操作指南](service/how-to-machine-learning-interpretability-aml.md)，为本地的模型训练以及 Azure 机器学习远程计算资源上的模型训练启用可解释性。 参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)了解更多方案。
+参阅[操作指南](how-to-machine-learning-interpretability-aml.md)，为本地的模型训练以及 Azure 机器学习远程计算资源上的模型训练启用可解释性。 参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)了解更多方案。

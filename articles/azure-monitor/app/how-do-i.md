@@ -1,20 +1,18 @@
 ---
 title: 如何在 Azure Application Insights 中执行... | Azure Docs
 description: 有关 Application Insights 的常见问题解答。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 04/04/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 749b55fff05a356c88720a06331c287a03174e38
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 2936ab8ab5960e293f16aca53992565935d84824
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838630"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850427"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -41,7 +39,7 @@ ms.locfileid: "74838630"
 
     telemetry.TrackMetric("Alarm", 10);
 
-或：
+或者：
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;

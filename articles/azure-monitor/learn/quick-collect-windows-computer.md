@@ -7,7 +7,6 @@ author: lingliw
 manager: digimobile
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
@@ -15,12 +14,12 @@ origin.date: 08/22/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 38f91c6d98904fe7070c791acc1d54f9c792e156
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 86b7c31854f0940c56cacf97f7564bb39a912905
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528218"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850299"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 

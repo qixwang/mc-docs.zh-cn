@@ -14,12 +14,12 @@ origin.date: 03/13/2019
 ms.date: 08/13/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b85f976737f5afa9c853ded80625ecc384c47c93
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: ad22b1f62be04fa0145b0e46c9d5d160eba95415
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839002"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850626"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
@@ -38,7 +38,7 @@ ms.locfileid: "74839002"
 将具有多实例设置的任务提交给作业时，Batch 执行多实例任务特有的几个步骤：
 
 1. 批处理服务根据多实例设置创建一个**主要任务**和多个**子任务**。 任务（主要任务和所有子任务）的总数与用户在多实例设置中指定的**实例**（计算节点）数相符。
-2. 批处理将其中一个计算节点指定为**主**节点，将主要任务安排在主节点上执行。 将子任务安排在已分配给多实例任务的剩余计算节点上执行，一个节点一个子任务。
+2. Batch 将其中一个计算节点指定为**主**节点，将主要任务安排在主节点上执行。 将子任务安排在已分配给多实例任务的剩余计算节点上执行，一个节点一个子任务。
 3. 主要任务和所有子任务会下载在多实例设置中指定的任何**通用资源文件**。
 4. 下载公共资源文件之后，主任务和子任务会执行多实例设置中指定的 **协调命令** 。 通常使用协调命令准备节点，以便执行任务。 该操作可能包括启动后台服务（例如 [Microsoft MPI][msmpi_msdn] 的 `smpd.exe`），以及验证节点是否已就绪，能够处理节点间消息。
 5. 在主要任务和所有子任务成功完成协调命令*以后*，主要任务会在主节点上执行**应用程序命令**。 应用程序命令是多实例任务本身的命令行，只由主要任务执行。 在基于 [MS-MPI][msmpi_msdn] 的解决方案中，用户将在此处使用 `mpiexec.exe` 执行已启用 MPI 的应用程序。
@@ -49,7 +49,7 @@ ms.locfileid: "74839002"
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>多实例任务的要求
-多实例任务需要有**已启用节点间通信**和**已禁用并发任务执行**的池。 若要禁用并发任务执行，请将 [CloudPool.MaxTasksPerComputeNode](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) 属性设置为 1。
+多实例任务需要有**已启用节点间通信**和**已禁用并发任务执行**的池。 若要禁用并发任务执行，请将 [CloudPool.MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) 属性设置为 1。
 
 > [!NOTE]
 > Batch [限制](batch-quota-limit.md#pool-size-limits)已启用节点间通信的池的大小。
@@ -98,10 +98,10 @@ await myCloudPool.CommitAsync();
 ### <a name="remote-direct-memory-access-rdma"></a>远程直接内存访问 (RDMA)
 在以下文章中查找指定为“支持 RDMA”的大小：
 
-- **CloudServiceConfiguration** 池
+* **CloudServiceConfiguration** 池
 
-  - [云服务的大小](../cloud-services/cloud-services-sizes-specs.md)（仅 Windows）
-- **VirtualMachineConfiguration** 池
+  * [云服务的大小](../cloud-services/cloud-services-sizes-specs.md)（仅 Windows）
+* **VirtualMachineConfiguration** 池
 
   - [Azure 中虚拟机的大小](../virtual-machines/linux/sizes.md) (Linux)
   - [Azure 中虚拟机的大小](../virtual-machines/windows/sizes.md) (Windows)
@@ -147,7 +147,7 @@ myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNo
 ```
 
 ### <a name="master-node"></a>主节点
-当用户提交多实例任务时，批处理服务会将其中一个计算节点指定为“主”节点，并将主要任务安排在主节点上执行。 子任务安排在已分配给多实例任务的剩余节点上执行。
+当用户提交多实例任务时，Batch 服务会将其中一个计算节点指定为“主”节点，并将主要任务安排在主节点上执行。 子任务安排在已分配给多实例任务的剩余节点上执行。
 
 ## <a name="coordination-command"></a>协调命令
 主要任务和子任务都执行**协调命令**。
@@ -179,12 +179,12 @@ Batch 创建的多个 [环境变量][msdn_env_var] 特定于已分配给某个�
 
 以下环境变量由多实例任务所使用的 Batch 服务创建：
 
-- `CCP_NODES`
-- `AZ_BATCH_NODE_LIST`
-- `AZ_BATCH_HOST_LIST`
-- `AZ_BATCH_MASTER_NODE`
-- `AZ_BATCH_TASK_SHARED_DIR`
-- `AZ_BATCH_IS_CURRENT_NODE_MASTER`
+* `CCP_NODES`
+* `AZ_BATCH_NODE_LIST`
+* `AZ_BATCH_HOST_LIST`
+* `AZ_BATCH_MASTER_NODE`
+* `AZ_BATCH_TASK_SHARED_DIR`
+* `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
 如需这些环境变量以及其他 Batch 计算节点环境变量的完整详细信息（包括内容和可见性），请参阅[计算节点环境变量][msdn_env_var]。
 
@@ -196,7 +196,7 @@ Batch 创建的多个 [环境变量][msdn_env_var] 特定于已分配给某个�
 ## <a name="resource-files"></a>资源文件
 多实例任务需要考虑两组资源文件：所有任务（主要任务和子任务）下载的**通用资源文件**，以及为多实例任务本身指定的**资源文件**（只有主要任务下载）。  
 
-可以在任务的多实例设置中指定一个或多个**通用资源文件**。 主要任务及所有子任务从 [Azure 存储](../storage/common/storage-introduction.md)将这些通用资源文件下载到每个节点的**任务共享目录**。 可以使用 `AZ_BATCH_TASK_SHARED_DIR` 环境变量从应用程序命令和协调命令行访问任务共享目录。 `AZ_BATCH_TASK_SHARED_DIR` 路径在所有分配给多实例任务的节点上都是相同的，因此可在主要任务和所有子任务之间共享单个协调命令。 从远程访问的意义上来说，批处理并不“共享”目录，但用户可将其用作装入点或共享点，如此前在有关环境变量的提示中所述。
+可以在任务的多实例设置中指定一个或多个**通用资源文件**。 主要任务及所有子任务从 [Azure 存储](../storage/common/storage-introduction.md)将这些通用资源文件下载到每个节点的**任务共享目录**。 可以使用 `AZ_BATCH_TASK_SHARED_DIR` 环境变量从应用程序命令和协调命令行访问任务共享目录。 `AZ_BATCH_TASK_SHARED_DIR` 路径在所有分配给多实例任务的节点上都是相同的，因此可在主要任务和所有子任务之间共享单个协调命令。 从远程访问的意义上来说，Batch 并不“共享”目录，但用户可将其用作装入点或共享点，如此前在有关环境变量的提示中所述。
 
 默认情况下，为多实例任务本身指定的资源文件下载到任务的工作目录 `AZ_BATCH_TASK_WORKING_DIR`。 如前所述，仅主要任务下载为多实例任务本身指定的资源文件（与通用资源文件相比）。
 

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 8f46673d249be849cd8fd3a88cccdde17d8bc200
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: c8857bad41fe75998b1c09ff6745feff5793bea1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336520"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850564"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -52,7 +52,7 @@ ms.locfileid: "75336520"
 
 ```JSON
 
-PUT https://[service name].search.chinacloudapi.cn/indexers/myindexer?api-version=[api-version]
+PUT https://[service name].search.azure.cn/indexers/myindexer?api-version=[api-version]
 Content-Type: application/json
 api-key: [admin key]
 {

@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 事件遥测 | Azure Docs
 description: 适用于事件遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 04/25/2017
 ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: 73b3678d0dd2ebf663f138b35d8e12dbcdbf66d4
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: b2880e7ad60453f27ed8c1742495a432b673126f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970869"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850438"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>事件遥测：Application Insights 数据模型
 
@@ -22,7 +20,7 @@ ms.locfileid: "72970869"
 
 事件在语义上不一定与请求关联。 但是，如果使用得当，事件遥测比请求或跟踪更重要。 事件表示业务遥测，应是积极程度较低的单独[采样](../../azure-monitor/app/api-filtering-sampling.md)的主体。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 事件名称。 若要允许适当的分组和有用的指标，请限制应用程序，使其生成少量单独的事件名称。 例如，不要为事件中每个生成的实例使用单独的名称。
 

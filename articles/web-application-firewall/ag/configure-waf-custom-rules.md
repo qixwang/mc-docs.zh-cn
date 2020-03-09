@@ -6,15 +6,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-origin.date: 11/16/2019
-ms.date: 11/25/2019
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 97831327b00e688565071f5dda9b384641b5735d
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: 994f3be59bbd1ae6883cc20337e88e0c119a49d4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461660"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266098"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>通过 Azure PowerShell 在应用程序网关上使用自定义规则配置 Web 应用程序防火墙 v2
 
@@ -108,6 +107,8 @@ $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>创建两个自定义规则并将其应用于 WAF 策略
 
 ```azurepowershell
+# Create WAF config
+$wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0"
 # Create a User-Agent header custom rule 
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
 $condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -MatchValue "evilbot" -Transform Lowercase -NegationCondition $False  
@@ -139,3 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
 
 [详细了解应用程序网关上的 Web 应用程序防火墙](ag-overview.md)
 
+<!-- Update_Description: code update -->
