@@ -22629,6 +22629,21 @@
       "source_path": "articles/storage/common/storage-redundancy-grs.md",
       "redirect_url": "/storage/common/storage-redundancy",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Speech-Service/speech-devices-sdk-android-quickstart.md",
+      "redirect_url": "/cognitive-services/speech-service/speech-devices-sdk-quickstart?pivots=platform-android",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Speech-Service/speech-devices-sdk-linux-quickstart.md",
+      "redirect_url": "/cognitive-services/speech-service/speech-devices-sdk-quickstart?pivots=platform-linux",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Speech-Service/speech-devices-sdk-windows-quickstart.md",
+      "redirect_url": "/cognitive-services/speech-service/speech-devices-sdk-quickstart?pivots=platform-windows",
+      "redirect_document_id": false
     }
 
   ]
