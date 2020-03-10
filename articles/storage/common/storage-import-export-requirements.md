@@ -10,11 +10,11 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 894af88df84581aa028e6afc7e43bf88442a1c1e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028871"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412015"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 

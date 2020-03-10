@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: b32158f38ad11c5a80a105e6e53e2e71663d8694
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540922"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412222"
 ---
 #  <a name="modify-specific-settings-on-your-azure-stack-hub-switch-configuration"></a>修改 Azure Stack Hub 交换机配置上的特定设置
 

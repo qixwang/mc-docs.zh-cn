@@ -18,11 +18,11 @@ ms.author: v-jay
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
 ms.openlocfilehash: 211daeeaec40394892e8e1658ed497ab4a7b2c13
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578516"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412134"
 ---
 # <a name="connect-to-the-asdk"></a>连接到 ASDK
 

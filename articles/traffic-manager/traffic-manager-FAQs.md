@@ -13,11 +13,11 @@ origin.date: 02/26/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9994ea6d1b6028c493ed961bc88dcee0b2ee4c43
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653238"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411744"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 

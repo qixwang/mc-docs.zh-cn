@@ -5,15 +5,15 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 origin.date: 11/25/2019
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: e9df6331f16d8052fa5388b22eaff0741acd06ca
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 56d04979a903d87d37f229b4db9232847a45f7c2
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600504"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934717"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -415,14 +415,14 @@ remote: Running deployment command...
 > [!NOTE]
 > 你可能会发现，部署过程在即将结束时会安装 [Composer](https://getcomposer.org/) 包。 应用服务在默认部署期间不会运行这些自动化任务，因此该示例存储库的根目录中提供了两个附加的文件用于运行这些任务：
 >
-> - `.deployment` - 此文件告知应用服务以自定义部署脚本运行 `bash deploy.sh`。
+> - `.deployment` - 此文件告知应用服务要以自定义部署脚本的形式运行 `bash deploy.sh`。
 > - `deploy.sh` - 自定义部署脚本。 查看该文件时可以看到，它会先运行 `npm install`，再运行 `php composer.phar install`。
 > - `composer.phar` - Composer 包管理器。
 >
 > 可使用此方法将任何步骤添加到应用服务中的基于 Git 的部署。 有关详细信息，请参阅[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。
 >
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 浏览到 `http://<app_name>.chinacloudsites.cn` 并在列表中添加一些任务。
 
@@ -597,7 +597,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.cn)管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
+在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
@@ -605,7 +605,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 左侧菜单提供用于配置应用的页面。
 
-![Azure 门户中的应用服务页](./media/app-service-web-tutorial-php-mysql/web-app-blade.png)
+![Azure 门户中的“应用服务”页](./media/app-service-web-tutorial-php-mysql/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

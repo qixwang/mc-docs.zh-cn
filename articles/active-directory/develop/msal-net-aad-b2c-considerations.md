@@ -14,11 +14,11 @@ ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 96bf247621eb8dedcaa3012c302ad415c6cbbd04
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067671"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411356"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 

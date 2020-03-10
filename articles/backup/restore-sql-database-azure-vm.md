@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 05/22/2019
 ms.date: 09/16/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7f5294937fcb890a4ad449aa0e48542b51140dc9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: bd802e4574535dc8a7436ff18fc91ddbda5bbc64
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838873"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893291"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -113,7 +113,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
 1. 在“还原配置”菜单中的“还原位置”下，选择“作为文件还原”。   
 2. 选择要将备份还原到的 SQL Server 名称。
-3. 在“服务器上的目标路径”中，输入在步骤 2 中选择的服务器上的文件夹路径。  此位置是服务要将全部所需备份文件转储到的位置。 通常，将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，可让同一网络中的其他计算机或者装载了相同 Azure 文件共享的计算机更轻松地访问这些文件。
+3. 在“服务器上的目标路径”中，输入在步骤 2 中选择的服务器上的文件夹路径。  此位置是服务要将全部所需备份文件转储到的位置。 通常，将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，可让同一网络中的其他计算机或者装载了相同 Azure 文件共享的计算机更轻松地访问这些文件。<BR>
 4. 选择“确定”  。
 
 ![选择“作为文件还原”](./media/backup-azure-sql-database/restore-as-files.png)

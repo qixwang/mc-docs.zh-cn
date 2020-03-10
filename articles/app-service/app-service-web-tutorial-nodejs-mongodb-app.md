@@ -5,15 +5,15 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 05/04/2017
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: d70684d99853c1571804d247666dba20b74abe16
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 56b5486d823225a77aad2d45cac4ee6a54b0aded
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600505"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934715"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
 
@@ -112,7 +112,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果成功�
 
 ## <a name="create-production-mongodb"></a>创建生产 MongoDB
 
-此步骤在 Azure 中创建一个 MongoDB 数据库。 应用部署到 Azure 后，它将使用该云数据库。
+此步骤在 Azure 中创建一个 MongoDB 数据库。 将应用部署到 Azure 后，它会使用此云数据库。
 
 对于 MongoDB，本教程使用了 [Azure Cosmos DB](/documentdb/)。 Cosmos DB 支持 MongoDB 客户端连接。
 
@@ -133,7 +133,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果成功�
 az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
 ```
 
---kind MongoDB  参数启用 MongoDB 客户端连接。
+--Kind MongoDB  参数启用 MongoDB 客户端连接。
 
 创建 Cosmos DB 帐户后，Azure CLI 将显示类似于以下示例的信息：
 
@@ -157,7 +157,7 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
 
 在此步骤中，使用 MongoDB 连接字符串将 MEAN.js 示例应用程序连接至刚创建的 Cosmos DB 数据库。 
 
-### <a name="retrieve-the-database-key"></a>检索数据库键
+### <a name="retrieve-the-database-key"></a>检索数据库密钥
 
 若要连接到 Cosmos DB 数据库，需要数据库键。 在 Azure CLI 中，使用 [`az cosmosdb list-keys`](/cli/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) 命令检索主键。
 
@@ -306,9 +306,9 @@ To https://<app_name>.scm.chinacloudsites.cn/<app_name>.git
 
 可以使用此方法将任何步骤添加到基于 Git 的部署。 如果重启 Azure 应用（无论何时），应用服务都不会重新运行这些自动化任务。
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用 
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用 
 
-使用 Web 浏览器浏览到已部署的应用。 
+使用 Web 浏览器转到已部署的应用。 
 
 ```bash 
 http://<app_name>.chinacloudsites.cn 
@@ -320,7 +320,7 @@ http://<app_name>.chinacloudsites.cn
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-选择“管理员”>“管理文章”  ，添加一些文章。 
+选择“管理员”>“管理文章”  以添加一些文章。 
 
 **祝贺你！** 现已在 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
@@ -450,7 +450,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-`git push` 完成后，请导航至 Azure 应用，并试用新功能。
+`git push` 完成后，请导航到 Azure 应用，并试用新功能。
 
 ![发布到 Azure 的模型和数据库更改](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 

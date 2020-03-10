@@ -1,19 +1,17 @@
 ---
 title: 在 Application Insights 中浏览 .NET 跟踪日志
 description: 搜索 Trace、NLog 或 Log4Net 生成的日志。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 origin.date: 05/08/2019
 author: lingliw
 ms.date: 9/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 421a14bc798def792e5e0d3a0783c8a8ff0e2ba4
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 41e34e1560d2a4785f36122dd10613bcc9a9874a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970930"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850419"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 和 Python 跟踪日志
 
@@ -226,7 +224,7 @@ logger.warning('Hello, World!')
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.cn/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../../azure-monitor/faq.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
 
 

@@ -6,11 +6,11 @@ origin.date: 09/05/2017
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: b029ed19ffb54c2f838238b53362cf480f129acc
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631321"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411188"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的比较函数
 

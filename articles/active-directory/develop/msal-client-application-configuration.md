@@ -20,11 +20,11 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 086a61c91705f655435d75574d45d16362b9972f
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830974"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411457"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 

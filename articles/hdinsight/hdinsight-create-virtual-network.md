@@ -9,11 +9,11 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 09/16/2019
 ms.openlocfilehash: a97137bb3b0801d0aae7e51e456a7d9e66484f93
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737436"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412257"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
@@ -288,7 +288,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 将值 `192.168.0.1` 替换为本地 DNS 服务器的 IP 地址。 此项将所有其他的 DNS 请求路由到本地 DNS 服务器。
 
-3. 若要使用配置，请重新启动 Bind。 例如，`sudo service bind9 restart`。
+3. 若要使用此配置，请重启 Bind。 例如，`sudo service bind9 restart`。
 
 4. 向本地 DNS 服务器添加条件转发器。 配置条件转发器，将对步骤 1 中 DNS 后者的请求发送到自定义 DNS 服务器。
 
@@ -299,7 +299,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 ### <a name="name-resolution-between-two-connected-virtual-networks"></a>在两个连接的虚拟网络之间进行名称解析
 
-本示例做出如下假设：
+此示例作出以下假设：
 
 * 你有两个使用 VPN 网关或对等互连进行连接的 Azure 虚拟网络。
 

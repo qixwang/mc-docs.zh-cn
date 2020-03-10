@@ -7,14 +7,14 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/30/2018
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 90cdfb01b53c406ca06af4d40f46f451916b7c62
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: 90692dd5c86b4099db90b2fe647920a6b57280df
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566649"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934934"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -202,7 +202,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 当前，不支持将应用服务 Web 应用连接到具有静态路由（基于策略）网关的虚拟网络。 如果目标虚拟网络已经存在，必须在连接到应用之前借助动态路由网关使网络处于点到站点 VPN 启用状态。 如果网关设置为静态路由，则无法启用点到站点 VPN。 
 
-有关详细信息，请参阅[将应用与 Azure 虚拟网络进行集成](web-sites-integrate-with-vnet.md#getting-started)。
+有关详细信息，请参阅[将应用与 Azure 虚拟网络进行集成](web-sites-integrate-with-vnet.md)。
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>在应用服务环境中，为何即使有两个可用的辅助角色，也只能创建一个应用服务计划？
 

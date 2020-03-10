@@ -15,11 +15,11 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.reviewer: kumud
 ms.openlocfilehash: fe5ee765cdc7640f935afb662729a05a7128122c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653498"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411215"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>

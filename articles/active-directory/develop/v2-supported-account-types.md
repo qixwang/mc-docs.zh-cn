@@ -18,11 +18,11 @@ ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5679de016735854cefd8fdfce3ca5b43761b24d
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777024"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411340"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 

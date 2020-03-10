@@ -10,11 +10,11 @@ origin.date: 02/20/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 05cd0f55f948d5826433dc01cba6c79c74d2d0a0
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630926"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411746"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 

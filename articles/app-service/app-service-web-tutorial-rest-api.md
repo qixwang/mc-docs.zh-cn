@@ -4,16 +4,16 @@ description: 了解如何通过 Azure 应用服务来托管包含 CORS 支持的
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
-origin.date: 11/21/2018
-ms.date: 01/13/2020
+origin.date: 02/11/2019
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 354c66d63e84cb529b50b1a97629c54785185f37
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 99520d3ffca143db093d516132217d10877ceae0
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600503"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934713"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -122,7 +122,7 @@ To https://<app_name>.scm.chinacloudsites.cn/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 在浏览器中导航到 `http://<app_name>.chinacloudsites.cn/swagger`，开始使用 Swagger UI。
 

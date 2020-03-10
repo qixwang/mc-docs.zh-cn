@@ -8,12 +8,12 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ad76abba142d2d69e807bf627579356c7f404f91
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: 5b1404084d73d944d899bbb8d26a8b774329cc98
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566639"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934709"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -52,8 +52,8 @@ ms.locfileid: "77566639"
 ```azurecli
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
-> [!NOTE]
-> 如果使用的是 Linux 应用服务计划，则需要添加此参数：--runtime python|3.7
+<!-- > [!NOTE] -->
+<!-- > If you are using a linux app-service-plan, you need to add this parameter: --runtime python|3.7 -->
 
 
 或者，若要创建启用 Git 的新应用，请在 Azure CLI 中结合 `--deployment-local-git` 参数运行 [`az webapp create`](/cli/webapp?view=azure-cli-latest#az-webapp-create)。 请将 \<app-name>、\<group-name> 和 \<plan-name> 替换为新 Git 应用、其 Azure 资源组及其 Azure 应用服务计划的名称。

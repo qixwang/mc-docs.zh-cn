@@ -13,11 +13,11 @@ ms.topic: conceptual
 manager: digimobile
 ROBOTS: NOINDEX
 ms.openlocfilehash: fb39fd29bcf16a29eebbfe66a2a514df70edca6b
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411511"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
 Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。
@@ -36,7 +36,7 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 * 运行方式帐户（用于在 Azure Active Directory 中创建新的服务主体）、证书以及分配参与者基于角色的访问控制 (RBAC)（用于使用 Runbook 管理资源管理器资源）。
 * 经典运行方式帐户（只需上传管理证书即可），用于通过 Runbook 管理 Azure 经典资源。  
 
-基于角色的访问控制在 Azure Resource Manager 中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。  请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文，了解帮助开发用于管理自动化权限的模型的详细信息。  
+基于角色的访问控制在 Azure Resource Manager 中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。  请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md) 一文，了解帮助开发用于管理自动化权限的模型的详细信息。  
 
 在数据中心的混合 Runbook 辅助角色上运行或针对 AWS 中的计算服务的 Runbook 不能使用通常用于针对 Azure 资源进行 Runbook 身份验证的相同方法。  这是因为这些资源在 Azure 外部运行，因此，它们需要在自动化中定义自己的安全凭据，以便向需要在本地访问的资源进行身份验证。  
 
@@ -46,6 +46,6 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 | 方法 | 环境 | 文章 |
 | --- | --- | --- |
 | Azure AD 用户帐户 |Azure 资源管理器和 Azure 经典 |[使用 Azure AD 用户帐户进行 Runbook 身份验证](automation-create-aduser-account.md) |
-| Azure 运行方式帐户 |Azure 资源管理器 |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
+| Azure 运行方式帐户 |Azure Resource Manager |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
 | Azure 经典运行方式帐户 |Azure 经典 |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
 | Windows 身份验证 |本地数据中心 |[对混合 Runbook 辅助角色进行 Runbook 身份验证](automation-hybrid-runbook-worker.md) |

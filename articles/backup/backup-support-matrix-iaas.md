@@ -7,11 +7,11 @@ origin.date: 09/13/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4d69f9498c33d6362b183e81ea36bc746ba3afbf
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497634"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411731"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用 [Azure 备份服务](backup-overview.md)备份本地计算机和工作负荷以及 Azure 虚拟机 (VM)。 本文汇总了使用 Azure 备份服务备份 Azure VM 时的支持设置和限制。

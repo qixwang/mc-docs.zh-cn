@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: 543080fb682340ca9fcb750172645615762a9078
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494205"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412255"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 

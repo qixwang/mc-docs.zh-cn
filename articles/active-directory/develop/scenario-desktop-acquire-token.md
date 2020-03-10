@@ -16,11 +16,11 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.openlocfilehash: 012a391ba20e2bb0da29d24915bdafcfc0f9f5ce
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067650"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411343"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -33,7 +33,7 @@ Web API 由其 `scopes` 定义。 无论在应用程序中提供哪种体验，�
 - 通过调用 `AcquireTokenSilent` 系统性地尝试从令牌缓存中获取令牌。
 - 如果此调用失败，则使用所需的 `AcquireToken` 流（此处由 `AcquireTokenXX` 表示）。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
@@ -55,7 +55,7 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
@@ -89,7 +89,7 @@ future.handle((res, ex) -> {
 }).join();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 result = None
@@ -103,7 +103,7 @@ if not result:
     result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中
 
@@ -151,7 +151,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 
 以下示例演示了如何以少量的代码来以交互方式获取令牌，用于在 Microsoft Graph 中读取用户的个人资料。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 
 ```csharp
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 若要详细了解 `AcquireTokenInteractive` 的所有其他可选参数，请参阅 [AcquireTokenInteractiveParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 MSAL Java 不直接提供以交互方式获取令牌的方法。 它要求应用程序在其实现用户交互流时发送授权请求，以获取授权代码。 然后，可将此代码传递给 `acquireToken` 方法来获取令牌。
 
@@ -343,7 +343,7 @@ future.handle((res, ex) -> {
 }).join();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 MSAL Python 不直接提供以交互方式获取令牌的方法。 它要求应用程序在其实现用户交互流时发送授权请求，以获取授权代码。 然后，可将此代码传递给 `acquire_token_by_authorization_code` 方法来获取令牌。
 
@@ -362,7 +362,7 @@ if not result:
 
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中
 
@@ -430,7 +430,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 ### <a name="learn-how-to-use-it"></a>了解其用法
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 在 MSAL.NET 中，需要使用：
 
@@ -521,7 +521,7 @@ static async Task GetATokenForGraph()
 
 有关 AcquireTokenByIntegratedWindowsAuthentication 的可能修饰符列表，请参阅 [AcquireTokenByIntegratedWindowsAuthParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 此内容摘自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。 下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
@@ -543,11 +543,11 @@ PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CL
  return result;
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 MSAL Python 尚不支持此流。
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 此流不适用于 MacOS。
 
@@ -582,7 +582,7 @@ MSAL Python 尚不支持此流。
 
 ### <a name="use-it"></a>用法
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 `IPublicClientApplication` 包含方法 `AcquireTokenByUsernamePassword`。
 
@@ -791,7 +791,7 @@ static async Task GetATokenForGraph()
 
 有关可应用到 `AcquireTokenByUsernamePassword` 的所有修饰符的详细信息，请参阅 [AcquireTokenByUsernamePasswordParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以下内容摘自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。 下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
@@ -838,7 +838,7 @@ future.handle((res, ex) -> {
 }).join();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 此内容摘自 [MSAL Python 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)。
 
@@ -868,7 +868,7 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 适用于 macOS 的 MSAL 不支持此流。
 
@@ -888,7 +888,7 @@ if not result:
 
 ### <a name="use-it"></a>用法
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 `IPublicClientApplication` 包含名为 `AcquireTokenWithDeviceCode` 的方法。
 
@@ -993,7 +993,7 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
     }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 此内容摘自 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。 下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
@@ -1026,7 +1026,7 @@ future.handle((res, ex) -> {
 future.join();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 此内容摘自 [MSAL Python 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)。
 
@@ -1077,7 +1077,7 @@ if not result:
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 此流不适用于 MacOS。
 

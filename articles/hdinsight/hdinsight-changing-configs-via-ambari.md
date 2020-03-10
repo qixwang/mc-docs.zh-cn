@@ -16,11 +16,11 @@ origin.date: 03/26/2019
 ms.date: 10/21/2019
 ms.author: ashish
 ms.openlocfilehash: 81f8cdb68c40412457dd81e4e182868664a170b6
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292672"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412200"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 

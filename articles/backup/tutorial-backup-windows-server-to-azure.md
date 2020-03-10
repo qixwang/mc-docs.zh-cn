@@ -8,11 +8,11 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: f693464baafffbe6d3f306301515f1b60d7fc6ef
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497543"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412014"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 

@@ -1,20 +1,18 @@
 ---
 title: 管理 Azure Application Insights 的使用情况和成本 | Azure Docs
 description: 在 Application Insights 中管理遥测量并监视成本。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 ms.reviewer: mbullwin
 origin.date: 11/27/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bbabc178845773d25390e49e9c73165f90bdd7f1
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: b63ec85644f4e5ff995a5cae392cbc4bddfe2abd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600119"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850430"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 

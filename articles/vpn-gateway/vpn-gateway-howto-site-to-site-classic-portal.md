@@ -9,11 +9,11 @@ origin.date: 01/09/2020
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 8b3b93e7c02882c6a61870b1777712ae25e5059e
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156800"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412446"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 

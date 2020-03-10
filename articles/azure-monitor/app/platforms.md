@@ -1,8 +1,6 @@
 ---
 title: Application Insights：语言、平台和集成 | Microsoft Docs
 description: 适用于 Application Insights 的语言、平台和集成
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 07/18/2019
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: v-lingwu
-ms.openlocfilehash: 2d7ad276b37a1fb847c261b7b4fc32494ddd9730
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: dd932a454f16a649b4f24bfe38ce410fe08c7ec1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528275"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850393"
 ---
 # <a name="supported-languages"></a>支持的语言
 

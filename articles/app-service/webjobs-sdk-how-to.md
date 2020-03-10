@@ -7,12 +7,12 @@ ms.topic: article
 origin.date: 02/18/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: 70c00b5b01d9895a1326b57625d738f5e3044ab7
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: c7adbc69003f17448fee9279dde0caaa9c1b0a52
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179329"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934915"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -396,7 +396,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅 [Azure CosmosDB 绑定](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings)一文。
+有关更多详细信息，请参阅 [Azure CosmosDB 绑定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)一文。
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>事件中心触发器配置（版本 3.*x*）
 
@@ -424,7 +424,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings)一文。
 
 ### <a name="queue-storage-trigger-configuration"></a>队列存储触发器配置
 
@@ -454,7 +454,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[队列存储绑定](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[队列存储绑定](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties)一文。
 
 #### <a name="version-2x"></a>版本 2.*x*
 
@@ -525,7 +525,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[服务总线绑定](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[服务总线绑定](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings)一文。
 
 ### <a name="configuration-for-other-bindings"></a>其他绑定的配置
 
@@ -681,11 +681,11 @@ public static void CreateQueueMessage(
 
 Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每篇绑定参考文章中介绍了以下信息。 （此示例基于存储队列。）
 
-* [包](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 需要安装哪个包才能在 WebJobs SDK 项目中支持绑定。
-* [示例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
-* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 用于绑定类型的特性。
-* [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 特性属性和构造函数参数的解释。
-* [使用情况](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
+* [包](../azure-functions/functions-bindings-storage-queue.md)。 需要安装哪个包才能在 WebJobs SDK 项目中支持绑定。
+* [示例](../azure-functions/functions-bindings-storage-queue-trigger.md)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
+* [特性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 用于绑定类型的特性。
+* [配置](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 特性属性和构造函数参数的解释。
+* [使用情况](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
   
 有关绑定参考文章的列表，请参阅 Azure Functions [触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)一文中的“支持的绑定”。 在该列表中，HTTP、Webhook 和事件网格绑定仅受 Azure Functions 的支持，而不受 WebJobs SDK 的支持。
 

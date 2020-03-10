@@ -9,11 +9,11 @@ ms.date: 12/16/2019
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: ce3f9cf7c83e23e2b2e4729dd163719f415b183f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336540"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411420"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -85,11 +85,11 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 * `$accountName`：Azure Cosmos 帐户的名称。 必须为小写，接受字母数字和“-”字符，长度必须为 3 到 31 个字符。
 * `$location` Azure Cosmos 帐户资源的位置。
-* `$locations` 数据库帐户的副本区域。 每个数据库帐户必须有一个故障转移优先级值为 0 的写入区域。
+* `$locations`：数据库帐户的副本区域。 每个数据库帐户必须有一个故障转移优先级值为 0 的写入区域。
 * `$consistencyPolicy`：Azure Cosmos 帐户的默认一致性级别。 有关详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
 * `$CosmosDBProperties`：传递给 Cosmos DB Azure 资源管理器提供程序的、用于预配帐户的属性值。
 
-可以使用 IP 防火墙以及虚拟网络服务终结点配置 Azure Cosmos 帐户。 若要了解如何为 Azure Cosmos DB 配置 IP 防火墙，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。  若要详细了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。
+可以使用 IP 防火墙以及虚拟网络服务终结点配置 Azure Cosmos 帐户。 有关如何为 Azure Cosmos DB 配置 IP 防火墙的信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。  若要详细了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。
 
 <a name="list-accounts"></a>
 ### <a name="list-all-azure-cosmos-accounts-in-a-subscription"></a>列出订阅中的所有 Azure Cosmos 帐户
@@ -401,7 +401,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 以下部分演示如何管理 Azure Cosmos 数据库，包括：
 
 * [创建 Azure Cosmos 数据库](#create-db)
-* [创建共享吞吐量的 Azure Cosmos 数据库](#create-db-ru)
+* [创建使用共享吞吐量的 Azure Cosmos 数据库](#create-db-ru)
 * [获取 Azure Cosmos 数据库的吞吐量](#get-db-ru)
 * [列出帐户中的所有 Azure Cosmos 数据库](#list-db)
 * [获取单个 Azure Cosmos 数据库](#get-db)
@@ -510,7 +510,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
 * [创建 Azure Cosmos 容器](#create-container)
 * [使用大分区键创建 Azure Cosmos 容器](#create-container-big-pk)
 * [获取 Azure Cosmos 容器的吞吐量](#get-container-ru)
-* [创建共享吞吐量的 Azure Cosmos 容器](#create-container-ru)
+* [创建使用共享吞吐量的 Azure Cosmos 容器](#create-container-ru)
 * [创建使用自定义索引的 Azure Cosmos 容器](#create-container-custom-index)
 * [创建禁用索引的 Azure Cosmos 容器](#create-container-no-index)
 * [创建使用唯一键和 TTL 的 Azure Cosmos 容器](#create-container-unique-key-ttl)

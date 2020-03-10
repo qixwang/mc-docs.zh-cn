@@ -13,11 +13,11 @@ ms.reviewer: ''
 origin.date: 10/12/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: d69f2a7adba0034e968742be0d350579111411d7
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155720"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78410581"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 
@@ -65,7 +65,7 @@ ms.locfileid: "77155720"
 - 快速进行数据库还原，无需考虑数据库大小（从存储快照还原）
 - 无论数据库大小和 vCore 数目如何，都可提高日志吞吐量
 - 使用一个或多个只读副本的读取扩展，用于卸载读取工作负荷，并用作热备用服务器。
-- 在恒定时间内快速纵向扩展计算，以便提高适应繁重工作负荷的能力；然后在恒定时间内减少。 例如，这与在 P6 和 P11 之间来回缩放类似，但速度更快，因为这不是一种数据大小操作。
+- 在恒定时间内快速纵向扩展计算，以便提高适应繁重工作负荷的能力；然后在恒定时间内纵向缩减。 例如，这与在 P6 和 P11 之间来回缩放类似，但速度更快，因为这不是一种数据大小操作。
 
 ### <a name="what-regions-currently-support-hyperscale"></a>哪些区域当前支持“超大规模”
 

@@ -4,15 +4,15 @@ description: 在数分钟内将第一个 PHP Hello World 部署到 Azure 应用�
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 origin.date: 08/24/2018
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 163ea895f22ddf9e30cb600aa83a97f2b00862b3
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 0ed7efbe0898507791a4e50d774a45826f224da0
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600513"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934719"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用
 
@@ -42,7 +42,7 @@ cd php-docs-hello-world
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
-在本地运行应用程序，这样就能了解将它部署到 Azure 时它的外观应该是什么样的。 打开一个终端窗口并使用 `php` 命令启动内置的 PHP Web 服务器。
+在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 打开一个终端窗口并使用 `php` 命令启动内置的 PHP Web 服务器。
 
 ```bash
 php -S localhost:8080
@@ -50,9 +50,9 @@ php -S localhost:8080
 
 打开 Web 浏览器并导航到 `http://localhost:8080` 处的示例应用。
 
-此时会看到来自示例应用的 Hello World!  消息（来自页面中显示的示例应用）。
+此时会看到“Hello World!”  消息（来自页面中显示的示例应用）。
 
-![本地运行应用的示例](media/app-service-web-get-started-php/localhost-hello-world-in-browser.png)
+![在本地运行的示例应用](media/app-service-web-get-started-php/localhost-hello-world-in-browser.png)
 
 在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。
 
@@ -95,7 +95,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.chinaclou
 已创建了一个空的新 Web 应用并启用了 Git 部署。
 
 > [!NOTE]
-> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.chinacloudsites.net/<app_name>.git`。 保存此 URL，因为后面需要它。
+> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.chinacloudsites.net/<app_name>.git`。 保存此 URL，后续将会用到。
 >
 
 浏览到新建的 Web 应用。 将 _&lt;app name>_ 替换为在上一步中创建的唯一应用名称。
@@ -106,7 +106,7 @@ http://<app name>.chinacloudsites.cn
 
 新 Web 应用应该如下所示：
 
-![空 Web 应用页面](media/app-service-web-get-started-php/app-service-web-service-created.png)
+![空 Web 应用页](media/app-service-web-get-started-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -145,7 +145,7 @@ http://<app_name>.chinacloudsites.cn
 
 PHP 示例代码正在 Azure 应用服务 Web 应用中运行。
 
-![在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-world-in-browser.png)
+![在 Azure 中运行的示例应用](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
 **祝贺你！** 现已将第一个 PHP 应用部署到应用服务。
 
@@ -170,7 +170,7 @@ git push azure master
 
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 
-1. 转到 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>管理创建的 Web 应用。 搜索并选择“应用服务”  。
+1. 转到 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>管理创建的 Web 应用。 搜索并选择“应用服务”。 
 
     ![搜索应用服务, Azure 门户, 创建 PHP web 应用](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 

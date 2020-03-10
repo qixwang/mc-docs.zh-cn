@@ -1,35 +1,49 @@
 ### YamlMime:Landing
 title: Azure 认知搜索文档
-summary: 针对专用异类内容的云搜索。
+summary: 专用异类内容上的云搜索，带有用于 AI 扩充的选项（如果内容为非结构化内容或内容在采用其原始格式时无法搜索）。
 metadata:
   title: Azure 认知搜索文档
-  description: 针对专用异类内容的云搜索。
+  description: 专用异类内容上的云搜索，带有用于 AI 扩充的选项（如果内容为非结构化内容或内容在采用其原始格式时无法搜索）。
   services: search
   ms.service: service
   ms.topic: landing-page
   ms.collection: collection
   author: HeidiSteen
   ms.author: v-tawe
-  origin.date: 09/20/2019
-  ms.date: 03/02/2020
-  ms.openlocfilehash: 07d7ad6bc8533d710381a00186552478afc7bd8a
-  ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+  origin.date: 02/25/2020
+  ms.date: 03/16/2020
+  ms.openlocfilehash: fcc05728979e3394d0c433557dda4f3b5c6564d9
+  ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/20/2020
-  ms.locfileid: "77501445"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78934853"
 landingContent:
 - title: 关于认知搜索
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure 认知搜索是什么？
+    - text: 什么是 Azure 认知搜索
       url: search-what-is-azure-search.md
-  - linkListType: architecture
+    - text: 什么是 AI 扩充
+      url: cognitive-search-concept-intro.md
+    - text: 什么是索引器
+      url: search-indexer-overview.md
+- title: 为 Azure 数据编制索引
+  linkLists:
+  - linkListType: how-to-guide
     links:
-    - text: 全文搜索在认知搜索中如何工作
-      url: search-lucene-query-architecture.md
-- title: 入门
+    - text: 从 Azure Blob 存储编制索引
+      url: search-blob-storage-integration.md
+    - text: 从 Azure SQL 数据库编制索引
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: 从 Cosmos DB 编制索引
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: 为半结构化 Blob 数据编制索引
+      url: search-semi-structured-data.md
+- title: 10 分钟快速入门
   linkLists:
   - linkListType: quickstart
     links:
@@ -37,21 +51,11 @@ landingContent:
       url: search-create-service-portal.md
     - text: 创建索引
       url: search-get-started-portal.md
-  - linkListType: tutorial
-    links:
     - text: 创建应用
-      url: tutorial-csharp-create-first-app.md
-- title: 与 Blob 存储配合使用
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 搜索 Blob 内容
-      url: search-blob-storage-integration.md
-  - linkListType: tutorial
-    links:
-    - text: 为半结构化 Blob 数据编制索引
-      url: search-semi-structured-data.md
-- title: 为数据编制索引
+      url: search-create-app-portal.md
+    - text: 从图像和应用文件中提取文本
+      url: cognitive-search-quickstart-blob.md
+- title: 为任意数据编制索引
   linkLists:
   - linkListType: concept
     links:
@@ -59,25 +63,39 @@ landingContent:
       url: search-what-is-an-index.md
     - text: 导入数据
       url: search-what-is-data-import.md
-    - text: 使用索引器
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: 从 Azure SQL 数据库编制索引
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: 从 Cosmos DB 数据编制索引
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: 创建索引 (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: 创建索引器 (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+- title: 使用 AI 扩充
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 技能集
+      url: cognitive-search-defining-skillset.md
+    - text: 知识存储
+      url: knowledge-store-concept-intro.md
+    - text: 投影数
+      url: knowledge-store-projections-examples.md
+  - linkListType: how-to-guide
+    links:
+    - text: 附加认知服务
+      url: cognitive-search-attach-cognitive-services.md
+    - text: 定义技能组合
+      url: cognitive-search-defining-skillset.md
+    - text: 创建知识存储
+      url: knowledge-store-create-portal.md
+  - linkListType: reference
+    links:
+    - text: 内置技能
+      url: cognitive-search-predefined-skills.md
 - title: 查询数据
   linkLists:
   - linkListType: concept
     links:
-    - text: 概述
+    - text: 查询类型和组合
       url: search-query-overview.md
     - text: 简单语法（默认值）
       url: query-simple-syntax.md
@@ -105,3 +123,5 @@ landingContent:
       url: https://stackoverflow.com/questions/tagged/azure-search
     - text: 在 MSDN 论坛上提问
       url: https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs
+    - text: 请求功能
+      url: https://feedback.azure.com/forums/263029-azure-search

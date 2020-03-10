@@ -11,15 +11,15 @@ ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ef5af8b599da30bd220774093428c87ced5e26ea
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599671"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411396"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
-Microsoft 为云或本地平台提供整套数据和分析服务与资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
+Microsoft 为云或本地平台提供整套数据和分析服务与资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此过程的数据科学团队处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
 可让数据科学团队配合 TDSP 使用的数据和分析服务包括：
 
@@ -29,7 +29,7 @@ Microsoft 为云或本地平台提供整套数据和分析服务与资源。 部
 - Azure Data Lake
 - HDInsight Hive 群集
 - Azure 文件存储
-- SQL Server 2016 R 服务
+- SQL Server 2016 R Services
 
 本文档简要介绍上述资源，并提供 TDSP 团队发布的教程和演练的链接。 可以借助这些参考材料了解如何逐步使用这些资源，并开始使用它们来生成智能应用程序。 这些资源的产品页上提供了其详细信息。 
 
@@ -94,7 +94,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 能够创建一个 Azure 文件存储作为与项目团队成员共享项目数据的位置，对于数据科学项目特别有用。 然后，每个成员可以访问 Azure 文件存储中的相同数据副本。 他们还可使用此文件存储来共享执行项目期间生成的特征集。 如果项目是客户参与项目，则客户可以在其自己的 Azure 订阅下创建一个 Azure 文件存储，用来与你共享项目数据和特征。 这样，客户便可以完全控制项目数据资产。 有关 Azure 文件存储的详细信息，请参阅 [在 Windows 上开始使用 Azure 文件存储](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)和[如何通过 Linux 使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-linux.md)。
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R 服务
+## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
 R 服务（数据库内部）提供一个平台用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
 

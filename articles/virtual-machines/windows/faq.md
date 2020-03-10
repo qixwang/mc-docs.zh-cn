@@ -16,11 +16,11 @@ origin.date: 05/08/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 57de8ddf4721f30c612d17a58b39b2b551cadb1d
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116757"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78410573"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -57,8 +57,8 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>如何更改临时磁盘的驱动器号？
 可以通过移动页面文件和重新分配驱动器号来更改驱动器号，但需确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以将现有 VM 添加到可用性集？
-否。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
+## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>可否将现有 VM 添加到可用性集？
+否。 如果希望将 VM 作为可用性集的一部分，则需要在该可用性集中创建 VM。 目前，不支持在创建 VM 后将其添加到可用性集。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>可否将虚拟机上传到 Azure？
 是的。 有关说明，请参阅[将本地 VM 迁移到 Azure](on-prem-to-azure.md)。
@@ -73,7 +73,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 
 针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure Resource Manager 将虚拟机部署到其他任何区域时，将自动完成此注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
 
-## <a name="does-azure-support-linux-vms"></a>Azure 是否支持 Linux VM？
+## <a name="does-azure-support-linux-vms"></a>Azure 可否支持 Linux VM？
 是的。 若要快速创建 Linux VM 进行试用，请参阅[使用门户在 Azure 上创建 Linux VM](../linux/quick-create-portal.md)。
 
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>创建 VM 后能否向 VM 添加 NIC？

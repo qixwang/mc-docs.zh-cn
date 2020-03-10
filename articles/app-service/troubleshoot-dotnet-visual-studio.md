@@ -9,11 +9,11 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 856b29c5e97292440c3764a79abf8f167adc729d
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600227"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411626"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
@@ -216,7 +216,7 @@ ms.locfileid: "75600227"
 
 14. 在“服务器资源管理器”  中，右键单击 ContosoAdsWebJob 节点，并单击“查看仪表板”  。
 
-15. 使用 Azure 凭据登录，并单击 WebJob 名称转到 WebJob 的页面。
+15. 使用 Azure 凭据登录，并单击 Web 作业名称转到 Web 作业的页面。
 
      ![单击 ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 

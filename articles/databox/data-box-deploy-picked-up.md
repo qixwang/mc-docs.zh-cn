@@ -10,11 +10,11 @@ origin.date: 03/19/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: 869c74330834a257839dc9f40d25185df2d00c12
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726488"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411595"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>教程：寄回 Azure Data Box 并验证上传到 Azure 的数据
 

@@ -9,11 +9,11 @@ origin.date: 03/04/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8f61e8704eabaed6d52e9810b07c08e4f9faa954
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859856"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411936"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 

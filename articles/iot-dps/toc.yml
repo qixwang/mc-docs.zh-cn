@@ -182,7 +182,7 @@
         - name: IoT 服务 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 时序见解
-          href: /azure/time-series-insights
+          href: /time-series-insights
     - name: Edge 解决方案
       items:
         - name: Azure IoT Edge

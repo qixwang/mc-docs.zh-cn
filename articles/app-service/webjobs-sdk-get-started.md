@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: eca4f237f519170823474e51c6cfee8e0d20a132
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: 0094af36fdd31dea26138daf106148c9781acd4b
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566652"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934914"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -178,7 +178,7 @@ ms.locfileid: "77566652"
 
    `QueueTrigger` 特性告知运行时，在名为 `queue` 的 Azure 存储队列中写入新消息时，应调用此函数。 队列消息的内容将提供给 `message` 参数中的方法代码。 在方法的正文中处理触发器数据。 在此示例中，代码只是记录消息。
 
-   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
+   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -274,7 +274,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    由于在 `ProcessQueueMessage` 函数中使用了 `QueueTrigger` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
 
-   由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
+   由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
 
    控制台输出如下所示：
 
@@ -296,6 +296,8 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 
 在 Azure 中运行项目时，无法通过查看控制台输出来监视函数执行。 我们建议的监视解决方案是 [Application Insights](../azure-monitor/app/app-insights-overview.md)。 
+
+<!-- For more information, see [Monitor Azure Functions](../azure-functions/functions-monitoring.md). -->
 
 在本部分，我们将执行以下任务来设置 Application Insights 日志记录，然后部署到 Azure：
 
@@ -383,7 +385,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
                     string instrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
                     if (!string.IsNullOrEmpty(instrumentationKey))
                     {
-                        b.AddApplicationInsights(o => o.InstrumentationKey = instrumentationKey);
+                        b.AddApplicationInsightsWebJobs(o => o.InstrumentationKey = instrumentationKey);
                     }
                 });
         var host = builder.Build();

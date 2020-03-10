@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 origin.date: 12/13/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 1920034dca677f7aa7b1b1c066ef38ac056bfad9
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653537"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411785"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 

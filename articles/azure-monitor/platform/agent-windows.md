@@ -10,11 +10,11 @@ origin.date: 10/07/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 200dd335481ea972a77bb5dff3b64ce26f7d3ace
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497466"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412170"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
 

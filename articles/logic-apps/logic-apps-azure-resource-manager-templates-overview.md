@@ -11,11 +11,11 @@ ms.topic: article
 origin.date: 07/25/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: 70c1bed23001a64c7871091c05a79e3180590833
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428935"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411727"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 

@@ -7,11 +7,11 @@ origin.date: 06/18/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e8a4dd51cc721c830ba110017066cf6f7f8074b2
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497416"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412203"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 

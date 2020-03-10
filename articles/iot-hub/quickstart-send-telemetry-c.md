@@ -12,11 +12,11 @@ origin.date: 04/10/2019
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: c139886615751691c7b16e079209cfe8128d2273
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154722"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412554"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C)
 

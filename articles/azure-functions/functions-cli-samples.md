@@ -7,11 +7,11 @@ ms.topic: sample
 ms.date: 12/04/2019
 ms.custom: mvc
 ms.openlocfilehash: 9993aad91f69de4deb4a4a08c25a8ea6c11b7522
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884992"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411145"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 

@@ -6,15 +6,15 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 02/02/2018
-ms.date: 02/02/2018
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 9e9a8fe55193bd059f9e24caab57a829c6c3cd96
-ms.sourcegitcommit: 0529a2aa102e058636d726b4a4f25208e1e60597
+ms.openlocfilehash: 59392aecb9d7b9226adab2fe5d4a039a08c35e2e
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059584"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934714"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 
 
@@ -32,6 +32,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.chinaclou
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
   "clientCertEnabled": false,
+  "clientCertExclusionPaths": null,
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
@@ -43,5 +44,5 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.chinaclou
 ```
 
 > [!NOTE]
-> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.chinacloudsites.cn/<app-name>.git`。 保存此 URL，因为后面需要它。
+> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.chinacloudsites.cn/<app-name>.git`。 保存此 URL，后续将会用到。
 >

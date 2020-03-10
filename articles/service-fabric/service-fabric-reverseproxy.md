@@ -7,11 +7,11 @@ origin.date: 11/03/2017
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 85d2b72bd36baa82df5e1a4a4fcd4f84344e0c55
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 590844334d9e57a8742777235c2c3de8f25f20ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742383"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78964880"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。

@@ -9,11 +9,11 @@ origin.date: 09/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 442208c64dceea0cd957643329729e5a2ccd1839
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340965"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411907"
 ---
 # <a name="troubleshoot-the-process-server"></a>排查进程服务器问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "71340965"
 
 **警报类型** | **错误** | **故障排除**
 --- | --- | --- 
-![Healthy][green] | 无  | 进程服务器已连接且正常运行。
+![正常][green] | 无  | 进程服务器已连接且正常运行。
 ![警告][yellow] | 指定的服务未运行。 | 1.检查服务是否正在运行。<br/> 2.如果服务已按预期方式运行，请遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
 ![警告][yellow]  | 过去 15 分钟的 CPU 利用率超过 80%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。
 ![关键][red] |  过去 15 分钟的 CPU 利用率超过 95%。 | 1.不要添加新计算机。<br/>2.检查使用进程服务器的 VM 数目是否符合[定义的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，并考虑设置[额外的进程服务器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵照以下说明[排查连接和复制问题](#check-connectivity-and-replication)。<br/> 4.如果问题持续出现，请针对 VMware/物理服务器复制运行[部署规划器](https://docs.azure.cn/site-recovery/site-recovery-deployment-planner)。

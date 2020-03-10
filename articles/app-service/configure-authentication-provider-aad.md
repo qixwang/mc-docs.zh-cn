@@ -4,15 +4,15 @@ description: 了解如何将 Azure Active Directory 身份验证配置为应用�
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 origin.date: 09/03/2019
-ms.date: 02/17/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 71387bfcea8b9add13438b42eae0dad7e087a736
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 5a80595e846367da17134c72eca9bb6c2051569d
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154991"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934710"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>将应用服务应用配置为使用 Azure AD 登录
 

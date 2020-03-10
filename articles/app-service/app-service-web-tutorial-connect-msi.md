@@ -4,17 +4,17 @@ description: 了解如何使用托管标识让数据库连接更安全，以及�
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 11/18/2019
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 0d25a5ab659c6b5f8c5bc275114ee4ecf37029f9
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, cli-validate
+ms.openlocfilehash: 459038a91a77d0690998afd14b2575d3e2c30011
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600507"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934720"
 ---
-# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
 [应用服务](overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 它还为应用提供[托管标识](overview-managed-identity.md)，这是一项统包解决方案，可以确保安全地访问 [Azure SQL 数据库](/sql-database/)和其他 Azure 服务。 应用服务中的托管标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在本教程中，你要将托管标识添加到在以下教程之一中生成的示例 Web 应用： 
 
@@ -278,7 +278,7 @@ git push azure master
 
 ## <a name="next-steps"></a>后续步骤
 
-你已了解：
+现已了解：
 
 > [!div class="checklist"]
 > * 启用托管标识

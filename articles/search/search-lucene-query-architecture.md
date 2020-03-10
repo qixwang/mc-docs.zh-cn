@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 65f77f9ee8f27a3875d70766be4d33f13fca9916
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336514"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412704"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure 认知搜索中全文搜索的工作原理
 
@@ -32,7 +32,7 @@ ms.locfileid: "75336514"
 1. 查询分析 
 2. 词法分析 
 3. 文档检索 
-4. 评分 
+4. 计分 
 
 以下关系图演示了用于处理搜索请求的组件。 
 
@@ -73,7 +73,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 本文的大部分内容介绍如何处理*搜索查询*：`"Spacious, air-condition* +\"Ocean view\""`。 筛选和排序不属于本文的介绍范畴。 有关详细信息，请参阅[搜索 API 参考文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>阶段 1：查询分析 
+## <a name="stage-1-query-parsing"></a>第 1 阶段：查询分析 
 
 如前所述，查询字符串是请求的第一行： 
 
@@ -127,7 +127,7 @@ Spacious,||air-condition*+"Ocean view"
 > 运行代表性查询时，选择 `searchMode=any` 而不选择 `searchMode=all` 是最明智的决定。 经常使用运算符（搜索文档存储时就经常这样做）的用户可能会发现，如果 `searchMode=all` 能够告知布尔查询构造，则结果会更直观。 有关 `searchMode` 与运算符之间的交互作用的详细信息，请参阅[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)。
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>阶段 2：词法分析 
+## <a name="stage-2-lexical-analysis"></a>第 2 阶段：词法分析 
 
 构造查询树之后，词法分析器将处理*字词查询*和*短语查询*。 分析器接受分析器提供给它的文本输入，处理文本，并发回标记化的字词，以便在查询树中整合。 
 
@@ -189,7 +189,7 @@ Spacious,||air-condition*+"Ocean view"
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>阶段 3：文档检索 
+## <a name="stage-3-document-retrieval"></a>第 3 阶段：文档检索 
 
 文档检索是否在索引中查找包含匹配词的文档。 最好是通过一个示例来理解此阶段。 我们从一个采用以下简单架构的酒店索引着手： 
 
@@ -314,7 +314,7 @@ Spacious,||air-condition*+"Ocean view"
 
 总而言之，对于上述查询，匹配的文档为 1、2、3。 
 
-## <a name="stage-4-scoring"></a>阶段 4：评分  
+## <a name="stage-4-scoring"></a>阶段 4：计分  
 
 将为搜索结果集中的每个文档分配一个相关性评分。 相关性评分的作用是提高能够为搜索查询所表示的用户问题提供最佳答案的文档的排名。 评分是根据匹配的字词的统计属性计算的。 评分公式的核心是 [TF/IDF（字词频率-逆向文档频率）](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)。 在包含不常见和常见字词的查询中，TF/IDF 会提升包含不常见字词的结果。 例如，在包含所有 Wikipedia 文章的假想索引中，对于匹配查询 *the president* 的文档，匹配 *president* 的文档的相关性被视为高于匹配 *the* 的文档。
 
