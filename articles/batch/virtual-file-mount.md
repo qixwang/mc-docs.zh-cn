@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 08/13/2019
 ms.date: 09/13/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 094431e9494649e14c5cd1e4af55ffcf7deaafdd
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.openlocfilehash: 0ba20711a6dd904f41359b8213ebe2f3331b3a3f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71330038"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850199"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池中装载虚拟文件系统
 
@@ -89,9 +89,6 @@ new PoolAddParameter
 装载 Blob 文件系统需要使用存储帐户的 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[查看帐户密钥](../storage/common/storage-account-manage.md#view-account-keys-and-connection-string)或[使用共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse [故障排除常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要获取对 blobfuse 装载目录的默认访问权限，请以**管理员**身份运行该任务。 blobfuse 在用户空间中装载目录；创建池时，将以 root 身份装载 blobfuse。 在 Linux 中，所有**管理员**任务都以 root 身份运行。 [FUSE 参考页](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了 FUSE 模块的所有选项。
 
 除了故障排除指南以外，还可以借助“blobfuse 中的问题”GitHub 存储库来检查当前的 blobfuse 问题并获取解决方法。 有关详细信息，请参阅 [blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues)。
-
-> [!NOTE]
-> blobfuse 目前不支持 Debian。 有关详细信息，请参阅[支持的 SKU](#supported-skus)。
 
 ```csharp
 new PoolAddParameter
@@ -175,7 +172,8 @@ new PoolAddParameter
 |---|---|---|---|---|---|---|
 | 或批处理 | rendering-centos73 | 呈现 | :heavy_check_mark: <br>注意：与 CentOS 7.7 兼容</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16.04-LTS、18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8、9 | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>注意：与 CentOS 7.4 兼容 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注意：支持 A_8 或 A_9 存储</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -191,4 +189,4 @@ new PoolAddParameter
 - 详细了解如何在 [Windows](../storage/files/storage-how-to-use-files-windows.md) 或 [Linux](../storage/files/storage-how-to-use-files-linux.md) 中装载 Azure 文件共享。
 - 了解如何使用和装载 [blobfuse](https://github.com/Azure/azure-storage-fuse) 虚拟文件系统。
 - 参阅[网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)，了解 NFS 及其应用方案。
-- 参阅 ](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)Microsoft SMB 协议和 CIFS 协议概述[来详细了解 CIFS。
+- 参阅 [Microsoft SMB 协议和 CIFS 协议概述](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 来详细了解 CIFS。
