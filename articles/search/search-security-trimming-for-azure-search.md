@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: dacc2884d7e982e8e25269b589995d388e1818b5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 1e968e9d5062235fd0a2ad48498524649668e4b4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336484"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850618"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
 
@@ -61,7 +61,7 @@ ms.locfileid: "75336484"
 向索引的 URL 终结点发出 HTTP POST 请求。 HTTP 请求的正文是一个 JSON 对象，包含要添加的文档：
 
 ```
-POST https://[search service].search.chinacloudapi.cn/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.azure.cn/indexes/securedfiles/docs/index?api-version=2019-05-06  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -119,7 +119,7 @@ api-key: [admin key]
 发出 HTTP POST 请求：
 
 ```
-POST https://[service name].search.chinacloudapi.cn/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.azure.cn/indexes/securedfiles/docs/search?api-version=2019-05-06
 Content-Type: application/json  
 api-key: [admin or query key]
 ```

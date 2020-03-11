@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: cfb99c42ddeac63b3cec6c0a22ae1bb9c4e5054e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 60d1c0b7eb453ce340c34b7dfd444dd530e7d6a5
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335497"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850458"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>使用 Azure 认知搜索将全文搜索添加到 Azure Blob 数据
 
@@ -28,9 +28,7 @@ Azure 认知搜索在索引层与 Azure Blob 存储集成，可将 Blob 内容�
 
 创建并填充索引后，该索引将独立于 Blob 容器，但你可以重新运行索引操作，以使用底层容器的更改来刷新索引。 各个 Blob 中的时间戳信息用于执行更改检测。 可以选择按计划执行或按需索引作为刷新机制。
 
-输入是 Azure Blob 存储中单个容器内的 Blob。 Blob 几乎可以是任何类型的文本数据。 
-
-<!-- If your blobs contain images, you can add [AI enrichment to blob indexing ](search-blob-ai-integration.md) to create and extract text from images. -->
+输入是 Azure Blob 存储中单个容器内的 Blob。 Blob 几乎可以是任何类型的文本数据。 如果 Blob 包含图像，可[将 AI 扩充添加到 Blob 索引](search-blob-ai-integration.md)，以便从图像创建和提取文本。
 
 输出始终是 Azure 认知搜索索引，用于在客户端应用程序中快速执行搜索、检索和浏览。 输入与输出之间是索引管道体系结构本身。 该管道基于本文将会详细介绍的索引器功能。 
 
@@ -48,9 +46,7 @@ Azure 认知搜索在索引层与 Azure Blob 存储集成，可将 Blob 内容�
 
 Azure 存储中的 Blob 使用 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)编制索引。 可以使用“导入数据”向导、REST API 或 .NET SDK 调用此索引器。  在代码中，使用此索引器的方式是设置类型，并提供包括 Azure 存储帐户和 Blob 容器的连接信息。 可以通过创建虚拟目录（随后可将其作为参数传递），或者筛选文件类型扩展名，来指定 Blob 的子集。
 
-索引器执行“文档破解”，会打开一个 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档和其他内容类型。 文档破解和文本提取是免费的。 标准索引仅适用于文本内容，因此，如果 Blob 包含图像内容，将会忽略图像。
-
-<!-- If your blobs contain image content, images are ignored unless you [add AI enrichment](search-blob-ai-integration.md).  -->
+索引器执行“文档破解”，会打开一个 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档和其他内容类型。 文档破解和文本提取是免费的。 如果 Blob 包含图像内容，则除非[添加 AI 扩充](search-blob-ai-integration.md)，否则会忽略图像。 标准索引仅适用于文本内容。
 
 Blob 索引器附带配置参数，如果基础数据提供足够的信息，则索引器支持更改跟踪。 可以在 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)中详细了解核心功能。
 

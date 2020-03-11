@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 0b2e3e3fd6e165994e4b550b93c869e6f8410129
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 8643b4e03e83b7a5aea3966a22465efb3317b955
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501431"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850541"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -28,9 +28,9 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
-[打开试用版 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)并使用免费额度试用付费 Azure 服务。 信用额度用完后，请保留帐户并继续使用免费的 Azure 服务，如网站。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
+[打开试用版 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)并使用免费额度试用付费 Azure 服务。
 
-<!-- Alternatively, [activate MSDN subscriber benefits](https://www.azure.cn/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). An MSDN subscription gives you credits every month you can use for paid Azure services. -->
+或者，通过 [Azure 预付购买模式](https://wd.azure.cn/pricing/pia/)注册付费版 Azure 服务。
 
 ## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
 
@@ -61,18 +61,18 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="name-the-service"></a>为服务命名
 
-在“实例详细信息”中的“URL”字段内提供服务名称。  该名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.chinacloudapi.cn`。 例如，如果希望终结点为 `https://myservice.search.chinacloudapi.cn`，则输入 `myservice`。
+在“实例详细信息”中的“URL”字段内提供服务名称。  该名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.azure.cn`。 例如，如果希望终结点为 `https://myservice.search.azure.cn`，则输入 `myservice`。
 
 服务名称要求：
 
-* 它在 search.chinacloudapi.cn 命名空间中必须唯一
+* 它必须在 search.azure.cn 命名空间中唯一
 * 它的长度必须为 2 到 60 个字符。
 * 必须使用小写字母、数字或短划线（“-”）
 * 前 2 个字符或最后一个字符不能为短划线（“-”）
 * 不能在任何位置使用连续的短划线（“--”）
 
 > [!TIP]
-> 如果你认为今后会用到多个服务，我们建议根据命名约定在服务名称中包含区域（或位置）。 同一区域中的服务可以免费交换数据，因此，如果 Azure 认知搜索位于中国东部，而你在中国东部还有其他服务，则在决定如何合并或附加资源时，使用类似于 `mysearchservice-chinaeast` 的名称就无需导航到属性页。
+> 如果你认为今后会用到多个服务，我们建议根据命名约定在服务名称中包含区域（或位置）。 同一区域中的服务可以免费交换数据，因此，如果 Azure 认知搜索位于中国东部 2 区域，而你在中国东部 2 区域还有其他服务，则在决定如何合并或附加资源时，使用类似于 `mysearchservice-chinaeast2` 的名称就无需导航到属性页。
 
 ## <a name="choose-a-location"></a>选择位置
 
@@ -80,7 +80,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 为多个服务选择同一位置可以最大程度地减少或避免带宽费用。 例如，在为另一 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引时，在同一区域中创建 Azure 认知搜索服务可以避免带宽费用（当服务位于同一区域时，出站数据不会产生费用）。
 
-<!-- Additionally, if you are using AI enrichment, create your service in the same region as Cognitive Services. *Co-location of Azure Cognitive Search and Cognitive Services in the same region is a requirement for AI enrichment*. -->
+如果使用 AI 扩充，请在认知服务所在的相同区域中创建搜索服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
 
 > [!Note]
 > 印度中部目前无法提供新服务。 对于已在印度中部的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 对此区域的限制是临时的，仅限于新服务。 如果该限制不再适用，我们将删除此说明。
@@ -123,9 +123,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ***副本***允许服务处理负载更高的搜索查询。
 
-添加资源会增加每月账单费用。 可以通过[定价计算器](https://www.azure.cn/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。 
-
-<!-- For example, you might increase resources to create a full initial index, and then reduce resources later to a level more appropriate for incremental indexing. -->
+添加资源会增加每月账单费用。 可以通过[定价计算器](https://www.azure.cn/pricing/calculator/)来了解添加资源对账单明细的影响。 请记住，可以根据负载来调整资源。 例如，可以通过增加资源来创建完整的初始索引，在以后再将资源减少到与增量索引编制相适应的某个程度。
 
 > [!Important]
 > 一个服务必须具有[2 个用于只读 SLA 的副本和 3 个用于读/写 SLA 的副本](https://www.azure.cn/support/legal/sla/)。

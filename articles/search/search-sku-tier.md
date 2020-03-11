@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 509e29b38655fc5ab8b8e16d314d9b6db275812d
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 8503ec28a772ad28e7e78bb3654f42c24ec74e98
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501463"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850614"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -59,8 +59,7 @@ ms.locfileid: "77501463"
 + 采用最低配置的服务的基本成本（创建服务）
 + 纵向扩展时的增量成本（添加副本或分区）
 + 带宽费用（出站数据传输） 
-
-<!-- + Cognitive search (attach Cognitive Services for AI enrichment, Azure storage for knowledge store) -->
++ 认知搜索（为 AI 扩充附加认知服务、用于知识存储的 Azure 存储）
 
 ### <a name="service-costs"></a>服务成本
 
@@ -79,7 +78,16 @@ ms.locfileid: "77501463"
 
 如果服务在不同的区域中，则会针对出站数据收费。 这些费用实际上不是 Azure 认知搜索帐单的一部分。 此处之所以提到这些费用，是因为如果你使用数据或 AI 扩充索引器从不同的区域提取数据，将会在总体帐单中看到这些费用。
 
-<!-- ### AI enrichment with Cognitive Services -->
+### <a name="ai-enrichment-with-cognitive-services"></a>使用认知服务的 AI 扩充
+
+对于 [AI 扩充](cognitive-search-concept-intro.md)，应该计划在 S0 定价层上的 Azure 认知搜索所在的同一区域中[附加一个计费的认知服务资源](cognitive-search-attach-cognitive-services.md)，用于即用即付处理。 附加认知服务不会产生固定的费用。 只需支付所需的处理费。
+
+| 操作 | 计费影响 |
+|-----------|----------------|
+| 文档破解、文本提取 | 免费 |
+| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在[索引器配置](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://www.azure.cn/pricing/details/search/)页上阐述了图像提取费率。|
+| [内置认知技能](cognitive-search-predefined-skills.md) | 计费费率与直接使用认知服务执行任务的费率相同。 |
+| 自定义技能 | 自定义技能是你提供的功能。 使用自定义技能的费用完全取决于自定义代码是否调用其他计量的服务。 |
 
 <a name="search-units"></a>
 
@@ -106,6 +114,8 @@ SU 是服务使用的副本数和分区数的乘积：   **(R x P = SU)** 。
 - 考虑对前端应用程序使用 Azure Web 应用，使请求和响应保留在数据中心边界范围内。
 
 - 针对索引编制等资源密集型操作纵向扩展，然后针对常规查询工作负荷向下重新调整。 首先对 Azure 认知搜索使用最低的配置（由一个分区和一个副本组成的一个 SU），然后监视用户活动，以识别指示需要更多容量的使用模式。 如果有可预测的模式，也许可以使用活动来同步规模（需要编写代码来自动化此过程）。
+
+此外，请访问[计费和成本管理](https://docs.azure.cn/billing/billing-getting-started)获取与支出相关的内置工具和功能。
 
 不可能临时关闭搜索服务。 专用资源始终运行，是在服务的生存期内专门分配给你使用的。 删除服务这项操作是永久性的，也会删除其关联的数据。
 

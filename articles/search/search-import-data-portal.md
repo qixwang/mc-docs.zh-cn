@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 01/17/2020
-ms.openlocfilehash: 0098feb7fc616fd747f3f27578bb460b2ce6eca4
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.date: 03/16/2020
+ms.openlocfilehash: b816a5595607902526876305509947a58881daa8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123312"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850566"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
@@ -26,9 +26,9 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 2 - 创建通过采样源数据推断的索引架构。
 
-<!-- 3 - Optionally, add AI enrichments to extract or generate content and structure. -->
+3 -（可选）添加 AI 扩充以提取或生成内容和结构。
 
-3 - 运行向导以创建对象、导入数据、设置计划和其他配置选项。
+4 - 运行向导以创建对象、导入数据、设置计划和其他配置选项。
 
 该向导会输出许多对象，这些对象将保存到搜索服务，可通过编程方式或其他工具访问它们。
 
@@ -42,15 +42,15 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 下面汇总了已知的限制：
 
-+ 向导不支持迭代或重用。 每次运行向导都会创建新的索引和索引器配置。 在向导中只能保存和重用数据源。 若要编辑或细化其他对象，必须使用 REST API 或 .NET SDK 来检索和修改结构。
++ 向导不支持迭代或重用。 每次运行向导都会创建新的索引、技能集和索引器配置。 在向导中只能保存和重用数据源。 若要编辑或细化其他对象，必须使用 REST API 或 .NET SDK 来检索和修改结构。
 
 + 源内容必须位于受支持的 Azure 数据源中。
 
 + 采样是针对一部分源数据执行的。 对于大型数据源，向导可能会遗漏字段。 如果采样不足，可能需要扩展架构或更正推断出的数据类型。
 
-<!-- + AI enrichment, as exposed in the portal, is limited to a few built-in skills.  -->
++ 门户中公开的 AI 扩充限制为几个内置技能。 
 
-<!-- + A [knowledge store](knowledge-store-concept-intro.md), which can be created by the wizard, is limited to a few default projections. If you want to save enriched documents created by the wizard, the blob container and tables come with default names and structure. -->
++ 可以通过向导创建的[知识存储](knowledge-store-concept-intro.md)限制为几个默认投影。 Blob 容器和表附带默认名称和结构，以方便你保存向导创建的扩充文档。
 
 <a name="data-source-inputs"></a>
 
@@ -80,7 +80,8 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 |--------|-------------|
 | [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 将连接信息（包括凭据）保存到源数据。 某个数据源对象专用于索引器。 | 
 | [索引](https://docs.microsoft.com/rest/api/searchservice/create-index) | 用于全文搜索和其他查询的物理数据结构。 | 
-| [索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | 一个配置对象，指定数据源、目标索引、可选计划，以及有关错误处理和 base-64 编码的可选配置设置。 |
+| [技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | 用于操作、转换和调整内容（包括分析和提取图像文件中的信息）的完整指令集。 它包括对提供扩充的认知服务资源的引用，但非常简单的和受限制的结构除外。 它还可能包含知识存储定义。  | 
+| [索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | 一个配置对象，指定数据源、目标索引、可选计划，以及有关错误处理和 base-64 编码的可选技能集、可选计划和可选配置设置。 |
 
 
 ## <a name="how-to-start-the-wizard"></a>如何启动向导

@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 02/11/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 90356e49c05d84e920b12ef6d5007397d5209c97
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+origin.date: 02/118/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: b15f02eb955bcf9a5da455d6fedeb50170e4ffc8
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77504187"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850174"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集和分析 Azure 认知搜索的日志数据
 
-诊断或操作日志提供 Azure 认知搜索的详细操作的见解，可用于监视服务和工作负荷流程。 在内部，日志会短时存在于后端，但足以进行调查和分析（如果你提交了支持票证）。 但是，如果想要自我掌控操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。 
+诊断或操作日志提供 Azure 认知搜索的详细操作的见解，可用于监视服务和工作负荷流程。 在内部，日志会短时存在于后端，但足以进行调查和分析（如果你提交了支持票证）。 但是，如果想要自我掌控操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。
 
 设置日志将有助于诊断和保留操作历史记录。 启用日志记录后，可以运行查询或生成报告进行有条理的分析。
 
@@ -26,22 +26,23 @@ ms.locfileid: "77504187"
 
 | 资源 | 用途 |
 |----------|----------|
-| [使用 Blob 存储进行存档](https://docs.azure.cn/storage/blobs/storage-blobs-overview) | 记录的事件和查询指标，基于下面的架构。 事件记录到 Blob 容器并存储在 JSON 文件中。 日志可以精确到小时/分钟，对于调查特定的事件非常有用，但不适合用于无目标性的调查。 使用 JSON 编辑器查看日志文件。|
-| [流式传输到事件中心](https://docs.azure.cn/event-hubs/) | 记录的事件和查询指标，基于本文中记录的架构。 对于很大的日志，请选择此项作为备用数据收集服务。 |
+| [发送到 Log Analytics 工作区](https://docs.azure.cn/azure-monitor/learn/tutorial-resource-logs) | 事件和指标将发送到 Log Analytics 工作区，可在门户中查询该工作区以返回详细信息。 有关介绍，请参阅 [Azure Monitor 日志入门](https://docs.azure.cn/azure-monitor/learn/tutorial-viewdata) |
+| [使用 Blob 存储进行存档](https://docs.azure.cn/storage/blobs/storage-blobs-overview) | 事件和指标将存档到 Blob 容器，并存储在 JSON 文件中。 日志可以精确到小时/分钟，对于调查特定的事件非常有用，但不适合用于无目标性的调查。 使用 JSON 编辑器查看原始日志文件，或使用 Power BI 来聚合与可视化日志数据。|
+| [流式传输到事件中心](https://docs.azure.cn/event-hubs/) | 事件和指标将流式传输到 Azure 事件中心服务。 对于很大的日志，请选择此项作为备用数据收集服务。 |
 
 Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可以在 Azure 订阅的生存期内免费试用它。 Application Insights 可以免费注册和使用，前提是应用程序数据大小不超出特定限制（有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/monitor/)）。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果使用 Log Analytics 或 Azure 存储，可以提前创建资源。
 
 + [创建 Log Analytics 工作区](https://docs.azure.cn/azure-monitor/learn/quick-create-workspace)
 
-+ 如果需要日志存档，请[创建存储帐户](https://docs.azure.cn/storage/common/storage-quickstart-create-account)。
++ [创建存储帐户](https://docs.azure.cn/storage/common/storage-quickstart-create-account)
 
-## <a name="create-a-log"></a>创建日志
+## <a name="enable-data-collection"></a>启用数据收集
 
-诊断设置定义数据收集。 某项设置可以指定收集方式和收集的内容。 
+诊断设置指定如何收集记录的事件和指标。
 
 1. 在“监视”下，选择“诊断设置”   。
 
@@ -49,26 +50,47 @@ Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可
 
 1. 选择“+ 添加诊断设置” 
 
-1. 选择要导出的数据：日志和/或指标。 可以收集存储帐户、Log Analytics 工作区中的数据，或将其流式传输到事件中心。
-
-   建议使用 Log Analytics，因为可以在门户中查询工作区。
-
-   如果还使用了 Blob 存储，则在导出日志数据时，会根据需要创建容器和 Blob。
+1. 选中“Log Analytics”，选择你的工作区，然后选择“OperationLogs”和“AllMetrics”。   
 
    ![配置数据收集](./media/search-monitor-usage/configure-storage.png "配置数据收集")
 
 1. 保存设置。
 
-1. 通过创建或删除对象（创建日志事件）以及通过提交查询（生成指标）进行测试。 
+1. 启用日志记录后，使用搜索服务开始生成日志和指标。 记录的事件和指标需在一段时间后才可供使用。
 
-在 Blob 存储中，仅当存在要记录或度量的活动时，才会创建容器。 将数据复制到存储帐户时，数据会被格式化为 JSON 并置于两个容器中：
+对于 Log Analytics，数据将在几分钟后可供使用，然后可以运行 Kusto 查询来返回数据。 有关详细信息，请参阅[监视查询请求](search-monitor-logs.md)。
 
-* insights-logs-operationlogs：用于搜索流量日志
-* insights-metrics-pt1m：用于指标
+对于 Blob 存储，容器将在一小时后出现在 Blob 存储中。 每个容器每小时会有一个 blob。 仅当存在要记录或度量的活动时，才会创建容器。 将数据复制到存储帐户时，数据会被格式化为 JSON 并置于两个容器中：
 
-**一个小时后，容器才会出现在 Blob 存储中。每个容器每小时会有一个 Blob。**
++ insights-logs-operationlogs：用于搜索流量日志
++ insights-metrics-pt1m：用于指标
 
-发生活动的每个小时都会存档日志。 以下路径是在 2020 年 1 月 12 日上午 9:00 创建的一个日志文件示例。 其中的每个 `/` 都是一个文件夹：`resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2020/m=01/d=12/h=09/m=00/name=PT1H.json`
+## <a name="query-log-information"></a>查询日志信息
+
+在诊断日志中，有两个表包含 Azure 认知搜索的日志和指标：**AzureDiagnostics** 和 **AzureMetrics**。
+
+1. 在“监视”下选择“日志”。  
+
+1. 在查询窗口中输入 **AzureMetrics**。 请运行此简单查询来熟悉此表中收集的数据。 滚动浏览整个表以查看指标和值。 请注意顶部的记录计数。如果服务已收集了一段时间的指标，你可以调整时间间隔以获取可管理的数据集。
+
+   ![AzureMetrics 表](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics 表")
+
+1. 输入以下查询以返回表格式结果集。
+
+   ```
+   AzureMetrics
+    | project MetricName, Total, Count, Maximum, Minimum, Average
+   ```
+
+1. 从 **AzureDiagnostics** 开始重复前面的步骤，以返回所有列供参考，然后运行一个更有选择性的查询来提取更有意义的信息。
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search" 
+   ```
+
+   ![AzureDiagnostics 表](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics 表")
 
 ## <a name="log-schema"></a>日志架构
 
@@ -123,7 +145,7 @@ Azure Monitor 日志和 Blob 存储均以免费服务的形式提供，让你可
 
 对于“受限制的搜索查询百分比”、最小值、最大值、平均值和总计，全都具有相同的值：在一分钟内的搜索查询总数中，已限制搜索查询百分比  。
 
-## <a name="view-log-files"></a>查看日志文件
+## <a name="view-raw-log-files"></a>查看原始日志文件
 
 Blob 存储用于存档日志文件。 可以使用任何 JSON 编辑器来查看日志文件。 如果没有编辑器，建议使用 [Visual Studio Code](https://code.visualstudio.com/download)。
 

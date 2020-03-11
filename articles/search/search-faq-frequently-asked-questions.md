@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: e6c8049afd0574308b6326f2f2c3cab25dd6fba1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: c949b3630d392dd9a52c024230ec118012d82bdd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335858"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850635"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure 认知搜索 - 常见问题解答 (FAQ)
 
@@ -32,7 +32,7 @@ Azure 认知搜索支持多个数据源、[针对多种语言的语言分析](ht
 
 + Azure 认知搜索是完全托管的云服务，提供充足冗余时（2 份副本用于读取访问，3 份副本用于读写访问），拥有 99.9% 的服务级别协议 (SLA)。
 + Microsoft 的[自然语言处理器](https://docs.microsoft.com/rest/api/searchservice/language-support)提供领先的语言分析。  
-+ [Azure 认知搜索索引器](search-indexer-overview.md)可以抓取各种初始 Azure 数据源。
++ [Azure 认知搜索索引器](search-indexer-overview.md)可为初始和增量索引抓取多种 Azure 数据源。
 + 如果需要对查询或索引卷的波动快速响应，可使用 Azure 门户中的[滑块控制](search-manage.md#scale-up-or-down)，或运行 [PowerShell 脚本](search-manage-powershell.md)直接绕过分片管理。  
 + [计分和优化功能](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)提供搜索引擎无法单独提供的影响搜索优先级评分的方法。
 
@@ -52,19 +52,19 @@ Azure 认知搜索支持多个数据源、[针对多种语言的语言分析](ht
 
 此外，随时可以使用 Azure 认知搜索 REST API [获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)。
 
-Azure 门户目前不提供内置的索引提取、快照或备份/还原功能。 但是，我们正在考虑在将来的版本中添加备份和还原功能。
+Azure 门户目前不提供内置的索引提取、快照或备份/还原功能。 但是，我们正在考虑在将来的版本中添加备份和还原功能。 若要表达你对此功能的支持，请在 [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) 中投票。
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>删除后能否还原索引或服务？
 
 不可以。如果删除 Azure 认知搜索索引或服务，将无法予以恢复。 删除 Azure 认知搜索服务会永久删除该服务中的所有索引。 如果删除包含一个或多个 Azure 认知搜索服务的 Azure 资源组，将永久删除所有服务。  
 
-重新创建索引、索引器、数据源等资源需要通过代码重新创建它们。 
+重新创建索引、索引器、数据源和技能集等资源需要通过代码重新创建它们。 
 
 若要重新创建索引，必须为外部源中的数据重新编制索引。 因此，建议在其他数据存储（如 Azure SQL 数据库或 Cosmos DB）保留原始数据的主控副本或备份。
 
 作为替代方法，可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码，将索引定义和索引快照备份到一系列 JSON 文件。 以后，可以根据需要使用工具和文件来还原索引。  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsazurecnsearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>能否从 SQL 数据库副本（适用于 [Azure SQL 数据库索引器](https://docs.azure.cn/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)）进行索引？
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>能否从 SQL 数据库副本（适用于 [Azure SQL 数据库索引器](https://docs.azure.cn/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)）进行索引？
 
 从头开始创建索引时，对使用主要或次要副本作为数据源没有任何限制。 然而，使用增量更新（基于已更改的记录）刷新索引时需要主要副本。 此需求来自于 SQL 数据库，它仅确保主要副本上的更改跟踪。 如果尝试为索引刷新工作负荷使用次要副本，则无法保证获得所有数据。
 
@@ -100,7 +100,9 @@ Azure 门户目前不提供内置的索引提取、快照或备份/还原功能�
 
 涉及到支持相同索引中的不同区域设置（语言）时，大多数客户会选择专用字段而非集合。 通过区域设置特定字段可分配适当的分析器。 例如，将 Microsoft 法语分析器分配给包含法语字符串的字段。 这样也简化了筛选过程。 如果已知在 fr-fr 页面上启动了一个查询，则可将搜索结果限制为该字段。 或者，创建一个[计分概要文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)以增加该字段的相关性。 Azure 认知搜索支持 [50 多种语言分析器](https://docs.azure.cn/search/search-language-support)，可从中进行选择。
 
-<!-- ## Next steps -->
+## <a name="next-steps"></a>后续步骤
+
+问题是否与缺少功能相关？ 请在 [User Voice 网站](https://feedback.azure.com/forums/263029-azure-search)上请求该功能。
 
 ## <a name="see-also"></a>另请参阅
 

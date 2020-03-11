@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 5829f66d5e1da71b5c663d686549abcb23290673
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: b7ede5af9521468d3e62e78be877517c872f1281
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501417"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850573"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 delimitedText 分析模式和 Blob 索引器为 CSV blob 编制索引
 
@@ -49,7 +49,7 @@ ms.locfileid: "77501417"
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> 目前，仅支持 UTF-8 编码。
+> 目前，仅支持 UTF-8 编码。 如果需要支持其他编码，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上为其投票。
 
 > [!IMPORTANT]
 > 当使用分隔文本分析模式时，Azure 认知搜索假定数据源中的所有 blob 都将是 CSV。 如果需要在同一数据源中支持混用 CSV 和非 CSV blob，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上为其投票。
@@ -61,7 +61,7 @@ ms.locfileid: "77501417"
 
 数据源： 
 
-    POST https://[service name].search.chinacloudapi.cn/datasources?api-version=2019-05-06-Preview
+    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -74,7 +74,7 @@ ms.locfileid: "77501417"
 
 索引器：
 
-    POST https://[service name].search.chinacloudapi.cn/indexers?api-version=2019-05-06-Preview
+    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -85,6 +85,6 @@ ms.locfileid: "77501417"
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-<!-- ## Help us make Azure Cognitive Search better -->
-<!-- If you have feature requests or ideas for improvements, provide your input on [UserVoice](https://feedback.azure.com/forums/263029-azure-search/). -->
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
+如果有功能请求或改进建议，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 上提供相关意见。
 

@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ee67d1865f7306616b763fdb98ea627d14271851
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 4d2d4adb1bc830dc93ef6cd0876a41b2bed7b4eb
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336490"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850244"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>了解 Azure 认知搜索中的 OData 集合筛选器
 
@@ -106,8 +106,8 @@ ms.locfileid: "75336490"
 
 简单而言，上述筛选器指出“匹配其中某间客房的 `Type` 等于‘豪华客房’，且**同一间客房** 的 `BaseRate` 小于 100 的文档”，而该搜索查询则与此不同，它指出“匹配其中的 `Rooms/Type` 包含字词‘豪华’且 `Rooms/Description` 包含短语‘市景’的文档”。 对于后面的查询，可关联哪些客房的字段没有概念。
 
-<!-- > [!NOTE] -->
-<!-- > If you would like to see support for correlated search added to Azure Cognitive Search, please vote for [this User Voice item](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections). -->
+> [!NOTE]
+> 如果你希望在 Azure 认知搜索中添加对关联搜索的支持，请为[此 User Voice 项](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)投票。
 
 ## <a name="inverted-indexes-and-collections"></a>倒排索引和集合
 

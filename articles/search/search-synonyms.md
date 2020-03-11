@@ -7,14 +7,14 @@ author: brjohnstmsft
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 8986f5a09140fc3f202c10f692e9300e7d63077c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/28/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: bf0b5ff8379eb844a63ac2f7d54a0d67ea761514
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336477"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850612"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
 
@@ -46,13 +46,13 @@ ms.locfileid: "75336477"
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>使用 POST 或 PUT 可在服务下添加或更新同义词映射。
 
-使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中可为每个同义词映射定义最多 5,000 条规则，在所有其他 SKU 中可定义最多 10,000 条规则。 每条规则可包含最多 20 个扩展。
+使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中可为每个同义词映射定义最多 5,000 条规则，在所有其他 SKU 中可为每个映射定义最多 20,000 条规则。 每条规则可包含最多 20 个扩展。
 
-同义词映射的格式必须为 Apache Solr，以下对此进行了解释。
+同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果现有的同义词字典具有不同格式，并且希望直接使用它，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上向我们反馈。
 
 如以下示例所示，可使用 HTTP POST 创建新的同义词映射：
 
-    POST https://[servicename].search.chinacloudapi.cn/synonymmaps?api-version=2019-05-06
+    POST https://[servicename].search.azure.cn/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -65,7 +65,7 @@ ms.locfileid: "75336477"
 
 此外，可使用 PUT 并在 URI 上指定同义词映射名称。 如果同义词映射不存在，则创建一个。
 
-    PUT https://[servicename].search.chinacloudapi.cn/synonymmaps/mysynonymmap?api-version=2019-05-06
+    PUT https://[servicename].search.azure.cn/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -91,24 +91,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>列出服务下的同义词映射。
 
-    GET https://[servicename].search.chinacloudapi.cn/synonymmaps?api-version=2019-05-06
+    GET https://[servicename].search.azure.cn/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>获取服务下的同义词映射。
 
-    GET https://[servicename].search.chinacloudapi.cn/synonymmaps/mysynonymmap?api-version=2019-05-06
+    GET https://[servicename].search.azure.cn/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>删除服务下的同义词映射。
 
-    DELETE https://[servicename].search.chinacloudapi.cn/synonymmaps/mysynonymmap?api-version=2019-05-06
+    DELETE https://[servicename].search.azure.cn/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>配置可搜索字段以在索引定义中使用同义词映射。
 
 新字段属性 **synonymMaps** 可用于指定同义词映射以供可搜索字段使用。 同义词映射是服务级资源，服务下的任意索引字段都可以引用。
 
-    POST https://[servicename].search.chinacloudapi.cn/indexes?api-version=2019-05-06
+    POST https://[servicename].search.azure.cn/indexes?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -143,7 +143,7 @@ Washington, Wash., WA => WA
 可为类型“Edm.String”或“Collection(Edm.String)”的可搜索字段指定 **synonymMaps**。
 
 > [!NOTE]
-> 每个字段仅可包含一个同义词映射。
+> 每个字段仅可包含一个同义词映射。 如果要使用多个同义词映射，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上告诉我们。
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>同义词功能对其他搜索功能的影响
 

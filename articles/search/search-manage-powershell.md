@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 origin.date: 02/11/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: b523883236acb45ed29a9ae2695422b903cf8739
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 01eed22e07c85b25fe464be517def274c7ac9411
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501450"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850511"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "77501450"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-可以在 Windows、Linux 上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search** 模块扩展了 Azure PowerShell，并且完全可与 [Azure 认知搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) 搭配使用。 使用 Azure PowerShell 和 **Az.Search** 可执行以下任务：
+可以在 Windows、Linux 上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search** 模块扩展了 [Azure PowerShell](https://docs.microsoft.com/powershell/)，完全可与[搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) 搭配使用，并可执行以下任务：
 
 > [!div class="checklist"]
 > * [列出订阅中的搜索服务](#list-search-services)
@@ -109,10 +109,10 @@ Get-AzResource -ResourceName <service-name>
 
 ```
 Name              : my-demo-searchapp
-ResourceGroupName : demo-chinaeast
+ResourceGroupName : demo-chinaeast2
 ResourceType      : Microsoft.Search/searchServices
-Location          : chinaeast
-ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-chinaeast/providers/Microsoft.Search/searchServices/my-demo-searchapp
+Location          : chinaeast2
+ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-chinaeast2/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="import-azsearch"></a>导入 Az.Search
@@ -147,7 +147,7 @@ Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
 Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 ```
 
-## <a name="get-search-service-information"></a>获取搜索服务信息
+## <a name="get-search-service-information"></a>获取搜索服务信息''''
 
 导入 **Az.Search** 之后，如果你知道哪个资源组包含你的搜索服务，请运行 [Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) 返回服务定义，包括名称、区域、层级、副本计数和分区计数。
 
@@ -159,14 +159,14 @@ Get-AzSearchService -ResourceGroupName <resource-group-name>
 
 ```
 Name              : my-demo-searchapp
-ResourceGroupName : demo-chinaeast
+ResourceGroupName : demo-chinaeast2
 ResourceType      : Microsoft.Search/searchServices
-Location          : China East
+Location          : China East 2
 Sku               : Standard
 ReplicaCount      : 1
 PartitionCount    : 1
 HostingMode       : Default
-ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/demo-chinaeast/providers/Microsoft.Search/searchServices/my-demo-searchapp
+ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/demo-chinaeast2/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="create-or-delete-a-service"></a>创建或删除服务
@@ -174,15 +174,15 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 [**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) 用于[创建新的搜索服务](search-create-service-portal.md)。
 
 ```powershell
-New-AzSearchService -ResourceGroupName "demo-chinaeast" -Name "my-demo-searchapp" -Sku "Standard" -Location "China East" -PartitionCount 3 -ReplicaCount 3
+New-AzSearchService -ResourceGroupName "demo-chinaeast2" -Name "my-demo-searchapp" -Sku "Standard" -Location "China East 2" -PartitionCount 3 -ReplicaCount 3
 ``` 
 结果应类似于以下输出。
 
 ```
-ResourceGroupName : demo-chinaeast
+ResourceGroupName : demo-chinaeast2
 Name              : my-demo-searchapp
-Id                : /subscriptions/<alphanumeric-subscription-ID>/demo-chinaeast/providers/Microsoft.Search/searchServices/my-demo-searchapp
-Location          : China East
+Id                : /subscriptions/<alphanumeric-subscription-ID>/demo-chinaeast2/providers/Microsoft.Search/searchServices/my-demo-searchapp
+Location          : China East 2
 Sku               : Standard
 ReplicaCount      : 3
 PartitionCount    : 3
@@ -239,14 +239,14 @@ Set-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-servi
 结果应类似于以下输出。
 
 ```
-ResourceGroupName : demo-chinaeast
+ResourceGroupName : demo-chinaeast2
 Name              : my-demo-searchapp
-Location          : China East
+Location          : China East 2
 Sku               : Standard
 ReplicaCount      : 6
 PartitionCount    : 6
 HostingMode       : Default
-Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-chinaeast/providers/Microsoft.Search/searchServices/my-demo-searchapp
+Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-chinaeast2/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="next-steps"></a>后续步骤

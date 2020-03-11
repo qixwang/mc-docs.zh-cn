@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: eab5b738e7e62b67b7880496192d342c3f16409f
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 2e74bd3a6620baf1bb38c366565e11733f8ecec4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501416"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850571"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 
 随着数据量的增长或处理需求的变化，你可能发现，简单或默认的索引编制策略不再实用。 在 Azure 认知搜索中，可通过多种方法来适应较大的数据集，包括构建数据上传请求、对计划和分布式工作负荷使用特定于源的索引器，等等。
 
-这些相同的技术也适用于长时间运行的进程。 具体而言，[并行索引编制](#parallel-indexing)中所述的步骤有助于完成计算密集型编制索引。
+这些相同的技术也适用于长时间运行的进程。 具体而言，[并行索引编制](#parallel-indexing)中所述的步骤有助于完成计算密集型编制索引，例如 [AI 扩充管道](cognitive-search-concept-intro.md)中的图像分析或自然语言处理。
 
 以下部分探讨的三种技术适用于对大量数据进行索引编制。
 
@@ -56,7 +56,7 @@ ms.locfileid: "77501416"
 
 根据设计，计划的索引按特定的间隔启动，作业通常会按下一个计划间隔在恢复之前完成。 但是，如果处理在该间隔内未完成，则索引器会停止（因为已超时）。 在下一个间隔，处理将上次中断的位置恢复，同时，系统会跟踪该位置。 
 
-实际上，对于跨越好几天的索引负载，可按 24 小时计划放置索引器。 在下一个 24 小时周期恢复索引编制时，该作业会从已知正常的文档重新开始。 这样，索引器便可以处理很多天的文档积压工作，直到处理完所有未处理的文档。 有关此方法的详细信息，请参阅[为 Azure Blob 存储中的大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 有关设置计划的一般详细信息，请参阅[创建索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) 或[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+实际上，对于跨越好几天的索引负载，可按 24 小时计划放置索引器。 在下一个 24 小时周期恢复索引编制时，该作业会从已知正常的文档重新开始。 这样，索引器便可以处理很多天的文档积压工作，直到处理完所有未处理的文档。 有关此方法的详细信息，请参阅[为 Azure Blob 存储中的大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 有关设置计划的一般详细信息，请参阅[创建索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) 或[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 <a name="parallel-indexing"></a>
 
@@ -68,10 +68,9 @@ ms.locfileid: "77501416"
 
 并行处理具有以下要素：
 
-<!-- + For cognitive search, reference the same [skillset](https://docs.microsoft.com/rest/api/searchservice/create-skillset) in each indexer definition. -->
-
 + 在多个容器之间分割源数据，或者分割同一容器中的多个虚拟文件夹。 
 + 将每个微型数据集映射到与其自身[索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)配对的自身[数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
++ 对于认知搜索，请在每个索引器定义中引用相同的[技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
 + 写入相同的目标搜索索引。 
 + 将所有索引器计划为在同一时间运行。
 
@@ -92,7 +91,7 @@ ms.locfileid: "77501416"
 
    + 假设某个服务包含六个副本。 配置六个索引器（每个索引器映射到包含 1/6 数据集的数据源），以便对整个数据集进行 6 向拆分。 
 
-   + 将每个索引器指向相同的索引。
+   + 将每个索引器指向相同的索引。 对于认知搜索工作负荷，请将每个索引器指向相同的技能集。
 
    + 在每个索引器定义中，计划相同的运行时执行模式。 例如，`"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` 在 2018-05-15 针对所有索引器创建计划，这些计划每隔八小时运行。
 

@@ -8,14 +8,14 @@ ms.author: v-tawe
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 9392a74403e2ec4fe0a8923108f3b2bf5f4d5b3b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/25/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 743bdf71aa8dba5e6147a4f7679f1c98f3aaa004
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336178"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850577"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -27,13 +27,13 @@ ms.locfileid: "75336178"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-创建一个 Java 控制台应用程序，用于通过 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 和 [Azure 认知搜索 REST API](/rest/api/searchservice/) 创建、加载及查询 Azure 认知搜索索引。本文提供有关创建该应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)。
+创建一个 Java 控制台应用程序，用于通过 [IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 和 [Azure 认知搜索 REST API](https://docs.microsoft.com/azure/rest/api/searchservice/) 创建、加载及查询搜索索引。本文提供有关创建该应用程序的分步说明。 此外，还可以[下载并运行完整的应用程序](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/)。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-使用以下软件和服务构建并测试此示例：
+我们使用了以下软件和服务来构建和测试本快速入门：
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
@@ -47,7 +47,7 @@ ms.locfileid: "75336178"
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.chinacloudapi.cn`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.azure.cn`。
 
 2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
@@ -57,7 +57,7 @@ ms.locfileid: "75336178"
 
 发送到服务的每个请求都需要一个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 首先打开 IntelliJ IDEA 并设置一个新项目。
 
@@ -148,7 +148,7 @@ ms.locfileid: "75336178"
 
 1. 在“项目”窗口中，展开源树以访问 `src` >  `main` >`resources` > `app` 文件夹，并添加 `config.properties` 文件。  为此，请选择 `app` 文件夹，按 Alt + Insert，选择“文件”，然后输入文件名。 
 
-1. 将以下设置复制到新文件中，并将 `<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>` 和 `<YOUR-QUERY-KEY>` 替换为自己的服务名称和密钥。 如果服务终结点是 `https://mydemo.search.chinacloudapi.cn`，则服务名称为“mydemo”。
+1. 将以下设置复制到新文件中，并将 `<YOUR-SEARCH-SERVICE-NAME>`、`<YOUR-ADMIN-KEY>` 和 `<YOUR-QUERY-KEY>` 替换为自己的服务名称和密钥。 如果服务终结点是 `https://mydemo.search.azure.cn`，则服务名称为“mydemo”。
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -193,7 +193,6 @@ ms.locfileid: "75336178"
                         config.getProperty("ApiVersion"),
                         config.getProperty("IndexName")
                 );
-    
     
     //Uncomment the next 3 lines in the 1 - Create Index section of the quickstart
     //            if(client.indexExists()){ client.deleteIndex();}
@@ -521,7 +520,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
     public boolean indexExists() throws IOException, InterruptedException {
         logMessage("\n Checking if index exists...");
         var uri = buildURI(strFormatter -> strFormatter.format(
-                "https://%s.search.chinacloudapi.cn/indexes/%s/docs?api-version=%s&search=*",
+                "https://%s.search.azure.cn/indexes/%s/docs?api-version=%s&search=*",
                 _serviceName,_indexName,_apiVersion));
         var request = httpRequest(uri, _adminKey, "HEAD", "");
         var response = sendRequest(request);
@@ -531,7 +530,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
     public boolean deleteIndex() throws IOException, InterruptedException {
         logMessage("\n Deleting index...");
         var uri = buildURI(strFormatter -> strFormatter.format(
-                "https://%s.search.chinacloudapi.cn/indexes/%s?api-version=%s",
+                "https://%s.search.azure.cn/indexes/%s?api-version=%s",
                 _serviceName,_indexName,_apiVersion));
         var request = httpRequest(uri, _adminKey, "DELETE", "*");
         var response = sendRequest(request);
@@ -543,7 +542,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
         logMessage("\n Creating index...");
         //Build the search service URL
         var uri = buildURI(strFormatter -> strFormatter.format(
-                "https://%s.search.chinacloudapi.cn/indexes/%s?api-version=%s",
+                "https://%s.search.azure.cn/indexes/%s?api-version=%s",
                 _serviceName,_indexName,_apiVersion));
         //Read in index definition file
         var inputStream = SearchServiceClient.class.getResourceAsStream(indexDefinitionFile);
@@ -619,7 +618,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
           "@search.action": "upload",
           "HotelId": "3",
           "HotelName": "Triple Landscape Hotel",
-          "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+          "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
           "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
           "Category": "Resort and Spa",
           "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -664,7 +663,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
         logMessage("\n Uploading documents...");
         //Build the search service URL
         var endpoint = buildURI(strFormatter -> strFormatter.format(
-                "https://%s.search.chinacloudapi.cn/indexes/%s/docs/index?api-version=%s",
+                "https://%s.search.azure.cn/indexes/%s/docs/index?api-version=%s",
                 _serviceName,_indexName,_apiVersion));
         //Read in the data to index
         var inputStream = SearchServiceClient.class.getResourceAsStream(documentsFile);
@@ -697,7 +696,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
 1. 将以下代码添加到 `SearchServiceClient` 类。 此代码生成 Azure 认知搜索 REST 服务 URL，用于搜索已编制索引的数据并输出搜索结果。
 
-    使用 `SearchOptions` 类和 `createSearchOptions` 方法可以指定一部分可用的 Azure 认知搜索 REST API 查询选项。 有关 REST API 查询选项的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](/rest/api/searchservice/search-documents)。
+    使用 `SearchOptions` 类和 `createSearchOptions` 方法可以指定一部分可用的 Azure 认知搜索 REST API 查询选项。 有关 REST API 查询选项的详细信息，请参阅[搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/azure/rest/api/searchservice/search-documents)。
 
     `SearchPlus` 方法创建搜索查询 URL、发出搜索请求，然后将结果输出到控制台。 
 
@@ -740,7 +739,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
         try {
             String optionsString = createOptionsString(options);
             var uri = buildURI(strFormatter -> strFormatter.format(
-                    "https://%s.search.chinacloudapi.cn/indexes/%s/docs?api-version=%s&search=%s%s",
+                    "https://%s.search.azure.cn/indexes/%s/docs?api-version=%s&search=%s%s",
                     _serviceName, _indexName, _apiVersion, queryString, optionsString));
             var request = httpRequest(uri, _queryKey, "GET", null);
             var response = sendRequest(request);
@@ -831,4 +830,4 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 在此 Java 快速入门中，你已完成一系列任务：创建索引、使用文档加载索引，以及运行查询。 如果你熟悉基本概念，则建议参阅下文，其中列出了 REST 中的索引器操作。
 
 > [!div class="nextstepaction"]
-> [索引器操作](/rest/api/searchservice/indexer-operations)
+> [索引器操作](https://docs.microsoft.com/azure/rest/api/searchservice/indexer-operations)

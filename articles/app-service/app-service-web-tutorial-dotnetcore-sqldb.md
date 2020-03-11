@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中运行 .NET Core 应用，同�
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 08/06/2019
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 7e02b1a1f8f36803089be1fb17cc3d1c9e3e3979
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: d48f0088308276415d82fa9c26c55b2041217eef
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600506"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934718"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "75600506"
 你将学习如何：
 
 > [!div class="checklist"]
-> * 在 Azure 中创建 SQL 数据库。
+> * 在 Azure 中创建 SQL 数据库
 > * 将 .NET Core 应用连接到 SQL 数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用
@@ -48,14 +48,14 @@ ms.locfileid: "75600506"
 
 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行以下命令来克隆示例存储库，并更改为其根。
+运行以下命令来克隆示例存储库，并转到其根目录。
 
 ```bash
 git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
 cd dotnetcore-sqldb-tutorial
 ```
 
-此示例项目包含使用[Entity Framework Core](https://docs.microsoft.com/ef/core/)的基本 CRUD（创建-读取-更新-删除）应用。
+此示例项目包含使用 [Entity Framework Core](https://docs.microsoft.com/ef/core/) 的基本 CRUD（创建-读取-更新-删除）应用。
 
 ### <a name="run-the-application"></a>运行应用程序
 
@@ -67,7 +67,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000` 。 选择“新建”  链接，创建几个待办事项  。
+在浏览器中导航到 `http://localhost:5000`。 选择“新建”链接，创建多个待办事项。  
 
 ![已成功连接到 SQL 数据库](./media/app-service-web-tutorial-dotnetcore-sqldb/local-app-in-browser.png)
 
@@ -76,7 +76,7 @@ dotnet run
 
 ## <a name="create-production-sql-database"></a>创建生产环境 SQL 数据库
 
-此步骤在 Azure 中创建一个 SQL 数据库。 应用部署到 Azure 后，它将使用该云数据库。
+此步骤在 Azure 中创建一个 SQL 数据库。 将应用部署到 Azure 后，它会使用此云数据库。
 
 对于 SQL 数据库，本教程使用 [Azure SQL 数据库](/sql-database/)。
 
@@ -88,7 +88,7 @@ dotnet run
 
 在 Azure CLI 中，使用 [`az sql server create`](/cli/sql/server?view=azure-cli-latest#az_sql_server_create) 命令创建 SQL 数据库逻辑服务器。
 
-将 \<server_name> 占位符替换为唯一的 SQL 数据库名称  。 此名称用作 SQL 数据库终结点 `<server_name>.database.chinacloudapi.cn` 的一部分，因此必须在 Azure 的所有逻辑服务器中具有唯一性。 它只能包含小写字母、数字及连字符(-)，长度必须为 3 到 50 个字符。 此外，将 \<db_username> 和 \<db_password> 分别替换为所选用户名和密码   。 
+将 \<server_name> 占位符替换为唯一的 SQL 数据库名称  。 此名称用作 SQL 数据库终结点 `<server_name>.database.chinacloudapi.cn` 的一部分，因此必须在 Azure 的所有逻辑服务器中具有唯一性。 此名称只能包含小写字母、数字以及连字符 (-)，同时长度必须为 3 到 50 个字符。 此外，将 \<db_username> 和 \<db_password> 分别替换为所选用户名和密码   。 
 
 
 ```azurecli
@@ -175,7 +175,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ### <a name="configure-environment-variable"></a>配置环境变量
 
-接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为_生产_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
+接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为“Production”。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
 以下示例在 Azure 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app_name> 占位符  。
 
@@ -254,9 +254,9 @@ To https://<app_name>.scm.chinacloudsite.cn/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
-使用 Web 浏览器浏览到已部署的应用。
+使用 Web 浏览器转到已部署的应用。
 
 ```bash
 http://<app_name>.chinacloudsite.cn
@@ -282,7 +282,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>本地运行 Code First 迁移
 
-运行以下命令更新本地数据库。
+运行几个命令来更新本地数据库。
 
 ```bash
 dotnet ef migrations add AddProperty
@@ -348,7 +348,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查**Done**。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查''Done''  。 然后，它应作为已完成项在主页中显示。 请记住，`Edit`视图不显示`Done`字段，因为没有更改`Edit`视图。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
@@ -358,7 +358,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-`git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“完成”  。
+`git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“Done”  。
 
 ![Code First 迁移后的 Azure 应用](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
@@ -370,7 +370,7 @@ git push azure master
 
 示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)中的指南，并且进行了两个配置更改：
 
-- 在 *DotNetCoreSqlDb.csproj* 中包括了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
+- 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
 - 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
 若要将应用服务中的 ASP.NET Core [日志级别](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Azure CLI 中使用 [`az webapp log config`](/cli/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
@@ -414,10 +414,10 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 <a name="next"></a>
 ## <a name="next-steps"></a>后续步骤
 
-你已了解：
+现已了解：
 
 > [!div class="checklist"]
-> * 在 Azure 中创建 SQL 数据库。
+> * 在 Azure 中创建 SQL 数据库
 > * 将 .NET Core 应用连接到 SQL 数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用

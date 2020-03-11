@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 089b48d568a5704bf3d57832ccbf0c1855c17e55
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 63f1cede6add9e3148f1c1085f99d90fae433820
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336153"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850113"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加自定义分析器
 
@@ -149,7 +149,7 @@ ms.locfileid: "75336153"
 
 **请求**
 ```
-  POST https://[search service name].search.chinacloudapi.cn/indexes/[index name]/analyze?api-version=[api-version]
+  POST https://[search service name].search.azure.cn/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
     api-key: [admin key]
 
@@ -195,7 +195,7 @@ ms.locfileid: "75336153"
 定义分析器、tokenizer、标记筛选器或字符筛选器后，便无法修改它。 仅当 `allowIndexDowntime` 标志在索引更新请求中设置为 true 时，才可向现有索引添加新的上述内容：
 
 ```
-PUT https://[search service name].search.chinacloudapi.cn/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
+PUT https://[search service name].search.azure.cn/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
 此操作将使索引离线至少几秒钟，从而导致索引和查询请求失败。 索引的性能和写入可用性可能会在更新索引后的几分钟内处于受损状态，对于非常大的索引，持续时间更长，但这些影响只是暂时的，最终将自行解除。

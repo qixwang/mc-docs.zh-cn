@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/15/2020
 ms.date: 03/02/2020
-ms.openlocfilehash: b7c1092fc4e07cb7fb13cc9fce273a9359d034c6
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: f114f8d2306feabab82705d26aea5bdefd0ceb43
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501343"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850509"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
 
 本文介绍服务（资源）级别以及工作负荷级别（查询和索引）的监视，并推荐用于监视用户访问的框架。
 
-在不同的领域，你会结合使用内置基础结构和 Azure Monitor 等基础服务，以及可返回统计信息、计数和状态的服务 API。 了解功能的范围有助于配置或创建有效的通信系统，来主动应对出现的问题。
+在不同的领域，你会结合使用内置基础结构和 Azure Monitor 等基础服务，以及可返回统计信息、计数和状态的服务 API。 了解功能的范围有助于构建反馈循环，以便可以解决出现的问题。
 
 ## <a name="use-azure-monitor"></a>使用 Azure Monitor
 
@@ -53,9 +53,9 @@ ms.locfileid: "77501343"
 
 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
 
-目前不提供存储相关的警报；存储消耗量不会聚合或记录到 **AzureMetrics** 中。 需要构建自定义的解决方案来获取资源相关的通知。
+目前不提供存储相关的警报；存储消耗量不会聚合或记录到 Azure Monitor 的 **AzureMetrics** 表中。 需要[生成一个自定义解决方案](https://docs.azure.cn/azure-monitor/insights/solutions-creating)用于发出资源相关的通知，代码可在其中检查存储大小并处理响应。 有关存储指标的详细信息，请参阅[获取服务统计信息](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)。
 
-在门户中，“使用情况”选项卡相对于服务层级施加的当前[限制](search-limits-quotas-capacity.md)显示资源可用性。  
+门户中的“使用情况”选项卡相对于服务层级施加的当前[限制](search-limits-quotas-capacity.md)显示资源可用性让你直观地进行监视。  
 
 下图描述免费服务的情况，该服务的上限是每个类型 3 个对象，最大存储为 50 MB。 “基本”或“标准”服务的限制更高，在增加分区计数的情况下，最大存储会按比例增大。
 
@@ -64,7 +64,7 @@ ms.locfileid: "77501343"
 
 ## <a name="monitor-workloads"></a>监视工作负荷
 
-记录的事件包括与索引编制和查询相关的事件。 Log Analytics 中的“Azure 诊断”表收集与查询和索引编制相关的操作数据。 
+记录的事件包括与索引编制和查询相关的事件。 Log Analytics 中的 **AzureDiagnostics** 表收集与查询和索引编制相关的操作数据。
 
 记录的大部分数据是只读操作的数据。 对于不在日志中捕获的其他创建-更新-删除操作，可以在搜索服务中查询系统信息。
 
@@ -109,16 +109,16 @@ AzureDiagnostics
 
 Azure 认知搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标、索引和索引器信息，以及文档计数。
 
-+ [获取服务统计信息](/rest/api/searchservice/get-service-statistics)
-+ [获取索引统计信息](/rest/api/searchservice/get-index-statistics)
-+ [获取文档计数](/rest/api/searchservice/count-documents)
-+ [获取索引器状态](/rest/api/searchservice/get-indexer-status)
++ [获取服务统计信息](https://docs.microsoft.com/azure/rest/api/searchservice/get-service-statistics)
++ [获取索引统计信息](https://docs.microsoft.com/azure/rest/api/searchservice/get-index-statistics)
++ [获取文档计数](https://docs.microsoft.com/azure/rest/api/searchservice/count-documents)
++ [获取索引器状态](https://docs.microsoft.com/azure/rest/api/searchservice/get-indexer-status)
 
 ## <a name="monitor-user-access"></a>监视用户的访问
 
-由于搜索索引是较大客户端应用程序的一个组件，因此，没有任何内置的基于用户的方法可以控制对索引的访问。 对于管理请求或查询请求，假设请求来自客户端应用程序。 管理读写操作包括在整个服务中创建、更新和删除对象。 只读操作是针对文档集合运行的查询，范围限定为单个索引。 
+由于搜索索引是较大客户端应用程序的一个组件，因此，没有任何内置方法可用于控制或监视每个用户对索引的访问。 对于管理请求或查询请求，假设请求来自客户端应用程序。 管理读写操作包括在整个服务中创建、更新和删除对象。 只读操作是针对文档集合运行的查询，范围限定为单个索引。 
 
-因此，日志中显示的内容是对使用管理密钥或查询密钥的调用的引用。 相应的密钥包含在源自客户端代码的请求中。 服务中未配备用于处理标识令牌或模拟的功能。
+因此，活动日志中显示的内容是对使用管理密钥或查询密钥的调用的引用。 相应的密钥包含在源自客户端代码的请求中。 服务中未配备用于处理标识令牌或模拟的功能。
 
 确实存在按用户授权的业务要求时，建议与 Azure Active Directory 集成。 可以使用 $filter 和用户标识来[修整](search-security-trimming-for-azure-search-with-aad.md)用户不应看到的文档的搜索结果。 
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: afbf20e569991c0409021d68344e4f5032d54f0b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: d4e57b1c2457d044ca18d2dd7f1d3085942e8141
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335450"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850186"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>升级到 Azure 搜索 .NET SDK 版本 9
 
@@ -38,8 +38,7 @@ Azure 搜索 .NET SDK 的版本 9 包含了许多针对早期版本进行的更�
 ## <a name="whats-new-in-version-9"></a>版本 9 中的新增功能
 Azure 搜索 .NET SDK 的版本 9 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2019-05-06。 这使得可在 .NET 应用程序中使用 Azure 搜索的新功能，如下所示：
 
-<!-- * [AI enrichment](cognitive-search-concept-intro.md) is the ability to extract text from images, blobs, and other unstructured data sources - enriching the content to make it more searchable in an Azure Search index. -->
-
+* [AI 扩充](cognitive-search-concept-intro.md)是从图像、Blob 和其他非结构化数据源中提取文本的功能 - 扩充内容以使其在 Azure 搜索索引中更易于搜索。
 * 使用[复杂类型](search-howto-complex-data-types.md)支持几乎可为 Azure 搜索索引中的任何嵌套式 JSON 结构建模。
 * [自动完成](search-autocomplete-tutorial.md)可以取代**建议** API 来实现“一边键入，一边搜索”的行为。 “自动完成”是指“完成”用户当前键入的单词或短语。
 * [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。

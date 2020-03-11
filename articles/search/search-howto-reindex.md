@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/14/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 82382e87e212639074bf289de046d3a5b89a492f
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: c9c27119117491e61c7716e23a7e1bbe3d6b4005
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501410"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850569"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中重新生成索引
 
@@ -34,7 +34,7 @@ ms.locfileid: "77501410"
 | 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配  分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
 | 更新或删除索引中的分析器定义 | 无法删除或更改索引中的现有分析器配置（分析器、tokenizer、令牌筛选器或字符筛选器），除非重新生成整个索引。 |
 | 将字段添加到建议器 | 如果某个字段已存在，并且希望将其添加到[建议器](index-add-suggesters.md)构造，则必须重新生成索引。 |
-| 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成无法实现时，可以修改应用程序代码来禁止访问“已删除”字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
+| 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成不可行时，可以修改应用程序代码以禁用对“已删除的”字段的访问，或使用 [$select 查询参数](search-query-odata-select.md)选择要在结果集中显示的字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
 | 切换层 | 如果需要更多容量，则无法在 Azure 门户中就地升级。 必须创建新服务，必须在新服务中从头开始生成索引。 若要自动完成此过程，可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码。 此应用会将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建索引。|
 
 ## <a name="update-conditions"></a>更新条件
@@ -53,9 +53,11 @@ ms.locfileid: "77501410"
 
 ## <a name="how-to-rebuild-an-index"></a>如何重新生成索引
 
-在开发过程中，索引架构会频繁更改。 可以通过以下方式对索引架构进行规划：使用小型的具有代表性的数据集创建可以快速删除、重新创建和重新加载的索引。 
+在开发过程中，索引架构会频繁更改。 可以通过以下方式对索引架构进行规划：使用小型的具有代表性的数据集创建可以快速删除、重新创建和重新加载的索引。
 
 对于已投入生产的应用程序，建议创建一个与现有索引并排运行的新索引，以避免查询时停机。 应用程序代码提供到新索引的重定向。
+
+索引编制不会在后台运行，服务将会根据正在进行的查询平衡额外的索引编制。 在编制索引期间，可以在门户中[监视查询请求](search-monitor-queries.md)，以确保查询及时完成。
 
 1. 确定是否需要重新生成。 如果只是添加字段或更改与字段无关的索引部分，则可以只[更新定义](https://docs.microsoft.com/rest/api/searchservice/update-index)，而无需删除、重新创建并完全重新加载它。
 
@@ -79,6 +81,10 @@ ms.locfileid: "77501410"
 ## <a name="check-for-updates"></a>检查更新
 
 在加载第一个文档时就可以开始查询索引。 如果你知道文档的 ID，那么[查找文档 REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 将返回特定的文档。 对于更大型的测试，应该等待索引完全加载，然后使用查询来验证你想看到的上下文。
+
+可以使用[搜索资源管理器](search-explorer.md)或 [Postman](search-get-started-postman.md) 之类的 Web 测试工具来检查更新的内容。
+
+如果添加或重命名了字段，请使用 [$select](search-query-odata-select.md) 返回该字段：`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>另请参阅
 

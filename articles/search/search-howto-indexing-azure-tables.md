@@ -9,13 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: b47de4ad1862a0d8ce49443f556439072880998d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 2ea1d15c395f77a52fb85553047b4d1d3a84ad47
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336527"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850572"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索从 Azure 表存储索引表
 
@@ -50,7 +50,7 @@ ms.locfileid: "75336527"
 
 若要创建数据源，请执行以下操作：
 
-    POST https://[service name].search.chinacloudapi.cn/datasources?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -82,7 +82,7 @@ ms.locfileid: "75336527"
 
 若要创建索引，请执行以下操作：
 
-    POST https://[service name].search.chinacloudapi.cn/indexes?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -101,7 +101,7 @@ ms.locfileid: "75336527"
 
 创建索引和数据源后，可以创建索引器：
 
-    POST https://[service name].search.chinacloudapi.cn/indexers?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -131,10 +131,24 @@ ms.locfileid: "75336527"
 >
 >
 
-<!-- ## Incremental indexing and deletion detection -->
+## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
+当将表索引器设置为按计划运行时，它仅对由行的 `Timestamp` 值确定的新行或更新行重新编制索引。 无需指定更改检测策略。 系统会自动启用增量索引。
+
+若要指示必须从索引中删除某些文档，可使用软删除策略。 不删除行，而是添加一个属性来指示删除行，并对数据源设置软删除检测策略。 例如，如果某行具有值为 `"true"` 的属性 `IsDeleted`，以下策略会将该行视为已删除：
+
+    PUT https://[service name].search.azure.cn/datasources?api-version=2019-05-06
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+        "name" : "my-table-datasource",
+        "type" : "azuretable",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "table name", "query" : "<query>" },
+        "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
+    }   
 
 <a name="Performance"></a>
-
 ## <a name="performance-considerations"></a>性能注意事项
 
 默认情况下，Azure 认知搜索使用以下查询筛选器：`Timestamp >= HighWaterMarkValue`。 由于 Azure 表在 `Timestamp` 字段上没有辅助索引，因此该类型的查询需要执行全表扫描，导致大型表查询速度慢。
@@ -153,5 +167,5 @@ ms.locfileid: "75336527"
     - 借助此方法，如果需要触发完整的索引重编制，除了重置索引器外还需要重置数据源查询。 
 
 
-<!-- ## Help us make Azure Cognitive Search better -->
-<!-- If you have feature requests or ideas for improvements, submit them on our [UserVoice site](https://feedback.azure.com/forums/263029-azure-search/). -->
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
+如果有功能请求或改进建议，请在我们的 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)上提交。
