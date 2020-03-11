@@ -8,7 +8,7 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/10/2019
-ms.date: 01/17/2020
+ms.date: 03/16/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ac8f70ac6c1b807f2655fa05a2380b703b4cbc04
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 8795ccf63acf47b6220a59d9f0118405103a17d6
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123159"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850249"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
@@ -45,7 +45,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
  
 + Lucene 的英语分析器扩展了标准分析器。 它从字词中删除所有格（尾部的 's）、根据 Porter 词干分解算法应用词干分解，并删除英语非索引字。  
 
-+ Microsoft 的英语分析器执行词形还原，而不是词干分解。 这意味着它可以更好地处理曲折和不规则字词形式，从而产生相关度更高的搜索结果。 
++ Microsoft 的英语分析器执行词形还原，而不是词干分解。 这意味着它可以更好地处理发生了词尾变化的字词形式以及不规则的字词形式，从而产生相关度更高的搜索结果 
 
 ## <a name="configuring-analyzers"></a>配置分析器
 

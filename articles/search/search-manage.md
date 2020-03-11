@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 22512199ede8365585a1b9db797b0e1652e30ee8
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 8730c16cf53946c164eb5b79ce25dc31934e576a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501451"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850636"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Azure 认知搜索服务不会通过门户或程序设计界面公开单个服�
 
 如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，可在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，确保索引跨所有服务完全冗余。
 
-使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
+使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果从同样异地冗余的数据源进行索引，请注意 Azure 认知搜索索引器只能从主要副本执行增量索引（从新的、已修改的或已删除的文档合并更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
 
 如果不使用索引器，也可使用应用程序代码将对象和数据并行推送到其他搜索服务。 有关详细信息，请参阅 [Azure 认知搜索中的性能和优化](search-performance-optimization.md)。
 

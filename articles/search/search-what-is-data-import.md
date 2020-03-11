@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 395f72025f79c20f74b7e949e45f962a56c95311
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: e3db9dc5eb419f30449cc1dd9128c8e19edb7a76
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335029"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850250"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述 - Azure 认知搜索
 
@@ -51,9 +51,9 @@ ms.locfileid: "75335029"
 
 | @search.action | 说明 | 每个文档必需的字段 | 注释 |
 | -------------- | ----------- | ---------------------------------- | ----- |
-| `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在 .NET SDK 中，这包括 `DataType.Collection(DataType.String)` 类型的字段。 在 REST API 中，这包括 `Collection(Edm.String)` 类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
-| `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
+| `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |键，以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
+| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |键，以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在 .NET SDK 中，这包括 `DataType.Collection(DataType.String)` 类型的字段。 在 REST API 中，这包括 `Collection(Edm.String)` 类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |键，以及要定义的任何其他字段 |- |
 | `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
 
 ## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
@@ -65,7 +65,7 @@ ms.locfileid: "75335029"
 
 POST 和 GET 都需要在请求 URL 中提供*服务名称*、*索引名称*和正确的 *API 版本*（发布本文档时的 API 版本为 `2019-05-06`）。 GET 的 URL 末尾为*查询字符串*，用于提供查询参数。 有关 URL 格式，请参见以下内容：
 
-    https://[service name].search.chinacloudapi.cn/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+    https://[service name].search.azure.cn/indexes/[index name]/docs?[query string]&api-version=2019-05-06
 
 POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
@@ -83,13 +83,13 @@ POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
 ### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>如何将数据拉取至 Azure 认知搜索索引
 
-索引器功能已在 [Azure 门户](search-import-data-portal.md)、[REST API](/rest/api/searchservice/Indexer-operations) 和 [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) 中公开。 
+索引器功能已在 [Azure 门户](search-import-data-portal.md)、[REST API](https://docs.microsoft.com/azure/rest/api/searchservice/Indexer-operations) 和 [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) 中公开。 
 
 使用门户的一个优势在于，Azure 认知搜索通常可以通过读取源数据集的元数据来生成默认的索引架构。 在处理生成的索引之前可对其进行修改，此后，只能编辑不需要重建索引的架构。 如果想要进行的更改会直接影响架构，则需要重建索引。 
 
 ## <a name="verify-data-import-with-search-explorer"></a>使用搜索浏览器验证数据导入
 
-针对文档上传执行初步检查的捷径之一是在门户中使用**搜索浏览器**。 使用资源管理器可以直接查询索引，而无需编写任何代码。 搜索体验取决于默认设置，例如[简单语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](/rest/api/searchservice/search-documents)。 结果以 JSON 格式返回，方便用户检查整个文档。
+针对文档上传执行初步检查的捷径之一是在门户中使用**搜索浏览器**。 使用资源管理器可以直接查询索引，而无需编写任何代码。 搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/azure/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](https://docs.microsoft.com/azure/rest/api/searchservice/search-documents)。 结果以 JSON 格式返回，方便用户检查整个文档。
 
 > [!TIP]
 > 有大量的 [Azure 认知搜索代码示例](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)包含了嵌入的或随时可用的数据集，帮助用户轻松入门。 门户中还提供了一个示例索引器，以及一个由小型房地产数据集组成的数据源（名为“realestate-us-sample”）。 针对示例数据源运行预配置的索引器时，会创建索引并连同文档一起加载该索引，然后，可以使用搜索浏览器或编写的代码查询该索引。

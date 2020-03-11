@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 6bcfa3e78ac1ee66b4e298c7a75bdff6129c0fee
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 73d96843dbbbeb01c9d3f8d4137d271f8caa226f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335859"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850245"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
 
@@ -37,7 +37,7 @@ ms.locfileid: "75335859"
 
 -   请参阅并测试 [Azure 认知搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
--   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
+- 从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
 ## <a name="get-started"></a>入门
 如果不熟悉搜索开发，对分面导航定义的最佳理解是它显示了自定向搜索的可能性。 它是一种基于预定义筛选的深化搜索体验，用于通过点击操作快速缩小搜索结果范围。 
@@ -244,7 +244,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>提示和最佳做法
+## <a name="tips-and-best-practices"></a>提示和最佳实践
 
 ### <a name="indexing-tips"></a>索引编制提示
 **如果不使用搜索框，请提高索引效率**
@@ -397,6 +397,8 @@ Azure 认知搜索作业门户演示包含本文中参考的示例。
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>了解详细信息
+
+<!-- Watch [Azure Cognitive Search Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). At 45:25, there is a demo on how to implement facets. -->
 
 有关分面导航设计准则的更多见解，建议查看以下链接：
 

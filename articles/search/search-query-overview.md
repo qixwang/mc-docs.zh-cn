@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 2740196edd121bf668dffc0a67bac3c60dce2650
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 2a21a1ee3ad619a6b85adb4284ccd3ebdfb325da
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336493"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850248"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的查询类型和组成部分
 
@@ -69,7 +69,7 @@ ms.locfileid: "75336493"
 
 查询请求上的必需元素包括以下内容：
 
-+ 以 URL 表示的、包含固定和用户定义组件的服务终结点与索引文档集合： **`https://<your-service-name>.search.chinacloudapi.cn/indexes/<your-index-name>/docs`**
++ 以 URL 表示的、包含固定和用户定义组件的服务终结点与索引文档集合： **`https://<your-service-name>.search.azure.cn/indexes/<your-index-name>/docs`**
 + 之所以需要 **`api-version`** （仅适用于 REST），是因为始终有多个可用的 API 版本。 
 + **`api-key`** ：查询或管理 API 密钥，用于对服务请求进行身份验证。
 + **`queryType`** ：简单或完整类型，如果想使用内置的默认简单语法，则可以省略此元素。

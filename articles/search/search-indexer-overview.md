@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 47b127574c18a0943f6794f1aa435bedb9d4656b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 35bfc8bdef5b7da3c4ce3b33482f218fd9cb57bb
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336519"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850565"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -78,7 +78,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 虽然通常会对索引操作进行计划，但也可使用 [Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)按需调用索引器：
 
-    POST https://[service name].search.chinacloudapi.cn/indexers/[indexer name]/run?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexers/[indexer name]/run?api-version=2019-05-06
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -93,7 +93,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 可以通过[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
 
-    GET https://[service name].search.chinacloudapi.cn/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.azure.cn/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
 响应包含总体索引器状态、最后一次（或正在进行的）索引器调用以及最近索引器调用的历史记录。

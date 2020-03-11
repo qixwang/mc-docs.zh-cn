@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: e7cfd7212090cb925ef95e5045bbbde2f140deb1
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 93a7325613f876c1084f226b7e9366b4db090f6d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501413"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850247"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何通过 .NET 应用程序使用 Azure 认知搜索
 
@@ -37,9 +37,9 @@ SDK 中的其他 NuGet 程序包有：
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
-<!-- If you would like to provide feedback for a future update of the SDK, see our [feedback page](https://feedback.azure.com/forums/263029-azure-search/) or create an issue on [GitHub](https://github.com/azure/azure-sdk-for-net/issues) and mention "Azure Cognitive Search" in the issue title. -->
+如果想要为 SDK 的未来更新提供反馈，请参阅我们的[反馈页](https://feedback.azure.com/forums/263029-azure-search/)，或者在 [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 上创建问题并在问题标题中提到“Azure 认知搜索”。
 
-.NET SDK 支持版本 `2019-05-06` 的 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 为 Azure Blob 编制索引时，此版本支持[复杂类型](search-howto-complex-data-types.md)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)。 
+.NET SDK 支持版本 `2019-05-06` 的 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
 
 此 SDK 不支持[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 认知搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
 
@@ -110,6 +110,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
     string adminApiKey = configuration["SearchServiceAdminApiKey"];
 
     SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+    serviceClient.SearchDnsSuffix = "search.azure.cn";
     return serviceClient;
 }
 ```
@@ -164,6 +165,7 @@ private static SearchIndexClient CreateSearchIndexClient(string indexName, IConf
     string queryApiKey = configuration["SearchServiceQueryApiKey"];
 
     SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, indexName, new SearchCredentials(queryApiKey));
+    indexClient.SearchDnsSuffix = "search.azure.cn";
     return indexClient;
 }
 ```
@@ -463,7 +465,7 @@ public partial class Hotel
 > 
 > 
 
-第二个要注意的问题是，每个属性使用 `IsFilterable`、`IsSearchable`、`Key` 和 `Analyzer` 等属性进行修饰。 这些属性直接映射到 [Azure 认知搜索索引中的相应字段属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。 `FieldBuilder` 类使用这些属性来构造索引的字段定义。
+第二个要注意的问题是，每个属性使用 `IsFilterable`、`IsSearchable`、`Key` 和 `Analyzer` 等属性进行修饰。 这些属性直接映射到 [Azure 认知搜索索引中的相应字段属性](https://docs.microsoft.com/rest/api/searchservice/create-index)。 `FieldBuilder` 类使用这些属性来构造索引的字段定义。
 
 有关 `Hotel` 类的第三个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `Edm.String` 类型的 `category` 字段。 `bool?` 和 `Edm.Boolean`、 `DateTimeOffset?`和 `Edm.DateTimeOffset` 等之间存在类似的类型映射。 [Azure 认知搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。 `FieldBuilder` 类会处理此映射，但你最好还是了解此映射，以便在需要排查任何序列化问题时可以下手。
 

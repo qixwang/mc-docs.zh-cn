@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: a6315736110ad399113b5d58b89a2c0eb10e1f34
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 366dfcde779f46048ec560e2353e139ee5066cfd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501425"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850567"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "77501425"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://portal.azure.cn/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
@@ -64,14 +64,14 @@ ms.locfileid: "77501425"
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>步骤 2 - 跳过“充实内容”页面
 
-<!-- The wizard supports the creation of an [AI enrichment pipeline](cognitive-search-concept-intro.md) for incorporating the Cognitive Services AI algorithms into indexing.  -->
+该向导支持创建 [AI 扩充管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
 
 我们将暂时跳过此步骤，转到“自定义目标索引”。 
 
    ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
 
-<!-- > [!TIP] -->
-<!-- > You can step through an AI-indexing example in a [quickstart](cognitive-search-quickstart-blob.md) or [tutorial](cognitive-search-tutorial-blob.md). -->
+> [!TIP]
+> 可以在[快速入门](cognitive-search-quickstart-blob.md)或[教程](cognitive-search-tutorial-blob.md)中逐步执行 AI 索引示例。
 
 ### <a name="step-3---configure-index"></a>步骤 3 - 配置索引
 
