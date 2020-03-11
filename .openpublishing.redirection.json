@@ -22644,6 +22644,16 @@
       "source_path": "articles/cognitive-services/Speech-Service/speech-devices-sdk-windows-quickstart.md",
       "redirect_url": "/cognitive-services/speech-service/speech-devices-sdk-quickstart?pivots=platform-windows",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/active-directory/authentication/howto-sspr-writeback.md",
+      "redirect_url": "/active-directory/authentication/tutorial-enable-sspr-writeback",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/active-directory/authentication/quickstart-sspr.md",
+      "redirect_url": "/active-directory/authentication/tutorial-enable-sspr",
+      "redirect_document_id": false
     }
 
   ]
