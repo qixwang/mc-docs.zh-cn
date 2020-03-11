@@ -21,7 +21,7 @@ Azure Service Fabric 是一种分布式系统平台，可借助它轻松打包�
 
 ## <a name="compliance"></a>合规性
 
-Azure Service Fabric 资源提供程序在所有 Azure 区域中都可用，并符合 Azure 所具有的所有合规性证书；这包括以下内容：SOC、ISO、PCI DSS、HIPAA 和 GDPR。 请查看以下内容以获取合规性证书的完整列表：[合规性产品](https://www.trustcenter.cn/compliance/default.html)
+Azure Service Fabric 资源提供程序在所有 Azure 区域中都可用，并符合 Azure 所具有的所有合规性证书；这包括以下内容：SOC、ISO、PCI DSS、HIPAA 和 GDPR。 要获取合规性证书的完整列表，请查看：[合规性产品](https://www.trustcenter.cn/compliance/default.html)。
 
 <!--MOONCAKE: CORRECT on https://www.trustcenter.cn/compliance/default.html-->
 
@@ -81,7 +81,7 @@ Service Fabric 与 [Azure Pipelines](https://www.visualstudio.com/team-services/
 * 几秒内就可以高密度部署应用程序，即每台计算机部署数百或数千个应用程序或容器。
 * 同时部署同一应用程序的不同版本，并单独升级每个应用程序。
 * 无需停机，即可管理应用程序生命周期，包括重大升级和非重大升级。
-* 缩放群集中的节点数。 缩放节点数的同时，应用程序也会随之自动缩放。
+* 横向扩展或横向缩减群集中的节点数。 缩放节点数的同时，应用程序也会随之自动缩放。
 * 监视并诊断应用程序的运行状况，并设置策略以执行自动修复。
 * 观察资源均衡器如何跨群集安排应用程序的重新分发。 Service Fabric 可从故障中恢复，并基于可用资源优化负载分布。
 

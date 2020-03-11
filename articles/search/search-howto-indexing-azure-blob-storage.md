@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9f6d554b0e44d7b39e54539cc5eeef87581ad0e5
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 04bae96cf80bb691b9b025207d22c46a488da2ae
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501412"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850580"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
 
@@ -54,7 +54,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 创建数据源：
 
-    POST https://[service name].search.chinacloudapi.cn/datasources?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -86,7 +86,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 下面介绍了如何使用可搜索 `content` 字段创建索引，以存储从 Blob 中提取的文本：   
 
-    POST https://[service name].search.chinacloudapi.cn/indexes?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -105,7 +105,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 创建索引和数据源后，就可以准备创建索引器了：
 
-    POST https://[service name].search.chinacloudapi.cn/indexers?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -147,7 +147,7 @@ Blob 索引器可从以下文档格式提取文本：
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 Blob 的时间戳。 Azure 认知搜索使用此时间戳来识别已更改的 Blob，避免在初次编制索引之后再次为所有内容编制索引。
   * **metadata\_storage\_size** (Edm.Int64) - Blob 大小，以字节为单位。
   * **metadata\_storage\_content\_md5** (Edm.String) - Blob 内容的 MD5 哈希（如果有）。
-  * **metadata\_storage\_sas\_token** (Edm.String) - 一个临时 SAS 令牌。 不应存储此令牌供以后使用，因为它可能会过期。
+  * **metadata\_storage\_sas\_token** (Edm.String) - 一个临时 SAS 令牌，可由[自定义技能](cognitive-search-custom-skill-interface.md)用来获取对 Blob 的访问权限。 不应存储此令牌供以后使用，因为它可能会过期。
 
 * 特定于每种文档格式的元数据属性将提取到[此处](#ContentSpecificMetadata)所列的字段。
 
@@ -182,7 +182,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 要将所有元素合并在一起，可按如下所示添加字段映射，并为现有索引器的键启用 base-64 编码：
 
-    PUT https://[service name].search.chinacloudapi.cn/indexers/blob-indexer?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/blob-indexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -208,7 +208,7 @@ Blob 索引器可从以下文档格式提取文本：
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>只为具有特定文件扩展名的 Blob 编制索引
 使用 `indexedFileNameExtensions` 索引器配置参数可以做到只为具有指定扩展名的 Blob 编制索引。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，如果只要为 .PDF 和 .DOCX Blob 编制索引，请执行以下操作：
 
-    PUT https://[service name].search.chinacloudapi.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -220,7 +220,7 @@ Blob 索引器可从以下文档格式提取文本：
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>排除具有特定文件扩展名的 Blob
 使用 `excludedFileNameExtensions` 配置参数可在编制索引时排除具有特定文件扩展名的 Blob。 值是包含文件扩展名（包括前置句点）逗号分隔列表的字符串。 例如，若要为所有 Blob 编制索引，但要排除具有 .PNG 和 .JPEG 扩展名的 Blob，请执行以下操作：
 
-    PUT https://[service name].search.chinacloudapi.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -242,7 +242,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 例如，如果只要为存储元数据编制索引，请使用：
 
-    PUT https://[service name].search.chinacloudapi.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -265,7 +265,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 当然，可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，可能需要在未事先了解所有可能的内容类型的情况下，为 Blob 编制索引。 要在遇到了不受支持的内容类型时继续编制索引，可将 `failOnUnsupportedContentType` 配置参数设置为 `false`：
 
-    PUT https://[service name].search.chinacloudapi.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -289,7 +289,35 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
     }
 
-<!-- ## Incremental indexing and deletion detection -->
+## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
+将 Blob 索引器设置为按计划运行时，它将只根据 Blob 的 `LastModified` 时间戳，为更改的 Blob 重新编制索引。
+
+> [!NOTE]
+> 无需指定更改检测策略 - 增量索引会自动启用。
+
+若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。 应该改用以下步骤：  
+
+1. 将一个自定义元数据属性添加到 Blob，以告知 Azure 认知搜索该 Blob 已采用逻辑方式删除
+2. 在数据源上配置软删除检测策略
+3. 索引器处理 Blob 后（如索引器状态 API 所示），可以使用物理方式删除该 Blob
+
+例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
+
+    PUT https://[service name].search.azure.cn/datasources/blob-datasource?api-version=2019-05-06
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
+            "softDeleteColumnName" : "IsDeleted",
+            "softDeleteMarkerValue" : "true"
+        }
+    }   
 
 ## <a name="indexing-large-datasets"></a>为大型数据集编制索引
 
@@ -322,7 +350,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 如果所有 blob 都包含采用同一编码的纯文本，则可以通过使用**文本分析模式**显著提高索引编制性能。 若要使用文本分析模式，请将 `parsingMode` 配置属性设置为 `text`：
 
-    PUT https://[service name].search.chinacloudapi.cn/indexers/[indexer name]?api-version=2019-05-06
+    PUT https://[service name].search.azure.cn/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -372,5 +400,5 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 | 纯文本 (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | 提取文本|
 
 
-<!-- ## Help us make Azure Cognitive Search better -->
-<!-- If you have feature requests or ideas for improvements, let us know on our [UserVoice site](https://feedback.azure.com/forums/263029-azure-search/). -->
+## <a name="help-us-make-azure-cognitive-search-better"></a>帮助我们改善 Azure 认知搜索
+如果想要请求新功能或者在改进方面有什么看法，敬请通过 [UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search/)告诉我们。
