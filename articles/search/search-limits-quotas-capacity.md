@@ -8,13 +8,13 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 5f2b6ce810ba11539780e403d7bae17838ac57f4
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: 5534e9b157736ea5529f74fb9676f853649f0043
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501440"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934803"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -112,19 +112,23 @@ ms.locfileid: "77501440"
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | 最大索引器数 |3 |5 或 15|50 |200 |200 |不适用 |10 个 |10 个 |
 | 最大数据源数 |3 |5 或 15 |50 |200 |200 |不适用 |10 个 |10 个 |
+| 最大技能集数<sup>4</sup> |3 |5 或 15 |50 |200 |200 |不适用 |10 个 |10 个 |
 | 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不适用 |无限制 |无限制 |
 | 最小计划 | 5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 |5 分钟 | 5 分钟 |
 | 最长运行时间 <sup>5</sup> | 1-3 分钟 |24 小时 |24 小时 |24 小时 |24 小时 |不适用  |24 小时 |24 小时 |
+| 认知搜索技能集的最长运行时间或具有图像分析的 blob 索引 <sup>5</sup> | 3-10 分钟 |2 小时 |2 小时 |2 小时 |2 小时 |不适用  |2 小时 |2 小时 |
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |256 |256 |
 | Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4&nbsp;百万 |8&nbsp;百万 |1600 万&nbsp; |不适用 |4&nbsp;百万 |4&nbsp;百万 |
 
-<sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。
+<sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。 对于调用认知服务的 AI 索引，免费服务的限制是每天 20 个免费事务，而根据定义，一个事务是指一个成功通过扩充管道的文档。
 
-<sup>2</sup> 在 2017 年 12 月之前创建的基本服务的索引器和数据源的数目限制较低（为 5 而不是 15）。
+<sup>2</sup> 在 2017 年 12 月之前创建的基本服务的索引器、数据源和技能集的数目限制较低（为 5 而不是 15）。
 
 <sup>3</sup> S3 HD 服务未包括索引器支持。
 
-<sup>4</sup> 认知搜索工作负荷和 Azure Blob 索引中的 图像分析的运行时间比常规文本索引运行时间短。 图像分析和自然语言处理属于计算密集型，并且消耗了过多的可用处理能力。 减少运行时间，以便队列中的其他作业能够运行。  
+<sup>4</sup> 每个技能集最多拥有 30 项技能。
+
+<sup>5</sup> 认知搜索工作负载和 Azure blob 索引中的 图像分析的运行时间比常规文本索引运行时间短。 图像分析和自然语言处理属于计算密集型，并且消耗了过多的可用处理能力。 减少运行时间，以便队列中的其他作业能够运行。  
 
 > [!NOTE]
 > 如[索引限制](#index-limits)中所述，从支持复杂类型 (`2019-05-06`) 的最新 API 正式版开始，索引器还针对每个文档的所有复杂集合强制实施 3000 个元素的上限。 这意味着，如果你使用 API 旧版本创建了索引器，则不需要遵守此限制。 为了保持最高兼容性，使用 API 旧版本创建，然后使用 API 版本 `2019-05-06` 或更高版本更新的索引器，仍会从这些限制中**排除**。 客户应注意使用极大复杂集合所造成的负面影响（如前所述）；我们强烈建议使用最新 API 正式版创建任何新索引器。
@@ -146,9 +150,9 @@ ms.locfileid: "77501440"
 
 与“标准”层相比，“存储优化”层预计会有较低的查询吞吐量，较高的延迟。  估计会体验到的查询性能的方法与“标准”层相同。
 
-<!-- ## Data limits (AI enrichment) -->
+## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 
-<!-- An [AI enrichment pipeline](cognitive-search-concept-intro.md) that makes calls to a Text Analytics resource for [entity recognition](cognitive-search-skill-entity-recognition.md), [key phrase extraction](cognitive-search-skill-keyphrases.md), [sentiment analysis](cognitive-search-skill-sentiment.md), and [language detection](cognitive-search-skill-language-detection.md) is subject to data limits. The maximum size of a record should be 50,000 characters as measured by [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). If you need to break up your data before sending it to the sentiment analyzer, use the [Text Split skill](cognitive-search-skill-textsplit.md). -->
+调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)的 [AI 扩充管道](cognitive-search-concept-intro.md)会受到数据限制。 记录的最大大小应为 50,000 个字符，通过 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) 进行测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>限制
 

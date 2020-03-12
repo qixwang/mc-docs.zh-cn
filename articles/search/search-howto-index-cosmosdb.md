@@ -9,19 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/02/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: e3f726b3b7005e26b4c6d3ce699e65091ff67488
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.date: 03/16/2020
+ms.openlocfilehash: d2c9b718f162e10919cf04fc52b67b7209494b15
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501415"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934872"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 
 > [!IMPORTANT] 
 > SQL API 已推出正式版。
-> MongoDB API、Gremlin API 和 Cassandra API 支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+> MongoDB API、Gremlin API 和 Cassandra API 支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
+> 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 > [!WARNING]
 > Azure 认知搜索仅支持将[索引策略](https://docs.azure.cn/cosmos-db/index-policy)设为[一致](https://docs.azure.cn/cosmos-db/index-policy#indexing-mode)的 Cosmos DB 集合。 不建议使用延迟索引策略为集合编制索引，这可能会导致数据丢失。 不支持禁用索引的集合。
@@ -32,16 +33,16 @@ ms.locfileid: "77501415"
 
 Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问的 [Azure Cosmos DB 项](https://docs.azure.cn/cosmos-db/databases-containers-items#azure-cosmos-items)。
 
-+ 对于 [SQL API](https://docs.azure.cn/cosmos-db/sql-api-query-reference)（已推出正式版），可以使用[门户](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)。
++ 对于 [SQL API](https://docs.azure.cn/cosmos-db/sql-api-query-reference)（已推出正式版），可以使用[门户](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) 创建数据源和索引器。
 
-+ 对于 [MongoDB API（预览版）](https://docs.azure.cn/cosmos-db/mongodb-introduction)和 [Gremlin API（预览版）](https://docs.azure.cn/cosmos-db/graph-introduction)，可以使用 [门户](#cosmos-indexer-portal)或者在[创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 调用中使用 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 来创建索引器。
++ 对于 [MongoDB API（预览版）](https://docs.azure.cn/cosmos-db/mongodb-introduction)，可以使用[门户](#cosmos-indexer-portal)或 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 创建数据源和索引器。
 
-+ 对于 [Cassandra API（预览版）](https://docs.azure.cn/cosmos-db/cassandra-introduction)，只能在[创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 调用中使用 [REST API 版本 2019-05-06-Preview](search-api-preview.md)。
++ 对于 [Cassandra API（预览版）](https://docs.azure.cn/cosmos-db/cassandra-introduction)和 [Gremlin API（预览版）](https://docs.azure.cn/cosmos-db/graph-introduction)，只能使用 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 创建数据源和索引器。
 
 
-<!-- > [!Note] -->
-<!-- > You can cast a vote on User Voice for the [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab) if you'd like to see it supported in Azure Cognitive Search. -->
-<!-- > -->
+> [!Note]
+> 如果你希望 Azure 认知搜索支持[表 API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)，请在 User Voice 中为它投票。
+>
 
 <a name="cosmos-indexer-portal"></a>
 
@@ -155,7 +156,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 若要创建数据源，请构建 POST 请求：
 
-    POST https://[service name].search.chinacloudapi.cn/datasources?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -222,9 +223,9 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 ### <a name="3---create-a-target-search-index"></a>3 - 创建目标搜索索引 
 
-[创建目标 Azure 认知搜索索引](/rest/api/searchservice/create-index)（如果没有）。 以下示例创建带有 ID 和说明字段的索引：
+[创建目标 Azure 认知搜索索引](https://docs.microsoft.com/azure/rest/api/searchservice/create-index)（如果没有）。 以下示例创建带有 ID 和说明字段的索引：
 
-    POST https://[service name].search.chinacloudapi.cn/indexes?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -268,7 +269,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 创建索引和数据源后，就可以准备创建索引器了：
 
-    POST https://[service name].search.chinacloudapi.cn/indexers?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -341,7 +342,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 下面的示例创建具有软删除策略的数据源：
 
-    POST https://[service name].search.chinacloudapi.cn/datasources?api-version=2019-05-06
+    POST https://[service name].search.azure.cn/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -367,5 +368,5 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 祝贺！ 你已了解如何使用索引器将 Azure Cosmos DB 与 Azure 认知搜索集成。
 
-* 若要详细了解 Azure Cosmos DB，请参阅 [Azure Cosmos DB 服务页](https://www.azure.cn/home/features/cosmos-db/)。
-* 若要详细了解 Azure 认知搜索，请参阅[搜索服务页](https://www.azure.cn/home/features/search/)。
+* 若要详细了解 Azure Cosmos DB，请参阅 [Azure Cosmos DB 服务页](https://azure.microsoft.com/services//cosmos-db/)。
+* 若要详细了解 Azure 认知搜索，请参阅[搜索服务页](https://azure.microsoft.com/services//search/)。

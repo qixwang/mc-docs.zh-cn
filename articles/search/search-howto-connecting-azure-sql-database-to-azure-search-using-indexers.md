@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 9fb4fd1e176e54b6ccfc822b351380e521ace9c6
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 256eff7bbfc3ca4b1d0ed332d0395aedf515f5d8
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501420"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934830"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接 Azure SQL 数据库并为其内容编制索引
 
@@ -23,7 +23,7 @@ ms.locfileid: "77501420"
 
 本文不但介绍了使用[索引器](search-indexer-overview.md)的机制，而且还介绍了仅适用于 Azure SQL 数据库的功能（如集成的更改跟踪）。 
 
-除了 Azure SQL 数据库之外，Azure 认知搜索还针对 [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)提供了索引器。
+除了 Azure SQL 数据库之外，Azure 认知搜索还针对 [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)提供了索引器。 若要请求对其他数据源的支持，请在 [Azure 认知搜索反馈论坛](https://feedback.azure.com/forums/263029-azure-search/)上提供反馈。
 
 ## <a name="indexers-and-data-sources"></a>索引器和数据源
 
@@ -50,21 +50,20 @@ ms.locfileid: "77501420"
 
 | 条件 | 详细信息 |
 |----------|---------|
-| 数据来自单个表或视图 | 如果数据分散在多个表中，可以创建数据的单一视图。 但是，如果使用视图，则无法使用 SQL Server 集成的更改检测来使用增量更改刷新索引。 |
+| 数据来自单个表或视图 | 如果数据分散在多个表中，可以创建数据的单一视图。 但是，如果使用视图，则无法使用 SQL Server 集成的更改检测来使用增量更改刷新索引。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
 | 数据类型是兼容的 | Azure 认知搜索索引中支持大多数但并非全部 SQL 类型。 有关列表，请参阅[映射数据类型](#TypeMapping)。 |
 | 不需要进行实时数据同步 | 索引器最多每五分钟可以为表重新编制索引。 如果数据频繁更改并且所做更改需要在数秒或数分钟内反映在索引中，建议使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) 或 [.NET SDK](search-import-data-dotnet.md) 来直接推送更新的行。 |
+| 可以进行增量索引编制 | 如果具有大型数据集并打算按计划运行索引器，则 Azure 认知搜索必须能够有效地标识新的、更改的或删除的行。 只有按需（而非按计划）编制索引时或者为少于 100,000 行的数据编制索引时，才允许非增量索引编制。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
 
-<!-- | Incremental indexing is possible | If you have a large data set and plan to run the indexer on a schedule, Azure Cognitive Search must be able to efficiently identify new, changed, or deleted rows. Non-incremental indexing is only allowed if you're indexing on demand (not on schedule), or indexing fewer than 100,000 rows. For more information, see [Capturing Changed and Deleted Rows](#CaptureChangedRows) below. | -->
-
-<!-- > [!NOTE]  -->
-<!-- > Azure Cognitive Search supports SQL Server authentication only. If you require support for Azure Active Directory Password authentication, please vote for this [UserVoice suggestion](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica). -->
+> [!NOTE] 
+> Azure 认知搜索仅支持 SQL Server 身份验证。 如果需要支持 Azure Active Directory 密码身份验证，请为此 [UserVoice 建议](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)投票。
 
 ## <a name="create-an-azure-sql-indexer"></a>创建 Azure SQL 索引器
 
 1. 创建数据源：
 
    ```
-    POST https://myservice.search.chinacloudapi.cn/datasources?api-version=2019-05-06
+    POST https://myservice.search.azure.cn/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -83,7 +82,7 @@ ms.locfileid: "77501420"
 3. 通过为索引器命名并引用数据源和目标索引创建索引器：
 
     ```
-    POST https://myservice.search.chinacloudapi.cn/indexers?api-version=2019-05-06
+    POST https://myservice.search.azure.cn/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -96,7 +95,7 @@ ms.locfileid: "77501420"
 
 通过此方式创建的索引器不包含计划。 它会在创建后自动运行一次。 可使用**运行索引器**请求随时再次运行：
 
-    POST https://myservice.search.chinacloudapi.cn/indexers/myindexer/run?api-version=2019-05-06
+    POST https://myservice.search.azure.cn/indexers/myindexer/run?api-version=2019-05-06
     api-key: admin-key
 
 可自定义索引器行为的几个方面，例如批大小和可在索引器执行失败前跳过的文档数。 有关详细信息，请参阅[创建索引器 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
@@ -105,13 +104,13 @@ ms.locfileid: "77501420"
 
 若要监视索引器状态和执行历史记录（已编制索引的项目数、失败数等），请使用**索引器状态**请求：
 
-    GET https://myservice.search.chinacloudapi.cn/indexers/myindexer/status?api-version=2019-05-06
+    GET https://myservice.search.azure.cn/indexers/myindexer/status?api-version=2019-05-06
     api-key: admin-key
 
 响应应类似于以下形式：
 
     {
-        "\@odata.context":"https://myservice.search.chinacloudapi.cn/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
+        "\@odata.context":"https://myservice.search.azure.cn/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
         "lastResult": {
             "status":"success",
@@ -148,7 +147,7 @@ ms.locfileid: "77501420"
 ## <a name="run-indexers-on-a-schedule"></a>按计划运行索引器
 还可以排列索引器，以按计划定期运行。 若要执行此操作，在创建或更新索引器时添加**计划**属性。 下面的示例显示了用于更新索引器的 PUT 请求：
 
-    PUT https://myservice.search.chinacloudapi.cn/indexers/myindexer?api-version=2019-05-06
+    PUT https://myservice.search.azure.cn/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -162,11 +161,11 @@ ms.locfileid: "77501420"
 
 若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
-<!-- <a name="CaptureChangedRows"></a> -->
+<a name="CaptureChangedRows"></a>
 
-<!-- ## Capture new, changed, and deleted rows -->
+## <a name="capture-new-changed-and-deleted-rows"></a>捕获新的、更改的和删除的行
 
-<!-- Azure Cognitive Search uses **incremental indexing** to avoid having to reindex the entire table or view every time an indexer runs. Azure Cognitive Search provides two change detection policies to support incremental indexing.  -->
+Azure 认知搜索使用  “增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 认知搜索提供了两个更改检测策略来支持增量索引编制。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
 如果 SQL 数据库支持[更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 认知搜索标识删除的行，无需向表中添加显式“软删除”列。
@@ -322,13 +321,13 @@ SQL 索引器公开多个配置设置：
 
 **问：运行索引器是否会影响我的查询工作负荷？**
 
-是的。 索引器在搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑[纵向扩展搜索服务](search-capacity-planning.md)。
+是的。 索引器在搜索服务中的某一个节点上运行，该节点的资源是在编制索引与为查询流量和其他 API 请求提供服务之间共享的。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑[纵向扩展搜索服务](search-capacity-planning.md)。
 
 **问：是否可以将[故障转移群集](https://docs.azure.cn/sql-database/sql-database-geo-replication-overview)中的次要副本用作数据源？**
 
 视情况而定。 对于表或视图的完整索引编制，可以使用辅助副本。 
 
-<!-- For incremental indexing, Azure Cognitive Search supports two change detection policies: SQL integrated change tracking and High Water Mark. -->
+对于增量索引编制，Azure 认知搜索支持两个更改检测策略：SQL 集成的更改跟踪策略和高使用标记策略。
 
 在只读副本上，SQL 数据库不支持集成的更改跟踪。 因此，必须使用高使用标记策略。 
 
@@ -342,6 +341,6 @@ SQL 索引器公开多个配置设置：
 
 不建议这样做。 只有 **rowversion** 能够实现可靠的数据同步。 不过，取决于你的应用程序逻辑，如果满足以下条件，则可能也很可靠：
 
-+ 你可以确保当索引器运行时在编制索引的表上没有未完成的事务（例如，所有表更新都按计划作为批处理进行，并且 Azure 认知搜索索引器计划设置为避免与表更新计划重叠）。  
++ 你可以确保当索引器运行时在编制索引的表上没有未完成的事务（例如，所有表更新都按计划成批进行，并且 Azure 认知搜索索引器计划设置为避免与表更新计划重叠）。  
 
 + 你定期执行完整重新索引来补充任何缺少的行。 
