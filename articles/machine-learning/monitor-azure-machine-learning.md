@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: d7136147efe27c905c069dd10790cda458a06e51
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 42eea36cb29e00aa352ad8cd2e287a52bf51a409
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599437"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850633"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -25,16 +26,16 @@ ms.locfileid: "75599437"
 >
 > * [启动、监视和取消训练运行](how-to-manage-runs.md)
 > * [记录训练运行的指标](how-to-track-experiments.md)
-> * [使用 MLflow 对试验进行跟踪](service/how-to-use-mlflow.md)
+> * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
 > * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
 Azure 机器学习使用 Azure Monitor 来记录监视数据，这是 Azure 中的一个完整堆栈监视服务。 Azure Monitor 提供了一组用于监视 Azure 资源的完整功能。 它还可以监视其他云和本地的资源。
 
-请先阅读文章 [Azure Monitor 概述](/azure-monitor/overview)，对监视功能有一个大致了解。 以下各节内容在上述信息的基础上编写，详细介绍了如何配合使用 Azure Monitor 与 Azure 机器学习。
+请先阅读文章 [Azure Monitor 概述](/azure-monitor/overview)，对监视功能有一个大致了解。 以下各节内容在此信息的基础上编写，详细介绍了如何将 Azure Monitor 与 Azure 机器学习配合使用。
 
-若想了解与 Azure Monitor 相关的成本，请参阅[使用情况和估计成本](/azure-monitor/platform/usage-estimated-costs)。 若要了解数据在 Azure Monitor 中显示需要花多长时间，请参阅](/azure-monitor/platform/data-ingestion-time)日志数据引入时间[。
+若想了解与 Azure Monitor 相关的成本，请参阅[使用情况和估计成本](/azure-monitor/platform/usage-estimated-costs)。 若要了解数据在 Azure Monitor 中显示需要花多长时间，请参阅 [日志数据引入时间](/azure-monitor/platform/data-ingestion-time)。
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Azure 机器学习的监视数据
 

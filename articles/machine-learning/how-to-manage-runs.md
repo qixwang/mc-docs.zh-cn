@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: roastala
+ms.author: v-yiso
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 9952b84761ab74d15b20766c49d156bce2191b46
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: ba8ea24a9ed87615bcb312b747a7c5c7a731a8e5
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598170"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850214"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,9 +102,19 @@ notebook_run.log(name="message", value="Hello from run!")
     >
     > 如果你的某个 Python 脚本以编程方式创建运行配置对象，则你可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) 将此对象另存为 runconfig 文件。
     >
-    > 有关更多示例 runconfig 文件，请参阅 ](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)[https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml 。
+    > 有关更多示例 runconfig 文件，请参阅 [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)。
 
     有关详细信息，请参阅 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
+
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
+
+若要开始在设计器（预览版）中提交管道运行，请执行以下步骤：
+
+1. 为管道设置默认计算目标。
+
+1. 在管道画布顶部选择“运行”  。
+
+1. 选择用于为管道运行分组的试验。
 
 ## <a name="monitor-the-status-of-a-run"></a>监视运行的状态
 
@@ -160,6 +171,22 @@ print(notebook_run.get_status())
 
     有关详细信息，请参阅 [az ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)。
 
+
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
+
+在工作室中查看试验的活动运行数。
+
+1. 导航到“试验”  部分。 
+
+1. 选择一个试验。
+
+    在试验页中，可以看到活动计算目标数以及每个运行的持续时间。 
+
+1. 选择特定的运行编号。
+
+1. 在“日志”  选项卡中，可以找到管道运行的诊断日志和错误日志。
+
+
 ## <a name="cancel-or-fail-runs"></a>取消运行或使其失败
 
 如果发现错误，或者完成运行花费的时间太长，可以取消该运行。
@@ -194,6 +221,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 有关详细信息，请参阅 [az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)。
+
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
+
+若要在工作室中取消某个运行，请执行以下步骤：
+
+1. 转到“试验”  或“管道”  部分中正在运行的管道。 
+
+1. 选择要取消的管道运行编号。
+
+1. 在工具栏中，选择“取消” 
+
 
 ## <a name="create-child-runs"></a>创建子运行
 
@@ -331,6 +369,11 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/query-azure-cli?view=azure-cli-latest)。
+### <a name="using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室
+
+1. 导航到“管道”  部分。
+
+1. 使用搜索栏按标记、说明、试验名称和提交者姓名筛选管道。
 
 ## <a name="example-notebooks"></a>示例笔记本
 
