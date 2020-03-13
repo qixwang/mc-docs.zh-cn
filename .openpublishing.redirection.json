@@ -22654,7 +22654,13 @@
       "source_path": "articles/active-directory/authentication/quickstart-sspr.md",
       "redirect_url": "/active-directory/authentication/tutorial-enable-sspr",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/sql-database/sql-database-troubleshoot-common-connection-issues.md",
+      "redirect_url": "/sql-database/troubleshoot-connectivity-issues-microsoft-azure-sql-database",
+      "redirect_document_id": true
     }
+
 
   ]
 }
