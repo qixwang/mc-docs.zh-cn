@@ -2,30 +2,26 @@
 title: 在 Azure Active Directory B2C 中定义自定义属性 | Microsoft Docs
 description: 在 Azure Active Directory B2C 中定义应用程序的自定义属性以收集有关客户的信息。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 73c414079b17936608d94e2683bc507bc88c9901
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: d3a7d96ebbd02449af2ab78231be8947c49dd69b
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028275"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266088"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 
  每个面向客户的应用程序对需要收集的信息都有独特的要求。 Azure Active Directory B2C (Azure AD B2C) 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 在 Azure AD B2C 中，可以扩展存储在每个客户帐户上的属性集。
 
- 可以在 [Azure 门户](https://portal.azure.cn/) 中创建自定义属性并将其用于注册用户流、注册或登录用户流或配置文件编辑用户流。 还可以使用 [Azure AD 图形 API](manage-user-accounts-graph-api.md) 读取和写入这些属性。 Azure AD B2C 中的自定义属性使用 [Azure AD 图形 API 目录架构扩展](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)。
-
-> [!NOTE]
-> 对用于查询 Azure AD B2C 租户的较新 [Microsoft Graph API](https://docs.microsoft.com/graph/overview?view=graph-rest-1.0) 的支持仍在开发中。
->
+ 可以在 [Azure 门户](https://portal.azure.cn/) 中创建自定义属性并将其用于注册用户流、注册或登录用户流或配置文件编辑用户流。 还可以使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 读取和写入这些属性。
 
 ## <a name="create-a-custom-attribute"></a>创建自定义属性
 
@@ -47,15 +43,13 @@ ms.locfileid: "77028275"
 
 现在自定义属性在“用户属性”  列表中显示，以便在用户流中使用。 自定义属性只有在任何用户流中第一次使用时才创建，而不是将其添加到“用户属性”  列表时创建。
 
-
 ## <a name="use-a-custom-attribute-in-your-user-flow"></a>在用户流中使用自定义属性
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-2. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
-4. 选择“用户属性”  ，然后选择自定义属性（例如，“ShoeSize”）。 单击“保存”  。
-5. 选择“应用程序声明”  ，然后选择自定义属性。
-6. 单击“保存”  。
+1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
+1. 选择“用户属性”  ，然后选择自定义属性（例如，“ShoeSize”）。 单击“保存”  。
+1. 选择“应用程序声明”  ，然后选择自定义属性。
+1. 单击“保存”  。
 
-利用使用新创建的自定义属性的用户流创建新用户后，可以在 [Azure AD Graph 浏览器](/active-directory/develop/active-directory-graph-api-quickstart)中查询该对象。 或者，可以使用用户流上的[运行用户流](/active-directory-b2c/tutorial-create-user-flows)  功能来验证客户体验。 现在可以在注册期间收集的属性的列表中看到“ShoeSize”  ，并在发送回应用程序的令牌中看到它。
-
+利用使用新创建的自定义属性的用户流创建新用户后，可以在 [Microsoft Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中查询该对象。 或者，可以对用户流使用[运行用户流](/active-directory-b2c/tutorial-create-user-flows)功能来验证客户体验。 现在可以在注册期间收集的属性的列表中看到“ShoeSize”  ，并在发送回应用程序的令牌中看到它。
 

@@ -1,20 +1,20 @@
 ---
 title: 如何在 Azure 门户中监视 Azure 存储帐户 | Microsoft Docs
 description: 了解如何使用 Azure 门户在 Azure 中监视存储帐户。
-services: storage
 author: WenJason
 ms.service: storage
-ms.topic: article
-origin.date: 07/31/2018
-ms.date: 05/20/2019
+ms.topic: conceptual
+origin.date: 01/09/2020
+ms.date: 03/09/2020
 ms.author: v-jay
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 67ba982f12e4b374595f8cd96ecbb7da8abbe3c1
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 3c483d32c09c31a4f671bfcd3419f004ad718e77
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914382"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412614"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -39,7 +39,7 @@ ms.locfileid: "72914382"
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
-   若要设置数据保留策略，请移动“保留期(天)”  滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则是否删除监视数据由自己决定。
+   若要设置数据保留策略，请移动“保留期(天)”  滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则由用户自行决定是否删除监视数据。
 
    > [!WARNING]
    > 手动删除指标数据会产生费用。 陈旧的分析数据（超过保留策略的数据）将被系统删除，不会产生费用。 建议根据要将帐户的存储分析数据保留多长时间来设置保留策略。 有关详细信息，请参阅[按存储指标计费](storage-analytics-metrics.md#billing-on-storage-metrics)。
@@ -107,8 +107,8 @@ ms.locfileid: "72914382"
 
 可将任何存储帐户的 Azure 存储指标图表添加到门户仪表板。
 
-1. 在 [Azure 门户](https://portal.azure.cn)中查看仪表板的同时单击“编辑仪表板”。 
-1. 在“磁贴库”中，选择“查找磁贴，依据” > “类型”。   
+1. 在 [Azure 门户](https://portal.azure.cn)中查看仪表板时，单击“编辑仪表板”。 
+1. 在“磁贴库”  中，选择“查找磁贴依据”   > “类型”  。
 1. 选择“类型”   > “存储帐户”  。
 1. 在“资源”  中，选择要将其指标添加到仪表板的存储帐户。
 1. 选择“类别”   > “监视”  。
@@ -128,7 +128,7 @@ ms.locfileid: "72914382"
 >
 
 1. 在 [Azure 门户](https://portal.azure.cn)中选择“存储帐户”  ，然后单击存储帐户的名称打开存储帐户边栏选项卡。
-1. 在菜单边栏选项卡的“监视”部分选择“诊断”。  
+1. 在菜单边栏选项卡的“监视(经典)”  部分中选择“诊断设置(经典)”  。
 
     ![Azure 门户中“监视”下面的诊断菜单项。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 

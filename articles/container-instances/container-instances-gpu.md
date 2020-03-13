@@ -2,15 +2,15 @@
 title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
-origin.date: 04/17/2019
-ms.date: 01/15/2020
+origin.date: 02/19/2020
+ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 84d412ac1cc3b5469f285542b6d273b6072215f5
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: f2b290f4766279f0b2605f3fe5e2318061aa04a6
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965020"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213753"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -31,9 +31,14 @@ ms.locfileid: "75965020"
 
 **支持的 OS 类型**：仅限 Linux
 
-**其他限制**：将容器组部署到[虚拟网络](container-instances-vnet.md)中时不能使用 GPU 资源。
+**其他限制**：将容器组部署到虚拟网络中时不能使用 GPU 资源。
+
+<!--Not Avaialble on [virtual network](container-instances-vnet.md)-->
 
 ## <a name="about-gpu-resources"></a>关于 GPU 资源
+
+> [!IMPORTANT]
+> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
 
 ### <a name="count-and-sku"></a>计数和 SKU
 
@@ -233,6 +238,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 <!-- LINKS - External -->
 
 [terms-of-use]: https://www.azure.cn/support/legal/subscription-agreement/
+[azure-support]: https://support.azure.cn/support/support-azure/
 
 <!-- LINKS - Internal -->
 
@@ -242,5 +248,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-show
 [az-group-deployment-create]: https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create
 
-<!-- Update_Description: new article about container instances gpu -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

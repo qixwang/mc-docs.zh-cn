@@ -1,7 +1,6 @@
 ---
 title: 管理解决方案中的已保存搜索 | Microsoft Docs
-description: 管理解决方案通常会包括 Log Analytics 中保存的搜索，以便分析解决方案收集的数据。 它们可能还会定义警报，从而向用户发出通知或针对严重问题自动采取行动。 本文介绍如何在资源管理模板中定义 Log Analytics 保存的搜索，以便将其纳入管理解决方案。
-ms.service: azure-monitor
+description: 管理解决方案通常包括已保存的日志查询，以便分析解决方案收集的数据。 本文介绍如何在资源管理模板中定义 Log Analytics 保存的搜索。
 ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
@@ -9,25 +8,25 @@ origin.date: 07/22/2019
 ms.date: 07/29/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2a106fc560275d0a0e99d5f9a20f27e267c0ee9
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 53783f946ff4139bf5f025afc49c3579811138d2
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850312"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
 > [!NOTE]
 > 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。
 
-[管理解决方案](solutions.md)通常会将 Log Analytics 中[保存的搜索](../../azure-monitor/log-query/log-query-overview.md)包括在内，以便分析解决方案收集的数据。 它们可能还会定义[警报](../../azure-monitor/platform/alerts-overview.md)，从而向用户发出通知或针对严重问题自动采取行动。 本文介绍如何在[资源管理模板](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](solutions-creating.md)。
+[管理解决方案](solutions.md)通常会将 Log Analytics 中[保存的搜索](../../azure-monitor/log-query/log-query-overview.md)包括在内，以便分析解决方案收集的数据。 它们可能还会定义[警报](../../azure-monitor/platform/alerts-overview.md)，从而向用户发出通知或针对严重问题自动采取行动。 本文介绍如何在[资源管理模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](solutions-creating.md)。
 
 > [!NOTE]
 > 本文中的示例使用管理解决方案所需或通用的参数和变量，[在 Azure 中设计和构建管理解决方案](solutions-creating.md)中对它们进行了介绍
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你已经熟悉如何[创建管理解决方案](solutions-creating.md)以及[资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)和解决方案文件的结构。
+本文假设你已经熟悉如何[创建管理解决方案](solutions-creating.md)以及[资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)和解决方案文件的结构。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区

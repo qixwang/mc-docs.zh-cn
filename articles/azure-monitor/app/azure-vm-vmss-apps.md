@@ -1,19 +1,17 @@
 ---
-title: 监视托管在 Azure VM 和 Azure 虚拟机规模集上的应用程序的性能 | Microsoft Docs
+title: 监视 Azure VM 的性能 - Azure Application Insights
 description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性能监视 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 08/26/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 756962a3519fb51d327920d2765cc25a4ec58a35
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: 561fd36cba2a9cb38d15e10b9071e45353e2d5df
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545359"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850446"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -50,7 +48,7 @@ ms.locfileid: "75545359"
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 在 Azure 虚拟机上管理用于 .NET 应用程序的 Application Insights 代理
 
 > [!NOTE]
-> 在安装 Application Insights 代理之前，需要一个检测密钥。 请[创建新的 Application Insights 资源](/azure-monitor/app/create-new-resource)，或复制现有 Application Insights 资源中的检测密钥。
+> 在安装 Application Insights 代理之前，需要一个连接字符串。 [创建新的 Application Insights 资源](/azure-monitor/app/create-new-resource)，或从现有 Application Insights 资源复制连接字符串。
 
 > [!NOTE]
 > 不熟悉 PowerShell？ 请查看[入门指南](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)。
@@ -65,8 +63,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -118,8 +117,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one.
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )

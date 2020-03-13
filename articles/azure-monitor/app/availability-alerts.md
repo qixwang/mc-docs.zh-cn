@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Application Insights 设置可用性警报 | Microsoft Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 06/19/2019
 ms.date: 07/19/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: 3cedcf30e654905d8e243b45c344cb3f1040c883
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 6a4fc707ecec1ba19786bc7465a442b11679d0ff
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970928"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850448"
 ---
 # <a name="availability-alerts"></a>可用性警报
 

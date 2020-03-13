@@ -5,22 +5,19 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/02/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 57ce8e20cdef5fd1c3969d078e9a8cd9718b4ef1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 68b9e5c1c0575e454e5dae4009257de6ec9c0660
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028866"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412597"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
 本文列出了从 Windows 客户端连接时与 Azure 文件相关的常见问题， 并提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境以获得最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现错误 5
@@ -177,10 +174,10 @@ SMB 客户端已将指定的资源标记为删除。
 尝试将文件传输到 Azure 文件服务时，可能会出现性能下降的情况。
 
 - 如果你没有特定的 I/O 大小下限要求，我们建议使用 1 MiB 的 I/O 大小以获得最佳性能。
--   如果知道要通过写入进行扩展的文件的最终大小，并且软件在文件上未写入的尾部包含零时尚未出现兼容性问题，请提前设置文件大小，而不是使每次写入都成为扩展写入。
--   使用正确的复制方法：
-    -   为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy.md?toc=%2fstorage%2ffiles%2ftoc.json)。
-    -   在本地计算机上的文件共享之间使用 [Robocopy](/storage/files/storage-files-deployment-guide#robocopy)。
+- 如果知道要通过写入进行扩展的文件的最终大小，并且软件在文件上未写入的尾部包含零时尚未出现兼容性问题，请提前设置文件大小，而不是使每次写入都成为扩展写入。
+- 使用正确的复制方法：
+    - 为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy.md?toc=%2fstorage%2ffiles%2ftoc.json)。
+    - 在本地计算机上的文件共享之间使用 [Robocopy](/storage/files/storage-files-deployment-guide#robocopy)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 或 Windows Server 2012 R2 的注意事项
 
@@ -241,9 +238,9 @@ net use 命令将正斜杠 (/) 解释为命令行选项。 如果用户帐户名
 
 请使用以下解决方案之一：
 
--   使用应用程序所在的同一用户帐户装载驱动器。 可以使用 PsExec 之类的工具。
+- 使用应用程序所在的同一用户帐户装载驱动器。 可以使用 PsExec 之类的工具。
 - 传递 net use 命令的用户名和密码参数中的存储帐户名和密钥。
-- 使用 cmdkey 命令将凭据添加到凭据管理器中。 从命令行在服务帐户上下文中通过交互式登录或使用运行方式执行此操作。
+- 使用 cmdkey 命令将凭据添加到凭据管理器中。 通过交互式登录或使用 `runas`，在服务帐户上下文中从命令行执行此操作。
   
   `cmdkey /add:<storage-account-name>.file.core.chinacloudapi.cn /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - 不使用映射驱动器号直接映射共享。 某些应用程序可能无法正确地重新连接到驱动器号，因此使用完整的 UNC 路径可能会更可靠。 

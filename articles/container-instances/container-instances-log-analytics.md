@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 160ef2461f08f223604e93299d9373064a08b39c
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 23515d7aaff401f877cc184c93c4d3bb6d7ea189
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965063"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213752"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -23,7 +23,7 @@ Log Analytics 工作区提供了一个集中的位置，用于存储和查询来
 > [!NOTE]
 > 目前，只能将事件数据从 Linux 容器实例发送到 Log Analytics。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要在容器实例中启用日志记录，需具备以下条件：
 
@@ -40,7 +40,11 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 1. 在 Azure 门户中导航到 Log Analytics 工作区
 1. 在“设置”下，选择“高级设置”  
-1. 选择“连接的源”   >   “Windows 服务器”（或“Linux 服务器”  --二者的 ID 和密钥相同）
+1. 选择“连接的源” > “Linux 服务器”  
+
+    <!--Not Available on **Windows Servers**-->
+    <!--Not Available on  (or **Linux Servers**--the ID and keys are the same for both)-->
+    
 1. 记下以下内容：
     * **工作区 ID**
     * **主密钥**

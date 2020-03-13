@@ -4,16 +4,15 @@ description: 本文将提供 Azure 门户的应用程序网关中 Web 应用程�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-origin.date: 10/17/2019
-ms.date: 11/25/2019
+ms.date: 03/02/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: fcfef8ea8e4267e01336818f9c4fd3606d335ac9
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: c97a23ba0f06f4399d5b024b02bcd51f6527a1fb
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461686"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266100"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
@@ -92,7 +91,13 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
 Web 应用程序防火墙允许你在下限和上限内配置请求大小限制。 有以下两个大小限制配置可用：
 
 - 最大请求正文大小字段以 KB 为单位进行指定并控制整个请求大小限制（不包括任何文件上传）。 此字段的最小值可以为 1 KB，最大值可以为 128 KB。 请求正文大小的默认值为 128 KB。
-- 文件上传限制字段以 MB 为单位进行指定并控制允许的最大文件上传大小。 对于大型 SKU 实例，此字段的最小值可以为 1 MB，最大值为 500 MB，而中型 SKU 的最大值为 100 MB。 文件上传限制的默认值为 100 MB。
+- 文件上传限制字段以 MB 为单位进行指定并控制允许的最大文件上传大小。 此字段的最小值可以为 1 MB，最大值可以为：
+
+   - 对于 v1 中型 WAF 网关为 100 MB
+   - 对于 v1 大型 WAF 网关为 500 MB
+   - 对于 v2 WAF 网关为 750 MB 
+
+ 文件上传限制的默认值为 100 MB。
 
 WAF 还提供了可配置的旋钮以打开或关闭请求正文检查。 默认情况下，请求正文检查处于启用状态。 如果请求正文检查处于关闭状态，则 WAF 不会评估 HTTP 消息正文的内容。 在这种情况下，WAF 会继续对标头、cookie 和 URI 强制实施 WAF 规则。 如果请求正文检查处于关闭状态，则最大请求正文大小字段不适用，且无法设置。 关闭请求正文检查允许将大于 128 KB 的消息发送到 WAF，但不会检查消息正文中是否有漏洞。
 
@@ -100,3 +105,4 @@ WAF 还提供了可配置的旋钮以打开或关闭请求正文检查。 默认
 
 配置 WAF 设置后，可以了解如何查看 WAF 日志。 有关详细信息，请参阅[应用程序网关诊断](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。
 
+<!-- Update_Description: wording update -->

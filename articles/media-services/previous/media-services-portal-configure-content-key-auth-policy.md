@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/19/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 8392381024123e4b0e2e2cdf61443fcc9313c38b
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 880774c41be6e85122737beed2ad4a094f9d4cec
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124639"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412631"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
@@ -44,10 +44,10 @@ ms.locfileid: "71124639"
 * [使用媒体服务 REST API 配置内容密钥授权策略](media-services-rest-configure-content-key-auth-policy.md)
 
 ### <a name="some-considerations-apply"></a>需要注意的一些事项
-* 创建媒体服务帐户时，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
+* 创建媒体服务帐户后，一个处于“已停止”状态的默认流式处理终结点会添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。 可以创建 ContentKeyAuthorizationPolicy 并指定使用令牌限制，对其进行测试，然后更新策略以开放限制。 在策略切换到开放版本之前，此过程需要花费大约 15 分钟。
-* 媒体服务流式处理终结点将预检响应中 CORS Access-Control-Allow-Origin 标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dash.js 的播放器，因为将凭据模式设置为“包含”之后，dash.js 中的 XMLHttpRequest 不允许将通配符“\*”作为 Access-Control-Allow-Origin 的值。 作为 dash.js 中这一限制的解决办法，如果你将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户打开支持票证。
+* 媒体服务流式处理终结点将预检响应中 CORS Access-Control-Allow-Origin 标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dash.js 的播放器，因为将凭据模式设置为“包含”之后，dash.js 中的 XMLHttpRequest 不允许将通配符“\*”作为 Access-Control-Allow-Origin 的值。 作为 dash.js 中这一限制的解决办法，如果你将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户开具支持票证。
 
 ## <a name="configure-the-key-authorization-policy"></a>配置密钥授权策略
 若要配置密钥授权策略，请选择“内容保护”  页。

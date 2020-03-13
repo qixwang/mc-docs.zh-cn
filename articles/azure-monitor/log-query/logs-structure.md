@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志的结构 | Microsoft Docs
 description: 需要执行日志查询来检索 Azure Monitor 提供的日志数据。  本文介绍新的日志查询在 Azure Monitor 中的用法以及创建搜索之前需要了解的概念。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/22/2019
 ms.date: 08/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 46767f43ec48250c0a44e5f3d20be121a65b1c0f
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: b851bd709b6ea3692062341806e5531916e0b32a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730451"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850270"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速洞察数据是 Azure Monitor 提供的一项强大功能。 若要创建高效且有用的查询，应该了解一些基本概念，例如，所需数据的位置及其构建方式。 本文将会介绍可帮助你入门的基本概念。
@@ -45,7 +44,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 例如，参阅有关[代理数据源](../platform/agent-data-sources.md)、[诊断日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
+有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 例如，参阅有关[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
 
 ### <a name="workspace-permissions"></a>工作区权限
 请参阅[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)，以了解访问控制策略和提供对工作区中数据的访问的建议。 除了授予对工作区本身的访问权限以外，还可以使用[表级别 RBAC](../platform/manage-access.md#table-level-rbac) 限制对单个表的访问。

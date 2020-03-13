@@ -7,15 +7,15 @@ ms.service: storage
 ms.devlang: Java
 ms.topic: article
 origin.date: 08/13/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 56a600f611cbd03a70af96ce5a7b13f0fdeef3f4
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 723624ef14a447d9e641c6f9342c298df6e285a0
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028625"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412068"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>将 Azure 存储用于 Hudson 持续集成解决方案
 ## <a name="overview"></a>概述
@@ -36,14 +36,14 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 * 客户和合作伙伴下载生成项目时的性能。
 * 通过选择匿名访问、基于过期的共享访问、签名访问、专用访问等来控制用户访问策略。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 需要下列项才能将 Blob 服务用于 Hudson CI 解决方案：
 
 * 一个 Hudson 持续集成解决方案。
   
     如果当前没有 Hudson CI 解决方案，可以使用以下技术运行一个 Hudson CI 解决方案：
   
-  1. 在已启用 Java 的计算机上，从 <http://hudson-ci.org/> 下载 Hudson WAR。
+  1. 在已启用 Java 的计算机上，[下载 Hudson WAR 文件](https://www.eclipse.org/hudson/download.php)。
   2. 在打开到包含 Hudson WAR 的文件夹的命令提示符下，运行 Hudson WAR。 例如，如果下载了版本 3.1.2：
      
       `java -jar hudson-3.1.2.war`
@@ -78,7 +78,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
    
     b. 输入存储帐户密钥，同样可以从 [Azure 门户](https://portal.azure.cn)获取该密钥。
    
-    c. 如果要使用公共 Azure 云，请对“BLOB 服务终结点 URL”  使用默认值。 如果要使用其他 Azure 云，请使用在 [Azure 门户](https://portal.azure.cn)中为存储帐户指定的终结点。
+    c. 使用 [Azure 门户](https://portal.azure.cn)中为你的存储帐户指定的 **Blob 服务终结点 URL** 的默认值。
    
     d. 单击“验证存储凭据”  以验证存储帐户。
    

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3692d057e2102a0d495f05a50a64936a3a5c6ab1
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: c624f649c59566871858776519f889d1f646dc6b
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494386"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850583"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 IoT 中心设备预配服务
 
@@ -39,7 +39,7 @@ az group create --name my-sample-resource-group --location chinaeast
 ```
 
 > [!TIP]
-> 此示例在“美国西部”位置创建资源组。 可运行 `az account list-locations -o table`命令，查看可用位置的列表。
+> 此示例在“中国东部”位置创建资源组。 可运行 `az account list-locations -o table`命令，查看可用位置的列表。
 >
 >
 
@@ -64,7 +64,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> 此示例在“美国西部”位置创建预配服务。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
+> 此示例在“中国东部”位置创建预配服务。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一单词或多单词格式来指定位置，例如：chinaeast、China East、China East，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "China East"`。
 >
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>获取 IoT 中心的连接字符串
@@ -91,10 +91,10 @@ echo $hubConnectionString
 
 使用 [az iot dps linked-hub create](/cli/iot/dps/linked-hub#az-iot-dps-linked-hub-create) 命令将 IoT 中心与预配服务相链接。 
 
-以下示例将 westus 位置中名为 my-sample-hub 的 IoT 中心与名为 my-sample-dps 的设备预配服务相链接    。 用这些名称替换先前选择的唯一 IoT 中心和设备预配服务名称。 该命令使用上一步在 hubConnectionString 变量中存储的 IoT 中心的连接字符串  。
+以下示例将 chinaeast 位置中名为 my-sample-hub 的 IoT 中心与名为 my-sample-dps 的设备预配服务相链接    。 用这些名称替换先前选择的唯一 IoT 中心和设备预配服务名称。 该命令使用上一步在 hubConnectionString 变量中存储的 IoT 中心的连接字符串  。
 
 ```azurecli 
-az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location westus
+az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample-resource-group --connection-string $hubConnectionString --location chinaeast
 ```
 
 此命令可能需要花费几分钟时间完成。

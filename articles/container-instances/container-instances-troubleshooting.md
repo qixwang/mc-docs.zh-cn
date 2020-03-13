@@ -6,12 +6,12 @@ origin.date: 09/25/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0565a4339bb22e11cab60f78fbc524284b934f3e
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.openlocfilehash: 360a5f79924f97fab8cd72f38fec87c2b55b47d5
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75964992"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213743"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "75964992"
 
 <!--Not Available on  [Naming conventions][azure-name-restrictions]-->
 
-| 作用域 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| 作用域 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
@@ -50,7 +50,7 @@ ms.locfileid: "75964992"
 }
 ```
 
-在部署基于半年频道版本 1709 或 1803（不支持这些版本）的 Windows 映像时，通常会遇到此错误。 有关 Azure 容器实例中支持的 Windows 映像，请参阅[常见问题解答](container-instances-faq.md#what-windows-base-os-images-are-supported)。
+<!--Not Avaialble on This error is most often encountered when deploying Windows images that are based on Semi-Annual Channel release 1709 or 1803, which are not supported. For supported Windows images in Azure Container Instances, see [Frequently asked questions](container-instances-faq.md#what-windows-base-os-images-are-supported)-->
 
 ### <a name="unable-to-pull-image"></a>无法请求映像
 
@@ -113,11 +113,8 @@ ms.locfileid: "75964992"
 az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
 ```
 
-```azurecli 
-## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
- --command-line "ping -t localhost"
-```
+
+<!--Not Available on ## Deploying a Windows container-->
 
 容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
 
@@ -170,7 +167,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
 * [映像位置](#image-location)
 * [缓存的映像](#cached-images)
 
-Windows 映像具有[其他注意事项](#cached-images)。
+<!--Not Available on Windows images have [additional considerations](#cached-images)-->
 
 #### <a name="image-size"></a>映像大小
 
@@ -192,14 +189,12 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+Azure 容器实例使用缓存机制来帮助加快映像容器的启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
-> [!NOTE]
-> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
-
-#### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
-
-在初始创建时，Windows 容器在最多 30 秒内（在极少数情况下，会更长时间）可能没有入站或出站连接。 如果容器应用程序需要 Internet 连接，请添加延迟和重试逻辑以允许 30 秒建立 Internet 连接。 初始设置后，容器网络应适当恢复。
+<!--Not Available on  built on common [Windows base images](container-instances-faq.md#what-windows-base-os-images-are-supported)-->
+<!--Not Available on  including `nanoserver:1809`, `servercore:ltsc2019`, and `servercore:1809`-->
+<!--Not Available on > Use of Windows Server 2019-based images in Azure Container Instances is in preview.-->
+<!--Not Available on #### Windows containers slow network readiness-->
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>无法连接到基础 Docker API 或运行特权容器
 

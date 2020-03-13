@@ -7,21 +7,21 @@ manager: digimobile
 ms.service: storage
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: b124c063309f1fe005abb9e3272f529459f4c4e2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 02ea5ae868c981391c6c21b1f525ca78446fdd59
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028614"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412619"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
 本文回答了有关 Azure 存储迁移的常见问题。
 
-## <a name="faq"></a>常见问题
+## <a name="copy-upload-or-download"></a>复制、上传或下载
 
 如何创建一个脚本来将文件从一个容器复制到另一个容器？ 
 
@@ -41,32 +41,31 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 否。 此过程不会产生任何费用。
 
-**如何实现将整个存储帐户备份到其他存储帐户？**
+**如何从 Azure 门户下载 1-2 TB 的数据？**
 
-没有直接备份整个存储帐户的选项。 但你可以使用 AzCopy 或 Azure 存储资源管理器手动将该存储帐户中的容器移到另一个帐户。 以下步骤演示如何使用 AzCopy 移动容器：  
+请使用 AzCopy 下载数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
+**除了使用门户中的下载选项，还有什么方法可以将 VHD 下载到本地计算机？**
 
-1.  安装 [AzCopy](storage-use-azcopy.md) 命令行工具。 此工具可帮助你在存储帐户间移动 VHD 文件。
+你可以使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)下载 VHD。
 
-2.  使用安装程序在 Windows 上安装 AzCopy 之后，打开命令提示符窗口，然后浏览到计算机上的 AzCopy 安装文件夹。 默认情况下，AzCopy 安装到 **%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy** 或 **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**。
+如何将数据从 Azure 存储帐户下载到基于 Linux 的计算机，或者从 Linux 计算机上传数据？ 
 
-3.  要移动容器，请运行以下命令。 必须使用实际值替换文本。   
+你可以使用 Azure CLI。
 
-            AzCopy /Source:https://sourceaccount.blob.core.chinacloudapi.cn/mycontainer1
-            /Dest:https://destaccount.blob.core.chinacloudapi.cn/mycontainer2
-            /SourceKey:key1 /DestKey:key2 /S
+- 下载单个 blob：
 
-    - `/Source`：提供源存储帐户的 URI（直至容器）。  
-    - `/Dest`：提供目标存储帐户的 URI（直至容器）。  
-    - `/SourceKey`：提供源存储帐户的主密钥。 可通过选择存储帐户从 Azure 门户复制此键值。  
-    - `/DestKey`：提供目标存储帐户的主密钥。 可通过选择存储帐户从门户复制此键值。
+      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
 
-运行此命令后，容器文件会移到目标存储帐户。
+- 上传单个 Blob：
 
-> [!NOTE]
-> 从一个 Azure blob 复制到另一个时，AzCopy CLI 不能与 Pattern 开关一起使用  。
->
-> 可以直接复制和编辑 AzCopy cmd，然后交叉检查以确保 Pattern 与源匹配  。 此外，请确保 /S  通配符有效。 有关详细信息，请参阅 [AzCopy 参数](storage-use-azcopy.md)。
+      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+
+**如何将 Blob 从一个存储帐户复制到另一个存储帐户？**
+
+ 可以使用我们的 [Blob 迁移脚本](../scripts/storage-common-transfer-between-storage-accounts.md)。
+ 
+## <a name="migration-or-backup"></a>迁移或备份
 
 如何将数据从一个存储容器复制到另一个？ 
 
@@ -103,20 +102,6 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 **如何将数据从本地复制到 Azure 文件？**
 
 请使用 AzCopy 移动数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
-
-如何在虚拟机上映射容器文件夹？ 
-
-使用 Azure 文件共享。
-
-如何备份 Azure 文件存储？ 
-
-没有任何备份解决方案。 但是 Azure 文件也支持异步复制。 因此，可复制文件：
-
-- 在一个存储帐户中从一个共享复制到另一个共享或复制到不同存储帐户。
-
-- 在一个存储帐户中从一个共享复制到一个 Blob 容器或复制到不同存储帐户。
-
-有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)。
 
 如何将托管磁盘移动到另一个存储帐户？ 
 
@@ -162,44 +147,9 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 有关如何从托管磁盘部署虚拟机的详细信息，请参阅 [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1)。
 
-**如何从 Azure 门户下载 1-2 TB 的数据？**
-
-请使用 AzCopy 下载数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
-
-**如何将存储帐户的辅助位置更改为“中国北部”区域？**
-
-创建存储帐户时，可以为帐户选择主要区域。 选择次要区域是根据主要区域确定的且无法更改。 有关详细信息，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy.md)。
-
-我在哪里可以获得有关 Azure 存储服务加密 (SSE) 的更多信息？   
-
-请参阅以下文章：
-
--  [Azure 存储安全指南](../blobs/security-recommendations.md)
-
--  [静态数据的 Azure 存储服务加密](storage-service-encryption.md)
-
 **如何从存储帐户移动或下载数据？**
 
 请使用 AzCopy 下载数据。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
-
-
-如何在存储帐户中加密数据？ 
-
-在存储帐户中启用加密后，不加密现有数据。 若要加密现有数据，必须再次将数据上传到存储帐户。
-
-使用 AzCopy 将数据复制到不同的存储帐户，然后移回数据。 你还可以使用[静态加密](storage-service-encryption.md)。
-
-**除了使用门户中的下载选项，还有什么方法可以将 VHD 下载到本地计算机？**
-
-你可以使用[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)下载 VHD。
-
-**将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
-
-否。
-
-如何访问 Azure 文件冗余存储？ 
-
-读取访问异地冗余存储需要访问冗余存储。 但是，Azure 文件仅支持本地冗余存储和不允许只读访问的标准异地冗余存储。
 
 **如何从高级存储帐户移动到标准存储帐户？**
 
@@ -221,10 +171,74 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
         /Dest:https://destaccount.blob.core.chinacloudapi.cn/mycontainer2
         /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
 
-
 完成该操作可能需花费数小时。
 
 为确保传输成功完成，请检查 Azure 门户中的目标存储帐户容器。 将磁盘复制到标准存储帐户后，可以将其作为现有磁盘附加到虚拟机。 有关详细信息，请参阅[如何在 Azure 门户中将托管数据磁盘附加到 Windows 虚拟机](../../virtual-machines/windows/attach-managed-disk-portal.md)。  
+
+**如何实现从经典存储帐户迁移到 Azure 资源管理器存储帐户？**
+
+可以使用 Move-AzureStorageAccount cmdlet  。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
+
+如果有虚拟机，则在迁移存储帐户数据之前，还需要执行其他步骤。 有关详细信息，请参阅[使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)。
+
+**如何实现将整个存储帐户备份到其他存储帐户？**
+
+没有直接备份整个存储帐户的选项。 但你可以使用 AzCopy 或 Azure 存储资源管理器手动将该存储帐户中的容器移到另一个帐户。 以下步骤演示如何使用 AzCopy 移动容器：  
+
+1.  安装 [AzCopy](storage-use-azcopy.md) 命令行工具。 此工具可帮助你在存储帐户间移动 VHD 文件。
+
+2.  使用安装程序在 Windows 上安装 AzCopy 之后，打开命令提示符窗口，然后浏览到计算机上的 AzCopy 安装文件夹。 默认情况下，AzCopy 安装到 **%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy** 或 **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**。
+
+3.  要移动容器，请运行以下命令。 必须使用实际值替换文本。   
+
+            AzCopy /Source:https://sourceaccount.blob.core.chinacloudapi.cn/mycontainer1
+            /Dest:https://destaccount.blob.core.chinacloudapi.cn/mycontainer2
+            /SourceKey:key1 /DestKey:key2 /S
+
+    - `/Source`：提供源存储帐户的 URI（直至容器）。  
+    - `/Dest`：提供目标存储帐户的 URI（直至容器）。  
+    - `/SourceKey`：提供源存储帐户的主密钥。 可通过选择存储帐户从 Azure 门户复制此键值。  
+    - `/DestKey`：提供目标存储帐户的主密钥。 可通过选择存储帐户从门户复制此键值。
+
+运行此命令后，容器文件会移到目标存储帐户。
+
+> [!NOTE]
+> 从一个 Azure blob 复制到另一个时，AzCopy CLI 不能与 Pattern 开关一起使用  。
+>
+> 可以直接复制和编辑 AzCopy cmd，然后交叉检查以确保 Pattern 与源匹配  。 此外，请确保 /S  通配符有效。 有关详细信息，请参阅 [AzCopy 参数](storage-use-azcopy.md)。
+
+如何备份 Azure 文件存储？ 
+
+没有任何备份解决方案。 但是 Azure 文件也支持异步复制。 因此，可复制文件：
+
+- 在一个存储帐户中从一个共享复制到另一个共享或复制到不同存储帐户。
+
+- 在一个存储帐户中从一个共享复制到一个 Blob 容器或复制到不同存储帐户。
+
+有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)。
+## <a name="configuration"></a>配置
+
+**如何更改存储帐户的辅助位置？**
+
+创建存储帐户时，可以为帐户选择主要区域。 选择次要区域是根据主要区域确定的且无法更改。 有关详细信息，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy.md)。
+
+我在哪里可以获得有关 Azure 存储服务加密 (SSE) 的更多信息？   
+
+请参阅以下文章：
+
+-  [Azure 存储安全指南](../blobs/security-recommendations.md)
+
+-  [静态数据的 Azure 存储服务加密](storage-service-encryption.md)
+
+如何在存储帐户中加密数据？ 
+
+在存储帐户中启用加密后，不加密现有数据。 若要加密现有数据，必须再次将数据上传到存储帐户。
+
+使用 AzCopy 将数据复制到不同的存储帐户，然后移回数据。 你还可以使用[静态加密](storage-service-encryption.md)。
+
+**将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
+
+否。
 
 **如何转换到 Azure 高级存储以共享文件？**
 
@@ -235,24 +249,6 @@ Azure 文件共享上不允许使用高级存储。
 必须创建目标存储帐户，将数据从源帐户复制到目标帐户，然后删除源帐户。 可使用 AzCopy 等工具复制数据。
 
 如果有虚拟机，则在迁移存储帐户数据之前，还需要执行其他步骤。 有关详细信息，请参阅[迁移到 Azure 高级存储（非托管磁盘）](storage-migration-to-premium-storage.md)。
-
-**如何实现从经典存储帐户迁移到 Azure 资源管理器存储帐户？**
-
-可以使用 Move-AzureStorageAccount cmdlet  。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
-
-如果有虚拟机，则在迁移存储帐户数据之前，还需要执行其他步骤。 有关详细信息，请参阅[使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)。
-
-如何将数据从 Azure 存储帐户下载到基于 Linux 的计算机，或者从 Linux 计算机上传数据？ 
-
-你可以使用 Azure CLI。
-
-- 下载单个 blob：
-
-      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
-
-- 上传单个 Blob：
-
-      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
 
 怎样才能让其他人访问我的存储资源？ 
 
@@ -272,6 +268,21 @@ AzCopy 安装在什么位置？
 
 -   如果你安装的是 64 位版本，它将位于：%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy  。
 
+**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使“https:\//mystorageaccountname.blob.core.chinacloudapi.cn/images/image.gif”显示为“https:\//www.contoso.com/images/image.gif”？**
+
+使用自定义域的存储帐户当前不支持 SSL。
+但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。
+
+## <a name="access-to-storage"></a>访问存储
+
+如何在虚拟机上映射容器文件夹？ 
+
+使用 Azure 文件共享。
+
+如何访问 Azure 文件冗余存储？ 
+
+读取访问异地冗余存储需要访问冗余存储。 但是，Azure 文件仅支持本地冗余存储和不允许只读访问的标准异地冗余存储。
+
 **对于复制的存储帐户（如区域冗余存储、异地冗余存储或读取访问异地冗余存储），如何访问存储在次要区域中的数据？**
 
 -   如果使用的是区域冗余存储空间或异地冗余存储，除非发生故障转移，否则无法从次要区域访问数据。 有关故障转移过程的详细信息，请参阅[进行存储空间故障转移时会发生什么情况](storage-disaster-recovery-guidance.md)。
@@ -284,20 +295,11 @@ AzCopy 安装在什么位置？
 
     - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使“https:\//mystorageaccountname.blob.core.chinacloudapi.cn/images/image.gif”显示为“https:\//www.contoso.com/images/image.gif”？**
-
-使用自定义域的存储帐户当前不支持 SSL。
-但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。
-
 **如何使用 FTP 访问存储帐户中的数据？**
 
 使用 FTP 无法直接访问存储帐户。 但是，你可以设置 Azure 虚拟机，然后在虚拟机上安装 FTP 服务器。 可让 FTP 服务器将文件存储在 Azure 文件共享上或虚拟机可用的数据磁盘上。
 
 如果你只想下载数据而不需要使用存储资源管理器或类似的应用程序，则可以使用 SAS 令牌。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
-
-**如何将 Blob 从一个存储帐户复制到另一个存储帐户？**
-
- 可以使用我们的 [Blob 迁移脚本](../scripts/storage-common-transfer-between-storage-accounts.md)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 

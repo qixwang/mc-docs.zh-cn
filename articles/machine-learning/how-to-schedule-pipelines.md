@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: laobri
+ms.author: v-yiso
 author: lobrien
-ms.date: 11/12/2019
-ms.openlocfilehash: ca86a757d0dcd7bd5b437112945ee84ffac90a43
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/12/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: c82b8fc736e988188c00c9e3dbe9e3dbca94debe
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598082"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850204"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 
@@ -55,6 +56,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>创建计划
 
 若要重复运行管道，需创建计划。 `Schedule` 与管道、试验和触发器关联。 触发器可以是 `ScheduleRecurrence`（用于描述两次运行之间的等待时间），也可以是数据存储路径（用于指定要监视其中更改的目录）。 在任一情况下，都需要管道标识符，以及要在其中创建计划的试验名称。
+
+在 python 文件的顶部，导入 `Schedule` 和 `ScheduleRecurrence` 类：
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>创建基于时间的计划
 
@@ -125,7 +133,7 @@ def stop_by_schedule_id(ws, schedule_id):
     s.disable()
     return s
 
-stop_by_schedule(ws, schedule_id)
+stop_by_schedule_id(ws, schedule_id)
 ```
 
 如果此后再次运行 `Schedule.list(ws)`，应会得到一个空列表。

@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 03/18/2019
 ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 48dfc8fb86308e742db47b606b1610f41825bfe5
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: e4e4a19152ebaf0681059eb434591badf83b4bf1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494288"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850557"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
@@ -41,7 +41,7 @@ ms.locfileid: "77494288"
   * （可选）将流编码为自适应比特率流
   * 预览实时流，
   * 记录和存储引入的内容，以便稍后进行流式处理（视频点播）
-  * 直接通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）将内容传递给客户，或传递到内容分发网络 (CDN) 以供进一步分发。
+  * 通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）将内容直接传送给客户。
 
 Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和实时传送视频流内容的功能  。
 

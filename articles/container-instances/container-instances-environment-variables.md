@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 04/17/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 87dedf232be697bf5f9fc798c16f52fd56795e39
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: e5a823123fba3668d8b9016fda47de3497d38b91
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428745"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213744"
 ---
 <!--Verified successfully-->
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
@@ -27,7 +27,9 @@ ms.locfileid: "77428745"
 
 *MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
 
-如果需要以环境变量的形式传递机密，Azure 容器实例支持 Windows 和 Linux 容器的[安全值](#secure-values)。
+如果需要以环境变量的形式传递机密，Azure 容器实例支持 Linux 容器的[安全值](#secure-values)。
+
+<!--Not Avaiablle on both Windows and Linux-->
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

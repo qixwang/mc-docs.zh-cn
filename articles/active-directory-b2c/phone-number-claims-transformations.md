@@ -3,20 +3,20 @@ title: 自定义策略中的电话号码声明转换
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 中电话号码声明转换的自定义策略参考。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: fd204fdabea1bdbd13d039dc06baa851c2c96ce1
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 7995e7aace34db7f6d27381be70db867ba2e6897
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531337"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265993"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>定义 Azure AD B2C 中的电话号码声明转换
 
@@ -26,9 +26,39 @@ ms.locfileid: "77531337"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
+
+将 `phoneNumber` 数据类型转换为 `string` 数据类型。
+
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | phoneNumber | phoneNumber |  要转换为字符串的 ClaimType。 |
+| OutputClaim | phoneNumberString | string | 调用此声明转换后生成的 ClaimType。 |
+
+在本例中，值类型为 `phoneNumber` 的 cellPhoneNumber 声明将转换为值类型为 `string` 的 cellPhone 声明。
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+  - **phoneNumber**：+11234567890 (phoneNumber)
+- 输出声明：
+  - **phoneNumberString**：+11234567890 (string)
+
+
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-此声明验证电话号码的格式。 如果它的格式有效，则将其更改为 Azure AD B2C 使用的标准格式。 如果提供的电话号码的格式无效，则返回一条错误消息。
+此声明转换验证电话号码的格式。 如果它的格式有效，则将其更改为 Azure AD B2C 使用的标准格式。 如果提供的电话号码的格式无效，则返回一条错误消息。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
@@ -68,17 +98,18 @@ ConvertStringToPhoneNumberClaim 声明转换始终通过[验证技术配置文�
 ### <a name="example-1"></a>示例 1
 
 - 输入声明：
-  - **phoneNumberString**:045 456-7890
+  - **phoneNumberString**:033 456-7890
   - **country**:DK
 - 输出声明：
-  - **outputClaim**: +450546148120
+  - **outputClaim**: +450334567890
 
 ### <a name="example-2"></a>示例 2
 
 - 输入声明：
   - **phoneNumberString**: +1 (123) 456-7890
-- 输出声明： 
+- 输出声明：
   - outputClaim：+11234567890 
+
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 

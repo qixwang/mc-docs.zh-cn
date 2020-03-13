@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: a88cacc4f5d0bc78a1c4c25b631dd79f549f817f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 6e5db427ccffc9ca044ce330a203bb754d483215
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494138"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850556"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 
@@ -50,9 +50,9 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 ![登录][1]
 
-### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2.在 eastus 中创建资源组 IoTHubBlogDemo
+### <a name="2-create-a-resource-group-iothubblogdemo-in-chinanorth"></a>2.在 chinanorth 中创建资源组 IoTHubBlogDemo
 
-    az group create -l eastus -n IoTHubBlogDemo
+    az group create -l chinanorth -n IoTHubBlogDemo
 
 ![创建资源组][2]
 
@@ -80,7 +80,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 ### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6.将一个现有的 IoT 中心链接到设备预配服务
 
-    az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
+    az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l chinaeast
 
 ![链接中心][5]
 

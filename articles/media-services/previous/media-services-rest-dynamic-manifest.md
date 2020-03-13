@@ -16,12 +16,12 @@ origin.date: 03/20/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewr: cenkdin
-ms.openlocfilehash: 9df5af22e12cf15b2cfece2af65cd53286c46bc5
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 57826254fbc616e07f4539accbe1aa04946e102a
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494236"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850628"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器 
 > [!div class="op_single_selector"]
@@ -199,7 +199,7 @@ ms.locfileid: "77494236"
 ## <a name="update-filters"></a>更新筛选器
 使用 PATCH、PUT 或 MERGE 并结合新的属性值来更新筛选器。  有关这些操作的详细信息，请参阅 [PATCH、PUT、MERGE](https://msdn.microsoft.com/library/dd541276.aspx)。
 
-如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 请在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。  
+如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理中缓存），则更新此筛选器会导致播放器失败。 请在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。  
 
 ### <a name="update-global-filters"></a>更新全局筛选器
 若要更新全局筛选器，请使用以下 HTTP 请求： 

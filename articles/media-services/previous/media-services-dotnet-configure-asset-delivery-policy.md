@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: fd5744c1f1dcddb78a555e10f3d4d87c083016fc
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: fac974efba662bc80c07697ebdeaebbda3b17c7e
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124540"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850462"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>使用 .NET SDK 配置资产传送策略
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
@@ -63,7 +63,7 @@ MPEG DASH
 * 删除 AssetDeliveryPolicy 之前，应删除所有与此资产关联的流式处理定位符。 如果需要，可稍后使用新的 AssetDeliveryPolicy 创建新的流式处理定位符。
 * 如果未设置资产传送策略，则无法在存储加密的资产上创建流式处理定位符。  如果资产未经过存储加密，则即使未设置资产传送策略，系统也可让你以明文形式创建定位符和流式处理资产。
 * 可将多个资产传送策略关联到单个资产，但只能指定一种方法来处理给定的 AssetDeliveryProtocol。  也就是说，如果尝试链接两个指定 AssetDeliveryProtocol.SmoothStreaming 协议的传送策略，则会导致出错，因为当客户端发出平滑流式处理请求时，系统不知道要应用哪个策略。
-* 如果资产包含现有的流式处理定位符，则不能将新策略链接到该资产（可以取消现有策略与资产的链接，或者更新与该资产关联的传送策略）。  必须先删除流式处理定位符，调整策略，再重新创建流式处理定位符。  在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已由来源或下游 CDN 缓存。
+* 如果资产包含现有的流式处理定位符，则不能将新策略链接到该资产（可以取消现有策略与资产的链接，或者更新与该资产关联的传送策略）。  必须先删除流式处理定位符，调整策略，再重新创建流式处理定位符。  重新创建流式处理定位符时，可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被源缓存。
 
 ## <a name="clear-asset-delivery-policy"></a>清除资产传送策略
 

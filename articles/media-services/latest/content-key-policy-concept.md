@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 07/26/2019
-ms.date: 01/20/2020
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 5d4c9953503a271d3b96c09f7b432f0a4e61ef13
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 6d4bea10359bdeaa14d3c6eb712a1e2d10d39798
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939796"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411997"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或以下两个主要数字版权管理 (DRM) 系统中任意一个动态加密的直播和点播内容：Microsoft PlayReady 和 Apple FairPlay。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
 

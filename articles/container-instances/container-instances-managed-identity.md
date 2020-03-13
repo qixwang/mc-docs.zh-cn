@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 10/22/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 458fa97787898431634286921031e915de3f5822
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 45d3558cd44061306a8fcfd368ace57d2332051b
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965115"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213749"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -33,8 +33,10 @@ ms.locfileid: "75965115"
 在运行的容器中使用托管标识，可对[支持 Azure AD 身份验证的任何服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)进行身份验证，而无需在容器代码中管理凭据。 对于不支持 AD 身份验证的服务，可以在 Azure Key Vault 中存储机密并使用托管标识来访问 Key Vault 以检索凭据。 有关使用托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款](https://www.azure.cn/support/legal/subscription-agreement/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。 目前，仅 Linux 容器支持 Azure 容器实例的托管标识，而 Windows 容器尚不支持。
+> 此功能目前以预览版提供。 需同意[补充使用条款](https://www.azure.cn/support/legal/subscription-agreement/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。 目前，仅 Linux 容器支持 Azure 容器实例上的托管标识。
 >  
+
+<!--Not Available on  and not yet with Windows containers-->
 
 ### <a name="enable-a-managed-identity"></a>启用托管标识
 

@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 03/20/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: c1171a950acb00644584c8ee96af1ded4a4c5d7b
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: e946367e4cc29691ecc2a788fd4fe2dbf7a9af80
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124658"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850627"
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述  
 
@@ -29,7 +29,7 @@ ms.locfileid: "71124658"
 
 在 Azure 媒体服务 (AMS) 中，**流式处理终结点**代表一个流服务，它可以直接将内容分发给客户端播放器应用程序。 StreamingEndpoint 服务的出站流可以是实时流、视频点播，也可以是媒体服务帐户中进行的渐进式资产下载。 每个 Azure 媒体服务帐户包括一个默认的 StreamingEndpoint。 可以在该帐户下创建其他 StreamingEndpoint。 StreamingEndpoint 有两个版本：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户都会包括 2.0 版的 **默认** StreamingEndpoint。 添加到该帐户的其他流式处理终结点也会是 2.0 版。 此更改不会影响现有帐户；现有的 StreamingEndpoint 会是 1.0 版，但可以升级到 2.0 版。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
 
-Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnProvider**、**CdnProfile**、**StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅 [此文](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
+Azure 媒体服务将以下属性添加到流式处理终结点实体：**StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅 [此文](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
 
 用户创建 Azure 媒体服务帐户时，将为用户创建一个处于“已停止”  状态的默认标准流式处理终结点。 无法删除默认流式处理终结点。  
                 
@@ -64,7 +64,7 @@ Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnPro
 >[!NOTE]
 >**经典**流式处理终结点（版本“1.0”且 0 个 SU）提供有限的功能，并且不包括 SLA。 建议迁移到“标准”  类型，以便改进体验，并使用动态打包或加密等功能，以及“标准”  类型附带的其他功能。 若要迁移到**标准**类型，请转到 [Azure 门户](https://portal.azure.cn/)，选择“选择加入标准类型”  。 有关迁移的详细信息，请参阅[迁移](#migration-between-types)部分。
 >
->请注意，此操作无法回退，并且会对定价有影响。
+>请注意，此操作无法回退，并且会对定价造成影响。
 >
  
 ## <a name="comparing-streaming-types"></a>比较流式处理类型
@@ -88,7 +88,7 @@ Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnPro
 缩放|自动扩展到目标吞吐量。|额外流单元。
 IP 筛选/G20/自定义主机|是|是
 渐进式下载|是|是
-建议的用法 |建议用于绝大多数的流式处理方案。|专业用途。 
+建议用途 |建议用于绝大多数流式处理方案。|专业用途。 
 
 有关 SLA 的信息，请参阅[定价和 SLA](https://azure.cn/pricing/details/media-services/)。
 
@@ -97,9 +97,9 @@ IP 筛选/G20/自定义主机|是|是
 从 | 如果 | 操作
 ---|---|---
 经典|标准|需要选择加入
-经典|高级| 缩放（额外流单元）
+经典|高级| 规模（额外流单元）
 标准/高级|经典|不可用（如果流式处理终结点版本为 1.0， 允许通过将 scaleunits 设置为“0”更改为经典）
-标准 |使用相同配置的高级类型|在**已启动**状态下允许。 （通过 Azure 门户）
+标准 |使用相同配置的高级类型|在 **已启动** 状态下允许。 （通过 Azure 门户）
 高级 |使用相同配置的标准类型|在**已启动**状态下允许（通过 Azure 门户）
 标准 |使用不同配置的高级类型|在**已停止**状态下允许（通过 Azure 门户）。 在“正在运行”状态下不允许。
 高级 |使用不同配置的标准类型|在**已停止**状态下允许（通过 Azure 门户）。 在“正在运行”状态下不允许。

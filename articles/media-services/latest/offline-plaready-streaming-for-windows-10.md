@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/01/2019
-ms.date: 01/20/2020
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: a95a361db8b58b10225417fe1f16211c659227ed
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 09e8429074045e31ab048c9261392635b4b0b0c0
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939814"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412512"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒体服务 v3 进行适用于 Windows 10 的 PlayReady 脱机流式处理
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用于 Windows 10/PlayReady 客户端的对 Azure 媒体服务的脱机支持。 可以通过以下文章了解对 iOS/FairPlay 设备的脱机模式支持：
 

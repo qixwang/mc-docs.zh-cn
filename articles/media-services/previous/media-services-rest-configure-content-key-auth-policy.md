@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 1d56e44389343b2d2d1ac9d204d62a16b77c410a
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 73a32d39823b4ddd0f3d29f7d3fb23524ae251c9
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494252"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412406"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
   
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 

@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 09/10/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 47897f8c90ab2937b11e4da648f9ed10c0fc63b8
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: cc96b5087f85c19f38fb11a5b1449fc44607ca85
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125636"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412686"
 ---
 # <a name="media-services-concepts"></a>媒体服务的概念
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 本主题简要概述 Azure 媒体服务的术语和概念。 本文还会提供深入介绍媒体服务 v3 概念和功能的文章的链接。 
 
@@ -92,7 +92,7 @@ ms.locfileid: "71125636"
 
 &#42; 动态加密支持 AES-128“明文密钥”、CBCS 和 CENC。 
 
-可以使用媒体服务**动态清单**来仅流式传输视频的特定再现内容或子剪辑。 以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可以动态打包成以下任一流式处理协议：HLS、MPEG DASH 和平滑流式处理。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1 Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 右下角显示名为“mobile”的筛选器已应用到 HLS 清单。 “mobile”筛选器指定删除分辨率大于 720p 的再现内容，因此会剥除两个 1080p 再现内容。
+可以使用媒体服务**动态清单**来仅流式传输视频的特定再现内容或子剪辑。 以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可动态打包成以下任一流协议：HLS、MPEG DASH 和平滑流式处理。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1 Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 右下角显示名为“mobile”的筛选器已应用到 HLS 清单。 “mobile”筛选器指定删除分辨率大于 720p 的再现内容，因此会剥除两个 1080p 再现内容。
 
 ![再现内容筛选](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 

@@ -3,20 +3,20 @@ title: 配置密码复杂性要求
 titleSuffix: Azure AD B2C
 description: 如何配置由 Azure Active Directory B2C 中的使用者提供的密码复杂性要求。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 30401c4f1f12005d3033d0e69c6588303884acf4
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 5f2156ed65d0fa195e45807598c020bae307b272
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028271"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266086"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -71,7 +71,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 允许你控制密码中使用的不同字符类型。
 
 - **4 选 2：小写字符、大写字符、数字 (0-9)、符号**确保密码包含至少两种字符类型。 例如，数字和小写字符。
-- **4 选 3：小写字符、大写字符、数字 (0-9)、符号**确保密码包含至少两种字符类型。 例如，数字、小写字符和大写字符。
+- **4 选 3：小写字符、大写字符、数字 (0-9)、符号**确保密码包含至少三种字符类型。 例如，数字、小写字符和大写字符。
 - **全部 4 个：小写字符、大写字符、数字 (0-9)、符号**确保密码包含所有字符类型。
 
     > [!NOTE]

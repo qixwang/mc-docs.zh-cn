@@ -9,19 +9,19 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 24ed32d9c7a153447bebfb4003f9ec769cd02697
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 9182066259a7e1ac13c680449d2f31e4417765b4
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494384"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850582"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
 可以使用 [Azure 资源管理器](/azure-resource-manager/resource-group-overview)以编程方式设置预配设备所需的 Azure 云资源。 这些步骤演示了如何创建 IoT 中心和新的 IoT 中心设备预配服务，然后使用 Azure 资源管理器模板将这两项服务链接到一起。 本快速入门使用 [Azure CLI](/azure-resource-manager/resource-group-template-deploy-cli) 执行创建资源组和部署模板所需的编程步骤，但你也可以使用 [Azure 门户](/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](/azure-resource-manager/resource-group-template-deploy)、.NET、Ruby 或其他编程语言，轻松执行这些步骤和部署模板。 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - 本快速入门要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。
@@ -54,11 +54,11 @@ ms.locfileid: "77494384"
 3. 创建 Azure 云资源（例如 IoT 中心和预配服务）时，请在资源组中创建。 使用现有资源组，或运行以下[命令创建资源组][lnk-az-resource-command]：
     
     ```azurecli
-     az group create --name {your resource group name} --location westus
+     az group create --name {your resource group name} --location chinaeast
     ```
 
     > [!TIP]
-    > 上一示例在美国西部位置创建资源组。 可运行 `az account list-locations -o table`命令，查看可用位置的列表。
+    > 上一示例在“中国东部”位置创建资源组。 可运行 `az account list-locations -o table`命令，查看可用位置的列表。
     >
     >
 
@@ -91,8 +91,8 @@ ms.locfileid: "77494384"
         "hubLocation": {
             "type": "string",
             "allowedValues": [
-                "eastus",
-                "westus",
+                "chinanorth",
+                "chinaeast",
                 "westeurope",
                 "northeurope",
                 "southeastasia",
@@ -179,8 +179,8 @@ ms.locfileid: "77494384"
            "hubLocation": {
                "type": "string",
                "allowedValues": [
-                   "eastus",
-                   "westus",
+                   "chinanorth",
+                   "chinaeast",
                    "westeurope",
                    "northeurope",
                    "southeastasia",
@@ -284,7 +284,7 @@ ms.locfileid: "77494384"
             "value": "my-sample-provisioning-service"
         },
         "hubLocation": {
-            "value": "westus"
+            "value": "chinaeast"
         }
     }
 

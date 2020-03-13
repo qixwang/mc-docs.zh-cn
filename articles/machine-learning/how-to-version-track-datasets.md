@@ -6,17 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
+ms.author: v-yiso
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+origin.date: 11/04/2019
+ms.date: 03/16/2020
 ms.custom: ''
-ms.openlocfilehash: 3628124db060bf82ecd72163a42cce546f2e3c7d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b14670efbf0afac7773582359b5891bff97b754c
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599142"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850192"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +170,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-还可以使用 [Azure 机器学习工作室（经典）](https://ml.azure.com/)来从试验中查找 `input_datasets`。 
+还可以使用 [Azure 机器学习工作室](https://ml.azure.com/)从试验中查找 `input_datasets`。 
 
-下图展示了在 Azure 机器学习工作室（经典）中从何处查找试验的输入数据集。 对于此示例，请转到“试验”  窗格，并打开试验 `keras-mnist` 的特定运行的“属性”  选项卡。
+下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”  窗格，并打开试验 `keras-mnist` 的特定运行的“属性”  选项卡。
 
 ![输入数据集](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +184,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-注册后，你可以通过使用 Python 或 [Azure 机器学习工作室（经典）](https://ml.azure.com/)查看向数据集注册的模型的列表。 以下视图来自“资产”下的“数据集”   窗格。 选择数据集，然后选择“模型”  选项卡以获取向数据集注册的模型的列表。 
+注册后，可以使用 Python 或 [Azure 机器学习工作室](https://ml.azure.com/)查看已注册到数据集中的模型列表。 以下视图来自“资产”下的“数据集”   窗格。 选择数据集，然后选择“模型”  选项卡以获取向数据集注册的模型的列表。 
 
 ![输入数据集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

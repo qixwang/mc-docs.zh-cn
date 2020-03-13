@@ -1,7 +1,6 @@
 ---
-title: Azure Monitor 日志查询中的 app() 表达式 | Azure Docs
-description: app 表达式用于 Azure Monitor 日志查询中，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。
-ms.service: azure-monitor
+title: Azure Monitor 日志查询中的 app() 表达式 | Docs
+description: 在 Azure Monitor 日志查询中使用 app 表达式从同一资源组、另一个资源组或另一个订阅中的特定 Application Insights 应用检索数据。
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
@@ -9,12 +8,12 @@ manager: digimobile
 origin.date: 01/25/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6a5b2749d2476bda7d8b96ab539bc987f98cdf51
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 6298093a64b74d8c204ad21a6499447280a32f09
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599753"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850281"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -29,7 +28,7 @@ ms.locfileid: "75599753"
 
 ## <a name="arguments"></a>参数
 
-- 标识符  ：使用下表中的某种格式标识应用。
+- 标识符：  使用下表中的某种格式标识应用。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|

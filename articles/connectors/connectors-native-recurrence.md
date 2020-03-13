@@ -1,27 +1,19 @@
 ---
-title: 使用 Azure 逻辑应用计划和运行自动化任务和工作流
-description: 在 Azure 逻辑应用中使用“定期”连接器自动执行计划任务和定期任务
+title: 计划重复任务和工作流
+description: 使用 Azure 逻辑应用中的定期触发器计划和运行重复自动化任务和工作流
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.suite: integration
+ms.reviewer: deli, klam, logicappspm
+ms.topic: conceptual
 origin.date: 05/25/2019
-ms.author: v-yiso
-ms.date: 10/08/2019
-ms.openlocfilehash: 13f2e12baf4ba5060a3316629835994d40dd20db
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.date: 03/09/2020
+ms.author: v-yeche
+ms.openlocfilehash: 1ff86efa73f099952b293584cdbafd55748cef25
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304653"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的定期触发器创建、计划和运行重复任务和工作流
 
@@ -46,7 +38,7 @@ ms.locfileid: "74797598"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[注册 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* Azure 订阅。 如果没有订阅，可以[注册 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 * 有关[逻辑应用](../logic-apps/logic-apps-overview.md)的基本知识。 如果不熟悉逻辑应用，请了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -54,42 +46,51 @@ ms.locfileid: "74797598"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 创建空白逻辑应用。
 
-1. 显示逻辑应用设计器后，在搜索框中输入“定期”作为筛选器。 逻辑应用工作流的第一步是从触发器列表中选择此触发器。**定期**
+1. 显示逻辑应用设计器后，在搜索框中输入 `recurrence` 作为筛选器。 逻辑应用工作流的第一步是从触发器列表中选择此触发器。**定期**
 
-   ![选择“定期”触发器](./media/connectors-native-recurrence/add-recurrence-trigger.png)
+    ![选择“定期”触发器](./media/connectors-native-recurrence/add-recurrence-trigger.png)
 
 1. 设置定期计划的间隔和频率。 在此示例中，请将这些属性设置为每周运行工作流。
 
-   ![设置间隔和频率](./media/connectors-native-recurrence/recurrence-trigger-details.png)
+    ![设置间隔和频率](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | 属性 | 必须 | JSON 名称 | 类型 | 说明 |
-   |----------|----------|-----------|------|-------------|
-   | **时间间隔** | 是 | interval | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
-   | **频率** | 是 | frequency | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”       |
-   ||||||
+    | 属性 | JSON 名称 | 必须 | 类型 | 说明 |
+    |----------|-----------|----------|------|-------------|
+    | **时间间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
+    | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”       |
+    ||||||
 
-   如需更多计划选项，请打开“添加新参数”列表。  
-   选择的任何选项会在选定后显示在触发器中。
+    > [!IMPORTANT]
+    > 如果重复周期未指定高级计划选项，则将来的重复周期将基于上次运行时间。
+    > 这些重复周期的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 为了确保逻辑应用不会错过重复周期，特别是当频率为几天或更长的时间时，请使用以下选项之一：
+    > 
+    > * 提供重复周期的开始时间。
+    > 
+    > * 使用“在这些小时”  和“在这些分钟”  属性指定何时运行重复周期的小时和分钟。
+    > 
+    > * 使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用重复触发器。
 
-   ![高级计划选项](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
+1. 若要设置高级计划选项，请打开“添加新参数”  列表。 选择的任何选项会在选定后显示在触发器中。
 
-   | 属性 | 必须 | JSON 名称 | 类型 | 说明 |
-   |----------|----------|-----------|------|-------------|
-   | **时区** | 否 | timezone | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
-   | **开始时间** | 否 | startTime | String | 采用以下格式提供启动日期和时间： <p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2 点，则指定“2017-09-18T14:00:00”并选择时区（如“太平洋标准时间”）。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
-   | **在这些日期** | 否 | 工作日 | 字符串或字符串数组 | 如果选择“周”，则可以选择要运行工作流的一天或多天：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日”        |
-   | **在这些小时** | 否 | 小时 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 23 的范围内选择一个或多个整数，作为当天要运行工作流的小时时间。 <p><p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为当天的小时，但当天的分钟则根据定期启动的时间计算。 若要设置一天的分钟，请指定“在这些分钟”属性的值。  |
-   | **在这些分钟** | 否 | 分钟数 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 59 的范围内选择一个或多个整数，作为要运行工作流的小时时间的分钟时间。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 |
-   |||||
+    ![高级计划选项](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   例如，假设当天是 2017 年 9 月 4 日星期一。 以下“定期”触发器不会在开始日期和时间 2017 年 9 月 18 日星期一早晨 8:00（太平洋标准时间）之前激发。  但是，该定期计划设置为仅在每个星期一的 10:30 AM、12:30 PM 和 2:30 PM 运行。 因此，首次激发触发器并创建逻辑应用工作流实例的时间为 10:30 AM。 若要详细了解开始时间的工作方式，请参阅这些[开始时间示例](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)。
+    | 属性 | JSON 名称 | 必须 | 类型 | 说明 |
+    |----------|-----------|----------|------|-------------|
+    | **时区** | `timeZone` | 否 | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
+    | **开始时间** | `startTime` | 否 | String | 采用以下格式提供启动日期和时间： <p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2 点，则指定“2017-09-18T14:00:00”并选择时区（如“太平洋标准时间”）。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+    | **在这些日期** | `weekDays` | 否 | 字符串或字符串数组 | 如果选择“周”，则可以选择要运行工作流的一天或多天：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日”        |
+    | **在这些小时** | `hours` | 否 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 23 的范围内选择一个或多个整数，作为当天要运行工作流的小时时间。 <p><p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为当天的小时，但当天的分钟则根据定期启动的时间计算。 若要设置一天的分钟，请指定“在这些分钟”属性的值。  |
+    | **在这些分钟** | `minutes` | 否 | 整数或整数数组 | 如果选择了“天”或“周”，则可以从 0 到 59 的范围内选择一个或多个整数，作为要运行工作流的小时时间的分钟时间。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 |
+    |||||
 
-   将来的运行发生在同一天的 12:30 PM 和 2:30 PM。 每个定期计划会创建其自身的工作流实例。 之后，在下一个星期一，整个计划会再次从头开始重复。 [*还有哪些计划示例？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
+    例如，假设当天是 2017 年 9 月 4 日星期一。 以下“定期”触发器不会在开始日期和时间 2017 年 9 月 18 日星期一早晨 8:00（太平洋标准时间）之前激发。  但是，该定期计划设置为仅在每个星期一的 10:30 AM、12:30 PM 和 2:30 PM 运行。 因此，首次激发触发器并创建逻辑应用工作流实例的时间为 10:30 AM。 若要详细了解开始时间的工作方式，请参阅这些[开始时间示例](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)。
 
-   ![高级计划示例](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
+    将来的运行发生在同一天的 12:30 PM 和 2:30 PM。 每个定期计划会创建其自身的工作流实例。 之后，在下一个星期一，整个计划会再次从头开始重复。 [*还有哪些计划示例？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
 
-   > [!NOTE]
-   > 仅当选择“天”或“周”作为频率时，触发器才显示指定的定期计划的预览。
+    ![高级计划示例](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
+
+    > [!NOTE]
+    > 仅当选择“天”或“周”作为频率时，触发器才显示指定的定期计划的预览。
 
 1. 现在，请使用其他操作生成剩余的工作流。 有关可添加的其他操作，请参阅 [Azure 逻辑应用的连接器](../connectors/apis-list.md)。
 
@@ -99,7 +100,7 @@ ms.locfileid: "74797598"
 
 本示例介绍了“定期”触发器定义在基础工作流定义中看起来是什么样的：
 
-``` json
+```json
 "triggers": {
    "Recurrence": {
       "type": "Recurrence",
@@ -130,3 +131,5 @@ ms.locfileid: "74797598"
 
 * [使用延迟操作暂停工作流](../connectors/connectors-native-delay.md)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

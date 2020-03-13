@@ -1,23 +1,20 @@
 ---
-title: 调用 HTTP 和 HTTPS 终结点 - Azure 逻辑应用
+title: 调用 HTTP 和 HTTPS 终结点
 description: 使用 Azure 逻辑应用将传出请求发送到 HTTP 和 HTTPS 终结点
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: v-yiso
-ms.reviewer: klam, LADocs
-ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
-ms.topic: article
-tags: connectors
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 origin.date: 07/05/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 828be4a9fb2db3a057d92deff57f3a094d3d5049
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.date: 03/09/2020
+ms.author: v-yeche
+tags: connectors
+ms.openlocfilehash: 0f82bfd4a2339fb1abfeb08be9f0d16b88a73146
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797600"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304656"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用将传出呼叫发送到 HTTP 或 HTTPS 终结点
 
@@ -33,11 +30,11 @@ ms.locfileid: "74797600"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 * 要调用的目标终结点的 URL
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 * 要从中调用目标终结点的逻辑应用。 若要从 HTTP 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 操作，请使用所需的任何触发器启动逻辑应用。 此示例的第一步是使用 HTTP 触发器。
 
@@ -47,17 +44,22 @@ ms.locfileid: "74797600"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在设计器的搜索框中，输入“http”作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。  
+1. 在“选择操作”  下的搜索框中，输入“http”作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。  
 
-   ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
+    ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
 
-   此示例将触发器重命名为“HTTP trigger”，使步骤的名称更具描述性。 此外，该示例稍后会添加 HTTP 操作，因此，两个名称必须唯一。
+    此示例将触发器重命名为“HTTP trigger”，使步骤的名称更具描述性。 此外，该示例稍后会添加 HTTP 操作，因此，两个名称必须唯一。
 
-1. 提供要包含在目标终结点调用中的 [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)的值。 设置重复周期，以确定触发器检查目标终结点的频率。
+1. 提供要包含在目标终结点调用中的 [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)的值。 设置重复周期，以确定触发器检查目标终结点的频率。
 
-   ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
+    ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
 
-   有关可用于 HTTP 的身份验证类型的详细信息，请参阅[对 HTTP 触发器和操作进行身份验证](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+    如果选择的身份验证类型不是“None”  ，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
+
+    * [向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+    * 使用托管标识对资源访问者进行身份验证
+    
+    <!--Not Available on [Authenticate access to resources with managed identities](../logic-apps/create-managed-service-identity.md)-->
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
@@ -71,23 +73,28 @@ ms.locfileid: "74797600"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开逻辑应用。
 
-   此示例的第一步是使用 HTTP 触发器。
+    此示例的第一步是使用 HTTP 触发器。
 
 1. 在要添加 HTTP 操作的步骤下，选择“新建步骤”。 
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
+    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
-1. 在设计器的搜索框中，输入“http”作为筛选器。 在“操作”列表中，选择“HTTP”操作。  
+1. 在“选择操作”  下的搜索框中，输入“http”作为筛选器。 在“操作”列表中，选择“HTTP”操作。  
 
-   ![选择“HTTP”操作](./media/connectors-native-http/select-http-action.png)
+    ![选择“HTTP”操作](./media/connectors-native-http/select-http-action.png)
 
-   此示例将操作重命名为“HTTP action”，使步骤的名称更具描述性。
+    此示例将操作重命名为“HTTP action”，使步骤的名称更具描述性。
 
-1. 提供要包含在目标终结点调用中的 [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)的值。
+1. 提供要包含在目标终结点调用中的 [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)的值。
 
-   ![输入 HTTP 操作参数](./media/connectors-native-http/http-action-parameters.png)
+    ![输入 HTTP 操作参数](./media/connectors-native-http/http-action-parameters.png)
 
-   有关可用于 HTTP 的身份验证类型的详细信息，请参阅[对 HTTP 触发器和操作进行身份验证](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+    如果选择的身份验证类型不是“None”  ，则身份验证设置将根据你的选择而有所不同。 有关 HTTP 可用的身份验证类型的详细信息，请参阅以下主题：
+
+    * [向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+    * 使用托管标识对资源访问者进行身份验证
+    
+    <!--Not Available on [Authenticate access to resources with managed identities](../logic-apps/create-managed-service-identity.md)-->
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
@@ -143,8 +150,8 @@ ms.locfileid: "74797600"
 
 有关触发器和操作参数的详细信息，请参阅以下部分：
 
-* [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>输出详细信息
 
@@ -171,3 +178,5 @@ ms.locfileid: "74797600"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

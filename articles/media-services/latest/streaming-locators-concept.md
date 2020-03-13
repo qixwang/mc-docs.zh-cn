@@ -10,19 +10,19 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 05/26/2019
-ms.date: 01/20/2020
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 8e7bb6248063d5a97a4e8197640d39fede753ba7
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: b7ead1b976ae5e71e4382a80339abd286d4672dd
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939800"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412504"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 若要使输出资产中的视频可供客户端进行播放，必须创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，然后生成流式处理 URL。 若要生成 URL，需要连接流式处理终结点主机名和流定位器路径。 对于 .NET 示例，请参阅[获取流式处理定位符](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 

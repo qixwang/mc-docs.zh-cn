@@ -1,19 +1,18 @@
 ---
 title: 常见问题解答 - Azure 中的网络性能监视器解决方案 | Azure Docs
 description: 本文收集了有关 Azure 中网络性能监视器的常见问题解答。 网络性能监视器 (NPM) 可帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
 origin.date: 10/12/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5f773d4d0b3c0a9ef96b7054d267812b4bf71e50
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 270c2147fe60c6077c95b18002c77204b615f3db
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528392"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850327"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 

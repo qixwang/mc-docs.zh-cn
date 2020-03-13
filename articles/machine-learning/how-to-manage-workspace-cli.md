@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: larryfr
+ms.author: v-yiso
 author: Blackmist
-ms.date: 11/05/2019
-ms.openlocfilehash: edbdf4f4dd563f068d7663cb6d11740597980884
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/05/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 2714872c04d3c9ac560a4c940f5656493ea05882
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598186"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850222"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -103,6 +104,9 @@ az group create --name <resource-group-name> --location <location>
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
 
+> [!NOTE]
+> 工作区名称不区分大小写。
+
 此命令的输出类似于以下 JSON：
 
 ```json
@@ -157,7 +161,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**：`az keyvault show --name <key-vault-name> --query "ID"
++ **Azure Key Vault**：`az keyvault show --name <key-vault-name> --query "ID"`
 
     此命令的响应类似于以下文本，它是 Key Vault 的 ID：
 
@@ -336,6 +340,23 @@ az group delete -g <resource-group-name>
 ```
 
 有关详细信息，请参阅 [az ml workspace delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) 文档。
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="resource-provider-errors"></a>资源提供程序错误
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>移动工作区
+
+> [!WARNING]
+> 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
+
+### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
+
+Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 进行某些操作。 当它第一次需要 ACR 实例时，它会自动创建一个。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

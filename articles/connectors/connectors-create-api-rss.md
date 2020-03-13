@@ -1,22 +1,20 @@
 ---
-title: 从 Azure 逻辑应用连接到 RSS 源 | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 RSS 源
 description: 使用 Azure 逻辑应用自动执行监视和管理 RSS 源的任务和工作流
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
+origin.date: 08/24/2018
+ms.date: 03/09/2020
+ms.author: v-yeche
 tags: connectors
-ms.date: 08/24/2018
-ms.openlocfilehash: d8412ed573cb382dcdce35f5fd0354d8bb9547b0
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.openlocfilehash: 7877893f6af75cb08bf4ae377f69a1fdd2ad4723
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797597"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304669"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 RSS 源
 
@@ -31,7 +29,7 @@ RSS（极具特色的网站摘要），也称为“真正简单的整合”，�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://www.azure.cn/pricing/1rmb-trial" target="_blank">注册一个 Azure 试用帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
 * RSS 源的 URL
 
@@ -41,21 +39,21 @@ RSS（极具特色的网站摘要），也称为“真正简单的整合”，�
 
 ## <a name="connect-to-an-rss-feed"></a>连接到 RSS 源
 
-1. 登录 [Azure门户](https://portal.azure.cn)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.cn)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 选择路径： 
+1. 选择一个路径： 
 
-   * 对于空白逻辑应用，请在搜索框中输入“rss”作为筛选器。 在触发器列表下，选择所需的触发器。 
+    * 对于空白逻辑应用，请在搜索框中输入“rss”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
-     -或-
+        -或-
 
-   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”  。 在搜索框中，输入“rss”作为筛选器。 在操作列表下，选择所需的操作。
+    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”  。 在搜索框中，输入“rss”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/rss/)。
+有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](https://docs.microsoft.com/connectors/rss/)。
 
 ## <a name="get-support"></a>获取支持
 
@@ -65,3 +63,5 @@ RSS（极具特色的网站摘要），也称为“真正简单的整合”，�
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

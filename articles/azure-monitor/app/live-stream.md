@@ -1,8 +1,6 @@
 ---
-title: Azure Application Insights 中具有自定义指标和诊断的实时指标流 | Azure Docs
+title: 使用实时指标流进行诊断 - Azure Application Insights
 description: 通过自定义指标实时监视 Web 应用，使用实时失败、跟踪和事件源以诊断问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 04/22/2019
 ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
-ms.openlocfilehash: d18bca05cef87155c1ba3ec7e13ca0dea74e7963
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: dfcaad13f997ebf0a95eed9694dec1c476bab7c7
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658075"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850408"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -24,7 +22,7 @@ ms.locfileid: "74658075"
 使用实时指标流可实现以下操作：
 
 * 通过监视性能和故障计数，在修补程序发布时对其进行验证。
-* 监视负载测试的效果，实时诊断问题。 
+* 监视负载测试的效果，实时诊断问题。
 * 通过选择和筛选想要监视的指标，重点处理特定的测试会话或筛选出已知问题。
 * 发生异常时获取异常跟踪。
 * 试用筛选器，查找最相关的 KPI。
@@ -157,7 +155,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”  并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET 核心（需要 Application Insights ASP.NET 核心 SDK 2.3.0 版本或更高版本）
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core（需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
 
 如下所述修改 startup.cs 文件：
 

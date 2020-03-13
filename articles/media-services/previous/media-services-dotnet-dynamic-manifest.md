@@ -16,12 +16,12 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: cenkdin
-ms.openlocfilehash: cb6fe6bfba1808560435dbc432c96daa9704272a
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 9acc42654409bb294578fb9368cfe4b4b609052d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124388"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850189"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "71124388"
 
 本文介绍如何使用媒体服务 .NET SDK 创建、更新和删除筛选器。 
 
-请注意，如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 请始终在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。 
+请注意，如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理中缓存），则更新此筛选器会导致播放器失败。 请始终在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。 
 
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
 创建筛选器时使用以下类型： 

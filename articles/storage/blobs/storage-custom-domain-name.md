@@ -6,20 +6,20 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/23/2020
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 1adc8a339008f3f5cdb60d10a63ede3551d5cb00
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 0c0f3a4afd1e733ce600988c7eabd4106cc85d6d
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028899"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411952"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
-可将自定义域映射到 Blob 服务终结点。 
+可以将自定义域映射到 blob 服务终结点或[静态网站](storage-blob-static-website.md)终结点。 
 
 > [!NOTE] 
 > 这种映射仅适用于子域（例如：`www.contoso.com`）。 
@@ -57,13 +57,14 @@ ms.locfileid: "77028899"
 
 2. 在菜单窗格中的“设置”下，选择“属性”。    
 
-3. 将“主 Blob 服务终结点”的值复制到文本文件。  
+3. 将**主 Blob 服务终结点**或**主静态网站终结点**的值复制到文本文件。 
 
 4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。  下表提供了一些示例。
 
    | 终结点的类型 |  endpoint | 主机名 |
    |------------|-----------------|-------------------|
    |Blob 服务  | `https://mystorageaccount.blob.core.chinacloudapi.cn/` | `mystorageaccount.blob.core.chinacloudapi.cn` |
+   |静态网站  | `https://mystorageaccount.z4.web.core.chinacloudapi.cn/` | `mystorageaccount.z4.web.core.chinacloudapi.cn` |
   
    请设置此值供稍后使用。
 
@@ -94,6 +95,8 @@ ms.locfileid: "77028899"
 1. 在 [Azure 门户](https://portal.azure.cn)中转到自己的存储帐户。
 
 2. 在菜单窗格中的“Blob 服务”下，选择“自定义域”。    
+
+   ![自定义域选项](./media/storage-custom-domain-name/custom-domain-button.png "自定义域")
 
    此时会打开“自定义域”窗格。 
 
@@ -140,13 +143,14 @@ ms.locfileid: "77028899"
 
 2. 在菜单窗格中的“设置”下，选择“属性”。    
 
-3. 将“主 Blob 服务终结点”的值复制到文本文件。  
+3. 将**主 Blob 服务终结点**或**主静态网站终结点**的值复制到文本文件。 
 
 4. 从该字符串中删除协议标识符（例如 HTTPS）和尾部斜杠。  下表提供了一些示例。
 
    | 终结点的类型 |  endpoint | 主机名 |
    |------------|-----------------|-------------------|
    |Blob 服务  | `https://mystorageaccount.blob.core.chinacloudapi.cn/` | `mystorageaccount.blob.core.chinacloudapi.cn` |
+   |静态网站  | `https://mystorageaccount.z4.web.core.chinacloudapi.cn/` | `mystorageaccount.z4.web.core.chinacloudapi.cn` |
   
    请设置此值供稍后使用。
 
@@ -226,7 +230,7 @@ ms.locfileid: "77028899"
 
 若要删除自定义域映射，请取消注册自定义域。 使用以下过程之一。
 
-#### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要删除自定义域设置，请执行以下操作：
 
@@ -241,7 +245,7 @@ ms.locfileid: "77028899"
 
 成功删除自定义域后，会看到一条门户通知，指出存储帐户已成功更新
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要删除自定义域注册，请使用 [az storage account update](/cli/storage/account) CLI 命令，并为 `--custom-domain` 参数值指定空字符串 (`""`)。
 
@@ -263,7 +267,7 @@ ms.locfileid: "77028899"
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

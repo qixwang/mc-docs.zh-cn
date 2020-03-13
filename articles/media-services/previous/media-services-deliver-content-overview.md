@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 94806d9b02fe2f53a336b2c954add152f778bb4d
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: cfbedd1955869d55bc4c50a06af35926cbc3e085
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124395"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850522"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
@@ -83,7 +83,7 @@ ms.locfileid: "71124395"
 若要为用户提供流式处理 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，可获得包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 若要构造流式处理清单文件的完整 URL，必须将定位符的路径值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加/Manifest  和相应的格式（如果需要）。
 
 > [!NOTE]
-> 也可通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前 AMS 对自定义域不支持 SSL。  
+> 也可通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，AMS 目前不支持对自定义域使用 SSL。  
 > 
 
 仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.chinacloudapi.cn”。 包含“origin.mediaservices.chinacloudapi.cn”（旧格式）的流式处理 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 SSL 流式传输内容。
@@ -149,7 +149,7 @@ https://test001.blob.core.chinacloudapi.cn/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17
 
 ## <a name="streaming-endpoints"></a>流式处理终结点
 
-流式处理终结点表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以直接将内容分发给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 有两种类型的流式处理终结点，**标准**和**高级**。 有关详细信息，请参阅： [流式处理终结点概述](media-services-streaming-endpoints-overview.md)。
+流式处理终结点代表一个流式处理服务，它可以直接将内容分发给客户端播放器应用程序。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 有两种类型的流式处理终结点，**标准**和**高级**。 有关详细信息，请参阅： [流式处理终结点概述](media-services-streaming-endpoints-overview.md)。
 
 >[!NOTE]
 >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。   若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 

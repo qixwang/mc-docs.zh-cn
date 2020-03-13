@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 6adbc175ff318b07c4b9c2f0b101c3b55d8ac074
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 78c2cc569cf42950cdc251fd9b804be4a7a99aac
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412456"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 ## <a name="overview"></a>概述
 
@@ -277,7 +277,7 @@ DRM 子系统可能包含以下组件：
 
 Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对此令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且来自 Azure AD，应用程序验证令牌的签名。 应用程序可以使用由 Azure AD 公开且包含在租户联合元数据文档中的公钥。 此公钥以及衍生它的签名密钥是由 Azure AD 中所有租户使用的同一个密钥。
 
-有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](../../active-directory/active-directory-signing-key-rollover.md)。
+有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](/active-directory/develop/active-directory-signing-key-rollover)。
 
 在[公钥-私钥对](https://login.partner.microsoftonline.cn/common/discovery/keys/)之间：
 

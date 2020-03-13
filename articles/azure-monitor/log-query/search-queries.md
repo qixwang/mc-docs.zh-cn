@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志中的搜索查询 | Docs
 description: 本文提供有关在 Azure Monitor 日志中使用搜索查询的入门教程。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/06/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8023491822ca930e0df7bbb466237d124a4658f8
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 6c39b45f197273fcf2e5a517f2f2b1ab50473770
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730325"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850267"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
 Azure Monitor 日志查询可以从表名或 search 命令开始。 本教程介绍基于搜索的查询。 每种方法各有优势。
@@ -97,7 +96,7 @@ search in (Event) "corp*.com"
 > [!TIP]
 > 尽管可以使用 `search *` 来获取每个表中的每个列，但我们建议始终将查询范围限定为特定的表。 无范围查询可能需要花费一段时间才能完成，并且可能返回过多的结果。
 
-## <a name="add-and--or-to-search-queries"></a>将 *and* / *or* 添加到搜索查询
+## <a name="add-and--or-to-search-queries"></a>将“and”  /“or”  添加到搜索查询
 使用 **and** 可以搜索包含多个词语的记录：
 
 ```Kusto

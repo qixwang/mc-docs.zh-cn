@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 2c0ee9bc9ed1e84d51d0c566725fe16dd45aab4b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: cd6bafb44260c74858e740026fcebea5f86eb39e
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598207"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850232"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>本地和远程运行的模型可解释性
 
@@ -333,10 +333,10 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     jupyter labextension install microsoft-mli-widget
     ```
 
-若要加载可视化仪表板，请使用以下代码：
+若要加载可视化仪表板，请使用以下代码。
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
+from interpret_community.widget import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, x_test)
 ```
@@ -362,7 +362,7 @@ ExplanationDashboard(global_explanation, model, x_test)
    [![本地特征重要性可视化仪表板](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * “模型”窗格 
-  1. 如果已遵循[使用 Azure 机器学习部署模型](/machine-learning/service/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。 
+  1. 如果已遵循[使用 Azure 机器学习部署模型](/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。 
   1. 选择一个模型，然后选择“解释”选项卡来查看解释可视化仪表板。 
 
 ## <a name="interpretability-at-inference-time"></a>推理时的可解释性
@@ -427,7 +427,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 1. 遵循以下步骤将映像部署到计算目标：
 
-   1. 如果需要，请遵循[使用 Azure 机器学习部署模型](/machine-learning/service/how-to-deploy-and-where)中的步骤注册原始预测模型。
+   1. 如果需要，请遵循[使用 Azure 机器学习部署模型](/machine-learning/how-to-deploy-and-where)中的步骤注册原始预测模型。
 
    1. 创建评分文件。
 

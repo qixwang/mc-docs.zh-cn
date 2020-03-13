@@ -2,21 +2,19 @@
 title: 从 Azure 逻辑应用连接到 REST 终结点
 description: 使用 Azure 逻辑应用在自动化任务、流程和工作流中监视 REST 终结点
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: v-yiso
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-origin.date: 07/05/2019
-ms.date: 07/29/2019
+origin.date: 11/01/2019
+ms.date: 03/09/2020
+ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: a6ed47dd73953b2c24868d707e1b94b49180df78
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 963e100e03a36beda26fd0771d020c1b63fd446e
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74388990"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304655"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -24,19 +22,19 @@ ms.locfileid: "74388990"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-* 用于描述目标 REST 终结点的 Swagger 文件的 URL
+* 用于描述目标 REST 终结点的 Swagger（非 OpenAPI）文件的 URL
 
-  通常，REST 终结点必须符合此条件，才能让连接器正常工作：
+    通常，REST 终结点必须符合此条件，才能让连接器正常工作：
 
-  * Swagger 文件必须托管在可公开访问的 HTTPS URL 上。
+    * Swagger 文件必须托管在可公开访问的 HTTPS URL 上。
 
-  * 必须为 Swagger 文件启用[跨域资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
+    * 必须为 Swagger 文件启用[跨域资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
-  若要引用非托管的或者不符合安全要求和跨域要求的 Swagger 文件，可[将 Swagger 文件上传到 Azure 存储帐户中的某个 Blob 容器](#host-swagger)，并在该存储帐户中启用 CORS，以便可以引用该文件。
+    若要引用非托管的或者不符合安全要求和跨域要求的 Swagger 文件，可[将 Swagger 文件上传到 Azure 存储帐户中的某个 Blob 容器](#host-swagger)，并在该存储帐户中启用 CORS，以便可以引用该文件。
 
-  本主题中的示例使用[认知服务人脸 API](/cognitive-services/face/overview)，这需要获取[认知服务帐户和访问密钥](../cognitive-services/cognitive-services-apis-create-account.md)。
+    本主题中的示例使用[认知服务人脸 API](/cognitive-services/face/overview)，这需要获取[认知服务帐户和访问密钥](../cognitive-services/cognitive-services-apis-create-account.md)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
@@ -50,29 +48,29 @@ ms.locfileid: "74388990"
 
 1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。  
 
-   ![选择 HTTP + Swagger 触发器](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
+    ![选择 HTTP + Swagger 触发器](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
 1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。  
 
-   此示例使用[认知服务人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 的 Swagger URL：
+    对于[认知服务人脸 API](https://chinanorth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)，此示例使用位于“中国北部”区域的 Swagger URL：
 
-   `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
+    `https://chinanorth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![输入 Swagger 终结点的 URL](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+    ![输入 Swagger 终结点的 URL](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. 当设计器显示了 Swagger 文件描述的操作时，请选择要使用的操作。
 
-   ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+    ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. 提供要包含在终结点调用中的触发器参数的值（根据所选的操作而异）。 设置重复周期，以确定触发器调用终结点的频率。
 
-   此示例将触发器重命名为“HTTP + Swagger trigger:Face - Detect”，使步骤名称更具描述性。
+    此示例将触发器重命名为“HTTP + Swagger trigger:Face - Detect”，使步骤名称更具描述性。
 
-   ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+    ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
-   有关可用于 HTTP + Swagger 的身份验证类型的详细信息，请参阅[对 HTTP 触发器和操作进行身份验证](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+    有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
@@ -86,7 +84,7 @@ ms.locfileid: "74388990"
 
 1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。 
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
+    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
 
 1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“操作”列表中选择“HTTP + Swagger”操作。  
 
@@ -94,25 +92,25 @@ ms.locfileid: "74388990"
 
 1. 在“SWAGGER 终结点 URL”框中，输入 Swagger 文件的 URL，然后选择“下一步”。  
 
-   此示例使用[认知服务人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 的 Swagger URL：
+    对于[认知服务人脸 API](https://chinanorth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)，此示例使用位于“中国北部”区域的 Swagger URL：
 
-   `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
+    `https://chinanorth.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![输入 Swagger 终结点的 URL](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
+    ![输入 Swagger 终结点的 URL](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
 
 1. 当设计器显示了 Swagger 文件描述的操作时，请选择要使用的操作。
 
-   ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
+    ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
 
 1. 提供要包含在终结点调用中的操作参数的值（根据所选的操作而异）。
 
-   此示例未使用参数，而是将操作重命名为“HTTP + Swagger action:Face - Identify”，使步骤名称更具描述性。
+    此示例未使用参数，而是将操作重命名为“HTTP + Swagger action:Face - Identify”，使步骤名称更具描述性。
 
-   ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
+    ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
-   有关可用于 HTTP + Swagger 的身份验证类型的详细信息，请参阅[对 HTTP 触发器和操作进行身份验证](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+    有关 HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
@@ -126,16 +124,16 @@ ms.locfileid: "74388990"
 
 1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。  在“Blob 服务”选项卡上指定值，然后选择“保存”。  
 
-   | 属性 | Value |
-   |----------|-------|
-   | **允许的源** | `*` |
-   | **允许的方法** | `GET`、`HEAD`、`PUT` |
-   | **允许的标头** | `*` |
-   | **公开的标头** | `*` |
-   | **最大期限**（以秒为单位） | `200` |
-   |||
+    | 属性 | Value |
+    |----------|-------|
+    | **允许的源** | `*` |
+    | **允许的方法** | `GET`、`HEAD`、`PUT` |
+    | **允许的标头** | `*` |
+    | **公开的标头** | `*` |
+    | **最大期限**（以秒为单位） | `200` |
+    |||
 
-   此示例使用 [Azure 门户](https://portal.azure.cn)，不过，你也可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具，或使用此示例 [PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)自动配置此设置。
+    此示例使用 [Azure 门户](https://portal.azure.cn)，不过，你也可以使用 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具，或使用此示例 [PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)自动配置此设置。
 
 1. [创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 在容器的“概述”窗格中，选择“更改访问级别”。   在“公共访问级别”列表中，选择“Blob (仅限对 Blob 进行匿名读取访问)”，然后选择“确定”。   
 
@@ -143,7 +141,7 @@ ms.locfileid: "74388990"
 
 1. 若要在 Blob 容器中引用该文件，请使用以下格式的 HTTPS 链接（区分大小写）：
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+    `https://<storage-account-name>.blob.core.chinacloudapi.cn/<blob-container-name>/<swagger-file-name>`
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -170,3 +168,5 @@ ms.locfileid: "74388990"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

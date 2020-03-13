@@ -8,14 +8,14 @@ manager: digimobile
 ms.service: storage
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 09/30/2019
+ms.date: 03/09/2020
 ms.author: v-jay
-ms.openlocfilehash: b54776bb23644ccd47d591c5b1fb2af5144ec673
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 9198be3f8fa89a1e5c9adfe7a5824baeb86488fd
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306862"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412245"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
 
@@ -46,9 +46,9 @@ ms.locfileid: "71306862"
 
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | Azure Monitor 指标现已发布，日志开始推出预览版 |
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | Azure Monitor 指标|
 | 控制和管理平面日志记录和审核 | 是 | Azure 资源管理器活动日志 |
-| 数据平面日志记录和审核| 是 | 服务诊断日志，Azure Monitor 日志记录开始推出预览版  |
+| 数据平面日志记录和审核| 是 | 服务诊断日志。|
 
 ## <a name="identity"></a>标识
 

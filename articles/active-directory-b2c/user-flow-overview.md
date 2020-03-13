@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的用户流 | Microsoft Docs
 description: 详细了解 Azure Active Directory B2C 的可扩展策略框架以及如何创建各种用户流。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 6c76888204a59ae2b85014b570e5315902cee787
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 11ac35004ca980b28bf963ba4df75c60160340a4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028269"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266087"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流
 
@@ -81,11 +81,9 @@ Azure 门户中一直在添加[新版本的用户流](user-flow-versions.md)。 
 
 不保证在所有这些情况下都会验证电子邮件地址。 租户管理员可以在本地帐户的基本策略中禁用电子邮件验证。 即使启用了电子邮件地址验证，但如果地址来自社交标识提供者并且尚未更改，则也不会验证地址。
 
-只会通过 Active Directory 图形 API 公开 **otherMails** 和 **signInNames** 属性。 强身份验证详细信息属性中的电子邮件地址不可用。
+只有 **otherMails** 和 **signInNames** 属性通过 Microsoft Graph API 公开。 强身份验证详细信息属性中的电子邮件地址不可用。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要创建建议的用户流，请遵照[教程：创建用户流](tutorial-create-user-flows.md)中的说明。
-
-
 

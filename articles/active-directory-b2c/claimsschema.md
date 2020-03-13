@@ -2,26 +2,26 @@
 title: ClaimsSchema - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ClaimsSchema 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 60ea2527d9375dfe84c2464930c417e0c9457d81
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 9a53f1d6171c31da991c89261143f0af57431fa7
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531308"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265956"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
- ClaimsSchema 元素定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明的位置。 声明可以是名字、姓氏、显示名称、电话号码等。 ClaimsSchema 元素包含 ClaimType  元素的列表。 ClaimType  元素包含 Id  属性，它是声明名称。
+ClaimsSchema  元素定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明的位置。 声明可以是名字、姓氏、显示名称、电话号码等。 ClaimsSchema 元素包含 ClaimType  元素的列表。 ClaimType  元素包含 Id  属性，它是声明名称。
 
 ```XML
 <BuildingBlocks>
@@ -42,7 +42,7 @@ ms.locfileid: "77531308"
 
 ClaimType  元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
 
@@ -56,15 +56,15 @@ ClaimType  元素包含以下元素：
 | Mask | 0:1 | 显示声明时可以应用的掩码字符的可选字符串。 例如，电话号码 324-232-4343 可以屏蔽为 XXX-XXX-4343。 |
 | UserHelpText | 0:1 | 可帮助用户了解其用途的声明类型的说明。 可将值[本地化](localization.md)。 |
 | UserInputType | 0:1 | 应在手动输入声明类型的声明数据时可供用户使用的输入控制的类型。 请参阅稍后在此页中定义的用户输入类型。 |
-| Restriction | 0:1 | 此声明的值限制，如正则表达式 (Regex) 或可接受值的列表。 可将值[本地化](localization.md)。 |
+| 限制 | 0:1 | 此声明的值限制，如正则表达式 (Regex) 或可接受值的列表。 可将值[本地化](localization.md)。 |
 PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的引用。 **PredicateValidationReference** 元素可用于执行验证过程，以确保仅输入格式正确的数据。 有关详细信息，请参阅 [Predicates](predicates.md)。 |
 
-### <a name="datatype"></a>DataType
+### <a name="datatype"></a>数据类型
 
 **DataType** 元素支持以下值：
 
 | 类型 | 说明 |
-| ------- | ----------- | 
+| ------- | ----------- |
 |boolean|表示一个布尔（`true` 或 `false`）值。|
 |date| 表示某个时刻，通常表示为某天的日期。 日期的值遵循 ISO 8601 约定。|
 |dateTime|表示某个时刻，通常以日期和当天的时间表示。 日期的值遵循 ISO 8601 约定。|
@@ -87,9 +87,9 @@ DefaultPartnerClaimTypes  可能包含以下元素：
 
 Protocol  元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| Name | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | 是 | 要使用的声明类型名称。 |
 
 在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname  声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
@@ -122,7 +122,7 @@ Protocol  元素包含以下属性：
 
 Mask  元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
 | `Regex` | 否 | 如果将 **`Type`** 设置为 `Regex`，请指定要使用的正则表达式。
@@ -158,11 +158,11 @@ Mask  元素包含以下属性：
 ![浏览器中显示的电子邮件声明，其中字符由星号掩码](./media/claimsschema/mask-regex.png)
 
 
-### <a name="restriction"></a>Restriction
+### <a name="restriction"></a>限制
 
 Restriction  元素可能包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | MergeBehavior | 否 | 用于将枚举值与具有相同标识符的父策略中的 ClaimType 合并的方法。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是应追加到父策略中指定的集合的末尾的数据集合。 `Prepend` 值是应在父策略中指定的集合之前添加的数据集合。 `ReplaceAll` 值是应忽略的父策略中指定的数据集合。 |
 
@@ -175,11 +175,13 @@ Restriction  元素包含以下元素：
 
 #### <a name="enumeration"></a>枚举
 
+**Enumeration** 元素定义了可供用户在用户界面中选择声明的可用选项，例如 `CheckboxMultiSelect`、`DropdownSingleSelect` 或 `RadioSingleSelect` 中的值。 另外，可以使用 [LocalizedCollections](localization.md#localizedcollections) 元素定义和本地化可用选项。 若要从声明 **Enumeration** 集合中查找项目，请使用 [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 声明转换。
+
 Enumeration  元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| Text | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
+| 文本 | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
 |Value | 是 | 与此选项关联的声明值。 |
 | SelectByDefault | 否 | 指示默认情况下是否应在 UI 中选择此选项。 可能的值：True 或 False。 |
 
@@ -206,10 +208,10 @@ Enumeration  元素包含以下属性：
 
 Pattern  元素可以包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此类型的声明必须匹配才能有效的正则表达式。 |
-| HelpText | 否 | 此声明的模式或正则表达式。 |
+| HelpText | 否 | 正则表达式检查失败时向用户显示的错误消息。 |
 
 以下示例将配置具有正则表达式输入验证和帮助文本的 email  声明：
 
@@ -245,7 +247,7 @@ Azure AD B2C 支持各种用户输入类型，例如在手动输入声明类型�
 |DropdownSingleSelect |`string` |单选下拉框。 声明值为所选值。|
 |EmailBox | `string` |电子邮件输入字段。 |
 |Paragraph | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`|一个仅显示段落标记中文本的字段。 |
-|Password | `string` |密码文本框。|
+|密码 | `string` |密码文本框。|
 |RadioSingleSelect |`string` | 单选按钮的集合。 声明值为所选值。|
 |Readonly | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`| 只读文本框。 |
 |TextBox |`boolean`、`int`、`string` |单行文本框。 |
@@ -407,7 +409,5 @@ Paragraph  用户输入类型用于提供仅在段落标记中显示文本的字
   </Restriction>
 </ClaimType>
 ```
-
-若要显示 responseMsg  声明中的 Enumeration  值之一，请使用 `GetMappedValueFromLocalizedCollection` 或 `CreateStringClaim` 声明转换。 有关详细信息，请参阅[字符串声明转换](string-transformations.md)
 
 <!-- Update_Description: wording update -->

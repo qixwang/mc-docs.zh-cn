@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 11/04/2019
 ms.author: sasolank
 ms.date: 11/18/2019
-ms.openlocfilehash: 342b4f437e678b313b50c5ab621ec1d78a501813
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.openlocfilehash: 8f6476ecab5175f8821877d2ff6305fb8acf527f
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831399"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213724"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
 
@@ -58,7 +58,7 @@ ms.locfileid: "73831399"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps) 中的安装说明。 
+* 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的安装说明。 
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>在 API 管理与应用程序网关之间创建集成需要做好哪些准备？
 
@@ -160,7 +160,7 @@ $apimsubnetdata=$vnet.Subnets[1]
 ```
 ## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>在以内部模式配置的 VNET 中创建 API 管理服务
 
-以下示例演示如何在 VNET 中创建一个配置为仅供内部访问的 API 管理服务。
+以下示例演示如何在配置为仅供内部访问的 VNET 中创建 API 管理服务。
 
 ### <a name="step-1"></a>步骤 1
 使用前面创建的子网 $apimsubnetdata 创建一个 API 管理虚拟网络对象。
@@ -227,7 +227,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 ## <a name="create-application-gateway-configuration"></a>创建应用程序网关配置
 
-在创建应用程序网关之前，必须设置所有配置项目。 以下步骤将创建应用程序网关资源所需的配置项。
+在创建应用程序网关之前，必须设置所有配置项目。 以下步骤会创建应用程序网关资源所需的配置项目。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -285,7 +285,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>步骤 7
 
-上传要在已启用 SSL 的后端池资源上使用的证书。 该证书与你在上述步骤 4 中所提供的证书相同。
+上传要在已启用 SSL 的后端池资源上使用的证书。 该证书与上述步骤 4 中所提供的证书相同。
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
@@ -347,7 +347,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 ## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>创建从 API 管理代理主机名到应用程序网关资源公共 DNS 名称的 CNAME 映射
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，因此可能不容易使用。 
+创建网关后，下一步是配置用于通信的前端。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，因此可能不易于使用。 
 
 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使 APIM 代理主机名（例如，上面示例中的 `api.contoso.net`）指向此 DNS 名称。 若要配置前端 IP CNAME 记录，可使用 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 不建议使用 A 记录，因为重新启动网关后 VIP 可能会变化。
 

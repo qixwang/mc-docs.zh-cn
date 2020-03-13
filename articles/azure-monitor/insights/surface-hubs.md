@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Monitor 监视 Surface Hub | Azure Docs
 description: 使用 Surface Hub 解决方案来跟踪 Surface Hub 的运行状况并了解它们的使用情况。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fdfda3f1dcedf4ded2ba5391861dd55e371fc36b
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 9dab7a39d44977b5d4695cedcb70c1e3361d74fc
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730397"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850304"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>使用 Azure Monitor 监视 Surface Hub 以跟踪其运行状况
 

@@ -1,21 +1,20 @@
 ---
 title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 origin.date: 07/23/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 author: lingliw
-ms.openlocfilehash: 868aa7505b79212d72716922f7de036dff9d6364
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: d2fc09cc08fe41cb9ba4f8df1441f0cb815ade2b
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599861"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850452"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
+
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
 *在 Application Insights 中，我只看到应用生成的一部分事件。*
 
@@ -218,7 +217,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsights` 版本匹配
 
-Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.7.1，它引用 Microsoft.ApplicationInsights 版本 2.10。 因此，要安装的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本应该是 2.10.0
+Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.8.2，它引用 Microsoft.ApplicationInsights 版本 2.11.2。 因此，要安装的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本应该是 2.11.2
 
 2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
 

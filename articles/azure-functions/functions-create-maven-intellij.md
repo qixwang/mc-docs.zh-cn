@@ -1,24 +1,17 @@
 ---
-title: 使用 Java 和 IntelliJ 创建 Azure 函数 | Microsoft Docs
+title: 使用 Java 和 IntelliJ 创建 Azure 函数
 description: 了解如何使用 Java 和 IntelliJ 在 Azure 上创建和发布简单的 HTTP 触发式无服务器应用。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jpconnock
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构, java
-ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
-origin.date: 07/01/2018
-ms.date: 07/17/2019
+ms.date: 03/03/2020
 ms.author: v-junlch
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d88c92a26e2f3d4f0a05a7bb132306515d027107
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.openlocfilehash: 1a9551c835215ca2aec3a8456968401145668b36
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68331908"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266030"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -55,7 +48,7 @@ ms.locfileid: "68331908"
     - _ArtifactId_：azure-functions-archetype
     - _版本_：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     中的最新版本 **1.22** ![在 IntelliJ IDEA 中根据 archetype 创建 Maven 项目](./media/functions-create-first-java-intellij/functions-create-intellij.png)  
-1. 选择“确定”，然后选择“下一步”。  
+1. 选择“确定”  ，然后选择“下一步”  。
 1. 输入当前项目的详细信息，然后选择“Finish”（完成）  。
 
 Maven 在新文件夹中项目文件，该文件夹使用与 _ArtifactId_ 值相同的名称。 项目的生成代码是一个简单的 [HTTP 触发的](/azure-functions/functions-bindings-http-webhook)函数，回显触发 HTTP 请求的正文。
@@ -87,8 +80,6 @@ Maven 在新文件夹中项目文件，该文件夹使用与 _ArtifactId_ 值相
 1. 选择“(+)”，添加“Remote”（远程）。  
 1. 完成“Name”（名称）和“Settings”（设置）字段   ，然后选择“OK”（确定）  以保存配置。
 1. 在设置后，选择“Debug”（调试）>“Remote Configuration Name”（远程配置名称）或在键盘上按 Shift+F9 以启动调试。 
-
-   ![在 IntelliJ 中调试函数](./media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
 1. 完成后，停止调试器和正在运行的进程。 一次只能有一个函数主机处于活动状态并在本地运行。
 

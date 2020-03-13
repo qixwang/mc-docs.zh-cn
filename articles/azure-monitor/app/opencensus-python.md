@@ -1,26 +1,24 @@
 ---
 title: 使用 Azure Monitor 监视 Python 应用程序（预览版）| Microsoft Docs
 description: 提供有关将 OpenCensus Python 连接到 Azure Monitor 的说明
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 10/11/2019
 ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 3b3ffe7bf211c6782d1d7b3cb727861053593e24
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: e5169df130372c178a30458b1abb649a7b8a0932
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497444"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850398"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>为 Python 应用程序设置 Azure Monitor（预览版）
 
 Azure Monitor 通过与 [OpenCensus](https://opencensus.io) 集成，来支持 Python 应用程序的分布式跟踪、指标收集和日志记录。 本文将逐步介绍设置 OpenCensus for Python 并将监视数据发送到 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 - Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更低的版本在经过轻微的更改后也可能适用。
@@ -132,9 +130,17 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 
 4. 现在当你运行 Python 脚本时，系统仍会提示你输入值，但只有此值输出到 shell 中。 创建的 `SpanData` 将发送到 Azure Monitor。 可以在 `dependencies` 下找到发出的 span 数据。
 
-5. 有关 OpenCensus 中采样的详细信息，请参阅 [OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+#### <a name="sampling"></a>采样
 
-6. 有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus [遥测关联](/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+有关 OpenCensus 中采样的详细信息，请参阅 [OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="trace-correlation"></a>跟踪关联
+
+有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus Python [遥测关联](/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关在将跟踪的遥测发送到 Azure Monitor 之前如何对其进行修改的详细信息，请参阅 OpenCensus Python [遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="metrics"></a>指标
 
@@ -238,6 +244,32 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     ```
 
 4. 导出程序按固定的间隔将指标数据发送到 Azure Monitor。 默认间隔为每隔 15 秒。 我们正在跟踪单个指标，因此，在每个间隔将会发送此指标数据及其包含的任何值和时间戳。 可在 `customMetrics` 下找到数据。
+
+#### <a name="standard-metrics"></a>标准指标
+
+默认情况下，指标导出程序会将一组标准指标发送到 Azure Monitor。 可以通过在指标导出程序的构造函数中将 `enable_standard_metrics` 标志设为 `False` 来禁用此功能。
+
+    ```python
+    ...
+    exporter = metrics_exporter.new_metrics_exporter(
+      enable_standard_metrics=False,
+      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    ...
+    ```
+下面列出了目前已发送的标准指标：
+
+- 可用内存（字节）
+- CPU 处理器时间（百分比）
+- 传入请求速率（每秒）
+- 传入请求平均执行时间（毫秒）
+- 传出请求速率（每秒）
+- 进程 CPU 使用率（百分比）
+- 进程专用字节数（字节）
+
+应该能够在 `performanceCounters` 中看到这些指标。 传入请求速率会低于 `customMetrics`。
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关在将跟踪的遥测发送到 Azure Monitor 之前如何对其进行修改的详细信息，请参阅 OpenCensus Python [遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="logs"></a>日志
 
@@ -358,8 +390,17 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
     except Exception:
     logger.exception('Captured an exception.', extra=properties)
     ```
+#### <a name="sampling"></a>采样
 
-7. 有关如何使用跟踪上下文数据扩充日志的详细信息，请参阅 OpenCensus Python [日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+有关 OpenCensus 中采样的详细信息，请参阅 [OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="log-correlation"></a>日志关联
+
+有关如何使用跟踪上下文数据扩充日志的详细信息，请参阅 OpenCensus Python [日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关在将跟踪的遥测发送到 Azure Monitor 之前如何对其进行修改的详细信息，请参阅 OpenCensus Python [遥测处理器](/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ## <a name="view-your-data-with-queries"></a>使用查询查看数据
 

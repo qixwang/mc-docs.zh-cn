@@ -2,19 +2,15 @@
 title: 持久性业务流程协调程序代码约束 - Azure Functions
 description: 适用于 Azure Durable Functions 的业务流程函数重播和代码约束。
 author: cgillum
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/02/2019
-ms.date: 11/18/2019
+ms.date: 03/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: fc21f39e50b31750f7dcc403a29a5df7ee784185
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 2249e9b699862b6a50d00a88fefecd45590b3729
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178995"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266066"
 ---
 # <a name="orchestrator-function-code-constraints"></a>业务流程协调程序函数代码约束
 
@@ -32,7 +28,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 下表显示了应该避免使用的 API 的一些示例，因为它们不是确定性的。  这些限制仅适用于业务流程协调程序函数。 其他函数类型没有此类限制。
 
-| API 类别 | 原因 | 解决方法 |
+| API 类别 | Reason | 解决方法 |
 | ------------ | ------ | ---------- |
 | 日期和时间  | 返回当前日期或时间的 API 是非确定性的，因为每次重播时它们返回的值都不相同。 | 使用 .NET 中的 `CurrentUtcDateTime` API 或 JavaScript 中的 `currentUtcDateTime` API，可以安全地进行重播。 |
 | GUID 和 UUID  | 返回随机 GUID 或 UUID 的 API 是非确定性的，因为每次重播时它们生成的值都不相同。 | 使用 .NET 中的 `NewGuid` 或 JavaScript 中的 `newGuid` 安全地生成随机 GUID。 |
@@ -42,7 +38,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 | 阻止 API | 阻止 .NET 中的 `Thread.Sleep` 等 API 和类似的 API 可能导致业务流程协调程序函数出现性能和缩放问题，应该避免使用。 在 Azure Functions 消耗计划中，它们甚至可能导致不必要的运行时收费。 | 在适用的情况下使用阻止 API 的替代方案。 例如，使用 `CreateTimer` 在业务流程执行中引入延迟。 [持久计时器](durable-functions-timers.md)延迟不计入业务流程协调程序函数的执行时间。 |
 | 异步 API | 除非使用 `IDurableOrchestrationContext` API 或 `context.df` 对象的 API，否则业务流程协调程序代码不得启动任何异步操作。 例如，在 .NET 中不能使用 `Task.Run`、`Task.Delay` 和 `HttpClient.SendAsync`，在 JavaScript 中不能使用 `setTimeout` 和 `setInterval`。 Durable Task Framework 在单个线程上执行业务流程协调程序代码。 它不能与可由其他异步 API 调用的其他任何线程交互。 | 业务流程协调程序函数只应进行持久性异步调用。 应该由活动函数进行任何其他异步 API 调用。 |
 | 异步 JavaScript 函数 | 不能将 JavaScript 业务流程协调程序函数声明为 `async`，因为 node.js 运行时不保证异步函数是确定性的。 | 将 JavaScript 业务流程协调程序函数声明为同步的生成器函数。 |
-| 线程 API | Durable Task Framework 在单个线程上运行业务流程协调程序代码，不能与任何其他线程交互。 将新线程引入业务流程的执行中可能导致非确定性执行或死锁。 | 在绝大多数情况下，业务流程协调程序函数不应使用线程 API。 如果需要使用此类 API，请将其使用限制为活动函数。 |
+| 线程 API | Durable Task Framework 在单个线程上运行业务流程协调程序代码，不能与任何其他线程交互。 将新线程引入业务流程的执行中可能导致非确定性执行或死锁。 | 在绝大多数情况下，业务流程协调程序函数不应使用线程 API。 例如，在 .NET 中，应避免使用 `ConfigureAwait(continueOnCapturedContext: false)`。这样可以确保任务继续在业务流程协调程序函数的原始 `SynchronizationContext` 上运行。 如果需要使用此类 API，请将其使用限制为活动函数。 |
 | 静态变量 | 避免在业务流程协调程序函数中使用非常量静态变量，因为其值可能随时间而变，导致非确定性的运行时行为。 | 使用常量，或者将静态变量的使用限制为活动函数。 |
 | 环境变量 | 请勿在业务流程协调程序函数中使用环境变量。 其值可能随时间而变，导致非确定性的运行时行为。 | 环境变量只能在客户端函数或活动函数内部引用。 |
 | 无限循环 | 请避免在业务流程协调程序函数中出现无限循环。 由于 Durable Task Framework 在业务流程函数的执行过程中会保存执行历史记录，无限循环可能会导致业务流程协调程序实例耗尽内存。 | 对于无限循环方案，可使用 .NET 中的 `ContinueAsNew` 或 JavaScript 中的 `continueAsNew` 等 API 来重启函数执行，并丢弃以前的执行历史记录。 |

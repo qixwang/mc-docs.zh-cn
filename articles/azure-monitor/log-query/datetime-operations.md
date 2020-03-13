@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 日志查询中使用日期时间值 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中使用日期和时间数据。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 origin.date: 08/22/2019
@@ -9,12 +8,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 30000c62dd976ba1ec087f1826123a1a9a0c19f1
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: ab15aee82a031557b186c2f8cb640ea0742c9518
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730462"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850278"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用日期时间值
 
@@ -36,7 +35,7 @@ Kusto 查询语言主要具有两种与日期和时间相关的数据类型：�
 |d           | day          |
 |h           | hour         |
 |m           | minute       |
-|s           | 秒       |
+|s           | second       |
 |ms          | 毫秒  |
 |微秒 | 微秒  |
 |时钟周期        | 纳秒   |

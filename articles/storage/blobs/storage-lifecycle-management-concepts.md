@@ -4,17 +4,17 @@ description: 了解如何创建生命周期策略规则，以将陈旧数据从�
 author: WenJason
 ms.author: v-jay
 origin.date: 05/21/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 50c6d8168988407900431fd9b9419159f6f485b1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: ffe2c29c3a3cb4e64ab13ca99bab778bdee7a706
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028946"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411951"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -59,7 +59,7 @@ ms.locfileid: "77028946"
 
 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 可以在 Azure 门户中通过两种方式添加策略。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "77028946"
 
 6. 有关此 JSON 示例的详细信息，请参阅[策略](#policy)和[规则](#rules)部分。
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 使用以下 PowerShell 脚本可将策略添加到存储帐户。 必须使用资源组名称初始化 `$rgname` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。
 
@@ -159,7 +159,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-# <a name="templatetabtemplate"></a>[模板](#tab/template)
+# <a name="template"></a>[模板](#tab/template)
 
 可以使用 Azure 资源管理器模板定义生命周期管理。 以下示例模板可以使用生命周期管理策略部署 RA-GRS GPv2 存储帐户。
 
@@ -439,7 +439,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 平台每天运行一次生命周期策略。 配置策略后，某些操作可能需要在长达 24 小时之后才能首次运行。  
 
 **如果更新现有策略，运行操作需要多长时间？**  
-已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，该策略最多可能需要 48 小时才能执行。   
+已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，策略操作最多可能需要 48 小时才能完成。   
 
 **我手动解冻了某个存档的 Blob，如何防止它暂时性地移回到存档层？**  
 将 Blob 从一个访问层移到另一个访问层后，其上次修改时间不会更改。 如果手动将存档的 Blob 解冻到热层，生命周期管理引擎会将它移回到存档层。 暂时禁用影响此 Blob 的规则可防止该 Blob 再次存档。 可以安全地将 Blob 移回到存档层时，重新启用该规则即可。 如果需要将 Blob 永久保留在热层或冷层，也可以将其复制到另一个位置。

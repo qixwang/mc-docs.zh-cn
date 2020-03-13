@@ -7,15 +7,15 @@ ms.service: storage
 ms.subservice: common
 ms.topic: article
 origin.date: 09/27/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: dineshm
-ms.openlocfilehash: 6546c45739bfd9af3e711afced41b9ecd66ef278
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 29676cbce05050f45bc21c520b3648a86a86563b
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914828"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412260"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -48,11 +48,11 @@ ms.locfileid: "72914828"
 
 此模板包含描述存储帐户的设置。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户导出模板：
 
-1. 登录到 [Azure 门户](http://portal.azure.cn)。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
 2. 选择“所有资源”，然后选择你的存储帐户  。
 
@@ -64,7 +64,7 @@ ms.locfileid: "72914828"
 
    此 zip 文件包含构成模板的 .json 文件以及用于部署模板的脚本。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 导出模板：
 
@@ -98,7 +98,7 @@ ms.locfileid: "72914828"
 
 通过更改存储帐户名称和区域来修改模板。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户部署模板：
 
@@ -106,7 +106,7 @@ ms.locfileid: "72914828"
 
 2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
 
-3. 选择“模板部署”。 
+3. 选择“模板部署”  。
 
     ![Azure 资源管理器模板库](./media/storage-account-move/azure-resource-manager-template-library.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "72914828"
     ```
     区域的代码是不带空格的区域名称，**中国北部 2** = **chinanorth2**。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 部署模板：
 
@@ -181,7 +181,7 @@ ms.locfileid: "72914828"
 
 部署该模板，以在目标区域中创建新的存储帐户。 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 保存 **template.json** 文件。
 
@@ -195,7 +195,7 @@ ms.locfileid: "72914828"
 
 3. 单击“我同意上述条款和条件”复选框，然后单击“选择购买”按钮。  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) 获取要在其中部署目标公共 IP 的订阅 ID：
 
@@ -223,8 +223,12 @@ ms.locfileid: "72914828"
 | 功能    | 指南    |
 |--------|-----------|
 | **生命周期管理策略** | [管理 Azure Blob 存储生命周期](../blobs/storage-lifecycle-management-concepts.md) |
+| **静态网站** | [在 Azure 存储中托管静态网站](../blobs/storage-blob-static-website-how-to.md) |
 | **事件订阅** | [响应 Blob 存储事件](../blobs/storage-blob-event-overview.md) |
 | **警报** | [使用 Azure Monitor 创建、查看和管理活动日志警报](../../azure-monitor/platform/alerts-activity-log.md) |
+
+> [!NOTE] 
+> 如果已为源存储帐户设置了 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点即可。 
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 
@@ -260,7 +264,7 @@ ms.locfileid: "72914828"
 
 若要提交更改并完成存储帐户的移动，请删除源存储帐户。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户删除存储帐户：
 
@@ -270,7 +274,7 @@ ms.locfileid: "72914828"
 
 3. 选择“删除”并确认。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [Remove-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.resources/remove-azstorageaccount) 命令：
 

@@ -3,20 +3,20 @@ title: 自定义策略的 StringCollection 声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的 StringCollection 声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: b690bbdc0d51f43e61560119a41824984e4339be
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: e4023ddff523180050c224836326914686905074
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531329"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266002"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -26,13 +26,13 @@ ms.locfileid: "77531329"
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-将字符串声明添加到新的 stringCollection 声明。
+将 string 声明添加到新的唯一值 stringCollection 声明。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
-| OutputClaim | collection | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入声明中指定。 |
 
 使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId  技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail  声明转换会读取 ClaimType，并将值添加到 otherMails  ClaimType。
 
@@ -60,13 +60,13 @@ ms.locfileid: "77531329"
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-将字符串参数添加到新的 stringCollection 声明。
+将字符串参数添加到新的唯一值 stringCollection 声明。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
 | InputParameter | item | string | 要添加到输出声明的值。 |
-| OutputClaim | collection | stringCollection | 调用此 ClaimsTransformation 后将生成的 ClaimTypes。 |
+| OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
 使用此声明转换将字符串值添加到新的或现有的 stringCollection。 以下示例将常量电子邮件地址 (admin@contoso.com) 添加到 **otherMails** 声明。
 
@@ -147,7 +147,7 @@ ms.locfileid: "77531329"
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 

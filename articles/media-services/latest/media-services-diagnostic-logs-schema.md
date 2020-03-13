@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/20/2019
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: a9a6b780a8183070f9c7e1f925091b4d8a0453bf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: d68b5ce8d756d36ceb9443ffcf1fca3f0923264b
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541054"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411395"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 可以通过 [Azure Monitor](../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可将日志发送到 [Azure 存储](/storage/)、将其流式传输到 [Azure 事件中心](/event-hubs/)、将其导出到 [Log Analytics](/azure-monitor/)，或使用第三方服务。
 

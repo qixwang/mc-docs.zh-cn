@@ -3,20 +3,20 @@ title: 自定义策略的布尔型声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的布尔型声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ba601cbd87c5bab0017727269ccc84ee869e423e
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 266de08ce4a49f07171793e61fa24d18d67f3f22
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531307"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265950"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -116,13 +116,13 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩结果。 
+检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩结果。
 
 | 项目 | TransformationClaimType  | 数据类型  | 注释 |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
+| InputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
-| OutputClaim | inputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | compareResult | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 
 以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等于 `true`，则声明转换返回 `true`，否则返回 `false`。
@@ -148,7 +148,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 - 输入参数：
     - **valueToCompareTo**: true
 - 输出声明：
-    - **compareResult**: false 
+    - **compareResult**: false
 
 
 

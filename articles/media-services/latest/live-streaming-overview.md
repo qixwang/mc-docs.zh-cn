@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 11/22/2019
-ms.date: 12/09/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: cff5e81927e3185391a554e08ecaff915bfbc63f
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 61ad9d0e55869450b8a691f9754f069f064c084f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807613"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412730"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 使用 Azure 媒体服务可将直播活动传送到 Azure 云中的客户。 若要使用媒体服务流式传输直播活动，需要以下组件：  
 

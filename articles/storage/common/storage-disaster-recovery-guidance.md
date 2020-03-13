@@ -7,20 +7,20 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/23/2020
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4446393f3f0c70284e5abbabfcd335fc6280c2c9
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 9694ecb4d00f783bf9bc420486ad4e73e0de46c1
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028874"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412622"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
+# <a name="disaster-recovery-and-account-failover-preview"></a>灾难恢复和帐户故障转移（预览版）
 
-Azure 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果应用程序需要复原能力，Azure 建议使用异地冗余存储，这样就可以将数据复制到另一个区域。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主终结点不可用时将故障转移到辅助终结点。 
+Azure 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果应用程序需要复原能力，Azure 建议使用异地冗余存储，以便将数据复制到另一个区域。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主终结点不可用时将故障转移到辅助终结点。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

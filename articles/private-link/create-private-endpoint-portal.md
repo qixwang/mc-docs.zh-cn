@@ -8,12 +8,12 @@ ms.topic: quickstart
 origin.date: 09/16/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: ef9d7b87f223c28835b46679302bcaf9e47deb19
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: e28f47810181678d6d82e8260facdd32413def3c
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304703"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -49,7 +49,7 @@ ms.locfileid: "77540525"
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “计算” > “虚拟机”。   
+1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“Windows Server 2019 Datacenter”  ，然后单击 Enter 键，并在搜索结果中选择“Windows Server 2019 Datacenter”  。
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
@@ -122,13 +122,15 @@ ms.locfileid: "77540525"
 7. 选择“确定”  。 
 8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
 9. 当看到“验证通过”消息时，选择“创建”  。 
-10. 当看到“验证通过”消息时，选择“创建”。 
+
+<!--DUPLICATE ON **Create**-->
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
 在本部分，你将创建一个 SQL 服务器并在其中添加专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “网络” > “专用链接中心(预览版)”。   
+1. 在 Azure 门户屏幕的左上角，选择“创建资源”  ，在“新建”  页的“搜索市场”  筛选框中键入“专用链接”  ，然后单击 Enter 键，并在搜索结果中选择“专用链接”  。
+
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。   
 1. 在“创建专用终结点(预览版) - 基本信息”中，输入或选择以下信息： 
 

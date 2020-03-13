@@ -1,20 +1,18 @@
 ---
 title: 监视 Windows 桌面应用的使用情况和性能
 description: 使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 10/29/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d7c7f0e7facb81e6e4094fe756303e959a96b19d
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 770e20aef9442f10c7c4ce78388631fa4da66568
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730510"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850339"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 

@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 12/2/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 2a0b10508146bc585ea296dd55dd85ef62064466
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 65b313f6d65198bb2f54f5dc3fe0034700cb503b
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028574"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850255"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -136,14 +136,16 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 
 ### <a name="registering-using-the-ps-az-module"></a>使用 PS Az 模块注册
 
+> [!NOTE]
+> 生成保管库证书时的 bug 已在 Az 3.5.0 版中修复。 请使用 Az 3.5.0 版或更高版本下载保管库证书。
+
 在 Powershell 的最新 Az 模块中，由于底层平台限制，下载保管库凭据需要自签名证书。 以下示例演示如何提供自签名证书并下载保管库凭据。
 
 ```powershell
-$Vault = Get-AzRecoveryServicesVault -ResourceGroupName $rgName -Name $VaultName
-$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname xxxxxxxxxxxxx
-$certificate =[System.Convert]::ToBase64String($cert.RawData)
-$CredsPath = "C:\downloads"
-$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certificate -Vault $vault -Backup -Path $CredsPath
+$dt = $(Get-Date).ToString("M-d-yyyy")
+$cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -FriendlyName 'test-vaultcredentials' -subject "Windows Azure Tools" -KeyExportPolicy Exportable -NotAfter $(Get-Date).AddHours(48) -NotBefore $(Get-Date).AddHours(-24) -KeyProtection None -KeyUsage None -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2") -Provider "Microsoft Enhanced Cryptographic Provider v1.0"
+$certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx))
+$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
 在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet 以将计算机注册到保管库。
@@ -402,37 +404,9 @@ State           : New
 PolicyState     : Valid
 ```
 
-## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>在 MABS 代理中备份 Windows Server 系统状态
-
-本部分介绍用于在 MABS 代理中设置系统状态的 PowerShell 命令
-
-### <a name="schedule"></a>计划
-
-```powershell
-$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
-```
-
-### <a name="retention"></a>保留
-
-```powershell
-$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
-```
-
-### <a name="configuring-schedule-and-retention"></a>配置计划和保留期
-
-```powershell
-New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
- ```
-
-### <a name="verifying-the-policy"></a>验证策略
-
-```powershell
-Get-OBSystemStatePolicy
- ```
-
 ### <a name="applying-the-policy"></a>应用策略
 
-现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 应用新建策略之前，请使用 [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示用户确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
+现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 应用新建策略之前，请使用 [Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示用户确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -442,7 +416,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-使用 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 可以提交策略对象。 这也会提示用户确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
+使用 [Set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy?view=winserver2012-ps) cmdlet 可以提交策略对象。 这也会提示用户确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -630,7 +604,7 @@ ItemLastModifiedTime :
 
 ### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
-若要还原特定文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。 
+若要还原特定文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。
 
 ```powershell
 $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
@@ -653,13 +627,13 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
 
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 C:\temp  。此外，我们假设要跳过目标文件夹 C:\temp 中已存在的文件  。若要创建此类恢复选项，请使用以下命令：
+为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption?view=winserver2012-ps) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 C:\temp  。此外，我们假设要跳过目标文件夹 C:\temp 中已存在的文件  。若要创建此类恢复选项，请使用以下命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-现在，请对 `Get-OBRecoverableItem` cmdlet 输出中的选定 `$Item` 使用 [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) 命令来触发还原过程：
+现在，请对 `Get-OBRecoverableItem` cmdlet 输出中的选定 `$Item` 使用 [Start-OBRecovery](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery?view=winserver2012-ps) 命令来触发还原过程：
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption

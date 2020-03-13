@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 10e20ff32c3fdff4a0faebfb34b8d109bc747915
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 5cc9d0926c885ff235e4cd2238cb43a75be4e6a2
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124508"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850562"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
 
@@ -136,7 +136,7 @@ ms.locfileid: "71124508"
 ![剪裁开始][trim_filter]
 
 ## <a name="creating-subclips-views-from-a-live-archive"></a>基于实时存档创建子剪辑（视图）
-许多直播活动长期运行，直播存档可能包含多个活动。 直播活动结束后，广播者可能需要将实时存档分解成符合逻辑的节目启动和停止序列。 接下来，分别发布这些虚拟节目，但不后续处理实时存档，也不创建独立的资产（这无法利用 CDN 中现有缓存片段的优势）。 此类虚拟节目的示例包括橄榄球或篮球比赛中的节、棒球比赛中的局，或者任何体育节目中的单项赛事。
+许多直播活动长期运行，直播存档可能包含多个活动。 直播活动结束后，广播者可能需要将实时存档分解成符合逻辑的节目启动和停止序列。 接下来，分别发布这些虚拟程序，而无需对实时存档进行后处理，也不会创建单独的资产。 此类虚拟节目的示例包括橄榄球或篮球比赛中的节、棒球比赛中的局，或者任何体育节目中的单项赛事。
 
 借助动态清单，可以使用开始/结束时间创建筛选器，并基于实时存档创建虚拟视图。 
 
@@ -188,7 +188,7 @@ ms.locfileid: "71124508"
 ## <a name="know-issues-and-limitations"></a>已知问题和限制
 * 动态清单在 GOP 边界（主键帧）内运行，因此修剪后具有精确的 GOP。 
 * 可以对本地和全局筛选器使用相同的筛选器名称。 本地筛选器的优先级更高，会替代全局筛选器。
-* 如果更新筛选器，则流式处理终结点需要最多 2 分钟来刷新规则。 如果内容是通过使用某些筛选器提供的（并在代理和 CDN 缓存中缓存），则更新这些筛选器会导致播放器失败。 建议在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。
+* 如果更新筛选器，则流式处理终结点需要最多 2 分钟来刷新规则。 如果内容是使用某些筛选器提供的（并在代理中缓存），则更新这些筛选器会导致播放器失败。 建议在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Monitor 优化 SQL Server 环境 | Azure Docs
 description: 借助 Azure Monitor，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/28/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 440cc25bd3ee57869b1f418fd351e070d71ba749
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 55efad95c3597624343b35da4cac9c121a2daea0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599923"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850308"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
@@ -58,7 +57,7 @@ SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、�
 ## <a name="sql-health-check-data-collection-details"></a>SQL 运行状况检查数据集合详细信息
 SQL 运行状况检查使用已启用的代理收集以下来源的数据：
 
-* Windows Management Instrumentation (WMI)
+* Windows 管理规范 (WMI)
 * 注册表
 * 性能计数器
 * SQL Server 动态管理视图结果
@@ -143,7 +142,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 
 **升级、迁移和部署** - 该重点区域显示帮助将 SQL Server 升级、迁移和部署到现有基础结构的建议。
 
-**操作和监视** - 该重点领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
+**操作和监视** - 该重点关注领域显示帮助简化 IT 运营、实施预防性维护并使性能最大化的建议。
 
 **更改和配置管理** - 该重点关注领域显示相关建议，以帮助保护日常操作，确保更改不会对基础结构造成不良影响，建立更改控制过程，并跟踪和审核系统配置。
 
@@ -198,6 +197,19 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 3. 如果以后决定想要查看已忽略的建议，请删除任何 IgnoreRecommendations.txt 文件，或者可以从中删除 RecommendationID。
 
 ## <a name="sql-health-check-solution-faq"></a>SQL 运行状况检查解决方案常见问题解答
+
+*SQL 评估解决方案会执行哪些检查？*
+
+* 以下查询显示了当前执行的所有检查的说明：
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+可以将结果导出到 Excel，以便深入查看。
+
+
 运行状况检查的运行频率如何？ 
 
 * 每隔七天运行检查。
@@ -238,7 +250,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 
 * 对于 SQL Server，将运行少量的 SQL 查询。 为了使它们能够运行，必须使用对 SQL 具有 VIEW SERVER STATE 权限的运行方式帐户。  此外，要查询 WMI，必须提供本地管理员凭据。
 
-*为何仅显示前 10 条建议？*
+*仅显示前 10 条建议的原因*
 
 * 我们并没有提供完整详尽的任务列表，而是建议先着重解决优先级较高的建议。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细列表，可以使用 Log Analytics 日志搜索来查看所有建议。
 

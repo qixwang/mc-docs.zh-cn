@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 06/15/2018
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.author: v-jay
-ms.openlocfilehash: 9b3b1c76e005bfc2427a4b83dcd65c39a41c19dd
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: b68a4edbc745adf578643a4c824fa6e2236f6deb
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624150"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412620"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -60,6 +60,17 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
 目前，对于此问题，我们尚未制定 RBAC 相关的解决方法。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+
+### <a name="recommended-built-in-rbac-roles"></a>建议的内置 RBAC 角色
+
+有几个内置 RBAC 角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
+- [所有者](/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
+- [参与者](/role-based-access-control/built-in-roles#contributor)：管理所有内容，不包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
+- [读者](/role-based-access-control/built-in-roles#reader)：读取和列出资源。
+- [存储帐户参与者](/role-based-access-control/built-in-roles#storage-account-contributor)：完全管理存储帐户。 **注意**：此角色将授予你密钥访问权限。
+- [存储 Blob 数据所有者](/role-based-access-control/built-in-roles#storage-blob-data-owner)：对 Azure 存储 blob 容器和数据具有完全访问权限。
+- [存储 Blob 数据参与者](/role-based-access-control/built-in-roles#storage-blob-data-contributor)：读取、写入和删除 Azure 存储容器与 Blob。
+- [存储 Blob 数据读取者](/role-based-access-control/built-in-roles#storage-blob-data-reader)：读取和列出 Azure 存储容器与 Blob。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>错误：证书链中的自签名证书（和类似错误）
 
@@ -241,20 +252,20 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 完成所有连接后，针对所有未添加回的连接名称，必须清除其损坏的数据（如果有），并使用存储资源管理器中的标准步骤将其重新添加。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。  
 2. 转到“Windows 凭据”。 
 3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。 
 4. 删除这些条目并重新添加连接。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. 打开“聚焦”（命令键+空格键），搜索“Keychain 访问”。 
 2. 找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 3. 删除这些条目并重新添加连接。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 本地凭据管理因 Linux 分发版的不同而异。 如果 Linux 分发版不提供内置 GUI 工具用于本地凭据管理，你可以安装第三方工具来管理本地凭据。 例如，可以使用 [Seahorse](https://wiki.gnome.org/Apps/Seahorse/)（一个开源 GUI 工具）来管理 Linux 本地凭据。
 
@@ -306,7 +317,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 > [!NOTE]
 > 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则可以使用的最高版本为 .NET Core 2.2。 高于 2.2 的版本目前尚未验证其使用情况。
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
@@ -315,7 +326,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
@@ -324,7 +335,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
@@ -333,7 +344,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. 下载存储资源管理器。
 2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。

@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 中的 Wire Data 解决方案 | Microsoft Docs
 description: 线路数据是具有 Log Analytics 代理的计算机提供的整合网络和性能数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 10/03/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5da400da9876955f8aaa92a91ad190b68128772e
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: c2d43a8ea3259082322b119942fd3fb0de44bf86
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730383"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850303"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -107,7 +106,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 以下部分列出了 Linux 上依赖关系代理支持的操作系统。  
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
-- 任何 Linux 分发版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
+- 任何 Linux 发行版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
 - 不支持自定义内核（包括标准内核的重新编译）。
 
 ##### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -225,7 +224,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent 的文件放置在以下目录中：
 
-| **文件** | **Location** |
+| **文件** | **位置** |
 | --- | --- |
 | 核心文件 | /opt/microsoft/dependency-agent |
 | 日志文件 | /var/opt/microsoft/dependency-agent/log |
@@ -258,7 +257,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Desired State Configuration
 
-若通过 Desired State Configuration 部署依赖关系代理，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
+若要通过 Desired State Configuration 部署 Dependency Agent，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
 
 ```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -271,7 +270,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -340,7 +339,7 @@ rpm -e dependency-agent dependency-agent-connector
 使用以下信息安装和配置解决方案。
 
 - Wire Data 解决方案从运行 Windows Server 2012 R2、Windows 8.1 和更高版本操作系统的计算机获取数据。
-- 想要获取线路数据的计算机上需要安装 Azure .NET Framework 4.0 或更高版本。
+- 想要获取线路数据的计算机上需要安装 Microsoft.NET Framework 4.0 或更高版本。
 - 使用[从解决方案库中添加监视解决方案](solutions.md)中所述的流程，将 Wire Data 解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 - 如果想要查看特定解决方案的线路数据，需要先将该解决方案添加到工作区。
 
@@ -393,7 +392,7 @@ rpm -e dependency-agent dependency-agent-connector
 | IPVersion | IP 版本 |
 | 方向 | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
-| Severity | 可疑恶意软件的严重性 |
+| severity | 可疑恶意软件的严重性 |
 | RemoteIPCountry | 远程 IP 地址所在的国家/地区 |
 | ManagementGroupName | Operations Manager 管理组的名称 |
 | SourceSystem | 从中收集了数据的源 |

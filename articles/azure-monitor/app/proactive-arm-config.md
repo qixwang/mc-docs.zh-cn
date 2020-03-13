@@ -1,20 +1,18 @@
 ---
 title: 智能检测规则设置 - Azure Application Insights
 description: 使用 Azure 资源管理器模板自动完成 Azure Application Insights 智能检测规则的管理和配置
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 06/26/2019
 ms.date: 11/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: c9f7c5eedefb06e6d9bd5a64c8b670114c7febc4
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 41b1b384cb2e9b3b3ba771fcfb432f53e29b7c9b
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116927"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850389"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
@@ -136,7 +134,7 @@ ms.locfileid: "76116927"
 
 ### <a name="failure-anomalies-alert-rule"></a>失败异常警报规则
 
-此 Azure 资源管理器模板演示如何配置严重性为 2 的故障异常 v2 警报规则。 此新版本的故障异常警报规则是新 Azure 警报平台的一部分，它取代了在[经典警报停用流程](https://www.azure.cn/zh-cn/what-is-new/)中停用的经典版本。
+此 Azure 资源管理器模板演示如何配置严重性为 2 的故障异常警报规则。 此新版本的故障异常警报规则是新 Azure 警报平台的一部分，它取代了在[经典警报停用流程](https://www.azure.cn/zh-cn/what-is-new/)中停用的经典版本。
 > [!NOTE]
 > 失败异常是一项全局服务，因此在全局位置上创建规则位置。
 

@@ -1,31 +1,27 @@
 ---
-title: 连接到 IBM MQ 服务器 - Azure 逻辑应用
+title: 连接到 IBM MQ 服务器
 description: 使用 Azure 或本地 IBM MQ 服务器和 Azure 逻辑应用发送和检索消息
 services: logic-apps
-author: valthom
-manager: anneta
-documentationcenter: ''
-editor: ''
-tags: connectors
-ms.assetid: ''
-ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: rockboyfor
+ms.reviewer: valthom, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 origin.date: 06/19/2019
-ms.author: v-yiso
-ms.date: 10/08/2019
-ms.openlocfilehash: ef8ca7c9388a2370cb7b2d6dda28609b5c796211
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.date: 03/09/2020
+ms.author: v-yeche
+tags: connectors
+ms.openlocfilehash: 1773a518f7d821685972a5b0857d20129f63fb26
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304698"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 IBM MQ 服务器
 
 IBM MQ 连接器会发送和检索存储在 IBM MQ 服务器本地或 Azure 中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文是使用 MQ 连接器的初学者指南。 可以首先浏览队列中的单个消息，然后尝试其他操作。
+
+<!--CORRECT ON Microsoft MQ client-->
 
 IBM MQ 连接器包含这些操作，但不提供触发器：
 
@@ -39,17 +35,17 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 * 如果使用本地 MQ 服务器，则在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 安装本地数据网关的服务器还必须安装 .NET Framework 4.6，才能使 MQ 连接器正常运行。 还必须在 Azure 中创建本地数据网关的资源。 有关详细信息，请参阅[设置网关连接](../logic-apps/logic-apps-gateway-connection.md)。
 
-  但是，如果 MQ 服务器公开可用，或在 Azure 中可用，则不需使用数据网关。
+    但是，如果 MQ 服务器公开可用，或在 Azure 中可用，则不需使用数据网关。
 
 * 官方支持的 IBM WebSphere MQ 版本：
 
-  * MQ 7.5
-  * MQ 8.0
-  * MQ 9.0
+    * MQ 7.5
+    * MQ 8.0
+    * MQ 9.0
 
 * 要在其中添加 MQ 操作的逻辑应用。 此逻辑应用必须使用与本地数据网关连接相同的位置，并且必须已经有一个用于启动工作流的触发器。 
 
-  MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用定期触发器。 如果不熟悉逻辑应用，请尝试此[快速入门：创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
+    MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用定期触发器。 如果不熟悉逻辑应用，请尝试此[快速入门：创建你的第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
 
 ## <a name="browse-a-single-message"></a>浏览单个消息
 
@@ -61,49 +57,49 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 1. 如果没有现有 MQ 连接，请创建连接：  
 
-   1. 在操作中，选择“通过本地数据网关连接”。 
+    1. 在操作中，选择“通过本地数据网关连接”。 
    
-   1. 输入 MQ 服务器的属性。  
+    1. 输入 MQ 服务器的属性。  
 
-      对于“服务器”  ，可以输入 MQ 服务器名称，或输入后跟冒号和端口号的 IP 地址。
+        对于“服务器”  ，可以输入 MQ 服务器名称，或输入后跟冒号和端口号的 IP 地址。
     
-   1. 打开**网关**列表，其中会显示任何以前配置的网关连接。 选择你的网关。
+    1. 打开**网关**列表，其中会显示任何以前配置的网关连接。 选择你的网关。
     
-   1. 完成后，选择“创建”  。 
+    1. 完成后，选择“创建”  。 
    
-      你的连接如以下示例所示：
+        你的连接如以下示例所示：
 
-      ![连接属性](media/connectors-create-api-mq/Connection_Properties.png)
+        ![连接属性](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. 设置操作的属性：
 
-   * **队列**：指定一个不同于此连接的队列。
+    * **队列**：指定一个不同于此连接的队列。
 
-   * “MessageId”  、“CorrelationId”  、“GroupId”  和其他属性：基于不同的 MQ 消息属性以浏览方式查找消息
+    * “MessageId”  、“CorrelationId”  、“GroupId”  和其他属性：基于不同的 MQ 消息属性以浏览方式查找消息
 
-   * **IncludeInfo**：指定为“True”  即可在输出中包含其他消息信息。 或者，将它指定为“False”  ，这样输出中就不会包含其他消息信息。
+    * **IncludeInfo**：指定为“True”  即可在输出中包含其他消息信息。 或者，将它指定为“False”  ，这样输出中就不会包含其他消息信息。
 
-   * **Timeout**：输入一个值以确定在空队列中等待消息到达的时间长度。 如果未输入任何内容，则检索队列中的第一个消息，并且不花费时间等待消息出现。
+    * **Timeout**：输入一个值以确定在空队列中等待消息到达的时间长度。 如果未输入任何内容，则检索队列中的第一个消息，并且不花费时间等待消息出现。
 
-     ![浏览消息属性](media/connectors-create-api-mq/Browse_message_Props.png)
+        ![浏览消息属性](media/connectors-create-api-mq/Browse_message_Props.png)
 
 1. “保存”  更改，然后“运行”  逻辑应用。
 
-   ![“保存”和“运行”](media/connectors-create-api-mq/Save_Run.png)
+    ![“保存”和“运行”](media/connectors-create-api-mq/Save_Run.png)
 
-   运行完以后，会显示运行的步骤，你可以查看输出。
+    运行完以后，会显示运行的步骤，你可以查看输出。
 
 1. 若要查看每个步骤的详细信息，请选择绿色复选标记。 若要查看输出数据的详细信息，请选择“显示原始输出”。 
 
-   ![浏览消息输出](media/connectors-create-api-mq/Browse_message_output.png)  
+    ![浏览消息输出](media/connectors-create-api-mq/Browse_message_output.png)  
 
-   下面是一些示例性的原始输出：
+    下面是一些示例性的原始输出：
 
-   ![浏览消息原始输出](media/connectors-create-api-mq/Browse_message_raw_output.png)
+    ![浏览消息原始输出](media/connectors-create-api-mq/Browse_message_raw_output.png)
 
 1. 如果将“IncludeInfo”  设置为 true，则会显示以下输出：
 
-   ![浏览消息包含信息](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+    ![浏览消息包含信息](media/connectors-create-api-mq/Browse_message_Include_Info.png)
 
 ## <a name="browse-multiple-messages"></a>浏览多个消息
 
@@ -113,7 +109,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 1. 逻辑应用运行完成以后，可以看到“浏览消息”操作的一些示例输出： 
 
-   ![浏览消息输出](media/connectors-create-api-mq/Browse_messages_output.png)
+    ![浏览消息输出](media/connectors-create-api-mq/Browse_messages_output.png)
 
 ## <a name="receive-single-message"></a>接收单个消息
 
@@ -141,8 +137,13 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看[连接器的参考页](/connectors/mq/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/mq/)。
+
+<!--Not Avaialble on [integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
+
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

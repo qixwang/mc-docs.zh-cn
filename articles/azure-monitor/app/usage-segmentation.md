@@ -1,8 +1,6 @@
 ---
-title: 在 Azure Application Insights 中进行用户、会话和事件分析 | Azure docs
+title: 在 Azure Application Insights 中进行用户、会话和事件分析
 description: 对 Web 应用的用户进行人口统计学分析。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,12 +8,12 @@ origin.date: 01/24/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: c05697df4a0fc0fab6d92ce0214ce48cae6a77e3
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 3cf55e62578a14cab1da3fbac974e093d16e33bd
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730450"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850348"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -64,7 +62,7 @@ ms.locfileid: "73730450"
 - 若要启用使用体验，请首先发送[自定义事件](/azure-monitor/app/api-custom-events-metrics#trackevent)或[页面视图](/azure-monitor/app/api-custom-events-metrics#page-views)。
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [漏斗图](usage-funnels.md)
-    - [保留](usage-retention.md)
+    - [保留期](usage-retention.md)
     - [用户流](usage-flows.md)
     - [工作簿](../../azure-monitor/app/usage-workbooks.md)
     - [添加用户上下文](usage-send-user-context.md)

@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 12/21/2018
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: b80d803ef798ce3eaccfd682693670889a505b10
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 67f184942a6a3b5fb00bb4f238dcad6a4302db64
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494504"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411691"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 针对 over-the-top (OTT) 或在线流解决方案设计和构建数字版权管理 (DRM) 子系统是相当复杂的任务。 运营商/在线视频提供商通常会将此任务外包给专门的 DRM 服务提供商。 本文档旨在陈述 OTT 或在线流解决方案中端到端 DRM 子系统的参考设计和参考实现。
 

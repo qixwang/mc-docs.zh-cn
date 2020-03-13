@@ -7,15 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: nibaccam
-ms.author: copeters
+ms.author: v-yiso
 author: lostmygithubaccount
-ms.date: 11/04/2019
-ms.openlocfilehash: 46075baf6cd8ec5a898b3be20d1cff79b12e1845
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: d71bf5d029a1369d9b7e97575e4fa5958fe36753
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598161"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850219"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +39,7 @@ ms.locfileid: "75598161"
 
 若要创建和使用数据集监视器，需要：
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
+* [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [已安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml-datasets 包。
 * 在数据中的文件路径、文件名或列中指定了带时间戳的结构化（表格）数据。
 
@@ -179,7 +180,7 @@ dset = dset.register(ws, 'target')
 
 ### <a name="from-python-sdk"></a>通过 Python SDK
 
-有关完整详细信息，请参阅[有关数据偏移的 Python SDK 参考文档](https://docs.microsoft.com/azure/python/api/azureml-datadrift/azureml.datadrift)。 
+有关完整详细信息，请参阅[有关数据偏移的 Python SDK 参考文档](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift)。 
 
 以下示例演示如何使用 Python SDK 创建数据集监视器
 
@@ -315,6 +316,7 @@ monitor = monitor.enable_schedule()
 * 除非未指定特征列表（使用所有特征），否则特征限制为 200 个。
 * 计算大小必须足够大才能处理数据。 
 * 确保数据集包含处于给定监视器运行的开始和结束日期范围内的数据。
+* 数据集监视器仅适用于包含 50 行或更多行的数据集。 
 
 数据集中的列或特征根据下表中的条件划分为分类值或数字值。 如果特征不满足这些条件 - 例如，某个字符串类型的列包含 100 个以上的唯一值 - 则会从数据偏移算法中删除该特征，但仍会对其进行分析。 
 
@@ -325,6 +327,6 @@ monitor = monitor.enable_schedule()
 
 ## <a name="next-steps"></a>后续步骤
 
-* 转到 [Azure 机器学习工作室](https://ml.azure.com)或 [Python 笔记本](https://aka.ms/datadrift-notebook)来设置数据集监视器。
+* 转到 [Azure 机器学习工作室](https://ml.azure.com)或 [Python 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)来设置数据集监视器。
 * 了解如何在[部署到 Azure Kubernetes 服务的模型](how-to-monitor-data-drift.md)中设置数据偏移。
 * 使用[事件网格](how-to-use-event-grid.md)设置数据集偏移监视器。 

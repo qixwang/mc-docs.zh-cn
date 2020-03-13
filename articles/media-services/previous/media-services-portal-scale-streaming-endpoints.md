@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 03/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
-ms.openlocfilehash: 5011383ed48c1dad61f007e881ca4dcb2d880adf
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 49add92053bcdf32ad3a74df2e1960f4643bc37d
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124613"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850584"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户缩放流式处理终结点
 ## <a name="overview"></a>概述
@@ -30,7 +30,7 @@ ms.locfileid: "71124613"
 > 
 > 
 
-**高级**流式处理终结点适合用于高级工作负荷，同时提供可缩放的专用带宽容量。 默认情况下，使用“高级”  流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 均为应用程序提供额外的带宽容量。 有关流式处理终结点类型和 CDN 配置的详细信息，请参阅[流式处理终结点概述](media-services-streaming-endpoints-overview.md)主题。
+**高级**流式处理终结点适合用于高级工作负荷，同时提供可缩放的专用带宽容量。 默认情况下，使用“高级”  流式处理终结点的客户会获得一个流式处理单位 (SU)。 可通过添加 SU 来缩放流式处理终结点。 每个 SU 为应用程序提供额外的带宽容量。 有关流式处理终结点类型的详细信息，请参阅[流式处理终结点概述](media-services-streaming-endpoints-overview.md)主题。
  
 本主题介绍了如何缩放流式处理终结点。
 

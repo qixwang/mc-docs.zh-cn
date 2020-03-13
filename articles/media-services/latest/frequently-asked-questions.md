@@ -10,19 +10,19 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 06/21/2019
-ms.date: 11/04/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 3d4c6d39a0db01319288ba938f9f6f97345603cd
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.openlocfilehash: 2dc4d9bc85ead7b29aa731a60dcbe7f4c9b99249
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416264"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412466"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
 

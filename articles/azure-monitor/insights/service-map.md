@@ -1,22 +1,21 @@
 ---
 title: 使用 Azure 中的服务映射解决方案 | Azure Docs
 description: 服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
 origin.date: 07/24/2019
 ms.date: 08/24/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6f5991f87bb558e20ef8706a691ee995c029cb16
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.openlocfilehash: e5e76ba832228c3e65818d343955dd3e5531027e
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500362"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850319"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
 
 本指南介绍载入和使用服务映射的详细信息。 总而言之，需要以下项：
 
@@ -287,7 +286,8 @@ Linux：
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
 ### <a name="connections"></a>连接
-连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  在侦听套接字上执行 *accept* 命令后生成的 TCP 连接是入站连接，针对给定的 IP 和端口执行 *connect* 命令后建立的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+
+连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  通过在侦听套接字上接受而生成的 TCP 连接是入站连接，而通过连接到给定 IP 和端口创建的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示一分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。
 

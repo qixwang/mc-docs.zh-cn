@@ -7,16 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: aashishb
+ms.author: v-yiso
 author: aashishb
-ms.date: 08/12/2019
+origin.date: 08/12/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: f7cb1018e555b34f1afc9f0ee40ef0b10394a0bd
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 47bc2853a3f05c224feef8692bc035047642408f
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598071"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850210"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>使用 SSL 保护通过 Azure 机器学习部署的 Web 服务
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,6 +28,8 @@ ms.locfileid: "75598071"
 
 > [!TIP]
 > Azure 机器学习 SDK 使用术语“SSL”表示与安全通信相关的属性。 这并不意味着 Web 服务不会使用 TLS  。 SSL 只是更广泛公认的术语。
+>
+> 具体来说，通过 Azure 机器学习部署的 Web 服务仅支持 TLS 版本 1.2。
 
 TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证  。 有关数字证书工作原理的详细信息，请参阅维基百科主题[公钥基础结构](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 
@@ -80,8 +83,8 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证  。 有�
 
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
--  如果创建新群集，请使用 **[AksCompute.provisionining_configuration()](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none-)** 。
-- 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](https://docs.microsoft.com/azure/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)** 。 这两个方法都返回包含 enable_ssl 方法的配置对象  。
+-  如果创建新群集，请使用 **[AksCompute.provisioning_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 。
+- 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)** 。 这两个方法都返回包含 enable_ssl 方法的配置对象  。
 
 enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书  。
 

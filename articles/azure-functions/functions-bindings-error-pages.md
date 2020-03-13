@@ -3,14 +3,14 @@ title: Azure Functions 错误处理指南
 description: 了解如何处理 Azure Functions 中的错误，并提供指向特定绑定错误的链接。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 31f40d3d804203f8bae7f34080cc52459776347f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 8fe2c23be9eba7b4a01f05061710a81b220bd74d
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494484"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266052"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理
 
@@ -30,14 +30,15 @@ ms.locfileid: "77494484"
 
 + [Blob 存储](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
-+ [事件中心](functions-bindings-event-hubs.md#exceptions-and-return-codes)
++ [事件中心](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
+
++ [IoT 中心](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
 
 + [通知中心](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
 
-+ [队列存储](functions-bindings-storage-queue.md#exceptions-and-return-codes)
++ [队列存储](functions-bindings-storage-queue-output.md#exceptions-and-return-codes)
 
-+ [服务总线](functions-bindings-service-bus.md#exceptions-and-return-codes)
++ [服务总线](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
 
 + [表存储](functions-bindings-storage-table.md#exceptions-and-return-codes)
 
-<!-- Update_Description: link update -->

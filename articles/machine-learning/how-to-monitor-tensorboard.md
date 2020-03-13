@@ -7,14 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: maxluk
-ms.author: maxluk
-ms.date: 11/08/2019
-ms.openlocfilehash: 22ceb0193d25f42b7451259b73df0837a59828bc
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.author: v-yiso
+origin.date: 02/27/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 634b0da8c8b43e3a3101163ef5292653ca53e7fc
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598150"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850216"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 机器学习可视化试验运行与指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -181,6 +182,10 @@ tb.start()
 # After your job completes, be sure to stop() the streaming otherwise it will continue to run. 
 tb.stop()
 ```
+
+>[!Note]
+ 虽然此示例使用了 TensorFlow，但 TensorBoard 可以轻松地用于 PyTorch 或 Chainer 模型。 TensorFlow 必须在运行 TensorBoard 的计算机上可用，但在执行 PyTorch 或 Chainer 计算的计算机上不是必需的。 
+
 
 <a name="export"></a>
 

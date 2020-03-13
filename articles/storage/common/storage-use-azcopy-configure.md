@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/28/2020
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 27cc19cfd639fb9fdd7ab32983f8ff76aa73ab55
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 1fa50524cad7917e570884b02fa757d715c884a3
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028857"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412240"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -122,6 +122,8 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED` 和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
 默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但可根据需要更改此位置。
+
+相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙等错误，AzCopy 将重试最多 20 次，通常重试过程会成功。  你看到的第一个错误可能是已成功重试的无害内容。  因此，请查找 `UPLOADFAILED`、`COPYFAILED` 或 `DOWNLOADFAILED` 附近的错误，而不是查看文件中的第一个错误。 
 
 > [!IMPORTANT]
 > 向 Azure 支持部门提交请求时（或者排查涉及第三方的问题时），请共享想要执行的命令的编校版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。

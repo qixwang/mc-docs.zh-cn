@@ -1,21 +1,19 @@
 ---
-title: 将应用迁移到最新架构 - Azure 逻辑应用
-description: 如何将逻辑应用迁移到最新架构版本
+title: 将应用迁移到最新架构
+description: 如何将逻辑应用工作流 JSON 定义迁移到最新的工作流定义语言架构版本
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: v-yiso
-ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
+ms.reviewer: klam, logicappspm
 ms.topic: article
 origin.date: 08/25/2018
-ms.date: 02/25/2019
-ms.openlocfilehash: 1e6e9bff5b1bebf848ed1c9d0b4d417cd43efc2d
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.date: 03/09/2020
+ms.author: v-yeche
+ms.openlocfilehash: ea637b78dbdcea1c2aeb0543070cfc06c5e95d04
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389090"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304647"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>将逻辑应用迁移到最新架构版本
 
@@ -25,12 +23,12 @@ ms.locfileid: "74389090"
 
 2. 在逻辑应用的菜单中，选择“概述”  。 在工具栏上，选择“更新架构”  。
 
-   > [!NOTE]
-   > 当你选择“更新架构”  时，Azure 逻辑应用会自动运行迁移步骤并为你提供代码输出。 可以使用此输出更新逻辑应用定义。 但是，请确保遵循以下**最佳做法**部分中所述的最佳做法。
+    > [!NOTE]
+    > 当你选择“更新架构”  时，Azure 逻辑应用会自动运行迁移步骤并为你提供代码输出。 可以使用此输出更新逻辑应用定义。 但是，请确保遵循以下**最佳做法**部分中所述的最佳做法。
 
-   ![更新架构](./media/connectors-schema-migration/update-schema.png)
+    ![更新架构](./media/connectors-schema-migration/update-schema.png)
 
-   此时将显示“更新架构”页，并显示指向描述新架构中的改进的文档的链接。
+    此时将显示“更新架构”页，并显示指向描述新架构中的改进的文档的链接。
 
 ## <a name="best-practices"></a>最佳实践
 
@@ -45,3 +43,5 @@ ms.locfileid: "74389090"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[手动迁移逻辑应用](../logic-apps/logic-apps-schema-2015-08-01.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

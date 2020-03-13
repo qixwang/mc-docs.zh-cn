@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.reviewer: juliako
-ms.openlocfilehash: 4f12f7403aad1eb09fadad76d80168c9628db16f
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: dbbbf499f4d4a26ad4e99620e58f8083f8a43960
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124420"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412457"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计 
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 本主题介绍如何使用 Azure 媒体服务进行 DRM 子系统的混合设计。
 

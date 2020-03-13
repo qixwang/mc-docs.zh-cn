@@ -4,15 +4,15 @@ description: 本文概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 01/15/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: 68d91664e85a7fd4b2b75a381fd9086a63e5d661
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 971184bf26b9f14b6ab821bac9186d0390406f73
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116917"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266075"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "76116917"
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入请求匹配，则该侦听器将处理该请求。
+> 对于 v1 SKU，规则按照它们在门户中列出的顺序进行处理。 对于 v2 SKU，完全匹配具有更高的优先级。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入请求匹配，则该侦听器将处理该请求。
 
 对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 

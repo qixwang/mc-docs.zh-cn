@@ -13,14 +13,14 @@ ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7495cbbd64937d6815581baab9dbdcbb514f5668
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 89de0286624a1541bc1ce7b12040d2ad84ee7c2d
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494423"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266097"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -31,11 +31,11 @@ ms.locfileid: "77494423"
 **Certificates**
 
 - [为什么云服务 SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
-- [“用于扩展的 Windows Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
+- [“用于扩展的 Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [我的云服务管理证书即将到期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
-- [“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
+- [“用于 MachineKey 的 Azure 服务管理”证书有何用途？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **监视和日志记录**
 
@@ -79,7 +79,7 @@ ms.locfileid: "77494423"
     
 我们建议客户安装完整的证书链（叶证书、中间证书和根证书），而不要只安装叶证书。 如果只是安装叶证书，则要依赖 Windows 通过遍历 CTL 来构建证书链。 当 Windows 尝试验证证书时，如果 Azure 或 Windows 更新中发生间歇性网络问题或 DNS 问题，可能会将该证书视为无效。 如果安装完整的证书链，则可避免此问题。 博客 [How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)（如何安装链接的 SSL 证书）中介绍了操作方法。
 
-### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>“Windows Azure Tools Encryption Certificate for Extensions”的用途是什么？
+### <a name="what-is-the-purpose-of-the-azure-tools-encryption-certificate-for-extensions"></a>“用于扩展的 Azure 工具加密证书”有何用途？
 
 每次将扩展添加到云服务中时，就会自动创建这些证书。 在大多数情况下，这是 WAD 扩展或 RDP 扩展，但也可能是其他扩展，例如反恶意软件或日志收集器扩展。 这些证书仅用于加密和解密扩展的专用配置。 系统永远不会检查过期日期，因此，证书是否已过期并不重要。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "77494423"
 
 请参阅以下指导文档：
 
-[获取用于 Windows Azure 网站 (WAWS) 的证书](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
+[获取用于 Azure 网站 (WAWS) 的证书](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
 CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。 尽管本文档是针对应用服务编写的，但 CSR 创建过程是通用的，同样适用于云服务。
 
@@ -107,13 +107,13 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 可以使用启动脚本 (batch/cmd/PowerShell) 自动完成此任务，并将该启动脚本注册到服务定义文件中。 将启动脚本和证书（.p7b 文件）添加到启动脚本所在的同一目录中的项目文件夹。
 
-### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
+### <a name="what-is-the-purpose-of-the-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Azure 服务管理”证书有何用途？
 
 此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此公告](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
-- [如何配置和运行云服务的启动任务](./cloud-services-startup-tasks.md)
-- [常见的云服务启动任务](./cloud-services-startup-tasks-common.md)
+- [如何配置和运行云服务的启动任务](/cloud-services/cloud-services-startup-tasks)
+- [常见的云服务启动任务](/cloud-services/cloud-services-startup-tasks-common)
 
 ## <a name="monitoring-and-logging"></a>监视和日志记录
 
@@ -137,11 +137,12 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 提高本地资源的配额限制。
 
 有关详细信息，请参阅以下文档：
+* [在 Azure 存储中存储和查看诊断数据](/storage/common/storage-introduction)
 * [IIS 日志停止写入到云服务中](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
-可以通过以下选项启用 Windows Azure 诊断 (WAD) 日志记录：
-1. [从 Visual Studio 启用](/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+可以通过以下选项启用 Azure 诊断 (WAD) 日志记录：
+1. [从 Visual Studio 启用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 2. [通过 .NET 代码启用](/cloud-services/cloud-services-dotnet-diagnostics)
 3. [通过 Powershell 启用](/cloud-services/cloud-services-diagnostics-powershell)
 
@@ -238,7 +239,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
 
-有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+
 
 
 有关如何为云服务启用 Azure 诊断日志记录的详细信息，请参阅[为 Azure 云服务和虚拟机设置诊断](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)

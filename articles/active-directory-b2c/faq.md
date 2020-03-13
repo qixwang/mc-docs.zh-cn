@@ -2,20 +2,20 @@
 title: 有关 Azure Active Directory B2C 的常见问题解答 (FAQ)
 description: 有关 Azure Active Directory B2C 的常见问题解答。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 3ac78cda510a1414db806aec55d6c90c006a6fdf
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 4f523c69c636b4688b0af48be735d32ec3aa5787
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028352"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265964"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -53,15 +53,17 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>如何将我现有的用户名、密码和配置文件从数据库迁移到 Azure AD B2C？
 
-可以使用 Azure AD 图形 API 编写迁移工具。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
+可以使用 Microsoft Graph API 编写迁移工具。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C 中的本地帐户使用什么密码用户流？
 
-本地帐户的 Azure AD B2C 密码用户流以 Azure AD 的策略为基础。 Azure AD B2C 的注册、注册或登录和密码重置用户流使用“强”密码强度，并且不会让任何密码过期。 有关详细信息，请阅读 [Azure AD 密码策略](https://docs.microsoft.com/previous-versions/azure/jj943764(v=azure.100))。 有关帐户锁定和密码的信息，请参阅[管理对 Azure Active Directory B2C 中资源和数据的威胁](threat-management.md)。
+本地帐户的 Azure AD B2C 密码用户流以 Azure AD 的策略为基础。 Azure AD B2C 的注册、注册或登录和密码重置用户流使用“强”密码强度，并且不会让任何密码过期。 有关详细信息，请参阅 [Azure Active Directory 中的密码策略和限制](/active-directory/authentication/concept-sspr-policy)。
+
+有关帐户锁定和密码的信息，请参阅[管理对 Azure Active Directory B2C 中资源和数据的威胁](threat-management.md)。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect 将存储在本地 Active Directory 中的使用者标识迁移到 Azure AD B2C 吗？
 
-不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用 [Azure AD 图形 API](manage-user-accounts-graph-api.md) 进行用户迁移。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
+不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 进行用户迁移。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
 
@@ -97,7 +99,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验   。 [详细了解此新体验](/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 以订阅管理员  身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
@@ -118,7 +120,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 在左侧菜单中，选择“Azure Active Directory”  。
 1. 在“概述”  页上，选择“删除目录”  。 按照屏幕上的说明完成该过程。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 以订阅管理员  身份登录到 [Azure 门户](https://portal.azure.cn/)。 使用在注册 Azure 时使用的同一工作或学校帐户。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。

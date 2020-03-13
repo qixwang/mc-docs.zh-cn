@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 05/25/2019
-ms.date: 01/20/2020
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: e4efe0d43d450854ca98bf9b9cb979af88268299
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: c75f8911955852beb4205aaa060e0963984e74f2
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939809"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412510"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
@@ -50,7 +50,7 @@ ms.locfileid: "75939809"
 > * 使用指定的流式处理策略创建 StreamingLocator。
 > * 创建一个用于播放文件的 URL。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下项目是完成本教程所需具备的条件：
 

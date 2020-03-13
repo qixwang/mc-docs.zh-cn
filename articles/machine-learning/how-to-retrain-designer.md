@@ -6,18 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: de54c37554416cad7e6fcfeea3ac3b55ab613392
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.author: v-yiso
+author: likebupt
+origin.date: 02/24/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: b31a34eb8d1a3cac9f6f64030f0d77ec9532e2d1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598128"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850215"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器重新训练模型（预览版）
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 本操作方法指南介绍如何使用 Azure 机器学习设计器重新训练机器学习模型。 了解如何使用发布的管道自动执行机器学习工作流以进行重新训练。
 
@@ -56,7 +57,7 @@ ms.locfileid: "75598128"
 
 1. 指定数据路径。 还可以选择“浏览路径”  以直观方式浏览数据存储。 
 
-1. 选择画布顶部的“运行”  以运行管道。
+1. 在画布顶部选择“运行”。 
     
     > [!NOTE]
     > 如果已为此管道草稿设置了默认计算，管道会自动运行。 如果没有，可以按照“设置”窗格中显示的提示进行操作，现在设置一个。
@@ -69,15 +70,15 @@ ms.locfileid: "75598128"
 
 1. 选择**训练模型**模块。
 
-1. 在“设置”窗格中，选择“输出”  。
+1. 在“设置”窗格中，选择“输出+日志”  。
 
-1. 选择“Trained_model”  以下载模型。
+1. 单击“查看输出”  图标，然后按照弹出窗口中的说明找到已训练的模型。
 
-![屏幕截图显示如何下载已训练的模型](./media/how-to-retrain-designer/download-model.png)
+![屏幕截图显示如何下载已训练的模型](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>创建管道参数
 
-可以添加管道参数，在运行时动态设置变量。 针对此管道，为训练数据路径添加管道参数，以便可以在新数据集上重新训练模型。
+添加管道参数，以便在运行时动态设置变量。 对于此管道，为训练数据路径添加参数，以便在新数据集上重新训练模型。
 
 1. 选择“导入数据”  模块。
 1. 在“设置”窗格中，选择“路径”  字段上方的省略号。
@@ -87,11 +88,11 @@ ms.locfileid: "75598128"
     > [!NOTE]
     > 可以通过选择管道草稿标题旁的“设置”齿轮图标  来检查和编辑管道参数。 
 
-[屏幕截图显示如何创建管道参数](media/how-to-retrain-designer/add-pipeline-parameter.png)
+![显示如何创建管道参数的屏幕截图](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 ## <a name="publish-a-training-pipeline"></a>发布训练管道
 
-发布管道后，系统会创建管道终结点。 通过管道终结点，可重复使用和管理管道，实现可重复性和自动化。 为实现此方案，应发布训练管道，重复使用它进行重新训练。
+发布管道后，系统会创建管道终结点。 通过管道终结点，可重复使用和管理管道，实现可重复性和自动化。 在此示例中，你已设置了管道以便重新训练。
 
 1. 选择设计器画布上方的“发布”  。
 1. 选择或创建一个新的管道终结点。

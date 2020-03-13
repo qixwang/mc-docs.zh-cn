@@ -1,7 +1,7 @@
 ---
-title: 教程：将 PostgreSQL 联机迁移到 Azure Database for PostgreSQL
+title: 教程：通过 Azure CLI 将 PostgreSQL 联机迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
-description: 了解如何使用 Azure 数据库迁移服务执行从本地 PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移。
+description: 了解如何通过 CLI 使用 Azure 数据库迁移服务执行从本地 PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移。
 services: dms
 author: WenJason
 ms.author: v-jay
@@ -11,16 +11,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 8923329c21162a3b0a6513b3dc69f4a546244f70
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+origin.date: 02/17/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: d89056d00aa2eacae97ce50c478f082eeece0cbe
+ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192465"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78238530"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 PostgreSQL 实例迁移到 [Azure Database for PostgreSQL](/postgresql/)。 换而言之，实现这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **DVD Rental** 示例数据库从 PostgreSQL 9.6 的本地实例迁移到 Azure Database for PostgreSQL。
 
@@ -39,7 +39,7 @@ ms.locfileid: "77192465"
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Azure 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -187,6 +187,9 @@ ms.locfileid: "77192465"
        ---------------  ------
        whl              dms
        ```
+
+      > [!IMPORTANT]
+      > 确保扩展版本高于 0.11.0。
 
    * 任何时候都可以通过运行以下命令来查看所有在 DMS 中受支持的命令：
 
@@ -372,7 +375,7 @@ ms.locfileid: "77192465"
 
 在输出文件中，有多个指示迁移进度的参数。 有关示例，请查看下面的输出文件：
 
-    ```
+  ```
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -447,7 +450,7 @@ ms.locfileid: "77192465"
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>直接转换迁移任务
 

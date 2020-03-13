@@ -1,19 +1,17 @@
 ---
-title: 在 Azure Application Insights 中设置警报 | Azure Docs
+title: 在 Azure Application Insights 中设置警报
 description: 响应速度变慢、发生异常以及 Web 应用中出现其他性能或用法变化时接收通知。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 01/23/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 5125bfd72ec772bec6cf9005d0195d4c4711b2c1
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: f5e5c963beafe4d5dd52cbba9912b06594ceabfb
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838824"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850454"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
 当 Web 应用中的性能或使用情况指标发生变化时，[Azure Application Insights][start] 可发出警报。 

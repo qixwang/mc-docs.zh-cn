@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure 事件网格绑定
 description: 了解如何处理 Azure Functions 中的事件网格事件。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/18/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8f60f6fa74258e38b3f77fdabe8efa49835938f5
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 7bbdd4c1e2c4bb91a63cc603a34ea1fbde053eb7
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494482"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266050"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件网格绑定
 

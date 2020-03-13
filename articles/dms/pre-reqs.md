@@ -10,14 +10,14 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: a12d3fafc44e85edaa98d9ced9958cf44001eae0
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+origin.date: 02/25/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: 1fe77e5bfd8980bd724f5d0105e3fc11034e1a88
+ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192445"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78238539"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 
@@ -41,13 +41,20 @@ ms.locfileid: "77192445"
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -117,7 +124,7 @@ ms.locfileid: "77192445"
 
    > [!NOTE]
    > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库](/dms/tutorial-sql-server-to-azure-sql)。
-   > 
+   >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 数据库托管实例的先决条件
 

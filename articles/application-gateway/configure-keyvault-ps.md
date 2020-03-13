@@ -6,20 +6,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7e2657802c0795bbd25c47c5efecf65ce63023b7
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 34a12fa28bbdb14456ab33379905a6b478f2f6cb
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116921"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266074"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) 是由平台管理的机密存储，可以用来保证机密、密钥和 SSL 证书的安全。 Azure 应用程序网关支持与 Key Vault（公共预览版）集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
+[Azure Key Vault](../key-vault/key-vault-overview.md) 是由平台管理的机密存储，可以用来保证机密、密钥和 SSL 证书的安全。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
 
-有关详细信息，请参阅[使用密钥保管库证书实现 SSL 终止](key-vault-certs.md)。
+有关详细信息，请参阅[使用 Key Vault 证书实现 SSL 终止](key-vault-certs.md)。
 
 本文介绍如何使用 Azure PowerShell 脚本将密钥保管库与应用程序网关集成，以获得 SSL 终止证书。
 
@@ -27,7 +27,7 @@ ms.locfileid: "76116921"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，必须已安装 ManagedServiceIdentity 模块：
 
@@ -115,7 +115,7 @@ $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol H
   -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $sslCert01
 $listener02 = New-AzApplicationGatewayHttpListener -Name "listener2" -Protocol Http `
   -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp02
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting1" -Port 80 `
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSetting -Name "setting1" -Port 80 `
   -Protocol Http -CookieBasedAffinity Disabled
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType basic `
   -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool

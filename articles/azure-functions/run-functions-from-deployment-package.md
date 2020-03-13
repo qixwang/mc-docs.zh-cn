@@ -1,19 +1,14 @@
 ---
-title: 从包运行 Azure Functions | Microsoft Docs
+title: 从包运行 Azure Functions
 description: 通过装载包含函数应用项目文件的部署包文件，让 Azure Functions 运行时运行函数。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 07/15/2019
-ms.date: 11/11/2019
-ms.author: v-junlch
-ms.openlocfilehash: 9571df35cf7bd14118a96613701412f64875bf2d
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.date: 03/03/2020
+ms.openlocfilehash: aeab853fe90251952db387caa2a28d73931107d5
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934261"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266013"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -59,6 +54,33 @@ ms.locfileid: "73934261"
 ## <a name="adding-the-website_run_from_package-setting"></a>添加 WEBSITE_RUN_FROM_PACKAGE 设置
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+### <a name="use-key-vault-references"></a>使用 Key Vault 引用
+
+为了增加安全性，可以将 Key Vault 引用与外部 URL 结合使用。 这会使 URL 处于静态加密状态，并允许利用 Key Vault 进行机密管理和轮换。 建议使用 Azure Blob 存储，以便轻松轮换关联的 SAS 密钥。 Azure Blob 存储已静态加密，这可在应用程序数据未部署到应用服务时确保应用程序数据安全。
+
+1. 创建 Azure 密钥保管库。
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location chinanorth
+    ```
+
+1. 添加外部 URL 作为 Key Vault 中的机密。
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. 创建 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并将该值设为对外部 URL 的 Key Vault 引用。
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.cn/secrets/external-url/<secret-version>"
+    ```
+
+有关详细信息，请参阅以下文章。
+
+- [应用服务的 Key Vault 引用](../app-service/app-service-key-vault-references.md)
+- [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>故障排除
 

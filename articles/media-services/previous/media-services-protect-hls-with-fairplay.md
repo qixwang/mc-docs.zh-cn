@@ -1,6 +1,6 @@
 ---
 title: 使用 Microsoft PlayReady 或 Apple FairPlay 保护 HLS 内容 | Microsoft 文档
-description: 本主题概括介绍并演示了如何使用 Azure 媒体服务通过 Apple FairPlay 动态加密 HTTP 实时传送视频流 (HLS) 内容。 它还演示了如何使用媒体服务许可证传送服务将 FairPlay 许可证传送到客户端。
+description: 本主题概括介绍并演示了如何使用 Azure 媒体服务通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。 它还演示了如何使用媒体服务许可证传送服务将 FairPlay 许可证传送到客户端。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/19/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: f45f41565a9c3fdf2e746cf29458972727d941f9
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 778b2009e45c76eeea6febf345ed210d321c59a6
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914391"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412583"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -34,20 +34,20 @@ ms.locfileid: "72914391"
 
 * **AES-128 信封明文密钥**
 
-    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
+    整个区块使用  AES-128 CBC 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
 * **Apple FairPlay**
 
-    各视频和音频示例都使用 **AES-128 CBC** 模式进行加密。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
+    各视频和音频示例都使用  AES-128 CBC 模式进行加密。 FairPlay 流式处理 (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能  。 OS X 上的 Safari 通过加密媒体扩展 (EME) 接口支持来启用 FPS。
 * **Microsoft PlayReady**
 
-下图显示了 **HLS + FairPlay 或 PlayReady 动态加密**工作流。
+下图显示了 HLS + FairPlay 或 PlayReady 动态加密  工作流。
 
 ![动态加密工作流的图示](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
 本文演示如何使用媒体服务通过 Apple FairPlay 动态加密 HLS 内容。 它还演示了如何使用媒体服务许可证传送服务将 FairPlay 许可证传送到客户端。
 
 > [!NOTE]
-> 如果还想使用 PlayReady 加密 HLS 内容，则需要创建通用的内容密钥并将其与资产相关联。 还需要配置内容密钥的授权策略，如[使用 PlayReady 动态通用加密](media-services-protect-with-playready-widevine.md)中所述。
+> 如果还想要使用 PlayReady 加密 HLS 内容，则需要创建一个通用的内容密钥并将其与资产相关联。 还需要配置内容密钥的授权策略，如[使用 PlayReady 动态通用加密](media-services-protect-with-playready-widevine.md)中所述。
 >
 >
 
@@ -105,7 +105,7 @@ ms.locfileid: "72914391"
 4. 配置内容密钥授权策略。 指定以下项：
 
    * 传送方法（在本例中为 FairPlay）。
-   * FairPlay 策略选项配置。 有关如何配置 FairPlay 的详细信息，请参阅以下示例中的 **ConfigureFairPlayPolicyOptions()** 方法。
+   * FairPlay 策略选项配置。 有关如何配置 FairPlay 的详细信息，请参阅以下示例中的  ConfigureFairPlayPolicyOptions() 方法。
 
      > [!NOTE]
      > 通常，可能只需配置一次 FairPlay 策略选项，因为仅有一套证书和 ASK。
@@ -136,7 +136,7 @@ ms.locfileid: "72914391"
 
 请注意以下事项：
 
-* 仅可以指定零个或一个加密类型。
+* 仅可指定零个或一个加密类型。
 * 如果资产仅应用了一种加密，则无需在 URL 中指定加密类型。
 * 加密类型不区分大小写。
 * 可以指定以下加密类型：  
@@ -146,7 +146,7 @@ ms.locfileid: "72914391"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 2. 将以下元素添加到 app.config 文件中定义的  appSettings：
 
     ```xml

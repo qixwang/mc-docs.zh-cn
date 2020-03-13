@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/11/2019
-ms.date: 01/06/2020
+ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 368fb963a6adc8a1650f9093a92830b54393bf15
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7d9d872b74a4910770b8de2c83f13ab346a9cc38
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624137"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412194"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -26,65 +26,11 @@ ms.locfileid: "75624137"
 > * 下载数据
 > * 可视化数据
 
-首先，请创建存储帐户和容器。 然后，授予对数据的访问权限。 本文的前几个部分介绍如何完成这些任务。 剩下部分将重点介绍每个处理阶段的选项和工具。
+本文重点介绍每个处理阶段的选项和工具。
 
 有关可与 Azure Data Lake Storage Gen2 一起使用的 Azure 服务的完整列表，请参阅[将 Azure Data Lake Storage 与 Azure 服务集成](data-lake-storage-integrate-with-azure-services.md)
 
-## <a name="create-a-data-lake-storage-gen2-account"></a>创建 Data Lake Storage Gen2 帐户
-
-Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次结构。 
-
-若要创建一个，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fstorage%2fblobs%2ftoc.json)。
-
-## <a name="create-a-container"></a>创建容器
-
-下面是可用于为文件创建容器的工具列表。
-
-|工具 | 指南 |
-|---|--|
-|Azure 存储资源管理器 | [使用存储资源管理器创建容器](data-lake-storage-explorer.md#create-a-container) |
-|AzCopy | [使用 AzCopyV10 创建 Blob 容器或文件共享](/storage/common/storage-use-azcopy-v10#transfer-files)|
-|将 Hadoop 容器 (HDFS) 命令行接口 (CLI) 与 HDInsight 配合使用 |[通过将 HDFS 与 HDInsight 配合使用来创建容器](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
-
-使用存储资源管理器或 AzCopy 创建文件系统是最容易的方法。 使用 HDInsight 创建文件系统需要的工作会多一些。 但是，如果已打算使用 HDInsight 群集来处理数据，则可先创建群集，然后使用 HDFS CLI 来创建文件系统。  
-
-## <a name="grant-access-to-the-data"></a>授予对数据的访问权限
-
-在开始引入数据之前，先设置相应的访问权限，以便访问帐户以及帐户中的数据。
-
-可通过三种方法授予访问权限：
-
-* 将下述角色之一分配给用户、组、用户托管标识或服务主体：
-
-  [存储 Blob 数据读者](/role-based-access-control/built-in-roles#storage-blob-data-reader)
-
-  [存储 Blob 数据参与者](/role-based-access-control/built-in-roles#storage-queue-data-contributor)
-
-  [存储 Blob 数据所有者](/role-based-access-control/built-in-roles#storage-blob-data-owner)
-
-* 使用共享访问签名 (SAS) 令牌。
-
-* 使用存储帐户密钥。
-
-下表介绍如何为每个 Azure 服务或工具授予访问权限。
-
-|工具 | 授予访问权限 | 指南 |
-|---|--|---|
-|存储资源管理器| 向用户和组分配角色 | [为具有 Azure Active Directory 的用户分配管理员和非管理员角色](/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
-|AzCopy| 向用户和组分配角色 <br>**or**<br> 使用 SAS 令牌| [为具有 Azure Active Directory 的用户分配管理员和非管理员角色](/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[轻松创建从 Azure 存储下载文件所需的 SAS - 使用 Azure 存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | 为用户分配的托管标识分配角色 | [创建包含 Data Lake Storage Gen2 的 HDInsight 群集](/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure 数据工厂| 为用户分配的托管标识分配角色<br>**or**<br> 向服务主体分配角色<br>**or**<br> 使用存储帐户密钥 | [链接服务属性](/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| 为用户分配的托管标识分配角色 | [创建包含 Data Lake Storage Gen2 的 HDInsight 群集](/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-
-若要授予对特定文件和文件夹的访问权限，请参阅以下文章。
-
-* [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
-
-* [文件和目录上的访问控制列表](/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
-
-若要了解如何设置安全性的其他方面，请参阅 [Azure Data Lake Storage Gen2 安全指南](/storage/common/storage-data-lake-storage-security-guide?toc=%2fstorage%2fblobs%2ftoc.json)。
-
-## <a name="ingest-the-data"></a>引入数据
+## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>将数据引入 Data Lake Storage Gen2
 
 本部分重点介绍不同的数据源和将数据引入 Data Lake Storage Gen2 帐户的不同方式。
 
@@ -98,7 +44,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 
 | 数据源 | 引入方式 |
 | --- | --- |
-| 本地计算机 |[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)<br><br>[AzCopy 工具](../common/storage-use-azcopy-v10.md)|
+| 本地计算机 |[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)<br><br>[存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)<br><br>[AzCopy 工具](../common/storage-use-azcopy-v10.md)|
 | Azure 存储 Blob |[Azure 数据工厂](../../data-factory/connector-azure-data-lake-storage.md)<br><br>[AzCopy 工具](../common/storage-use-azcopy-v10.md)<br><br>[HDInsight 群集上运行的 DistCp](data-lake-storage-use-distcp.md)|
 
 ### <a name="streamed-data"></a>流数据
@@ -124,6 +70,7 @@ Data Lake Storage Gen2 帐户是一个存储帐户，其命名空间具有层次
 |工具 | 指南 |
 |---|--|
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](/data-factory/copy-activity-overview)  |
+|Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
 对于上传 web 服务器日志数据和上传其他类型的数据（例如社会情绪数据），编写自定义脚本/应用程序是一个非常不错的方式，因为这可灵活地将数据上传组件作为更大的大数据应用程序的一部分而包含在内。 某些情况下，此代码的形式可能是脚本或简单的命令行实用工具。 其他情况下，此代码可用于将大数据处理集成到业务应用程序或解决方案中。
 
@@ -182,3 +129,5 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 |---|--|
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](/data-factory/copy-activity-overview) |
 |Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](/storage/blobs/data-lake-storage-use-distcp) |
+|Azure 存储资源管理器|[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md)|
+|AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)|

@@ -1,22 +1,22 @@
 ---
-title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | Microsoft Docs
-description: 了解如何在 Azure AD B2C 中配置资源所有者密码凭据流。
+title: 配置资源所有者密码凭据流
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure AD B2C 中配置 ROPC 流。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 11/30/2018
-ms.date: 10/24/2019
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 675f99eae9ee07b42fe82463d93d337b79e64d1f
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.openlocfilehash: 4f25640b5a525bce61239131d3392bf8923ebbac
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72847118"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265948"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -24,16 +24,7 @@ ms.locfileid: "72847118"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-在 Azure Active Directory B2C (Azure AD B2C) 中支持以下选项：
-
-- **本机客户端**：当代码在用户端设备上运行时，将在身份验证期间进行用户交互。 设备可以是在本机操作系统（如 Android 和 iOS）中运行的移动应用程序。
-- **公共客户端流**：只有通过应用程序收集的用户凭据才会在 API 调用中发送。 不会发送应用程序的凭据。
-- **添加新声明**：可更改 ID 令牌内容以添加新的声明。
-
-不支持以下流：
-
-- **服务器到服务器**：标识保护系统在交互过程中需要从调用方（本地客户端）收集的可靠 IP 地址。 在服务器端 API 调用中，仅使用服务器的 IP 地址。 如果超过了失败身份验证的动态阈值，则标识保护系统可能将重复的 IP 地址识别为攻击者。
-- **机密客户端流**：应用程序客户端 ID 已验证，但应用程序机密未验证。
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>创建资源所有者用户流
 

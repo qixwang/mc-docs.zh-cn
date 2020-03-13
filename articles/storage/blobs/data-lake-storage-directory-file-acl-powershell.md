@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-origin.date: 11/24/2019
-ms.date: 02/10/2020
+origin.date: 12/13/2019
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: prishet
-ms.openlocfilehash: 3221613f56706f5ee4f99e7c72a8ae58a8ed2eee
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 18ffa89e395265e570d3b207f17fb7c52f28c24c
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028971"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411690"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL（预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "77028971"
 
 | [提供反馈](https://github.com/Azure/azure-powershell/issues) |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -84,7 +84,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseCon
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>选项 2：使用存储帐户密钥获取授权
 
-如果使用此方法，系统不会检查资源的 RBAC 或 ACL 权限。
+如果使用此方法，系统不会检查 RBAC 或 ACL 权限。
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
@@ -340,7 +340,7 @@ $file.ACL
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。 然后，使用 `New-AzDataLakeGen2ItemAclObject` cmdlet 创建新的 ACL 条目。 使用 `Update-AzDataLakeGen2Item` cmdlet 应用新的 ACL。
 
-此示例为某个用户授予对某个目录的写入和执行权限。
+此示例向某个组提供对某个目录的写入和执行权限。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -371,7 +371,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-此示例为某个用户授予对某个文件的写入和执行权限。
+此示例向某个组提供对某个文件的写入和执行权限。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -411,7 +411,7 @@ $filesystemName = "my-file-system"
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -FetchPermission | Update-AzDataLakeGen2Item -Acl $acl
 ```
 
 ## <a name="see-also"></a>另请参阅

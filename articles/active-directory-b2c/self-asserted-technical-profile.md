@@ -3,20 +3,20 @@ title: 定义自定义策略中的自断言技术配置文件
 titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: c2979dfe713a4af9b3dda9fe8be835a99f317e91
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 294c748578364f8765f9a7ef5d4b17bc7bd9e1ea
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531331"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265999"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -55,7 +55,7 @@ ms.locfileid: "77531331"
 
 此显示声明功能目前以预览版提供  。
 
-“DisplayClaims”元素包含要呈现在屏幕上用于从用户处收集数据的声明列表  。 若要预填充输出声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
+“DisplayClaims”元素包含要呈现在屏幕上用于从用户处收集数据的声明列表  。 若要预填充显示声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
 
 “DisplayClaims”中的声明顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序  。 若要强制用户提供特定声明的值，请将“DisplayClaim”元素的“Required”属性设置为 `true`   。
 
@@ -198,7 +198,7 @@ ms.locfileid: "77531331"
 | setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterInput`（默认值）链接显示在页面底部，或者 `None`（删除“忘记密码”链接）。| 
+| setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterInput`（默认值）链接显示在页面底部，或者 `None`（删除“忘记密码”链接）。|
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 说明：

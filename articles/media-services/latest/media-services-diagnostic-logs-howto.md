@@ -12,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/08/2019
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 8cd29cbff589bf85d230d2e9de89e4d86f6dee81
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: c5b9577bce33a7af73c5ce3bdac9134a1ec9c9fa
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494588"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412632"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 可以通过 [Azure Monitor](../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 有关此功能的详细说明以及使用 Azure 媒体服务指标和诊断日志的原因，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
 本文介绍如何将数据路由到存储帐户并查看数据。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。
 - 参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。

@@ -1,37 +1,36 @@
 ---
-title: 使用 Azure 计划程序创建计划的作业 - Azure 门户 | Microsoft Docs
-description: 了解如何在 Azure 门户中使用 Azure 计划程序创建、计划和运行第一个自动化作业
+title: 创建计划作业 - Azure 门户
+description: 使用 Azure 计划程序在 Azure 门户中创建、计划和运行第一个自动化作业
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: WenJason
 ms.author: v-jay
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
-ms.topic: hero-article
-origin.date: 09/17/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: a8d1e99e961491d021458e1ce74b5341b7aef9d1
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.reviewer: klam, estfan, logicappspm
+ms.topic: conceptual
+origin.date: 02/29/2020
+ms.date: 03/09/2020
+ms.openlocfilehash: ed3cede9088c4634e81975d5e65cabf0922eb3d2
+ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416279"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78238541"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业 - Azure 门户
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业 - Azure 门户
 
 > [!IMPORTANT]
 > [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
 
-本教程演示了如何轻松创建和计划作业，然后监视并管理该作业。 
+本教程演示了如何轻松创建和计划作业，然后监视并管理该作业。
 
-如果没有 Azure 订阅，请<a href="https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth" target="_blank">注册一个免费 Azure 帐户</a>。
+如果没有 Azure 订阅，请[注册 1 元 Azure 试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 
 ## <a name="create-job"></a>创建作业
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。  
 
-1. 在 Azure 主菜单上选择“创建资源”  。 在搜索框中输入“计划程序”。 在结果列表中，选择“计划程序”，然后选择“创建”   。
+1. 在 Azure 搜索框中，输入 `scheduler` 作为筛选器。 从结果列表中，选择“计划程序作业集合”  ，然后选择“创建”  。
 
    ![创建计划程序资源](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -148,6 +147,6 @@ ms.locfileid: "73416279"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[概念、术语和实体层次结构](scheduler-concepts-terms.md)
-* [构建复杂的计划和高级的定期计划](scheduler-advanced-complexity.md)
+* [构建复杂的计划和高级重复周期](scheduler-advanced-complexity.md)
 * 了解[计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
 * 了解[限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

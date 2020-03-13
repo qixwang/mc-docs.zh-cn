@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/16/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: f86b88da4e0030cdb04e16bc6faad6d803a1b40c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 9737d2ff17f8938193270fdb1cf5a8e6555dfe74
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124694"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412376"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理  
 
@@ -29,7 +29,7 @@ ms.locfileid: "71124694"
 > * [第 2 版](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)

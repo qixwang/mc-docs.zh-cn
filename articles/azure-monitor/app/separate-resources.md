@@ -1,20 +1,18 @@
 ---
-title: 在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Azure Docs
+title: 在 Azure Application Insights 中分隔遥测
 description: 为开发、测试和生产戳记直接遥测不同的资源。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 05/15/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 90df6d47e085d51ee10980a0f0e969ca22afd730
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b9fb645f3667534307f2c5758bcd33b5e45ae33e
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838597"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850377"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 

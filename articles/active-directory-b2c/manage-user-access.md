@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中管理用户访问 | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 识别未成年人、收集出生日期和国家/地区数据，以及让用户在应用程序中接受使用条款。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 5636d3e0e200fea5fa502b72cdab50cd9ed8cb10
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: fff7f58365c2fb10ea5c68105c7f8378c2b10a23
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028161"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265977"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -46,7 +46,7 @@ ms.locfileid: "77028161"
 
 下面是收集家长同意的用户流示例：
 
-1. [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
+1. [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
 
 2. 应用程序处理 JSON 令牌，并向未成年人显示一个屏幕，告知他们需要家长同意，并请求家长在线同意。
 
@@ -54,9 +54,9 @@ ms.locfileid: "77028161"
 
 4. 应用程序提供一个选项让未成年人撤消同意。
 
-5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
+5. 未成年人或成人撤消同意时，可以使用 Microsoft Graph API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:2011-01-01T00:00:00Z  。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Microsoft Graph API 解决扩展属性时，必须使用长版本的属性，例如“extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth”  ：2011-01-01T00:00:00Z  。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集出生日期和国家/地区数据
 
@@ -178,4 +178,3 @@ ms.locfileid: "77028161"
 - 若要了解如何删除和导出用户数据，请参阅[管理用户数据](manage-user-data.md)。
 - 有关实现使用条款提示的示例自定义策略，请参阅 [B2C IEF 自定义策略 - 使用“使用条款”提示注册并登录](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou)。
 
-<!-- Update_Description: link update -->

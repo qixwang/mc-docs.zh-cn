@@ -5,12 +5,12 @@ ms.topic: article
 origin.date: 07/19/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 20967709192eeae3e4567aa93e3619233fcc3497
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 9323da4baf7fc43f6df035028f9e4f34d2ffc113
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428289"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213734"
 ---
 <!--Verified successfully-->
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
@@ -20,7 +20,10 @@ ms.locfileid: "77428289"
 所有机密  卷均由 [tmpfs][tmpfs] 提供支持，后者是一个支持 RAM 的文件系统，其内容永远不会写入到非易失性存储。
 
 > [!NOTE]
-> 机密  卷目前仅限于 Linux 容器。 [设置环境变量](container-instances-environment-variables.md)介绍了如何为 Windows 和 Linux 容器传递安全环境变量。 虽然我们正致力于为 Windows 容器提供全部功能，但你可在[概述](container-instances-overview.md#linux-and-windows-containers)中了解当前的平台差异。
+> 机密  卷目前仅限于 Linux 容器。 在[设置环境变量](container-instances-environment-variables.md)中了解如何为 Linux 容器传递安全环境变量。
+
+<!--Not Available on both Windows and Linux container-->
+<!--Not Available on  While we're working to bring all features to Windows containers, you can find current platform differences in the [overview](container-instances-overview.md#linux-and-windows-containers)-->
 
 ## <a name="mount-secret-volume---azure-cli"></a>装载机密卷 - Azure CLI
 

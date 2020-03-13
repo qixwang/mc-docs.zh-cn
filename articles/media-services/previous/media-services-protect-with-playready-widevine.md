@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 74d48a9fe5575b4ab8df97548794dc10c8b7e241
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 654b5b4216b98dd6019aee462a80af6a0b3958a0
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124587"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412582"
 ---
 # <a name="use-playready-dynamic-common-encryption"></a>使用 PlayReady 动态通用加密
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -143,7 +143,7 @@ Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。
 
-2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
+2. 将以下元素添加到 app.config 文件中定义的  appSettings：
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>

@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 01/08/2019
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 60eb7697483977a2a1157f86e7a9a01ae416dbfb
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: c0332edbb7fc1493272df5c9078a7a65d8737537
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494539"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412513"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
  Azure 媒体服务提供一套设计良好的[内容保护服务](content-protection-overview.md)，包括：
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 - Microsoft PlayReady
 - Apple FairPlay
@@ -47,7 +47,7 @@ ms.locfileid: "77494539"
 > [!NOTE]
 > 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在 iOS 10+ 设备上为 FairPlay 实现 脱机 DRM 之前：
 

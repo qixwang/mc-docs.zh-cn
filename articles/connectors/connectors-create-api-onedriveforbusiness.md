@@ -1,27 +1,20 @@
 ---
-title: OneDrive for Business
-description: 使用 Azure 应用服务创建逻辑应用。 连接到 OneDrive for Business 管理文件。 可以执行各种操作，例如上传、更新、获取和删除文件。
+title: 连接到 OneDrive for Business
+description: 使用 OneDrive for Business REST API 和 Azure 逻辑应用上传和管理文件
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: MandiOhlinger
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: cf9484e9-7a20-4de0-93c8-0fa132221f2b
-ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 origin.date: 08/18/2016
-ms.author: v-yiso
-ms.date: 03/26/2018
-ms.openlocfilehash: 0040afd9408ddd4cf26993ca396d15bc84a30492
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.date: 03/09/2020
+ms.author: v-yeche
+tags: connectors
+ms.openlocfilehash: b7243a8bc683d6812c5bd6f36b002546da1a544c
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52662230"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304681"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business 连接器入门
 连接到 OneDrive for Business 管理文件。 可以执行各种操作，例如上传、更新、获取和删除文件。
@@ -42,7 +35,9 @@ ms.locfileid: "52662230"
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/onedriveforbusinessconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
+在[连接器详细信息](https://docs.microsoft.com/connectors/onedriveforbusinessconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。
 
 ## <a name="more-connectors"></a>更多连接器
 返回到 [API 列表](apis-list.md)。
+
+<!-- Update_Description: update meta properties, wording update, update link -->

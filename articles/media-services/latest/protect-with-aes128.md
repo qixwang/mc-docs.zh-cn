@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/21/2019
-ms.date: 12/09/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 6dc30134360abb98d06e4c7f51f271b1721fd234
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 1e43978747b69771e7149eacc69a9e6425060502
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807657"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412511"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教程：使用 AES-128 来加密视频以及使用密钥传送服务
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
@@ -123,7 +123,7 @@ private static async Task<Asset> CreateOutputAssetAsync(IAzureMediaServicesClien
  
 ## <a name="get-or-create-an-encoding-transform"></a>获取或创建编码转换
 
-创建新实例时，需要指定希望生成的输出内容[转换](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如以下代码所示  。 每个 TransformOutput 包含一个预设   。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput   。 本文中的示例使用名为 AdaptiveStreaming 的内置预设  。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），然后通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。
+创建新实例时，需要指定希望生成的输出内容[转换](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 **TransformOutput** 对象，如以下代码所示。 每个 TransformOutput 包含一个预设   。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput   。 本文中的示例使用名为 AdaptiveStreaming 的内置预设  。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），然后通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。
 
 在创建新的[转换](https://docs.microsoft.com/rest/api/media/transforms)之前，请先检查是否已存在使用 **Get** 方法的转换，如以下代码中所示。 在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -372,7 +372,7 @@ private static string GetTokenAsync(string issuer, string audience, string keyId
 
 ## <a name="build-a-dash-streaming-url"></a>生成 DASH 流 URL
 
-创建[流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)后，即可获取流式处理 URL。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径  。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
+创建[流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)后，即可获取流式处理 URL。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径  。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**将处于停止状态，因此需要调用 **Start**  。
 
 ```c#
 private static async Task<string> GetDASHStreamingUrlAsync(

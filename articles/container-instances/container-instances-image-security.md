@@ -6,12 +6,12 @@ origin.date: 04/29/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 7e42e2b5974a24aab07f0b58c4cae577abdb4f34
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: c294a64f7916446a4467e0b097525733f71d093b
+ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965022"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78213750"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -115,10 +115,15 @@ ms.locfileid: "75965022"
 
 * [用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 可以监视托管在 Azure Kubernetes 服务 (AKS) 上的 Kubernetes 环境中部署的工作负荷的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
 
-* [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)可帮助你在单个位置查看和管理其他 Docker 与 Windows 容器主机。 例如：
-
+* [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)可帮助你在单个位置查看和管理其他 Docker 容器主机。 例如：
+    
+    <!--Not Available on Docker and Windows container hosts-->
+    
     * 查看详细审核信息，其中显示了与容器一起使用的命令。 
-    * 通过查看和搜索集中式日志来排查容器问题，而无需远程查看 Docker 或 Windows 主机。  
+    * 通过查看和搜索集中式日志来排查容器问题，而无需远程查看 Docker 主机。  
+        
+        <!--Not Available on view Docker or Windows hosts-->
+        
     * 在主机上查找可能具有干扰性并且占用过多资源的容器。
     * 查看容器的集中式 CPU、内存、存储器、网络使用情况和性能信息。  
 

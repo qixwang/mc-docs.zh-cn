@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 84e1843af5bba787f60466d9b72bdd921c159ea9
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: 6ca31e400016a288ced10f7c0a968fc8224a7015
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128835"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265913"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配
 
@@ -113,7 +113,7 @@ ms.locfileid: "77128835"
 
 ## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>列出用户分配的托管标识的角色分配
 
-1. 在 Azure 门户中，打开系统分配的托管标识。
+1. 在 Azure 门户中，打开用户分配的托管标识。
 
 1. 单击“Azure 资源”  。
 
@@ -138,4 +138,3 @@ ms.locfileid: "77128835"
 - [使用 Azure RBAC 和 Azure 门户添加或删除角色分配](role-assignments-portal.md)
 - [ Azure 资源 RBAC 故障排除](troubleshooting.md)
 
-<!-- Update_Description: wording update -->

@@ -8,13 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 3e1e2a35701b109ef0c02df82704093042cfab8f
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 01/08/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 39946d6304abd99e343b3804e2d6b810e3e05bd1
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598701"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850589"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：通过 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -53,7 +54,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 ### <a name="training-files"></a>训练文件
 
-项目中的 `examples/cli-train-delpoy` 目录包含以下在训练模型时要使用的文件：
+项目中的 `examples/cli-train-deploy` 目录包含以下在训练模型时要使用的文件：
 
 * `.azureml\mnist.runconfig`：一个运行配置文件。  此文件定义训练模型所需的运行时环境。 在此示例中，它还会将用于训练模型的数据装入训练环境。
 * `scripts\train.py`：训练脚本。 此文件训练模型。
@@ -66,7 +67,7 @@ git clone https://github.com/microsoft/MLOps.git
 存储库包含以下文件，在将训练的模型部署为 Web 服务时要使用这些文件：
 
 * `aciDeploymentConfig.yml`：一个部署配置文件。  此文件定义模型所需的托管环境。
-* `inferenceConfig.yml`：一个推理配置文件。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
+* `inferenceConfig.yml`：一个推理配置文件  。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
 * `score.py`：一个 Python 脚本，用于接受传入的数据，使用模型为数据评分，然后返回响应。
 * `scoring-env.yml`：运行模型和 `score.py` 脚本所需的 conda 依赖项。
 * `testdata.json`：可用于测试已部署的 Web 服务的数据文件。
@@ -211,7 +212,7 @@ az ml computetarget create amlcompute -n cpu-cluster --max-nodes 4 --vm-size Sta
 若要使用 `dataset.json` 文件注册数据集，请使用以下命令：
 
 ```azurecli
-az ml dataset register -f dataset.json
+az ml dataset register -f dataset.json --skip-validation
 ```
 
 此命令的输出类似于以下 JSON：
@@ -242,6 +243,11 @@ az ml dataset register -f dataset.json
 
 > [!IMPORTANT]
 > 复制 `id` 条目的值，以便在下一部分使用。
+
+若要查看数据集的更全面模板，请使用以下命令：
+```azurecli
+az ml dataset register --show-template
+```
 
 ## <a name="reference-the-dataset"></a>引用数据集
 
@@ -280,7 +286,7 @@ data:
 
 更改 `id` 条目的值，使其与注册数据集时返回的值相匹配。 此值用于在训练期间将数据载入计算目标。
 
-此 YAML 执行以下操作：
+此 YAML 在训练过程中将导致以下操作：
 
 * 在训练环境中装载数据集（基于数据集的 ID），并在 `mnist` 环境变量中存储装入点的路径。
 * 使用 `--data-folder` 参数将训练环境中的数据（装入点）位置传递到脚本。
@@ -290,7 +296,7 @@ runconfig 文件还包含用于配置训练运行所用环境的信息。 检查
 > [!TIP]
 > 可以手动创建 runconfig 文件，不过，此示例中的配置文件是使用存储库中包含的 `generate-runconfig.py` 文件创建的。 此文件将获取对已注册数据集的引用，以编程方式创建运行配置，然后将其保存到文件中。
 
-有关运行配置文件的详细信息，请参阅[设置和使用用于模型训练的计算目标](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)，或参考此 [JSON 文件](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)来了解 runconfig 的完整架构。
+有关运行配置文件的详细信息，请参阅[设置并使用计算目标进行模型训练](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)。 有关完整的 JSON 参考，请参阅 [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。
 
 ## <a name="submit-the-training-run"></a>提交训练运行
 
@@ -366,9 +372,14 @@ az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aciDeploymentConfig.yml
 ```
 
+> [!NOTE]
+> 你可能会收到有关“无法检查 LocalWebservice 是否存在”的警告。 你可以放心地忽略此警告，因为你没有部署本地 Web 服务。
+
 此命令使用前面注册的模型版本 1 部署名为 `myservice` 的新服务。
 
-`inferenceConfig.yml` 文件提供有关如何执行推理的信息，例如入口脚本 (`score.py`) 和软件依赖项。 有关此文件的结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
+`inferenceConfig.yml` 文件提供了有关如何使用模型进行推理的信息。 例如，它引用入口脚本 (`score.py`) 和软件依赖项。 
+
+有关此文件的结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md#prepare-deployment-artifacts)。
 
 `aciDeploymentConfig.yml` 描述用于托管服务的部署环境。 部署配置特定于用于部署的计算类型。 本例中使用了 Azure 容器实例。 有关详细信息，请参阅[部署配置架构](reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 
@@ -411,6 +422,13 @@ REST 终结点可用于将数据发送到服务。 有关创建可将数据发�
 ```azurecli
 az ml service run -n myservice -d @testdata.json
 ```
+
+> [!TIP]
+> 如果使用 PowerShell，请改用以下命令：
+>
+> ```powershell
+> az ml service run -n myservice -d `@testdata.json
+> ```
 
 该命令的响应类似于 `[ 3 ]`。
 

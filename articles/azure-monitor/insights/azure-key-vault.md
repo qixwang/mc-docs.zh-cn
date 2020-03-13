@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 中的 Azure Key Vault 解决方案 | Azure Docs
 description: 可以在 Azure Monitor 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库日志。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/27/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cfa141be4cffe6dc050215f4ffcd78e51c1f324c
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: 376657dec29d0807e36e0cb7b94ad412f1c899c9
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545367"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850334"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
@@ -53,7 +52,7 @@ ms.locfileid: "75545367"
 8. 单击“保存”，启用在 Log Analytics 工作区中记录诊断日志。 
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>使用 PowerShell 启用 Key Vault 诊断
-以下 PowerShell 脚本提供如何使用 `Set-AzDiagnosticSetting` 为 Key Vault 启用诊断日志记录的示例：
+以下 PowerShell 脚本提供了如何使用 `Set-AzDiagnosticSetting` 为 Key Vault 启用资源日志记录的示例：
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-CNE2/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

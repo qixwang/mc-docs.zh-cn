@@ -2,21 +2,22 @@
 title: 使用估算器训练 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习估算器类对传统机器学习和深度学习模型执行单节点和分布式训练
-ms.author: maxluk
+ms.author: v-yiso
 author: maxluk
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 11/08/2019
+origin.date: 11/08/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: af671ba63645a9495976099046ae7174cad82f4d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 62afecc944f69bf755a607647eba57de6454b7c0
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598777"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850208"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +132,7 @@ print(run.get_portal_url())
 运行以下代码会将模型注册到你的工作区，并使其可在远程计算上下文或部署脚本中按名称引用。 有关详细信息和其他参数，请参阅参考文档中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
 
 ```python
-model = run.register_model(model_name='sklearn-sample')
+model = run.register_model(model_name='sklearn-sample', model_path=None)
 ```
 
 ## <a name="github-tracking-and-integration"></a>GitHub 跟踪与集成
@@ -158,3 +159,4 @@ model = run.register_model(model_name='sklearn-sample')
 * [训练 TensorFlow 模型](how-to-train-tensorflow.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
 * [部署定型的模型](how-to-deploy-and-where.md)
+* [创建和管理用于训练和部署的环境](how-to-use-environments.md)
