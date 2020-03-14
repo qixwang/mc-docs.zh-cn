@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/19/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
-ms.openlocfilehash: d3cf9f4e7e1bdae6d6df7cfd5de60a6e4d524b88
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 543d1c37da2bd87753f1f1b7f6f5739defb24921
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494489"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78266089"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="february-2020-guest-os"></a>2020 年 2 月来宾 OS
+
+>[!NOTE]
+>目前，我们正在将 2 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 2 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2.85, 3.82, 4.75 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537813]  |  Windows 安全性 | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537794]  |  Windows 安全性 | 3.82 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537803]  |  Windows 安全性 | 4.75 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537764]  |  最新累积更新(LCU) | 5.4 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4532691]  |  最新累积更新(LCU) | 6.16 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4534310]  |  每月汇总 | 2.85 | 2020 年 1 月 14 日 |
+|  Rel 20-02 |  [4536952]  |  服务堆栈更新(SSU) | 2.85 | 2020 年 1 月 14 日 |
+|  Rel 20-02 |  [4537829]  |  服务堆栈更新(SSU) | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4538483]  |  扩展安全更新(ESU) | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537820]  |  每月汇总 | 2.85 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4537759]  |  安全更新(Flash) | 3.82, 4.75 | 2020 年 2 月 11 日 |
+|  Rel 20-02 |  [4534283]  |  每月汇总 | 3.82 | 2020 年 1 月 14 日 |
+|  Rel 20-02 |  [4532920]  |  服务堆栈更新(SSU) | 3.82 | 2020 年 12 月 10 日 |
+|  Rel 20-02 |  [4534297]  |  非安全性 | 4.75 | 2020 年 1 月 14 日 |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
 
 ## <a name="january-2020-guest-os"></a>2020 年 1 月来宾 OS
 
@@ -2128,5 +2168,3 @@ ms.locfileid: "77494489"
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-explanation
 
-
-<!--Update_Description: update wording-->
