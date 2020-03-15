@@ -8,12 +8,12 @@ origin.date: 01/01/2020
 ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 633a65a0efc860ad83324ac8fddaa1bfad7760a7
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 200717e6c9bd615995d6494a1c969c5b4831be86
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934932"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133850"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -146,10 +146,10 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 默认情况下，“隔
 
 | 场景 | Message |
 |---------|----------|
-| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 确保遵守此处定义的准则： https://docs.azure.cn/app-service/environment/network-info |
 | ASE 子网空间几乎已耗尽 | 指定的 ASE 位于一个几乎耗尽了空间的子网中。 还剩下 {0} 个地址。 一旦这些地址耗尽，ASE 就无法缩放  |
 | ASE 即将达到实例总数限制 | 指定的 ASE 即将达到 ASE 的实例总数限制。 它目前包含 {0} 个应用服务计划实例，最多可以包含 201 个实例。 |
-| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  确保遵守此处定义的准则： https://docs.azure.cn/app-service/environment/network-info |
 | ASE 已挂起 | 指定的 ASE 已挂起。 ASE 挂起的可能原因是帐户不足，或虚拟网络配置无效。 解决根本原因并恢复 ASE，以继续为流量提供服务 |
 | ASE 升级已启动 | 已开始对指定的 ASE 进行平台升级。 预期缩放操作会出现延迟 |
 | ASE 升级已完成 | 对指定的 ASE 进行平台升级已完成 |
